@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b0a046441466efeef559544814f5471b5802b1d4
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: ff00d61c5f53d0c702e16d8223a330cb09ee619e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714834"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465398"
 ---
 # <a name="detect-domain-specific-content"></a>Erkennen domänenspezifischer Inhalte
 
@@ -137,6 +137,8 @@ Durch das Aufrufen der [Models](https://westcentralus.dev.cognitive.microsoft.co
 }
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="use-the-api"></a>Verwenden der API
 
-Erfahren Sie mehr über das [Kategorisieren von Bildern](concept-categorizing-images.md).
+Dieses Feature ist über die [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b)-API verfügbar. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Fügen Sie `Celebrities` oder `Landmarks` in den Abfrageparameter **details** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"details"`.
+
+* [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/image-analysis-client-library.md?pivots=programming-language-csharp)

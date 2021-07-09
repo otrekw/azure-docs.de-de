@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: fd8686cc396d5fcee20590fbac8bccaf187b024d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fd77f7ac69296c8d59b703d202b23e2112bd912
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101735946"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764709"
 ---
 # <a name="network-requirements"></a>Netzwerkanforderungen
 
@@ -21,7 +21,7 @@ Eine stabile Netzwerkverbindung mit geringer Latenz zu einem Azure-Rechenzentrum
 Die genauen Netzwerkanforderungen variieren je nach Anwendungsfall und sind z. B. von der Anzahl und der Häufigkeit der an dem Remoteszenegraph vorgenommenen Änderungen und der Komplexität der gerenderten Ansicht abhängig. Es gibt allerdings einige Richtlinien, die Ihnen weiterhelfen sollten:
 
 * Ihre Internetverbindung muss beständig mindestens **40 MBit/s Downstream** und **5 MBit/s Upstream** für einzelne Benutzersitzungen von Azure Remote Rendering unterstützen, vorausgesetzt es gibt keinen konkurrierenden Datenverkehr auf dem Netzwerk. Es werden aber höhere Geschwindigkeiten empfohlen, um die bestmögliche Leistung zu erzielen. 
-* Der empfohlene Netzwerktyp ist **WLAN**, da dieses niedrige Latenz, hohe Bandbreite und eine stabile Verbindung unterstützt. Einige mobile Netzwerke weisen Jitter auf, was zu einer schlechten Leistung führen kann. 
+* Der empfohlene Netzwerktyp ist **WLAN**, da dieses niedrige Wartezeit, hohe Bandbreite und eine stabile Verbindung unterstützt. Einige mobile Netzwerke weisen Jitter auf, was zu einer schlechten Leistung führen kann. 
 * Bei der Verwendung einer **WLAN-Bandbreite von 5 GHz** werden in der Regel bessere Ergebnisse erzielt als mit einer WLAN-Bandbreite von 2,4 GHz. Beide Bandbreien sollten allerdings ausreichen.
 * Wenn sich in der Nähe andere WLAN-Netzwerke befinden, sollten Sie die Verwendung von WLAN-Kanälen vermeiden, die von diesen anderen Netzwerken verwendet werden. Sie können Netzwerküberprüfungstools wie [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) verwenden, um zu überprüfen, ob die Kanäle, die Ihr WLAN-Netzwerk verwendet, frei von konkurrierendem Datenverkehr sind.
 * Vermeiden Sie generell die **Verwendung von WLAN-Repeatern** und die Weiterleitung über LAN-Anschlüsse.

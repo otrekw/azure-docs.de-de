@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: c17cd6cb97aaac3cd08342270e4eafa07eb5fd7d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e6ec2289b272ae4c9d7d0c8eaca84b05d718908c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864881"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451139"
 ---
 # <a name="get-translation-status"></a>Abrufen des Übersetzungsstatus
 
@@ -25,7 +25,7 @@ Die Methode Get-Übersetzungsstatus gibt den Status für eine Dokumentübersetzu
 
 Sendet eine `GET`-Anforderung an:
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches/{id}
 ```
 
 Erfahren Sie, wie Sie Ihren [benutzerdefinierten Domänennamen](../get-started-with-document-translation.md#find-your-custom-domain-name)finden.
@@ -70,7 +70,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 
-|Name|type|BESCHREIBUNG|
+|Name|Typ|BESCHREIBUNG|
 |--- |--- |--- |
 |id|Zeichenfolge|ID des Vorgangs.|
 |createdDateTimeUtc|Zeichenfolge|Das Datum und die Uhrzeit des Vorgangs.|
@@ -85,16 +85,17 @@ Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 |summary.cancelled|integer|Anzahl der abgebrochenen.|
 |summary.totalCharacterCharged|integer|Zeichen, die von der API abgerechnet werden.|
 
-###<a name="error-response"></a>Fehlerantwort
+### <a name="error-response"></a>Fehlerantwort
 
-|Name|type|Beschreibung|
+|Name|Typ|Beschreibung|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
 |target|Zeichenfolge|Ruft die Ursache des Fehlers ab. Dies wäre z. B. „Dokumente“ oder „Dokument-ID“ im Falle eines ungültigen Dokuments.|
-|innerError|InnerErrorV2|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
+|innerError|InnerTranslationError|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
 |innerError.code|Zeichenfolge|Ruft Code der Fehlerzeichenfolge ab.|
 |innerError.message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
+|innerError.target|Zeichenfolge|Ruft die Ursache des Fehlers ab. Dies wäre z. B. „Dokumente“ oder „Dokument-ID“ im Falle eines ungültigen Dokuments.|
 
 ## <a name="examples"></a>Beispiele
 

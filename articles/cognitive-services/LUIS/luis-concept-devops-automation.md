@@ -1,16 +1,19 @@
 ---
-title: Kontinuierliche Workflows für LUIS-Apps
+title: Continuous Integration- und Continuous Delivery-Workflows für LUIS-Apps
 description: Hier wird beschrieben, wie Sie CI/CD-Workflows für DevOps für Language Understanding Intelligent Service (LUIS) implementieren.
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/5/2020
-ms.openlocfilehash: 215399e4b131162097e54c15b84cb6fa7dac72e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.author: aahi
+author: aahill
+ms.manager: nitinme
+ms.openlocfilehash: 550af8bda0768738dc2162a0dc0bf767d1c54741
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98932540"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783028"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Continuous Integration- und Continuous Delivery-Workflows für LUIS DevOps
 
@@ -34,6 +37,9 @@ Im **CI/CD-Workflow** werden zwei komplementäre Entwicklungsprozesse vereinigt:
 Continuous Integration und Continuous Delivery sollen sicherstellen, dass der „Mainbranch zu jedem Zeitpunkt bereitstellbar ist“. Für eine LUIS-App bedeutet dies, dass bei Bedarf eine beliebige Version aus der Mainbranch-LUIS-App in die Produktionsumgebung überführt werden kann.
 
 ### <a name="tools-for-building-automation-workflows-for-luis"></a>Tools zum Entwickeln von Automatisierungs-Workflows für LUIS
+
+> [!TIP]
+> Eine vollständige Lösung für die Implementierung von DevOps finden Sie im [LUIS DevOps-Vorlagenrepository](#apply-devops-to-luis-app-development-using-github-actions).
 
 Zum Erstellen von Build-Automatisierungsworkflows stehen verschiedene Build-Automatisierungstechnologien zur Verfügung. Bei allen ist es erforderlich, dass Sie Skripts mit Schritten über eine Befehlszeilenschnittstelle (CLI) oder REST-Aufrufe schreiben können, sodass sie auf einem Buildserver ausgeführt werden können.
 
@@ -96,7 +102,26 @@ Weitere Optionen zum Bereitstellen einer App-Version:
 
 Im Allgemeinen wird empfohlen, dass Sie Continuous Delivery nur für Nicht-Produktionsumgebungen verwenden, z. B. für die Entwicklung und das Staging. Die meisten Teams benötigen einen manuellen Überprüfungs- und Genehmigungsprozess für die Bereitstellung in einer Produktionsumgebung. Bei einer Bereitstellung in einer Produktionsumgebung sollten Sie sicherstellen, dass dies erfolgt, wenn Schlüsselpersonen des Entwicklungsteams zur Unterstützung zur Verfügung stehen oder in Zeiten mit geringem Datenverkehrsaufkommen.
 
+
+## <a name="apply-devops-to-luis-app-development-using-github-actions"></a>Anwenden von DevOps auf die Entwicklung von LUIS-Apps mithilfe von GitHub Actions
+
+Navigieren Sie zum [LUIS DevOps-Vorlagenrepository](https://github.com/Azure-Samples/LUIS-DevOps-Template), wenn Sie eine vollständige Projektmappe suchen, um DevOps und bewährte Methoden der Softwareentwicklung für LUIS zu implementieren. Sie können dieses Vorlagenrepository verwenden, um ein eigenes Repository mit integrierter Unterstützung für CI/CD-Workflows und Praktiken zu erstellen, die [Quellcodeverwaltung](luis-concept-devops-sourcecontrol.md), automatisierte Builds, [Tests](luis-concept-devops-testing.md) und Releaseverwaltung mit LUIS für Ihr eigenes Projekt ermöglichen.
+
+Das [LUIS DevOps-Vorlagenrepository](https://github.com/Azure-Samples/LUIS-DevOps-Template) führt Sie durch die folgenden Schritte:
+
+* **Klonen des Vorlagenrepositorys**: Kopieren Sie die Vorlage in Ihr eigenes GitHub-Repository.
+* **Konfigurieren von LUIS-Ressourcen**: Erstellen Sie die [LUIS-Erstellungs- und Vorhersageressourcen in Azure](./luis-how-to-azure-subscription.md), die von den Continuous Integration-Workflows verwendet werden.
+* **Konfigurieren der CI/CD-Workflows**: Konfigurieren Sie Parameter für die CI/CD-Workflows, und speichern Sie sie in [GitHub-Geheimnissen](https://help.github.com/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
+* **Abschreiten der [„inneren Entwicklungsschleife“](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)** : Der Entwickler nimmt Aktualisierungen an einer LUIS-Beispiel-App vor, während er in einem Entwicklungsbranch arbeitet, testet die Aktualisierungen und löst dann einen Pull Request aus, um die Änderungen vorzuschlagen und um Genehmigung aus dem Review zu bitten.
+* **Ausführen von CI/CD-Workflows**: Ausführen von [Continuous Integration-Workflows zum Erstellen und Testen einer LUIS-App](#build-automation-workflows-for-luis) mithilfe von GitHub Actions.
+* **Ausführen von automatisierten Tests**: Ausführen von [automatisiertem Testen in Batches für eine LUIS-App](luis-concept-devops-testing.md), um die Qualität der App zu bewerten.
+* **Bereitstellen der LUIS-App**: Ausführen eines [CD-Auftrags (Continuous Delivery)](#continuous-delivery-cd) zum Veröffentlichen der LUIS-App.
+* **Verwenden des Repositorys für Ihr eigenes Projekt**: Erläutert, wie Sie das Repository für Ihre eigene LUIS-Anwendung nutzen können.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [DevOps für LUIS mit GitHub implementieren](luis-how-to-devops-with-github.md).
 * Erfahren Sie, wie Sie einen [GitHub Actions-Workflow mit NLU.DevOps](https://github.com/Azure-Samples/LUIS-DevOps-Template/blob/master/docs/4-pipeline.md) schreiben.
+
+* Verwenden des [LUIS DevOps-Vorlagenrepositorys](https://github.com/Azure-Samples/LUIS-DevOps-Template) zum Anwenden von DevOps auf Ihr eigenes Projekt.
+* [Quellcodeverwaltungs- und Branchstrategien für LUIS](luis-concept-devops-sourcecontrol.md)
+* [Testen für LUIS DevOps](luis-concept-devops-testing.md)

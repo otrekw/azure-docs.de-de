@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/11/2021
 ms.custom: references_regions
-ms.openlocfilehash: da6d19a20a31e4cc4c4fac5bb704cb193611dbbc
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6e8f9a26836be14d4952ba309933511635ff673a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382521"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982644"
 ---
 # <a name="qna-maker-managed-is-now-renamed-to-custom-question-answering"></a>QnA Maker Managed wird jetzt in benutzerdefinierte Fragen und Antworten umbenannt
 
@@ -41,7 +41,7 @@ Sie können eine QnA Maker Managed-Ressource nicht mehr aus dem QnA Maker Erstel
 
 - Alle vorhandenen QnA Maker Managed-Ressourcen (Vorschau) funktionieren weiterhin wie zuvor. Für diese Ressourcen ist derzeit keine Aktion erforderlich.
 - Der Erstellungsablauf für die benutzerdefinierte Fragen und Antworten (Vorschau) ist die primäre Änderung. Der Dienst, das Portal, die Endpunkte, SDK usw. bleiben wie zuvor.
-- Benutzerdefinierte Fragen und Antworten (Vorschauversion) werden weiterhin als kostenlose öffentliche Vorschau angeboten.
+- Benutzerdefinierte Fragen und Antworten (Vorschauversion) werden weiterhin als kostenlose öffentliche Vorschau angeboten. Dieses Feature ist nur als Teil der Standardressourcen der Textanalyse verfügbar. Ändern Sie nicht Ihren Tarif für Textanalyseressourcen in „Kostenlos“.
 - Benutzerdefinierte Fragen und Antworten (Vorschauversion) sind in den folgenden Regionen verfügbar:
     - USA Süd Mitte
     - Nordeuropa
@@ -51,5 +51,4 @@ Sie können eine QnA Maker Managed-Ressource nicht mehr aus dem QnA Maker Erstel
 
 * [Erste Schritte mit der QnA Maker-Clientbibliothek](./quickstarts/quickstart-sdk.md)
 * [Erste Schritte mit dem QnA Maker-Portal](./quickstarts/create-publish-knowledge-base.md)
-
 

@@ -4,17 +4,17 @@ description: Die V3-Erstellung bietet einen neuen Entitätstyp, die Machine Lear
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/08/2020
-ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: 6808c5d84a1be6a2e9b262eab00010d4a962c259
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91324687"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701166"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migrieren zur V3-Erstellungsentität
 
-Die V3-Erstellung bietet einen neuen Entitätstyp, die Machine Learning-Entität, sowie die Möglichkeit, Beziehungen zur Machine Learning-Entität und anderen Entitäten oder Funktionen der Anwendung hinzuzufügen.
+Die V3-Erstellung bietet einen neuen Entitätstyp, die Machine Learning-Entität, sowie die Möglichkeit, Beziehungen zur Machine Learning-Entität und anderen Entitäten oder Funktionen der Anwendung hinzuzufügen. Es gibt derzeit kein Datum, bis zu dem die Migration abgeschlossen werden muss.
 
 ## <a name="entities-are-decomposable-in-v3"></a>Entitäten sind in V3 zerlegbar
 

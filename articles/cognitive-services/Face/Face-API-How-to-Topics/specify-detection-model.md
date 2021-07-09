@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d5fc09bd554bc61f38a3b208de808a621cbfda80
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: da05251dab17aeb086be53a8583110dd5f12d7b3
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748023"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541639"
 ---
 # <a name="specify-a-face-detection-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -102,8 +102,8 @@ Die verschiedenen Gesichtserkennungsmodelle wurden für unterschiedliche Aufgabe
 |---------|---------|---|
 |Standardauswahl für alle Gesichtserkennungsvorgänge. | Im Mai 2019 veröffentlich und optional in allen Gesichtserkennungsvorgängen verfügbar. |  Im Februar 2021 veröffentlich und optional bei allen Gesichtserkennungsvorgängen verfügbar.
 |Nicht optimiert für kleine oder unscharfe Gesichter bzw. Gesichter in der Profilansicht.  | Verbesserte Genauigkeit bei kleinen oder unscharfen Gesichtern bzw. Gesichtern in der Profilansicht. | Weitere Verbesserung der Genauigkeit, auch bei kleineren Gesichtern (64 × 64 Pixel) und bei gedrehten Gesichtern.
-|Gibt Hauptgesichtsattribute (Kopfhaltung, Alter, Stimmung usw.) zurück, wenn sie im Erkennungsaufruf angegeben werden. |  Gibt keine Gesichtsattribute zurück.     | Gibt das Attribut „mask“ zurück, wenn es im Erkennungsaufruf angegeben ist.
-|Gibt Orientierungspunkte im Gesicht zurück, wenn sie im Erkennungsaufruf angegeben werden.   | Gibt keine Orientierungspunkte im Gesicht zurück.  | Gibt keine Orientierungspunkte im Gesicht zurück.
+|Gibt Hauptgesichtsattribute (Kopfhaltung, Alter, Stimmung usw.) zurück, wenn sie im Erkennungsaufruf angegeben werden. |  Gibt keine Gesichtsattribute zurück.     | Gibt die Attribute für Maske und Kopfhaltung zurück, wenn sie im Erkennungsaufruf angegeben wurden.
+|Gibt Orientierungspunkte im Gesicht zurück, wenn sie im Erkennungsaufruf angegeben werden.   | Gibt keine Orientierungspunkte im Gesicht zurück.  | Gibt Orientierungspunkte im Gesicht zurück, wenn sie im Erkennungsaufruf angegeben werden.
 
 Am besten lassen sich die Ergebnisse der Erkennungsmodelle anhand eines Beispieldatasets vergleichen. Es wird empfohlen die API [Face – Detect] unter Verwendung der beiden Erkennungsmodelle für verschiedene Bilder aufzurufen, insbesondere für Bilder mit zahlreichen oder schwer erkennbaren Gesichtern. Achten Sie auf die Anzahl der Gesichter, die jedes Modell zurückgibt.
 

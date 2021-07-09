@@ -368,6 +368,8 @@
           href: sql-data-warehouse-restore-from-geo-backup.md
         - name: Deaktivieren von Geosicherungen
           href: disable-geo-backup.md
+        - name: Konfigurieren der Residenz in einer einzelnen Region
+          href: single-region-residency.md
     - name: Integrieren
       items:
         - name: Verwenden von maschinellem Lernen

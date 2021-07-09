@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: e47f3363a9e09a3e371c751e0bdd1143cfc72314
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 06fc48f8e90a0851613b2fe44410557c89862ac5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864899"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453509"
 ---
 # <a name="get-supported-document-formats"></a>Abrufen unterstützter Dokumentformate
 
@@ -25,7 +25,7 @@ Die Methode „Abrufen unterstützter Dokumentformate“ gibt eine Liste von Dok
 
 Sendet eine `GET`-Anforderung an:
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/documents/formats
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/documents/formats
 ```
 
 Erfahren Sie, wie Sie Ihren [benutzerdefinierten Domänennamen](../get-started-with-document-translation.md#find-your-custom-domain-name)finden.
@@ -59,23 +59,25 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 
-|Name|type|BESCHREIBUNG|
+|Name|Typ|BESCHREIBUNG|
 |--- |--- |--- |
 |value|FileFormat []|File Format [] enthält die unten aufgeführten Details.|
-|value.format|string[]|Unterstützte Inhaltstypen für dieses Format.|
+|value.contentTypes|string[]|Unterstützte Inhaltstypen für dieses Format.|
+|value.defaultVersion|Zeichenfolge|Standardversion, wenn keine angegeben ist.|
 |value.fileExtensions|string[]|Unterstützte Dateierweiterung für dieses Format.|
-|value.contentTypes|string[]|Der Name des Formats.|
-|value.versions|String[]|Unterstützte Version.|
+|value.format|Zeichenfolge|Der Name des Formats.|
+|value.versions|string [] | Unterstützte Version.|
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|type|Beschreibung|
+|Name|Typ|Beschreibung|
 |--- |--- |--- |
  |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
-|innerError|InnerErrorV2|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
+|innerError|InnerTranslationError|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
 |innerError.code|Zeichenfolge|Ruft Code der Fehlerzeichenfolge ab.|
 |innerError.message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
+|innerError.target|Zeichenfolge|Ruft die Ursache des Fehlers ab. Dies wäre z. B. „Dokumente“ oder „Dokument-ID“ im Falle eines ungültigen Dokuments.|
 
 ## <a name="examples"></a>Beispiele
 
@@ -86,78 +88,184 @@ Statuscode: 200
 
 ```JSON
 {
-  "value": [
-    {
-      "format": "PlainText",
-      "fileExtensions": [
-        ".txt"
-      ],
-      "contentTypes": [
-        "text/plain"
-      ],
-      "versions": []
-    },
-    {
-      "format": "PortableDocumentFormat",
-      "fileExtensions": [
-        ".pdf"
-      ],
-      "contentTypes": [
-        "application/pdf"
-      ],
-      "versions": []
-    },
-    {
-      "format": "OpenXmlPresentation",
-      "fileExtensions": [
-        ".pptx"
-      ],
-      "contentTypes": [
-        "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-      ],
-      "versions": []
-    },
-    {
-      "format": "OpenXmlSpreadsheet",
-      "fileExtensions": [
-        ".xlsx"
-      ],
-      "contentTypes": [
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-      ],
-      "versions": []
-    },
-    {
-      "format": "OutlookMailMessage",
-      "fileExtensions": [
-        ".msg"
-      ],
-      "contentTypes": [
-        "application/vnd.ms-outlook"
-      ],
-      "versions": []
-    },
-    {
-      "format": "HtmlFile",
-      "fileExtensions": [
-        ".html"
-      ],
-      "contentTypes": [
-        "text/html"
-      ],
-      "versions": []
-    },
-    {
-      "format": "OpenXmlWord",
-      "fileExtensions": [
-        ".docx"
-      ],
-      "contentTypes": [
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-      ],
-      "versions": []
-    }
-  ]
+    "value": [
+        {
+            "format": "PlainText",
+            "fileExtensions": [
+                ".txt"
+            ],
+            "contentTypes": [
+                "text/plain"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenXmlWord",
+            "fileExtensions": [
+                ".docx"
+            ],
+            "contentTypes": [
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenXmlPresentation",
+            "fileExtensions": [
+                ".pptx"
+            ],
+            "contentTypes": [
+                "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenXmlSpreadsheet",
+            "fileExtensions": [
+                ".xlsx"
+            ],
+            "contentTypes": [
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OutlookMailMessage",
+            "fileExtensions": [
+                ".msg"
+            ],
+            "contentTypes": [
+                "application/vnd.ms-outlook"
+            ],
+            "versions": []
+        },
+        {
+            "format": "HtmlFile",
+            "fileExtensions": [
+                ".html",
+                ".htm"
+            ],
+            "contentTypes": [
+                "text/html"
+            ],
+            "versions": []
+        },
+        {
+            "format": "PortableDocumentFormat",
+            "fileExtensions": [
+                ".pdf"
+            ],
+            "contentTypes": [
+                "application/pdf"
+            ],
+            "versions": []
+        },
+        {
+            "format": "XLIFF",
+            "fileExtensions": [
+                ".xlf"
+            ],
+            "contentTypes": [
+                "application/xliff+xml"
+            ],
+            "versions": [
+                "1.0",
+                "1.1",
+                "1.2"
+            ]
+        },
+        {
+            "format": "TSV",
+            "fileExtensions": [
+                ".tsv",
+                ".tab"
+            ],
+            "contentTypes": [
+                "text/tab-separated-values"
+            ],
+            "versions": []
+        },
+        {
+            "format": "CSV",
+            "fileExtensions": [
+                ".csv"
+            ],
+            "contentTypes": [
+                "text/csv"
+            ],
+            "versions": []
+        },
+        {
+            "format": "RichTextFormat",
+            "fileExtensions": [
+                ".rtf"
+            ],
+            "contentTypes": [
+                "application/rtf"
+            ],
+            "versions": []
+        },
+        {
+            "format": "WordDocument",
+            "fileExtensions": [
+                ".doc"
+            ],
+            "contentTypes": [
+                "application/msword"
+            ],
+            "versions": []
+        },
+        {
+            "format": "PowerpointPresentation",
+            "fileExtensions": [
+                ".ppt"
+            ],
+            "contentTypes": [
+                "application/vnd.ms-powerpoint"
+            ],
+            "versions": []
+        },
+        {
+            "format": "ExcelSpreadsheet",
+            "fileExtensions": [
+                ".xls"
+            ],
+            "contentTypes": [
+                "application/vnd.ms-excel"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenDocumentText",
+            "fileExtensions": [
+                ".odt"
+            ],
+            "contentTypes": [
+                "application/vnd.oasis.opendocument.text"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenDocumentPresentation",
+            "fileExtensions": [
+                ".odp"
+            ],
+            "contentTypes": [
+                "application/vnd.oasis.opendocument.presentation"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenDocumentSpreadsheet",
+            "fileExtensions": [
+                ".ods"
+            ],
+            "contentTypes": [
+                "application/vnd.oasis.opendocument.spreadsheet"
+            ],
+            "versions": []
+        }
+    ]
 }
 ```
 

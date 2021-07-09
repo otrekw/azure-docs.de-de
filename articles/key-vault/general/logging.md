@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5847fcb2cf553e1fcc744877e52dbbdf1f24d992
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: f6d467b2480ded274699e7274edcf745eaa4980a
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751830"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748479"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-Protokollierung
 
@@ -176,8 +176,8 @@ Die folgende Tabelle enthält die **operationName**-Werte und die entsprechenden
 | **CertificateEnroll** |Ein Zertifikat registrieren |
 | **CertificateRenew** |Erneuern eines Zertifikats |
 | **CertificatePendingGet** |Ausstehendes Zertifikat abrufen |
-| **CertificatePendingMerge** |Ausstehende Zertifikatzusammenführung |
-| **CertificatePendingUpdate** |Ausstehende Zertifikataktualisierung |
+| **CertificatePendingMerge** | Die Zusammenführung des Zertifikats steht aus. |
+| **CertificatePendingUpdate** | Das Update des Zertifikats steht aus. |
 | **CertificatePendingDelete** |Ausstehendes Zertifikat löschen |
 | **CertificateNearExpiryEventGridNotification** |Ereignis „Zertifikat läuft demnächst ab“ veröffentlicht |
 | **CertificateExpiredEventGridNotification** |Ereignis „Zertifikat abgelaufen“ veröffentlicht |

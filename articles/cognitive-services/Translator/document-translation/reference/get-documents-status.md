@@ -10,22 +10,24 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 8476c4891cef9d9055b16c7ac574e569ecf5b3f2
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 355e692d6091cee443608c2239173c873bb8e1a5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864862"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453543"
 ---
 # <a name="get-documents-status"></a>Abrufen des Dokumentstatus
 
-Die Methode „Abrufen des Dokumentstatus“ (Get Operation Documents Status) gibt den Status aller Dokumente in einer Dokumentübersetzungs-Batchanforderung zurück.
+Wenn die Anzahl der Dokumente in der Antwort das Paging-Limit überschreitet, wird serverseitiges Paging verwendet. Paging-Antworten geben ein Teilergebnis an und enthalten ein Fortsetzungstoken in der Antwort. Das Fehlen eines Fortsetzungstokens bedeutet, dass keine weiteren Seiten verfügbar sind.
 
-Die in der Antwort enthaltenen Dokumente werden nach Dokument-ID in absteigender Reihenfolge sortiert. Wenn die Anzahl der Dokumente in der Antwort das Paging-Limit überschreitet, wird serverseitiges Paging verwendet. Paging-Antworten geben ein Teilergebnis an und enthalten ein Fortsetzungstoken in der Antwort. Das Fehlen eines Fortsetzungstokens bedeutet, dass keine zusätzlichen Seiten verfügbar sind.
+Die Abfrageparameter $top, $skip und $maxpagesize können verwendet werden, um eine Reihe von Ergebnissen, die zurückgegeben werden sollen, und einen Offset für die Auflistung anzugeben.
 
-$top- und $skip-Abfrageparameter können verwendet werden, um eine Reihe von Ergebnissen, die zurückgegeben werden sollen, und einen Offset für die Auflistung anzugeben. Der Server berücksichtigt die Werte, die vom Client angegeben werden. Allerdings müssen Clients darauf vorbereitet sein, Antworten zu verarbeiten, die eine andere Seitengröße enthalten oder ein Fortsetzungstoken enthalten.
+Mit $top wird die Gesamtzahl der Datensätze angegeben, die der Benutzer über alle Seiten hinweg zurückgegeben haben möchte. Mit $skip wird die Anzahl der Datensätze angegeben, die aus der Liste der Dokumentstatusangaben übersprungen werden sollen, die vom Server basierend auf der angegebenen Sortiermethode bereitgestellt wird. Standardmäßig wird nach absteigender Startzeit sortiert. Mit $maxpagesize wird die maximale Anzahl der Elemente angegeben, die in einer Seite zurückgegeben werden. Wenn über $top weitere Elemente angefordert werden (oder $top nicht angegeben ist und weitere Elemente zurückgegeben werden sollen), enthält @nextLink den Link zur nächsten Seite.
 
-Wenn sowohl $top als auch $skip enthalten sind, sollte der Server zuerst $skip anwenden und dann auf die Sammlung $top.
+Der Abfrageparameter $orderBy kann verwendet werden, um die zurückgegebene Liste zu sortieren (Beispiel: „$orderBy=createdDateTimeUtc asc“ oder „$orderBy=createdDateTimeUtc desc“). Die Standardsortierung ist absteigend nach „createdDateTimeUtc“. Einige Abfrageparameter können verwendet werden, um die zurückgegebene Liste zu filtern (z. B. gibt „status=Succeeded,Cancelled“ nur die erfolgreichen und abgebrochenen Dokumente zurück). „createdDateTimeUtcStart“ und „createdDateTimeUtcEnd“ können kombiniert oder separat verwendet werden, um einen Datumsbereich anzugeben, nach dem die zurückgegebene Liste gefiltert wird. Die unterstützten Filterabfrageparameter sind (status, IDs, createdDateTimeUtcStart, createdDateTimeUtcEnd).
+
+Wenn sowohl $top als auch $skip enthalten sind, sollte der Server zuerst $skip anwenden und dann auf die Sammlung $top. 
 
 > [!NOTE]
 > Wenn der Server $top und/oder $skip nicht berücksichtigt, muss der Server einen Fehler an den Client zurückgeben, der darüber informiert, anstatt nur die Abfrageoptionen zu ignorieren. Dadurch wird das Risiko verringert, dass der Client Annahmen über die zurückgegebenen Daten vornimmt.
@@ -34,7 +36,7 @@ Wenn sowohl $top als auch $skip enthalten sind, sollte der Server zuerst $skip a
 
 Sendet eine `GET`-Anforderung an:
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}/documents
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches/{id}/documents
 ```
 
 Erfahren Sie, wie Sie Ihren [benutzerdefinierten Domänennamen](../get-started-with-document-translation.md#find-your-custom-domain-name)finden.
@@ -48,11 +50,17 @@ Erfahren Sie, wie Sie Ihren [benutzerdefinierten Domänennamen](../get-started-w
 
 Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
 
-|Query parameter (Abfrageparameter)|Erforderlich|BESCHREIBUNG|
-|--- |--- |--- |
-|id|Richtig|Vorgangs-ID.|
-|$skip|Falsch|Überspringt die $skip-Einträge in der Auflistung. Wenn sowohl $top als auch $skip bereitgestellt werden, wird $skip zuerst angewendet.|
-|$top|Falsch|Nimmt die $to- Einträge in die Auflistung auf. Wenn sowohl $top als auch $skip bereitgestellt werden, wird $skip zuerst angewendet.|
+|Query parameter (Abfrageparameter)|Geben Sie in|Erforderlich|Typ|BESCHREIBUNG|
+|--- |--- |--- |--- |--- |
+|id|path|True|Zeichenfolge|Vorgangs-ID.|
+|$maxpagesize|Abfrage|False|integer int32|Mit $maxpagesize wird die maximale Anzahl der Elemente angegeben, die in einer Seite zurückgegeben werden. Wenn über $top weitere Elemente angefordert werden (oder $top nicht angegeben ist und weitere Elemente zurückgegeben werden sollen), enthält @nextLink den Link zur nächsten Seite. Clients KÖNNEN servergesteuertes Paging mit einer bestimmten Seitengröße anfordern, indem sie eine $maxpagesize-Einstellung angeben. Der Server SOLLTE diese Einstellung berücksichtigen, wenn die angegebene Seitengröße kleiner als die Standardseitengröße des Servers ist.|
+|$orderBy|Abfrage|False|array|Die Sortierabfrage für die Auflistung (Beispiel: „CreatedDateTimeUtc asc“, „CreatedDateTimeUtc desc“).|
+|$skip|Abfrage|False|integer int32|Mit $skip wird die Anzahl der Datensätze angegeben, die aus der Liste der Datensätze übersprungen werden sollen, die vom Server basierend auf der angegebenen Sortiermethode bereitgestellt wird. Standardmäßig wird nach absteigender Startzeit sortiert. Clients KÖNNEN $top- und $skip-Abfrageparameter verwenden, um eine Reihe von Ergebnissen, die zurückgegeben werden sollen, und einen Offset für die Auflistung anzugeben. Wenn sowohl $top als auch $skip vom Client angegeben werden, SOLLTE der Server zuerst $skip und dann $top auf die Auflistung anwenden. Hinweis: Wenn der Server $top und/oder $skip nicht berücksichtigt, MUSS der Server einen Fehler an den Client zurückgeben, der darüber informiert, anstatt nur die Abfrageoptionen zu ignorieren.|
+|$top|Abfrage|False|integer int32|Mit $top wird die Gesamtzahl der Datensätze angegeben, die der Benutzer über alle Seiten hinweg zurückgegeben haben möchte. Clients KÖNNEN $top- und $skip-Abfrageparameter verwenden, um eine Reihe von Ergebnissen, die zurückgegeben werden sollen, und einen Offset für die Auflistung anzugeben. Wenn sowohl $top als auch $skip vom Client angegeben werden, SOLLTE der Server zuerst $skip und dann $top auf die Auflistung anwenden. Hinweis: Wenn der Server $top und/oder $skip nicht berücksichtigt, MUSS der Server einen Fehler an den Client zurückgeben, der darüber informiert, anstatt nur die Abfrageoptionen zu ignorieren.|
+|createdDateTimeUtcEnd|Abfrage|False|string Datum/Uhrzeit|Der Endzeitpunkt (Datum/Uhrzeit), vor dem Elemente abgerufen werden sollen.|
+|createdDateTimeUtcStart|Abfrage|False|string Datum/Uhrzeit|Der Startzeitpunkt (Datum/Uhrzeit), nach dem Elemente abgerufen werden sollen.|
+|ids|Abfrage|False|array|IDs, die beim Filtern verwendet werden.|
+|statuses|Abfrage|False|array|Statusangaben, die beim Filtern verwendet werden.|
 
 ## <a name="request-headers"></a>Anforderungsheader
 
@@ -82,29 +90,31 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 
-|Name|type|BESCHREIBUNG|
+|Name|Typ|Beschreibung|
 |--- |--- |--- |
 |@nextLink|Zeichenfolge|Die URL für die nächste Seite. Null, wenn keine weiteren Seiten verfügbar sind.|
-|Wert|DocumentStatusDetail []|Der detaillierte Status der einzelnen unten aufgeführten Dokumente.|
+|Wert|DocumentStatus []|Der detaillierte Status der einzelnen unten aufgeführten Dokumente.|
 |value.path|Zeichenfolge|Speicherort des Dokuments oder des Ordners.|
+|value.sourcePath|Zeichenfolge|Speicherort des Quelldokuments.|
 |value.createdDateTimeUtc|Zeichenfolge|Das Datum und die Uhrzeit des Vorgangs.|
-|value.lastActionDateTimeUt|Zeichenfolge|Datum und Uhrzeit, zu der der Status des Vorgangs aktualisiert wurde.|
+|value.lastActionDateTimeUtc|Zeichenfolge|Datum und Uhrzeit, zu der der Status des Vorgangs aktualisiert wurde.|
 |value.status|status|Liste möglicher Status für Auftrag oder Dokument:<ul><li>Canceled</li><li>Wird abgebrochen</li><li>Fehler</li><li>NotStarted</li><li>Wird ausgeführt</li><li>Erfolgreich</li><li>ValidationFailed</li></ul>|
 |value.to|Zeichenfolge|In Sprache.|
-|value.progress|Zeichenfolge|Der Fortschritt der Übersetzung, falls verfügbar.|
+|value.progress|number|Der Fortschritt der Übersetzung, falls verfügbar.|
 |value.id|Zeichenfolge|Dokument-ID|
 |value.characterCharged|integer|Zeichen, die von der API abgerechnet werden.|
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|type|BESCHREIBUNG|
+|Name|Typ|Beschreibung|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
 |target|Zeichenfolge|Ruft die Ursache des Fehlers ab. Dies wäre z. B. „Dokumente“ oder „Dokument-ID“ im Falle eines ungültigen Dokuments.|
-|innerError|InnerErrorV2|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
+|innerError|InnerTranslationError|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
 |innerError.code|Zeichenfolge|Ruft Code der Fehlerzeichenfolge ab.|
 |innerError.message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
+|innerError.target|Zeichenfolge|Ruft die Ursache des Fehlers ab. Dies wäre z. B. „Dokumente“ oder „Dokument-ID“, falls ein ungültiges Dokument vorliegt.|
 
 ## <a name="examples"></a>Beispiele
 
@@ -117,6 +127,7 @@ Das ist ein Beispiel für eine erfolgreiche Antwort.
   "value": [
     {
       "path": "https://myblob.blob.core.windows.net/destinationContainer/fr/mydoc.txt",
+      "sourcePath": "https://myblob.blob.core.windows.net/sourceContainer/fr/mydoc.txt",
       "createdDateTimeUtc": "2020-03-26T00:00:00Z",
       "lastActionDateTimeUtc": "2020-03-26T01:00:00Z",
       "status": "Running",
@@ -126,7 +137,7 @@ Das ist ein Beispiel für eine erfolgreiche Antwort.
       "characterCharged": 0
     }
   ],
-  "@nextLink": "https://westus.cognitiveservices.azure.com/translator/text/batch/v1.0.preview.1/operation/0FA2822F-4C2A-4317-9C20-658C801E0E55/documents?$top=5&$skip=15"
+  "@nextLink": "https://westus.cognitiveservices.azure.com/translator/text/batch/v1.0/operation/0FA2822F-4C2A-4317-9C20-658C801E0E55/documents?$top=5&$skip=15"
 }
 ```
 

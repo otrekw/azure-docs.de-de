@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 3/22/2021
+ms.date: 06/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 4c0d4dd1a834e42a75da5199b7aaed0e123f8e63
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: dc9b5b3fae714319e48bcdfe1b2ce8a684a03854
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104879656"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111594004"
 ---
 [Referenzdokumentation](/java/api/com.microsoft.azure.management.cognitiveservices) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18) | [Paket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
@@ -22,6 +22,7 @@ ms.locfileid: "104879656"
 * Ein gültiges Azure-Abonnement: [Erstellen Sie ein kostenloses Abonnement](https://azure.microsoft.com/free/).
 * Aktuelle Version des [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle-Buildtool](https://gradle.org/install/) oder einen anderen Abhängigkeit-Manager
+* [!INCLUDE [terms-azure-portal](./terms-azure-portal.md)]
 
 
 [!INCLUDE [Create a service principal](./create-service-principal.md)]
@@ -122,6 +123,8 @@ Die folgende Methode löscht die angegebene Ressource aus der jeweiligen Ressour
 
 [!code-java[](~/cognitive-services-quickstart-code/java/azure_management_service/quickstart.java?name=snippet_delete)]
 
+Wenn Sie eine gelöschte Ressource wiederherstellen müssen, finden Sie weitere Informationen unter [Wiederherstellen gelöschter Cognitive Services-Ressourcen](../../manage-resources.md).
+
 ## <a name="see-also"></a>Siehe auch
 
 * Informationen zum sicheren Arbeiten mit Cognitive Services finden Sie unter **[Authentifizieren von Anforderungen an Azure Cognitive Services](../../authentication.md)** .
@@ -129,4 +132,4 @@ Die folgende Methode löscht die angegebene Ressource aus der jeweiligen Ressour
 * Eine Liste der natürlichen Sprachen, die von Cognitive Services unterstützt werden, finden Sie unter **[Unterstützung für natürliche Sprachen in Azure Cognitive Services](../../language-support.md)** .
 * Informationen zur lokalen Verwendung von Cognitive Services finden Sie unter **[Azure Cognitive Services-Container](../../cognitive-services-container-support.md)** .
 * Informationen zum Schätzen der Kosten für die Verwendung von Cognitive Services finden Sie unter **[Planen und Verwalten von Kosten für Azure Cognitive Services](../../plan-manage-costs.md)** .
-* Siehe **[ Referenzdokumentation zum Azure Management SDK](/java/api/com.microsoft.azure.management.cognitiveservices)** für weitere Details zum Management SDK.
+* Weitere Informationen zum Management SDK finden Sie in der **[Azure-Verwaltungs-SDK-Referenz Dokumentation](/java/api/com.microsoft.azure.management.cognitiveservices)** .

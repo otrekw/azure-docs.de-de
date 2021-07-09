@@ -8,20 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/17/2021
+ms.date: 06/03/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 21f072747c9184fa15fd7e3477c0b4009cd885fc
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 63063ef205b456c368cec2d5c1a8ce1f456aaa59
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376236"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756471"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
 Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu neuen Releases und Funktionen.
 
+## <a name="june-2021"></a>Juni 2021
+
+### <a name="general-api-updates"></a>Allgemeine API-Updates
+
+* Neue Modellversion `2021-06-01` für die Schlüsselbegriffserkennung, die Unterstützung für vereinfachtes Chinesisch hinzufügt.
+* Die `2021-06-01`-Modellversion für die [Erkennung benannter Entitäten](how-tos/text-analytics-how-to-entity-linking.md), Version 3.x bietet Folgendes: 
+  * Verbesserte KI-Qualität und erweiterte Sprachunterstützung für die *Skill*-Entitätskategorie. 
+  * Unterstützung der Sprachen „Spanisch“, „Französisch“, „Deutsch“, „Italienisch“ und „Portugiesisch“ für die *Skill*-Entitätskategorie hinzugefügt.
+* Asynchroner Vorgang und Textanalyse für Gesundheit sind in allen Regionen verfügbar 
+
+### <a name="text-analytics-for-health-updates"></a>Updates von Text Analytics for Health
+
+* Sie müssen den Zugriff auf die Vorschauversion der Textanalyse für Gesundheit nicht mehr beantragen.
+* Die neue Modellversion `2021-05-15` für den `/health`-Endpunkt und den lokalen Container mit folgenden Neuerungen:
+    * Fünf neue Entitätstypen: `ALLERGEN`, `CONDITION_SCALE`, `COURSE`, `EXPRESSION` und `MUTATION_TYPE`
+    * 14 neue Beziehungstypen
+    * Die Assertionserkennung wurde für neue Entitätstypen erweitert und
+    * Verknüpfungsunterstützung für den ALLERGEN-Entitätstyp
+
+ 
 ## <a name="may-2021"></a>Mai 2021
 
 * Der Zugriff auf [benutzerdefinierte Fragen und Antworten](../qnamaker/custom-question-answering.md) (ehemals QnA Maker) ist jetzt über eine Textanalyse-Ressource möglich. 

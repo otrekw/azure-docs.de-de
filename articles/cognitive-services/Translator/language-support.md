@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: a195567117378a118b9bea8d15a7cb0a661d284a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9bfb125a9906c89fb7c607ce241a9b7696b805bc
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303524"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537609"
 ---
-# <a name="language-and-region-support-for-text-and-speech-translation"></a>Sprach- und Regionsunterstützung für Text- und Sprachübersetzung
+# <a name="language-support-for-text-and-speech-translation"></a>Sprachunterstützung für Text- und Sprachübersetzung
 
 Verwenden Sie den Übersetzer zum Übersetzen in jede und aus jeder der über 90 Textübersetzungssprachen und -dialekte. Die neuronale maschinelle Übersetzung (Neural Machine Translation, NMT) ist der neue Standard für qualitativ hochwertige, auf künstlicher Intelligenz basierende maschinelle Übersetzungen und steht standardmäßig in V3 von Translator zur Verfügung, wenn ein neuronales System verfügbar ist.
 
@@ -129,6 +129,9 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 
 > [!NOTE]
 > Der Sprachcode `pt` wird standardmäßig auf `pt-br`, Portugiesisch (Brasilien), festgelegt.
+
+> [!NOTE]
+> Die folgenden Sprachen sind derzeit nicht in Containern verfügbar: Samoanisch, Tahitisch, Klingonisch, Klingonisch (plqaD) und Thailändisch.
 
 ### <a name="detect"></a>Detect
 

@@ -1,23 +1,24 @@
 ---
-title: Verwenden privater Endpunkte mit Speech-Diensten
+title: Verwenden privater Endpunkte mit dem Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie Speech-Dienste mit privaten Endpunkten verwenden, die durch Azure Private Link bereitgestellt werden
+description: Erfahren Sie, wie Sie den Speech-Dienst mit privaten Endpunkten verwenden, die durch einen Azure Private Link bereitgestellt werden
 services: cognitive-services
 author: alexeyo26
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 04/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 6971c6f0959135c7de1f41bcd49adde514f87941
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d5de7ed4536ce7c83de4cc1e9a2d886015188e20
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625482"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695347"
 ---
-# <a name="use-speech-services-through-a-private-endpoint"></a>Verwenden von Speech-Diensten über einen privaten Endpunkt
+# <a name="use-speech-service-through-a-private-endpoint"></a>Verwenden des Speech-Diensts mithilfe eines privaten Endpunkts
 
 Mithilfe von [Azure Private Link](../../private-link/private-link-overview.md) können Sie Verbindungen mit Diensten in Azure über einen [privaten Endpunkt](../../private-link/private-endpoint-overview.md) herstellen. Ein privater Endpunkt ist eine private IP-Adresse, die nur in einem bestimmten [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) und Subnetz zugänglich ist.
 
@@ -29,14 +30,22 @@ In diesem Artikel wird außerdem erläutert, wie Sie private Endpunkte später e
 
 
 
+Für die Einrichtung einer Speech-Ressource für Szenarien mit privaten Endpunkten sind folgende Tasks erforderlich:
+1. [Erstellen eines benutzerdefinierten Domänennamens](#create-a-custom-domain-name)
+1. [Aktivieren privater Endpunkte](#turn-on-private-endpoints)
+1. [Anpassen vorhandener Anwendungen und Lösungen](#adjust-an-application-to-use-a-speech-resource-with-a-private-endpoint)
+
+[!INCLUDE [](includes/speech-vnet-service-enpoints-private-endpoints.md)]
+
+In diesem Artikel wird die Verwendung der privaten Endpunkte mit dem Speech-Dienst beschrieben. Die Verwendung der VNet-Dienstendpunkte wird [hier](speech-service-vnet-service-endpoint.md) beschrieben.
+
+
 ## <a name="create-a-custom-domain-name"></a>Erstellen eines benutzerdefinierten Domänennamens
 
 Für private Endpunkte ist ein [benutzerdefinierter Unterdomänenname für Cognitive Services](../cognitive-services-custom-subdomains.md) erforderlich. Mithilfe der folgenden Anweisungen können Sie einen solchen für Ihre Speech-Ressource erstellen.
 
 > [!WARNING]
-> Eine Speech-Ressource, die einen benutzerdefinierten Domänennamen verwendet, interagiert mit Sprachdiensten auf andere Weise.
-> Möglicherweise müssen Sie Ihren Anwendungscode so anpassen, dass er eine Speech-Ressource mit einem privaten Endpunkt verwendet oder auch eine Sprachressource _ohne_ privaten Endpunkt verwendet.
-> Beide Szenarien sind möglicherweise erforderlich, da der Wechsel zum benutzerdefinierten Domänennamen _nicht_ rückgängig gemacht werden kann.
+> Eine Speech-Ressource mit aktiviertem benutzerdefinierten Domänennamen interagiert auf andere Weise mit dem Speech-Dienst. Sie müssen Ihren Anwendungscode für die beiden folgenden Szenarien anpassen: [mit privatem Endpunkt](#adjust-an-application-to-use-a-speech-resource-with-a-private-endpoint) und [*ohne* privaten Endpunkt](#adjust-an-application-to-use-a-speech-resource-without-private-endpoints).
 >
 > Wenn Sie einen benutzerdefinierten Domänennamen aktivieren, kann der Vorgang [nicht rückgängig gemacht werden](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name). Sie können den [regionalen Namen](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) nur wiederherstellen, indem Sie eine neue Speech-Ressource erstellen.
 >
@@ -292,7 +301,7 @@ Eine Speech-Ressource, für die ein benutzerdefinierter Domänennamen und ein pr
 
 In diesem Abschnitt wird `my-private-link-speech.cognitiveservices.azure.com` als DNS-Beispielname (benutzerdefinierte Domäne) für die Speech-Ressource verwendet.
 
-Die Speech-Dienste beinhalten REST-APIs für die [Spracherkennung](rest-speech-to-text.md) und die [Sprachsynthese](rest-text-to-speech.md). Bei Szenarios mit aktivierten privaten Endpunkten muss Folgendes berücksichtigt werden:
+Der Speech-Dienst umfasst REST-APIs für die [Spracherkennung](rest-speech-to-text.md) und die [Sprachsynthese](rest-text-to-speech.md). Bei Szenarios mit aktivierten privaten Endpunkten muss Folgendes berücksichtigt werden:
 
 Für die Spracherkennung gibt es zwei REST-APIs. Jede API dient einem anderen Zweck, verwendet unterschiedliche Endpunkte und erfordert einen anderen Ansatz, wenn sie in einem Szenario mit aktivierten privaten Endpunkten verwendet wird.
 
@@ -401,7 +410,7 @@ Die möglichen Werte für die Region (erstes Element des DNS-Namens) werden [hie
 
 Das obige Beispiel (`westeurope.stt.speech.microsoft.com`) steht also für den Spracherkennungs-Endpunkt in der Region „Europa, Westen“.
 
-Für private Endpunkte aktivierte Endpunkte kommunizieren mit Speech-Diensten über einen speziellen Proxy. Daher *müssen Sie die Endpunktverbindungs-URLs ändern*. 
+Für private Endpunkte aktivierte Endpunkte kommunizieren mit dem Speech-Dienst über einen speziellen Proxy. Daher *müssen Sie die Endpunktverbindungs-URLs ändern*. 
 
 Eine URL für einen „Standardendpunkt“ sieht wie folgt aus: <p/>`{region}.{speech service offering}.speech.microsoft.com/{URL path}`
 
@@ -502,7 +511,7 @@ Nachdem Sie diese Änderung vorgenommen haben, sollte Ihre Anwendung mit Speech-
 
 ## <a name="adjust-an-application-to-use-a-speech-resource-without-private-endpoints"></a>Anpassen einer Anwendung für die Verwendung einer Speech-Ressource ohne einen privaten Endpunkt
 
-In diesem Artikel wurde bereits mehrfach darauf hingewiesen, dass das Aktivieren einer benutzerdefinierten Domäne für eine Speech-Ressource *nicht* rückgängig gemacht werden kann. Eine solche Ressource kommuniziert im Vergleich zu Ressourcen mit [regionalen Endpunktnamen](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) auf andere Weise mit Speech-Diensten.
+In diesem Artikel wurde bereits mehrfach darauf hingewiesen, dass das Aktivieren einer benutzerdefinierten Domäne für eine Speech-Ressource *nicht* rückgängig gemacht werden kann. Eine solche Ressource kommuniziert im Vergleich zu Ressourcen mit [regionalen Endpunktnamen](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) auf andere Weise mit dem Speech-Dienst.
 
 In diesem Abschnitt wird erläutert, wie Sie eine Speech-Ressource mit einem benutzerdefinierten Domänennamen, aber *ohne* private Endpunkte, mit den Speech-REST-APIs und dem [Speech-SDK](speech-sdk.md) verwenden. Dabei kann es sich um eine Ressource handeln, die in einem Szenario mit privaten Endpunkten eingesetzt wurde, deren private Endpunkte jedoch gelöscht wurden.
 
@@ -561,13 +570,17 @@ Sie müssen ein Rollback Ihrer Anwendung auf die Standardinstanziierung von `Spe
 var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
 ```
 
+[!INCLUDE [](includes/speech-vnet-service-enpoints-private-endpoints-simultaneously.md)]
+
 ## <a name="pricing"></a>Preise
 
 Ausführliche Preisinformationen finden Sie unter [Azure Private Link – Preise](https://azure.microsoft.com/pricing/details/private-link).
 
 ## <a name="learn-more"></a>Weitere Informationen
 
+* [Verwenden des Speech-Diensts über einen VNET-Dienstendpunkt](speech-service-vnet-service-endpoint.md)
 * [Azure Private Link](../../private-link/private-link-overview.md)
+* [Azure VNet-Dienstendpunkt](../../virtual-network/virtual-network-service-endpoints-overview.md)
 * [Speech SDK](speech-sdk.md)
 * [Spracherkennungs-REST-API](rest-speech-to-text.md)
 * [Text-to-Speech-REST-API](rest-text-to-speech.md)

@@ -1,47 +1,222 @@
 ---
-title: 'Verwenden von Erstellungs- und Laufzeitschlüsseln: LUIS'
-description: Wenn Sie LUIS zum ersten Mal verwenden, müssen Sie keinen Erstellungsschlüssel erstellen. Wenn Sie die App veröffentlichen möchten und dann Ihren Laufzeitendpunkt verwenden, müssen Sie den Laufzeitschlüssel erstellen und ihn der App zuweisen.
+title: Erstellen und Verwalten von LUIS-Ressourcen
+titleSuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie Azure-Ressourcen für die LUIS-App verwenden und verwalten.
 services: cognitive-services
+author: aahill
+ms.author: aahi
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 09/07/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 168833ea0a451913f4ed019cba832a16207e0d9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: 60e5d37f57d6a87d9190650f044a1ffc991e60fb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99988160"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110096017"
 ---
-# <a name="create-luis-resources"></a>Erstellen von LUIS-Ressourcen
+# <a name="how-to-create-and-manage-luis-resources"></a>Erstellen und Verwalten von LUIS-Ressourcen
 
-Erstellungs- und Abfragevorhersagelaufzeit-Ressourcen ermöglichen die Authentifizierung bei Ihrer LUIS-App (Language Understanding) und bei Ihrem Vorhersageendpunkt.
+In diesem Artikel erfahren Sie mehr über die Typen von Azure-Ressourcen, die Sie mit LUIS verwenden können, und wie Sie sie verwalten.
 
-<a name="azure-resources-for-luis"></a>
-<a name="programmatic-key" ></a>
-<a name="endpoint-key"></a>
-<a name="authoring-key"></a>
+## <a name="authoring-resource"></a>Erstellungsressource
 
-## <a name="luis-resources"></a>LUIS-Ressourcen
+Mit einer Erstellungsressource können Sie Ihre Anwendungen erstellen, verwalten, trainieren, testen und veröffentlichen. Für die LUIS-Erstellungsressource ist ein [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) verfügbar, der Tarif „Free“ (F0), der Folgendes bietet:
 
-LUIS lässt drei Arten von Azure-Ressourcen sowie eine Azure-fremde Ressource zu:
+* 1 Million Erstellungstransaktionen 
+* 1\.000 Testanforderungen für den Vorhersageendpunkt pro Monat.
 
-|Resource|Zweck|Cognitive Service `kind`|Cognitive Service `type`|
-|--|--|--|--|
-|Erstellungsressource|Ermöglicht Ihnen das Erstellen, Verwalten, Trainieren, Testen und Veröffentlichen von Anwendungen. [Erstellen Sie eine LUIS-Erstellungsressource](luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal), wenn Sie LUIS-Apps programmgesteuert oder über das LUIS-Portal erstellen möchten. Sie müssen [Ihr LUIS-Konto migrieren](luis-migration-authoring.md#what-is-migration), bevor Sie Ihre Azure-Erstellungsressourcen mit der Anwendung verknüpfen. Sie können die Berechtigungen für die Erstellungsressource steuern, indem Sie Personen [die Rolle „Mitwirkender“](#contributions-from-other-authors) zuweisen. <br><br> Für die LUIS-Erstellungsressource ist ein Tarif verfügbar:<br> <ul> <li>Die **Erstellungsressource „Free F0“** , die Ihnen monatlich 1 Million kostenlose Erstellungstransaktionen und 1.000 kostenlose Testanforderungen für den Vorhersageendpunkt bietet. |`LUIS.Authoring`|`Cognitive Services`|
-|Vorhersageressource| Nachdem Sie die LUIS-Anwendung veröffentlicht haben, verwenden Sie die Vorhersageressource/den Vorhersageschlüssel, um Anforderungen für den Vorhersageendpunkt abzufragen. Erstellen Sie eine LUIS-Vorhersageressource, bevor Ihre Client-App Vorhersagen über die 1.000 Anforderungen hinaus anfordert, die durch die Erstellungs- oder Startressource zur Verfügung gestellt werden. <br><br> Für die Vorhersageressource sind zwei Tarife verfügbar:<br><ul> <li> Die **F0-Vorhersageressource „Free“** , die Ihnen monatlich 10.000 kostenlose Anforderungen für den Vorhersageendpunkt bietet.<br> <li> Die **S0-Vorhersageressource „Standard“** , die der kostenpflichtige Tarif ist. [Weitere Informationen zu Preisen](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
-|Start-/Testressource|Ermöglicht Ihnen das Erstellen, Verwalten, Trainieren, Testen und Veröffentlichen von Anwendungen. Diese Ressource wird standardmäßig erstellt, wenn Sie bei der ersten Anmeldung bei LUIS die Option „Startressource“ auswählen. Der Startschlüssel wird schließlich veraltet sein. Alle LUIS-Benutzer müssen [ihre Konten migrieren](luis-migration-authoring.md#what-is-migration) und ihre LUIS-Anwendungen mit einer Erstellungsressource verknüpfen. Im Gegensatz zur Erstellungsressource erhalten Sie mit dieser Ressource keine Berechtigungen für die rollenbasierte Zugriffssteuerung in Azure. <br><br> Wie die Erstellungsressource bietet Ihnen die Startressource 1 Million kostenlose Erstellungstransaktionen und 1.000 kostenlose Testanforderungen für den Vorhersageendpunkt.|-|Keine Azure-Ressource|
-|[Cognitive Services-Ressourcenschlüssel für mehrere Dienste](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Anforderungen von Abfragevorhersageendpunkten, die mit LUIS und anderen unterstützten Cognitive Services geteilt werden.|`CognitiveServices`|`Cognitive Services`|
+Sie können die [programmgesteuerten LUIS-APIs (v3.0-preview)](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f) verwenden, um Erstellungsressourcen zu verwalten. 
 
+## <a name="prediction-resource"></a>Vorhersageressource
+
+Mit einer Vorhersageressource können Sie Ihren Vorhersageendpunkt über die von der Erstellungsressource bereitgestellten 1.000 Anforderungen hinaus abfragen. Für die Vorhersageressource sind zwei [Tarife](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) verfügbar:
+
+* Die Vorhersageressource „Free“ (F0), die Ihnen monatlich 10.000 Anforderungen für den Vorhersageendpunkt bietet.
+* Die Vorhersageressource „Standard“ (S0), die der kostenpflichtige Tarif ist. 
+
+Sie können die [LUIS-Endpunkt-API (v3.0-preview)](https://westus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5f68f4d40a511ce5a7440859) verwenden, um Vorhersageressourcen zu verwalten.
 
 > [!Note]
-> LUIS bietet zwei Arten von F0-Ressourcen (kostenloser Tarif): eine für Erstellungstransaktionen und eine für Vorhersagetransaktionen. Wenn das Kontingent kostenloser Vorhersagetransaktionen erschöpft ist, stellen Sie sicher, dass Sie die F0-Vorhersageressource verwenden, die Ihnen monatlich 10.000 kostenlose Transaktionen bietet, und nicht die Erstellungsressource, die Ihnen monatlich 1.000 Vorhersagetransaktionen bietet.
+> * Sie können auch eine [Ressource mit mehreren Diensten](../cognitive-services-apis-create-account-cli.md?tabs=multiservice) verwenden, um einen einzelnen Endpunkt abzurufen, den Sie für mehrere Cognitive Services verwenden können.
+> * LUIS bietet zwei Arten von F0-Ressourcen (kostenloser Tarif): eine für Erstellungstransaktionen und eine für Vorhersagetransaktionen. Wenn das Kontingent kostenloser Vorhersagetransaktionen erschöpft ist, stellen Sie sicher, dass Sie die F0-Vorhersageressource verwenden, die Ihnen monatlich 10.000 kostenlose Transaktionen bietet, und nicht die Erstellungsressource, die Ihnen monatlich 1.000 Vorhersagetransaktionen bietet.
+> * Sie sollten LUIS-Apps in den [Regionen](luis-reference-regions.md#publishing-regions) erstellen, in denen sie veröffentlicht und abgefragt werden sollen.
 
-Nach Abschluss der Azure-Ressourcenerstellung können Sie der App im LUIS-Portal die [Ressource zuweisen](#assign-a-resource-to-an-app).
+## <a name="create-luis-resources"></a>Erstellen von LUIS-Ressourcen
 
-> [!important]
-> Sie sollten LUIS-Apps in den [Regionen](luis-reference-regions.md#publishing-regions) erstellen, in denen sie veröffentlicht und abgefragt werden sollen.
+Zum Erstellen von LUIS-Ressourcen können Sie das LUIS-Portal, das [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) oder die Azure CLI verwenden. Nachdem Sie Ihre Ressourcen erstellt haben, müssen Sie sie Ihren Apps zuweisen, damit sie von diesen verwendet werden können.
+
+# <a name="luis-portal"></a>[LUIS-Portal](#tab/portal)
+
+### <a name="create-a-luis-authoring-resource-using-the-luis-portal"></a>Erstellen einer LUIS-Erstellungsressource über das LUIS-Portal
+
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, wählen Sie Ihr Land bzw. Ihre Region aus, und stimmen Sie den Nutzungsbedingungen zu. Wenn der Abschnitt **Meine Apps** im Portal angezeigt wird, ist bereits eine LUIS-Ressource vorhanden, und Sie können den nächsten Schritt überspringen.
+
+2. Suchen Sie im angezeigten Fenster zum Auswählen einer Erstellungsressource nach Ihrem Azure-Abonnement und der LUIS-Erstellungsressource. Wenn keine Ressource vorhanden ist, können Sie eine neue erstellen.
+
+    :::image type="content" source="./media/luis-how-to-azure-subscription/choose-authoring-resource.png" alt-text="Typ der Language Understanding-Erstellungsressource auswählen":::
+    
+    Geben Sie beim Erstellen einer neuen Erstellungsressource die folgenden Informationen an:
+    * **Mandantenname**: Der Mandant, dem Ihr Azure-Abonnement zugeordnet ist.
+    * **Azure-Abonnementname**: Das Abonnement, unter dem die Ressource abgerechnet wird.
+    * **Name der Azure-Ressourcengruppe**: Ein benutzerdefinierter Ressourcengruppenname, den Sie auswählen oder erstellen. Mit Ressourcengruppen können Sie Azure-Ressourcen für den Zugriff und die Verwaltung gruppieren.
+    * **Azure-Ressourcenname**: Ein von Ihnen gewählter benutzerdefinierter Name, der als Teil der URL für Ihre Abfragen für Erstellungs- und Vorhersageendpunkte verwendet wird.
+    * **Tarif**: Der Tarif bestimmt die maximale Anzahl von Transaktionen pro Sekunde und Monat.
+
+### <a name="create-a-luis-prediction-resource-using-the-luis-portal"></a>Erstellen einer LUIS-Vorhersageressource über das LUIS-Portal
+
+[!INCLUDE [Create LUIS Prediction resource in LUIS portal](./includes/add-prediction-resource-portal.md)]
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
+
+### <a name="create-luis-resources-in-the-azure-cli"></a>Erstellen von LUIS-Ressourcen über die Azure CLI
+
+Verwenden Sie die [Azure CLI](/cli/azure/install-azure-cli), um die einzelnen Ressourcen individuell zu erstellen.
+
+> [!TIP]
+> * Die Erstellungsressource `kind` ist `LUIS.Authoring`.  
+> * Die Vorhersageressource `kind` ist `LUIS`. 
+
+1. Melden Sie sich bei der Azure CLI an:
+
+    ```azurecli
+    az login
+    ```
+
+    Dieser Befehl öffnet einen Browser, in dem Sie das richtige Konto auswählen und die Authentifizierung bereitstellen können.
+
+2. Erstellen Sie eine LUIS-Erstellungsressource der Art `LUIS.Authoring` namens `my-luis-authoring-resource`. Erstellen Sie sie in der _vorhandenen_ Ressourcengruppe namens `my-resource-group` für die Region `westus`.
+
+    ```azurecli
+    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
+    ```
+
+3. Erstellen Sie eine LUIS-Vorhersageendpunkt-Ressource der Art `LUIS` namens `my-luis-prediction-resource`. Erstellen Sie sie in der _vorhandenen_ Ressourcengruppe namens `my-resource-group` für die Region `westus`. Wenn Sie einen höheren Durchsatz als für den Free-Tarif wünschen, ändern Sie `F0` in `S0`. [Weitere Informationen zu Tarifen und Durchsatz.](luis-limits.md#key-limits)
+
+    ```azurecli
+    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
+    ```
+
+---
+
+
+## <a name="assign-luis-resources"></a>Zuweisen von LUIS-Ressourcen
+
+Das Erstellen einer Ressource bedeutet nicht unbedingt, dass sie auch verwendet wird. Sie müssen sie Ihren Apps zuweisen. Sie können eine Erstellungsressource für eine einzelne App oder für alle Apps in LUIS zuweisen.
+
+# <a name="luis-portal"></a>[LUIS-Portal](#tab/portal)
+
+### <a name="assign-resources-using-the-luis-portal"></a>Zuweisen von Ressourcen über das LUIS-Portal
+
+**Zuweisen einer Erstellungsressource zu allen Ihren Apps** 
+
+ In der folgenden Vorgehensweise wird die Erstellungsressource allen Apps zugewiesen.
+
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an.
+1. Wählen Sie oben rechts Ihr Benutzerkonto und dann in der Liste **Einstellungen** aus.
+1. Wählen Sie auf der Seite **Benutzereinstellungen** die Option **Erstellungsressource hinzufügen** aus, und wählen Sie dann eine vorhandene Erstellungsressource aus. Wählen Sie **Speichern** aus.
+
+**Zuweisen einer Ressource zu einer bestimmten App**
+
+In der folgenden Vorgehensweise wird einer bestimmten App eine Ressource zugewiesen.
+
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an. Wählen Sie in der Liste **Meine Apps** eine App aus.
+1. Wechseln Sie zu **Verwalten** > **Azure-Ressourcen**:
+
+    :::image type="content" source="./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png" alt-text="Typ der Language Understanding-Vorhersageressource auswählen" lightbox="./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png":::
+
+1. Wählen Sie auf der Registerkarte **Vorhersageressource** oder **Erstellungsressource** die Schaltfläche **Vorhersageressource hinzufügen** oder **Erstellungsressource hinzufügen** aus.
+1. Verwenden Sie die Felder im Formular, um die richtige Ressource zu finden, und wählen Sie dann **Speichern** aus.
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
+
+## <a name="assign-prediction-resource-programmatically"></a>Programmgesteuertes Zuweisen einer Vorhersageressource 
+
+Für automatisierte Prozesse wie CI/CD-Pipelines können Sie die Zuweisung einer LUIS-Ressource zu einer LUIS-App mit den folgenden Schritten automatisieren:
+
+1. Rufen Sie ein [Azure Resource Manager-Token](https://resources.azure.com/api/token?plaintext=true) ab, bei dem es sich um eine alphanumerische Zeichenfolge handelt. Dieses Token läuft ab, daher sollten Sie es sofort verwenden. Sie können auch den folgenden Azure CLI-Befehl verwenden:
+
+    ```azurecli
+    az account get-access-token --resource=https://management.core.windows.net/ --query accessToken --output tsv
+    ```
+    
+1. Verwenden Sie das Token, um die LUIS-Runtimeressourcen abonnementübergreifend anzufordern. Verwenden Sie die API, um [das LUIS-Azure-Konto abzurufen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), auf das Ihr Benutzerkonto Zugriff hat.
+
+    Diese POST-API erfordert folgende Werte:
+
+    |Header|Wert|
+    |--|--|
+    |`Authorization`|Der Wert von `Authorization` ist `Bearer {token}`. Dem Tokenwert müssen das Wort `Bearer` und ein Leerzeichen vorangestellt werden.|
+    |`Ocp-Apim-Subscription-Key`|Ihr Erstellungsschlüssel.|
+
+    Die API gibt ein Array von JSON-Objekten zurück, die Ihre LUIS-Abonnements darstellen. Die zurückgegebenen Werte umfassen die Abonnement-ID, die Ressourcengruppe und den Ressourcennamen, der als `AccountName` zurückgegeben wurde. Finden Sie im Array das Element, das die LUIS-Ressource darstellt, die Sie der LUIS-App zuweisen möchten.
+
+1. Weisen Sie das Token mit der API zum [Zuweisen eines LUIS-Azure-Kontos zu einer Anwendung](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) der LUIS-Ressource zu.
+
+    Diese POST-API erfordert folgende Werte:
+
+    |type|Einstellung|Wert|
+    |--|--|--|
+    |Header|`Authorization`|Der Wert von `Authorization` ist `Bearer {token}`. Dem Tokenwert müssen das Wort `Bearer` und ein Leerzeichen vorangestellt werden.|
+    |Header|`Ocp-Apim-Subscription-Key`|Ihr Erstellungsschlüssel.|
+    |Header|`Content-type`|`application/json`|
+    |Abfragezeichenfolge|`appid`|die LUIS-App-ID
+    |Body||{`AzureSubscriptionId`: Ihre Abonnement-ID,<br>`ResourceGroup`: Ressourcengruppenname mit Ihrer Vorhersageressource,<br>`AccountName`: Name Ihrer Vorhersageressource}|
+
+    Wenn diese API erfolgreich ist, gibt sie `201 - created status` zurück.
+
+---
+
+## <a name="unassign-a-resource"></a>Aufheben der Zuweisung einer Ressource
+
+Wenn Sie die Zuweisung einer Ressource aufheben, wird diese nicht aus Azure gelöscht. Lediglich die Verknüpfung mit LUIS wird aufgehoben.
+
+# <a name="luis-portal"></a>[LUIS-Portal](#tab/portal)
+
+## <a name="unassign-resources-using-luis-portal"></a>Aufheben der Zuweisung von Ressourcen über das LUIS-Portal
+
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie dann in der Liste **Meine Apps** eine App aus.
+1. Wechseln Sie zu **Verwalten** > **Azure-Ressourcen**.
+1. Wählen Sie die Schaltfläche **Ressourcenzuweisung aufheben** für die Ressource aus.
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
+
+## <a name="unassign-prediction-resource-programmatically"></a>Programmgesteuertes Aufheben der Zuweisung einer Vorhersageressource
+
+1. Rufen Sie ein [Azure Resource Manager-Token](https://resources.azure.com/api/token?plaintext=true) ab, bei dem es sich um eine alphanumerische Zeichenfolge handelt. Dieses Token läuft ab, daher sollten Sie es sofort verwenden. Sie können auch den folgenden Azure CLI-Befehl verwenden:
+
+    ```azurecli
+    az account get-access-token --resource=https://management.core.windows.net/ --query accessToken --output tsv
+    ```
+ 
+1. Verwenden Sie das Token, um die LUIS-Runtimeressourcen abonnementübergreifend anzufordern. Verwenden Sie die [API zum Abrufen von LUIS-Azure-Konten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), auf die Ihr Benutzerkonto Zugriff hat.
+
+    Diese POST-API erfordert folgende Werte:
+
+    |Header|Wert|
+    |--|--|
+    |`Authorization`|Der Wert von `Authorization` ist `Bearer {token}`. Dem Tokenwert müssen das Wort `Bearer` und ein Leerzeichen vorangestellt werden.|
+    |`Ocp-Apim-Subscription-Key`|Ihr Erstellungsschlüssel.|
+
+    Die API gibt ein Array von JSON-Objekten zurück, die Ihre LUIS-Abonnements darstellen. Die zurückgegebenen Werte umfassen die Abonnement-ID, die Ressourcengruppe und den Ressourcennamen, der als `AccountName` zurückgegeben wurde. Finden Sie im Array das Element, das die LUIS-Ressource darstellt, die Sie der LUIS-App zuweisen möchten.
+
+1. Weisen Sie das Token mit der API zum [Aufheben der Zuweisung eines LUIS-Azure-Kontos zu einer Anwendung](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32554f8591db3a86232e1/console) der LUIS-Ressource zu.
+
+    Diese DELETE-API erfordert folgende Werte:
+
+    |type|Einstellung|Wert|
+    |--|--|--|
+    |Header|`Authorization`|Der Wert von `Authorization` ist `Bearer {token}`. Dem Tokenwert müssen das Wort `Bearer` und ein Leerzeichen vorangestellt werden.|
+    |Header|`Ocp-Apim-Subscription-Key`|Ihr Erstellungsschlüssel.|
+    |Header|`Content-type`|`application/json`|
+    |Abfragezeichenfolge|`appid`|die LUIS-App-ID
+    |Body||{`AzureSubscriptionId`: Ihre Abonnement-ID,<br>`ResourceGroup`: Ressourcengruppenname mit Ihrer Vorhersageressource,<br>`AccountName`: Name Ihrer Vorhersageressource}|
+
+    Wenn diese API erfolgreich ist, gibt sie `200 - OK status` zurück.
+
+---
 
 ## <a name="resource-ownership"></a>Ressourcenbesitz
 
@@ -65,6 +240,50 @@ Nutzungslimits sind tarifabhängig.
 
 Wenn Sie Ihr TPS-Kontingent (Transaktionen pro Sekunde) überschreiten, erhalten Sie den HTTP-Fehler 429. Wenn Sie Ihr TPM-Kontingent (Transaktionen pro Monat) überschreiten, erhalten Sie den HTTP-Fehler 403.
 
+## <a name="change-the-pricing-tier"></a>Ändern des Tarifs
+
+1.  Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu **Alle Ressourcen**, und wählen Sie Ihre Ressource aus.
+
+    :::image type="content" source="./media/luis-usage-tiers/find.png" alt-text="Der Screenshot zeigt ein LUIS-Abonnement im Azure-Portal." lightbox="./media/luis-usage-tiers/find.png":::
+
+1.  Wählen Sie im Menü auf der linken Seite **Tarif** aus, um die verfügbaren Tarife anzuzeigen.
+1.  Wählen Sie den gewünschten Tarif aus, und klicken Sie dann auf **Auswählen**, um Ihre Änderung zu speichern. Wenn die Preisänderung abgeschlossen ist, wird oben rechts eine Benachrichtigung mit dem Tarifupdate angezeigt.
+
+## <a name="view-azure-resource-metrics"></a>Anzeigen von Azure-Ressourcenmetriken
+
+## <a name="view-a-summary-of-azure-resource-usage"></a>Anzeigen einer Zusammenfassung der Azure-Ressourcennutzung
+Sie können LUIS-Nutzungsinformationen im Azure-Portal anzeigen. Die Seite **Übersicht** zeigt eine Zusammenfassung, einschließlich der letzten Aufrufe und Fehler. Wenn Sie eine LUIS-Endpunktanforderung stellen, kann es bis zu fünf Minuten dauern, bis die Änderung angezeigt wird.
+
+:::image type="content" source="./media/luis-usage-tiers/overview.png" alt-text="Screenshot: Seite „Übersicht“" lightbox="./media/luis-usage-tiers/overview.png":::
+
+## <a name="customizing-azure-resource-usage-charts"></a>Anpassen von Nutzungsdiagrammen für Azure-Ressourcen
+Die Seite **Metriken** bietet eine detailliertere Ansicht der Daten. Sie können Ihre Metrikdiagramme für einen bestimmten **Zeitraum** und eine bestimmte **Metrik** konfigurieren.
+
+:::image type="content" source="./media/luis-usage-tiers/metrics.png" alt-text="Screenshot: Seite „Metriken“" lightbox="./media/luis-usage-tiers/metrics.png":::
+
+## <a name="total-transactions-threshold-alert"></a>Warnung für Gesamttransaktions-Schwellenwert
+Wenn Sie wissen möchten, wann Sie einen bestimmten Transaktionsschwellenwert erreichen, z. B. 10.000 Transaktionen, können Sie eine Warnung erstellen:
+
+1. Wählen Sie auf der linken Seite im Menü **Warnungen** aus.
+2. Wählen Sie im oberen Menü die Option **Neue Warnungsregel** aus.
+
+    :::image type="content" source="./media/luis-usage-tiers/alerts.png" alt-text="Screenshot: Seite „Warnungsregeln“" lightbox="./media/luis-usage-tiers/alerts.png":::
+
+3. Klicken Sie auf **Bedingung hinzufügen**.
+
+    :::image type="content" source="./media/luis-usage-tiers/alerts-2.png" alt-text="Screenshot: Seite „Bedingung hinzufügen“ für Warnungsregeln" lightbox="./media/luis-usage-tiers/alerts-2.png":::
+
+4. Wählen Sie **Aufrufe gesamt** aus.
+
+    :::image type="content" source="./media/luis-usage-tiers/alerts-3.png" alt-text="Screenshot: Seite „Aufrufe gesamt“ für Warnungen" lightbox="./media/luis-usage-tiers/alerts-3.png":::
+
+5. Scrollen Sie nach unten zum Abschnitt **Warnungslogik**, legen Sie die Attribute wie gewünscht fest, und klicken Sie auf **Fertig**.
+
+    :::image type="content" source="./media/luis-usage-tiers/alerts-4.png" alt-text="Screenshot: Seite „Warnungslogik“" lightbox="./media/luis-usage-tiers/alerts-4.png":::
+
+6. Um Benachrichtigungen zu senden oder Aktionen aufzurufen, wenn die Warnungsregel ausgelöst wird, wechseln Sie zum Abschnitt **Aktionen**, und fügen Sie Ihre Aktionsgruppe hinzu.
+
+    :::image type="content" source="./media/luis-usage-tiers/alerts-5.png" alt-text="Screenshot: Aktionsseite für Warnungen" lightbox="./media/luis-usage-tiers/alerts-5.png":::
 
 ### <a name="reset-an-authoring-key"></a>Zurücksetzen des Erstellungsschlüssels
 
@@ -75,7 +294,6 @@ Für Apps, die nicht migriert wurden: Der Schlüssel wird für all Ihre Apps im 
 ### <a name="regenerate-an-azure-key"></a>Erneutes Generieren eines Azure-Schlüssels
 
 Sie können einen Azure-Schlüssel über die Seite **Schlüssel** im Azure-Portal neu generieren.
-
 
 <a name="securing-the-endpoint"></a>
 
@@ -90,237 +308,8 @@ Sie können Ihre LUIS-App verschieben. Verwenden Sie die folgenden Azure-Ressour
 * [Verschieben einer Ressource innerhalb desselben Abonnements oder zwischen Abonnements](../../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)
 
 
-### <a name="contributions-from-other-authors"></a>Beiträge von anderen Autoren
-
-Apps, die [zur Erstellungsressource migriert](luis-migration-authoring.md) wurden: Sie können _Mitwirkende_ für eine Erstellungsressource im Azure-Portal verwalten, indem Sie die Seite **Zugriffssteuerung (IAM)** verwenden. Erfahren Sie, [wie Sie einen Benutzer hinzufügen](luis-how-to-collaborate.md), indem Sie die E-Mail-Adresse des Projektmitarbeiters und die Rolle „Mitwirkender“ verwenden.
-
-Für Apps, die noch nicht migriert wurden: Sie können alle _Projektmitarbeiter_ auf der Seite **Verwalten -> Projektmitarbeiter** im LUIS-Portal verwalten.
-
-### <a name="query-prediction-access-for-private-and-public-apps"></a>Abfragevorhersagezugriff für private und öffentliche Apps
-
-Bei privaten Apps ist der Zugriff auf die Abfragevorhersagelaufzeit für Besitzer und Mitwirkende möglich. Für eine öffentliche Apps ist der Laufzeitzugriff für jede Person möglich, die über eine eigene Azure [Cognitive Service](../cognitive-services-apis-create-account.md)- oder [LUIS](#create-resources-in-the-azure-portal)-Laufzeitressource und die ID der öffentlichen App verfügt.
-
-Derzeit gibt es keinen Katalog für öffentliche Apps.
-
-### <a name="authoring-permissions-and-access"></a>Erstellungsberechtigungen und Zugriff
-Der Zugriff auf eine App aus dem [LUIS](luis-reference-regions.md#luis-website)-Portal oder über die [Erstellungs-APIs](https://go.microsoft.com/fwlink/?linkid=2092087) wird von der Azure-Erstellungsressource gesteuert.
-
-Der Besitzer und alle Mitwirkenden haben Zugriff für die Erstellung der App.
-
-|Der Zugriff für die Erstellung umfasst:|Notizen|
-|--|--|
-|Hinzufügen oder Entfernen von Endpunktschlüsseln||
-|Exportieren einer Version||
-|Exportieren von Endpunktprotokollen||
-|Importversion||
-|Öffentlichmachen von Apps|Wenn eine App öffentlich ist, kann jede Person mit einem Erstellungs- oder Endpunktschlüssel die App abfragen.|
-|Ändern von Modellen|
-|Veröffentlichen|
-|Überprüfen von Endpunktäußerungen für das [aktive Lernen](luis-how-to-review-endpoint-utterances.md)|
-|Trainieren|
-
-<a name="prediction-endpoint-runtime-key"></a>
-
-### <a name="prediction-endpoint-runtime-access"></a>Laufzeitzugriff auf Vorhersageendpunkt
-
-Der Zugriff zum Abfragen des Vorhersageendpunkts wird von einer Einstellung auf der Seite **Anwendungsinformationen** im Abschnitt **Verwalten** gesteuert.
-
-|[Privater Endpunkt](#runtime-security-for-private-apps)|[Öffentlicher Endpunkt](#runtime-security-for-public-apps)|
-|:--|:--|
-|Für Besitzer und Mitwirkende verfügbar|Für Besitzer, Mitwirkende und alle Personen verfügbar, denen die App-ID bekannt ist|
-
-Sie können steuern, wer Ihren LUIS-Laufzeitschlüssel sieht, indem Sie ihn in einer Server-zu-Server-Umgebung aufrufen. Wenn Sie LUIS über einen Bot verwenden, ist die Verbindung zwischen dem Bot und LUIS bereits sicherer. Wenn Sie den LUIS-Endpunkt direkt aufrufen, sollten Sie eine serverseitige API (z. B. als Azure-[Funktion](https://azure.microsoft.com/services/functions/)) mit kontrolliertem Zugang (z. B. über [Azure AD](https://azure.microsoft.com/services/active-directory/)) erstellen. Wenn die serverseitige API aufgerufen und authentifiziert und die Autorisierung überprüft wurde, übergeben Sie den Aufruf an LUIS. Diese Strategie verhindert keine Man-in-the-Middle-Angriffe. Es verschleiert jedoch die Schlüssel- und Endpunkt-URL Ihrer Benutzer, ermöglicht Ihnen die Nachverfolgung des Zugriffs und das Hinzufügen von Endpunktantwortprotokollen (wie [Application Insights](https://azure.microsoft.com/services/application-insights/)).
-
-### <a name="runtime-security-for-private-apps"></a>Laufzeitsicherheit für private Apps
-
-Die Laufzeitumgebung einer privaten App ist nur für folgende Schlüssel verfügbar:
-
-|Schlüssel und Benutzer|Erklärung|
-|--|--|
-|Erstellungsschlüssel des Besitzers| Bis zu 1.000 Endpunkttreffer|
-|Erstellungsschlüssel für Projektmitarbeiter/Mitwirkende| Bis zu 1.000 Endpunkttreffer|
-|Jeder Schlüssel, der LUIS von einem Ersteller oder Projektmitarbeiter/Mitwirkenden zugewiesen wurde|Basierend auf dem Tarif für die Schlüsselverwendung|
-
-### <a name="runtime-security-for-public-apps"></a>Laufzeitsicherheit für öffentliche Apps
-
-Wenn Ihre App als öffentlich konfiguriert ist, können _alle_ gültigen LUIS-Erstellungsschlüssel oder LUIS-Endpunktschlüssel Ihre App abfragen, solange der Schlüssel nicht das gesamte Endpunktkontingent verbraucht hat.
-
-Ein Benutzer, der nicht Besitzer oder Mitwirkender ist, hat nur dann Zugriff auf die Laufzeitumgebung einer öffentlichen App, wenn er über App-ID verfügt. LUIS verfügt nicht über einen öffentlichen Markt oder eine andere Möglichkeit der Suche nach einer öffentlichen App.
-
-Eine öffentliche App wird in allen Regionen veröffentlicht. Somit kann ein Benutzer mit einem regionsbasierten LUIS-Ressourcenschlüssel auf die App in jeder Region zugreifen, die dem Ressourcenschlüssel zugeordnet ist.
-
-
-### <a name="control-access-to-your-query-prediction-endpoint"></a>Steuern des Zugriffs auf Ihren Abfragevorhersage-Endpunkt
-
-Sie können steuern, wer Ihren LUIS-Laufzeitschlüssel für den Vorhersageendpunkt sehen kann, indem Sie ihn in einer Server-zu-Server-Umgebung aufrufen. Wenn Sie LUIS über einen Bot verwenden, ist die Verbindung zwischen dem Bot und LUIS bereits sicherer. Wenn Sie den LUIS-Endpunkt direkt aufrufen, sollten Sie eine serverseitige API (z. B. als Azure-[Funktion](https://azure.microsoft.com/services/functions/)) mit kontrolliertem Zugang (z. B. über [Azure AD](https://azure.microsoft.com/services/active-directory/)) erstellen. Wenn die serverseitige API aufgerufen und die Authentifizierung und Autorisierung überprüft wurden, übergeben Sie den Aufruf an LUIS. Diese Strategie verhindert keine Man-in-the-Middle-Angriffe. Es verschleiert jedoch Ihren Endpunkt vor Ihren Benutzern, ermöglicht Ihnen die Nachverfolgung des Zugriffs und das Hinzufügen von Endpunktantwortprotokollen (wie [Application Insights](https://azure.microsoft.com/services/application-insights/)).
-
-<a name="starter-key"></a>
-
-## <a name="sign-in-to-the-luis-portal-and-begin-authoring"></a>Anmelden beim LUIS-Portal und Beginnen mit der Erstellung
-
-1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und stimmen Sie den Nutzungsbedingungen zu.
-1. Wählen Sie für die Erstellung Ihrer LUIS-App zunächst Ihren Azure-LUIS-Erstellungsschlüssel aus:
-
-   ![Der Screenshot zeigt den Begrüßungsbildschirm.](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
-
-1. Wenn Sie die Ressourcenauswahl getroffen haben, [erstellen Sie eine neue App](luis-how-to-start-new-app.md#create-new-app-in-luis).
-
-
-<a name="create-azure-resources"></a>
-<a name="create-resources-in-the-azure-portal"></a>
-
-[!INCLUDE [Create LUIS resource in Azure portal](includes/create-luis-resource.md)]
-
-### <a name="create-resources-in-the-azure-cli"></a>Erstellen von Ressourcen über die Azure CLI
-
-Verwenden Sie die [Azure CLI](/cli/azure/install-azure-cli), um die einzelnen Ressourcen individuell zu erstellen.
-
-Ressource `kind`:
-
-* Erstellung: `LUIS.Authoring`
-* Vorhersage: `LUIS`
-
-1. Melden Sie sich bei der Azure CLI an:
-
-    ```azurecli
-    az login
-    ```
-
-    Dieser Befehl öffnet einen Browser, in dem Sie das richtige Konto auswählen und die Authentifizierung bereitstellen können.
-
-1. Erstellen Sie eine LUIS-Erstellungsressource der Art `LUIS.Authoring` namens `my-luis-authoring-resource`. Erstellen Sie sie in der _vorhandenen_ Ressourcengruppe namens `my-resource-group` für die Region `westus`.
-
-    ```azurecli
-    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
-    ```
-
-1. Erstellen Sie eine LUIS-Vorhersageendpunkt-Ressource der Art `LUIS` namens `my-luis-prediction-resource`. Erstellen Sie sie in der _vorhandenen_ Ressourcengruppe namens `my-resource-group` für die Region `westus`. Wenn Sie einen höheren Durchsatz als für den Free-Tarif wünschen, ändern Sie `F0` in `S0`. [Weitere Informationen zu Tarifen und Durchsatz.](luis-limits.md#key-limits)
-
-    ```azurecli
-    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
-    ```
-
-    > [!Note]
-    > Diese Schlüssel werden vom LUIS-Portal erst dann verwendet, wenn sie auf der Seite **Verwalten** > **Azure-Ressourcen** im LUIS-Portal zugewiesen wurden.
-
-<a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>
-
-### <a name="assign-resources-in-the-luis-portal"></a>Zuweisen von Ressourcen im LUIS-Portal
-
-Sie können eine Erstellungsressource für eine einzelne App oder für alle Apps in LUIS zuweisen. In der folgenden Vorgehensweise werden alle Apps einer einzelnen Erstellungsressource zugewiesen.
-
-1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an.
-1. Wählen Sie oben rechts Ihr Benutzerkonto und dann in der Liste **Einstellungen** aus.
-1. Wählen Sie auf der Seite **Benutzereinstellungen** die Option **Erstellungsressource hinzufügen** aus, und wählen Sie dann eine vorhandene Erstellungsressource aus. Wählen Sie **Speichern** aus.
-
-## <a name="assign-a-resource-to-an-app"></a>Zuweisen einer Ressource zu einer App
-
->[!NOTE]
->Wenn Sie kein Azure-Abonnement besitzen, können Sie keine neue Azure-Ressource zuweisen oder erstellen. Sie müssen ein [kostenloses Azure-Konto](https://azure.microsoft.com/en-us/free/) erstellen und dann zu LUIS zurückkehren, um eine neue Ressource über das Portal zu erstellen.
-
-Sie können dieses Verfahren verwenden, um eine Erstellungs- oder Vorhersageressource zu erstellen oder einer Anwendung zuzuweisen: 
-
-1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an. Wählen Sie in der Liste **Meine Apps** eine App aus.
-1. Wechseln Sie zu **Verwalten** > **Azure-Ressourcen**:
-
-    ![Der Screenshot zeigt die Seite „Azure-Ressourcen“ an.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
-
-1. Wählen Sie auf der Registerkarte **Vorhersageressource** oder **Erstellungsressource** die Schaltfläche **Vorhersageressource hinzufügen** oder **Erstellungsressource hinzufügen** aus.
-1. Verwenden Sie die Felder im Formular, um die richtige Ressource zu finden, und wählen Sie dann **Speichern** aus.
-1. Wenn Sie noch nicht über eine vorhandene Ressource verfügen, können Sie eine erstellen, indem Sie **Neue LUIS-Ressource erstellen?** am unteren Rand des Fensters auswählen.
-
-
-### <a name="assign-a-query-prediction-runtime-resource-without-using-the-luis-portal"></a>Zuweisen einer Abfragevorhersagelaufzeit-Ressource ohne Verwendung des LUIS-Portals
-
-Für automatisierte Prozesse wie CI/CD-Pipelines möchten Sie möglicherweise die Zuordnung einer LUIS-Runtimeressource zu einer LUIS-App automatisieren. Führen Sie dazu diese Schritte aus:
-
-1. Rufen Sie ein Azure Resource Manager-Token von [dieser Website](https://resources.azure.com/api/token?plaintext=true) ab. Dieses Token läuft ab, daher sollten Sie es sofort verwenden. Die Anforderung gibt ein Azure Resource Manager-Token zurück.
-
-    ```azurecli
-    az account get-access-token --resource=https://management.core.windows.net/ --query accessToken --output tsv
-    ```
-    
-    ![Der Screenshot zeigt die Website zur Anforderung eines Azure Resource Manager-Tokens.](./media/luis-manage-keys/get-arm-token.png)
-
-1. Verwenden Sie das Token, um die LUIS-Runtimeressourcen abonnementübergreifend anzufordern. Verwenden Sie die [API zum Abrufen von LUIS-Azure-Konten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), auf die Ihr Benutzerkonto Zugriff hat.
-
-    Diese POST-API erfordert folgende Werte:
-
-    |Header|Wert|
-    |--|--|
-    |`Authorization`|Der Wert von `Authorization` ist `Bearer {token}`. Dem Tokenwert müssen das Wort `Bearer` und ein Leerzeichen vorangestellt werden.|
-    |`Ocp-Apim-Subscription-Key`|Ihr Erstellungsschlüssel.|
-
-    Die API gibt ein Array von JSON-Objekten zurück, die Ihre LUIS-Abonnements darstellen. Die zurückgegebenen Werte umfassen die Abonnement-ID, die Ressourcengruppe und den Ressourcennamen, der als `AccountName` zurückgegeben wurde. Finden Sie im Array das Element, das die LUIS-Ressource darstellt, die Sie der LUIS-App zuweisen möchten.
-
-1. Weisen Sie das Token mit der API zum [Zuweisen eines LUIS-Azure-Kontos zu einer Anwendung](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) der LUIS-Ressource zu.
-
-    Diese POST-API erfordert folgende Werte:
-
-    |type|Einstellung|Wert|
-    |--|--|--|
-    |Header|`Authorization`|Der Wert von `Authorization` ist `Bearer {token}`. Dem Tokenwert müssen das Wort `Bearer` und ein Leerzeichen vorangestellt werden.|
-    |Header|`Ocp-Apim-Subscription-Key`|Ihr Erstellungsschlüssel.|
-    |Header|`Content-type`|`application/json`|
-    |Abfragezeichenfolge|`appid`|die LUIS-App-ID
-    |Body||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
-
-    Wenn diese API erfolgreich ist, gibt sie `201 - created status` zurück.
-
-## <a name="unassign-a-resource"></a>Aufheben der Zuweisung einer Ressource
-
-1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie dann in der Liste **Meine Apps** eine App aus.
-1. Wechseln Sie zu **Verwalten** > **Azure-Ressourcen**.
-1. Wählen Sie auf der Registerkarte **Vorhersageressource** oder **Erstellungsressource** die Schaltfläche **Ressourcenzuweisung aufheben** für die Ressource aus.
-
-Wenn Sie die Zuweisung einer Ressource aufheben, wird diese nicht aus Azure gelöscht. Lediglich die Verknüpfung mit LUIS wird aufgehoben.
-
-
-## <a name="delete-an-account"></a>Löschen eines Kontos
-
-Informationen zu den Daten, die beim Löschen Ihres Kontos gelöscht werden, finden Sie unter [Datenspeicherung und -löschung](luis-concept-data-storage.md#accounts).
-
-## <a name="change-the-pricing-tier"></a>Ändern des Tarifs
-
-1.  Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrem LUIS-Abonnement, und wählen Sie es aus:
-
-    ![Der Screenshot zeigt ein LUIS-Abonnement im Azure-Portal.](./media/luis-usage-tiers/find.png)
-1.  Wählen Sie **Tarif** aus, um die verfügbaren Tarife anzuzeigen:
-
-    ![Der Screenshot zeigt das Menüelement „Tarif“.](./media/luis-usage-tiers/subscription.png)
-1.  Wählen Sie den Tarif aus, und klicken Sie dann auf **Auswählen**, um die Änderung zu speichern:
-
-    ![Der Screenshot zeigt, wie Sie einen Tarif auswählen und speichern können.](./media/luis-usage-tiers/plans.png)
-
-    Wenn die Änderung des Tarifs abgeschlossen ist, wird der aktualisierte Tarif in einem Popupfenster bestätigt:
-
-    ![Der Screenshot des Popupfensters, in dem die Tarifaktualisierung bestätigt wird.](./media/luis-usage-tiers/updated.png)
-1. Denken Sie daran, [diesen Endpunktschlüssel](#assign-a-resource-to-an-app) auf der Seite **Publish** (Veröffentlichen) zuzuweisen und für alle Endpunktabfragen zu verwenden.
-
-## <a name="view-azure-resource-metrics"></a>Anzeigen von Azure-Ressourcenmetriken
-
-### <a name="view-a-summary-of-azure-resource-usage"></a>Anzeigen einer Zusammenfassung der Azure-Ressourcennutzung
-Sie können LUIS-Nutzungsinformationen im Azure-Portal anzeigen. Die Seite **Übersicht** zeigt eine Zusammenfassung, einschließlich der letzten Aufrufe und Fehler. Wenn Sie eine LUIS-Endpunktanforderung stellen, kann es bis zu fünf Minuten dauern, bis die Änderung angezeigt wird.
-
-![Screenshot der Seite „Übersicht“](./media/luis-usage-tiers/overview.png)
-
-### <a name="customizing-azure-resource-usage-charts"></a>Anpassen von Nutzungsdiagrammen für Azure-Ressourcen
-Die Seite **Metriken** bietet eine detailliertere Ansicht der Daten:
-
-![Screenshot der Seite „Metriken“](./media/luis-usage-tiers/metrics-default.png)
-
-Sie können Ihre Metrikdiagramme für einen bestimmten Zeitraum und Metriktyp konfigurieren.
-
-![Der Screenshot zeigt ein benutzerdefiniertes Diagramm.](./media/luis-usage-tiers/metrics-custom.png)
-
-### <a name="total-transactions-threshold-alert"></a>Warnung für Gesamttransaktions-Schwellenwert
-Wenn Sie wissen möchten, wann Sie einen bestimmten Transaktionsschwellenwert erreichen, z. B. 10.000 Transaktionen, können Sie eine Warnung erstellen:
-
-![Der Screenshot zeigt die Seite mit den Warnungsregeln.](./media/luis-usage-tiers/alert-default.png)
-
-Fügen Sie eine Metrikwarnung für die Metrik der **Summe der Aufrufe** für einen bestimmten Zeitraum hinzu. Fügen Sie die E-Mail-Adressen aller Personen hinzu, die die Warnung erhalten sollen. Fügen Sie Webhooks für alle Systeme hinzu, die die Warnung erhalten sollen. Sie können auch eine Logik-App ausführen, wenn die Warnung ausgelöst wird.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, [wie Sie Versionen verwenden](luis-how-to-manage-versions.md), um den Lebenszyklus ihrer App zu steuern.
-* Migrieren Sie zu der neuen [Erstellungsressource](luis-migration-authoring.md).
+
+
