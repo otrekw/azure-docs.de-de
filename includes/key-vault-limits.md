@@ -2,14 +2,14 @@
 author: amitbapat
 ms.service: key-vault
 ms.topic: include
-ms.date: 03/09/2021
+ms.date: 05/28/2021
 ms.author: ambapat
-ms.openlocfilehash: 9ecfcff00e6f44f5c739513c063baaa3fa02a3db
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 3539e222407fee63a829e80db986f2b0eed02e24
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753294"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111761374"
 ---
 Der Azure Key Vault-Dienst unterstützt zwei Arten von Ressourcen: Tresore und verwaltete HSMs. In den beiden folgenden Abschnitten werden jeweils die entsprechenden Diensteinschränkungen beschrieben.
 
@@ -62,6 +62,12 @@ Wenn Sie ein Schlüsseltresorobjekt (Geheimnis, Schlüssel oder Zertifikat) sich
 > [!NOTE]
 > Wenn Sie beim Sichern eines Schlüssels, eines Geheimnisses oder eines Zertifikatobjekts die maximal mögliche Anzahl von Versionen überschreiten, tritt ein Fehler auf. Es ist nicht möglich, frühere Versionen eines Schlüssels, Geheimnisses oder Zertifikats zu löschen. 
 
+### <a name="limits-on-count-of-keys-secrets-and-certificates"></a>Grenzwerte für Anzahl von Schlüsseln, Geheimnissen und Zertifikaten:
+
+Für Key Vault ist die Anzahl von Schlüsseln, Geheimnissen oder Zertifikaten, die in einem Tresor gespeichert werden können, nicht beschränkt. Die Transaktionsgrenzwerte für den Tresor sollten berücksichtigt werden, um sicherzustellen, dass Vorgänge nicht gedrosselt werden.
+
+Von Key Vault wird die Anzahl von Versionen eines Geheimnisses, Schlüssels oder Zertifikats nicht beschränkt, aber die Speicherung einer großen Anzahl von Versionen (mehr als 500) kann die Leistung von Sicherungsvorgängen beeinträchtigen. Weitere Informationen finden Sie unter [Sicherung in Azure Key Vault](../articles/key-vault/general/backup.md).
+
 #### <a name="azure-private-link-integration"></a>Azure Private Link-Integration
 
 > [!NOTE]
@@ -72,7 +78,7 @@ Wenn Sie ein Schlüsseltresorobjekt (Geheimnis, Schlüssel oder Zertifikat) sich
 | Private Endpunkte pro Schlüsseltresor | 64 |
 | Schlüsseltresore mit privaten Endpunkten pro Abonnement | 400 |
 
-### <a name="resource-type-managed-hsm-preview"></a>Ressourcentyp: verwaltetes HSM (Vorschau)
+### <a name="resource-type-managed-hsm"></a>Ressourcentyp: verwaltetes HSM
 
 In diesem Abschnitt werden die Diensteinschränkungen für den Ressourcentyp `managed HSM` beschrieben.
 
@@ -80,7 +86,7 @@ In diesem Abschnitt werden die Diensteinschränkungen für den Ressourcentyp `ma
 
 |Element|Grenzwerte|
 |----|------:|
-Anzahl von HSM-Instanzen pro Abonnement und Region|1 (während der Vorschau)
+Anzahl von HSM-Instanzen pro Abonnement und Region|1 
 Anzahl von Schlüsseln pro HSM-Pool|5.000
 Anzahl von Versionen pro Schlüssel|100
 Anzahl benutzerdefinierter Rollendefinitionen pro HSM|50
