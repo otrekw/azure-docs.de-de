@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: f14883632e2a6cb741f86c7393bad3fb2305b397
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 94e060176b921529a42e28e8c735b0f1cdda5293
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161373"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075076"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Verbessern der Synthese mit dem Audio Content Creation-Tool
 
@@ -23,9 +23,9 @@ ms.locfileid: "108161373"
 
 Das Tool basiert auf der [Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)](speech-synthesis-markup.md). Es ermöglicht Ihnen das Anpassen von Ausgabeattributen der Sprachsynthese im Echtzeit- oder Stapelmodus, wie etwa Stimmmerkmale, Sprachstile, Sprechgeschwindigkeit, Aussprache und Prosodie.
 
-Sie erhalten einfachen Zugang zu mehr als 150 vordefinierten Stimmen für nahezu 50 verschiedene Sprachen, einschließlich der neuronalen TTS-Stimmen nach dem neuesten Stand der Technik und Ihrer benutzerdefinierten Stimme, wenn Sie eine erstellt haben.
+Sie erhalten einfachen Zugang zu mehr als 150 vordefinierten Stimmen für über 60 verschiedene Sprachen, einschließlich der neuronalen TTS-Stimmen nach dem neuesten Stand der Technik und Ihrer benutzerdefinierten Stimme, wenn Sie eine erstellt haben.
 
-Informationen dazu finden Sie im [Videotutorial](https://www.youtube.com/watch?v=O1wIJ7mts_w) zu Audio Content Creation.
+Informationen dazu finden Sie im [Videotutorial](https://youtu.be/ygApYuOOG6w) zu Audio Content Creation.
 
 ## <a name="how-to-get-started"></a>Erste Schritte
 
@@ -49,8 +49,10 @@ Es dauert einen Moment, bis die neue Speech-Ressource bereitgestellt wird. Sobal
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>Schritt 3: Anmelden bei der Audioinhaltserstellung mit Ihrem Azure-Konto und der Speech-Ressource
 
 1. Nachdem Sie das Azure-Konto und die Speech-Ressource erhalten haben, können Sie sich bei der [Audioinhaltserstellung](https://aka.ms/audiocontentcreation) anmelden, indem Sie auf **Erste Schritte** klicken.
-2. Die **Speech-Ressource** wird angezeigt. Wählen Sie die Speech-Ressource aus, mit der Sie arbeiten möchten. Klicken Sie auf **Zu Studio wechseln**, um mit Ihrer Audioerstellung zu beginnen. Sie können hier auch eine neue Speech-Ressource erstellen, indem Sie auf **Neu erstellen** klicken. Bei Ihrer nächsten Anmeldung beim Audioinhaltserstellungs-Tool stellen wir eine direkte Verknüpfung Ihres Kontos mit den Audioarbeitsdateien unter der aktuellen Sprachressource her.
-3. Sie können Ihre Speech-Ressource jederzeit ändern, indem Sie im oberen Navigationsbereich die Option **Einstellungen** auswählen.
+2. Auf der Homepage werden alle Produkte unter Speech Studio aufgeführt. Klicken Sie zum Starten auf **Audioinhaltserstellung**.
+3. Die **Begrüßungsseite von Speech Studio** wird angezeigt, damit Sie den Speech-Dienst einrichten können. Wählen Sie das Azure-Abonnement und die Speech-Ressource aus, an der Sie arbeiten möchten. Klicken Sie auf **Ressource verwenden**, um die Einstellungen zu vervollständigen. Bei Ihrer nächsten Anmeldung beim Audioinhaltserstellungs-Tool stellen wir eine direkte Verknüpfung Ihres Kontos mit den Audioarbeitsdateien unter der aktuellen Sprachressource her. Sie können die Details und den Status Ihrer Azure-Abonnements im [Azure-Portal](https://portal.azure.com/) überprüfen. Wenn Sie über keine Speech-Ressource verfügen und Besitzer oder Administrator eines Azure-Abonnements sind, können Sie auch eine neue Speech-Ressource in Speech Studio erstellen, indem Sie auf **Neue Ressource erstellen** klicken. Wenn Sie eine Benutzerrolle für ein bestimmtes Azure-Abonnement besitzen, verfügen Sie möglicherweise nicht über die Berechtigung zum Erstellen einer neuen Speech-Ressource. Wenden Sie sich an Ihren Administrator, um Zugriff auf die Speech-Ressource zu erhalten. 
+4. Sie können Ihre Speech-Ressource jederzeit ändern, indem Sie im oberen Navigationsbereich die Option **Einstellungen** auswählen.
+5. Wenn Sie das Verzeichnis wechseln möchten, wechseln Sie zu **Einstellungen** oder zu Ihrem Profil, um zu arbeiten. 
 
 ## <a name="how-to-use-the-tool"></a>So verwenden Sie das Tool:
 
@@ -64,8 +66,9 @@ Das folgende Diagramm zeigt die erforderlichen Schritte zum Optimieren der Sprac
    > [!NOTE]
    > Der Zugriff auf benutzerdefinierte neuronale Stimmen ist nur eingeschränkt möglich. Hiermit können Sie High-Definition-Stimmen erstellen, die wie natürliche Stimmen klingen. Weitere Einzelheiten finden Sie unter [Zulassung](./text-to-speech.md).
 
-4. Klicken Sie auf das Symbol **Wiedergeben** (ein Dreieck), um eine Vorschau der Standardausgabe der Synthese wiederzugeben. Verbessern Sie dann die Ausgabe, indem Sie Aussprache, Pausen, Tonhöhe, Geschwindigkeit, Intonation, Sprachstil usw. anpassen. Eine umfassende Liste der Optionen finden Sie unter [Markupsprache für Sprachsynthese](speech-synthesis-markup.md). In [diesem Video](https://www.youtube.com/watch?v=O1wIJ7mts_w) wird gezeigt, wie Sie die Sprachausgabe mit Audio Content Creation optimieren.
-5. Speichern und [exportieren Sie die optimierten Audiodaten](#export-tuned-audio). Nachdem Sie die Optimierungsspur im System gespeichert haben, können Sie die Ausgabe weiter bearbeiten. Wenn Sie mit der Ausgabe zufrieden sind, können Sie mit der Exportfunktion eine Aufgabe zur Audioerstellung erstellen. Sie können den Status der Exportaufgabe beobachten und die Ausgabe für die Verwendung in Ihren Apps und Produkten herunterladen.
+4. Wählen Sie den Inhalt aus, den Sie in der Vorschau anzeigen möchten, und klicken Sie auf das **Wiedergabesymbol** (ein Dreieck), um eine Vorschau der Standardsyntheseausgabe anzuzeigen. Beachten Sie, dass Sie beim Durchführen von Änderungen am Text auf das Symbol **Beenden** und dann erneut auf das **Wiedergabesymbol** klicken müssen, um die Audiodatei mit geänderten Skripts erneut zu generieren. 
+5. Verbessern Sie die Ausgabe, indem Sie Aussprache, Pausen, Tonhöhe, Geschwindigkeit, Intonation, Sprachstil usw. anpassen. Eine umfassende Liste der Optionen finden Sie unter [Markupsprache für Sprachsynthese](speech-synthesis-markup.md). In [diesem Video](https://youtu.be/ygApYuOOG6w) wird gezeigt, wie Sie die Sprachausgabe mit Audio Content Creation optimieren.
+6. Speichern und [exportieren Sie die optimierten Audiodaten](#export-tuned-audio). Nachdem Sie die Optimierungsspur im System gespeichert haben, können Sie die Ausgabe weiter bearbeiten. Wenn Sie mit der Ausgabe zufrieden sind, können Sie mit der Exportfunktion eine Aufgabe zur Audioerstellung erstellen. Sie können den Status der Exportaufgabe beobachten und die Ausgabe für die Verwendung in Ihren Apps und Produkten herunterladen.
 
 ## <a name="create-an-audio-tuning-file"></a>Erstellen einer Audiooptimierungsdatei
 
@@ -73,7 +76,7 @@ Es gibt zwei Möglichkeiten, Ihre Inhalte in das Audio Content Creation-Tool zu 
 
 **Option 1:**
 
-1. Klicken Sie auf das Symbol **Neue Datei** oben rechts, um eine neue Audiooptimierungsdatei zu erstellen.
+1. Klicken Sie auf **Neue** > **Datei**, um eine neue Audiooptimierungsdatei zu erstellen.
 2. Geben oder fügen Sie Ihren Inhalt in das Bearbeitungsfenster ein. Eine Datei kann jeweils bis zu 20.000 Zeichen enthalten. Ist Ihr Skript länger als 20.000 Zeichen, können Sie Option 2 verwenden, um den Inhalt automatisch in mehrere Dateien zu unterteilen.
 3. Vergessen Sie nicht zu speichern.
 
@@ -127,6 +130,9 @@ Nachdem Sie Ihre Audioausgabe überprüft haben und mit der Optimierung und den 
 
 Wenn mehrere Benutzer die Audioinhaltserstellung verwenden möchten, können Sie Benutzerzugriff auf das Azure-Abonnement und die Sprachressource erteilen. Wenn Sie einem Azure-Abonnement einen Benutzer hinzufügen, kann der Benutzer auf alle Ressourcen unter dem Azure-Abonnement zugreifen. Wenn Sie einen Benutzer jedoch nur zu einer Sprachressource hinzufügen, hat der Benutzer nur Zugriff auf die Sprachressource und kann nicht auf weitere Ressourcen unter diesem Azure-Abonnement zugreifen. Ein Benutzer mit Zugriff auf die Sprachressource kann die Audioinhaltserstellung verwenden.
 
+Der Benutzer muss ein [Microsoft-Konto](https://account.microsoft.com/account) vorbereiten. Wenn der Benutzer kein Microsoft-Konto besitzt, können Sie eines in wenigen Minuten erstellen. Der Benutzer kann die vorhandene E-Mail-Adresse und den Link als Microsoft-Konto verwenden oder eine neue E-Mail-Adresse von Outlook als Microsoft-Konto erstellen.
+
+
 ### <a name="add-users-to-a-speech-resource"></a>Hinzufügen von Benutzern zu einer Sprachressource
 
 Führen Sie diese Schritte aus, um einen Benutzer zu einer Sprachressource hinzuzufügen, damit er/sie die Audioinhaltserstellung verwenden kann.
@@ -134,13 +140,13 @@ Führen Sie diese Schritte aus, um einen Benutzer zu einer Sprachressource hinzu
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach **Cognitive Services**, und wählen Sie die Sprachressource aus, der Sie Benutzer hinzufügen möchten.
 2. Klicken Sie auf **Zugriffssteuerung (IAM)** . Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
     :::image type="content" source="media/audio-content-creation/access-control-roles.png" alt-text="Registerkarte „Rollenzuweisung“":::
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen. Wählen Sie in der Dropdownliste „Rolle“ die Rolle **Cognitive Service-Benutzer** aus. Wenn Sie den Benutzer zum Besitzer dieser Sprachressource machen möchten, können Sie die Rolle **Besitzer** auswählen.
-1. Wählen Sie in der Liste einen Benutzer aus. Wenn Sie den Benutzer nicht in der Liste sehen, können Sie ihn im Feld „Auswählen“ eingeben, um das Verzeichnis nach Anzeigenamen und E-Mail-Adressen zu durchsuchen. Wenn sich der Benutzer nicht im Verzeichnis befindet, können Sie das [Microsoft-Konto](https://account.microsoft.com/account) des Benutzers eingeben (das in Azure Active Directory als vertrauenswürdig eingestuft ist).
-1. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen. Nach einigen Augenblicken wird dem Benutzer die Rolle Cognitive Service-Benutzer im Umfang der Sprachressource zugewiesen.
+3. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen. Wählen Sie in der Dropdownliste „Rolle“ die Rolle **Cognitive Service-Benutzer** aus. Wenn Sie den Benutzer zum Besitzer dieser Sprachressource machen möchten, können Sie die Rolle **Besitzer** auswählen.
+4. Wählen Sie in der Liste einen Benutzer aus. Wenn Sie den Benutzer nicht in der Liste sehen, können Sie ihn im Feld „Auswählen“ eingeben, um das Verzeichnis nach Anzeigenamen und E-Mail-Adressen zu durchsuchen. Wenn sich der Benutzer nicht im Verzeichnis befindet, können Sie das [Microsoft-Konto](https://account.microsoft.com/account) des Benutzers eingeben (das in Azure Active Directory als vertrauenswürdig eingestuft ist).
+5. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen. Der Benutzer erhält eine E-Mail-Einladung. Akzeptieren Sie die Einladung, indem Sie in der E-Mail auf **Einladung annehmen** > **Beitritt zu Azure akzeptieren** klicken. Anschließend wird der Benutzer zum Azure-Portal weitergeleitet. Der Benutzer muss keine weiteren Aktionen im Azure-Portal durchführen.
+6. Nach einigen Augenblicken wird dem Benutzer die Rolle Cognitive Service-Benutzer im Umfang der Sprachressource zugewiesen. Der Benutzer kann die Seite [Audioinhaltserstellung](https://aka.ms/audiocontentcreation) aufrufen oder aktualisieren und die Speech-Ressource auswählen, um die ersten Schritte durchzuführen. 
 
     :::image type="content" source="media/audio-content-creation/add-role-first.png" alt-text="Dialogfeld „Rolle hinzufügen“":::
 
-1. Die von Ihnen hinzugefügten Benutzer erhalten eine Einladungs-E-Mail. Nachdem sie auf **Einladung annehmen** > **Beitritt zu Azure akzeptieren** geklickt haben, können sie dann die [Audioinhaltserstellung](https://aka.ms/audiocontentcreation) verwenden.
 
 Benutzer, die sich in der gleichen Sprachressource befinden, sehen ihre Arbeit gegenseitig im Audioinhaltserstellungs-Studio. Wenn Sie möchten, dass jeder einzelne Benutzer über einen einzelnen und privaten Arbeitsbereich in der Audioinhaltserstellung verfügt, erstellen Sie [eine neue Sprachressource](#step-2---create-a-speech-resource) für jeden Benutzer, und geben Sie jedem Benutzer den eindeutigen Zugriff auf die Sprachressource.
 
@@ -156,7 +162,7 @@ Benutzer, die sich in der gleichen Sprachressource befinden, sehen ihre Arbeit g
 Wenn einer der Benutzer imstande sein soll, anderen Benutzern Zugriff zu erteilen, müssen Sie dem Benutzer die Besitzerrolle für die Sprachressource übertragen und ihn als leseberechtigt für das Azure-Verzeichnis festlegen.
 1. Fügen Sie den Benutzer als Besitzer der Sprachressource hinzu. Weitere Informationen dazu finden Sie unter [Hinzufügen von Benutzern zu einer Sprachressource](#add-users-to-a-speech-resource).
     :::image type="content" source="media/audio-content-creation/add-role.png" alt-text="Feld „Rollenbesitzer“":::
-1. Wählen Sie das eingeklappte Menü in der oberen linken Ecke aus. Klicken Sie auf **Azure Active Directory** und dann auf **Benutzer**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) oben links das reduzierte Menü aus. Klicken Sie auf **Azure Active Directory** und dann auf **Benutzer**.
 1. Durchsuchen Sie das Microsoft-Konto des Benutzers, und navigieren Sie zur Detailseite des Benutzers. Klicken Sie auf **Zugewiesene Rollen**.
 1. Klicken Sie auf **Zuweisungen hinzufügen** -> **Verzeichnisleseberechtigte**.
 

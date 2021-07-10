@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 06/04/2021
 ms.author: cherylmc
-ms.custom: include file
-ms.openlocfilehash: a3c10ca35ee2f085d4ce41e862a895ff17ff63a0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: include file, devx-track-azurepowershell
+ms.openlocfilehash: d41b443a076e303d96588a27285b671123593b57
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "84317656"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556435"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Punkt-zu-Standort-Konfiguration umfassen?
 
@@ -31,7 +31,7 @@ Folgende Clientbetriebssysteme werden unterstützt:
 * Windows Server 2016 (nur 64 Bit)
 * Windows Server 2019 (nur 64 Bit)
 * Windows 10
-* Mac OS X-Version 10.11 oder höher
+* macOS Version 10.11 oder höher
 * Linux (StrongSwan)
 * iOS
 
@@ -65,7 +65,7 @@ Abhängig von der verwendeten VPN-Clientsoftware können Sie unter Umständen ei
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>Kann ich einen Punkt-zu-Standort-Client so konfigurieren, dass er gleichzeitig eine Verbindung mit mehreren virtuellen Netzwerken herstellt?
 
-Ja. Point-to-Site-Verbindungen mit einem Gateway für virtuelle Netzwerke, das in einem VNET bereitgestellt wird, für das ein Peering mit anderen VNETs besteht, haben unter Umständen Zugriff auf andere per Peering verknüpfte VNETs.  Wenn die per Peering verknüpften VNETs die Features „UseRemoteGateway“ bzw. „AllowGatewayTransit“ nutzen, kann der Point-to-Site-Client eine Verbindung mit diesen VNETs herstellen.  Weitere Informationen finden Sie in [diesem Artikel](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md).
+Ja. Point-to-Site-Clientverbindungen mit einem Gateway für virtuelle Netzwerke, das in einem VNet bereitgestellt wird, für das ein Peering mit anderen VNets besteht, haben unter Umständen Zugriff auf andere per Peering verknüpfte VNets. Point-to-Site-Clients können eine Verbindung mit VNets herstellen, die per Peering verknüpft sind, solange diese VNets die Features „UseRemoteGateway“ oder „AllowGatewayTransit“ verwenden. Weitere Informationen hierzu finden Sie unter [Informationen zu Point-to-Site-Routing](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md).
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>Wie viel Durchsatz kann ich bei einer Standort-zu-Standort- oder bei einer Punkt-zu-Standort-Verbindung erwarten?
 
@@ -73,7 +73,11 @@ Der genaue Durchsatz der VPN-Tunnel lässt sich nur schwer ermitteln. IPsec und 
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Kann ich für Point-to-Site-Verbindungen einen beliebigen VPN-Softwareclient mit SSTP- und/oder IKEv2-Unterstützung verwenden?
 
-Nein. Sie können nur den nativen VPN-Client unter Windows für SSTP und den nativen VPN-Client unter Mac für IKEv2 verwenden. Allerdings können Sie den OpenVPN-Client auf allen Plattformen verwenden, um über das OpenVPN-Protokoll eine Verbindung herzustellen. Informationen finden Sie in der Liste der unterstützten Clientbetriebssysteme.
+Nein. Sie können nur den nativen VPN-Client unter Windows für SSTP und den nativen VPN-Client unter Mac für IKEv2 verwenden. Allerdings können Sie den OpenVPN-Client auf allen Plattformen verwenden, um über das OpenVPN-Protokoll eine Verbindung herzustellen. Informationen finden Sie in der Liste der [unterstützten Clientbetriebssysteme](#supportedclientos).
+
+### <a name="can-i-change-the-authentication-type-for-a-point-to-site-connection"></a>Kann ich den Authentifizierungstyp für eine Point-to-Site-Verbindung ändern?
+
+Ja. Navigieren Sie im Portal zur Seite **VPN Gateway -> Point-to-Site-Konfiguration**. Wählen Sie unter **Authentifizierungstyp** die Authentifizierungstypen aus, die Sie verwenden möchten. Beachten Sie, dass aktuelle Clients nach einer Änderung an einem Authentifizierungstyp möglicherweise erst dann eine Verbindung herstellen können, wenn ein neues VPN-Clientkonfigurationsprofil generiert, heruntergeladen und auf jeden VPN-Client angewendet wurde.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Unterstützt Azure IKEv2-VPN unter Windows?
 
@@ -102,7 +106,7 @@ Azure unterstützt Windows, Mac und Linux für P2S-VPN.
 
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Ich verfüge bereits über ein bereitgestelltes Azure-VPN-Gateway. Kann ich RADIUS und/oder IKEv2-VPN darauf aktivieren?
 
-Ja. Sie können diese neuen Features aus bereits bereitgestellten Gateways per PowerShell oder über das Azure-Portal aktivieren, sofern die verwendete Gateway-SKU RADIUS bzw. IKEv2 unterstützt. Die Basic-SKU des VPN-Gateways weist beispielsweise keine Unterstützung von RADIUS oder IKEv2 auf.
+Ja, wenn die von Ihnen verwendete Gateway-SKU RADIUS und/oder IKEv2 unterstützt, können Sie diese Features auf Gateways, die Sie bereits bereitgestellt haben, mithilfe von PowerShell oder dem Azure-Portal aktivieren. Beachten Sie, dass die Basic-SKU weder RADIUS noch IKEv2 unterstützt.
 
 ### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>Wie entferne ich die Konfiguration einer P2S-Verbindung?
 

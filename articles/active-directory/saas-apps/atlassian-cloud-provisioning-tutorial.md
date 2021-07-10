@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 691d35267c255c933a8098b99301fbb795a3cd0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 172ffe8b5028032c38f5c86a7289cef4250653a4
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181066"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614947"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der automatischen Benutzerbereitstellung für Atlassian Cloud
 
@@ -104,9 +104,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Mappings** (Zuordnungen) die Option **Synchronize Azure Active Directory Users to Atlassian Cloud** (Azure Active Directory-Benutzer mit Atlassian Cloud synchronisieren).
 
-9. Überprüfen Sie im Abschnitt **Attribute Mapping** (Attributzuordnungen) die Benutzerattribute, die von Azure AD mit Atlassian Cloud synchronisiert werden. Beachten Sie, dass die als **Matching** (übereinstimmend) ausgewählten Attribute für den Abgleich der Benutzerkonten in Atlassian Cloud für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attribute Mapping** (Attributzuordnungen) die Benutzerattribute, die von Azure AD mit Atlassian Cloud synchronisiert werden.
+   Das E-Mail-Attribut dient zum Abgleich von Atlassian Cloud-Konten mit Ihren Azure AD-Konten.
+   Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|
+   |attribute|type|
    |---|---|
    |userName|String|
    |aktiv|Boolean|
@@ -116,9 +118,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Mappings** (Zuordnungen) die Option **Synchronize Azure Active Directory Groups to Atlassian Cloud** (Azure Active Directory-Gruppen mit Atlassian Cloud synchronisieren).
 
-11. Überprüfen Sie im Abschnitt **Attribute Mapping** (Attributzuordnungen) die Gruppenattribute, die von Azure AD mit Atlassian Cloud synchronisiert werden. Die als **Matching** (übereinstimmend) ausgewählten Attribute werden für den Abgleich der Gruppen in Atlassian Cloud für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attribute Mapping** (Attributzuordnungen) die Gruppenattribute, die von Azure AD mit Atlassian Cloud synchronisiert werden.
+    Das Attribut displayName dient zum Abgleich von Atlassian Cloud-Gruppen mit Ihren Azure AD-Gruppen.
+    Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |Attribut|type|
+      |attribute|type|
       |---|---|
       |displayName|String|
       |externalId|String|
@@ -134,7 +138,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-16. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/04/2019
+ms.date: 05/24/2021
 ms.author: jeedes
-ms.openlocfilehash: aa3c5115a5255d30decbc66691878ffbe2579a06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0045ca534c1220691f99b00625ba2b071c2ed14
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92514587"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454467"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ThousandEyes
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie ThousandEyes in Azure Active Directory 
 * Steuern Sie in Azure AD, wer Zugriff auf ThousandEyes hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei ThousandEyes anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,37 +43,37 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
-## <a name="adding-thousandeyes-from-the-gallery"></a>Hinzufügen von ThousandEyes aus dem Katalog
+## <a name="add-thousandeyes-from-the-gallery"></a>Hinzufügen von ThousandEyes aus dem Katalog
 
 Zum Konfigurieren der Integration von ThousandEyes in Azure AD müssen Sie ThousandEyes aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **ThousandEyes** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **ThousandEyes** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-thousandeyes"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für ThousandEyes
+## <a name="configure-and-test-azure-ad-sso-for-thousandeyes"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für ThousandEyes
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit ThousandEyes mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ThousandEyes eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit ThousandEyes die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für ThousandEyes](#configure-thousandeyes-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    * **[Erstellen eines ThousandEyes-Testbenutzers](#create-thousandeyes-test-user)** , um ein Pendant von B. Simon in ThousandEyes zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+    1. **[Erstellen eines ThousandEyes-Testbenutzers](#create-thousandeyes-test-user)** , um ein Pendant von B. Simon in ThousandEyes zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **ThousandEyes** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **ThousandEyes** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -83,7 +81,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://app.thousandeyes.com/login/sso`.
+    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://app.thousandeyes.com/login/sso`.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -93,7 +91,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user&quot;></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
@@ -105,43 +103,37 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf ThousandEyes gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **ThousandEyes** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-thousandeyes-sso"></a>Konfigurieren des einmaligen Anmeldens für ThousandEyes
+## <a name=&quot;configure-thousandeyes-sso&quot;></a>Konfigurieren des einmaligen Anmeldens für ThousandEyes
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der **ThousandEyes** -Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie im oberen Menü auf das Symbol **Einstellungen**.
 
-    ![Der Screenshot zeigt die ThousandEyes-Website mit ausgewähltem „Einstellungen“.](./media/thousandeyes-tutorial/ic790066.png "Einstellungen")
+    ![Der Screenshot zeigt die ThousandEyes-Website mit ausgewähltem „Einstellungen“.](./media/thousandeyes-tutorial/settings-tab.png &quot;Einstellungen")
 
 3. Klicken Sie unten auf der Seite auf **Konto**
 
-    ![Der Screenshot zeigt, dass im Menü „Einstellungen“ die Option „Konto“ ausgewählt ist.](./media/thousandeyes-tutorial/ic790067.png "Konto")
+    ![Der Screenshot zeigt, dass im Menü „Einstellungen“ die Option „Konto“ ausgewählt ist.](./media/thousandeyes-tutorial/menu.png "Konto")
 
 4. Klicken Sie auf die Registerkarte **Sicherheit und Authentifizierung**.
 
-    ![Sicherheit und Authentifizierung](./media/thousandeyes-tutorial/ic790068.png "Sicherheit und Authentifizierung")
+    ![Sicherheit und Authentifizierung](./media/thousandeyes-tutorial/security.png "Sicherheit und Authentifizierung")
 
 5. Führen Sie im Abschnitt **Einmaliges Anmelden einrichten** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden einrichten](./media/thousandeyes-tutorial/ic790069.png "Einmaliges Anmelden einrichten")
+    ![Einmaliges Anmelden einrichten](./media/thousandeyes-tutorial/configuration.png "Einmaliges Anmelden einrichten")
 
     a. Wählen Sie **Einmaliges Anmelden aktivieren** aus.
 
@@ -165,19 +157,19 @@ In diesem Abschnitt wird in ThousandEyes eine Benutzerin namens Britta Simon ers
 
 2. Klicken Sie auf **Einstellungen**.
 
-    ![Der Screenshot zeigt die ThousandEyes-Website mit ausgewähltem „Einstellungen“.](./media/thousandeyes-tutorial/ic790066.png "Einstellungen")
+    ![Der Screenshot zeigt die ThousandEyes-Website mit ausgewähltem „Einstellungen“.](./media/thousandeyes-tutorial/settings-tab.png "Einstellungen")
 
 3. Klicken Sie auf **Account**.
 
-    ![Der Screenshot zeigt, dass im Menü „Einstellungen“ die Option „Konto“ ausgewählt ist.](./media/thousandeyes-tutorial/ic790067.png "Konto")
+    ![Der Screenshot zeigt, dass im Menü „Einstellungen“ die Option „Konto“ ausgewählt ist.](./media/thousandeyes-tutorial/menu.png "Konto")
 
 4. Klicken Sie auf Registerkarte **Konten und Benutzer**.
 
-    ![Konten und Benutzer](./media/thousandeyes-tutorial/IC790073.png "Konten und Benutzer")
+    ![Konten und Benutzer](./media/thousandeyes-tutorial/user.png "Konten und Benutzer")
 
 5. Führen Sie im Abschnitt **Benutzer und Konten hinzufügen** die folgenden Schritte aus:
 
-    ![Benutzerkonten hinzufügen](./media/thousandeyes-tutorial/IC790074.png "Benutzerkonten hinzufügen")
+    ![Benutzerkonten hinzufügen](./media/thousandeyes-tutorial/add-user.png "Benutzerkonten hinzufügen")
 
     a. Geben Sie im Textfeld **Name** den Namen des Benutzers ein, etwa **B. Simon**.
 
@@ -194,18 +186,20 @@ In diesem Abschnitt wird in ThousandEyes eine Benutzerin namens Britta Simon ers
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „ThousandEyes“ klicken, sollten Sie automatisch bei der ThousandEyes-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für ThousandEyes weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Rufen Sie direkt die ThousandEyes-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP-initiiert:
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der ThousandEyes-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-- [ThousandEyes mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „ThousandEyes“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der ThousandEyes-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Konfigurieren der Benutzerbereitstellung](./thousandeyes-provisioning-tutorial.md)
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von ThousandEyes können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: 57f3cf0cb15243d054da0111366f3a1dc0fb5349
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 78986eca3d1db65afb8ac4e0ca8ff76a0e3201eb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95739756"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451960"
 ---
 # <a name="whats-new-in-custom-vision"></a>Neuerungen in Custom Vision
 
@@ -34,7 +34,7 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
 
 ### <a name="training-divergence-feedback"></a>Feedback zu Trainingsabweichungen
 
-- Die öffentliche Vorschauversion 3.4 der API von Custom Vision gibt jetzt **TrainingErrorDetails** aus dem Aufruf **GetIteration** zurück. Bei fehlerhaften Iterationen zeigt dies, ob der Fehler durch Trainingsabweichungen verursacht wurde, die mit mehr und qualitativ hochwertigeren Trainingsdaten behoben werden können.
+- Die öffentliche Vorschauversion 3.4 der Custom Vision-API gibt jetzt **TrainingErrorDetails** aus dem Aufruf **GetIteration** zurück. Bei fehlerhaften Iterationen zeigt dies, ob der Fehler durch Trainingsabweichungen verursacht wurde, die mit mehr und qualitativ hochwertigeren Trainingsdaten behoben werden können.
 
 ## <a name="july-2020"></a>Juli 2020
 

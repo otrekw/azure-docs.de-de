@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64536024af7e939de2bd8f98a9ce14bb4df3303f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c447bae82f4e8eb428942bdf807f6ebf23b4043c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612140"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070352"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Integrieren einer vorhandenen Gesamtstruktur in eine neue Gesamtstruktur mit einem einzelnen Azure AD-Mandanten
 
@@ -68,6 +68,9 @@ In diesem Szenario wird eine vorhandene Gesamtstruktur mithilfe der Azure AD C
 
 9. Klicken Sie auf dem Bildschirm **Konfiguration abgeschlossen** auf **Bestätigen**.  Dadurch wird der Agent registriert und neu gestartet.</br>
 ![Screenshot: Bildschirm „Konfiguration abgeschlossen“](media/how-to-install/install-4a.png)</br>
+
+   > [!NOTE]
+   > Das gruppenverwaltete Dienstkonto (z. B. CONTOSO\provAgentgMSA$) wird in derselben Active Directory-Domäne erstellt, in die der Hostserver eingebunden wurde.
 
 10. Sobald dieser Vorgang abgeschlossen ist, sollte der folgende Hinweis angezeigt werden: **Ihre Agent-Konfiguration wurde erfolgreich überprüft.**  Sie können dann auf **Beenden** klicken.</br>
 ![Bildschirm „Willkommen“](media/how-to-install/install-5.png)</br>

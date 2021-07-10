@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 94dab0124a1f5e0144aab2e271fbf89e02111d3a
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 25342ef6f7a79d91e91c59b88639318bfbf824e8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206797"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072926"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Schnellstart: Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central
 
@@ -45,7 +45,7 @@ Erstellen Sie zunächst mithilfe der beiden vorherigen Schnellstartanleitungen [
 
     :::image type="content" source="media/quick-configure-rules/condition.png" alt-text="Screenshot: Regelbedingung":::
 
-1. Wählen Sie **+ E-Mail** aus, um eine E-Mail-Aktion hinzuzufügen, die bei Auslösung der Regel ausgeführt werden soll.
+1. Wählen Sie im Abschnitt **Aktion** **+ E-Mail** aus, um eine E-Mail-Aktion hinzuzufügen, die bei Auslösung der Regel ausgeführt werden soll.
 
 1. Nutzen Sie beim Festlegen der Aktion die Informationen in der folgenden Tabelle, und wählen Sie anschließend **Fertig** aus:
 

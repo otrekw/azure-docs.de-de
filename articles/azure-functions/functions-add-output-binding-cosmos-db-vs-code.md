@@ -6,12 +6,12 @@ ms.date: 03/23/2021
 ms.topic: quickstart
 ms.author: thweiss
 zone_pivot_groups: programming-languages-set-functions-temp
-ms.openlocfilehash: 0a0c63ee54699185bcd02104b1a3f4d0070ea808
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 884ed08dc6dc6587b4f464c18e8231a7f5342422
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023247"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234541"
 ---
 # <a name="connect-azure-functions-to-azure-cosmos-db-using-visual-studio-code"></a>Verbinden von Azure Functions mit Azure Cosmos DB mithilfe von Visual Studio Code
 
@@ -39,13 +39,13 @@ Installieren Sie die [Erweiterung „Azure-Datenbanken“](https://marketplace.v
 
 2. Klicken Sie auf **Ressource erstellen** > **Datenbanken** > **Azure Cosmos DB**.
    
-    :::image type="content" source="../../includes/media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png" alt-text="Der Bereich „Datenbanken“ im Azure-Portal" border="true":::
+    :::image type="content" source="../cosmos-db/includes/media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png" alt-text="Der Bereich „Datenbanken“ im Azure-Portal" border="true":::
 
 3. Geben Sie auf der Seite **Azure Cosmos DB-Konto erstellen** die Einstellungen für Ihr neues Azure Cosmos DB-Konto ein. 
  
-    Einstellung|Wert|Beschreibung
+    Einstellung|Wert|BESCHREIBUNG
     ---|---|---
-    Abonnement|*Ihr Abonnement*|Wählen Sie das Azure-Abonnement aus, in dem Sie im [vorherigen Artikel](./create-first-function-vs-code-csharp.md) Ihre Funktions-App erstellt haben.
+    Subscription|*Ihr Abonnement*|Wählen Sie das Azure-Abonnement aus, in dem Sie im [vorherigen Artikel](./create-first-function-vs-code-csharp.md) Ihre Funktions-App erstellt haben.
     Ressourcengruppe|*Ihre Ressourcengruppe*|Wählen Sie die Ressourcengruppe aus, in der Sie im [vorherigen Artikel](./create-first-function-vs-code-csharp.md) Ihre Funktions-App erstellt haben.
     Kontoname|*Eindeutigen Namen eingeben*|Geben Sie einen eindeutigen Namen ein, der Ihr Azure Cosmos DB-Konto identifiziert.<br><br>Der Kontoname darf nur Kleinbuchstaben, Ziffern und Bindestriche (-) enthalten und muss zwischen 3 und 31 Zeichen lang sein.
     API|Core (SQL)|Wählen Sie **Core (SQL)** aus, um eine Dokumentdatenbank zu erstellen, die Sie mit einer SQL-Syntax abfragen können. [Erfahren Sie mehr über die SQL-API von Azure Cosmos DB](../cosmos-db/introduction.md).|

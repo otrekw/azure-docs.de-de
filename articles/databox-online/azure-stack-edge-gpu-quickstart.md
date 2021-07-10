@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 04/07/2021
+ms.date: 06/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 43477f11effaafb0bcd6158be6843c79d19092ac
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 0dd8b103f81ea911a079aee6590287a939819b52
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210809"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982374"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Schnellstart: Erste Schritte mit Azure Stack Edge Pro mit GPU 
 
@@ -30,7 +30,7 @@ Sorgen Sie vor der Bereitstellung dafür, dass die folgenden Voraussetzungen erf
 1. Konfigurieren Sie Ihr Netzwerk so, dass Ihr Gerät die [aufgelisteten URL-Muster und -Ports](azure-stack-edge-gpu-system-requirements.md#networking-port-requirements) erreichen kann. 
 1. Sie haben als Besitzer oder Mitwirkender Zugriff auf Ihr Azure-Abonnement.
 1. Wechseln Sie im Azure-Portal zu **Home > Abonnements > Ihr-Abonnement > Ressourcenanbieter**. Suchen Sie nach `Microsoft.DataBoxEdge`, und registrieren Sie den Ressourcenanbieter. Wenn Sie eine IoT Hub-Ressource zur Bereitstellung von Computeworkloads erstellen, wiederholen Sie die Registrierung von `Microsoft.Devices`.
-1. Sorgen Sie dafür, dass Sie mindestens zwei freie, statische und zusammenhängende IP-Adressen für Kubernetes-Knoten und mindestens eine statische IP-Adresse für den IoT Edge-Dienst haben. Für jedes Modul oder jeden externen Dienst, das bzw. den Sie bereitstellen, benötigen Sie eine zusätzliche IP-Adresse.
+1. Sorgen Sie dafür, dass Sie mindestens zwei freie, statische und zusammenhängende IP-Adressen für Kubernetes-Knoten und mindestens eine statische IP-Adresse für den IoT Edge-Dienst haben. Für jedes Modul und jeden externen Dienst, das bzw. den Sie bereitstellen, ist eine weitere IP-Adresse erforderlich.
 1. In der [Bereitstellungsprüfliste](azure-stack-edge-gpu-deploy-checklist.md) finden Sie alles, was Sie für die Gerätebereitstellung benötigen. 
 
 
@@ -72,11 +72,8 @@ Sorgen Sie vor der Bereitstellung dafür, dass die folgenden Voraussetzungen erf
 
 12. **Compute konfigurieren**: Wechseln Sie im Azure-Portal zu **Übersicht > Geräte**. Überprüfen Sie, ob das Gerät **Online** ist. Wechseln Sie im linken Bereich zu **Edgecomputing > Erste Schritte > Edgecomputing konfigurieren > Compute**. Stellen Sie einen vorhandenen oder neuen IoT Hub-Dienst bereit, und warten Sie ca. 20 Minuten, bis der Computeserver konfiguriert ist. Weitere Informationen finden Sie im [Tutorial: Konfigurieren von Compute auf einem Azure Stack Edge Pro-Gerät mit GPU](azure-stack-edge-gpu-deploy-configure-compute.md)
 
-Sie sind bereit, Computeworkloads auf Ihrem Gerät [über IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md), [über `kubectl`](azure-stack-edge-gpu-create-kubernetes-cluster.md) oder [über Kubernetes mit Azure Arc-Aktivierung](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) bereitzustellen! Wenn während des Setups Probleme auftreten, wechseln Sie zu [Beheben von Geräteproblemen](), [Bestellprobleme](azure-stack-edge-gpu-troubleshoot.md), [Zertifikatprobleme](azure-stack-edge-gpu-certificate-troubleshooting.md) oder „Kubernetes-Probleme“. 
+Sie sind bereit, Computeworkloads auf Ihrem Gerät [über IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md), [über `kubectl`](azure-stack-edge-gpu-create-kubernetes-cluster.md) oder [über Kubernetes mit Azure Arc-Unterstützung](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) bereitzustellen! Sollten während des Setups Probleme auftreten, lesen Sie die Problembehandlungsinformationen für [Azure Stack Edge Pro-GPU-Geräte](azure-stack-edge-gpu-troubleshoot.md), für [Zertifikatprobleme](azure-stack-edge-gpu-certificate-troubleshooting.md) oder für [IoT Edge-Probleme](azure-stack-edge-gpu-troubleshoot-iot-edge.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Installieren von Azure Stack Edge Pro GPU](./azure-stack-edge-gpu-deploy-install.md)
-
-
-

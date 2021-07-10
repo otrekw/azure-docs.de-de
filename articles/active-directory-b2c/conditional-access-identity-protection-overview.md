@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 05/13/2021
+ms.date: 05/28/2021
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37118a84468743053e6f825bf982b3073c5545d3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 739c20cb39db5fda3a182bc4c5379d0bc9c4d06e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060800"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690344"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Identity Protection und bedingter Zugriff für Azure AD B2C
 
@@ -26,7 +26,7 @@ Wenn Sie bereits mit [Identity Protection](../active-directory/identity-protecti
 ![Bedingter Zugriff in einem B2C-Mandanten](media/conditional-access-identity-protection-overview/conditional-access-b2c.png)
 
 > [!NOTE]
-> Für die Verwendung von bedingtem Zugriff ist Azure AD B2C Premium P2 erforderlich.
+> Für die Erstellung von Risikoanmeldungsrichtlinien ist Azure AD B2C **Premium 2** erforderlich. **Premium P1**-Mandanten können eine auf Standort, Anwendung, Benutzern oder Gruppen basierende Richtlinie erstellen. Weitere Informationen finden Sie unter [Ändern Ihres Azure AD B2C-Tarifs](billing.md#change-your-azure-ad-pricing-tier).
 
 ## <a name="benefits-of-identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Vorteile von Identity Protection und bedingtem Zugriff für Azure AD B2C  
 

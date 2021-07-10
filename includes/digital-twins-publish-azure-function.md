@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
-ms.openlocfilehash: ddc56ab05a087c9e86d67a13aebcfb8e65fbd78f
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 49f57f39ba59575417f3336d395b1cfa6cf97eb6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480733"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451105"
 ---
 Beginnen Sie im Projektmappen-Explorer, um das Projekt in einer Funktions-App in Azure zu veröffentlichen. Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie dann **Veröffentlichen** aus.
 
@@ -37,13 +37,13 @@ Füllen Sie im Fenster **Funktions-App (Windows): Neu erstellen** die folgenden 
 * Wählen Sie den **Standort** Ihrer Ressourcengruppe aus.
 * Erstellen Sie eine neue **Azure Storage**-Ressource, indem Sie den Link **Neu** auswählen. Geben Sie denselben Standort wie für Ihre Ressourcengruppe an, behalten Sie die anderen Standardwerte bei, und wählen Sie dann **OK** aus.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Screenshot: Visual Studio mit dem Dialogfeld zum Veröffentlichen der Azure-Funktion. Die Details einer neuen Funktions-App werden ausgefüllt, einschließlich Name, Abonnement, Ressourcengruppe, Plantyp, Standort und Azure Storage.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Screenshot: Visual Studio mit dem Dialogfeld zum Veröffentlichen der Azure-Funktion. Die Details einer neuen Funktions-App sind ausgefüllt.":::
 
 Klicken Sie anschließend auf **Erstellen**.
 
 Nachdem der App-Dienst erstellt wurde, wird die Registerkarte **Functions-Instanz** geöffnet. Ihre neue Funktions-App wird im Bereich **Funktions-Apps** unter Ihrer Ressourcengruppe angezeigt. Wählen Sie **Fertig stellen** aus.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Screenshot: Visual Studio mit dem Dialogfeld zum Veröffentlichen der Azure-Funktion. Die Registerkarte „Functions-Instanz“ ist ausgewählt. Die neue Funktions-App wird unter der Ressourcengruppe angezeigt.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Screenshot: Visual Studio mit dem Dialogfeld zum Veröffentlichen der Azure-Funktion. Die Registerkarte „Functions-Instanz“ ist ausgewählt.":::
 
 Vergewissern Sie sich im Bereich **Veröffentlichen**, der im Visual Studio-Fenster geöffnet wird, dass alle Informationen stimmen. Wählen Sie anschließend **Veröffentlichen** aus.
 
@@ -51,7 +51,7 @@ Vergewissern Sie sich im Bereich **Veröffentlichen**, der im Visual Studio-Fen
 
 > [!NOTE]
 > Wird ein Popupfenster wie im folgenden Beispiel angezeigt, wählen Sie **Versuch des Abrufs der Anmeldeinformationen aus Azure** und dann **Speichern** aus.
-> :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Screenshot: Visual Studio-Popupfenster „Anmeldeinformationen veröffentlichen“. Es enthält Felder für Benutzername und Kennwort sowie eine Schaltfläche zum Abrufen von Anmeldeinformationen aus Azure." border="false":::
+> :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Screenshot: Visual Studio mit dem Popupfenster „Anmeldeinformationen veröffentlichen“." border="false":::
 >
 > Wenn eine der folgenden Warnungen angezeigt wird, befolgen Sie die Anweisungen zum Aktualisieren auf die neueste Azure Functions-Runtimeversion:
 > * „Upgrade für Functions-Version in Azure“

@@ -6,16 +6,16 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 06/30/2021
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-azcli-net-ps
-ms.openlocfilehash: b24fbcafa917e4577dc0b13b83e83cf105174332
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: d852cc082640c676b06efc4799f9a3b7211dcf2e
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113113186"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591510"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource
 
@@ -23,7 +23,8 @@ Führen Sie erste Schritte mit Azure Communication Services aus, indem Sie Ihre 
 
 
 > [!WARNING]
-> Beachten Sie Folgendes: Obwohl Communication Services in mehreren geografischen Regionen verfügbar sind, muss für die Ressource ein Datenspeicherort auf „US“ festgelegt sein, um eine Telefonnummer zu erhalten. Beachten Sie ferner, dass es nicht möglich ist, eine Ressourcengruppe zugleich mit einer Ressource für Azure Communication Services zu erstellen. Beim Erstellen einer Ressource muss eine bereits erstellte Ressourcengruppe verwendet werden.
+> Beachten Sie Folgendes: Obwohl Communication Services in mehreren geografischen Regionen verfügbar sind, muss für die Ressource ein Datenspeicherort auf „US“ festgelegt sein, um eine Telefonnummer zu erhalten. Beachten Sie außerdem, dass Ressourcenbewegungen derzeit nicht unterstützt werden, aber in Kürze verfügbar sein werden.
+> Beachten Sie ferner, dass es nicht möglich ist, eine Ressourcengruppe zugleich mit einer Ressource für Azure Communication Services zu erstellen. Beim Erstellen einer Ressource muss eine bereits erstellte Ressourcengruppe verwendet werden.
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]

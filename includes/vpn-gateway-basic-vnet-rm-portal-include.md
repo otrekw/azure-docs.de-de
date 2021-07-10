@@ -1,34 +1,36 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 05/27/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a66596ecb926c1bf3c6b61cc99e1eb1b56e99158
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5741ab0207d5631aab4abd594f5ff557ebfe23b
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92328431"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110658245"
 ---
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Geben Sie in **Nach Ressourcen, Diensten und Dokumenten suchen (G+/)** den Begriff *virtuelles Netzwerk* ein.
 
-   ![Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks")
+   :::image type="content" source="./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png" alt-text="Screenshot der Suchleiste im Azure-Portal" border="false":::
 1. Wählen Sie aus den **Marketplace**-Ergebnissen das Ergebnis **Virtual Network** aus.
 
-   ![Virtuelles Netzwerk auswählen](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace-results.png "Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks")
+   :::image type="content" source="./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace-results.png" alt-text="Screenshot: Azure-Portal mit Suchleistenergebnissen und Auswahl von „Virtuelles Netzwerk“ im Marketplace." border="false":::
 1. Wählen Sie auf der Seite **Virtuelles Netzwerk** die Option **Erstellen** aus.
 
-   ![Seite „Virtuelles Netzwerk“](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Wählen Sie „Erstellen“ aus.")
+   :::image type="content" source="./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png" alt-text="Screenshot: Seite „Virtuelles Netzwerk“ mit Auswahl der Schaltfläche „Erstellen“." border="false":::
 1. Nachdem Sie **Erstellen** ausgewählt haben, wird die Seite **Virtuelles Netzwerk erstellen** geöffnet.
 1. Konfigurieren Sie auf der Registerkarte **Grundlagen** die VNET-Einstellungen **Projektdetails** und **Instanzendetails**.
 
-   ![Registerkarte „Grundlagen“:](./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png "Registerkarte „Grundlagen“") Beim Ausfüllen der Felder wird ein grünes Häkchen angezeigt, nachdem die eingegebenen Zeichen überprüft wurden. Einige Werte werden automatisch eingetragen und können durch eigene Werte ersetzt werden:
+   :::image type="content" source="./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png" alt-text="Screenshot der Registerkarte „Grundlagen“." border="false":::
+
+   Beim Ausfüllen der Felder wird ein grünes Häkchen angezeigt, nachdem die eingegebenen Zeichen überprüft wurden. Einige Werte werden automatisch eingetragen und können durch eigene Werte ersetzt werden:
 
    - **Abonnement**: Vergewissern Sie sich, dass das richtige Abonnement angegeben ist. Das Abonnement kann über die Dropdownliste geändert werden.
    - **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder klicken Sie auf **Neu erstellen**, um eine zu erstellen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](../articles/azure-resource-manager/management/overview.md#resource-groups).
@@ -37,7 +39,7 @@ ms.locfileid: "92328431"
 
 1. Konfigurieren Sie auf der Registerkarte **IP-Adressen** die Werte. Die in den nachstehenden Beispielen dargestellten Werte dienen zu Demonstrationszwecken. Passen Sie diese Werte entsprechend Ihren erforderlichen Einstellungen an.
 
-   ![Registerkarte „IP-Adressen“](./media/vpn-gateway-basic-vnet-rm-portal-include/addresses.png "Registerkarte „IP-Adressen“")  
+   :::image type="content" source="./media/vpn-gateway-basic-vnet-rm-portal-include/addresses.png" alt-text="Screenshot: Registerkarte „IP-Adressen“." border="false"::: 
    - **IPv4-Adressraum:** Standardmäßig wird automatisch ein Adressraum erstellt. Sie können auf den Adressraum klicken, um ihn an Ihre eigenen Werte anzupassen. Darüber hinaus können Sie zusätzliche Adressräume hinzufügen.
    - **Subnetz**: Wenn Sie den Standardadressraum verwenden, wird automatisch ein Standardsubnetz erstellt. Wenn Sie den Adressraum ändern, müssen Sie ein Subnetz hinzufügen. Wählen Sie **+ Subnetz hinzufügen** aus, um das Fenster **Subnetz hinzufügen** zu öffnen. Konfigurieren Sie die folgenden Einstellungen, und wählen Sie dann **Hinzufügen** aus, um die Werte hinzuzufügen:
       - **Subnetzname**: In diesem Beispiel haben wir dem Subnetz den Namen „FrontEnd“ gegeben.
