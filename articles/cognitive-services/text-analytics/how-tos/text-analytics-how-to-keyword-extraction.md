@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: fdf24fdc56d39d93fed0009e2fadbafd7f97db6c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e25851bc9d3cba6e71056a6fb6a24ff9a0cee6ce
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280495"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968063"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Beispiel: Erkennen von Schlüsselbegriffen mithilfe der Textanalyse
 
@@ -131,7 +131,7 @@ Alle POST-Anforderungen geben eine Antwort im JSON-Format mit den IDs und erkann
 
 Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei auf dem lokalen System speichern und sie anschließend in eine Anwendung importieren, in der Sie die Daten sortieren, durchsuchen und bearbeiten können.
 
-Ein Beispiel für die Ausgabe zur Schlüsselbegriffserkennung vom Endpunkt „v3.1-preview.2“ wird hier gezeigt:
+Ein Beispiel für die Ausgabe zur Schlüsselbegriffserkennung vom Endpunkt „v3.1-preview“ wird hier gezeigt:
 
 ### <a name="synchronous-result"></a>Synchrone Ergebnisse
 
@@ -269,3 +269,4 @@ In diesem Artikel haben Sie sich mit Konzepten und dem Workflow für die Extrakt
 * [Übersicht über die Textanalyse](../overview.md)
 * [Verwenden der Textanalyse-Clientbibliothek](../quickstarts/client-libraries-rest-api.md)
 * [Neuigkeiten](../whats-new.md)
+* [Modellversionen](../concepts/model-versioning.md)
