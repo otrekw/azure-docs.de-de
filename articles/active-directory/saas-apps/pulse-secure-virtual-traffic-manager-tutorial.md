@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/11/2020
+ms.date: 05/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 1e295075a5c1ae8daa6673757770bbef01208c1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58f77c53798d10e667248f625df1517515ca1fa7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92505723"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476486"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-virtual-traffic-manager"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Pulse Secure Virtual Traffic Manager
 
@@ -37,9 +37,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Pulse Secure Virtual Traffic Manager unterstützt **SP**-initiiertes einmaliges Anmelden
+* Pulse Secure Virtual Traffic Manager unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-pulse-secure-virtual-traffic-manager-from-the-gallery"></a>Hinzufügen von Pulse Secure Virtual Traffic Manager aus dem Katalog
+## <a name="add-pulse-secure-virtual-traffic-manager-from-the-gallery"></a>Hinzufügen von Pulse Secure Virtual Traffic Manager aus dem Katalog
 
 Zum Konfigurieren der Integration von Pulse Secure Virtual Traffic Manager in Azure AD müssen Sie Pulse Secure Virtual Traffic Manager aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -49,7 +49,6 @@ Zum Konfigurieren der Integration von Pulse Secure Virtual Traffic Manager in Az
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** im Suchfeld den Begriff **Pulse Secure Virtual Traffic Manager** ein.
 1. Wählen Sie im Ergebnisbereich **Pulse Secure Virtual Traffic Manager** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-pulse-secure-virtual-traffic-manager"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Pulse Secure Virtual Traffic Manager
 
@@ -70,20 +69,20 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Pulse Secure Virtual Traffic Manager** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<published virtual server FQDN>/saml/consume`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<PUBLISHED VIRTUAL SERVER FQDN>/saml/consume`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<published virtual server FQDN>/saml/metadata`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<PUBLISHED VIRTUAL SERVER FQDN>/saml/metadata`.
 
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<published virtual server FQDN>/saml/consume`
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<PUBLISHED VIRTUAL SERVER FQDN>/saml/consume`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Diese Werte erhalten Sie vom [Supportteam für den Pulse Secure Virtual Traffic Manager-Client](mailto:support@pulsesecure.net). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für die Anmelde-URL, die Antwort-URL und den Bezeichner. Diese Werte erhalten Sie vom [Supportteam für den Pulse Secure Virtual Traffic Manager-Client](mailto:support@pulsesecure.net). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -121,7 +120,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 In diesem Abschnitt wird die Konfiguration beschrieben, die zum Aktivieren der SAML-Authentifizierung von Azure AD für Pulse Secure Virtual Traffic Manager erforderlich ist. Alle Konfigurationsänderungen an Pulse Secure Virtual Traffic Manager werden mithilfe der Verwaltungsweboberfläche vorgenommen. 
 
-#### <a name="create-a-saml-trusted-identity-provider"></a>Erstellen eines vertrauenswürdigen SAML-Identitätsanbieters
+### <a name="create-a-saml-trusted-identity-provider"></a>Erstellen eines vertrauenswürdigen SAML-Identitätsanbieters
 
 a. Navigieren Sie zu **Pulse Virtual Traffic Manager Appliance-Verwaltungsoberfläche > Katalog > SAML > Katalog der vertrauenswürdigen Identitätsanbieter**, und klicken Sie auf **Bearbeiten**.
 
@@ -129,7 +128,7 @@ a. Navigieren Sie zu **Pulse Virtual Traffic Manager Appliance-Verwaltungsoberfl
 
 b. Fügen Sie die Details für den neuen vertrauenswürdigen SAML-Identitätsanbieter hinzu, indem Sie die Informationen von der Azure AD-Unternehmensanwendung auf der Seite „Einstellungen für einmaliges Anmelden“ kopieren und dann auf **Neuen vertrauenswürdigen Identitätsanbieter erstellen** klicken.
 
-![Erstellen eines neuen vertrauenswürdigen Identitätsanbieters](./media/pulse-secure-virtual-traffic-manager-tutorial/create-trusted-identity-provider.png)
+![Erstellen eines neuen vertrauenswürdigen Identitätsanbieters](./media/pulse-secure-virtual-traffic-manager-tutorial/identity-provider.png)
 
 * Geben Sie im Textfeld **Name** einen Namen für den vertrauenswürdigen Identitätsanbieter ein. 
 
@@ -141,9 +140,9 @@ b. Fügen Sie die Details für den neuen vertrauenswürdigen SAML-Identitätsanb
 
 c. Überprüfen Sie, ob der neue SAML-Identitätsanbieter erfolgreich erstellt wurde. 
 
-![Überprüfen des vertrauenswürdigen Identitätsanbieters](./media/pulse-secure-virtual-traffic-manager-tutorial/verify-saml-identity-provider.png)
+![Überprüfen des vertrauenswürdigen Identitätsanbieters](./media/pulse-secure-virtual-traffic-manager-tutorial/verify-identity-provider.png)
 
-#### <a name="configure-the-virtual-server-to-use-azure-ad-authentication"></a>Konfigurieren des virtuellen Servers für die Verwendung der Azure AD-Authentifizierung
+### <a name="configure-the-virtual-server-to-use-azure-ad-authentication"></a>Konfigurieren des virtuellen Servers für die Verwendung der Azure AD-Authentifizierung
 
 a. Navigieren Sie zu **Pulse Virtual Traffic Manager Appliance-Verwaltungsoberfläche > Dienste > Virtuelle Server**, und klicken Sie neben dem zuvor erstellten virtuellen Server auf **Bearbeiten**.
 
@@ -173,11 +172,11 @@ c. Konfigurieren Sie für den virtuellen Server die folgenden Authentifizierungs
 
     c. Legen Sie **auth!session!log_external_state** auf „Ja“ fest, um mögliche Probleme bei der Authentifizierung zu beheben. Andernfalls übernehmen Sie die Standardeinstellung „Nein“. 
 
-    d. Ändern Sie für **auth!session!cookie_attributes** den Wert in „HTTPOnly“. 
+    d. Ändern Sie für **auth!session!cookie_attributes** den Wert in „HTTPOnly“.
 
 3. SAML-Dienstanbieter –
 
-    ![SAML-Dienstanbieter](./media/pulse-secure-virtual-traffic-manager-tutorial/saml-service-provider.png)
+    ![SAML-Dienstanbieter](./media/pulse-secure-virtual-traffic-manager-tutorial/service-provider.png)
 
     a. Legen Sie im Textfeld **auth!saml!sp_entity_id** dieselbe URL fest, die Sie bei der Konfiguration des einmaligen Anmeldens in Azure AD als Bezeichner (Entitäts-ID) verwendet haben, z. B. `https://pulseweb.labb.info/saml/metadata`. 
 
@@ -199,12 +198,12 @@ In diesem Abschnitt erstellen Sie in Pulse Secure Virtual Traffic Manager einen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Pulse Secure Virtual Traffic Manager weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Pulse Secure Virtual Traffic Manager weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-2. Navigieren Sie direkt zur Pulse Secure Virtual Traffic Manager-Anmelde-URL, und initiieren Sie dort den Anmeldeflow.
+* Navigieren Sie direkt zur Pulse Secure Virtual Traffic Manager-Anmelde-URL, und initiieren Sie dort den Anmeldeflow.
 
-3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „Pulse Secure Virtual Traffic Manager“ klicken, werden Sie zur Anmelde-URL für Pulse Secure Virtual Traffic Manager umgeleitet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Pulse Secure Virtual Traffic Manager“ klicken, werden Sie zur Anmelde-URL für Pulse Secure Virtual Traffic Manager weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Pulse Secure Virtual Traffic Manager können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Pulse Secure Virtual Traffic Manager können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

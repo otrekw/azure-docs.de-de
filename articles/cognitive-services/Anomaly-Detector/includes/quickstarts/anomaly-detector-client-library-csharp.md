@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
-ms.openlocfilehash: 50c22bdda667e8b5762f660fae673628323ee143
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: f526038a37e6f4e4a5d03c516446653a95c08be4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444468"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110164795"
 ---
-Erfahren Sie etwas über die ersten Schritte mit der Anomalieerkennungs-Clientbibliothek für .NET. Führen Sie diese Schritte aus, um das Paket zu installieren und mit der Verwendung der vom Dienst zur Verfügung gestellten Algorithmen zu beginnen. Mit dem Anomalieerkennungsdienst können Sie Anomalien in Zeitreihendaten ermitteln, da unabhängig von der Branche, dem Szenario oder der Datenmenge automatisch die am besten geeigneten Modelle für Ihre Daten angewandt werden.
+Erfahren Sie etwas über die ersten Schritte mit der Clientbibliothek für Anomalieerkennung für C#. Führen Sie diese Schritte aus, um das Paket zu installieren und mit der Verwendung der vom Dienst zur Verfügung gestellten Algorithmen zu beginnen. Mit dem Anomalieerkennungsdienst können Sie Anomalien in Zeitreihendaten ermitteln, da unabhängig von der Branche, dem Szenario oder der Datenmenge automatisch die am besten geeigneten Modelle für Ihre Daten angewandt werden.
 
-Mit der Anomalieerkennungs-Clientbibliothek für .NET ist Folgendes möglich:
+Mit der Clientbibliothek für Anomalieerkennung für C# ist Folgendes möglich:
 
 * Erkennen von Anomalien in Ihrem gesamten Zeitreihendataset als Batchanforderung
 * Erkennen des Anomaliestatus des letzten Datenpunkts in Ihrer Zeitreihe

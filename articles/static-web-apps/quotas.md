@@ -1,37 +1,32 @@
 ---
-title: Kontingente in Azure Static Web Apps (Vorschauversion)
-description: Hier finden Sie Informationen zu Kontingenten im Zusammenhang mit der Vorschauversion von Azure Static Web Apps.
+title: Kontingente in Azure Static Web Apps
+description: Hier finden Sie Informationen zu Kontingenten im Zusammenhang mit Azure Static Web Apps.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e3538e90a6dea69c703f56871fde86a18557a022
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 12666d69f6dcab043e909dbb2b49276644a70d76
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095168"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069560"
 ---
-# <a name="quotas-in-azure-static-web-apps-preview"></a>Kontingente in Azure Static Web Apps (Vorschauversion)
+# <a name="quotas-in-azure-static-web-apps"></a>Kontingente in Azure Static Web Apps
 
-Für die Vorschauversion von Azure Static Web Apps gelten folgende Kontingente.
+Für Azure Static Web Apps gelten folgende Kontingente.
 
-> [!IMPORTANT]
-> Azure Static Web Apps befindet sich in der Public Preview-Phase und ist nicht für den Einsatz in der Produktion vorgesehen.
-
-| Funktion                     | Free-Plan        |
-|-----------------------------|------------------|
-| Enthaltene Bandbreite          | 100 GB pro Monat |
-| Zusätzliche Bandbreite           | Nicht verfügbar      |
-| Apps pro Azure-Abonnement | 10               |
-| App-Größe                    | 250 MB           |
-| Präproduktionsumgebungen | 3                |
-| Benutzerdefinierte Domänen              | 1                |
-| Autorisierung (mit benutzerdefinierten Rollen und Routingregeln) | Maximal 25 Endbenutzer, die möglicherweise zu benutzerdefinierten Rollen gehören |
-| Azure-Funktionen             | Verfügbar        |
-| SLA                         | Keine             |
+| Funktion                     | Free-Plan        | Standard-Plan |
+|-----------------------------|------------------|---------------|
+| Enthaltene Bandbreite          | 100 GB pro Monat und Abonnement | 100 GB pro Monat und Abonnement |
+| Zusätzliche Bandbreite           | Nicht verfügbar      | 0,20 USD pro GB |
+| Apps pro Azure-Abonnement | 10               | Unbegrenzt |
+| App-Größe                    | 250 MB           | 500 MB |
+| Präproduktionsumgebungen | 3                | 10 |
+| Benutzerdefinierte Domänen              | 2 pro App        | 5 pro App |
+| Autorisierung (mit benutzerdefinierten Rollen und Routingregeln) | Maximal 25 Endbenutzer, die möglicherweise zu benutzerdefinierten Rollen gehören | Maximal 25 Endbenutzer, die möglicherweise zu benutzerdefinierten Rollen gehören |
 
 ## <a name="github-storage"></a>GitHub-Speicher
 

@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 05/25/2021
 ms.author: banders
-ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 80c0627cdc2169ce3301ee56a449442387d8f6e1
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684744"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481100"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>Ermitteln der zu erwerbenden Reservierung
 
@@ -97,7 +97,7 @@ Informieren Sie sich genauer über [Empfehlungen](reserved-instance-purchase-rec
 
 ## <a name="recommendations-in-the-cost-management-power-bi-app"></a>Empfehlungen in der Power BI-App „Cost Management“
 
-Kunden mit Enterprise Agreement oder Microsoft-Kundenvereinbarung können die Berichte zur Abdeckung reservierter VM-Instanzen für virtuelle Computer und Kaufempfehlungen verwenden. Die Berichte zur Abdeckung geben Aufschluss über die Gesamtnutzung sowie über die Nutzung, die durch reservierte Instanzen abgedeckt ist.
+Kunden mit Enterprise Agreement können die Berichte zur Abdeckung reservierter VM-Instanzen für virtuelle Computer und Kaufempfehlungen verwenden. Die Berichte zur Abdeckung geben Aufschluss über die Gesamtnutzung sowie über die Nutzung, die durch reservierte Instanzen abgedeckt ist.
 
 1. Die Cost Management-App erhalten Sie [hier](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp).
 2. Navigieren Sie abhängig von dem Bereich, in dem Sie einkaufen möchten, zum gemeinsamen Bereich oder zum Einzelbereich des Berichts zur Abdeckung reservierter VM-Instanzen.

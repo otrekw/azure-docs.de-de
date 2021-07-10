@@ -6,15 +6,15 @@ author: nmurav
 manager: jken
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 06/30/2021
+ms.date: 3/23/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 377d6783fb73c2d03f7e4dde7b352abe1eaef993
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 2fa9cbba571fa5603607c5efea7f49a5822726e9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110797"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089414"
 ---
 # <a name="ensure-high-quality-media-in-azure-communication-services"></a>Sicherstellen von hoher Qualität für Medien in Azure Communication Services
 
@@ -63,7 +63,7 @@ Es folgen die Bandbreitenanforderungen für die nativen SDKs für Windows, Andro
 
 Für Azure Communication Services-Verbindungen wird eine Internetkonnektivität mit bestimmten Ports und IP-Adressen benötigt, um eine Multimediaumgebung mit hoher Qualität bereitstellen zu können. Auch wenn kein Zugriff auf diese Ports und IP-Adressen besteht, kann Azure Communication Services funktionieren. Die optimale Leistung wird aber nur erzielt, wenn die empfohlenen Ports und IP-Adressbereiche verfügbar sind.
 
-| Kategorie | IP-Adressbereiche oder FQDN | Ports | 
+| Category | IP-Adressbereiche oder FQDN | Ports | 
 | :-- | :-- | :-- |
 | Mediendatenverkehr | [IP-Adressbereiche für öffentliche Azure-Cloud](https://www.microsoft.com/download/confirmation.aspx?id=56519) | UDP 3478 bis 3481, TCP-Port 443 |
 | Signalisierung, Telemetrie, Registrierung| *.skype.com, *.microsoft.com, *.azure.net, *.azureedge.net, *.office.com, *.trouter.io | TCP-Ports 443 und 80 |

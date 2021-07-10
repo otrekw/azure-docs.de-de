@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 3f933a564e62bf3aae1ec05c6dde048100c22967
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 069238a6feb4425aba1da48b89d26128d6d54775
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107815844"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846984"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>Schnellstart: Azure Key Vault-Zertifikatclientbibliothek für JavaScript (Version 4)
 
@@ -191,7 +191,7 @@ const retrievedCertificate = await client.getCertificate(certificateName);
 
 ### <a name="delete-a-certificate"></a>Löschen eines Zertifikats
 
-Verwenden Sie abschließend die Methode [beginDeleteCertificate]https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#beginDeleteCertificate_string__BeginDeleteCertificateOptions_), um das Zertifikat aus Ihrem Schlüsseltresor zu löschen, und die Methode [purgeDeletedCertificate](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#purgeDeletedCertificate_string__PurgeDeletedCertificateOptions_), um es endgültig zu löschen.
+Verwenden Sie abschließend die Methode [beginDeleteCertificate](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#beginDeleteCertificate_string__BeginDeleteCertificateOptions_), um das Zertifikat aus Ihrem Schlüsseltresor zu löschen, bzw. die Methode [purgeDeletedCertificate](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#purgeDeletedCertificate_string__PurgeDeletedCertificateOptions_), um es endgültig zu löschen.
 
 ```javascript
 const deletePoller = await client.beginDeleteCertificate(certificateName);
@@ -262,7 +262,7 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 Führen Sie die folgenden Befehle aus, um die App auszuführen:
 
-```azurecli
+```cmd
 npm install
 npm index.js
 ```

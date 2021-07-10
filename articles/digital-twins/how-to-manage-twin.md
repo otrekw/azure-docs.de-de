@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 19e679b3bc899053ddcf75ff058ec19165b785cc
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 2c83ac769cc4a8aec6148e1a45ec6435f117d73a
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790467"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812048"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
@@ -28,6 +28,10 @@ Dieser Artikel beschreibt die Verwaltung digitaler Zwillinge. Informationen zum 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 [!INCLUDE [digital-twins-developer-interfaces.md](../../includes/digital-twins-developer-interfaces.md)]
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+:::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="Screenshot des Azure Digital Twins-Explorers mit Beispielmodellen und -zwillingen." lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
 
 ## <a name="create-a-digital-twin"></a>Erstellen eines digitalen Zwillings
 
@@ -137,7 +141,7 @@ Weitere Informationen zu den Serialisierungshilfsklassen wie `BasicDigitalTwin` 
 
 ## <a name="view-all-digital-twins"></a>Anzeigen aller digitalen Zwillinge
 
-Verwenden Sie zum Anzeigen aller digitalen Zwillinge in Ihrer Instanz eine [Abfrage](how-to-query-graph.md). Sie können eine Abfrage mit den [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder den [CLI-Befehlen](concepts-cli.md) ausführen.
+Verwenden Sie zum Anzeigen aller digitalen Zwillinge in Ihrer Instanz eine [Abfrage](how-to-query-graph.md). Sie können eine Abfrage mit den [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder den [CLI-Befehlen](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) ausführen.
 
 Im Folgenden finden Sie den Text der grundlegenden Abfrage, die eine Liste aller digitalen Zwillinge in der Instanz zurückgibt:
 
@@ -158,17 +162,58 @@ Im Folgenden finden Sie ein Beispiel für JSON Patch-Code. Dieses Dokument erset
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-Patches können mithilfe von [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument) des Azure .NET SDK erstellt werden. Beispiel:
+Patches können mithilfe von [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) des Azure .NET SDK erstellt werden. Beispiel:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
-### <a name="update-properties-in-digital-twin-components"></a>Aktualisieren von Eigenschaften in Komponenten digitaler Zwillinge
+### <a name="update-sub-properties-in-digital-twin-components"></a>Aktualisieren von Untereigenschaften in Komponenten digitaler Zwillinge
 
 Denken Sie daran, dass ein Modell Komponenten enthalten kann, sodass es aus anderen Modellen besteht. 
 
 Zum Patchen von Eigenschaften in den Komponenten eines digitalen Zwillings können Sie die Pfadsyntax im JSON-Patch verwenden:
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch-component.json":::
+
+### <a name="update-sub-properties-in-object-type-properties"></a>Aktualisieren von Untereigenschaften in Objekttypeigenschaften
+
+Modelle können Eigenschaften mit einem Objekttyp enthalten. Diese Objekte verfügen möglicherweise über eigene Eigenschaften, und Sie möchten möglicherweise eine dieser Untereigenschaften aktualisieren, die zur Objekttypeigenschaft gehört. Dieser Prozess ähnelt dem Prozess zum [Aktualisieren von Untereigenschaften in Komponenten](#update-sub-properties-in-digital-twin-components), erfordert jedoch möglicherweise einige zusätzliche Schritte. 
+
+Stellen Sie sich ein Modell mit der Objekttypeigenschaft `ObjectProperty` vor. `ObjectProperty` verfügt über eine Zeichenfolgeneigenschaft namens `StringSubProperty`.
+
+Wenn ein Zwilling mit diesem Modell erstellt wird, ist es nicht erforderlich, die `ObjectProperty` zu diesem Zeitpunkt zu instanziieren. Wenn die Objekteigenschaft während der Erstellung des Zwillings nicht instanziiert wird, wird kein Standardpfad für den Zugriff auf `ObjectProperty` und die zugehörige `StringSubProperty` für einen Patchvorgang erstellt. Sie müssen den Pfad zu `ObjectProperty` selbst hinzufügen, bevor Sie die Eigenschaften aktualisieren können.
+
+Dies kann mit einem JSON-Patchvorgang vom Typ `add` wie folgt geschehen:
+
+```json
+[
+  {
+    "op": "add", 
+    "path": "/ObjectProperty", 
+    "value": {"StringSubProperty":"<string-value>"}
+  }
+]
+```
+
+>[!NOTE]
+> Wenn `ObjectProperty` über mehrere Eigenschaften verfügt, sollten Sie alle Eigenschaften in das `value`-Feld dieses Vorgangs einbeziehen, auch wenn Sie nur Eigenschaft eine aktualisieren:
+> ```json
+>... "value": {"StringSubProperty":"<string-value>", "Property2":"<property2-value>", ...}
+>```
+
+
+Nachdem dies einmal erfolgt ist, ist ein Pfad zu `StringSubProperty` vorhanden, und sie kann von nun an direkt mit einem typischen `replace`-Vorgang aktualisiert werden:
+
+```json
+[
+  {
+    "op": "replace",
+    "path": "/ObjectProperty/StringSubProperty",
+    "value": "<string-value>"
+  }
+]
+```
+
+Obwohl der erste Schritt in Fällen, in denen `ObjectProperty` beim Erstellen des Zwillings instanziiert wurde, nicht notwendig ist, wird empfohlen, ihn jedes Mal zu verwenden, wenn Sie eine Untereigenschaft zum ersten Mal aktualisieren, da Sie nicht immer sicher wissen, ob die Objekteigenschaft ursprünglich instanziiert wurde oder nicht.
 
 ### <a name="update-a-digital-twins-model"></a>Aktualisieren eines Modells eines digitalen Zwillings
 
@@ -233,7 +278,7 @@ Kopieren Sie dann den **folgenden Code** des ausführbaren Beispiels in Ihr Proj
 Führen Sie als dann die folgenden Schritte aus, um den Projektcode zu konfigurieren:
 1. Fügen Sie Ihrem Projekt die Datei **Room.json** hinzu, die Sie zuvor heruntergeladen haben, und ersetzen Sie den Platzhalter `<path-to>` im Code, um dem Programm den Pfad mitzuteilen.
 2. Ersetzen Sie den Platzhalter `<your-instance-hostname>` durch den Hostnamen Ihrer Azure Digital Twins-Instanz.
-3. Als Nächstes fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu, die erforderlich sind, um Azure Digital Twins verwenden zu können. Bei der ersten handelt es sich um das Paket für das [Azure Digital Twins SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client), und die zweite stellt Tools zur Unterstützung der Authentifizierung bei Azure bereit.
+3. Als Nächstes fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu, die erforderlich sind, um Azure Digital Twins verwenden zu können. Bei der ersten handelt es sich um das Paket für das [Azure Digital Twins SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), und die zweite stellt Tools zur Unterstützung der Authentifizierung bei Azure bereit.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core
@@ -249,7 +294,7 @@ Nachdem Sie das Setup abgeschlossen haben, können Sie das Beispielcodeprojekt a
 
 Hier ist die Konsolenausgabe des obigen Programms: 
 
-:::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="Konsolenausgabe, die zeigt, dass der Zwilling erstellt, aktualisiert und gelöscht wurde" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
+:::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="Screenshot: Konsolenausgabe, die zeigt, dass der Zwilling erstellt, aktualisiert und gelöscht wurde." lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

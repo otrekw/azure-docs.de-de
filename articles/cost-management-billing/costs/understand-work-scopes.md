@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: afa2811fe6e0dab3bc5c114febeec8aae25bd891
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 67d8ef5bf6960ca03d8d2d36efbe4461e1124190
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765573"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695252"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -73,7 +73,7 @@ Cost Management unterstützt für jeden der folgenden Bereiche die folgenden int
 - **Planen des Exports von Kostendaten**: Cost Management-Mitwirkende benötigen auch Zugriff für das Verwalten von Speicherkonten, um einen Export zum Kopieren von Daten in ein Speicherkonto zu planen. Erwägen Sie das Zuweisen der Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor) zu einer Ressourcengruppe, die das Speicherkonto enthält, in das Kostendaten exportiert werden.
 - **Anzeigen von Empfehlungen für Kosteneinsparungen**: Cost Management-Leser und Cost Management-Mitwirkende haben in der Standardeinstellung Zugriff auf die *Anzeige* von Empfehlungen. Der Zugriff auf die Kostenempfehlungen erfordert jedoch den Zugriff auf einzelne Ressourcen. Erwägen Sie, eine [dienstspezifische Rolle](../../role-based-access-control/built-in-roles.md#all) zuzulassen, wenn Sie auf eine kostenbasierte Empfehlung reagieren möchten.
 
-Verwaltungsgruppen werden nur unterstützt, wenn sie Abonnements mit Enterprise Agreement (EA), nutzungsbasierter Bezahlung (Pay-as-you-go, PAYG) oder interne Microsoft-Abonnements enthalten. Für Verwaltungsgruppen mit anderen Abonnementtypen (z. B. Abonnements mit Microsoft-Kundenvereinbarung oder Azure Active Directory-Abonnements) können keine Kosten angezeigt werden. Wenn Sie über eine Mischung von Abonnements verfügen, verschieben Sie die nicht unterstützten Abonnements in einen separaten Arm der Verwaltungsgruppenhierarchie, um Cost Management für die unterstützten Abonnements zu aktivieren. Erstellen Sie z. B. zwei Verwaltungsgruppen unter der Stammverwaltungsgruppe: **Azure AD** und **Meine Organisation**. Verschieben Sie das Azure AD-Abonnement in die Verwaltungsgruppe **Azure AD**, und verwenden Sie dann die Verwaltungsgruppe **Meine Organisation** zum Anzeigen und Verwalten von Kosten.
+Verwaltungsgruppen werden nur unterstützt, wenn sie bis zu 3.000 Abonnements mit Enterprise Agreement (EA), nutzungsbasierter Bezahlung (Pay-as-you-go, PAYG) oder interne Microsoft-Abonnements enthalten. Für Verwaltungsgruppen mit mehr als 3.000 Abonnements oder anderen Abonnementtypen (z. B. Abonnements mit Microsoft-Kundenvereinbarung oder Azure Active Directory-Abonnements) können keine Kosten angezeigt werden. Wenn Sie über eine Mischung von Abonnements verfügen, verschieben Sie die nicht unterstützten Abonnements in einen separaten Arm der Verwaltungsgruppenhierarchie, um Cost Management für die unterstützten Abonnements zu aktivieren. Erstellen Sie z. B. zwei Verwaltungsgruppen unter der Stammverwaltungsgruppe: **Azure AD** und **Meine Organisation**. Verschieben Sie das Azure AD-Abonnement in die Verwaltungsgruppe **Azure AD**, und verwenden Sie dann die Verwaltungsgruppe **Meine Organisation** zum Anzeigen und Verwalten von Kosten.
 
 ### <a name="feature-behavior-for-each-role"></a>Verhalten der Funktionen für jede Rolle
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/03/2021
+ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 58e2a19f2d57eafc7d2967141d584dc7a22fe76c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c086440cce663f6c22b05b9a52c33b526106355
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955668"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559714"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>Tutorial: Integrieren von Zscaler Private Access (ZPA) mit Azure Active Directory
 
@@ -41,6 +41,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. 
 
 * Zscaler Private Access (ZPA) unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Zscaler Private Access (ZPA) unterstützt die [**automatisierte** Bereitstellung von Benutzern](zscaler-private-access-provisioning-tutorial.md).
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
 ## <a name="add-zscaler-private-access-zpa-from-the-gallery"></a>Hinzufügen von Zscaler Private Access (ZPA) über den Katalog
 
@@ -53,7 +56,7 @@ Zum Konfigurieren der Integration von Zscaler Private Access (ZPA) in Azure AD m
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Zscaler Private Access (ZPA)** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Zscaler Private Access (ZPA)** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-zscaler-private-access-zpa"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Zscaler Private Access (ZPA)
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Zscaler Private Access (ZPA) mithilfe eines Testbenutzers namens **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Zscaler Private Access (ZPA) eingerichtet werden.
 
@@ -76,11 +79,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie auf der Seite **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
-
-    1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`.
+1. Führen Sie auf der Seite **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
     1. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die folgende URL ein: `https://samlsp.private.zscaler.com/auth/metadata`.
+
+    1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://samlsp.private.zscaler.com/auth/login?domain=<DOMAIN_NAME>`.
 
     > [!NOTE]
     > Der Wert **Anmelde-URL** entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Anmelde-URL. Wenden Sie sich an das [Supportteam für den Zscaler Private Access (ZPA)-Client](https://help.zscaler.com/zpa-submit-ticket), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -154,6 +157,8 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 ### <a name="create-zscaler-private-access-zpa-test-user"></a>Erstellen eines Testbenutzers in Zscaler Private Access (ZPA)
 
 In diesem Abschnitt erstellen Sie in Zscaler Private Access (ZPA) einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Supportteam von Zscaler Private Access (ZPA)](https://help.zscaler.com/zpa-submit-ticket) zusammen, um die Benutzer auf der Plattform Zscaler Private Access (ZPA) hinzuzufügen.
+
+Außerdem unterstützt Zscaler Private Access (ZPA) die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](zscaler-private-access-provisioning-tutorial.md).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

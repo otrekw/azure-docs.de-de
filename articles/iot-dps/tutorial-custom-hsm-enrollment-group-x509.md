@@ -3,17 +3,17 @@ title: 'Tutorial: Bereitstellen von X.509-Geräten für Azure IoT Hub mit einem 
 description: In diesem Tutorial werden Registrierungsgruppen verwendet. Das Tutorial enthält eine Beschreibung, wie Sie X.509-Geräte mit einem benutzerdefinierten Hardwaresicherheitsmodul (HSM) und dem C-Geräte-SDK für Azure IoT Hub Device Provisioning Service (DPS) bereitstellen.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/28/2021
+ms.date: 05/24/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b178aa4a524cb7fcc85c7fc68ac5f772747787a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e7d024d4d5b1e058e7a0b895faae5d2e7425f44
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99052362"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472125"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Tutorial: Bereitstellen mehrerer X.509-Geräte mit Registrierungsgruppen
 
@@ -121,6 +121,10 @@ In diesem Abschnitt generieren Sie zum Testen der einzelnen Geräte für dieses 
 #### <a name="create-root-and-intermediate-certificates"></a>Erstellen von Stamm- und Zwischenzertifikaten
 
 So erstellen Sie die Stamm- und Zwischenteile der Zertifikatkette:
+
+> [!IMPORTANT]
+> Verwenden Sie in diesem Artikel nur den Bash-Shellansatz. Die Verwendung von PowerShell ist möglich, wird aber in diesem Artikel nicht behandelt.
+
 
 1. Öffnen Sie eine Git Bash-Eingabeaufforderung. Führen Sie die Schritte 1 und 2 aus, indem Sie die Anleitung für die Bash-Shell unter [Verwalten von Zertifizierungsstellen-Testzertifikaten für Beispiele und Tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md#managing-test-ca-certificates-for-samples-and-tutorials) verwenden.
 
@@ -233,9 +237,9 @@ So erstellen Sie die Gerätezertifikate, die vom Zwischenzertifikat in der Kette
     >
     > Das Gerät muss aber auch über Zugriff auf den privaten Schlüssel für das Gerätezertifikat verfügen. Dies ist erforderlich, weil das Gerät zur Laufzeit, wenn die Bereitstellung durchgeführt werden soll, diesen Schlüssel für die Verifizierung verwenden muss. Die Vertraulichkeit dieses Schlüssels ist einer der Hauptgründe, warum wir Ihnen empfehlen, zum Schützen von privaten Schlüsseln für ein echtes HSM hardwarebasierten Speicher zu verwenden.
 
-4. Wiederholen Sie die Schritte 1 bis 3 für ein zweites Gerät mit der Geräte-ID `custom-hsm-device-02`. Verwenden Sie für dieses Gerät die folgenden Werte:
+4. Löschen Sie *./certs/new-device.cert.pem*, und wiederholen Sie die Schritte 1 bis 3 für ein zweites Gerät mit der Geräte-ID `custom-hsm-device-02`. Sie müssen *./certs/new-device.cert.pem* löschen, andernfalls schlägt die Zertifikatgenerierung für das zweite Gerät fehl. In diesem Artikel werden nur die vollständigen Kettenzertifikatdateien verwendet. Verwenden Sie für das zweite Gerät die folgenden Werte:
 
-    |   BESCHREIBUNG                 |  Wert  |
+    |   Beschreibung                 |  Wert  |
     | :---------------------------- | :--------- |
     | Antragstellername                  | `custom-hsm-device-02` |
     | Vollständige Zertifikatkettendatei   | *./certs/new-device-02-full-chain.cert.pem* |
@@ -290,7 +294,7 @@ Fügen Sie die Signaturzertifikate dem Zertifikatspeicher auf Windows-basierten 
     winpty openssl pkcs12 -inkey ../private/azure-iot-test-only.intermediate.key.pem -in ./azure-iot-test-only.intermediate.cert.pem -export -out ./intermediate.pfx
     ```
 
-2. Klicken Sie mit der rechten Maustaste auf die Schaltfläche **Start** von Windows. Klicken Sie dann mit der linken Maustaste auf **Ausführen**. Geben Sie *certmgr.mcs* ein, und klicken Sie auf **OK**, um das MMC-Snap-In für den Zertifikat-Manager zu starten.
+2. Klicken Sie mit der rechten Maustaste auf die Schaltfläche **Start** von Windows. Klicken Sie dann mit der linken Maustaste auf **Ausführen**. Geben Sie *certmgr.msc* ein, und klicken Sie auf **OK**, um das MMC-Snap-In für den Zertifikat-Manager zu starten.
 
 3. Klicken Sie im Zertifikat-Manager unter **Zertifikate > Aktueller Benutzer** auf **Vertrauenswürdige Stammzertifizierungsstellen**. Klicken Sie anschließend im Menü auf **Aktion** > **Alle Aufgaben** > **Importieren**, um `root.pfx` zu importieren.
 
