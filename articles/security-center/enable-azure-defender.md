@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 02/24/2021
-ms.openlocfilehash: 7124014821c79fa37aa04da8909e3b4ac3bcb4fb
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 06/07/2021
+ms.openlocfilehash: 4f7900c4abc37df776c231ac9d70a09862f6d49f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492493"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748395"
 ---
 # <a name="quickstart-enable-azure-defender"></a>Schnellstart: Aktivieren von Azure Defender
 
@@ -32,7 +32,7 @@ Wenn Sie alle Security Center-Features einschließlich des Bedrohungsschutzes a
 
 - Sie können **Azure Defender für Storage-Konten** entweder auf Abonnement- oder auf Ressourcenebene aktivieren
 - Sie können **Azure Defender für SQL** entweder auf Abonnement- oder auf Ressourcenebene aktivieren
-- Den Schutz vor Bedrohungen für **Azure Database for MariaDB/MySQL/PostgreSQL** können Sie nur auf Ressourcenebene aktivieren
+- Sie können **Azure Defender für relationale Open-Source-Datenbanken** nur auf Ressourcenebene aktivieren.
 
 ### <a name="to-enable-azure-defender-on-your-subscriptions-and-workspaces"></a>So aktivieren Sie Azure Defender für Ihre Abonnements und Arbeitsbereiche:
 
@@ -64,6 +64,21 @@ Wenn Sie alle Security Center-Features einschließlich des Bedrohungsschutzes a
         :::image type="content" source="./media/enable-azure-defender/upgrade-selected-workspaces-and-subscriptions.png" alt-text="Aktualisieren aller ausgewählten Arbeitsbereiche und Abonnements über die Seite „Erste Schritte“":::
 
 
+## <a name="disable-azure-defender"></a>Deaktivieren von Azure Defender
+
+Wenn Sie Azure Defender für ein Abonnement deaktivieren müssen, ist das Verfahren identisch, aber Sie wählen **Azure Defender aus** aus:
+ 
+1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
+1. Wählen Sie das relevante Abonnement aus.
+1. Wenn für Ihr Abonnement Azure Defender aktiviert ist, öffnen Sie **Azure Defender-Pläne**, und wählen Sie **Azure Defender aus** aus.
+
+    :::image type="content" source="./media/enable-azure-defender/disable-plans.png" alt-text="Aktivieren oder Deaktivieren von Azure Defender":::
+
+1. Wählen Sie **Speichern** aus.
+
+> [!NOTE]
+> Nachdem Sie Azure Defender deaktiviert haben – unabhängig davon, ob Sie einen einzelnen Plan oder alle Pläne gleichzeitig deaktivieren – kann die Datensammlung für einen kurzen Zeitraum fortgesetzt werden. 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Azure Defender aktiviert haben, aktivieren Sie die automatische Datensammlung durch die erforderlichen Agents und Erweiterungen, wie unter [Automatische Bereitstellung von Agents und Erweiterungen aus Azure Security Center](security-center-enable-data-collection.md) beschrieben.
+Nachdem Sie Azure Defender aktiviert haben, aktivieren Sie die automatische Datensammlung durch die erforderlichen Agents und Erweiterungen, wie unter [Automatische Bereitstellung von Agents und Erweiterungen](security-center-enable-data-collection.md) beschrieben.
