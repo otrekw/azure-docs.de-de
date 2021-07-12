@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: b49ded912037c8935b67e64d4e4bb09402576bc7
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 63b02b66b68e40ae9ae209979d6464d97c30caf3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203629"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967907"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Fehler bei Service Request. Status: 403 (Unzulässig)
 
@@ -29,7 +29,7 @@ In den meisten Fällen zeigt dieser Fehler an, dass Ihre Azure RBAC-Berechtigung
 
 ### <a name="cause-2"></a>Ursache 2
 
-Wenn Sie für die Kommunikation mit Azure Digital Twins eine Client-App verwenden, die sich mit einer [App-Registrierung](how-to-create-app-registration.md) authentifiziert, kann dieser Fehler auftreten, da Ihre App-Registrierung keine eingerichteten Berechtigungen für den Azure Digital Twins-Dienst aufweist.
+Wenn Sie für die Kommunikation mit Azure Digital Twins eine Client-App verwenden, die sich mit einer [App-Registrierung](./how-to-create-app-registration-portal.md) authentifiziert, kann dieser Fehler auftreten, da Ihre App-Registrierung keine eingerichteten Berechtigungen für den Azure Digital Twins-Dienst aufweist.
 
 Die App-Registrierung muss über konfigurierte Zugriffsberechtigungen für die Azure Digital Twins-APIs verfügen. Wenn Ihre Client-App dann bei der App-Registrierung authentifiziert wird, erhält sie die für die App-Registrierung konfigurierten Berechtigungen.
 
@@ -74,19 +74,19 @@ Wechseln Sie zur Registerkarte *Alle Anwendungen*, um alle App-Registrierungen a
 
 Die soeben erstellte App-Registrierung sollte in der Liste angezeigt werden. Wählen Sie sie aus, um die Details zu öffnen.
 
-:::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Seite „App-Registrierungen“ im Azure-Portal":::
+:::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Screenshot der Seite „App-Registrierungen“ im Azure-Portal.":::
 
-Vergewissern Sie sich zunächst, dass die Azure Digital Twins-Berechtigungseinstellungen für die Registrierung ordnungsgemäß festgelegt wurden. Wählen Sie hierzu auf der Menüleiste *Manifest* aus, um den Manifestcode der App-Registrierung anzuzeigen. Scrollen Sie zum unteren Bereich des Codefensters, und suchen Sie nach diesen Feldern unter `requiredResourceAccess`. Die Werte sollten den Werten im nachstehenden Screenshot entsprechen:
+Vergewissern Sie sich zunächst, dass die Azure Digital Twins-Berechtigungseinstellungen für die Registrierung ordnungsgemäß festgelegt wurden. Wählen Sie hierzu auf der Menüleiste *Manifest* aus, um den Manifestcode der App-Registrierung anzuzeigen. Scrollen Sie zum unteren Bereich des Codefensters, und suchen Sie nach diesen Feldern unter `requiredResourceAccess`. Die Werte sollten den Werten im folgenden Screenshot entsprechen:
 
-:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Portalansicht des Manifests für die Azure AD-App-Registrierung":::
+:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Screenshot des Manifests für die Azure AD-App-Registrierung im Azure-Portal.":::
 
 Wählen Sie als Nächstes auf der Menüleiste *API-Berechtigungen* aus, um sich zu vergewissern, dass diese App-Registrierung Lese-/Schreibberechtigungen für Azure Digital Twins enthält. Es sollte ein Eintrag wie der folgende angezeigt werden:
 
-:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Portalansicht der API-Berechtigungen für die Azure AD-App-Registrierung mit „Lese-/Schreibzugriff“ für Azure Digital Twins":::
+:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Screenshot der API-Berechtigungen für die Azure AD-App-Registrierung im Azure-Portal mit „Lese-/Schreibzugriff“ für Azure Digital Twins.":::
 
 #### <a name="fix-issues"></a>Beheben von Problemen
 
-Wenn etwas anders als beschrieben aussieht, befolgen Sie die Anweisungen zum Einrichten einer App-Registrierung unter [Vorgehensweise: Erstellen einer App-Registrierung](how-to-create-app-registration.md).
+Wenn etwas anders als beschrieben aussieht, befolgen Sie die Anweisungen zum Einrichten einer App-Registrierung unter [Vorgehensweise: Erstellen einer App-Registrierung](./how-to-create-app-registration-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
