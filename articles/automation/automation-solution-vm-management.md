@@ -3,27 +3,29 @@ title: Übersicht der Azure Automation-Funktion „VMs außerhalb der Geschäfts
 description: In diesem Artikel wird die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ beschrieben, die VMs gemäß einem Zeitplan startet oder beendet und sie proaktiv in Azure Monitor-Protokollen überwacht.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/04/2020
+ms.date: 05/25/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b28367aa242d5fab71dc5046ff6188c634883f03
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 0ac3a2dccecf50b53917d878535ce62e124f8f8e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834514"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479546"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
 Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ startet bzw. beendet aktivierte virtuelle Azure-Computer. Damit können Sie Computer nach benutzerdefinierten Zeitplänen starten und beenden und außerdem über Azure Monitor-Protokolle Erkenntnisse aus Ihren Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/alerts/action-groups.md) optional E-Mails senden. Die Funktion kann in den meisten Szenarien sowohl auf Azure Resource Manager-VMs als auch auf klassischen VMs aktiviert werden.
 
+> [!NOTE]
+> Bevor Sie diese Version (v1) installieren, möchten wir Sie auf die [nächste Version](../azure-functions/start-stop-vms/overview.md) hinweisen, die zur Zeit als Preview erhältlich ist. Diese neue Version (v2) bietet dieselbe Funktionalität wie die gegenwärtige, ist aber darauf ausgelegt, neuere Technologien in Azure zu nutzen. Sie fügt einige der häufig von Kunden angeforderten Features hinzu, z. B. die Unterstützung für mehrere Abonnements von einer einzelnen Starten/Beenden-Instanz. 
+>
+> „VMs außerhalb der Geschäftszeiten starten/beenden“ (v1) wird ab dem 21.5.2022 nicht mehr unterstützt. 
+
 Diese Funktion verwendet das Cmdlet [Start-AzVm](/powershell/module/az.compute/start-azvm) zum Starten von VMs. Zum Beenden von VMs wird [Stop-AzVM](/powershell/module/az.compute/stop-azvm) verwendet.
 
 > [!NOTE]
-> Die Runbooks wurden zwar aktualisiert und verwenden die neuen Cmdlets des Azure Az-Moduls, verwenden aber weiterhin den AzureRM-Präfixalias.
-
-> [!NOTE]
-> Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ wurde dahingehend aktualisiert, dass sie die neuesten verfügbaren Versionen der Azure-Module unterstützt. Die aktualisierte Version dieser Funktion, die im Marketplace verfügbar ist, bietet keine Unterstützung für AzureRM-Module, da eine Migration von AzureRM- zu Az-Modulen durchgeführt wurde.
+> Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ wurde dahingehend aktualisiert, dass sie die neuesten verfügbaren Versionen der Azure-Module unterstützt. Die aktualisierte Version dieser Funktion, die im Marketplace verfügbar ist, bietet keine Unterstützung für AzureRM-Module, da eine Migration von AzureRM- zu Az-Modulen durchgeführt wurde. Die Runbooks wurden zwar aktualisiert und verwenden die neuen Cmdlets des Azure Az-Moduls, verwenden aber weiterhin den AzureRM-Präfixalias.
 
 Die Funktion bietet eine dezentrale und kostengünstige Automatisierungsoption für Benutzer, die ihre VM-Kosten optimieren möchten. Sie können die Funktion für Folgendes verwenden:
 
@@ -36,14 +38,11 @@ Die aktuelle Funktion hat folgende Einschränkungen:
 - Sie ermöglicht die Verwaltung von VMs in allen Regionen. Allerdings lässt sie sich nur unter demselben Abonnement wie Ihr Azure Automation-Konto verwenden.
 - Sie ist in Azure und Azure Government für jede Region verfügbar, die einen Log Analytics-Arbeitsbereich, ein Azure Automation-Konto und Warnungen unterstützt. Azure Government-Regionen unterstützen derzeit keine E-Mail-Funktionalität.
 
-> [!NOTE]
-> Vor der Installation dieser Version möchten wir Sie über die [nächste Version](https://github.com/microsoft/startstopv2-deployments) informieren, die sich derzeit in der Vorschauphase befindet.  Diese neue Version (V2) bietet dieselbe Funktionalität wie diese, ist aber darauf ausgelegt, neuere Technologien in Azure zu nutzen. Sie fügt einige der häufig von Kunden angeforderten Features hinzu, z. B. die Unterstützung für mehrere Abonnements von einer einzelnen Starten/Beenden-Instanz.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Die Runbooks für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ funktionieren mit einem [ausführenden Azure-Konto](./automation-security-overview.md#run-as-accounts). Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
 
-- Ein [Azure Monitor Log Analytics-Arbeitsbereich](../azure-monitor/logs/design-logs-deployment.md) zum Speichern der Protokolle zu Runbookaufträgen und der Ergebnisse von Auftragsstreams in einem Arbeitsbereich für Abfragen und Analysen. Das Automation-Konto kann mit einem neuen oder einem vorhandenen Log Analytics-Arbeitsbereich verknüpft sein, und beide Ressourcen müssen sich in derselben Ressourcengruppe befinden.
+- Ein [Azure Monitor Log Analytics-Arbeitsbereich](../azure-monitor/logs/design-logs-deployment.md) zum Speichern der Protokolle zu Runbookaufträgen und der Ergebnisse von Auftragsstreams in einem Arbeitsbereich für Abfragen und Analysen. Das Automation-Konto und der Log Analytics-Arbeitsbereich müssen zum selben Abonnement und zur selben unterstützten Region gehören. Der Arbeitsbereich muss bereits vorhanden sein. Sie können während der Bereitstellung dieser Funktion keinen neuen Arbeitsbereich erstellen.
 
 Sie sollten für die Arbeit mit VMs, die für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ aktiviert sind, ein separates Automation-Konto verwenden. Die Azure-Modulversionen werden häufig aktualisiert, und ihre Parameter können sich ändern. Die Funktion wird nicht mit derselben Häufigkeit aktualisiert, sodass sie eventuell nicht mit neueren Versionen der verwendeten Cmdlets funktioniert. Vor dem Importieren der aktualisierten Module in Ihre Automation-Produktionskonten sollten Sie sie in ein Automation-Testkonto importieren, um sicherzustellen, dass keine Kompatibilitätsprobleme vorliegen.
 
@@ -57,7 +56,7 @@ Wenn Sie Mitwirkender im Abonnement und globaler Administrator in Ihrem Azure Ac
 
 Um VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ unter Verwendung eines vorhandenen Automation-Kontos und eines vorhandenen Log Analytics-Arbeitsbereichs zu aktivieren, benötigen Sie die folgenden Berechtigungen für den Gültigkeitsbereich der Ressourcengruppe. Weitere Informationen zu Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).
 
-| Berechtigung | `Scope`|
+| Berechtigung | Bereich|
 | --- | --- |
 | Microsoft.Automation/automationAccounts/read | Ressourcengruppe |
 | Microsoft.Automation/automationAccounts/variables/write | Ressourcengruppe |
@@ -80,7 +79,7 @@ Um VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden�
 
 ### <a name="permissions-for-new-automation-account-and-new-log-analytics-workspace"></a>Berechtigungen bei neuem Automation-Konto und Log Analytics-Arbeitsbereich
 
-Sie können VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ unter Verwendung eines neuen Automation-Kontos sowie eines neuen Log Analytics-Arbeitsbereichs aktivieren. In diesem Fall benötigen Sie die im vorherigen Abschnitt definierten Berechtigungen und darüber hinaus die in diesem Abschnitt definierten Berechtigungen. Außerdem benötigen Sie die folgenden Rollen:
+Sie können VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ unter Verwendung eines neuen Automation-Kontos sowie eines neuen Log Analytics-Arbeitsbereichs aktivieren. In diesem Fall benötigen Sie die im vorherigen und in diesem Abschnitt definierten Berechtigungen. Außerdem benötigen Sie die folgenden Rollen:
 
 - Co-Administrator für das Abonnement. Diese Rolle ist erforderlich, um das klassische ausführende Konto zu erstellen, wenn Sie klassische VMs verwalten möchten. [Klassische ausführende Konten](automation-create-standalone-account.md#create-a-classic-run-as-account) werden nicht mehr standardmäßig erstellt.
 - Mitglied der Rolle „Anwendungsentwickler“ in [Azure AD](../active-directory/roles/permissions-reference.md). Weitere Informationen zum Konfigurieren von ausführenden Konten finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](automation-security-overview.md#permissions).
@@ -100,7 +99,7 @@ Sie können VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten
 
 ## <a name="components"></a>Komponenten
 
-Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ enthält vorkonfigurierte Runbooks, Zeitpläne und eine Integration in Azure Monitor-Protokolle. Mithilfe dieser Elemente können Sie das Starten und Herunterfahren Ihrer VMs an Ihre geschäftlichen Anforderungen anpassen.
+Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ enthält vorkonfigurierte Runbooks, Zeitpläne und eine Integration in die Azure Monitor-Protokolle. Mithilfe dieser Elemente können Sie das Starten und Herunterfahren Ihrer VMs an Ihre geschäftlichen Anforderungen anpassen.
 
 ### <a name="runbooks"></a>Runbooks
 
