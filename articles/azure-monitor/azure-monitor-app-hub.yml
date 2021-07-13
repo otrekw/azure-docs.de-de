@@ -392,7 +392,7 @@ conceptualContent:
         - url: ./app/asp-net-troubleshoot-no-data.md
           itemType: how-to-guide
           text: Problembehandlung ohne Daten
-        - url: ./faq.md
+        - url: ./faq.yml
           itemType: how-to-guide
           text: Häufig gestellte Fragen zur Problembehandlung
     - title: Verweis

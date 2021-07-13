@@ -118,8 +118,6 @@
   items:
     - name: Entwicklung
       items:
-        - name: Herstellen einer Verbindung zwischen MXChip IoT DevKit und IoT Hub
-          href: how-to-connect-mxchip-iot-devkit.md
         - name: Senden zusätzlicher Daten von Geräten
           href: how-to-send-additional-data.md
         - name: Bereitstellen von Geräten mithilfe von benutzerdefinierten Zuordnungsrichtlinien

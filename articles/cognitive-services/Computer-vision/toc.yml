@@ -13,7 +13,7 @@ items:
       - name: Neues
         href: whats-new.md
       - name: Häufig gestellte Fragen zu maschinellem Sehen
-        href: FAQ.md
+        href: FAQ.yml
   - name: Optische Zeichenerkennung (OCR)
     items:
       - name: OCR-Übersicht
