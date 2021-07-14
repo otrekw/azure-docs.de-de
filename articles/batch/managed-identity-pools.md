@@ -2,14 +2,13 @@
 title: Konfigurieren verwalteter Identitäten in Azure Batch-Pools
 description: Erfahren Sie, wie Sie benutzerseitig zugewiesene verwaltete Identitäten auf Azure Batch-Pools aktivieren und verwaltete Identitäten innerhalb der Knoten verwenden.
 ms.topic: conceptual
-ms.date: 03/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: d69e983a4b17298150942c924a3c694e2cceaf72
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.date: 05/25/2021
+ms.openlocfilehash: 243cf375b3ebf8bd64d73022ba44c3224b58872d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967250"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457768"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>Konfigurieren verwalteter Identitäten in Azure Batch-Pools
 
@@ -18,9 +17,9 @@ Dank [verwalteter Identitäten für Azure-Ressourcen](../active-directory/manage
 In diesem Thema wird erläutert, wie Sie benutzerseitig zugewiesene verwaltete Identitäten auf Azure Batch-Pools aktivieren und verwaltete Identitäten innerhalb der Knoten verwenden.
 
 > [!IMPORTANT]
-> Die Unterstützung von Azure Batch-Pools mit benutzerseitig zugewiesenen verwalteten Identitäten befindet sich derzeit für die folgenden Regionen in der öffentlichen Vorschau: USA, Westen 2; USA, Süden-Mitte; USA, Osten; US Gov Arizona; US Gov Virginia.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Pools müssen über die [VM-Konfiguration](nodes-and-pools.md#virtual-machine-configuration) konfiguriert werden, um verwaltete Identitäten verwenden zu können.
+>
+> Das Erstellen von Pools mit verwalteten Identitäten kann mithilfe der [Batch .NET-Verwaltungsbibliothek](/dotnet/api/overview/azure/batch#management-library) erfolgen, wird aber derzeit nicht von der [Batch .NET-Clientbibliothek](/dotnet/api/overview/azure/batch#client-library) unterstützt.
 
 ## <a name="create-a-user-assigned-identity"></a>Erstellen einer benutzerseitig zugewiesenen Identität
 
@@ -29,9 +28,6 @@ In diesem Thema wird erläutert, wie Sie benutzerseitig zugewiesene verwaltete I
 ## <a name="create-a-batch-pool-with-user-assigned-managed-identities"></a>Erstellen eines Azure Batch-Pools mit benutzerseitig zugewiesenen verwalteten Identitäten
 
 Nachdem Sie eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten erstellt haben, können Sie einen Azure Batch-Pool mit dieser verwalteten Identität erstellen, indem Sie die [Azure Batch .NET-Verwaltungsbibliothek](/dotnet/api/overview/azure/batch#management-library) verwenden.
-
-> [!IMPORTANT]
-> Pools müssen über die [VM-Konfiguration](nodes-and-pools.md#virtual-machine-configuration) konfiguriert werden, um verwaltete Identitäten verwenden zu können.
 
 ```csharp
 var poolParameters = new Pool(name: "yourPoolName")
@@ -72,9 +68,6 @@ var pool = await managementClient.Pool.CreateWithHttpMessagesAsync(
     parameters: poolParameters,
     cancellationToken: default(CancellationToken)).ConfigureAwait(false);    
 ```
-
-> [!NOTE]
-> Das Erstellen von Pools mit verwalteten Identitäten wird derzeit von der [Azure Batch.NET-Clientbibliothek](/dotnet/api/overview/azure/batch#client-library) nicht unterstützt.
 
 ## <a name="use-user-assigned-managed-identities-in-batch-nodes"></a>Verwenden benutzerseitig zugeordneter verwalteter Identitäten in Azure Batch-Knoten
 

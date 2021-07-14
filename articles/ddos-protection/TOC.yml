@@ -72,7 +72,7 @@
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
-      href: ddos-faq.md
+      href: ddos-faq.yml
     - name: Preise
       href: 'https://azure.microsoft.com/en-us/pricing/details/ddos-protection/'
     - name: Regionale Verfügbarkeit
