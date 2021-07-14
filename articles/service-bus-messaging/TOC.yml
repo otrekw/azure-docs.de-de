@@ -34,14 +34,14 @@
               href: service-bus-python-how-to-use-queues.md
             - name: JavaScript (@azure/service-bus)
               href: service-bus-nodejs-how-to-use-queues.md
-            - name: PHP
-              href: service-bus-php-how-to-use-queues.md
         - name: Senden und Empfangen von Nachrichten (alte Versionen/Pakete)
           items:
             - name: .NET (Microsoft.Azure.ServiceBus)
               href: service-bus-dotnet-get-started-with-queues-legacy.md
             - name: Java (azure-servicebus)
               href: service-bus-java-how-to-use-queues-legacy.md
+            - name: PHP
+              href: service-bus-php-how-to-use-queues.md
     - name: Service Bus-Themen und -Abonnements
       items:
         - name: Erstellen von Themen und Abonnements
@@ -62,14 +62,14 @@
               href: service-bus-python-how-to-use-topics-subscriptions.md
             - name: JavaScript (@azure/service-bus)
               href: service-bus-nodejs-how-to-use-topics-subscriptions.md
-            - name: PHP
-              href: service-bus-php-how-to-use-topics-subscriptions.md
         - name: Veröffentlichen und Abonnieren von Nachrichten (alte Versionen/Pakete)
           items:
             - name: .NET (Microsoft.Azure.ServiceBus)
               href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
             - name: Java (azure-servicebus)
               href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
+            - name: PHP
+              href: service-bus-php-how-to-use-topics-subscriptions.md
 - name: Tutorials
   items:
     - name: Aktualisieren des Bestands
