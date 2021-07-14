@@ -18,7 +18,7 @@
           href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: Microsoft 365-Rollen
           href: m365-workload-docs.md
-    - name: Gruppenbasierte Rollenzuweisungen
+    - name: Verwenden von Gruppen zum Verwalten von Rollenzuweisungen
       href: groups-concept.md
     - name: Verwaltungseinheiten
       href: administrative-units.md
@@ -87,9 +87,9 @@
     - name: Problembehandlung
       items:
         - name: Behandeln von Problemen bei Rollen mit Gruppenzuweisung
-          href: groups-faq-troubleshooting.md
+          href: groups-faq-troubleshooting.yml
         - name: Behandeln von Problemen mit Verwaltungseinheiten
-          href: admin-units-faq-troubleshoot.md
+          href: admin-units-faq-troubleshoot.yml
         - name: Erhalten von Support für Azure AD
           href: ../fundamentals/active-directory-troubleshooting-support-howto.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Verweis

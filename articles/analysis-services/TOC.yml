@@ -44,7 +44,7 @@
     - name: Unterstützte Datenquellen
       href: analysis-services-datasource.md
     - name: Häufig gestellte Fragen zu Netzwerkkonnektivität
-      href: analysis-services-network-faq.md
+      href: analysis-services-network-faq.yml
 - name: Vorgehensweise
   items:
     - name: Server
