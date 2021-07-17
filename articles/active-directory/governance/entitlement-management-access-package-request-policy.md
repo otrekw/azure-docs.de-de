@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87792b8469c78e20a8716bd925d71933f9d97c5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ccd3de1b05c416ea25f7636c683f887dccc76898
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560487"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713790"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern der Anforderungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -54,7 +54,7 @@ Informationen zur Prioritätslogik, die beim Anwenden mehrerer Richtlinien verwe
 
 Wenn Sie über eine Gruppe von Benutzern verfügen, für die unterschiedliche Anforderungs- und Genehmigungseinstellungen gelten sollen, müssen Sie wahrscheinlich eine neue Richtlinie erstellen. Führen Sie die folgenden Schritte aus, um einem vorhandenen Zugriffspaket eine neue Richtlinie hinzuzufügen:
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -85,7 +85,7 @@ Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Benutzer in Ihrem Verzeic
 
 1. Wählen Sie eine der folgenden Optionen aus:
 
-    |  | Beschreibung |
+    |  | BESCHREIBUNG |
     | --- | --- |
     | **Bestimmte Benutzer und Gruppen** | Wählen Sie diese Option aus, wenn Sie möchten, dass nur die von Ihnen angegebenen Benutzer und Gruppen in Ihrem Verzeichnis dieses Zugriffspaket anfordern können sollen. |
     | **Alle Mitglieder (keine Gäste)** | Wählen Sie diese Option aus, wenn Sie möchten, dass alle Mitgliedsbenutzer in Ihrem Verzeichnis dieses Zugriffspaket anfordern können sollen. Diese Option umfasst keine Gastbenutzer, die Sie möglicherweise in Ihr Verzeichnis eingeladen haben. |
@@ -122,7 +122,7 @@ Gehen Sie folgendermaßen vor, wenn Sie Benutzern, die sich nicht in Ihrem Verze
 
 1. Wählen Sie eine der folgenden Optionen aus:
 
-    |  | Beschreibung |
+    |  | BESCHREIBUNG |
     | --- | --- |
     | **Bestimmte verbundene Organisationen** | Wählen Sie diese Option aus, wenn Sie aus einer Liste mit Organisationen auswählen möchten, die Ihr Administrator zuvor hinzugefügt hat. Alle Benutzer aus den ausgewählten Organisationen können dieses Zugriffspaket anfordern. |
     | **Alle konfigurierten verbundenen Organisationen** | Wählen Sie diese Option aus, wenn alle Benutzer aus allen Ihren konfigurierten verbundenen Organisationen dieses Zugriffspaket anfordern können. Nur Benutzer aus konfigurierten verbundenen Organisationen können Zugriffspakete anfordern, die Benutzern aus allen konfigurierten Organisationen angezeigt werden. |

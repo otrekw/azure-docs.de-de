@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 14c5484268940a927965acf798310c3bdccf17d3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: cb87ca44ecc7ff5c308dbf3a74390e34a0f5daea
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309712"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770009"
 ---
 # <a name="hbv3-series"></a>HBv3-Serie
 
@@ -28,7 +28,7 @@ Alle VMs der HBv3-Serie bieten 200 GBit/s HDR InfiniBand aus dem NVIDIA-Netzwer
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) demnächst<br>
-[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt ([in der Vorschauphase](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks))<br>
 <br>
 
 |Size |vCPU |Prozessor |Arbeitsspeicher (GiB) |Speicherbandbreite GB/s |Basis-CPU-Frequenz (GHz) |Frequenz für alle Kerne (GHz, Spitze) |Frequenz für Einzelkern (GHz, Spitze) |RDMA-Leistung (Gbit/s) |MPI-Unterstützung |Temporärer Speicher (GiB) |Max. Anzahl Datenträger |Max. virtuelle Ethernet-Netzwerkkarten (vNICs) |
@@ -39,7 +39,7 @@ Alle VMs der HBv3-Serie bieten 200 GBit/s HDR InfiniBand aus dem NVIDIA-Netzwer
 |Standard_HB120-32rs_v3 |32  |AMD EPYC 7V13 |448 |350 |2.45 |3.1 |3,675 |200 |All |2 × 960 |32 |8 |
 |Standard_HB120-16rs_v3 |16  |AMD EPYC 7V13 |448 |350 |2.45 |3.1 |3,675 |200 |All |2 × 960 |32 |8 |
 
-Erfahren Sie mehr über die:
+Weitere Informationen:
 - [Architektur und VM-Topologie](./workloads/hpc/hbv3-series-overview.md)
 - Unterstützter [Softwarestapel](./workloads/hpc/hbv3-series-overview.md#software-specifications) einschließlich unterstützter Betriebssysteme
 - Erwartete [Leistung](./workloads/hpc/hbv3-performance.md) der VM der HBv3-Serien
