@@ -3,16 +3,16 @@ title: 'Schnellstart: Ausführen eines benutzerdefinierten Containers in App Ser
 description: Führen Sie erste Schritte mit Containern in Azure App Service aus, indem Sie Ihren ersten benutzerdefinierten Container bereitstellen.
 author: msangapu-msft
 ms.author: msangapu
-ms.date: 10/21/2019
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d4e22c58fd45edc4beb58b4b1b9ae7c835e8fa9
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745076"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215449"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Ausführen eines benutzerdefinierten Containers in Azure
 
@@ -91,17 +91,17 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 
-1. Suchen Sie mithilfe des Suchfelds oberhalb der Azure Marketplace-Ressourcenliste nach **Web-App für Container**, und wählen Sie **Erstellen** aus.
+1. Wählen Sie unter **Beliebte Dienste** unter **Web-App** die Option **Erstellen** aus.
 
-1. Wählen Sie auf der Seite für die Web-App-Erstellung Ihr **Abonnement** und eine **Ressourcengruppe** aus. Bei Bedarf kann eine neue Ressourcengruppe erstellt werden.
+1. Wählen Sie auf der Seite **Web-App erstellen** Ihr Abonnement und eine **Ressourcengruppe** aus. Bei Bedarf kann eine neue Ressourcengruppe erstellt werden.
 
-1. Geben Sie einen App-Namen (beispielsweise *win-container-demo*) an, und wählen Sie unter **Betriebssystem** die Option **Windows** aus. Klicken Sie auf **Weiter: Docker** aus, um den Vorgang fortzusetzen.
+1. Geben Sie einen App-Namen an, z. B. *win-container-demo*. Wählen Sie für **Veröffentlichen** die Option **Docker-Container** und für **Betriebssystem** die Option **Windows** aus. Klicken Sie auf **Weiter: Docker** aus, um den Vorgang fortzusetzen.
 
-   ![Erstellen einer Web-App für Container](media/quickstart-custom-container/create-web-app-continer.png)
+   ![Erstellen einer Web-App für Container](media/quickstart-custom-container/create-web-app-container.png)
 
 1. Wählen Sie unter **Imagequelle** die Option **Docker Hub** aus, und geben Sie unter **Image und Tag** den Repositorynamen ein, den Sie im Schritt [Veröffentlichen in Docker Hub](#publish-to-docker-hub) kopiert haben.
 
-   ![Konfigurieren Ihrer Web-App für Container](media/quickstart-custom-container/configure-web-app-continer.png)
+   ![Konfigurieren Ihrer Web-App für Container](media/quickstart-custom-container/configure-web-app-container.png)
 
     Wenn Sie an anderer Stelle, etwa in [Azure Container Registry](../container-registry/index.yml) oder einem anderen privaten Repository, ein benutzerdefiniertes Image für Ihre Webanwendung besitzen, können Sie es hier konfigurieren.
 
@@ -192,44 +192,124 @@ Bei App Service für Linux werden vordefinierte Anwendungsstapel unter Linux mit
 * Die [Azure App Service-Erweiterung für VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Sie können diese Erweiterung zum Erstellen, Verwalten und Bereitstellen von Linux-Web-Apps in Azure Platform-as-a-Service (PAS) verwenden.
 * Die [Docker-Erweiterung für VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker). Mit dieser Erweiterung können Sie die Verwaltung lokaler Docker-Images und -Befehle vereinfachen und erstellte App-Images in Azure bereitstellen.
 
-## <a name="create-an-image"></a>Erstellen eines Images
+## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
-Für diesen Schnellstart benötigen Sie ein geeignetes Web-App-Image, das in einer [Azure Container Registry](../container-registry/index.yml)-Instanz gespeichert ist. Führen Sie die Schritte in [Schnellstart: Erstellen einer privaten Containerregistrierung im Azure-Portal](../container-registry/container-registry-get-started-portal.md) aus, verwenden Sie aber das `mcr.microsoft.com/azuredocs/go`-Image anstelle des `hello-world`-Images. Als Referenz finden Sie die [Dockerfile-Beispieldatei im Repository mit Azure-Beispielen](https://github.com/Azure-Samples/go-docs-hello-world).
+In diesem Schnellstart wird Azure Container Registry als Registrierung ausgewählt. Sie können auch andere Registrierungen verwenden, aber die Schritte können sich dann geringfügig unterscheiden.
+
+Verwenden Sie für das Erstellen einer Containerregistrierung die Anweisungen unter [Schnellstart: Erstellen einer privaten Containerregistrierung im Azure-Portal](../container-registry/container-registry-get-started-portal.md).
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass Sie beim Erstellen der Containerregistrierung die Option **Administratorbenutzer** auf **Aktivieren** festlegen. Sie können die Option auch im Azure-Portal im Abschnitt **Zugriffsschlüssel** Ihrer Registrierungsseite festlegen. Diese Einstellung ist für den App Service-Zugriff erforderlich.
+> Stellen Sie sicher, dass Sie beim Erstellen der Containerregistrierung in Azure die Option **Administratorbenutzer** auf **Aktivieren** festlegen. Sie können die Option auch im Azure-Portal im Abschnitt **Zugriffsschlüssel** Ihrer Registrierungsseite festlegen. Diese Einstellung ist für den App Service-Zugriff erforderlich.
 
 ## <a name="sign-in"></a>Anmelden
 
-Starten Sie als nächstes VS Code, und melden Sie sich mit der App Service-Erweiterung bei Ihrem Azure-Konto an. Wählen Sie hierzu das Azure-Logo in der Aktivitätsleiste aus, navigieren Sie zum **APP SERVICE**-Explorer, wählen Sie dann **Anmelden bei Azure** aus, und folgen Sie den Anweisungen.
+1. Starten Sie Visual Studio Code. 
+1. Wählen Sie das **Azure**-Logo auf der [Aktivitätsleiste](https://code.visualstudio.com/docs/getstarted/userinterface) aus, navigieren Sie zum **APP SERVICE**-Explorer, wählen Sie dann **Bei Azure anmelden** aus, und folgen Sie den Anweisungen.
 
-![Anmelden bei Azure](./media/quickstart-docker/sign-in.png)
+    ![Anmelden bei Azure](./media/quickstart-docker/sign-in.png)
+
+1. Überprüfen Sie unten auf der [Statusleiste](https://code.visualstudio.com/docs/getstarted/userinterface), ob die E-Mail-Adresse Ihres Azure-Kontos angezeigt wird. Im **APP SERVICE**-Explorer sollte Ihr Abonnement angezeigt werden.
+
+1. Wählen Sie auf der Aktivitätsleiste das **Docker**-Logo aus. Überprüfen Sie im **REGISTRIERUNGS**-Explorer, ob die von Ihnen erstellte Containerregistrierung angezeigt wird.
+
+    ![Screenshot mit dem Wert „Registrierungen“ und erweitertem Azure](./media/quickstart-docker/registries.png)
 
 ## <a name="check-prerequisites"></a>Überprüfen der Voraussetzungen
 
-Jetzt können Sie prüfen, ob alle erforderlichen Komponenten ordnungsgemäß installiert und konfiguriert sind.
-
-In VS Code sehen Sie Ihre Azure-E-Mail-Adresse in der Statusleiste und Ihr Abonnement im **APP SERVICE**-Explorer.
-
-Überprüfen Sie als nächstes, ob Docker installiert ist und ausgeführt wird. Wenn Docker ausgeführt wird, zeigt der folgende Befehl die Version an.
+Überprüfen Sie, ob Docker installiert ist und ausgeführt wird. Wenn Docker ausgeführt wird, zeigt der folgende Befehl die Version an.
 
 ```bash
 docker --version
 ```
 
-Stellen Sie abschließend sicher, dass Ihre Azure Container Registry-Instanz verbunden ist. Wählen Sie dazu das Docker-Logo in der Aktivitätsleiste aus, und navigieren Sie zu **REGISTRIERUNGEN**.
+## <a name="create-and-build-image"></a>Erstellen und Kompilieren eines Images
 
-![Screenshot, der den Wert „Registrierungen“ mit erweitertem Azure und einer Datei mit der Dateinamenerweiterung „.io“ zeigt.](./media/quickstart-docker/registries.png)
+1. Öffnen Sie in Visual Studio Code einen leeren Ordner, und fügen Sie eine Datei mit dem Namen `Dockerfile` hinzu. Fügen Sie im Dockerfile den Inhalt basierend auf Ihrem gewünschten Sprachframework ein:
 
-## <a name="deploy-the-image-to-azure-app-service"></a>Bereitstellen des Images in Azure App Service
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-Nachdem alles konfiguriert wurde, können Sie das Image direkt aus dem Docker-Erweiterungsexplorer in [Azure App Service](https://azure.microsoft.com/services/app-service/) bereitstellen.
+<!-- https://mcr.microsoft.com/v2/appsvc%2Fdotnetcore/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/appsvc/dotnetcore:lts
 
-Suchen Sie das Image unter dem Knoten **Registrierungen** im **DOCKER**-Explorer, und erweitern Sie es, um seine Tags anzuzeigen. Klicken Sie mit der rechten Maustaste auf ein Tag, und wählen Sie dann die Option zum **Bereitstellen des Images in Azure App Service**.
+ENV PORT 8080
+EXPOSE 8080
 
-Befolgen Sie dann die Aufforderungen, um ein Abonnement, einen global eindeutigen App-Namen, eine Ressourcengruppe und einen App Service-Plan auszuwählen. Wählen Sie **B1 Basic** als Tarif aus, sowie eine Region.
+ENV ASPNETCORE_URLS "http://*:${PORT}"
 
-Nach der Bereitstellung ist Ihre App unter `http://<app name>.azurewebsites.net` verfügbar.
+ENTRYPOINT ["dotnet", "/defaulthome/hostingstart/hostingstart.dll"]
+```
+
+In diesem Dockerfile ist das übergeordnete Image einer der integrierten .NET-Container von App Service. Sie finden die zugehörigen Quelldateien im [GitHub-Repository „Azure-App-Service/ImageBuilder“ unter „GenerateDockerFiles/dotnetcore“](https://github.com/Azure-App-Service/ImageBuilder/tree/master/GenerateDockerFiles/dotnetcore). Das [Dockerfile](https://github.com/Azure-App-Service/ImageBuilder/blob/master/GenerateDockerFiles/dotnetcore/debian-9/Dockerfile) kopiert eine einfache .NET-App in `/defaulthome/hostingstart`. Ihr Dockerfile startet einfach nur diese App.
+
+# <a name="nodejs"></a>[Node.js](#tab/node)
+
+<!-- https://mcr.microsoft.com/v2/appsvc%2Fnode/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/appsvc/node:10-lts
+
+ENV HOST 0.0.0.0
+ENV PORT 8080
+EXPOSE 8080
+
+ENTRYPOINT ["pm2", "start", "--no-daemon", "/opt/startup/default-static-site.js"]
+```
+
+In diesem Dockerfile ist das übergeordnete Image einer der integrierten Node.js-Container von App Service. Sie finden die zugehörigen Quelldateien im [GitHub-Repository „Azure-App-Service/ImageBuilder“ unter „GenerateDockerFiles/node/node-template“](https://github.com/Azure-App-Service/ImageBuilder/tree/master/GenerateDockerFiles/node/node-template). Das [Dockerfile](https://github.com/Azure-App-Service/ImageBuilder/blob/master/GenerateDockerFiles/node/node-template/Dockerfile) kopiert eine einfache Node.js-App in `/opt/startup`. Ihr Dockerfile startet diese App einfach mit PM2, das bereits vom übergeordneten Image installiert wurde.
+
+# <a name="python"></a>[Python](#tab/python)
+
+<!-- https://mcr.microsoft.com/v2/appsvc%2Fpython/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/appsvc/python:latest
+
+ENV PORT 8080
+EXPOSE 8080
+
+ENTRYPOINT ["gunicorn", "--timeout", "600", "--access-logfile", "'-'", "--error-logfile", "'-'", "--chdir=/opt/defaultsite", "application:app"]
+```
+
+In diesem Dockerfile ist das übergeordnete Image einer der integrierten Python-Container von App Service. Sie finden die zugehörigen Quelldateien im [GitHub-Repository „Azure-App-Service/ImageBuilder“ unter „GenerateDockerFiles/python/template-3.9“](https://github.com/Azure-App-Service/ImageBuilder/tree/master/GenerateDockerFiles/python/template-3.9). Das [Dockerfile](https://github.com/Azure-App-Service/ImageBuilder/blob/master/GenerateDockerFiles/python/template-3.9/Dockerfile) kopiert eine einfache Python-App in `/opt/defaultsite`. Ihr Dockerfile startet diese App einfach mithilfe von Gunicorn, das bereits vom übergeordneten Image installiert wurde.
+
+# <a name="java"></a>[Java](#tab/java)
+
+<!-- https://mcr.microsoft.com/v2/azure-app-service%2Fjava/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/azure-app-service/java:11-java11_stable
+
+ENV PORT 80
+EXPOSE 80
+
+ENTRYPOINT ["java", "-Dserver.port=80", "-jar", "/tmp/appservice/parkingpage.jar"]
+```
+
+In diesem Dockerfile ist das übergeordnete Image einer der integrierten Java-Container von App Service. Sie finden die zugehörigen Quelldateien im [GitHub-Repository „Azure-App-Service/java“ unter „java/tree/dev/java11-alpine“](https://github.com/Azure-App-Service/java/tree/dev/java11-alpine). Das [Dockerfile](https://github.com/Azure-App-Service/java/blob/dev/java11-alpine/Dockerfile) kopiert eine einfache Java-App in `/tmp/appservice`. Ihr Dockerfile startet einfach nur diese App.
+
+-----
+
+2. [Öffnen Sie die Befehlspalette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette), und geben Sie **Docker Images: Build Image** ein. Drücken Sie die **EINGABETASTE**, um den Befehl auszuführen.
+
+3. Geben Sie im Feld „Imagetag“ das gewünschte Tag im Format `<acr-name>.azurecr.io/<image-name>/<tag>` an. Dabei ist `<acr-name>` der Name der von Ihnen erstellten Containerregistrierung. Drücken Sie die **EINGABETASTE**.
+
+4. Klicken Sie nach Abschluss der Imageerstellung oben im **IMAGES**-Explorer auf **Aktualisieren**, und überprüfen Sie, ob das Image erfolgreich erstellt wurde.
+
+    ![Screenshot des erstellten Images mit Tag](./media/quickstart-docker/built-image.png)
+
+## <a name="deploy-to-container-registry"></a>Bereitstellen der Containerregistrierung
+
+1. Klicken Sie auf der Aktivitätsleiste auf das Symbol **Docker**. Suchen Sie im **IMAGES**-Explorer nach dem Image, das Sie gerade erstellt haben.
+1. Erweitern Sie das Image, klicken Sie mit der rechten Maustaste auf das gewünschte Tag, und klicken Sie auf **Pushen**.
+1. Achten Sie darauf, dass das Imagetag mit `<acr-name>.azurecr.io` beginnt, und drücken Sie die **EINGABETASTE**.
+1. Wenn Visual Studio Code das Pushen des Images in Ihre Containerregistrierung abgeschlossen hat, klicken Sie oben im **REGISTRIERUNGS**-Explorer auf **Aktualisieren**, und vergewissern Sie sich, dass das Image erfolgreich gepusht wurde.
+
+    ![Screenshot des in Azure Container Registry bereitgestellten Images](./media/quickstart-docker/image-in-registry.png)
+
+## <a name="deploy-to-app-service"></a>Bereitstellen in App Service
+
+1. Erweitern Sie das Image im **REGISTRIERUNGS**-Explorer, klicken Sie mit der rechten Maustaste auf das Tag, und klicken Sie dann auf **Deploy image to Azure App Service** (Image in Azure App Service bereitstellen).
+1. Befolgen Sie die Aufforderungen, um ein Abonnement, einen global eindeutigen App-Namen, eine Ressourcengruppe und einen App Service-Plan auszuwählen. Wählen Sie als Tarif **B1 Basic** sowie eine Region in Ihrer Nähe aus.
+
+Nach der Bereitstellung ist Ihre App unter `http://<app-name>.azurewebsites.net` verfügbar.
 
 Eine **Ressourcengruppe** ist eine benannte Sammlung aller Ressourcen Ihrer Anwendung in Azure. Eine Ressourcengruppe kann z. B. einen Verweis auf eine Website, eine Datenbank und eine Azure-Funktion enthalten.
 
@@ -237,27 +317,32 @@ Ein **App Service-Plan** definiert die physischen Ressourcen, die zum Hosten Ihr
 
 ## <a name="browse-the-website"></a>Navigieren auf der Website
 
-Der **Ausgabebereich** wird während der Bereitstellung geöffnet, um den Status des Vorgangs anzuzeigen. Wenn der Vorgang abgeschlossen ist, suchen Sie die App, die Sie im **APP SERVICE**-Explorer erstellt haben, klicken Sie mit der rechten Maustaste darauf, und wählen Sie dann **Website durchsuchen** aus, um die Website in Ihrem Browser zu öffnen.
+Im Bereich **Ausgabe** wird der Status der Bereitstellungsvorgänge angezeigt. Klicken Sie nach Abschluss des Vorgangs in der Popupbenachrichtigung auf **Website öffnen**, um die Website in Ihrem Browser zu öffnen.
 
 > [!div class="nextstepaction"]
 > [Ich bin auf ein Problem gestoßen](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Herzlichen Glückwunsch! Sie haben diese Schnellstartanleitung erfolgreich abgeschlossen!
+Herzlichen Glückwunsch! Sie haben diesen Schnellstart erfolgreich abgeschlossen.
 
-Sehen Sie sich als Nächstes die anderen Azure-Erweiterungen an.
+Die App Service-App führt bei jedem Start einen Pull aus der Containerregistrierung aus. Wenn Sie Ihr Image neu erstellen, müssen Sie es nur in Ihre Containerregistrierung pushen. Die App pullt dann das aktualisierte Image, wenn es neu gestartet wird. Wenn Ihre App das aktualisierte Image sofort pullen soll, starten Sie sie neu.
+
+> [!div class="nextstepaction"]
+> [Konfigurieren eines benutzerdefinierten Containers](configure-custom-container.md)
+
+> [!div class="nextstepaction"]
+> [Tutorial: Benutzerdefinierte Container](tutorial-custom-container.md)
+
+> [!div class="nextstepaction"]
+> [Tutorial: App mit mehreren Containern](tutorial-multi-container-app.md)
+
+Weitere Azure-Erweiterungen:
 
 * [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 * [Azure-Funktionen](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 * [Azure CLI-Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
 * [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-
-Oder installieren Sie das [Azure-Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)-Erweiterungspaket, um alle Erweiterungen auf einmal erhalten.
-
-Sehen Sie sich weitere Ressourcen an:
-
-> [!div class="nextstepaction"]
-> [Konfigurieren eines benutzerdefinierten Containers](configure-custom-container.md)
+* Das Erweiterungspaket [Azure-Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) enthält alle oben genannten Erweiterungen.
 
 ::: zone-end

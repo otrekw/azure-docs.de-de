@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie außerhalb von Azure gehostete Server mi
 keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, Hybrid
 ms.date: 05/26/2021
 ms.topic: overview
-ms.openlocfilehash: 307d09f23c5c1e74e2e4c81d77a3521652598fa4
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 2cf70cbf20d024d92a3a2025ca6b659ffdd8bffa
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110585492"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294677"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Was sind Server mit Azure Arc-Aktivierung?
 
@@ -23,7 +23,6 @@ Um diese Möglichkeit für Ihre außerhalb von Azure gehosteten Hybridcomputer n
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 Wenn Sie Ihren Computer mit Servern mit Azure Arc-Unterstützung verbinden, können Sie die folgenden Aufgaben für die Konfigurationsverwaltung und Überwachungsaufgaben ausführen:
-
 - Zuweisen von [Azure Policy-Gastkonfigurationen](../../governance/policy/concepts/guest-configuration.md) mit der gleichen Vorgehensweise wie bei der Richtlinienzuweisung für virtuelle Azure-Computer Derzeit werden von den meisten Gastkonfigurationsrichtlinien keine Konfigurationen angewendet, sondern sie dienen lediglich zur Überwachung der Einstellungen des Computers. Informationen zu den Kosten der Nutzung von Azure Policy-Gastkonfigurationsrichtlinien mit Arc-fähigen Servern finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/azure-policy/).
 
 - Erstellen Sie mit [Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md) in Azure Automation und mit der [Überwachung der Dateiintegrität in Azure Security Center ](../../security-center/security-center-file-integrity-monitoring.md) für Server, auf denen [Azure Defender für Server](../../security-center/defender-for-servers-introduction.md) aktiviert ist, Berichte zu Konfigurationsänderungen an installierter Software, an Microsoft-Diensten, an der Windows-Registrierung und Windows-Dateien sowie an Linux-Daemons auf überwachten Servern.
@@ -35,9 +34,11 @@ Wenn Sie Ihren Computer mit Servern mit Azure Arc-Unterstützung verbinden, kö
 - Verwalten Sie Betriebssystemupdates für Ihre Windows- und Linux-Server mithilfe der [Updateverwaltung](../../automation/update-management/overview.md) in Azure Automation.
 
     > [!NOTE]
-    > Zum aktuellen Zeitpunkt wird das Aktivieren der Updateverwaltung direkt von einem Arc-fähigen Server aus nicht unterstützt. Informationen zu den Anforderungen und wie Sie die Updateverwaltung für Ihren Server aktivieren, finden Sie unter [Aktivieren der Updateverwaltung aus Ihrem Automation-Konto](../../automation/update-management/enable-from-automation-account.md).
+    > Zum aktuellen Zeitpunkt wird das Aktivieren der Updateverwaltung direkt von einem Arc-fähigen Server aus nicht unterstützt. Informationen zu den Anforderungen und zum Aktivieren für Ihren Server finden Sie unter [Aktivieren der Updateverwaltung aus Ihrem Automation-Konto](../../automation/update-management/enable-from-automation-account.md).
 
-- Schließen Sie Ihren Azure-fremden Server für die Bedrohungserkennung ein, und überwachen Sie proaktiv potenzielle Sicherheitsbedrohungen mit dem [Azure Security Center](../../security-center/security-center-introduction.md).
+- Schließen Sie Ihren Azure-fremden Server in die erweiterte Bedrohungserkennung ein, und überwachen Sie proaktiv potenzielle Sicherheitsbedrohungen mit [Azure Security Center](../../security-center/security-center-introduction.md) oder [Azure Defender](../../security-center/azure-defender.md).
+
+- Schützen Sie Azure-fremde Server mit [Microsoft Defender für Endpunkt](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint), das über [Azure Defender](../../security-center/azure-defender.md) enthalten ist, um auch auf diese die Bedrohungserkennung, das Sicherheitsrisikomanagement und die proaktive Überwachung auf potenzielle Sicherheitsbedrohungen anzuwenden.
 
 Erfasste und in einem Log Analytics-Arbeitsbereich gespeicherte Protokolldaten des Hybridcomputers enthalten jetzt computerspezifische Eigenschaften wie etwa eine Ressourcen-ID. Dies kann zur Unterstützung des Protokollzugriffs im [Ressourcenkontext](../../azure-monitor/logs/design-logs-deployment.md#access-mode) verwendet werden.
 

@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: cfa4239fb6a3c78d861885478c1c643151ee6e13
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0a490811250d4665531119733ab959ed2780e741
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128557"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112280979"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf eine Web-API
 
@@ -128,7 +128,7 @@ Sie können die in dieser Tabelle angezeigten Berechtigungen hinzufügen oder en
 
 ### <a name="other-permissions-granted"></a>Weitere gewährte Berechtigungen
 
-Möglicherweise wird im Bereich **API-Berechtigungen** auch eine Tabelle mit dem Titel **Weitere gewährte Berechtigungen für {Mandant}** angezeigt. In der Tabelle **Weitere gewährte Berechtigungen für {Mandant}** werden Berechtigungen angezeigt, die dem Mandanten erteilt, aber nicht explizit für das Anwendungsobjekt konfiguriert wurden. Diese Berechtigungen wurden dynamisch angefordert und gewährt. Dieser Abschnitt wird nur angezeigt, wenn mindestens eine entsprechende Berechtigung vorhanden ist.
+Möglicherweise wird im Bereich **API-Berechtigungen** auch eine Tabelle mit dem Titel **Weitere gewährte Berechtigungen für {Mandant}** angezeigt. In der Tabelle **Weitere gewährte Berechtigungen für {Mandant}** werden Berechtigungen angezeigt, die dem gesamten Mandanten erteilt, aber nicht explizit für das Anwendungsobjekt konfiguriert wurden. Diese Berechtigungen wurden dynamisch im Namen aller Benutzer angefordert, und ein Administrator hat seine Einwilligung gegeben. Dieser Abschnitt wird nur angezeigt, wenn mindestens eine entsprechende Berechtigung vorhanden ist.
 
 Sie können den vollständigen Satz der Berechtigungen einer API oder einzelne Berechtigungen, die in dieser Tabelle enthalten sind, zur Tabelle **Konfigurierte Berechtigungen** hinzufügen. Als Administrator können Sie in diesem Abschnitt die Administratoreinwilligung für APIs oder einzelne Berechtigungen widerrufen.
 

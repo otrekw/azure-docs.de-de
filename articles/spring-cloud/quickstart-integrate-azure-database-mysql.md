@@ -7,14 +7,14 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 05/13/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 587c98478bd3c43313c437add57b7db90d47f84e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e4a9dc4d01cb2ea0aea42f00e6ece436194ce498
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110482393"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965006"
 ---
-# <a name="quickstart---integrate-azure-spring-cloud-with-azure-database-for-mysql"></a>Schnellstart: Integrieren von Azure Spring Cloud in Azure Database for MySQL
+# <a name="quickstart-integrate-azure-spring-cloud-with-azure-database-for-mysql"></a>Schnellstart: Integrieren von Azure Spring Cloud mit Azure Database for MySQL
 
 In der Standardkonfiguration verwendet die unter [Schnellstart: Erstellen und Bereitstellen von Apps für Azure Spring Cloud](quickstart-deploy-apps.md) bereitgestellte Pet Clinic eine In-Memory-Datenbank (HSQLDB), die beim Start mit Daten aufgefüllt wird. In diesem Schnellstart wird erklärt, wie Sie eine Azure Database for MySQL-Instanz bereitstellen und vorbereiten und dann Pet Clinic für Azure Spring Cloud konfigurieren, um sie mit nur einem Befehl als persistente Datenbank zu verwenden.
 
@@ -34,7 +34,7 @@ export MYSQL_DATABASE_NAME=petclinic
 
 ## <a name="prepare-an-azure-database-for-mysql-instance"></a>Vorbereiten einer Azure Database for MySQL-Instanz
 
-1. Erstellen Sie einen Azure Database for MySQL-Server.
+1. Erstellen eines Azure-Datenbank für MySQL-Servers
 
     ```azcli
     az mysql server create --resource-group ${RESOURCE_GROUP} \
@@ -162,4 +162,4 @@ az spring-cloud app update --name visits-service \
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Binden einer Azure Database for MySQL-Instanz an Ihre Azure Spring Cloud-Anwendung](how-to-bind-mysql.md)
-* [Verwenden einer verwalteten Identität zum Herstellen einer Verbindung zwischen Azure SQL-Datenbank und der Azure Spring Cloud-App](/connect-managed-identity-to-azure-sql.md)
+* [Verwenden einer verwalteten Identität zum Herstellen einer Verbindung zwischen Azure SQL-Datenbank und der Azure Spring Cloud-App](./connect-managed-identity-to-azure-sql.md)

@@ -10,12 +10,12 @@ ms.subservice: automanage
 ms.workload: infrastructure
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 7121d83f9401fe985966324afe6a61cf8396b2bb
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: d0c319fa9579f68c7f429283327f43869c4ab2b1
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534073"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006048"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Schnellstart: Aktivieren der automatischen Azure-Verwaltung für virtuelle Computer im Azure-Portal
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure
 
 Melden Sie sich beim [Azure-Portal](https://aka.ms/AutomanagePortal-Ignite21) an.
 
-## <a name="enable-automanage-for-a-single-vm"></a>Aktivieren von Automanage für eine einzelne VM
+## <a name="enable-automanage-for-a-single-machine"></a>Aktivieren von Automanage für einen einzelnen Computer
 
 1. Navigieren Sie zu der VM, die Sie aktivieren möchten.
 
@@ -51,7 +51,7 @@ Melden Sie sich beim [Azure-Portal](https://aka.ms/AutomanagePortal-Ignite21) an
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-enablepane.png" alt-text="„Aktivieren“ auf einer einzelnen VM.":::
 
-## <a name="enable-automanage-for-multiple-vms"></a>Aktivieren von Automanage für mehrere VMs
+## <a name="enable-automanage-for-multiple-machines"></a>Aktivieren von Automanage für mehrere Computer
 
 1. Suchen Sie über die Suchleiste nach **Automanage – Best Practices für Azure-VMs**, und wählen Sie die Option aus.
 
@@ -60,13 +60,15 @@ Melden Sie sich beim [Azure-Portal](https://aka.ms/AutomanagePortal-Ignite21) an
     :::image type="content" source="media\quick-create-virtual-machine-portal\zero-vm-list-view.png" alt-text="Für vorhandene VM aktivieren":::
 
 3. Gehen Sie auf dem Blatt **Computer auswählen** wie folgt vor:
-    1. Filtern Sie die Liste der virtuellen Computer nach Ihrem **Abonnement** und nach der **Ressourcengruppe**.
+    1. Filtern Sie die Liste nach Ihrem **Abonnement** und der **Ressourcengruppe**.
     1. Aktivieren Sie das Kontrollkästchen für jeden virtuellen Computer, den Sie integrieren möchten.
     1. Klicken Sie auf die Schaltfläche **Auswählen**.
+    > [!NOTE]
+    > Sie können sowohl Azure-VMs als auch Arc-fähige Server auswählen.
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
 
-4. Wählen Sie unter **Umgebung** Ihren Umgebungstyp aus: **Dev/Test** oder **Produktion**. 
+4. Wählen Sie unter **Umgebung** Ihren Umgebungstyp aus: **Dev/Test** oder **Produktion**.
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Auswählen der Umgebung":::
 
@@ -76,7 +78,7 @@ Melden Sie sich beim [Azure-Portal](https://aka.ms/AutomanagePortal-Ignite21) an
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Durchsuchen der Produktionsumgebung":::
 
-5. Standardmäßig ist die Einstellung **Azure Best Practices** für die Konfigurationseinstellungen ausgewählt. Um dies zu ändern, erstellen Sie eine neue Voreinstellung, oder wählen Sie eine vorhandene aus. 
+5. Standardmäßig ist die Einstellung **Azure Best Practices** für die Konfigurationseinstellungen ausgewählt. Um dies zu ändern, erstellen Sie eine neue Voreinstellung, oder wählen Sie eine vorhandene aus.
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\create-preference.png" alt-text="Erstellen der Voreinstellung":::
 

@@ -9,12 +9,13 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d38f1f294f60b73e8f1e69169a75333eb175c9f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 0f593d801bdcc477d6084a395630211393ffa9c7
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600155"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217285"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Schnellstart: Erstellen eines Synapse-Arbeitsbereichs
 In dieser Schnellstartanleitung werden die Schritte zum Erstellen eines Azure Synapse-Arbeitsbereichs über das Azure-Portal erläutert.
@@ -48,9 +49,17 @@ Nachdem Ihr Azure Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglich
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 1. Navigieren Sie zu einem vorhandenen ADLSGEN2-Speicherkonto.
-1. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus. Weisen Sie anschließend die folgenden Rollen zu, bzw. stellen Sie sicher, dass sie bereits zugewiesen sind:
-    * Weisen Sie sich selbst die Rolle **Besitzer** zu.
-    * Weisen Sie sich selbst die Rolle **Besitzer von Speicherblobdaten** zu.
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | „Besitzer“ und „Besitzer von Speicherblobdaten“ |
+    | Zugriff zuweisen zu | [USER |
+    | Member | Ihr Benutzername |
+
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 1. Wählen Sie im linken Bereich die Option **Container** aus, und erstellen Sie einen Container.
 1. Sie können dem Container einen beliebigen Namen geben. In diesem Dokument hat der Container den Namen **users**.
 1. Übernehmen Sie die Standardeinstellung **Öffentliche Zugriffsebene**, und wählen Sie anschließend **Erstellen** aus.
@@ -60,11 +69,20 @@ Nachdem Ihr Azure Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglich
 Verwaltete Identitäten für Ihren Azure Synapse-Arbeitsbereich verfügen unter Umständen bereits über Zugriff auf das Speicherkonto. Führen Sie die folgenden Schritte aus, um dies zu überprüfen:
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) und dann das primäre Speicherkonto, das Sie für Ihren Arbeitsbereich ausgewählt haben.
-1. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
-1. Weisen Sie die folgenden Rollen zu, bzw. stellen Sie sicher, dass sie bereits zugewiesen sind. Wir verwenden für die Identität und den Namen des Arbeitsbereichs den gleichen Namen.
-    * Weisen Sie für die Rolle **Mitwirkender an Storage-Blobdaten** des Speicherkontos **myworkspace** als Identität des Arbeitsbereichs zu.
-    * Weisen Sie **myworkspace** als Namen für den Arbeitsbereich zu.
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | Mitwirkender an Storage-Blobdaten |
+    | Zugriff zuweisen zu | MANAGEDIDENTITY |
+    | Member | myworkspace  |
 
+    > [!NOTE]
+    > Der Name der verwalteten Identität ist auch der Name des Arbeitsbereichs.
+
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 1. Wählen Sie **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte

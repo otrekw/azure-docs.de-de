@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 06/10/2021
-ms.openlocfilehash: 13f5bb8245ecc57c01d4236dfea7c9e4a2f7ae75
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 52ecc8a66dfa13747daf2b4b7fd227ef7ab5a3b2
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986316"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237163"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center Free und Azure Defender-Aktivierung
 Azure Defender ist in den ersten 30 Tagen kostenlos. Nach Ablauf der 30 Tage wird Ihnen die Nutzung automatisch in Rechnung gestellt, sofern Sie sich dafür entscheiden, den Dienst weiterhin zu nutzen.

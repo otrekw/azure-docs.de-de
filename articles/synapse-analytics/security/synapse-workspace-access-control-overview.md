@@ -1,5 +1,5 @@
 ---
-title: 'Übersicht: Zugriffssteuerung für einen Synapse-Arbeitsbereich'
+title: Übersicht über die Zugriffssteuerung für Azure Synapse-Arbeitsbereiche
 description: In diesem Artikel werden die Mechanismen beschrieben, die zum Steuern des Zugriffs auf einen Synapse-Arbeitsbereich und die darin enthaltenen Ressourcen und Codeartefakte verwendet werden.
 services: synapse-analytics
 author: RonyMSFT
@@ -9,26 +9,26 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20614b1c397bdf24e807d48d3de33f0033da14bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 574211bc426d97c5bd734dcf348b66ecce1b3ff8
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100105112"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217807"
 ---
-# <a name="synapse-access-control"></a>Synapse-Zugriffssteuerung 
+# <a name="azure-synapse-access-control"></a>Azure Synapse-Zugriffssteuerung 
 
-Dieser Artikel bietet eine Übersicht über die verfügbaren Mechanismen zum Steuern des Zugriffs auf Synapse-Computeressourcen und -Daten.  
+Dieser Artikel bietet eine Übersicht über die verfügbaren Mechanismen zum Steuern des Zugriffs auf Azure Synapse-Computeressourcen und -Daten.  
 
 ## <a name="overview"></a>Übersicht
 
-Synapse bietet ein umfassendes und differenziertes Zugriffssteuerungssystem, in das folgende Mechanismen integriert sind: 
+Azure Synapse bietet ein umfassendes und differenziertes Zugriffssteuerungssystem, in das folgende Mechanismen integriert sind: 
 - **Azure-Rollen** für die Ressourcenverwaltung und den Zugriff auf Daten im Speicher 
 - **Synapse-Rollen** für die Verwaltung des Livezugriffs auf Code und die Ausführung 
 - **SQL-Rollen** für den Zugriff auf Datenebene auf Daten in SQL-Pools und 
 - **Git-Berechtigungen** für die Quellcodeverwaltung, einschließlich Unterstützung für Continuous Integration und Deployment  
 
-Synapse-Rollen bieten Berechtigungssätze, die für verschiedene Bereiche angewendet werden können. Dank dieser Granularität ist es ganz einfach, Administratoren, Entwicklern, Sicherheitspersonal und Operatoren den entsprechenden Zugriff auf Computeressourcen und Daten zu gewähren.
+Azure Synapse-Rollen bieten Berechtigungssätze, die auf verschiedene Bereiche angewandt werden können. Dank dieser Granularität ist es ganz einfach, Administratoren, Entwicklern, Sicherheitspersonal und Operatoren den entsprechenden Zugriff auf Computeressourcen und Daten zu gewähren.
 
 Die Zugriffssteuerung kann mithilfe von Sicherheitsgruppen, die auf die Aufgabengebiete der Benutzer zugeschnitten sind, vereinfacht werden. Um den Zugriff zu verwalten, müssen Sie lediglich den entsprechenden Sicherheitsgruppen Benutzer hinzufügen bzw. daraus entfernen.
 

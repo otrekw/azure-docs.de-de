@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: ce5f1e9a7ab493bf7989a55fccb5ef696433d771
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 7dae716944426ce21cb81bdbb36992238e4bb227
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066968"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298437"
 ---
 # <a name="register-and-scan-teradata-source"></a>Registrieren und Überprüfen einer Teradata-Quelle
 
@@ -72,11 +72,11 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
 1.  Klicken Sie im Verwaltungscenter auf **Integration Runtimes**. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
 
-2.  Navigieren Sie zu **Quellen**.
+2.  Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
 
 3.  Wählen Sie die registrierte Teradata-Quelle aus.
 
-4.  Wählen Sie **+ New scan** (+ Neue Überprüfung) aus.
+4.  Wählen Sie **Neue Überprüfung** aus.
 
 5.  Geben Sie folgende Details an:
 
