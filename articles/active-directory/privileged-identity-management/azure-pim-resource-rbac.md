@@ -7,26 +7,26 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: pim
-ms.date: 01/10/2020
+ms.date: 04/20/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd211c284ef5240e3f658d90c5d801018a02b9bf
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96002492"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790179"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Anzeigen von Aktivitäten und des Überwachungsverlaufs für Azure-Ressourcenrollen in Privileged Identity Management
 
-Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie Aktivitäten, Aktivierungen und den Überwachungsverlauf für Azure-Ressourcenrollen innerhalb Ihrer Organisation anzeigen. Dies schließt Abonnements, Ressourcengruppen und sogar virtuelle Computer ein. Alle Ressourcen im Azure-Portal, die die Azure-Funktion für die rollenbasierte Zugriffssteuerung nutzen, können von den Sicherheits- und Lebenszyklusverwaltungsfunktionen von Privileged Identity Management profitieren.
+Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie Aktivitäten, Aktivierungen und den Überwachungsverlauf für Azure-Ressourcenrollen innerhalb Ihrer Organisation anzeigen. Dies schließt Abonnements, Ressourcengruppen und sogar virtuelle Computer ein. Alle Ressourcen im Azure-Portal, die die Azure-Funktion für die rollenbasierte Zugriffssteuerung nutzen, können von den Sicherheits- und Lebenszyklusverwaltungsfunktionen von Privileged Identity Management profitieren. Wenn Sie Überwachungsdaten länger als den Standardaufbewahrungszeitraum beibehalten möchten, können Sie Azure Monitor verwenden, um sie an ein Azure-Speicherkonto weiterzuleiten. Weitere Informationen finden Sie unter [Archivieren von Azure AD-Protokollen in einem Azure Storage-Konto](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md).
 
 > [!NOTE]
-> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
+> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [Azure Lighthouse](../../lighthouse/overview.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
 
 ## <a name="view-activity-and-activations"></a>Anzeigen von Aktivitäten und Aktivierungen
 
@@ -70,7 +70,7 @@ Angenommen, Sie müssen Prüfern aus Konformitätsgründen eine vollständige Li
 
     ![Exportierte Rollenzuweisungen in CSV-Datei wie in Excel angezeigt](media/azure-pim-resource-rbac/export-csv.png)
 
-## <a name="view-resource-audit-history"></a>Anzeigen des Ressourcenüberwachungsverlaufs
+## <a name="view-resource-audit-history&quot;></a>Anzeigen des Ressourcenüberwachungsverlaufs
 
 Die Ressourcenüberwachung bietet einen Überblick über alle Rollenaktivitäten für eine Ressource.
 
@@ -84,7 +84,7 @@ Die Ressourcenüberwachung bietet einen Überblick über alle Rollenaktivitäten
 
 1. Filtern Sie den Verlauf nach einem vordefinierten Datum oder nach einem benutzerdefinierten Bereich.
 
-    [![Ressourcenüberwachungsliste mit Filtern](media/azure-pim-resource-rbac/rbac-resource-audit.png "Ressourcenüberwachungsliste mit Filtern")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    [![Ressourcenüberwachungsliste mit Filtern](media/azure-pim-resource-rbac/rbac-resource-audit.png &quot;Ressourcenüberwachungsliste mit Filtern")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 1. Wählen Sie unter **Überwachungstyp** die Option **Aktivieren** (zugewiesen und aktiviert) aus.
 
@@ -94,7 +94,7 @@ Die Ressourcenüberwachung bietet einen Überblick über alle Rollenaktivitäten
 
     ![Benutzeraktivitätsdetails für eine bestimmte Aktion](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
-## <a name="view-my-audit"></a>Anzeigen der eigenen Überwachung
+## <a name="view-my-audit&quot;></a>Anzeigen der eigenen Überwachung
 
 In der eigenen Überwachung können Sie Ihre persönliche Rollenaktivität anzeigen.
 
@@ -108,7 +108,7 @@ In der eigenen Überwachung können Sie Ihre persönliche Rollenaktivität anzei
 
 1. Filtern Sie den Verlauf nach einem vordefinierten Datum oder nach einem benutzerdefinierten Bereich.
 
-    [![Überwachungsliste für den aktuellen Benutzer](media/azure-pim-resource-rbac/my-audit-time.png "Überwachungsliste für den aktuellen Benutzer")](media/azure-pim-resource-rbac/my-audit-time.png)
+    [![Überwachungsliste für den aktuellen Benutzer](media/azure-pim-resource-rbac/my-audit-time.png &quot;Überwachungsliste für den aktuellen Benutzer")](media/azure-pim-resource-rbac/my-audit-time.png)
 
 > [!NOTE]
 > Der Zugriff auf den Überwachungsverlauf erfordert eine der Rollen „Globaler Administrator“ oder „Administrator für privilegierte Rollen“.
