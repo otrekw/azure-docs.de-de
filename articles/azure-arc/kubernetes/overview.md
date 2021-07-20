@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Dieser Artikel enthält eine Übersicht über Kubernetes mit Azure Arc-Unterstützung.
 keywords: Kubernetes, Arc, Azure, Container
 ms.custom: references_regions
-ms.openlocfilehash: 74db1dda9ffdf40ec7e6a571a63986d4ab75c193
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d2e71b61210baf93950cb9e8fb2270320f882404
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375352"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967158"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Was ist Kubernetes mit Azure Arc-Aktivierung?
 
@@ -29,7 +29,7 @@ Zum Herstellen einer Verbindung zwischen einem Kubernetes-Cluster und Azure muss
 * Sie sammeln Azure Arc-Protokolle und -Metriken.
 * Sie achten auf Konfigurationsanforderungen. 
 
-Kubernetes mit Azure Arc-Unterstützung unterstützt branchenübliches SSL zum Schützen von Daten während der Übertragung. Die Daten werden außerdem im Ruhezustand verschlüsselt in einer Azure Cosmos DB-Datenbank gespeichert, um ihre Vertraulichkeit zu gewährleisten.
+Kubernetes mit Azure Arc-Unterstützung unterstützt branchenübliches SSL zum Schützen von Daten während der Übertragung. Außerdem werden ruhende Daten verschlüsselt und in einer Azure Cosmos DB-Datenbank gespeichert, um ihre Vertraulichkeit zu gewährleisten.
 
 ## <a name="supported-kubernetes-distributions"></a>Unterstützte Kubernetes-Distributionen
 
@@ -49,7 +49,7 @@ Kubernetes mit Azure Arc-Aktivierung unterstützt die folgenden Szenarien:
 
 * Anwenden von Richtlinien mit Azure Policy für Kubernetes
 
-* Erstellen von [benutzerdefinierten Standorten](./custom-locations.md) als Zielstandorte für die Bereitstellung von Azure Arc-fähigen Datendiensten, [App Services in Azure Arc](../../app-service/overview-arc-integration.md) (einschließlich Web-, Funktions- und Logik-Apps) und [Event Grid in Kubernetes](/azure/event-grid/kubernetes/overview).
+* Erstellen von [benutzerdefinierten Standorten](./custom-locations.md) als Zielstandorte für die Bereitstellung von Azure Arc-fähigen Datendiensten, [App Services in Azure Arc](../../app-service/overview-arc-integration.md) (einschließlich Web-, Funktions- und Logik-Apps) und [Event Grid in Kubernetes](../../event-grid/kubernetes/overview.md).
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 

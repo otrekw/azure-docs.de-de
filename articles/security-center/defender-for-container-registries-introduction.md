@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 282777a692b7b0fe54415ef09c2cf1879868dd3b
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: f11a9391b0a4f467cba41724b1d15493f1393201
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854430"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992133"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Einführung in Azure Defender für Containerregistrierungen
 
@@ -88,8 +88,6 @@ Ja. Wenn in Ihrer Organisation eine Suche ignoriert werden muss, anstatt sie zu 
 ### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>Warum macht mich Security Center auf Sicherheitsrisiken bei einem Image aufmerksam, das sich nicht in meiner Registrierung befindet?
 Security Center bietet Sicherheitsrisikobewertungen für jedes Image, das in einer Registrierung per Push oder Pull übertragen wird. Einige Images können Tags aus einem bereits überprüften Image wiederverwenden. Sie können z. B. jedes Mal, wenn Sie einem Digest ein Image hinzufügen, das Tag „Neueste Version“ wieder zuweisen. In solchen Fällen ist das „alte“ Image weiterhin in der Registrierung vorhanden und kann per Pull durch seinen Digest abgerufen werden. Wenn das Image Sicherheitsergebnisse aufweist und gepullt wird, entstehen Sicherheitsrisiken.
 
-### <a name="what-should-i-do-if-the-scan-results-for-my-image-arent-shown"></a>Was kann ich tun, wenn die Überprüfungsergebnisse für mein Image nicht angezeigt werden?
-Sollten die Ergebnisse auch nach einigen Minuten nicht angezeigt werden, pushen Sie das Image erneut, um eine neue Überprüfung auszulösen. Falls sie immer noch nicht angezeigt werden, wenden Sie sich an unser Supportteam. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

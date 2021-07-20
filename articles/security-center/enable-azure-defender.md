@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
 ms.date: 06/07/2021
-ms.openlocfilehash: 4f7900c4abc37df776c231ac9d70a09862f6d49f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: bc8449950134ba8c247c57df06b7495a48558def
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748395"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238587"
 ---
 # <a name="quickstart-enable-azure-defender"></a>Schnellstart: Aktivieren von Azure Defender
 
@@ -54,7 +54,7 @@ Wenn Sie alle Security Center-Features einschließlich des Bedrohungsschutzes a
 
         Auf der Registerkarte **Upgrade** werden für das Onboarding geeignete Abonnements und Arbeitsbereiche aufgeführt.
 
-        :::image type="content" source="./media/enable-azure-defender/get-started-upgrade-tab.png" alt-text="Registerkarte „Upgrade“ der Seite für die ersten Schritte"::: 
+        :::image type="content" source="./media/enable-azure-defender/get-started-upgrade-tab.png" alt-text="Registerkarte „Upgrade“ der Seite „Erste Schritte“"::: 
 
     1. Wählen Sie in der Liste **Abonnements und Arbeitsbereiche für die Aktivierung von Azure Defender auswählen** die Abonnements und Arbeitsbereiche aus, die aktualisiert werden sollen, und wählen Sie dann **Upgrade** aus, um Azure Defender zu aktivieren.
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7279c5578d969db9178ce85734e3a43f9eccdf8d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a4be45c27c63b54cdcb4b53dd0d98f65ed3d9fcb
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780045"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117050"
 ---
 # <a name="what-is-azure-files"></a>Was ist Azure Files?
 Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) zugegriffen werden kann. Azure-Dateifreigaben können gleichzeitig über die Cloud oder durch lokale Bereitstellungen eingebunden werden. Der Zugriff auf SMB-Dateifreigaben in Azure Files kann von Windows-, Linux- und macOS-Clients aus erfolgen. Der Zugriff auf NFS-Dateifreigaben in Azure Files kann von Linux- oder macOS-Clients aus erfolgen. Außerdem können SMB-Dateifreigaben in Azure Files auf Windows-Servern mit der Azure-Dateisynchronisierung zwischengespeichert werden, um einen schnellen Zugriff in der Nähe des Datennutzungsorts zu gewährleisten.
@@ -51,9 +51,9 @@ Verwendungsmöglichkeiten für Azure-Dateifreigaben:
 * **Vertraute Programmierbarkeit:** In Azure ausgeführte Anwendungen können über [Dateisystem-E/A-APIs](/dotnet/api/system.io.file) auf Daten in der Freigabe zugreifen. Entwickler können daher ihren vorhandenen Code und bereits erlernte Fertigkeiten für die Migration vorhandener Anwendungen verwenden. Neben System-E/A-APIs können Sie auch [Azure Storage-Clientbibliotheken](/previous-versions/azure/dn261237(v=azure.100)) oder die [Azure Storage-REST-API](/rest/api/storageservices/file-service-rest-api) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Informationen zu den verfügbaren Dateifreigabeprotokollen](storage-files-compare-protocols.md)
+* [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
 * [Erstellen einer Dateifreigabe in Azure Files](storage-how-to-create-file-share.md)
 * [Verbinden und Einbinden einer SMB-Dateifreigabe unter Windows](storage-how-to-use-files-windows.md)
 * [Verbinden und Einbinden einer SMB-Dateifreigabe unter Linux](storage-how-to-use-files-linux.md)
 * [Verbinden und Einbinden einer SMB-Dateifreigabe unter macOS](storage-how-to-use-files-mac.md)
-* [Erstellen einer NFS-Freigabe](storage-files-how-to-create-nfs-shares.md)
+* [Verbinden und Einbinden einer NFS-Dateifreigabe unter Linux](storage-files-how-to-mount-nfs-shares.md)

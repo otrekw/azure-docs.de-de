@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 90129acd53bf077c325660c0c4d3091ba1ee084d
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 7f15ce79ddb8a952b66acd155423749554d4c520
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572124"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002520"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Einführung in Azure Defender für SQL
 
@@ -26,7 +26,7 @@ Azure Defender for SQL verfügt über zwei Azure Defender-Pläne als Erweiterung
 |Status des Release:|**Azure Defender für Azure SQL-Datenbank-Server**: Allgemein verfügbar (GA)<br>**Azure Defender für SQL Server-Instanzen auf Computern**: Allgemein verfügbar (GA) |
 |Preise:|Die beiden Pläne, die **Azure Defender für SQL** bilden, werden gemäß [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/) berechnet.|
 |Geschützte SQL-Versionen:|[SQL auf virtuellen Azure-Computern](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure Arc-fähige SQL Server-Instanzen](/sql/sql-server/azure-arc/overview)<br>Lokale SQL Server-Instanzen auf Windows-Computern ohne Azure Arc<br>Azure SQL-[Singletons](../azure-sql/database/single-database-overview.md) und [Pool für elastische Datenbanken](../azure-sql/database/elastic-pool-overview.md)<br>[Verwaltete Azure SQL-Datenbank-Instanz](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (früher SQL DW) und dedizierter SQL-Pool](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Ja](./media/icons/yes-icon.png) China Gov (**Teilweise**: Teilmenge von Warnungen und Sicherheitsrisikobewertungen für Computer mit SQL Server. Verhaltensbedingte Bedrohungsschutzmaßnahmen sind nicht verfügbar.)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Ja](./media/icons/yes-icon.png) Azure China (**Teilweise:** Teilmenge von Warnungen und Sicherheitsrisikobewertungen für SQL-Server. Verhaltensbedingte Bedrohungsschutzmaßnahmen sind nicht verfügbar.)|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>Was wird mit Azure Defender für SQL geschützt?

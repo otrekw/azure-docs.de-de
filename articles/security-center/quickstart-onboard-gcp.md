@@ -7,12 +7,12 @@ ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5e32c5f02191e4bd60ad4334884df34ce0bc0537
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: c4a49b3db5fe87f006a1bcd6d13a81b47c8d6abb
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537451"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006228"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Verbinden Ihrer GCP-Konten mit Azure Security Center
 
@@ -39,7 +39,7 @@ Im nachstehenden Screenshot sehen Sie GCP-Projekte, die auf dem Übersichtsdashb
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
 |Erforderliche Rollen und Berechtigungen:|**Besitzer** oder **Mitwirkender** für das entsprechende Azure-Abonnement|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, Azure China)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>Herstellen einer Verbindung mit Ihrem GCP-Konto

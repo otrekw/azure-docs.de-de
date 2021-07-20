@@ -3,7 +3,7 @@ title: 'Azure AD: Anzeigen von Berichten und Protokollen in der Berechtigungsver
 description: Erfahren Sie, wie Sie den Bericht zu Benutzerzuweisungen und Überwachungsprotokolle in der Azure Active Directory-Berechtigungsverwaltung anzeigen.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: jocastel-MSFT
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb44c1efd683b6febe9a355ef72c80cc6f2e40d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab1cd0da0e44f9b0dd496b72c3dff7630eb9d641
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97746625"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786265"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Anzeigen von Berichten und Protokollen in der Azure AD-Berechtigungsverwaltung
 
@@ -35,7 +35,7 @@ Sehen Sie sich das folgende Video an, um zu erfahren, wie Sie in der Berechtigun
 
 Mit diesem Bericht können Sie alle Zugriffspakete auflisten, die ein Benutzer anfordern kann und die dem Benutzer derzeit zugewiesen sind.
 
-**Erforderliche Rolle:** Globaler Administrator oder Benutzeradministrator
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator oder Benutzeradministrator
 
 1. Klicken Sie auf **Azure Active Directory**, und klicken Sie dann auf **Identity Governance**.
 
@@ -59,7 +59,7 @@ Mit diesem Bericht können Sie alle Zugriffspakete auflisten, die ein Benutzer a
 
 Mit diesem Bericht können Sie die Ressourcen auflisten, die einem Benutzer derzeit in der Berechtigungsverwaltung zugewiesen sind. Beachten Sie, dass dieser Bericht für mit der Berechtigungsverwaltung verwaltete Ressourcen gilt. Der Benutzer hat möglicherweise Zugriff auf andere Ressourcen in Ihrem Verzeichnis außerhalb der Berechtigungsverwaltung.
 
-**Erforderliche Rolle:** Globaler Administrator oder Benutzeradministrator
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator oder Benutzeradministrator
 
 1. Klicken Sie auf **Azure Active Directory**, und klicken Sie dann auf **Identity Governance**.
 
