@@ -1,0 +1,10 @@
+items:
+  - name: Dokumentation zu PyTorch Enterprise
+    href: index.yml
+  - name: Überblick
+    expanded: true
+    items:
+      - name: Was ist PyTorch Enterprise?
+        href: pte-overview.md
+      - name: Abdeckung
+        href: support-boundaries.md

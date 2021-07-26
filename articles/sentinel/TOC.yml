@@ -1,91 +1,86 @@
 - name: Dokumentation zu Azure Sentinel
   href: index.yml
 - name: Übersicht
-  href: overview.md
-- name: Neuerungen in Azure Sentinel
-  href: whats-new.md
-- name: Schnellstarts
   expanded: true
   items:
-    - name: Ausführen des Onboardings für Azure Sentinel
+    - name: Informationen zu Azure Sentinel
+      href: overview.md
+    - name: Neuerungen in Azure Sentinel
+      href: whats-new.md
+- name: Schnellstart
+  items:
+    - name: Durchführen des Onboardings in Azure Sentinel
       href: quickstart-onboard.md
-    - name: Einblick in Warnungen
-      href: quickstart-get-visibility.md
 - name: Tutorials
   items:
-    - name: Erkennen von Bedrohungen mithilfe integrierter Analysen
-      href: tutorial-detect-threats-built-in.md
-    - name: Erstellen benutzerdefinierter Regeln zum Erkennen von Bedrohungen
-      href: tutorial-detect-threats-custom.md
-    - name: Überwachen Ihrer Daten
-      href: tutorial-monitor-your-data.md
     - name: Untersuchen von Vorfällen
       href: tutorial-investigate-cases.md
     - name: Automatisiertes Reagieren auf Bedrohungen
       href: tutorial-respond-threats-playbook.md
-    - name: Erstellen von KQL-Abfragen (Learn-Modul)
+    - name: "Integrieren in Microsoft\_365\_Defender"
+      href: microsoft-365-defender-sentinel-integration.md
+    - name: Erstellen von KQL-Abfragen für Azure Sentinel (Learn-Modul)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
     - name: "Erstellen eines Power\_BI-Berichts über Azure Sentinel"
       href: powerbi.md
 - name: Konzepte
   items:
-    - name: Verstehen und Verwalten von Kosten und Abrechnung
-      href: azure-sentinel-billing.md
-    - name: Klassifizieren von Daten anhand von Entitäten
-      href: entities-in-azure-sentinel.md
-    - name: Verwalten des Zugriffs
+    - name: Aufbau
       items:
-        - name: Berechtigungen in Azure Sentinel
+        - name: Rollen und Berechtigungen
           href: roles.md
-        - name: Verwalten des Zugriffs nach Ressource
-          href: resource-context-rbac.md
-        - name: Schützen des geistigen Eigentums von MSSPs
-          href: mssp-protect-intellectual-property.md
-    - name: Erweiterte mehrstufige Angriffserkennung
-      href: fusion.md
-    - name: Automatisierung (SOAR)
+        - name: Kosten und Abrechnung
+          href: azure-sentinel-billing.md
+        - name: Sicherheitsbaseline
+          href: 'https://docs.microsoft.com/security/benchmark/azure/baselines/sentinel-security-baseline?toc=/azure/sentinel/TOC.json'
+    - name: Datensammlung und -analyse
       items:
-        - name: SOAR in Azure Sentinel
-          href: automation-in-azure-sentinel.md
-        - name: Automatisierungsregeln für die Vorfallbehandlung
-          href: automate-incident-handling-with-automation-rules.md
-        - name: Erweiterte Automatisierung mit Playbooks
-          href: automate-responses-with-playbooks.md
-    - name: Erkennen komplexerer Bedrohungen mit UEBA
-      href: identify-threats-with-entity-behavior-analytics.md
-    - name: Verwenden von SOC-ML-Anomalien zum Erkennen von Bedrohungen
-      href: soc-ml-anomalies.md
-    - name: Importieren von Threat Intelligence in Azure Sentinel
-      href: import-threat-intelligence.md
-    - name: "Threat\_Intelligence-Integrationen"
-      href: threat-intelligence-integration.md
-    - name: Verwenden einer eigenen Plattform für maschinelles Lernen (Bring Your Own Machine Learning Platform)
-      href: bring-your-own-ml.md
-    - name: Integrieren von Microsoft 365 Defender in Azure Sentinel
-      href: microsoft-365-defender-sentinel-integration.md
-    - name: Verwenden externer Daten mit Watchlists
-      href: watchlists.md
-    - name: Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
-      href: extend-sentinel-across-workspaces-tenants.md
+        - name: "Normalisierung und das Azure\_Sentinel-Informationsmodell (ASIM)"
+          href: normalization.md
+        - name: Klassifizieren von Daten mit Entitäten
+          href: entities-in-azure-sentinel.md
     - name: "Azure\_Sentinel-Lösungen"
       items:
         - name: Informationen zu Sentinel-Lösungen
           href: sentinel-solutions.md
         - name: Lösungskatalog
           href: sentinel-solutions-catalog.md
-    - name: Übergreifendes Normalisieren Ihrer Daten für Tabellen
-      href: normalization.md
-    - name: Verwenden von Azure Data Explorer für die langfristige Protokollaufbewahrung
-      href: store-logs-in-azure-data-explorer.md
-    - name: Sicherheit
+    - name: Bedrohungsanalyse
       items:
-        - name: Sicherheitsbaseline
-          href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=/azure/sentinel/TOC.json
-- name: Anleitungen
+        - name: Importieren von Threat Intelligence in Azure Sentinel
+          href: import-threat-intelligence.md
+        - name: "Threat\_Intelligence-Integrationen"
+          href: threat-intelligence-integration.md
+    - name: Bedrohungserkennung
+      items:
+        - name: User and Entity Behavior Analytics (UEBA)
+          href: identify-threats-with-entity-behavior-analytics.md
+        - name: SOC-ML-Anomalien
+          href: soc-ml-anomalies.md
+        - name: Mehrstufige Angriffe (Fusion)
+          href: fusion.md
+        - name: Watchlists
+          href: watchlists.md
+    - name: Bedrohungssuche
+      href: hunting.md
+    - name: SOAR
+      items:
+        - name: 'Orchestrierung, Automatisierung und Reaktion'
+          href: automation-in-azure-sentinel.md
+        - name: Automatisierungsregeln
+          href: automate-incident-handling-with-automation-rules.md
+        - name: Playbooks
+          href: automate-responses-with-playbooks.md
+        - name: Verwenden von eigenem maschinellem Lernen
+          href: bring-your-own-ml.md
+- name: Gewusst wie
   items:
-    - name: Herstellen einer Verbindung mit Datenquellen
-      href: connect-data-sources.md
+    - name: Migrieren zu Azure Sentinel
+      href: migration.md
+    - name: Sammeln von Daten
       items:
+        - name: Herstellen einer Verbindung mit Datenquellen
+          href: connect-data-sources.md
         - name: Herstellen einer Verbindung zwischen Diensten
           items:
             - name: AWS CloudTrail
@@ -140,7 +135,9 @@
               href: connect-windows-security-events.md
             - name: Windows Virtual Desktop
               href: connect-windows-virtual-desktop.md
-        - name: Herstellen einer Verbindung mit externen Lösungen
+        - name: Partnerdatenconnectors
+          href: partner-data-connectors.md
+        - name: Verbinden von Partnerdatenquellen
           items:
             - name: Agari Phishing Defense und Brand Protection
               href: connect-agari-phishing-defense.md
@@ -272,65 +269,92 @@
                       href: connect-zscaler.md
                 - name: "SCHRITT\_3: Überprüfen der Konnektivität"
                   href: connect-cef-verify.md
-        - name: Erstellen benutzerdefinierter Connectors
+        - name: Erstellen eines benutzerdefinierten Connectors
           href: create-custom-connector.md
-        - name: Herstellen einer Verbindung mit Threat Intelligence
-          href: connect-threat-intelligence.md
         - name: Herstellen einer Verbindung mit virtuellen Azure Stack-Computern
           href: connect-azure-stack.md
         - name: Überwachen der Integrität des Datenconnectors
           href: monitor-data-connector-health.md
-    - name: Analyseregeln
+        - name: Integrieren von Azure Data Explorer
+          href: store-logs-in-azure-data-explorer.md
+    - name: Ermitteln und Bereitstellen von Lösungen
+      href: sentinel-solutions-deploy.md
+    - name: Herstellen einer Verbindung mit Threat Intelligence
+      href: connect-threat-intelligence.md
+    - name: Überwachen und Visualisieren von Daten
       items:
-        - name: Warnungsanreicherung
+        - name: Visualisieren gesammelter Daten
+          href: quickstart-get-visibility.md
+        - name: "Verwenden von Azure\_Monitor-Arbeitsmappen"
+          href: tutorial-monitor-your-data.md
+    - name: Erkennen von Bedrohungen und Analysieren von Daten
+      items:
+        - name: Verwenden integrierter Rollen
+          href: tutorial-detect-threats-built-in.md
+        - name: Benutzerdefinierte Regeln erstellen
           items:
+            - name: Erstellen einer Regel
+              href: tutorial-detect-threats-custom.md
             - name: Zuordnen von Datenfeldern zu Entitäten
               href: map-data-fields-to-entities.md
             - name: Anzeigen benutzerdefinierter Details in Warnungen
               href: surface-custom-details-in-alerts.md
             - name: Anpassen von Warnungsdetails
               href: customize-alert-details.md
-        - name: Exportieren und Importieren von Analyseregeln
-          href: import-export-analytics-rules.md
-        - name: Erstellen von Incidents auf der Grundlage von Warnungen
-          href: create-incidents-from-alerts.md
+            - name: Exportieren und Importieren von Analyseregeln
+              href: import-export-analytics-rules.md
+            - name: Verwenden von SOC-ML-Anomalieregeln
+              href: work-with-anomaly-rules.md
+        - name: Aktivieren von User and Entity Behavior Analytics (UEBA)
+          href: enable-entity-behavior-analytics.md
         - name: Verwenden von SOC-ML-Anomalieregeln
           href: work-with-anomaly-rules.md
-    - name: Ermitteln und Bereitstellen von Lösungen
-      href: sentinel-solutions-deploy.md
-    - name: Erstellen benutzerdefinierter Entitätsaktivitäten
-      href: customize-entity-activities.md
-    - name: Verwenden von Verhaltensanalysen für Benutzer und Entitäten
+        - name: Behandeln von False Positives
+          href: false-positives.md
+        - name: Erstellen von Incidents auf der Grundlage von Microsoft-Sicherheitswarnungen
+          href: create-incidents-from-alerts.md
+    - name: Suchen nach Bedrohungen
       items:
-        - name: Aktivieren von UEBA
-          href: enable-entity-behavior-analytics.md
-        - name: Untersuchen mit UEBA
-          href: investigate-with-ueba.md
-    - name: Verwalten mehrerer Mandanten (MSSP)
-      href: multiple-tenants-service-providers.md
-    - name: Arbeiten mit Vorfällen in mehreren Arbeitsbereichen
-      href: multiple-workspace-view.md
-    - name: Einrichten von kundenseitig verwalteten Schlüsseln (CMK)
-      href: customer-managed-keys.md
-    - name: Zusammenarbeiten in Microsoft Teams
-      href: collaborate-in-microsoft-teams.md
-    - name: Bessere Verwaltung von SOC mit Incidentmetriken
-      href: manage-soc-with-incident-metrics.md
-    - name: Behandeln von False Positives
-      href: false-positives.md
-    - name: "Überwachen von Azure\_Sentinel-Abfragen und -Aktivitäten"
-      href: audit-sentinel-data.md
-    - name: Suche
-      href: hunting.md
-      items:
-        - name: Suchen mithilfe von Notebooks
+        - name: "Suchen mit Jupyter\_Notebook-Instanzen"
           href: notebooks.md
-        - name: Suchen mithilfe von Textmarken
+        - name: Suchen mit Lesezeichen
           href: bookmarks.md
-        - name: Suchen mithilfe eines Livestreams
+        - name: Suchen mit Livestream
           href: livestream.md
-    - name: Entfernen von Azure Sentinel
-      href: offboard.md
+    - name: Untersuchen und Reagieren
+      items:
+        - name: Erstellen benutzerdefinierter Entitätsaktivitäten
+          href: customize-entity-activities.md
+        - name: Gängige UEBA-Untersuchungsmethoden
+          href: investigate-with-ueba.md
+        - name: Zusammenarbeiten in Microsoft Teams
+          href: collaborate-in-microsoft-teams.md
+        - name: Authentifizieren von Playbooks bei Azure Sentinel
+          href: authenticate-playbooks-to-sentinel.md
+        - name: Verwenden von Triggern und Aktionen in Playbooks
+          href: playbook-triggers-actions.md
+    - name: Verwalten von Azure Sentinel
+      items:
+        - name: Verwalten des Arbeitsbereichszugriffs
+          href: resource-context-rbac.md
+        - name: Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
+          href: extend-sentinel-across-workspaces-tenants.md
+        - name: Azure Sentinel für MSSPs
+          items:
+            - name: Verwalten mehrerer Mandanten (MSSP)
+              href: multiple-tenants-service-providers.md
+            - name: Arbeiten mit Vorfällen in mehreren Arbeitsbereichen
+              href: multiple-workspace-view.md
+            - name: Verwalten Ihres geistigen Eigentums in Azure Sentinel
+              href: mssp-protect-intellectual-property.md
+        - name: Einrichten kundenseitig verwalteter Schlüssel
+          href: customer-managed-keys.md
+        - name: Verwalten Ihres SOC mit Incidentmetriken
+          href: manage-soc-with-incident-metrics.md
+        - name: Überwachen von Azure Sentinel mit Azure-Aktivitätsprotokollen
+          href: audit-sentinel-data.md
+        - name: Entfernen von Azure Sentinel aus Ihren Arbeitsbereichen
+          href: offboard.md
 - name: Integrieren von SAP und Azure Sentinel
   items:
     - name: Bereitstellen der kontinuierlichen Bedrohungsüberwachung in SAP
@@ -345,48 +369,64 @@
       href: sap-solution-deploy-alternate.md
 - name: Verweis
   items:
-    - name: Wichtigste Azure Sentinel-Arbeitsmappen
-      href: top-workbooks.md
-    - name: Azure CLI
-      href: /cli/azure/sentinel
-    - name: 'Azure Sentinel: PowerShell'
-      href: /powershell/module/az.securityinsights/
-    - name: Azure RBAC-Rollen
+    - name: Azure Sentinel-REST-API
+      href: /rest/api/securityinsights/
+    - name: Verwaltungsreferenzen
       items:
-        - name: Alle Azure-Rollen
-          href: ../role-based-access-control/built-in-roles.md#all
-        - name: Azure Sentinel-Rollen
-          href: ../role-based-access-control/built-in-roles.md#security
-    - name: REST-APIs
+        - name: Azure Sentinel Logic Apps-Connector
+          href: /connectors/azuresentinel/
+        - name: Azure CLI
+          href: /cli/azure/sentinel
+        - name: 'Azure Sentinel: PowerShell'
+          href: /powershell/module/az.securityinsights/
+        - name: Azure RBAC-Rollen
+          items:
+            - name: Alle Azure-Rollen
+              href: ../role-based-access-control/built-in-roles.md#all
+            - name: Azure Sentinel-Rollen
+              href: ../role-based-access-control/built-in-roles.md#security
+    - name: Datenconnectorreferenzen
       items:
-        - name: Azure Sentinel-REST-API
-          href: /rest/api/securityinsights/
-        - name: Verwalten von Hunting-Abfragen mit der REST-API
-          href: hunting-with-rest-api.md
-        - name: Verwalten von Watchlists mit der REST-API
-          href: watchlist-with-rest-api.md
-    - name: Azure Sentinel Logic Apps-Connector
-      href: /connectors/azuresentinel/
-    - name: Entitätenverweis
-      href: entities-reference.md
-    - name: Schema zur Netzwerknormalisierung
-      href: normalization-schema.md
-    - name: Referenz zum Datenquellenschema
-      href: data-source-schema-reference.md
-    - name: Kusto-Abfragesprache
+        - name: Referenz zum Datenquellenschema
+          href: data-source-schema-reference.md
+        - name: CEF-Protokollfeldzuordnung
+          href: cef-name-mapping.md
+        - name: Normalisierung
+          items:
+            - name: Schema zur Authentifizierungsnormalisierung
+              href: authentication-normalization-schema.md
+            - name: Schema zur DNS-Normalisierung
+              href: dns-normalization-schema.md
+            - name: Schema zur Netzwerknormalisierung
+              href: normalization-schema.md
+            - name: Schema zur Prozessereignisnormalisierung
+              href: process-events-normalization-schema.md
+            - name: Schema zur Registrierungsereignisnormalisierung
+              href: registry-event-normalization-schema.md
+    - name: Erkennungs- und Analysereferenzen
       items:
-        - name: Übersicht über Kusto-Abfragen
-          href: /azure/data-explorer/kusto/query/
-        - name: Kurzreferenz zur Abfragesprache von Kusto
-          href: /azure/data-explorer/kql-quick-reference
-        - name: "Optimierungen für Azure\_Monitor-Protokollabfragen"
-          href: ../azure-monitor/logs/query-optimization.md
-    - name: UEBA-Anreicherungen
-      href: ueba-enrichments.md
-    - name: CEF-Protokollfeldzuordnung
-      href: cef-name-mapping.md
-    - name: "MCAS-Warnungen, für die das Onboarding in Microsoft 365\_Defender nicht durchgeführt wurde"
-      href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
+        - name: Wichtigste Azure Sentinel-Arbeitsmappen
+          href: top-workbooks.md
+        - name: Entitätenverweis
+          href: entities-reference.md
+        - name: UEBA-Anreicherungen
+          href: ueba-enrichments.md
+        - name: Kusto-Abfragesprache
+          items:
+            - name: Übersicht über Kusto-Abfragen
+              href: /azure/data-explorer/kusto/query/
+            - name: Kurzreferenz zur Abfragesprache von Kusto
+              href: /azure/data-explorer/kql-quick-reference
+            - name: "Optimierungen für Azure\_Monitor-Protokollabfragen"
+              href: ../azure-monitor/logs/query-optimization.md
+        - name: 'REST-APIs: Beispiele'
+          items:
+            - name: Verwalten von Hunting-Abfragen mit der REST-API
+              href: hunting-with-rest-api.md
+            - name: Verwalten von Watchlists mit der REST-API
+              href: watchlist-with-rest-api.md
+        - name: "MCAS-Warnungen, für die das Onboarding in Microsoft 365\_Defender nicht durchgeführt wurde"
+          href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
 - name: Ressourcen
   items:
     - name: Nützliche Ressourcen

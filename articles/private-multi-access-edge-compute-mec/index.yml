@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Dokumentation zu privatem Multi-Access Edge Computing in Azure
+summary: Die Lösung für privates Multi-Access Edge Computing (MEC) in Azure ermöglicht Operatoren und Systemintegratoren die Bereitstellung von Hochleistungskonnektivität mit geringer Wartezeit sowie von IoT-Anwendungen am Edge des Unternehmens.
+metadata:
+  title: Dokumentation zu privatem Multi-Access Edge Computing in Azure
+  description: Die Lösung für privates Multi-Access Edge Computing (MEC) in Azure ermöglicht Operatoren und Systemintegratoren die Bereitstellung von Hochleistungskonnektivität mit geringer Wartezeit sowie von IoT-Anwendungen am Edge des Unternehmens.
+  ms.service: private-multi-access-edge-compute-mec
+  ms.topic: landing-page
+  author: kumud
+  ms.author: KumudD
+  ms.date: 06/15/2021
+  ms.openlocfilehash: 57bd78341606ee1b15afbd3a37363fa6d84f95a0
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112458360"
+landingContent:
+- title: Informationen zu privatem MEC
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist privates MEC in Azure?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Partnerlösungen
+      url: partner-programs.md
+- title: Edgekonnektivität mit Metaswitch-Lösung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Was ist Fusion Core?
+      url: metaswitch-fusion-core-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bereitstellen von Fusion Core auf einem Azure Stack Edge-Gerät
+      url: deploy-metaswitch-fusion-core-solution.md
+- title: Informationen zu Affirmed Private Network Service in Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Was ist Affirmed Private Network Service in Azure?
+      url: affirmed-private-network-service-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bereitstellen von Affirmed Private Network Service in Azure
+      url: deploy-affirmed-private-network-service-solution.md
+- title: Informationen zum Azure-Netzwerkfunktionsmanager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist der Azure-Netzwerkfunktionsmanager?
+      url: ../network-function-manager/overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bereitstellen einer Netzwerkfunktion
+      url: ../network-function-manager/deploy-functions.md

@@ -1,0 +1,46 @@
+- name: Dokumentation zu privatem Multi-Access Edge Computing in Azure
+  href: index.yml
+  items:
+    - name: Überblick
+      expanded: true
+      items:
+        - name: Was ist das private MEC in Azure?
+          href: overview.md
+        - name: Partnerlösungen für privates MEC in Azure
+          href: partner-programs.md
+    - name: "Edgekonnektivität mit Metaswitch\_5G Fusion Core"
+      items:
+        - name: Überblick
+          items:
+            - name: Was ist Fusion Core?
+              href: metaswitch-fusion-core-overview.md
+        - name: Anleitungen
+          items:
+            - name: Bereitstellen von Fusion Core in Azure Stack Edge
+              href: deploy-metaswitch-fusion-core-solution.md
+    - name: Private Netzwerke mit Affirmed Private Network Service
+      items:
+        - name: Überblick
+          items:
+            - name: Was ist Affirmed Private Network Service in Azure?
+              href: affirmed-private-network-service-overview.md
+        - name: Anleitungen
+          items:
+            - name: Bereitstellen von Affirmed Private Network Service in Azure
+              href: deploy-affirmed-private-network-service-solution.md
+    - name: Verwandte Themen
+      items:
+        - name: Azure-Netzwerkfunktionsmanager
+          href: ../network-function-manager/index.yml
+    - name: Ressourcen
+      items:
+        - name: Produktseite für privates MEC in Azure
+          href: 'https://go.microsoft.com/fwlink/?linkid=2165610'
+        - name: Produktseite für den Netzwerkfunktionsmanager
+          href: 'https://go.microsoft.com/fwlink/?linkid=2166098'
+        - name: Azure Marketplace
+          href: 'https://azuremarketplace.microsoft.com/marketplace/'
+        - name: Azure-Roadmap
+          href: 'https://azure.microsoft.com/roadmap/?category=networking'
+        - name: Blog
+          href: 'https://azure.microsoft.com/blog/topics/networking'

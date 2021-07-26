@@ -54,12 +54,18 @@
       href: ./tutorials/create-share-query.md
 - name: Beispiele
   items:
-    - name: Einfache Abfragen
-      displayName: 'query language, data explorer, count, list, show'
-      href: ./samples/starter.md
-    - name: Erweiterte Abfragen
-      displayName: 'query language, data explorer, list, regex'
-      href: ./samples/advanced.md
+    - name: Sprachbeispiele
+      items:
+        - name: Einfache Abfragen
+          displayName: 'query language, data explorer, count, list, show'
+          href: ./samples/starter.md
+        - name: Erweiterte Abfragen
+          displayName: 'query language, data explorer, list, regex'
+          href: ./samples/advanced.md
+    - name: Indizieren nach Kategorie
+      href: ./samples/samples-by-category.md
+    - name: Indizieren nach Tabelle
+      href: ./samples/samples-by-table.md
 - name: Konzepte
   items:
     - name: Grundlegendes zur Abfragesprache

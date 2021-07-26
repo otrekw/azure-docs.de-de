@@ -63,6 +63,8 @@
           href: in-place-migration-portal.md
         - name: Migrieren mit PowerShell
           href: in-place-migration-powershell.md
+        - name: Änderungen nach der Migration
+          href: post-migration-changes.md
         - name: Allgemeine Fehler und bekannte Probleme
           href: in-place-migration-common-errors.md
     - name: Anwenden von Erweiterungen

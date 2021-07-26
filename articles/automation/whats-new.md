@@ -6,12 +6,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 06/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 6eae4a65412ad922724d4c35b7628b15698ba841
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: bd2bd39839645aa0511a00cc7a6c87c711e33e2b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982932"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294749"
 ---
 # <a name="whats-new-in-azure-automation"></a>Neuerungen in Azure Automation
 
@@ -24,6 +24,14 @@ Azure Automation wird kontinuierlich verbessert. Damit Sie bezüglich der neuest
 Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert.
 
 ## <a name="june-2021"></a>Juni 2021
+
+### <a name="security-update-for-log-analytics-contributor-role"></a>Sicherheitsupdate für die Rolle „Log Analytics-Mitwirkender“
+
+**Typ:** Plan für Änderung
+
+Microsoft möchte die Rechte des Automation-Kontos aus der Rolle „Log Analytics-Mitwirkender“ entfernen. Derzeit kann die integrierte Rolle [Log Analytics-Mitwirkender](./automation-role-based-access-control.md#log-analytics-contributor) Berechtigungen an die Rolle [Mitwirkender](./../role-based-access-control/built-in-roles.md#contributor) des Abonnements eskalieren. Da für die ausführenden Konten des Automation-Kontos bereits die Rechte der Rolle „Mitwirkender“ für das Abonnement konfiguriert sind, kann es von einem Angreifer verwendet werden, um neue Runbooks zu erstellen und Code als Mitwirkender für das Abonnement auszuführen.
+
+Aufgrund dieses Sicherheitsrisikos wird empfohlen, die Rolle „Log Analytics-Mitwirkender“ nicht zum Ausführen von Automation-Aufträgen zu verwenden. Erstellen Sie stattdessen die benutzerdefinierte Rolle „Azure Automation-Mitwirkender“, und verwenden Sie diese für Aktionen im Zusammenhang mit dem Automation-Konto. Die Schritte zur Implementierung finden Sie unter der [benutzerdefinierten Rolle „Azure Automation-Mitwirkender“](./automation-role-based-access-control.md#custom-azure-automation-contributor-role).
 
 ### <a name="support-for-automation-and-state-configuration-available-in-west-us-3"></a>Unterstützung von Automatisierung und State Configuration in „USA, Westen 3“ verfügbar
 
