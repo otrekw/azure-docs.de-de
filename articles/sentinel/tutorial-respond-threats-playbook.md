@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2021
 ms.author: yelevin
-ms.openlocfilehash: b2a98e92630fcdc46228cc36579cfe9787b92daf
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: af5e0e6a8f019d0b35d73b49f6efb45c2195d62d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786643"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072629"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel
 
@@ -159,7 +159,7 @@ So erstellen Sie eine Automatisierungsregel:
 
 1. Wählen Sie die Aktionen aus, die durch diese Automatisierungsregel ausgeführt werden sollen. Zu den verfügbaren Aktionen zählen **Assign owner** (Besitzer zuweisen), **Status ändern**, **Schweregrad ändern**, **Tags hinzufügen** und **Playbook ausführen**. Sie können beliebig viele Aktionen hinzufügen.
 
-1. Wenn Sie eine Aktion vom Typ **Playbook ausführen** hinzufügen, werden Sie aufgefordert, ein Playbook aus einer Liste mit verfügbaren Playbooks auszuwählen. Nur Playbooks, die mit dem **Incidenttrigger** beginnen, können über Automatisierungsregeln ausgeführt werden. Daher werden in der Liste auch nur diese Playbooks angezeigt.
+1. Wenn Sie eine Aktion vom Typ **Playbook ausführen** hinzufügen, werden Sie aufgefordert, ein Playbook aus einer Liste mit verfügbaren Playbooks auszuwählen. Nur Playbooks, die mit dem **Incidenttrigger** beginnen, können über Automatisierungsregeln ausgeführt werden. Daher werden in der Liste auch nur diese Playbooks angezeigt.<a name="permissions-to-run-playbooks"></a>
 
     > [!IMPORTANT]
     > Azure Sentinel müssen explizite Berechtigungen erteilt werden, um Playbooks über Automatisierungsregeln ausführen zu können. Ist ein Playbook in der Dropdownliste ausgegraut dargestellt, verfügt Sentinel über keine Berechtigung für die Ressourcengruppe des Playbooks. Klicken Sie auf den Link **Manage playbook permissions** (Playbookberechtigungen verwalten), um Berechtigungen zuzuweisen.
@@ -170,6 +170,22 @@ So erstellen Sie eine Automatisierungsregel:
     >    1. Wählen Sie im Mandanten des Playbooks im Azure Sentinel-Navigationsmenü die Option **Einstellungen** aus.
     >    1. Wählen Sie auf dem Blatt **Einstellungen** die Registerkarte **Einstellungen** aus, und erweitern Sie anschließend den Bereich **Playbookberechtigungen**.
     >    1. Klicken Sie auf die Schaltfläche **Berechtigungen konfigurieren**, um den weiter oben erwähnten Bereich **Berechtigungen verwalten** zu öffnen, und fahren Sie wie dort beschrieben fort.
+    > - Wenn Sie in einem **MSSP**-Szenario ein [Playbook in einem Kundenmandanten](automate-incident-handling-with-automation-rules.md#permissions-in-a-multi-tenant-architecture) anhand einer Automatisierungsregel ausführen möchten, die Sie erstellt haben, während Sie beim Dienstanbietermandanten angemeldet waren, müssen Sie Azure Sentinel die Berechtigung zum Ausführen des Playbooks in **_beiden Mandanten_ *erteilen. Befolgen Sie im* Kundenmandanten** die Anweisungen für die mehrinstanzenfähige Bereitstellung unter dem vorherigen Aufzählungspunkt. Im **Dienstanbietermandanten** müssen Sie die Azure Security Insights-App in Ihrer Azure Lighthouse-Onboardingvorlage hinzufügen:
+    >    1. Navigieren Sie im Azure-Portal zu **Azure Active Directory**.
+    >    1. Klicken Sie auf **Unternehmensanwendungen**.
+    >    1. Wählen Sie **Anwendungstyp** aus, und filtern Sie nach **Microsoft-Anwendungen**.
+    >    1. Geben Sie im Suchfeld den Namen **Azure Security Insights** ein.
+    >    1. Kopieren Sie das Feld **Objekt-ID**. Sie müssen diese zusätzliche Autorisierung zu Ihrer vorhandenen Azure Lighthouse-Delegierung hinzufügen.
+    >
+    >    Die Rolle **Mitwirkender für Azure Sentinel-Automatisierung** weist eine feste GUID auf. Hierbei handelt es sich um `f4c81013-99ee-4d62-a7ee-b3f1f648599a`. Ein Beispiel für eine Azure Lighthouse Autorisierung würde in Ihrer Parametervorlage wie folgt aussehen:
+    >    
+    >    ```json
+    >    {
+    >        "principalId": "<Enter the Azure Security Insights app Object ID>", 
+    >        "roleDefinitionId": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
+    >        "principalIdDisplayName": "Azure Sentinel Automation Contributors" 
+    >    }
+    >    ```
 
 1. Falls gewünscht, können Sie ein Ablaufdatum für Ihre Automatisierungsregel festlegen.
 

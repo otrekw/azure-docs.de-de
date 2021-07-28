@@ -1,9 +1,9 @@
-- name: Dokumentation zur Formularerkennung
+- name: Dokumentation zur Azure-Formularerkennung
   href: index.yml
 - name: Übersicht
   expanded: true
   items:
-    - name: Was ist die Formularerkennung?
+    - name: Was ist die Azure-Formularerkennung?
       href: overview.md
     - name: Sprachunterstützung
       href: language-support.md
@@ -13,7 +13,7 @@
       href: whats-new.md
 - name: Schnellstarts
   items:
-    - name: Erste Schritte mit der Formularerkennung
+    - name: Erste Schritte mit der Azure-Formularerkennung
       href: quickstarts/get-started-with-form-recognizer.md
     - name: Clientbibliotheken und REST-API
       href: quickstarts/client-library.md
@@ -31,7 +31,7 @@
   items:
     - name: Transparenzhinweise
       items:
-        - name: Anwendungsfälle für die Formularerkennung
+        - name: Anwendungsfälle für die Azure-Formularerkennung
           href: /legal/cognitive-services/form-recognizer/fr-transparency-note?context=/azure/cognitive-services/form-recognizer/context/context
         - name: Merkmale und Einschränkungen
           href: /legal/cognitive-services/form-recognizer/fr-characteristics-and-limitations?context=/azure/cognitive-services/form-recognizer/context/context
@@ -83,28 +83,34 @@
       href: concept-identification-cards.md
 - name: Tutorials
   items:
-    - name: Verwenden der Formularerkennung mit Cognitive Search
+    - name: Verwenden der Azure-Formularerkennung mit Cognitive Search
       href: ../../search/cognitive-search-custom-skill-form.md
-    - name: Verwenden der Formularerkennung mit AI Builder
+    - name: Verwenden der Azure-Formularerkennung mit AI Builder
       href: tutorial-ai-builder.md
-    - name: Verwenden der Formularerkennung mit Azure Functions
+    - name: Verwenden der Azure-Formularerkennung mit Azure Functions
       href: tutorial-azure-function.md
 - name: Verweis
   items:
-    - name: Formularerkennung-API Version 2.1
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm'
-    - name: Formularerkennungs-API Version 2.0
-      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
-    - name: SDKs
+    - name: "REST-API\_v2.1 für die Azure-Formularerkennung"
       items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/ai.formrecognizer-readme
-        - name: Python
-          href: /python/api/azure-ai-formrecognizer/
-        - name: Java
-          href: /java/api/overview/azure/ai-formrecognizer-readme
-        - name: JavaScript
-          href: /javascript/api/overview/azure/ai-form-recognizer-readme
+        - name: "Referenz zu REST-API\_v2.1"
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm'
+        - name: SDKs v3.1.0
+          items:
+            - name: .NET
+              href: /dotnet/api/overview/azure/ai.formrecognizer-readme
+            - name: Python
+              href: /python/api/azure-ai-formrecognizer/
+            - name: Java
+              href: /java/api/overview/azure/ai-formrecognizer-readme
+            - name: JavaScript
+              href: /javascript/api/overview/azure/ai-form-recognizer-readme
+    - name: "REST-API\_v2.0 für die Azure-Formularerkennung"
+      items:
+        - name: "Referenz zu REST-API\_v2.0"
+          href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
+        - name: Leitfaden zu SDK v3.0.0
+          href: api-v2-0/reference-sdk-api-v2-0.md
 - name: Ressourcen
   items:
     - name: Kundenperspektive

@@ -4,16 +4,16 @@ titleSuffix: An Azure Communication Services quickstart
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihrer App mithilfe von Azure Communication Services Funktionen zum Beitreten zu Teams-Besprechungen hinzufügen.
 author: palatter
 ms.author: palatter
-ms.date: 01/25/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-ios-android
-ms.openlocfilehash: b26c0631ed8a8982578d1c910d40689ff27dcc91
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 573b86cd764de3c2cd6ef3ebd261e8e80fda322b
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903156"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113218128"
 ---
 # <a name="quickstart-add-joining-a-teams-meeting-to-your-app"></a>Schnellstart: Hinzufügen von Funktionen zum Beitreten zu Teams-Besprechungen zu Ihrer App
 

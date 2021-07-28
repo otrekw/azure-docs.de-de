@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/07/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3947267959bd5cc90cc5d74512417df97eadae9e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f306fd1a2cccb3733640f5da100718908c444c3a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789844"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478127"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
@@ -23,6 +23,10 @@ In diesem Artikel wird beschrieben, wie Sie die [Modelle](concepts-models.md) in
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 [!INCLUDE [digital-twins-developer-interfaces.md](../../includes/digital-twins-developer-interfaces.md)]
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel.png" alt-text="Screenshot von Azure Digital Twins-Explorer mit einem Beispielmodelldiagramm." lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel.png":::
 
 ## <a name="create-models"></a>Erstellen von Modellen
 

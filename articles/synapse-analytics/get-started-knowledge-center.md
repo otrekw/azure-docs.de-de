@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erste Schritte mit dem Synapse Knowledge Center'
+title: 'Tutorial: Erste Schritte mit Synapse Knowledge Center'
 description: In diesem Tutorial erfahren Sie, wie Sie das Synapse Knowledge Center verwenden.
 services: synapse-analytics
 author: saveenr
@@ -10,25 +10,25 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: f36d5deb93f141bb7467a50d4b5dba7f3df1ea92
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: ba6023ccc1582650e74da483aeefc48d2a305bef
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517008"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554750"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Überblick über Synapse Knowledge Center
 
-In diesem Tutorial erfahren Sie, wie Sie Synapse Studio Knowledge Center verwenden.
+In diesem Tutorial erfahren Sie, wie Sie Synapse Studio **Knowledge Center** verwenden.
 
-## <a name="finding-to-the-knowledge-center"></a>Suchen des Knowledge Center
+## <a name="finding-the-knowledge-center"></a>Aufrufen des Knowledge Centers
 
-Es gibt zwei Möglichkeiten, das Knowledge Center in Synapse Studio aufzurufen:
+Es gibt zwei Möglichkeiten, das **Knowledge Center** in Synapse Studio aufzurufen:
 
   1. Klicken Sie im Start-Hub oben rechts auf **Learn**.
   2. Klicken Sie oben im Menü auf **?** und dann auf **Knowledge Center**.
 
-Wählen Sie eine der beiden Methoden aus, und öffnen Sie das **Knowledge Center**.
+Wählen Sie eine der beiden Methoden, und öffnen Sie das **Knowledge Center**.
 
 ## <a name="exploring-the-knowledge-center"></a>Weitere Informationen zum Knowledge Center
 

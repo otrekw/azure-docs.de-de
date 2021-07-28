@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: overview
 ms.workload: identity
-ms.date: 05/06/2021
+ms.date: 05/17/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: 4428e349277bc8a1482f80620b178b098eb44b2f
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 9126b3a915f9d457b51a69a4cef9a79003597c31
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480567"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091130"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?
 
@@ -83,6 +83,12 @@ Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Be
 Sie können über das Azure-Portal, die Azure CLI, Azure PowerShell, Azure SDKs oder REST-APIs Rollen zuweisen.
 
 Weitere Informationen finden Sie unter [Schritte zum Hinzufügen einer Rollenzuweisung](role-assignments-steps.md).
+
+## <a name="groups"></a>Gruppen
+
+Rollenzuweisungen sind für Gruppen transitiv. Das bedeutet, dass wenn der Benutzer Mitglied einer Gruppe und diese Gruppe wiederum Mitglied einer anderen Gruppe ist, die über eine Rollenzuweisung verfügt, er ebenfalls über die Berechtigungen dieser Rollenzuweisung verfügt.
+
+![Diagramm, das zeigt, wie Rollenzuweisungen für Gruppen transitiv sind.](./media/overview/rbac-groups-transitive.png)
 
 ## <a name="multiple-role-assignments"></a>Mehrere Rollenzuweisungen
 

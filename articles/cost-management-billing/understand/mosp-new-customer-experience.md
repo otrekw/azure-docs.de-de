@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 05/20/2021
 ms.author: banders
-ms.openlocfilehash: 4f7179a5ad35b4d3ca9a92119fb7b492e2aff779
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: b4a4bd73672b36e8301d33618701a5d6b43926a5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122525"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474871"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Erste Schritte mit Ihrem aktualisierten Azure-Abrechnungskonto
 
@@ -115,7 +115,7 @@ Auf der neuen Benutzeroberfläche wird Ihre Rechnung jeweils ungefähr am neunte
 
 **Rechnungen im ersten Monat nach der Migration**
 
-Am Tag der Kontoaktualisierung werden Ihre noch nicht in Rechnung gestellten Gebühren finalisiert. Sie erhalten die Rechnungen für diese Gebühren an dem Tag, an dem Sie normalerweise Ihre Rechnungen erhalten. Ein Beispiel: John besitzt zwei Azure-Abonnements: „Azure sub 01“ mit Abrechnungszeitraum vom fünften Tag des Monats bis zum vierten Tag des Folgemonats und „Azure sub 02“ mit Abrechnungszeitraum vom zehnten Tag des Monats bis zum neunten Tag des Folgemonats. John erhält Rechnungen für beide Azure-Abonnements in der Regel am fünften Tag des Monats. Wenn Johns Konto nun am 4. April aktualisiert wird, werden die Gebühren für „Azure sub 01“ vom 5. März bis 4. April sowie Gebühren für „Azure sub 02“ vom 10. März bis 4. April finalisiert. John erhält am 5. April zwei Rechnungen (je eine pro Abonnement). Nach der Aktualisierung des Kontos basiert der Abrechnungszyklus von John auf dem Kalendermonat und deckt alle Gebühren ab, die zwischen Anfang und Ende des jeweiligen Kalendermonats anfallen.  Die Rechnung für die Gebühren des vorherigen Kalendermonats steht jeweils am neunten Tag des Monats zur Verfügung. Im obigen Beispiel erhält John also am 5. Mai eine weitere Rechnung für den Abrechnungszeitraum vom 5. April bis 30. April. 
+Am Tag der Kontoaktualisierung werden Ihre noch nicht in Rechnung gestellten Gebühren finalisiert. Sie erhalten die Rechnungen für diese Gebühren an dem Tag, an dem Sie normalerweise Ihre Rechnungen erhalten. Ein Beispiel: John besitzt zwei Azure-Abonnements: „Azure sub 01“ mit Abrechnungszeitraum vom fünften Tag des Monats bis zum vierten Tag des Folgemonats und „Azure sub 02“ mit Abrechnungszeitraum vom zehnten Tag des Monats bis zum neunten Tag des Folgemonats. John erhält Rechnungen für beide Azure-Abonnements in der Regel am fünften Tag des Monats. Wenn Johns Konto nun am 4. April aktualisiert wird, werden die Gebühren für „Azure sub 01“ vom 5. März bis 4. April sowie Gebühren für „Azure sub 02“ vom 10. März bis 4. April finalisiert. John erhält am 5. April zwei Rechnungen (je eine pro Abonnement). Nach der Aktualisierung des Kontos basiert der Abrechnungszyklus von John auf dem Kalendermonat und deckt alle Gebühren ab, die zwischen Anfang und Ende des jeweiligen Kalendermonats anfallen. Die Rechnung für die Gebühren des vorherigen Kalendermonats steht jeweils in den ersten Tagen des Monats zur Verfügung. Im obigen Beispiel erhält John also Anfang Mai eine weitere Rechnung für den Abrechnungszeitraum vom 5. April bis 30. April.
 
 
 **Neue APIs für Abrechnung und Kostenverwaltung**

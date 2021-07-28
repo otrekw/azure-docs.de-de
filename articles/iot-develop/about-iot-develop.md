@@ -6,12 +6,12 @@ ms.author: rywinter
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 01/11/2021
-ms.openlocfilehash: 38c21ff71971868f6597856c4048ec179faf4e01
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7b23569b07893ebbecf86336a40e52cd8627851a
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108759434"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590070"
 ---
 # <a name="what-is-azure-iot-device-and-application-development"></a>Worum handelt es sich bei der Entwicklung von Azure IoT-Geräten und -Anwendungen?
 
@@ -73,6 +73,5 @@ Ein wichtiger Schritt im Entwicklungsprozess ist die Auswahl der Optionen, die S
 Weitere Informationen zum Auswählen von Anwendungsplattform und Tools finden Sie unter [Übersicht: Verbindungsoptionen für Azure IoT-Geräteentwickler](concepts-overview-connection-options.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wählen Sie die Reihe mit Schnellstartanleitungen aus, die für Ihre Entwicklungsrolle am relevantesten ist. Diese Artikel veranschaulichen folgende Grundlagen: Entwickeln einer Azure IoT-Anwendung zum Hosten von Geräten, Verwenden eines SDK, Herstellen einer Verbindung mit einem Gerät und Senden von Telemetriedaten.  
-- Entwicklung von Geräteanwendungen: [Schnellstart: Senden von Telemetriedaten von einem Gerät an Azure IoT Central](quickstart-send-telemetry-central.md)
-- Entwicklung von eingebetteten Geräten: [Erste Schritte bei der Entwicklung von eingebetteten Azure IoT-Geräten](quickstart-device-development.md)
+Wählen Sie die Reihe mit Schnellstartanleitungen zur eingebetteten Entwicklung oder Anwendungsentwicklung aus, die für Ihre Entwicklungsrolle am relevantesten ist. Diese Artikel veranschaulichen folgende Grundlagen: Entwickeln einer Azure IoT-Anwendung zum Hosten von Geräten, Verwenden eines SDK, Herstellen einer Verbindung mit einem Gerät und Senden von Telemetriedaten.  
+- [Azure IoT-Geräteentwicklung](index.yml)

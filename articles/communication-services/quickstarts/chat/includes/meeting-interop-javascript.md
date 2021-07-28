@@ -5,13 +5,29 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8efdb20b463e9021f298597cd94dabbdbf9e62c0
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 2fb04acd75d607772b6582882b98f9ed222f070c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109663817"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430018"
 ---
+In dieser Schnellstartanleitung wird beschrieben, wie Sie während einer Teams-Besprechung chatten, indem Sie das Chat SDK für JavaScript von Azure Communication Services verwenden.
+
+> [!NOTE]
+> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-chat-to-teams-meeting).
+
+## <a name="prerequisites"></a>Voraussetzungen 
+
+* Eine  [Teams-Bereitstellung](/deployoffice/teams-install). 
+* Eine funktionierende [Chat-App](../get-started.md). 
+
+## <a name="enable-teams-interoperability"></a>Aktivieren der Teams-Interoperabilität 
+
+Ein Communication Services-Benutzer, der einer Teams-Besprechung als Gastbenutzer hinzugefügt wird, kann nur auf den Chat der Besprechung zugreifen, wenn er der Teams-Telefonkonferenz beitritt. Weitere Informationen zum Hinzufügen eines Communication Services-Benutzers zu einer Teams-Telefonkonferenz finden Sie in der Dokumentation zur [Teams-Interoperabilität](../../voice-video-calling/get-started-teams-interop.md).
+
+Sie müssen Mitglied der besitzenden Organisation beider Entitäten sein, um dieses Feature verwenden zu können.
+
 ## <a name="joining-the-meeting-chat"></a>Beitritt zum Besprechungschat 
 
 Sobald die Teams-Interoperabilität aktiviert ist, können Communication Services-Benutzer über die Callin SDK als externe Benutzer am Teams-Anruf teilnehmen. Durch das Beitreten zur Anrufkonferenz wird er dem Besprechungschat als Teilnehmer hinzugefügt und kann Nachrichten mit anderen Benutzern der Anrufkonferenz austauschen. Der Benutzer besitzt keinen Zugriff auf Chatnachrichten, die gesendet wurden, bevor er der Anrufkonferenz beigetreten ist. Führen Sie die folgenden Schritte aus, um an der Besprechung teilzunehmen und mit dem Chatten zu beginnen.
@@ -62,7 +78,7 @@ Erstellen Sie im Stammverzeichnis Ihres Projekts die Datei **index.html**. Diese
 
 Ersetzen Sie den Code in „index.html“ durch den folgenden Codeausschnitt.
 In die Textfelder oben auf der Seite werden der Teams-Besprechungskontext und die Besprechungsthread-ID eingegeben. Über die Schaltfläche „An Teams-Besprechung teilnehmen“ nehmen Sie an der angegebenen Besprechung teil.
-Unten auf der Seite wird ein Chatpopup angezeigt. Über dieses Popup können Sie Nachrichten im Besprechungsthread senden. Solange der ACS-Benutzer Mitglied ist, werden alle im Thread gesendeten Nachrichten in Echtzeit angezeigt.
+Unten auf der Seite wird ein Chatpopup angezeigt. Über dieses Popup können Sie Nachrichten im Besprechungsthread senden. Sofern der Communication Services-Benutzer Mitglied ist, werden alle im Thread gesendeten Nachrichten in Echtzeit angezeigt.
 
 ```html
 <!DOCTYPE html>
@@ -327,9 +343,9 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 Navigieren Sie in Ihrem Browser zu http://localhost:8080/. Daraufhin sollte Folgendes angezeigt werden:
 
-:::image type="content" source="../acs-join-teams-meeting-chat-quickstart.png" alt-text="Screenshot der fertigen JavaScript-Anwendung":::
+:::image type="content" source="../join-teams-meeting-chat-quickstart.png" alt-text="Screenshot der fertigen JavaScript-Anwendung":::
 
-Fügen Sie den Teams-Besprechungslink und die Thread-ID in die Textfelder ein. Klicken Sie auf *An Teams-Besprechung teilnehmen*, um an der Teams-Besprechung teilzunehmen. Wenn der ACS-Benutzer zur Besprechung zugelassen wurde, können Sie über Ihre Communication Services-Anwendung chatten. Navigieren Sie zu dem Feld unten auf der Seite, um mit dem Chatten zu beginnen.
+Fügen Sie den Teams-Besprechungslink und die Thread-ID in die Textfelder ein. Klicken Sie auf *An Teams-Besprechung teilnehmen*, um an der Teams-Besprechung teilzunehmen. Nachdem der Communication Services-Benutzer zur Besprechung zugelassen wurde, können Sie über Ihre Communication Services-Anwendung chatten. Navigieren Sie zu dem Feld unten auf der Seite, um mit dem Chatten zu beginnen.
 
 > [!NOTE] 
-> Derzeit werden für Interoperabilitätsszenarios mit Teams nur das Senden, Empfangen und Bearbeiten von Nachrichten unterstützt. Andere Features wie das Eingeben von Indikatoren oder das Hinzufügen oder Entfernen anderer Benutzer aus der Teams-Besprechung durch Communication Services-Benutzer werden noch nicht unterstützt.  
+> Derzeit werden für Interoperabilitätsszenarios mit Teams nur das Senden, Empfangen und Bearbeiten von Nachrichten unterstützt. Andere Features wie das Eingeben von Indikatoren oder das Hinzufügen oder Entfernen anderer Benutzer aus der Teams-Besprechung durch Communication Services-Benutzer werden noch nicht unterstützt.

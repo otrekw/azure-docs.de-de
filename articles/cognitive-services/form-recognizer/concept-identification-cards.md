@@ -5,17 +5,17 @@ description: Konzepte der Datenextraktion aus Ausweisdokumenten mit der vordefin
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9ab936f90fb890d50e6e476e216b327ed26fc4f5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f829de878b512ae6a8c8f8747e7c61456027cd68
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374849"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890670"
 ---
 # <a name="form-recognizer-prebuilt-identification-id-document-model"></a>Vordefiniertes ID-Modell der Formularerkennung für Ausweise
 
@@ -54,16 +54,16 @@ Der vorgefertigte ID-Dienst extrahiert die Schlüsselwerte aus den international
 
 ### <a name="fields-extracted"></a>Extrahierte Felder
 
-|Name| Typ | BESCHREIBUNG | Wert |
+|Name| Typ | BESCHREIBUNG | Wert (standardisierte Ausgabe) |
 |:-----|:----|:----|:----|
-|  Land | country | Ländercode, konform zu ISO 3166-Standard | „USA“ |
+|  CountryRegion | countryRegion | Länder- oder Regionscode, konform zu ISO 3166-Standard | „USA“ |
 |  DateOfBirth | date | Geburtsdatum im Format JJJJ-MM-TT | „1980-01-01“ |
 |  DateOfExpiration | date | Ablaufdatum im Format JJJJ-MM-TT | „2019-05-05“ |
 |  DocumentNumber | Zeichenfolge | Relevante Passnummer, Führerscheinnummer usw. | „340020013“ |
 |  FirstName | Zeichenfolge | Extrahierter Vorname und ggf. Mittelinitial | „JENNIFER“ |
 |  LastName | Zeichenfolge | Extrahierter Nachname | „BROOKS“ |
-|  Nationality | country | Ländercode, konform zu ISO 3166-Standard | „USA“ |
-|  Geschlecht | gender | Mögliche extrahierte Werte: „M“, „F“ und „X“ | "F" |
+|  Nationality | countryRegion | Länder- oder Regionscode, konform zu ISO 3166-Standard | „USA“ |
+|  Geschlecht | Zeichenfolge | Mögliche extrahierte Werte: „M“, „F“ und „X“ | "F" |
 |  MachineReadableZone | Objekt | Maschinenlesbarer zweizeiliger Bereich (Machine Readable Zone, MRZ) mit jeweils 44 Zeichen | „P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816“ |
 |  DocumentType | Zeichenfolge | Dokumenttyp, z. B. Pass oder Führerschein | „passport“ |
 |  Adresse | Zeichenfolge | Extrahierte Adresse (nur beim Führerschein) | „123 STREET ADDRESS YOUR CITY WA 99999-1234“|
@@ -87,10 +87,6 @@ Mit der ID-API werden außerdem die folgenden Informationen zurückgegeben:
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-locales"></a>Unterstützte Gebietsschemas
-
- **Pre-built ID v2.1** unterstützt Ausweisdokumente im Gebietsschema **en-us**.
-
 ## <a name="supported-identity-document-types"></a>Unterstützte Identitätsdokumenttypen
 
 * **Pre-built ID v2.1** extrahiert die Schlüsselwerte aus internationalen Reisepässen und US-Führerscheinen.
@@ -100,7 +96,7 @@ Mit der ID-API werden außerdem die folgenden Informationen zurückgegeben:
   >
   > Derzeit werden als ID-Typen internationale Reisepässe und US-Führerscheine unterstützt. Wir arbeiten aktiv daran, die Unterstützung auf andere Ausweisdokumente auf der ganzen Welt auszuweiten.
 
-## <a name="post-analyze-id-document"></a>POST Analyze ID Document
+## <a name="the-analyze-id-document-operation"></a>Vorgang zum Analysieren eines Ausweisdokuments
 
 Beim Vorgang [Analyze ID](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7daad1f2612c46f5822) wird ein Bild oder eine PDF-Datei eines Ausweisdokuments als Eingabe verwendet und die relevanten Werte extrahiert. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
 
@@ -108,13 +104,13 @@ Beim Vorgang [Analyze ID](https://westus.dev.cognitive.microsoft.com/docs/servic
 |:-----|:----|
 |Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/prebuilt/idDocument/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
-## <a name="get-analyze-id-document-result"></a>GET Analyze ID Document Result
+## <a name="the-get-analyze-id-document-result-operation"></a>Vorgang zum Abrufen des Ergebnisses der Analyse eines Ausweisdokuments
 
 <!---
 Need to update this with updated APIM links when available
 -->
 
-Im zweiten Schritt wird der Vorgang [**Get Analyze idDocument Result**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707) aufgerufen. Bei diesem Vorgang wird die Ergebnis-ID, die durch den Vorgang „Analyze ID“ erstellt wurde, als Eingabe verwendet. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
+Im zweiten Schritt wird der Vorgang [**Get Analyze ID Document Result**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707) (Abrufen des Ergebnisses der Analyse eines Ausweisdokuments) aufgerufen. Bei diesem Vorgang wird die Ergebnis-ID, die durch den Vorgang „Analyze ID“ erstellt wurde, als Eingabe verwendet. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
 
 |Feld| type | Mögliche Werte |
 |:-----|:----:|:----|
@@ -129,11 +125,11 @@ Wenn im Feld **status** der Wert **succeeded** angezeigt wird, enthält die JSON
 
 ### <a name="sample-json-output"></a>JSON-Beispielausgabe
 
-Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der `readResults`-Knoten enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert. Der `documentResults`-Knoten enthält die vom Modell erkannten ID-Werte. Dieser Knoten enthält außerdem nützliche Schlüssel-Wert-Paare wie Vorname, Nachname, Dokumentnummer usw.
+Weitere Informationen finden Sie im folgenden Beispiel einer erfolgreichen JSON-Antwort (die Ausgabe wurde der Einfachheit halber gekürzt): Der Knoten `readResults` enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert. Der `documentResults`-Knoten enthält die vom Modell erkannten ID-Werte. Dieser Knoten enthält außerdem nützliche Schlüssel-Wert-Paare wie Vorname, Nachname, Dokumentnummer usw.
 
 ```json
 {
-   "status": "succeeded",
+  "status": "succeeded",
   "createdDateTime": "2021-03-04T22:29:33Z",
   "lastUpdatedDateTime": "2021-03-04T22:29:36Z",
   "analyzeResult": {
@@ -175,6 +171,8 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der `re
               }
             ],
           ...
+          }
+        ]
       }
     ],
 
@@ -187,9 +185,9 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der `re
           1
         ],
         "fields": {
-          "Country": {
-            "type": "country",
-            "valueCountry": "USA",
+          "CountryRegion": {
+            "type": "countryRegion",
+            "valueCountryRegion": "USA",
             "text": "USA"
           },
           "DateOfBirth": {
@@ -218,12 +216,12 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der `re
             "text": "BROOKS"
           },
           "Nationality": {
-            "type": "country",
-            "valueCountry": "USA",
+            "type": "countryRegion",
+            "valueCountryRegion": "USA",
             "text": "USA"
           },
           "Sex": {
-            "type": "gender",
+            "type": "string",
             "valueGender": "F",
             "text": "F"
           },

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 80f3af135f32bcb8fefd2d786da767e32a2f9368
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 55dcda4c323700caa030fb87768d36a702d1c501
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203665"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476752"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Problembehandlung von Azure Digital Twins: Alerts
 
@@ -36,7 +36,7 @@ Hier ist beschrieben, wie Sie Warnungen für Ihre Azure Digital Twins-Instanz ak
 
 4. Wählen Sie die Schaltfläche _Warnungsregel erstellen_ aus, um die Warnungsregel zu erstellen.
 
-:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Screenshot: Seite „Warnungsregel erstellen“ mit Abschnitten für Bereich, Bedingung, Aktionsgruppe und Details zur Warnungsregel" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Screenshot des Azure-Portals mit der Seite „Warnungsregel erstellen“ mit Abschnitten für Bereich, Bedingung, Aktionsgruppe und Details zur Warnungsregel." lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
 Eine Anleitung zum Ausfüllen dieser Felder finden Sie unter [Überblick über Warnungen in Microsoft Azure](../azure-monitor/alerts/alerts-overview.md). Unten sind einige Beispiele dafür angegeben, welche Schritte für Azure Digital Twins ausgeführt werden müssen.
 
@@ -44,17 +44,17 @@ Eine Anleitung zum Ausfüllen dieser Felder finden Sie unter [Überblick über W
 
 Hier ist ein Auszug aus dem Prozess *Bedingung auswählen* angegeben, um zu veranschaulichen, welche Arten von Warnungssignalen für Azure Digital Twins verfügbar sind. Auf dieser Seite können Sie nach dem Typ des Signals filtern und das gewünschte Signal in einer Liste auswählen.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="Screenshot: Erste Seite „Signallogik konfigurieren“. Das Feld „Signaltyp“ ist hervorgehoben, über das Metriken und Aktivitätsprotokolle ausgewählt werden können, und unterhalb davon können Sie eine Liste mit Metriken auswählen.":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="Screenshot des Azure-Portals mit der ersten Seite „Signallogik konfigurieren“. Es gibt Hervorhebungen um das Feld „Signaltyp“ und die Liste der Metriken herum.":::
 
 Nachdem Sie ein Signal ausgewählt haben, werden Sie aufgefordert, die Logik der Warnung zu konfigurieren. Sie können nach einer Dimension filtern und einen Schwellenwert für Ihre Warnung sowie die Häufigkeit der Überprüfungen für die Bedingung festlegen. Hier ist ein Beispiel für die Einrichtung einer Warnung für den Fall angegeben, dass der Durchschnittswert für die Metrik „Routingfehlerrate“ über 5 % steigt.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="Screenshot: Zweite Seite „Signallogik konfigurieren“. Auf der Seite wird der Metrikverlauf angezeigt, sie verfügt über einen Bereich zum Filtern nach einer Dimension, z. B. Event Grid-Vorgänge, und es ist ein Abschnitt zum Definieren der Warnungslogik vorhanden (Beispiel: „Durchschnittswert größer als 5“).":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="Screenshot des Azure-Portals mit der zweiten Seite „Signallogik konfigurieren“.":::
 
 ### <a name="verify-success"></a>Überprüfen des erfolgreichen Abschlusses
 
 Nach dem Einrichten von Warnungen werden diese auf der Seite *Warnungen* für Ihre Instanz angezeigt.
  
-:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Screenshot: Seite „Warnungen“ und Schaltfläche zum Hinzufügen. Eine Warnung ist konfiguriert." lightbox="media/troubleshoot-alerts/alerts-post.png":::
+:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Screenshot des Azure-Portals mit der Seite „Warnungen“ und Schaltfläche zum Hinzufügen. Eine Warnung ist konfiguriert." lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

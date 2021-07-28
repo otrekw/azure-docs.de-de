@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 05/01/2021
 ms.author: banders
-ms.openlocfilehash: cb6a7d8411c2be6d76718b79c6fc1339a6600ce5
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 395f6804e0fdea88e65879817b83b9a8aabdd0f1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905502"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748065"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Zuweisen von Rollen zu Azure Enterprise Agreement-Dienstprinzipalnamen
 
@@ -77,7 +77,7 @@ Später in diesem Artikel erteilen Sie der Azure AD-App Berechtigungen zum Ausf
 
 ## <a name="assign-enrollment-account-role-permission-to-the-spn"></a>Zuweisen der Registrierungskonto-Rollenberechtigung zum SPN
 
-1. Lesen Sie den REST-API-Artikel [Rollenzuweisungen – PUT](/rest/api/billing/2019-10-01-preview/roleassignments/put). Klicken Sie im Artikel auf **Jetzt ausprobieren**, um mit der Verwendung des SPN zu beginnen.
+1. Lesen Sie den REST-API-Artikel [Rollenzuweisungen – PUT](/rest/api/billing/2019-10-01-preview/role-assignments/put). Klicken Sie im Artikel auf **Jetzt ausprobieren**, um mit der Verwendung des SPN zu beginnen.
 
    :::image type="content" source="./media/assign-roles-azure-service-principals/put-try-it.png" alt-text="Screenshot der Option „Jetzt testen“ im Artikel „Rollenzuweisungen – PUT“" lightbox="./media/assign-roles-azure-service-principals/put-try-it.png" :::
 
@@ -91,13 +91,13 @@ Später in diesem Artikel erteilen Sie der Azure AD-App Berechtigungen zum Ausf
 
    - `billingRoleAssignmentName`: Dieser Parameter ist eine eindeutige GUID, die Sie angeben müssen. Eine GUID kann mit dem PowerShell-Befehl [New-Guid](/powershell/module/microsoft.powershell.utility/new-guid) erstellt werden. Sie können eine eindeutige GUID auch über die Website [Online-Generator für GUIDs/UUIDs](https://guidgenerator.com/) generieren.
 
-   - `api-version`: Verwenden Sie die Version **2019-10-01-preview**. Verwenden Sie den Beispielanforderungstext in [Rollenzuweisungen – PUT – Beispiele](/rest/api/billing/2019-10-01-preview/roleassignments/put#examples).
+   - `api-version`: Verwenden Sie die Version **2019-10-01-preview**. Verwenden Sie den Beispielanforderungstext in [Rollenzuweisungen – PUT – Beispiele](/rest/api/billing/2019-10-01-preview/role-assignments/put#examples).
 
       Der Anforderungstext enthält JSON-Code mit drei Parametern, die Sie verwenden müssen.
 
       | Parameter | Ort |
       | --- | --- |
-      | `properties.principalId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
+      | `properties.principalId` | Dies ist der Wert der Objekt-ID. Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
       | `properties.principalTenantId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
       | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountName}/billingRoleDefinitions/24f8edb6-1668-4659-b5e2-40bb5f3a7d7e` |
 
@@ -121,7 +121,7 @@ Führen Sie für die Rolle „EA Purchaser“ (EA-Einkäufer) die gleichen Schri
 
 ## <a name="assign-the-department-reader-role-to-the-spn"></a>Zuweisen der Rolle „DepartmentReader“ zum SPN
 
-1. Lesen Sie den REST-API-Artikel [Zuweisen von Registrierungsrollen für Abteilungen – PUT](/rest/api/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put). Klicken Sie im Artikel auf **Jetzt ausprobieren**.
+1. Lesen Sie den REST-API-Artikel [Zuweisen von Registrierungsrollen für Abteilungen – PUT](/rest/api/billing/2019-10-01-preview/enrollment-department-role-assignments/put). Klicken Sie im Artikel auf **Jetzt ausprobieren**.
 
    :::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" alt-text="Screenshot: Die Option „Jetzt testen“ im Artikel „Zuweisen von Registrierungsrollen für Abteilungen – PUT“" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" :::
 
@@ -141,13 +141,13 @@ Führen Sie für die Rolle „EA Purchaser“ (EA-Einkäufer) die gleichen Schri
 
       :::image type="content" source="./media/assign-roles-azure-service-principals/department-id.png" alt-text="Screenshot: Beispiel für eine Abteilungs-ID" lightbox="./media/assign-roles-azure-service-principals/department-id.png" :::
 
-   - `api-version`: Verwenden Sie die Version **2019-10-01-preview**. Verwenden Sie das Beispiel in [Zuweisen von Registrierungsrollen für Abteilungen – PUT](/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put).
+   - `api-version`: Verwenden Sie die Version **2019-10-01-preview**. Verwenden Sie das Beispiel in [Zuweisen von Registrierungsrollen für Abteilungen – PUT](/rest/api/billing/2019-10-01-preview/enrollment-department-role-assignments/put).
 
       Der Anforderungstext enthält JSON-Code mit drei Parametern, die Sie verwenden müssen.
 
       | Parameter | Ort |
       | --- | --- |
-      | `properties.principalId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
+      | `properties.principalId` | Dies ist der Wert der Objekt-ID. Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
       | `properties.principalTenantId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
       | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountName}/billingRoleDefinitions/db609904-a47f-4794-9be8-9bd86fbffd8a` |
 
@@ -165,13 +165,13 @@ Jetzt können Sie den SPN verwenden, um automatisch auf EA-APIs zuzugreifen. Der
 
 ## <a name="assign-the-subscription-creator-role-to-the-spn"></a>Zuweisen der Rolle „SubscriptionCreator“ zum SPN
 
-1. Lesen Sie den Artikel [Zuweisen von Registrierungsrollenzuweisungen für Konten – PUT](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Klicken Sie im Artikel auf **Jetzt ausprobieren**, um dem SPN die Rolle „SubscriptionCreator“ zuzuweisen.
+1. Lesen Sie den Artikel [Zuweisen von Registrierungsrollenzuweisungen für Konten – PUT](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put). Klicken Sie im Artikel auf **Jetzt ausprobieren**, um dem SPN die Rolle „SubscriptionCreator“ zuzuweisen.
 
    :::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" alt-text="Screenshot: Die Option „Jetzt testen“ im Artikel „Zuweisen von Registrierungsrollen für Konten – PUT“" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" :::
 
 1. Melden Sie sich mit Ihren Kontoanmeldeinformationen beim Mandanten mit dem Registrierungszugriff an, den Sie zuweisen möchten.
 
-1. Geben Sie in der API-Anforderung die folgenden Parameter an. Lesen Sie den Artikel [Zuweisen von Registrierungsrollen für Konten – PUT – URI-Parameter](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put#uri-parameters).
+1. Geben Sie in der API-Anforderung die folgenden Parameter an. Lesen Sie den Artikel [Zuweisen von Registrierungsrollen für Konten – PUT – URI-Parameter](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put#uri-parameters).
 
    - `billingAccountName`: Dieser Parameter ist die **Abrechnungskonto-ID**. Sie finden ihn im Azure-Portal auf der Übersichtsseite **Kostenverwaltung + Abrechnung**.
 
@@ -185,13 +185,13 @@ Jetzt können Sie den SPN verwenden, um automatisch auf EA-APIs zuzugreifen. Der
 
       :::image type="content" source="./media/assign-roles-azure-service-principals/account-id.png" alt-text="Screenshot der Konto-ID" lightbox="./media/assign-roles-azure-service-principals/account-id.png" :::
 
-   - `api-version`: Verwenden Sie die Version **2019-10-01-preview**. Verwenden Sie das Beispiel in [Zuweisen von Registrierungsrollen für Abteilungen – PUT – Beispiele](/rest/api/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put#putenrollmentdepartmentadministratorroleassignment).
+   - `api-version`: Verwenden Sie die Version **2019-10-01-preview**. Verwenden Sie das Beispiel in [Zuweisen von Registrierungsrollen für Abteilungen – PUT – Beispiele](/rest/api/billing/2019-10-01-preview/enrollment-department-role-assignments/put#examples).
 
       Der Anforderungstext enthält JSON-Code mit drei Parametern, die Sie verwenden müssen.
 
       | Parameter | Ort |
       | --- | --- |
-      | `properties.principalId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
+      | `properties.principalId` | Dies ist der Wert der Objekt-ID. Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
       | `properties.principalTenantId` | Siehe [Suchen des SPN und der Mandanten-ID](#find-your-spn-and-tenant-id). |
       | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountID}/enrollmentAccounts/196987/billingRoleDefinitions/a0bcee42-bf30-4d1b-926a-48d21664ef71` |
 

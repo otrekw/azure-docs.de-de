@@ -7,15 +7,15 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 04/23/2021
+ms.date: 05/21/2021
 ms.custom: devx-track-csharp
 ms.devlang: dotnet
-ms.openlocfilehash: b7bbf9f1ec572680f02e4b6d3adca6d807b45f83
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 7822f86b52bf3b8fce9ee144797d8a9b83d90a9b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107981953"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469850"
 ---
 # <a name="2---create-and-load-search-index-with-net"></a>2: Erstellen und Laden des Suchindexes mit .NET
 
@@ -103,6 +103,14 @@ Notieren Sie sich den **Namen der Suchressource**. Sie benötigen ihn, um die Az
 
 > [!CAUTION]
 > Möglicherweise möchten Sie den Administratorschlüssel für die Suche in der Azure Functions-Instanz verwenden. Dadurch wird jedoch nicht das Prinzip der geringsten Berechtigungen befolgt. Die Azure Functions-Instanz verwendet den Abfrageschlüssel, um das Prinzip der geringsten Berechtigungen einzuhalten. 
+
+## <a name="rollback-bulk-import-file-changes"></a>Rollback von Massenimport-Dateiänderungen
+
+Verwenden Sie den folgenden git-Befehl im integrierten Visual Studio Code-Terminal im Verzeichnis `bulk-insert`, um ein Rollback der Änderungen auszuführen. Sie werden nicht benötigt, um das Tutorial fortzusetzen, und Sie sollten diese Geheimnisse nicht speichern oder in Ihr Repository pushen. 
+
+```git
+git checkout .
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

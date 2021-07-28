@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: aea55b77330972877fd5e2d87758ab110071c072
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: db58b523f1280847815587a5037c2348335482b6
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207769"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616170"
 ---
 # <a name="secure-azure-digital-twins"></a>Schützen von Azure Digital Twins
 
-Zur Gewährleistung der Sicherheit ermöglicht Azure Digital Twins eine exakte Zugriffssteuerung für bestimmte Daten, Ressourcen und Aktionen in Ihrer Bereitstellung. Hierzu wird eine präzise Rollen- und Rechteverwaltungsstrategie namens **rollenbasierte Zugriffssteuerung in Azure** (Role-Based Access Control, Azure RBAC) verwendet. Informationen zu den allgemeinen Prinzipien von Azure RBAC finden Sie [hier](../role-based-access-control/overview.md).
+Zur Gewährleistung der Sicherheit ermöglicht Azure Digital Twins eine exakte Zugriffssteuerung für bestimmte Daten, Ressourcen und Aktionen in Ihrer Bereitstellung. Hierzu wird eine präzise Rollen- und Rechteverwaltungsstrategie namens [rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/overview.md) (Role-Based Access Control, Azure RBAC) verwendet.
 
 Azure Digital Twins unterstützt auch die Verschlüsselung ruhender Daten.
 
@@ -47,7 +47,7 @@ Die Azure-Plattform verwaltet diese Laufzeitidentität mit verwalteten Identitä
 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Autorisierung: Azure-Rollen für Azure Digital Twins
 
-Azure bietet **zwei integrierte Azure-Rollen** für die Autorisierung des Zugriffs auf die [Datenebenen-APIs](how-to-use-apis-sdks.md#overview-data-plane-apis) von Azure Digital Twins. Sie können auf die Rollen entweder über den Namen oder über die ID verweisen:
+Azure bietet **zwei integrierte Azure-Rollen** für die Autorisierung des Zugriffs auf die [Datenebenen-APIs](concepts-apis-sdks.md#overview-data-plane-apis) von Azure Digital Twins. Sie können auf die Rollen entweder über den Namen oder über die ID verweisen:
 
 | Integrierte Rolle | BESCHREIBUNG | id | 
 | --- | --- | --- |
@@ -102,7 +102,7 @@ Auf ähnliche Weise können Sie private Endpunkte für Ihre Azure Digital Twins-
 
 Der private Endpunkt verwendet eine IP-Adresse aus dem Adressraum Ihrer Azure Virtual Network-Instanz. Der Netzwerkdatenverkehr zwischen einem Client in Ihrem privaten Netzwerk und der Azure Digital Twins-Instanz wird über das virtuelle Netzwerk und Private Link im Microsoft-Backbonenetzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt. Dies ist eine visuelle Darstellung dieses Systems:
 
-:::image type="content" source="media/concepts-security/private-link.png" alt-text="Eine Abbildung eines Netzwerks für PowerGrid Company: Hierbei handelt es sich um ein geschütztes virtuelles Netzwerk ohne Zugriff auf das Internet oder die öffentliche Cloud. Die Verbindung wird über Private Link zu einer Azure Digital Twins-Instanz namens CityOfTwins hergestellt.":::
+:::image type="content" source="media/concepts-security/private-link.png" alt-text="Diagramm eines Netzwerks, bei dem es sich um ein geschütztes virtuelles Netzwerk ohne Zugriff auf die öffentliche Cloud handelt. Die Verbindung wird über Private Link mit einer Azure Digital Twins-Instanz hergestellt.":::
 
 Das Konfigurieren eines privaten Endpunkts für Ihre Azure Digital Twins-Instanz ermöglicht es Ihnen, Ihre Azure Digital Twins-Instanz zu schützen und eine öffentliche Offenlegung zu vermeiden. Außerdem ist die Datenexfiltration aus Ihrem virtuellen Netzwerk so auch nicht möglich.
 

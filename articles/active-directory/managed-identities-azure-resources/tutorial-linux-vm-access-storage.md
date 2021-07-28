@@ -6,21 +6,22 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: ''
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/23/2020
+ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c7612188043be070ead92c88838b567b22787d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e927415e0a1d2ce7d52e602eddfffb0eae5387b5
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98131269"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076562"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Storage 
 
@@ -76,21 +77,12 @@ Da Dateien Blob Storage erfordern, müssen wir einen Blobcontainer erstellen, in
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Gewähren des Zugriffs auf einen Azure-Speichercontainer für Ihre VM 
 
-Sie können die verwaltete Identität des virtuellen Computers verwenden, um die Daten in Azure Storage Blob abzurufen.
+Sie können die verwaltete Identität des virtuellen Computers verwenden, um die Daten in Azure Storage Blob abzurufen. Verwaltete Identitäten für Azure-Ressourcen können zur Authentifizierung bei Ressourcen verwendet werden, die die Azure AD-Authentifizierung unterstützen.  Gewähren Sie Zugriff, indem Sie der verwalteten Identität im Bereich der Ressourcengruppe, die Ihr Speicherkonto enthält, die Rolle [storage-blob-data-reader](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) zuweisen.
+ 
+Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 >[!NOTE]
 > Weitere Informationen zu den verschiedenen Rollen, die Sie zum Gewähren von Berechtigungen für den Speicher verwenden können, finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights).
-
-1. Navigieren Sie zurück zum neu erstellten Speicherkonto.  
-2. Klicken Sie im linken Bereich auf den Link **Zugriffssteuerung (IAM)** .  
-3. Klicken Sie oben auf der Seite auf **+ Rollenzuweisung hinzufügen**, um dem virtuellen Computer eine neue Rollenzuweisung hinzuzufügen.
-4. Wählen Sie unter **Rolle** in der Dropdownliste **Storage-Blobdatenleser** aus. 
-5. Wählen Sie in der nächsten Dropdownliste unter **Zugriff zuweisen zu** die Option **Virtueller Computer** aus.  
-6. Stellen Sie im nächsten Schritt sicher, dass das richtige Abonnement in der Dropdownliste **Abonnement** aufgeführt ist, und legen Sie dann für **Ressourcengruppe** die Option **Alle Ressourcengruppen** fest.  
-7. Wählen Sie unter **Auswählen** Ihren virtuellen Computer aus, und klicken Sie dann auf **Speichern**.
-
-    ![Zuweisen von Berechtigungen](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
-
 ## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>Erhalten eines Zugriffstokens und seine Verwendung zum Aufrufen von Azure Storage
 
 Azure Storage unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit der MSI abgerufen wurden, direkt angenommen werden können. Dieser Umstand ist Teil der Azure Storage-Integration in Azure AD und unterscheidet sich vom Bereitstellen von Anmeldeinformationen in der Verbindungszeichenfolge.

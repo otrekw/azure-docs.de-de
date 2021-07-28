@@ -7,19 +7,20 @@ ms.service: postgresql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/06/2021
-ms.openlocfilehash: 3017d10abc910233e0627037349c0dfd966fd88e
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 99fee3db3c970e71aa4a979113d7508ecad3bd1e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883794"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463704"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-postgresql---flexible-server"></a>Schnellstart: Verbinden und Abfragen mit der Azure CLI mit Azure Database for PostgreSQL Flexible Server
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL: Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
-In diesem Schnellstart wird gezeigt, wie Sie mithilfe der Azure CLI und des Befehls ```az postgres flexible-server connect``` eine Verbindung mit einer Azure Database for PostgreSQL Flexible Server-Instanz herstellen. Mit diesem Befehl können Sie die Konnektivität mit dem Datenbankserver testen und Abfragen ausführen. Sie können mithilfe des interaktiven Modus auch mehrere Abfragen ausführen. 
+In diesem Schnellstart wird gezeigt, wie Sie sich mit der Azure CLI über ```az postgres flexible-server connect``` mit einer Instanz von „Flexibler Azure Database for PostgreSQL-Server“ verbinden und mit dem Befehl ```az postgres flexible-server execute``` eine einzelne Abfrage oder SQL-Datei ausführen. Mit diesem Befehl können Sie die Konnektivität mit dem Datenbankserver testen und Abfragen ausführen. Sie können mithilfe des interaktiven Modus auch mehrere Abfragen ausführen. 
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Ein Azure-Konto. Falls Sie noch kein Konto haben, können Sie eine [kostenlose Testversion](https://azure.microsoft.com/free/) verwenden.
@@ -67,16 +68,47 @@ Konnte die Verbindung nicht hergestellt werden, versuchen Sie Folgendes:
 - Überprüfen Sie, ob die Firewallregel für Ihren Clientcomputer konfiguriert wurde.
 - Wenn Sie Ihren Server mit privatem Zugriff in einem virtuellen Netzwerk konfiguriert haben, vergewissern Sie sich, dass sich Ihr Clientcomputer im gleichen virtuellen Netzwerk befindet.
 
+## <a name="run-multiple-queries-using-interactive-mode"></a>Ausführen mehrerer Abfragen mithilfe des interaktiven Modus
+Sie können mehrere Abfragen mithilfe des **interaktiven** Modus ausführen. Führen Sie zum Aktivieren des interaktiven Modus den folgenden Befehl aus:
+
+```azurecli
+az postgres flexible-server connect -n <servername> -u <username> -p "<password>" -d <databasename>
+```
+
+**Beispiel:**
+
+```azurecli
+az postgres flexible-server connect -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb --interactive
+```
+
+Die **psql**-Shelloberfläche wird wie folgt angezeigt:
+
+```bash
+Command group 'postgres flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+Password for earthyTurtle7:
+Server: PostgreSQL 12.5
+Version: 3.0.0
+Chat: https://gitter.im/dbcli/pgcli
+Home: http://pgcli.com
+postgres> create database pollsdb;
+CREATE DATABASE
+Time: 0.308s
+postgres> exit
+Goodbye!
+Local context is turned on. Its information is saved in working directory C:\sunitha. You can run `az local-context off` to turn it off.
+Your preference of  are now saved to local context. To learn more, type in `az local-context --help`
+```
+
 ## <a name="run-single-query"></a>Ausführen einer einzelnen Abfrage
 Sie können mit dem Befehl eine einzelne Abfrage unter Verwendung des ```--querytext```-Arguments ```-q``` ausführen.
 
 ```azurecli
-az postgres flexible-server connect -n <server-name> -u <username> -p "<password>" -d <database-name> -q "<query-text>"
+az postgres flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> -q "<query-text>"
 ```
 
 **Beispiel:** 
 ```azurecli
-az postgresql flexible-server connect -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -q "select * from table1;" --output table
+az postgres flexible-server execute -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -q "select * from table1;" --output table
 ```
 
 Die folgende Ausgabe sollte angezeigt werden:
@@ -100,37 +132,26 @@ test   200
 test   200
 ```
 
-## <a name="run-multiple-queries-using-interactive-mode"></a>Ausführen mehrerer Abfragen mithilfe des interaktiven Modus
-Sie können mehrere Abfragen mithilfe des **interaktiven** Modus ausführen. Führen Sie zum Aktivieren des interaktiven Modus den folgenden Befehl aus:
+## <a name="run-sql-file"></a>Ausführen einer SQL-Datei
+Sie können eine SQL-Datei mit dem Befehl mit dem ```--file-path```-Argument ```-f``` ausführen.
 
 ```azurecli
-az postgres flexible-server connect -n <servername> -u <username> -p "<password>" -d <databasename>
+az postgres flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> --file-path "<file-path>"
 ```
 
-**Beispiel:**
-
+**Beispiel:** 
 ```azurecli
-az postgresql flexible-server connect -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb --interactive
+az postgres flexible-server execute -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -f "./test.sql"
 ```
 
-Die **psql**-Shelloberfläche wird wie folgt angezeigt:
+Die folgende Ausgabe sollte angezeigt werden:
 
-```bash
+```output
 Command group 'postgres flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-Password for earthyTurtle7:
-Server: PostgreSQL 12.5
-Version: 3.0.0
-Chat: https://gitter.im/dbcli/pgcli
-Home: http://pgcli.com
-postgres> create database pollsdb;
-CREATE DATABASE
-Time: 0.308s
-postgres> exit
-Goodbye!
-Local context is turned on. Its information is saved in working directory C:\sunitha. You can run `az local-context off` to turn it off.
-Your preference of  are now saved to local context. To learn more, type in `az local-context --help`
+Running sql file '.\test.sql'...
+Successfully executed the file.
+Closed the connection to postgresdemoserver.
 ```
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

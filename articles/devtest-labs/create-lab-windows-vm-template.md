@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure 
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 95ff4572b789fd4b8856d08ffad451357c400f06
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 8a1bf27e9dc778bdf2e1e30ec21424f9f1b7a9cc
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175692"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006651"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Schnellstart: Einrichten eines Labs mithilfe von Azure DevTest Labs und einer ARM-Vorlage
 In dieser Schnellstartanleitung erstellen Sie ein Lab mit einer Windows Server 2019 Datacenter-VM, indem Sie eine ARM-Vorlage (Azure Resource Manager-Vorlage) verwenden. 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-dtl-create-lab-windows-vm/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/dtl-create-lab-windows-vm/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.devtestlab/dtl-create-lab-windows-vm/azuredeploy.json":::
 

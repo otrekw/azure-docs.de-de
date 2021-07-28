@@ -6,33 +6,43 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/07/2021
+ms.date: 06/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: f636089ff37bd87802ac0335b65d20dc446290d3
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 945a11fb8d8aef3eef2d3c43a68b8c092741436e
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517926"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003780"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
 Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben. In der [Liste der Previewfunktionen](search-api-preview.md) finden Sie eine umfassende Liste der Features, die noch nicht allgemein verfügbar sind.
 
+## <a name="may-2021"></a>Mai 2021
+
+|Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  BESCHREIBUNG | Verfügbarkeit  |
+|------------------------------------|--------------|---------------|
+| [Power Query-Connectorunterstützung (Vorschau)](search-how-to-index-power-query-data-sources.md) | Indexer können jetzt von anderen Cloudplattformen aus indizieren. Wenn Sie einen Indexer verwenden, um externe Datenquellen zur Indizierung zu crawlen, können Sie jetzt Power Query-Connectors verwenden, um eine Verbindung zu Amazon Redshift, Elasticsearch, PostgreSQL, Salesforce Objects, Salesforce Reports, Smartsheet und Snowflake herzustellen. </br></br>[Ankündigung (Techcommunity-Blog)](https://techcommunity.microsoft.com/t5/azure-ai/azure-cognitive-search-indexers-allow-you-to-ingest-data-from/ba-p/2381988)  | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/azure-cognitive-search/indexer-preview)), unter Verwendung von REST api-version=2020-06-30-Preview und dem Azure-Portal. |
+|[Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) | Die ADLS Gen2-Datenquelle, die von Indexern verwendet wird, ist jetzt allgemein verfügbar. | Allgemein verfügbar, unter Verwendung von REST api-version=2020-06-30-Preview und dem Azure-Portal. |
+|[MySQL-Unterstützung (Vorschau)](search-howto-index-mysql.md) | Für indexerbasierte Indizierung, mit Ankündigung einer Vorschau der Datenquellenunterstützung für Azure MySQL. | Öffentliche Vorschau, REST api-version=2020-06-30-Preview, [.NET SDK 11.2.1](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype.mysql) und Azure-Portal. |
+| [Weitere queryLanguage-Elemente für Rechtschreibprüfung und semantische Ergebnisse](/rest/api/searchservice/preview-api/search-documents#queryLanguage) | Für Abfrageanforderungen, die die Rechtschreibprüfung oder „queryType=semantic“ aufrufen, können Sie „queryLanguage“ jetzt auf eine nicht englische Sprache ([38 Sprachen](/rest/api/searchservice/preview-api/search-documents#queryLanguage)) festlegen. </br></br>[Ankündigung (Techcommunity-Blog)](https://techcommunity.microsoft.com/t5/azure-ai/introducing-multilingual-support-for-semantic-search-on-azure/ba-p/2385110) | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Verwenden Sie [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview, [Azure.Search.Documents 11.3.0-beta.2](https://www.nuget.org/packages/Azure.Search.Documents/11.3.0-beta.2) oder den [Suchexplorer](search-explorer.md) im Azure-Portal. </br></br>Es gelten [Regions- und Tarifeinschränkungen](semantic-search-overview.md#availability-and-pricing). |
+| [Verfügbarkeit doppelter Verschlüsselung](search-security-manage-encryption-keys.md#double-encryption) | Für Suchindizes und mit vom Kunden verwalteten Schlüsseln verschlüsselte Objekte wird nun die doppelte Verschlüsselung (Verschlüsselung von statischen und temporären Datenträgern) in allen unterstützten Regionen implementiert. | In allen Regionen, abhängig vom [Erstellungsdatum des Diensts](search-security-manage-encryption-keys.md#double-encryption). |
+
 ## <a name="april-2021"></a>April 2021
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  BESCHREIBUNG | Verfügbarkeit  |
 |------------------------------|---------------|---------------|
-| [Gremlin API-Support](search-howto-index-cosmosdb-gremlin.md) | Für die indexerbasierte Indizierung können Sie jetzt eine Datenquelle erstellen, die Inhalte aus Cosmos DB abruft, auf die über die Gremlin-API zugegriffen wird. | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/azure-cognitive-search/indexer-preview)) mit api-version=2020-06-30-Preview. |
+| [Gremlin API-Unterstützung (Vorschau)](search-howto-index-cosmosdb-gremlin.md) | Für die indexerbasierte Indizierung können Sie jetzt eine Datenquelle erstellen, die Inhalte aus Cosmos DB abruft, auf die über die Gremlin-API zugegriffen wird. | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/azure-cognitive-search/indexer-preview)) mit api-version=2020-06-30-Preview. |
 
 ## <a name="march-2021"></a>März 2021
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  BESCHREIBUNG | Verfügbarkeit  |
 |------------------------------|---------------|---------------|
-| [Semantische Suche](semantic-search-overview.md) | Eine Sammlung von abfragebezogenen Features, die die Relevanz von Suchergebnissen mit sehr geringen Anpassungen einer Abfrageanforderung erheblich verbessern. </br></br>Die [semantische Rangfolge](semantic-ranking.md) berechnet Relevanzbewertungen mithilfe der semantischen Bedeutung von Wörtern und Inhalten. </br></br>[Semantische Beschriftungen](semantic-how-to-query-request.md) geben relevante Passagen aus dem Dokument zurück, die das Dokument am besten zusammenfassen. Die wichtigsten Begriffe oder Ausdrücke sind hervorgehoben. </br></br>[Semantische Antworten](semantic-answers.md) geben aus einem Suchdokument extrahierte Schlüsselpassagen zurück, die als direkte Antwort auf eine Abfrage formuliert werden, die wie eine Frage aussieht. | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Verwenden Sie [Suchdokumente (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview oder den [Suchexplorer](search-explorer.md) im Azure-Portal. </br></br>Es gelten Regions- und Tarifeinschränkungen. |
-| [Rechtschreibprüfung für Abfragebegriffe](speller-how-to-add.md) | Bevor die Abfragebegriffe die Suchmaschine erreichen, können sie auf Rechtschreibfehler überprüft werden. Die Option `speller` kann mit jedem Abfragetyp verwendet werden (einfach, vollständig oder semantisch). |  Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview|
-| [SharePoint Online-Indexer](search-howto-index-sharepoint-online.md) | Dieser Indexer verbindet Sie mit einer SharePoint Online-Website, sodass Sie Inhalte aus einer Dokumentbibliothek indizieren können. | Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview |
-| [Normalisierungsfunktionen](search-normalizers.md) | Normalisierungsfunktionen bieten einfache Textvorverarbeitung: konsistente Schreibweisen, Akzententfernung und ASCII-Faltung, ohne die Kette für die Volltextanalyse aufrufen zu müssen.| Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview |
+| [Semantische Suche (Vorschau)](semantic-search-overview.md) | Eine Sammlung von abfragebezogenen Features, die die Relevanz von Suchergebnissen mit sehr geringen Anpassungen einer Abfrageanforderung erheblich verbessern. </br></br>Die [semantische Rangfolge](semantic-ranking.md) berechnet Relevanzbewertungen mithilfe der semantischen Bedeutung von Wörtern und Inhalten. </br></br>[Semantische Beschriftungen](semantic-how-to-query-request.md) geben relevante Passagen aus dem Dokument zurück, die das Dokument am besten zusammenfassen. Die wichtigsten Begriffe oder Ausdrücke sind hervorgehoben. </br></br>[Semantische Antworten](semantic-answers.md) geben aus einem Suchdokument extrahierte Schlüsselpassagen zurück, die als direkte Antwort auf eine Abfrage formuliert werden, die wie eine Frage aussieht. | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Verwenden Sie [Suchdokumente (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview oder den [Suchexplorer](search-explorer.md) im Azure-Portal. </br></br>Es gelten Regions- und Tarifeinschränkungen. |
+| [Rechtschreibprüfung für Abfragebegriffe (Vorschau)](speller-how-to-add.md) | Bevor die Abfragebegriffe die Suchmaschine erreichen, können sie auf Rechtschreibfehler überprüft werden. Die Option `speller` kann mit jedem Abfragetyp verwendet werden (einfach, vollständig oder semantisch). |  Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview|
+| [SharePoint Online-Indexer (Vorschau)](search-howto-index-sharepoint-online.md) | Dieser Indexer verbindet Sie mit einer SharePoint Online-Website, sodass Sie Inhalte aus einer Dokumentbibliothek indizieren können. | Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview |
+| [Normalisierungsfunktionen (Vorschau)](search-normalizers.md) | Normalisierungsfunktionen bieten einfache Textvorverarbeitung: konsistente Schreibweisen, Akzententfernung und ASCII-Faltung, ohne die Kette für die Volltextanalyse aufrufen zu müssen.| Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview |
 | [Skill für benutzerdefinierte Entitätssuche](cognitive-search-skill-custom-entity-lookup.md ) |  Eine kognitive Fähigkeit, die nach Text aus einer benutzerdefinierten Liste von Wörtern und Ausdrücken sucht. Mithilfe dieser Liste werden alle Dokumente mit übereinstimmenden Entitäten mit einer Bezeichnung markiert. Die Qualifikation unterstützt auch einen gewissen Grad an Fuzzyübereinstimmung, der für die Suche nach ähnlichen, aber nicht exakten Übereinstimmungen verwendet werden kann. | Allgemein verfügbar. |
 
 ## <a name="february-2021"></a>Februar 2021
@@ -81,14 +91,14 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 |Februar | [Qualifikation „PII-Erkennung“ (Vorschau)](cognitive-search-skill-pii-detection.md)  | Kognitiver Skill, mit dem persönliche Informationen extrahiert und maskiert werden. |
 |Februar | [Qualifikation “Benutzerdefinierte Entitätssuche“ (Vorschau)](cognitive-search-skill-custom-entity-lookup.md) | Kognitiver Skill zum Finden von Wörtern und Ausdrücken in einer Liste und zum Bezeichnen aller Dokumente mit übereinstimmenden Entitäten.  |
 |January | [Verschlüsselung mit kundenseitig verwalteten Schlüsseln](search-security-manage-encryption-keys.md) | Allgemein verfügbar  |
-|January | [IP-Regeln für eingehende Firewallunterstützung(Vorschau)](service-configure-firewall.md) | Neue **IpRule**- und **NetworkRuleSet**-Eigenschaften in [CreateOrUpdate-API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service).  |
+|January | [IP-Regeln für eingehende Firewallunterstützung(Vorschau)](service-configure-firewall.md) | Neue **IpRule**- und **NetworkRuleSet**-Eigenschaften in [CreateOrUpdate-API](/rest/api/searchmanagement/2020-08-01/services/create-or-update).  |
 |January | [Erstellen eines privaten Endpunkts (Vorschau)](service-create-private-endpoint.md) | Einrichten einer Private Link-Instanz für sichere Verbindungen mit Ihrem Suchdienst. Im Rahmen der Lösung verfügt diese Previewfunktion über eine Abhängigkeit von [Azure Private Link](../private-link/private-link-overview.md) und [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). |
 
 ## <a name="2019-archive"></a>2019: Archiv
 
 | Month (Monat) | Funktion | BESCHREIBUNG |
 |-------|---------|-------------|
-|Dezember | [Erstellen einer Demo-App (Vorschau)](search-create-app-portal.md) | Ein Assistent, mit dem eine herunterladbare HTML-Datei mit (schreibgeschütztem) Abfragezugriff auf einen Index generiert wird. Dies ist als Überprüfungs- und Testtool konzipiert und soll nicht als Abkürzung zur Erstellung einer vollständigen Client-App dienen.|
+|Dezember | [Erstellen einer Demo-App](search-create-app-portal.md) | Ein Assistent, mit dem eine herunterladbare HTML-Datei mit (schreibgeschütztem) Abfragezugriff auf einen Index generiert wird. Dies ist als Überprüfungs- und Testtool konzipiert und soll nicht als Abkürzung zur Erstellung einer vollständigen Client-App dienen.|
 |November | [Inkrementelle Anreicherung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md) | Zwischenspeichern der Verarbeitung von Skillsets zur zukünftigen Verwendung.  |
 |November | [Kognitiver Skill „Dokumentextrahierung“ (Vorschau)](cognitive-search-skill-document-extraction.md) | Kognitiver Skill zum Extrahieren des Inhalts einer Datei aus einem Skillset.|
 |November | [Skill „Textübersetzungs-API“](cognitive-search-skill-text-translation.md) | Kognitiver Skill für die Nutzung während der Indizierung, mit dem Text evaluiert und übersetzt wird. Allgemein verfügbar.|

@@ -8,14 +8,14 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 06/04/2021
 ms.author: cavoeg
-ms.openlocfilehash: 480a909b5349d973f2d9803e1440827d94923ee6
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: ad7da9305d9bde65f7c393295b806957414a05d8
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112322780"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135607"
 ---
-# <a name="patient-everything-in-fhir"></a>Patient-everything in FHIR
+# <a name="patient-everything-in-fhir"></a>„patient-everything“ in FHIR
 
 Der [Vorgang $patient alles](https://www.hl7.org/fhir/patient-operation-everything.html) wird verwendet, um einem Patienten Zugriff auf den gesamten Datensatz zu gewähren oder um einem Anbieter oder anderen Benutzer einen Massendownload von Daten zu ermöglichen. Dieser Vorgang wird verwendet, um alle Informationen im Zusammenhang mit einem oder mehreren Patienten zurückzugeben, die in der Ressource oder dem Kontext beschrieben sind, für die dieser Vorgang aufgerufen wird.  
 
@@ -25,15 +25,11 @@ Um patient-everything aufzurufen, verwenden Sie den folgenden Befehl:
 ```json
 GET {FHIRURL}/Patient/{ID}/$everything
 ```
-Der Azure API for FHIR überprüft, ob der Patient gefunden werden kann, der mit der angegebenen Patienten-ID übereinstimmt. Wenn ein Ergebnis gefunden wird, ist die Antwort ein Bündel vom Typ "searchset" mit den folgenden Informationen: 
+Der Azure API for FHIR überprüft, ob er den Patienten finden kann, der mit der angegebenen Patienten-ID übereinstimmt. Wenn ein Ergebnis gefunden wird, ist die Antwort ein Bündel vom Typ "searchset" mit den folgenden Informationen: 
 * [Patientenressource](https://www.hl7.org/fhir/patient.html) 
 *  Ressourcen, auf die direkt von der Patient-Ressource verwiesen wird (mit Ausnahme des Links) 
 *  Ressourcen im [Patientende depot](https://www.hl7.org/fhir/compartmentdefinition-patient.html)
 *  [Geräteressourcen,](https://www.hl7.org/fhir/device.html) die auf die Patient-Ressource verweisen. Dies ist auf 100 Geräte beschränkt. Wenn der Patient mehr als 100 Geräte mit ihnen verknüpft hat, werden nur 100 zurückgegeben. 
-
- 
-> [!Note]
-> Der Funktions-Anweisung für den FHIR-Server fehlt die Unterstützung für $patient-everything, die hier nachverfolgt wird: Issue [1989](https://github.com/microsoft/fhir-server/issues/1989). 
 
 
 ## <a name="patient-everything-parameters"></a>Parameter für "Patient-everything"

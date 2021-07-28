@@ -8,14 +8,14 @@ manager: nitinme
 keywords: Cognitive Services, kognitive Intelligenz, kognitive Lösungen, KI-Dienste
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 06/04/2021
 ms.author: aahi
-ms.openlocfilehash: de855e53f6d54c9175963b34d8cd3da572e02790
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: fb28a431f9f2f136d177a5d51398bc2427a7134d
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736536"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540166"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals
 
@@ -115,7 +115,9 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 2. Suchen Sie die Ressourcengruppe, die die zu löschende Ressource enthält.
 3. Klicken Sie mit der rechten Maustaste auf die Ressourcengruppenauflistung. Klicken Sie auf **Ressourcengruppe löschen**, und bestätigen Sie den Vorgang.
 
-## <a name="see-also"></a>Weitere Informationen
+Wenn Sie eine gelöschte Ressource wiederherstellen müssen, finden Sie weitere Informationen unter [Wiederherstellen gelöschter Cognitive Services-Ressourcen](manage-resources.md).
+
+## <a name="see-also"></a>Siehe auch
 
 * Informationen zum sicheren Arbeiten mit Cognitive Services finden Sie unter **[Authentifizieren von Anforderungen an Azure Cognitive Services](authentication.md)** .
 * Eine Liste der verschiedenen Kategorien in Cognitive Services finden Sie unter **[Was ist Azure Cognitive Services?](./what-are-cognitive-services.md)** .

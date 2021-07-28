@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: rabhaiya
-ms.openlocfilehash: f17223fbada3dabbf0126f6f841e36ace6d0215c
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 7f6fb6abdf2e73985b8c15e63af588b20feb4f45
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112283859"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297983"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Tutorial: Empfangen von Gerätedaten über Azure IoT Hub
 
@@ -23,7 +23,7 @@ Azure IoT-Konnektor für FHIR&#174; (Fast Healthcare Interoperability Resources
 
 - Ein aktives Azure-Abonnement. ([Kostenloses Abonnement erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
 - Azure API for FHIR-Ressource mit mindestens einer Instanz von Azure IoT-Konnektor für FHIR. Weitere Informationen finden Sie unter [Bereitstellen von Azure IoT-Konnektor für FHIR (Vorschauversion) mithilfe des Azure-Portals](iot-fhir-portal-quickstart.md).
-- Azure IoT Hub-Ressource, die mit mindestens einem echten oder simulierten Gerät verbunden ist. Weitere Informationen finden Sie unter [Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Lesen der Telemetriedaten mit einer Back-End-Anwendung (.NET)](../../iot-hub/quickstart-send-telemetry-dotnet.md).
+- Azure IoT Hub-Ressource, die mit mindestens einem echten oder simulierten Gerät verbunden ist. Weitere Informationen finden Sie unter [Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Lesen der Telemetriedaten mit einer Back-End-Anwendung (.NET)](../../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp).
 
 > [!TIP]
 > Bei Verwendung einer simulierten Azure IoT Hub-Geräteanwendung können Sie aus verschiedenen unterstützten Sprachen und Systemen die gewünschte Anwendung auswählen.

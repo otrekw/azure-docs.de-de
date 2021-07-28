@@ -17,7 +17,7 @@
     - name: Kapazitätsgrenzen
       href: sql-data-warehouse-service-capacity-limits.md
     - name: Häufig gestellte Fragen
-      href: sql-data-warehouse-overview-faq.md
+      href: sql-data-warehouse-overview-faq.yml
     - name: Versionshinweise
       items:
         - name: Aktuelles Release
@@ -368,6 +368,8 @@
           href: sql-data-warehouse-restore-from-geo-backup.md
         - name: Deaktivieren von Geosicherungen
           href: disable-geo-backup.md
+        - name: Konfigurieren der Residenz in einer einzelnen Region
+          href: single-region-residency.md
     - name: Integrieren
       items:
         - name: Verwenden von maschinellem Lernen

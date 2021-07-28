@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Filtern und Analysieren von Daten für die erweiterte Bereitstellung mit Compute in Azure Stack Edge Pro | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie die Computerolle in Azure Stack Edge Pro konfigurieren und verwenden, um Daten vor dem Senden an Azure für einen erweiterten Bereitstellungsablauf zu transformieren.
+title: Tutorial zum Filtern und Analysieren von Daten in Azure Stack Edge Pro FPGA für die erweiterte Computebereitstellung
+description: Hier erfahren Sie, wie Sie eine Computerolle in Azure Stack Edge Pro FPGA konfigurieren und verwenden, um Daten vor dem Senden an Azure für einen erweiterten Bereitstellungsablauf zu transformieren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 81953f573c47d229fcaccd7c11f62155acd2f119
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8f6fff328e90c37804e86e4b258cbcd0cb2255d7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063643"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461462"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge Pro für den erweiterten Bereitstellungsablauf
+# <a name="tutorial-transform-data-with-azure-stack-edge-pro-fpga-for-advanced-deployment-flow"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge Pro FPGA für den erweiterten Bereitstellungsablauf
 
-In diesem Tutorial wird beschrieben, wie Sie eine Computerolle für einen erweiterten Bereitstellungsablauf auf Ihrem Azure Stack Edge Pro-Gerät konfigurieren. Nach dem Konfigurieren der Computerolle kann Azure Stack Edge Pro Daten vor dem Senden an Azure transformieren.
+In diesem Tutorial erfahren Sie, wie Sie eine Computerolle für einen erweiterten Bereitstellungsablauf auf Ihrem Azure Stack Edge Pro FPGA-Gerät konfigurieren. Nach dem Konfigurieren der Computerolle kann Azure Stack Edge Pro FPGA Daten vor dem Senden an Azure transformieren.
 
 Compute kann für einfachen oder erweiterten Bereitstellungsablauf auf Ihrem Gerät konfiguriert werden.
 
@@ -42,14 +42,14 @@ In diesem Tutorial lernen Sie Folgendes:
  
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie Folgendes sicher, bevor Sie eine Computerolle auf Ihrem Azure Stack Edge Pro-Gerät einrichten:
+Stellen Sie Folgendes sicher, bevor Sie eine Computerolle auf Ihrem Azure Stack Edge Pro FPGA-Gerät einrichten:
 
-- Das Azure Stack Edge Pro-Gerät wurde aktiviert, wie unter [Verbinden, Einrichten und Aktivieren von Azure Stack Edge Pro](azure-stack-edge-deploy-connect-setup-activate.md) beschrieben.
+- Das Azure Stack Edge Pro FPGA-Gerät wurde aktiviert, wie unter [Tutorial: Verbinden, Einrichten und Aktivieren von Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-connect-setup-activate.md) beschrieben.
 
 
 ## <a name="configure-compute"></a>Konfigurieren der Computeumgebung
 
-Sie erstellen eine IoT Hub-Ressource, um die Computeumgebung in Ihrer Azure Stack Edge Pro-Instanz zu konfigurieren.
+Sie erstellen eine IoT Hub-Ressource, um die Computeumgebung auf Ihrem Azure Stack Edge Pro FPGA-Gerät zu konfigurieren.
 
 1. Navigieren Sie im Azure-Portal für Ihre Azure Stack Edge-Ressource zu **Übersicht**. Wählen Sie im rechten Bereich die Kachel **IoT Edge** aus.
 
@@ -145,9 +145,9 @@ Für die erweiterte Bereitstellung in diesem Tutorial benötigen Sie zwei Freiga
 
 ## <a name="add-a-module"></a>Hinzufügen eines Moduls
 
-Auf diesem Edgegerät sind keine benutzerdefinierten Module vorhanden. Sie können ein benutzerdefiniertes oder ein vorgefertigtes Modul hinzufügen. Informationen zum Erstellen eines benutzerdefinierten Moduls finden Sie unter [Entwickeln eines C#-Moduls für Ihr Azure Stack Edge Pro-Gerät](azure-stack-edge-create-iot-edge-module.md).
+Auf diesem Edgegerät sind keine benutzerdefinierten Module vorhanden. Sie können ein benutzerdefiniertes oder ein vorgefertigtes Modul hinzufügen. Informationen zum Erstellen eines benutzerdefinierten Moduls finden Sie unter [Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien mit Azure Stack Edge Pro FPGA](azure-stack-edge-create-iot-edge-module.md).
 
-In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln eines C#-Moduls für Ihr Azure Stack Edge Pro-Gerät](azure-stack-edge-create-iot-edge-module.md) erstellt haben, ein benutzerdefiniertes Modul hinzu. Dieses benutzerdefinierte Modul verwendet Dateien von einer lokalen Edgefreigabe auf dem Edgegerät und verschiebt sie auf eine Edgefreigabe (Cloudfreigabe) auf dem Gerät. Die Cloudfreigabe überträgt die Dateien dann per Pushvorgang an das Azure-Speicherkonto, das der Cloudfreigabe zugeordnet ist.
+In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien mit Azure Stack Edge Pro FPGA](azure-stack-edge-create-iot-edge-module.md) erstellt haben, ein benutzerdefiniertes Modul hinzu. Dieses benutzerdefinierte Modul verwendet Dateien von einer lokalen Edgefreigabe auf dem Edgegerät und verschiebt sie auf eine Edgefreigabe (Cloudfreigabe) auf dem Gerät. Die Cloudfreigabe überträgt die Dateien dann per Pushvorgang an das Azure-Speicherkonto, das der Cloudfreigabe zugeordnet ist.
 
 1. Wechseln Sie zu Ihrer Azure Stack Edge-Ressource und dann zu **IoT Edge > Übersicht**. Wählen Sie auf der Kachel **Module** die Option **Go to Azure IoT Hub** (Zu Azure IoT Hub wechseln) aus.
 
@@ -170,7 +170,7 @@ In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln ei
 4. Führen Sie unter **Module hinzufügen** die folgenden Schritte aus:
 
     1. Geben Sie für das benutzerdefinierte Modul in den Containerregistrierungseinstellungen den Namen, die Adresse, den Benutzernamen und das Kennwort ein.
-    Der Name, die Adresse und die aufgeführten Anmeldeinformationen werden verwendet, um Module mit einer übereinstimmenden URL abzurufen. Wählen Sie zum Bereitstellen dieses Moduls unter **Bereitstellungsmodule** die Option **IoT Edge-Modul**. Dieses IoT Edge-Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrem Azure Stack Edge Pro-Gerät zugeordnet ist.
+    Der Name, die Adresse und die aufgeführten Anmeldeinformationen werden verwendet, um Module mit einer übereinstimmenden URL abzurufen. Wählen Sie zum Bereitstellen dieses Moduls unter **Bereitstellungsmodule** die Option **IoT Edge-Modul**. Dieses IoT Edge-Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrem Azure Stack Edge Pro FPGA-Gerät zugeordnet ist.
 
         ![Seite „Module festlegen“](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-4.png) 
  
@@ -178,7 +178,7 @@ In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln ei
      
         |Feld  |Wert  |
         |---------|---------|
-        |Name     | Ein eindeutiger Name für das Modul. Dieses Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrer Azure Stack Edge Pro-Instanz zugeordnet ist.        |
+        |Name     | Ein eindeutiger Name für das Modul. Dieses Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrem Azure Stack Edge Pro FPGA-Gerät zugeordnet ist.        |
         |Image-URI     | Der Image-URI für das entsprechende Containerimage für das Modul.        |
         |Anmeldeinformationen erforderlich     | Wenn dieses Kontrollkästchen aktiviert ist, werden ein Benutzername und ein Kennwort verwendet, um Module mit einer übereinstimmenden URL abzurufen.        |
     
@@ -265,7 +265,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Hinzufügen eines Computemoduls
 > * Überprüfen der Datentransformation und -übertragung
 
-Weitere Informationen zum Verwalten Ihres Azure Stack Edge Pro-Geräts finden Sie im folgenden Artikel:
+Informationen zum Verwalten Ihres Azure Stack Edge Pro FPGA-Geräts finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> [Verwenden der lokalen Webbenutzeroberfläche zur Verwaltung eines Azure Stack Edge Pro-Geräts](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [Verwenden der lokalen Webbenutzeroberfläche zur Verwaltung eines Azure Stack Edge Pro FPGA-Geräts](azure-stack-edge-manage-access-power-connectivity-mode.md)

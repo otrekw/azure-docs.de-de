@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: tracych
 ms.author: tracych
 ms.reviewer: laobri
-ms.date: 5/20/2021
+ms.date: 5/25/2021
 ms.custom: how-to
-ms.openlocfilehash: b4484a22d8839e758f7ccbb0a43904b81b028909
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 53fa68fdffd27c1d48322104c541894c6f9c4dd8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382782"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751251"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>Verwenden von Batchendpunkten (Vorschau) für die Batchbewertung
 
@@ -61,14 +61,14 @@ az upgrade
 Fügen Sie die Azure ML-Erweiterung hinzu, und konfigurieren Sie sie:
 
 ```azurecli
-az extension add  ml
+az extension add -n ml
 ```
 
 Weitere Informationen zum Konfigurieren der ML-Erweiterung finden Sie unter [Installieren, Einrichten und Verwenden der 2.0 CLI (Vorschau)](how-to-configure-cli.md).
 
 * Das Beispielrepository
 
-Klonen Sie das [AzureML-Beispielrepository](https://github.com/Azure/azureml-examples). In diesem Artikel werden die Ressourcen in `/cli-preview/experiment/using-cli/assets/endpoints/batch` verwendet.
+Klonen Sie das [AzureML-Beispielrepository](https://github.com/Azure/azureml-examples). In diesem Artikel werden die Ressourcen in `/cli/endpoints/batch` verwendet.
 
 ## <a name="create-a-compute-target"></a>Erstellen eines Computeziels
 
@@ -90,7 +90,7 @@ az ml endpoint create --type batch --file cli/endpoints/batch/create-batch-endpo
 
 Im Anschluss finden Sie die YAML-Datei zum Definieren des MLFlow-Batchendpunkts:
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/create-batch-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/create-batch-endpoint.yml":::
 
 | Schlüssel | BESCHREIBUNG |
 | --- | ----------- |
@@ -99,11 +99,11 @@ Im Anschluss finden Sie die YAML-Datei zum Definieren des MLFlow-Batchendpunkts:
 | Typ | Die Art des Endpunkts. Verwenden Sie für einen Batchendpunkt den Typ `batch`. |
 | auth_mode | Verwenden Sie `aad_token` für die tokenbasierte Azure-Authentifizierung. |
 | traffic | Der Prozentsatz des Datenverkehrs, der an diese Bereitstellung weitergeleitet wird. Bei Batchendpunkten ist für `traffic` nur der Wert `0` oder `100` gültig. Die Bereitstellung mit dem Datenverkehrswert `100` ist aktiv. Beim Aufrufen werden alle Daten an die aktive Bereitstellung gesendet. |
-| deployments | Eine Liste der Bereitstellungen, die am Batchendpunkt erstellt werden sollen. Das Beispiel enthält nur eine einzelne Bereitstellung (`autolog_deployment`). |
+| deployments | Eine Liste der Bereitstellungen, die am Batchendpunkt erstellt werden sollen. Das Beispiel enthält nur eine einzelne Bereitstellung (`autolog-deployment`). |
 
 Bereitstellungsattribute:
 
-| Schlüssel | BESCHREIBUNG |
+| Schlüssel | Beschreibung |
 | --- | ----------- |
 | name | Der Name der Bereitstellung |
 | model | Das Modell, das für die Batchbewertung verwendet werden soll. Verwenden Sie `name`, `version` und `local_path`, um ein Modell von Ihrem lokalen Computer hochzuladen. Verwenden Sie das Präfix `azureml:`, um auf eine vorhandene Modellressource in Ihrem Arbeitsbereich zu verweisen. `azureml: autolog:1` verweist beispielsweise auf Version 1 eines Modells namens `autolog`. |
@@ -182,7 +182,7 @@ Beim Starten eines Batchbewertungsauftrags können einige Einstellungen übersch
 
 * Verwenden Sie `--mini-batch-size`, um `mini_batch_size` zu überschreiben, wenn eine andere Eingabedatengröße verwendet wird. 
 * Verwenden Sie `--instance-count`, um `instance_count` zu überschreiben, wenn für diesen Auftrag eine andere Computeressource benötigt wird. 
-* Verwenden Sie `--set`, um andere Einstellungen zu überschreiben (einschließlich `max_retries`, `timeout`, `error_threshold` und `logging_level`).
+* Verwenden Sie `--set`, um andere Einstellungen zu überschreiben (einschließlich `max_retries`, `timeout` und `error_threshold`).
 
 ```azurecli
 az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv --set retry_settings.max_retries=1
@@ -240,7 +240,7 @@ az ml endpoint update --name mybatchedp --type batch --deployment-file cli/endpo
 
 In diesem Beispiel wird ein MLflow-fremdes Modell verwendet. Bei Verwendung eines MLflow-fremden Modells müssen Sie in der YAML-Datei die Umgebung und ein Bewertungsskript angeben:
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/add-deployment.yml" :::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/add-deployment.yml" :::
 
 Im Anschluss finden Sie weitere Bereitstellungsattribute für das MLflow-fremde Modell:
 
@@ -261,7 +261,7 @@ az ml endpoint show --name mybatchedp --type batch
 Für den Batchrückschluss müssen 100 Prozent der Anfragen an die gewünschte Bereitstellung gesendet werden. Verwenden Sie Folgendes, um Ihre neu erstellte Bereitstellung als Ziel festzulegen:
 
 ```azurecli
-az ml endpoint update --name mybatchedp --type batch --traffic mnist_deployment:100
+az ml endpoint update --name mybatchedp --type batch --traffic mnist-deployment:100
 ```
 
 Wenn Sie die Details Ihrer Bereitstellung erneut überprüfen, werden Ihre Änderungen angezeigt:
@@ -289,13 +289,13 @@ scoring_uri=$(az ml endpoint show --name mybatchedp --type batch --query scoring
 2. Rufen Sie das Zugriffstoken ab:
 
 ```azurecli
-auth_token=$(az account get-access-token --resource https://ml.azure.com --query accessToken -o tsv)
+auth_token=$(az account get-access-token --query accessToken -o tsv)
 ```
 
 3. Verwenden Sie den Bewertungs-URI (`scoring_uri`), das Zugriffstoken und JSON-Daten, um per POST eine Anforderung zu veröffentlichen und einen Batchbewertungsauftrag zu starten:
 
 ```bash
-curl --location --request POST '$scoring_uri' --header "Authorization: Bearer $auth_token" --header 'Content-Type: application/json' --data-raw '{
+curl --location --request POST "$scoring_uri" --header "Authorization: Bearer $auth_token" --header 'Content-Type: application/json' --data-raw '{
 "properties": {
   "dataset": {
     "dataInputType": "DataUrl",

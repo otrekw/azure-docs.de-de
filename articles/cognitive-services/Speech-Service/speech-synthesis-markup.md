@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3e0bcef30d13403d8067c41568b7ee321fb46995
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 3ba2dad93778e9d4482fa00c854a73dbc616d290
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377190"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750405"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -106,77 +106,6 @@ Innerhalb des `speak`-Elements können Sie mehrere Stimmen für die Ausgabe der 
 |-----------|-------------|---------------------|
 | `name` | Identifiziert die Stimme, die für die Ausgabe der Sprachsynthese verwendet wird. Eine vollständige Liste der unterstützten Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech). | Erforderlich |
 
-> [!IMPORTANT]
-> Mehrere Stimmen sind nicht mit der Wortgrenzenfunktion kompatibel. Die Wortgrenzenfunktion muss deaktiviert werden, um mehrere Stimmen verwenden zu können.
-
-### <a name="disable-word-boundary"></a>Deaktivieren von Wortgrenzen
-
-Abhängig von der Sprache des Speech SDK legen Sie die `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"`-Eigenschaft für eine Instanz des `SpeechConfig`-Objekts auf `false` fest.
-
-# <a name="c"></a>[C#](#tab/csharp)
-
-Weitere Informationen finden Sie unter <a href="/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a>.
-
-```csharp
-speechConfig.SetProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="c"></a>[C++](#tab/cpp)
-
-Weitere Informationen finden Sie unter <a href="/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a>.
-
-```cpp
-speechConfig->SetProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Weitere Informationen finden Sie unter <a href="/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a>.
-
-```java
-speechConfig.setProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Weitere Informationen finden Sie unter <a href="/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a>.
-
-```python
-speech_config.set_property_by_name(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Weitere Informationen finden Sie unter <a href="/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty`</a>.
-
-```javascript
-speechConfig.setProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
-
-Weitere Informationen finden Sie unter <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>.
-
-```objectivec
-[speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
-```
-
-# <a name="swift"></a>[Swift](#tab/swift)
-
-Weitere Informationen finden Sie unter <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>.
-
-```swift
-speechConfig!.setPropertyTo(
-    "false", byName: "SpeechServiceResponse_Synthesis_WordBoundaryEnabled")
-```
-
----
-
 **Beispiel**
 
 ```xml
@@ -202,10 +131,10 @@ Anpassungen der Sprechweise werden derzeit für folgende neuronale Stimmen unter
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
-* `zh-CN-YunxiNeural` 
-* `zh-CN-XiaohanNeural` 
-* `zh-CN-XiaomoNeural` 
-* `zh-CN-XiaoxuanNeural` 
+* `zh-CN-YunxiNeural`
+* `zh-CN-XiaohanNeural`
+* `zh-CN-XiaomoNeural`
+* `zh-CN-XiaoxuanNeural`
 * `zh-CN-XiaoruiNeural`
 
 Die Intensität der Sprechweise kann weiter verändert werden, damit sie besser zu Ihrem Anwendungsfall passt. Sie können mit `styledegree` eine kräftigere oder sanftere Sprechweise angeben, um die Sprache ausdrucksstärker oder gedämpfter zu gestalten. Zurzeit werden Anpassungen in der Sprechweise der  neuronalen Stimmen für Chinesisch (Mandarin, vereinfacht) unterstützt.
@@ -228,7 +157,7 @@ Die voranstehenden Änderungen werden auf Satzebene angewendet, und die Sprechwe
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> Zurzeit unterstützt `styledegree` nur chinesische (Mandarin, vereinfacht) neuronale Stimmen. `role` unterstützt nur zh-CN-XiaomoNeural und zh-CN-XiaoxuanNeural. 
+> Zurzeit unterstützt `styledegree` nur chinesische (Mandarin, vereinfacht) neuronale Stimmen. `role` unterstützt nur zh-CN-XiaomoNeural und zh-CN-XiaoxuanNeural.
 
 **Attribute**
 
@@ -317,7 +246,7 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 
 Verwenden Sie diese Tabelle, um die unterstützten Rollen und deren Definitionen zu überprüfen.
 
-|Rolle                     | BESCHREIBUNG                |
+|Role                     | BESCHREIBUNG                |
 |-------------------------|----------------------------|
 |`role="Girl"`            | Die Stimme imitiert ein Mädchen. |
 |`role="Boy"`             | Die Stimme imitiert einen Jungen. |
@@ -375,10 +304,12 @@ Dieser SSML-Codeausschnitt veranschaulicht, wie das Attribut `role` verwendet wi
 
 ## <a name="adjust-speaking-languages"></a>Anpassen der gesprochenen Sprachen
 
-> [!IMPORTANT]
->  Sie können die gesprochenen Sprachen nur für neuronale Stimmen anpassen.
-> Ermöglichen Sie es einer Stimme, mithilfe des `<lang xml:lang>`-Elements verschiedene Sprachen (z. B. Englisch, Spanisch und Chinesisch) flüssig zu sprechen. Dies ist ein optionales Element und für den Speech-Dienst eindeutig. Ohne dieses Element spricht die Stimme ihre primäre Sprache.
-> Anpassungen der gesprochenen Sprache werden derzeit bei den folgenden neuronalen Stimmen unterstützt: `en-US-JennyMultilingualNeural`. Die obigen Änderungen werden auf der Satz- und Wortebene vorgenommen. Wenn eine Sprache nicht unterstützt wird, gibt der Dienst keinen Audiodatenstrom zurück.
+Sie können die gesprochenen Sprachen für neuronale Stimmen anpassen.
+Ermöglichen Sie es einer Stimme, mithilfe des `<lang xml:lang>`-Elements verschiedene Sprachen (z. B. Englisch, Spanisch und Chinesisch) flüssig zu sprechen. Dies ist ein optionales Element und für den Speech-Dienst eindeutig. Ohne dieses Element spricht die Stimme ihre primäre Sprache.
+Anpassungen der gesprochenen Sprache werden derzeit bei den folgenden neuronalen Stimmen unterstützt: `en-US-JennyMultilingualNeural`. Die obigen Änderungen werden auf der Satz- und Wortebene vorgenommen. Wenn eine Sprache nicht unterstützt wird, gibt der Dienst keinen Audiodatenstrom zurück.
+
+> [!NOTE]
+> Derzeit ist das `<lang xml:lang>`-Element nicht mit dem `prosody`- und `break`-Element kompatibel. Sie können in diesem Element weder Pause noch Satzrhytmus wie Tonhöhe, Kontur, Geschwindigkeit, Dauer, Lautstärke anpassen.
 
 **Syntax**
 
@@ -396,20 +327,20 @@ Ermitteln Sie anhand dieser Tabelle, welche gesprochenen Sprachen für die einze
 
 | Sprache                            | Gebietsschemasprache           | Beschreibung                                                 |
 |----------------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-JennyMultilingualNeural`  | `lang="en-us"`            | Sprechen für das Gebietsschema en-US, dem primären Gebietsschema dieser Stimme |
-|                                  | `lang="en-ca"`            | Sprechen der Gebietsschemasprache en-CA                                  |
-|                                  | `lang="en-au"`            | Sprechen der Gebietsschemasprache en-AU                                  |
-|                                  | `lang="en-gb"`            | Sprechen der Gebietsschemasprache en-GB                                  |
-|                                  | `lang="de-de"`            | Sprechen der Gebietsschemasprache de-DE                                  |
-|                                  | `lang="fr-fr"`            | Sprechen der Gebietsschemasprache fr-FR                                  |
-|                                  | `lang="fr-ca"`            | Sprechen der Gebietsschemasprache fr-CA                                  |
-|                                  | `lang="es-es"`            | Sprechen der Gebietsschemasprache es-ES                                  |
-|                                  | `lang="es-mx"`            | Sprechen der Gebietsschemasprache es-MX                                  |
-|                                  | `lang="zh-cn"`            | Sprechen der Gebietsschemasprache zh-CN                                  |
-|                                  | `lang="ko-kr"`            | Sprechen der Gebietsschemasprache ko-KR                                  |
-|                                  | `lang="ja-jp"`            | Sprechen der Gebietsschemasprache ja-JP                                  |
-|                                  | `lang="it-it"`            | Sprechen der Gebietsschemasprache it-IT                                  |
-|                                  | `lang="pt-br"`            | Sprechen der Gebietsschemasprache pt-BR                                  |
+| `en-US-JennyMultilingualNeural`  | `lang="en-US"`            | Sprechen für das Gebietsschema en-US, dem primären Gebietsschema dieser Stimme |
+|                                  | `lang="en-CA"`            | Sprechen der Gebietsschemasprache en-CA                                  |
+|                                  | `lang="en-AU"`            | Sprechen der Gebietsschemasprache en-AU                                  |
+|                                  | `lang="en-GB"`            | Sprechen der Gebietsschemasprache en-GB                                  |
+|                                  | `lang="de-DE"`            | Sprechen der Gebietsschemasprache de-DE                                  |
+|                                  | `lang="fr-FR"`            | Sprechen der Gebietsschemasprache fr-FR                                  |
+|                                  | `lang="fr-CA"`            | Sprechen der Gebietsschemasprache fr-CA                                  |
+|                                  | `lang="es-ES"`            | Sprechen der Gebietsschemasprache es-ES                                  |
+|                                  | `lang="es-MX"`            | Sprechen der Gebietsschemasprache es-MX                                  |
+|                                  | `lang="zh-CN"`            | Sprechen der Gebietsschemasprache zh-CN                                  |
+|                                  | `lang="ko-KR"`            | Sprechen der Gebietsschemasprache ko-KR                                  |
+|                                  | `lang="ja-JP"`            | Sprechen der Gebietsschemasprache ja-JP                                  |
+|                                  | `lang="it-IT"`            | Sprechen der Gebietsschemasprache it-IT                                  |
+|                                  | `lang="pt-BR"`            | Sprechen der Gebietsschemasprache pt-BR                                  |
 
 **Beispiel**
 
@@ -420,10 +351,10 @@ Dieser SSML-Codeausschnitt zeigt, wie sie `<lang xml:lang>` verwenden, um die ge
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
     <voice name="en-US-JennyMultilingualNeural">
         I am looking forward to the exciting things.
-        <lang xml:lang="es-mx">
+        <lang xml:lang="es-MX">
             Estoy deseando que lleguen las cosas emocionantes.
         </lang>
-        <lang xml:lang="de-de">
+        <lang xml:lang="de-DE">
             Ich freue mich auf die spannenden Dinge.
         </lang>
     </voice>
@@ -625,8 +556,8 @@ Wenn Sie die Aussprache mehrerer Entitäten definieren möchten, können Sie ein
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
   <lexeme>
-    <grapheme>😀</grapheme> 
-    <alias>test emoji</alias> 
+    <grapheme>😀</grapheme>
+    <alias>test emoji</alias>
   </lexeme>
 </lexicon>
 ```

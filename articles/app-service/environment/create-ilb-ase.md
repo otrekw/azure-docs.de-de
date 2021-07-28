@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be936bf8799d3e16679cf337e2425543163fe8f3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009550"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063296"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Erstellen und Verwenden einer App Service-Umgebung für internen Lastenausgleich 
 
@@ -129,7 +129,7 @@ Für jede erstellte App sind zwei Endpunkte vorhanden. In einer ILB-ASE befinden
 
 Internetbasierte CI-Systeme, wie GitHub und Azure DevOps, funktionieren weiterhin mit einer ILB-ASE, wenn der Build-Agent internetfähig ist und sich im selben Netzwerk wie die ILB-ASE befindet. Im Falle von Azure DevOps, wenn der Build-Agent auf dem gleichen VNET wie ILB-ASE erstellt wird (ein anderes Subnetz ist in Ordnung), kann er Code aus Azure DevOps-Git pullen und in der ILB-ASE bereitstellen. Wenn Sie keinen eigenen Build-Agent erstellen möchten, müssen Sie ein CI-System verwenden, das ein Pullmodell wie Dropbox verwendet.
 
-Die Veröffentlichungsendpunkte für die Apps in einer ILB-ASE verwenden die Domäne, mit der die ILB-ASE erstellt wurde. Diese Domäne wird im Veröffentlichungsprofil und auf dem Portalblatt der App angezeigt (unter **Übersicht** > **Zusammenfassung** sowie unter **Eigenschaften**). Wenn Sie eine ILB-ASE mit dem Domänensuffix *&lt;ASE-Name&gt;.appserviceenvironment.net* und eine App namens *mytest* besitzen, verwenden Sie *mytest.&lt;ASE-Name&gt;.appserviceenvironment.net* für FTP und *mytest.scm.contoso.net* für die Webbereitstellung.
+Die Veröffentlichungsendpunkte für die Apps in einer ILB-ASE verwenden die Domäne, mit der die ILB-ASE erstellt wurde. Diese Domäne wird im Veröffentlichungsprofil und auf dem Portalblatt der App angezeigt (unter **Übersicht** > **Zusammenfassung** sowie unter **Eigenschaften**). Wenn Sie über eine ILB-ASE mit dem Domänensuffix *&lt;ASE-Name&gt;.appserviceenvironment.net* und eine App mit den Namen *mytest* verfügen, verwenden Sie *mytest.&lt;ASE-Name&gt;.appserviceenvironment.net* für FTP und *mytest.scm.contoso.net* für die MSDeploy-Bereitstellung.
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Konfigurieren einer ILB-ASE mit einem WAF-Gerät ##
 

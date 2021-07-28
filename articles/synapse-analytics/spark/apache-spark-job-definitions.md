@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: 15b67c969cb0464256caed58a2e7388eb7a76b9c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7c60addd80f7ed027870744d12975fd76983b2f5
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608769"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813828"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Tutorial: Erstellen einer Apache Spark-Auftragsdefinition in Synapse Studio
 
-In diesem Tutorial erfahren Sie, wie Sie Apache Spark-Auftragsdefinitionen mithilfe von Azure Synapse Studio erstellen und anschließend an einen serverlosen Apache Spark-Pool übermitteln.
+In diesem Tutorial erfahren Sie, wie Sie Apache Spark-Auftragsdefinitionen mithilfe von Synapse Studio erstellen und anschließend an einen serverlosen Apache Spark-Pool übermitteln.
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 > [!div class="checklist"]
@@ -45,7 +45,7 @@ Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind 
 
 In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für PySpark (Python).
 
-1. Öffnen Sie [Azure Synapse Studio](https://web.azuresynapse.net/).
+1. Öffnen Sie [Synapse Studio](https://web.azuresynapse.net/).
 
 2. Sie können zu [Beispieldateien zum Erstellen von Apache Spark-Auftragsdefinitionen](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) navigieren, um **Beispieldateien für python.zip** herunterzuladen. Entpacken Sie anschließend das komprimierte Paket, und extrahieren Sie die Dateien **wordcount.py** und **shakespeare.txt**. 
 

@@ -8,16 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/18/2021
+ms.date: 06/14/2021
 ms.author: aahi
-ms.openlocfilehash: b1af4e147f960e8e241a2d49ac94b7fb2594207f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0e897b71f1f5f99ce2834768a72bf99b9773301f
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078200"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078256"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Textanalyse-API v3: Sprachunterstützung 
+
+> [!NOTE]
+> Sprachen werden hinzugefügt, wenn neue Modellversionen für bestimmte Textanalysefeatures veröffentlicht werden. Weitere Informationen zu den neueste Modellversion für die von Ihnen verwendeten Features finden Sie unter [Versionsverwaltung der Modelle](concepts/model-versioning.md).   
 
 #### <a name="sentiment-analysis"></a>[Standpunktanalyse](#tab/sentiment-analysis)
 
@@ -79,28 +82,42 @@ ms.locfileid: "110078200"
 
 #### <a name="key-phrase-extraction"></a>[Schlüsselbegriffserkennung](#tab/key-phrase-extraction)
 
-| Sprache              | Sprachcode |  v3-Unterstützung | Ab Modellversion 3 verfügbar: |       Notizen        |
+| Sprache              | Sprachcode |  v3-Unterstützung | Ab Modellversion 3: |       Notizen        |
 |:----------------------|:-------------:|:----------:|:-----------------------------------------:|:------------------:|
-| Dänisch                |     `da`      |     ✓     |                2019-10-01                 |                    |
+| Afrikaans             |     `af`      |     ✓      |                2020-07-01                 |                    |
+| Bulgarisch             |     `bg`      |     ✓      |                2020-07-01                 |                    |
+| Katalanisch               |     `ca`      |     ✓      |                2020-07-01                 |                    |
+| Chinesisch (vereinfacht)    |     `zh-hans` |     ✓      |                2021-06-01                 |                    |
+| Kroatisch              |     `hr`      |     ✓      |                2020-07-01                 |                    |
+| Dänisch                |     `da`      |     ✓      |                2019-10-01                 |                    |
 | Niederländisch                 |     `nl`      |     ✓      |                2019-10-01                 |                    |
 | Englisch               |     `en`      |     ✓      |                2019-10-01                 |                    |
+| Estnisch              |     `et`      |     ✓      |                2020-07-01                 |                    |
 | Finnisch               |     `fi`      |     ✓      |                2019-10-01                 |                    |
 | Französisch                |     `fr`      |     ✓      |                2019-10-01                 |                    |
 | Deutsch                |     `de`      |     ✓      |                2019-10-01                 |                    |
+| Griechisch                 |     `el`      |     ✓      |                2020-07-01                 |                    |
+| Ungarisch             |     `hu`      |     ✓      |                2020-07-01                 |                    |
 | Italienisch               |     `it`      |     ✓      |                2019-10-01                 |                    |
+| Indonesisch            |     `id`      |     ✓      |                2020-07-01                 |                    |
 | Japanisch              |     `ja`      |     ✓      |                2019-10-01                 |                    |
 | Koreanisch                |     `ko`      |     ✓      |                2019-10-01                 |                    |
+| Lettisch               |     `lv`      |     ✓      |                2020-07-01                 |                    |
 | Norwegisch (Bokmål)   |     `no`      |     ✓      |                2020-07-01                 | `nb` wird ebenfalls akzeptiert. |
 | Polnisch                |     `pl`      |    ✓      |                2019-10-01                 |                    |
 | Portugiesisch (Brasilien)   |    `pt-BR`    |     ✓      |                2019-10-01                 |                    |
 | Portugiesisch (Portugal) |    `pt-PT`    |    ✓      |                2019-10-01                 | `pt` wird ebenfalls akzeptiert. |
+| Rumänisch              |     `ro`      |     ✓      |                2020-07-01                 |                    |
 | Russisch               |     `ru`      |     ✓      |                2019-10-01                 |                    |
 | Spanisch               |     `es`      |     ✓      |                2019-10-01                 |                    |
+| Slowakisch                |     `sk`      |     ✓      |                2020-07-01                 |                    |
+| Slowenisch             |     `sl`      |     ✓      |                2020-07-01                 |                    |
 | Schwedisch               |     `sv`      |     ✓      |                2019-10-01                 |                    |
+| Türkisch               |     `tr`      |     ✓      |                2020-07-01                 |                    |
 
 #### <a name="entity-linking"></a>[Entitätsverknüpfung](#tab/entity-linking)
 
-| Sprache | Sprachcode |  v3-Unterstützung | Ab Modellversion 3 verfügbar: | Notizen |
+| Sprache | Sprachcode |  v3-Unterstützung | Ab Modellversion 3: | Notizen |
 |:---------|:-------------:|:----------:|:-----------------------------------------:|:-----:|
 | Englisch  |     `en`      |     ✓      |                2019-10-01                 |       |
 | Spanisch  |     `es`      |    ✓      |                2019-10-01                 |       |
@@ -126,7 +143,7 @@ Die Textanalyse-API kann eine Vielzahl von Sprachen, Varianten und Dialekten sow
 
 Bei Inhalten in einer seltener verwendeten Sprache können Sie die Sprachenerkennung ausprobieren, um zu sehen, ob sie einen Code zurückgibt. Die Antwort bei Sprachen, die nicht erkannt werden können, lautet `unknown`.
 
-| Sprache | Sprachcode | v3-Unterstützung | Ab Modellversion 3 verfügbar: |
+| Sprache | Sprachcode | v3-Unterstützung | Ab Modellversion 3: |
 |:-|:-:|:-:|:-:|
 |Afrikaans|`af`|✓|    |
 |Albanisch|`sq`|✓|    |
@@ -250,3 +267,4 @@ Bei Inhalten in einer seltener verwendeten Sprache können Sie die Sprachenerken
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Worum handelt es sich bei der Textanalyse-API?](overview.md)   
+* [Modellversionen](concepts/model-versioning.md)

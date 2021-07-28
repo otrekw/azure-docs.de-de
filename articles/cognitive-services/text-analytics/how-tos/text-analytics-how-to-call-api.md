@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 06/10/2021
 ms.author: aahi
-ms.custom: references_regions
-ms.openlocfilehash: 5790c7c62b9d97df9683773170301b6e09a47667
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: b7ad200bba527d0b4b841483175b2672d94f162e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728480"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962846"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
@@ -31,9 +30,9 @@ Bevor Sie die Textanalyse-API verwenden, müssen Sie eine Azure-Ressource mit ei
 
 1.  Melden Sie sich zunächst im [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) an, und erstellen Sie eine neue Ressource der Textanalyse, sofern Sie noch keine haben. Wählen Sie einen [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) aus.
 
-2.  Wählen Sie die Region aus, die Sie für Ihren Endpunkt verwenden möchten.  Beachten Sie, dass die Endpunkte `/analyze` und `/health` nur in den folgenden Regionen verfügbar sind: USA, Westen 2; USA, Osten 2; USA, Mitte; Europa, Norden; Europa, Westen.
+2.  Wählen Sie die Region aus, die Sie für Ihren Endpunkt verwenden möchten.
 
-3.  Erstellen Sie die Ressource der Textanalyse, und wechseln Sie links auf der Seite zum Blatt mit den Schlüsseln und Endpunkten. Kopieren Sie den Schlüssel, mit dem Sie später die APIs aufrufen werden. Sie werden ihn später als Wert für den Header `Ocp-Apim-Subscription-Key` hinzufügen.
+3.  Erstellen Sie die Ressource der Textanalyse, und wechseln Sie links auf der Seite unter „Ressourcenverwaltung“ zum Abschnitt „Schlüssel und Endpunkt“. Kopieren Sie den Schlüssel, mit dem Sie später die APIs aufrufen werden. Sie werden ihn später als Wert für den Header `Ocp-Apim-Subscription-Key` hinzufügen.
 
 4. So überprüfen Sie die Anzahl der Textdatensätze, die mit ihrer Textanalyseressource gesendet wurden:
 
@@ -41,7 +40,7 @@ Bevor Sie die Textanalyse-API verwenden, müssen Sie eine Azure-Ressource mit ei
     2. Klicken Sie im linken Navigationsmenü unter **Überwachung** auf **Metriken**. 
     3. Wählen Sie im Dropdownfeld für **Metrik** die Option *Verarbeitete Textdatensätze* aus.
     
-Ein Textdatensatz umfasst 1000 Zeichen.
+Ein Textdatensatz ist eine Einheit von Eingabetext mit bis zu 1.000 Zeichen.  Beispiel: 1.500 Zeichen, die als Eingabetext übermittelt werden, zählen als zwei Textdatensätze.
 
 ## <a name="change-your-pricing-tier"></a>Ändern des Tarifs 
 
@@ -59,21 +58,19 @@ Sie können die Textanalyse-API synchron aufrufen (Szenarios mit geringer Latenz
 
 ## <a name="using-the-api-asynchronously"></a>Asynchrones Verwenden der API
 
-Ab Version „v3.1-preview.3“ stellt die Textanalyse-API zwei asynchrone Endpunkte bereit: 
+Die Version „v3.1-preview.5“ der Textanalyse-API stellt zwei asynchrone Endpunkte bereit: 
 
 * Mit dem Endpunkt `/analyze` für die Textanalyse können Sie dieselben Textdokumente mit mehreren Textanalysefeatures in einem einzigen API-Aufruf analysieren. Bisher mussten Sie für jeden Vorgang separate API-Aufrufe durchführen, um mehrere Features verwenden zu können. Denken Sie an diese Funktion, wenn Sie große Mengen von Dokumenten mit mehr als einem Textanalyse-Feature analysieren müssen.
 
 * Mit dem Endpunkt `/health` für die Textanalyse für das Gesundheitssystem können relevante medizinische Informationen aus klinischen Dokumenten extrahiert und gekennzeichnet werden.  
-
-Beachten Sie, dass die Endpunkte „/analyze“ und „/health“ nur in den folgenden Regionen verfügbar sind: „USA, Westen 2“, „USA, Osten 2“, „USA, Mitte“, „Europa, Norden“ und „Europa, Westen“.
 
 In der folgenden Tabelle wird gezeigt, welche Features asynchron verwendet werden können. Beachten Sie, dass nur einige wenige Features über den Endpunkt `/analyze` aufgerufen werden können. 
 
 | Funktion | Synchron | Asynchron |
 |--|--|--|
 | Spracherkennung | ✔ |  |
-| Stimmungsanalyse | ✔ |  |
-| Opinion Mining | ✔ |  |
+| Stimmungsanalyse | ✔ | ✔* |
+| Opinion Mining | ✔ | ✔* |
 | Schlüsselwortextraktion | ✔ | ✔* |
 | Erkennung benannter Entitäten (einschließlich personenbezogener Informationen und geschützter Gesundheitsdaten) | ✔ | ✔* |
 | Entitätsverknüpfung | ✔ | ✔* |
@@ -132,6 +129,8 @@ Mit dem Endpunkt `/analyze` können Sie auswählen, welche der unterstützten Fe
 * Schlüsselwortextraktion 
 * Erkennung benannter Entitäten (einschließlich personenbezogener Informationen und geschützter Gesundheitsdaten)
 * Entitätsverknüpfung
+* Standpunktanalyse
+* Opinion Mining
 
 | Element | Gültige Werte | Erforderlich? | Verwendung |
 |---------|--------------|-----------|-------|
@@ -140,7 +139,7 @@ Mit dem Endpunkt `/analyze` können Sie auswählen, welche der unterstützten Fe
 |`documents` | Enthält die Felder `id` und `text` weiter unten | Erforderlich | Enthält Informationen zu jedem gesendeten Dokument sowie den unformatierten Text des Dokuments |
 |`id` | String | Erforderlich | Mithilfe der von Ihnen bereitgestellten IDs wird die Ausgabe strukturiert. |
 |`text` | Unstrukturierter, unformatierter Text mit bis zu 125.000 Zeichen | Erforderlich | Muss in englischer Sprache vorliegen. Dies ist die einzige derzeit unterstützte Sprache. |
-|`tasks` | Enthält die folgenden Textanalysefeatures: `entityRecognitionTasks`,`entityLinkingTasks`,`keyPhraseExtractionTasks` und `entityRecognitionPiiTasks`. | Erforderlich | Mindestens eines der Textanalyse-Features, das Sie verwenden möchten. Beachten Sie, dass `entityRecognitionPiiTasks` über einen optionalen `domain`-Parameter verfügt, der auf `pii` oder `phi` festgelegt werden kann, sowie über `pii-categories` für die Erkennung ausgewählter Entitätstypen. Wenn der `domain`-Parameter nicht angegeben ist, wird standardmäßig `pii` verwendet. |
+|`tasks` | Enthält die folgenden Textanalysefeatures: `entityRecognitionTasks`,`entityLinkingTasks`,`keyPhraseExtractionTasks`, `entityRecognitionPiiTasks` oder `sentimentAnalysisTasks`. | Erforderlich | Mindestens eines der Textanalyse-Features, das Sie verwenden möchten. Beachten Sie, dass `entityRecognitionPiiTasks` über einen optionalen `domain`-Parameter verfügt, der auf `pii` oder `phi` festgelegt werden kann, sowie über `pii-categories` für die Erkennung ausgewählter Entitätstypen. Wenn der `domain`-Parameter nicht angegeben ist, wird standardmäßig `pii` verwendet. Auf ähnliche Weise weist `sentimentAnalysisTasks` den booleschen Parameter `opinionMining` auf, um Opinion Mining-Ergebnisse in die Ausgabe der Stimmungsanalyse einzubeziehen. |
 |`parameters` | Enthält die Felder `model-version` und `stringIndexType` weiter unten | Erforderlich | Dieses Feld ist in den oben aufgeführten Featuretasks enthalten, die Sie auswählen. Sie enthalten Informationen über die gewünschte Modellversion und den Indextyp. |
 |`model-version` | String | Erforderlich | Geben Sie an, welche Version des Modells aufgerufen werden soll.  |
 |`stringIndexType` | String | Erforderlich | Geben Sie den Textdecoder an, der Ihrer Programmierumgebung entspricht.  Die unterstützten Typen sind `textElement_v8` (Standard), `unicodeCodePoint`, `utf16CodeUnit`. Weitere Informationen finden Sie im Artikel über [Textoffsets](../concepts/text-offsets.md#offsets-in-api-version-31-preview).  |
@@ -157,7 +156,7 @@ Mit dem Endpunkt `/analyze` können Sie auswählen, welche der unterstützten Fe
             },
             {
                 "id": "doc2",
-                "text": "Pike place market is my favorite Seattle attraction."
+                "text": "Pike place market is my favorite Seattle attraction. The shops have very good food."
             }
         ]
     },
@@ -166,7 +165,19 @@ Mit dem Endpunkt `/analyze` können Sie auswählen, welche der unterstützten Fe
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElements_v8"
+                    "stringIndexType": "TextElement_v8",
+                    "loggingOptOut": "false"
+                }
+            }
+        ],
+        "entityRecognitionPiiTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElement_v8",
+                    "loggingOptOut": "true",
+                    "domain": "phi",
+                    "piiCategories":["default"]
                 }
             }
         ],
@@ -174,23 +185,29 @@ Mit dem Endpunkt `/analyze` können Sie auswählen, welche der unterstützten Fe
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElements_v8"
+                    "stringIndexType": "TextElement_v8",
+                    "loggingOptOut": "false"
                 }
             }
         ],
-        "keyPhraseExtractionTasks": [{
-            "parameters": {
-                "model-version": "latest"
+        "keyPhraseExtractionTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "loggingOptOut": "false"
+                }
             }
-        }],
-        "entityRecognitionPiiTasks": [{
-            "parameters": {
-                "model-version": "latest",
-                "stringIndexType": "TextElements_v8",
-                "domain": "phi",
-                "pii-categories":"default"
+        ],
+        "sentimentAnalysisTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElement_v8",
+                    "loggingOptOut": "false",
+                    "opinionMining": "true"
+                }
             }
-        }]
+        ]
     }
 }
 
@@ -241,12 +258,13 @@ Fügen Sie in Postman (oder einem anderen Web-API-Testtool) den Endpunkt für da
 | Funktion | Anforderungstyp | Ressourcenendpunkte |
 |--|--|--|
 | Spracherkennung | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
-| Stimmungsanalyse | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
-| Opinion Mining | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment?opinionMining=true` |
+| Standpunktanalyse | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
+| Opinion Mining | POST | `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/sentiment?opinionMining=true` |
 | Schlüsselwortextraktion | POST | `<your-text-analytics-resource>/text/analytics/v3.0/keyPhrases` |
 | Erkennung benannter Entitäten – allgemein | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/general` |
-| Erkennung benannter Entitäten – personenbezogene Informationen | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
-| Erkennung benannter Entitäten – geschützte Gesundheitsdaten | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
+| Erkennung benannter Entitäten – personenbezogene Informationen | POST | `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/recognition/pii` |
+| Erkennung benannter Entitäten – geschützte Gesundheitsdaten | POST |  `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/recognition/pii?domain=phi` |
+| Entitätsverknüpfung | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/linking` |
 
 #### <a name="asynchronous"></a>[Asynchron](#tab/asynchronous)
 
@@ -254,16 +272,16 @@ Fügen Sie in Postman (oder einem anderen Web-API-Testtool) den Endpunkt für da
 
 | Funktion | Anforderungstyp | Ressourcenendpunkte |
 |--|--|--|
-| Analyseauftrag übermitteln | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze` |
-| Analysestatus und -ergebnisse abrufen | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>` |
+| Analyseauftrag übermitteln | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/analyze` |
+| Analysestatus und -ergebnisse abrufen | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Endpunkte für das Senden asynchroner Anforderungen an den `/health`-Endpunkt
 
 | Funktion | Anforderungstyp | Ressourcenendpunkte |
 |--|--|--|
-| Auftrag der Textanalyse für das Gesundheitssystem übermitteln  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs` |
-| Auftragsstatus und -ergebnisse abrufen | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
-| Auftrag abbrechen | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
+| Auftrag der Textanalyse für das Gesundheitssystem übermitteln  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs` |
+| Auftragsstatus und -ergebnisse abrufen | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs/<Operation-Location>` |
+| Auftrag abbrechen | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
@@ -299,9 +317,9 @@ Senden Sie die API-Anforderung. Wenn Sie einen synchronen Endpunkt aufgerufen ha
 Wenn Sie die asynchronen Endpunkte `/analyze` oder `/health` aufgerufen haben, überprüfen Sie, ob Sie einen 202-Antwortcode erhalten haben. Sie müssen die Antwort abrufen, um die Ergebnisse anzuzeigen:
 
 1. Suchen Sie `Operation-Location` im Header der API-Antwort, der den Auftrag identifiziert, den Sie an die API gesendet haben. 
-2. Erstellen Sie eine GET-Anforderung für den verwendeten Endpunkt. In der [obigen Tabelle](#set-up-a-request) finden Sie das Endpunktformat. Außerdem sollten Sie die [Referenzdokumentation zur API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus) lesen. Zum Beispiel:
+2. Erstellen Sie eine GET-Anforderung für den verwendeten Endpunkt. In der [obigen Tabelle](#set-up-a-request) finden Sie das Endpunktformat. Außerdem sollten Sie die [Referenzdokumentation zur API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/AnalyzeStatus) lesen. Zum Beispiel:
 
-    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>`
+    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/analyze/jobs/<Operation-Location>`
 
 3. Fügen Sie der Anforderung den Wert von `Operation-Location` hinzu.
 
@@ -329,6 +347,7 @@ Die Antworten der synchronen Endpunkte variieren je nach verwendetem Endpunkt. I
 Bei erfolgreicher Ausführung gibt die an den Endpunkt `/analyze` gesendete GET-Anforderung ein Objekt zurück, das die zugewiesenen Tasks enthält. Beispiel: `keyPhraseExtractionTasks`. Diese Tasks enthalten das Antwortobjekt aus dem entsprechenden Textanalyse-Feature. Weitere Informationen finden Sie in den folgenden Artikeln.
 
 + [Schlüsselbegriffserkennung](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Standpunktanalyse](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Entitätserkennung](text-analytics-how-to-entity-linking.md#view-results)
 + [Textanalyse für Gesundheit](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
 
@@ -337,6 +356,7 @@ Bei erfolgreicher Ausführung gibt die an den Endpunkt `/analyze` gesendete GET-
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Übersicht über die Textanalyse](../overview.md)
+* [Modellversionen](../concepts/model-versioning.md)
 * [Häufig gestellte Fragen (FAQ)](../text-analytics-resource-faq.md)</br>
 * [Textanalysen (Produktseite)](//go.microsoft.com/fwlink/?LinkID=759712)
 * [Verwenden der Textanalyse-Clientbibliothek](../quickstarts/client-libraries-rest-api.md)

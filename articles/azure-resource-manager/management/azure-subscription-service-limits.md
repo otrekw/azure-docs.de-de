@@ -2,13 +2,13 @@
 title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 3feb0c0ac40812ef628281d93d5848c2d60df6eb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/09/2021
+ms.openlocfilehash: 1831b103dc037b5f92f9ca53be1c71ce1bb3f558
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375842"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889800"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -182,7 +182,9 @@ Die aktuellen Werte für Azure Machine Learning Compute-Kontingente finden Sie a
 
 [!INCLUDE [quantum-limits](../../../includes/azure-quantum-limits.md)]
 
-## <a name="azure-role-based-access-control-limits"></a>Grenzwerte für rollenbasierte Zugriffssteuerung von Azure (RBAC)
+## <a name="azure-rbac-limits"></a>Azure RBAC-Grenzwerte
+
+Die folgenden Grenzwerte gelten für die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 [!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control/limits.md)]
 

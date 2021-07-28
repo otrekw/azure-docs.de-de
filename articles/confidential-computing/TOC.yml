@@ -23,7 +23,7 @@
         - name: Vertrauliche Knoten mit Azure CLI
           href: confidential-nodes-aks-get-started.md
         - name: Häufig gestellte Fragen zu vertraulichen Knoten in AKS
-          href: confidential-nodes-aks-faq.md
+          href: confidential-nodes-aks-faq.yml
 - name: Konzepte
   expanded: true
   items:
@@ -34,7 +34,7 @@
         - name: Lösungen auf virtuellen Computern
           href: virtual-machine-solutions.md
         - name: Häufig gestellte Fragen zu virtuellen Computern für Confidential Computing
-          href: faq.md
+          href: faq.yml
     - name: Containercompute
       expanded: true
       items:

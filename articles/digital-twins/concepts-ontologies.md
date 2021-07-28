@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ba261609772e380e85de084096a3242f2f92fd49
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 17411f3c0a12e544d3204b2194e53d9565b164a9
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108734307"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061900"
 ---
 # <a name="what-is-an-ontology"></a>Was ist eine Ontologie? 
 
@@ -54,11 +54,12 @@ Unabhängig davon, für welche Strategie zur Integration einer Ontologie in Azur
 1. Fahren Sie dann mit der gewählten Strategie für die Ontologieintegration von oben fort: [Übernehmen](concepts-ontologies-adopt.md), [konvertieren](concepts-ontologies-convert.md) oder [erstellen](concepts-models.md) Sie Ihre Modelle basierend auf Ihrer Ontologie.
     1. [Erweitern](concepts-ontologies-extend.md) Sie ggf. Ihre Ontologie, um sie an Ihre Anforderungen anzupassen.
 1. [Überprüfen](how-to-parse-models.md) Sie Ihre Modelle, um sicherzustellen, dass es sich um funktionierende DTDL-Dokumente handelt.
-1. Laden Sie Ihre fertigen Modelle über die [APIs](how-to-manage-model.md#upload-models) oder eine Beispielanwendung wie [Azure Digital Twins Model Uploader](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader) in Azure Digital Twins hoch.
+1. Laden Sie Ihre fertigen Modelle über die [APIs](how-to-manage-model.md#upload-models) oder eine Beispielanwendung wie [Azure Digital Twins Model Uploader](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#uploadmodels) in Azure Digital Twins hoch.
 
 Danach sollten Sie Ihre Modelle in Ihrer Azure Digital Twins-Instanz verwenden können. 
 
-Sie können sie mit Beispielanwendungen wie dem [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) oder dem [Azure Digital Twins-Modellvisualisierer](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) visualisieren oder [digitale Zwillinge](concepts-twins-graph.md) damit erstellen.
+>[!TIP]
+> Sie können die Modelle in Ihrer Ontologie mit dem [Azure Digital Twins-Explorer](concepts-azure-digital-twins-explorer.md) oder dem [Azure Digital Twins-Modellvisualisierer](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) visualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

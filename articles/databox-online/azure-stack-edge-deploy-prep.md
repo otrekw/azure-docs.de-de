@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Vorbereiten des Azure-Portals und der Rechenzentrumsumgebung für das Bereitstellen von Azure Stack Edge Pro | Microsoft-Dokumentation
-description: Im ersten Tutorial zum Bereitstellen von Azure Stack Edge Pro-Geräten geht es um die Vorbereitung des Azure-Portals.
+title: Tutorial zum Vorbereiten der Bereitstellung von Azure Stack Edge Pro FPGA über das Azure-Portal in Ihrem Rechenzentrum
+description: Im ersten Tutorial zum Bereitstellen von Azure Stack Edge Pro FPGA geht es um die Vorbereitung des Azure-Portals.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/16/2021
 ms.author: alkohli
-ms.openlocfilehash: 0e0d7808e449a6e4f3e341cd40acdc220e65c0ba
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 1cab6f6f9db0650cee51b3863d521089b500bee9
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068216"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461307"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro  
+# <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-fpga"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro FPGA  
 
-Dies ist das erste Tutorial einer Reihe von Bereitstellungstutorials, die zum vollständigen Bereitstellen von Azure Stack Edge Pro erforderlich sind. In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal für die Bereitstellung einer Azure Stack Edge-Ressource vorbereiten. 
+Dies ist das erste Tutorial einer Reihe von Bereitstellungstutorials, die zum vollständigen Bereitstellen von Azure Stack Edge Pro FPGA erforderlich sind. In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal für die Bereitstellung einer Azure Stack Edge-Ressource vorbereiten. 
 
 Sie benötigen Administratorrechte, um die Einrichtung und Konfiguration abzuschließen. Die Vorbereitung des Portals erfordert weniger als 10 Minuten.  
 
@@ -32,21 +32,21 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="get-started"></a>Erste Schritte
 
-Führen Sie zum Bereitstellen von Azure Stack Edge Pro die folgenden Tutorials in der angegebenen Reihenfolge aus.
+Führen Sie zum Bereitstellen von Azure Stack Edge Pro FPGA die folgenden Tutorials in der angegebenen Reihenfolge aus.
 
 | **#** | **Schritt** | **Dokumente** |
 | --- | --- | --- | 
-| 1. |**[Vorbereiten des Azure-Portals für Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)** |Erstellen und konfigurieren Sie Ihre Azure Stack Edge-Ressource, bevor Sie ein physisches Azure Stack Edge-Gerät installieren. |
-| 2. |**[Installieren von Azure Stack Edge Pro](azure-stack-edge-deploy-install.md)**|Packen Sie das physische Azure Stack Edge Pro-Gerät aus, montieren Sie es in einem Rack, und verkabeln Sie es.  |
-| 3. |**[Verbinden, Einrichten und Aktivieren von Azure Stack Edge Pro](azure-stack-edge-deploy-connect-setup-activate.md)** |Stellen Sie eine Verbindung mit der lokalen Webbenutzeroberfläche her, führen Sie die Einrichtung durch, und aktivieren Sie das Gerät. Das Gerät ist für die Einrichtung von SMB- oder NFS-Freigaben bereit.  |
-| 4. |**[Übertragen von Daten mit Azure Stack Edge Pro](azure-stack-edge-deploy-add-shares.md)** |Fügen Sie Freigaben hinzu, und stellen Sie über SMB oder NFS eine Verbindung mit Freigaben her. |
-| 5. |**[Transformieren von Daten mit Azure Stack Edge Pro](azure-stack-edge-deploy-configure-compute.md)** |Konfigurieren Sie Computemodule auf dem Gerät, um die Daten bei der Übertragung an Azure zu transformieren. |
+| 1. |**[Vorbereiten des Azure-Portals für Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-prep.md)** |Erstellen und konfigurieren Sie Ihre Azure Stack Edge-Ressource, bevor Sie ein physisches Azure Stack Edge-Gerät installieren. |
+| 2. |**[Installieren von Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-install.md)**|Packen Sie das physische Azure Stack Edge Pro FPGA-Gerät aus, montieren Sie es in einem Rack, und verkabeln Sie es.  |
+| 3. |**[Verbinden, Einrichten und Aktivieren von Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-connect-setup-activate.md)** |Stellen Sie eine Verbindung mit der lokalen Webbenutzeroberfläche her, führen Sie die Einrichtung durch, und aktivieren Sie das Gerät. Das Gerät ist für die Einrichtung von SMB- oder NFS-Freigaben bereit.  |
+| 4. |**[Übertragen von Daten mit Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-add-shares.md)** |Fügen Sie Freigaben hinzu, und stellen Sie über SMB oder NFS eine Verbindung mit Freigaben her. |
+| 5. |**[Transformieren der Daten mit Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-configure-compute.md)** |Konfigurieren Sie Computemodule auf dem Gerät, um die Daten bei der Übertragung an Azure zu transformieren. |
 
 Sie können jetzt mit der Einrichtung des Azure-Portals beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Im Folgenden finden Sie die Konfigurationsvoraussetzungen für die Azure Stack Edge-Ressource, das Azure Stack Edge Pro-Gerät und das Rechenzentrumsnetzwerk.
+Im Folgenden finden Sie die Konfigurationsvoraussetzungen für die Azure Stack Edge-Ressource, das Azure Stack Edge Pro FPGA-Gerät und das Rechenzentrumsnetzwerk.
 
 ### <a name="for-the-azure-stack-edge-resource"></a>Für die Azure Stack Edge-Ressource
 
@@ -65,7 +65,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 * Sie besitzen ein Microsoft Azure-Speicherkonto mit Anmeldeinformationen für den Zugriff.
 * Sie werden durch Azure-Richtlinien, die von Ihrem Systemadministrator eingerichtet werden, nicht blockiert. Weitere Informationen zu Richtlinien finden Sie unter [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen](../governance/policy/assign-policy-portal.md).
 
-### <a name="for-the-azure-stack-edge-pro-device"></a>Voraussetzungen für die Bereitstellung des Azure Stack Edge Pro-Geräts
+### <a name="for-the-azure-stack-edge-pro-fpga-device"></a>Für das Azure Stack Edge Pro FPGA-Gerät
 
 Stellen Sie Folgendes sicher, bevor Sie ein physisches Gerät bereitstellen:
 
@@ -79,20 +79,20 @@ Stellen Sie Folgendes sicher, bevor Sie ein physisches Gerät bereitstellen:
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-* Das Netzwerk in Ihrem Rechenzentrum ist gemäß den Netzwerkanforderungen für das Azure Stack Edge Pro-Gerät konfiguriert. Weitere Informationen finden Sie unter [Systemanforderungen für Azure Stack Edge Pro](azure-stack-edge-system-requirements.md).
+* Das Netzwerk in Ihrem Rechenzentrum ist gemäß den Netzwerkanforderungen für das Azure Stack Edge Pro FPGA-Gerät konfiguriert. Weitere Informationen finden Sie unter [Systemanforderungen für Azure Stack Edge Pro FPGA](azure-stack-edge-system-requirements.md).
 
-* Für den Normalbetrieb von Azure Stack Edge Pro benötigen Sie Folgendes:
+* Für den Normalbetrieb von Azure Stack Edge Pro FPGA benötigen Sie Folgendes:
 
   * Eine Downloadbandbreite von mindestens 10 MBit/s, um sicherzustellen, dass das Gerät auf dem neuesten Stand bleibt
   * Eine dedizierte Upload- und Downloadbandbreite von mindestens 20 MBit/s zum Übertragen von Dateien
 
 ## <a name="create-new-resource-for-existing-device"></a>Erstellen einer neuen Ressource für das vorhandene Gerät
 
-Wenn Sie bereits Azure Stack Edge Pro-Kunde sind, verwenden Sie das folgende Verfahren, um eine neue Ressource zu erstellen, wenn Sie Ihr vorhandenes Gerät ersetzen oder zurücksetzen müssen.
+Wenn Sie bereits Azure Stack Edge Pro FPGA-Kunde sind, verwenden Sie das folgende Verfahren, um eine neue Ressource zu erstellen, wenn Sie Ihr vorhandenes Gerät ersetzen oder zurücksetzen müssen.
 
 Wenn Sie Neukunde sind, empfehlen wir Ihnen, die Verwendung von Azure Stack Edge Pro-GPU-Geräten für Ihre Workloads in Erwägung zu ziehen. Weitere Informationen finden Sie unter [Was ist Azure Stack Edge Pro mit GPU?](azure-stack-edge-gpu-overview.md). Informationen zum Bestellen eines Azure Stack Edge Pro-GPU-Geräts finden Sie unter [Neue Ressource erstellen](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource).
 
-Führen Sie zum Erstellen einer neuen Azure Stack Edge Pro-Ressource für ein vorhandenes Gerät die folgenden Schritte im Azure-Portal aus:
+Führen Sie zum Erstellen einer neuen Azure Stack Edge-Ressource für ein vorhandenes Gerät die folgenden Schritte im Azure-Portal aus:
 
 1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen bei einem der folgenden Portale an:
 
@@ -101,7 +101,7 @@ Führen Sie zum Erstellen einer neuen Azure Stack Edge Pro-Ressource für ein v
 
 1. Wählen Sie **+ Ressource erstellen**. Suchen Sie nach **Azure Stack Edge**, und wählen Sie den Eintrag aus. Klicken Sie anschließend auf **Erstellen**.
 
-1. Wählen Sie das Abonnement für das Azure Stack Edge Pro-Gerät und unter **Liefern an** das Land/die Region aus, in das bzw. die das Gerät versendet werden soll.
+1. Wählen Sie das Abonnement für das Azure Stack Edge Pro FPGA-Gerät und unter **Liefern an** das Land aus, in das das Gerät versendet werden soll.
 
    ![Auswählen des Abonnements und des Lands des Empfängers für Ihr Gerät](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-01.png)
 
@@ -142,12 +142,12 @@ Führen Sie zum Erstellen einer neuen Azure Stack Edge Pro-Ressource für ein v
 
 Nach der Bestellung wird diese von Microsoft geprüft, und Sie erhalten eine E-Mail mit den Versanddetails.
 
-![Benachrichtigung zur Überprüfung der Azure Stack Edge Pro-Bestellung](media/azure-stack-edge-deploy-prep/data-box-edge-resource-02.png)
+![Benachrichtigung zur Überprüfung der Azure Stack Edge Pro FPGA-Bestellung](media/azure-stack-edge-deploy-prep/data-box-edge-resource-02.png)
 
 
 ## <a name="get-the-activation-key"></a>Abrufen des Aktivierungsschlüssels
 
-Wenn die Azure Stack Edge-Ressource betriebsbereit ist, müssen Sie den Aktivierungsschlüssel abrufen. Dieser Schlüssel wird verwendet, um Ihr Azure Stack Edge Pro-Gerät zu aktivieren und mit der Ressource zu verbinden. Sie können diesen Schlüssel jetzt abrufen, während Sie sich im Azure-Portal befinden.
+Wenn die Azure Stack Edge-Ressource betriebsbereit ist, müssen Sie den Aktivierungsschlüssel abrufen. Dieser Schlüssel wird verwendet, um Ihr Azure Stack Edge Pro FPGA-Gerät zu aktivieren und mit der Ressource zu verbinden. Sie können diesen Schlüssel jetzt abrufen, während Sie sich im Azure-Portal befinden.
 
 1. Navigieren Sie zu der von Ihnen erstellten Ressource, und wählen Sie **Übersicht** aus. Es wird eine Benachrichtigung mit dem Hinweis angezeigt, dass Ihre Bestellung verarbeitet wird.
 
@@ -164,14 +164,14 @@ Wenn die Azure Stack Edge-Ressource betriebsbereit ist, müssen Sie den Aktivier
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurden unter anderem folgende Azure Stack Edge Pro-Themen behandelt:
+In diesem Tutorial wurden unter anderem folgende Azure Stack Edge Pro FPGA-Themen behandelt:
 
 > [!div class="checklist"]
 >
 > * Neue Ressource erstellen
 > * Abrufen des Aktivierungsschlüssels
 
-Im nächsten Tutorial erfahren Sie, wie Sie Azure Stack Edge Pro installieren.
+Im nächsten Tutorial erfahren Sie, wie Sie Azure Stack Edge Pro FPGA installieren.
 
 > [!div class="nextstepaction"]
-> [Installieren von Azure Stack Edge Pro](./azure-stack-edge-deploy-install.md)
+> [Installieren von Azure Stack Edge Pro FPGA](./azure-stack-edge-deploy-install.md)

@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/14/2021
 ms.author: banders
-ms.openlocfilehash: 3e8f50efd04364483c32ecb8ef5020bdd053e55b
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d45682a3ccdc67cdbff8ef0c1edd542817875fbc
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515480"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891552"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
@@ -65,6 +65,7 @@ Wenn Sie Reservierungen austauschen, muss der neue Währungsbetrag des Kaufs gr�
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Umtauschen einer Reservierung ohne Storage Premium gegen eine Reservierung mit Storage Premium
 
 Sie können eine erworbene Reservierung für eine VM-Größe, für die Storage Premium nicht unterstützt wird, gegen eine entsprechende VM-Größe umtauschen, für die diese Unterstützung vorhanden ist. Beispiel: _F1_ gegen _F1s_. Navigieren Sie zum Durchführen des Umtauschs zu „Reservierungsdetails“, und klicken Sie auf **Umtausch**. Beim Umtausch wird der Zeitraum der reservierten Instanz nicht zurückgesetzt und auch keine neue Transaktion erstellt.
+Wenn Sie den Umtausch für eine andere Größe, Serie, Region oder Zahlungshäufigkeit durchführen, wird der Zeitraum für die neue Reservierung zurückgesetzt. 
 
 ## <a name="how-transactions-are-processed"></a>Verarbeitung von Transaktionen
 

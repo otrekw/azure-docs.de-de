@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41bdf5251881fa9307a3cd4d214081845e967900
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 4d93acbfa8ae89b459fafb69411d35706b18fcbb
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209518"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982986"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -366,7 +366,9 @@ Beispiel für eine Regel, die eine benutzerdefinierte Erweiterungseigenschaft ve
 user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-Den Namen der benutzerdefinierten Eigenschaft finden Sie im Verzeichnis. Fragen Sie dazu die Eigenschaft eines Benutzers mithilfe des Graph-Explorers ab, und suchen Sie nach dem Eigenschaftennamen. Sie können jetzt im Regel-Generator für dynamische Benutzergruppen auf den Link **Get custom extension properties** (Benutzerdefinierte Erweiterungseigenschaften abrufen) klicken, um Ihre eindeutige App-ID einzugeben und die vollständige Liste mit benutzerdefinierten Erweiterungseigenschaften abzurufen, die Sie beim Erstellen einer dynamischen Mitgliedschaftsregel verwenden. Diese Liste kann auch aktualisiert werden, um neue benutzerdefinierte Erweiterungseigenschaften für diese App zu erhalten.
+Den Namen der benutzerdefinierten Eigenschaft finden Sie im Verzeichnis. Fragen Sie dazu die Eigenschaft eines Benutzers mithilfe des Graph-Explorers ab, und suchen Sie nach dem Eigenschaftennamen. Sie können jetzt im Regel-Generator für dynamische Benutzergruppen auf den Link **Get custom extension properties** (Benutzerdefinierte Erweiterungseigenschaften abrufen) klicken, um Ihre eindeutige App-ID einzugeben und die vollständige Liste mit benutzerdefinierten Erweiterungseigenschaften abzurufen, die Sie beim Erstellen einer dynamischen Mitgliedschaftsregel verwenden. Diese Liste kann auch aktualisiert werden, um neue benutzerdefinierte Erweiterungseigenschaften für diese App zu erhalten. 
+
+Weitere Informationen finden Sie unter [Verwenden der Attribute in dynamischen Gruppen](../hybrid/how-to-connect-sync-feature-directory-extensions.md#use-the-attributes-in-dynamic-groups) im Artikel [Azure AD Connect-Synchronisierung: Verzeichniserweiterungen](../hybrid/how-to-connect-sync-feature-directory-extensions.md).
 
 ## <a name="rules-for-devices"></a>Regeln für Geräte
 

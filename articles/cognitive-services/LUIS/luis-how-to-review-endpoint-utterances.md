@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 04/16/2021
-ms.openlocfilehash: 339b87abad863f19a012dc6ed3a14ab13a44fc48
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 05/05/2021
+ms.openlocfilehash: 41c45b2887736847c2413c2193e57d35f49594e7
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949108"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109518071"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Verbessern der LUIS-App durch Überprüfen der Endpunktäußerungen
 
@@ -41,14 +41,16 @@ Verwenden Sie das LUIS-Portal, um die richtige Endpunktabfrage zu erstellen.
 
      Dadurch wird der Beispiel-URL der Abfragezeichenfolgenparameter `log=true` hinzugefügt. Kopieren und verwenden Sie die geänderte Beispielabfrage-URL, wenn Sie Vorhersageabfragen an den Runtimeendpunkt richten.
 
-## <a name="correct-intent-predictions-to-align-utterances"></a>Korrigieren von Absichtsvorhersagen zum Ausrichten von Äußerungen
+## <a name="correct-predictions-to-align-utterances"></a>Korrigieren von Vorhersagen zum Ausrichten von Äußerungen
 
-Für jede Äußerung wird eine vorgeschlagene Absicht in der Spalte **Aligned intent** (Zugeordnete Absicht) angezeigt.
+Für jede Äußerung wird eine vorgeschlagene Absicht in der Spalte für die **Vorhergesagte Absicht** angezeigt und die vorgeschlagenen Entitäten befinden sich in gepunkteten Begrenzungsrahmen.
 
 > [!div class="mx-imgBorder"]
 > [![Überprüfen der Endpunktäußerungen, bei denen LUIS unsicher ist](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
 
-Wenn Sie dieser Absicht zustimmen, aktivieren Sie das Kontrollkästchen. Wenn Sie mit dem Vorschlag nicht einverstanden sind, wählen Sie die richtige Absicht in der Dropdownliste der zugeordneten Absichten aus, und aktivieren Sie dann rechts neben der zugeordneten Absicht das Kontrollkästchen. Nachdem Sie das Kontrollkästchen aktiviert haben, wird die Äußerung zu der Absicht verschoben und aus der Liste **Endpunktäußerungen überprüfen** entfernt.
+Wenn Sie der vorhergesagten Absicht und den Entitäten zustimmen, aktivieren Sie das Häkchen neben der Äußerung. Wenn das Häkchen deaktiviert ist, bedeutet dies, dass keine Bestätigung erforderlich ist.  
+Wenn Sie mit der vorgeschlagenen Absicht nicht einverstanden sind, wählen Sie in der Dropdownliste für vorhergesagte Absichten die richtige Absicht aus. Wenn Sie den vorgeschlagenen Entitäten nicht zustimmen, beginnen Sie damit, diese zu bezeichnen.
+Nachdem Sie fertig sind, aktivieren Sie das Häkchen neben der Äußerung, um Ihre Bezeichnungen zu bestätigen. Wählen Sie **save utterance** (Äußerung speichern) aus, um sie aus der Überprüfungsliste zu verschieben und ihr ihre jeweilige Absicht hinzuzufügen.
 
 > [!TIP]
 > Es ist wichtig, zur Seite mit den Absichtsdetails zu wechseln, um die Entitätsvorhersagen aus allen Beispieläußerungen aus der Liste **Endpunktäußerungen überprüfen** zu überprüfen und zu korrigieren.
@@ -61,7 +63,8 @@ Wenn Sie nicht wissen, ob Sie die Äußerung löschen sollten, verschieben Sie s
 
 ## <a name="disable-active-learning"></a>Deaktivieren des aktiven Lernens
 
-Um das aktive Lernen zu deaktivieren, protokollieren Sie keine Benutzerabfragen. Dies wird erreicht, indem die [Endpunktabfrage](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) mit dem QueryString-Parameter `log=false` und dem Wert oder nicht mit dem QueryString-Wert festgelegt wird, da der Standardwert „false“ ist.
+Um das aktive Lernen zu deaktivieren, protokollieren Sie keine Benutzerabfragen. Dies wird erreicht, indem Sie die Abfrageparameter wie oben gezeigt ändern oder indem Sie den `log=false`-Parameter in der Endpunktabfrage festlegen. Sie können auch den `log`-Parameter weglassen, da der Standardwert `false` ist.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: Beheben von Problemen beim Registrieren eines neuen Kontos im Azure-Portal oder im Azure-Kontocenter
-description: Lösen eines Problems beim Registrieren eines neuen Kontos beim Microsoft Azure-Portal oder beim Azure-Kontocenter.
+title: Beheben von Problemen beim Registrieren für ein neues Konto im Azure-Portal
+description: Lösen eines Problems beim Registrieren für ein neues Konto im Microsoft Azure-Portal.
 services: cost-management-billing
 author: v-miegge
 manager: dcscontentpm
@@ -8,18 +8,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 01/28/2021
+ms.date: 05/13/2021
 ms.author: v-miegge
-ms.openlocfilehash: 015e6058236190a04df152573621f0e57030d23b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 6e9c3d09c5dbf9ddae779f585425f8317b41ab46
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054160"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467513"
 ---
-# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Beheben von Problemen beim Registrieren eines neuen Kontos im Azure-Portal oder im Azure-Kontocenter
+# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal"></a>Beheben von Problemen beim Registrieren für ein neues Konto im Azure-Portal
 
-Unter Umständen tritt ein Problem auf, wenn Sie sich beim Microsoft Azure-Portal oder beim Azure-Kontocenter für ein neues Konto registrieren. In dieser Kurzanleitung werden Sie durch den Anmeldevorgang geleitet und einige häufig auftretende Probleme bei den einzelnen Schritten erörtert.
+Unter Umständen tritt ein Problem auf, wenn Sie sich im Microsoft Azure-Portal für ein neues Konto registrieren. In dieser Kurzanleitung werden Sie durch den Anmeldevorgang geleitet und einige häufig auftretende Probleme bei den einzelnen Schritten erörtert.
 
 > [!NOTE]
 > Wenn Sie bereits über ein Konto verfügen und Anleitungen zur Behandlung von Anmeldeproblemen suchen, lesen Sie die Informationen unter [Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement](./troubleshoot-sign-in-issue.md).
@@ -28,7 +28,7 @@ Unter Umständen tritt ein Problem auf, wenn Sie sich beim Microsoft Azure-Port
 
 Überprüfen Sie vor Beginn der Registrierung Folgendes:
 
-- Die Informationen Ihres Azure-Kontoprofils (einschließlich Kontakt-E-Mail-Adresse, Anschrift und Telefonnummer) stimmen.
+- Die Informationen Ihres Azure-Profils (einschließlich Kontakt-E-Mail-Adresse, Anschrift und Telefonnummer) stimmen.
 - Ihre Kreditkarteninformationen stimmen.
 - Sie verfügen nicht bereits über ein Microsoft-Konto mit denselben Informationen.
 
@@ -45,7 +45,14 @@ Diese exemplarische Vorgehensweise enthält Beispiele der ordnungsgemäßen Info
 
 ## <a name="about-you"></a>Persönliche Informationen
 
-![Persönliche Informationen](./media/troubleshoot-azure-sign-up/1.png)
+Wenn Sie sich zum ersten Mal für Azure registrieren, müssen Sie einige Informationen zur eigenen Person bereitstellen. Dazu gehören die folgenden Angaben:
+
+- Land oder Region
+- Vorname
+- Nachname
+- E-Mail-Adresse
+- Telefonnummer
+- Kreditkarteninformationen
  
 ### <a name="common-issues-and-solutions"></a>Bekannte Probleme und Lösungen
 
@@ -53,9 +60,9 @@ Diese exemplarische Vorgehensweise enthält Beispiele der ordnungsgemäßen Info
 
 Gehen Sie folgendermaßen vor, um diesen Fehler zu beheben:
 
-1.  Melden Sie sich mit den Anmeldeinformationen des Kontoadministrators beim [Azure-Kontocenter](https://account.azure.com/Profile) an.
-1.  Wählen Sie **Details bearbeiten** aus.
-1.  Stellen Sie sicher, dass alle Adressfelder richtig ausgefüllt sind.
+1. Melden Sie sich beim [Microsoft-Kontocenter](https://account.microsoft.com/) an.
+1. Wählen Sie oben auf der Seite **Ihre Informationen** aus.
+1. Vergewissern Sie sich, dass Ihre Abrechnungs- und Versanddetails vollständig und gültig sind.
 1.  Vergewissern Sie sich bei der Registrierung für das Azure-Abonnement, dass die beim Registrieren der Kreditkarte eingegebene Rechnungsadresse mit den Angaben der Bank übereinstimmt.
 
 Wenn Sie die Fehlermeldung weiterhin erhalten, führen Sie die Registrierung in einem anderen Browser aus.

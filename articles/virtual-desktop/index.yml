@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentation zu Windows Virtual Desktop
+title: Dokumentation zu Azure Virtual Desktop
 summary: Stellen Sie eine virtuelle Desktopumgebung und Remote-Apps für beliebige Geräte bereit. Kombinieren Sie Microsoft 365 und Azure, um Benutzern die einmalige Windows 10-Multisessionumgebung zu bieten – mit außergewöhnlicher Skalierung und reduzierten IT-Kosten.
 metadata:
-  title: Dokumentation zu Windows Virtual Desktop
-  description: Windows Virtual Desktop für Azure ist eine in der Cloud virtualisierte Windows 10 Enterprise-Mehrbenutzerumgebung.
+  title: Dokumentation zu Azure Virtual Desktop
+  description: Azure Virtual Desktop für Azure ist eine in der Cloud virtualisierte Windows 10 Enterprise-Mehrbenutzerumgebung.
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
@@ -11,44 +11,48 @@ metadata:
   author: Heidilohr
   ms.author: helohr
   ms.date: 03/06/2020
-  ms.openlocfilehash: 4e0d8bdc1506fc8eb4c6087a6b01011fade3c77f
-  ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+  ms.openlocfilehash: 89123da71dc47d3fb302ab6c82e26baf3df94357
+  ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/06/2021
-  ms.locfileid: "106446790"
+  ms.lasthandoff: 06/09/2021
+  ms.locfileid: "111757622"
 landingContent:
-- title: Informationen zu Windows Virtual Desktop
+- title: Informationen zu Azure Virtual Desktop
   linkLists:
   - linkListType: overview
     links:
-    - text: Was ist Windows Virtual Desktop?
+    - text: Was ist Azure Virtual Desktop?
       url: overview.md
-- title: Erste Schritte mit Windows Virtual Desktop
+- title: Erste Schritte mit Azure Virtual Desktop
   linkLists:
   - linkListType: tutorial
     links:
     - text: Erstellen eines Hostpools mit Azure Marketplace
       url: create-host-pools-azure-marketplace.md
-    - text: Verwalten von App-Gruppen für Windows Virtual Desktop
+    - text: Verwalten von App-Gruppen für Azure Virtual Desktop
       url: manage-app-groups.md
     - text: Erstellen eines Hostpools zum Überprüfen von Dienstupdates
       url: create-validation-host-pool.md
     - text: Einrichten von Dienstwarnungen
       url: set-up-service-alerts.md
-- title: Erste Schritte mit Windows Virtual Desktop (klassisch)
+- title: Erste Schritte mit Azure Virtual Desktop (klassisch)
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Erstellen eines Mandanten in Windows Virtual Desktop
+    - text: Erstellen eines Mandanten in Azure Virtual Desktop
       url: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
-    - text: Erstellen eines Hostpools mit Azure Marketplace
-      url: create-host-pools-azure-marketplace.md
-    - text: Verwalten von App-Gruppen für Windows Virtual Desktop
-      url: manage-app-groups.md
     - text: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
       url: ./virtual-desktop-fall-2019/create-service-principal-role-powershell.md
-- title: Herstellen einer Verbindung mit Windows Virtual Desktop
+    - text: Erstellen eines Hostpools mit Azure Marketplace
+      url: ./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md
+    - text: Verwalten von App-Gruppen für Azure Virtual Desktop
+      url: ./virtual-desktop-fall-2019/manage-app-groups-2019.md
+    - text: Erstellen eines Hostpools zum Überprüfen von Dienstupdates
+      url: ./virtual-desktop-fall-2019/create-validation-host-pool-2019.md
+    - text: Einrichten von Dienstwarnungen
+      url: ./virtual-desktop-fall-2019/set-up-service-alerts-2019.md
+- title: Herstellen einer Verbindung mit Azure Virtual Desktop
   linkLists:
   - linkListType: how-to-guide
     links:

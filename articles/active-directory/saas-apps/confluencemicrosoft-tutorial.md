@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/25/2020
+ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 34365a8bd7a15f502aa89a966adb14807e802cc4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77e98560ee483f55fc4a808a8c888f20af983a90
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736998"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478492"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Confluence SAML SSO by Microsoft
 
@@ -62,7 +62,7 @@ Zum aktuellen Zeitpunkt werden die folgenden Confluence-Versionen unterstützt:
 
 - Confluence: 5.0 bis 5.10
 - Confluence: 6.0.1 bis 6.15.9
-- Confluence: 7.0.1 bis 7.9.3
+- Confluence: 7.0.1 bis 7.10.0
 
 > [!NOTE]
 > Beachten Sie, dass unser Confluence-Plug-In auch unter Ubuntu Version 16.04 funktioniert.
@@ -109,11 +109,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<domain:port>/plugins/servlet/saml/auth`
+    a. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://<DOMAIN:PORT>/`.
 
-    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://<domain:port>/`.
-
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<domain:port>/plugins/servlet/saml/auth`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<DOMAIN:PORT>/plugins/servlet/saml/auth`
+    
+    c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<DOMAIN:PORT>/plugins/servlet/saml/auth`
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Der Port ist optional, sofern es sich um eine benannte URL handelt. Diese Werte werden während der Konfiguration des Confluence-Plug-Ins empfangen, die später im Tutorial beschrieben wird.
@@ -152,11 +152,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
 
-    ![Screenshot, in dem das „Zahnrad“-Symbol ausgewählt und im Dropdownmenü die Option „Add-ons“ hervorgehoben ist](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![Screenshot, in dem das „Zahnrad“-Symbol ausgewählt und im Dropdownmenü die Option „Add-ons“ hervorgehoben ist](./media/confluencemicrosoft-tutorial/add-on-1.png)
 
 1. Laden Sie das Plug-In aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56503) herunter. Laden Sie das von Microsoft bereitgestellte Plug-In manuell mithilfe des Menüs **Add-On hochladen** hoch. Das Herunterladen von Plug-Ins wird unter [Microsoft-Servicevertrag](https://www.microsoft.com/servicesagreement/) beschrieben.
 
-    ![Screenshot der Seite „Manage add-ons“ mit ausgewählter Aktion „Upload add-on“](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![Screenshot der Seite „Manage add-ons“ mit ausgewählter Aktion „Upload add-on“](./media/confluencemicrosoft-tutorial/add-on-12.png)
 
 1. Führen Sie die folgenden Schritte aus, um das Reverseproxy- oder Lastenausgleichsszenario von Confluence auszuführen:
 
@@ -167,19 +167,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Screenshot der Datei „server.xml“, in der das Attribut zum „Connector“-Port hinzugefügt ist](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    ![Screenshot der Datei „server.xml“, in der das Attribut zum „Connector“-Port hinzugefügt ist](./media/confluencemicrosoft-tutorial/reverse-proxy-1.png)
 
     b. Ändern Sie **Basis-URL** in **Systemeinstellungen** gemäß Proxy/Lastenausgleich.
 
-    ![Screenshot der Seite „Administration – Settings“ mit hervorgehobener „Base URL“](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    ![Screenshot der Seite „Administration – Settings“ mit hervorgehobener „Base URL“](./media/confluencemicrosoft-tutorial/reverse-proxy-2.png)
 
 1. Sobald das Plug-In installiert ist, wird es im Abschnitt **Add-Ons verwalten** unter **User Installed** (Vom Benutzer installiert) angezeigt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Screenshot des Abschnitts „User Installed“ mit hervorgehobener Schaltfläche „Configure“](./media/confluencemicrosoft-tutorial/addon15.png)
+    ![Screenshot des Abschnitts „User Installed“ mit hervorgehobener Schaltfläche „Configure“](./media/confluencemicrosoft-tutorial/add-on-15.png)
 
 1. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
 
-    ![Screenshot mit der Konfigurationsseite für einmaliges Anmelden](./media/confluencemicrosoft-tutorial/addon54.png)
+    ![Screenshot mit der Konfigurationsseite für einmaliges Anmelden](./media/confluencemicrosoft-tutorial/add-on-53.png)
 
     > [!TIP]
     > Stellen Sie sicher, dass der App nur ein Zertifikat zugeordnet wird, um einen Fehler bei der Auflösung der Metadaten zu vermeiden. Bei mehreren Zertifikaten erhält der Administrator nach dem Auflösen der Metadaten eine Fehlermeldung.
@@ -209,7 +209,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
        > [!Note]
        > Fügen Sie den Abfrageparameter in der Browser-URL hinzu, um das Standardanmeldeformular für die Administratoranmeldung auf der Anmeldeseite zu aktivieren, wenn „Force Azure Login“ (Azure-Anmeldung erzwingen) aktiviert ist.
-       > `https://<domain:port>/login.action?force_azure_login=false`
+       > `https://<DOMAIN:PORT>/login.action?force_azure_login=false`
 
     1. Klicken Sie auf die Schaltfläche **Save**, um die Änderungen zu speichern.
 
@@ -226,11 +226,11 @@ Um es Azure AD-Benutzern zu ermöglichen, sich auf dem lokalen Confluence-Server
 
 1. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf **Benutzerverwaltung**.
 
-    ![Mitarbeiter hinzufügen](./media/confluencemicrosoft-tutorial/user1.png)
+    ![Mitarbeiter hinzufügen](./media/confluencemicrosoft-tutorial/user-1.png)
 
 1. Klicken Sie im Abschnitt „Benutzer“ auf die Registerkarte **Benutzer hinzufügen**. Führen Sie auf der Dialogfeldseite **Benutzer hinzufügen** die folgenden Schritte aus:
 
-    ![Screenshot des Fensters „Confluence administration“ mit ausgewählter Registerkarte „Add Users“ und eingegebenen „Add a User“-Informationen](./media/confluencemicrosoft-tutorial/user2.png)
+    ![Screenshot des Fensters „Confluence administration“ mit ausgewählter Registerkarte „Add Users“ und eingegebenen „Add a User“-Informationen](./media/confluencemicrosoft-tutorial/user-2.png)
 
     a. Geben Sie im Textfeld **Username** (Benutzername) die E-Mail-Adresse des Benutzers ein, etwa von B. Simon.
 

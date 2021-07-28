@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: bbb9b47e42ce195a98801ee08d177efd409c597e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4643efd197734ff7f12fb7806e474e0419843ed
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181661"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078564"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von PureCloud by Genesys für die automatische Benutzerbereitstellung
 
@@ -36,7 +36,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in PureCloud 
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Eine PureCloud-[Organisation](https://help.mypurecloud.com/?p=81984).
 * Ein Benutzer mit [Berechtigungen](https://help.mypurecloud.com/?p=24360) zum Erstellen eines Oauth-Clients.
 
@@ -100,27 +100,36 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit PureCloud by Genesys synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in PureCloud by Genesys für Aktualisierungsvorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die PureCloud by Genesys-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-     |Attribut|type|
-     |---|---|
-     |userName|String|
+     |attribute|Typ|Unterstützung für das Filtern|
+     |---|---|---|
+     |userName|String|&check;|
      |aktiv|Boolean|
      |displayName|String|
      |emails[type eq "work"].value|String|
      |title|String|
      |phoneNumbers[type eq "mobile"].value|String|
      |phoneNumbers[type eq "work"].value|String|
+     |phoneNumbers[type eq "work2"].value|String|
+     |phoneNumberss[type eq "work3"].value|String|
+     |phoneNumbers[type eq "work4"].value|String|
+     |phoneNumbers[type eq "home"].value|String|
+     |phoneNumbers[type eq "microsoftteams"].value|String|
+     |roles|String|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Verweis|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
-     
+     |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
+     |urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘microsoftteams’].value|String|     
+     |urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘ringcentral’].value|String|    
+     |urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘zoomphone].value|String|
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit PureCloud by Genesys synchronisieren** aus.
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit PureCloud by Genesys synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in PureCloud by Genesys für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen. PureCloud by Genesys unterstützt nicht das Erstellen oder Löschen von Gruppen, sondern nur das Aktualisieren von Gruppen.
 
-      |attribute|type|
-      |---|---|
-      |displayName|String|
+      |attribute|Typ|Unterstützung für das Filtern|
+      |---|---|---|
+      |displayName|String|&check;|
       |externalId|String|
       |members|Verweis|
 
@@ -149,9 +158,10 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
 ## <a name="change-log"></a>Änderungsprotokoll
 
-10.09.: Support für das Unternehmensattribut „employeeNumber“ hinzugefügt.
+* 10.09.2020: Unterstützung für das Erweiterungsunternehmensattribut **employeeNumber** wurde hinzugefügt.
+* 18.05.2021 – Unterstützung für die Kernattribute **phoneNumbers[type eq "work2"]** , **phoneNumbers[type eq "work3"]** , **phoneNumbers[type eq "work4"]** , **phoneNumbers[type eq "home"]** , **phoneNumbers[type eq "microsoftteams"]** und Rollen wurde hinzugefügt. Außerdem wurde Unterstützung für die benutzerdefinierten Erweiterungsattribute **urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq 'microsoftteams']** , **urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq 'zoomphone]** und **urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq 'ringcentral']** hinzugefügt.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="more-resources"></a>Weitere Ressourcen
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

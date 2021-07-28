@@ -1,6 +1,6 @@
 - name: Dokumentation zu Microsoft Genomics
   href: index.yml
-- name: Übersicht
+- name: Überblick
   items:
     - name: Was ist Microsoft Genomics?
       href: overview-what-is-genomics.md
@@ -24,7 +24,7 @@
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
-      href: frequently-asked-questions-genomics.md
+      href: frequently-asked-questions-genomics.yml
     - name: Handbuch zur Problembehandlung
       href: troubleshooting-guide-genomics.md
     - name: Einreichen einer Supportanfrage

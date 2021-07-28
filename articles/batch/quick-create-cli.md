@@ -2,18 +2,18 @@
 title: 'Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI'
 description: In dieser Schnellstartanleitung wird gezeigt, wie Sie ein Batch-Konto erstellen und einen Batch-Auftrag mit der Azure-Befehlszeilenschnittstelle ausführen.
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 05/25/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8d3005233320a7ba0d00f186944a0a8c0c456647
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: eba9bf9fd290c4483fc9caa0efa4f05adbeb08ef
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765303"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476139"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI
 
-Führen Sie erste Schritte mit Azure Batch per Azure CLI aus, um ein Batch-Konto, einen Pool mit Computeknoten (virtuelle Computer) und einen Auftrag zu erstellen, mit dem Aufgaben im Pool ausgeführt werden. Jede Beispielaufgabe führt einen einfachen Befehl für einen der Poolknoten aus.
+Führen Sie Ihre ersten Schritte mit Azure Batch über die Azure CLI aus, um ein Batch-Konto, einen Pool mit Computeknoten (virtuelle Computer) und einen Auftrag zu erstellen, mit dem Aufgaben im Pool ausgeführt werden. Jede Beispielaufgabe führt einen einfachen Befehl für einen der Poolknoten aus.
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzepten des Batch-Diensts vertraut und können Batch mit realistischeren Workloads und in größerem Umfang ausprobieren.
 
@@ -72,7 +72,7 @@ az batch account login \
 
 ## <a name="create-a-pool-of-compute-nodes"></a>Erstellen eines Pools mit Computeknoten
 
-Nachdem Sie nun über ein Batch-Konto verfügen, können Sie einen Beispielpool mit Linux-Computeknoten erstellen, indem Sie den Befehl [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) verwenden. Im folgenden Beispiel wird ein Pool mit dem Namen *mypool* erstellt, der zwei Knoten der Größe *Standard_A1_v2* mit Ubuntu 16.04 LTS enthält. Die vorgeschlagene Knotengröße bietet für dieses kurze Beispiel eine gute Balance zwischen Leistung und Kosten.
+Nachdem Sie nun über ein Batch-Konto verfügen, können Sie einen Beispielpool mit Linux-Computeknoten erstellen, indem Sie den Befehl [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) verwenden. Im folgenden Beispiel wird ein Pool mit dem Namen *mypool* erstellt, der zwei *Standard_A1_v2*-Knoten mit Ubuntu 16.04 LTS enthält. Die vorgeschlagene Knotengröße bietet für dieses kurze Beispiel eine gute Balance zwischen Leistung und Kosten.
  
 ```azurecli-interactive
 az batch pool create \

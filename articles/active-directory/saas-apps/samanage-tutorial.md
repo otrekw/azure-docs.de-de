@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 6dcd5612bd2c5957ae0a397c3463dbb42445a754
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d10ff0f9ca4fde80557341c0b5d29b3f7c26c970
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956042"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982809"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>Tutorial: Azure Active Directory-Integration mit SolarWinds Service Desk (vormals Samanage)
 
@@ -32,6 +32,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Abonnement, das für das einmalige Anmelden (SSO) bei SolarWinds aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -134,7 +137,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
  
     a. Klicken Sie auf **Enable Single Sign-On with SAML**(Einmaliges Anmelden mit SAML aktivieren).  
  
-    b. Fügen Sie in das Textfeld **URL des Identitätsanbieters** den Wert des **Azure AD-Bezeichners** ein, den Sie aus dem Azure-Portal kopiert haben.    
+    b. Geben Sie im Textfeld **Identity Provider URL** (Identitätsanbieter-URL) den Wert ein, z. B. `https://YourAccountName.samanage.com`.
  
     c. Vergewissern Sie sich, dass die **Anmelde-URL** mit der **Anmelde-URL** im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal übereinstimmt.
  

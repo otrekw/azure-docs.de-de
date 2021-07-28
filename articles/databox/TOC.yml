@@ -83,7 +83,7 @@
             - name: Übertragen von ACLs und Metadaten
               href: data-box-file-acls-preservation.md
             - name: Häufig gestellte Fragen
-              href: data-box-faq.md
+              href: data-box-faq.yml
         - name: Anleitung
           items:
             - name: Verwalten über das Azure-Portal
@@ -155,7 +155,7 @@
             - name: Sicherheit überprüfen
               href: data-box-disk-security.md
             - name: Häufig gestellte Fragen
-              href: data-box-disk-faq.md
+              href: data-box-disk-faq.yml
         - name: Anleitung
           items:
             - name: Verwalten über das Azure-Portal

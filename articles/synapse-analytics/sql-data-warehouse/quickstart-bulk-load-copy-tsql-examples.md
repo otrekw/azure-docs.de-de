@@ -9,12 +9,13 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 510f2556fba42176817b782fe48d01d76eaa3fd7
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 3873ae1dd4ab230e5e0c3424341722e76aeb48fb
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568453"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113216223"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Sicheres Laden von Daten mithilfe von Synapse SQL
 
@@ -105,7 +106,20 @@ Eine Authentifizierung der verwalteten Identität ist erforderlich, wenn Ihr Spe
    > - Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das **Upgrade auf Version 2** durchführen, indem Sie [diesen Leitfaden](../../storage/common/storage-account-upgrade.md) verwenden.
    > - Informationen zu bekannten Problemen mit Azure Data Lake Storage Gen2 finden Sie in [diesem Leitfaden](../../storage/blobs/data-lake-storage-known-issues.md).
 
-1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie dem Server oder Arbeitsbereich, auf bzw. in dem Ihr bei Azure Active Directory (AAD) registrierter dedizierter SQL-Pool gehostet wird, die Azure-Rolle **Mitwirkender an Storage-Blobdaten** zu.
+1. Wählen Sie unter Ihrem Speicherkonto die Option **Zugriffssteuerung (IAM)** aus.
+
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | Mitwirkender an Storage-Blobdaten |
+    | Zugriff zuweisen zu | SERVICEPRINCIPAL |
+    | Member | Server oder Arbeitsbereich, auf bzw. in dem Ihr bei Azure Active Directory (AAD) registrierter dedizierter SQL-Pool gehostet wird  |
+
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
+
 
    > [!NOTE]
    > Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Azure-Rollen finden Sie in [diesem Leitfaden](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
@@ -129,16 +143,28 @@ Eine Authentifizierung der verwalteten Identität ist erforderlich, wenn Ihr Spe
 ## <a name="d-azure-active-directory-authentication"></a>D: Azure Active Directory-Authentifizierung
 #### <a name="steps"></a>Schritte
 
-1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie Ihrem Azure AD-Benutzer die Azure-Rolle **Besitzer von, Mitwirkender an oder Leser von Speicherblobdaten** zu. 
+1. Wählen Sie unter Ihrem Speicherkonto die Option **Zugriffssteuerung (IAM)** aus.
+
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | „Besitzer von Speicherblobdaten“, „Mitwirkender“ oder „Leser“ |
+    | Zugriff zuweisen zu | USER |
+    | Member | Ein Azure AD-Benutzer |
+
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
     > [!IMPORTANT]
     > Geben Sie die Azure-Rolle „Besitzer von“, „Mitwirkender an“ oder „Leser von“ **Speicherblobdaten**  an. Diese Rollen sind anders als die integrierten Azure-Rollen „Besitzer“, „Mitwirkender“ und „Leser“.
 
     ![Erteilen der Azure RBAC-Berechtigung zum Laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-2. Konfigurieren Sie die Azure AD-Authentifizierung anhand der folgenden [Dokumentation](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell). 
+1. Konfigurieren Sie die Azure AD-Authentifizierung anhand der folgenden [Dokumentation](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell). 
 
-3. Stellen Sie mithilfe von Active Directory eine Verbindung zu Ihrem SQL-Pool her. Dort können Sie jetzt die COPY-Anweisung ohne Angabe von Anmeldeinformationen ausführen:
+1. Stellen Sie mithilfe von Active Directory eine Verbindung zu Ihrem SQL-Pool her. Dort können Sie jetzt die COPY-Anweisung ohne Angabe von Anmeldeinformationen ausführen:
 
     ```sql
     COPY INTO dbo.target_table

@@ -1,7 +1,7 @@
 ---
-title: Erstellen von Klassifizierungsmodellen mit automatisiertem maschinellem Lernen
+title: 'Tutorial: AutoML – Trainieren von Klassifizierungsmodellen ohne Code'
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie Klassifizierungsmodelle über die Oberfläche für automatisiertes maschinelles Lernen (automatisiertes ML) von Azure Machine Learning trainieren und bereitstellen, ohne Code schreiben zu müssen.
+description: Trainieren Sie mithilfe des automatisierten maschinellen Lernens von Azure Machine Learning ein Klassifizierungsmodell, ohne eine einzige Codezeile auf der Benutzeroberfläche von Studio zu schreiben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 12/21/2020
+ms.date: 06/11/2021
 ms.custom: automl
-ms.openlocfilehash: d0e236891e48a20adf1901d2f95a90ae25969c49
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: e088184cadea64b769faf75c6455b720f45d91cc
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210845"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028719"
 ---
-# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning
+# <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>Tutorial: Trainieren eines Klassifizierungsmodells mit AutoML ohne Schreiben von Code in Azure Machine Learning Studio
 
-Hier erfahren Sie, wie Sie unter Verwendung von automatisiertem maschinellem Lernen in Azure Machine Learning Studio ein [einfaches Klassifizierungsmodell](concept-automated-ml.md#classification) erstellen, ohne eine einzige Codezeile zu schreiben. Dieses Klassifizierungsmodell sagt vorher, ob ein Kunde Festgeld bei einer Bank anlegt.
+Erfahren Sie, wie Sie ein Klassifizierungsmodell mit AutoML ohne Schreiben von Code trainieren, indem Sie in Azure Machine Learning Studio automatisierte maschinelles Lernen verwenden. Dieses Klassifizierungsmodell sagt vorher, ob ein Kunde Festgeld bei einer Bank anlegt.
 
 Mit automatisiertem maschinellen Lernen können Sie zeitintensive Aufgaben automatisieren. Beim automatisierten maschinellen Lernen werden viele Kombinationen von Algorithmen und Hyperparametern schnell durchlaufen, um basierend auf einer von Ihnen ausgewählten Erfolgsmetrik das beste Modell zu ermitteln.
 
@@ -35,7 +35,7 @@ In diesem Tutorial schreiben Sie keinen Code. Sie verwenden die Studio-Benutzero
 Probieren Sie auch automatisiertes maschinelles Lernen für diese anderen Modelltypen aus:
 
 * Ein Beispiel ohne Code für die Vorhersage finden Sie unter [Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen](tutorial-automated-ml-forecast.md).
-* Ein Code First-Beispiel für ein Regressionsmodell finden Sie unter [Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen](tutorial-auto-train-models.md).
+* Ein erstes Codebeispiel für ein Regressionsmodell finden Sie unter [Tutorial: Regressionsmodell mit AutoML](tutorial-auto-train-models.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

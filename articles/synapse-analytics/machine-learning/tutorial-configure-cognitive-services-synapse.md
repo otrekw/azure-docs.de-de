@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 3ab861caca0ef6f58c2c1bc722412774deb725ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da1760def8f2c036854839787b1051e8f52358d0
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98936683"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809650"
 ---
 # <a name="tutorial-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>Tutorial: Voraussetzungen für die Verwendung von Cognitive Services in Azure Synapse Analytics
 
@@ -65,7 +65,7 @@ Sie können eine [Anomalieerkennungsressource](https://ms.portal.azure.com/#crea
    ![Screenshot: Auswahl für die Erstellung eines Geheimnisses](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00d.png)
 
    > [!IMPORTANT]
-   > Merken oder notieren Sie sich diesen Geheimnisnamen. Sie benötigen ihn später zum Herstellen einer Verbindung mit Cognitive Services in Azure Synapse Studio.
+   > Merken oder notieren Sie sich diesen Geheimnisnamen. Sie benötigen ihn später zum Herstellen einer Verbindung mit Cognitive Services in Synapse Studio.
 
 ## <a name="create-an-azure-key-vault-linked-service-in-azure-synapse"></a>Erstellen eines mit Azure Key Vault verknüpften Diensts in Azure Synapse
 
@@ -75,7 +75,7 @@ Sie können eine [Anomalieerkennungsressource](https://ms.portal.azure.com/#crea
 
 ![Screenshot: Azure Key Vault als neuer verknüpfter Dienst](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00e.png)
 
-Sie sind nun bereit, mit einem der Tutorials für die Verwendung der Azure Cognitive Services-Oberfläche in Azure Synapse Studio fortzufahren.
+Sie können nun mit einem der Tutorials für die Verwendung der Cognitive Services-Benutzeroberfläche in Azure Synapse Studio fortfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

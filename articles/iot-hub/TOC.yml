@@ -37,22 +37,6 @@
           href: quickstart-control-device-python.md
         - name: Android
           href: quickstart-control-device-android.md
-    - name: Kommunizieren mithilfe von Gerätestreams (Vorschau)
-      items:
-        - name: .NET
-          href: quickstart-device-streams-echo-csharp.md
-        - name: Node.js
-          href: quickstart-device-streams-echo-nodejs.md
-        - name: C
-          href: quickstart-device-streams-echo-c.md
-    - name: Herstellen einer SSH-/RDP-Verbindung mithilfe von Gerätestreams (Vorschau)
-      items:
-        - name: .NET
-          href: quickstart-device-streams-proxy-csharp.md
-        - name: Node.js
-          href: quickstart-device-streams-proxy-nodejs.md
-        - name: C
-          href: quickstart-device-streams-proxy-c.md
     - name: Automatisches Weiterleiten von Nachrichten mithilfe einer ARM-Vorlage
       displayName: Resource Manager
       href: horizontal-arm-route-messages.md
@@ -128,8 +112,6 @@
       href: iot-hub-event-grid-routing-comparison.md
     - name: Bewährte Methoden für die Gerätekonfiguration
       href: iot-hub-configuration-best-practices.md
-    - name: Azure IoT-SDKs – Plattformunterstützung
-      href: iot-hub-device-sdk-platform-support.md
     - name: Übersicht über IoT Hub-Gerätestreams (Vorschau)
       href: iot-hub-device-streams-overview.md
     - name: Entwicklerhandbuch
@@ -187,8 +169,16 @@
           href: iot-hub-devguide-quotas-throttling.md
         - name: Preisbeispiele
           href: iot-hub-devguide-pricing.md
-        - name: Geräte- und Dienst-SDKs
-          href: iot-hub-devguide-sdks.md
+        - name: IoT Hub-SDKs
+          items:
+            - name: SDK-Übersicht
+              href: iot-hub-devguide-sdks.md
+            - name: SDK-Plattformunterstützung
+              href: iot-hub-device-sdk-platform-support.md
+            - name: Entwickeln ohne SDK
+              href: iot-hub-devguide-no-sdk.md
+            - name: Verwalten von Konnektivität und zuverlässigem Messaging
+              href: iot-hub-reliability-features-in-sdks.md
         - name: MQTT-Unterstützung
           href: iot-hub-mqtt-support.md
         - name: "MQTT\_5-Unterstützung (Vorschau)"
@@ -227,10 +217,7 @@
     - name: Entwickeln
       items:
         - name: Verwenden von Geräte- und Dienst-SDKs
-          href: iot-hub-devguide-sdks.md
           items:
-            - name: Azure IoT-SDKs – Plattformunterstützung
-              href: iot-hub-device-sdk-platform-support.md
             - name: Verwenden des Azure IoT-Geräte-SDKs für C
               href: iot-hub-device-sdk-c-intro.md
               items:
@@ -244,12 +231,8 @@
               href: iot-hub-devguide-develop-for-constrained-devices.md
             - name: Entwickeln für mobile Geräte
               href: iot-hub-how-to-develop-for-mobile-devices.md
-            - name: Verwalten von Konnektivität und zuverlässigem Messaging
-              href: iot-hub-reliability-features-in-sdks.md
             - name: Entwickeln für die Android Things-Plattform
               href: iot-hub-how-to-android-things.md
-        - name: "Entwickeln ohne Azure\_IoT\_SDK"
-          href: iot-hub-devguide-no-sdk.md
         - name: Abfragen von Avro-Daten aus einer Hubroute
           href: iot-hub-query-avro-data.md
         - name: Senden von C2D-Nachrichten.
@@ -542,7 +525,7 @@
         - name: IoT-Dienst-SDKs
           href: ./iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT-Geräte-SDKs
-          href: ./iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
+          href: ../iot-develop/about-iot-sdks.md
     - name: "Azure\_IoT-Beispiele"
       items:
         - name: C# (.NET)

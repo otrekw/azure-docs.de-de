@@ -1,0 +1,67 @@
+### YamlMime:FAQ
+metadata:
+  title: VM-Images im Azure Marketplace werden in verwalteten Datenträgerspeicher verschoben
+  description: Um einen schnelleren und zuverlässigeren Speicher sowie Unterstützung für neue Marketplace-Features und -Funktionen bereitzustellen, werden Marketplace-VM-Images in verwalteten Datenträgerspeicher verschoben.
+  ms.service: marketplace
+  ms.subservice: partnercenter-marketplace-publisher
+  ms.topic: conceptual
+  ms.date: 11/22/2019
+  author: kriti-ms
+  ms.author: krsh
+  ms.openlocfilehash: 1ba233abe92c07dc36234a524f8956c2f161e88a
+  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113439029"
+title: VM-Images im Azure Marketplace werden in verwalteten Datenträgerspeicher verschoben
+summary: >
+  Um einen schnelleren und zuverlässigeren Speicher sowie Unterstützung für neue Marketplace-Features und -Funktionen bereitzustellen, werden Marketplace-VM-Images in verwalteten Datenträgerspeicher verschoben.
+
+
+  Ab dem 2. Januar 2020 werden VM-Images phasenweise in verwalteten Datenträgerspeicher verschoben. In der ersten Phase werden nur Images verschoben, für die in den letzten 90 Tagen keine neuen Bereitstellungen erfolgt sind und auf denen keine virtuellen Computer ausgeführt wurden. Bevor Images verschoben werden, senden wir E-Mails an den Herausgeber, um diesen zu informieren, welche Images wann verschoben werden.
+
+
+  Herausgeber oder Consumer müssen keine Maßnahmen ergreifen, und die Benutzer sind nicht betroffen. Die Marketplace-Angebote bleiben verfügbar, und Kunden können verwaltete VMs aus diesen Images während und nach der Verschiebung weiterhin bereitstellen.
+
+
+  Wenn Sie Fragen haben, [kontaktieren Sie uns](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff).
+
+
+  ## <a name="faqs"></a>Häufig gestellte Fragen
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Treten für die Benutzer meiner VM-Images Ausfälle auf?
+    answer: "Für die Benutzer meiner VM-Images treten keine Ausfälle auf. \n"
+  - question: >
+      Wie lange dauert es, bis der Prozess abgeschlossen ist?
+    answer: >
+      Es kann bis zu 24 Stunden dauern, bis die Migration abgeschlossen ist.
+  - question: >
+      Muss ich Maßnahmen ergreifen?
+    answer: >
+      Nein. Herausgeber oder Consumer brauchen nichts zu tun.
+  - question: >
+      Muss ich mein System aktualisieren, um die APIs des Cloudportals auf andere Weise aufzurufen, nachdem sie in den verwalteten Datenträgerspeicher verschoben wurden?
+    answer: >
+      Nein. Ihre vorhandenen API-Aufrufe funktionieren weiterhin.
+  - question: >
+      Werden alle meine VM-Images gleichzeitig in den verwalteten Datenträger verschoben?
+    answer: >
+      Alle Ihre VM-Images werden am gleichen Tag verschoben. Sie werden benachrichtigt, sobald die Verschiebung erfolgt ist.
+  - question: >
+      Kann ich anfordern, die Verschiebung meiner VM-Images für einen späteren Zeitpunkt zu planen?
+    answer: >
+      Es wird empfohlen, die Images am geplanten Datum verschieben zu lassen. Wenn Sie jedoch Bedenken haben, wenden Sie sich an uns, um die Verschiebung umzuplanen.
+  - question: >
+      Kann ich während der Verschiebung Aktualisierungen für meine VM-Images veröffentlichen?
+    answer: >
+      Aktualisierungen für die VM-Images können während der Verschiebung nicht durchgeführt werden.
+  - question: >
+      Wird der Veröffentlichungsvorgang geändert, nachdem mein VM-Image auf den verwalteten Datenträger verschoben wurde?
+    answer: "Nein, der Veröffentlichungsvorgang bleibt unverändert. \n"
+  - question: >
+      Kann der Herausgeber seine Angebote auf verwaltete Datenträger verschieben?
+    answer: Nein, die Herausgeber können ihre Angebote nicht auf verwaltete Datenträger verschieben. Sie müssen warten und ihre Images werden automatisch verschoben. Wir werden den Herausgeber benachrichtigen, bevor wir Änderungen vornehmen.

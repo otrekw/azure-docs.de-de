@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Trainieren Ihres ersten Machine Learning-Modells – Python'
+title: 'Tutorial: Trainieren eines ersten Machine Learning-Modells in Python '
 titleSuffix: Azure Machine Learning
-description: In Teil 2 der Einstiegsreihe zu Azure Machine Learning wird veranschaulicht, wie ein Machine Learning-Modell trainiert wird.
+description: Trainieren eines Machine Learning-Modells in Azure Machine Learning Dies ist Teil 2 einer dreiteiligen Reihe mit ersten Schritten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
-ms.custom: devx-track-python, contperf-fy21q3
-ms.openlocfilehash: 65ff353469b884948e3de83e4b3ecafd1272cca5
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.custom: devx-track-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q
+ms.openlocfilehash: 616723e66dceeb3c0de21b36e3af3039dafbe63e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809506"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028269"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-2-of-3"></a>Tutorial: Trainieren Ihres ersten Machine Learning-Modells (Teil 2 von 3)
 
-In diesem Tutorial wird gezeigt, wie Sie ein Machine Learning-Modell in Azure Machine Learning trainieren.
+In diesem Tutorial wird gezeigt, wie Sie ein Machine Learning-Modell in Azure Machine Learning trainieren.  Dieses Tutorial ist der *zweite Teil einer dreiteiligen Reihe*.
 
-Dieses Tutorial ist *Teil 2 einer dreiteiligen Tutorialreihe*, in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure durchführen. Dieses Tutorial basiert auf den Schritten aus [Teil 1: Ausführen von „Hello World!“](tutorial-1st-experiment-hello-world.md) der Reihe.
+ In [Teil 1: Ausführen von „Hello World!“](tutorial-1st-experiment-hello-world.md) der Reihe haben Sie erfahren, wie Sie ein Steuerungsskript verwenden, um einen Auftrag in der Cloud auszuführen.  
 
 In diesem Tutorial führen Sie den nächsten Schritt aus, indem Sie ein Skript senden, das ein Machine Learning-Modell trainiert. Dieses Beispiel hilft Ihnen zu verstehen, wie Azure Machine Learning ein konsistentes Verhalten zwischen lokalem Debuggen und Remoteausführungen erleichtert.
 
@@ -351,7 +351,7 @@ Bei diesem Zugriff auf Studio öffnen Sie die Registerkarte **Metriken**, auf de
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Sitzung haben Sie ein Upgrade von einem einfachen „Hello World!“-Skript zu einem realistischeren Trainingsskript durchgeführt, das eine bestimmte Python-Umgebung für die Ausführung benötigt. Sie haben gesehen, wie Sie mit Azure Machine Learning-Umgebungen eine lokale Conda-Umgebung in die Cloud verlagern. Schließlich haben Sie erfahren, wie Sie mit einigen wenigen Codezeilen Metriken für Azure Machine Learning protokollieren können.
+In dieser Sitzung haben Sie ein Upgrade von einem einfachen „Hello World!“-Skript zu einem realistischeren Trainingsskript durchgeführt, das eine bestimmte Python-Umgebung für die Ausführung benötigt. Sie haben erfahren, wie Sie zusammengestellte Azure Machine Learning-Umgebungen verwenden. Schließlich haben Sie erfahren, wie Sie mit einigen wenigen Codezeilen Metriken für Azure Machine Learning protokollieren können.
 
 Es gibt weitere Möglichkeiten, Azure Machine Learning-Umgebungen zu erstellen, z. B. [mit der PIP-Datei „requirements.txt“](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-) oder [aus einer vorhandenen lokalen Conda-Umgebung](/python/api/azureml-core/azureml.core.environment.environment#from-existing-conda-environment-name--conda-environment-name-).
 

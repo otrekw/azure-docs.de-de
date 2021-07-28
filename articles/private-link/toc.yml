@@ -51,6 +51,8 @@
       href: private-link-service-overview.md
     - name: DNS-Integration für private Endpunkte
       href: private-endpoint-dns.md
+    - name: RBAC-Berechtigungen
+      href: rbac-permissions.md
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
@@ -110,4 +112,4 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
     - name: Häufig gestellte Fragen
-      href: private-link-faq.md
+      href: private-link-faq.yml

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: how-to
 author: lostmygithubaccount
 ms.author: copeters
-ms.date: 05/25/2021
+ms.date: 06/08/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 92397e1648afe8e92cd810827b75cb23c2dac09f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 141f1ac9cefa91c93a6f2e0cb8500f378ae4700b
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458274"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112008019"
 ---
 # <a name="train-models-create-jobs-with-the-20-cli-preview"></a>Trainieren von Modellen (Erstellen von Aufträgen) mit der 2.0 CLI (Vorschauversion)
 
@@ -79,7 +79,7 @@ Der grundlegende Befehlsauftrag wird über `job.yml` konfiguriert:
 
 Dieser Auftrag kann über `az ml job create` unter Verwendung des Parameters `--file/-f` erstellt und ausgeführt werden. Der Auftrag ist jedoch auf ein Computeziel namens `cpu-cluster` ausgerichtet, das noch nicht vorhanden ist. Wenn Sie den Auftrag zunächst lokal ausführen möchten, können Sie das Computeziel mit `--set` überschreiben:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris_local":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="lightgbm_iris_local":::
 
 Die lokale Ausführung dieses Auftrags ist zwar langsamer als das Ausführen von `python main.py` in einer lokalen Python-Umgebung mit den erforderlichen Paketen, ermöglicht aber Folgendes:
 
@@ -99,9 +99,9 @@ Die lokale Ausführung dieses Auftrags ist zwar langsamer als das Ausführen von
 
 Sie können einen Azure Machine Learning-Computecluster über die Befehlszeile erstellen. Mit den folgenden Befehlen werden beispielsweise ein Cluster namens `cpu-cluster` und ein Cluster namens `gpu-cluster` erstellt.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="create_computes":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/create-compute.sh" id="create_computes":::
 
-Beachten Sie, dass Ihnen zu diesem Zeitpunkt keine Computegebühren berechnet werden, da `cpu-cluster` und `gpu-cluster` erst über Knoten verfügen, wenn ein Auftrag übermittelt wird. Weitere Informationen zur Planung und Verwaltung von Kosten für AmlCompute finden Sie [hier](concept-plan-manage-cost.md#use-azure-machine-learning-compute-cluster-amlcompute).
+Beachten Sie, dass Ihnen zu diesem Zeitpunkt keine Computegebühren berechnet werden, da `cpu-cluster` und `gpu-cluster` erst über Knoten verfügen, wenn ein Auftrag übermittelt wird. Erfahren Sie mehr darüber, wie Sie die [Kosten für AmlCompute verwalten und optimieren](how-to-manage-optimize-cost.md#use-azure-machine-learning-compute-cluster-amlcompute) können.
 
 Verwenden Sie `az ml compute create -h`, um weitere Informationen zu Computeerstellungsoptionen zu erhalten.
 
@@ -126,11 +126,11 @@ Beim Erstellen dieses Auftrags werden alle angegebenen lokalen Ressourcen (beisp
 
 So führen Sie den Trainingsauftrag „lightgbm/iris“ aus:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="lightgbm_iris":::
 
 Nach Abschluss des Auftrags können Sie die Ausgaben herunterladen:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="download_outputs":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="download_outputs":::
 
 > [!IMPORTANT]
 > Ersetzen Sie `$run_id` durch Ihre Ausführungs-ID. Diese finden Sie in der Konsolenausgabe oder auf der Studio-Seite mit den Ausführungsdetails.
@@ -139,7 +139,7 @@ Dadurch werden die Protokolle und alle erfassten Artefakte lokal in ein Verzeich
 
 ## <a name="sweep-hyperparameters"></a>Optimieren von Hyperparametern (Sweeping)
 
-Azure Machine Learning ermöglicht auch eine effizientere Optimierung der Hyperparameter für Ihre Machine Learning-Modelle. Sie können einen Optimierungsauftrag für Hyperparameter (Sweep-Auftrag) konfigurieren und ihn über die CLI übermitteln. Weitere Informationen zur Hyperparameteroptimierung von Azure Machine Learning finden Sie unter [Hyperparameteroptimierung für ein Modell](how-to-tune-hyperparameters.md).
+Azure Machine Learning ermöglicht auch eine effizientere Optimierung der Hyperparameter für Ihre Machine Learning-Modelle. Sie können einen Optimierungsauftrag für Hyperparameter (Sweep-Auftrag) konfigurieren und ihn über die CLI übermitteln.
 
 Sie können `job.yml` in `job-sweep.yml` ändern, um Hyperparameter zu optimieren:
 
@@ -160,7 +160,7 @@ Sie können `job.yml` in `job-sweep.yml` ändern, um Hyperparameter zu optimiere
 
 Erstellen Sie einen Auftrag, und öffnen Sie ihn in Studio:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris_sweep":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="lightgbm_iris_sweep":::
 
 > [!TIP]
 > Hyperparameteroptimierungen können mit verteilten Befehlsaufträgen verwendet werden.
@@ -179,11 +179,11 @@ Eine YAML-Beispieldatei für verteiltes PyTorch-Training für das CIFAR-10-Datas
 
 Wie Sie sehen, wird hier auf lokale Daten verwiesen, die im geklonten Beispielrepository nicht vorhanden sind. Daher müssen Sie zunächst das CIFAR-10-Dataset lokal herunterladen, extrahieren und am richtigen Ort im Projektverzeichnis platzieren:
 
-:::code language="bash" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="download_cifar":::
+:::code language="bash" source="~/azureml-examples-main/cli/train.sh" id="download_cifar":::
 
 Erstellen Sie den Auftrag, und öffnen Sie ihn in Studio:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="pytorch_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="pytorch_cifar":::
 
 ### <a name="tensorflow"></a>TensorFlow
 
@@ -193,7 +193,7 @@ Eine YAML-Beispieldatei für verteiltes TensorFlow-Training für die MNIST-Daten
 
 Erstellen Sie den Auftrag, und öffnen Sie ihn in Studio:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="tensorflow_mnist":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="tensorflow_mnist":::
 
 ### <a name="mpi"></a>MPI
 
@@ -207,7 +207,7 @@ Eine YAML-Beispielspezifikation zum Ausführen eines TensorFlow-Auftrags für MN
 
 Erstellen Sie den Auftrag, und öffnen Sie ihn in Studio:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="tensorflow_mnist_horovod":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="tensorflow_mnist_horovod":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: conceptual
 ms.date: 3/22/2021
-ms.openlocfilehash: 6df39c93e9bcfca522ac61a863c87269216cc592
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 5b91828999d1b8650d8d645d11e62919ddd76090
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816168"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677978"
 ---
 # <a name="what-is-the-opc-publisher"></a>Was ist OPC Publisher?
 
@@ -28,6 +28,9 @@ Die Referenzimplementierung umfasst Folgendes:
 
 - Einen OPC UA-*Client*, um eine Verbindung mit vorhandenen OPC UA-Servern in Ihrem Netzwerk herzustellen.
 - Einen OPC UA-*Server* an Port 62222, mit dem Sie veröffentlichte Inhalte verwalten können und der direkte IoT Hub-Methoden für dieselben Aufgaben bietet.
+> [!NOTE]
+> Der integrierte OPC UA-Server steht nur in Version 2.5 oder darunter zur Verfügung.
+
 
 Sie können die [Referenzimplementierung für OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) von GitHub herunterladen.
 

@@ -210,6 +210,8 @@
               href: ./hdinsight-log-management.md
             - name: Hinzufügen von Speicherkonten
               href: ./hdinsight-hadoop-add-storage.md
+            - name: Aktualisieren des Zugriffsschlüssels für ein Speicherkonto
+              href: ./hdinsight-rotate-storage-keys.md
             - name: Hochladen von Daten für Apache Hadoop-Aufträge
               href: ./hdinsight-upload-data.md
             - name: Mehrere HDInsight-Cluster mit Data Lake Storage
@@ -313,7 +315,7 @@
             - name: Archivierte Versionshinweise für Azure HDInsight
               href: ./hdinsight-release-notes-archive.md
         - name: Häufig gestellte Fragen (FAQ)
-          href: ./hdinsight-faq.md
+          href: ./hdinsight-faq.yml
         - name: Migrieren zu präzisem rollenbasiertem Zugriff für Clusterkonfigurationen
           href: ./hdinsight-migrate-granular-access-cluster-configurations.md
         - name: Informationen zur Verwendung von HDInsight unter Linux
@@ -660,7 +662,7 @@
         - name: Leistungsoptimierung
           href: ./kafka/apache-kafka-performance-tuning.md
         - name: Häufig gestellte Fragen zu Kafka
-          href: ./kafka/kafka-faq.md
+          href: ./kafka/kafka-faq.yml
     - name: Anleitungen
       items:
         - name: Entwickeln
@@ -891,7 +893,7 @@
       items:
         - name: "Befehle für die Hive\_LLAP-Workloadverwaltung"
           href: ./interactive-query/workload-management-commands.md
-- name: ML Services
+- name: "ML\_Services (eingestellt)"
   items:
     - name: Übersicht
       items:

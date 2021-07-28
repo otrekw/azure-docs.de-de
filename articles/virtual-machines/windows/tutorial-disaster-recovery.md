@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: recovery
 ms.topic: tutorial
-ms.date: 11/05/2020
+ms.date: 05/18/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fd5d8c3e2c6e4ee5556568ebd23ac99b48300e9d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: e76245c9ad08a9a826e1d0431c2dd01b61a6b860
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382018"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077570"
 ---
 # <a name="tutorial-enable-disaster-recovery-for-windows-vms"></a>Tutorial: Aktivieren der Notfallwiederherstellung für Windows-VMs
 
@@ -37,21 +37,21 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
         - Erstellen einer VM im ausgewählten virtuellen Netzwerk
         - Schreiben in ein Azure-Speicherkonto
         - Schreiben auf einen verwalteten Azure-Datenträger
-    - Integrierte Rolle „Site Recovery-Mitwirkender“ zum Verwalten von Site Recovery-Vorgängen im Tresor. 
+    - Integrierte Rolle „Site Recovery-Mitwirkender“ zum Verwalten von Site Recovery-Vorgängen im Tresor.
 3. Wir empfehlen Ihnen, einen virtuellen Windows-Computer mit Windows Server 2012 oder höher zu verwenden. Für dieses Tutorial sollte der VM-Datenträger nicht verschlüsselt sein.
 4. Falls für ausgehende Verbindungen der VM ein URL-basierter Proxy verwendet wird, sollten Sie sicherstellen, dass darüber auf diese URLs zugegriffen werden kann. Die Verwendung eines authentifizierten Proxys wird nicht unterstützt.
 
     **Name** | **Öffentliche Cloud** | **Government Cloud** | **Details**
     --- | --- | --- | ---
-    Storage | `*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`| Schreiben von Daten von der VM in das Cachespeicherkonto in der Quellregion 
-    Azure AD  | `login.microsoftonline.com` | `login.microsoftonline.us`| Durchführen der Autorisierung und Authentifizierung für Site Recovery-Dienst-URLs 
-    Replikation | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`  |VM-Kommunikation mit dem Site Recovery-Dienst 
-    Service Bus | `*.servicebus.windows.net` | `*.servicebus.usgovcloudapi.net` | VM-Schreibvorgänge für Site Recovery-Überwachungs- und Diagnosedaten 
+    Storage | `*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`| Schreiben von Daten von der VM in das Cachespeicherkonto in der Quellregion
+    Azure AD  | `login.microsoftonline.com` | `login.microsoftonline.us`| Durchführen der Autorisierung und Authentifizierung für Site Recovery-Dienst-URLs
+    Replikation | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`  |VM-Kommunikation mit dem Site Recovery-Dienst
+    Service Bus | `*.servicebus.windows.net` | `*.servicebus.usgovcloudapi.net` | VM-Schreibvorgänge für Site Recovery-Überwachungs- und Diagnosedaten
 
 4. Erstellen Sie bei Verwendung von Netzwerksicherheitsgruppen (NSGs) zum Beschränken des Netzwerkdatenverkehrs für VMs NSG-Regeln, die die Konnektivität in ausgehender Richtung (HTTPS 443) für die VM mit diesen Diensttags (Gruppe mit IP-Adressen) zulassen. Probieren Sie die Regeln zunächst mit einer Test-Netzwerksicherheitsgruppe aus.
 
-    **Tag** | **Zulassen** 
-    --- | --- 
+    **Tag** | **Zulassen**
+    --- | ---
     Storage-Tag | Ermöglicht das Schreiben von Daten von der VM in das Cachespeicherkonto.
     Azure AD-Tag | Ermöglicht den Zugriff auf alle IP-Adressen, die zu Azure AD gehören.
     EventsHub-Tag | Ermöglicht den Zugriff auf die Site Recovery-Überwachung.
@@ -70,10 +70,10 @@ Optional können Sie die Notfallwiederherstellung aktivieren, wenn Sie einen vir
 5. Wählen Sie in **Recovery Services** Tresor den Tresor aus, den Sie für die Replikation verwenden möchten. Wenn Sie über keinen Tresor verfügen, klicken Sie auf **Neu erstellen**. Wählen Sie eine Ressourcengruppe aus, in der der Tresor platziert werden soll, und einen Tresor Namen.
 6. Überlassen Sie in **Site Recovery Richtlinie** die Standard Richtlinie, oder wählen Sie **neu erstellen** aus, um benutzerdefinierte Werte festzulegen.
 
-    - Wiederherstellungspunkte werden aus Momentaufnahmen von VM-Datenträgern zu einem bestimmten Zeitpunkt erstellt. Wenn Sie ein Failover eines VM ausführen, verwenden Sie einen Wiederherstellungspunkt, um die VM am Zielstandort wiederherzustellen. 
-    - Alle fünf Minuten wird ein Absturz einheitlicher Wiederherstellungspunkt erstellt. Diese Einstellung kann nicht geändert werden. Eine absturzkonsistente Momentaufnahme erfasst Daten, die sich zum Zeitpunkt der Erstellung der Momentaufnahme auf dem Datenträger befunden haben. Sie enthält keine Daten aus dem Arbeitsspeicher. 
+    - Wiederherstellungspunkte werden aus Momentaufnahmen von VM-Datenträgern zu einem bestimmten Zeitpunkt erstellt. Wenn Sie ein Failover eines VM ausführen, verwenden Sie einen Wiederherstellungspunkt, um die VM am Zielstandort wiederherzustellen.
+    - Alle fünf Minuten wird ein Absturz einheitlicher Wiederherstellungspunkt erstellt. Diese Einstellung kann nicht geändert werden. Eine absturzkonsistente Momentaufnahme erfasst Daten, die sich zum Zeitpunkt der Erstellung der Momentaufnahme auf dem Datenträger befunden haben. Sie enthält keine Daten aus dem Arbeitsspeicher.
     - Standardmäßig behält Site Recovery Wiederherstellungspunkte 24 Stunden lang bei. Sie können einen benutzerdefinierten Wert zwischen 0 und 72 Stunden festlegen.
-    - Eine App-konsistente Momentaufnahme wird alle 4 Stunden erstellt. Eine App-konsistente Momentaufnahme 
+    - Eine App-konsistente Momentaufnahme wird alle 4 Stunden erstellt. Eine App-konsistente Momentaufnahme
     - Standardmäßig behält Site Recovery Wiederherstellungspunkte 24 Stunden lang bei.
 
 7. Geben Sie unter **Verfügbarkeits Optionen** an, ob die VM als eigenständig, in einer Verfügbarkeits Zone oder in einer Verfügbarkeits Gruppe bereitgestellt werden soll.
@@ -81,6 +81,9 @@ Optional können Sie die Notfallwiederherstellung aktivieren, wenn Sie einen vir
     :::image type="content" source="./media/tutorial-disaster-recovery/create-vm.png" alt-text="Aktivieren der Replikation auf der Eigenschaften Seite der VM-Verwaltung."
 
 8. Fertigstellen des VM.
+
+>[!NOTE]
+> Wenn Sie die Replikation beim Erstellen eines virtuellen Windows-Computers aktivieren, wird lediglich der Betriebssystemdatenträger repliziert. Datenträger müssen von Ihnen initialisiert werden. Anschließend werden sie automatisch von Azure Site Recovery repliziert.
 
 ## <a name="enable-disaster-recovery-for-an-existing-vm"></a>Aktivieren der Notfallwiederherstellung für einen VM
 
@@ -131,7 +134,7 @@ Nachdem der Replikationsauftrag abgeschlossen ist, können Sie den Status der VM
 1. Öffnen Sie die Seite mit den VM-Eigenschaften.
 2. Wählen Sie unter **Vorgänge** die Option **Notfallwiederherstellung** aus.
 3. Erweitern Sie den Abschnitt **Grundlagen**, um die Standardeinstellungen für den Tresor, die Replikationsrichtlinie und die Zieleinstellungen anzuzeigen.
-4. Rufen Sie unter **Integrität und Status** die Informationen zum Replikationszustand für die VM, zur Agent-Version, Failoverbereitschaft und zu den letzten Wiederherstellungspunkten ab. 
+4. Rufen Sie unter **Integrität und Status** die Informationen zum Replikationszustand für die VM, zur Agent-Version, Failoverbereitschaft und zu den letzten Wiederherstellungspunkten ab.
 
     :::image type="content" source="./media/tutorial-disaster-recovery/essentials.png" alt-text="Ansicht „Grundlagen“ für die VM-Notfallwiederherstellung":::
 
@@ -142,22 +145,22 @@ Nachdem der Replikationsauftrag abgeschlossen ist, können Sie den Status der VM
 
 ## <a name="run-a-drill"></a>Durchführen einer Übung
 
-Führen Sie einen Übungslauf durch, um sicherzustellen, dass die Notfallwiederherstellung wie erwartet funktioniert. Beim Ausführen eines Testfailovers wird eine Kopie der VM erstellt, ohne dass sich dies auf laufende Replikationsprozesse oder Ihre Produktionsumgebung auswirkt. 
+Führen Sie einen Übungslauf durch, um sicherzustellen, dass die Notfallwiederherstellung wie erwartet funktioniert. Beim Ausführen eines Testfailovers wird eine Kopie der VM erstellt, ohne dass sich dies auf laufende Replikationsprozesse oder Ihre Produktionsumgebung auswirkt.
 
 1. Wählen Sie auf der Seite für die VM-Notfallwiederherstellung die Option **Testfailover** aus.
 2. Übernehmen Sie unter **Testfailover** die Standardeinstellung **Letzte Verarbeitung (niedrigste RPO)** für den Wiederherstellungspunkt.
 
    Bei dieser Option wird der niedrigste RPO-Wert (Recovery Point Objective) verwendet und im Allgemeinen die kürzeste Einrichtungsdauer für die Ziel-VM erreicht. Hierbei werden zuerst alle Daten verarbeitet, die an den Site Recovery-Dienst gesendet wurden, um vor dem Failover einen Wiederherstellungspunkt für jede VM zu erstellen. Bei diesem Wiederherstellungspunkt sind alle Daten in Site Recovery repliziert, wenn das Failover ausgelöst wird.
 
-3. Wählen Sie das virtuelle Netzwerk aus, in dem sich die VM nach dem Failover befinden soll. 
+3. Wählen Sie das virtuelle Netzwerk aus, in dem sich die VM nach dem Failover befinden soll.
 
      :::image type="content" source="./media/tutorial-disaster-recovery/test-failover-settings.png" alt-text="Seite zum Festlegen der Optionen für das Testfailover":::
 
 4. Der Prozess für das Testfailover beginnt. Sie können den Fortschrittsstatus über die Benachrichtigungen überwachen.
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/test-failover-notification.png" alt-text="Benachrichtigungen zum Testfailover"::: 
-    
-   Nach Abschluss des Testfailovers befindet sich die VM auf der Seite **Grundlagen** im Status *Bereinigung des Testfailovers steht aus*. 
+    :::image type="content" source="./media/tutorial-disaster-recovery/test-failover-notification.png" alt-text="Benachrichtigungen zum Testfailover":::
+
+   Nach Abschluss des Testfailovers befindet sich die VM auf der Seite **Grundlagen** im Status *Bereinigung des Testfailovers steht aus*.
 
 
 
@@ -167,15 +170,15 @@ Die VM wird von Site Recovery nach dem Übungslauf automatisch bereinigt.
 
 1. Wählen Sie die Option **Testfailover bereinigen** aus, um die automatische Bereinigung zu starten.
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/start-cleanup.png" alt-text="Starten der Bereinigung auf der Seite „Grundlagen“"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/start-cleanup.png" alt-text="Starten der Bereinigung auf der Seite „Grundlagen“":::
 
 2. Geben Sie unter **Testfailoverbereinigung** die Hinweise ein, die Sie für das Failover angeben möchten, und wählen Sie anschließend **Die Tests sind abgeschlossen. Löschen Sie die virtuellen Computer für das Testfailover.** aus. Klicken Sie anschließend auf **OK**.
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test.png" alt-text="Seite zum Eingeben von Hinweisen und Löschen der Test-VM"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test.png" alt-text="Seite zum Eingeben von Hinweisen und Löschen der Test-VM":::
 
 7. Der Löschvorgang beginnt. Sie können den Fortschrittsstatus über die Benachrichtigungen überwachen.
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test-notification.png" alt-text="Benachrichtigungen zum Überwachen des Löschvorgangs für die Test-VM"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test-notification.png" alt-text="Benachrichtigungen zum Überwachen des Löschvorgangs für die Test-VM":::
 
 ### <a name="stop-replicating-the-vm"></a>Beenden der VM-Replikation
 
@@ -190,10 +193,10 @@ Beenden Sie die Replikation wie folgt:
 1. Wählen Sie auf der Seite für die VM-Notfallwiederherstellung die Option **Replikation deaktivieren** aus.
 2. Wählen Sie unter **Replikation deaktivieren** die Gründe aus, aus denen Sie die Replikation deaktivieren möchten. Klicken Sie anschließend auf **OK**.
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/disable-replication.png" alt-text="Seite zum Deaktivieren der Replikation und Angeben eines Grunds"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/disable-replication.png" alt-text="Seite zum Deaktivieren der Replikation und Angeben eines Grunds":::
 
 
-Die Site Recovery-Erweiterung, die während der Replikation auf der VM installiert wird, wird nicht automatisch entfernt. Wenn Sie die Replikation für die VM deaktivieren und nicht zu einem späteren Zeitpunkt noch einmal durchführen möchten, können Sie die Site Recovery-Erweiterung wie folgt manuell entfernen: 
+Die Site Recovery-Erweiterung, die während der Replikation auf der VM installiert wird, wird nicht automatisch entfernt. Wenn Sie die Replikation für die VM deaktivieren und nicht zu einem späteren Zeitpunkt noch einmal durchführen möchten, können Sie die Site Recovery-Erweiterung wie folgt manuell entfernen:
 
 1. Navigieren Sie zu „VM“ > **Einstellungen** > **Erweiterungen**.
 2. Wählen Sie auf der Seite **Erweiterungen** alle *Microsoft.Azure.RecoveryServices*-Einträge für Linux aus.

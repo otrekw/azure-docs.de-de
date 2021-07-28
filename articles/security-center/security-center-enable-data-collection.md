@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 16902a8733c4b4d423deb47c5a8980284d8e690e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f7b09c47d94443edc81a66028fa687aa48e843e7
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964079"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002340"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Konfigurieren der automatischen Bereitstellung für Agents und Erweiterungen aus Azure Security Center
 
@@ -28,7 +28,7 @@ Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonneme
 | Status des Release:          | **Feature**: Die automatische Bereitstellung ist allgemein verfügbar (GA).<br>**Agent und Erweiterungen:** Der Log Analytics-Agent für virtuelle Azure-Computer ist allgemein verfügbar, der Microsoft Dependency-Agent befindet sich in der Vorschauversion, das Richtlinien-Add-On für Kubernetes ist allgemein verfügbar.                |
 | Preise:                | Kostenlos                                                                                                                                                                                                                         |
 | Unterstützte Ziele: | ![Ja](./media/icons/yes-icon.png) Azure-Computer<br>![Nein](./media/icons/no-icon.png) Azure Arc-Computer<br>![Nein](./media/icons/no-icon.png) Kubernetes-Knoten<br>![Nein](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Clouds:                 | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov, China Gov, andere Gov-Clouds                                                                                                      |
+| Clouds:                 | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov, Azure China                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
 ## <a name="how-does-security-center-collect-data"></a>Wie werden Daten von Security Center gesammelt?
@@ -73,7 +73,7 @@ So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
 1. Definieren Sie im Bereich mit den Konfigurationsoptionen den zu verwendenden Arbeitsbereich.
 
-    :::image type="content" source="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png" alt-text="Konfigurationsoptionen für die automatische Bereitstellung von Log Analytics-Agents auf VMs" lightbox="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png":::
+    :::image type="content" source="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png" alt-text="Konfigurationsoptionen für die automatische Bereitstellung von Log Analytics-Agents auf VMs" lightbox="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png":::
 
     - **Azure-VMs mit den von Security Center erstellten Standardarbeitsbereichen verbinden**: Security Center erstellt eine neue Ressourcengruppe und einen Standardarbeitsbereich am selben geografischen Standort und verbindet den Agent mit diesem Arbeitsbereich. Wenn ein Abonnement VMs an mehreren geografischen Standorten enthält, erstellt Security Center mehrere Arbeitsbereiche, um die Einhaltung der Datenschutzanforderungen sicherzustellen.
 
@@ -86,9 +86,9 @@ So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
         > [!TIP]
         > Falls Sie Fragen zu Standardarbeitsbereichen haben, finden Sie hier weitere Informationen:
         >
-        > - [Werden mir die Azure Monitor-Protokolle auf den von Security Center erstellten Arbeitsbereiche in Rechnung gestellt?](/azure/security-center/faq-data-collection-agents.yml#am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center)
-        > - [Wo wird der standardmäßige Log Analytics-Arbeitsbereich erstellt?](/azure/security-center/faq-data-collection-agents.yml#where-is-the-default-log-analytics-workspace-created)
-        > - [Kann ich die von Security Center erstellten Standardarbeitsbereiche löschen?](/azure/security-center/faq-data-collection-agents.yml#can-i-delete-the-default-workspaces-created-by-security-center)
+        > - [Werden mir die Azure Monitor-Protokolle auf den von Security Center erstellten Arbeitsbereiche in Rechnung gestellt?](/azure/security-center/faq-data-collection-agents#am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center-)
+        > - [Wo wird der standardmäßige Log Analytics-Arbeitsbereich erstellt?](/azure/security-center/faq-data-collection-agents#where-is-the-default-log-analytics-workspace-created-)
+        > - [Kann ich die von Security Center erstellten Standardarbeitsbereiche löschen?](/azure/security-center/faq-data-collection-agents#can-i-delete-the-default-workspaces-created-by-security-center-)
 
     - **Azure-VMs mit einem anderen Arbeitsbereich verbinden**: Wählen Sie in der Dropdownliste den Arbeitsbereich aus, in dem die gesammelten Daten gespeichert werden sollen. Die Dropdownliste enthält sämtliche Arbeitsbereiche für alle Ihrer Abonnements. Sie können diese Option verwenden, um Daten von VMs zu sammeln, die in anderen Abonnements ausgeführt werden, und sie im ausgewählten Arbeitsbereich zu speichern.  
 
@@ -118,7 +118,7 @@ So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
     1. Wenn Sie die automatische Bereitstellung für den Microsoft Dependency-Agent aktivieren, muss der Log Analytics-Agent auf automatische Bereitstellung eingestellt sein.
     1. Schalten Sie den Status für die jeweilige Erweiterung auf **Ein** um.
 
-        :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Umschaltfläche zum Aktivieren der automatischen Bereitstellung für das Azure Policy-Add-On für Kubernetes (K8s)":::
+        :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Umschaltfläche zum Aktivieren der automatischen Bereitstellung für das Azure Policy-Add-On für Kubernetes (K8s)":::
 
     1. Wählen Sie **Speichern** aus. Die Azure-Richtlinie wird zugewiesen, und ein Wartungstask wird erstellt.
 
@@ -133,7 +133,7 @@ So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
 1. Sie werden gefragt, ob Sie überwachte VMs, die zuvor mit einem Standardarbeitsbereich verbunden waren, erneut konfigurieren möchten:
 
-    :::image type="content" source="./media/security-center-enable-data-collection/reconfigure-monitored-vm.png" alt-text="Überprüfen der Optionen zum erneuten Konfigurieren überwachter virtueller Computer":::
+    :::image type="content" source="./media/security-center-enable-data-collection/reconfigure-monitored-vm.png" alt-text="Überprüfen der Optionen zum erneuten Konfigurieren überwachter VMs":::
 
     - **Nein**: Ihre neuen Arbeitsbereichseinstellungen gelten nur für neu ermittelte VMs, auf denen der Log Analytics-Agent nicht installiert ist.
     - **Ja**: Ihre neuen Arbeitsbereichseinstellungen gelten für alle VMs, und jede VM, die derzeit mit einem von Security Center erstellten Arbeitsbereich verbunden ist, wird erneut mit dem neuen Zielarbeitsbereich verbunden.
@@ -181,7 +181,7 @@ Im Anschluss finden Sie eine vollständige Aufschlüsselung der Sicherheits- und
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> - Wenn Sie ein Gruppenrichtlinienobjekt (Group Policy Object, GPO) verwenden, wird empfohlen, das Überwachungsrichtlinien-Prozesserstellungsereignis 4688 und das Feld *CommandLine* im Ereignis 4688 zu aktivieren. Weitere Informationen zum Prozesserstellungsereignis 4688 finden Sie in den [häufig gestellten Fragen](/azure/security-center/faq-data-collection-agents.yml#what-happens-when-data-collection-is-enabled) zu Security Center. Weitere Informationen zu diesen Überwachungsrichtlinien finden Sie unter [Empfehlungen zur Überwachungsrichtlinie](/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations).
+> - Wenn Sie ein Gruppenrichtlinienobjekt (Group Policy Object, GPO) verwenden, wird empfohlen, das Überwachungsrichtlinien-Prozesserstellungsereignis 4688 und das Feld *CommandLine* im Ereignis 4688 zu aktivieren. Weitere Informationen zum Prozesserstellungsereignis 4688 finden Sie in den [häufig gestellten Fragen](/azure/security-center/faq-data-collection-agents#what-happens-when-data-collection-is-enabled-) zu Security Center. Weitere Informationen zu diesen Überwachungsrichtlinien finden Sie unter [Empfehlungen zur Überwachungsrichtlinie](/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations).
 > -  Um die Datensammlung für [Adaptive Anwendungssteuerungen](security-center-adaptive-application.md) zu aktivieren, konfiguriert Security Center eine lokale AppLocker-Richtlinie im Überwachungsmodus, um alle Anwendungen zuzulassen. Damit generiert AppLocker Ereignisse, die dann von Security Center gesammelt und genutzt werden können. Es ist wichtig zu beachten, dass diese Richtlinie nicht auf Computern konfiguriert wird, auf denen bereits eine AppLocker-Richtlinie konfiguriert ist. 
 > - Zum Erfassen von [Ereignis-ID 5156](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=5156) der Windows-Filterplattform müssen Sie [Filterplattformverbindung überwachen](/windows/security/threat-protection/auditing/audit-filtering-platform-connection) aktivieren (Auditpol /set /subcategory:"Filtering Platform Connection" /Success:Enable).
 >
@@ -271,7 +271,7 @@ So deaktivieren Sie die automatische Bereitstellung eines Agents:
 
 
 > [!NOTE]
->  Wenn Sie die automatische Bereitstellung deaktivieren, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Informationen zum Entfernen der OMS-Erweiterungs finden Sie unter [Wie entferne ich durch Security Center installierte OMS-Erweiterungen?](/azure/security-center/faq-data-collection-agents.yml#remove-oms).
+>  Wenn Sie die automatische Bereitstellung deaktivieren, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Informationen zum Entfernen der OMS-Erweiterungs finden Sie unter [Wie entferne ich durch Security Center installierte OMS-Erweiterungen?](/azure/security-center/faq-data-collection-agents#how-do-i-remove-oms-extensions-installed-by-security-center-).
 >
 
 

@@ -101,6 +101,8 @@
           href: deploy-iot-edge-device.md
         - name: "Bereitstellen für IoT\_Edge für Linux unter Windows"
           href: deploy-iot-edge-linux-on-windows.md
+        - name: Bereitstellen für Azure Stack Edge
+          href: deploy-on-stack-edge.md
     - name: Wiedergabe
       items:
         - name: Wiedergeben einer Aufzeichnung
@@ -157,6 +159,8 @@
       href: 'https://azure.microsoft.com/updates/?category=media'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/video-analyzer/'
+    - name: Verfügbare Regionen
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all'
     - name: Häufig gestellte Fragen
       href: faq-edge.md
     - name: Kontingente und Einschränkungen

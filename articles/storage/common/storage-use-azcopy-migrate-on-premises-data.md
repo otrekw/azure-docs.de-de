@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 682394329205d74859c1af0c0a68a37539da7872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68669418a62daad2c2c5d1b9f44f66c1a5b7ebb8
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98881027"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111904083"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Tutorial: Migrieren von lokalen Daten zu Cloudspeicher mit AzCopy
 
@@ -62,7 +62,7 @@ Speichern Sie die AzCopy-Datei auf Ihrem Computer. Fügen Sie den Speicherort de
 
 ## <a name="authenticate-with-azure-ad"></a>Authentifizierung über Azure AD
 
-Weisen Sie Ihrer Identität zunächst die Rolle [Mitwirkender an Storage-Blobdaten](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) zu. Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](./storage-auth-aad-rbac-portal.md).
+Weisen Sie Ihrer Identität zunächst die Rolle [Mitwirkender an Storage-Blobdaten](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) zu. Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../blobs/assign-azure-role-data-access.md).
 
 Öffnen Sie anschließend eine Eingabeaufforderung, geben Sie den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
 

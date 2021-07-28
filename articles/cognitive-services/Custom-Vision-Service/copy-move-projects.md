@@ -9,18 +9,21 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 1def60843df55a80e8b7d28d7eb61e262a560111
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3938f7f5dae00a3628e2c9e2fec21a364efac95d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044148"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084698"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Kopieren und Verschieben von Custom Vision-Projekten
 
 Nachdem Sie ein Custom Vision-Projekt erstellt und trainiert haben, sollten Sie das Projekt in eine andere Ressource kopieren. Beispielsweise können Sie ein Projekt aus einer Entwicklungsumgebung in eine Produktionsumgebung verschieben oder ein Projekt in einem Konto in einer anderen Azure-Region sichern, um die Datensicherheit zu erhöhen.
 
 Die APIs **[ExportProjekt](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)** und **[ImportProjekt](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** ermöglichen dies, indem sie Projekte von einem Custom Vision-Konto in andere kopieren können. Der vorliegende Leitfaden zeigt, wie Sie diese REST-APIs mit cURL verwenden. Sie können auch einen HTTP-Anforderungsdienst wie Postman verwenden, um die Anforderungen auszugeben.
+
+> [!TIP]
+> Ein Beispiel für dieses Szenario unter Verwendung der Python-Clientbibliothek finden Sie im Repository [Move Custom Vision Project](https://github.com/Azure-Samples/custom-vision-move-project/tree/master/) (Verschieben eines Custom Vision-Projekts) auf GitHub.
 
 ## <a name="business-scenarios"></a>Geschäftsszenarien
 

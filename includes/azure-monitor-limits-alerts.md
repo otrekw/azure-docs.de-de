@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: azure-monitor
 author: rboucher
@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 05/03/2021
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 0a56be93309fd68f73bd542222ff14b8b99f3e5e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1d9ec2d05374412c17493b47f3bb71524f8cf93f
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108791987"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110631485"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Metrikwarnungen (klassisch) |100 aktive Warnungsregeln pro Abonnement. | Wenden Sie sich an den Support. |
 | Metrikwarnungen |5\.000 aktive Warnungsregeln pro Abonnement in öffentlichen Azure-Clouds sowie in Azure China 21Vianet- und Azure Government-Clouds. Wird dieser Grenzwert erreicht, versuchen Sie, ob Sie [Warnungen mit mehreren Ressourcen desselben Typs](../articles/azure-monitor/alerts/alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) verwenden können.<br/>5\.000 metrische Zeitreihen pro Warnungsregel. | Wenden Sie sich an den Support. |
 | Aktivitätsprotokollwarnungen | 100 aktive Warnungsregeln pro Abonnement (der Wert kann nicht erhöht werden). | Wie Standard. |
-| Protokollwarnungen | 512 aktive Warnungsregeln pro Abonnement. 200 aktive Warnungsregeln pro Ressource. | Wenden Sie sich an den Support. |
+| Protokollwarnungen | 1000 aktive Warnungsregeln pro Abonnement. 1000 aktive Warnungsregeln pro Ressource. | Wenden Sie sich an den Support. |
 | Länge der Beschreibungen von Warnungsregeln und Aktionsregeln| Protokollsuchwarnungen: 4.096 Zeichen<br/>Alle anderen: 2.048 Zeichen | Wie Standard. |
 
 ### <a name="alerts-api"></a>Warnungs-API

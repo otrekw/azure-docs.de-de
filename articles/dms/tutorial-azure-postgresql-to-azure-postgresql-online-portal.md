@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 996523d507f0a4f2850e936df39a38769bc47cde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f372e72b423db17e1c11907b4a41d65c9fba2fd
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091295"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950786"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Tutorial: Onlinemigration/Onlineupgrade von einer Azure Database for PostgreSQL – Einzelserver-Instanz zu einer anderen Azure Database for PostgreSQL – Einzelserver-Instanz mithilfe von DMS über das Azure-Portal
 
@@ -40,7 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > Für eine optimale Migration empfiehlt Microsoft die Erstellung einer Azure Database Migration Service-Instanz in derselben Azure-Region, in der sich auch die Zieldatenbank befindet. Die Verschiebung von Daten zwischen Regionen oder Geografien kann den Migrationsvorgang verlangsamen und Fehler verursachen.
 
 > [!IMPORTANT]
-> Die Migration von Azure Database for PostgreSQL wird für PostgreSQL Version 10 und höher unterstützt. Sie können mit diesem Tutorial auch von einer Azure Database for PostgreSQL-Instanz zu einer anderen Azure Database for PostgreSQL-Instanz oder einer Hyperscale-Instanz (Citus) migrieren.
+> Die Migration von Azure Database for PostgreSQL wird für PostgreSQL Version 9.x und höher unterstützt. Sie können mit diesem Tutorial auch von einer Azure Database for PostgreSQL-Instanz zu einer anderen Azure Database for PostgreSQL-Instanz oder einer Hyperscale-Instanz (Citus) migrieren. Beachten Sie, dass für die Migration von PostgreSQL 9.5 und 9.6 [zusätzliche Berechtigungen für die logische Replikation](#run-the-migration) in der Quellinstanz erforderlich sind. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

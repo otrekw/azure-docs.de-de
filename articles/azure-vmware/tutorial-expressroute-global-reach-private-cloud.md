@@ -3,13 +3,13 @@ title: Peering lokaler Umgebungen mit Azure VMware Solution
 description: Hier erfahren Sie, wie Sie ExpressRoute Global Reach-Peering mit einer privaten Cloud in Azure VMware Solution erstellen.
 ms.topic: tutorial
 ms.custom: contperf-fy21q4
-ms.date: 04/27/2021
-ms.openlocfilehash: fb0d8bc8391c96449cdf260c543cfed1af1125f5
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.date: 05/14/2021
+ms.openlocfilehash: 2b2fdf739b8e690b3210e1ba975ef14125e51c11
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176106"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086858"
 ---
 # <a name="peer-on-premises-environments-to-azure-vmware-solution"></a>Peering lokaler Umgebungen mit Azure VMware Solution
 
@@ -33,7 +33,7 @@ Lesen Sie zunächst die Dokumentation zum [Aktivieren der Konnektivität zwische
 - Stellen Sie sicher, dass alle Gateways mit dem Dienst des ExpressRoute-Anbieters eine ASN (Autonomous System Number, autonome Systemnummer) mit 4 Bytes unterstützen. Azure VMware Solution verwendet öffentliche ASNs mit 4 Bytes zum Ankündigen von Routen.
 
 
-## <a name="create-an-expressroute-authorization-key-in-the-on-premises-expressroute-circuit"></a>Erstellen eines ExpressRoute-Autorisierungsschlüssels in der lokalen ExpressRoute-Leitung
+## <a name="create-an-expressroute-auth-key-in-the-on-premises-expressroute-circuit"></a>Erstellen eines ExpressRoute-Autorisierungsschlüssels in der lokalen ExpressRoute-Leitung
 
 1. Wählen Sie auf dem Blatt **ExpressRoute-Leitungen** unter „Einstellungen“ die Option **Autorisierungen** aus.
 

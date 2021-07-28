@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/02/2021
-ms.openlocfilehash: ed988baec46152d55cf63aec09fce7a298157212
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0560c7e1f8770dd27d8ad462d10a2668d69d5865
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99509149"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559245"
 ---
 # <a name="tutorial-debug-a-skillset-using-debug-sessions"></a>Tutorial: Debuggen eines Skillsets mithilfe von Debugsitzungen
 
@@ -46,7 +46,7 @@ Bevor Sie beginnen können, müssen die folgenden Voraussetzungen erfüllt werde
 
 ## <a name="set-up-your-data"></a>Einrichten Ihrer Daten
 
-In diesem Abschnitt wird das Beispieldadaset in Azure-Blobspeicher erstellt, sodass Indexer und Skillset Inhalte aufweisen, mit denen Sie arbeiten können.
+In diesem Abschnitt wird das Beispieldataset in Azure Blob Storage erstellt, sodass Indexer und Skillset Inhalte aufweisen, mit denen Sie arbeiten können.
 
 1. [Laden Sie Beispieldaten (clinical-trials-pdf-19) herunter](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19), die aus 19 Dateien bestehen.
 
@@ -107,7 +107,7 @@ Der Beispielcode erstellt als Folge der Probleme, die bei der Skillsetausführun
 1. Geben Sie die Abfragezeichenfolge `$select=metadata_storage_path, organizations, locations&$count=true` ein, um Felder für bestimmte Dokumente (identifiziert durch das eindeutige Feld `metadata_storage_path`) zurückzugeben.
 1. Klicken Sie auf **Suche**, um die Abfrage auszuführen. Dabei werden alle 19 Dokumente zurückgegeben und leere Werte für „organizations“ und „locations“ angezeigt.
 
-Diese Felder sollten durch den [Skill „Entitätserkennung“](cognitive-search-skill-entity-recognition.md) des Skillsets aufgefüllt worden sein, der zum Suchen von Organisationen und Standorten überall im Blobinhalt verwendet wurde. In der nächsten Übung verwenden Sie „Debugsitzung“, um zu ermitteln, welche Fehler aufgetreten sind.
+Diese Felder sollten durch den [Skill „Entitätserkennung“](cognitive-search-skill-entity-recognition-v3.md) des Skillsets aufgefüllt worden sein, der zum Suchen von Organisationen und Standorten überall im Blobinhalt verwendet wurde. In der nächsten Übung verwenden Sie „Debugsitzung“, um zu ermitteln, welche Fehler aufgetreten sind.
 
 Fehler und Warnungen können auch im Azure-Portal untersucht werden.
 
@@ -275,7 +275,7 @@ In den Ergebnissen sollten Sie nun erkennen, dass Organisationen und Standorte m
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Für weiterhin aktive Ressourcen können Kosten anfallen. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 

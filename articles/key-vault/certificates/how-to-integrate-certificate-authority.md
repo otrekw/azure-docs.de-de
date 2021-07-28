@@ -1,6 +1,6 @@
 ---
-title: Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle
-description: Informationen, wie Sie Key Vault in die DigiCert-Zertifizierungsstelle integrieren.
+title: Integrieren von Key Vault in die Zertifizierungsstelle DigiCert
+description: In diesem Artikel wird beschrieben, wie Sie Key Vault und die Zertifizierungsstelle DigiCert integrieren, damit Sie Zertifikate für Ihr Netzwerk bereitstellen, verwalten und bereitstellen können.
 services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
@@ -9,144 +9,142 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 4351526c77961856b118bdeae07cecf48340f5fe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 99be94db2dd904db09b8b265b74442d5ba31b629
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749310"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845598"
 ---
-# <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle
+# <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrieren von Key Vault in die Zertifizierungsstelle DigiCert
 
-Azure Key Vault ermöglicht das einfache Bereitstellen und Verwalten von digitalen Zertifikaten für Ihr Netzwerk und das Aktivieren der sicheren Kommunikation für Anwendungen. Ein digitales Zertifikat ist eine elektronische Anmeldeinformation, um einen Identitätsnachweis in einer elektronischen Transaktion zu erbringen. 
+Azure Key Vault ermöglicht das einfache Bereitstellen und Verwalten von digitalen Zertifikaten für Ihr Netzwerk und das Aktivieren der sicheren Kommunikation für Anwendungen. Ein digitales Zertifikat ist eine elektronische Anmeldeinformation, um bei einer elektronischen Transaktion einen Identitätsnachweis zu erbringen. 
 
-Azure Key Vault-Benutzer können DigiCert-Zertifikate direkt aus ihrem Key Vault generieren. Key Vault würde die Verwaltung des End-to-End-Zertifikatlebenszyklus für solche Zertifikate sicherstellen, die von DigiCert über die vertrauenswürdige Partnerschaft von Key Vault mit der DigiCert-Zertifizierungsstelle ausgestellt wurden.
+Azure Key Vault-Benutzer können DigiCert-Zertifikate direkt aus ihren Schlüsseltresoren generieren. Key Vault hat eine vertrauenswürdige Partnerschaft mit der Zertifizierungsstelle DigiCert. Diese Partnerschaft stellt die End-to-End-Verwaltung des Lebenszyklus für von DigiCert ausgestellte Zertifikate sicher.
 
-Weitere allgemeine Informationen zu Zertifikaten finden Sie unter [Azure Key Vault-Zertifikate](./about-certificates.md).
+Weitere allgemeine Informationen zu Zertifikaten finden Sie unter [Informationen zu Azure Key Vault-Zertifikaten](./about-certificates.md).
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diesen Leitfaden benötigen Sie die folgenden Ressourcen.
-* Einen Schlüsseltresor. Sie können einen vorhandenen Schlüsseltresor verwenden oder einen neuen Schlüsseltresor erstellen, indem Sie die Schritte in einem der folgenden Schnellstarts ausführen:
-   - [Erstellen eines Schlüsseltresors mit der Azure CLI](../general/quick-create-cli.md)
+Die in diesem Artikel aufgeführten Verfahren setzen Folgendes voraus:
+* Einen Schlüsseltresor. Sie können einen vorhandenen Schlüsseltresor verwenden oder einen erstellen, indem Sie die Schritte in einem dieser Schnellstarts ausführen:
+   - [Erstellen eines Schlüsseltresors über die Azure CLI](../general/quick-create-cli.md)
    - [Erstellen eines Schlüsseltresors mit Azure PowerShell](../general/quick-create-powershell.md)
-   - [Erstellen eines Schlüsseltresors im Azure-Portal](../general/quick-create-portal.md)
-*   Sie müssen das DigiCert CertCentral-Konto aktivieren. [Registrieren Sie sich](https://www.digicert.com/account/signup/) für Ihr CertCentral-Konto.
+   - [Erstellen eines Schlüsseltresors über das Azure-Portal](../general/quick-create-portal.md)
+*   Ein aktiviertes DigiCert CertCentral-Konto. [Registrieren Sie sich](https://www.digicert.com/account/signup/) für Ihr CertCentral-Konto.
 *   Berechtigungen auf Administratorebene in Ihren Konten.
 
 
 ### <a name="before-you-begin"></a>Voraussetzungen
 
-Stellen Sie sicher, dass Sie die folgenden Informationen aus Ihrem DigiCert CertCentral-Konto zur Hand haben:
+Stellen Sie sicher, dass Ihnen die folgenden Informationen in Ihrem DigiCert CertCentral-Konto vorliegen:
 -   CertCentral-Konto-ID
 -   Organisations-ID
 -   API-Schlüssel
 
-## <a name="adding-certificate-authority-in-key-vault"></a>Hinzufügen einer Zertifizierungsstelle in Key Vault 
-Nachdem Sie die Informationen aus dem DigiCert CertCentral-Konto gesammelt haben, können Sie nun DigiCert der Liste der Zertifizierungsstellen im Schlüsseltresor hinzufügen.
+## <a name="add-the-certificate-authority-in-key-vault"></a>Hinzufügen der Zertifizierungsstelle in Key Vault 
+Nachdem Sie die vorstehenden Informationen aus Ihrem DigiCert CertCentral-Konto abgerufen haben, können Sie DigiCert zur Liste der Zertifizierungsstellen im Schlüsseltresor hinzufügen.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1.  Um die DigiCert-Zertifizierungsstelle hinzuzufügen, navigieren Sie zu dem Schlüsseltresor, dem Sie DigiCert hinzufügen möchten. 
-2.  Wählen Sie auf den Key Vault-Eigenschaftenseiten die Option **Zertifikate** aus.
-3.  Wählen Sie die Registerkarte **Zertifizierungsstellen** aus. ![Auswählen von „Zertifizierungsstellen“](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
-4.  Wählen Sie die Option **Hinzufügen** aus.
- ![Hinzufügen von Zertifizierungsstellen](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
-5.  Wählen Sie im Bildschirm **Zertifizierungsstelle erstellen** die folgenden Werte aus:
-    -   **Name**: Fügen Sie einen identifizierbaren Ausstellernamen hinzu. Beispiel: DigicertCA
-    -   **Anbieter**: Wählen Sie DigiCert aus dem Menü aus.
-    -   **Account ID (Konto-ID)** : Geben Sie Ihre DigiCert CertCentral-Konto-ID ein.
-    -   **Kontokennwort**: Geben Sie den API-Schlüssel ein, den Sie in Ihrem DigiCert CertCentral-Konto erstellt haben.
-    -   **Organisations-ID**: Geben Sie die aus dem DigiCert CertCentral-Konto gesammelte OrgID ein. 
-    -   Klicken Sie auf **Erstellen**.
+1.  Um die Zertifizierungsstelle DigiCert hinzuzufügen, navigieren Sie zum Schlüsseltresor, dem Sie sie hinzufügen möchten. 
+2.  Wählen Sie auf der Eigenschaftenseite von Key Vault **Zertifikate** aus.
+3.  Wählen Sie die Registerkarte **Zertifizierungsstellen** aus: :::image type="content" source="../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png" alt-text="Screenshot der Auswahl der Registerkarte „Zertifizierungsstellen“.":::
+4.  Wählen Sie **Hinzufügen** aus: :::image type="content" source="../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png" alt-text="Screenshot der Schaltfläche „Hinzufügen“ auf der Registerkarte „Zertifizierungsstellen“.":::
+5.  Geben Sie unter **Zertifizierungsstelle erstellen** diese Werte ein:
+    -   **Name**: ein identifizierbarer Ausstellername. Beispiel: **DigicertCA**.
+    -   **Anbieter**: **DigiCert**.
+    -   **Konto-ID:** Ihre DigiCert CertCentral-Konto-ID.
+    -   **Kontokennwort**: der API-Schlüssel, den Sie in Ihrem DigiCert CertCentral-Konto erstellt haben.
+    -   **Organisations-ID**: die Organisations-ID Ihres DigiCert CertCentral-Kontos. 
+
+1. Klicken Sie auf **Erstellen**.
    
-6.  Sie werden feststellen, dass DigicertCA jetzt in der Liste der Zertifizierungsstellen hinzugefügt ist.
+DigicertCA ist jetzt in der Liste der Zertifizierungsstelle enthalten.
 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Mit Azure PowerShell können Azure-Ressourcen mithilfe von Befehlen oder Skripts erstellt und verwaltet werden. Azure hostet Azure Cloud Shell, eine interaktive Shell-Umgebung, die Sie über Ihr Azure-Portal im Browser selbst nutzen können.
+Sie können mit Azure PowerShell sowie Befehlen oder Skripts Azure-Ressourcen erstellen und verwalten. Azure hostet Azure Cloud Shell, eine interaktive Shellumgebung, die Sie über das Azure-Portal in einem Browser nutzen können.
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Version 1.0.0 des Azure PowerShell-Moduls verwenden. Geben Sie `$PSVersionTable.PSVersion` ein, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie sich für die lokale Installation und Verwendung von PowerShell entscheiden, benötigen Sie mindestens das Azure AZ PowerShell-Modul 1.0.0, um die hier beschriebenen Schritte durchzuführen. Geben Sie `$PSVersionTable.PSVersion` ein, um die Version zu bestimmen. Wenn ein Upgrade erforderlich ist, finden Sie weitere Informationen unter [Installieren des Azure AZ PowerShell-Moduls](/powershell/azure/install-az-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen:
 
 ```azurepowershell-interactive
 Login-AzAccount
 ```
 
-1.  Erstellen Sie eine **Ressourcengruppe**.
+1.  Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
-Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+    ```azurepowershell-interactive
+    New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
+    ```
 
-```azurepowershell-interactive
-New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
-```
+2. Erstellen Sie einen Schlüsseltresor mit einem eindeutigen Namen. Hier ist `Contoso-Vaultname` der Name des Schlüsseltresors.
 
-2. Erstellen Sie einen **Schlüsseltresor**.
+   - **Tresorname**: `Contoso-Vaultname`
+   - **Ressourcengruppenname**: `ContosoResourceGroup`
+   - **Standort**: `EastUS`
 
-Sie müssen einen eindeutigen Namen für Ihren Schlüsseltresor verwenden. Hier ist „Contoso-Vaultname“ der Name für den Schlüsseltresor in diesem Handbuch.
+    ```azurepowershell-interactive
+    New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGroup' -Location 'EastUS'
+   ```
 
-- **Tresorname**: Contoso-Vaultname.
-- **Ressourcengruppenname:** ContosoResourceGroup
-- **Standort**: EastUS.
+3. Legen Sie für die folgenden Werte in Ihrem DigiCert CertCentral-Konto Variablen fest:
 
-```azurepowershell-interactive
-New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGroup' -Location 'EastUS'
-```
+   - **Konto-ID** 
+   - **Organisations-ID** 
+   - **API-Schlüssel** 
 
-3. Definieren Sie Variablen für aus dem DigiCert CertCentral-Konto gesammelte Informationen.
+   ```azurepowershell-interactive
+   $accountId = "myDigiCertCertCentralAccountID"
+   $org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCertAccount
+   $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
+   ```
 
-- Definieren Sie die Variable **Account ID** (Konto-ID).
-- Definieren Sie die Variable **Org-ID** (Organisations-ID).
-- Definieren Sie die Variable **API Key** (API-Schlüssel).
+4. Legen Sie den Zertifikataussteller fest. Dadurch wird DigiCert als Zertifizierungsstelle im Schlüsseltresor hinzugefügt. [Erfahren Sie mehr über die Parameter.](/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)
+   ```azurepowershell-interactive
+   Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
+   ```
 
-```azurepowershell-interactive
-$accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCertAccount
-$secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
-```
+5. Legen Sie die Richtlinie für das Zertifikat und das Ausstellen des Zertifikats von DigiCert direkt in Key Vault fest:
 
-4. Legen Sie den **Issuer** (Aussteller) fest. Hierdurch wird DigiCert als Zertifizierungsstelle im Schlüsseltresor hinzugefügt. Weitere Informationen zu den Parametern finden Sie [hier](/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer).
-```azurepowershell-interactive
-Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
-```
+   ```azurepowershell-interactive
+   $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
+   Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertificate" -CertificatePolicy $Policy
+   ```
 
-5. **Festlegen der Richtlinie für das Zertifikat und Ausstellen eines Zertifikats** von DigiCert direkt im Schlüsseltresor.
-
-```azurepowershell-interactive
-$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
-Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertificate" -CertificatePolicy $Policy
-```
-
-Das Zertifikat wurde nun erfolgreich von Digicert CA innerhalb des angegebenen Schlüsseltresors durch diese Integration ausgestellt.
+Das Zertifikat wird nun von der Zertifizierungsstelle DigiCert im angegebenen Schlüsseltresor ausgestellt.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Wenn das ausgestellte Zertifikat im Azure-Portal den Status „Deaktiviert“ hat, fahren Sie mit der Anzeige des **Zertifikatvorgangs** fort, um die DigiCert-Fehlermeldung für dieses Zertifikat zu überprüfen.
+Wenn das ausgestellte Zertifikat im Azure-Portal den Status „Deaktiviert“ hat, zeigen Sie den Zertifikatvorgang an, um die DigiCert-Fehlermeldung für dieses Zertifikat zu überprüfen:
 
- ![Zertifikatvorgang](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+:::image type="content" source="../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png" alt-text="Screenshot der Registerkarte „Zertifikatvorgang“.":::
 
-Fehlermeldung „Führen Sie eine Zusammenführung aus, um diese Zertifikatanforderung abzuschließen.“
-Für die von der Zertifizierungsstelle signierte Zertifikatsignieranforderung muss eine Zusammenführung ausgeführt werden, um diese Anforderung abzuschließen. [Hier](./create-certificate-signing-request.md) erhalten Sie weitere Informationen.
+Fehlermeldung: „Führen Sie eine Zusammenführung aus, um diese Zertifikatanforderung abzuschließen.“
+   
+Führen Sie die von der Zertifizierungsstelle signierte Zertifikatsignieranforderung (CSR) zusammen. Weitere Informationen zum Zusammenführen einer Zertifikatsignieranforderung finden Sie unter [Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault](./create-certificate-signing-request.md).
 
-Weitere Informationen finden Sie unter den [Zertifikatvorgängen in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
+Weitere Informationen finden Sie unter den [Zertifikatvorgängen in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Tresore – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-- Kann ich mit Key Vault ein DigiCert-Platzhalterzertifikat generieren? 
-   Ja. Dies hängt davon ab, wie Sie Ihr DigiCert-Konto konfiguriert haben.
-- Wie kann ich ein **OV-SSL- oder EV-SSL**-Zertifikat mit DigiCert erstellen? 
-   Schlüsseltresore unterstützen das Erstellen von OV- und EV-SSL-Zertifikaten. Klicken Sie beim Erstellen eines Zertifikats auf „Erweiterte Richtlinienkonfiguration“, und geben Sie anschließend den Zertifikattyp an. Die folgenden Werte werden unterstützt: OV-SSL, EV-SSL
+- **Kann ich mit Key Vault ein DigiCert-Platzhalterzertifikat generieren?** 
    
-   Sie können diese Art von Zertifikat in Schlüsseltresoren erstellen, wenn Ihr DigiCert-Konto dies zulässt. Bei dieser Art von Zertifikat wird die Überprüfung von DigiCert durchgeführt, und das Supportteam wäre in der Lage, Sie zu unterstützen, wenn die Überprüfung fehlschlägt. Sie können beim Erstellen eines Zertifikats zusätzliche Informationen hinzufügen, indem Sie sie in „subjectName“ definieren.
+  Ja, dies hängt jedoch davon ab, wie Sie Ihr DigiCert-Konto konfiguriert haben.
+- **Wie kann ich ein OV SSL- oder EV SSL-Zertifikat mit DigiCert erstellen?**
+ 
+   Key Vault unterstützt die Erstellung von OV- und EV SSL-Zertifikaten. Wenn Sie ein Zertifikat erstellen, wählen Sie **Erweiterte Richtlinienkonfiguration** aus, und geben Sie dann den Zertifikatstyp an. Unterstützte Werte: OV SSL, EV SSL
+   
+   Sie können dieser Typ von Zertifikat in Key Vault erstellen, sofern Ihr DigiCert-Konto dies zulässt. Bei diesem Zertifikatstyp erfolgt die Validierung durch DigiCert. Wenn die Validierung fehlschlägt, kann das DigiCert-Supportteam helfen. Sie können beim Erstellen eines Zertifikats Informationen hinzufügen, indem Sie die Informationen in `subjectName` festlegen.
 
-Beispiel
-    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
-    ```
+  Beispiel: `SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"`.
    
-- Kommt es beim Erstellen eines DigiCert-Zertifikats per Integration gegenüber der direkten Beschaffung des Zertifikats per DigiCert zu einer zeitlichen Verzögerung?
-   Nein. Beim Erstellen eines Zertifikats ist es die Verifizierung, die einige Zeit in Anspruch nehmen kann, und diese Verifizierung hängt vom DigiCert-Prozess ab.
+- **Dauert es länger, ein DigiCert-Zertifikat über die Integration zu erstellen, als es direkt bei DigiCert zu beziehen?**
+   
+   Nein. Wenn Sie ein Zertifikat erstellen, kann der Überprüfungsprozess Zeit in Anspruch nehmen. DigiCert steuert diesen Prozess.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

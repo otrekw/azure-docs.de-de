@@ -18,6 +18,8 @@
       href: customize-application-attributes.md
     - name: App-spezifische Bereitstellungstutorials
       href: /azure/active-directory/saas-apps
+    - name: "Generischer SQL-Connector mit Azure\_AD-ECMA-Connectorhost"
+      href: tutorial-ecma-sql-connector.md
 - name: Konzepte
   expanded: true
   items:
@@ -29,6 +31,10 @@
       href: plan-cloud-hr-provision.md
     - name: Grundlegendes zur Protokollierung mit Azure Monitor
       href: application-provisioning-log-analytics.md
+    - name: Architektur der lokalen Anwendungsbereitstellung
+      href: on-premises-application-provisioning-architecture.md
+    - name: Grundlegendes zum Ausdrucks-Generator
+      href: expression-builder.md
 - name: Anleitungen
   expanded: true
   items:
@@ -53,7 +59,7 @@
         - name: Bereitstellungsberichte
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: Automatisieren der Konfiguration mit MS Graph
-      href: /graph/application-provisioning-configure-api
+      href: application-provisioning-configuration-api.md
     - name: Problembehandlung bei der Anwendungsbereitstellung
       items:
         - name: Bekannte Probleme
@@ -66,8 +72,24 @@
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: Fehlendes Quellattribut
           href: user-provisioning-sync-attributes-for-mapping.md
+        - name: Problembehandlung für den ECMA-Connectorhost
+          href: on-premises-ecma-troubleshoot.md
         - name: Bereitstellungsprotokolle
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+    - name: Lokale App-Bereitstellung
+      items:
+        - name: Voraussetzungen für den ECMA-Connectorhost
+          href: on-premises-ecma-prerequisites.md
+        - name: Installation des ECMA-Connectorhosts
+          href: on-premises-ecma-install.md
+        - name: Konfiguration des ECMA-Connectorhosts
+          href: on-premises-ecma-configure.md
+        - name: Konfiguration des generischen SQL-Connectors
+          href: on-premises-sql-connector-configure.md
+        - name: Lokale Anwendungsbereitstellung in SCIM-fähigen Apps
+          href: on-premises-scim-provisioning.md
+        - name: Migrieren des Connectors über die MIM-Synchronisierung
+          href: on-premises-migrate-microsoft-identity-manager.md
 - name: Verweis
   items:
     - name: "Einhaltung des SCIM\_2.0-Protokolls"

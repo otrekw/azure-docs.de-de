@@ -5,17 +5,17 @@ description: Lernen Sie die Konzepte im Zusammenhang mit Beleganalyse mit der Fo
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9d37811c89cd42053333bfb8ddc17dfbb47b907c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f6fccecca72e106f42ccd185a7c2cb3ba9fe4a53
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374686"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887800"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Vordefiniertes Belegmodell der Formularerkennung
 
@@ -60,7 +60,7 @@ Der vordefinierte Belegdienst extrahiert den Inhalt von Verkaufsbelegen – die
 
 |Name| Typ | BESCHREIBUNG | Text | Wert (standardisierte Ausgabe) |
 |:-----|:----|:----|:----| :----|
-| ReceiptType | Zeichenfolge | Der Typ des Belegs | Aufgeschlüsselt |  |
+| ReceiptType | Zeichenfolge | Der Typ des Belegs |  | Aufgeschlüsselt |
 | MerchantName | Zeichenfolge | Der Name des Händlers, der den Beleg ausstellt | Contoso |  |
 | MerchantPhoneNumber | phoneNumber | Die aufgeführte Telefonnummer des Händlers | 987-654-3210 | +19876543210 |
 | MerchantAddress | Zeichenfolge | Die aufgeführte Adresse des Händlers | 123 Main St Redmond WA 98052 |  |
@@ -72,7 +72,7 @@ Der vordefinierte Belegdienst extrahiert den Inhalt von Verkaufsbelegen – die
 | Tip (Trinkgeld) | number | Vom Käufer gegebenes Trinkgeld | $1.00 | 1.00 |
 | Elemente | Array von Objekten | Die extrahierten Positionen mit extrahierten Werten für Name, Menge, Stückpreis und Gesamtpreis | |
 | Name | Zeichenfolge | Name des Elements | Surface Pro 6 | |
-| Menge | number | Menge der einzelnen Positionen | 1 | |
+| Menge | number | Menge der einzelnen Positionen | 1 | 1 |
 | Preis | number | Einzelpreis der einzelnen Positionen | $999.00 | 999.00 (999,00) |
 | Gesamtpreis | number | Gesamtpreis der Position | $999.00 | 999.00 (999,00) |
 
@@ -91,17 +91,12 @@ Die Beleg-API gibt außerdem die folgenden Informationen zurück:
 ## <a name="supported-locales"></a>Unterstützte Gebietsschemas
 
 * **Pre-built receipt v2.0** unterstützt Verkaufsquittungen im Gebietsschema **en-us**
-* **Pre-built receipt v2.1** bietet außerdem Unterstützung für Belege in folgenden englischsprachigen Gebietsschemas:
-
-* **en-au**
-* **en-ca**
-* **en-gb**
-* **.en-in**
+* **Pre-built receipt v2.1** bietet außerdem Unterstützung für Belege in folgenden englischsprachigen Gebietsschemas: **en-au**, **en-ca**, **en-gb**, **en-in**
 
   > [!NOTE]
   > Spracheingabe
   >
-  > Prebuilt Receipt v2.1 enthält einen optionalen Anforderungsparameter, um ein Beleggebietsschema aus zusätzlichen englischsprachigen Märkten anzugeben. Für Verkaufsbelege in englischer Sprache aus Australien (en-au), Kanada (en-ca), Großbritannien (en-gb) und Indien (en-in) können Sie das Gebietsschema angeben, um verbesserte Ergebnisse zu erhalten. Wenn in v2.1 kein Gebietsschema angegeben wird, wird standardmäßig das Modell „en-us“ verwendet.
+  > Prebuilt Receipt v2.1 enthält einen optionalen Anforderungsparameter, um ein Beleggebietsschema aus zusätzlichen englischsprachigen Märkten anzugeben. Für Verkaufsbelege in englischer Sprache aus Australien (en-au), Kanada (en-ca), Großbritannien (en-gb) und Indien (en-in) können Sie das Gebietsschema angeben, um verbesserte Ergebnisse zu erhalten. Wenn in v2.1 kein Gebietsschema angegeben ist, erkennt das Modell das Gebietsschema automatisch.
 
 ## <a name="the-analyze-receipt-operation"></a>Der Vorgang zum Analysieren von Belegen
 
@@ -130,7 +125,7 @@ Wenn im Feld **status** der Wert **succeeded** angezeigt wird, enthält die JSON
 
 Die Antwort auf den Vorgang zum Abrufen des Ergebnisses der Beleganalyse ist die strukturierte Darstellung des Belegs mit allen extrahierten Informationen.  Hier sehen Sie eine [Beispieldatei eines Belegs](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg) und die dazugehörige strukturierte Ausgabe ([Beispielausgabe eines Belegs](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)).
 
-Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
+Sehen Sie sich das folgende Beispiel für eine erfolgreiche JSON-Antwort an (die Ausgabe wurde der Einfachheit halber gekürzt):
 * Der Knoten `"readResults"` enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert.
 * Der Knoten `"documentResults"` enthält die visitenkartenspezifischen Werte, die vom Modell erkannt wurden. Er enthält nützliche Schlüssel-Wert-Paare wie Vorname, Nachname, Firmenname usw.
 

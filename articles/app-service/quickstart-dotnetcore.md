@@ -3,19 +3,19 @@ title: 'Schnellstart: Bereitstellen einer ASP.NET-Web-App'
 description: Hier erfahren Sie, wie Sie Web-Apps in Azure App Service ausführen, indem Sie Ihre erste ASP.NET-App bereitstellen.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 03/30/2021
+ms.date: 06/08/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-ide
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
-ms.openlocfilehash: 482bf6d29fbc1e982ee4d17099d82915ff3a0241
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3b3abdf40d5aa9d56421361237432ddf08c0c016
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762459"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746535"
 ---
 <!-- NOTES:
 
@@ -38,9 +38,6 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 # <a name="quickstart-deploy-an-aspnet-web-app"></a>Schnellstart: Bereitstellen einer ASP.NET-Web-App
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie Ihre erste ASP.NET-Web-App erstellen und für [Azure App Service](overview.md) bereitstellen. App Service unterstützt verschiedene Versionen von .NET-Apps und bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching. ASP.net Web-Apps sind plattformübergreifend und können unter Linux oder Windows gehostet werden. Am Ende verfügen Sie über eine Azure-Ressourcengruppe, die einen App Service-Hostingplan und eine App Service-Instanz mit einer bereitgestellten Webanwendung umfasst.
-
-> [!TIP]
-> .NET Core 3,1 ist die aktuelle LTS-Version (Long-Term Support) von .NET. Weitere Informationen finden Sie in der [Supportrichtlinie](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -110,12 +107,15 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie Ihre erste ASP.NET-Web
 
 ## <a name="create-an-aspnet-web-app"></a>Erstellen einer ASP.NET-Web-App
 
+> [!TIP]
+> .NET Core 3,1 ist die aktuelle LTS-Version (Long-Term Support) von .NET. Weitere Informationen finden Sie in der [Supportrichtlinie](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+
 :::zone target="docs" pivot="development-environment-vs"
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 1. Öffnen Sie Visual Studio, und wählen Sie **Neues Projekt erstellen** aus.
-1. Suchen Sie unter **Neues Projekt erstellen** die Option **ASP.NET Core-App**, und wählen Sie sie aus. Wählen Sie anschließend **Weiter** aus.
+1. Suchen Sie unter **Neues Projekt erstellen** die Option **ASP.NET Core-Web-App**, und wählen Sie sie aus. Wählen Sie anschließend **Weiter** aus.
 1. Geben Sie der Anwendung unter **Neues Projekt konfigurieren** den Namen _MyFirstAzureWebApp_, und wählen Sie dann **Weiter** aus.
 
    :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="Konfigurieren der ASP.NET Core 3.1 Web-App" border="true":::
@@ -132,7 +132,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie Ihre erste ASP.NET-Web
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 1. Öffnen Sie Visual Studio, und wählen Sie **Neues Projekt erstellen** aus.
-1. Suchen Sie unter **Neues Projekt erstellen** die Option **ASP.NET Core-App**, und wählen Sie sie aus. Wählen Sie anschließend **Weiter** aus.
+1. Suchen Sie unter **Neues Projekt erstellen** die Option **ASP.NET Core-Web-App**, und wählen Sie sie aus. Wählen Sie anschließend **Weiter** aus.
 1. Geben Sie der Anwendung unter **Neues Projekt konfigurieren** den Namen _MyFirstAzureWebApp_, und wählen Sie dann **Weiter** aus.
 
    :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="Visual Studio: Konfigurieren Sie die ASP.NET 5.0 Web-App." border="true":::
@@ -619,7 +619,7 @@ Die aktualisierte ASP.NET Framework 4.8-Web-App wird auf der Seite angezeigt.
 
 Wechseln Sie zum Verwalten Ihrer Web-App zum [Azure-Portal](https://portal.azure.com), und suchen Sie nach **App Services**. Wählen Sie diese Option anschließend aus.
 
-:::image type="content" source="media/quickstart-dotnetcore/app-services.png" alt-text="Azure-Portal: Wählen Sie Option „Azure App Services“ aus.":::
+:::image type="content" source="media/quickstart-dotnetcore/app-services.png" alt-text="Azure-Portal: Wählen Sie die Option „Azure App Services“ aus.":::
 
 Wählen Sie auf der Seite **App Services** den Namen Ihrer Web-App aus.
 

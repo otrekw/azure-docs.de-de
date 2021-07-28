@@ -3,269 +3,294 @@ title: Erste Schritte mit Azure Service Bus-Warteschlangen (Azure.Messaging.Serv
 description: In diesem Tutorial erstellen Sie eine .NET Core-Anwendung in C#, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen.
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 11/13/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: ec3f53e6f69614028c013efa5f0e6852cbc3f8ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/29/2021
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 3225b04ea99b300967353975bb92ab76804ed58a
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98631639"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108397"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Senden und Empfangen von Nachrichten für Azure Service Bus-Warteschlangen (.NET)
-In diesem Tutorial erstellen Sie eine .NET Core-Konsolenanwendung, um Nachrichten für eine Service Bus-Warteschlange zu senden und zu empfangen, indem Sie das Paket **Azure.Messaging.ServiceBus** verwenden. 
+In dieser Schnellstartanleitung erfahren Sie, wie mithilfe der .NET-Bibliothek [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) Nachrichten an eine Service Bus-Warteschlange gesendet oder von einer Service Bus-Warteschlange empfangen werden.
 
-> [!Important]
-> In dieser Schnellstartanleitung wird das neue Paket „Azure.Messaging.ServiceBus“ verwendet. Eine Schnellstartanleitung, in der das alte Paket „Microsoft.Azure.ServiceBus“ verwendet wird, finden Sie im Artikel mit den Informationen zum [Senden und Empfangen von Ereignissen mit dem Paket „Microsoft.Azure.ServiceBus“](service-bus-dotnet-get-started-with-queues-legacy.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+Wenn Sie mit dem Dienst noch keine Erfahrung haben, informieren Sie sich über den Abschnitt [Was ist Azure Service Bus?](service-bus-messaging-overview.md), bevor Sie die Schritte in dieser Schnellstartanleitung durchführen. 
 
-- [Visual Studio 2019](https://www.visualstudio.com/vs)
-- Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
-- Wenn Sie über keine Warteschlange verfügen, führen Sie die Schritte im Artikel [Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md) aus, um eine Warteschlange zu erstellen. Notieren Sie sich die **Verbindungszeichenfolge** für Ihren Service Bus-Namespace und den Namen der **Warteschlange**, die Sie erstellt haben.
+- **Azure-Abonnement**. Für die Verwendung von Azure-Diensten benötigen Sie ein Abonnement. Das gilt auch für Azure Service Bus. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/free/) registrieren.
+- **Microsoft Visual Studio 2019**. In der Azure Service Bus-Clientbibliothek werden neue Features genutzt, die in C# 8.0 eingeführt wurden.  Die Bibliothek kann zwar auch weiterhin mit älteren Versionen von C# verwendet werden, doch die neue Syntax steht dann nicht zur Verfügung. Wenn Sie die ganze Syntax nutzen möchten, sollten Sie mit dem .NET Core SDK 3.0 oder höher kompilieren, wobei die Sprachversion auf `latest` festgelegt sein muss. Bei Verwendung von Visual Studio sind Versionen vor Visual Studio 2019 nicht mit den Tools kompatibel, die zum Erstellen von C# 8.0-Projekten erforderlich sind. Visual Studio 2019 (einschließlich der kostenlosen Community-Edition) kann [hier](https://visualstudio.microsoft.com/vs/) heruntergeladen werden.
+- **Erstellen eines Service Bus-Namespace und einer Warteschlange** Führen Sie die im Artikel [Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md) beschriebenen Schritte durch, um einen Service Bus-Namespace und eine Warteschlange zu erstellen. 
 
-## <a name="send-messages-to-a-queue"></a>Senden von Nachrichten an eine Warteschlange
-In dieser Schnellstartanleitung erstellen Sie eine .NET Core-Konsolenanwendung in C#, um Nachrichten an die Warteschlange zu senden.
+    > [!IMPORTANT]
+    > Notieren Sie sich die **Verbindungszeichenfolge** für Ihren Service Bus-Namespace und den Namen der **Warteschlange**, die Sie erstellt haben. Sie benötigen beides später in diesem Tutorial. 
+
+
+## <a name="send-messages"></a>Senden von Nachrichten
+In diesem Abschnitt erfahren Sie, wie Sie eine .NET Core-Konsolenanwendung zum Senden von Nachrichten an eine Service Bus-Warteschlange erstellen. 
 
 ### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
-Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsolen-App (.NET Core)** für C#. 
+
+1. Starten Sie Visual Studio 2019. 
+1. Wählen Sie **Neues Projekt erstellen** aus. 
+1. Führen Sie im Dialogfeld **Neues Projekt erstellen** die folgenden Schritte aus: Sollte dieses Dialogfeld nicht angezeigt werden, wählen Sie im Menü die Option **Datei** und anschließend **Neu** > **Projekt** aus. 
+    1. Wählen Sie die Programmiersprache **C#** aus.
+    1. Wählen Sie den Anwendungstyp **Konsole** aus. 
+    1. Wählen Sie in der Ergebnisliste die Option **Konsolenanwendung** aus. 
+    1. Klicken Sie anschließend auf **Weiter**. 
+
+        :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/new-send-project.png" alt-text="Abbildung: Dialogfeld „Neues Projekt erstellen“, in dem „C#“ und „Konsole“ ausgewählt sind":::
+1. Geben Sie als Projektname **QueueSender** und als Projektmappenname **ServiceBusQueueQuickStart** ein, und wählen Sie **Weiter** aus. 
+
+    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/project-solution-names.png" alt-text="Abbildung: Name für Projektmappe und Projekt im Dialogfeld „Neues Projekt konfigurieren“":::
+1. Wählen Sie auf der Seite **Zusätzliche Informationen** die Option **Erstellen** aus, um Projektmappe und Projekt zu erstellen. 
 
 ### <a name="add-the-service-bus-nuget-package"></a>Hinzufügen des NuGet-Pakets "Service Bus"
 
-1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
-1. Wählen Sie **Durchsuchen** aus. Suchen Sie nach dem Paket **[Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/)** , und wählen Sie es aus.
-1. Klicken Sie auf **Installieren**, um die Installation abzuschließen, und schließen Sie danach den NuGet-Package-Manager.
+1. Wählen Sie im Menü **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole** aus. 
+1. Führen Sie den folgenden Befehl aus, um das NuGet-Paket **Azure.Messaging.ServiceBus** zu installieren:
+
+    ```cmd
+    Install-Package Azure.Messaging.ServiceBus
+    ```
 
 ### <a name="add-code-to-send-messages-to-the-queue"></a>Hinzufügen von Code für das Senden von Nachrichten an die Warteschlange
 
-1. Fügen Sie in *Program.cs* am Beginn der Namespacedefinition die folgenden `using`-Anweisungen vor der Klassendeklaration hinzu:
-
-    ```csharp
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+1. Ersetzen Sie den Code in **Program.cs** durch den folgenden Code. Im Folgenden sind die wichtigsten Schritte aus dem Code aufgeführt.  
+    1. Erstellen eines [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient)-Objekts unter Verwendung der Verbindungszeichenfolge für den Namespace 
+    1. Aufrufen der [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender)-Methode für das `ServiceBusClient`-Objekt, um ein [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender)-Objekt für die angegebene Service Bus-Warteschlange zu erstellen     
+    1. Erstellen eines [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch)-Objekts mithilfe von [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync)
+    1. Hinzufügen von Nachrichten zum Batch mithilfe von [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage). 
+    1. Senden des Nachrichtenbatches an die Service Bus-Warteschlange mithilfe der [ServiceBusSender.SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync)-Methode
     
-    using Azure.Messaging.ServiceBus;
-    ```
-
-1. Deklarieren Sie in der Klasse `Program` die folgenden Variablen:
-
-    ```csharp
-        static string connectionString = "<NAMESPACE CONNECTION STRING>";
-        static string queueName = "<QUEUE NAME>";
-    ```
-
-    Geben Sie die Verbindungszeichenfolge für den Namespace als `connectionString`-Variable ein. Geben Sie den Warteschlangennamen ein.
-
-1. Fügen Sie direkt nach der Methode `Main()` die folgende Methode vom Typ `SendMessagesAsync()` hinzu, um eine Nachricht zu senden:
-
-    ```csharp
-        static async Task SendMessageAsync()
+        Weitere Informationen finden Sie in den Codekommentaren.
+    
+        ```csharp
+        using System;
+        using System.Threading.Tasks;
+        using Azure.Messaging.ServiceBus;
+        
+        namespace QueueSender
         {
-            // create a Service Bus client 
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
+            class Program
             {
-                // create a sender for the queue 
-                ServiceBusSender sender = client.CreateSender(queueName);
-
-                // create a message that we can send
-                ServiceBusMessage message = new ServiceBusMessage("Hello world!");
-
-                // send the message
-                await sender.SendMessageAsync(message);
-                Console.WriteLine($"Sent a single message to the queue: {queueName}");
-            }
-        }
-    ```
-1. Fügen Sie eine Methode mit dem Namen `CreateMessages` hinzu, um eine Warteschlange (.NET-Warteschlange) mit Nachrichten für die `Program`-Klasse zu erstellen. Normalerweise erhalten Sie diese Nachrichten von den verschiedenen Teilen Ihrer Anwendung. Hier erstellen wir eine Warteschlange mit Beispielnachrichten.
-
-    ```csharp
-        static Queue<ServiceBusMessage> CreateMessages()
-        {
-            // create a queue containing the messages and return it to the caller
-            Queue<ServiceBusMessage> messages = new Queue<ServiceBusMessage>();
-            messages.Enqueue(new ServiceBusMessage("First message in the batch"));
-            messages.Enqueue(new ServiceBusMessage("Second message in the batch"));
-            messages.Enqueue(new ServiceBusMessage("Third message in the batch"));
-            return messages;
-        }
-    ```
-1. Fügen Sie der `Program`-Klasse eine Methode mit dem Namen `SendMessageBatchAsync` und den folgenden Code hinzu. Bei dieser Methode wird eine Warteschlange mit Nachrichten verwendet, und es werden ein oder mehrere Batches für das Senden an die Service Bus-Warteschlange vorbereitet. 
-
-    ```csharp
-        static async Task SendMessageBatchAsync()
-        {
-            // create a Service Bus client 
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
-            {
-                // create a sender for the queue 
-                ServiceBusSender sender = client.CreateSender(queueName);
-
-                // get the messages to be sent to the Service Bus queue
-                Queue<ServiceBusMessage> messages = CreateMessages();
-
-                // total number of messages to be sent to the Service Bus queue
-                int messageCount = messages.Count;
-
-                // while all messages are not sent to the Service Bus queue
-                while (messages.Count > 0)
+                // connection string to your Service Bus namespace
+                static string connectionString = "<NAMESPACE CONNECTION STRING>";
+    
+                // name of your Service Bus queue
+                static string queueName = "<QUEUE NAME>";
+        
+                // the client that owns the connection and can be used to create senders and receivers
+                static ServiceBusClient client;
+        
+                // the sender used to publish messages to the queue
+                static ServiceBusSender sender;
+        
+                // number of messages to be sent to the queue
+                private const int numOfMessages = 3;
+        
+                static async Task Main()
                 {
-                    // start a new batch 
+                    // The Service Bus client types are safe to cache and use as a singleton for the lifetime
+                    // of the application, which is best practice when messages are being published or read
+                    // regularly.
+                    //
+                    // Create the clients that we'll use for sending and processing messages.
+                    client = new ServiceBusClient(connectionString);
+                    sender = client.CreateSender(queueName);
+        
+                    // create a batch 
                     using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
-
-                    // add the first message to the batch
-                    if (messageBatch.TryAddMessage(messages.Peek()))
+        
+                    for (int i = 1; i <= 3; i++)
                     {
-                        // dequeue the message from the .NET queue once the message is added to the batch
-                        messages.Dequeue();
-                    }
-                    else
-                    {
-                        // if the first message can't fit, then it is too large for the batch
-                        throw new Exception($"Message {messageCount - messages.Count} is too large and cannot be sent.");
-                    }
-
-                    // add as many messages as possible to the current batch
-                    while (messages.Count > 0 && messageBatch.TryAddMessage(messages.Peek()))
-                    {
-                        // dequeue the message from the .NET queue as it has been added to the batch
-                        messages.Dequeue();
+                        // try adding a message to the batch
+                        if (!messageBatch.TryAddMessage(new ServiceBusMessage($"Message {i}")))
+                        {
+                            // if it is too large for the batch
+                            throw new Exception($"The message {i} is too large to fit in the batch.");
+                        }
                     }
         
-                    // now, send the batch
-                    await sender.SendMessagesAsync(messageBatch);
+                    try
+                    {
+                        // Use the producer client to send the batch of messages to the Service Bus queue
+                        await sender.SendMessagesAsync(messageBatch);
+                        Console.WriteLine($"A batch of {numOfMessages} messages has been published to the queue.");
+                    }
+                    finally
+                    {
+                        // Calling DisposeAsync on client types is required to ensure that network
+                        // resources and other unmanaged objects are properly cleaned up.
+                        await sender.DisposeAsync();
+                        await client.DisposeAsync();
+                    }
         
-                    // if there are any remaining messages in the .NET queue, the while loop repeats 
+                    Console.WriteLine("Press any key to end the application");
+                    Console.ReadKey();
                 }
-
-                Console.WriteLine($"Sent a batch of {messageCount} messages to the topic: {queueName}");
             }
-        }
+        }   
+        ``` 
+1. Ersetzen Sie `<NAMESPACE CONNECTION STRING>` durch die Verbindungszeichenfolge für Ihren Service Bus-Namespace. Ersetzen Sie außerdem `<QUEUE NAME>` durch den Namen der Warteschlange.
+1. Erstellen Sie das Projekt, und vergewissern Sie sich, dass keine Fehler vorhanden sind. 
+1. Führen Sie das Programm aus, und warten Sie auf die Bestätigungsmeldung.
+    
+    ```bash
+    A batch of 3 messages has been published to the queue
     ```
-1. Ersetzen Sie die `Main()`-Methode durch die folgende **asynchrone** `Main`-Methode. Hiermit werden die beiden Sendemethoden aufgerufen, um eine einzelne Nachricht und einen Batch mit Nachrichten an die Warteschlange zu senden. 
-
-    ```csharp
-        static async Task Main()
-        {
-            // send a message to the queue
-            await SendMessageAsync();
-
-            // send a batch of messages to the queue
-            await SendMessageBatchAsync();
-        }
-    ```
-5. Führen Sie die Anwendung aus. Die unten angegebenen Meldungen sollten angezeigt werden. 
-
-    ```console
-    Sent a single message to the queue: myqueue
-    Sent a batch of messages to the queue: myqueue
-    ```       
 1. Gehen Sie im Azure-Portal wie folgt vor:
     1. Navigieren Sie zu Ihrem Service Bus-Namespace. 
     1. Wählen Sie auf der Seite **Übersicht** die Warteschlange unten im mittleren Bereich aus. 
+    
+        :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/select-queue.png" alt-text="Abbildung: Seite „Service Bus-Namespace“ im Azure-Portal, auf der die Warteschlange ausgewählt ist" lightbox="./media/service-bus-dotnet-get-started-with-queues/select-queue.png":::
     1. Beachten Sie die Werte im Abschnitt **Essentials**.
 
-    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png" alt-text="Empfangene Nachrichten mit Anzahl und Größe" lightbox="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png":::
+    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png" alt-text="Abbildung: Anzahl der empfangenen Nachrichten und Größe der Warteschlange" lightbox="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png":::
 
     Achten Sie auf die folgenden Werte:
-    - Unter **Anzahl aktiver Nachrichten** ist für die Warteschlange nun der Wert **4** angegeben. Jedes Mal, wenn Sie diese Absender-App ausführen, ohne die Nachrichten abzurufen, erhöht sich dieser Wert um 4.
-    - Bei der aktuellen Warteschlangengröße erhöht sich der Wert **AKTUELL** unter **Zusammenfassung** jeweils, wenn der Warteschlange durch die App Nachrichten hinzugefügt werden.
-    - Im unteren Abschnitt **Metriken** im Diagramm **Nachrichten** können Sie sehen, dass für die Warteschlange vier eingehende Nachrichten vorhanden sind. 
+    - Unter **Anzahl aktiver Nachrichten** ist für die Warteschlange nun der Wert **3** angegeben. Jedes Mal, wenn Sie diese Absender-App ausführen, ohne die Nachrichten abzurufen, erhöht sich dieser Wert um 3.
+    - Die **aktuelle Größe** der Warteschlange nimmt jedes Mal inkrementell zu, wenn der Warteschlange durch die App eine Nachricht hinzugefügt wird.
+    - Im unteren Abschnitt **Metriken** im Diagramm **Nachrichten** können Sie sehen, dass für die Warteschlange drei eingehende Nachrichten vorhanden sind. 
 
-## <a name="receive-messages-from-a-queue"></a>Empfangen von Nachrichten aus einer Warteschlange
+## <a name="receive-messages"></a>Empfangen von Nachrichten
+In diesem Abschnitt erstellen Sie eine .NET Core-Konsolenanwendung für den Empfang von Nachrichten von der Warteschlange. 
+
+### <a name="create-a-project-for-the-receiver"></a>Erstellen eines Projekts für den Empfänger
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe **ServiceBusQueueQuickStart**, zeigen Sie auf **Hinzufügen**, und wählen Sie anschließend **Neues Projekt** aus. 
+1. Wählen Sie zuerst **Konsolenanwendung**, dann **Weiter** aus. 
+1. Geben Sie unter **Projektname** den Namen **QueueReceiver** ein, und wählen Sie **Erstellen** aus. 
+1. Klicken Sie im Fenster **Projektmappen-Explorer** mit der rechten Maustaste auf **QueueReceiver**, und wählen Sie **Als Startprojekt festlegen** aus. 
+
+### <a name="add-the-service-bus-nuget-package"></a>Hinzufügen des NuGet-Pakets "Service Bus"
+
+1. Wählen Sie im Menü **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole** aus. 
+1. Bestätigen Sie im Fenster **Paket-Manager-Konsole**, dass **QueueReceiver** als **Standardprojekt** ausgewählt wurde. Ist dies nicht der Fall, wählen Sie in der Dropdownliste **QueueReceiver** aus.
+
+    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/package-manager-console.png" alt-text="Screenshot des ausgewählten QueueReceiver-Projekts in der Paket-Manager-Konsole":::
+1. Führen Sie den folgenden Befehl aus, um das NuGet-Paket **Azure.Messaging.ServiceBus** zu installieren:
+
+    ```cmd
+    Install-Package Azure.Messaging.ServiceBus
+    ```
+
+### <a name="add-the-code-to-receive-messages-from-the-queue"></a>Hinzufügen von Code für den Empfang von Nachrichten aus der Warteschlange
 In diesem Abschnitt fügen Sie Code hinzu, mit dem Nachrichten aus der Warteschlange abgerufen werden.
 
-1. Fügen Sie der `Program`-Klasse die folgenden Methoden hinzu, mit denen Nachrichten und Fehler verarbeitet werden. 
+1. Ersetzen Sie den Code in **Program.cs** durch den folgenden Code. Im Folgenden sind die wichtigsten Schritte aus dem Code aufgeführt.
+    Hier sind die wesentlichen Schritte aus dem Code aufgeführt:
+    1. Erstellen eines [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient)-Objekts unter Verwendung der Verbindungszeichenfolge für den Namespace 
+    1. Aufrufen der [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor)-Methode für das `ServiceBusClient`-Objekt zum Erstellen eines [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)-Objekts für die angegebene Service Bus-Warteschlange 
+    1. Angeben von Handlern für die Ereignisse [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) und [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) des `ServiceBusProcessor`-Objekts 
+    1. Starten der Verarbeitung von Nachrichten durch Aufrufen von [StartProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync) für das `ServiceBusProcessor`-Objekt 
+    1. Aufrufen von [StopProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.stopprocessingasync) für das `ServiceBusProcessor`-Objekt, wenn der Benutzer eine Taste zum Beenden der Verarbeitung drückt 
 
-    ```csharp
-        // handle received messages
-        static async Task MessageHandler(ProcessMessageEventArgs args)
+        Weitere Informationen finden Sie in den Codekommentaren.
+
+        ```csharp
+        using System;
+        using System.Threading.Tasks;
+        using Azure.Messaging.ServiceBus;
+        
+        namespace QueueReceiver
         {
-            string body = args.Message.Body.ToString();
-            Console.WriteLine($"Received: {body}");
-
-            // complete the message. messages is deleted from the queue. 
-            await args.CompleteMessageAsync(args.Message);
-        }
-
-        // handle any errors when receiving messages
-        static Task ErrorHandler(ProcessErrorEventArgs args)
-        {
-            Console.WriteLine(args.Exception.ToString());
-            return Task.CompletedTask;
-        }
-    ```
-1. Fügen Sie der `Program`-Klasse eine Methode mit dem Namen `ReceiveMessagesAsync` und den folgenden Code hinzu, um Nachrichten zu empfangen. 
-
-    ```csharp
-        static async Task ReceiveMessagesAsync()
-        {
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
+            class Program
             {
-                // create a processor that we can use to process the messages
-                ServiceBusProcessor processor = client.CreateProcessor(queueName, new ServiceBusProcessorOptions());
-
-                // add handler to process messages
-                processor.ProcessMessageAsync += MessageHandler;
-
-                // add handler to process any errors
-                processor.ProcessErrorAsync += ErrorHandler;
-
-                // start processing 
-                await processor.StartProcessingAsync();
-
-                Console.WriteLine("Wait for a minute and then press any key to end the processing");
-                Console.ReadKey();
-
-                // stop processing 
-                Console.WriteLine("\nStopping the receiver...");
-                await processor.StopProcessingAsync();
-                Console.WriteLine("Stopped receiving messages");
+                // connection string to your Service Bus namespace
+                static string connectionString = "<NAMESPACE CONNECTION STRING>";
+        
+                // name of your Service Bus queue
+                static string queueName = "<QUEUE NAME>";
+        
+        
+                // the client that owns the connection and can be used to create senders and receivers
+                static ServiceBusClient client;
+        
+                // the processor that reads and processes messages from the queue
+                static ServiceBusProcessor processor;
+        
+                // handle received messages
+                static async Task MessageHandler(ProcessMessageEventArgs args)
+                {
+                    string body = args.Message.Body.ToString();
+                    Console.WriteLine($"Received: {body}");
+        
+                    // complete the message. messages is deleted from the queue. 
+                    await args.CompleteMessageAsync(args.Message);
+                }
+        
+                // handle any errors when receiving messages
+                static Task ErrorHandler(ProcessErrorEventArgs args)
+                {
+                    Console.WriteLine(args.Exception.ToString());
+                    return Task.CompletedTask;
+                }
+        
+                static async Task Main()
+                {
+                    // The Service Bus client types are safe to cache and use as a singleton for the lifetime
+                    // of the application, which is best practice when messages are being published or read
+                    // regularly.
+                    //
+        
+                    // Create the client object that will be used to create sender and receiver objects
+                    client = new ServiceBusClient(connectionString);
+        
+                    // create a processor that we can use to process the messages
+                    processor = client.CreateProcessor(queueName, new ServiceBusProcessorOptions());
+        
+                    try
+                    {
+                        // add handler to process messages
+                        processor.ProcessMessageAsync += MessageHandler;
+        
+                        // add handler to process any errors
+                        processor.ProcessErrorAsync += ErrorHandler;
+        
+                        // start processing 
+                        await processor.StartProcessingAsync();
+        
+                        Console.WriteLine("Wait for a minute and then press any key to end the processing");
+                        Console.ReadKey();
+        
+                        // stop processing 
+                        Console.WriteLine("\nStopping the receiver...");
+                        await processor.StopProcessingAsync();
+                        Console.WriteLine("Stopped receiving messages");
+                    }
+                    finally
+                    {
+                        // Calling DisposeAsync on client types is required to ensure that network
+                        // resources and other unmanaged objects are properly cleaned up.
+                        await processor.DisposeAsync();
+                        await client.DisposeAsync();
+                    }
+                }
             }
         }
+        ```
+1. Ersetzen Sie `<NAMESPACE CONNECTION STRING>` durch die Verbindungszeichenfolge für Ihren Service Bus-Namespace. Ersetzen Sie außerdem `<QUEUE NAME>` durch den Namen der Warteschlange. 
+1. Erstellen Sie das Projekt, und vergewissern Sie sich, dass keine Fehler vorhanden sind.
+1. Führen Sie die Empfängeranwendung aus. Nun sollten die empfangenen Nachrichten angezeigt werden. Drücken Sie eine beliebige Taste, um Empfänger und Anwendung zu beenden. 
+
+    ```console
+    Wait for a minute and then press any key to end the processing
+    Received: Message 1
+    Received: Message 2
+    Received: Message 3
+    
+    Stopping the receiver...
+    Stopped receiving messages
     ```
-1. Fügen Sie einen Aufruf der `ReceiveMessagesAsync`-Methode über die `Main`-Methode hinzu. Kommentieren Sie die `SendMessagesAsync`-Methode aus, falls Sie nur das Empfangen von Nachrichten testen möchten. Wenn Sie dies nicht tun, sehen Sie, dass weitere vier Nachrichten an die Warteschlange gesendet werden. 
+1. Sehen Sie sich erneut die Informationen im Portal an. Warten Sie einige Minuten, und aktualisieren Sie die Seite, wenn für **Aktive Nachrichten** nicht `0` angezeigt wird. 
 
-    ```csharp
-        static async Task Main()
-        {
-            // send a message to the queue
-            await SendMessageAsync();
+    - Die Werte für **Anzahl aktiver Nachrichten** und **Aktuelle Größe** lauten jetzt **0**.
+    - Im unteren Abschnitt **Metriken** im Diagramm **Nachrichten** können Sie sehen, dass für die Warteschlange acht ein- und acht ausgehende Nachrichten vorhanden sind. 
+    
+        :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="Aktive Nachrichten und Größe nach dem Empfang" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 
-            // send a batch of messages to the queue
-            await SendMessageBatchAsync();
-
-            // receive message from the queue
-            await ReceiveMessagesAsync();
-        }
-    ```
-
-## <a name="run-the-app"></a>Ausführen der App
-Führen Sie die Anwendung aus. Warten Sie eine Minute lang, und drücken Sie dann eine beliebige Taste, um den Empfang von Nachrichten zu beenden. Die folgende Ausgabe sollte angezeigt werden (Leertaste für Schlüssel). 
-
-```console
-Sent a single message to the queue: myqueue
-Sent a batch of messages to the queue: myqueue
-Wait for a minute and then press any key to end the processing
-Received: Hello world!
-Received: First message in the batch
-Received: Second message in the batch
-Received: Third message in the batch
-Received: Hello world!
-Received: First message in the batch
-Received: Second message in the batch
-Received: Third message in the batch
-
-Stopping the receiver...
-Stopped receiving messages
-```
-
-Sehen Sie sich erneut die Informationen im Portal an. 
-
-- Die Werte für **Anzahl aktiver Nachrichten** und **AKTUELL** lauten jetzt **0**.
-- Im unteren Abschnitt **Metriken** im Diagramm **Nachrichten** können Sie sehen, dass für die Warteschlange acht ein- und acht ausgehende Nachrichten vorhanden sind. 
-
-    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="Aktive Nachrichten und Größe nach dem Empfang" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in der folgenden Dokumentation bzw. unter den folgenden Beispielen:

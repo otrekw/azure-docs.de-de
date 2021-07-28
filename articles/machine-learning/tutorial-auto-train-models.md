@@ -1,26 +1,28 @@
 ---
-title: 'Tutorial: Regression mit automatisiertem maschinellem Lernen'
+title: 'Tutorial: AutoML – Trainieren eines Regressionsmodells'
 titleSuffix: Azure Machine Learning
-description: Schreiben Sie Code mit dem Python SDK, um ein Experiment mit automatisiertem maschinellem Lernen zu erstellen, das ein Regressionsmodell für Sie generiert.
+description: Trainieren Sie mit dem Python SDK für Azure Machine Learning ein Regressionsmodell zur Vorhersage von Taxitarifen in New York City mit automatisiertem maschinellem Lernen von Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: aniththa
-ms.author: anumamah
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 08/14/2020
+ms.date: 06/11/2021
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 7dc42c305ff8cd7320d711574e4095141041d8b4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 243dd16cc70a77a0d1da0adf190dc92d83ad1ab4
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773879"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033435"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen
+# <a name="tutorial-train-a-regression-model-with-automl-and-python"></a>Tutorial: Trainieren eines Regressionsmodells mit AutoML und Python
 
-In diesem Tutorial verwenden Sie automatisiertes maschinelles Lernen im Azure Machine Learning SDK, um ein [Regressionsmodell](concept-automated-ml.md#regression) für die Vorhersage der Preise für Taxifahrten in New York zu erstellen. Dieser Prozess akzeptiert Trainingsdaten und Konfigurationseinstellungen und durchläuft automatisch Kombinationen der verschiedenen Methoden, Modelle und Hyperparametereinstellungen zur Featurenormalisierung/-standardisierung, um zum besten Modell zu gelangen.
+In diesem Tutorial erfahren Sie, wie Sie mit dem Python SDK für Azure Machine Learning ein Regressionsmodell unter Verwendung des automatisierten ML von Azure Machine Learning trainieren. Dieses Regressionsmodell sagt Taxipreise in New York City vorher. 
+
+Dieser Prozess akzeptiert Trainingsdaten und Konfigurationseinstellungen und durchläuft automatisch Kombinationen der verschiedenen Methoden, Modelle und Hyperparametereinstellungen zur Featurenormalisierung/-standardisierung, um zum besten Modell zu gelangen. 
 
 ![Flussdiagramm](./media/tutorial-auto-train-models/flow2.png)
 
@@ -31,10 +33,11 @@ In diesem Tutorial schreiben Sie Code mithilfe des Python SDK.  Sie lernen Folge
 > * Trainieren eines Regressionsmodells mit automatisiertem maschinellem Lernen
 > * Berechnen der Modellgenauigkeit
 
-Probieren Sie auch automatisiertes maschinelles Lernen für diese anderen Modelltypen aus: 
+Probieren Sie für AutoML ohne Code die folgenden Tutorials aus: 
 
-* [Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning:](tutorial-first-experiment-automated-ml.md) Beispiel ohne Code
-* [Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen:](tutorial-automated-ml-forecast.md) Beispiel ohne Code
+* [Tutorial: Trainieren von Klassifizierungsmodellen ohne Code](tutorial-first-experiment-automated-ml.md)
+
+* [Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen](tutorial-automated-ml-forecast.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -6,13 +6,13 @@ ms.author: srranga
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 04/26/2021
-ms.openlocfilehash: ad417bc44de7d13594f003f7aa1e39b2308204ed
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.date: 05/25/2021
+ms.openlocfilehash: 4ed84ab94173961412a7769da89136c39413a92e
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064861"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983076"
 ---
 # <a name="release-notes---azure-database-for-postgresql---flexible-server"></a>Versionshinweise: Azure Database for PostgreSQL – Flexible Server
 
@@ -21,6 +21,12 @@ Auf dieser Seite finden Sie aktuelle Neuigkeiten und Updates zu Featureergänzun
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – Flexible Server befindet sich in der Vorschau.
 
+## <a name="release-may-25-2021"></a>Release: 25. Mai 2021
+
+* Unterstützung für [PostgreSQL-Hauptversion 13](./concepts-supported-versions.md)
+* Unterstützung für Erweiterungen, pg_partman, pg_cron und pgaudit. Auf der [Seite „Erweiterungen“](./concepts-extensions.md) finden Sie Versionen, die von den einzelnen Hauptversionen unterstützt werden.
+* Verschiedene Fehlerbehebungen, Stabilitäts- und Leistungsverbesserungen
+
 ## <a name="release-april-26-2021"></a>Release: 26. April 2021
 
 * Unterstützung für die [aktuellen PostgreSQL-Nebenversionen](./concepts-supported-versions.md) 12.6 und 11.11 bei neuen Servererstellungen
@@ -28,7 +34,7 @@ Auf dieser Seite finden Sie aktuelle Neuigkeiten und Updates zu Featureergänzun
 * Unterstützung für die Auswahl der Verfügbarkeitszone während der Zeitpunktwiederherstellung
 * Unterstützung für neue [Regionen](./overview.md#azure-regions) wie „Australien, Osten“, „Kanada, Mitte“ und „Frankreich, Mitte“
 * Unterstützung für die [integrierte PgBouncer-Verbindungspoolfunktion](./concepts-pgbouncer.md) 
-* Unterstützung für Version 2.3.2 der [pglogical](https://github.com/2ndQuadrant/pglogical)-Erweiterung
+<!--- * Support for [pglogical](https://github.com/2ndQuadrant/pglogical) extension version 2.3.2. -->
 * [Intelligente Leistung](concepts-query-store.md) in der öffentlichen Vorschauversion
 * Verschiedene Fehlerbehebungen, Stabilitäts- und Leistungsverbesserungen
 

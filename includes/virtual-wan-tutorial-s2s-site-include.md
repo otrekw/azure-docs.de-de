@@ -1,25 +1,25 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/11/2021
+ms.date: 05/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 708baa83ca919adcc374be36c229ce3ff30da384
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3652fbeee10f8ddad538446087f399ca625f6b07
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100362945"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578261"
 ---
 1. Klicken Sie auf der Portalseite für Ihr virtuelles WAN im Abschnitt **Konnektivität** auf **VPN-Standorte**, um die Seite mit VPN-Standorten zu öffnen.
 1. Klicken Sie auf der Seite **VPN sites** (VPN-Standorte) auf **+Create site** (+ Standort erstellen).
 1. Füllen Sie auf der Seite **VPN-Standort erstellen** auf der Registerkarte **Grundlagen** die folgenden Felder aus:
 
-   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-basics.png" alt-text="Registerkarte „Grundlagen“" lightbox="./media/virtual-wan-tutorial-site-include/site-basics.png":::
+   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-basics.png" alt-text="Screenshot: Seite „VPN-Standort erstellen“ mit geöffneter Registerkarte „Grundlagen“" lightbox="./media/virtual-wan-tutorial-site-include/site-basics.png":::
 
     * **Region**: Zuvor als Standort bezeichnet. Dies ist der Standort, an dem Sie diese Standortressource erstellen möchten.
     * **Name**: Der Name, den Sie Ihrer lokalen Site geben möchten.
@@ -31,7 +31,7 @@ ms.locfileid: "100362945"
       >
 1. Wählen Sie **Links** aus, um Informationen über die physischen Verbindungen an der Zweigstelle hinzuzufügen. Falls Sie über ein CPE-Gerät eines Virtual WAN-Partners verfügen, können Sie sich beim Partner erkundigen, ob diese Informationen im Rahmen des im Partnersystem eingerichteten Uploads von Zweigstelleninformationen an Azure übermittelt werden.
 
-   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-links.png" alt-text="Registerkarte „Verknüpfungen“" lightbox="./media/virtual-wan-tutorial-site-include/site-links.png":::
+   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-links.png" alt-text="Screenshot: Seite „VPN-Standort erstellen“ mit geöffneter Registerkarte „Links“" lightbox="./media/virtual-wan-tutorial-site-include/site-links.png":::
 
    * **Linkname**: Ein Name, den Sie für die physische Verbindung am VPN-Standort angegeben möchten. Beispiel: meinLink1.
    * **Verbindungsgeschwindigkeit**: Die Geschwindigkeit des VPN-Geräts am Zweigstellenstandort. Beispiel: Der Wert 50 entspricht einer Geschwindigkeit von 50 MBit/s für das VPN-Gerät am Zweigstellenstandort.
@@ -49,4 +49,4 @@ ms.locfileid: "100362945"
 1. Nachdem Sie die Felder ausgefüllt haben, klicken Sie auf **Überprüfen + erstellen**, um die Eingaben zu überprüfen und den Standort zu erstellen.
 1. Navigieren Sie zum gewünschten virtuellen Hub, und deaktivieren Sie **Hubzuordnung**, um Ihren VPN-Standort mit dem Hub zu verbinden.
 
-   :::image type="content" source="./media/virtual-wan-tutorial-site-include/connect.png" alt-text="Herstellen einer Verbindung mit diesem Hub" lightbox="./media/virtual-wan-tutorial-site-include/connect.png":::
+   :::image type="content" source="./media/virtual-wan-tutorial-site-include/connect.png" alt-text="Screenshot: Verbindung mit diesem Hub herstellen" lightbox="./media/virtual-wan-tutorial-site-include/connect.png":::

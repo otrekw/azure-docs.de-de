@@ -9,99 +9,74 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/25/2019
+ms.date: 05/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 3061a4f0b6a41e5057436e15cabd2db0cbec5c00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a72900f33347370e193df9ed040df4ff9e51528f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92454880"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063562"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Tutorial: Azure Active Directory-Integration mit Deputy
 
-In diesem Tutorial erfahren Sie, wie Sie Deputy in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Deputy in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Deputy in Azure Active Directory (Azure AD) integrieren. Die Integration von Deputy in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Deputy hat.
-* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Deputy anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Steuern Sie in Azure AD, wer Zugriff auf Deputy hat.
+* Ermöglichen Sie Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Deputy anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Deputy konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Ein Deputy-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein Deputy-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Deputy unterstützt **SP-** und **IDP-initiiertes** einmaliges Anmelden.
+* Deputy unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+* Deputy unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-## <a name="adding-deputy-from-the-gallery"></a>Hinzufügen von Deputy aus dem Katalog
+## <a name="add-deputy-from-the-gallery"></a>Hinzufügen von Deputy aus dem Katalog
 
 Zum Konfigurieren der Integration von Deputy in Azure AD müssen Sie Deputy aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Um Deputy aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Deputy** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Deputy** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+## <a name="configure-and-test-azure-ad-sso-for-deputy"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Deputy
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Deputy mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Deputy eingerichtet werden.
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Deputy die folgenden Schritte aus:
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Deputy](#configure-deputy-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines Deputy-Testbenutzers](#create-deputy-test-user)** , um ein Pendant von B. Simon in Deputy zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-4. Geben Sie im Suchfeld **Deputy** ein, wählen Sie im Ergebnisbereich **Deputy** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Deputy** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-     ![Deputy in der Ergebnisliste](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Deputy mithilfe eines Testbenutzers namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Deputy eingerichtet werden.
-
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Deputy müssen Sie die folgenden Bausteine ausführen:
-
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Deputy](#configure-deputy-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Deputy-Testbenutzers](#create-deputy-test-user)** , um ein Pendant von Britta Simon in Deputy zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
-
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Deputy die folgenden Schritte aus:
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Deputy** die Option **Einmaliges Anmelden**.
-
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
-
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
-
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![Screenshot: Abschnitt „Grundlegende SAML-Konfiguration“ mit den Feldern „Bezeichner“ und „Antwort-URL“ sowie der hervorgehobenen Schaltfläche „Speichern“](common/idp-intiated.png)
-
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:
+    a. Geben Sie im Textfeld **Bezeichner** eine URL in einem der folgenden Formate ein:
 
     ```http
     https://<subdomain>.<region>.au.deputy.com
@@ -121,7 +96,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Deputy 
     https://<subdomain>.<region>.deputy.com
     ```
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein:
     
     ```http
     https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs
@@ -143,8 +118,6 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Deputy 
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Deputy](common/metadata-upload-additional-signon.png)
-
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<your-subdomain>.<region>.deputy.com`
 
     >[!NOTE]
@@ -152,6 +125,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Deputy 
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den Deputy-Client](https://www.deputy.com/call-centers-customer-support-scheduling-software), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+
+1. Die Deputy-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
+
+    ![image](common/default-attributes.png)
+
+1. Darüber hinaus erwartet die Deputy-Anwendung, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
+    
+    | Name |  Quellattribut|
+    | -------------- | --------- |
+    | Vorname | user.givenname|
+    | Nachname | user.surname |
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -161,125 +145,101 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Deputy 
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    a. Anmelde-URL
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-    b. Azure AD-Bezeichner
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-    c. Abmelde-URL
-
-### <a name="configure-deputy-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Deputy
-
-1. Navigieren Sie zur folgenden URL: `https://(your-subdomain).deputy.com/exec/config/system_config`. Wechseln Sie zu **Sicherheitseinstellungen**, und klicken Sie auf **Bearbeiten**.
-   
-    ![Screenshot: Seite „Systemkonfiguration“ mit der ausgewählten Schaltfläche „Sicherheitseinstellungen – Bearbeiten“](./media/deputy-tutorial/tutorial_deputy_004.png)
-
-2. Führen Sie auf der Seite **Sicherheitseinstellungen** die folgenden Schritte aus.
-
-    ![Einmaliges Anmelden konfigurieren](./media/deputy-tutorial/tutorial_deputy_005.png)
-    
-    a. Aktivieren der **Anmeldung für soziale Netzwerke**.
-   
-    b. Öffnen Sie das vom Azure-Portal heruntergeladene Base64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **OpenSSL-Zertifikat** ein.
-   
-    c. Geben Sie im Textfeld für die SAML-SSO-URL Folgendes ein: `https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
-    
-    d. Ersetzen Sie im Textfeld für die SAML-SSO-URL `<your subdomain>` durch Ihre Unterdomäne.
-   
-    e. Ersetzen Sie im Textfeld für die SAML-SSO-URL `<saml sso url>` durch die **Anmelde-URL**, die Sie aus dem Azure-Portal kopiert haben.
-   
-    f. Klicken Sie auf **Einstellungen speichern**.
-
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
-
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
-    Zum Beispiel, BrittaSimon@contoso.com
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
-
-    d. Klicken Sie auf **Erstellen**.
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Deputy gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Deputy gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Deputy** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Deputy** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+## <a name="configure-deputy-sso"></a>Konfigurieren des einmaligen Anmeldens für Deputy
 
-2. Wählen Sie in der Anwendungsliste **Deputy** aus.
+1. Melden Sie sich bei Ihrem Deputy-Konto als Administrator an.
 
-    ![Deputy-Link in der Anwendungsliste](common/all-applications.png)
+1. Klicken Sie in der oberen rechten Ecke auf Ihr Konto, und wählen Sie **Geschäftseinstellungen** aus.
 
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+    ![Screenshot: Geschäftseinstellungen](./media/deputy-tutorial/business-settings.png)
 
-    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+1. Klicken Sie dann auf der Registerkarte **Allgemein** auf **SSO-Einstellungen**.
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+    ![Screenshot: SSO-Einstellungen](./media/deputy-tutorial/general.png)
 
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
+2. Führen Sie auf der Seite **SSO-Einstellungen** die folgenden Schritte aus.
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+    ![Einmaliges Anmelden konfigurieren](./media/deputy-tutorial/configuration.png)
+    
+    a. Klicken Sie auf **Einmaliges Anmelden aktivieren**.
+   
+    b. Fügen Sie im Textfeld **Anmelde-URL des Identitätsanbieters** die **Anmelde-URL** ein, die Sie im Azure-Portal kopiert haben.
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+    c. Fügen Sie im Textfeld **Aussteller des Identitätsanbieters** den **Bezeichner (Entitäts-ID)** ein, den Sie im Azure-Portal kopiert haben.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+    d. Öffnen Sie das aus dem Azure-Portal heruntergeladene **Zertifikat (Base64)** im Editor, und fügen Sie dessen Inhalt im Textfeld **x.509-Zertifikat** ein.
+
+    e. Aktivieren Sie **Einmaliges Anmelden erforderlich**, wenn die Anmeldung mit einmaligem Anmelden erfolgen soll.
+   
+    f. Aktivieren Sie die **Just-in-Time-Bereitstellung**, und geben Sie in den Feldern **Vorname** und **Nachname** die Namen der Attribute an, die Sie im Abschnitt **Benutzerattribute und Ansprüche** eingerichtet haben (z. B. `First name` und `Last name`).
+
+    g. Klicken Sie auf **Änderungen übernehmen**.
 
 ### <a name="create-deputy-test-user"></a>Erstellen eines Deputy-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei Deputy anmelden können, müssen sie in Deputy bereitgestellt werden. Im Fall von Deputy ist die Bereitstellung eine manuelle Aufgabe.
+In diesem Abschnitt wird in Deputy ein Benutzer mit dem Namen Britta Simon erstellt. Deputy unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Deputy vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-#### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:
+#### <a name="to-add-the-user-manually-perform-the-following-steps"></a>Um manuell einen Benutzer hinzuzufügen, führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich bei der Deputy-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie oben im Navigationsbereich auf **Personen**.
-   
-    ![Personen](./media/deputy-tutorial/tutorial_deputy_001.png "Personen")
 
 3. Klicken Sie auf die Schaltfläche **Personen hinzufügen**, und klicken Sie auf **Einzelne Person hinzufügen**.
    
-    ![Add People (Personen hinzufügen)](./media/deputy-tutorial/tutorial_deputy_002.png "Personen hinzufügen")
+    ![Add People (Personen hinzufügen)](./media/deputy-tutorial/create-user-1.png "Personen hinzufügen")
 
-4. Führen Sie die folgenden Schritte aus, und klicken Sie auf **Speichern und einladen**.
+4. Führen Sie auf der Registerkarte **Allgemein** die folgenden Schritte aus, um einen Benutzer hinzuzufügen.
    
-    ![Neuer Benutzer](./media/deputy-tutorial/tutorial_deputy_003.png "Neuer Benutzer")
+    ![Neuer Benutzer](./media/deputy-tutorial/create-user-2.png "Neuer Benutzer")
 
-    a. Geben Sie im Textfeld **Name** den Namen des Benutzers ein, z.B. **BrittaSimon**.
+    a. Füllen Sie die Textfelder **Vorname** und **Nachname** aus (z. B. **Britta** und **Simon**).
    
-    b. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse eines Azure AD-Kontos ein, das Sie bereitstellen möchten.
+    b. Geben Sie im Textfeld **Firma** den Namen des Unternehmens ein.
    
-    c. Geben Sie im Textfeld **Firma** den Namen des Unternehmens ein.
-   
-    d. Klicken Sie auf die Schaltfläche **Speichern und einladen**.
+    c. Klicken Sie auf die Schaltfläche **Save** .
 
-5. Der Besitzer des Azure AD-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird. Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Deputy-Benutzerkonten oder mit den APIs von Deputy bereitstellen.
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Deputy“ klicken, sollten Sie automatisch bei der Deputy-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für TeamzSkill weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+* Rufen Sie direkt die TeamzSkill-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+#### <a name="idp-initiated"></a>IDP-initiiert:
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der TeamzSkill-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie in „Meine Apps“ auf die Kachel „TeamzSkill“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der TeamzSkill-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von Deputy können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

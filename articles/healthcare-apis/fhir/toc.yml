@@ -51,6 +51,19 @@
       items:
         - name: Empfangen von Gerätedaten über Azure IoT Hub
           href: device-data-through-iot-hub.md
+    - name: Interoperabilität und Patientenzugriff
+      expanded: false
+      items:
+        - name: Einführung in die Richtlinie für CMS-Interoperabilität und Patientenzugriff
+          href: cms-tutorial-introduction.md
+        - name: CARIN-Implementierungshandbuch für die blaue Schaltfläche
+          href: carin-implementation-guide-blue-button-tutorial.md
+        - name: "Da\_Vinci-Arzneimittelliste (Da Vinci Drug Formulary)"
+          href: davinci-drug-formulary-tutorial.md
+        - name: "Da\_Vinci-Datenaustausch für Kostenträger (Da Vinci PDex)"
+          href: davinci-pdex-tutorial.md
+        - name: "Da\_Vinci-Planungsnetzwerk (Da Vinci Plan Net)"
+          href: davinci-plan-net.md
 - name: Anleitungen
   expanded: false
   items:
@@ -70,7 +83,7 @@
     - name: Konfigurieren von Einstellungen
       expanded: false
       items:
-        - name: Konfigurieren zusätzlicher Azure API for FHIR-Einstellungen
+        - name: Konfigurieren weiterer Einstellungen für Azure API for FHIR
           href: azure-api-for-fhir-additional-settings.md
         - name: Konfigurieren der Azure RBAC
           href: configure-azure-rbac.md
@@ -97,22 +110,29 @@
           href: how-to-run-a-reindex.md
         - name: Suchbeispiele für die Azure-API für FHIR
           href: search-samples.md
-    - name: Profilprüfung
-      href: validation-against-profiles.md
-    - name: Exportieren von Daten
-      expanded: false
+    - name: Operations
+      expand: false
       items:
+        - name: Profilprüfung
+          href: validation-against-profiles.md
         - name: Exportieren von Daten
-          href: export-data.md
-        - name: Anonymisierter Export
-          href: de-identified-export.md
-        - name: Exportieren von Daten in Synapse
-          href: export-to-synapse.md
-    - name: Konvertieren von Daten
-      expanded: false
-      items:
-        - name: „$convert-data“ und FHIR-Konvertererweiterungsvorlagen
-          href: convert-data.md
+          expanded: false
+          items:
+            - name: Exportieren von Daten
+              href: export-data.md
+            - name: Anonymisierter Export
+              href: de-identified-export.md
+            - name: Verschieben von Daten in Synapse
+              href: move-to-synapse.md
+        - name: Konvertieren von Daten
+          expanded: false
+          items:
+            - name: „$convert-data“ und FHIR-Konvertererweiterungsvorlagen
+              href: convert-data.md
+        - name: „patient-everything“ in FHIR
+          href: patient-everything.md
+        - name: Vorgang „$member-match“
+          href: tutorial-member-match.md
     - name: Ermitteln von Identitätsobjekt-IDs
       href: find-identity-object-ids.md
     - name: Diagnoseprotokollierung und -metriken
@@ -149,7 +169,7 @@
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
-      href: fhir-faq.md
+      href: fhir-faq.yml
     - name: Unterstützte Features
       href: fhir-features-supported.md
     - name: GitHub-Projekte

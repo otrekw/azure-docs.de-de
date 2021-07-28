@@ -10,12 +10,12 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 05/25/2021
 ms.reviewer: peterlu
-ms.openlocfilehash: fadcb4c8b24e9c0dcc1cfe39529af4a1c75cc36c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 65b7446602c8b7202ba7ccf56115edfc5de333db
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382854"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750729"
 ---
 # <a name="train-models-with-rest-preview"></a>Trainieren von Modellen per REST (Vorschau)
 
@@ -72,7 +72,7 @@ API_VERSION="2021-03-01-preview"
 Für die Ausführung von Machine Learning-Aufträgen werden Computeressourcen benötigt. Sie können die Computeressourcen Ihres Arbeitsbereichs auflisten:
 
 ```bash
-curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.MachineLearningServices/workspaces/$WORKSPACE/computes?api-version=$API_VERSION \
+curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.MachineLearningServices/workspaces/$WORKSPACE/computes?api-version=$API_VERSION" \
 --header "Authorization: Bearer $TOKEN"
 ```
 
@@ -91,7 +91,7 @@ Das LightGBM-Beispiel muss in einer LightGBM-Umgebung ausgeführt werden. Erstel
 
 Sie können das Docker-Image mit `Docker` konfigurieren und Conda-Abhängigkeiten mit `condaFile` hinzufügen: 
 
-:::code language="rest" source="~/azureml-examples-cli-preview/cli/how-to-train-rest.sh" id="create_environment":::
+:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_environment":::
 
 ### <a name="datastore"></a>Datenspeicher
 
@@ -113,7 +113,7 @@ AZURE_STORAGE_KEY=$(az storage account keys list --account-name $AZURE_STORAGE_A
 
 Nachdem Sie nun über den Datenspeicher verfügen, können Sie ein Dataset erstellen. Verwenden Sie für dieses Beispiel das gängige Dataset `iris.csv`, und verweisen Sie in `path` darauf. 
 
-:::code language="rest" source="~/azureml-examples-cli-preview/cli/how-to-train-rest.sh" id="create_data":::
+:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_data":::
 
 ### <a name="code"></a>Code
 
@@ -127,7 +127,7 @@ az storage blob upload-batch -d $AZUREML_DEFAULT_CONTAINER/src \
 
 Nachdem Sie Ihren Code hochgeladen haben, können Sie ihn mit einer PUT-Anforderung angeben und mit `datastoreId` auf den Datenspeicher verweisen. 
 
-:::code language="rest" source="~/azureml-examples-cli-preview/cli/how-to-train-rest.sh" id="create_code":::
+:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_code":::
 
 ## <a name="submit-a-training-job"></a>Übermitteln eines Trainingsauftrags
 
@@ -144,11 +144,11 @@ Da Ihre Ressourcen jetzt vorhanden sind, können Sie den LightGBM-Auftrag ausfü
 
 Verwenden Sie die folgenden Befehle, um den Trainingsauftrag zu übermitteln:
 
-:::code language="rest" source="~/azureml-examples-cli-preview/cli/how-to-train-rest.sh" id="create_job":::
+:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_job":::
 
 ## <a name="submit-a-hyperparameter-sweep-job"></a>Übermitteln eines Sweep-Auftrags für Hyperparameter
 
-Mit Azure Machine Learning haben Sie auch die Möglichkeit, Hyperparameter für das Training effizient zu optimieren. Sie können mit den REST-APIs einen Sweep-Auftrag für die Hyperparameteroptimierung erstellen. Weitere Informationen zur Hyperparameteroptimierung mit Azure Machine Learning finden Sie unter [Optimierung der Hyperparameter eines Modells](how-to-tune-hyperparameters.md). Geben Sie die Parameter für die Hyperparameteroptimierung an, um den Sweep-Auftrag zu konfigurieren:
+Mit Azure Machine Learning haben Sie auch die Möglichkeit, Hyperparameter für das Training effizient zu optimieren. Sie können mit den REST-APIs eine Sammlung für die Hyperparameteroptimierung erstellen. Weitere Informationen zur Hyperparameteroptimierung mit Azure Machine Learning finden Sie unter [Optimierung der Hyperparameter eines Modells](how-to-tune-hyperparameters.md). Geben Sie die Parameter für die Hyperparameteroptimierung an, um den Sweep-Auftrag zu konfigurieren:
 
 - **jobType**: Der Auftragstyp. Bei einem Sweep-Auftrag ist dies `Sweep`. 
 - **algorithm**: Ein guter Ausgangspunkt ist häufig der Samplingalgorithmus „random“. Eine Aufzählung der Optionen finden Sie im [Schema](https://azuremlschemas.azureedge.net/latest/sweepJob.schema.json) des Sweep-Auftrags. 
@@ -161,7 +161,7 @@ Mit Azure Machine Learning haben Sie auch die Möglichkeit, Hyperparameter für 
 
 Verwenden Sie die folgenden Befehle, um einen Sweep-Auftrag mit demselben LightGBM-Beispiel zu erstellen: 
 
-:::code language="rest" source="~/azureml-examples-cli-preview/cli/how-to-train-rest.sh" id="create_a_sweep_job":::
+:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_a_sweep_job":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

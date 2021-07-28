@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial , devx-track-azurecli
-ms.openlocfilehash: b6b15d39616db88af9c8ccebd1d739c734a714c8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9f6fe063faa9abfa59d7999da17940aae9ccd264
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373155"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463178"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Tutorial: Bereitstellen von Konfigurationen mithilfe von GitOps in einem Kubernetes-Cluster mit Azure Arc-Aktivierung 
 
@@ -181,6 +181,9 @@ Passen Sie die Konfiguration mit den folgenden optionalen Parametern an:
 Wenn Flux nicht in das Repository schreiben soll und `--git-user` oder `--git-email` nicht festgelegt ist, wird `--git-readonly` automatisch festgelegt.
 
 Weitere Informationen finden Sie in der [Flux-Dokumentation](https://aka.ms/FluxcdReadme).
+
+>[!NOTE]
+> Flux synchronisiert standardmäßig über die Verzweigung `master` des Git-Repositorys. Neuere Git-Repositorys verfügen jedoch über die Stammverzweigung mit dem Namen `main`. In diesem Fall müssen Sie `--git-branch=main` in den Parametern vom Typ „--operator-params“ festlegen. 
 
 > [!TIP]
 > Sie können eine Konfiguration im Azure-Portal auf der Registerkarte **GitOps** der Kubernetes-Ressource mit Azure Arc-Aktivierung erstellen.

@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 04/19/2021
 ms.topic: how-to
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f61e1a604c9296f85bbfd508f39dcbc74e256caf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 564b193a355ecc7bc11bef874c80ddc881c362cb
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110098720"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895938"
 ---
 # <a name="start-monitor-and-track-run-history"></a>Ausführungsverlauf starten, überwachen und verfolgen
 
@@ -182,7 +182,8 @@ Sie benötige folgende Elemente:
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    ---
+    ---    
+   
 ## <a name="custom-view"></a>Benutzerdefinierte Ansicht 
     
 So zeigen Sie Ihre Ausführungen in Studio an: 
@@ -195,17 +196,18 @@ Auf der Seite **Alle Ausführungen** können Sie die Liste der Ausführungen nac
     
 1. Nehmen Sie Anpassungen an der Seite vor, indem Sie zu vergleichende Ausführungen auswählen, Diagramme hinzufügen oder Filter anwenden. Diese Änderungen können als **Benutzerdefinierte Ansicht** gespeichert werden, sodass Sie problemlos zu Ihrer Arbeit zurückkehren können. Benutzer mit Arbeitsbereich-Berechtigungen können die benutzerdefinierte Ansicht bearbeiten oder anzeigen. Außerdem können Sie die benutzerdefinierte Ansicht zur besseren Zusammenarbeit für Teammitglieder freigeben, indem Sie **Ansicht freigeben** auswählen.   
 
-1. Wenn Sie die Ausführungsprotokolle anzeigen möchten, wählen Sie eine bestimmte Ausführung aus, und auf der Registerkarte **Ausgaben und Protokolle** finden Sie Diagnose- und Fehlerprotokolle für Ihre Ausführung.    
+1. Wenn Sie die Ausführungsprotokolle anzeigen möchten, wählen Sie eine bestimmte Ausführung aus, und auf der Registerkarte **Ausgaben und Protokolle** finden Sie Diagnose- und Fehlerprotokolle für Ihre Ausführung.
 
-:::image type="content" source="media/how-to-track-monitor-analyze-runs/custom-views.gif" alt-text="Screenshot: Erstellen einer benutzerdefinierten Ansicht":::
+:::image type="content" source="media/how-to-track-monitor-analyze-runs/custom-views-2.gif" alt-text="Screenshot: Erstellen einer benutzerdefinierten Ansicht":::
     
+
 ## <a name="run-description"></a>Ausführungsbeschreibung 
 
 Eine Ausführungsbeschreibung kann einer Ausführung hinzugefügt werden, um mehr Informationen zur Ausführung zu liefern, u. a. zum Kontext. Sie können diese Beschreibungen auch in der Liste der Ausführungen suchen und die Ausführungsbeschreibung als Spalte der Liste der Ausführungen hinzufügen. 
 
 Navigieren Sie zur Seite **Ausführungsdetails** für Ihre Ausführung, und wählen Sie das Bearbeitungs- oder Stiftsymbol aus, um Beschreibungen für Ihre Ausführung hinzuzufügen, zu bearbeiten oder zu löschen. Wenn Sie die Änderungen an der Liste der Ausführungen beibehalten möchten, speichern Sie die Änderungen in Ihrer vorhandenen „Benutzerdefinierten Ansicht“ oder einer neuen „Benutzerdefinierten Ansicht“. Das Markdown-Format wird für Ausführungsbeschreibungen unterstützt, sodass, wie unten angezeigt, Abbildungen eingebettet werden können und Deep Linking ermöglicht wird.
 
-:::image type="content" source="media/how-to-track-monitor-analyze-runs/run-description.gif" alt-text="Screenshot: Erstellen einer Ausführungsbeschreibung"::: 
+:::image type="content" source="media/how-to-track-monitor-analyze-runs/run-description-2.gif" alt-text="Screenshot: Erstellen einer Ausführungsbeschreibung"::: 
 
 ## <a name="tag-and-find-runs"></a>Markieren und Suchen von Ausführungen
 

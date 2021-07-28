@@ -9,30 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 06/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 762bd1c536df0ca307149ba7c201f08f5bdfded5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6a1fe629d3a73245570dddba1b983b7c0d62612
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735603"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748893"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Tutorial: Azure Active Directory-Integration mit xMatters OnDemand
 
-In diesem Tutorial erfahren Sie, wie Sie xMatters OnDemand in Azure Active Directory (Azure AD) integrieren.
-Die Integration von xMatters OnDemand in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie xMatters OnDemand in Azure Active Directory (Azure AD) integrieren. Die Integration von xMatters OnDemand in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf xMatters OnDemand hat.
-* Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei xMatters OnDemand anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* In Azure AD steuern, wer Zugriff auf xMatters OnDemand hat.
+* Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei xMatters OnDemand anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit xMatters OnDemand konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
-* xMatters OnDemand-Abonnement, für das einmaliges Anmelden aktiviert ist
+* xMatters OnDemand-Abonnement, für das einmaliges Anmelden aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -40,7 +39,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * xMatters OnDemand unterstützt **IDP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-xmatters-ondemand-from-the-gallery"></a>Hinzufügen von xMatters OnDemand aus dem Katalog
+## <a name="add-xmatters-ondemand-from-the-gallery"></a>Hinzufügen von xMatters OnDemand aus dem Katalog
 
 Zum Konfigurieren der Integration von xMatters OnDemand in Azure AD müssen Sie xMatters OnDemand aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
@@ -50,7 +49,6 @@ Zum Konfigurieren der Integration von xMatters OnDemand in Azure AD müssen Sie 
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **xMatters OnDemand** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **xMatters OnDemand** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-xmatters-ondemand"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für xMatters OnDemand
 
@@ -65,36 +63,36 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines xMatters OnDemand-Testbenutzers](#create-xmatters-ondemand-test-user)**, um ein Pendant von Britta Simon in xMatters OnDemand zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
 3. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **xMatters OnDemand** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL in einem der folgenden Formate ein:
 
     | Bezeichner |
     | ---------- |
-    | `https://<companyname>.au1.xmatters.com.au/` |
-    | `https://<companyname>.cs1.xmatters.com/` |
-    | `https://<companyname>.xmatters.com/` |
+    | `https://<COMPANY_NAME>.au1.xmatters.com.au/` |
+    | `https://<COMPANY_NAME>.cs1.xmatters.com/` |
+    | `https://<COMPANY_NAME>.xmatters.com/` |
     | `https://www.xmatters.com` |
-    | `https://<companyname>.xmatters.com.au/` |
+    | `https://<COMPANY_NAME>.xmatters.com.au/` |
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein:
 
     | Antwort-URL |
     | ---------- |
-    |  `https://<companyname>.au1.xmatters.com.au` |
-    | `https://<companyname>.xmatters.com/sp/<instancename>` |
-    | `https://<companyname>.cs1.xmatters.com/sp/<instancename>` |
-    | `https://<companyname>.au1.xmatters.com.au/<instancename>` |
+    | `https://<COMPANY_NAME>.au1.xmatters.com.au` |
+    | `https://<COMPANY_NAME>.xmatters.com/sp/<INSTANCE_NAME>` |
+    | `https://<COMPANY_NAME>.cs1.xmatters.com/sp/<INSTANCE_NAME>` |
+    | `https://<COMPANY_NAME>.au1.xmatters.com.au/<INSTANCE_NAME>` |
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Kundensupportteam von xMatters OnDemand](https://www.xmatters.com/company/contact-us/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -134,18 +132,17 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-
 ## <a name="configure-xmatters-ondemand-sso"></a>Konfigurieren des einmaligen Anmeldens für xMatters OnDemand
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der xMatters OnDemand-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie auf **Admin** (Verwaltung) und dann auf **Company Details** (Unternehmensdetails).
 
-    ![Seite „Admin“ (Verwaltung)](./media/xmatters-ondemand-tutorial/admin.png "Admin")
+    ![Seite „Admin“ (Verwaltung)](./media/xmatters-ondemand-tutorial/admin.png "Seite „Admin“ (Verwaltung)")
 
 3. Führen Sie auf der Seite **SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![Abschnitt für die SAML-Konfiguration ](./media/xmatters-ondemand-tutorial/saml-configuration.png "SAML-Konfiguration")
+    ![Abschnitt für die SAML-Konfiguration ](./media/xmatters-ondemand-tutorial/saml-configuration.png "Abschnitt für die SAML-Konfiguration ")
 
     a. Wählen Sie **SAML aktivieren**.
 
@@ -173,9 +170,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Benutzer hinzufügen](./media/xmatters-ondemand-tutorial/add-user-2.png "Benutzer hinzufügen")
 
-
-
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 

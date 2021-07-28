@@ -3,12 +3,12 @@ title: 'Azure-Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portal
 description: In diesem Schnellstart erfahren Sie, wie Sie einen Azure Event Hub im Azure-Portal erstellen.
 ms.topic: quickstart
 ms.date: 05/25/2021
-ms.openlocfilehash: 32a669c08976f1626617b7d17558e2733fa784a5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6a483981f1461c738f087c6f9401006319fd0135
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375109"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617137"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der Millionen von Ereignissen pro Sekunde empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
@@ -55,7 +55,7 @@ Ein Event Hubs-Namespace bietet einen Container mit einem eindeutigen Bereich, i
    1. Geben Sie einen **Namen** für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.  
    1. Wählen Sie einen **Standort** für den Namespace aus.
    1. Wählen Sie **Basic** für den **Tarif** aus. Informationen zu den Unterschieden zwischen den Tarifen finden Sie in den Artikeln [Kontingente und Grenzwerte](event-hubs-quotas.md), [Event Hubs Premium](event-hubs-premium-overview.md) und [Event Hubs Dedicated](event-hubs-dedicated-overview.md). 
-   1. Lassen Sie die Einstellungen für **Durchsatzeinheiten** (für den Standard-Tarif) oder **Verarbeitungseinheiten** (für den Premium-Tarif) unverändert. Durchsatzeinheiten werden vorab als Kapazitätseinheiten erworben. Weitere Informationen zu Durchsatzeinheiten oder Verarbeitungseinheiten finden Sie unter [Skalierung mit Event Hubs](event-hubs-scalability.md).  
+   1. Lassen Sie die Einstellungen für **Durchsatzeinheiten** (für den Standard-Tarif) oder **Verarbeitungseinheiten** (für den Premium-Tarif) unverändert. Weitere Informationen zu Durchsatzeinheiten oder Verarbeitungseinheiten finden Sie unter [Skalierung mit Event Hubs](event-hubs-scalability.md).  
    1. Wählen Sie am unteren Rand der Seite die Option **Bewerten + erstellen** aus.
       
       ![Erstellen eines Event Hub-Namespace](./media/event-hubs-quickstart-portal/create-event-hub1.png)

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 1b844eb66a287e103e453e242bec407b2f3a38e6
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 3bc89555f3526048f2e4876724503d0137f21fbf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788407"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964375"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Einrichten Ihres Azure Percept DK und Bereitstellen Ihres ersten KI-Modells
 
@@ -64,7 +64,7 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
     > [!WARNING]
     > Während Sie eine Verbindung mit dem WLAN-Zugriffspunkt des Azure Percept DK herstellen, verliert Ihr Hostcomputer vorübergehend seine Internetverbindung. Aktive Videokonferenzanrufe, Webstreaming oder andere netzwerkbasierte Erfahrungen werden unterbrochen.
 
-1. Nachdem die Verbindung mit dem WLAN-Zugriffspunkt des Development Kits hergestellt wurde, startet der Hostcomputer die Einrichtungserfahrung automatisch in einem neuen Browserfenster mit **your.new.device/** in der Adressleiste. Sollte die Registerkarte nicht automatisch geöffnet werden, starten Sie die Einrichtungserfahrung, indem Sie zu [http://10.1.1.1](http://10.1.1.1) navigieren. Vergewissern Sie sich, dass Ihr Browser mit den Azure-Kontoanmeldeinformationen angemeldet ist, die Sie mit Azure Percept verwenden möchten.
+1. Nachdem die Verbindung mit dem WLAN-Zugriffspunkt des Development Kits hergestellt wurde, startet der Hostcomputer die Einrichtungserfahrung automatisch in einem neuen Browserfenster mit **your.new.device/** in der Adressleiste. Wenn die Registerkarte nicht automatisch geöffnet wird, starten Sie die Einrichtung, indem Sie in einem Webbrowser zu [http://10.1.1.1](http://10.1.1.1) navigieren. Vergewissern Sie sich, dass Ihr Browser mit den Azure-Kontoanmeldeinformationen angemeldet ist, die Sie mit Azure Percept verwenden möchten.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-01-welcome.png" alt-text="Begrüßungsseite.":::
 
@@ -148,7 +148,7 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
 1. Wenn die Seite **Gerätesetup abgeschlossen!** angezeigt wird, wurde ihr Development Kit erfolgreich mit Ihrer IoT Hub-Instanz verknüpft und die erforderliche Software heruntergeladen. Die Verbindung mit den WLAN-Zugriffspunkt wird von Ihrem Development Kit automatisch getrennt. Dies hat zwei Benachrichtigungen zur Folge:
 
     > [!NOTE]
-    > Für die IoT Edge-Container, die bei diesem Setupprozess konfiguriert werden, werden Zertifikate genutzt, die nach 90 Tagen ablaufen. Die Zertifikate können automatisch erneut generiert werden, indem IoT Edge neu gestartet wird. Weitere Informationen finden Sie unter [Verwalten von Zertifikaten auf einem IoT Edge-Gerät](https://docs.microsoft.com/azure/iot-edge/how-to-manage-device-certificates).
+    > Für die IoT Edge-Container, die bei diesem Setupprozess konfiguriert werden, werden Zertifikate genutzt, die nach 90 Tagen ablaufen. Die Zertifikate können automatisch erneut generiert werden, indem IoT Edge neu gestartet wird. Weitere Informationen finden Sie unter [Verwalten von Zertifikaten auf einem IoT Edge-Gerät](../iot-edge/how-to-manage-device-certificates.md).
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="Warnung wegen Trennung der Verbindung der Einrichtungserfahrung.":::
 

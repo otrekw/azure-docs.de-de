@@ -1,24 +1,24 @@
 ---
-title: 'Verwalten von App-Gruppen per Windows Virtual Desktop-Portal: Azure'
-description: Es wird beschrieben, wie Sie Windows Virtual Desktop-App-Gruppen mit dem Azure-Portal verwalten.
+title: 'Verwalten von App-Gruppen im Azure Virtual Desktop-Portal: Azure'
+description: Erfahren Sie, wie Sie Azure Virtual Desktop-App-Gruppen im Azure-Portal verwalten.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 10/09/2020
+ms.date: 05/28/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 65ca13cba07230a7bf606a398e28761aced14857
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3c28654f70599a67060a94b8bb93397fc51c527e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446008"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753339"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Tutorial: Verwalten von App-Gruppen mit dem Azure-Portal
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/manage-app-groups-2019.md).
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/manage-app-groups-2019.md).
 
-Die Standard-App-Gruppe, die für einen neuen Windows Virtual Desktop-Hostpool erstellt wird, veröffentlicht auch den vollständigen Desktop. Zusätzlich können Sie RemoteApp-Anwendungsgruppen für den Hostpool erstellen. In diesem Tutorial erfahren Sie, wie Sie eine RemoteApp-Gruppe erstellen und individuelle Startmenü-Apps veröffentlichen.
+Die Standard-App-Gruppe, die für einen neuen Azure Virtual Desktop-Hostpool erstellt wird, veröffentlicht auch den vollständigen Desktop. Zusätzlich können Sie RemoteApp-Anwendungsgruppen für den Hostpool erstellen. In diesem Tutorial erfahren Sie, wie Sie eine RemoteApp-Gruppe erstellen und individuelle Startmenü-Apps veröffentlichen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -35,7 +35,7 @@ Falls Sie bereits einen Hostpool und Sitzungshost-VMs erstellt haben, indem Sie 
     >[!NOTE]
     > Wenn Sie sich beim US Gov-Portal anmelden, wechseln Sie stattdessen zu [https://portal.azure.us/](https://portal.azure.us/).
 
-2.  Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option aus.
+2.  Suchen Sie nach **Azure Virtual Desktop**, und wählen Sie diese Option aus.
 
 3. Sie können eine Anwendungsgruppe direkt oder aus einem vorhandenen Hostpool hinzufügen. Wählen Sie eine der folgenden Option aus:
 
@@ -124,7 +124,31 @@ Beim Bereitstellungsprozess wird Folgendes für Sie durchgeführt:
 - Erstellen eines Links zu einer Azure Resource Manager-Vorlage basierend auf Ihrer Konfiguration, die Sie herunterladen und zur späteren Verwendung speichern können
 
 >[!IMPORTANT]
->Für jeden Azure Active Directory-Mandanten können nur 200 Anwendungsgruppen erstellt werden. Dieser Grenzwert wurde aufgrund von Diensteinschränkungen beim Abrufen von Feeds für unsere Benutzer hinzugefügt. Er gilt nicht für App-Gruppen, die in Windows Virtual Desktop (klassisch) erstellt wurden.
+>Für jeden Azure Active Directory-Mandanten können nur 200 Anwendungsgruppen erstellt werden. Dieser Grenzwert wurde aufgrund von Diensteinschränkungen beim Abrufen von Feeds für unsere Benutzer hinzugefügt. Er gilt nicht für App-Gruppen, die in Azure Virtual Desktop (klassisch) erstellt wurden.
+
+## <a name="edit-or-remove-an-app"></a>Bearbeiten oder Entfernen einer App
+
+So wird eine App in einer App-Gruppe bearbeitet oder entfernt
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+   
+   >[!NOTE]
+   >Wenn Sie sich beim US Gov-Portal anmelden, wechseln Sie stattdessen zu [https://portal.azure.us/](https://portal.azure.us).
+
+2. Suchen Sie **Azure Virtual Desktop**, und wählen Sie diese Option aus.
+
+3. Sie können eine Anwendungsgruppe entweder direkt oder aus einem vorhandenen Hostpool hinzufügen, indem Sie eine der folgenden Optionen wählen:
+
+    - Um eine neue Anwendungsgruppe direkt hinzuzufügen, wählen Sie im Menü links auf der Seite **Anwendungsgruppen** und dann die App-Gruppe aus, die Sie bearbeiten möchten.
+    - Um eine App-Gruppe in einem vorhandenen Hostpool zu bearbeiten, wählen Sie im Menü auf der linken Seite des Bildschirms **Hostpools** und dann den Namen des Hostpools aus. Wählen Sie dann im Menü auf der linken Seite des Bildschirms **Anwendungsgruppen** und anschließend die App-Gruppe aus, die Sie bearbeiten möchten.
+
+4. Wählen Sie im Menü auf der linken Seite **Anwendungen** aus.
+
+5. Wenn Sie eine Anwendung entfernen möchten, aktivieren Sie das Kontrollkästchen neben der Anwendung und wählen dann im Menü oben auf der Seite **Entfernen** aus.
+
+6. Wenn Sie die Details einer Anwendung bearbeiten möchten, wählen Sie den Anwendungsnamen aus. Dadurch wird das Bearbeitungsmenü geöffnet.
+
+7. Wenn Sie mit den Änderungen fertig sind, wählen Sie **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

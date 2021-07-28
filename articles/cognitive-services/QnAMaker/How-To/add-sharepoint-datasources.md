@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 0832b54e02cabecb0b1f0e7af600b8adc621a8b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c15bac8417fdba5f87551dc13311b5272c0926ee
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99584769"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743847"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Hinzufügen einer geschützten SharePoint-Datenquelle zu Ihrer Wissensdatenbank
 
@@ -52,7 +52,7 @@ Wenn Sie das Frage-und-Antwort-Paar im interaktiven Testbereich testen, wird im 
 
 ## <a name="permissions"></a>Berechtigungen
 
-Berechtigungen werden erteilt, wenn einer Wissensdatenbank eine geschützte Datei von einem SharePoint-Server hinzugefügt wird. Hierzu ist möglicherweise Folgendes erforderlich (abhängig von der SharePoint-Konfiguration und den Berechtigungen der Person, die die Datei hinzufügt):
+Berechtigungen werden erteilt, wenn einer Wissensdatenbank eine geschützte Datei von einem SharePoint ausführenden Server hinzugefügt wird. Hierzu ist möglicherweise Folgendes erforderlich (abhängig von der SharePoint-Konfiguration und den Berechtigungen der Person, die die Datei hinzufügt):
 
 * Keine weiteren Schritte: Die Person, die die Datei hinzufügt, verfügt über alle erforderlichen Berechtigungen.
 * Schritte des [Wissensdatenbank-Managers](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal) und des [Active Directory-Managers](#active-directory-manager-grant-file-read-access-to-qna-maker).

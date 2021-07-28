@@ -1,11 +1,14 @@
 ---
-ms.openlocfilehash: e62aed02a0ad5f26ec8fd0a79de5e91269386095
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 61648bc0eab3aba4806cf4594e6fe222ac77f93f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450442"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111993502"
 ---
+> [!NOTE]
+> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/phone-numbers-quickstart).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -53,6 +56,8 @@ pip install azure-identity
 ```
 
 Zum Erstellen eines `DefaultAzureCredential`-Objekts müssen Sie `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET` und `AZURE_TENANT_ID` bereits als Umgebungsvariablen mit den entsprechenden Werten aus der registrierten Azure AD-Anwendung festlegen.
+
+Eine kurze Übersicht zum Abrufen dieser Umgebungsvariablen finden Sie im Schnellstart [Einrichten verwalteter Identitäten über die CLI](../../managed-identity-from-cli.md).
 
 Nachdem Sie die `azure-identity`-Bibliothek installiert haben, können Sie die Authentifizierung des Clients fortsetzen.
 
@@ -111,7 +116,7 @@ try:
         calling = PhoneNumberCapabilityType.INBOUND,
         sms = PhoneNumberCapabilityType.INBOUND_OUTBOUND
     )
-    search_poller = self.phone_number_client.begin_search_available_phone_numbers(
+    search_poller = phone_numbers_client.begin_search_available_phone_numbers(
         "US",
         PhoneNumberType.TOLL_FREE,
         PhoneNumberAssignmentType.APPLICATION,
@@ -226,5 +231,5 @@ print('Status of the operation: ' + release_poller.status())
 Navigieren Sie in einer Konsoleneingabeaufforderung zum Verzeichnis mit der Datei phone_numbers_sample.py, und führen Sie anschließend den folgenden Phyton-Befehl aus, um die App auszuführen.
 
 ```console
-./phone_numbers_sample.py
+python phone_numbers_sample.py
 ```

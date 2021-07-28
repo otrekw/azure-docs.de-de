@@ -1,4 +1,4 @@
-- name: Dokumentation zu Azure DB for MariaDB
+- name: 'Azure Database for MariaDB: Dokumentation'
   href: index.yml
 - name: Übersicht
   expanded: true
@@ -154,7 +154,7 @@
     - name: Konfigurieren von TLS
       href: howto-tls-configurations.md
     - name: Bedrohungsschutz mit Azure Defender
-      href: ../security-center/defender-for-databases-introduction.md
+      href: ../security-center/defender-for-databases-usage.md?toc=/azure/mariadb/toc.json&bc=/azure/mariadb/breadcrumb/toc.json
     - name: Überwachungskonzepte
       href: concepts-audit-logs.md
     - name: Konfigurieren von Überwachungsprotokollen

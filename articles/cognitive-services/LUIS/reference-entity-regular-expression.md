@@ -4,19 +4,19 @@ description: Ein regulärer Ausdruck ist am besten für unformatierten Text von 
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 04/14/2020
-ms.openlocfilehash: 18e44ec43e1169aa054e6e5b4591ccd8611a7f4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/05/2021
+ms.openlocfilehash: e53d21cc4e28f6c388b4e4f980a3352021fc2bcb
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95025224"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803402"
 ---
 # <a name="regular-expression-entity"></a>Entität vom Typ „RegEx“
 
 Eine RegEx-Entität extrahiert eine Entität anhand eines regulären Ausdrucks, den Sie bereitstellen.
 
-Ein regulärer Ausdruck ist am besten für unformatierten Text von Äußerungen geeignet. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung auf Zeichenebene (nicht auf Tokenebene) angewandt. Wenn der reguläre Ausdruck zu komplex ist (z.B. mit zu vielen Klammern), können Sie den Ausdruck dem Modell nicht hinzufügen. Es wird ein Teil der [.NET Regex](/dotnet/standard/base-types/regular-expressions)-Bibliothek verwendet, aber nicht die gesamte Bibliothek.
+Ein regulärer Ausdruck ist am besten für unformatierten Text von Äußerungen geeignet. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung auf Tokenebene angewandt. Wenn der reguläre Ausdruck zu komplex ist (z.B. mit zu vielen Klammern), können Sie den Ausdruck dem Modell nicht hinzufügen. Es wird ein Teil der [.NET Regex](/dotnet/standard/base-types/regular-expressions)-Bibliothek verwendet, aber nicht die gesamte Bibliothek.
 
 **Diese Entität ist gut geeignet, wenn Folgendes gilt**:
 
@@ -25,21 +25,7 @@ Ein regulärer Ausdruck ist am besten für unformatierten Text von Äußerungen 
 
 ![Entität vom Typ „RegEx“](./media/luis-concept-entities/regex-entity.png)
 
-## <a name="usage-considerations"></a>Überlegungen zur Verwendung
-
-Reguläre Ausdrücke finden möglicherweise mehr, als Sie erwarten. Ein Beispiel hierfür ist eine numerische Wortsuche, wie z. B. `one` und `two`. Ein Beispiel ist der folgende reguläre Ausdruck, der die Zahl `one` zusammen mit anderen Zahlen findet:
-
-```javascript
-(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-```
-
-Dieser RegEx-Ausdruck findet auch alle Wörter, die auf diese Zahlen enden, wie z. B. `phone`. Um Probleme wie dieses zu beheben, stellen Sie sicher, dass bei Übereinstimmungen für reguläre Ausdrücke die Wortgrenzen berücksichtigt werden. Der reguläre Ausdruck mit Berücksichtigung von Wortgrenzen für dieses Beispiel wird im folgenden regulären Ausdruck verwendet:
-
-```javascript
-\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
-```
-
-### <a name="example-json"></a>JSON-Beispiel
+## <a name="example-json"></a>JSON-Beispiel
 
 Wenn Sie `kb[0-9]{6}` als Definition der RegEx-Entität verwenden, stellt die folgende JSON-Antwort eine Beispieläußerung für die zurückgegebenen RegEx-Entitäten für die folgende Abfrage dar:
 

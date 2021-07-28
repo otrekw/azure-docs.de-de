@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/04/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: b1cff29834f60e11818324a94624e0e6dd0ee43e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: dc59905351da364ed23b5cbc59b972feb0497a9e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100365"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294929"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an Azure IoT Hub
 
@@ -88,6 +88,8 @@ In dieser Schnellstartanleitung haben Sie einen grundlegenden Workflow für Azur
 Sehen Sie sich anschließend die folgenden Artikel an, um mehr über das Erstellen von Gerätelösungen mit Azure IoT zu erfahren: 
 
 > [!div class="nextstepaction"]
+> [Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Python)](../iot-hub/quickstart-control-device-dotnet.md)
+> [!div class="nextstepaction"]
 > [Senden von Telemetriedaten an IoT Central](quickstart-send-telemetry-central.md)
 > [!div class="nextstepaction"]
-> [Erste Schritte bei der eingebetteten Entwicklung](quickstart-device-development.md)
+> [Verbinden eines MXCHIP AZ3166-DevKits mit IoT Central](quickstart-devkit-mxchip-az3166.md)

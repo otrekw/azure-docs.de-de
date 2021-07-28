@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65f69cf492ec3e28d7f4aa86971dc6c91b34bdf5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a275b1c43f8a7c5526209f943e48a1d943eca149
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644175"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713682"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -35,7 +35,7 @@ Das folgende Video enthält eine Übersicht über das Ändern eines Zugriffspake
 
 Wenn Sie einem Zugriffspaket Ressourcen hinzufügen möchten, müssen Sie überprüfen, ob die benötigten Ressourcen im Katalog verfügbar sind. Zugriffspaket-Manager können einem Katalog keine Ressourcen hinzufügen, auch wenn Sie deren Besitzer sind. Sie können nur die im Katalog verfügbaren Ressourcen verwenden.
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

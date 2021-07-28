@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 3392cc5f3ee9daef1ae8397f6829f4ca7a42373a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8dfe8711733efeb33561531c85925111799daba
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98871399"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479303"
 ---
 # <a name="limits-and-quotas"></a>Grenzen und Kontingente
 
@@ -23,13 +23,13 @@ Es gibt zwei Schlüsselebenen für Custom Vision Service. Sie können sich über
 
 Es wird erwartet, dass die Anzahl der Bilder pro Projekt und die Anzahl der Tags pro Projekt für S0-Projekte mit der Zeit ansteigen.
 
-|Faktor|**F0**|**S0**|
+|Faktor|**F0 (Free)**|**S0 (Standard)**|
 |-----|-----|-----|
 |Projekte|2|100|
 |Trainingsbilder pro Projekt |5\.000|100.000|
 |Vorhersagen pro Monat|10.000 |Unbegrenzt|
 |Tags pro Projekt|50|500|
-|Iterationen |10|10|
+|Iterationen |20|20|
 |Mindestanzahl der gekennzeichneten Bilder pro Tag, Klassifizierung (> 50 empfohlen) |5|5|
 |Mindestanzahl der gekennzeichneten Bilder pro Tag, Objekterkennung (> 50 empfohlen)|15|15|
 |Dauer der Speicherung von Vorhersagebildern|30 Tage|30 Tage|

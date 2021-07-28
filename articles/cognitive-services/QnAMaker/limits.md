@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: c654153340586004415b9d2fd8744fb539726960
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0d9e3d4c9ec9eab75ce5917e9ea20011653ff133
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369405"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790192"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Grenzwerte und Grenzen für QnA Maker-Wissensdatenbanken
 
@@ -60,15 +60,31 @@ Die maximale Anzahl von Deep-Links, die zum Extrahieren von Fragen und Antworten
 
 ## <a name="metadata-limits"></a>Grenzwerte für Metadaten
 
-Metadaten werden als textbasiertes Schlüssel-Werte-Paar dargestellt, z. B. `product:windows 10`. Die Metadaten werden in Kleinbuchstaben gespeichert und verglichen.
+Metadaten werden als textbasiertes Schlüssel-Werte-Paar dargestellt, z. B. `product:windows 10`. Die Metadaten werden in Kleinbuchstaben gespeichert und verglichen. Die maximale Anzahl von Metadatenfeldern basiert auf den **[Grenzwerten für den Azure Cognitive Search-Dienst](../../search/search-limits-quotas-capacity.md)** .
 
-### <a name="by-azure-cognitive-search-pricing-tier"></a>Nach Azure Cognitive Search-Tarif
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
-Die maximale Anzahl von Metadatenfeldern pro Wissensdatenbank basiert auf den **[Grenzwerten für den Azure Cognitive Search-Dienst](../../search/search-limits-quotas-capacity.md)** .
+Da der Testindex für alle KBs freigegeben ist, wird der Grenzwert für die GA-Version (allgemeine Verfügbarkeit) auf alle Wissensdatenbanken im QnA Maker angewendet.
 
 |**Azure Cognitive Search-Tarif** | **Free** | **Grundlegend** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maximale Anzahl der Metadatenfelder pro QnA Maker-Dienst (für alle Knowledge Bases)|1\.000|100*|1\.000|1\.000|1\.000|1\.000|
+
+# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
+
+Wenn Sie sich dafür entscheiden, Wissensdatenbanken für mehrere Sprachen in einem Dienst zu verwenden, gibt es einen dedizierten Testindex pro Wissensdatenbank. Daher wird der Grenzwert im QnA Maker-Dienst pro Wissensdatenbank angewendet.
+
+|**Azure Cognitive Search-Tarif** | **Free** | **Grundlegend** |**S1** | **S2**| **S3** |**S3 HD**|
+|---|---|---|---|---|---|----|
+|Maximale Anzahl der Metadatenfelder pro QnA Maker-Dienst (pro Wissensdatenbank)|1\.000|100*|1\.000|1\.000|1\.000|1\.000|
+
+Wenn Sie die Option für die Verwendung von Wissensdatenbanken in mehreren Sprachen nicht auswählen, werden die Grenzwerte auf alle Wissensdatenbanken im QnA Maker-Dienst angewendet.
+
+|**Azure Cognitive Search-Tarif** | **Free** | **Grundlegend** |**S1** | **S2**| **S3** |**S3 HD**|
+|---|---|---|---|---|---|----|
+|Maximale Anzahl der Metadatenfelder pro QnA Maker-Dienst (für alle Knowledge Bases)|1\.000|100*|1\.000|1\.000|1\.000|1\.000|
+
+---
 
 ### <a name="by-name-and-value"></a>Nach Name und Wert
 

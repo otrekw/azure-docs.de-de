@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 05/09/2021
+ms.date: 07/01/2021
 ms.author: memildin
-ms.openlocfilehash: ed9ea3abf984f537ab693ccbadb90e2ba091f52d
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: cff1215fadcd26f18b75c33bba6794c625729e5d
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683567"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113225586"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Wichtige bevorstehende Änderungen an Azure Security Center
 
@@ -26,79 +26,76 @@ Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Cen
 
 ## <a name="planned-changes"></a>Geplante Änderungen
 
-| Geplante Änderung                                                                                                                                                        | Voraussichtliches Datum der Änderung |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| [Zwei Empfehlungen der Sicherheitskontrolle „Systemupdates anwenden“ als veraltet eingestuft](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | April 2021                |
-| [Änderung des Präfix für Kubernetes-Warnungen von „AKS_“ in „K8s_“](#prefix-for-kubernetes-alerts-changing-from-aks_-to-k8s_)                                               | Juni 2021                 |
-| [Die Legacy-Implementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)          | Juni 2021                 |
-| [Die Empfehlungen von AWS werden zur allgemeinen Verfügbarkeit (GA) veröffentlicht.](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **August** 2021           |
-| [Verbesserungen für die Empfehlung zur SQL-Datenklassifizierung](#enhancements-to-sql-data-classification-recommendation)                                                     | Q2 2021                   |
-|                                                                                                                                                                       |                           |
+| Geplante Änderung                                                                                                                                                                                          | Voraussichtliches Datum der Änderung |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| [CSV-Exporte auf 20 MB beschränkt](#csv-exports-to-be-limited-to-20-mb)                                                                                                                               | Juli 2021                 |
+| [Die Legacy-Implementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)                                            | Juli 2021                 |
+| [Empfehlung „Log Analytics-Agent-Integritätsprobleme müssen auf Computern gelöst werden“ als veraltet gekennzeichnet](#deprecating-recommendation-log-analytics-agent-health-issues-should-be-resolved-on-your-machines) | Juli 2021                 |
+| [Verbesserungen für die Empfehlung zur SQL-Datenklassifizierung](#enhancements-to-sql-data-classification-recommendation)                                                                                       | Q3 2021                   |
+| [Aktivieren der Einbindung der Azure Defender-Sicherheitskontrolle in die Sicherheitsbewertung](#enable-azure-defender-security-control-to-be-included-in-secure-score)                                                         | Q3 2021                   |
+|                                                                                                                                                                                                         |                           |
 
 
-### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Zwei Empfehlungen der Sicherheitskontrolle „Systemupdates anwenden“ als veraltet eingestuft
+### <a name="csv-exports-to-be-limited-to-20-mb"></a>CSV-Exporte auf 20 MB beschränkt
 
-**Geschätztes Datum der Änderung:** April 2021
+**Voraussichtliches Datum der Änderung:** Juli 2021
 
-Die beiden folgenden Empfehlungen werden als veraltet eingestuft:
+Beim Exportieren von Daten zu Security Center-Empfehlungen gibt es derzeit keine Beschränkung für die Datenmenge, die Sie herunterladen können.
 
-- **Die Betriebssystemversion sollte für Ihre Clouddienstrollen aktualisiert werden**: Azure aktualisiert Ihr Gastbetriebssystem standardmäßig in regelmäßigen Abständen auf das neueste Image innerhalb der BS-Familie, die Sie in der Dienstkonfiguration (CSCFG-Datei) angegeben haben (z B. Windows Server 2016).
-- **Für Kubernetes Service muss ein Upgrade auf eine Kubernetes-Version ohne Sicherheitsrisiko durchgeführt werden**: Die Evaluierungen dieser Empfehlung sind uns nicht weitreichend genug. Die aktuelle Version dieser Empfehlung wird später durch eine verbesserte Version ersetzt, die besser auf die Sicherheitsanforderungen unserer Kunden abgestimmt ist.
+:::image type="content" source="media/upcoming-changes/download-csv-report.png" alt-text="Schaltfläche „CSV-Bericht herunterladen“ zum Exportieren von Empfehlungsdaten in Security Center":::
 
+Mit dieser Änderung wird ein Grenzwert von 20 MB festgelegt.
 
-### <a name="prefix-for-kubernetes-alerts-changing-from-aks_-to-k8s_"></a>Änderung des Präfix für Kubernetes-Warnungen von „AKS_“ in „K8s_“
+Wenn Sie größere Datenmengen exportieren müssen, verwenden Sie vor der Auswahl die verfügbaren Filter, oder wählen Sie Teilmengen Ihrer Abonnements aus, und laden Sie die Daten in Batches herunter.
 
-**Voraussichtliches Datum der Änderung:** Juni 2021
+:::image type="content" source="media/upcoming-changes/filter-subscriptions.png" alt-text="Filtern von Abonnements im Azure-Portal":::
 
-Azure Defender für Kubernetes wurde kürzlich erweitert, um Kubernetes-Cluster zu schützen, die lokal und in Umgebungen mit mehreren Clouds gehostet werden. Weitere Informationen finden Sie unter [Verwenden von Azure Defender für Kubernetes zum Schutz von Hybrid- und Multi-Cloud-Bereitstellungen von Kubernetes (Vorschau)](release-notes.md#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview).
-
-Um deutlich zu machen, dass die von Azure Defender für Kubernetes bereitgestellten Sicherheitswarnungen nicht mehr auf Cluster in Azure Kubernetes Service beschränkt sind, ändert sich das Präfix für die Warnungstypen von „AKS_“ in „K8s_“. Bei Bedarf werden auch die Namen und Beschreibungen aktualisiert. Ein Beispiel:
-
-|Warnung (Warnungstyp)|Beschreibung|
-|----|----|
-|Erkannte Tools für Kubernetes-Penetrationstests<br>(**AKS** _PenTestToolsKubeHunter)|Die Analyse des Kubernetes-Überwachungsprotokolls hat die Verwendung von Kubernetes-Penetrationstesttools im **AKS**-Cluster erkannt. Dieses Verhalten kann zwar legitim sein, aber Angreifer können solche öffentlichen Tools für böswillige Zwecke nutzen.
-|||
-
-Diese Warnung wird zu:
-
-|Warnung (Warnungstyp)|Beschreibung|
-|----|----|
-|Erkannte Tools für Kubernetes-Penetrationstests<br>(**K8s** _PenTestToolsKubeHunter)|Die Analyse des Kubernetes-Überwachungsprotokolls hat die Verwendung von Kubernetes-Penetrationstesttools im **Kubernetes**-Cluster erkannt. Dieses Verhalten kann zwar legitim sein, aber Angreifer können solche öffentlichen Tools für böswillige Zwecke nutzen.|
-|||
-
-Unterdrückungsregeln, in denen auf mit „AKS_“ beginnende Warnungen verwiesen wird, werden automatisch konvertiert. Wenn Sie SIEM-Exporte oder benutzerdefinierte Automatisierungsskripts eingerichtet haben, in denen anhand des Warnungstyps auf Kubernetes-Warnungen verwiesen wird, müssen diese mit den neuen Warnungstypen aktualisiert werden.
-
-Eine vollständige Liste der Kubernetes-Warnungen finden Sie unter [Warnungen für Container: Kubernetes-Cluster](alerts-reference.md#alerts-akscluster).
+Erfahren Sie mehr über das [Ausführen eines CSV-Exports Ihrer Sicherheitsempfehlungen](continuous-export.md#manual-one-time-export-of-alerts-and-recommendations).
 
 ### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>Die Legacyimplementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.
+
+**Voraussichtliches Datum der Änderung:** Juli 2021
 
 Die Legacyimplementierung von ISO 27001 wird vom Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen entfernt. Wenn Sie Ihre ISO 27001-Konformität mit Security Center nachverfolgen, integrieren Sie den neuen Standard „ISO 27001:2013“ für alle relevanten Verwaltungsgruppen oder Abonnements. Die derzeitige Legacynorm „ISO 27001“ wird in Kürze vom Dashboard entfernt.
 
 :::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="Security Center-Dashboard zur Einhaltung gesetzlicher Bestimmungen mit der Meldung, dass die Legacyimplementierung von ISO 27001 entfernt wird" lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
-### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>Empfehlungen von AWS werden zur allgemeinen Verfügbarkeit (GA) veröffentlicht.
+### <a name="deprecating-recommendation-log-analytics-agent-health-issues-should-be-resolved-on-your-machines"></a>Empfehlung „Log Analytics-Agent-Integritätsprobleme müssen auf Computern gelöst werden“ als veraltet gekennzeichnet
 
-**Geschätztes Datum der Änderung:** August 2021
+**Voraussichtliches Datum der Änderung:** Juli 2021
 
-Azure Security Center schützt Workloads in Azure, Amazon Web Services (AWS) und Google Cloud Platform (GCP).
+Wir haben festgestellt, dass die Empfehlung **Log Analytics-Agent-Integritätsprobleme müssen auf Computern gelöst werden** Auswirkungen auf die Sicherheitsbewertungen haben, die dem Schwerpunkt von Security Center Cloud Security Posture Management (CSPM) nicht entsprechen. In der Regel bezieht sich CSPM auf die Ermittlung von Fehlkonfigurationen bei der Sicherheit. Probleme mit der Agent-Integrität gehören nicht in diese Problemkategorie.
 
-Die Empfehlungen von AWS Security Hub waren seit der Einführung der Cloud Connectors als Vorschauversion verfügbar. Empfehlungen, die als **Vorschau** gekennzeichnet sind, sind nicht in den Berechnungen Ihrer Sicherheitsbewertung enthalten, sollten aber nach Möglichkeit immer noch wieder bearbeitet werden, damit Sie nach Abschluss des Vorschauzeitraums zu ihrer Bewertung beitragen.
+Darüber hinaus handelt es sich bei der Empfehlung im Gegensatz zu den anderen Agents im Zusammenhang mit Security Center um eine Anomalie: Dies ist der einzige Agent mit einer Empfehlung im Zusammenhang mit Integritätsproblemen.
 
-Mit dieser Änderung werden zwei von AWS-Empfehlungenspakete in die allgemeine Verfügbarkeit verschoben:
+Die Empfehlung wird in Kürze eingestellt.
 
-- [PCI-DSS Steuerelemente des Sicherheitshubs](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
-- [AWS Foundations Benchmark-Steuerelemente des Sicherheitshubs](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
+Aufgrund dieser Einstellung nehmen wir auch geringfügige Änderungen an den Empfehlungen für die Installation des Log Analytics-Agents vor (**Der Log Analytics-Agent muss auf ... installiert sein**).
 
-Wenn diese in allgemeiner Verfügbarkeit sind und die Bewertungen Ihrer AWS-Ressourcen ausgeführt werden, wirken sich die Ergebnisse auf die kombinierte Sicherheitsbewertung all Ihrer Multi- und Hybrid-Cloud-Ressourcen aus.
+Diese Änderung wirkt sich mit hoher Wahrscheinlichkeit auf Ihre Sicherheitsbewertungen aus. Bei den meisten Abonnements erwarten wir, dass die Änderung zu einer höheren Bewertung führt. Es ist aber möglich, dass die Updates der Installationsempfehlung in einigen Fällen zu niedrigeren Bewertungen führen können.
 
-
+> [!TIP]
+> Diese Änderung wirkt sich auch auf die Seite [Ressourcenbestand](asset-inventory.md) aus, da sie auch Informationen darüber anzeigt, ob ein Computer überwacht, nicht überwacht oder teilweise überwacht wird (ein Zustand, der einen Agent mit Integritätsproblemen anzeigt). 
 
 ### <a name="enhancements-to-sql-data-classification-recommendation"></a>Verbesserungen für die Empfehlung zur SQL-Datenklassifizierung
 
-**Geschätztes Datum für die Änderung:** Q2 2021
+**Geschätztes Datum für die Änderung:** Q3 2021
 
 Die Empfehlung **Sensible Daten in Ihren SQL-Datenbanken müssen klassifiziert werden** in der Sicherheitskontrolle **Datenklassifizierung anwenden** wird durch eine neue Version ersetzt, die stärker an der Microsoft-Strategie zur Datenklassifizierung ausgerichtet ist. Infolgedessen ändert sich auch die ID der Empfehlung (derzeit b0df6f56-862d-4730-8597-38c0fd4ebd59).
 
+### <a name="enable-azure-defender-security-control-to-be-included-in-secure-score"></a>Aktivieren der Einbindung der Azure Defender-Sicherheitskontrolle in die Sicherheitsbewertung
+
+**Geschätztes Datum für die Änderung:** Q3 2021
+
+Die Security Center-Empfehlungen zur Härtung sind in Form von Sicherheitskontrollen gruppiert. Bei jeder Sicherheitskontrolle handelt es sich um eine logische Gruppe mit verwandten Sicherheitsempfehlungen, die eine anfällige Angriffsfläche widerspiegelt. Der Beitrag jeder Sicherheitskontrolle zur gesamten Sicherheitsbewertung wird sowohl auf der Seite mit den Empfehlungen als auch unter [Sicherheitskontrollen und deren Empfehlungen](secure-score-security-controls.md#security-controls-and-their-recommendations) eindeutig angezeigt.
+
+Seit ihrer Einführung verfügt die Sicherheitskontrolle **Azure Defender aktivieren** über eine maximal mögliche Bewertung von 0 Punkten. **Nach dieser Änderung trägt die Sicherheitskontrolle zu Ihrer Sicherheitsbewertung bei**.
+
+Beim Aktivieren von Azure Defender erweitern Sie die Funktionen des kostenlosen Modus von Security Center auf Workloads, die in privaten und anderen öffentlichen Clouds ausgeführt werden. So erhalten Sie eine einheitliche Sicherheitsverwaltung und Schutz vor Bedrohungen für Ihre Hybrid Cloud-Workloads. Einige wichtige Features von Azure Defender sind: integrierte Microsoft Defender für Endpunkt-Lizenzen für Ihre Server, Sicherheitsrisikoüberprüfung für virtuelle Computer und Containerregistrierungen, Sicherheitswarnungen basierend auf erweiterten Verhaltensanalysen und maschinellem Lernen und Containersicherheitsfeatures. Eine vollständige Liste finden Sie unter [Azure Security Center Free und Azure Defender-Aktivierung](security-center-pricing.md).
+
+Aufgrund dieser Änderung ergibt sich eine Auswirkung auf die Sicherheitsbewertung von Abonnements, die nicht durch Azure Defender geschützt sind. Wir empfehlen Ihnen, Azure Defender vor dieser Änderung zu aktivieren, um sicherzustellen, dass sich keine Auswirkungen auf Ihre Bewertungen ergeben. 
+
+Erfahren Sie mehr in [Schnellstart: Aktivieren von Azure Defender](enable-azure-defender.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

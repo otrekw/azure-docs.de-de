@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Analysieren von Azure Open Datasets in Azure Synapse Studio mithilfe eines serverlosen SQL-Pools'
-description: In diesem Tutorial wird gezeigt, wie Sie ganz einfach eine explorative Datenanalyse durchführen. Dabei werden mithilfe eines serverlosen SQL-Pools verschiedene Azure Open Datasets-Instanzen miteinander kombiniert und die Ergebnisse in Azure Synapse Studio visualisiert.
+title: 'Tutorial: Analysieren von Azure Open Datasets in Synapse Studio mithilfe eines serverlosen SQL-Pools'
+description: In diesem Tutorial wird gezeigt, wie Sie ganz einfach eine explorative Datenanalyse durchführen. Dabei werden mithilfe eines serverlosen SQL-Pools verschiedene Azure Open Datasets-Instanzen miteinander kombiniert und die Ergebnisse in Synapse Studio visualisiert.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91f9bab7ca85275f914b8421cb4eb7517396ff8a
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: eed38a5dfeafee6a951ea745f3fa12ba11a36699
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685007"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813720"
 ---
 # <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool"></a>Tutorial: Untersuchen und Analysieren von Data Lakes mit einem serverlosen SQL-Pool
 

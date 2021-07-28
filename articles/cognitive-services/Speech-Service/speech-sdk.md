@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 65e55d8e9d81f4045dde29c943f034ed0a24bf4c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cc5ed68fa7a26a347f0cb85c94bb0b7b79ccb055
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608084"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059170"
 ---
 # <a name="about-the-speech-sdk"></a>Informationen zum Speech SDK
 
@@ -69,15 +69,14 @@ Die [Spracherkennung](speech-to-text.md) (auch als *Speech-to-Text* bezeichnet) 
 
 #### <a name="keyword-recognition"></a>Schlüsselworterkennung
 
-Das Konzept der [Schlüsselworterkennung](./custom-keyword-basics.md) wird im Speech SDK unterstützt. Bei der Schlüsselworterkennung wird ein Schlüsselwort in der Sprache erkannt, und nach der Erfassung des Schlüsselworts folgt eine Aktion. Mit dem Schlüsselwort „Hey Cortana“ wird beispielsweise der Cortana-Assistent aktiviert.
+Das Konzept der [Schlüsselworterkennung](custom-keyword-basics.md) wird im Speech SDK unterstützt. Bei der Schlüsselworterkennung wird ein Schlüsselwort in der Sprache erkannt, und nach der Erfassung des Schlüsselworts folgt eine Aktion. Mit dem Schlüsselwort „Hey Cortana“ wird beispielsweise der Cortana-Assistent aktiviert.
 
 **Schlüsselworterkennung** ist auf den folgenden Plattformen verfügbar:
 
   - C++/Windows und Linux
   - C#/Windows und Linux
   - Python/Windows und Linux
-  - Java/Windows und Linux und Android (Speech Devices SDK)
-  - Die Funktionalität für die Schlüsselworterkennung kann u. U. mit jedem Mikrofontyp verwendet werden, offiziell wird die Schlüsselworterkennung derzeit jedoch nur für die Mikrofonarrays in der Azure Kinect DK-Hardware oder im Speech Devices SDK unterstützt.
+  - Java/Windows und Linux und Android
 
 ### <a name="meeting-scenarios"></a>Besprechungsszenarien
 

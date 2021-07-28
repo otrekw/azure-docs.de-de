@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/19/2020
+ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 717696053a742abae6756655a15416ac81221144
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a59e7be93481b8e5da9cc46e473e4a68e8f8e97
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459746"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464019"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit iProva
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie iProva in Azure Active Directory (Azure
 * Steuern Sie in Azure AD, wer Zugriff auf iProva hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei iProva anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,45 +39,39 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * iProva unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-* Nach dem Konfigurieren von iProva können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
-
-## <a name="adding-iprova-from-the-gallery"></a>Hinzufügen von iProva aus dem Katalog
+## <a name="add-iprova-from-the-gallery"></a>Hinzufügen von iProva über den Katalog
 
 Zum Konfigurieren der Integration von iProva in Azure AD müssen Sie iProva aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **iProva** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **iProva** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-iprova"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für iProva
+## <a name="configure-and-test-azure-ad-sso-for-iprova"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für iProva
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit iProva mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in iProva eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit iProva die folgenden Schritte aus:
 
-1. **[Abrufen von Konfigurationsinformationen aus iProva](#retrieve-configuration-information-from-iprova)** als Vorbereitung für die nächsten Schritte.
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Erstellen eines iProva-Testbenutzers](#create-iprova-test-user)** , um ein Pendant von B. Simon in iProva zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-1. **[Konfigurieren des einmaligen Anmeldens für iProva](#configure-iprova-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für iProva](#configure-iprova-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines iProva-Testbenutzers](#create-iprova-test-user)** , um ein Pendant von B. Simon in iProva zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="retrieve-configuration-information-from-iprova"></a>Abrufen von Konfigurationsinformationen von iProva
 
 In diesem Abschnitt rufen Sie Informationen aus iProva ab, um das einmalige Anmelden von Azure AD zu konfigurieren.
 
-1. Öffnen Sie einen Webbrowser, und verwenden Sie das folgende URL-Muster, um zur **SAML2-Informationsseite** in iProva zu gelangen:
+1. Öffnen Sie einen Webbrowser, und verwenden Sie die folgenden URL-Muster, um zur **SAML2-Informationsseite** in iProva zu gelangen:
+    
+     `https://<SUBDOMAIN>.iprova.nl/saml2info` `https://<SUBDOMAIN>.iprova.be/saml2info` 
 
-    ```https
-    https://SUBDOMAIN.iprova.nl/saml2info
-    https://SUBDOMAIN.iprova.be/saml2info
-    ```
-
-    ![Anzeigen der iProva SAML2-Informationsseite](media/iprova-tutorial/iprova-saml2-info.png)
+    ![Anzeigen der iProva SAML2-Informationsseite](media/iprova-tutorial/information.png)
 
 1. Lassen Sie die Registerkarte Browser geöffnet, während Sie mit den nächsten Schritten in einer anderen Registerkarte des Browsers fortfahren.
 
@@ -87,9 +79,9 @@ In diesem Abschnitt rufen Sie Informationen aus iProva ab, um das einmalige Anme
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **iProva** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **iProva** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -134,16 +126,52 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **iProva** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+## <a name="configure-iprova-sso"></a>Konfigurieren des einmaligen Anmeldens für iProva
+
+1. Melden Sie sich mit dem **Administratorkonto** bei iProva an.
+
+2. Öffnen Sie das Menü **Gehe zu**.
+
+3. Wählen Sie **Anwendungsverwaltung** aus.
+
+4. Wählen Sie im Bereich **Systemeinstellungen** die Option **Allgemein** aus.
+
+5. Wählen Sie **Bearbeiten** aus.
+
+6. Scrollen Sie zu **Zugriffssteuerung**.
+
+    ![Einstellungen für die iProva-Zugriffssteuerung](media/iprova-tutorial/access-control.png)
+
+7. Suchen Sie die Einstellung **Benutzer werden automatisch mit ihren Netzwerkkonten angemeldet**, und ändern Sie sie in **Ja, Authentifizierung über SAML**. Daraufhin werden zusätzliche Optionen angezeigt.
+
+8. Klicken Sie auf **Einrichten**.
+
+9. Wählen Sie **Weiter** aus.
+
+10. Sie werden von iProva gefragt, ob Sie Verbunddaten von einer URL herunterladen oder aus einer Datei hochladen möchten. Wählen Sie die Option **Von URL** aus.
+
+    ![Herunterladen von Azure AD-Metadaten](media/iprova-tutorial/metadata.png)
+
+11. Fügen Sie die Metadaten-URL ein, die Sie im letzten Schritt des Abschnitts „Konfigurieren des einmaliges Anmeldens bei Azure AD“ gespeichert haben.
+
+12. Wählen Sie die pfeilförmige Schaltfläche aus, um die Metadaten aus Azure AD herunterzuladen.
+
+13. Nach Abschluss des Downloadvorgangs wird die Bestätigungsmeldung **Gültige Verbunddatendatei heruntergeladen** angezeigt.
+
+14. Wählen Sie **Weiter** aus.
+
+15. Überspringen Sie vorerst die Option **Anmeldung testen**, und wählen Sie **Weiter** aus.
+
+16. Wählen Sie in der Dropdownliste **Verwendung beanspruchen** die Option **windowsaccountname** aus.
+
+17. Wählen Sie **Fertig stellen** aus.
+
+18. Sie kehren jetzt zum Bildschirm **Allgemeine Einstellungen bearbeiten** zurück. Scrollen Sie zum unteren Seitenrand, und wählen Sie **OK** aus, um die Konfiguration zu speichern.
 
 ## <a name="create-iprova-test-user"></a>Erstellen eines iProva-Testbenutzers
 
@@ -167,64 +195,16 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 10. Scrollen Sie zum Seitenende, und wählen Sie **Fertig stellen** aus.
 
-## <a name="configure-iprova-sso"></a>Konfigurieren des einmaligen Anmeldens für iProva
-
-1. Melden Sie sich mit dem **Administratorkonto** bei iProva an.
-
-2. Öffnen Sie das Menü **Gehe zu**.
-
-3. Wählen Sie **Anwendungsverwaltung** aus.
-
-4. Wählen Sie im Bereich **Systemeinstellungen** die Option **Allgemein** aus.
-
-5. Wählen Sie **Bearbeiten** aus.
-
-6. Scrollen Sie zu **Zugriffssteuerung**.
-
-    ![Einstellungen für die iProva-Zugriffssteuerung](media/iprova-tutorial/iprova-accesscontrol.png)
-
-7. Suchen Sie die Einstellung **Benutzer werden automatisch mit ihren Netzwerkkonten angemeldet**, und ändern Sie sie in **Ja, Authentifizierung über SAML**. Daraufhin werden zusätzliche Optionen angezeigt.
-
-8. Klicken Sie auf **Einrichten**.
-
-9. Wählen Sie **Weiter** aus.
-
-10. Sie werden von iProva gefragt, ob Sie Verbunddaten von einer URL herunterladen oder aus einer Datei hochladen möchten. Wählen Sie die Option **Von URL** aus.
-
-    ![Herunterladen von Azure AD-Metadaten](media/iprova-tutorial/iprova-download-metadata.png)
-
-11. Fügen Sie die Metadaten-URL ein, die Sie im letzten Schritt des Abschnitts „Konfigurieren des einmaliges Anmeldens bei Azure AD“ gespeichert haben.
-
-12. Wählen Sie die pfeilförmige Schaltfläche aus, um die Metadaten aus Azure AD herunterzuladen.
-
-13. Nach Abschluss des Downloadvorgangs wird die Bestätigungsmeldung **Gültige Verbunddatendatei heruntergeladen** angezeigt.
-
-14. Wählen Sie **Weiter** aus.
-
-15. Überspringen Sie vorerst die Option **Anmeldung testen**, und wählen Sie **Weiter** aus.
-
-16. Wählen Sie in der Dropdownliste **Verwendung beanspruchen** die Option **windowsaccountname** aus.
-
-17. Wählen Sie **Fertig stellen** aus.
-
-18. Sie kehren jetzt zum Bildschirm **Allgemeine Einstellungen bearbeiten** zurück. Scrollen Sie zum unteren Seitenrand, und wählen Sie **OK** aus, um die Konfiguration zu speichern.
-
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „iProva“ klicken, sollten Sie automatisch bei Ihrer iProva-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für iProva weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Navigieren Sie direkt zur Anmelde-URL für iProva, und initiieren Sie den Anmeldeflow.
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „iProva“ klicken, werden Sie zur Anmelde-URL für iProva weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [iProva mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)
+Nach dem Konfigurieren von iProva können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

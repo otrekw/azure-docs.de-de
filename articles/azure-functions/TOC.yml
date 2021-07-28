@@ -58,8 +58,10 @@
         - name: Azure Arc (Vorschauversion)
           items:
             - name: Veröffentlichen eines Code-Projekts
+              displayName: 'Arc, container, Kubernetes'
               href: create-first-function-arc-cli.md
             - name: Veröffentlichen eines Linux-Containers
+              displayName: 'Arc, container, Kubernetes'
               href: create-first-function-arc-custom-container.md
     - name: Mit Datenbank verbinden
       items:
@@ -352,6 +354,8 @@
           href: functions-manually-run-non-http.md
         - name: Integrieren von Abhängigkeiten in Funktions-Apps
           href: bring-dependency-to-functions.md
+        - name: Entwickeln von Python-Workererweiterungen
+          href: develop-python-worker-extensions.md
     - name: Bereitstellen
       items:
         - name: Kontinuierliche Bereitstellung
@@ -445,7 +449,7 @@
               href: functions-add-output-binding-storage-queue-vs.md
         - name: Starten/Beenden von virtuellen Computern
           items:
-            - name: Überblick
+            - name: Übersicht
               href: start-stop-vms/overview.md
             - name: Bereitstellen und konfigurieren
               href: start-stop-vms/deploy.md

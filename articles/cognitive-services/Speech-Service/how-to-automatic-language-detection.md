@@ -1,49 +1,61 @@
 ---
-title: Verwenden der automatischen Spracherkennung zur Umwandlung von Sprache in Text
+title: Verwenden der Sprachenerkennung
 titleSuffix: Azure Cognitive Services
-description: Das Sprach-SDK unterstützt die automatische Spracherkennung für die Umwandlung von Sprache in Text. Mit diesem Feature wird die Audioeingabe mit einer bereitgestellten Liste von Sprachen verglichen und die wahrscheinlichste Übereinstimmung bestimmt. Der zurückgegebene Wert kann dann verwendet werden, um das Sprachmodell auszuwählen, das für die Spracherkennung verwendet wird.
+description: Die Sprachenerkennung wird verwendet, um aufgrund eines Vergleichs anhand einer Liste bereitgestellter Sprachen die gesprochene Sprache mit der an das Speech SDK übergebenen Audioeingabe zu ermitteln.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/21/2021
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: b558d4b3be64f82775eb9caf2f3ea8c5a8f95c6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c9adacbb9e333c81c4f90868a69f8a23a3c15a7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025219"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962934"
 ---
-# <a name="automatic-language-detection-for-speech-to-text"></a>Automatische Spracherkennung zur Umwandlung von Sprache in Text
+# <a name="how-to-use-language-identification"></a>Verwenden der Sprachenerkennung
 
-Die automatische Spracherkennung wird verwendet, um aufgrund eines Vergleichs anhand einer Liste bereitgestellter Sprachen die wahrscheinlichste Übereinstimmung mit der an das Sprach-SDK übergebenen Audioeingabe zu ermitteln. Der von der automatischen Spracherkennung zurückgegebene Wert wird dann verwendet, um das Sprachmodell zur Umwandlung von Sprache in Text auszuwählen und Ihnen eine genauere Transkription zu bieten. Welche Sprachen verfügbar sind, erfahren Sie unter [Sprachunterstützung](language-support.md).
+Die Sprachenerkennung wird verwendet, um aufgrund eines Vergleichs anhand einer Liste bereitgestellter Sprachen die gesprochene Sprache mit der an das Speech SDK übergebenen Audioeingabe zu ermitteln. Der von der Sprachenerkennung zurückgegebene Wert wird dann verwendet, um das Sprachmodell zur Umwandlung von Sprache in Text auszuwählen und Ihnen eine genauere Transkription zu bieten. 
 
-In diesem Artikel erfahren Sie, wie Sie `AutoDetectSourceLanguageConfig` zum Erstellen eines `SpeechRecognizer`-Objekts und zum Abrufen der erkannten Sprache verwenden.
+Die Sprachenerkennung kann auch bei der [Sprachübersetzung](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall#multi-lingual-translation-with-language-identification) oder bei der [eigenständigen Erkennung](#standalone-language-identification) verwendet werden. Welche Sprachen verfügbar sind, erfahren Sie unter [Sprachunterstützung](language-support.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Dieser Artikel setzt voraus, dass Sie über ein Azure-Abonnement und eine Sprachressource verfügen, und es wird auch angenommen, dass Sie mit den Grundlagen der Spracherkennung vertraut sind. [Schließen Sie die Schnellstartanleitung ab](get-started-speech-to-text.md), sofern dies noch nicht erfolgt ist.
+
+## <a name="language-identification-with-speech-to-text"></a>Sprachenerkennung mit Spracherkennung
+
+Für die Sprachenerkennung gilt derzeit ein Grenzwert von **vier Sprachen** für die Einzelerkennung und **zehn Sprachen** für die kontinuierliche Erkennung. Beachten Sie diese Einschränkung bei der Erstellung des `AutoDetectSourceLanguageConfig`-Objekts. In den folgenden Beispielen verwenden Sie `AutoDetectSourceLanguageConfig`, um eine Liste möglicher Sprachen zu definieren, die Sie erkennen möchten. Sie können dann beim Ausführen der Spracherkennung auf diese Sprachen verweisen.
 
 > [!IMPORTANT]
-> Dieses Feature ist nur für die Speech-SDKs für C#, C++, Java, Python, JavaScript und Objective-C verfügbar.
-
-## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatische Spracherkennung mit dem Sprach-SDK
-
-Die automatische Spracherkennung weist zurzeit eine dienstseitige Einschränkung auf vier Sprachen pro Erkennung auf. Beachten Sie diese Einschränkung bei der Erstellung des `AutoDetectSourceLanguageConfig`-Objekts. In den folgenden Beispielen erstellen Sie eine `AutoDetectSourceLanguageConfig` und verwenden Sie dann, um einen `SpeechRecognizer` zu erstellen.
-
-> [!TIP]
-> Sie können auch ein benutzerdefiniertes Modell angeben, das beim Durchführen der Spracherkennung verwendet werden soll. Weitere Informationen finden Sie unter [Verwenden eines benutzerdefinierten Modells für die automatische Spracherkennung](#use-a-custom-model-for-automatic-language-detection).
-
-Die folgenden Codeausschnitte veranschaulichen die Verwendung der automatischen Spracherkennung in ihren Apps:
+> Die kontinuierliche Sprachenerkennung befindet sich derzeit in der **Vorschauversion** und wird nur in C# und C++ unterstützt.
 
 ::: zone pivot="programming-language-csharp"
 
+Im folgenden Beispiel wird die Einzelerkennung ausgeführt und `Latency` priorisiert. Diese Eigenschaft kann je nach Priorität für Ihren Anwendungsfall auch auf `Accuracy` festgelegt werden. `Latency` ist die beste Option, die Sie verwenden können, wenn Sie ein latenzarmes Ergebnis benötigen (z. B. für Livestreamingszenarien), aber die Sprache im Audiobeispiel nicht kennen. 
+
+`Accuracy` sollte in Szenarien verwendet werden, in denen die Audioqualität möglicherweise schlecht ist und eine höhere Wartezeit akzeptabel ist. Beispielsweise kann eine Voicemail Hintergrundgeräusche oder etwas Stille am Anfang aufweisen, und das Gewähren von mehr Zeit für die Engine verbessert die Erkennungsergebnisse.
+
+In beiden Fällen sollte die Einzelerkennung, wie unten dargestellt, **nicht** für Szenarien verwendet werden, in denen sich die Sprache innerhalb desselben Audiobeispiels ändern kann. Informationen zur kontinuierlichen Erkennung für diese Arten von Szenarien finden Sie weiter unten.
+
 ```csharp
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+
+var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>","<paste-your-region>");
+// can switch "Latency" to "Accuracy" depending on priority
+speechConfig.SetProperty(PropertyId.SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
+
 var autoDetectSourceLanguageConfig =
     AutoDetectSourceLanguageConfig.FromLanguages(
-        new string[] { "en-US", "de-DE" });
+        new string[] { "en-US", "de-DE", "ja-JP", "de-DE" });
 
+using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
 using (var recognizer = new SpeechRecognizer(
     speechConfig,
     autoDetectSourceLanguageConfig,
@@ -56,18 +68,122 @@ using (var recognizer = new SpeechRecognizer(
 }
 ```
 
+Das folgende Beispiel zeigt die kontinuierliche Spracherkennung, die für ein mehrsprachiges Szenario eingerichtet wurde. In diesem Beispiel werden nur `en-US` und `ja-JP` in der Sprachkonfiguration verwendet, aber Sie können bis zu **zehn Sprachen** für dieses Entwurfsmuster verwenden. Jedes Mal, wenn Sprache erkannt wird, wird die Ausgangssprache identifiziert, und die Audiodaten werden zudem in die Textausgabe konvertiert. In diesem Beispiel wird der `Latency`-Modus verwendet, der die Antwortzeit priorisiert.
+
+```csharp
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+
+var region = "<paste-your-region>";
+// currently the v2 endpoint is required for this design pattern
+var endpointString = $"wss://{region}.stt.speech.microsoft.com/speech/universal/v2";
+var endpointUrl = new Uri(endpointString);
+
+var config = SpeechConfig.FromEndpoint(endpointUrl, "<paste-your-subscription-key>");
+// can switch "Latency" to "Accuracy" depending on priority
+config.SetProperty(PropertyId.SpeechServiceConnection_ContinuousLanguageIdPriority, "Latency");
+
+var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromLanguages(new string[] { "en-US", "ja-JP" });
+
+var stopRecognition = new TaskCompletionSource<int>();
+using (var audioInput = AudioConfig.FromWavFileInput(@"path-to-your-audio-file.wav"))
+{
+    using (var recognizer = new SpeechRecognizer(config, autoDetectSourceLanguageConfig, audioInput))
+    {
+        // Subscribes to events.
+        recognizer.Recognizing += (s, e) =>
+        {
+            if (e.Result.Reason == ResultReason.RecognizingSpeech)
+            {
+                Console.WriteLine($"RECOGNIZING: Text={e.Result.Text}");
+                var autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult.FromResult(e.Result);
+                Console.WriteLine($"DETECTED: Language={autoDetectSourceLanguageResult.Language}");
+            }
+        };
+
+        recognizer.Recognized += (s, e) =>
+        {
+            if (e.Result.Reason == ResultReason.RecognizedSpeech)
+            {
+                Console.WriteLine($"RECOGNIZED: Text={e.Result.Text}");
+                var autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult.FromResult(e.Result);
+                Console.WriteLine($"DETECTED: Language={autoDetectSourceLanguageResult.Language}");
+            }
+            else if (e.Result.Reason == ResultReason.NoMatch)
+            {
+                Console.WriteLine($"NOMATCH: Speech could not be recognized.");
+            }
+        };
+
+        recognizer.Canceled += (s, e) =>
+        {
+            Console.WriteLine($"CANCELED: Reason={e.Reason}");
+
+            if (e.Reason == CancellationReason.Error)
+            {
+                Console.WriteLine($"CANCELED: ErrorCode={e.ErrorCode}");
+                Console.WriteLine($"CANCELED: ErrorDetails={e.ErrorDetails}");
+                Console.WriteLine($"CANCELED: Did you update the subscription info?");
+            }
+
+            stopRecognition.TrySetResult(0);
+        };
+
+        recognizer.SessionStarted += (s, e) =>
+        {
+            Console.WriteLine("\n    Session started event.");
+        };
+
+        recognizer.SessionStopped += (s, e) =>
+        {
+            Console.WriteLine("\n    Session stopped event.");
+            Console.WriteLine("\nStop recognition.");
+            stopRecognition.TrySetResult(0);
+        };
+
+        // Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.
+        await recognizer.StartContinuousRecognitionAsync().ConfigureAwait(false);
+
+        // Waits for completion.
+        // Use Task.WaitAny to keep the task rooted.
+        Task.WaitAny(new[] { stopRecognition.Task });
+
+        // Stops recognition.
+        await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
+    }
+}
+```
+
+> [!NOTE]
+> Die Modi `Latency` und `Accuracy` sowie die mehrsprachige kontinuierliche Erkennung werden derzeit nur in C# und C++ unterstützt.
+ 
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
 
+> [!IMPORTANT]
+> Dieses Feature, wie unten gezeigt, befindet sich derzeit in der **Vorschauversion**.
+
+Im folgenden Beispiel wird die Einzelerkennung ausgeführt und `Latency` priorisiert. Diese Eigenschaft kann je nach Priorität für Ihren Anwendungsfall auch auf `Accuracy` festgelegt werden. `Latency` ist die beste Option, die Sie verwenden können, wenn Sie ein latenzarmes Ergebnis benötigen (z. B. für einen Livestreamingfall), aber die Sprache im Audiobeispiel nicht kennen. 
+
+`Accuracy` sollte in Szenarien verwendet werden, in denen die Audioqualität möglicherweise schlecht ist und eine höhere Wartezeit akzeptabel ist. Beispielsweise kann eine Voicemail Hintergrundgeräusche oder etwas Stille am Anfang aufweisen, und das Gewähren von mehr Zeit für die Engine verbessert die Erkennungsergebnisse.
+
+In beiden Fällen sollte die Einzelerkennung, wie unten dargestellt, **nicht** für Szenarien verwendet werden, in denen sich die Sprache innerhalb desselben Audiobeispiels ändern kann. Informationen zur kontinuierlichen Erkennung für diese Arten von Szenarien finden Sie weiter unten.
+
 ```cpp
+using namespace std;
+using namespace Microsoft::CognitiveServices::Speech;
+using namespace Microsoft::CognitiveServices::Speech::Audio;
+
+auto speechConfig = SpeechConfig::FromSubscription("<paste-your-subscription-key>","<paste-your-region>");
+speechConfig->SetProperty(PropertyId::SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
+
 auto autoDetectSourceLanguageConfig =
-    AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
+    AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE", "ja-JP", "de-DE" });
 
 auto recognizer = SpeechRecognizer::FromConfig(
     speechConfig,
-    autoDetectSourceLanguageConfig,
-    audioConfig
+    autoDetectSourceLanguageConfig
     );
 
 speechRecognitionResult = recognizer->RecognizeOnceAsync().get();
@@ -75,6 +191,81 @@ auto autoDetectSourceLanguageResult =
     AutoDetectSourceLanguageResult::FromResult(speechRecognitionResult);
 auto detectedLanguage = autoDetectSourceLanguageResult->Language;
 ```
+
+Das folgende Beispiel zeigt die kontinuierliche Spracherkennung, die für ein mehrsprachiges Szenario eingerichtet wurde. In diesem Beispiel werden nur `en-US` und `ja-JP` in der Sprachkonfiguration verwendet, aber Sie können bis zu **zehn Sprachen** für dieses Entwurfsmuster verwenden. Jedes Mal, wenn Sprache erkannt wird, wird die Ausgangssprache identifiziert, und die Audiodaten werden zudem in die Textausgabe konvertiert. In diesem Beispiel wird der `Latency`-Modus verwendet, der die Antwortzeit priorisiert.
+
+```cpp
+using namespace std;
+using namespace Microsoft::CognitiveServices::Speech;
+using namespace Microsoft::CognitiveServices::Speech::Audio;
+
+auto region = "<paste-your-region>";
+// currently the v2 endpoint is required for this design pattern
+auto endpointString = std::format("wss://{}.stt.speech.microsoft.com/speech/universal/v2", region);
+auto config = SpeechConfig::FromEndpoint(endpointString, "<paste-your-subscription-key>");
+
+config->SetProperty(PropertyId::SpeechServiceConnection_ContinuousLanguageIdPriority, "Latency");
+auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "ja-JP" });
+
+auto audioInput = AudioConfig::FromWavFileInput("path-to-your-audio-file.wav");
+auto recognizer = SpeechRecognizer::FromConfig(config, autoDetectSourceLanguageConfig, audioInput);
+
+// promise for synchronization of recognition end.
+promise<void> recognitionEnd;
+
+// Subscribes to events.
+recognizer->Recognizing.Connect([](const SpeechRecognitionEventArgs& e)
+    {
+        auto lidResult = AutoDetectSourceLanguageResult::FromResult(e.Result);
+        cout << "Recognizing in " << lidResult->Language << ": Text =" << e.Result->Text << std::endl;
+    });
+
+recognizer->Recognized.Connect([](const SpeechRecognitionEventArgs& e)
+    {
+        if (e.Result->Reason == ResultReason::RecognizedSpeech)
+        {
+            auto lidResult = AutoDetectSourceLanguageResult::FromResult(e.Result);
+            cout << "RECOGNIZED in " << lidResult->Language << ": Text=" << e.Result->Text << "\n"
+                << "  Offset=" << e.Result->Offset() << "\n"
+                << "  Duration=" << e.Result->Duration() << std::endl;
+        }
+        else if (e.Result->Reason == ResultReason::NoMatch)
+        {
+            cout << "NOMATCH: Speech could not be recognized." << std::endl;
+        }
+    });
+
+recognizer->Canceled.Connect([&recognitionEnd](const SpeechRecognitionCanceledEventArgs& e)
+    {
+        cout << "CANCELED: Reason=" << (int)e.Reason << std::endl;
+
+        if (e.Reason == CancellationReason::Error)
+        {
+            cout << "CANCELED: ErrorCode=" << (int)e.ErrorCode << "\n"
+                << "CANCELED: ErrorDetails=" << e.ErrorDetails << "\n"
+                << "CANCELED: Did you update the subscription info?" << std::endl;
+
+            recognitionEnd.set_value(); // Notify to stop recognition.
+        }
+    });
+
+recognizer->SessionStopped.Connect([&recognitionEnd](const SessionEventArgs& e)
+    {
+        cout << "Session stopped.";
+        recognitionEnd.set_value(); // Notify to stop recognition.
+    });
+
+recognizer->StartContinuousRecognitionAsync().get();
+
+// Waits for recognition end.
+recognitionEnd.get_future().get();
+
+// Stops recognition.
+recognizer->StopContinuousRecognitionAsync().get();
+```
+
+> [!NOTE]
+> Die Modi `Latency` und `Accuracy` sowie die mehrsprachige kontinuierliche Erkennung werden derzeit nur in C# und C++ unterstützt.
 
 ::: zone-end
 
@@ -151,9 +342,91 @@ speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) 
 
 ::: zone-end
 
-## <a name="use-a-custom-model-for-automatic-language-detection"></a>Verwenden eines benutzerdefinierten Modells für die automatische Spracherkennung
+## <a name="standalone-language-identification"></a>Eigenständige Sprachenerkennung
 
-Zur Ergänzung der Spracherkennung mit Spracherkennungsdienst-Modellen können Sie ein benutzerdefiniertes Modell zur verbesserten Erkennung angeben. Wenn kein benutzerdefiniertes Modell bereitgestellt wird, verwendet der Dienst das Standardsprachmodell.
+::: zone pivot="programming-language-csharp"
+
+In Anwendungsfällen, in denen Sie nur die gesprochene Ausgangssprache erkennen möchten, können Sie die eigenständige Sprachenerkennung verwenden, wie im folgenden Codebeispiel gezeigt. `SourceLanguageRecognizer` kann auch in Szenarien mit kontinuierlicher Erkennung verwendet werden.
+
+```csharp
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+
+var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>","<paste-your-region>");
+// can switch "Latency" to "Accuracy" depending on priority
+speechConfig.SetProperty(PropertyId.SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
+
+var autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.FromLanguages(
+        new string[] { "en-US", "de-DE" });
+
+using (var recognizer = new SourceLanguageRecognizer(speechConfig, autoDetectSourceLanguageConfig))
+{
+    var result = await recognizer.RecognizeOnceAsync();
+    if (result.Reason == ResultReason.RecognizedSpeech)
+    {
+        var lang = AutoDetectSourceLanguageResult.FromResult(result).Language;
+        Console.WriteLine($"DETECTED: Language={lang}");
+    }
+}
+```
+
+Im [Beispiel auf GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/standalone_language_detection_samples.cs) finden Sie weitere Beispiele für die eigenständige Sprachenerkennung, einschließlich eines Beispiels für die kontinuierliche Erkennung.
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+In Anwendungsfällen, in denen Sie nur die gesprochene Ausgangssprache erkennen möchten, können Sie die eigenständige Sprachenerkennung verwenden, wie im folgenden Codebeispiel gezeigt. `SourceLanguageRecognizer` kann auch in Szenarien mit kontinuierlicher Erkennung verwendet werden.
+
+```cpp
+using namespace std;
+using namespace Microsoft::CognitiveServices::Speech;
+using namespace Microsoft::CognitiveServices::Speech::Audio;
+
+auto config = SpeechConfig::FromSubscription("<paste-your-subscription-key>","<paste-your-region>");
+config->SetProperty(PropertyId::SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
+
+auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
+
+auto recognizer = SourceLanguageRecognizer::FromConfig(config, autoDetectSourceLanguageConfig);
+cout << "Say something...\n";
+
+auto result = recognizer->RecognizeOnceAsync().get();
+if (result->Reason == ResultReason::RecognizedSpeech)
+{
+    auto lidResult = AutoDetectSourceLanguageResult::FromResult(result);
+    cout << "DETECTED: Language="<< lidResult->Language << std::endl;
+}
+```
+
+Im [Beispiel auf GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/standalone_language_detection_samples.cpp) finden Sie weitere Beispiele für die eigenständige Sprachenerkennung, einschließlich eines Beispiels für die kontinuierliche Erkennung.
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+> [!IMPORTANT]
+> Dieses Feature wird derzeit nur in C# und C++ unterstützt.
+::: zone-end
+
+::: zone pivot="programming-language-python"
+> [!IMPORTANT]
+> Dieses Feature wird derzeit nur in C# und C++ unterstützt.
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+> [!IMPORTANT]
+> Dieses Feature wird derzeit nur in C# und C++ unterstützt.
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+> [!IMPORTANT]
+> Dieses Feature wird derzeit nur in C# und C++ unterstützt.
+::: zone-end
+
+## <a name="use-a-custom-model-for-language-identification"></a>Verwenden eines benutzerdefinierten Modells für die Sprachenerkennung
+
+Zur Ergänzung der Sprachenerkennung mit Basismodellen des Speech-Diensts können Sie auch ein benutzerdefiniertes Modell zur verbesserten Erkennung angeben. Wenn kein benutzerdefiniertes Modell bereitgestellt wird, verwendet der Dienst das Standardsprachmodell.
 
 Die folgenden Codeausschnitte veranschaulichen, wie Sie beim Aufruf des Spracherkennungsdiensts ein benutzerdefiniertes Modell angeben. Wenn die erkannte Sprache `en-US` ist, wird das Standardmodell verwendet. Wenn die erkannte Sprache `fr-FR` ist, wird der Endpunkt für das benutzerdefinierte Modell verwendet:
 
@@ -242,23 +515,23 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 ## <a name="next-steps"></a>Nächste Schritte
 
 ::: zone pivot="programming-language-csharp"
-* Sehen Sie sich den [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L741) auf GitHub für die automatische Sprachenerkennung an.
+* Informationen zur Sprachenerkennung finden Sie im [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L741) auf GitHub.
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
-* Sehen Sie sich den [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L507) auf GitHub für die automatische Sprachenerkennung an.
+* Informationen zur Sprachenerkennung finden Sie im [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L507) auf GitHub.
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-* Sehen Sie sich den [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L521) auf GitHub für die automatische Sprachenerkennung an.
+* Informationen zur Sprachenerkennung finden Sie im [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L521) auf GitHub.
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-* Sehen Sie sich den [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py#L458) auf GitHub für die automatische Sprachenerkennung an.
+* Informationen zur Sprachenerkennung finden Sie im [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py#L458) auf GitHub.
 ::: zone-end
 
 ::: zone pivot="programming-language-objectivec"
-* Sehen Sie sich den [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L525) auf GitHub für die automatische Sprachenerkennung an.
+* Informationen zur Sprachenerkennung finden Sie im [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L525) auf GitHub.
 ::: zone-end
 
 * [Speech SDK-Referenzdokumentation](speech-sdk.md)

@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Lokal, Docker, Container
-ms.openlocfilehash: e4b79dc278bf41015c84f72994dd68419ae6e230
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5c16a0245361dfa7e3ff160f5ffa45154555aa0b
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097946"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495329"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installieren und Ausführen von Docker-Containern für die APIs des Speech-Diensts 
 
@@ -128,10 +128,10 @@ Containerimages für Speech stehen in der folgenden Container Registry zur Verf�
 |-----------|------------|
 | Text-zu-Sprache (neuronal) | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech:latest` |
 
-# <a name="speech-language-detection"></a>[Speech-Sprachenerkennung](#tab/lid)
+# <a name="speech-language-identification"></a>[Speech-Sprachenerkennung](#tab/lid)
 
 > [!TIP]
-> Um die nützlichsten Ergebnisse zu erhalten, empfehlen wir, den Container für Speech-Spracherkennung mit den Containern für Sprache-in-Text oder die benutzerdefinierte Spracherkennung zu verwenden. 
+> Um die besten Ergebnisse zu erhalten, empfehlen wir, den Container für Speech-Sprachenerkennung zusammen mit den Containern für Spracherkennung oder die benutzerdefinierte Spracherkennung zu verwenden. 
 
 | Container | Repository |
 |-----------|------------|
@@ -249,9 +249,9 @@ Informationen zu allen unterstützten Gebietsschemas und den entsprechenden Stim
 > [!IMPORTANT]
 > Beim Erstellen einer HTTP POST-Anforderung für *Text-zu-Sprache (neuronal)* erfordert die Meldung der [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) ein `voice`-Element mit einem `name`-Attribut. Der Wert ist das entsprechende Gebietsschema des Containers und die Stimme, auch bekannt als „[Kurzname](language-support.md#neural-voices)“. Das Tag `latest` beispielsweise weist den Sprachnamen `en-US-AriaNeural` auf.
 
-# <a name="speech-language-detection"></a>[Speech-Sprachenerkennung](#tab/lid)
+# <a name="speech-language-identification"></a>[Speech-Sprachenerkennung](#tab/lid)
 
-#### <a name="docker-pull-for-the-speech-language-detection-container"></a>Docker-Pullvorgang für den Speech-Sprachenerkennungscontainer
+#### <a name="docker-pull-for-the-speech-language-identification-container"></a>Docker-Pullvorgang für den Speech-Sprachenerkennungscontainer
 
 Verwenden Sie den [Docker-Pull](https://docs.docker.com/engine/reference/commandline/pull/)-Befehl, um ein Containerimage aus Microsoft Container Registry herunterzuladen.
 
@@ -498,7 +498,7 @@ Dieser Befehl:
 * Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
 * Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
 
-# <a name="speech-language-detection"></a>[Speech-Sprachenerkennung](#tab/lid)
+# <a name="speech-language-identification"></a>[Speech-Sprachenerkennung](#tab/lid)
 
 Führen Sie zum Ausführen des Containers für die *Speech-Sprachenerkennung* den folgenden `docker run`-Befehl aus.
 

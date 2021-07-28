@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 8f21f5fa8ee9035fe594cecff37a63b1ef2115cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7654546ba52406aed5659cc736bb9a538a73ac7f
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97563465"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813234"
 ---
-# <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Bereitstellen von per Server gerenderten Nuxt.js-Websites in Azure Static Web Apps (Vorschau)
+# <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps"></a>Bereitstellen von per Server gerenderten Nuxt.js-Websites in Azure Static Web Apps
 
 In diesem Tutorial erfahren Sie, wie Sie eine mit [Nuxt.js](https://nuxtjs.org) generierte statische Website für [Azure Static Web Apps](overview.md) bereitstellen. Zunächst wird beschrieben, wie Sie eine Nuxt.js-App einrichten, konfigurieren und bereitstellen. Im Rahmen dieses Prozesses erfahren Sie auch, wie Sie häufige Schwierigkeiten überwinden, die beim Generieren von statischen Seiten mit Nuxt.js auftreten können.
 
@@ -116,49 +116,49 @@ Bei Azure Static Web Apps wird Ihre App aus einem GitHub-Repository bereitgestel
 
 Die folgenden Schritte veranschaulichen, wie Sie die App, die Sie gerade zu GitHub gepusht haben, mit Azure Static Web Apps verknüpfen. Wenn sich die Anwendung in Azure befindet, können Sie sie in einer Produktionsumgebung bereitstellen.
 
-### <a name="create-an-azure-static-web-apps-preview-resource"></a>Erstellen einer Azure Static Web Apps-Ressource (Vorschau)
+### <a name="create-an-azure-static-web-apps-resource"></a>Erstellen einer Azure Static Web Apps-Ressource
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 1. Klicken Sie auf **Ressource erstellen**.
 1. Suchen Sie nach **Static Web Apps**.
-1. Klicken Sie auf **Static Web Apps (Vorschau)** .
-1. Klicken Sie auf **Erstellen**
+1. Klicken Sie auf **statische Web-Apps**.
+1. Klicken Sie auf **Erstellen**.
+1. Geben Sie auf der Registerkarte _Grundlagen_ die folgenden Werte ein.
 
-1. Wählen Sie in der Dropdownliste *Abonnement* ein Abonnement aus, oder verwenden Sie den Standardwert.
-1. Klicken Sie unterhalb der Dropdownliste *Ressourcengruppe* auf den Link **Neu**. Geben Sie unter *Name für neue Ressourcengruppe* den Namen **mystaticsite** ein, und klicken Sie auf **OK**.
-1. Geben Sie im Textfeld **Name** einen global eindeutigen Namen für Ihre App ein. Gültige Zeichen sind `a-z`, `A-Z`, `0-9` und `-`. Dieser Wert wird als URL-Präfix für Ihre statische App im Format `https://<APP_NAME>.azurestaticapps.net` verwendet.
-1. Wählen Sie in der Dropdownliste *Region* eine Region in Ihrer Nähe aus.
-1. Wählen Sie in der Dropdownliste mit den SKUs die Option **Free** aus.
+    | Eigenschaft | Wert |
+    | --- | --- |
+    | _Abonnement_ | Den Namen Ihres Azure-Abonnements |
+    | _Ressourcengruppe_ | **my-nuxtjs-group**  |
+    | _Name_ | **my-nuxtjs-app** |
+    | _Plantyp_ | **Free** |
+    | _Region für Azure Functions-API und Stagingumgebungen_ | Wählen Sie eine Region aus, die in Ihrer Nähe liegt. |
+    | _Quelle_ | **GitHub** |
 
-   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="Erstellen einer statischen Web-App":::
+1. Wählen Sie **Mit GitHub anmelden** aus, und führen Sie die Authentifizierung mit GitHub durch.
 
-### <a name="add-a-github-repository"></a>Hinzufügen eines GitHub-Repositorys
+1. Geben Sie die folgenden GitHub-Werte ein.
 
-Das neue Azure Static Web Apps-Konto benötigt Zugriff auf das Repository mit Ihrer Nuxt.js-App, damit automatisch Commits bereitgestellt werden können.
+    | Eigenschaft | Wert |
+    | --- | --- |
+    | _Organisation_ | Wählen Sie die gewünschte GitHub-Organisation aus. |
+    | _Repository_ | Wählen Sie das zuvor erstellte Repository aus. |
+    | _Branch_ | Wählen Sie **main** aus. |
 
-1. Klicken Sie auf die Schaltfläche **Mit GitHub anmelden**.
-1. Wählen Sie die **Organisation** aus, unter der Sie das Repository für Ihr Nuxt.js-Projekt erstellt haben. Unter Umständen ist dies Ihr GitHub-Benutzername.
-1. Suchen Sie nach dem Namen des zuvor erstellten Repositorys, und wählen Sie ihn aus.
-1. Wählen Sie in der Dropdownliste *Branch* die Option **main** als Branch aus.
+1. Wählen Sie im Abschnitt _Builddetails_ in der Dropdownliste _Buildvoreinstellungen_ die Option **Benutzerdefiniert** aus, und übernehmen Sie die Standardwerte.
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="Verbinden mit GitHub":::
-
-### <a name="configure-the-build-process"></a>Konfigurieren des Buildprozesses
-
-Azure Static Web Apps ist so konzipiert, dass häufig anfallende Aufgaben, z. B. die Installation von npm-Modulen und die Ausführung von `npm run build` bei jeder Bereitstellung, automatisch durchgeführt werden. Es gibt aber einige Einstellungen, z. B. den Quellordner der Anwendung und den Ordner für das Buildziel, die Sie manuell konfigurieren müssen.
-
-1. Klicken Sie auf die Registerkarte **Build**, um den statischen Ausgabeordner zu konfigurieren.
-
-      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="Registerkarte „Build“":::
-
-1. Geben Sie im Textfeld *Speicherort für App-Artefakte* den Namen **dist** ein.
+1. Geben Sie im Feld _API-Speicherort_ **./** ein.
+1. Lassen Sie das Feld _API-Speicherort_ leer.
+1. Geben Sie im Feld _Ausgabespeicherort_ **out** ein.
 
 ### <a name="review-and-create"></a>Überprüfen und Erstellen
 
-1. Klicken Sie auf die Schaltfläche **Bewerten + erstellen**, um sicherzustellen, dass alle Details stimmen.
-1. Klicken Sie auf **Erstellen**, um mit der Erstellung der Ressource zu beginnen und eine GitHub-Aktion für die Bereitstellung anzugeben.
-1. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
-1. Klicken Sie im Fenster _Übersicht_ auf den Link *URL*, um Ihre bereitgestellte Anwendung zu öffnen. 
+1. Klicken Sie auf die Schaltfläche **Überprüfen + Erstellen**, um sicherzustellen, dass alle Details stimmen.
+
+1. Wählen Sie **Erstellen** aus, um mit der Erstellung der statischen App Service-Web-App zu beginnen und eine GitHub-Aktion für die Bereitstellung anzugeben.
+
+1. Wenn die Bereitstellung abgeschlossen ist, klicken Sie auf **Zu Ressource wechseln**.
+
+1. Klicken Sie im Fenster _Übersicht_ auf den Link *URL*, um Ihre bereitgestellte Anwendung zu öffnen.
 
 Falls die Website nicht sofort geladen wird, ist der Workflow für GitHub Actions im Hintergrund noch aktiv. Nach Abschluss des Workflows können Sie auf die Schaltfläche zum Aktualisieren des Browsers klicken, um Ihre Web-App anzuzeigen.
 

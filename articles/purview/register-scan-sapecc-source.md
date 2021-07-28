@@ -1,5 +1,5 @@
 ---
-title: Registrieren einer SAP ECC-Quelle und Einrichten von Überprüfungen (Vorschauversion) in Azure Purview
+title: Registrieren einer SAP ECC-Quelle und Einrichten von Überprüfungen in Azure Purview
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP ECC-Quelle in Azure Purview registrieren und eine Überprüfung einrichten.
 author: chandrakavya
 ms.author: kchandra
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: bc35f79bae0cd75b24b119e951f27b289ebef704
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: c4126a99b38021ea7399bb486b8942423f0a809c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108007356"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067112"
 ---
-# <a name="register-and-scan-sap-ecc-source-preview"></a>Registrieren und Überprüfen einer SAP ECC-Quelle (Vorschauversion)
+# <a name="register-and-scan-sap-ecc-source"></a>Registrieren und Überprüfen einer SAP ECC-Quelle
 
 In diesem Artikel erfahren Sie, wie Sie eine SAP ECC-Quelle in Purview registrieren und eine Überprüfung einrichten.
 

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: 01036343e2585adf7c09ad3f0d236948a537fc29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea5522cfd8f407ffd7259335706cc69555ce2329
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016558"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238245"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Aktivieren von Security Center in allen Abonnements einer Verwaltungsgruppe
 

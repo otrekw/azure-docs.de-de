@@ -2,20 +2,20 @@
 author: craigktreasure
 ms.service: azure-object-anchors
 ms.topic: include
-ms.date: 02/18/2021
+ms.date: 06/10/2021
 ms.author: crtreasu
-ms.openlocfilehash: ada83d6263ef033208200d810c53c5f045acc9a7
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 8ad55355307cfc8656b6f6bf9b074d90daf7e2e8
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105422"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006892"
 ---
 Der nächste Schritt besteht darin, das Azure Object Anchors-Paket für Unity herunterzuladen.
 
 # <a name="download-with-web-browser"></a>[Download über Webbrowser](#tab/unity-package-web-ui)
 
-Suchen Sie [hier](https://aka.ms/aoa/unity-sdk/package) nach dem Azure Object Anchors-Paket für Unity. Wählen Sie die gewünschte Version aus, und laden Sie das Paket über die Schaltfläche **Download** herunter.
+Suchen Sie [hier](https://aka.ms/aoa/unity-sdk/package) nach dem Azure Object Anchors-Paket für Unity (`com.microsoft.azure.object-anchors.runtime`). Wählen Sie die gewünschte Version aus, und laden Sie das Paket über die Schaltfläche **Download** herunter.
 
 # <a name="download-with-npm"></a>[Download mit npm](#tab/unity-package-npm)
 

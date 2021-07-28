@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8aaa1b2865b1d0f39e6cb224c3979b4f53eeee81
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2ce667363c2bd3251eba1a0e4829c60d99d3a4bf
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066716"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456598"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Verbinden von Funktions-Apps in Azure für die Verarbeitung von Daten
 
@@ -40,7 +40,7 @@ Wähle in Visual Studio 2019 **Datei** > **Neu** > **Projekt** aus. Suchen Sie d
 
 Geben Sie einen Namen für die Funktions-App an, und wählen Sie dann __Erstellen__ aus.
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Screenshot von Visual Studio mit dem Dialogfeld zum Konfigurieren eines neues Projekts, einschließlich der Einstellungen für Projektname und Speicherort, der Auswahl zum Erstellen einer neuen Projektmappe und des Projektmappennamens":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Screenshot von Visual Studio mit dem Dialogfeld zum Konfigurieren eines neues Projekts, einschließlich des Projektnamens, des Speicherorts und der Auswahl zum Erstellen einer neuen Projektmappe.":::
 
 Wählen Sie als Typ der Funktions-App **Event Grid-Trigger** und dann __Erstellen__ aus.
 
@@ -107,7 +107,7 @@ Nachdem Sie Ihre Anwendung geschrieben haben, können Sie sie in Azure veröffen
     > [!Note] 
     > Sie müssen möglicherweise einige Minuten warten oder die Seite mehrmals aktualisieren, bevor die Funktion in der Liste der veröffentlichten Funktionen aufgeführt wird.
 
-    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="Anzeigen veröffentlichter Funktionen im Azure-Portal" lightbox="media/how-to-create-azure-function/view-published-functions.png":::
+    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="Screenshot: Veröffentlichte Funktionen im Azure-Portal." lightbox="media/how-to-create-azure-function/view-published-functions.png":::
 
 Damit Ihre Funktions-App auf Azure Digital Twins zugreifen kann, muss sie über eine systemseitig verwaltete Identität mit Zugriffsberechtigungen für Ihre Azure Digital Twins-Instanz verfügen. Dies wird im nächsten Schritt eingerichtet.
 
@@ -132,14 +132,14 @@ Um sicherzustellen, dass das Bearertoken übergeben wird, richten Sie Berechtigu
 1. Verwenden Sie den folgenden Befehl, um die Details der systemseitig verwalteten Identität für die Funktion anzuzeigen. Beachten Sie in der Ausgabe das Feld `principalId`.
 
     ```azurecli-interactive 
-    az functionapp identity show --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>   
+    az functionapp identity show --resource-group <your-resource-group> --name <your-App-Service-function-app-name> 
     ```
 
     >[!NOTE]
     > Falls die Ergebnisanzeige leer ist und keine Details einer Identität angezeigt werden, sollten Sie mit diesem Befehl eine neue systemseitig verwaltete Identität erstellen:
     > 
     >```azurecli-interactive    
-    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>    
+    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-function-app-name>  
     >```
     >
     > In der Ausgabe werden Details zur Identität angezeigt, z. B. der für den nächsten Schritt benötigte Wert für `principalId`. 
@@ -158,7 +158,7 @@ Machen Sie die URL Ihrer Instanz für Ihre Funktion zugänglich, indem Sie dafü
 > Die URL der Azure Digital Twins-Instanz wird durch das Hinzufügen von *https://* am Anfang des Hostnamens der Instanz erstellt. Um den Hostnamen mit allen Eigenschaften der Instanz anzuzeigen, führen Sie Folgendes aus: `az dt show --dt-name <your-Azure-Digital-Twins-instance>`.
 
 ```azurecli-interactive 
-az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
+az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-function-app-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
 ```
 
 # <a name="azure-portal"></a>[Azure-Portal](#tab/portal)
@@ -224,7 +224,7 @@ Sie können nun eine Anwendungseinstellung erstellen:
 
 1. Verwenden Sie im daraufhin geöffneten Fenster den oben kopierten Hostnamenwert, um eine Anwendungseinstellung zu erstellen.
     * **Name**: ADT_SERVICE_URL
-    * **Value**: https://{your-azure-digital-twins-host-name}
+    * **Wert**: https://<Ihr-Azure-Digital-Twins-Hostname>
     
     Wählen Sie __OK__ aus, um eine Anwendungseinstellung zu erstellen.
     
@@ -236,7 +236,7 @@ Sie können nun eine Anwendungseinstellung erstellen:
 
 1. Bei jeder Änderung an Anwendungseinstellungen muss die Anwendung neu gestartet werden. Wählen Sie daher __Weiter__ aus, um Ihre Anwendung neu zu starten, wenn die entsprechende Aufforderung angezeigt wird.
 
-    :::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Screenshot des Azure-Portals mit einer Benachrichtigung, dass für Änderungen an Anwendungseinstellungen ein Neustart Ihrer Anwendung vorgenommen wird. Die Schaltfläche „Weiter“ ist hervorgehoben.":::
+    :::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Screenshot des Azure-Portals mit einer Benachrichtigung, dass für Änderungen an Anwendungseinstellungen ein Neustart Ihrer Anwendung vorgenommen wird.":::
 
 ---
 

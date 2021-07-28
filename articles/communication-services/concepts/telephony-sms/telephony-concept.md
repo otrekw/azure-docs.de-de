@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3e698abbdad4b45a58f14e350e1f2b268a7de371
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 5fba53125e22eed6797db7ada6b99e679e136ea8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324489"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092402"
 ---
 # <a name="telephony-concepts"></a>Telefoniekonzepte
 
@@ -40,7 +40,9 @@ Merkmale dieser Option:
 - Sie benötigen keine Bereitstellung und müssen sich nicht um die Verwaltung einer lokalen Bereitstellung kümmern, da Sprachanrufe (Festnetz) auf Azure Communication Services basiert.
 - Hinweis: Bei Bedarf können Sie über direktes Azure-Routing einen unterstützten Session Border Controller (SBC) verbinden, um Interoperabilität mit Nebenstellenanlagen von Drittanbietern sowie mit analogen Geräten und anderen Drittanbietertelefoniegeräten zu ermöglichen, die von dem SBC unterstützt werden.
 
-Hierfür ist eine ununterbrochene Verbindung mit Azure Communication Services erforderlich.
+Hierfür ist eine ununterbrochene Verbindung mit Azure Communication Services erforderlich.  
+
+Bei Cloudanrufen werden ausgehende Anrufe je nach Zielland nach Minutentarifen abgerechnet. Weitere Informationen finden Sie in der [aktuellen Tarifliste für PSTN-Aufrufe](https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv).
 
 ### <a name="azure-direct-routing"></a>Direktes Azure-Routing
 

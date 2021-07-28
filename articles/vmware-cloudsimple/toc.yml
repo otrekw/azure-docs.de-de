@@ -55,7 +55,7 @@
         - name: Unzulässige Aktionen
           href: forbidden-actions.md
         - name: FAQ
-          href: cloudsimple-faq.md
+          href: cloudsimple-faq.yml
     - name: Tutorials
       items:
         - name: Erstellen des CloudSimple-Diensts

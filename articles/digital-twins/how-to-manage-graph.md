@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 31c99fbac936ab6ec96d6e24bc824d9cb2069e0f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c48f62d193af953ec080fcd559c9d7593428d99e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078776"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454608"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Verwalten eines Graphen von digitalen Zwillingen mithilfe von Beziehungen
 
@@ -28,9 +28,10 @@ Dieser Artikel konzentriert sich auf die Verwaltung von Beziehungen und den Grap
 
 [!INCLUDE [digital-twins-developer-interfaces.md](../../includes/digital-twins-developer-interfaces.md)]
 
-Sie können den Graphen auch unter Verwendung des Beispiels „Azure Digital Twins-Explorer“ ändern. Dieses Beispiel ermöglicht die Visualisierung Ihrer Zwillinge und Graphen und verwendet das SDK im Hintergrund. Im nächsten Abschnitt wird dieses Beispiel ausführlich beschrieben.
-
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+:::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="Screenshot von Azure Digital Twins-Explorer mit Beispielmodellen und -zwillingen." lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
+
 
 ## <a name="create-relationships"></a>Erstellen von Beziehungen
 
@@ -198,7 +199,7 @@ Nachdem Sie das Setup abgeschlossen haben, können Sie das Beispielcodeprojekt a
 
 Dies ist die Konsolenausgabe des Programms: 
 
-:::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="Konsolenausgabe, die die Zwillingsdetails, ein- und ausgehende Beziehungen der Zwillinge anzeigt." lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
+:::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="Screenshot der Konsolenausgabe, die die Zwillingsdetails mit den ein- und ausgehenden Beziehungen der Zwillinge anzeigt." lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
 
 > [!TIP]
 > Der Zwillingsgraph ist ein Konzept zur Erstellung von Beziehungen zwischen Zwillingen. Wenn Sie sich die visuelle Darstellung des Zwillingsgraphen ansehen möchten, lesen Sie den Abschnitt [Visualisierung](how-to-manage-graph.md#visualization) dieses Artikels. 

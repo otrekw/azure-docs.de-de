@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/01/2020
+ms.date: 05/17/2021
 ms.author: trbye
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-four
 keywords: Sprachsynthese
-ms.openlocfilehash: 7a41c4d9c1074b376da3de556caf63ced0bc84ec
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 33e19816d219e2be3dae367c5b30da349e2eb879
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428199"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085485"
 ---
 # <a name="get-started-with-text-to-speech"></a>Erste Schritte bei der Sprachsynthese
 
@@ -28,6 +28,10 @@ ms.locfileid: "102428199"
 
 ::: zone pivot="programming-language-cpp"
 [!INCLUDE [C++ Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-cpp.md)]
+::: zone-end
+
+::: zone pivot="programming-language-go"
+[!INCLUDE [C++ Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-go.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
@@ -56,9 +60,11 @@ ms.locfileid: "102428199"
 
 ## <a name="get-position-information"></a>Abrufen von Positionsinformationen
 
-Ihr Projekt benötigt möglicherweise die Information, wann ein Wort von der Sprachsynthese gesprochen wird, um auf der Grundlage dieses Timings eine bestimmte Aktion ausführen zu können. Wenn Sie also beispielsweise Wörter hervorheben möchten, während sie gesprochen werden, müssen Sie wissen, welche Wörter wann und wie lange hervorgehoben werden sollen.
+Ihr Projekt benötigt möglicherweise die Information, wann ein Wort von der Sprachsynthese gesprochen wird, um auf der Grundlage dieses Timings eine bestimmte Aktion ausführen zu können.
+Wenn Sie also beispielsweise Wörter hervorheben möchten, während sie gesprochen werden, müssen Sie wissen, welche Wörter wann und wie lange hervorgehoben werden sollen.
 
-Hierzu können Sie das in `SpeechSynthesizer` verfügbare Ereignis `WordBoundary` verwenden. Dieses Ereignis wird am Anfang jedes neuen gesprochenen Worts ausgelöst und stellt einen Zeitoffset innerhalb des gesprochenen Streams sowie einen Textoffset innerhalb der Eingabeaufforderung bereit.
+Hierzu können Sie das in `SpeechSynthesizer` verfügbare Ereignis `WordBoundary` verwenden.
+Dieses Ereignis wird am Anfang jedes neuen gesprochenen Worts ausgelöst und stellt einen Zeitversatz innerhalb des gesprochenen Streams sowie einen Textversatz innerhalb der Eingabeaufforderung bereit.
 
 * `AudioOffset` meldet die verstrichene Zeit der Audioausgabe zwischen dem Beginn der Synthese und dem Anfang des nächsten Worts. Dieser Wert wird in HNS-Einheiten (hundert Nanosekunden) gemessen. 10.000 HNS entsprechen einer Millisekunde.
 * `WordOffset` meldet die Zeichenposition in der Eingabezeichenfolge (ursprünglicher Text oder [SSML](speech-synthesis-markup.md)) unmittelbar vor dem Wort, das als Nächstes gesprochen wird.

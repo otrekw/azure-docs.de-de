@@ -2,17 +2,17 @@
 title: Integration in Azure Time Series Insights
 titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie Ereignisrouten von Azure Digital Twins in Azure Time Series Insights einrichten.
-author: alexkarcher-msft
-ms.author: alkarche
+author: baanders
+ms.author: baanders
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8f87b373d640a330006b6b3675376ce46c1c02ae
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b4dad7e5de44701b946c3d7b9412d5d3095c5736
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078758"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615796"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrieren von Azure Digital Twins in Azure Time Series Insights
 
@@ -50,7 +50,7 @@ Sie fügen Time Series Insights über den folgenden Pfad an Azure Digital Twins 
 Bevor Sie die Event Hubs erstellen, erstellen Sie zuerst einen Event Hub-Namespace, der Ereignisse von Ihrer Azure Digital Twins-Instanz empfängt. Sie können entweder die folgenden Azure CLI Anweisungen oder das Azure-Portal verwenden: [Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md). Informationen zu Regionen, die Event Hubs unterstützen, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs).
 
 ```azurecli-interactive
-az eventhubs namespace create --name <name-for-your-event-hubs-namespace> --resource-group <your-resource-group> --location <region>
+az eventhubs namespace create --name <name-for-your-Event-Hubs-namespace> --resource-group <your-resource-group> --location <region>
 ```
 
 > [!TIP]
@@ -77,7 +77,7 @@ Führen Sie zum Einrichten des Zwillingshubs die folgenden Schritte in diesem Ab
 Erstellen Sie den **Zwillingshub** mit dem folgenden CLI-Befehl. Geben Sie einen Namen für Ihren Zwillingshub an.
 
 ```azurecli-interactive
-az eventhubs eventhub create --name <name-for-your-twins-hub> --resource-group <your-resource-group> --namespace-name <your-event-hubs-namespace-from-above>
+az eventhubs eventhub create --name <name-for-your-twins-hub> --resource-group <your-resource-group> --namespace-name <your-Event-Hubs-namespace-from-above>
 ```
 
 ### <a name="create-twins-hub-authorization-rule"></a>Erstellen einer Autorisierungsregel für den Zwillingshub
@@ -85,7 +85,7 @@ az eventhubs eventhub create --name <name-for-your-twins-hub> --resource-group <
 Erstellen Sie eine [Autorisierungsregel](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az_eventhubs_eventhub_authorization_rule_create) mit Sende- und Empfangsberechtigungen. Geben Sie einen Namen für die Regel an.
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-twins-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-event-hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above>
+az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-twins-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-Event-Hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above>
 ```
 
 ### <a name="create-twins-hub-endpoint"></a>Erstellen eines Endpunkts für den Zwillingshub
@@ -93,7 +93,7 @@ az eventhubs eventhub authorization-rule create --rights Listen Send --name <nam
 Erstellen Sie einen Azure Digital Twins-[Endpunkt](concepts-route-events.md#create-an-endpoint), der Ihren Event Hub mit Ihrer Azure Digital Twins-Instanz verknüpft. Geben Sie einen Namen für den Endpunkt Ihres Zwillingshubs an.
 
 ```azurecli-interactive
-az dt endpoint create eventhub --dt-name <your-Azure-Digital-Twins-instance-name> --eventhub-resource-group <your-resource-group> --eventhub-namespace <your-event-hubs-namespace-from-earlier> --eventhub <your-twins-hub-name-from-above> --eventhub-policy <your-twins-hub-auth-rule-from-earlier> --endpoint-name <name-for-your-twins-hub-endpoint>
+az dt endpoint create eventhub --dt-name <your-Azure-Digital-Twins-instance-name> --eventhub-resource-group <your-resource-group> --eventhub-namespace <your-Event-Hubs-namespace-from-earlier> --eventhub <your-twins-hub-name-from-above> --eventhub-policy <your-twins-hub-auth-rule-from-earlier> --endpoint-name <name-for-your-twins-hub-endpoint>
 ```
 
 ### <a name="create-twins-hub-event-route"></a>Erstellen einer Ereignisroute für den Zwillingshub
@@ -111,7 +111,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance-name> --endpoint
 Rufen Sie die [Event Hubs-Verbindungszeichenfolge der Zwillinge](../event-hubs/event-hubs-get-connection-string.md) mithilfe der Autorisierungsregeln ab, die Sie zuvor für den Zwillingshub erstellt haben.
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-event-hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above> --name <your-twins-hub-auth-rule-from-earlier>
+az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-Event-Hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above> --name <your-twins-hub-auth-rule-from-earlier>
 ```
 Notieren Sie sich den Wert **primaryConnectionString** aus dem Ergebnis, um später in diesem Artikel die App-Einstellung für den Zwillingshub zu konfigurieren.
 
@@ -129,7 +129,7 @@ Wenn Sie später die Time Series Insights-Instanz erstellen, verbinden Sie diese
 Erstellen Sie den **Zeitreihenhub** mit dem folgenden Befehl. Geben Sie einen Namen für den Zeitreihenhub an.
 
 ```azurecli-interactive
- az eventhubs eventhub create --name <name-for-your-time-series-hub> --resource-group <your-resource-group> --namespace-name <your-event-hub-namespace-from-earlier>
+ az eventhubs eventhub create --name <name-for-your-time-series-hub> --resource-group <your-resource-group> --namespace-name <your-Event-Hub-namespace-from-earlier>
 ```
 
 ### <a name="create-time-series-hub-authorization-rule"></a>Erstellen einer Autorisierungsregel für den Zeitreihenhub
@@ -137,7 +137,7 @@ Erstellen Sie den **Zeitreihenhub** mit dem folgenden Befehl. Geben Sie einen Na
 Erstellen Sie eine [Autorisierungsregel](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az_eventhubs_eventhub_authorization_rule_create) mit Sende- und Empfangsberechtigungen. Geben Sie einen Namen für die Autorisierungsregel für den Zeitreihenhub an.
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-time-series-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-event-hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-above>
+az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-time-series-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-Event-Hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-above>
 ```
 
 ### <a name="get-time-series-hub-connection-string"></a>Abrufen der Verbindungszeichenfolge für den Zeitreihenhub
@@ -145,7 +145,7 @@ az eventhubs eventhub authorization-rule create --rights Listen Send --name <nam
 Rufen Sie die [Verbindungszeichenfolge für den Zeitreihenhub](../event-hubs/event-hubs-get-connection-string.md) mithilfe der Autorisierungsregeln ab, die Sie zuvor für den Zeitreihenhub erstellt haben:
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-event-hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-earlier> --name <your-time-series-hub-auth-rule-from-earlier>
+az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-Event-Hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-earlier> --name <your-time-series-hub-auth-rule-from-earlier>
 ```
 Notieren Sie sich den Wert **primaryConnectionString** aus dem Ergebnis, um später in diesem Artikel die App-Einstellung für den Zeitreihenhub zu konfigurieren.
 
@@ -200,13 +200,13 @@ Als Nächstes fügen Sie Umgebungsvariablen in den Einstellungen der Funktions-A
 Verwenden Sie den zuvor gespeicherten Zwillingshubwert für **primaryConnectionString**, um in Ihrer Funktions-App eine App-Einstellung zu erstellen, die die Zwillingshub-Verbindungszeichenfolge enthält:
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<your-twins-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<your-twins-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-function-app-name>
 ```
 
 Verwenden Sie den zuvor gespeicherten Zeitreihenhubwert für **primaryConnectionString**, um in Ihrer Funktions-App eine App-Einstellung zu erstellen, die die Zeitreihenhub-Verbindungszeichenfolge enthält:
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-time-series-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-time-series-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-function-app-name>
 ```
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Erstellen und Verbinden einer Time Series Insights-Instanz
@@ -226,9 +226,9 @@ In diesem Abschnitt richten Sie eine Time Series Insights-Instanz zum Empfangen 
 
     Sie können für andere Eigenschaften auf dieser Seite die Standardwerte übernehmen. Klicken Sie auf die Schaltfläche **Weiter: Ereignisquelle >** .
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png" alt-text="Screenshot: Erstellen einer Time Series Insights-Umgebung im Azure-Portal. Wählen Sie in den Dropdownlisten Ihr Abonnement, Ihre Ressourcengruppe und den Standort und anschließend einen Namen für Ihre Umgebung aus." lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png" alt-text="Screenshot des Azure-Portals, der zeigt, wie die Time Series Insights-Umgebung erstellt wird (Teil 1 von 3)." lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png":::
         
-    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png" alt-text="Screenshot: Erstellen einer Time Series Insights-Umgebung im Azure-Portal. Der Tarif „Gen2(L1)“ ist ausgewählt, und der Eigenschaftenname der Zeitreihen-ID lautet „$dtId“." lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png" alt-text="Screenshot des Azure-Portals, der zeigt, wie die Time Series Insights-Umgebung erstellt wird (Teil 2 von 3)." lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png":::
 
 2. Wählen Sie auf der Registerkarte *Ereignisquelle* die folgenden Felder aus:
 
@@ -244,7 +244,7 @@ In diesem Abschnitt richten Sie eine Time Series Insights-Instanz zum Empfangen 
     
     Wählen Sie die Schaltfläche **Überprüfen + erstellen** aus, um alle Details zu überprüfen. Wählen Sie dann erneut die Schaltfläche **Überprüfen + erstellen** aus, um die Zeitreihenumgebung zu erstellen.
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png" alt-text="Screenshot: Erstellen einer Time Series Insights-Umgebung im Azure-Portal. Sie erstellen eine Ereignisquelle mit den Event Hub-Informationen von oben. Außerdem erstellen Sie eine neue Consumergruppe." lightbox="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png" alt-text="Screenshot des Azure-Portals, der zeigt, wie die Time Series Insights-Umgebung erstellt wird (Teil 3 von 3)." lightbox="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png":::
 
 ## <a name="send-iot-data-to-azure-digital-twins"></a>Senden von IoT-Daten an Azure Digital Twins
 
@@ -253,7 +253,7 @@ Um mit dem Senden von Daten an Time Series Insights zu beginnen, müssen Sie zun
 Verwenden Sie den folgenden CLI-Befehl, um die *Temperature*-Eigenschaft des Thermostat67-Zwillings zu aktualisieren, den Sie Ihrer Instanz im Abschnitt [Voraussetzungen](#prerequisites) hinzugefügt haben.
 
 ```azurecli-interactive
-az dt twin update --dt-name <your-azure-digital-twins-instance-name> --twin-id thermostat67 --json-patch '{"op":"replace", "path":"/Temperature", "value": 20.5}'
+az dt twin update --dt-name <your-Azure-Digital-Twins-instance-name> --twin-id thermostat67 --json-patch '{"op":"replace", "path":"/Temperature", "value": 20.5}'
 ```
 
 **Wiederholen Sie den Befehl mindestens vier weitere Male mit unterschiedlichen Temperaturwerten**, um mehrere Datenpunkte zu erstellen, die später in der Time Series Insights-Umgebung beobachtet werden können.
@@ -268,19 +268,19 @@ Nun sollten Daten in Ihre Time Series Insights-Instanz übertragen werden, die z
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach dem Namen Ihrer Zeitreihenumgebung, den Sie zuvor erstellt haben. Wählen Sie in den Menüoptionen auf der linken Seite *Übersicht* aus, um die *Time Series Insights-Explorer-URL* anzuzeigen. Wählen Sie die URL aus, um die Temperaturänderungen anzuzeigen, die sich in der Time Series Insights-Umgebung widerspiegeln.
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Screenshot: Auswählen der Time Series Insights-Explorer-URL im Azure-Portal auf der Übersichtsregisterkarte Ihrer Time Series Insights-Umgebung" lightbox="media/how-to-integrate-time-series-insights/view-environment.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Screenshot: Time Series Insights-Explorer-URL im Azure-Portal auf der Registerkarte „Übersicht“ der Time Series Insights-Umgebung." lightbox="media/how-to-integrate-time-series-insights/view-environment.png":::
 
 2. Im Explorer werden die Zwillinge in der Azure Digital Twins-Instanz auf der linken Seite angezeigt. Wählen Sie den Zwilling „thermostat67“, anschließend die *Temperature*-Eigenschaft und dann **Hinzufügen** aus.
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Screenshot der Auswahl von „thermostat67“ im Time Series Insights-Explorer, der Temperature-Eigenschaft und von „Hinzufügen“" lightbox="media/how-to-integrate-time-series-insights/add-data.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Screenshot des Time Series Insights-Explorers mit den Schritten zur Auswahl von „thermostat67“, Auswahl der Eigenschaft „temperature“ und Hervorhebung der Auswahl von „add“." lightbox="media/how-to-integrate-time-series-insights/add-data.png":::
 
 3. Sie sollten jetzt die anfänglichen Temperaturmesswerte Ihres Thermostats wie unten dargestellt sehen: 
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Screenshot: TSI-Explorer zum Anzeigen der anfänglichen Temperaturdaten. Es handelt sich um eine Zeile mit Zufallswerten zwischen 68 und 85." lightbox="media/how-to-integrate-time-series-insights/initial-data.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Screenshot des Time Series Insights-Explorers mit den anfänglichen Temperaturdaten, die eine Linie mit zufälligen Werten zwischen 68 und 85 zeigen." lightbox="media/how-to-integrate-time-series-insights/initial-data.png":::
 
 Nach einer viel längeren Ausführung der Simulation sieht die Visualisierung etwa wie folgt aus:
 
-:::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Screenshot: TSI-Explorer, in dem die Temperaturdaten für jeden Zwilling in drei parallelen Linien unterschiedlicher Farben dargestellt werden" lightbox="media/how-to-integrate-time-series-insights/day-data.png":::
+:::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Screenshot: Time Series Insights-Explorer, in dem die Temperaturdaten für jeden Zwilling in drei parallelen Linien unterschiedlicher Farben dargestellt werden." lightbox="media/how-to-integrate-time-series-insights/day-data.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

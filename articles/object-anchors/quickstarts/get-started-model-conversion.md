@@ -4,25 +4,25 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Object An
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 02/22/2021
+ms.date: 06/10/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: bb2de2c9076ae17598b761ba7dc2c17286d1352d
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 592affde83e468c409c25204fa389471a77abcce
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750787"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005589"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>Schnellstart: Erstellen eines Object Anchors-Modells aus einem 3D-Modell
 
-Azure Object Anchors ist ein verwalteter Clouddienst, der 3D-Modelle in KI-Modelle konvertiert, die objektbezogene Mixed Reality-Erlebnisse für HoloLens ermöglichen. In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des C# bzw. .Net Core SDK ein Object Anchors-Modell aus einem 3D-Modell erstellen.
+Azure Object Anchors ist ein verwalteter Clouddienst, der 3D-Modelle in KI-Modelle konvertiert, die objektbezogene Mixed Reality-Erlebnisse für HoloLens ermöglichen. In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des [Azure Object Anchors Conversion SDK für .NET](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre) ein Object Anchors-Modell aus einem 3D-Modell erstellen.
 
 Sie lernen Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines Object Anchors-Kontos
-> * Konvertieren eines 3D-Modells zum Erstellen eines Object Anchors-Modells
+> * Konvertieren eines 3D-Modells zum Erstellen eines Object Anchors-Modells mithilfe des [Azure Object Anchors Conversion SDK für .NET](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre) ([NuGet](https://www.nuget.org/packages/Azure.MixedReality.ObjectAnchors.Conversion/))
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -143,3 +143,6 @@ In dieser Schnellstartanleitung haben Sie ein Object Anchors-Konto erstellt und 
 
 > [!div class="nextstepaction"]
 > [HoloLens DirectX](get-started-hololens-directx.md)
+
+> [!div class="nextstepaction"]
+> [SDK: Konvertierung](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre)

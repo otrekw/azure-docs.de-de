@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 02/24/2021
 ms.custom: mvc
-ms.openlocfilehash: 1cddd39d0b95e021478235fcdafbacd40eb4097c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 315230a19967e4006e378b836b0ea70f6b5c19b9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105254"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094292"
 ---
 # <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
@@ -117,13 +117,9 @@ Informationen zu den ersten Schritten mit eingehendem Datenverkehr finden Sie un
 
 ## <a name="development-tooling-integration"></a>Integration von Entwicklungstools
 
-Kubernetes verfügt über ein umfassendes Ökosystem mit Entwicklungs- und Verwaltungstools, die nahtlos mit AKS genutzt werden können. Zu diesen Tools gehören auch Helm und die Kubernetes-Erweiterung für Visual Studio Code.   
+Kubernetes verfügt über ein umfassendes Ökosystem mit Entwicklungs- und Verwaltungstools, die nahtlos mit AKS genutzt werden können. Zu diesen Tools gehören auch Helm und die Kubernetes-Erweiterung für Visual Studio Code. 
 
-Azure verfügt über mehrere Tools zur Optimierung von Kubernetes, z. B. Azure Dev Spaces und DevOps Starter.  
-
-### <a name="azure-dev-spaces"></a>Azure Dev Spaces
-
-Azure Dev Spaces ermöglicht eine schnelle, iterative Kubernetes-Bereitstellung für Teams. Container lassen sich mit minimalem Konfigurationsaufwand direkt in AKS ausführen und debuggen. Informationen zu ersten Schritten finden Sie unter [Azure Dev Spaces][azure-dev-spaces].
+Azure verfügt über mehrere Tools zur Optimierung von Kubernetes, z. B. DevOps Starter.  
 
 ### <a name="devops-starter"></a>DevOps Starter
 

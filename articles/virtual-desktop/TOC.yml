@@ -1,12 +1,12 @@
-- name: Windows Virtual Desktop
+- name: Azure Virtual Desktop
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Windows Virtual Desktop?
+    - name: Was ist Azure Virtual Desktop?
       href: overview.md
     - name: Neuigkeiten
       href: whats-new.md
-    - name: Dokumentation zu Windows Virtual Desktop (klassisch)
+    - name: Dokumentation zu Azure Virtual Desktop (klassisch)
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Tutorials
   items:
@@ -22,7 +22,7 @@
   items:
     - name: Manuelles Migrieren
       href: manual-migration.md
-    - name: Herstellen einer Verbindung mit Windows Virtual Desktop-Ressourcen
+    - name: Herstellen einer Verbindung mit Azure Virtual Desktop-Ressourcen
       items:
         - name: Herstellen einer Verbindung mit dem Windows-Desktopclient
           href: connect-windows-7-10.md
@@ -76,7 +76,7 @@
           href: configure-host-pool-load-balancing.md
         - name: Persönlicher Desktopzuweisungstyp
           href: configure-host-pool-personal-desktop-assignment-type.md
-    - name: Verwenden einer Windows Virtual Desktop-Lizenz
+    - name: Verwenden einer Azure Virtual Desktop-Lizenz
       href: apply-windows-license.md
     - name: Anpassen des Sitzungshostimages
       items:
@@ -109,9 +109,11 @@
         - name: Einrichten des MSIXMGR-Tools
           href: app-attach-msixmgr.md
     - name: Verwenden von Microsoft Teams
-      href: teams-on-wvd.md
+      href: teams-on-avd.md
     - name: Einrichten von Azure AD Multi-Factor Authentication
       href: set-up-mfa.md
+    - name: "Konfigurieren des einmaligen Anmeldens für AD\_FS"
+      href: configure-adfs-sso.md
     - name: Konfigurieren automatischer Updates
       href: configure-automatic-updates.md
     - name: Installieren von Sprachpaketen
@@ -120,7 +122,7 @@
       href: azure-advisor.md
     - name: Anwenden von Empfehlungen
       href: azure-advisor-recommendations.md
-    - name: Verwenden von Azure Monitor für Windows Virtual Desktop
+    - name: Verwenden von Azure Monitor für Azure Virtual Desktop
       href: azure-monitor.md
     - name: Einrichten eines Notfallwiederherstellungsplans
       href: disaster-recovery.md
@@ -140,9 +142,9 @@
       href: rbac.md
     - name: Authentifizierung
       href: authentication.md
-    - name: Windows Virtual Desktop-Umgebung
+    - name: Azure Virtual Desktop-Umgebung
       href: environment-setup.md
-    - name: Windows Virtual Desktop-Agent
+    - name: Azure Virtual Desktop-Agent
       href: agent-overview.md
     - name: Netzwerkverbindungen
       items:
@@ -160,7 +162,7 @@
           href: proxy-server-support.md
         - name: Bestimmen der Wartezeit für Benutzerverbindungen
           href: connection-latency.md
-    - name: Delegierter Zugriff in Windows Virtual Desktop
+    - name: Delegierter Zugriff in Azure Virtual Desktop
       href: delegated-access-virtual-desktop.md
     - name: Lastenausgleichsmethoden für Hostpools
       href: host-pool-load-balancing.md
@@ -168,7 +170,7 @@
       href: fslogix-containers-azure-files.md
     - name: Speicheroptionen für FSLogix-Profilcontainer
       href: store-fslogix-profile.md
-    - name: Häufig gestellte Fragen zu Windows Virtual Desktop
+    - name: Häufig gestellte Fragen zu Azure Virtual Desktop
       href: faq.md
     - name: "Häufig gestellte Fragen zu Windows\_10 Enterprise mit mehreren Sitzungen"
       href: windows-10-multisession-faq.yml
@@ -200,11 +202,11 @@
       href: troubleshoot-vm-configuration.md
     - name: Verbindungen des Remotedesktopdiensts
       href: troubleshoot-service-connection.md
-    - name: Windows Virtual Desktop-Agent
+    - name: Azure Virtual Desktop-Agent
       href: troubleshoot-agent.md
     - name: Probleme des Remotedesktopclients
       href: troubleshoot-client.md
-    - name: 'Windows Virtual Desktop: PowerShell'
+    - name: 'Azure Virtual Desktop: PowerShell'
       href: troubleshoot-powershell.md
     - name: Diagnostizieren von Problemen mit der Grafikleistung
       href: remotefx-graphics-performance-counters.md

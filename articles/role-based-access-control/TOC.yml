@@ -100,6 +100,8 @@
           href: conditions-role-assignments-cli.md
         - name: REST-API
           href: conditions-role-assignments-rest.md
+        - name: ARM-Vorlage
+          href: conditions-role-assignments-template.md
         - name: Behandeln von Problemen mit Bedingungen
           href: conditions-troubleshoot.md
     - name: Entfernen von Rollenzuweisungen

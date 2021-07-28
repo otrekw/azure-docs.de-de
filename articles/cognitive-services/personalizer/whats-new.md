@@ -7,19 +7,29 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 07/17/2020
-ms.openlocfilehash: a62c7dc8238b642aeaa59a7b470266378832e26e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 05/28/2021
+ms.openlocfilehash: e181dd8618d571a2aea4af5475f8c6ac06a94f8b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363883"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698716"
 ---
 # <a name="whats-new-in-personalizer"></a>Neuerungen in der Personalisierung
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="may-2021----build-conference"></a>Mai 2021 – //Build-Konferenz
+
+* Automatische Optimierung (Vorschau): Sie können eine Personalisierungsschleife konfigurieren, die Sie verwenden, um sich mit weniger Arbeit im Laufe der Zeit kontinuierlich zu verbessern. Die Personalisierung führt automatisch Offlineauswertungen aus, erkennt bessere Machine Learning-Einstellungen und wendet sie an. Weitere Informationen finden Sie unter [Automatische Optimierung der Personalisierung (Vorschau)](concept-auto-optimization.md).
+* Personalisierung mit mehreren Slots (Vorschau): Wenn Sie kachelbasierte Layouts, Karussells und/oder Randleisten haben, ist es einfacher, die Personalisierung für jeden Ort zu verwenden, an dem Sie Produkte oder Inhalte auf der gleichen Seite empfehlen. Die Personalisierung kann jetzt eine Liste von Slots in der Rangfolge-API verwenden, jedem eine Aktion zuweisen und aus Relevanzbewertungen lernen, die Sie für jeden Slot senden. Weitere Informationen finden Sie unter [Multislot-Personalisierung (Vorschau)](concept-multi-slot-personalization.md).
+* Die Personalisierung ist jetzt in weiteren Regionen verfügbar.
+* Aktualisierte Codebeispiele (GitHub) und Dokumentation. Verwenden Sie die folgenden Links, um aktualisierte Beispiele zu sehen:
+  * [C#/.NET](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer)
+  * [JavaScript](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
+  * [Python-Beispiele](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer)
 
 ### <a name="july-2020"></a>Juli 2020
 

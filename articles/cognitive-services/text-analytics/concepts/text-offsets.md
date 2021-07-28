@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 03/09/2020
+ms.date: 05/18/2021
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: f5b63503792b13e089568004ba67e5be8a3d0c7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 348805670187f2362eb17dae40aa94e70f1daa24
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98932374"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084680"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Textversätze in der Ausgabe der Textanalyse-API
 
@@ -42,7 +42,7 @@ Die Textanalyse-API gibt diese Textelemente aus Gründen der Einfachheit ebenfal
 
 ## <a name="offsets-in-api-version-31-preview"></a>Offsets in API-Version 3.1-preview
 
-Ab API-Version 3.1-preview.1 unterstützen alle Textanalyse-API-Endpunkte, die einen Offset zurückgeben, den `stringIndexType`-Parameter. Mit diesem Parameter werden die `offset`- und `length`-Attribute in der API-Ausgabe an das angeforderte Zeichenfolgeniterationsschema angepasst. Derzeit werden drei Typen unterstützt:
+In Version 3.1 der API unterstützen alle Textanalyse-API-Endpunkte, die einen Offset zurückgeben, den `stringIndexType`-Parameter. Mit diesem Parameter werden die `offset`- und `length`-Attribute in der API-Ausgabe an das angeforderte Zeichenfolgeniterationsschema angepasst. Derzeit werden drei Typen unterstützt:
 
 1. `textElement_v8` (Standardwert): Durchläuft Grapheme gemäß der Definition des [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0)-Standards.
 2. `unicodeCodePoint`: Durchläuft [Unicode-Codepunkte](http://www.unicode.org/versions/Unicode13.0.0/ch02.pdf#G25564), das Standardschema für Python 3.

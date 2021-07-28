@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: b845ecabe74040e154886476a8ba28efecc99325
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 2ffb38d334aa5b0abefa3398a5c2a7608f448025
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868859"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965303"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe der Azure CLI
 
@@ -34,7 +34,7 @@ Eine typische Bereitstellungsarchitektur mit Hochverfügbarkeit und mehreren Reg
 
 ![Bereitstellung mit mehreren Regionen](media/tutorial-deploy-hsm-cli/high-availability-architecture.png)
 
-Dieses Tutorial konzentriert sich auf die Integration eines HSM-Paars und des erforderlichen ExpressRoute-Gateways („Subnet 1“ in der obigen Abbildung) in ein vorhandenes virtuelles Netzwerk („VNET 1“ in der obigen Abbildung).  Alle anderen Ressourcen sind Azure-Standardressourcen. Der gleiche Integrationsprozess kann auch für HSMs in „Subnet 4“ für „VNET 3“ (ebenfalls in der obigen Abbildung) verwendet werden.
+Dieses Tutorial konzentriert sich auf die Integration eines HSM-Paars und des erforderlichen [ExpressRoute-Gateways](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) („Subnet 1“ in der obigen Abbildung) in ein vorhandenes virtuelles Netzwerk („VNET 1“ in der obigen Abbildung).  Alle anderen Ressourcen sind Azure-Standardressourcen. Der gleiche Integrationsprozess kann auch für HSMs in „Subnet 4“ für „VNET 3“ (ebenfalls in der obigen Abbildung) verwendet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +51,7 @@ Bei allen weiteren Schritten wird davon ausgegangen, dass Sie bereits zum Azure-
 
 ## <a name="provisioning-a-dedicated-hsm"></a>Bereitstellen eines dedizierten HSM
 
-Die Bereitstellung von HSMs und deren Integration in ein vorhandenes virtuelles Netzwerk über ExpressRoute-Gateway wird mithilfe von ssh überprüft. Durch diese Überprüfung wird sichergestellt, dass das HSM-Gerät für weitere Konfigurationsaktivitäten erreichbar und grundsätzlich verfügbar ist.
+Die Bereitstellung von HSMs und deren Integration in ein vorhandenes virtuelles Netzwerk über [ExpressRoute-Gateway](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) wird mithilfe von ssh überprüft. Durch diese Überprüfung wird sichergestellt, dass das HSM-Gerät für weitere Konfigurationsaktivitäten erreichbar und grundsätzlich verfügbar ist.
 
 ### <a name="validating-feature-registration"></a>Überprüfen der Featureregistrierung
 

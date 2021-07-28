@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fb46adc6de32befd554047eded18ca16ab76dde1
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 04b0ee4feb74553fc3b24910da338ba02864ec28
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286760"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113109160"
 ---
 # <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>Schnellstart: Verarbeiten von SMS-Ereignissen für Zustellberichte und eingehende Nachrichten
 
@@ -114,7 +114,6 @@ In diesem Schnellstart haben Sie gelernt, SMS-Ereignisse zu verwenden. Sie könn
 > [Senden einer SMS](../telephony-sms/send.md)
 
 Das könnte Sie auch interessieren:
-
 
  - [Weitere Informationen zu Ereignisbehandlungskonzepten](../../../event-grid/event-schema-communication-services.md)
  - [Weitere Informationen zu Azure Event Grid](../../../event-grid/overview.md)

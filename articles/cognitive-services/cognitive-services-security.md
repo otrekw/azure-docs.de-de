@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 90fbc41edbfea0ea99d436906d3052e43bfb4fb8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a720eec0c112b54fab0a1651c388b6e0514128c3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043872"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094940"
 ---
 # <a name="azure-cognitive-services-security"></a>Sicherheit von Azure Cognitive Services
 
@@ -199,7 +199,7 @@ NSString* value =
 
 [Kunden-Lockbox für Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md) bietet eine Oberfläche, auf der Kunden Anforderungen nach Zugriff auf Kundendaten prüfen und dann genehmigen oder ablehnen können. Das Feature wird in Fällen verwendet, in denen ein Microsoft-Techniker während einer Supportanfrage auf Kundendaten zugreifen muss. Informationen zu der Weise, in der Kunden-Lockbox-Anforderungen initiiert, nachverfolgt und für spätere Überprüfungen und Audits speichert, finden Sie unter [Kunden-Lockbox](../security/fundamentals/customer-lockbox-overview.md). 
 
-Kunden-Lockbox ist für diesen Cognitive Service erhältlich:
+Kunden-Lockbox ist für diesen Dienst erhältlich:
 
 * Übersetzer
 

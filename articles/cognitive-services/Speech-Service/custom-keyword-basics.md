@@ -12,12 +12,12 @@ ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 49ac70b6881085f48c8bc3a12e31e4a1aa220c6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a1ec49ca9ee9d0adcbae97eae2e4093274a524c6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95021948"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099638"
 ---
 # <a name="get-started-with-custom-keyword"></a>Erste Schritte mit dem benutzerdefinierten Schlüsselwort
 
@@ -39,7 +39,7 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
 1. Erstellen Sie auf der Seite [Benutzerdefiniertes Schlüsselwort](https://aka.ms/sdsdk-wakewordportal) ein **neues Projekt**. 
 
-1. Geben Sie unter **Name** einen Namen und unter **Beschreibung** eine optionale Beschreibung ein, und wählen Sie die Sprache aus. Sie benötigen jeweils ein Projekt pro Sprache, und der Support ist derzeit auf die Sprache `en-US` beschränkt.
+1. Geben Sie unter **Name** einen Namen und unter **Beschreibung** eine optionale Beschreibung ein, und wählen Sie die Sprache aus. Sie benötigen ein Projekt pro Sprache, und die Unterstützung ist derzeit auf Englisch (USA) und Chinesisch (Mandarin, vereinfacht) beschränkt.
 
     ![Beschreiben Ihres Schlüsselwortprojekts](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -49,7 +49,7 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
 1. Klicken Sie zum Erstellen eines neuen Schlüsselwortmodells auf **Modell trainieren**.
 
-1. Geben Sie einen **Namen** für das Modell, eine optionale **Beschreibung** und das **Schlüsselwort** Ihrer Wahl ein, und klicken Sie dann auf **Weiter**. Weitere Informationen zum Auswählen eines effektiven Schlüsselworts finden Sie in den [Richtlinien](./custom-keyword-overview.md#choose-an-effective-keyword).
+1. Geben Sie einen **Namen** für das Modell, eine optionale **Beschreibung** und das **Schlüsselwort** Ihrer Wahl ein, und klicken Sie dann auf **Weiter**. Weitere Informationen zum Auswählen eines effektiven Schlüsselworts finden Sie in den [Richtlinien](keyword-recognition-guidelines.md#choosing-an-effective-keyword).
 
     ![Eingeben Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -63,7 +63,7 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
 1. Die heruntergeladene Datei ist ein `.zip`-Archiv. Extrahieren Sie das Archiv, und Sie erhalten eine Datei mit der Erweiterung `.table`. Dies ist die Datei, die Sie mit dem SDK im nächsten Abschnitt verwenden, sodass Sie sich unbedingt den Pfad notieren sollten. Der Dateiname spiegelt Ihren Schlüsselwortnamen wider, z. B. hat ein **Gerät aktivieren**-Schlüsselwort den Dateinamen `Activate_device.table`.
 
-## <a name="use-a-keyword-model-with-the-sdk"></a>Verwenden eines Schlüsselwortmodells mit dem SDK
+## <a name="use-a-keyword-model-with-the-speech-sdk"></a>Verwenden eines Schlüsselwortmodells mit dem Speech SDK
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/keyword-recognition/keyword-basics-csharp.md)]
@@ -79,4 +79,5 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Ihres benutzerdefinierten Schlüsselworts mit dem [Schnellstart zum Speech Devices SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android).
+> [!div class="nextstepaction"]
+> [Abrufen des Speech SDK](speech-sdk.md)

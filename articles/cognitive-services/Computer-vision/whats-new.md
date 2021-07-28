@@ -8,26 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/13/2021
+ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: 2e0a04cef7952822931887f038410ff867cc2afe
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: ce04187cb513712998b6c4ba26d5210bb56ca5df
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286724"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453754"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
+
+## <a name="may-2021"></a>Mai 2021
+
+### <a name="spatial-analysis-container-update"></a>Update für den Container für die räumliche Analyse
+
+Für den [Container für die räumliche Analyse](spatial-analysis-container.md) wurde eine neue Version mit neuen Features veröffentlicht. Mithilfe dieses Docker-Containers können Sie in Echtzeit gestreamte Videodaten analysieren, um zu ermitteln, wie Personen räumlich zueinander in Beziehung stehen und wie sie sich durch physische Umgebungen bewegen. 
+
+* [Räumliche Analysevorgänge](spatial-analysis-operations.md) können jetzt so konfiguriert werden, dass die Ausrichtung einer Person erkannt wird. 
+    * Ein Ausrichtungsklassifizierer kann für die Vorgänge `personcrossingline` und `personcrossingpolygon` aktiviert werden, indem der Parameter `enable_orientation` konfiguriert wird. Die Standardeinstellung ist „Aus“.
+
+* [Räumliche Analysevorgänge bieten](spatial-analysis-operations.md) jetzt auch eine Konfiguration zum Erkennen der Geschwindigkeit einer Person beim Gehen/Laufen.
+     * Die Geschwindigkeit kann für die Vorgänge `personcrossingline` und `personcrossingpolygon` erkannt werden, indem der Klassifizierer `enable_speed` aktiviert wird, der standardmäßig deaktiviert ist. Die Ausgabe wird in den Ausgaben `speed`, `avgSpeed` und `minSpeed` widergespiegelt.
+
 
 ## <a name="april-2021"></a>April 2021
 
 ### <a name="computer-vision-v32-ga"></a>Allgemeine Verfügbarkeit von Maschinelles Sehen v3.2
 
 Die Maschinelles Sehen-API v3.2 ist jetzt mit den folgenden Updates allgemein verfügbar:
-* Verbessertes Bildmarkierungsmodell: Analysiert visuelle Inhalte und generiert relevante Tags basierend auf im Bild angezeigten Objekten, Aktionen und Inhalten. Dieses Modell ist über die [Bildmarkierungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) verfügbar. Weitere Informationen finden Sie in der [Schrittanleitung](./vision-api-how-to-topics/howtocallvisionapi.md) und in der [Übersicht](./overview-image-analysis.md) zur Bildanalyse.
-* Aktualisiertes Inhaltsmoderationsmodell: Erkennt nicht jugendfreie Inhalte und stellt Flags zum Filtern von Bildern bereit, die nicht jugendfreie und freizügige visuelle Inhalte enthalten. Dieses Modell ist über die [Analyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) verfügbar. Weitere Informationen finden Sie in der [Schrittanleitung](./vision-api-how-to-topics/howtocallvisionapi.md) und in der [Übersicht](./overview-image-analysis.md) zur Bildanalyse.
+* Verbessertes Bildmarkierungsmodell: analysiert visuelle Inhalte und generiert relevante Tags basierend auf im Bild gezeigten Objekten, Aktionen und Inhalten. Dieses Modell ist über die [Bildmarkierungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) verfügbar. Weitere Informationen finden Sie in der [Schrittanleitung](./vision-api-how-to-topics/howtocallvisionapi.md) und in der [Übersicht](./overview-image-analysis.md) zur Bildanalyse.
+* Aktualisiertes Inhaltsmoderationsmodell: erkennt nicht jugendfreie Inhalte und stellt Flags zum Filtern von Bildern bereit, die nicht jugendfreie und freizügige visuelle Inhalte enthalten. Dieses Modell ist über die [Analyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) verfügbar. Weitere Informationen finden Sie in der [Schrittanleitung](./vision-api-how-to-topics/howtocallvisionapi.md) und in der [Übersicht](./overview-image-analysis.md) zur Bildanalyse.
 * [OCR (Lesen) für 73 Sprachen verfügbar](./language-support.md#optical-character-recognition-ocr), einschließlich vereinfachtes und traditionelles Chinesisch, Japanisch, Koreanisch und lateinische Sprachen
 * [OCR (Lesen)](./overview-ocr.md) auch als [Container ohne Distribution](./computer-vision-how-to-install-containers.md?tabs=version-3-2) für die lokale Bereitstellung verfügbar
 
@@ -131,11 +144,11 @@ Weitere Informationen finden Sie in der [OCR Übersicht](overview-ocr.md).
 
 ### <a name="read-api-30-public-preview"></a>Lese-API 3.0 Public Preview
 
-Sie haben nun die Möglichkeit, die Version 3.0 der Lese-API zu verwenden, um gedruckten oder handschriftlichen Text aus Bildern zu extrahieren. Verglichen mit früheren Versionen bietet die Version 3.0 Folgendes:
+Sie können nun Version 3.0 der Lese-API verwenden, um gedruckten oder handschriftlichen Text aus Bildern zu extrahieren. Verglichen mit früheren Versionen bietet die Version 3.0 Folgendes:
 * Höhere Genauigkeit
 * Neues Ausgabeformat
 * Konfidenzbewertung für jedes extrahierte Wort
-* Unterstützung der Sprachen Spanisch und Englisch mit dem zusätzlichen Sprachparameter
+* Unterstützung der Sprachen Spanisch und Englisch mit dem Sprachparameter
 
 Informationen zu den ersten Schritten mit der API-Version 3.0 finden Sie in einer [Schnellstartanleitung zur Textextraktion](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-hand-text.md?tabs=version-3).
 

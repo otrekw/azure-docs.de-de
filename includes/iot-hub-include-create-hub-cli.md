@@ -1,17 +1,17 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 author: timlt
 ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: a1e2833d49d519d563937783a64db6573414bad2
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 45a9a0821dec98637ade4940bee915483d5e9aa1
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109805194"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112039782"
 ---
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 In diesem Abschnitt verwenden Sie die Azure CLI zum Erstellen eines IoT-Hubs und einer Ressourcengruppe.  Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Ein IoT-Hub fungiert als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung und den Geräten.
@@ -19,8 +19,14 @@ In diesem Abschnitt verwenden Sie die Azure CLI zum Erstellen eines IoT-Hubs und
 So erstellen Sie einen IoT-Hub und eine Ressourcengruppe:
 
 1. Starten der CLI-App.  Kopieren Sie zum Ausführen der CLI-Befehle im restlichen Teil dieses Schnellstarts die Befehlssyntax, fügen Sie sie in Ihre CLI-App ein, bearbeiten Sie die Variablenwerte und drücken Sie Enter.
-    - Wenn Sie die Verwendung von Cloud Shell möchten, können Sie die Schaltfläche **Ausprobieren** in den CLI-Befehlen auswählen, um Cloud Shell in einem geteilten Browserfenster zu starten. Oder um Cloud Shell in einem separaten Fenster zu öffnen, können Sie mit der rechten Maustaste auf den Link für [Cloud Shell](https://shell.azure.com/bash) klicken und die Option zum Öffnen auf einer neuen Registerkarte auswählen.
-    - Wenn Sie die Befehlszeilenanwendung Azure CLI verwenden, starten Sie Ihre CLI-Konsolen-App und melden Sie sich bei Azure CLI an.
+    - Wählen Sie bei Verwendung von Cloud Shell die Schaltfläche **Ausprobieren** in den CLI-Befehlen aus, um Cloud Shell in einem geteilten Browserfenster zu starten. Alternativ können Sie [Cloud Shell](https://shell.azure.com/bash) auch in einem separaten Browsertab öffnen.
+    - Gehen Sie wie folgt vor, wenn Sie die Azure CLI lokal verwenden: Starten Sie Ihre CLI-Konsolen-App, und melden Sie sich bei der Azure CLI an.
+
+1. Führen Sie [az extension add](/cli/azure/extension?view=azure-cli-latest#az_extension_add) aus, um die Erweiterung *azure-iot* zu installieren bzw. auf die aktuelle Version zu aktualisieren.
+
+    ```azurecli-interactive
+    az extension add --upgrade --name azure-iot
+    ```
 
 1. Führen Sie in Ihrer CLI-App den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen. Mit dem folgenden Befehl wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* am Standort *eastus* erstellt. 
     >[!NOTE]

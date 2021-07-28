@@ -8,12 +8,12 @@ ms.date: 4/22/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e311a39a68a5fb03c68a1685996a8e0fbde206e8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8a5a092da37b453b719669109bd4924b032c0604
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108734343"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616221"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Abfragesprache für Azure Digital Twins
 
@@ -31,7 +31,7 @@ Sie können die Abfragesprache von Azure Digital Twins verwenden, um digitale Zw
 * relationships
   - Eigenschaften der Beziehungen
 
-Wenn Sie eine Abfrage aus einer Client-App an den Dienst senden möchten, verwenden Sie die Azure Digital Twins-[Abfrage-API](/rest/api/digital-twins/dataplane/query). Eine Möglichkeit, die API zu verwenden, ist durch eins der [SDKs](concepts-apis-sdks.md#overview-data-plane-apis) für Azure Digital Twins.
+Wenn Sie eine Abfrage aus einer Client-App an den Dienst senden möchten, verwenden Sie die Azure Digital Twins-[Abfrage-API](/rest/api/digital-twins/dataplane/query). Eine Möglichkeit, die API zu verwenden, ist durch eins der [SDKs für Azure Digital Twins](concepts-apis-sdks.md#overview-data-plane-apis).
 
 [!INCLUDE [digital-twins-query-reference.md](../../includes/digital-twins-query-reference.md)]
 

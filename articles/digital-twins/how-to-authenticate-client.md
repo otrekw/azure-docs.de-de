@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f8448b7abcc16d2151ec10dbab9028eb8c4e984
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f37699e9710acc9e4098fd38f0d9da0f50e65a58
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099279"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953965"
 ---
 # <a name="write-client-app-authentication-code"></a>Schreiben von Authentifizierungscode für die Client-App
 
@@ -87,10 +87,10 @@ Sie können die Anmeldeinformationen für die verwaltete Identität wie folgt in
 
 Die [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)-Methode ist für interaktive Anwendungen gedacht und startet einen Webbrowser für die Authentifizierung. Sie können dies anstelle von `DefaultAzureCredential` in Fällen verwenden, in denen Sie interaktive Authentifizierung benötigen.
 
-Wenn Sie die interaktiven Browseranmeldeinformationen verwenden möchten, benötigen Sie eine **App-Registrierung**, die über Berechtigungen für die Azure Digital Twins-APIs verfügt. Schritte zum Einrichten dieser App-Registrierung finden Sie unter [Vorgehensweise: Erstellen einer App-Registrierung](how-to-create-app-registration.md). Nachdem Sie die App-Registrierung eingerichtet haben, benötigen Sie Folgendes...
-* Die *Anwendungs-ID (Client-ID)* der App-Registrierung ([Anleitungen zur Ermittlung](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
-* Die *Verzeichnis-ID (Mandanten-ID)* der App-Registrierung ([Anleitungen zur Ermittlung](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
-* Die URL der Azure Digital Twins-Instanz ([Anweisungen für die Ermittlung](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
+Wenn Sie die interaktiven Browseranmeldeinformationen verwenden möchten, benötigen Sie eine **App-Registrierung**, die über Berechtigungen für die Azure Digital Twins-APIs verfügt. Schritte zum Einrichten dieser App-Registrierung finden Sie unter [Vorgehensweise: Erstellen einer App-Registrierung](./how-to-create-app-registration-portal.md). Nachdem Sie die App-Registrierung eingerichtet haben, benötigen Sie Folgendes...
+* [Die Anwendungs-ID (Client-ID) der App-Registrierung](./how-to-create-app-registration-portal.md#collect-client-id-and-tenant-id)
+* [Die Verzeichnis-ID (Mandanten-ID) der App-Registrierung](./how-to-create-app-registration-portal.md#collect-client-id-and-tenant-id)
+* [Die URL der Azure Digital Twins-Instanz](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)
 
 Im Folgenden finden Sie ein Beispiel für den Code zum Erstellen eines authentifizierten SDK-Clients mit `InteractiveBrowserCredential`.
 

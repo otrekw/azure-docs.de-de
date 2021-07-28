@@ -62,6 +62,8 @@
       href: remote-work-support.md
     - name: FQDN in Netzwerkregeln
       href: fqdn-filtering-network-rules.md
+    - name: DNS-Proxydetails
+      href: dns-details.md
     - name: Sicherheitsbaseline
       href: /security/benchmark/azure/baselines/firewall-security-baseline?toc=/azure/firewall/toc.json
     - name: Aktive FTP-Unterstützung
@@ -136,7 +138,7 @@
     - name: Häufig gestellte Fragen
       href: firewall-faq.yml
     - name: Verfassen von Vorlagen
-      href: ../azure-resource-manager/templates/template-syntax.md
+      href: ../azure-resource-manager/templates/syntax.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Communityvorlagen

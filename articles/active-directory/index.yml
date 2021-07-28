@@ -260,10 +260,10 @@ conceptualContent:
         text: Weitere Informationen
     - title: Rollen
       links:
-        - url: ./roles/groups-assign-role.md
+        - url: ./roles/concept-understand-roles.md
           itemType: concept
           text: Grundlegendes zu Azure AD-Rollen
-        - url: ./roles/concept-understand-roles.md
+        - url: ./roles/custom-create.md
           itemType: how-to-guide
           text: Erstellen einer benutzerdefinierten Rolle
         - url: ./roles/groups-view-assignments.md

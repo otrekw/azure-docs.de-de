@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c0bd21f55fee4d8487826deae23093ede293c8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d97ab241120ddc4c8e7434591b866312ea7708ae
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95021812"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890112"
 ---
 # <a name="test-your-custom-commands-application"></a>Testen Ihrer Anwendung für benutzerdefinierte Befehle
 
@@ -40,8 +40,17 @@ Checken Sie zum Einrichten des Clients den [Windows-Sprachassistent-Client](http
 > [!div class="mx-imgBorder"]
 > ![WVAC: Profil erstellen](media/custom-commands/conversation.png)
 
-## <a name="test-with-speech-sdk-enabled-client-applications"></a>Testen mit Speech SDK-fähigen Clientanwendungen 
-Das Speech SDK (Software Development Kit) macht viele der Funktionen des Speech-Dienstes verfügbar und ermöglicht Ihnen das Entwickeln sprachaktivierter Anwendungen. Es ist auch in vielen Programmiersprachen und für alle Plattformen verfügbar.
+## <a name="test-programatically-with-the-cognitive-services-voice-assistant-test-tool"></a>Programmgesteuertes Testen mit dem Testtool des Cognitive Services-Sprach-Assistenten
+
+Das Testtool des Sprach-Assistenten ist eine konfigurierbare .NET Core C#-Konsolenanwendung für End-to-End-Funktionsregressionstests für Ihren Microsoft-Sprach-Assistenten. 
+
+Das Tool kann manuell als Konsolenbefehl oder im Rahmen einer Azure DevOps CI/CD-Pipeline ausgeführt werden, um Regressionen in Ihrem Bot zu verhindern.
+
+Informationen zum Einrichten des Tools finden Sie unter [Testtool des Sprach-Assistenten](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/main/clients/csharp-dotnet-core/voice-assistant-test).
+
+## <a name="test-with-speech-sdk-enabled-client-applications"></a>Testen mit Speech SDK-fähigen Clientanwendungen
+
+Das Speech SDK (Software Development Kit) macht viele der Funktionen des Speech-Dienstes verfügbar und ermöglicht Ihnen das Entwickeln sprachaktivierter Anwendungen. Es ist auf den meisten Plattformen in vielen Programmiersprachen verfügbar.
 
 So richten Sie eine UWP-Clientanwendung (Universelle Windows-Plattform) mit dem Speech SDK ein und integrieren sie in Ihre Anwendung für benutzerdefinierte Befehle  
 - [Vorgehensweise: Integrieren in eine Clientanwendung mithilfe des Speech SDK](./how-to-custom-commands-setup-speech-sdk.md)

@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: reference
 ms.date: 04/12/2021
-ms.openlocfilehash: 107d10bec77ea7bb2b67ae86f48d5b88a286869d
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 3d30bb733245c0519b73d66653b8d09cb9a4b4b9
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229502"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528178"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF- und CommonSecurityLog-Feldzuordnung
 
@@ -60,7 +60,7 @@ Weitere Informationen finden Sie unter [Verbinden der externen Lösung mithilfe 
 | dproc | DestinationProcessName | Der Name des Zielprozesses des Ereignisses, z. B. `telnetd` oder `sshd.` |
 | dpt | DestinationPort | Zielport. <br>Gültige Werte: `*0` - `65535` |
 | dst | DestinationIP | Die IpV4-Zieladresse, auf die sich das Ereignis in einem IP-Netzwerk bezieht. |
-| dtz | DeviceTimeZon | Zeitzone des Geräts, das das Ereignis erzeugt |
+| dtz | DeviceTimeZone | Zeitzone des Geräts, das das Ereignis erzeugt |
 | duid |DestinationUserId | Identifiziert den Zielbenutzer nach ID. |
 | duser | DestinationUserName |Identifiziert den Zielbenutzer nach Namen.|
 | dvc | DeviceAddress | Die IPv4-Adresse des Geräts, das das Ereignis erzeugt. |
@@ -70,7 +70,7 @@ Weitere Informationen finden Sie unter [Verbinden der externen Lösung mithilfe 
 
 ## <a name="e---i"></a>E - I
 
-|CEF-Schlüsselname  |CommonSecurityLog-Name  |BESCHREIBUNG  |
+|CEF-Schlüsselname  |CommonSecurityLog-Name  |Beschreibung  |
 |---------|---------|---------|
 |externalId    |   ExternalID      | Eine ID, die vom Ursprungsgerät verwendet wird. In der Regel handelt es sich um steigende Werte, die jeweils einem Ereignis zugeordnet sind.        |
 |fileCreateTime     |  FileCreateTime      | Zeitpunkt, zu dem die Datei erstellt wurde.        |
@@ -108,7 +108,7 @@ Weitere Informationen finden Sie unter [Verbinden der externen Lösung mithilfe 
 
 ## <a name="r---t"></a>R - T
 
-|CEF-Schlüsselname  |CommonSecurityLog-Name  |BESCHREIBUNG  |
+|CEF-Schlüsselname  |CommonSecurityLog-Name  |Beschreibung  |
 |---------|---------|---------|
 |Anforderung     |   RequestURL      | Die URL, auf die für eine HTTP-Anforderung zugegriffen wird, einschließlich des Protokolls. Zum Beispiel, `http://www/secure.com`        |
 |requestClientApplication     |   RequestClientApplication      |   Der Benutzer-Agent, der der Anforderung zugeordnet ist.      |
@@ -116,7 +116,7 @@ Weitere Informationen finden Sie unter [Verbinden der externen Lösung mithilfe 
 | requestCookies | RequestCookies |Der Anforderung zugeordnete Cookies. |
 | requestMethod | RequestMethod | Die zum Zugreifen auf eine URL verwendete Methode. <br><br>Gültige Werte sind Methoden wie `POST`, `GET` usw. |
 | rt | ReceiptTime | Der Zeitpunkt, zu dem das mit der Aktivität verbundene Ereignis empfangen wurde. |
-|severity     |  <a name="logseverity"></a> LogSeverity       |  Eine Zeichenfolge oder ganze Zahl, die die Wichtigkeit des Ereignisses beschreibt.<br><br> Gültige Zeichenfolgenwerte: `Unknown`, `Low`, `Medium`, `High`, `Very-High` <br><br>Gültige ganzzahlige Werte sind:<br> - `0`-`3` = Niedrig <br>- `4`-`6` = Mittel<br>- `7`-`8` = Hoch<br>- `9`-`10` = Sehr hoch |
+|Schweregrad     |  <a name="logseverity"></a> LogSeverity       |  Eine Zeichenfolge oder ganze Zahl, die die Wichtigkeit des Ereignisses beschreibt.<br><br> Gültige Zeichenfolgenwerte: `Unknown`, `Low`, `Medium`, `High`, `Very-High` <br><br>Gültige ganzzahlige Werte sind:<br> - `0`-`3` = Niedrig <br>- `4`-`6` = Mittel<br>- `7`-`8` = Hoch<br>- `9`-`10` = Sehr hoch |
 | shost    | SourceHostName        |Identifiziert die Quelle, auf die sich das Ereignis in einem IP-Netzwerk bezieht. Das Format muss ein vollqualifizierter Domänenname (DQDN) sein, der dem Quellknoten zugeordnet ist, wenn ein Knoten verfügbar ist. Zum Beispiel: `host` oder `host.domain.com`. |
 | smac | SourceMacAddress | MAC-Adresse der Quelle. |
 | sntdom | SourceNTDomain | Der Windows-Domänenname für die Quelladresse. |
@@ -251,7 +251,7 @@ Die folgenden **CommonSecurityLog**-Felder werden von Azure Sentinel hinzugefüg
 
 ### <a name="additional-enrichment-fields"></a>Zusätzliche Anreicherungsfelder
 
-|CommonSecurityLog-Feldname  |BESCHREIBUNG  |
+|CommonSecurityLog-Feldname  |Beschreibung  |
 |---------|---------|
 |**OriginalLogSeverity**     |  Immer leer, wird für die Integration in CiscoASA unterstützt. <br>Ausführliche Informationen zu den Werten für den Protokollschweregrad siehe Feld [LogSeverity](#logseverity).       |
 |**RemoteIP**     |     Die Remote-IP-Adresse. <br>Dieser Wert basiert auf dem Feld [CommunicationDirection](#communicationdirection), wenn möglich.     |

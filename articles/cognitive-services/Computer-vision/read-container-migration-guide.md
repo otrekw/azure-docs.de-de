@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/29/2021
+ms.date: 05/24/2021
 ms.author: aahi
-ms.openlocfilehash: 1cc17306265e6e8ba2e7fb3f570d0017b006b84f
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: d648acb3ff9a1f7c2076a4b7c1fcf9755a9ea05d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284684"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465191"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migration zu den Read v3.x OCR-Containern
 
@@ -25,7 +25,7 @@ Wenn Sie Version 2 des Read OCR-Containers für maschinelles Sehen verwenden, i
 ## <a name="configuration-changes"></a>Konfigurationsänderungen
 
 * `ReadEngineConfig:ResultExpirationPeriod` wird nicht mehr unterstützt. Der Read OCR-Container verfügt über einen integrierten Cron-Auftrag, der die einer Anforderung zugeordneten Ergebnisse und Metadaten nach 48 Stunden entfernt.
-* `Cache:Redis:Configuration` wird nicht mehr unterstützt. Der Cache wird in den Containern der v3.x nicht verwendet, Sie müssen ihn daher nicht festlegen.
+* `Cache:Redis:Configuration` wird nicht mehr unterstützt. Der Cache wird in den Containern der Version 3.x nicht verwendet, sodass sie ihn nicht festlegen müssen.
 
 ## <a name="api-changes"></a>API-Änderungen
 
@@ -35,7 +35,7 @@ Der Read v3.2-Container verwendet Version 3 der Maschinelles Sehen-API und ve
 * `/vision/v3.2-preview.1/read/analyze`
 * `/vision/v3.2-preview.1/read/syncAnalyze`
 
-Ausführliche Informationen zum Aktualisieren Ihrer Anwendungen für die Verwendung von Version 3 der cloudbasierten Read-API finden Sie im [Migrationshandbuch für die REST-API von Maschinelles Sehen v3](./upgrade-api-versions.md). Diese Informationen gelten auch für den Container. Beachten Sie, dass Synchronisierungsvorgänge nur in Containern unterstützt werden.
+Ausführliche Informationen zum Aktualisieren Ihrer Anwendungen für die Verwendung von Version 3 der cloudbasierten Read-API finden Sie im [Migrationshandbuch für die REST-API von Maschinelles Sehen v3](./upgrade-api-versions.md). Diese Informationen gelten auch für den Container. Synchronisierungsvorgänge werden nur in Containern unterstützt.
 
 ## <a name="memory-requirements"></a>Speicheranforderungen
 
@@ -69,7 +69,7 @@ In v3.x des Containers wird RabbitMQ derzeit nicht unterstützt. Folgende Unters
 | Azure-Warteschlangen | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Produktion |
 | RabbitMQ    | Nicht verfügbar | Produktion |
 
-Zum Erreichen zusätzlicher Redundanz verwendet der Read v3.x-Container einen Zeitgeber für die Sichtbarkeit, um sicherzustellen, dass Anforderungen in einem Setup mit mehreren Containern auch im Fall eines Absturzes erfolgreich verarbeitet werden können. 
+Zum Erreichen zusätzlicher Redundanz verwendet der Read v3.x-Container einen Zeitgeber für Sichtbarkeit, um sicherzustellen, dass Anforderungen bei einem Setup mit mehreren Containern auch bei einem Absturz erfolgreich verarbeitet werden können. 
 
 Legen Sie den Zeitgeber mit `Queue:Azure:QueueVisibilityTimeoutInMilliseconds` fest, was die Zeit angibt, in der eine Nachricht nicht sichtbar ist, wenn sie von einem anderen Worker verarbeitet wird. Um redundante Verarbeitung von Seiten zu vermeiden, empfehlen wir, den Timeoutzeitraum auf 120 Sekunden festzulegen. Der Standardwert ist 30 Sekunden.
 

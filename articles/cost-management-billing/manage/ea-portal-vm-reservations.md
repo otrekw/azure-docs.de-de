@@ -3,17 +3,17 @@ title: Reservierte Azure EA-VM-Instanzen
 description: In diesem Artikel erfahren Sie, wie Azure-Reservierungen für reservierte VM-Instanzen zur Senkung der Kosten für Ihre Unternehmensregistrierung beitragen können.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2020
+ms.date: 05/17/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 6303a94cec9efc01815b6dc6c697abdfe0f84227
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0378e05d8d606d04b90ca20aa3e0399132e9f0ef
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220899"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095840"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Reservierte Azure EA-VM-Instanzen
 
@@ -43,6 +43,14 @@ Enterprise Agreement-Kunden können Kosten und Nutzungsdaten im Azure-Portal un
 Weitere Informationen zu Reservierungskosten und zur Nutzung finden Sie unter [Abrufen von Reservierungskosten und Nutzung laut Enterprise Agreement](../reservations/understand-reserved-instance-usage-ea.md).
 
 Preisinformationen finden Sie unter [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) bzw. unter [Virtuelle Windows-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
+
+### <a name="reservation-prices"></a>Reservierungspreise
+
+Reservierungsrabatte, die Ihre Organisation möglicherweise ausgehandelt hat, werden im Preisblatt des EA-Portals nicht angezeigt. Zuvor waren die vergünstigten Tarife im EA-Portal verfügbar, doch wurde diese Funktionalität entfernt. Wenn Sie reduzierte Reservierungspreise ausgehandelt haben, können Sie eine Liste dieser Preise derzeit nur erhalten, wenn Sie eine [Azure-Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) erstellen.
+
+Die Preise für Reservierungen sind bei Einzelhandelspreisen und EA nicht unbedingt identisch. Sie können identisch sein, doch wenn Sie einen Rabatt ausgehandelt haben, unterscheiden sich die Tarife.
+
+Die im [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/) und der [API für Einzelhandelspreise](/rest/api/cost-management/retail-prices/azure-retail-prices) angezeigten Preise sind identisch. Das Abfragen der API ist die beste Möglichkeit, um alle Preise gleichzeitig anzuzeigen.
 
 ## <a name="reserved-instances-api-support"></a>API-Unterstützung für reservierte Instanzen
 

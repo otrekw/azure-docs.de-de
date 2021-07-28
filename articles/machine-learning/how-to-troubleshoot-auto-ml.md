@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/08/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-python, automl, references_regions
-ms.openlocfilehash: 6f64d3511da8fbf953a50eab44702c7356ad3c5b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0eda886537f0cfd6819ca69c53b4cafa44746636
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140477"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540705"
 ---
 # <a name="troubleshoot-automated-ml-experiments-in-python"></a>Behandeln von Problemen bei Experimenten mit automatisiertem ML in Python
 
@@ -148,8 +148,16 @@ Wenn die aufgeführte Version nicht unterstützt wird:
     1. Geben Sie in der Befehlsshell `pip uninstall PyJWT` ein, und bestätigen Sie den Vorgang mit `y`.
     1. Führen Sie die Installation mithilfe von `pip install 'PyJWT<2.0.0'` aus.
   
+
+## <a name="data-access"></a>Datenzugriff
+ 
+Für Ausführungen von automatisiertem ML müssen Sie sicherstellen, dass der Dateidatenspeicher, der eine Verbindung mit Ihrem AzureFile-Speicher herstellt, über die entsprechenden Anmeldeinformationen für die Authentifizierung verfügt. Andernfalls wird die folgende Meldung angezeigt. Erfahren Sie, wie Sie [Ihre Anmeldeinformationen für die Datenzugriffsauthentifizierung aktualisieren](how-to-train-with-datasets.md#azurefile-storage).
+
+Fehlermeldung: `Could not create a connection to the AzureFileService due to missing credentials. Either an Account Key or SAS token needs to be linked the default workspace blob store.`
+
 ## <a name="databricks"></a>Databricks
 Weitere Informationen finden Sie unter [Konfigurieren eines Experiments mit automatisiertem ML über Databricks](how-to-configure-databricks-automl-environment.md#troubleshooting).
+
 
 ## <a name="forecasting-r2-score-is-always-zero"></a>Prognose-R2-Score ist immer 0 (null)
 

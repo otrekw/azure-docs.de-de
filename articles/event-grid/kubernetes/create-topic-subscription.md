@@ -6,12 +6,12 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: quickstart
-ms.openlocfilehash: c0e2a4422cea681a3bccee0739b8c26350803eb8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d29583cecb1498c10320a844923067a48693480a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385657"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030303"
 ---
 # <a name="route-cloud-events-to-webhooks-with-azure-event-grid-on-kubernetes"></a>Weiterleiten von Cloudereignissen an Webhooks mit Azure Event Grid auf Kubernetes
 In diesem Schnellstart erstellen Sie ein Thema im Event Grid auf Kubernetes, ein Abonnement für das Thema und senden dann ein Beispielereignis an das Thema, um das Szenario zu testen. 
@@ -99,11 +99,12 @@ Weitere Informationen zum CL-Befehl finden Sie unter [`az eventgrid event-subscr
     ```azurecli
     az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv
     ```
-3. Erstellen Sie eine Datei namens **evt.json** mit dem folgendem Inhalt: 
+1. Führen Sie den folgenden **Curl**-Befehl aus, um das Ereignis zu posten. Geben Sie die Endpunkt-URL und den Schlüssel aus Schritt 1 und 2 an, bevor Sie den Befehl ausführen. 
 
-    ```json
-    [{
-          "specVersion": "1.0",
+    ```bash
+    curl  -k -X POST -H "Content-Type: application/cloudevents-batch+json" -H "aeg-sas-key: <KEY_FROM_STEP_2>" -g <ENDPOINT_URL_FROM_STEP_1> \
+    -d  '[{ 
+          "specversion": "1.0",
           "type" : "orderCreated",
           "source": "myCompanyName/us/webCommerceChannel/myOnlineCommerceSiteBrandName",
           "id" : "eventId-n",
@@ -115,13 +116,48 @@ Weitere Informationen zum CL-Befehl finden Sie unter [`az eventgrid event-subscr
              "orderType" : "PO",
              "reference" : "https://www.myCompanyName.com/orders/123"
           }
-    }]
+    }]'
     ```
-4. Führen Sie den folgenden **Curl**-Befehl aus, um das Ereignis zu posten. Geben Sie die Endpunkt-URL und den Schlüssel aus Schritt 1 und 2 an, bevor Sie den Befehl ausführen. 
+    
+    Wenn die Themenendpunkt-URL aus Schritt 1 eine private IP-Adresse ist, z. B. bei Verwendung des Diensttyps „ClusterIP“ für den Event Grid-Broker, können Sie **Curl** aus einem anderen Pod im Cluster ausführen, damit Zugriff auf diese IP-Adresse besteht. Sie können beispielsweise die folgenden Schritte ausführen:
 
-    ```
-    curl -k -X POST -H "Content-Type: application/cloudevents-batch+json" -H "aeg-sas-key: <KEY FROM STEP 2>" -g -d @evt.json <ENDPOINT URL from STEP 1>
-    ```
+    1. Erstellen Sie eine Manifestdatei mit der folgenden Konfiguration. Es kann ratsam sein, ``dnsPolicy`` gemäß Ihren Anforderungen anzupassen. Weitere Informationen finden Sie unter [DNS für Dienste und Pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/).
+    
+        ```yml
+        apiVersion: v1
+        dnsPolicy: ClusterFirstWithHostNet
+        hostNetwork: true
+        kind: Pod
+        metadata: 
+          name: test-pod
+        spec: 
+          containers: 
+            - 
+              name: nginx
+          emptyDir: {}
+          image: nginx
+          volumeMounts: 
+            - 
+              mountPath: /usr/share/nginx/html
+              name: shared-data
+          volumes: 
+            - 
+              name: shared-data  
+        ```
+    1. Erstellen Sie den Pod.
+        ```bash
+            kubectl apply -f <name_of_your_yaml_manifest_file>
+        ```
+    1. Vergewissern Sie sich, dass der Pod ausgeführt wird.
+        ```bash
+            kubectl get pod test-pod
+        ```
+    1. Starten einer Shellsitzung über den Container
+        ```bash
+            kubectl exec --stdin --tty test-pod -- /bin/bash
+        ```
+
+    An diesem Punkt verfügen Sie über eine Shellsitzung aus einem ausgeführten Container im Cluster, über die Sie den **Curl**-Befehl ausführen können, der oben in einem der vorherigen Schritte beschrieben wurde.
 
     > [!NOTE]
     > Um zu erfahren, wie Sie Cloudereignisse mithilfe von Programmiersprachen senden können, sehen Sie sich die folgenden Beispiele an: 

@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 06/09/2021
 ms.author: victorh
-ms.openlocfilehash: 0e3073c491b251a1dbb505d4656de9c6a1e0ac7f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7e0cc01d15e33e86f7e9446537fff6d43652256
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048492"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892850"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application Firewall für Azure Front Door
 
@@ -71,11 +71,11 @@ Sie können benutzerdefinierte WAF-Regeln wie folgt konfigurieren:
 
 - **Zugriffssteuerung auf Basis von HTTP-Parametern:** Sie können Zeichenfolgenübereinstimmungen in HTTP/HTTPS-Anforderungsparametern als Grundlage für Regeln verwenden.  Hierzu zählen beispielsweise Abfragezeichenfolgen, POST-Argumente, Anforderungs-URI, Anforderungsheader und Anforderungstext.
 
-- **Zugriffssteuerung auf Basis der Anforderungsmethode:** Sie können Regeln verwenden, die auf der HTTP-Anforderungsmethode der Anforderung basieren. Beispiel wären etwa GET, PUT und HEAD.
+- **Zugriffssteuerung auf Basis der Anforderungsmethode**: Sie können Regeln verwenden, die auf der HTTP-Anforderungsmethode der Anforderung basieren. Beispiel wären etwa GET, PUT und HEAD.
 
 - **Größenbeschränkung:** Sie können Regeln verwenden, die auf der Länge bestimmter Teile einer Anforderung (Abfragezeichenfolge, URI, Anforderungstext oder Ähnliches) basieren.
 
-- **Ratenbegrenzungsregeln:** Eine Regel für die Ratensteuerung dient dazu, ungewöhnlich umfangreichen Datenverkehr von beliebigen Client-IP-Adressen zu beschränken. Sie können einen Schwellenwert für die Anzahl der Webanforderungen konfigurieren, die von einer Client-IP-Adresse während einer Minute zulässig sind. Diese Regel unterscheidet sich von der benutzerdefinierten Regel mit einer Liste zugelassener oder gesperrter IP-Adressen, die alle Anforderungen von einer Client-IP-Adresse entweder zulässt oder blockiert. Für eine präzise Ratensteuerung kann die Ratenbegrenzung mit weiteren Übereinstimmungsbedingungen (etwa mit HTTP(S)-Parametern) kombiniert werden.
+- **Ratenbegrenzung**: Mit einer Regel für die Ratenbegrenzung kann außergewöhnlich hoher Datenverkehr von einer beliebigen Client-IP-Adresse eingeschränkt werden. Sie können einen Schwellenwert für die Anzahl der Webanforderungen konfigurieren, die von einer Client-IP-Adresse während einer Minute zulässig sind. Diese Regel unterscheidet sich von der benutzerdefinierten Regel mit einer Liste zugelassener oder gesperrter IP-Adressen, die alle Anforderungen von einer Client-IP-Adresse entweder zulässt oder blockiert. Für eine präzise Ratensteuerung kann die Ratenbegrenzung mit weiteren Übereinstimmungsbedingungen (etwa mit HTTP(S)-Parametern) kombiniert werden.
 
 ### <a name="azure-managed-rule-sets"></a>Von Azure verwaltete Regelsätze
 
@@ -91,14 +91,10 @@ Von Azure verwaltete Regelsätze bieten eine einfache Möglichkeit zum Bereitste
 - Schutz vor Einschleusung von SQL-Befehlen
 - Protokollangreifer
 
-Die Versionsnummer des Standardregelsatzes wird erhöht, wenn dem Regelsatz neue Angriffssignaturen hinzugefügt werden.
-Der Standardregelsatz wird standardmäßig im Erkennungsmodus in den WAF-Richtlinien aktiviert. Sie können einzelne Regeln im Standardregelsatz deaktivieren bzw. aktivieren, um die Anforderungen Ihrer Anwendungen zu erfüllen. Sie können pro Regel auch bestimmte Aktionen (ALLOW/BLOCK/REDIRECT/LOG) festlegen.
-
-Manchmal ist es erforderlich, bestimmte Anforderungsattribute in einer WAF-Auswertung wegzulassen. Ein gängiges Beispiel sind von Active Directory eingefügte Token, die für die Authentifizierung verwendet werden. Sie können eine Ausschlussliste für eine verwaltete Regel, eine Regelgruppe oder für den gesamten Regelsatz konfigurieren.  
-
-Die Standardaktion ist „BLOCK“ (Blockieren). Darüber hinaus können in der gleichen WAF-Richtlinie auch benutzerdefinierte Regeln konfiguriert werden, wenn Sie eine der vorkonfigurierten Regeln im Standardregelsatz umgehen möchten.
-
 Benutzerdefinierte Regeln werden immer vor den Regeln im Standardregelsatz ausgewertet. Wenn eine Anforderung einer benutzerdefinierten Regel entspricht, wird die entsprechende Regelaktion angewendet. Die Anforderung wird entweder gesperrt oder an das Back-End weitergeleitet. Es werden keine weiteren benutzerdefinierten Regeln oder Regeln im Standardregelsatz verarbeitet. Der Standardregelsatz kann auch aus WAF-Richtlinien entfernt werden.
+
+Weitere Informationen finden Sie unter [DRS-Regelgruppen und -Regeln der Web Application Firewall](waf-front-door-drs.md).
+
 
 ### <a name="bot-protection-rule-set-preview"></a>Bot-Schutzregelsatz (Vorschauversion)
 

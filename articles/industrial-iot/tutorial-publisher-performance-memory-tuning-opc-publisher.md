@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 89e288d1186efd405019d6474dcbd332e7925d67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 98bff6a72d35e2cee3157b997796bbe51795e1ea
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104787275"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677853"
 ---
 # <a name="tutorial-tune-the-opc-publisher-performance-and-memory"></a>Tutorial: Optimieren der Leistung und des Arbeitsspeichers von OPC Publisher
 
@@ -33,7 +33,7 @@ Der `mq/om`-Parameter steuert die Obergrenze der Kapazität der internen Nachric
 
 * Reduzieren des IoT Hub-Sendeintervalls (`si`)
 
-* Erhöhen der IoT Hub-Nachrichtengröße (`ms`, der höchstmögliche Wert ist 256 KB)
+* Erhöhen der IoT Hub-Nachrichtengröße (`ms`, der höchstmögliche Wert ist 256 KB) Ab Version 2.7 ist der Standardwert bereits auf 256 KB festgelegt.
 
 Wenn die Warteschlange weiterhin zunimmt, obwohl die Parameter `si` und `ms` angepasst wurden, wird die maximale Warteschlangenkapazität irgendwann erreicht, und die Nachrichten gehen verloren. Dies liegt daran, dass sowohl für den `si`- als auch den `ms`-Parameter physische Grenzwerte gelten und die Internetverbindung zwischen OPC Publisher und IoT Hub nicht schnell genug für die Anzahl der Nachrichten ist, die in einem bestimmten Szenario gesendet werden müssen. In diesem Fall hilft nur das Einrichten mehrerer, paralleler OPC Publisher-Instanzen. Der `mq/om`-Parameter hat zudem die größte Auswirkung auf den Arbeitsspeicherverbrauch durch OPC Publisher. 
 
@@ -41,7 +41,7 @@ Mit dem Parameter `si` wird für OPC Publisher erzwungen, dass Nachrichten im an
 
 Der `ms`-Parameter ermöglicht die Batchverarbeitung von an IoT Hub gesendeten Nachrichten. In den meisten Netzwerkkonfigurationen ist die Wartezeit beim Senden einer einzelnen Nachricht an den IoT Hub hoch, verglichen mit der Zeit, die für die Übertragung der Payload benötigt wird. Dies liegt hauptsächlich an den QoS-Anforderungen (Quality of Service, da Nachrichten erst bestätigt werden, nachdem sie von IoT Hub verarbeitet wurden). Wenn also eine Verzögerung beim Eingang der Daten an IoT Hub akzeptabel ist, sollte OPC Publisher so konfiguriert werden, dass die maximale Nachrichtengröße von 256 KB verwendet wird, indem der `ms`-Parameter auf 0 festgelegt wird. Dies ist auch die kostengünstigste Methode, OPC Publisher zu verwenden.
 
-Mit der Standardkonfiguration werden alle 10 Sekunden (`si=10`) oder wenn 256 KB an IoT Hub-Nachrichtendaten verfügbar sind (`ms=0`), Daten an IoT Hub gesendet. Dies führt zu einer maximalen Verzögerung von 10 Sekunden, die Wahrscheinlichkeit von Datenverlust aufgrund der Nachrichtengröße ist jedoch geringer. Die Metrik `monitored item notifications enqueue failure` in OPC Publisher bis Version 2.5 und `messages lost` in OPC Publisher Version 2.7 gibt an, wie viele Nachrichten verloren gegangen sind.
+In Version 2.5 werden bei der Standardkonfiguration alle 10 Sekunden (`si=10`), oder wenn 256 KB an IoT Hub-Nachrichtendaten verfügbar sind (`ms=0`), Daten an IoT Hub gesendet. Dies führt zu einer maximalen Verzögerung von 10 Sekunden, die Wahrscheinlichkeit von Datenverlust aufgrund der Nachrichtengröße ist jedoch geringer. Ab Version 2.7 ist die Standardkonfiguration 500 ms für den orchestrierten Modus und 0 für den eigenständigen Modus (ohne Sendeintervall). Die Metrik `monitored item notifications enqueue failure` in OPC Publisher bis Version 2.5 und `messages lost` in OPC Publisher Version 2.7 gibt an, wie viele Nachrichten verloren gegangen sind.
 
 Wenn sowohl der `si`- als auch der `ms`-Parameter auf 0 festgelegt sind, sendet OPC Publisher eine Nachricht an IoT Hub, sobald Daten verfügbar sind. Daraus ergibt sich eine durchschnittliche IoT Hub-Nachrichtengröße von knapp über 200 Byte. Der Vorteil dieser Konfiguration ist jedoch, dass OPC Publisher die Daten ohne Verzögerung aus der verbundenen Ressource sendet. Die Anzahl verlorener Nachrichten ist hoch für Anwendungsfälle, in denen eine große Datenmenge veröffentlicht werden muss. Daher wird diese Konfiguration für solche Szenarien nicht empfohlen.
 

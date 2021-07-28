@@ -392,10 +392,10 @@ groups:
   pivots:
   - id: development-environment-vscode
     title: Visual Studio Code
-  - id: development-environment-cli
-    title: Befehlszeile
   - id: development-environment-vs
     title: Visual Studio
+  - id: development-environment-cli
+    title: Befehlszeile
 - id: bring-third-party-dependency-programming-functions
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -794,7 +794,7 @@ groups:
     title: Python
 - id: app-service-ide
   title: Entwicklungsumgebung
-  prompt: Auswählen einer Entwicklungsumgebung
+  prompt: Wählen einer Entwicklungsumgebung
   pivots:
   - id: development-environment-vs
     title: Visual Studio
@@ -1200,10 +1200,54 @@ groups:
     title: Python
   - id: programming-language-java
     title: Java
+- id: facility-ontology-schema
+  title: 'Creator: Facility Ontology'
+  prompt: Auswählen einer Facility Ontology-Version
+  pivots:
+  - id: facility-ontology-v1
+    title: Facility Ontology 1.0
+  - id: facility-ontology-v2
+    title: Facility Ontology 2.0
+- id: how-to-troubleshoot-monitoring-and-faq-zpg
+  title: Häufig gestellte Fragen zu Azure Monitor für IoT Edge
+  prompt: Thema auswählen
+  pivots:
+  - id: metrics-collection
+    title: Metrikauflistung
+  - id: custom-metrics
+    title: Benutzerdefinierte Metriken
+  - id: alerts
+    title: Alerts
+  - id: workbooks
+    title: Arbeitsmappen
+- id: identity-mi-methods
+  title: Methoden für verwaltete Identitäten
+  prompt: Option wählen
+  pivots:
+  - id: identity-mi-methods-azp
+    title: Azure-Portal
+  - id: identity-mi-methods-azcli
+    title: Azure CLI
+  - id: identity-mi-methods-powershell
+    title: PowerShell
+  - id: identity-mi-methods-arm
+    title: Ressourcen-Manager
+  - id: identity-mi-methods-rest
+    title: REST
+- id: identity-mi-method-sub
+  title: Teilmenge der Methoden für verwaltete Identitäten
+  prompt: Option wählen
+  pivots:
+  - id: identity-mi-methods-sub-azp
+    title: Azure-Portal
+  - id: identity-mi-methods-sub-azcli
+    title: Azure CLI
+  - id: identity-mi-methods-sub-powershell
+    title: PowerShell
 metadata:
-  ms.openlocfilehash: adcb769a1cf52dc86ee60349463caa078fb31a4b
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 0a7eb15f89dccdc97443a2c14107aa7bdb6fdba4
+  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110373525"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111902229"

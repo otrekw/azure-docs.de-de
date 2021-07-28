@@ -25,7 +25,7 @@ Als Imageherausgeber ermöglicht Ihnen das Inhaltsvertrauen das **Signieren** de
 
 ### <a name="trusted-images"></a>Vertrauenswürdige Images
 
-Inhaltsvertrauen arbeitet mit den **Tags** in einem Repository. Image-Repositorys können Images mit Bilder mit signierten und unsignierten Tags enthalten. Beispielsweise ist es möglich, nur die Images `myimage:stable` und `myimage:latest` zu signieren, `myimage:dev` jedoch nicht.
+Inhaltsvertrauen arbeitet mit den **Tags** in einem Repository. Image-Repositorys können Images mit signierten und unsignierten Tags enthalten. Beispielsweise ist es möglich, nur die Images `myimage:stable` und `myimage:latest` zu signieren, `myimage:dev` jedoch nicht.
 
 ### <a name="signing-keys"></a>Signaturschlüssel
 

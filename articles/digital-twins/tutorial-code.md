@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 1cfed11eec3758586519eeb33b396a41b768e693
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 68afdb1c0ab74f5d05fd13a9fe8868cb9e2ac4aa
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075511"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460256"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Tutorial: Codieren mit den Azure Digital Twins-APIs
 
@@ -80,7 +80,7 @@ Es ist auch ein Abschnitt vorhanden, der den vollständigen Code am Ende des Tut
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="Ein exemplarischer Codeausschnitt. Er enthält eine Anweisung vom Typ „using System;“ einen Namespace namens „DigitalTwinsCodeTutorial“, eine Klasse namens „Program“ in dem Namespace und eine Main-Methode in der Klasse mit der Standardsignatur „static void Main(string[] args)“. Die Main-Methode enthält eine print-Anweisung zur Ausgabe von „Hello World“." lightbox="media/tutorial-code/starter-template.png":::
+        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="Screenshot eines Beispielcodeausschnitts in einem Code-Editor." lightbox="media/tutorial-code/starter-template.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -180,7 +180,7 @@ Um zu verhindern, dass das Programm abstürzt, können Sie Ausnahmecode um den C
 
 Wenn Sie das Programm jetzt mit `dotnet run` in Ihrem Befehlsfenster ausführen, wird ein Fehlercode zurückgegeben. In der Ausgabe des Codes für die Modellerstellung wird der folgende Fehler angezeigt:
 
-:::image type="content" source= "media/tutorial-code/model-error.png" alt-text="Programmausgabe: Meldung „409:Service request failed. Status: 409 (Conflict).“, gefolgt von einer Fehlerausgabe mit diesem Hinweis: „dtmi:example:SampleModel;1 already exists“.":::
+:::image type="content" source= "media/tutorial-code/model-error.png" alt-text="Screenshot einer Konsole mit der Programmausgabe, die zu folgendem Fehler führt: „409: Fehler bei der Dienstanforderung. Status: 409 (Konflikt)“":::
 
 Von diesem Punkt an werden in diesem Tutorial alle Aufrufe von Dienstmethoden in try/catch-Handler eingeschlossen.
 
@@ -228,7 +228,7 @@ Anschließend fügen Sie den folgenden Code am Ende der `Main`-Methode zum Aufru
 
 Führen Sie in Ihrem Befehlsfenster das Programm mit `dotnet run` aus. Daraufhin sollte eine Liste mit allen von Ihnen erstellten Beziehungen in einer Ausgabeanweisung angezeigt werden, die wie folgt aussieht:
 
-:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="Programmausgabe: Meldung „Twin sampleTwin-0 is connected to: contains->sampleTwin-1, -contains->sampleTwin-2“" lightbox="media/tutorial-code/list-relationships.png":::
+:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="Screenshot einer Konsole mit der Programmausgabe, die zu einer Meldung führt, in der die Zwillingsbeziehungen aufgelistet sind." lightbox="media/tutorial-code/list-relationships.png":::
 
 ### <a name="query-digital-twins"></a>Abfragen von digitalen Zwillingen
 

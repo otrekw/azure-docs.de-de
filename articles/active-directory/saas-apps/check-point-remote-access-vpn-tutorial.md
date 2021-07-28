@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Check Point Remote Access VPN | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Check Point Remote Access VPN konfigurieren.
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Check Point Remote Secure Access VPN | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Check Point Remote Secure Access VPN konfigurieren.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 8c619398b357833aa5b5d996a255fb1df7bd3bb6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 39072747cd2e6b9daa62f02b198a201c5b1782ea
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776005"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451419"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-access-vpn"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Check Point Remote Access VPN
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-secure-access-vpn"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Check Point Remote Secure Access VPN
 
-In diesem Tutorial erfahren Sie, wie Sie Check Point Remote Access VPN in Azure Active Directory (Azure AD) integrieren. Die Integration von Check Point Remote Access VPN in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Check Point Remote Secure Access VPN in Azure Active Directory (Azure AD) integrieren. Die Integration von Check Point Remote Secure Access VPN in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Check Point Remote Access VPN hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Check Point Remote Access VPN anzumelden.
+* Steuern Sie in Azure AD, wer Zugriff auf Check Point Remote Secure Access VPN besitzt.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Check Point Remote Secure Access VPN anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -31,44 +31,44 @@ In diesem Tutorial erfahren Sie, wie Sie Check Point Remote Access VPN in Azure 
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Check Point Remote Access VPN-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist.
+* Check Point Remote Secure Access VPN-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Check Point Remotezugriffs-VPN unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Check Point Remote Secure Access VPN unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-check-point-remote-access-vpn-from-the-gallery"></a>Hinzufügen Check Point Remotezugriffs-VPN aus dem Katalog
+## <a name="adding-check-point-remote-secure-access-vpn-from-the-gallery"></a>Hinzufügen von Check Point Remote Secure Access VPN aus dem Katalog
 
-Zum Konfigurieren der Integration von Check Point Remote Access VPN in Azure AD müssen Sie Check Point Remote Access VPN aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Check Point Remote Secure Access VPN in Azure AD müssen Sie Check Point Remote Secure Access VPN aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Check Point Remote Access VPN** in das Suchfeld ein.
-1. Wählen Sie im Ergebnisbereich **Check Point Remote Access VPN** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Check Point Remote Secure Access VPN** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Check Point Remote Secure Access VPN** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-sso-for-check-point-remote-access-vpn"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Check Point Remote Access VPN
+## <a name="configure-and-test-azure-ad-sso-for-check-point-remote-secure-access-vpn"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Check Point Remote Secure Access VPN
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Check Point Remote Access VPN mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Check Point Remote Access VPN eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Check Point Remote Secure Access VPN mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Check Point Remote Secure Access VPN eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Check Point Remote Access VPN die folgenden Schritte aus:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Check Point Remote Secure Access VPN die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Check Point Remotezugriffs-VPN](#configure-check-point-remote-access-vpn-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Check Point Remote Secure Access VPN](#configure-check-point-remote-secure-access-vpn-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
 
-    1. **[Erstellen eines Check Point Remote Access VPN-Testbenutzers](#create-check-point-remote-access-vpn-test-user)** , um eine Entsprechung von B. Simon in Check Point Remote Access VPN zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+    1. **[Erstellen eines Check Point Remote Secure Access VPN-Testbenutzers](#create-check-point-remote-secure-access-vpn-test-user)** , um eine Entsprechung von B. Simon in Check Point Remote Secure Access VPN zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Check Point Remote Access VPN** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Check Point Remote Secure Access VPN** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
@@ -83,13 +83,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<GATEWAY_IP>/saml-vpn/`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den Check Point Remote Access VPN-Client](mailto:support@checkpoint.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den Check Point Remote Secure Access VPN-Client](mailto:support@checkpoint.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-1. Kopieren Sie im Abschnitt **Check Point Remote Access VPN einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **Check Point Remote Secure Access VPN einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -107,17 +107,17 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Check Point Remote Access VPN gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Check Point Remote Secure Access VPN gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-1. Wählen Sie in der Anwendungsliste den Eintrag **Check Point Remote Access VPN** aus.
+1. Wählen Sie in der Anwendungsliste den Eintrag **Check Point Remote Secure Access VPN** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-check-point-remote-access-vpn-sso"></a>Konfigurieren des einmaligen Anmeldens für Check Point Remote Access VPN
+## <a name="configure-check-point-remote-secure-access-vpn-sso"></a>Konfigurieren des einmaligen Anmeldens für Check Point Remote Secure Access VPN
 
 ### <a name="configure-an-external-user-profile-object"></a>Konfigurieren eines externen Benutzerprofilobjekts
 
@@ -309,9 +309,9 @@ Damit der Windows-Client dieses Verhalten ändern kann, damit Sie stattdessen In
             `sudo launchctl start com.checkpoint.epc.service`
 
 
-### <a name="create-check-point-remote-access-vpn-test-user"></a>Erstellen eines Check Point Remote Access VPN-Testbenutzers
+### <a name="create-check-point-remote-secure-access-vpn-test-user"></a>Erstellen eines Check Point Remote Secure Access VPN-Testbenutzers
 
-In diesem Abschnitt wird in Check Point Remote Access VPN ein Benutzer namens Britta Simon erstellt. Arbeiten Sie mit [Check Point Remote Access VPN-Supportteam](mailto:support@checkpoint.com) zusammen, um die Benutzer auf der Check Point Remote Access VPN-Plattform für den Remotezugriff hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt wird in Check Point Remote Secure Access VPN ein Benutzer namens Britta Simon erstellt. Arbeiten Sie mit [Check Point Remote Secure Access VPN-Supportteam](mailto:support@checkpoint.com) zusammen, um die Benutzer auf der Check Point Remote Secure Access VPN-Plattform für den Remotezugriff hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
@@ -327,6 +327,6 @@ In diesem Abschnitt wird in Check Point Remote Access VPN ein Benutzer namens Br
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Check Point Remote Access VPN können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Check Point Remote Secure Access VPN können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 

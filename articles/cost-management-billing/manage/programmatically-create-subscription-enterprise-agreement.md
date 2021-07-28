@@ -5,20 +5,20 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 05/25/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9f07a4f9c42923ac42735155fb0da21dee3a2353
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 6811b899aa87a5b0c1987f2e86c07d8646a86ef4
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632365"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901275"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Programmgesteuertes Erstellen von Azure Enterprise Agreement-Abonnements mit den neuesten APIs
 
-In diesem Artikel wird erläutert, wie Sie mithilfe der aktuellen API-Versionen programmgesteuert Azure Enterprise Agreement-Abonnements für ein EA-Abrechnungskonto erstellen. Wenn Sie noch die ältere Vorschauversion verwenden, finden Sie weitere Informationen unter [Programmgesteuertes Erstellen von Azure-Abonnements mit Vorschau-APIs](programmatically-create-subscription-preview.md). 
+In diesem Artikel wird erläutert, wie Sie mithilfe der aktuellen API-Versionen programmgesteuert Azure Enterprise Agreement-Abonnements für ein EA-Abrechnungskonto erstellen. Wenn Sie noch die ältere Vorschauversion verwenden, finden Sie weitere Informationen unter [Programmgesteuertes Erstellen von Azure-Abonnements mit Legacy-APIs](programmatically-create-subscription-preview.md). 
 
 Dieser Artikel enthält Informationen zum programmgesteuerten Erstellen von Abonnements mithilfe von Azure Resource Manager.
 
@@ -28,13 +28,16 @@ Wenn Sie ein Azure-Abonnement programmgesteuert erstellen, unterliegt es der Ver
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen über die Rolle „Besitzer“ für ein Registrierungskonto verfügen, um ein Abonnement zu erstellen. Es gibt zwei Möglichkeiten, wie Sie die Rolle erhalten:
+Ein Benutzer muss über die Rolle „Besitzer“ für ein Registrierungskonto verfügen, um ein Abonnement zu erstellen. Es gibt zwei Möglichkeiten, wie Sie die Rolle erhalten:
 
 * Der Enterprise-Administrator Ihrer Registrierung kann [Sie zum Kontobesitzer machen](https://ea.azure.com/helpdocs/addNewAccount) (Anmeldung erforderlich), damit Sie zum Besitzer des Registrierungskontos werden.
-* Ein vorhandener Besitzer des Registrierungskontos kann [Ihnen Zugriff gewähren](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Wenn Sie einen Dienstprinzipal verwenden möchten, um ein EA-Abonnement zu erstellen, müssen Sie entsprechend [diesem Dienstprinzipal die Berechtigung zum Erstellen von Abonnements erteilen](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put).  
-    Wenn Sie Abonnements mithilfe eines SPN erstellen, verwenden Sie die Objekt-ID (ObjectId) der Azure AD-Anwendungsregistrierung als Dienstprinzipalobjekt-ID mit [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true ) oder der [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list). Weitere Informationen zur API-Anforderung für die EA-Rollenzuweisung finden Sie unter [Zuweisen von Rollen zu Azure Enterprise Agreement-Dienstprinzipalnamen](assign-roles-azure-service-principals.md). Diese Seite enthält eine Liste der Rollen (und Rollendefinitions-IDs), die einem SPN zugewiesen werden können.
+* Ein vorhandener Besitzer des Registrierungskontos kann [Ihnen Zugriff gewähren](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). 
+
+Wenn ein Dienstprinzipal (SPN) zum Erstellen eines EA-Abonnements verwendet werden soll, muss ein Besitzer des Registrierungskontos [diesem Dienstprinzipal die Berechtigung zum Erstellen von Abonnements erteilen](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Wenn Abonnements mithilfe eines SPN erstellt werden, verwenden Sie die Objekt-ID (ObjectId) der Azure AD-Anwendungsregistrierung als Dienstprinzipalobjekt-ID mit [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true ) oder der [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list). Weitere Informationen zur API-Anforderung für die EA-Rollenzuweisung finden Sie unter [Zuweisen von Rollen zu Azure Enterprise Agreement-Dienstprinzipalnamen](assign-roles-azure-service-principals.md). Der Artikel enthält eine Liste der Rollen (und Rollendefinitions-IDs), die einem SPN zugewiesen werden können.
+
   > [!NOTE]
-  > Stellen Sie sicher, dass Sie die richtige API-Version verwenden, um dem Registrierungskonto Besitzerberechtigungen zu erteilen. Verwenden Sie für diesen Artikel und die darin dokumentierten APIs die API [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Wenn Sie zur Verwendung der neueren APIs eine Migration durchführen, müssen Sie die Besitzerberechtigung mithilfe von [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) erneut erteilen. Die vorherige Konfiguration, die mit der [Version 2015-07-01](grant-access-to-create-subscription.md) erstellt wurde, wird nicht automatisch für die Verwendung mit den neueren APIs konvertiert.
+  > - Stellen Sie sicher, dass Sie die richtige API-Version verwenden, um dem Registrierungskonto Besitzerberechtigungen zu erteilen. Verwenden Sie für diesen Artikel und die darin dokumentierten APIs die API [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). 
+  > - Wenn Sie zur Verwendung der neueren APIs eine Migration durchführen, wird Ihre vorherige Konfiguration, die mit der [Version 2015-07-01](grant-access-to-create-subscription.md) erstellt wurde, nicht automatisch für die Verwendung mit den neueren APIs konvertiert.
 
 ## <a name="find-accounts-you-have-access-to"></a>Ermitteln der Konten, auf die Sie Zugriff besitzen
 

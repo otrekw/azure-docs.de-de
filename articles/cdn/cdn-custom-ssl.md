@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/26/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 6f77bac93b7bb5e3319409c01e328c73cd08a9a0
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: d9520f3a6c6ffadf7186b0b3c5c83fe872711316
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058951"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007785"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -104,13 +104,16 @@ Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, führen Sie die fol
 > Diese Option steht nur in den Profilen **Azure CDN von Microsoft** und **Azure CDN von Verizon** zur Verfügung. 
 >
  
-Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erfolgt eine Integration in Azure Key Vault, was eine sichere Speicherung Ihrer Zertifikate ermöglicht. Azure CDN nutzt diesen sicheren Mechanismus zum Abrufen Ihres Zertifikats, und es sind einige zusätzliche Schritte erforderlich. Wenn Sie Ihr TLS-/SSL-Zertifikat erstellen, müssen Sie dafür eine zulässige Zertifizierungsstelle verwenden. Bei Verwendung einer unzulässigen Zertifizierungsstelle wird Ihre Anforderung abgelehnt. Eine Liste mit zulässigen Zertifizierungsstellen für die Aktivierung von benutzerdefiniertem HTTPS für Azure CDN finden Sie [hier](cdn-troubleshoot-allowed-ca.md). Für **Azure CDN von Verizon** wird eine beliebige gültige Zertifizierungsstelle akzeptiert. 
+Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erfolgt eine Integration in Azure Key Vault, was eine sichere Speicherung Ihrer Zertifikate ermöglicht. Azure Front Door nutzt diesen sicheren Mechanismus zum Abrufen Ihres Zertifikats, und es sind einige zusätzliche Schritte erforderlich. Wenn Sie Ihr TLS/SSL-Zertifikat erstellen, müssen Sie eine vollständige Zertifikatkette mit einer zulässigen Zertifizierungsstelle erstellen, die in der [Microsoft-Liste der vertrauenswürdigen Zertifizierungsstellen](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) enthalten ist. Bei Verwendung einer unzulässigen Zertifizierungsstelle wird Ihre Anforderung abgelehnt.  Wenn ein Zertifikat ohne vollständige Kette präsentiert wird, funktionieren die in diesem Zertifikat enthaltenen Anforderungen nicht wie erwartet. Für Azure CDN von Verizon wird eine beliebige gültige Zertifizierungsstelle akzeptiert.
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Vorbereiten Ihres Azure Key Vault-Kontos und Ihres Zertifikats
  
 1. Azure Key Vault: Sie benötigen ein aktives Azure Key Vault-Konto. Dieses muss zu dem gleichen Abonnement gehören wie das Azure CDN-Profil und die CDN-Endpunkte, für die Sie benutzerdefiniertes HTTPS aktivieren möchten. Erstellen Sie bei Bedarf ein Azure Key Vault-Konto.
  
 2. Azure Key Vault-Zertifikate: Falls Sie über ein Zertifikat verfügen, laden Sie es direkt in Ihr Azure Key Vault-Konto hoch. Sollten Sie über kein Zertifikat verfügen, erstellen Sie direkt über Azure Key Vault ein neues Zertifikat.
+
+> [!NOTE]
+> Das Zertifikat muss über eine vollständige Zertifikatkette mit Blatt- und Zwischenzertifikaten verfügen, und die Stammzertifizierungsstelle muss in der [Microsoft-Liste der vertrauenswürdigen Zertifizierungsstellen](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) enthalten sein.
 
 ### <a name="register-azure-cdn"></a>Registrieren von Azure CDN
 
@@ -146,21 +149,20 @@ Gewähren Sie Azure CDN Berechtigungen für den Zugriff auf die Zertifikate (Geh
 
 2. Wählen Sie auf der Seite **Zugriffsrichtlinie hinzufügen** neben **Prinzipal auswählen** die Option **Nichts ausgewählt** aus. Geben Sie auf der Seite **Prinzipal** die Zeichenfolge **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** ein. Wählen Sie **Microsoft.AzureFrontdoor-Cdn** aus.  Wählen Sie **Auswählen** aus:
 
-2. Suchen Sie unter **Prinzipal auswählen** nach **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**, und wählen Sie **Microsoft.AzureFrontDoor-Cdn** aus. Klicken Sie auf **Auswählen**.
+3. Suchen Sie unter **Prinzipal auswählen** nach **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**, und wählen Sie **Microsoft.AzureFrontDoor-Cdn** aus. Klicken Sie auf **Auswählen**.
 
     :::image type="content" source="./media/cdn-custom-ssl/cdn-access-policy-settings.png" alt-text="Auswählen des Dienstprinzipals von Azure CDN" border="true":::
     
-3. Wählen Sie **Zertifikatberechtigungen** aus. Aktivieren Sie die Kontrollkästchen für **Abrufen** und **Auflisten**, um CDN Berechtigungen zum Abrufen und Auflisten der Zertifikate zu erteilen.
+4. Wählen Sie **Zertifikatberechtigungen** aus. Aktivieren Sie die Kontrollkästchen für **Abrufen** und **Auflisten**, um CDN Berechtigungen zum Abrufen und Auflisten der Zertifikate zu erteilen.
 
-4. Wählen Sie **Geheimnisberechtigungen** aus. Aktivieren Sie die Kontrollkästchen für **Abrufen** und **Auflisten**, um CDN Berechtigungen zum Abrufen und Auflisten der Geheimnisse zu erteilen:
+5. Wählen Sie **Geheimnisberechtigungen** aus. Aktivieren Sie die Kontrollkästchen für **Abrufen** und **Auflisten**, um CDN Berechtigungen zum Abrufen und Auflisten der Geheimnisse zu erteilen:
 
     :::image type="content" source="./media/cdn-custom-ssl/cdn-vault-permissions.png" alt-text="Auswählen von Key Vault-Berechtigungen für CDN" border="true":::
 
-5. Wählen Sie **Hinzufügen**. 
+6. Wählen Sie **Hinzufügen**. 
 
 > [!NOTE]
-> Das Azure CDN kann nun auf diesen Schlüsseltresor und auf die darin gespeicherten Zertifikate (Geheimnisse) zugreifen. Alle in diesem Abonnement erstellten CDN-Instanzen haben Zugriff auf die Zertifikate in diesem Schlüsseltresor. 
-
+> Das Azure CDN kann nun auf diesen Schlüsseltresor und auf die darin gespeicherten Zertifikate (Geheimnisse) zugreifen. Alle in diesem Abonnement erstellten CDN-Instanzen haben Zugriff auf die Zertifikate in diesem Schlüsseltresor.
  
 ### <a name="select-the-certificate-for-azure-cdn-to-deploy"></a>Auswählen des bereitzustellenden Zertifikats für Azure CDN
  
@@ -209,7 +211,7 @@ Ihr CNAME-Eintrag muss das folgende Format aufweisen:
 * *Name* ist Ihr benutzerdefinierter Domänenname.
 * *Wert* ist der Hostname Ihres CDN-Endpunkts.
 
-| Name            | type  | Wert                 |
+| Name            | Typ  | Wert                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

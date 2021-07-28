@@ -9,12 +9,12 @@ ms.author: nmurav
 ms.date: 3/23/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c7ec360d961c0960dc941c48626c3aeb3f7367ec
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 2fa9cbba571fa5603607c5efea7f49a5822726e9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289010"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089414"
 ---
 # <a name="ensure-high-quality-media-in-azure-communication-services"></a>Sicherstellen von hoher Qualität für Medien in Azure Communication Services
 
@@ -47,7 +47,7 @@ Hier sind die Bandbreitenanforderungen für die JavaScript-SDKs angegeben:
 |500 KBit/s|Video-Gruppenanrufe mit 360p bei 30 Bildern pro Sekunde|
 |1,2 MBit/s|Video-Gruppenanrufe in HD-Qualität mit einer Auflösung von HD 720p bei 30 Bildern pro Sekunde| 
 
-Hier sind die Bandbreitenanforderungen für die nativen Android- und iOS-SDKs angegeben:
+Es folgen die Bandbreitenanforderungen für die nativen SDKs für Windows, Android und iOS:
 
 |Bandbreite|Szenarien|
 |:--|:--|

@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 04/13/2021
-ms.openlocfilehash: 9fe4f21a5c9e9e26a2f94b8a60cba47916842fe3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 05/18/2021
+ms.openlocfilehash: b6d007d3020d3fa2b001178bd23d721ea6a6aa6b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501789"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067832"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batchtests mit einem Satz von Beispieläußerungen
 
@@ -87,7 +87,19 @@ Der JSON-Beispielcode enthält eine Äußerung mit einer bezeichneten Entität, 
 
 5. Versehen Sie das Dataset mit dem Namen `pizza test`, und klicken Sie auf **Fertig**.
 
-6. Wählen Sie die Schaltfläche **Ausführen**. Wählen Sie nach der Ausführung des Batchtests **Ergebnisse anzeigen** aus. 
+6. Wählen Sie die Schaltfläche **Ausführen**. 
+
+7. Nach Abschluss des Batchtests werden die folgenden Spalten angezeigt:
+
+    | Spalte | BESCHREIBUNG |
+    | -------- | ------------- |
+    | State | Der Status des Tests. **Ergebnisse anzeigen** wird erst angezeigt, nachdem der Test abgeschlossen wurde. |
+    | Name | Der Name, den Sie dem Test gegeben haben. |
+    | Size | Die Anzahl der Tests in dieser Batchtestdatei. |
+    | Zuletzt ausgeführt | Das Datum der letzten Ausführung dieser Batchtestdatei. |
+    | Letztes Ergebnis | Die Anzahl erfolgreicher Vorhersagen im Test. |
+
+8. Um detaillierte Ergebnisse des Tests anzuzeigen, wählen Sie **Ergebnisse anzeigen** aus. 
 
     > [!TIP]
     > * Wenn Sie **Download** auswählen, wird dieselbe Datei heruntergeladen, die Sie hochgeladen haben.

@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 55955f883425651749809da951832484f098aeaf
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 9b93ac2973fdf45c5ec395cf30490a820848bad9
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256122"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027165"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
 Azure Maps ist eine Sammlung von Geodiensten und SDKs, bei denen aktuelle Kartendaten verwendet werden, um einen geografischen Kontext für Webanwendungen und mobile Anwendungen bereitzustellen. Azure Maps umfasst Folgendes:
 
 * REST-APIs zum Rendern von Vektor- und Rasterkarten in verschiedenen Stilen und Satellitenbildern
-* Creator-Dienste (Vorschauversion) zum Erstellen und Rendern von Karten auf der Grundlage privater Gebäudeplandaten.
+* Erstellerdienste zum Erstellen und Rendern von Karten auf der Grundlage privater Gebäudeplandaten.
 * Suchdienste für die Suche nach Adressen, Orten und Points of Interest auf der ganzen Welt
 * Verschiedene Routenplanungsoptionen – beispielsweise von A nach B, mehrere Punkte, Optimierung bei Verwendung mehrerer Punkte, Isochrone, Elektrofahrzeuge, gewerbliche Fahrzeuge, Berücksichtigung der Verkehrslage und Matrixroutenplanung
 * Anzeige von Verkehrsfluss und -störungen für Anwendungen, die Verkehrsinformationen in Echtzeit benötigen
 * Mobilitätsdienste (Vorschauversion) zum Anfordern von Informationen zum öffentlichen Nahverkehr und Planen von Routen durch Kombinieren verschiedener Transportmittel und Ankunftszeiten in Echtzeit.
 * Dienste für Zeitzonen und Geolocation (Vorschauversion).
-* Höhenangabendienste (Vorschauversion) mit digitalem Höhenmodell
+* Höhenangabendienste mit digitalem Höhenmodell
 * Geofencingdienst und Speicher für Kartendaten mit in Azure gehosteten Standortinformationen
 * Location Intelligence mittels Geoanalysen
 
@@ -59,9 +59,9 @@ Mit dem Azure Maps Android SDK können Sie mobile Kartenanwendungen erstellen.
 
 Azure Maps besteht aus den folgenden Diensten, die für Ihre Azure-Anwendungen geografischen Kontext liefern können.
 
-### <a name="data-service-preview"></a>Datendienst (Vorschauversion)
+### <a name="data-service"></a>Datendienst
 
-Daten sind für Karten unverzichtbar. Mit dem Datendienst können Sie räumliche Daten zur Verwendung mit räumlichen Vorgängen oder mit der Bildkomposition hochladen und speichern.  Durch die Einbindung von Kundendaten in den Azure Maps-Dienst verringern Sie die Wartezeit und steigern die Produktivität und können neue Szenarien in Ihren Anwendungen erstellen. Ausführliche Informationen zu diesem Dienst finden Sie in der [Dokumentation zum Datendienst](/rest/api/maps/data).
+Daten sind für Karten unverzichtbar. Mit dem Datendienst können Sie räumliche Daten zur Verwendung mit räumlichen Vorgängen oder mit der Bildkomposition hochladen und speichern.  Durch die Einbindung von Kundendaten in den Azure Maps-Dienst verringern Sie die Wartezeit und steigern die Produktivität und können neue Szenarien in Ihren Anwendungen erstellen. Ausführliche Informationen zu diesem Dienst finden Sie in der [Dokumentation zum Datendienst](/rest/api/maps/data-v2).
 
 ### <a name="geolocation-service-preview"></a>Geolocation-Dienst (Vorschauversion)
 
@@ -179,23 +179,23 @@ Mit der [Get Map Tile V2-API](/rest/api/maps/renderv2/getmaptilepreview) können
 
 ![Beispiel für Karte Echtzeit-Wetterradarkacheln](media/about-azure-maps/intro_weather.png)
 
-### <a name="maps-creator-service-preview"></a>Maps Creator-Dienst (Vorschauversion) 
+### <a name="maps-creator-service"></a>Kartenerstellungsdienst
 
 Der Kartenerstellungsdienst ist eine Suite von Webdiensten, mit denen Entwickler Anwendungen mit Kartenfunktionen erstellen können, die auf Gebäudeplandaten basieren.
 
 Die Kartenerstellung stellt drei Kerndienste bereit:
 
-* [Datasetdienst](/rest/api/maps/dataset). Verwenden Sie den Datasetdienst, um aus einem konvertierten Zeichnungspaket ein Dataset zu erstellen. Informationen zum den Anforderungen für Zeichnungspakete finden Sie unter Anforderungen für Zeichnungspakete.
+* [Datasetdienst](/rest/api/maps/v2/dataset). Verwenden Sie den Datasetdienst, um aus einem konvertierten Zeichnungspaket ein Dataset zu erstellen. Informationen zu den Anforderungen für Zeichnungspakete finden Sie unter „Anforderungen für Zeichnungspakete“.
 
-* [Konvertierungsdienst](/rest/api/maps/dataset). Verwenden Sie den Konvertierungsdienst, um eine DWG-Designdatei in Zeichnungspaketdaten für die Karten zu konvertieren.
+* [Konvertierungsdienst](/rest/api/maps/v2/dataset). Verwenden Sie den Konvertierungsdienst, um eine DWG-Designdatei in Zeichnungspaketdaten für die Karten zu konvertieren.
 
-* [Kachelsetdienst](/rest/api/maps/tileset). Verwenden Sie den Kachelsetdienst, um eine vektorbasierte Darstellung eines Datasets zu erstellen. Anwendungen können ein Kachelset verwenden, um eine auf visuellen Kacheln basierende Ansicht des Datasets darzustellen.
+* [Kachelsetdienst](/rest/api/maps/v2/tileset). Verwenden Sie den Kachelsetdienst, um eine vektorbasierte Darstellung eines Datasets zu erstellen. Anwendungen können ein Kachelset verwenden, um eine auf visuellen Kacheln basierende Ansicht des Datasets darzustellen.
 
-* [Featurezustandsdienst](/rest/api/maps/featurestate). Verwenden Sie den Featurezustandsdienst, um dynamische Kartenstile zu unterstützen. Dynamische Kartenstile ermöglichen es, dass Anwendungen Echtzeitereignisse in von IoT-Systemen bereitgestellten Bereichen darstellen.
+* [Featurezustandsdienst](/rest/api/maps/v2/feature-state). Verwenden Sie den Featurezustandsdienst, um dynamische Kartenstile zu unterstützen. Dynamische Kartenstile ermöglichen es, dass Anwendungen Echtzeitereignisse in von IoT-Systemen bereitgestellten Bereichen darstellen.
 
-* [WFS-Dienst](/rest/api/maps/featurestate). Verwenden Sie den WFS-Dienst, um Ihre Gebäudeplandaten abzufragen. Der WFS-Dienst folgt den Standards der [Open Geospatial Consortium-API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) zum Abfragen eines einzelnen Datasets.
+* [WFS-Dienst](/rest/api/maps/v2/feature-state). Verwenden Sie den WFS-Dienst, um Ihre Gebäudeplandaten abzufragen. Der WFS-Dienst folgt den Standards der [Open Geospatial Consortium-API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) zum Abfragen eines einzelnen Datasets.
 
-### <a name="elevation-service-preview"></a>Höhenangabendienst (Vorschauversion)
+### <a name="elevation-service"></a>Höhenangabendienst
 
 Der Höhenangabendienst für Azure Maps ist ein Webdienst, mit dem Entwickler Höhendaten für einen beliebigen Punkt auf der Erdoberfläche abrufen können.
 

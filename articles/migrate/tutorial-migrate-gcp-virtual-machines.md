@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 7b822b0a2d3988e055f080277d107544d5d45a84
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4df49521d59118f23c82cdc57d1b4b28477f05c5
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470479"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439156"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Ermitteln, Bewerten und Migrieren von GCP-VMs (Google Cloud Platform) zu Azure
 
@@ -28,7 +28,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Richten Sie die Replikationsappliance ein, und stellen Sie den Konfigurationsserver bereit.
 > * Installieren des Mobilitätsdiensts auf zu migrierenden GCP-VMs
 > * Aktivieren Sie die Replikation für VMs.
-> * Verfolgen und überwachen Sie den Replikationsstatus. 
+> * Verfolgen und überwachen Sie den Replikationsstatus.
 > * Führen Sie eine Testmigration aus, um sicherzustellen, dass alles wie erwartet funktioniert.
 > * Durchführen einer vollständigen Migration zu Azure
 
@@ -61,7 +61,7 @@ Wir empfehlen Ihnen zwar, eine Bewertung auszuprobieren, aber die Durchführung 
 
 
 
-## <a name="prerequisites"></a>Voraussetzungen 
+## <a name="prerequisites"></a>Voraussetzungen
 
 - Vergewissern Sie sich, dass auf den zu migrierenden GCP-VMs eine unterstützte Betriebssystemversion ausgeführt wird. GCP-VMs werden zum Zweck der Migration wie physische Computer behandelt. Überprüfen Sie die [unterstützten Betriebssysteme und Kernelversionen](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) für den Workflow der Migration physischer Server. Sie können Standardbefehle wie *hostnamectl* oder *uname -a* verwenden, um die Betriebssysteme und Kernelversionen für Ihre virtuellen Linux-Computer zu überprüfen.  Es wird empfohlen, eine Testmigration durchzuführen, um zu überprüfen, ob die VM erwartungsgemäß funktioniert, bevor Sie mit der tatsächlichen Migration fortfahren.
 - Stellen Sie sicher, dass Ihre GCP-VMs die [unterstützten Konfigurationen](./migrate-support-matrix-physical-migration.md#physical-server-requirements) für die Migration zu Azure erfüllen.
@@ -94,7 +94,7 @@ Weisen Sie dem Azure-Konto die Rolle „Mitwirkender für virtuelle Computer“ 
 
 - Erstellen einer VM in der ausgewählten Ressourcengruppe
 - Erstellen einer VM im ausgewählten virtuellen Netzwerk
-- Schreiben auf einen verwalteten Azure-Datenträger 
+- Schreiben auf einen verwalteten Azure-Datenträger
 
 ### <a name="create-an-azure-network"></a>Erstellen eines Azure-Netzwerks
 
@@ -119,8 +119,8 @@ Bereiten Sie die Bereitstellung der Appliance wie folgt vor:
 - Die virtuellen GCP-Quellcomputer kommunizieren mit der Replikationsappliance an den eingehenden Ports HTTPS 443 (Steuerkanalorchestrierung) und TCP 9443 (Datentransport) für die Replikationsverwaltung und die Replikationsdatenübertragung. Die Replikationsappliance wiederum orchestriert und sendet Replikationsdaten an Azure über den ausgehenden Port HTTPS 443. Um diese Regeln zu konfigurieren, bearbeiten Sie die Eingangs-/Ausgangsregeln der Sicherheitsgruppe mit den entsprechenden Ports und Quell-IP-Informationen.
 
    ![GCP-Firewallregeln](./media/tutorial-migrate-gcp-virtual-machines/gcp-firewall-rules.png)
-     
- 
+
+
    ![Bearbeiten von Firewallregeln](./media/tutorial-migrate-gcp-virtual-machines/gcp-edit-firewall-rule.png)
 
 - Die Replikationsappliance verwendet MySQL. Überprüfen Sie die [Optionen](migrate-replication-appliance.md#mysql-installation) für die Installation von MySQL auf der Appliance.
@@ -142,9 +142,9 @@ Der erste Schritt bei der Migration besteht darin, die Replikationsappliance ein
 5. Klicken Sie auf **Ressourcen erstellen**. Daraufhin wird im Hintergrund ein Azure Site Recovery-Tresor erstellt.
     - Falls Sie die Migration bereits mit dem Tool für die Azure Migrate-Servermigration eingerichtet haben, kann die Zieloption nicht konfiguriert werden, da die Ressourcen bereits vorher eingerichtet wurden.
     - Nach dem Klicken auf diese Schaltfläche kann die Zielregion für dieses Projekt nicht mehr geändert werden.
-    - Um ihre VMs in eine andere Region zu migrieren, müssen Sie ein neues/anderes Azure Migrate-Projekt erstellen. 
+    - Um ihre VMs in eine andere Region zu migrieren, müssen Sie ein neues/anderes Azure Migrate-Projekt erstellen.
     > [!NOTE]
-    > Wenn Sie bei der Erstellung des Azure Migrate-Projekts den privaten Endpunkt als Konnektivitätsmethode ausgewählt haben, wird der Recovery Services-Tresor auch für die Konnektivität mit privaten Endpunkten konfiguriert. Stellen Sie sicher, dass die privaten Endpunkte von der Replikationsappliance aus erreichbar sind: [**Weitere Informationen**](how-to-use-azure-migrate-with-private-endpoints.md#troubleshoot-network-connectivity)
+    > Wenn Sie bei der Erstellung des Azure Migrate-Projekts den privaten Endpunkt als Konnektivitätsmethode ausgewählt haben, wird der Recovery Services-Tresor auch für die Konnektivität mit privaten Endpunkten konfiguriert. Stellen Sie sicher, dass die privaten Endpunkte von der Replikationsappliance aus erreichbar sind: [**Weitere Informationen**](troubleshoot-network-connectivity.md)
 
 6. Wählen Sie unter **Möchten Sie eine neue Replikationsappliance installieren oder ein vorhandenes Setup horizontal hochskalieren?** die Option **Replikationsappliance installieren**.
 7. Führen Sie unter **Laden Sie die Software für die Replikationsappliance herunter, und installieren Sie sie** den Download des Installationsprogramms für die Appliance und des Registrierungsschlüssels durch. Sie benötigen den Schlüssel zum Registrieren der Appliance. Der Schlüssel ist nach dem Herunterladen fünf Tage lang gültig.
@@ -165,8 +165,7 @@ Der erste Schritt bei der Migration besteht darin, die Replikationsappliance ein
     9.10 Wählen Sie unter **Zusammenfassung** die Option **Installieren**.   
     9.11 Unter **Installationsfortschritt** werden Informationen zum Installationsvorgang angezeigt. Wählen Sie **Fertig stellen**, wenn der Vorgang abgeschlossen ist. In einem Fenster wird eine Meldung zu einem Neustart angezeigt. Klicken Sie auf **OK**.   
     9.12 Als Nächstes wird in einem Fenster eine Meldung zur Passphrase für die Konfigurationsserververbindung angezeigt. Kopieren Sie die Passphrase in die Zwischenablage, und speichern Sie die Passphrase in einer temporären Textdatei auf den Quell-VMs. Sie benötigen diese Passphrase später während des Installationsprozesses für den Mobilitätsdienst.
-10. Nach Abschluss der Installation wird automatisch der Assistent zur Appliancekonfiguration gestartet. (Sie können den Assistenten auch manuell über die cspsconfigtool-Verknüpfung starten, die auf dem Desktop der Appliance erstellt wird.) In diesem Tutorial installieren wir den Mobilitätsdienst manuell auf den Quell-VMs, die repliziert werden sollen. Erstellen Sie daher in diesem Schritt ein Dummykonto, und fahren Sie fort. Sie können die folgenden Details zum Erstellen des Dummykontos angeben: „guest“ als Anzeigename, „username“ als Benutzername und „password“ als Kennwort für das Konto. Sie verwenden dieses Dummykonto in der Phase zum Aktivieren der Replikation. 
-11. Nachdem die Appliance nach Abschluss des Setupvorgangs neu gestartet wurde, wählen Sie im Bereich **Computer ermitteln** die neue Appliance unter **Konfigurationsserver auswählen** aus. Klicken Sie anschließend auf **Finalize registration** (Registrierung abschließen). Beim Abschließen der Registrierung werden einige letzte Schritte ausgeführt, um die Replikationsappliance vorzubereiten.
+10. Nach Abschluss der Installation wird automatisch der Assistent zur Appliancekonfiguration gestartet. (Sie können den Assistenten auch manuell über die cspsconfigtool-Verknüpfung starten, die auf dem Desktop der Appliance erstellt wird.) In diesem Tutorial installieren wir den Mobilitätsdienst manuell auf den Quell-VMs, die repliziert werden sollen. Erstellen Sie daher in diesem Schritt ein Dummykonto, und fahren Sie fort. Sie können die folgenden Details zum Erstellen des Dummykontos angeben: „guest“ als Anzeigename, „username“ als Benutzername und „password“ als Kennwort für das Konto. Sie verwenden dieses Dummykonto in der Phase zum Aktivieren der Replikation.
 
     ![Registrierung abschließen](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
@@ -233,9 +232,9 @@ Ein Mobilitätsdienst-Agent muss auf den GCP-VMs installiert sein, die migriert 
 
 2. Wählen Sie unter **Replizieren** > **Quelleinstellungen** > **Sind Ihre Computer virtualisiert?** die Option **Nicht virtualisiert/Andere** aus.
 3. Wählen Sie unter **Lokale Appliance** den Namen der Azure Migrate-Appliance aus, die Sie eingerichtet haben.
-4. Wählen Sie unter **Prozessserver** den Namen der Replikationsappliance aus. 
+4. Wählen Sie unter **Prozessserver** den Namen der Replikationsappliance aus.
 5. Wählen Sie unter **Gastanmeldeinformationen** das Dummykonto aus, das Sie zuvor während des [Replikationsinstaller-Setups](#download-the-replication-appliance-installer) erstellt haben, um den Mobilitätsdienst manuell zu installieren. (Die Pushinstallation wird nicht unterstützt.) Klicken Sie anschließend auf **Next: Virtuelle Computer**.   
- 
+
     ![Replizieren von Einstellungen](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. Übernehmen Sie im Bereich **Virtuelle Computer** unter **Migrationseinstellungen aus einer Bewertung importieren?** die Standardeinstellung **Nein, ich gebe die Migrationseinstellungen manuell an**.
 7. Wählen Sie alle VMs aus, die Sie migrieren möchten. Klicken Sie anschließend auf **Next: Zieleinstellungen**.
@@ -244,11 +243,11 @@ Ein Mobilitätsdienst-Agent muss auf den GCP-VMs installiert sein, die migriert 
 
 8. Wählen Sie unter **Zieleinstellungen** das Abonnement und die Zielregion für die Migration aus, und geben Sie die Ressourcengruppe an, in der sich die Azure-VMs nach der Migration befinden.
 9. Wählen Sie unter **Virtuelles Netzwerk** das Azure-VNET/-Subnetz aus, in das die Azure-VMs nach der Migration eingebunden werden.  
-10. Behalten Sie im **Cachespeicherkonto** die Standardoption bei, um das Cachespeicherkonto zu verwenden, das automatisch für das Projekt erstellt wird. Verwenden Sie die Dropdownliste, wenn Sie ein anderes Speicherkonto angeben möchten, das als Cachespeicherkonto für die Replikation verwendet werden soll. <br/> 
+10. Behalten Sie im **Cachespeicherkonto** die Standardoption bei, um das Cachespeicherkonto zu verwenden, das automatisch für das Projekt erstellt wird. Verwenden Sie die Dropdownliste, wenn Sie ein anderes Speicherkonto angeben möchten, das als Cachespeicherkonto für die Replikation verwendet werden soll. <br/>
     > [!NOTE]
     >
     > - Wenn Sie den privaten Endpunkt als Konnektivitätsmethode für das Azure Migrate-Projekt ausgewählt haben, gewähren Sie dem Recovery Services-Tresor Zugriff auf das Cachespeicherkonto. [**Weitere Informationen**](how-to-use-azure-migrate-with-private-endpoints.md#grant-access-permissions-to-the-recovery-services-vault)
-    > - Erstellen Sie einen privaten Endpunkt für das Cachespeicherkonto, um die Replikation mithilfe von ExpressRoute mit privatem Peering zu ermöglichen. [**Weitere Informationen**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional) 
+    > - Erstellen Sie einen privaten Endpunkt für das Cachespeicherkonto, um die Replikation mithilfe von ExpressRoute mit privatem Peering zu ermöglichen. [**Weitere Informationen**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional)
 11. Wählen Sie unter **Verfügbarkeitsoptionen** Folgendes aus:
     -  Verfügbarkeitszone, um den migrierten Computer einer bestimmten Verfügbarkeitszone in der Region anzuheften. Verteilen Sie mit dieser Option Server, die eine Anwendungsebene mit mehreren Knoten bilden, über Verfügbarkeitszonen. Wenn Sie diese Option auswählen, müssen Sie die Verfügbarkeitszone angeben, die für jeden auf der Registerkarte „Compute“ ausgewählten Computer verwendet werden soll. Diese Option ist nur verfügbar, wenn die für die Migration ausgewählte Zielregion Verfügbarkeitszonen unterstützt.
     -  Verfügbarkeitsgruppe, um den migrierten Computer in einer Verfügbarkeitsgruppe zu platzieren. Um diese Option verwenden zu können, muss die ausgewählte Zielressourcengruppe über mindestens eine Verfügbarkeitsgruppe verfügen.
@@ -260,7 +259,7 @@ Ein Mobilitätsdienst-Agent muss auf den GCP-VMs installiert sein, die migriert 
 
    > [!NOTE]
    > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
-  
+
 13. Wählen Sie unter **Azure-Hybridvorteil**
 
     - die Option **Nein** aus, falls Sie den Azure-Hybridvorteil nicht anwenden möchten. Klicken Sie dann auf **Weiter**.
@@ -279,7 +278,7 @@ Ein Mobilitätsdienst-Agent muss auf den GCP-VMs installiert sein, die migriert 
 
 15. Geben Sie unter **Datenträger** an, ob die VM-Datenträger in Azure repliziert werden sollen, und wählen Sie den Datenträgertyp (SSD Standard/HDD Standard oder Managed Disks Premium) in Azure aus. Klicken Sie dann auf **Weiter**.
     - Sie können Datenträger von der Replikation ausschließen.
-    - Wenn Sie Datenträger ausschließen, sind diese nach der Migration nicht auf der Azure-VM vorhanden. 
+    - Wenn Sie Datenträger ausschließen, sind diese nach der Migration nicht auf der Azure-VM vorhanden.
 
     ![Datenträgereinstellungen](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
@@ -324,7 +323,10 @@ Führen Sie die Testmigration wie folgt durch:
 6. Klicken Sie nach Abschluss des Tests mit der rechten Maustaste unter **Aktuell replizierte Computer** auf die Azure-VM, und klicken Sie anschließend auf **Testmigration bereinigen**.
 
     ![Bereinigen der Migration](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
-
+    > [!NOTE]
+    > Sie können jetzt Ihre Server, auf denen SQL Server ausgeführt wird, bei SQL VM RP registrieren, um die Vorteile automatisierter Patches, der automatisierten Sicherung und vereinfachten Lizenzverwaltung mit der Erweiterung für den SQL-IaaS-Agent zu nutzen.
+    >- Wählen Sie für die Registrierung bei SQL VM RP die Optionen **Verwaltung** > **Server werden repliziert** > **Computer mit SQL Server** > **Compute und Netzwerk** und dann **Ja** aus.
+    >- Wählen Sie „Azure-Hybridvorteil“ aus, wenn Sie über SQL Server-Instanzen verfügen, die durch aktive Software Assurance- oder SQL Server-Abonnements abgedeckt sind, und den Vorteil auf die zu migrierenden Computer anwenden möchten.
 
 ## <a name="migrate-gcp-vms"></a>Migrieren von GCP-VMs
 
@@ -350,7 +352,7 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
 3. Führen Sie App-Anpassungen nach der Migration durch, z.B. die Aktualisierung von Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
 4. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
 5. Leiten Sie den Datenverkehr auf die migrierte Instanz der Azure-VM um.
-6. Aktualisieren Sie die interne Dokumentation zum Anzeigen des neuen Speicherorts und der IP-Adresse der Azure-VMs. 
+6. Aktualisieren Sie die interne Dokumentation zum Anzeigen des neuen Speicherorts und der IP-Adresse der Azure-VMs.
 
 
 
@@ -380,7 +382,7 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
 
 **Frage:** Ich kann keine VMs für die Migration aus meinen zuvor erstellten Ergebnissen der Serverbewertung importieren.   
 **Antwort:** Zurzeit unterstützen wir keinen Import von Bewertungen für diesen Workflow. Um dieses Problem zu umgehen, können Sie die Bewertung exportieren und dann die VM-Empfehlung während des Schritts „Replikation aktivieren“ manuell auswählen.
-  
+
 **Frage:** Warum erhalte ich die Fehlermeldung "Failed to fetch BIOS GUID" (Fehler beim Abrufen der BIOS-GUID) bei dem Versuch, meine GCP-VMs zu ermitteln?   
 **Antwort:** Verwenden Sie die Root-Anmeldung und keinen Pseudobenutzer für die Authentifizierung. Wenn Sie keinen Root-Benutzer verwenden können, stellen Sie sicher, dass die erforderlichen Funktionen gemäß den Instruktionen in der [Unterstützungsmatrix](migrate-support-matrix-physical.md#physical-server-requirements) für den Benutzer festgelegt sind. Überprüfen Sie außerdem die unterstützten Betriebssysteme für GCP-VMs.  
 
@@ -393,7 +395,7 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
 **Frage:** Muss ich Änderungen vornehmen, bevor ich meine GCP-VMs zu Azure migriere?   
 **Antwort:** Möglicherweise müssen Sie diese Änderungen vornehmen, bevor Sie Ihre EC2-VMs zu Azure migrieren:
 
-- Wenn Sie cloud-init für die VM-Bereitstellung verwenden, können Sie cloud-init auf der VM deaktivieren, bevor Sie sie in Azure replizieren. Die von cloud-init auf dem virtuellen Computer ausgeführten Bereitstellungsschritte sind möglicherweise GCP-spezifisch und nach der Migration zu Azure nicht mehr gültig.  
+- Wenn Sie cloud-init für die VM-Bereitstellung verwenden, können Sie cloud-init auf der VM deaktivieren, bevor Sie sie in Azure replizieren. Die von cloud-init auf dem virtuellen Computer ausgeführten Bereitstellungsschritte sind möglicherweise GCP-spezifisch und nach der Migration zu Azure nicht mehr gültig. 
 - Lesen Sie den Abschnitt [Voraussetzungen](#prerequisites), um herauszufinden, ob für das verwendete Betriebssystem Änderungen erforderlich sind, bevor Sie zu Azure migrieren.
 - Sie sollten vor der abschließenden Migration stets eine Testmigration ausführen.  
 

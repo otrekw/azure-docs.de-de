@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a37b740333e599d19248ffa9b21be3e4d6fe78b3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9a52020ae09ff454af1d756dbff4041e96b2f798
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306295"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901563"
 ---
 # <a name="language-support-for-computer-vision"></a>Sprachunterstützung für maschinelles Sehen
 
@@ -25,89 +25,89 @@ Einige Features des maschinellen Sehens unterstützen mehrere Sprachen; alle hie
 
 Die OCR-APIs für maschinelles Sehen unterstützen verschiedene Sprachen. Es muss kein Sprachcode angegeben werden. Weitere Informationen finden Sie in der [Übersicht über die optische Zeichenerkennung (OCR)](overview-ocr.md).
 
-|Sprache| Sprachcode | OCR-API | Read 3.0/3.1 | Read v3.2 |
+|Sprache| Sprachcode | Read 3.2 | OCR-API | Read 3.0/3.1 |
 |:-----|:----:|:-----:|:---:|:---:|
-|Afrikaans|`af`| | |✔ |
-|Albanisch |`sq`| | |✔ |
-|Arabisch | `ar`|✔ | | |
-|Asturisch |`ast`| | |✔ |
-|Baskisch  |`eu`| | |✔ |
-|Bislama   |`bi`| | |✔ |
-|Bretonisch    |`br`| | |✔ |
-|Katalanisch    |`ca`| | |✔ |
-|Cebuano    |`ceb`| | |✔ |
-|Chamorro  |`ch`| | |✔ |
-|Chinesisch (vereinfacht) | `zh-Hans`|✔ | |✔ |
-|Chinesisch (traditionell) | `zh-Hant`|✔ | |✔ |
-|Kornisch     |`kw`| | |✔ |
-|Korsisch      |`co`| | |✔ |
-|Krimtatarisch (Lateinisch)  |`crh`| | |✔ |
-|Tschechisch | `cs` |✔ | |✔ |
-|Dänisch | `da` |✔ | |✔ |
+|Afrikaans|`af`|✔ | | |
+|Albanisch |`sq`|✔ | | |
+|Arabisch | `ar`| ✔ | | |
+|Asturisch |`ast`|✔ | | |
+|Baskisch  |`eu`| ✔ | | |
+|Bislama   |`bi`|✔ | | |
+|Bretonisch    |`br`|✔ | | |
+|Katalanisch    |`ca`|✔ | | |
+|Cebuano    |`ceb`|✔ | | |
+|Chamorro  |`ch`|✔| | |
+|Chinesisch (vereinfacht) | `zh-Hans`|✔ |✔ | |
+|Chinesisch (traditionell) | `zh-Hant`|✔ |✔ | |
+|Kornisch     |`kw`|✔ | | |
+|Korsisch      |`co`|✔ | | |
+|Krimtatarisch (Lateinisch)  |`crh`| ✔ | | |
+|Tschechisch | `cs` |✔ | ✔ | |
+|Dänisch | `da` |✔ | ✔ | |
 |Niederländisch | `nl` |✔ |✔ |✔ |
-|Englisch | `en` |✔ |✔ |✔ |
-|Estnisch  |`et`| | |✔ |
-|Fidschi |`fj`| | |✔ |
-|Filipino  |`fil`| | |✔ |
-|Finnisch | `fi` |✔ | |✔ |
+|Englisch (inkl. handschriftlich) | `en` |✔ |✔ (nur Drucken)|✔ |
+|Estnisch  |`et`|✔ | | |
+|Fidschi |`fj`|✔ | | |
+|Filipino  |`fil`|✔ | | |
+|Finnisch | `fi` |✔ |✔ | |
 |Französisch | `fr` |✔ |✔ |✔ |
-|Friaulisch  | `fur` | | |✔ |
-|Galizisch   | `gl` | | |✔ |
+|Friaulisch  | `fur` |✔ | | |
+|Galizisch   | `gl` |✔ | | |
 |Deutsch | `de` |✔ |✔ |✔ |
-|Gilbertese    | `gil` | | |✔ |
-|Griechisch | `el` |✔ | | |
-|Grönländisch   | `kl` | | |✔ |
-|Haitianisches Kreolisch  | `ht` | | |✔ |
-|Hani  | `hni` | | |✔ |
-|Hmong Daw (Lateinisch) | `mww` | | |✔ |
-|Ungarisch | `hu` |✔ | | ✔ |
-|Indonesisch   | `id` | | |✔ |
-|Interlingual  | `ia` | | |✔ |
-|Inuktitut (Lateinisch)  | `iu` | | |✔ |
-|Irisch    | `ga` | | |✔ |
+|Gilbertese    | `gil` |✔ | | |
+|Griechisch | `el` | |✔ | |
+|Grönländisch   | `kl` |✔ | | |
+|Haitianisches Kreolisch  | `ht` |✔ | | |
+|Hani  | `hni` |✔ | | |
+|Hmong Daw (Lateinisch) | `mww` | ✔ | | |
+|Ungarisch | `hu` | ✔ |✔ | |
+|Indonesisch   | `id` |✔ | | |
+|Interlingual  | `ia` |✔ | | |
+|Inuktitut (Lateinisch)  | `iu` | ✔ | | |
+|Irisch    | `ga` |✔ | | |
 |Italienisch | `it` |✔ |✔ |✔ |
-|Japanisch | `ja` |✔ | |✔ |
-|Javanisch | `jv` | | |✔ |
-|K'iche'  | `quc` | | |✔ |
-|Kabuverdianu | `kea` | | |✔ |
-|Kachin (Lateinisch) | `kac` | | |✔ |
-|Kara-Kalpak | `kaa` | | |✔ |
-|Kaschubisch | `csb` | | |✔ |
-|Khasi  | `kha` | | |✔ |
-|Koreanisch | `ko` |✔ | |✔ |
-|Kurdisch (Lateinisch) | `kur` | | |✔ |
-|Luxemburgisch  | `lb` | | |✔ |
-|Malaiisch (Lateinisch)  | `ms` | | |✔ |
-|Manx  | `gv` | | |✔ |
-|Neapolitanisch   | `nap` | | |✔ |
-|Norwegisch | `nb` |✔ | | |
-|Norwegisch | `no` | | |✔ |
-|Okzitanisch | `oc` | | |✔ |
-|Polnisch | `pl` |✔ | |✔ |
+|Japanisch | `ja` |✔ |✔ | |
+|Javanisch | `jv` |✔ | | |
+|K'iche'  | `quc` |✔ | | |
+|Kabuverdianu | `kea` |✔ | | |
+|Kachin (Lateinisch) | `kac` |✔ | | |
+|Kara-Kalpak | `kaa` | ✔ | | |
+|Kaschubisch | `csb` |✔ | | |
+|Khasi  | `kha` | ✔ | | |
+|Koreanisch | `ko` |✔ |✔ | |
+|Kurdisch (Lateinisch) | `kur` |✔ | | |
+|Luxemburgisch  | `lb` | ✔ | | |
+|Malaiisch (Lateinisch)  | `ms` | ✔ | | |
+|Manx  | `gv` | ✔ | | |
+|Neapolitanisch   | `nap` | ✔ | | |
+|Norwegisch | `nb` | | ✔ | |
+|Norwegisch | `no` | ✔ | | |
+|Okzitanisch | `oc` | ✔ | | |
+|Polnisch | `pl` | ✔ |✔ | |
 |Portugiesisch | `pt` |✔ |✔ |✔ |
-|Rumänisch | `ro` |✔ | | |
-|Rätoromanisch  | `rm` | | |✔ |
-|Russisch | `ru` |✔ | | |
-|Schotten  | `sco` | | |✔ |
-|Schottisch-Gälisch  | `gd` | | |✔ |
-|Serbisch (Kyrillisch) | `sr-Cyrl` |✔ | | |
-|Serbisch (Lateinisch) | `sr-Latn` |✔ | | |
-|Slowakisch | `sk` |✔ | | |
-|Slowenisch  | `slv` | | |✔ |
+|Rumänisch | `ro` | | ✔ | |
+|Rätoromanisch  | `rm` | ✔ | | |
+|Russisch | `ru` | |✔ | |
+|Schotten  | `sco` | ✔ | | |
+|Schottisch-Gälisch  | `gd` |✔ | | |
+|Serbisch (kyrillisch) | `sr-Cyrl` | |✔ | |
+|Serbisch (lateinisch) | `sr-Latn` | |✔ | |
+|Slowakisch | `sk` | |✔ | |
+|Slowenisch  | `slv` | ✔ || |
 |Spanisch | `es` |✔ |✔ |✔ |
-|Suaheli (Lateinisch)  | `sw` | | |✔ |
-|Schwedisch | `sv` |✔ | |✔ |
-|Tatarisch (Lateinisch)  | `tat` | | |✔ |
-|Tetum    | `tet` | | |✔ |
-|Türkisch | `tr` |✔ | |✔ |
-|Obersorbisch  | `hsb` | | |✔ |
-|Usbekisch (Lateinisch)     | `uz` | | |✔ |
-|Volapük   | `vo` | | |✔ |
-|Walser    | `wae` | | |✔ |
-|Westfriesisch | `fy` | | |✔ |
-|Yukatekisches Maya | `yua` | | |✔ |
-|Zhuang | `za` | | |✔ |
-|Zulu  | `zu` | | |✔ |
+|Suaheli (Lateinisch)  | `sw` |✔ | | |
+|Schwedisch | `sv` |✔ |✔ | |
+|Tatarisch (Lateinisch)  | `tat` | ✔ | | |
+|Tetum    | `tet` |✔ |  | |
+|Türkisch | `tr` |✔ | ✔ | |
+|Obersorbisch  | `hsb` |✔ |  | |
+|Usbekisch (Lateinisch)     | `uz` |✔ |  | |
+|Volapük   | `vo` | ✔ | | |
+|Walser    | `wae` | ✔ | | |
+|Westfriesisch | `fy` | ✔ | | |
+|Yukatekisches Maya | `yua` | ✔ | | |
+|Zhuang | `za` |✔ |  | |
+|Zulu  | `zu` | ✔ | | |
 
 ## <a name="image-analysis"></a>Bildanalyse
 

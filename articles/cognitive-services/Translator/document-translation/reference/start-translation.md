@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 820b5f39192fffa0ec54b44c6016965599d85a8c
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 2896c5c78acb98c798f85684ef6f800f82549b06
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107863693"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412707"
 ---
 # <a name="start-translation"></a>Starten der Übersetzung
 
@@ -31,7 +31,7 @@ Wenn das Glossar während der Übersetzung ungültig ist oder nicht erreichbar i
 
 Sendet eine `POST`-Anforderung an:
 ```HTTP
-POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches
+POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches
 ```
 
 Erfahren Sie, wie Sie Ihren [benutzerdefinierten Domänennamen](../get-started-with-document-translation.md#find-your-custom-domain-name)finden.
@@ -51,7 +51,7 @@ Anforderungsheader:
 
 ## <a name="request-body-batch-submission-request"></a>Anforderungstext: Batchübermittlungsanforderung
 
-|Name|type|Beschreibung|
+|Name|Typ|Beschreibung|
 |--- |--- |--- |
 |inputs|BatchRequest[]|Batchanforderung unten aufgeführt. Die Eingabeliste der Dokumente oder Ordner, die Dokumente enthalten. Medientypen: „application/json“, „text/json“, „application/*+json“.|
 
@@ -59,17 +59,17 @@ Anforderungsheader:
 
 Definition für die Eingabe Batchübersetzungsanforderung.
 
-|Name|type|Erforderlich|Beschreibung|
+|Name|Typ|Erforderlich|Beschreibung|
 |--- |--- |--- |--- |
 |source|SourceInput[]|Richtig|inputs.source unten aufgeführt. Quelle der Eingabedokumente.|
-|Speichertyp|StorageInputType[]|Richtig|inputs.storageType unten aufgeführt. Der Speichertyp der Quellzeichenfolge der Eingabedokumente.|
+|Speichertyp|StorageInputType[]|Falsch|inputs.storageType unten aufgeführt. Der Speichertyp der Quellzeichenfolge der Eingabedokumente. Nur für die Übersetzung einzelner Dokumente erforderlich.|
 |Ziele|TargetInput[]|Richtig|inputs.target unten aufgeführt. Speicherort des Ziels für die Ausgabe.|
 
 **inputs.source**
 
 Quelle der Eingabedokumente.
 
-|Name|type|Erforderlich|Beschreibung|
+|Name|Typ|Erforderlich|Beschreibung|
 |--- |--- |--- |--- |
 |filter|DocumentFilter[]|Falsch|DocumentFilter[] unten aufgeführt.|
 |filter.prefix|Zeichenfolge|Falsch|Eine Präfixzeichenfolge mit Beachtung der Groß-/Kleinschreibung zum Filtern von Dokumenten im Quellpfad für die Übersetzung. Wenn Sie beispielsweise einen Azure Storage-Blob-URI verwenden, können Sie das Präfix nutzen, um Unterordner die Übersetzung einzuschränken.|
@@ -92,17 +92,17 @@ Der Speichertyp der Quellzeichenfolge der Eingabedokumente.
 
 Das Ziel für die abgeschlossenen übersetzten Dokumente.
 
-|Name|type|Erforderlich|Beschreibung|
+|Name|Typ|Erforderlich|Beschreibung|
 |--- |--- |--- |--- |
 |category|Zeichenfolge|Falsch|Kategorie/benutzerdefiniertes System für Übersetzungsanforderung.|
 |Glossare|Glossary[]|Falsch|Glossar unten aufgeführt. Liste der Glossare.|
 |glossaries.format|Zeichenfolge|Falsch|Formatieren.|
 |glossaries.glossaryUrl|Zeichenfolge|True (bei Verwendung von Glossaren)|Speicherort des Glossars. Wir verwenden die Dateierweiterung zum Extrahieren der Formatierung, wenn der Formatparameter nicht bereitgestellt wird. Wenn das Übersetzungssprachpaar nicht im Glossar vorhanden ist, wird es nicht angewendet.|
 |glossaries.storageSource|StorageSource|Falsch|StorageSource oben aufgeführt.|
+|glossaries.version|Zeichenfolge|Falsch|Optionale Version. Ohne eine Angabe wird der Standardwert verwendet.|
 |targetUrl|Zeichenfolge|True|Speicherort des Ordners/Containers mit Ihren Dokumenten.|
 |language|Zeichenfolge|True|Der Zielsprachencode mit zwei Buchstaben. Siehe [Liste der Sprachcodes](../../language-support.md).|
 |storageSource|StorageSource []|Falsch|StorageSource [] oben aufgeführt.|
-|version|Zeichenfolge|Falsch|Version.|
 
 ## <a name="example-request"></a>Beispielanforderung
 
@@ -115,11 +115,11 @@ Im Folgenden werden Beispiele für Batchanforderungen aufgeführt:
     "inputs": [
         {
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
                     "language": "fr"
                 }
             ]
@@ -137,15 +137,15 @@ Stellen Sie sicher, dass Sie Glossar-URL- und SAS-Token für das spezifische Blo
     "inputs": [
         {
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
-                    "language": "fr"
-     "glossaries": [
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
+                    "language": "fr",
+                    "glossaries": [
                         {
-                            "glossaryUrl": https://my.blob.core.windows.net/glossaries/en-fr.xlf?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=BsciG3NWoOoRjOYesTaUmxlXzyjsX4AgVkt2AsxJ9to%3D,
+                            "glossaryUrl": "https://my.blob.core.windows.net/glossaries/en-fr.xlf?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=BsciG3NWoOoRjOYesTaUmxlXzyjsX4AgVkt2AsxJ9to%3D",
                             "format": "xliff",
                             "version": "1.2"
                         }
@@ -167,14 +167,14 @@ Stellen Sie sicher, dass Sie den Ordnernamen (Groß-/Kleinschreibung beachten) a
     "inputs": [
         {
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D,
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D",
                 "filter": {
                     "prefix": "MyFolder/"
                 }
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
                     "language": "fr"
                 }
             ]
@@ -196,15 +196,15 @@ Stellen Sie sicher, dass Sie den Ordnernamen (Groß-/Kleinschreibung beachten) a
         {
             "storageType": "File",
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D
+                "sourceUrl": "https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D"
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
                     "language": "es"
                 },
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
                     "language": "de"
                 }
             ]
@@ -229,13 +229,14 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 ## <a name="error-response"></a>Fehlerantwort
 
-|Name|type|BESCHREIBUNG|
+|Name|Typ|Beschreibung|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
-|innerError|InnerErrorV2|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
+|innerError|InnerTranslationError|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
 |inner.Errorcode|Zeichenfolge|Ruft Code der Fehlerzeichenfolge ab.|
 |innerError.message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
+|innerError.target|Zeichenfolge|Ruft die Ursache des Fehlers ab. Dies wäre z. B. „Dokumente“ oder „Dokument-ID“ im Falle eines ungültigen Dokuments.|
 
 ## <a name="examples"></a>Beispiele
 
@@ -246,7 +247,7 @@ Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 Die Auftrags-ID finden Sie im URL-Wert in der Antwort Header-Operation-Location. Der letzte Parameter der URL ist die Auftrags-ID des Vorgangs (die Zeichenfolge nach "/Operation/").
 
 ```HTTP
-Operation-Location: https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0.preview.1/operation/0FA2822F-4C2A-4317-9C20-658C801E0E55
+Operation-Location: https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/operation/0FA2822F-4C2A-4317-9C20-658C801E0E55
 ```
 
 ### <a name="example-error-response"></a>Beispiel für Fehlerantwort

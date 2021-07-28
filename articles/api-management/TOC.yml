@@ -338,7 +338,7 @@
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
-      href: api-management-faq.md
+      href: api-management-faq.yml
     - name: Preise
       href: 'https://aka.ms/apimpricing'
     - name: Produktupdates

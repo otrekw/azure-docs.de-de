@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: db99fa5caff27a24aa04e4780b25ade3f7c25496
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d686ea40b08139b9d16ade16d6e401db8300db0f
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101699928"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081117"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Planen und Verwalten von Kosten für Azure Cognitive Services
 
@@ -37,6 +37,29 @@ Weitere Informationen finden Sie unter [Azure Cognitive Services – Preise](ht
 ## <a name="understand-the-full-billing-model-for-cognitive-services"></a>Grundlegendes zum Gesamtabrechnungsmodell für Cognitive Services
 
 Cognitive Services wird in einer Azure-Infrastruktur ausgeführt, für die [Kosten anfallen](https://azure.microsoft.com/pricing/details/cognitive-services/), wenn Sie die neue Ressource bereitstellen. Es ist wichtig zu verstehen, dass die zusätzliche Infrastruktur Kosten verursachen kann. Sie müssen diese Kosten verwalten, wenn Sie Änderungen an bereitgestellten Ressourcen vornehmen. 
+
+### <a name="how-youre-charged-for-cognitive-services"></a>Kosten für Cognitive Services
+
+Wenn Sie Cognitive Services-Ressourcen erstellen oder verwenden, werden Ihnen möglicherweise die folgenden Verbrauchseinheiten auf der Grundlage der von Ihnen verwendeten Dienste in Rechnung gestellt:
+
+| Dienst | Verbrauchseinheit(en) | Abrechnungsinformationen | 
+|---------|-------|---------------------|
+| **Bildanalyse** | | |
+| [Maschinelles Sehen](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/) | Free, Standard (S1) | Abrechnung nach der Anzahl der Transaktionen. Der Preis pro Transaktion variiert je nach Feature (Lesen, OCR, Räumliche Analyse). Ausführliche Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/). |
+| [Custom Vision](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) | Free, Standard | <li>Vorhersagen werden nach der Anzahl der Transaktionen abgerechnet.</li><li>Das Training wird nach Computestunden abgerechnet.</li><li>Der Imagespeicher wird nach der Anzahl der Images (bis zu 6 MB pro Image) abgerechnet.</li>|
+| [Gesichtserkennung](https://azure.microsoft.com/pricing/details/cognitive-services/face-api/) | Free, Standard | Abrechnung nach der Anzahl der Transaktionen. |
+| **Speech** | | |
+| [Speech-Dienst](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) | Free, Standard | Die Abrechnung variiert je nach Feature (Spracherkennung, Sprachsynthese, Sprachübersetzung, Sprechererkennung). In erster Linie erfolgt die Abrechnung nach Transaktionsanzahl oder Zeichenanzahl. Ausführliche Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). |
+| **Sprache** | | |
+| [Language Understanding (LUIS)](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) | Kostenlose Erstellung, kostenlose Vorhersage, Standard | Abrechnung nach der Anzahl der Transaktionen. Der Preis pro Transaktion variiert je nach Feature (Sprachanforderungen, Textanforderungen). Ausführliche Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). |
+| [QnA Maker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/) | Free, Standard | Monatliche Abrechnung der Abonnementgebühr. Ausführliche Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/). | 
+| [Textanalyse](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) | Free, Standard | Abrechnung nach Anzahl der Textdatensätze. | 
+| [Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator/) | Free (Kostenlos), Nutzungsbasierte Bezahlung (S1), Volumenrabatt (S2, S3, S4, C2, C3, C4, D3) | Die Preise variieren je nach Verbrauchseinheit und Feature. Ausführliche Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/translator/). <li>Die Textübersetzung wird nach der Anzahl der übersetzten Zeichen abgerechnet.</li><li>Die Dokumentübersetzung wird nach übersetzten Zeichen abgerechnet.</li><li>Die benutzerdefinierte Übersetzung wird anhand von Zeichen der Quell- und Zieltrainingsdaten abgerechnet.</li> |  
+| **Entscheidung** | | |
+| [Anomalieerkennung](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/) | Free, Standard | Abrechnung nach der Anzahl der Transaktionen. | 
+| [Content Moderator](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/) | Free, Standard | Abrechnung nach der Anzahl der Transaktionen. |
+| [Personalisierung](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/) | Free, Standard (S0) | Abrechnung nach Transaktionen pro Monat. Es gibt Speicher- und Transaktionskontingente. Ausführliche Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/). | 
+
 
 ### <a name="costs-that-typically-accrue-with-cognitive-services"></a>Mit Cognitive Services üblicherweise anfallende Kosten
 
@@ -98,7 +121,7 @@ Sie können ein Budget mit Filtern für bestimmte Ressourcen oder Dienste in Azu
 
 ## <a name="export-cost-data"></a>Exportieren von Kostendaten
 
-Sie können [Ihre Kostendaten](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) auch in ein Speicherkonto exportieren. Dies ist hilfreich, wenn Sie oder andere Personen zusätzliche Datenanalysen für Kosten ausführen müssen. Beispielsweise können Finanzteams die Daten mithilfe von Excel oder Power BI analysieren. Sie können Ihre Kosten täglich, wöchentlich oder monatlich exportieren und einen benutzerdefinierten Datumsbereich festlegen. Exportieren von Kostendaten ist die empfohlene Abrufmethode für Kostendatasets.
+Sie können [Ihre Kostendaten](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) auch in ein Speicherkonto exportieren. Dies ist hilfreich, wenn Sie oder andere Personen weitere Datenanalysen für Kosten ausführen müssen. Beispielsweise können Finanzteams die Daten mithilfe von Excel oder Power BI analysieren. Sie können Ihre Kosten täglich, wöchentlich oder monatlich exportieren und einen benutzerdefinierten Datumsbereich festlegen. Exportieren von Kostendaten ist die empfohlene Abrufmethode für Kostendatasets.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,15 +7,15 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 03/18/2021
+ms.date: 05/21/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: ef48074c5346374b12eb5a3a3aea50b2c753a082
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 5ce85cf6a238ce3291d7e296ba74e735970c5e64
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950296"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469868"
 ---
 # <a name="2---create-and-load-search-index-with-javascript"></a>2: Erstellen und Laden des Suchindexes mit JavaScript
 
@@ -96,6 +96,14 @@ Nach Abschluss des Uploads kann der Suchindex verwendet werden. Überprüfen Sie
 1. Erweitern Sie „Indizes“ > „Dokumente“ > `good-books`, und wählen Sie dann ein Dokument aus, um alle dokumentspezifischen Daten anzuzeigen.
  
     :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-search-extension-view-docs.png" lightbox="media/tutorial-javascript-create-load-index/visual-studio-code-search-extension-view-docs.png" alt-text="Erweitern von „Indizes“ und „good-books“ und Auswählen eines Dokuments":::
+
+## <a name="rollback-bulk-import-file-changes"></a>Rollback von Massenimport-Dateiänderungen
+
+Verwenden Sie den folgenden git-Befehl im integrierten Visual Studio Code-Terminal im Verzeichnis `bulk-insert`, um ein Rollback der Änderungen auszuführen. Sie werden nicht benötigt, um das Tutorial fortzusetzen, und Sie sollten diese Geheimnisse nicht speichern oder in Ihr Repository pushen. 
+
+```git
+git checkout .
+```
 
 ## <a name="copy-your-search-resource-name"></a>Kopieren des Namens Ihrer Suchressource
 

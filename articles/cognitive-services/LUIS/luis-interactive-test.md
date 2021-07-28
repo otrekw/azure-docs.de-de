@@ -4,17 +4,24 @@ description: Verwenden Sie LUIS (Language Understanding Intelligent Service), um
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 31885eba16d59e2e48a08f84c56271b84e6c565f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: aahi
+author: aahill
+ms.manager: nitinme
+ms.date: 06/01/2021
+ms.openlocfilehash: d5263f85fa8cc2a9f1b55da32b4aa1418e304347
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98790917"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954264"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testen Ihrer LUIS-App im LUIS-Portal
 
-Das [Testen](luis-concept-test.md) einer App ist ein iterativer Vorgang. Testen Sie Ihre LUIS-App nach dem Trainieren mit Beispieläußerungen, um festzustellen, ob die Absichten und Entitäten ordnungsgemäß erkannt werden. Ist das nicht der Fall, aktualisieren Sie die LUIS-App, und trainieren und testen Sie sie erneut.
+
+Beim Testen stellen Sie LUIS Beispieläußerungen bereit und erhalten eine Antwort von Absichten und Entitäten, die LUIS erkannt hat. Sie können LUIS interaktiv mit jeweils einer einzelnen Äußerung testen, oder Sie können einen Batch von Äußerungen angeben. Beim Testen können Sie die Vorhersageantwort des aktuell aktiven Modells mit der Vorhersageantwort des veröffentlichten Modells vergleichen. 
+
+
+Das Testen einer App ist ein iterativer Vorgang. Testen Sie Ihre LUIS-App nach dem Trainieren mit Beispieläußerungen, um festzustellen, ob die Absichten und Entitäten ordnungsgemäß erkannt werden. Ist das nicht der Fall, aktualisieren Sie die LUIS-App, und trainieren und testen Sie sie erneut.
 
 <!-- anchors for H2 name changes -->
 <a name="train-your-app"></a>
@@ -22,13 +29,31 @@ Das [Testen](luis-concept-test.md) einer App ist ein iterativer Vorgang. Testen 
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
-## <a name="train-before-testing"></a>Vor dem Testen trainieren
+## <a name="interactive-testing"></a>Interaktives Testen
 
-1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie Ihr **Abonnement** und Ihre **Erstellungsressource** aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
-1. Öffnen Sie Ihre App, indem Sie auf der Seite **Meine Apps** den Namen der App auswählen.
-1. Um die aktuellste Version der aktiven App zu testen, wählen Sie vor dem Testen im oberen Menü **Train** (Trainieren) aus.
+Interaktive Tests werden im **Testbereich** des LUIS-Portals durchgeführt. Sie können eine Äußerung eingeben, um zu ermitteln, wie Absichten und Entitäten identifiziert und bewertet werden. Wenn LUIS die Absichten und Entitäten für eine Äußerung im Testbereich nicht wie erwartet vorhersagt, kopieren Sie sie als neue Äußerung auf die Seite **Absicht**. Bezeichnen Sie dann die Teile dieser Äußerung nach Entitäten, und trainieren Sie LUIS. 
+
+Wenn Sie mehrere Äußerungen gleichzeitig testen, finden Sie weitere Informationen unter [Batchtests](./luis-how-to-batch-test.md). Weitere Informationen zu Vorhersageergebnissen finden Sie im Artikel [Vorhersageergebnisse](luis-concept-prediction-score.md).
+
+Sie können den Test mithilfe des [Endpunkts](luis-glossary.md#endpoint) durchführen. Dabei können Sie maximal zwei Versionen der App einsetzen. Die Haupt- oder Liveversion Ihrer App wird dabei als **Produktionsendpunkt** festgelegt, und eine zweite Version wird auf dem **Stagingendpunkt** hinzugefügt. Mit diesem Ansatz erhalten Sie drei Versionen einer Äußerung: das aktuelle Modell im Testbereich des [LUIS](luis-reference-regions.md)-Portals und die beiden Versionen auf zwei unterschiedlichen Endpunkten. 
+
+Alle Endpunkttests werden auf Ihr Nutzungskontingent angerechnet. 
+
+## <a name="logging"></a>Protokollierung
+
+LUIS speichert alle protokollierten Äußerungen im Abfrageprotokoll, das im LUIS-Portal auf der Seite mit der **Apps**-Liste sowie über die [Erstellungs-APIs](https://go.microsoft.com/fwlink/?linkid=2092087) für LUIS zum Download bereitsteht. 
+
+Wenn Sie Tests an einem Endpunkt durchführen und nicht möchten, dass die Äußerung protokolliert wird, müssen Sie die Konfiguration `logging=false` für Abfragezeichenfolgen verwenden.
+
+Alle Äußerungen, bei denen LUIS unsicher ist, werden auf der Seite **[Überprüfen von Endpunktäußerungen](luis-how-to-review-endpoint-utterances.md)** des [LUIS](luis-reference-regions.md)-Portals aufgeführt.  
 
 ## <a name="test-an-utterance"></a>Testen einer Äußerung
+
+> [!NOTE]
+> Denken Sie daran, LUIS zu [trainieren](luis-how-to-train.md), nachdem Sie Änderungen am Modell vorgenommen haben. Änderungen an der LUIS-App stehen erst für Tests zur Verfügung, nachdem die App trainiert wurde.
+> 1. Melden Sie sich beim LUIS-Portal an, und wählen Sie Ihr Abonnement und Ihre Erstellungsressource aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
+> 2. Öffnen Sie Ihre App, indem Sie auf der Seite Meine Apps den Namen der App auswählen.
+> 3. Um die aktuellste Version der aktiven App zu testen, wählen Sie vor dem Testen im oberen Menü Train (Trainieren) aus.
 
 Die Testäußerung sollte nicht exakt mit einer der Beispieläußerungen in der App übereinstimmen. Die Testäußerung sollte die Wortwahl, Satzlänge und Entitätsverwendung aufweisen, die Sie von einem Benutzer erwarten.
 
@@ -127,3 +152,4 @@ Wenn sich in Tests herausstellt, dass Ihre LUIS-App nicht die richtigen Absichte
 
 * [Bezeichnen von vorgeschlagenen Äußerungen mit LUIS](luis-how-to-review-endpoint-utterances.md)
 * [Verwenden von Features zum Verbessern der Leistung Ihrer LUIS-App](luis-how-to-add-features.md)
+* [Bewährte Methoden für SQL Data Warehouse](luis-concept-best-practices.md)

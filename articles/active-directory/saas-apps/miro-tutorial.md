@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 05/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 56548bc770c68d9eab2df138a91e8719efae25cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6066dc8709fe376f99babcc3dd1360e4bf571ef2
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651523"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655348"
 ---
 # <a name="tutorial-integrate-miro-with-azure-active-directory"></a>Tutorial: Integrieren von Miro in Azure Active Directory
 
-In diesem Tutorial erfahren Sie, wie Sie Miro in Azure Active Directory (Azure AD) integrieren. Die Integration von Miro in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Miro in Azure Active Directory (Azure AD) integrieren. Eine weitere Version dieses Tutorials finden Sie unter help.miro.com. Die Integration von Miro in Azure AD ermöglicht Folgendes:
 
 * Steuern Sie in Azure AD, wer Zugriff auf Miro hat.
 * Ermöglichen Sie Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Miro anzumelden.
@@ -37,6 +37,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. 
 * Miro unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden sowie die **Just-In-Time**-Benutzerbereitstellung.
+
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
 ## <a name="add-miro-from-the-gallery"></a>Hinzufügen von Miro aus dem Katalog
 
@@ -74,19 +77,17 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    Geben Sie im Textfeld **Bezeichner** die URL `https://miro.com` ein.
+    Geben Sie im Textfeld **Bezeichner** die URL `https://miro.com/` ein.
 
-5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+5. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten, geben Sie die URL in das Textfeld **Anmelde-URL** ein: `https://miro.com/sso/login/`
 
-    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://miro.com/sso/saml`.
+1. Suchen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** den Eintrag **Zertifikat (Base64)** . Klicken Sie auf **Herunterladen**, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer. Sie benötigen diese Angabe zum Konfigurieren von SSO auf der Seite von Miro.
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+   ![Downloadlink für das Zertifikat](common/certificatebase64.png "Downloadlink für das Zertifikat")
 
-   ![Downloadlink für das Zertifikat](common/metadataxml.png)
+1. Kopieren Sie im Abschnitt **Miro einrichten** die Anmelde-URL. Sie benötigen diese Angabe zum Konfigurieren von SSO auf der Seite von Miro.
 
-1. Kopieren Sie im Abschnitt **Miro einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
-
-   ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+   ![Kopieren der Anmelde-URL](./media/miro-tutorial/login.png "Kopieren der Anmelde-URL")
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -112,30 +113,37 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
+* Navigieren Sie alternativ zu den **Eigenschaften** der Anwendung, und deaktivieren Sie **Benutzerzuweisung erforderlich**
+![Zuweisungsanforderung deaktivieren](./media/miro-tutorial/properties.png "Deaktivieren der Zuweisungsanforderung").
+
 ## <a name="configure-miro-sso"></a>Konfigurieren des einmaligen Anmeldens für Miro
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Miro** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das Supportteam von Miro senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Verwenden Sie zum Konfigurieren von SSO auf der Seite von Miro das zuvor heruntergeladene Zertifikat und die zuvor kopierte Anmelde-URL. Navigieren Sie in den Miro-Kontoeinstellungen zum Abschnitt **Security** (Sicherheit), und aktivieren Sie **Enable SSO/SAML** (SSO/SAML aktivieren). 
+
+1. Fügen Sie die Anmelde-URL in das Feld **SAML-Anmelde-URL** ein.
+1. Öffnen Sie die Zertifikatdatei mit einem Text-Editor, und kopieren Sie die Zertifikatsequenz. Fügen Sie die Sequenz in das Feld **Key x509 Certificate** (Schlüssel x509-Zertifikat) ein.
+![Miro-Einstellungen](./media/miro-tutorial/security.png "Miro-Einstellungen")
+
+1. Geben Sie im Feld **Domains** (Domänen) Ihre Domänenadresse ein, klicken Sie auf **Add** (Hinzufügen), und führen Sie das Überprüfungsverfahren aus. Wiederholen Sie diesen Vorgang für Ihre anderen Domänenadressen, sofern vorhanden. Das Miro-SSO-Feature funktioniert für Endbenutzer, deren Domänen in der Liste aufgeführt werden. 
+![Domäne](./media/miro-tutorial/add-domain.png "Domain")
+
+1. Entscheiden Sie, ob Sie Just-in-Time-Bereitstellung verwenden möchten (pullen Sie Ihre Benutzer während der Registrierung in Miro in Ihr Abonnement), und klicken Sie auf **Save** (Speichern), um die SSO-Konfiguration auf der Miro-Seite abzuschließen.
+![Just-in-Time-Bereitstellung](./media/miro-tutorial/save-configuration.png "Just-in-Time-Bereitstellung") 
 
 ### <a name="create-miro-test-user"></a>Erstellen eines Miro-Testbenutzers
 
-In diesem Abschnitt wird in Miro ein Benutzer namens B. Simon erstellt. Miro unterstützt die Just-in-Time-Bereitstellung, die pro Anforderung aktiviert werden kann. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Falls ein Benutzer nicht bereits in Miro vorhanden ist, wird beim Versuch, auf Miro zuzugreifen, ein neuer Benutzer erstellt.
+In diesem Abschnitt wird in Miro ein Benutzer namens B. Simon erstellt. Miro unterstützt Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Miro vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen mithilfe des Testbenutzers B. Simon. 
 
 #### <a name="sp-initiated"></a>SP-initiiert:
-
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Miro weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
 * Navigieren Sie direkt zur Anmelde-URL für Miro, und initiieren Sie den Anmeldeflow.
 
 #### <a name="idp-initiated"></a>IDP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Miro-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**, und melden Sie sich als B. Simon an. Sie sollten automatisch bei dem Miro-Abonnement angemeldet werden, für das Sie SSO eingerichtet haben. 
 
 Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Miro“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Miro-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Nach dem Konfigurieren von Miro können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

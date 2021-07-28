@@ -6,15 +6,15 @@ metadata:
   description: Hier erfahren Sie, wie Sie Azure Purview verwenden, damit Ihre Organisation Datenquellen suchen, verstehen und nutzen kann. Anhand von Tutorials, einer REST-API-Referenz und anderem Dokumentationsmaterial wird gezeigt, wie Sie ein Datenrepository planen und konfigurieren, in dem Datenconsumer verfügbare Datenquellen finden und sich mit Informationen von Experten vertraut machen können.
   ms.service: purview
   ms.topic: landing-page
-  author: JasonWHowell
-  ms.author: jasonh
-  ms.date: 11/29/2020
-  ms.openlocfilehash: c9e9a32ca5c77082186f15a0eae3f3430347a02b
-  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+  author: whhender
+  ms.author: whhender
+  ms.date: 06/09/2021
+  ms.openlocfilehash: 8db36ffb5f1d081e0e4dbb2cd6dbca02c7ddf726
+  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 01/28/2021
-  ms.locfileid: "98926911"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111904011"
 landingContent:
 - title: Informationen zu Azure Purview
   linkLists:
@@ -24,12 +24,16 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
+    - text: Verwenden von Purview Studio
+      url: use-purview-studio.md
     - text: Best Practices für die Bereitstellung
       url: deployment-best-practices.md
     - text: Data Catalog-Berechtigungen
       url: catalog-permissions.md
     - text: Unterstützte Datenquellen und Dateitypen
       url: sources-and-scans.md
+    - text: Datenherkunft
+      url: concept-data-lineage.md
 - title: Erste Schritte
   linkLists:
   - linkListType: quickstart
@@ -40,8 +44,6 @@ landingContent:
       url: create-catalog-powershell.md
   - linkListType: tutorial
     links:
-    - text: Starter Kit herunterladen
-      url: https://download.microsoft.com/download/9/7/9/979db3b1-0916-4997-a7fb-24e3d8f83174/PurviewStarterKitV4.zip
     - text: Starter Kit ausführen und Daten scannen
       url: tutorial-scan-data.md
     - text: Auf der Purview-Startseite navigieren und suchen
@@ -52,42 +54,42 @@ landingContent:
       url: tutorial-schemas-and-classifications.md
     - text: Glossarbegriffe erstellen
       url: tutorial-import-create-glossary-terms.md
-- title: Azure-Datenquellen scannen
+- title: Registrieren und Überprüfen von Azure-Datenquellen
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Starter Kit ausführen und Daten scannen
-      url: tutorial-scan-data.md
   - linkListType: how-to-guide
     links:
+    - text: Überprüfen mehrerer Azure-Quellen
+      url: register-scan-azure-multiple-sources.md
     - text: Azure SQL-Datenbank scannen
       url: register-scan-azure-sql-database.md
     - text: Azure Data Lake Storage Gen 2 scannen
       url: register-scan-adls-gen2.md
-    - text: Azure Cosmos DB scannen
-      url: register-scan-azure-cosmos-database.md
-    - text: Power BI-Mandant
+    - text: Überprüfen eines Azure Synapse-Arbeitsbereichs
+      url: register-scan-synapse-workspace.md
+    - text: Überprüfen eines Power BI-Mandanten
       url: register-scan-power-bi-tenant.md
-    - text: Azure Blob Storage registrieren und scannen
+    - text: Überprüfen eines dedizierten Azure-SQL-Pools (vormals SQL DW)
+      url: register-scan-azure-synapse-analytics.md
+    - text: Überprüfen von Azure Blob Storage
       url: register-scan-azure-blob-storage-source.md
-- title: Azure-fremde Datenquellen scannen
+  - linkListType: tutorial
+    links:
+    - text: Durchführen des Onboardings von Azure-Quellen im großen Stil
+      url: tutorial-data-sources-readiness.md
+- title: Daten entdecken
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Durchsuchen und Herkunft
+      url: tutorial-browse-and-view-lineage.md
   - linkListType: how-to-guide
     links:
-    - text: Lokalen SQL-Server scannen
-      url: register-scan-on-premises-sql-server.md
-- title: Datenressource verstehen
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Ressourcenerkenntnisse anzeigen
-      url: asset-insights.md
-    - text: Glossarerkenntnisse anzeigen
-      url: glossary-insights.md
-    - text: Scanerkenntnisse anzeigen
-      url: scan-insights.md
-    - text: Klassifizierungserkenntnisse anzeigen
-      url: classification-insights.md
+    - text: Verwenden von Datenherkunftsfeatures
+      url: catalog-lineage-user-guide.md
+    - text: Nach Ressourcentyp durchsuchen
+      url: how-to-browse-catalog.md
+    - text: Nach Ressourcen, Begriffen, Anmerkungen und Kontakten suchen
+      url: how-to-search-catalog.md
 - title: Daten zusammenstellen
   linkLists:
   - linkListType: tutorial
@@ -102,15 +104,29 @@ landingContent:
       url: create-a-custom-classification-and-classification-rule.md
     - text: Glossar erstellen, importieren und exportieren
       url: how-to-create-import-export-glossary.md
-- title: Daten entdecken
+    - text: Massenbearbeitung von Ressourcen
+      url: how-to-bulk-edit-assets.md
+- title: Azure-fremde Datenquellen scannen
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Durchsuchen und Herkunft
-      url: tutorial-browse-and-view-lineage.md
   - linkListType: how-to-guide
     links:
-    - text: Nach Ressourcentyp durchsuchen
-      url: how-to-browse-catalog.md
-    - text: Nach Ressourcen, Begriffen, Anmerkungen und Kontakten suchen
-      url: how-to-search-catalog.md
+    - text: Lokalen SQL-Server scannen
+      url: register-scan-on-premises-sql-server.md
+    - text: Überprüfen von Amazon S3
+      url: register-scan-amazon-s3.md
+    - text: Überprüfen von Oracle
+      url: register-scan-oracle-source.md
+    - text: Überprüfen einer Hive-Metastore-Datenbank
+      url: register-scan-hive-metastore-source.md
+- title: Datenressource verstehen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erkenntnisse zu Vertraulichkeitsbezeichnungen anzeigen
+      url: sensitivity-insights.md
+    - text: Ressourcenerkenntnisse anzeigen
+      url: asset-insights.md
+    - text: Klassifizierungserkenntnisse anzeigen
+      url: classification-insights.md
+    - text: Glossarerkenntnisse anzeigen
+      url: glossary-insights.md

@@ -9,12 +9,12 @@ metadata:
   author: shortpatti
   ms.author: v-patsho
   ms.date: 05/11/2021
-  ms.openlocfilehash: b70f47f5cba7782862ddd2e81e6743830f2a8c1d
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 28f73f52b98edba523fd36203d6fef863c4e9d1a
+  ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110452081"
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112021481"
 landingContent:
 - title: Informationen zu Azure VMware Solution
   linkLists:
@@ -28,14 +28,14 @@ landingContent:
     links:
     - text: Private Cloud und Cluster
       url: concepts-private-clouds-clusters.md
-    - text: Private Cloudnetzwerke und Interkonnektivität
+    - text: Netzwerk und Interkonnektivität
       url: concepts-networking.md
-    - text: Speicher in privaten Clouds
+    - text: Storage
       url: concepts-storage.md
-    - text: Zugriff und Identität für private Clouds
+    - text: Zugriff und Identität
       url: concepts-identity.md
-    - text: Überwachen und Reparieren von privaten Clouds
-      url: concepts-private-clouds-clusters.md#host-monitoring-and-remediation
+    - text: Überwachung und Schutz
+      url: concepts-monitor-protection.md
     - text: API Management
       url: concepts-api-management.md
     - text: Hub-and-Spoke-Modell
@@ -45,25 +45,25 @@ landingContent:
   - linkListType: reference
     links:
     - text: Allgemein
-      url: /azure/azure-vmware/faq
+      url: ./faq.yml
     - text: Kundenkommunikation
-      url: /azure/azure-vmware/faq#customer-communication
+      url: /azure/azure-vmware/faq.yml#customer-communication
     - text: Konfiguration und Setup
-      url: /azure/azure-vmware/faq#configuration-and-setup
+      url: /azure/azure-vmware/faq.yml#configuration-and-setup
     - text: VMware-Software
-      url: /azure/azure-vmware/faq#vmware-software
+      url: /azure/azure-vmware/faq.yml#vmware-software
     - text: Compute
-      url: /azure/azure-vmware/faq#compute
+      url: /azure/azure-vmware/faq.yml#compute
     - text: Netzwerk und Interkonnektivität
-      url: /azure/azure-vmware/faq#networking-and-interconnectivity
+      url: /azure/azure-vmware/faq.yml#networking-and-interconnectivity
     - text: Storage
-      url: /azure/azure-vmware/faq#storage
+      url: /azure/azure-vmware/faq.yml#storage
     - text: Hosts, Cluster und private Clouds
-      url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
+      url: /azure/azure-vmware/faq.yml#hosts,-clusters,-and-private-clouds
     - text: Identitätsverwaltung
-      url: /azure/azure-vmware/faq#identity-management
+      url: /azure/azure-vmware/faq.yml#identity-management
     - text: Abrechnung und Support
-      url: /azure/azure-vmware/faq#billing-and-support
+      url: /azure/azure-vmware/faq.yml#billing-and-support
 - title: Erste Schritte
   linkLists:
   - linkListType: deploy
@@ -107,21 +107,21 @@ landingContent:
   - linkListType: reference
     links:
     - text: Erstellen einer Azure VMware Solution-Bewertung
-      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
+      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
     - text: Anfordern des Hostkontingents für Azure VMware Solution
       url: request-host-quota-azure-vmware-solution.md
     - text: Einsparen von Kosten mit einer reservierten Instanz
       url: reserved-instance.md
   - linkListType: how-to-guide
     links:
-    - text: Konfigurieren und Verwalten von DHCP
+    - text: Konfigurieren von DHCP
       url: configure-dhcp-azure-vmware-solution.md
     - text: Konfigurieren von DHCP in VMware HCX-Netzwerken mit L2-Stretching
       url: configure-l2-stretched-vmware-hcx-networks.md
-    - text: Konfigurieren von NSX-Netzwerkkomponenten
+    - text: Konfigurieren von NSX-Komponenten mithilfe von Azure
       url: configure-nsx-network-components-azure-portal.md
     - text: Konfigurieren des GitHub Enterprise-Servers
-      url: github-enterprise-server.md
+      url: ./configure-github-enterprise-server.md
     - text: Ermöglichen von öffentlichem Internetzugriff
       url: enable-public-internet-access.md
     - text: Konfigurieren eines Site-to-Site-VPN in einem vWAN
@@ -132,10 +132,10 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Schützen virtueller Computer mit Azure Security Center
+    - text: Schützen, Überwachen und Verwalten virtueller Computer
+      url: integrate-azure-native-services.md
+    - text: Integrieren von Azure Security Center
       url: azure-security-integration.md
-    - text: Überwachen und Verwalten virtueller Computer
-      url: lifecycle-management-of-azure-vmware-solution-vms.md
     - text: Integrieren von Azure NetApp Files
       url: netapp-files-with-azure-vmware-solution.md
     - text: Schützen von Web-Apps mit Azure Application Gateway
@@ -149,11 +149,11 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Sichern virtueller VMware-Computer
-      url: /azure/backup/backup-azure-backup-server-vmware?context=/azure/azure-vmware/context/context
+      url: ../backup/backup-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
     - text: Wiederherstellen virtueller VMware-Computer
-      url: /azure/backup/restore-azure-backup-server-vmware?context=/azure/azure-vmware/context/context
+      url: ../backup/restore-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
     - text: Überwachen von Azure Backup-Workloads
-      url: /azure/backup/backup-azure-monitoring-built-in-monitor?context=/azure/azure-vmware/context/context
+      url: ../backup/backup-azure-monitoring-built-in-monitor.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
 - title: VMware Solutions
   linkLists:
   - linkListType: how-to-guide
@@ -164,6 +164,8 @@ landingContent:
       url: azure-vmware-solution-horizon.md
     - text: Bereitstellen virtueller Computer aus der Inhaltsbibliothek
       url: deploy-vm-content-library.md
+    - text: Bereitstellen der Notfallwiederherstellung mithilfe von VMware HCX
+      url: deploy-disaster-recovery-using-vmware-hcx.md
 - title: VMware-Ökosystem
   linkLists:
   - linkListType: reference
@@ -200,8 +202,10 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Verschieben von EA- und CSP-Abonnements
+    - text: Verschieben von Azure VMware Solution-Abonnements
       url: move-ea-csp-subscriptions.md
+    - text: Regionsübergreifendes Verschieben von Azure VMware Solution
+      url: move-azure-vmware-solution-across-regions.md
 - title: Problembehandlung
   linkLists:
   - linkListType: reference

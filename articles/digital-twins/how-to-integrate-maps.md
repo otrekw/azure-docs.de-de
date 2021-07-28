@@ -2,18 +2,18 @@
 title: Integration in Azure Maps
 titleSuffix: Azure Digital Twins
 description: In diesem Artikel erfahren Sie, wie Sie mit Azure Functions eine Funktion erstellen, die den Zwillingsgraphen und die Azure Digital Twins-Benachrichtigungen verwenden kann, um einen Azure Maps-Gebäudeplan zu aktualisieren.
-author: alexkarcher-msft
-ms.author: alkarche
+author: baanders
+ms.author: baanders
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: b2b6e045a86fff7ba8a0d88a938fae93a0c6812a
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 69a02db3eafa9c75808eece69ce8ed676adf0ab2
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790449"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615813"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Verwenden von Azure Digital Twins zum Aktualisieren eines Azure Maps-Gebäudeplans
 
@@ -37,7 +37,7 @@ Diese Anleitung umfasst Folgendes:
 
 Die Abbildung unten zeigt, wo die Integrationselemente der Gebäudepläne in diesem Tutorial in ein größeres Azure Digital Twins-End-to-End-Szenario passen.
 
-:::image type="content" source="media/how-to-integrate-maps/maps-integration-topology.png" alt-text="Eine Ansicht der Azure-Dienste in einem End-to-End-Szenario, wobei die Komponente der Gebäudeplanintegration hervorgehoben wird" lightbox="media/how-to-integrate-maps/maps-integration-topology.png":::
+:::image type="content" source="media/how-to-integrate-maps/maps-integration-topology.png" alt-text="Diagramm der Azure-Dienste in einem End-to-End-Szenario, wobei die Komponente der Gebäudeplanintegration hervorgehoben wird." lightbox="media/how-to-integrate-maps/maps-integration-topology.png":::
 
 ## <a name="create-a-function-to-update-a-map-when-twins-update"></a>Erstellen einer Funktion zum Aktualisieren einer Karte beim Aktualisieren von Zwillingen
 
@@ -67,7 +67,7 @@ Dieses Muster liest direkt aus dem Raumzwilling und nicht vom IoT-Gerät, was Ih
     >Problemlösung: Führen Sie vor Ausführung des Befehls das Cmdlet `az login` in Cloud Shell aus, oder verwenden Sie die [lokale Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) anstelle von Cloud Shell. Weitere Informationen hierzu finden Sie unter [Problembehandlung: Bekannte Probleme in Azure Digital Twins](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli-interactive
-    az dt route create --dt-name <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
+    az dt route create --dt-name <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my-route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
 ## <a name="create-a-function-to-update-maps"></a>Erstellen einer Funktion zum Aktualisieren von Plänen
@@ -83,8 +83,8 @@ Ersetzen Sie den Funktionscode durch folgenden Code. Er wird nur Aktualisierunge
 Sie müssen zwei Umgebungsvariablen in Ihrer Funktions-App festlegen. Eine Variable ist Ihr [primärer Azure Maps-Abonnementschlüssel](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account) und die andere ist Ihre [Azure Maps-Zustandsset-ID](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset).
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <your-App-Service-(function-app)-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
-az functionapp config appsettings set --name <your-App-Service-(function-app)-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
+az functionapp config appsettings set --name <your-App-Service-function-app-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
+az functionapp config appsettings set --name <your-App-Service-function-app-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
 ```
 
 ### <a name="view-live-updates-on-your-map"></a>Anzeigen von Liveupdates auf Ihrer Karte
@@ -92,14 +92,14 @@ az functionapp config appsettings set --name <your-App-Service-(function-app)-na
 Führen Sie die folgenden Schritte aus, um die Liveupdate-Temperatur anzuzeigen:
 
 1. Beginnen Sie mit dem Senden simulierter IoT-Daten, indem Sie das **DeviceSimulator**-Projekt aus folgendem Azure Digital Twins-Tutorial ausführen: [Tutorial: Erstellen einer End-to-End-Lösung](tutorial-end-to-end.md). Die Anweisungen hierzu finden Sie im Abschnitt [Konfigurieren und Ausführen der Simulation](././tutorial-end-to-end.md#configure-and-run-the-simulation).
-2. Verwenden Sie [das Modul **Azure Maps Indoor**](../azure-maps/how-to-use-indoor-module.md), um Ihre mit Azure Maps Creator erstellten Karten für Gebäudepläne zu rendern.
+2. Verwenden Sie [das Modul Azure Maps Indoor](../azure-maps/how-to-use-indoor-module.md), um Ihre mit Azure Maps Creator erstellten Karten für Gebäudepläne zu rendern.
     1. Kopieren Sie den HTML-Code aus dem Abschnitt [Beispiel: Verwenden des Moduls „Gebäudepläne“](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)  des Gebäudeplan-[Tutorials: Verwenden des Moduls „Gebäudepläne“ von Azure Maps](../azure-maps/how-to-use-indoor-module.md) in eine lokale Datei.
     1. Ersetzen Sie *subscription key*, *tilesetId* und *statesetID* in der lokalen HTML-Datei mit Ihren Werten.
     1. Öffnen Sie diese Datei in Ihrem Browser.
 
 Beide Beispiele senden die Temperatur in einem kompatiblen Bereich, sodass die Farbe von Raum 121 etwa alle 30 Sekunden auf der Karte aktualisiert werden sollte.
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Ein Büroplan, der Raum 121 in Orange anzeigt":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Screenshot eines Büroplans, der Raum 121 in Orange zeigt.":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>Speichern Ihrer Karteninformationen in Azure Digital Twins
 

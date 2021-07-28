@@ -9,28 +9,28 @@ ms.subservice: sql
 ms.date: 04/26/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 41825ceed38203c88ddfc28eca9a738663b9d7e6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fad0da60ab19a8614e25a56701c5ee2d1a80548c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378664"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410511"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Verwenden externer Tabellen mit Synapse SQL
 
 Eine externe Tabelle verweist auf Daten in Hadoop, Azure Storage Blob oder Azure Data Lake Store. Externe Tabellen werden verwendet, um Daten aus Dateien zu lesen oder Daten in Dateien in Azure Storage zu schreiben. Mit Synapse SQL können Sie externe Tabellen verwenden, um externe Daten unter Verwendung eines dedizierten oder serverlosen SQL-Pools zu lesen.
 
 Je nach Art der externen Datenquelle können zwei Arten von externen Tabellen verwendet werden:
-- Externe Hadoop-Tabellen zum Lesen und Exportieren von Daten in verschiedenen Datenformaten wie CSV, Parquet und ORC. Die in dedizierten Synapse SQL-Pools verfügbaren externen Hadoop-Tabellen sind in serverlosen SQL-Pools nicht verfügbar.
-- Native externe Tabellen zum Lesen und Exportieren von Daten in verschiedenen Datenformaten wie CSV und Parquet. Native externe Tabellen sind in serverlosen Synapse SQL-Pools verfügbar und befinden sich in dedizierten Synapse SQL-Pools in der Vorschauphase.
+- Externe Hadoop-Tabellen zum Lesen und Exportieren von Daten in verschiedenen Datenformaten wie CSV, Parquet und ORC. Die in dedizierten SQL-Pools verfügbaren externen Hadoop-Tabellen sind in serverlosen SQL-Pools nicht verfügbar.
+- Native externe Tabellen zum Lesen und Exportieren von Daten in verschiedenen Datenformaten wie CSV und Parquet. Native externe Tabellen sind in serverlosen SQL-Pools verfügbar und befinden sich in dedizierten Synapse SQL-Pools in der Vorschauphase.
 
 In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen externen Hadoop-Tabellen und nativen externen Tabellen aufgeführt:
 
 | Art der externen Tabelle | Hadoop | Systemeigenes Format |
 | --- | --- | --- |
-| Dedizierter SQL-Pool | Verfügbar | Parquet-Tabellen sind in der **geschlossenen Vorschau** verfügbar. Wenden Sie sich an Ihren Microsoft Technical Account Manager oder Cloud Solution Architect, um zu überprüfen, ob Ihr dedizierter Pool der Vorschauversion beitreten kann. |
+| Dedizierter SQL-Pool | Verfügbar | Parquet-Tabellen sind in der **geschlossenen Vorschau** verfügbar. Wenden Sie sich an Ihren Microsoft Technical Account Manager oder Cloud Solution Architect, um in Erfahrung zu bringen, ob Sie Ihren dedizierten SQL-Pool der geschlossenen Vorschauversion hinzufügen können. |
 | Serverloser SQL-Pool | Nicht verfügbar | Verfügbar |
-| Unterstützte Formate | Trennzeichen/CSV, Parquet, ORC, Hive RC und RC | Serverloser Pool: Trennzeichen/CSV, Parquet und Delta Lake (Vorschau)<br/>Dedizierter Pool: Parquet |
+| Unterstützte Formate | Trennzeichen/CSV, Parquet, ORC, Hive RC und RC | Serverloser SQL-Pool: Trennzeichen/CSV, Parquet und Delta Lake (Vorschau)<br/>Dedizierte SQL-Pool: Parquet |
 | Ordnerpartitionsentfernung | Nein | Nur für partitionierte Tabellen, die aus Apache Spark-Pools im Synapse-Arbeitsbereich in serverlose SQL-Pools synchronisiert werden |
 | Benutzerdefiniertes Format für Speicherort | Yes | Ja, mit Platzhaltern wie `/year=*/month=*/day=*` |
 | Rekursive Ordnerüberprüfung | No | Nur in serverlosen SQL-Pools, wenn `/**` am Ende des Pfads zum Speicherort angegeben wurde |

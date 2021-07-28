@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/6/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 20afd0a696a2bbeda0e2fa8bb114ecb8b5b6a76b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: f62e07bbc5b61ce07299f1d617b8aea1b331024e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205537"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475588"
 ---
 # <a name="troubleshooting-azure-digital-twins-resource-health"></a>Problembehandlung von Azure Digital Twins: Ressourcenintegrität
 
@@ -30,7 +30,7 @@ Um die Integrität Ihrer Instanz zu überprüfen, gehen Sie folgendermaßen vor:
 
 2. Wählen Sie im Menü Ihrer Instanz die Option _**Ressourcenintegrität**_ unter *Support und Problembehandlung* aus. Dadurch gelangen Sie auf die Seite zur Ansicht des Verlaufs der Ressourcenintegrität. 
 
-    :::image type="content" source="media/troubleshoot-resource-health/resource-health.png" alt-text="Der Screenshot zeigt die Seite „Ressourcenintegrität“. Es gibt einen Abschnitt „Integritätsverlauf“ mit einem täglichen Bericht der letzten neun Tage. Jeder Tag zeigt den Status „Verfügbar“.":::
+    :::image type="content" source="media/troubleshoot-resource-health/resource-health.png" alt-text="Screenshot, der die Seite „Ressourcenintegrität“ zeigt. Es gibt einen Abschnitt „Integritätsverlauf“ mit einem täglichen Bericht der letzten neun Tage.":::
 
 In der obigen Abbildung ist dieser Fall als *Verfügbar* dargestellt, und zwar seit neun Tagen. Weitere Informationen über den Status *Verfügbar* und die anderen Statustypen, die auftreten können, finden Sie unter [Übersicht über Azure Resource Health](../service-health/resource-health-overview.md).
 

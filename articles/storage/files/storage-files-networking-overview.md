@@ -4,15 +4,15 @@ description: Hier finden Sie eine Übersicht über die Netzwerkoptionen für Azu
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 02/22/2020
+ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1dce7795b8c62c36b80c51d5ba0dd8bc9b667e0e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8771c79aa788627fb73745e98e924bbaa3ab1236
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107759685"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224677"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files – Überlegungen zum Netzwerkbetrieb 
 Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstellen:
@@ -23,6 +23,9 @@ Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstel
 In diesem Artikel wird beschrieben, wie Sie das Netzwerk konfigurieren, wenn Ihr Anwendungsfall einen direkten Zugriff auf die Azure-Dateifreigabe statt der Nutzung der Azure-Dateisynchronisierung erfordert. Weitere Informationen zu Überlegungen zum Netzwerkbetrieb für eine Bereitstellung mit der Azure-Dateisynchronisierung finden Sie unter [Azure Files – Überlegungen zum Netzwerkbetrieb](../file-sync/file-sync-networking-overview.md).
 
 Die Netzwerkkonfiguration für Azure-Dateifreigaben wird im Azure-Speicherkonto vorgenommen. Ein Speicherkonto ist ein Verwaltungskonstrukt, das einen gemeinsam genutzten Pool mit Speicherplatz darstellt, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können. Speicherkonten machen verschiedene Einstellungen verfügbar, die zum Schutz des Netzwerkzugriffs auf Ihre Dateifreigaben beitragen. Hierzu zählen Netzwerkendpunkte, Speicherkonto-Firewalleinstellungen sowie Verschlüsselung während der Übertragung. 
+
+> [!Important]  
+> Azure Files unterstützt mehrere Netzwerkroutingoptionen. Die Standardoption, das Microsoft-Routing, kann mit allen Azure Files-Konfigurationen verwendet werden. Die Internetroutingoption bietet keine Unterstützung für Szenarien mit AD-Domänenbeitritt oder Azure-Dateisynchronisierung.
 
 Wir empfehlen Ihnen, vor diesem konzeptionellen Leitfaden den Artikel [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md) zu lesen.
 
@@ -35,23 +38,23 @@ Wir empfehlen Ihnen, vor diesem konzeptionellen Leitfaden den Artikel [Planung f
    :::column-end:::
 :::row-end:::
 
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
+
 ## <a name="accessing-your-azure-file-shares"></a>Zugreifen auf Ihre Azure-Dateifreigaben
-Wenn Sie eine Azure-Dateifreigabe innerhalb eines Speicherkontos bereitstellen, kann über den öffentlichen Endpunkt des Speicherkontos sofort auf die Dateifreigabe zugegriffen werden. Das bedeutet, dass authentifizierte Anforderungen (etwa Anforderungen, die durch die Anmeldeidentität eines Benutzers autorisiert wurden) auf sichere Weise verwendet werden können – ganz gleich, ob ihr Ursprung innerhalb oder außerhalb von Azure liegt. 
+Auf SMB-Azure-Dateifreigaben kann sofort über den öffentlichen Endpunkt des Speicherkontos mit SMB 3.1.1 und SMB 3.0 zugegriffen werden. Dies bedeutet, dass authentifizierte Anforderungen (etwa Anforderungen, die durch die Anmeldeidentität eines Benutzer autorisiert wurden) auf sichere Weise verwendet werden können – ganz gleich, ob ihr Ursprung innerhalb oder außerhalb von Azure liegt. Auf NFS-Azure-Dateifreigaben ist der Zugriff über den öffentlichen Endpunkt des Speicherkontos nur möglich, wenn der öffentliche Endpunkt auf virtuelle Azure-Netzwerke beschränkt ist.
 
-In vielen Kundenumgebungen ist die Einbindung der Azure-Dateifreigabe in die lokale Arbeitsstation zunächst nicht erfolgreich, obwohl Einbindungen von virtuellen Azure-Computern problemlos funktionieren. Dies liegt daran, dass viele Organisationen und Internetdienstanbieter (Internet Service Providers, ISPs) Port 445 blockieren, der von SMB für die Kommunikation verwendet wird. Für NFS-Freigaben besteht dieses Problem nicht. Diese Praxis geht auf Sicherheitsempfehlungen im Zusammenhang mit alten und veralteten Versionen des SMB-Protokolls zurück. SMB 3.0 ist zwar ein internetsicheres Protokoll, das gilt jedoch nicht für ältere Versionen (insbesondere SMB 1.0). Der externe Zugriff auf Azure-Dateifreigaben über den öffentlichen Endpunkt ist nur über SMB 3.0 und das FileREST-Protokoll (ebenfalls ein internetsicheres Protokoll) zulässig.
+Bei vielen Umgebungen können Sie auf die Azure-Dateifreigaben zusätzliche Netzwerkkonfigurationen anwenden:
 
-In der lokalen Umgebung kann am einfachsten auf die SMB-Dateifreigabe in Azure zugegriffen werden, wenn das lokale Netzwerk für den Port 445 geöffnet wird. Daher empfiehlt Microsoft die folgenden Schritte, um SMB 1.0 aus Ihrer Umgebung zu entfernen:
+- Im Zusammenhang mit SMB-Dateifreigaben blockieren viele Organisationen und Internetdienstanbieter (Internet Service Providers, ISPs) Port 445, der von SMB für die Kommunikation verwendet wird. Diese Praxis geht auf ältere Sicherheitsempfehlungen im Zusammenhang mit veralteten Versionen des SMB-Protokolls zurück, die nicht internetsicher waren. Auch wenn SMB 3.x ein internetsicheres Protokoll ist, können Organisations- oder ISP-Richtlinien möglicherweise nicht geändert werden. 
 
-1. Stellen Sie sicher, dass SMB 1.0 auf den Geräten Ihrer Organisation entfernt oder deaktiviert wurde. Alle derzeit unterstützten Versionen von Windows und Windows Server unterstützen das Entfernen oder Deaktivieren von SMB 1.0. Ab Windows 10, Version 1709, ist SMB 1.0 nicht mehr standardmäßig im Betriebssystem installiert. Weitere Informationen zum Deaktivieren von SMB 1.0 finden Sie auf den Seiten zum jeweiligen Betriebssystem:
-    - [Sichern von Windows/Windows Server](storage-how-to-use-files-windows.md#securing-windowswindows-server)
-    - [Sichern von Linux](storage-how-to-use-files-linux.md#securing-linux)
-1. Stellen Sie sicher, dass keine Produkte in Ihrer Organisation SMB 1.0 benötigen, und entfernen Sie diejenigen Produkte, die diese Version verwenden. Im Blog [SMB1 Product Clearinghouse](https://aka.ms/stillneedssmb1) finden Sie alle Erst- und Drittanbieterprodukte, von denen Microsoft bekannt ist, dass sie SMB 1.0 erfordern. 
-1. (Optional) Verwenden Sie eine Drittanbieterfirewall im lokalen Netzwerk Ihrer Organisation, um zu verhindern, dass SMB 1.0-Datenverkehr Ihre Organisation verlässt.
+- In Bezug auf NFS-Dateifreigaben begrenzt der eingeschränkte Zugriff auf öffentliche Endpunkte nur Bereitstellungen innerhalb von Azure.
 
-Wenn der Port 445 in Ihrer Organisation aufgrund einer Richtlinie oder gesetzlichen Vorgabe blockiert werden oder Datenverkehr für Azure einem deterministischen Pfad folgen muss, können Sie Azure VPN Gateway oder ExpressRoute verwenden, um Datenverkehr an Ihre Azure-Dateifreigabe zu tunneln. Für NFS-Freigaben ist dies alles nicht erforderlich, da sie Port 445 nicht benötigen.
-
-> [!Important]  
-> Selbst wenn Sie sich beim Zugriff auf Ihre Azure-Dateifreigaben für eine alternative Methode entscheiden, empfiehlt es sich dennoch, SMB 1.0 aus Ihrer Umgebung zu entfernen.
+- In einigen Organisationen muss Datenverkehr zu Azure einem deterministischen Pfad folgen.
 
 ### <a name="tunneling-traffic-over-a-virtual-private-network-or-expressroute"></a>Tunneln von Datenverkehr über ein virtuelles privates Netzwerk oder über ExpressRoute
 Wenn Sie einen Netzwerktunnel zwischen Ihrem lokalen Netzwerk und Azure einrichten, entsteht eine Peeringbeziehung zwischen Ihrem lokalen Netzwerk und mindestens einem virtuellen Netzwerk in Azure. Ein [virtuelles Netzwerk](../../virtual-network/virtual-networks-overview.md) (VNET) ähnelt einem herkömmlichen Netzwerk in Ihrer lokalen Umgebung. Ähnlich wie ein Azure-Speicherkonto oder eine Azure-VM ist ein VNET eine Azure-Ressource, die in einer Ressourcengruppe bereitgestellt wird. 
@@ -149,20 +152,9 @@ Der Speicherkontozugriff kann auf zwei Arten auf ein virtuelles Netzwerk beschr�
 - Beschränken des öffentlichen Endpunkts auf ein einzelnes virtuelles Netzwerk (oder auf mehrere): Hierzu werden sogenannte *Dienstendpunkte* des virtuellen Netzwerks verwendet. Wenn Sie den Datenverkehr für ein Speicherkonto über einen Dienstendpunkt beschränken, erfolgt der Zugriff auf das Speicherkonto weiterhin über die öffentliche IP-Adresse.
 
 > [!NOTE]
-> NFS-Freigaben können nicht über die öffentliche IP-Adresse auf den öffentlichen Endpunkt des Speicherkontos zugreifen, sie können auf den öffentlichen Endpunkt des Speicherkontos nur mithilfe virtueller Netzwerke zugreifen. NFS-Freigaben können auf das Speicherkonto auch mithilfe privater Endpunkte zugreifen.
+> NFS-Dateifreigaben können nur über virtuelle Netzwerke auf den öffentlichen Endpunkt des Speicherkontos zugreifen. Sie können frei auf die privaten Endpunkte des Speicherkontos zugreifen.
 
 Weitere Informationen zum Konfigurieren der Speicherkontofirewall finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-
-## <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
-
-> [!IMPORTANT]
-> In diesem Abschnitt wird die Verschlüsselung während der Übertragung für SMB-Freigaben behandelt. Ausführliche Informationen zur Verschlüsselung während der Übertragung mit NFS-Freigaben finden Sie unter [Sicherheit](storage-files-compare-protocols.md#security).
-
-Standardmäßig ist in allen Azure-Speicherkonten die Verschlüsselung während der Übertragung aktiviert. Das bedeutet Folgendes: Wenn Sie eine Dateifreigabe über SMB einbinden oder über FileREST darauf zugreifen (per Azure-Portal, PowerShell/CLI oder Azure-SDKs), lässt Azure Files die Verbindung nur dann zu, wenn sie über SMB 3.0 oder höher mit Verschlüsselung oder über HTTPS hergestellt wird. Clients, die SMB 3.0 nicht unterstützen, oder Clients, die zwar SMB 3.0, aber nicht die SMB-Verschlüsselung unterstützen, können die Azure-Dateifreigabe nicht einbinden, wenn die Verschlüsselung während der Übertragung aktiviert ist. Weitere Informationen dazu, welche Betriebssysteme SMB 3.0 mit Verschlüsselung unterstützen, finden Sie in der ausführlichen Dokumentation zu [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) und [Linux](storage-how-to-use-files-linux.md). Alle aktuellen PowerShell-, CLI- und SDK-Versionen unterstützen HTTPS.  
-
-Sie können die Verschlüsselung während der Übertragung für ein Azure-Speicherkonto deaktivieren. Wenn die Verschlüsselung deaktiviert ist, lässt Azure Files auch SMB 2.1, SMB 3.0 ohne Verschlüsselung und nicht verschlüsselte FileREST-API-Aufrufe über HTTP zu. Der Hauptgrund für die Deaktivierung der Verschlüsselung während der Übertragung ist die Unterstützung einer älteren Anwendung, die unter einem älteren Betriebssystem wie z. B. Windows Server 2008 R2 oder einer älteren Linux-Distribution ausgeführt werden muss. Azure Files lässt nur SMB 2.1-Verbindungen innerhalb der gleichen Region zu, in der sich auch die Azure-Dateifreigabe befindet. Ein SMB 2.1-Client außerhalb der Azure-Region der Azure-Dateifreigabe – z. B. ein lokales System oder eine andere Azure-Region – kann nicht auf die Dateifreigabe zugreifen.
-
-Weitere Informationen zur Verschlüsselung während der Übertragung finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Azure Files: Übersicht](storage-files-introduction.md)

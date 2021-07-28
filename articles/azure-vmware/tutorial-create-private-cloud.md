@@ -2,13 +2,13 @@
 title: 'Tutorial: Bereitstellen einer privaten Azure VMware Solution-Cloud'
 description: Hier erfahren Sie, wie Sie eine private Azure VMware Solution-Cloud erstellen und bereitstellen.
 ms.topic: tutorial
-ms.date: 04/23/2021
-ms.openlocfilehash: cdbd00473890e22c08ebf57f7c6f54f6eef188bb
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 06/11/2021
+ms.openlocfilehash: 5d882098c29db7fb0272bb503eae42a244113b5b
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945801"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112021373"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Tutorial: Bereitstellen einer privaten Azure VMware Solution-Cloud
 
@@ -31,11 +31,10 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Geeignete Administratorrechte und Berechtigung zum Erstellen einer privaten Cloud. Sie müssen mindestens die Rolle „Mitwirkender“ im Abonnement haben.
 - Verwenden Sie die Informationen, die Sie im Artikel [Planen der Azure VMware Solution-Bereitstellung](production-ready-deployment-steps.md) gesammelt haben:
 - Vergewissern Sie sich, dass das Netzwerk ordnungsgemäß konfiguriert ist, wie unter [Checkliste für die Netzwerkplanung für Azure VMware Solution](tutorial-network-checklist.md) beschrieben.
-- Hosts wurden bereitgestellt, und der Ressourcenanbieter „Microsoft.AVS“ wurde registriert wie unter [Anfordern des Hostkontingents und Aktivieren von Azure VMware Solution](enable-azure-vmware-solution.md) beschrieben.
+- Hosts wurden bereitgestellt, und der Ressourcenanbieter [Microsoft.AVS](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider) wurde registriert.
 
 ## <a name="create-a-private-cloud"></a>Erstellen einer privaten Cloud
 

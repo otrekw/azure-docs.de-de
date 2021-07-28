@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: bcfa0f792f77a7e02b8be5e33e2a728297655bf4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d88f3ed4dbeafc935e58096fb094518b8b0274b4
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140585"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411501"
 ---
 # <a name="about-azure-key-vault"></a>Informationen zu Azure Key Vault
 
@@ -23,7 +23,7 @@ Mit Azure Key Vault lassen sich folgende Probleme lösen:
 
 - **Geheimnisverwaltung**: Azure Key Vault ermöglicht die sichere Speicherung und präzise Steuerung des Zugriffs auf Token, Kennwörter, Zertifikate, API-Schlüssel und andere Geheimnisse.
 - **Schlüsselverwaltung**: Azure Key Vault kann auch als Schlüsselverwaltungslösung verwendet werden. Azure Key Vault vereinfacht das Erstellen und Verwalten der zur Verschlüsselung Ihrer Daten verwendeten Verschlüsselungsschlüssel. 
-- **Zertifikatverwaltung**: Darüber hinaus können Sie mit dem Azure Key Vault-Dienst komfortabel öffentliche und private SSL-/TLS-Zertifikate (Secure Sockets Layer/Transport Layer Security) für die Verwendung mit Azure und Ihren internen verbundenen Ressourcen bereitstellen und verwalten.
+- **Zertifikatverwaltung**: Darüber hinaus können Sie mit dem Azure Key Vault-Dienst auf einfache Weise öffentliche und private TLS-/SSL-Zertifikate (Transport Layer Security/Secure Sockets Layer) für die Verwendung mit Azure und Ihren internen verbundenen Ressourcen registrieren, verwalten und bereitstellen.
 
 Azure Key Vault verfügt über zwei Dienstebenen: Die Dienstebene „Standard“ verschlüsselt mit einem Softwareschlüssel, und die Dienstebene „Premium“ enthält durch HSM (Hardwaresicherheitsmodul) geschützte Schlüssel. Einen Vergleich zwischen den Ebenen „Standard“ und „Premium“ finden Sie auf der Seite [Azure Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/).
 

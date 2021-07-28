@@ -7,12 +7,12 @@ ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 94c7a800fc551faf6650b8e30fe7c2188f7d2dbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4a49b3db5fe87f006a1bcd6d13a81b47c8d6abb
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100008382"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006228"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Verbinden Ihrer GCP-Konten mit Azure Security Center
 
@@ -39,7 +39,7 @@ Im nachstehenden Screenshot sehen Sie GCP-Projekte, die auf dem Übersichtsdashb
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
 |Erforderliche Rollen und Berechtigungen:|**Besitzer** oder **Mitwirkender** für das entsprechende Azure-Abonnement|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, Azure China)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>Herstellen einer Verbindung mit Ihrem GCP-Konto
@@ -134,7 +134,7 @@ Zum Anzeigen aller aktiven Empfehlungen für Ihre Ressourcen nach Ressourcentyp 
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Ressourcentypfilter der Seite für den Ressourcenbestand mit den GCP-Optionen"::: 
 
 
-## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>Häufig gestellte Fragen zum Verbinden von GCP-Konten mit Azure Security Center
+## <a name="faq---connecting-gcp-accounts-to-azure-security-center"></a>Häufig gestellte Fragen: Verbinden von GCP-Konten mit Azure Security Center
 
 ### <a name="can-i-connect-multiple-gcp-organizations-to-security-center"></a>Kann ich mehrere GCP-Organisationen mit Security Center verbinden?
 Ja. Über den GCP-Connector von Security Center werden Ihre Google Cloud-Ressourcen auf *Organisationsebene* verbunden. 

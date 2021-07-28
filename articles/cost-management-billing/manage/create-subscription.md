@@ -5,20 +5,20 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 05/13/2021
 ms.author: banders
-ms.openlocfilehash: 27594ff4d7673038e9de38c5969a615be60aeadf
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d82599831d0495df5dba4758976e70b3119a8018
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844692"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451854"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Erstellen eines zusätzlichen Azure-Abonnements
 
 Sie können ein zusätzliches Abonnement für Ihr Abrechnungskonto unter dem [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), der [Microsoft-Kundenvereinbarung](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) oder der [Microsoft Partnervereinbarung](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement) im Azure-Portal erstellen. Mit einem zusätzlichen Abonnement können Sie beispielsweise Abonnementgrenzwerte vermeiden, separate Umgebungen für die Sicherheit schaffen oder Daten aus Compliancegründen isolieren.
 
-Wenn Sie über ein Abrechnungskonto des Microsoft Online Service-Programms (MOSP) verfügen, können Sie im [Azure-Registrierungsportal](https://account.azure.com/signup?offer=ms-azr-0003p) zusätzliche Abonnements erstellen.
+Wenn Sie über ein Abrechnungskonto des Microsoft Online Service-Programms (MOSP) verfügen, können Sie im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) zusätzliche Abonnements erstellen.
 
 Weitere Informationen zu Abrechnungskonten und zum Identifizieren des Typs Ihres Abrechnungskontos finden Sie unter [Anzeigen Ihrer Abrechnungskonten im Azure-Portal](view-all-accounts.md).
 

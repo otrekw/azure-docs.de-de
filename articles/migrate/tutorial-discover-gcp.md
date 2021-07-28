@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.custom: mvc
-ms.openlocfilehash: 5a581652bfd084118b47b5693a2b2ca9e92feda9
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 187808cacd40d2be0b122263e4c10672ef90fff3
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751183"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412455"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln von GCP-Instanzen (Google Cloud Platform) mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -32,7 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!NOTE]
 > Tutorials zeigen den schnellsten Weg zum Ausprobieren eines Szenarios, dabei kommen die Standardoptionen zum Einsatz.  
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -87,7 +87,7 @@ Richten Sie ein Konto ein, das von der Appliance für den Zugriff auf Server in 
         * Leistungsprotokollbenutzer
 * Für **Linux-Server**:
     * Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. Wenn Sie kein Root-Konto bereitstellen können, lesen Sie die Anweisungen in der [Unterstützungsmatrix](migrate-support-matrix-physical.md#physical-server-requirements) für eine Alternative.
-    * Azure Migrate verwendet bei der Ermittlung von AWS-Instanzen die Kennwortauthentifizierung. Die Kennwortauthentifizierung wird von AWS-Instanzen nicht standardmäßig unterstützt. Damit Sie eine Instanz ermitteln können, müssen Sie die Kennwortauthentifizierung aktivieren.
+    * Azure Migrate verwendet bei der Ermittlung von GCP-Instanzen die Kennwortauthentifizierung. Die Kennwortauthentifizierung wird von GCP-Instanzen nicht standardmäßig unterstützt. Damit Sie eine Instanz ermitteln können, müssen Sie die Kennwortauthentifizierung aktivieren.
         1. Melden Sie sich bei jedem Linux-Computer an.
         2. Öffnen Sie die Datei „sshd_config“: vi /etc/ssh/sshd_config.
         3. Suchen Sie in der Datei die Zeile **PasswordAuthentication**, und ändern Sie den Wert in **yes**.

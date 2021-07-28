@@ -106,6 +106,8 @@
       items:
         - name: Planen der Zugriffsüberprüfungsbereitstellung
           href: deploy-access-reviews.md
+        - name: Erstellen eines Berichts zum Zugriffsüberprüfungsverlauf
+          href: access-reviews-downloadable-review-history.md
         - name: Zugriffspakete
           items:
             - name: Erstellen einer Zugriffsüberprüfung
@@ -144,6 +146,6 @@
   expanded: true
   items:
     - name: 'Zugriffsüberprüfung: Graph-API'
-      href: /graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true
+      href: /graph/api/resources/accessreviewsv2-root?view=graph-rest-beta
     - name: 'Berechtigungsverwaltung: Graph-API'
-      href: /graph/api/resources/entitlementmanagement-root?view=graph-rest-beta&preserve-view=true
+      href: /graph/api/resources/entitlementmanagement-root?view=graph-rest-beta

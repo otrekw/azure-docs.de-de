@@ -1,6 +1,6 @@
 ---
 title: Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement
-description: Hilft bei der Behebung von Problemen, die das Anmelden beim Azure-Portal oder Azure-Kontocenter verhindern.
+description: Hilft bei der Behebung von Problemen, die das Anmelden beim Azure-Portal verhindern.
 services: cost-management-billing
 author: v-miegge
 manager: dcscontentpm
@@ -8,18 +8,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 05/13/2021
 ms.author: v-miegge
-ms.openlocfilehash: 915b4fb289b6af6f4aac84d8bfa4d491a7f77efe
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 009a29a4e296c8aa03163dd954cd242eec040027
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050469"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470744"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement
 
-Dieser Leitfaden enthält hilfreiche Informationen zur Behebung von Problemen, die das Anmelden beim Azure-Portal oder Azure-Kontocenter verhindern.
+Dieser Leitfaden hilft bei der Behebung von Problemen, die das Anmelden beim Azure-Portal verhindern.
 
 > [!NOTE]
 > Wenn Sie Probleme bei der Registrierung für ein neues Azure-Konto haben, helfen Ihnen die Informationen unter [Beheben von Problemen beim Registrieren eines neuen Kontos im Azure-Portal oder im Azure-Kontocenter](./troubleshoot-azure-sign-up.md) weiter.
@@ -61,20 +61,12 @@ Um dieses Problem zu lösen, probieren Sie eine der folgenden Methoden aus:
 
 Dieses Problem tritt auf, wenn Sie das falsche Verzeichnis ausgewählt haben oder Ihr Konto nicht über ausreichende Berechtigungen verfügt.
 
-**Szenario 1:** Sie erhalten die Fehlermeldung bei der Anmeldung beim [Azure-Portal](https://portal.azure.com/)
+**Szenario:** Sie erhalten die Fehlermeldung bei der Anmeldung beim [Azure-Portal](https://portal.azure.com/).
 
 So beheben Sie dieses Problem:
 
 - Vergewissern Sie sich, dass das richtige Azure-Verzeichnis ausgewählt ist, indem Sie oben rechts Ihr Konto auswählen.
 - Wenn das richtige Azure-Verzeichnis ausgewählt ist und die Fehlermeldung trotzdem noch ausgegeben wird, [sollten Sie Ihr Konto als Besitzer hinzufügen lassen](./add-change-subscription-administrator.md).
-
-**Szenario 2:** Sie erhalten die Fehlermeldung bei der Anmeldung beim [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions)
-
-Überprüfen Sie, ob das Konto, das Sie verwendet haben, das des Kontoadministrators ist. Gehen Sie folgendermaßen vor, um zu überprüfen, wer der Kontoadministrator ist:
-
-1.  Melden Sie sich bei der [Ansicht „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) an.
-1.  Wählen Sie das zu überprüfende Abonnement und dann **Einstellungen** aus.
-1.  Wählen Sie **Eigenschaften** aus. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
 
 ## <a name="additional-help-resources"></a>Zusätzliche Hilferessourcen
 

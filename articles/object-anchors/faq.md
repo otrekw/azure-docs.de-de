@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 1430095861b4e8232127fe6d22b87afe5babcf67
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 31b46475af345ec4eed3a8d5787bf859918048ef
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750733"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985848"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>Häufig gestellte Fragen zu Azure Object Anchors
 
@@ -35,15 +35,15 @@ Weitere Informationen finden Sie unter [Azure Object Anchors-Übersicht](overvie
 
 **F: Wie lauten die maximalen Objektabmessungen, die bei der Modellkonvertierung verarbeitet werden können?**
 
-**A:** Alle Maße eines CAD-Modells sollten weniger als zehn Meter betragen.
+**A:** Alle Maße eines CAD-Modells sollten weniger als zehn Meter betragen. Weitere Informationen finden Sie im Abschnitt [ Ressourcenanforderungen](overview.md).
 
 **F: Wie lautet die maximale CAD-Modellgröße, die bei der Konvertierung verarbeitet werden kann?**
 
-**A:** Die Modelldateigröße sollte kleiner als 150 MB sein.
+**A:** Die Modelldateigröße sollte kleiner als 150 MB sein. Weitere Informationen finden Sie im Abschnitt [ Ressourcenanforderungen](overview.md).
 
 **F: Welche CAD-Formate werden unterstützt?**
 
-**A:** Zurzeit werden die Dateitypen `fbx`, `ply`, `obj`, `glb` und `gltf` unterstützt.
+**A:** Zurzeit werden die Dateitypen `fbx`, `ply`, `obj`, `glb` und `gltf` unterstützt. Weitere Informationen finden Sie im Abschnitt [ Ressourcenanforderungen](overview.md).
 
 **F: Welche Schwerkraftrichtung und Einheit erfordert der Modellkonvertierungsdienst? Wie werden diese ermittelt?**
 
@@ -63,7 +63,7 @@ Die Einheit stellt die Maßeinheit des Modells dar. Die unterstützten Einheiten
 
 **F: Welche Geräte werden von Object Anchors unterstützt?**
 
-**A:** HoloLens 2 
+**A:** HoloLens 2.
 
 **F: Welcher Betriebssystembuild sollte mit HoloLens ausgeführt werden?**
 
@@ -89,6 +89,10 @@ Die Einheit stellt die Maßeinheit des Modells dar. Die unterstützten Einheiten
  8. Starten Sie die Objekterkennung, und visualisieren Sie das Rendering basierend auf der geschätzten räumlichen Lage.
  9. Sperren Sie erkannte Objekte, oder beenden Sie die Nachverfolgung, sobald die räumliche Lage stabil und genau ist, um die Batterie zu schonen.
 
+**F: Welche Version des Mixed Reality-Toolkits (MRTK) sollte meine HoloLens Unity-Anwendung verwenden, um mit dem Object Anchors-Unity-SDK arbeiten zu können?**
+
+**A:** Das Azure Object Anchors-Unity-SDK ist in keiner Weise vom Mixed Reality-Toolkit abhängig. Das bedeutet, dass Sie eine beliebige Version verwenden können. Weitere Informationen finden Sie in der [Einführung in MRTK für Unity](/windows/mixed-reality/develop/unity/mrtk-getting-started).
+
 **F: Wie präzise ist die geschätzte räumliche Lage?**
 
 **A:** Dies hängt beispielsweise von der Objektgröße, dem Material und der Umgebung ab. Bei kleinen Objekten kann die geschätzte räumliche Lage um bis zu zwei Zentimeter abweichen. Bei großen Objekten wie Autos können Abweichungen von zwei bis acht Zentimetern vorliegen.
@@ -103,7 +107,7 @@ Die Einheit stellt die Maßeinheit des Modells dar. Die unterstützten Einheiten
 
 **F: Wie viele verschiedene Objekte kann Object Anchors gleichzeitig erkennen?**
 
-**A:** Zurzeit wird das Erkennen eines einzelnen Objektmodells unterstützt. 
+**A:** Zurzeit wird das Erkennen eines einzelnen Objektmodells unterstützt.
 
 **F: Kann Object Anchors mehrere Instanzen desselben Objektmodells erkennen?**
 
@@ -115,10 +119,11 @@ Die Einheit stellt die Maßeinheit des Modells dar. Die unterstützten Einheiten
 
 * Stellen Sie sicher, dass der Raum ausreichend Struktur aufweist, indem Sie einige Plakate aufhängen.
 * Scannen Sie das Objekt noch genauer.
-* Passen Sie die Modellparameter wie oben beschrieben an.
+* Passen Sie die Modellparameter wie unten beschrieben an.
 * Geben Sie einen engen Begrenzungsrahmen als Suchbereich ein, der alle oder die meisten Objekte enthält.
 * Löschen Sie den Cache für die räumliche Zuordnung, und scannen Sie das Objekt erneut.
 * Erfassen Sie Diagnosedaten, und senden Sie diese an uns.
+* Passen Sie die `MinSurfaceCoverage`-Eigenschaft aus der `ObjectQuery`-Klasse an. Weitere Informationen finden Sie unter [Erkennen eines schwierigen Objekts](detect-difficult-object.md).
 
 **F: Wie wähle ich Objektabfrageparameter aus?**
 
@@ -128,6 +133,7 @@ Die Einheit stellt die Maßeinheit des Modells dar. Die unterstützten Einheiten
 * Der Standardwert `ObjectQuery.MinSurfaceCoverage` des Objektmodells ist normalerweise gut. Verwenden Sie andernfalls einen kleineren Wert, damit die Erkennung schneller durchgeführt werden kann.
 * Verwenden Sie einen kleinen Wert für `ObjectQuery.ExpectedMaxVerticalOrientationInDegrees`, wenn das Objekt schätzungsweise aufrecht positioniert ist.
 * Eine App sollte immer ein `1:1`-Objektmodell für die Erkennung verwenden. Die Skalierung sollte in der Regel nahe 1 liegen und im Idealfall eine maximale Abweichung von einem Prozent aufweisen. Eine App kann `ObjectQuery.MaxScaleChange` auf `0` oder `0.1` festlegen, um die Skalierungsschätzung zu aktivieren oder zu deaktivieren und die räumliche Instanzlage qualitativ zu bewerten.
+* Weitere Informationen finden Sie unter [Erkennen eines schwierigen Objekts](detect-difficult-object.md).
 
 **F: Wie rufe ich Object Anchors-Diagnosedaten vom HoloLens-Gerät ab?**
 

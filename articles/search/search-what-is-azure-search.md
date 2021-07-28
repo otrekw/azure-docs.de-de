@@ -7,29 +7,30 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/09/2021
+ms.date: 05/26/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e17d08d09814c135af3e0b4fc299b6e6f42326d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b08fe34e7ac5eede8d1435e3de3817224fafdbc6
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549888"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560167"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Was ist Azure Cognitive Search?
 
-Azure Cognitive Search ([früher „Azure Search“](whats-new.md#new-service-name)) ist ein Cloudsuchdienst, der Entwicklern APIs und Tools zum Erstellen umfangreicher Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. 
+Azure Cognitive Search ([früher „Azure Search“](whats-new.md#new-service-name)) ist ein Cloudsuchdienst, der Entwicklern eine Architektur, APIs und Tools zum Erstellen umfangreicher Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. 
 
-Search dient als wichtige Grundlage für jede App, mit der Inhalte für Benutzer angezeigt werden. Häufige Szenarien sind Katalog- oder Dokumentsuche, Suche auf E-Commerce-Websites oder Knowledge Mining für Data Science. Die APIs und die Architektur von Cognitive Search vereinfachen das Hinzufügen einer anspruchsvollen Datenabruffunktion für Lösungen.
+Search dient als wichtige Grundlage für jede App, mit der Inhalte für Benutzer angezeigt werden. Häufige Szenarien sind Katalog- oder Dokumentsuche, Suche auf E-Commerce-Websites oder Knowledge Mining für Data Science.
 
-Ein Suchdienst verfügt über die folgenden Komponenten:
+Zum Erstellen eines Suchdiensts werden folgende Funktionen verwendet:
 
 + Suchmaschine für die Volltextsuche
-+ Dauerhafte Speicherung von indizierten Inhalten, die sich im Besitz von Benutzern befinden
-+ APIs für das Indizieren und Abfragen von Inhalten
-+ Optionale [KI-basierte Anreicherungen](cognitive-search-concept-intro.md) mit Erstellung von durchsuchbarem Inhalt aus Bildern, unstrukturiertem Rohtext und Anwendungsdateien
-+ Optionale Integration in andere Azure-Dienste für die Bereiche Daten, Machine Learning/KI, Überwachung und Sicherheit
-+ Optionale Implementierung der [semantischen Suche (Vorschauversion)](semantic-search-overview.md) zur Verbesserung der Relevanz
++ Permanenter Speicher für benutzereigene Inhalte in einem Suchindex
++ Umfangreiche Indizierung mit Textanalyse und optionaler [KI-Anreicherung](cognitive-search-concept-intro.md) für die Extraktion und Transformation von Inhalten
++ Umfassende Abfragefunktionen mit einfacher Syntax, vollständiger Lucene-Syntax und Eingabevorschlägen
++ Programmierbarkeit über REST-APIs und Clientbibliotheken in Azure SDKs für .NET, Python, Java und JavaScript
++ Azure-Integration auf Datenebene, Machine Learning-Ebene und KI (Cognitive Services)
++ Innovative Priorisierungsalgorithmen durch [semantische Suche (Vorschau)](semantic-search-overview.md)
 
 Aus architektonischer Sicht befindet sich ein Suchdienst zwischen den externen Datenspeichern, die Ihre nicht indizierten Daten enthalten, und Ihrer Client-App, die Abfrageanforderungen an einen Suchindex sendet und die Antwort verarbeitet.
 
@@ -59,7 +60,7 @@ Azure Cognitive Search eignet sich sehr gut für die folgenden Anwendungsszenari
 
 + Einfache Implementierung von suchbezogenen Features: Relevanzoptimierung, Facettennavigation, Filter (z. B. geografisch-räumliche Suche), Synonymzuordnung und AutoVervollständigen.
 
-+ Transformation von großen undifferenzierten Text-/Bilddateien oder Anwendungsdateien, die in Azure Blob Storage oder Cosmos DB gespeichert sind, in durchsuchbare JSON-Dokumente. Dies wird bei der Indizierung mit [kognitiven Skills](cognitive-search-concept-intro.md) erreicht, mit denen Funktionen für die externe Verarbeitung hinzugefügt werden.
++ Transformation von großen undifferenzierten Text-/Bild- oder Anwendungsdateien, die in Azure Blob Storage oder Cosmos DB gespeichert sind, in durchsuchbare JSON-Dokumente. Dies wird bei der Indizierung mit [kognitiven Skills](cognitive-search-concept-intro.md) erreicht, mit denen Funktionen für die externe Verarbeitung hinzugefügt werden.
 
 + Hinzufügung einer linguistischen oder benutzerdefinierten Textanalyse. Bei nicht englischsprachigen Inhalten unterstützt Azure Cognitive Search sowohl Lucene-Analysetools als auch die Microsoft-Prozessoren für die Verarbeitung natürlicher Sprache. Sie können Analysetools auch so konfigurieren, dass Rohdaten einer speziellen Verarbeitung unterzogen werden, um z. B. diakritische Zeichen herauszufiltern oder Muster in Zeichenfolgen zu erkennen und beizubehalten.
 

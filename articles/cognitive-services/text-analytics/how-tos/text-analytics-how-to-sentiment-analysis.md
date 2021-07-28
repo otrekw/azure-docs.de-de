@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 04/14/2021
+ms.date: 06/10/2021
 ms.author: aahi
-ms.openlocfilehash: 59518b1117a566f9bc238a70a6bcaff6f1e05197
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a8645552cba0bb687b5d9a9dc93bc917d7ee38af
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085419"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969338"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Vorgehensweise: Stimmungsanalyse und Opinion Mining
 
@@ -296,7 +296,7 @@ In diesem Artikel haben Sie sich mit Konzepten und dem Workflow für die Standpu
 + Standpunktanalyse und Opinion Mining sind für ausgewählte Sprachen verfügbar.
 + JSON-Dokumente im Anforderungstext umfassen eine ID, Text und einen Sprachcode.
 + Die POST-Anforderung wird an einen Endpunkt vom Typ `/sentiment` gesendet. Dabei werden ein personalisierter [Zugriffsschlüssel und ein Endpunkt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) verwendet, der für Ihr Abonnement gültig ist.
-+ Verwenden Sie `opinionMining=true` in Standpunktanalyseanforderungen, um Opinion Mining-Ergebnisse zu erhalten.
++ Verwenden Sie in Stimmungsanalyseanforderungen `opinionMining=true`, um Opinion Mining-Ergebnisse zu erhalten.
 + Bei der Antwortausgabe handelt es sich um eine Stimmungspunktzahl für die jeweilige Dokument-ID. Sie kann an eine beliebige JSON-fähige App gestreamt werden. Beispielsweise Excel und Power BI.
 
 ## <a name="see-also"></a>Weitere Informationen
@@ -304,3 +304,4 @@ In diesem Artikel haben Sie sich mit Konzepten und dem Workflow für die Standpu
 * [Übersicht über die Textanalyse](../overview.md)
 * [Verwenden der Textanalyse-Clientbibliothek](../quickstarts/client-libraries-rest-api.md)
 * [Neuigkeiten](../whats-new.md)
+* [Modellversionen](../concepts/model-versioning.md)

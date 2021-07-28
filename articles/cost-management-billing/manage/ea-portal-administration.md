@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 787f902311437e6ca8a679299ef7a28b34cee4ab
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 09e719408926c071777a7022264c10f14531067f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728408"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075518"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -52,7 +52,7 @@ Wenn Sie kein Unternehmensadministrator sind, bitten Sie einen Unternehmensadmin
 
 #### <a name="if-your-enterprise-administrator-cant-help-you"></a>Ihr Unternehmensadministrator kann Ihnen nicht helfen:
 
-Wenn Ihr Unternehmensadministrator Ihnen nicht helfen kann, erstellen Sie eine [Supportanfrage für das Azure Enterprise Portal](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c). Geben Sie die folgenden Informationen ein:
+Wenn Ihr Unternehmensadministrator Ihnen nicht helfen kann, erstellen Sie eine [Azure-Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Geben Sie die folgenden Informationen ein:
 
 - Registrierungsnummer
 - Hinzuzufügende E-Mail-Adresse und Authentifizierungstyp (Geschäfts-, Schul-, Uni- oder Microsoft-Konto)

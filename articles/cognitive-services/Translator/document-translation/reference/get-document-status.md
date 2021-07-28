@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 4c6e82af46a012ad53dfa1cc1db1252ef2c0443e
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 69172956d36aa4b43c88858a65771fdb183a39f6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864935"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453613"
 ---
 # <a name="get-document-status"></a>Abrufen des Dokumentstatus
 
@@ -25,7 +25,7 @@ Die Methode „Get Document Status“ gibt den Status für ein bestimmtes Dokume
 
 Sendet eine `GET`-Anforderung an:
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}/documents/{documentId}
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches/{id}/documents/{documentId}
 ```
 
 Erfahren Sie, wie Sie Ihren [benutzerdefinierten Domänennamen](../get-started-with-document-translation.md#find-your-custom-domain-name)finden.
@@ -67,26 +67,28 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 ### <a name="successful-get-document-status-response"></a>Erfolgreiche Antwort zum Get-Dokument Status
 
-|Name|type|Beschreibung|
+|Name|Typ|Beschreibung|
 |--- |--- |--- |
 |path|Zeichenfolge|Speicherort des Dokuments oder des Ordners.|
+|sourcePath|Zeichenfolge|Speicherort des Quelldokuments.|
 |createdDateTimeUtc|Zeichenfolge|Das Datum und die Uhrzeit des Vorgangs.|
 |lastActionDateTimeUtc|Zeichenfolge|Datum und Uhrzeit, zu der der Status des Vorgangs aktualisiert wurde.|
 |status|String|Liste möglicher Status für Auftrag oder Dokument: <ul><li>Canceled</li><li>Wird abgebrochen</li><li>Fehler</li><li>NotStarted</li><li>Wird ausgeführt</li><li>Erfolgreich</li><li>ValidationFailed</li></ul>|
-|zu|Zeichenfolge|Sprachcode von Zielsprache mit zwei Buchstaben. Weitere Informationen finden Sie in der Liste der Sprachen.|
+|zu|Zeichenfolge|Sprachcode von Zielsprache mit zwei Buchstaben. [Weitere Informationen finden Sie in der Liste der Sprachen](../../language-support.md).|
 |Fortschritt|number|Der Fortschritt der Übersetzung, falls verfügbar|
 |id|Zeichenfolge|Dokument-ID.|
 |characterCharged|integer|Zeichen, die von der API abgerechnet werden.|
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|type|Beschreibung|
+|Name|Typ|Beschreibung|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
-|innerError|InnerErrorV2|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
+|innerError|InnerTranslationError|Neues internes Fehlerformat, das Cognitive Services API-Richtlinien entspricht. Enthält die erforderlichen Eigenschaften ErrorCode, Message und Optional Properties Target, Details (Key Value Pair), Inner Error (kann geschachtelt werden).|
 |innerError.code|Zeichenfolge|Ruft Code der Fehlerzeichenfolge ab.|
 |innerError.message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|
+|innerError.target|Zeichenfolge|Ruft die Ursache des Fehlers ab. Dies wäre z. B. „Dokumente“ oder „Dokument-ID“ im Falle eines ungültigen Dokuments.|
 
 ## <a name="examples"></a>Beispiele
 
@@ -96,6 +98,7 @@ Das folgende JSON-Objekt ist ein Beispiel für eine erfolgreiche Antwort.
 ```JSON
 {
   "path": "https://myblob.blob.core.windows.net/destinationContainer/fr/mydoc.txt",
+  "sourcePath": "https://myblob.blob.core.windows.net/sourceContainer/fr/mydoc.txt",
   "createdDateTimeUtc": "2020-03-26T00:00:00Z",
   "lastActionDateTimeUtc": "2020-03-26T01:00:00Z",
   "status": "Running",

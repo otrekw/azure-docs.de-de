@@ -2,19 +2,19 @@
 title: Preisszenarien für Anrufe (Sprache/Video) und Chats
 titleSuffix: An Azure Communication Services concept document
 description: Enthält eine Beschreibung des Preismodells für Communication Services.
-author: mikben
-manager: jken
+author: nmurav
+manager: nmurav
 services: azure-communication-services
-ms.author: mikben
+ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0615d95c922ef3f04618d9f2339e82b53bd359df
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 038b4df78ca7f10b0ec0e9dfe224f6aca2430e82
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763683"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111986298"
 ---
 # <a name="pricing-scenarios"></a>Preisszenarien
 
@@ -51,16 +51,16 @@ Alice hat einen Gruppenanruf mit ihren Kollegen Bob und Charlie durchgeführt. A
 Alice verwendet eine App, um über das Festnetz Bob in den USA anzurufen. Bobs Telefonnummer beginnt mit `+1-425`.
 
 - Alice hat die App unter Verwendung des SDK für JS erstellt.
-- Der Anruf dauert insgesamt fünf Minuten.
+- Der Anruf dauert insgesamt zehn Minuten.
 
 **Berechnung der Kosten**
 
 - 1 Teilnehmer für den VoIP-Abschnitt (Alice) von der App zu Communication Services-Servern · 10 Minuten · 0,004 USD pro Teilnehmerabschnitt pro Minute = 0,04 USD
-- 1 Teilnehmer für den ausgehenden Festnetzabschnitt (Charlie) von Communication Services-Servern zu einer US-Telefonnummer · 10 Minuten · 0,013 USD pro Teilnehmerabschnitt pro Minute = 0,13 USD.
+- 1 Teilnehmer für den ausgehenden Festnetzabschnitt (Bob) von Communication Services-Servern zu einer US-Telefonnummer · 10 Minuten · 0,013 USD pro Teilnehmerabschnitt pro Minute = 0,13 USD.
 
 Hinweis: Die gemischten US-Tarife für `+1-425` liegen bei 0,013 USD. Details finden Sie unter dem folgenden Link: https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv).
 
-**Gesamtkosten für den Gruppenanruf:** 0,04 USD + 0,13 USD = 0,17 USD
+**Gesamtkosten für den Anruf**: 0,04 USD + 0,13 USD = 0,17 USD
 
 
 ### <a name="pricing-example-group-audio-call-using-js-sdk-and-1-pstn-leg"></a>Preisbeispiel: Audiogruppenanruf mit SDK für JS und einem Festnetzabschnitt
@@ -154,7 +154,7 @@ Herkömmliche Telefonanrufe (Anrufe, die über das Telefonfestnetz getätigt wer
 
 #### <a name="united-states-calling-prices"></a>Preise für Anrufe in den USA
 
-Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Gebühren bis zum 30. Juni 2021:
+Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Gebühren:
 
 |Zahlentyp   |Anrufe tätigen   |Anrufe empfangen|
 |--------------|-----------|------------|
@@ -163,7 +163,7 @@ Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Geb�
 
 #### <a name="other-calling-destinations"></a>Sonstige Anrufziele
 
-Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Gebühren bis zum 30. Juni 2021:
+Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Gebühren:
 
 |Tätigen von Anrufen nach   |Preis pro Minute|
 |-----------|------------|
@@ -177,7 +177,7 @@ Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Geb�
 
 SMS bietet nutzungsbasierte Preise. Der Preis ist eine auf dem Ziel der Nachricht basierende Gebühr pro Nachricht. Nachrichten können über gebührenfreie Telefonnummern an Telefonnummern innerhalb der USA gesendet werden. Beachten Sie, dass lokale (geografische) Telefonnummern nicht zum Senden von SMS-Nachrichten verwendet werden können.
 
-Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Gebühren bis zum 30. Juni 2021:
+Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Gebühren:
 
 |Land   |Senden von Nachrichten|Empfangen von Nachrichten|
 |-----------|------------|------------|

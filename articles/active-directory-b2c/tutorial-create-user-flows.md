@@ -7,18 +7,18 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/26/2021
+ms.date: 06/07/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fa1250189c5ba11426ac993bed8fde398ae37ea2
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: fb04dbe5cdfab523e8af9a057cc4477f58b1b525
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001464"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565336"
 ---
-# <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C
+# <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows und benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -46,13 +46,13 @@ Mithilfe eines Benutzerflows können Sie feststellen, wie Benutzer mit Ihrer Anw
 
 ::: zone pivot="b2c-user-flow"
 - Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
-- [Registrieren Sie Ihre Anwendung](tutorial-register-applications.md) in dem Mandanten, den Sie erstellt haben, damit er mit Azure AD B2C kommunizieren kann.
+- [Registrieren Sie eine Webanwendung](tutorial-register-applications.md), und [aktivieren Sie die implizite Gewährung von ID-Token](tutorial-register-applications.md#enable-id-token-implicit-grant).
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
 - Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
-- [Registrieren Sie Ihre Anwendung](tutorial-register-applications.md) in dem Mandanten, den Sie erstellt haben, damit er mit Azure AD B2C kommunizieren kann.
+- [Registrieren Sie eine Webanwendung](tutorial-register-applications.md), und [aktivieren Sie die implizite Gewährung von ID-Token](tutorial-register-applications.md#enable-id-token-implicit-grant).
 - [Erstellen einer Facebook-Anwendung.](identity-provider-facebook.md#create-a-facebook-application) Überspringen Sie die Voraussetzungen und die Zurücksetzung der Schritte im Artikel [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](identity-provider-facebook.md). Wenngleich für die Verwendung von benutzerdefinierten Richtlinien keine Facebook-Anwendung erforderlich ist, wird in dieser exemplarischen Vorgehensweise eine solche Anwendung verwendet, um die Aktivierung des Soziale Medien-Logins in einer benutzerdefinierten Richtlinie zu veranschaulichen.
 
 ::: zone-end
@@ -327,7 +327,9 @@ Wie unter [Voraussetzungen](#prerequisites) erwähnt, ist Facebook *nicht* erfor
 1. Wählen Sie unter **Benutzerdefinierte Richtlinien** die Richtlinie **B2C_1A_signup_signin** aus.
 1. Wählen Sie **Jetzt ausführen**, und wählen Sie „Facebook“ aus, um sich bei Facebook anzumelden und die benutzerdefinierte Richtlinie zu testen.
 
+
 ::: zone-end
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie Folgendes gelernt:
@@ -341,3 +343,5 @@ Erfahren Sie im Anschluss, wie Sie Azure AD B2C für die Anmeldung und Registrie
 
 > [!div class="nextstepaction"]
 > [Tutorial: Aktivieren der Authentifizierung in einer Webanwendung mithilfe von Azure AD B2C >](tutorial-web-app-dotnet.md)
+
+Weitere Informationen finden Sie außerdem in der [ausführlichen Betrachtung der Architektur von Azure Active Directory B2C](https://www.youtube.com/playlist?list=PLOPotgzC07IKXXCTZcrpuLWbVe3y51kfm).

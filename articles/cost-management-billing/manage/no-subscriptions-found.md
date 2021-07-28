@@ -1,29 +1,29 @@
 ---
 title: Fehler „Keine Abonnements gefunden“ – Anmeldung beim Azure-Portal
-description: Bietet die Lösung für das Problem, das beim Anmelden bei Azure-Portal oder Azure-Kontocenter die Fehlermeldung „Keine Abonnements gefunden“ angezeigt wird.
+description: Bietet die Lösung für das Problem, das während der Anmeldung beim Azure-Portal die Fehlermeldung „Keine Abonnements gefunden“ angezeigt wird.
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 05/13/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 70f479148cb2f5f3f2b13c431e0c4b80b1fb9543
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 72a8170b6dffb79d8828d60389728e0bf4d42a41
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684829"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458739"
 ---
-# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Anmeldefehler „Keine Abonnements gefunden“ für das Azure-Portal oder das Azure-Kontocenter
+# <a name="no-subscriptions-found-sign-in-error-for-azure-portal"></a>Anmeldefehler „Keine Abonnements gefunden“ für das Azure-Portal
 
-Wenn Sie versuchen, sich beim [Azure-Portal](https://portal.azure.com/) oder [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) anzumelden, erhalten Sie möglicherweise die Fehlermeldung „Keine Abonnements gefunden“. Dieser Artikel bietet eine Lösung dieses Problems.
+Wenn Sie versuchen, sich beim [Azure-Portal](https://portal.azure.com/) anzumelden, erhalten Sie möglicherweise die Fehlermeldung „Keine Abonnements gefunden“. Dieser Artikel bietet eine Lösung dieses Problems.
 
 ## <a name="symptom"></a>Symptom
 
-Wenn Sie versuchen, sich beim [Azure-Portal](https://portal.azure.com/) oder beim [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) anzumelden, erhalten Sie die folgende Fehlermeldung: Keine Abonnements gefunden.
+Wenn Sie versuchen, sich beim [Azure-Portal](https://portal.azure.com/) anzumelden, erhalten Sie die Fehlermeldung „Keine Abonnements gefunden“.
 
 ## <a name="cause"></a>Ursache
 
@@ -31,7 +31,7 @@ Dieses Problem tritt auf, wenn Sie das falsche Verzeichnis ausgewählt haben ode
 
 ## <a name="solution"></a>Lösung
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portal"></a>Szenario 1: Die Fehlermeldung wird im [Azure-Portal](https://portal.azure.com) angezeigt.
+### <a name="scenario-error-message-is-received-in-the-azure-portal"></a>Szenario: Fehlermeldung wird im [Azure-Portal](https://portal.azure.com) empfangen
 
 So beheben Sie dieses Problem:
 
@@ -39,14 +39,6 @@ So beheben Sie dieses Problem:
 
   ![Auswählen des Verzeichnisses oben rechts im Azure-Portal](./media/no-subscriptions-found/directory-switch.png)
 * Wenn das richtige Azure-Verzeichnis ausgewählt ist, die Fehlermeldung jedoch immer noch ausgegeben wird, [weisen Sie Ihrem Konto die Besitzerrolle zu](../../role-based-access-control/role-assignments-portal.md).
-
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-center"></a>Szenario 2: Die Fehlermeldung wird im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) angezeigt.
-
-Überprüfen Sie, ob das Konto, das Sie verwendet haben, das des Kontoadministrators ist. Gehen Sie folgendermaßen vor, um zu überprüfen, wer der Kontoadministrator ist:
-
-1. Melden Sie sich bei der [Ansicht „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) an.
-1. Wählen Sie das zu überprüfende Abonnement aus, und sehen Sie unter **Einstellungen** nach.
-1. Wählen Sie **Eigenschaften** aus. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.  
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

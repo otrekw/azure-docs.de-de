@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
 ms.date: 03/11/2021
-ms.openlocfilehash: 41d60c8e565655793dd33393f41876438c7eab66
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 573e0dc028391c2eea9d412bfe68c07a2e95aec3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166888"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963143"
 ---
 # <a name="quickstart-create-a-serverless-simple-chat-application-with-azure-functions-and-azure-web-pubsub-service"></a>Schnellstart: Erstellen einer einfachen serverlosen Chatanwendung mit Azure Functions und dem Azure Web PubSub-Dienst 
 
@@ -58,8 +58,8 @@ Während der Dienst bereitgestellt wird, arbeiten wird mit dem Code. Klonen Sie 
   Öffnen Sie im geklonten Repository den Ordner */samples/functions/js/simplechat*. Bearbeiten Sie *local.settings.js*, um eine Dienstverbindungszeichenfolge hinzuzufügen.
   Nehmen Sie in *local.settings.json* die folgenden Änderungen vor, und speichern Sie anschließend die Datei:
     - Ersetzen Sie für die Einstellung **`WebPubSubConnectionString`** den Platzhalter *<connection-string>* durch die aus dem **Azure-Portal** kopierte Verbindungszeichenfolge. 
-    - Dies ist für die Einstellung **`AzureWebJobsStorage`** erforderlich, da [Azure Functions ein Azure Storage-Konto erfordert](https://docs.microsoft.com/azure/azure-functions/storage-considerations).
-        - Wenn der Azure-Speicheremulator in der lokalen Umgebung ausgeführt wird, lassen Sie die ursprüngliche Einstellung von „UseDevelopmentStorage=true“ unverändert.
+    - Dies ist für die Einstellung **`AzureWebJobsStorage`** erforderlich, da [Azure Functions ein Azure Storage-Konto erfordert](../azure-functions/storage-considerations.md).
+        - Wenn der Azure-Speicheremulator in der lokalen Umgebung ausgeführt wird, lassen Sie die ursprüngliche Einstellung „UseDevelopmentStorage=true“ unverändert.
         - Wenn Sie über eine Azure Storage-Verbindungszeichenfolge verfügen, ersetzen Sie den Wert durch diese Zeichenfolge.
  
 - JavaScript-Funktionen werden in Ordnern organisiert. In jedem Ordner befinden sich zwei Dateien: `function.json` definiert die Bindungen, die in der Funktion verwendet werden, und `index.js` ist der Textkörper der Funktion. Diese Funktions-App enthält mehrere ausgelöste Funktionen:

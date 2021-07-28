@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 5a8abb31b2442a8823437bb155b5b9970db1d181
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: cb005621a3439d5c7976221d816536b46efb986c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742263"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744993"
 ---
 # <a name="face-detection-and-attributes"></a>Gesichtserkennung und -attribute
 
@@ -48,7 +48,7 @@ Attribute sind ein Satz von Merkmalen, die optional durch die API [Face – Dete
 * **Geschlecht:** Das geschätzte Geschlecht des jeweiligen Gesichts. Mögliche Werte sind „male“, „female“ und „genderless“.
 * **Brille:** Gibt an, ob das Gesicht eine Brille aufweist. Mögliche Werte sind NoGlasses, ReadingGlasses, SunGlasses und SwimmingGoggles.
 * **Haare:** Die Art der Haare des Gesichts. Dieses Attribut zeigt an, ob die Haare sichtbar sind, ob Haarausfall erkannt wurde und welche Farbe die Haare haben.
-* **Kopfhaltung:** Die Ausrichtung des Gesichts im dreidimensionalen Raum. Dieses Attribut wird durch die Roll-Nick-Gier-Winkel in Grad beschrieben. Als Wertebereiche gelten –90 Grad bis 90 Grad, –90 Grad bis 90 Grad bzw. –90 Grad bis 90 Grad. Die Winkelzuordnungen sind im folgenden Diagramm dargestellt:
+* **Kopfhaltung:** Die Ausrichtung des Gesichts im dreidimensionalen Raum. Dieses Attribut wird durch die Roll-, Gier- und Nickwinkel in Grad beschrieben, die nach der [rechten Regel](https://en.wikipedia.org/wiki/Right-hand_rule) definiert sind. Die Reihenfolge der drei Winkel ist Rollwinkel-Gierwinkel-Nickwinkel, und der Wertebereich jedes Winkels reicht von -180 Grad bis 180 Grad. Die 3D-Ausrichtung des Gesichts wird der Reihe nach durch den Roll-, Gier- und Nickwinkel geschätzt. Die Winkelzuordnungen sind im folgenden Diagramm dargestellt:
 
     ![Kopf mit Bezeichnungen für Roll-, Nick- und Gierachse](../Images/headpose.1.jpg)
 * **Makeup:** Gibt an, ob das Gesicht Makeup trägt. Dieses Attribut gibt einen booleschen Wert für eyeMakeup und lipMakeup zurück.
@@ -70,6 +70,12 @@ Anhand der folgenden Tipps können Sie sicherstellen, dass Ihre Eingabebilder m�
 * Die maximal erkennbare Gesichtsgröße beträgt 4.096×4.096 Pixel.
 * Gesichter außerhalb der Größenspanne von 36×36 bis 4.096×4.096 Pixel werden nicht erkannt.
 * Einige Gesichter können möglicherweise aufgrund technischer Probleme nicht erkannt werden. Extreme Gesichtswinkel (Kopfhaltung) oder verdeckte Gesichter (Objekte wie Sonnenbrille oder Hände bedecken Teile des Gesichts) können die Erkennung beeinträchtigen. Frontalansichten und nahezu der Frontalansicht entsprechende Ansichten von Gesichtern führen zu den besten Ergebnissen.
+
+Eingabedaten mit Ausrichtungsinformationen:
+* Einige Eingabebilder im JPEG-Format können Ausrichtungsinformationen in Exif-Metadaten (Exchangeable Image File Format) enthalten. Wenn die Exif-Ausrichtung verfügbar ist, werden die Bilder automatisch in die richtige Ausrichtung gedreht, bevor sie zur Gesichtserkennung gesendet werden. Das Gesichtsrechteck, die Orientierungspunkte und die Kopfhaltung für jedes erkannte Gesicht werden auf der Grundlage des gedrehten Bildes geschätzt.
+* Um das Gesichtsrechteck und die Orientierungspunkte richtig anzuzeigen, müssen Sie sicherstellen, dass das Bild richtig gedreht ist. Die meisten Tools zur Bildvisualisierung drehen das Bild standardmäßig automatisch entsprechend seiner Exif-Ausrichtung. Bei anderen Tools müssen Sie die Drehung möglicherweise mithilfe Ihres eigenen Codes anwenden. Die folgenden Beispiele zeigen ein Gesichtsrechteck auf einem gedrehten Bild (links) und einem nicht gedrehten Bild (rechts).
+
+![Zwei Bilder mit Gesichtern mit/ohne Drehung](../Images/image-rotation.png)
 
 Wenn Sie Gesichter in einem Videofeed ermitteln möchten, können Sie die Leistung verbessern, indem Sie bestimmte Einstellungen an Ihrer Videokamera anpassen:
 

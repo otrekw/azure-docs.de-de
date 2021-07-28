@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 03/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 4f85a258042430d58690ef578db6d21a6c831d50
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2c96f1392228c4fcce65e05711b70a6ce689592a
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044642"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006891"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity"></a>Schnellstart: Erstellen einer HoloLens-App mit Azure Object Anchors in Unity
 
@@ -67,3 +67,6 @@ Die App sucht nach Objekten im aktuellen Feld der Ansicht und verfolgt sie nach 
 
 > [!div class="nextstepaction"]
 > [Häufig gestellte Fragen](../faq.md)
+
+> [!div class="nextstepaction"]
+> [Konvertierungs-SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre)

@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2, subject-rbac-steps
-ms.openlocfilehash: ec85e47e616841d570236174e1b418f58d2cc42b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 203c53daf07949e343e9aa7e5cf56e89a7b07b1f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760004"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474541"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (Portal)
 
@@ -33,11 +33,11 @@ In diesem Abschnitt **erstellen Sie eine neue Azure Digital Twins-Instanz** übe
 
 Sobald Sie im Portal sind, wählen Sie im Menü auf der Homepage der Azure-Dienste _Ressource erstellen_ aus.
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Auswählen von „Ressource erstellen“ auf der Homepage des Azure-Portals":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Screenshot des Azure-Portals mit hervorgehobenem Symbol „Ressource erstellen“ auf der Startseite.":::
 
 Suchen Sie im Suchfeld nach *Azure Digital Twins*, und wählen Sie den Dienst **Azure Digital Twins** aus den Ergebnissen aus. Wählen Sie die Schaltfläche _Erstellen_ aus, um eine neue Instanz des Diensts zu erstellen.
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Auswählen von „Erstellen“ auf der Seite „Azure Digital Twins-Dienst“":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Screenshot des Azure-Portals, mit hervorgehobener Schaltfläche „Erstellen“ auf der Azure Digital Twins-Dienstseite.":::
 
 Geben Sie auf der folgenden Seite **Ressource erstellen** die unten angegebenen Werte ein:
 * **Abonnement**: Das Azure-Abonnement, das Sie verwenden.
@@ -46,7 +46,7 @@ Geben Sie auf der folgenden Seite **Ressource erstellen** die unten angegebenen 
 * **Ressourcenname**: Ein Name für Ihre Azure Digital Twins-Instanz. Wenn in Ihrem Abonnement für die Region eine weitere Azure Digital Twins-Instanz vorhanden ist, die den angegeben Namen bereits verwendet, werden Sie aufgefordert, einen anderen Namen auszuwählen.
 * **Zugriff auf Ressource gewähren**: Wenn Sie das Kontrollkästchen in diesem Abschnitt aktivieren, erhält Ihr Azure-Konto die Berechtigung, auf Daten in der Instanz zuzugreifen und diese zu verwalten. Wenn Sie die Person sind, die die Instanz verwaltet, sollten Sie dieses Kontrollkästchen jetzt aktivieren. Wenn es ausgegraut ist, weil Sie über keine Berechtigung im Abonnement verfügen, können Sie die Erstellung der Ressource fortsetzen und sich die Rolle später von einer Person mit den erforderlichen Berechtigungen zuweisen lassen. Weitere Informationen zu dieser Rolle und zum Zuweisen von Rollen zu Ihrer Instanz finden Sie im nächsten Abschnitt [Einrichten von Benutzerzugriffsberechtigungen](#set-up-user-access-permissions).
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Screenshot: Prozess zum Erstellen einer Ressource für Azure Digital Twins. Die beschriebenen Werte werden ausgefüllt.":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Screenshot des Prozesses „Ressource erstellen“ für Azure Digital Twins im Azure-Portal. Die beschriebenen Werte sind eingetragen.":::
 
 Wenn Sie fertig sind, können Sie auf **Überprüfen + erstellen** klicken, wenn Sie keine weiteren Einstellungen für Ihre Instanz konfigurieren möchten. Dadurch gelangen Sie zu einer Zusammenfassungsseite, auf der Sie die eingegebenen Instanzdetails überprüfen und den Vorgang durch Klicken auf **Erstellen** abschließen können. 
 
@@ -57,14 +57,14 @@ Wenn Sie weitere Details für Ihre Instanz konfigurieren möchten, finden Sie In
 Im Folgenden finden Sie die zusätzlichen Optionen, die Sie während der Einrichtung mithilfe der anderen Registerkarten im Prozess **Ressource erstellen** verwenden können.
 
 * **Netzwerk**: Auf dieser Registerkarte können Sie private Endpunkte mithilfe von [Azure Private Link](../private-link/private-link-overview.md) aktivieren, um zu verhindern, dass über ein öffentliches Netzwerk auf Ihre Instanz zugegriffen werden kann. Anweisungen dazu finden Sie unter [Gewusst wie: Aktivieren des privaten Zugriffs mit Private Link (Vorschau)](./how-to-enable-private-link-portal.md#add-a-private-endpoint-during-instance-creation) .
-* **Erweitert**: Auf dieser Registerkarte können Sie eine [vom System verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für Ihre Instanz aktivieren, die beim Weiterleiten von Ereignissen an [Endpunkte](concepts-route-events.md) verwendet werden kann. Anweisungen dazu finden Sie unter [Gewusst wie: Aktivieren verwalteter Identitäten für das Weiterleiten von Ereignissen (Vorschau)](./how-to-enable-managed-identities-portal.md#add-a-system-managed-identity-during-instance-creation) .
+* **Erweitert**: Auf dieser Registerkarte können Sie eine vom System verwaltete Identität für Ihre Instanz aktivieren, die beim Weiterleiten von Ereignissen an [Endpunkte](concepts-route-events.md) verwendet werden kann. Weitere Informationen zur Verwendung systemseitig verwalteter Identitäten mit Azure Digital Twins finden Sie unter [Konzepte: Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md#managed-identity-for-accessing-other-resources-preview).
 * **Tags**: Auf dieser Registerkarte können Sie Ihrer Instanz Tags hinzufügen, die Ihnen dabei helfen, die Instanz und andere Azure-Ressourcen zu verwalten. Weitere Informationen zu den Azure-Ressourcentags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Überprüfen des Erfolgs und Erfassen wichtiger Werte
 
 Nachdem Sie die Einrichtung Ihrer Instanz durch das Klicken auf **Erstellen** abgeschlossen haben, können Sie in Ihren Azure-Benachrichtigungen auf der Symbolleiste des Portals den Bereitstellungsstatus Ihrer Instanz anzeigen. In der Benachrichtigung wird angezeigt, wenn die Bereitstellung erfolgreich war, und Sie können die Schaltfläche _Zu Ressource wechseln_ auswählen, um Ihre erstellte Instanz anzuzeigen.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Ansicht von Azure-Benachrichtigungen mit einer erfolgreichen Bereitstellung und Hervorhebung der Schaltfläche „Zu Ressource wechseln“":::
+:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Screenshot der Azure-Benachrichtigungen mit einer erfolgreichen Bereitstellung und Hervorhebung der Schaltfläche „Zu Ressource wechseln“ im Azure-Portal.":::
 
 Wenn bei der Bereitstellung ein Fehler auftritt, wird in der Benachrichtigung alternativ die Ursache angegeben. Beachten Sie die Ratschläge in der Fehlermeldung, und versuchen Sie dann erneut, die Instanz zu erstellen.
 
@@ -73,7 +73,7 @@ Wenn bei der Bereitstellung ein Fehler auftritt, wird in der Benachrichtigung al
 
 Notieren Sie sich von der Seite *Übersicht* der Instanz den *Namen*, die *Ressourcengruppe* und den *Hostnamen*. Dies sind alles wichtige Werte, die Sie möglicherweise benötigen, wenn Sie mit Ihrer Azure Digital Twins-Instanz weiterarbeiten. Wenn andere Benutzer in der Instanz programmieren, sollten Sie diese Werte mit ihnen teilen.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Hervorheben der wichtigen Werte von der Übersichtsseite der Instanz":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Screenshot des Azure-Portals, der die wichtigen Werte auf der Seite „Übersicht“ der Azure Digital Twins-Instanz hervorhebt.":::
 
 Die Azure Digital Twins-Instanz ist jetzt einsatzbereit. Im nächsten Schritt stellen Sie die entsprechenden Azure-Benutzerberechtigungen für die Verwaltung der Instanz zur Verfügung.
 
@@ -95,11 +95,11 @@ Beide erfordern die gleichen Berechtigungen.
 
 Bei der Erstellung Ihrer Azure Digital Twins-Ressource durch den [weiter oben in diesem Artikel](#create-the-azure-digital-twins-instance) beschriebenen Prozess wählen Sie unter **Zugriff auf Ressource gewähren** die Option **Azure Digital Twins Rolle „Datenbesitzer“ zuweisen** aus. Dadurch erhalten Sie Vollzugriff auf die APIs der Datenebene.
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2-role.png" alt-text="Screenshot: Prozess zum Erstellen einer Ressource für Azure Digital Twins. Das Kontrollkästchen unter „Zugriff auf Ressource gewähren“ ist hervorgehoben.":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2-role.png" alt-text="Screenshot des Prozesses „Ressource erstellen“ für Azure Digital Twins im Azure-Portal. Das Kontrollkästchen unter „Zugriff auf Ressource gewähren“ ist hervorgehoben.":::
 
 Wenn Sie nicht über die Berechtigung zum Zuweisen einer Rolle zu einer Identität verfügen, wird das Feld ausgegraut angezeigt.
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2-role-greyed.png" alt-text="Screenshot: Prozess zum Erstellen einer Ressource für Azure Digital Twins. Das Kontrollkästchen unter „Zugriff auf Ressource gewähren“ ist ausgegraut und nicht klickbar.":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2-role-greyed.png" alt-text="Screenshot des Prozesses „Ressource erstellen“ für Azure Digital Twins im Azure-Portal. Das Kontrollkästchen unter „Zugriff auf Ressource gewähren“ ist deaktiviert.":::
 
 In diesem Fall können Sie die Azure Digital Twins-Ressource weiterhin erfolgreich erstellen, aber jemand mit den entsprechenden Berechtigungen muss Ihnen oder der Person, die die Daten der Instanz verwalten wird, diese Rolle zuweisen.
 
@@ -127,14 +127,14 @@ Sie können die Rolle **Azure Digital Twins-Datenbesitzer** auch mithilfe der Zu
 
 Sie können die Rollenzuweisung, die Sie eingerichtet haben, unter *Zugriffssteuerung (IAM) > Rollenzuweisungen* anzeigen. Der Benutzer sollte in der Liste mit der Rolle *Azure Digital Twins Data Owner* (Azure Digital Twins-Datenbesitzer) angezeigt werden. 
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Anzeigen der Rollenzuweisungen für eine Azure Digital Twins-Instanz im Azure-Portal":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Screenshot der Rollenzuweisungen für eine Azure Digital Twins-Instanz im Azure-Portal.":::
 
 Sie verfügen nun über eine einsatzbereite Azure Digital Twins-Instanz und haben Berechtigungen zugewiesen, um diese zu verwalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Testen Sie einzelne REST-API-Aufrufe für Ihre Instanz mithilfe der Befehle der Azure Digital Twins-CLI: 
-* [az dt reference](/cli/azure/dt)
+* [az dt reference](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)
 * [Konzepte: Befehlssatz der Azure Digital Twins-CLI](concepts-cli.md)
 
 Sie können auch eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie Authentifizierungscode verwenden:

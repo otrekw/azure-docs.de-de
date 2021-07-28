@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Synapse-Arbeitsbereichs mit einer Azure Resource Manager-Vorlage'
+title: 'Schnellstart: Erstellen eines Azure Synapse-Arbeitsbereichs mit einer Azure Resource Manager-Vorlage (ARM-Vorlage)'
 description: Erfahren Sie, wie Sie mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen Synapse-Arbeitsbereich erstellen.
 services: azure-resource-manager
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: 7317b7f51c6d0f9d72e3aad81794a569276d2145
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e00047ee4d77d0ad5464b9802ab15a7af026f493
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566119"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111437962"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Schnellstart: Erstellen eines Azure Synapse-Arbeitsbereichs mit einer ARM-Vorlage
 

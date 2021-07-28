@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: fafb9f7e84263c33cf1b15a52742ec9cd0380a40
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7bb7c3a2d19b4dbb84d09829e2ed181a62ef7fbe
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311854"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901293"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Migrieren zu Azure Machine Learning
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie Ressourcen aus Studio (klassisch) zu Mic
 Machine Learning bietet eine modernisierte Data-Science-Plattform, die Ansätze ohne Code und Code-First-Ansätze kombiniert. Weitere Informationen zu den Unterschieden zwischen Studio (klassisch) und Machine Learning finden Sie im Abschnitt [Bewerten von Machine Learning](#step-1-assess-azure-machine-learning).
 
 
-## <a name="recommended-approach"></a>Empfohlener Ansatz
+## <a name="recommended-approach"></a>Empfohlene Vorgehensweise
 
 Für das Migrieren zu Machine Learning wird der folgende Ansatz empfohlen:
 
@@ -108,7 +108,7 @@ In der folgenden Tabelle finden Sie Informationen zu den Modulen, die Sie beim e
 | Webdienst | – Eingabe </br> – Ausgabe | – Eingabe </br>  - Ausgabe|
 | Maschinelles Sehen| | – Anwenden von Bildtransformationen </br> – Konvertieren in Bildverzeichnisse </br> – Initialisieren von Bildtransformationen </br> – Teilen von Bildverzeichnissen  </br> – DenseNet-Bildklassifizierung   </br>– ResNet-Bildklassifizierung |
 
-Weitere Informationen zur Verwendung der einzelnen Designer-Module finden Sie unter [Algorithmen und Module – Referenz für Azure Machine Learning-Designer](../algorithm-module-reference/module-reference.md).
+Weitere Informationen zur Verwendung einzelner Designer-Module finden Sie unter [Algorithmen und Module – Referenz für Azure Machine Learning-Designer](../algorithm-module-reference/module-reference.md).
 
 ### <a name="what-if-a-designer-module-is-missing"></a>Was geschieht, wenn ein Designer-Modul fehlt?
 
@@ -134,7 +134,6 @@ In Machine Learning werden **Datasets** im Arbeitsbereich registriert und könne
 
 In Studio (klassisch) enthielten **Experimente** die Verarbeitungslogik für Ihre Arbeit. Sie haben Experimente mit Drag & Drop-Modulen erstellt.
 
-
 ![automobile-price-classic-experiment](./media/migrate-overview/studio-classic-experiment.png)
 
 In Machine Learning enthalten **Pipelines** die Verarbeitungslogik für Ihre Arbeit. Sie können Pipelines entweder mit Drag & Drop-Modulen oder durch Schreiben von Code erstellen.
@@ -143,14 +142,13 @@ In Machine Learning enthalten **Pipelines** die Verarbeitungslogik für Ihre Arb
 
 ### <a name="web-service-endpoint"></a>Webdienst-Endpunkt
 
-In Studio (klassisch) wurde die **REQUEST/RESPOND-API** für die Echtzeitvorhersage verwendet. Die **BATCH EXECUTION-API** wurde für die Batchvorhersage oder das erneute Trainieren verwendet.
+Studio (klassisch) hat die **REQUEST/RESPOND-API** für die Echtzeitvorhersage und die **BATCH EXECUTION-API** für die Batchvorhersage oder das erneute Training verwendet.
 
 ![automobile-price-classic-webservice](./media/migrate-overview/studio-classic-web-service.png)
 
-In Machine Learning werden **Echtzeitendpunkte** für die Echtzeitvorhersage verwendet. **Pipelineendpunkte** werden für die Batchvorhersage oder das erneute Trainieren verwendet.
+Azure Machine Learning verwendet **Echtzeitendpunkte** für Echtzeitvorhersagen und **Pipelineendpunkte** für Batchvorhersagen oder erneutes Training.
 
 ![automobile-price-aml-endpoint](./media/migrate-overview/aml-endpoint.png)
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

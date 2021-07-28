@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 58e37cb1cffadf841e6d9450f1ce908cf6f22c69
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 1118e44e822068566579fdc516479afeda294cf6
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296415"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789495"
 ---
 # <a name="azure-digital-twins-query-language-reference-select-clause"></a>Referenz zur Azure Digital Twins-Abfragesprache: SELECT-Klausel
 
@@ -70,11 +70,11 @@ Wenn eine in der Projektion enthaltene Eigenschaft für eine bestimmte Datenzeil
 #### <a name="example-scenario"></a>Beispielszenario
 
 Nehmen Sie für die folgenden Beispiele ein Zwillingsdiagramm an, das die folgenden Datenelemente enthält:
-* Einen Factoryzwilling namens `FactoryA`
+* Einen Factoryzwilling namens „FactoryA“
     - Enthält eine Eigenschaft namens `name` mit dem Wert `FactoryA`
-* Einen Consumerzwilling namens `Contoso`
+* Einen Consumerzwilling namens „Contoso“
     - Enthält eine Eigenschaft namens `name` mit dem Wert `Contoso`
-* Eine consumerRelationship-Beziehung von `FactoryA` zu `Contoso` mit dem Namen `FactoryA-consumerRelationship-Contoso`
+* Eine consumerRelationship-Beziehung von FactoryA zu Contoso mit dem Namen `FactoryA-consumerRelationship-Contoso`
     - Enthält eine Eigenschaft namens `managedBy` mit dem Wert `Jeff`
 
 Diese Abbildung veranschaulicht dieses Szenario:

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0bfdb7017a5042787e7e33e05e52bd90d67deb0e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98939868"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110058870"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Implementieren von Sprachassistenten unter Windows
 
@@ -124,7 +124,7 @@ Wenn eine App eine Ansicht oberhalb des Sperrbildschirms anzeigt, wird dies als 
 
 Eine Aktivierung oberhalb des Sperrbildschirms ähnelt einer Aktivierung unterhalb des Sperrbildschirms. Wenn keine aktiven Instanzen der Anwendung vorhanden sind, wird im Hintergrund eine neue Instanz gestartet, und `OnBackgroundActivated` in „App.xaml.cs“ wird aufgerufen. Falls eine Instanz der Anwendung vorhanden ist, erhält diese Instanz über das Ereignis `ConversationalAgentSession.SignalDetected` eine Benachrichtigung.
 
-Wenn die Anwendung nicht bereits oberhalb des Sperrbildschirms angezeigt wird, muss sie `ConversationalAgentSession.RequestForegroundActivationAsync` aufrufen. Hierdurch wird die `OnLaunched`-Methode in „App.xaml.cs“ ausgelöst, und es sollte ein Navigationsvorgang zu der Ansicht erfolgen, die oberhalb des Sperrbildschirms angezeigt werden soll.
+Wenn die Anwendung nicht oberhalb des Sperrbildschirms angezeigt wird, muss sie `ConversationalAgentSession.RequestForegroundActivationAsync` aufrufen. Hierdurch wird die `OnLaunched`-Methode in „App.xaml.cs“ ausgelöst, und es sollte ein Navigationsvorgang zu der Ansicht erfolgen, die oberhalb des Sperrbildschirms angezeigt wird.
 
 ### <a name="detecting-lock-screen-transitions"></a>Erkennen von Sperrbildschirm-Übergängen
 

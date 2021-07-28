@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: a5a7af768875efd4733070b85bacd1916f897f27
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: b30fee5d269a633173b8524ed6c902517063b2a2
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063779"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985992"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Schnellstart: Ausführen des Onboardings für Azure Sentinel
 
@@ -43,9 +43,9 @@ Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von profes
 
 - Azure Sentinel kann für Arbeitsbereiche in den meisten [GA-Regionen von Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) mit Ausnahme der Regionen China und Deutschland (Sovereign) ausgeführt werden. Bisweilen kann das Onboarding des Azure Sentinel-Diensts für neue Log Analytics-Regionen einige Zeit dauern. 
 
-- Von Azure Sentinel generierte Daten, z. B. Incidents, Lesezeichen und Analyseregeln, enthalten ggf. Kundendaten, die aus den Log Analytics-Arbeitsbereichen des Kunden stammen. Diese von Azure Sentinel generierten Daten werden in einer der geografischen Regionen gespeichert, die in der folgenden Tabelle aufgeführt sind (basierend auf der Region, in der sich der Arbeitsbereich befindet):
+- Von Azure Sentinel generierte Daten, z. B. Incidents, Lesezeichen und Analyseregeln, enthalten ggf. Kundendaten, die aus den Log Analytics-Arbeitsbereichen des Kunden stammen. Diese von Azure Sentinel generierten Daten werden in den geografischen Gebieten/Regionen gespeichert, die in der folgenden Tabelle aufgeführt sind (basierend auf dem Gebiet/der Region, in denen sich der Arbeitsbereich befindet):
 
-    | Geografische Region des Arbeitsbereichs | Geografische Region für von Azure Sentinel generierte Daten |
+    | Geografisches Gebiet/Region des Arbeitsbereichs | Geografisches Gebiet/Region für von Azure Sentinel generierte Daten |
     | --- | --- |
     | USA<br>Indien<br>Brasilien<br>Afrika<br>Korea<br>Vereinigte Arabische Emirate | USA |
     | Europa<br>Frankreich<br>Schweiz | Europa |
@@ -53,7 +53,13 @@ Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von profes
     | United Kingdom | United Kingdom |
     | Canada | Canada |
     | Japan | Japan |
+    | Asien, Südosten (Singapur) | Asien, Südosten (Singapur)* |
     |
+    
+    \* Für Asien, Südosten steht keine gekoppelte Region zur Verfügung.
+
+    > [!IMPORTANT]
+    > - Durch Aktivieren bestimmter Regeln, die die Machine Learning-Engine (ML) verwenden, **erteilen Sie Microsoft die Berechtigung zum Kopieren von relevanten erfassten Daten außerhalb der geografischen Region Ihres Azure Sentinel-Arbeitsbereichs**, da dies möglicherweise für die Verarbeitung dieser Regeln durch die Machine Learning-Engine erforderlich ist.
 
 ## <a name="enable-azure-sentinel"></a>Aktivieren von Azure Sentinel <a name="enable"></a>
 

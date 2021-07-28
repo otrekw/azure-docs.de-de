@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 32715ad1a01366d7d56e6fa8129151b15c315e1d
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 73e42ac1f076b67d31cbad0823ea63db40045c1e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504174"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746031"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Aktivieren der Protokollierung im Speech SDK
 
@@ -68,7 +68,15 @@ StorageFile logFile = await storageFolder.CreateFileAsync("logfile.txt", Creatio
 config.SetProperty(PropertyId.Speech_LogFilename, logFile.Path);
 ```
 
-Weitere Informationen zur Dateizugriffsberechtigung für UWP-Anwendungen finden Sie [hier](/windows/uwp/files/file-access-permissions).
+Innerhalb einer Unity-UWP-Anwendung kann eine Protokolldatei wie folgt mithilfe des Ordners für den persistenten Datenpfad der Anwendung erstellt werden:
+
+```csharp
+#if ENABLE_WINMD_SUPPORT
+    string logFile = Application.persistentDataPath + "/logFile.txt";
+    config.SetProperty(PropertyId.Speech_LogFilename, logFile);
+#endif
+```
+Weitere Informationen zu Dateizugriffsberechtigungen in UWP-Anwendungen finden Sie unter [Dateizugriffsberechtigungen](/windows/uwp/files/file-access-permissions).
 
 ### <a name="android"></a>Android
 
@@ -92,11 +100,21 @@ Sie müssen auch die Berechtigung `WRITE_EXTERNAL_STORAGE` in der Manifestdatei 
 </manifest>
 ```
 
+Innerhalb einer Android-UWP-Anwendung kann die Protokolldatei wie folgt mithilfe des Ordners für den persistenten Datenpfad der Anwendung erstellt werden:
+
+```csharp
+string logFile = Application.persistentDataPath + "/logFile.txt";
+config.SetProperty(PropertyId.Speech_LogFilename, logFile);
+```
+Darüber hinaus müssen Sie auch die Schreibberechtigung in Ihren Unity Player-Einstellungen für Android auf „External (SDCard)“ (Extern (SDCard)) festlegen. Das Protokoll wird in ein Verzeichnis geschrieben, das Sie mithilfe eines Tools wie AndroidStudio Device File Explorer abrufen können. Der genaue Verzeichnispfad kann zwischen Android-Geräten variieren. Der Speicherort ist in der Regel das Verzeichnis `sdcard/Android/data/your-app-packagename/files`.
+
 Weitere Informationen zur Daten- und Dateispeicherung für Android-Anwendungen finden Sie [hier](https://developer.android.com/guide/topics/data/data-storage.html).
 
 #### <a name="ios"></a>iOS
 
-Nur Verzeichnisse innerhalb der Sandbox der Anwendung sind zugänglich. Dateien können in den Verzeichnissen für Dokumente, Bibliotheken und temporäre Daten erstellt werden. Dateien im Dokumentenverzeichnis können einem Benutzer zur Verfügung gestellt werden Der folgende Codeausschnitt zeigt die Erstellung einer Protokolldatei im Verzeichnis der Anwendungsdokumente:
+Nur Verzeichnisse innerhalb der Sandbox der Anwendung sind zugänglich. Dateien können in den Verzeichnissen für Dokumente, Bibliotheken und temporäre Daten erstellt werden. Dateien im Dokumentenverzeichnis können einem Benutzer zur Verfügung gestellt werden 
+
+Wenn Sie Objective-C unter iOS verwenden, erstellen Sie mithilfe des folgenden Codeausschnitts eine Protokolldatei im Dokumentverzeichnis der Anwendung:
 
 ```objc
 NSString *filePath = [
@@ -112,6 +130,14 @@ Um auf eine erstellte Datei zuzugreifen, fügen Sie die folgenden Eigenschaften 
 <true/>
 <key>LSSupportsOpeningDocumentsInPlace</key>
 <true/>
+```
+
+Wenn Sie Swift unter iOS verwenden, verwenden Sie den folgenden Codeausschnitt, um Protokolle zu aktivieren:
+```swift
+let documentsDirectoryPathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+let documentsDirectoryPath = NSURL(string: documentsDirectoryPathString)!
+let logFilePath = documentsDirectoryPath.appendingPathComponent("swift.log")
+self.speechConfig!.setPropertyTo(logFilePath!.absoluteString, by: SPXPropertyId.speechLogFilename)
 ```
 
 Weitere Informationen zum iOS-Dateisystem finden Sie [hier](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html).

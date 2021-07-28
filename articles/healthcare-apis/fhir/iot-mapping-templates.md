@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: rabhaiya
-ms.openlocfilehash: 9b5fa3533aa521053a321a3f0ffdfad3505abb73
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 690a406c9cb0dd7644656c78236a2001ae0f0f2e
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112286667"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991593"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Zuordnungsvorlagen von Azure IoT-Konnektor für FHIR (Vorschauversion)
 In diesem Artikel erfahren Sie, wie Sie Azure IoT-Konnektor für Fast Healthcare Interoperability Resources (FHIR&#174;)* mithilfe von Zuordnungsvorlagen konfigurieren.
@@ -662,6 +662,6 @@ Stellt den FHIR-Datentyp [CodeableConcept](http://hl7.org/fhir/datatypes.html#Co
 Lesen Sie häufig gestellte Fragen zu Azure IoT-Konnektor für FHIR (Vorschauversion).
 
 >[!div class="nextstepaction"]
->[Azure IoT-Konnektor für FHIR – Häufig gestellte Fragen](fhir-faq.md)
+>[Azure IoT-Konnektor für FHIR – Häufig gestellte Fragen](fhir-faq.yml)
 
 *Im Azure-Portal wird Azure IoT-Konnektor für FHIR als „IoT-Konnektor (Vorschau)“ bezeichnet. FHIR ist eine eingetragene Marke von HL7 und wird mit Genehmigung von HL7 verwendet.

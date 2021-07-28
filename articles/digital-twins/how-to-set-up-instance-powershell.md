@@ -8,12 +8,12 @@ ms.date: 12/16/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 024b238ef9a6330831ae6cf4dcd6bb72d72dcc74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c52cd013d1a5d2cbde0ab88eac24d2fd3ef77d46
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98044270"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613525"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-powershell"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (PowerShell)
 
@@ -23,11 +23,10 @@ Dieser Artikel behandelt die Schritte zum **Einrichten einer neuen Azure Digital
 
 In dieser Version dieses Artikels werden diese Schritte manuell nacheinander mithilfe von [Azure PowerShell](/powershell/azure/new-azureps-module-az) durchlaufen.
 
-* Wenn Sie diese Schritte manuell mithilfe des Azure-Portals durchlaufen möchten, finden Sie weitere Informationen in der Portal-Version dieses Artikels: [*Verwenden Einrichten einer Instanz und der Authentifizierung (Portal)*](how-to-set-up-instance-portal.md).
-* Ein Beispiel zur Ausführung einer automatisierten Einrichtung mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels: [*Verwenden Einrichten einer Instanz und der Authentifizierung (per Skript)*](how-to-set-up-instance-scripted.md).
+* Wenn Sie diese Schritte manuell mithilfe des Azure-Portals durchlaufen möchten, finden Sie weitere Informationen in der Portal-Version dieses Artikels: [Verwenden Einrichten einer Instanz und der Authentifizierung (Portal)](how-to-set-up-instance-portal.md) .
+* Ein Beispiel zur Ausführung einer automatisierten Einrichtung mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels: [Verwenden Einrichten einer Instanz und der Authentifizierung (per Skript)](how-to-set-up-instance-scripted.md) .
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
-[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
 
@@ -38,10 +37,10 @@ In dieser Version dieses Artikels werden diese Schritte manuell nacheinander mit
        1. Stellen Sie eine Verbindung mit Ihrem Azure-Konto mit dem Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) her.
     * Bei Verwendung von Azure Cloud Shell:
         1. Weitere Informationen zu Cloud Shell finden Sie in der [Übersicht über Azure Cloud Shell](../cloud-shell/overview.md).
-        1. Öffnen Sie ein Cloud Shell-Fenster, indem Sie [diesen Link](https://shell.azure.com) in Ihrem Browser öffnen.
+        1. [Öffnen Sie in Ihrem Browser ein Azure Cloud Shell-Fenster](https://shell.azure.com).
         1. Stellen Sie in der Cloud Shell-Symbolleiste sicher, dass Ihre Cloud Shell für die Ausführung der PowerShell-Version festgelegt ist.
     
-            :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Cloud Shell-Fenster: Auswahl der PowerShell-Version":::
+            :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Screenshot: Fenster „Cloud Shell“ im Azure-Portal mit Auswahl der PowerShell-Version.":::
     
 1. Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie das entsprechende Abonnement auswählen, in dem die Ressourcen fakturiert werden sollen. Wählen Sie mit dem Cmdlet [Set-AzContext](/powershell/module/az.accounts/set-azcontext) ein bestimmtes Abonnement aus.
 
@@ -74,7 +73,7 @@ Hierzu müssen Sie Folgendes bereitstellen:
   New-AzResourceGroup -Name <name-for-your-resource-group> -Location <region>
   ```
 
-* Eine Region für die Bereitstellung. Informationen zu Regionen mit Unterstützung von Azure Digital Twins finden Sie unter [*Verfügbare Produkte nach Region*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
+* Eine Region für die Bereitstellung. Informationen zu Regionen mit Unterstützung von Azure Digital Twins finden Sie unter [Verfügbare Azure-Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
 * Ein Name für Ihre Instanz. Der Name der neuen Instanz muss innerhalb der Region für Ihr Abonnement eindeutig sein. Wenn in Ihrem Abonnement für die Region eine weitere Azure Digital Twins-Instanz vorhanden ist, die den angegeben Namen bereits verwendet, werden Sie aufgefordert, einen anderen Namen auszuwählen.
 
 Verwenden Sie im folgenden Befehl diese Werte, um die Instanz zu erstellen:
@@ -103,13 +102,20 @@ Get-AzDigitalTwinsInstance -ResourceGroupName <your-resource-group> -ResourceNam
 > [!TIP]
 > Sie können diesen Befehl jederzeit verwenden, um alle Eigenschaften Ihrer Instanz anzuzeigen.
 
-Beachten Sie die Angaben für **hostName**, **Name** und **ResourceGroup** der Azure Digital Twins-Instanz. Dies sind wichtige Werte, die Sie möglicherweise benötigen, wenn Sie mit Ihrer Azure Digital Twins-Instanz weiterarbeiten, um die Authentifizierung und die zugehörigen Azure-Ressourcen einzurichten. Wenn andere Benutzer in der Instanz programmieren, sollten Sie diese Werte mit ihnen teilen.
+Beachten Sie die Angaben für **host name**, **name** und **resource group** der Azure Digital Twins-Instanz. Dies sind wichtige Werte, die Sie möglicherweise benötigen, wenn Sie mit Ihrer Azure Digital Twins-Instanz weiterarbeiten, um die Authentifizierung und die zugehörigen Azure-Ressourcen einzurichten. Wenn andere Benutzer in der Instanz programmieren, sollten Sie diese Werte mit ihnen teilen.
 
 Die Azure Digital Twins-Instanz ist jetzt einsatzbereit. Im nächsten Schritt stellen Sie die entsprechenden Azure-Benutzerberechtigungen für die Verwaltung der Instanz zur Verfügung.
 
 ## <a name="set-up-user-access-permissions"></a>Einrichten von Benutzerzugriffsberechtigungen
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
+
+### <a name="prerequisites-permission-requirements"></a>Voraussetzungen: Berechtigungsanforderungen
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
+
+### <a name="assign-the-role"></a>Zuweisen der Rolle
+
+Um einem Benutzer Berechtigungen zum Verwalten einer Azure Digital Twins-Instanz zu gewähren, müssen Sie ihm die Rolle _**Azure Digital Twins Data Owner**_ (Azure Digital Twins-Datenbesitzer) innerhalb der Instanz zuweisen.
 
 Ermitteln Sie zunächst den Wert für **ObjectId** für das Azure AD-Konto des Benutzers, dem die Rolle zugewiesen werden soll. Diesen Wert finden Sie, indem Sie das Cmdlet [Get-AzAdUser](/powershell/module/az.resources/get-azaduser) verwenden. Dabei übergeben Sie den Benutzerprinzipalnamen für das Azure AD-Konto, um den dazugehörigen ObjectId-Wert (und weitere Informationen zum Benutzer) abzurufen. In den meisten Fällen entspricht der Benutzerprinzipalname der E-Mail-Adresse des Benutzers im Azure AD-Konto.
 
@@ -121,9 +127,9 @@ Als Nächstes verwenden Sie den Wert für **ObjectId** im folgenden Befehl, um d
 
 ```azurepowershell-interactive
 $Params = @{
-  ObjectId = '<Azure-AD-user-object-id-of-user-to-assign>'
+  ObjectId = '<Azure-AD-user-object-ID-of-user-to-assign>'
   RoleDefinitionName = 'Azure Digital Twins Data Owner'
-  Scope = '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DigitalTwins/digitalTwinsInstances/<name-for-your-Azure-Digital-Twins-instance>'
+  Scope = '/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.DigitalTwins/digitalTwinsInstances/<name-for-your-Azure-Digital-Twins-instance>'
 }
 New-AzRoleAssignment @Params
 ```
@@ -139,4 +145,4 @@ Sie verfügen nun über eine einsatzbereite Azure Digital Twins-Instanz und habe
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie können auch eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie Authentifizierungscode verwenden:
-* [*Verwenden Schreiben von App-Authentifizierungscode*](how-to-authenticate-client.md)
+* [Verwenden Schreiben von App-Authentifizierungscode](how-to-authenticate-client.md)

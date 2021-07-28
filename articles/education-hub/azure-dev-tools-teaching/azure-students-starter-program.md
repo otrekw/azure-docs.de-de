@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: d29fb34fd16293eee014c28cbbc39ec9a0ab7813
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bc40b149da61936240562d13f8556e4bf0ce8890
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064934"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460204"
 ---
 # <a name="azure-for-students-starter"></a>Azure for Students Starter
 
@@ -31,7 +31,7 @@ Dieses Angebot ist nicht für die Nutzung in einem Massive Open Online Course (M
 
 Dieses Angebot ist auf ein Azure for Students Starter-Abonnement pro berechtigtem Kunden beschränkt. Es ist nicht übertragbar und kann nicht mit anderen Angeboten kombiniert werden, es sei denn, dies wird von Microsoft anderweitig gestattet.
 
-Eine Kreditkarte ist für das Azure for Students Starter-Angebot nicht erforderlich. Allerdings können Sie jederzeit ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen, um Zugriff auf alle Azure-Dienste zu erhalten. Verwenden Sie dazu das [Azure-Kontoportal](https://account.azure.com/).
+Eine Kreditkarte ist für das Azure for Students Starter-Angebot nicht erforderlich. Allerdings können Sie im [Azure-Portal](https://portal.azure.com/) jederzeit ein Upgrade auf ein Abonnement mit nutzungsbasierter Zahlung durchführen, um Zugriff auf alle Azure-Dienste zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Hilfe bei Anmeldefehlern](troubleshoot-login.md)

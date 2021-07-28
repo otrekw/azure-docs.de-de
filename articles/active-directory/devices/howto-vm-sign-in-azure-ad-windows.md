@@ -1,40 +1,38 @@
 ---
-title: Anmelden bei einem virtuellen Windows-Computer in Azure mithilfe von Azure Active Directory (Vorschau)
+title: Anmelden bei einem virtuellen Windows-Computer in Azure mithilfe von Azure Active Directory
 description: Azure AD-Anmeldung bei einem virtuellen Azure-Computer unter Windows
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 05/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 418741c10dfe5f0678d7771d046781697512bafe
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e29aab4db0e568d06ab3d5f0f898b2fec9fee181
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776499"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732792"
 ---
-# <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
+# <a name="login-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
-Organisationen können nun die Azure Active Directory-Authentifizierung (Azure AD) für ihre virtuellen Azure-Computer verwenden, auf denen **Windows Server 2019 Datacenter Edition** oder **Windows 10 1809** und höher ausgeführt wird. Durch Verwendung von Azure AD für die Authentifizierung bei virtuellen Computern haben Sie die Möglichkeit, Richtlinien zentral zu steuern und zu erzwingen. Mit Tools wie der rollenbasierten Zugriffssteuerung (RBAC) in Azure und dem bedingten Azure AD-Zugriff können Sie steuern, wer auf eine VM zugreifen kann. In diesem Artikel wird beschrieben, wie Sie einen virtuellen Windows Server 2019-Computer zur Verwendung der Azure AD-Authentifizierung erstellen und konfigurieren.
+Organisationen können jetzt die Sicherheit von virtuellen Windows-Computern (VMs) in Azure verbessern, indem sie die Azure Active Directory-Authentifizierung integrieren. Sie können jetzt Azure AD als Hauptauthentifizierungsplattform für RDP in einer **Windows Server 2019 Datacenter-Edition** oder unter **Windows 10 1809** und höher verwenden. Darüber hinaus können Sie die rollenbasierte Zugriffssteuerung (RBAC) von Azure und die Richtlinien für bedingten Zugriff, die den Zugriff auf virtuelle Computer zulassen oder verweigern, zentral steuern und erzwingen. In diesem Artikel wird beschrieben, wie Sie einen virtuellen Windows-Computer erstellen und konfigurieren und sich mithilfe der Azure AD-gestützten Authentifizierung anmelden.
 
-> [!NOTE]
-> Die Azure AD-Anmeldung für virtuelle Azure Windows-Computer ist eine öffentliche Previewfunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Die Verwendung der Azure AD-gestützten Authentifizierung für die Anmeldung bei virtuellen Windows-Computern in Azure bietet in Bezug auf die Sicherheit viele Vorteile. Dazu zählen:
+- Verwenden der AD-Anmeldeinformationen Ihres Unternehmens zum Anmelden bei virtuellen Windows-Computern in Azure.
+- Reduzieren der Abhängigkeit von lokalen Administratorkonten. Sie müssen sich nicht damit auseinandersetzen, dass Anmeldeinformationen verloren gehen oder gestohlen werden, dass Benutzer unsichere Anmeldeinformationen konfigurieren usw.
+- Auch die für Ihr Azure AD-Verzeichnis konfigurierten Richtlinien für die Kennwortkomplexität und Kennwortgültigkeitsdauer tragen zur Sicherheit von virtuellen Windows-Computern bei.
+- Mit der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie angeben, wer sich bei einem virtuellen Computer als normaler Benutzer oder mit Administratorrechten anmelden kann. Wenn Benutzer Ihrem Team beitreten oder es verlassen, können Sie die Azure RBAC-Richtlinie für den virtuellen Computer aktualisieren, um den Zugriff entsprechend zuzuweisen. Wenn Mitarbeiter Ihre Organisation verlassen und ihre Benutzerkonten in Azure AD deaktiviert oder entfernt werden, haben sie keinen Zugriff mehr auf Ihre Ressourcen.
+- Konfigurieren Sie mit dem bedingten Zugriff Richtlinien, um die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) und andere Signale wie geringes Benutzer- und Anmelderisiko anzufordern, bevor Sie eine RDP-Verbindung mit einem virtuellen Windows-Computer herstellen können. 
+- Verwenden Sie Azure-Bereitstellungs- und Überwachungsrichtlinien, um die Azure AD-Anmeldung für virtuelle Windows-Computer zu erzwingen und die Verwendung nicht genehmigter lokaler Konten auf virtuellen Computern zu kennzeichnen.
+- Die Anmeldung bei virtuellen Windows-Computern mit Azure Active Directory funktioniert auch bei Kunden, die Verbunddienste nutzen.
+- Automatisieren und skalieren Sie die Azure AD-Einbindung mit der automatischen MDM-Registrierung bei Intune von virtuellen Azure Windows-Computern, die Teil Ihrer VDI-Bereitstellungen sind. Die automatische MDM-Registrierung erfordert eine Azure AD P1-Lizenz. Bei virtuellen Computern mit Windows Server 2019 wird keine MDM-Registrierung unterstützt.
 
-Die Verwendung der Azure AD-Authentifizierung für die Anmeldung bei virtuellen Windows-Computern in Azure bietet viele Vorteile, z. B.:
-
-- Verwenden der gleichen verbundbasierten oder verwalteten Azure AD-Anmeldeinformationen, die Sie normalerweise verwenden
-- Keine Verwaltung von lokalen Administratorkonten mehr erforderlich
-- Mit Azure RBAC können Sie den entsprechenden Zugriff auf virtuelle Computer nach Bedarf gewähren und entfernen, wenn er nicht mehr benötigt wird.
-- Bevor der Zugriff auf einen virtuellen Computer zugelassen wird, können mit dem bedingten Azure AD-Zugriff zusätzliche Anforderungen erzwungen werden, z. B.: 
-   - Multi-Factor Authentication
-   - Überprüfung des Anmelderisikos
-- Automatisieren und Skalieren der Azure AD-Einbindung von virtuellen Azure Windows-Computern, die Teil Ihrer VDI-Bereitstellungen sind
 
 > [!NOTE]
 > Nachdem Sie diese Funktion aktiviert haben, werden Ihre virtuellen Windows-Computer in Azure mit Azure AD verknüpft. Es ist nicht möglich, sie mit einer anderen Domäne wie dem lokalen Active Directory oder Azure AD DS zu verknüpfen. Wenn dies erforderlich ist, müssen Sie die VM von Ihrem Azure AD-Mandanten trennen, indem Sie die Erweiterung deinstallieren.
@@ -43,7 +41,7 @@ Die Verwendung der Azure AD-Authentifizierung für die Anmeldung bei virtuellen
 
 ### <a name="supported-azure-regions-and-windows-distributions"></a>Unterstützte Azure-Regionen und Windows-Distributionen
 
-Während der Vorschauphase dieser Funktion werden derzeit die folgenden Windows-Distributionen unterstützt:
+Für diese Funktion werden derzeit die folgenden Windows-Distributionen unterstützt:
 
 - Windows Server 2019 Datacenter
 - Windows 10 1809 und höher
@@ -51,21 +49,38 @@ Während der Vorschauphase dieser Funktion werden derzeit die folgenden Windows-
 > [!IMPORTANT]
 > Eine Remoteverbindung mit in Azure AD eingebundenen virtuellen Computern ist nur von Windows 10-PCs zulässig, die entweder in Azure AD registriert (ab Windows 10 20H1) oder über Azure AD normal oder hybrid im **selben** Verzeichnis wie der virtuelle Computer eingebunden sind. 
 
-Während der Vorschauphase dieses Features werden derzeit die folgenden Azure-Regionen unterstützt:
+Diese Funktion ist jetzt in den folgenden Azure-Clouds verfügbar:
 
-- Alle globalen Azure-Regionen
+- Azure Global
+- Azure Government
+- Azure China
 
-> [!IMPORTANT]
-> Zur Verwendung dieser Previewfunktion kann die Bereitstellung nur in einer unterstützten Windows-Distribution und in einer unterstützten Azure-Region erfolgen. Die Funktion wird aktuell in einer Azure Government Cloud oder Sovereign Cloud nicht unterstützt.
+
 
 ### <a name="network-requirements"></a>Netzwerkanforderungen
 
 Zum Aktivieren der Azure AD-Authentifizierung für Ihre virtuellen Windows-Computer in Azure müssen Sie sicherstellen, dass die Netzwerkkonfiguration der virtuellen Computer den ausgehenden Zugriff auf die folgenden Endpunkte über TCP-Port 443 zulässt:
 
-- `https://enterpriseregistration.windows.net`
-- `https://login.microsoftonline.com`
-- `https://device.login.microsoftonline.com`
-- `https://pas.windows.net`
+Azure Global
+- `https://enterpriseregistration.windows.net`: Für die Geräteregistrierung.
+- `http://169.254.169.254`: Endpunkt des Azure Instance Metadata Service.
+- `https://login.microsoftonline.com`: Für Authentifizierungsflows.
+- `https://pas.windows.net`: Für Azure RBAC-Flows.
+
+
+Azure Government
+- `https://enterpriseregistration.microsoftonline.us`: Für die Geräteregistrierung.
+- `http://169.254.169.254`: Azure Instance Metadata Service.
+- `https://login.microsoftonline.us`: Für Authentifizierungsflows.
+- `https://pasff.usgovcloudapi.net`: Für Azure RBAC-Flows.
+
+
+Azure China
+- `https://enterpriseregistration.partner.microsoftonline.cn`: Für die Geräteregistrierung.
+- `http://169.254.169.254`: Endpunkt des Azure Instance Metadata Service.
+- `https://login.chinacloudapi.cn`: Für Authentifizierungsflows.
+- `https://pas.chinacloudapi.cn`: Für Azure RBAC-Flows.
+
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Aktivieren der Azure AD-Anmeldung für einen virtuellen Windows-Computer in Azure
 
@@ -85,9 +100,9 @@ So erstellen Sie einen virtuellen Windows Server 2019 Datacenter-Computer in Az
 1. Geben Sie **Windows Server** auf der Suchleiste „Marketplace durchsuchen“ ein.
    1. Klicken Sie auf **Windows Server**, und wählen Sie in der Dropdownliste „Softwareplan auswählen“ den Eintrag **Windows Server 2019 Datacenter** aus.
    1. Klicken Sie auf **Erstellen**.
-1. Ändern Sie auf der Registerkarte „Verwaltung“ im Bereich „Azure Active Directory“ die Option für **Mit AAD-Anmeldeinformationen anmelden (Vorschau)** von „Aus“ in **Ein**.
+1. Ändern Sie im Abschnitt „Azure Active Directory“ auf der Registerkarte „Verwaltung“ die Option für **Mit AAD-Anmeldeinformationen anmelden** von „Aus“ in **Ein**.
 1. Stellen Sie sicher, dass **Systemseitig zugewiesene verwaltete Identität** im Bereich „Identität“ auf **Ein** festgelegt ist. Dies sollte automatisch erfolgen, nachdem Sie „Mit AAD-Anmeldeinformationen anmelden“ aktiviert haben.
-1. Führen Sie die weiteren Schritte zum Erstellen eines virtuellen Computers aus. Während dieser Vorschauphase müssen Sie einen Administratorbenutzernamen und ein Administratorkennwort für den virtuellen Computer erstellen.
+1. Führen Sie die weiteren Schritte zum Erstellen eines virtuellen Computers aus. Sie müssen einen Administratorbenutzernamen und ein Kennwort für den virtuellen Computer erstellen.
 
 ![Anmelden mit Azure AD-Anmeldeinformationen zum Erstellen eines virtuellen Computers](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-login-with-azure-ad.png)
 
@@ -227,6 +242,10 @@ Sie sind nun mit den entsprechend zugewiesenen Rollenberechtigungen (z. B. „V
 > [!NOTE]
 > Sie können die RDP-Datei lokal auf dem Computer speichern, um damit zukünftige Remotedesktopverbindungen mit dem virtuellen Computer zu starten, anstatt zur Übersichtsseite des virtuellen Computers im Azure-Portal navigieren und die Option „Verbinden“ verwenden zu müssen.
 
+## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>Verwenden von Azure Policy zum Sicherstellen von Standards und für die Konformitätsbewertung
+
+Verwenden Sie Azure Policy, um sicherzustellen, dass die Azure AD-Anmeldung für Ihre neuen und vorhandenen virtuellen Windows-Computer aktiviert ist, und bewerten Sie bedarfsgerecht die Konformität Ihrer Umgebung auf dem Compliance-Dashboard von Azure Policy. Mit dieser Funktion können Sie viele Erzwingungsstufen verwenden: Sie können neue und vorhandene virtuelle Windows-Computer in Ihrer Umgebung kennzeichnen, für die keine Azure AD-Anmeldung aktiviert ist. Sie können Azure Policy auch zum Bereitstellen der Azure AD-Erweiterung auf neuen virtuellen Windows-Computern verwenden, auf denen diese noch nicht aktiviert ist. Sie können aber auch vorhandene virtuelle Windows-Computer auf denselben Standard aktualisieren. Neben diesen Funktionen können Sie Azure Policy auch zum Erkennen und Kennzeichnen von virtuellen Windows-Computern verwenden, auf denen nicht genehmigte lokale Konten erstellt wurden. Weitere Informationen finden Sie unter [Azure Policy](https://www.aka.ms/AzurePolicy).
+
 ## <a name="troubleshoot"></a>Problembehandlung
 
 ### <a name="troubleshoot-deployment-issues"></a>Problembehandlung bei Bereitstellungsproblemen
@@ -314,7 +333,7 @@ Dieser Exitcode ergibt `DSREG_AUTOJOIN_DISC_FAILED`, da die Erweiterung den Endp
 
 Der Exitcode „51“ ergibt „Diese Erweiterung wird vom Betriebssystem der VM nicht unterstützt“.
 
-In der öffentlichen Vorschauphase ist die Erweiterung AADLoginForWindows nur für die Installation unter Windows Server 2019 oder Windows 10 (Build 1809 oder höher) vorgesehen. Vergewissern Sie sich, dass die Windows-Version unterstützt wird. Wenn der Windows-Build nicht unterstützt wird, deinstallieren Sie die VM-Erweiterung.
+Die Erweiterung „AADLoginForWindows“ ist nur für die Installation unter Windows Server 2019 oder Windows 10 (Build 1809 oder höher) vorgesehen. Vergewissern Sie sich, dass die Windows-Version unterstützt wird. Wenn der Windows-Build nicht unterstützt wird, deinstallieren Sie die VM-Erweiterung.
 
 ### <a name="troubleshoot-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung
 
@@ -369,9 +388,7 @@ Wenn Sie Windows Hello for Business nicht bereitgestellt haben und dies derzeit 
 > [!NOTE]
 > Die Authentifizierung über die Windows Hello for Business-PIN mit RDP wird unter Windows 10 in mehreren Versionen unterstützt. Die Unterstützung für die biometrische Authentifizierung mit RDP wurde dagegen in Windows 10 Version 1809 hinzugefügt. Die Verwendung der Windows Hello for Business-Authentifizierung bei der RDP-Verbindung ist nur für Bereitstellungen verfügbar, die das Modell der Zertifikatvertrauensstellung verwenden und derzeit nicht für das Modell der schlüsselbasierten Vertrauensstellung verfügbar sind.
  
-## <a name="preview-feedback"></a>Feedback zur Vorschauversion
-
-Geben Sie Feedback zu dieser Previewfunktion, oder melden Sie Probleme bei der Verwendung der Funktion im [Azure AD-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+Geben Sie Feedback zu dieser Funktion, oder melden Sie Probleme bei der Verwendung der Funktion im [Azure AD-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

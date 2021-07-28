@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 01/15/2021
+ms.date: 05/25/2021
 ms.custom: designer
-ms.openlocfilehash: 1846b5478c824caa954b85ea6346d773f46b279c
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 73cc893815cf591812c95c8d8b092a4b58697917
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315667"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457646"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer
 
@@ -56,8 +56,8 @@ Zum Bereitstellen Ihrer Pipeline müssen Sie zunächst die Trainingspipeline in 
     * Die Module **Web Service Input** (Webdiensteingabe) und **Web Service Output** (Webdienstausgabe) werden hinzugefügt. Diese Module zeigen, wo Benutzerdaten in die Pipeline eingehen und wo sie zurückgegeben werden.
 
     > [!NOTE]
-    > Die **Webdiensteingabe** erwartet das gleiche Datenschema wie die Trainingsdaten, die zum Erstellen der Vorhersagepipeline verwendet wurden. In diesem Szenario ist der Preis im Schema enthalten. Der Preis wird bei der Vorhersage jedoch nicht als Faktor verwendet.
-    >
+    > Standardmäßig erwartet die **Webdiensteingabe** dasselbe Datenschema wie die Modulausgabedaten, die eine Verbindung mit demselben Downstreamport herstellen. In diesem Beispiel stellen **Web Service Input** (Webdiensteingabe) und **Automobile price data (Raw)** (Automobilpreisdaten (Rohdaten)) eine Verbindung mit demselben Downstreammodul her. Daher erwartet **Web Service Input** (Webdiensteingabe) dasselbe Datenschema wie **Automobile price data (Raw)** (Automobilpreisdaten (Rohdaten)) und die Zielvariablenspalte `price` ist im Schema enthalten.
+    > Wenn Sie die Daten bewerten, sind Ihnen jedoch normalerweise die Zielvariablenwerte nicht bekannt. In diesem Fall können Sie die Zielvariablenspalte in der Rückschlusspipeline mithilfe des Moduls **Select Columns in Dataset** (Spalten im Dataset auswählen) entfernen. Stellen Sie sicher, dass die Ausgabe von **Select Columns in Dataset** (Spalten im Dataset auswählen), die die Zielvariablenspalte entfernt, mit demselben Port wie die Ausgabe des Moduls **Web Service Intput** (Webdiensteingabe) verbunden ist.
 
 1. Wählen Sie **Übermitteln** aus, und verwenden Sie das gleiche Computeziel und Experiment wie im ersten Teil.
 

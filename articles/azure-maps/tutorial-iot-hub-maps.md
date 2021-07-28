@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9ebc6e266c93e55bc250e8450356f8b695dd9080
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 37aa8c954f847002ad69fa17ee1f025049ec9bb6
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714990"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785763"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Tutorial: Implementieren der räumlichen IoT-Analyse mit Azure Maps
 
@@ -24,7 +24,7 @@ In diesem Lernprogramm führen Sie folgende Schritte aus:
 
 > [!div class="checklist"]
 > * Erstellen eines Azure Storage-Kontos zur Protokollierung der Daten für die Fahrzeugnachverfolgung
-> * Hochladen eines Geofence per Datenupload-API in den Azure Maps-Datendienst (Vorschau)
+> * Hochladen eines Geofence mithilfe der Datenupload-API in den Azure Maps-Datendienst
 > * Erstellen eines Hubs in Azure IoT Hub und Registrieren eines Geräts
 > * Erstellen einer Funktion in Azure Functions und Implementieren von Geschäftslogik basierend auf einer räumlichen Azure Maps-Analyse
 > * Abonnieren von IoT-Gerätetelemetrieereignissen aus der Azure-Funktion per Azure Event Grid
@@ -126,33 +126,28 @@ Führen Sie die folgenden Schritte aus, um den Geofence mit der Datenupload-API 
 3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein, um die Geofencedaten in die Datenupload-API hochzuladen. Stellen Sie sicher, dass Sie `{subscription-key}` durch Ihren primären Abonnementschlüssel ersetzen.
 
     ```HTTP
-    https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
+    https://us.atlas.microsoft.com/mapData?subscription-key={subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
     Im URL-Pfad steht der Wert von `geojson` des Parameters `dataFormat` für das Format der hochzuladenden Daten.
 
 4. Wählen Sie **Body** > **raw** („Hauptteil“ > „Rohdaten“) als Eingabeformat und dann in der Dropdownliste die Option **JSON** aus. [Öffnen Sie die JSON-Datendatei](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4), und kopieren Sie den JSON-Code in den Textabschnitt. Klicken Sie auf **Senden**.
 
-5. Wählen Sie die Option **Send** (Senden) aus, und warten Sie auf die Verarbeitung der Anforderung. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort. Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`).
+5. Wählen Sie die Option **Send** (Senden) aus, und warten Sie auf die Verarbeitung der Anforderung. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`).
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0
+    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
     ```
 
 6. Erstellen Sie zum Überprüfen des Status des API-Aufrufs eine **GET**-HTTP-Anforderung für `status URL`. An die URL muss zur Authentifizierung der primäre Abonnementschlüssel angefügt werden. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={subscription-key}
+   https://us.atlas.microsoft.com/mapData/<operationId>/status?api-version=2.0&subscription-key={subscription-key}
    ```
-   
-7. Wenn die **GET**-HTTP-Anforderung erfolgreich abgeschlossen wurde, wird `resourceLocation` zurückgegeben. Der `resourceLocation` enthält die eindeutige `udid` für den hochgeladenen Inhalt. Kopieren Sie diese `udid` zur späteren Verwendung in diesem Tutorial.
 
-      ```json
-      {
-          "status": "Succeeded",
-          "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
-      }
-      ```
+7. Wenn die Anforderung erfolgreich abgeschlossen wurde, wählen Sie im Antwortfenster die Registerkarte **Header** aus. Kopieren Sie den Wert des Schlüssels **Resource Location** (Ressourcenspeicherort). Hierbei handelt es sich um die URL des Ressourcenspeicherorts (`resource location URL`).  Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`udid`) der hochgeladenen Daten. Kopieren Sie den Wert von `udid` zur späteren Verwendung in diesem Tutorial.
+
+    :::image type="content" source="./media/tutorial-iot-hub-maps/resource-location-url.png" alt-text="Kopieren Sie die URL des Ressourcenspeicherorts.":::
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 

@@ -3,20 +3,20 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/19/2021
+ms.date: 06/11/2021
 ms.author: aahi
-ms.openlocfilehash: 42716c4e2c4aa2e76242034b493f4181632f0fe9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b94aaff50547830c796e3461a55126b3d54d905a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110165108"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112083669"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
 
-[v3.1-Referenzdokumentation](/python/api/azure-ai-textanalytics/azure.ai.textanalytics) | [v3.1-Bibliotheksquellcode](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [v3.1-Paket (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3.1-Beispiele](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3.1-Referenzdokumentation](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview) | [v3.1-Bibliotheksquellcode](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [v3.1-Paket (PiPy)](https://pypi.org/project/azure-ai-textanalytics/5.1.0b7/) | [v3.1-Beispiele](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
@@ -42,7 +42,7 @@ Nach der Installation von Python, können Sie die Clientbibliothek mit Folgendem
 # <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
 
 ```console
-pip install azure-ai-textanalytics --pre
+pip install azure-ai-textanalytics==5.1.0b7
 ```
 
 > [!TIP]
@@ -229,7 +229,62 @@ Neutral=0.77
 Negative=0.02
 ```
 
+
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+Erstellen Sie eine neue Funktion namens `sentiment_analysis_example()`, die den Client als Argument akzeptiert und anschließend die Funktion `analyze_sentiment()` aufruft. Das zurückgegebene Antwortobjekt enthält die Stimmungsbezeichnung und den Stimmungswert des gesamten Eingabedokuments sowie eine Standpunktanalyse für jeden Satz.
+
+
+```python
+def sentiment_analysis_example(client):
+
+    documents = ["I had the best day of my life. I wish you were there with me."]
+    response = client.analyze_sentiment(documents = documents)[0]
+    print("Document Sentiment: {}".format(response.sentiment))
+    print("Overall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} \n".format(
+        response.confidence_scores.positive,
+        response.confidence_scores.neutral,
+        response.confidence_scores.negative,
+    ))
+    for idx, sentence in enumerate(response.sentences):
+        print("Sentence: {}".format(sentence.text))
+        print("Sentence {} sentiment: {}".format(idx+1, sentence.sentiment))
+        print("Sentence score:\nPositive={0:.2f}\nNeutral={1:.2f}\nNegative={2:.2f}\n".format(
+            sentence.confidence_scores.positive,
+            sentence.confidence_scores.neutral,
+            sentence.confidence_scores.negative,
+        ))
+          
+sentiment_analysis_example(client)
+```
+
+### <a name="output"></a>Output
+
+```console
+Document Sentiment: positive
+Overall scores: positive=1.00; neutral=0.00; negative=0.00 
+
+Sentence: I had the best day of my life.
+Sentence 1 sentiment: positive
+Sentence score:
+Positive=1.00
+Neutral=0.00
+Negative=0.00
+
+Sentence: I wish you were there with me.
+Sentence 2 sentiment: neutral
+Sentence score:
+Positive=0.21
+Neutral=0.77
+Negative=0.02
+```
+
+---
+
 ## <a name="opinion-mining"></a>Opinion Mining
+
+# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+
 
 Zum Durchführen von Stimmungsanalyse mit Opinion Mining erstellen Sie eine neue Funktion mit dem Namen `sentiment_analysis_with_opinion_mining_example()`, die den Client als Argument annimmt und dann die Funktion `analyze_sentiment()` mit dem Optionsflag `show_opinion_mining=True` aufruft. Das zurückgegebene Antwortobjekt enthält nicht nur die Stimmungsbezeichnung und den Stimmungswert des gesamten Eingabedokuments mit einer Stimmungsanalyse für jeden Satz, sondern außerdem die Standpunktanalyse auf Ansichts- und Meinungsebene.
 
@@ -336,54 +391,9 @@ Press any key to continue . . .
 
 ```
 
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+# <a name="version-30-preview"></a>[Version 3.0 (Vorschau)](#tab/version-3)
 
-Erstellen Sie eine neue Funktion namens `sentiment_analysis_example()`, die den Client als Argument akzeptiert und anschließend die Funktion `analyze_sentiment()` aufruft. Das zurückgegebene Antwortobjekt enthält die Stimmungsbezeichnung und den Stimmungswert des gesamten Eingabedokuments sowie eine Standpunktanalyse für jeden Satz.
-
-
-```python
-def sentiment_analysis_example(client):
-
-    documents = ["I had the best day of my life. I wish you were there with me."]
-    response = client.analyze_sentiment(documents = documents)[0]
-    print("Document Sentiment: {}".format(response.sentiment))
-    print("Overall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} \n".format(
-        response.confidence_scores.positive,
-        response.confidence_scores.neutral,
-        response.confidence_scores.negative,
-    ))
-    for idx, sentence in enumerate(response.sentences):
-        print("Sentence: {}".format(sentence.text))
-        print("Sentence {} sentiment: {}".format(idx+1, sentence.sentiment))
-        print("Sentence score:\nPositive={0:.2f}\nNeutral={1:.2f}\nNegative={2:.2f}\n".format(
-            sentence.confidence_scores.positive,
-            sentence.confidence_scores.neutral,
-            sentence.confidence_scores.negative,
-        ))
-          
-sentiment_analysis_example(client)
-```
-
-### <a name="output"></a>Output
-
-```console
-Document Sentiment: positive
-Overall scores: positive=1.00; neutral=0.00; negative=0.00 
-
-Sentence: I had the best day of my life.
-Sentence 1 sentiment: positive
-Sentence score:
-Positive=1.00
-Neutral=0.00
-Negative=0.00
-
-Sentence: I wish you were there with me.
-Sentence 2 sentiment: neutral
-Sentence score:
-Positive=0.21
-Neutral=0.77
-Negative=0.02
-```
+Dieses Feature ist in Version 3.0 nicht verfügbar.
 
 ---
 
@@ -444,7 +454,7 @@ Language:  French
 
 ---
 
-## <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (Named Entity Recognition, NER)
+## <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (NER)
 
 # <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
 
@@ -486,7 +496,88 @@ Named Entities:
         Confidence Score:        0.8    Length:          9      Offset:          34
 ```
 
-### <a name="entity-linking"></a>Entitätsverknüpfung
+### <a name="personally-identifiable-information-recognition"></a>Erkennung von personenbezogenen Informationen
+
+Erstellen Sie eine neue Funktion namens `pii_recognition_example`, die den Client als Argument akzeptiert und anschließend die Funktion `recognize_pii_entities()` aufruft und die Ergebnisse durchläuft. Das zurückgegebene Antwortobjekt enthält die Liste erkannter Entitäten in `entity` (sofern erfolgreich). Andernfalls enthält es eine Fehlermeldung (`error`). Geben Sie für die erkannten Entitäten jeweils die Kategorie und Unterkategorie aus (sofern vorhanden).
+
+```python
+def pii_recognition_example(client):
+    documents = [
+        "The employee's SSN is 859-98-0987.",
+        "The employee's phone number is 555-555-5555."
+    ]
+    response = client.recognize_pii_entities(documents, language="en")
+    result = [doc for doc in response if not doc.is_error]
+    for doc in result:
+        print("Redacted Text: {}".format(doc.redacted_text))
+        for entity in doc.entities:
+            print("Entity: {}".format(entity.text))
+            print("\tCategory: {}".format(entity.category))
+            print("\tConfidence Score: {}".format(entity.confidence_score))
+            print("\tOffset: {}".format(entity.offset))
+            print("\tLength: {}".format(entity.length))
+pii_recognition_example(client)
+```
+
+### <a name="output"></a>Output
+
+```console
+Redacted Text: The employee's SSN is ***********.
+Entity: 859-98-0987
+        Category: U.S. Social Security Number (SSN)
+        Confidence Score: 0.65
+        Offset: 22
+        Length: 11
+Redacted Text: The employee's phone number is ************.
+Entity: 555-555-5555
+        Category: Phone Number
+        Confidence Score: 0.8
+        Offset: 31
+        Length: 12
+```
+
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+Erstellen Sie eine neue Funktion namens `entity_recognition_example`, die den Client als Argument akzeptiert und anschließend die Funktion `recognize_entities()` aufruft und die Ergebnisse durchläuft. Das zurückgegebene Antwortobjekt enthält die Liste erkannter Entitäten in `entity` (sofern erfolgreich). Andernfalls enthält es eine Fehlermeldung (`error`). Geben Sie für die erkannten Entitäten jeweils die Kategorie und Unterkategorie aus (sofern vorhanden).
+
+```python
+def entity_recognition_example(client):
+
+    try:
+        documents = ["I had a wonderful trip to Seattle last week."]
+        result = client.recognize_entities(documents = documents)[0]
+
+        print("Named Entities:\n")
+        for entity in result.entities:
+            print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
+                    "\n\tConfidence Score: \t", round(entity.confidence_score, 2), "\n")
+
+    except Exception as err:
+        print("Encountered exception. {}".format(err))
+entity_recognition_example(client)
+```
+
+### <a name="output"></a>Output
+
+```console
+Named Entities:
+
+        Text:    trip   Category:        Event  SubCategory:     None
+        Confidence Score:        0.61
+
+        Text:    Seattle        Category:        Location       SubCategory:     GPE
+        Confidence Score:        0.82
+
+        Text:    last week      Category:        DateTime       SubCategory:     DateRange
+        Confidence Score:        0.8
+```
+
+
+---
+
+## <a name="entity-linking"></a>Entitätsverknüpfung
+
+# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
 
 Erstellen Sie eine neue Funktion namens `entity_linking_example()`, die den Client als Argument akzeptiert und anschließend die Funktion `recognize_linked_entities()` aufruft und die Ergebnisse durchläuft. Das zurückgegebene Antwortobjekt enthält die Liste erkannter Entitäten in `entities` (sofern erfolgreich). Andernfalls enthält es eine Fehlermeldung (`error`). Da verknüpfte Entitäten eindeutig identifiziert werden, werden Vorkommen der gleichen Entität unter einem Objekt vom Typ `entity` als Liste von Objekten des Typs `match` gruppiert.
 
@@ -574,87 +665,7 @@ Linked Entities:
                 Length: 11
 ```
 
-### <a name="personally-identifiable-information-recognition"></a>Erkennung von personenbezogenen Informationen
-
-Erstellen Sie eine neue Funktion namens `pii_recognition_example`, die den Client als Argument akzeptiert und anschließend die Funktion `recognize_pii_entities()` aufruft und die Ergebnisse durchläuft. Das zurückgegebene Antwortobjekt enthält die Liste erkannter Entitäten in `entity` (sofern erfolgreich). Andernfalls enthält es eine Fehlermeldung (`error`). Geben Sie für die erkannten Entitäten jeweils die Kategorie und Unterkategorie aus (sofern vorhanden).
-
-```python
-def pii_recognition_example(client):
-    documents = [
-        "The employee's SSN is 859-98-0987.",
-        "The employee's phone number is 555-555-5555."
-    ]
-    response = client.recognize_pii_entities(documents, language="en")
-    result = [doc for doc in response if not doc.is_error]
-    for doc in result:
-        print("Redacted Text: {}".format(doc.redacted_text))
-        for entity in doc.entities:
-            print("Entity: {}".format(entity.text))
-            print("\tCategory: {}".format(entity.category))
-            print("\tConfidence Score: {}".format(entity.confidence_score))
-            print("\tOffset: {}".format(entity.offset))
-            print("\tLength: {}".format(entity.length))
-pii_recognition_example(client)
-```
-
-### <a name="output"></a>Output
-
-```console
-Redacted Text: The employee's SSN is ***********.
-Entity: 859-98-0987
-        Category: U.S. Social Security Number (SSN)
-        Confidence Score: 0.65
-        Offset: 22
-        Length: 11
-Redacted Text: The employee's phone number is ************.
-Entity: 555-555-5555
-        Category: Phone Number
-        Confidence Score: 0.8
-        Offset: 31
-        Length: 12
-```
-
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
-
-> [!NOTE]
-> In Version `3.0`: 
-> * Die Entitätsverknüpfung ist eine separate Anforderung.
-
-Erstellen Sie eine neue Funktion namens `entity_recognition_example`, die den Client als Argument akzeptiert und anschließend die Funktion `recognize_entities()` aufruft und die Ergebnisse durchläuft. Das zurückgegebene Antwortobjekt enthält die Liste erkannter Entitäten in `entity` (sofern erfolgreich). Andernfalls enthält es eine Fehlermeldung (`error`). Geben Sie für die erkannten Entitäten jeweils die Kategorie und Unterkategorie aus (sofern vorhanden).
-
-```python
-def entity_recognition_example(client):
-
-    try:
-        documents = ["I had a wonderful trip to Seattle last week."]
-        result = client.recognize_entities(documents = documents)[0]
-
-        print("Named Entities:\n")
-        for entity in result.entities:
-            print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
-                    "\n\tConfidence Score: \t", round(entity.confidence_score, 2), "\n")
-
-    except Exception as err:
-        print("Encountered exception. {}".format(err))
-entity_recognition_example(client)
-```
-
-### <a name="output"></a>Output
-
-```console
-Named Entities:
-
-        Text:    trip   Category:        Event  SubCategory:     None
-        Confidence Score:        0.61
-
-        Text:    Seattle        Category:        Location       SubCategory:     GPE
-        Confidence Score:        0.82
-
-        Text:    last week      Category:        DateTime       SubCategory:     DateRange
-        Confidence Score:        0.8
-```
-
-### <a name="entity-linking"></a>Entitätsverknüpfung
 
 Erstellen Sie eine neue Funktion namens `entity_linking_example()`, die den Client als Argument akzeptiert und anschließend die Funktion `recognize_linked_entities()` aufruft und die Ergebnisse durchläuft. Das zurückgegebene Antwortobjekt enthält die Liste erkannter Entitäten in `entities` (sofern erfolgreich). Andernfalls enthält es eine Fehlermeldung (`error`). Da verknüpfte Entitäten eindeutig identifiziert werden, werden Vorkommen der gleichen Entität unter einem Objekt vom Typ `entity` als Liste von Objekten des Typs `match` gruppiert.
 
@@ -726,7 +737,7 @@ Linked Entities:
 
 ---
 
-### <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
+## <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
 
 # <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
 
@@ -799,13 +810,15 @@ key_phrase_extraction_example(client)
 
 ---
 
-## <a name="use-the-api-asynchronously-with-the-batch-analyze-operation"></a>Asynchrones Verwenden der API mit dem Analyze-Vorgang
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Asynchrones Verwenden der API mit dem Analyze-Vorgang
 
 # <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
 
+Mithilfe des Analysevorgangs können Sie asynchrone Batchanforderungen für Folgendes ausführen: NER, Schlüsselbegriffserkennung, Stimmungsanalyse und Erkennung personenbezogener Informationen. Nachfolgend sehen Sie ein einfaches Beispiel für einen Vorgang. Ein komplexeres Beispiel können Sie auf [GitHub](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_actions.py) finden.
+
 [!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
-Erstellen Sie eine neue Funktion namens `analyze_batch_example()`, die den Client als Argument akzeptiert und anschließend die Funktion `begin_analyze_batch_actions()` aufruft. Daraus resultiert ein zeitintensiver Vorgang, aus dem Ergebnisse abgerufen werden.
+Erstellen Sie eine neue Funktion namens `analyze_batch_example()`, die den Client als Argument akzeptiert und anschließend die Funktion `begin_analyze_actions()` aufruft. Daraus resultiert ein zeitintensiver Vorgang, aus dem Ergebnisse abgerufen werden.
 
 ```python
 from azure.ai.textanalytics import (
@@ -817,7 +830,7 @@ def analyze_batch_example(client):
             "Microsoft was founded by Bill Gates and Paul Allen."
         ]
 
-        poller = client.begin_analyze_batch_actions(
+        poller = client.begin_analyze_actions(
             documents,
             display_name="Sample Text Analysis",
             actions=[RecognizeEntitiesAction()]
@@ -861,8 +874,6 @@ Entity: Paul Allen
 ...Offset: 40
 ------------------------------------------
 ```
-
-Sie können den Analyze-Vorgang auch verwenden, um personenbezogene Informationen zu erkennen und Schlüsselbegriffe zu extrahieren. Das [Analyze-Beispiel](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_actions.py) finden Sie auf GitHub.
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 

@@ -4,6 +4,6 @@
   expanded: true
   items:
     - name: SRE und Codierung
-      href: code.md
+      href: code.yml
     - name: SRE und DevOps
-      href: devops.md
+      href: devops.yml

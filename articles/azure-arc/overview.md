@@ -3,12 +3,12 @@ title: Übersicht über Azure Arc
 description: Hier erfahren Sie, was Azure Arc ist und wie es Kunden bei der Verwaltung und Governance ihrer Hybridressourcen mit anderen Azure-Diensten und -Features unterstützt.
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: b9e3cac865a92023d0079a5face9fbc8a3734c6e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b67c01f666916508946b49b0ad45d7151ed179ef
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967075"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287297"
 ---
 # <a name="azure-arc-overview"></a>Übersicht über Azure Arc
 
@@ -29,7 +29,8 @@ Aktuell können mit Azure Arc folgende außerhalb von Azure gehostete Ressourcen
 
 * Server: Sowohl physische als auch virtuelle Computer unter Windows oder Linux
 * Kubernetes-Cluster: Unterstützung mehrerer Kubernetes-Distributionen
-* Azure Data Services: Azure SQL-Datenbank und PostgreSQL Hyperscale
+* Azure-Datendienste: Azure SQL Managed Instance und PostgreSQL Hyperscale
+* SQL Server: Registrieren von Instanzen von einem beliebigen Standort aus
 
 ## <a name="what-does-azure-arc-deliver"></a>Was bietet Azure Arc?
 

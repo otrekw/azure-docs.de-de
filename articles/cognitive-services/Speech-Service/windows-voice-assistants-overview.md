@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 9e8b009ecc2181edfaad5da3d8d05ad0c1909051
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 989e4e48b03f976a647a542771ade053d9229ec7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95024754"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110058904"
 ---
 # <a name="voice-assistants-on-windows"></a>Sprachassistenten unter Windows
 
@@ -45,7 +45,7 @@ Beachten Sie, dass dies bedeutet, dass eine Anwendung erst durch Sprache aktivie
 
 Beim Empfangen der Anforderung von AAR startet der Hintergrunddienst die Anwendung. Die Anwendung empfängt ein Signal von der OnBackgroundActivated-Lebenszyklusmethode in `App.xaml.cs` mit einem eindeutigen Ereignisargument. Dieses Argument teilt der Anwendung mit, dass sie durch AAR aktiviert wurde und mit der Schlüsselwortprüfung beginnen soll.
 
-Wenn die Anwendung das Schlüsselwort erfolgreich überprüft, kann sie eine Anforderung ausgeben, im Vordergrund dargestellt zu werden. Wenn diese Anforderung erfolgreich ist, zeigt die Anwendung die Benutzeroberfläche an und setzt ihre Interaktion mit dem Benutzer fort.
+Wenn die Anwendung das Schlüsselwort erfolgreich überprüft, kann sie eine Anforderung ausgeben, die im Vordergrund angezeigt wird. Wenn diese Anforderung erfolgreich ist, zeigt die Anwendung die Benutzeroberfläche an und setzt ihre Interaktion mit dem Benutzer fort.
 
 AAR signalisiert aktiven Anwendungen weiterhin, wenn ihr Schlüsselwort gesprochen wird. Statt für die Signalisierung die Lebenszyklusmethode in `App.xaml.cs` zu verwenden, wird ein Ereignis in den ConversationalAgent-APIs genutzt.
 

@@ -4,14 +4,14 @@ description: Passen Sie einen C# .NET-Chatbot mit einer Personalisierungsschlei
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 05/17/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7c4920eaa7a5619be37d38afd763e7be416d3124
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 4cc2fcfb73117edf27421dd8c91161d12bab7a7a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565720"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097910"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Tutorial: Verwenden der Personalisierung in einem .NET-Chatbot
 
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 Um diesen Chatbot verwenden zu können, müssen Azure-Ressourcen für die Personalisierung und für Language Understanding (LUIS) erstellt werden.
 
-* [Erstellen Sie LUIS-Ressourcen.](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal) Wählen Sie im Erstellungsschritt die Option **Beide** aus, da Sie sowohl Erstellungs- als auch Vorhersageressourcen benötigen.
+* [Erstellen Sie LUIS-Ressourcen.](../luis/luis-how-to-azure-subscription.md) Erstellen Sie sowohl eine Erstellungs- als auch eine Vorhersageressource.
 * [Erstellen Sie die Personalisierungsressource](how-to-create-resource.md), und kopieren Sie den Schlüssel und den Endpunkt aus dem Azure-Portal. Diese Werte müssen in der Datei `appsettings.json` des .NET-Projekts festgelegt werden.
 
 ### <a name="create-luis-app"></a>Erstellen der LUIS-App

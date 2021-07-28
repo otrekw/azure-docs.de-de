@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: f453370530359bc967316957b717f40904f6e392
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 18746da524c4b045471031af2330d9daba4bfcc0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125983"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949354"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Behandeln von Problemen mit dem Azure Dedicated HSM-Dienst
 
@@ -52,11 +52,11 @@ Der häufigste Grund für Bereitstellungsfehler ist, dass die Einrichtung einer 
 
 ### <a name="hsm-deployment-race-condition"></a>Racebedingung für die HSM-Bereitstellung
 
-Die ARM-Standardvorlage für die Bereitstellung verfügt über Ressourcen für HSMs und das ExpressRoute-Gateway. Netzwerkressourcen stellen eine Abhängigkeit in Bezug auf die erfolgreiche HSM-Bereitstellung dar, und das Timing kann entscheidend sein.  Gelegentlich ist es zu Bereitstellungsfehlern aufgrund von Abhängigkeitsproblemen gekommen, und Probleme können häufig behoben werden, indem die Bereitstellung erneut durchgeführt wird. Falls dies nicht hilft, ist das Löschen und anschließende Bereitstellen von Ressourcen häufig eine erfolgreiche Lösung. Wenn Sie dies probiert haben und trotzdem noch Probleme auftreten, sollten Sie im Azure-Portal eine Supportanfrage erstellen und den Problemtyp „Probleme beim Konfigurieren der Azure-Einrichtung“ auswählen.
+Die ARM-Standardvorlage für die Bereitstellung verfügt über Ressourcen für HSMs und das [ExpressRoute-Gateway](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md). Netzwerkressourcen stellen eine Abhängigkeit in Bezug auf die erfolgreiche HSM-Bereitstellung dar, und das Timing kann entscheidend sein.  Gelegentlich ist es zu Bereitstellungsfehlern aufgrund von Abhängigkeitsproblemen gekommen, und Probleme können häufig behoben werden, indem die Bereitstellung erneut durchgeführt wird. Falls dies nicht hilft, ist das Löschen und anschließende Bereitstellen von Ressourcen häufig eine erfolgreiche Lösung. Wenn Sie dies probiert haben und trotzdem noch Probleme auftreten, sollten Sie im Azure-Portal eine Supportanfrage erstellen und den Problemtyp „Probleme beim Konfigurieren der Azure-Einrichtung“ auswählen.
 
 ### <a name="hsm-deployment-using-terraform"></a>HSM-Bereitstellung mit Terraform
 
-Einige Kunden haben Terraform als Automatisierungslösung anstelle der ARM-Vorlagen verwendet, die beim Registrieren für diesen Dienst bereitgestellt werden. Die HSMs können auf diese Weise nicht bereitgestellt werden, aber für die abhängigen Netzwerkressourcen ist dies möglich. Terraform verfügt über ein Modul für die Kontaktaufnahme mit einer minimal ausgestatteten ARM-Vorlage, die nur die HSM-Bereitstellung umfasst.  In dieser Situation sollten Sie sorgfältig darauf achten, dass vor der Bereitstellung von HSMs die Netzwerkressourcen, z. B. das erforderliche ExpressRoute-Gateway, vollständig bereitgestellt werden. Mit dem folgenden CLI-Befehl kann getestet werden, ob die Bereitstellung abgeschlossen und richtig integriert wurde. Ersetzen Sie die Platzhalter in den spitzen Klammern durch Ihre jeweiligen Benennungen. Achten Sie auf ein Ergebnis der Art „provisioningState is Succeeded“ (provisioningState: Erfolgreich).
+Einige Kunden haben Terraform als Automatisierungslösung anstelle der ARM-Vorlagen verwendet, die beim Registrieren für diesen Dienst bereitgestellt werden. Die HSMs können auf diese Weise nicht bereitgestellt werden, aber für die abhängigen Netzwerkressourcen ist dies möglich. Terraform verfügt über ein Modul für die Kontaktaufnahme mit einer minimal ausgestatteten ARM-Vorlage, die nur die HSM-Bereitstellung umfasst.  In dieser Situation sollten Sie sorgfältig darauf achten, dass vor der Bereitstellung von HSMs die Netzwerkressourcen, z. B. das erforderliche [ExpressRoute-Gateway](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md), vollständig bereitgestellt werden. Mit dem folgenden CLI-Befehl kann getestet werden, ob die Bereitstellung abgeschlossen und richtig integriert wurde. Ersetzen Sie die Platzhalter in den spitzen Klammern durch Ihre jeweiligen Benennungen. Achten Sie auf ein Ergebnis der Art „provisioningState is Succeeded“ (provisioningState: Erfolgreich).
 
 ```azurecli
 az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/providers/Microsoft.Network/virtualNetworkGateways/<myergateway>
@@ -79,7 +79,7 @@ Für die Bereitstellung von Dedicated HSM besteht eine Abhängigkeit von Netzwer
 
 ### <a name="provisioning-expressroute"></a>Bereitstellung von ExpressRoute
 
-Für Dedicated HSM wird das ExpressRoute-Gateway als „Tunnel“ für die Kommunikation zwischen dem privaten IP-Adressraum des Kunden und dem physischen HSM in einem Azure-Rechenzentrum verwendet.  Da eine Beschränkung von einem Gateway pro VNET besteht, müssen Kunden, die eine Verbindung mit ihren lokalen Ressourcen per ExpressRoute benötigen, ein anderes VNET für diese Verbindung nutzen.  
+Für Dedicated HSM wird das [ExpressRoute-Gateway](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) als „Tunnel“ für die Kommunikation zwischen dem privaten IP-Adressraum des Kunden und dem physischen HSM in einem Azure-Rechenzentrum verwendet.  Da eine Beschränkung von einem Gateway pro VNET besteht, müssen Kunden, die eine Verbindung mit ihren lokalen Ressourcen per ExpressRoute benötigen, ein anderes VNET für diese Verbindung nutzen.  
 
 ### <a name="hsm-private-ip-address"></a>Private HSM-IP-Adresse
 
@@ -116,7 +116,7 @@ Software und Dokumentation für die [Thales Luna 7-HSM](https://cpl.thalesgroup
 
 ### <a name="hsm-networking-configuration"></a>HSM-Netzwerkkonfiguration
 
-Gehen Sie beim Konfigurieren des Netzwerks auf dem HSM mit Bedacht vor.  Das HSM verfügt über eine Verbindung, die aus einem privaten IP-Adressraum des Kunden über das ExpressRoute-Gateway direkt mit dem HSM besteht.  Dieser Kommunikationskanal ist nur für die Kundenkommunikation bestimmt, und Microsoft hat keinen Zugriff darauf. Wenn das HSM so konfiguriert ist, dass dieser Netzwerkpfad beeinträchtigt wird, wird die gesamte Kommunikation mit dem HSM eingestellt.  In dieser Situation besteht die einzige Möglichkeit darin, über das Azure-Portal eine Microsoft-Supportanfrage zu erstellen, um das Gerät zurücksetzen zu lassen. Bei diesem Zurücksetzungsvorgang wird das HSM in den Anfangszustand versetzt, und die gesamte Konfiguration und das Schlüsselmaterial geht verloren.  Die Konfiguration muss neu erstellt werden, und wenn das Gerät in die Hochverfügbarkeitsgruppe eingebunden wird, wird das Schlüsselmaterial repliziert.  
+Gehen Sie beim Konfigurieren des Netzwerks auf dem HSM mit Bedacht vor.  Das HSM verfügt über eine Verbindung, die aus einem privaten IP-Adressraum des Kunden über das [ExpressRoute-Gateway](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) direkt mit dem HSM besteht.  Dieser Kommunikationskanal ist nur für die Kundenkommunikation bestimmt, und Microsoft hat keinen Zugriff darauf. Wenn das HSM so konfiguriert ist, dass dieser Netzwerkpfad beeinträchtigt wird, wird die gesamte Kommunikation mit dem HSM eingestellt.  In dieser Situation besteht die einzige Möglichkeit darin, über das Azure-Portal eine Microsoft-Supportanfrage zu erstellen, um das Gerät zurücksetzen zu lassen. Bei diesem Zurücksetzungsvorgang wird das HSM in den Anfangszustand versetzt, und die gesamte Konfiguration und das Schlüsselmaterial geht verloren.  Die Konfiguration muss neu erstellt werden, und wenn das Gerät in die Hochverfügbarkeitsgruppe eingebunden wird, wird das Schlüsselmaterial repliziert.  
 
 ### <a name="hsm-device-reboot"></a>Neustart des HSM-Geräts
 

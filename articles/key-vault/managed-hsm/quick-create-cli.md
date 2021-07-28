@@ -7,27 +7,27 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: quickstart
-ms.date: 09/15/2020
+ms.date: 06/21/2021
 ms.author: ambapat
-ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cbde53687c08208dc8fed3b69a6a98ed732cf57c
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91756814"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380372"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Schnellstart: Bereitstellen und Aktivieren eines verwalteten HSM mithilfe der Azure-Befehlszeilenschnittstelle
 
 Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfügbarer und standardkonformer Einzelmandanten-Clouddienst, der es Ihnen ermöglicht, kryptografische Schlüssel für Ihre Cloudanwendungen über HSMs zu schützen, die mit **FIPS 140-2 Level 3** validiert sind. Weitere Informationen zu verwalteten HSMs finden Sie in der [Übersicht](overview.md). 
 
-In dieser Schnellstartanleitung wird ein verwaltetes HSM mithilfe der Azure-Befehlszeilenschnittstelle erstellt und aktiviert. Danach speichern Sie ein Geheimnis.
+In dieser Schnellstartanleitung wird ein verwaltetes HSM mithilfe der Azure-Befehlszeilenschnittstelle erstellt und aktiviert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 * Ein Abonnement für Microsoft Azure. Falls Sie über kein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial) registrieren.
-* Azure-Befehlszeilenschnittstelle ab Version 2.12.0. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
+* Azure-Befehlszeilenschnittstelle ab Version 2.25.0 Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 * Ein verwaltetes HSM in Ihrem Abonnement. Weitere Informationen finden Sie unter [Schnellstart: Bereitstellen und Aktivieren eines verwalteten HSM mithilfe der Azure-Befehlszeilenschnittstelle](quick-create-cli.md). Dort erfahren Sie, wie Sie ein verwaltetes HSM bereitstellen und aktivieren.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -63,11 +63,11 @@ Für die Erstellung einer Ressource vom Typ „Verwaltetes HSM“ sind folgende 
 - Azure-Standort.
 - Eine Liste mit den anfänglichen Administratoren.
 
-Im nachfolgenden Beispiel wird ein HSM mit dem Namen **ContosoMHSM** in der Ressourcengruppe **ContosoResourceGroup** am Standort **USA, Osten 2** erstellt. Hierbei ist **der derzeit angemeldete Benutzer** der einzige Administrator.
+Im Beispiel unten wird ein HSM mit dem Namen **ContosoMHSM** in der Ressourcengruppe **ContosoResourceGroup** am Standort **USA, Osten 2** erstellt. Hierbei ist **der derzeit angemeldete Benutzer** der einzige Administrator, und für das vorläufige Löschen gilt ein **Aufbewahrungszeitraum von 28 Tagen**. Weitere Informationen über das vorläufige Löschen für verwaltete HSMs finden Sie [hier](soft-delete-overview.md).
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
-az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid
+az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid --retention-days 28
 ```
 
 > [!NOTE]
@@ -127,4 +127,5 @@ In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und e
 
 - Verschaffen Sie sich einen [Überblick über verwaltetes HSM](overview.md).
 - Erfahren Sie mehr über das [Verwalten von Schlüsseln in einem verwalteten HSM](key-management.md).
+- Erfahren Sie mehr über die [Rollenverwaltung für ein verwaltetes HSM](role-management.md).
 - Sehen Sie sich die [bewährten Methoden für verwaltetes HSM](best-practices.md) an.

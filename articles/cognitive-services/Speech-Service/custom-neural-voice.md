@@ -8,19 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 05/18/2021
 ms.author: trbye
-ms.openlocfilehash: 36885e4673b83d1db7972f03c4a6309f766206c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e61de187f9d3933a67ab4f4287b5e85d5a215404
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101713098"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411105"
 ---
 # <a name="what-is-custom-neural-voice"></a>Worum handelt es sich bei „Benutzerdefinierte neuronale Stimme“?
 
-Die benutzerdefinierte neuronale Stimme ist ein [Sprachsynthesefeature](./text-to-speech.md) (TTS), mit dem Sie eine einzigartige, benutzerdefinierte synthetische Stimme für Ihre Anwendungen erstellen können, indem Sie Ihre eigenen Audiodaten als Beispiel bereitstellen. Die Sprachsynthese funktioniert, indem Text mithilfe eines Machine Learning-Modells in eine synthetische Sprache umgewandelt wird, die wie eine ausgewählte Stimme klingt. Mit der [REST-API](./rest-text-to-speech.md) können Sie Ihre Apps in die Lage versetzen, mit [vorgefertigten Stimmen](./language-support.md#neural-voices) oder mit Ihren eigenen, über das Feature „Benutzerdefinierte neuronale Stimme“ entwickelten [Custom Voice](./how-to-custom-voice-prepare-data.md)-Modellen zu sprechen. Die benutzerdefinierte neuronale Stimme basiert auf neuronaler TTS-Technologie, die eine natürlich klingende Stimme erstellt, die im Vergleich zu einer menschlichen Stimme oft nicht zu unterscheiden ist.
-Die realistische und natürlich klingende Stimme der benutzerdefinierten neuronalen Stimme kann Marken repräsentieren, Computer personifizieren und es Benutzern ermöglichen, auf natürliche Weise mit Anwendungen zu interagieren.
+„Benutzerdefinierte neuronale Stimme“ ist ein TTS-Feature (Sprachsynthese), mit dem Sie eine einzigartige, benutzerdefinierte synthetische Stimme für Ihre Anwendungen erstellen können. Mit „Benutzerdefinierte neuronale Stimme“ können Sie eine äußerst natürlich klingende Stimme erstellen, indem Sie Ihre Audiobeispiele als Trainingsdaten bereitstellen. Basierend auf der neuronalen TTS-Technologie und dem mehrsprachigen universellen Modell mit mehreren Sprechern können Sie mit „Benutzerdefinierte neuronale Stimme“ synthetische Stimmen erstellen, die eine Vielzahl von Sprechstilen aufweisen oder sprachübergreifend angepasst werden können. Die realistische und natürlich klingende Stimme der benutzerdefinierten neuronalen Stimme kann Marken repräsentieren, Computer personifizieren und es Benutzern ermöglichen, mit Anwendungen zu interagieren. Informationen zu „Benutzerdefinierte neuronale Stimme“ und sprachübergreifende Features finden Sie unter den unterstützten [Sprachen](language-support.md#customization).
 
 > [!NOTE]
 > Das Feature „Benutzerdefinierte neuronale Stimme“ erfordert eine Registrierung, und der Zugriff darauf ist auf der Grundlage der Berechtigungs- und Verwendungskriterien von Microsoft eingeschränkt. Kunden, die dieses Feature verwenden möchten, müssen ihre Anwendungsfälle über das [Aufnahmeformular](https://aka.ms/customneural) registrieren.
@@ -33,9 +32,15 @@ Als nächstes wechselt die Phonemfolge in das neuronale Akustikmodell, um akusti
 
 ![Einführendes Bild für benutzerdefinierte neuronale Stimme.](./media/custom-voice/cnv-intro.png)
 
-Neuronale TTS-Sprachmodelle werden mithilfe von Deep Neural Networks trainiert, die auf den Aufnahmebeispielen menschlicher Stimmen basieren. In diesem [Blog](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-extends-support-to-15-more-languages-with/ba-p/1505911) wird beschrieben, wie die neuronale Sprachsynthese mit modernsten neuronalen Sprachsynthesemodellen funktioniert. In diesem Blog wird auch erläutert, wie ein universelles Basismodell mit weniger als zwei Stunden Sprachdaten (oder weniger als 2.000 aufgezeichneten Äußerungen) eines Zielsprechers angepasst werden kann und so lernt, mit der Stimme dieses Zielsprechers zu sprechen. Wie ein neuronaler Vocoder trainiert wird, erfahren Sie im [Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860).
+Neuronale TTS-Sprachmodelle werden mithilfe von Deep Neural Networks trainiert, die auf den Aufnahmebeispielen menschlicher Stimmen basieren. In diesem [Blog](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-extends-support-to-15-more-languages-with/ba-p/1505911) wird beschrieben, wie die neuronale Sprachsynthese mit modernsten neuronalen Sprachsynthesemodellen funktioniert. Im Blog wird auch erläutert, wie ein universelles Basismodell an die Stimme eines Sprechers mit weniger als zwei Stunden Sprachdaten (oder weniger als 2.000 aufgezeichneten Äußerungen) angepasst und zusätzlich die Stimme in eine andere Sprache oder einen anderen Stil übertragen werden kann. Wie ein neuronaler Vocoder trainiert wird, erfahren Sie im [Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860).
 
-Mit der Anpassungsfunktion der benutzerdefinierten neuronalen Stimme können Sie die Engine für die neuronale Sprachsynthese besser an Ihre Benutzerszenarien anpassen. Um eine benutzerdefinierte neuronale Stimme zu erstellen, verwenden Sie [Speech Studio](https://speech.microsoft.com/customvoice), um die aufgenommenen Audiodaten und die entsprechenden Skripts hochzuladen, das Modell zu trainieren und die Stimme an einem benutzerdefinierten Endpunkt bereitzustellen. Je nach Anwendungsfall kann die benutzerdefinierte neuronale Stimme verwendet werden, um Text in Echtzeit in Sprache umzuwandeln (z. B. zur Verwendung in einem intelligenten virtuellen Assistenten) oder Audioinhalte offline zu generieren (z. B. zur Verwendung in Hörbüchern oder Anweisungen in E-Learning-Anwendungen), wobei die Texteingabe durch den Benutzer erfolgt. Dies wird über die [REST-API](./rest-text-to-speech.md), das [Speech SDK](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall) oder ein [Webportal](https://speech.microsoft.com/audiocontentcreation) zur Verfügung gestellt.
+Mit „Benutzerdefinierte neuronale Stimme“ können Sie die Engine für die neuronale Sprachsynthese an Ihre Szenarien anpassen. Um eine benutzerdefinierte neuronale Stimme zu erstellen, verwenden Sie [Speech Studio](https://speech.microsoft.com/customvoice), um die aufgenommenen Audiodaten und die entsprechenden Skripts hochzuladen, das Modell zu trainieren und die Stimme an einem benutzerdefinierten Endpunkt bereitzustellen. „Benutzerdefinierte neuronale Stimme“ kann vom Benutzer bereitgestellten Text verwenden, um Text in Echtzeit in Sprache zu konvertieren oder Audioinhalte offline mit Texteingaben zu generieren. Dies wird über die [REST-API](./rest-text-to-speech.md), das [Speech SDK](./get-started-text-to-speech.md) oder das [Webportal](https://speech.microsoft.com/audiocontentcreation) zur Verfügung gestellt.
+
+## <a name="get-started"></a>Erste Schritte
+
+* Informationen zu den ersten Schritten mit „Benutzerdefinierte neuronale Stimme“ und zum Erstellen eines Projekts finden Sie unter [Erste Schritte mit „Benutzerdefinierte neuronale Stimme“](how-to-custom-voice.md).
+* Informationen zum Vorbereiten und Hochladen Ihrer Audiodaten finden Sie unter [Vorbereiten von Trainingsdaten](how-to-custom-voice-prepare-data.md).
+* Informationen zum Trainieren und Bereitstellen Ihrer Modelle finden Sie unter [Erstellen und Verwenden Ihres Sprachmodells](how-to-custom-voice-create-voice.md).
 
 ## <a name="terms-and-definitions"></a>Begriffe und Definitionen
 
@@ -55,5 +60,4 @@ Wie Sie die benutzerdefinierte neuronale Stimme verantwortungsvoll verwenden kö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erste Schritte mit Custom Voice](how-to-custom-voice.md)
-* [Erstellen und Verwenden eines Custom Voice-Endpunkts](how-to-custom-voice-create-voice.md)
+* [Erste Schritte mit „Benutzerdefinierte neuronale Stimme“](how-to-custom-voice.md)

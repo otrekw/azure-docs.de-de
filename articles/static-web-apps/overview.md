@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: 0111e0a37f1684ab764160d64231ea5dde2547a6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5a335525bef3509f547bbccc478ec9402ad05e28
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108758985"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109815052"
 ---
-# <a name="what-is-azure-static-web-apps-preview"></a>Was ist Azure Static Web Apps (Vorschauversion)?
+# <a name="what-is-azure-static-web-apps"></a>Was ist Azure Static Web Apps?
 
 Azure Static Web Apps ist ein Dienst, der auf der Grundlage eines Coderepositorys automatisch umfassende Web-Apps erstellt und in Azure bereitstellt.
 
@@ -31,7 +31,7 @@ Bei Static Web Apps sind statische Ressourcen von einem herkömmlichen Webserver
 ## <a name="key-features"></a>Wichtige Features
 
 - **Webhosting** statischer Inhalte wie HTML-, CSS-, JavaScript- und Bildressourcen.
-- **Integrierte API** (unterstützt durch Azure Functions)
+- **Integrierte API-Unterstützung** von Azure Functions mit der Option zum Verknüpfen einer vorhandenen Azure Functions-App unter Verwendung eines Standardkontos.
 - **GitHub- und Azure DevOps-Erstanbieterintegration** mit Auslösung von Build- und Bereitstellungsvorgängen bei Repositoryänderungen
 - **Global verteilte** statische Inhalte, um die Entfernung zwischen Inhalten und Benutzern zu verringern
 - **Kostenlose SSL-Zertifikate** mit automatischer Verlängerung

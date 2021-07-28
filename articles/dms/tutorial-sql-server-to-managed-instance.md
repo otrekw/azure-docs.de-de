@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 2dfcb4ade9da76d5ec4883e9f4b5b3cb3e0c8682
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: e00af1551d5de5a2c8cbd5ea119c94ef4b38aaa3
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076835"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030987"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>Tutorial: Migrieren von SQL Server zu einer verwalteten Azure SQL-Instanz mithilfe von DMS (offline)
 
@@ -35,7 +35,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > - Laden Sie einen Migrationsbericht herunter.
 
 > [!IMPORTANT]
-> Bei Offlinemigrationen von SQL Server zu einer verwalteten SQL-Instanz kann Azure Database Migration Service die Sicherungsdateien für Sie erstellen. Alternativ können Sie die neueste vollständige Datenbanksicherung in der SMB-Netzwerkfreigabe bereitstellen. Diese wird dann vom Dienst verwendet, um Ihre Datenbanken zu migrieren. Fügen Sie nicht mehrere Sicherungen an ein einzelnes Sicherungsmedium an. Erstellen Sie die Sicherungen jeweils in einer separaten Sicherungsdatei. Sie können auch komprimierte Sicherungen verwenden, um die Wahrscheinlichkeit von potenziellen Problemen bei der Migration großer Sicherungen zu verringern.
+> Bei Offlinemigrationen von SQL Server zu einer verwalteten SQL-Instanz kann Azure Database Migration Service die Sicherungsdateien für Sie erstellen. Alternativ können Sie die neueste vollständige Datenbanksicherung in der SMB-Netzwerkfreigabe bereitstellen. Diese wird dann vom Dienst verwendet, um Ihre Datenbanken zu migrieren. Jede Sicherung kann entweder in eine separate Sicherungsdatei oder in mehrere Sicherungsdateien geschrieben werden. Das Anfügen mehrerer Sicherungen an ein einzelnes Sicherungsmedium wird jedoch nicht unterstützt. Sie können auch komprimierte Sicherungen verwenden, um die Wahrscheinlichkeit von potenziellen Problemen bei der Migration großer Sicherungen zu verringern.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
@@ -198,7 +198,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
 
 1. Geben Sie auf dem Bildschirm **Migrationseinstellungen konfigurieren** die folgenden Details an:
 
-    | Parameter | BESCHREIBUNG |
+    | Parameter | Beschreibung |
     |--------|---------|
     |**Quellsicherungsoption auswählen** | Wählen Sie die Option **Ich stelle die neuesten Sicherungsdateien bereit**, wenn bereits vollständige Sicherungsdateien verfügbar sind, die DMS für die Datenbankmigration verwenden kann. Wählen Sie die Option **Azure Database Migration Service soll Sicherungsdateien erstellen**, wenn DMS zuerst eine vollständige Sicherung der Quelldatenbank erstellen und diese dann für die Migration verwenden soll. |
     |**Freigabe der Netzwerkadresse** | Die lokale SMB-Netzwerkfreigabe, auf die Azure Database Migration Service die Quelldatenbanksicherungen übertragen kann. Das Dienstkonto, mit dem die SQL Server-Quellinstanz ausgeführt wird, muss über Schreibberechtigungen für diese Netzwerkfreigabe verfügen. Geben Sie in der Netzwerkfreigabe einen FQDN oder IP-Adressen des Servers an, wie z.B. „\\\servername.domainname.com\backupfolder\\“ oder „\IP address\backupfolder“.|

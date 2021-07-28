@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: fd4ad1443f466a78abfc569d5f52f6bdeff2d5be
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9f97cc036d9d576a75bc3f7d5eede61a3262e90e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048883"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078236"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Integrieren von Azure-Speicher für Benachrichtigungen und Sicherungen
 
@@ -28,8 +28,8 @@ In diesem Leitfaden wird veranschaulicht, wie Sie diese REST-APIs mit cURL verwe
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Eine Custom Vision-Ressource in Azure. Falls Sie nicht über diese Ressource verfügen, wechseln Sie zum Azure-Portal und [erstellen eine neue Custom Vision-Ressource](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true). Von diesem Feature wird die Cognitive Service-Ressource (All-in-One-Schlüssel) derzeit nicht unterstützt.
-- Ein Azure Storage-Konto mit einem Blobcontainer. Falls Sie Hilfe bei diesem Schritt benötigen, helfen Ihnen die Informationen unter [Übung 1 des Azure Storage-Labs](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) weiter.
-* [PowerShell ab Version 6.0](/powershell/scripting/install/installing-powershell-core-on-windows) oder eine ähnliche Befehlszeilenanwendung
+- Ein Azure Storage-Konto mit einem Blobcontainer. Befolgen Sie diese [Storage-Schnellstartanleitung](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal), wenn Sie Hilfe zu diesem Schritt benötigen.
+- [PowerShell ab Version 6.0](/powershell/scripting/install/installing-powershell-core-on-windows) oder eine ähnliche Befehlszeilenanwendung
 
 ## <a name="set-up-azure-storage-integration"></a>Einrichten der Azure-Speicherintegration
 

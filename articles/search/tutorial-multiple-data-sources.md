@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df7dcf9859b6942662ae447af836f59985e2d11a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 415c980390faae86e27efa6b6f63ec0334d6d0f0
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99509502"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560220"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Tutorial: Indizieren von mehreren Datenquellen mithilfe des .NET SDK
 
@@ -56,7 +56,7 @@ Dieses Tutorial wurde aktualisiert, sodass es das Paket „Azure.Search.Document
 
 ## <a name="1---create-services"></a>1\. Erstellen der Dienste
 
-In diesem Tutorial wird Azure Cognitive Search für die Indizierung und für Abfragen verwendet, und Azure Cosmos DB wird für das eine Dataset und Azure-Blobspeicher für das andere Dataset genutzt. 
+In diesem Tutorial wird Azure Cognitive Search für die Indizierung und für Abfragen verwendet, und Azure Cosmos DB wird für das eine Dataset und Azure Blob Storage für das andere Dataset genutzt. 
 
 Alle Dienste sollten nach Möglichkeit in derselben Region und Ressourcengruppe erstellt werden, um eine möglichst große Nähe zu erreichen und die Verwaltung zu vereinfachen. In der Praxis können sich Ihre Dienste in einer beliebigen Region befinden.
 

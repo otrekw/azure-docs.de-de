@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 301e4d4fe3efa9821c2f63948bc3d3c528de4254
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9b4d896edea86d85b650325ac5efb7f3cf439b17
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772799"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953939"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Verschieben einer Azure Digital Twins-Instanz in eine andere Azure-Region
 
@@ -52,71 +52,26 @@ Dabei stellen sich unter anderem folgende Fragen:
     - Azure IoT Hub Device Provisioning-Dienst
 * Welche anderen *persönlichen oder Unternehmens-Apps* besitze ich, die eine Verbindung mit meiner Instanz herstellen?
 
-Sie können diese Informationen über das [Azure-Portal](https://portal.azure.com), mithilfe der [Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md), den [Befehlen der Azure Digital Twins-CLI](concepts-cli.md) oder das Beispiel [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) erfassen.
+Sie können diese Informationen über das [Azure-Portal](https://portal.azure.com), mithilfe der [Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md), den [Befehlen der Azure Digital Twins-CLI](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) oder den [Azure Digital Twins-Explorer](concepts-azure-digital-twins-explorer.md) erfassen.
 
 ## <a name="prepare"></a>Vorbereiten
 
-In diesem Abschnitt bereiten Sie die Neuerstellung Ihrer Instanz vor, indem Sie Ihre Originalmodelle, Zwillinge und den Graphen aus Ihrer ursprünglichen Instanz herunterladen. In diesem Artikel wird das Beispiel [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) für diese Aufgabe verwendet.
+In diesem Abschnitt bereiten Sie die Neuerstellung Ihrer Instanz vor, indem Sie Ihre Originalmodelle, Zwillinge und den Graphen aus Ihrer ursprünglichen Instanz herunterladen. In diesem Artikel wird der [Azure Digital Twins-Explorer](concepts-azure-digital-twins-explorer.md) für diese Aufgabe verwendet.
 
 >[!NOTE]
 >Möglicherweise verfügen Sie bereits über Dateien, die die Modelle oder den Graphen in Ihrer Instanz enthalten. Sofern dies der Fall ist, müssen Sie nicht alles erneut herunterzuladen – nur die fehlenden Teile oder Komponenten, die sich seit dem ursprünglichen Hochladen dieser Dateien geändert haben könnten. Beispielsweise können Zwillinge vorhanden sein, die mit neuen Daten aktualisiert wurden.
 
-### <a name="limitations-of-azure-digital-twins-explorer"></a>Einschränkungen von Azure Digital Twins-Explorer
+### <a name="download-models-twins-and-graph-with-azure-digital-twins-explorer"></a>Herunterladen von Modellen, Zwillingen und eines Graphen mit dem Azure Digital Twins-Explorer
 
-Das Beispiel [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) ist eine Beispiel-Client-App, die eine visuelle Darstellung Ihres Graphen unterstützt und eine visuelle Interaktion mit Ihrer Instanz ermöglicht. In diesem Artikel wird gezeigt, wie Sie diese App zum Herunterladen und späteren erneuten Hochladen Ihrer Modelle, Zwillinge und Graphen verwenden.
+Öffnen Sie als zunächst [Azure-Portal](https://portal.azure.com) den **Azure Digital Twins-Explorer** für Ihre Instanz. Navigieren Sie dazu im Portal zu Ihrer neuen Azure Digital Twins-Instanz, indem Sie in der Suchleiste des Portals nach ihrem Namen suchen. Wählen Sie dann die Schaltfläche **Explorer (Vorschau) öffnen** aus. 
 
-Dieses Beispiel ist kein vollständiges Tool. Es wurde keinen Belastungstests unterzogen und nicht für die Verarbeitung von großen Graphen entworfen. Daher müssen bei Verwendung der Beispiel-App die folgenden Einschränkungen beachtet werden:
+:::image type="content" source="media/includes/azure-digital-twins-explorer-portal-access.png" alt-text="Screenshot des Azure-Portal mit der Seite „Übersicht“ für eine Azure Digital Twins-Instanz. Die Schaltfläche „Azure Digital Twins-Explorer (Vorschau) öffnen“ ist hervorgehoben." lightbox="media/includes/azure-digital-twins-explorer-portal-access.png":::
 
-* Die Beispiel-App wurde derzeit lediglich mit Graphen getestet, die maximal 1.000 Knoten und 2.000 Beziehungen umfassen.
-* Bei zeitweiligen Fehlern werden keine Wiederholungsversuche unterstützt.
-* Wenn hochgeladene Daten unvollständig sind, wird der Benutzer nicht unbedingt benachrichtigt.
-* Im Beispiel werden keine Fehler behandelt, die aufgrund von sehr großen Graphen auftreten, die die verfügbaren Ressourcen (z. B. Arbeitsspeicher) überschreiten.
+Dadurch wird ein Azure Digital Twins-Explorer-Fenster geöffnet, das mit dieser Instanz verbunden ist.
 
-Wenn die Beispiel-App nicht für die Größe Ihres Graphen geeignet ist, können Sie den Graphen mithilfe anderer Azure Digital Twins-Entwicklertools exportieren und importieren:
+:::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="Screenshot: Azure-Portal in einem Internetbrowser Im Portal wird der Azure Digital Twins-Explorer angezeigt, der keine Daten enthält." lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
 
-* [Befehle der Azure Digital Twins-Befehlszeilenschnittstelle](concepts-cli.md)
-* [Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md)
-
-### <a name="set-up-the-azure-digital-twins-explorer-application"></a>Einrichten der Azure Digital Twins-Explorer-Anwendung
-
-Um mit Azure Digital Twins-Explorer fortzufahren, laden Sie zunächst den Code der Beispielanwendung herunter, und richten Sie die Anwendung so ein, dass sie auf Ihrem Computer ausgeführt wird.
-
-Navigieren Sie zum Abrufen des Beispiels zu [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Wählen Sie unterhalb des Titels die Schaltfläche **Code durchsuchen** aus. Dadurch werden Sie zum GitHub-Repository für das Beispiel weitergeleitet. Wählen Sie die Schaltfläche **Code** und dann **ZIP herunterladen** aus, um das Beispiel als ZIP-Datei auf Ihren Computer herunterzuladen.
-
-:::image type="content" source="media/how-to-move-regions/download-repo-zip.png" alt-text="Screenshot: GitHub-Repository „digital-twins-explorer“. Die Schaltfläche „Code“ wurde ausgewählt, und ein kleines Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="media/how-to-move-regions/download-repo-zip.png":::
-
-Entzippen Sie die Datei.
-
-Richten Sie dann Berechtigungen für Azure Digital Twins-Explorer ein, und konfigurieren Sie diese. Befolgen Sie die Anleitungen im Abschnitt [Einrichten von Azure Digital Twins und Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer) des Azure Digital Twins-Schnellstarts. In diesem Abschnitt werden die folgenden Schritte behandelt:
-
-1. Einrichten einer Azure Digital Twins-Instanz. Sie können diesen Teil überspringen, da Sie bereits über eine Instanz verfügen.
-1. Einrichten lokaler Azure-Anmeldeinformationen zum Bereitstellen des Zugriffs auf Ihre Instanz.
-1. Führen Sie Azure Digital Twins-Explorer aus, und konfigurieren Sie ihn für die Verbindung mit Ihrer Instanz. Sie verwenden den *Hostnamen* der ursprünglichen Instanz von Azure Digital Twins, die Sie verschieben.
-
-Jetzt sollte die Azure Digital Twins-Explorer-Beispiel-App in einem Browser auf Ihrem Computer ausgeführt werden. Das Beispiel sollte mit Ihrer ursprünglichen Azure Digital Twins-Instanz verbunden sein.
-
-:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt Azure Digital Twins-Explorer und enthält Felder für Abfrage-Explorer, Modelle, Zwillingsgraph und Eigenschaften. Es sind noch keine Daten vorhanden." lightbox="media/how-to-move-regions/explorer-blank.png":::
-
-Zur Überprüfung der Verbindung wählen Sie die Schaltfläche **Abfrage ausführen** aus, um die Standardabfrage auszuführen, die alle Zwillinge und Beziehungen im Graphen im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) anzeigt.
-
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Eine Schaltfläche „Run Query“ (Abfrage ausführen) in der oberen rechten Ecke des Fensters ist hervorgehoben." lightbox="media/how-to-move-regions/run-query.png":::
-
-Sie können Azure Digital Twins-Explorer weiterhin ausführen, weil Sie den Explorer später in diesem Artikel erneut verwenden werden, um diese Elemente noch einmal in Ihre neue Instanz in der Zielregion hochzuladen.
-
-### <a name="download-models-twins-and-graph"></a>Herunterladen von Modellen, Zwillingen und Graphen
-
-Laden Sie als nächstes die Modelle, Zwillinge und Graphen in Ihrer Lösung auf Ihren Computer herunter.
-
-Um alle diese Elemente gleichzeitig herunterzuladen, stellen Sie zunächst sicher, dass der vollständige Graph im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) angezeigt wird. Wenn der vollständige Graph noch nicht angezeigt wird, führen Sie die Standardabfrage `SELECT * FROM digitaltwins` im Feld **QUERY EXPLORER** (Abfrage-Explorer) erneut aus.
- 
-Wählen Sie dann das Symbol **Export Graph** (Graph exportieren) im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) aus.
-
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="Feld „TWIN GRAPH“ (ZWILLINGSGRAPH) mit einem hervorgehobenen Symbol. Es zeigt einen Pfeil, der aus einer Wolke heraus nach unten zeigt." lightbox="media/how-to-move-regions/export-graph.png":::
-
-Durch diese Aktion wird ein Link **Download** im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) aktiviert. Wählen Sie ihn aus, um eine JSON-basierte Darstellung des Abfrageergebnisses herunterzuladen (einschließlich Ihrer Modelle, Zwillinge und Beziehungen). Diese Aktion sollte eine JSON-Datei auf Ihren Computer herunterladen.
-
->[!NOTE]
->Wenn die heruntergeladene Datei eine andere Dateierweiterung aufweist, versuchen Sie, die Erweiterung direkt zu bearbeiten und sie in JSON zu ändern.
+Befolgen Sie die Anweisungen des Azure Digital Twins-Explorers zum [Exportieren von Graphen und Modellen](how-to-use-azure-digital-twins-explorer.md#export-graph-and-models). Dadurch wird eine JSON-Datei auf Ihren Computer heruntergeladen, die den Code für Ihre Modelle, Zwillinge und Beziehungen enthält (auch für Modelle, die derzeit nicht im Graphen verwendet werden).
 
 ## <a name="move"></a>Move
 
@@ -131,65 +86,23 @@ Erstellen Sie zunächst eine neue Azure Digital Twins-Instanz in Ihrer Zielregio
 
 Sobald dieser Schritt abgeschlossen wurde, benötigen Sie den Hostnamen Ihrer neuen Instanz, um die Einrichtung mit Ihren Daten fortzusetzen. Wenn Sie sich den Hostnamen bei der Einrichtung nicht notiert haben, können Sie [diese Anweisungen](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values) befolgen, um ihn jetzt aus dem Azure-Portal abzurufen.
 
-### <a name="repopulate-the-old-instance"></a>Erneutes Auffüllen der alten Instanz mit Daten
+Nun richten Sie die Daten der neuen Instanz so ein, dass sie eine Kopie der ursprünglichen Instanz ist.
 
-Nun richten Sie die neue Instanz so ein, dass Sie eine Kopie der ursprünglichen Instanz ist.
-
-#### <a name="upload-the-original-models-twins-and-graph-by-using-azure-digital-twins-explorer"></a>Hochladen ursprünglicher Modelle, Zwillinge und Graphen mithilfe von Azure Digital Twins-Explorer
+#### <a name="upload-models-twins-and-graph-with-azure-digital-twins-explorer"></a>Hochladen von Modellen, Zwillingen und eines Graphen mit dem Azure Digital Twins-Explorer
 
 In diesem Abschnitt können Sie die Modelle, Zwillinge und Graphen erneut in die neue Instanz hochladen. Wenn Sie in Ihrer ursprünglichen Instanz keine Modelle, Zwillinge oder Graphen besitzen oder Sie diese nicht in die neue Instanz verschieben möchten, können Sie mit dem [nächsten Abschnitt](#re-create-endpoints-and-routes) fortfahren.
 
-Andernfalls kehren Sie zum Browserfenster zurück, in dem Azure Digital Twins-Explorer ausgeführt wird und führen die folgenden Schritte aus.
+Navigieren Sie zunächst im [Azure-Portal](https://portal.azure.com) zum **Azure Digital Twins-Explorer** für die neue Instanz. 
 
-##### <a name="connect-to-the-new-instance"></a>Herstellen einer Verbindung mit der neuen Instanz
+Importieren Sie die zuvor in diesem Artikel [heruntergeladene JSON-Datei](#download-models-twins-and-graph-with-azure-digital-twins-explorer) in Ihre neue Instanz, indem Sie die Schritte in den Anweisungen des Azure Digital Twins-Explorers zum [Importieren einer Datei in Azure Digital Twins-Explorer](how-to-use-azure-digital-twins-explorer.md#import-file-to-azure-digital-twins-explorer) ausführen. Dadurch werden alle Modelle, Zwillinge und Beziehungen aus Ihrer ursprünglichen Instanz in die neue Instanz hochgeladen.
 
-Derzeit ist Azure Digital Twins-Explorer mit Ihrer ursprünglichen Azure Digital Twins-Instanz verbunden. Ändern Sie die Verbindung so, dass sie auf Ihre neue Instanz zeigt, indem Sie in der oberen rechten Ecke des Fensters die Schaltfläche **Sign In** (Anmelden) auswählen.
+Um zu überprüfen, ob alles erfolgreich hochgeladen wurde, navigieren Sie zur Registerkarte **Twin Graph** (Zwillingsgraph) zurück und wählen die Schaltfläche **Abfrage ausführen** im Bereich **Abfrage-Explorer** aus. Damit führen Sie die Standardabfrage aus, die alle Zwillinge und Beziehungen im Graphen anzeigt. Durch diese Aktion wird auch die Liste der Modelle im Bereich **Modelle** aktualisiert.
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Azure Digital Twins-Explorer mit hervorgehobenem Symbol „Anmelden“ in der oberen rechten Ecke des Fensters. Bei dem Symbol handelt es sich um eine einfache Silhouette einer Person mit der Silhouette eines Schlüssels im Vordergrund." lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Screenshot des Azure Digital Twins-Explorers mit hervorgehobenen Schaltfläche „Abfrage ausführen“ rechts oben im Fenster." lightbox="media/how-to-move-regions/run-query.png":::
 
-Ersetzen Sie die **ADT-URL**, um Ihre neue Instanz widerzuspiegeln. Ändern Sie diesen Wert in *https://{neuer Instanzhostname}* .
+Der Graph sollte mit all seinen Zwillingen und Beziehungen im Bereich **Twin Graph** (Zwillingsgraph) angezeigt werden. Ihre Modelle sollten auch im Bereich **Modelle** aufgelistet werden.
 
-Wählen Sie **Verbinden**. Möglicherweise werden Sie aufgefordert, sich erneut mit Ihren Anmeldeinformationen in Azure anzumelden oder dieser Anwendung die Zustimmung für Ihre Instanz zu erteilen.
-
-##### <a name="upload-models-twins-and-graph"></a>Hochladen von Modellen, Zwillingen und Graphen
-
-Als nächstes laden Sie die Lösungskomponenten, die Sie zuvor heruntergeladen haben, auf Ihre neue Instanz hoch.
-
-Um Ihre Modelle, Zwillinge und Graphen hochzuladen, wählen Sie das Symbol **Import Graph** (Graph importieren) im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) aus. Mit dieser Option werden alle drei Komponenten gleichzeitig hochgeladen. Es werden sogar Modelle hochgeladen, die derzeit nicht im Graphen verwendet werden.
-
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Feld „TWIN GRAPH“ (ZWILLINGSGRAPH) mit einem hervorgehobenen Symbol. Es zeigt einen auf eine Wolke gerichteten Pfeil." lightbox="media/how-to-move-regions/import-graph.png":::
-
-Navigieren Sie im Dateiauswahlfeld zu Ihrem heruntergeladenen Graphen. Wählen Sie die **JSON**-Graphdatei aus, und wählen Sie dann **Open** (Öffnen) aus.
-
-Nach wenigen Sekunden wird von Azure Digital Twins-Explorer eine Ansicht **Import** mit einer Vorschau des zu ladenden Graphen angezeigt.
-
-Wählen Sie zum Bestätigen des Graphuploads in der rechten oberen Ecke des Felds **TWIN GRAPH** (ZWILLINGSGRAPH) das Symbol **Speichern** aus.
-
-:::row:::
-    :::column:::
-        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="Hervorgehobenes Symbol „Speichern“ im Bereich „Graph Preview“ (Graphvorschau)." lightbox="media/how-to-move-regions/graph-preview-save.png":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-Azure Digital Twins-Explorer lädt nun Ihre Modelle und Graphen (einschließlich der Zwillinge und Beziehungen) in Ihre neue Azure Digital Twins-Instanz hoch. Es sollte eine Erfolgsmeldung angezeigt werden, aus der hervorgeht, wie viele Modelle, Zwillinge und Beziehungen hochgeladen wurden.
-
-:::row:::
-    :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="Dialogfeld mit der Information, dass der Graph erfolgreich importiert wurde. Der Text lautet: „Import successful. 2 models imported. 4 twins imported. 2 relationships imported.“ (Import erfolgreich. 2 Modelle imporiert. 4 Zwillinge importiert. 2 Beziehungen importiert.)" lightbox="media/how-to-move-regions/import-success.png":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-Um zu überprüfen, ob alles erfolgreich hochgeladen wurde, navigieren Sie zur Registerkarte **TWIN GRAPH** (ZWILLINGSGRAPH) zurück und wählen die Schaltfläche **Abfrage ausführen** im Feld **ABFRAGE-EXPLORER** aus. Damit führen Sie die Standardabfrage aus, die alle Zwillinge und Beziehungen im Graphen anzeigt. Durch diese Aktion wird auch die Liste der Modelle im Feld **MODELLE** aktualisiert.
-
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Hervorhebung der Schaltfläche „Run Query“ (Abfrage ausführen) in der oberen rechten Ecke des Fensters." lightbox="media/how-to-move-regions/run-query.png":::
-
-Der Graph sollte mit all seinen Zwillingen und Beziehungen im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) angezeigt werden. Ihre Modelle sollten auch im Feld **MODELLE** aufgelistet sein.
-
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Eine Ansicht von Azure Digital Twins-Explorer mit zwei Modellen, die im Feld „MODELLE“ hervorgehoben sind, und ein Graph, der im Feld „TWIN GRAPH“ (ZWILLINGSGRAPH) hervorgehoben ist" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Screenshot des Azure Digital Twins-Explorers mit zwei Modellen, die im Feld „Modelle“ hervorgehoben sind, und ein Graph, der im Feld „Twin Graph“ (Zwillingsgraph) hervorgehoben ist." lightbox="media/how-to-move-regions/post-upload.png":::
 
 Diese Ansichten bestätigen, dass Ihre Modelle, Zwillinge und Graphen erneut in die neue Instanz in der Zielregion hochgeladen wurden.
 
@@ -220,7 +133,7 @@ Die genauen Ressourcen, die Sie bearbeiten müssen, hängen von Ihrem Szenario a
 * Azure Maps.
 * IoT Hub Device Provisioning Service.
 * Persönliche oder Unternehmens-Apps außerhalb von Azure, z. B. die Client-App, die im [Tutorial: Codieren einer Client-App](tutorial-code.md) erstellt wurde, die eine Verbindung mit der Instanz herstellt und Azure Digital Twins-APIs aufruft.
-* Azure AD-App-Registrierungen müssen *nicht* neu erstellt werden. Wenn Sie eine [App-Registrierung](how-to-create-app-registration.md) verwenden, um eine Verbindung mit den Azure Digital Twins-APIs herzustellen, können Sie die gleiche App-Registrierung mit Ihrer neuen Instanz wiederverwenden.
+* Azure AD-App-Registrierungen müssen *nicht* neu erstellt werden. Wenn Sie eine [App-Registrierung](./how-to-create-app-registration-portal.md) verwenden, um eine Verbindung mit den Azure Digital Twins-APIs herzustellen, können Sie die gleiche App-Registrierung mit Ihrer neuen Instanz wiederverwenden.
 
 Nachdem Sie diesen Schritt abgeschlossen haben, sollte Ihre neue Instanz in der Zielregion eine Kopie der ursprünglichen Instanz sein.
 
@@ -229,7 +142,7 @@ Nachdem Sie diesen Schritt abgeschlossen haben, sollte Ihre neue Instanz in der 
 Zum Überprüfen, ob Ihre neue Instanz ordnungsgemäß eingerichtet wurde, verwenden Sie die folgenden Tools:
 
 * [Azure-Portal](https://portal.azure.com). Das Portal eignet sich gut, um zu überprüfen, ob Ihre neue Instanz vorhanden ist und sich in der richtigen Zielregion befindet. Außerdem eignet es sich gut zum Überprüfen von Endpunkten und Routen sowie Verbindungen mit anderen Azure-Diensten.
-* [Befehle der Azure Digital Twins-Cli](concepts-cli.md). Diese Befehle eignen sich gut, um zu überprüfen, ob Ihre neue Instanz vorhanden ist und sich in der richtigen Zielregion befindet. Sie können auch zum Überprüfen von Instanzdaten verwendet werden.
+* [Befehle der Azure Digital Twins-Cli](/cli/azure/dt?view=azure-cli-latest&preserve-view=true). Diese Befehle eignen sich gut, um zu überprüfen, ob Ihre neue Instanz vorhanden ist und sich in der richtigen Zielregion befindet. Sie können auch zum Überprüfen von Instanzdaten verwendet werden.
 * [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Azure Digital Twins-Explorer eignet sich gut für die Überprüfung von Instanzdaten wie Modellen, Zwillingen und Graphen.
 * [Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md). Diese Ressourcen eignen sich gut für die Überprüfung von Instanzdaten wie Modellen, Zwillingen und Graphen. Sie sind auch für die Überprüfung von Endpunkten und Routen geeignet.
 
@@ -239,10 +152,10 @@ Sie können auch versuchen, alle benutzerdefinierten Apps oder End-to-End-Flows,
 
 Nachdem Ihre neue Instanz jetzt in der Zielregion mit einer Kopie der Daten und Verbindungen der ursprünglichen Instanz eingerichtet ist, können Sie die ursprüngliche Instanz löschen.
 
-Sie können das [Azure-Portal](https://portal.azure.com), die [Azure CLI](concepts-cli.md) oder die [APIs der Steuerungsebene](concepts-apis-sdks.md#overview-control-plane-apis) verwenden.
+Sie können das [Azure-Portal](https://portal.azure.com), die [Azure CLI](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) oder die [APIs der Steuerungsebene](concepts-apis-sdks.md#overview-control-plane-apis) verwenden.
 
 Um die Instanz über das Azure-Portal zu löschen, [öffnen Sie das Portal](https://portal.azure.com) in einem Browserfenster, und navigieren Sie zu Ihrer ursprünglichen Azure Digital Twins-Instanz, indem Sie in der Portalsuchleiste nach dem Namen suchen.
 
 Wählen Sie die Schaltfläche **Löschen** aus, und folgen Sie den Aufforderungen, um den Löschvorgang abzuschließen.
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Ansicht der Details der Azure Digital Twins-Instanz im Azure-Portal auf der Registerkarte „Übersicht“. Die Schaltfläche „Löschen“ ist hervorgehoben.":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Screenshot: Details der Azure Digital Twins-Instanz im Azure-Portal auf der Registerkarte „Übersicht“. Die Schaltfläche „Löschen“ ist hervorgehoben.":::

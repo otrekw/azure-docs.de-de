@@ -918,7 +918,7 @@
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern
-      href: faq-managed-cluster.md
+      href: faq-managed-cluster.yml
     - name: Häufig gestellte Fragen
       href: service-fabric-common-questions.md
     - name: Azure-Roadmap

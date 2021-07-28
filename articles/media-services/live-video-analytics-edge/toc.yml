@@ -128,7 +128,7 @@
     - name: Kontingente und Einschränkungen
       href: quotas-limitations.md
     - name: Häufig gestellte Fragen
-      href: faq.md
+      href: faq.yml
     - name: Produktionsbereitschaft und Best Practices
       href: production-readiness.md
     - name: Transparenz und Prinzipien für verantwortungsbewusste KI

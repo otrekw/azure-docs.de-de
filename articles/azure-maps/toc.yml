@@ -67,10 +67,14 @@
       href: choose-pricing-tier.md
     - name: Creator für Gebäudepläne
       items:
+        - name: Geografischer Bereich des Creator-Diensts
+          href: creator-geographic-scope.md
         - name: Konzepte für Gebäudepläne
           href: creator-indoor-maps.md
         - name: Fehler und Warnungen bei der Zeichnungskonvertierung
           href: drawing-conversion-error-codes.md
+    - name: Verschlüsselung für ruhende Daten
+      href: ../security/fundamentals/encryption-atrest.md
     - name: Abdeckung
       items:
         - name: Abdeckung
@@ -300,6 +304,8 @@
       items:
         - name: Anforderungen für Zeichnungspakete
           href: drawing-requirements.md
+        - name: Leitfaden für Zeichnungspakete
+          href: drawing-package-guide.md
         - name: StylesObject für dynamische Karten
           href: schema-stateset-stylesobject.md
         - name: Fahrzeugnutzungsmodell
@@ -310,10 +316,12 @@
           href: geofence-geojson.md
         - name: Unterstützte Suchkategorien
           href: supported-search-categories.md
+        - name: Facility Ontology
+          href: creator-facility-ontology.md
     - name: REST
       items:
         - name: Datendienst
-          href: /rest/api/maps/data
+          href: /rest/api/maps/data-v2
         - name: Höhenangabendienst
           href: /rest/api/maps/elevation
         - name: Geolocation-Dienst
@@ -339,17 +347,17 @@
         - name: Kartenerstellungsdienst
           items:
             - name: Aliasdienst
-              href: /rest/api/maps/alias
+              href: /rest/api/maps/v2/alias
             - name: Konvertierungsdienst
-              href: /rest/api/maps/conversion
+              href: /rest/api/maps/v2/conversion
             - name: Datasetdienst
-              href: /rest/api/maps/dataset
+              href: /rest/api/maps/v2/dataset
             - name: Featurezustandsdienst
-              href: /rest/api/maps/featurestate
+              href: /rest/api/maps/v2/feature-state
             - name: Kachelsetdienst
-              href: /rest/api/maps/tileset
+              href: /rest/api/maps/v2/tileset
             - name: WFS-Dienst
-              href: /rest/api/maps/wfs
+              href: /rest/api/maps/v2/wfs
         - name: Kartenkontoverwaltung
           href: /rest/api/maps-management
     - name: JavaScript

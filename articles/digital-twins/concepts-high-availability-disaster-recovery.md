@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ee2bd4ab66b7a67be04c1a710caa12c57c705d19
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 05713c5a27a8b42ce9b6967212bf1414c841788c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209965"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474575"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung: Azure Digital Twins
 
@@ -34,10 +34,15 @@ Azure Digital Twins bietet Hochverfügbarkeit zwischen Regionen, indem Redundanz
 
 Es kann in einigen seltenen Fällen dazu kommen, dass ein Rechenzentrum aufgrund von Stromausfällen oder anderen Ereignissen in der Region ausfällt. Solche Ereignisse sind selten, und bei solchen Ausfällen ist die oben beschriebene Hochverfügbarkeit zwischen Regionen nicht immer hilfreich. Azure Digital Twins löst dieses Problem durch ein von Microsoft initiiertes Failover.
 
-Das **von Microsoft initiierte Failover** wendet Microsoft in seltenen Fällen an, um ein Failover für alle Azure Digital Twins-Instanzen einer betroffenen Region in die entsprechende geografisch gekoppelte Region auszuführen. Dieser Prozess ist eine Standardoption (Benutzer können sie also nicht abwählen), für die kein Eingriff des Benutzers erforderlich ist. Microsoft behält sich das Recht vor, zu bestimmen, wann diese Option angewendet wird. Dieser Mechanismus bedarf nicht der Zustimmung des Benutzers, bevor ein Failover für die Instanz des Benutzers ausgeführt wird.
+Das **von Microsoft initiierte Failover** wird in seltenen Fällen angewendet, um ein Failover für alle Azure Digital Twins-Instanzen einer betroffenen Region in die entsprechende [geografisch gekoppelte Region](../best-practices-availability-paired-regions.md) auszuführen. Dieser Prozess ist eine Standardoption (Benutzer können sie also nicht abwählen), für die kein Eingriff des Benutzers erforderlich ist. Microsoft behält sich das Recht vor, zu bestimmen, wann diese Option angewendet wird. Dieser Mechanismus bedarf nicht der Zustimmung des Benutzers, bevor ein Failover für die Instanz des Benutzers ausgeführt wird.
 
 >[!NOTE]
-> Einige Azure-Dienste bieten außerdem eine zusätzliche Option namens **vom Kunden initiiertes Failover**, die es Kunden ermöglicht, ein Failover nur für Ihre Instanz zu initiieren, z. B. zum Ausführen eines Notfallwiederherstellungsdrills. Dieser Mechanismus wird zurzeit von Azure Digital Twins **nicht unterstützt**. 
+> Einige Azure-Dienste bieten eine zusätzliche Option namens **vom Kunden initiiertes Failover**, die es Kunden ermöglicht, ein Failover nur für Ihre Instanz zu initiieren, z. B. zum Ausführen eines Notfallwiederherstellungsdrills. Dieser Mechanismus wird zurzeit von Azure Digital Twins **nicht unterstützt**. 
+
+Wenn es für Sie wichtig ist, alle Daten in bestimmten geografischen Regionen zu behalten, überprüfen Sie den Standort der [geografisch gekoppelten Region](../best-practices-availability-paired-regions.md#azure-regional-pairs) für die Region, in der Sie Ihre Instanz erstellen, um sicherzustellen, dass sie Ihre Anforderungen an die Datenresidenz erfüllt.
+
+>[!NOTE]
+> Einige Azure-Dienste bieten Benutzern die Möglichkeit, eine andere Region für das Failover zu konfigurieren, um Anforderungen an die Datenresidenz erfüllen zu können. Diese Funktion wird zurzeit von Azure Digital Twins **nicht unterstützt**. 
 
 ## <a name="monitor-service-health"></a>Überwachen der Dienstintegrität
 
@@ -50,14 +55,14 @@ So zeigen Sie Service Health-Ereignisse an:
 1. Verwenden Sie das linke Menü, um zur Seite *Integritätsverlauf* zu wechseln.
 1. Suchen Sie nach einem *Issue Name* (Problemnamen), der mit **Azure Digital Twins** beginnt, und klicken Sie auf diesen.
 
-    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="Screenshot: Azure-Portal mit der Seite „Integritätsverlauf“ und einer Liste mehrerer Probleme aus den letzten Tagen. Ein Problem mit dem Namen „Azure Digital Twins – West Europe – Mitigated“ wird hervorgehoben." lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="Screenshot des Azure-Portals mit der Seite „Integritätsverlauf“. Ein Problem mit dem Namen „Azure Digital Twins – West Europe – Mitigated“ ist hervorgehoben." lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
 
 1. Allgemeine Informationen zum Ausfall finden Sie auf der Registerkarte *Zusammenfassung*.
 
-    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="Auf der Seite „Integritätsverlauf“ wird die Registerkarte „Zusammenfassung“ hervorgehoben. Diese Registerkarte enthält allgemeine Informationen, z. B. den Namen der betroffenen Ressource, die Region und das Abonnement." lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="Screenshot des Azure-Portals mit der Seite „Integritätsverlauf“ mit hervorgehobener Registerkarte „Zusammenfassung“. Auf der Registerkarte werden allgemeine Informationen angezeigt." lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
 1. Weitere Informationen und Updates zum Problem im Zeitverlauf finden Sie auf der Registerkarte *Problemupdates*.
 
-    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="Auf der Seite „Integritätsverlauf“ wird die Registerkarte „Problemupdates“ hervorgehoben. Die Registerkarte enthält mehrere Einträge mit dem aktuellen Status von vor einem Tag." lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="Screenshot des Azure-Portals mit der Seite „Integritätsverlauf“ mit hervorgehobener Registerkarte „Problemupdates“. Auf der Registerkarte wird der Status von Einträgen angezeigt." lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
 
 
 Beachten Sie, dass die in diesem Tool angezeigten Informationen nicht für eine spezifische Azure Digital Twins-Instanz sind. Nachdem Sie Service Health verwenden haben, um die aktuelle Situation eines Azure Digital Twins-Diensts in einer bestimmten Region oder einem bestimmten Abonnement zu untersuchen, können Sie die Überwachung ausweiten, indem Sie das [Resource Health-Tool](troubleshoot-resource-health.md) verwenden, um spezifische Instanzen zu analysieren und zu sehen, ob diese betroffen sind.
@@ -73,4 +78,4 @@ Bewährte Methoden für Hochverfügbarkeit/Notfallwiederherstellung finden Sie i
 Erfahren Sie mehr über die ersten Schritte mit Azure Digital Twins-Lösungen:
  
 * [Was ist Azure Digital Twins?](overview.md)
-* [Schnellstart: Erkunden eines Beispielszenarios](quickstart-azure-digital-twins-explorer.md)
+* [Schnellstart: Erste Schritte mit Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md)

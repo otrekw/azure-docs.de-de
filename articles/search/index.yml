@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 03/02/2021
-  ms.openlocfilehash: 6203e20f007fc170447d0c145bbaab942834d907
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 86122297340197ede15e99b8ac3f4ff2f61713b1
+  ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110378367"
+  ms.lasthandoff: 06/07/2021
+  ms.locfileid: "111555864"
 landingContent:
 - title: Testen der kognitiven Suche
   linkLists:
@@ -62,20 +62,6 @@ landingContent:
       url: search-create-app-portal.md
     - text: Extrahieren von Text aus Bildern und App-Dateien
       url: cognitive-search-quickstart-blob.md
-- title: Indizieren beliebiger Daten
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Definieren eines Indexes
-      url: search-what-is-an-index.md
-    - text: Daten importieren
-      url: search-what-is-data-import.md
-  - linkListType: reference
-    links:
-    - text: Erstellen eines Index (REST)
-      url: /rest/api/searchservice/create-index
-    - text: Erstellen eines Indexers (REST)
-      url: /rest/api/searchservice/create-indexer
 - title: Anreichern mit KI
   linkLists:
   - linkListType: concept
@@ -98,6 +84,22 @@ landingContent:
     links:
     - text: Integrierte Skills
       url: cognitive-search-predefined-skills.md
+- title: Indizieren beliebiger Daten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Definieren eines Indexes
+      url: search-what-is-an-index.md
+    - text: Daten importieren
+      url: search-what-is-data-import.md
+    - text: Indizieren mithilfe von Power Query-Connectors
+      url: search-how-to-index-power-query-data-sources.md
+  - linkListType: reference
+    links:
+    - text: Erstellen eines Index (REST)
+      url: /rest/api/searchservice/create-index
+    - text: Erstellen eines Indexers (REST)
+      url: /rest/api/searchservice/create-indexer
 - title: Daten abfragen
   linkLists:
   - linkListType: concept

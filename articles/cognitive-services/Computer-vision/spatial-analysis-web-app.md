@@ -3,23 +3,23 @@ title: Bereitstellen einer Web-App zur räumlichen Analyse
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die räumliche Analyse in einer Webanwendung verwenden.
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: 6d3be90cc81b1bcd9a55fc8e53cb9f2238e8c6de
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: bd071fc930420a48a764eff3818580885312fde6
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285976"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746067"
 ---
-# <a name="how-to-deploy-a-people-counting-web-application"></a>Gewusst wie: Bereitstellen einer Webanwendung für die Erfassung der Personenanzahl
+# <a name="how-to-deploy-a-spatial-analysis-web-application"></a>Vorgehensweise: Bereitstellen einer Webanwendung zur räumlichen Analyse
 
-In diesem Artikel erfahren Sie, wie Sie räumliche Analysen in eine Web-App integrieren, die die Bewegung von Personen versteht und die Anzahl der Personen überwacht, die einen physischen Raum einnehmen. 
+In diesem Artikel erfahren Sie, wie Sie eine Web-App bereitstellen, die räumliche Analysedaten (Erkenntnisse) von IotHub sammelt und visualisiert. Dies kann nützliche Anwendungsmöglichkeiten in einer Vielzahl von Szenarien und Branchen darstellen. Möchte ein Unternehmen z. B. die Nutzung seiner Immobilienflächen optimieren, kann es schnell eine Lösung mit verschiedenen Szenarien erstellen. 
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
@@ -27,6 +27,13 @@ In diesem Lernprogramm lernen Sie Folgendes:
 * Konfigurieren des Vorgangs und der Kamera
 * Konfigurieren der IoT Hub-Verbindung in der Webanwendung
 * Bereitstellen und Testen der Webanwendung
+
+In dieser App werden die folgenden Szenarien dargestellt:
+
+* Anzahl der Personen, die einen Raum/Laden betreten/verlassen
+* Anzahl der Personen, die einen Kassenbereich/eine Kassenzone betreten und verlassen, sowie die in der Kassenschlange verbrachte Zeit (Verweildauer)
+* Anzahl der Personen, die eine Gesichtsmaske tragen 
+* Anzahl der Personen, die gegen Richtlinien der räumlichen Distanzierung verstoßen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,36 +70,31 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>Bereitstellen des Containers in Azure IoT Edge auf dem Hostcomputer
 
-Stellen Sie den Container für die räumliche Analyse mithilfe der Azure-Befehlszeilenschnittstelle als IoT-Modul auf dem Hostcomputer bereit. Der Bereitstellungsprozess erfordert eine Bereitstellungsmanifestdatei, in der die erforderlichen Container, Variablen und Konfigurationen für Ihre Bereitstellung beschrieben werden. Sie finden ein Beispiel für ein für [Azure Stack Edge spezifisches Bereitstellungsmanifest](https://go.microsoft.com/fwlink/?linkid=2142179), [nicht auf Azure Stack Edge bezogenes Bereitstellungsmanifest](https://go.microsoft.com/fwlink/?linkid=2152189) und [Azure-VM mit GPU spezifisches Bereitstellungsmanifest](https://go.microsoft.com/fwlink/?linkid=2152189) auf GitHub. Diese enthalten eine einfache Bereitstellungskonfiguration für den Container zur *räumlichen Analyse*. 
-
-Alternativ können Sie die Azure IoT-Erweiterungen für Visual Studio Code verwenden, um Vorgänge mit Ihrem IoT Hub auszuführen. Weitere Informationen erhalten Sie unter [Bereitstellen von Azure IoT Edge-Modulen mithilfe von Visual Studio Code](../../iot-edge/how-to-deploy-modules-vscode.md).
-
-> [!NOTE] 
-> Die Container *spatial-analysis-telegraf* und *spatial-analysis-diagnostics* sind optional. Sie können diese aus der Datei *DeploymentManifest.json* entfernen. Weitere Informationen finden Sie im Artikel zu [Telemetrie und Problembehandlung](./spatial-analysis-logging.md). Sie finden drei Beispieldateien *DeploymentManifest.json* auf GitHub: für [Azure Stack Edgegeräte](https://go.microsoft.com/fwlink/?linkid=2142179), einen [Desktopcomputer](https://go.microsoft.com/fwlink/?linkid=2152189) oder eine [Azure-VM mit GPU](https://go.microsoft.com/fwlink/?linkid=2152189).
+Der nächste Schritt ist die Bereitstellung des Containers für die **räumliche Analyse** mithilfe der Azure-Befehlszeilenschnittstelle als IoT-Modul auf dem Hostcomputer. Der Bereitstellungsprozess erfordert eine Bereitstellungsmanifestdatei, in der die erforderlichen Container, Variablen und Konfigurationen für Ihre Bereitstellung beschrieben werden. Ein Beispiel für ein Bereitstellungsmanifest finden Sie unter [DeploymentManifest.js](https://github.com/Azure-Samples/cognitive-services-spatial-analysis/blob/main/deployment.json), das vorgefertigte Konfigurationen für alle Szenarien enthält.  
 
 ### <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
 
-Die meisten **Umgebungsvariablen** für das IoT Edge-Modul sind bereits in den unter dem Link oben angegebenen *DeploymentManifest.json*-Beispieldateien festgelegt. Suchen Sie in der Datei nach den Umgebungsvariablen `BILLING_ENDPOINT` und `API_KEY`, wie unten gezeigt. Ersetzen Sie die Werte durch den Endpunkt-URI und den API-Schlüssel, die Sie zuvor erstellt haben. Stellen Sie sicher, dass der EULA-Wert auf „accept“ festgelegt ist. 
+Die meisten **Umgebungsvariablen** für das IoT Edge-Modul sind bereits in den unter dem Link oben angegebenen *DeploymentManifest.json*-Beispieldateien festgelegt. Suchen Sie in der Datei nach den Umgebungsvariablen `ENDPOINT` und `APIKEY`, wie unten gezeigt. Ersetzen Sie die Werte durch den Endpunkt-URI und den API-Schlüssel, die Sie zuvor erstellt haben. Stellen Sie sicher, dass der EULA-Wert auf „accept“ festgelegt ist. 
 
 ```json
 "EULA": { 
     "value": "accept"
 },
-
-"BILLING_ENDPOINT":{ 
+"ENDPOINT":{ 
     "value": "<Use a key from your Computer Vision resource>"
 },
-"API_KEY":{
+"APIKEY":{
     "value": "<Use the endpoint from your Computer Vision resource>"
 }
 ```
 
 ### <a name="configure-the-operation-parameters"></a>Konfigurieren der Vorgangsparameter
 
-Nachdem die anfängliche Konfiguration des Containers *spatial-analysis* nun fertiggestellt ist, konfigurieren Sie im nächsten Schritt die Vorgangsparameter und fügen sie der Bereitstellung hinzu. 
+Wenn Sie das Beispiel [DeploymentManifest.json](https://github.com/Azure-Samples/cognitive-services-spatial-analysis/blob/main/deployment.json) verwenden, das bereits alle erforderlichen Konfigurationen (Vorgänge, URLs und Zonen für aufgezeichnete Videodateien usw.) enthält, können Sie zum Abschnitt **Ausführen der Bereitstellung** übergehen.
 
-Im ersten Schritt aktualisieren Sie das oben verknüpfte Beispielbereitstellungsmanifest und konfigurieren die operationId für `cognitiveservices.vision.spatialanalysis-personcount`, wie unten dargestellt:
+Nachdem die anfängliche Konfiguration des Containers für die räumliche Analyse nun abgeschlossen ist, konfigurieren Sie im nächsten Schritt die Vorgangsparameter und fügen diese der Bereitstellung hinzu. 
 
+Der erste Schritt besteht darin, das Beispiel [DeploymentManifest.json](https://github.com/Azure-Samples/cognitive-services-spatial-analysis/blob/main/deployment.json) zu aktualisieren und den gewünschten Vorgang zu konfigurieren. Die Konfiguration für „cognitiveservices.vision.spatialanalysis-personcount“ wird z. B. unten gezeigt:
 
 ```json
 "personcount": {
@@ -147,30 +149,17 @@ Suchen Sie im Azure-Portal in den Einstellungen des IoT Edge-Moduls für die rä
 
 ![Beispiel für die Bereitstellungsüberprüfung](./media/spatial-analysis/deployment-verification.png)
 
-Zu diesem Zeitpunkt führt der Container für räumliche Analysen den Vorgang aus. Er gibt KI-Erkenntnisse für den Vorgang `cognitiveservices.vision.spatialanalysis-personcount` aus und leitet diese als Telemetriedaten an Ihre Azure IoT Hub-Instanz weiter. Um weitere Kameras zu konfigurieren, können Sie die Datei mit dem Bereitstellungsmanifest aktualisieren und die Bereitstellung erneut ausführen.
+Zu diesem Zeitpunkt führt der Container für räumliche Analysen den Vorgang aus. Er gibt KI-Erkenntnisse für die Vorgänge aus und leitet diese Erkenntnisse als Telemetriedaten an Ihre Azure IoT Hub-Instanz weiter. Um weitere Kameras zu konfigurieren, können Sie die Datei mit dem Bereitstellungsmanifest aktualisieren und die Bereitstellung erneut ausführen.
 
-## <a name="person-counting-web-application"></a>Webanwendung zur Personenzählung
+## <a name="spatial-analysis-web-application"></a>Webanwendung zur räumlichen Analyse
 
-Mit dieser Webanwendung zur Personenzählung können Sie schnell eine Beispiel-Web-App konfigurieren und in Ihrer Azure-Umgebung hosten.
+Mit der Webanwendung zur räumlichen Analyse können Entwickler schnell eine Beispiel-Web-App konfigurieren, sie in ihrer Azure-Umgebung hosten und die App zum Überprüfen von E2E-Ereignissen verwenden.
 
-### <a name="get-the-person-counting-app-container"></a>Abrufen des Containers für die App zur Personenzählung
+## <a name="build-docker-image"></a>Erstellen eines Docker-Images
 
-Eine Containerform dieser App ist in Azure Container Registry verfügbar. Verwenden Sie den folgenden Docker-Pullbefehl, um sie herunterzuladen. Für das Zugriffstoken wenden Sie sich unter projectarchon@microsoft.com an Microsoft.
+Befolgen Sie den [Leitfaden](https://github.com/Azure-Samples/cognitive-services-spatial-analysis/blob/main/README.md#docker-image) zum Erstellen und Pushen des Images in eine Azure Container Registry in Ihrem Abonnement.
 
-```bash
-docker login rtvsofficial.azurecr.io -u <token name> -p <password>
-docker pull rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0
-```
-
-Pushen Sie den Container in Ihre Azure Container Registry-Instanz (ACR).
-
-```bash
-az acr login --name <your ACR name>
-
-docker tag rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0 [desired local image name]
-
-docker push [desired local image name]
-```
+## <a name="setup-steps"></a>Einrichtungsschritte
 
 Erstellen Sie zum Installieren des Containers eine neue Azure App Service-Instanz, und geben Sie die erforderlichen Parameter an. Wechseln Sie dann zur Registerkarte **Docker**, und wählen Sie **Einzelner Container** und dann **Azure Container Registry** aus. Verwenden Sie Ihre Instanz von Azure Container Registry, in die Sie das Image zuvor gepusht haben.
 

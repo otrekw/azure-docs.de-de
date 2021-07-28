@@ -86,6 +86,8 @@
       href: samples.md
     - name: PowerShell
       href: samples-powershell.md
+    - name: Übersicht über das UWP-Beispiel für React Native
+      href: uwp-react.md
 - name: Konzepte
   items:
     - name: Transport Layer Security (TLS)
@@ -168,7 +170,7 @@
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
-      href: notification-hubs-push-notification-faq.md
+      href: notification-hubs-push-notification-faq.yml
     - name: Migration von Google GCM zu FCM
       href: notification-hubs-gcm-to-fcm.md
     - name: SDKs

@@ -26,9 +26,21 @@
       href: compare-cosmosdb-managed-instance.md
 - name: Anleitungen
   items:
+    - name: Migration
+      items:
+        - name: Livemigration
+          items:
+            - name: Verwenden eines Proxys für duales Schreiben
+              href: dual-write-proxy-migration.md
+        - name: Offlinemigration
+          items:
+            - name: Verwenden von Apache Spark
+              href: spark-migration.md
     - name: Verwalten mit der Azure CLI
       displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md
+    - name: Erforderliche Netzwerkregeln für ausgehenden Datenverkehr
+      href: network-rules.md
     - name: Visualisieren von Metriken in Prometheus mit Grafana
       href: visualize-prometheus-grafana.md
 - name: Verweis
@@ -36,8 +48,8 @@
     - name: REST-API
       items:
         - name: Cassandra-Cluster
-          href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandraclusters
+          href: /rest/api/cosmos-db-resource-provider/2021-04-01-preview/cassandra-clusters
         - name: Cassandra-Rechenzentren
-          href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandradatacenters
+          href: /rest/api/cosmos-db-resource-provider/2021-04-01-preview/cassandra-data-centers
     - name: Azure CLI
       href: /cli/azure/managed-cassandra

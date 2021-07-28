@@ -5,13 +5,13 @@ author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
 ms.topic: quickstart
-ms.date: 11/09/2020
-ms.openlocfilehash: 034f90adc46b541377f62ac66ea721a30ed48637
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 06/01/2021
+ms.openlocfilehash: a66af648abc0ae48c0a4fcc7eb33ab7c1351c41b
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742047"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371902"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Schnellstart: Kopieren von Daten mithilfe des Tools zum Kopieren von Daten
 
@@ -57,48 +57,48 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 
 1. Nach Abschluss der Erstellung wird die Seite **Data Factory** angezeigt. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Anwendung für die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
    
-:::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
-
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
+    
 ## <a name="start-the-copy-data-tool"></a>Starten des Tools zum Kopieren von Daten
 
-1. Klicken Sie auf der Seite **Erste Schritte** auf die Kachel **Daten kopieren**, um das Tool zum Kopieren von Daten zu starten. 
+1. Klicken Sie auf der Seite **Erste Schritte** auf die Kachel **Daten kopieren**, um das Tool zum Kopieren von Daten zu starten.
 
    ![Kachel „Daten kopieren“](./media/doc-common-process/get-started-page.png)
 
-1. Auf der Seite **Eigenschaften** des Tools zum Kopieren von Daten können Sie einen Namen für die Pipeline und ihre Beschreibung eingeben. Klicken Sie anschließend auf **Weiter**. 
+1. Wählen Sie auf der Seite **Eigenschaften** des Tools zum Kopieren von Daten unter **Aufgabentyp** den Typ **Integrierte Kopieraufgabe** aus, und wählen Sie dann **Weiter** aus.
 
    ![Eigenschaftenseite](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
+
 1. Führen Sie auf der Seite **Quelldatenspeicher** die folgenden Schritte aus:
 
-    a. Klicken Sie auf **+ Neue Verbindung erstellen**, um eine Verbindung hinzuzufügen.
+    1. Klicken Sie auf **+ Neue Verbindung erstellen**, um eine Verbindung hinzuzufügen.
 
-    b. Wählen Sie den Typ des verknüpften Diensts aus, den Sie für die Quellverbindung erstellen möchten. In diesem Tutorial verwenden wir **Azure Blob Storage**. Wählen Sie diese Option im Katalog und dann **Weiter** aus.
+    1. Wählen Sie den Typ des verknüpften Diensts aus, den Sie für die Quellverbindung erstellen möchten. In diesem Tutorial verwenden wir **Azure Blob Storage**. Wählen Sie diese Option im Katalog und dann **Weiter** aus.
     
-    ![Blob auswählen](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
+       ![Blob auswählen](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    c. Geben Sie auf der Seite **New Linked Service (Azure Blob Storage)** (Neuer verknüpfter Dienst (Azure Blob Storage)) einen Namen für Ihren verknüpften Dienst ein. Wählen Sie in der Liste **Speicherkontoname** Ihr Speicherkonto aus, testen Sie die Verbindung, und wählen Sie dann **Erstellen** aus. 
+    1. Geben Sie auf der Seite **Neue Verbindung (Azure Blob Storage)** einen Namen für Ihre Verbindung ein. Wählen Sie aus der Liste **Azure-Abonnement** Ihr Azure-Abonnement und aus der Liste **Speicherkontoname** Ihr Speicherkonto aus, testen Sie die Verbindung, und wählen Sie dann **Erstellen** aus. 
 
-    ![Konfigurieren des Azure Blob Storage-Kontos](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
+       ![Konfigurieren des Azure Blob Storage-Kontos](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 
-    d. Wählen Sie den neu erstellten verknüpften Dienst als Quelle aus, und klicken Sie auf **Weiter**.
+    1. Wählen Sie im Block **Verbindung** die neu erstellte Verbindung aus.
+    1. Wählen Sie im Abschnitt **Datei oder Ordner** die Option **Durchsuchen** aus, um zum Ordner **adftutorial/input** zu navigieren, wählen Sie die Datei **emp.txt** aus, und klicken Sie dann auf **OK**.
+    1. Aktivieren Sie das Kontrollkästchen **Binary copy** (Binärkopie), um die Datei ohne Änderungen zu übernehmen, und wählen Sie dann **Weiter** aus.
 
+       :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/source-data-store.png" alt-text="Screenshot: Seite „Quelldatenspeicher“":::
 
-1. Führen Sie auf der Seite **Choose the input file or folder** (Eingabedatei oder -ordner auswählen) die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Zieldatenspeicher** die folgenden Schritte aus:
+    1. Wählen Sie die **AzureBlobStorage**-Verbindung aus, die Sie im Block **Verbindung** erstellt haben.
 
-   a. Klicken Sie auf **Durchsuchen**, um zum Ordner **adftutorial/input** zu navigieren, wählen Sie die Datei **emp.txt** aus, und klicken Sie dann auf **Auswählen**. 
+    1. Geben Sie im Abschnitt **Ordnerpfad** den Ordnerpfad **adftutorial/output** ein.
 
-   d. Aktivieren Sie das Kontrollkästchen **Binary copy** (Binärkopie), um die Datei ohne Änderungen zu übernehmen, und wählen Sie dann **Weiter** aus. 
+       :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/destination-data-store.png" alt-text="Screenshot: Seite „Zieldatenspeicher“":::
 
-   ![Seite „Eingabedatei oder -ordner auswählen“](./media/quickstart-create-data-factory-copy-data-tool/select-binary-copy.png)
+    1. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie dann **Weiter** aus.
 
+1. Geben Sie auf der Seite **Einstellungen** einen Namen für die Pipeline und ihre Beschreibung an, und wählen Sie dann **Weiter** aus, um weitere Standardkonfigurationen zu verwenden. 
 
-1. Wählen Sie auf der Seite **Zieldatenspeicher** den soeben erstellten verknüpften Dienst **Azure Blob Storage** und anschließend **Weiter** aus. 
-
-1. Geben Sie auf der Seite **Choose the output file or folder** (Ausgabedatei oder -ordner auswählen) als Ordnerpfad den Pfad **adftutorial/output** ein, und wählen Sie **Weiter** aus. 
-
-   ![Seite „Choose the output file or folder“ (Ausgabedatei oder -ordner auswählen)](./media/quickstart-create-data-factory-copy-data-tool/configure-sink-path.png) 
-
-1. Klicken Sie auf der Seite **Einstellungen** auf **Weiter**, um die Standardkonfigurationen zu verwenden. 
+    :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/settings.png" alt-text="Screenshot: Seite „Einstellungen“":::
 
 1. Überprüfen Sie auf der Seite **Zusammenfassung** alle Einstellungen, und klicken Sie auf **Weiter**. 
 
@@ -106,11 +106,11 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 
     ![Seite „Deployment complete“ (Bereitstellung abgeschlossen)](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-1. Die Anwendung wechselt zur Registerkarte **Überwachen**. Der Status der Pipeline wird auf dieser Registerkarte angezeigt. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. Klicken Sie auf den Link unter **PIPELINENAME**, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen. 
+1. Die Anwendung wechselt zur Registerkarte **Überwachen**. Der Status der Pipeline wird auf dieser Registerkarte angezeigt. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. Klicken Sie auf den Link unter **Pipelinename**, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen. 
    
     ![Aktualisieren der Pipeline](./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png)
 
-1. Wählen Sie auf der Seite „Aktivitätsausführungen“ unter der Spalte **AKTIVITÄTSNAME** den Link **Details** (Brillensymbol) aus, um weitere Details zum Kopiervorgang anzuzeigen. Einzelheiten zu den Eigenschaften finden Sie unter [Kopieraktivität in Azure Data Factory](copy-activity-overview.md). 
+1. Wählen Sie auf der Seite „Aktivitätsausführungen“ unter der Spalte **Aktivitätsname** den Link **Details** (Brillensymbol) aus, um weitere Details zum Kopiervorgang anzuzeigen. Einzelheiten zu den Eigenschaften finden Sie unter [Kopieraktivität in Azure Data Factory](copy-activity-overview.md). 
 
 1. Wählen Sie im Breadcrumb-Menü den Link **Alle Pipelineausführungen** aus, um zur Ansicht „Pipelineausführungen“ zurückzukehren. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**. 
 

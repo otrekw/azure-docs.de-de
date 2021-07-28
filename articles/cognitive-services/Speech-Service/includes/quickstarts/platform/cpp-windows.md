@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Speech SDK für C++ (Windows): Plattformeinrichtung – Speech-Dienst'
+title: 'Schnellstart: Speech SDK fürC++ (Windows) : Plattformeinrichtung – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diesen Leitfaden, um Ihre Plattform mit dem Speech Service SDK für C++ unter Windows Desktop einzurichten.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: b19b55945d3c252d01cf3544f8931580b7fc6710
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 3c506baa2b267ea0fbd2ecb05c805145a0619451
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552212"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110165259"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für C++ unter Windows Desktop installieren.
 
@@ -29,8 +29,6 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 ## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Erstellen eines Visual Studio-Projekts und Installieren des Speech SDK
 
 [!INCLUDE [Quickstart C++ project](~/includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
-
-Nun können Sie mit den [nächsten Schritten](#next-steps) fortfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

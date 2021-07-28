@@ -6,15 +6,15 @@ author: chpalm
 manager: chpalm
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cf6553cd7c59febd19f9654e31188f127b8eb065
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 142b4635bed6361987c21173245bb4d4e7557f90
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276755"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108097"
 ---
 # <a name="teams-interoperability"></a>Teams-Interoperabilität
 
@@ -22,6 +22,12 @@ ms.locfileid: "106276755"
 
 > [!IMPORTANT]
 > Um die [Interoperabilität von Teams-Mandanten](../concepts/teams-interop.md) zu aktivieren/deaktivieren, füllen Sie [dieses Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u) aus.
+
+> [!NOTE]
+> Die Interoperabilität zwischen Azure Communication Services und Microsoft Teams ermöglicht Ihren Anwendungen und Benutzern, an Teams-Anrufen, -Besprechungen und -Chats teilzunehmen. Sie sind dafür verantwortlich, dass die Benutzer Ihrer Anwendung benachrichtigt werden, wenn die Aufzeichnung oder Transkription in einem Teams-Anruf oder einer Teams-Besprechung aktiviert ist. Microsoft gibt Ihnen über die Azure Communication Services-API einen Hinweis, dass die Aufzeichnung oder Transkription begonnen hat. Sie müssen dies Ihren Benutzern auf der Benutzeroberfläche Ihrer Anwendung in Echtzeit mitteilen. Sie erklären sich damit einverstanden, Microsoft für alle Kosten und Schäden freizustellen, die aufgrund der Nichteinhaltung dieser Verpflichtung durch Sie entstehen.
+
+> [!NOTE]
+> Die VoIP- und Chat-Nutzung wird nur dann über Ihre Azure-Ressource abgerechnet, wenn Sie Azure-APIs und -SDKs verwenden. Teams-Clients, die mit Azure Communication Services-Anwendungen interagieren, sind kostenlos.
 
 Azure Communication Services kann dazu verwendet werden, benutzerdefinierte Besprechungsumgebungen zu erstellen, die mit Microsoft Teams interagieren. Benutzer Ihrer Communication Services-Lösung(en) können mit den Teams-Teilnehmern über Sprache, Video, Chat und Bildschirmfreigabe interagieren.
 
@@ -37,13 +43,11 @@ Die allgemeine Architektur für diesen Anwendungsfall sieht folgendermaßen aus:
 
 ![Architektur für die Teams-Interoperabilität](./media/call-flows/teams-interop.png)
 
-Obwohl bestimmte Features für Teams-Besprechungen, z. B. Heben der Hand, Together-Modus und Breakout Rooms nur für Benutzer von Teams verfügbar sind, hat Ihre benutzerdefinierte Anwendung Zugriff auf die wichtigsten Funktionen für Audio, Video, Chat und Bildschirmfreigabe der Besprechung. Der Besprechungschat ist für die Benutzer Ihrer benutzerdefinierten Anwendung zugänglich, während sich diese im Anruf befinden. Sie können weder vor dem Beitritt noch nach dem Verlassen des Anrufs Nachrichten senden oder empfangen. 
+Communication Services-Benutzer können an geplanten Teams-Besprechungen teilnehmen, solange in den [Besprechungseinstellungen](/microsoftteams/meeting-settings-in-teams) die anonyme Teilnahme aktiviert ist. 
+
+Obwohl bestimmte Features für Teams-Besprechungen, z. B. Heben der Hand, Together-Modus und Breakout Rooms nur für Benutzer von Teams verfügbar sind, hat Ihre benutzerdefinierte Anwendung Zugriff auf die wichtigsten Funktionen für Audio, Video, Chat und Bildschirmfreigabe der Besprechung. Der Besprechungschat ist für die Benutzer Ihrer benutzerdefinierten Anwendung zugänglich, während sich diese im Anruf befinden. Sie können weder vor dem Beitritt noch nach dem Verlassen des Anrufs Nachrichten senden oder empfangen. Wenn die Besprechung für einen Kanal geplant ist, können die Benutzer von Communication Services dem Chat nicht beitreten und Nachrichten weder senden noch empfangen.
 
 Wenn ein Communication Services-Benutzer an der Teams-Besprechung teilnimmt, wird der Anzeigename, der über das Calling SDK bereitgestellt wird, den Teams-Benutzern angezeigt. Der Communication Services-Benutzer wird ansonsten wie ein anonymer Benutzer in Teams behandelt.  Ihre benutzerdefinierte Anwendung sollte die Benutzerauthentifizierung und andere Sicherheitsmaßnahmen zum Schutz von Teams-Besprechungen berücksichtigen. Seien Sie sich der Auswirkungen auf die Sicherheit bewusst, wenn Sie anonymen Benutzern die Teilnahme an Besprechungen ermöglichen, und verwenden Sie den [Teams-Sicherheitsleitfaden](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings), um die für anonyme Benutzer verfügbaren Funktionen zu konfigurieren.
-
-Die Communication Services-Interoperabilität mit Teams befindet sich derzeit in der privaten Vorschau. Wenn sie dann allgemein verfügbar ist, werden Communication Services-Benutzer wie Benutzer mit externem Zugriff behandelt. Weitere Informationen zum externen Zugriff finden Sie unter [Anrufen, Chatten und Zusammenarbeiten in Microsoft Teams mit Personen außerhalb Ihrer Organisation](/microsoftteams/communicate-with-users-from-other-organizations).
-
-Communication Services-Benutzer können an geplanten Teams-Besprechungen teilnehmen, solange in den [Besprechungseinstellungen](/microsoftteams/meeting-settings-in-teams) die anonyme Teilnahme aktiviert ist. Wenn die Besprechung für einen Kanal geplant ist, können die Benutzer von Communication Services dem Chat nicht beitreten und Nachrichten weder senden noch empfangen.
 
 ## <a name="teams-in-government-clouds-gcc"></a>Teams in Government-Clouds (GCC)
 Azure Communication Services-Interoperabilität ist derzeit nicht mit Teams-Bereitstellungen mit [Microsoft 365-Government-Clouds (GCC)](/MicrosoftTeams/plan-for-government-gcc) kompatibel. 
@@ -52,3 +56,8 @@ Azure Communication Services-Interoperabilität ist derzeit nicht mit Teams-Be
 
 > [!div class="nextstepaction"]
 > [Beitreten mit einer Telefonie-App zu einer Teams-Besprechung](../quickstarts/voice-video-calling/get-started-teams-interop.md)
+
+Weitere Informationen finden Sie in den folgenden Artikeln:
+
+- Informationen zur [UI-Bibliothek](./ui-library/ui-library-overview.md)
+- Erfahren Sie mehr über [die Möglichkeiten der UI-Bibliothek](./ui-library/ui-library-use-cases.md)

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 3221712fcf74022f2899380b4573ab3a821dce4d
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 32f28a6fa056819081804a3ccb919436c3f50bae
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109627285"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112041349"
 ---
 ## <a name="download-and-install"></a>Herunterladen und Installieren
 
@@ -55,6 +55,9 @@ Führen Sie diese Schritte aus, um die Speech-Befehlszeilenschnittstelle unter L
 2. Installieren Sie die Speech-Befehlszeilenschnittstelle mithilfe von NuGet durch Eingabe des folgenden Befehls:
 
     `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI`
+
+3. Konfigurieren Sie unter RHEL/CentOS Linux [OpenSSL für Linux](../how-to-configure-openssl-linux.md).
+4. Installieren Sie unter Ubunutu 20.04 Linux [GStreamer](../how-to-use-codec-compressed-audio-input-streams.md).
 
 Geben Sie `spx` ein, um die Hilfe für die Speech-Befehlszeilenschnittstelle anzuzeigen.
 

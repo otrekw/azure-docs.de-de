@@ -11,28 +11,39 @@ ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: mbullwin
 keywords: Anomalieerkennung, maschinelles Lernen, Algorithmen
-ms.openlocfilehash: 7de25b4a099c706c05b32b52492096923033f822
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 30778cf48efda57fc0d50964611d5616ce7a84d5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318849"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062252"
 ---
 # <a name="multivariate-time-series-anomaly-detector-best-practices"></a>Bewährte Methoden für multivariate Zeitreihen Anomalieerkennung
 
 Dieser Artikel enthält Anleitungen zu empfohlenen Methoden, die bei der Verwendung der multivariaten Anomalieerkennung-APIs befolgt werden sollten.
 
-## <a name="how-to-prepare-data-for-training"></a>Aufbereiten von Daten für das Training
+## <a name="training-data"></a>Trainingsdaten 
 
-Um die multivariaten APIs für die Anomalieerkennung verwenden zu können, müssen wir unser eigenes Modell vor der Erkennung trainieren. Für das Training wird ein Batch von Zeitreihendaten verwendet. Die einzelnen Zeitreihen müssen jeweils im CSV-Format mit zwei Spalten (Zeitstempel und Wert) vorliegen. Alle Zeitreihen müssen in einer ZIP-Datei zusammengefasst und in Azure Blob Storage hochgeladen werden. Standardmäßig wird der Dateiname verwendet, um die Variable für die Zeitreihe darzustellen. Alternativ kann eine zusätzliche Datei vom Typ „meta.json“ in die ZIP-Datei eingeschlossen werden, wenn sich der Name der Variablen vom Namen der ZIP-Datei unterscheiden soll. Nach dem Generieren einer [BLOB-SAS-URL (Shared Access Signatures)](../../../storage/common/storage-sas-overview.md) können wir sie für das Training verwenden.
+### <a name="data-schema"></a>Datenschema
+Wenn Sie die multivariaten APIs für die Anomalieerkennung verwenden möchten, müssen Sie zunächst Ihre eigenen Modelle trainieren. Bei den Trainingsdaten handelt es sich um mehrere Zeitreihen, die die folgenden Anforderungen erfüllen:
 
-## <a name="data-quality-and-quantity"></a>Datenqualität und -menge
+Bei den Zeitreihen muss es sich jeweils um eine CSV-Datei mit genau zwei Spalten in der Headerzeile handeln: **timestamp** und **value** (in Kleinbuchstaben). Die „timestamp“-Werte müssen ISO 8601 entsprechen. Für „value“ können ganze Zahlen oder Dezimalzahlen mit einer beliebigen Anzahl von Dezimalstellen verwendet werden. Beispiel:
 
-Die multivariate Anomalieerkennungs-API verwendet modernste tiefe neuronale Netzwerke, um normale Muster aus Verlaufsdaten zu lernen und vorherzusagen, ob es sich bei zukünftigen Werten um Anomalien handelt. Die Qualität und Menge der Trainingsdaten spielen beim Training eines optimalen Modells eine große Rolle. Da das Modell normale Muster aus Verlaufsdaten lernt, sollten die Trainingsdaten den allgemeinen Normalzustand des Systems darstellen. Es ist für das Modell schwierig, diese Art von Mustern zu lernen, wenn die Trainingsdaten mit Anomalien angefüllt sind. Außerdem verfügt das Modell über Millionen von Parametern und benötigt eine Mindestzahl an Datenpunkten, um einen optimalen Parametersatz zu erlernen. Die allgemeine Regel ist, dass Sie mindestens 15.000 Datenpunkte pro Variable bereitstellen müssen, um das Modell ordnungsgemäß zu trainieren. Je mehr Daten, desto besser das Modell.
+|timestamp | value|
+|-------|-------|
+|2019-04-01T00:00:00Z| 5|
+|2019-04-01T00:01:00Z| 3.6|
+|2019-04-01T00:02:00Z| 4|
+|`...`| `...` |
 
-Es kommt häufig vor, dass in Zeitreihen Werte fehlen, was sich auf die Leistung trainierter Modelle auswirken kann. Der Anteil der Fehlstellen in den einzelnen Zeitreihen sollte kontrolliert unterhalb einer vernünftigen Schwelle gehalten werden. Eine Zeitreihe, in der 90 % der Werte fehlen, liefert wenig Informationen zu normalen Mustern des Systems. Noch schlimmer ist es, wenn das Modell gefüllte Werte als normale Muster betrachtet, bei denen es sich in der Regel um gerade Segmente oder konstante Werte handelt. Wenn neue Daten hereinkommen, werden die Daten möglicherweise als Anomalien erkannt.
+Jede CSV-Datei muss nach einer anderen Variablen benannt werden, die für das Modelltraining verwendet wird. Beispiel: „temperature.csv“ und „humidity.csv“. Alle CSV-Dateien müssen ohne Unterordner in einer ZIP-Datei verpackt werden. Die ZIP-Datei kann einen beliebigen Namen haben. Die ZIP-Datei muss in Azure Blob Storage hochgeladen werden. Nach dem Generieren der [Blob-SAS-URL (Shared Access Signature)](../../../storage/common/storage-sas-overview.md) für die ZIP-Datei kann sie für das Training verwendet werden. Informationen zum Generieren von SAS-URLs aus Azure Blob Storage finden Sie in diesem Dokument.
 
-Ein empfohlener Maximalwert für den Schwellenwert fehlender Daten sind 20 %, unter bestimmten Umständen können jedoch höhere Schwellenwerte akzeptabel sein. Beispielsweise, wenn Sie über eine Zeitreihe mit einer Granularität von einer Minute und über eine weitere Zeitreihe mit stündlicher Granularität verfügen.  Jede Stunde gibt es 60 Datenpunkte pro Minute an Daten und 1 Datenpunkt für stündliche Daten, was bedeutet, dass die Fehlquote für stündliche Daten 98,33 % beträgt. Trotzdem ist es in Ordnung, die stündlichen Daten mit dem einzigen Wert zu füllen, wenn die stündliche Zeitreihe normalerweise nicht zu stark fluktuiert.
+### <a name="data-quality"></a>Datenqualität
+- Da das Modell normale Muster aus Verlaufsdaten lernt, sollten die Trainingsdaten den **allgemeinen Normalzustand des Systems darstellen**. Es ist für das Modell schwierig, diese Art von Mustern zu lernen, wenn die Trainingsdaten mit Anomalien angefüllt sind. 
+-  Das Modell verfügt über Millionen von Parametern und benötigt eine Mindestzahl an Datenpunkten, um einen optimalen Parametersatz zu erlernen. Die allgemeine Regel ist, dass Sie mindestens **15.000 Datenpunkte pro Variable** bereitstellen müssen, um das Modell ordnungsgemäß zu trainieren. Je mehr Daten, desto besser das Modell.
+- Im Allgemeinen sollte das **Fehlwertverhältnis der Trainingsdaten unter 20 % liegen**. Zu viele fehlende Daten können dazu führen, dass automatisch aufgefüllte Werte (meist gerade Segmente oder konstante Werte) als normale Muster erlernt werden. Das kann wiederum dazu führen, dass echte Datenpunkte als Anomalien erkannt werden. 
+
+    Es gibt jedoch Fälle, in denen ein hohes Verhältnis akzeptabel ist. Beispiel: Sie verfügen über zwei Zeitreihen in einer Gruppe, die den `Outer`-Modus zum Ausrichten von Zeitstempeln verwenden. Eine hat eine Granularität von einer Minute, die andere eine Granularität von einer Stunde. Dann weist die stündliche Zeitreihe von Natur aus mindestens 59/60 = 98,33 % fehlende Datenpunkte auf. In solchen Fällen ist es in Ordnung, die stündliche Zeitreihe mit dem einzigen verfügbaren Wert zu füllen, wenn dieser typischerweise nicht zu stark schwankt.
 
 ## <a name="parameters"></a>Parameter
 

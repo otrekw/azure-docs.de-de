@@ -2,13 +2,13 @@
 title: Azure VMware Solution-Netzwerkbetrieb und -Konnektivität
 description: Beschreibung von Azure VMware Solution-Netzwerkbetrieb und -Konnektivität
 ms.topic: include
-ms.date: 03/13/2021
-ms.openlocfilehash: 96dd93f1db5dc3ddcbb883313e19c6aed8a256da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: 66ea12565aa84661a4019e5685a5544792591b0c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462580"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350711"
 ---
 <!-- Used in introduction.md and concepts-networking.md -->
 
@@ -18,5 +18,7 @@ Wenn eine private Cloud bereitgestellt wird, werden private Netzwerke für Verwa
 
 ExpressRoute Global Reach wird verwendet, um private Clouds mit lokalen Umgebungen zu verbinden. Die Verbindung erfordert ein virtuelles Netzwerk mit einer ExpressRoute-Leitung zur lokalen Umgebung in Ihrem Abonnement.
 
-In der privaten Cloud bereitgestellte virtuelle Computer sind über die öffentliche IP-Adresse von Azure Virtual WAN für das Internet zugänglich.  Der Internetzugriff ist für neue private Clouds standardmäßig deaktiviert. Weitere Informationen finden Sie unter [Verwenden der Funktion „öffentliche IP-Adresse“ in Azure VMware Solution](../public-ip-usage.md).
+In der privaten Cloud bereitgestellte virtuelle Computer sind über die öffentliche IP-Adresse von Azure Virtual WAN für das Internet zugänglich.  Der Internetzugriff ist für neue private Clouds standardmäßig deaktiviert. Weitere Informationen finden Sie unter [Aktivieren des öffentlichen Internetzugriffs in Azure VMware Solution](../enable-public-internet-access.md).
+
+
 

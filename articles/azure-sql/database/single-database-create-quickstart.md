@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 01/27/2021
-ms.openlocfilehash: 51c7f4fe8a82e1960e51312d8d806cbff5ba0a0c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 98d692c304c4d25412dcaf26fd0779b1b446e252
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693076"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113218059"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank
 
@@ -27,6 +27,7 @@ In dieser Schnellstartanleitung erstellen Sie über das Azure-Portal, mithilfe e
 ## <a name="prerequisite"></a>Voraussetzung
 
 - Ein aktives Azure-Abonnement. Falls Sie nicht über ein Abonnement verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
+- Abhängig von der ausgewählten Erstellungsmethode benötigen Sie möglicherweise auch die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps) oder der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli-windows). 
 
 ## <a name="create-a-single-database"></a>Erstellen einer Einzeldatenbank
 

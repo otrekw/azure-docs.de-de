@@ -6,21 +6,21 @@ ms.service: cost-management-billing
 ms.subservice: billing
 ms.reviewer: andalmia
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 06/09/2021
 ms.author: banders
-ms.openlocfilehash: 039e728f6518d21ddfb9c7c359a6cf2ec743f232
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 897c9d851227a59e6ab8e6a35829e113b980c2e4
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185103"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902499"
 ---
-# <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Gewähren des Zugriffs zum Erstellen von Azure Enterprise-Abonnements (Vorschau)
+# <a name="grant-access-to-create-azure-enterprise-subscriptions-legacy"></a>Gewähren des Zugriffs zum Erstellen von Azure Enterprise-Abonnements (Legacy)
 
 Als Azure-Kunde mit einem [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) können Sie einem anderen Benutzer oder Dienstprinzipal die Berechtigung zum Erstellen von Abonnements erteilen, die Ihrem Konto in Rechnung gestellt werden. In diesem Artikel erfahren Sie, wie Sie [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) verwenden, um anderen Benutzern das Erstellen von Abonnements zu ermöglichen, und wie Sie die Erstellung von Abonnements überwachen. Sie müssen für das Konto, das Sie freigeben möchten, über die Rolle „Besitzer“ verfügen.
 
 > [!NOTE]
-> Diese API funktioniert nur mit den [Vorschau-APIs für die Abonnementerstellung](programmatically-create-subscription-preview.md). Wenn Sie die [allgemein verfügbare Version](programmatically-create-subscription-enterprise-agreement.md) nutzen möchten, verwenden Sie die aktuelle API-Version [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Wenn Sie zur Verwendung der neueren APIs eine Migration durchführen, müssen Sie die Besitzerberechtigungen mithilfe von [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) erneut erteilen. Die vorherige Konfiguration, die die folgenden APIs verwendet, wird nicht automatisch für die Verwendung mit den neueren APIs konvertiert.
+> Diese API funktioniert nur mit den [Legacy-APIs für die Abonnementerstellung](programmatically-create-subscription-preview.md). Sofern Sie nicht speziell die Legacy-APIs benötigen, sollten Sie die Informationen für die [aktuelle GA-Version](programmatically-create-subscription-enterprise-agreement.md) über die neueste API-Version [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put) verwenden. Wenn Sie zur Verwendung der neueren APIs eine Migration durchführen, müssen Sie die Besitzerberechtigungen mithilfe von [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put) erneut erteilen. Die vorherige Konfiguration, die die folgenden APIs verwendet, wird nicht automatisch für die Verwendung mit den neueren APIs konvertiert.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

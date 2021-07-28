@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0bd0d9c2230b8400aa3197044f944daceb93c715
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 2c8147399f37f5f9fe2b3c01bc2c273ffc59be31
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718519"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469605"
 ---
 # <a name="introduction-to-azure-defender"></a>Einführung in Azure Defender
 
@@ -20,7 +20,7 @@ Die Features von Azure Security Center decken die zwei Säulen der Cloudsicherhe
 
 - **Verwaltung des Cloudsicherheitsstatus (Cloud Security Posture Management, CSPM)** : Security Center ist für alle Azure-Benutzer **kostenlos** verfügbar. Die kostenlose Benutzeroberfläche umfasst CSPM-Features, wie z. B. Sicherheitsbewertung, Erkennung von Sicherheitsfehlkonfigurationen auf Ihren Azure-Computern, Ressourcenbestand und mehr. Verwenden Sie diese CSPM-Features, um den Hybridcloudstatus zu stärken und die Konformität mit den integrierten Richtlinien nachzuverfolgen.
 
-- **Cloudworkloadschutz (Cloud Workload Protection, CWP)** : Die in Security Center integrierte Cloudworkloadschutz-Plattform (CWPP), **Azure Defender**, bietet erweiterten, intelligenten Schutz für Ihre Azure- und Hybridressourcen und -workloads. Durch die Aktivierung von Azure Defender wird eine Reihe zusätzlicher Sicherheitsfeatures bereitgestellt, die auf dieser Seite beschrieben werden. Zusätzlich zu den integrierten Richtlinien können Sie bei aktiviertem Azure Defender-Plan auch benutzerdefinierte Richtlinien und Initiativen hinzufügen. Sie können gesetzliche Standards (z. B. NIST und Azure CIS) sowie den [Azure-Sicherheitsvergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction) für eine echte angepasste Sicht auf Ihre Konformität hinzufügen.
+- **Cloudworkloadschutz (Cloud Workload Protection, CWP)** : Die in Security Center integrierte Cloudworkloadschutz-Plattform (CWPP), **Azure Defender**, bietet erweiterten, intelligenten Schutz für Ihre Azure- und Hybridressourcen und -workloads. Durch die Aktivierung von Azure Defender wird eine Reihe zusätzlicher Sicherheitsfeatures bereitgestellt, die auf dieser Seite beschrieben werden. Zusätzlich zu den integrierten Richtlinien können Sie bei aktiviertem Azure Defender-Plan auch benutzerdefinierte Richtlinien und Initiativen hinzufügen. Sie können gesetzliche Standards (z. B. NIST und Azure CIS) sowie den [Azure-Sicherheitsvergleichstest](/security/benchmark/azure/introduction) für eine echte angepasste Sicht auf Ihre Konformität hinzufügen.
 
 Das Azure Defender-Dashboard in Security Center bietet Transparenz und Kontrolle der CWP-Features für Ihre Umgebung:
 
@@ -41,6 +41,7 @@ Wenn Sie Azure Defender über den Bereich **Preise und Einstellungen** von Azure
 - [Azure Defender für Key Vault](defender-for-key-vault-introduction.md)
 - [Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md)
 - [Azure Defender für DNS](defender-for-dns-introduction.md)
+- [Azure Defender für relationale Open-Source-Datenbanken](defender-for-databases-introduction.md)
 
 Jeder dieser Pläne wird in der Security Center-Dokumentation einzeln erläutert.
 

@@ -9,26 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 05/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 57598ea22874cfba772f6cf0e6b2ba779ef7c482
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d394410ab552cd9e5687decd5951c5ae5583a57e
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92448400"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111568394"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Tutorial: Azure Active Directory-Integration mit Mind Tools Toolkit
 
-In diesem Tutorial erfahren Sie, wie Sie Mind Tools Toolkit in Azure Active Directory (Azure AD) integrieren.
-
-Diese Integration ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Mind Tools Toolkit in Azure Active Directory (Azure AD) integrieren. Die Integration von Mind Tools Toolkit in Azure AD ermöglicht Folgendes:
 
 * Steuern Sie in Azure AD, wer Zugriff auf Mind Tools Toolkit hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Mind Tools Toolkit anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) mit Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,49 +39,45 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Mind Tools Toolkit unterstützt SP-initiiertes einmaliges Anmelden.
 * Mind Tools Toolkit unterstützt die Just-In-Time-Benutzerbereitstellung.
-* Nach dem Konfigurieren von Mind Tools Toolkit können Sie die Sitzungssteuerung erzwingen. Diese Steuerung schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
 ## <a name="add-mind-tools-toolkit-from-the-gallery"></a>Hinzufügen von Mind Tools Toolkit aus dem Katalog
 
 Zum Konfigurieren der Integration von Mind Tools Toolkit in Azure AD müssen Sie Mind Tools Toolkit aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im Navigationsbereich ganz links den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Mind Tools Toolkit** in das Suchfeld ein.
 1. Wählen Sie in den Suchergebnissen **Mind Tools Toolkit** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-mind-tools-toolkit"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Mind Tools Toolkit
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Mind Tools Toolkit mithilfe eines Testbenutzers namens **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Mind Tools Toolkit eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Mind Tools Toolkit mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Mind Tools Toolkit eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Mind Tools Toolkit die folgenden Schritte aus:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Mind Tools Toolkit](#configure-mind-tools-toolkit-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Mind Tools Toolkit-Testbenutzers](#create-a-mind-tools-toolkit-test-user)** , um eine Entsprechung von B. Simon in Mind Tools Toolkit zu erhalten Diese Entsprechung ist mit der Benutzerdarstellung in Azure AD verknüpft.
+    1. **[Erstellen eines Mind Tools Toolkit-Testbenutzers](#create-mind-tools-toolkit-test-user)** , um ein Pendant von B. Simon in Mind Tools Toolkit zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-In diesem Abschnitt führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Mind Tools Toolkit die folgenden Schritte aus:
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Mind Tools Toolkit** die Option **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Mind Tools Toolkit** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-    ![Abschnitt „Verwalten“ mit hervorgehobener Option für einmaliges Anmelden](common/select-sso.png)
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Wählen Sie im Dialogfeld **SSO-Methode auswählen** die Option **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Dialogfeld „SSO-Methode auswählen“ mit Hervorhebung von „SAML“](common/select-saml-option.png)
-
-1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
-
-    ![Seite „Einmaliges Anmelden (SSO) mit SAML einrichten“ mit hervorgehobenem Stiftsymbol für „Grundlegende SAML-Konfiguration“](common/edit-urls.png)
-
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>`.
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://app.goodpractice.net/#/<subscriptionUrl>/s/<LOCATION_ID>`.
 
     > [!NOTE]
     > Der Wert von **Anmelde-URL** entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den Mind Tools Toolkit-Client](mailto:support@goodpractice.com).
@@ -96,70 +88,50 @@ In diesem Abschnitt führen Sie zum Konfigurieren des einmaligen Anmeldens von A
 
 1. Kopieren Sie im Abschnitt **Mind Tools Toolkit einrichten** nach Bedarf eine der folgenden URLs:
 
-    * **Anmelde-URL**
-
-    * **Azure AD-Bezeichner**
-
-    * **Abmelde-URL**
-
     ![Abschnitt „Mind Tools Toolkit einrichten“ mit hervorgehobenen Konfigurations-URLs](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon:
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-1. Wählen Sie im Azure-Portal ganz links **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie **B.Simon** in das Feld **Name** ein.  
-   1. Geben Sie im Feld **Benutzername** Folgendes ein: **B.Simon@** _Unternehmensdomäne_ **.** _Erweiterung_. Beispiel: B.Simon@contoso.com.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Mind Tools Toolkit gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Mind Tools Toolkit gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Mind Tools Toolkit** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Abschnitt „Verwalten“ mit hervorgehobener Option „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-1. Klicken Sie auf **Benutzer hinzufügen**. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-   ![Fenster „Benutzer und Gruppen“ mit hervorgehobener Option zum Hinzufügen eines Benutzers](common/add-assign-user.png)
-
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ die Option **B.Simon** aus. Wählen Sie dann unten auf dem Bildschirm die Schaltfläche **Auswählen** aus.
-1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie dann unten auf dem Bildschirm die Schaltfläche **Auswählen** aus.
-1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-mind-tools-toolkit-sso"></a>Konfigurieren des einmaligen Anmeldens für Mind Tools Toolkit
 
 Senden Sie zum Konfigurieren des einmaligen Anmeldens aufseiten von **Mind Tools Toolkit** den heruntergeladenen Text der **Verbundmetadaten-XML** und die zuvor kopierten URLs an das [Supportteam von Mind Tools Toolkit](mailto:support@goodpractice.com). Das Team konfiguriert diese Einstellung, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-### <a name="create-a-mind-tools-toolkit-test-user"></a>Erstellen eines Mind Tools Toolkit-Testbenutzers
+### <a name="create-mind-tools-toolkit-test-user"></a>Erstellen eines Mind Tools Toolkit-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Mind Tools Toolkit einen Benutzer namens B. Simon.
+In diesem Abschnitt wird in Mind Tools Toolkit ein Benutzer namens B. Simon erstellt. Mind Tools Toolkit unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn ein Benutzer noch nicht in Mind Tools Toolkit vorhanden ist, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-Mind Tools Toolkit unterstützt die Just-In-Time-Bereitstellung (standardmäßig aktiviert). In diesem Abschnitt ist keine Aktion erforderlich. Wenn ein Benutzer nicht bereits in Mind Tools Toolkit vorhanden ist, wird ein neuer Benutzer erstellt, sobald Sie versuchen, auf Mind Tools Toolkit zuzugreifen.
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Portals „Meine Apps“.
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Mind Tools Toolkit weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-Wenn Sie im Portal „Meine Apps“ die Kachel „Mind Tools Toolkit“ auswählen, werden Sie automatisch bei der Mind Tools Toolkit-Instanz angemeldet, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
+* Rufen Sie direkt die Mind Tools Toolkit-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Mind Tools Toolkit“ klicken, werden Sie zur Anmelde-URL für Mind Tools Toolkit weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [Mind Tools Toolkit mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)
+Nach dem Konfigurieren von Mind Tools Toolkit können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

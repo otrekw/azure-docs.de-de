@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 04/28/2021
+ms.date: 06/04/2021
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: b67639c5a6f55c45e42e3a17187356caf32451a6
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: b9fcd3d5eac8ddda890201bf5608e6e412f5d826
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278450"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004311"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe einer ARM-Vorlage
 
@@ -27,6 +27,7 @@ Erstellen einer Ressource mithilfe einer Azure Resource Manager-Vorlage (ARM-Vor
 
 * Greifen Sie mit einem einzigen Schlüssel und Endpunkt auf mehrere Azure Cognitive Services zu.
 * Konsolidieren Sie die Abrechnung der von Ihnen verwendeten Dienste.
+* [!INCLUDE [terms-azure-portal](./includes/quickstarts/terms-azure-portal.md)]
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -40,7 +41,7 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/cognitive-services-universalkey/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.cognitiveservices/cognitive-services-universalkey/azuredeploy.json":::
 
@@ -57,7 +58,7 @@ In der Vorlage ist eine einzelne Azure-Ressource definiert:
 
 2. Geben Sie die folgenden Werte ein.
 
-    |Wert  |BESCHREIBUNG  |
+    |Wert  |Beschreibung  |
     |---------|---------|
     | **Abonnement** | Wählen Sie ein Azure-Abonnement aus. |
     | **Ressourcengruppe** | Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie dann auf **OK**. |
@@ -135,6 +136,8 @@ az group delete --name $resourceGroupName
 ```
 
 ---
+
+Wenn Sie eine gelöschte Ressource wiederherstellen müssen, finden Sie weitere Informationen unter [Wiederherstellen gelöschter Cognitive Services-Ressourcen](manage-resources.md).
 
 ## <a name="see-also"></a>Siehe auch
 

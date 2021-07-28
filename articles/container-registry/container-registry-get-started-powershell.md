@@ -1,18 +1,15 @@
 ---
 title: 'Schnellstart: Erstellen einer Registrierung – PowerShell'
 description: Hier erfahren Sie, wie Sie schnell eine private Docker-Registrierung über PowerShell in Azure Container Registry erstellen.
-ms.date: 01/22/2019
+ms.date: 06/03/2021
 ms.topic: quickstart
-ms.custom:
-- mvc
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: bd9b93e22081c43dfa3fd934f13da3713120aadb
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - mvc - devx-track-azurepowershell - mode-api
+ms.openlocfilehash: 794b82817ce092fac34512c0faec097ecab53dc5
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537377"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439942"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Schnellstart: Erstellen einer privaten Containerregistrierung mit Azure PowerShell
 
@@ -58,23 +55,16 @@ In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*
 
 ## <a name="log-in-to-registry"></a>Anmelden bei der Registrierung
 
-Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der Registrierung anmelden. In dieser Schnellstartanleitung wird der Einfachheit halber jedoch mit dem Befehl [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] der Administratorbenutzer in Ihrer Registrierung aktiviert. In Produktionsszenarien sollten Sie für den Zugriff auf die Registrierung eine alternative [Authentifizierungsmethode](container-registry-authentication.md) verwenden, z. B. einen Dienstprinzipal. 
+Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich mit dem Cmdlet [Connect-AzContainerRegistry][connect-azcontainerregistry] bei der Registrierung anmelden. Im folgenden Beispiel werden die gleichen Anmeldeinformationen verwendet, mit denen Sie sich bei der Authentifizierung bei Azure mit dem Cmdlet `Connect-AzAccount` angemeldet haben.
+
+> [!NOTE]
+> Im folgenden Beispiel ist der Wert von `$registry.Name` der Ressourcenname, nicht der vollqualifizierte Registrierungsname.
 
 ```powershell
-$creds = Get-AzContainerRegistryCredential -Registry $registry
-```
-
-Führen Sie dann [docker login][docker-login] aus, um sich anzumelden:
-
-```powershell
-$creds.Password | docker login $registry.LoginServer -u $creds.Username --password-stdin
+Connect-AzContainerRegistry -Name $registry.Name
 ```
 
 Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück.
-
-> [!TIP]
-> Der Azure CLI stellt den `az acr login`-Befehl zur Verfügung, der eine bequeme Möglichkeit zum Anmelden bei einer Containerregistrierung mit Ihrer [individuellen Identität](container-registry-authentication.md#individual-login-with-azure-ad) bietet, ohne die Docker-Anmeldeinformationen zu übergeben.
-
 
 [!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
 
@@ -108,7 +98,6 @@ In dieser Schnellstartanleitung haben Sie mit Azure PowerShell eine Azure Contai
 
 <!-- Links - internal -->
 [Connect-AzAccount]: /powershell/module/az.accounts/connect-azaccount
-[Get-AzContainerRegistryCredential]: /powershell/module/az.containerregistry/get-azcontainerregistrycredential
 [Get-Module]: /powershell/module/microsoft.powershell.core/get-module
 [New-AzContainerRegistry]: /powershell/module/az.containerregistry/New-AzContainerRegistry
 [New-AzResourceGroup]: /powershell/module/az.resources/new-azresourcegroup
@@ -116,3 +105,4 @@ In dieser Schnellstartanleitung haben Sie mit Azure PowerShell eine Azure Contai
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md
+[connect-azcontainerregistry]: /powershell/module/az.containerregistry/connect-azcontainerregistry

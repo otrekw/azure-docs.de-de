@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bd761ba9785d491e9577dab828f84580d7a08bba
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: ebe6a96c88d061138eb629f50aa37ea90fe40eb4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787777"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475877"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>Konvertieren von Branchenstandardontologien in DTDL für Azure Digital Twins
 
@@ -49,7 +49,7 @@ Das Beispiel ist eine [.NET Core-Befehlszeilenanwendung namens RdfToDtdlConverte
 
 Um den Code auf Ihren Computer herunterzuladen, wählen Sie auf der Beispielseite unterhalb des Titels die Schaltfläche **Code durchsuchen** aus. Sie gelangen zum GitHub-Repository für das Beispiel. Klicken Sie auf die Schaltfläche **Code** und dann auf **ZIP herunterladen**, um das Beispiel als ZIP-Datei namens *RdfToDtdlConverter-main.zip* herunterzuladen. Anschließend können Sie die Datei entzippen und den Code untersuchen.
 
-:::image type="content" source="media/concepts-ontologies-convert/download-repo-zip.png" alt-text="Screenshot: GitHub-Repository „RdfToDtdlConverter“. Die Schaltfläche „Code“ wurde ausgewählt, und ein kleines Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="media/concepts-ontologies-convert/download-repo-zip.png":::
+:::image type="content" source="media/concepts-ontologies-convert/download-repo-zip.png" alt-text="Screenshot: GitHub-Repository „RdfToDtdlConverter“. Die Schaltfläche „Code“ wurde ausgewählt, und ein Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="media/concepts-ontologies-convert/download-repo-zip.png":::
 
 Sie können sich mit dieser Beispielanwendung die Konvertierungsmuster im Kontext ansehen und als Baustein für Ihre eigenen Anwendungen verwenden. Außerdem können Sie entsprechend Ihren spezifischen Anforderungen Modellkonvertierungen durchführen.
 

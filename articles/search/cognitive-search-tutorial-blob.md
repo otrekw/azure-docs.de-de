@@ -1,23 +1,23 @@
 ---
 title: 'Tutorial: REST und KI über Azure-Blobs'
 titleSuffix: Azure Cognitive Search
-description: Hier finden Sie ein ausführliches Beispiel für die Textextraktion und die Verarbeitung natürlicher Sprache auf der Grundlage von Blobspeicherinhalten mit Postman und den Azure Cognitive Search-REST-APIs.
+description: Hier finden Sie ein ausführliches Beispiel für die Textextraktion und die Verarbeitung natürlicher Sprache auf der Grundlage von Azure Blob Storage-Inhalten mit Postman und den Azure Cognitive Search-REST-APIs.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 878bdc1224134f7b9de684635cde77d057b221a7
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94738049"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555990"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Tutorial: Verwenden von REST und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs
 
-Wenn Sie in Azure-Blobspeicher über unstrukturierten Text oder Bilder verfügen, können Sie mithilfe einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) aus Blobs Informationen extrahieren und neue Inhalte erstellen, die für die Volltextsuche oder in Knowledge Mining-Szenarien verwendet werden können. Eine Pipeline kann zwar Bilder verarbeiten, in diesem REST-Tutorial steht jedoch Text im Mittelpunkt, um unter Verwendung der Spracherkennung und der Verarbeitung natürlicher Sprache neue Felder zu erstellen, die Sie in Abfragen, Facetten und Filtern nutzen können.
+Wenn Sie in Azure Blob Storage über unstrukturierten Text oder Bilder verfügen, können Sie mithilfe einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) aus Blobs Informationen extrahieren und neue Inhalte erstellen, die für die Volltextsuche oder in Knowledge Mining-Szenarien verwendet werden können. Eine Pipeline kann zwar Bilder verarbeiten, in diesem REST-Tutorial steht jedoch Text im Mittelpunkt, um unter Verwendung der Spracherkennung und der Verarbeitung natürlicher Sprache neue Felder zu erstellen, die Sie in Abfragen, Facetten und Filtern nutzen können.
 
 In diesem Tutorial werden Postman und die [Azure Cognitive Search-REST-APIs](/rest/api/searchservice/) verwendet, um folgende Aufgaben auszuführen:
 
@@ -113,7 +113,7 @@ In dieser Übung können Sie die Ressourcenbereitstellung allerdings überspring
 
 Die dritte Komponente, Azure Cognitive Search, können Sie [im Portal erstellen](search-create-service-portal.md). Im Rahmen dieser exemplarischen Vorgehensweise können Sie den Free-Tarif verwenden. 
 
-Erfassen Sie genau wie bei Azure Blob Storage den Zugriffsschlüssel. Wenn Sie später mit der Strukturierung von Anforderungen beginnen, müssen Sie den Endpunkt und den Administrator-API-Schlüssel für die Authentifizierung der jeweiligen Anforderung angeben.
+Erfassen Sie wie bei Azure Blob Storage den Zugriffsschlüssel. Wenn Sie später mit der Strukturierung von Anforderungen beginnen, müssen Sie den Endpunkt und den Administrator-API-Schlüssel für die Authentifizierung der jeweiligen Anforderung angeben.
 
 ### <a name="copy-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Kopieren eines Administrator-API-Schlüssels und einer URL für Azure Cognitive Search
 
@@ -185,7 +185,7 @@ Bei einem [Skillset-Objekt](/rest/api/searchservice/create-skillset) handelt es 
 
    | Skill                 | BESCHREIBUNG    |
    |-----------------------|----------------|
-   | [Entitätserkennung](cognitive-search-skill-entity-recognition.md) | Extrahiert die Namen von Personen, Organisationen und Orten aus Inhalten im Blobcontainer. |
+   | [Entitätserkennung](cognitive-search-skill-entity-recognition-v3.md) | Extrahiert die Namen von Personen, Organisationen und Orten aus Inhalten im Blobcontainer. |
    | [Sprachenerkennung](cognitive-search-skill-language-detection.md) | Erkennt die Sprache des Inhalts. |
    | [Textaufteilung](cognitive-search-skill-textsplit.md)  | Unterteilt große Inhalte vor dem Aufrufen der Schlüsselbegriffserkennung in kleinere Blöcke. Die Schlüsselbegriffserkennung akzeptiert Eingaben von 50.000 Zeichen oder weniger. Für einige der Beispieldateien ist eine Aufteilung erforderlich, um diesen Grenzwert zu erfüllen. |
    | [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md) | Extrahiert die wichtigsten Schlüsselbegriffe. |

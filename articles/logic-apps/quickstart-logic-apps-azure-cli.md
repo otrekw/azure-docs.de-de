@@ -1,20 +1,20 @@
 ---
-title: 'Schnellstart: Erstellen und Verwalten von Workflows mit mehrinstanzenfähigen Azure Logic Apps und der Azure CLI'
-description: Erstellen von Logik-App-Workflows mit mehrinstanzenfähigen Azure Logic Apps mithilfe der CLI und Verwalten der Logik mit Vorgängen wie Auflisten, Anzeigen (Abrufen), Aktualisieren und Löschen.
+title: 'Schnellstart: Erstellen und Verwalten von Workflows mit der Azure-Befehlszeilenschnittstelle in mehrinstanzenfähigen Azure Logic Apps'
+description: Erstellen und verwalten Sie Logic Apps-Workflows mithilfe der Befehlszeilenschnittstelle in mehrinstanzenfähigen Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 05/25/2021
-ms.openlocfilehash: 4a848b560fd0302690f1e52661b165182082dd9b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 533a3001068c2bfa6a6902e486d6a1acf468d246
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375927"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617258"
 ---
-# <a name="quickstart-create-and-manage-workflows-in-multi-tenant-azure-logic-apps-using-the-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Workflows in mehrinstanzenfähigen Azure Logic Apps mithilfe der Azure CLI
+# <a name="quickstart-create-and-manage-workflows-using-azure-cli-in-multi-tenant-azure-logic-apps"></a>Schnellstart: Erstellen und Verwalten von Workflows mit der Azure-Befehlszeilenschnittstelle in mehrinstanzenfähigen Azure Logic Apps
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Logik-Apps mithilfe der [Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle](/cli/azure/logic) (`az logic`) erstellen und verwalten. Über die Befehlszeile können Sie eine Logik-App erstellen und dabei die JSON-Datei für eine Logik-App-Workflowdefinition verwenden. Anschließend können Sie Ihre Logik-App durch Ausführen von Vorgängen wie `list`, `show` (`get`), `update` und `delete` über die Befehlszeile verwalten.
 
@@ -137,7 +137,7 @@ Der Workflow einer Logik-App kann über die Azure-Befehlszeilenschnittstelle mit
 
 Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/logic/workflow#az_logic_workflow_delete-required-parameters) enthalten:
 
-| Parameter | Wert | BESCHREIBUNG |
+| Parameter | Wert | Beschreibung |
 | --------- | ----- | ----------- |
 | Name | `--name -n` | Der Name Ihrer Logik-App. |
 | Ressourcengruppenname | `-resource-group -g` | Die Ressourcengruppe, in der sich Ihre Logik-App befindet. |
@@ -192,7 +192,7 @@ az logic workflow show --name
 
 Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/logic/workflow#az_logic_workflow_show-required-parameters) enthalten:
 
-| Parameter | Wert | BESCHREIBUNG |
+| Parameter | Wert | Beschreibung |
 | --------- | ----- | ----------- |
 | Name | `--name -n` | Der Name Ihrer Logik-App. |
 | Ressourcengruppenname | `--resource-group -g` | Der Name der Ressourcengruppe, in der sich Ihre Logik-App befindet. |

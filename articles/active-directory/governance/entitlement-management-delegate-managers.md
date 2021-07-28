@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e81389ec953829115062a31a019caf040850cbea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4a33170fecab6efbe86568eb81b87637ca5da24
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798635"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714294"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Delegieren der Zugriffssteuerung an Zugriffspaket-Manager in der Azure AD-Berechtigungsverwaltung
 
@@ -40,7 +40,7 @@ Dieses Video bietet eine Übersicht darüber, wie Sie die Zugriffssteuerung vom 
 
 Um der Rolle Zugriffspaket-Manager einen Benutzer zuzuweisen, gehen Sie wie folgt vor:
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator oder Katalogbesitzer
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/12/2021
+ms.date: 06/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 8b9c4792fa6dbdc70f657ce3c5f1757473a22fda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bac4baea6421c0e4a1f6e3b956245202eef18e1
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225216"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018278"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Python mit Jupyter Notebook
 
@@ -348,7 +348,7 @@ In diesem Schritt wird gezeigt, wie Sie einen Index mit der **search**-Methode d
 
 ## <a name="clean-up"></a>Bereinigung
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie am Ende eines Projekts prüfen, ob Sie die Ressourcen, die Sie erstellt haben, noch benötigen. Für weiterhin aktive Ressourcen können Kosten anfallen. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie am Ende eines Projekts prüfen, ob Sie die Ressourcen, die Sie erstellt haben, noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 
@@ -356,7 +356,7 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Zur Vereinfachung wird in diesem Schnellstart eine verkürzte Version des Index „Hotels“ verwendet. Sie können die vollständige Version erstellen, um weitere Abfragen zu testen. Führen Sie zum Abrufen der vollständigen Version und aller 50 Dokumente den Assistenten **Daten importieren** aus, und wählen Sie *hotels-sample* aus den integrierten Beispieldatenquellen aus.
+In dieser JavaScript-Schnellstartanleitung haben Sie eine Reihe von Aufgaben ausgeführt, um einen Index zu erstellen, Dokumente in den Index zu laden und Abfragen auszuführen. Fahren Sie mit dem folgenden Tutorial fort:
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erstellen eines Index im Azure-Portal](search-get-started-portal.md)
+> [Tutorial: Hinzufügen von Suchfunktionen zu Web-Apps](tutorial-python-overview.md)

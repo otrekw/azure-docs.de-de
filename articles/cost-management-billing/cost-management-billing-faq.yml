@@ -7,14 +7,14 @@ metadata:
   ms.reviewer: adwise
   ms.service: cost-management-billing
   ms.topic: conceptual
-  ms.date: 04/15/2021
+  ms.date: 05/21/2021
   ms.author: banders
-  ms.openlocfilehash: 4d56dcf2d6aed950723170f542a45f5ab5a9e405
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.openlocfilehash: 36dff080da94b899680222eb1dd7c7955f1e093b
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108765609"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111962733"
 title: Häufig gestellte Fragen zu Azure Cost Management and Billing
 summary: ''
 sections:
@@ -32,15 +32,18 @@ sections:
   - question: Warum wird mir etwas berechnet? Ich habe ein kostenloses Azure-Konto.
     answer: >
       Für kostenlose Dienste gelten gewisse Einschränkungen. Höchstwahrscheinlich haben Sie die Grenzwerte für das kostenlose Angebot überschritten. Weitere Informationen finden Sie unter [Vermeiden von Gebühren mit Ihrem kostenlosen Azure-Konto](manage/avoid-charges-free-account.md).
-  - question: Wie kann ich meine Rechnung nachvollziehen?
+  - question: Wie kann ich mehr Informationen zum besseren Verständnis meiner Rechnung und zur Gebührenabstimmung erhalten?
     answer: >
-      Wenn Sie Ihr Azure-Abonnement über die Azure-Website erworben haben, finden Sie weitere Informationen unter [Tutorial: Überprüfen Ihrer individuellen Rechnung für das Azure-Abonnement](understand/review-individual-bill.md).
+      Wenn Sie Ihr Azure-Abonnement über die Azure-Website erworben haben, helfen Ihnen die Informationen im Tutorial [Überprüfen Ihrer individuellen Rechnung für das Azure-Abonnement](understand/review-individual-bill.md) weiter. In diesem Tutorial wird beschrieben, wie sich die Gebühren auf Ihrer Rechnung auf die von Ihnen genutzten Dienste beziehen.
   - question: Wie kann ich schnell meine Gebühren anzeigen?
     answer: >
       Entsprechende Informationen finden Sie unter [Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse](costs/quick-acm-cost-analysis.md).
   - question: Mir wurden unerwartete Gebühren berechnet. Wie kann ich sie nachvollziehen?
     answer: >
       Entsprechende Informationen finden Sie unter [Analysieren unerwarteter Gebühren](understand/analyze-unexpected-charges.md).
+  - question: Wie kann ich meine Abrechnungsinformationen ändern?
+    answer: >
+      Informationen hierzu finden Sie unter [Änderung von Abrechnungsinformationen](manage/change-azure-account-profile.md).
   - question: Wie kann ich mein Abonnement kündigen?
     answer: >
       Entsprechende Informationen finden Sie unter [Kündigen Ihres Azure-Abonnements](manage/cancel-azure-subscription.md).
@@ -95,10 +98,10 @@ sections:
       Ja. Sie können [mit Power BI Desktop eine Verbindung mit Cost Management-Daten herstellen](/power-bi/connect-data/desktop-connect-azure-cost-management) oder die [Cost Management-Power BI-App für EAs](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md) verwenden.
   - question: Welche Angebotstypen werden in Cost Management unterstützt?
     answer: >
-      Entsprechende Informationen finden Sie unter [Unterstützte Microsoft Azure-Angebote](/azure/cost-management-billing/costs/understand-cost-mgt-data#supported-microsoft-azure-offers).
+      Entsprechende Informationen finden Sie unter [Unterstützte Microsoft Azure-Angebote](./costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers).
   - question: Wie schnell werden meine Kosten- und Nutzungsdaten in Azure Cost Management angezeigt?
     answer: >
-      Entsprechende Informationen finden Sie unter [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention).
+      Entsprechende Informationen finden Sie unter [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](./costs/understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention).
   - question: Stehen in Azure Cost Management alle kostenbezogenen Informationen zur Verfügung?
     answer: >
       Entsprechende Informationen finden Sie unter [In Cost Management enthaltene Kosten](costs/understand-cost-mgt-data.md#costs-included-in-cost-management).
@@ -140,7 +143,7 @@ sections:
     answer: >
       Einsparungen können auf verschiedene Arten angezeigt werden.
 
-      -  Als EA-Kunde können Sie die Azure Cost Management-Power BI-App für EA verwenden, um den Bericht [RI Savings](/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app#reports-available-with-the-app.md) (Einsparungen für reservierte Instanzen) anzuzeigen.
+      -  Als EA-Kunde können Sie die Azure Cost Management-Power BI-App für EA verwenden, um den Bericht [RI Savings](./costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md#reports-available-with-the-app) (Einsparungen für reservierte Instanzen) anzuzeigen.
 
       -  Verwenden Sie die Datendatei „Verbrauch + Gebühren“ zum manuellen [Bestimmen von Reservierungseinsparungen](reservations/understand-reserved-instance-usage-ea.md#determine-reservation-savings).
   - question: Wie zeige ich Unterauslastung für Reservierungen an?
@@ -151,7 +154,7 @@ sections:
       Ausführliche Informationen finden Sie unter [Rückbuchen von Azure-Reservierungskosten](reservations/charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json).
   - question: Wie kann ich angefallene Gebühren für virtuelle Spotcomputer anzeigen?
     answer: >
-      Entsprechende Informationen finden Sie unter [Anzeigen der Gebühren für Spot-VMs](/azure/cost-management-billing/costs/cost-analysis-common-uses#view-your-spot-vm-charges).
+      Entsprechende Informationen finden Sie unter [Anzeigen der Gebühren für Spot-VMs](./costs/cost-analysis-common-uses.md#view-your-spot-vm-charges).
   - question: Wie erhalte ich einen Bericht mit Reservierungsdetails?
     answer: >
       Informationen zum [Generieren eines Berichts mit Reservierungsdetails](/rest/api/cost-management/generatereservationdetailsreport) finden Sie in der API-Dokumentation.

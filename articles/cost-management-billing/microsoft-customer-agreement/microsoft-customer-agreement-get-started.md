@@ -6,15 +6,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 04/29/2021
+ms.date: 05/21/2021
 ms.author: banders
 ms.reviewer: baolcsva
-ms.openlocfilehash: 60d42598da2e0b7f29bfea832d27dc5156761556
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 9ef2d08f3cbc557cfa914c13298b1675afbf455c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322057"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458686"
 ---
 # <a name="key-next-steps-after-accepting-your-microsoft-customer-agreement"></a>Wichtige nächste Schritte nach dem Akzeptieren Ihrer Microsoft-Kundenvereinbarung
 
@@ -96,6 +96,10 @@ Stellen Sie sicher, dass Sie Ihre Steuernummer nach dem Verschieben Ihrer Abonne
 1. Nehmen Sie die gewünschten Aktualisierungen vor, und wählen Sie dann **Speichern** aus.
 
 Informieren Sie sich ausführlicher über das [Aktualisieren der Abrechnungskontoeinstellungen](/microsoft-store/update-microsoft-store-for-business-account-settings).
+
+## <a name="cancel-support-plan"></a>Supportplan kündigen
+
+Erfahren Sie, wie Sie [einen vorherigen Supportplan kündigen](../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json#cancel-a-prior-support-plan).
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 

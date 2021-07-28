@@ -9,20 +9,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f0abef835e406b442239cecd81fed5751f1c9a92
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: a09dfb2b8e29ba925a702c169a1a79c13016d5dc
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378158"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421704"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Serverloser SQL-Pool in Azure Synapse Analytics 
 
-Jeder Azure Synapse Analytics-Arbeitsbereich enthält Endpunkte für serverlose SQL-Pools, die Sie zum Abfragen von Daten im Data Lake verwenden können.
+Jeder Azure Synapse Analytics-Arbeitsbereich wird mit serverlosen SQL-Poolendpunkten geliefert, die Sie zur Abfrage von Daten in [Azure Data Lake](query-data-storage.md) (Formate [Parquet](query-data-storage.md#query-parquet-files), [Delta Lake](query-delta-lake-format.md), [Text mit Trennzeichen](query-data-storage.md#query-csv-files)), [Cosmos DB](query-cosmos-db-analytical-store.md?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=openrowset-key) oder Dataverse verwenden können.
 
 Ein serverloser SQL-Pool ist ein Abfragedienst für die Daten in Ihrem Data Lake. Er ermöglicht den Zugriff auf Ihre Daten über folgende Funktionen:
  
-- Eine vertraute T-SQL-Syntax zum direkten Abfragen von Daten, ohne dass diese in einen speziellen Speicher kopiert oder geladen werden müssen 
+- Eine vertraute [T-SQL-Syntax](overview-features.md) zum direkten Abfragen von Daten, ohne dass diese in einen speziellen Speicher kopiert oder geladen werden müssen. 
 - Integrierte Konnektivität über die T-SQL-Schnittstelle, die ein breites Spektrum an Business Intelligence und Ad-hoc-Abfragetools bietet – einschließlich der beliebtesten Treiber 
 
 Ein serverloser SQL-Pool ist ein verteiltes Datenverarbeitungssystem, das für umfangreiche Datenmengen und Berechnungsfunktionen konzipiert ist. Mit einem serverlosen SQL-Pool können Sie Big Data abhängig von der Workload in wenigen Sekunden oder Minuten analysieren. Dank der integrierten Fehlertoleranz bei der Abfrageausführung bietet das System auch bei Abfragen mit langer Ausführungszeit und umfangreichen Datasets eine hohe Zuverlässigkeit und Erfolgsquote.
@@ -38,7 +38,7 @@ Wenn Sie Apache Spark für Azure Synapse in Ihrer Datenpipeline verwenden, könn
 Wenn Sie Daten im Data Lake untersuchen, Erkenntnisse aus diesen Daten gewinnen oder Ihre vorhandene Datentransformationspipeline optimieren möchten, können Sie von einem serverlosen SQL-Pool profitieren. SQL On-Demand eignet sich für folgende Szenarien:
 
 - Grundlegende Ermittlung und Untersuchung: Unterschiedliche Datenformate (Parquet, CSV, JSON) in Ihrem Data Lake können zur Planung einer geeigneten Vorgehensweise für die Gewinnung von Erkenntnissen schnell und einfach analysiert werden.
-- Logisches Data Warehouse: Eine relationale Abstraktion auf der Grundlage unformatierter oder unterschiedlicher Daten ohne Datenverschiebung oder -transformation ermöglicht einen stets aktuellen Blick auf Ihre Daten.
+- Logisches Data Warehouse: Eine relationale Abstraktion auf der Grundlage unformatierter oder unterschiedlicher Daten ohne Datenverschiebung oder -transformation ermöglicht einen stets aktuellen Blick auf Ihre Daten. Erfahren Sie mehr über das [Erstellen eines logischen Data Warehouse](tutorial-logical-data-warehouse.md).
 - Datentransformation: Eine einfache, skalierbare und leistungsfähige Möglichkeit zum Transformieren von Daten im Data Lake mithilfe von T-SQL, um die Daten für BI und andere Tools bereitzustellen oder in einen relationalen Datenspeicher (beispielsweise Synapse SQL-Datenbanken oder Azure SQL-Datenbank) zu laden.
 
 Verschiedene professionelle Rollen können von einem serverlosen SQL-Pool profitieren:
@@ -52,6 +52,8 @@ Verschiedene professionelle Rollen können von einem serverlosen SQL-Pool profit
 
 In jedem Azure Synapse-Arbeitsbereich steht ein Endpunkt für einen serverlosen SQL-Pool zur Verfügung. Sie können einen Arbeitsbereich erstellen und sofort damit beginnen, Daten mithilfe Ihrer vertrauten Tools abzufragen.
 
+Stellen Sie sicher, dass Sie [die bewährten Methoden](best-practices-serverless-sql-pool.md) anwenden, um die beste Leistung zu erzielen.
+
 ## <a name="client-tools"></a>Clienttools
 
 Ein serverloser SQL-Pool ermöglicht die Nutzung des Data Lake durch bereits vorhandene Tools für SQL-Ad-hoc-Abfragen und Business Intelligence. Dank der vertrauten T-SQL-Syntax kann jedes Tool, das für SQL-Angebote mit TDS-Verbindung geeignet ist, [eine Verbindung mit Synapse SQL herstellen und entsprechende Abfragen ausführen](connect-overview.md). Sie können eine Verbindung mit Azure Data Studio herstellen und Ad-hoc-Abfragen ausführen oder eine Verbindung mit Power BI herstellen, um innerhalb weniger Minuten Erkenntnisse zu gewinnen.
@@ -63,7 +65,7 @@ Ein serverloser SQL-Pool bietet eine Oberfläche für T-SQL-Abfragen, die in ein
 - Die Workload kann mithilfe vertrauter Konzepte strukturiert werden:
 - Datenbanken: Der Endpunkt für einen serverlosen SQL-Pool kann über mehrere Datenbanken verfügen.
 - Schemas: Eine Datenbank kann einzelne oder mehrere Objektbesitzgruppen (Schemas) enthalten.
-- Sichten
+- Sichten, gespeicherte Prozeduren, Inline-Tabellenwertfunktionen
 - Externe Ressourcen: Datenquellen, Dateiformate und Tabellen
 
 Verfügbare Sicherheitsmaßnahmen:
@@ -93,9 +95,13 @@ Ein serverloser SQL-Pool erweitert die vorhandene Funktion [OPENROWSET](/sql/t-s
 
 [Abfragen mehrerer Dateien oder Ordner](query-data-storage.md#query-multiple-files-or-folders)
 
-[Parquet-Dateiformat](query-data-storage.md#query-parquet-files)
+[Abfragen des Parquet-Dateiformats](query-data-storage.md#query-parquet-files)
 
-[Zusätzliche Optionen für die Verwendung von durch Trennzeichen getrenntem Text (Feldabschlusszeichen, Zeilenabschlusszeichen, Escapezeichen)](query-data-storage.md#query-csv-files)
+[Abfragen des DELTA-Formats](query-delta-lake-format.md)
+
+[Verschiedene Textformate mit Trennzeichen (mit benutzerdefiniertem Feldabschlusszeichen, Zeilenabschlusszeichen, Escapezeichen)](query-data-storage.md#query-csv-files)
+
+[Cosmos DB-Analysespeicher](query-cosmos-db-analytical-store.md?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=openrowset-key)
 
 [Lesen einer ausgewählten Teilmenge von Spalten](query-data-storage.md#read-a-chosen-subset-of-columns)
 
@@ -139,9 +145,15 @@ Bei Verwendung der Azure AD-Authentifizierung kann sich ein Benutzer beim serve
 
 Ein beim serverlosen SQL-Pool angemeldeter Benutzer benötigt eine Autorisierung, um auf die Dateien in Azure Storage zugreifen und Abfragen für die Dateien ausführen zu können. Von einem serverlosen SQL-Pool werden folgende Autorisierungstypen unterstützt:
 
-- **Shared Access Signature (SAS)** für delegierten Zugriff auf Ressourcen im Speicherkonto. Mit einer SAS können Sie Clients Zugriff auf Ressourcen im Speicherkonto gewähren, ohne dafür Kontoschlüssel weitergeben zu müssen. Mit einer SAS können Sie präzise steuern, welche Art von Zugriff Sie Clients gewähren möchten, die über die SAS verfügen. Dazu stehen Parameter wie Gültigkeitsintervall, erteilte Berechtigungen, zulässiger IP-Adressbereich und zulässiges Protokoll (HTTPS/HTTP) zur Verfügung.
+- **[Shared Access Signature (SAS)](develop-storage-files-storage-access-control.md?tabs=shared-access-signature)** für delegierten Zugriff auf Ressourcen im Speicherkonto. Mit einer SAS können Sie Clients Zugriff auf Ressourcen im Speicherkonto gewähren, ohne dafür Kontoschlüssel weitergeben zu müssen. Mit einer SAS können Sie präzise steuern, welche Art von Zugriff Sie Clients gewähren möchten, die über die SAS verfügen. Dazu stehen Parameter wie Gültigkeitsintervall, erteilte Berechtigungen, zulässiger IP-Adressbereich und zulässiges Protokoll (HTTPS/HTTP) zur Verfügung.
 
-- **Benutzeridentität** (auch „Passthrough“ genannt) ist ein Autorisierungstyp, bei dem die Identität des beim serverlosen SQL-Pool angemeldeten Azure AD-Benutzers verwendet wird, um den Zugriff auf die Daten zu autorisieren. Vor dem Zugriff auf die Daten muss der Azure Storage-Administrator dem Azure AD-Benutzer Zugriffsberechtigungen für die Daten erteilen. Da bei diesem Autorisierungstyp der beim serverlosen SQL-Pool angemeldete Azure AD-Benutzer verwendet wird, wird er für SQL-Benutzertypen nicht unterstützt.
+- **[Benutzeridentität](develop-storage-files-storage-access-control.md?tabs=user-identity)** (auch „Passthrough“ genannt) ist ein Autorisierungstyp, bei dem die Identität des beim serverlosen SQL-Pool angemeldeten Azure AD-Benutzers verwendet wird, um den Zugriff auf die Daten zu autorisieren. Vor dem Zugriff auf die Daten muss der Azure Storage-Administrator dem Azure AD-Benutzer Zugriffsberechtigungen für die Daten erteilen. Da bei diesem Autorisierungstyp der beim serverlosen SQL-Pool angemeldete Azure AD-Benutzer verwendet wird, wird er für SQL-Benutzertypen nicht unterstützt.
+
+- **[Arbeitsbereichidentität](develop-storage-files-storage-access-control.md?tabs=managed-identity)** ist ein Autorisierungstyp, bei dem die Identität des Synapse-Arbeitsbereichs verwendet wird, um den Zugriff auf die Daten zu autorisieren. Vor dem Zugriff auf die Daten muss der Azure Storage-Administrator der Arbeitsbereichidentität Zugriffsberechtigungen für die Daten erteilen.
+
+### <a name="access-to-cosmos-db"></a>Zugriff auf Cosmos DB
+
+Sie müssen Anmeldeinformationen auf Serverebene oder Datenbankebene mit dem schreibgeschützten Cosmos DB-Kontoschlüssel erstellen, um [auf den Cosmos DB-Analysespeicher zuzugreifen](query-cosmos-db-analytical-store.md?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=openrowset-key).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Endpunktverbindung und zum Abfragen von Dateien finden Sie in den folgenden Artikeln: 

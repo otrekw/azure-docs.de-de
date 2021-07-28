@@ -1,23 +1,23 @@
 ---
 title: Behandeln von Problemen mit einer abgelehnten Karte bei der Azure-Registrierung
-description: Lösen Sie Probleme, die zur Ablehnung der Kreditkarte bei der Azure-Registrierung beim Azure-Portal oder Azure-Kontocenter führen.
+description: Lösen Sie Probleme, die zur Ablehnung der Kreditkarte bei der Azure-Registrierung im Azure-Portal führen.
 author: v-miegge
 ms.reviewer: judupont
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 05/13/2021
 ms.author: banders
-ms.openlocfilehash: 5b53d1855abb3114be1ab31e19af3bb3a11d722f
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e2295a974baec9a841e79873568f3f3c7c835544
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132158"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470847"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Behandeln von Problemen mit einer abgelehnten Karte bei der Azure-Registrierung
 
-Unter Umständen tritt ein Problem oder Fehler auf, wobei im Microsoft Azure-Portal oder im Azure-Kontocenter bei der Azure-Anmeldung eine Kreditkarte abgelehnt wird.
+Unter Umständen tritt ein Problem oder Fehler auf, wobei im Microsoft Azure-Portal bei der Azure-Registrierung eine Kreditkarte abgelehnt wird.
 
 Wählen Sie zum Beheben des Problems unten den Artikel aus, in dem der aufgetretene Fehler am ehesten beschrieben wird.
 
@@ -42,9 +42,9 @@ Wenden Sie sich an Ihre Bank, um sicherzustellen, dass die Karte aktiv ist.
 
 Möglicherweise treten andere Registrierungsprobleme auf
 
-Weitere Informationen zum Beheben von Problemen bei der Azure-Registrierung finden Sie im folgenden Knowledge Base-Artikel:
+Weitere Informationen zum Beheben von Problemen bei der Azure-Registrierung finden Sie im folgenden Artikel:
 
-[Sie können sich beim Azure-Portal oder Azure-Kontocenter nicht für Azure registrieren](troubleshoot-azure-sign-up.md)
+[Sie können sich im Azure-Portal nicht bei Azure registrieren.](troubleshoot-azure-sign-up.md)
 
 ## <a name="you-represent-a-business-that-doesnt-want-to-pay-by-card"></a>Sie repräsentieren ein Unternehmen, das nicht per Karte bezahlen möchte
 

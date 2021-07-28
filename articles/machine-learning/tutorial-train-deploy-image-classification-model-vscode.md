@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 05/25/2021
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: efe19d39914e2efc4ac4dcc39d9b0f036ac626b3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 80090bf8743c78a66e38250dbfbb89beb70e66c2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371010"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457577"
 ---
 # <a name="train-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Trainieren eines TensorFlow-Modells für die Bildklassifizierung mit der Azure Machine Learning-Erweiterung für Visual Studio Code (Vorschau)
 
@@ -68,9 +68,9 @@ Als Erstes müssen Sie einen Arbeitsbereich erstellen, damit Sie eine Anwendung 
       team: ml-team
     ```
 
-    Mit der Vorlage wird ein Arbeitsbereich mit dem Namen `TeamWorkspace` in der Region `WestUS2` erstellt. Mit den restlichen Optionen, die in der Vorlage definiert sind, werden benutzerfreundliche Namen, Beschreibungen und Tags für den Arbeitsbereich angegeben.
+    Die Spezifikationsdatei erstellt einen Arbeitsbereich namens `TeamWorkspace` in der Region `WestUS2`. Mit den restlichen Optionen, die in der Spezifikationsdatei definiert sind, werden benutzerfreundliche Namen, Beschreibungen und Tags für den Arbeitsbereich angegeben.
 
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus. Beim Erstellen einer Ressource werden die Konfigurationsoptionen verwendet, die in der YAML-Spezifikationsdatei definiert sind, und über die 2.0 CLI wird ein Auftrag übermittelt. An diesem Punkt wird eine Anforderung zum Erstellen eines neuen Arbeitsbereichs und der abhängigen Ressourcen in Ihrem Konto an Azure gesendet. Nach einigen Minuten wird der neue Arbeitsbereich in Ihrem Abonnementknoten angezeigt.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus. Beim Erstellen einer Ressource werden die Konfigurationsoptionen verwendet, die in der YAML-Spezifikationsdatei definiert sind, und über die 2.0 CLI wird ein Auftrag übermittelt. An diesem Punkt wird eine Anforderung zum Erstellen eines neuen Arbeitsbereichs und der abhängigen Ressourcen in Ihrem Konto an Azure gesendet. Nach einigen Minuten wird der neue Arbeitsbereich in Ihrem Abonnementknoten angezeigt.
 1. Wählen Sie `TeamWorkspace` als Standardarbeitsbereich aus. Die von Ihnen erstellten Ressourcen und Aufträge werden dann standardmäßig im Arbeitsbereich platziert. Wählen Sie in der Visual Studio Code-Statusleiste die Schaltfläche **Set Azure ML Workspace** (Azure ML-Arbeitsbereich festlegen) aus, und befolgen Sie die Anweisungen zum Festlegen von `TeamWorkspace` als Standardarbeitsbereich.
 
 Weitere Informationen zu Arbeitsbereichen finden Sie im Artikel zum [Verwalten von Ressourcen in VS Code](how-to-manage-resources-vscode.md).
@@ -98,11 +98,11 @@ Bei einem Computeziel handelt es sich um die Computeressource oder -Umgebung, in
     idle_time_before_scale_down: 120
     ```
 
-    Mit der Vorlage wird ein GPU-Cluster mit dem Namen `gpu-cluster` und mindestens drei „Standard_NC12“-VM-Knoten erstellt. Der Cluster wird nach 120 Sekunden der Inaktivität automatisch auf 0 Knoten herunterskaliert.
+    Mit der Spezifikationsdatei wird ein GPU-Cluster mit dem Namen `gpu-cluster` und mindestens drei „Standard_NC12“-VM-Knoten erstellt. Der Cluster wird nach 120 Sekunden der Inaktivität automatisch auf 0 Knoten herunterskaliert.
 
     Weitere Informationen zu VM-Größen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/sizes.md).
 
-1. Klicken Sie mit der rechten Maustaste auf die Vorlagendatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Spezifikationsdatei, und wählen Sie **Azure ML: Ressource erstellen** aus.
 
 Nach einigen Minuten wird das neue Computeziel auf dem Knoten *Compute > Computecluster* Ihres Arbeitsbereichs angezeigt.
 
@@ -110,7 +110,7 @@ Nach einigen Minuten wird das neue Computeziel auf dem Knoten *Compute > Compute
 
 Während des Trainingsprozesses wird ein TensorFlow-Modell trainiert, indem die darin eingebetteten Trainingsdaten und Lernmuster für die einzelnen zu klassifizierenden Ziffern verarbeitet werden.
 
-Trainingsaufträge werden mit Ressourcenvorlagen definiert, wie dies auch bei Arbeitsbereichen und Computezielen der Fall ist. Bei diesem Beispiel wird die Vorlage in der Datei *job.yml* definiert, die wie folgt aussieht:
+Trainingsaufträge werden mit Ressourcenvorlagen definiert, wie dies auch bei Arbeitsbereichen und Computezielen der Fall ist. Bei diesem Beispiel wird die Spezifikation in der Datei *job.yml* definiert, die wie folgt aussieht:
 
 ```yml
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
@@ -125,7 +125,7 @@ experiment_name: tensorflow-mnist-example
 description: Train a basic neural network with TensorFlow on the MNIST dataset.
 ```
 
-Mit dieser Vorlage wird ein Trainingsauftrag mit dem Namen `tensorflow-mnist-example` an das vor Kurzem erstellte Computeziel `gpu-cluster` übermittelt, das den Code im Python-Skript *train.py* ausführt. Hierbei wird eine der zusammengestellten Umgebungen verwendet, die von Azure Machine Learning bereitgestellt werden. Sie enthält TensorFlow und andere Softwareabhängigkeiten, die zum Ausführen des Trainingsskripts erforderlich sind. Weitere Informationen zu zusammengestellten Umgebungen finden Sie unter [Azure Machine Learning – Zusammengestellte Umgebungen](resource-curated-environments.md).
+Mit dieser Spezifikationsdatei wird ein Trainingsauftrag mit dem Namen `tensorflow-mnist-example` an das vor Kurzem erstellte Computeziel `gpu-cluster` übermittelt, das den Code im Python-Skript *train.py* ausführt. Hierbei wird eine der zusammengestellten Umgebungen verwendet, die von Azure Machine Learning bereitgestellt werden. Sie enthält TensorFlow und andere Softwareabhängigkeiten, die zum Ausführen des Trainingsskripts erforderlich sind. Weitere Informationen zu zusammengestellten Umgebungen finden Sie unter [Azure Machine Learning – Zusammengestellte Umgebungen](resource-curated-environments.md).
 
 Übermitteln Sie den Trainingsauftrag wie folgt:
 

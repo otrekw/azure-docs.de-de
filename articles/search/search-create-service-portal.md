@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2021
-ms.openlocfilehash: 83e206a5fd7b34da0b0ac8590d5271a554855d3e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 06/03/2021
+ms.openlocfilehash: 713d2216029fb88716d157d9db7b2010d3f32720
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580754"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526270"
 ---
 # <a name="create-an-azure-cognitive-search-service-in-the-portal"></a>Erstellen eines Azure Cognitive Search-Diensts im Portal
 
 [Azure Cognitive Search](search-what-is-azure-search.md) ist eine Azure-Ressource, die zum Hinzufügen einer Oberfläche für die Volltextsuche zu benutzerdefinierten Apps verwendet wird. Sie können Azure Cognitive Search problemlos in andere Azure-Dienste integrieren, die Datenverarbeitung oder weitere Verarbeitung mit auf Netzwerkservern gehosteten Apps oder mit auf anderen Cloudplattformen ausgeführter Software bereitstellen.
 
-Für die Suchdiensterstellung können Sie das [Azure-Portal](https://portal.azure.com/) verwenden, wie in diesem Artikel beschrieben. Sie können aber auch [Azure PowerShell](search-manage-powershell.md), die [Azure CLI](/cli/azure/search), die [Verwaltungs-REST-API](/rest/api/searchmanagement/) oder eine [Azure Resource Manager-Dienstvorlage](https://azure.microsoft.com/resources/templates/101-azure-search-create/) verwenden.
+Für die Suchdiensterstellung können Sie das [Azure-Portal](https://portal.azure.com/) verwenden, wie in diesem Artikel beschrieben. Sie können aber auch [Azure PowerShell](search-manage-powershell.md), die [Azure CLI](/cli/azure/search), die [Verwaltungs-REST-API](/rest/api/searchmanagement/) oder eine [Azure Resource Manager-Dienstvorlage](https://azure.microsoft.com/resources/templates/azure-search-create/) verwenden.
 
 [![Animiertes GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -83,25 +83,25 @@ Anforderungen an Dienstnamen:
 
 ## <a name="choose-a-location"></a>Auswählen eines Standorts
 
-Azure Cognitive Search ist in den meisten Regionen verfügbar, wie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=search) dokumentiert. Ganz allgemein sollten Sie bei Verwendung mehrerer Azure-Dienste eine Region auswählen, die auch als Host für Ihre Daten oder für Ihren Anwendungsdienst fungiert. So werden Bandbreitengebühren für ausgehende Daten minimiert oder fallen weg (es fallen keine Gebühren für ausgehende Daten an, wenn sich die Dienste in derselben Region befinden).
+Azure Cognitive Search ist in den meisten Regionen verfügbar, wie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=search) dokumentiert. 
 
-+ Für die [KI-Anreicherung](cognitive-search-concept-intro.md) muss sich Cognitive Services in der gleichen physischen Region befinden wie Azure Cognitive Search. Es gibt nur wenige Regionen, die nicht beides bereitstellen. Sind beide Funktionen verfügbar, sind auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=search) zwei Häkchen angegeben. Ist die Kombination nicht verfügbar, fehlt ein Häkchen:
+Ganz allgemein sollten Sie bei Verwendung mehrerer Azure-Dienste eine Region auswählen, die auch als Host für Ihre Daten oder für Ihren Anwendungsdienst fungiert. So werden Bandbreitengebühren für ausgehende Daten minimiert oder fallen weg (es fallen keine Gebühren für ausgehende Daten an, wenn sich die Dienste in derselben Region befinden).
+
++ Für die [KI-Anreicherung](cognitive-search-concept-intro.md) muss sich Cognitive Services in der gleichen physischen Region befinden wie Azure Cognitive Search. Es gibt nur wenige Regionen, die *nicht* beides bereitstellen. Sind beide Funktionen verfügbar, sind auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=search) zwei Häkchen angegeben. Ist die Kombination nicht verfügbar, fehlt ein Häkchen:
 
   :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="Regionale Verfügbarkeit" border="true":::
 
 + Zur Erfüllung von BCDR-Anforderungen (Business Continuity & Disaster Recovery) sollten mehrere Suchdienste in [Regionspaaren](../best-practices-availability-paired-regions.md#azure-regional-pairs) erstellt werden. Wenn Sie beispielsweise in Nordamerika tätig sind, können Sie für jeden Suchdienst „USA, Osten“ und „USA, Westen“ oder „USA, Norden-Mitte“ und „USA, Süden-Mitte“ auswählen.
 
-Einige Features sind regionsabhängig nur eingeschränkt verfügbar. Einschränkungen sind in der Featuredokumentation beschrieben:
-
-+ [Doppelte Verschlüsselung](search-security-overview.md#double-encryption)
+Features mit eingeschränkter Verfügbarkeit basierend auf Regionen sind unten aufgeführt. Unterstützte Regionen sind im Featureartikel aufgeführt: 
 
 + [„Verfügbarkeitszonen“ in „Skalieren zur Verbesserung der Leistung in Azure Cognitive Search“](search-performance-optimization.md#availability-zones)
 
 ## <a name="choose-a-pricing-tier"></a>Auswählen eines Tarifs
 
-Azure Cognitive Search wird derzeit in [mehreren Tarifen](https://azure.microsoft.com/pricing/details/search/) angeboten: „Free“, „Basic“, „Standard“ oder „Datenspeicheroptimiert“. Jeder Tarif verfügt über eigene [Kapazitäten und Grenzwerte](search-limits-quotas-capacity.md). Anleitungen finden Sie unter [Auswählen eines Tarifs](search-sku-tier.md).
+Azure Cognitive Search wird derzeit in [mehreren Tarifen](https://azure.microsoft.com/pricing/details/search/) angeboten: „Free“, „Basic“, „Standard“ oder „Datenspeicheroptimiert“. Jeder Tarif verfügt über eigene [Kapazitäten und Grenzwerte](search-limits-quotas-capacity.md). Außerdem kann sich der ausgewählte Tarif auf die Verfügbarkeit bestimmter Features auswirken. Eine Anleitung finden Sie unter [Featureverfügbarkeit nach Tarif](search-sku-tier.md#feature-availability-by-tier).
 
-Für Produktionsworkloads werden in der Regel die Tarife „Basic“ und „Standard“ ausgewählt. Die meisten Kunden beginnen jedoch mit einem kostenlosen Dienst. Die wichtigsten Unterschiede zwischen den Tarifen sind Partitionsgröße und Geschwindigkeit sowie Grenzwerte bei der Anzahl von Objekten, die Sie erstellen können.
+Für Produktionsworkloads werden in der Regel die Tarife „Basic“ und „Standard“ ausgewählt. Viele Kunden beginnen jedoch zunächst zu Evaluierungszwecken mit einem kostenlosen Dienst. Die wichtigsten Unterschiede zwischen den Tarifen sind Partitionsgröße und Geschwindigkeit sowie Grenzwerte bei der Anzahl von Objekten, die Sie erstellen können.
 
 Denken Sie daran, dass ein Tarif nicht geändert werden kann, nachdem der Dienst erstellt wurde. Wenn Sie einen höheren oder niedrigeren Tarif benötigen, müssen Sie den Dienst neu erstellen.
 

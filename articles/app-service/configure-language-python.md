@@ -2,15 +2,15 @@
 title: Konfigurieren von Linux-Python-Apps
 description: Es wird beschrieben, wie Sie den Python-Container konfigurieren, in dem Web-Apps ausgeführt werden, indem Sie sowohl das Azure-Portal als auch die Azure CLI verwenden.
 ms.topic: quickstart
-ms.date: 03/16/2021
+ms.date: 06/11/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 605d1e0f67ac959d2c7325e04e2fd10d9d2419be
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: db1650c61ae9e70955fd945527ff049e2663a174
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829492"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018061"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App für Azure App Service
 
@@ -104,7 +104,7 @@ Vorhandene Webanwendungen können in Azure wie folgt erneut bereitgestellt werde
 1. **Quellrepository**: Verwalten Sie Ihren Quellcode in einem geeigneten Repository wie GitHub, damit Sie zu einem späteren Zeitpunkt dieses Prozesses Continuous Deployment einrichten können.
     1. Ihre Datei *requirements.txt* muss sich im Stammverzeichnis Ihres Repositorys für App Service befinden, damit die erforderlichen Pakete automatisch installiert werden können.    
 
-1. **Datenbank**: Falls Ihre App von einer Datenbank abhängig ist, sollten Sie die erforderlichen Ressourcen auch in Azure bereitstellen. Siehe [Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service: Erstellen einer Postgres-Datenbankinstanz in Azure](tutorial-python-postgresql-app.md#3-create-postgres-database-in-azure), um ein Beispiel anzuzeigen.
+1. **Datenbank**: Falls Ihre App von einer Datenbank abhängig ist, müssen die erforderlichen Ressourcen auch in Azure bereitgestellt werden. Siehe [Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service: Erstellen einer Postgres-Datenbankinstanz in Azure](tutorial-python-postgresql-app.md#3-create-postgres-database-in-azure), um ein Beispiel anzuzeigen.
 
 1. **App Service-Ressourcen**: Erstellen Sie eine Ressourcengruppe, einen App Service-Plan und eine App Service-Web-App zum Hosten Ihrer Anwendung. Dies lässt sich am einfachsten erreichen, indem Sie eine anfängliche Bereitstellung Ihres Codes über den Azure CLI-Befehl `az webapp up` verwenden. Dies wird unter [Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service: Bereitstellen des Codes in Azure App Service](tutorial-python-postgresql-app.md#4-deploy-the-code-to-azure-app-service) veranschaulicht. Ersetzen Sie die Namen der Ressourcengruppe, des App Service-Plans und der Web-App durch Namen, die für Ihre Anwendung besser geeignet sind.
 

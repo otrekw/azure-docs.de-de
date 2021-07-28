@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: 2099d190ca896a5c8124cdd6b605037256a5ab48
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: ce0fab219f49427892f5ffe47c595edb26fea010
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489346"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796010"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-the-azure-portal-preview"></a>Tutorial: Hinzufügen einer Rollenzuweisungsbedingung zum Einschränken des Zugriffs auf Blobs über das Azure-Portal (Vorschau)
 
@@ -153,17 +153,15 @@ Im Code sieht die Bedingung wie folgt aus:
 
     Der Abschnitt „Ausdruck“ wird erweitert.
 
-1. Wählen Sie in der Liste „Attributquelle“ die Option **Ressource** aus.
+1. Legen Sie die folgenden Einstellungen für den Ausdruck fest:
 
-1. Wählen Sie in der Attributliste die Option **Blob index tags [Values in key]** (Blobindextags [Werte im Schlüssel]) aus.
-
-    Wenn Sie dieses Attribut auswählen, wird ein Schlüsselfeld hinzugefügt, in dem Sie den Tagschlüssel angeben können, der von der Bedingung überprüft werden soll.
-
-1. Geben Sie im Schlüsselfeld die Zeichenfolge **Project** (Projekt) ein.
-
-1. Wählen Sie in der Operatorliste die Option **StringEqualsIgnoreCase** aus.
-
-1. Geben Sie im Wertfeld die Zeichenfolge **Cascade** ein.
+    | Einstellung | Wert |
+    | --- | --- |
+    | Attributquelle | Resource |
+    | attribute | Blobindextags [Werte in Schlüssel] |
+    | Key | Project |
+    | Betreiber | StringEqualsIgnoreCase |
+    | Wert | Cascade |
 
     ![Screenshot: Abschnitt „Ausdruck erstellen“ für Blobindextags](./media/storage-auth-abac-portal/condition-expressions.png)
 

@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 671c86790a3c90f948edb574bc015c0f41c5fbdf
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 5c2f53138d6f716d2917cff831e9b86c40b77a00
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109858218"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111546579"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit der Azure Communication Services-Bibliothek zum Einbetten von Teams für iOS einer Microsoft Teams-Besprechung beitreten.
 
@@ -46,11 +46,11 @@ platform :ios, '12.0'
 use_frameworks!
 
 target 'TeamsEmbedGettingStarted' do
-    pod 'AzureCommunication', '~> 1.0.0-beta.11'
+    pod 'AzureCommunicationCommon', '1.0.0'
 end
 
 azure_libs = [
-'AzureCommunication',
+'AzureCommunicationCommon',
 'AzureCore']
 
 post_install do |installer|
@@ -82,6 +82,8 @@ Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektst
 <string></string>
 <key>NSMicrophoneUsageDescription</key>
 <string></string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string></string>
 ```
 
 ### <a name="add-the-teams-embed-framework"></a>Hinzufügen des Frameworks zum Einbetten von Teams
@@ -93,7 +95,7 @@ Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektst
 
 :::image type="content" source="../media/ios/xcode-add-frameworks.png" alt-text="Screenshot: hinzugefügte Frameworks in Xcode.":::
 
-5. Wenn es noch nicht geschehen ist, fügen Sie auf der Registerkarte mit den Buildeinstellungen des Projektziels `$(PROJECT_DIR)/Frameworks` und `Framework Search Paths` hinzu. Um die Einstellung zu finden, müssen Sie den Filter von `basic` in `all` ändern. Sie können auch die Suchleiste auf der rechten Seite verwenden.
+5. Wenn es noch nicht geschehen ist, fügen Sie auf der Registerkarte mit den Buildeinstellungen des Projektziels `$(PROJECT_DIR)/Frameworks` zu `Framework Search Paths` hinzu. Zum Auffinden der Einstellung ändern Sie den Filter von `basic` in `all`. Sie können auch die Suchleiste auf der rechten Seite verwenden.
 
 :::image type="content" source="../media/ios/xcode-add-framework-search-path.png" alt-text="Screenshot: Suchpfad zum Framework in Xcode.":::
 
@@ -153,11 +155,11 @@ Erstellen Sie ein Outlet für die Schaltfläche in **ViewController.swift**.
 
 ### <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
 
-Öffnen Sie die Datei **ViewController.swift** Ihres Projekts, und fügen Sie am Anfang der Datei eine `import`-Deklaration hinzu, um die `AzureCommunication library` und die `MeetingUIClient` zu importieren. 
+Öffnen Sie die Datei **ViewController.swift** Ihres Projekts, und fügen Sie am Anfang der Datei eine `import`-Deklaration hinzu, um die `AzureCommunicationCommon library` und die `MeetingUIClient` zu importieren. 
 
 ```swift
 import UIKit
-import AzureCommunication
+import AzureCommunicationCommon
 import MeetingUIClient
 ```
 
@@ -167,6 +169,7 @@ Ersetzen Sie die Implementierung der `ViewController`-Klasse durch eine einfache
 class ViewController: UIViewController {
 
     private var meetingUIClient: MeetingUIClient?
+    private var meetingUIClientCall: MeetingUIClientCall?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -195,10 +198,19 @@ Die folgenden Klassen und Schnittstellen dienen zur Behandlung einiger der wich
 | MeetingUIClientGroupCallJoinOptions | MeetingUIClientMeetingJoinOptions wird für konfigurierbare Optionen wie den Anzeigenamen verwendet. |
 | MeetingUIClientTeamsMeetingLinkLocator | MeetingUIClientTeamsMeetingLinkLocator wird zum Festlegen der Besprechungs-URL für den Beitritt zu einer Besprechung verwendet. |
 | MeetingUIClientGroupCallLocator | MeetingUIClientGroupCallLocator wird zum Festlegen der Gruppen-ID für den Beitritt verwendet. |
+| MeetingUIClientInCallScreenDelegate | MeetingUIClientInCallScreenDelegate wird verwendet, um Anpassungen auf dem Hauptanrufbildschirm in der Benutzeroberfläche zur Verfügung zu stellen. |
+| MeetingUIClientStagingScreenDelegate | MeetingUIClientStagingScreenDelegate wird verwendet, um Anpassungen auf dem Staginganrufbildschirm in der Benutzeroberfläche zur Verfügung zu stellen. |
+| MeetingUIClientConnectingScreenDelegate | MeetingUIClientConnectingScreenDelegate wird verwendet, um Anpassungen auf dem Verbindungsanrufbildschirm in der Benutzeroberfläche zur Verfügung zu stellen. |
+| MeetingUIClientIconType | MeetingUIClientIconType wird verwendet, um anzugeben, welche Symbole durch ein App-spezifisches Symbol ersetzt werden können. |
+| MeetingUIClientCall | MeetingUIClientCall beschreibt den Anruf und stellt die API bereit, um ihn zu steuern. |
 | MeetingUIClientCallState | MeetingUIClientCallState wird zum Melden von Veränderungen im Anrufstatus verwendet. Die folgenden Optionen sind verfügbar: `connecting`,`waitingInLobby`,`connected` und `ended`. |
-| MeetingUIClientDelegate | Der MeetingUIClientDelegate wird zum Empfangen von Ereignissen verwendet, z. B. von Veränderungen im Aufrufstatus. |
-| MeetingUIClientIdentityProviderDelegate | MeetingUIClientIdentityProviderDelegate wird verwendet, um den Benutzern in einer Besprechung Benutzerdetails zuzuordnen. |
-| MeetingUIClientUserEventDelegate | MeetingUIClientUserEventDelegate stellt Informationen zu Benutzeraktionen auf der Benutzeroberfläche bereit. |
+| MeetingUIClientUserRole | MeetingUIClientUserRole wird zum Festlegen der Benutzerrollen im Gruppenanruf verwendet. |
+| MeetingUIClientAudioRoute | MeetingUIClientAudioRoute wird für lokale Audiorouten wie `Earpiece` oder `SpeakerOn` verwendet. |
+| MeetingUIClientLayoutMode | MeetingUIClientLayoutMode wird verwendet, um die Auswahl unterschiedlicher anrufinterner Benutzeroberflächenmodi zu ermöglichen. |
+| MeetingUIClientAvatarSize | MeetingUIClientAvatarSize wird verwendet, um zu benachrichtigen, welche Art von Avatar in welcher Größe von einem Delegaten angefordert wird. |
+| MeetingUIClientCallDelegate | Der MeetingUIClientDelegate wird zum Empfangen von Ereignissen verwendet, z. B. von Veränderungen im Aufrufstatus. |
+| MeetingUIClientCallIdentityProviderDelegate | MeetingUIClientIdentityProviderDelegate wird verwendet, um den Benutzern in einer Besprechung Benutzerdetails zuzuordnen. |
+| MeetingUIClientCallUserEventDelegate | MeetingUIClientUserEventDelegate stellt Informationen zu Benutzeraktionen auf der Benutzeroberfläche bereit. |
 
 ## <a name="create-and-authenticate-the-client"></a>Erstellen und Authentifizieren des Clients
 
@@ -242,15 +254,21 @@ Die Methode `join` wird als die Aktion festgelegt, die ausgeführt wird, wenn au
 private func joinMeeting() {
     let meetingJoinOptions = MeetingUIClientMeetingJoinOptions(displayName: "John Smith", enablePhotoSharing: true, enableNamePlateOptionsClickDelegate: true)
     let meetingLocator = MeetingUIClientTeamsMeetingLinkLocator(meetingLink: "<MEETING_URL>")
-    meetingUIClient?.join(meetingLocator: meetingLocator, joinCallOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
+    meetingUIClient?.join(meetingLocator: meetingLocator, joinCallOptions: meetingJoinOptions, completionHandler: { (meetingUIClientCall: MeetingUIClientCall?, error: Error?) in
         if (error != nil) {
             print("Join meeting failed: \(error!)")
+        }
+        else {
+            if (meetingUIClientCall != nil) {
+                self.meetingUIClientCall? = meetingUIClientCall
+            }
         }
     })
 }
 ```
+Hinweis: Ersetzen Sie `<MEETING URL>` durch einen Microsoft Teams-Besprechungslink.
 
-Ersetzen Sie `<MEETING URL>` durch einen Microsoft Teams-Besprechungslink.
+Der Fertigstellungshandler gibt einen Fehler zurück, falls der Vorgang fehlschlägt, oder er gibt `MeetingUIClientCall` zurück, wenn er erfolgreich war. Verwenden Sie `MeetingUIClientCall`, um den Anruf zu steuern. 
 
 ### <a name="get-a-microsoft-teams-meeting-link"></a>Abrufen eines Microsoft Teams-Besprechungslinks
 

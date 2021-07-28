@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 6e3827ca9f729f1fa231a58a11c829b1ee8a4f44
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 87871be12310782abe172fe308782825ba8e09d0
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108792497"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109858129"
 ---
 Erste Schritte mit der Gesichtserkennung unter Verwendung der Gesichtserkennungs-REST-API. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -227,9 +227,9 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Gesichtserkennungs-REST-API für einfache Gesichtserkennungsaufgaben verwenden. In der Referenzdokumentation finden Sie weitere Informationen zur Bibliothek.
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Gesichtserkennungs-REST-API für einfache Gesichtserkennungsaufgaben verwenden. Als Nächstes erfahren Sie mehr über die verschiedenen Gesichtserkennungsmodelle und darüber, wie Sie das richtige Modell für Ihren Anwendungsfall angeben.
 
 > [!div class="nextstepaction"]
-> [Referenz zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Angeben einer Gesichtserkennungsmodellversion](../../Face-API-How-to-Topics/specify-detection-model.md)
 
 * [Was ist der Gesichtserkennungsdienst?](../../overview.md)

@@ -1,24 +1,24 @@
 ---
 title: Behandeln von Azure-Zahlungsproblemen
-description: Lösen eines Problems beim Aktualisieren der Zahlungsinformationen zum Konto beim Microsoft Azure-Portal oder beim Azure-Kontocenter.
+description: Lösen eines Problems beim Aktualisieren der Zahlungsinformationen zum Konto im Microsoft Azure-Portal.
 author: v-miegge
 ms.reviewerr: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 05/13/2021
 ms.author: jaserano
-ms.openlocfilehash: 77ca8e8425326cec31fce345600bdd0174ab5f4e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 54aba8ecb56d3c96628c424522ca606a0b04273a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131852"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481169"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Behandeln von Azure-Zahlungsproblemen
 
-Unter Umständen tritt ein Problem oder ein Fehler auf, wenn Sie versuchen, die Zahlungsinformationen zum Konto im Microsoft Azure-Portal oder im Azure-Kontocenter zu aktualisieren.
+Unter Umständen tritt ein Problem oder Fehler auf, wenn Sie versuchen, die Zahlungsinformationen zum Konto im Microsoft Azure-Portal zu aktualisieren.
 
 Wählen Sie zum Beheben des Problems unten den Artikel aus, in dem der aufgetretene Fehler am ehesten beschrieben wird.
 
@@ -30,7 +30,7 @@ Informationen zur Problembehandlung bei einer abgelehnten Karte finden Sie unter
 
 Möglicherweise verwenden Sie eine E-Mail-ID, die sich von der für die Abonnements verwendeten E-Mail-ID unterscheidet.
 
-Informationen zur Problembehebung finden Sie unter [Anmeldefehler „Keine Abonnements gefunden“ für das Azure-Portal oder das Azure-Kontocenter](no-subscriptions-found.md).
+Informationen zur Problembehebung finden Sie unter [Anmeldefehler „Keine Abonnements gefunden“ für das Azure-Portal](no-subscriptions-found.md).
 
 ## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>Virtuelle Kredit- oder Debitkarten oder Prepaid-Kreditkarten oder -Debitkarten können nicht als Zahlungsmethode verwendet werden.
 
@@ -55,7 +55,7 @@ Dies tritt wegen eines ausstehenden Betrags auf. Begleichen Sie alle ausstehende
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Die Zahlung für ein Abonnement kann nicht ausgeführt werden
 
-Wenn Sie die folgende Fehlermeldung erhalten: *Die Zahlung ist überfällig. Es liegt ein Problem mit Ihrer Zahlungsmethode vor* oder *Die Informationen konnten nicht gespeichert werden. Schließen Sie den Browser, und versuchen Sie es erneut* erhalten, kann die Ursache eine ausstehende Zahlung für die Karte sein, da die Karte von Ihrem Finanzinstitut abgelehnt wurde.
+Wenn Sie die Fehlermeldung *Die Zahlung ist überfällig. Es liegt ein Problem mit Ihrer Zahlungsmethode vor* oder *Die Informationen konnten nicht gespeichert werden. Schließen Sie den Browser, und versuchen Sie es erneut* erhalten, kann die Ursache eine ausstehende Zahlung für die Karte sein, da die Karte von Ihrem Finanzinstitut abgelehnt wurde.
 
 Stellen Sie sicher, dass das Saldo der Kreditkarte ausreicht, um eine Zahlung zu tätigen. Wenn dies nicht der Fall ist, verwenden Sie eine andere Karte, um die Zahlung vorzunehmen, oder wenden Sie sich an Ihr Finanzinstitut, um das Problem zu beheben.
 

@@ -1,5 +1,5 @@
 ---
-title: Registrieren einer Teradata-Quelle und Einrichten von Überprüfungen (Vorschauversion) in Azure Purview
+title: Registrieren einer Teradata-Quelle und Einrichten von Überprüfungen in Azure Purview
 description: In diesem Artikel erfahren Sie, wie Sie eine Teradata-Quelle in Azure Purview registrieren und eine Überprüfung einrichten.
 author: chandrakavya
 ms.author: kchandra
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 8f300f214ed36b7a5257b7276364027b91edc746
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7dae716944426ce21cb81bdbb36992238e4bb227
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048101"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298437"
 ---
-# <a name="register-and-scan-teradata-source-preview"></a>Registrieren und Überprüfen einer Teradata-Quelle (Vorschauversion)
+# <a name="register-and-scan-teradata-source"></a>Registrieren und Überprüfen einer Teradata-Quelle
 
 In diesem Artikel erfahren Sie, wie Sie eine Teradata-Quelle in Purview registrieren und eine Überprüfung einrichten.
 
@@ -72,11 +72,11 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
 1.  Klicken Sie im Verwaltungscenter auf **Integration Runtimes**. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
 
-2.  Navigieren Sie zu **Quellen**.
+2.  Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
 
 3.  Wählen Sie die registrierte Teradata-Quelle aus.
 
-4.  Wählen Sie **+ New scan** (+ Neue Überprüfung) aus.
+4.  Wählen Sie **Neue Überprüfung** aus.
 
 5.  Geben Sie folgende Details an:
 

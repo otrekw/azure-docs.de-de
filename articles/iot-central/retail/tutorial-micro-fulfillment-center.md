@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 78536867efa4894f1041a340b9d6347a4e030a69
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: d70a15456ecc688b6bc8137223d36164545c0123
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685655"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956102"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für Micro-Fulfillment-Center
 
@@ -57,6 +57,8 @@ So erstellen Sie eine neue Micro-Fulfillment-Center-Anwendung mit Previewfunktio
 
     ![Screenshot: Seite „Neue Anwendung“ in Azure IoT Central](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc.png)
 
+    ![Screenshot: Abrechnungsinformationen in Azure IoT Central](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc-billing.png)
+
 ## <a name="walk-through-the-application"></a>Einführung in die Anwendung 
 
 Nach erfolgreicher Bereitstellung der App-Vorlage wird das **Micro-Fulfillment-Center-Dashboard für Northwind Traders** angezeigt. Northwind Traders ist ein fiktiver Einzelhändler, der über ein in dieser Azure IoT Central-Anwendung verwaltetes Micro-Fulfillment-Center verfügt. Dieses Operatordashboard enthält Informationen und Telemetriedaten zu den Geräten in dieser Vorlage sowie die verfügbaren Befehle, Aufträge und Aktionen. Das Dashboard ist logisch in zwei Abschnitte unterteilt. Auf der linken Seite können Sie die Umgebungsbedingungen innerhalb der Fulfillment-Struktur und auf der rechten Seite den Status eines Transportroboters in Ihrer Einrichtung überwachen.  
@@ -66,11 +68,11 @@ Das Dashboard ermöglicht Folgendes:
    * Anzeigen des Grundrisses und der Position der Transportroboter innerhalb der Fulfillment-Struktur
    * Auslösen von Befehlen – etwa zum Zurücksetzen des Steuerungssystems, zum Aktualisieren der Firmwareversion eines Transportroboters oder zum Ändern der Netzwerkkonfiguration
 
-     ![Screenshot: Obere Hälfte des Dashboards des Micro-Fulfillment-Centers von Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Screenshot: Obere Hälfte des Dashboards des Micro-Fulfillment-Centers von Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard-1.png)
    * Betrachten eines Beispiels für das Dashboard, über das ein Operator die Bedingungen innerhalb des Fulfillment-Centers überwachen kann 
    * Überwachen der Integrität der Nutzlasten, die auf dem Gatewaygerät innerhalb des Fulfillment-Centers ausgeführt werden    
 
-     ![Screenshot: Untere Hälfte des Dashboards des Micro-Fulfillment-Centers von Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Screenshot: Untere Hälfte des Dashboards des Micro-Fulfillment-Centers von Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard-2.png)
 
 ## <a name="device-template"></a>Gerätevorlage
 Wenn Sie die Registerkarte „Gerätevorlagen“ auswählen, werden für die Vorlage zwei unterschiedliche Gerätetypen angezeigt: 

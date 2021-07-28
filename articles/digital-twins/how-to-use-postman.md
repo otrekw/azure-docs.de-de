@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 93a3e6aca050c6fcf74008e7fac23c6f146c984f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 839ce4df4a79b34890a19d3beb470b77fef1f19d
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090188"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617654"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Verwenden von Postman zum Senden von Anforderungen an die Azure Digital Twins-APIs
 
@@ -23,9 +23,9 @@ In diesem Artikel wird beschrieben, wie Sie über die folgenden Schritte den [Po
 
 1. Verwenden Sie die Azure CLI, um [ein Bearertoken zu erhalten](#get-bearer-token), das Sie für API-Anforderungen in Postman verwenden können.
 1. Richten Sie eine [Postman-Sammlung](#about-postman-collections) ein, und konfigurieren Sie den Postman-REST-Client, um das Bearertoken für die Authentifizierung zu verwenden. Beim Einrichten der Sammlung können Sie eine der folgenden Optionen auswählen:
-    1. [Importieren](#import-collection-of-azure-digital-twins-apis) Sie eine vorgefertigte Sammlung von Azure Digital Twins-API-Anforderungen.
-    1. [Erstellen](#create-your-own-collection) Sie Ihre eigene Sammlung von Grund auf neu.
-1. Fügen Sie Ihrer konfigurierten Sammlung [Anforderungen hinzu](#add-an-individual-request), und senden Sie sie an die Azure Digital Twins-APIs.
+    1. [Importieren einer vorgefertigte Sammlung von Azure Digital Twins-API-Anforderungen](#import-collection-of-azure-digital-twins-apis).
+    1. [Erstellen Ihrer von Grund auf neuen eigenen Sammlung](#create-your-own-collection).
+1. [Hinzufügen von Anforderungen zu Ihrer konfigurierten Sammlung](#add-an-individual-request) und Senden dieser an die Azure Digital Twins-APIs.
 
 Azure Digital Twins bietet zwei Sätze von APIs, mit denen Sie arbeiten können: **Datenebene** und **Steuerungsebene**. Weitere Informationen zu den Unterschieden zwischen diesen API-Sätzen finden Sie unter [Konzepte: Azure Digital Twins-APIs und -SDKs](concepts-apis-sdks.md). Dieser Artikel enthält Informationen für beide API-Sätze.
 
@@ -39,7 +39,7 @@ Sie müssen eine Azure Digital Twins-Instanz einrichten und Postman herunterlade
 
 ### <a name="download-postman"></a>Herunterladen von Postman
 
-Laden Sie anschließend die Desktopversion des Postman-Clients herunter. Navigieren Sie zu [www.getpostman.com/apps](https://www.getpostman.com/apps), und befolgen Sie die Anweisungen, um die App herunterzuladen.
+Als Nächstes [laden Sie die Desktopversion des Postman-Clients herunter](https://www.getpostman.com/apps).
 
 ## <a name="get-bearer-token"></a>Abrufen des Bearertokens
 
@@ -47,7 +47,7 @@ Nachdem Sie Postman und die Azure Digital Twins-Instanz eingerichtet haben, müs
 
 Es gibt mehrere Möglichkeiten, dieses Token abzurufen. In diesem Artikel wird die [Azure CLI](/cli/azure/install-azure-cli) verwendet, um sich bei Ihrem Azure-Konto anzumelden und auf diese Weise ein Token zu erhalten.
 
-Wenn Sie eine Azure CLI [lokal installiert](/cli/azure/install-azure-cli) haben, können Sie eine Eingabeaufforderung auf Ihrem Computer starten, um die folgenden Befehle auszuführen.
+Wenn Sie eine [Azure CLI lokal installiert](/cli/azure/install-azure-cli) haben, können Sie eine Eingabeaufforderung auf Ihrem Computer starten, um die folgenden Befehle auszuführen.
 Andernfalls können Sie ein [Azure Cloud Shell](https://shell.azure.com)-Fenster im Browser öffnen und dort die Befehle ausführen.
 
 1. Stellen Sie zunächst sicher, dass Sie mit den entsprechenden Anmeldeinformationen bei Azure angemeldet sind, indem Sie den folgenden Befehl ausführen:
@@ -172,7 +172,7 @@ Wenn Sie eine Sammlung auf [Datenebene](concepts-apis-sdks.md#overview-data-plan
 
 1. Wechseln Sie im Bearbeitungsdialogfeld für Ihre Sammlung zur Registerkarte **Variables** (Variablen).
 
-1. Verwenden Sie den **Hostnamen** Ihrer Instanz aus dem Abschnitt [Voraussetzungen](#prerequisites), um das Feld CURRENT VALUE (AKTUELLER WERT) der relevanten Variablen festzulegen. Wählen Sie **Speichern** aus.
+1. Verwenden Sie den **Hostnamen** Ihrer Instanz aus dem [Abschnitt „Voraussetzungen“](#prerequisites), um das Feld CURRENT VALUE (AKTUELLER WERT) der relevanten Variablen festzulegen. Wählen Sie **Speichern** aus.
 
     :::image type="content" source="media/how-to-use-postman/postman-variables-imported.png" alt-text="Screenshot des Bearbeitungsdialogfelds der importierten Sammlung in Postman mit der Registerkarte „Variables“ (Variablen). Das Feld CURRENT VALUE (AKTUELLER WERT) ist hervorgehoben." lightbox="media/how-to-use-postman/postman-variables-imported.png":::
 
@@ -277,7 +277,7 @@ Sie benötigen die URL der API und die dafür erforderlichen Informationen, um e
 In diesem Artikel wird die Abfrage-API und die entsprechende [Referenzdokumentation](/rest/api/digital-twins/dataplane/query/querytwins) als Beispielabfrage verwendet, um alle digitalen Zwillinge in einer Instanz abzufragen.
 
 1. Die URL und den Typ der Anforderung erhalten Sie in der Referenzdokumentation. Für die Abfrage-API ist dies derzeit *POST* `https://digitaltwins-host-name/query?api-version=2020-10-31`.
-1. Legen Sie in Postman den Typ für die Anforderung fest, und geben Sie die Anforderungs-URL ein. Füllen Sie dabei die Platzhalter in der URL nach Bedarf aus. Hier verwenden Sie den **Hostnamen** der Instanz aus dem Abschnitt [Voraussetzungen](#prerequisites).
+1. Legen Sie in Postman den Typ für die Anforderung fest, und geben Sie die Anforderungs-URL ein. Füllen Sie dabei die Platzhalter in der URL nach Bedarf aus. Hier verwenden Sie den **Hostnamen** der Instanz aus dem [Abschnitt „Voraussetzungen“](#prerequisites).
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="Screenshot der Details der neuen Anforderung in Postman. Die Abfrage-URL aus der Referenzdokumentation wurde im Feld für die Anforderungs-URL eingegeben." lightbox="media/how-to-use-postman/postman-request-url.png":::
     

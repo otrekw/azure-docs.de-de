@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Sprachsynthese
-ms.openlocfilehash: 73e37fde4b3c2dd1aeb6ab171c3726f1b4353949
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 53b4d7a3e8b0831856f2b43fac40962fe81065d1
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106087"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478086"
 ---
 # <a name="what-is-text-to-speech"></a>Was ist Text-zu-Sprache?
 
@@ -44,12 +44,9 @@ Diese Dokumentation enthält die folgenden Arten von Artikeln:
 
 * Neuronale Stimmen: Tiefe neuronale Netzwerke werden verwendet, um die Grenzen der herkömmlichen Sprachsynthese in Bezug auf Betonung und Intonation in gesprochener Sprache zu überwinden. Die Vorhersage der Satzgliederung und die Stimmensynthese werden gleichzeitig ausgeführt, sodass eine flüssigere und natürlicher klingende Ausgabe entsteht. Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassistenten noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern. Eine vollständige Liste der neuronalen Stimmen finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
 
-* Anpassen von Sprachstilen mit SSML: Die Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML) ist eine XML-basierte Markupsprache, mit der Ausgaben der Spracherkennung angepasst werden. Mit SSML können Sie Tonhöhe und Pausen anpassen, die Aussprache verbessern, die Sprechgeschwindigkeit beschleunigen oder verlangsamen, die Lautstärke erhöhen oder verringern und einem einzelnen Dokument mehrere Stimmen zuordnen. Weitere Informationen zum Anpassen von Sprachstilen finden Sie in der [Vorgehensweise](speech-synthesis-markup.md).
+* Optimieren der TTS-Ausgabe mit SSML: Die Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML) ist eine XML-basierte Markupsprache, mit der Ausgaben der Sprachsynthese angepasst werden. Mit SSML können Sie nicht nur die Tonhöhe anpassen, Pausen hinzufügen, die Aussprache verbessern, die Sprechgeschwindigkeit ändern, die Lautstärke anpassen und mehrere Stimmen einem einzelnen Dokument zuordnen, sondern auch eigene Lexika definieren oder zu verschiedenen Sprechstilen wechseln. Mit den mehrsprachigen Stimmen können Sie auch die gesprochenen Sprachen über SSML anpassen. Informationen zum Optimieren der Sprachausgabe für Ihr Szenario finden Sie unter [Verwenden von SSML](speech-synthesis-markup.md). 
 
-* Viseme: [Viseme](how-to-speech-synthesis-viseme.md) (Mundbilder) sind die wichtigsten Gesichtsausdrücke beim Sprechen und umfassen u. a. die Position der Lippen, des Kiefers und der Zunge beim Erzeugen eines bestimmten Phonems. Viseme sind stark mit Stimmen und Phonemen korreliert. Sie können mit Visemereignissen im Speech SDK Gesichtsanimationsdaten generieren. Mit diesen lassen sich Gesichter für die Kommunikation durch Lippenlesen, für Unterricht, Unterhaltung oder Kundendienst animieren.
-
-> [!NOTE]
-> Viseme-Ereignisse werden derzeit nur für die Stimme `en-US-AriaNeural` unterstützt.
+* Viseme: [Viseme](how-to-speech-synthesis-viseme.md) (Mundbilder) sind die wichtigsten Gesichtsausdrücke beim Sprechen und umfassen u. a. die Position der Lippen, des Kiefers und der Zunge beim Erzeugen eines bestimmten Phonems. Viseme sind stark mit Stimmen und Phonemen korreliert. Sie können mit Visemereignissen im Speech SDK Gesichtsanimationsdaten generieren. Mit diesen lassen sich Gesichter für die Kommunikation durch Lippenlesen, für Unterricht, Unterhaltung oder Kundendienst animieren. Viseme werden derzeit nur für die [neuronalen Stimmen](language-support.md#text-to-speech) für `en-US` Englisch (USA) unterstützt.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -64,7 +61,7 @@ Beispielcode für Text-zu-Sprache finden Sie auf GitHub. Diese Beispiele umfasse
 
 ## <a name="customization"></a>Anpassung
 
-Über die neuronalen Stimmen hinaus können Sie benutzerdefinierte Stimmen erstellen und optimieren, die für Ihr Produkt oder Ihre Marke exklusiv sind. Für den Einstieg benötigen Sie lediglich einige Audiodateien und die dazugehörigen Transkriptionen. Weitere Informationen finden Sie unter [Erste Schritte mit Custom Voice](how-to-custom-voice.md).
+Über die neuronalen Stimmen hinaus können Sie benutzerdefinierte Stimmen erstellen und optimieren, die für Ihr Produkt oder Ihre Marke exklusiv sind. Für den Einstieg benötigen Sie lediglich einige Audiodateien und die dazugehörigen Transkriptionen. Weitere Informationen finden Sie unter [Erste Schritte mit „Benutzerdefinierte neuronale Stimme“](how-to-custom-voice.md).
 
 ## <a name="pricing-note"></a>Preishinweis
 
