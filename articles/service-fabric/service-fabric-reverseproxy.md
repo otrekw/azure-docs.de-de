@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 012a49762596adee39988614ed0c1020cd8bc104
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d15f8a139a63845470c26048c043d574064e2aa1
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791103"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034011"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
 Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
@@ -41,7 +41,7 @@ Der Reverseproxy macht einen oder mehrere Endpunkte auf dem lokalen Knoten für 
 >
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>Zugreifen auf Microservices von außerhalb des Clusters
-Das Standardmodell für die externe Kommunikation für Microservices ist ein Aktivierungsmodell, was bedeutet, dass externe Clients nicht direkt auf die einzelnen Dienste zugreifen können. [Azure Load Balancer](../load-balancer/load-balancer-overview.md) ist eine Netzwerkgrenze zwischen Microservices und externen Clients, und er übernimmt die Netzwerkadressübersetzung und leitet externe Anforderungen an interne IP:Port-Endpunkte weiter. Damit externe Clients direkt auf den Endpunkt eines Microservice zugreifen können, müssen Sie den Load Balancer zunächst zum Weiterleiten von Datenverkehr an die einzelnen Ports konfigurieren, die der Dienst im Cluster verwendet. Darüber hinaus sind die meisten Microservices, insbesondere zustandsbehaftete Microservices, nicht auf allen Knoten des Clusters aktiv. Die Microservices können bei einem Failover zwischen Knoten verschoben werden. In solchen Fällen kann Load Balancer die Position des Zielknotens der Replikate, an die der Datenverkehr weitergeleitet werden soll, nicht effektiv bestimmen.
+Das Standardmodell für die externe Kommunikation für Microservices ist ein Aktivierungsmodell, was bedeutet, dass externe Clients nicht direkt auf die einzelnen Dienste zugreifen können. [Azure Load Balancer](../load-balancer/load-balancer-overview.md) ist eine Netzwerkgrenze zwischen Microservices und externen Clients, und er übernimmt die Netzwerkadressübersetzung und leitet externe Anforderungen an interne IP:Port-Endpunkte weiter. Damit externe Clients direkt auf den Endpunkt eines Microservice zugreifen können, müssen Sie den Load Balancer zunächst zum Weiterleiten von Datenverkehr an die einzelnen Ports konfigurieren, die der Dienst im Cluster verwendet. Die meisten Microservices, insbesondere zustandsbehaftete Microservices, sind jedoch nicht auf allen Knoten des Clusters aktiv. Die Microservices können bei einem Failover zwischen Knoten verschoben werden. In solchen Fällen kann Load Balancer die Position des Zielknotens der Replikate, an die der Datenverkehr weitergeleitet werden soll, nicht effektiv bestimmen.
 
 ### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>Zugreifen auf Microservices über den Reverseproxy von außerhalb des Clusters
 Statt den Port eines einzelnen Diensts in Load Balancer zu konfigurieren, reicht es, wenn Sie nur den Port des Reverseproxys in Load Balancer konfigurieren. Mit dieser Konfiguration können Clients außerhalb des Clusters ohne zusätzliche Konfiguration über den Reverseproxy auf Dienste innerhalb des Clusters zugreifen.

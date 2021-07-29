@@ -1,21 +1,22 @@
 ---
-title: Bereitstellen von Apps mit Bereichsfiltern | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe von Bereichsfiltern verhindern, dass Objekte in Apps mit automatisierter Benutzerbereitstellung bereitgestellt werden, wenn ein Objekt Ihre Geschäftsanforderungen nicht erfüllt.
+title: Verwenden von Bereichsfiltern in der Azure Active Directory-Anwendungsbereitstellung
+description: Hier erfahren Sie, wie Sie mithilfe von Bereichsfiltern verhindern, dass Objekte in Apps mit automatisierter Benutzerbereitstellung bereitgestellt werden, wenn ein Objekt Ihre Geschäftsanforderungen in der Azure Active Directory-Anwendungsbereitstellung nicht erfüllt.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.openlocfilehash: 7fff456b7ad6e980fc3c9bda36cfcab02e2ed863
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: 640541bd001cbe2f0118bc5b82d9c9f26f01b9dc
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255830"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782917"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern
 In diesem Artikel wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.

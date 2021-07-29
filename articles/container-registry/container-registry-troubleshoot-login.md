@@ -3,12 +3,12 @@ title: Beheben von Problemen bei der Anmeldung bei der Registrierung
 description: Symptome, Ursachen und Lösungen allgemeiner Probleme bei der Anmeldung bei einer Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 47186cc8256836e5367ecee520787b67662eb42f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d8579d2a590f722c40dc3582a03efb602dde6520
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780729"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078146"
 ---
 # <a name="troubleshoot-registry-login"></a>Beheben von Problemen mit der Registrierungsanmeldung
 
@@ -131,11 +131,11 @@ Verwandte Links:
 
 ## <a name="advanced-troubleshooting"></a>Erweiterte Problembehandlung
 
-Wenn [Sammlung von Ressourcenprotokollen](container-registry-diagnostics-audit-logs.md) in der Registrierung aktiviert ist, überprüfen Sie das Protokoll „ContainterRegistryLoginEvents“. In diesem Protokoll werden Registrierungauthentifizierungsereignisse und der -status gespeichert, einschließlich der eingehenden Identität und IP-Adresse. Fragen Sie das Protokoll nach [Authentifizierungsfehlern für die Registrierung](container-registry-diagnostics-audit-logs.md#registry-authentication-failures) ab. 
+Wenn [Sammlung von Ressourcenprotokollen](monitor-service.md) in der Registrierung aktiviert ist, überprüfen Sie das Protokoll „ContainterRegistryLoginEvents“. In diesem Protokoll werden Registrierungauthentifizierungsereignisse und der -status gespeichert, einschließlich der eingehenden Identität und IP-Adresse. Fragen Sie das Protokoll nach [Authentifizierungsfehlern für die Registrierung](monitor-service.md#registry-authentication-failures) ab. 
 
 Verwandte Links:
 
-* [Protokolle für die Diagnoseauswertung und -überwachung](container-registry-diagnostics-audit-logs.md)
+* [Überwachen von Azure Container Registry](monitor-service.md)
 * [Häufig gestellte Fragen (FAQ) zur Containerregistrierung](container-registry-faq.md)
 * [Bewährte Methoden für Azure Container Registry](container-registry-best-practices.md)
 

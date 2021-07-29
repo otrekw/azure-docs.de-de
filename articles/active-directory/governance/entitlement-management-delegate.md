@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204d83b96e3cbe26759d678126d8826d0b2e492e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a66b53cbcc8a072dce6b4f5f2f1f0cf1dc6322f
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577850"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714330"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung
 
@@ -65,7 +65,7 @@ Nach der Delegierung verfügt die Marketingabteilung möglicherweise über ähnl
 
 | Benutzer | Aufgabengebiet | Azure AD-Rolle | Berechtigungsverwaltungsrolle |
 | --- | --- | --- | --- |
-| Hana | IT-Administrator | Globaler Administrator oder Benutzeradministrator |  |
+| Hana | IT-Administrator | Globaler Administrator, Identity Governance-Administrator oder Benutzeradministrator |  |
 | Mamta | Marketing Managerin | Benutzer | Katalogersteller und Katalogbesitzer |
 | Bernd | Marketingleiter | Benutzer | Katalogbesitzer |
 | Jessica | Projektmanagerin Marketing | Benutzer | Zugriffspaketmanager |

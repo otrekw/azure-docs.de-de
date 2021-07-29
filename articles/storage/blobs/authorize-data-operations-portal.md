@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 06/08/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a12936f8f9f84dacfab4850253df665ae7758be1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d654a84b6e0e5cfb00c7b5d5dd5742649ec7a81
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102613244"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900771"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Auswählen der Autorisierung des Zugriffs auf Blobdaten im Azure-Portal
 
@@ -30,11 +30,12 @@ Je nachdem, wie Sie den Zugriff auf Blobdaten im Azure-Portal autorisieren möch
 
 ### <a name="use-the-account-access-key"></a>Verwenden des Kontozugriffsschlüssels
 
-Für den Zugriff auf Blobdaten mit dem Kontozugriffsschlüssel muss Ihnen eine Azure-Rolle zugewiesen sein, die die Azure RBAC-Aktion **Microsoft.Storage/storageAccounts/listkeys/action** einschließt. Bei dieser Azure-Rolle kann es sich um eine integrierte oder benutzerdefinierte Rolle handeln. Es folgen integrierte Rollen mit Unterstützung für **Microsoft.Storage/storageAccounts/listkeys/action**:
+Für den Zugriff auf Blobdaten mit dem Kontozugriffsschlüssel muss Ihnen eine Azure-Rolle zugewiesen sein, die die Azure RBAC-Aktion **Microsoft.Storage/storageAccounts/listkeys/action** einschließt. Bei dieser Azure-Rolle kann es sich um eine integrierte oder benutzerdefinierte Rolle handeln. Integrierte Rollen, die **Microsoft.Storage/storageAccounts/listkeys/action** unterstützen, umfassen Folgendes – von der geringsten bis zur höchsten Berechtigung:
 
-- Die Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner)
-- Die Azure Resource Manager-Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor)
+- Die Rolle [Lese- und Datenzugriff](../../role-based-access-control/built-in-roles.md#reader-and-data-access)
 - Die Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+- Die Azure Resource Manager-Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor)
+- Die Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner)
 
 Wenn Sie versuchen, im Azure-Portal auf Blobdaten zuzugreifen, prüft das Portal zunächst, ob Ihnen eine Rolle mit **Microsoft.Storage/storageAccounts/listkeys/action** zugewiesen ist. Wenn Ihnen eine Rolle mit dieser Aktion zugewiesen wurde, verwendet das Portal den Kontoschlüssel für den Zugriff auf Blobdaten. Wenn Ihnen keine Rolle mit dieser Aktion zugewiesen wurde, versucht das Portal, über Ihr Azure AD-Konto auf Daten zuzugreifen.
 
@@ -48,20 +49,16 @@ Wenn Sie versuchen, im Azure-Portal auf Blobdaten zuzugreifen, prüft das Portal
 
 Für den Zugriff auf Blobdaten im Azure-Portal über Ihr Azure AD-Konto müssen Sie die beiden folgenden Voraussetzungen erfüllen:
 
-- Ihnen wurde die Azure Resource Manager-Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) mindestens bis zur Ebene des Speicherkontos oder höher zugewiesen. Die Rolle **Leser** erteilt die am stärksten eingeschränkten Berechtigungen. Eine andere Azure Resource Manager-Rolle, die den Zugriff auf Ressourcen zur Verwaltung von Speicherkonten gewährt, ist jedoch ebenfalls akzeptabel.
 - Ihnen wurde entweder eine integrierte oder benutzerdefinierte Rolle zugewiesen, die den Zugriff auf Blobdaten ermöglicht.
+- Ihnen wurde die Azure Resource Manager-Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) mindestens bis zur Ebene des Speicherkontos oder höher zugewiesen. Die Rolle **Leser** erteilt die am stärksten eingeschränkten Berechtigungen. Eine andere Azure Resource Manager-Rolle, die den Zugriff auf Ressourcen zur Verwaltung von Speicherkonten gewährt, ist jedoch ebenfalls akzeptabel.
 
-Die Zuweisung der Rolle **Leser** oder einer anderen Azure Resource Manager-Rollen ist notwendig, damit der Benutzer die Ressourcen der Speicherkontenverwaltung im Azure-Portal anzeigen und nutzen kann. Die Azure-Rollen, die Zugriff auf Blobdaten gewähren, lassen keinen Zugriff auf Ressourcen zur Verwaltung von Speicherkonten zu. Um im Portal auf Blobdaten zugreifen zu können, benötigt der Benutzer Berechtigungen zum Navigieren durch die Ressourcen des Speicherkontos. Weitere Informationen zu dieser Anforderung finden Sie unter [Zuweisen der Rolle „Leser“ für den Zugriff auf das Portal](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
+Die Azure Resource Manager-Rolle **Leser** ermöglicht es Benutzern, Ressourcen im Speicherkonto anzuzeigen, sie aber nicht ändern zu können. Sie bietet keine Leseberechtigungen für Daten in Azure Storage, sondern nur für Ressourcen zur Kontoverwaltung. Die Rolle **Leser** ist erforderlich, damit Benutzer im Azure-Portal zu Blobcontainern navigieren können.
 
-Im Folgenden finden Sie die integrierten Rollen, die den Zugriff auf Ihre Blobdaten unterstützen:
-
-- [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Dient zur Steuerung des POSIX-Zugriffs für Azure Data Lake Storage Gen2.
-- [Mitwirkender an Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Weist Lese-, Schreib- und Löschberechtigungen für Blobs zu.
-- [Leser von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Weist ausschließlich Leseberechtigungen für Blobs zu.
+Informationen zu den integrierten Rollen, die den Zugriff auf Blobdaten unterstützen, finden Sie unter [Azure-Rollen für Blobs](assign-azure-role-data-access.md#azure-roles-for-blobs).
 
 Benutzerdefinierte Rollen können verschiedene Kombinationen der von den integrierten Rollen gebotenen Berechtigungen unterstützen. Weitere Informationen zum Erstellen benutzerdefinierter Azure-Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md) und [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](../../role-based-access-control/role-definitions.md).
 
-> [!IMPORTANT]
+> [!NOTE]
 > Die Vorschauversion von Azure Storage-Explorer im Azure-Portal unterstützt nicht die Verwendung von Azure AD-Anmeldeinformationen zum Anzeigen und Ändern von Blobdaten. Storage-Explorer im Azure-Portal verwendet immer die Kontoschlüssel für den Zugriff auf Daten. Um Storage-Explorer im Azure-Portal verwenden zu können, muss Ihnen eine Rolle zugewiesen werden, in der **Microsoft.Storage/storageAccounts/listkeys/action** enthalten ist.
 
 ## <a name="navigate-to-blobs-in-the-azure-portal"></a>Navigieren zu Blobs im Azure-Portal
@@ -114,6 +111,4 @@ So geben Sie an, wie ein Blob-Uploadvorgang autorisiert werden soll
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](../common/storage-auth-aad.md)
-- [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../common/storage-auth-aad-rbac-portal.md)
-- [Verwenden der Azure-Befehlszeilenschnittstelle zum Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten](../common/storage-auth-aad-rbac-cli.md)
-- [Verwenden des Azure PowerShell-Moduls zum Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten](../common/storage-auth-aad-rbac-powershell.md)
+- [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](assign-azure-role-data-access.md)

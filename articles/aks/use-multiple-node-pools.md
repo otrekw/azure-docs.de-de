@@ -4,12 +4,12 @@ description: Informationen zum Erstellen und Verwalten mehrerer Knotenpools für
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: af2766d5692f232970c3c7c735d4c34abebe9c3c
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: ef6b23cf7564cff57f398c76162f9c25efac7075
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070387"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081278"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -611,6 +611,109 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
+## <a name="add-a-fips-enabled-node-pool-preview"></a>Hinzufügen eines FIPS-fähigen Knotenpools (Vorschau)
+
+Der Federal Information Processing Standard (FIPS) 140-2 ist ein Standard der US-Regierung, der Mindestsicherheitsanforderungen für kryptografische Module in IT-Produkten und -Systemen definiert. AKS ermöglicht es Ihnen, Linux-basierte Knotenpools mit aktiviertem FIPS 140-2 zu erstellen. Bereitstellungen, die in FIPS-fähigen Knotenpools ausgeführt werden, können mithilfe dieser Kryptografiemodule mehr Sicherheit bieten und Sicherheitskontrollen im Rahmen der FedRAMP-Compliance erfüllen. Weitere Informationen zu FIPS 140-2 finden Sie unter [Federal Information Processing Standard (FIPS) 140-2][fips].
+
+FIPS-fähige Knotenpools befinden sich zurzeit in der Vorschau.
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+Sie benötigen mindestens Version *0.5.11* der Erweiterung *aks-preview* für die Azure-Befehlszeilenschnittstelle (Azure CLI). Installieren Sie die Erweiterung *aks-preview* der Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az extension add][az-extension-add]. Alternativ können Sie verfügbare Updates mithilfe des Befehls [az extension update][az-extension-update] installieren.
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+Sie müssen darüber hinaus das Featureflag `FIPSPreview` in Ihrem Abonnement aktivieren, um dieses Feature zu verwenden.
+
+Registrieren Sie das Featureflag `FIPSPreview` mithilfe des Befehls [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "FIPSPreview"
+```
+
+Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Überprüfen Sie den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list]:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/FIPSPreview')].{Name:name,State:properties.state}"
+```
+
+Wenn der Vorgang abgeschlossen ist, können Sie die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register] aktualisieren:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+Bei FIPS-fähigen Knotenpools gelten die folgenden Einschränkungen:
+
+* Zurzeit können nur FIPS-fähige Linux-basierte Knotenpools unter Ubuntu 18.04 ausgeführt werden.
+* FIPS-fähige Knotenpools erfordern Kubernetes, Version 1.19 und höher.
+* Zur Aktualisierung der zugrunde liegenden Pakete oder Module, die für FIPS verwendet werden, müssen Sie ein [Knotenimageupgrade][node-image-upgrade] verwenden.
+
+> [!IMPORTANT]
+> Das FIPS-fähige Linux-Image ist ein anderes als das Linux-Standardimage, das bei Linux-basierten Knotenpools verwendet wird. Zur Aktivierung von FIPS für einen Knotenpool müssen Sie einen neuen Linux-basierten Knotenpool erstellen. Sie können FIPS nicht für vorhandene Knotenpools aktivieren.
+> 
+> FIPS-fähige Knotenimages haben möglicherweise andere Versionsnummern, z. B. die Kernelversion, als nicht-FIPS-fähige Images. Außerdem kann sich der Updatezyklus für FIPS-fähige Knotenpools und Knotenimages von nicht-FIPS-fähigen Knotenpools und -images unterscheiden.
+
+Wenn Sie einen Knotenpool erstellen, verwenden Sie zum Erstellen eines FIPS-fähigen Knotenpools [az aks nodepool add][az-aks-nodepool-add] mit dem Parameter *–enable-fips-image*.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name fipsnp \
+    --enable-fips-image
+```
+
+> [!NOTE]
+> Sie können auch beim Erstellen eines Clusters den Parameter *–enable-fips-image* mit [az aks create][az-aks-create] verwenden, um FIPS im Standardknotenpool zu aktivieren. Wenn Sie Knotenpools zu einem auf diese Weise erstellten Cluster hinzufügen, müssen Sie zum Erstellen eines FIPS-fähigen Knotenpools weiterhin den Parameter *–enable-fips-image* verwenden.
+
+Wenn Sie sich vergewissern möchten, ob Ihr Knotenpool FIPS-fähig ist, verwenden Sie [az aks show][az-aks-show] zur Überprüfung des Werts *enableFIPS* in *agentPoolProfiles*.
+
+```azurecli-interactive
+az aks show --resource-group myResourceGroup --cluster-name myAKSCluster --query="agentPoolProfiles[].{Name:name enableFips:enableFips}" -o table
+```
+
+Die folgende Beispielausgabe zeigt, dass der Knotenpool *Fipsnp* FIPS-fähig und *nodepool1* nicht-FIPS-fähig ist.
+
+```output
+Name       enableFips
+---------  ------------
+fipsnp     True
+nodepool1  False  
+```
+
+Sie können auch überprüfen, ob Bereitstellungen Zugriff auf die FIPS-Kryptografiebibliotheken haben, indem Sie auf einem Knoten im FIPS-fähigen Knotenpool `kubectl debug` verwenden. Mit `kubectl get nodes` können Sie die Knoten auflisten:
+
+```output
+$ kubectl get nodes
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-fipsnp-12345678-vmss000000      Ready    agent   6m4s    v1.19.9
+aks-fipsnp-12345678-vmss000001      Ready    agent   5m21s   v1.19.9
+aks-fipsnp-12345678-vmss000002      Ready    agent   6m8s    v1.19.9
+aks-nodepool1-12345678-vmss000000   Ready    agent   34m     v1.19.9
+```
+
+Im vorstehenden Beispiel gehören die Knoten, deren Namen mit `aks-fipsnp` anfangen, zum FIPS-fähigen Knotenpool. Verwenden Sie `kubectl debug` zur Ausführung einer Bereitstellung bei einer interaktiven Sitzung auf einem dieser Knoten im FIPS-fähigen Knotenpool.
+
+```azurecli-interactive
+kubectl debug node/aks-fipsnp-12345678-vmss000000 -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
+```
+
+In der interaktiven Sitzung können Sie überprüfen, ob die FIPS-Kryptografiebibliotheken aktiviert wurden:
+
+```output
+root@aks-fipsnp-12345678-vmss000000:/# cat /proc/sys/crypto/fips_enabled
+1
+```
+
+FIPS-fähige Knotenpools haben auch die Bezeichnung *kubernetes.azure.com/fips_enabled=true*, die von Bereitstellungen für diese Knotenpools verwendet werden kann.
+
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Verwalteten von Knotenpools mithilfe einer Resource Manager-Vorlage
 
 Wenn Sie eine Azure Resource Manager-Vorlage zum Erstellen und Verwalten von Ressourcen verwenden, können Sie die Einstellungen in Ihrer Vorlage normalerweise aktualisieren und neu bereitstellen, um die Ressource zu aktualisieren. Bei Knotenpools in AKS kann das Profil des Anfangsknotenpools nicht mehr aktualisiert werden, nachdem der AKS-Cluster erstellt wurde. Dieses Verhalten bedeutet, dass Sie eine vorhandene Resource Manager-Vorlage nicht aktualisieren können, um eine Änderung an den Knotenpools vorzunehmen und dann neu bereitzustellen. Stattdessen müssen Sie eine separate Resource Manager-Vorlage erstellen, über die nur die Knotenpools für einen vorhandenen AKS-Cluster aktualisiert werden.
@@ -833,8 +936,12 @@ Verwenden Sie [Näherungsplatzierungsgruppe][reduce-latency-ppg], um die Latenz 
 [az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_upgrade
 [az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_scale
 [az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_delete
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [az-extension-add]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_add
 [az-extension-update]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [az-group-create]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create
 [az-group-delete]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete
 [az-deployment-group-create]: /cli/azure/deployment/group?view=azure-cli-latest&preserve-view=true#az_deployment_group_create
@@ -854,3 +961,5 @@ Verwenden Sie [Näherungsplatzierungsgruppe][reduce-latency-ppg], um die Latenz 
 [reduce-latency-ppg]: reduce-latency-ppg.md
 [public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
 [az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create
+[node-image-upgrade]: node-image-upgrade.md
+[fips]: /azure/compliance/offerings/offering-fips-140-2

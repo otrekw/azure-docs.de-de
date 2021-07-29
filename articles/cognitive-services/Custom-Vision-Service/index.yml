@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: e357fff89758f7a57e839e7dcfb94854a2e51676
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.openlocfilehash: 882385ee68f987cf1ddfc5bb80ce2b6fc21fe6e1
+  ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102509454"
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113005850"
 landingContent:
 - title: Informationen zu Custom Vision
   linkLists:
@@ -76,6 +76,8 @@ landingContent:
     links:
     - text: Exportieren Ihres Modells für mobile Geräte
       url: export-your-model.md
+    - text: Programmgesteuertes Exportieren eines Modells
+      url: export-programmatically.md
     - text: Verwenden des ONNX-Modells mit Windows ML
       url: custom-vision-onnx-windows-ml.md
     - text: Ausführen des TensorFlow-Modells in Python

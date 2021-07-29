@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: da0826a349131d9d5716932abfc603be8103b788
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 3453d1a0d06fd9918f3f1ae49a519d676ab26785
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903540"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468435"
 ---
 # <a name="review-your-security-recommendations"></a>Überprüfen Ihrer Sicherheitsempfehlungen
 
@@ -39,6 +39,7 @@ Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche 
     1. Für unterstützte Empfehlungen zeigt die obere Symbolleiste eine oder alle der folgenden Schaltflächen an:
         - **Erzwingen** und **Ablehnen** (Weitere Informationen finden Sie unter [Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen für Empfehlungen](prevent-misconfigurations.md).)
         - **Richtliniendefinitionen anzeigen**, um direkt zum Azure Policy-Eintrag der zugrunde liegenden Richtlinie zu gelangen
+        - **Abfrage öffnen**: Alle Empfehlungen haben die Möglichkeit, die detaillierten Informationen zu den betroffenen Ressourcen mithilfe des Azure Resource Graph-Explorers anzuzeigen.
     1. **Angabe des Schweregrads**
     1. **Aktualisierungsintervall** (sofern relevant)
     1. **Anzahl ausgenommener Ressourcen**: Wenn für diese Empfehlung Ausnahmen vorhanden sind, wird die Anzahl der ausgenommenen Ressourcen angezeigt.
@@ -51,6 +52,24 @@ Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche 
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Nicht anwendbare Ressourcen mit Gründen":::
     1. Aktionsschaltflächen zum Beheben über die Empfehlung oder Auslösen einer Logik-App
+
+
+## <a name="review-recommendation-data-in-azure-resource-graph-explorer-arg"></a>Überprüfen von Empfehlungsdaten im Azure Resource Graph-Explorer (ARG)
+
+Die Symbolleiste auf der Seite mit den Empfehlungsdetails enthält die Schaltfläche **Abfrage öffnen**, um die Details in [Azure Resource Graph (ARG)](../governance/resource-graph/index.yml) zu untersuchen, einem Azure-Dienst, der die Möglichkeit bietet, die Sicherheitsstatusdaten von Security Center über mehrere Abonnements hinweg abzufragen.
+
+ARG wurde entwickelt, um eine effiziente Ressourcenerkundung mit der Möglichkeit zu bieten, in Ihren Cloudumgebungen mit robusten Filter-, Gruppierungs- und Sortierfunktionen im großen Stil Abfragen auszuführen. Es ist eine schnelle und effiziente Möglichkeit, Informationen über Azure-Abonnements programmgesteuert oder aus dem Azure-Portal heraus abzufragen.
+
+Mithilfe der [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) (Kusto-Abfragesprache) können Sie ASC-Daten mit anderen Ressourceneigenschaften abgleichen.
+
+Auf dieser Seite mit Empfehlungsdetails werden beispielsweise 15 betroffene Ressourcen angezeigt:
+
+:::image type="content" source="./media/security-center-recommendations/open-query.png" alt-text="Die Schaltfläche **Abfrage öffnen** auf der Seite mit den Empfehlungsdetails.":::
+
+Wenn Sie die zugrunde liegende Abfrage öffnen und ausführen, gibt der Azure Resource Graph-Explorer dieselben 15 Ressourcen und ihren Integritätsstatus für diese Empfehlung zurück: 
+
+:::image type="content" source="./media/security-center-recommendations/run-query.png" alt-text="Azure Resource Graph-Explorer mit den Ergebnissen für die Empfehlung aus dem vorherigen Screenshot.":::
+
 
 ## <a name="preview-recommendations"></a>Vorschau der Empfehlungen
 

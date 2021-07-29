@@ -2,13 +2,13 @@
 title: Neuerungen in Azure Backup
 description: Erfahren Sie mehr über die neuen Features in Azure Backup.
 ms.topic: conceptual
-ms.date: 04/22/2021
-ms.openlocfilehash: 09a1008871df61cdf38097b692b99237f97057b9
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.date: 05/05/2021
+ms.openlocfilehash: 7be5b96a8575c0bed9208ef5d700aca747411aa2
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326504"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959329"
 ---
 # <a name="whats-new-in-azure-backup"></a>Neuerungen in Azure Backup
 
@@ -18,6 +18,8 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
 
 ## <a name="updates-summary"></a>Übersicht über Updates
 
+- Mai 2021
+  - [Sicherung für Azure-Blobs ist jetzt allgemein verfügbar](#backup-for-azure-blobs-is-now-generally-available)
 - April 2021
   - [Verbesserungen bei der Verschlüsselung mit kundenseitig verwalteten Schlüsseln für Azure Backup (in der Vorschau)](#enhancements-to-encryption-using-customer-managed-keys-for-azure-backup-in-preview)
 - März 2021
@@ -42,6 +44,16 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
   - [Sichern von SAP HANA in Azure Virtual Machines unter RHEL (in der Vorschau)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Zonenredundanter Speicher (ZRS) für Sicherungsdaten (in der Vorschau)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Vorläufiges Löschen für SQL Server- und SAP HANA-Workloads auf Azure-VMs](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-for-azure-blobs-is-now-generally-available"></a>Sicherung für Azure-Blobs ist jetzt allgemein verfügbar
+
+Die operative Sicherung für Azure Blobs ist eine verwaltete Datensicherungslösung, mit der Sie Ihre Blockblobdaten vor verschiedenen Datenverlustszenarien wie Beschädigungen, Bloblöschungen und dem versehentlichen Löschen von Speicherkonten schützen können.
+
+Da es sich um eine operative Sicherungslösung handelt, werden die Sicherungsdaten lokal im Quellspeicherkonto gespeichert und können von einem ausgewählten Zeitpunkt wiederhergestellt werden, was eine einfache und kostengünstige Möglichkeit zum Schutz Ihrer Blobdaten darstellt. Dazu nutzt die Lösung die Blobspeicherfunktion zur Zeitpunktwiederherstellung.
+
+Die operative Sicherung für Blobs ist in Azure Backup-Verwaltungstools integriert, einschließlich Backup Center, um Sie bei der Verwaltung des Schutzes Ihrer Blobdaten effektiv und in großem Umfang zu unterstützen. Zusätzlich zu den zuvor verfügbaren Funktionen können Sie jetzt operative Sicherungen für Blobs mithilfe der Ansicht **Datenschutz** der Speicherkonten (auch [über PowerShell](backup-blobs-storage-account-ps.md)) konfigurieren und verwalten. Darüber hinaus bietet Azure Backup jetzt eine erweiterte Benutzeroberfläche für die Verwaltung von Rollenzuweisungen, die zum Konfigurieren operativer Sicherungen erforderlich sind.
+
+Weitere Informationen finden Sie unter [Übersicht über operative Sicherungen für Azure-Blobs](blob-backup-overview.md).
 
 ## <a name="azure-disk-backup-is-now-generally-available"></a>Azure Disk Backup ist nun allgemein verfügbar
 
@@ -91,7 +103,7 @@ Weitere Informationen finden Sie unter [Azure Resource Manager-Vorlagen für Azu
 
 Azure Backup unterstützt jetzt inkrementelle Sicherungen für SAP HANA-Datenbanken, die auf Azure-VMs gehostet werden. Dies ermöglicht schnellere und kostengünstigere Sicherungen Ihrer SAP HANA-Daten.
 
-Weitere Informationen finden Sie unter den [verschiedenen Optionen, die während der Erstellung einer Sicherungsrichtlinie verfügbar sind](/azure/backup/sap-hana-faq-backup-azure-vm#policy), und unter [Erstellen einer Sicherungsrichtlinie für SAP HANA-Datenbanken](tutorial-backup-sap-hana-db.md#creating-a-backup-policy).
+Weitere Informationen finden Sie unter den [verschiedenen Optionen, die während der Erstellung einer Sicherungsrichtlinie verfügbar sind](/azure/backup/sap-hana-faq-backup-azure-vm.yml#policy), und unter [Erstellen einer Sicherungsrichtlinie für SAP HANA-Datenbanken](tutorial-backup-sap-hana-db.md#creating-a-backup-policy).
 
 ## <a name="backup-center-in-preview"></a>Backup Center (in der Vorschau)
 

@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung für Synapse Studio
-description: Problembehandlung in Azure Synapse Studio
+description: Problembehandlung für Synapse Studio
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.subservice: troubleshooting
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 362b588112c5027b78285a77bbb556f2497b1892
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 16608f77971c3c19836d8f956512f28f945d3667
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143141"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809056"
 ---
-# <a name="azure-synapse-studio-troubleshooting"></a>Problembehandlung für Azure Synapse Studio
+# <a name="synapse-studio-troubleshooting"></a>Problembehandlung für Synapse Studio
 
 Dieser Leitfaden zur Problembehandlung enthält Anweisungen dazu, welche Informationen beim Öffnen eines Supporttickets zu Netzwerkkonnektivitätsproblemen bereitgestellt werden müssen. Mit den richtigen Informationen können wir das Problem möglicherweise schneller beheben.
 
@@ -43,7 +43,7 @@ Wenn Sie die Abfrage mit „Serverloser SQL-Pool“ ausführen, erhalten Sie die
 
 ![diagnostic-info](media/troubleshooting-synapse-studio/diagnostic-info-download.png)
 
-Wiederholen Sie den Vorgang, den Sie in Azure Synapse Studio ausgeführt haben, um die Problembehandlung zu beginnen.
+Wiederholen Sie den Vorgang, den Sie in Synapse Studio ausgeführt haben, um die Problembehandlung zu beginnen.
 
 - Wählen Sie für Symptom 1 die Schaltfläche „Aktualisieren“ rechts neben dem Dropdownmenü „Datenbank verwenden“ auf der Registerkarte „SQL-Skript“ aus, und prüfen Sie, ob „Serverloser SQL-Pool“ angezeigt wird.
 - Versuchen Sie bei Symptom 2, die Abfrage erneut auszuführen, um zu prüfen, ob sie erfolgreich ausgeführt wird.

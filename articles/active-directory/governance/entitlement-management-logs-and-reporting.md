@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/23/2020
+ms.date: 5/19/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2c8b4c121c14cb9bff59cf1c70367dec6702139
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: b3433031beba287d1412d0c2254941b7a3e9e118
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786445"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968415"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivieren von Protokollen und Erstellen von Berichten mit Azure Monitor in der Azure AD-Berechtigungsverwaltung
 
@@ -82,6 +82,8 @@ Gehen Sie folgendermaßen vor, um Ereignisse anzuzeigen:
 
     Jede Zeile enthält die Uhrzeit, die Zugriffspaket-ID, den Namen des Vorgangs, die Objekt-ID, den UPN und den Anzeigenamen des Benutzers, der den Vorgang gestartet hat.  Weitere Details sind im JSON-Code enthalten.   
 
+1. Wenn Sie überprüfen möchten, ob Änderungen an Anwendungsrollenzuweisungen für eine Anwendung vorgenommen wurden, die nicht auf Zugriffspaketzuweisungen zurückzuführen sind (z. B. wenn ein globaler Administrator einen Benutzer direkt einer Anwendungsrolle zugewiesen hat), können Sie die Arbeitsmappe mit dem Namen *Aktivität der Anwendungsrollenzuweisung* auswählen.
+
 
 ## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>Erstellen von benutzerdefinierten Azure Monitor-Abfragen mit dem Azure-Portal
 Sie können eigene Abfragen für Azure AD-Überwachungsereignisse erstellen. Dazu zählen auch Ereignisse der Berechtigungsverwaltung.  
@@ -108,7 +110,7 @@ Wenn Sie die ältesten und neuesten Überwachungsereignisse in Azure Monitor anz
 AuditLogs | where TimeGenerated > ago(3653d) | summarize OldestAuditEvent=min(TimeGenerated), NewestAuditEvent=max(TimeGenerated) by Type
 ```
 
-Weitere Informationen zu den Spalten, die für Überwachungsereignisse in Azure Monitor gespeichert werden, finden Sie unter [Interpretieren des Azure AD-Überwachungsprotokollschemas in Azure Monitor](../reports-monitoring/reference-azure-monitor-audit-log-schema.md).
+Weitere Informationen zu den Spalten, die für Überwachungsereignisse in Azure Monitor gespeichert werden, finden Sie unter [Interpretieren des Azure AD-Überwachungsprotokollschemas in Azure Monitor](../reports-monitoring/overview-reports.md).
 
 ## <a name="create-custom-azure-monitor-queries-using-azure-powershell"></a>Erstellen von benutzerdefinierten Azure Monitor-Abfragen mit Azure PowerShell
 

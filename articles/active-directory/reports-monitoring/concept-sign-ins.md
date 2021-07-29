@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/26/2021
+ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e524430d696dab7233f4ebb3403f08b2a8030412
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 85c6d8520938ffc859a7116d1dc9e61cb26534e4
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126703"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030555"
 ---
-# <a name="sign-ins-logs-in-azure-active-directory"></a>Anmeldeprotokolle in Azure Active Directory
+# <a name="sign-in-logs-in-azure-active-directory"></a>Anmeldeprotokolle in Azure Active Directory
 
 Als IT-Administrator müssen Sie wissen, wie Ihre IT-Umgebung funktioniert. Anhand der Informationen zur Integrität Ihres Systems können Sie bewerten, ob und wie Sie auf potenzielle Probleme reagieren müssen. 
 
@@ -50,9 +50,9 @@ Im Anmeldeprotokoll finden Sie Antworten auf Fragen wie die folgenden:
 
 ## <a name="who-can-access-it"></a>Wer kann auf sie zugreifen?
 
-Sie können jederzeit auf Ihr eigenes Anmeldeprotokoll zugreifen. 
+Sie können jederzeit über diesen Link auf Ihren eigenen Anmeldeverlauf zugreifen: [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
 
-Um auf das Anmeldeprotokoll eines anderen Benutzers zugreifen zu können, müssen Sie sein:
+Um auf das Anmeldeprotokoll zugreifen zu können, müssen Sie Folgendes sein:
 
 - Ein globaler Administrator:
 
@@ -214,7 +214,7 @@ Sie können die Daten in einem Protokoll filtern, um sie gemäß Ihren Anforderu
 
 ## <a name="download-sign-in-activities"></a>Herunterladen von Anmeldeaktivitäten
 
-Durch Klicken auf die Option **Herunterladen** können Sie eine CSV- oder JSON-Datei der letzten 250.000 Datensätze erstellen. Beginnen Sie damit, [Daten zu Anmeldungen herunterzuladen](quickstart-download-sign-in-report.md), wenn Sie sie außerhalb des Azure-Portals verwenden möchten.  
+Durch Klicken auf die Option **Herunterladen** können Sie eine CSV- oder JSON-Datei der letzten 250.000 Datensätze erstellen. Beginnen Sie damit, [Daten zu Anmeldungen herunterzuladen](./howto-download-logs.md), wenn Sie sie außerhalb des Azure-Portals verwenden möchten.  
 
 ![Download](./media/concept-sign-ins/71.png "Download")
 
@@ -267,7 +267,36 @@ Wenn Sie auf der Seite **Benutzer** im Abschnitt **Aktivität** auf **Anmeldevor
 
 ![Screenshot: Abschnitt „Aktivität“ mit auszuwählenden Anmeldungen](./media/concept-sign-ins/08.png "Anmeldeaktivität")
 
-## <a name="usage-of-managed-applications"></a>Nutzung von verwalteten Anwendungen
+## <a name="authentication-details"></a>Authentifizierungsdetails
+
+Die Registerkarte **Authentifizierungsdetails** im Anmeldebericht enthält die folgenden Informationen für jeden Authentifizierungsversuch:
+
+- Eine Liste der angewendeten Authentifizierungsrichtlinien (z. B. bedingter Zugriff, MFA pro Benutzer, Sicherheitsstandards)
+- Die Abfolge der für die Anmeldung verwendeten Authentifizierungsmethoden
+- Ob der Authentifizierungsversuch erfolgreich war oder nicht
+- Ausführliche Informationen zu den Gründen, aus denen der Authentifizierungsversuch erfolgreich war oder nicht
+
+Mit diesen Informationen können Administratoren die Problembehandlung für jeden Schritt bei der Anmeldung eines Benutzers und Nachverfolgungen durchführen:
+
+- Umfang der durch mehrstufige Authentifizierung geschützten Anmeldungen 
+- Nutzungs- und Erfolgsraten für jede Authentifizierungsmethode 
+- Verwendung kennwortloser Authentifizierungsmethoden (z. B. kennwortlose Anmeldung per Telefon, FIDO2 und Windows Hello for Business) 
+- Wie häufig Authentifizierungsanforderungen durch Tokenansprüche erfüllt werden (wobei Benutzer nicht interaktiv zur Eingabe eines Kennworts, eines SMS-OTP usw. aufgefordert werden)
+
+Wählen Sie beim Anzeigen des Anmeldeberichts die Registerkarte **Authentifizierungsdetails** aus: 
+
+![Screenshot der Registerkarte „Authentifizierungsdetails“](media/concept-sign-ins/auth-details-tab.png)
+
+>[!NOTE]
+>Der **OATH-Überprüfungscode** wird sowohl für OATH-Hardware- als auch für Softwaretoken (z. B. die Microsoft Authenticator-App) als Authentifizierungsmethode protokolliert.
+
+>[!IMPORTANT]
+>Auf der Registerkarte **Authentifizierungsdetails** können zunächst unvollständige oder ungenaue Daten angezeigt werden, bis die Protokollinformationen vollständig aggregiert sind. Bekannte Beispiele sind: 
+>- Eine **Erfüllt durch Anspruch im Token**-Meldung wird fälschlicherweise angezeigt, wenn Anmeldeereignisse anfänglich protokolliert werden. 
+>- Die Zeile **Primäre Authentifizierung** wird anfänglich nicht protokolliert. 
+
+
+## <a name="usage-of-managed-applications&quot;></a>Nutzung von verwalteten Anwendungen
 
 Mit einer anwendungsorientierten Ansicht Ihrer Anmeldedaten können Sie beispielsweise folgende Fragen beantworten:
 
@@ -277,7 +306,7 @@ Mit einer anwendungsorientierten Ansicht Ihrer Anmeldedaten können Sie beispiel
 
 Der Einstiegspunkt für diese Daten sind die drei wichtigsten Anwendungen in Ihrer Organisation. Die Daten sind im Bericht über die letzten 30 Tage im Abschnitt **Übersicht** unter **Unternehmensanwendungen** enthalten.
 
-![Der Screenshot zeigt, wo Sie die Übersicht auswählen können.](./media/concept-sign-ins/10.png "Anmeldeaktivität")
+![Der Screenshot zeigt, wo Sie die Übersicht auswählen können.](./media/concept-sign-ins/10.png &quot;Anmeldeaktivität")
 
 Der Graph zur App-Nutzung gibt die wöchentlichen Aggregationen von Anmeldungen für Ihre beliebtesten drei Anwendungen in einem bestimmten Zeitraum an. Die Standardeinstellung für den Zeitraum beträgt 30 Tage.
 
@@ -299,7 +328,6 @@ Mithilfe der [Office 365-Verwaltungs-APIs](/office/office-365-management-api/of
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Fehlercodes des Berichts mit den Anmeldeaktivitäten]()
 * [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md)
 * [Latenzen bei Azure Active Directory-Berichten](reference-reports-latencies.md)
 * [Microsoft-Erstanbieter-Anwendungen in Anmeldeberichten](/troubleshoot/azure/active-directory/verify-first-party-apps-sign-in#application-ids-for-commonly-used-microsoft-applications)

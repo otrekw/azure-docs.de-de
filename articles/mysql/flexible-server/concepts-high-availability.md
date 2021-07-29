@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 5b5e1491d7f76cd4cff76d0c9a1af4daa49fa483
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: e25412e502f10c80a55aeab215fddfd0cfc3f41b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813000"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471919"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Hochverfügbarkeitskonzepte in Azure Database for MySQL Flexible Server (Vorschau)
 
@@ -59,6 +59,9 @@ Anwendungen sind mit dem primären Server über den Datenbankservernamen verbund
 
 ## <a name="failover-process"></a>Failoverprozess 
 Zur Gewährleistung einer Geschäftskontinuität müssen Sie über einen Failoverprozess für geplante und ungeplante Ereignisse verfügen. 
+
+>[!NOTE]
+> Verwenden Sie immer den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN), um eine Verbindung zum primären Server herzustellen, und vermeiden Sie die Verwendung der IP-Adresse für die Verbindung. Bei einem Failover kann sich auch der DNS-A-Eintrag ändern, wenn die primäre Serverrolle und die Standbyserverrolle wechseln, sodass die Anwendung keine Verbindung mit dem neuen primären Server herstellen kann, wenn die IP-Adresse in der Verbindungszeichenfolge verwendet wird. 
 
 ### <a name="planned-events"></a>Geplante Ereignisse
 

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 3ecc0e84541a9566b3f9e39d40f90a378ea87db5
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: d6685d86cb9c807db130b10a9573c3ca44ec911d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226262"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763792"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus-Trigger für Azure Functions
 
@@ -334,6 +334,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**connection**|**Connection**|Der Name einer App-Einstellung, die die Service Bus-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyServiceBus“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyServiceBus“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Service Bus-Verbindungszeichenfolge aus der App-Einstellung „AzureWebJobsServiceBus“.<br><br>Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string) aus. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein. <br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Siehe [Verbindungen](./functions-reference.md#connections).|
 |**accessRights**|**zugreifen**|Zugriffsberechtigungen für die Verbindungszeichenfolge. Verfügbare Werte sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht über die Berechtigung **Manage** verfügt, legen Sie `accessRights` auf „listen“ fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern. In Version 2.x und höheren Versionen von Azure Functions ist diese Eigenschaft nicht verfügbar, da die aktuelle Version des Service Bus SDK Verwaltungsvorgänge nicht unterstützt.|
 |**isSessionsEnabled**|**IsSessionsEnabled**|`true`, wenn eine Verbindung mit einer [sitzungsabhängigen](../service-bus-messaging/message-sessions.md) Warteschlange oder einem Abonnement hergestellt wird. Andernfalls `false`, wobei es sich um den Standardwert handelt.|
+|**autoComplete**|**AutoComplete**|`true`Gibt an, ob der Trigger nach der Verarbeitung automatisch „Abgeschlossen“ aufrufen soll oder ob der Funktionscode „Abgeschlossen“ manuell aufruft.<br><br>Das Festlegen auf `false` wird nur in C# unterstützt.<br><br>Wenn der Wert auf `true` festgelegt ist, wird die Nachricht automatisch durch den Triggervorgang abgeschlossen, sofern die Ausführung der Funktion erfolgreich war, andernfalls wird die Meldung verworfen.<br><br>Wenn der Wert auf `false` festgelegt ist, müssen Sie selbst die [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver)-Methoden aufrufen, um die Nachricht abzuschließen, zu verwerfen oder in die Warteschlange für unzustellbare Nachrichten zu verschieben. Wenn eine Ausnahme ausgelöst wird (und keine der `MessageReceiver`-Methoden aufgerufen wird), bleibt die Sperre erhalten. Nachdem die Sperre abgelaufen ist, wird die Nachricht erneut in die Warteschlange eingereiht, wobei `DeliveryCount` erhöht und die Sperre automatisch erneuert wird.<br><br>Bei Nicht-C#-Funktionen führen Ausnahmen in der Funktion dazu, dass die Runtime `abandonAsync` im Hintergrund aufruft. Wenn keine Ausnahme auftritt, wird `completeAsync` im Hintergrund aufgerufen. Diese Eigenschaft ist nur in Azure Functions ab Version 2.x und höher verfügbar. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -434,7 +435,7 @@ Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bind
 
 Die folgenden Metadateneigenschaften werden für Apps unterstützt, die mindestens Version 5.0.0 der Erweiterung verwenden. Diese Eigenschaften sind Mitglieder der [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage)-Klasse.
 
-|Eigenschaft|type|BESCHREIBUNG|
+|Eigenschaft|type|Beschreibung|
 |--------|----|-----------|
 |`ApplicationProperties`|`ApplicationProperties`|Eigenschaften, die vom Absender festgelegt werden. Verwenden Sie dies statt der Metadateneigenschaft `UserProperties`.|
 |`Subject`|`string`|Die anwendungsspezifische Bezeichnung, die statt der Metadateneigenschaft `Label` verwendet werden kann.|

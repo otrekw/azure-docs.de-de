@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9bdc4b2fed40817c7173468180e34de1ed0506fb
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: d915577cd6729ead60a00250e186fb2df444b3b1
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962678"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029169"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Kapazitätsgrenzen für dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -28,7 +28,7 @@ Die maximalen Werte, die für verschiedene Komponenten des dedizierten SQL-Pools
 |:--- |:--- |:--- |
 | [Data Warehouse-Einheiten (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Max. DWUs für einen dedizierten SQL-Pool  | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Data Warehouse-Einheiten (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Standard-DTU pro Server |54.000<br></br>Standardmäßig verfügt jede SQL Server-Instanz (z.B. „myserver.database.windows.net“) über ein Kontingent von 54.000 DTUs, das bis zu DW6000c zulässt. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie [ein Supportticket erstellen](sql-data-warehouse-get-started-create-support-ticket.md) und als Anfragetyp *Kontingent* auswählen.  Multiplizieren Sie zum Berechnen Ihrer DTU-Anforderungen die Anzahl der insgesamt benötigten DWUs mit 7,5, oder multiplizieren Sie die insgesamt erforderlichen cDWUs mit 9. Beispiel:<br></br>DW6000 x 7,5 = 45.000 DTUs<br></br>DW7500c x 9 = 67.500 DTUs.<br></br>Sie können den aktuellen DTU-Verbrauch im Portal über die Option „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet. |
-| Datenbankverbindung |Maximale Anzahl gleichzeitig geöffneter Sitzungen |1024<br/><br/>Die Anzahl der gleichzeitig geöffneten Sitzungen variiert je nach ausgewählter DWU. DWU600c und höher unterstützt maximal 1024 offene Sitzungen. DWU500c und darunter unterstützt maximal 512 gleichzeitig geöffnete Sitzungen. Beachten Sie, dass die Anzahl der Abfragen begrenzt ist, die gleichzeitig ausgeführt werden können. Wenn der Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet. |
+| Datenbankverbindung |Maximale Anzahl gleichzeitig geöffneter Sitzungen |1024<br/><br/>Die Anzahl der gleichzeitig geöffneten Sitzungen variiert je nach ausgewählter DWU. DWU1000c und höher unterstützt maximal 1024 offene Sitzungen. DWU500c und darunter unterstützt maximal 512 gleichzeitig geöffnete Sitzungen. Beachten Sie, dass die Anzahl der Abfragen begrenzt ist, die gleichzeitig ausgeführt werden können. Wenn der Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet. |
 | Datenbankverbindung |Maximaler Arbeitsspeicher für vorbereitete Anweisungen |20 MB |
 | [Verwaltung von Arbeitsauslastungen](resource-classes-for-workload-management.md) |Maximale Anzahl gleichzeitiger Abfragen |128<br/><br/>  Maximal werden 128 gleichzeitige Abfragen ausgeführt, und verbleibende Abfragen werden in die Warteschlange eingereiht.<br/><br/>Die Anzahl der gleichzeitigen Abfragen kann abnehmen, wenn Benutzern höhere Ressourcenklassen zugeordnet werden oder die [Data Warehouse-Einheit](memory-concurrency-limits.md)-Einstellung gesenkt wird. Ausführungen einiger Abfragen, z.B. DMV-Abfragen, sind immer zulässig und haben keine Auswirkungen auf das Limit für gleichzeitige Abfragen. Ausführlichere Informationen zur Ausführung gleichzeitiger Abfragen finden Sie im Artikel zu [Parallelitätshöchstwerten](memory-concurrency-limits.md). |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |Maximale GB |399 GB pro DW100c. „tempdb“ ist in DWU1000c 3,99 TB groß. |

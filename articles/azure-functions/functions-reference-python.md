@@ -4,12 +4,12 @@ description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 0c87be334847974627299f8e21109fe201675f0c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b856c68d9393b08fd6e17e48fc77026faf9c4ab2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762171"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457405"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -599,6 +599,9 @@ Für den Functions-Python-Worker wird ein bestimmter Satz mit Bibliotheken benö
 
 > [!NOTE]
 > Wenn die Datei „requirements.txt“ Ihrer Funktions-App einen Eintrag `azure-functions-worker` enthält, entfernen Sie ihn. Der Funktionsworker wird automatisch von der Azure Functions-Plattform verwaltet, und wir aktualisieren ihn regelmäßig mit neuen Features und Fehlerbehebungen. Die manuelle Installation einer alten Version des Workers in „requirements.txt“ kann zu unerwarteten Problemen führen.
+
+> [!NOTE]
+>  Wenn Ihr Paket bestimmte Bibliotheken enthält, die mit den Abhängigkeiten des Workers in Konflikt stehen können (z. B. protobuf, tensorflow, grpcio), konfigurieren Sie `PYTHON_ISOLATE_WORKER_DEPENDENCIES` in den App-Einstellungen mit `1`, um zu verhindern, dass Ihre Anwendung auf die Abhängigkeiten des Workers verweist.
 
 ### <a name="azure-functions-python-library"></a>Azure Functions-Python-Bibliothek
 

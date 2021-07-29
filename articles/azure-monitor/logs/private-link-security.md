@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 5db990fe4bf54c5604eb58af677ec4891639eb1b
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 83775a48e0be1dec50e9205bb1fa9ddb8fcf0087
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165621"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743919"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Monitor
 
@@ -203,7 +203,7 @@ Diese Zone deckt die arbeitsbereichsspezifische Zuordnung zu den Automatisierung
 Diese Zone konfiguriert die Konnektivität mit dem Speicherkonto der Lösungspakete der globalen Agents. Dadurch können Agents neue oder aktualisierte Lösungspakete (auch Management Packs genannt) herunterladen. Für die Behandlung von Log Analytics-Agents ist unabhängig von der Anzahl der verwendeten Arbeitsbereiche nur ein einzelner Eintrag erforderlich.
 [![Screenshot: Private DNS-Zone „blob-core-windows-net“](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net.png)](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net-expanded.png#lightbox)
 > [!NOTE]
-> Dieser Eintrag wird nur Private Link-Setups hinzugefügt, die ab dem 19. April 2021 erstellt werden.
+> Dieser Eintrag wird nur den Private Links-Setups hinzugefügt, die am oder nach dem 19. April 2021 (oder ab Juni 2021 in Azure Sovereign Clouds) erstellt wurden.
 
 
 ### <a name="validating-you-are-communicating-over-a-private-link"></a>Überprüfen der Kommunikation über Private Link
@@ -237,7 +237,7 @@ Das Beschränken des Zugriffs wie oben erläutert gilt nicht für Azure Resource
 > Protokolle und Metriken, die über [Diagnoseeinstellungen](../essentials/diagnostic-settings.md) in einen Arbeitsbereich hochgeladen werden, werden über einen sicheren privaten Microsoft-Kanal geleitet und nicht durch diese Einstellungen gesteuert.
 
 ### <a name="log-analytics-solution-packs-download"></a>Herunterladen von Log Analytics-Lösungspaketen
-Log Analytics-Agents müssen auf ein globales Speicherkonto zugreifen, um Lösungspakete herunterzuladen. Bei Private Link-Setups, die ab dem 19. April 2021 erstellt werden, ist der Lösungspaketspeicher der Agents über die private Verbindung erreichbar. Dies wird durch die neue, für [blob.core.windows.net](#privatelink-blob-core-windows-net) erstellte DNS-Zone ermöglicht.
+Log Analytics-Agents müssen auf ein globales Speicherkonto zugreifen, um Lösungspakete herunterzuladen. Bei Private Link-Setups, die ab dem 19. April 2021 (oder ab Juni 2021 auf Azure Sovereign Clouds) erstellt werden, ist der Lösungspaketspeicher der Agents über die private Verbindung erreichbar. Dies wird durch die neue, für [blob.core.windows.net](#privatelink-blob-core-windows-net) erstellte DNS-Zone ermöglicht.
 
 Wenn Ihr Private Link-Setup vor dem 19. April 2021 erstellt wurde, ist der Lösungspaketspeicher nicht über eine private Verbindung erreichbar. In diesem Fall haben Sie folgende Möglichkeiten:
 * Sie können Ihren Azure Monitor Private Link-Bereich und den damit verbundenen privaten Endpunkt neu erstellen.

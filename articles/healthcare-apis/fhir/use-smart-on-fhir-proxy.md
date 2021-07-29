@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: zxue
 ms.date: 04/02/2019
-ms.openlocfilehash: 64b46c5becbf3dcd5870481adf07a30022144c13
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 77f4d9fad9bca4d544277bc719f633779c920606
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112288413"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769145"
 ---
 # <a name="tutorial-azure-active-directory-smart-on-fhir-proxy"></a>Tutorial: SMART on FHIR-Proxy für Azure Active Directory
 
@@ -39,6 +39,23 @@ Nachdem Sie diese Schritte ausgeführt haben, sollten Sie über Folgendes verfü
 
 - Einen FHIR-Server mit `https://MYFHIRAPI.azurehealthcareapis.com` für die Zielgruppe, wobei `MYFHIRAPI` für den Namen Ihrer Azure API for FHIR-Instanz steht.
 - Eine Registrierung einer öffentlichen Clientanwendung. Notieren Sie sich die Anwendungs-ID für diese Clientanwendung.
+
+### <a name="set-admin-consent-for-your-app"></a>Festlegen der Administratorgenehmigung für Ihre App
+
+Um SMART on FHIR verwenden zu können, müssen Sie zuerst die App authentifizieren und autorisieren. Wenn Sie SMART on FHIR zum ersten Mal verwenden, müssen Sie auch die Administratorzustimmung einholen, damit die App auf Ihre FHIR-Ressourcen zugreifen kann.
+
+Wenn Sie keine Besitzerrolle in der App haben, wenden Sie sich an den App-Besitzer, und bitten Sie ihn, Ihnen die Administratorzustimmung in der App zu erteilen. 
+
+Wenn Sie über Administratorrechte verfügen, führen Sie die folgenden Schritte aus, um sich selbst direkt die Administratorzustimmung zu erteilen. (Sie können sich später auch selbst die Administratorzustimmung erteilen, wenn Sie in der App dazu aufgefordert werden.) Sie können die gleichen Schritte ausführen, um andere Benutzer als Besitzer hinzuzufügen, damit diese diese App-Registrierung anzeigen und bearbeiten können.
+
+So fügen Sie sich selbst oder einen anderen Benutzer als Besitzer einer App hinzu:
+
+1. Navigieren Sie im Azure-Portal zu Azure Active Directory.
+1. Wählen Sie im menü links die Option **App-Registrierung** aus.
+1. Suchen Sie nach der app-Registrierung, die Sie erstellt haben, und wählen Sie sie aus.
+1. Wählen Sie im linken Menü unter **Verwalten** die Option **Besitzer** aus.
+1. Wählen **Sie Besitzer hinzufügen** aus, und fügen Sie sich selbst oder den Benutzer hinzu, dem Sie die Administratorzustimmung erteilen möchten.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="enable-the-smart-on-fhir-proxy"></a>Aktivieren des SMART on FHIR-Proxys
 

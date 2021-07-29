@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Bereitstellen von Erweiterungen auf Kubernetes mit Azure Arc-Unterstützung und Verwalten ihres Lebenszyklus
-ms.openlocfilehash: 34e8f39450b6ac87ccb0e377526e2b2172e21ed7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cd2d0915b173f3621502f22a2d47e25271f87400
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373331"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951670"
 ---
 # <a name="deploy-and-manage-azure-arc-enabled-kubernetes-cluster-extensions"></a>Bereitstellen und Verwalten von Azure Arc-fähigen Kubernetes-Clustererweiterungen
 
@@ -59,10 +59,11 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [Clustere
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | Bietet Einblick in die Leistung von Workloads, die im Kubernetes-Cluster bereitgestellt werden. Sammelt Metriken zur Arbeitsspeicher- und CPU-Auslastung von Controllern, Knoten und Containern. |
 | [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Erfasst Sicherheitsinformationen wie Überwachungsprotokolldaten aus dem Kubernetes-Cluster. Bietet Empfehlungen und Bedrohungswarnungen auf Grundlage der gesammelten Daten. |
+| [Open Service Mesh mit Azure Arc-Unterstützung](tutorial-arc-enabled-open-service-mesh.md) | Stellt Open Service Mesh im Cluster bereit und ermöglicht Funktionen wie mTLS-Sicherheit, fein aufgelöste Zugriffssteuerung, Datenverkehrsverschiebung, Überwachung mit Azure Monitor oder mit Open Source-Add-Ons von Prometheus und Grafana, Ablaufverfolgung mit Jaeger, Integration in externe Zertifizierungsverwaltungslösung. |
 | [Azure Arc-fähige Datendienste](../../azure-arc/kubernetes/custom-locations.md#create-custom-location) | Ermöglicht das Ausführen von Azure-Datendiensten in der lokalen Umgebung, im Edge-Bereich und in öffentlichen Clouds mithilfe von Kubernetes und der Infrastruktur Ihrer Wahl. |
 | [Azure App Service in Azure Arc](../../app-service/overview-arc-integration.md) | Ermöglicht die Bereitstellung einer App Service-Kubernetes-Umgebung auf Basis von Azure Arc-fähigen Kubernetes-Clustern. |
-| [Event Grid in Kubernetes](/azure/event-grid/kubernetes/overview) | Erstellen und Verwalten von Event Grid-Ressourcen wie Themen und Ereignisabonnements auf Basis von Azure Arc-fähigen Kubernetes-Clustern. |
-| [Azure API Management in Azure Arc](/azure/api-management/how-to-deploy-self-hosted-gateway-azure-arc) | Bereitstellen und Verwalten von Azure API Management-Gateways auf Azure Arc-fähigen Kubernetes-Clustern. |
+| [Event Grid in Kubernetes](../../event-grid/kubernetes/overview.md) | Erstellen und Verwalten von Event Grid-Ressourcen wie Themen und Ereignisabonnements auf Basis von Azure Arc-fähigen Kubernetes-Clustern. |
+| [Azure API Management in Azure Arc](../../api-management/how-to-deploy-self-hosted-gateway-azure-arc.md) | Bereitstellen und Verwalten von Azure API Management-Gateways auf Azure Arc-fähigen Kubernetes-Clustern. |
 
 ## <a name="usage-of-cluster-extensions"></a>Verwendung von Clustererweiterungen
 
@@ -264,6 +265,8 @@ Erfahren Sie mehr über die derzeit für Kubernetes mit Azure Arc-Unterstützung
 
 > [!div class="nextstepaction"]
 > [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [Open Service Mesh mit Azure Arc-Unterstützung](tutorial-arc-enabled-open-service-mesh.md)
 > 
 > [!div class="nextstepaction"]
 > [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
@@ -272,7 +275,7 @@ Erfahren Sie mehr über die derzeit für Kubernetes mit Azure Arc-Unterstützung
 > [Azure App Service in Azure Arc](../../app-service/overview-arc-integration.md)
 > 
 > [!div class="nextstepaction"]
-> [Event Grid in Kubernetes](/azure/event-grid/kubernetes/overview)
+> [Event Grid in Kubernetes](../../event-grid/kubernetes/overview.md)
 > 
 > [!div class="nextstepaction"]
-> [Azure API Management in Azure Arc](/azure/api-management/how-to-deploy-self-hosted-gateway-azure-arc)
+> [Azure API Management in Azure Arc](../../api-management/how-to-deploy-self-hosted-gateway-azure-arc.md)

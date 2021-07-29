@@ -3,14 +3,14 @@ title: Georeplikation für eine Registrierung
 description: Erste Schritte zum Erstellen und Verwalten einer Azure-Containerregistrierung mit Georeplikation, die es der Registrierung ermöglicht, mehrere Regionen mit regionale Multimasterreplikaten zu versorgen. Georeplikation ist eine Funktion der Premium-Dienstebene.
 author: stevelas
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 06/09/2021
 ms.author: stevelas
-ms.openlocfilehash: d36cf1c5ed8c916962ae0b621548a593d2fe0a97
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: b60de8dd9dc4ba5b66594fe6d75caa43ef0017b5
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331842"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029655"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -25,8 +25,8 @@ Eine Registrierung mit Georeplikation bietet folgende Vorteile:
 * Resilienz der Registrierung im Falle eines regionalen Ausfalls
 
 > [!NOTE]
-> Für den Fall, dass Sie Kopien von Containerimages in mehreren Azure-Containerregistrierungen verwalten müssen, unterstützt die Azure-Containerregistrierung auch [den Import von Images](container-registry-import-images.md). Beispielsweise können Sie in einem DevOps-Workflow ein Image aus einer Entwicklungsregistrierung in eine Produktionsregistrierung importieren, ohne dazu Docker-Befehle verwenden zu müssen.
->
+> * Für den Fall, dass Sie Kopien von Containerimages in mehreren Azure-Containerregistrierungen verwalten müssen, unterstützt die Azure-Containerregistrierung auch [den Import von Images](container-registry-import-images.md). Beispielsweise können Sie in einem DevOps-Workflow ein Image aus einer Entwicklungsregistrierung in eine Produktionsregistrierung importieren, ohne dazu Docker-Befehle verwenden zu müssen.
+> * Wenn Sie für eine Registrierung keine Georeplikation durchführen, sondern diese in eine andere Azure-Region verschieben möchten, finden Sie weitere Informationen unter [Manuelles Verschieben einer Containerregistrierung in eine andere Region](manual-regional-move.md).
 
 ## <a name="example-use-case"></a>Beispiel eines Anwendungsfalls
 Contoso betreibt eine öffentlich zugängliche Website in den USA, Kanada und Europa. Um diese Märkte mit lokalen und netzwerknahen Inhalten zu bedienen, betreibt Contoso [Azure Kubernetes Service](../aks/index.yml)-Cluster (AKS) in den Regionen „USA, Westen“, „USA, Osten“, „Kanada, Mitte“ und „Europa, Westen“. Die Websiteanwendung, die als Docker-Image bereitgestellt ist, verwendet in allen Regionen den gleichen Code und das gleiche Image. Der für die jeweilige Region lokale Inhalt wird aus einer Datenbank abgerufen, die in jeder Region individuell bereitgestellt wird. Jede regionale Bereitstellung hat eine eigene Konfiguration für Ressourcen wie die lokale Datenbank.
@@ -58,15 +58,18 @@ Die Georeplikationsfunktion von Azure Container Registry bietet die folgenden Vo
 
 * Verwalten einer einzelnen Registrierung in allen Regionen: `contoso.azurecr.io`
 * Verwalten einer einzelnen Konfiguration von Imagebereitstellungen, da alle Regionen die gleiche Image-URL verwenden: `contoso.azurecr.io/public/products/web:1.2`
-* Übertragung per Push in eine einzelne Registrierung, während ACR die Georeplikation verwaltet. ACR repliziert nur eindeutige Ebenen, wodurch die Regionen übergreifende Datenübertragung reduziert wird. 
+* Übertragung per Push in eine einzelne Registrierung, während ACR die Georeplikation automatisch verwaltet. ACR repliziert nur eindeutige Ebenen, wodurch die Regionen übergreifende Datenübertragung reduziert wird. 
 * Konfigurieren Sie regionale [Webhooks](container-registry-webhook.md), um über Ereignisse in bestimmten Replikaten benachrichtigt zu werden.
 * Eine hochverfügbare Registrierung wird bereitgestellt, die gegenüber regionalen Ausfällen resilient ist.
 
 Azure Container Registry unterstützt auch [Verfügbarkeitszonen](zone-redundancy.md), um eine robuste und hoch verfügbare Azure-Containerregistrierung innerhalb einer Azure-Region zu erstellen. Die Kombination aus Verfügbarkeitszonen für Redundanz innerhalb einer Region und Georeplikation über mehrere Regionen hinweg verbessert sowohl die Zuverlässigkeit als auch die Leistung einer Registrierung.
 
+> [!IMPORTANT]
+> Eine georeplizierte Registrierung kann nicht mehr verfügbar sein, wenn in der Startregion der Registrierung (in der die Registrierung ursprünglich bereitgestellt wurde) bestimmte Ausfälle auftreten.
+
 ## <a name="configure-geo-replication"></a>Konfigurieren der Georeplikation
 
-Die Konfiguration der Georeplikation ist so einfach wie das Klicken auf Regionen auf einer Karte. Außerdem können Sie die Georeplikation mithilfe von Tools verwalten, wozu auch die [az acr replication](/cli/azure/acr/replication)-Befehle in der Azure-Befehlszeilenschnittstelle gehören, oder Sie können eine für die Georeplikation aktivierte Registrierung mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/) bereitstellen.
+Die Konfiguration der Georeplikation ist so einfach wie das Klicken auf Regionen auf einer Karte. Außerdem können Sie die Georeplikation mithilfe von Tools verwalten, wozu auch die [az acr replication](/cli/azure/acr/replication)-Befehle in der Azure-Befehlszeilenschnittstelle gehören, oder Sie können eine für die Georeplikation aktivierte Registrierung mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/container-registry-geo-replication/) bereitstellen.
 
 Die Georeplikation ist bei [Premium-Registrierungen](container-registry-skus.md) möglich. Wenn Ihre Registrierung noch nicht im Premium-Tarif betrieben wird, können Sie im [Azure-Portal](https://portal.azure.com) von den Tarifen Basic und Standard zu Premium wechseln:
 

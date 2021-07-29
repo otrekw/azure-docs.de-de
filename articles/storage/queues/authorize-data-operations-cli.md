@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1570906ae036b31dc2e97f35c827385933093f73
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 480798177797ad83ec01f33297d5fc559c7c3e3d
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162201"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900465"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Auswählen der Autorisierung des Zugriffs auf Warteschlangendaten mit der Azure CLI
 
@@ -46,7 +46,7 @@ Damit Sie den Parameter `--auth-mode` verwenden können, vergewissern Sie sich, 
 
 Wenn Sie sich mit Azure AD-Anmeldeinformationen bei der Azure-Befehlszeilenschnittstelle anmelden, wird ein OAuth 2.0-Zugriffstoken zurückgegeben. Dieses Token wird dann automatisch von der Befehlszeilenschnittstelle verwendet, um nachfolgende Vorgänge für Queue Storage-Daten zu autorisieren. Für unterstützte Vorgänge müssen Sie mit dem Befehl keinen Kontoschlüssel und kein SAS-Token mehr übergeben.
 
-Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugriffssteuerung (Azure RBAC) Berechtigungen für Warteschlangendaten zuweisen. Weitere Informationen zu Azure-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit Azure RBAC](../common/storage-auth-aad-rbac-portal.md).
+Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugriffssteuerung (Azure RBAC) Berechtigungen für Warteschlangendaten zuweisen. Weitere Informationen zu Azure-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit Azure RBAC](assign-azure-role-data-access.md).
 
 ### <a name="permissions-for-calling-data-operations"></a>Berechtigungen für das Aufrufen von Datenvorgängen
 
@@ -58,7 +58,7 @@ Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgä
 
 Im folgenden Beispiel sehen Sie, wie mithilfe Ihrer Azure AD-Anmeldeinformationen über die Azure CLI eine Warteschlange erstellt wird. Damit Sie die Warteschlange erstellen können, müssen Sie sich bei der Azure CLI anmelden, und Sie benötigen eine Ressourcengruppe und ein Speicherkonto.
 
-1. Weisen Sie sich vor der Erstellung der Warteschlange selbst die Rolle [Mitwirkender an Storage-Warteschlangendaten](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) zu. Obwohl Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../common/storage-auth-aad-rbac-portal.md).
+1. Weisen Sie sich vor der Erstellung der Warteschlange selbst die Rolle [Mitwirkender an Storage-Warteschlangendaten](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) zu. Obwohl Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Warteschlangendaten](assign-azure-role-data-access.md).
 
     > [!IMPORTANT]
     > Die Azure-Rollenzuweisungen können einige Minuten dauern.
@@ -111,5 +111,5 @@ Sie können Autorisierungsparameter in Umgebungsvariablen angeben, um zu vermeid
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwenden der Azure-Befehlszeilenschnittstelle zum Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten](../common/storage-auth-aad-rbac-cli.md)
+- [Zuweisen einer Azure-Rolle für den Zugriff auf Warteschlangendaten](assign-azure-role-data-access.md)
 - [Autorisieren des Zugriffs auf Blob- und Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen](../common/storage-auth-aad-msi.md)

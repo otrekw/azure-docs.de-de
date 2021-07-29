@@ -8,18 +8,29 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 0f233bdff54822037d15fde9ac62e34193794ad3
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 68e4949fe0ef0b10018cd3827e259028c37d5b5c
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110307"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019087"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill"></a>Cognitive Search-Qualifikation „Benutzerdefinierte Entitätssuche“
 
 Die Qualifikation **Benutzerdefinierte Entitätssuche** sucht nach Text aus einer benutzerdefinierten Liste von Wörtern und Ausdrücken. Mithilfe dieser Liste werden alle Dokumente mit übereinstimmenden Entitäten mit einer Bezeichnung markiert. Die Qualifikation unterstützt auch einen gewissen Grad an Fuzzyübereinstimmung, der für die Suche nach ähnlichen, aber nicht exakten Übereinstimmungen verwendet werden kann.  
 
-Diese Qualifikation ist nicht an eine Cognitive Services-API gebunden und kann während des Vorschauzeitraums kostenlos verwendet werden. Sie sollten jedoch dennoch [eine Cognitive Services-Ressource anfügen](./cognitive-search-attach-cognitive-services.md), um das tägliche Anreicherungslimit außer Kraft zu setzen. Das Tageslimit gilt für den kostenlosen Zugriff auf Cognitive Services, wenn dieser über Azure Cognitive Search erfolgt.
+Dieser Skill ist nicht an eine Cognitive Services-API gebunden. Sie sollten jedoch dennoch [eine Cognitive Services-Ressource anfügen](./cognitive-search-attach-cognitive-services.md), um das tägliche Anreicherungslimit außer Kraft zu setzen. Das Tageslimit gilt für den kostenlosen Zugriff auf Cognitive Services, wenn dieser über Azure Cognitive Search erfolgt.
+
+## <a name="pricing-details"></a>Preisübersicht
+
+Textdatensätze entsprechen der Anzahl von Einheiten mit 1.000 Zeichen innerhalb eines Dokuments, das als Eingabe für den Skill bereitgestellt wird.
+
+|  Tarif  |        Preis  |
+|--------------|----------------------|
+| 0–500.000 Textdatensätze | 1 USD pro 1.000 Textdatensätze |
+| 0,5 Mio.–2,5 Mio Textdatensätze | 0,75 USD pro 1.000 Textdatensätze |
+| 2,5 Mio.–10 Mio Textdatensätze | 0,30 USD pro 1.000 Textdatensätze |
+| Mehr als 10 Mio. Textdatensätze | 0,25 USD pro 1.000 Textdatensätze |
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.CustomEntityLookupSkill 
@@ -308,4 +319,4 @@ Diese Warnung wird ausgegeben, wenn die Anzahl der erkannten Übereinstimmungen 
 
 + [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Qualifikation „Entitätserkennung“ (für die Suche nach bekannten Entitäten)](cognitive-search-skill-entity-recognition.md)
++ [Qualifikation „Entitätserkennung“ (für die Suche nach bekannten Entitäten)](cognitive-search-skill-entity-recognition-v3.md)

@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 06/09/2021
 ms.author: alkohli
-ms.openlocfilehash: e109c09a70b96e81daad8929fc82b6059b3619b6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1ad5475078c515d36a57b7608ab9d363c6f678aa
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060542"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983946"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Öffnen eines Support-Tickets für Azure Stack Edge und Azure Data Box Gateway
 
-[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-databox-gateway-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-databox-gateway-sku.md)]
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-fpga-databox-gateway-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-databox-gateway-sku.md)]
 
 Dieser Artikel bezieht sich auf Azure Stack Edge und Azure Data Box Gateway, die beide vom Azure Stack Edge-/Azure Data Box Gateway-Dienst verwaltet werden. Wenn Probleme mit Ihrem Dienst auftreten, können Sie eine Serviceanfrage für den technischen Support erstellen. In diesem Artikel wird Folgendes beschrieben:
 
@@ -100,5 +100,6 @@ Nach dem Erstellen einer Supportanfrage können Sie den Lebenszyklus des Tickets
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über das [Behandeln von Problemen mit Azure Stack Edge](azure-stack-edge-troubleshoot.md).
-Erfahren Sie mehr über das [Behandeln von Problemen mit Data Box Gateway](../databox-gateway/data-box-gateway-troubleshoot.md).
+- [Behandeln von Problemen mit Azure Stack Edge-FPGA](azure-stack-edge-troubleshoot.md)
+- [Beheben von Problemen auf Ihrem Azure Stack Edge Pro-GPU-Gerät](azure-stack-edge-gpu-troubleshoot.md)
+- [Behandeln von Problemen mit Azure Data Box Gateway](../databox-gateway/data-box-gateway-troubleshoot.md)

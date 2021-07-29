@@ -10,12 +10,12 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4d1bffd39fa474a5c973ca2b6fd45e9f59964e39
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: df2e47b75b4dd01274a2ec2c4f5b5acaac164ca0
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110098288"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536273"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Behandeln von Problemen bei der Remotemodellimplementierung 
 
@@ -84,6 +84,28 @@ print(service.get_logs())
 ## <a name="debug-locally"></a>Lokales Debuggen
 
 Wenn bei der Bereitstellung eines Modells für ACI oder AKS Probleme auftreten, versuchen Sie, es als lokalen Webdienst bereitzustellen. Das Verwenden eines lokalen Webdiensts erleichtert die Problembehandlung. Informationen zur lokalen Problembehandlung bei einer Bereitstellung finden Sie im Artikel zur [lokalen Problembehandlung](./how-to-troubleshoot-deployment-local.md).
+
+## <a name="azure-machine-learning-inference-http-server"></a>HTTP-Rückschlussserver für Azure Machine Learning
+
+Mit dem lokalen Rückschlussserver können Sie Ihr Eingabeskript (`score.py`) schnell debuggen. Falls das zugrunde liegende Bewertungsskript einen Fehler enthält, kann der Server das Modell nicht initialisieren oder bereitstellen. Stattdessen wird eine Ausnahme ausgelöst und der Ort angegeben, an dem die Probleme aufgetreten sind. [Weitere Informationen zum HTTP-Rückschlussserver von Azure Machine Learning](how-to-inference-server-http.md)
+
+1. Installieren Sie das `azureml-inference-server-http`-Paket aus dem [pypi](https://pypi.org/)-Feed:
+
+    ```bash
+    python -m pip install azureml-inference-server-http
+    ```
+
+2. Starten Sie den Server, und legen Sie `score.py` als Einstiegsskript fest:
+
+    ```bash
+    azmlinfsrv --entry_script score.py
+    ```
+
+3. Senden Sie eine Bewertungsanforderung mithilfe von `curl` an den Server:
+
+    ```bash
+    curl -p 127.0.0.1:5001/score
+    ```
 
 ## <a name="container-cannot-be-scheduled"></a>Planen des Containers nicht möglich
 

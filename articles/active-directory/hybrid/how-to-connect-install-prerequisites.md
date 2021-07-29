@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 108f81be678eb666b6f79ebbecc93f7bc88dc1d6
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: afb12328a02a08bfcde4c431ff584a85dc48d31e
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107910"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613645"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 In diesem Artikel werden die Voraussetzungen und die Hardwareanforderungen für Azure Active Directory (Azure AD) Connect beschrieben.
@@ -231,7 +231,7 @@ In der folgenden Tabelle sind die Mindestanforderungen für den Azure AD Connec
 | Weniger als 10.000 |1,6 GHz |4 GB |70 GB |
 | 10.000 bis 50.000 |1,6 GHz |4 GB |70 GB |
 | 50.000 bis 100.000 |1,6 GHz |16 GB |100 GB |
-| Bei 100.000 oder mehr Objekten ist die Vollversion von SQL Server erforderlich. | | | |
+| Bei 100.000 oder mehr Objekten ist die Vollversion von SQL Server erforderlich. Aus Leistungsgründen wird eine lokale Installation bevorzugt. | | | |
 | 100.000 bis 300.000 |1,6 GHz |32 GB |300 GB |
 | 300.000 bis 600.000 |1,6 GHz |32 GB |450 GB |
 | Mehr als 600.000 |1,6 GHz |32 GB |500 GB |

@@ -1,20 +1,20 @@
 ---
 title: Bereitstellen von Ressourcen mit Azure-CLI und Vorlagen
-description: Verwenden Sie Azure Resource Manager und Azure CLI, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage oder einer Bicep-Datei definiert.
+description: Verwenden Sie Azure Resource Manager und Azure CLI, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage definiert.
 ms.topic: conceptual
-ms.date: 03/25/2021
-ms.openlocfilehash: ddcb9adad545f27dfe29f3a9354520b0e141e933
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 05/07/2021
+ms.openlocfilehash: 4507fe743674ac8c7ee45b53adb1e4cc543289d5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737079"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951163"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI
 
-In diesem Artikel wird erläutert, wie Sie Ihre Ressourcen mithilfe der Azure CLI und Azure Resource Manager-Vorlagen (ARM-Vorlagen) oder Bicep-Dateien in Azure bereitstellen. Wenn Sie mit den Konzepten der Bereitstellung und Verwaltung von Azure-Lösungen nicht vertraut sind, informieren Sie sich unter [Übersicht über die Vorlagenbereitstellung](overview.md) oder [Übersicht über Bicep](bicep-overview.md).
+In diesem Artikel wird erläutert, wie Sie Ihre Ressourcen mithilfe der Azure CLI und Azure Resource Manager-Vorlagen (ARM) in Azure bereitstellen. Wenn Sie nicht mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen vertraut sind, informieren Sie sich unter [Übersicht über die Vorlagenbereitstellung](overview.md).
 
-Die Bereitstellungsbefehle wurden in Version 2.2.0 der Azure CLI geändert. Die Beispiele in diesem Artikel erfordern Version 2.2.0 oder höher der Azure CLI. Zum Bereitstellen von Bicep-Dateien benötigen Sie [Version 2.20.0 oder höher der Azure CLI](/cli/azure/install-azure-cli).
+Die Bereitstellungsbefehle wurden in Version 2.2.0 der Azure CLI geändert. Die Beispiele in diesem Artikel erfordern [Version 2.20.0 oder höher der Azure CLI](/cli/azure/install-azure-cli).
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -27,13 +27,13 @@ Sie können als Ziel für Ihre Bereitstellung eine Ressourcengruppe, ein Abonnem
 * Für die Bereitstellung in einer **Ressourcengruppe** verwenden Sie [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create):
 
   ```azurecli-interactive
-  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template-or-bicep>
+  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
   ```
 
 * Für die Bereitstellung in einem **Abonnement** verwenden Sie [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create):
 
   ```azurecli-interactive
-  az deployment sub create --location <location> --template-file <path-to-template-or-bicep>
+  az deployment sub create --location <location> --template-file <path-to-template>
   ```
 
   Weitere Informationen zu Bereitstellungen auf Abonnementebene finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](deploy-to-subscription.md).
@@ -41,7 +41,7 @@ Sie können als Ziel für Ihre Bereitstellung eine Ressourcengruppe, ein Abonnem
 * Für die Bereitstellung in einer **Verwaltungsgruppe** verwenden Sie [az deployment mg create](/cli/azure/deployment/mg#az_deployment_mg_create):
 
   ```azurecli-interactive
-  az deployment mg create --location <location> --template-file <path-to-template-or-bicep>
+  az deployment mg create --location <location> --template-file <path-to-template>
   ```
 
   Weitere Informationen zu Bereitstellungen auf Verwaltungsgruppenebene finden Sie unter [Erstellen von Ressourcen auf der Verwaltungsgruppenebene](deploy-to-management-group.md).
@@ -49,14 +49,14 @@ Sie können als Ziel für Ihre Bereitstellung eine Ressourcengruppe, ein Abonnem
 * Für die Bereitstellung in einem **Mandanten** verwenden Sie [az deployment tenant create](/cli/azure/deployment/tenant#az_deployment_tenant_create):
 
   ```azurecli-interactive
-  az deployment tenant create --location <location> --template-file <path-to-template-or-bicep>
+  az deployment tenant create --location <location> --template-file <path-to-template>
   ```
 
   Weitere Informationen zu Bereitstellungen auf Mandantenebene finden Sie unter [Erstellen von Ressourcen auf der Mandantenebene](deploy-to-tenant.md).
 
-Der Benutzer, der die Vorlage oder Bicep-Datei bereitstellt, muss für jeden Bereich über die erforderlichen Berechtigungen zum Erstellen von Ressourcen verfügen.
+Der Benutzer, der die Vorlage bereitstellt, muss für jeden Bereich über die erforderlichen Berechtigungen zum Erstellen von Ressourcen verfügen.
 
-## <a name="deploy-local-template-or-bicep-file"></a>Bereitstellen einer lokalen Vorlage oder einer Bicep-Datei
+## <a name="deploy-local-template"></a>Bereitstellen einer lokalen Vorlage
 
 Sie können eine Vorlage bereitstellen, die auf Ihrem lokalen Computer oder extern gespeichert ist. In diesem Abschnitt wird die Bereitstellung einer lokalen Vorlage beschrieben.
 
@@ -66,13 +66,13 @@ Wenn eine Bereitstellung in einer Ressourcengruppe erfolgen soll, die nicht vorh
 az group create --name ExampleGroup --location "Central US"
 ```
 
-Verwenden Sie zum Bereitstellen einer lokalen Vorlage oder einer Bicep-Datei im Bereitstellungsbefehl den Parameter `--template-file`. Das folgende Beispiel zeigt auch, wie ein Parameterwert festgelegt wird.
+Verwenden Sie zum Bereitstellen einer lokalen Vorlage im Bereitstellungsbefehl den Parameter `--template-file`. Das folgende Beispiel zeigt auch, wie ein Parameterwert festgelegt wird.
 
 ```azurecli-interactive
 az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
-  --template-file <path-to-template-or-bicep> \
+  --template-file <path-to-template> \
   --parameters storageAccountType=Standard_GRS
 ```
 
@@ -83,9 +83,6 @@ Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird 
 ```
 
 ## <a name="deploy-remote-template"></a>Bereitstellen einer Remotevorlage
-
-> [!NOTE]
-> Derzeit wird die Bereitstellung von Bicep-Remotedateien von Azure CLI nicht unterstützt. Kompilieren Sie die Bicep-Datei mithilfe der [Bicep-Befehlszeilenschnittstelle](./bicep-install.md#development-environment) in eine JSON-Vorlage, und laden Sie dann die JSON-Datei an den Remotespeicherort.
 
 Anstatt ARM-Vorlagen auf dem lokalen Computer zu speichern, könnten Sie sie auch an einem externen Speicherort speichern. Sie können Vorlagen in einem Quellcodeverwaltungs-Repository (z.B. GitHub) speichern. Für den gemeinsamen Zugriff in Ihrer Organisation können Sie sie auch in einem Azure-Speicherkonto speichern.
 
@@ -123,7 +120,7 @@ Weitere Informationen finden Sie unter [Verwenden des relativen Pfads für verkn
 
 ## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
 
-Wenn Sie eine ARM-Vorlage bereitstellen, können Sie der Bereitstellung einen Namen geben. Dieser Name kann das Abrufen der Bereitstellung aus dem Bereitstellungsverlauf vereinfachen. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Vorlagendatei verwendet. Wenn Sie beispielsweise eine Vorlage mit dem Namen `azuredeploy.json` bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `azuredeploy`.
+Wenn Sie eine ARM-Vorlage bereitstellen, können Sie der Bereitstellung einen Namen geben. Dieser Name kann das Abrufen der Bereitstellung aus dem Bereitstellungsverlauf vereinfachen. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Vorlagendatei verwendet. Wenn Sie beispielsweise eine Vorlage mit dem Namen _azuredeploy.json_ bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `azuredeploy`.
 
 Bei jedem Ausführen einer Bereitstellung wird dem Bereitstellungsverlauf der Ressourcengruppe ein Eintrag mit dem Bereitstellungsnamen hinzugefügt. Wenn Sie eine andere Bereitstellung ausführen und denselben Namen vergeben, wird der vorherige Eintrag durch die aktuelle Bereitstellung ersetzt. Wenn Sie eindeutige Einträge im Bereitstellungsverlauf beibehalten möchten, müssen Sie jeder Bereitstellung einen eindeutigen Namen geben.
 
@@ -148,9 +145,6 @@ Wenn Sie für jede Bereitstellung einen eindeutigen Namen angeben, können Sie d
 Um Konflikte mit gleichzeitigen Bereitstellungen zu vermeiden und eindeutige Einträge im Bereitstellungsverlauf zu gewährleisten, geben Sie jeder Bereitstellung einen eindeutigen Namen.
 
 ## <a name="deploy-template-spec"></a>Bereitstellen der Vorlagenspezifikationen
-
-> [!NOTE]
-> Azure CLI unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von Bicep-Dateien derzeit nicht. Sie können jedoch eine Bicep-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Hier ist ein [Beispiel](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
 
 Anstatt eine lokale oder Remotevorlage bereitzustellen, können Sie eine [Vorlagenspezifikation](template-specs.md) erstellen. Bei der Vorlagenspezifikation handelt es sich um eine Ressource im Azure-Abonnement, die eine ARM-Vorlage enthält. Sie vereinfacht die sichere Freigabe der Vorlage für Benutzer in Ihrer Organisation. Mit der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, Azure RBAC) können Sie Zugriff auf die Vorlagenspezifikation gewähren. Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
@@ -177,11 +171,11 @@ az deployment group create \
   --template-spec $id
 ```
 
-Weitere Informationen finden Sie unter [Azure Resource Manager-Vorlagenspezifikationen (Vorschau)](template-specs.md).
+Weitere Informationen finden Sie unter [Azure Resource Manager-Vorlagenspezifikationen](template-specs.md).
 
 ## <a name="preview-changes"></a>Vorschau der Änderungen
 
-Vor dem Bereitstellen der Vorlage können Sie die Änderungen, die von der Vorlage an Ihrer Umgebung vorgenommen werden, in der Vorschau anzeigen. Überprüfen Sie anhand des [„Was-wäre-wenn“-Vorgangs](template-deploy-what-if.md), ob die Vorlage die erwarteten Änderungen vornimmt. „Was-wäre-wenn“ überprüft auch die Vorlage auf Fehler.
+Vor dem Bereitstellen der Vorlage können Sie die Änderungen, die von der Vorlage an Ihrer Umgebung vorgenommen werden, in der Vorschau anzeigen. Überprüfen Sie anhand des [„Was-wäre-wenn“-Vorgangs](./deploy-what-if.md), ob die Vorlage die erwarteten Änderungen vornimmt. „Was-wäre-wenn“ überprüft auch die Vorlage auf Fehler.
 
 ## <a name="parameters"></a>Parameter
 
@@ -194,7 +188,7 @@ Wenn Sie Inlineparameter übergeben möchten, geben Sie die Werte in `parameters
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file <path-to-template-or-bicep> \
+  --template-file <path-to-template> \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
@@ -205,7 +199,7 @@ Sie können auch den Inhalt einer Datei abrufen und als Inlineparameter übergeb
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file <path-to-template-or-bicep> \
+  --template-file <path-to-template> \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
 ```
 
@@ -244,7 +238,7 @@ Schließen Sie den JSON-Code, der an das Objekt übergeben werden soll, in doppe
 
 ### <a name="parameter-files"></a>Parameterdateien
 
-Anstatt Parameter als Inlinewerte in Ihrem Skript zu übergeben, ist es wohl einfacher, eine JSON-Datei zu verwenden, die die Parameterwerte enthält. Die Parameterdatei muss eine lokale Datei sein. Externe Parameterdateien werden mit der Azure-Befehlszeilenschnittstelle nicht unterstützt. Sowohl die ARM-Vorlage als auch die BICEP-Datei verwenden JSON-Parameterdateien.
+Anstatt Parameter als Inlinewerte in Ihrem Skript zu übergeben, ist es wohl einfacher, eine JSON-Datei zu verwenden, die die Parameterwerte enthält. Die Parameterdatei muss eine lokale Datei sein. Externe Parameterdateien werden mit der Azure-Befehlszeilenschnittstelle nicht unterstützt.
 
 Weitere Informationen zur Parameterdatei finden Sie unter [Erstellen einer Resource Manager-Parameterdatei](parameter-files.md).
 
@@ -255,7 +249,7 @@ az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-file storage.json \
-  --parameters @storage.parameters.json
+  --parameters '@storage.parameters.json'
 ```
 
 ## <a name="handle-extended-json-format"></a>Verarbeiten des erweiterten JSON-Formats
@@ -284,5 +278,5 @@ Zum Bereitstellen einer Vorlage mit mehrzeiligen Zeichenfolgen oder Kommentaren 
 
 * Informationen zum Rollback zu einer erfolgreiche Bereitstellung, wenn ein Fehler auftritt, finden Sie unter [Rollback bei Fehler zu erfolgreicher Bereitstellung](rollback-on-error.md).
 * Wenn Sie angeben möchten, wie Ressourcen behandelt werden sollen, die in der Ressourcengruppe enthalten sind, aber nicht in der Vorlage definiert wurden, lesen Sie die Informationen unter [Azure Resource Manager-Bereitstellungsmodi](deployment-modes.md).
-* Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).
 * Tipps zum Beheben gängiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](common-deployment-errors.md).

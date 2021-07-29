@@ -3,14 +3,14 @@ title: Erstellen eines ausführenden Azure Automation-Kontos
 description: In diesem Artikel wird beschrieben, wie Sie mit PowerShell oder über das Azure-Portal ein Azure Automation ausführendes Konto erstellen.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/29/2021
+ms.date: 05/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 368bbfd0bc4dd0a3c8c2792487db52e8585c2ea1
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 7ed16e9bbd1071e4831e814e617d69dc4a638510
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277622"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078254"
 ---
 # <a name="how-to-create-an-azure-automation-run-as-account"></a>Erstellen eines ausführenden Azure Automation-Kontos
 
@@ -46,6 +46,13 @@ In der folgenden Liste sind die Anforderungen zum Erstellen eines ausführenden 
 * Azure PowerShell 6.2.4 oder höher. Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps).
 * Ein Automation-Konto, auf das als Wert für die Parameter `AutomationAccountName` und `ApplicationDisplayName` verwiesen wird.
 * Berechtigungen, die den unter [Berechtigungen zum Konfigurieren von ausführenden Konten](automation-security-overview.md#permissions) aufgelisteten entsprechen.
+
+Wenn Sie ein Zertifikat von Ihrer Unternehmens- oder Drittanbieter-Zertifizierungsstelle verwenden möchten, erfordert Automation, dass das Zertifikat über die folgende Konfiguration verfügt:
+
+   * Geben Sie den Anbieter **Microsoft Enhanced RSA und AES Cryptographic Provider** an.
+   * Als exportierbar markiert
+   * Konfiguriert für die Verwendung des SHA256-Algorithmus
+   * Gespeichert im `*.pfx`- oder `*.cer`-Format.
 
 Führen Sie die folgenden Schritte aus, um die Werte für `AutomationAccountName`, `SubscriptionId` und `ResourceGroupName` abzurufen. Dies sind erforderliche Parameter für das PowerShell-Skript.
 

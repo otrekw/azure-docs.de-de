@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: ae0d9696d869b2a260de643482a9f86c34bcc824
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be5face0a93dc360493e22fd3d2c6d9743c4f5ff
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575466"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072444"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Erste Schritte bei der Azure SQL Managed Instance-Überwachung
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -144,7 +144,10 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung für Ihre v
 
      1. Klicken Sie im Dialogfeld **Überwachung erstellen** auf **OK**.
      
-     1. <a id="createspec"></a>Erstellen und aktivieren Sie nach dem Konfigurieren des Blobcontainers als Ziel für die Überwachungsprotokolle eine Spezifikation für die Serverüberwachung oder die Datenbanküberwachung. Die Vorgehensweise entspricht der für SQL Server:
+        > [!NOTE]
+        > Wenn Sie die SQL Server Management Studio-Benutzeroberfläche zum Erstellen der Überwachung verwenden, werden automatisch Anmeldeinformationen für den Container mit SAS-Schlüssel erstellt. 
+     
+     1.  <a id="createspec"></a>Erstellen und aktivieren Sie nach dem Konfigurieren des Blobcontainers als Ziel für die Überwachungsprotokolle eine Spezifikation für die Serverüberwachung oder die Datenbanküberwachung. Die Vorgehensweise entspricht der für SQL Server:
 
    - [Erstellen einer Spezifikation für die Serverüberwachung – T-SQL-Anleitung](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [Erstellen einer Spezifikation für die Datenbanküberwachung – T-SQL-Anleitung](/sql/t-sql/statements/create-database-audit-specification-transact-sql)

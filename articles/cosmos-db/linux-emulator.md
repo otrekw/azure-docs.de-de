@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: StefArroyo
 ms.author: esarroyo
-ms.date: 05/25/2021
-ms.openlocfilehash: fe14c28d817d9c0a2e832d331af9130c935affb8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/04/2021
+ms.openlocfilehash: 6e3fd0c2dafd9d174b79206cb5482450fee74f8e
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385384"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984046"
 ---
 # <a name="run-the-emulator-on-docker-for-linux-preview"></a>Ausführen des Emulators in Docker für Linux (Vorschau)
 
@@ -67,27 +67,13 @@ Rufen Sie Docker Hub auf, und installieren Sie [Docker Desktop für macOS](https
     ```bash
     curl -k https://$ipaddr:8081/_explorer/emulator.pem > emulatorcert.crt
     ```
-    Alternativ können Sie auch den Endpunkt oben, über den das selbstsignierte Emulatorzertifikat heruntergeladen wird, für die Signalisierung verwenden, wenn der Emulatorendpunkt bereit ist, Anforderungen von einer anderen Anwendung zu empfangen.
 
-1. Kopieren Sie die CRT-Datei in den Ordner, der in Ihrer Linux-Distribution benutzerdefinierte Zertifikate enthält. In Debian-Distributionen befindet er sich üblicherweise unter `/usr/local/share/ca-certificates/`.
-
-   ```bash
-   cp YourCTR.crt /usr/local/share/ca-certificates/
-   ```
-
-1. Aktualisieren Sie die TLS-/SSL-Zertifikate, wodurch der Ordner `/etc/ssl/certs/` aktualisiert wird.
-
-   ```bash
-   update-ca-certificates
-   ```
-
-Für Anwendungen, die auf Java basieren, muss das Zertifikat in den [Java-Vertrauensspeicher](local-emulator-export-ssl-certificates.md) importiert werden.
 
 ## <a name="consume-the-endpoint-via-ui"></a><a id="consume-endpoint-ui"></a>Verwenden des Endpunkts über die Benutzeroberfläche
 
 Der Emulator verwendet ein selbstsigniertes Zertifikat, um die Konnektivität mit dem Endpunkt zu schützen, und muss manuell als vertrauenswürdig eingestuft werden. Führen Sie die folgenden Schritte aus, um den Endpunkt über die Benutzeroberfläche mit Ihrem gewünschten Webbrowser zu nutzen:
 
-1. Laden Sie das selbstsignierte Zertifikat des Emulators unbedingt herunter.
+1. Vergewissern Sie sich, dass Sie das selbstsignierte Zertifikat des Emulators herunter geladen haben.
 
    ```bash
    curl -k https://$ipaddr:8081/_explorer/emulator.pem > emulatorcert.crt
@@ -100,6 +86,8 @@ Der Emulator verwendet ein selbstsigniertes Zertifikat, um die Konnektivität mi
 1. Nachdem die Datei *emulatorcert.crt* in den Schlüsselbund geladen wurde, doppelklicken Sie auf den Namen **localhost**, und ändern Sie die Einstellung für die Vertrauensstellung in **Immer vertrauen**.
 
 1. Sie können nun zu `https://localhost:8081/_explorer/index.html` oder `https://{your_local_ip}:8081/_explorer/index.html` navigieren und die Verbindungszeichenfolge des Emulators abrufen.
+
+Optional können Sie die SSL-Überprüfung für die Anwendung deaktivieren. Dies wird nur zu Entwicklungszwecken empfohlen und sollte bei der Ausführung in einer Produktionsumgebung nicht gemacht werden.
 
 ## <a name="run-the-linux-emulator-on-linux-os"></a><a id="run-on-linux"></a>Ausführen des Linux-Emulators unter Linux
 
@@ -189,9 +177,35 @@ In diesem Abschnitt finden Sie Tipps zur Problembehandlung von Fehlern bei Verwe
 
 - Stellen Sie sicher, dass das selbstsignierte Zertifikat des Emulators ordnungsgemäß zum [Schlüsselbund](#consume-endpoint-ui) hinzugefügt wurde.
 
-- Stellen Sie sicher, dass das selbstsignierte Zertifikat des Emulators ordnungsgemäß in den erwarteten Speicherort importiert wurde:
-  - .NET: Siehe Abschnitt [Zertifikate](#run-on-linux)
-  - Java: Siehe Abschnitt [Java-Zertifikatspeicher](#run-on-linux)
+- Vergewissern Sie sich bei Java-Anwendungen, dass das Zertifikat in den [Abschnitt „Java Certificates Store“](#run-on-linux) importiert wurde.
+
+- Für .NET-Anwendungen können Sie die SSL-Überprüfung deaktivieren:
+
+# <a name="net-standard-21"></a>[.NET Standard 2.1+](#tab/ssl-netstd21)
+
+Für alle Anwendungen, die unter einem Framework mit .NET Standard 2.1-Kompatibilität (oder höher) ausgeführt werden, können wir `CosmosClientOptions.HttpClientFactory` nutzen:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard21)]
+
+# <a name="net-standard-20"></a>[.NET-Standard 2.0](#tab/ssl-netstd20)
+
+Für alle Anwendungen, die unter einem mit .NET Standard 2.0 kompatiblen Framework ausgeführt werden, können wir `CosmosClientOptions.HttpClientFactory` nutzen:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
+
+---
+
+#### <a name="my-nodejs-app-is-reporting-a-self-signed-certificate-error"></a>Meine Node.js-App meldet einen Fehler in Zusammenhang mit einem selbstsignierten Zertifikat.
+
+Wenn Sie versuchen, über eine andere Adresse als `localhost`, z. B. die IP-Adresse des Containers, eine Verbindung zum Emulator herzustellen, löst Node.js einen Fehler für das selbstsignierte Zertifikat aus – auch dann, wenn das Zertifikat installiert wurde.
+
+Sie können die TLS-Überprüfung deaktivieren, indem Sie die Umgebungsvariable `NODE_TLS_REJECT_UNAUTHORIZED` auf `0` festlegen:
+
+```bash
+NODE_TLS_REJECT_UNAUTHORIZED=0
+```
+
+Dieses Flag wird nur für die lokale Entwicklung empfohlen, da es TLS für Node.js deaktiviert. Weitere Informationen finden Sie in der [Node.js-Dokumentation](https://nodejs.org/api/cli.html#cli_node_tls_reject_unauthorized_value) und in der [Dokumentation zu Cosmos DB Emulatorzertifikaten](local-emulator-export-ssl-certificates.md#how-to-use-the-certificate-in-nodejs).
 
 #### <a name="the-docker-container-failed-to-start"></a>Fehler beim Starten des Docker-Containers
 

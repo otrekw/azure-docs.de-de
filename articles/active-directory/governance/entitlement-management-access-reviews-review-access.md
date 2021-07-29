@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1115c08214db19227b4b8d7be671ce4da1cf2b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1a3a146b2622963fb20deeb2a8915eadb028ac3
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798596"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714402"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Zugriffsüberprüfung für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -31,8 +31,7 @@ Die Azure AD-Berechtigungsverwaltung erleichtert Unternehmen die Verwaltung des 
 
 Um die aktiven Zugriffspaketzuweisungen eines Benutzers zu überprüfen, müssen zunächst die Voraussetzungen zum Durchführen einer Zugriffsüberprüfung erfüllt sein:
 - Azure AD Premium P2
-- Globaler Administrator
-- Designierter Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+- Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 Weitere Informationen finden Sie unter [Lizenzanforderungen](entitlement-management-overview.md#license-requirements).
 

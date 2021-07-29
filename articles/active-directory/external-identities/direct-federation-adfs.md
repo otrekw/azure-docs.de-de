@@ -1,6 +1,6 @@
 ---
-title: 'Aufbau eines direkten Verbunds mit AD FS für B2B: Azure AD | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie AD FS als Identitätsanbieter für den direkten Verbund einrichten können, damit sich Gäste bei Ihren Azure AD-Apps anmelden können.
+title: Einrichten eines SAML/WS-Fed IdP-Verbunds mit AD FS für B2B – Azure AD
+description: Erfahren Sie, wie Sie AD FS als Identitätsanbieter (IdP) für einen SAML/WS-Fed IdP-Verbund einrichten können, damit sich Gäste bei Ihren Azure AD-Apps anmelden können
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,27 +12,29 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc66dec0ff66e61038503b752f6bd1f2760e9859
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 984ddc25f11f76ba8dbe0874ac5aa64c15ebf323
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162993"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758463"
 ---
-# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Beispiel: direkter Verbund mit Active Directory-Verbunddienste (AD FS) (Vorschau)
+# <a name="example-configure-samlws-fed-based-identity-provider-federation-with-ad-fs-preview"></a>Beispiel: Konfigurieren des SAML/WS-Fed-basierten Identitätsanbieterverbunds mit AD FS (Vorschau)
+
+>[!NOTE]
+>- Ein *Direkter Verbund* in Azure Active Directory wird jetzt als *SAML/WS-Fed-Identitätsanbieterverbund (IdP)* bezeichnet.
+>- SAML/WS-Fed IdP-Verbund ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Dieser Artikel beschreibt, wie Sie einen [SAML/WS-Fed IdP-Verbund](direct-federation.md) mit Active Directory-Verbunddiensten (AD FS) als SAML 2.0 oder WS-Fed-IdP einrichten. Um den Verbund zu unterstützen, müssen beim Identitätsanbieter bestimmte Attribute und Ansprüche konfiguriert werden. Wir verwenden als Beispiel Active Directory-Verbunddienste (AD FS), um zu veranschaulichen, wie ein Identitätsanbieter für einen Verbund konfiguriert wird. Wir zeigen, wie man AD FS sowohl als SAML-Identitätsanbieter als auch als WS-Fed-Identitätsanbieter einrichtet.
 
 > [!NOTE]
-> Ein direkter Verbund ist eine Public Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Dieser Artikel beschreibt, wie Sie AD FS sowohl für SAML als auch für WS-Verbund zur Veranschaulichung einrichten. Für Verbundintegrationen, bei denen der Identitätsanbieter AD FS ist, wird empfohlen WS-Fed als Protokoll zu verwenden.
 
-Dieser Artikel beschreibt, wie Sie einen [direkten Verbund](direct-federation.md) mit Active Directory-Verbunddienste (AD FS) als SAML 2.0- oder WS-Fed-Identitätsanbieter einrichten. Damit der direkte Verbund unterstützt wird, müssen beim Identitätsanbieter bestimmte Attribute und Ansprüche konfiguriert werden. Wir verwenden als Beispiel Active Directory-Verbunddienste (AD FS), um zu veranschaulichen, wie ein Identitätsanbieter für den direkten Verbund konfiguriert wird. Wir zeigen, wie man AD FS sowohl als SAML-Identitätsanbieter als auch als WS-Verbund-Identitätsanbieter einrichtet.
+## <a name="configure-ad-fs-for-saml-20-federation"></a>Konfigurieren von AD FS für den SAML 2.0-Verbund
 
-> [!NOTE]
-> Dieser Artikel beschreibt, wie Sie AD FS sowohl für SAML als auch für WS-Verbund zur Veranschaulichung einrichten. Für die Integration eines direkten Verbunds, bei dem der Identitätsanbieter AD FS ist, empfehlen wir die Verwendung von WS-Verbund als Protokoll. 
+Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsanbietern bildet, die das SAML-Protokoll mit den unten aufgeführten bestimmten Anforderungen verwenden. Für die Veranschaulichung der SAML-Konfiguration wird in diesem Abschnitt gezeigt, wie AD FS für SAML 2.0 eingerichtet wird.
 
-## <a name="configure-ad-fs-for-saml-20-direct-federation"></a>Konfigurieren von AD FS für den direkten SAML 2.0-Verbund
-Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsanbietern bildet, die das SAML-Protokoll mit den unten aufgeführten spezifischen Anforderungen verwenden. Für die Veranschaulichung der SAML-Konfiguration wird in diesem Abschnitt gezeigt, wie AD FS für SAML 2.0 eingerichtet wird. 
-
-Die folgenden Attribute müssen in der SAML 2.0-Antwort vom Identitätsanbieter empfangen werden, um einen direkten Verbund einzurichten. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden. Schritt 12 unter [Erstellen einer AD FS-Testinstanz](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschreibt, wie Sie die AD FS-Endpunkte finden oder wie Sie Ihre Metadaten-URL generieren, z. B. `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
+Die folgenden Attribute müssen in der SAML 2.0-Antwort vom Identitätsanbieter empfangen werden, um einen Verbund einzurichten. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden. Schritt 12 unter [Erstellen einer AD FS-Testinstanz](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschreibt, wie Sie die AD FS-Endpunkte finden oder wie Sie Ihre Metadaten-URL generieren, z. B. `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
 
 |attribute  |Wert  |
 |---------|---------|
@@ -49,7 +51,7 @@ Die folgenden Ansprüche müssen in dem vom Identitätsanbieter ausgegebenen SAM
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
 
-Im nächsten Abschnitt wird veranschaulicht, wie Sie die erforderlichen Attribute und Ansprüche unter Verwendung von AD FS als Beispiel für einen SAML 2.0-Identitätsanbieter konfigurieren.
+Im nächsten Abschnitt wird veranschaulicht, wie die erforderlichen Attribute und Ansprüche unter Verwendung von AD FS als ein Beispiel für einen SAML 2.0-Identitätsanbieter, konfiguriert werden.
 
 ### <a name="before-you-begin"></a>Voraussetzungen
 
@@ -99,13 +101,13 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
    - Wählen Sie **Durchlauf aller Anspruchswerte**.
 
 3. Klicken Sie auf **Fertig stellen**. 
-4. Im Fenster **Anspruchsregeln bearbeiten** werden die neuen Regeln angezeigt. Klicken Sie auf **Übernehmen**. 
-5. Klicken Sie auf **OK**. Der AD FS-Server ist jetzt für den direkten Verbund mit dem SAML 2.0-Protokoll konfiguriert.
+4. Im Fenster **Anspruchsregeln bearbeiten** werden die neuen Regeln angezeigt. Klicken Sie auf **Anwenden**. 
+5. Klicken Sie auf **OK**. Der AD FS-Server ist jetzt für den Verbund mit dem SAML 2.0-Protokoll konfiguriert.
 
-## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>Konfigurieren von AD FS für den direkten WS-Verbund 
-Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsanbietern bildet, die das WS-Verbund-Protokoll mit den unten aufgeführten spezifischen Anforderungen verwenden. Derzeit sind die beiden WS-Verbund-Anbieter auf Kompatibilität mit Azure AD getestet, einschließlich AD FS und Shibboleth. Hier werden wir Active Directory-Verbunddienste (AD FS) als Beispiel für den WS-Verbund-Identitätsanbieter verwenden. Weitere Informationen zum Aufbau einer Vertrauensstellung der vertrauenden Seite zwischen einem mit WS-Verbund kompatiblen Anbieter mit Azure AD finden Sie in den Dokumenten zur Kompatibilität des Azure AD-Identitätsanbieters.
+## <a name="configure-ad-fs-for-ws-fed-federation"></a>Konfigurieren von AD FS für den WS-Fed Verbund 
+Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsanbietern bildet, die das WS-Fed-Protokoll mit den unten aufgeführten bestimmten Anforderungen verwenden. Derzeit sind die beiden WS-Verbund-Anbieter auf Kompatibilität mit Azure AD getestet, einschließlich AD FS und Shibboleth. Hier werden wir Active Directory-Verbunddienste (AD FS) als Beispiel für den WS-Fed-Identitätsanbieter verwenden. Weitere Informationen zum Aufbau einer Vertrauensstellung der vertrauenden Seite zwischen einem mit WS-Verbund kompatiblen Anbieter mit Azure AD finden Sie in den Dokumenten zur Kompatibilität des Azure AD-Identitätsanbieters.
 
-Zum Einrichten eines direkten Verbunds müssen die folgenden Attribute in der WS-Verbund-Nachricht vom Identitätsanbieter empfangen werden. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden. Schritt 12 unter [Erstellen einer AD FS-Testinstanz](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschreibt, wie Sie die AD FS-Endpunkte finden oder wie Sie Ihre Metadaten-URL generieren, z. B. `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
+Die folgenden Attribute müssen in der WS-Fed Nachricht vom Identitätsanbieter empfangen werden, um einen Verbund einzurichten. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden. Schritt 12 unter [Erstellen einer AD FS-Testinstanz](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschreibt, wie Sie die AD FS-Endpunkte finden oder wie Sie Ihre Metadaten-URL generieren, z. B. `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
  
 |attribute  |Wert  |
 |---------|---------|
@@ -120,7 +122,7 @@ Erforderliche Ansprüche für das vom Identitätsanbieter ausgegebene WS-Verbund
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-Im nächsten Abschnitt wird veranschaulicht, wie Sie die erforderlichen Attribute und Ansprüche unter Verwendung von AD FS als Beispiel für einen WS-Verbund-Identitätsanbieter konfigurieren können.
+Im nächsten Abschnitt wird veranschaulicht, wie Sie die erforderlichen Attribute und Ansprüche unter Verwendung von AD FS als ein Beispiel für einen WS-Fed-Identitätsanbieter konfigurieren.
 
 ### <a name="before-you-begin"></a>Voraussetzungen
 Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie mit diesem Vorgang beginnen. Hilfe bei der Einrichtung eines AD FS-Servers finden Sie unter [Erstellen einer AD FS 3.0-Testinstanz auf einem virtuellen Azure-Computer](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
@@ -139,7 +141,7 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
    - **Benutzerdefinierte Regel**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
 1. Wählen Sie **Fertig stellen** aus. 
-1. Im Fenster **Anspruchsregeln bearbeiten** wird die neue Regel angezeigt. Klicken Sie auf **Übernehmen**.  
+1. Im Fenster **Anspruchsregeln bearbeiten** wird die neue Regel angezeigt. Klicken Sie auf **Anwenden**.  
 1. Wählen Sie im gleichen Assistenten zum **Bearbeiten von Anspruchsregeln** die Option **Regel hinzufügen** aus. Wählen Sie unter **Regeltyp auswählen** die Option **LDAP-Attribute als Ansprüche senden** aus. Wählen Sie **Weiter** aus.
 1. Geben Sie unter **Anspruchsregel konfigurieren** die folgenden Werte an: 
 
@@ -149,8 +151,8 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
    - **Typ des ausgehenden Anspruchs:** E-Mail-Adresse 
 
 1.  Wählen Sie **Fertig stellen** aus. 
-1.  Im Fenster **Anspruchsregeln bearbeiten** wird die neue Regel angezeigt. Klicken Sie auf **Übernehmen**.  
-1.  Klicken Sie auf **OK**. Der AD FS-Server ist nun für den direkten Verbund mit WS-Verbund konfiguriert.
+1.  Im Fenster **Anspruchsregeln bearbeiten** wird die neue Regel angezeigt. Klicken Sie auf **Anwenden**.  
+1.  Klicken Sie auf **OK**. Der AD FS-Server ist nun für den Verbund mit WS-Fed konfiguriert.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Als Nächstes [konfigurieren Sie den direkten Verbund in Azure AD](direct-federation.md#step-3-configure-direct-federation-in-azure-ad) entweder im Azure AD-Portal oder mithilfe von PowerShell. 
+Als Nächstes [konfigurieren Sie den SAML/WS-Fed Identitätsanbieter-Verbund in Azure AD](direct-federation.md#step-3-configure-samlws-fed-idp-federation-in-azure-ad) entweder im Azure AD-Portal oder mithilfe von PowerShell.

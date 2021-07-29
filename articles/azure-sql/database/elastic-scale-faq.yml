@@ -1,0 +1,65 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen (FAQ) zur elastischen Skalierung
+  description: Häufig gestellte Fragen zur Elastic Scale-Funktion der Azure SQL-Datenbank.
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: scale-out
+  ms.custom: sqldbrb=1
+  ms.devlang: 
+  ms.topic: conceptual
+  author: scoriani
+  ms.author: scoriani
+  ms.reviewer: mathoma
+  ms.date: 01/25/2019
+  ms.openlocfilehash: c443665d50cfa0c60201a16c23b5725ff9428507
+  ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113016041"
+title: Häufig gestellte Fragen (FAQ) zu Tools für elastische Datenbanken
+summary: >
+  [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Wie wird der Shardingschlüssel für die Schemainformationen mit Daten aufgefüllt, wenn eine Einzelinstanz pro Shard und kein Shardingschlüssel verwendet wird?
+    answer: >
+      Das Schemainformationenobjekt wird zum Aufteilen von Zusammenführungsszenarien verwendet. Wenn eine Anwendung prinzipiell eine Einzelinstanz darstellt, ist das Split-Merge-Tool nicht erforderlich. Daher besteht auch keine Notwendigkeit, das Schemainformationenobjekt mit Daten aufzufüllen.
+  - question: >
+      Ich habe eine Datenbank bereitgestellt und verfüge bereits über einen Shardzuordnungs-Manager. Wie registriere ich diese neue Datenbank als Shard?
+    answer: >
+      Weitere Informationen finden Sie unter [Hinzufügen eines Shards zu einer Anwendung mithilfe der Clientbibliothek für elastische Datenbanken](elastic-scale-add-a-shard.md).
+  - question: >
+      Was kosten Tools für elastische Datenbanken?
+    answer: >
+      Für die Verwendung der Clientbibliothek für elastische Datenbanken fallen keine Kosten an. Es entstehen nur Kosten für die Datenbanken in Azure SQL-Datenbank, die Sie für Shards verwenden, und für den Shard-Zuordnungs-Manager sowie für die Web- und Workerrollen, die für das Split-Merge-Tool bereitgestellt werden.
+  - question: >
+      Warum funktionieren meine Anmeldeinformationen nicht, wenn ich einen Shard von einem anderen Server hinzufüge?
+    answer: >
+      Verwenden Sie keine Anmeldeinformationen im Format „Benutzer-ID=username@servername“, sondern einfach „Benutzer-ID = benutzername“.  Stellen Sie außerdem sicher, dass die Anmeldung "benutzername" über Berechtigungen für den Shard verfügt.
+  - question: >
+      Muss ich bei jedem Starten meiner Anwendung einen Shardzuordnungs-Manager erstellen und Shards mit Daten auffüllen?
+    answer: >
+      Nein. Das Erstellen eines Shardzuordnungs-Managers (Beispiel: [ShardMapManagerFactory.CreateSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) ist ein einmaliger Vorgang.  Ihre Anwendung sollte den Aufruf [ShardMapManagerFactory.TryGetSqlShardMapManager()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) beim Start der Anwendung verwenden.  Pro Anwendungsdomäne sollte nur ein solcher Aufruf erfolgen.
+  - question: >
+      Ich habe Fragen zur Verwendung von Tools für elastische Datenbanken. Wie erhalte ich Antworten?
+    answer: >
+      Nehmen Sie über die [Microsoft F&A-Seite für SQL-Datenbank](/answers/topics/azure-sql-database.html) Kontakt mit uns auf.
+  - question: >
+      Wenn ich eine Datenbankverbindung mithilfe eines Shardingschlüssels abrufe, kann ich weiterhin Daten für andere Shardingschlüssel auf dem gleichen Shard abfragen.  Ist dies beabsichtigt?
+    answer: >
+      Die APIs für elastische Skalierung stellen Ihnen eine Verbindung mit der richtigen Datenbank für Ihren Shardingschlüssel zur Verfügung, jedoch keine Filterung von Shardingschlüsseln.  Fügen Sie Ihrer Abfrage bei Bedarf **WHERE** -Klauseln hinzu, um den Bereich für den bereitgestellten Shardingschlüssel einzuschränken.
+  - question: >
+      Kann ich eine andere SQL-Datenbank-Edition für jeden Shard in meiner Shardsammlung verwenden?
+    answer: >
+      Ja, das ist möglich. Ein Shard ist eine einzelne Datenbank, daher kann ein Shard z. B. eine Premium-Edition verwenden, ein anderer eine Standard-Edition. Außerdem kann die Edition eines Shards während der Lebensdauer eines Shards mehrmals hoch- oder herunterskaliert werden.
+  - question: >
+      Stellt das Split-Merge-Tool eine Datenbank während eines Aufteilungs- oder Zusammenführungsvorgangs bereit bzw. löscht sie?
+    answer: >-
+      Nein. Bei **split** -Vorgängen muss die Zieldatenbank mit dem entsprechenden Schema vorhanden und beim Shard-Zuordnungs-Manager registriert sein.  Für **merge** -Vorgänge müssen Sie den Shard aus dem Shard-Zuordnungs-Manager löschen und dann die Datenbank löschen.
+
+
+      [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

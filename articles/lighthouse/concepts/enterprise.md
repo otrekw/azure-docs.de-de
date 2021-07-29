@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse in Unternehmensszenarien
 description: Die Funktionen von Azure Lighthouse können zum Vereinfachen der mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, verwendet werden.
-ms.date: 03/12/2021
+ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 97b44f71750bdb533e889546f370a9b36ea5d3b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 139c7be2c1736841e81e70aa562ab9841fd76337
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419353"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788713"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse in Unternehmensszenarien
 
@@ -20,7 +20,7 @@ Für die meisten Organisationen ist die Verwaltung mit nur einem Azure AD-Mandan
 
 Einige Organisationen müssen möglicherweise mit mehreren Azure AD-Mandanten arbeiten. Dies kann vorübergehend erforderlich sein, wenn beispielsweise Übernahmen erfolgt sind und noch keine langfristige Konsolidierungsstrategie für Mandanten definiert wurde. Es kann auch sein, dass Organisationen aufgrund von unabhängigen Tochtergesellschaften, geografischen oder rechtlichen Anforderungen oder anderen Aspekten fortlaufend mehrere Mandanten verwalten müssen.
 
-Falls eine Architektur mit mehreren Mandanten benötigt wird, kann Azure Lighthouse zur Zentralisierung und Optimierung von Verwaltungsvorgängen beitragen. Durch Verwendung der [delegierten Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) können Benutzer in einem verwalteten Mandanten [mandantenübergreifende Verwaltungsfunktionen](cross-tenant-management-experience.md) zentral und skalierbar ausführen.
+Falls eine Architektur mit mehreren Mandanten benötigt wird, kann Azure Lighthouse zur Zentralisierung und Optimierung von Verwaltungsvorgängen beitragen. Durch Verwendung der [delegierten Azure-Ressourcenverwaltung](architecture.md) können Benutzer in einem verwalteten Mandanten [mandantenübergreifende Verwaltungsfunktionen](cross-tenant-management-experience.md) zentral und skalierbar ausführen.
 
 ## <a name="tenant-management-architecture"></a>Architektur für die Mandantenverwaltung
 
@@ -61,4 +61,4 @@ Zur Fortführung dieses Beispiels können Benutzer in Mandant A, die über die 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie über [Mandantenübergreifende Verwaltungsmöglichkeiten](cross-tenant-management-experience.md).
-- Informationen zur [delegierten Azure-Ressourcenverwaltung](azure-delegated-resource-management.md)
+- Hier erfahren Sie mehr über die [Funktionsweise von Azure Lighthouse](architecture.md).

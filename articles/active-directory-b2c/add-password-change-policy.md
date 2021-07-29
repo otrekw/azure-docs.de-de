@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 05/03/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cd63144074577d4ff3564da41e672dd1ca226dcb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: f359595a136a356938194f2df728935c80059008
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257159"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742875"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren der Kennwortänderung mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -160,7 +160,7 @@ In Azure Active Directory B2C (Azure AD B2C) können Sie mit einem lokalen Konto
 
 1. Öffnen Sie die Richtlinie, die Sie geändert haben. Beispiel: *B2C_1A_profile_edit_password_change*.
 2. Wählen Sie für **Anwendung** Ihre Anwendung aus, die Sie zuvor registriert haben. Um das Token anzuzeigen, muss als **Antwort-URL** der Wert `https://jwt.ms` angegeben werden.
-3. Klicken Sie auf **Jetzt ausführen**. Melden Sie sich mit dem Konto an, das Sie zuvor erstellt haben. Jetzt sollten Sie die Möglichkeit haben, das Kennwort zu ändern.
+3. Klicken Sie auf **Jetzt ausführen**. Entfernen Sie auf der neu geöffneten Registerkarte „&amp;prompt=login“ aus der URL, und aktualisieren Sie die Registerkarte. Melden Sie sich dann mit dem Konto an, das Sie zuvor erstellt haben. Jetzt haben Sie die Möglichkeit, das Kennwort zu ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

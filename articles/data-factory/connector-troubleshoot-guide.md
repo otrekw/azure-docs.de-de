@@ -4,15 +4,15 @@ description: Es wird beschrieben, wie Sie in Azure Data Factory Connectorproblem
 author: jianleishen
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/13/2021
+ms.date: 06/07/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref
-ms.openlocfilehash: c08456b08b6b11745cced97fd92417f07af23dda
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 7407a28c442ce2ddc7fe9df3fdd71c5af4c488bc
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484827"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971895"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Problembehandlung für Azure Data Factory-Connectors
 
@@ -218,7 +218,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
     | Wenn die Fehlermeldung die Zeichenfolge „SqlErrorNumber=47073“ enthält, bedeutet dies für Azure SQL, dass der öffentliche Netzwerkzugriff in der Konnektivitätseinstellung verweigert wird. | Legen Sie in der Azure SQL-Firewall die Option **Öffentlichen Netzwerkzugriff verweigern** auf *Nein* fest. Weitere Informationen finden Sie unter [Azure SQL-Konnektivitätseinstellungen](../azure-sql/database/connectivity-settings.md#deny-public-network-access). |
     | Wenn die Fehlermeldung bei Azure SQL einen SQL-Fehlercode wie „SqlErrorNumber=[errorcode]“ enthält, finden Sie weitere Informationen im Leitfaden zur Problembehandlung von Azure SQL. | Eine Empfehlung finden Sie unter [Beheben von Konnektivitätsproblemen und anderen Fehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance](../azure-sql/database/troubleshoot-common-errors-issues.md). |
-    | Überprüfen Sie, ob Port 1433 in der Zulassungsliste der Firewall enthalten ist. | Weitere Informationen finden Sie unter [Von SQL Server verwendete Ports](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
+    | Überprüfen Sie, ob Port 1433 in der Positivliste der Firewall enthalten ist. | Weitere Informationen finden Sie unter [Von SQL Server verwendete Ports](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
     | Wenn die Fehlermeldung die Zeichenfolge „SqlException“ enthält, bedeutet dies für SQL-Datenbank, dass für einen bestimmten Vorgang ein Fehler aufgetreten ist. | Um weitere Informationen dazu zu erhalten, suchen Sie in [Datenbank-Engine-Fehler](/sql/relational-databases/errors-events/database-engine-events-and-errors) nach dem SQL-Fehlercode. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support. |
     | Wenn dies ein vorübergehendes Problem ist (z. B. eine instabile Netzwerkverbindung), fügen Sie zur Behebung in der Aktivitätsrichtlinie einen Wiederholungsversuch hinzu. | Weitere Informationen finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](./concepts-pipelines-activities.md#activity-policy). |
     | Wenn die Fehlermeldung die Zeichenfolge „Client with IP address '…' is not allowed to access the server“ enthält und Sie versuchen, eine Verbindung zu Azure SQL-Datenbank herzustellen, wird dieser Fehler in der Regel durch ein Problem mit der Firewall von Azure SQL-Datenbank verursacht. | Aktivieren Sie in der Azure SQL Server-Firewallkonfiguration die Option **Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten**. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure Synapse](../azure-sql/database/firewall-configure.md). |
@@ -499,7 +499,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
   | Wenn Ihre Quelle ein Ordner ist, weisen die Dateien im angegebenen Ordner möglicherweise ein anderes Schema auf. | Stellen Sie sicher, dass die Dateien im angegebenen Ordner ein identisches Schema aufweisen. |
 
 
-## <a name="dynamics-365-common-data-service-and-dynamics-crm"></a>Dynamics 365, Common Data Service, Dynamics CRM
+## <a name="dynamics-365-dataverse-common-data-service-and-dynamics-crm"></a>Dynamics 365, Dataverse (Common Data Service) und Dynamics CRM
 
 ### <a name="error-code-dynamicscreateserviceclienterror"></a>Fehlercode: DynamicsCreateServiceClientError
 
@@ -557,10 +557,21 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie die Netzwerkkonnektivität, oder suchen Sie im Dynamics-Serverprotokoll nach weiteren Details. Wenden Sie sich an den Dynamics-Support, um weitere Unterstützung zu erhalten.
 
 
-### <a name="error-code--dynamicsfailedtoconnect"></a>Fehlercode: DynamicsFailedToConnect 
+### <a name="error-code-dynamicsfailedtoconnect"></a>Fehlercode: DynamicsFailedToConnect 
  
  - **Meldung**: `Failed to connect to Dynamics: %message;` 
  
+ - **Ursache**: Es wird `ERROR REQUESTING ORGS FROM THE DISCOVERY SERVERFCB 'EnableRegionalDisco' is disabled.` oder andernfalls `Unable to Login to Dynamics CRM, message:ERROR REQUESTING Token FROM THE Authentication context - USER intervention required but not permitted by prompt behavior AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access '00000007-0000-0000-c000-000000000000'` angezeigt, wenn Ihr Anwendungsfall **alle** der folgenden drei Bedingungen erfüllt:
+    - Sie stellen eine Verbindung mit Dynamics 365, Common Data Service oder Dynamics CRM her.
+    - Sie verwenden die Office 365-Authentifizierung.
+    - Ihr Mandant und der Benutzer sind in Azure Active Directory für den [bedingten Zugriff](../active-directory/conditional-access/overview.md) konfiguriert, und/oder eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist erforderlich (weitere Informationen hierzu finden Sie unter diesem [Link](/powerapps/developer/data-platform/authenticate-office365-deprecation) zur Dataverse-Dokumentation).
+    
+    Unter diesen Umständen war die Verbindung vor dem 08.06.2021 erfolgreich.
+    Ab dem 09.06.2021 kann die Verbindung aufgrund der Außerbetriebnahme des regionalen Ermittlungsdiensts nicht hergestellt werden (weitere Informationen hierzu finden Sie unter diesem [Link](/power-platform/important-changes-coming#regional-discovery-service-is-deprecated)).
+ 
+ -  **Empfehlung**:  
+    Wenn Ihr Mandant und der Benutzer in Azure Active Directory für den [bedingten Zugriff](../active-directory/conditional-access/overview.md) konfiguriert sind und/oder eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erforderlich ist, müssen Sie nach dem 08.06.2021 den Azure AD-Dienstprinzipal für die Authentifizierung verwenden. Ausführliche Schritte finden Sie unter diesem [Link](./connector-dynamics-crm-office-365.md#prerequisites).
+
 
  - **Ursache**: Wenn `Office 365 auth with OAuth failed` in der Fehlermeldung angezeigt wird, bedeutet dies, dass Ihr Server möglicherweise einige Konfigurationen aufweist, die nicht mit OAuth kompatibel sind. 
  
@@ -603,7 +614,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
  - **Empfehlung**: Verwenden Sie [XrmToolBox,](https://www.xrmtoolbox.com/) um eine Verbindung herzustellen. Wenn der Fehler weiterhin auftritt, wenden Sie sich an das Dynamics-Supportteam, um Hilfe zu erhalten. 
  
  
-### <a name="error-code--dynamicsoperationfailed"></a>Fehlercode: DynamicsOperationFailed 
+### <a name="error-code-dynamicsoperationfailed"></a>Fehlercode: DynamicsOperationFailed 
  
 - **Meldung**: `Dynamics operation failed with error code: %code;, error message: %message;.` 
 
@@ -612,7 +623,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**: Extrahieren Sie den Fehlercode des Dynamics-Vorgangs aus der Fehlermeldung : `Dynamics operation failed with error code: {code}`. Ausführlichere Informationen finden Sie im Artikel [Webdienstfehlercodes](/powerapps/developer/data-platform/org-service/web-service-error-codes). Sie können sich bei Bedarf an das Dynamics-Supportteam wenden. 
  
  
-### <a name="error-code--dynamicsinvalidfetchxml"></a>Fehlercode: DynamicsInvalidFetchXml 
+### <a name="error-code-dynamicsinvalidfetchxml"></a>Fehlercode: DynamicsInvalidFetchXml 
   
 - **Meldung**: `The Fetch Xml query specified is invalid.` 
 
@@ -621,7 +632,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**: Beheben Sie den Fehler im XML-Abruf. 
  
  
-### <a name="error-code--dynamicsmissingkeycolumns"></a>Fehlercode: DynamicsMissingKeyColumns 
+### <a name="error-code-dynamicsmissingkeycolumns"></a>Fehlercode: DynamicsMissingKeyColumns 
  
 - **Meldung**: `Input DataSet must contain keycolumn(s) in Upsert/Update scenario. Missing key column(s): %column;`
  
@@ -630,7 +641,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**: Vergewissern Sie sich, dass sich Schlüsselspalten in den Quelldaten befinden, oder ordnen Sie der Schlüsselspalte in der Senkenentität eine Quellspalte zu. 
  
  
-### <a name="error-code--dynamicsprimarykeymustbeguid"></a>Fehlercode:  DynamicsPrimaryKeyMustBeGuid 
+### <a name="error-code-dynamicsprimarykeymustbeguid"></a>Fehlercode: DynamicsPrimaryKeyMustBeGuid 
  
 - **Meldung**: `The primary key attribute '%attribute;' must be of type guid.` 
  
@@ -639,7 +650,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**: Stellen Sie sicher, dass die Primärschlüsselspalte in den Quelldaten vom Typ „Guid“ ist. 
  
 
-### <a name="error-code--dynamicsalternatekeynotfound"></a>Fehlercode: DynamicsAlternateKeyNotFound 
+### <a name="error-code-dynamicsalternatekeynotfound"></a>Fehlercode: DynamicsAlternateKeyNotFound 
  
 - **Meldung**: `Cannot retrieve key information of alternate key '%key;' for entity '%entity;'.` 
  
@@ -650,7 +661,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
     1. Stellen Sie sicher, dass Sie über ausreichende Berechtigungen für die Entität verfügen. 
  
  
-### <a name="error-code--dynamicsinvalidschemadefinition"></a>Fehlercode: DynamicsInvalidSchemaDefinition 
+### <a name="error-code-dynamicsinvalidschemadefinition"></a>Fehlercode: DynamicsInvalidSchemaDefinition 
  
 - **Meldung**: `The valid structure information (column name and type) are required for Dynamics source.` 
  
@@ -1003,8 +1014,8 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
     Wenn Sie den niedrigen Durchsatz steigern möchten, wenden Sie sich an den SFTP-Administrator, damit dieser die Anzahl gleichzeitiger Verbindungen erhöht, oder führen Sie eine der folgenden Aktionen aus:
 
-    * Wenn Sie selbstgehostete IR verwenden, fügen Sie die IP-Adresse des selbstgehosteten IR-Computers der Zulassungsliste hinzu.
-    * Wenn Sie Azure IR verwenden, fügen Sie [IP-Adressen von Azure Integration Runtime](./azure-integration-runtime-ip-addresses.md) hinzu. Wenn Sie der Zulassungsliste des SFTP-Servers keinen Bereich von IP-Adressen hinzufügen möchten, verwenden Sie stattdessen selbstgehostete IR.
+    * Fügen Sie bei Verwendung der selbstgehosteten IR der Positivliste die IP-Adresse des selbstgehosteten IR-Computers hinzu.
+    * Wenn Sie Azure IR verwenden, fügen Sie [IP-Adressen von Azure Integration Runtime](./azure-integration-runtime-ip-addresses.md) hinzu. Wenn Sie der Positivliste des SFTP-Servers keinen Bereich von IP-Adressen hinzufügen möchten, verwenden Sie stattdessen die selbstgehostete IR.
 
 ## <a name="sharepoint-online-list"></a>SharePoint Online-Liste
 

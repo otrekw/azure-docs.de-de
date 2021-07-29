@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.date: 05/26/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 5efe15ba6dafd80ca91a1d45f75ebcc85513c9dd
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: aad92516841be1fc8552bbea8fc6b256cd080160
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748426"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028989"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Azure App Configuration mittels Azure Active Directory
 Neben der Verwendung von Hash-based Message Authentication Code (HMAC) unterstützt Azure App Configuration die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an App Configuration-Instanzen.  Azure AD gestattet Ihnen die Verwendung der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC), um einem Sicherheitsprinzipal Berechtigungen zu erteilen.  Ein Sicherheitsprinzipal kann ein Benutzer, eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) oder ein [Anwendungsdienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) sein.  Weitere Informationen zu Rollen und Rollenzuweisungen finden Sie unter [Grundlegendes zu verschiedenen Rollen](../role-based-access-control/overview.md).
@@ -28,14 +28,14 @@ Der Autorisierungsschritt erfordert, dass dem Sicherheitsprinzipal mindestens ei
 ## <a name="assign-azure-roles-for-access-rights"></a>Zuweisen von Azure-Rollen für Zugriffsrechte
 Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf geschützte Ressourcen über die [rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/overview.md) (Azure Role-Based Access Control, Azure RBAC).
 
-Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Umfang des Zugriffs ist auf die App Configuration-Ressource beschränkt. Ein Azure AD-Sicherheitsprinzipal kann ein Benutzer, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) sein.
+Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Umfang des Zugriffs ist auf die App Configuration-Ressource beschränkt. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) sein.
 
 ## <a name="azure-built-in-roles-for-azure-app-configuration"></a>Integrierte Azure-Rollen für Azure App Configuration
-Azure stellt die folgenden integrierten Azure Rollen zum Autorisieren des Zugriffs auf App Configuration-Daten mittels Azure AD und OAuth bereit:
+Azure stellt die folgenden integrierten Azure-Rollen zum Autorisieren des Zugriffs auf App Configuration-Daten mittels Azure AD bereit:
 
 - **App Configuration-Datenbesitzer:** Verwenden Sie diese Rolle, um Lese-, Schreib- und Löschzugriff auf App Configuration-Daten zu gewähren. Dadurch wird kein Zugriff auf die App Configuration-Ressource gewährt.
 - **App Configuration-Datenleser:** Verwenden Sie diese Rolle, um Lesezugriff auf App Configuration-Daten zu gewähren. Dadurch wird kein Zugriff auf die App Configuration-Ressource gewährt.
-- **Mitwirkender**: Verwenden Sie diese Rolle, um die App Configuration-Ressource zu verwalten. Obwohl auf die App Configuration-Daten mithilfe von Zugriffsschlüsseln zugegriffen werden kann, wird mit dieser Rolle kein direkter Zugriff auf die Daten unter Verwendung von Azure AD gewährt.
+- **Mitwirkender** oder **Besitzer**: Verwenden Sie diese Rolle, um die App Configuration-Ressource zu verwalten. Sie gewährt Zugriff auf die Zugriffsschlüssel der Ressource. Obwohl auf die App Configuration-Daten mithilfe von Zugriffsschlüsseln zugegriffen werden kann, wird mit dieser Rolle kein direkter Zugriff auf die Daten unter Verwendung von Azure AD gewährt.
 - **Leser:** Verwenden Sie diese Rolle, um Lesezugriff auf die App Configuration-Ressource zu gewähren. Dadurch wird weder Zugriff auf die Zugriffsschlüssel der Ressource noch auf die in App Configuration gespeicherten Daten gewährt.
 
 > [!NOTE]

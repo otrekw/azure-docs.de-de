@@ -25,12 +25,6 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: Herstellen von Verbindungen zwischen virtuellen Netzwerken
       href: tutorial-connect-virtual-networks-portal.md
-    - name: Erstellen und Überprüfen eines NAT-Gateways
-      href: tutorial-create-nat-gateway-portal.md
-    - name: "Integrieren des öffentlichen Lastenausgleichs von NAT\_Gateway"
-      href: tutorial-nat-gateway-load-balancer-public-portal.md
-    - name: "Integrieren des internen Lastenausgleichs von NAT\_Gateway"
-      href: tutorial-nat-gateway-load-balancer-internal-portal.md
 - name: Beispiele
   items:
     - name: Azure CLI
@@ -47,16 +41,6 @@
       href: virtual-network-disaster-recovery-guidance.md
     - name: Konnektivität
       items:
-        - name: NAT
-          items:
-            - name: Übersicht
-              href: nat-overview.md
-            - name: Resource
-              href: nat-gateway-resource.md
-            - name: Metriken und Warnungen
-              href: nat-metrics.md
-            - name: Problembehandlung
-              href: troubleshoot-nat.md
         - name: Routing
           href: virtual-networks-udr-overview.md
         - name: Interoperabilität der Back-End-Konnektivität
@@ -95,10 +79,12 @@
           href: private-ip-addresses.md
         - name: Präfix für öffentliche IP-Adressen
           href: public-ip-address-prefix.md
+        - name: Verwalten öffentlicher IP-Adressen
+          href: virtual-network-public-ip-address.md
+        - name: Verwalten des Präfixes für öffentliche IP-Adressen
+          href: manage-public-ip-address-prefix.md
         - name: IPv6 für Azure VNET
           href: ipv6-overview.md
-        - name: Präfix für öffentliche IPv6-Adressen
-          href: ipv6-public-ip-address-prefix.md
         - name: Routingpräferenz
           href: routing-preference-overview.md
         - name: Routing Preference Unmetered
@@ -214,74 +200,90 @@
           href: deploy-container-networking.md
     - name: IP-Dienste
       items:
-        - name: IPv6 für VNET
+        - name: Ressourcenverwaltung
           items:
-            - name: Hinzufügen von IPv6 zu einer IPv4-Anwendung
-              items:
-                - name: Azure PowerShell
-                  href: ipv6-add-to-existing-vnet-powershell.md
-                - name: Azure CLI
-                  href: ipv6-add-to-existing-vnet-cli.md
-            - name: Öffentliche Load Balancer-Instanz im Tarif „Basic“
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
-                - name: Azure CLI
-                  href: virtual-network-ipv4-ipv6-dual-stack-cli.md
-                - name: Resource Manager-Vorlage
-                  href: ipv6-configure-template-json.md
-            - name: Öffentliche Load Balancer-Instanz im Tarif „Standard“
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-                - name: Azure CLI
-                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
-                - name: Resource Manager-Vorlage
-                  href: ipv6-configure-standard-load-balancer-template-json.md
-            - name: Interne Load Balancer-Instanz im Tarif „Standard“
-              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
-            - name: VM-Skalierungsgruppe mit IPv6
-              href: ipv6-virtual-machine-scale-set.md
-            - name: Präfix für öffentliche IPv6-Adressen
-              href: ipv6-reserve-public-ip-address-prefix.md
-        - name: IP-Adressierung
+            - name: Load Balancer
+              href: configure-public-ip-load-balancer.md
+            - name: NAT Gateway
+              href: configure-public-ip-nat-gateway.md
+            - name: Firewall
+              href: configure-public-ip-firewall.md
+            - name: VPN-Gateway
+              href: configure-public-ip-vpn-gateway.md
+            - name: Anwendungsgateway
+              href: configure-public-ip-application-gateway.md
+            - name: Virtueller Computer
+              href: configure-public-ip-vm.md
+            - name: Bastion
+              href: configure-public-ip-bastion.md
+        - name: Erstellen einer öffentlichen IP-Adresse
           items:
-            - name: 'Erstellen öffentlicher IP-Adressen: Portal'
+            - name: 'Erstellen einer öffentlichen IP-Adresse: Portal'
               href: create-public-ip-portal.md
-            - name: 'Erstellen öffentlicher IP-Adressen: PowerShell'
+            - name: 'Erstellen einer öffentlichen IP-Adresse: PowerShell'
               href: create-public-ip-powershell.md
-            - name: 'Erstellen öffentlicher IP-Adressen: Azure CLI'
+            - name: "Erstellen einer öffentlichen IP-Adresse: Azure\_CLI"
               href: create-public-ip-cli.md
-            - name: Verwalten öffentlicher IP-Adressen
-              href: virtual-network-public-ip-address.md
-            - name: Verwalten des Präfixes für öffentliche IP-Adressen
-              href: manage-public-ip-address-prefix.md
-            - name: Ausführen eines Upgrades für öffentliche IP-Adressen
-              href: virtual-network-public-ip-address-upgrade.md
-            - name: Hinzufügen oder Entfernen einer IP-Adresse zu bzw. von NICs
-              href: virtual-network-network-interface-addresses.md
-            - name: Routingpräferenz
+            - name: 'Erstellen einer öffentlichen IP-Adresse: ARM-Vorlage'
+              href: create-public-ip-template.md
+        - name: Erstellen eines Präfixes für öffentliche IP-Adressen
+          items:
+            - name: 'Erstellen eines Präfixes für öffentliche IP-Adressen: Portal'
+              href: create-public-ip-prefix-portal.md
+            - name: Erstellen eines Präfixes für öffentliche IPv6-Adressen
+              href: ipv6-reserve-public-ip-address-prefix.md
+        - name: Upgraden einer öffentlichen IP-Adresse
+          items:
+            - name: 'Upgraden einer öffentlichen IP-Adresse: Portal'
+              href: public-ip-upgrade-portal.md
+            - name: 'Upgraden einer öffentlichen IP-Adresse: PowerShell'
+              href: public-ip-upgrade-powershell.md
+            - name: "Upgraden einer öffentlichen IP-Adresse: Azure\_CLI"
+              href: public-ip-upgrade-cli.md
+            - name: Migrieren einer klassischen reservierten IP-Adresse
+              href: public-ip-upgrade-classic.md
+        - name: Load Balancer
+          items:
+            - name: Standard (öffentlich)
               items:
-                - name: Erstellen einer öffentlichen IP-Adresse
-                  items:
-                    - name: Azure-Portal
-                      href: routing-preference-portal.md
-                    - name: Azure PowerShell
-                      href: routing-preference-powershell.md
-                    - name: Azure CLI
-                      href: routing-preference-cli.md
-                - name: Konfigurieren des virtuellen Computers mit Internetroutingpräferenz
-                  items:
-                    - name: Azure-Portal
-                      href: tutorial-routing-preference-virtual-machine-portal.md
-                    - name: Azure PowerShell
-                      href: configure-routing-preference-virtual-machine-powershell.md
-                    - name: Azure CLI
-                      href: configure-routing-preference-virtual-machine-cli.md
-                - name: Konfigurieren einer gemischten Routingpräferenz für einen virtuellen Computer
-                  href: routing-preference-mixed-network-adapter-portal.md
-                - name: Konfigurieren der Routingpräferenz für einen AKS-Cluster
-                  href: routing-preference-azure-kubernetes-service-cli.md
+                - name: 'Öffentliche Instanz von Load Balancer Standard mit IPv6: PowerShell'
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+                - name: "Öffentliche Instanz von Load Balancer Standard mit IPv6: Azure\_CLI"
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+                - name: 'Öffentliche Instanz von Load Balancer Standard mit IPv6: ARM-Vorlage'
+                  href: ipv6-configure-standard-load-balancer-template-json.md
+            - name: Standard (intern)
+              items:
+                - name: 'Interne Instanz von Load Balancer Standard mit IPv6: PowerShell'
+                  href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
+            - name: Basic (öffentlich)
+              items:
+                - name: 'Öffentliche Instanz von Load Balancer Basic mit IPv6: PowerShell'
+                  href: ipv6-add-to-existing-vnet-powershell.md
+                - name: "Öffentliche Instanz von Load Balancer Basic mit IPv6: Azure\_CLI"
+                  href: ipv6-add-to-existing-vnet-cli.md
+        - name: Routingpräferenz
+          items:
+            - name: Erstellen einer öffentlichen IP-Adresse
+              items:
+                - name: Azure-Portal
+                  href: routing-preference-portal.md
+                - name: Azure PowerShell
+                  href: routing-preference-powershell.md
+                - name: Azure CLI
+                  href: routing-preference-cli.md
+            - name: Konfigurieren des virtuellen Computers mit Internetroutingpräferenz
+              items:
+                - name: Azure-Portal
+                  href: tutorial-routing-preference-virtual-machine-portal.md
+                - name: Azure PowerShell
+                  href: configure-routing-preference-virtual-machine-powershell.md
+                - name: Azure CLI
+                  href: configure-routing-preference-virtual-machine-cli.md
+            - name: Konfigurieren einer gemischten Routingpräferenz für einen virtuellen Computer
+              href: routing-preference-mixed-network-adapter-portal.md
+            - name: Konfigurieren der Routingpräferenz für einen AKS-Cluster
+              href: routing-preference-azure-kubernetes-service-cli.md
     - name: Sicherheit
       items:
         - name: Filtern des Netzwerkdatenverkehrs
@@ -387,6 +389,8 @@
           href: virtual-network-tcpip-performance-tuning.md
         - name: Netzwerkdurchsatz virtueller Computer
           href: virtual-machine-network-throughput.md
+        - name: VM-Skalierungsgruppe mit IPv6
+          href: ipv6-virtual-machine-scale-set.md
     - name: Regionsübergreifendes Verschieben
       items:
         - name: Netzwerksicherheitsgruppen (NSGs)
@@ -411,15 +415,6 @@
               href: move-across-regions-publicip-portal.md
             - name: 'Öffentliche IPs: PowerShell'
               href: move-across-regions-publicip-powershell.md
-    - name: NAT
-      items:
-        - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: PowerShell"
-          href: tutorial-create-nat-gateway-powershell.md
-        - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: CLI"
-          href: tutorial-create-nat-gateway-cli.md
-        - name: "Erstellen einer NAT\_Gateway-Instanz: ARM-Vorlage"
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen mit dem Peering virtueller Netzwerke
@@ -448,10 +443,14 @@
           href: what-is-ip-address-168-63-129-16.md
         - name: Problembehandlung für Azure-VM-Konnektivitätsprobleme
           href: troubleshoot-vm-connectivity.md
+    - name: Überwachen des virtuellen Netzwerks
+      href: monitor-virtual-network.md
     - name: Klassische Bereitstellung
       href: /previous-versions/azure/virtual-network/create-virtual-network-classic
 - name: Verweis
   items:
+    - name: Überwachen von Datenverweisen
+      href: monitor-virtual-network-reference.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-network
     - name: Azure PowerShell

@@ -1,7 +1,7 @@
 ---
-title: Erstellen von Arbeitsbereichen im Portal
+title: Verwalten von Arbeitsbereichen im Portal oder mit dem Python SDK
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie Azure Machine Learning-Arbeitsbereiche im Azure-Portal oder mit dem SDK für Python erstellen, anzeigen und löschen.
+description: Hier erfahren Sie, wie Sie Azure Machine Learning-Arbeitsbereiche im Azure-Portal oder mit dem SDK für Python verwalten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8583229104d29f48784c7790e505852ac4b08dfd
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e84f0d45666e158805a9290d2e446672a6867fb2
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376287"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030843"
 ---
-# <a name="create-and-manage-azure-machine-learning-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen 
+# <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>Verwalten von Azure Machine Learning-Arbeitsbereichen im Portal oder mit dem Python SDK
 
-In diesem Artikel erstellen, betrachten und löschen Sie [**Azure Machine Learning-Arbeitsbereiche**](concept-workspace.md) für [Azure Machine Learning](overview-what-is-azure-ml.md) über das Azure-Portal oder mit dem [SDK für Python](/python/api/overview/azure/ml/).
+In diesem Artikel erfahren Sie, wie Sie [**Azure Machine Learning-Arbeitsbereiche**](concept-workspace.md) für [Azure Machine Learning](overview-what-is-azure-ml.md) über das Azure-Portal oder mit dem [SDK für Python](/python/api/overview/azure/ml/) erstellen, anzeigen und löschen.
 
-Wenn sich Ihre Anforderungen ändern oder die Anforderungen an die Automatisierung zunehmen, können Sie Arbeitsbereiche auch [mithilfe der CLI](reference-azure-machine-learning-cli.md) oder [über die VS-Code-Erweiterung](how-to-setup-vs-code.md) erstellen und löschen.
+Wenn sich Ihre Anforderungen ändern oder die Anforderungen an die Automatisierung zunehmen, können Sie Arbeitsbereiche auch [mithilfe der CLI](reference-azure-machine-learning-cli.md) oder [über die VS Code-Erweiterung](how-to-setup-vs-code.md) verwalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

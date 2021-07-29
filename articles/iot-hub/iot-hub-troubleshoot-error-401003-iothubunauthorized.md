@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0e59fa2bcbc2d357857ddef39d990ddee9bc9c90
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 23bd1ce63e3d697a40125c79e802ad3e01915f49
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129457"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487491"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -37,6 +37,7 @@ Anforderungen an IoT Hub schlagen mit einer der folgenden Meldungen fehl:
 * Die Autorisierungsregel „\*“ lässt keinen Zugriff für „\*“ zu.
 * Fehler bei der Authentifizierung für dieses Gerät, beim Erneuern von Token oder Zertifikat und beim erneuten Herstellen einer Verbindung
 * Der Fingerabdruck entspricht nicht der Konfiguration: Fingerabdruck: SHA1Hash=\*, SHA2Hash=\*; Konfiguration: PrimaryThumbprint=\*, SecondaryThumbprint=\*
+* Der Prinzipal user@example.com ist nicht für GET für /exampleOperation autorisiert, weil keine Berechtigungen zugewiesen wurden.
 
 ## <a name="cause"></a>Ursache
 
@@ -73,6 +74,7 @@ Im Allgemeinen sollte in der angezeigten Fehlermeldung erläutert werden, wie de
 - Bei der X.509-Authentifizierung per Fingerabdruck wird der Fingerabdruck des Gerätezertifikats bei IoT Hub registriert.
 - Die Autorisierungsanmeldeinformationen sind für das verwendete Protokoll richtig formatiert. Weitere Informationen finden Sie unter [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md).
 - Die verwendete Autorisierungsregel verfügt über die Berechtigung für den angeforderten Vorgang.
+- Bei den letzten Fehlermeldungen, die mit „principal...“ beginnen, kann dieser Fehler behoben werden, indem dem Benutzer die richtige Azure RBAC-Berechtigungsstufe zugewiesen wird. Beispielsweise kann ein IoT-Hub-Besitzer die Rolle „IoT Hub-Datenbesitzer“ zuweisen, die sämtliche Berechtigungen gewährt. Versuchen Sie es mit dieser Rolle, um das Problem aufgrund fehlender Berechtigungen zu beheben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

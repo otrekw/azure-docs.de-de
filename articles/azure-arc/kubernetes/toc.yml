@@ -34,6 +34,8 @@
       href: faq.md
     - name: CI/CD-Workflow mit GitOps
       href: conceptual-gitops-ci-cd.md
+    - name: Entwicklerumgebung für innere Schleifen
+      href: conceptual-inner-loop-gitops.md
 - name: Anleitungen
   items:
     - name: Verbinden eines Clusters mithilfe eines Dienstprinzipals
@@ -64,6 +66,8 @@
           href: custom-locations.md
         - name: Bereitstellen von IoT-Workloads
           href: deploy-azure-iot-edge-workloads.md
+        - name: Machine Learning mit Arc-Unterstützung
+          href: ../../machine-learning/how-to-attach-arc-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
     - name: Problembehandlung
       href: Troubleshooting.md
 - name: Referenz

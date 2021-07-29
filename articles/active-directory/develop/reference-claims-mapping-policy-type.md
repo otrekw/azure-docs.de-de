@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/16/2021
+ms.date: 06/03/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 56e855bafa70360711f3e30a7c4527091af7b34c
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 66af0fa248f3ead5755ed3fb27cd3bfd6bb19452
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107601224"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060892"
 ---
 # <a name="claims-mapping-policy-type"></a>Richtlinientyp einer Anspruchszuordnung
 
@@ -33,7 +33,7 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 | Satz von Ansprüchen | BESCHREIBUNG |
 |---|---|
 | Hauptsatz von Ansprüchen | Sind in jedem Token unabhängig von der Richtlinie vorhanden. Diese Ansprüche sind zudem als eingeschränkt anzusehen und können nicht geändert werden. |
-| Grundlegender Anspruchssatz | Enthält die Ansprüche, die standardmäßig für Token ausgegeben werden (zusätzlich zum Hauptanspruchssatz). Sie können grundlegende Ansprüche mit den Richtlinien für die Anspruchszuordnung weglassen oder ändern. |
+| Grundlegender Anspruchssatz | Enthält die Ansprüche, die standardmäßig für Token ausgegeben werden (zusätzlich zum Hauptanspruchssatz). Mit den Richtlinien für die Anspruchszuordnung können Sie [grundlegende Ansprüche weglassen oder ändern](active-directory-claims-mapping.md#omit-the-basic-claims-from-tokens). |
 | Eingeschränkter Anspruchssatz | Kann nicht mit der Richtlinie geändert werden. Die Datenquelle kann nicht geändert werden, und beim Generieren der Ansprüche wird keine Transformation angewendet. |
 
 ### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tabelle 1: Eingeschränkter Anspruchssatz der JSON Web Token (JWT)
@@ -412,6 +412,6 @@ Anspruchszuordnungsrichtlinien gelten nicht für Gastbenutzer. Wenn ein Gastbenu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Anpassen der Ansprüche, die in Token für eine bestimmte Anwendung in ihrem Mandanten mithilfe von PowerShell ausgestellt werden, finden Sie unter [Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)](active-directory-claims-mapping.md).
+- Informationen zum Anpassen der Ansprüche, die in Token für eine bestimmte Anwendung in ihrem Mandanten mithilfe von PowerShell ausgestellt werden, finden Sie unter [Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten](active-directory-claims-mapping.md)
 - Weitere Informationen dazu, wie Sie über das Azure-Portal die im SAML-Token ausgestellten Ansprüche anpassen, finden Sie unter [Vorgehensweise: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](active-directory-saml-claims-customization.md)
 - Weitere Informationen zu Erweiterungsattributen finden Sie unter [Verwenden von Erweiterungsattributen des Verzeichnisschemas in Ansprüchen](active-directory-schema-extensions.md).

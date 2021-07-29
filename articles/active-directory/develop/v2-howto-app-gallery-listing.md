@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/14/2020
+ms.date: 06/10/2021
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f2a04a341239b62290eecac8c0e1ce70b7c927c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ade77d05e209d65a9d7aa40451362bd66718cf75
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988907"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033325"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Veröffentlichen Ihrer App im Azure AD-App-Katalog
 
@@ -81,7 +81,7 @@ Für Tests benötigen Sie ein dauerhaftes Konto mit mindestens zwei registrierte
 
 **Wie erhalte ich Azure AD für Entwickler?**
 
-Sie können ein kostenloses Testkonto mit allen Premium-Features von Azure AD erhalten. Dieses ist 90 Tage lang kostenlos mit einer Verlängerungsmöglichkeit, solange Sie Entwicklungsaufgaben ausführen: https://docs.microsoft.com/office/developer-program/office-365-developer-program
+Sie können ein kostenloses Testkonto mit allen Azure AD-Premiumfeatures erhalten. Dieses ist 90 Tage lang kostenlos und kann verlängert werden, solange Sie Entwicklungsaufgaben damit ausführen. Siehe hierzu [Teilnehmen am Microsoft 365-Entwicklerprogramm](/office/developer-program/microsoft-365-developer-program).
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>Schritt 1: Auswählen des richtigen Standards für einmaliges Anmelden für Ihre App
 
@@ -287,17 +287,6 @@ Im [Microsoft Application Network-Portal](https://microsoft.sharepoint.com/teams
 > [!NOTE]
 > Wenn Sie Probleme mit dem Zugriff haben, lesen Sie den vorherigen Abschnitt zum Erstellen Ihres Kontos. Wenn dies nicht funktioniert, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-### <a name="list-requests-by-customers"></a>Auflisten von Anforderungen nach Kunden
-
-Kunden können eine Anforderung zum Auflisten einer Anwendung senden, indem sie **App-Anforderungen nach Kunden** > **Neue Anforderung übermitteln** auswählen.
-
-![Zeigt die Kachel für die von Kunden angeforderten Apps](./media/howto-app-gallery-listing/customer-submit-request.png)
-
-Nachstehend ist der Flow für die vom Kunden angeforderten Anwendungen dargestellt.
-
-![Zeigt den Flow für die vom Kunden angeforderten Apps](./media/howto-app-gallery-listing/customer-request-2.png)
-
-
 ### <a name="timelines"></a>Zeitpläne
 
 Das Auflisten einer SAML 2.0- oder WS-Fed-Anwendung im Katalog dauert etwa 7 bis 10 Werktage.
@@ -316,7 +305,20 @@ Bei Eskalationen senden Sie eine E-Mail an das [Azure AD-SSO-Integrationsteam](
 ## <a name="step-7---join-the-microsoft-partner-network"></a>Schritt 7: Beitreten zum Microsoft Partner Network
 Das Microsoft Partner Network bietet sofortigen Zugriff auf exklusive Ressourcen, Programme, Tools und Verbindungen. Unter [Erreichen Sie Geschäftskunden](https://partner.microsoft.com/explore/commercial#gtm) wird erläutert, wie Sie Mitglied des Netzwerks werden und Ihren Markteinführungsplan erstellen.
 
+## <a name="request-apps-by-sharing-isv-app-team-contact"></a>Anfordern von Apps durch Freigeben der Kontaktinformationen des ISV-/App-Teams
+
+Kunden können eine Anwendung anfordern, indem sie die Kontaktinformationen für die Anwendung und den ISV [hier](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/AppRequestsByCustomers.aspx) freigeben.
+
+![Zeigt die Kachel für die von Kunden angeforderten Apps](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+Nachstehend ist der Flow für die vom Kunden angeforderten Anwendungen dargestellt.
+
+![Zeigt den Flow für die vom Kunden angeforderten Apps](./media/howto-app-gallery-listing/customer-request-2.png)
+
+> [!Note]
+> Wenn Sie [Probleme mit dem Zugriff](#issues-on-logging-into-portal) haben, senden Sie eine [E-Mail an das Azure AD-App-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Authentifizierungsszenarien für Azure AD](authentication-flows-app-scenarios.md)

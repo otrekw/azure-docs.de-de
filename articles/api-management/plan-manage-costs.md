@@ -6,13 +6,13 @@ ms.author: apimpm
 ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
-ms.date: 12/15/2020
-ms.openlocfilehash: 1ebb89ae318e57f1d4e0708a08019515ca43158d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: ec15f11c6aee82d117210402e4cc4fda114e86a2
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581328"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034605"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>Planen und Verwalten von Kosten für API Management
 
@@ -51,11 +51,29 @@ Weitere Preis- und Featureinformationen finden Sie unter:
 
 Sie können API Management-Gebühren mit Ihrer Azure-Vorauszahlung (früher als Mindestverbrauch bezeichnet) bezahlen. Allerdings können Sie mit der Azure-Vorauszahlungsgutschrift keine Gebühren für Produkte und Dienste von Drittanbietern, einschließlich derjenigen aus dem Azure Marketplace, bezahlen.
 
+## <a name="understand-the-full-billing-model"></a>Verstehen Sie das komplette Abrechnungsmodell
+
+Wenn Sie Azure-Ressourcen mit API Management verwenden, fallen Kosten oder abrechenbare Verbrauchseinheiten an. Die Nutzungseinheitenkosten für Azure-Ressourcen variieren nach:
+* Zeitintervallen (Sekunden, Minuten, Stunden und Tage)
+* Einheitennutzung (Bytes, Megabytes usw.)
+* Anzahl von Transaktionen
+
+### <a name="how-youre-charged-for-api-management"></a>So werden die Gebühren für API Management berechnet
+
+Wenn Sie Azure-Ressourcen mit API Management erstellen oder verwenden, werden Ihnen die Gebühren auf Basis der Ebenen in Rechnung gestellt, auf denen Sie arbeiten. Erfahren Sie mehr darüber, wie Sie [die beste Ebene für sich auswählen](./api-management-features.md).
+
+| Ebenen | BESCHREIBUNG |
+| ----- | ----------- |
+| Nutzung | Es entstehen keine festen Kosten. Die Abrechnung erfolgt basierend auf der Anzahl von API-Aufrufen an den Dienst oberhalb eines bestimmten Schwellenwerts. |
+| Developer, Basic, Standard und Premium | Es entstehen monatliche Kosten, die auf der Anzahl der [Einheiten](./api-management-capacity.md) und [selbstgehosteten Gateways](./self-hosted-gateway-overview.md) basieren. Selbstgehostete Gateways sind auf der Developer-Ebene kostenlos. Sie können jederzeit ein [Upgrade](./upgrade-and-scale.md) auf eine andere Dienstebene vornehmen. |
+
+Es können auch zusätzliche Gebühren anfallen, wenn Sie andere Azure-Ressourcen wie virtuelle Netzwerke, Verfügbarkeitszonen und Schreibvorgänge in mehreren Regionen mit API Management verwenden. Am Ende Ihres Abrechnungszeitraums werden die Gebühren für die einzelnen Verbrauchseinheiten summiert. Ihre Rechnung enthält einen Abschnitt für alle API Management-Kosten. Für jede Verbrauchseinheit besteht ein separates Zeilenelement.
+
 ## <a name="monitor-costs"></a>Überwachen der Kosten
 
-Wenn Sie Azure-Ressourcen mit API Management verwenden, fallen Kosten an. Die Kosten pro Azure-Ressourcennutzungseinheit variieren nach dem Zeitintervall (Sekunden, Minuten, Stunden und Tage) oder der Einheitennutzung (Bytes, Megabytes usw.). Sobald mit der API Management-Nutzung begonnen wird, fallen Kosten an, und Sie können die Kosten in der [Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) sehen.
+Sobald die Nutzung von API Management beginnt, fallen Kosten an. Sie können die Kosten in der [Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oder über den Azure-Preisrechner anzeigen.
 
-Bei Verwendung der Kostenanalyse können Sie API Management-Verbindungskosten in Diagrammen und Tabellen für unterschiedliche Zeitintervalle anzeigen. Beispiele hierfür sind „Tag“, „Aktueller Monat“, „Vorheriger Monat“ und „Jahr“. Sie können Kosten auch im Vergleich mit Budgets und vorhergesagten Kosten anzeigen. Wenn Sie im Laufe der Zeit zu längeren Zeiträumen wechseln, können Sie Ausgabentrends ermitteln. Außerdem können Sie erkennen, wo es ggf. zu hohen Ausgaben gekommen ist. Wenn Sie Budgets erstellt haben, können Sie auch leicht feststellen, wo diese überschritten werden.
+Bei Verwendung der Kostenanalyse können Sie API Management-Kosten in Diagrammen und Tabellen für unterschiedliche Zeitintervalle (Tag, aktueller und vorheriger Monat und Jahr) anzeigen. Sie können Kosten auch im Vergleich mit Budgets und vorhergesagten Kosten anzeigen. Wenn Sie im Laufe der Zeit zu längeren Zeiträumen wechseln, können Sie Ausgabentrends ermitteln. Außerdem können Sie erkennen, wo es ggf. zu hohen Ausgaben gekommen ist. Wenn Sie Budgets erstellt haben, können Sie auch leicht feststellen, wo diese überschritten werden.
 
 > [!NOTE]
 > Die im Beispiel gezeigten Kosten dienen nur zu Demonstrationszwecken. Ihre Kosten variieren in Abhängigkeit von der Ressourcennutzung und den aktuellen Preisen.
@@ -86,13 +104,6 @@ Sie können ein Budget mit Filtern für bestimmte Ressourcen oder Dienste in Azu
 Sie können [Ihre Kostendaten](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) auch in ein Speicherkonto exportieren. Dies ist hilfreich, wenn Sie andere Personen benötigen, um zusätzliche Datenanalysen für Kosten ausführen zu können. Beispielsweise kann ein Finanzteam die Daten mithilfe von Excel oder Power BI analysieren. Sie können Ihre Kosten täglich, wöchentlich oder monatlich exportieren und einen benutzerdefinierten Datumsbereich festlegen. Exportieren von Kostendaten ist die empfohlene Abrufmethode für Kostendatasets.
 
 ## <a name="other-ways-to-manage-and-reduce-costs-for-api-management"></a>Weitere Optionen zum Verwalten und Reduzieren der Kosten für API Management
-
-### <a name="choose-tier"></a>Auswählen einer Dienstebene
-
-Lesen Sie den [featurebasierten Vergleich der Azure API Management-Dienstebenen](api-management-features.md), um zu entscheiden, welche Dienstebene für Ihre Szenarien geeignet ist. Die verschiedenen Dienstebenen unterstützen Kombinationen von Features und Funktionen, die für verschiedene Anwendungsfälle entwickelt wurden, mit unterschiedlichen Kosten. 
-
-* Die Dienstebene **Verbrauch** (Consumption) bietet eine schlanke, serverlose Option, die keine Fixkosten verursacht. Die Abrechnung erfolgt basierend auf der Anzahl von API-Aufrufen an den Dienst oberhalb eines bestimmten Schwellenwerts. Die Kapazität wird auch automatisch basierend auf der Auslastung des Diensts skaliert.
-* Die API Management-Dienstebenen **Developer**, **Basic**, **Standard** und **Premium** verursachen monatliche Kosten und bieten einen höheren Durchsatz sowie umfangreichere Features für Evaluierungs- und Produktionsworkloads. Sie können jederzeit ein [Upgrade](upgrade-and-scale.md) auf eine andere Dienstebene vornehmen.
 
 ### <a name="scale-using-capacity-units"></a>Skalieren mithilfe von Kapazitätseinheiten
 

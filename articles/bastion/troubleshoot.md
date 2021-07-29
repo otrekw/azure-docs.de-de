@@ -1,18 +1,18 @@
 ---
 title: Azure Bastion – Problembehandlung | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie die Problembehandlung für Azure Bastion ausführen.
+description: Hier erfahren Sie, wie Sie Probleme mit Azure Bastion beheben.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: bf6cde94374133e10b077ac799be0b85ae02bcb7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 740b228855a11623600d8724eeff7ad865538e74
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773393"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004185"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Problembehandlung für Azure Bastion
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie die Problembehandlung für Azure Bastio
 
 **A:** Wenn Sie eine NSG erstellen und auf *AzureBastionSubnet* anwenden, stellen Sie sicher, dass Sie der NSG die erforderlichen Regeln hinzugefügt haben. Eine Liste der erforderlichen Regeln finden Sie unter [Verwenden von NSG-Zugriff und Azure Bastion](./bastion-nsg.md). Wenn Sie diese Regeln nicht hinzufügen, schlägt die Erstellung/Aktualisierung der NSG fehl.
 
-Ein Referenzbeispiel für die NSG-Regeln finden Sie in der [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-azure-bastion-nsg/).
+Ein Referenzbeispiel für die NSG-Regeln finden Sie in der [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/azure-bastion-nsg/).
 Weitere Informationen finden Sie im [NSG-Leitfaden für Azure Bastion](bastion-nsg.md).
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Der SSH-Schlüssel kann nicht mit Azure Bastion verwendet werden.
@@ -67,7 +67,7 @@ The key's randomart image is:
 
 **F:** Ich kann keine Verbindung mit meinem virtuellen Windows-Computer herstellen, der in die Domäne eingebunden ist.
 
-**A:** Azure Bastion unterstützt die Anmeldung bei virtuellen, in die Domäne eingebundenen Computern nur für Domänenanmeldungen, die auf dem Benutzernamen und Kennwort basieren. Wenn Sie die Domänenanmeldeinformationen im Azure-Portal angeben, verwenden Sie das UPN-Format (username@domain) anstelle des *domain\username*-Formats, um sich anzumelden. Dies wird für in die Domäne oder in Hybridumgebungen eingebundene virtuelle Computer unterstützt (die sowohl in die Domäne als auch in Azure AD eingebunden sind). Virtuelle Computer, die nur in Azure AD eingebunden sind, werden nicht unterstützt.
+**A:** Azure Bastion unterstützt die Anmeldung bei virtuellen, in die Domäne eingebundenen Computern nur für Domänenanmeldungen, die auf einem Benutzernamen und Kennwort basieren. Wenn Sie die Domänenanmeldeinformationen im Azure-Portal angeben, verwenden Sie das UPN-Format (username@domain) anstelle des *domain\username*-Formats, um sich anzumelden. Dies wird für in die Domäne oder in Hybridumgebungen eingebundene virtuelle Computer unterstützt (die sowohl in die Domäne als auch in Azure AD eingebunden sind). Virtuelle Computer, die nur in Azure AD eingebunden sind, werden nicht unterstützt.
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>Probleme bei der Dateiübertragung
 

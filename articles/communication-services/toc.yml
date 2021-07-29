@@ -13,16 +13,14 @@ items:
     items:
       - name: "Erstellen einer Communication\_Services-Ressource"
         href: quickstarts/create-communication-resource.md
-      - name: Erstellen und Verwalten von Zugriffstoken
-        href: quickstarts/access-tokens.md
-      - name: Verwenden verwalteter Identitäten
-        href: quickstarts/managed-identity.md
-      - name: Einrichten von verwalteten Identitäten über die CLI
+      - name: Identität und Zugriff
+        items:
+          - name: Erstellen und Verwalten von Zugriffstoken
+            href: quickstarts/access-tokens.md
+          - name: Verwenden verwalteter Identitäten
+            href: quickstarts/managed-identity.md
+          - name: Einrichten von verwalteten Identitäten über die CLI
         href: quickstarts/managed-identity-from-cli.md
-      - name: Exportieren von SDK-Telemetriedaten in Application Insights
-        href: quickstarts/telemetry-application-insights.md
-      - name: Abrufen eines Relaytokens
-        href: quickstarts/relay-token.md
       - name: Chat
         items:
           - name: Hinzufügen von Chatfunktionen zu Ihrer App
@@ -45,14 +43,18 @@ items:
             href: quickstarts/telephony-sms/logic-app.md
       - name: Sprach- und Videoanrufe
         items:
-          - name: Hinzufügen von Sprachanrufen zu Ihrer App
+          - name: Hinzufügen von Sprachanrufen zu Ihrer Client-App
             href: quickstarts/voice-video-calling/getting-started-with-calling.md
-          - name: Hinzufügen von Videoanrufen zu Ihrer App
+          - name: Hinzufügen von Videoanrufen zu Ihrer Client-App
             href: quickstarts/voice-video-calling/get-started-with-video-calling.md
           - name: "Verwenden des Calling\_SDK"
             href: quickstarts/voice-video-calling/calling-client-samples.md
-          - name: Beitreten mit einer Telefonie-App zu einer Teams-Besprechung
+          - name: Teilnehmen an einer Teams-Besprechung über Ihre Telefonieclient-App
             href: quickstarts/voice-video-calling/get-started-teams-interop.md
+          - name: Verknüpfen eines Diensts mit einem Anruf
+            href: quickstarts/voice-video-calling/call-automation-api-sample.md
+          - name: Aufzeichnen von Anrufen
+            href: quickstarts/voice-video-calling/call-recording-sample.md
       - name: UI-Bibliothek
         items:
           - name: Erste Schritte mit zusammengesetzten Komponenten
@@ -61,15 +63,19 @@ items:
             href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-statefulclient--page'
           - name: Erste Schritte mit Benutzeroberflächenkomponenten
             href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-uicomponents--page'
+      - name: Zugreifen auf TURN-Relays
+        href: quickstarts/relay-token.md
   - name: Tutorials
     expanded: false
     items:
       - name: Erstellen eines vertrauenswürdigen Authentifizierungsdiensts mithilfe von Azure Functions
         href: tutorials/trusted-service-tutorial.md
-      - name: Signieren einer HTTP-Anforderung mit einer HMAC-Signatur mithilfe von C#
-        href: tutorials/hmac-header-tutorial.md
+      - name: Exportieren von SDK-Telemetriedaten in Application Insights
+        href: quickstarts/telemetry-application-insights.md
       - name: Vorbereiten einer Web-App für Communication Services (Node.js)
         href: tutorials/building-app-start.md
+      - name: Signieren einer HTTP-Anforderung mit einer HMAC-Signatur mithilfe von C#
+        href: tutorials/hmac-header-tutorial.md
       - name: Signieren und Senden von Anforderungen an die SMS-API von ACS mit Postman
         href: tutorials/postman-tutorial.md
   - name: Konzepte
@@ -93,6 +99,10 @@ items:
             href: concepts/telephony-sms/plan-solution.md
           - name: Anforderungen an die Infrastruktur für direktes Azure-Routing
             href: concepts/telephony-sms/sip-interface-infrastructure.md
+          - name: Für direktes Azure-Routing zertifizierte Session Border Controller
+            href: concepts/telephony-sms/certified-session-border-controllers.md
+          - name: Koppeln des Session Border Controllers und Konfigurieren des Sprachroutings
+            href: concepts/telephony-sms/direct-routing-provisioning.md
           - name: SMS FAQ
             href: concepts/telephony-sms/sms-faq.md
           - name: Messagingrichtlinie
@@ -101,14 +111,20 @@ items:
         items:
           - name: Übersicht über das Calling SDK
             href: concepts/voice-video-calling/calling-sdk-features.md
-          - name: Sprach- und Videokonzepte
+          - name: Sprach- und Videoterminologie
             href: concepts/voice-video-calling/about-call-types.md
-          - name: Netzwerkanforderungen
+          - name: Anrufautomatisierung
+            href: concepts/voice-video-calling/call-automation-apis.md
+          - name: Anrufaufzeichnung
+            href: concepts/voice-video-calling/call-recording.md
+          - name: Netzwerkempfehlungen
             href: concepts/voice-video-calling/network-requirements.md
           - name: Anrufflows
             href: concepts/call-flows.md
           - name: Aufrufen von Flowtopologien
             href: concepts/detailed-call-flows.md
+          - name: Bewährte Methoden für das Web
+            href: concepts/best-practices.md
           - name: Bekannte Probleme
             href: concepts/known-issues.md
       - name: UI-Bibliothek
@@ -144,7 +160,7 @@ items:
         href: concepts/troubleshooting-info.md
   - name: Proben
     items:
-      - name: Übersicht
+      - name: Überblick
         href: samples/overview.md
       - name: Hero-Beispiel für Gruppenanrufe
         href: samples/calling-hero-sample.md

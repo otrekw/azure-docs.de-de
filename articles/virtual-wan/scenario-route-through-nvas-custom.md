@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 153e3dd64546dfa713abefcff106652fc061a6a2
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 4eba226fbbe3ef6d9791f2f098a24fdf217debaa
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165819"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575372"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Szenario: Weiterleiten von Datenverkehr über virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs) mithilfe benutzerdefinierter Einstellungen
 
-Wenn Sie mit dem Routing virtueller Hubs von Azure Virtual WAN arbeiten, stehen Ihnen eine Reihe von Optionen zur Verfügung. Der Schwerpunkt dieses Artikels liegt darauf, wenn Sie Datenverkehr für Kommunikation zwischen virtuellen Netzwerken und Filialen durch ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) leiten möchten und für Internetdatenverkehr ein anderes NVA verwenden möchten. Weitere Informationen finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
+Wenn Sie mit dem Routing virtueller Hubs von Azure Virtual WAN arbeiten, stehen Ihnen viele Optionen zur Verfügung. Der Schwerpunkt dieses Artikels liegt darauf, wenn Sie Datenverkehr für Kommunikation zwischen virtuellen Netzwerken und Filialen durch ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) leiten möchten und für Internetdatenverkehr ein anderes NVA verwenden möchten. Weitere Informationen finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
 
 ## <a name="design"></a>Entwurf
 

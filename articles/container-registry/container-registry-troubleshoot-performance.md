@@ -3,12 +3,12 @@ title: Beheben von Problemen mit der Registrierungsleistung
 description: Symptome, Ursachen und Lösung von häufigen Problemen mit der Leistung einer Registrierung.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8557c8c342919073099a14be91c743b65c4d7fbc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148409"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069074"
 ---
 # <a name="troubleshoot-registry-performance"></a>Beheben von Problemen mit der Registrierungsleistung
 
@@ -99,11 +99,11 @@ Verwandte Links:
 
 Wenn Ihre Berechtigungen für Registrierungsressourcen dies zulassen, [überprüfen Sie die Integrität der Registrierungsumgebung](container-registry-check-health.md). Wenn Fehler gemeldet werden, überprüfen Sie die [Fehlerreferenz](container-registry-health-error-reference.md) auf mögliche Lösungen.
 
-Wenn [Sammlung von Ressourcenprotokollen](container-registry-diagnostics-audit-logs.md) in der Registrierung aktiviert ist, überprüfen Sie das Protokoll „ContainterRegistryRepositoryEvents“. Dieses Protokoll speichert Informationen zu Vorgängen wie Push- oder Pullereignissen. Fragen Sie das Protokoll auf [Vorgangsfehler auf Repositoryebene](container-registry-diagnostics-audit-logs.md#repository-level-operation-failures) ab. 
+Wenn [Sammlung von Ressourcenprotokollen](monitor-service.md) in der Registrierung aktiviert ist, überprüfen Sie das Protokoll „ContainterRegistryRepositoryEvents“. Dieses Protokoll speichert Informationen zu Vorgängen wie Push- oder Pullereignissen. Fragen Sie das Protokoll auf [Vorgangsfehler auf Repositoryebene](monitor-service.md#repository-level-operation-failures) ab. 
 
 Verwandte Links:
 
-* [Protokolle für die Diagnoseauswertung und -überwachung](container-registry-diagnostics-audit-logs.md)
+* [Überwachen von Azure Container Registry](monitor-service.md)
 * [Häufig gestellte Fragen (FAQ) zur Containerregistrierung](container-registry-faq.md)
 * [Bewährte Methoden für Azure Container Registry](container-registry-best-practices.md)
 

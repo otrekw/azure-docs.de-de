@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c2a687dc1165b2eca52213811721b35e998a6d9
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644934"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033282"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?
 
@@ -122,7 +122,7 @@ Ein PRT kann in bestimmten Szenarien einen MFA-Anspruch (Multi-Factor Authentica
 * **MFA während der interaktiven WAM-Anmeldung**: Für eine Tokenanforderung per WAM gilt Folgendes: Wenn ein Benutzer einen MFA-Vorgang durchführen muss, um auf die App zuzugreifen, wird das PRT, das während dieser Interaktion verlängert wird, mit einem MFA-Anspruch versehen.
    * In diesem Fall wird der MFA-Anspruch nicht fortlaufend aktualisiert, und die MFA-Dauer basiert auf der Lebensdauer, die für das Verzeichnis festgelegt ist.
    * Wenn ein vorheriges vorhandenes primäres Aktualisierungstoken (Primary Refresh Token, PRT) und Aktualisierungstoken (Refresh Token, RT) für den Zugriff auf eine App verwendet werden, werden das PRT und RT als erster Authentifizierungsnachweis angesehen. Ein neues Authentifizierungstoken wird mit einem zweiten Nachweis und gedruckten MFA-Anspruch benötigt. Hierdurch werden auch ein neues PRT und RT ausgestellt.
-* **MFA während der Geräteregistrierung**: Wenn ein Administrator seine Geräteeinstellungen in Azure AD so konfiguriert hat, dass [zum Registrieren von Geräten ein MFA-Vorgang erforderlich ist](device-management-azure-portal.md#configure-device-settings), muss der Benutzer diesen MFA-Vorgang durchführen, um die Registrierung abzuschließen. Während dieses Prozesses erhält das PRT, das für den Benutzer ausgestellt wird, den MFA-Anspruch, der während der Registrierung beschafft wird. Diese Funktion gilt nur für den Benutzer, der den Beitrittsvorgang durchgeführt hat, und nicht für andere Benutzer, die sich an diesem Gerät anmelden.
+* **MFA während der Geräteregistrierung**: Wenn ein Administrator seine Geräteeinstellungen in Azure AD so konfiguriert hat, dass [zum Registrieren von Geräten ein MFA-Vorgang erforderlich ist](device-management-azure-portal.md#configure-device-settings), muss der Benutzer diesen MFA-Vorgang durchführen, um die Registrierung abzuschließen. Während dieses Prozesses erhält das PRT, das für den Benutzer ausgestellt wird, den MFA-Anspruch, der während der Registrierung beschafft wird. Diese Funktion gilt nur für den registrierten Benutzer des Geräts und nicht für andere Benutzer, die sich bei diesem Gerät anmelden.
    * Ähnlich wie bei der interaktiven WAM-Anmeldung wird der MFA-Anspruch nicht fortlaufend aktualisiert, sodass die MFA-Dauer auf der Lebensdauer basiert, die für das Verzeichnis festgelegt ist.
 
 Unter Windows 10 wird für jeden Satz von Anmeldeinformationen eine partitionierte Liste mit PRTs geführt. Es ist also ein PRT für jede Windows Hello for Business-Instanz, jedes Kennwort bzw. jede Smartcard vorhanden. Mit dieser Partitionierung wird sichergestellt, dass MFA-Ansprüche anhand der verwendeten Anmeldeinformationen isoliert und bei Tokenanforderungen nicht verwechselt werden.

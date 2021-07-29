@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 0cb5c9cebc97f7afa0156550f70cd78c07b7b410
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 7e29bd82f9f72651ca0383c680c0b05860fe29b4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906222"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062234"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Systemvariablen
 
@@ -33,6 +33,9 @@ Auf diese Systemvariablen kann überall im Pipeline-JSON verwiesen werden.
 | @pipeline().TriggerId|ID des Triggers, der die Pipeline aufgerufen hat |
 | @pipeline().TriggerName|Name des Triggers, der die Pipeline aufgerufen hat |
 | @pipeline().TriggerTime|Zeitpunkt der Triggerausführung, durch die die Pipeline aufgerufen wurde. Dies ist der Zeitpunkt, zu dem der Trigger zum Aufrufen der Pipelineausführung **tatsächlich** ausgelöst wurde. Er kann vom geplanten Zeitpunkt für den Trigger geringfügig abweichen.  |
+| @pipeline().GroupId | ID der Gruppe, zu der die Pipelineausführung gehört. |
+| @pipeline() __?__ .TriggeredByPipelineName | Name der Pipeline, die die Pipelineausführung auslöst. Gilt, wenn die Pipelineausführung durch eine ExecutePipeline-Aktivität ausgelöst wird. Wird in anderen Fällen als _Null_ ausgewertet. Beachten Sie das Fragezeichen nach @pipeline(). |
+| @pipeline() __?__ .TriggeredByPipelineRunId | Ausführungs-ID der Pipeline, die die Pipelineausführung auslöst. Gilt, wenn die Pipelineausführung durch eine ExecutePipeline-Aktivität ausgelöst wird. Wird in anderen Fällen als _Null_ ausgewertet. Beachten Sie das Fragezeichen nach @pipeline(). |
 
 >[!NOTE]
 >Triggerbezogene Systemvariablen für Datum/Uhrzeit (in Pipeline- und Triggerbereichen) geben UTC-Datumsangaben im ISO 8601-Format zurück, z. B. `2017-06-01T22:20:00.4061448Z`.

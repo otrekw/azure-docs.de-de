@@ -1,6 +1,6 @@
 ---
-title: 'Microsoft Graph-APIs für PIM (Vorschauversion): Azure AD | Microsoft-Dokumentation'
-description: Hier erhalten Sie Informationen zur Verwendung der Microsoft Graph-APIs für Azure AD Privileged Identity Management (PIM) (Vorschauversion).
+title: 'API-Konzepte in Privileged Identity Management (PIM): Azure AD | Microsoft-Dokumentation'
+description: Informationen zum Verstehen der APIs von Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,54 +10,129 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: how-to
-ms.date: 01/02/2020
+ms.date: 05/14/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce1900ca1ca04923f98642f0783925f2dd06619b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 6b5debb1b0146127238304db5f54a86e38d95edb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533584"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069452"
 ---
-# <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Microsoft Graph-APIs für Privileged Identity Management (Vorschauversion)
+# <a name="understand-the-privileged-identity-management-apis"></a>Verstehen der Privileged Identity Management-APIs
 
-Privileged Identity Management-Aufgaben können mithilfe der [Microsoft Graph-APIs](/graph/overview) für Azure Active Directory ausgeführt werden. In diesem Artikel werden wichtige Konzepte für die Verwendung der Microsoft Graph-APIs für Privileged Identity Management beschrieben.
+Tasks zum Privileged Identity Management (PIM) können Sie mithilfe der Rollen für Microsoft Graph-APIs für Azure Active Directory (Azure AD) und Azure Resource Manager-API für Azure (auch Azure RBAC-Rollen genannt). Dieser Artikel beschreibt wichtige Konzepte für die Verwendung der APIs für Privileged Identity Management.
 
-Weitere Informationen zu den Microsoft Graph-APIs finden Sie in der [Referenz zur Azure AD Privileged Identity Management-API](/graph/api/resources/privilegedidentitymanagement-root?view=graph-rest-beta&preserve-view=true).
+Informationen zu Anforderungen und weitere Details zu PIM-APIs finden Sie unter:
+
+- [API-Referenz: PIM für Azure AD-Rollen](/graph/api/resources/unifiedroleeligibilityschedulerequest?view=graph-rest-beta&preserve-view=true)
+- [Referenz zu PIM für Azure-Ressourcen Rollen-API](/rest/api/authorization/roleeligibilityschedulerequests)
 
 > [!IMPORTANT]
-> APIs in der Betaversion in Microsoft Graph befinden sich in der Vorschauphase und ändern sich möglicherweise noch. Die Verwendung dieser APIs in Produktionsanwendungen wird nicht unterstützt.
+> PIM-APIs [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-## <a name="required-permissions"></a>Erforderliche Berechtigungen
+## <a name="pim-api-history"></a>PIM-API-Verlauf
 
-Zum Aufrufen der Microsoft Graph-APIs für Privileged Identity Management benötigen Sie **mindestens eine** der folgenden Berechtigungen:
+Im Laufe der Jahre gab es diverse Iterationen der PIM-API. Sie werden einige Überlappungen in der Funktionalität feststellen, aber sie stellen keinen linearen Fortschritt der Versionen dar.
 
-- `Directory.AccessAsUser.All`
-- `Directory.Read.All`
-- `Directory.ReadWrite.All`
-- `PrivilegedAccess.ReadWrite.AzureAD`
+### <a name="iteration-1--only-supports-azure-ad-roles-deprecating"></a>Iteration 1: unterstützt nur Azure AD Rollen, veraltet
 
-### <a name="set-permissions"></a>Festlegen von Berechtigungen
+Unter dem Endpunkt „/beta/privilegedRoles“ hatte Microsoft eine klassische Version der PIM-API, die in den meisten Mandanten nicht mehr unterstützt wird. Wir sind dabei, den verbleibenden Zugriff auf diese API am 31. Mai als veraltet zu verwenden.
 
-Damit Anwendungen die Microsoft Graph-APIs für Privileged Identity Management aufrufen können, benötigen sie die erforderlichen Berechtigungen. Die erforderlichen Berechtigungen werden am einfachsten über das [Azure AD-Zustimmungsframework](../develop/consent-framework.md) angegeben.
+### <a name="iteration-2--supports-azure-ad-roles-and-azure-resource-roles"></a>Iteration 2: unterstützt Azure AD-Rollen und Azure-Ressourcenrollen
 
-### <a name="set-permissions-in-graph-explorer"></a>Festlegen von Berechtigungen in Graph-Tester
+Unter dem Endpunkt „/beta/privilegedAccess“ hat Microsoft sowohl „/aadRoles“ als auch „/azureResources“ unterstützt. Dieser Endpunkt ist weiterhin in Ihrem Mandanten verfügbar, Microsoft empfiehlt jedoch, keine neue Entwicklung mit dieser API zu starten. Diese Beta-API wird nie als allgemein verfügbar veröffentlicht und letztendlich veraltet werden.
 
-Beim Testen Ihrer Aufrufe mit Graph-Tester können Sie die Berechtigungen im Tool angeben.
+### <a name="current-iteration--azure-ad-roles-in-microsoft-graph-and-azure-resource-roles-in-azure-resource-manager"></a>Aktuelle Iteration: Azure AD-Rollen in Microsoft Graph und Azure-Ressourcenrollen in Azure Resource Manager
 
-1. Melden Sie sich bei [Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) als globaler Administrator an.
+In der Betaphase hat Microsoft die letzte Iteration der PIM-API, bevor wir die API allgemein verfügbar machen. Basierend auf Kundenfeedback befindet sich die Azure AD PIM-API jetzt unter dem „unifiedRoleManagement“-API-Satz, und die Azure Resource PIM-API befindet sich jetzt unter der Azure Resource Manager-Rollenzuweisungs-API. Diese Standorte bieten auch einige zusätzliche Vorteile, z. B.:
 
-1. Klicken Sie auf **Berechtigungen ändern**.
+- Ausrichtung der PIM-API für die reguläre Rollenzuweisungs-API sowohl für Azure AD- als auch für Azure-Ressourcenrollen.
+- Reduzieren der Notwendigkeit des Aufrufens einer zusätzlichen PIM-API für das Onboarding einer Ressource, zum Abrufen einer Ressource oder zum Abrufen einer Rollendefinition.
+- Unterstützung ausschließlicher App-Berechtigungen.
+- Neue Features wie Genehmigungs- und E-Mail-Benachrichtigungskonfiguration.
 
-    ![Screenshot: Seite „Graph-Tester“ mit der ausgewählten Aktion „Berechtigungen ändern“](./media/pim-apis/graph-explorer.png)
+In der aktuellen Iteration gibt es keine API-Unterstützung für PIM-Warnungen und Gruppen mit privilegiertem Zugriff.
 
-1. Aktivieren Sie die Kontrollkästchen neben den gewünschten Berechtigungen. `PrivilegedAccess.ReadWrite.AzureAD` ist in Graph-Tester noch nicht verfügbar.
+## <a name="current-permissions-required"></a>Aktuelle Berechtigungen erforderlich
 
-    ![Graph-Tester: Berechtigungen ändern](./media/pim-apis/graph-explorer-modify-permissions.png)
+### <a name="azure-ad-roles"></a>Azure AD-Rollen
 
-1. Klicken Sie auf **Berechtigungen ändern**, um die Änderungen der Berechtigungen zu übernehmen.
+  Um die PIM-Graph-API für Azure AD-Rollen aufzurufen, benötigen Sie mindestens eine der folgenden Berechtigungen:
+
+- RoleManagement.ReadWrite.Directory
+- RoleManagement.Read.Directory
+
+  Die erforderlichen Berechtigungen werden am einfachsten über das Azure AD-Zustimmungsframework angegeben.
+
+### <a name="azure-resource-roles"></a>Azure-Ressourcenrollen
+
+  Die PIM-API für Azure-Ressourcenrollen wird auf Grundlage des Azure Resource Manager-Frameworks entwickelt. Sie müssen der Azure-Ressourcenverwaltung zustimmen, benötigen jedoch keine Graph-API-Berechtigung. Außerdem müssen Sie sicherstellen, dass der Benutzer oder der Dienstprinzipal, der die API aufruft, mindestens über die Rolle „Besitzer“ oder „Benutzerzugriffsadministrator“ für die Ressource verfügt, die Sie verwalten möchten.
+
+## <a name="calling-pim-api-with-an-app-only-token"></a>Aufrufen der PIM-API mit einem reinen App-Token
+
+### <a name="azure-ad-roles"></a>Azure AD-Rollen
+
+  Die PIM-API unterstützt jetzt neben delegierten Berechtigungen nur ausschließliche App-Berechtigungen.
+
+- Bei „Nur App“-Berechtigungen müssen Sie die API mit einer Anwendung aufrufen, der bereits mit den erforderlichen Azure AD-Berechtigungen oder Azure-Rollenberechtigungen zugestimmt wurde.
+- Für delegierte Berechtigungen müssen Sie die PIM-API sowohl mit einem Benutzer- als auch mit einem Anwendungstoken aufrufen. Der Benutzer muss entweder der Rolle „Globaler Administrator“ oder „Administrator für privilegierte Rollen“ zugewiesen sein und sicherstellen, dass der Dienstprinzipal, der die API aufruft, mindestens über die Rolle „Besitzer“ oder „Benutzerzugriffsadministrator“ für die Ressource verfügt, die Sie verwalten möchten.
+
+### <a name="azure-resource-roles"></a>Azure-Ressourcenrollen
+
+  Die PIM-API für Azure-Ressourcen unterstützt ausschließliche Benutzer- bzw. Anwendungs-Aufrufe. Stellen Sie einfach sicher, dass der Dienstprinzipal entweder über die Rolle „Besitzer“ oder „Benutzerzugriffsadministrator“ für die Ressource verfügt.
+
+## <a name="design-of-current-api-iteration"></a>Entwurf der aktuellen API-Iteration
+
+Die PIM-API besteht aus zwei Kategorien, die sowohl für die API für Azure AD-Rollen als auch für Azure-Ressourcenrollen konsistent sind: API-Anforderungen für Zuweisung und Aktivierung sowie Richtlinieneinstellungen.
+
+### <a name="assignment-and-activation-api"></a>Zuweisungs- und Aktivierungs-API
+
+Um berechtigte Zuweisungen, zeitgebundene berechtigte bzw. aktive Zuweisungen und Zuweisungen generell zu aktivieren, stellt PIM die folgenden Entitäten zur Verfügung:
+
+- RoleAssignmentSchedule
+- RoleEligibilitySchedule
+- RoleAssignmentScheduleInstance
+- RoleEligibilityScheduleInstance
+- RoleAssignmentScheduleRequest
+- RoleEligibilityScheduleRequest
+
+Diese Entitäten funktionieren zusammen mit bereits vorhandenen „roleDefinition“- und „roleAssignment“-Entitäten für Azure AD- und Azure-Rollen, damit Sie End-to-End-Szenarien erstellen können.
+
+- Wenn Sie versuchen, eine permanente (aktive) Rollenzuweisung ohne Zeitplan (Start- oder Endzeit) zu erstellen oder abzurufen, sollten Sie diese PIM-Entitäten vermeiden und sich auf die Lese-/Schreibvorgänge unter der Entität „roleAssignment“ konzentrieren.
+
+- Um eine berechtigte Zuweisung mit oder ohne Ablaufzeit zu erstellen, können Sie den Schreibvorgang für „roleEligibilityScheduleRequest“ verwenden.
+
+- Um eine permanente (aktive) Zuweisung mit einem Zeitplan (Start- oder Endzeit) zu erstellen, können Sie den Schreibvorgang für „roleAssignmentScheduleRequest“ verwenden.  
+
+- Um eine berechtigte Zuweisung zu aktivieren, sollten Sie auch den Schreibvorgang für „roleAssignmentScheduleRequest“ mit einem geänderten Aktionsparameter namens „selfActivate“ verwenden.
+
+Jedes Anforderungsobjekt würde entweder ein „roleAssignmentSchedule“- oder ein „roleEligibilitySchedule“-Objekt erstellen. Diese Objekte sind schreibgeschützt und zeigen einen Zeitplan aller aktuellen und zukünftigen Zuweisungen an.
+
+Wenn eine berechtigte Zuweisung aktiviert wird, ist „roleEligibilityScheduleInstance“ weiterhin vorhanden. „RoleAssignmentScheduleRequest“ für die Aktivierung würde für diese aktivierte Dauer eine separate „roleAssignmentSchedule“ und „roleAssignmentScheduleInstance“ erstellen.
+
+Die Instanzobjekte sind die tatsächlichen Zuweisungen, die derzeit vorhanden sind – unabhängig davon, ob es sich um eine berechtigte oder eine aktive Zuweisung handelt. Sie sollten den GET-Vorgang für die Instanzentität verwenden, um eine Liste der berechtigten (aktiven) Zuweisungen für eine Rolle bzw. einen Benutzer abzurufen.
+
+### <a name="policy-setting-api"></a>Richtlinieneinstellungs-API
+
+Um die Einstellung zu verwalten, stellen wir die folgenden Entitäten bereit:
+
+- roleManagementPolicy
+- roleManagementPolicyAssignment
+
+Die *Rollenverwaltungsrichtlinie* definiert die Einstellung der Regel. Beispielsweise, ob MFA bzw. Genehmigung erforderlich ist, ob und an wen die E-Mail-Benachrichtigungen gesendet werden sollen oder ob dauerhafte Zuweisungen zulässig sind oder nicht. Die *Richtlinienzuweisung* fügt die Richtlinie an eine bestimmte Rolle an.
+
+Verwenden Sie diese API, um eine Liste aller Entitäten des Typs „roleManagementPolicyAssignments“ abzurufen, sie nach der „roleDefinitionID“ zu filtern, die Sie ändern möchten, und dann die Richtlinie zu aktualisieren, die der Richtlinienzuweisung („policyAssignment“) zugeordnet ist.
+
+## <a name="relationship-between-pim-entities-and-role-assignment-entities"></a>Beziehung zwischen PIM-Entitäten und Rollenzuweisungsentitäten
+
+Der einzige Link zwischen der PIM-Entität und der Rollenzuweisungsentität für die permanente (aktive) Zuweisung für Azure AD- oder Azure-Rollen ist „roleAssignmentScheduleInstance“. Es gibt eine 1:1-Zuordnung zwischen den beiden Entitäten. Diese Zuordnung bedeutet, dass sowohl „roleAssignment“ als auch „roleAssignmentScheduleInstance“ Folgendes umfassen:  
+
+- Persistente (aktive) Zuweisungen außerhalb von PIM
+- Persistente (aktive) Zuweisungen mit einem Zeitplan innerhalb von PIM
+- Aktivierte berechtigte Zuweisungen
 
 ## <a name="next-steps"></a>Nächste Schritte
 

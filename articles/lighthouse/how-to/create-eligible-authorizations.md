@@ -1,18 +1,18 @@
 ---
 title: Erstellen von berechtigten Autorisierungen
 description: Beim Onboarding von Kunden in Azure Lighthouse können Sie es Benutzern in Ihrem Verwaltungsmandanten ermöglichen, ihre Rolle JIT-basiert (Just-In-Time) zu erhöhen.
-ms.date: 05/25/2021
+ms.date: 06/11/2021
 ms.topic: how-to
-ms.openlocfilehash: f220574a2fb84fcf4e7a6e4933bcfbf61d882091
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 938b0ae8f2d105d79237164287b00ec4fdf4d607
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385982"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060745"
 ---
 # <a name="create-eligible-authorizations"></a>Erstellen von berechtigten Autorisierungen
 
-Beim Onboarding von Kunden in Azure Lighthouse erstellen Sie Autorisierungen, um Benutzern in Ihrem Verwaltungsmandanten integrierte Azure-Rollen zuzuweisen. Sie können auch berechtigte Autorisierungen erstellen, die [Azure Active Directory (Azure AD) Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-configure) nutzen, damit Benutzer in Ihrem Verwaltungsmandanten ihre Rolle vorübergehend erhöhen können. So können Sie zusätzliche Berechtigungen auf JIT-Basis gewähren, damit Benutzer nur für einen festgelegten Zeitraum über diese Berechtigungen verfügen.
+Beim Onboarding von Kunden in Azure Lighthouse erstellen Sie Autorisierungen, um Benutzern in Ihrem Verwaltungsmandanten integrierte Azure-Rollen zuzuweisen. Sie können auch berechtigte Autorisierungen erstellen, die [Azure Active Directory (Azure AD) Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) nutzen, damit Benutzer in Ihrem Verwaltungsmandanten ihre Rolle vorübergehend erhöhen können. So können Sie zusätzliche Berechtigungen auf JIT-Basis gewähren, damit Benutzer nur für einen festgelegten Zeitraum über diese Berechtigungen verfügen.
 
 Durch das Erstellen von berechtigten Autorisierungen können Sie die Anzahl von permanenten Benutzerzuweisungen zu privilegierten Rollen verringern. Dadurch werden Sicherheitsrisiken im Zusammenhang mit privilegiertem Zugriff durch Benutzer in Ihrem Mandanten minimiert.
 
@@ -31,7 +31,7 @@ Nicht der Kundenmandant, sondern der Verwaltungsmandant muss über die EMS E5- 
 
 Zusätzliche Kosten, die mit einer berechtigten Rolle verbunden sind, fallen nur während des Zeitraums an, in dem der Benutzer seinen Zugriff auf diese Rolle erhöht.
 
-Weitere Informationen zu Lizenzen für Benutzer finden Sie unter [Lizenzanforderungen für die Verwendung von PIM](/azure/active-directory/privileged-identity-management/subscription-requirements).
+Weitere Informationen zu Lizenzen für Benutzer finden Sie unter [Lizenzanforderungen für die Verwendung von PIM](../../active-directory/privileged-identity-management/subscription-requirements.md).
 
 ## <a name="how-eligible-authorizations-work"></a>Funktionsweise von berechtigten Autorisierungen
 
@@ -45,7 +45,7 @@ Administratoren im Verwaltungsmandanten können alle Privileged Identity Managem
 
 Beim Erstellen einer berechtigten Autorisierung definieren Sie drei Elemente: den Benutzer, die Rolle und die Zugriffsrichtlinie.
 
-- Der **Benutzer** kann entweder ein Einzelbenutzer im Verwaltungsmandanten oder eine Azure AD-Gruppe in diesem Mandanten sein. Wenn eine Gruppe definiert ist, kann jedes Mitglied dieser Gruppe seinen individuellen Zugriff gemäß der Zugriffsrichtlinie auf die Rolle erhöhen. Berechtigte Autorisierungen können nicht mit Dienstprinzipalen verwendet werden.
+- Der **Benutzer** kann entweder ein Einzelbenutzer oder eine Azure AD-Gruppe im Verwaltungsmandanten sein. Wenn eine Gruppe definiert ist, kann jedes Mitglied dieser Gruppe seinen individuellen Zugriff gemäß der Zugriffsrichtlinie auf die Rolle erhöhen. Berechtigte Autorisierungen können nicht mit Dienstprinzipalen verwendet werden.
 - Die **Rolle** kann eine beliebige integrierte Azure-Rolle sein, die für die delegierte Azure-Ressourcenverwaltung unterstützt wird (mit Ausnahme des Benutzerzugriffsadministrators).
 - Die **Zugriffsrichtlinie** definiert die Anforderungen der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) und die Dauer, für die die Rolle für einen Benutzer aktiviert wird. Der maximale Zeitraum, der für eine Rolle festgelegt werden kann, ist 8 Stunden.
 
@@ -59,7 +59,6 @@ Für das Onboarding Ihres Kunden in Azure Lighthouse verwenden Sie eine [Azure R
 > Das Onboarding kann auch mithilfe von Angeboten für verwaltete Dienste im Azure Marketplace durchgeführt werden. Berechtigte Autorisierungen werden bei diesen Angeboten jedoch derzeit nicht unterstützt.
 
 Um beim Onboarding eines Kunden berechtigte Autorisierungen hinzuzufügen, verwenden Sie eine Vorlage aus dem [delegated-resource-management-eligible-authorizations-Abschnitt unseres Beispiel-Repositorys](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-eligible-authorizations).
-
 
 |So führen Sie das Onboarding durch (mit berechtigten Autorisierungen)  |Verwenden Sie diese Azure Resource Manager-Vorlage:  |Ändern Sie außerdem diese Parameterdatei: |
 |---------|---------|---------|
@@ -233,7 +232,7 @@ Innerhalb des `eligibleAuthorizations`-Parameters gibt `principalId` die ID für
 > [!IMPORTANT]
 > Fügen Sie dieselbe `principalId` im Abschnitt `authorizations` Ihrer Vorlage mit einer anderen Rolle hinzu. Dies kann z. B. die Rolle „Leser“ oder eine andere integrierte Azure-Rolle mit Lesezugriff sein. Anderenfalls ist der Benutzer nicht in der Lage, seine Rolle über das Azure-Portal zu erhöhen.
 
-`roleDefinitionId` enthält die Rollendefinitions-ID für eine [integrierte Azure-Rolle](/azure/role-based-access-control/built-in-roles), die der Benutzer auf Just-In-Time-Basis nutzen kann.
+`roleDefinitionId` enthält die Rollendefinitions-ID für eine [integrierte Azure-Rolle](../../role-based-access-control/built-in-roles.md), die der Benutzer auf Just-In-Time-Basis nutzen kann.
 
 Über `justInTimeAccessPolicy` werden zwei Elemente angegeben:
 
@@ -247,12 +246,14 @@ Innerhalb des `eligibleAuthorizations`-Parameters gibt `principalId` die ID für
 
 Nachdem Sie das Onboarding für einen Kunden in Azure Lighthouse durchgeführt haben, sind alle berechtigten Rollen, die Sie hinzugefügt haben, für den angegebenen Benutzer (oder für Benutzer in bestimmten Gruppen) verfügbar.
 
-Die Benutzer können ihre Zugriffsrechte jederzeit erhöhen, indem sie im Azure-Portal die Seite **Meine Kunden** aufrufen, eine Delegierung auswählen und dann auf **Berechtigte Rollen verwalten** klicken. Anschließend führen sie die [Schritte zum Aktivieren der Rolle](/azure/active-directory/privileged-identity-management/pim-how-to-activate-role) in Azure AD Privileged Identity Management aus.
+Benutzer können ihre Zugriffsrechte jederzeit erhöhen, indem sie im Azure-Portal auf der Seite **Meine Kunden** eine Delegierung auswählen und dann auf **Berechtigte Rollen verwalten** klicken. Anschließend führen sie die [Schritte zum Aktivieren der Rolle](../../active-directory/privileged-identity-management/pim-how-to-activate-role.md) in Azure AD Privileged Identity Management aus.
+
+:::image type="content" source="../media/manage-eligible-roles.png" alt-text="Screenshot der Schaltfläche „Berechtigte Rollen verwalten“ im Azure-Portal":::
 
 Nachdem die berechtigte Rolle aktiviert wurde, verfügt der Benutzer für die gesamte Dauer, die in der berechtigten Autorisierung festgelegt ist, über diese Rolle. Nach Ablauf dieses Zeitraums kann die Rolle erst wieder verwendet werden, wenn der Benutzer die Schritte zur Rechteerweiterung erneut ausführt, um seine Zugriffsrechte zu erhöhen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über das [Onboarding von Kunden in Azure Lighthouse mithilfe von ARM-Vorlagen](onboard-customer.md).
-- Erfahren Sie mehr über [Azure AD Privileged Identity Management](/azure/active-directory/privileged-identity-management/pim-configure).
+- Erfahren Sie mehr über [Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).
 - Erfahren Sie mehr über [Mandanten, Benutzer und Rollen in Azure Lighthouse](../concepts/tenants-users-roles.md).

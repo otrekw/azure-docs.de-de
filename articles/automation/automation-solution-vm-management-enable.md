@@ -3,14 +3,14 @@ title: Aktivieren von „VMs außerhalb der Geschäftszeiten starten/beenden“ 
 description: In diesem Artikel erfahren Sie, wie Sie die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ für Ihre Azure-VMs aktivieren.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 05/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 36f885416c5e9cb656d01a65b9c503f8897d2f9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0db68a72b3b44f9febb7cdef546545b5b549ddae
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593901"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069380"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>Aktivieren von „VMs außerhalb der Geschäftszeiten starten/beenden“
 
@@ -20,11 +20,11 @@ Führen Sie die Schritte in der vorliegenden Reihenfolge in diesem Thema aus, um
 >Wenn Sie diese Funktion mit klassischen VMs verwenden möchten, benötigen Sie ein klassisches ausführendes Konto. Dieses wird nicht standardmäßig erstellt. Siehe [Erstellen eines klassischen ausführenden Kontos](automation-create-standalone-account.md#create-a-classic-run-as-account).
 >
 
-## <a name="create-resources-for-the-feature"></a>Erstellen von Ressourcen für die Funktion
+## <a name="enable-and-configure"></a>Aktivieren und konfigurieren 
 
 1. Melden Sie sich beim Azure-[Portal](https://portal.azure.com) an.
 2. Suchen Sie nach **Automation-Konten**, und wählen Sie diese Option aus.
-3. Wählen Sie auf der Seite „Automation-Konten“ in der entsprechenden Liste Ihr Automation-Konto aus.
+3. Wählen Sie auf der Seite **Automation-Konten** in der entsprechenden Liste Ihr Automation-Konto aus.
 4. Wählen Sie in dem Automation-Konto unter **Verwandtes Ressourcen** die Option **VM starten/beenden** aus. Dort können Sie **Weitere Informationen anzeigen und Lösung aktivieren** anklicken. Wenn Sie die Funktion bereits bereitgestellt haben, können Sie auf **Lösung verwalten** klicken, und sie wird in der Liste angezeigt.
 
    ![Aktivieren über ein Automation-Konto](./media/automation-solution-vm-management/enable-from-automation-account.png)
@@ -36,72 +36,50 @@ Führen Sie die Schritte in der vorliegenden Reihenfolge in diesem Thema aus, um
 
    ![Azure-Portal](media/automation-solution-vm-management/azure-portal-01.png)
 
-## <a name="configure-the-feature"></a>Konfigurieren der Funktion
-
-Nachdem die Ressource erstellt wurde, wird die Seite „Lösung hinzufügen“ angezeigt. Sie werden aufgefordert, die Funktion vor dem Importieren in Ihr Automation-Abonnement zu konfigurieren. Siehe [Konfigurieren von „VMs außerhalb der Geschäftszeiten starten/beenden“](automation-solution-vm-management-config.md).
+   Nachdem die Ressource erstellt wurde, wird die Seite „Lösung hinzufügen“ angezeigt. Sie werden aufgefordert, die Funktion vor dem Importieren in Ihr Automation-Konto zu konfigurieren.
 
    ![Seite „Lösung hinzufügen“ der VM-Verwaltung](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-## <a name="select-a-log-analytics-workspace"></a>Auswählen eines Log Analytics-Arbeitsbereichs
-
-1. Wählen Sie auf der Seite „Lösung hinzufügen“ die Option **Arbeitsbereich** aus. Wählen Sie einen Log Analytics-Arbeitsbereich aus, der mit dem Azure-Abonnement verknüpft ist, das vom Automation-Konto verwendet wird. 
-
-2. Wählen Sie die Option **Neuen Arbeitsbereich erstellen**, wenn kein Arbeitsbereich vorhanden ist. Führen Sie auf der Seite „Log Analytics-Arbeitsbereich“ die folgenden Schritte aus:
-
-   - Geben Sie einen Namen für den neuen Log Analytics-Arbeitsbereich an, z. B. **ContosoLAWorkspace**.
-   - Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
-   - Unter **Ressourcengruppe** können Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen.
-   - Wählen Sie einen **Speicherort** aus.
-   - Wählen Sie einen **Tarif** aus. Wählen Sie die Option **Pro GB (eigenständig)** aus. Für Azure Monitor-Protokolle wurden die [Preise](https://azure.microsoft.com/pricing/details/log-analytics/) aktualisiert, und der Tarif „Pro GB“ ist die einzige Option.
+6. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Arbeitsbereich** aus. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus der Liste aus. Wenn sich kein Automation-Konto in derselben unterstützten Region wie der Arbeitsbereich befindet, können Sie im nächsten Schritt ein neues Automation-Konto erstellen. 
 
    > [!NOTE]
    > Wenn Sie Funktionen aktivieren, werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto unterstützt. Eine Liste der unterstützten Zuordnungspaare finden Sie unter [Regionszuordnung für Automation-Konto und Log Analytics-Arbeitsbereich](how-to/region-mappings.md).
 
-3. Klicken Sie nach dem Bereitstellen der erforderlichen Informationen auf der Seite „Log Analytics-Arbeitsbereich“ auf **Erstellen**. Sie können den Status unter **Benachrichtigungen** über das Menü nachverfolgen, und nach Abschluss des Vorgangs gelangen Sie zurück zur Seite „Lösung hinzufügen“.
+7. Wenn in der unterstützten Region des Arbeitsbereichs kein Automation-Konto verfügbar ist, wählen Sie auf der Seite **Lösung hinzufügen** die Option **Automation-Konto** aus. Sie können eine neues Automation-Konto für die Zuordnung erstellen, indem Sie **Automation-Konto erstellen** auswählen und auf der Seite **Automation-Konto hinzufügen** den Namen des Automation-Kontos im Feld **Name** angeben.
 
-## <a name="add-automation-account"></a>Automation-Konto hinzufügen
+    Alle anderen Optionen werden basierend auf dem Log Analytics-Arbeitsbereich automatisch aufgefüllt. Sie können diese Optionen nicht ändern. Ein ausführendes Azure-Konto ist die Standardmethode für die Authentifizierung von Runbooks mit dieser Funktion. 
+    
+    Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und das Automation-Konto wird erstellt. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
-Greifen Sie erneut auf die Seite „Lösung hinzufügen“ zu, und wählen Sie **Automation-Konto** aus. Sie können ein vorhandenes Automation-Konto auswählen, das noch mit keinem Log Analytics-Arbeitsbereich verknüpft ist. Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, können Sie ein neues Automation-Konto erstellen, um es dem Arbeitsbereich zuzuordnen. Wählen Sie ein vorhandenes Automation-Konto aus, oder klicken Sie auf **Automation-Konto erstellen**, und geben Sie auf der Seite „Automation-Konto hinzufügen“ den Namen des Automation-Kontos im Feld **Name** an.
-
-Alle anderen Optionen werden basierend auf dem Log Analytics-Arbeitsbereich automatisch aufgefüllt. Sie können diese Optionen nicht ändern. Ein ausführendes Azure-Konto ist die Standardmethode für die Authentifizierung von Runbooks mit dieser Funktion. 
-
-Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und das Automation-Konto wird erstellt. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
-
-## <a name="define-feature-parameters"></a>Definieren von Funktionsparametern
-
-1. Wählen Sie auf der Seite „Lösung hinzufügen“ die Option **Konfiguration** aus. Die Seite „Parameter“ wird angezeigt.
+8. Wählen Sie auf der Seite „Lösung hinzufügen“ die Option **Parameter konfigurieren** aus. Die Seite **Parameter** wird angezeigt.
 
     ![Seite „Parameter“ für die Lösung](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
-2. Geben Sie einen Wert für das Feld **ResourceGroup-Zielnamen** an. Das-Feld definiert Gruppennamen, die VMs enthalten, die von der Funktion verwaltet werden sollen. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Die Verwendung eines Platzhalterzeichens wird unterstützt, wenn Sie einen Vorgang für VMs in allen Ressourcengruppen des Abonnements durchführen möchten. Die Werte werden in den Variablen `External_Start_ResourceGroupNames` und `External_Stop_ResourceGroupNames` gespeichert.
+9. Geben Sie einen Wert für das Feld **ResourceGroup-Zielnamen** an. Das-Feld definiert Gruppennamen, die VMs enthalten, die von der Funktion verwaltet werden sollen. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Die Verwendung eines Platzhalterzeichens wird unterstützt, wenn Sie einen Vorgang für VMs in allen Ressourcengruppen des Abonnements durchführen möchten. Die Werte werden in den Variablen `External_Start_ResourceGroupNames` und `External_Stop_ResourceGroupNames` gespeichert.
 
     > [!IMPORTANT]
     > Der Standardwert für **ResourceGroup-Zielnamen** ist ein **&ast;** . Diese Einstellung betrifft alle VMs in einem Abonnement. Wenn Sie nicht möchten, dass die Funktion für alle VMs in Ihrem Abonnement gilt, müssen Sie vor der Auswahl eines Zeitplans eine Liste mit Ressourcengruppennamen angeben.
   
-3. Geben Sie einen Wert für das Feld **VM-Ausschlussliste (Zeichenfolge)** an. Dies ist der Wert von einem oder mehreren virtuellen Computern der Zielressourcengruppe. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Platzhalter können verwendet werden. Dieser Wert wird in der Variablen `External_ExcludeVMNames` gespeichert.
+10. Geben Sie einen Wert für das Feld **VM-Ausschlussliste (Zeichenfolge)** an. Dies ist der Wert von einem oder mehreren virtuellen Computern der Zielressourcengruppe. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Platzhalter können verwendet werden. Dieser Wert wird in der Variablen `External_ExcludeVMNames` gespeichert.
   
-4. Verwenden Sie das Feld **Zeitplan**, um einen Zeitplan für die VM-Verwaltung durch die Funktion auszuwählen. Wählen Sie ein Startdatum und eine Uhrzeit für Ihren Zeitplan aus, um einen sich täglich wiederholenden Zeitplan zu erstellen, der zur ausgewählten Uhrzeit startet. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Funktion für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules) weiter.
+11. Verwenden Sie das Feld **Zeitplan**, um einen Zeitplan für die VM-Verwaltung durch die Funktion auszuwählen. Wählen Sie ein Startdatum und eine Uhrzeit für Ihren Zeitplan aus, um einen sich täglich wiederholenden Zeitplan zu erstellen, der zur ausgewählten Uhrzeit startet. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Funktion für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules) weiter.
 
-5. Um E-Mail-Benachrichtigungen von einer [Aktionsgruppe](../azure-monitor/alerts/action-groups.md) zu empfangen, übernehmen Sie den Standardwert **Ja** im Feld **E-Mail-Adresse**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie **Nein** auswählen, sich aber zu einem späteren Zeitpunkt entscheiden, dass Sie E-Mail-Benachrichtigungen erhalten möchten, können Sie die erstellte Aktionsgruppe mit gültigen E-Mail-Adressen, die durch Kommas getrennt sind, aktualisieren. 
-
-6. Aktivieren Sie die folgenden Warnungsregeln:
+12. Um E-Mail-Benachrichtigungen von einer [Aktionsgruppe](../azure-monitor/alerts/action-groups.md) zu empfangen, übernehmen Sie den Standardwert **Ja** im Feld **E-Mail-Adresse**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie **Nein** auswählen, sich aber zu einem späteren Zeitpunkt entscheiden, dass Sie E-Mail-Benachrichtigungen erhalten möchten, können Sie die erstellte Aktionsgruppe mit gültigen E-Mail-Adressen, die durch Kommas getrennt sind, aktualisieren. Die folgenden Warnungsregeln werden im Abonnement erstellt:
 
    - `AutoStop_VM_Child`
    - `Scheduled_StartStop_Parent`
    - `Sequenced_StartStop_Parent`
 
-## <a name="create-alerts"></a>Erstellen von Warnungen
+13. Nachdem Sie die erforderlichen Anfangseinstellungen für die Funktion konfiguriert haben, klicken Sie auf **OK**, um die Seite **Parameter** zu schließen.
 
-„VMs außerhalb der Geschäftszeiten starten/beenden“ umfasst keinen vordefinierten Satz von Warnungen. Informationen zum Erstellen von Warnungen bei fehlgeschlagenen Aufträgen zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Protokollwarnungen mit Azure Monitor](../azure-monitor/alerts/alerts-log.md).
-
-## <a name="deploy-the-feature"></a>Bereitstellen der Funktion
-
-1. Nachdem Sie die erforderlichen Anfangseinstellungen für die Funktion konfiguriert haben, klicken Sie auf **OK**, um die Seite „Parameter“ zu schließen.
-
-2. Klicken Sie auf **Erstellen**. Nachdem alle Einstellungen überprüft wurden, wird die Funktion in Ihrem Abonnement bereitgestellt. Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
+14. Klicken Sie auf **Erstellen**. Nachdem alle Einstellungen überprüft wurden, wird die Funktion in Ihrem Abonnement bereitgestellt. Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
     > [!NOTE]
     > Wenn Sie ein Abonnement für Azure Cloud Solution Provider (Azure CSP) besitzen, wechseln Sie nach Abschluss der Bereitstellung in Ihrem Automation-Konto unter **Freigegebene Ressourcen** zu **Variablen**, und legen Sie die Variable [External_EnableClassicVMs](automation-solution-vm-management.md#variables) auf **False** fest. Dadurch hört die Lösung auf, nach klassischen VM-Ressourcen zu suchen.
+
+## <a name="create-alerts"></a>Erstellen von Warnungen
+
+„VMs außerhalb der Geschäftszeiten starten/beenden“ umfasst keinen vordefinierten Satz von Automation-Auftragswarnungen. Lesen Sie [Weiterleiten von Auftragsdaten an Azure Monitor-Protokolle](automation-manage-send-joblogs-log-analytics.md#azure-monitor-log-records), um mehr über Protokolldaten zu erfahren, die vom Automation-Konto im Zusammenhang mit den Ergebnissen des Runbookauftrags weitergeleitet werden, und wie Sie Warnungen wegen fehlgeschlagener Aufträge erstellen, um Ihre DevOps- oder Betriebsprozesse und -verfahren zu unterstützen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

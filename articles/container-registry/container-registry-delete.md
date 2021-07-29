@@ -2,15 +2,15 @@
 title: Löschen von Bildressourcen
 description: Erfahren Sie mehr über die effektive Verwaltung der Registrierungsgröße durch das Löschen von Containerimagedaten mithilfe von Azure CLI-Befehlen.
 ms.topic: article
-ms.date: 07/31/2019
-ms.openlocfilehash: af277d0c02960c989b4e9119f2ecbfd8f6d7ce07
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/07/2021
+ms.openlocfilehash: b603645c3b4cef9c4734f1c385bab375a9aec3ff
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783987"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062972"
 ---
-# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Löschen von Containerimages in Azure Container Registry mithilfe von Azure CLI
+# <a name="delete-container-images-in-azure-container-registry"></a>Löschen von Containerimages in Azure Container Registry
 
 Damit Ihre Azure-Containerregistrierung nicht zu groß wird, sollten Sie regelmäßig veraltete Imagedaten löschen. Während einige Containerimages, die in der Produktion bereitgestellt werden, eine längerfristige Speicherung erfordern, können andere in der Regel schneller gelöscht werden. In einem automatisierten Build- und Testszenario kann sich Ihre Registrierung beispielsweise schnell mit Images füllen, die möglicherweise nie bereitgestellt werden und kurz nach Abschluss der Build- und Test-Phase gelöscht werden können.
 
@@ -20,9 +20,10 @@ Da Sie Imagedaten auf verschiedenen Wegen löschen können, müssen Sie wissen, 
 * Löschen nach [Tag](#delete-by-tag): Löscht ein Image, das Tag, alle eindeutigen Ebenen, die auf das Image verweisen, und alle anderen Tags, die dem Image zugeordnet sind.
 * Löschen nach [Manifest-Digest](#delete-by-manifest-digest): Löscht ein Image, alle eindeutigen Ebenen, die auf das Image verweisen, und alle Tags, die dem Image zugeordnet sind.
 
-Zum Automatisieren von Löschvorgängen sind Beispielskripts verfügbar.
-
 Eine Einführung zu diesen Konzepten finden Sie unter [Informationen zu Registrierungen, Repositorys und Images.](container-registry-concepts.md)
+
+> [!NOTE]
+> Nachdem Sie Imagedaten gelöscht haben, stellt Azure Container Registry die Abrechnung für den zugeordneten Speicher sofort ein. Allerdings stellt die Registrierung den zugeordneten Speicherplatz mithilfe eines asynchronen Prozesses wieder her. Es dauert einige Zeit, bis die Registrierung Ebenen bereinigt und die aktualisierte Speichernutzung widerspiegelt.   
 
 ## <a name="delete-repository"></a>Löschen des Repositorys
 
@@ -201,85 +202,21 @@ Wie im Abschnitt [Manifest-Digest](container-registry-concepts.md#manifest-diges
 
 Wie Sie in der Ausgabe des letzten Schritts in der Sequenz sehen können, ist nun ein verwaistes Manifest vorhanden, dessen `"tags"`-Eigenschaft eine leere Liste ist. Dieses Manifest ist weiterhin in der Registrierung vorhanden, zusammen mit eindeutigen Datenebenen, auf die es verweist. **Um solche verwaisten Images und die zugehörigen Ebenendaten zu löschen, müssen Sie nach Manifest-Digest löschen**.
 
-## <a name="delete-all-untagged-images"></a>Löschen aller Images ohne Tags
+## <a name="automatically-purge-tags-and-manifests"></a>Automatisches Löschen von Tags und Manifesten
 
-Sie können alle nicht markierten Images in Ihrem Repository mit dem folgenden Azure-CLI-Befehl auflisten. Ersetzen Sie `<acrName>` und `<repositoryName>` durch entsprechende Werte für Ihre Umgebung.
+Azure Container Registry stellt die folgenden automatisierten Methoden zum Entfernen von Tags und Manifesten sowie deren zugehöriger eindeutiger Ebenendaten zur Auswahl:
 
-```azurecli
-az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
-```
+* Erstellen einer ACR-Aufgabe, die den Containerbefehl `acr purge` zum Löschen aller Tags ausführt, die älter als eine bestimmte Dauer sind oder mit einem angegebenen Namensfilter übereinstimmen. Optionales Konfigurieren von `acr purge`, um nicht markierte Manifeste zu löschen. 
 
-Mit diesem Befehl können Sie in einem Skript alle nicht in einem Repository markierten Images löschen.
+  Der Containerbefehl `acr purge` befindet sich derzeit in der Vorschau. Weitere Informationen finden Sie unter [Automatisches Löschen von Images aus einer Azure-Containerregistrierung](container-registry-auto-purge.md).
 
-> [!WARNING]
-> Verwenden Sie die folgenden Beispielskripts mit Vorsicht – gelöschte Imagedaten sind NICHT WIEDERHERSTELLBAR. Wenn Sie Systeme haben, die Images nach dem Manifesthash pullen (und nicht nach dem Imagenamen), sollten Sie diese Skripts nicht ausführen. Wenn Sie Images ohne Tags löschen, hindern Sie diese Systeme daran, die Images aus Ihrer Registrierung zu löschen. Erwägen Sie statt des Pullens nach Manifest die Einführung eines *eindeutigen Tagging*-Schemas. Dies ist eine [bewährte Methode](container-registry-image-tag-version.md).
+* Legen Sie optional eine [Aufbewahrungsrichtlinie](container-registry-retention-policy.md) für jede Registrierung fest, um Manifeste ohne Markierungen zu verwalten. Wenn Sie eine Aufbewahrungsrichtlinie aktivieren, werden Imagemanifeste in der Registrierung ohne zugeordnete Markierungen sowie die zugrunde liegenden Ebenendaten nach einem festgelegten Zeitraum automatisch gelöscht. 
 
-**Azure CLI in Bash**
-
-Mit dem folgenden Bash-Skript werden alle Images ohne Tag aus einem Repository gelöscht. Dieses Skript erfordert die Azure CLI und **xargs**. Standardmäßig führt das Skript nicht keine Löschen aus. Ändern Sie den `ENABLE_DELETE`-Wert in `true`, um das Löschen von Images zu gestatten.
-
-```bash
-#!/bin/bash
-
-# WARNING! This script deletes data!
-# Run only if you do not have systems
-# that pull images via manifest digest.
-
-# Change to 'true' to enable image delete
-ENABLE_DELETE=false
-
-# Modify for your environment
-REGISTRY=myregistry
-REPOSITORY=myrepository
-
-# Delete all untagged (orphaned) images
-if [ "$ENABLE_DELETE" = true ]
-then
-    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?tags[0]==null].digest" -o tsv \
-    | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
-else
-    echo "No data deleted."
-    echo "Set ENABLE_DELETE=true to enable image deletion of these images in $REPOSITORY:"
-    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY --query "[?tags[0]==null]" -o tsv
-fi
-```
-
-**Azure CLI in PowerShell**
-
-Mit dem folgenden PowerShell-Skript werden alle Images ohne Tags aus einem Repository gelöscht. Dazu sind PowerShell und die Azure CLI erforderlich. Standardmäßig führt das Skript nicht keine Löschen aus. Ändern Sie den `$enableDelete`-Wert in `$TRUE`, um das Löschen von Images zu gestatten.
-
-```powershell
-# WARNING! This script deletes data!
-# Run only if you do not have systems
-# that pull images via manifest digest.
-
-# Change to '$TRUE' to enable image delete
-$enableDelete = $FALSE
-
-# Modify for your environment
-$registry = "myregistry"
-$repository = "myrepository"
-
-if ($enableDelete) {
-    az acr repository show-manifests --name $registry --repository $repository --query "[?tags[0]==null].digest" -o tsv `
-    | %{ az acr repository delete --name $registry --image $repository@$_ --yes }
-} else {
-    Write-Host "No data deleted."
-    Write-Host "Set `$enableDelete = `$TRUE to enable image deletion."
-    az acr repository show-manifests --name $registry --repository $repository --query "[?tags[0]==null]" -o tsv
-}
-```
-
-
-## <a name="automatically-purge-tags-and-manifests-preview"></a>Automatisches Löschen von Tags und Manifesten (Vorschau)
-
-Führen Sie als Alternative zum Skripten von Azure CLI-Befehlen eine bedarfsgesteuerte oder geplante ACR-Aufgabe aus, um alle Tags zu löschen, die älter als eine bestimmte Dauer sind oder einem angegebenen Namensfilter entsprechen. Weitere Informationen finden Sie unter [Automatisches Löschen von Images aus einer Azure-Containerregistrierung](container-registry-auto-purge.md).
-
-Legen Sie optional eine [Aufbewahrungsrichtlinie](container-registry-retention-policy.md) für jede Registrierung fest, um Manifeste ohne Markierungen zu verwalten. Wenn Sie eine Aufbewahrungsrichtlinie aktivieren, werden Imagemanifeste in der Registrierung ohne zugeordnete Markierungen sowie die zugrunde liegenden Ebenendaten nach einem festgelegten Zeitraum automatisch gelöscht.
+  Die Aufbewahrungsrichtlinie derzeit eine Previewfunktion von **Premium** Container Registrys. Die Aufbewahrungsrichtlinie gilt nur für nicht markierte Manifeste, die nach dem Wirksamwerden der Richtlinie erstellt werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Speichern von Images in Azure Container Registry finden Sie unter [Speichern von Containerimages in Azure Container Registry](container-registry-storage.md).
+Weitere Informationen zum Imagespeicher in Azure Container Registry finden Sie unter [Containerimagespeicher in Azure Container Registry](container-registry-storage.md).
 
 <!-- IMAGES -->
 [manifest-digest]: ./media/container-registry-delete/01-manifest-digest.png

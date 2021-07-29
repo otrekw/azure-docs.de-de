@@ -59,6 +59,18 @@
               href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: Verantwortungsvolle Verwendung von KI
       items:
+        - name: Spracherkennung
+          items:
+            - name: Transparenzhinweis
+              items:
+                - name: Anwendungsfälle für die Spracherkennung
+                  href: /legal/cognitive-services/speech-service/speech-to-text/transparency-note?context=/azure/cognitive-services/speech-service/context/context
+                - name: Merkmale und Einschränkungen
+                  href: /legal/cognitive-services/speech-service/speech-to-text/characteristics-and-limitations?context=/azure/cognitive-services/speech-service/context/context
+            - name: Integration und verantwortungsvolle Verwendung
+              href: /legal/cognitive-services/speech-service/speech-to-text/guidance-integration-responsible-use?context=/azure/cognitive-services/speech-service/context/context
+            - name: 'Daten, Datenschutz und Sicherheit'
+              href: /legal/cognitive-services/speech-service/speech-to-text/data-privacy-security?context=/azure/cognitive-services/speech-service/context/context
         - name: Aussprachebewertung
           items:
             - name: Transparenzhinweis
@@ -105,9 +117,11 @@
           href: language-support.md#speech-to-text
         - name: Unterstützung für Regionen
           href: regions.md#speech-to-text-text-to-speech-and-translation
+        - name: Erfassungsclient
+          href: ingestion-client.md
         - name: Häufig gestellte Fragen zur Spracherkennung
           displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
-          href: faq-stt.md
+          href: faq-stt.yml
 - name: Text-zu-Sprache
   items:
     - name: Dokumentation zur Sprachsynthese
@@ -499,8 +513,8 @@
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
         - name: Häufig gestellte Fragen zu Containern
-          href: speech-container-faq.md
-        - name: "Gesamte Dokumentation zu Cognitive\_Services-Containern"
+          href: speech-container-faq.yml
+        - name: "Dokumentation zu Cognitive\_Services-Containern"
           href: ../containers/index.yml
           maintainContext: true
     - name: Migration

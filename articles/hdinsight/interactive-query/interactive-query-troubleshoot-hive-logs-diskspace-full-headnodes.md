@@ -1,17 +1,17 @@
 ---
-title: 'Problembehandlung: Apache Hive-Protokolle belegen den gesamten Speicherplatz – Azure HDInsight'
+title: 'Problembehandlung: Hive-Protokolle belegen den gesamten Speicherplatz - Azure HDInsight'
 description: In diesem Artikel finden Sie Schritte zur Problembehandlung, wenn Apache Hive-Protokolle den gesamten Speicherplatz auf den Hauptknoten in Azure HDInsight belegen.
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: nisgoel
-ms.author: nisgoel
-ms.date: 10/05/2020
-ms.openlocfilehash: cd7e6a7f13f6cccb5be5d23d69c2a44fc655cf55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: kcheeeung
+ms.author: kecheung
+ms.date: 05/21/2021
+ms.openlocfilehash: f6e2deac6c5f5807618225f4afc208e091e7e004
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98930943"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578687"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Szenario: Apache Hive-Protokolle belegen den gesamten Speicherplatz auf den Hauptknoten in Azure HDInsight
 
@@ -19,54 +19,65 @@ In diesem Artikel werden die Problembehandlungsschritte sowie mögliche Probleml
 
 ## <a name="issue"></a>Problem
 
-In einem Apache Hive/LLAP-Cluster nehmen unerwünschte Protokolle den gesamten Speicherplatz auf den Hauptknoten ein. Diese Bedingung kann folgende Probleme verursachen:
+In einem HDI 4.0 Apache Hive/LLAP-Cluster nehmen unerwünschte Protokolle den gesamten Speicherplatz auf den Hauptknoten ein. Diese Bedingung kann folgende Probleme verursachen:
 
 - Beim SSH-Zugriff tritt ein Fehler auf, weil auf dem Hauptknoten kein Speicherplatz mehr vorhanden ist.
-- Ambari löst den Fehler *HTTP-FEHLER 503: Dienst nicht verfügbar* aus.
 - Fehler beim Neustart von HiveServer2 Interactive.
-
-Die `ambari-agent`-Protokolle enthalten beim Auftreten des Problems die folgenden Einträge:
-```
-ambari_agent - Controller.py - [54697] - Controller - ERROR - Error:[Errno 28] No space left on device
-```
-```
-ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckReportFileHandler - ERROR - Can't write host check file at /var/lib/ambari-agent/data/hostcheck.result
-```
 
 ## <a name="cause"></a>Ursache
 
-In erweiterten Hive-log4j-Konfigurationen gibt der aktuelle Standardlöschzeitplan vor, dass Dateien, die älter als 30 Tage sind (basierend auf dem Datum der letzten Änderung), gelöscht werden.
+Das automatische Löschen von Hive-Protokollen ist in den erweiterten hive-log4j2-Konfigurationen nicht konfiguriert. Die Standardgrößenbeschränkung von 60 GB benötigt zu viel Speicherplatz für das Nutzungsmuster des Kunden.
 
 ## <a name="resolution"></a>Lösung
 
 1. Navigieren Sie im Ambari-Portal zur Hive-Komponentenübersicht, und wählen Sie die Registerkarte **Konfigurationen** aus.
 
-2. Wechseln Sie unter **Erweiterte Einstellungen** zum Abschnitt `Advanced hive-log4j`.
+2. Wechseln Sie unter **Erweiterte Einstellungen** zum Abschnitt `Advanced hive-log4j2`.
 
-3. Legen Sie den Parameter `appender.RFA.strategy.action.condition.age` auf ein Alter Ihrer Wahl fest. In diesem Beispiel wird das Alter auf 14 Tage festgelegt: `appender.RFA.strategy.action.condition.age = 14D`
-
-4. Wenn keine zugehörigen Einstellungen angezeigt werden, fügen Sie die folgenden Einstellungen an:
+3. Stellen Sie sicher, dass Sie über diese Einstellungen verfügen. Wenn keine zugehörigen Einstellungen angezeigt werden, fügen Sie die folgenden Einstellungen an:
     ```
     # automatically delete hive log
     appender.RFA.strategy.action.type = Delete
     appender.RFA.strategy.action.basePath = ${sys:hive.log.dir}
-    appender.RFA.strategy.action.condition.type = IfLastModified
-    appender.RFA.strategy.action.condition.age = 30D
-    appender.RFA.strategy.action.PathConditions.type = IfFileName
-    appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
+    appender.RFA.strategy.action.condition.type = IfFileName
+    appender.RFA.strategy.action.condition.regex = hive*.*log.*
+    appender.RFA.strategy.action.condition.nested_condition.type = IfAny
+    # Deletes logs based on total accumulated size, keeping the most recent
+    appender.RFA.strategy.action.condition.nested_condition.fileSize.type = IfAccumulatedFileSize
+    appender.RFA.strategy.action.condition.nested_condition.fileSize.exceeds = 60GB
+    # Deletes logs IfLastModified date is greater than number of days
+    #appender.RFA.strategy.action.condition.nested_condition.lastMod.type = IfLastModified
+    #appender.RFA.strategy.action.condition.nested_condition.lastMod.age = 30D
     ```
 
-5. Legen Sie `hive.root.logger` auf `INFO,RFA` fest, wie im folgenden Beispiel gezeigt. Die Standardeinstellung ist `DEBUG`, was zu großen Protokollen führt.
+4. Wir werden drei grundlegende Optionen mit Löschvorgängen basierend auf folgenden Optionen durchgehen:
+- **Gesamtgröße**
+    - Ändern Sie `appender.RFA.strategy.action.condition.nested_condition.fileSize.exceeds` in eine Größenbeschränkung Ihrer Wahl.
+
+- **Datum**
+    - Sie können auch die Auskommentierung aufheben und die Bedingungen wechseln. Ändern Sie dann `appender.RFA.strategy.action.condition.nested_condition.lastMod.age` in ein Alter Ihrer Wahl.
 
     ```
-    # Define some default values that can be overridden by system properties
-    hive.log.threshold=ALL
-    hive.root.logger=INFO,RFA
-    hive.log.dir=${java.io.tmpdir}/${user.name}
-    hive.log.file=hive.log
+    # Deletes logs based on total accumulated size, keeping the most recent 
+    #appender.RFA.strategy.action.condition.nested_condition.fileSize.type = IfAccumulatedFileSize 
+    #appender.RFA.strategy.action.condition.nested_condition.fileSize.exceeds = 60GB
+    # Deletes logs IfLastModified date is greater than number of days 
+    appender.RFA.strategy.action.condition.nested_condition.lastMod.type = IfLastModified 
+    appender.RFA.strategy.action.condition.nested_condition.lastMod.age = 30D
     ```
 
-6. Speichern Sie die Konfigurationen, und starten Sie die erforderlichen Komponenten neu.
+- **Kombination aus Gesamtgröße und Datum**
+    - Sie können beide Optionen kombinieren, indem Sie die Auskommentierung wie unten gezeigt aufheben. Log4j2 verhält sich dann so: Beginnen Sie mit dem Löschen von Protokollen, wenn eine der Bedingungen erfüllt ist.
+    
+    ```
+    # Deletes logs based on total accumulated size, keeping the most recent 
+    appender.RFA.strategy.action.condition.nested_condition.fileSize.type = IfAccumulatedFileSize 
+    appender.RFA.strategy.action.condition.nested_condition.fileSize.exceeds = 60GB
+    # Deletes logs IfLastModified date is greater than number of days 
+    appender.RFA.strategy.action.condition.nested_condition.lastMod.type = IfLastModified 
+    appender.RFA.strategy.action.condition.nested_condition.lastMod.age = 30D
+    ```
+5. Speichern Sie die Konfigurationen, und starten Sie die erforderlichen Komponenten neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

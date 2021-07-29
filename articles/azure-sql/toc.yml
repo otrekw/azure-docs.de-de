@@ -193,6 +193,8 @@
                   href: database/authentication-aad-directory-readers-role-tutorial.md
                 - name: "Aktivieren der reinen Azure\_AD-Authentifizierung"
                   href: database/authentication-azure-ad-only-authentication-tutorial.md
+                - name: "Erstellen eines Servers mit aktivierter reiner Azure\_AD-Authentifizierung"
+                  href: database/authentication-azure-ad-only-authentication-create-server.md
             - name: Konfigurieren von TDE mit BYOK
               href: database/transparent-data-encryption-byok-configure.md
             - name: Always Encrypted
@@ -291,6 +293,10 @@
               href: database/service-tier-hyperscale.md
             - name: Häufig gestellte Fragen zu Hyperscale
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.yml
+            - name: Hyperscale-Replikate
+              href: database/service-tier-hyperscale-replicas.md
+            - name: Häufig gestellte Fragen zu Hyperscale-Replikaten
+              href: database/service-tier-hyperscale-named-replicas-faq.yml
             - name: Virtueller Kern
               href: database/service-tiers-sql-database-vcore.md
         - name: Planen und Verwalten von Kosten
@@ -300,7 +306,7 @@
       items:
         - name: Erstellen einer Datenbank
           items:
-            - name: Azure-Portal
+            - name: "Azure-Portal, PowerShell, Azure\_CLI"
               href: database/single-database-create-quickstart.md
             - name: ARM-Vorlage
               displayName: Resource Manager
@@ -354,6 +360,10 @@
               href: database/sql-data-sync-sql-server-configure.md
             - name: Migrieren von SQLite zu serverlosen Ressourcen
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+        - name: Aufskalieren
+          items:
+            - name: Konfigurieren der Sicherheit für benannte Replikate
+              href: database/hyperscale-named-replica-security-configure.md
     - name: Migrationsleitfäden
       items:
         - name: Aus Access
@@ -486,7 +496,7 @@
             - name: Verschieben von Sharddaten
               href: database/elastic-scale-overview-split-and-merge.md
             - name: Elastische Tools – häufig gestellte Fragen
-              href: database/elastic-scale-faq.md
+              href: database/elastic-scale-faq.yml
     - name: Anleitung
       href: database/how-to-content-reference-guide.md
       items:
@@ -757,7 +767,7 @@
             - name: Azure-Portal
               href: managed-instance/instance-create-quickstart.md
             - name: PowerShell
-              href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+              href: managed-instance/create-configure-managed-instance-powershell-quickstart.md
             - name: ARM-Vorlage
               displayName: Resource Manager
               href: managed-instance/create-template-quickstart.md
@@ -1133,10 +1143,10 @@
                 - name: HADR-Konfiguration
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
                   displayName: 'failover cluster instance, fci, availability group, ag, always on'
-                - name: Baseline auswählen
-                  href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
                 - name: Anwendungsmuster
                   href: virtual-machines/windows/application-patterns-development-strategies.md
+                - name: Baseline auswählen
+                  href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: Verwaltung
               items:
                 - name: Erweiterung für den SQL-IaaS-Agent
@@ -1175,8 +1185,6 @@
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Migrieren von Speicher zu Azure
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: Aktivieren von SQL-Sicherheitsrisikobewertungen
-                  href: ../security-center/defender-for-sql-on-machines-vulnerability-assessment.md
                 - name: Installieren der Erweiterung für den SQL-IaaS-Agent
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
@@ -1261,7 +1269,7 @@
             - name: Azure PowerShell
               href: /powershell/azure/
             - name: Azure CLI
-              href: /cli/azure/
+              href: /cli/azure/azure-cli-reference-for-sql
             - name: T-SQL
               href: /sql/t-sql/language-reference
             - name: SQL Server-Treiber
@@ -1344,7 +1352,7 @@
     - name: Referenz zur T-SQL-Sprache
       href: /sql/t-sql/language-reference
     - name: Azure CLI
-      href: /cli/azure/sql
+      href: /cli/azure/azure-cli-reference-for-sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql
     - name: .NET

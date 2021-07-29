@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: a8da9960e363e72bd6c108a9d72cfed4cc7769cf
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: f0b7aa98ce9adc49db7739dff00f7784b71c9384
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488715"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066734"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Simple Storage Service mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -39,7 +39,7 @@ Dieser Amazon S3-Connector wird für die folgenden Aktivitäten unterstützt:
 Der Amazon S3-Connector unterstützt insbesondere das Kopieren von Dateien im jeweiligen Zustand oder Analysieren von Dateien mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md). Sie können auch festlegen, dass [Dateimetadaten beim Kopieren beibehalten werden](#preserve-metadata-during-copy). Der Connector verwendet [AWS Signatur Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) zum Authentifizieren von Anforderungen in S3.
 
 >[!TIP]
->Mit diesem Amazon S3-Connector können Sie Daten von *allen S3-kompatiblen Speicheranbietern* kopieren, z. B. aus [Google Cloud Storage](connector-google-cloud-storage.md). Geben Sie die entsprechende Dienst-URL in der Konfiguration des verknüpften Diensts an.
+>Wenn Sie Daten von einem *beliebigen S3-kompatiblen Speicheranbieter* kopieren möchten, finden Sie weitere Informationen unter [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md).
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 
@@ -66,12 +66,9 @@ Folgende Eigenschaften werden für einen mit Amazon S3 verknüpften Dienst unter
 | accessKeyId | ID des geheimen Zugriffsschlüssels. |Ja |
 | secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
 | sessionToken | Trifft zu, wenn für die Authentifizierung [temporäre Sicherheitsanmeldeinformationen](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) verwendet werden. Erfahren Sie, wie Sie [temporäre Sicherheitsanmeldeinformationen](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken) von AWS anfordern.<br>Beachten Sie, dass die temporären AWS-Anmeldeinformationen je nach Einstellung nach 15 Minuten bis 36 Stunden ablaufen. Stellen Sie sicher, dass Ihre Anmeldeinformationen während der Aktivitätsausführung gültig sind. Dies gilt insbesondere für operationalisierte Workloads. Sie können sie z. B. regelmäßig aktualisieren und in Azure Key Vault speichern.<br>Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Nein |
-| serviceUrl | Geben Sie den benutzerdefinierten S3-Endpunkt an, wenn Sie Daten von einem anderen S3-kompatiblen Speicheranbieter als dem offiziellen Amazon S3-Dienst kopieren. Um beispielsweise Daten aus Google Cloud Storage zu kopieren, geben Sie `https://storage.googleapis.com` an. | Nein |
-| forcePathStyle | Gibt an, ob anstelle des Zugriffs mit virtuellem Hosting der [Zugriff im S3-Pfadstil](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html#path-style-access) verwendet wird. Zulässige Werte sind **false** (Standard) und **true**.<br>Legen Sie diese Eigenschaft auf „true“ fest, wenn Sie eine Verbindung mit einem S3-kompatiblen Speicheranbieter herstellen, bei dem es sich nicht um den offiziellen Amazon S3-Dienst handelt, und für den Datenspeicher der Zugriff im Pfadstil (z. B. [Oracle Cloud Storage](https://docs.oracle.com/iaas/Content/Object/Tasks/s3compatibleapi.htm)) erforderlich ist. Sehen Sie in der Dokumentation des jeweiligen Datenspeichers nach, ob der Zugriff im Pfadstil verwendet werden muss. |Nein |
+| serviceUrl | Geben Sie den benutzerdefinierten S3-Endpunkt `https://<service url>` an. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. |Nein |
 
->[!TIP]
->Geben Sie die URL des benutzerdefinierten S3-Diensts an, wenn Sie Daten aus einem anderen S3-kompatiblen Speicher als dem offiziellen Amazon S3-Dienst kopieren.
 
 **Beispiel: Verwenden der Authentifizierung mit Speicherzugriffsschlüssel**
 

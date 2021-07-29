@@ -5,14 +5,14 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 1/28/2020
+ms.date: 5/12/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 140a836882ad3abe048047120e4fe1ebc0a3067c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17dd8ec7a7fcd14d9f72a016a2208e7e37be2f36
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018155"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949999"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Lesen von Eingabe in beliebigen Formaten mithilfe benutzerdefinierter .NET-Deserialisierer
 
@@ -223,7 +223,7 @@ Der folgende JavaScript-Code ist ein Beispiel für das Serialisierungsformat des
 
 ## <a name="region-support"></a>Unterstützung für Regionen
 
-Diese Funktion ist in den folgenden Regionen verfügbar:
+Diese Funktion ist bei Verwendung der Standard-SKU in den folgenden Regionen verfügbar:
 
 * USA, Westen-Mitte
 * Nordeuropa
@@ -232,7 +232,7 @@ Diese Funktion ist in den folgenden Regionen verfügbar:
 * USA (Ost) 2
 * Europa, Westen
 
-Sie können [Unterstützung](https://aka.ms/ccodereqregion) für weitere Regionen anfordern.
+Sie können [Unterstützung](https://aka.ms/ccodereqregion) für weitere Regionen anfordern. Bei Verwendung von [Stream Analytics-Clustern](./cluster-overview.md) gibt es jedoch keine solche Regionseinschränkung.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

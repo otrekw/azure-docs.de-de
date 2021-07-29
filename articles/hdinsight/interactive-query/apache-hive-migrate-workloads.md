@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: b13e8e088eff95071247a53ad1a4a18879f94053
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8ae2d31bcb6cd17d020bf1602b5280f1db927f3f
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742193"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496196"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrieren von Azure HDInsight 3.6-Hive-Workloads zu HDInsight 4.0
 
@@ -71,7 +71,7 @@ In diesem Schritt wird das [`Hive Schema Tool`](https://cwiki.apache.org/conflue
     > [!NOTE]
     > Dieses Hilfsprogramm verwendet Client-`beeline` zum Ausführen von SQL-Skripts in `/usr/hdp/$STACK_VERSION/hive/scripts/metastore/upgrade/mssql/upgrade-*.mssql.sql`.
     >
-    > Die SQL-Syntax in diesen Skripts ist nicht unbedingt mit anderen Clienttools kompatibel. Beispielsweise verlangen [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und der [Abfrage-Editor im Azure-Portal](../../azure-sql/database/connect-query-portal.md) nach jedem Befehl das Schlüsselwort `GO`.
+    > Die SQL-Syntax in diesen Skripts ist nicht unbedingt mit anderen Clienttools kompatibel. Beispielsweise verlangen [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) und der [Abfrage-Editor im Azure-Portal](../../azure-sql/database/connect-query-portal.md) nach jedem Befehl das Schlüsselwort `GO`.
     >
     > Wenn ein Skript aufgrund der Ressourcenkapazität oder von Transaktionstimeouts fehlschlägt, skalieren Sie die SQL-Datenbank hoch.
 
@@ -130,6 +130,10 @@ HDInsight kann optional mit dem HDInsight-Enterprise-Sicherheitspaket (ESP) in A
 * `HiveCLI` wurde durch `Beeline` ersetzt.
 
 Weitere Änderungen finden Sie in der [Ankündigung von HDInsight 4.0](../hdinsight-version-release.md).
+
+## <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
+
+Das [HDInsight 3.6 zu 4.0-Handbuch zur Problembehandlung bei Hive-Workloads](./interactive-query-troubleshoot-migrate-36-to-40.md) enthält Lösungen für häufige Probleme bei der Migration von Hive-Workloads von HDInsight 3.6 zu HDInsight 4.0.
 
 ## <a name="further-reading"></a>Weitere Informationsquellen
 

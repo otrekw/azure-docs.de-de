@@ -1,6 +1,6 @@
 ---
 title: Verwenden einer Azure-Dateifreigabe mit Windows | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure-Dateifreigaben mit Windows und Windows Server verwenden. Verwenden Sie Azure-Dateifreigaben mit SMB 3.0 in Windows-Installationen, die lokal oder auf Azure-VMs ausgeführt werden.
+description: Erfahren Sie, wie Sie Azure-Dateifreigaben mit Windows und Windows Server verwenden. Verwenden Sie Azure-Dateifreigaben mit SMB 3.x in Windows-Installationen, die lokal oder auf Azure-VMs ausgeführt werden.
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,34 +8,35 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e864dcaa2a611746ae813a4f0adf8409fbc50871
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 31df90823591298a13dba725b7215031cad4bf8d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789787"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064808"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
 
-Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region verwenden möchten, in der sie gehostet wird (beispielsweise lokal oder in einer anderen Azure-Region), muss das Betriebssystem SMB 3.0 unterstützen. 
+Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region verwenden möchten, in der sie gehostet wird (beispielsweise lokal oder in einer anderen Azure-Region), muss das Betriebssystem SMB 3.x unterstützen. 
 
 Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die entweder auf einem virtuellen Azure-Computer oder lokal ausgeführt wird. In der folgenden Tabelle wird veranschaulicht, welche Betriebssystemversionen den Zugriff auf Dateifreigaben in den einzelnen Umgebungen unterstützen:
 
 | Windows-Version        | SMB-Version | Einbindung in Azure-VM möglich | Lokale Einbindung möglich |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Ja | Ja |
-| Windows 10<sup>1</sup> | SMB 3.0 | Ja | Ja |
-| Halbjährlicher Windows Server-Kanal<sup>2</sup> | SMB 3.0 | Ja | Ja |
-| Windows Server 2016 | SMB 3.0 | Ja | Ja |
+| Windows Server 2019 | SMB 3.1.1 | Ja | Ja |
+| Windows 10<sup>1</sup> | SMB 3.1.1 | Ja | Ja |
+| Halbjährlicher Windows Server-Kanal<sup>2</sup> | SMB 3.1.1 | Ja | Ja |
+| Windows Server 2016 | SMB 3.1.1 | Ja | Ja |
+| Windows 10, Version 1507 | SMB 3.0 | Ja | Ja |
 | Windows 8.1 | SMB 3.0 | Ja | Ja |
 | Windows Server 2012 R2 | SMB 3.0 | Ja | Ja |
 | Windows Server 2012 | SMB 3.0 | Ja | Ja |
 | Windows 7<sup>3</sup> | SMB 2.1 | Ja | Nein |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ja | Nein |
 
-<sup>1</sup>Windows 10, Versionen 1507, 1607, 1803, 1809, 1903, 1909 und 2004.  
-<sup>2</sup>Windows Server, Versionen 1809, 1903, 1909 und 2004.  
+<sup>1</sup>Windows 10, Versionen 1607, 1809, 1909, 2004 und 20H2  
+<sup>2</sup>Windows Server, Versionen 2004 und 20H2  
 <sup>3</sup>Regulärer Microsoft-Support für Windows 7 und Windows Server 2008 R2 wurde beendet. Es ist möglich, zusätzlichen Support nur für Sicherheitsupdates über das [ESU-Programm (Extended Security Update)](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates) zu erwerben. Es wird dringend empfohlen, diese Betriebssysteme zu migrieren.
 
 > [!Note]  

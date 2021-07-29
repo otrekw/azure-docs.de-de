@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 04/27/2021
-ms.openlocfilehash: e5745f195fe7620aeb7ffe009c13c52cd5f02e62
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 72f58258f427c5a9414bd7627d4d121c6a89c365
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228634"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060856"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Beheben von CI/CD-, Azure DevOps- und GitHub-Problemen in ADF 
 
@@ -233,6 +233,27 @@ Der folgende Abschnitt ist ungültig, da der Ordner package.json ungültig ist.
 ```
 Es sollte DataFactory im customCommand enthalten, wie z.B. *'run build validate $(Build.Repository.LocalPath)/DataFactory/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName‘* . Stellen Sie sicher, dass die erzeugte YAML-Datei für die höhere Stufe die erforderlichen JSON-Artefakte enthalten sollte.
 
+### <a name="git-repository-or-purview-connection-disconnected"></a>Die Git-Repository- oder Purview-Verbindung wurde getrennt
+
+#### <a name="issue"></a>Problem
+Beim Bereitstellen Ihrer Data Factory wird Ihre Git-Repository- oder Purview-Verbindung getrennt.
+
+#### <a name="cause"></a>Ursache
+Wenn Sie für das Bereitstellen globaler Parameter die Option **In ARM-Vorlage einschließen** ausgewählt haben, wird Ihre Factory in die ARM-Vorlage integriert. Daher werden andere Factoryeigenschaften bei der Bereitstellung entfernt.
+
+#### <a name="resolution"></a>Lösung
+Deaktivieren Sie **In ARM-Vorlage einschließen**, und stellen Sie globale Parameter mit PowerShell wie unter „Globale Parameter in CI/CD“ beschrieben bereit. 
+ 
+### <a name="extra--left--displayed-in-published-json-file"></a>In der veröffentlichten JSON-Datei wird eine zusätzliche öffnende eckige Klammer („[“) angezeigt
+
+#### <a name="issue"></a>Problem
+Beim Veröffentlichen von ADF mit DevOps wird eine weitere öffnende eckige Klammer („[“) angezeigt. In DevOps fügt ADF automatisch eine weitere öffnende eckige Klammer („[“) in ARM-Vorlagen hinzu. 
+
+#### <a name="cause"></a>Ursache
+Da „[“ ein reserviertes Zeichen für ARM ist, wird automatisch eine zusätzliche öffnende eckige Klammer hinzugefügt, um für „[“ ein Escapezeichen zu verwenden.
+
+#### <a name="resolution"></a>Lösung
+Dies ist während des ADF-Veröffentlichungsprozesses für CI/CD ein normales Verhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

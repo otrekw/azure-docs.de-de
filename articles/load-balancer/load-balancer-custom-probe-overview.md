@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: a008d7b26738b9552a7a43ab026391bd9afe0aa8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6aa21dda1f19335a542edf729135d55a9f3b9176
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780942"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083474"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -37,7 +37,7 @@ Integritätstests unterstützen mehrere Protokolle. Die Verfügbarkeit eines bes
 >Lesen Sie dieses Dokument in seiner Gesamtheit, einschließlich der wichtigen [Hinweise zum Entwurf](#design) unten, um einen zuverlässigen Dienst zu erstellen.
 
 >[!IMPORTANT]
->Load Balancer-Integritätstests stammen von der IP-Adresse 168.63.129.16 und dürfen nicht blockiert werden, damit Ihre Instanz beim Test als online markiert wird.  Einzelheiten finden Sie unter [Quell-IP-Adresse von Tests](#probesource).
+>Load Balancer-Integritätstests stammen von der IP-Adresse 168.63.129.16 und dürfen nicht blockiert werden, damit Ihre Instanz beim Test als online markiert wird.  Einzelheiten finden Sie unter [Quell-IP-Adresse von Tests](#probesource). Informationen, wie Sie diesen Testdatenverkehr in Ihrer Back-End-Instanz anzeigen können, finden Sie in [diesen häufig gestellten Fragen](load-balancer-faqs.md#probes).
 
 >[!IMPORTANT]
 >Unabhängig vom konfigurierten Timeout-Schwellenwert wird bei HTTP(S)-Integritätstests von Load Balancer automatisch eine Instanz getestet, wenn der Server einen anderen Statuscode als „HTTP 200 OK“ zurückgibt oder wenn die Verbindung durch ein TCP-Reset getrennt wird.

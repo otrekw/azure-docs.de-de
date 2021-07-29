@@ -40,7 +40,7 @@
     - name: Transaktionen im kommerziellen Marketplace
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
     - name: Lizenzverwaltung
-      href: third-party-license.md
+      href: isv-app-license.md
     - name: Private Angebote
       href: private-offers.md
     - name: Pläne und Preise
@@ -212,9 +212,9 @@
             - name: SAS-Fehlermeldungen
               href: azure-vm-sas-failure-messages.md
             - name: Häufig gestellte Fragen zur VM-Erstellung
-              href: azure-vm-create-faq.md
+              href: azure-vm-create-faq.yml
             - name: Behandeln von Problemen bei der VM-Zertifizierung
-              href: azure-vm-create-certification-faq.md
+              href: azure-vm-create-certification-faq.yml
     - name: Beratungsdienstangebot
       items:
         - name: Planen des Angebots
@@ -398,7 +398,7 @@
         - name: Salesforce
           href: partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Häufig gestellte Fragen zur Leadverwaltung
-          href: lead-management-faq.md
+          href: lead-management-faq.yml
 - name: Daten und Analysen
   items:
     - name: Analysen für den kommerziellen Marketplace
@@ -413,6 +413,8 @@
       href: customer-dashboard.md
     - name: Dashboard „Marketplace-Erkenntnisse“
       href: insights-dashboard.md
+    - name: Dashboard „Lizenz“
+      href: license-dashboard.md
     - name: Dashboard „Downloads“
       href: downloads-dashboard.md
     - name: Dashboard „Bewertungen und Rezensionen“
@@ -462,7 +464,7 @@
     - name: Verwalten von Anomalien bei der getakteten Abrechnung
       href: anomaly-detection.md
     - name: Allgemeine Fragen zu Analytics
-      href: analytics-faq.md
+      href: analytics-faq.yml
 - name: Richtlinien und Nutzungsbedingungen
   items:
     - name: Informationen zu unseren Richtlinien und Bestimmungen
@@ -520,7 +522,7 @@
         - name: Marketplace-Messungsdienst-APIs
           href: marketplace-metering-service-apis.md
         - name: Marketplace-Messungsdienst-APIs – Häufig gestellte Fragen
-          href: marketplace-metering-service-apis-faq.md
+          href: marketplace-metering-service-apis-faq.yml
     - name: SaaS-Fulfillment-APIs
       items:
         - name: Übersicht über SaaS-Fulfillment-APIs
@@ -532,13 +534,13 @@
         - name: SaaS-Fulfillment-APIs v1 (veraltet)
           href: partner-center-portal/pc-saas-fulfillment-api-v1.md
         - name: SaaS-Fulfillment-APIs – Häufig gestellte Fragen
-          href: partner-center-portal/saas-fulfillment-apis-faq.md
+          href: partner-center-portal/saas-fulfillment-apis-faq.yml
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen zum kommerziellen Marketplace
-      href: marketplace-faq-publisher-guide.md
+      href: marketplace-faq-publisher-guide.yml
     - name: Häufig gestellte Fragen zur Migration des Cloud-Partnerportals
-      href: cloud-partner-portal-migration-faq.md
+      href: cloud-partner-portal-migration-faq.yml
     - name: Geschäftsmöglichkeit – Geschäftszeiten
       href: 'https://aka.ms/marketplaceofficehours'
     - name: Technik und Veröffentlichung – Geschäftszeiten

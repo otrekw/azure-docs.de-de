@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: e65d526db2861bc0d30a40651bbf9cf46111eaf5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d25ca629953c78648bed5c33f3598b64eff658d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93073195"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464696"
 ---
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Upsert-Vorgang mit Daten in die Azure Cosmos-DB-Cassandra-API von Spark
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,8 +28,8 @@ import org.apache.spark.sql.cassandra._
 import com.datastax.spark.connector._
 import com.datastax.spark.connector.cql.CassandraConnector
 
-//CosmosDB library for multiple retry
-import com.microsoft.azure.cosmosdb.cassandra
+//if using Spark 2.x, CosmosDB library for multiple retry
+//import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
 spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
@@ -37,15 +37,21 @@ spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
 spark.conf.set("spark.cassandra.auth.password","YOUR_ACCOUNT_KEY")
-spark.conf.set("spark.cassandra.connection.factory", "com.microsoft.azure.cosmosdb.cassandra.CosmosDbConnectionFactory")
+// if using Spark 2.x
+// spark.conf.set("spark.cassandra.connection.factory", "com.microsoft.azure.cosmosdb.cassandra.CosmosDbConnectionFactory")
+
 //Throughput-related...adjust as needed
 spark.conf.set("spark.cassandra.output.batch.size.rows", "1")
-spark.conf.set("spark.cassandra.connection.connections_per_executor_max", "10")
+//spark.conf.set("spark.cassandra.connection.connections_per_executor_max", "10") // Spark 2.x
+spark.conf.set("spark.cassandra.connection.remoteConnectionsPerExecutor", "10") // Spark 3.x
 spark.conf.set("spark.cassandra.output.concurrent.writes", "1000")
 spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
+
+> [!NOTE]
+> Wenn Sie Spark 3.0 oder höher verwenden, müssen Sie die Cosmos DB-Hilfs- und Verbindungs-Factory nicht installieren. Sie sollten auch `remoteConnectionsPerExecutor` anstelle von `connections_per_executor_max` für den Spark 3-Connector verwenden (siehe oben). Sie sehen, dass verbindungsbezogene Eigenschaften im obigen Notebook definiert sind. Mit der folgenden Syntax können so Verbindungseigenschaften definiert werden, ohne diese auf Clusterebene definierem zu müssen (Spark-Kontextinitialisierung). Bei Verwendung von Vorgängen, die Spark-Kontext erfordern (z. B. `CassandraConnector(sc)` für `update` wie unten gezeigt), müssen Verbindungseigenschaften jedoch auf Clusterebene definiert werden.
 
 ## <a name="dataframe-api"></a>Datenrahmen-API
 
@@ -80,8 +86,11 @@ booksUpsertDF.write
 ### <a name="update-data"></a>Aktualisieren von Daten
 
 ```scala
+//Cassandra connector instance
+val cdbConnector = CassandraConnector(sc)
+
 //This runs on the driver, leverage only for one off updates
-cdbConnector.withSessionDo(session => session.execute("update books_ks.books set book_price=99.33 where book_id ='b00300';"))
+cdbConnector.withSessionDo(session => session.execute("update books_ks.books set book_price=99.33 where book_id ='b00300' and book_pub_year = 1901;"))
 ```
 
 ## <a name="rdd-api"></a>RDD-API

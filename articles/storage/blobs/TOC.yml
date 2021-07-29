@@ -1,6 +1,6 @@
 - name: Dokumentation zu Azure Blob Storage
   href: ./index.yml
-- name: Übersicht
+- name: Überblick
   items:
     - name: Was ist Azure Blob Storage?
       href: storage-blobs-overview.md
@@ -175,10 +175,10 @@
               href: data-protection-overview.md
             - name: Vorläufiges Löschen für Container
               href: soft-delete-container-overview.md
-            - name: Versionsverwaltung
-              href: versioning-overview.md
             - name: Vorläufiges Löschen für Blobs
               href: soft-delete-blob-overview.md
+            - name: Versionskontrolle
+              href: versioning-overview.md
             - name: Wiederherstellung bis zu einem bestimmten Zeitpunkt
               href: point-in-time-restore-overview.md
             - name: Momentaufnahmen
@@ -229,14 +229,14 @@
                   href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 'Finden, Suchen und Verstehen von Blobdaten'
           items:
-            - name: Verwenden von Blobindextags zum Verwalten und Suchen von Blobdaten
-              href: storage-manage-find-blobs.md
-            - name: Verstehen von Blobdaten mithilfe von KI
-              href: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Volltextsuche für Blobdaten
-              href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Verwalten von Blobdaten mit der Blobinventur
+            - name: Blob-Inventar
               href: blob-inventory.md
+            - name: Blobindextags
+              href: storage-manage-find-blobs.md
+            - name: Volltextsuche
+              href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Azure Cognitive Search
+              href: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Datenmigration
           items:
             - name: Übersicht über die Azure Storage-Migration
@@ -274,6 +274,8 @@
               href: network-file-system-protocol-support.md
             - name: Überlegungen zur Leistung
               href: network-file-system-protocol-support-performance.md
+            - name: Bekannte Probleme
+              href: network-file-system-protocol-known-issues.md
         - name: Behandlung von Ereignissen
           href: storage-blob-event-overview.md
         - name: Features für Seitenblobs
@@ -291,7 +293,7 @@
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Wiederherstellen eines gelöschten Speicherkontos
               href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Abrufen von Kontotyp und SKU-Name (.NET)
+            - name: Abrufen von Kontokonfigurationseigenschaften
               href: ../common/storage-account-get-info.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Verwalten der Standardzugriffsebene eines Speicherkontos
               href: ../common/manage-account-default-access-tier.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -315,6 +317,8 @@
               href: storage-blob-copy.md
             - name: Verwenden von Blobindextags
               href: storage-blob-index-how-to.md
+            - name: Aktivieren von Berichten zum Blobbestand
+              href: blob-inventory-how-to.md
             - name: Berechnen von Blobanzahl und Gesamtgröße
               href: calculate-blob-count-size.md
         - name: Autorisieren des Zugriffs auf Blobdaten
@@ -591,6 +595,8 @@
               href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Anmelden bei Storage-Explorer
               href: ../common/storage-explorer-sign-in.md
+            - name: Storage-Explorer-Netzwerk
+              href: ../common/storage-explorer-network.md
             - name: Versionshinweise für den Storage-Explorer
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: Beheben von Problemen mit dem Storage-Explorer
@@ -619,6 +625,8 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Videos
           href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
+        - name: 'Vergleichen des Zugriffs mit NFS auf Azure Blob Storage, Azure Files und Azure NetApp Files'
+          href: ../common/nfs-comparison.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: NuGet-Pakete (.NET)
           items:
             - name: "Microsoft.Azure.Storage.Common (Version\_11.x)"

@@ -6,20 +6,20 @@ ms.custom: devx-track-csharp
 ms.author: jobreen
 author: jjbfour
 ms.date: 01/14/2021
-ms.openlocfilehash: 3b951cd0878bda4a3f65f9208f6997419a10d537
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fc06d7178442c22032795bf2d6ceacdbd6199a5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98200259"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745845"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>Referenz zum benutzerdefinierten C# RESTful-Endpunkt eines Anbieters
 
 Dieser Artikel stellt eine grundlegende Referenz zum benutzerdefinierten C# RESTful-Endpunkt eines Anbieters dar. Sollten Sie noch nicht mit benutzerdefinierten Azure-Anbietern vertraut sein, sehen Sie sich die [Übersicht über benutzerdefinierte Ressourcenanbieter](overview.md) an.
 
-## <a name="azure-function-app-restful-endpoint"></a>RESTful-Endpunkt für Azure-Funktions-App
+## <a name="azure-functions-restful-endpoint"></a>RESTful-Endpunkt für Azure Functions
 
-Der folgende Code funktioniert mit einer Azure-Funktions-App. Weitere Informationen zum Einrichten einer Azure-Funktions-App für die Arbeit mit benutzerdefinierten Azure-Anbietern finden Sie im Tutorial zum [Einrichten von Azure Functions für benutzerdefinierte Azure-Anbieter](./tutorial-custom-providers-function-setup.md)
+Der folgende Code funktioniert mit einer Funktions-App in Azure. Weitere Informationen zum Einrichten einer Funktions-App für die Arbeit mit benutzerdefinierten Azure-Anbietern finden Sie im Tutorial zum [Einrichten von Azure Functions für benutzerdefinierte Azure-Anbieter](./tutorial-custom-providers-function-setup.md).
 
 ```csharp
 #r "Newtonsoft.Json"

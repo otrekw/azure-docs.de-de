@@ -7,12 +7,12 @@ author: nabhishek
 ms.author: abnarain
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 0a1eb593e9f9f15f88aefb2fe06706153a4b74a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44fc791fd10517ee52fc2e05ea292b889bd95e11
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361399"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496851"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformieren von Data in Azure Data Factory
 
@@ -26,6 +26,7 @@ ms.locfileid: "100361399"
 > * [Azure Machine Learning Studio (klassisch)](transform-data-using-machine-learning.md) 
 > * [Gespeicherte Prozedur](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
+> * [Synapse-Notebook](../synapse-analytics/synapse-notebook-activity.md)
 > * [Databricks-Notebook](transform-data-databricks-notebook.md)
 > * [JAR in Databricks](transform-data-databricks-jar.md)
 > * [Python in Databricks](transform-data-databricks-python.md)
@@ -79,6 +80,10 @@ Sie können die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data 
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>U-SQL-Aktivität für Data Lake Analytics
 Die U-SQL-Aktivität für Data Lake Analytics wendet ein U-SQL-Skript auf einen Azure Data Lake Analytics-Cluster an. Unter [U-SQL-Aktivität für Data Lake Analytics](transform-data-using-data-lake-analytics.md) finden Sie Details. 
+
+### <a name="synapse-notebook-activity"></a>Synapse-Notebook-Aktivität 
+
+Die Azure Synapse-Notebook-Aktivität in einer Synapse-Pipeline führt ein Synapse-Notebook in Ihrem Azure Synapse-Arbeitsbereich aus. Informationen finden Sie unter [Transformieren von Daten durch Ausführen eines Synapse-Notebooks](../synapse-analytics/synapse-notebook-activity.md).
 
 ### <a name="databricks-notebook-activity"></a>Databricks-Notebook-Aktivität
 

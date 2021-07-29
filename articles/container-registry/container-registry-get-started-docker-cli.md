@@ -2,14 +2,14 @@
 title: Pushen und Pullen von Containerimages
 description: Informationen zum Pushen und Pullen von Docker-Images an eine private Containerregistrierung in Azure mit der Docker CLI
 ms.topic: article
-ms.date: 01/23/2019
-ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 982a49af271648caeb62e5759530aa6049be4382
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 05/12/2021
+ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurepowershell
+ms.openlocfilehash: 0fd44ae001bd7f120b6c903a4109dd0e6268e19e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308301"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062954"
 ---
 # <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Pushen des ersten Image in eine Azure-Containerregistrierung mit der Docker CLI
 
@@ -19,17 +19,32 @@ In den folgenden Schritten laden Sie ein öffentliches [Nginx-Image](https://sto
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure-Containerregistrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md).
+* **Azure-Containerregistrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md), die [Azure-CLI](container-registry-get-started-azure-cli.md) oder [Azure PowerShell](container-registry-get-started-powershell.md).
 * **Docker CLI** – Darüber hinaus muss Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker auf einem [macOS][docker-mac]-, [Windows][docker-windows]- oder [Linux][docker-linux]-System problemlos konfiguriert werden kann.
 
 ## <a name="log-in-to-a-registry"></a>Anmelden an einer Registrierung
 
-Es gibt [verschiedene Möglichkeiten für die Authentifizierung](container-registry-authentication.md) bei Ihrer privaten Containerregistrierung. Die empfohlene Methode bei Verwendung einer Befehlszeile ist der Azure CLI-Befehl [az acr login](/cli/azure/acr#az-acr-login). Um sich z. B. bei einer Registrierung mit dem Namen *myregistry* anzumelden, melden Sie sich bei der Azure CLI an und authentifizieren sich dann bei Ihrer Registrierung:
+Es gibt [verschiedene Möglichkeiten für die Authentifizierung](container-registry-authentication.md) bei Ihrer privaten Containerregistrierung.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Die empfohlene Methode bei Verwendung einer Befehlszeile ist der Azure CLI-Befehl [az acr login](/cli/azure/acr#az_acr_login). Um sich z. B. bei einer Registrierung mit dem Namen *myregistry* anzumelden, melden Sie sich bei der Azure CLI an und authentifizieren sich dann bei Ihrer Registrierung:
 
 ```azurecli
 az login
 az acr login --name myregistry
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Die empfohlene Methode bei der Arbeit in PowerShell ist mit dem Azure PowerShell-Cmdlet [Connect-AzContainerRegistry](/powershell/module/az.containerregistry/connect-azcontainerregistry). Um sich z. B. bei einer Registrierung mit dem Namen *myregistry* anzumelden, melden Sie sich bei Azure an und authentifizieren sich dann bei Ihrer Registrierung:
+
+```azurepowershell
+Connect-AzAccount
+Connect-AzContainerRegistry -Name myregistry
+```
+
+---
 
 Sie können sich auch mit [docker login](https://docs.docker.com/engine/reference/commandline/login/) anmelden. Angenommen, Sie haben Ihrer Registrierung für ein Automatisierungsszenario [einen Dienstprinzipal zugewiesen](container-registry-authentication.md#service-principal). Wenn Sie den folgenden Befehl ausführen, geben Sie bei Aufforderung interaktiv die Haupt-AppID (Benutzername) und das Kennwort des Dienstes an. Best Practices zur Verwaltung von Anmeldeinformationen finden Sie in der Befehlsreferenz [Docker-Anmeldung](https://docs.docker.com/engine/reference/commandline/login/):
 
@@ -114,11 +129,31 @@ Wenn Sie das Nginx-Image nicht mehr benötigen, können Sie es mit dem Befehl [d
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Um Images aus Ihrer Azure-Containerregistrierung zu entfernen, können Sie den Azure CLI-Befehl [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete) ausführen. Mit dem folgenden Befehl werden beispielsweise das durch das `samples/nginx:latest`-Tag referenzierte Manifest, alle eindeutigen Ebenendaten und alle anderen Tags gelöscht, die auf das Manifest verweisen.
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Um Images aus Ihrer Azure-Containerregistrierung zu entfernen, können Sie den Azure CLI-Befehl [az acr repository delete](/cli/azure/acr/repository#az_acr_repository_delete) ausführen. Mit dem folgenden Befehl werden beispielsweise das durch das `samples/nginx:latest`-Tag referenzierte Manifest, alle eindeutigen Ebenendaten und alle anderen Tags gelöscht, die auf das Manifest verweisen.
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Das Azure PowerShell-Modul [Az.ContainerRegistry](/powershell/module/az.containerregistry) enthält mehrere Befehle zum Entfernen von Images aus Ihrer Containerinstanz. [Remove-AzContainerRegistryRepository](/powershell/module/az.containerregistry/remove-azcontainerregistryrepository) entfernt alle Images in einem bestimmten Namespace wie `samples:nginx`, während [Remove-AzContainerRegistryManifest](/powershell/module/az.containerregistry/remove-azcontainerregistrymanifest) ein bestimmtes Tag oder Manifest entfernt.
+
+Im folgenden Beispiel verwenden Sie das Cmdlet `Remove-AzContainerRegistryRepository`, um alle Images im Namespace `samples:nginx` zu entfernen.
+
+```azurepowershell
+Remove-AzContainerRegistryRepository -RegistryName myregistry -Name samples/nginx
+```
+
+Im folgenden Beispiel verwenden Sie das Cmdlet `Remove-AzContainerRegistryManifest`, um das von dem Tag `samples/nginx:latest` referenzierte Manifest, alle eindeutigen Ebenendaten und alle anderen Tags gelöscht, die auf das Manifest verweisen, zu löschen.
+
+```azurepowershell
+Remove-AzContainerRegistryManifest -RegistryName myregistry -RepositoryName samples/nginx -Tag latest
+```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

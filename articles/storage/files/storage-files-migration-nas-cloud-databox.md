@@ -4,15 +4,15 @@ description: Es wird beschrieben, wie Sie Dateien aus lokalem Network Attached S
 author: fauhse
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 04/02/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: a8420d23c8bda29290722975ada2acca6733f0e7
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: eb3327ad84310e5dae55103171f7677d5b2c06d1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491673"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756159"
 ---
 # <a name="use-databox-to-migrate-from-network-attached-storage-nas-to-azure-file-shares"></a>Verwenden von Data Box für die Migration von Network Attached Storage (NAS) zu Azure-Dateifreigaben
 
@@ -29,11 +29,11 @@ In diesem Artikel wird Schritt für Schritt der gesamte Prozess für die Planung
 
 ## <a name="migration-goals"></a>Migrationsziele
 
-Das Ziel besteht darin, die Freigaben auf Ihrer NAS-Appliance nach Azure zu verschieben und als native Azure-Dateifreigaben bereitzustellen, die Sie ohne Windows Server nutzen können. Diese Migration muss so erfolgen, dass die Integrität der Produktionsdaten und die Verfügbarkeit während der Migration gewährleistet wird. Letzteres erfordert minimale Ausfallzeiten, damit sie in normalen Wartungsfenstern stattfinden kann oder diese nur geringfügig überschreitet.
+Das Ziel besteht darin, die Freigaben auf Ihrer NAS-Appliance nach Azure zu verschieben und als native Azure-Dateifreigaben bereitzustellen. Sie können native Azure-Dateifreigaben ohne Windows Server verwenden. Diese Migration muss so erfolgen, dass die Integrität der Produktionsdaten und die Verfügbarkeit während der Migration gewährleistet wird. Letzteres erfordert minimale Ausfallzeiten, damit sie in normalen Wartungsfenstern stattfinden kann oder diese nur geringfügig überschreitet.
 
 ## <a name="migration-overview"></a>Übersicht zur Migration
 
-Der Migrationsprozess besteht aus mehreren Phasen. Sie müssen Azure-Speicherkonten und -Dateifreigaben bereitstellen, das Netzwerk konfigurieren, die Migration mit Azure Data Box durchführen, die Änderungen mit Robocopy bereitstellen und abschließend für Ihre Benutzer die Umstellung auf die neu erstellten Azure-Dateifreigaben vornehmen. In den folgenden Abschnitten werden die Phasen des Migrationsprozesses ausführlich beschrieben.
+Der Migrationsprozess besteht aus mehreren Phasen. Sie müssen Azure Storage-Konten und Dateifreigaben bereitstellen und das Netzwerk konfigurieren. Anschließend migrieren Sie Ihre Dateien mithilfe von Azure DataBox und verwenden RoboCopy, um Änderungen zu berücksichtigen. Abschließend stellen Sie Ihre Benutzer und Apps auf die neu erstellten Azure-Dateifreigaben um. In den folgenden Abschnitten werden die Phasen des Migrationsprozesses ausführlich beschrieben.
 
 > [!TIP]
 > Wenn Sie zu diesem Artikel zurückkehren, wechseln Sie anhand der Navigation auf der rechten Seite zu der Migrationsphase, in der Sie aufgehört haben.
@@ -110,7 +110,7 @@ Um Zeit zu sparen, sollten Sie mit der Arbeit an dieser Phase bereits beginnen, 
 * [Konfigurieren eines P2S-VPN (Point-to-Site) unter Windows zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-windows.md)
 * [Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md)
 * [Konfigurieren der DNS-Weiterleitung für Azure Files](storage-files-networking-dns.md)
-* [Übersicht über DFS-Namespaces](/windows-server/storage/dfs-namespaces/dfs-overview)
+* [Übersicht über DFS-Namespaces](files-manage-namespaces.md)
    :::column-end:::
 :::row-end:::
 

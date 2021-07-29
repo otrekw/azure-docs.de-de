@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.topic: conceptual
 ms.workload: infrastructure
-ms.date: 10/14/2020
-ms.author: akjosh
+ms.date: 6/8/2021
+ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 32b4cf1555a2d0e074ae1551a5c0085f2758fa2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6c39a7ef0404a0e78e5b8ed0b41bf54156b488a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609140"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032661"
 ---
 # <a name="shared-image-galleries-overview"></a>Übersicht über Kataloge mit freigegebenen Images
 
@@ -64,7 +64,7 @@ Die folgenden Parameter bestimmen, welche Arten von Imageversionen sie enthalten
 
 - Betriebssystemstatus: Sie können den Betriebssystemstatus auf [„Generalisiert“ oder „Spezialisiert“](#generalized-and-specialized-images) festlegen. Dieses Feld ist erforderlich.
 - Betriebssystem: Kann entweder Windows oder Linux sein. Dieses Feld ist erforderlich.
--   Hyper-V-Generation: Sie können angeben, ob das Image aus einer Hyper-V-VHD der Generation 1 oder der [Generation 2](generation-2.md) erstellt wurde. Der Standardwert ist Generation 1.
+- Hyper-V-Generation: Sie können angeben, ob das Image aus einer Hyper-V-VHD der Generation 1 oder der [Generation 2](generation-2.md) erstellt wurde. Der Standardwert ist Generation 1.
 
 
 Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition festgelegt werden können, damit Sie Ihre Ressourcen einfacher verfolgen können:
@@ -72,7 +72,7 @@ Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition fe
 - Beschreibung: Verwenden Sie eine Beschreibung, um ausführlichere Informationen darüber anzugeben, warum die Imagedefinition vorhanden ist. Sie könnten z. B. eine Imagedefinition für Ihren Front-End-Server haben, in dem die Anwendung vorinstalliert ist.
 - EULA (Lizenzbedingungen): Kann verwendet werden, um auf einen Endbenutzer-Lizenzvertrag zu verweisen, der speziell für die Imagedefinition gilt.
 - Datenschutzbestimmungen und Versionshinweise: Speichern Sie Versionshinweise und Datenschutzbestimmungen, und stellen Sie einen URI für den Zugriff auf sie als Teil der Imagedefinition bereit.
-- Ablaufdatum (Datum für Lebensende): Weisen Sie Ihrer Imagedefinition ein Ablaufdatum zu, damit Automatisierung für das Löschen alter Imagedefinitionen verwendet werden kann.
+- Ende der Lebensdauer: Legen Sie ein Standarddatum für das Ende der Lebensdauer für alle Imageversionen in der Imagedefinition fest. Diese Angabe dient nur der Information. Benutzer können auch nach dem Ende der Lebensdauer weiterhin VMs aus Images und Versionen erstellen.
 - Tag: Sie können Tags hinzufügen, wenn Sie Ihre Imagedefinition erstellen. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md).
 - Mindest- und Maximalempfehlungen zu vCPU und Arbeitsspeicher: Wenn es für Ihr Image vCPU- und Arbeitsspeicherempfehlungen gibt, können Sie diese Informationen zu Ihrer Imagedefinition hinzufügen.
 - Unzulässige Datenträgertypen: Sie können Informationen über die Speicheranforderungen für Ihren virtuellen Computer bereitstellen. Wenn Ihr Image z. B. nicht für normale Festplattenlaufwerke geeignet ist, fügen Sie diese zur Liste „Nicht zulassen“ hinzu.
@@ -88,7 +88,7 @@ Die Eigenschaften einer Imageversion sind die folgenden:
 - Versionsnummer: Dies wird als Name der Imageversion verwendet. Es wird immer das folgende Format verwendet: Hauptversion.Nebenversion.Patch. Wenn Sie beim Erstellen einer VM angeben, dass **Neueste** verwendet werden soll, wird basierend auf den höchsten Werten für Hauptversion, dann für Nebenversion und dann für Patch das neueste Image ausgewählt. 
 - Source. Die Quelle kann eine VM, ein verwalteter Datenträger, eine Momentaufnahme, ein verwaltetes Image oder eine andere Imageversion sein. 
 - Aus aktueller Version ausschließen. Sie können eine Version ausschließen, die nicht als neuste Imageversion verwendet werden soll. 
-- Ende der Lebensdauer. Hierbei handelt es sich um ein Datum, nach dem VMs nicht mehr auf Grundlage dieses Images erstellt werden können.
+- Ende der Lebensdauer. Geben Sie das Ende der Lebensdauer für die Imageversion an. Diese Angabe dient nur der Information. Benutzer können auch nach dem Ende der Lebensdauer weiterhin VMs aus Versionen erstellen.
 
 
 ## <a name="generalized-and-specialized-images"></a>Generalisierte und spezialisierte Images
@@ -120,7 +120,7 @@ Weitere Informationen finden Sie unter [Vergleichen der Ressourcennutzung mit Gr
 ## <a name="scaling"></a>Skalierung
 Im Katalog mit freigegebenen Images können Sie die Anzahl der Replikate angeben, die Azure für die Images verwalten soll. Dies ist in Szenarien mit mehreren VM-Bereitstellungen hilfreich, da die VM-Bereitstellungen auf verschiedene Replikate verteilt werden können. Dadurch wird die Wahrscheinlichkeit verringert, dass der Instanzerstellungsprozess durch die Überlastung eines einzelnen Replikats gedrosselt wird.
 
-Mit dem Katalog mit freigegebenen Images können Sie jetzt bis zu 1.000 VM-Instanzen in einer VM-Skalierungsgruppe bereitstellen (erhöht von 600 mit verwalteten Images). Imagereplikate bieten eine bessere Leistung, Zuverlässigkeit und Konsistenz bei der Bereitstellung.   Sie können in jeder Zielregion ein andere Replikatanzahl festlegen, basierend auf der für die Region erforderlichen Skalierung. Da jedes Replikat eine tiefe Kopie Ihres Images ist, hilft dies dabei, Ihre Bereitstellungen mit jedem zusätzlichen Replikat linear zu skalieren. Natürlich sind wir uns bewusst, dass keine zwei Images oder Regionen identisch sind, doch dies ist unsere allgemeine Richtlinie für die Verwendung von Replikaten in einer Region:
+Mit dem Katalog mit freigegebenen Images können Sie jetzt bis zu 1.000 VM-Instanzen in einer VM-Skalierungsgruppe bereitstellen (erhöht von 600 mit verwalteten Images). Imagereplikate bieten eine bessere Leistung, Zuverlässigkeit und Konsistenz bei der Bereitstellung.   Sie können in jeder Zielregion ein andere Replikatanzahl festlegen, basierend auf der für die Region erforderlichen Skalierung. Da jedes Replikat eine tiefe Kopie Ihres Images ist, hilft dies dabei, Ihre Bereitstellungen mit jedem zusätzlichen Replikat linear zu skalieren. Obwohl natürlich keine zwei Images oder Regionen identisch sind, gibt es dennoch eine allgemeine Richtlinie für die Verwendung von Replikaten in einer Region:
 
 - Bei Bereitstellungen ohne VM-Skalierungsgruppen: Es empfiehlt sich, für je 20 VMs, die Sie gleichzeitig erstellen, ein Replikat beizubehalten. Wenn Sie beispielsweise 120 VMs gleichzeitig mit demselben Image in einer Region erstellen, empfehlen wir, dass Sie mindestens 6 Replikate Ihres Images behalten. 
 - Bei Bereitstellungen mit Skalierungsgruppen: Für jede Skalierungsgruppenbereitstellung mit bis zu 600 Instanzen empfiehlt es sich, mindestens ein Replikat beizubehalten. Wenn Sie beispielsweise 5 Skalierungsgruppen gleichzeitig erstellen, wobei jede davon 600 VM-Instanzen in einer Region enthält, die dasselbe Image verwenden, empfehlen wir, dass Sie mindestens 5 Replikate Ihres Images behalten. 
@@ -159,8 +159,8 @@ Images können auch, maßstäblich, freigegeben werden, sogar über eine mehrins
 
 ## <a name="billing"></a>Abrechnung
 Für die Verwendung des Katalogs mit geteilten Images fällt keine zusätzliche Gebühren an. Für folgende Ressourcen werden Gebühren berechnet:
--   Speicherkosten für die Speicherung der einzelnen Replikate. Die Speicherkosten werden als Momentaufnahme berechnet und richten sich nach der belegten Größe der Imageversion, der Anzahl der Replikate der Imageversion und der Anzahl der Regionen, in die die Version repliziert wird. 
--   Ausgehender Netzwerkdatenverkehr wird für die Replikation der ersten Imageversion aus der Quellregion in die replizierten Regionen berechnet. Weitere Replikate werden in der Region verarbeitet, sodass keine zusätzlichen Gebühren anfallen. 
+- Speicherkosten für die Speicherung der einzelnen Replikate. Die Speicherkosten werden als Momentaufnahme berechnet und richten sich nach der belegten Größe der Imageversion, der Anzahl der Replikate der Imageversion und der Anzahl der Regionen, in die die Version repliziert wird. 
+- Ausgehender Netzwerkdatenverkehr wird für die Replikation der ersten Imageversion aus der Quellregion in die replizierten Regionen berechnet. Weitere Replikate werden in der Region verarbeitet, sodass keine zusätzlichen Gebühren anfallen. 
 
 Nehmen wir z. B. an, Sie verfügen über ein Image eines 127 GB-Betriebssystemdatenträgers, der nur 10 GB Speicherplatz belegt, und über einen leeren 32 GB-Datenträger. Die belegte Größe jedes Images beträgt nur 10 GB. Das Image wird in drei Regionen repliziert, und jede Region verfügt über zwei Replikate. Insgesamt wird es sechs Momentaufnahmen geben, die jeweils 10 GB verwenden. Ihnen werden die Speicherkosten für jede Momentaufnahme auf der Grundlage der belegten Größe von 10 GB in Rechnung gestellt. Sie zahlen Gebühren für ausgehenden Netzwerkdatenverkehr für das erste Replikat, das in die beiden anderen Regionen kopiert wird. Weitere Informationen zu den Preisen von Momentaufnahmen in den einzelnen Regionen finden Sie unter [Preise für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/). Weitere Informationen zum ausgehenden Netzwerkdatenverkehr finden Sie unter [Bandbreite: Preisübersicht](https://azure.microsoft.com/pricing/details/bandwidth/).
 
@@ -198,10 +198,10 @@ Die folgenden SDKs unterstützen das Erstellen von Katalogen mit freigegebenen I
 
 Sie können einen Katalog mit freigegebenen Images mithilfe von Vorlagen erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
 
-- [Erstellen eines Katalogs mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [Erstellen eines virtuellen Computers aus einer Imageversion](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [Erstellen eines Katalogs mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Erstellen eines virtuellen Computers aus einer Imageversion](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen 
 
@@ -228,7 +228,7 @@ Um alle Ressourcen eines Katalogs mit geteilten Images über Abonnements hinweg 
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 1. Scrollen Sie auf der Seite nach unten, und wählen Sie **Alle Ressourcen** aus.
-1. Wählen Sie alle Abonnements aus, von denen Sie alle Ressourcen auflisten möchten.
+1. Wählen Sie alle Abonnements aus, für die Sie alle Ressourcen auflisten möchten.
 1. Suchen Sie nach Ressourcen vom Typ **Shared Image Gallery**.
   
 Um alle Ressourcen eines Katalogs mit freigegebenen Images für die Abonnements, auf die Sie Zugriff haben, aufzulisten, verwenden Sie den folgenden Befehl in der Azure-Befehlszeilenschnittstelle:
@@ -291,7 +291,7 @@ Es gibt zwei Möglichkeiten, wie Sie die Anzahl der Imageversionsreplikate angeb
 1. Die regionale Replikatanzahl, die die Anzahl der Replikate angibt, die Sie pro Region erstellen möchten. 
 2. Die allgemeine Replikatanzahl, bei der es sich um die Standardanzahl pro Region handelt für den Fall, dass die regionale Replikatanzahl nicht angegeben ist. 
 
-Um die regionale Replikatanzahl anzugeben, übergeben Sie den Ort zusammen mit der Anzahl der Replikate, die Sie in dieser Region erstellen möchten: „USA, Süden-Mitte=2“. 
+Übergeben Sie zur Angabe der regionalen Replikatanzahl den Ort zusammen mit der Anzahl der Replikate, die Sie in dieser Region erstellen möchten: „USA, Süden-Mitte=2“. 
 
 Wenn die regionale Replikatanzahl nicht für jeden Ort angegeben ist, entspricht die Standardanzahl der Replikate der allgemeinen Replikatanzahl, die Sie angegeben haben. 
 
@@ -315,7 +315,7 @@ Für Bereitstellungen von VMs und VM-Skalierungsgruppen mithilfe einer Imagevers
 
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Kann ich meine VM-Skalierungsgruppe aktualisieren, die mithilfe eines verwalteten Images erstellt wurde, um Shared Image Gallery-Images zu verwenden?
 
-Ja, Sie können die Imagereferenz der Skalierungsgruppe von einem verwalteten Image in ein Shared Image Gallery-Image aktualisieren, sofern der Betriebssystemtyp, die Hyper-V-Generation und das Datenträgerlayout zwischen den Images übereinstimmen.
+Ja, Sie können den Imageverweis der Skalierungsgruppe von einem verwalteten Image auf ein Shared Image Gallery-Image aktualisieren, sofern der Betriebssystemtyp, die Hyper-V-Generation und das Datenträgerlayout der Images übereinstimmen.
 
 ## <a name="troubleshoot-shared-image-gallery-issues"></a>Behandeln von Problemen mit Shared Image Gallery
 Wenn Probleme mit der Ausführung von Vorgängen für Shared Image Gallery-Ressourcen auftreten, ziehen Sie die Liste mit häufigen Fehlern im [Handbuch zur Problembehandlung](troubleshooting-shared-images.md) zu Rate.

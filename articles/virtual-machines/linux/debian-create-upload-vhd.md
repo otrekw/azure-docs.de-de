@@ -1,18 +1,18 @@
 ---
 title: Vorbereiten einer Debian Linux-VHD
 description: Hier erfahren Sie, wie Sie Debian-VHD-Images für VM-Bereitstellungen in Azure erstellen.
-author: gbowerman
+author: srijang
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 11/13/2018
-ms.author: guybo
-ms.openlocfilehash: 7dcb6dbc62513535c562a430f5958a62dae9d005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 6/3/2021
+ms.author: srijangupta
+ms.openlocfilehash: 9e276c9051be711e41b68d0b2dbb17c6816645d5
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554512"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004959"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Vorbereiten einer Debian-VHD für Azure
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -42,89 +42,117 @@ Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar (beispielsweise 
 ```
 
 
-## <a name="manually-prepare-a-debian-vhd"></a>Manuelles Vorbereiten einer Debian-VHD
-1. Wählen Sie im Hyper-V-Manager den virtuellen Computer aus.
-2. Klicken Sie auf **Verbinden** , um ein Konsolenfenster für den virtuellen Computer zu öffnen.
-3. Wenn Sie das Betriebssystem mithilfe einer ISO-Datei installiert haben, kommentieren Sie in `/etc/apt/source.list` alle Zeilen aus, die sich auf „`deb cdrom`“ beziehen.
+## <a name="prepare-a-debian-image-for-azure"></a>Vorbereiten eines Debian-Images für Azure
 
-4. Bearbeiten Sie die Datei `/etc/default/grub`, und ändern Sie den **GRUB_CMDLINE_LINUX**-Parameter wie folgt, um zusätzliche Kernelparameter für Azure einzubinden.
+Sie können das Azure Debian Cloud-Basisimage mit dem [FAI-Cloudimage-Generator](https://salsa.debian.org/cloud-team/debian-cloud-images) erstellen.
 
-    ```config-grub
-    GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
-    ```
+(Die folgenden Git Clone- und apt-Installationsbefehle wurden aus dem Debian Cloud Images-Repository abgerufen.) Klonen Sie zunächst das Repository, und installieren Sie Abhängigkeiten:
 
-5. Erstellen Sie Grub neu und führen Sie Folgendes aus:
+```
+$ git clone https://salsa.debian.org/cloud-team/debian-cloud-images.git
+$ sudo apt install --no-install-recommends ca-certificates debsums dosfstools \
+    fai-server fai-setup-storage make python3 python3-libcloud python3-marshmallow \
+    python3-pytest python3-yaml qemu-utils udev
+$ cd ./debian-cloud-images
+```
 
-    ```console
-    # sudo update-grub
-    ```
+(Optional) Passen Sie den Build an, indem Sie `./config_space/scripts/AZURE` Skripts (z. B. Shellskripts) hinzufügen.
 
-6. Fügen Sie „/etc/apt/sources.list“ die Debian-Azure-Repositorys für Debian 8, 9 oder 10 hinzu:
 
-    **Debian 8.x „Jessie“**
 
-    ```config-grub
-    deb http://debian-archive.trafficmanager.net/debian jessie main
-    deb-src http://debian-archive.trafficmanager.net/debian jessie main
-    deb http://debian-archive.trafficmanager.net/debian-security jessie/updates main
-    deb-src http://debian-archive.trafficmanager.net/debian-security jessie/updates
-    deb http://debian-archive.trafficmanager.net/debian jessie-updates main
-    deb-src http://debian-archive.trafficmanager.net/debian jessie-updates main
-    deb http://debian-archive.trafficmanager.net/debian jessie-backports main
-    deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
-    ```
+## <a name="an-example-of-a-script-to-customize-the-image-is"></a>Beispiel für ein Skript zum Anpassen des Images:
 
-    **Debian 9.x „Stretch“**
+```
+$ mkdir -p ./config_space/scripts/AZURE
+$ cat > ./config_space/scripts/AZURE/10-custom <<EOF
+#!/bin/bash
 
-    ```config-grub
-    deb http://debian-archive.trafficmanager.net/debian stretch main
-    deb-src http://debian-archive.trafficmanager.net/debian stretch main
-    deb http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-    deb-src http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-    deb http://debian-archive.trafficmanager.net/debian stretch-updates main
-    deb-src http://debian-archive.trafficmanager.net/debian stretch-updates main
-    deb http://debian-archive.trafficmanager.net/debian stretch-backports main
-    deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
-    ```
-    
-    **Debian 10.x „Buster“**
-    ```config-grub
-    deb http://debian-archive.trafficmanager.net/debian buster main
-    deb-src http://debian-archive.trafficmanager.net/debian buster main
-    deb http://debian-archive.trafficmanager.net/debian-security buster/updates main
-    deb-src http://debian-archive.trafficmanager.net/debian-security buster/updates main
-    deb http://debian-archive.trafficmanager.net/debian buster-updates main
-    deb-src http://debian-archive.trafficmanager.net/debian buster-updates main
-    deb http://debian-archive.trafficmanager.net/debian buster-backports main
-    deb-src http://debian-archive.trafficmanager.net/debian buster-backports main
-    ```
+\$ROOTCMD bash -c "echo test > /usr/local/share/testing"
+EOF
+$ sudo chmod 755 ./config_space/scripts/AZURE/10-custom
+```
 
-7. Installieren des Azure Linux Agent:
+Beachten Sie, dass es wichtig ist, allen Befehlen, mit denen Sie das Image anpassen möchten, das Präfix `$ROOTCMD` voranzustellen, da dies als Alias `chroot $target` verwendet wird.
 
-    ```console
-    # sudo apt-get update
-    # sudo apt-get install waagent
-    ```
 
-8. Ab Debian 9 empfiehlt es sich, für virtuelle Computer in Azure den neuen Debian Cloud-Kernel zu verwenden. Wenn Sie diesen neuen Kernel installieren möchten, erstellen Sie zunächst eine Datei namens „/etc/apt/preferences.d/linux.pref“ mit folgendem Inhalt:
+## <a name="build-the-azure-debian-10-image"></a>Erstellen des Azure Debian 10-Images:
 
-    ```config-pref
-    Package: linux-* initramfs-tools
-    Pin: release n=stretch-backports
-    Pin-Priority: 500
-    ```
+```
+$ make image_buster_azure_amd64
+```
 
-    Führen Sie dann „sudo apt-get install linux-image-cloud-amd64“ aus, um den neuen Debian Cloud-Kernel zu installieren.
 
-9. Setzen Sie den virtuellen Computer zurück und bereiten Sie ihn für die Bereitstellung in Azure vor. Führen Sie Folgendes aus:
+Dadurch werden einige Dateien im aktuellen Verzeichnis ausgegeben, insbesondere die Bilddatei `image_buster_azure_amd64.raw`.
 
-    ```console
-    # sudo waagent –force -deprovision
-    # export HISTSIZE=0
-    # logout
-    ```
+Gehen Sie wie folgt vor, um das unformatierte Image in eine VHD für Azure zu konvertieren:
 
-10. Klicken Sie im Hyper-V-Manager auf **Aktion** > „Herunterfahren“. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
+```
+rawdisk="image_buster_azure_amd64.raw"
+vhddisk="image_buster_azure_amd64.vhd"
 
-## <a name="next-steps"></a>Nächste Schritte
-Sie können jetzt mit Ihrer Debian-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie zum ersten Mal die VHD-Datei in Azure hochladen, lesen Sie den Artikel [Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe der Azure CLI 2.0](upload-vhd.md#option-1-upload-a-vhd).
+MB=$((1024*1024))
+size=$(qemu-img info -f raw --output json "$rawdisk" | \
+gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+
+rounded_size=$(((($size+$MB-1)/$MB)*$MB))
+rounded_size_adjusted=$(($rounded_size + 512))
+
+echo "Rounded Size Adjusted = $rounded_size_adjusted"
+
+sudo qemu-img resize "$rawdisk" $rounded_size
+qemu-img convert -f raw -o subformat=fixed,force_size -O vpc "$rawdisk" "$vhddisk"
+```
+
+
+Dadurch wird eine VHD `image_buster_azure_amd64.vhd` mit gerundeter Größe erstellt, um sie erfolgreich auf einen Azure-Datenträger kopieren zu können.
+
+Nun müssen die Azure-Ressourcen für dieses Image erstellt werden (dabei wird die Variable `$rounded_size_adjusted` verwendet; der Vorgang sollte also über denselben Shellprozess wie oben erfolgen).
+
+```
+az group create -l $LOCATION -n $RG
+
+az disk create \
+    -n $DISK \
+    -g $RG \
+    -l $LOCATION \
+    --for-upload --upload-size-bytes "$rounded_size_adjusted" \
+    --sku standard_lrs --hyper-v-generation V1
+
+ACCESS=$(az disk grant-access \
+    -n $DISK -g $RG \
+    --access-level write \
+    --duration-in-seconds 86400 \
+    --query accessSas -o tsv)
+
+azcopy copy "$vhddisk" "$ACCESS" --blob-type PageBlob
+
+az disk revoke-access -n $DISK -g $RG
+az image create \
+    -g $RG \
+    -n $IMAGE \
+    --os-type linux \
+    --source $(az disk show \
+        -g $RG \
+        -n $DISK \
+        --query id -o tsv)
+az vm create \
+    -g $RG \
+    -n $VM \
+    --ssh-key-value $SSH_KEY_VALUE \
+    --public-ip-address-dns-name $VM \
+    --image $(az image show \
+        -g $RG \
+        -n $IMAGE \
+        --query id -o tsv)
+```
+
+
+>[!Note]
+> Wenn die Bandbreite von Ihrem lokalen Computer zum Azure-Datenträger zu einer langwierigen Verarbeitung des Uploads mit azcopy führt, können Sie eine Azure-VM-Jumpbox verwenden, um den Prozess zu beschleunigen. Hier wird gezeigt, wie es geht:
+>
+>1. Erstellen Sie einen Tarball der VHD auf Ihrem lokalen Computer: `tar -czvf ./image_buster_azure_amd64.vhd.tar.gz ./image_buster_azure_amd64.vhd`.
+>2. Erstellen Sie eine Azure Linux-VM (Distribution Ihrer Wahl). Stellen Sie sicher, dass Sie sie mit einem ausreichend großen Datenträger für die extrahierte VHD erstellen!
+>3. Laden Sie das Hilfsprogramm azcopy auf die Azure Linux-VM herunter. Es kann von [hier](../../storage/common/storage-use-azcopy-v10.md#download-azcopy) abgerufen werden.
+>4. Kopieren Sie den Tarball auf die VM: `scp ./image_buster_azure_amd64.vhd.tar.gz <vm>:~`.
+>5. Extrahieren Sie die VM auf der VHD: `tar -xf ./image_buster_azure_amd64.vhd.tar.gz` (dies dauert aufgrund der Größe der Datei etwas).
+>6. Zum Schluss kopieren Sie die VHD auf der VM mit `azcopy` (oben stehender Befehl) auf den Azure-Datenträger.

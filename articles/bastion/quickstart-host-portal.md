@@ -6,18 +6,18 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
-ms.date: 02/18/2021
+ms.date: 06/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: e51d8633418a0a00afb8a6055c05f9c77d93f3cb
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 67211215b3dac9ad8774dc4e3c67a869bd031646
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110540451"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111265"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Schnellstart: Herstellen einer sicheren Verbindung mit einer VM über einen Browser und eine private IP-Adresse
 
-Sie können mit Ihrem Browser mithilfe des Azure-Portals und Azure Bastion eine Verbindung mit einem virtuellen Computer (VM) herstellen. Dieser Schnellstartartikel zeigt Ihnen, wie Sie Azure Bastion auf der Grundlage Ihrer VM-Einstellungen konfigurieren und dann über das Portal eine Verbindung mit Ihrer VM herstellen. Die VM benötigt weder öffentliche IP-Adressen, Clientsoftware, Agents noch eine spezielle Konfiguration. Nachdem der Dienst bereitgestellt wurde, ist die RDP/SSH-Umgebung für alle virtuellen Computer des jeweiligen virtuellen Netzwerks verfügbar. Weitere Informationen zu Azure Bastion finden Sie unter [Was ist Azure Bastion?](bastion-overview.md).
+Sie können mit Ihrem Browser mithilfe des Azure-Portals und Azure Bastion eine Verbindung mit einem virtuellen Computer (VM) herstellen. In diesem Schnellstartartikel wird gezeigt, wie Sie Azure Bastion auf der Grundlage Ihrer VM-Einstellungen konfigurieren. Nachdem der Dienst bereitgestellt wurde, ist die RDP/SSH-Umgebung für alle virtuellen Computer des jeweiligen virtuellen Netzwerks verfügbar. Die VM benötigt weder öffentliche IP-Adressen, Clientsoftware, Agents noch eine spezielle Konfiguration. Wenn Sie die öffentliche IP-Adresse auf Ihrer VM für keine anderen Zwecke benötigen, können Sie sie entfernen. Stellen Sie anschließend über das Portal mithilfe der privaten IP-Adresse eine Verbindung mit Ihrer VM her. Weitere Informationen zu Azure Bastion finden Sie unter [Was ist Azure Bastion?](bastion-overview.md).
 
 ## <a name="prerequisites"></a><a name="prereq"></a>Voraussetzungen
 
@@ -99,19 +99,26 @@ Es gibt verschiedene Möglichkeiten, einen Bastionhost zu konfigurieren. In den 
    * **Name der öffentlichen IP-Adresse**: Der Name der öffentlichen IP-Adressressource.
    * **SKU der öffentlichen IP-Adresse**: Vorkonfiguriert als **Standard**.
    * **Zuweisung**: Vorkonfiguriert als **Statisch**. Sie können keine dynamische Zuweisung für Azure Bastion verwenden.
-   * **Ressourcengruppe**: Dieselbe Ressourcengruppe wie die VM.
+   * **Ressourcengruppe:** dieselbe Ressourcengruppe wie die VM
 
    :::image type="content" source="./media/quickstart-host-portal/create-bastion.png" alt-text="Screenshot von Schritt 3":::
 1. Nachdem Sie die Werte angegeben haben, wählen Sie **Azure Bastion mit Standardwerten erstellen** aus. Azure überprüft Ihre Einstellungen und erstellt anschließend den Host. Die Erstellung und Bereitstellung des Hosts und der zugehörigen Ressourcen dauert ungefähr fünf Minuten.
 
-## <a name="connect"></a><a name="connect"></a>Verbinden
+## <a name="remove-vm-public-ip-address"></a><a name="remove"></a>Entfernen einer öffentlichen IP-Adresse einer VM
+
+[!INCLUDE [Remove a public IP address from a VM](../../includes/bastion-remove-ip.md)]
+
+## <a name="connect-to-a-vm"></a><a name="connect"></a>Herstellen einer Verbindung mit einem virtuellen Computer
 
 Nachdem Bastion im virtuellen Netzwerk bereitgestellt wurde, wird die Seite „Verbinden“ angezeigt.
 
 1. Geben Sie den Benutzernamen und das Kennwort für Ihren virtuellen Computer ein. Wählen Sie dann **Verbinden** aus.
 
    :::image type="content" source="./media/quickstart-host-portal/connect.png" alt-text="Screenshot: Dialogfeld „Verbindung über Azure Bastion herstellen“":::
-1. Die RDP-Verbindung zu diesem virtuellen Computer wird direkt im Azure-Portal (über HTML5) über Port 443 und den Bastion-Dienst geöffnet.
+1. Die RDP-Verbindung zu diesem virtuellen Computer über Bastion wird direkt im Azure-Portal (über HTML5) über Port 443 und den Bastion-Dienst geöffnet. 
+
+   * Wenn Sie eine Verbindung herstellen, sieht der Desktop der VM möglicherweise anders aus als im Beispielscreenshot. 
+   * Tastenkombinationen während der Verbindung mit einer VM weisen möglicherweise ein anderes Verhalten als Tastenkombinationen auf einem lokalen Computer auf. Wenn Sie beispielsweise über einen Windows-Client eine Verbindung mit einer Windows-VM hergestellt haben, ist STRG+ALT+ENDE die Tastenkombination für STRG+ALT+ENTF auf einem lokalen Computer. Wenn Sie dieselbe Aktion bei einer Verbindung von einem Mac aus mit einer Windows-VM ausführen möchten, lautet die Tastenkombination Fn+STRG+ALT+RÜCKTASTE.
 
    :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="RDP-Verbindung":::
 

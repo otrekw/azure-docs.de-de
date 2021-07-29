@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 85a4d6390087100d8d9521f6ac20dbace3a711eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: 073095d590e61d9e7e561339c17501f0ccee844d
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955940"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018655"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>JavaScript-Codebeispiele für Azure Cognitive Search
 
@@ -56,7 +56,8 @@ Die Codebeispiele vom Cognitive Search-Team veranschaulichen die Funktionen und 
 
 | Beispiele | Artikel |
 |---------|---------|
-| [quickstart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | Quellcode für [Schnellstart: Erstellen eines Suchindex in JavaScript](search-get-started-javascript.md). In diesem Artikel wird der allgemeine Workflow zum Erstellen, Laden und Abfragen eines Suchindex unter Verwendung von Beispieldaten beschrieben. |
+| [quickstart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | Quellcode für [Schnellstart: Erstellen eines Suchindex in JavaScript](search-get-started-javascript.md). Hier wird der allgemeine Workflow zum Erstellen, Laden und Abfragen eines Suchindex unter Verwendung von Beispieldaten beschrieben. |
+| [search-website](https://github.com/azure-samples/azure-search-javascript-samples/tree/master/search-website) | Quellcode für [Tutorial: Hinzufügen der Suche zu Web-Apps](tutorial-javascript-overview.md). Veranschaulicht eine End-to-End-Such-App, die einen Rich-Client sowie Komponenten zum Hosting der App und zur Verarbeitung von Suchanforderungen enthält.|
 
 > [!Tip]
 > Testen Sie den [Beispielbrowser](/samples/browse/?languages=javascript&products=azure-cognitive-search), um GitHub nach Microsoft-Codebeispielen zu durchsuchen (gefiltert nach Produkt, Dienst und Sprache).

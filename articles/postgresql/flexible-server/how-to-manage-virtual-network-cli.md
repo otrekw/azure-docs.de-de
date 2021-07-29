@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 0a4bf648551be723007b0d8856fe0857896aad94
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/25/2021
+ms.openlocfilehash: f00a1c8f8901d16a0aefa376f145fd2a4cbf2cf5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778389"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952403"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for PostgreSQL: Flexible Server mithilfe der Azure CLI
 
@@ -72,11 +72,17 @@ In der Referenzdokumentation zur Azure CLI <!--FIXME --> finden Sie eine vollst�
     > [!Note]
     > Das virtuelle Netzwerk und das Subnetz sollten sich in derselben Region und demselben Abonnement befinden wie Ihre Flexible Server-Instanz.
 
+    > [!IMPORTANT]
+    > Die Namen einschließlich `AzureFirewallSubnet`, `AzureFirewallManagementSubnet`, `AzureBastionSubnet` und `GatewaySubnet` sind reservierte Namen in Azure. Verwenden Sie diese nicht als Subnetznamen.
+
 - Erstellen eines flexiblen Servers mithilfe eines neuen virtuellen Netzwerks und Subnetzes und nicht mit dem Standardadresspräfix
     ```azurecli-interactive
     az postgres flexible-server create --vnet myVnet --address-prefixes 10.0.0.0/24 --subnet mySubnet --subnet-prefixes 10.0.0.0/24
     ```
 Die vollständige Liste von konfigurierbaren CLI-Parametern finden Sie in der [Referenzdokumentation](/cli/azure/postgres/flexible-server) zur Azure CLI.
+
+>[!Important]
+> Wenn Sie einen Fehler wie `The parameter PrivateDnsZoneArguments is required, and must be provided by customer` erhalten, bedeutet dies, dass Sie möglicherweise eine ältere Version der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie ein [Upgrade der Azure-Befehlszeilenschnittstelle](/cli/azure/update-azure-cli) durch, und wiederholen Sie den Vorgang.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Netzwerke in Azure Database for PostgreSQL: Flexible Server](./concepts-networking.md).

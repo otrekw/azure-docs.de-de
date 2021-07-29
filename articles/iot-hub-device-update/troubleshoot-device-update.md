@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/17/2021
 ms.topic: troubleshooting
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 3c1f60b214397b1f97e0157b5beca32d504102d6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f5ea8cfe1df2ae89bb67675c9bf235d62dca4bf5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030629"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082070"
 ---
 # <a name="device-update-for-iot-hub-troubleshooting-guide"></a>Device Update für IoT Hub – Handbuch zur Problembehandlung
 
@@ -66,6 +66,9 @@ _Dies wurde möglicherweise durch einen Dienstfehler/Benutzeroberflächenfehler 
 
 ### <a name="q-i-started-a-deployment-but-it-isnt-reaching-an-end-state"></a>F: Ich habe eine Bereitstellung gestartet, doch sie erreicht keinen Endzustand.
 _Die Ursache dafür kann ein Dienstleistungsproblem, ein Dienstfehler oder ein Clientfehler sein. Bitte wiederholen Sie Ihre Bereitstellung nach 10 Minuten. Wenn dasselbe Problem auftritt, pullen Sie bitte Ihre Geräteprotokolle, und lesen Sie in diesem Handbuch zur Problembehandlung den Abschnitt „Gerätefehler“. Wenn dasselbe Problem weiterhin auftritt, führen Sie bitte die Anweisungen im Abschnitt [Kontaktaufnahme mit dem Microsoft-Support](#contact) aus, um eine Supportanfrage bei Microsoft einzureichen._
+
+### <a name="q-i-migrated-from-a-device-level-agent-to-adding-the-agent-as-a-module-identity-on-the-device-and-my-update-shows-as-in-progress-even-though-it-has-been-applied-to-the-device"></a>F: Ich bin von einem Agent auf Geräteebene migriert, um ihn als Modulidentität auf dem Gerät hinzuzufügen, und mein Update wird als „in Bearbeitung“ angezeigt, obwohl es auf das Gerät angewendet wurde.
+_Der mögliche Grund für diese Meldung: Sie haben den älteren Agent, der über den Gerätezwilling kommuniziert hat, nicht entfernt. Wenn Sie den Geräteupdate-Agent als Modul bereitstellen (siehe [Vorgehensweise](device-update-agent-provisioning.md)), erfolgt die gesamte Kommunikation zwischen dem Gerät und dem Geräteupdatedienst über den Modulzwilling. Denken Sie also daran: Der Modulzwilling des Geräts muss beim Erstellen von [Gruppen](device-update-groups.md) markiert werden und die gesamte [Kommunikation](device-update-plug-and-play.md) über den Modulzwilling erfolgen.
 
 ## <a name="downloading-updates-onto-devices"></a><a name="download"></a> Herunterladen von Updates auf Geräte
 

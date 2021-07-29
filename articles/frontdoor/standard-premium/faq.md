@@ -6,14 +6,14 @@ author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/18/2021
+ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: 6f6d71dec9726f009ab9a56e0a49ba21f5d218fd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ca91e7298486cc92ae8a4444869f0b71c91ae2ab
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181022"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034227"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Häufig gestellte Fragen zu Azure Front Door Standard/Premium (Vorschauversion)
 
@@ -69,11 +69,11 @@ Die Ursprungsgruppe kann aus Storage, Web App, Kubernetes-Instanzen oder einem b
 
 ### <a name="what-regions-is-the-service-available-in"></a>In welchen Regionen ist der Dienst verfügbar?
 
-Azure Front Door ist ein globaler und nicht an eine bestimmte Azure-Region gebundener Dienst. Der einzige Speicherort, den Sie beim Erstellen einer Front Door-Instanz angeben müssen, ist der Speicherort für die Ressourcengruppe. Mit diesem Speicherort wird im Wesentlichen angegeben, wo die Metadaten für die Ressourcengruppe gespeichert werden. Die Front Door-Ressource selbst wird als globale Ressource erstellt und die Konfiguration wird global für alle POPs (Point of Presence) bereitgestellt. 
+Azure Front Door ist ein globaler und nicht an eine bestimmte Azure-Region gebundener Dienst. Der einzige Speicherort, den Sie beim Erstellen einer Front Door-Instanz angeben müssen, ist der Speicherort für die Ressourcengruppe. Mit diesem Speicherort wird im Wesentlichen angegeben, wo die Metadaten für die Ressourcengruppe gespeichert werden. Die Front Door-Ressource selbst wird als globale Ressource erstellt und die Konfiguration wird global für alle Edgestandorte bereitgestellt. 
 
-### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Welche POP-Standorte sind für Azure Front Door verfügbar?
+### <a name="where-are-the-edge-locations-for-azure-front-door"></a>Welche Edgestandorte sind für Azure Front Door verfügbar?
 
-Azure Front Door hat dieselbe Liste von POP-Standorten (Point of Presence) wie Azure CDN von Microsoft. Die vollständige Liste unserer POPs finden Sie unter [Azure CDN-POP-Standorte von Microsoft](../../cdn/cdn-pop-locations.md).
+Eine vollständige Liste der Azure Front Door Edgestandorte finden Sie unter [Azure Front Door Edgestandorte](edge-locations.md).
 
 ### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Ist Azure Front Door eine dedizierte Bereitstellung für meine Anwendung, oder wird es zur gemeinsamen Nutzung für Kunden freigegeben?
 
@@ -138,9 +138,10 @@ Ja. Azure Front Door unterstützt die Header „X-Forwarded-For“, „X-Forward
 
 ### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>Wie lange dauert die Bereitstellung von Azure Front Door? Funktioniert meine Front Door-Instanz auch bei einem Update weiterhin?
 
-Eine neue Front Door-Erstellung oder jegliche Updates für eine bestehende Front Door-Instanz benötigen ungefähr drei bis fünf Minuten für die globale Bereitstellung. Das bedeutet, dass Ihre Front Door-Konfiguration in ungefähr drei bis fünf Minuten global auf allen unseren POPs bereitgestellt wird.
+Die meisten Konfigurationsupdates der Regel-Engine werden in weniger als 20 Minuten abgeschlossen. Sie können erwarten, dass die Regel wirksam wird, sobald das Update abgeschlossen ist. 
 
-Hinweis: Bei benutzerdefinierten TLS/SSL-Zertifikatupdates dauert die globale Bereitstellung etwa 30 Minuten.
+ > [!Note]  
+  > Bei benutzerdefinierten TLS/SSL-Zertifikatupdates dauert die globale Bereitstellung etwa 30 Minuten.
 
 Alle Aktualisierungen von Routen oder Back-End-Pools erfolgen nahtlos und verursachen keine Ausfallzeiten (wenn die neue Konfiguration korrekt ist). Durch Zertifikatupdates kommt es nicht zu Ausfällen, sofern Sie nicht von „Verwalteter Azure Front Door-Dienst“ zu Ihrem eigenen Zertifikat (oder umgekehrt) wechseln.
 
@@ -157,7 +158,7 @@ Weitere Informationen zu allen dokumentierten [Timeouts und Grenzwerten für Azu
 
 ### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Wie lange dauert es, bis eine Regel wirksam wird, nachdem sie zur Front Door-Regel-Engine hinzugefügt wurde?
 
-Die Konfiguration der Regel-Engine benötigt etwa 10 bis 15 Minuten, um ein Update durchzuführen. Sie können erwarten, dass die Regel wirksam wird, sobald das Update abgeschlossen ist. 
+Die meisten Konfigurationsupdates der Regel-Engine werden in weniger als 20 Minuten abgeschlossen. Sie können erwarten, dass die Regel wirksam wird, sobald das Update abgeschlossen ist. 
 
 ### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-front-door-behind-my-azure-cdn"></a>Kann ich Azure CDN hinter meinem Front Door-Profil oder Front Door hinter meinem Azure CDN konfigurieren?
 
@@ -249,7 +250,7 @@ Es kann zwei Gründe geben, warum der HTTPS-Datenverkehr für eine erfolgreiche 
 
 * **Zertifikatantragsteller-Namenskonflikt**: Bei HTTPS-Verbindungen erwartet Front Door, dass Ihr Back-End ein Zertifikat von einer gültigen Zertifizierungsstelle vorlegt, und dass die Antragstellernamen mit dem Back-End-Hostnamen übereinstimmen. Beispiel: Ihr Back-End-Hostname ist auf `myapp-centralus.contosonews.net` festgelegt, und das Zertifikat, das von Ihrem Back-End während des TLS-Handshakes angegeben wird, enthält weder `myapp-centralus.contosonews.net` noch `*myapp-centralus*.contosonews.net` im Antragstellernamen. In diesem Fall wird die Verbindungsherstellung von Front Door abgelehnt und ein Fehler angezeigt. 
     * **Lösung**: Aus Konformitätssicht ist dies zwar nicht zu empfehlen, aber Sie können diesen Fehler umgehen, indem Sie die Prüfung des Zertifikatantragsteller-Namens für Ihre Front Door-Instanz deaktivieren. Sie finden diese Option im Azure-Portal unter „Einstellungen“ und unter „BackendPoolsSettings“ in der API.
-* **Back-End-Hostingzertifikat von einer ungültigen Zertifizierungsstelle**: In Front Door können nur Zertifikate von [gültigen Zertifizierungsstellen](troubleshoot-allowed-certificate-authority.md) auf dem Back-End verwendet werden. Zertifikate von internen Zertifizierungsstellen oder selbstsignierte Zertifikate sind nicht zulässig.
+* **Back-End-Hostingzertifikat von einer ungültigen Zertifizierungsstelle**: In Front Door können nur Zertifikate von [gültigen Zertifizierungsstellen](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) auf dem Back-End verwendet werden. Zertifikate von internen Zertifizierungsstellen oder selbstsignierte Zertifikate sind nicht zulässig.
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Kann ich bei Azure Front Door die Clientauthentizierung/gegenseitige Authentifizierung verwenden?
 
@@ -272,6 +273,12 @@ Diagnoseprotokolle gelangen in die Speicherkonten von Kunden, und Kunden können
 ### <a name="can-i-set-alerts-with-azure-front-door"></a>Kann ich mit Azure Front Door Warnungen festlegen?
 
 Ja. Azure Front Door unterstützt Warnungen. Warnungen werden für Metriken konfiguriert. 
+
+## <a name="billing"></a>Abrechnung
+
+### <a name="will-i-be-billed-for-the-azure-front-door-resources-that-are-disabled"></a>Werden mir die Azure Front Door-Ressourcen in Rechnung gestellt, die deaktiviert sind?
+
+Azure Front Door-Ressourcen, z. B. Front Door-Profile, werden nicht berechnet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

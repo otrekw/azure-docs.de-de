@@ -6,42 +6,40 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 05/14/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: dedb8faf74ffba7b5846512b4c52eb5a58822f7e
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: c5d4c390110a5b3eef7509508d35c9554f7be984
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107895953"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065978"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
-Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Das Speicherkonto stellt einen eindeutigen Namespace für Ihre Azure Storage-Daten bereit, auf den von jedem Ort der Welt aus über HTTP oder HTTPS zugegriffen werden kann. Daten in Ihrem Azure Storage-Konto sind dauerhaft und hochverfügbar, sicher und extrem skalierbar.
+Ein Azure Storage-Konto enthält alle Ihre Azure Storage-Datenobjekte: Blobs, Dateifreigaben, Warteschlangen, Tabellen und Datenträger. Das Speicherkonto stellt einen eindeutigen Namespace für Ihre Azure Storage-Daten bereit, auf den von jedem Ort der Welt aus über HTTP oder HTTPS zugegriffen werden kann. Daten in Ihrem Speicherkonto sind dauerhaft und hochverfügbar, sicher und extrem skalierbar.
 
 Um zu erfahren, wie Sie ein Azure Storage-Konto erstellen, lesen Sie den Artikel [Erstellen eines Speicherkontos](storage-account-create.md).
 
 ## <a name="types-of-storage-accounts"></a>Speicherkontentypen
 
-Azure Storage bietet mehrere Arten von Speicherkonten. Jeder Typ unterstützt unterschiedliche Features und verfügt über ein eigenes Preismodell. Informieren Sie sich vor dem Erstellen eines Speicherkontos genau über diese Unterschiede, um den Kontotyp zu ermitteln, der sich für Ihre Anwendungen am besten eignet.
+Azure Storage bietet mehrere Arten von Speicherkonten. Jeder Typ unterstützt unterschiedliche Features und verfügt über ein eigenes Preismodell. Informieren Sie sich vor dem Erstellen eines Speicherkontos genau über diese Unterschiede, um den Kontotyp zu ermitteln, der für Ihre Anwendungen am besten geeignet ist.
 
-In der folgenden Tabelle werden die Typen von Speicherkonten beschrieben, die von Microsoft für die meisten Szenarien empfohlen werden:
+In der folgenden Tabelle werden die Typen von Speicherkonten beschrieben, die von Microsoft für die meisten Szenarien empfohlen werden. Bei allen diesen Typen wird das [Azure Resource Manager](../../azure-resource-manager/management/overview.md)-Bereitstellungsmodell verwendet.
 
-| Speicherkontotyp | Unterstützte Dienste | Redundanzoptionen | Bereitstellungsmodell | Verbrauch |
-|--|--|--|--|--|
-| Standard „Allgemein v2“ | Blob, Datei, Warteschlange, Tabelle, Datenträger und Data Lake Storage<sup>1</sup> | LRS/GRS/RA-GRS<br /><br />ZRS/GZRS/RA-GZRS<sup>2</sup> | Resource Manager <sup>3</sup> | Grundlegender Speicherkontotyp für Blobs, Dateien, Warteschlangen und Tabellen. Empfohlen für die meisten Azure Storage-Szenarien. |
-| Premium-Blockblobs<sup>4</sup> | Nur Blockblobs | LRS<br /><br />ZRS<sup>2</sup> | Resource Manager <sup>3</sup> | Speicherkonten mit Premium-Leistungsmerkmalen für Blockblobs und Anfügeblobs. Empfohlen für Szenarien mit hohen Transaktionsraten oder Szenarien, die kleinere Objekte verwenden oder aber eine gleichbleibend geringe Speicherlatenz erfordern.<br />[Weitere Informationen](../blobs/storage-blob-performance-tiers.md) |
-| Premium-Dateifreigaben<sup>4</sup> | Nur Dateifreigaben | LRS<br /><br />ZRS<sup>2</sup> | Resource Manager <sup>3</sup> | Reine Dateispeicherkonten mit Premium-Leistungsmerkmalen Empfohlen für Unternehmens- oder Hochleistungsanwendungen<br />[Weitere Informationen](../files/storage-files-planning.md#management-concepts) |
-| Premium-Seitenblobs<sup>4</sup> | Nur Seiten-BLOBs | LRS | Resource Manager <sup>3</sup> | Storage Premium-Kontotyp nur für Seitenblobs.<br />[Weitere Informationen](../blobs/storage-blob-pageblob-overview.md) |
+| Speicherkontotyp | Unterstützte Speicherdienste | Redundanzoptionen | Verbrauch |
+|--|--|--|--|
+| Standard „Allgemein v2“ | Blob (einschließlich Data Lake Storage<sup>1</sup>), Warteschlange und Tabellenspeicher, Azure Files  | LRS/GRS/RA-GRS<br /><br />ZRS/GZRS/RA-GZRS<sup>2</sup> | Standard-Speicherkontotyp für Blobs, Dateifreigaben, Warteschlangen und Tabellen. Empfohlen für die meisten Azure Storage-Szenarien. Hinweis: Wenn Sie NFS-Dateifreigaben in Azure Files unterstützen möchten, verwenden Sie den Kontotyp „Premium-Dateifreigaben“. |
+| Premium-Blockblobs<sup>3</sup> | Blob Storage (einschließlich Data Lake Storage Storage<sup>1</sup>) | LRS<br /><br />ZRS<sup>2</sup> | Kontotyp „Premium Storage“ für Block- und Anfügeblobs. Empfohlen für Szenarien mit hohen Transaktionsraten oder Szenarien, die kleinere Objekte verwenden oder aber eine gleichbleibend geringe Speicherlatenz erfordern. [Weitere Informationen zu Beispielworkloads.](../blobs/storage-blob-performance-tiers.md#premium-performance) |
+| Premium-Dateifreigaben<sup>3</sup> | Azure Files | LRS<br /><br />ZRS<sup>2</sup> | Kontotyp „Premium Storage“ nur für Dateifreigaben. Empfohlen für Unternehmens- oder Hochleistungsanwendungen. Verwenden Sie diesen Kontotyp, wenn Ihr Speicherkonto sowohl SMB- als auch NFS-Dateifreigaben unterstützen soll. |
+| Premium-Seitenblobs<sup>3</sup> | Nur Seiten-BLOBs | LRS | Storage Premium-Kontotyp nur für Seitenblobs. [Informieren Sie sich ausführlicher über Seitenblobs und Beispiel-Anwendungsfälle.](../blobs/storage-blob-pageblob-overview.md) |
 
-<sup>1</sup> Data Lake Storage basiert auf Azure Blob Storage und bietet eine Reihe von Funktionen für die Big Data-Analyse. Weitere Informationen finden Sie unter [Data Lake Storage Gen2: Einführung](../blobs/data-lake-storage-introduction.md).
+<sup>1</sup> Data Lake Storage basiert auf Azure Blob Storage und bietet eine Reihe von Funktionen für die Big Data-Analyse. Weitere Informationen finden Sie unter [Einführung in Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) und [Erstellen eines Speicherkontos für die Verwendung mit Data Lake Storage Gen2](../blobs/create-data-lake-storage-account.md).
 
-<sup>2</sup> Zonenredundanter Speicher (ZRS) und geozonenredundanter Speicher (GZRS/RA-GZRS) sind in bestimmten Regionen nur für Standardkonten des Typs „Universell V2“ sowie für Konten des Typs „Premium-BlockBlob“ und „Premium-Dateifreigabe“ verfügbar. Weitere Informationen zu den Azure Storage-Redundanzoptionen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
+<sup>2</sup> Zonenredundanter Speicher (ZRS) und geozonenredundanter Speicher (GZRS/RA-GZRS) stehen in bestimmten Regionen nur für Standardkonten des Typs „Universell V2“ sowie für Konten des Typs „Premium-Blockblobs“ und „Premium-Dateifreigaben“ zur Verfügung. Weitere Informationen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
 
-<sup>3</sup> Azure Resource Manager ist das empfohlene Bereitstellungsmodell für Azure-Ressourcen, einschließlich Speicherkonten. Weitere Informationen finden Sie unter [Übersicht über den Resource Manager](../../azure-resource-manager/management/overview.md).
-
-<sup>4</sup> Speicherkonten in einer Premium-Leistungsstufe verwenden Solid State Disks (SSDs) für niedrige Latenz und hohen Durchsatz.
+<sup>3</sup> Speicherkonten in einer Premium-Leistungsstufe verwenden SSD-Datenträger (Solid State Drives, SSDs) für niedrige Latenz und hohen Durchsatz.
 
 Legacy-Speicherkonten werden ebenfalls unterstützt. Weitere Informationen finden Sie unter [Legacy-Speicherkontotypen](#legacy-storage-account-types).
 
@@ -70,9 +68,9 @@ Erstellen Sie die URL für den Zugriff auf ein Objekt in einem Speicherkonto, in
 
 Sie können Ihr Speicherkonto auch für die Verwendung einer benutzerdefinierten Domäne konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure Storage-Konto](../blobs/storage-custom-domain-name.md).  
 
-## <a name="migrating-a-storage-account"></a>Migrieren eines Speicherkontos
+## <a name="migrate-a-storage-account"></a>Migrieren eines Speicherkontos
 
-Die folgende Tabelle fasst zusammen und verweist auf Anleitungen zum Ändern, Aktualisieren oder Migrieren eines Speicherkontos:
+Die folgende Tabelle fasst zusammen und verweist auf Anleitungen zum Verschieben, Aktualisieren oder Migrieren eines Speicherkontos:
 
 | Migrationsszenario | Details |
 |--|--|
@@ -80,9 +78,9 @@ Die folgende Tabelle fasst zusammen und verweist auf Anleitungen zum Ändern, Ak
 | Verschieben Sie ein Speicherkonto in eine andere Ressourcengruppe | Der Azure Ressourcenmanager bietet Optionen zum Verschieben einer Ressource in eine andere Ressourcengruppe. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md). |
 | Verschieben eines Speicherkontos in eine andere Region | Erstellen Sie eine Kopie Ihres Speicherkontos in einer anderen Region, um ein Speicherkonto zu verschieben. Verschieben Sie dann Ihre Daten in dieses Konto, indem Sie AzCopy oder ein anderes Tool Ihrer Wahl verwenden. Weitere Informationen finden Sie unter [Verschieben eines Azure Speicherkontos in eine andere Region](storage-account-move.md). |
 | Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“ | Sie können ein Allzweck v1-Speicherkonto oder ein Blob-Speicherkonto auf ein Allzweck v2-Konto aktualisieren. Diese Aktion kann nicht mehr rückgängig gemacht werden. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](storage-account-upgrade.md). |
-| Migrieren eines klassischen Speicherkontos zu Azure Ressourcenmanager | Das Azure Ressourcenmanager-Bereitstellungsmodell ist dem klassischen Bereitstellungsmodell im Hinblick auf Funktionalität, Skalierbarkeit und Sicherheit überlegen. Weitere Informationen zum Migrieren eines klassischen Speicher Kontos zu Azure Ressourcenmanager finden Sie unter [Migration von Speicher Konten](../../virtual-machines/migration-classic-resource-manager-overview.md#migration-of-storage-accounts) in **der Platt Form gestützten Migration von IaaS-Ressourcen vom klassischen Modell zu Azure Ressourcenmanager**. |
+| Migrieren eines klassischen Speicherkontos zu Azure Ressourcenmanager | Das Azure Ressourcenmanager-Bereitstellungsmodell ist dem klassischen Bereitstellungsmodell im Hinblick auf Funktionalität, Skalierbarkeit und Sicherheit überlegen. Weitere Informationen zum Migrieren eines klassischen Speicherkontos zu Azure Resource Manager finden Sie unter [Plattformgestützte Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-overview.md#migration-of-storage-accounts) im Abschnitt „Migration von Speicherkonten“. |
 
-## <a name="transferring-data-into-a-storage-account"></a>Transfer von Daten in ein Speicherkonto
+## <a name="transfer-data-into-a-storage-account"></a>Übertragen von Daten in ein Speicherkonto
 
 Microsoft bietet Dienste und Hilfsprogramme für den Import Ihrer Daten von lokalen Speichergeräten oder Drittanbietern von Cloudspeichern. Welche Lösung Sie nutzen, richtet sich nach der Menge an Daten, die Sie übertragen müssen. Weitere Informationen finden Sie unter [Azure Storage-Migration – Übersicht](storage-migration-overview.md).
 
@@ -110,10 +108,10 @@ Die Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/detail
 
 In der folgenden Tabelle werden die Legacy-Speicherkontotypen beschrieben. Diese Kontotypen werden von Microsoft nicht empfohlen, können aber in bestimmten Szenarien verwendet werden:
 
-| Legacy-Speicherkontotyp | Unterstützte Dienste | Redundanzoptionen | Bereitstellungsmodell | Verbrauch |
+| Legacy-Speicherkontotyp | Unterstützte Speicherdienste | Redundanzoptionen | Bereitstellungsmodell | Verbrauch |
 |--|--|--|--|--|
-| Standard „Allgemein v1“ | Blob, Datei, Warteschlange, Tabelle und Data Lake Storage | LRS/GRS/RA-GRS | Resource Manager, klassisch | Konten vom Typ „Allgemein v1“ bieten möglicherweise nicht die neuesten Features oder die niedrigsten Preise pro Gigabyte. Erwägen Sie die Verwendung für diese folgenden Szenarien:<br /><ul><li>Ihre Anwendungen erfordern das klassische Azure-Bereitstellungsmodell.</li><li>Ihre Anwendungen verursachen eine hohe Transaktionslast oder nutzen eine erhebliche Bandbreite für die Georeplikation, erfordern aber keine großen Kapazitäten. In diesem Fall sind Allgemein v1-Konten möglicherweise die wirtschaftlich sinnvollste Wahl.</li><li>Sie verwenden eine ältere Version der REST-API für Azure Storage (vor 2014-02-14) oder eine Clientbibliothek mit einer niedrigeren Version als 4.x und können kein Upgrade für Ihre Anwendung durchführen.</li></ul> |
-| Standard-Blobspeicher | Blob (nur Blockblobs und Anfügeblobs) | LRS/GRS/RA-GRS | Ressourcen-Manager | Microsoft empfiehlt stattdessen nach Möglichkeit die Verwendung von Standardkonten vom Typ „Standard-Allgemein v2“. |
+| Standard „Allgemein v1“ | Blob, Warteschlange und Tabellenspeicher, Azure Files | LRS/GRS/RA-GRS | Resource Manager, klassisch | Konten vom Typ „Allgemein v1“ bieten möglicherweise nicht die neuesten Features oder die niedrigsten Preise pro Gigabyte. Erwägen Sie die Verwendung für diese folgenden Szenarien:<br /><ul><li>Für Ihre Anwendungen ist das [klassische Bereitstellungsmodell](../../azure-portal/supportability/classic-deployment-model-quota-increase-requests.md) von Azure erforderlich.</li><li>Ihre Anwendungen verursachen eine hohe Transaktionslast oder nutzen eine erhebliche Bandbreite für die Georeplikation, erfordern aber keine großen Kapazitäten. In diesem Fall sind Allgemein v1-Konten möglicherweise die wirtschaftlich sinnvollste Wahl.</li><li>Sie verwenden eine ältere Version der REST-API für Azure Storage (vor 2014-02-14) oder eine Clientbibliothek mit einer niedrigeren Version als 4.x und können kein Upgrade für Ihre Anwendung durchführen.</li></ul> |
+| Standard-Blobspeicher | Blobspeicher (nur Block- und Anfügeblobs) | LRS/GRS/RA-GRS | Ressourcen-Manager | Microsoft empfiehlt stattdessen nach Möglichkeit die Verwendung von Standardkonten vom Typ „Standard-Allgemein v2“. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/25/2021
-ms.openlocfilehash: ae2720c321e701d14e91f8aee7a6dfbfc5f15739
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 03cab112681536708496c35e4440e463d1522406
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071342"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108187"
 ---
 # <a name="azure-percept-audio-setup"></a>Einrichten von Azure Percept-Audio
 
@@ -31,7 +31,7 @@ Azure Percept-Audio funktioniert standardmäßig mit Azure Percept DK. Es ist ke
 
 1. (Optional) Schließen Sie Ihren Lautsprecher oder Kopfhörer am Audioanschluss (Line Out) des Azure Percept Audio-Geräts an. Dies ermöglicht es Ihnen, Audioantworten zu hören.
 
-1. Schalten Sie das DevKit ein. Die LED L02 blinkt weiß, um anzugeben, dass das Gerät eingeschaltet wurde und authentifiziert wird.
+1. Schalten Sie das Dev Kit ein, indem Sie es mit dem Netzadapter verbinden. Die LED L02 blinkt weiß, um anzugeben, dass das Gerät eingeschaltet wurde und authentifiziert wird.
 
 1. Warten Sie, bis der Authentifizierungsvorgang abgeschlossen ist, was bis zu 5 Minuten dauern kann.
 

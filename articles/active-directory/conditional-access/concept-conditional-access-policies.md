@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35d2bf33b4a22c14abfb61a87a3697b05188ed31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a62afbcd120a7404b1677a8c8adb62723a119d5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579092"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070262"
 ---
 # <a name="building-a-conditional-access-policy"></a>Erstellen einer Richtlinie für bedingten Zugriff
 
@@ -55,7 +55,7 @@ Im Teil „Zuweisungen“ wird das „Wer“, „Was“ und „Wo“ der Richtli
 
 ### <a name="cloud-apps-or-actions"></a>Cloud-Apps oder -aktionen
 
-[Cloud-Apps oder -aktionen](concept-conditional-access-cloud-apps.md) können Cloudanwendungen oder Benutzeraktionen ein- oder ausschließen, die der Richtlinie unterliegen.
+[Cloudanwendungen oder -aktionen](concept-conditional-access-cloud-apps.md) können Cloudanwendungen, Benutzeraktionen oder Authentifizierungskontexte, die der Richtlinie unterliegen, beinhalten oder ausschließen.
 
 ### <a name="conditions"></a>Bedingungen
 
@@ -84,6 +84,10 @@ Durch diese Zuweisungsbedingung können Richtlinien für bedingten Zugriff auf b
 #### <a name="device-state"></a>Gerätestatus
 
 Mit diesem Steuerelement können Geräte mit Hybrid-Azure AD-Einbindung oder Geräte, die in Intune als kompatibel gekennzeichnet sind, ausgeschlossen werden. Dieser Ausschluss kann zum Blockieren nicht verwalteter Geräte durchgeführt werden. 
+
+#### <a name="filters-for-devices-preview"></a>Nach Geräten filtern (Vorschau)
+
+Mit diesem Steuerelement können bestimmte Geräte anhand ihrer Attribute in einer Richtlinie adressiert werden.
 
 ## <a name="access-controls"></a>Zugriffssteuerung
 

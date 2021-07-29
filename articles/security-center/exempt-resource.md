@@ -3,16 +3,16 @@ title: Ausschließen einer Ressource, eines Abonnements, einer Verwaltungsgruppe
 description: Erfahren Sie, wie Sie Regeln erstellen, um Abonnements oder Verwaltungsgruppen aus Sicherheitsempfehlungen auszuschließen, und wie Sie verhindern, dass sie sich auf Ihre Sicherheitsbewertung auswirken.
 author: memildin
 ms.author: memildin
-ms.date: 04/21/2021
+ms.date: 05/12/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f125b94725ba9d34aa0962ed38b16fb474dc5b2b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 01be1037b38e2991a2266c37dfd3ca026ca874ff
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140243"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846423"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Ausschließen von Ressource und Empfehlungen aus der Sicherheitsbewertung 
 
@@ -175,6 +175,9 @@ Weitere Informationen finden Sie auf den folgenden Seiten:
 
 ## <a name="faq---exemption-rules"></a>FAQ: Ausnahmeregeln
 
+- [Was geschieht, wenn eine Empfehlung in mehreren Richtlinieninitiativen vorliegt?](#what-happens-when-one-recommendation-is-in-multiple-policy-initiatives)
+- [Gibt es Empfehlungen, die keine Ausnahme unterstützen?](#are-there-any-recommendations-that-dont-support-exemption)
+
 ### <a name="what-happens-when-one-recommendation-is-in-multiple-policy-initiatives"></a>Was geschieht, wenn eine Empfehlung in mehreren Richtlinieninitiativen vorliegt?
 
 Manchmal liegt eine Sicherheitsempfehlung in mehreren Richtlinieninitiativen vor. Wenn mehrere Instanzen derselben Empfehlung demselben Abonnement zugewiesen sind, und Sie eine Ausnahme für die Empfehlung erstellen, wirkt sich dies auf alle Initiativen aus, für die Sie die Berechtigung zum Bearbeiten haben. 
@@ -190,6 +193,24 @@ Wenn Sie versuchen, eine Ausnahme für diese Empfehlung zu erstellen, wird eine 
 - Wenn Sie nicht für beide Initiativen über die erforderlichen Berechtigungen verfügen, wird stattdessen diese Meldung angezeigt:
 
     *Sie verfügen über eingeschränkte Berechtigungen zum Anwenden der Ausnahme auf alle Richtlinieninitiativen. Die Ausnahmen werden nur für die Initiativen mit ausreichenden Berechtigungen erstellt.*
+
+### <a name="are-there-any-recommendations-that-dont-support-exemption"></a>Gibt es Empfehlungen, die keine Ausnahme unterstützen?
+
+Diese Empfehlungen unterstützen keine Ausnahme:
+
+- Für Container müssen CPU- und Arbeitsspeicherlimits erzwungen werden
+- Privilegierte Container müssen vermieden werden
+- Containerimages dürfen nur aus vertrauenswürdigen Registrierungen bereitgestellt werden
+- Container dürfen nur an zulässigen Ports lauschen
+- Dienste dürfen nur an zulässigen Ports lauschen
+- Linux-Funktionen mit den niedrigsten Berechtigungen müssen für Container erzwungen werden
+- Unveränderliches (schreibgeschütztes) Stammdateisystem für Container erzwingen
+- Container mit Rechteausweitung müssen vermieden werden
+- Das Ausführen von Containern als Root-Benutzer muss vermieden werden
+- Verwendung von Hostnetzwerken und -ports einschränken
+- Container mit Freigabe sensibler Hostnamespaces vermeiden
+- Verwendung von HostPath-Volumeeinbindungen von Pods sollte auf eine bekannte Liste beschränkt sein, um den Knotenzugriff von kompromittierten Containern zu begrenzen
+- Überschreiben oder Deaktivieren des AppArmor-Profils für Container einschränken
 
 
 ## <a name="next-steps"></a>Nächste Schritte

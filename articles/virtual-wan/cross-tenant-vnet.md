@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 82a5e90221a77b891df78984c7fddfd63b6532aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1aae5620f32b5680badc073d74d360b70b68a3b
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585416"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579870"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Mandantenübergreifendes Verbinden von VNETs mit einem Virtual WAN-Hub
 
@@ -54,7 +54,7 @@ Damit das übergeordnete Abonnement mit dem virtuellen Hub die virtuellen Netzwe
 1. Fügen Sie als nächstes das Remotemandantenabonnement und das übergeordnete Mandantenabonnement der aktuellen PowerShell-Sitzung hinzu. Führen Sie den folgenden Befehl aus. Wenn Sie beim übergeordneten Element angemeldet sind, müssen Sie nur den Befehl für den Remotemandanten ausführen.
 
    ```azurepowershell-interactive
-   Add-AzAccount -SubscriptionId "xxxxx-b34a-4df9-9451-4402dcaecc5b"
+   Connect-AzAccount -SubscriptionId "[subscription ID]" -TenantId "[tenant ID]"
    ```
 
 1. Überprüfen Sie, ob die Rollenzuweisung erfolgreich ist, indem Sie sich mit den Anmeldeinformationen des übergeordneten Elements bei Azure PowerShell anmelden und den folgenden Befehl ausführen:
@@ -63,7 +63,7 @@ Damit das übergeordnete Abonnement mit dem virtuellen Hub die virtuellen Netzwe
    Get-AzSubscription
    ```
 
-1. Wenn die Berechtigungen erfolgreich an das übergeordnete Element weitergegeben und der Sitzung hinzugefügt wurden, wird das im Besitz des Remotemandanten befindliche Abonnement in der Ausgabe des Befehls angezeigt.
+1. Wenn die Berechtigungen erfolgreich an das übergeordnete Element weitergegeben und der Sitzung hinzugefügt wurden, wird das im Besitz des übergeordneten **und** des Remotemandanten befindliche Abonnement in der Ausgabe des Befehls angezeigt.
 
 ## <a name="connect-vnet-to-hub"></a><a name="connect"></a>Verbinden eines VNET mit einem Hub
 

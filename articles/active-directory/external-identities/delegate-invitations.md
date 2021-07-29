@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 06/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 747fa3005930414832878757664f4787157302d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fd3ef3ed0ad072bb0e9284892fa5455660d1c40
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645822"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963605"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann
 
@@ -51,19 +51,16 @@ Per Standardeinstellung können alle Benutzer, einschließlich Gäste, Gastbenut
 
    - **Der Gastbenutzerzugriff ist auf Eigenschaften und Mitgliedschaften eigener Verzeichnisobjekte beschränkt (restriktivste Einstellung)** : Mit dieser Einstellung können Gäste nur auf Ihre eigenen Profile zugreifen. Gäste dürfen keine Profile, Gruppen oder Gruppenmitgliedschaften anderer Benutzer anzeigen.
 
-
 5. Wählen Sie unter **Einstellungen für Gasteinladungen** die entsprechenden Einstellungen aus:
 
     ![Einstellungen für Gasteinladungen](./media/delegate-invitations/guest-invite-settings.png)
 
-   - **Administratoren und Benutzer mit der Rolle „Gasteinladender“ können einladen:** Wenn Sie Administratoren und Gästen, die die Rolle „Gasteinladender“ innehaben, erlauben möchten, Gäste einzuladen, legen Sie diese Richtlinie auf **Ja** fest.
-
-   - **Mitglieder können einladen:** Wenn Sie Mitgliedern in Ihrem Verzeichnis, die keine Administratoren sind, erlauben möchten, Gäste einzuladen, legen Sie diese Richtlinie auf **Ja** fest.
-
-   - **Gäste können einladen:** Wenn Sie Gästen erlauben möchten, andere Gäste einzuladen, legen Sie diese Richtlinie auf **Ja** fest.
-
-   > [!NOTE]
-   > Wenn **Mitglieder können einladen** auf **Nein** festgelegt ist und **Administratoren und Benutzer mit der Rolle „Gasteinladender“ können einladen** auf **Ja** festgelegt ist, können Benutzer mit der Rolle **Gasteinladender** weiterhin Gäste einladen.
+   - **Jeder in der Organisation kann Gastbenutzer einladen, einschließlich Gästen und Nicht-Administratoren (umfassendste Einstellung):** Damit Gäste in der Organisation andere Gäste (einschließlich derjenigen, die keine Mitglieder einer Organisation sind) einladen können, müssen Sie dieses Optionsfeld aktivieren.
+   - **Mitgliedsbenutzer und Benutzer, die bestimmten Administratorrollen zugewiesen sind, können Gastbenutzer einladen, einschließlich Gästen mit Mitgliedsberechtigungen**: Damit Mitgliedsbenutzer und Benutzer mit bestimmten Administratorrollen Gäste einladen können, müssen Sie dieses Optionsfeld aktivieren.
+   - **Nur Benutzer, die bestimmten Administratorrollen zugewiesen sind, können Gastbenutzer einladen**: Wenn Sie nur Benutzern mit Administratorrollen das Einladen von Gästen erlauben möchten, aktivieren Sie dieses Optionsfeld. Zu den Administratorrollen gehören [globaler Administrator,](../roles/permissions-reference.md#global-administrator) [Benutzeradministrator](../roles/permissions-reference.md#user-administrator) und [Gasteinladender](../roles/permissions-reference.md#guest-inviter).
+   - **Niemand in der Organisation kann Gastbenutzer einladen, einschließlich Administratoren (restriktivste Einstellung)** : Wenn Sie allen Benutzern in der Organisation das Einladen von Gästen verweigern möchten, aktivieren Sie dieses Optionsfeld.
+     > [!NOTE]
+     > Wenn **Mitglieder können einladen** auf **Nein** festgelegt ist und **Administratoren und Benutzer mit der Rolle „Gasteinladender“ können einladen** auf **Ja** festgelegt ist, können Benutzer mit der Rolle **Gasteinladender** weiterhin Gäste einladen.
 
 6. Wählen Sie unter **E-Mail-Einmalkennung für Gäste** die entsprechenden Einstellungen aus (weitere Informationen finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md)):
 
@@ -101,5 +98,4 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 
 - [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
 - [Hinzufügen von Gastbenutzern der B2B-Zusammenarbeit ohne Einladung](add-user-without-invite.md)
-- [Hinzufügen eines B2B-Zusammenarbeitsbenutzers zu einer Rolle](add-guest-to-role.md)
-
+- [Hinzufügen eines B2B-Zusammenarbeitsbenutzers zu einer Rolle](./add-users-administrator.md)

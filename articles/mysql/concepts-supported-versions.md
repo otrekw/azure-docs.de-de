@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 77b43561ea0c1fdf9ff7a8d0fcce7fa7b9a2e0fa
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1804cef5baf70fad303c2813286e2bad500e63d7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129385"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073376"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Unterstützte Azure-Datenbank für MySQL-Serverversionen
 
@@ -38,7 +38,7 @@ Im Azure Database für den MySQL-Dienst lauschen die Gateway-Knoten auf Port 330
 | Version | [Single Server](overview.md) <br/> Aktuelle Nebenversion |[Flexible Server (Vorschau)](./flexible-server/overview.md) <br/> Aktuelle Nebenversion  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL-Version 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (eingestellt) | Nicht unterstützt|
-|MySQL-Version 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
+|MySQL-Version 5.7 | [5.7.32](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-32.html) | [5.7.32](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-32.html)|
 |MySQL, Version 8.0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
 Lesen Sie die Richtlinie zur Versionsunterstützung für eingestellte Versionen in der [Dokumentation zur Richtlinie für die Versionsunterstützung](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql).

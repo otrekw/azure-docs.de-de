@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffs
 keywords: Automation RBAC, rollenbasierte Zugriffssteuerung, Azure RBAC
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 07/21/2020
+ms.date: 05/17/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0727d3342c73d9aa4d15e84aacb82bd8fea01d65
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 943fa65f114e46c80c8c1ef576f784f9117c9f79
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833578"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083798"
 ---
 # <a name="manage-role-permissions-and-security"></a>Verwalten von Berechtigungen und Sicherheit für Rollen
 
@@ -262,14 +262,19 @@ In den folgenden Abschnitten werden die minimal erforderlichen Berechtigungen be
 
 Die Updateverwaltung erstreckt sich über mehrere Dienste, um deren Dienst bereitzustellen. Die folgende Tabelle zeigt die Berechtigungen, die zum Verwalten von Bereitstellungen der Updateverwaltung benötigt werden:
 
-|**Ressource**  |**Rolle**  |**Umfang**  |
+|**Ressource** |**Rolle** |**Umfang** |
 |---------|---------|---------|
-|Automation-Konto     | Log Analytics-Mitwirkender       | Automation-Konto        |
-|Automation-Konto    | Mitwirkender von virtuellen Computern        | Ressourcengruppe für das Konto        |
-|Log Analytics-Arbeitsbereich     | Log Analytics-Mitwirkender| Log Analytics-Arbeitsbereich        |
-|Log Analytics-Arbeitsbereich |Log Analytics-Leser| Subscription|
-|Lösung     |Log Analytics-Mitwirkender         | Lösung|
-|Virtual Machine     | Mitwirkender von virtuellen Computern        | Virtual Machine        |
+|Automation-Konto |Log Analytics-Mitwirkender |Automation-Konto |
+|Automation-Konto |Mitwirkender von virtuellen Computern  |Ressourcengruppe für das Konto  |
+|Log Analytics-Mitwirkender an Log Analytics-Arbeitsbereich|Log Analytics-Arbeitsbereich |
+|Log Analytics-Arbeitsbereich |Log Analytics-Leser|Subscription|
+|Lösung |Log Analytics-Mitwirkender |Lösung|
+|Virtual Machine |Mitwirkender von virtuellen Computern |Virtual Machine |
+|**Aktionen auf virtuellem Computer** | | |
+|Anzeigen des Verlaufs der Ausführung des Updatezeitplans ([Ausführungen des Computers für die Softwareupdatekonfiguration](/rest/api/automation/softwareupdateconfigurationmachineruns)) |Leser |Automation-Konto |
+|**Aktionen auf dem virtuellen Computer** |**Berechtigung** | |
+|Erstellen eines Updatezeitplans [(Softwareupdatekonfigurationen](/rest/api/automation/softwareupdateconfigurations)) |Microsoft.Compute/virtualMachines/write |Für statische VM-Listen und Ressourcengruppen |
+|Erstellen eines Updatezeitplans [(Softwareupdatekonfigurationen](/rest/api/automation/softwareupdateconfigurations)) |Microsoft.OperationalInsights/workspaces/analytics/query/action |Für die Arbeitsbereichsressourcen-ID bei Verwendung einer dynamischen Liste, die nicht aus Azure stammt.|
 
 ## <a name="configure-azure-rbac-for-your-automation-account"></a>Konfigurieren der rollenbasierten Zugriffssteuerung von Azure für Automation-Konten
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b6e600fcaf32a115af14be2444144fee099d635
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: a362e99e9da7cf4c41f042364792a05a27b1aa6a
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075337"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892686"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Authentifizierung und Autorisierung in Azure App Service und Azure Functions
 
@@ -138,7 +138,7 @@ Für [Azure Functions](../azure-functions/functions-overview.md) wird `ClaimsPri
 
 Weitere Informationen finden Sie unter [Zugriff auf Benutzeransprüche](app-service-authentication-how-to.md#access-user-claims).
 
-Zu diesem Zeitpunkt unterstützt ASP.NET Core aktuell nicht das Auffüllen des aktuellen Benutzers mit der Authentifizierungs-/Autorisierungsfunktion. Allerdings gibt es [Open-Source-Middlewarekomponenten von Drittanbietern](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth), die diese Lücke füllen.
+Für .NET Core unterstützt [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) das Auffüllen des aktuellen Benutzers mit dem „Authentifizierung/Autorisierung“-Feature. Weitere Informationen finden Sie im [Microsoft.Identity.Web-Wiki](https://github.com/AzureAD/microsoft-identity-web/wiki/1.2.0#integration-with-azure-app-services-authentication-of-web-apps-running-with-microsoftidentityweb), oder sehen Sie sich eine Demonstration dazu in diesem [Tutorial für eine Web-App, die auf Microsoft Graph zugreift](./scenario-secure-app-access-microsoft-graph-as-user.md?tabs=command-line#install-client-library-packages), an.
 
 #### <a name="token-store"></a>Tokenspeicher
 

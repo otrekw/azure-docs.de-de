@@ -7,26 +7,29 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 8b8f42d75a0d214bdc504c8cc0adb6f234ea036e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0ed20af6b27822f1f437f584e9b73eb416941d6f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751119"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065996"
 ---
-# <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Authentifizierung und Autorisierung für Azure Static Web Apps (Vorschau)
+# <a name="authentication-and-authorization-for-azure-static-web-apps"></a>Authentifizierung und Autorisierung für Azure Static Web Apps
 
-Mit Azure Static Web Apps wird der Authentifizierungsablauf optimiert, indem die Authentifizierung mit den folgenden Anbietern verwaltet wird:
+Azure Static Web Apps bietet eine optimierte Authentifizierungserfahrung. Standardmäßig haben Sie Zugriff auf eine Reihe von vorkonfigurierten Anbietern oder die Option zum [Registrieren eines benutzerdefinierten Anbieters](./authentication-custom.md).
 
-- Azure Active Directory
-- GitHub
-- Twitter
+- Jeder Benutzer kann sich bei einem aktivierten Anbieter authentifizieren.
+- Nach der Anmeldung gehören Benutzer standardmäßig den Rollen `anonymous` und `authenticated` an.
+- Autorisierte Benutzer erhalten Zugriff auf eingeschränkte [Routen](configuration.md#routes) durch Regeln, die in der [Datei „staticwebapp.config.json“](./configuration.md) definiert sind.
+- Benutzer treten benutzerdefinierten Rollen über anbieterspezifische [Einladungen](#invitations) oder über eine [benutzerdefinierte Azure Active Directory-Anbieterregistrierung](./authentication-custom.md) bei.
+- Alle Authentifizierungsanbieter sind standardmäßig aktiviert.
+  - [Blockieren Sie den Zugriff](#block-an-authorization-provider) mit einer benutzerdefinierten Routenregel, um einen Authentifizierungsanbieter auszuschließen.
+- Vorkonfigurierte Anbieter umfassen:
+  - Azure Active Directory
+  - GitHub
+  - Twitter
 
-Mit anbieterspezifischen [Einladungen](#invitations) werden Benutzer Rollen zugeordnet, und autorisierten Benutzern wird Zugriff auf [Routen](configuration.md#routes) mithilfe von Regeln gewährt, die in der Datei _staticwebapp.config.json_ definiert wurden.
-
-Alle Authentifizierungsanbieter sind standardmäßig aktiviert. [Blockieren Sie den Zugriff](#block-an-authorization-provider) mit einer benutzerdefinierten Routenregel, um einen Authentifizierungsanbieter auszuschließen.
-
-Die Bereiche Authentifizierung und Autorisierung weisen starke Überschneidungen mit Routingkonzepten auf. Lesen Sie zusätzlich zu diesem Artikel den [Konfigurationsleitfaden](configuration.md#routes).
+Die Themen Authentifizierung und Autorisierung überlappen sich erheblich mit Routingkonzepten, die im [Anwendungskonfigurationshandbuch](configuration.md#routes) beschrieben werden.
 
 ## <a name="roles"></a>Rollen
 
@@ -41,7 +44,10 @@ Zusätzlich zu den integrierten Rollen können Sie neue Rollen erstellen, sie mi
 
 ### <a name="add-a-user-to-a-role"></a>Hinzufügen eines Benutzers zu einer Rolle
 
-Um Ihrer Website Benutzer hinzuzufügen, generieren Sie Einladungen, mit denen Sie Benutzer bestimmten Rollen zuordnen können. Rollen werden in der Datei _staticwebapp.config.json_ definiert und verwaltet.
+Um einen Benutzer zu einer Rolle hinzuzufügen, generieren Sie Einladungen, mit denen Sie Benutzer bestimmten Rollen zuordnen können. Rollen werden in der Datei _staticwebapp.config.json_ definiert und verwaltet.
+
+> [!NOTE]
+> Sie können [einen benutzerdefinierten Azure Active Directory-Anbieter registrieren](./authentication-custom.md), um das Ausstellen von Einladungen für die Gruppenverwaltung zu vermeiden.
 
 <a name="invitations" id="invitations"></a>
 
@@ -123,7 +129,7 @@ Azure Static Web Apps nutzt den Systemordner `/.auth`, um Zugriff auf autorisier
 
 ## <a name="login"></a>Anmeldename
 
-Verwenden Sie die folgende Tabelle, um die anbieterspezifische Anmelderoute zu ermitteln.
+Verwenden Sie die folgende Tabelle, um die anbieterspezifische Route zu ermitteln.
 
 | Autorisierungsanbieter | Anmelderoute             |
 | ---------------------- | ----------------------- |
@@ -131,7 +137,7 @@ Verwenden Sie die folgende Tabelle, um die anbieterspezifische Anmelderoute zu e
 | GitHub                 | `/.auth/login/github`   |
 | Twitter                | `/.auth/login/twitter`  |
 
-Wenn Sie sich beispielsweise mit GitHub anmelden möchten, können Sie einen Anmeldelink wie den folgenden Codeausschnitt einfügen:
+Wenn Sie sich beispielsweise mit GitHub anmelden möchten, können Sie einen Link wie den folgenden Codeausschnitt einfügen:
 
 ```html
 <a href="/.auth/login/github">Login</a>

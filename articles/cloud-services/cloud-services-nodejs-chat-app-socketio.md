@@ -8,17 +8,17 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3f6d331c6579d6317ab226d6d2d1e4f8682ac3b
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743320"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803834"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>Erstellen einer Node.js-Chatanwendung mit Socket.IO für einen Azure-Clouddienst (klassisch)
 
 > [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
 
 Socket.IO ermöglicht die Echtzeitkommunikation zwischen Ihrem Node.js-Server und den Clients. In diesem Tutorial wird das Hosten einer Socket.IO-basierten Chatanwendung in Azure erläutert. Weitere Informationen zu Socket.IO finden Sie unter [socket.io](https://socket.io).
 
