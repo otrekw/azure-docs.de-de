@@ -2,14 +2,14 @@
 title: Key Vault-Geheimnis mit Vorlage
 description: Informationen zum Übergeben eines geheimen Schlüssels aus einem Schlüsseltresor als Parameter während der Bereitstellung.
 ms.topic: conceptual
-ms.date: 04/23/2021
+ms.date: 05/17/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f91c45792843ab62361bf47628a45529758b4029
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 1cf3b1f3433b47d029876e9676b85c5de776d455
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754189"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110795701"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung
 
@@ -67,7 +67,7 @@ $secret = Set-AzKeyVaultSecret -VaultName ExampleVault -Name 'ExamplePassword' -
 
 ---
 
-Als Besitzer des Schlüsseltresors haben Sie automatisch Zugriff auf die Erstellung von Geheimnissen. Wenn der Benutzer, der mit Geheimnissen arbeitet, nicht der Besitzer des Schlüsseltresors ist, gewähren Sie den Zugriff mit:
+Als Besitzer des Schlüsseltresors haben Sie automatisch Zugriff auf die Erstellung von Geheimnissen. Wenn Sie einem anderen Benutzer das Erstellen von Geheimnissen erlauben müssen, verwenden Sie:
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -91,6 +91,8 @@ Set-AzKeyVaultAccessPolicy `
 
 ---
 
+Die Zugriffsrichtlinien sind nicht erforderlich, wenn der Benutzer eine Vorlage bereitstellt, die ein Geheimnis abruft. Fügen Sie den Zugriffsrichtlinien nur dann einen Benutzer hinzu, wenn der Benutzer direkt mit den Geheimnissen arbeiten muss. Die Bereitstellungsberechtigungen werden im nächsten Abschnitt definiert.
+
 Weitere Informationen zum Erstellen von Schlüsseltresoren und zum Hinzufügen von Geheimnissen finden Sie unter:
 
 - [Festlegen und Abrufen eines Geheimnisses über die Befehlszeilenschnittstelle](../../key-vault/secrets/quick-create-cli.md)
@@ -99,11 +101,13 @@ Weitere Informationen zum Erstellen von Schlüsseltresoren und zum Hinzufügen v
 - [Festlegen und Abrufen eines Geheimnisses mit .NET](../../key-vault/secrets/quick-create-net.md)
 - [Festlegen und Abrufen eines Geheimnisses mit Node.js](../../key-vault/secrets/quick-create-node.md)
 
-## <a name="grant-access-to-the-secrets"></a>Gewähren des Zugriffs auf die Geheimnisse
+## <a name="grant-deployment-access-to-the-secrets"></a>Gewähren des Bereitstellungszugriffs auf die Geheimnisse
 
-Der Benutzer, der die Vorlage bereitstellt, muss die Berechtigung `Microsoft.KeyVault/vaults/deploy/action` für den Bereich der Ressourcengruppe und des Schlüsseltresors besitzen. Die Rollen [Besitzer](../../role-based-access-control/built-in-roles.md#owner) und [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) gewähren diesen Zugriff. Wenn Sie den Schlüsseltresor erstellt haben, sind Sie der Besitzer und verfügen somit über die Berechtigung.
+Der Benutzer, der die Vorlage bereitstellt, muss die Berechtigung `Microsoft.KeyVault/vaults/deploy/action` für den Bereich der Ressourcengruppe und des Schlüsseltresors besitzen. Durch die Überprüfung dieses Zugriffs verhindert Azure Resource Manager, dass ein nicht genehmigter Benutzer auf das Geheimnis zugreift, indem die Ressourcen-ID für den Schlüsseltresor übergeben wird. Sie können Benutzern Bereitstellungszugriff gewähren, ohne Schreibzugriff auf die Geheimnisse zu gewähren.
 
-Das folgende Verfahren zeigt das Erstellen einer Rolle mit der Mindestberechtigung und das Zuweisen des Benutzers.
+Die Rollen [Besitzer](../../role-based-access-control/built-in-roles.md#owner) und [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) gewähren diesen Zugriff. Wenn Sie den Schlüsseltresor erstellt haben, sind Sie der Besitzer und verfügen somit über die Berechtigung.
+
+Gewähren Sie anderen Benutzern die `Microsoft.KeyVault/vaults/deploy/action`-Berechtigung. Das folgende Verfahren zeigt das Erstellen einer Rolle mit der Mindestberechtigung und das Zuweisen zum Benutzer.
 
 1. Erstellen einer benutzerdefinierten Rollendefinition (JSON-Datei):
 
@@ -164,8 +168,6 @@ Bei dieser Herangehensweise verweisen Sie auf den Schlüsseltresor in der Parame
 
 Die folgende Vorlage stellt einen SQL-Server bereit, der ein Administratorkennwort enthält. Der Kennwortparameter ist auf eine sichere Zeichenfolge festgelegt. Die Vorlage gibt jedoch nicht an, woher dieser Wert stammt.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -199,29 +201,6 @@ Die folgende Vorlage stellt einen SQL-Server bereit, der ein Administratorkennwo
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param adminLogin string
-
-@secure()
-param adminPassword string
-
-param sqlServerName string
-
-resource sqlServer 'Microsoft.Sql/servers@2020-11-01-preview' = {
-  name: sqlServerName
-  location: resourceGroup().location
-  properties: {
-    administratorLogin: adminLogin
-    administratorLoginPassword: adminPassword
-    version: '12.0'
-  }
-}
-```
-
----
 
 Erstellen Sie jetzt eine Parameterdatei für der vorherige Vorlage. Geben Sie in der Parameterdatei einen Parameter an, der dem Namen des Parameters in der Vorlage entspricht. Verweisen Sie für den Parameterwert auf das Geheimnis aus dem Schlüsseltresor. Sie verweisen auf den geheimen Schlüssel, indem Sie den Ressourcenbezeichner des Schlüsseltresors und den Namen des Geheimnisses übergeben:
 
@@ -400,9 +379,6 @@ Die folgende Vorlage erstellt dynamisch die Schlüsseltresor-ID und übergibt si
   }
 }
 ```
-
-> [!NOTE]
-> Ab der Bicep-Version 0.3.255 wird eine Parameterdatei benötigt, um ein Schlüsseltresor-Geheimnis abzurufen, da das `reference` Schlüsselwort nicht unterstützt wird. Es wird daran gearbeitet, die Unterstützung hinzuzufügen. Weitere Informationen finden Sie in der [GitHub-Ausgabe 1028](https://github.com/Azure/bicep/issues/1028).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,27 +4,25 @@ description: Erfahren Sie, wie Sie in Azure API Management ein benutzerdefiniert
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/20/2018
+ms.topic: how-to
+ms.date: 06/01/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51719f23302bfaa036f99e88fcd440d97ca3bc02
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: e1cb09f24f12d8c4480833995a95e1e08b5e7bbe
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817808"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812219"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Hinzufügen eines benutzerdefinierten ZS-Zertifikats in Azure API Management
 
 Azure API Management ermöglicht die Installation von ZS-Zertifikaten (Zertifizierungsstellenzertifikaten) auf dem Computer im vertrauenswürdigen Stammzertifikatspeicher und den Zwischenzertifikatspeichern. Diese Funktion sollte verwendet werden, wenn Ihre Dienste ein benutzerdefiniertes ZS-Zertifikat erfordern.
 
-Dieser Artikel erläutert die Verwaltung von ZS-Zertifikaten einer Azure API Management-Dienstinstanz im Azure-Portal.
+Dieser Artikel erläutert die Verwaltung von ZS-Zertifikaten einer Azure API Management-Dienstinstanz im Azure-Portal. Wenn Sie beispielsweise selbstsignierte Clientzertifikate verwenden, können Sie benutzerdefinierte vertrauenswürdige Stammzertifikate in API Management hochladen. 
+
+In API Management hochgeladene Zertifizierungsstellenzertifikate können nur für die Zertifikatüberprüfung durch das verwaltete API Management-Gateway verwendet werden. Wenn Sie das [selbstgehostete Gateway](self-hosted-gateway-overview.md) verwenden, erfahren Sie weiter unten in diesem Artikel, wie Sie [eine benutzerdefinierte Zertifizierungsstelle für das selbstgehostete Gateway erstellen](#create-custom-ca-for-self-hosted-gateway).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,34 +30,35 @@ Dieser Artikel erläutert die Verwaltung von ZS-Zertifikaten einer Azure API Man
 
 ## <a name="upload-a-ca-certificate"></a><a name="step1"> </a>Hochladen eines ZS-Zertifikats
 
-![Hinzufügen von ZS-Zertifikaten](media/api-management-howto-ca-certificates/00.png)
+:::image type="content" source="media/api-management-howto-ca-certificates/00.png" alt-text="Zertifizierungsstellenzertifikate im Azure-Portal":::
 
 Gehen Sie folgendermaßen vor, um ein neues ZS-Zertifikat hochzuladen. Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Tutorial [Erstellen einer API Management-Dienstinstanz](get-started-create-service-instance.md).
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Azure API Management-Dienstinstanz.
 
-2. Wählen Sie im Menü die Option **ZS-Zertifikate** aus.
+1. Wählen Sie in dem Menü unter **Sicherheit** die Option **Zertifikate > Zertifizierungsstellenzertifikate > + Hinzufügen** aus.
 
-3. Klicken Sie auf die Schaltfläche **+ Hinzufügen**.  
+1. Suchen Sie nach dem CER-Zertifikatdatei, und wählen Sie den Zertifikatspeicher aus. Nur der öffentliche Schlüssel ist erforderlich, das Kennwort ist optional.
 
-    ![Screenshot der Schaltfläche „+ Hinzufügen“ zum Hinzufügen eines ZS-Zertifikats](media/api-management-howto-ca-certificates/01.png)  
+    :::image type="content" source="media/api-management-howto-ca-certificates/02.png" alt-text="Hinzufügen eines Zertifizierungsstellenzertifikats im Azure-Portal"::: 
 
-4. Suchen Sie nach dem Zertifikat, und wählen Sie den Zertifikatspeicher aus. Es ist nur der öffentliche Schlüssel erforderlich, kein Kennwort.
-
-    ![Screenshot der Navigation zum Zertifikat](media/api-management-howto-ca-certificates/02.png)  
-
-5. Klicken Sie auf **Speichern**. Dieser Vorgang kann einige Minuten dauern.
-
-    ![Screenshot der Speicherung des Zertifikats](media/api-management-howto-ca-certificates/03.png)  
+1. Wählen Sie **Speichern** aus. Dieser Vorgang kann einige Minuten dauern.
 
 > [!NOTE]
-> Sie können ein ZS-Zertifikat mithilfe des PowerShell-Befehls `New-AzApiManagementSystemCertificate` hochladen.
+> Sie können ein Zertifizierungsstellenzertifikat auch mithilfe des PowerShell-Befehls `New-AzApiManagementSystemCertificate` hochladen.
 
-## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>Löschen eines Clientzertifikats
+## <a name="delete-a-ca-certificate"></a><a name="step1a"> </a>Löschen eines Zertifizierungsstellenzertifikats.
 
-Um ein Zertifikat zu löschen, klicken Sie auf das Kontextmenü **...**, und wählen Sie neben dem betreffenden Zertifikat **Löschen** aus.
+Wählen Sie das Zertifikat und dann im Kontextmenü ( **...** ) die Option **Löschen** aus.
 
-![Löschen von ZS-Zertifikaten](media/api-management-howto-ca-certificates/04.png)  
+## <a name="create-custom-ca-for-self-hosted-gateway"></a>Erstellen einer benutzerdefinierten Zertifizierungsstelle für ein selbstgehostetes Gateway 
+
+Wenn Sie ein [selbstgehostetes Gateway](self-hosted-gateway-overview.md) verwenden, wird die Überprüfung von Server- und Clientzertifikaten mithilfe von Zertifizierungsstellen-Stammzertifikaten, die in den API Management-Dienst hochgeladen wurden, nicht unterstützt. Um eine Vertrauensstellung herzustellen, konfigurieren Sie ein spezifisches Clientzertifikat, damit es vom Gateway als benutzerdefinierte Zertifizierungsstelle als vertrauenswürdig eingestuft wird.
+
+Verwenden Sie die REST-APIs der [Gatewayzertifizierungsstelle](/rest/api/apimanagement/2021-01-01-preview/gateway-certificate-authority), um benutzerdefinierte Zertifizierungsstellen für ein selbstgehostetes Gateway zu erstellen und zu verwalten. So erstellen Sie eine benutzerdefinierte Zertifizierungsstelle
+
+1. Fügen Sie Ihrer API Management-Instanz [eine PFX-Zertifikatdatei hinzu](api-management-howto-mutual-certificates.md).
+1. Verwenden Sie die REST-API [Gatewayzertifizierungsstelle – Erstellen oder Aktualisieren](/rest/api/apimanagement/2021-01-01-preview/gateway-certificate-authority/create-or-update), um das Zertifikat dem selbstverwalteten Gateway zuzuordnen.
 
 [Upload a CA certificate]: #step1
 [Delete a CA certificate]: #step1a

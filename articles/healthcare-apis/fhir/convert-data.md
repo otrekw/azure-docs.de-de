@@ -8,23 +8,23 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 05/11/2021
 ms.author: ranku
-ms.openlocfilehash: 123916aebd743e0a5d0f40415f3d5eea956c2c3a
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 7d972139888d45e7e0967f076fd5ed5d8a86e513
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605934"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667097"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>Konvertieren von Daten in FHIR (Vorschau)
 
 > [!IMPORTANT]
 > Diese Funktion befindet sich in der öffentlichen Vorschau und wird ohne Vereinbarung zum Servicelevel bereitgestellt. Für Produktionsworkloads wird sie nicht empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Der $convert-data-Endpunkt im FHIR-Dienst ist für die Datenkonvertierung von verschiedenen Datentypen in FHIR bestimmt. Er verwendet die Liquid-Vorlagen-Engine und die Vorlagen aus dem Projekt [FHIR Converter](https://github.com/microsoft/FHIR-Converter) als Standardvorlagen. Diese Konvertierungsvorlagen können nach Bedarf angepasst werden. Derzeit werden zwei Konvertierungstypen unterstützt: **C-CDA in FHIR** und **HL7v2 in FHIR.**
+Der $convert-data-Endpunkt im FHIR-Dienst ist für die Datenkonvertierung von verschiedenen Datentypen in FHIR gedacht. Er verwendet die Liquid-Vorlagen-Engine und die Vorlagen aus dem Projekt [FHIR Converter](https://github.com/microsoft/FHIR-Converter) als Standardvorlagen. Diese Konvertierungsvorlagen können nach Bedarf angepasst werden. Derzeit werden zwei Konvertierungstypen unterstützt: **C-CDA in FHIR** und **HL7v2 in FHIR.**
 
 ## <a name="use-the-convert-data-endpoint"></a>Verwenden des Endpunkts „$convert-data“
 
-Der `$convert-data` Vorgang ist in den FHIR-Dienst integriert, um als Teil des Diensts ausgeführt zu werden. Sie müssen während der Bereitstellung des FHIR-Servers aktivieren, indem Sie die Einstellung auf dem `$convert-data` `FhirServer__Operations__ConvertData__Enabled` FHIR-Server auf "true" festlegen. Sie müssen auch sicherstellen, dass Sie die verwaltete Identität aktiviert haben, wie weiter unten in diesem Artikel beschrieben. Anschließend können Sie API-Aufrufe an den Server senden, um Ihre Daten in FHIR zu konvertieren:
+Der `$convert-data` Vorgang ist in den FHIR-Dienst integriert, um als Teil des Diensts ausgeführt zu werden. Sie können API-Aufrufe an den Server senden, um Ihre Daten in FHIR zu konvertieren:
 
 `https://<<FHIR service base URL>>/$convert-data`
 
@@ -42,7 +42,7 @@ $convert-data nimmt eine [Parameterressource](http://hl7.org/fhir/parameters.htm
 > [!WARNING]
 > Standardvorlagen werden unter MIT-Lizenz veröffentlicht und **nicht** von Microsoft-Support.
 >
-> Standardvorlagen werden nur bereitgestellt, um Ihnen den schnellen Einstieg zu unterstützen. Sie werden möglicherweise aktualisiert, wenn wir Versionen des Azure API for FHIR. Daher müssen Sie das Konvertierungsverhalten überprüfen und Ihre eigene Kopie von Vorlagen auf einem Azure Container Registry hosten, diese beim Azure API for FHIR registrieren und in Ihren API-Aufrufen verwenden, um ein konsistentes Datenkonvertierungsverhalten für die verschiedenen Versionen von Azure API for FHIR. 
+> Standardvorlagen werden nur bereitgestellt, um Ihnen den schnellen Einstieg zu unterstützen. Sie werden möglicherweise aktualisiert, wenn wir Versionen der Azure API for FHIR. Daher müssen Sie das Konvertierungsverhalten überprüfen und Ihre eigene Kopie von Vorlagen auf einer Azure Container Registry hosten, diese beim Azure API for FHIR registrieren und in Ihren API-Aufrufen verwenden, um ein konsistentes Datenkonvertierungsverhalten für die verschiedenen Versionen von Azure API for FHIR. 
 
 
 **Beispiel für eine Anforderung:**
@@ -141,7 +141,7 @@ Navigieren Sie zum **Artifacts** Blatt **Datentransformation** in Ihrer Azure AP
 #### <a name="registering-the-acr-server-using-cli"></a>Registrieren des ACR-Servers mithilfe der CLI
 Sie können bis zu 20 ACR-Server in der Azure API for FHIR.
 
-Installieren Sie die Cli für Gesundheits-APIs über Azure PowerShell bei Bedarf:
+Installieren Sie die Healthcare-APIs-CLI Azure PowerShell bei Bedarf:
 
 ```powershell
 az extension add -n healthcareapis

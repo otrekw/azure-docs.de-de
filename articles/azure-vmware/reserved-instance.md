@@ -3,12 +3,12 @@ title: Reservierte Instanzen von Azure VMware Solution
 description: Es wird beschrieben, wie Sie eine reservierte Instanz für Azure VMware Solution erwerben. Die reservierte Instanz deckt nur den Computebereich Ihrer Nutzung ab und schließt die Softwarelizenzierungskosten ein.
 ms.topic: how-to
 ms.date: 05/13/2021
-ms.openlocfilehash: 2ec43374561db9b0de39f4d1c571b85a75df13ba
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8407d4e85718660bfcf17b3597710ed5237b41e1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110063098"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745815"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Sparen von Kosten mit Azure VMware Solution
 
@@ -138,6 +138,6 @@ CSP können für ihre Kunden erworbene Reservierungen mit bestimmten Einschränk
 Nachdem Sie sich mit reservierten Instanzen von Azure VMware Solution vertraut gemacht haben, können Sie sich nun den folgenden Themen zuwenden:
 
 - [Erstellen einer Azure VMware Solution-Bewertung](../migrate/how-to-create-azure-vmware-solution-assessment.md)
-- [Verwalten von DHCP in Azure VMware Solution](configure-dhcp-azure-vmware-solution.md)
-- [Überwachen und Verwalten von Azure VMware Solution VMs](lifecycle-management-of-azure-vmware-solution-vms.md).
+- [Konfigurieren von DHCP in Azure VMware Solution](configure-dhcp-azure-vmware-solution.md)
+- [Integrieren von nativen Azure-Diensten in Azure VMware Solution](integrate-azure-native-services.md)
  

@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie den neuen Datenexport verwenden, um Ihre
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 05/03/2021
+ms.date: 06/04/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: e8df0d2adebd4815a2079699bdebec5eb41b183f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 914fd683c45415db4af1f932404bc2cc2cf35716
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760695"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111814547"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports
 
@@ -138,15 +138,17 @@ Sie haben ein Ziel für den Export Ihrer Daten eingerichtet und richten jetzt de
     
     | Datentyp | Verfügbare Filter| 
     |--------------|------------------|
-    |Telemetrie|<ul><li>Filtern nach Gerätename, Geräte-ID und Gerätevorlage</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten enthält, die den Filterbedingungen entsprechen</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten mit *Nachrichteneigenschaften* enthält, die den Filterbedingungen entsprechen. *Nachrichteneigenschaften* (auch als *Anwendungseigenschaften* bezeichnet) werden in einer Sammlung von Schlüssel-Wert-Paaren für jede Telemetrienachricht gesendet, die optional von Geräten gesendet werden, die die Geräte-SDKs verwenden. Zum Erstellen eines Nachrichteneigenschaftenfilters geben Sie den gesuchten Nachrichteneigenschaftsschlüssel ein, und geben Sie eine Bedingung an. Nur Telemetrienachrichten mit Eigenschaften, die die angegebene Filterbedingung erfüllen, werden exportiert. Weitere Informationen zu Anwendungseigenschaften finden Sie in der [IoT Hub-Dokumentation](../../iot-hub/iot-hub-devguide-messages-construct.md). </li></ul>|
-    |Eigenschaftsänderungen|<ul><li>Filtern nach Gerätename, Geräte-ID und Gerätevorlage</li><li>Filtern des Datenstroms, sodass er nur Eigenschaftsänderungen enthält, die den Filterbedingungen entsprechen</li></ul>|
-    |Gerätekonnektivität|<ul><li>Filtern nach Gerätename, Geräte-ID und Gerätevorlage</li><li>Filtern des Datenstroms, sodass er nur Änderungen von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li></ul>|
-    |Gerätelebenszyklus|<ul><li>Filtern nach Gerätename, Geräte-ID und Gerätevorlage</li><li>Filtern des Datenstroms, sodass er nur Änderungen von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li></ul>|
+    |Telemetrie|<ul><li>Filtern nach Gerätename, Geräte-ID, Gerätevorlage und simulierten Geräten</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten enthält, die den Filterbedingungen entsprechen</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten mit *Nachrichteneigenschaften* enthält, die den Filterbedingungen entsprechen. *Nachrichteneigenschaften* (auch als *Anwendungseigenschaften* bezeichnet) werden in einer Sammlung von Schlüssel-Wert-Paaren für jede Telemetrienachricht gesendet, die optional von Geräten gesendet werden, die die Geräte-SDKs verwenden. Zum Erstellen eines Nachrichteneigenschaftenfilters geben Sie den gesuchten Nachrichteneigenschaftsschlüssel ein, und geben Sie eine Bedingung an. Nur Telemetrienachrichten mit Eigenschaften, die die angegebene Filterbedingung erfüllen, werden exportiert. Weitere Informationen zu Anwendungseigenschaften finden Sie in der [IoT Hub-Dokumentation](../../iot-hub/iot-hub-devguide-messages-construct.md). </li></ul>|
+    |Eigenschaftsänderungen|<ul><li>Filtern nach Gerätename, Geräte-ID, Gerätevorlage und simulierten Geräten</li><li>Filtern des Datenstroms, sodass er nur Eigenschaftsänderungen enthält, die den Filterbedingungen entsprechen</li></ul>|
+    |Gerätekonnektivität|<ul><li>Filtern nach Gerätename, Geräte-ID, Gerätevorlage und simulierten Geräten</li><li>Filtern des Datenstroms, sodass er nur Änderungen von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li></ul>|
+    |Gerätelebenszyklus|<ul><li>Filtern nach Gerätename, Geräte-ID, Gerätevorlage und bereitgestellten, aktivierten oder simulierten Geräten</li><li>Filtern des Datenstroms, sodass er nur Änderungen von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li></ul>|
     |Gerätevorlagenlebenszyklus|<ul><li>Filtern nach Gerätevorlage</li></ul>|
     
-1. Reichern Sie optional exportierte Nachrichten mit zusätzlichen Metadaten für Schlüssel-Wert-Paare an. Die folgenden Anreicherungen stehen für die Datenexporttypen „Telemetrie“ und „Eigenschaftsänderungen“ zur Verfügung: <a name="DataExportEnrichmnents"></a>
+1. Reichern Sie optional exportierte Nachrichten mit zusätzlichen Metadaten für Schlüssel-Wert-Paare an. Die folgenden Anreicherungen stehen für die Datenexporttypen „Telemetrie“, „Eigenschaftsänderungen“, „Gerätekonnektivität“ und „Gerätelebenszyklus“ zur Verfügung: <a name="DataExportEnrichmnents"></a>
     - **Benutzerdefinierte Zeichenfolge:** Fügt jeder Nachricht eine benutzerdefinierte statische Zeichenfolge hinzu. Geben Sie einen beliebigen Schlüssel und einen beliebigen Zeichenfolgenwert ein.
-    - **Property:** Fügt jeder Nachricht die aktuelle vom Gerät gemeldete Eigenschaft oder den Cloudeigenschaftswert hinzu. Geben Sie einen beliebigen Schlüssel ein, und wählen Sie eine Geräte- oder Cloudeigenschaft aus. Wenn die exportierte Nachricht aus einem Gerät stammt, das die angegebene Eigenschaft nicht hat, erhält die exportierte Nachricht die Anreicherung nicht.
+    - **Eigenschaft**, die jeder Nachricht Folgendes hinzufügt:
+       - Gerätemetadaten wie „Gerätename“, „Gerätevorlagenname“, „aktiviert“, „bereitgestellt“ und „simuliert“
+       - Die aktuelle vom Gerät gemeldete Eigenschaft oder den Cloudeigenschaftswert Wenn die exportierte Nachricht aus einem Gerät stammt, das die angegebene Eigenschaft nicht hat, erhält die exportierte Nachricht die Anreicherung nicht.
 
 1. Fügen Sie ein neues Ziel oder ein Ziel hinzu, das Sie bereits erstellt haben. Wählen Sie den Link **Create a new one** (Neue erstellen) aus, und fügen Sie die folgenden Informationen hinzu:
 
@@ -206,6 +208,8 @@ Jede exportierte Nachricht enthält eine normalisierte Form der vollständigen N
 - `templateId`: Die ID der Gerätevorlage, die dem Gerät zugeordnet ist.
 - `enqueuedTime`: Der Zeitpunkt, zu dem diese Nachricht von IoT Central empfangen wurde
 - `enrichments`: Alle im Export eingerichteten Anreicherungen.
+- `module`: Das IoT Edge-Modul, das diese Nachricht gesendet hat. Dieses Feld wird nur angezeigt, wenn die Nachricht aus einem IoT Edge-Modul stammt.
+- `component`: Die Komponente, die diese Nachricht gesendet hat. Dieses Feld wird nur angezeigt, wenn die in der Nachricht gesendeten Funktionen als eine [Komponente in der Gerätevorlage](howto-set-up-template.md#create-a-component) modelliert wurden.
 - `messageProperties`: Zusätzliche Eigenschaften, die das Gerät zusammen mit der Nachricht gesendet hat. Diese Eigenschaften werden manchmal auch als *Anwendungseigenschaften* bezeichnet. [Weitere Informationen zu IoT Hub-Dokumenten](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 Bei Event Hubs und Service Bus exportiert IoT Central eine neue Nachricht schnell, nachdem sie von einem Gerät eingetroffen ist. In die Benutzereigenschaften (auch als „Anwendungseigenschaften“ bezeichnet) jeder Nachricht werden die Eigenschaften `iotcentral-device-id`, `iotcentral-application-id` und `iotcentral-message-source` automatisch einbezogen.
@@ -237,6 +241,8 @@ Das folgende Beispiel zeigt eine exportierte Telemetrienachricht:
     "enrichments": {
       "userSpecifiedKey": "sampleValue"
     },
+    "module": "VitalsModule",
+    "component": "DeviceComponent",
     "messageProperties": {
       "messageProp": "value"
     }
@@ -249,6 +255,9 @@ Telemetrienachrichten verfügen zusätzlich zu den Telemetrienutzdaten über Eig
 Sie können Telemetrienachrichten Eigenschaften hinzufügen, wenn Sie Ihren Telemetrienachrichten benutzerdefinierte Metadaten hinzufügen möchten. Beispielsweise können Sie einen Zeitstempel für den Zeitpunkt hinzufügen, zu dem das Gerät die Meldung erstellt hat.
 
 Der folgende Codeausschnitt zeigt, wie Sie der Nachricht die `iothub-creation-time-utc`-Eigenschaft hinzufügen, wenn diese auf dem Gerät erstellt wird:
+
+> [!IMPORTANT]
+> Das Format dieses Zeitstempels muss UTC ohne Zeitzoneninformationen sein. Beispiel: `2021-04-21T11:30:16Z` ist gültig, `2021-04-21T11:30:16-07:00` ist ungültig.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -372,7 +381,9 @@ Das folgende Beispiel zeigt eine exportierte Eigenschaftsänderungsnachricht, di
     }],
     "enrichments": {
         "userSpecifiedKey" : "sampleValue"
-    }
+    },
+    "module": "VitalsModule",
+    "component": "DeviceComponent"
 }
 ```
 ## <a name="device-connectivity-changes-format"></a>Änderungsformat bei der Gerätekonnektivität

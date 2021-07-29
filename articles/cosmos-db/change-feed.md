@@ -5,15 +5,15 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2020
+ms.date: 06/07/2021
 ms.reviewer: sngun
 ms.custom: seodec18, "seo-nov-2020"
-ms.openlocfilehash: c6856a0cb70123f1a3570b611c81660a592fdc1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8dd8e1da81d6c906e29caf155edc8c2b9e44ea9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98027766"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755535"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Änderungsfeed in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis-except-table](includes/appliesto-all-apis-except-table.md)]
@@ -78,9 +78,9 @@ Der Änderungsfeed ist für jeden logischen Partitionsschlüssel innerhalb des C
 
 * Der Änderungsfeed enthält Einfüge- und Aktualisierungsvorgänge, die für Elemente im Container durchgeführt wurden. Sie können Löschvorgänge durch ein Kennzeichen für „vorläufiges Löschen“ erfassen, das den gelöschten Text in den Elementen (z.B. in Dokumenten) ersetzt. Alternativ können Sie über die [TTL-Funktion](time-to-live.md) einen begrenzten Ablaufzeitraum für die Elemente festlegen, z.B. 24 Stunden, und den Wert dieser Eigenschaft verwenden, um Löschvorgänge zu erfassen. Mit dieser Lösung müssen Sie die Änderungen in einem kürzeren Zeitraum als dem TTL-Ablaufzeitraum verarbeiten.
 
-* Jede Änderung an einem Element wird im Änderungsfeed genau einmal angezeigt, und die Clients müssen ihre Prüfpunktausführungs-Logik verwalten. Wenn Sie die Komplexität der Verwaltung von Prüfpunkten umgehen möchten, bietet der Änderungsfeedprozessor automatische Prüfpunktausführung und „Mindestens einmal“-Semantik. Weitere Informationen finden Sie unter [Verwenden des Änderungsfeeds mit dem Änderungsfeedprozessor](change-feed-processor.md).
-
 * Nur die letzte Änderung für ein bestimmtes Element ist im Änderungsprotokoll enthalten. Zwischenzeitliche Änderungen sind möglicherweise nicht verfügbar.
+
+* Jede im Änderungsprotokoll enthaltene Änderung wird im Änderungsfeed genau einmal angezeigt, und die Clients müssen ihre Prüfpunktausführungs-Logik verwalten. Wenn Sie die Komplexität der Verwaltung von Prüfpunkten umgehen möchten, bietet der Änderungsfeedprozessor automatische Prüfpunktausführung und „Mindestens einmal“-Semantik. [Verwenden des Änderungsfeeds mit dem Änderungsfeedprozessor](change-feed-processor.md).
 
 * Der Änderungsfeed ist anhand der Reihenfolge der Änderungen innerhalb der einzelnen logischen Partitionsschlüsselwerte sortiert. Es gibt keine festgelegte Reihenfolge über Partitionsschlüsselwerte hinweg.
 

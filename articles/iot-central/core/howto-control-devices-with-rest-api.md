@@ -3,16 +3,16 @@ title: Verwenden der REST-API zum Verwalten von Geräten in Azure IoT Central
 description: Verwenden der IoT Central-REST-API zur Steuerung von Geräten in einer Anwendung
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 06/01/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 3fe641cef856fccc2df3fc32d25b05ccfa2a392c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 56ee24985da57c6da76638b659e5a07e68d0f516
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776625"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110788945"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-control-devices"></a>Verwenden der IoT Central-REST-API zur Steuerung von Geräten
 
@@ -29,7 +29,7 @@ Ein Gerät kann die von ihm unterstützten Eigenschaften, Telemetriedaten und Be
 
 Jeder IoT Central-REST-API-Aufruf erfordert einen Autorisierungsheader. Weitere Informationen finden Sie unter [Authentifizieren und Autorisieren von IoT Central-REST-API-Aufrufen](howto-authorize-rest-api.md).
 
-Die Referenzdokumentation für die IoT Central-REST-API finden Sie unter [Azure IoT Central: Referenz zur REST-API](https://docs.microsoft.com/rest/api/iotcentral/).
+Die Referenzdokumentation für die IoT Central-REST-API finden Sie unter [Azure IoT Central: Referenz zur REST-API](/rest/api/iotcentral/).
 
 ## <a name="components-and-modules"></a>Komponenten und Module
 
@@ -162,6 +162,9 @@ Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
   }
 }
 ```
+
+> [!TIP]
+> Verwenden Sie `/api/devices/{deviceId}/modules/{moduleName}/components/{componentName}/telemetry/{telemetryName}`, um von einer Komponente in einem Modul aus auf die Telemetriedaten zuzugreifen.
 
 ## <a name="read-properties"></a>Lesen von Eigenschaften
 
@@ -297,6 +300,9 @@ Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
 }
 ```
 
+> [!TIP]
+> Verwenden Sie `/devices/{deviceId}/modules/{moduleName}/components/{componentName}/properties`, um von einer Komponente in einem Modul aus auf die Eigenschaften zuzugreifen.
+
 ## <a name="write-properties"></a>Schreibzugriffeigenschaften
 
 Einige Eigenschaften sind beschreibbar. Im Thermostatmodell ist die Eigenschaft `targetTemperature` z. B. eine beschreibbare Eigenschaft.
@@ -388,6 +394,20 @@ Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
 > [!TIP]
 > Um alle Eigenschaften für ein Modul zu aktualisieren, verwenden Sie `PUT` anstelle von `PATCH`.
 
+### <a name="update-module-properties"></a>Aktualisieren von Moduleigenschaften
+
+Wenn Sie ein IoT Edge-Gerät verwenden, verwenden Sie die folgende Anforderung, um Eigenschaftswerte aus einem Modul abzurufen:
+
+```http
+GET https://{your app subdomain}.azureiotcentral.com/api/devices/{deviceId}/modules/{moduleName}/properties?api-version=1.0
+```
+
+Wenn Sie ein IoT Edge-Gerät verwenden, verwenden Sie die folgende Anforderung, um Eigenschaftswerte aus einer Komponente in einem Modul abzurufen:
+
+```http
+GET https://{your app subdomain}.azureiotcentral.com/api/devices/{deviceId}/modules/{moduleName}/components/{componentName}/properties?api-version=1.0
+```
+
 ## <a name="call-commands"></a>Aufrufen von Befehlen
 
 Sie können die REST-API verwenden, um Gerätebefehle aufzurufen und den Geräteverlauf abzurufen.
@@ -459,6 +479,9 @@ Verwenden Sie die folgende Anforderung, um den Verlauf für diesen Befehl anzuze
 ```http
 GET https://{your app subdomain}.azureiotcentral.com/api/devices/temperature-controller-01/components/thermostat2/commands/getMaxMinReport?api-version=1.0
 ```
+
+> [!TIP]
+> Verwenden Sie `/devices/{deviceId}/modules/{moduleName}/components/{componentName}/commands/{commandName}`, um Befehle in einer Komponente in einem Modul aufzurufen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
