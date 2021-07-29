@@ -25,6 +25,8 @@
   items:
     - name: Verwalten von Einstellungen und Voreinstellungen im Azure-Portal
       href: set-preferences.md
+    - name: Verwalten von Einstellungen im Azure-Portal (ältere Version)
+      href: original-preferences.md
     - name: 'Hinzufügen, Entfernen und Sortieren von Favoriten'
       href: azure-portal-add-remove-sort-favorites.md
     - name: Anzeigen und Filtern von Ressourceninformationen
@@ -74,7 +76,7 @@
   items:
     - name: Tastenkombinationen
       href: azure-portal-keyboard-shortcuts.md
-    - name: Hinzufügen von Azure-Portal-URLs zu einer Liste sicherer IP-Adressen
+    - name: URLs für das Azure-Portal
       href: azure-portal-safelist-urls.md
     - name: Struktur von Azure-Dashboards
       href: azure-portal-dashboards-structure.md

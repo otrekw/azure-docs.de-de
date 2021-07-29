@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c1d78094effe6919587f24c2262612e4fab347d
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: a122c5dc10600b612c20d3a742f3500944562357
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575376"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407991"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Geräteidentität und Desktopvirtualisierung
 
@@ -35,10 +35,10 @@ Bei der beständigen Version wird ein eindeutiges Desktopimage für jeden Benutz
 
 Bei der nicht beständigen Version wird eine Sammlung von Desktops verwendet, auf die Benutzer bei Bedarf zugreifen können. Diese nicht beständigen Desktops werden in ihren ursprünglichen Zustand zurückversetzt. Bei aktuellen Windows-Geräten<sup>1</sup> geschieht dies, wenn ein virtueller Computer heruntergefahren, neu gestartet oder sein Betriebssystem zurückgesetzt wird. Bei kompatiblen Windows-Geräten<sup>2</sup> geschieht dies, wenn ein Benutzer sich abmeldet.
 
-Die Anzahl von nicht beständigen VDI-Bereitstellungen hat zugenommen, da Remotearbeit weiterhin stark verbreitet ist. Wenn Kunden nicht beständige VDI-Plattformen bereitstellen, ist es wichtig, den häufigen Wechsel von Geräten zu verwalten. Dabei kommt es möglicherweise zu Problemen, wenn eine häufige Geräteregistrierung erfolgt, ohne dass eine geeignete Strategie für die Verwaltung des Gerätelebenszyklus vorhanden ist.
+Die Anzahl von nicht beständigen VDI-Bereitstellungen hat zugenommen, da Remotearbeit weiterhin stark verbreitet ist. Wenn Kunden nicht beständige VDI-Plattformen bereitstellen, ist es wichtig, veraltete Geräte zu verwalten, die sich durch häufige Geräteregistrierungen und das Fehlen einer geeigneten Strategie für die Gerätelebenszyklusverwaltung des anhäufen.
 
 > [!IMPORTANT]
-> Die mangelnde Verwaltung des Wechsels von Geräten kann den Druck auf die Nutzung der Mandantenkontingente erhöhen und zu Dienstunterbrechungen führen, wenn die Anzahl der Mandantenkontingente nicht ausreicht. Um diese Situation zu vermeiden, beachten Sie den folgenden Leitfaden, wenn Sie nicht beständige VDI-Umgebungen bereitstellen.
+> Ohne Verwaltung veralteter Geräte kann sich der Druck auf die Mandantenkontingente erhöhen und zu Dienstunterbrechungen führen, wenn die Mandantenkontingente nicht ausreichen. Um diese Situation zu vermeiden, beachten Sie den folgenden Leitfaden, wenn Sie nicht beständige VDI-Umgebungen bereitstellen.
 
 Dieser Artikel enthält den Microsoft-Leitfaden für Administratoren zur Unterstützung von Geräteidentität und VDI. Weitere Informationen zur Geräteidentität finden Sie im Artikel [Was ist eine Geräteidentität](overview.md).
 

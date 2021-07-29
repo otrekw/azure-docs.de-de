@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/20/2021
+ms.date: 06/04/2021
 ms.author: b-juche
-ms.openlocfilehash: ed03e20f7a1a24d1a38e023b958959fdc6fdc326
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b94374d8eaa0efac50989a388686f96d9bae0622
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579351"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537141"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>Regionsübergreifende Replikation: Anforderungen und Überlegungen 
 
@@ -27,7 +27,7 @@ Beachten Sie die folgenden Anforderungen und Überlegungen zur [Verwendung der r
 
 ## <a name="requirements-and-considerations"></a>Anforderungen und Überlegungen 
 
-* Das Features für die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion. Sie müssen eine Wartelistenanforderung für den Zugriff auf das Feature über die [Seite für Wartelistenanforderungen für die regionsübergreifende Replikation von Azure NetApp Files-Volumes](https://aka.ms/anfcrrpreviewsignup) übermitteln. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie das Feature für die regionsübergreifende Replikation verwenden.
+* Das Feature für die regionsübergreifende Replikation befindet sich derzeit in der Preview-Phase. Sie müssen eine Wartelistenanforderung für den Zugriff auf das Feature über die [Seite für Wartelistenanforderungen für die regionsübergreifende Replikation von Azure NetApp Files-Volumes](https://aka.ms/anfcrrpreviewsignup) übermitteln. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie das Feature für die regionsübergreifende Replikation verwenden.
 * Die Azure NetApp Files-Replikation ist nur in bestimmten festen Regionspaaren verfügbar. Siehe [Unterstützte Regionspaare](cross-region-replication-introduction.md#supported-region-pairs). 
 * SMB-Volumes werden zusammen mit NFS-Volumes unterstützt. Die Replikation von SMB-Volumes erfordert eine Active Directory-Verbindung in den Quell- und Ziel-NetApp-Konten. Die AD-Zielverbindung muss Zugriff auf die DNS-Server oder ADDS-Domänencontroller haben, die aus dem delegierten Subnetz in der Zielregion erreichbar sind. Weitere Informationen finden Sie unter [Anforderungen für Active Directory-Verbindungen](create-active-directory-connections.md#requirements-for-active-directory-connections). 
 * Das Zielkonto muss sich in einer anderen Region als das Quellvolume befinden. Sie können auch ein vorhandenes NetApp-Konto in einer anderen Region auswählen.  
@@ -39,7 +39,7 @@ Beachten Sie die folgenden Anforderungen und Überlegungen zur [Verwendung der r
 * Das Konfigurieren der Volumereplikation für Quellvolumes, die aus einer Momentaufnahme erstellt wurden, wird derzeit nicht unterstützt.
 * Nachdem Sie die regionsübergreifende Replikation eingerichtet haben, erstellt der Replikationsprozess *Snapmirror-Momentaufnahmen*, um Verweise zwischen dem Quellvolume und dem Zielvolume bereitzustellen. Snapmirror-Momentaufnahmen werden automatisch zyklisch durchlaufen, wenn für jede inkrementelle Übertragung eine neue erstellt wird. Sie können Snapmirror-Momentaufnahmen erst löschen, nachdem die Replikationsbeziehung und das Volume gelöscht wurden. 
 * Sie können manuelle Momentaufnahmen auf dem Quellvolume einer Replikationsbeziehung löschen, wenn die Replikationsbeziehung aktiv oder unterbrochen ist, und auch nachdem die Replikationsbeziehung gelöscht wurde. Sie können manuelle Momentaufnahmen für das Zielvolume erst löschen, wenn die Replikationsbeziehung unterbrochen wurde.
-* Sie können nicht auf eine Momentaufnahme zurücksetzen, die vor dem Erstellen des Zielvolumes der Replikation erstellt wurde.
+* Sie können ein Quell- oder Zielvolume der regionsübergreifenden Replikation nicht auf eine Momentaufnahme zurücksetzen. Die Funktion zum Zurücksetzen auf eine Momentaufnahme ist für Volumes in einer Replikationsbeziehung abgeblendet. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen der Volumereplikation](cross-region-replication-create-peering.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 374fa4db4441dc82f9d14eef9cdd7589a9a82fad
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c615c3b57d0c4ebfdbffdc1461f2289d4b8c4256
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126847"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438268"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -137,6 +137,9 @@ Auf dieser Seite können Sie optional die Benutzer und Gruppen für die Vorschau
 > [!WARNING]
 > Um die fortlaufende Zugriffsauswertung zu deaktivieren, wählen Sie **Vorschau aktivieren** und dann **Vorschau deaktivieren** und **Speichern** aus.
 
+> [!NOTE]
+>Sie können Microsoft Graph über [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&tabs=http#request-body) abfragen, um die CAE-Konfiguration in Ihrem Mandanten zu überprüfen. Eine HTTP 200-Antwort und der zugehörige Antworttext geben an, ob CAE in Ihrem Mandanten aktiviert oder deaktiviert ist. CAE ist nicht konfiguriert, wenn Microsoft Graph eine HTTP 404-Antwort zurückgibt.
+
 ![Aktivieren der Vorschau der fortlaufenden Zugriffsevaluierung im Azure-Portal](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -191,4 +194,6 @@ Die Anmeldehäufigkeit wird mit oder ohne CAE berücksichtigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Ankündigung der fortlaufenden Zugriffsevaluierung](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)
+- [Ankündigung der fortlaufenden Zugriffsevaluierung](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)
+- [Verwenden von CAE-fähigen APIs in Ihren Anwendungen](../develop/app-resilience-continuous-access-evaluation.md)
+- [Anspruchsherausforderungen, Anspruchsanforderungen und Clientfunktionen](../develop/claims-challenge.md)

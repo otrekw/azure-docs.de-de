@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f99f9d240a0a9220d3b7f57cddd0a4f8ba6b6101
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47d8acd26d1cfa9c41c2cc8770f7c7f81a3e2930
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595990"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592104"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions
 
@@ -322,7 +322,7 @@ Die folgenden Beispiele zeigen NCRONTAB-Ausdrücke, die Sie für den Trigger mit
 | `0 30 9 * Jan Mon` | jeden Montag im Januar um 9:30 |
 
 > [!NOTE]
-> Der NCRONTAB-Ausdruck erfordert das Format **six field** (sechs Felder). Die sechste Feldposition ist ein Wert für Sekunden, der am Anfang des Ausdrucks platziert wird. Cron-Ausdrücke mit fünf Feldern werden in Azure nicht unterstützt.
+> Der Ausdruck NCRONTAB unterstützt sowohl das **Fünffeld-** als auch das **Sechsfeld** format. Die sechste Feldposition ist ein Wert für Sekunden, der am Anfang des Ausdrucks platziert wird.
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB-Zeitzonen
 

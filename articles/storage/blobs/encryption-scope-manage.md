@@ -4,17 +4,18 @@ description: Erfahren Sie, wie Sie einen Verschlüsselungsbereich erstellen, um 
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/26/2021
+ms.date: 05/10/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 656443b0bc9d0e45f43634b1b4c21145de7a5bb5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1419dcba2dbf1732760848738c6f50c4168ac545
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792541"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664981"
 ---
 # <a name="create-and-manage-encryption-scopes"></a>Erstellen und Verwalten von Verschlüsselungsbereichen
 
@@ -41,7 +42,8 @@ Führen Sie die folgenden Schritte aus, um einen Verschlüsselungsbereich im Azu
 1. Geben Sie im Bereich **Verschlüsselungsbereich erstellen** einen Namen für den neuen Bereich ein.
 1. Wählen Sie den gewünschten Typ der Verschlüsselungsschlüsselunterstützung aus: **Von Microsoft verwaltete Schlüssel** oder **Kundenseitig verwaltete Schlüssel**.
     - Wenn Sie **Von Microsoft verwaltete Schlüssel** ausgewählt haben, klicken Sie auf **Erstellen**, um den Verschlüsselungsbereich zu erstellen.
-    - Wenn Sie **Kundenseitig verwaltete Schlüssel** ausgewählt haben, wählen Sie ein Abonnement aus, und geben Sie einen Schlüsseltresor oder ein verwaltetes HSM und einen Schlüssel an, die für diesen Verschlüsselungsbereich verwendet werden sollen, wie in der folgenden Abbildung gezeigt.
+    - Wenn Sie **Kundenseitig verwaltete Schlüssel** ausgewählt haben, wählen Sie ein Abonnement aus, und geben Sie einen Schlüsseltresor oder ein verwaltetes HSM und einen Schlüssel an, die für diesen Verschlüsselungsbereich verwendet werden sollen.
+1. Wenn die Infrastrukturverschlüsselung für das Speicherkonto aktiviert wurde, wird sie für den neuen Verschlüsselungsbereich automatisch aktiviert. Andernfalls können Sie auswählen, ob die Infrastrukturverschlüsselung für den Verschlüsselungsbereich aktiviert werden soll.
 
     :::image type="content" source="media/encryption-scope-manage/create-encryption-scope-customer-managed-key-portal.png" alt-text="Screenshot: Erstellen eines Verschlüsselungsbereichs über das Azure-Portal":::
 
@@ -51,7 +53,9 @@ Installieren Sie zum Erstellen eines Verschlüsselungsbereichs mithilfe von Powe
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Erstellen eines Verschlüsselungsbereichs, der durch von Microsoft verwaltete Schlüssel geschützt wird
 
-Wenn Sie einen neuen Verschlüsselungsbereich erstellen möchten, der durch von Microsoft verwaltete Schlüssel geschützt wird, rufen Sie den Befehl **New-AzStorageEncryptionScope** mit dem Parameter `-StorageEncryption` auf.
+Wenn Sie einen neuen Verschlüsselungsbereich erstellen möchten, der durch von Microsoft verwaltete Schlüssel geschützt wird, rufen Sie den Befehl [New-AzStorageEncryptionScope](/powershell/module/az.storage/new-azstorageencryptionscope) mit dem Parameter `-StorageEncryption` auf.
+
+Wenn die Infrastrukturverschlüsselung für das Speicherkonto aktiviert wurde, wird sie für den neuen Verschlüsselungsbereich automatisch aktiviert. Andernfalls können Sie auswählen, ob die Infrastrukturverschlüsselung für den Verschlüsselungsbereich aktiviert werden soll. Zum Erstellen des neuen Bereichs mit aktivierter Infrastrukturverschlüsselung beziehen Sie den Parameter `-RequireInfrastructureEncryption` mit ein.
 
 Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen:
 
@@ -93,7 +97,9 @@ Set-AzKeyVaultAccessPolicy `
     -PermissionsToKeys wrapkey,unwrapkey,get
 ```
 
-Rufen Sie als Nächstes den Befehl **New-AzStorageEncryptionScope** mit dem Parameter `-KeyvaultEncryption` auf, und geben Sie den Schlüssel-URI an. Das Einbeziehen der Schlüsselversion in den Schlüssel-URI ist optional. Wenn Sie die Schlüsselversion auslassen, verwendet der Verschlüsselungsbereich automatisch die neueste Schlüsselversion. Wenn Sie die Schlüsselversion mit einbeziehen, dann müssen Sie die Schlüsselversion manuell aktualisieren, um eine andere Version zu verwenden.
+Rufen Sie als Nächstes den Befehl [New-AzStorageEncryptionScope](/powershell/module/az.storage/new-azstorageencryptionscope) mit dem Parameter `-KeyvaultEncryption` auf, und geben Sie den Schlüssel-URI an. Das Einbeziehen der Schlüsselversion in den Schlüssel-URI ist optional. Wenn Sie die Schlüsselversion auslassen, verwendet der Verschlüsselungsbereich automatisch die neueste Schlüsselversion. Wenn Sie die Schlüsselversion mit einbeziehen, dann müssen Sie die Schlüsselversion manuell aktualisieren, um eine andere Version zu verwenden.
+
+Wenn die Infrastrukturverschlüsselung für das Speicherkonto aktiviert wurde, wird sie für den neuen Verschlüsselungsbereich automatisch aktiviert. Andernfalls können Sie auswählen, ob die Infrastrukturverschlüsselung für den Verschlüsselungsbereich aktiviert werden soll. Zum Erstellen des neuen Bereichs mit aktivierter Infrastrukturverschlüsselung beziehen Sie den Parameter `-RequireInfrastructureEncryption` mit ein.
 
 Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen:
 
@@ -111,7 +117,11 @@ Installieren Sie zum Erstellen eines Verschlüsselungsbereichs mit der Azure CLI
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Erstellen eines Verschlüsselungsbereichs, der durch von Microsoft verwaltete Schlüssel geschützt wird
 
-Wenn Sie einen neuen Verschlüsselungsbereich erstellen möchten, der durch von Microsoft verwaltete Schlüssel geschützt wird, rufen Sie den Befehl [az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) auf, und geben Sie dabei `Microsoft.Storage` für den Parameter `--key-source` an. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
+Wenn Sie einen neuen Verschlüsselungsbereich erstellen möchten, der durch von Microsoft verwaltete Schlüssel geschützt wird, rufen Sie den Befehl [az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) auf, und geben Sie dabei `Microsoft.Storage` für den Parameter `--key-source` an.
+
+Wenn die Infrastrukturverschlüsselung für das Speicherkonto aktiviert wurde, wird sie für den neuen Verschlüsselungsbereich automatisch aktiviert. Andernfalls können Sie auswählen, ob die Infrastrukturverschlüsselung für den Verschlüsselungsbereich aktiviert werden soll. Zum Erstellen des neuen Bereichs mit aktivierter Infrastrukturverschlüsselung beziehen Sie den Parameter `--require-infrastructure-encryption` mit ein, und legen Sie dessen Wert auf `true` fest.
+
+Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli-interactive
 az storage account encryption-scope create \
@@ -122,8 +132,6 @@ az storage account encryption-scope create \
 ```
 
 ### <a name="create-an-encryption-scope-protected-by-customer-managed-keys"></a>Erstellen eines Verschlüsselungsbereichs, der mit kundenseitig verwalteten Schlüsseln geschützt wird
-
-Wenn Sie einen neuen Verschlüsselungsbereich erstellen möchten, der durch von Microsoft verwaltete Schlüssel geschützt wird, rufen Sie den Befehl [az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) auf, und geben Sie dabei `Microsoft.Storage` für den Parameter `--key-source` an. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
 
 Wenn Sie einen neuen Verschlüsselungsbereich erstellen möchten, der mit kundenseitig verwalteten Schlüsseln in einem Schlüsseltresor oder einem verwalteten HSM geschützt wird, konfigurieren Sie zunächst kundenseitig verwaltete Schlüssel für das Speicherkonto. Sie müssen dem Speicherkonto eine verwaltete Identität zuweisen und dann die verwaltete Identität verwenden, um die Zugriffsrichtlinie für den Schlüsseltresor so zu konfigurieren, dass das Speicherkonto über Zugriffsberechtigungen verfügt. Weitere Informationen finden Sie unter [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](../common/customer-managed-keys-overview.md).
 
@@ -153,7 +161,9 @@ az keyvault set-policy \
     --key-permissions get unwrapKey wrapKey
 ```
 
-Rufen Sie als Nächstes den Befehl **az storage account encryption-scope create** mit dem Parameter `--key-uri` auf, und geben Sie den Schlüssel-URI an. Das Einbeziehen der Schlüsselversion in den Schlüssel-URI ist optional. Wenn Sie die Schlüsselversion auslassen, verwendet der Verschlüsselungsbereich automatisch die neueste Schlüsselversion. Wenn Sie die Schlüsselversion mit einbeziehen, dann müssen Sie die Schlüsselversion manuell aktualisieren, um eine andere Version zu verwenden.
+Rufen Sie als Nächstes den Befehl [az storage account encryption-scope](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) mit dem Parameter `--key-uri` auf, und geben Sie den Schlüssel-URI an. Das Einbeziehen der Schlüsselversion in den Schlüssel-URI ist optional. Wenn Sie die Schlüsselversion auslassen, verwendet der Verschlüsselungsbereich automatisch die neueste Schlüsselversion. Wenn Sie die Schlüsselversion mit einbeziehen, dann müssen Sie die Schlüsselversion manuell aktualisieren, um eine andere Version zu verwenden.
+
+Wenn die Infrastrukturverschlüsselung für das Speicherkonto aktiviert wurde, wird sie für den neuen Verschlüsselungsbereich automatisch aktiviert. Andernfalls können Sie auswählen, ob die Infrastrukturverschlüsselung für den Verschlüsselungsbereich aktiviert werden soll. Zum Erstellen des neuen Bereichs mit aktivierter Infrastrukturverschlüsselung beziehen Sie den Parameter `--require-infrastructure-encryption` mit ein, und legen Sie dessen Wert auf `true` fest.
 
 Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen:
 
@@ -172,6 +182,8 @@ Wie Sie die Azure Storage-Verschlüsselung mit kundenseitig verwalteten Schlüss
 
 - [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](../common/customer-managed-keys-configure-key-vault.md)
 - [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind](../common/customer-managed-keys-configure-key-vault-hsm.md).
+
+Weitere Informationen zur Infrastrukturverschlüsselung finden Sie unter [Aktivieren der Infrastrukturverschlüsselung für die doppelte Verschlüsselung von Daten](../common/infrastructure-encryption-enable.md).
 
 ## <a name="list-encryption-scopes-for-storage-account"></a>Auflisten der Verschlüsselungsbereiche für das Speicherkonto
 
@@ -418,3 +430,4 @@ az storage account encryption-scope update \
 - [Azure Storage encryption for data at rest (Azure Storage-Verschlüsselung für ruhende Daten)](../common/storage-service-encryption.md)
 - [Verschlüsselungsbereiche für Blobspeicher](encryption-scope-overview.md)
 - [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](../common/customer-managed-keys-overview.md)
+- [Aktivieren von Infrastruktur-Verschlüsselung für Mehrfachverschlüsselung von Daten](../common/infrastructure-encryption-enable.md)

@@ -5,14 +5,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 05/30/2021
 ms.custom: seodec18
-ms.openlocfilehash: cb9d8edd24dcc8809f2b207a4db80653b0e140e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91ba1280262a7d13afa71d5dc0e2b7eb0e545ecc
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98014035"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787712"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 
@@ -62,13 +62,15 @@ Beachten Sie, dass jeder Datensatz im Blob die Spalte **client_id** enthält, di
    * cluster1/{date}/{aFieldInMyData}  
    * cluster1/{time}/{aFieldInMyData}  
    * cluster1/{aFieldInMyData}  
-   * cluster1/{date}/{time}/{aFieldInMyData} 
+   * cluster1/{date}/{time}/{aFieldInMyData}
+
+2. Wenn Kunden mehr als ein Eingabefeld verwenden möchten, können sie mit **CONCAT** einen zusammengesetzten Schlüssel in der Abfrage für eine benutzerdefinierte Pfadpartition in der Blobausgabe erstellen. Beispiel: **select  concat (col1, col2) as compositeColumn into blobOutput from input**. Anschließend können sie **compositeColumn** als benutzerdefinierten Pfad im Blobspeicher angeben.
    
-2. Bei Partitionsschlüsseln wird die Groß-/Kleinschreibung nicht beachtet, sodass Partitionsschlüssel wie „John“ und „john“ identisch sind. Außerdem können Ausdrücke nicht als Partitionsschlüssel verwendet werden. Beispielsweise kann **{columnA + columnB}** nicht verwendet werden.  
+3. Bei Partitionsschlüsseln wird die Groß-/Kleinschreibung nicht beachtet, sodass Partitionsschlüssel wie „John“ und „john“ identisch sind. Außerdem können Ausdrücke nicht als Partitionsschlüssel verwendet werden. Beispielsweise kann **{columnA + columnB}** nicht verwendet werden.  
 
-3. Wenn ein Eingabestream aus Datensätzen mit einer Kardinalität des Partitionsschlüssels unter 8.000 besteht, werden die Datensätze an vorhandene Blobs angefügt und neue Blobs nur bei Bedarf erstellt. Wenn die Kardinalität über 8.000 liegt, gibt es keine Garantie dafür, dass Daten in vorhandene Blobs geschrieben und neue Blobs nicht für eine beliebige Anzahl von Datensätzen mit dem gleichen Partitionsschlüssel erstellt werden.
+4. Wenn ein Eingabestream aus Datensätzen mit einer Kardinalität des Partitionsschlüssels unter 8.000 besteht, werden die Datensätze an vorhandene Blobs angefügt und neue Blobs nur bei Bedarf erstellt. Wenn die Kardinalität über 8.000 liegt, gibt es keine Garantie dafür, dass Daten in vorhandene Blobs geschrieben und neue Blobs nicht für eine beliebige Anzahl von Datensätzen mit dem gleichen Partitionsschlüssel erstellt werden.
 
-4. Wenn die Blobausgabe [als unveränderlich konfiguriert](../storage/blobs/storage-blob-immutable-storage.md) ist, erstellt Stream Analytics bei jedem Senden von Daten ein neues Blob.
+5. Wenn die Blobausgabe [als unveränderlich konfiguriert](../storage/blobs/storage-blob-immutable-storage.md) ist, erstellt Stream Analytics bei jedem Senden von Daten ein neues Blob.
 
 ## <a name="custom-datetime-path-patterns"></a>Benutzerdefinierte DateTime-Pfadmuster
 

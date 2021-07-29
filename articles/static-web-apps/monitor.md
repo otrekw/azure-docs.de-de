@@ -1,22 +1,25 @@
 ---
-title: Überwachen von Azure Static Web Apps (Vorschau)
-description: Überwachen von Anforderungen, Fehlern und Ablaufverfolgungsinformationen in Azure Static Web Apps (Vorschau)
+title: Überwachen von Azure Static Web Apps
+description: Überwachen von Anforderungen, Fehlern und Ablaufverfolgungsinformationen in Azure Static Web Apps
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 4/23/2021
 ms.author: cshoe
-ms.openlocfilehash: 474b612d835ab415f9607f737ef219acc2e99152
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8c97c3c008dda4269b282e89af7badda889588fe
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108077672"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110497571"
 ---
 # <a name="monitor-azure-static-web-apps"></a>Überwachen von Azure Static Web Apps
 
 Aktivieren Sie [Application Insights](../azure-monitor/app/app-insights-overview.md) zum Überwachen von API-Anforderungen, Fehlern und Ablaufverfolgungsinformationen.
+
+> [!IMPORTANT]
+> Application Insights verfügt über ein von Azure Static Web Apps [unabhängiges Preismodell](https://azure.microsoft.com/pricing/details/monitor).
 
 > [!NOTE]
 > Zur Verwendung von Application Insights mit Azure Static Web Apps ist eine Anwendung mit einer [API](./add-api.md) erforderlich.
@@ -71,6 +74,27 @@ Mit den folgenden Schritten können Sie Ablaufverfolgungen in Ihrer Anwendung an
 1. Wählen Sie die Schaltfläche **Ausführen**.
 
 :::image type="content" source="media/monitoring/azure-static-web-apps-application-insights-traces.png" alt-text="Anzeigen von Application Insights-Ablaufverfolgungen":::
+
+## <a name="limit-logging"></a>Begrenzen der Protokollierung
+
+In einigen Fällen können Sie die Protokollierung begrenzen und gleichzeitig weiterhin Details zu Fehlern und Warnungen erfassen, indem Sie die folgenden Änderungen an Ihrer Datei _host.json_ der Azure Functions-App vornehmen.
+
+```json
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingSettings": {
+              "isEnabled": true
+            },
+            "enableDependencyTracking": false
+        },
+        "logLevels": {
+            "default": "Warning"
+        }
+    }
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

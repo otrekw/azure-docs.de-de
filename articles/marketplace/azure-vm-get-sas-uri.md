@@ -1,5 +1,5 @@
 ---
-title: 'Generieren eines SAS-URI für ein VM-Image: Azure Marketplace'
+title: Generieren eines SAS-URI für ein VM-Image
 description: Generieren Sie im Azure Marketplace einen SAS-URI (Shared Access Signature) für eine virtuelle Festplatte (VHDs).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,17 +7,17 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 04/21/2021
-ms.openlocfilehash: 0f7d63a1213b6fe6625f16f33f18680b7a9e6bcb
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 1935d64db958112a7b6951abb81e3bd4d7119bda
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906834"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525748"
 ---
-# <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>Generieren eines SAS-URI für ein VM-Image
+# <a name="generate-a-sas-uri-for-a-vm-image"></a>Generieren eines SAS-URI für ein VM-Image
 
 > [!NOTE]
-> Für das Veröffentlichen einer VM ist kein SAS-URI erforderlich. Sie können Images einfach in Partner Center freigeben. Sehen Sie sich hierzu die Anweisungen unter [Erstellen eines virtuellen Computers mit einer genehmigten Basis](./azure-vm-create-using-approved-base.md) oder [Erstellen eines virtuellen Computers mit einem eigenen Image](./azure-vm-create-using-own-image.md) an.
+> Für das Veröffentlichen einer VM ist kein SAS-URI erforderlich. Sie können Images einfach in Partner Center freigeben. Sehen Sie sich hierzu die Anweisungen unter [Erstellen eines virtuellen Computers mit einer genehmigten Basis](azure-vm-create-using-approved-base.md) oder [Erstellen eines virtuellen Computers mit einem eigenen Image](azure-vm-create-using-own-image.md) an.
 
 Für das Generieren von SAS-URIs für Ihre VHDs gelten folgende Anforderungen:
 
@@ -173,6 +173,6 @@ Es gibt zwei Tools, die häufig zum Erstellen einer SAS-Adresse (URL) verwendet 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sollten Probleme auftreten, lesen Sie die Informationen unter [SAS-Fehlermeldungen auf virtuellen Computern](azure-vm-sas-failure-messages.md).
+- Bei Problemen lesen Sie die Informationen unter [SAS-Fehlermeldungen auf VMs](azure-vm-sas-failure-messages.md).
 - [Anmelden bei Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
 - [Erstellen eines VM-Angebots im Azure Marketplace](azure-vm-create.md)

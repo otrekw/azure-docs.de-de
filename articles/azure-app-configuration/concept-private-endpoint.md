@@ -7,12 +7,12 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: 6cadadfb3623d05dd3ae3851acd5eaca13860023
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ded1007cd5d0268d68bcdbff87a3b703da247876
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96929842"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764043"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Verwenden privater Endpunkte für Azure App Configuration
 
@@ -25,7 +25,7 @@ Die Verwendung privater Endpunkte für Ihren App Configuration-Speicher ermögli
 
 ## <a name="conceptual-overview"></a>Konzeptionelle Übersicht
 
-Ein privater Endpunkt ist eine spezielle Netzwerkschnittstelle für einen Azure-Dienst in Ihrem [virtuellen Netzwerk](../virtual-network/virtual-networks-overview.md) (VNET). Wenn Sie einen privaten Endpunkt für Ihren App Config-Speicher erstellen, wird eine sichere Verbindung zwischen Clients in Ihrem VNET und Ihrem Konfigurationsspeicher bereitgestellt. Dem privaten Endpunkt wird eine IP-Adresse aus dem IP-Adressbereich Ihres VNET zugewiesen. Für die Verbindung zwischen dem privaten Endpunkt und dem Konfigurationsspeicher wird eine sichere private Verbindung verwendet.
+Ein privater Endpunkt ist eine spezielle Netzwerkschnittstelle für einen Azure-Dienst in Ihrem [virtuellen Netzwerk](../virtual-network/virtual-networks-overview.md) (VNET). Wenn Sie einen privaten Endpunkt für Ihren App Configuration-Speicher erstellen, wird eine sichere Verbindung zwischen Clients in Ihrem VNet und Ihrem Konfigurationsspeicher bereitgestellt. Dem privaten Endpunkt wird eine IP-Adresse aus dem IP-Adressbereich Ihres VNET zugewiesen. Für die Verbindung zwischen dem privaten Endpunkt und dem Konfigurationsspeicher wird eine sichere private Verbindung verwendet.
 
 Anwendungen im VNET können über den privaten Endpunkt eine Verbindung mit dem Konfigurationsspeicher herstellen, und zwar **mit denselben Verbindungszeichenfolgen und Autorisierungsmechanismen, die auch sonst verwendet würden**. Private Endpunkte können mit allen vom App Configuration-Speicher unterstützten Protokollen verwendet werden.
 
@@ -33,11 +33,11 @@ App Configuration unterstützt keine Dienstendpunkte. Private Endpunkte können 
 
 Wenn Sie einen privaten Endpunkt für einen Dienst in Ihrem VNET erstellen, wird an den Dienstkontobesitzer eine Einwilligungsanforderung zur Genehmigung gesendet. Wenn der Benutzer, der die Erstellung des privaten Endpunkts anfordert, auch ein Besitzer des Kontos ist, wird diese Einwilligungsanforderung automatisch genehmigt.
 
-Dienstkontobesitzer können Einwilligungsanforderung und private Endpunkte über die Registerkarte `Private Endpoints` im Konfigurationsspeicher im [Azure-Portal](https://portal.azure.com) verwalten.
+Dienstkontobesitzer können Einwilligungsanforderungen und private Endpunkte über die Registerkarte `Private Endpoints` des App Configuration-Speichers im [Azure-Portal](https://portal.azure.com) verwalten.
 
 ### <a name="private-endpoints-for-app-configuration"></a>Private Endpunkte für App Configuration 
 
-Beim Erstellen eines privaten Endpunkts müssen Sie den App Configuration-Speicher angeben, mit dem er verbunden ist. Wenn Sie über mehrere App Configuration-Instanzen innerhalb eines Kontos verfügen, benötigen Sie einen separaten privaten Endpunkt für jeden Speicher.
+Beim Erstellen eines privaten Endpunkts müssen Sie den App Configuration-Speicher angeben, mit dem er verbunden ist. Wenn Sie über mehrere App Configuration-Speicher verfügen, benötigen Sie einen separaten privaten Endpunkt für jeden Speicher.
 
 ### <a name="connecting-to-private-endpoints"></a>Herstellen einer Verbindung mit privaten Endpunkten
 
@@ -46,13 +46,20 @@ Azure basiert auf der DNS-Auflösung zum Weiterleiten von Verbindungen vom VNET 
 > [!IMPORTANT]
 > Verwenden Sie die Verbindungszeichenfolge, die Sie für einen öffentlichen Endpunkt verwenden würden, um eine Verbindung mit Ihrem App Configuration-Speicher über private Endpunkte herzustellen. Stellen Sie die Verbindung mit dem Speicher nicht mithilfe der `privatelink`-URL der Unterdomäne her.
 
+> [!NOTE]
+> Wenn ein privater Endpunkt zu Ihrem App Configuration-Speicher hinzugefügt wird, werden standardmäßig alle Anforderungen für Ihre App Configuration-Daten über das öffentliche Netzwerk abgelehnt. Sie können den Zugriff über öffentliche Netzwerke unter Verwendung des folgenden Azure CLI-Befehls aktivieren. In diesem Szenario ist es wichtig, die Sicherheitsauswirkungen zu berücksichtigen, die sich durch die Aktivierung des Zugriffs auf das öffentliche Netzwerk ergeben.
+>
+> ```azurecli-interactive
+> az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
+> ```
+
 ## <a name="dns-changes-for-private-endpoints"></a>DNS-Änderungen für private Endpunkte
 
 Wenn Sie einen privaten Endpunkt erstellen, wird der DNS-CNAME-Ressourceneintrag für den Konfigurationsspeicher auf einen Alias in einer Unterdomäne mit dem Präfix `privatelink` aktualisiert. Azure erstellt außerdem eine [private DNS-Zone](../dns/private-dns-overview.md), die der Unterdomäne `privatelink` entspricht, mit den DNS-A-Ressourceneinträgen für die privaten Endpunkte.
 
 Wenn Sie die Endpunkt-URL innerhalb des virtuellen Netzwerks auflösen, das den privaten Endpunkt hostet, wird sie in den privaten Endpunkt des Speichers aufgelöst. Wenn Sie sie außerhalb des virtuellen Netzwerks auflösen, wird die Endpunkt-URL in den öffentlichen Endpunkt aufgelöst. Wenn Sie einen privaten Endpunkt erstellen, wird der öffentliche Endpunkt deaktiviert.
 
-Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müssen Clients in der Lage sein, den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) für den Dienstendpunkt in die IP-Adresse des privaten Endpunkts aufzulösen. Konfigurieren Sie den DNS-Server so, dass die Unterdomäne der privaten Verbindung an die private DNS-Zone für das VNET delegiert wird, oder konfigurieren Sie die A-Einträge für `AppConfigInstanceA.privatelink.azconfig.io` mit der IP-Adresse des privaten Endpunkts.
+Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müssen Clients in der Lage sein, den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) für den Dienstendpunkt in die IP-Adresse des privaten Endpunkts aufzulösen. Konfigurieren Sie den DNS-Server so, dass die Unterdomäne der privaten Verbindung an die private DNS-Zone für das VNET delegiert wird, oder konfigurieren Sie die A-Einträge für `[Your-store-name].privatelink.azconfig.io` mit der IP-Adresse des privaten Endpunkts.
 
 > [!TIP]
 > Wenn Sie einen benutzerdefinierten oder lokalen DNS-Server verwenden, müssen Sie den DNS-Server so konfigurieren, dass der Speichername in der Unterdomäne `privatelink` in die IP-Adresse des privaten Endpunkts aufgelöst wird. Hierzu können Sie die Unterdomäne `privatelink` an die private DNS-Zone des VNET delegieren oder die DNS-Zone auf dem DNS-Server konfigurieren und die DNS-A-Einträge hinzufügen.

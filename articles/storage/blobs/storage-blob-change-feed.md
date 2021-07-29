@@ -1,19 +1,20 @@
 ---
 title: Änderungsfeed in Azure Blob Storage | Microsoft-Dokumentation
 description: Erfahren Sie mehr über Änderungsfeedprotokolle in Azure Blob Storage und deren Verwendung.
-author: normesta
-ms.author: normesta
-ms.date: 02/08/2021
+author: tamram
+ms.author: tamram
+ms.date: 05/17/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 6da83ceb6d8ee51916d25949309d7ddfba0e4b30
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 37367cc4608c1bfbf9c621388bcbc6ecaabd8aa4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503598"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679320"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Änderungsfeed in Azure Blob Storage
 
@@ -33,20 +34,16 @@ Das folgende Diagramm zeigt, wie dem Änderungsfeed Datensätze hinzugefügt wer
 
 Die Unterstützung eines Änderungsfeeds eignet sich gut für Szenarien, in denen Daten basierend auf geänderten Objekten verarbeitet werden. Anwendungen können beispielsweise Folgendes ausführen:
 
-  - Aktualisieren eines sekundären Index, Synchronisieren mit einem Cache oder einer Suchmaschine oder andere Content Management-Szenarien.
-  
-  - Extrahieren von Erkenntnissen und Metriken aus geschäftlichen Analysen, basierend auf Änderungen an Ihren Objekten – entweder per Streaming oder im Batchmodus.
-  
-  - Speichern, Überwachen und Analysieren von Änderungen an Ihren Objekten über einen beliebigen Zeitraum hinweg, um Sicherheit, Compliance oder Business Intelligence für die Verwaltung von Unternehmensdaten zu erzielen.
+- Aktualisieren eines sekundären Index, Synchronisieren mit einem Cache oder einer Suchmaschine oder andere Content Management-Szenarien.
+- Extrahieren von Erkenntnissen und Metriken aus geschäftlichen Analysen, basierend auf Änderungen an Ihren Objekten – entweder per Streaming oder im Batchmodus.
+- Speichern, Überwachen und Analysieren von Änderungen an Ihren Objekten über einen beliebigen Zeitraum hinweg, um Sicherheit, Compliance oder Business Intelligence für die Verwaltung von Unternehmensdaten zu erzielen.
+- Erstellen von Lösungen zum Sichern, Spiegeln oder Replizieren des Objektzustands in Ihrem Konto für Notfallverwaltung oder Compliance.
+- Erstellen von verbundenen Anwendungspipelines, die auf Änderungsereignisse reagieren oder Ausführungen basierend auf erstellten oder geänderten Objekten planen.
 
-  - Erstellen von Lösungen zum Sichern, Spiegeln oder Replizieren des Objektzustands in Ihrem Konto für Notfallverwaltung oder Compliance.
-
-  - Erstellen von verbundenen Anwendungspipelines, die auf Änderungsereignisse reagieren oder Ausführungen basierend auf erstellten oder geänderten Objekten planen.
-  
 Der Änderungsfeed ist ein erforderliches Feature für [Objektreplikation und ](object-replication-overview.md) [Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md).
 
 > [!NOTE]
-> Der Änderungsfeed bietet ein permanentes, sortiertes Protokollmodell der Änderungen an einem Blob. Änderungen werden innerhalb weniger Minuten in das Änderungsfeedprotokoll geschrieben und verfügbar gemacht. Wenn Ihre Anwendung wesentlich schneller auf Ereignisse reagieren muss, sollten Sie stattdessen [Blob Storage-Ereignisse](storage-blob-event-overview.md) in Betracht ziehen. [Blob Storage-Ereignisse](storage-blob-event-overview.md) bieten einmalige Echtzeitereignisse, mit denen Ihre Azure Functions-Lösung oder Ihre Anwendungen schnell auf Blobänderungen reagieren können. 
+> Der Änderungsfeed bietet ein permanentes, sortiertes Protokollmodell der Änderungen an einem Blob. Änderungen werden innerhalb weniger Minuten in Ihr Änderungsfeedprotokoll geschrieben und verfügbar gemacht. Wenn Ihre Anwendung wesentlich schneller auf Ereignisse reagieren muss, sollten Sie stattdessen [Blob Storage-Ereignisse](storage-blob-event-overview.md) in Betracht ziehen. [Blob Storage-Ereignisse](storage-blob-event-overview.md) bieten einmalige Echtzeitereignisse, mit denen Ihre Azure Functions-Lösung oder Ihre Anwendungen schnell auf Blobänderungen reagieren können. 
 
 ## <a name="enable-and-disable-the-change-feed"></a>Aktivieren und Deaktivieren des Änderungsfeeds
 
@@ -60,7 +57,7 @@ Folgende Aspekte müssen Sie berücksichtigen, wenn Sie den Änderungsfeed aktiv
 
 - Der Änderungsfeed zeichnet *alle* Änderungen für alle verfügbaren Ereignisse auf, die im Konto auftreten. Clientanwendungen können Ereignistypen nach Bedarf herausfiltern. (Informationen hierzu finden Sie in den [Bedingungen](#conditions) für das aktuelle Release.)
 
-- Nur GPv2- und Blob Storage-Konten können den Änderungsfeed aktivieren. Premium-BlockBlobStorage-Konten und Konten für hierarchische Namespaces werden aktuell nicht unterstützt. GPv1-Speicherkonten werden zwar nicht unterstützt, können aber ohne Downtime auf GPv2 aktualisiert werden. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](../common/storage-account-upgrade.md).
+- Nur Konten vom Typ „Universell V2“ und Blobspeicherkonten können den Änderungsfeed aktivieren. Premium-Blockblobkonten und Konten mit aktivierten hierarchischen Namespaces werden zurzeit nicht unterstützt. Speicherkonten vom Typ „Universell V1“ werden zwar nicht unterstützt, können aber ohne Downtime auf „Universell V2“ aktualisiert werden. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Universell V2“](../common/storage-account-upgrade.md).
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -132,19 +129,19 @@ So verwenden Sie eine Azure Resource Manager-Vorlage, um den Änderungsfeed für
         }]
    }
    ```
-    
+
 5. Klicken Sie auf die Schaltfläche **Speichern**, geben Sie die Ressourcengruppe des Kontos an, und klicken Sie dann auf die Schaltfläche **Kaufen**, um die Vorlage bereitzustellen und den Änderungsfeed zu aktivieren.
 
 ---
 
 ## <a name="consume-the-change-feed"></a>Nutzen des Änderungsfeeds
 
-Der Änderungsfeed erzeugt verschiedene Metadaten- und Protokolldateien. Diese Dateien befinden sich im Container **$blobchangefeed** des Speicherkontos. 
+Der Änderungsfeed erzeugt verschiedene Metadaten- und Protokolldateien. Diese Dateien befinden sich im Container **$blobchangefeed** des Speicherkontos.
 
 > [!NOTE]
 > Im aktuellen Release ist der Container „$blobchangefeed“ nur im Azure-Portal, aber nicht im Azure Storage-Explorer sichtbar. Der Container „$blobchangefeed“ kann zurzeit nicht angezeigt werden, wenn Sie die ListContainers-API aufrufen. Sie können aber die ListBlobs-API direkt im Container aufrufen, um die Blobs anzuzeigen.
 
-Ihre Clientanwendungen können den Änderungsfeed nutzen, indem sie die Prozessorbibliothek für den Änderungsfeed im Blob verwenden, die mit dem Change Feed Processor SDK bereitgestellt wird. 
+Ihre Clientanwendungen können den Änderungsfeed nutzen, indem sie die Prozessorbibliothek für den Änderungsfeed im Blob verwenden, die mit dem Change Feed Processor SDK bereitgestellt wird.
 
 Informationen dazu finden Sie unter [Verarbeiten von Änderungsfeedprotokollen in Azure Blob Storage](storage-blob-change-feed-how-to.md).
 
@@ -246,7 +243,7 @@ Im Folgenden sehen Sie ein Beispiel für einen in JSON konvertierten Änderungsf
 }
 ```
 
-Eine ausführliche Beschreibung der einzelnen Eigenschaften finden Sie unter [Azure Event Grid-Ereignisschema für Blob Storage](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties). Die Ereignisse BlobPropertiesUpdated und BlobSnapshotCreated sind zurzeit exklusiv für den Änderungsfeed und werden noch nicht für Blob Storage-Ereignisse unterstützt.
+Eine ausführliche Beschreibung der einzelnen Eigenschaften finden Sie unter [Azure Event Grid-Ereignisschema für Blob Storage](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties). Die Ereignisse „BlobPropertiesUpdated“ und „BlobSnapshotCreated“ gibt es zurzeit exklusiv für den Änderungsfeed, und sie werden für Blob Storage-Ereignisse noch nicht unterstützt.
 
 > [!NOTE]
 > Die Änderungsfeeddateien für ein Segment werden nicht sofort nach dem Erstellen eines Segments angezeigt. Die Verzögerung bewegt sich im normalen Intervall der Veröffentlichungslatenz des Änderungsfeeds, die wenige Minuten nach der Änderung beträgt.
@@ -304,13 +301,15 @@ Dieser Abschnitt enthält Informationen zu bekannten Problemen und Bedingungen i
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>Worin besteht der Unterschied zwischen Änderungsfeed und Storage Analytics-Protokollierung?
+### <a name="what-is-the-difference-between-the-change-feed-and-storage-analytics-logging"></a>Worin besteht der Unterschied zwischen dem Änderungsfeed und Storage Analytics-Protokollierung?
+
 In Analytics-Protokollen werden alle Lese-, Schreib-, Auflistungs- und Löschvorgänge mit erfolgreichen und nicht erfolgreichen Anforderungen für alle Vorgänge erfasst. Analytics-Protokolle werden bestmöglich erstellt und es wird keine Reihenfolge garantiert.
 
-Der Änderungsfeed ist eine Lösung, die Transaktionsprotokolle erfolgreicher Mutationen oder Änderungen an Ihrem Konto bereitstellt. Hierzu zählt beispielsweise die Erstellung, Änderung und Löschung von Blobs. Beim Änderungsfeed werden alle Ereignisse garantiert in der Reihenfolge erfolgreicher Änderungen pro Blob aufgezeichnet und angezeigt. Somit müssen keine überflüssigen Daten aus einer großen Menge von Lesevorgängen oder nicht erfolgreichen Anforderungen herausgefiltert werden. Der Änderungsfeed ist von Grund auf für die Entwicklung von Anwendungen konzipiert und optimiert, die bestimmte Garantien erfordern.
+Der Änderungsfeed ist eine Lösung, die Transaktionsprotokolle von erfolgreichen Mutationen oder Änderungen an Ihrem Konto bereitstellt, z B. die Erstellung, Änderung und Löschung von Blobs. Beim Änderungsfeed werden alle Ereignisse garantiert in der Reihenfolge von erfolgreichen Änderungen pro Blob aufgezeichnet und angezeigt. Deshalb müssen keine überflüssigen Daten aus einer großen Menge von Lesevorgängen oder fehlerhaften Anforderungen herausgefiltert werden. Der Änderungsfeed ist grundsätzlich für die Entwicklung von Anwendungen konzipiert und optimiert, die bestimmte Garantien erfordern.
 
-### <a name="should-i-use-change-feed-or-storage-events"></a>Sollten Änderungsfeeds oder Blob Storage-Ereignisse verwendet werden?
-Sie können beide Features verwenden, da Änderungsfeeds und [Blob Storage-Ereignisse](storage-blob-event-overview.md) die gleichen Informationen mit der gleichen garantierten Zuverlässigkeit liefern. Der Hauptunterschied besteht bei der Wartezeit, Sortierung und Speicherung der Ereignisdatensätze. Der Änderungsfeed veröffentlicht Datensätze wenige Minuten nach der Änderung im Protokoll und garantiert die Reihenfolge von Änderungsvorgängen pro Blob. Blob Storage-Ereignisse werden in Echtzeit per Pushübertragung übermittelt und sind möglicherweise nicht geordnet. Änderungsfeedereignisse werden in Ihrem Speicherkonto dauerhaft als schreibgeschützte, stabile Protokolle gespeichert. Storage-Ereignisse sind dagegen kurzlebig und für die Nutzung durch den Ereignishandler vorgesehen (es sei denn, sie werden explizit gespeichert). Mit dem Änderungsfeed können die Protokolle von einer beliebigen Anzahl Ihrer Anwendungen nach Bedarf über Blob-APIs oder -SDKs genutzt werden. 
+### <a name="should-i-use-the-change-feed-or-storage-events"></a>Sollte ich den Änderungsfeed oder Storage-Ereignisse verwenden?
+
+Sie können beide Features nutzen, da der Änderungsfeed und [Blob Storage-Ereignisse](storage-blob-event-overview.md) dieselben Informationen mit derselben garantierten Zuverlässigkeit bei der Übermittlung liefern. Der Hauptunterschied besteht in der Wartezeit, Sortierung und Speicherung von Ereignisdatensätzen. Der Änderungsfeed veröffentlicht Datensätze wenige Minuten nach der Änderung im Protokoll und garantiert außerdem die Reihenfolge von Änderungsvorgängen pro Blob. Blob Storage-Ereignisse werden in Echtzeit per Pushübertragung übermittelt und sind möglicherweise nicht geordnet. Änderungsfeedereignisse werden in Ihrem Speicherkonto dauerhaft als schreibgeschützte, stabile Protokolle gespeichert. Storage-Ereignisse sind dagegen kurzlebig und für die Nutzung durch den Ereignishandler vorgesehen (es sei denn, sie werden explizit gespeichert). Beim Änderungsfeed können die Protokolle von einer beliebigen Anzahl Ihrer Anwendungen nach Bedarf über Blob-APIs oder -SDKs genutzt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

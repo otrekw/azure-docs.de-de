@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 5dabae76308f32da7968d8cfa89b95f1eb19c142
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a31fde34a65d69ca862a6dd8bd4fb638b15cb3a
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863767"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751417"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisches Skalieren von Azure HDInsight-Clustern
 
@@ -70,12 +70,12 @@ Die folgende Tabelle beschreibt die Clustertypen und Versionen, die mit dem Feat
 
 | Version | Spark | Hive | Interactive Query | hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3.6 ohne ESP | Ja | Ja | Ja | Ja* | Nein | Nein | Nein |
-| HDInsight 4.0 ohne ESP | Ja | Ja | Ja | Ja* | Nein | Nein | Nein |
-| HDInsight 3.6 mit ESP | Ja | Ja | Ja | Ja* | Nein | Nein | Nein |
-| HDInsight 4.0 mit ESP | Ja | Ja | Ja | Ja* | Nein | Nein | Nein |
+| HDInsight 3.6 ohne ESP | Ja | Ja | Ja* | Ja* | Nein | Nein | Nein |
+| HDInsight 4.0 ohne ESP | Ja | Ja | Ja* | Ja* | Nein | Nein | Nein |
+| HDInsight 3.6 mit ESP | Ja | Ja | Ja* | Ja* | Nein | Nein | Nein |
+| HDInsight 4.0 mit ESP | Ja | Ja | Ja* | Ja* | Nein | Nein | Nein |
 
-\* HBase-Cluster können nur für zeitplanbasierte, aber nicht für auslastungsbasierte Skalierung konfiguriert werden.
+\* HBase-Cluster und Interactive Query-Cluster können nur für zeitplanbasierte, aber nicht für auslastungsbasierte Skalierung konfiguriert werden.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -85,7 +85,7 @@ Um das Feature „Autoskalierung“ mit lastbasierter Skalierung zu aktivieren, 
 
 1. Aktivieren Sie auf der Registerkarte **Konfiguration + Preise** das Kontrollkästchen **Automatische Skalierung aktivieren**.
 1. Wählen Sie **Lastbasiert** unter **Autoskalierungstyp** aus.
-1. Geben Sie die gewünschten Werte für die folgenden Eigenschaften ein:  
+1. Geben Sie die gewünschten Werte für die folgenden Eigenschaften ein:
 
     * Anfängliche **Anzahl von Workerknoten** für **Workerknoten**.
     * **Minimale** Anzahl von Workerknoten.
@@ -120,16 +120,16 @@ Wählen Sie den VM-Typ für Workerknoten aus, indem Sie in der Dropdownliste unt
 
 Ihr Abonnement verfügt für jede Region über ein Kapazitätskontingent. Die Gesamtanzahl der Kerne Ihrer Hauptknoten und der maximalen Workerknoten darf das Kapazitätskontingent nicht überschreiten. Dieses Kontingent ist jedoch eine weiche Grenze. Sie können immer ein Supportticket erstellen, um es problemlos erhöhen zu lassen.
 
-> [!Note]  
+> [!Note]
 > Wenn Sie die gesamte Kernkontingentgrenze überschreiten, informiert Sie eine Fehlermeldung darüber, dass die maximale Knotenzahl die Zahl der verfügbaren Kerne in dieser Region überschritten hat, und Sie werden aufgefordert, eine andere Region auszuwählen oder den Support um Erhöhung des Kontingents zu bitten.
 
-Weitere Informationen zum Erstellen von HDInsight-Clustern mit dem Azure-Portal finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mithilfe des Azure-Portals](hdinsight-hadoop-create-linux-clusters-portal.md).  
+Weitere Informationen zum Erstellen von HDInsight-Clustern mit dem Azure-Portal finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mithilfe des Azure-Portals](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ### <a name="create-a-cluster-with-a-resource-manager-template"></a>Erstellen eines Clusters mithilfe einer Resource Manager-Vorlage
 
 #### <a name="load-based-autoscaling"></a>Lastbasierte Autoskalierung
 
-Sie können einen HDInsight-Cluster mit lastbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten mit den Eigenschaften `minInstanceCount` und `maxInstanceCount` hinzufügen, wie im folgenden JSON-Codeausschnitt gezeigt. Eine umfassende Resource Manager-Vorlage finden Sie unter [Schnellstartvorlage: Bereitstellen eines Spark-Clusters mit aktivierter lastbasierter Autoskalierung](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased).
+Sie können einen HDInsight-Cluster mit lastbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten mit den Eigenschaften `minInstanceCount` und `maxInstanceCount` hinzufügen, wie im folgenden JSON-Codeausschnitt gezeigt. Eine umfassende Resource Manager-Vorlage finden Sie unter [Schnellstartvorlage: Bereitstellen eines Spark-Clusters mit aktivierter lastbasierter Autoskalierung](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-autoscale-loadbased).
 
 ```json
 {
@@ -157,7 +157,7 @@ Sie können einen HDInsight-Cluster mit lastbasierter Autoskalierung und einer A
 
 #### <a name="schedule-based-autoscaling"></a>Zeitplanbasierte Autoskalierung
 
-Sie können einen HDInsight-Cluster mit zeitplanbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten hinzufügen. Der `autoscale`-Knoten enthält ein `recurrence` mit einer `timezone` und einem `schedule`. Damit wird beschrieben, wann die Änderung erfolgen wird. Eine umfassende Resource Manager-Vorlage finden Sie unter [Bereitstellen eines Spark-Clusters mit aktivierter zeitplanbasierter Autoskalierung](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased).
+Sie können einen HDInsight-Cluster mit zeitplanbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten hinzufügen. Der `autoscale`-Knoten enthält ein `recurrence` mit einer `timezone` und einem `schedule`. Damit wird beschrieben, wann die Änderung erfolgen wird. Eine umfassende Resource Manager-Vorlage finden Sie unter [Bereitstellen eines Spark-Clusters mit aktivierter zeitplanbasierter Autoskalierung](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-autoscale-schedulebased).
 
 ```json
 {
@@ -251,25 +251,37 @@ Beim zentralen Herunterskalieren des Clusters werden die Knoten von Autoskalieru
 
 Die ausgeführten Aufträge werden weiterhin ausgeführt. Für die ausstehenden Aufträge wird auf eine Planung mit weniger verfügbaren Workerknoten gewartet.
 
+### <a name="configure-schedule-based-autoscale-based-on-usage-pattern"></a>Konfigurieren der zeitplanbasierten Autoskalierung basierend auf dem Nutzungsmuster
+
+Sie müssen Ihr Clusternutzungsmuster verstehen, wenn Sie die zeitplanbasierte Autoskalierung konfigurieren. [Das Grafana-Dashboard](./interactive-query/hdinsight-grafana.md) kann Ihnen helfen, Ihre Abfragelast und Ausführungsslots zu verstehen. Sie können die verfügbaren Executorslots und die Gesamtzahl der Executorslots über das Dashboard abrufen.
+
+So können Sie schätzen, wie viele Workerknoten benötigt werden. Es wird empfohlen, einen zusätzlichen Puffer von 10 % zu verwenden, um Workloadvariationen zu verarbeiten.
+
+Anzahl der tatsächlich genutzten Executorslots = Gesamtzahl der Executorslots – Gesamtzahl der verfügbaren Executorslots
+
+Anzahl erforderlicher Workerknoten = Anzahl der tatsächlich verwendeten Executorslots / (hive.llap.daemon.num.executors + hive.llap.daemon.task.scheduler.wait.queue.size)
+
+*hive.llap.daemon.num.executors ist konfigurierbar, und der Standardwert lautet 4.
+
+*hive.llap.daemon.task.scheduler.wait.queue.size ist konfigurierbar, und der Standardwert ist 10.
+
+
 ### <a name="be-aware-of-the-minimum-cluster-size"></a>Beachten der Clustermindestgröße
 
 Skalieren Sie den Cluster nicht auf weniger als drei Knoten herunter. Die Skalierung des Clusters auf weniger als drei Knoten kann dazu führen, dass der Cluster aufgrund unzureichender Dateireplikation im abgesicherten Modus hängen bleibt. Weitere Informationen finden Sie unter [Hängenbleiben im abgesicherten Modus](hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
 
 ### <a name="increase-the-number-of-mappers-and-reducers"></a>Erhöhen der Anzahl von Zuordnungen (Mapper) und Reducern
 
-Autoskalierung für Hadoop-Cluster überwacht auch die HDFS-Nutzung. Ist das HDFS ausgelastet, wird davon ausgegangen, dass der Cluster weiterhin die aktuellen Ressourcen benötigt. Wenn eine große Datenmenge an der Abfrage beteiligt ist, können Sie die Anzahl der Zuordnungen und Reducer erhöhen, um die Parallelität zu erhöhen und die HDFS-Vorgänge zu beschleunigen. Auf diese Weise wird ordnungsgemäßes Herunterskalieren ausgelöst, wenn zusätzliche Ressourcen vorhanden sind. 
+Autoskalierung für Hadoop-Cluster überwacht auch die HDFS-Nutzung. Ist das HDFS ausgelastet, wird davon ausgegangen, dass der Cluster weiterhin die aktuellen Ressourcen benötigt. Wenn eine große Datenmenge an der Abfrage beteiligt ist, können Sie die Anzahl der Zuordnungen und Reducer erhöhen, um die Parallelität zu erhöhen und die HDFS-Vorgänge zu beschleunigen. Auf diese Weise wird ordnungsgemäßes Herunterskalieren ausgelöst, wenn zusätzliche Ressourcen vorhanden sind.
 
 ### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>Festlegen der Hive-Konfiguration „Maximum Total Concurrent Queries“ für das Szenario für Spitzenlast
 
 Die Hive-Konfiguration *Maximum Total Concurrent Queries* (Maximale Anzahl gleichzeitiger Abfragen) in Ambari wird durch Autoskalierungsereignisse nicht geändert. Dies bedeutet, dass der Hive Server 2 Interactive-Dienst immer nur die angegebene Anzahl gleichzeitiger Abfragen verarbeiten kann, auch wenn die Anzahl der Interactive Query-Daemons last- oder zeitplanbasiert zentral hoch- und herunterskaliert wird. Die allgemeine Empfehlung besteht darin, diese Konfiguration entsprechend dem Spitzenlastszenario festzulegen, damit kein manueller Eingriff erforderlich wird.
 
-Es können jedoch Hive Server 2-Neustartfehler auftreten, wenn nur wenige Workerknoten vorhanden sind und der Wert für die maximale Anzahl gleichzeitiger Abfragen zu hoch konfiguriert ist. Sie benötigen eine Mindestanzahl von Workerknoten, die die angegebene Anzahl von Tez-AMS abdecken können (entspricht der „Maximum Total Concurrent Queries“-Konfiguration). 
+Es können jedoch Hive Server 2-Neustartfehler auftreten, wenn nur wenige Workerknoten vorhanden sind und der Wert für die maximale Anzahl gleichzeitiger Abfragen zu hoch konfiguriert ist. Sie benötigen eine Mindestanzahl von Workerknoten, die die angegebene Anzahl von Tez-AMS abdecken können (entspricht der „Maximum Total Concurrent Queries“-Konfiguration).
 
 ## <a name="limitations"></a>Einschränkungen
 
-### <a name="node-label-file-missing"></a>Knotenbezeichnungsdatei fehlt
-
-HDInsight Autoskalierung verwendet eine Knotenbezeichnungsdatei, um zu bestimmen, ob ein Knoten in der Lage ist, Aufgaben auszuführen. Die Knotenbezeichnungsdatei ist auf HDFS mit drei Replikaten gespeichert. Wird die Clustergröße erheblich herunterskaliert, und liegt eine große Menge temporärer Daten vor, gibt es ein kleines Risiko, dass alle drei Replikate gelöscht werden. Wenn dies passiert, wird der Cluster in einen Fehlerzustand versetzt.
 
 ### <a name="interactive-query-daemons-count"></a>Anzahl der Interactive Query-Daemons
 

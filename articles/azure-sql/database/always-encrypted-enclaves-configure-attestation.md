@@ -10,13 +10,14 @@ ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
-ms.date: 01/15/2021
-ms.openlocfilehash: a51aa15e1338380d4b4179e7fb8899273750c374
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 05/01/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0e2e6bc57a830b5257d246a4229e174cf8612d3c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107179"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662520"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurieren von Azure Attestation für Ihren logischen Azure SQL-Server
 
@@ -31,18 +32,10 @@ Um Azure Attestation für Nachweise von Intel SGX-Enclaves, die für [Always Enc
 
 1. Erstellen Sie einen [Nachweisanbieter](../../attestation/basic-concepts.md#attestation-provider), und konfigurieren Sie ihn mit der empfohlenen Nachweisrichtlinie.
 
-2. Gewähren Sie dem logischen Azure SQL-Server Zugriff auf Ihren Nachweisanbieter.
+2. Bestimmen Sie die Nachweis-URL, und geben Sie die URL für Anwendungsadministratoren frei.
 
 > [!NOTE]
 > Für die Konfiguration von Nachweisen ist der Nachweisadministrator verantwortlich. Weitere Informationen finden Sie unter [Rollen und Verantwortlichkeiten beim Konfigurieren von SGX-Enclaves und von Attestation](always-encrypted-enclaves-plan.md#roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation).
-
-## <a name="requirements"></a>Anforderungen
-
-Der logische Azure SQL-Server und der Nachweisanbieter müssen demselben Azure Active Directory-Mandanten angehören. Mandantenübergreifende Interaktionen werden nicht unterstützt. 
-
-Dem logischen Azure SQL-Server muss eine Azure AD-Identität zugewiesen sein. Als Nachweisadministrator müssen Sie die Azure AD-Identität des Servers vom Azure SQL-Datenbankadministrator für diesen Server erfragen. Sie verwenden die Identität, um dem Server Zugriff auf den Nachweisanbieter zu gewähren. 
-
-Anweisungen zum Erstellen eines Servers mit einer Identität oder zum Zuweisen einer Identität zu einem vorhandenen Server mithilfe von PowerShell und der Azure CLI finden Sie unter [Zuweisen einer Azure AD-Identität zu einem Server](transparent-data-encryption-byok-configure.md#assign-an-azure-active-directory-azure-ad-identity-to-your-server).
 
 ## <a name="create-and-configure-an-attestation-provider"></a>Erstellen und Konfigurieren eines Nachweisanbieters
 
@@ -92,62 +85,21 @@ Anweisungen zum Erstellen eines Nachweisanbieters und Konfigurieren des Anbieter
 
 ## <a name="determine-the-attestation-url-for-your-attestation-policy"></a>Ermitteln der Nachweis-URL für die Nachweisrichtlinie
 
-Nachdem Sie eine Nachweisrichtlinie konfiguriert haben, müssen Sie die Nachweis-URL, die auf die Richtlinie verweist, für Administratoren von Anwendungen freigeben, die Always Encrypted mit Secure Enclaves in Azure SQL-Datenbank verwenden. Anwendungsadministratoren und/oder Benutzer von Anwendungen müssen ihre Apps mit der Nachweis-URL konfigurieren, damit sie Anweisungen ausführen können, die Secure Enclaves nutzen.
-
-### <a name="use-powershell-to-determine-the-attestation-url"></a>Ermitteln der Nachweis-URL mithilfe von PowerShell
-
-Verwenden Sie das folgende Skript, um die Nachweis-URL zu ermitteln:
-
-```powershell
-$attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName 
-$attestationUrl = $attestationProvider.AttestUri + "/attest/SgxEnclave"
-Write-Host "Your attestation URL is: " $attestationUrl 
-```
+Nachdem Sie eine Nachweisrichtlinie konfiguriert haben, müssen Sie die Nachweis-URL für Administratoren von Anwendungen freigeben, die Always Encrypted mit Secure Enclaves in Azure SQL-Datenbank verwenden. Die Nachweis-URL ist die `Attest URI` des Nachweisanbieters, der die Nachweisrichtlinie enthält, die wie folgt aussieht: `https://MyAttestationProvider.wus.attest.azure.net`.
 
 ### <a name="use-azure-portal-to-determine-the-attestation-url"></a>Ermitteln der Nachweis-URL über das Azure-Portal
 
-1. Kopieren Sie im Bereich „Übersicht“ Ihres Nachweisanbieters den Wert der Eigenschaft für den Nachweis-URI in die Zwischenablage. Ein Nachweis-URI sollte wie folgt aussehen: `https://MyAttestationProvider.us.attest.azure.net`.
+Kopieren Sie im Bereich „Übersicht“ Ihres Nachweisanbieters den Wert der `Attest URI`-Eigenschaft in die Zwischenablage. 
 
-2. Fügen Sie die folgende Zeichenfolge an den Nachweis-URI an: `/attest/SgxEnclave`. 
+### <a name="use-powershell-to-determine-the-attestation-url"></a>Ermitteln der Nachweis-URL mithilfe von PowerShell
 
-Die resultierende Nachweis-URL sollte wie folgt aussehen: `https://MyAttestationProvider.us.attest.azure.net/attest/SgxEnclave`
-
-## <a name="grant-your-azure-sql-logical-server-access-to-your-attestation-provider"></a>So gewähren Sie dem logischen Azure SQL-Server Zugriff auf den Nachweisanbieter
-
-Während des Nachweisworkflows ruft der logische Azure SQL-Server, der Ihre Datenbank enthält, den Nachweisanbieter auf, um eine Nachweisanforderung zu übermitteln. Damit der logische Azure SQL-Server Nachweisanforderungen übermitteln kann, muss der Server berechtigt sein, die Aktion `Microsoft.Attestation/attestationProviders/attestation/read` für den Nachweisanbieter auszuführen. Die empfohlene Vorgehensweise, um die Berechtigung zu gewähren, besteht darin, dass der Administrator des Nachweisanbieters die Azure AD-Identität des Servers der Rolle „Nachweisleser“ für den Nachweisanbieter oder seine enthaltende Ressourcengruppe zuweist.
-
-### <a name="use-azure-portal-to-assign-permission"></a>Zuweisen der Berechtigung über das Azure-Portal
-
-Um die Identität eines Azure SQL-Servers der Rolle „Attestation-Leser“ für einen Nachweisanbieter zuzuweisen, befolgen Sie die allgemeinen Anweisungen unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md). Gehen Sie im Bereich **Rollenzuweisung hinzufügen** wie folgt vor:
-
-1. Wählen Sie in der Dropdownliste **Rolle** die Rolle **Nachweisleser** aus.
-1. Geben Sie im Feld **Auswählen** den Namen Ihres Azure SQL-Servers ein, um ihn zu suchen.
-
-Ein Beispiel finden Sie im folgenden Screenshot.
-
-![Zuweisen der Rolle „Nachweisleser“](./media/always-encrypted-enclaves/attestation-provider-role-assigment.png)
-
-> [!NOTE]
-> Damit im Bereich **Rollenzuweisung hinzufügen** ein Server angezeigt wird, muss dem Server eine Azure AD-Identität zugewiesen sein. Informationen hierzu finden Sie unter [Anforderungen](#requirements).
-
-### <a name="use-powershell-to-assign-permission"></a>Zuweisen der Berechtigung mithilfe von PowerShell
-
-1. Suchen Sie Ihren logischen Azure SQL-Server.
+Verwenden Sie das `Get-AzAttestation`-Cmdlet, um die Eigenschaften des Nachweisanbieters, einschließlich AttestURI, abzurufen.
 
 ```powershell
-$serverResourceGroupName = "<server resource group name>"
-$serverName = "<server name>" 
-$server = Get-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName 
-```
- 
-2. Weisen Sie den Server für die Ressourcengruppe, die den Nachweisanbieter enthält, der Rolle „Nachweisleser“ zu.
-
-```powershell
-$attestationResourceGroupName = "<attestation provider resource group name>"
-New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
+Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName
 ```
 
-Weitere Informationen finden Sie unter [Zuweisen von Azure-Rollen mithilfe von Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md#assign-role-examples).
+Weitere Informationen finden Sie unter [Erstellen und Verwalten eines Nachweisanbieters](../../attestation/quickstart-powershell.md#create-and-manage-an-attestation-provider).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

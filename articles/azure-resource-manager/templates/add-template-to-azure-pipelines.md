@@ -3,12 +3,12 @@ title: CI/CD mit Azure Pipelines und Vorlagen
 description: Beschreibt die Konfiguration von Continuous Integration in Azure Pipelines mithilfe von Azure Resource Manager-Vorlagen. Es wird gezeigt, wie Sie ein PowerShell-Skript verwenden oder Dateien an einen Stagingspeicherort kopieren und von dort aus bereitstellen.
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 4a2f1f15de0abd802f3dce138b2cea33e52e3dfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8264fd53bde168972cdddd9bdf15fccc8d536651
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561941"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984462"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrieren von ARM-Vorlagen in Azure Pipelines
 
@@ -113,7 +113,7 @@ Sie können die aktuell laufende Pipeline auswählen, um Details zu den Aufgaben
 
 ## <a name="copy-and-deploy-tasks"></a>Aufgaben zum Kopieren und Bereitstellen
 
-In diesem Abschnitt wird gezeigt, wie Sie Continuous Deployment mithilfe von zwei Aufgaben konfigurieren. Die erste Aufgabe stellt die Artefakte in einem Speicherkonto bereit, und die zweite Aufgabe stellt die Vorlage bereit.
+In diesem Abschnitt erfahren Sie, wie Sie Continuous Deployment mithilfe von zwei Aufgaben konfigurieren. Die erste Aufgabe stellt die Artefakte in einem Speicherkonto bereit, die zweite Aufgabe stellt die Vorlage bereit.
 
 Um Dateien in ein Speicherkonto zu kopieren, muss dem Dienstprinzipal für die Dienstverbindung die Rolle „Mitwirkender von Speicherblobdaten“ oder „Besitzer von Speicherblobdaten“ zugewiesen werden. Weitere Informationen finden Sie unter [Erste Schritte mit AzCopy](../../storage/common/storage-use-azcopy-v10.md).
 

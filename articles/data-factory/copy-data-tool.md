@@ -4,14 +4,14 @@ description: Stellt Informationen zum Tool zum Kopieren von Daten der Benutzerob
 author: dearandyxu
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 06/01/2021
 ms.author: yexu
-ms.openlocfilehash: 18d61c7f51547a524e64fc44c98e70e0f5bc2752
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68bfa62817d971ce8c8127f44f43576431a499fc
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100372993"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371872"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Tool zum Kopieren von Daten in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -54,7 +54,7 @@ Sie können einen Teil der Daten aus dem ausgewählten Quelldatenspeicher als Vo
 
 ![Dateieinstellungen](./media/copy-data-tool/file-format-settings.png)
 
-Nach der Erkennung:
+Wählen Sie nach der Erkennung **Datenvorschau** aus:
 
 ![Erkannte Dateieinstellungen und Vorschau](./media/copy-data-tool/after-detection.png)
 
@@ -88,7 +88,7 @@ Angenommen, Sie haben Eingabeordner im folgenden Format:
 
 Klicken Sie auf die Schaltfläche **Durchsuchen** für **Datei oder Ordner**, navigieren Sie zu einem der Ordner (z.B. 2016->03->01->02), und klicken Sie auf **Auswählen**. Das Textfeld sollte jetzt „2016/03/01/02“ enthalten. 
 
-Ersetzen Sie nun **2016** durch **{year}** , **03** durch **{month}** , **01** durch **{day}** , **02** durch **{hour}** , und drücken Sie dann die **TAB**-TASTE. Daraufhin werden Dropdownlisten zum Auswählen des Formats für diese vier Variablen angezeigt:
+Ersetzen Sie nun **2016** durch **{year}** , **03** durch **{month}** , **01** durch **{day}** , **02** durch **{hour}** , und drücken Sie dann die **TAB**-TASTE. Wenn Sie **Inkrementelles Laden: nach Zeit eingeteilte Ordner-/Dateinamen** im Abschnitt **Dateiladeverhalten** auswählen und **Zeitplan** oder **Rollierendes Fenster** auf der Seite **Eigenschaften** auswählen, sollten Dropdownlisten angezeigt werden, um das Format für diese vier Variablen auszuwählen:
 
 ![Filtern von Dateien oder Ordnern](./media/copy-data-tool/filter-file-or-folder.png)
 

@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 8d51297b353a72861f864e42bf87cad4f1a712b3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d2754200cb41114aafbe1bea2b511ed743280b88
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747195"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061190"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -82,9 +82,11 @@ Zum Erstellen einer Gerätevorlage in IoT Central führen Sie die folgenden Schr
 
 ## <a name="manage-a-device-template"></a>Verwalten einer Gerätevorlage
 
-Sie können eine Vorlage auf der jeweiligen Startseite umbenennen oder löschen.
+Sie können eine Vorlage auf der jeweiligen Editor-Seite umbenennen oder löschen.
 
-Nachdem Sie Ihrer Vorlage ein Gerätemodell hinzugefügt haben, können Sie sie veröffentlichen. Erst nachdem Sie die Vorlage veröffentlicht haben, können Sie ein Gerät basierend auf dieser Vorlage verbinden, damit es den Bedienern auf der Seite **Geräte** angezeigt wird.
+Nachdem Sie die Vorlage definiert haben, können Sie sie veröffentlichen. Bis die Vorlage veröffentlicht wurde, können Sie kein Gerät damit verbinden, und das Gerät wird auf der Seite **Geräte** nicht angezeigt.
+
+Weitere Informationen zum Ändern von Gerätevorlagen finden Sie unter [Bearbeiten einer vorhandenen Gerätevorlage](howto-edit-device-template.md).
 
 ## <a name="create-a-capability-model"></a>Erstellen eines Funktionsmodells
 
@@ -171,6 +173,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Befehlsf
 | Anzeigename | Der Anzeigename für den Befehl, der in Ansichten und Formularen verwendet wird. |
 | Name | Der Name des Befehls. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. Dieses Feld muss alphanumerisch sein. |
 | Funktionstyp | Befehl. |
+| Warteschlange (wenn offline) | Wenn diese Option aktiviert ist, können Sie den Befehl sogar dann aufrufen, wenn das Gerät offline ist. Wenn sie nicht aktiviert ist, können Sie den Befehl nur aufrufen, wenn das Gerät online ist. |
 | Comment | Beliebige Kommentare zur Befehlsfunktion. |
 | BESCHREIBUNG | Eine Beschreibung der Befehlsfunktion. |
 | Anforderung | Wenn aktiviert, eine Definition des Anforderungsparameters, einschließlich Name, Anzeigename, Schema, Einheit und Anzeigeeinheit. |
@@ -195,9 +198,11 @@ Cloud-zu-Gerät-Nachrichten:
 
 ## <a name="manage-a-component"></a>Verwalten einer Komponente
 
-Wenn Sie die Komponente noch nicht veröffentlicht haben, können Sie die durch die Komponente definierten Funktionen bearbeiten. Nach dem Veröffentlichen der Komponente müssen Sie eine neue Version der Gerätevorlage und eine neue [Version der Komponente](howto-version-device-template.md) erstellen, wenn Sie Änderungen vornehmen möchten. Änderungen, für die keine Versionsangabe erforderlich ist (z. B. Anzeigenamen oder Einheiten), können Sie im Abschnitt **Anpassen** vornehmen.
+Verwenden Sie Komponenten, um eine Gerätevorlage aus anderen Schnittstellen zusammenzustellen. Die Gerätevorlage für einen Temperaturcontroller beispielsweise könnte mehrere Thermostatkomponenten enthalten. Komponenten können direkt in der Gerätevorlage bearbeitet oder als JSON-Dateien exportiert und importiert werden. Geräte können mit Komponenteninstanzen interagieren. Beispielsweise kann ein Gerät mit zwei Thermostaten Telemetriedaten von jedem Thermostat an separate Komponenten in Ihrer IoT Central-Anwendung senden.
 
-Sie können die Komponente auch als JSON-Datei exportieren, wenn Sie sie in einem anderen Funktionsmodell wiederverwenden möchten.
+## <a name="inheritance"></a>Vererbung
+
+Sie können eine Schnittstelle mithilfe von Vererbung erweitern. Mithilfe von Vererbung können Sie auch vorhandenen Schnittstellen Funktionen hinzufügen. Geerbte Schnittstellen sind für Geräte transparent.
 
 ## <a name="add-cloud-properties"></a>Hinzufügen von Cloudeigenschaften
 
@@ -214,13 +219,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Cloudeig
 
 ## <a name="add-customizations"></a>Hinzufügen von Anpassungen
 
-Verwenden Sie Anpassungen, wenn Sie eine importierte Komponente ändern oder IoT Central-spezifische Features einer Funktion hinzufügen müssen. Sie können nur Felder anpassen, die die Komponentenkompatibilität nicht beeinträchtigen. Beispielsweise können Sie folgende Aktionen ausführen:
-
-- Anpassen des Anzeigenamens und der Einheiten einer Funktion
-- Hinzufügen einer Standardfarbe, die beim Anzeigen des Werts in einem Diagramm verwendet werden soll
-- Angeben der anfänglichen, minimalen und maximalen Werte für eine Eigenschaft
-
-(Der Funktionsname oder -typ kann nicht angepasst werden.) Wenn Änderungen vorgenommen werden müssen, die im Abschnitt **Anpassen** nicht möglich sind, müssen Sie die Gerätevorlage und Komponente mit einer Versionsangabe versehen, um die Funktion zu ändern.
+Verwenden Sie Anpassungen, wenn Sie eine importierte Komponente ändern oder IoT Central-spezifische Features einer Funktion hinzufügen müssen. Sie können jeden beliebigen Teil der Funktionen einer vorhandenen Gerätevorlage anpassen.
 
 ### <a name="generate-default-views"></a>Generieren von Standardansichten
 
@@ -274,7 +273,7 @@ Zum Hinzufügen eines Formulars zu einer Gerätevorlage führen Sie die folgende
 
 Bevor Sie eine Verbindung mit einem Gerät herstellen können, das Ihr Gerätemodell implementiert, müssen Sie die Gerätevorlage veröffentlichen.
 
-Nachdem Sie eine Gerätevorlage veröffentlicht haben, können Sie nur eingeschränkte Änderungen am Gerätemodell vornehmen. Zum Ändern einer Komponente müssen Sie [eine neue Version erstellen und veröffentlichen](./howto-version-device-template.md).
+Weitere Informationen zum Ändern einer Gerätevorlage nach deren Veröffentlichung finden Sie unter [Bearbeiten einer vorhandenen Gerätevorlage](howto-edit-device-template.md).
 
 Wenn Sie eine Gerätevorlage veröffentlichen möchten, navigieren Sie zu der Gerätevorlage, und wählen Sie **Veröffentlichen** aus.
 
@@ -282,4 +281,4 @@ Nachdem Sie eine Gerätevorlage veröffentlicht haben, kann ein Bediener zur Sei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Als Nächstes sollten Sie sich über die [Versionsverwaltung für Gerätevorlagen](./howto-version-device-template.md) informieren.
+Als Nächstes sollten Sie sich zum Thema [Vornehmen von Änderungen an einer vorhandenen Gerätevorlage](howto-edit-device-template.md) informieren.

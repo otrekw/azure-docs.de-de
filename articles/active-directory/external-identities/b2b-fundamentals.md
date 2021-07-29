@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fd488ceb7ddb3724dd576c97c9070481e95147
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddb2a002969b031f25dae2511d679cc520928ff6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100365632"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737781"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Best Practices für B2B-Funktionen in Azure Active Directory
 Dieser Artikel enthält Empfehlungen und Best Practices für die B2B-Zusammenarbeit (Business-to-Business) in Azure Active Directory (Azure AD).
@@ -29,7 +29,7 @@ Dieser Artikel enthält Empfehlungen und Best Practices für die B2B-Zusammenarb
 ## <a name="b2b-recommendations"></a>B2B-Empfehlungen
 | Empfehlung | Kommentare |
 | --- | --- |
-| Um für ein optimales Benutzererlebnis bei der Anmeldung zu sorgen, erstellen Sie einen Verbund mit Identitätsanbietern. | Erstellen Sie nach Möglichkeit einen direkten Verbund mit Identitätsanbietern, um eingeladenen Benutzern die Anmeldung bei Ihren freigegebenen Apps und Ressourcen zu ermöglichen, ohne dass sie Microsoft-Konten (Microsoft Accounts, MSAs) oder Azure AD-Konten erstellen müssen. Sie können das [Feature zum Erstellen eines Verbunds mit Google](google-federation.md) verwenden, um B2B-Gastbenutzern die Anmeldung mit ihren Google-Konten zu ermöglichen. Alternativ dazu können Sie das [Feature für das Erstellen eines direkten Verbunds (Vorschau)](direct-federation.md) verwenden, um einen direkten Verbund mit jeder Organisation einzurichten, deren Identitätsanbieter (Identity Provider, IdP) das SAML 2.0- oder WS-Federation-Protokoll unterstützt. |
+| Um für ein optimales Benutzererlebnis bei der Anmeldung zu sorgen, erstellen Sie einen Verbund mit Identitätsanbietern. | Erstellen Sie nach Möglichkeit einen direkten Verbund mit Identitätsanbietern, um eingeladenen Benutzern die Anmeldung bei Ihren freigegebenen Apps und Ressourcen zu ermöglichen, ohne dass sie Microsoft-Konten (Microsoft Accounts, MSAs) oder Azure AD-Konten erstellen müssen. Sie können das [Feature zum Erstellen eines Verbunds mit Google](google-federation.md) verwenden, um B2B-Gastbenutzern die Anmeldung mit ihren Google-Konten zu ermöglichen. Alternativ dazu können Sie das [Feature für einen SAML/WS-Fed-Identitätsanbieter (Vorschau)](direct-federation.md) verwenden, um einen Verbund mit einer beliebigen Organisation einzurichten, deren Identitätsanbieter das SAML 2.0- oder WS-Fed-Protokoll unterstützt. |
 | Verwenden Sie das Feature für das Senden einer Einmalkennung per E-Mail für B2B-Gastbenutzer, die sich nicht auf andere Weise authentifizieren können. | Mit dem Feature [Einmalkennung per E-Mail](one-time-passcode.md) werden B2B-Gastbenutzer authentifiziert, wenn sie über andere Wege (z. B. über Azure AD, ein Microsoft-Konto (MSA) oder den Verbund mit Google) nicht authentifiziert werden können. Wenn der Gastbenutzer eine Einladung einlöst oder auf eine freigegebene Ressource zugreift, kann er einen temporären Code anfordern, der an seine E-Mail-Adresse gesendet wird. Anschließend gibt er diesen Code ein, um den Anmeldevorgang fortzusetzen. |
 | Hinzufügen eines Unternehmensbrandings zu Ihrer Anmeldeseite | Sie können Ihre Anmeldeseite anpassen, damit sie für B2B-Gastbenutzer intuitiver ist. Informationen dazu finden Sie unter [Hinzufügen von Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite](../fundamentals/customize-branding.md). |
 | Fügen Sie Ihre Datenschutzerklärung zum Einlösungsprozess der B2B-Gastbenutzer hinzu. | Sie können die URL zur Datenschutzerklärung Ihrer Organisation in den Prozess zum Einlösen einer Einladung einfügen, sodass ein eingeladener Benutzer diesen Bestimmungen zustimmen muss, um fortfahren zu können. Weitere Informationen finden Sie unter [Vorgehensweise: Hinzufügen der Datenschutzinformationen mit Azure Active Directory](../fundamentals/active-directory-properties-area.md). |

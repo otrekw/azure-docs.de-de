@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 92f9c3baaa8260bdc154f8752b56a63cf1444ebe
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7359dc8199c01bae7f7463b83079193397e40519
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140405"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072890"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -109,6 +109,12 @@ Der Besitzer der Private Link-Ressource kann über eine private Endpunktverbindu
  
 > [!NOTE]
 > Nur ein privater Endpunkt im genehmigten Zustand kann Datenverkehr an eine angegebene Private Link-Ressource senden. 
+
+### <a name="rbac-permissions"></a>RBAC-Berechtigungen
+
+Im Folgenden finden Sie spezifische RBAC-Berechtigungen, die der Benutzer benötigt, um einen privaten Endpunkt erstellen zu können. Weitere Informationen zu benutzerdefinierten Rollen finden Sie unter [Schritte zum Erstellen einer benutzerdefinierten Rolle](/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role).
+
+Microsoft.Resources/deployments/* Microsoft.Resources/subscriptions/resourcegroups/resources/read Microsoft.Network/virtualNetworks/read Microsoft.Network/virtualNetworks/subnets/read Microsoft.Network/virtualNetworks/subnets/write Microsoft.Network/virtualNetworks/subnets/join/action Microsoft.Network/privateEndpoints/read Microsoft.Network/privateEndpoints/write Microsoft.Network/locations/availablePrivateEndpointTypes/read
 
 ### <a name="connecting-using-alias"></a>Verbindungsherstellung per Alias
 Der Alias ist ein eindeutiger Moniker, der generiert wird, wenn der Dienstbesitzer den Private Link-Dienst hinter einem Standardlastenausgleich erstellt. Der Dienstbesitzer kann diesen Alias mit seinen Consumern offline gemeinsam nutzen. Verbraucher können eine Verbindung mit dem Private Link-Dienst anfordern, indem sie entweder den Ressourcen-URI oder Alias verwenden. Wenn Sie eine Verbindung per Alias herstellen möchten, müssen Sie einen privaten Endpunkt mithilfe der manuellen Verbindungsgenehmigungsmethode erstellen. Um die manuelle Verbindungsgenehmigungsmethode zu verwenden, legen Sie den Parameter für die manuelle Anforderung während des Flows zum Erstellen eines privaten Endpunkts auf TRUE fest. Ausführliche Informationen finden Sie unter [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) und [az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create). 

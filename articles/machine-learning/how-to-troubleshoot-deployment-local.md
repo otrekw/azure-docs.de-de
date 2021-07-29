@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 69ac47296cb4624de6cdf05ddb3e72973751f631
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b2acc37efb497748abe5f63bd58e96b16171b21
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519621"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538394"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>Behandeln von Problemen mit einer lokalen Modellimplementierung
 
@@ -33,6 +33,31 @@ Versuchen Sie es bei der Problembehandlung im Zusammenhang mit der Bereitstellun
    * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
    * Eine funktionierende Installation von Docker auf Ihrem lokalen System. 
    * Verwenden Sie den Befehl `docker run hello-world` über ein Terminal oder eine Befehlszeile, um Ihre Docker-Installation zu überprüfen. Informationen zur Installation von Docker oder zur Problembehandlung bei Docker-Fehlern finden Sie in der [Docker-Dokumentation](https://docs.docker.com/).
+* Option C: Aktivieren des lokalen Debuggens mit einem HTTP-Rückschlussserver für Azure Machine Learning.
+    * Der HTTP-Rückschlussserver von Azure Machine Learning [(Vorschau)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ist ein Python-Paket, mit dem Sie Ihr Einstiegsskript (`score.py`) in einer lokalen Entwicklungsumgebung problemlos überprüfen können. Wenn ein Problem mit dem Bewertungsskript vorliegt, gibt der Server einen Fehler zurück. Außerdem wird die Position zurückgegeben, an der der Fehler aufgetreten ist.
+    * Der Server kann auch verwendet werden, wenn Validierungsgates in einer Pipeline für Continuous Integration und Continuous Deployment erstellt werden. Starten Sie z. B. den Server mit dem Kandidatenskript, und führen Sie die Testsammlung für den lokalen Endpunkt aus.
+
+## <a name="azure-machine-learning-inference-http-server"></a>HTTP-Rückschlussserver für Azure Machine Learning
+
+Mit dem lokalen Rückschlussserver können Sie Ihr Eingabeskript (`score.py`) schnell debuggen. Falls das zugrunde liegende Bewertungsskript einen Fehler enthält, kann der Server das Modell nicht initialisieren oder bereitstellen. Stattdessen wird eine Ausnahme ausgelöst und der Ort angegeben, an dem die Probleme aufgetreten sind. [Weitere Informationen zum HTTP-Rückschlussserver von Azure Machine Learning](how-to-inference-server-http.md)
+
+1. Installieren Sie das `azureml-inference-server-http`-Paket aus dem [pypi](https://pypi.org/)-Feed:
+
+    ```bash
+    python -m pip install azureml-inference-server-http
+    ```
+
+2. Starten Sie den Server, und legen Sie `score.py` als Einstiegsskript fest:
+
+    ```bash
+    azmlinfsrv --entry_script score.py
+    ```
+
+3. Senden Sie eine Bewertungsanforderung mithilfe von `curl` an den Server:
+
+    ```bash
+    curl -p 127.0.0.1:5001/score
+    ```
 
 ## <a name="debug-locally"></a>Lokales Debuggen
 
@@ -128,6 +153,7 @@ Sie können den Fehler beheben, indem Sie den Wert von `memory_gb` in `deploymen
 Weitere Informationen zur Bereitstellung finden Sie hier:
 
 * [Problembehandlung bei Remotebereitstellungen](how-to-troubleshoot-deployment.md)
+* [HTTP-Rückschlussserver für Azure Machine Learning](how-to-inference-server-http.md)
 * [Bereitstellung: wie und wo?](how-to-deploy-and-where.md)
 * [Tutorial: Trainieren und Bereitstellen von Modellen](tutorial-train-models-with-aml.md)
 * [Lokales Ausführen und Debuggen von Experimenten](./how-to-debug-visual-studio-code.md)

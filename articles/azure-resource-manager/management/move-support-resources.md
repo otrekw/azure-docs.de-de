@@ -3,12 +3,12 @@ title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste der Azure-Ressourcentypen, die in eine neue Ressourcengruppe, ein neues Abonnement oder eine neue Region verschoben werden können.
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.openlocfilehash: 5a347a9041423c7e466499cdd65fe27e6623ab98
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 3a43ea09dd4986d1f2d0e2679e81f5b25b590f7e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737403"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968334"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -911,7 +911,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
 > | ------------- | ----------- | ---------- | ----------- |
 > | Controller | Ja | Ja | Nein |
-> | AKS-Cluster | **Ausstehend** | **Ausstehend** | Nein<br/><br/> [Weitere Informationen](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) zum Verschieben in eine andere Region.
+> | AKS-Cluster | **Ausstehend** | **Ausstehend** | Nein<br/><br/> [Weitere Informationen](../../dev-spaces/index.yml) zum Verschieben in eine andere Region.
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -1448,7 +1448,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | privateendpointredirectmaps | Nein | Nein | Nein |
 > | privateendpoints | Nein | Nein | Nein |
 > | privatelinkservices | Nein | Nein | Nein |
-> | publicipaddresses | Ja: Basic-SKU<br>Ja: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja<br/><br/> Verschieben Sie öffentliche IP-Adressen mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md). |
+> | publicipaddresses | Ja: Basic-SKU<br>Ja: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja<br/><br/> Verwenden Sie den [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) zum Verschieben der Konfigurationen öffentlicher IP-Adressen (IP-Adressen werden nicht beibehalten). |
 > | publicipprefixes | Ja | Ja | Nein |
 > | routefilters | Nein | Nein | Nein |
 > | routetables | Ja | Ja | Nein |

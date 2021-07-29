@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 4ecbee2260da735cd6ba74d3b9ffb55b4a652e9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7466a2e620a9489fe7b3b69967388d3ad4b7ab85
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93341993"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065318"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Bereitstellen von Standarddurchsatz (manuell) für eine Datenbank in Azure Cosmos DB: SQL-API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,8 +31,10 @@ Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Bereits
 1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Datenbank** aus. Geben Sie die folgenden Details an:
 
    * Geben Sie eine Datenbank-ID ein.
-   * Wählen Sie die Option **Provision database throughput** (Datenbankdurchsatz bereitstellen) aus.
-   * Geben Sie einen Durchsatz ein (beispielsweise 1.000 RUs).
+   * Wählen Sie die Option **Durchsatz zwischen Containern freigeben** aus.
+   * Wählen Sie **Autoskalierung** oder **Manuell** für den Durchsatz aus, und geben Sie den erforderlichen **Datenbankdurchsatz** ein (z. B. 1000 RU/s).
+   * Geben Sie unter **Container-ID** einen Namen für den Container ein.
+   * Geben Sie einen **Partitionsschlüssel** ein.
    * Klicken Sie auf **OK**.
 
     :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="Screenshot: Dialogfeld „Neue Datenbank“":::

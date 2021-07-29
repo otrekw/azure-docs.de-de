@@ -4,16 +4,16 @@ description: In diesem Artikel werden grundlegende Diagnoseverfahren für Azure 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/01/2021
+ms.date: 05/04/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6fa49af946a1e5fc631eeb1ee9b9c7c99d3adff8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0ab6ddcf3566164746dce8e0b9ff4b4a2aa32b84
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308267"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537975"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Behandeln von Problemen bei Ihrem IoT Edge-Gerät
 
@@ -113,7 +113,15 @@ sudo iotedge support-bundle --since 6h
 :::moniker-end
 <!-- end 1.2 -->
 
-Sie können auch einen Aufruf der [direkten Methode](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) für das Gerät verwenden, um die Ausgabe des Befehls „support-bundle“ in Azure Blob Storage hochzuladen.
+Standardmäßig erstellt der Befehl `support-bundle` in dem Verzeichnis, in dem er aufgerufen wird, die ZIP-Datei **support_bundle.zip**. Wenn Sie einen anderen Pfad oder Dateinamen für die Ausgabe angeben möchten, verwenden Sie das Flag `--output`.
+
+Weitere Informationen zum Befehl können Sie in den zugehörigen Hilfeinformationen anzeigen.
+
+```bash/cmd
+iotedge support-bundle --help
+```
+
+Sie können auch die Ausgabe des Befehls „support-bundle“ mithilfe des integrierten direkten Methodenaufrufs [UploadSupportBundle](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) in Azure Blob Storage hochladen.
 
 > [!WARNING]
 > Die Ausgabe des Befehls `support-bundle` kann Host-, Geräte- und Modulnamen, von ihren Modulen protokollierte Informationen usw. enthalten. Beachten Sie dies bitte, wenn Sie die Ausgabe in einem öffentlichen Forum freigeben.
@@ -131,7 +139,7 @@ Sie können die Installation von IoT Edge auf Ihren Geräten überprüfen, indem
 Führen Sie den folgenden Befehl in [Azure Cloud Shell](https://shell.azure.com/) aus, um den neuesten edgeAgent-Modulzwilling abzurufen:
 
    ```azurecli-interactive
-   az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
+   az iot hub module-twin show --device-id <edge_device_id> --module-id '$edgeAgent' --hub-name <iot_hub_name>
    ```
 
 Mit diesem Befehl werden alle [gemeldeten edgeAgent-Eigenschaften](./module-edgeagent-edgehub.md) ausgegeben. Hier einige nützliche Eigenschaften zum Überwachen des Gerätestatus:
@@ -259,11 +267,32 @@ Unter Windows:
 
 Sobald der IoT Edge-Sicherheits-Daemon ausgeführt wird, sehen Sie sich die Protokolle der Container an, um Probleme zu erkennen. Beginnen Sie mit den bereitgestellten Containern, und sehen Sie sich dann die Container der IoT Edge-Runtime an: „edgeAgent“ und „edgeHub“. Die IoT Edge-Agent-Protokolle bieten in der Regel Informationen zum Lebenszyklus der einzelnen Container. Die IoT Edge-Hub-Protokolle bieten Informationen zu Messaging und Routing.
 
+Sie können die Containerprotokolle von mehreren Stellen abrufen:
+
+* Führen Sie auf dem IoT Edge-Gerät den folgenden Befehl zum Anzeigen von Protokollen aus:
+
+  ```cmd
+  iotedge logs <container name>
+  ```
+
+* Verwenden Sie im Azure-Portal das integrierte Problembehandlungstool. [Überwachen und Beheben von Problemen bei IoT Edge-Geräten über das Azure-Portal](troubleshoot-in-portal.md)
+
+* Sie können die Protokolle eines Moduls in Azure Blob Storage mithilfe der [direkten Methode „UploadModuleLogs“](how-to-retrieve-iot-edge-logs.md#upload-module-logs) in Azure Blob Storage hochladen.
+
+## <a name="clean-up-container-logs"></a>Bereinigen von Containerprotokollen
+
+Standardmäßig legt die Moby-Containerengine keine Grenzwerte für die Größe des Containerprotokolls fest. Im Laufe der Zeit kann dies dazu führen, dass das Gerät mit Protokollen überfüllt wird und nicht genügend Speicherplatz auf dem Datenträger zur Verfügung steht. Wenn sich große Containerprotokolle auf die Leistung Ihres IoT Edge-Geräts auswirken, können Sie mit dem folgenden Befehl das Entfernen des Containers zusammen mit den zugehörigen Protokollen erzwingen.
+
+Wenn Sie noch die Problembehandlung durchführen, warten Sie, bis Sie die Containerprotokolle überprüft haben, bevor Sie diesen Schritt ausführen.
+
+>[!WARNING]
+>Wenn Sie erzwingen, dass der edgeHub-Container entfernt wird, während er ein nicht zugestelltes Nachrichtenbacklog enthält und kein [Hostspeicher](how-to-access-host-storage-from-module.md) eingerichtet wurde, gehen die nicht zugestellten Nachrichten verloren.
+
 ```cmd
-iotedge logs <container name>
+docker rm --force <container name>
 ```
 
-Sie können auch einen Aufruf der [direkten Methode](how-to-retrieve-iot-edge-logs.md#upload-module-logs) für ein Modul auf dem Gerät verwenden, um die Protokolle des Moduls in Azure Blob Storage hochzuladen.
+Deshalb sollten Sie bei laufenden Protokollwartungs- und Produktionsszenarien [Grenzwerte für die Protokollgröße festlegen](production-checklist.md#place-limits-on-log-size).
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Anzeigen der Nachrichten, die den IoT Edge-Hub durchlaufen
 
@@ -334,7 +363,9 @@ Sie können auch die Nachrichten überprüfen, die zwischen IoT Hub und den IoT-
 
 ## <a name="restart-containers"></a>Neustarten von Containern
 
-Nachdem Sie die Protokolle und Nachrichten auf Informationen untersucht haben, können Sie versuchen, die Container neu zu starten:
+Nachdem Sie die Protokolle und Nachrichten auf Informationen untersucht haben, können Sie einen Neustart der Container versuchen.
+
+Verwenden Sie auf dem IoT Edge-Gerät die folgenden Befehle zum Neustart von Modulen:
 
 ```cmd
 iotedge restart <container name>
@@ -345,6 +376,8 @@ Starten Sie die IoT Edge-Runtime-Container neu:
 ```cmd
 iotedge restart edgeAgent && iotedge restart edgeHub
 ```
+
+Sie können Module auch remote über das Azure-Portal neu starten. Weitere Informationen finden Sie unter [Überwachen und Beheben von Problemen bei IoT Edge-Geräten über das Azure-Portal](troubleshoot-in-portal.md).
 
 ## <a name="check-your-firewall-and-port-configuration-rules"></a>Überprüfen der Konfigurationsregeln für Firewall und Port
 

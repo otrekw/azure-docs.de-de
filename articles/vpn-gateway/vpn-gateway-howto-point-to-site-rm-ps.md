@@ -1,21 +1,22 @@
 ---
-title: 'Herstellen einer Verbindung mit einem VNET von einem Computer – P2S-VPN und native Azure-Zertifikatauthentifizierung: PowerShell'
+title: 'Herstellen einer Verbindung mit einem VNET von einem Computer – P2S-VPN und Azure-Zertifikatauthentifizierung: PowerShell'
 description: Erfahren Sie, wie Sie Windows- und macOS-Clients über P2S sowie selbstsignierte oder von einer Zertifizierungsstelle ausgestellte Zertifikate sicher mit einem virtuellen Azure-Netzwerk verbinden.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 06/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: cf1cd8eb2d9723d435f277b9c029b15c843b9afd
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 98a8a16a4b9cdf40642e5339de63953b4175f78c
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226388"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558672"
 ---
-# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung mit einem VNET unter Verwendung der nativen Azure-Zertifikatauthentifizierung: PowerShell
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-azure-certificate-authentication-powershell"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung mit einem VNET unter Verwendung der Azure-Zertifikatauthentifizierung: PowerShell
 
 Dieser Artikel enthält Informationen zum sicheren Verbinden von einzelnen Clients unter Windows, Linux oder macOS mit einem Azure-VNET. P2S-VPN-Verbindungen (Point-to-Site) sind nützlich, wenn Sie an einem Remotestandort (beispielsweise bei der Telearbeit zu Hause oder in einer Konferenz) eine Verbindung mit Ihrem VNET herstellen möchten. Sie können anstelle einer Site-to-Site-VPN-Verbindung auch P2S verwenden, wenn nur einige wenige Clients eine Verbindung mit einem VNET herstellen müssen. P2S-Verbindungen erfordern weder ein VPN-Gerät noch eine öffentliche IP-Adresse. P2S erstellt die VPN-Verbindung entweder über SSTP (Secure Socket Tunneling Protocol) oder IKEv2.
 
@@ -37,11 +38,11 @@ Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="1-sign-in"></a><a name="signin"></a>1. Anmelden
+## <a name="sign-in"></a><a name="signin"></a>Anmelden
 
 [!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
-## <a name="2-declare-variables"></a><a name="declare"></a>2. Deklarieren von Variablen
+## <a name="declare-variables"></a><a name="declare"></a>Deklarieren von Variablen
 
 In diesem Artikel werden Variablen verwendet, sodass Sie die Werte problemlos an Ihre eigene Umgebung anpassen können, ohne die Beispiele selbst ändern zu müssen. Deklarieren Sie die gewünschten Variablen. Sie können das unten gezeigte Beispiel verwenden und die Werte nach Bedarf durch Ihre eigenen ersetzen. Wenn Sie Ihre PowerShell-/Cloud Shell-Sitzung zu einem beliebigen Zeitpunkt während der Übung schließen, kopieren Sie einfach die Werte noch mal, und fügen Sie sie ein, um die Variablen erneut zu deklarieren.
 
@@ -61,7 +62,7 @@ $GWIPconfName = "gwipconf"
 $DNS = "10.2.1.4"
 ```
 
-## <a name="3-configure-a-vnet"></a><a name="ConfigureVNet"></a>3. Konfigurieren eines VNET
+## <a name="create-a-vnet"></a><a name="ConfigureVNet"></a>Erstellen eines VNET
 
 1. Erstellen Sie eine Ressourcengruppe.
 
@@ -106,12 +107,12 @@ $DNS = "10.2.1.4"
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="4-create-the-vpn-gateway"></a><a name="creategateway"></a>4. Erstellen des VPN-Gateways
+## <a name="create-the-vpn-gateway"></a><a name="creategateway"></a>Erstellen des VPN-Gateways
 
 In diesem Schritt konfigurieren und erstellen Sie das Gateway des virtuellen Netzwerks für Ihr VNET.
 
 * „-GatewayType“ muss **Vpn** und „-VpnType“ muss **RouteBased** lauten.
-* Mit „-VpnClientProtocol“ werden die Tunnelarten angegeben, die Sie aktivieren möchten. Die Tunneloptionen lauten **OpenVPN, SSTP** und **IKEv2**. Sie können eine dieser beiden Optionen oder jede unterstützte Kombination aktivieren. Wenn Sie mehrere Typen aktivieren möchten, geben Sie die Namen mit Kommas als Trennzeichen an. OpenVPN und SSTP können nicht zusammen aktiviert werden. Der strongSwan-Client unter Android und Linux und der native IKEv2-VPN-Client unter iOS und OSX verwenden nur den IKEv2-Tunnel für die Verbindungsherstellung. Windows-Clients probieren zunächst IKEv2. Wird keine Verbindung hergestellt, verwenden sie SSTP. Sie können den OpenVPN-Client verwenden, um eine Verbindung mit dem OpenVPN-Tunneltyp herzustellen.
+* Mit „-VpnClientProtocol“ werden die Tunnelarten angegeben, die Sie aktivieren möchten. Die Tunneloptionen lauten **OpenVPN, SSTP** und **IKEv2**. Sie können eine dieser beiden Optionen oder jede unterstützte Kombination aktivieren. Wenn Sie mehrere Typen aktivieren möchten, geben Sie die Namen mit Kommas als Trennzeichen an. OpenVPN und SSTP können nicht zusammen aktiviert werden. Der strongSwan-Client unter Android und Linux und der native IKEv2-VPN-Client unter iOS und macOS verwenden nur den IKEv2-Tunnel für die Verbindungsherstellung. Windows-Clients probieren zunächst IKEv2. Wird keine Verbindung hergestellt, verwenden sie SSTP. Sie können den OpenVPN-Client verwenden, um eine Verbindung mit dem OpenVPN-Tunneltyp herzustellen.
 * Die Basic-SKU des virtuellen Netzwerkgateways unterstützt weder IKEv2-, noch OpenVPN- noch RADIUS-Authentifizierung. Wenn Sie planen, Verbindungen von Mac-Clients mit Ihrem virtuellen Netzwerk zuzulassen, sollten Sie nicht die Basic-SKU verwenden.
 * Je nach ausgewählter [Gateway-SKU](vpn-gateway-about-vpn-gateway-settings.md) kann die Erstellung eines VPN-Gateways bis zu 45 Minuten dauern. In diesem Beispiel wird IKEv2 verwendet.
 
@@ -129,7 +130,7 @@ In diesem Schritt konfigurieren und erstellen Sie das Gateway des virtuellen Net
    Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroup $RG
    ```
 
-## <a name="5-add-the-vpn-client-address-pool"></a><a name="addresspool"></a>5. Hinzufügen des VPN-Clientadresspools
+## <a name="add-the-vpn-client-address-pool"></a><a name="addresspool"></a>Hinzufügen des VPN-Clientadresspools
 
 Nachdem das VPN-Gateway erstellt wurde, können Sie den VPN-Clientadresspool hinzufügen. Der Adresspool des VPN-Clients ist der Bereich, aus dem die VPN-Clients bei der Verbindungsherstellung eine IP-Adresse erhalten. Verwenden Sie einen privaten IP-Adressbereich, der sich nicht mit dem lokalen Standort überschneidet, aus dem Sie Verbindungen herstellen möchten. Der Bereich darf sich auch nicht mit dem VNET überschneiden, mit dem Sie Verbindungen herstellen möchten.
 
@@ -140,7 +141,7 @@ $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPool $VPNClientAddressPool
 ```
 
-## <a name="6-generate-certificates"></a><a name="Certificates"></a>6. Generieren von Zertifikaten
+## <a name="generate-certificates"></a><a name="Certificates"></a>Generieren von Zertifikaten
 
 >[!IMPORTANT]
 > Sie können über Azure Cloud Shell keine Zertifikate generieren. Sie müssen eine der in diesem Abschnitt beschriebenen Methoden verwenden. Wenn Sie PowerShell nutzen möchten, müssen Sie es lokal installieren.
@@ -162,7 +163,7 @@ Wenn Sie selbstsignierte Zertifikate verwenden, müssen diese anhand bestimmter 
 
 1. [Exportieren](vpn-gateway-certificates-point-to-site.md#clientexport) Sie das Clientzertifikat, nachdem Sie es erstellt haben. Das Clientzertifikat wird auf die Clientcomputer verteilt, die eine Verbindung herstellen.
 
-## <a name="7-upload-the-root-certificate-public-key-information"></a><a name="upload"></a>7. Hochladen der Informationen des öffentlichen Schlüssels des Stammzertifikats
+## <a name="upload-root-certificate-public-key-information"></a><a name="upload"></a>Hochladen von Informationen des öffentlichen Schlüssels des Stammzertifikats
 
 Vergewissern Sie sich, dass das VPN-Gateway erstellt wurde. Nach der Erstellung können Sie die CER-Datei (mit den Informationen zum öffentlichen Schlüssel) für ein vertrauenswürdiges Stammzertifikat in Azure hochladen. Nach dem Hochladen der CER-Datei kann Azure die Datei verwenden, um Clients zu authentifizieren, auf denen ein aus dem vertrauenswürdigen Stammzertifikat generiertes Clientzertifikat installiert ist. Sie können später bei Bedarf weitere vertrauenswürdige Stammzertifikate hochladen – bis zu 20 insgesamt.
 
@@ -190,7 +191,7 @@ Vergewissern Sie sich, dass das VPN-Gateway erstellt wurde. Nach der Erstellung 
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG1" -PublicCertData $CertBase64
    ```
 
-## <a name="8-install-an-exported-client-certificate"></a><a name="clientcertificate"></a>8. Installieren eines exportierten Clientzertifikats
+## <a name="install-an-exported-client-certificate"></a><a name="clientcertificate"></a>Installieren eines exportierten Clientzertifikats
 
 Mit den folgenden Schritten installieren Sie ein Clientzertifikat auf einem Windows-Client. Zusätzliche Clients und weitere Informationen finden Sie unter [Installieren eines Clientzertifikats](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
@@ -198,9 +199,9 @@ Mit den folgenden Schritten installieren Sie ein Clientzertifikat auf einem Wind
 
 Stellen Sie sicher, dass das Clientzertifikat zusammen mit der gesamten Zertifikatkette als PFX-Datei exportiert wurden (Standardeinstellung). Andernfalls sind die Stammzertifikatinformationen nicht auf dem Clientcomputer vorhanden, und der Client kann nicht ordnungsgemäß authentifiziert werden.
 
-## <a name="9-configure-the-vpn-client"></a><a name="clientconfig"></a>9. Konfigurieren des VPN-Clients
+## <a name="configure-the-vpn-client"></a><a name="clientconfig"></a>Konfigurieren des VPN-Clients
 
-In diesem Abschnitt konfigurieren Sie den nativen Client für Ihren Computer so, dass dieser eine Verbindung mit dem Gateway des virtuellen Netzwerks herstellen kann. Sie können beispielsweise in den VPN-Einstellungen Ihres Windows-Computers VPN-Verbindungen hinzufügen. Eine P2S-Verbindung erfordert bestimmte Konfigurationseinstellungen. Mit den folgenden Schritten erstellen Sie ein Paket mit den spezifischen Einstellungen, die Ihr nativer VPN-Client benötigt, um eine P2S-Verbindung mit dem virtuellen Netzwerk herstellen zu können.
+Um eine P2S-Verbindung mit dem Gateway des virtuellen Netzwerks herzustellen, verwendet jeder Computer den VPN-Client, der nativ als Teil des Betriebssystems installiert ist. Sie können beispielsweise in den VPN-Einstellungen Ihres Windows-Computers VPN-Verbindungen hinzufügen, ohne einen separaten VPN-Client zu installieren. Sie konfigurieren jeden VPN-Client mithilfe eines Clientkonfigurationspakets. Das Clientkonfigurationspaket enthält Einstellungen, die für das von Ihnen erstellte VPN-Gateway spezifisch sind. 
 
 Sie können die folgenden Kurzbeispiele verwenden, um das Clientkonfigurationspaket zu generieren und zu installieren. Weitere Informationen zu Paketinhalten sowie zusätzliche Anweisungen zum Generieren und Installieren von VPN-Clientkonfigurationsdateien finden Sie unter [Erstellen und Installieren von VPN-Clientkonfigurationsdateien](point-to-site-vpn-client-configuration-azure-cert.md).
 
@@ -229,7 +230,7 @@ $profile.VPNProfileSASUrl
 ### <a name="mac-vpn-client"></a>Mac-VPN-Client
 
 Navigieren Sie im Dialogfeld „Netzwerk“ zum gewünschten Clientprofil, und klicken Sie auf **Verbinden**.
-Ausführliche Anweisungen finden Sie unter [Installieren – Mac (OS X)](./point-to-site-vpn-client-configuration-azure-cert.md#installmac). Wenn beim Herstellen einer Verbindung Probleme auftreten, stellen Sie sicher, dass das Gateway des virtuellen Netzwerks nicht die Basic-SKU verwendet. Die Basic-SKU wird für Mac-Clients nicht unterstützt.
+Ausführliche Anweisungen finden Sie unter [Installieren – Mac (macOS)](./point-to-site-vpn-client-configuration-azure-cert.md#installmac). Wenn beim Herstellen einer Verbindung Probleme auftreten, stellen Sie sicher, dass das Gateway des virtuellen Netzwerks nicht die Basic-SKU verwendet. Die Basic-SKU wird für Mac-Clients nicht unterstützt.
 
   ![Mac-Verbindung](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 

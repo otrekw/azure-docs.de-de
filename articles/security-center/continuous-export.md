@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 06/13/2021
 ms.author: memildin
-ms.openlocfilehash: 3a64b385cbac972fd55eae5c341b4ecb7a431d5b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 96c83cf3ba127f88c3ea8d90f648e4c5a8ba9d66
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108732975"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062350"
 ---
 # <a name="continuously-export-security-center-data"></a>Fortlaufendes Exportieren von Security Center-Daten
 
@@ -42,7 +42,7 @@ In diesem Artikel wird erläutert, wie Sie den fortlaufenden Export in Log Analy
 |----|:----|
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Kostenlos|
-|Erforderliche Rollen und Berechtigungen:|<ul><li>**Sicherheitsadministrator** oder **Besitzer** für die Ressourcengruppe</li><li>Schreibberechtigungen für die Zielressource</li><li>Wenn Sie die unten beschriebenen „DeployIfNotExist“-Richtlinien von Azure Policy verwenden, benötigen Sie auch die Berechtigungen zum Zuweisen von Richtlinien.</li></ul>|
+|Erforderliche Rollen und Berechtigungen:|<ul><li>**Sicherheitsadministrator** oder **Besitzer** für die Ressourcengruppe</li><li>Schreibberechtigungen für die Zielressource</li><li>Wenn Sie die unten beschriebenen „DeployIfNotExist“-Richtlinien von Azure Policy verwenden, benötigen Sie auch die Berechtigungen zum Zuweisen von Richtlinien.</li><li>So exportieren Sie in einen Log Analytics-Arbeitsbereich<ul><li>Wenn er **über die SecurityCenterFree-Lösung verfügt**, benötigen Sie mindestens Leseberechtigungen für die Arbeitsbereichslösung: `Microsoft.OperationsManagement/solutions/read`</li><li>Wenn er **nicht über die SecurityCenterFree-Lösung verfügt**, benötigen Sie Schreibberechtigungen für die Arbeitsbereichslösung: `Microsoft.OperationsManagement/solutions/action`</li><li>Weitere Informationen zu [Azure Monitor und Log Analytics-Arbeitsbereichslösungen](../azure-monitor/insights/solutions.md)</li></ul></li></ul>|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov, andere Gov<br>![Ja](./media/icons/yes-icon.png) China Gov|
 |||
 
@@ -51,14 +51,16 @@ In diesem Artikel wird erläutert, wie Sie den fortlaufenden Export in Log Analy
 
 Die folgenden Datentypen können mithilfe des fortlaufende Exports exportiert werden, wenn sie sich ändern:
 
-- Sicherheitswarnungen
-- Sicherheitsempfehlungen 
-- Sicherheitsergebnisse, die Sie als „Unter“empfehlungen betrachten können, z. B. Ergebnisse von Sicherheitsrisikobewertungs-Prüfungen oder bestimmte Systemupdates. Sie können sie ohne ihre „übergeordneten“ Empfehlungen einschließen, z. B. „Auf Ihren Computern sollten Systemupdates installiert werden“.
-- Sicherheitsbewertung (pro Abonnement oder pro Kontrolle)
-- Daten zur Einhaltung gesetzlicher Bestimmungen
+- Sicherheitswarnungen.
+- Sicherheitsempfehlungen.
+- Sicherheitsergebnisse. Diese können als „untergeordnete“ Empfehlungen betrachtet werden, die zu einer „übergeordneten“ Empfehlung gehören. Beispiel:
+    - Die Empfehlung „Auf Ihren Computern müssen Systemupdates installiert werden“ verfügt über eine „untergeordnete“ Empfehlung für jedes ausstehende Systemupdate.
+    - Die Empfehlung „Sicherheitsrisiken in Ihren virtuellen Computern müssen beseitigt werden“ verfügt über eine „untergeordnete“ Empfehlung für jedes von der Überprüfung auf Sicherheitsrisiken identifizierte Sicherheitsrisiko.
+    > [!NOTE]
+    > Wenn Sie einen fortlaufenden Export mit der REST-API konfigurieren, schließen Sie immer das übergeordnete Element in die Ergebnisse ein. 
+- (Previewfunktion) Sicherheitsbewertung pro Abonnement oder pro Kontrollelement.
+- (Previewfunktion) Daten zur Einhaltung gesetzlicher Bestimmungen.
 
-> [!NOTE]
-> Der Export von Daten zur Sicherheitsbewertung und zur Einhaltung gesetzlicher Bestimmungen ist eine Previewfunktion. 
 
 ## <a name="set-up-a-continuous-export"></a>Einrichten eines fortlaufenden Exports 
 
@@ -80,7 +82,7 @@ Die folgenden Schritte sind unabhängig davon erforderlich, ob Sie einen fortlau
 
 1. Wählen Sie den Datentyp, den Sie exportieren möchten, und dann Filter für die einzelnen Typen aus (z. B. nur Warnungen mit hohem Schweregrad exportieren).
 1. Wählen Sie die gewünschte Exporthäufigkeit aus:
-    - **Streaming:** Bewertungen werden in Echtzeit gesendet, wenn der Integritätszustand einer Ressource aktualisiert wird (wenn keine Updates durchgeführt werden, werden keine Daten gesendet).
+    - **Streaming**: Bewertungen werden gesendet, wenn der Integritätszustand einer Ressource aktualisiert wird (wenn keine Updates durchgeführt werden, werden keine Daten gesendet).
     - **Momentaufnahmen:** Einmal pro Woche wird eine Momentaufnahme des aktuellen Zustands aller Bewertungen der Einhaltung gesetzlicher Bestimmungen gesendet. (Dies ist eine Previewfunktion für wöchentliche Momentaufnahmen der Daten für Sicherheitsbewertungen und die Einhaltung gesetzlicher Bestimmungen.)
 
 1. Wenn Ihre Auswahl eine dieser Empfehlungen enthält, können Sie optional die Ergebnisse der Sicherheitsrisikobewertung mit aufnehmen:

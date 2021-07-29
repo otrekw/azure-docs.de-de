@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: c70ecc4fc5469d728bc12d47024585ccf00ff98e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bed5c6b1b1cf21de0105e0eeb2096d359177c115
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098705"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814998"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Scala- und Java-Paketen für Apache Spark in Azure Synapse Analytics
 
@@ -45,7 +45,7 @@ So fügen Sie Arbeitsbereichspakete hinzu
 ## <a name="pool-libraries"></a>Poolbibliotheken
 Nachdem Sie die Scala- und Java-Pakete identifiziert haben, die Sie für Ihre Spark-Anwendung verwenden möchten, können Sie diese Pakete in einem Spark-Pool installieren. Bibliotheken auf Poolebene sind für alle Notebooks und Aufträge verfügbar, die im Pool ausgeführt werden.
 
-Sie können die Spark-Poolbibliotheken aktualisieren, indem Sie zu Azure Synapse Studio oder zum Azure-Portal navigieren. Hier können Sie die zu installierenden Arbeitsbereichsbibliotheken auswählen. 
+Sie können die Spark-Poolbibliotheken aktualisieren, indem Sie zu Synapse Studio oder zum Azure-Portal navigieren. Hier können Sie die zu installierenden Arbeitsbereichsbibliotheken auswählen. 
 
 Nachdem die Änderungen gespeichert wurden, wird die Installation durch einen Spark-Auftrag ausgeführt und die resultierende Umgebung zur späteren Wiederverwendung zwischengespeichert. Sobald der Auftrag fertiggestellt wurde, werden bei neuen Spark-Aufträgen oder Notebook-Sitzungen die aktualisierten Poolbibliotheken verwendet. 
 
@@ -53,8 +53,8 @@ Nachdem die Änderungen gespeichert wurden, wird die Installation durch einen Sp
 > - Wenn das Paket, das Sie installieren, groß ist oder seine Installation lange dauert, wirkt sich dies auf die Startzeit der Spark-Instanz aus.
 > - Das Ändern der Version von PySpark, Python, Scala/Java, .NET oder Spark wird nicht unterstützt.
 
-#### <a name="manage-packages-from-azure-synapse-studio-or-azure-portal"></a>Verwalten von Paketen über Azure Synapse Studio oder das Azure-Portal
-Spark-Poolbibliotheken können entweder über Azure Synapse Studio oder über das Azure-Portal verwaltet werden. 
+#### <a name="manage-packages-from-synapse-studio-or-azure-portal"></a>Verwalten von Paketen über Synapse Studio oder das Azure-Portal
+Spark-Poolbibliotheken können entweder über Synapse Studio oder über das Azure-Portal verwaltet werden. 
 
 So aktualisieren Sie Bibliotheken oder fügen sie einem Spark-Pool hinzu
 1. Navigieren Sie im Azure-Portal zu Ihrem Azure Synapse Analytics-Arbeitsbereich.

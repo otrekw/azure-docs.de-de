@@ -5,20 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 05/17/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: d1d77e508e627520878dcc27b5a643473d11dd1d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1495fa3751a77d5dfd26192ded4f35403ed932ef
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800719"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098306"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher
 
-Unveränderlicher Speicher für Azure-Blobspeicher ermöglicht es Benutzern, unternehmenskritische Datenobjekte im WORM-Zustand (Write Once, Read Many – Einmal schreiben, oft lesen) zu speichern. In diesem Zustand sind die Daten für einen vom Benutzer angegebenen Zeitraum nicht löschbar und nicht änderbar. Während des Aufbewahrungszeitraums können Blobs erstellt und gelesen, aber nicht geändert oder gelöscht werden. Unveränderlicher Speicher steht für Universell V1-, Universell V2-, BlobStorage- und BlockBlobStorage-Konten in allen Azure-Regionen zur Verfügung.
+Unveränderlicher Speicher für Azure-Blobspeicher ermöglicht es Benutzern, unternehmenskritische Datenobjekte im WORM-Zustand (Write Once, Read Many – Einmal schreiben, oft lesen) zu speichern. In diesem Zustand sind die Daten für einen vom Benutzer angegebenen Zeitraum nicht löschbar und nicht änderbar. Während des Aufbewahrungszeitraums können Blobs erstellt und gelesen, aber nicht geändert oder gelöscht werden. Unveränderlicher Speicher steht für Konten vom Typ „Universell V1“, „Universell V2“, „Premium-Blockblob“ und „Legacy-Blob“ in allen Azure-Regionen zur Verfügung.
 
 Informationen zum Festlegen und Aufheben einer Aufbewahrung für juristische Zwecke sowie zum Erstellen einer zeitbasierten Aufbewahrungsrichtlinie über das Azure-Portal, per PowerShell oder mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](storage-blob-immutability-policies-manage.md).
 
@@ -140,7 +140,7 @@ Unveränderlicher Speicher kann mit einem beliebigen Blobtyp verwendet werden, d
 
 **Muss ich ein neues Speicherkonto erstellen, um dieses Feature zu nutzen?**
 
-Nein. Sie können unveränderlichen Speicher mit allen vorhandenen oder neu erstellten Universell V1-, Universell V2-, BlobStorage- und BlockBlobStorage-Konten verwenden. Universell V1-Speicherkonten werden zwar unterstützt, es wird aber empfohlen, ein Upgrade auf „Universell V2“ durchzuführen, damit Sie weitere Funktionen nutzen können. Informationen zum Upgraden eines vorhandenen Kontos vom Typ „Universell v1“ finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](../common/storage-account-upgrade.md).
+Nein. Sie können unveränderlichen Speicher bei allen vorhandenen oder neu erstellten Konten vom Typ „Universell V1“, „Universell V2“, „Premium-Blockblob“ und „Legacy-Blob“ verwenden. Universell V1-Speicherkonten werden zwar unterstützt, es wird aber empfohlen, ein Upgrade auf „Universell V2“ durchzuführen, damit Sie weitere Funktionen nutzen können. Informationen zum Upgraden eines vorhandenen Kontos vom Typ „Universell v1“ finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](../common/storage-account-upgrade.md).
 
 **Kann ich sowohl eine Richtlinie für eine gesetzliche Aufbewahrungspflicht als auch eine Richtlinie für die zeitbasierte Aufbewahrung anwenden?**
 

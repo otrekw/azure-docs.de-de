@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 9337d1c2767923e6dc7c6b267e0c180b460a116e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: 3c58814943d844ec1e644412eef926745e2df620
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359420"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572388"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager
 
@@ -239,10 +239,6 @@ Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten f
 
 * Erstellen Sie einen Dienstendpunkt, wenn Sie einen Standardlastenausgleich mit Azure Storage als Cloudzeugen verwenden. Weitere Informationen finden Sie unter [Gewähren des Zugriffs über ein virtuelles Netzwerk](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
-## <a name="for-more-information"></a>Weitere Informationen finden Sie unter
-
-Weitere Informationen finden Sie unter [Manuelles Konfigurieren der Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern](availability-group-manually-configure-tutorial.md).
-
 ## <a name="powershell-cmdlets"></a>PowerShell-Cmdlets
 
 Verwenden Sie die folgenden PowerShell-Cmdlets, um ein internes Lastenausgleichsmodul für Azure Virtual Machines zu erstellen.
@@ -253,3 +249,13 @@ Verwenden Sie die folgenden PowerShell-Cmdlets, um ein internes Lastenausgleichs
 * [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerBackendAddressPoolConfig) erstellt eine Back-End-Adresspoolkonfiguration für einen Load Balancer. 
 * [New-AzLoadBalancerProbeConfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerProbeConfig) erstellt eine Testkonfiguration für einen Load Balancer.
 * [Remove-AzLoadBalancer](/powershell/module/Azurerm.Network/Remove-AzureRmLoadBalancer) entfernt einen Load Balancer aus einer Azure-Ressourcengruppe.
+
+## <a name="next-steps"></a>Nächste Schritte 
+
+
+Weitere Informationen finden Sie unter:
+
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
+- [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)

@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 22db4f95bacd926208ac7edf3306cd136d81b00e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2fa631e8ad3da1d40f68c9887b84e4ebd532240
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85565181"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559068"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Projektionen eines Wissensspeichers in Azure Cognitive Search
 
@@ -21,7 +21,7 @@ Die kognitive Azure-Suche ermöglicht eine Inhaltsanreicherung über integrierte
 
 Projektionen als Komponente des [Wissensspeichers](knowledge-store-concept-intro.md) sind Ansichten von angereicherten Dokumenten, die für das Knowledge Mining in physischen Speichern gespeichert werden können. Mit einer Projektion können Sie Ihre Daten in einer Form „projizieren“, die Ihren Anforderungen entspricht, und Beziehungen beibehalten, sodass die Daten in Tools wie Power BI ohne zusätzlichen Aufwand gelesen werden können.
 
-Projektionen können tabellarisch sein, wobei die Daten in Zeilen und Spalten in Azure Table Storage gespeichert werden oder als JSON-Objekte, die in Azure Blob Storage gespeichert werden. Sie können mehrere Projektionen Ihrer Daten definieren, wenn diese angereichert werden. Mehrere Projektionen sind nützlich, wenn Sie die gleichen Daten für einzelne Anwendungsfälle unterschiedlich formen möchten.
+Projektionen können tabellarisch sein, wobei die Daten in Zeilen und Spalten in Azure Table Storage oder als JSON-Objekte in Azure Blob Storage gespeichert werden. Sie können mehrere Projektionen Ihrer Daten definieren, wenn diese angereichert werden. Mehrere Projektionen sind nützlich, wenn Sie die gleichen Daten für einzelne Anwendungsfälle unterschiedlich formen möchten.
 
 Im Wissensspeicher werden drei Arten von Projektionen unterstützt:
 

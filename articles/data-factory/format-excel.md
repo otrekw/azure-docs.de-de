@@ -6,19 +6,19 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jianleishen
-ms.openlocfilehash: 4e67778778aad334d7eb7283234ae3bdb5b5eef9
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 73831a22974513cfc8e8a281099fc652fce4176f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484377"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090134"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Verwenden Sie diesen Artikel, wenn Sie die **Excel-Dateien** analysieren möchten. Azure Data Factory unterstützt sowohl „.xls“ als auch „.xlsx“.
 
-Das Excel-Format wird für folgende Connectors unterstützt: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md) und [SFTP](connector-sftp.md). Es wird als Quelle, aber nicht als Senke unterstützt. 
+Das Excel-Format wird für die folgenden Connectors unterstützt: [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md). Es wird als Quelle, aber nicht als Senke unterstützt. 
 
 >[!NOTE]
 >Das „.xls“-Format wird bei Verwendung von [HTTP](connector-http.md) nicht unterstützt.

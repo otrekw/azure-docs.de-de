@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 455a9b2061dcf92297c99e9d8fa8cee677ca3891
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 27bd310b48be2c20c5014ba9e2f93a98751baae0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483135"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086480"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory 
 
@@ -171,6 +171,8 @@ Im folgenden Diagramm sind die Standorteinstellungen von Data Factory und die da
 ![Ort der Integrationslaufzeit](media/concepts-integration-runtime/integration-runtime-location.png)
 
 ## <a name="determining-which-ir-to-use"></a>Ermitteln der richtigen Integrationslaufzeit
+Wenn eine Data Factory-Aktivität mehreren Integration Runtime-Typen zugeordnet ist, wird sie in eine davon aufgelöst. Die selbstgehostete Integration Runtime hat Vorrang vor Azure Integration Runtime im von Azure Data Factory verwalteten virtuellen Netzwerk. Und letzteres hat Vorrang vor der öffentlichen Azure Integration Runtime.
+Beispielsweise wird eine Kopieraktivität verwendet, um Daten aus der Quelle in die Senke zu kopieren. Die öffentliche Azure Integration Runtime ist dem verknüpften Dienst mit der Quelle zugeordnet, und eine Azure Integration Runtime im von Azure Data Factory verwalteten virtuellen Netzwerk wird dem verknüpften Dienst für die Senke zugeordnet. Als Ergebnis verwenden die verknüpften Quellen- und Senkendienste die Azure Integration Runtime im von Azure Data Factory verwalteten virtuellen Netzwerk. Wenn jedoch eine selbstgehostete Integration Runtime den verknüpften Dienst für die Quelle zugeordnet, verwenden die verknüpften Quellen- und Senkendienste die selbstgehostete Integration Runtime.
 
 ### <a name="copy-activity"></a>Copy-Aktivität
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.custom: references_regions
-ms.openlocfilehash: 22d7c1bbe03d8b3c0e3b6026c9bac039f0651548
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7170b22a0e85a0c23e49582f9cfed45128a91dd8
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037250"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559194"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
@@ -24,7 +24,7 @@ Extrahierung und Anreicherung werden über *kognitive Fähigkeiten* implementier
 
 Bei eingebetteten Skills wird zwischen folgenden Kategorien unterschieden: 
 
-+ Zu den Skills in Bezug auf die **Verarbeitung natürlicher Sprache** gehören [Entitätserkennung](cognitive-search-skill-entity-recognition.md), [Sprachenerkennung](cognitive-search-skill-language-detection.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), Textbearbeitung, [Stimmungserkennung](cognitive-search-skill-sentiment.md) und [PII-Erkennung](cognitive-search-skill-pii-detection.md). Mit diesen Fähigkeiten wird unstrukturierter Text in Form von durchsuchbaren und filterbaren Feldern in einem Index zugeordnet.
++ Zu den Skills in Bezug auf die **Verarbeitung natürlicher Sprache** gehören [Entitätserkennung](cognitive-search-skill-entity-recognition-v3.md), [Sprachenerkennung](cognitive-search-skill-language-detection.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), Textbearbeitung, [Stimmungserkennung](cognitive-search-skill-sentiment-v3.md) und [PII-Erkennung](cognitive-search-skill-pii-detection.md). Mit diesen Fähigkeiten wird unstrukturierter Text in Form von durchsuchbaren und filterbaren Feldern in einem Index zugeordnet.
 
 + Die **Bildverarbeitungsfähigkeiten** umfassen [Optical Character Recognition (OCR)](cognitive-search-skill-ocr.md) und die Identifizierung von [visuellen Features](cognitive-search-skill-image-analysis.md), z.B. Gesichtserkennung, Bildinterpretation, Bilderkennung (berühmte Personen und Wahrzeichen) oder Attribute wie Bildausrichtung. Diese Fähigkeiten erstellen Textdarstellungen von Bildinhalt, sodass er mit den Abfragefunktionen von Azure Cognitive Search durchsucht werden kann.
 
@@ -81,7 +81,7 @@ Am Anfang der Pipeline befindet sich unstrukturierter Text oder Nicht-Text-Inhal
 
 ![Phase der Dokumententschlüsselung](./media/cognitive-search-intro/document-cracking-phase-blowup.png "Dokumententschlüsselung")
 
- Zu den unterstützten Quellen zählen Azure Blob Storage, Azure Table Storage, Azure SQL-Datenbank und Azure Cosmos DB. Textbasierte Inhalte können aus den folgenden Dateitypen extrahiert werden: PDF-, Word-, PowerPoint- und CSV-Dateien. Eine vollständige Liste finden Sie unter [Unterstützte Formate](search-howto-indexing-azure-blob-storage.md#SupportedFormats). Die Indizierung braucht Zeit. Daher sollten Sie mit einem kleinen, repräsentativen Dataset beginnen, das Sie anschließend schrittweise aufbauen, während sich Ihre Lösung entwickelt.
+ Zu den unterstützten Quellen zählen Azure Blob Storage, Azure Table Storage, Azure SQL-Datenbank und Azure Cosmos DB. Textbasierte Inhalte können aus den folgenden Dateitypen extrahiert werden: PDF-, Word-, PowerPoint- und CSV-Dateien. Eine vollständige Liste finden Sie unter [Unterstützte Formate](search-howto-indexing-azure-blob-storage.md#SupportedFormats). Die Indizierung braucht Zeit. Daher sollten Sie mit einem kleinen, repräsentativen Dataset beginnen, das Sie anschließend schrittweise aufbauen, während sich Ihre Lösung entwickelt.
 
 ### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>Schritt 2: Phase der kognitiven Fähigkeiten und Anreicherung
 

@@ -1,19 +1,19 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/06/2018
+ms.date: 05/28/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3c1e34bb418f9be2e26afc117343f1fa50bd8566
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 727f2ce99518bb303639eca03c3690abf2e8b343
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76309010"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110720383"
 ---
 Diese häufig gestellten Fragen beziehen sich auf P2S-Verbindungen, die das klassische Bereitstellungsmodell verwenden.
 
@@ -35,7 +35,7 @@ Nein. Nur die aufgelisteten Windows-Betriebssystemversionen werden unterstützt.
 
 ### <a name="how-many-vpn-client-endpoints-can-exist-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Point-to-Site-Konfiguration umfassen?
 
-Der Umfang der VPN-Clientendpunkte hängt von der Gateway-SKU und dem Protokoll ab.
+Die Anzahl der VPN-Clientendpunkte hängt von der Gateway-SKU und dem Protokoll ab.
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>Kann ich für Punkt-zu-Standort-Verbindungen meine eigene interne PKI-Stammzertifizierungsstelle verwenden?

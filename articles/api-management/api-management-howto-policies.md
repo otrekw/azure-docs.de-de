@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 37ac6369790ed526fd923819558863ae84432aed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c87e436fe7fada8b1e16c18a5fad36c4ef3c872a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358115"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110096398"
 ---
 # <a name="policies-in-azure-api-management"></a>Richtlinien in Azure API Management
 
@@ -76,7 +76,7 @@ Weitere Codebeispiele finden Sie unter [Richtlinien für die API-Verwaltung](./p
 
 ### <a name="apply-policies-specified-at-different-scopes"></a>Anwenden von Richtlinien, die für verschiedene Bereiche angegeben sind
 
-Wenn Sie eine Richtlinie auf der globalen Ebene und eine Richtlinie für eine API konfiguriert haben, dann werden immer beide Richtlinien angewendet, wenn diese API aufgerufen wird. API Management ermöglicht eine deterministische Festlegung der Reihenfolge kombinierter Richtlinienanweisungen über das Basiselement. 
+Wenn Sie eine Richtlinie auf der globalen Ebene und eine Richtlinie für eine API konfiguriert haben, dann werden immer beide Richtlinien angewendet, wenn diese API aufgerufen wird. API Management ermöglicht eine deterministische Festlegung der Reihenfolge kombinierter Richtlinienanweisungen über das `base`-Element. 
 
 ```xml
 <policies>

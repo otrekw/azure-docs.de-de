@@ -7,21 +7,17 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
-ms.openlocfilehash: d8acab17e9d8dfc078b46f6a279cc671a70b0a50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b804536c54cce64ace2605999c7cc28cef357a4d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91974837"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072323"
 ---
-# <a name="preview-maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>Vorschau: Wartungssteuerung für Betriebssystemimageupgrades in Azure-VM-Skalierungsgruppen über PowerShell
+# <a name="maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>Wartungssteuerung für Betriebssystemimageupgrades in Azure-VM-Skalierungsgruppen über PowerShell
 
 Über die Wartungssteuerung können Sie entscheiden, wann automatische Gastbetriebssystemimageupgrades auf Ihre VM-Skalierungsgruppen angewendet werden sollen. In diesem Thema werden die Azure PowerShell-Optionen für die Wartungssteuerung behandelt. Weitere Informationen zur Verwendung der Wartungssteuerung finden Sie unter [Wartungssteuerung für Azure-VM-Skalierungsgruppen](virtual-machine-scale-sets-maintenance-control.md).
-
-> [!IMPORTANT]
-> Die Wartungssteuerung für Betriebssystemimageupgrades in Azure-VM-Skalierungsgruppen befindet sich derzeit in der öffentlichen Vorschau (Public Preview).
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 ## <a name="enable-the-powershell-module"></a>Aktivieren des PowerShell-Moduls
@@ -112,12 +108,10 @@ New-AzConfigurationAssignment `
 
 ## <a name="enable-automatic-os-upgrade"></a>Aktivieren von automatischen Betriebssystemupgrades
 
-Sie können automatische Betriebssystemupgrades für jede VM-Skalierungsgruppe aktivieren, für die die Wartungssteuerung verwendet werden soll. Weitere Informationen zum Aktivieren automatischer Betriebssystemupgrades für Ihre VM-Skalierungsgruppe finden Sie im Dokument [Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md). 
+Sie können automatische Betriebssystemupgrades für jede VM-Skalierungsgruppe aktivieren, für die die Wartungssteuerung verwendet werden soll. Weitere Informationen zum Aktivieren automatischer Betriebssystemupgrades für Ihre VM-Skalierungsgruppe finden Sie unter [Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Wartung und Updates für virtuelle Computer, die in Azure ausgeführt werden.
-
 > [!div class="nextstepaction"]
-> [Wartung und Updates](maintenance-and-updates.md)
+> [Erfahren Sie mehr über Wartung und Updates für VMs, die in Azure ausgeführt werden](maintenance-and-updates.md)

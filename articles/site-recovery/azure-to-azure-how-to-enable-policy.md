@@ -6,16 +6,16 @@ ms.author: rishjai
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5f55d8c4d2c361f4375c44a333c2fec6afc7ef88
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7707fb0688a10c1791556f0605b40cacc54b5a85
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108077693"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961011"
 ---
 # <a name="using-policy-with-azure-site-recovery-public-preview"></a>Verwendung von Policy mit Azure Site Recovery (Public Preview)
 
-In diesem Artikel wird beschrieben, wie Sie [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) für Ihre Ressourcen mithilfe von Azure Policy einrichten. [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) hilft dabei, bestimmte Geschäftsregeln für Ihre Azure-Ressourcen durchzusetzen und die Konformität dieser Ressourcen zu bewerten.
+In diesem Artikel wird beschrieben, wie Sie [Azure Site Recovery](./site-recovery-overview.md) für Ihre Ressourcen mithilfe von Azure Policy einrichten. [Azure Policy](../governance/policy/overview.md) hilft dabei, bestimmte Geschäftsregeln für Ihre Azure-Ressourcen durchzusetzen und die Konformität dieser Ressourcen zu bewerten.
 
 ## <a name="disaster-recovery-with-azure-policy"></a>Notfallwiederherstellung mit Azure Policy
 Site Recovery hilft Ihnen, Ihre Anwendungen im Falle geplanter oder ungeplanter zonaler/regionaler Ausfälle betriebsbereit zu halten. Es kann eine Herausforderung sein, Site Recovery auf Ihren Maschinen in großem Umfang über das Azure-Portal zu aktivieren. Nun haben Sie die Möglichkeit, Site Recovery über das Portal für bestimmte Ressourcengruppen _(Bereich_ der Policy) zu aktivieren.
@@ -27,8 +27,8 @@ Azure Policy löst dieses Problem. Sobald Sie eine Notfallwiederherstellungsrich
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Informationen zum Zuweisen einer Richtlinie finden Sie [hier.](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)
-- Weitere Informationen über die Architektur von Azure zu Azure Notfallwiederherstellung [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture).
+- Informationen zum Zuweisen einer Richtlinie finden Sie [hier.](../governance/policy/assign-policy-portal.md)
+- Weitere Informationen über die Architektur von Azure zu Azure Notfallwiederherstellung [hier](./azure-to-azure-architecture.md).
 - Lesen Sie die Unterstützungsmatrix für Azure Site Recovery Richtlinienunterstützung:
 
 **Szenario** | **Supporthinweis**
@@ -39,20 +39,18 @@ Multiple Disks | Unterstützt
 Verfügbarkeitsgruppen | Unterstützt
 Verfügbarkeitszonen | Unterstützt
 Azure Disk Encryption (ADE) aktivierte VMs | Nicht unterstützt
-Näherungsplatzierungsgruppen (PPG) | Nicht unterstützt
+Näherungsplatzierungsgruppen (PPG) | Unterstützt
 Kundenverwaltete Schlüssel (CMK) aktivierte Disks | Nicht unterstützt
 Überblick über direkte Speicherplätze S2D-Gruppen | Nicht unterstützt
 Azure Resource Manager-Bereitstellungsmodell | Unterstützt
 Klassisches Bereitstellungsmodell | Nicht unterstützt
 Zone zu Zone DR  | Unterstützt
-Azure Disk Encryption v1 | Nicht unterstützt
-Azure Disk Encryption v2 | Nicht unterstützt
-Interoperabilität mit Azure Backup | Nicht unterstützt
-Hinzufügen und Entfernen von Disks im laufenden Betrieb | Nicht unterstützt
 Interoperabilität mit anderen Richtlinien, die standardmäßig von Azure angewendet werden (sofern verfügbar) | Unterstützt
 
 >[!NOTE]
->Wenn eine nicht unterstützte VM innerhalb des Richtlinienbereichs erstellt wird, wird Site Recovery nicht aktiviert. Allerdings werden sie als _Non-Complaint_ in Resource Compliance angezeigt.
+>In den folgenden Fällen wird Site Recovery für diese nicht aktiviert. Allerdings werden sie in „Ressourcencompliance“ als _Nicht konform_ angezeigt: 
+>1. Wenn ein nicht unterstützter virtueller Computer innerhalb des Geltungsbereichs der Richtlinie erstellt wird.
+>1. Wenn ein virtueller Computer sowohl Teil einer Verfügbarkeitsgruppe als auch einer PPG ist.
 
 ## <a name="create-a-policy-assignment"></a>Erstellen einer Richtlinienzuweisung
 In diesem Abschnitt erstellen Sie eine Richtlinienzuweisung, die Azure Site Recovery für alle neu erstellten Ressourcen aktiviert.
@@ -95,7 +93,7 @@ Sie sind dabei, eine Policy zu erstellen, um Azure Site Recovery zu aktivieren. 
 ## <a name="remediation-and-other-properties"></a>Wartung und andere Eigenschaften
 1. Die Zieleigenschaften für Azure Site Recovery wurden konfiguriert. Diese Richtlinie wird jedoch nur für neu erstellte virtuelle Maschinen im Bereich der Richtlinie wirksam. Sie kann über einen Wartungstask auf vorhandene Ressourcen angewendet werden, nachdem die Richtlinie zugewiesen wurde. Sie können hier einen Wartungstask erstellen, indem Sie das Kontrollkästchen _Wartungstask erstellen_ aktivieren.
 
-1. Azure Policy erstellt eine [Verwaltete Identität](https://aka.ms/arm-policy-identity),die über Eigentümerrechte verfügt, um Azure Site Recovery für die Ressourcen im Bereich zu aktivieren.
+1. Azure Policy erstellt eine [Verwaltete Identität](../governance/policy/how-to/remediate-resources.md),die über Eigentümerrechte verfügt, um Azure Site Recovery für die Ressourcen im Bereich zu aktivieren.
 
 1. Sie können eine benutzerdefinierte Non-Compliance-Meldung für die Richtlinie auf der Registerkarte _Non-Compliance-Meldungen_ konfigurieren.
 

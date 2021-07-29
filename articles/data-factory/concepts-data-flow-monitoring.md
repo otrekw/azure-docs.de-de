@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/11/2021
-ms.openlocfilehash: 82aba428627cba1a3df26fc67c5da0cde52d368c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/11/2021
+ms.openlocfilehash: 18481a24bb9e8d5624cb52c9b02833204d4f403d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309066"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076592"
 ---
 # <a name="monitor-data-flows"></a>Überwachen von Datenflüssen
 
@@ -22,7 +22,7 @@ Nachdem Sie den Aufbau und das Debugging Ihres Datenflusses abgeschlossen haben,
 
 Bei der Ausführung können Sie die Pipeline und alle darin enthaltenen Aktivitäten, einschließlich der Datenflussaktivität, überwachen. Klicken Sie auf das Symbol „Überwachen“ im linken Bereich der Azure Data Factory-Benutzeroberfläche. Daraufhin wird ein Bildschirm angezeigt, der dem folgenden ähnelt. Über die hervorgehobenen Symbole können Sie einen Drilldown in die Aktivitäten der Pipeline ausführen, einschließlich der Datenflussaktivität.
 
-![Screenshot: Symbole zur Auswahl von Pipelines für weitere Informationen](media/data-flow/mon001.png "Datenflussüberwachung")
+![Screenshot: Symbole zur Auswahl von Pipelines für weitere Informationen](media/data-flow/monitor-new-001.png "Datenflussüberwachung")
 
 Auf dieser Ebene werden sowohl Statistikdaten als auch die Laufzeiten und der Status angezeigt. Die Ausführungs-ID auf der Aktivitätsebene unterscheidet sich von der Ausführungs-ID auf der Pipelineebene. Die Ausführungs-ID der vorherigen Ebene ist für die Pipeline. Durch Auswählen der Brille erhalten Sie detaillierte Informationen zu Ihrer Datenflussausführung.
 
@@ -32,15 +32,11 @@ Wenn Sie sich in der grafischen Knotenüberwachungsansicht befinden, wird eine v
 
 ![Screenshot der schreibgeschützten Version des Diagramms](media/data-flow/mon003.png "Datenflussüberwachung")
 
-Hier sehen Sie ein Video mit einer Übersicht über die Überwachungsleistung Ihre Datenflüsse auf dem ADF-Überwachungsbildschirm:
-
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4u4mH]
-
 ## <a name="view-data-flow-execution-plans"></a>Anzeigen der Ausführungspläne für den Datenfluss
 
-Wenn Ihr Datenfluss in Spark ausgeführt wird, bestimmt Azure Data Factory basierend auf Ihrem gesamten Datenfluss die optimalen Codepfade. Darüber hinaus können die Ausführungspfade auf verschiedenen horizontalen Skalierungsknoten und Datenpartitionen auftreten. Daher stellt das Überwachungsdiagramm den Entwurf Ihres Flusses dar, wobei der Ausführungspfad Ihrer Transformationen berücksichtigt wird. Wenn Sie einzelne Knoten auswählen, werden „Gruppierungen“ angezeigt, die den auf dem Cluster gemeinsam ausgeführten Code darstellen. Die angezeigten Zeitangaben und Zählungen stellen diese Gruppen im Gegensatz zu den einzelnen Schritten in Ihrem Entwurf dar.
+Wenn Ihr Datenfluss in Spark ausgeführt wird, bestimmt Azure Data Factory basierend auf Ihrem gesamten Datenfluss die optimalen Codepfade. Darüber hinaus können die Ausführungspfade auf verschiedenen horizontalen Skalierungsknoten und Datenpartitionen auftreten. Daher stellt das Überwachungsdiagramm den Entwurf Ihres Flusses dar, wobei der Ausführungspfad Ihrer Transformationen berücksichtigt wird. Wenn Sie einzelne Knoten auswählen, werden „Phasen“ angezeigt, die den auf dem Cluster gemeinsam ausgeführten Code darstellen. Die angezeigten Zeitangaben und Anzahlen stellen diese Gruppen oder Phasen im Gegensatz zu den einzelnen Schritten in Ihrem Entwurf dar.
 
-![Screenshot der Seite für eine Datenfluss](media/data-flow/mon004.png "Datenflussüberwachung")
+![Screenshot der Seite für eine Datenfluss](media/data-flow/monitor-new-005.png "Datenflussüberwachung")
 
 * Wenn Sie das freie Feld im Überwachungsfenster auswählen, zeigen die Statistiken im unteren Bereich die Zeitangabe und die Anzahl der Zeilen für jede Senke und die Transformationen an, die zu den Senkendaten für die Transformationsherkunft geführt haben.
 
@@ -85,6 +81,8 @@ Wenn Sie in der Zuordnung ein Symbol für eine Senkentransformation auswählen, 
 * Dauer der vorab und im Anschluss ausgeführten SQL-Vorgänge: Die Zeit für das Ausführen vor-/nachgeschalteter SQL-Befehle.
 * Dauer der vorab und im Anschluss ausgeführten Befehle: Die Zeit für das Ausführen vor-/nachgeschalteter Vorgänge für dateibasierte Quellen/Senken. Beispielsweise das Verschieben oder Löschen von Dateien nach der Verarbeitung.
 * Zusammenführungsdauer: Die Zeit für das Zusammenführen der Datei. Zusammengeführte Dateien werden für dateibasierte Senken verwendet, wenn in eine einzelne Datei geschrieben oder „Dateiname als Spaltendaten“ verwendet wird. Wenn für diese Metrik viel Zeit aufgewendet wird, sollten Sie diese Optionen vermeiden.
+* Phasendauer: Die gesamte in Spark benötige Zeit, um den Vorgang als Phase abzuschließen.
+* Temporäre Stagingtabelle: Der Name der temporären Tabelle, die von Datenflüssen zum Bereitstellen von Daten in der Datenbank verwendet wird.
   
 ## <a name="error-rows"></a>Fehlerzeilen
 

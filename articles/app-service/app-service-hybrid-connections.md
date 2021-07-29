@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Hybridverbindungen in Azure App Service für 
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 02/05/2020
+ms.date: 05/05/2021
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 1b3fc4a254c1157f2c2336e6360ba7621f31364d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8b0377207dc811358db14285a7e287cd7c72525
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594230"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412599"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service-Hybridverbindungen
 
@@ -21,9 +21,9 @@ Hybrid Connections ist sowohl ein Dienst in Azure als auch ein Feature in Azure 
 In App Service kann mithilfe von Hybridverbindungen auf Anwendungsressourcen in einem beliebigen Netzwerk zugegriffen werden, das ausgehende Aufrufe an Azure über Port 443 ausführen kann. Hybridverbindungen ermöglichen den Zugriff von Ihrer App auf einen TCP-Endpunkt und ermöglichen keine neue Möglichkeit, um auf Ihre App zuzugreifen. Bei der Verwendung in App Service entspricht jede Hybridverbindung einer Kombination aus einem einzelnen TCP-Host und einem Port. Dadurch können Ihre Apps auf Ressourcen unter jedem beliebigen Betriebssystem zugreifen, sofern es sich um einen TCP-Endpunkt handelt. Das Feature Hybrid Connections besitzt keine Informationen über das Anwendungsprotokoll oder den abzurufenden Inhalt und benötigt diese Informationen auch nicht. Es ermöglicht lediglich den Netzwerkzugriff.  
 
 ## <a name="how-it-works"></a>Funktionsweise ##
-Hybridverbindungen erfordern, dass ein Relay-Agent bereitgestellt wird, über den sie sowohl den gewünschten Endpunkt als auch Azure erreichen können. Der Relay-Agent, Hybridverbindungs-Manager (HCM), ruft ausgehend über Port 443 Azure Relay auf. Von der Web-App-Site aus stellt die App Service-Infrastruktur auch eine Verbindung mit Azure Relay im Auftrag Ihrer Anwendung her. Über die verbundenen Verbindungen kann Ihre App auf den gewünschten Endpunkt zugreifen. Die Verbindung verwendet zum Schutz TLS 1.2 und zur Authentifizierung/Autorisierung SAS-Schlüssel.    
+Hybridverbindungen erfordern, dass ein Relay-Agent bereitgestellt wird, über den sie sowohl den gewünschten Endpunkt als auch Azure erreichen können. Der Relay-Agent, Hybridverbindungs-Manager (HCM), ruft ausgehend über Port 443 Azure Relay auf. Von der Web-App-Site aus stellt die App Service-Infrastruktur auch eine Verbindung mit Azure Relay im Auftrag Ihrer Anwendung her. Über die verbundenen Verbindungen kann Ihre App auf den gewünschten Endpunkt zugreifen. Die Verbindung verwendet zum Schutz TLS 1.2 und zur Authentifizierung/Autorisierung SAS-Schlüssel.
 
-![Allgemeines Flussdiagramm zu Hybridverbindungen][1]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-connectiondiagram.png" alt-text="Allgemeines Flussdiagramm zu Hybridverbindungen":::
 
 Wenn Ihre App eine DNS-Anforderung stellt, die mit einem konfigurierten Hybridverbindungsendpunkt übereinstimmt, wird der ausgehende TCP-Datenverkehr über die Hybridverbindung weitergeleitet.  
 
@@ -58,11 +58,11 @@ Die folgenden Aktionen sind beispielsweise mit Hybridverbindungen nicht möglich
 
 Navigieren Sie zum Erstellen einer Hybridverbindung zum [Azure-Portal][portal], und wählen Sie Ihre App aus. Wählen Sie **Netzwerk** > **Endpunkte der Hybridverbindung konfigurieren** aus. Hier können Sie die Hybridverbindungen anzeigen, die für Ihre App konfiguriert sind.  
 
-![Screenshot der Liste der Hybridverbindungen][2]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-portal.png" alt-text="Screenshot der Liste der Hybridverbindungen":::
 
-Um eine neue Hybridverbindung hinzuzufügen, wählen Sie **[+] Hybridverbindung hinzufügen** aus.  Es wird eine Liste der Hybridverbindungen angezeigt, die Sie bereits erstellt haben. Um Ihrer App eine oder mehrere dieser Hybridverbindungen hinzuzufügen, markieren Sie diese und wählen anschließend **Ausgewählte Hybridverbindung hinzufügen** aus.  
+Um eine neue Hybridverbindung hinzuzufügen, wählen Sie **[+] Hybridverbindung hinzufügen** aus.  Es wird eine Liste der Hybridverbindungen angezeigt, die Sie bereits erstellt haben. Um Ihrer App eine oder mehrere dieser Hybridverbindungen hinzuzufügen, markieren Sie diese und wählen anschließend **Ausgewählte Hybridverbindung hinzufügen** aus.
 
-![Screenshot des Portals für Hybridverbindungen][3]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-addhc.png" alt-text="Screenshot des Portals für Hybridverbindungen":::
 
 Wenn Sie eine neue Hybridverbindung erstellen möchten, wählen Sie **Neue Hybridverbindung erstellen** aus. Geben Sie Folgendes an: 
 
@@ -71,7 +71,7 @@ Wenn Sie eine neue Hybridverbindung erstellen möchten, wählen Sie **Neue Hybri
 - Endpunktport
 - Zu verwendender Service Bus-Namespace
 
-![Screenshot des Dialogfelds „Neue Hybridverbindung erstellen“][4]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-createhc.png" alt-text="Screenshot des Dialogfelds „Neue Hybridverbindung erstellen“":::
 
 Jede Hybridverbindung ist mit einem Service Bus-Namespace verbunden. Jeder Service Bus-Namespace befindet sich in einer Azure-Region. Es ist wichtig, einen Service Bus-Namespace in derselben Region wie Ihre App zu verwenden, um durch das Netzwerk verursachte Latenzen zu vermeiden.
 
@@ -79,7 +79,7 @@ Wenn Sie Ihre Hybridverbindung aus Ihrer App entfernen möchten, klicken Sie mit
 
 Nachdem Ihrer App eine Hybridverbindung hinzugefügt wurde, können Sie die Details zu dieser anzeigen, indem Sie sie einfach auswählen. 
 
-![Screenshot der Details von Hybridverbindungen][5]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-properties.png" alt-text="Screenshot der Details von Hybridverbindungen":::
 
 ### <a name="create-a-hybrid-connection-in-the-azure-relay-portal"></a>Erstellen einer Hybridverbindung im Azure Relay-Portal ###
 
@@ -96,12 +96,12 @@ App Service-Hybridverbindungen sind nur in den Preis-SKUs Basic, Standard, Premi
 |----|----|
 | Basic | 5 pro Plan |
 | Standard | 25 pro Plan |
-| PremiumV2 | 200 pro App |
-| Isolated | 200 pro App |
+| Premium (v1-v3) | 220 pro App |
+| Isoliert (v1-v2) | 220 pro App |
 
-Die Benutzeroberfläche des App Service-Plans zeigt auch, wie viele Hybridverbindungen verwendet werden und von welchen Apps.  
+Die Benutzeroberfläche des App Service-Plans zeigt auch, wie viele Hybridverbindungen verwendet werden und von welchen Apps.
 
-![Screenshot der Eigenschaften eines App Service-Plans][6]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-aspproperties.png" alt-text="Screenshot der Eigenschaften eines App Service-Plans":::
 
 Wählen Sie die Hybridverbindung aus, um Details anzuzeigen. Sie können alle Informationen sehen, die auch in der App-Ansicht angezeigt wurden. Außerdem können Sie sehen, wie viele andere Apps im gleichen Plan diese Hybridverbindung verwenden.
 
@@ -117,28 +117,28 @@ Damit das Feature Hybrid Connections funktioniert, ist ein Relay-Agent in dem Ne
 
 Dieses Tool wird unter Windows Server 2012 und höher ausgeführt. HCM wird als Dienst ausgeführt und verbindet ausgehenden Datenverkehr mit Azure Relay über Port 443.  
 
-Sie können nach der Installation von HCM die Datei „HybridConnectionManagerUi.exe“ ausführen, um die Benutzeroberfläche für das Tool zu verwenden. Diese Datei befindet sich im Installationsverzeichnis des Hybridverbindungs-Managers. Unter Windows 10 können Sie auch einfach im Suchfeld nach *Hybridverbindungs-Manager-Benutzeroberfläche* suchen.  
+Sie können nach der Installation von HCM die Datei „HybridConnectionManagerUi.exe“ ausführen, um die Benutzeroberfläche für das Tool zu verwenden. Diese Datei befindet sich im Installationsverzeichnis des Hybridverbindungs-Managers. Unter Windows 10 können Sie auch einfach im Suchfeld nach *Hybridverbindungs-Manager-Benutzeroberfläche* suchen.
 
-![Screenshot von Hybridverbindungs-Manager][7]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcm.png" alt-text="Screenshot von Hybridverbindungs-Manager":::
 
 Wenn Sie die Benutzeroberfläche des HCM starten, wird als Erstes eine Tabelle angezeigt, in der alle Hybridverbindungen aufgeführt werden, die mit dieser Instanz des HCM konfiguriert sind. Wenn Sie Änderungen vornehmen möchten, müssen Sie sich zunächst bei Azure authentifizieren. 
 
 So fügen Sie Ihrem HCM eine oder mehrere Hybridverbindungen hinzu:
 
 1. Starten Sie die Benutzeroberfläche des HCM.
-2. Wählen Sie **Andere Hybridverbindung konfigurieren** aus.
-![Screenshot der Konfiguration neuer Hybridverbindungen][8]
+2. Wählen Sie **Neue Hybridverbindung hinzufügen** aus.
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcmadd.png" alt-text="Screenshot der Konfiguration neuer Hybridverbindungen":::
 
 1. Melden Sie sich mit Ihrem Azure-Konto an, um die für Ihre Abonnements verfügbaren Hybrid Connections abzurufen. Der HCM verwendet Ihr Azure-Konto darüber hinaus nicht. 
 1. Wählen Sie ein Abonnement aus.
 1. Wählen Sie die Hybridverbindungen aus, die der HCM weiterleiten soll.
-![Screenshot von Hybridverbindungen][9]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcmadded.png" alt-text="Screenshot von Hybridverbindungen":::
 
 1. Wählen Sie **Speichern** aus.
 
 Es werden nun die Hybridverbindungen angezeigt, die Sie hinzugefügt haben. Sie können die konfigurierte Hybridverbindung auch auswählen, um Details anzuzeigen.
 
-![Screenshot von Details einer Hybridverbindung][10]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcmdetails.png" alt-text="Screenshot von Details einer Hybridverbindung":::
 
 Damit der HCM die bei ihm konfigurierten Hybridverbindungen unterstützen kann, ist Folgendes erforderlich:
 
@@ -158,7 +158,7 @@ Jeder HCM kann mehrere Hybridverbindungen unterstützen. Darüber hinaus kann ei
 
 Damit ein Benutzer außerhalb Ihres Abonnements eine HCM-Instanz für eine bestimmte Hybridverbindung hosten kann, geben Sie für diesen die Gateway-Verbindungszeichenfolge für die Hybridverbindung frei. Sie können die Gatewayverbindungszeichenfolge in den Eigenschaften einer Hybridverbindung im [Azure-Portal][portal] anzeigen. Um diese Zeichenfolge zu verwenden, wählen Sie im HCM **Manuell eingeben** aus, und fügen Sie die Gateway-Verbindungszeichenfolge ein.
 
-![Manuelles Hinzufügen einer Hybridverbindung][11]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-manual.png" alt-text="Manuelles Hinzufügen einer Hybridverbindung":::
 
 ### <a name="upgrade"></a>Aktualisieren ###
 
@@ -206,6 +206,8 @@ Der Status „Verbunden“ bedeutet, dass mindestens ein HCM mit dieser Hybridve
 * Verfügt Ihr Host an Port 443 über ausgehenden Zugriff auf Azure? Sie können dies über Ihren HCM-Host mithilfe des PowerShell-Befehls *Test-NetConnection Destination -P Port* testen. 
 * Ist Ihr HCM möglicherweise in einem fehlerhaften Zustand? Versuchen Sie den lokalen Dienst „Azure Hybrid Connection Manager Service“ neu zu starten.
 
+* Haben Sie in Konflikt stehende Software installiert? Hybridverbindungs-Manager kann nicht mit Biztalk-Hybridverbindungs-Manager oder Service Bus für Windows Server gleichzeitig vorhanden sein. Daher sollten bei der Installation von HCM alle Versionen dieser Pakete zuerst entfernt werden.
+
 Gehen Sie wie folgt vor, wenn der Status **Verbunden** lautet, die App den Endpunkt aber nicht erreichen kann:
 
 * Stellen Sie sicher, dass Sie einen DNS-Namen in Ihrer Hybridverbindung verwenden. Wenn Sie eine IP-Adresse verwenden, wird möglicherweise das erforderliche Client-DNS-Lookup nicht durchgeführt. Wenn der Client, der in Ihrer Web-App ausgeführt wird, kein DNS-Lookup durchführt, funktioniert die Hybridverbindung nicht.
@@ -216,20 +218,6 @@ In App Service kann das Befehlszeilentool **tcpping** über die Konsole „Erwei
 
 Wenn Sie über einen Befehlszeilenclient für Ihren Endpunkt verfügen, können Sie die Konnektivität über die App-Konsole testen. Sie können beispielsweise den Zugriff auf Webserver-Endpunkte mithilfe von cURL testen.
 
-
-<!--Image references-->
-[1]: ./media/app-service-hybrid-connections/hybridconn-connectiondiagram.png
-[2]: ./media/app-service-hybrid-connections/hybridconn-portal.png
-[3]: ./media/app-service-hybrid-connections/hybridconn-addhc.png
-[4]: ./media/app-service-hybrid-connections/hybridconn-createhc.png
-[5]: ./media/app-service-hybrid-connections/hybridconn-properties.png
-[6]: ./media/app-service-hybrid-connections/hybridconn-aspproperties.png
-[7]: ./media/app-service-hybrid-connections/hybridconn-hcm.png
-[8]: ./media/app-service-hybrid-connections/hybridconn-hcmadd.png
-[9]: ./media/app-service-hybrid-connections/hybridconn-hcmadded.png
-[10]: ./media/app-service-hybrid-connections/hybridconn-hcmdetails.png
-[11]: ./media/app-service-hybrid-connections/hybridconn-manual.png
-[12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
 [HCService]: /azure/service-bus-relay/relay-hybrid-connections-protocol/

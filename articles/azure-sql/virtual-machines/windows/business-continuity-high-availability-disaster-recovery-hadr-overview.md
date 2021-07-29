@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 31d22be5ee5480878633b9742837e3f5d6119043
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: f42cb2f3f00c75dea262b7151bef5efad4e9aa92
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078943"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569591"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Geschäftskontinuität und HADR für SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,6 +38,10 @@ Es ist möglich, dass eine SQL Server-Instanz ausfällt, obwohl die VM online u
 
 Georedundanter Speicher (GRS) in Azure wird mit einer Funktion namens „Georeplikation“ implementiert. GRS ist möglicherweise keine geeignete Notfallwiederherstellungslösung für Ihre Datenbanken. Da bei der Georeplikation Daten asynchron gesendet werden, können die neuesten Updates bei einem Ausfall verloren gehen. Weitere Informationen zu Einschränkungen bei der Georeplikation finden Sie im Abschnitt [Georeplikationsunterstützung](#geo-replication-support).
 
+> [!NOTE]
+> Sie können Ihre [Failoverclusterinstanz](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md) und [Verfügbarkeitsgruppenlösung](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md) jetzt mithilfe von Azure Migrate per Lift-und-Shift-Verfahren zu SQL Server auf Azure-VMs verschieben. 
+
+
 ## <a name="deployment-architectures"></a>Bereitstellungsarchitekturen
 Azure unterstützt die folgenden SQL Server-Technologien für Geschäftskontinuität:
 
@@ -46,6 +50,7 @@ Azure unterstützt die folgenden SQL Server-Technologien für Geschäftskontinu
 * [Protokollversand](/sql/database-engine/log-shipping/about-log-shipping-sql-server)
 * [SQL Server-Sicherung und -Wiederherstellung mit dem Microsoft Azure Blob Storage](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
 * [Datenbankspiegelung](/sql/database-engine/database-mirroring/database-mirroring-sql-server): Seit SQL Server 2016 veraltet
+* [Azure Site Recovery](../../../site-recovery/site-recovery-sql.md)
 
 Sie können mehrere Technologie kombinieren, um eine SQL Server-Lösung zu implementieren, die über Funktionen für Hochverfügbarkeit und Notfallwiederherstellung verfügt. Abhängig von der verwendeten Technologie erfordert eine Hybridbereitstellung ggf. einen VPN-Tunnel mit dem virtuellen Azure-Netzwerk. In den folgenden Abschnitten werden einige Beispiele für Bereitstellungsarchitekturen vorgestellt.
 
@@ -113,52 +118,10 @@ Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. 
 
 Um Hochverfügbarkeit zu konfigurieren, platzieren Sie die beteiligten virtuellen SQL Server-Computer verteilt auf die verfügbaren Verfügbarkeitszonen der Region. Es fallen zusätzliche Gebühren für Übertragungen zwischen Netzwerken zwischen Verfügbarkeitszonen an. Weitere Informationen finden Sie unter [Verfügbarkeitszonen](../../../availability-zones/az-overview.md). 
 
-
-### <a name="failover-cluster-behavior-in-azure-networking"></a>Failoverclusterverhalten in Azure-Netzwerken
-Der nicht RFC-kompatible DHCP-Dienst in Azure kann dazu führen, dass die Erstellung bestimmter Failoverclusterkonfigurationen fehlschlägt. Dieser Fehler tritt auf, weil dem Clusternetzwerknamen eine doppelte IP-Adresse zugewiesen wird, z. B. die gleiche IP-Adresse wie einer der Clusterknoten. Dies stellt bei der Verwendung von Verfügbarkeitsgruppen ein Problem dar, da diese vom Windows-Failoverclusterfeature abhängen.
-
-Beachten Sie folgendes Szenario, wenn ein Cluster mit zwei Knoten erstellt und online geschaltet wird:
-
-1. Der Cluster wird online geschaltet, und KNOTEN1 fordert eine dynamisch zugewiesene IP-Adresse als Netzwerknamen des Clusters an.
-2. Der DHCP-Dienst weist ausschließlich die IP-Adresse von KNOTEN1 zu, da der DHCP-Dienst erkennt, dass die Anforderung von KNOTEN1 selbst stammt.
-3. Windows erkennt, dass KNOTEN1 und dem Netzwerknamendes Failoverclusters dieselbe IP-Adresse zugewiesen wurde, und die Standardclustergruppe kann nicht online geschaltet werden.
-4. Die Standardclustergruppe wechselt zu KNOTEN2. KNOTEN2 behandelt die IP-Adresse von KNOTEN1 als Cluster-IP-Adresse und schaltet die Standardclustergruppe online.
-5. Wenn KNOTEN2 versucht, eine Verbindung mit KNOTEN1 herzustellen, verlassen für KNOTEN1 bestimmten Pakete niemals KNOTEN2, da die IP-Adresse von KNOTEN1 in sich selbst aufgelöst wird. KNOTEN2 kann keine Verbindung mit KNOTEN1 herstellen, verliert daraufhin das Quorum und fährt den Cluster herunter.
-6. KNOTEN1 kann Pakete an KNOTEN2 senden, aber KNOTEN2 kann nicht antworten. KNOTEN1 verliert das Quorum und fährt den Cluster herunter.
-
-Sie können dieses Szenario vermeiden, indem Sie dem Clusternetzwerknamen eine nicht verwendete statische IP-Adresse zuweisen, um den Clusternetzwerknamen online zu schalten. Beispielsweise können Sie eine verbindungslokale IP-Adresse wie 169.254.1.1 verwenden. Informationen zur Vereinfachung dieses Vorgangs finden Sie unter [How to Configure Windows Failover Cluster in Azure for Availability Groups (Konfigurieren eines Windows-Failoverclusters in Azure für Verfügbarkeitsgruppen)](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx).
-
-Weitere Informationen finden Sie unter [Konfigurieren von Verfügbarkeitsgruppen in Azure (GUI)](./availability-group-quickstart-template-configure.md).
-
-### <a name="support-for-availability-group-listeners"></a>Support für Verfügbarkeitsgruppenlistener
-Verfügbarkeitsgruppenlistener werden auf Azure-VMs unter Windows Server 2012 oder höher unterstützt. Möglich wird diese Unterstützung durch die Verwendung von Endpunkten mit Lastenausgleich auf den virtuellen Azure-Computern, die Verfügbarkeitsgruppenknoten sind. Sie müssen bestimmte Konfigurationsschritte für die Listener einhalten, damit sie für in Azure und lokal ausgeführte Clientanwendungen funktionieren.
-
-Es gibt zwei Hauptoptionen für das Einrichten des Listeners: extern (öffentlich) oder intern. Der externe (öffentliche) Listener verwendet einen Load Balancer mit Internetzugriff und ist mit einer öffentlichen virtuellen IP-Adresse verknüpft, auf die über das Internet zugegriffen werden kann. Ein interner Listener verwendet einen internen Load Balancer und unterstützt nur Clients im gleichen virtuellen Netzwerk. Für beide Load Balancer-Typen müssen Sie „Direct Server Return“ aktivieren. 
-
-Wenn die Verfügbarkeitsgruppe mehrere Azure-Subnetze umfasst (z.B. bei einer Bereitstellung über mehrere Azure-Regionen hinweg), muss die Client-Verbindungszeichenfolge `MultisubnetFailover=True` enthalten. Dies führt zu parallelen Verbindungsversuchen mit den Replikaten in unterschiedlichen Subnetzen. Anweisungen zum Einrichten von Listenern finden Sie unter [Konfigurieren eines ILB-Listeners für Verfügbarkeitsgruppen in Azure](availability-group-listener-powershell-configure.md).
-
-
-Sie können weiterhin separate Verbindungen mit den einzelnen Verfügbarkeitsreplikaten herstellen, indem Sie eine direkte Verbindung mit der Serverinstanz herstellen. Da Verfügbarkeitsgruppen abwärtskompatibel mit Clients für die Datenbankspiegelung sind, können Sie außerdem Verbindungen mit Verfügbarkeitsreplikaten wie Datenbankspiegelungspartnern herstellen, sofern die Replikate ähnlich wie die Datenbankspiegelung konfiguriert sind:
-
-* Es gibt ein primäres Replikat und ein sekundäres Replikat.
-* Das sekundäre Replikat ist als nicht lesbar konfiguriert (Option **Lesbare sekundäre Rolle** ist auf **Nein** festgelegt).
-
-Dies ist ein Beispiel für eine Clientverbindungszeichenfolge für eine einer Datenbankspiegelung ähnlichen Konfiguration mithilfe von ADO.NET oder SQL Server Native Client:
-
-```console
-Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=AvailabilityDatabase;
-```
-
-Weitere Informationen zur Clientkonnektivität finden Sie unter:
-
-* [Verwenden von Schlüsselwörtern für Verbindungszeichenfolgen mit SQL Server Native Client](/sql/relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client)
-* [Verbinden von Clients mit einer Datenbank-Spiegelungssitzung (SQL Server)](/sql/database-engine/database-mirroring/connect-clients-to-a-database-mirroring-session-sql-server)
-* [Connecting to Availability Group Listener in Hybrid IT (in englischer Sprache)](/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
-* [Verfügbarkeitsgruppenlistener, Clientkonnektivität und Anwendungsfailover (SQL Server)](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
-* [Verwenden von Verbindungszeichenfolgen für die Datenbankspiegelung mit Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
-
 ### <a name="network-latency-in-hybrid-it"></a>Netzwerklatenz bei Hybridlösungen
 Stellen Sie die HADR-Lösung mit der Vorgabe bereit, dass möglicherweise Zeiträume mit hoher Netzwerklatenz zwischen dem lokalen Netzwerk und Azure auftreten. Wenn Sie Replikate in Azure bereitstellen, verwenden Sie als Synchronisierungsmodus asynchrone Commits anstelle von synchronen Commits. Beim Bereitstellen von Datenbankspiegelungsservern sollten Sie sowohl lokal als auch in Azure den Modus für hohe Leistung anstelle des Modus für hohe Sicherheit verwenden.
+
+Weitere Informationen zu hilfreichen Cluster- und HADR-Einstellungen für die Cloudumgebung finden Sie in den [bewährten Methoden für die HADR-Konfiguration](hadr-cluster-best-practices.md). 
 
 ### <a name="geo-replication-support"></a>Georeplikationssupport
 Die Georeplikation von Azure-Datenträgern unterstützt nicht das Speichern von Datendatei und Protokolldatei derselben Datenbank auf unterschiedlichen Datenträgern. Der GRS repliziert Änderungen auf jedem Datenträger unabhängig und asynchron. Durch dieses Vorgehen wird die Schreibreihenfolge auf einem einzelnen Datenträgers in der georeplizierten Kopie sichergestellt, aber nicht die von georeplizierten Kopien mehrerer Datenträger. Wenn Sie eine Datenbank zum Speichern von Datendatei und Protokolldatei auf separaten Datenträgern konfigurieren, enthalten die nach einem Notfall wiederhergestellten Datenträger möglicherweise eine aktuellere Kopie der Datendatei als die Protokolldatei. Dies kann das Write-Ahead-Protokoll in SQL Server und die ACID-Eigenschaften von Transaktionen beschädigen. 

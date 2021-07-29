@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 25dfad48d3782c50797c855a0a8cbfded6581e0e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 573868d8dc637afcab1970d0e41ed2ed0830808d
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788011"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538844"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Trainieren von Modellen mit Azure Machine Learning-Datasets 
 
@@ -232,9 +232,13 @@ Wenn Sie ein Dataset **einbinden**, fügen Sie die Datei, auf die das Dataset ve
 
 Beim **Herunterladen** eines Datasets werden alle Dateien, auf die das Dataset verweist, auf das Computeziel heruntergeladen. Herunterladen wird für alle Computetypen unterstützt. 
 
+> [!NOTE]
+> Der Name des Downloadpfads darf für das Windows-Betriebssystem höchstens 255 alphanumerische Zeichen lang sein. Für das Linux-Betriebssystem darf der Name des Downloadpfads höchstens 4.096 alphanumerische Zeichen lang sein. Außerdem sollte der Dateiname (das letzte Segment des Downloadpfads) `/path/to/file/{filename}` für das Linux-Betriebssystem höchstens 255 alphanumerische Zeichen lang sein.
+
 Wenn Ihr Skript alle Dateien verarbeitet, auf die das Dataset verweist, und Ihr Computedatenträger über Platz für das vollständige Dataset verfügt, wird Herunterladen empfohlen, um den Mehraufwand das Streamen von Daten von Speicherdiensten zu vermeiden. Wenn der Umfang Ihrer Daten die Größe des Computedatenträgers übersteigt, ist das Herunterladen nicht möglich. Für dieses Szenario empfehlen wir das Einbinden, da nur die von Ihrem Skript verwendeten Datendateien zum Zeitpunkt der Verarbeitung geladen werden.
 
 Der folgende Code bindet `dataset` in das temporäre Verzeichnis unter `mounted_path` ein.
+
 
 ```python
 import tempfile
@@ -289,29 +293,45 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-* **Dataset initialization failed:  Waiting for mount point to be ready has timed out** (Fehler bei der Initialisierung des Datasets: Timeout beim Warten auf Verfügbarkeit des Bereitstellungpunkts): 
+**Dataset initialization failed:  Waiting for mount point to be ready has timed out** (Fehler bei der Initialisierung des Datasets: Timeout beim Warten auf Verfügbarkeit des Bereitstellungpunkts): 
   * Wenn Sie keine Ausgangsregeln für [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md) haben und `azureml-sdk>=1.12.0` verwenden, aktualisieren Sie `azureml-dataset-runtime` und die zugehörigen Abhängigkeiten auf die neueste Version für die jeweilige Nebenversion. Wenn Sie das SDK in einer Ausführung verwenden, erstellen Sie die Umgebung neu, damit sie über den neuesten Patch mit dem Fix verfügt. 
   * Wenn Sie `azureml-sdk<1.12.0` verwenden, führen Sie ein Upgrade auf die neueste Version aus.
   * Wenn Sie über Ausgangsregeln für Netzwerksicherheitsgruppen verfügen, stellen Sie sicher, dass eine Ausgangsregel vorhanden ist, die sämtlichen Datenverkehr für das Diensttag `AzureResourceMonitor` zulässt.
 
-### <a name="overloaded-azurefile-storage"></a>Überladener AzureFile-Speicher
+### <a name="azurefile-storage"></a>AzureFile-Speicher
 
-Wenn Sie eine Fehlermeldung `Unable to upload project files to working directory in AzureFile because the storage is overloaded` erhalten, wenden Sie die folgenden Problemumgehungen an.
+**Projektdateien können nicht in das Arbeitsverzeichnis in AzureFile hochgeladen werden, da der Speicher überlastet ist**:
 
-Falls Sie eine Dateifreigabe für andere Workloads (beispielsweise die Datenübertragung) verwenden, empfiehlt es sich, Blobs zu verwenden, damit die Dateifreigabe für die Übermittlung von Ausführungen frei ist. Alternativ kann die Workload auch auf zwei verschiedene Arbeitsbereiche aufgeteilt werden.
+* Falls Sie eine Dateifreigabe für andere Workloads (beispielsweise die Datenübertragung) verwenden, empfiehlt es sich, Blobs zu verwenden, damit die Dateifreigabe für die Übermittlung von Ausführungen frei ist.
+
+* Eine andere Option ist, die Workload auf zwei verschiedene Arbeitsbereiche aufzuteilen.
+
+**ConfigException: Aufgrund fehlender Anmeldeinformationen konnte keine Verbindung mit AzureFileService hergestellt werden. Entweder muss ein Kontoschlüssel oder ein SAS-Token mit dem Standardblobspeicher des Arbeitsbereichs verknüpft werden.**
+
+Führen Sie die folgenden Schritte aus, um sicherzustellen, dass Ihre Anmeldeinformationen für den Speicherzugriff mit dem Arbeitsbereich und dem zugehörigen Dateidatenspeicher verknüpft sind:
+
+1. Navigieren Sie im [Azure-Portal](https://ms.portal.azure.com) zu Ihrem Arbeitsbereich.
+1. Wählen Sie auf der Seite **Übersicht** des Arbeitsbereichs den Speicherlink aus.
+1. Wählen Sie auf der Speicherseite im Menü links die Option **Zugriffsschlüssel** aus. 
+1. Kopieren Sie den Schlüssel.
+1. Navigieren Sie zum [Azure Machine Learning-Studio](https://ml.azure.com) für Ihren Arbeitsbereich.
+1. Wählen Sie im Studio den Dateidatenspeicher aus, für den Sie Authentifizierungsanmeldeinformationen angeben möchten. 
+1. Wählen Sie **Authentifizierung aktualisieren** aus.
+1. Fügen Sie den Schlüssel aus den vorherigen Schritten ein. 
+1. Wählen Sie **Speichern** aus. 
 
 ### <a name="passing-data-as-input"></a>Übergeben von Daten als Eingabe
 
-*  **TypeError: FileNotFound: Datei oder Verzeichnis nicht vorhanden**: Dieser Fehler tritt auf, wenn sich die Datei nicht an dem von Ihnen angegebenen Dateipfad befindet. Sie müssen sicherstellen, dass Ihre Verweise auf die Datei konsistent mit dem Einbindungsort des Datasets auf Ihrem Computeziel ist. Um einen deterministischen Zustand sicherzustellen, empfiehlt es sich, für die Einbindung eines Datasets an einem Computeziel den abstrakten Pfad zu verwenden. Im folgenden Code wird das Dataset beispielsweise unter dem Stammverzeichnis des Dateisystems des Computeziels eingebunden: `/tmp`. 
+**TypeError: FileNotFound: Datei oder Verzeichnis nicht vorhanden**: Dieser Fehler tritt auf, wenn sich die Datei nicht an dem von Ihnen angegebenen Dateipfad befindet. Sie müssen sicherstellen, dass Ihre Verweise auf die Datei konsistent mit dem Einbindungsort des Datasets auf Ihrem Computeziel ist. Um einen deterministischen Zustand sicherzustellen, empfiehlt es sich, für die Einbindung eines Datasets an einem Computeziel den abstrakten Pfad zu verwenden. Im folgenden Code wird das Dataset beispielsweise unter dem Stammverzeichnis des Dateisystems des Computeziels eingebunden: `/tmp`. 
     
-    ```python
-    # Note the leading / in '/tmp/dataset'
-    script_params = {
-        '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
-    } 
-    ```
+```python
+# Note the leading / in '/tmp/dataset'
+script_params = {
+    '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+} 
+```
 
-    Wenn Sie den vorangestellten Schrägstrich („/“) nicht einschließen, müssen Sie das Arbeitsverzeichnis auf dem Computeziel als Präfix hinzufügen, z. B. `/mnt/batch/.../tmp/dataset`, um anzugeben, wo das Dataset eingebunden werden soll.
+Wenn Sie den vorangestellten Schrägstrich („/“) nicht einschließen, müssen Sie das Arbeitsverzeichnis auf dem Computeziel als Präfix hinzufügen, z. B. `/mnt/batch/.../tmp/dataset`, um anzugeben, wo das Dataset eingebunden werden soll.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

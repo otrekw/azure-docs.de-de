@@ -1,5 +1,5 @@
 ---
-title: 'Checkliste: Bewährte Methoden und Richtlinien zur Leistung'
+title: 'Checkliste: Bewährte Methoden und Richtlinien'
 description: Bietet bewährte Methoden und Richtlinien für den Speicher, um die Leistung Ihrer SQL Server-Instanz auf Azure Virtual Machines (VM) zu optimieren.
 services: virtual-machines-windows
 documentationcenter: na
@@ -7,6 +7,7 @@ author: dplessMSFT
 editor: ''
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: performance
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -15,19 +16,19 @@ ms.date: 05/06/2021
 ms.author: dpless
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: 7e22da62570a1689f5113f41710006698469fa6a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e658a2ceed031ea68bce17b87887fd42f24756d6
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110452185"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079929"
 ---
-# <a name="checklist-performance-best-practices-for-sql-server-on-azure-vms"></a>Checkliste: Bewährte Methoden zur Leistung für SQL Server auf Azure-VMs
+# <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>Checkliste: Bewährte Methoden für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bietet bewährte Methoden und Richtlinien für den Speicher, um die Leistung Ihrer SQL Server-Instanz auf Azure Virtual Machines (VM) zu optimieren. 
 
-Ausführliche Informationen finden Sie in den anderen Artikeln dieser Reihe: [VM-Größe](performance-guidelines-best-practices-vm-size.md), [Speicher](performance-guidelines-best-practices-storage.md), [Baseline sammeln](performance-guidelines-best-practices-collect-baseline.md). 
+Ausführliche Informationen finden Sie in den anderen Artikeln dieser Reihe: [Checkliste](performance-guidelines-best-practices-checklist.md), [VM-Größe](performance-guidelines-best-practices-vm-size.md), [Speicher](performance-guidelines-best-practices-storage.md), [Sicherheit](security-considerations-best-practices.md), [HADR-Konfiguration](hadr-cluster-best-practices.md), [Baseline erfassen](performance-guidelines-best-practices-collect-baseline.md). 
 
 
 ## <a name="overview"></a>Übersicht
@@ -69,7 +70,10 @@ Im folgenden finden Sie eine kurze Checkliste mit bewährten Methoden für die S
     - Vor dem Ändern der Cacheeinstellungen Ihres Datenträgers sollten Sie den SQL Server-Dienst immer anhalten.
 - Für die Entwicklung und Test-Arbeitsauslastungen sollten Sie den Standardspeicher verwenden. Es wird nicht empfohlen, HDD Standard/SDD für Produktionsworkloads zu verwenden.
 - [Auf Guthaben basierendes Datenträgerbursting](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) sollte nur für kleinere Dev-/Test-Workloads und Abteilungssysteme in Betracht gezogen werden.
-- Formatieren Sie den Datenträger, um die Größe der Zuordnungseinheiten für 64 KB für alle Datendateien zu verwenden, die auf einem anderen Laufwerk als dem temporären Laufwerk abgelegt werden `D:\` (Standardwert: 4 KB). SQL Server über Azure Marketplace bereitgestellten virtuellen Computer verfügen über Datenträger, die mit der Größe der Zuordnungseinheit formatiert sind, und Interleave für den Speicherpool auf 64 KB. 
+- Stellen Sie das Speicherkonto in derselben Region wie die SQL Server-VM bereit. 
+- Deaktivieren Sie den georedundanten Azure-Speicher (Georeplikation), und verwenden Sie LRS (lokal redundanter Speicher) für das Speicherkonto.
+- Formatieren Sie den Datenträger, um die Größe der Zuordnungseinheiten von 64 KB für alle Datendateien zu verwenden, die auf einem anderen Laufwerk als dem temporären Laufwerk `D:\` abgelegt werden (Standardwert: 4 KB). SQL Server über Azure Marketplace bereitgestellten virtuellen Computer verfügen über Datenträger, die mit der Größe der Zuordnungseinheit formatiert sind, und Interleave für den Speicherpool auf 64 KB. 
+
 
 Weitere Informationen finden Sie in den [bewährten Methoden für den Speicher](performance-guidelines-best-practices-storage.md). 
 
@@ -94,7 +98,7 @@ Im Folgenden finden Sie eine kurze Checkliste der Best Practices für SQL Serve
 - Aktivieren Sie die [automatische Optimierung](/sql/relational-databases/automatic-tuning/automatic-tuning) für unternehmenskritische Anwendungsdatenbanken.
 - Stellen Sie sicher, dass alle [Best Practices für tempdb](/sql/relational-databases/databases/tempdb-database#optimizing-tempdb-performance-in-sql-server) befolgt werden.
 - Platzieren Sie tempdb auf dem kurzlebigen Laufwerk D:/.
-- [Verwenden Sie die empfohlene Anzahl von Dateien](/troubleshoot/sql/performance/recommendations-reduce-allocation-contention#resolution). Beginnen Sie bei mehreren tempdb-Datendateien mit einer Datei pro Kern, und verwenden Sie nicht mehr als 8 Dateien.
+- [Verwenden Sie die empfohlene Anzahl von Dateien](/troubleshoot/sql/performance/recommendations-reduce-allocation-contention#resolution). Beginnen Sie bei mehreren tempdb-Datendateien mit einer Datei pro Kern, und verwenden Sie nicht mehr als acht Dateien.
 - Planen Sie SQL Server-Agent-Aufträge für die Ausführung von [DBCC CHECKDB](/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql#a-checking-both-the-current-and-another-database)-, [index reorganize](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes#reorganize-an-index)-, [index rebuild](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes#rebuild-an-index)- und [update statistics](/sql/t-sql/statements/update-statistics-transact-sql#examples)-Vorgängen.
 - Überwachen und verwalten Sie die Integrität und Größe der SQL Server-[Transaktionsprotokolldatei](/sql/relational-databases/logs/manage-the-size-of-the-transaction-log-file#Recommendations).
 - Nutzen Sie die neuen [SQL Server-Features](/sql/sql-server/what-s-new-in-sql-server-ver15), die für die verwendete Version verfügbar sind.
@@ -115,13 +119,56 @@ Im Folgenden finden Sie eine kurze Checkliste der Best Practices zur Azure-spezi
 - Implementieren Sie eine HADR-Lösung (High Availability and Disaster Recovery), die Ihren SLAs für Geschäftskontinuität entspricht. Weitere Informationen finden Sie unter [HADR-Optionen](business-continuity-high-availability-disaster-recovery-hadr-overview.md#deployment-architectures), die für SQL Server auf Azure-VMs verfügbar sind. 
 - Verwenden Sie das Azure-Portal (Support und Problembehandlung), um die Integrität und den Verlauf von [Ressourcen](../../../service-health/resource-health-overview.md) zu bewerten. Übermitteln Sie bei Bedarf neue Supportanfragen.
 
+## <a name="hadr-configuration"></a>HADR-Konfiguration
+
+HADR-Features (High Availability and Disaster Recovery) wie die [AlwaysOn-Verfügbarkeitsgruppe](availability-group-overview.md) und die [Failoverclusterinstanz](failover-cluster-instance-overview.md) basieren auf der zugrunde liegenden [Windows Server-Failovercluster](hadr-windows-server-failover-cluster-overview.md)-Technologie. Sehen Sie sich die bewährten Methoden zum Ändern Ihrer HADR-Einstellungen an, um die Cloudumgebung besser zu unterstützen. 
+
+Erwägen Sie für Ihren Windows-Cluster die folgenden bewährten Methoden: 
+
+* Ändern Sie den Cluster in weniger aggressive Parameter, um unerwartete Ausfälle durch vorübergehende Netzwerkfehler oder Wartung der Azure-Plattform zu vermeiden. Weitere Informationen finden Sie unter [Heartbeat- und Schwellenwerteinstellungen](hadr-cluster-best-practices.md#heartbeat-and-threshold). Verwenden Sie für Windows Server 2012 und höher die folgenden Werte: 
+   - **SameSubnetDelay**: 1 Sekunde
+   - **SameSubnetThreshold**: 40 Heartbeats
+   - **CrossSubnetDelay**: 1 Sekunde
+   - **CrossSubnetThreshold**: 40 Heartbeats
+* Platzieren Sie Ihre VMs in einer Verfügbarkeitsgruppe oder verschiedenen Verfügbarkeitszonen.  Weitere Informationen finden Sie unter [VM-Verfügbarkeitseinstellungen](hadr-cluster-best-practices.md#vm-availability-settings). 
+* Verwenden Sie eine einzelne NIC pro Clusterknoten und ein einzelnes Subnetz. 
+* Konfigurieren Sie die [Clusterquorumabstimmung](hadr-cluster-best-practices.md#quorum-voting) so, dass eine ungerade Anzahl von mindestens drei Stimmen verwendet wird. Weisen Sie keine Stimmen zu DR-Regionen zu. 
+* Überwachen Sie [Ressourcengrenzwerte](hadr-cluster-best-practices.md#resource-limits) sorgfältig, um unerwartete Neustarts oder Failover aufgrund von Ressourceneinschränkungen zu vermeiden.
+   - Stellen Sie sicher, dass Betriebssystem, Treiber und SQL Server den neuesten Builds entsprechen. 
+   - Optimieren Sie die Leistung für SQL Server auf Azure-VMs. Weitere Informationen finden Sie in den anderen Abschnitten dieses Artikels. 
+   - Reduzieren oder verteilen Sie die Workload, um Ressourcengrenzwerte zu vermeiden. 
+   - Wechseln Sie zu einer VM oder einem Datenträger mit höheren Grenzwerten, um Einschränkungen zu vermeiden. 
+
+Erwägen Sie für die SQL Server Verfügbarkeitsgruppe oder Failoverclusterinstanz die folgenden bewährten Methoden: 
+
+* Wenn häufig unerwartete Fehler auftreten, befolgen Sie die leistungsbezogenen bewährten Methoden, die im restlichen Teil dieses Artikels beschrieben werden. 
+* Falls sich die unerwarteten Failover durch Optimierung der Leistung der SQL Server-VMs nicht beheben lassen, erwägen Sie eine [Lockerung der Überwachung](hadr-cluster-best-practices.md#relaxed-monitoring) für die Verfügbarkeitsgruppe oder Failoverclusterinstanz. Dadurch wird jedoch möglicherweise nicht die zugrunde liegende Ursache des Problems behoben, und durch Verringerung der Fehlerwahrscheinlichkeit können Symptome maskiert werden. Möglicherweise müssen Sie die zugrunde liegende Ursache dennoch untersuchen und beheben. Verwenden Sie für Windows Server 2012 oder höher die folgenden empfohlenen Werte: 
+   - **Leasetimeout**:Verwenden Sie diese Gleichung, um den maximalen Leasetimeoutwert zu berechnen:   
+    `Lease timeout < (2 * SameSubnetThreshold * SameSubnetDelay)`.    
+    Beginnen Sie mit 40 Sekunden. Wenn Sie die zuvor empfohlenen gelockerten `SameSubnetThreshold`- und `SameSubnetDelay`-Werte verwenden, darf der Leasetimeoutwert 80 Sekunden nicht überschreiten.    
+   - **Maximale Fehler in einem angegebenen Zeitraum**: Legen Sie diesen Wert auf 6 fest. 
+* Wenn Sie den Namen des virtuellen Netzwerks (VNN) verwenden, um eine Verbindung mit Ihrer HADR-Lösung herzustellen, geben Sie `MultiSubnetFailover = true` in der Verbindungszeichenfolge an, auch wenn Ihr Cluster nur ein Subnetz umfasst. 
+   - Wenn der Client `MultiSubnetFailover = True` nicht unterstützt, müssen Sie möglicherweise `RegisterAllProvidersIP = 0` und `HostRecordTTL = 300` festlegen, um Clientanmeldeinformationen für kürzere Zeiträume zwischenzuspeichern. Dies kann jedoch zu zusätzlichen Abfragen an den DNS-Server führen. 
+- Beim Herstellen einer Verbindung mit der HADR-Lösung mithilfe des Namens des verteilten Netzwerks (Distributed Network Name, DNN) ist Folgendes zu beachten:
+   - Sie müssen einen Clienttreiber verwenden, der `MultiSubnetFailover = True` unterstützt, und dieser Parameter muss in der Verbindungszeichenfolge enthalten sein. 
+   - Verwenden Sie einen eindeutigen DNN-Port in der Verbindungszeichenfolge, wenn Sie eine Verbindung mit dem DNN-Listener für eine Verfügbarkeitsgruppe herstellen. 
+- Verwenden Sie eine Verbindungszeichenfolge für Datenbankspiegelung für eine Basic-Verfügbarkeitsgruppe, um die Notwendigkeit eines Lastenausgleichs oder DNN zu umgehen. 
+- Überprüfen Sie die Sektorgröße Ihrer VHDs, bevor Sie Ihre Hochverfügbarkeitslösung bereitstellen, um falsch ausgerichtete E/A zu vermeiden. Weitere Informationen finden Sie unter [KB3009974](https://support.microsoft.com/topic/kb3009974-fix-slow-synchronization-when-disks-have-different-sector-sizes-for-primary-and-secondary-replica-log-files-in-sql-server-ag-and-logshipping-environments-ed181bf3-ce80-b6d0-f268-34135711043c). 
+
+
+Weitere Informationen finden Sie in den umfassenden [bewährten Methoden für HADR](hadr-cluster-best-practices.md). 
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sehen Sie sich auch die anderen Artikel in dieser Reihe an, um mehr zu erfahren:
+
 - [Größe des virtuellen Computers](performance-guidelines-best-practices-vm-size.md)
 - [Storage](performance-guidelines-best-practices-storage.md)
+- [Security](security-considerations-best-practices.md)
+- [HADR-Einstellungen](hadr-cluster-best-practices.md)
 - [Baseline auswählen](performance-guidelines-best-practices-collect-baseline.md)
 
 Bewährte Methoden für die Sicherheit finden Sie unter [Sicherheitsüberlegungen für SQL Server auf Azure Virtual Machines](security-considerations-best-practices.md).
 
-Weitere Artikel zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.md) weitere Informationen.
+Weitere Artikel zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.yml) weitere Informationen.

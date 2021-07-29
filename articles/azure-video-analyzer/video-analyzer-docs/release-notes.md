@@ -3,12 +3,12 @@ title: Versionshinweise zu Azure Video Analyzer – Azure
 description: Dieser Artikel enthält Versionshinweise zu Releases, Verbesserungen, Fehlerbehebungen und bekannten Problemen von Azure Video Analyzer.
 ms.topic: conceptual
 ms.date: 05/25/2021
-ms.openlocfilehash: ffb6381fafd4aabed3bd27b14f4778d23fa7441e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: ef1c395bb10000599f901e62cf77b3573146aeee
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386081"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591222"
 ---
 # <a name="azure-video-analyzer-release-notes"></a>Versionshinweise zu Azure Video Analyzer
 
@@ -23,13 +23,30 @@ Dieser Artikel bietet Folgendes:
 
 <hr width=100%>
 
+## <a name="june-3-2021"></a>3\. Juni 2021
+
+Das Releasetag für die Aktualisierung des Moduls im Juli 2021 lautet:
+
+```
+     mcr.microsoft.com/media/video-analyzer:1.0.1
+```
+> [!NOTE]
+> In den Schnellstarts und Tutorials verwenden die Bereitstellungsmanifeste das Tag „1“ (video-analyzer:1). Daher sollte eine einfache Neubereitstellung solcher Manifeste das Modul auf Ihren Edgegeräten aktualisieren, wenn neuere Tags veröffentlicht werden.
+
+### <a name="module-updates"></a>Modulupdates
+* Unterstützt Unicode-Zeichen in den Anmeldeinformationen zum Herstellen einer Verbindung mit einer RTSP-Kamera
+* Updates zum Aktivieren detaillierter Protokolle im Debugmodus
+
+<hr width=100%>
+
 ## <a name="may-25-2021"></a>25. Mai 2021
 
 Dieses Release ist die erste öffentliche Vorschauversion von Azure Video Analyzer. Das Releasetag ist
 
 ```
-     mcr.microsoft.com/media/video-analyzer:1.0.0
+mcr.microsoft.com/media/video-analyzer:1.0.0
 ```
+
 > [!NOTE]
 > In den Schnellstarts und Tutorials verwenden die Bereitstellungsmanifeste das Tag „1“ (video-analyzer:1). Daher sollte eine einfache Neubereitstellung solcher Manifeste das Modul auf Ihren Edgegeräten aktualisieren, wenn neuere Tags veröffentlicht werden.
 

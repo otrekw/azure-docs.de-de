@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 06/04/2021
 ms.author: alzam
-ms.openlocfilehash: 4f406e0f0afd75cfc21b2fe71c41a1ec2c86dd51
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: c9b6671a2baa807d8def27a78d7776eb6fec2c1a
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228854"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559428"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Übergang von SSTP zum OpenVPN-Protokoll oder zu IKEv2
 
@@ -23,11 +23,11 @@ Mit einer P2S-VPN-Gatewayverbindung (Point-to-Site) können Sie von einem einzel
 
 P2S-VPN kann eins der folgenden Protokolle verwenden:
 
-* **OpenVPN&reg;-Protokoll**, ein auf SSL/TLS basierendes VPN-Protokoll. Eine SSL-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von SSL verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. OpenVPN kann zum Herstellen einer Verbindung von Android-, iOS- (Versionen 11.0 und höher), Windows-, Linux- und Mac-Geräten (OSX-Version 10.13 und höher) verwendet werden.
+* **OpenVPN&reg;-Protokoll**, ein auf SSL/TLS basierendes VPN-Protokoll. Eine SSL-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von SSL verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. OpenVPN kann zum Herstellen einer Verbindung von Android-, iOS- (Version 11.0 und höher), Windows-, Linux- und Mac-Geräten (macOS-Version 10.13 und höher) verwendet werden.
 
 * **Secure Socket Tunneling-Protokoll (SSTP)** , ein proprietäres SSL-basiertes VPN-Protokoll. Eine SSL-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von SSL verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. SSTP wird nur auf Windows-Geräten unterstützt. Azure unterstützt alle Versionen von Windows, die über SSTP verfügen (Windows 7 und höher). **SSTP unterstützt unabhängig von der Gateway-SKU nur bis zu 128 gleichzeitige Verbindungen**.
 
-* IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (OSX-Version 10.11 und höher) verwendet werden.
+* IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (macOS-Version 10.11 und höher) verwendet werden.
 
 
 >[!NOTE]

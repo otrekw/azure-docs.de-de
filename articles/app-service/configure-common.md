@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: a865c1070150b31399b5b738a0a469a07e0b13de
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 55f34ec9416bdca81d025efb0910b10a7fa48736
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122356"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110585869"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -59,7 +59,7 @@ Um eine Einstellung zu bearbeiten, klicken Sie auf die **Bearbeiten**-Schaltflä
 Klicken Sie abschließend auf **Aktualisieren**. Vergessen Sie nicht, auf **Speichern** zu klicken, wenn Sie wieder auf der Seite **Konfiguration** sind.
 
 > [!NOTE]
-> In einem standardmäßigen Linux-Container oder einem benutzerdefinierten Linux-Container muss jede geschachtelte JSON-Schlüsselstruktur im App-Einstellungsnamen wie `ApplicationInsights:InstrumentationKey` in App Service als `ApplicationInsights__InstrumentationKey` für den Schlüsselnamen konfiguriert werden. Mit anderen Worten: Jedes `:` muss durch `__` (doppelter Unterstrich) ersetzt werden.
+> In einem standardmäßigen Linux-App Service oder einem benutzerdefinierten Linux-Container muss jede geschachtelte JSON-Schlüsselstruktur im App-Einstellungsnamen wie `ApplicationInsights:InstrumentationKey` in App Service als `ApplicationInsights__InstrumentationKey` für den Schlüsselnamen konfiguriert werden. Mit anderen Worten: Jedes `:` muss durch `__` (doppelter Unterstrich) ersetzt werden.
 >
 
 ### <a name="edit-in-bulk"></a>Bearbeiten im Massenvorgang
@@ -200,7 +200,7 @@ Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Ein
     ![Allgemeine Einstellungen für Linux-Container](./media/configure-common/open-general-linux.png)
 
 - **Plattformeinstellungen**: Ermöglicht das Konfigurieren von Einstellungen für die Hostingplattform, einschließlich:
-    - **Bitanzahl**: 32-Bit oder 64-Bit.
+    - **Bitanzahl**: 32-Bit oder 64-Bit. (Der Standardwert ist 32-Bit für einen im Portal erstellten App Service.)
     - **WebSocket-Protokoll**: Z.B. für [ASP.NET SignalR] oder [socket.io](https://socket.io/).
     - **Always On**: Hält die App auch dann geladen, wenn kein Datenverkehr stattfindet. Dies ist für fortlaufende WebJobs oder WebJobs, die mithilfe eines CRON-Ausdrucks ausgelöst werden, erforderlich.
       > [!NOTE]

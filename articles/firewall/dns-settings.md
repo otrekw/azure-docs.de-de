@@ -5,18 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 04/30/2021
+ms.date: 05/26/2021
 ms.author: victorh
-ms.openlocfilehash: 4692b21333999dfc6fcc8edcbba8af800989ee1d
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e4543af78b173632e3374567e9a199f182679e8f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325515"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701722"
 ---
 # <a name="azure-firewall-dns-settings"></a>DNS-Einstellungen für Azure Firewall
 
-Sie können einen benutzerdefinierten DNS-Server konfigurieren und den DNS-Proxy für Azure Firewall aktivieren. Konfigurieren Sie diese Einstellungen, wenn Sie die Firewall bereitstellen, oder konfigurieren Sie die Einstellungen über die Seite **DNS-Einstellungen** zu einem späteren Zeitpunkt.
+Sie können einen benutzerdefinierten DNS-Server konfigurieren und den DNS-Proxy für Azure Firewall aktivieren. Konfigurieren Sie diese Einstellungen, wenn Sie die Firewall bereitstellen, oder konfigurieren Sie die Einstellungen über die Seite **DNS-Einstellungen** zu einem späteren Zeitpunkt. Standardmäßig verwendet Azure Firewall Azure DNS, und der DNS-Proxy ist deaktiviert.
 
 ## <a name="dns-servers"></a>DNS-Server
 
@@ -29,7 +30,7 @@ Ein DNS-Server verwaltet Domänennamen und löst diese in IP-Adressen auf. Azure
 
 1. Wählen Sie unter Azure Firewall die Option **Einstellungen** und danach **DNS-Einstellungen** aus.
 2. Unter **DNS-Server** können Sie vorhandene DNS-Server eingeben oder hinzufügen, die zuvor in Ihrem virtuellen Netzwerk angegeben wurden.
-3. Wählen Sie **Speichern** aus.
+3. Wählen Sie **Übernehmen**.
 
 Die Firewall leitet nun DNS-Datenverkehr zur Namensauflösung an die angegebenen DNS-Server weiter.
 
@@ -63,7 +64,9 @@ $azFw | Set-AzFirewall
 
 ## <a name="dns-proxy"></a>DNS-Proxy
 
-Sie haben auch die Möglichkeit, Azure Firewall als DNS-Proxy zu konfigurieren. Ein DNS-Proxy ist ein Vermittler für DNS-Anforderungen von virtuellen Clientcomputern an einen DNS-Server. Wenn Sie die FQDN-Filterung (Fully Qualified Domain Name, vollqualifizierter Domänenname) in Netzwerkregeln aktivieren möchten, aktivieren Sie den DNS-Proxy, und aktualisieren Sie die Konfiguration des virtuellen Computers, um die Firewall als DNS-Proxy zu verwenden.
+Sie haben auch die Möglichkeit, Azure Firewall als DNS-Proxy zu konfigurieren. Ein DNS-Proxy ist ein Vermittler für DNS-Anforderungen von virtuellen Clientcomputern an einen DNS-Server.
+
+Wenn Sie die FQDN-Filterung (Fully Qualified Domain Name, vollqualifizierter Domänenname) in Netzwerkregeln aktivieren möchten, aktivieren Sie den DNS-Proxy, und aktualisieren Sie die Konfiguration des virtuellen Computers, um die Firewall als DNS-Proxy zu verwenden.
 
 :::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="D N S-Proxykonfiguration mit einem benutzerdefinierten D N S-Server.":::
 
@@ -76,7 +79,13 @@ Wenn Azure Firewall ein DNS-Proxy ist, können zwei Arten von Zwischenspeicherun
 
 - **Negativer Cache**: Die DNS-Auflösung führt zu keiner Antwort oder keiner Auflösung. Die Firewall speichert diese Information eine Stunde lang zwischen.
 
-Der DNS-Proxy speichert alle aufgelösten IP-Adressen von FQDNs in Netzwerkregeln. Als Best Practice sollten Sie FQDNs verwenden, die in eine einzige IP-Adresse aufgelöst werden.  
+Der DNS-Proxy speichert alle aufgelösten IP-Adressen von FQDNs in Netzwerkregeln. Als Best Practice sollten Sie FQDNs verwenden, die in eine einzige IP-Adresse aufgelöst werden.
+
+### <a name="policy-inheritance"></a>Richtlinienvererbung
+
+ DNS-Einstellungen einer Richtlinie, die auf eine eigenständige Firewall angewendet werden, setzen die DNS-Einstellungen der eigenständigen Firewall außer Kraft. Eine untergeordnete Richtlinie erbt alle DNS-Einstellungen der übergeordneten Richtlinie, kann jedoch die übergeordnete Richtlinie außer Kraft setzen.
+
+Um beispielsweise FQDNs in der Netzwerkregel zu verwenden, sollte der DNS-Proxy aktiviert sein. Wenn für eine übergeordnete Richtlinie jedoch **kein** DNS-Proxy aktiviert ist, unterstützt die untergeordnete Richtlinie keine FQDNs in Netzwerkregeln, es sei denn, Sie setzen diese Einstellung lokal außer Kraft.
 
 ### <a name="dns-proxy-configuration"></a>Konfiguration des DNS-Proxys
 
@@ -163,4 +172,5 @@ $azFw | Set-AzFirewall
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[FQDN-Filterung in Netzwerkregeln](fqdn-filtering-network-rules.md)
+- [Details zu Azure Firewall-DNS-Proxys](dns-details.md)
+- [FQDN-Filterung in Netzwerkregeln](fqdn-filtering-network-rules.md)

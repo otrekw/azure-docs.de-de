@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ihre Zertifikate in einem Azure Kubernetes Se
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 6baad681a9d629c397c53ab90057cc5746fc3b85
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b3ab6074dcbf79df8b2b0ff3369b94006343a2a6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776013"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089864"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Rotieren von Zertifikaten in Azure Kubernetes Service (AKS)
 
@@ -80,7 +80,7 @@ kubectl get no
 ```
 
 > [!NOTE]
-> Wenn Sie über Dienste verfügen, die auf AKS basieren (z.B. [Azure Dev Spaces][dev-spaces]), müssen Sie möglicherweise auch [die Zertifikate für diese Dienste aktualisieren][dev-spaces-rotate].
+> Wenn Sie Dienste haben, die auf AKS basieren, müssen Sie möglicherweise auch die Zertifikate für diese Dienste aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -92,5 +92,3 @@ In diesem Artikel wurde gezeigt, wie Sie die Zertifikate, Zertifizierungsstellen
 [az-extension-add]: /cli/azure/extension#az_extension_add
 [az-extension-update]: /cli/azure/extension#az_extension_update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
-[dev-spaces]: ../dev-spaces/index.yml
-[dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates

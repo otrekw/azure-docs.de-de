@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 0dea30723a3ebe1598d6304ac3c98bfe1b55b466
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcd0992347033fa355db1f952e775a5077fecabe
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563012"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554511"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Steuern von Updates mit der Wartungssteuerung und dem Azure-Portal
 
@@ -24,28 +24,34 @@ Mit der Wartungssteuerung können Sie entscheiden, wann Sie Updates auf Ihre iso
 1. Melden Sie sich beim Azure-Portal an.
 
 1. Suchen Sie nach **Wartungskonfigurationen**.
-
-   ![Screenshot des Öffnens von Wartungskonfigurationen](media/virtual-machines-maintenance-control-portal/maintenance-configurations-search.png)
+    
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-search-bar.png" alt-text="Screenshot des Öffnens von Wartungskonfigurationen":::
 
 1. Klicken Sie auf **Hinzufügen**.
 
-   ![Screenshot des Hinzufügens einer Wartungskonfiguration](media/virtual-machines-maintenance-control-portal/maintenance-configurations-add.png)
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-add-2.png" alt-text="Screenshot des Hinzufügens einer Wartungskonfiguration":::
 
-1. Wählen Sie ein Abonnement und eine Ressourcengruppe aus, geben Sie einen Namen für die Konfiguration an, und wählen Sie eine Region aus. Klicken Sie auf **Weiter**.
+1. Wählen Sie in der Registerkarte Grundlagen ein Abonnement und eine Ressourcengruppe aus, geben Sie einen Namen für die Konfiguration an und wählen Sie anschließend eine Region und dann *Host* als Bereich aus. Klicken Sie auf **Weiter**.
+    
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-basics-tab.png" alt-text="Screenshot der Grundlagen der Wartungskonfiguration":::
 
-   ![Screenshot der Grundlagen der Wartungskonfiguration](media/virtual-machines-maintenance-control-portal/maintenance-configurations-basics.png)
+1. In der Registerkarte Zeitplan können Sie ein geplantes Fenster deklarieren, in dem Azure die Updates auf Ihre Ressourcen anwendet. Legen Sie ein Startdatum, ein Wartungsfenster und die Wiederholungen fest. Nachdem Sie ein geplantes Fenster erstellt haben, müssen Sie die Updates nicht mehr manuell anwenden. Klicken Sie auf **Weiter**. 
+
+    > [!IMPORTANT]
+    > Die **Dauer** des Wartungsfensters muss *2 Stunden* oder länger sein. Die Wartung muss mindestens ein Mal in 35 Tagen **wiederholt** werden. 
+
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-schedule-tab.png" alt-text="Screenshot des Wartungskonfigurationszeitplans":::
+
+1. In der Registerkarte Zuweisung können Sie die Ressourcen entweder jetzt zuweisen, oder den Schritt überspringen und die Ressourcen später zuweisen, nachdem Sie die Wartungskonfiguration bereitgestellt haben. Klicken Sie auf **Weiter**.
 
 1. Fügen Sie Tags und Werte hinzu. Klicken Sie auf **Weiter**.
-
-   ![Screenshot des Hinzufügens von Tags zur Wartungskonfiguration](media/virtual-machines-maintenance-control-portal/maintenance-configurations-tags.png)
+    
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-tags-tab.png" alt-text="Screenshot des Hinzufügens von Tags zur Wartungskonfiguration":::
 
 1. Überprüfen Sie die Zusammenfassung. Klicken Sie auf **Erstellen**.
 
-   ![Screenshot des Erstellens einer Wartungskonfiguration](media/virtual-machines-maintenance-control-portal/maintenance-configurations-create.png)
-
 1. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 
-   ![Screenshot der abgeschlossenen Bereitstellung einer Wartungskonfiguration](media/virtual-machines-maintenance-control-portal/maintenance-configurations-deployment-complete.png)
 
 ## <a name="assign-the-configuration"></a>Zuweisen der Konfiguration
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 0ff11c9601fb55e27d8780185d77c177e9d9201b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94863fb8c21bf061547e0faa6ed209513d79c2ab
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584642"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810154"
 ---
 # <a name="monitor-azure-cache-for-redis"></a>Überwachen von Azure Cache for Redis
 
@@ -46,15 +46,18 @@ Der Abschnitt **Nutzung** des Blatts **Übersicht** umfasst die Diagramme **Redi
 
 Der Bereich **Tarif** zeigt den Tarif für den Cache an und kann zum [Skalieren](cache-how-to-scale.md) des Caches in einen anderen Tarif verwendet werden.
 
-## <a name="view-metrics-with-azure-monitor"></a>Anzeigen von Metriken mit Azure Monitor
+## <a name="view-metrics-charts-for-all-your-caches-with-azure-monitor-for-azure-cache-for-redis"></a>Anzeigen von Metrikdiagrammen für alle Ihre Caches mit Azure Monitor für Azure Cache for Redis
 
-Um Redis-Metriken anzuzeigen und benutzerdefinierte Diagramme mit Azure Monitor zu erstellen, klicken Sie im **Ressourcenmenü** auf **Metriken**, und passen Sie das Diagramm mit den gewünschten Metriken, dem Berichtsintervall, dem Diagrammtyp usw. an.
+Verwenden Sie [Azure Monitor für Azure Cache for Redis](../azure-monitor/insights/redis-cache-insights-overview.md) (Preview), um eine Übersicht über die Gesamtleistung, Fehler, Kapazität und den Betriebszustand aller Ihrer Azure Cache for Redis-Ressourcen in einer anpassbaren, einheitlichen, interaktiven Erfahrung zu erhalten, in der Sie Details zu einzelnen Ressourcen anzeigen können. Azure Monitor für Azure Cache for Redis basiert auf dem [Arbeitsmappenfeature von Azure Monitor](../azure-monitor/visualize/workbooks-overview.md), das umfassende Visualisierungen für Metriken und andere Daten bereitstellt. Weitere Informationen finden Sie im Artikel [Erkunden von Azure Monitor für Azure Cache for Redis](../azure-monitor/insights/redis-cache-insights-overview.md).
+
+## <a name="view-metrics-with-azure-monitor-metrics-explorer"></a>Anzeigen von Metriken mit dem Metrik-Explorer von Azure Monitor
+
+In Szenarien, in denen Sie nicht die volle Flexibilität von Azure Monitor für Azure Cache for Redis benötigen, können Sie stattdessen mithilfe des Azure Monitor Metrik-Explorers Metriken anzeigen und benutzerdefinierte Diagramme erstellen. Klicken Sie im **Ressourcenmenü** auf **Metriken**, und passen Sie das Diagramm mit den gewünschten Metriken, dem Berichtsintervall, dem Diagrammtyp usw. an.
 
 ![Im linken Navigationsbereich von contoso55 ist „Metriken“ eine Option unter „Überwachung“, die hervorgehoben ist. Unter „Metriken“ gibt es eine Liste von Metriken. Cachetreffer und Cachefehler sind ausgewählt.](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
 Weitere Informationen zum Verwenden von Metriken mit Azure Monitor finden Sie unter [Übersicht über Metriken in Microsoft Azure](../azure-monitor/data-platform.md).
 
-<a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Exportieren von Cachemetriken
 

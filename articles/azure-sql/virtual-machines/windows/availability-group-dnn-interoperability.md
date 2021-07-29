@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/08/2020
 ms.author: mathoma
-ms.openlocfilehash: 19b4b7407468b19419e2f85193b1f8fb6ace39c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7ff8eaaca03a2c977311c6469e06714c87ce53f
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359403"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572359"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>Featureinteroperabilität mit Verfügbarkeitsgruppe und DNN-Listener 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,6 +27,13 @@ Es gibt bestimmte SQL Server-Features, für die ein hartcodierter virtueller Net
 
 In diesem Artikel werden SQL Server-Features und die Interoperabilität mit dem DNN-Listener für Verfügbarkeitsgruppen beschrieben. 
 
+## <a name="behavior-differences"></a>Unterschiede im Verhalten
+
+Es bestehen einige Verhaltensunterschiede zwischen der Funktionalität des VNN-Listeners und des DNN-Listeners, die zu beachten sind: 
+
+- **Failoverzeit**: Die Failoverzeit ist bei Verwendung eines DNN-Listeners schneller, da nicht gewartet werden muss, bis der Netzwerklastenausgleich das Fehlerereignis erkennt und das Routing ändert. 
+- **Vorhandene Verbindungen**: Verbindungen, die mit einer *bestimmten Datenbank* innerhalb einer Verfügbarkeitsgruppe hergestellt werden, für die ein Failover ausgeführt wird, werden geschlossen, aber andere Verbindungen mit dem primären Replikat bleiben geöffnet, da der DNN während des Failoverprozesses online bleibt. Dies ist anders als in einer herkömmlichen VNN-Umgebung, in der alle Verbindungen mit dem primären Replikat normalerweise geschlossen werden, wenn für die Verfügbarkeitsgruppe ein Failover ausgeführt wird, der Listener offline geht und das primäre Replikat in die sekundäre Rolle übergeht. Wenn Sie einen DNN-Listener verwenden, müssen Sie möglicherweise Anwendungsverbindungszeichenfolgen anpassen, um sicherzustellen, dass Verbindungen beim Failover an das neue primäre Replikat umgeleitet werden.
+- **Offene Transaktionen:** Offene Transaktionen für eine Datenbank in einer Verfügbarkeitsgruppe, für die ein Failover ausgeführt wird, werden geschlossen und es wird ein Rollback durchgeführt. Zudem müssen Sie die Verbindung *manuell* wiederherstellen. Schließen Sie z. B. in SQL Server Management Studio das Abfragefenster, und öffnen Sie ein neues. 
 
 ## <a name="client-drivers"></a>Clienttreiber
 
@@ -125,8 +132,10 @@ Konfigurieren Sie den Verbindungsserver mit dem Namen und Port des DNN-Listeners
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter:
 
-- [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)   
-- [Always On-Verfügbarkeitsgruppe](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)
 

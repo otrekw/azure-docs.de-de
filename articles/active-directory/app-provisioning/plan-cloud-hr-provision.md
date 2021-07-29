@@ -3,20 +3,20 @@ title: Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbere
 description: In diesem Artikel wird der Bereitstellungsprozess für die Integration von HR-Cloudsystemen wie Workday und Sucessfactors mit Azure Active Directory beschrieben. Die Integration von Azure AD in Ihr HR-Cloudsystem führt zu einem vollständigen Identity Lifecycle Management-System.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/22/2019
+ms.date: 06/07/2021
 ms.author: kenwith
-ms.reviewer: arvindha, celested
-ms.openlocfilehash: d9171226de7c975e75139af92798ea78419428f0
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.reviewer: arvinh
+ms.openlocfilehash: fb2f36e1b51ed5fbb7c3f2c002760d07f3723645
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175422"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590451"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 
@@ -85,7 +85,7 @@ Sie benötigen zudem eine gültige Abonnementlizenz für Azure AD Premium P1 ode
 - Die Rolle „Azure AD-[Anwendungsadministrator](../roles/permissions-reference.md#application-administrator)“, um die Bereitstellungs-App im Azure-Portal zu konfigurieren
 - Eine Test- und Produktionsinstanz der HR-Cloud-App
 - Administratorberechtigungen in der HR-Cloud-App zum Erstellen eines Systemintegrationsbenutzers für Testzwecke und Vornehmen von Änderungen zum Testen von Mitarbeiterdaten
-- Ein Server mit mindestens Windows Server 2012 und .NET 4.7.1 Runtime zum Hosten des Bereitstellungs-Agents von Azure AD Connect für die Benutzerbereitstellung in Active Directory
+- Für die Benutzerbereitstellung in Active Directory ist ein Server unter Windows Server 2016 (oder höher) zum Hosten des Azure AD Connect-Bereitstellungs-Agents erforderlich. Bei diesem Server sollte es sich um einen Server der Ebene 0 im Active Directory-Verwaltungsebenenmodell handeln.
 - [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) für die Synchronisierung von Benutzern zwischen Azure Active Directory und Azure AD
 
 ### <a name="training-resources"></a>Schulungsressourcen
@@ -182,7 +182,7 @@ Folgende Produktionskonfigurationen werden empfohlen:
 |:-|:-|
 |Anzahl der bereitzustellenden Azure AD Connect-Bereitstellungs-Agents|Zwei (für Hochverfügbarkeit und Failover)
 |Anzahl der zu konfigurierenden Bereitstellungsconnector-Apps|Eine App pro untergeordneter Domäne|
-|Serverhost für Azure AD Connect-Bereitstellungs-Agent|Windows 2012 R2 oder höher mit „Sichtverbindung“ zur Geolocation von Azure Active Directory-Domänencontrollern</br>Koexistenz mit dem Azure AD Connect-Dienst ist möglich|
+|Serverhost für Azure AD Connect-Bereitstellungs-Agent|Windows Server 2016 mit „Sichtverbindung“ zur Geolocation von Active Directory-Domänencontrollern</br>Koexistenz mit dem Azure AD Connect-Dienst ist möglich|
 
 ![Flow zu lokalen Agents](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img4.png)
 
@@ -196,24 +196,133 @@ Folgende Produktionskonfigurationen werden empfohlen:
 |:-|:-|
 |Anzahl der lokal bereitzustellenden Azure AD Connect-Bereitstellungs-Agents|Zwei pro nicht zusammenhängender Azure Active Directory-Gesamtstruktur|
 |Anzahl der zu konfigurierenden Bereitstellungsconnector-Apps|Eine App pro untergeordneter Domäne|
-|Serverhost für Azure AD Connect-Bereitstellungs-Agent|Windows 2012 R2 oder höher mit „Sichtverbindung“ zur Geolocation von Azure Active Directory-Domänencontrollern</br>Koexistenz mit dem Azure AD Connect-Dienst ist möglich|
+|Serverhost für Azure AD Connect-Bereitstellungs-Agent|Windows Server 2016 mit „Sichtverbindung“ zur Geolocation von Active Directory-Domänencontrollern</br>Koexistenz mit dem Azure AD Connect-Dienst ist möglich|
 
 ![Einzelner HR-Cloud-App-Mandant, nicht zusammenhängende Azure Active Directory-Gesamtstruktur](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img5.png)
 
 ### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Anforderungen des Azure AD Connect-Bereitstellungs-Agents
 
-Die Lösung für die Benutzerbereitstellung von der HR-Cloud-App in Azure Active Directory erfordert das Bereitstellen von mindestens einem Azure AD Connect-Bereitstellungs-Agent auf Servern unter Windows 2012 R2 oder höher. Die Server müssen über mindestens 4 GB RAM und .NET 4.7.1 Runtime verfügen. Stellen Sie sicher, dass der Hostserver Netzwerkzugriff auf die Azure Active Directory-Zieldomäne hat.
+Die Lösung für die Benutzerbereitstellung von der HR-Cloud-App in Active Directory erfordert das Bereitstellen von mindestens einem Azure AD Connect-Bereitstellungs-Agent auf Servern unter Windows Server 2016 oder höher. Die Server müssen über mindestens 4 GB RAM und .NET 4.7.1 Runtime verfügen. Stellen Sie sicher, dass der Hostserver Netzwerkzugriff auf die Azure Active Directory-Zieldomäne hat.
 
 Um die lokale Umgebung vorzubereiten, registriert der Konfigurationsassistent des Azure AD Connect-Bereitstellungs-Agents den Agent bei Ihrem Azure AD-Mandanten, [öffnet Ports](../app-proxy/application-proxy-add-on-premises-application.md#open-ports), [gestattet den Zugriff auf URLs](../app-proxy/application-proxy-add-on-premises-application.md#allow-access-to-urls) und unterstützt die [HTTPS-Proxy-Konfiguration für den ausgehenden Datenverkehr](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
 
-Der Bereitstellungs-Agent verwendet ein Dienstkonto für die Kommunikation mit den Azure Active Directory-Domänen. Erstellen Sie vor der Installation des Agents in „Azure Active Directory-Benutzer und -Computer“ ein Dienstkonto, das folgende Anforderungen erfüllt:
-
-- Ein nicht ablaufendes Kennwort
-- Delegierte Steuerungsberechtigungen zum Lesen, Erstellen, Löschen und Verwalten von Benutzerkonten
+Der Bereitstellungs-Agent konfiguriert ein [gruppenverwaltetes Dienstkonto (Group Managed Service Account, GMSA)](../cloud-sync/how-to-prerequisites.md#group-managed-service-accounts) für die Kommunikation mit den Active Directory-Domänen. Wenn Sie ein Nicht-GMSA-Dienstkonto für die Bereitstellung verwenden möchten, können Sie die [GMSA-Konfiguration überspringen](../cloud-sync/how-to-manage-registry-options.md#skip-gmsa-configuration) und Ihr Dienstkonto bei der Konfiguration angeben. 
 
 Sie können Domänencontroller auswählen, die Bereitstellungsanforderungen verarbeiten sollen. Wenn Sie über mehrere geografisch verteilte Domänencontroller verfügen, installieren Sie den Bereitstellungs-Agent am selben Standort wie Ihre bevorzugten Domänencontroller. Damit steigern Sie Zuverlässigkeit und Leistungsfähigkeit der End-to-End-Lösung.
 
 Für die Hochverfügbarkeit können Sie auch mehrere Azure AD Connect-Bereitstellungs-Agents bereitstellen. Registrieren Sie die Agents so, dass sie für den gleichen Satz von lokalen Azure Active Directory-Domänen zuständig sind.
+
+## <a name="design-hr-provisioning-app-deployment-topology"></a>Entwerfen der Bereitstellungstopologie der HR-Bereitstellungs-App
+
+Abhängig von der Anzahl der Active Directory-Domänen, die an der Konfiguration der eingehenden Benutzerbereitstellung beteiligt sind, können Sie eine der folgenden Bereitstellungstopologien in Betracht ziehen. In jedem Topologiediagramm wird ein Beispielbereitstellungsszenario verwendet, um Konfigurationsaspekte hervorzuheben. Verwenden Sie das Beispiel, das Ihren Bereitstellungsanforderungen am ehesten entspricht, um die Konfiguration zu ermitteln, die Ihre Anforderungen erfüllt. 
+
+### <a name="deployment-topology-1-single-app-to-provision-all-users-from-cloud-hr-to-single-on-premises-active-directory-domain"></a>Bereitstellungstopologie 1: Einzelne App zum Bereitstellen aller Benutzer von der HR-Cloud-App in einer einzelnen lokalen Active Directory-Domäne
+
+Das ist die gängigste Bereitstellungstopologie. Verwenden Sie diese Topologie, wenn Sie alle Benutzer von der HR-Cloud-App in einer einzelnen AD-Domäne bereitstellen müssen und für alle Benutzer dieselben Bereitstellungsregeln gelten. 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-1-single-app-with-single-ad-domain.png" alt-text="Screenshot: Einzelne App zum Bereitstellen von Benutzern von der HR-Cloud-App in einer einzelnen AD-Domäne" lightbox="media/plan-cloud-hr-provision/topology-1-single-app-with-single-ad-domain.png":::
+
+**Wichtige Konfigurationsaspekte**
+* Richten Sie zwei Bereitstellungs-Agent-Knoten für Hochverfügbarkeit und Failover ein. 
+* Verwenden Sie den [Konfigurations-Assistenten für den Bereitstellungs-Agent](../cloud-sync/how-to-install.md#install-the-agent), um Ihre AD-Domäne bei Ihrem Azure AD-Mandanten zu registrieren. 
+* Wählen Sie beim Konfigurieren der Bereitstellungs-App in der Dropdownliste der registrierten Domänen die AD-Domäne aus. 
+* Wenn Sie Bereichsfilter verwenden, konfigurieren Sie das [Flag zum Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md), um versehentliche Kontodeaktivierungen zu verhindern. 
+
+### <a name="deployment-topology-2-separate-apps-to-provision-distinct-user-sets-from-cloud-hr-to-single-on-premises-active-directory-domain"></a>Bereitstellungstopologie 2: Separate Apps zum Bereitstellen unterschiedlicher Benutzersätze von der HR-Cloud-App in einer einzelnen lokalen Active Directory-Domäne
+
+Diese Topologie unterstützt Unternehmensanforderungen, bei denen sich die Attributzuordnung und die Bereitstellungslogik je nach Benutzertyp (Mitarbeiter/Auftragnehmer), Benutzerstandort oder Geschäftseinheit des Benutzers unterscheiden. Sie können diese Topologie auch verwenden, um die Verwaltung und Wartung der eingehenden Benutzerbereitstellung basierend auf dem Geschäftsbereich oder Land zu delegieren.
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-2-separate-apps-with-single-ad-domain.png" alt-text="Screenshot: Separate Apps zum Bereitstellen von Benutzern von der HR-Cloud-App in einer einzelnen AD-Domäne" lightbox="media/plan-cloud-hr-provision/topology-2-separate-apps-with-single-ad-domain.png":::
+
+**Wichtige Konfigurationsaspekte**
+* Richten Sie zwei Bereitstellungs-Agent-Knoten für Hochverfügbarkeit und Failover ein. 
+* Erstellen Sie eine HR2AD-Bereitstellungs-App für jeden Benutzersatz, den Sie bereitstellen möchten. 
+* Verwenden Sie in der Bereitstellungs-App [Bereichsfilter](define-conditional-rules-for-provisioning-user-accounts.md), um Benutzer zu definieren, die von jeder App verarbeitet werden sollen. 
+* Zur Unterstützung des Szenarios, in dem Manager-Verweise für verschiedene Benutzersätze aufgelöst werden müssen (z. B. Auftragnehmer, die Vorgesetzten unterstellt sind, die Mitarbeiter sind), können Sie eine separate HR2AD-Bereitstellungs-App erstellen, um nur das *manager*-Attribut zu aktualisieren. Legen Sie den Bereich dieser App auf alle Benutzer fest. 
+* Konfigurieren Sie das [Flag zum Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md), um versehentliche Kontodeaktivierungen zu verhindern. 
+
+> [!NOTE] 
+> Wenn Sie nicht über eine AD-Testdomäne verfügen und einen TEST-OE-Container in AD verwenden, können Sie diese Topologie verwenden, um zwei separate Apps – *HR2AD (Prod)* und *HR2AD (Test)* – zu erstellen. Verwenden Sie die App *HR2AD (Test)* , um die von Ihnen vorgenommenen Änderungen an der Attributzuordnung zu testen, bevor Sie diese zur App *HR2AD (Prod)* heraufstufen.  
+
+### <a name="deployment-topology-3-separate-apps-to-provision-distinct-user-sets-from-cloud-hr-to-multiple-on-premises-active-directory-domains-no-cross-domain-visibility"></a>Bereitstellungstopologie 3: Separate Apps zum Bereitstellen unterschiedlicher Benutzersätze von der HR-Cloud-App in mehreren lokalen Active Directory-Domänen (keine domänenübergreifende Sichtbarkeit)
+
+Verwenden Sie diese Topologie, um mehrere unabhängige untergeordnete AD-Domänen zu verwalten, die derselben Gesamtstruktur angehören, wenn Vorgesetzte immer in derselben Domäne wie der Benutzer vorhanden sind und Ihre eindeutigen ID-Generierungsregeln für Attribute wie *userPrincipalName*, *samAccountName* und *mail* keine gesamtstrukturweite Suche erfordern. Außerdem bietet diese Topologie die Flexibilität, die Verwaltung jedes Bereitstellungsauftrags nach Domänengrenze delegieren zu können. 
+
+Beispiel: Im folgenden Diagramm sind die Bereitstellungs-Apps für jede geografische Region eingerichtet: Nordamerika (NA), Europa, Naher Osten und Afrika (EMEA) und Asien-Pazifik (APAC). Je nach Standort werden Benutzer in der jeweiligen AD-Domäne bereitgestellt. Die delegierte Verwaltung der Bereitstellungs-App ist möglich, sodass *EMEA-Administratoren* die Bereitstellungskonfiguration von Benutzern, die zur Region „EMEA“ gehören, unabhängig verwalten können.  
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-3-separate-apps-with-multiple-ad-domains-no-cross-domain.png" alt-text="Screenshot: Separate Apps zum Bereitstellen von Benutzern von der HR-Cloud-App in mehreren AD-Domänen" lightbox="media/plan-cloud-hr-provision/topology-3-separate-apps-with-multiple-ad-domains-no-cross-domain.png":::
+
+**Wichtige Konfigurationsaspekte**
+* Richten Sie zwei Bereitstellungs-Agent-Knoten für Hochverfügbarkeit und Failover ein. 
+* Verwenden Sie den [Konfigurations-Assistenten für den Bereitstellungs-Agent](../cloud-sync/how-to-install.md#install-the-agent), um alle untergeordneten AD-Domänen bei Ihrem Azure AD-Mandanten zu registrieren. 
+* Erstellen Sie eine separate HR2AD-Bereitstellungs-App für jede Zieldomäne. 
+* Wählen Sie beim Konfigurieren der Bereitstellungs-App in der Dropdownliste der verfügbaren AD-Domänen die entsprechende untergeordnete AD-Domäne aus. 
+* Verwenden Sie in der Bereitstellungs-App [Bereichsfilter](define-conditional-rules-for-provisioning-user-accounts.md), um Benutzer zu definieren, die von jeder App verarbeitet werden sollen. 
+* Konfigurieren Sie das [Flag zum Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md), um versehentliche Kontodeaktivierungen zu verhindern. 
+
+
+### <a name="deployment-topology-4-separate-apps-to-provision-distinct-user-sets-from-cloud-hr-to-multiple-on-premises-active-directory-domains-with-cross-domain-visibility"></a>Bereitstellungstopologie 4: Separate Apps zum Bereitstellen unterschiedlicher Benutzersätze von der HR-Cloud-App in mehreren lokalen Active Directory-Domänen (mit domänenübergreifender Sichtbarkeit)
+
+Verwenden Sie diese Topologie, um mehrere unabhängige untergeordnete AD-Domänen zu verwalten, die derselben Gesamtstruktur angehören, wenn der Vorgesetzte eines Benutzers in der anderen Domäne vorhanden sein kann und Ihre eindeutigen ID-Generierungsregeln für Attribute wie *userPrincipalName*, *samAccountName* und *mail* eine gesamtstrukturweite Suche erfordern. 
+
+Beispiel: Im folgenden Diagramm sind die Bereitstellungs-Apps für jede geografische Region eingerichtet: Nordamerika (NA), Europa, Naher Osten und Afrika (EMEA) und Asien-Pazifik (APAC). Je nach Standort werden Benutzer in der jeweiligen AD-Domäne bereitgestellt. Domänenübergreifende Manager-Verweise und die gesamtstrukturweite Suche werden durch Aktivieren der Empfehlungsverfolgung für den Bereitstellungs-Agent verarbeitet. 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-4-separate-apps-with-multiple-ad-domains-cross-domain.png" alt-text="Screenshot: Separate Apps zum Bereitstellen von Benutzern von der HR-Cloud-App in mehreren AD-Domänen mit domänenübergreifender Unterstützung" lightbox="media/plan-cloud-hr-provision/topology-4-separate-apps-with-multiple-ad-domains-cross-domain.png":::
+
+**Wichtige Konfigurationsaspekte**
+* Richten Sie zwei Bereitstellungs-Agent-Knoten für Hochverfügbarkeit und Failover ein. 
+* Konfigurieren Sie die [Empfehlungsverfolgung](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing) für den Bereitstellungs-Agent. 
+* Verwenden Sie den [Konfigurations-Assistenten für den Bereitstellungs-Agent](../cloud-sync/how-to-install.md#install-the-agent), um die übergeordnete AD-Domäne und alle untergeordneten AD-Domänen bei Ihrem Azure AD-Mandanten zu registrieren. 
+* Erstellen Sie eine separate HR2AD-Bereitstellungs-App für jede Zieldomäne. 
+* Wählen Sie beim Konfigurieren der einzelnen Bereitstellungs-Apps in der Dropdownliste der verfügbaren AD-Domänen die übergeordnete AD-Domäne aus. Dadurch wird eine gesamtstrukturweite Suche sichergestellt, während eindeutige Werte für Attribute wie *userPrincipalName*, *samAccountName* und *mail* generiert werden.
+* Verwenden Sie *parentDistinguishedName* mit Ausdruckszuordnung, um Benutzer in der richtigen untergeordneten Domäne und im [OE-Container](#configure-active-directory-ou-container-assignment) dynamisch zu erstellen. 
+* Verwenden Sie in der Bereitstellungs-App [Bereichsfilter](define-conditional-rules-for-provisioning-user-accounts.md), um Benutzer zu definieren, die von jeder App verarbeitet werden sollen. 
+* Erstellen Sie zum Auflösen domänenübergreifender Manager-Verweise eine separate HR2AD-Bereitstellungs-App, um nur das *manager*-Attribut zu aktualisieren. Legen Sie den Bereich dieser App auf alle Benutzer fest. 
+* Konfigurieren Sie das [Flag zum Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md), um versehentliche Kontodeaktivierungen zu verhindern. 
+
+### <a name="deployment-topology-5-single-app-to-provision-all-users-from-cloud-hr-to-multiple-on-premises-active-directory-domains-with-cross-domain-visibility"></a>Bereitstellungstopologie 5: Einzelne App zum Bereitstellen aller Benutzer von der HR-Cloud-App in mehreren lokalen Active Directory-Domänen (mit domänenübergreifender Sichtbarkeit)
+
+Verwenden Sie diese Topologie, um alle Benutzer, die Ihrer übergeordneten AD-Domäne und Ihren untergeordneten AD-Domänen angehören, mit einer einzelnen Bereitstellungs-App zu verwalten. Diese Topologie wird empfohlen, wenn für alle Domänen einheitliche Bereitstellungsregeln gelten und keine delegierte Verwaltung von Bereitstellungsaufträgen erforderlich ist. Diese Topologie unterstützt das Auflösen domänenübergreifender Manager-Verweise und ermöglicht die Durchführung einer gesamtstrukturweiten Eindeutigkeitsprüfung. 
+
+Beispiel: Im folgenden Diagramm werden Benutzer in drei verschiedenen untergeordneten Domänen, gruppiert nach Region – Nordamerika (NA), Europa, Naher Osten und Afrika (EMEA) und Asien-Pazifik (APAC) – mit einer einzelnen Bereitstellungs-App verwaltet. Die Attributzuordnung für *parentDistinguishedName* wird verwendet, um einen Benutzer in der entsprechenden untergeordneten Domäne dynamisch zu erstellen. Domänenübergreifende Manager-Verweise und die gesamtstrukturweite Suche werden durch Aktivieren der Empfehlungsverfolgung für den Bereitstellungs-Agent verarbeitet. 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-5-single-app-with-multiple-ad-domains-cross-domain.png" alt-text="Screenshot: Einzelne App zum Bereitstellen von Benutzern von der HR-Cloud-App in mehreren AD-Domänen mit domänenübergreifender Unterstützung" lightbox="media/plan-cloud-hr-provision/topology-5-single-app-with-multiple-ad-domains-cross-domain.png":::
+
+**Wichtige Konfigurationsaspekte**
+* Richten Sie zwei Bereitstellungs-Agent-Knoten für Hochverfügbarkeit und Failover ein. 
+* Konfigurieren Sie die [Empfehlungsverfolgung](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing) für den Bereitstellungs-Agent. 
+* Verwenden Sie den [Konfigurations-Assistenten für den Bereitstellungs-Agent](../cloud-sync/how-to-install.md#install-the-agent), um die übergeordnete AD-Domäne und alle untergeordneten AD-Domänen bei Ihrem Azure AD-Mandanten zu registrieren. 
+* Erstellen Sie eine einzelne HR2AD-Bereitstellungs-App für die gesamte Gesamtstruktur. 
+* Wählen Sie beim Konfigurieren der Bereitstellungs-App in der Dropdownliste der verfügbaren AD-Domänen die übergeordnete AD-Domäne aus. Dadurch wird eine gesamtstrukturweite Suche sichergestellt, während eindeutige Werte für Attribute wie *userPrincipalName*, *samAccountName* und *mail* generiert werden.
+* Verwenden Sie *parentDistinguishedName* mit Ausdruckszuordnung, um Benutzer in der richtigen untergeordneten Domäne und im [OE-Container](#configure-active-directory-ou-container-assignment) dynamisch zu erstellen. 
+* Wenn Sie Bereichsfilter verwenden, konfigurieren Sie das [Flag zum Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md), um versehentliche Kontodeaktivierungen zu verhindern. 
+
+### <a name="deployment-topology-6-separate-apps-to-provision-distinct-users-from-cloud-hr-to-disconnected-on-premises-active-directory-forests"></a>Bereitstellungstopologie 6: Separate Apps zum Bereitstellen unterschiedlicher Benutzer von der HR-Cloud-App in getrennten lokalen Active Directory-Gesamtstrukturen
+
+Verwenden Sie diese Topologie, wenn Ihre IT-Infrastruktur getrennte/nicht zusammenhängende AD-Gesamtstrukturen umfasst und Sie Benutzer basierend auf der Unternehmenszugehörigkeit in verschiedenen Gesamtstrukturen bereitstellen müssen. Beispiel: Benutzer, die für die Niederlassung *Contoso* arbeiten, müssen in der Domäne *contoso.com* bereitgestellt werden, während Benutzer, die für die Niederlassung *Fabrikam* arbeiten, in der Domäne *fabrikam.com* bereitgestellt werden müssen. 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-6-separate-apps-with-disconnected-ad-forests.png" alt-text="Screenshot: Separate Apps zum Bereitstellen von Benutzern von der HR-Cloud-App in getrennten AD-Gesamtstrukturen" lightbox="media/plan-cloud-hr-provision/topology-6-separate-apps-with-disconnected-ad-forests.png":::
+
+**Wichtige Konfigurationsaspekte**
+* Richten Sie zwei verschiedene Sätze von Bereitstellungs-Agents (jeweils einen für jede Gesamtstruktur) für Hochverfügbarkeit und Failover ein. 
+* Erstellen Sie zwei verschiedene Bereitstellungs-Apps, eine für jede Gesamtstruktur. 
+* Wenn Sie domänenübergreifende Verweise innerhalb der Gesamtstruktur auflösen müssen, aktivieren Sie die [Empfehlungsverfolgung](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing) für den Bereitstellungs-Agent. 
+* Erstellen Sie eine separate HR2AD-Bereitstellungs-App für jede getrennte Gesamtstruktur. 
+* Wählen Sie beim Konfigurieren der einzelnen Bereitstellungs-Apps in der Dropdownliste der verfügbaren AD-Domänen die entsprechende übergeordnete AD-Domäne aus. 
+* Konfigurieren Sie das [Flag zum Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md), um versehentliche Kontodeaktivierungen zu verhindern. 
+
+### <a name="deployment-topology-7-separate-apps-to-provision-distinct-users-from-multiple-cloud-hr-to-disconnected-on-premises-active-directory-forests"></a>Bereitstellungstopologie 7: Separate Apps zum Bereitstellen unterschiedlicher Benutzer von mehreren HR-Cloud-Apps in getrennten lokalen Active Directory-Gesamtstrukturen
+
+In großen Organisationen ist es nicht ungewöhnlich, dass mehrere HR-Systeme verwendet werden. In Szenarien mit Unternehmensfusionen und -übernahmen kann es vorkommen, dass Sie Ihre lokale Active Directory-Instanz mit mehreren HR-Quellen verbinden müssen. Wenn Sie über mehrere HR-Quellen verfügen und die Identitätsdaten aus diesen HR-Quellen entweder an dieselben oder an verschiedene lokale Active Directory-Domänen übertragen möchten, empfehlen wir die folgende Topologie.  
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-7-separate-apps-from-multiple-hr-to-disconnected-ad-forests.png" alt-text="Screenshot: Separate Apps zum Bereitstellen von Benutzern von mehreren HR-Cloud-Apps in getrennten AD-Gesamtstrukturen" lightbox="media/plan-cloud-hr-provision/topology-7-separate-apps-from-multiple-hr-to-disconnected-ad-forests.png":::
+
+**Wichtige Konfigurationsaspekte**
+* Richten Sie zwei verschiedene Sätze von Bereitstellungs-Agents (jeweils einen für jede Gesamtstruktur) für Hochverfügbarkeit und Failover ein. 
+* Wenn Sie domänenübergreifende Verweise innerhalb der Gesamtstruktur auflösen müssen, aktivieren Sie die [Empfehlungsverfolgung](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing) für den Bereitstellungs-Agent. 
+* Erstellen Sie eine separate HR2AD-Bereitstellungs-App für jede Kombination aus HR-System und lokaler Active Directory-Instanz.
+* Wählen Sie beim Konfigurieren der einzelnen Bereitstellungs-Apps in der Dropdownliste der verfügbaren AD-Domänen die entsprechende übergeordnete AD-Domäne aus. 
+* Konfigurieren Sie das [Flag zum Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md), um versehentliche Kontodeaktivierungen zu verhindern. 
 
 ## <a name="plan-scoping-filters-and-attribute-mapping"></a>Planen von Bereichsfiltern und Attributzuordnung
 
@@ -295,7 +404,7 @@ Wenn Sie den Einstellungsprozess starten und Attribute wie „CN“, „samAccou
 Die Azure AD-Funktion [SelectUniqueValues](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) wertet jede Regel aus. Anschließend wird der Wert überprüft, der generiert wurde, um die Eindeutigkeit im Zielsystem sicherzustellen. Ein Beispiel finden Sie unter [Generieren eines eindeutigen Werts für das Attribut „userPrincipalName (UPN)“](../app-provisioning/functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute).
 
 > [!NOTE]
-> Diese Funktion wird derzeit nur für die Benutzerbereitstellung von Workday in Azure Active Directory unterstützt. Sie kann nicht für andere Bereitstellungs-Apps verwendet werden.
+> Diese Funktion wird derzeit nur für die Benutzerbereitstellung von Workday in Active Directory und für die Benutzerbereitstellung von SAP SuccessFactors in Active Directory unterstützt. Sie kann nicht für andere Bereitstellungs-Apps verwendet werden.
 
 ### <a name="configure-active-directory-ou-container-assignment"></a>Konfigurieren der Containerzuweisung für Organisationseinheiten in Azure Active Directory
 
@@ -315,7 +424,7 @@ Wenn der Wert für „Municipality“ Dallas, Austin, Seattle oder London entspr
 
 Wenn Sie den Einstellungsprozess starten, müssen Sie ein temporäres Kennwort für neue Benutzerkonten festlegen und zustellen. Mit der Benutzerbereitstellung von der HR-Cloud-App in Azure AD können Sie am ersten Tag für den Benutzer die SSPR-Funktion ([Self-Service-Kennwortzurücksetzung](../authentication/tutorial-enable-sspr.md)) von Azure AD einführen.
 
-SSPR ist für IT-Administratoren eine einfache Möglichkeit, Benutzern das Zurücksetzen ihrer Kennwörter oder das Entsperren ihrer Konten zu ermöglichen. Sie können das Attribut **Mobiltelefonnummer** von der HR-Cloud-App in Azure Active Directory bereitstellen und mit Azure AD synchronisieren. Sobald Azure AD das Attribut **Mobiltelefonnummer** enthält, können Sie SSPR für das Benutzerkonto aktivieren. Am ersten Tag kann der neue Benutzer dann die registrierte und überprüfte Mobiltelefonnummer zur Authentifizierung verwenden.
+SSPR ist für IT-Administratoren eine einfache Möglichkeit, Benutzern das Zurücksetzen ihrer Kennwörter oder das Entsperren ihrer Konten zu ermöglichen. Sie können das Attribut **Mobiltelefonnummer** von der HR-Cloud-App in Azure Active Directory bereitstellen und mit Azure AD synchronisieren. Sobald Azure AD das Attribut **Mobiltelefonnummer** enthält, können Sie SSPR für das Benutzerkonto aktivieren. Am ersten Tag kann der neue Benutzer dann die registrierte und überprüfte Mobiltelefonnummer zur Authentifizierung verwenden. Weitere Informationen zum Vorabausfüllen von Authentifizierungskontaktinformationen finden Sie in der [SSPR-Dokumentation](../authentication/howto-sspr-authenticationdata.md). 
 
 ## <a name="plan-for-initial-cycle"></a>Planen des erster Zyklus
 

@@ -1,24 +1,18 @@
 ---
 title: Secure Score in Azure Security Center
 description: Beschreibung des Secure Scores von Azure Security Center und seiner Sicherheitskontrollen
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetd: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/03/2021
+ms.date: 05/05/2021
 ms.author: memildin
-ms.openlocfilehash: 889c79357037afb0d9c83c645e86d05edc0df6f1
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: e6582aedbc8357715f4e49cc8d5a780859ef3929
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903756"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062069"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Secure Score in Azure Security Center
 
@@ -47,19 +41,26 @@ Weitere Informationen finden Sie unter [Berechnen Ihrer Sicherheitsbewertung](se
 
 Der jeweilige Beitrag der einzelnen Sicherheitskontrollen zur gesamten Sicherheitsbewertung ist auf der Seite mit Empfehlungen eindeutig angegeben.
 
-[![Mit dem erweiterten Secure Score (Vorschauversion) werden Sicherheitskontrollen eingeführt](media/secure-score-security-controls/security-controls.png)](media/secure-score-security-controls/security-controls.png#lightbox)
+:::image type="content" source="./media/secure-score-security-controls/security-controls.png" alt-text="Sicherheitskontrollen von Azure Security Center und deren Auswirkungen auf Ihre Sicherheitsbewertung" lightbox="./media/secure-score-security-controls/security-controls.png":::
 
 Um alle zu erzielenden Punkte für eine Sicherheitskontrolle zu erhalten, müssen alle Ihre Ressourcen allen Sicherheitsempfehlungen innerhalb der Sicherheitskontrolle entsprechen. Beispielsweise enthält Security Center mehrere Empfehlungen zum Schützen Ihrer Verwaltungsports. Sie müssen alle Empfehlungen umsetzen, um eine Änderung der Sicherheitsbewertung zu erzielen.
 
-Beispielsweise wird die Sicherheitskontrolle „Systemupdates anwenden“ mit maximal sechs Punkten bewertet. Dieser Wert ist in der QuickInfo zur potenziellen Steigerung der Sicherheitskontrolle angegeben:
+### <a name="example-scores-for-a-control"></a>Beispielbewertungen für ein Kontrollelement
 
-[![Sicherheitskontrolle „Systemupdates anwenden“](media/secure-score-security-controls/apply-system-updates-control.png)](media/secure-score-security-controls/apply-system-updates-control.png#lightbox)
+:::image type="content" source="./media/secure-score-security-controls/remediate-vulnerabilities-control.png" alt-text="Sicherheitskontrolle „Systemupdates anwenden“" lightbox="./media/secure-score-security-controls/remediate-vulnerabilities-control.png":::
 
-Der maximal mögliche Wert für das Steuerelement „Systemupdates anwenden“ ist immer 6. In diesem Beispiel gibt es 50 Ressourcen. Der maximale Wert wird daher durch 50 geteilt, woraus sich ergibt, dass jede Ressource 0,12 Punkte beiträgt. 
 
-* **Potenzielle Steigerung** (0,12 x 8 fehlerhafte Ressourcen = 0,96): Die Anzahl der noch verfügbaren Punkte des Steuerelements. Wenn Sie alle Empfehlungen für dieses Steuerelement umsetzen, steigt die Bewertung um 2 % (in diesem Fall um 0,96 Punkte, die auf 1 Punkt aufgerundet werden). 
-* **Aktuelle Bewertung** (0,12 x 42 fehlerfreie Ressourcen = 5,04): Die aktuelle Bewertung für dieses Steuerelement. Jedes Kontrollelement trägt zur Gesamtbewertung bei. In diesem Beispiel trägt das Steuerelement 5,04 Punkte zur aktuellen Gesamtbewertung bei.
-* **Maximale Bewertung**: Die maximale Anzahl von Punkten, die Sie durch Erfüllen aller Empfehlungen innerhalb eines Kontrollelements erhalten können. Die maximale Bewertung für ein Kontrollelement gibt die relative Bedeutung dieses Kontrollelements an. Verwenden Sie die maximale Bewertung, um die Probleme zu selektieren, die zuerst behandelt werden müssen. 
+In diesem Beispiel:
+
+| #  | Name                                           | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|:-:|------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | **Sicherheitskontrolle „Sicherheitsrisiken beheben“** | Dieses Kontrollelement gruppiert mehrere Empfehlungen im Zusammenhang mit der Ermittlung und Behebung bekannter Sicherheitsrisiken.                                                                                                                                                                                                                                                                                                                                   |
+| 2 | **Maximale Bewertung**                                  | Die maximale Anzahl von Punkten, die Sie durch Erfüllen aller Empfehlungen innerhalb eines Kontrollelements erhalten können. Die maximale Bewertung für ein Kontrollelement gibt die relative Bedeutung dieses Kontrollelements an und wird für jede Umgebung korrigiert. Verwenden Sie die maximale Bewertung, um die Probleme zu selektieren, die zuerst behandelt werden müssen.<br>Eine Liste aller Kontrollelemente und ihrer maximalen Bewertungen finden Sie unter [Sicherheitskontrollen und deren Empfehlungen](#security-controls-and-their-recommendations). |
+| 3 | **Anzahl der Ressourcen**                        | Von diesem Kontrollelement sind 35 Ressourcen betroffen.<br>Um den möglichen Beitrag jeder Ressource zu verstehen, dividieren Sie die maximale Bewertung durch die Anzahl der Ressourcen.<br>In diesem Beispiel: 6/35 = 0,1714<br>**Jede Ressource trägt 0,1714 Punkte bei.**                                                                                                                                                                                          |
+| 4 | **Aktuelle Bewertung**                              | Die aktuelle Bewertung für dieses Kontrollelement.<br>Aktuelle Bewertung = [Bewertung pro Ressource] * [Anzahl fehlerfreier Ressourcen]<br> 0,1714 x 5 fehlerfreie Ressourcen = 0,86<br>Jedes Kontrollelement trägt zur Gesamtbewertung bei. In diesem Beispiel trägt das Kontrollelement 0,86 Punkte zur aktuellen Gesamtsicherheitsbewertung bei.                                                                                                                                               |
+| 5 | **Potenzielle Bewertungssteigerung**                   | Die Anzahl der noch verfügbaren Punkte innerhalb des Kontrollelements. Bei Umsetzung aller Empfehlungen in diesem Kontrollelement erhöht sich die Bewertung um 9 %.<br>Potenzielle Bewertungssteigerung = [Bewertung pro Ressource] * [Anzahl fehlerhafter Ressourcen]<br> 0,1714 x 30 fehlerhafte Ressourcen = 5,14<br>                                                                                                                                                        |
+|   |                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+
 
 
 ### <a name="calculations---understanding-your-score"></a>Berechnungen – Verstehen der Bewertung
@@ -98,7 +99,7 @@ Die zugewiesenen Azure Policy-Initiativen sollten von jeder Organisation sorgf�
 > [!TIP]
 > Ausführliche Informationen zur Überprüfung und Bearbeitung von Initiativen finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md). 
 
-Die Standardsicherheitsinitiative von Security Center basiert zwar auf branchenüblichen bewährten Methoden und Standards, es gibt jedoch Szenarien, in denen die unten aufgeführten integrierten Empfehlungen möglicherweise nicht uneingeschränkt für Ihre Organisation geeignet sind. Daher ist es manchmal erforderlich, die Standardinitiative anzupassen (ohne die Sicherheit zu beeinträchtigen). Dadurch wird sichergestellt, dass sie mit den Richtlinien Ihrer Organisation sowie mit Branchenstandards, gesetzlichen Vorgaben und Benchmarks in Einklang steht, die Sie erfüllen müssen.<br><br>
+Die Standardsicherheitsinitiative von Security Center basiert zwar auf branchenüblichen bewährten Methoden und Standards, es gibt jedoch Szenarien, in denen die unten aufgeführten integrierten Empfehlungen möglicherweise nicht uneingeschränkt für Ihre Organisation geeignet sind. Daher ist es manchmal erforderlich, die Standardinitiative anzupassen (ohne die Sicherheit zu beeinträchtigen). Dadurch wird sichergestellt, dass sie mit den Richtlinien Ihrer Organisation sowie mit Branchenstandards, gesetzlichen Standards und Benchmarks in Einklang steht, die Sie erfüllen müssen.<br><br>
 <div class="foo">
 
 <style type="text/css"> .tg  {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:18px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-cly1{text-align:left;vertical-align:middle} .tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle} </style>
@@ -110,7 +111,7 @@ Die Standardsicherheitsinitiative von Security Center basiert zwar auf branchen�
 
 
 
-## <a name="secure-score-faq"></a>Häufig gestellte Fragen zu Secure Score
+## <a name="faq---secure-score"></a>Häufig gestellte Fragen zur Sicherheitsbewertung
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>Ändert sich meine Sicherheitsbewertung, wenn ich nur drei von vier Empfehlungen in einer Sicherheitskontrolle umsetze?
 Nein. Die Bewertung ändert sich erst, wenn Sie alle Empfehlungen für eine einzelne Ressource umgesetzt haben. Um die maximale Bewertung für ein Kontrollelement zu erhalten, müssen Sie alle Empfehlungen für alle Ressourcen umsetzen.

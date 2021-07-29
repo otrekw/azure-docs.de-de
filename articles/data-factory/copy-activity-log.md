@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: f979ca04a276f52e5f76a8e4327f9ff8ef390fe6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cbd2ef972753abfc9f18fed4a15c6ed0357daae0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143699"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095660"
 ---
 #  <a name="session-log-in-copy-activity"></a>Sitzungsprotokoll in der Kopieraktivität
 
@@ -20,6 +20,11 @@ ms.locfileid: "108143699"
 Sie können die kopierten Dateinamen in der Kopieraktivität protokollieren, um sicherzustellen, dass die Daten nicht nur erfolgreich aus dem Quell- in den Zielspeicher kopiert werden, sondern auch zwischen Quell- und Zielspeicher konsistent sind. Dazu überprüfen Sie die kopierten Dateien in den Sitzungsprotokollen der Kopieraktivität.  
 
 Wenn Sie die Fehlertoleranzeinstellung in der Kopieraktivität aktivieren, um fehlerhafte Daten zu überspringen, können auch die übersprungenen Dateien und die übersprungenen Zeilen protokolliert werden.  Weitere Informationen finden Sie unter [Fehlertoleranz der Kopieraktivität](copy-activity-fault-tolerance.md). 
+
+Wenn Sie die Möglichkeit haben, alle von der ADF-Kopieraktivität kopierten Dateinamen durch Aktivieren des Sitzungsprotokolls zu erhalten, ist dies in den folgenden Szenarien hilfreich:
+-   Nachdem Sie die Dateien mithilfe von ADF-Kopieraktivitäten aus einem Speicher in einen anderen kopiert haben, werden einige Dateien im Zielspeicher angezeigt, die dort nicht angezeigt werden sollten. Sie können die Protokolle der Kopieraktivitätssitzung überprüfen, um zu sehen, welche Kopieraktivität diese Dateien tatsächlich kopiert hat und wann diese Dateien kopiert werden sollen. Auf diese Weise können Sie die Grundursache leicht finden und Ihre Konfigurationen in ADF korrigieren.   
+-   Nachdem Sie die Dateien mithilfe von ADF-Kopieraktivitäten aus einem Speicher in einen anderen kopiert haben, sind sie der Meinung, dass die in das Ziel kopierten Dateien nicht mit denen aus dem Quellspeicher identisch sind. Sie können die Protokolle der Kopieraktivitätssitzung überprüfen, um den Zeitstempel von Kopieraufträgen sowie die Metadaten von Dateien abzurufen, wenn ADF-Kopieraktivitäten sie aus dem Quellspeicher lesen.  Damit können Sie ermitteln, ob diese Dateien von anderen Anwendungen im Quellspeicher aktualisiert wurden, nachdem sie von ADF kopiert wurden.  
+
 
 ## <a name="configuration"></a>Konfiguration
 Das folgende Beispiel zeigt eine JSON-Definition, mit der das Sitzungsprotokoll in der Kopieraktivität aktiviert wird: 

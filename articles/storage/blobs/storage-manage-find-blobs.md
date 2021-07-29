@@ -1,20 +1,20 @@
 ---
 title: Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)
 description: Erfahren Sie, wie Sie Blobindextags verwenden, um Blobobjekte zu kategorisieren, zu verwalten und abzufragen.
-author: twooley
-ms.author: twooley
-ms.date: 03/18/2021
+author: normesta
+ms.author: normesta
+ms.date: 05/17/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.custom: references_regions
-ms.openlocfilehash: 2188aaea0cf5a4616291d3fdad839aefb2dbc413
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: bd1738c0a5d63ad9eacaa1500a6ce10268a93b04
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280699"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664877"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)
 
@@ -114,10 +114,11 @@ Für die Filterung des Blobindex gelten folgende Kriterien:
 - Filter werden mit lexikografischer Sortierung auf Zeichenfolgen angewendet
 - Vorgänge für einseitige Bereiche sind für ein und denselben Schlüssel unzulässig (z. B. `"Rank" > '10' AND "Rank" >= '15'`)
 - Bei Verwendung von REST zum Erstellen von Filterausdrücken müssen Zeichen URI-codiert sein
+- Tagabfragen werden zum Gleichheitsabgleich mithilfe eines einzelnen Tags optimiert (z. B. StoreID = „100“).  Bereichsabfragen, die ein einzelnes Tag mit „>“, „>=“, „<“, „<=“ verwenden, sind ebenfalls effizient. Jede Abfrage, die „UND“ mit mehr als einem Tag verwendet, ist nicht so effizient.  Beispielsweise ist „Kosten > „01“ UND Kosten <= „100““ effizient. „Kosten > „01 UND StoreID = „2““ ist nicht so effizient.
 
 In der Tabelle unten sind alle zulässigen Operatoren für `Find Blobs by Tags` aufgeführt:
 
-|  Operator  |  BESCHREIBUNG  | Beispiel |
+|  Operator  |  Beschreibung  | Beispiel |
 |------------|---------------|---------|
 |     =      |     Gleich     | `"Status" = 'In Progress'` |
 |     >      |  Größer als | `"Date" > '2018-06-18'` |
@@ -142,7 +143,7 @@ Der Header `x-ms-if-tags` kann mit den übrigen vorhandenen bedingten HTTP-Heade
 
 In der Tabelle unten sind die zulässigen Operatoren für bedingte Vorgänge aufgeführt:
 
-|  Operator  |  BESCHREIBUNG  | Beispiel |
+|  Operator  |  Beschreibung  | Beispiel |
 |------------|---------------|---------|
 |     =      |     Gleich     | `"Status" = 'In Progress'` |
 |     <>     |   Ungleich   | `"Status" <> 'Done'` |
@@ -281,11 +282,11 @@ In der folgenden Tabelle werden die Unterschiede zwischen Metadaten und Blobinde
 
 ## <a name="pricing"></a>Preise
 
-Die Preise für Blobindizes gelten für die öffentliche Vorschauphase und können sich für die Phase der allgemeinen Verfügbarkeit ändern. Ihnen wird die durchschnittliche monatliche Anzahl von Indextags innerhalb eines Speicherkontos berechnet. Für das Indizierungsmodul fallen keine Kosten an. Anforderungen von `Set Blob Tags`, `Get Blob Tags` und `Find Blobs by Tags` werden gemäß den entsprechenden Vorgangstypen berechnet. Weitere Informationen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Die Preise für Blobindizes gelten für die öffentliche Vorschauphase und können sich für die Phase der allgemeinen Verfügbarkeit ändern. Ihnen wird die durchschnittliche monatliche Anzahl von Indextags innerhalb eines Speicherkontos berechnet. Für das Indizierungsmodul fallen keine Kosten an. Anforderungen zum Festlegen von Blobtags, Abrufen von Blobtags und Suchen von Blobtags werden zu den aktuellen jeweiligen Transaktionsraten berechnet. Beachten Sie, dass die Anzahl der Listentransaktionen, die beim Durchführen einer Transaktion vom Typ „Blobs nach Tag suchen“ genutzt werden, der Anzahl der Klauseln in der Anforderung entspricht. Beispielsweise besteht die Abfrage „(StoreID = 100)“ aus einer Listentransaktion.  Die Abfrage „(StoreID = 100 UND SKU = 10010)“ besteht aus zwei Listentransaktionen. Weitere Informationen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="regional-availability-and-storage-account-support"></a>Regionale Verfügbarkeit und Unterstützung von Speicherkonten
 
-Blobindextags sind nur für GPv2-Knoten (General Purpose v2, Universell V2) verfügbar, bei denen der hierarchische Namespace (HNS) deaktiviert ist. GPV1-Konten (General Purpose v1, Universell V1) werden nicht unterstützt. Sie können ein GPv1-Konto aber auf ein GPv2-Konto aktualisieren.
+Blobindextags stehen nur für Konten vom Typ „Universell V2“ zur Verfügung, bei denen der hierarchische Namespace (HNS) deaktiviert ist. Konten vom Typ „Universell V1“ werden nicht unterstützt, Sie können aber für ein Konto vom Typ „Universell V1“ ein Upgrade auf ein Konto vom Typ „Universell V2“ durchführen.
 
 Indextags werden für Storage Premium-Konten nicht unterstützt. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
@@ -319,7 +320,7 @@ az provider register --namespace 'Microsoft.Storage'
 In diesem Abschnitt sind bekannte Probleme und Bedingungen der öffentlichen Vorschauversion von Blobindextags beschrieben. Dieses Feature sollte erst für Produktionsworkloads verwendet werden, wenn die Phase der allgemeinen Verfügbarkeit (General Availability, GA) erreicht ist, weil sich das Verhalten ggf. noch ändern kann.
 
 - Damit Sie in der Vorschau Blobindex für Ihr Speicherkonto in den unterstützten Regionen verwenden können, müssen Sie zuerst Ihr Abonnement registrieren.
-- In der Vorschauphase werden nur GPv2-Konten unterstützt. Blob-, BlockBlobStorage- und Data Lake Gen2-Konten mit HNS-Aktivierung werden nicht unterstützt. GPv1-Konten werden nicht unterstützt.
+- In der Vorschauversion werden nur Konten vom Typ „Universell V2“ unterstützt. Premium-Blockblobs, Legacyblobs und Konten mit aktiviertem hierarchischem Namespace werden nicht unterstützt. Konten vom Typ „Universell V1“ werden nicht unterstützt.
 - Beim Hochladen von Seitenblobs mit Indextags werden die Tags nicht beibehalten. Legen Sie die Tags nach dem Hochladen eines Seitenblobs fest.
 - Wenn die Filterung auf einen einzelnen Container beschränkt ist, kann `@container` nur übergeben werden, wenn alle Indextags im Filterausdruck Gleichheitsprüfungen sind (Schlüssel=Wert).
 - Wenn der Bereichsoperator mit der `AND`-Bedingung verwendet wird, muss derselbe Indextag-Schlüsselname angegeben werden (`"Age" > '013' AND "Age" < '100'`).

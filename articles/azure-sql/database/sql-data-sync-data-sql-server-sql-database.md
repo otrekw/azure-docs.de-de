@@ -3,20 +3,20 @@ title: Was ist die SQL-Datensynchronisierung für Azure?
 description: Diese Übersicht stellt die SQL-Datensynchronisierung für Azure vor, mit der Sie Daten über mehrere Cloud- und lokale Datenbanken hinweg synchronisieren können.
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: data sync, sqldbrb=1, fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 08/20/2019
-ms.openlocfilehash: 660297beacb6594058a3d83fb622ddeb579c223b
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: c3a2be7a00c6718dd33b573faec4a619cbf5a1bb
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951718"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074843"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -152,6 +152,8 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 - Spalten mit benutzerdefinierten Datentypen werden nicht unterstützt.
 - Das Verschieben von Servern zwischen verschiedenen Abonnements wird nicht unterstützt. 
 - Wenn sich zwei Primärschlüssel nur in Bezug auf die Groß-/Kleinschreibung unterscheiden (z. B. „Foo“ und „foo“), wird dieses Szenario von der Datensynchronisierung nicht unterstützt.
+- Das Verkürzen von Tabellen wird von der Datensynchronisierung nicht unterstützt (Änderungen werden nicht nachverfolgt).
+- Hyperscale-Datenbanken werden nicht unterstützt. 
 
 #### <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
 

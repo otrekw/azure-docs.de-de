@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1a1cd8c051f9e04c09ef2986805873d8e7fea54e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7e1e4dd244045e86a0fb9e6d65f81a4149cf6659
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817628"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413301"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Verschieben einer Azure Key Vault-Instanz in ein anderes Abonnement
 
@@ -28,6 +29,10 @@ ms.locfileid: "107817628"
 > Wenn Sie verwaltete Dienstidentitäten (Managed Service Identities, MSI) verwenden, lesen Sie die Anweisungen für Aktionen im Anschluss an das Verschieben am Ende des Dokuments. 
 
 [Azure Key Vault](overview.md) wird automatisch an die standardmäßige [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)-Mandanten-ID für das Abonnement gebunden, in dem die Instanz erstellt wurde. Die Mandanten-ID, die Ihrem Abonnement zugeordnet ist, finden Sie in diesem [Leitfaden](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md). Außerdem werden auch alle Zugriffsrichtlinieneinträge und Rollenzuweisung an diese Mandanten-ID gebunden.  Wenn Sie Ihr Azure-Abonnement aus Mandant A in Mandant B verschieben, können die Dienstprinzipale (Benutzer und Anwendungen) in Mandant B nicht auf Ihre vorhandenen Schlüsseltresore zugreifen. Gehen Sie wie folgt vor, um dies zu beheben:
+
+> [!NOTE]
+> Wenn Key Vault über [Azure Lighthouse](../../lighthouse/overview.md) erstellt wird, ist es stattdessen an die Verwaltung der Mandanten-ID gebunden. Azure Lighthouse wird nur vom Berechtigungsmodell für Tresorzugriffsrichtlinien unterstützt.
+> Weitere Informationen zu Mandanten in Azure Lighthouse finden Sie unter [Mandanten, Benutzer und Rollen in Azure Lighthouse](../../lighthouse/concepts/tenants-users-roles.md).
 
 * Ändern Sie die Mandanten-ID, die allen vorhandenen Schlüsseltresoren im Abonnement zugeordnet ist, in den Mandanten B.
 * Entfernen Sie alle vorhandenen Zugriffsrichtlinieneinträge.
@@ -87,7 +92,7 @@ Connect-AzAccount                                                          #Log 
 
 ```azurecli
 az account set -s <your-subscriptionId>                                    # Select your Azure Subscription
-tenantId=$(az account show --query tenantId)                               # Get your tenantId
+$tenantId=$(az account show --query tenantId)                               # Get your tenantId
 az keyvault update -n myvault --remove Properties.accessPolicies           # Remove the access policies
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91ca017bf94f2c9a75a8016fb861cc085dc47ebe
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358370"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556962"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität
 
@@ -49,9 +49,9 @@ In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigun
     ![Hinzufügen der Rollenzuweisung](./media/search-managed-identities/add-role-assignment-storage.png "Rollenzuweisung hinzufügen")
 
 4. Wählen Sie die entsprechenden Rollen je nach Speicherkontotyp aus, den Sie indizieren möchten:
-    1. Azure Blob Storage erfordert, dass Sie Ihren Suchdienst zur Rolle **Storage-Blobdatenleser** hinzufügen.
+    1. Bei Azure Blob Storage müssen Sie Ihren Suchdienst der Rolle **Storage-Blobdatenleser** hinzufügen.
     1. Azure Data Lake Storage Gen2 erfordert, dass Sie Ihren Suchdienst zur Rolle **Storage-Blobdatenleser** hinzufügen.
-    1. Azure Table Storage erfordert, dass Sie Ihren Suchdienst zur Rolle **Lese- und Datenzugriff** hinzufügen.
+    1. Bei Azure Table Storage müssen Sie Ihren Suchdienst der Rolle **Lese- und Datenzugriff** hinzufügen.
 5.  Behalten Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** bei.
 6.  Suchen Sie nach Ihrem Suchdienst, wählen Sie ihn aus, und wählen Sie dann **Speichern** aus.
 

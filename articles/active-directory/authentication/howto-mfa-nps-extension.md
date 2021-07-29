@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 484dd8313710332660bb20d55f3dac2aa21bbc61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29f8e1e3b89ef68c3ead4841cfba7b5e44f09a36
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98232521"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744645"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure AD Multi-Factor Authentication
 
@@ -72,7 +72,7 @@ Die NPS-Erweiterung soll mit der vorhandenen Infrastruktur zusammenarbeiten. Ste
 
 ### <a name="licenses"></a>Lizenzen
 
-Die NPS-Erweiterung für Azure AD Multi-Factor Authentication steht Kunden mit [Lizenzen für Azure AD Multi-Factor Authentication](./concept-mfa-howitworks.md) zur Verfügung. Verbrauchsbasierte Lizenzen für Azure AD Multi-Factor Authentication, z. B. Lizenzen pro Benutzer oder pro Authentifizierung, sind mit der NPS-Erweiterung nicht kompatibel.
+Die NPS-Erweiterung für Azure AD Multi-Factor Authentication ist für Kunden mit [Lizenzen für Azure AD Multi-Factor Authentication](./concept-mfa-howitworks.md) (enthalten in Azure AD Premium P1 und Premium P2 oder Enterprise Mobility + Security) verfügbar. Verbrauchsbasierte Lizenzen für Azure AD Multi-Factor Authentication, z. B. Lizenzen pro Benutzer oder pro Authentifizierung, sind mit der NPS-Erweiterung nicht kompatibel.
 
 ### <a name="software"></a>Software
 

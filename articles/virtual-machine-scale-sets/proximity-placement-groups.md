@@ -1,5 +1,5 @@
 ---
-title: Näherungsplatzierungsgruppen (Vorschau) für VM-Skalierungsgruppen
+title: Näherungsplatzierungsgruppen für VM-Skalierungsgruppen
 description: Erfahren Sie mehr über das Erstellen und Verwenden von Näherungsplatzierungsgruppen für Windows-VM-Skalierungsgruppen in Azure.
 author: cynthn
 ms.author: cynthn
@@ -8,25 +8,19 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: proximity-placement-groups
 ms.date: 07/01/2019
 ms.reviewer: zivr
-ms.custom: mimckitt
-ms.openlocfilehash: eeb0dd6cd5ce838c0f3a68763c40612038ee82f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 767ce9c132c7ca5f322175c54875a6870490052e
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933490"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556044"
 ---
-# <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Vorschau: Erstellen und Verwenden von Näherungsplatzierungsgruppen mit PowerShell
+# <a name="creating-and-using-proximity-placement-groups-using-powershell"></a>Erstellen und Verwenden von Näherungsplatzierungsgruppen mit PowerShell
 
 Um den Abstand zwischen den VMs so stark wie möglich zu verringern und somit die geringstmögliche Latenz zu erzielen, sollten Sie Ihre Skalierungsgruppe in einer [Näherungsplatzierungsgruppe](../virtual-machines/co-location.md#proximity-placement-groups) bereitstellen.
 
 Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, mit der ein möglichst geringer Abstand zwischen Azure-Compute-Ressourcen sichergestellt wird. Näherungsplatzierungsgruppen sind für Workloads hilfreich, die eine geringe Latenz erfordern.
-
-> [!IMPORTANT]
-> Näherungsplatzierungsgruppen sind zurzeit als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> Näherungsplatzierungsgruppen sind in der Vorschauversion in den folgenden Regionen nicht verfügbar: **Japan, Osten**, **Australien, Osten** und **Indien, Mitte**.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Erstellen einer Näherungsplatzierungsgruppe

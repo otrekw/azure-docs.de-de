@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: d4310c724707548cd55df5591504736d8f3c3857
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 48aa91d4ba68b1a69e46019ced7c5bbb69d9029f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460050"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786789"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Übersicht über die Sicherheit für Azure Cognitive Search
 
@@ -146,15 +146,7 @@ Kundenseitig verwaltete Schlüssel erfordern einen zusätzlichen kostenpflichtig
 
 ### <a name="double-encryption"></a>Doppelte Verschlüsselung
 
-Die doppelte Verschlüsselung in Azure Cognitive Search ist eine Erweiterung von CMK. Es handelt sich dabei um eine zweifache Verschlüsselung (einmal durch CMK und einmal durch dienstseitig verwaltete Schlüssel), die sowohl eine langfristige Speicherung auf einem Datenträger und eine kurzfristige Speicherung auf temporären Datenträgern umfasst. Der Unterschied zwischen CMK vor dem 1. August 2020 und danach, und was CMK zu einem doppelten Verschlüsselungsfeature in Azure Cognitive Search macht, ist die zusätzliche Verschlüsselung von ruhenden Daten auf temporären Datenträgern.
-
-Die doppelte Verschlüsselung ist zurzeit für neue Dienste verfügbar, die nach dem 1. August in diesen Regionen erstellt werden:
-
-+ USA, Westen 2
-+ East US
-+ USA Süd Mitte
-+ US Government, Virginia
-+ US Gov Arizona
+Die doppelte Verschlüsselung in Azure Cognitive Search ist eine Erweiterung von CMK. Es handelt sich dabei um eine zweifache Verschlüsselung (einmal durch CMK und einmal durch dienstseitig verwaltete Schlüssel), die sowohl eine langfristige Speicherung auf einem Datenträger und eine kurzfristige Speicherung auf temporären Datenträgern umfasst. Die Mehrfachverschlüsselung wird in Diensten implementiert, die nach bestimmten Daten erstellt wurden. Weitere Informationen finden Sie unter [Mehrfachverschlüsselung](search-security-manage-encryption-keys.md#double-encryption).
 
 ## <a name="security-management"></a>Sicherheitsverwaltung
 

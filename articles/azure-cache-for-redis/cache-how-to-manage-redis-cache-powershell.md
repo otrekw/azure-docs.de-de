@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ac1456e2dc640e1076857da78cf4145b61ea69d4
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: a2d3ee3df3d83307bed781cd8625dab8c07a5cfe
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832786"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526918"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Verwalten von Azure Cache for Redis mit Azure PowerShell
+
 > [!div class="op_single_selector"]
 > * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure-Befehlszeilenschnittstelle](cache-manage-cli.md)
@@ -23,13 +24,14 @@ ms.locfileid: "107832786"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Dieses Thema zeigt, wie Sie gängige Aufgaben wie Erstellen, Aktualisieren und Skalieren Ihrer Azure Cache for Redis-Instanzen ausführen, Zugriffsschlüssel neu generieren und Ihre Caches anzeigen. Eine vollständige Liste der Azure Cache for Redis-PowerShell-Cmdlets finden Sie unter [Azure Cache for Redis-Cmdlets](/powershell/module/az.rediscache).
+In diesem Artikel werden häufige Aufgaben, wie z. B. das Erstellen, Aktualisieren und Skalieren von Azure Cache for Redis-Instanzen beschrieben. Außerdem erhalten Sie Informationen darüber, wie Sie Zugriffsschlüssel neu generieren und Informationen zu Ihren Caches anzeigen können. Eine vollständige Liste der Azure Cache for Redis-PowerShell-Cmdlets finden Sie unter [Azure Cache for Redis-Cmdlets](/powershell/module/az.rediscache).
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
 Weitere Informationen über das klassische Bereitstellungsmodell finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Wenn Sie bereits Azure PowerShell installiert haben, benötigen Sie Version 1.0.0 oder höher. Sie können die von Ihnen installierte Azure Power Shell-Version mit diesem Befehl über die Azure PowerShell-Eingabeaufforderung prüfen.
 
 ```azurepowershell
@@ -42,7 +44,7 @@ Zunächst müssen Sie sich mit dem folgenden Befehl bei Azure anmelden.
     Connect-AzAccount
 ```
 
-Geben Sie die E-Mail-Adresse Ihres Azure-Kontos und das Kennwort in das Anmeldedialogfeld von Microsoft Azure ein.
+Geben Sie die E-Mail-Adresse Ihres Azure-Kontos und Ihr Kennwort in das Anmeldedialogfeld von Microsoft Azure ein.
 
 Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie als Nächstes Ihr Azure-Abonnement festlegen. Führen Sie den folgenden Befehl aus, um eine Liste Ihrer aktuellen Abonnements anzuzeigen.
 
@@ -56,7 +58,7 @@ Führen Sie den folgenden Befehl aus, um das Abonnement anzugeben. Im folgenden 
     Select-AzSubscription -SubscriptionName ContosoSubscription
 ```
 
-Bevor Sie Windows PowerShell mit dem Azure-Ressourcen-Manager verwenden können, benötigen Sie Folgendes:
+Bevor Sie Windows PowerShell mit dem Azure Resource Manager verwenden können, müssen Sie Ihre Einstellungen verifizieren:
 
 * Windows PowerShell, Version 3.0 oder 4.0. Um die Version von Windows PowerShell zu ermitteln, geben Sie `$PSVersionTable` ein. Vergewissern Sie sich, dass der Wert von `PSVersion` 3.0 oder 4.0 ist. Informationen zum Installieren einer kompatiblen Version finden Sie unter [Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595).
 
@@ -73,11 +75,13 @@ Geben Sie beispielsweise Folgendes ein, um Hilfe zum `New-AzRedisCache` -Cmdlet 
 ```
 
 ### <a name="how-to-connect-to-other-clouds"></a>Herstellen von Verbindungen mit anderen Clouds
+
 Standardmäßig ist die Azure-Umgebung `AzureCloud` (die globale Azure-Cloudinstanz). Verwenden Sie zum Verbinden mit einer anderen Instanz den `Connect-AzAccount`-Befehl mit dem Befehlszeilenschalter `-Environment` oder -`EnvironmentName` mit der gewünschten Umgebung bzw. dem gewünschten Umgebungsnamen.
 
 Führen Sie zum Anzeigen der Liste der verfügbaren Umgebungen das Cmdlet `Get-AzEnvironment` aus.
 
 ### <a name="to-connect-to-the-azure-government-cloud"></a>Verbinden mit der Azure Government-Cloud
+
 Verwenden Sie zum Verbinden mit der Azure Government-Cloud einen der folgenden Befehle.
 
 ```azurepowershell
@@ -97,8 +101,9 @@ Verwenden Sie zum Erstellen eines Caches in der Azure Government-Cloud einen der
 
 Weitere Informationen zur Azure Government-Cloud finden Sie unter [Microsoft Azure Government](https://azure.microsoft.com/features/gov/) und im [Microsoft Azure Government-Entwicklerhandbuch](../azure-government/documentation-government-developer-guide.md).
 
-### <a name="to-connect-to-the-azure-china-cloud"></a>Verbinden mit der Azure China-Cloud
-Verwenden Sie zum Verbinden mit der Azure China-Cloud einen der folgenden Befehle.
+### <a name="to-connect-to-the-azure-21vianet-china-cloud"></a>Verbinden mit der Azure China 21Vianet-Cloud
+
+Verwenden Sie zum Verbinden mit der Azure China 21Vianet-Cloud einen der folgenden Befehle.
 
 ```azurepowershell
     Connect-AzAccount -EnvironmentName AzureChinaCloud
@@ -118,6 +123,7 @@ Verwenden Sie zum Erstellen eines Caches in der Azure China-Cloud einen der folg
 Weitere Informationen zur Azure China-Cloud finden Sie unter [AzureChinaCloud für Azure wird in China von 21Vianet betrieben](https://www.windowsazure.cn/).
 
 ### <a name="to-connect-to-microsoft-azure-germany"></a>So stellen Sie eine Verbindung mit Microsoft Azure Deutschland her
+
 Verwenden Sie zum Herstellen einer Verbindung mit Microsoft Azure Deutschland einen der folgenden Befehle.
 
 ```azurepowershell
@@ -138,9 +144,10 @@ Verwenden Sie einen der folgenden Orte, um einen Cache in Microsoft Azure Deutsc
 Weitere Informationen zu Microsoft Azure Deutschland finden Sie unter [Microsoft Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/).
 
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Eigenschaften, die für Azure Cache for Redis-PowerShell verwendet werden
-Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, die beim Erstellen und Verwalten Ihrer Azure Cache for Redis-Instanzen mithilfe von Azure PowerShell häufig verwendet werden.
 
-| Parameter | Beschreibung | Standard |
+Die folgende Tabelle enthält Eigenschaften und Beschreibungen von Azure PowerShell für Parameter, die beim Erstellen und Verwalten Ihrer Azure Cache for Redis-Instanzen häufig verwendet werden.
+
+| Parameter | BESCHREIBUNG | Standard |
 | --- | --- | --- |
 | Name |Name des Caches | |
 | Location |Ort des Caches | |
@@ -157,6 +164,7 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 | KeyType |Gibt an, welcher Zugriffsschlüssel beim Erneuern der Zugriffsschlüssel neu generiert werden muss. Gültige Werte sind: Primary, Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration-Eigenschaften
+
 | Eigenschaft | BESCHREIBUNG | Tarife |
 | --- | --- | --- |
 | rdb-backup-enabled |Gibt an, ob [Redis-Datenpersistenz](cache-how-to-premium-persistence.md) aktiviert ist |Nur Premium |
@@ -173,6 +181,7 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 | databases |Konfiguriert die Anzahl der Datenbanken. Diese Eigenschaft kann nur bei der Erstellung des Caches konfiguriert werden. |Standard und Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>So erstellen Sie einen Azure Cache for Redis
+
 Neue Azure Cache for Redis-Instanzen werden mit dem [New-AzRedisCache](/powershell/module/az.rediscache/new-azrediscache)-Cmdlet erstellt.
 
 > [!IMPORTANT]
@@ -264,9 +273,9 @@ Um einen Cache mit Standardparametern zu erstellen, führen Sie den folgenden Be
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
 ```
 
-`ResourceGroupName`, `Name` und `Location` sind erforderliche Parameter, aber die übrigen sind optional und haben Standardwerte. Mit dem vorherigen Befehl erstellen Sie eine Standard-SKU-Azure Cache for Redis-Instanz mit Name, Speicherort und Ressourcengruppe gemäß der entsprechenden Angaben und einer Größe von 1 GB, für die der Nicht-SSL-Port deaktiviert ist.
+`ResourceGroupName`, `Name` und `Location` sind erforderliche Parameter, aber die übrigen sind optional und haben Standardwerte. Mit dem vorherigen Befehl erstellen Sie eine Standard-SKU-Azure Cache for Redis-Instanz mit Name, Speicherort und Ressourcengruppe gemäß der entsprechenden Angaben. Die Instanz hat eine Größe von 1 GB, wobei der Nicht-SSL-Port deaktiviert ist.
 
-Um einen Premium-Cache zu erstellen, geben Sie eine Größe von P1 (6 bis 60 GB), P2 (13 bis 130 GB), P3 (26 bis 260 GB), oder P4 (53 bis 530 GB) ein. Um Clustering zu aktivieren, geben Sie eine Shardanzahl mit dem Parameter `ShardCount` ein. Das folgende Beispiel erstellt einen P1-Premium-Cache mit 3 Shards. Ein P1-Premium-Cache ist 6 GB groß, und da wir drei Shards angegeben haben, beträgt die Gesamtgröße 18 GB (3 x 6 GB).
+Um einen Premium-Cache zu erstellen, geben Sie eine Größe von P1 (6 bis 60 GB), P2 (13 bis 130 GB), P3 (26 bis 260 GB), oder P4 (53 bis 530 GB) ein. Um Clustering zu aktivieren, geben Sie eine Shardanzahl mit dem Parameter `ShardCount` ein. Das folgende Beispiel erstellt einen P1-Premium-Cache mit drei Shards. Ein P1-Premium-Cache ist 6 GB groß, und da wir drei Shards angegeben haben, beträgt die Gesamtgröße 18 GB (3 x 6 GB).
 
 ```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
@@ -281,6 +290,7 @@ Um Werte für die `RedisConfiguration`-Parameter anzugeben, schließen Sie die W
 <a name="databases"></a>
 
 ## <a name="to-configure-the-databases-setting-during-cache-creation"></a>So konfigurieren Sie die Einstellung für Datenbanken während der Erstellung des Caches
+
 Die Einstellung `databases` kann nur während der Erstellung des Caches konfiguriert werden. Mit dem folgenden Beispiel wird ein Premium-P3-Cache (26 GB) mit 48 Datenbanken mit dem [New-AzRedisCache](/powershell/module/az.rediscache/New-azRedisCache)-Cmdlet erstellt.
 
 ```azurepowershell
@@ -290,6 +300,7 @@ Die Einstellung `databases` kann nur während der Erstellung des Caches konfigur
 Weitere Informationen zur Eigenschaft `databases` finden Sie unter [Standardmäßige Azure Cache for Redis-Serverkonfiguration](cache-configure.md#default-redis-server-configuration). Weitere Informationen zum Erstellen eines Caches mithilfe des [New-AzRedisCache](/powershell/module/az.rediscache/new-azrediscache)-Cmdlets finden Sie im vorherigen Abschnitt „So erstellen Sie eine Azure Cache for Redis-Instanz“.
 
 ## <a name="to-update-an-azure-cache-for-redis"></a>So aktualisieren Sie einen Azure Cache for Redis
+
 Azure Cache for Redis-Instanzen werden mit dem [New-AzRedisCache](/powershell/module/az.rediscache/Set-azRedisCache)-Cmdlet aktualisiert.
 
 Um eine Liste der verfügbaren Parameter und ihrer Beschreibungen für `Set-AzRedisCache`anzuzeigen, führen Sie den folgenden Befehl aus.
@@ -359,6 +370,7 @@ Der folgende Befehl aktualisiert die maxmemory-Richtlinie für den Azure Cache f
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>So skalieren Sie einen Azure Cache for Redis
+
 `Set-AzRedisCache` kann verwendet werden, um eine Azure Cache for Redis-Instanz zu skalieren, wenn die Eigenschaften `Size`, `Sku` oder `ShardCount` geändert werden. 
 
 > [!NOTE]
@@ -375,13 +387,13 @@ Der folgende Befehl aktualisiert die maxmemory-Richtlinie für den Azure Cache f
 > 
 > 
 
-Das folgende Beispiel veranschaulicht, wie ein Cache mit Namen `myCache` zu einem 2,5-GB-Cache skaliert wird. Beachten Sie, dass dieser Befehl sowohl für einen Basic- als auch für einen Standard-Cache verwendet werden kann.
+Das folgende Beispiel veranschaulicht, wie ein Cache mit Namen `myCache` zu einem 2,5-GB-Cache skaliert wird. Dieser Befehl kann sowohl für einen Basic- als auch für einen Standard-Cache verwendet werden.
 
 ```azurepowershell
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 ```
 
-Nach Eingabe dieses Befehls wird der Status des Caches zurückgegeben (ähnlich wie beim Aufruf von `Get-AzRedisCache`). Beachten Sie, dass der `ProvisioningState``Scaling` ist.
+Nach Eingabe dieses Befehls wird der Status des Caches zurückgegeben (ähnlich wie beim Aufruf von `Get-AzRedisCache`). `ProvisioningState` wird auf `Scaling` festgelegt.
 
 ```azurepowershell
     PS C:\> Set-AzRedisCache -Name myCache -ResourceGroupName myGroup -Size 2.5GB
@@ -412,13 +424,14 @@ Nach Eingabe dieses Befehls wird der Status des Caches zurückgegeben (ähnlich 
     ShardCount         :
 ```
 
-Nach Abschluss des Skalierungsvorgangs ändert sich `ProvisioningState` in `Succeeded`. Wenn Sie weitere Skalierungen vornehmen möchten (etwa einen Wechsel von Basic zu Standard oder eine Änderung der Größe), müssen Sie warten, bis der vorherige Vorgang abgeschlossen ist. Andernfalls wird eine Fehlermeldung wie die folgende angezeigt.
+Nach Abschluss des Skalierungsvorgangs ändert sich `ProvisioningState` in `Succeeded`. Wenn Sie weitere Skalierungen vornehmen möchten (z. B. einen Wechsel von Basic zu Standard oder eine Änderung der Größe), müssen Sie warten, bis der vorherige Vorgang abgeschlossen ist. Andernfalls wird eine Fehlermeldung wie die folgende angezeigt.
 
 ```azurepowershell
     Set-AzRedisCache : Conflict: The resource '...' is not in a stable state, and is currently unable to accept the update request.
 ```
 
 ## <a name="to-get-information-about-an-azure-cache-for-redis"></a>So erhalten Sie weitere Informationen zum Azure Cache for Redis
+
 Sie können Informationen zu einem Cache mithilfe des [Get-AzRedisCache](/powershell/module/az.rediscache/get-azrediscache)-Cmdlets abrufen.
 
 Um eine Liste der verfügbaren Parameter und ihrer Beschreibungen für `Get-AzRedisCache`anzuzeigen, führen Sie den folgenden Befehl aus.
@@ -503,6 +516,7 @@ Um Informationen zu einem bestimmten Cache zurückzugeben, führen Sie `Get-AzRe
 ```
 
 ## <a name="to-retrieve-the-access-keys-for-an-azure-cache-for-redis"></a>So rufen Sie die Zugriffsschlüssel für einen Azure Cache for Redis ab
+
 Um die Zugriffsschlüssel für Ihren Cache abzurufen, können Sie das [New-AzRedisCache](/powershell/module/az.rediscache/Get-azRedisCacheKey)-Cmdlet verwenden.
 
 Um eine Liste der verfügbaren Parameter und ihrer Beschreibungen für `Get-AzRedisCacheKey`anzuzeigen, führen Sie den folgenden Befehl aus.
@@ -547,6 +561,7 @@ Um die Schlüssel für Ihren Cache abzurufen, rufen Sie das `Get-AzRedisCacheKey
 ```
 
 ## <a name="to-regenerate-access-keys-for-your-azure-cache-for-redis"></a>So generieren Sie Zugriffsschlüssel für Ihren Azure Cache for Redis neu
+
 Um die Zugriffsschlüssel für Ihren Cache abzurufen, können Sie das [New-AzRedisCache](/powershell/module/az.rediscache/New-azRedisCacheKey)-Cmdlet verwenden.
 
 Um eine Liste der verfügbaren Parameter und ihrer Beschreibungen für `New-AzRedisCacheKey`anzuzeigen, führen Sie den folgenden Befehl aus.
@@ -601,6 +616,7 @@ Um den primären oder sekundären Schlüssel für Ihren Cache erneut zu generier
 ```
 
 ## <a name="to-delete-an-azure-cache-for-redis"></a>So löschen Sie einen Azure Cache for Redis
+
 Um einen Azure Cache for Redis zu löschen, verwenden Sie das [Remove-AzRedisCache](/powershell/module/az.rediscache/remove-azrediscache)-Cmdlet.
 
 Um eine Liste der verfügbaren Parameter und ihrer Beschreibungen für `Remove-AzRedisCache`anzuzeigen, führen Sie den folgenden Befehl aus.
@@ -653,6 +669,7 @@ Im folgenden Beispiel wird der Cache mit dem Namen `myCache` entfernt.
 
 
 ## <a name="to-import-an-azure-cache-for-redis"></a>So importieren Sie einen Azure Cache for Redis
+
 Sie können mit dem Cmdlet `Import-AzRedisCache` Daten in eine Azure Cache for Redis-Instanz importieren.
 
 > [!IMPORTANT]
@@ -717,6 +734,7 @@ Der folgende Befehl importiert Daten aus dem vom SAS-URI angegebenen Blob in Azu
 ```
 
 ## <a name="to-export-an-azure-cache-for-redis"></a>So exportieren Sie einen Azure Cache for Redis
+
 Sie können mit dem Cmdlet `Export-AzRedisCache` Daten aus einer Azure Cache for Redis-Instanz exportieren.
 
 > [!IMPORTANT]
@@ -782,6 +800,7 @@ Der folgende Befehl exportiert Daten aus einer Azure Cache for Redis-Instanz in 
 ```
 
 ## <a name="to-reboot-an-azure-cache-for-redis"></a>So starten Sie einen Azure Cache for Redis neu
+
 Sie können mit dem Cmdlet `Reset-AzRedisCache` Ihre Azure Cache for Redis-Instanz neu starten.
 
 > [!IMPORTANT]
@@ -847,6 +866,7 @@ Der folgende Befehl startet beide Knoten des angegebenen Cache neu.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zur Verwendung von Windows PowerShell mit Azure finden Sie in den folgenden Ressourcen:
 
 * [Dokumentation zu den Azure Cache for Redis-Cmdlets auf MSDN](/powershell/module/az.rediscache)

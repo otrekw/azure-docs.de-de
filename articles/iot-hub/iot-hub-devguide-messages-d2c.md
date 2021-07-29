@@ -1,22 +1,22 @@
 ---
 title: Grundlegendes zum Azure IoT Hub-Nachrichtenrouting | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Verwenden des Nachrichtenroutings zum Senden von D2C-Nachrichten. Enthält Informationen zum Senden von Telemetriedaten und anderen Daten.'
-author: ash2017
-manager: briz
+author: nehsin
+manager: mehmet.kucukgoz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/15/2019
-ms.author: asrastog
+ms.date: 05/14/2021
+ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: c9c0b2807962aaddc2f3b6cef6a261084b21714c
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: d7f6030e8d4d2807084d212713df8630f2d7a17a
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109715770"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191726"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -24,7 +24,7 @@ ms.locfileid: "109715770"
 
 Das Nachrichtenrouting ermöglicht es Ihnen, Nachrichten automatisiert, skalierbar und zuverlässig von Ihren Geräten an Clouddienste zu senden. Das Nachrichtenrouting kann für Folgendes verwendet werden: 
 
-* **Senden von Gerätetelemetrienachrichten sowie von Ereignissen** – insbesondere von Ereignissen im Gerätelebenszyklus, Änderungsereignissen für Gerätezwillinge sowie Änderungsereignissen bei digitalen Zwillingen im integrierten Endpunkt und in benutzerdefinierten Endpunkten. Erfahren Sie mehr über [Routingendpunkte](#routing-endpoints). Weitere Informationen zu den von IoT Plug & Play-Geräten gesendeten Ereignissen finden Sie unter [Grundlegendes zu digitalen IoT Plug & Play-Zwillingen](../iot-pnp/concepts-digital-twin.md).
+* **Senden von Gerätetelemetrienachrichten und von Ereignissen** – insbesondere von Ereignissen beim Gerätelebenszyklus, Änderungsereignissen bei Gerätezwillingen, Änderungsereignissen bei digitalen Zwillingen sowie von Ereignissen beim Geräteverbindungsstatus im integrierten Endpunkt und in benutzerdefinierten Endpunkten. Erfahren Sie mehr über [Routingendpunkte](#routing-endpoints). Weitere Informationen zu den von IoT Plug & Play-Geräten gesendeten Ereignissen finden Sie unter [Grundlegendes zu digitalen IoT Plug & Play-Zwillingen](../iot-pnp/concepts-digital-twin.md).
 
 * **Filtern von Daten vor dem Weiterleiten an verschiedene Endpunkte** durch Anwenden umfassender Abfragen. Mithilfe des Nachrichtenroutings können Sie Abfragen für Nachrichteneigenschaften und Nachrichtentext sowie für Gerätezwillingstags und Gerätezwillingseigenschaften durchführen. Erfahren Sie mehr über die Verwendung von [Abfragen im Nachrichtenrouting](iot-hub-devguide-routing-query-syntax.md).
 
@@ -120,15 +120,24 @@ Verwenden Sie die folgenden Tutorials, um zu erfahren, wie Sie Nachrichten aus e
 
 ## <a name="fallback-route"></a>Fallbackroute
 
-Die Fallbackroute sendet alle Nachrichten, die die Abfragebedingungen in einer der vorhandenen Routen nicht erfüllen, an den integrierten Endpunkt (**messages/events**), der mit [Event Hubs](../event-hubs/index.yml) kompatibel ist. Wenn das Nachrichtenrouting aktiviert ist, können Sie die Funktion der Fallbackroute verwenden. Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt. Wenn keine Routen zum integrierten Endpunkt vorhanden sind und eine Fallbackroute aktiviert ist, werden nur Nachrichten an den integrierten Endpunkt gesendet, die keinen Abfragebedingungen in Routen entsprechen. Wenn alle vorhandenen Routen gelöscht wurden, muss eine Fallbackroute aktiviert werden, um alle Daten im integrierten Endpunkt zu empfangen.
+Die Fallbackroute sendet alle Nachrichten, die die Abfragebedingungen in einer der vorhandenen Routen nicht erfüllen, an den integrierten Endpunkt (**messages/events**), der mit [Event Hubs](../event-hubs/index.yml) kompatibel ist. Wenn das Nachrichtenrouting aktiviert ist, können Sie die Funktion der Fallbackroute verwenden. Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt. Wenn keine Routen zum integrierten Endpunkt vorhanden sind und eine Fallbackroute aktiviert ist, werden nur Nachrichten an den integrierten Endpunkt gesendet, die keinen Abfragebedingungen in Routen entsprechen. Wenn alle vorhandenen Routen gelöscht wurden, muss eine Fallbackroute aktiviert werden, um alle Daten im integrierten Endpunkt zu empfangen. 
 
 Sie können die Fallbackroute im Azure-Portal auf dem Blatt „Nachrichtenrouting“ aktivieren und deaktivieren. Sie können auch Azure Resource Manager verwenden, um [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) für die Nutzung eines benutzerdefinierten Endpunkts für die Fallbackroute festzulegen.
 
 ## <a name="non-telemetry-events"></a>Nicht telemetriebezogene Ereignisse
 
-Das Nachrichtenrouting ermöglicht zusätzlich zum Weiterleiten von Gerätetelemetriedaten auch das Senden von Änderungsereignissen bei Gerätezwillingen und von Ereignissen im Gerätelebenszyklus. Wenn beispielsweise eine Route erstellt wird, deren Datenquelle auf **Änderungsereignisse für Gerätezwillinge** festgelegt ist, sendet IoT Hub Nachrichten an den Endpunkt, der die Änderung im Gerätezwilling enthält. Ebenso gilt: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse im Gerätelebenszyklus** festgelegt ist, sendet IoT Hub eine Nachricht, die mitteilt, ob das Gerät erstellt oder gelöscht wurde. Ein Entwickler kann im Rahmen von [Azure IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) Routen erstellen, deren Datenquelle auf **Änderungsereignisse bei digitalen Zwillingen** festgelegt ist. Dann sendet IoT Hub Nachrichten, wenn eine Eigenschaft des digitalen Zwillings festgelegt oder geändert wird, ein digitaler Zwilling ersetzt wird oder beim zugrunde liegenden Gerätezwilling ein Änderungsereignis auftritt.
+Das Nachrichtenrouting ermöglicht zusätzlich zum Weiterleiten von Gerätetelemetriedaten auch das Senden von Änderungsereignissen bei Gerätezwillingen, Ereignissen beim Gerätelebenszyklus, Änderungsereignissen bei digitalen Zwillingen und Ereignissen beim Geräteverbindungsstatus. Wenn beispielsweise eine Route erstellt wird, deren Datenquelle auf **Änderungsereignisse für Gerätezwillinge** festgelegt ist, sendet IoT Hub Nachrichten an den Endpunkt, der die Änderung im Gerätezwilling enthält. Ebenso gilt: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse im Gerätelebenszyklus** festgelegt ist, sendet IoT Hub eine Nachricht, die mitteilt, ob das Gerät erstellt oder gelöscht wurde. Ein Entwickler kann im Rahmen von [Azure IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) Routen erstellen, deren Datenquelle auf **Änderungsereignisse bei digitalen Zwillingen** festgelegt wurde. Dann sendet IoT Hub Nachrichten, wenn eine Eigenschaft des digitalen Zwillings festgelegt oder geändert wird, ein digitaler Zwilling ersetzt wird oder beim zugrunde liegenden Gerätezwilling ein Änderungsereignis eintritt. Und schließlich: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse beim Geräteverbindungsstatus** festgelegt wurde, sendet IoT Hub eine Nachricht, die mitteilt, ob das Gerät verbunden oder die Verbindung getrennt wurde.
+
 
 [IoT Hub lässt sich auch in Azure Event Grid integrieren](iot-hub-event-grid.md), um Geräteereignisse zu veröffentlichen und so Echtzeitintegrationen und die Automatisierung von Workflows basierend auf diesen Ereignissen zu unterstützen. Informationen dazu, welche Methode sich am besten für Ihr Szenario eignet, finden Sie unter [Vergleichen von Nachrichtenweiterleitung und Event Grid für IoT Hub](iot-hub-event-grid-routing-comparison.md).
+
+## <a name="limitations-for-device-connection-state-events"></a>Einschränkungen für Ereignisse beim Geräteverbindungsstatus
+
+Zum Empfang von Ereignissen beim Geräteverbindungsstatus muss ein Gerät entweder die *Gerät-zu-Cloud-Sendetelemetrie* oder einen *Cloud-zu-Gerät-Empfangsnachrichtenvorgang* mit IoT Hub aufrufen. Wenn aber ein Gerät für die Verbindung mit IoT Hub das AMQP-Protokoll verwendet, empfehlen wir, dass das Gerät den *Cloud-zu-Gerät-Vorgang zum Empfangen einer Nachricht* aufruft. Andernfalls werden die Benachrichtigungen zum Verbindungszustand möglicherweise um einige Minuten verzögert. Wenn Ihr Gerät eine Verbindung mit dem MQTT-Protokoll herstellt, bleibt die Cloud-zu-Gerät-Verbindung in IoT Hub geöffnet. Zum Öffnen des Cloud-zu-Gerät-Links für AMQP rufen Sie die [Receive Async API](/rest/api/iothub/device/receivedeviceboundnotification) (Asynchrone API zum Empfangen) auf.
+
+Die Gerät-zu-Cloud-Verbindung bleibt geöffnet, solange das Gerät Telemetriedaten sendet.
+
+Wenn die Geräteverbindung flackert, d. h., wenn das Gerät eine Verbindung häufig herstellt und trennt, sendet IoT Hub nicht jeden einzelnen Verbindungsstatus, sondern veröffentlicht den aktuellen Verbindungsstatus, der bei einer regelmäßigen Momentaufnahme von 60 Sekunden erfasst wurde, bis das Flackern beendet wird. Wenn dasselbe Verbindungszustandsereignis mit unterschiedlichen Folgenummern oder unterschiedliche Verbindungszustandsereignissen empfangen werden, bedeutet dies, dass sich der Geräteverbindungsstatus geändert hat.
 
 ## <a name="testing-routes"></a>Testen von Routen
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 863f98e643a7978856c03f5efe95736e6787f977
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: a8f0088077d5b7d0ec9fbc4336ee68a3459845b1
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814404"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411807"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Grundlegende Konzepte von Azure Key Vault
 
@@ -32,7 +32,7 @@ Hier sind weitere wichtige Begriffe:
 
 - **Kryptoverantwortlicher/Kryptografiebenutzer für verwaltete HSMs**: Integrierte Rollen, die normalerweise Benutzern oder Dienstprinzipalen zugewiesen werden, die kryptografische Vorgänge mithilfe von Schlüsseln in verwaltetem HSM durchführen. Der Kryptografiebenutzer kann neue Schlüssel erstellen, aber keine Schlüssel löschen.
 
-- **Kryptografiedienstverschlüsselung für verwaltete HSMs**: Integrierte Rolle, die in der Regel für die Verschlüsselung von ruhenden Daten mit kundenseitig verwaltetem Schlüssel einem Dienstkonto mit verwalteter Dienstidentität (z. B. Speicherkonto) zugewiesen wird.
+- **Managed HSM Crypto Service Encryption User (Benutzer der Kryptografiedienstverschlüsselung für verwaltete HSMs)** : Integrierte Rolle, die in der Regel für die Verschlüsselung von ruhenden Daten mit kundenseitig verwaltetem Schlüssel einem Dienstkonto mit verwalteter Dienstidentität (z. B. Speicherkonto) zugewiesen wird.
 
 - **Ressource:** Eine Ressource ist ein verwaltbares Element, das über Azure verfügbar ist. Allgemeine Beispiele sind virtuelle Computer, Speicherkonten, Web-Apps, Datenbanken und virtuelle Netzwerke. Es gibt noch viele weitere.
 
@@ -53,6 +53,11 @@ Sie müssen sich zuerst authentifizieren, um Vorgänge mit Key Vault durchführe
 - **Dienstprinzipal und Zertifikat:** Sie können einen Dienstprinzipal und ein zugehöriges Zertifikat verwenden, das Zugriff auf Key Vault hat. Diese Vorgehensweise wird nicht empfohlen, da der Besitzer oder Entwickler der Anwendung das Zertifikat drehen muss.
 - **Dienstprinzipal und Geheimnis:** Obwohl Sie einen Dienstprinzipal und ein Geheimnis zur Authentifizierung bei Key Vault verwenden können, wird diese Vorgehensweise nicht empfohlen. Es ist schwierig, das Bootstrapgeheimnis, das zur Authentifizierung bei Key Vault verwendet wird, automatisch zu drehen.
 
+## <a name="encryption-of-data-in-transit"></a>Verschlüsselung von Daten während der Übertragung
+
+Azure Key Vault erzwingt das [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)-Protokoll (TLS), um Daten zu schützen, wenn sie zwischen Azure Key Vault und Clients übertragen werden. Clients handeln eine TLS-Verbindung mit Azure Key Vault aus. TLS bietet strenge Authentifizierung, Datenschutz von Nachrichten und Integrität (ermöglicht die Erkennung von Manipulation, Abfangen und Fälschung von Nachrichten), Interoperabilität, Algorithmusflexibilität sowie einfache Bereitstellung und Verwendung.
+
+[Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) schützt Verbindungen zwischen den Clientsystemen von Kunden und den Clouddiensten von Microsoft durch eindeutige Schlüssel. Die Verbindungen verwenden zudem RSA-basierte Verschlüsselungsschlüssellängen von 2.048 Bit. Diese Kombination erschwert das Abfangen von Daten während der Übertragung und den Zugriff darauf.
 
 ## <a name="key-vault-roles"></a>Key Vault-Rollen
 

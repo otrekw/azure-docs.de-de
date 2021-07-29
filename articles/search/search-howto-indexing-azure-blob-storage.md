@@ -7,20 +7,24 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 05/14/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 40e3e804d62bfd0ece669ebd46891f0c72dcb71e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 848ffc1d4352d464a9afb1c65a0a8c60eb3cffa3
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140333"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558888"
 ---
 # <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Konfigurieren der Blobindizierung in Cognitive Search
 
 Ein Blobindexer wird zum Erfassen von Inhalten aus Azure Blob Storage in einem Cognitive Search-Index verwendet. Blobindexer werden häufig in [Ki-Anreicherungen](cognitive-search-concept-intro.md) verwendet, die durch ein angefügtes [Skillset](cognitive-search-working-with-skillsets.md) die Fähigkeiten zur Verarbeitung von Bildern und natürlicher Sprache hinzufügen, um durchsuchbaren Inhalt zu erstellen. Sie können jedoch auch Blobindexer ohne KI-Anreicherung verwenden, um Inhalte aus textbasierten Dokumenten (z. B. PDF-Dateien, Microsoft Office-Dokumenten und Dateiformaten) zu erfassen.
 
 In diesem Artikel wird die Konfiguration eines Blobindexers in beiden Szenarien beschrieben. Wenn Sie mit Indexerkonzepten nicht vertraut sind, beginnen Sie mit [Indexer in Azure Cognitive Search](search-indexer-overview.md) und [Erstellen eines Suchindexers](search-howto-create-indexers.md), ehe Sie sich mit der Blobindizierung beschäftigen.
+
+## <a name="supported-access-tiers"></a>Unterstützte Zugriffsebenen
+
+Die Blob Storage-[Zugriffsebenen](../storage/blobs/storage-blob-storage-tiers.md) lauten „Heiß“, „Kalt“ und „Archiv“. Indexer können nur auf „Heiß“ und „Kalt“ zugreifen. 
 
 <a name="SupportedFormats"></a>
 

@@ -6,13 +6,13 @@ ms.author: suvirdi
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 10/20/2020
-ms.openlocfilehash: 94b765cbcbdd81505b08052845207ee1d93a28d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: 5926add3b4affffeb532c1b10cd81edc866f7f14
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667799"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059552"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-purview"></a>Häufig gestellte Fragen (FAQ) zu Azure Purview
 
@@ -141,3 +141,13 @@ Nein. Zum Überprüfen der Datenquelle eines anderen Mandanten müssen Sie derze
 ### <a name="does-azure-purview-support-column-level-lineage"></a>Werden für Azure Purview Herkunftsinformationen auf Spaltenebene unterstützt?
 
 Ja. Für Azure Purview werden Herkunftsinformationen auf Spaltenebene unterstützt.
+
+### <a name="does-azure-purview-support-soft-delete"></a>Unterstützt Azure Purview vorläufiges Löschen?
+
+Ja, Azure Purview unterstützt das vorläufige Löschen für die Verwaltungsperspektive des Azure-Abonnementstatus. Purview kann Abonnementzustände lesen (deaktiviert/gewarnt usw.) und das Konto in den Zustand „vorläufig gelöscht“ setzen, bis das Konto wiederhergestellt/gelöscht wird. Alle API-Aufrufe auf Datenebene werden blockiert, wenn sich das Konto im Zustand „vorläufig gelöscht“ befindet, und nur GET/DELETE-API-Aufrufe auf Steuerungsebene sind zulässig. Weitere Informationen finden Sie auf der Seite der Azure-Abonnementzustände [Azure-Abonnementstatus](../cost-management-billing/manage/subscription-states.md).
+
+### <a name="does-azure-purview-currently-support-data-loss-prevention-capabilities"></a>Unterstützt Azure Purview derzeit Funktionen zur Verhinderung von Datenverlust?
+
+Nein, Azure Purview bietet derzeit keine Funktionen zur Verhinderung von Datenverlust. 
+
+Lesen Sie die Informationen zur [Verhinderung von Datenverlust in Microsoft Information Protection](/microsoft-365/compliance/information-protection#prevent-data-loss), wenn Sie an Features zur Verhinderung von Datenverlust in Microsoft 365 interessiert sind.

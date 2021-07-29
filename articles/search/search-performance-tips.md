@@ -7,12 +7,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 28325a1bbda1b2d4a4bb060ae3e79057275ee42a
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 804166beebf4f12e246a27122bd44c611972a488
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106582049"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111437998"
 ---
 # <a name="tips-for-better-performance-in-azure-cognitive-search"></a>Tipps zur Verbesserung der Leistung in Azure Cognitive Search
 
@@ -24,7 +24,7 @@ Dieser Artikel enthält häufig empfohlene Tipps und bewährte Methoden zur Leis
 
 ## <a name="index-size-and-schema"></a>Indexgröße und Schema
 
-Abfragen sind mit kleineren Indizes schneller. Das liegt zum einen daran, dass weniger Felder überprüft werden müssen, hängt aber auch damit zusammen, wie Inhalte für zukünftige Abfragen zwischengespeichert werden. Nach der ersten Abfrage bleibt ein Teil des Inhalts im Arbeitsspeicher, wo er effizienter durchsucht werden kann. Da der Index in der Regel im Laufe der Zeit immer größer wird, empfiehlt es sich, die Indexzusammensetzung (Schema und Dokumente) regelmäßig auf Möglichkeiten zur Inhaltsreduzierung zu überprüfen. Ist der Index ordnungsgemäß dimensioniert, haben Sie nur noch die Möglichkeit, die Kapazität zu erhöhen, indem Sie entweder [Replikate hinzufügen](search-capacity-planning.md#adjust-capacity) oder die Dienstebene upgraden. Der Abschnitt ["Tipp: Upgraden Sie auf einen Tarif vom Typ „Standard S2“."]](#tip-upgrade-to-a-standard-s2-tier) enthält Informationen, die Sie bei der Entscheidung zwischen Hochskalieren und Aufskalieren unterstützen.
+Abfragen sind mit kleineren Indizes schneller. Das liegt zum einen daran, dass weniger Felder überprüft werden müssen, hängt aber auch damit zusammen, wie Inhalte für zukünftige Abfragen zwischengespeichert werden. Nach der ersten Abfrage bleibt ein Teil des Inhalts im Arbeitsspeicher, wo er effizienter durchsucht werden kann. Da der Index in der Regel im Laufe der Zeit immer größer wird, empfiehlt es sich, die Indexzusammensetzung (Schema und Dokumente) regelmäßig auf Möglichkeiten zur Inhaltsreduzierung zu überprüfen. Ist der Index ordnungsgemäß dimensioniert, haben Sie nur noch die Möglichkeit, die Kapazität zu erhöhen, indem Sie entweder [Replikate hinzufügen](search-capacity-planning.md#adjust-capacity) oder die Dienstebene upgraden. Der Abschnitt [Tipp: Upgraden Sie auf einen Tarif vom Typ „Standard S2“](#tip-upgrade-to-a-standard-s2-tier) enthält Informationen, die Sie bei der Entscheidung zwischen Hochskalieren und Aufskalieren unterstützen.
 
 Die Schemakomplexität kann sich ebenfalls negativ auf die Indizierung und die Abfrageleistung auswirken. Übermäßige Feldzuordnungen führen zu Einschränkungen und Verarbeitungsanforderungen. Bei [komplexen Typen](search-howto-complex-data-types.md) dauern Indizierung und Abfragen länger. In den nächsten Abschnitten wird auf die einzelnen Bedingungen eingegangen.
 

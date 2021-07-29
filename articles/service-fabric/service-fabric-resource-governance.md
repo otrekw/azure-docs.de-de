@@ -3,12 +3,12 @@ title: Ressourcenkontrolle für Container und Dienste
 description: Azure Service Fabric ermöglicht Ihnen, Ressourcenanforderungen und -grenzwerte für Dienste festzulegen, die als Prozesse oder Container ausgeführt werden.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: d760766870c8c2be0a2d2384f6d012b75bc92fbd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2265640346525c6521d7f421c2e589979cceb4ca
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735657"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783405"
 ---
 # <a name="resource-governance"></a>Ressourcengovernance
 
@@ -264,14 +264,18 @@ Weitere Hinweise:
 
 ## <a name="other-resources-for-containers"></a>Weitere Ressourcen für Container
 
-Neben CPU und Arbeitsspeicher ist es möglich, noch andere Ressourcengrenzwerte für Container anzugeben. Diese Grenzwerte werden auf Codepaketebene angegeben und angewendet, wenn der Container gestartet wird. Anders als bei CPU und Arbeitsspeicher sind diese Ressourcen im Cluster Resource Manager nicht bekannt, sodass dieser weder die Kapazität überprüft noch einen Lastenausgleich für sie ausführt.
+Neben CPU und Arbeitsspeicher ist es möglich, noch andere [Ressourcengrenzwerte für Container](service-fabric-service-model-schema-complex-types.md#resourcegovernancepolicytype-complextype) anzugeben. Diese Grenzwerte werden auf Codepaketebene angegeben und angewendet, wenn der Container gestartet wird. Anders als bei CPU und Arbeitsspeicher sind diese Ressourcen im Cluster Resource Manager nicht bekannt, sodass dieser weder die Kapazität überprüft noch einen Lastenausgleich für sie ausführt.
 
-* *MemorySwapInMB:* die Menge an Auslagerungsspeicher, die ein Container nutzen kann
-* *MemoryReservationInMB:* der weiche Grenzwert für die Arbeitsspeicherüberwachung, die nur erzwungen wird, wenn auf dem Knoten Arbeitsspeicherkonflikte erkannt werden
-* *CpuPercent:* CPU-Prozentsatz, den der Container verwenden kann. Wenn CPU-Anforderungen oder -Grenzwerte für das Dienstpaket angegeben werden, wird dieser Parameter effektiv ignoriert.
-* *MaximumIOps:* maximale IOPS, die ein Container verwenden kann (lesen und schreiben)
-* *MaximumIOBytesps:* maximale E/A (Byte/s), die ein Container verwenden kann (lesen und schreiben)
-* *BlockIOWeight:* Block-E/A-Gewichtung relativ zu anderen Containern
+* *MemorySwapInMB*: Die Gesamtmenge von Swapspeicher, der verwendet werden kann (in MB). Der Wert muss eine positive ganze Zahl sein.
+* *MemoryReservationInMB*: Der weiche Grenzwert (in MB) für die Arbeitsspeicherüberwachung, die nur erzwungen wird, wenn auf dem Knoten Arbeitsspeicherkonflikte erkannt werden. Der Wert muss eine positive ganze Zahl sein.
+* *CpuPercent*: Verwendbarer Prozentsatz der verfügbaren CPUs (nur Windows). Der Wert muss eine positive ganze Zahl sein. Kann nicht mit CpuShares, CpuCores oder CpuCoresLimit verwendet werden.
+* *CpuShares*: Relative CPU-Gewichtung. Der Wert muss eine positive ganze Zahl sein. Kann nicht mit CpuPercent, CpuCores oder CpuCoresLimit verwendet werden.
+* *MaximumIOps*: Maximale E/A-Rate (Lesen und Schreiben), ausgedrückt als Anzahl von IOps, die verwendet werden können. Der Wert muss eine positive ganze Zahl sein.
+* *MaximumIOBandwidth*: Die maximale E/A (Bytes pro Sekunde), die verwendet werden kann (Lesen und Schreiben). Der Wert muss eine positive ganze Zahl sein.
+* *BlockIOWeight*: Block-E/A-Gewichtung relativ zu anderen Codepaketen. Muss ein positiver Integerwert zwischen 10 und 1000 sein.
+* *DiskQuotaInMB*: Datenträgerkontingent für Container. Der Wert muss eine positive ganze Zahl sein.
+* *KernelMemoryInMB*: Kernel-Arbeitsspeichergrenzwerte in Bytes.  Der Wert muss eine positive ganze Zahl sein.  Beachten Sie, dass dies Linux-spezifisch ist und Docker unter Windows einen Fehler ausgibt, wenn dieser Wert festgelegt ist.
+* *ShmSizeInMB*: Größe von */dev/shm* in Bytes. Wenn nicht angegeben, verwendet das System 64 MB.  Der Wert muss eine positive ganze Zahl sein. Beachten Sie, dass dies Linux-spezifisch ist. Docker ignoriert (und führt nicht zu einem Fehler), wenn angegeben.
 
 Diese Ressourcen können mit CPU und Arbeitsspeicher kombiniert werden. Hier ist ein Beispiel dafür, wie zusätzliche Ressourcen für Container angegeben werden:
 

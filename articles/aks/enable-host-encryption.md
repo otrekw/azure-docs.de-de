@@ -3,14 +3,14 @@ title: Aktivieren der hostbasierten Verschlüsselung in Azure Kubernetes Service
 description: Erfahren Sie, wie Sie eine hostbasierte Verschlüsselung in einem Azure Kubernetes Service-Cluster (AKS) konfigurieren.
 services: container-service
 ms.topic: article
-ms.date: 03/03/2021
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3d5009c164ab09d3977bb15d85b166a31c1f1a0b
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.date: 04/26/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 41f0a9beda1c72b778d4f238cc5aa629e10b6d7e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754315"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094274"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks"></a>Hostbasierte Verschlüsselung in Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,9 @@ Diese Funktion kann nur bei der Erstellung des Clusters oder bei der Erstellung 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Azure CLI, Version 2.23.0 oder höher
+
+- Stellen Sie sicher, dass Sie die CLI-Erweiterung (v2.23 oder höher) installiert haben.
+
 
 ### <a name="limitations"></a>Einschränkungen
 

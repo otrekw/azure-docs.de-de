@@ -8,14 +8,17 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: c3218d8781377e76f05d10a8da2c954ac0b685a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8bcf300c9e17bd809a0dc35443917dee2a908e27
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641994"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075581"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Verwenden der Azure Firewall zum Überprüfen des Datenverkehrs für einen privaten Endpunkt
+
+> [!NOTE]
+> Informationen zum Schützen von Datenverkehr zu privaten Endpunkten in Azure Virtual WAN mithilfe eines geschützten virtuellen Hubs finden Sie unter [Schützen von Datenverkehr, der für private Endpunkte von Azure Virtual WAN bestimmt ist](../firewall-manager/private-link-inspection-secure-virtual-hub.md).
 
 Der private Azure-Endpunkt ist der grundlegende Baustein für Azure Private Link. Private Endpunkte ermöglichen die Bereitstellung von Azure-Ressourcen in einem virtuellen Netzwerk, um privat mit Private Link-Ressourcen zu kommunizieren.
 
@@ -173,7 +176,7 @@ Ersetzen Sie die folgenden Parameter in den Schritten durch die folgenden Inform
     | **Administratorkonto** |  |
     | Authentifizierungsart | Wählen Sie **Kennwort** aus. |
     | Username | Geben Sie einen Benutzernamen Ihrer Wahl ein. |
-    | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/linux/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/linux/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.|
     | Kennwort bestätigen | Geben Sie das Kennwort erneut ein. |
     | **Regeln für eingehende Ports** |  |
     | Öffentliche Eingangsports | Wählen Sie **Keine**. |
@@ -197,6 +200,8 @@ Ersetzen Sie die folgenden Parameter in den Schritten durch die folgenden Inform
 6. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
 7. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="deploy-the-firewall"></a>Bereitstellen der Firewall
 

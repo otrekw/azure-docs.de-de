@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 4caf43cb972b44dd1482b9e6e467e41cae294708
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daf169a84268a24fd1cc50cd67386d359f9d726a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93100098"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097874"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container---sql-api"></a>Bereitstellen von Standarddurchsatz (manuell) für einen Azure Cosmos-Container – SQL-API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,9 +31,9 @@ Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Bereits
 1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neuer Container** aus. Geben Sie anschließend die folgenden Details an:
 
    * Geben Sie an, ob Sie eine neue Datenbank erstellen oder eine vorhandene Datenbank verwenden.
-   * Geben Sie eine Container-ID ein.
-   * Geben Sie einen Partitionsschlüsselwert ein (etwa `/ItemID`).
-   * Geben Sie den bereitzustellenden Durchsatz an (etwa 1.000 RUs).
+   * Geben Sie eine **Container-ID** ein.
+   * Geben Sie einen Wert für den **Partitionsschlüssel** ein (z. B. `/ItemID`).
+   * Wählen Sie **Autoskalierung** oder **Manuell** für den Durchsatz aus, und geben Sie den erforderlichen **Containerdurchsatz** ein (z. B. 1000 RU/s). Geben Sie den bereitzustellenden Durchsatz an (etwa 1.000 RUs).
    * Klicken Sie auf **OK**.
 
     :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="Screenshot des Daten-Explorers mit hervorgehobener Option „Neue Sammlung“":::

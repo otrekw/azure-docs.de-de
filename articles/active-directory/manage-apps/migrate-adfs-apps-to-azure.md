@@ -2,21 +2,21 @@
 title: Verschieben der Anwendungsauthentifizierung von AD FS in Azure Active Directory
 description: Hier erfahren Sie, wie Sie Azure Active Directory verwenden, um Active Directory-Verbunddienste (AD FS) zu ersetzen und Benutzern SSO (einmaliges Anmelden) für alle ihre Anwendungen bereitstellen.
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: baselden
-ms.openlocfilehash: 4e9bedc63a3b1d53222c732b6611d132249b07c6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 616550188687823438187e1e09c90d5d3c6c6835
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320797"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078813"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory
 
@@ -326,7 +326,7 @@ Angeben von MFA-Regeln basierend auf dem Standort eines Benutzers in Azure AD:
 
 1. Erstellen Sie eine [neue Richtlinie für bedingten Zugriff](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json).
 1. Legen Sie die **Zuweisungen** auf **Alle Benutzer** fest.
-1. [Konfigurieren benannter Standorte in Azure AD](../reports-monitoring/quickstart-configure-named-locations.md). Andernfalls wird der Verbund innerhalb Ihres Unternehmensnetzwerks als vertrauenswürdig eingestuft.
+1. [Konfigurieren benannter Standorte in Azure AD](../conditional-access/location-condition.md). Andernfalls wird der Verbund innerhalb Ihres Unternehmensnetzwerks als vertrauenswürdig eingestuft.
 1. Konfigurieren Sie die Regeln für die **Bedingungen**, um die Standorte anzugeben, für die Sie die MFA erzwingen möchten.
 
     ![Screenshot des Bereichs „Standorte“ für Bedingungsregeln](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
@@ -365,7 +365,7 @@ In dieser Tabelle sind einige nützliche Optionen für „Permit“ („Zulassen
 
 | Option | Konfigurieren der „Permit“-Option („Zulassen“) in Azure AD| Konfigurieren der „Except“-Option („außer“) in Azure AD |
 | - | - | - |
-| In bestimmten Netzwerken| Die Option wird einem [benannten Standort](../reports-monitoring/quickstart-configure-named-locations.md) in Azure AD zugeordnet.| Verwenden Sie für [vertrauenswürdige Standorte](../conditional-access/location-condition.md) die **Exclude**-Option („außer“). |
+| In bestimmten Netzwerken| Die Option wird einem [benannten Standort](../conditional-access/location-condition.md) in Azure AD zugeordnet.| Verwenden Sie für [vertrauenswürdige Standorte](../conditional-access/location-condition.md) die **Exclude**-Option („außer“). |
 | In bestimmten Gruppen| [Legen Sie eine Benutzer-/Gruppenzuweisung fest.](assign-user-or-group-access-portal.md)| Verwenden Sie in „Benutzer und Gruppen“ die **Exclude**-Option („außer“). |
 | Auf Geräten mit bestimmter Vertrauensebene| Legen Sie diese Einstellung im Steuerelement **Gerätestatus** unter „Zuweisungen“ > „Bedingungen“ fest.| Verwenden Sie die Option zum **Ausschließen** unter „Gerätestatus“ > „Bedingung“, und klicken Sie auf **Alle Geräte**. |
 | Mit bestimmten Ansprüchen in der Anforderung| Diese Einstellung kann nicht migriert werden.| Diese Einstellung kann nicht migriert werden. |

@@ -3,16 +3,16 @@ title: Erhalten Sie Informationen zur Funktionsweise von Metrikwarnungen in Azur
 description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikwarnungen erreichen können und wie sie in Azure Monitor funktionieren.
 ms.date: 03/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8a243f0a2130e0ec2ebafe726f48e07c148807c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd0672523329b17b0e101d5abb16700254b8a918
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016082"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441328"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
-Die Metrikwarnungen in Azure Monitor ergänzen die mehrdimensionalen Metriken. Diese Metriken können [Plattformmetriken](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [benutzerdefinierte Metriken](../essentials/metrics-custom-overview.md), [gängige Protokolle von Azure Monitor, die in Metriken umgewandelt wurden](./alerts-metric-logs.md), und Application Insights-Metriken sein. Metrikwarnungen werden in regelmäßigen Abständen ausgewertet, um zu überprüfen, ob die Bedingungen für eine oder mehrere metrische Zeitreihen erfüllt sind, und um Sie darüber zu informieren, wann die Auswertungen erfüllt sind. Metrikwarnungen sind zustandsbehaftet. Sie senden Benachrichtigungen nur dann, wenn sich der Zustand ändert.
+Die Metrikwarnungen in Azure Monitor ergänzen die mehrdimensionalen Metriken. Diese Metriken können [Plattformmetriken](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [benutzerdefinierte Metriken](../essentials/metrics-custom-overview.md), [gängige Protokolle von Azure Monitor, die in Metriken umgewandelt wurden](./alerts-metric-logs.md), und Application Insights-Metriken sein. Metrikwarnungen werden in regelmäßigen Abständen ausgewertet, um zu überprüfen, ob die Bedingungen für eine oder mehrere metrische Zeitreihen erfüllt sind, und um Sie darüber zu informieren, wann die Auswertungen erfüllt sind. Metrikwarnungen sind standardmäßig zustandsbehaftet. Sie senden Benachrichtigungen nur dann, wenn sich der Zustand ändert (ausgelöst, behandelt). Wie Sie sie zustandslos machen, erfahren Sie unter [Metrikwarnungen immer anzeigen, wenn meine Bedingung erfüllt wird](alerts-troubleshoot-metric.md#make-metric-alerts-occur-every-time-my-condition-is-met).
 
 ## <a name="how-do-metric-alerts-work"></a>Wie funktionieren Metrikwarnungen?
 
@@ -130,8 +130,6 @@ Wenn Sie die Anzahl der zurückliegenden Zeiträume und Verstöße erhöhen, kö
 > - Metrikwarnungsregel, die mehrere Ressourcen überwacht: wenn dem Bereich eine neue Ressource hinzugefügt wird
 > - Metrikwarnungsregel, die eine nicht kontinuierlich ausgegebene Metrik überwacht (seltene Metrik): wenn die Metrik erst nach einem längeren Zeitraum als 24 Stunden wieder ausgegeben wird
 
-
-
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Bedarfsorientierte Überwachung mithilfe von Metrikwarnungen in Azure Monitor
 
 Bisher haben Sie gesehen, wie eine einzelne Metrikwarnung zum Überwachen einer oder mehrerer metrischer Zeitreihen im Zusammenhang mit einer einzelnen Azure-Ressource verwendet werden kann. In vielen Fällen soll aber die gleiche Warnungsregel auf viele Ressourcen angewendet werden. Azure Monitor unterstützt darüber hinaus die Überwachung mehrerer Ressourcen (des gleichen Typs) mit einer Metrikwarnregel für Ressourcen, die in der gleichen Azure-Region vorhanden sind. 
@@ -175,11 +173,10 @@ Bei Metrikwarnungen werden Sie in der Regel in weniger als 5 Minuten benachricht
 
 Die vollständige Liste der unterstützten Ressourcentypen finden Sie in diesem [Artikel](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erfahren Sie, wie Sie in Azure Metrikwarnungen erstellen, anzeigen und verwalten können.](../alerts/alerts-metric.md)
-- [Erfahren Sie, wie Sie Warnungen im Azure Monitor-Metrik-Explorer erstellen können](../essentials/metrics-charts.md#alert-rules).
+- [Erstellen von Warnungen im Metrik-Explorer von Azure Monitor](../essentials/metrics-charts.md#alert-rules)
 - [Erfahren Sie, wie Sie Metrikwarnungen mithilfe von Azure Resource Manager-Vorlagen bereitstellen können](./alerts-metric-create-templates.md).
 - [Erfahren Sie mehr über Aktionsgruppen](./action-groups.md).
 - [Erfahren Sie mehr über den Bedingungstyp für dynamische Schwellenwerte.](../alerts/alerts-dynamic-thresholds.md)

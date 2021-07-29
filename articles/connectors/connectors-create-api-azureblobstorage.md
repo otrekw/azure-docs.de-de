@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1703e206bb13aa6f239346f7a724004a00ddfeca
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92677728"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111568916"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Blobs in Azure Blob Storage mithilfe von Azure Logic Apps
 
@@ -180,6 +180,9 @@ Sie können das Speicherkonto in einem virtuellen Azure-Netzwerk platzieren, das
 ### <a name="access-storage-accounts-as-a-trusted-service-with-managed-identities"></a>Zugreifen auf Speicherkonten als vertrauenswürdiger Dienst mit verwalteten Identitäten
 
 Um vertrauenswürdigen Microsoft-Diensten den Zugriff auf ein Speicherkonto durch eine Firewall zu gestatten, können Sie für diese Dienste eine Ausnahme für dieses Speicherkonto einrichten. Mit dieser Lösung können Azure-Dienste, die [verwaltete Identitäten für die Authentifizierung](../active-directory/managed-identities-azure-resources/overview.md) unterstützen, auf Speicherkonten hinter Firewalls als vertrauenswürdige Dienste zugreifen. Insbesondere damit eine Logik-App in Azure mit globalen mehreren Mandanten auf diese Speicherkonten zugreifen kann, [aktivieren Sie zuerst die Unterstützung für verwaltete Identitäten ](../logic-apps/create-managed-service-identity.md) in der Logik-App. Danach verwenden Sie die HTTP-Aktion oder den HTTP-Trigger in ihrer Logik-App und [legen deren Authentifizierungstyp auf die Verwendung der verwalteten Identität Ihrer Logik-App](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) fest. In diesem Szenario können Sie *nur* die HTTP-Aktion oder den HTTP-Trigger verwenden.
+
+> [!NOTE]
+> Wenn Sie die Funktion für verwaltete Identitäten nutzen, um Zugriffe auf Ihr Speicherkonto zu authentifizieren, können Sie die integrierten Azure Blob Storage-Vorgänge nicht verwenden. Sie müssen den HTTP-Trigger oder die HTTP-Aktion verwenden, für den/die die verwaltete Identität eingerichtet ist, um die Verbindung mit Ihrem Speicherkonto zu authentifizieren. Um die erforderlichen Speichervorgänge ausführen zu können, müssen Sie dann die entsprechenden REST-APIs für Azure Blob Storage aufrufen. Weitere Informationen finden Sie im Artikel [Blob-Dienst-REST-API](/rest/api/storageservices/blob-service-rest-api).
 
 Um die Ausnahme und die Unterstützung für verwaltete Identitäten einzurichten, führen Sie diese allgemeinen Schritte aus:
 

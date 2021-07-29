@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: memildin
-ms.openlocfilehash: cdf46a5f0185e33e1e877e3682ab418a00725de2
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: a8356b863323511951ddd5eae463e0f07d65e61c
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012545"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061972"
 ---
 # <a name="security-alerts-and-incidents-in-azure-security-center"></a>Sicherheitswarnungen und -incidents in Azure Security Center
 
@@ -22,7 +22,7 @@ Sicherheitswarnungen werden durch erweiterte Erkennungen ausgelöst und sind nur
 
 ## <a name="what-are-security-alerts-and-security-incidents"></a>Was sind Sicherheitswarnungen und Sicherheitsincidents? 
 
-**Warnungen** sind die Benachrichtigungen, die Security Center generiert, wenn Bedrohungen für Ihre Ressourcen erkannt werden. Security Center priorisiert die Warnungen und listet sie zusammen mit den Informationen auf, die erforderlich sind, um das Problem schnell zu untersuchen. Security Center stellt außerdem Empfehlungen zur Reaktion auf einen Angriff bereit.
+**Warnungen** sind die Benachrichtigungen, die Security Center generiert, wenn Bedrohungen für Ihre Ressourcen erkannt werden. Security Center priorisiert die Warnungen und listet sie zusammen mit den Informationen auf, die erforderlich sind, um das Problem schnell zu untersuchen. Security Center stellt auch detaillierte Schritte bereit, die Sie bei der Abwehr von Angriffen unterstützen. Warnungsdaten werden 90 Tage lang aufbewahrt.
 
 Ein **Sicherheitsincident** ist eine Sammlung verwandter Warnungen (anstelle einer Auflistung der einzelnen Warnungen). In Security Center werden verschiedene Warnungen und Signale mit geringer Genauigkeit mittels [Korrelation von intelligenten Cloudwarnungen](#cloud-smart-alert-correlation-in-azure-security-center-incidents) zu Sicherheitsincidents korreliert.
 
@@ -73,20 +73,23 @@ Security Center weist Warnungen einen Schweregrad zu, um Ihnen zu helfen, die Re
 > [!NOTE]
 > Der Schweregrad der Warnung wird im Portal und in Versionen der REST-API vor dem 1.1.2019 unterschiedlich angezeigt. Wenn Sie eine ältere Version der API verwenden, führen Sie ein Upgrade aus, um die unten beschriebene konsistente Erfahrung zu erhalten.
 
-| severity          | Empfohlene Antwort      |
-|---|---|
-| **Hoch**          | Ihre Ressource wurde mit hoher Wahrscheinlichkeit kompromittiert. Sie sollten dies sofort überprüfen. Von Security Center werden sowohl die böswillige Absicht als auch die ermittelten Ergebnisse zur Ausgabe der Warnung als hoch eingestuft. Ein Beispiel hierfür ist eine Warnung, bei der die Ausführung eines bekannten schädlichen Tools wie Mimikatz erkannt wird, das häufig für den Diebstahl von Anmeldeinformationen verwendet wird.                                                                                                               |
-| **Mittel**        | Hiermit wird eine potenziell verdächtige Aktivität angegeben, die auf die Kompromittierung einer Ressource hinweisen kann. Security Center stuft die Analyse oder die ermittelten Ergebnisse als „Mittel“ und die schädliche Absicht als „Mittel“ bis „Hoch“ ein. Hierbei handelt es sich normalerweise um Erkennungen, die auf maschinellem Lernen oder Anomalien basieren. Ein Beispiel hierfür ist ein Anmeldeversuch, der von einem ungewöhnlichen Standort aus durchgeführt wird.                                                                                                                |
+| severity          | Empfohlene Antwort                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Hoch**          | Ihre Ressource wurde mit hoher Wahrscheinlichkeit kompromittiert. Sie sollten dies sofort überprüfen. Von Security Center werden sowohl die böswillige Absicht als auch die ermittelten Ergebnisse zur Ausgabe der Warnung als hoch eingestuft. Ein Beispiel hierfür ist eine Warnung, bei der die Ausführung eines bekannten schädlichen Tools wie Mimikatz erkannt wird, das häufig für den Diebstahl von Anmeldeinformationen verwendet wird.                                                                                                           |
+| **Mittel**        | Hiermit wird eine potenziell verdächtige Aktivität angegeben, die auf die Kompromittierung einer Ressource hinweisen kann. Security Center stuft die Analyse oder die ermittelten Ergebnisse als „Mittel“ und die schädliche Absicht als „Mittel“ bis „Hoch“ ein. Hierbei handelt es sich normalerweise um Erkennungen, die auf maschinellem Lernen oder Anomalien basieren. Ein Beispiel hierfür ist ein Anmeldeversuch, der von einem ungewöhnlichen Standort aus durchgeführt wird.                                                                                                            |
 | **Niedrig**           | Hierbei kann es sich um ein unschädliches positives Ergebnis oder um einen blockierten Angriff handeln. Security Center kann die Absicht nicht mit Sicherheit als schädlich einstufen, und die Aktivität ist möglicherweise harmlos. Das Löschen eines Protokolls ist beispielsweise eine Aktion, die von einem Angreifer ausgeführt werden kann, um Spuren zu verwischen. Aber in vielen Fällen handelt es sich um einen von Administratoren ausgeführten Routinevorgang. Security Center teilt Ihnen normalerweise nicht mit, wenn Angriffe blockiert wurden. Eine Ausnahme sind interessante Fälle, bei denen wir Ihnen raten, dass Sie sich diese ansehen. |
-| **Informational** (Nur zu Informationszwecken) | Ein Incident besteht in der Regel aus einer Reihe von Warnungen, von denen einige für sich allein genommen nur informativen Charakter haben können, aber im Zusammenhang mit den anderen Warnungen durchaus eine genauere Untersuchung verdienen.                                                                                                                         |
+| **Informational** (Nur zu Informationszwecken) | Ein Incident besteht in der Regel aus einer Reihe von Warnungen, von denen einige für sich allein genommen nur informativen Charakter haben können, aber im Zusammenhang mit den anderen Warnungen durchaus eine genauere Untersuchung verdienen.                                                                                                                                                                                                                                                               |
+|                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ## <a name="export-alerts"></a>Exportieren von Warnungen
 
 Sie haben mehrere Optionen zum Anzeigen der Warnungen außerhalb von Security Center:
 
 - Der **Download des CSV-Berichts** auf dem Dashboard „Warnungen“ bietet einen einmaligen Export in CSV.
-- Mit dem **fortlaufenden Export** von der Seite „Preise und Einstellungen“ können Sie Streams von Sicherheitswarnungen und -empfehlungen im Log Analytics-Arbeitsbereich und in Event Hubs konfigurieren. [Weitere Informationen zum fortlaufenden Export](continuous-export.md)
-- Der **Azure Sentinel-Connector** streamt Sicherheitswarnungen von Azure Security Center in Azure Sentinel. [Weitere Informationen zum Verbinden von Azure Security Center mit Azure Sentinel](../sentinel/connect-azure-security-center.md)
+- Mit dem **fortlaufenden Export** von der Seite „Preise und Einstellungen“ können Sie Streams von Sicherheitswarnungen und -empfehlungen im Log Analytics-Arbeitsbereich und in Event Hubs konfigurieren. [Weitere Informationen zum fortlaufenden Export](continuous-export.md).
+- Der **Azure Sentinel-Connector** streamt Sicherheitswarnungen von Azure Security Center in Azure Sentinel. [Weitere Informationen zum Verbinden von Azure Security Center mit Azure Sentinel](../sentinel/connect-azure-security-center.md).
+
+Erfahren Sie mehr über alle Exportoptionen unter [Streamen von Warnungen in eine SIEM-, SOAR- oder IT-Dienstverwaltungslösung](export-to-siem.md) und [Fortlaufender Export von Security Center-Daten](continuous-export.md).
 
 ## <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Korrelation von intelligenten Cloudwarnungen in Azure Security Center (Incidents)
 

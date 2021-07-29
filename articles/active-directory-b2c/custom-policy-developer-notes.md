@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/04/2021
+ms.date: 06/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9c9d5ae5fec9b9258527606d352cef83d5b5a41c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 295dfa5a02ce3f46049805339a4f7918ce20361e
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742821"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565192"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Entwicklerhinweise für Azure Active Directory B2C
 
@@ -37,8 +37,9 @@ Azure Active Directory B2C-[Benutzerströme und benutzerdefinierte Richtlinien](
 | [Registrieren und melden Sie sich mit Benutzernamen und Kennwort](add-sign-up-and-sign-in-policy.md).| Allgemein verfügbar | Allgemein verfügbar | |
 | [Profilbearbeitungsflow](add-profile-editing-policy.md) | Allgemein verfügbar | Allgemein verfügbar | |
 | [Self-Service-Kennwortzurücksetzung](add-password-reset-policy.md) | Allgemein verfügbar| Allgemein verfügbar| |
-| [Kennwortzurücksetzung erzwingen](force-password-reset.md) | Vorschau | Nicht verfügbar | |
+| [Kennwortzurücksetzung erzwingen](force-password-reset.md) | Allgemein verfügbar | Nicht verfügbar | |
 | [Registrieren und melden Sie sich per Telefon an](phone-authentication-user-flows.md) | Allgemein verfügbar | Allgemein verfügbar | |
+| [Bedingter Zugriff und Identity Protection](conditional-access-user-flow.md) | Allgemein verfügbar | Allgemein verfügbar | Nicht für SAML-Anwendungen verfügbar |
 
 ## <a name="oauth-20-application-authorization-flows"></a>OAuth 2.0-Anwendungsautorisierungsflows
 
@@ -83,6 +84,7 @@ In der folgenden Tabelle sind die Security Assertion Markup Language (SAML)-Anwe
 | [Benutzerdefinierte E-Mail-Überprüfung](custom-email-mailjet.md) | Nicht verfügbar | Allgemein verfügbar| |
 | [Anpassen der Benutzeroberfläche mit integrierten Vorlagen](customize-ui.md) | Allgemein verfügbar| Allgemein verfügbar| |
 | [Anpassen der Benutzeroberfläche mit benutzerdefinierten Vorlagen](customize-ui-with-html.md) | Allgemein verfügbar| Allgemein verfügbar| Anhand von HTML-Vorlagen. |
+| [Seitenlayoutversion](page-layout.md) | Allgemein verfügbar | Allgemein verfügbar | |
 | [JavaScript](javascript-and-page-layout.md) | Allgemein verfügbar | Allgemein verfügbar | |
 | [Eingebettetes Anmeldeverfahren](embedded-login.md) | Nicht verfügbar |  Vorschau| Anhand des Inlineframe-Elements`<iframe>`. |
 | [Kennwortkomplexität](password-complexity.md) | Allgemein verfügbar | Allgemein verfügbar | |

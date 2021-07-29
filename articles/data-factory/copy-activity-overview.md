@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über die Kopieraktivität in Azure Data Factory.
 author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 6/1/2021
 ms.author: jianleishen
-ms.openlocfilehash: df26bdcc76b894991393019a12da71df2f893b6b
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 944e5fb05298c91e4405088c1179e0720173dde0
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488661"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746146"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -151,7 +151,7 @@ In der Benutzeroberfläche zur [Überwachung der Kopieraktivität](copy-activity
 
 ## <a name="resume-from-last-failed-run"></a>Fortsetzen ab der letzten fehlgeschlagenen Ausführung
 
-Die Kopieraktivität unterstützt das Fortsetzen ab der letzten fehlgeschlagenen Ausführung, wenn Sie große Dateien unverändert im Binärformat zwischen dateibasierten Speichern kopieren und sich dafür entscheiden, die Ordner-/Dateistruktur beim Kopieren von der Quelle zur Senke beizubehalten, z. B. beim Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2. Dies gilt für die folgenden dateibasierten Connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [File System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md) und [SFTP](connector-sftp.md).
+Die Kopieraktivität unterstützt das Fortsetzen ab der letzten fehlgeschlagenen Ausführung, wenn Sie große Dateien unverändert im Binärformat zwischen dateibasierten Speichern kopieren und sich dafür entscheiden, die Ordner-/Dateistruktur beim Kopieren von der Quelle zur Senke beizubehalten, z. B. beim Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2. Es gilt für die folgenden dateibasierten Connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md) [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md).
 
 Sie können die zwei folgenden Methoden zum Fortsetzen der Kopieraktivität nutzen:
 
@@ -194,7 +194,7 @@ Auf der Registerkarte „Quelle der Kopieraktivität“ finden Sie die folgende 
 
 Wenn es programmgesteuert konfiguriert werden soll, fügen Sie in Ihrer Quelle für die Kopieraktivität die Eigenschaft `additionalColumns` hinzu:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | additionalColumns | Fügen Sie zusätzliche Datenspalten zum Kopieren in die Senke hinzu.<br><br>Jedes Objekt unter dem Array `additionalColumns` stellt eine zusätzliche Spalte dar. `name` definiert den Spaltennamen, und `value` gibt den Datenwert dieser Spalte an.<br><br>Zulässige Datenwerte sind:<br>-  **`$$FILEPATH`** – eine reservierte Variable, die angibt, dass der relative Pfad der Quelldateien in dem im Dataset angegebenen Ordnerpfad gespeichert werden soll. Auf dateibasierte Quelle anwenden.<br>-  **`$$COLUMN:<source_column_name>`** – ein reserviertes Variablenmuster gibt an, dass die angegebene Quellspalte als eine andere Spalte dupliziert wird.<br>- **Ausdruck**<br>- **Statischer Wert** | Nein |
 

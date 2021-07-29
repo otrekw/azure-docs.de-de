@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 490f94c71611e07e765f5882cb4e3eec13033a6a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df8b4534c6da446bd4ceeb18acf70036cd63f83c
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099334"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061180"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center
 
@@ -27,7 +27,7 @@ In diesem Thema erfahren Sie, wie Sie Security Center-Warnungen anzeigen und ve
 Erweiterte Erkennungen, die Sicherheitswarnungen auslösen, sind nur in Azure Defender verfügbar. Eine kostenlose Testversion ist verfügbar. Informationen zum Durchführen eines Upgrades finden Sie unter [Aktivieren von Azure Defender](enable-azure-defender.md).
 
 ## <a name="what-are-security-alerts"></a>Was sind Sicherheitswarnungen?
-Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von Ihren Azure-Ressourcen, vom Netzwerk und von verbundenen Partnerlösungen, z.B. Lösungen zum Schutz von Firewalls und Endpunkten, um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Eine Liste mit priorisierten Sicherheitswarnungen wird im Security Center zusammen mit den Informationen angezeigt, die Sie zum schnellen Untersuchen des Problems benötigen. Außerdem sind Empfehlungen zum Reagieren auf einen Angriff vorhanden.
+Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von Ihren Azure-Ressourcen, vom Netzwerk und von verbundenen Partnerlösungen wie Lösungen zum Schutz von Firewalls und Endpunkten, um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Eine Liste mit priorisierten Sicherheitswarnungen wird im Security Center zusammen mit den Informationen angezeigt, die Sie zum schnellen Untersuchen des Problems benötigen, und Schritten zum Reagieren auf einen Angriff.
 
 Informationen zu den verschiedenen Arten von Warnungen finden Sie unter [Sicherheitswarnungen (Referenzhandbuch)](alerts-reference.md).
 

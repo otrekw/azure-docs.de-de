@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 13becdf8c49d9affe8c2946d6147707fbe954437
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: bf4a019c9f40475750fd508a56f7f8903e0a2876
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889320"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538867"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
@@ -68,6 +68,13 @@ Das Studio unterstützt das Lesen von Daten aus den folgenden Datenspeichertypen
 * Azure Data Lake Storage Gen2
 * Azure SQL-Datenbank
 
+### <a name="firewall-settings"></a>Firewalleinstellungen
+
+Einige Speicherdienste, z. B. ein Azure Storage-Konto, verfügen über Firewalleinstellungen, die für den öffentlichen Endpunkt dieser speziellen Dienstinstanz gelten. In der Regel können Sie mit dieser Einstellung den Zugriff von bestimmten IP-Adressen aus dem öffentlichen Internet zulassen bzw. blockieren. Dies wird bei Verwendung von Azure Machine Learning Studio __nicht unterstützt__. Sie wird bei Verwendung des Azure Machine Learning SDK oder der Befehlszeilenschnittstelle unterstützt.
+
+> [!TIP]
+> Azure Machine Learning Studio wird bei Verwendung des Azure Firewall-Diensts unterstützt. Weitere Informationen finden Sie unter [Verwenden Ihres Arbeitsbereichs hinter einer Firewall](how-to-access-azureml-behind-firewall.md).
+
 ### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Konfigurieren von Datenspeichern für die Verwendung der vom Arbeitsbereich verwalteten Identität
 
 Nachdem Sie Ihrem virtuellen Netzwerk mit einem [Dienstendpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) oder [privaten Endpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) ein Azure Storage-Konto hinzugefügt haben, müssen Sie Ihren Datenspeicher für die Verwendung der Authentifizierung anhand der [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) konfigurieren. Auf diese Weise kann Studio auf Daten in Ihrem Speicherkonto zugreifen.
@@ -84,7 +91,7 @@ Azure Machine Learning verwendet [Datenspeicher](concept-data.md#datastores), um
 
     ![Screenshot der Aktivierung einer verwalteten Identität für einen Arbeitsbereich](./media/how-to-enable-studio-virtual-network/enable-managed-identity.png)
 
-Mit diesen Schritten wird die vom Arbeitsbereich verwaltete Identität mithilfe von Azure RBAC dem Speicherdienst als __Leser__ hinzugefügt. Mit __Lesezugriff__ kann der Arbeitsbereich Firewalleinstellungen abrufen und sicherstellen, dass die Daten das virtuelle Netzwerk nicht verlassen. Es kann bis zu 10 Minuten dauern, bis Änderungen wirksam werden.
+Mit diesen Schritten wird die vom Arbeitsbereich verwaltete Identität mithilfe von Azure RBAC dem Speicherdienst als __Leser__ hinzugefügt. __Lesezugriff__ erlaubt dem Arbeitsbereich das Anzeigen der Ressource, aber keine Änderungen.
 
 ### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>Aktivieren der Authentifizierung mit verwalteten Identitäten für Standardspeicherkonten
 
@@ -94,7 +101,7 @@ Jeder Azure Machine Learning-Arbeitsbereich verfügt über zwei Standardspeicher
 
 In der folgenden Tabelle wird beschrieben, warum Sie die Authentifizierung mit verwalteten Identitäten für die Standardspeicherkonten Ihres Arbeitsbereichs aktivieren müssen.
 
-|Speicherkonto  | Notizen  |
+|Speicherkonto  | Hinweise  |
 |---------|---------|
 |Standardblobspeicher für den Arbeitsbereich| Speichert Modellressourcen vom Designer. Sie müssen die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto aktivieren, um Modelle im Designer bereitzustellen. <br> <br> Sie können eine Designer-Pipeline visualisieren und ausführen, wenn sie nicht den Standarddatenspeicher verwendet, sondern einen, der für die Verwendung der verwalteten Identität konfiguriert wurde. Wenn Sie jedoch versuchen, ein trainiertes Modell ohne aktivierte verwaltete Identität im Standarddatenspeicher bereitzustellen, tritt dabei ein Fehler auf, unabhängig davon, welche anderen Datenspeicher verwendet werden.|
 |Standarddateispeicher für den Arbeitsbereich| Speichert Experimentressourcen für automatisiertes maschinelles Lernen. Sie müssen die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto aktivieren, um Experimente für automatisiertes maschinelles Lernen zu übermitteln. |
@@ -134,11 +141,11 @@ Sie können den Datenzugriff innerhalb eines virtuellen Netzwerks mit Azure RBA
 
 Fügen Sie die vom Arbeitsbereich verwaltete Identität der Rolle [Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) hinzu, um Azure RBAC zu verwenden. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
 
-Um ACLs zu verwenden, kann der verwalteten Identität des Arbeitsbereichs wie jedem anderen Sicherheitsprinzip Zugriff gewährt werden. Weitere Informationen finden Sie unter [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
+Um ACLs zu verwenden, kann der verwalteten Identität des Arbeitsbereichs wie jedem anderen Sicherheitsprinzipal Zugriff gewährt werden. Weitere Informationen finden Sie unter [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 
 ### <a name="azure-data-lake-storage-gen1-access-control"></a>Zugriffssteuerung von Azure Data Lake Storage Gen1
 
-Azure Data Lake Storage Gen1 unterstützt nur Zugriffssteuerungslisten im POSIX-Format. Sie können der vom Arbeitsbereich verwalteten Identität wie jedem anderen Sicherheitsprinzip Zugriff auf Ressourcen zuweisen. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
+Azure Data Lake Storage Gen1 unterstützt nur Zugriffssteuerungslisten im POSIX-Format. Sie können der vom Arbeitsbereich verwalteten Identität wie jedem anderen Sicherheitsprinzipal Zugriff auf Ressourcen zuweisen. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
 
 ### <a name="azure-sql-database-contained-user"></a>Eigenständiger Benutzer in Azure SQL-Datenbank
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 06/01/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d02b8cae22349412a83b35624479ef19de4697f6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93308778"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951744"
 ---
 # <a name="publisher-verification"></a>Herausgeberüberprüfung
 
@@ -40,7 +40,7 @@ Die Herausgeberüberprüfung bietet die folgenden Vorteile:
 - **Reibungslosere Einführung in Unternehmen**: Administratoren können [Benutzerzustimmungsrichtlinien](../manage-apps/configure-user-consent.md) konfigurieren, wobei der Status der Herausgeberüberprüfung eines der wichtigsten Richtlinienkriterien darstellt.
 
 > [!NOTE]
-> Ab November 2020 können Endbenutzer den meisten neu registrierten mehrinstanzenfähigen Apps ohne verifizierten Herausgeber keine Benutzerzustimmung mehr erteilen. Dies gilt für Apps, die nach dem 8. November 2020 registriert werden. Verwenden Sie OAuth 2.0, um Berechtigungen anzufordern, die über das grundlegende Benutzerprofil mit Anmelden und Lesen hinausgehen, und fordern Sie in anderen Mandanten als dem, für den die App registriert ist, die Zustimmung von den Benutzern an. Auf dem Zustimmungsbildschirm wird eine Warnung angezeigt, welche die Benutzer informiert, dass diese Apps riskant sind und von nicht verifizierten Herausgebern stammen.    
+> Ab November 2020 können Endbenutzer den meisten neu registrierten mehrinstanzenfähigen Apps ohne verifizierten Herausgeber keine Einwilligung mehr erteilen, wenn [risikobasierte hochgestufte Einwilligung](../manage-apps/configure-user-consent.md#risk-based-step-up-consent) aktiviert ist. Dies gilt für Apps, die nach dem 8. November 2020 registriert werden. Verwenden Sie OAuth 2.0, um Berechtigungen anzufordern, die über das grundlegende Benutzerprofil mit Anmelden und Lesen hinausgehen, und fordern Sie in anderen Mandanten als dem, für den die App registriert ist, die Zustimmung von den Benutzern an. Auf dem Zustimmungsbildschirm wird eine Warnung angezeigt, welche die Benutzer informiert, dass diese Apps riskant sind und von nicht verifizierten Herausgebern stammen.    
 
 ## <a name="requirements"></a>Anforderungen
 Für die Herausgeberüberprüfung bestehen bestimmte Voraussetzungen, von denen einige bereits von vielen Microsoft-Partnern erfüllt wurden. Sie lauten wie folgt: 

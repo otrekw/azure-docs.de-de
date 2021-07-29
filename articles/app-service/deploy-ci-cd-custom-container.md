@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 6519f3fe7335ed41f4d5ef67771aaa738a33e4a8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 26515528a809b36be8d13d19f7baf99b5b2f897f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782601"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783301"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Continuous Deployment mit benutzerdefinierten Containern in Azure App Service
 
@@ -67,7 +67,11 @@ Klicken Sie auf die Registerkarte Ihrer Lösung, und führen Sie die beschrieben
 Im Dropdownmenü **Registrierung** werden die Registrierungen angezeigt, die sich im gleichen Abonnement wie Ihre App befinden. **Wählen** Sie die gewünschte Registrierung aus.
 
 > [!NOTE]
-> **Wählen** Sie für Bereitstellungen aus einer Registrierung, die sich in einem anderen Abonnement befindet, unter **Registrierungsquelle** stattdessen **Private Registrierung** aus.
+>  - Wenn Sie verwaltete Identitäten verwenden möchten, um den ACR-Zugriff zu sperren, befolgen Sie diese Anleitung:
+>    - [Verwenden systemseitig zugewiesener verwalteter Identitäten mit App Service und Azure Container Registry](https://github.com/Azure/app-service-linux-docs/blob/master/HowTo/use_system-assigned_managed_identities.md)
+>    - [Verwenden benutzerseitig zugewiesener verwalteter Identitäten mit App Service und Azure Container Registry](https://github.com/Azure/app-service-linux-docs/blob/master/HowTo/use_user-assigned_managed_identities.md)
+>  - **Wählen** Sie für Bereitstellungen aus einer Registrierung, die sich in einem anderen Abonnement befindet, unter **Registrierungsquelle** stattdessen **Private Registrierung** aus.
+>   
 
 ::: zone pivot="container-windows"
 **Wählen** Sie das bereitzustellende **Image** und **Tag** aus. Wenn Sie möchten, können Sie unter **Startdatei** den Startbefehl **eingeben**. 

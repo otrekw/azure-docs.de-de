@@ -3,15 +3,15 @@ title: Parametrisieren von verknüpften Diensten in Azure Data Factory
 description: Erfahren Sie, wie Sie in Azure Data Factory verknüpfte Dienste parametrisieren und dynamische Werte zur Laufzeit übergeben.
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 06/01/2021
 author: chez-charlie
 ms.author: chez
-ms.openlocfilehash: 48e8c9ff5111b6b67e835676e3bc56e4536248a0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 277f3d9e9d82edf9e93d41808a351528a94f85d7
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091466"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793693"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrisieren von verknüpften Diensten in Azure Data Factory
 
@@ -22,7 +22,7 @@ Sie können jetzt einen verknüpften Dienst parametrisieren und dynamische Werte
 Sie können mithilfe der Data Factory-Benutzeroberfläche im Azure-Portal oder einer Programmierschnittstelle verknüpfte Dienste parametrisieren.
 
 > [!TIP]
-> Es wird empfohlen, Kennwörter oder Geheimnisse nicht zu parametrisieren. Speichern Sie stattdessen alle Verbindungszeichenfolgen in Azure Key Vault, und parametrisieren Sie den *geheimen Namen*.
+> Es wird empfohlen, Kennwörter oder Geheimnisse nicht zu parametrisieren. Speichern Sie stattdessen alle Geheimnisse in Azure Key Vault, und parametrisieren Sie den *geheimen Namen*.
 
 > [!Note]
 > Es gibt derzeit noch einen ungelösten Fehler bei Verwendung von „-“ in Parameternamen. Es wird empfohlen, Namen ohne „-“ zu verwenden, bis der Fehler behoben wurde.
@@ -33,8 +33,9 @@ Das folgende Video enthält eine siebenminütige Einführung und Demonstration d
 
 ## <a name="supported-linked-service-types"></a>Unterstützte Arten verknüpfter Dienste
 
-Sie können jede Art von verknüpftem Dienst parametrisieren.
-Für die Erstellung verknüpfter Dienste auf der Benutzeroberfläche bietet Data Factory eine integrierte Parametrisierungsfunktion für die folgenden Arten verknüpfter Dienste. Im Blatt zur Erstellung/Bearbeitung von verknüpften Diensten finden Sie Optionen für neue Parameter und können dynamische Inhalte hinzufügen.
+Alle verknüpften Diensttypen werden für die Parametrisierung unterstützt.
+
+**Nativ auf der ADF-Benutzeroberfläche unterstützt**: Für die Erstellung verknüpfter Dienste auf der Benutzeroberfläche bietet Data Factory eine integrierte Parametrisierungsfunktion für die folgenden Arten verknüpfter Dienste. Im Blatt zur Erstellung/Bearbeitung von verknüpften Diensten finden Sie Optionen für neue Parameter und können dynamische Inhalte hinzufügen. Siehe [Data Factory-UI-Erfahrung](#data-factory-ui).
 
 - Amazon Redshift
 - Amazon S3
@@ -56,7 +57,7 @@ Für die Erstellung verknüpfter Dienste auf der Benutzeroberfläche bietet Data
 - Oracle Cloud Storage
 - SQL Server
 
-Für andere Arten verknüpfter Dienste, die nicht in der obigen Liste enthalten sind, können Sie den verknüpften Dienst parametrisieren, indem Sie die JSON über die Benutzeroberfläche bearbeiten:
+**Erweiterte Erstellung**: Für andere Arten verknüpfter Dienste, die nicht in der obigen Liste enthalten sind, können Sie den verknüpften Dienst parametrisieren, indem Sie die JSON über die Benutzeroberfläche bearbeiten:
 
 - Im Blatt zur Erstellung/Bearbeitung von verknüpften Diensten erweitern Sie die Option „Erweitert“ am unteren Rand. Aktivieren Sie dann das Kontrollkästchen „Dynamische Inhalte im JSON-Format angeben“, und geben Sie die JSON-Nutzlast für den verknüpften Dienst an. 
 - Oder, nachdem Sie einen verknüpften Dienst ohne Parametrisierung erstellt haben, suchen Sie in [Verwaltungshub](author-visually.md#management-hub) -> Verknüpfte Dienste den bestimmten verknüpften Dienst, und klicken Sie auf „Code“ (Schaltfläche „{}“), um den JSON-Code zu bearbeiten. 

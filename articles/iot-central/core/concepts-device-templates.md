@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 2396768d87b93c4df16b6de78d03faf1d8d1cc2b
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: ab209cd3fb598c0c9ad4df359578d956aca7077b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492000"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088730"
 ---
 # <a name="what-are-device-templates"></a>Was sind Gerätevorlagen?
-
-_Dieser Artikel richtet sich an Geräte- und Lösungsentwickler._
 
 Eine Gerätevorlage in Azure IoT Central ist eine Blaupause, die die Merkmale und das Verhalten eines Gerätetyps definiert, der eine Verbindung mit Ihrer Anwendung herstellt. Beispielsweise definiert die Gerätevorlage die Telemetrie, die ein Gerät sendet, sodass IoT Central Visualisierungen mit den richtigen Einheiten und Datentypen erstellen kann.
 
@@ -35,7 +33,9 @@ Eine Gerätevorlage enthält die folgenden Abschnitte:
 
 ## <a name="device-models"></a>Gerätemodelle
 
-Ein Gerätemodell definiert, wie ein Gerät mit Ihrer IoT Central-Anwendung interagiert. Der Geräteentwickler muss sicherstellen, dass das Gerät die im Gerätemodell definierten Verhaltensweisen umsetzt, damit IoT Central das Gerät überwachen und verwalten kann. Ein Gerätemodell besteht aus einer oder mehreren _Schnittstellen_. Jede Schnittstelle kann eine Sammlung von _Telemetrietypen_, _Geräteeigenschaften_ und _Befehlen_ definieren. Ein Lösungsentwickler kann eine JSON-Datei mit der Definition des Gerätemodells in eine Gerätevorlage importieren oder ein Gerätemodell auf der Webbenutzeroberfläche von IoT Central erstellen oder bearbeiten. Änderungen an einem Gerätemodell, die auf der Webbenutzeroberfläche vorgenommen werden, erfordern eine [Versionsverwaltung der Gerätevorlage](./howto-version-device-template.md).
+Ein Gerätemodell definiert, wie ein Gerät mit Ihrer IoT Central-Anwendung interagiert. Der Geräteentwickler muss sicherstellen, dass das Gerät die im Gerätemodell definierten Verhaltensweisen umsetzt, damit IoT Central das Gerät überwachen und verwalten kann. Ein Gerätemodell besteht aus einer oder mehreren _Schnittstellen_. Jede Schnittstelle kann eine Sammlung von _Telemetrietypen_, _Geräteeigenschaften_ und _Befehlen_ definieren. Ein Lösungsentwickler kann eine JSON-Datei mit der Definition des Gerätemodells in eine Gerätevorlage importieren oder ein Gerätemodell auf der Webbenutzeroberfläche von IoT Central erstellen oder bearbeiten.
+
+Weitere Informationen zum Bearbeiten eines Gerätemodells finden Sie unter [Bearbeiten einer vorhandenen Gerätevorlage](howto-edit-device-template.md).
 
 Ein Lösungsentwickler kann auch eine JSON-Datei exportieren, die das Gerätemodell enthält. Ein Geräteentwickler kann anhand dieses JSON-Dokuments verstehen, wie das Gerät mit der IoT Central-Anwendung kommunizieren soll.
 
@@ -341,6 +341,4 @@ Die Telemetrie, Eigenschaften und Befehle, die Sie einer Ansicht hinzufügen kö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich als Geräteentwickler über Gerätevorlagen informiert haben, sollten Sie als Nächstes den Artikel [Telemetrie-, Eigenschaften- und Befehlsnutzlasten](./concepts-telemetry-properties-commands.md) lesen, um mehr über die Daten zu erfahren, die ein Gerät mit IoT Central austauscht.
-
-Wir empfehlen Ihnen als Nächstes die Lektüre von [Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung](./howto-set-up-template.md), um mehr darüber zu erfahren, wie Sie eine Gerätevorlage erstellen können.
+Nachdem Sie sich über Gerätevorlagen informiert haben, sollten Sie als Nächstes den Artikel [Telemetrie-, Eigenschaften- und Befehlsnutzlasten](./concepts-telemetry-properties-commands.md) lesen, um mehr über die Daten zu erfahren, die ein Gerät mit IoT Central austauscht.

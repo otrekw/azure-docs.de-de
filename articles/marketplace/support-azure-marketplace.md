@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 04/14/2020
-ms.openlocfilehash: 02e64c6c6e5ab2ef77f02959ada6f95d1042b76d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/14/2021
+ms.openlocfilehash: 0173d6e897c122d53d8f64c1d0110ab7ddfa68ed
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94488756"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075914"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Support für den kommerziellen Microsoft-Marketplace
 
@@ -26,7 +26,8 @@ Haben Sie Fragen dazu, wie Sie als Publisher für den kommerziellen Microsoft-Ma
 
 | Supportkanal | BESCHREIBUNG | Verfügbarkeit |  
 |:--- |:--- |:--- |  
-| Um Unterstützung zu erhalten, besuchen Sie die Seite zum Erstellen eines Incidents unter [Marketplace-Support](https://aka.ms/marketplacepublishersupport).</li> </ul> | Support für Partner Center. | Support wird an Werktagen rund um die Uhr bereitgestellt. |  
+| Um Unterstützung zu erhalten, besuchen Sie die Seite zum Erstellen eines Incidents unter [Marketplace-Support](https://aka.ms/marketplacepublishersupport).</li> </ul> | Support für Partner Center. | Support wird an Werktagen rund um die Uhr bereitgestellt. |
+|
 
 ## <a name="technical"></a>Technisch  
 
@@ -39,12 +40,12 @@ Haben Sie Fragen dazu, wie Sie als Publisher für den kommerziellen Microsoft-Ma
 
 | Supportkanal | BESCHREIBUNG | Verfügbarkeit |  
 |:--- |:--- |:--- |
-| E-Mail: [gtm@microsoft.com](mailto:gtm@microsoft.com) | Unterstützung zu GTM-Vorteilen und Programmfragen | Die Geschäftszeiten sind in „Pacific Time“ angegeben. |  
-| E-Mail: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Antworten auf Fragen zur Nutzung für Azure-Logos und zum Branding. |  |  
+| E-Mail: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Antworten auf Fragen zur Nutzung für Azure-Logos und zum Branding. |  |
+|
+
+Wenden Sie sich bei Fragen zu Marketplace Rewards an den [Partner Center-Support](https://partner.microsoft.com/support/v2/?stage=1).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Besuchen Sie die Seite [Willkommen beim kommerziellen Marketplace](index.yml).
-* Informieren Sie sich ausführlicher über den [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](support.md).
-
----
+- Besuchen Sie die Seite [Willkommen beim kommerziellen Marketplace](index.yml).
+- Informieren Sie sich ausführlicher über den [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](support.md).

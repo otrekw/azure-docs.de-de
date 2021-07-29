@@ -5,17 +5,17 @@ description: Sie können Ihren eigenen Verschlüsselungsschlüssel verwenden, um
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/30/2021
+ms.date: 06/01/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 07f8faf503bdea6be8263afa6240594956b61391
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: cd2a265c5d4c339fa6e50338949cbf643314a3ee
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059444"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371320"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung
 
@@ -45,8 +45,18 @@ In der folgenden Liste werden die nummerierten Schritte im Diagramm erläutert:
 1. Ein Azure Key Vault-Administrator erteilt Berechtigungen für Verschlüsselungsschlüssel an die dem Speicherkonto zugeordnete verwaltete Identität.
 2. Ein Azure Storage-Administrator konfiguriert die Verschlüsselung mit einem vom Kunden verwalteten Schlüssel für das Speicherkonto.
 3. Azure Storage verwendet die dem Speicherkonto zugeordnete verwaltete Identität, um den Zugriff auf Azure Key Vault über Azure Active Directory zu authentifizieren.
-4. Azure Storage umschließt den Kontoverschlüsselungsschlüssel mit dem Kundenschlüssel in Azure Key Vault.
+4. Azure Storage umschließt den Kontoverschlüsselungsschlüssel mit dem kundenseitig verwalteten Schlüssel in Azure Key Vault.
 5. Bei Lese-/Schreibvorgängen sendet Azure Storage Anforderungen an Azure Key Vault, um die Umschließung für den Kontoverschlüsselungsschlüssel aufzuheben und so Verschlüsselungs- und Entschlüsselungsvorgänge durchzuführen.
+
+Die dem Speicherkonto zugeordnete verwaltete Identität muss mindestens diese Berechtigungen haben, um in Azure Key Vault auf einen kundenseitig verwalteten Schlüssel zugreifen zu können:
+
+- *wrapKey*
+- *unwrapKey*
+- *get*  
+
+Weitere Informationen zu Schlüsselberechtigungen finden Sie unter [Schlüsseltypen, Algorithmen und Vorgänge](../../key-vault/keys/about-keys-details.md#key-access-control).
+
+Azure Policy bietet eine integrierte Richtlinie, die erfordert, dass Speicherkonten kundenseitig verwaltete Schlüssel für Blob Storage und Azure Files-Workloads verwenden. Weitere Informationen finden Sie in [Integrierte Azure Policy-Richtliniendefinitionen](../../governance/policy/samples/built-in-policies.md#storage) im Abschnitt **Speicher**.
 
 ## <a name="customer-managed-keys-for-queues-and-tables"></a>Kundenseitig verwaltete Schlüssel für Warteschlangen und Tabellen
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: b5f4218cfcd5f9ccfbe43efac46e2f70fdc30905
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43a71f6260f688a1e9cc5e39e0c61f81d2265eb3
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99574956"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559620"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Registrieren und Überprüfen einer lokalen SQL Server-Datenquelle
 
@@ -109,7 +109,35 @@ Führen Sie die folgenden Schritte aus, wenn Sie eine neue Anmeldung und einen n
 
 5. Geben Sie einen Anzeigenamen und Serverendpunkt an, und wählen Sie dann **Fertig stellen** aus, um die Datenquelle zu registrieren. Hat Ihre SQL Server-Datenquelle z. B. den FQDN **foobar.database.windows.net**, geben Sie *foobar* als Serverendpunkt ein.
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
+
+Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
+
+1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+
+1. Wählen Sie die von Ihnen registrierte SQL Server-Quelle aus.
+
+1. Wählen Sie **Neue Überprüfung** aus.
+
+1. Wählen Sie die Anmeldeinformationen für die Verbindungsherstellung mit Ihrer Datenquelle aus.
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-set-up-scan.png" alt-text="Einrichten der Überprüfung":::
+
+1. Sie können den Bereich für Ihre Überprüfung auf bestimmte Tabellen festlegen, indem Sie die entsprechenden Elemente in der Liste auswählen.
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-scope-your-scan.png" alt-text="Festlegen des Bereichs für Ihre Überprüfung":::
+
+1. Wählen Sie dann einen Überprüfungsregelsatz aus. Sie können zwischen der Standardeinstellung des Systems, den vorhandenen benutzerdefinierten Regelsätzen und der Inlineerstellung eines neuen Regelsatzes wählen.
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-scan-rule-set.png" alt-text="Überprüfungsregelsatz":::
+
+1. Wählen Sie den Auslöser für die Überprüfung. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/trigger-scan.png" alt-text="trigger":::
+
+1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

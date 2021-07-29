@@ -3,19 +3,19 @@ title: Behandeln von häufigen Verbindungsproblemen mit Azure SQL-Datenbank
 description: Enthält Schritte zum Beheben von Verbindungsproblemen mit Azure SQL-Datenbank und anderen Problemen mit Azure SQL-Datenbank oder Azure SQL Managed Instance.
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: development
+ms.subservice: connect
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: ec61f2c67576d6e144d8d4bb7e8ecaaa157db0a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5953099567edc3ef0f09ae07fd2708b1ce748dd9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98233371"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413607"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Beheben von Konnektivitätsproblemen und anderen Fehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Die Azure-Infrastruktur verfügt über die Möglichkeit, Server dynamisch neu zu
 | ---:| ---:|:--- |
 | 4060 |16 |Die von der Anmeldung angeforderte „%.&#x2a;ls“-Datenbank kann nicht geöffnet werden. Fehler bei der Anmeldung. Weitere Informationen finden Sie unter [Fehler 4000 bis 4999](/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999).|
 | 40197 |17 |Dienstfehler beim Verarbeiten Ihrer Anforderung. Wiederholen Sie den Vorgang. Fehlercode %d.<br/><br/>Sie erhalten diesen Fehler, wenn der Dienst aufgrund von Software- oder Hardwareupgrades, Hardwarefehlern oder sonstigen Failoverproblemen ausgefallen ist. Der Fehlercode (%d), der in der Meldung zum Fehler 40197 enthalten ist, liefert weitere Informationen zur Art des aufgetretenen Fehlers oder Failovers. Beispiele für Fehlercodes, die in die Meldung zum Fehler 40197 eingebettet sind, lauten 40020, 40143, 40166 und 40540.<br/><br/>Wenn die Verbindung wiederhergestellt wird, werden Sie automatisch mit einer fehlerfreien Kopie Ihrer Datenbank verbunden. Ihre Anwendung muss den Fehler 40197 abfangen, den für die Problembehandlung in der Meldung enthaltenen Fehlercode (%d) protokollieren und versuchen, eine neue Verbindung mit SQL-Datenbank herzustellen, bis die Ressourcen verfügbar sind, damit Ihre Verbindung wiederhergestellt wird. Weitere Informationen finden Sie unter [Vorübergehende Fehler](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
-| 40501 |20 |Der Dienst ist derzeit ausgelastet. Wiederholen Sie die Anforderung in 10 Sekunden. Vorgangs-ID: %ls. Code: %d. Weitere Informationen finden Sie unter: <br/>&bull; &nbsp;[Ressourcenlimits für Azure SQL-Datenbank- und Azure Synapse Analytics-Server](resource-limits-logical-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Übersicht über Ressourcenlimits für verwaltete Azure SQL-Instanzen](../managed-instance/resource-limits.md)|
+| 40501 |20 |Der Dienst ist derzeit ausgelastet. Wiederholen Sie die Anforderung in 10 Sekunden. Vorgangs-ID: %ls. Code: %d. Weitere Informationen finden Sie unter <br/>&bull; &nbsp;[Ressourcenlimits für Azure SQL-Datenbank- und Azure Synapse Analytics-Server](resource-limits-logical-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Übersicht über Ressourcenlimits für verwaltete Azure SQL-Instanzen](../managed-instance/resource-limits.md)|
 | 40613 |17 |Die „%.&#x2a;ls“-Datenbank auf Server „%.&#x2a;ls“ ist zurzeit nicht verfügbar. Wiederholen Sie den Verbindungsversuch später. Falls das Problem weiterhin besteht, wenden Sie sich an den Kundensupport und geben als Ablaufverfolgungs-ID der Sitzung „%.&#x2a;ls“ an.<br/><br/> Dieser Fehler kann auftreten, wenn bereits eine dedizierte Administratorverbindung (DAC) zur Datenbank besteht. Weitere Informationen finden Sie unter [Vorübergehende Fehler](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 49918 |16 |Anforderung kann nicht verarbeitet werden. Zum Verarbeiten der Anforderung sind nicht genügend Ressourcen vorhanden.<br/><br/>Der Dienst ist derzeit ausgelastet. Versuchen Sie die Anforderung später erneut. Weitere Informationen finden Sie unter <br/>&bull; &nbsp;[Ressourcenlimits für Azure SQL-Datenbank- und Azure Synapse Analytics-Server](resource-limits-logical-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Übersicht über Ressourcenlimits für verwaltete Azure SQL-Instanzen](../managed-instance/resource-limits.md) |
 | 49919 |16 |Die Erstellung oder Aktualisierung der Anforderung kann nicht verarbeitet werden. Für das Abonnement „%ld“ werden derzeit zu viele Erstell- oder Aktualisierungsvorgänge ausgeführt.<br/><br/>Der Dienst ist mit der Verarbeitung mehrerer Erstell- oder Aktualisierungsvorgänge für Ihr Abonnement oder Ihren Server ausgelastet. Zur Ressourcenoptimierung werden Anforderungen derzeit blockiert. Fragen Sie [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) auf ausstehende Vorgänge ab. Warten Sie, bis ausstehende Erstellungs- oder Aktualisierungsanforderungen abgeschlossen sind, oder löschen Sie eine Ihrer ausstehenden Anforderungen, und wiederholen Sie die Anforderung später. Weitere Informationen finden Sie unter <br/>&bull; &nbsp;[Ressourcenlimits für Azure SQL-Datenbank- und Azure Synapse Analytics-Server](resource-limits-logical-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Übersicht über Ressourcenlimits für verwaltete Azure SQL-Instanzen](../managed-instance/resource-limits.md) |
@@ -248,13 +248,13 @@ Mithilfe der folgenden Schritte können Sie das Problem umgehen oder zusätzlich
 
 Wenn diese Fehlermeldung wiederholt auftritt, führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
-1. Überprüfen Sie die Sicht sys.dm_exec_requests, um alle geöffneten Sitzungen mit einem hohen Wert in der Spalte total_elapsed_time anzuzeigen. Führen Sie diese Prüfung durch Ausführen des folgenden SQL-Skripts durch:
+1. Überprüfen Sie die Ansicht `sys.dm_exec_requests`, um eventuelle geöffnete Sitzungen zu sehen, die für die Spalte `total_elapsed_time` einen hohen Wert aufweisen. Führen Sie diese Prüfung durch Ausführen des folgenden SQL-Skripts durch:
 
    ```sql
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. Bestimmen Sie mithilfe der dynamischen Verwaltungsfunktion [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) den **Eingabepuffer** für die Hauptblockierung und die „session_id“ der problematischen Abfrage. Beispiel:
+2. Bestimmen Sie mithilfe der dynamischen Verwaltungsfunktion [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) den Eingabepuffer für die Hauptblockierung und die `session_id` der problematischen Abfrage. Beispiel:
 
    ```sql 
    SELECT * FROM sys.dm_exec_input_buffer (100,0);
@@ -262,7 +262,7 @@ Wenn diese Fehlermeldung wiederholt auftritt, führen Sie die folgenden Schritte
 
 3. Optimieren Sie die Abfrage.
 
-    > [!Note]
+    > [!NOTE]
     > Weitere Informationen zur Problembehandlung bei Blockierungen in Azure SQL-Datenbank finden Sie unter [Verstehen und Beheben von Problemen durch Blockierungen in Azure SQL-Datenbank](understand-resolve-blocking.md).
 
 Sie sollten auch Batchverarbeitung für Ihre Abfragen in Erwägung ziehen. Weitere Informationen finden Sie unter [Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung](../performance-improve-use-batching.md).
@@ -289,6 +289,10 @@ Versuchen Sie, die Anzahl der Zeilen zu verringern, die sofort ausgeführt werde
 
   > [!NOTE]
   > Bei einer Indexneuerstellung muss die durchschnittliche Größe des aktualisierten Felds durch die durchschnittliche Indexgröße ersetzt werden.
+
+  > [!NOTE]
+  > Weitere Informationen zur Problembehandlung für ein vollständiges Transaktionsprotokoll in Azure SQL-Datenbank und Azure SQL Managed Instance finden Sie unter [Problembehandlung von Transaktionsprotokollfehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance](troubleshoot-transaction-log-errors-issues.md).
+
 
 ### <a name="error-40553-the-session-has-been-terminated-because-of-excessive-memory-usage"></a>Fehler 40553: Die Sitzung wurde aufgrund übermäßiger Speicherauslastung beendet
 
@@ -396,3 +400,8 @@ Weitere Informationen zum Aktivieren der Protokollierung finden Sie unter [Aktiv
 
 - [Verbindungsarchitektur von Azure SQL-Datenbank und Azure Synapse Analytics](./connectivity-architecture.md)
 - [Netzwerk-Zugriffssteuerung für Azure SQL-Datenbank und Azure Synapse Analytics](./network-access-controls-overview.md)
+
+## <a name="see-also"></a>Siehe auch
+
+- [Problembehandlung von Transaktionsprotokollfehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance](troubleshoot-transaction-log-errors-issues.md)
+- [Behandeln vorübergehender Verbindungsfehler in SQL-Datenbank und SQL Managed Instance](troubleshoot-common-connectivity-issues.md)

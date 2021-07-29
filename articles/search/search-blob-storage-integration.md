@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: f61bf635cc61a2153a7bb016ef4b4711d7ba7391
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/14/2021
+ms.openlocfilehash: 6646a2e5a074219df13f3bf373edfc53310c8104
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91355294"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556602"
 ---
 # <a name="search-over-azure-blob-storage-content"></a>Durchsuchen von Azure Blob Storage-Inhalten
 
-Das Durchsuchen verschiedenster in Azure Blob Storage gespeicherter Inhalte kann ein schwer zu lösendes Problem sein. In diesem Artikel wird der grundlegende Workflow für die Extraktion von Inhalt und Metadaten aus Blobs sowie das Senden derselben an einen Suchindex in Azure Cognitive Search erläutert. Der resultierende Index kann über die Volltextsuche abgefragt werden.
+Das Durchsuchen verschiedenster in Azure Blob Storage gespeicherter Inhalte kann ein schwierig zu lösendes Problem sein. In diesem Artikel wird der grundlegende Workflow für die Extraktion von Inhalt und Metadaten aus Blobs sowie das Senden derselben an einen Suchindex in Azure Cognitive Search erläutert. Der resultierende Index kann über die Volltextsuche abgefragt werden.
 
 > [!NOTE]
 > Sie sind bereits mit dem Workflow und der Struktur vertraut? [Konfigurieren eines Blobindexers](search-howto-indexing-azure-blob-storage.md) ist Ihr nächster Schritt.
@@ -36,7 +36,7 @@ Nach Erstellen und Auffüllen des Indexes existiert er unabhängig von Ihrem Blo
 
 ## <a name="required-resources"></a>Erforderliche Ressourcen
 
-Sie benötigen sowohl Azure Cognitive Search als auch Azure Blob Storage. In Azure Blob Storage benötigen Sie einen Container, der Quellinhalt bereitstellt.
+Sie benötigen sowohl Azure Cognitive Search als auch Azure Blob Storage. In Azure Blob Storage benötigen Sie einen Container, der Quellinhalte bereitstellt.
 
 Sie können direkt auf der Portalseite des Speicherkontos beginnen. Klicken Sie auf der linken Navigationsseite unter **Blob-Dienst** auf **Azure Cognitive Search hinzufügen**, um einen neuen Dienst zu erstellen oder einen bestehenden auszuwählen. 
 
@@ -51,6 +51,10 @@ Blobs in Azure Storage werden mithilfe des [Blob Storage-Indexers von Azure Cogn
 Ein Indexer übernimmt die Dokumententschlüsselung und öffnet ein Blob, um den Inhalt zu inspizieren. Nach dem Herstellen einer Verbindung mit der Datenquelle ist dies der erste Schritt in der Pipeline. Bei Blobdaten werden an dieser Stelle PDF-Dateien, Office-Dokumente und andere Inhaltstypen erkannt. Die Dokumententschlüsselung mit Textextraktion erfolgt gebührenfrei. Wenn Ihre Blobs Bildinhalte enthalten, werden Bilder ignoriert, es sei denn, Sie fügen [KI-Erweiterungen](search-blob-ai-integration.md) hinzu. Die Standardindizierung gilt nur für Textinhalte.
 
 Der Blobindexer verfügt über Konfigurationsparameter und unterstützt die Nachverfolgung von Änderungen, wenn die zugrunde liegenden Daten genügend Informationen liefern. Weitere Informationen zur Kernfunktionalität finden Sie unter [Blob Storage-Indexer in Azure Cognitive Search](search-howto-indexing-azure-blob-storage.md).
+
+### <a name="supported-access-tiers"></a>Unterstützte Zugriffsebenen
+
+Die Blob Storage-[Zugriffsebenen](../storage/blobs/storage-blob-storage-tiers.md) lauten „Heiß“, „Kalt“ und „Archiv“. Indexer können nur auf „Heiß“ und „Kalt“ zugreifen. 
 
 ### <a name="supported-content-types"></a>Unterstützte Inhaltstypen
 

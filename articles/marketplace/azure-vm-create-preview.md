@@ -1,20 +1,20 @@
 ---
 title: Hinzufügen einer Vorschauzielgruppe für ein VM-Angebot im Azure Marketplace
-description: Erfahren Sie, wie Sie eine Vorschauzielgruppe für ein VM-Angebot im Azure Marketplace hinzufügen.
+description: Hinzufügen einer Vorschauzielgruppe für ein VM-Angebot im Azure Marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 854d0fa9b34d495f03a0c3c6203ceb227e4712d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ca53a950aeaaf888dead6c1e134f63fe7cea04c
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629511"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111524956"
 ---
-# <a name="how-to-add-a-preview-audience-for-a-virtual-machine-offer"></a>Hinzufügen einer Vorschauzielgruppe für ein VM-Angebot
+# <a name="add-a-preview-audience-for-a-virtual-machine-offer"></a>Hinzufügen einer Vorschauzielgruppe für ein VM-Angebot
 
 Wählen Sie auf der Seite **Vorschau** (Auswahl in Partner Center im linken Navigationsmenü) eine eingeschränkte **Vorschauzielgruppe** zur Überprüfung Ihres Angebots aus, bevor Sie es live für die breitere Zielgruppe des kommerziellen Marketplace veröffentlichen.
 

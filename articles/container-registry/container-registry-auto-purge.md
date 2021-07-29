@@ -2,24 +2,21 @@
 title: Bereinigen von Tags und Manifesten
 description: Verwenden Sie einen Bereinigungsbefehl zum Löschen mehrerer Tags und Manifeste aus einer Azure-Containerregistrierung, basierend auf dem Alter und einem Tagfilter, und planen Sie optional Bereinigungsvorgänge.
 ms.topic: article
-ms.date: 02/19/2021
-ms.openlocfilehash: 562d1940459cb1594b7cd9aca2af280b05a4e419
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/07/2021
+ms.openlocfilehash: bb1a8a2a9af0e7ab96b5ae12bd10500e700dfa39
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784189"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089072"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Automatisches Bereinigen von Images aus einer Azure-Containerregistrierung
 
 Wenn Sie eine Azure-Containerregistrierung als Teil eines Entwicklungsworkflows verwenden, kann die Registrierung schnell mit Bildern oder anderen Artefakten aufgefüllt werden, die nach kurzer Zeit nicht mehr benötigt werden. Sie können alle Tags löschen, die älter als eine bestimmte Dauer sind oder einem angegebenen Namensfilter entsprechen. Zum schnellen Löschen mehrerer Artefakte wird in diesem Artikel der Befehl `acr purge` eingeführt, den Sie als bedarfsgesteuerte oder [geplante](container-registry-tasks-scheduled.md) ACR-Aufgabe ausführen können. 
 
-Der Befehl `acr purge` wird zurzeit in einem öffentlichen Containerimage (`mcr.microsoft.com/acr/acr-cli:0.4`) verteilt, das aus Quellcode im Repository [acr-cli](https://github.com/Azure/acr-cli) auf GitHub erstellt wurde.
+Der Befehl `acr purge` wird zurzeit in einem öffentlichen Containerimage (`mcr.microsoft.com/acr/acr-cli:0.4`) verteilt, das aus Quellcode im Repository [acr-cli](https://github.com/Azure/acr-cli) auf GitHub erstellt wurde. `acr purge` befindet sich derzeit in der Vorschauphase.
 
 Sie können die Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die ACR-Aufgabenbeispiele in diesem Artikel auszuführen. Für die lokale Verwendung ist mindestens Version 2.0.76 erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install]. 
-
-> [!IMPORTANT]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 > [!WARNING]
 > Verwenden Sie den Befehl `acr purge` mit Vorsicht: Gelöschte Imagedaten sind NICHT WIEDERHERSTELLBAR. Wenn Sie Systeme haben, die Images nach dem Manifesthash pullen (und nicht nach dem Imagenamen), sollten Sie keine Images ohne Tags bereinigen. Wenn Sie Images ohne Tags löschen, hindern Sie diese Systeme daran, die Images aus Ihrer Registrierung zu löschen. Erwägen Sie statt des Pullens nach Manifest die Einführung eines *eindeutigen Tagging*-Schemas. Dies ist eine [bewährte Methode](container-registry-image-tag-version.md).

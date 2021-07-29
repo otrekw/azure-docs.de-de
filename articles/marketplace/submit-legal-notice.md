@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 03/08/2021
-ms.openlocfilehash: 36bda5d241a1d383e7773abeda8a9889fb24086e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3935afe1c174ace2492d2d81c6ef10d3d934d26d
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133023"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112008037"
 ---
 # <a name="notifying-microsoft-regarding-the-publisher-agreement"></a>Benachrichtigen von Microsoft bezüglich der Herausgebervereinbarung
 
@@ -20,7 +20,7 @@ Verwenden Sie ein Supportticket für die Übermittlung rechtlicher Hinweise an M
 
 ## <a name="submit-notice-regarding-the-publisher-agreement"></a>Übermitteln von Hinweisen zur Herausgebervereinbarung
 
-1. Wechseln Sie zum Abschnitt mit den [vertraglichen oder rechtlichen Fragen](https://partner.microsoft.com/support/?stage=2&topicid=05a1a389-1256-d441-89c9-a140217de6b9) im Partner Center-Support.
+1. Wechseln Sie zum Abschnitt mit den [vertraglichen oder rechtlichen Fragen](https://go.microsoft.com/fwlink/?linkid=2157631) im Partner Center-Support.
 
 1. Wählen Sie **Problemdetails angeben** aus (melden Sie ggf. zunächst bei Partner Center an).
 
@@ -45,4 +45,4 @@ Verwenden Sie ein Supportticket für die Übermittlung rechtlicher Hinweise an M
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Wenn es weitere Fragen gibt, setzt sich ein Supportmitarbeiter mit Ihnen in Verbindung.
-- Lesen Sie die [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement) (PDF).
+- Weitere Informationen finden Sie auch in der [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement).

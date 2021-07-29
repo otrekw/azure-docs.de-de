@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 61f0f2a71240c0ade13f7cd20b6c411f3df7f278
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 7d1c31c9f8507154056e6e6de0073eeb9ae636b7
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279152"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111422010"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Verwenden von verwalteten Identitäten mit Azure Machine Learning (Vorschau)
 
@@ -260,7 +260,7 @@ Sie können auch [eine ARM-Vorlage](https://github.com/Azure/azure-quickstart-te
 > [!IMPORTANT]
 > Wenn Sie Ihre eigenen zugehörigen Ressourcen bereitstellen, anstatt sie vom Azure Machine Learning Service erstellen zu lassen, müssen Sie der verwalteten Identität entsprechende Rollen für diese Ressourcen gewähren. Verwenden Sie die [ARM-Vorlage für die Rollenzuweisung](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment), um die Zuweisungen vorzunehmen.
 
-Für einen Arbeitsbereich mit (kundenseitig verwalteten Schlüsseln für die Verschlüsselung)[https://docs.microsoft.com/azure/machine-learning/concept-data-encryption ] können Sie eine benutzerseitig zugewiesene verwaltete Identität zur Authentifizierung über den Speicher an Key Vault übergeben. Verwenden Sie das Argument __user-assigned-identity-for-cmk-encryption__ (CLI) oder __user_assigned_identity_for_cmk_encryption__ (SDK), um die verwaltete Identität zu übergeben. Diese verwaltete Identität kann dieselbe oder eine andere sein als die primäre benutzerseitig zugewiesene verwaltete Identität des Arbeitsbereichs.
+Für einen Arbeitsbereich mit [kundenseitig verwalteten Schlüsseln für die Verschlüsselung](concept-data-encryption.md) können Sie eine benutzerseitig zugewiesene verwaltete Identität zur Authentifizierung über den Speicher an Key Vault übergeben. Verwenden Sie das Argument __user-assigned-identity-for-cmk-encryption__ (CLI) oder __user_assigned_identity_for_cmk_encryption__ (SDK), um die verwaltete Identität zu übergeben. Diese verwaltete Identität kann dieselbe oder eine andere sein als die primäre benutzerseitig zugewiesene verwaltete Identität des Arbeitsbereichs.
 
 Wenn Sie über einen vorhandenen Arbeitsbereich verfügen, können Sie ihn mithilfe des CLI-Befehls ```az ml workspace update``` oder der Python SDK-Methode ```Workspace.update``` von der systemseitig zur benutzerseitig zugewiesenen verwalteten Identität aktualisieren.
 

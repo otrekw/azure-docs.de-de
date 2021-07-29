@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3ec556c6198a00f217568f6591bd4b43c7fc743e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a379c6e828a4d3a10dd958ec7f380907b20f7352
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88924298"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559122"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Wissensspeicher in Azure Cognitive Search
 
@@ -124,7 +124,7 @@ Die REST-API ist ein Mechanismus, mit dem Sie einen Wissensspeicher programmgest
 
 ## <a name="how-to-connect-with-tools-and-apps"></a>Herstellen einer Verbindung mit Tools und Apps
 
-Wenn die Anreicherungen in Storage gespeichert sind, können Sie beliebige Tools oder Technologien mit einer Verbindung mit Azure Blob Storage oder Azure Table Storage verwenden, um die Inhalte zu untersuchen, zu analysieren oder zu nutzen. Die folgende Liste gibt einen ersten Einblick:
+Nachdem die Anreicherungen in Storage gespeichert sind, können Sie beliebige Tools oder Technologien mit einer Verbindung mit Azure Blob Storage oder Azure Table Storage verwenden, um die Inhalte zu untersuchen, zu analysieren oder zu nutzen. Die folgende Liste gibt einen ersten Einblick:
 
 + Mit [Storage-Explorer](knowledge-store-view-storage-explorer.md) können Sie die Struktur und den Inhalt angereicherter Dokumente anzeigen. Nutzen Sie dies als Ihr Basistool zum Anzeigen des Inhalts von Wissensspeichern.
 

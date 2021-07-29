@@ -2,13 +2,14 @@
 title: Unterstützung der Zugriffsebene „Archiv“ (Vorschau)
 description: Informationen zur Unterstützung der Zugriffsebene „Archiv“ für Azure Backup
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 7a42b8702cfdda14a18aa3cdd4e084ed78767b0a
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 06/03/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c817e5e0fbed7ebe6c659a91e180820de3fdc677
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012147"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410097"
 ---
 # <a name="archive-tier-support-preview"></a>Unterstützung der Zugriffsebene „Archiv“ (Vorschau)
 
@@ -77,19 +78,29 @@ Unterstützte Clients:
 
         `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<dbName>' -and $_.ContainerName -match '<vmName>'}`
 
+1. Fügen Sie den Datumsbereich hinzu, für den Sie die Wiederherstellungspunkte anzeigen möchten. Wenn Sie beispielsweise die Wiederherstellungspunkte der letzten 124 Tage bis zu den letzten 95 Tagen anzeigen möchten, verwenden Sie den folgenden Befehl:
+
+   ```azurepowershell
+    $startDate = (Get-Date).AddDays(-124)
+    $endDate = (Get-Date).AddDays(-95) 
+
+    ```
+    >[!NOTE]
+    >Die Spanne zwischen Start- und Enddatum darf nicht mehr als 30 Tage betragen.<br><br>Um Wiederherstellungspunkte für einen anderen Zeitraum anzuzeigen, ändern Sie Start- und Enddatum entsprechend.
 ## <a name="use-powershell"></a>Verwenden von PowerShell
 
 ### <a name="check-archivable-recovery-points"></a>Überprüfen von archivierbaren Wiederherstellungspunkten
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $true -TargetTier VaultArchive
 ```
 
-Damit werden alle Wiederherstellungspunkte aufgelistet, die einem bestimmten Sicherungselement zugeordnet sind, das in das Archiv verschoben werden kann.
+Damit werden alle Wiederherstellungspunkte aufgelistet, die einem bestimmten Sicherungselement zugeordnet sind, das in das Archiv verschoben werden kann (vom Startdatum zum Enddatum). Sie können auch Startdatum und Enddatum ändern.
 
 ### <a name="check-why-a-recovery-point-cannot-be-moved-to-archive"></a>Überprüfen, warum ein Wiederherstellungspunkt nicht in das Archiv verschoben werden kann
 
 ```azurepowershell
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $false -TargetTier VaultArchive
 $rp[0].RecoveryPointMoveReadinessInfo["ArchivedRP"]
 ```
 
@@ -119,8 +130,10 @@ $RecommendedRecoveryPointList = Get-AzRecoveryServicesBackupRecommendedArchivabl
 ### <a name="move-to-archive"></a>Verschieben in das Archiv
 
 ```azurepowershell
-Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[2] -SourceTier VaultStandard -DestinationTier VaultArchive
+Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[0] -SourceTier VaultStandard -DestinationTier VaultArchive
 ```
+
+Dabei ist `$rp[0]` der erste Wiederherstellungspunkt in der Liste. Wenn Sie andere Wiederherstellungspunkte verschieben möchten, verwenden Sie `$rp[1]`, `$rp[2]`, usw.
 
 Mit diesem Befehl wird ein archivierbarer Wiederherstellungspunkt in das Archiv verschoben. Zurückgegeben wird ein Auftrag, der zum Nachverfolgen des Verschiebevorgangs, sowohl im Portal als auch mit PowerShell, verwendet werden kann.
 
@@ -129,7 +142,7 @@ Mit diesem Befehl wird ein archivierbarer Wiederherstellungspunkt in das Archiv 
 Mit diesem Befehl werden alle archivierten Wiederherstellungspunkte zurückgegeben.
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
 ```
 
 ### <a name="restore-with-powershell"></a>Wiederherstellen mit PowerShell
@@ -149,7 +162,7 @@ Weitere Informationen zu den verschiedenen Wiederherstellungsmethoden für virtu
 Restore-AzRecoveryServicesBackupItem -VaultLocation $vault.Location -RehydratePriority "Standard" -RehydrateDuration 15 -RecoveryPoint $rp -StorageAccountName "SampleSA" -StorageAccountResourceGroupName "SArgName" -TargetResourceGroupName $vault.ResourceGroupName -VaultId $vault.ID
 ```
 
-Zum Wiederherstellen von SQL Server führen Sie [diese Schritte](backup-azure-sql-automation.md#restore-sql-dbs) aus. Die zusätzlich erforderlichen Parameter sind **RehydrationPriority** (Aktivierungspriorität) und **RehydrationDuration** (Aktivierungsdauer).
+Zum Wiederherstellen von SQL Server führen Sie [diese Schritte](backup-azure-sql-automation.md#restore-sql-dbs) aus. Der Befehl `Restore-AzRecoveryServicesBackupItem` erfordert zwei zusätzliche Parameter: **RehydrationDuration** und **RehydrationPriority**.
 
 ### <a name="view-jobs-from-powershell"></a>Anzeigen von Aufträgen in PowerShell
 
@@ -291,6 +304,12 @@ Es gibt mehrere Fehlercodes, die auftreten, wenn ein Wiederherstellungspunkt nic
 ### <a name="what-will-happen-to-archive-recovery-points-if-i-stop-protection-and-retain-data"></a>Was passiert mit den Wiederherstellungspunkten im Archiv, wenn ich den Schutz beende und die Daten behalte?
 
 Der Wiederherstellungspunkt bleibt dauerhaft im Archiv gespeichert. Weitere Informationen finden Sie unter [Auswirkungen auf Wiederherstellungspunkte beim Beenden des Schutzes](manage-recovery-points.md#impact-of-stop-protection-on-recovery-points).
+
+### <a name="is-cross-region-restore-supported-from-archive-tier"></a>Wird die regionsübergreifende Wiederherstellung von der Zugriffsebene „Archiv“ unterstützt?
+
+Wenn Sie Ihre Daten in GRS-Tresoren von der Zugriffsebene „Standard“ in die Zugriffsebene „Archiv“ verschieben, werden die Daten in das GRS-Archiv verschoben. Dies gilt auch, wenn die regionsübergreifende Wiederherstellung aktiviert ist. Sobald Sicherungsdaten in die Zugriffsebene „Archiv“ verschoben wurden, können Sie die Daten nicht mehr in der gekoppelten Region wiederherstellen. Fällt eine Region aus, stehen die Sicherungsdaten in der sekundären Region jedoch für die Wiederherstellung zur Verfügung. 
+
+Beim Wiederherstellen eines Wiederherstellungspunkts in der Zugriffsebene „Archiv“ in der primären Region wird der Wiederherstellungspunkt in die Zugriffsebene „Standard“ kopiert und sowohl in der primären als auch in der sekundären Region gemäß der Dauer der Aktivierung aufbewahrt. Sie können die regionsübergreifende Wiederherstellung aus diesen aktivierten Wiederherstellungspunkten ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

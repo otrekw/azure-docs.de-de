@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 24fd0e9765ddbafda0fde0a3b362a4facd99afe7
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bbb4ce6442cc38e2554c6c1f745223a193ca793d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460838"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950752"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivieren von Azure Monitor auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -22,6 +22,9 @@ ms.locfileid: "110460838"
 Es ist insbesondere dann wichtig, Container auf Ihrem Azure Stack Edge Pro-GPU-Gerät zu überwachen, wenn Sie mehrere Computeanwendungen ausführen. Mit Azure Monitor können Sie Containerprotokolle sowie Speicher- und Prozessormetriken zu dem Kubernetes-Cluster erfassen, der auf Ihrem Gerät ausgeführt wird.
 
 In diesem Artikel werden die erforderlichen Schritte zum Aktivieren von Azure Monitor auf Ihrem Gerät und zum Erfassen von Containerprotokollen im Log Analytics-Arbeitsbereich beschrieben. Der Azure Monitor-Metrikspeicher wird von Ihrem Azure Stack Edge Pro-GPU-Gerät derzeit nicht unterstützt. 
+
+> [!NOTE]
+> Wenn Azure Arc auf dem Kubernetes-Cluster auf Ihrem Gerät aktiviert ist, führen Sie die Schritte in [Azure Monitor Container Insights für Kubernetes-Cluster mit Azure Arc-Unterstützung](../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json) aus, um die Containerüberwachung einzurichten.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -243,4 +246,4 @@ Führen Sie die folgenden Schritte aus, um Container Insights für Ihren Arbeits
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie, wie Sie [Kubernetes-Workloads über das Kubernetes-Dashboard überwachen](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).
-- Erfahren Sie, wie Sie [Warnbenachrichtigungen zu Geräteereignissen verwalten](azure-stack-edge-gpu-manage-device-event-alert-notifications.md). 
+- Erfahren Sie, wie Sie [Warnbenachrichtigungen zu Geräteereignissen verwalten](azure-stack-edge-gpu-manage-device-event-alert-notifications.md).

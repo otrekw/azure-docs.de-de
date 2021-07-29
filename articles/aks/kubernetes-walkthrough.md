@@ -13,12 +13,12 @@ ms.custom:
 - seo-python-october2019
 - devx-track-azurecli
 - contperf-fy21q1
-ms.openlocfilehash: 8adfd1a6e26a3381653ca9a794b124e201b9d481
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 9814037b9a4ace0a5f39d6ab0b01d1d940fb00fa
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106703"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991980"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters über die Azure-Befehlszeilenschnittstelle
 
@@ -38,6 +38,7 @@ Weitere Informationen zum Erstellen eines Windows Server-Knotenpools finden Sie
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - Für diesen Artikel ist mindestens Version 2.0.64 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
+- Die Identität, die Sie zum Erstellen Ihres Clusters verwenden, verfügt über die erforderlichen Mindestberechtigungen. Weitere Informationen zu Zugriff und Identität für AKS finden Sie unter [Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)](concepts-identity.md).
 
 > [!NOTE]
 > Wenn Sie die Befehle in diesem Schnellstart nicht in Azure Cloud Shell, sondern lokal ausführen möchten, führen Sie sie als Administrator aus.

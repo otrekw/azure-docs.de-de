@@ -2,13 +2,13 @@
 title: Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Computern
 description: Beschreibt, wie verschlüsselte virtuelle Azure-Computer (VMs) mit dem Azure Backup-Dienst gesichert und wiederhergestellt werden.
 ms.topic: conceptual
-ms.date: 08/18/2020
-ms.openlocfilehash: db06b64fba203fb3d2ed54d34235504ac6aa4e2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/03/2021
+ms.openlocfilehash: 226c3d08903385a1df97d83209762452a70ed816
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99223456"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565646"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Sichern und Wiederherstellen verschlüsselter virtueller Azure-Computer
 
@@ -66,21 +66,20 @@ Darüber hinaus gibt es einige Schritte, die Sie in bestimmten Fällen mögliche
 ## <a name="configure-a-backup-policy"></a>Konfigurieren einer Sicherungsrichtlinie
 
 1. Wenn Sie noch keinen Recovery Services-Sicherungstresor erstellt haben, folgen Sie [diesen Anweisungen](backup-create-rs-vault.md).
-1. Öffnen Sie den Tresor im Portal, und wählen Sie im Abschnitt **Übersicht** die Option **Sicherung** aus.
+1. Navigieren Sie zum Backup Center, und klicken Sie auf der Registerkarte **Übersicht** auf **+Sicherung**.
 
     ![Bereich „Sicherung“](./media/backup-azure-vms-encryption/select-backup.png)
 
-1. Wählen Sie unter **Sicherungsziel** > **Wo wird Ihre Workload ausgeführt?** den Eintrag **Azure** aus.
-1. Wählen Sie für **Was möchten Sie sichern?** die Option **Virtueller Computer** aus. Wählen Sie dann **Sichern** aus.
+1. Wählen Sie **Virtuelle Azure-Computer** als **Datenquellentyp** und dann den Tresor aus, den Sie erstellt haben. Klicken Sie anschließend auf **Weiter**.
 
-      ![Szenariobereich](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
+     ![Szenariobereich](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-1. Wählen Sie unter **Sicherungsrichtlinie** > **Sicherungsrichtlinie auswählen** die Richtlinie aus, die Sie dem Tresor zuordnen möchten. Klicken Sie anschließend auf **OK**.
-    - Eine Sicherungsrichtlinie gibt an, wann Sicherungen erstellt und wie lange sie gespeichert werden.
-    - Die Details zur Standardrichtlinie werden unter dem Dropdownmenü aufgeführt.
+1. Wählen Sie die Richtlinie, die dem Tresor zugeordnet werden soll, und dann **OK** aus.
+   - Eine Sicherungsrichtlinie gibt an, wann Sicherungen erstellt und wie lange sie gespeichert werden.
+   - Die Details zur Standardrichtlinie werden unter dem Dropdownmenü aufgeführt.
 
-    ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
-
+   ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
+    
 1. Wenn Sie nicht die Standardrichtlinie verwenden möchten, wählen Sie **Neu erstellen** und [Benutzerdefinierte Richtlinie erstellen](backup-azure-arm-vms-prepare.md#create-a-custom-policy) aus.
 
 1. Wählen Sie in unter **Virtuelle Computer** die Option **Hinzufügen** aus.
@@ -107,19 +106,20 @@ Darüber hinaus gibt es einige Schritte, die Sie in bestimmten Fällen mögliche
 
 Die erste Sicherung wird entsprechend dem festgelegten Zeitplan ausgeführt; Sie können sie aber auch mit den folgenden Schritten sofort ausführen:
 
-1. Wählen Sie im Tresormenü die Option **Sicherungselemente** aus.
-2. Wählen Sie unter **Sicherungselemente** die Option **Virtueller Azure-Computer** aus.
-3. Wählen Sie in der Liste **Sicherungselemente** das Auslassungszeichen (...) aus.
-4. Wählen Sie **Jetzt sichern** aus.
-5. Verwenden Sie unter **Jetzt sichern** den Kalender, um den letzten Tag zur Beibehaltung des Wiederherstellungspunkts auszuwählen. Klicken Sie anschließend auf **OK**.
-6. Überwachen Sie die Portalbenachrichtigungen. Sie können den Auftragsstatus im Dashboard des Tresors unter **Sicherungsaufträge** > **In Bearbeitung** überwachen. Je nach Größe Ihrer VM kann das Erstellen der ersten Sicherung einige Zeit dauern.
+1. Navigieren Sie zum **Backup Center**, und wählen Sie das Menüelement **Sicherungsinstanzen** aus.
+1. Wählen Sie **Virtuelle Azure-Computer** als **Datenquellentyp** aus, und suchen Sie nach dem virtuellen Computer, den Sie für die Sicherung konfiguriert haben.
+1. Klicken Sie mit der rechten Maustaste auf die entsprechende Zeile, oder wählen Sie das Symbol "Mehr" (...) aus, und klicken Sie auf **Jetzt sichern**.
+1. Verwenden Sie unter **Jetzt sichern** den Kalender, um den letzten Tag zur Beibehaltung des Wiederherstellungspunkts auszuwählen. Klicken Sie anschließend auf **OK**.
+1. Überwachen Sie die Portalbenachrichtigungen.
+   Um den Auftragsfortschritt zu überwachen, wechseln Sie zu **Backup Center** > **Sicherungsaufträge**, und filtern Sie die Liste nach Aufträgen **In Bearbeitung**.
+   Je nach Größe Ihrer VM kann das Erstellen der ersten Sicherung einige Zeit dauern.
 
 ## <a name="provide-permissions"></a>Gewähren von Berechtigungen
 
 Azure Backup benötigt schreibgeschützten Zugriff, um die Schlüssel und Geheimnisse zusammen mit den zugeordneten VMs zu sichern.
 
 - Ihr Key Vault ist dem Azure AD-Mandanten des Azure-Abonnements zugeordnet. Wenn Sie ein **Mitgliedsbenutzer** sind, erhält Azure Backup ohne weitere Aktion Zugriff auf den Key Vault.
-- Wenn Sie ein **Gastbenutzer** sind, müssen Sie Berechtigungen gewähren, damit Azure Backup auf den Schlüsseltresor zugreifen kann.
+- Wenn Sie ein **Gastbenutzer** sind, müssen Sie Berechtigungen gewähren, damit Azure Backup auf den Schlüsseltresor zugreifen kann. Sie benötigen Zugriff auf Schlüsseltresore, um die Azure Backup für verschlüsselte virtuelle Computer zu konfigurieren.
 
 So legen Sie Berechtigungen fest:
 
@@ -159,10 +159,16 @@ Verschlüsselte virtuelle Computer können nur durch Wiederherstellen des VM-Dat
 Stellen Sie verschlüsselte virtuelle Computer wie folgt wieder her:
 
 1. [Stellen Sie den VM-Datenträger wieder her](backup-azure-arm-restore-vms.md#restore-disks).
+
+   > [!NOTE]
+   > Nachdem Sie den VM-Datenträger wiederhergestellt haben, können Sie den Betriebssystemdatenträger des ursprünglichen virtuellen Computers manuell gegen den wiederhergestellten VM-Datenträger austauschen, ohne ihn neu zu erstellen. [Weitere Informationen](https://azure.microsoft.com/blog/os-disk-swap-managed-disks/)
+
 2. Erstellen Sie die VM-Instanz neu, indem Sie eine der folgenden Aktionen ausführen:
     1. Verwenden Sie die Vorlage, die während des Wiederherstellungsvorgangs generiert wurde, um VM-Einstellungen anzupassen und die Bereitstellung der VM auszulösen. [Weitere Informationen](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)
-    2. Erstellen Sie mithilfe von PowerShell eine neue VM aus den wiederhergestellten Datenträgern. [Weitere Informationen](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)
-3. Installieren Sie für virtuelle Linux-Computer die ADE-Erweiterung neu, damit die Datenträger offen und eingebunden sind.
+       >[!NOTE]
+       >Überprüfen Sie beim Bereitstellen der Vorlage die Speicherkontocontainer und die öffentlichen/privaten Einstellungen.
+    1. Erstellen Sie mithilfe von PowerShell eine neue VM aus den wiederhergestellten Datenträgern. [Weitere Informationen](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)
+1. Installieren Sie für virtuelle Linux-Computer die ADE-Erweiterung neu, damit die Datenträger offen und eingebunden sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

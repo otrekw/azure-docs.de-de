@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: bbb996362df1f99a8702de310bc11f6828cc303a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10caff631d59085aa2bbfcd573c3e3114b0306f7
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008449"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560868"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 
@@ -108,6 +108,9 @@ Wenn Sie Header zum Steuern der Zwischenspeicherung verwenden möchten, finden S
 
 Wenn Sie beabsichtigen, eine Website in mehreren Regionen zu hosten, empfiehlt es sich, ein [Content Delivery Network](../../cdn/index.yml) für regionales Zwischenspeichern zu verwenden. Setzen Sie [Azure Front Door](../../frontdoor/index.yml) ein, wenn Sie in den einzelnen Regionen unterschiedliche Inhalte bereitstellen möchten. Zudem werden von dieser Lösung Failoverfunktionen geboten. [Azure Traffic Manager](../../traffic-manager/index.yml) wird nicht empfohlen, wenn Sie den Einsatz einer benutzerdefinierten Domäne vorhaben. Probleme können sich daraus ergeben, wie Azure Storage benutzerdefinierte Domänennamen verifiziert.
 
+## <a name="permissions"></a>Berechtigungen
+
+Die Berechtigung zum Aktivieren der statischen Website ist Microsoft.Storage/storageAccounts/blobServices/write oder ein gemeinsam verwendeter Schlüssel.  Zu den integrierten Rollen, die diesen Zugriff ermöglichen, gehören Speicherkontomitwirkende.  
 
 ## <a name="pricing"></a>Preise
 

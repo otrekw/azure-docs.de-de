@@ -14,13 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d7dfe010a3f4a1559454c49545af81eb14797bf1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: ab57e66ff37fb31a91a1949896a4e7736669d6c6
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359913"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078921"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Verwenden von Azure-Schnellstartvorlagen zum Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,6 +36,9 @@ In diesem Artikel erfahren Sie, wie Sie die Bereitstellung einer Always On-Verf�
 Andere Aufgaben der Verfügbarkeitsgruppenkonfiguration müssen manuell ausgeführt werden – etwa die Erstellung der Verfügbarkeitsgruppe und des internen Lastenausgleichs. Dieser Artikel enthält die Abfolge der automatisierten und manuellen Schritte.
 
 In diesem Artikel wird die Umgebung der Verfügbarkeitsgruppen mit Azure-Schnellstartvorlagen konfiguriert. Diese Konfiguration kann aber auch über das [Azure-Portal](availability-group-azure-portal-configure.md), [PowerShell oder die Azure CLI](availability-group-az-commandline-configure.md) sowie [manuell](availability-group-manually-configure-tutorial.md) erfolgen. 
+
+> [!NOTE]
+> Sie können Ihre Verfügbarkeitsgruppenlösung jetzt mithilfe von Azure Migrate per Lift & Shift zu SQL Server auf Azure-VMs migrieren. Weitere Informationen finden Sie unter [Migrieren von Verfügbarkeitsgruppen](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md). 
  
 
 ## <a name="prerequisites"></a>Voraussetzungen 
@@ -85,7 +88,11 @@ Beim Hinzufügen der SQL Server-VMs zu *SqlVirtualMachineGroups* wird ein Bootst
 >[!NOTE]
 > Während der Vorlagenbereitstellung angegebene Anmeldeinformationen werden nur für die Dauer der Bereitstellung gespeichert. Nach Abschluss der Bereitstellung werden diese Kennwörter entfernt. Wenn Sie dem Cluster weitere SQL Server-VMs hinzufügen, werden Sie aufgefordert, sie erneut anzugeben. 
 
+## <a name="configure-quorum"></a>Konfigurieren des Quorums
 
+Obwohl der Datenträgerzeuge die resilienteste Quorumoption ist, erfordert er einen freigegebenen Azure-Datenträger, der einige Einschränkungen für die Verfügbarkeitsgruppe erzwingt. Daher ist der Cloudzeuge die empfohlene Quorumlösung für Cluster, die Verfügbarkeitsgruppen für SQL Server auf Azure-VMs hosten. 
+
+Wenn Sie im Cluster über eine gerade Anzahl von Stimmen verfügen, konfigurieren Sie die [Quorumlösung](hadr-cluster-quorum-configure-how-to.md), die Ihren Geschäftsanforderungen am besten entspricht. Weitere Informationen finden Sie unter [Quorum mit SQL Server-VMs](hadr-windows-server-failover-cluster-overview.md#quorum). 
 
 ## <a name="validate-cluster"></a>Validieren des Clusters 
 
@@ -220,10 +227,10 @@ Nachdem Sie diese Änderungen vorgenommen haben, versuchen Sie erneut, die Azure
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie in den folgenden Artikeln: 
+Weitere Informationen finden Sie unter:
 
 * [Was ist SQL Server auf virtuellen Azure-Computern? (Windows)](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure](frequently-asked-questions-faq.md)
+* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure](frequently-asked-questions-faq.yml)
 * [Preisinformationen für virtuelle Azure-Computer mit SQL Server](pricing-guidance.md)
 * [SQL Server auf Azure-VMs – Versionshinweise](../../database/doc-changes-updates-release-notes.md)
 * [Ändern des Lizenzierungsmodells für eine SQL Server-VM in Azure](licensing-model-azure-hybrid-benefit-ahb-change.md)

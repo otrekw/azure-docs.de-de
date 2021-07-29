@@ -1,18 +1,18 @@
 ---
 title: VNET-Peering und die Azure Bastion-Architektur
-description: In diesem Artikel erfahren Sie, wie Sie das VNET-Peering und Azure Bastion gemeinsam zum Herstellen einer Verbindung mit VMs verwenden.
+description: Hier erfahren Sie, wie Sie mit VNET-Peering und Azure Bastion zusammen eine Verbindung mit VMs herstellen.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 60ad4ece6de40b61b1d25e61963b30c084639eba
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: d7f888c5bbb47a3690aee9b139d2516eb956a35f
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072961"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110540383"
 ---
 # <a name="vnet-peering-and-azure-bastion"></a>VNET-Peering und Azure Bastion
 

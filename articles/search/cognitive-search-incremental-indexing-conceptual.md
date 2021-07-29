@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: d17577d7e138c4c04b7f386cb166e765c0e2e10c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f3d9d9481821902246721c5c27ed99451f323ba3
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733101"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539828"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inkrementelle Anreicherung und Zwischenspeicherung in Azure Cognitive Search
 
@@ -42,7 +42,7 @@ Die inkrementelle Anreicherung ergänzt die Anreicherungspipeline um einen Zwisc
 Der Zwischenspeicher wird physisch in einem Blobcontainer in Ihrem Azure Storage-Konto gespeichert. Der Cache verwendet auch Table Storage für die interne Aufzeichnung der Verarbeitung von Updates. Alle Indizes in einem Suchdienst können für den Indexercache das gleiche Speicherkonto verwenden. Jedem Indexer wird ein eindeutiger und unveränderlicher Cachebezeichner zum Container zugewiesen, der ihn verwendet.
 
 > [!NOTE]
-> Der Indexercache erfordert ein Speicherkonto vom Typ „Universell“. Weitere Informationen finden Sie im Thema zu den [verschiedenen Typen von Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts).
+> Der Indexercache erfordert ein Speicherkonto vom Typ „Universell“. Weitere Informationen finden Sie im Thema zu den [verschiedenen Typen von Speicherkonten](/storage/common/storage-account-overview#types-of-storage-accounts).
 
 ## <a name="cache-configuration"></a>Cachekonfiguration
 
@@ -118,6 +118,30 @@ In diesem Fall können Sie [Reset Skills](/rest/api/searchservice/preview-api/re
 ### <a name="reset-documents"></a>Zurücksetzen von Dokumenten
 
 Das [Zurücksetzen eines Indexers](/rest/api/searchservice/reset-indexer) führt dazu, dass alle Dokumente im Suchkorpus erneut verarbeitet werden. In Szenarien, in denen nur wenige Dokumente erneut verarbeitet werden müssen und die Datenquelle nicht aktualisiert werden kann, nutzen Sie das [Zurücksetzen von Dokumenten (Vorschau)](/rest/api/searchservice/preview-api/reset-documents), um die erneute Verarbeitung bestimmter Dokumente zu erzwingen. Wenn ein Dokument zurückgesetzt wird, macht der Indexer den Cache für dieses Dokument ungültig, und das Dokument wird erneut verarbeitet, indem es aus der Datenquelle gelesen wird. Weitere Informationen finden Sie unter [Ausführen oder Zurücksetzen von Indexern, Skills und Dokumenten](search-howto-run-reset-indexers.md).
+
+Um bestimmte Dokumente zurückzusetzen, enthält die Anforderungspayload eine Liste von Dokumentschlüsseln, die aus dem Index gelesen werden. Je nachdem, wie Sie die API aufrufen, wird die Anforderung entweder angefügt, überschrieben oder in die Warteschlange der Schlüsselliste gestellt:
+
++ Wenn Sie die API mehrmals mit unterschiedlichen Schlüsseln aufrufen, werden die neuen Schlüssel der Liste der zurückgesetzten Dokumentschlüssel angehängt. 
+
++ Wenn Sie die API mit auf TRUE festgelegtem querystring-Parameter `overwrite` aufrufen, wird die aktuelle Liste der zurückzusetzenden Dokumentschlüssel mit den Nutzdaten der Anforderung überschrieben.
+
++ Das Aufrufen der API führt nur dazu, dass die Dokumentschlüssel der Verarbeitungswarteschlange des Indexers hinzugefügt werden. Wenn der Indexer das nächste Mal aufgerufen wird (entweder geplant oder bei Bedarf), priorisiert er die Verarbeitung der Zurücksetzung der Dokumentschlüssel gegenüber anderen Änderungen in der Datenquelle.
+
+Das folgende Beispiel veranschaulicht eine Zurücksetzungsanforderung für Dokumente:
+
+```http
+POST https://[search service name].search.windows.net/indexers/[indexer name]/resetdocs?api-version=2020-06-30-Preview
+Content-Type: application/json
+api-key: [admin key]
+
+{
+    "documentKeys" : [
+        "key1",
+        "key2",
+        "key3"
+    ]
+}
+```
 
 ## <a name="change-detection"></a>Änderungserkennung
 

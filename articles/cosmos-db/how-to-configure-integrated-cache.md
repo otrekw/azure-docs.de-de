@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: f857d9945cc52aa192838d58066a7fcc005a622d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: ddfdd4897a0cd194465828bba4bea0c002a4e434
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385492"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797669"
 ---
 # <a name="how-to-configure-the-azure-cosmos-db-integrated-cache-preview"></a>Konfigurieren des integrierten Azure Cosmos DB-Caches (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,6 +65,27 @@ Sie müssen die Anforderungskonsistenz auf „Letztliche Konsistenz“ festlegen
 
 > [!NOTE]
 > Wenn Sie das Python SDK verwenden, **müssen** Sie die Konsistenzebene für jede Anforderung explizit festlegen. Die Standardeinstellung auf Kontoebene wird nicht automatisch angewandt.
+
+## <a name="adjust-maxintegratedcachestaleness"></a>Anpassen von MaxIntegratedCacheStaleness
+
+Legen Sie `MaxIntegratedCacheStaleness` als maximale Dauer der Beibehaltung alter Cache-Daten fest. Es wird empfohlen, die `MaxIntegratedCacheStaleness` so hoch wie möglich einzustellen, da dies die Wahrscheinlichkeit erhöht, dass wiederholte Punktlesevorgänge und Abfragen Cachetreffer sein können. Wenn Sie `MaxIntegratedCacheStaleness` auf 0 setzen, verwendet Ihre Leseanforderung unabhängig von der Konsistenzebene **niemals** den integrierten Cache. Die Voreinstellung für `MaxIntegratedCacheStaleness` beträgt 5 Minuten.
+
+**.NET**
+
+```csharp
+FeedIterator<Food> myQuery = container.GetItemQueryIterator<Food>(new QueryDefinition("SELECT * FROM c"), requestOptions: new QueryRequestOptions
+        {
+            ConsistencyLevel = ConsistencyLevel.Eventual,
+            DedicatedGatewayRequestOptions = new DedicatedGatewayRequestOptions 
+            { 
+                MaxIntegratedCacheStaleness = TimeSpan.FromMinutes(30) 
+            }
+        }
+);
+```
+
+> [!NOTE]
+> Derzeit können Sie MaxIntegratedCacheStaleness nur mithilfe den neuesten .NET- und Java-Preview-SDKs anpassen.
 
 ## <a name="verify-cache-hits"></a>Überprüfen von Cachetreffern
 

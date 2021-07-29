@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/12/2020
 ms.topic: how-to
-ms.openlocfilehash: df82f51377ac1a585dbfab989ca5386d33d90297
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: d164eb0250c98573e781b87be339748900c4920b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988962"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452064"
 ---
 # <a name="using-azure-batch-rendering"></a>Verwenden des Renderings mit Azure Batch
 
@@ -35,10 +35,6 @@ Die beste Möglichkeit zum Ausprobieren des Renderings mit Azure Batch und die e
 
 ## <a name="using-batch-explorer"></a>Verwenden von Batch Explorer
 
-Ein Schritt-für-Schritt-Tutorial zur Verwendung von Batch Explorer für das Rendering finden Sie im [Blender-Tutorial](./tutorial-rendering-batchexplorer-blender.md).
-
-### <a name="download-and-install"></a>Herunterladen und Installieren
-
 Batch Explorer-[Downloads sind für Windows, OSX und Linux verfügbar](https://azure.github.io/BatchExplorer/).
 
 ### <a name="using-templates-to-create-pools-and-run-jobs"></a>Verwenden von Vorlagen zum Erstellen von Pools und Ausführen von Aufträgen
@@ -57,7 +53,5 @@ Im Abschnitt „Daten“ in Batch Explorer können Dateien zwischen einem lokale
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Beispiele für das Rendering mit Batch finden Sie in den folgenden beiden Tutorials:
-
-* [Tutorial: Rendern einer Szene mit Azure Batch](./tutorial-rendering-cli.md)
-* [Rendern einer Blender-Szene mithilfe von Batch Explorer](./tutorial-rendering-batchexplorer-blender.md)
+* Erfahren Sie mehr über die [Verwendung von Renderinganwendungen mit Batch](batch-rendering-applications.md).
+* Erfahren Sie mehr über [Optionen für die Speicherung und Datenverschiebung zum Rendern von Medienobjekt- und Ausgabedateien](batch-rendering-storage-data-movement.md).

@@ -3,16 +3,19 @@ title: Konfigurieren eines Signaltors für die ereignisbasierte Videoaufzeichnun
 description: In diesem Artikel wird erläutert, wie Sie ein Signaltor in einer Pipeline konfigurieren.
 ms.topic: how-to
 ms.date: 4/12/2021
-ms.openlocfilehash: e7871f017d416e164a6160336646d8285c3792a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e03524e7e12a0081172918159e9f2d2ed2e4a7d6
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385950"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413427"
 ---
 # <a name="configuring-a-signal-gate-for-event-based-video-recording"></a>Konfigurieren eines Signaltors für ereignisbasierte Videoaufzeichnungen
 
 Innerhalb einer Pipeline können Sie mit einem [Signaltor-Prozessorknoten](pipeline.md#signal-gate-processor) Medien von einem Knoten zu einem anderen weiterleiten, wenn das Tor durch ein Ereignis ausgelöst wird. Wenn das Gate ausgelöst wird, öffnet es sich und erlaubt die Übertragung von Mediendaten für einen festgelegten Zeitraum. Wenn keine Ereignisse vorhanden sind, die das Gate auslösen, wird es geschlossen, und der Mediendatenfluss wird beendet. Sie können den Signalgateprozessor für ereignisbasierte Videoaufzeichnungen verwenden.
+
+> [!NOTE]
+> Auf den Knoten eines Signalgateprozessors muss unmittelbar eine Videosenke oder Dateisenke folgen.
 
 In diesem Artikel erfahren Sie, wie Sie einen Signalgateprozessor konfigurieren.
 
@@ -71,8 +74,8 @@ Für jedes Ereignis werden Korrelations-IDs festgelegt. Diese IDs werden ab dem 
 
 * **activationEvaluationWindow**: 0 bis 10 Sekunden
 * **activationSignalOffset**: -1 bis 1 Minute
-* **minimumActivationTime**: 1 Sekunde bis 1 Stunde
-* **maximumActivationTime**: 1 Sekunde bis 1 Stunde
+* **minimumActivationTime**: 10 Sekunden bis 1 Stunde
+* **maximumActivationTime**: 10 Sekunden bis 1 Stunde
 
 Im vorliegenden Szenario würden Sie die Parameter folgendermaßen festlegen:
 

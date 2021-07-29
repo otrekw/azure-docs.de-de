@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: c73c6ce641e5e8386d636f87253cb111c17ae69c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 987ab6346788f78316b0682631b7cefde12cad29
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466076"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111437696"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Tutorial: Ausstellen und Überprüfen von Nachweisen mithilfe Ihres Mandanten (Vorschau)
 
@@ -66,36 +66,6 @@ Registrieren Sie eine Anwendung namens „Nachweis-Wallet-App“ in Azure AD, u
 
    ![Ausstellerendpunkte](media/issue-verify-verifable-credentials-your-tenant/application-endpoints.png)
 
-## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>Einrichten der Node-App mit Zugriff auf Azure Key Vault
-
-Zum Authentifizieren einer Benutzeranforderung zum Ausstellung von Anmeldeinformationen verwendet die Ausstellerwebsite Ihre kryptografischen Schlüssel in Azure Key Vault. Für den Zugriff auf Azure Key Vault benötigt Ihre Website eine Client-ID und einen geheimen Clientschlüssel zur Authentifizierung.
-
-1. Wählen Sie auf der Übersichtsseite für die Nachweis-Wallet-App die Option **Zertifikate & Geheimnisse** aus.
-    ![Zertifikate und Geheimnisse](media/issue-verify-verifable-credentials-your-tenant/vc-wallet-app-certs-secrets.png)
-1. Wählen Sie im Abschnitt **Geheime Clientschlüssel** die Option **Neuer geheimer Clientschlüssel** aus.
-    1. Fügen Sie eine Beschreibung hinzu, zum Beispiel „Geheimer Clientschlüssel für Node-Nachweis“.
-    1. Läuft ab: In einem Jahr.
-  ![Anwendungsgeheimnis mit einer Ablaufzeit von einem Jahr](media/issue-verify-verifable-credentials-your-tenant/add-client-secret.png)
-1. Kopieren Sie das Geheimnis. Sie benötigen diese Informationen, um Ihre Beispiel-Node-App zu aktualisieren.
-
->[!WARNING]
-> Dies ist die einzige Möglichkeit, das Geheimnis zu kopieren. Anschließend wird es durch eine Einweghashfunktion verschlüsselt. Kopieren Sie nicht die ID. 
-
-Nachdem Sie Ihre Anwendung und den geheimen Clientschlüssel in Azure AD erstellt haben, müssen Sie der Anwendung die erforderlichen Berechtigungen zum Ausführen von Vorgängen für Ihren Schlüsseltresor erteilen. Diese Berechtigungsänderungen sind erforderlich, damit die Website auf die dort gespeicherten privaten Schlüssel zugreifen und diese verwenden kann.
-
-1. Wechseln Sie zu Key Vault.
-2. Wählen Sie den Schlüsseltresor aus, den wir für diese Tutorials verwenden.
-3. Wählen Sie im linken Navigationsbereich **Zugriffsrichtlinien** aus.
-4. Wählen Sie **+ Zugriffsrichtlinie hinzufügen** aus.
-5. Wählen Sie im Abschnitt **Schlüsselberechtigungen** die Optionen **Abrufen** und **Signieren** aus.
-6. Wählen Sie **Prinzipal** aus, und suchen Sie anhand der Anwendungs-ID nach der zuvor registrierten Anwendung. Wählen Sie ihn aus.
-7. Wählen Sie **Hinzufügen**.
-8. Wählen Sie **SPEICHERN** aus.
-
-Weitere Informationen zu Key Vault-Berechtigungen und zur Zugriffssteuerung finden Sie im [Leitfaden zu RBAC für Key Vault](../../key-vault/general/rbac-guide.md).
-
-![Zuweisen von Key Vault-Berechtigungen](media/issue-verify-verifable-credentials-your-tenant/key-vault-permissions.png)
-## <a name="make-changes-to-match-your-environment"></a>Vornehmen von Anpassungen an Ihre Umgebung
 
 Bisher haben wir mit unserer Beispiel-App gearbeitet. Diese App verwendet [Azure Active Directory B2C](../../active-directory-b2c/overview.md). Jetzt möchten wir stattdessen Azure AD verwenden und müssen daher einige Änderungen vornehmen – nicht nur zur Anpassung an Ihre Umgebung, sondern auch zur Unterstützung zusätzlicher Ansprüche, die zuvor noch nicht verwendet wurden.
 
@@ -160,7 +130,54 @@ Wenn nun einem Benutzer das Anmeldedialogfeld zur Ausstellung Ihres Nachweises a
 1. Erstellen Sie auf der Nachweisseite mithilfe der alten Anzeigedatei und der neuen Regeldatei (**modified-credentialExpert.json**) eine neue Anmeldeinformation namens **modified-credentialExpert.json**.
 1. Nachdem der Vorgang zum Erstellen der Anmeldeinformation auf der Seite **Übersicht** abgeschlossen wurde, kopieren Sie die **URL für das Ausstellen von Anmeldeinformationen**, und speichern Sie sie, da wir sie im nächsten Abschnitt benötigen.
 
-## <a name="before-we-continue"></a>Vorbereitung
+## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>Einrichten der Node-App mit Zugriff auf Azure Key Vault
+
+Zum Authentifizieren einer Benutzeranforderung zum Ausstellung von Anmeldeinformationen verwendet die Ausstellerwebsite Ihre kryptografischen Schlüssel in Azure Key Vault. Für den Zugriff auf Azure Key Vault benötigt Ihre Website eine Client-ID und einen geheimen Clientschlüssel zur Authentifizierung.
+
+Zuerst müssen Sie eine andere Anwendung registrieren. Diese Registrierung gilt für die Website. Die zuvor erfolgte Registrierung für die Wallet-Anwendung soll Benutzern lediglich das Anmelden beim Verzeichnis mit der Wallet-Anwendung ermöglichen. In unserem Fall befindet sie sich im selben Verzeichnis, aber die Registrierung der Wallet-Anwendung hätte auch in einem anderen Verzeichnis erfolgen können. Eine Best Practice besteht im Verwenden getrennter Anwendungsregistrierungen, wenn die Verantwortung der Anwendungen unterschiedlich ist. In diesem Fall müssen Sie Ihre Website verwenden, um auf Key Vault zuzugreifen.
+
+1. Befolgen Sie die Anweisungen zum Registrieren einer Anwendung bei [Azure AD](../develop/quickstart-register-app.md). Verwenden Sie bei der Registrierung die unten aufgeführten Werte.
+
+   - Name: „VC-Website“
+   - Unterstützte Kontotypen: Nur Konten in diesem Organisationsverzeichnis
+
+   :::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/vc-website-app-app-registration.png" alt-text="Screenshot: Registrieren einer Anwendung":::
+
+1. Nachdem Sie die Anwendung registriert haben, notieren Sie sich die Anwendungs-ID (Client). Sie benötigen diesen Wert später noch.
+
+   :::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/vc-website-app-app-details.png" alt-text="Screenshot: Client-ID der Anwendung":::
+
+1. Wählen Sie auf der Übersicht der „VC Website“-Anwendung die Option **Zertifikate & Geheimnisse** aus.
+
+    :::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/vc-website-app-certificates-secrets.png" alt-text="Screenshot: der Bereich „Zertifikate und Geheimnisse“":::
+
+1. Wählen Sie im Abschnitt **Geheime Clientschlüssel** die Option **Neuer geheimer Clientschlüssel** aus.
+    1. Fügen Sie eine Beschreibung hinzu, zum Beispiel „Geheimer Clientschlüssel für Node-Nachweis“.
+    1. Läuft ab: In einem Jahr.
+
+    ![Anwendungsgeheimnis mit einer Ablaufzeit von einem Jahr](media/issue-verify-verifable-credentials-your-tenant/add-client-secret.png)
+
+1. Kopieren Sie das Geheimnis. Sie benötigen diese Informationen, um Ihre Beispiel-Node-App zu aktualisieren.
+
+>[!WARNING]
+> Dies ist die einzige Möglichkeit, das Geheimnis zu kopieren. Anschließend wird es durch eine Einweghashfunktion verschlüsselt. Kopieren Sie nicht die ID. 
+
+Nachdem Sie Ihre Anwendung und den geheimen Clientschlüssel in Azure AD erstellt haben, müssen Sie der Anwendung die erforderlichen Berechtigungen zum Ausführen von Vorgängen für Ihren Schlüsseltresor erteilen. Diese Berechtigungsänderungen sind erforderlich, damit die Website auf die dort gespeicherten privaten Schlüssel zugreifen und diese verwenden kann.
+
+1. Wechseln Sie zu Key Vault.
+2. Wählen Sie den Schlüsseltresor aus, den wir für diese Tutorials verwenden.
+3. Wählen Sie im linken Navigationsbereich **Zugriffsrichtlinien** aus.
+4. Wählen Sie **+ Zugriffsrichtlinie hinzufügen** aus.
+5. Wählen Sie im Abschnitt **Schlüsselberechtigungen** die Optionen **Abrufen** und **Signieren** aus.
+6. Wählen Sie **Prinzipal** aus, und suchen Sie anhand der Anwendungs-ID nach der zuvor registrierten Anwendung. Wählen Sie ihn aus.
+7. Wählen Sie **Hinzufügen**.
+8. Wählen Sie **SPEICHERN** aus.
+
+:::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/key-vault-permissions.png" alt-text="Screenshot: Hinzufügen einer Zugriffsrichtlinie":::
+
+Weitere Informationen zu Key Vault-Berechtigungen und zur Zugriffssteuerung finden Sie im [Leitfaden zu RBAC für Key Vault](../../key-vault/general/rbac-guide.md).
+
+## <a name="make-changes-to-the-sample-app"></a>Nehmen Sie die erforderlichen Änderungen an der Beispiel-Anwendung vor.
 
 Wir müssen einige Werte zusammenstellen, bevor wir die erforderlichen Codeänderungen vornehmen können. Diese Werte werden im nächsten Abschnitt eingesetzt, damit der Beispielcode Ihre eigenen, im Tresor gespeicherten Schlüssel verwendet. Bisher stehen die folgenden Werte bereit.
 
@@ -190,7 +207,7 @@ Es gibt noch einige weitere Werte, die erforderlich sind, um die Änderungen ein
 2. Fügen Sie Ihre DID in die Suchleiste ein.
 
 4. Suchen Sie in der formatierten Antwort den Abschnitt **verificationMethod**.
-5. Kopieren Sie die ID unter „verificationMethod“, und bezeichnen Sie sie als „kvSigningKeyId“.
+5. Kopieren Sie die `id` unter „verificationMethod“, und bezeichnen Sie sie als „kvSigningKeyId“.
     
     ```json=
     "verificationMethod": [

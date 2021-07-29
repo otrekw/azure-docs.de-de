@@ -8,16 +8,16 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 79d5583f8c9e562a0d21a91c210aa6259472661d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d06a63c91c25f97e9d1a10b6b72a33b2fc7d859d
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383533"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558960"
 ---
 # <a name="change-and-deletion-detection-in-blob-indexing-azure-cognitive-search"></a>Erkennung von Änderungen und Löschungen bei der Blobindizierung (Azure Cognitive Search)
 
-Nachdem ein erster Suchindex erstellt wurde, sollen nachfolgende Indexeraufräge vielleicht nur neue und geänderte Dokumente aufnehmen. Wenn Sie einen Zeitplan für die Triggerindizierung verwenden, wird die Änderungserkennung bei Suchinhalten aus Azure Blob Storage automatisch durchgeführt. Standardmäßig werden wie vom `LastModified`-Zeitstempel des Blobs angegeben nur die geänderten Blobs vom Dienst neu indiziert. Im Gegensatz zu anderen von Suchindexern unterstützten Datenquellen verfügen Blobs immer über einen Zeitstempel, wodurch die Notwendigkeit entfällt, eine Richtlinie für die Änderungserkennung manuell einzurichten.
+Nachdem ein erster Suchindex erstellt wurde, sollen nachfolgende Indexeraufräge vielleicht nur neue und geänderte Dokumente aufnehmen. Wenn Sie einen Zeitplan für die Triggerindizierung verwenden, wird die Änderungserkennung bei Suchinhalten aus Azure Blob Storage oder Azure Data Lake Storage Gen2 automatisch durchgeführt. Standardmäßig werden wie vom `LastModified`-Zeitstempel des Blobs angegeben nur die geänderten Blobs vom Dienst neu indiziert. Im Gegensatz zu anderen von Suchindexern unterstützten Datenquellen verfügen Blobs immer über einen Zeitstempel, wodurch die Notwendigkeit entfällt, eine Richtlinie für die Änderungserkennung manuell einzurichten.
 
 Die Änderungserkennung ist eine Standardeinstellung, die Erkennung von Löschungen hingegen nicht. Wenn Sie gelöschte Dokumente erkennen möchten, stellen Sie sicher, dass Sie einen Ansatz für „vorläufiges Löschen“ verwenden. Wenn Sie die Blobs direkt löschen, werden die entsprechenden Dokumente nicht aus dem Suchindex entfernt.
 
@@ -25,6 +25,9 @@ Es gibt zwei Möglichkeiten, den Ansatz des vorläufigen Löschens zu implementi
 
 + Natives vorläufiges Löschen von Blobs (Vorschau), nachfolgend beschrieben
 + [Vorläufiges Löschen mithilfe benutzerdefinierter Metadaten](#soft-delete-using-custom-metadata)
+
+> [!NOTE] 
+> Mit Azure Data Lake Storage Gen2 können Verzeichnisse umbenannt werden. Wenn ein Verzeichnis umbenannt wird, werden die Zeitstempel für die Blobs in diesem Verzeichnis nicht aktualisiert. Demzufolge werden diese Blobs vom Indexer nicht neu indiziert. Wenn die Blobs in einem Verzeichnis nach einer Umbenennung des Verzeichnisses neu indiziert werden müssen, da sie nun über neue URLs verfügen, müssen Sie den `LastModified`-Zeitstempel für alle Blobs im Verzeichnis aktualisieren, damit der Indexer erkennt, dass diese bei einer zukünftigen Ausführung neu indiziert werden müssen. Die virtuellen Verzeichnisse in Azure Blob Storage können nicht geändert werden, sodass bei ihnen dieses Problem nicht auftritt.
 
 ## <a name="native-blob-soft-delete-preview"></a>Natives vorläufiges Löschen von Blobs (Vorschau)
 

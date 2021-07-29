@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie mithilfe von Power BI eine Verbindung mit ein
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 4/20/2021
+ms.date: 5/25/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c5a430c5bb24032a2665ad078311dcb5137d2bb9
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 579f97deaadf8005d7a7986ff3b032909c28972e
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816028"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496559"
 ---
 # <a name="connect-with-power-bi"></a>Herstellen einer Verbindung mit Power BI
 
@@ -33,7 +33,9 @@ Sobald Sie in Azure einen Server erstellt, und ein tabellarisches Modell bereitg
 
 4. Wählen Sie eine Verbindungsoption aus, und klicken Sie dann auf **Verbinden**. 
 
-    Sowohl **Live verbinden** als auch **Importieren** wird unterstützt. Es wird jedoch empfohlen, Liveverbindungen zu verwenden, da beim Importmodus einige Einschränkungen gelten. Insbesondere kann während des Imports die Serverleistung beeinträchtigt sein. Falls das Modell im Power BI-Dienst aktualisiert werden soll, wird darüber hinaus die Einstellung **Zugriff über Power BI zulassen** nur angewendet, wenn **Live verbinden** ausgewählt wird.
+    Sowohl **Live verbinden** als auch **Importieren** wird unterstützt. Es wird jedoch empfohlen, Liveverbindungen zu verwenden, da beim Importmodus einige Einschränkungen gelten. Insbesondere kann während des Imports die Serverleistung beeinträchtigt sein.
+    
+    Wenn Sie über ein Power BI-Modell im [gemischten Speichermodus](/power-bi/transform-model/desktop-composite-models) verfügen,wird die Option **Live verbinden** durch die Option **[DirectQuery](/power-bi/connect-data/desktop-directquery-datasets-azure-analysis-services)** ersetzt. Liveverbindungen werden auch automatisch auf DirectQuery aktualisiert, wenn das Modell vom Import- in den gemischten Speichermodus gewechselt wird.
 
 5. Geben Sie bei der entsprechenden Aufforderung Ihre Anmeldeinformationen ein. 
 
@@ -48,6 +50,17 @@ Sobald Sie in Azure einen Server erstellt, und ein tabellarisches Modell bereitg
 
 1. Erstellen Sie eine Power BI Desktop-Datei, die über eine Liveverbindung zu Ihrem Modell auf dem Server verfügt.
 2. Klicken Sie in [Power BI](https://powerbi.microsoft.com) auf **Daten abrufen** > **Dateien**, suchen Sie Ihre PBIX-Datei, und wählen Sie sie dann aus.
+
+## <a name="request-memory-limit"></a>Anforderungsspeicherlimit
+
+Um die Leistung des Systems zu schützen, wird ein Arbeitsspeicherlimit für alle Abfragen erzwungen, die von Power BI-Berichten an Azure Analysis Services ausgegeben werden, unabhängig vom auf dem Azure Analysis Services-Server konfigurierten [Abfragespeicherlimit](/analysis-services/server-properties/memory-properties?view=azure-analysis-services-current&preserve-view=true). Bei zu speicherintensiven Abfragen sollten Benutzer in Erwägung ziehen, die Abfrage oder die zugehörigen Berechnungen zu vereinfachen.
+
+|                                                           | Anforderungsspeicherlimit |
+|-----------------------------------------------------------|----------------------|
+| Herstellen einer Liveverbindung von Power BI                            | 10 GB  |
+| DirectQuery von Power BI-Bericht im freigegebenen Arbeitsbereich  | 1 GB   |
+| DirectQuery von Power BI-Bericht im Premium-Arbeitsbereich | 10 GB  |
+| Power BI Q&A | 100 MB |
 
 ## <a name="see-also"></a>Weitere Informationen
 [Herstellen einer Verbindung mit Azure Analysis Services](analysis-services-connect.md)   

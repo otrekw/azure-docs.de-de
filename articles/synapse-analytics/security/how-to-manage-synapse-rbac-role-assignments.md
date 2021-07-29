@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: bed0c00b8cb5718456302dff06e98ff2f7f2b4e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01f923828f0b83280d033b9bc6e5c7b6bbebae35
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100102188"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784073"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>Vorgehensweise: Verwalten von Synapse RBAC-Rollenzuweisungen in Synapse Studio
 
@@ -23,7 +23,7 @@ In diesem Artikel wird das Hinzufügen und Löschen von Synapse RBAC-Rollenzuwei
 
 >[!Note]
 >- Zum Verwalten von Synapse RBAC-Rollenzuweisungen müssen Sie im Arbeitsbereich oder einen niedrigeren Bereich, der die Objekte enthält, die Sie verwalten möchten, über die Synapse-Administratorrolle verfügen. Wenn Sie im Arbeitsbereich ein Synapse-Administrator sind, können Sie auf alle Objekte im Arbeitsbereich Zugriff gewähren. 
->- **Gastbenutzer** aus einem anderen AD-Mandanten können Rollenzuweisungen nicht anzeigen oder verwalten, selbst wenn ihnen die Rolle „Synapse-Administrator“ zugewiesen wurde.
+>- **Gastbenutzer** aus einem anderen AD-Mandanten können Rollenzuweisungen auch anzeigen und verwalten, nachdem ihnen die Rolle „Synapse-Administrator“ zugewiesen wurde.
 >- Um Ihnen zu erleichtern, den Zugriff auf einen Arbeitsbereich wieder zu erlangen, wenn Ihnen keine Synapse-Administratoren zugewiesen sind oder zur Verfügung stehen, können Benutzer mit Berechtigungen zum Verwalten von **Azure RBAC**-Rollenzuweisungen im Arbeitsbereich auch **Synapse RBAC**-Rollenzuweisungen verwalten, was das Hinzufügen von Synapse-Administrator- oder anderen Synapse-Rollenzuweisungen ermöglicht.
 >- Der Zugriff auf SQL-Pools wird mithilfe von SQL-Berechtigungen verwaltet.  Mit Ausnahme der Synapse-Administrator- und Synapse SQL-Administratorrollen gewähren Synapse RBAC-Rollen keinen Zugriff auf SQL-Pools.
 
