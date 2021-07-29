@@ -12,22 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2021
+ms.date: 05/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 46fe7570b7b9ea9446918d407dbe87596b8d0496
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cecf3d0da1b987d7c389b8fe9ab8f0600fed5dba
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863903"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190497"
 ---
 #  <a name="benefits-of-using-azure-netapp-files-for-sql-server-deployment"></a>Vorteile der Verwendung von Azure NetApp Files für die SQL Server-Bereitstellung
 
-Azure NetApp Files verringert die Gesamtbetriebskosten (Total Cost of Ownership, TCO) von SQL Server im Vergleich zu Blockspeicherlösungen.  Bei Blockspeicher unterliegen virtuelle Computer bei Datenträgervorgängen E/A- und Bandbreite-Grenzwerten, und für Azure NetApp Files gelten allein Netzwerkbandbreitenlimits.  Anders ausgedrückt: Bei Azure NetApp Files gibt es keine E/A-Limits auf VM-Ebene. Ohne diese E/A-Limits kann SQL Server bei Ausführung auf kleineren, mit Azure NetApp Files verbundenen VMs dieselbe Leistung bringen wie bei Ausführung auf viel größeren VMs. Allein die Reduzierung der Größe von Instanzen verringert die Computekosten auf 25 % des früheren Preises.  *Mit Azure NetApp Files können Sie die Computekosten senken.*  
+Azure NetApp Files verringert die Gesamtbetriebskosten (Total Cost of Ownership, TCO) von SQL Server im Vergleich zu Blockspeicherlösungen.  Bei Blockspeicher unterliegen virtuelle Computer bei Datenträgervorgängen E/A- und Bandbreitengrenzwerten. Für Azure NetApp Files gelten nur Netzwerkbandbreitenlimits und nur auf ausgehende Daten.  Anders ausgedrückt: Bei Azure NetApp Files gibt es keine E/A-Limits auf VM-Ebene. Ohne diese E/A-Limits kann SQL Server bei Ausführung auf kleineren, mit Azure NetApp Files verbundenen VMs dieselbe Leistung bringen wie bei Ausführung auf viel größeren VMs. Allein die Reduzierung der Größe von Instanzen verringert die Computekosten auf 25 % des früheren Preises.  *Mit Azure NetApp Files können Sie die Computekosten senken.*  
 
 Computekosten sind jedoch gering im Vergleich zu SQL Server-Lizenzkosten.  Die Microsoft SQL Server-[Lizenzierung](https://download.microsoft.com/download/B/C/0/BC0B2EA7-D99D-42FB-9439-2C56880CAFF4/SQL_Server_2017_Licensing_Datasheet.pdf) ist an die Anzahl physischer Kerne gebunden. Dadurch führt das Verringern der Instanzgröße zu einer noch größeren Kosteneinsparung bei der Softwarelizenzierung. *Sie können die Kosten für die Softwarelizenzierung mit Azure NetApp Files senken.*
-
-Die Kosten für den Speicher selbst sind abhängig von der tatsächlichen Größe der Datenbank variabel. Unabhängig vom ausgewählten Speicher fallen für die Kapazität Kosten an, unabhängig davon, ob es sich um einen verwalteten Datenträger oder eine Dateifreigabe handelt.  Wenn die Datenbankgrößen und damit die Speicherkosten zunehmen, trägt der Speicher zu den TCO-Steigerungen bei und wirkt sich so auf die Gesamtkosten aus.  Daraus resultiert die Feststellung: *Sie können die Kosten für die SQL Server-Bereitstellung durch Azure NetApp Files verringern.* 
 
 Dieser Artikel hebt mit einer detaillierten Kostenanalyse die Leistungsvorteile der Verwendung von Azure NetApp Files für die SQL Server-Bereitstellung hervor. Kleinere Instanzen verfügen nicht nur über genügend CPU-Kapazität, um die Datenbankarbeit zu bewältigen, die bei größeren Instanzen nur mit einem Block funktioniert. *In vielen Fällen sind die kleineren Instanzen wegen Azure NetApp Files sogar leistungsfähiger als ihre größeren, datenträgerbasierten Gegenstücke.* 
 
@@ -35,7 +33,7 @@ Dieser Artikel hebt mit einer detaillierten Kostenanalyse die Leistungsvorteile 
 
 Die zwei Sätze von Grafiken in diesem Abschnitt zeigen das TCO-Beispiel.  Anzahl und Typ der verwalteten Datenträger, die Dienstebene von Azure NetApp Files und die Kapazität für jedes Szenario wurden ausgewählt, um das beste Verhältnis zwischen Preis, Kapazität und Leistung zu erzielen.  Jede Grafik zeigt gruppierte Computer (z. B. D16 mit Azure NetApp Files im Vergleich zu D64 mit verwaltetem Datenträger), und die Preise sind für jeden Computertyp aufgeschlüsselt.  
 
-Der erste Satz von Grafiken zeigt die Gesamtkosten der Lösung mit einer Datenbankgröße von 1 TiB, wobei D16s_v3 mit D64, D8 mit D32 und D4 mit D16 verglichen wird. Die projizierten IOPs für jede Konfiguration werden durch eine grüne oder gelbe Linie gekennzeichnet und entsprechen der Y-Achse auf der rechten Seite.
+Der erste Satz von Grafiken zeigt die Gesamtkosten der Lösung mit einer Datenbankgröße von 1 TiB, wobei D16s_v4 mit D64, D8 mit D32 und D4 mit D16 verglichen wird. Die projizierten IOPs für jede Konfiguration werden durch eine grüne oder gelbe Linie gekennzeichnet und entsprechen der Y-Achse auf der rechten Seite.
 
 [ ![Grafik, die die Gesamtkosten der Lösung mit einer Datenbankgröße von 1 TiB zeigt.](../media/azure-netapp-files/solution-sql-server-cost-1-tib.png) ](../media/azure-netapp-files/solution-sql-server-cost-1-tib.png#lightbox)
 
@@ -46,11 +44,11 @@ Der zweite Satz von Grafiken zeigt die Gesamtkosten anhand einer 50 TiB-Datenba
  
 ## <a name="performance-and-lots-of-it"></a>Leistung, und zwar jede Menge  
 
-Um die beträchtliche Kostenreduzierung zu gewährleisten, ist eine hohe Leistung erforderlich. Die größten Instanzen im allgemeinen Azure-Bestand unterstützen z. B. 80.000 Datenträger-IOPs. Ein einzelnes Azure NetApp Files-Volume kann 80.000 Datenbank-IOPs erreichen, und Instanzen wie D16 können dasselbe leisten. D16 kann bei 25 % der Größe von D64 normalerweise 25.600 Datenträger-IOPs leisten.  D64s_v3 kann 80.000 Datenträger-IOPs leisten und bietet sich damit hervorragend für einen Vergleich auf oberer Ebene an.
+Um die beträchtliche Kostenreduzierung zu gewährleisten, ist eine hohe Leistung erforderlich. Die größten Instanzen im allgemeinen Azure-Bestand unterstützen z. B. 80.000 Datenträger-IOPs. Ein einzelnes Azure NetApp Files-Volume kann 80.000 Datenbank-IOPs erreichen, und Instanzen wie D16 können dasselbe leisten. D16 kann bei 25 % der Größe von D64 normalerweise 25.600 Datenträger-IOPs leisten.  D64s_v4 kann 80.000 Datenträger-IOPs leisten und bietet sich damit hervorragend für einen Vergleich auf oberer Ebene an.
 
-D16s_v3 kann ein Azure NetApp Files-Volume von 80.000 Datenbank-IOPs bewältigen. Das SSB-Benchmarktool (SQL Storage Benchmark) zeigte, dass die D16-Instanz eine um 125 % größere Workload als die D64-Instanz mit Datenträger erzielte.  Weitere Informationen zu diesem Tool finden Sie im Abschnitt [SSB-Testtool](#ssb-testing-tool).
+D16s_v4 kann ein Azure NetApp Files-Volume von 80.000 Datenbank-IOPs bewältigen. Das SSB-Benchmarktool (SQL Storage Benchmark) zeigte, dass die D16-Instanz eine um 125 % größere Workload als die D64-Instanz mit Datenträger erzielte.  Weitere Informationen zu diesem Tool finden Sie im Abschnitt [SSB-Testtool](#ssb-testing-tool).
 
-Mit einer Arbeitssatzgröße von 1 TiB und einer SQL Server-Workload von 80 % Lese- und 20 % Updatevorgängen wurde das Leistungsvermögen der meisten Instanzen in der D-Instanzenklasse gemessen, nicht aller, da die D2- und D64-Instanzen selbst von den Tests ausgeschlossen wurden. Erstere wurde ausgelassen, da sie keinen beschleunigten Netzwerkbetrieb unterstützt, und Letztere, weil sie der Vergleichspunkt ist. Im folgenden Diagramm finden Sie Informationen zu den Grenzwerten von D4s_v3, D8s_v3, D16s_v3 und D32s_v3.  Speichertests für verwaltete Datenträger werden im Diagramm nicht angezeigt. Vergleichswerte werden direkt der [Grenzwertetabelle für virtuelle Azure-Computer](../virtual-machines/dv3-dsv3-series.md) für den D-Klasseninstanzentyp entnommen.
+Mit einer Arbeitssatzgröße von 1 TiB und einer SQL Server-Workload von 80 % Lese- und 20 % Updatevorgängen wurde das Leistungsvermögen der meisten Instanzen in der D-Instanzenklasse gemessen, nicht aller, da die D2- und D64-Instanzen selbst von den Tests ausgeschlossen wurden. Erstere wurde ausgelassen, da sie keinen beschleunigten Netzwerkbetrieb unterstützt, und Letztere, weil sie der Vergleichspunkt ist. Im folgenden Diagramm finden Sie Informationen zu den Grenzwerten von D4s_v4, D8s_v4, D16s_v4 und D32s_v4.  Speichertests für verwaltete Datenträger werden im Diagramm nicht angezeigt. Vergleichswerte werden direkt der [Grenzwertetabelle für virtuelle Azure-Computer](../virtual-machines/dv3-dsv3-series.md) für den D-Klasseninstanzentyp entnommen.
 
 Mit Azure NetApp Files kann jede der Instanzen in der D-Klasse die Datenträgerleistungsfunktionen zweimal größerer Instanzen erreichen oder überschreiten.  *Sie können die Kosten für die Softwarelizenzierung mit Azure NetApp Files erheblich senken.*  
 

@@ -1,5 +1,5 @@
 ---
-title: Verwenden des Speicher-Explorers mit Azure File Storage | Microsoft-Dokumentation
+title: Verwenden des Storage-Explorers mit Azure Files | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie den Storage-Explorer für die Verwendung von Dateifreigaben und Dateien nutzen.
 services: storage
 documentationcenter: na
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 84f6473c25a5be11eeda7cd2b311d93a7226a78c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0387aaecd45a2f09acc8d9ad7af230a62da6ed1
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96488390"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109628498"
 ---
-# <a name="using-storage-explorer-with-azure-file-storage"></a>Verwenden des Storage-Explorers mit Azure File Storage
+# <a name="using-storage-explorer-with-azure-files"></a>Verwenden des Storage-Explorers mit Azure Files
 
-Azure File Storage ist ein Dienst, bei dem Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls (Server Message Block) bereitgestellt werden können. Sowohl SMB 2.1 als auch SMB 3.0 werden unterstützt. Mit Azure File Storage können Sie Legacyanwendungen, für die Dateifreigaben benötigt werden, schnell und ohne teures Umschreiben zu Azure migrieren. Sie können File Storage verwenden, um Daten weltweit öffentlich zur Verfügung zu stellen oder um Anwendungsdaten privat zu speichern. In diesem Artikel wird beschrieben, wie Sie den Storage-Explorer für Dateifreigaben und Dateien verwenden.
+Azure Files ist ein Dienst, der unter Verwendung des standardmäßigen SMB-Protokolls (Server Message Block) Dateifreigaben in der Cloud bereitstellt. Sowohl SMB 2.1 als auch SMB 3.0 werden unterstützt. Mit Azure Files können Sie Legacyanwendungen, für die Dateifreigaben benötigt werden, schnell und ohne teures Umschreiben zu Azure migrieren. Sie können File Storage verwenden, um Daten weltweit öffentlich zur Verfügung zu stellen oder um Anwendungsdaten privat zu speichern. In diesem Artikel wird beschrieben, wie Sie den Storage-Explorer für Dateifreigaben und Dateien verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -145,7 +145,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine SAS für eine Dateifreigab
 
 ## <a name="manage-access-policies-for-a-file-share"></a>Verwalten von Zugriffsrichtlinien für eine Dateifreigabe
 
-Die folgenden Schritte veranschaulichen, wie Sie Zugriffsrichtlinien für eine Dateifreigabe verwalten (hinzufügen und entfernen): Die Zugriffsrichtlinien werden zum Erstellen von SAS-URLs verwendet, mit denen Benutzer während eines festgelegten Zeitraums auf die Storage-Dateiressource zugreifen können.
+Die folgenden Schritte veranschaulichen, wie Sie Zugriffsrichtlinien für eine Dateifreigabe verwalten (hinzufügen und entfernen): Die Zugriffsrichtlinien werden zum Erstellen von SAS-URLs verwendet, mit denen Benutzer während eines festgelegten Zeitraums auf die Azure Files-Ressource zugreifen können.
 
 1. Öffnen Sie den Storage-Explorer.
 

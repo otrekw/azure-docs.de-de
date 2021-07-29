@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 05/11/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 391c33e72f45e7c0c0b56128b32a8e73399e417a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39b1ebb4ca0a7daf5654c306382effa44d90c798
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99834322"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845760"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektreplikation für Blockblobs
 
@@ -80,11 +80,13 @@ Nachdem Sie die Objektreplikation konfiguriert haben, überprüft Azure Storage 
 
 Wenn Sie die Objektreplikation konfigurieren, wird über den Azure Storage-Ressourcenanbieter eine Replikationsrichtlinie sowohl für das Quell- als auch für das Zielkonto erstellt. Die Replikationsrichtlinie wird durch eine Richtlinien-ID identifiziert. Die Richtlinie für das Quell- und das Zielkonto muss dieselbe Richtlinien-ID aufweisen, damit die Replikation stattfinden kann.
 
-Ein Speicherkonto kann als Quellkonto für bis zu zwei Zielkonten fungieren. Die Quell- und Zielkonten dürfen sich in derselben oder in unterschiedlichen Regionen befinden. Sie können sich auch in unterschiedlichen Abonnements und in verschiedenen Azure Active Directory-Mandanten (Azure AD) befinden. Für jedes Paar aus Quell- und Zielkonto darf nur eine Replikationsrichtlinie erstellt werden.
+Ein Quellkonto kann in maximal zwei Zielkonten repliziert werden, mit einer einzigen Richtlinie für jedes Zielkonto. Ebenso kann ein Konto als Zielkonto für maximal zwei Replikationsrichtlinien dienen.
+
+Die Quell- und Zielkonten dürfen sich in derselben oder in unterschiedlichen Regionen befinden. Sie können sich auch in unterschiedlichen Abonnements und in verschiedenen Azure Active Directory-Mandanten (Azure AD) befinden. Für jedes Paar aus Quell- und Zielkonto darf nur eine Replikationsrichtlinie erstellt werden.
 
 ### <a name="replication-rules"></a>Replikationsregeln
 
-Replikationsregeln geben an, wie Azure Storage Blobs aus einem Quellcontainer in einen Zielcontainer repliziert. Sie können bis zu 10 Replikationsregeln für jede Replikationsrichtlinie angeben. Jede Replikationsregel definiert einen einzelnen Quell- und Zielcontainer, und jeder Quell- und Zielcontainer kann nur in einer Regel verwendet werden.
+Replikationsregeln geben an, wie Azure Storage Blobs aus einem Quellcontainer in einen Zielcontainer repliziert. Sie können bis zu 10 Replikationsregeln für jede Replikationsrichtlinie angeben. Jede Replikationsregel definiert einen einzelnen Quell- und Zielcontainer, und jeder Quell- und Zielcontainer kann nur in einer Regel verwendet werden. Dies bedeutet, dass maximal 10 Quellcontainer und 10 Zielcontainer an einer einzelnen Replikationsrichtlinie teilnehmen können.
 
 Beim Erstellen einer Replikationsregel werden standardmäßig nur neue Blockblobs kopiert, die anschließend dem Quellcontainer hinzugefügt werden. Sie können angeben, dass sowohl neue als auch vorhandene Blockblobs kopiert werden, oder Sie können einen benutzerdefinierten Kopierumfang definieren, der Blockblobs kopiert, die ab einem bestimmten Zeitpunkt erstellt wurden.
 

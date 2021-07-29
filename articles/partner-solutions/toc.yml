@@ -5,14 +5,35 @@
     - name: Apache Kafka in Confluent Cloud
       items:
         - name: Übersicht
-          displayName: 'Apache, Kafka, Confluent'
-          href: ./apache-kafka-confluent-cloud/overview.md
-        - name: Erstellen
-          href: ./apache-kafka-confluent-cloud/create.md
-        - name: Verwalten
-          href: ./apache-kafka-confluent-cloud/manage.md
-        - name: Problembehandlung
-          href: ./apache-kafka-confluent-cloud/troubleshoot.md
+          items:
+            - name: Was ist Confluent Cloud in Azure?
+              href: ./apache-kafka-confluent-cloud/overview.md
+        - name: Schnellstarts
+          items:
+            - name: Azure-Portal
+              href: ./apache-kafka-confluent-cloud/create.md
+            - name: Azure CLI
+              href: ./apache-kafka-confluent-cloud/create-cli.md
+              displayName: 'Azure CLI, az confluent organization create, az confluent organization wait, az confluent organization list, az confluent organization show'
+        - name: Anleitung
+          items:
+            - name: Hinzufügen von Connectors
+              href: ./apache-kafka-confluent-cloud/add-connectors.md
+            - name: Verwalten
+              href: ./apache-kafka-confluent-cloud/manage.md
+              displayName: 'Azure CLI, az confluent organization delete'
+            - name: Problembehandlung
+              items:
+                - name: Support
+                  href: ./apache-kafka-confluent-cloud/get-support.md
+                - name: Beheben allgemeiner Fehler
+                  href: ./apache-kafka-confluent-cloud/troubleshoot.md
+        - name: Verweis
+          items:
+            - name: Azure CLI
+              href: /cli/azure/confluent
+            - name: Azure PowerShell
+              href: /powershell/module/az.confluent/#confluent
     - name: Datadog
       items:
         - name: Übersicht
@@ -38,6 +59,10 @@
                   href: ./datadog/get-support.md
                 - name: Beheben allgemeiner Fehler
                   href: ./datadog/troubleshoot.md
+        - name: Verweis
+          items:
+            - name: Azure CLI
+              href: /cli/azure/datadog
     - name: Elastic
       items:
         - name: Übersicht
@@ -54,7 +79,3 @@
               href: ./elastic/manage.md
             - name: Problembehandlung
               href: ./elastic/troubleshoot.md
-- name: Verweis
-  items:
-    - name: Azure CLI
-      href: /cli/azure/confluent

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 26e1fe78e54b0de1cf7c7a0ddc54c3d792d1deed
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 6aa233e82ca272b9b5b9e4a9bee4ef2b57f2de77
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071170"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069999"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Erstellen eines Containers in Azure Cosmos DB mithilfe der SQL-API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,12 +34,12 @@ In diesem Artikel werden die verschiedenen Möglichkeiten beim Erstellen eines C
 1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neuer Container** aus. Geben Sie anschließend die folgenden Details an:
 
    * Geben Sie an, ob Sie eine neue Datenbank erstellen oder eine vorhandene Datenbank verwenden.
-   * Geben Sie eine Container-ID ein.
-   * Geben Sie einen Partitionsschlüssel ein.
-   * Geben Sie den bereitzustellenden Durchsatz an (etwa 1.000 RUs).
+   * Geben Sie eine **Container-ID** ein.
+   * Geben Sie einen Wert für den **Partitionsschlüssel** ein (z. B. `/ItemID`).
+   * Wählen Sie **Autoskalierung** oder **Manuell** für den Durchsatz aus, und geben Sie den erforderlichen **Containerdurchsatz** ein (z. B. 1000 RU/s). Geben Sie den bereitzustellenden Durchsatz an (etwa 1.000 RUs).
    * Klicken Sie auf **OK**.
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="Screenshot des Bereichs „Daten-Explorer“ mit hervorgehobener Option „Neuer Container“":::
+    :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="Screenshot des Daten-Explorers mit hervorgehobener Option „Neue Sammlung“":::
 
 ## <a name="create-a-container-using-azure-cli"></a><a id="cli-sql"></a>Erstellen eines Containers mithilfe der Azure CLI
 

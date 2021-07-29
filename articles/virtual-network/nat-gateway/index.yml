@@ -1,0 +1,43 @@
+### YamlMime:Landing
+title: Dokumentation zu Virtual Network NAT
+summary: Hier erfahren Sie, wie Sie Azure Virtual Network NAT verwenden. Anhand von Schnellstartanleitungen, Tutorials, Beispielen und Ähnlichem wird gezeigt, wie Sie ein NAT-Gateway bereitstellen.
+metadata:
+  title: 'Dokumentation zu Azure Virtual Network NAT: Tutorials, Schnellstartanleitungen, API-Referenz'
+  description: Hier erfahren Sie, wie Sie Azure Virtual Network NAT verwenden. Anhand von Schnellstartanleitungen, Tutorials, Beispielen und Ähnlichem wird gezeigt, wie Sie ein NAT-Gateway bereitstellen.
+  services: virtual-network
+  ms.service: virtual-network
+  ms.subservice: nat
+  ms.topic: landing-page
+  ms.collection: collection
+  author: asudbring
+  ms.author: allensu
+  ms.date: 04/05/2021
+  ms.openlocfilehash: cb818fd91d9777a8579a6dd31189511b4ff472b2
+  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113438709"
+landingContent:
+- title: Informationen zu Virtual Network NAT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Virtual Network NAT?
+      url: nat-overview.md
+  - linkListType: concept
+    links:
+    - text: Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen
+      url: nat-gateway-resource.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erstellen und Überprüfen eines NAT-Gateways
+      url: tutorial-create-nat-gateway-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Integrieren eines NAT-Gateways in einen öffentlichen Lastenausgleich
+      url: tutorial-nat-gateway-load-balancer-public-portal.md
+    - text: Integrieren eines NAT-Gateways in einen internen Lastenausgleich
+      url: tutorial-nat-gateway-load-balancer-internal-portal.md

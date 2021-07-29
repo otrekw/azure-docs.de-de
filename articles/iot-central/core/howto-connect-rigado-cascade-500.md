@@ -10,30 +10,30 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ee22c1e68f407eb2b508cd97e611ea83b82174b2
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96014761"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684125"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Verbinden eines Rigado Cascade 500-Gatewaygeräts mit Ihrer Azure IoT Central-Anwendung
 
-*Dieser Artikel richtet sich an Lösungsentwickler.*
-
-In diesem Artikel wird beschrieben, wie Sie als Lösungsersteller ein Rigado Cascade 500-Gatewaygerät mit Ihrer Microsoft Azure IoT Central-Anwendung verbinden können. 
+In diesem Artikel wird beschrieben, wie Sie ein Rigado Cascade 500-Gatewaygerät mit Ihrer Microsoft Azure IoT Central-Anwendung verbinden können.
 
 ## <a name="what-is-cascade-500"></a>Was ist Cascade 500?
 
 Cascade 500 IoT-Gateway ist ein Hardwareangebot von Rigado, das in deren Lösung „Cascade Edge-as-a-Service“ enthalten ist. Es bietet kommerziellen IoT-Projekt- und -Produktteams flexible Edge-Computeleistung, eine stabile Anwendungsumgebung in Containern sowie eine Vielzahl von Konnektivitätsoptionen für drahtlose Geräte, darunter Bluetooth 5, LTE und WLAN.
 
-Cascade 500 ist für Azure IoT Plug & Play (Vorschauversion) vorab zertifiziert und ermöglicht es unseren Lösungsentwicklern, das Gerät problemlos in End-to-End-Lösungen zu integrieren. Mit dem Cascade-Gateway können Sie eine drahtlose Verbindung zu einer Vielzahl von Sensoren für die Zustandsüberwachung herstellen, die sich in der Nähe des Gatewaygeräts befinden. Diese Sensoren können über das Gatewaygerät in IoT Central integriert werden.
+Cascade 500 ist für Azure IoT Plug & Play zertifiziert und ermöglicht es Ihnen, das Gerät problemlos in ihre End-to-End-Lösungen zu integrieren. Mit dem Cascade-Gateway können Sie eine drahtlose Verbindung zu einer Vielzahl von Sensoren für die Zustandsüberwachung herstellen, die sich in der Nähe des Gatewaygeräts befinden. Diese Sensoren können über das Gatewaygerät in IoT Central integriert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum schrittweisen Durcharbeiten dieser Anleitung benötigen Sie die folgenden Ressourcen:
 
-* Ein Rigado Cascade 500-Gerät. Weitere Informationen finden Sie unter [Rigado](https://www.rigado.com/).
-* Eine Azure IoT Central-Anwendung. Weitere Informationen finden Sie unter [Erstellen einer neuen Anwendung](./quick-deploy-iot-central.md).
+Zum Ausführen der Schritte in dieser Anleitung ist Folgendes erforderlich:
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+- Ein Rigado Cascade 500-Gerät. Weitere Informationen finden Sie unter [Rigado](https://www.rigado.com/).
 
 ## <a name="add-a-device-template"></a>Hinzufügen einer Gerätevorlage
 
@@ -71,7 +71,7 @@ Jetzt können Sie Ihr C500-Gerät in Ihrer IoT Central-Anwendung einsetzen!
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie ein Geräteentwickler sind, werden einige der folgenden nächsten Schritte empfohlen:
+Als Nächstes werden folgende Schritte vorgeschlagen:
 
 - Informieren Sie sich zu [Gerätekonnektivität in Azure IoT Central](./concepts-get-connected.md).
 - Informieren Sie sich über [Überwachen der Gerätekonnektivität per Azure CLI](./howto-monitor-devices-azure-cli.md).

@@ -11,12 +11,12 @@ ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: ffdfd4dc8a81587d757e3f9853f1bb34e0b93c0d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b76a1b8fa3a7d42f8b649adc225af89b4a40f15c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043744"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461809"
 ---
 # <a name="client-side-encryption-with-python"></a>Clientseitige Verschlüsselung mit Python
 
@@ -150,7 +150,7 @@ Benutzer können optional einen Betriebsmodus aktivieren, in dem alle hoch- oder
 ### <a name="blob-service-encryption"></a>Blob-Diensterschlüsselung
 Legen Sie die Felder für die Verschlüsselungsrichtlinie auf das blockblobservice-Objekt fest. Alles Weitere wird intern von der Clientbibliothek behandelt.
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
@@ -182,7 +182,7 @@ blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ### <a name="queue-service-encryption"></a>Warteschlangendienst-Verschlüsselung
 Legen Sie die Felder für die Verschlüsselungsrichtlinie auf das queueservice-Objekt fest. Alles Weitere wird intern von der Clientbibliothek behandelt.
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
@@ -215,7 +215,7 @@ Zusätzlich zum Erstellen einer Verschlüsselungsrichtlinie und zum Festlegen de
 
 ### <a name="using-the-resolver"></a>Verwenden des Resolvers
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
@@ -258,7 +258,7 @@ my_table_service.get_entity(
 ### <a name="using-attributes"></a>Verwenden von Attributen
 Wie oben erwähnt, kann eine Eigenschaft zur Verschlüsselung gekennzeichnet werden, indem sie in einem EntityProperty-Objekt gespeichert und das Verschlüsselungsfeld festgelegt wird.
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 

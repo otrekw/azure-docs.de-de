@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 161000f2860a1153424a628a2b303f3717f828da
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: ec0f439e8ad098e1fe2d14c3f61f98b387edf625
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275939"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477205"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>Verwenden von Azure Queue Storage mit Node.js
 
@@ -42,7 +42,7 @@ Die [Azure Storage-Clientbibliothek für JavaScript](https://github.com/Azure/az
 
 1. Verwenden Sie eine Befehlszeilenschnittstelle, z. B. PowerShell (Windows), Terminal (Mac) oder Bash (Unix), und navigieren Sie zu dem Ordner, in dem Sie Ihre Beispielanwendung erstellt haben.
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 1. Geben Sie im Befehlsfenster `npm install @azure/storage-queue` ein.
 
@@ -60,7 +60,7 @@ Die [Azure Storage-Clientbibliothek für JavaScript](https://github.com/Azure/az
 
 Fügen Sie in Ihrem Code-Editor den folgenden Code am Anfang der JavaScript-Datei hinzu, in der Sie Warteschlangen verwenden möchten.
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_ImportStatements":::
 
@@ -74,7 +74,7 @@ var azure = require('azure-storage');
 
 ## <a name="how-to-create-a-queue"></a>Erstellen von Warteschlangen
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 Der folgende Code ruft den Wert der Umgebungsvariable `AZURE_STORAGE_CONNECTION_STRING` ab und verwendet ihn zum Erstellen eines [`QueueServiceClient`](/javascript/api/@azure/storage-queue/queueserviceclient)-Objekts. Mit diesem Objekt wird dann ein [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient)-Objekts erstellt, das Ihnen das Arbeiten mit einer bestimmten Warteschlange ermöglicht.
 
@@ -108,7 +108,7 @@ Wenn die Warteschlange erstellt wird, ist `result.created` "true". Wenn die Wart
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Einfügen einer Nachricht in eine Warteschlange
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 Wenn Sie einer Warteschlange eine Nachricht hinzufügen möchten, rufen Sie die [`sendMessage`](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-)-Methode auf.
 
@@ -132,7 +132,7 @@ queueSvc.createMessage('myqueue', "Hello, World", function(error, results, respo
 
 Sie können Nachrichten in der Warteschlange einsehen, ohne sie daraus zu entfernen. Rufen Sie dazu die Methode `peekMessages` auf.
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 Standardmäßig wird von [`peekMessages`](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) jeweils nur eine Nachricht eingesehen. Im folgenden Beispiel werden die ersten fünf Nachrichten in der Warteschlange eingesehen. Wenn weniger als fünf Nachrichten sichtbar sind, werden nur die sichtbaren Nachrichten zurückgegeben.
 
@@ -160,7 +160,7 @@ Wenn die Warteschlange beim Aufrufen von `peekMessages` keine Nachrichten enthä
 
 Im folgenden Beispiel wird der Text einer Nachricht aktualisiert.
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 Sie ändern den Inhalt einer Nachricht vor Ort in der Warteschlange durch Aufrufen von [`updateMessage`](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-).
 
@@ -196,7 +196,7 @@ Das Entfernen einer Nachricht aus der Warteschlange ist ein zweistufiger Prozess
 
 Im folgenden Beispiel wird eine Nachricht abgerufen und dann gelöscht.
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 Wenn Sie eine Nachricht abrufen möchten, rufen Sie die [`receiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-)-Methode auf. Durch diesen Aufruf werden die Nachrichten in der Warteschlange unsichtbar, sodass andere Clients sie nicht verarbeiten können. Nachdem Ihre Anwendung eine Nachricht verarbeitet hat, rufen Sie [`deleteMessage`](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) auf, um sie aus der Warteschlange zu löschen.
 
@@ -232,7 +232,7 @@ Wenn die Warteschlange bei Verwendung von `getMessages` keine Nachrichten enthä
 
 ## <a name="additional-options-for-dequeuing-messages"></a>Zusätzliche Optionen für das Entfernen von Nachrichten aus der Warteschlange
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Warteschlange anpassen können:
 
@@ -273,7 +273,7 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 
 ## <a name="how-to-get-the-queue-length"></a>Abrufen der Warteschlangenlänge
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 Die [`getProperties`](/javascript/api/@azure/storage-queue/queueclient#getproperties-queuegetpropertiesoptions-)-Methode gibt Metadaten über die Warteschlange zurück, einschließlich der geschätzten Anzahl der in der Warteschlange wartenden Nachrichten.
 
@@ -295,7 +295,7 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 
 ## <a name="how-to-list-queues"></a>Auflisten von Warteschlangen
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 Rufen Sie zum Abrufen einer Liste von Warteschlangen [`QueueServiceClient.listQueues`](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix) auf. Wenn Sie eine Liste abrufen möchten, die nach einem bestimmten Präfix gefiltert wurde, legen Sie in Ihrem Aufruf [options.prefix](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix) auf `listQueues` fest.
 
@@ -319,7 +319,7 @@ Wenn nicht alle Warteschlangen zurückgegeben werden können, übergeben Sie `re
 
 ## <a name="how-to-delete-a-queue"></a>Löschen von Warteschlangen
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die [`DeleteQueue`](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-)-Methode für das `QueueClient`-Objekt auf.
 

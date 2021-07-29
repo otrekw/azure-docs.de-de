@@ -3,7 +3,7 @@ title: Anzeigen der Anforderungen für ein Zugriffspaket in der Azure AD-Berecht
 description: Erfahren Sie, wie Sie Anforderungen für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung anzeigen.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b484b19282c8ad42890f6e04f03563c29baa49dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76b732ef3ff8689e9c9d161ba4329361b955111f
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97745996"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786553"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Anzeigen von Anforderungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -29,7 +29,7 @@ In der Azure AD-Berechtigungsverwaltung können Sie anzeigen, wer Zugriffspaket
 
 ## <a name="view-requests"></a>Anzeigen von Anforderungen
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaket-Manager oder Zugriffspaketzuweisungs-Manager
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaket-Manager oder Zugriffspaketzuweisungs-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

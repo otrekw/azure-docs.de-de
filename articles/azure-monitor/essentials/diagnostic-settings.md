@@ -5,13 +5,13 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 02/08/2021
-ms.openlocfilehash: 60ac56cfda026871afa1725bbd54625b7ce7585e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/09/2021
+ms.openlocfilehash: bb820be289aa2ddcec2183094e819083dde8c1d8
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789193"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902785"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
 [Plattformprotokolle](./platform-logs-overview.md) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](./data-platform-metrics.md) werden standardmäßig gesammelt und in der Regel in der Azure Monitor-Metrikdatenbank gespeichert. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden.
@@ -199,7 +199,7 @@ Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mithilf
 ## <a name="create-using-azure-policy"></a>Erstellen mithilfe von Azure Policy
 Da für jede Azure-Ressource eine Diagnoseeinstellung erstellt werden muss, können Sie mit Azure Policy beim Erstellen der einzelnen Ressourcen automatisch eine Diagnoseeinstellung erstellen. Weitere Informationen finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md).
 
-## <a name="metric-category-is-not-supported-error"></a>Fehler nicht unterstützter Metrikkategorien
+## <a name="error-metric-category-is-not-supported"></a>Fehler: Nicht unterstützte Metrikkategorie
 Beim Bereitstellen einer Diagnoseeinstellung können Sie die folgende Fehlermeldung erhalten:
 
    „Die Metrikkategorie '*xxxx*' wird nicht unterstützt.“
@@ -216,7 +216,9 @@ Das Problem wird von einer vor Kurzem erfolgten Änderung an der zugrunde liegen
 
 Wenn Sie diesen Fehler erhalten, aktualisieren Sie Ihre Bereitstellungen, sodass alle Metrikkategorienamen durch 'AllMetrics' ersetzt werden, um das Problem zu beheben. Wenn bei der Bereitstellung zuvor mehrere Kategorien hinzugefügt wurden, sollten Sie nur den 'AllMetrics'-Verweis beibehalten. Wenn das Problem weiterhin auftritt, wenden Sie sich über das Azure-Portal an den Azure-Support. 
 
+## <a name="error-setting-disappears-due-to-non-ascii-characters-in-resourceid"></a>Fehler: Einstellung wird aufgrund von Nicht-ASCII-Zeichen in resourceID nicht mehr angezeigt
 
+Diagnoseeinstellungen unterstützen keine resourceIDs mit Nicht-ASCII-Zeichen (z. B. „Präproduktion“). Da Sie Ressourcen in Azure nicht umbenennen können, besteht Ihre einzige Möglichkeit darin, eine neue Ressource ohne die Nicht-ASCII-Zeichen zu erstellen. Wenn sich die Zeichen in einer Ressourcengruppe befinden, können Sie die darin enthaltenen Ressourcen in eine neue verschieben. Andernfalls müssen Sie die Ressource neu erstellen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

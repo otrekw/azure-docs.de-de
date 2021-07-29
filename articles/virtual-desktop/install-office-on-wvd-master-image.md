@@ -1,17 +1,17 @@
 ---
 title: Installieren von Office für ein VHD-Masterimage – Azure
-description: Erfahren Sie, wie Sie Office auf einem Windows Virtual Desktop-Masterimage in Azure installieren und anpassen.
+description: Erfahren Sie, wie Sie Office auf einem Azure Virtual Desktop-Masterimage für den Upload in Azure installieren.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ce4eb3d556b6dff833129d11b26d439066b63f2e
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 09dda24d7bd177764f9d715256762e25cb4729a3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446841"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757569"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Installieren von Office für ein VHD-Masterimage
 
@@ -22,7 +22,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie bereits eine VM (virtueller Compu
 In diesem Artikel wird außerdem davon ausgegangen, dass Sie über erhöhte Rechte für die VM verfügen, unabhängig davon, ob diese in Azure oder Hyper-V-Manager bereitgestellt wird. Wenn das nicht der Fall ist, führen Sie die Anweisungen unter [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](../role-based-access-control/elevate-access-global-admin.md) aus.
 
 >[!NOTE]
->Diese Anweisungen beziehen sich auf eine spezielle Konfiguration für Windows Virtual Desktop, die mit den in Ihrer Organisation vorhandenen Prozessen verwendet werden kann.
+>Diese Anweisungen beziehen sich auf eine spezielle Konfiguration für Azure Virtual Desktop, die mit den in Ihrer Organisation vorhandenen Prozessen verwendet werden kann.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Installieren von Office im Modus „Aktivierung gemeinsam genutzter Computer“
 
@@ -44,7 +44,7 @@ Mit dieser von uns bereitgestellten XML-Beispieldatei für die Konfiguration wir
    - Aktivierung gemeinsam genutzter Computer
 
 >[!NOTE]
->Die Schablonensuchfunktion von Visio funktioniert unter Windows Virtual Desktop möglicherweise nicht wie erwartet.
+>Die Schablonensuchfunktion von Visio funktioniert unter Azure Virtual Desktop möglicherweise nicht wie erwartet.
 
 Folgendes wird dagegen von dieser XML-Beispielkonfigurationsdatei nicht erledigt:
 
@@ -157,9 +157,9 @@ Hier ist beschrieben, wie Sie OneDrive im Modus „Pro Computer“ installieren:
 
 ## <a name="microsoft-teams-and-skype-for-business"></a>Microsoft Teams und Skype for Business
 
-Windows Virtual Desktop unterstützt Skype for Business nicht.
+Azure Virtual Desktop unterstützt Skype for Business nicht.
 
-Hilfe bei der Installation von Microsoft Teams finden Sie unter [Verwenden von Microsoft Teams in Windows Virtual Desktop](teams-on-wvd.md). Die Medienoptimierung für Microsoft Teams in Windows Virtual Desktop ist in der Vorschauversion verfügbar.
+Hilfe bei der Installation von Microsoft Teams finden Sie unter [Verwenden von Microsoft Teams in Azure Virtual Desktop](teams-on-wvd.md). Die Medienoptimierung für Microsoft Teams in Azure Virtual Desktop ist in der Vorschauversion verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

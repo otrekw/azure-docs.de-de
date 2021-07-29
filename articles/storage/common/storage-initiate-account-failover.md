@@ -6,17 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/29/2020
+ms.date: 05/07/2021
 ms.author: tamram
-ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28f46ec6354f98c11ce68beeb2e3de375c7a0249
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97814328"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632329"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Initiieren eines Speicherkontofailovers
 
@@ -41,7 +40,7 @@ Weitere Informationen zur Azure Storage-Redundanz finden Sie unter [Azure Storag
 Beachten Sie, dass die folgenden Funktionen und Dienste bei einem Kontofailover nicht unterstützt werden:
 
 - Das Speicherkontofailover wird von der Azure-Dateisynchronisierung nicht unterstützt. Für Speicherkonten, die Azure-Dateifreigaben enthalten, die als Cloud-Endpunkte in der Azure-Dateisynchronisierung verwendet werden, sollte kein Failover durchgeführt werden. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen.
-- ADLS Gen2-Speicherkonten (Konten mit aktiviertem hierarchischen Namespace) werden derzeit nicht unterstützt.
+- Speicherkonten mit aktiviertem hierarchischem Namespace (z. B. für Data Lake Storage Gen2) werden zurzeit nicht unterstützt.
 - Für ein Speicherkonto mit Premium-Blockblobs kann kein Failover durchgeführt werden. Speicherkonten, die Premium-Blockblobs unterstützen, unterstützen derzeit keine Georedundanz.
 - Für ein Speicherkonto mit Containern mit aktivierter [WORM-Unveränderlichkeitsrichtlinie](../blobs/storage-blob-immutable-storage.md) kann kein Failover durchgeführt werden. Entsperrte/gesperrte Richtlinien für die zeitbasierte Aufbewahrung oder die gesetzliche Aufbewahrungspflicht verhindern ein Failover zur Einhaltung der Richtlinien.
 
@@ -117,10 +116,15 @@ Wenn Sie den Umfang eines wahrscheinlichen Datenverlustes schätzen möchten, be
 
 Die Zeit bis zum Failover nach der Initiierung kann variieren, beträgt aber in der Regel weniger als eine Stunde.
 
-Nach dem Failover wird der Speicherkontotyp automatisch in einen lokal redundanten Speicher (LRS) in der neuen primären Region konvertiert. Sie können den georedundanten Speicher (GRS) oder den georedundanten Speicher mit Lesezugriff (RA-GRS) wieder aktivieren. Beachten Sie, dass für die Konvertierung von LRS in GRS oder RA-GRS zusätzliche Kosten anfallen. Weitere Informationen finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/).
+Nach dem Failover wird der Speicherkontotyp automatisch in einen lokal redundanten Speicher (LRS) in der neuen primären Region konvertiert. Sie können den georedundanten Speicher (GRS) oder den georedundanten Speicher mit Lesezugriff (RA-GRS) wieder aktivieren. Beachten Sie, dass für die Konvertierung von LRS in GRS oder RA-GRS zusätzliche Kosten anfallen. Die Kosten ergeben sich aus den Gebühren für ausgehenden Netzwerkdatenverkehr zum erneuten Replizieren der Daten in die neue sekundäre Region. Weitere Informationen finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-Nachdem Sie wieder GRS für Ihr Speicherkonto aktiviert haben, beginnt Microsoft, die Daten in Ihrem Konto in die neue sekundäre Region zu replizieren. Die Dauer der Replikation hängt von der Menge der zu replizierenden Daten ab.  
+Nachdem Sie wieder GRS für Ihr Speicherkonto aktiviert haben, beginnt Microsoft, die Daten in Ihrem Konto in die neue sekundäre Region zu replizieren. Die Replikationszeit hängt von vielen Faktoren ab, z. B.:
 
+- Anzahl und Größe der im Speicherkonto gespeicherten Objekte. Viele kleine Objekte können länger dauern als wenige, größere Objekte.
+- Verfügbare Ressourcen für die Hintergrundreplikation, z. B. CPU, Arbeitsspeicher, Datenträger und WAN-Kapazität. Livedatenverkehr hat Vorrang vor der Georeplikation.
+- Bei Verwendung von Blob Storage: Anzahl der Momentaufnahmen pro Blob
+- Bei Verwendung von Table Storage: die [Datenpartitionierungsstrategie](/rest/api/storageservices/designing-a-scalable-partitioning-strategy-for-azure-table-storage). Der Replikationsprozess kann nicht über die Anzahl der verwendeten Partitionsschlüssel hinaus skaliert werden.
+  
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Notfallwiederherstellung und Speicherkontofailover](storage-disaster-recovery-guidance.md)

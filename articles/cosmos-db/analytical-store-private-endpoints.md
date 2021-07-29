@@ -6,17 +6,20 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: fd0b3ada5fec283562cee9727e3f805a7d34c532
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 09b4e6ebe14f5650be5bc92302acc51b1c6e99a5
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479048"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985758"
 ---
 # <a name="configure-azure-private-link-for-azure-cosmos-db-analytical-store"></a>Konfigurieren von Azure Private Link für Azure Cosmos DB-Analysespeicher
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 In diesem Artikel erfahren Sie, wie Sie verwaltete private Endpunkte für Azure Cosmos DB-Analysespeicher einrichten. Wenn Sie den Transaktionsspeicher verwenden, lesen Sie den Artikel [Private Endpunkte für den Transaktionsspeicher](how-to-configure-private-endpoints.md). Mithilfe [verwalteter privater Endpunkte](../synapse-analytics/security/synapse-workspace-managed-private-endpoints.md) können Sie den Netzwerkzugriff von Azure Cosmos DB-Analysespeicher auf das verwaltete virtuelle Netzwerk beschränken, das Ihrem Azure Synapse-Arbeitsbereich zugeordnet ist. Mit verwalteten privaten Endpunkten wird eine private Verbindung mit Ihrem Analysespeicher hergestellt.
+
+> [!NOTE]
+> Wenn Sie private DNS-Zonen für Cosmos DB verwenden und einen von Synapse verwalteten privaten Endpunkt für die Unterressource des Analysespeichers erstellen möchten, müssen Sie zunächst eine DNS-Zone für den Analysespeicher (`privatelink.analytics.cosmos.azure.com`) erstellen, der mit Ihrem virtuellen Cosmos DB-Netzwerk verknüpft ist.
 
 ## <a name="enable-a-private-endpoint-for-the-analytical-store"></a>Aktivieren eines privaten Endpunkts für den Analysespeicher
 

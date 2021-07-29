@@ -3,13 +3,13 @@ title: Verwalten und Überwachen von MARS-Agent-Sicherungen
 description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst.
 ms.reviewer: srinathv
 ms.topic: conceptual
-ms.date: 10/07/2019
-ms.openlocfilehash: 4306f01d608542f7453b32b32a1a6894c2379159
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 06/08/2021
+ms.openlocfilehash: c7a696c4059ebc7cc28a34a299060039ac1c0c62
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515021"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902938"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
@@ -94,9 +94,8 @@ Sie haben zwei Möglichkeiten, den Schutz von Dateien und Ordnern durch Sicherun
   - Sie können die gesicherten Daten für nicht abgelaufene Wiederherstellungspunkte wiederherstellen.
   - Mit der Option *Aktivieren Sie den Sicherungszeitplan erneut* können Sie bei Bedarf den Schutz fortsetzen. Anschließend werden die Daten basierend auf der neuen Aufbewahrungsrichtlinie aufbewahrt.
 - **Schutz beenden und Sicherungsdaten löschen**.
-  - Mit dieser Option werden alle zukünftigen Sicherungsaufträge zum Schutz Ihrer Daten beendet und alle Wiederherstellungspunkte gelöscht.
-  - Sie erhalten eine Warn-E-Mail zur Löschung der Sicherungsdaten mit der Nachricht *Your data for this Backup item has been deleted. This data will be temporarily available for 14 days, after which it will be permanently deleted* (Die Daten für dieses Sicherungselement wurden gelöscht. Diese Daten sind 14 Tage lang verfügbar und werden anschließend endgültig gelöscht.) und der empfohlenen Aktion *Reprotect the Backup item within 14 days to recover your data.* (Schützen Sie das Sicherungselement innerhalb von 14 Tagen erneut, um die Daten wiederherzustellen.).
-  - Um den Schutz fortzusetzen, stellen Sie ihn innerhalb von 14 Tagen nach dem Löschvorgang wieder her.
+  - Mit dieser Option werden alle zukünftigen Sicherungsaufträge zum Schutz Ihrer Daten alle beendet. Wenn die Tresorsicherheitsfeatures nicht aktiviert sind, werden alle Wiederherstellungspunkte sofort gelöscht.<br>Wenn die Sicherheitsfeatures aktiviert sind, wird die Löschung um 14 Tage verzögert, und Sie erhalten eine Warn-E-Mail zur Löschung der Sicherungsdaten mit dem Inhalt *Die Sicherungsdaten für dieses Sicherungselement wurden gelöscht. Gelöschte Daten werden 14 Tage lang aufbewahrt und anschließend dauerhaft gelöscht* und der empfohlenen Aktion *Schützen Sie das Sicherungselement innerhalb von 14 Tagen erneut, um die Daten wiederherzustellen*.<br>In diesem Zustand wird die Aufbewahrungsrichtlinie weiterhin angewendet, und die Sicherungsdaten bleiben abrechenbar. [Erfahren Sie mehr](backup-azure-security-feature.md#enable-security-features) über das Aktivieren von Tresorsicherheitsfeatures.
+  - Um den Schutz fortzusetzen, stellen Sie den Server innerhalb von 14 Tagen nach dem Löschvorgang wieder her. Innerhalb dieses Zeitraums können Sie die Daten auch auf einem anderen Server wiederherstellen.
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Schutz beenden und Sicherungsdaten beibehalten
 
@@ -202,6 +201,34 @@ Wir empfehlen die folgende Konfiguration für Ihre Antivirussoftware, um Konflik
 
 >[!NOTE]
 >Der Ausschluss dieser Pfade reicht zwar für die meisten Antivirenprogramme aus, aber einige können weiterhin den MARS-Agent-Betrieb stören. Wenn unerwartete Fehler auftreten, deinstallieren Sie die Antivirensoftware vorübergehend, und beobachten Sie, ob das Problem beseitigt ist. Wenn das Problem dadurch behoben wird, informieren Sie sich beim Hersteller der Antivirussoftware über die richtige Konfiguration seines Produkts.
+
+## <a name="monitor-using-backup-reports"></a>Überwachen mit Sicherungsberichten
+
+Azure Backup bietet eine Berichterstellungslösung, bei der Azure Monitor-Protokolle und Azure-Arbeitsmappen verwendet werden. Für den Einstieg müssen Sie für Ihren Tresor [Sicherungsberichte konfiguriert](configure-reports.md) haben. Nach der Konfiguration werden Daten in den Arbeitsbereich übertragen und können mithilfe der Sicherungsberichte abgefragt werden.
+
+Führen Sie die folgenden Schritte aus, um die Nutzung von Sicherungsdaten und die tägliche Änderungsrate zu überwachen:
+
+1. Navigieren Sie zum Bereich **Übersicht** des Tresors, und klicken Sie auf **Sicherungsberichte**.
+
+1. Wählen Sie auf dem Blatt **Sicherungsbericht** im Abschnitt **Übersicht** den konfigurierten Log Analytics-Arbeitsbereich aus. 
+
+1. Legen Sie den Berichtsfilter **Sicherungslösung** auf **Azure Backup-Agent** fest, um nur MARS-Agent-Sicherungen anzuzeigen. 
+
+   Legen Sie **Abonnementname**, **Tresorspeicherort** und **Tresorname** nach Bedarf fest.
+ 
+    ![Berichtsfilter „Sicherungslösung“ festlegen.](./media/backup-azure-manage-mars/set-report-filter-backup-solution.png)
+
+1. Navigieren Sie zur Registerkarte **Verbrauch**, um den Verbrauch nach abgerechneter Entität anzuzeigen. 
+
+   Die Gesamtzahl der abgerechneten geschützten Instanzen und die Speichernutzungsdaten werden angezeigt. Sie können auch die Trendinformationen anzeigen.
+ 
+    ![Verbrauch nach berechneter Entität anzeigen.](./media/backup-azure-manage-mars/view-usage-by-billed-entity.png)
+
+1. Navigieren Sie zur Registerkarte **Aufträge,** um die durchschnittlichen Sicherungsdaten anzuzeigen, die von Sicherungsaufträgen für jedes Volume auf dem geschützten Server hinzugefügt wurden. 
+ 
+    ![Durchschnittliche Sicherungsdaten anzeigen.](./media/backup-azure-manage-mars/view-average-backup-data.png)
+
+Erfahren Sie mehr über [andere Berichtsregisterkarten](configure-reports.md) und den Empfang dieser [Berichte per E-Mail](backup-reports-email.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

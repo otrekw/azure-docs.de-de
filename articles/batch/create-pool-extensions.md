@@ -3,12 +3,12 @@ title: Verwenden von Erweiterungen mit Azure Batch-Pools
 description: Erweiterungen sind kleine Anwendungen, die Konfiguration und Setup nach der Bereitstellung auf Azure Batch-Computeknoten erleichtern.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 1bf9847af57347c143ee3d790d89988ba7cd48e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 406de8ea1c781ac742e7ca3fff8f84f03727a031
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100416551"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476104"
 ---
 # <a name="use-extensions-with-batch-pools"></a>Verwenden von Erweiterungen mit Azure Batch-Pools
 
@@ -20,14 +20,14 @@ Sie können den Livestatus der von Ihnen verwendeten Erweiterungen überprüfen 
 
 - Pools mit Erweiterungen müssen die [VM-Konfiguration](nodes-and-pools.md#virtual-machine-configuration) verwenden.
 - Der Erweiterungstyp „CustomScript“ ist für den Azure Batch-Dienst reserviert und kann nicht außer Kraft gesetzt werden.
+- Einige Erweiterungen benötigen möglicherweise eine verwaltete Identität auf Poolebene, auf die im Kontext eines Computeknotens zugegriffen werden kann, um ordnungsgemäß zu funktionieren. Weitere Informationen finden Sie unter [Konfigurieren von verwalteten Identitäten in Batchpools](managed-identity-pools.md), falls dies für die Erweiterung(en) gilt.
 
 ### <a name="supported-extensions"></a>Unterstützte Erweiterungen
 
-Die folgenden Erweiterungen können derzeit beim Erstellen eines Azure Batch-Pools installiert werden. 
+Die folgenden Erweiterungen können derzeit beim Erstellen eines Azure Batch-Pools installiert werden:
 
 - Azure Key Vault Erweiterung für [Linux](../virtual-machines/extensions/key-vault-linux.md) und [Windows](../virtual-machines/extensions/key-vault-windows.md)
 - Erweiterung für Protokollanalyse und -überwachung für [Linux](../virtual-machines/extensions/oms-linux.md) und [Windows](../virtual-machines/extensions/oms-windows.md)
-- Azure-Sicherheitspaket
 
 Sie können Unterstützung für weitere Herausgeber und/oder Erweiterungstypen anfordern, indem Sie eine Supportanfrage öffnen.
 

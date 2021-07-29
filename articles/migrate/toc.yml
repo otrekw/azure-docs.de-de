@@ -79,7 +79,11 @@
         - name: Containerisieren von ASP.NET-Apps und Migrieren zu AKS
           href: tutorial-app-containerization-aspnet-kubernetes.md
         - name: Containerisieren von Java-Web-Apps und Migrieren zu AKS
-          href: tutorial-containerize-java-kubernetes.md
+          href: tutorial-app-containerization-java-kubernetes.md
+        - name: Containerisieren von ASP.NET-Apps und Migrieren zu App Service
+          href: tutorial-app-containerization-aspnet-app-service.md
+        - name: Containerisieren von Java-Web-Apps und Migrieren zu App Service
+          href: tutorial-app-containerization-java-app-service.md
 - name: Konzepte
   items:
     - name: Allgemein
@@ -128,6 +132,9 @@
           href: migrate-replication-appliance.md
         - name: Migrationsarchitektur für VMware ohne Agents
           href: concepts-vmware-agentless-migration.md
+          items:
+            - name: Vorbereiten der VMware-Migration ohne Agent
+              href: prepare-for-agentless-migration.md
         - name: Hyper-V-Migrationsarchitektur
           href: hyper-v-migration-architecture.md
         - name: Architektur für die Agent-basierte VMware-Migration
@@ -235,11 +242,15 @@
           href: troubleshoot-project.md
     - name: Entdecken
       items:
-        - name: Behandeln von Problemen bei der Azure Migrate-Appliance/-Ermittlung
-          href: troubleshoot-appliance-discovery.md
+        - name: "Behandeln von Problemen mit der Azure\_Migrate-Appliance"
+          href: troubleshoot-appliance.md
+        - name: Behandeln von Problemen bei der Erkennung
+          href: troubleshoot-discovery.md
+        - name: Behandeln von Problemen bei der Abhängigkeitsvisualisierung
+          href: troubleshoot-dependencies.md
     - name: Bewerten
       items:
-        - name: Behandeln von Problemen bei der Bewertung- und Abhängigkeitsvisualisierung
+        - name: Behandeln von Problemen bei der Bewertung
           href: troubleshoot-assessment.md
     - name: Migrate
       items:

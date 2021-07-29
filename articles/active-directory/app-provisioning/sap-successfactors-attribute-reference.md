@@ -1,24 +1,24 @@
 ---
-title: SAP SuccessFactors-Attributreferenz
-description: Hier erfahren Sie, welche SuccessFactors-Attribute von der SuccessFactors-/personalbasierten Bereitstellung unterstützt werden.
+title: SAP SuccessFactors-Attributreferenz für Azure Active Directory
+description: Hier erfahren Sie, welche SuccessFactors-Attribute von der SuccessFactors- Bereitstellung bzw. personalbasierten Bereitstellung in Azure Active Directory unterstützt werden.
 services: active-directory
-author: cmmdesai
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 08/05/2020
-ms.author: chmutali
-ms.reviewer: celested
-ms.openlocfilehash: 0d1a25f67d3550e79b2339ee060d37acaea0c1c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.author: kenwith
+ms.reviewer: chmutali
+ms.openlocfilehash: ea6887c69b292cc2cff4d923ba2ce60af8f1920e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255541"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784951"
 ---
-# <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors-Attributreferenz
+# <a name="sap-successfactors-attribute-reference-for-azure-active-directory"></a>SAP SuccessFactors-Attributreferenz für Azure Active Directory
 
 In diesem Artikel finden Sie Informationen zu folgenden Themen:
 

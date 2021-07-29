@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5890ca90b0ad0dcb3d5141e62e986475fd386959
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 81697efc7832adf62d26c751d1e6e93070c2579b
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064119"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684071"
 ---
 # <a name="how-to-set-up-azure-iot-hub-to-deploy-over-the-air-updates-to-your-azure-percept-dk"></a>Einrichten von Azure IoT Hub für die Bereitstellung von OTA-Updates für Ihr Azure Percept DK-Gerät
 
@@ -28,17 +28,21 @@ Nutzen Sie Over-the-Air-Updates, um Ihr Azure Percept SK-Gerät zu schützen un
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich mit dem Azure-Konto an, das Sie für Azure Percept verwenden.
 
-1. Geben Sie in der Suchleiste am oberen Rand der Seite **Device Update für IoT Hub** ein.
+1. Geben Sie in der Suchleiste am oberen Rand der Seite **Geräte-Update für IoT Hubs** ein.
 
-1. Wählen Sie **Device Update für IoT Hub** aus, wenn diese Option in der Suchleiste angezeigt wird.
+1. Wählen Sie **Geräte-Update für IoT Hubs** aus, wenn diese Option in der Suchleiste angezeigt wird.
 
-1. Klicken Sie links oben auf der Seite auf die Schaltfläche **+ Hinzufügen**.
+1. Wählen Sie im oberen linken Bereich der Seite die Schaltfläche **+ Hinzufügen** aus.
 
 1. Wählen Sie das **Azure-Abonnement** und die **Ressourcengruppe** aus, die dem Azure Percept-Gerät und seinem IoT Hub zugeordnet sind.
 
 1. Geben Sie einen **Namen** und einen **Speicherort** für Ihr Device Update-Konto an.
 
+1. Aktivieren Sie das Kontrollkästchen **Geräteupdate-Administratorenrolle zuweisen.** 
+
 1. Überprüfen Sie die Angaben, und wählen Sie **Überprüfen und erstellen** aus.
+
+1. Wählen Sie die Schaltfläche **Erstellen**.
 
 1. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 

@@ -48,6 +48,8 @@
           href: configure-azure-ad-ui.md
         - name: Aktualisieren des Pullgeheimnisses für einen ARO-Cluster
           href: howto-add-update-pull-secret.md
+        - name: Rotieren der Anmeldeinformationen eines Dienstprinzipals für einen ARO-Cluster (Azure Red Hat OpenShift)
+          href: howto-service-principal-credential-rotation.md
     - name: Sichern und Wiederherstellen
       items:
         - name: Erstellen einer Sicherung einer Clusteranwendung mit Velero
@@ -120,7 +122,7 @@
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
-      href: openshift-faq.md
+      href: openshift-faq.yml
     - name: Problembehandlung
       href: troubleshoot.md
     - name: "Supportrichtlinien für ARO\_4"

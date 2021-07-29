@@ -1,18 +1,18 @@
 ---
 title: 'Gewusst wie: Browsen im Datenkatalog'
-description: Dieser Artikel enthält eine Übersicht über das Browsen im Azure Purview-Datenkatalog basierend auf dem Ressourcentyp.
-author: chanuengg
-ms.author: csugunan
+description: Dieser Artikel enthält eine Übersicht über das Browsen im Azure Purview-Datenkatalog nach Assettyp.
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/30/2020
-ms.openlocfilehash: dd2fd4fbc9d8aecd9821d668dd02bd4b68659cf6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/21/2021
+ms.openlocfilehash: cf836be45374b881945a80f998d851c95c7a5abd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97695058"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474181"
 ---
 # <a name="browse-the-azure-purview-data-catalog"></a>Browsen im Azure Purview-Datenkatalog
 
@@ -26,6 +26,9 @@ Beispielsweise können Sie in Azure Data Lake Storage Gen 2 ein Dataset mit dem
 
 Für jede entsprechende Datenquelle ist eine native Suchoberfläche mit einem hierarchischen Namespace vorhanden.
 
+> [!NOTE]
+> Nach einer erfolgreichen Überprüfung kann es zu einer Verzögerung kommen, bevor neu überprüfte Assets in der Suchfunktion angezeigt werden. Diese Verzögerung kann einige Stunden dauern.
+
 ## <a name="browse-the-data-catalog-by-asset-type"></a>Durchsuchen des Datenkatalogs anhand des Ressourcentyps
 
 1. Sie können Datenressourcen durchsuchen, indem Sie auf der Startseite die Option **Nach Ressourcentyp durchsuchen** auswählen.
@@ -35,6 +38,9 @@ Für jede entsprechende Datenquelle ist eine native Suchoberfläche mit einem hi
 1. Auf der Seite **Browse asset types** (Ressourcentypen durchsuchen) sind die Kacheln nach Datenquelle kategorisiert. Wählen Sie die entsprechende Kachel aus, um die Ressourcen der einzelnen Datenquellen weiter zu erkunden.
 
     :::image type="content" source="media/how-to-browse-catalog/browse-asset-types.jpg" alt-text="Seite „Browse asset types“ (Ressourcentypen durchsuchen)" border="true":::
+
+> [!TIP]
+> Bestimmte Kacheln sind Gruppierungen einer Sammlung von Datenquellen. Beispielsweise enthält die Kachel „Azure Storage-Konto“ alle Azure Blob Storage- und Azure Data Lake Storage Gen2-Konten. Auf der Azure SQL Server-Kachel werden die Azure SQL Server-Assets angezeigt, die Azure SQL-Datenbank- und dedizierte Azure SQL-Poolinstanzen enthalten, die in den Katalog aufgenommen wurden. 
 
 1. Auf der nächsten Seite sind unter dem von Ihnen ausgewählten Datentyp die Ressourcen der obersten Ebene aufgelistet. Wählen Sie eine der Ressourcen aus, um ihren Inhalt eingehender zu untersuchen.
 

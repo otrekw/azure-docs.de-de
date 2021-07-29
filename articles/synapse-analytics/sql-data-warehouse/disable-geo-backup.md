@@ -11,14 +11,14 @@ ms.date: 01/06/2021
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 395d5f0697138155b0bb0c629461aada9e9c18c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cebee3ad9b515c6f40529fe5d25da687fd53687
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98739057"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786283"
 ---
-# <a name="disable-geo-backups-for-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Deaktivieren von Geosicherungen für einen dedizierten SQL-Pool (früher SQL Data Warehouse) in Azure Synapse Analytics
+# <a name="disable-geo-backups-for-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Deaktivieren von Geosicherungen für einen [dedizierten SQL-Pool (früher SQL Data Warehouse)](sql-data-warehouse-overview-what-is.md) in Azure Synapse Analytics
 
 In diesem Artikel erfahren Sie, wie Sie Geosicherungen für Ihren dedizierten SQL-Pool (früher SQL Data Warehouse) über das Azure-Portal deaktivieren.
 
@@ -28,7 +28,7 @@ Befolgen Sie diese Schritte, um Geosicherungen für Ihren dedizierten SQL-Pool (
 
 > [!NOTE]
 > Wenn Sie Geosicherungen deaktivieren, können Sie Ihren dedizierten SQL-Pool (früher SQL DW) nicht mehr in einer anderen Azure-Region wiederherstellen. 
->
+> 
 
 1. Melden Sie sich bei Ihrem [Azure-Portal](https://portal.azure.com/)-Konto an.
 1. Wählen Sie die dedizierte SQL-Pool-Ressource (früher SQL DW) aus, für die Sie Geosicherungen deaktivieren möchten. 

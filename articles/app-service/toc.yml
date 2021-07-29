@@ -78,7 +78,7 @@
       href: app-service-web-tutorial-rest-api.md
     - name: Zuordnen einer benutzerdefinierte Domäne
       href: app-service-web-tutorial-custom-domain.md
-    - name: Schützen einer Domäne mit SSL
+    - name: Schützen einer Domäne mit TLS/SSL
       href: configure-ssl-bindings.md
     - name: Hinzufügen von CDN
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
@@ -213,11 +213,9 @@
           href: configure-domain-traffic-manager.md
         - name: Migrieren einer aktiven Domäne
           href: manage-custom-dns-migrate-domain.md
-    - name: Sichern der App
+    - name: Authentifizieren von Benutzern
       items:
-        - name: Hinzufügen eines SSL-Zertifikats
-          href: configure-ssl-certificate.md
-        - name: Authentifizieren von Benutzern
+        - name: Konfigurieren von Identitätsanbietern
           items:
             - name: Authentifizierung über Azure AD
               href: configure-authentication-provider-aad.md
@@ -231,15 +229,27 @@
               href: configure-authentication-provider-openid-connect.md
             - name: Authentifizieren mithilfe der Anmeldung mit Apple (Vorschau)
               href: configure-authentication-provider-apple.md
-        - name: Erweiterte Authentifizierung
-          href: app-service-authentication-how-to.md
+        - name: Anpassen von An- und Abmeldungen
+          href: configure-authentication-customize-sign-in-out.md
+        - name: Zugreifen auf Benutzeridentitäten
+          href: configure-authentication-user-identities.md
+        - name: Verwenden von Token
+          href: configure-authentication-oauth-tokens.md
+        - name: Verwalten von API-Versionen
+          href: configure-authentication-api-version.md
+        - name: Dateibasierte Konfiguration
+          href: configure-authentication-file-based.md
+    - name: Sichern der App
+      items:
+        - name: Hinzufügen eines TSL/SSL-Zertifikats
+          href: configure-ssl-certificate.md
         - name: Beschränken des Zugriffs
           href: app-service-ip-restrictions.md
         - name: Verwenden einer verwalteten Identität
           href: overview-managed-identity.md
         - name: Verweisen auf Geheimnisse aus Key Vault
           href: app-service-key-vault-references.md
-        - name: Verwenden eines SSL-Zertifikats in Code
+        - name: Verwenden eines TSL/SSL-Zertifikats in Code
           href: configure-ssl-certificate-in-code.md
         - name: Konfigurieren der gegenseitigen TLS-Authentifizierung
           href: app-service-web-configure-tls-mutual-auth.md
@@ -257,6 +267,8 @@
           href: manage-scale-per-app.md
     - name: Überwachen der App
       items:
+        - name: Überwachen von App Service mit Azure Monitor
+          href: monitor-app-service.md
         - name: Kontingente und Warnungen
           href: web-sites-monitor.md
         - name: Aktivieren von Protokollen
@@ -303,6 +315,8 @@
           href: webjobs-sdk-how-to.md
 - name: Verweis
   items:
+    - name: Überwachungsdaten
+      href: monitor-app-service-reference.md
     - name: Azure CLI
       href: /cli/azure/appservice
     - name: Azure PowerShell
@@ -311,6 +325,8 @@
       href: /rest/api/appservice/
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.web/allversions
+    - name: Referenz zu App-Einstellungen
+      href: reference-app-settings.md
     - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
@@ -361,18 +377,18 @@
         - name: Häufig gestellte Fragen
           items:
             - name: 'Häufig gestellte Fragen zu Verfügbarkeit, Leistung und Anwendungen'
-              href: faq-availability-performance-application-issues.md
+              href: faq-availability-performance-application-issues.yml
             - name: Häufig gestellte Fragen zur Bereitstellung
-              href: faq-deployment.md
+              href: faq-deployment.yml
             - name: Häufig gestellte Fragen zu Open-Source-Technologien
-              href: faq-open-source-technologies.md
+              href: faq-open-source-technologies.yml
             - name: Häufig gestellte Fragen zu Konfiguration und Verwaltung
-              href: faq-configuration-and-management.md
+              href: faq-configuration-and-management.yml
     - name: Änderung der IP-Adresse
       items:
         - name: IP-Adresse für eingehenden Datenverkehr
           href: ip-address-change-inbound.md
         - name: IP-Adresse für ausgehenden Datenverkehr
           href: ip-address-change-outbound.md
-        - name: SSL-Adresse
+        - name: TLS/SSL-Adresse
           href: ip-address-change-ssl.md

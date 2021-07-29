@@ -88,10 +88,16 @@
               href: entitlement-management-access-package-approval-policy.md
             - name: Ändern von Lebenszykluseinstellungen
               href: entitlement-management-access-package-lifecycle-policy.md
+            - name: Konfigurieren der Aufgabentrennung
+              href: entitlement-management-access-package-incompatible.md
             - name: Anzeigen von Anforderungen
               href: entitlement-management-access-package-requests.md
+            - name: Erneutes Verarbeiten von Anforderungen
+              href: entitlement-management-reprocess-access-package-requests.md
             - name: 'Anzeigen, Hinzufügen und Entfernen von Zuweisungen'
               href: entitlement-management-access-package-assignments.md
+            - name: Erneutes Verarbeiten von Zuweisungen
+              href: entitlement-management-reprocess-access-package-assignments.md
             - name: Ausblenden oder Löschen
               href: entitlement-management-access-package-edit.md
         - name: Genehmigende Personen

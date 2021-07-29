@@ -46,9 +46,9 @@
     - name: NAT Gateway
       items:
         - name: "Integrieren des öffentlichen Lastenausgleichs von NAT\_Gateway"
-          href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+          href: ../virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
         - name: "Integrieren des internen Lastenausgleichs von NAT\_Gateway"
-          href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+          href: ../virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
     - name: IP-basiertes Back-End
       items:
         - name: 'Erstellen eines öffentlichen Lastenausgleichs mit einem IP-basierten Back-End: Portal'
@@ -75,14 +75,16 @@
       href: skus.md
     - name: Systemüberwachung
       items:
+        - name: Überwachen des Lastenausgleichs
+          href: monitor-load-balancer.md
+        - name: Überwachen von Daten – Referenz
+          href: monitor-load-balancer-reference.md
         - name: Integritätstests
           href: load-balancer-custom-probe-overview.md
         - name: Azure Monitor-Erkenntnisse für Load Balancer
           href: load-balancer-insights.md
         - name: Metriken und Diagnosen für den Lastenausgleich im Standard-Tarif
           href: load-balancer-standard-diagnostics.md
-        - name: Azure Monitor-Protokolle für Load Balancer
-          href: load-balancer-monitor-log.md
         - name: Abrufen von Load Balancer-Metriken mit REST
           href: load-balancer-query-metrics-rest-api.md
     - name: Hochverfügbarkeitsports
@@ -220,4 +222,4 @@
     - name: Produktupdates
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'
     - name: Häufig gestellte Fragen
-      href: load-balancer-faqs.md
+      href: load-balancer-faqs.yml

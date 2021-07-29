@@ -3,12 +3,12 @@ title: ZIP-Push-Bereitstellung für Azure Functions
 description: Verwenden Sie die Funktionen zur Bereitstellung von ZIP-Dateien des Kudu-Bereitstellungdiensts zum Veröffentlichen Ihrer Azure Functions.
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: fb6867d7719f9650acb00f80ac3a933713ce0e23
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a8a8b6e0ad1cd70ae6fe2f0025afcba6fc9e44a5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777649"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465832"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>ZIP-Bereitstellung für Azure Functions
 
@@ -36,11 +36,11 @@ Die ZIP-Datei, die Sie für die Push-Bereitstellung verwenden, muss alle Projekt
 
 Eine Funktionen-App umfasst alle Dateien und Ordner im Verzeichnis `wwwroot`. Eine ZIP-Bereitstellungsdatei enthält den Inhalt des Verzeichnisses `wwwroot`, aber nicht das Verzeichnis selbst. Wenn Sie ein C#-Klassenbibliotheksprojekt bereitstellen, müssen Sie die kompilierten Bibliotheksdateien und Abhängigkeiten in einem `bin`-Unterordner im ZIP-Paket einschließen.
 
+Wenn Sie auf einem lokalen Computer entwickeln, können Sie manuell eine ZIP-Datei des Funktions-App-Projektordners erstellen, indem Sie die integrierte ZIP-Komprimierungsfunktion oder Tools von Drittanbietern verwenden.
+
 ## <a name="download-your-function-app-files"></a>Herunterladen der Dateien Ihrer Funktionen-App
 
-Wenn Sie auf einem lokalen Computer entwickeln, ist es einfach, eine ZIP-Datei des Projektordners der Funktions-App auf Ihrem Entwicklungscomputer zu erstellen.
-
-Allerdings haben Sie Ihre Funktionen möglicherweise mithilfe des Editors im Azure-Portal erstellt. Sie können ein vorhandenes Funktionen-App-Projekt auf eine der folgenden Weisen herunterladen:
+Wenn Sie Ihre Funktionen mithilfe des Editors im Azure-Portal erstellt haben, können Sie Ihr vorhandenes Funktions-App-Projekt auf eine der folgenden Arten als ZIP-Datei herunterladen:
 
 + **Im Azure-Portal**
 

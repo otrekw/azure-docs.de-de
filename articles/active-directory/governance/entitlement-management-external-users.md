@@ -3,7 +3,7 @@ title: 'Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungs
 description: Enthält Informationen zu den Einstellungen, die Sie angeben können, um den Zugriff für externe Benutzer in der Azure Active Directory-Berechtigungsverwaltung zu steuern.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,29 +13,29 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7c78dcbc34deca769739f82964df41ebfc596ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4dae1695d372db94c7bd0fa12d20a7d327143b8a
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176789"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786481"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung
 
-Für die Azure AD-Berechtigungsverwaltung wird [Azure AD Business-to-Business (B2B)](../external-identities/what-is-b2b.md) genutzt, um mit Personen außerhalb Ihrer Organisation in einem anderen Verzeichnis zusammenzuarbeiten. Externe Benutzer verwenden Azure AD B2B für die Authentifizierung gegenüber ihrem Basisverzeichnis, aber sie werden in Ihrem Verzeichnis dargestellt. Die Darstellung in Ihrem Verzeichnis ermöglicht dem Benutzer den Zugriff auf Ihre Ressourcen.
+Die Azure AD-Berechtigungsverwaltung verwendet [Azure AD Business-to-Business (B2B)](../external-identities/what-is-b2b.md) zur Freigabe des Zugriffs, damit Sie mit Personen außerhalb Ihrer Organisation zusammenarbeiten können. Externe Benutzer verwenden Azure AD B2B für die Authentifizierung gegenüber ihrem Basisverzeichnis, aber sie werden in Ihrem Verzeichnis dargestellt. Die Darstellung in Ihrem Verzeichnis ermöglicht dem Benutzer den Zugriff auf Ihre Ressourcen.
 
 In diesem Artikel werden die Einstellungen beschrieben, die Sie angeben können, um den Zugriff für externe Benutzer zu steuern.
 
 ## <a name="how-entitlement-management-can-help"></a>Vorteile der Berechtigungsverwaltung
 
-Wenn Sie [Azure AD B2B](../external-identities/what-is-b2b.md)-Einladungen verwenden, müssen Sie bereits die E-Mail-Adressen der externen Gastbenutzer kennen, die Sie in das Ressourcenverzeichnis aufnehmen möchten, um mit ihnen zusammenzuarbeiten. Dies lässt sich leicht durchführen, wenn Sie an einem kleineren oder kurzfristigen Projekt arbeiten und bereits alle Teilnehmer kennen. Es ist jedoch schwieriger, wenn Sie mit vielen Benutzern arbeiten möchten oder wenn die Teilnehmer im Lauf der Zeit wechseln.  Angenommen, Sie arbeiten mit einer anderen Organisation zusammen und haben einen Ansprechpartner in dieser Organisation, im Laufe der Zeit benötigen jedoch weitere Benutzer in dieser Organisation ebenfalls Zugriff.
+Wenn Sie [Azure AD B2B](../external-identities/what-is-b2b.md)-Einladungen verwenden, müssen Sie bereits die E-Mail-Adressen der externen Gastbenutzer kennen, die Sie in das Ressourcenverzeichnis aufnehmen möchten, um mit ihnen zusammenzuarbeiten. Das direkte Einladen einzelner Benutzer funktioniert gut, wenn Sie an einem kleineren oder kurzfristigen Projekt arbeiten und bereits alle Teilnehmer kennen. Dieser Vorgang ist jedoch schwieriger zu verwalten, wenn Sie mit vielen Benutzern arbeiten möchten oder die Teilnehmer im Lauf der Zeit wechseln.  Angenommen, Sie arbeiten mit einer anderen Organisation zusammen und haben einen Ansprechpartner in dieser Organisation, im Laufe der Zeit benötigen jedoch weitere Benutzer in dieser Organisation ebenfalls Zugriff.
 
-Mit der Berechtigungsverwaltung können Sie eine Richtlinie definieren, die Benutzern aus von Ihnen angegebenen Organisationen das selbstständige Anfordern eines Zugriffspakets ermöglicht. Sie können ein Ablaufdatum für den Zugriff angeben und festlegen, ob eine Genehmigung erforderlich ist. Wenn eine Genehmigung erforderlich ist, können Sie auch einen oder mehrere Benutzer der externen Organisation für Ihr Verzeichnis einladen und als genehmigende Personen festlegen, da diese wahrscheinlich am besten wissen, welche externen Benutzer in ihrer eigenen Organisation Zugriff benötigen. Nachdem Sie das Zugriffspaket konfiguriert haben, können Sie der Kontaktperson (Projektsponsor) in der externen Organisation den Link zum Zugriffspaket senden. Diese Kontaktperson kann den Link für andere Benutzer in der externen Organisation freigeben, und diese können mit diesem Link das Zugriffspaket anfordern. Benutzer in dieser Organisation, die bereits in Ihr Verzeichnis eingeladen wurden, können diesen Link ebenfalls verwenden.
+Mit der Berechtigungsverwaltung können Sie eine Richtlinie definieren, die Benutzern aus von Ihnen angegebenen Organisationen das selbstständige Anfordern eines Zugriffspakets ermöglicht. Diese Richtlinie enthält ein Ablaufdatum für den Zugriff und gibt an, ob eine Genehmigung oder Zugriffsüberprüfungen erforderlich sind. Wenn eine Genehmigung erforderlich ist, könnten Sie einen (oder mehrere) Benutzer der externen Organisation in Ihr Verzeichnis einladen, diesen als Sponsor festlegen und konfigurieren, dass Sponsoren genehmigende Personen sind. Diese werden wahrscheinlich am besten wissen, welche externen Benutzer aus ihrer Organisation Zugriff benötigen. Nachdem Sie das Zugriffspaket konfiguriert haben, rufen Sie den Anforderungslink des Zugriffspakets ab, damit Sie den Link Ihrer Kontaktperson (Sponsor) in der externen Organisation zusenden können. Diese Kontaktperson kann den Link für andere Benutzer in der externen Organisation freigeben, und diese können mit diesem Link das Zugriffspaket anfordern. Benutzer in dieser Organisation, die bereits in Ihr Verzeichnis eingeladen wurden, können diesen Link ebenfalls verwenden.
 
-Wenn eine Anforderung genehmigt wurde, gewährt die Berechtigungsverwaltung dem Benutzer den erforderlichen Zugriff. Dies kann das Einladen des Benutzers umfassen, falls er sich noch nicht in Ihrem Verzeichnis befindet. Azure AD erstellt automatisch ein B2B-Gastkonto für den Benutzer. Beachten Sie, dass ein Administrator möglicherweise durch das Festlegen einer [B2B-Zulassungs- oder -Verweigerungsliste](../external-identities/allow-deny-list.md), die Einladungen an andere Organisationen zulässt oder blockiert, festgelegt hat, welche Organisationen für die Zusammenarbeit zugelassen werden.  Wenn die Zulassungs- oder Verweigerungsliste den Benutzer nicht zulässt, wird er nicht eingeladen.
+Wenn eine Anforderung genehmigt wird, stellt die Berechtigungsverwaltung in der Regel dem Benutzer den erforderlichen Zugriff bereit. Wenn sich der Benutzer nicht bereits in Ihrem Verzeichnis befindet, lädt die Berechtigungsverwaltung zuerst den Benutzer ein. Wenn der Benutzer eingeladen wird, erstellt Azure AD automatisch ein B2B-Gastkonto für ihn, sendet dem Benutzer jedoch keine E-Mail. Beachten Sie, dass ein Administrator möglicherweise durch das Festlegen einer [B2B-Zulassungs- oder -Verweigerungsliste](../external-identities/allow-deny-list.md), die Einladungen an andere Organisationen zulässt oder blockiert, festgelegt hat, welche Organisationen für die Zusammenarbeit zugelassen werden.  Wird der Benutzer durch die Zulassungs- oder Verweigerungsliste nicht zugelassen, wird er nicht eingeladen und erhält erst dann Zugriff, wenn die Listen aktualisiert wurden.
 
 Da der Zugriff des Benutzers nicht unbefristet sein soll, geben Sie in der Richtlinie ein Ablaufdatum, z.B. 180 Tage, an. Nach 180 Tagen wird der gesamte per Zugriffspaket gewährte Zugriff durch die Berechtigungsverwaltung entfernt, sofern er nicht verlängert wird. Wenn der Benutzer, der über die Berechtigungsverwaltung eingeladen wurde, nach Ende der Zuweisung über keine weiteren Zuweisungen von Zugriffspaketen verfügt, wird die Anmeldung über sein Gastkonto standardmäßig 30 Tage lang gesperrt, und anschließend wird das Konto entfernt. Auf diese Weise lassen sich unnötige Konten verhindern. Wie in den folgenden Abschnitten beschrieben, können diese Einstellungen konfiguriert werden.
 
@@ -51,7 +51,7 @@ Im folgenden Diagramm und den folgenden Schritten erhalten Sie einen Überblick 
 
 1. Sie senden einen [Link für das Portal „Mein Zugriff“](entitlement-management-access-package-settings.md) an Ihre Kontaktperson in der externen Organisation, den diese zur Anforderung des Zugriffspakets an die Benutzer weitergeben kann.
 
-1. Ein externer Benutzer (in diesem Beispiel **Requestor A**) verwendet den Link für das Portal „Mein Zugriff“, um [Zugriff auf das Zugriffspaket anzufordern](entitlement-management-request-access.md). Wie sich der Benutzer anmeldet, hängt vom Authentifizierungstyp des Verzeichnisses oder der Domäne ab, der bzw. die in der verbundenen Organisation definiert ist.
+1. Ein externer Benutzer (in diesem Beispiel **Requestor A**) verwendet den Link für das Portal „Mein Zugriff“, um [Zugriff auf das Zugriffspaket anzufordern](entitlement-management-request-access.md). Wie sich der Benutzer anmeldet, hängt vom Authentifizierungstyp des Verzeichnisses oder der Domäne ab, der bzw. die in der verbundenen Organisation und in den Einstellungen des externen Benutzers definiert ist.
 
 1. Eine genehmigende Person [genehmigt die Anforderung](entitlement-management-request-approve.md) (oder sie wird automatisch genehmigt).
 
@@ -65,7 +65,7 @@ Im folgenden Diagramm und den folgenden Schritten erhalten Sie einen Überblick 
 
 1. Für den Zugriff auf die Ressourcen kann der externe Benutzer entweder in der E-Mail auf den Link klicken oder versuchen, direkt auf die Verzeichnisressourcen zuzugreifen, um den Einladungsprozess abzuschließen.
 
-1. Abhängig von den Richtlinieneinstellungen läuft die Zuweisung des Zugriffspakets für den externen Benutzer nach einer bestimmten Zeit ab, sodass der Zugriff für ihn nicht mehr möglich ist.
+1. Wenn die Richtlinieneinstellungen ein Ablaufdatum enthalten, werden später, wenn die Zuweisung des Zugriffspakets für den externen Benutzer abläuft, die Zugriffsrechte des externen Benutzers aus diesem Zugriffspaket entfernt.
 
 1. Je nach Lebenszyklus der Einstellungen des externen Benutzers gilt Folgendes: Wenn der externe Benutzer nicht mehr über Zuweisungen von Zugriffspaketen verfügt, wird seine Anmeldung blockiert und das Gastbenutzerkonto aus Ihrem Verzeichnis entfernt.
 
@@ -82,7 +82,7 @@ Um zu gewährleisten, dass Benutzer außerhalb Ihrer Organisation Zugriffspakete
 ### <a name="configure-your-azure-ad-b2b-external-collaboration-settings"></a>Konfigurieren der Einstellungen für externe Azure AD B2B-Zusammenarbeit
 
 - Wenn Sie Gastbenutzern erlauben, andere Gastbenutzer in Ihr Verzeichnis einzuladen, können Gastbenutzereinladungen auch außerhalb der Berechtigungsverwaltung erfolgen. Es wird empfohlen, dass die Option **Gäste können einladen** auf **Nein** gesetzt wird, sodass nur ordnungsgemäß gesteuerte Einladungen möglich sind.
-- Wenn Sie die B2B-Zulassungsliste verwenden, müssen Sie sicherstellen, dass alle Domänen, mit denen Sie über die Berechtigungsverwaltung zusammenarbeiten möchten, zur Liste hinzugefügt werden. Wenn Sie stattdessen die B2B-Verweigerungliste verwenden, müssen Sie sicherstellen, dass alle Domänen, mit denen Sie zusammenarbeiten möchten, nicht zur Liste hinzugefügt werden.
+- Wenn Sie die B2B-Zulassungsliste verwenden, müssen Sie sicherstellen, dass alle Domänen aller Organisationen, mit denen Sie über die Berechtigungsverwaltung zusammenarbeiten möchten, zur Liste hinzugefügt werden. Wenn Sie stattdessen die B2B-Verweigerungsliste verwenden, darf keine Domäne einer Organisation, mit der Sie zusammenarbeiten möchten, in dieser Liste enthalten ist.
 - Wenn Sie eine Richtlinie für die Berechtigungsverwaltung für **alle Benutzer** (alle verbundenen Organisationen und alle neuen externen Benutzer) erstellen und ein Benutzer nicht zu einer verbundenen Organisation in Ihrem Verzeichnis gehört, wird automatisch eine verbundene Organisation für ihn erstellt, wenn er das Paket anfordert. Alle Einstellungen Ihrer B2B-Zulassungs- oder Verweigerungsliste haben Vorrang. Achten Sie daher darauf, die Domänen, die Sie in diese Richtlinie einbeziehen möchten, in Ihre Zulassungsliste aufzunehmen, wenn Sie eine verwenden, bzw. sie von Ihrer Verweigerungsliste auszuschließen, wenn Sie mit einer solchen Liste arbeiten.
 - Wenn Sie eine Richtlinie zur Berechtigungsverwaltung erstellen möchten, die **alle Benutzer** umfasst (alle verbundenen Organisationen + alle neuen externen Benutzer), müssen Sie zunächst die Authentifizierung mit Einmalkennung per E-Mail für Ihr Verzeichnis aktivieren. Weitere Informationen finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail](../external-identities/one-time-passcode.md).
 - Weitere Informationen über Einstellungen für externe Azure AD B2B-Zusammenarbeit finden Sie unter [Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann](../external-identities/delegate-invitations.md).
@@ -117,9 +117,9 @@ Um zu gewährleisten, dass Benutzer außerhalb Ihrer Organisation Zugriffspakete
 
 ## <a name="manage-the-lifecycle-of-external-users"></a>Verwalten des Lebenszyklus von externen Benutzern
 
-Sie können auswählen, was passiert, wenn ein externer Benutzer, der per Genehmigung der Anforderung eines Zugriffspakets eingeladen wurde, nicht mehr über Zuweisungen von Zugriffspaketen verfügt. Dies kann passieren, wenn der Benutzer alle Zuweisungen von Zugriffspaketen aufgibt oder seine letzte Zuweisung eines Zugriffspakets abläuft. Wenn ein externer Benutzer nicht mehr über Zuweisungen von Zugriffspaketen verfügt, wird für ihn die Anmeldung bei Ihrem Verzeichnis standardmäßig blockiert. Nach 30 Tagen wird das Gastbenutzerkonto aus Ihrem Verzeichnis entfernt.
+Sie können auswählen, was passiert, wenn ein externer Benutzer, der über die Anforderung eines Zugriffspakets in Ihr Verzeichnis eingeladen wurde, nicht mehr über Zuweisungen von Zugriffspaketen verfügt. Dies kann passieren, wenn der Benutzer alle Zuweisungen von Zugriffspaketen aufgibt oder seine letzte Zuweisung eines Zugriffspakets abläuft. Wenn ein externer Benutzer nicht mehr über Zuweisungen von Zugriffspaketen verfügt, wird für ihn die Anmeldung bei Ihrem Verzeichnis standardmäßig blockiert. Nach 30 Tagen wird das Gastbenutzerkonto aus Ihrem Verzeichnis entfernt.
 
-**Erforderliche Rolle:** Globaler Administrator oder Benutzeradministrator
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator oder Benutzeradministrator
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

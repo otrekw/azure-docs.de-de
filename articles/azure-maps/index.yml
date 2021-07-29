@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 60124b557513cdab7ea588fe731ff839becf36f2
-  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.openlocfilehash: 0f2f5ff726fb723e6481d03e5d8019be45fb9100
+  ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112030393"
+  ms.lasthandoff: 07/06/2021
+  ms.locfileid: "113303956"
 landingContent:
 - title: Info zu Azure Maps
   linkLists:
@@ -150,14 +150,12 @@ landingContent:
       url: android-map-add-line-layer.md
     - text: Hinzufügen einer Polygonebene
       url: how-to-add-shapes-to-android-map.md
+    - text: Hinzufügen einer Wärmebildebene
+      url: map-add-heat-map-layer-android.md
+    - text: Clusterpunktdaten
+      url: clustering-point-data-android-sdk.md
     - text: Verwenden von datengesteuerten Formatvorlagenausdrücken
       url: data-driven-style-expressions-android-sdk.md
-    - text: Hinzufügen einer Kachelebene zu einer Karte
-      url: how-to-add-tile-layer-android-map.md
-    - text: Hinzufügen einer Form zu einer Karte
-      url: how-to-add-shapes-to-android-map.md
-    - text: Anzeigen von Datenverkehrsdaten
-      url: how-to-show-traffic-android.md
 - title: Entwickeln mit standortbasierten Diensten
   linkLists:
   - linkListType: concept
@@ -226,6 +224,12 @@ landingContent:
       url: power-bi-visual-understanding-layers.md
     - text: Verwalten des Zugriffs
       url: power-bi-visual-manage-access.md
+- title: Azure Maps in Power Apps
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Interaktive Kartenkomponente
+      url: /powerapps/maker/canvas-apps/geospatial-component-map
 - title: Entwickeln mit Mobility Services
   linkLists:
   - linkListType: concept
@@ -249,7 +253,7 @@ landingContent:
     - text: Konzepte von Wetterdiensten
       url: weather-services-concepts.md
     - text: Häufig gestellte Fragen zu Wetterdiensten
-      url: weather-services-faq.md
+      url: weather-services-faq.yml
   - linkListType: tutorial
     links:
     - text: Analysieren von Wetterdaten mit Azure Notebooks (Python)

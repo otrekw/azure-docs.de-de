@@ -5,14 +5,14 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 6/09/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 52fa6f05db5452a2e7b8ec4f93d65525873c8c7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 383f9653de208bd00710f7a85788b60193986442
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020569"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967557"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Entwickeln von benutzerdefinierten .NET Standard-Funktionen für Azure Stream Analytics-Aufträge (Vorschau)
 
@@ -26,7 +26,7 @@ Das .NET-UDF-Feature für Cloudaufträge ist in den folgenden Regionen verfügba
 * USA (Ost) 2
 * Europa, Westen
 
-Wenn Sie dieses Feature in einer anderen Region verwenden möchten, können Sie den [Zugriff anfordern](https://aka.ms/ccodereqregion).
+Wenn Sie dieses Feature in einer anderen Region verwenden möchten, können Sie den [Zugriff anfordern](https://aka.ms/ccodereqregion).  Bei Verwendung von [Stream Analytics-Clustern](./cluster-overview.md) gibt es jedoch keine solche Regionseinschränkung.
 
 ## <a name="package-path"></a>Paketpfad
 
@@ -266,6 +266,8 @@ Für die Vorschauversion für benutzerdefinierte Funktionen gelten derzeit folge
 * .NET Standard-UDFs können nur in Visual Studio Code oder Visual Studio erstellt und in Azure veröffentlicht werden. Schreibgeschützte Versionen von .NET Standard-UDFs können im Azure-Portal unter **Funktionen** angezeigt werden. Das Erstellen von .NET Standard-Funktionen wird im Azure-Portal nicht unterstützt.
 
 * Der Abfrage-Editor im Azure-Portal zeigt einen Fehler an, wenn Sie eine .NET Standard-UDF im Portal verwenden. 
+
+* Aufrufen von externen REST-Endpunkten, z. B. für die Durchführung umgekehrter IP-Suchen oder zum Abrufen von Referenzdaten aus einer externen Quelle
 
 * Da der benutzerdefinierte Code den Kontext mit der Azure Stream Analytics-Engine gemeinsam nutzt, kann benutzerdefinierter Code nicht auf Elemente verweisen, deren Namespace oder DLL-Name in Konflikt mit Azure Stream Analytics-Code steht. Sie können beispielsweise nicht auf *Newtonsoft Json* verweisen.
 

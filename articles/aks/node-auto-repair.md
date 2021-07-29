@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Funktion zur automatischen Reparatur vo
 services: container-service
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 341aef394a3784edbc0acd91dad396c9794da3d0
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 95783000739fd42e39ef1bbce88c3b8e62d4a8dc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105203"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073196"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Automatisches Reparieren von AKS-Knoten (Azure Kubernetes Service)
 
@@ -45,6 +45,11 @@ Wenn von AKS ein fehlerhafter Knoten identifiziert wird und dieser Knoten zehn M
 Sollte die automatische Reparatur nicht erfolgreich sein, werden von AKS-Technikern alternative Abhilfemaßnahmen geprüft. 
 
 Sind bei einer Integritätsüberprüfung mehrere Knoten fehlerhaft, werden die Knoten einzeln nacheinander repariert.
+
+
+## <a name="limitations"></a>Einschränkungen
+
+In vielen Fällen kann AKS ermitteln, ob ein Knoten fehlerhaft ist, und das Problem zu beheben versuchen. Es gibt jedoch Fälle, in denen AKS das Problem entweder nicht beheben kann oder nicht erkennt, dass ein Problem vorliegt. AKS kann beispielsweise keine Probleme erkennen, wenn aufgrund eines Fehlers in der Netzwerkkonfiguration kein Knotenstatus gemeldet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

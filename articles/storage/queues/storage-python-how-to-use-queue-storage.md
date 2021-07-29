@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 32dc54673674ac10f8dc1e3351133ca33ef7665c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 11b50ad391c5b73b7f986ddb7ad2972ebeaf2c58
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277418"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477266"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Verwenden von Azure Queue Storage mit Python
 
@@ -38,7 +38,7 @@ Das [Azure Storage SDK für Python](https://github.com/azure/azure-storage-pytho
 
 Geben Sie für die Installation über Python Package Index (PyPI) folgenden Befehl ein:
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 ```console
 pip install azure-storage-queue
@@ -61,7 +61,7 @@ Informationen zu alternativen Installationsmethoden finden Sie unter [Azure SDK 
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurieren Ihrer Anwendung für den Zugriff auf den Warteschlangenspeicher
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Das [`QueueClient`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient)-Objekt ermöglicht Ihnen die Arbeit mit Warteschlangen. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf eine Azure-Warteschlange zugreifen möchten, folgenden Code ein:
 
@@ -88,7 +88,7 @@ Das Paket `os` stellt Unterstützung für das Abrufen einer Umgebungsvariable be
 
 Die Verbindungszeichenfolge wird aus der zuvor festgelegten Umgebungsvariable `AZURE_STORAGE_CONNECTION_STRING` abgerufen.
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Der folgende Code erstellt mithilfe der Verbindungszeichenfolge für den Speicher ein `QueueClient`-Objekt.
 
@@ -119,7 +119,7 @@ queue_service.create_queue(queue_name)
 
 Azure-Warteschlangennachrichten werden als Text gespeichert. Wenn Sie Binärdaten speichern möchten, richten Sie die Funktionen für die Base64-Codierung und -Decodierung ein, bevor Sie eine Nachricht in die Warteschlange stellen.
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Konfigurieren Sie die Funktionen für die Base64-Codierung und -Decodierung, wenn Sie das Clientobjekt erstellen.
 
@@ -139,7 +139,7 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 ## <a name="insert-a-message-into-a-queue"></a>Einfügen einer Nachricht in eine Warteschlange
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Verwenden Sie zum Einfügen einer Nachricht in eine Warteschlange die Methode [`send_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-).
 
@@ -159,7 +159,7 @@ queue_service.put_message(queue_name, message)
 
 ## <a name="peek-at-messages"></a>Einsehen von Nachrichten
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Sie können Nachrichten einsehen, ohne sie aus der Warteschlange zu entfernen. Rufen Sie dazu die Methode [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) auf. Standardmäßig wird von dieser Methode jeweils nur eine Nachricht angeschaut.
 
@@ -182,7 +182,7 @@ for peeked_message in messages:
 
 Sie können den Inhalt einer Nachricht vor Ort in der Warteschlange ändern. Wenn die Nachricht einen Task repräsentiert, können Sie dieses Feature verwenden, um den Status des Tasks zu aktualisieren.
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Im folgenden Codebeispiel wird die Methode [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) verwendet, um eine Nachricht zu aktualisieren. Das Sichtbarkeitstimeout ist auf 0 festgelegt, d. h., die Nachricht wird sofort angezeigt, und der Inhalt wird aktualisiert.
 
@@ -206,7 +206,7 @@ for message in messages:
 
 Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen.
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Die Methode [get_queue_properties](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#get-queue-properties---kwargs-) gibt Warteschlangeneigenschaften zurück, einschließlich `approximate_message_count`.
 
@@ -230,7 +230,7 @@ Die Anzahl ist nur ein ungefährer Wert, da seit der Antwort des Diensts auf Ihr
 
 Das Entfernen einer Nachricht aus einer Warteschlange erfolgt in zwei Stufen. Wenn Ihr Code eine Nachricht nicht verarbeiten kann, stellt dieser zweistufige Prozess sicher, dass Sie dieselbe Nachricht erneut erhalten und den Vorgang erneut ausführen können. Rufen Sie nach der erfolgreichen Verarbeitung der Nachricht `delete_message` auf.
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Wenn Sie [receive_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) aufrufen, wird standardmäßig die nächste Nachricht in der Warteschlange abgerufen. Die für `receive_messages` zurückgegebene Nachricht ist für anderen Code, mit dem Nachrichten aus dieser Warteschlange gelesen werden, nicht mehr sichtbar. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem [delete_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#delete-message-message--pop-receipt-none----kwargs-) aufrufen.
 
@@ -252,7 +252,7 @@ for message in messages:
 
 Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Warteschlange anpassen können. Erstens können Sie einen Nachrichtenstapel abrufen (bis zu 32). Zweitens können Sie das Unsichtbarkeits-Zeitlimit verkürzen oder verlängern, sodass der Code mehr oder weniger Zeit zur vollständigen Verarbeitung jeder Nachricht benötigt.
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Im folgenden Codebeispiel wird die Methode [`receive_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) verwendet, um Nachrichten in Batches abzurufen. Danach wird jede Nachricht in jedem Batch mithilfe einer geschachtelten `for`-Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten pro Nachricht festgelegt.
 
@@ -274,7 +274,7 @@ for message in messages:
 
 ## <a name="delete-a-queue"></a>Löschen einer Warteschlange
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) auf.
 

@@ -3,21 +3,21 @@ title: Verwalten der Integrationsdienstumgebungen in Azure Logic Apps
 description: Überprüfen der Netzwerkintegrität und Verwalten von Logik-Apps, Verbindungen, benutzerdefinierten Connectors und Integrationskonten in Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) für Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, jonfan, logicappspm
+ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 10/25/2020
-ms.openlocfilehash: 4df9543e5e747de640562b7e5be224e257e0cfd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4cc844cc12383d5ccc3a3a12f48431d34b4872d
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92676101"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984822"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Verwalten Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
 
 In diesem Artikel wird beschrieben, wie Sie Verwaltungsaufgaben für Ihre [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ausführen. Beispiel:
 
-* Verwalten von Ressourcen, z. B. Logik-Apps, Verbindungen, Integrationskonten und Connectors in Ihrer ISE.
+* Verwalten von Ressourcen, z. B. mehrinstanzenfähige Logik-Apps, Verbindungen, Integrationskonten und Connectors in Ihrer ISE
 
 * Überprüfen der Integrität des Netzwerks Ihrer ISE.
 

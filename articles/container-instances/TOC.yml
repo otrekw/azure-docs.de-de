@@ -130,8 +130,8 @@
           href: container-instances-get-logs.md
         - name: Protokollierung mit Azure Monitor-Protokollen
           href: container-instances-log-analytics.md
-        - name: Überprüfen von Images mithilfe der Aktion zur Azure-Containerüberprüfung
-          href: container-instances-github-action-scan.md
+        - name: Anzeigen des Zustands einer Instanz
+          href: container-state.md
     - name: Problembehandlung
       items:
         - name: Häufig auftretende Probleme und Problembehandlung
@@ -178,6 +178,6 @@
     - name: Videos
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
     - name: Häufig gestellte Fragen
-      href: container-instances-faq.md
+      href: container-instances-faq.yml
 - name: Support und Problembehandlung
   href: container-instances-support-help.md

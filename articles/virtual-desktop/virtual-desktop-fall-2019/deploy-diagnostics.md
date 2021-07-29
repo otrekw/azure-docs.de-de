@@ -1,24 +1,24 @@
 ---
-title: Bereitstellen des Diagnosetools für Windows Virtual Desktop (klassisch) – Azure
-description: So stellen Sie das Diagnose-UX-Tool für Windows Virtual Desktop (klassisch) bereit.
+title: Bereitstellen des Diagnosetools für Azure Virtual Desktop (klassisch) – Azure
+description: So stellen Sie das Diagnose-UX-Tool für Azure Virtual Desktop (klassisch) bereit.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ed010b3eed875c8b14892a588be13a32fbbd95ac
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 92876524f036126f39a2e4e5db8eb5dbd660cee9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445090"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754779"
 ---
-# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Bereitstellen des Diagnosetools für Windows Virtual Desktop (klassisch)
+# <a name="deploy-the-azure-virtual-desktop-classic-diagnostics-tool"></a>Bereitstellen des Diagnosetools für Azure Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager.
 
-Folgende Aufgaben kann das Diagnosetool für Windows Virtual Desktop für Sie erledigen:
+Folgende Aufgaben kann das Diagnosetool für Azure Virtual Desktop für Sie erledigen:
 
 - Nachschlagen von Diagnoseaktivitäten (Verwaltung, Verbindung oder Feed) für einen einzelnen Benutzer über einen Zeitraum von einer Woche.
 - Sammeln von Sitzungshostinformationen für Verbindungsaktivitäten aus Ihrem Log Analytics-Arbeitsbereich.
@@ -50,7 +50,7 @@ Nachdem Sie alles vorbereitet haben, können Sie die Azure AD-App-Registrierung 
 In diesem Abschnitt erfahren Sie, wie Sie PowerShell verwenden, um die Azure Active Directory-App mit einem Dienstprinzipal zu erstellen und für diesen API-Berechtigungen zu erhalten.
 
 >[!NOTE]
->Die API-Berechtigungen sind Windows Virtual Desktop-, Log Analytics- und Microsoft Graph-API-Berechtigungen und werden der Azure Active Directory-Anwendung hinzugefügt.
+>Die API-Berechtigungen sind Azure Virtual Desktop-, Log Analytics- und Microsoft Graph-API-Berechtigungen und werden der Azure Active Directory-Anwendung hinzugefügt.
 
 1. Öffnen Sie PowerShell als Administrator.
 2. Melden Sie sich bei Azure mit einem Konto an, das die Berechtigung „Besitzer“ oder „Mitwirkender“ für das Azure-Abonnement besitzt, das Sie für die Diagnosetools verwenden möchten:
@@ -200,7 +200,7 @@ So legen Sie den Umleitungs-URI fest
 Bevor Sie das Diagnosetool für Ihre Benutzer verfügbar machen, stellen Sie sicher, dass diese über die folgenden Berechtigungen verfügen:
 
 - Benutzer benötigen Lesezugriff für Log Analytics. Weitere Informationen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../../azure-monitor/roles-permissions-security.md).
--  Benutzer benötigen ferner Lesezugriff für den Windows Virtual Desktop-Mandanten (RDS-Rolle „Leser“). Weitere Informationen finden Sie unter [Delegierter Zugriff in Windows Virtual Desktop](delegated-access-virtual-desktop-2019.md).
+-  Benutzer benötigen ferner Lesezugriff für den Azure Virtual Desktop-Mandanten (RDS-Rolle „Leser“). Weitere Informationen finden Sie unter [Delegierter Zugriff in Azure Virtual Desktop](delegated-access-virtual-desktop-2019.md).
 
 Sie müssen Ihren Benutzern außerdem noch folgende Informationen zur Verfügung stellen:
 

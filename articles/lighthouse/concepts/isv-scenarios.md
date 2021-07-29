@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse in ISV-Szenarien
 description: Die Funktionen von Azure Lighthouse können von ISVs verwendet werden, um mit Angeboten flexibler auf Kundenwünsche zu reagieren.
-ms.date: 12/18/2020
+ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: d6a12a51d360ad236563b871dbd94cc442ade434
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fc8c261f49e8a12189708ada1d0da31965e5159
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97696297"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788677"
 ---
 # <a name="azure-lighthouse-in-isv-scenarios"></a>Azure Lighthouse in ISV-Szenarien
 
@@ -37,4 +37,4 @@ Um diese Architektur zu ermöglichen, muss der ISV die Objekt-ID für eine Benut
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie über [Mandantenübergreifende Verwaltungsmöglichkeiten](cross-tenant-management-experience.md).
-- Informationen zur [delegierten Azure-Ressourcenverwaltung](azure-delegated-resource-management.md)
+- Weitere Informationen zur [Azure Lighthouse-Architektur](architecture.md).

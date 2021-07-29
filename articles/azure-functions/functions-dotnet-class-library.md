@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie C# zum Entwickeln und Veröffentlichen v
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: c7d14599ec1ebbcb94e0c0f3985a3b857f9353dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60afc79c332385958d9f73ad1e224cab90293e1c
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563879"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903129"
 ---
 # <a name="develop-c-class-library-functions-using-azure-functions"></a>Entwickeln von C#-Klassenbibliotheksfunktionen mithilfe von Azure Functions
 
@@ -28,22 +28,7 @@ Für C#-Entwickler sind möglicherweise auch folgende Artikel interessant:
 
 Azure Functions unterstützt die Programmiersprachen C# und C#-Skript. Wenn Sie nach Anleitungen zum [Verwenden von C# im Azure-Portal](functions-create-function-app-portal.md) suchen, lesen Sie [C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions](functions-reference-csharp.md).
 
-## <a name="supported-versions"></a>Unterstützte Versionen
-
-Versionen der Functions-Laufzeit funktionieren mit bestimmten Versionen von .NET. Weitere Informationen zu den Functions-Versionen finden Sie unter [Übersicht über die Runtimeversionen von Azure Functions](functions-versions.md).
-
-In der folgenden Tabelle sind die höchsten .NET Core- bzw. .NET Framework-Versionen aufgeführt, die mit einer bestimmten Version von Functions verwendet werden können. 
-
-| Version der Functions-Laufzeit | Maximale .NET-Version |
-| ---- | ---- |
-| Functions 3.x | .NET Core 3.1<br/>.NET 5.0<sup>1</sup> |
-| Functions 2.x | .NET Core 2.2<sup>2</sup> |
-| Functions 1.x | .NET Framework 4.7 |
-
-<sup>1</sup> Muss [prozessextern](dotnet-isolated-process-guide.md) ausgeführt werden  
-<sup>2</sup> Weitere Informationen finden Sie unter [Überlegungen zu Functions-Versionen 2.x](#functions-v2x-considerations).   
-
-Aktuelle Informationen zu Azure Functions-Releases (einschließlich Informationen zur Entfernung bestimmter älterer Nebenversionen) finden Sie unter [Azure App Service-Ankündigungen](https://github.com/Azure/app-service-announcements/issues).
+[!INCLUDE [functions-dotnet-supported-versions](../../includes/functions-dotnet-supported-versions.md)]
 
 ### <a name="functions-v2x-considerations"></a>Überlegungen zu Functions-Versionen 2.x
 
@@ -221,11 +206,11 @@ Das `Sdk`-Paket hängt außerdem von [Newtonsoft.Json](https://www.nuget.org/pac
 
 Der Quellcode für `Microsoft.NET.Sdk.Functions` ist im GitHub-Repository [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) verfügbar.
 
-## <a name="runtime-version"></a>Laufzeitversion
+## <a name="local-runtime-version"></a>Lokale Runtimeversion
 
-Visual Studio verwendet [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) zum Ausführen von Functions-Projekten. Core Tools ist eine Befehlszeilenschnittstelle für die Functions-Runtime.
+Visual Studio verwendet [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) zum Ausführen von Functions-Projekten auf Ihrem lokalen Computer. Core Tools ist eine Befehlszeilenschnittstelle für die Functions-Runtime.
 
-Wenn Sie Core Tools mithilfe von npm installieren, wirkt sich dies nicht auf die von Visual Studio verwendete Core Tools-Version aus. Für die Functions-Runtime-Version 1.x speichert Visual Studio Core Tools-Versionen in *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* und verwendet die aktuelle dort gespeicherte Version. Für Function 2.x ist Core Tools in der Erweiterung **Azure Functions und WebJobs Tools** enthalten. Sie können sowohl für 1.x als auch 2.x anzeigen, welche Version in der Konsolenausgabe verwendet wird, wenn Sie ein Functions-Projekt ausführen:
+Wenn Sie die Core Tools mithilfe des Windows Installer-Pakets (MSI) oder npm installieren, wirkt sich dies nicht auf die von Visual Studio verwendete Core Tools-Version aus. Für die Functions-Runtime-Version 1.x speichert Visual Studio Core Tools-Versionen in *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* und verwendet die aktuelle dort gespeicherte Version. Für Function 2.x ist Core Tools in der Erweiterung **Azure Functions und WebJobs Tools** enthalten. Sie können sowohl für 1.x als auch 2.x anzeigen, welche Version in der Konsolenausgabe verwendet wird, wenn Sie ein Functions-Projekt ausführen:
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)

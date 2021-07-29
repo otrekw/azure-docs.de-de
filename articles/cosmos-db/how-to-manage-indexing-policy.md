@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 11/02/2020
+ms.date: 05/25/2021
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: a01b826f99b7bbfc864ad2a6f2913f4f4a9f3e54
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8a854e17c8a28b335f8c4e8c67bd5f27cb360789
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072260"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464628"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +48,8 @@ Hier sehen Sie einige Beispiele für Indizierungsrichtlinien im [JSON-Format](in
     }
 ```
 
-Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlinie, mit der ```kind```, ```dataType``` und ```precision``` manuell auf die jeweiligen Standardwerte festgelegt werden. Diese Eigenschaften müssen nicht mehr explizit festgelegt werden, und Sie sollten sie in der Indizierungsrichtlinie vollständig auslassen (wie im Beispiel oben gezeigt).
+Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlinie, mit der ```kind```, ```dataType``` und ```precision``` manuell auf die jeweiligen Standardwerte festgelegt werden. Diese Eigenschaften müssen nicht mehr explizit festgelegt werden, und Sie sollten sie in der Indizierungsrichtlinie vollständig auslassen (wie im Beispiel oben gezeigt). Wenn Sie diese Eigenschaften festlegen möchten, werden sie automatisch aus Ihrer Indizierungsrichtlinie entfernt.
+
 
 ```json
     {
@@ -102,7 +103,8 @@ Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlin
     }
 ```
 
-Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlinie, mit der ```kind```, ```dataType``` und ```precision``` manuell auf die jeweiligen Standardwerte festgelegt werden. Diese Eigenschaften müssen nicht mehr explizit festgelegt werden, und Sie sollten sie in der Indizierungsrichtlinie vollständig auslassen (wie im Beispiel oben gezeigt).
+Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlinie, mit der ```kind```, ```dataType``` und ```precision``` manuell auf die jeweiligen Standardwerte festgelegt werden. Diese Eigenschaften müssen nicht mehr explizit festgelegt werden, und Sie sollten sie in der Indizierungsrichtlinie vollständig auslassen (wie im Beispiel oben gezeigt). Wenn Sie diese Eigenschaften festlegen möchten, werden sie automatisch aus Ihrer Indizierungsrichtlinie entfernt.
+
 
 ```json
     {

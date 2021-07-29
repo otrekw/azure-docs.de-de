@@ -1,22 +1,22 @@
 ---
 title: 'Konfigurieren von Microsoft Endpoint Configuration Manager: Azure'
-description: Erfahren Sie, wie Sie Microsoft Endpoint Configuration Manager konfigurieren, um Softwareupdates für Windows 10 Enterprise (mehrere Sitzungen) unter Windows Virtual Desktop bereitzustellen.
+description: Erfahren Sie, wie Sie Microsoft Endpoint Configuration Manager konfigurieren, um Softwareupdates für Windows 10 Enterprise (mehrere Sitzungen) unter Azure Virtual Desktop bereitzustellen.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: helohr
 ms.reviewer: v-cawood; clemr
 manager: femila
-ms.openlocfilehash: fe2da5c60c06e5617d130940af4909c52272d551
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 8266473553288584a534e8833d8c50dcb2ec40cf
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448167"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754545"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>Konfigurieren von Microsoft Endpoint Configuration Manager
 
-In diesem Artikel wird erläutert, wie Microsoft Endpoint Configuration Manager so konfiguriert wird, dass Updates automatisch auf einen Windows Virtual Desktop-Host angewendet werden, auf dem Windows 10 Enterprise (mehrere Sitzungen) ausgeführt wird.
+In diesem Artikel wird erläutert, wie Microsoft Endpoint Configuration Manager so konfiguriert wird, dass Updates automatisch auf einen Azure Virtual Desktop-Host angewendet werden, auf dem Windows 10 Enterprise (mehrere Sitzungen) ausgeführt wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

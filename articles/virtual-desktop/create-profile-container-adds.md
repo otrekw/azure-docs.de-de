@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/09/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 59e2fc1f528040515398e51d359840f6ef1bbefc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 33e73a70db1a0fd16fae98ee5bc4bbdaa3759fe8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107255799"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756057"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Erstellen eines Profilcontainers mit Azure Files und Azure AD DS
 
@@ -113,7 +113,7 @@ So rufen Sie den Zugriffsschlüssel für das Speicherkonto ab
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile
      ```
 
-8. Führen Sie die folgenden Befehle aus, damit Ihre Windows Virtual Desktop-Benutzer ihre eigenen Profilcontainer erstellen können, während sie den Zugriff auf ihren Profilcontainer durch andere Benutzer blockieren.
+8. Führen Sie die folgenden Befehle aus, damit Ihre Azure Virtual Desktop-Benutzer ihre eigenen Profilcontainer erstellen können, während sie den Zugriff auf ihren Profilcontainer durch andere Benutzer verhindern.
 
      ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
@@ -175,7 +175,7 @@ Nun müssen Sie Ihrem Sitzungshost Benutzer zuweisen.
 
 So weisen Sie Benutzer zu
 
-1. Führen Sie Windows PowerShell als Administrator und dann das folgende Cmdlet aus, um sich mit PowerShell bei Windows Virtual Desktop anzumelden:
+1. Führen Sie Windows PowerShell als Administrator und dann das folgende Cmdlet aus, um sich mit PowerShell bei Azure Virtual Desktop anzumelden:
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell
@@ -188,7 +188,7 @@ So weisen Sie Benutzer zu
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-   Geben Sie bei Aufforderung die Anmeldeinformationen des Benutzers ein, dem die Rolle TenantCreator bzw. Besitzer oder Mitwirkender für RDS im Windows Virtual Desktop-Mandanten gewährt wurde.
+   Geben Sie bei Aufforderung die Anmeldeinformationen des Benutzers ein, dem die Rolle TenantCreator bzw. RDS-Besitzer oder RDS-Mitwirkender für RDS im Azure Virtual Desktop-Mandanten gewährt wurde.
 
 2. Führen Sie die folgenden Cmdlets aus, um einen Benutzer einer Remotedesktopgruppe zuzuweisen:
 
@@ -226,7 +226,7 @@ Jetzt müssen Sie nur noch sicherstellen, dass das von Ihnen erstellte Profil vo
 
 So überprüfen Sie Ihr Profil
 
-1. Öffnen Sie einen Browser, und wechseln Sie zum [Windows Virtual Desktop-Webclient](https://rdweb.wvd.microsoft.com/arm/webclient).
+1. Öffnen Sie einen Browser, und wechseln Sie zum [Azure Virtual Desktop-Webclient](https://rdweb.wvd.microsoft.com/arm/webclient).
 
 2. Melden Sie sich mit dem Benutzerkonto an, das der Remotedesktopgruppe zugewiesen ist.
 

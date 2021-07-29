@@ -3,7 +3,7 @@ title: Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungs
 description: Erfahren Sie, wie Sie Personen außerhalb Ihres Unternehmens das Anfordern von Zugriffspaketen gestatten, um eine gemeinsame Arbeit an Projekten zu ermöglichen.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/11/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b4e4bccde07d078c9749ee76c1653e6d431e63
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 7371bd090581d2295e3e0e53ae27136e37c89191
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532081"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786373"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungsverwaltung
 
@@ -60,7 +60,7 @@ Eine Demonstration, wie Sie eine verbundene Organisation hinzufügen können, fi
 
 Führen Sie die Anweisungen in diesem Abschnitt aus, um ein externes Azure AD-Verzeichnis oder eine externe Domäne als verbundene Organisation hinzuzufügen.
 
-**Erforderliche Rolle:** *Globaler Administrator* oder *Benutzeradministrator*
+**Erforderliche Rolle:** *Unternehmensadministrator*, *Identity Governance-Administrator* oder *Benutzeradministrator*
 
 1. Wählen Sie im Azure-Portal die Option **Azure Active Directory** und dann **Identity Governance** aus.
 

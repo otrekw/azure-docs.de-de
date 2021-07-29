@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie ein virtuelles Dateisystem in einen Batch-Poo
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 03/26/2021
-ms.openlocfilehash: dcd56a12d8728b83cdcb7cea4c16c4aedd4251a7
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 460501e30b5afd2eb7a1f67b1162b9820830454a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105747"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968144"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Einbinden eines virtuellen Dateisystems in einen Batch-Pool
 
@@ -76,7 +76,7 @@ new PoolAddParameter
 }
 ```
 
-### <a name="azure-blob-file-system"></a>Azure-Blobdateisystem
+### <a name="azure-blob-container"></a>Azure-Blobcontainer
 
 Eine andere Option ist die Verwendung von Azure-Blobspeicher über [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Zum Einbinden eines Blobdateisystems ist ein `AccountKey` oder `SasKey` für Ihr Speicherkonto erforderlich. Informationen zum Abrufen dieser Schlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md) oder [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../storage/common/storage-sas-overview.md). Weitere Informationen und Tipps zur Verwendung von blobfuse finden Sie in den häufig gestellten Fragen zu blobfuse.
 
@@ -97,7 +97,7 @@ new PoolAddParameter
                 AccountName = "StorageAccountName",
                 ContainerName = "containerName",
                 AccountKey = "StorageAccountKey",
-                SasKey = "",
+                SasKey = "SasKey",
                 RelativeMountPath = "RelativeMountPath",
                 BlobfuseOptions = "-o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 "
             },
@@ -108,7 +108,7 @@ new PoolAddParameter
 
 ### <a name="network-file-system"></a>Network File System
 
-Network File System (NFS) kann auf Poolknoten eingebunden werden, sodass Azure Batch auf herkömmliche Dateisysteme zugreifen kann. Dabei kann es sich um einen einzelnen in der Cloud bereitgestellten NFS-Server oder einen lokalen NFS-Server handeln, auf den über ein virtuelles Netzwerk zugegriffen wird. Alternativ dazu können Sie die verteilte In-Memory-Cachelösung [Avere vFXT](../avere-vfxt/avere-vfxt-overview.md) für datenintensive HPC-Aufgaben (High Performance Computing) verwenden.
+Network File System (NFS) kann auf Poolknoten eingebunden werden, sodass Azure Batch auf herkömmliche Dateisysteme zugreifen kann. Dabei kann es sich um einen einzelnen in der Cloud bereitgestellten NFS-Server oder einen lokalen NFS-Server handeln, auf den über ein virtuelles Netzwerk zugegriffen wird. NFS-Bereitstellungen unterstützen eine verteilte [Avere vFXT](../avere-vfxt/avere-vfxt-overview.md)-In-Memory-Cachelösung für datenintensive HPC-Aufgaben (High Performance Computing) sowie andere NFS-kompatible Standardschnittstellen wie [NFS für Azure Blob](../storage/blobs/network-file-system-protocol-support.md) und [NFS für Azure Files](../storage/files/storage-files-how-to-mount-nfs-shares.md).
 
 ```csharp
 new PoolAddParameter
@@ -122,7 +122,7 @@ new PoolAddParameter
             {
                 Source = "source",
                 RelativeMountPath = "RelativeMountPath",
-                MountOptions = "options ver=1.0"
+                MountOptions = "options ver=3.0"
             },
         }
     }
@@ -131,7 +131,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>Common Internet File System
 
-Das Einbinden von [Common Internet File Systems (CIFS)](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) auf Poolknoten ist eine weitere Möglichkeit, um Zugriff auf herkömmliche Dateisysteme zu ermöglichen. CIFS ist ein Dateifreigabeprotokoll, das einen offenen und plattformübergreifenden Mechanismus zum Anfordern von Netzwerkserverdateien und -diensten bietet. CIFS basiert auf der erweiterten Version des [Server Message Block (SMB)](/windows-server/storage/file-server/file-server-smb-overview)-Protokolls für die Internet- und Intranetdateifreigabe und kann zum Einbinden externer Dateisysteme auf Windows-Knoten verwendet werden.
+Das Einbinden von [Common Internet File Systems (CIFS)](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) auf Poolknoten ist eine weitere Möglichkeit, um Zugriff auf herkömmliche Dateisysteme zu ermöglichen. CIFS ist ein Dateifreigabeprotokoll, das einen offenen und plattformübergreifenden Mechanismus zum Anfordern von Netzwerkserverdateien und -diensten bietet. CIFS basiert auf der erweiterten Version des [SMB-Protokolls (Server Message Block)](/windows-server/storage/file-server/file-server-smb-overview) für die Internet- und Intranetdateifreigabe.
 
 ```csharp
 new PoolAddParameter
@@ -160,36 +160,28 @@ Wenn bei einer Einbindungskonfiguration ein Fehler auftritt, führt dies zu eine
 
 Wenn Sie die Protokolldateien für das Debuggen erhalten möchten, verwenden Sie [OutputFiles](batch-task-output-files.md), um die Protokolldateien (`*.log`) hochzuladen. Die Protokolldateien (`*.log`) enthalten Informationen zur Dateisystemeinbindung am Speicherort `AZ_BATCH_NODE_MOUNTS_DIR`. Einbindungsprotokolldateien weisen für jede Einbindung das Format `<type>-<mountDirOrDrive>.log` auf. Die zugehörige Einbindungsprotokolldatei einer `cifs`-Einbindung im Einbindungsverzeichnis `test` heißt beispielsweise `cifs-test.log`.
 
-## <a name="supported-skus"></a>Unterstützte SKUs
+## <a name="support-matrix"></a>Unterstützungsmatrix
 
-| Herausgeber | Angebot | SKU | Azure Files-Freigabe | blobfuse | NFS-Einbindung | CIFS-Einbindung |
-|---|---|---|---|---|---|---|
-| Batch | rendering-centos73 | Rendering | :heavy_check_mark: <br>Hinweis: Kompatibel mit CentOS 7.7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Canonical | UbuntuServer | 16.04-LTS, 18.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ | Debian | 8| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Hinweis: Kompatibel mit CentOS 7.4 </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>Hinweis: Unterstützt A_8-/9-Speicher</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | ubuntu-server-container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-dsvm | linux-data-science-vm-ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS-HPC | 7.4, 7.3, 7.1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle-Linux | 7.6 | :x: | :x: | :x: | :x: |
-| Windows | Windows Server | 2012, 2016, 2019 | :heavy_check_mark: | :x: | :x: | :x: |
+Azure Batch unterstützt die folgenden virtuellen Dateisystemtypen für Knoten-Agents, die für die jeweiligen Herausgeber und Angebote erstellt werden.
+
+| Betriebssystemtyp | Azure Files-Freigabe | Azure-Blobcontainer | NFS-Einbindung | CIFS-Einbindung |
+|---|---|---|---|---|
+| Linux | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Windows | :heavy_check_mark: | :x: | :x: | :x: |
 
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 
 Beachten Sie die folgenden Anforderungen, wenn Sie virtuelle Dateibereitstellungen mit [Azure Batch-Pools in einem virtuellen Netzwerk](batch-virtual-network.md) verwenden, und achten Sie darauf, dass kein erforderlicher Datenverkehr blockiert wird.
 
-- **Azure Files**:
+- **Azure-Dateifreigaben**:
   - Der TCP-Port 445 muss für Datenverkehr zum/vom Diensttag „Storage“ geöffnet sein. Weitere Informationen finden Sie unter [Verwenden einer Azure-Dateifreigabe mit Windows](../storage/files/storage-how-to-use-files-windows.md#prerequisites).
-- **Blobfuse**:
+- **Azure-Blobcontainer**:
   - Der TCP-Port 443 muss für Datenverkehr zum/vom Diensttag „Storage“ geöffnet sein.
   - VMs müssen auf https://packages.microsoft.com zugreifen können, um blobfuse- und gpg-Pakete herunterzuladen. Abhängig von der Konfiguration benötigen Sie u. U. auch Zugriff auf andere URLs, um weitere Pakete herunterzuladen.
 - **Network File System (NFS)** :
   - Erfordert Zugriff auf Port 2049 (Standardeinstellung; für Ihre Konfiguration gelten möglicherweise andere Anforderungen).
   - VMs müssen Zugriff auf den entsprechenden Paket-Manager haben, um das Paket „nfs-common“ (für Debian oder Ubuntu) oder „nfs-utils“ (für CentOS) herunterzuladen. Diese URL kann je nach Betriebssystemversion variieren. Abhängig von der Konfiguration benötigen Sie u. U. auch Zugriff auf andere URLs, um weitere Pakete herunterzuladen.
+  - Für die Bereitstellung von Azure Blob oder Azure Files über NFS müssen möglicherweise zusätzliche Netzwerkanforderungen erfüllt sein, z. B. Computeknoten, die das gleiche designierte Subnetz eines virtuellen Netzwerks wie das Speicherkonto verwenden.
 - **Common Internet File System (CIFS)** :
   - Erfordert Zugriff auf den TCP-Port 445.
   - VMs müssen Zugriff auf den entsprechenden Paket-Manager haben, um das Paket „cifs-utils“ herunterzuladen. Diese URL kann je nach Betriebssystemversion variieren.

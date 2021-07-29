@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: dee15977318eda7bcd0b1950286bb33f621221dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f39e209cf2f01abaf836924fc25dc64275f5fcb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98731583"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089810"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Verwaltete Identitäten für Azure SignalR Service
 
@@ -84,7 +84,7 @@ Wir bieten Bibliotheken und Codebeispiele, die zeigen, wie Sie die Tokenüberpr�
 
 Das Festlegen der Zugriffstokenüberprüfung in Funktions-Apps ist einfach und effizient und erfordert keinen Code.
 
-1. Schalten Sie auf der Seite **Authentifizierung/Autorisierung** die Option **App Service-Authentifizierung** auf **Ein** um.
+1. Schalten Sie auf der Seite **Authentifizierung (klassisch)** die Option **App Service-Authentifizierung** auf **Ein** um.
 
 2. Wählen Sie unter **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** die Option **Mit Azure Active Directory anmelden** aus.
 
@@ -97,6 +97,10 @@ Das Festlegen der Zugriffstokenüberprüfung in Funktions-Apps ist einfach und e
 6. Navigieren Sie zu den **Upstreameinstellungen** in SignalR Service, und wählen Sie **Verwaltete Identität verwenden** und **Vorhandene AD-App auswählen** aus. Wählen Sie die zuvor erstellte Anwendung aus.
 
 Nach diesen Einstellungen lehnt die Funktions-App Anforderungen ohne Zugriffstoken im Header ab.
+
+> [!Important] 
+> Um die Authentifizierung zu bestehen, muss die *Aussteller-URL* mit dem *iss*-Anspruch im Token übereinstimmen. Derzeit unterstützen wir nur v1-Endpunkte (siehe [v1.0 und v2.0)](../active-directory/develop/access-tokens.md#v10-and-v20), sodass die *Aussteller-URL* wie folgt aussehen sollte: `https://sts.windows.net/<tenant-id>/`. Überprüfen Sie die in Azure Function konfigurierte *Aussteller-URL*. Wechseln Sie für **Authentifizierung** zu *Identitätsanbieter* -> *Bearbeiten* -> *Aussteller-URL* und für **Authentifizierung (klassisch)** zu *Azure Active Directory* -> *Erweitert* -> *Aussteller-URL*.
+
 
 ## <a name="use-a-managed-identity-for-key-vault-reference"></a>Verwenden einer verwalteten Identität als Key Vault-Verweis
 

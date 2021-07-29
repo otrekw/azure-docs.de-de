@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 8293ed1bfb53895b9631d9730fb75a2364457180
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ddc3d35817211d7396defa7460a2505b86c700c
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96452376"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713236"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Einrichten eines Labs mit virtuellen GPU-Computern
 
@@ -47,16 +47,19 @@ Wenn Sie die GPU-Funktionen Ihrer virtuellen Lab-Computer nutzen möchten, stell
 
 ![Screenshot von „Neues Lab“mit der Option „GPU-Treiber installieren“](./media/how-to-setup-gpu/lab-gpu-drivers.png)
 
-Wie in der Abbildung oben gezeigt, ist diese Option standardmäßig aktiviert, wodurch sichergestellt wird, dass die *neuesten* Treiber für den Typ von GPU und Image installiert werden, den Sie ausgewählt haben.
-- Wenn Sie eine *Compute*-GPU-Größe auswählen, werden die Lab-VMs mit der [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf)-GPU betrieben.  In diesem Fall werden die neuesten [CUDA-Treiber (Compute Unified Device Architecture)](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf) installiert, die Hochleistungscomputing ermöglichen.
-- Wenn Sie eine *Visualisierungs*-GPU-Größe auswählen, werden Ihre Lab-VMs mit der [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf)-GPU und [GRID-Technologie](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf) betrieben.  In diesem Fall werden die neuesten GRID-Treiber installiert, was die Verwendung von grafikintensiven Anwendungen ermöglicht.
+Wie in der Abbildung oben gezeigt, ist diese Option standardmäßig aktiviert, wodurch sichergestellt wird, dass die aktuell veröffentlichten Treiber für den ausgewählten GPU- und Image-Typ installiert werden:
+- Wenn Sie eine *Compute*-GPU-Größe auswählen, werden die Lab-VMs mit der [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf)-GPU betrieben.  In diesem Fall werden die aktuellen [CUDA-Treiber (Compute Unified Device Architecture)](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf) installiert, die Hochleistungscomputing ermöglichen.
+- Wenn Sie eine *Visualisierungs*-GPU-Größe auswählen, werden Ihre Lab-VMs mit der [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf)-GPU und [GRID-Technologie](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf) betrieben.  In diesem Fall werden die aktuellen GRID-Treiber installiert, was die Verwendung von grafikintensiven Anwendungen ermöglicht.
+
+> [!IMPORTANT]
+> Mit der Option **GPU-Treiber installieren** werden die Treiber nur installiert, wenn sie im Image Ihres Labs nicht vorhanden sind.  Beispiel: Die GPU-Treiber sind bereits im [Data Science-Image](../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) des Azure Marketplace installiert.  Wenn Sie ein Lab mit dem Data Science-Image erstellen und **GPU-Treiber installieren** auswählen, werden die Treiber nicht auf die aktuelle Version aktualisiert.  Um die Treiber zu aktualisieren, müssen Sie sie manuell installieren, wie aus dem nächsten Abschnitt hervorgeht.  
 
 ### <a name="install-the-drivers-manually"></a>Manuelles Installieren der Treiber
-Möglicherweise müssen Sie eine andere Treiberversion als die aktuellste Version installieren.  In diesem Abschnitt wird gezeigt, wie die entsprechenden Treiber manuell installiert werden. Diese hängen davon ab, ob Sie eine *Compute-* GPU oder eine *Visualisierung* GPU verwenden.
+Möglicherweise müssen Sie eine andere Version der Treiber als die Version installieren, die Azure Lab Services für Sie installiert hat.  In diesem Abschnitt wird gezeigt, wie die entsprechenden Treiber manuell installiert werden. Diese hängen davon ab, ob Sie eine *Compute-* GPU oder eine *Visualisierung* GPU verwenden.
 
 #### <a name="install-the-compute-gpu-drivers"></a>Installieren der Compute-GPU-Treiber
 
-Gehen Sie folgendermaßen vor, um Treiber für die Compute-GPU-Größe manuell zu installieren:
+Gehen Sie folgendermaßen vor, um Treiber für die GPU-Größe *Compute* manuell zu installieren:
 
 1. Wenn Sie im Assistenten für die Lab-Erstellung [Ihr Lab erstellen](./how-to-manage-classroom-labs.md), deaktivieren Sie die Einstellung **GPU-Treiber installieren**.
 
@@ -80,7 +83,7 @@ Gehen Sie folgendermaßen vor, um Treiber für die Compute-GPU-Größe manuell z
 
 #### <a name="install-the-visualization-gpu-drivers"></a>Installieren der GPU-Treiber für die Visualisierung
 
-Gehen Sie folgendermaßen vor, um Treiber für die Visualisierungs-GPU-Größe manuell zu installieren:
+Gehen Sie folgendermaßen vor, um Treiber für die GPU-Größe *Visualisierung* manuell zu installieren:
 
 1. Wenn Sie im Assistenten für die Lab-Erstellung [Ihr Lab erstellen](./how-to-manage-classroom-labs.md), deaktivieren Sie die Einstellung **GPU-Treiber installieren**.
 1. Nachdem das Lab erstellt wurde, stellen Sie eine Verbindung mit der Vorlagen-VM her, um die entsprechenden Treiber zu installieren.
@@ -108,6 +111,8 @@ In diesem Abschnitt wird beschrieben, wie Sie überprüfen, ob Ihre GPU-Treiber 
 
       > [!IMPORTANT]
       > Auf die Einstellungen der NVIDIA-Systemsteuerung kann nur für *Visualisierungs*-GPUs zugegriffen werden.  Wenn Sie versuchen, die NVIDIA-Systemsteuerung für eine Compute-GPU zu öffnen, erhalten Sie die folgende Fehlermeldung: „NVIDIA Display settings are not available.  You are not currently using a display attached to an NVIDIA GPU.“ (NVIDIA-Anzeigeeinstellungen sind nicht verfügbar. Sie verwenden zurzeit keine Anzeige, die an eine NVIDIA-GPU angeschlossen ist.)  Ebenso werden die GPU-Leistungsinformationen im Task-Manager nur für Visualisierungs-GPUs bereitgestellt.
+
+ Je nach Szenario müssen Sie möglicherweise noch eine zusätzliche Überprüfung durchführen, um sicherzustellen, dass die GPU ordnungsgemäß konfiguriert ist.  Lesen Sie den Klassentyp für [Python und Jupyter Notebooks,](./class-type-jupyter-notebook.md#template-virtual-machine), der ein Beispiel enthält, in dem bestimmte Versionen von Treibern benötigt werden.
 
 #### <a name="linux-images"></a>Linux-Images
 Befolgen Sie die Anweisungen im Abschnitt „Überprüfen der Treiberinstallation“ von [Installieren von NVIDIA-GPU-Treibern auf VMs der N-Serie unter Linux](../virtual-machines/linux/n-series-driver-setup.md#verify-driver-installation).

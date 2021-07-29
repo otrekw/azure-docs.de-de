@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/17/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: a0894047db1ed7687a1a0f5f87fc4020ddf7c694
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c9f1294f1d2f80689cdb417ad16357cc5fbcece
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101678486"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089324"
 ---
 # <a name="create-device-groups-in-device-update-for-iot-hub"></a>Erstellen von Gerätegruppen in Device Update for IoT Hub
 Device Update for IoT Hub ermöglicht die Bereitstellung eines Updates für eine Gruppe von IoT-Geräten.
@@ -21,6 +21,7 @@ Device Update for IoT Hub ermöglicht die Bereitstellung eines Updates für eine
 * [Zugriff auf einen IoT Hub mit aktiviertem Device Update for IoT Hub](create-device-update-account.md). Es wird empfohlen, dass Sie für Ihren IoT Hub einen S1-Tarif (Standard) oder höher verwenden. 
 * Ein IoT-Gerät (oder Simulator), das/der für Device Update in IoT Hub bereitgestellt wird.
 * [Mindestens ein Update wurde für das bereitgestellte Gerät erfolgreich importiert.](import-update.md)
+* Installieren und Starten des Device Update-Agents auf Ihrem IoT-Gerät als [Modulidentität oder Identität auf Geräteebene](device-update-agent-provisioning.md)
 
 ## <a name="add-a-tag-to-your-devices"></a>Hinzufügen eines Tags zu Ihren Geräten  
 
@@ -44,20 +45,20 @@ Nachdem Sie das Gerät bei Device Update registriert haben, können Sie den Ger�
 
 ### <a name="using-jobs"></a>Verwenden von Aufträgen
 
-Es ist möglich, einen Auftrag auf mehreren Geräten zu planen, um ein Device Update-Tag hinzuzufügen oder zu aktualisieren, wie in [diesen](../iot-hub/iot-hub-devguide-jobs.md) Beispielen gezeigt wird. [Weitere Informationen](../iot-hub/iot-hub-csharp-csharp-schedule-jobs.md)
+Es ist möglich, einen Auftrag auf mehreren Geräten zu planen, um ein Device Update-Tag hinzuzufügen oder zu aktualisieren, wie in [diesen](../iot-hub/iot-hub-devguide-jobs.md) Beispielen gezeigt wird. Sie können den Geräte- oder Modulzwilling (wenn der Device Update-Agent als Modulidentität eingerichtet wurde) mithilfe von Aufträgen aktualisieren. [Weitere Informationen](../iot-hub/iot-hub-csharp-csharp-schedule-jobs.md).
 
   > [!NOTE] 
-  > Diese Aktion belastet Ihr aktuelles IoT Hub-Nachrichtenkontingent. Es wird empfohlen, nur bis zu 50.000 Tags von Gerätezwillingen gleichzeitig zu ändern, da Sie sonst möglicherweise mehr IoT Hub-Einheiten erwerben müssen, wenn Sie Ihr tägliches IoT Hub-Nachrichtenkontingent überschreiten. Details finden Sie unter [Kontingente und Drosselung](../iot-hub/iot-hub-devguide-quotas-throttling.md#quotas-and-throttling).
+  > Diese Aktion belastet Ihr aktuelles IoT Hub-Nachrichtenkontingent. Es wird empfohlen, nur bis zu 50.000 Tags von Geräte- oder Modulzwillingen gleichzeitig zu ändern. Andernfalls müssen Sie möglicherweise mehr IoT Hub-Einheiten erwerben, wenn Sie Ihr tägliches IoT Hub-Nachrichtenkontingent überschreiten. Details finden Sie unter [Kontingente und Drosselung](../iot-hub/iot-hub-devguide-quotas-throttling.md#quotas-and-throttling).
 
 ### <a name="direct-twin-updates"></a>Direkte Zwillingsupdates
 
-Tags können auch direkt im Gerätezwilling hinzugefügt oder aktualisiert werden.
+Tags können auch direkt im Geräte- oder Modulzwilling hinzugefügt oder aktualisiert werden.
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem IoT Hub.
 
-2. Suchen Sie im linken Navigationsbereich unter „IoT Devices“ (IoT-Geräte) oder „IoT Edge“ nach Ihrem IoT-Gerät, und navigieren Sie zum Gerätezwilling.
+2. Suchen Sie im linken Navigationsbereich von „IoT-Geräte“ oder „IoT Edge“ Ihr IoT-Gerät, navigieren Sie zum Gerätezwilling oder zum Device Update-Modul und dann zu dessen Modulzwilling (dieser ist verfügbar, wenn der Device Update-Agent als Modulidentität eingerichtet wurde).
 
-3. Löschen Sie im Gerätezwilling alle vorhandenen Device Update-Tagwerte, indem Sie diese auf NULL festlegen.
+3. Löschen Sie im Geräte- oder Modulzwilling alle vorhandenen Device Update-Tagwerte, indem Sie sie auf NULL festlegen.
 
 4. Fügen Sie wie unten gezeigt einen neuen Device Update-Tagwert hinzu. [Gerätezwilling-JSON-Beispieldokument mit Tags.](../iot-hub/iot-hub-devguide-device-twins.md#device-twins)
 

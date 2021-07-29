@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/06/2021
+ms.date: 05/16/2021
 ms.author: duau
-ms.openlocfilehash: 0a7e81c57552fdc24262522343a08fdabba71bfd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 9910cadfcbb40bbb411c8d07bc73ad2205c085e5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552579"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070514"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Lastenausgleich mit der Azure-Suite für die Anwendungsbereitstellung
 
@@ -74,7 +74,7 @@ Für den globalen Lastenausgleich und das globale Routing stehen Ihnen Traffic M
 ## <a name="building-with-azures-application-delivery-suite"></a>Erstellen von Anwendungen mit der Azure-Suite für die Anwendungsbereitstellung 
 Alle Websites, APIs und Dienste sollten geografisch redundant sein und Datenverkehr an Benutzer nach Möglichkeit vom nächstgelegenen Standort übermitteln.  Wenn Sie mehrere Lastenausgleichsdienste kombinieren, können Sie geografische und zonale Redundanz erzielen, um Zuverlässigkeit und Leistung zu maximieren.
 
-Die folgende Abbildung zeigt eine Beispielarchitektur, bei der eine Kombination all dieser Dienste verwendet wird, um einen globalen Webdienst zu erstellen. Der Architekt hat Traffic Manager zum Weiterleiten von Datenverkehr an globale Back-Ends für die Datei- und Objektübermittlung verwendet. Es wird zwar Front Door verwendet, zum globalen Weiterleiten von URL-Pfaden an den Dienst, die dem Muster „/store/*“ entsprechen, wurde jedoch eine Migration zu App Service ausgeführt. Schließlich werden alle anderen Anforderungen an regionale Application Gateways weitergeleitet.
+Die folgende Abbildung zeigt eine Beispielarchitektur, bei der eine Kombination all dieser Dienste verwendet wird, um einen globalen Webdienst zu erstellen. In dieser Architektur werden Dateien und Objekte mithilfe von Traffic Manager zu globalen Back-Ends geleitet. Azure Front Door Service wird verwendet, um URL-Pfade, die dem Muster „/store/*“ entsprechen, global zu ihrem zu App Service migrierten Dienst und alle anderen Anforderungen zu regionalen Application Gateway-Instanzen zu leiten.
 
 Der Anwendungsentwickler hat in jeder Region des IaaS-Diensts entschieden, dass alle URLs, die dem Muster „/images/*“ entsprechen, von einem dedizierten Pool von VMs aus bereitgestellt werden. Dieser Pool von VMs unterscheidet sich von dem Rest der Webfarm.
 

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: reference
 ms.date: 11/19/2020
 ms.author: jlian
-ms.openlocfilehash: 5f0af7d6bf16a05fad1ca9df5db1729abd088010
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4102171a14abc6eeb037f8b7425b7923f7b0651
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96603053"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069830"
 ---
 # <a name="iot-hub-data-plane-mqtt-5-api-reference"></a>MQTT 5-API-Referenz auf IoT Hub-Datenebene
 
@@ -74,7 +74,7 @@ Status der gemeldeten Patchzwillinge
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | if-version | u64 | nein |  |
 
@@ -84,7 +84,7 @@ Status der gemeldeten Patchzwillinge
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | version | u64 | ja | Version des gemeldeten Status nach dem Anwenden des Patches |
 
@@ -128,7 +128,7 @@ Empfangen und Verarbeiten von Befehlen
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | sequence-no | u64 | ja | Sequenznummer der Nachricht |
 | enqueued-time | time | ja | Zeitstempel des Zeitpunkts, zu dem die Nachricht in das System gelangt ist |
@@ -190,7 +190,7 @@ Empfangen und Verarbeiten von Aufrufen direkter Methoden
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | response-code | u32 | ja |  |
 
@@ -229,7 +229,7 @@ Empfangen von Updates am gewünschten Zustand des Zwillings
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | version | u64 | ja | Version des gewünschten Status zu diesem Update |
 
@@ -260,7 +260,7 @@ Senden Sie eine Nachricht an den Telemetriekanal. Standardmäßig ist dies Event
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | Inhaltstyp | Zeichenfolge | nein | Wird in der übermittelten Nachricht in eine `content-type`-Systemeigenschaft übersetzt |
 | content-encoding | Zeichenfolge | nein | Wird in der übermittelten Nachricht in eine `content-encoding`-Systemeigenschaft übersetzt |
@@ -268,6 +268,9 @@ Senden Sie eine Nachricht an den Telemetriekanal. Standardmäßig ist dies Event
 | user-id | Zeichenfolge | nein | Wird in der übermittelten Nachricht in eine `user-id`-Systemeigenschaft übersetzt |
 | correlation-id | Zeichenfolge | nein | Wird in der übermittelten Nachricht in eine `correlation-id`-Systemeigenschaft übersetzt |
 | creation-time | time | nein | Wird in der übermittelten Nachricht in eine `iothub-creation-time-utc`-Eigenschaft übersetzt |
+
+> [!TIP]
+> Das Format von `creation-time` muss UTC ohne Zeitzoneninformationen sein. Beispiel: `2021-04-21T11:30:16Z` ist gültig, `2021-04-21T11:30:16-07:00` ist ungültig.
 
 **Payload:** beliebige Bytesequenz
 
@@ -321,7 +324,7 @@ Die Vorgangsnachricht ist falsch formatiert und kann nicht verarbeitet werden.
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | reason | Zeichenfolge | nein | enthält Informationen darüber, was speziell an dieser Nachricht nicht gültig ist |
 
@@ -337,7 +340,7 @@ Der Vorgang steht im Konflikt mit einem anderen laufenden Vorgang.
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | trace-id | Zeichenfolge | nein | Ablaufverfolgungs-ID für die Korrelation mit zusätzlichen Diagnoseinformationen zum Fehler |
 | reason | Zeichenfolge | nein | enthält Informationen darüber, was speziell an dieser Nachricht nicht gültig ist |
@@ -354,7 +357,7 @@ Der Vorgang ist nicht zulässig.
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | reason | Zeichenfolge | nein | enthält Informationen darüber, was speziell an dieser Nachricht nicht gültig ist |
 
@@ -370,7 +373,7 @@ Der Client ist nicht zum Ausführen des Vorgangs autorisiert.
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | trace-id | Zeichenfolge | nein | Ablaufverfolgungs-ID für die Korrelation mit zusätzlichen Diagnoseinformationen zum Fehler |
 
@@ -386,7 +389,7 @@ Die angeforderte Ressource ist nicht vorhanden.
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | reason | Zeichenfolge | nein | enthält Informationen darüber, was speziell an dieser Nachricht nicht gültig ist |
 
@@ -438,7 +441,7 @@ Die Ressource verfügt nicht über die Kapazitäten zum Abschließen des Vorgang
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | reason | Zeichenfolge | nein | enthält Informationen darüber, was speziell an dieser Nachricht nicht gültig ist |
 
@@ -454,7 +457,7 @@ Der Server ist ausgelastet.
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | trace-id | Zeichenfolge | nein | Ablaufverfolgungs-ID für die Korrelation mit zusätzlichen Diagnoseinformationen zum Fehler |
 
@@ -470,7 +473,7 @@ Interner Serverfehler
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | trace-id | Zeichenfolge | nein | Ablaufverfolgungs-ID für die Korrelation mit zusätzlichen Diagnoseinformationen zum Fehler |
 
@@ -486,7 +489,7 @@ Das Ziel hat geantwortet, aber die Antwort war ungültig oder falsch formatiert.
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | reason | Zeichenfolge | nein | enthält Informationen darüber, was speziell an dieser Nachricht nicht gültig ist |
 
@@ -502,7 +505,7 @@ Beim Warten auf den Abschluss der Anforderung durch das Ziel ist ein Timeout auf
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | trace-id | Zeichenfolge | nein | Ablaufverfolgungs-ID für die Korrelation mit zusätzlichen Diagnoseinformationen zum Fehler |
 | reason | Zeichenfolge | nein | enthält Informationen darüber, was speziell an dieser Nachricht nicht gültig ist |
@@ -543,7 +546,7 @@ Beim Vorgang ist vor dem Abschluss ein Timeout aufgetreten.
 
 **Eigenschaften**:
 
-| Name | type | Erforderlich | BESCHREIBUNG |
+| Name | Typ | Erforderlich | BESCHREIBUNG |
 | :--- | :--- | :------- | :---------- |
 | trace-id | Zeichenfolge | nein | Ablaufverfolgungs-ID für die Korrelation mit zusätzlichen Diagnoseinformationen zum Fehler |
 

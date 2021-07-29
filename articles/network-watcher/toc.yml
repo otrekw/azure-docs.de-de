@@ -30,6 +30,8 @@
   items:
     - name: Verbindungsmonitor
       href: connection-monitor-overview.md
+    - name: Verbindungsmonitorschema
+      href: connection-monitor-schema.md
     - name: Diagnostizieren von Problemen mit dem Filter für VM-Netzwerkdatenverkehr
       href: network-watcher-ip-flow-verify-overview.md
     - name: Diagnostizieren von NSG-Regeln und Datenverkehrsfilterung
@@ -139,10 +141,13 @@
             - name: Lesen von NSG-Datenflussprotokollen
               href: network-watcher-read-nsg-flow-logs.md
             - name: Verwenden der Datenverkehrsanalyse
-              href: traffic-analytics.md
               items:
+                - name: Übersicht über Traffic Analytics
+                  href: traffic-analytics.md
                 - name: Häufig gestellte Fragen
                   href: traffic-analytics-faq.yml
+                - name: Integrierte Richtlinie
+                  href: traffic-analytics-policy-portal.md
                 - name: Schema- und Datenaggregation
                   href: traffic-analytics-schema.md
                 - name: "Schemaaktualisierung (August\_2019)"

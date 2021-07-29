@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 04/24/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8494e9048ef298fbb3c2e70de10ec793f2bddec5
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 3eea91d1cbbb8fe34dcdc8668840503e6dc9d014
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161607"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517350"
 ---
-# <a name="tutorial-configure-clouldflare-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Clouldflare mit Azure Active Directory B2C
+# <a name="tutorial-configure-cloudflare-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Cloudflare mit Azure Active Directory B2C
 
-In diesem Beispieltutorial erfahren Sie, wie Sie die Lösung [Cloudflare Web Application Firewall (WAF)](https://www.cloudflare.com/waf/) für einen Azure Active Directory (AD) B2C-Mandanten mit einer benutzerdefinierten Domäne aktivieren. Cloudflare WAF unterstützt Organisationen dabei, sich vor böswilligen Angriffen zu schützen, die auf die Ausnutzung von Sicherheitsrisiken wie SQLi und XSS abzielen.
+In diesem Beispieltutorial erfahren Sie, wie Sie die Lösung [Cloudflare Web Application Firewall (WAF)](https://www.cloudflare.com/waf/) für einen Azure Active Directory (AD) B2C-Mandanten mit einer benutzerdefinierten Domäne aktivieren. Cloudflare WAF unterstützt Organisationen dabei, sich vor Angriffen zu schützen, die auf die Ausnutzung von Sicherheitsrisiken wie SQLi und XSS abzielen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

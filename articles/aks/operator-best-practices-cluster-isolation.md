@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für die Isolierung in Azure Kubernet
 services: container-service
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: e51689d33711f127f775c63c9d7fc8ad4c901604
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3b6295c1f1ae424c77c32876e32609a7d492e07d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105169"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461637"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Best Practices für Clusterisolierung in Azure Kubernetes Service (AKS)
 
@@ -72,7 +72,7 @@ Die logische Trennung von Clustern bietet in der Regel eine höhere Poddichte al
 
 Derzeit sind Kubernetes-Umgebungen nicht vollständig vor einer feindlichen Verwendung mit mehreren Mandanten sicher. In einer Umgebung mit mehreren Mandanten arbeiten mehrere Mandanten in einer gemeinsamen, freigegebenen Infrastruktur. Wenn alle Mandanten nicht vertrauenswürdig sind, benötigen Sie eine zusätzliche Planung, um zu verhindern, dass Mandanten die Sicherheit und den Dienst anderer beeinträchtigen.
 
-Mithilfe zusätzlicher Sicherheitsfeatures wie *Podsicherheitsrichtlinien* oder Kubernetes RBAC für Knoten können Exploits effizient blockiert werden. Um echte Sicherheit bei der Ausführung feindlicher Workloads mit mehreren Mandanten zu erzielen, sollten Sie nur einem Hypervisor vertrauen. Die Sicherheitsdomäne für Kubernetes wird zum gesamten Cluster und nicht zu einem einzelnen Knoten. 
+Mithilfe zusätzlicher Sicherheitsfeatures wie Kubernetes RBAC für Knoten können Exploits effizient blockiert werden. Um echte Sicherheit bei der Ausführung feindlicher Workloads mit mehreren Mandanten zu erzielen, sollten Sie nur einem Hypervisor vertrauen. Die Sicherheitsdomäne für Kubernetes wird zum gesamten Cluster und nicht zu einem einzelnen Knoten. 
 
 Für diese Art von feindlichen Workloads mit mehreren Mandanten sollten Sie physisch isolierte Cluster verwenden.
 

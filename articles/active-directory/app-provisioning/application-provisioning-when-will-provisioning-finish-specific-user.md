@@ -1,22 +1,22 @@
 ---
-title: Ermitteln, wann ein bestimmter Benutzer auf eine App zugreifen kann
-description: Ermitteln, wann ein ausgesprochen wichtiger Benutzer auf eine Anwendung zugreifen kann, die Sie für die Benutzerbereitstellung mit Azure AD konfiguriert haben
+title: Ermitteln, wann ein bestimmter Benutzer bei der Azure Active Directory-Anwendungsbereitstellung auf eine Anwendung zugreifen kann
+description: Ermitteln, wann ein ausgesprochen wichtiger Benutzer auf eine Anwendung zugreifen kann, die Sie für die Benutzerbereitstellung mit Azure Active Directory konfiguriert haben
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/03/2019
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9835ba2b6db2d71d0ff5825f2eb1996133e75537
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f972028b407ca5704fed5000142072231d65410b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530831"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782899"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Überprüfen des Status der Benutzerbereitstellung
 
