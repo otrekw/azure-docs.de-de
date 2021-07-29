@@ -1,0 +1,51 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufige Fragen zu Analysen im kommerziellen Marketplace | Azure Marketplace
+  description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace in Partner Center für im Azure Marketplace veröffentlichte Angebote.
+  ms.service: marketplace
+  ms.subservice: partnercenter-marketplace-publisher
+  ms.topic: conceptual
+  ms.date: 11/10/2020
+  author: sayantanroy83
+  ms.author: sroy
+  ms.openlocfilehash: 677c8e3ea4642a256ff4962611fbcbf8e889ac98
+  ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 07/11/2021
+  ms.locfileid: "113603538"
+title: Häufige Fragen zu Analysen im kommerziellen Marketplace
+summary: In diesem Artikel werden häufig gestellte Fragen zu Analysenachrichten in Partner Center behandelt.
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Warum kann ich meine Analysedaten in Partner Center nicht anzeigen?
+    answer: >
+      Wenn ich auf die Analyseseiten zugreifen möchte, wird die folgende Nachricht angezeigt.
+
+
+      [![Noch keine Analyse verfügbar](./media/analytics-faq-no-data.png)](./media/analytics-faq-no-data.png#lightbox)
+
+
+      Diese Meldung kann folgende Ursachen haben:
+
+
+      - Für Ihre im kommerziellen Marketplace veröffentlichten Angebote sind aktuell keine Käufe vorhanden. Dies kann der Fall sein, wenn Ihre Angebote zwar im kommerziellen Marketplace aktiv sind und von Kunden auf den Produktanzeigeseiten betrachtet werden, aber noch nicht gekauft und bereitgestellt wurden.
+
+      - Möglicherweise wird Ihr Angebot gerade veröffentlicht und ist noch nicht aktiv. Nur aktive Angebote können von Kunden erworben werden. Den Status Ihrer Angebote können Sie auf der Seite **Zusammenfassung** des [Dashboards „Analyse“](https://go.microsoft.com/fwlink/?linkid=2165765) anzeigen. Weitere Informationen finden Sie unter [Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace](summary-dashboard.md).
+
+      - Ihre Angebote werden möglicherweise als Angebote vom Typ **Kontakt mit mir aufnehmen** gelistet. Hierbei handelt es sich um reine Listenangebote, die von Kunden nicht über den kommerziellen Marketplace erworben werden können. Diese Angebote generieren zwar Leads und werden für Sie freigegeben, da die Angebote aber nicht gekauft werden können, werden auch keine Bestellungen für sie erstellt. Navigieren Sie zur Einrichtungsseite Ihres Angebots, um die Art Ihrer Angebotslistung zu überprüfen.
+  - question: >
+      Ich weiß, dass ich bereits über Analysedaten verfüge, warum also wird die Meldung „Noch keine Analyse verfügbar“ angezeigt?
+    answer: >
+      [![Noch keine Analyse verfügbar](./media/analytics-faq-no-data.png)](./media/analytics-faq-no-data.png#lightbox)
+
+
+      Diese Meldung kann folgende Ursachen haben:
+
+
+      - Wenn Sie diese Meldung erhalten, bedeutet das, dass Analysedaten vorliegen, aber nicht für den ausgewählten Berechnungszeitraum. Wählen Sie einen anderen Berechnungszeitraum oder Monatsbereich aus, damit alle Daten seit 2010 angezeigt werden.
+
+      - Wenn Sie eine oder mehrere Kategorien der verschiedenen Dimensionen in der Filterauswahl ausgewählt haben, stehen möglicherweise keine Analysedaten für diese Auswahl zur Verfügung. Versuchen Sie, den Filter auf einen anderen Wert festzulegen, oder nehmen Sie eine andere Filterauswahl vor.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n- Eine Übersicht über die in Partner Center verfügbaren Analyseberichte finden Sie unter [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](analytics.md).\n- Informationen zu Ihren Aufträgen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace](orders-dashboard.md).\n- Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](usage-dashboard.md).\n- Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](customer-dashboard.md).\n- Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](downloads-dashboard.md).\n- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in Microsoft AppSource finden Sie unter [Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center](ratings-reviews.md).\n"

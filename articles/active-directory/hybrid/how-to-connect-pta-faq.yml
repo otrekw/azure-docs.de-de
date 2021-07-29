@@ -1,0 +1,173 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure AD Connect
+  description: In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zur Passthrough-Authentifizierung von Azure Active Directory.
+  services: active-directory
+  keywords: Azure AD Connect Pass-through Authentication, install Active Directory, required components for Azure AD, SSO, Single Sign-on
+  documentationcenter: ''
+  author: billmath
+  manager: daveba
+  ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
+  ms.service: active-directory
+  ms.workload: identity
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: how-to
+  ms.date: 06/09/2020
+  ms.subservice: hybrid
+  ms.author: billmath
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 2f98753f85da30ee26849463f48cdb4d127316e4
+  ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/30/2021
+  ms.locfileid: "113114503"
+title: 'Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen'
+summary: In diesem Artikel werden häufig gestellte Fragen zur Passthrough-Authentifizierung von Azure Active Directory (Azure AD) behandelt. Der Inhalt wird bei Bedarf aktualisiert.
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Welche der Methoden für die Anmeldung bei Azure AD (Passthrough-Authentifizierung, Kennworthashsynchronisierung oder Active Directory-Verbunddienste (AD FS)) sollte ich auswählen?
+    answer: >
+      Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wie Sie die richtige Anmeldemethode für Ihre Organisation wählen, finden Sie in [diesem Leitfaden](./choose-ad-authn.md).
+  - question: >
+      Ist die Passthrough-Authentifizierung ein kostenloses Feature?
+    answer: >
+      Die Passthrough-Authentifizierung ist ein kostenloses Feature. Sie benötigen für die Verwendung keine kostenpflichtigen Editionen von Azure AD.
+  - question: >
+      Funktioniert der bedingte Zugriff mit der Passthrough-Authentifizierung?
+    answer: >
+      Ja. Für alle Funktionen mit [bedingtem Zugriff](../conditional-access/overview.md), z. B. Azure AD Multi-Factor Authentication, kann die Passthrough-Authentifizierung genutzt werden.
+  - question: >
+      Unterstützt die Passthrough-Authentifizierung eine alternative Anmelde-ID (Alternate ID) anstelle von „UserPrincipalName“ als Benutzernamen?
+    answer: >
+      Ja. Die Anmeldung mit einem UPN-fremden Wert (etwa mit einer alternativen E-Mail-Adresse) wird sowohl für die Passthrough-Authentifizierung (PTA) als auch für die Kennworthashsynchronisierung (Password Hash Sync, PHS) unterstützt. Weitere Informationen zur alternativen Anmelde-ID finden Sie [hier](../authentication/howto-authentication-use-email-signin.md).
+  - question: >
+      Kann die Kennworthashsynchronisierung als Fallback für die Passthrough-Authentifizierung verwendet werden?
+    answer: >
+      Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) konfigurieren.
+  - question: >
+      Was geschieht, wenn ich von der Kennworthashsynchronisierung auf die Passthrough-Authentifizierung umstelle?
+    answer: >
+      Wenn Sie Azure AD Connect verwenden, um die Anmeldemethode von Kennworthashsynchronisierung in Passthrough-Authentifizierung zu ändern, wird die Passthrough-Authentifizierung die primäre Anmeldemethode für Ihre Benutzer in verwalteten Domänen. Beachten Sie, dass die Kennworthashes aller Benutzer, die zuvor per Kennworthashsynchronisierung synchronisiert wurden, in Azure AD gespeichert bleiben.
+  - question: >
+      Kann ich einen Azure AD-Anwendungsproxy-Connector und einen Passthrough-Authentifizierungs-Agent auf demselben Server installieren?
+    answer: >
+      Ja. Die umbenannten Versionen des Passthrough-Authentifizierungs-Agents (Versionen 1.5.193.0 oder höher) unterstützen diese Konfiguration.
+  - question: >
+      Welche Versionen von Azure AD Connect und dem Passthrough-Authentifizierungs-Agent werden benötigt?
+    answer: >
+      Damit dieses Feature funktioniert, benötigen Sie Version 1.1.750.0 oder höher für Azure AD Connect und Version 1.5.193.0 oder höher für den Passthrough-Authentifizierungs-Agent. Installieren Sie die gesamte Software auf Servern mit Windows Server 2012 R2 oder höher.
+  - question: >
+      Was geschieht, wenn das Kennwort des Benutzers abgelaufen ist und er versucht, sich mit der Passthrough-Authentifizierung anzumelden?
+    answer: >
+      Wenn Sie das [Kennwortrückschreiben](../authentication/concept-sspr-writeback.md) für einen bestimmten Benutzer konfiguriert haben und der Benutzer sich mit der Passthrough-Authentifizierung anmeldet, kann er sein Kennwort ändern oder zurücksetzen. Die Kennwörter werden erwartungsgemäß in das lokale Active Directory zurückgeschrieben.
+
+
+      Wenn Sie das Kennwortrückschreiben für einen bestimmten Benutzer nicht konfiguriert haben oder der Benutzer keine gültige Azure AD hat, kann der Benutzer sein Kennwort in der Cloud nicht aktualisieren. Das Kennwort lässt sich nicht aktualisieren, auch wenn es bereits abgelaufen ist. Dem Benutzer wird stattdessen diese Meldung angezeigt: „Eine Kennwortänderung auf dieser Website wird von Ihrer Organisation nicht gestattet. Ändern Sie Ihr Kennwort anhand der von Ihrer Organisation empfohlenen Methode, oder bitten Sie Ihren Administrator um Hilfe. Der Benutzer oder der Administrator muss das Kennwort im lokalen Active Directory zurücksetzen.
+  - question: >
+      Wie schützt die Passthrough-Authentifizierung vor Brute-Force-Kennwortangriffen?
+    answer: >
+      [Lesen Sie die Informationen zu Smart Lockout](../authentication/howto-password-smart-lockout.md).
+  - question: >
+      Was kommunizieren Passthrough-Authentifizierungs-Agents über die Ports 80 und 443?
+    answer: >
+      - Die Authentifizierungs-Agents stellen HTTPS-Anforderungen für alle Funktionsvorgänge über Port 443 aus.
+
+      - Die Authentifizierungs-Agents stellen HTTP-Anforderungen über Port 80, um die TLS/SSL-Zertifikatsperrlisten (CRLs) herunterzuladen.
+
+           >[!NOTE]
+           >In kürzlich veröffentlichten Updates wurde die Zahl der Ports, die für diese Funktion erforderlich sind, gesenkt. Wenn Sie eine ältere Version von Azure AD Connect oder des Authentifizierungs-Agents verwenden, halten Sie auch folgende Ports offen: 5671, 8080, 9090, 9091, 9350, 9352 und 10100–10120.
+  - question: >
+      Können die Passthrough-Authentifizierungs-Agents über einen ausgehenden Webproxyserver kommunizieren?
+    answer: >
+      Ja. Wenn in Ihrer lokalen Umgebung WPAD (Web Proxy Auto-Discovery) aktiviert ist, versuchen die Authentifizierungs-Agents automatisch, einen Webproxyserver im Netzwerk zu finden und zu verwenden.
+
+
+      Wenn in Ihrer Umgebung kein WPAD verwendet wird, können Sie Proxyinformationen (wie unten gezeigt) hinzufügen, um einem Passthrough-Authentifizierungs-Agent die Kommunikation mit Azure AD zu ermöglichen:
+
+      - Konfigurieren Sie Proxyinformationen im Internet Explorer, bevor Sie den Passthrough-Authentifizierungs-Agent auf dem Server installieren. Dadurch können Sie die Installation des Authentifizierungs-Agents abschließen. Er wird im Admin-Portal jedoch nach wie vor als **Inaktiv** angezeigt.
+
+      - Wechseln Sie auf dem Server zu „C:\Programme\Microsoft Azure AD Connect Authentication Agent“.
+
+      - Bearbeiten Sie die Konfigurationsdatei „AzureADConnectAuthenticationAgentService“, und fügen Sie die folgenden Zeilen hinzu (ersetzen Sie „http\://contosoproxy.com:8080“ durch Ihre tatsächliche Proxyadresse):
+
+
+      ```
+         <system.net>
+            <defaultProxy enabled="true" useDefaultCredentials="true">
+               <proxy
+                  usesystemdefault="true"
+                  proxyaddress="http://contosoproxy.com:8080"
+                  bypassonlocal="true"
+               />
+           </defaultProxy>
+         </system.net>
+      ```
+  - question: >
+      Kann ich zwei oder mehr Passthrough-Authentifizierungs-Agents auf dem gleichen Server installieren?
+    answer: >
+      Nein, Sie können nur einen Passthrough-Authentifizierungs-Agent auf einem einzelnen Server installieren. Wenn Sie die Passthrough-Authentifizierung für Hochverfügbarkeit konfigurieren möchten, [folgen Sie den hier aufgeführten Anweisungen](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
+  - question: >
+      Muss ich Zertifikate, die von Passthrough-Authentifizierungs-Agents verwendet werden, manuell verlängern?
+    answer: >
+      Die Kommunikation zwischen den einzelnen Passthrough-Authentifizierungs-Agents und Azure AD wird per zertifikatbasierter Authentifizierung geschützt. Diese [Zertifikate werden alle paar Monate automatisch von Azure AD verlängert](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents). Sie müssen diese Zertifikate nicht manuell verlängern. Abgelaufene Zertifikate können Sie bei Bedarf entfernen.
+  - question: >
+      Gewusst wie: Entfernen eines Passthrough-Authentifizierungs-Agents
+    answer: >
+      Solange ein Passthrough-Authentifizierungs-Agent ausgeführt wird, bleibt er aktiv und verarbeitet fortlaufend Anmeldeanforderungen von Benutzern. Wenn Sie einen Authentifizierungs-Agent deinstallieren möchten, wechseln Sie zu **Systemsteuerung > Programme > Programme und Funktionen**, und deinstallieren Sie die beiden Programme **Microsoft Azure AD Connect-Authentifizierungs-Agent** und **Microsoft Azure AD Connect Agent Updater**.
+
+
+      Nach Abschluss des vorherigen Schritts sehen Sie auf dem Blatt „Passthrough-Authentifizierung“ im [Azure Active Directory-Admin Center](https://aad.portal.azure.com) den Authentifizierungs-Agent als **Inaktiv**. Dies entspricht dem _erwarteten_ Verhalten. Der Authentifizierungs-Agent wird nach 10 Tagen automatisch aus der Liste entfernt.
+  - question: >
+      Ich verwende bereits AD FS für die Anmeldung bei Azure AD. Wie kann ich zur Passthrough-Authentifizierung wechseln?
+    answer: >
+      Wenn Sie von AD FS (oder andere Verbundtechnologien nutzen) zur Passthrough-Authentifizierung migrieren, wird dringend empfohlen, dem ausführlichen [Leitfaden zur Bereitstellung](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) zu folgen.
+  - question: >
+      Kann ich die Passthrough-Authentifizierung in einer Active Directory-Umgebung mit mehreren Gesamtstrukturen verwenden?
+    answer: >
+      Ja. Umgebungen mit mehreren Gesamtstrukturen (bidirektional) werden unterstützt, wenn Gesamtstruktur-Vertrauensstellungen zwischen Ihren Active Directory-Gesamtstrukturen bestehen und das Namensuffixrouting ordnungsgemäß konfiguriert ist.
+  - question: >
+      Bietet die Passthrough-Authentifizierung einen Lastenausgleich zwischen mehreren Authentifizierungs-Agents?
+    answer: >
+      Nein, die Installation von mehreren Passthrough-Authentifizierungs-Agents garantiert nur [Hochverfügbarkeit](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability). Dadurch wird kein deterministischer Lastenausgleich zwischen den Authentifizierungs-Agents bereitgestellt. Jeder Authentifizierungs-Agent kann eine bestimmte Benutzeranmeldungsanforderung verarbeiten.
+  - question: >
+      Wie viele Passthrough-Authentifizierungs-Agents muss ich installieren?
+    answer: >
+      Mit der Installation von mehreren Passthrough-Authentifizierungs-Agents wird für [Hochverfügbarkeit](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) gesorgt. Es wird aber kein deterministischer Lastenausgleich zwischen den Authentifizierungs-Agents bereitgestellt.
+
+
+      Berücksichtigen Sie die Spitzenlast und durchschnittliche Last in Bezug auf die Anmeldeanforderungen, die Sie für Ihren Mandanten erwarten. Als Richtwert gilt, dass ein einzelner Authentifizierungs-Agent auf einem Standardserver mit einer CPU mit vier Kernen und 16 GB RAM pro Sekunde 300 bis 400 Authentifizierungen verarbeiten kann.
+
+
+      Um den Netzwerkverkehr abzuschätzen, verwenden Sie die folgende Anleitung zur Skalierung:
+
+      - Jede Anforderung hat eine Nutzlastgröße von (0,5 K + 1 K * anz_agents) Bytes, d. h. Daten von Azure AD zum Authentifizierungs-Agent. Hier gibt „anz_agents“ die Anzahl der für Ihren Mandanten registrierten Authentifizierung-Agents an.
+
+      - Jede Antwort hat eine Nutzlastgröße von 1 K Bytes, d. h. Daten vom Authentifizierungs-Agent zu Azure AD.
+
+
+      Für die meisten Kunden reichen zwei oder drei Authentifizierungs-Agents insgesamt aus, um Hochverfügbarkeit und genügend Kapazität zu erzielen. Es wird empfohlen, die Authentifizierungs-Agents in der Nähe Ihres Domänencontrollers zu installieren, um die Anmeldungslatenz zu verbessern.
+
+
+      >[!NOTE]
+
+      >In einem System können maximal 40 Authentifizierungs-Agents pro Mandant installiert werden.
+  - question: >
+      Warum benötige ich ein rein cloudbasiertes globales Administratorkonto, um die Passthrough-Authentifizierung zu aktivieren?
+    answer: >
+      Es wird empfohlen, die Passthrough-Authentifizierung mit einem rein cloudbasierten globalen Administratorkonto zu aktivieren oder zu deaktivieren. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../fundamentals/add-users-azure-active-directory.md). Auf diese Weise wird sichergestellt, dass Sie sich nicht aus Ihrem Mandanten aussperren.
+  - question: >
+      Wie kann ich die Passthrough-Authentifizierung deaktivieren?
+    answer: >
+      Führen Sie den Azure AD Connect-Assistenten erneut aus, und ändern Sie die Anmeldemethode für Benutzer von der Passthrough-Authentifizierung in eine andere Methode. Diese Änderung deaktiviert die Passthrough-Authentifizierung für den Mandanten und deinstalliert den Authentifizierungs-Agent vom Server. Auf anderen Servern müssen Sie die Authentifizierungs-Agents manuell deinstallieren.
+  - question: >
+      Was geschieht, wenn ich einen Passthrough-Authentifizierungs-Agent deinstalliere?
+    answer: >
+      Wenn Sie einen Passthrough-Authentifizierungs-Agents auf einem Server deinstallieren, werden vom Server keine Anmeldeanforderungen mehr angenommen. Um eine Unterbrechung der Anmeldefunktion für Benutzer zu vermeiden, stellen Sie sicher, dass ein anderer Authentifizierungs-Agent ausgeführt wird, bevor Sie einen Passthrough-Authentifizierungs-Agent deinstallieren.
+  - question: >
+      Ich habe einen älteren Mandanten, der ursprünglich mit AD FS eingerichtet wurde.  Wir sind kürzlich zu PTA migriert, doch jetzt sehen wir nicht, dass unsere UPN-Änderungen mit Azure AD synchronisiert werden.  Warum werden unsere UPN-Änderungen nicht synchronisiert?
+    answer: "A: Lokale UPN-Änderungen können nicht synchronisiert werden, wenn:\n\n- Ihr Azure AD-Mandant vor dem 15. Juni 2015 erstellt wurde\n- Sie ursprünglich mit Ihrem Azure AD-Mandanten über AD FS zur Authentifizierung verbunden waren\n- Sie eine Umstellung vorgenommen haben, sodass verwaltete Benutzer PTA als Authentifizierung verwenden\n\nDas liegt daran, dass Mandanten, die vor dem 15. Juni 2015 erstellt wurden, UPN-Änderungen standardmäßig blockiert haben.  Wenn Sie UPN-Änderungen freigeben möchten, führen Sie das folgende PowerShell-Cmdlet aus:  \n\n`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $True`\n\nMandanten, die nach dem 15. Juni 2015 erstellt wurden, synchronisieren UPN-Änderungen standardmäßig.   \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n- [Aktuelle Einschränkungen](how-to-connect-pta-current-limitations.md): Informieren Sie sich darüber, welche Szenarien unterstützt werden.\n- [Schnellstart](how-to-connect-pta-quick-start.md): Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD.\n- [Migrieren von AD FS zur Passthrough-Authentifizierung](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true): Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung\n- [Smart Lockout](../authentication/howto-password-smart-lockout.md): Erfahren Sie, wie Sie die Smart Lockout-Funktion für Ihren Mandanten zum Schutz von Benutzerkonten konfigurieren.\n- [Technische Einzelheiten](how-to-connect-pta-how-it-works.md): Hier finden Sie Informationen zur Funktionsweise der Passthrough-Authentifizierung.\n- [Problembehandlung](tshoot-connect-pass-through-authentication.md): Hier finden Sie Informationen zum Beheben von allgemeinen Problemen, die bei der Passthrough-Authentifizierung auftreten können.\n- [Ausführliche Informationen zur Sicherheit](how-to-connect-pta-security-deep-dive.md): Hier erhalten Sie ausführliche technische Informationen zur Pass-Through-Authentifizierung.\n- [Nahtloses einmaliges Anmelden mit Azure AD:](how-to-connect-sso.md) Erfahren Sie mehr über diese Ergänzungsfunktion.\n- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fordern Sie neue Features über das Azure Active Directory-Forum an."
