@@ -1,19 +1,19 @@
 ---
 title: Schützen des Datenverkehrs zwischen einem Anwendungsgateway und Back-End-Pools
 titleSuffix: Azure Virtual WAN
-description: Hier erfahren Sie mehr über Virtual WAN-Routingszenarien für sicheren Datenverkehr, der über ein Anwendungsgateway gesendet wird. Das Anwendungsgateway wird in einem Spoke-VNet bereitgestellt, das mit einem geschützten Virtual WAN-Hub verbunden ist.
+description: Hier erfahren Sie mehr über Virtual WAN-Routingszenarien für sicheren Datenverkehr, der über ein Anwendungsgateway gesendet wird. Das Anwendungsgateway wird in einem Spoke-VNet bereitgestellt, das mit einem geschützten Virtual WAN-Hub verbunden ist.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9bb3343bc9c3dffa8f84280cd0799c7e92f4f50c
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 4231ca2330fd49bcfae28c0aa844088bdbd7f50e
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165801"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575337"
 ---
 # <a name="scenario-secure-traffic-between-application-gateway-and-backend-pools"></a>Szenario: Schützen des Datenverkehrs zwischen einem Anwendungsgateway und Back-End-Pools
 

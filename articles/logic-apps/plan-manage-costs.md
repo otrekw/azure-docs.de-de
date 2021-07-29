@@ -6,12 +6,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
 ms.date: 05/25/2021
-ms.openlocfilehash: 5fbf0d8f713785c7ec37e48fbf78e6d95a21ca4b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 5bbdcd8032fbb4d20af2e681bf703c3d62985fe0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379575"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971621"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>Planen und Verwalten von Kosten für Azure Logic Apps
 
@@ -59,7 +59,7 @@ Es folgen weitere Ressourcen, die Kosten verursachen, wenn Sie sie für den Eins
 
 #### <a name="storage-operations-and-costs"></a>Speichervorgänge und -kosten
 
-Azure Logic Apps verwendet [Azure Storage](/storage) für alle Speichervorgänge. In Azure Logic Apps für mehrere Mandanten werden die gesamte Speichernutzung und alle Speicherkosten an die Logik-App gebunden. Für [Datenaufbewahrung und Speichernutzung](../logic-apps/logic-apps-pricing.md#data-retention) fallen Kosten im Rahmen eines [Festpreismodells](../logic-apps/logic-apps-pricing.md#fixed-pricing) an. Beispielsweise werden Ein- und Ausgaben aus dem Ausführungsverlauf im Hintergrundspeicher aufbewahrt, der sich von Speicherressourcen unterscheidet, die Sie unabhängig in Ihrer Logik-App erstellen, verwalten und nutzen.
+Azure Logic Apps verwendet [Azure Storage](../storage/index.yml) für alle Speichervorgänge. In Azure Logic Apps für mehrere Mandanten werden die gesamte Speichernutzung und alle Speicherkosten an die Logik-App gebunden. Für [Datenaufbewahrung und Speichernutzung](../logic-apps/logic-apps-pricing.md#data-retention) fallen Kosten im Rahmen eines [Festpreismodells](../logic-apps/logic-apps-pricing.md#fixed-pricing) an. Beispielsweise werden Ein- und Ausgaben aus dem Ausführungsverlauf im Hintergrundspeicher aufbewahrt, der sich von Speicherressourcen unterscheidet, die Sie unabhängig in Ihrer Logik-App erstellen, verwalten und nutzen.
 
 Mit Azure Logic Apps mit einem einzelnen Mandanten können Sie Ihr eigenes Azure-[Speicherkonto](../azure-functions/storage-considerations.md#storage-account-requirements) verwenden. Diese Funktion bietet Ihnen mehr Kontrolle und Flexibilität für Ihre Logic Apps-Daten. Wenn *zustandsbehaftete* Workflows ihre Vorgänge ausführen, führt die Azure Logic Apps-Runtime Speichertransaktionen durch. Beispielsweise werden Warteschlangen für die Zeitplanung verwendet, während Tabellen und Blobs zum Speichern von Workflowzuständen verwendet werden. Die Speicherkosten ändern sich basierend auf dem Inhalt Ihres Workflows. Verschiedene Auslöser, Vorgänge und Nutzdaten führen zu unterschiedlichen Speichervorgängen und Anforderungen. Speichertransaktionen folgen dem [Azure Storage-Preismodell](https://azure.microsoft.com/pricing/details/storage/). Speicherkosten werden in Ihrer Azure-Rechnung separat aufgeführt.
 
@@ -121,13 +121,13 @@ Die Kosten pro Ressourcennutzungseinheit variieren je nach Zeitintervall (Sekund
 
 Sobald Sie anfangen, Kosten für Ressourcen zu verursachen, die Sie in Azure erstellen oder nutzen, können Sie diese Kosten auf die folgenden Arten überprüfen und überwachen:
 
-* [Überwachen von Logik-App-Ausführungen und Speichernutzung](#monitor-billing-metrics) mithilfe von Azure Monitor
+* [Überwachen von Logik-App-Ausführungen und Speicherverbrauch](#monitor-billing-metrics) mithilfe von Azure Monitor
 
 * Erstellen einer [Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) mithilfe von [Azure Cost Management and Billing](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <a name="monitor-billing-metrics"></a>
 
-### <a name="monitor-logic-app-executions-and-storage-consumption"></a>Überwachen von Logik-App-Ausführungen und Speichernutzung
+### <a name="monitor-logic-app-executions-and-storage-usage"></a>Überwachen von Logik-App-Ausführungen und Speicherverbrauch
 
 In Azure Monitor können Sie diese Metriken für eine bestimmte Logik-App einsehen:
 

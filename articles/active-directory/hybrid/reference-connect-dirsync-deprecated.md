@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53d9e2ea10aefc96c2d4d72ad0020704ba48709b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96cc89d386540f2ebe979e5000c6d50ac6e31100
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539415"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476313"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Aktualisieren der Windows Azure Active Directory-Synchronisierung und Azure Active Directory-Synchronisierung
-Azure AD Connect ist die beste Lösung, um Ihr lokales Verzeichnis mit Azure AD und Microsoft 365 zu verbinden. Da Windows Azure Active Directory Sync (DirSync) und Azure AD Sync (AADSync) veraltet sind und der Support für diese Tools am 13. April 2017 endete, ist dies ein guter Zeitpunkt, um ein Upgrade auf Azure AD Connect durchzuführen.
+Azure AD Connect ist die beste Lösung, um Ihr lokales Verzeichnis mit Azure AD und Microsoft 365 zu verbinden. Da Windows Azure Active Directory Sync (DirSync) und Azure AD Sync (AADSync) jetzt veraltet sind und nicht mehr funktionieren, ist dies ein guter Zeitpunkt für ein Upgrade auf Azure AD Connect.
 
-Die beiden veralteten Tools zur Synchronisierung von Identitäten wurden für Kunden mit einer einzelnen Gesamtstruktur (DirSync) sowie für Kunden mit mehreren Gesamtstrukturen oder anderen erweiterten Anforderungen (Azure AD Sync) angeboten. Diese älteren Tools wurden durch eine Gesamtlösung ersetzt, die für alle Szenarien verfügbar ist: Azure AD Connect. Diese neue Lösung bietet neue Funktionalität, erweiterte Features und Unterstützung für neue Szenarien. Um Ihre lokalen Identitätsdaten weiterhin mit Azure AD und Microsoft 365 synchronisieren zu können, wird dringend empfohlen, ein Upgrade auf Azure AD Connect durchzuführen. Microsoft übernimmt keine Garantie dafür, dass diese älteren Versionen nach dem 31. Dezember 2017 noch funktionieren.
+Die beiden veralteten Tools zur Synchronisierung von Identitäten wurden für Kunden mit einer einzelnen Gesamtstruktur (DirSync) sowie für Kunden mit mehreren Gesamtstrukturen oder anderen erweiterten Anforderungen (Azure AD Sync) angeboten. Diese älteren Tools wurden durch eine Gesamtlösung ersetzt, die für alle Szenarien verfügbar ist: Azure AD Connect. Diese neue Lösung bietet neue Funktionalität, erweiterte Features und Unterstützung für neue Szenarien. Um Ihre lokalen Identitätsdaten weiterhin mit Azure AD und Microsoft 365 synchronisieren zu können, müssen Sie ein Upgrade auf Azure AD Connect durchführen. 
 
 Das letzte Release von DirSync wurde im Juli 2014 veröffentlicht, das letzte Release von Azure AD Sync im Mai 2015.
 
@@ -40,7 +40,7 @@ Azure AD Connect ist der Nachfolger von DirSync und Azure AD Sync. Diese Lösung
 | 13. April 2016 |Windows Azure Active Directory-Synchronisierungstool („DirSync“) und Microsoft Azure Active Directory-Synchronisierungstool („Azure AD Sync“) als veraltet bekanntgegeben. |
 | 13. April 2017 |Ende des Supports. Um Supportanfragen zu übermitteln, müssen Kunden zunächst ein Upgrade auf Azure AD Connect durchführen. |
 |31. Dezember 2017|Azure AD akzeptiert möglicherweise keine Kommunikation mehr vom Windows Azure Active Directory-Synchronisierungstool („DirSync“) und vom Microsoft Azure Active Directory-Synchronisierungstool („Azure AD Sync“).
-|1\. April 2021| Windows Azure Active Directory-Synchronisierungstool („DirSync“) und Microsoft Azure Active Directory-Synchronisierungstool („Azure AD Sync“) funktionieren nicht mehr. |
+|1\. April 2021| Windows Azure Active Directory Sync (DirSync) und Microsoft Azure Active Directory Sync (Azure AD Sync) funktionieren nicht mehr |
 
 ## <a name="how-to-transition-to-azure-ad-connect"></a>So führen Sie ein Upgrade auf Azure AD Connect durch
 Beim Ausführen von DirSync haben Sie zwei Möglichkeiten, wie Sie das Upgrade durchführen können: direktes Upgrade und parallele Bereitstellung. Ein direktes Upgrade wird für die meisten Kunden empfohlen sowie für Kunden mit einem aktuellen Betriebssystem und weniger als 50.000 Objekten. In anderen Fällen wird eine parallele Bereitstellung empfohlen, bei der Ihre DirSync-Konfiguration auf einen neuen Server mit Azure AD Connect verschoben wird.

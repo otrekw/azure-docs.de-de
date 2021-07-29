@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 035215bf9350243f667c4883786a923a172cb89c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 42326cd4080fe6737fd14f8dc2c5a2028c20077f
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126559"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854538"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>AD FS-Anmeldungen in Azure AD mit Connect Health – Vorschau
 
@@ -28,7 +28,7 @@ AD FS-Anmeldungen können nun mithilfe von Connect Health in den Azure Active D
 Der Connect Health für AD FS-Agent korreliert mehrere Ereignis-IDs aus AD FS in Abhängigkeit von der Serverversion, um Informationen über die Anforderung und im Fall von Anforderungsfehlern Fehlerdetails bereitzustellen. Diese Informationen werden mit dem Azure AD-Anmeldberichtsschema korreliert und auf der Benutzeroberfläche des Azure AD-Anmeldeberichts angezeigt. Neben dem Bericht ist ein neuer Log Analytics-Stream mit den AD FS-Daten und eine neue Azure Monitor-Arbeitsmappenvorlage verfügbar. Die Vorlage kann zur ausführlichen Analyse von Szenarien wie AD FS-Kontosperrungen, fehlerhaften Kennwortantwortversuchen und Spitzen unerwarteter Anmeldeversuche verwendet und geändert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Azure AD Connect Health für AD FS wurde installiert und auf die aktuelle Version aktualisiert.
+* Azure AD Connect Health für AD FS wurde installiert und auf die aktuelle Version aktualisiert (3.1.95.0 oder höher).
 * Rolle „Globaler Administrator“ oder „Berichtsleser“ zum Anzeigen der Azure AD-Anmeldungen
 
 ## <a name="what-data-is-displayed-in-the-report"></a>Welche Daten werden im Bericht angezeigt?
@@ -48,13 +48,13 @@ Jede Registerkarte auf dem Blatt „Anmeldungen“ enthält die unten aufgeführ
 #### <a name="authentication-method-information"></a>Informationen zur Authentifizierungsmethode
 Die folgenden Werte können auf der Registerkarte „Authentifizierung" angezeigt werden. Die Authentifizierungsmethode wird aus den AD FS-Auditprotokollen übernommen.
 
-|Authentifizierungsmethode|Beschreibung|
+|Authentifizierungsmethode|BESCHREIBUNG|
 |-----|-----|
 |Formulare|Authentifizierung mit Benutzername/Kennwort|
 |Windows|Integrierte Windows-Authentifizierung|
 |Zertifikat|Authentifizierung mit SmartCard-/VirtualSmart-Zertifikaten|
 |WindowsHelloForBusiness|Dieses Feld ist für die Authentifizierung mit Windows Hello for Business bestimmt. (Microsoft Passport-Authentifizierung)|
-|Sicherungsmedium | Wird angezeigt, wenn die Geräteauthentifizierung als „primäre“ Authentifizierung aus dem Intranet/Extranet ausgewählt ist und die Geräteauthentifizierung durchgeführt wird.  In diesem Szenario gibt es keine separate Benutzerauthentifizierung.| 
+|Gerät | Wird angezeigt, wenn die Geräteauthentifizierung als „primäre“ Authentifizierung aus dem Intranet/Extranet ausgewählt ist und die Geräteauthentifizierung durchgeführt wird.  In diesem Szenario gibt es keine separate Benutzerauthentifizierung.| 
 |Im Verbund|AD FS hat die Authentifizierung nicht durchgeführt, sondern an einen Identitätsanbieter eines Drittanbieters gesendet.|
 |SSO |Dieses Feld wird angezeigt, wenn ein Token für einmaliges Anmelden verwendet wurde. Wenn einmaliges Anmelden eine MFA aufweist, wird Multifactor angezeigt.|
 |Multifactor|Wenn ein Token für einmaliges Anmelden eine MFA aufweist und für die Authentifizierung verwendet wurde, wird in diesem Feld „Multifactor“ angezeigt.|

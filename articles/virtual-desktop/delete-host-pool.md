@@ -1,21 +1,22 @@
 ---
-title: Löschen des Windows Virtual Desktop-Hostpools – Azure
-description: Erfahren Sie, wie Sie Hostpools in Windows Virtual Desktop löschen.
+title: Löschen eines Azure Virtual Desktop-Hostpools – Azure
+description: Erfahren Sie, wie Sie Hostpools in Azure Virtual Desktop löschen.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 3693a82a0d9c9544ed6a14d4596d544725125bd3
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: e4621799389e738bd03e75f84f5c1706f90d69d3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447045"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751953"
 ---
 # <a name="delete-a-host-pool"></a>Löschen eines Hostpools
 
-Alle in Windows Virtual Desktop erstellten Hostpools sind Sitzungshosts und App-Gruppen angefügt. Zum Löschen eines Hostpools müssen Sie die zugehörigen App-Gruppen und Sitzungshosts löschen. Das Löschen einer App-Gruppe ist recht einfach, aber das Löschen eines Sitzungshosts ist komplizierter. Wenn Sie einen Sitzungshost löschen, müssen Sie sicherstellen, dass auf ihm keine aktiven Benutzersitzungen ausgeführt werden. Alle Benutzersitzungen auf dem Sitzungshost sollten abgemeldet werden, um zu verhindern, dass Benutzer Daten verlieren.
+Alle in Azure Virtual Desktop erstellten Hostpools sind Sitzungshosts und App-Gruppen zugeordnet. Zum Löschen eines Hostpools müssen Sie die zugehörigen App-Gruppen und Sitzungshosts löschen. Das Löschen einer App-Gruppe ist recht einfach, aber das Löschen eines Sitzungshosts ist komplizierter. Wenn Sie einen Sitzungshost löschen, müssen Sie sicherstellen, dass auf ihm keine aktiven Benutzersitzungen ausgeführt werden. Alle Benutzersitzungen auf dem Sitzungshost sollten abgemeldet werden, um zu verhindern, dass Benutzer Daten verlieren.
 
 ## <a name="delete-a-host-pool-with-powershell"></a>Löschen eines Hostpools mit PowerShell
 
@@ -39,7 +40,7 @@ So löschen Sie einen Hostpool mit dem Azure-Portal:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option aus.
+2. Suchen Sie **Azure Virtual Desktop**, und wählen Sie diese Option aus.
 
 3. Wählen Sie im Menü auf der linken Seite des Bildschirms **Hostpools** aus, und wählen Sie dann den Namen des Hostpools aus, den Sie löschen möchten.
 
@@ -65,5 +66,5 @@ Weitere Informationen zum Erstellen eines Hostpools finden Sie in den folgenden 
 Weitere Informationen zum Konfigurieren von Hostpooleinstellungen finden Sie in den folgenden Artikeln:
 
 - [Anpassen der Remotedesktopprotokoll-Eigenschaften für einen Hostpool](customize-rdp-properties.md)
-- [Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop](configure-host-pool-load-balancing.md)
+- [Konfigurieren der Lastenausgleichsmethode für Azure Virtual Desktop](configure-host-pool-load-balancing.md)
 - [Konfigurieren des Zuweisungstyps für den Hostpool mit persönlichen Desktops](configure-host-pool-personal-desktop-assignment-type.md)

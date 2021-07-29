@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
-ms.openlocfilehash: 78baaa3f794bed870b40fb3975f6b80ff37e90f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a0121ac255d526d429b12eacf2a853c3dfed8b62
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043727"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461826"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -154,11 +154,11 @@ Verwenden Sie beispielsweise **CloudBlobClient.getDefaultRequestOptions().setReq
 ### <a name="blob-service-encryption"></a>Blob-Diensterschlüsselung
 Erstellen Sie ein **BlobEncryptionPolicy**-Objekt, und legen Sie es in den Anforderungsoptionen fest (über die API oder auf Clientebene mit **DefaultRequestOptions**). Alles Weitere wird intern von der Clientbibliothek behandelt.
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -183,11 +183,11 @@ blob.download(outputStream, null, options, null);
 ### <a name="queue-service-encryption"></a>Warteschlangendienst-Verschlüsselung
 Erstellen Sie ein **QueueEncryptionPolicy**-Objekt, und legen Sie es in den Anforderungsoptionen fest (über die API oder auf Clientebene mit **DefaultRequestOptions**). Alles Weitere wird intern von der Clientbibliothek behandelt.
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -212,11 +212,11 @@ Zusätzlich zum Erstellen einer Verschlüsselungsrichtlinie und zum Festlegen de
 
 ### <a name="using-the-resolver"></a>Verwenden des Resolvers
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -253,11 +253,11 @@ TableResult result = currentTable.execute(operation, retrieveOptions, null);
 ### <a name="using-attributes"></a>Verwenden von Attributen
 Wenn die Entität "TableEntity" implementiert, können der Getter und Setter der Eigenschaften, wie bereits erwähnt, mit dem [Encrypt]-Attribut ergänzt werden, statt den **EncryptionResolver** anzugeben.
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 private string encryptedProperty1;

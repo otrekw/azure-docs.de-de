@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: fc3662d8198e6ab6ab215ac1e9e8eac585f4250b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/08/2021
+ms.openlocfilehash: c7cc9ba4cddb21dd68af4a4e3253361e1e3e62fd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801586"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754887"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene-Abfragesyntax in Azure Cognitive Search
 
@@ -122,14 +122,22 @@ Für einige Tools und Sprachen müssen zusätzlich Escapezeichen verwendet werde
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> Platzhaltersuche
 
-Sie können die allgemein bekannte Syntax für die Platzhaltersuche nach mehreren (`*`) oder einzelnen (`?`) Zeichen verwenden. Beispielsweise gibt der Abfrageausdruck `search=alpha*` „alphanumerisch“ und „alphabetisch“ zurück. Beachten Sie, dass der Lucene-Abfrageparser die Verwendung dieser Symbole bei einem einzelnen Begriff, nicht bei einem Ausdruck, unterstützt.
+Sie können die allgemein bekannte Syntax für die Platzhaltersuche nach mehreren (`*`) oder einzelnen (`?`) Zeichen verwenden. Die vollständige Lucene-Syntax unterstützt Präfix-, Infix- und Suffixvergleiche. 
 
-Die vollständige Lucene-Syntax unterstützt Präfix-, Infix- und Suffixvergleiche. Wenn Sie jedoch nur eine Präfixübereinstimmung benötigen, können Sie die einfache Syntax verwenden. (Die Präfixübereinstimmung wird in beiden Fällen unterstützt.)
+Beachten Sie, dass der Lucene-Abfrageparser die Verwendung dieser Symbole bei einem einzelnen Begriff, nicht bei einem Ausdruck, unterstützt.
 
-Für die Suffixübereinstimmung, bei denen der Zeichenfolge `*` oder `?` vorangestellt ist (z. B. in `search=/.*numeric./`), oder die Infixübereinstimmung, sind die vollständige Lucene-Syntax sowie das Schrägstrich-Trennzeichen `/` für reguläre Ausdrücke erforderlich. Sie können die Symbole * oder ? nicht ohne `/` als erstes Zeichen eines Begriffs oder innerhalb eines Begriffs verwenden. 
+| Affixtyp | Beschreibung und Beispiele |
+|------------|--------------------------|
+| prefix | Begriffsfragmente stehen vor `*` oder `?`.  Beispielsweise gibt der Abfrageausdruck `search=alpha*` „alphanumerisch“ und „alphabetisch“ zurück. Die Präfixübereinstimmung wird sowohl in der einfachen als auch vollständigen Syntax unterstützt. |
+| Suffix | Das Begriffsfragment folgt `*` oder `?`, und das Konstrukt ist mit einem Schrägstrich begrenzt. `search=/.*numeric./` gibt beispielsweise „alphanumeric“ zurück. |
+| infix  | Begriffsfragmente schließen `*` oder `?` ein.  `search=/.non*al./` gibt beispielsweise „nonnumerical“ und „nonsensical“ zurück. |
+
+Sie können Operatoren in einem Ausdruck kombinieren. `980?2*` gibt beispielsweise „98072-1222“ und „98052-1234“ zurück, während `?` ein einzelnes (erforderliches) Zeichen und `*` darauf folgende Zeichenfolgen beliebiger Länge zurückgibt.
+
+Für den Abgleich von Suffixen und Infixen ist als Trennzeichen der die Schrägstrich für reguläre Ausdrücke `/` erforderlich. Im Allgemeinen dürfen Sie beim Schreiben von Code die Symbole * oder ? nicht ohne `/` als erstes Zeichen eines Begriffs oder innerhalb eines Begriffs verwenden. In bestimmten Tools, z. B. Postman oder im Azure-Portal sind Escapezeichen integriert, und Sie können eine Abfrage oft ohne Trennzeichen ausführen.
 
 > [!NOTE]  
-> Grundsätzlich ist der Musterabgleich langsam, sodass Sie möglicherweise alternative Methoden untersuchen sollten, z. B. Edge-N-Gramm-Tokenisierung, mit der Token für Zeichenfolgen in einem Begriff erstellt werden. Der Index wird damit größer, Abfragen werden jedoch möglicherweise schneller ausgeführt, je nach der Form des Musters und der Länge der Zeichenfolgen, die Sie indizieren.
+> Grundsätzlich ist der Musterabgleich langsam, sodass Sie möglicherweise alternative Methoden untersuchen sollten, z. B. Edge-N-Gramm-Tokenisierung, mit der Token für Zeichenfolgen in einem Begriff erstellt werden. Mit der N-Gramm-Tokenisierung wird der Index größer, Abfragen werden jedoch möglicherweise schneller ausgeführt, je nach der Form des Musters und der Länge der Zeichenfolgen, die Sie indizieren.
 >
 
 ### <a name="impact-of-an-analyzer-on-wildcard-queries"></a>Auswirkung eines Analysetools auf Platzhalterabfragen

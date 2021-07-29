@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 393163cadf1907ac5bbb769ea2644bea190773ed
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: d8e8daba3806ad651f66324f362eb2573111dd80
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108794320"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112070901"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Erstellen eines NFS-Volumes für Azure NetApp Files
 
@@ -102,11 +102,12 @@ In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Inform
 
 3. Klicken Sie auf **Protokoll**, und führen Sie anschließend die folgenden Aktionen aus:  
     * Wählen Sie **NFS** als Protokolltyp für das Volume aus.   
-    * Geben Sie den **Dateipfad** zum Erstellen des Exportpfads für das neue Volume an. Der Exportpfad dient zum Einbinden und Zugreifen auf das Volume.
 
-        Der Dateipfadname darf nur Buchstaben, Zahlen und Bindestriche („-“) enthalten. Er muss 16 bis 40 Zeichen umfassen. 
-
-        Der Dateipfad muss innerhalb der einzelnen Abonnements und Regionen eindeutig sein. 
+    * Geben Sie einen eindeutigen **Dateipfad** für das Volume an. Dieser Pfad wird verwendet, wenn Sie Einbindungsziele erstellen. Für den Pfad gelten die folgenden Anforderungen:   
+        - Er muss innerhalb jedes Subnetzes in der Region eindeutig sein. 
+        - Er muss mit einem Buchstaben beginnen.
+        - Er darf nur Buchstaben, Ziffern oder Gedankenstriche (`-`) enthalten. 
+        - Er darf höchstens 80 Zeichen lang sein.
 
     * Wählen Sie die NFS-Version (**NFSv3** oder **NFSv4.1**) für das Volume aus.  
 

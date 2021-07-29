@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: pansav
 author: psavdekar
 ms.date: 09/23/2020
-ms.openlocfilehash: 6c486b5085ee5e3152367229944b7782f04dc854
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: aaacc12f6a577fd0a2ff0150d22902bb6e7d6cc1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204457"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753393"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>Behandeln von Problemen mit „ParallelRunStep“
 
@@ -31,10 +31,14 @@ Allgemeine Tipps zur Problembehandlung für Pipelines finden Sie unter [Problemb
 ##  <a name="script-requirements"></a>Skriptanforderungen
 
 Das Skript für `ParallelRunStep` *muss zwei Funktionen enthalten*:
-- `init()`: Verwenden Sie diese Funktion für alle aufwendigen oder allgemeinen Vorbereitungsmaßnahmen für den späteren Rückschluss. Ein Beispiel wäre etwa das Laden des Modells in ein globales Objekt. Diese Funktion wird nur einmal zu Beginn des Prozesses aufgerufen.
+- `init()`: Verwenden Sie diese Funktion für alle kostspieligen oder allgemeinen Vorbereitungsmaßnahmen für die spätere Verarbeitung. Ein Beispiel wäre etwa das Laden des Modells in ein globales Objekt. Diese Funktion wird nur einmal zu Beginn des Prozesses aufgerufen.
+    > [!NOTE]
+    > Wenn Ihre `init`-Methode ein Ausgabeverzeichnis erstellt, geben Sie `exist_ok=True` an. Die `init`-Methode wird von jedem Workerprozess auf jedem Knoten aufgerufen, auf dem der Auftrag ausgeführt wird.
 -  `run(mini_batch)`: Diese Funktion wird für jede Instanz vom Typ `mini_batch` ausgeführt.
     -  `mini_batch`: `ParallelRunStep` ruft die Run-Methode auf und übergibt entweder eine Liste oder einen Pandas-Datenrahmen (`DataFrame`) als Argument an die Methode. Jeder Eintrag in „mini_batch“ entspricht einem Dateipfad, wenn die Eingabe ein `FileDataset` ist, bzw. einem Pandas-Datenrahmen (`DataFrame`), wenn die Eingabe ein `TabularDataset` ist.
     -  `response`: Die Run-Methode sollte einen Pandas-Datenrahmen (`DataFrame`) oder ein Array zurückgeben. Bei Verwendung von „append_row output_action“ werden diese zurückgegebenen Elemente am Ende der allgemeinen Ausgabedatei hinzugefügt. Bei Verwendung von „summary_only“ wird der Inhalt der Elemente ignoriert. Bei allen Ausgabeaktionen geben die zurückgegebenen Ausgabeelemente jeweils eine erfolgreiche Ausführung für ein Eingabeelement aus dem Eingabeminibatch an. Stellen Sie sicher, dass das Ausführungsergebnis genügend Daten für eine Zuordnung zwischen der Eingabe und der Ausgabe des Ausführungsergebnisses enthält. Die Ausführungsausgabe wird in die Ausgabedatei geschrieben. Da hierbei nicht unbedingt die Reihenfolge eingehalten wird, müssen Sie einen Schlüssel in der Ausgabe verwenden, um sie der Eingabe zuzuordnen.
+        > [!NOTE]
+        > Für ein Eingabeelement wird ein Ausgabeelement erwartet.  
 
 ```python
 %%writefile digit_identification.py
@@ -97,7 +101,7 @@ file_path = os.path.join(script_dir, "<file_name>")
     - Bei `FileDataset` handelt es sich um die Anzahl von Dateien (Mindestwert: `1`). Mehrere Dateien können zu einem Minibatch zusammengefasst werden.
     - Bei `TabularDataset` handelt es sich um die Datengröße. Beispielwerte: `1024`, `1024KB`, `10MB`, `1GB`. Empfohlener Wert: `1MB`. Der Minibatch auf der Grundlage von `TabularDataset` geht nie über Dateigrenzen hinaus. Ein Beispiel: Angenommen, Sie verfügen über unterschiedlich große CSV-Dateien. Die kleinste Datei hat eine Größe von 100 KB, die größte Datei ist 10 MB groß. Wenn Sie nun `mini_batch_size = 1MB` festlegen, werden Dateien mit einer Größe von weniger als 1 MB als einzelner Minibatch behandelt. Dateien mit einer Größe von mehr als 1 MB werden dagegen in mehrere Minibatches aufgeteilt.
         > [!NOTE]
-        > TabularDatasets, die mit SQL gesichert sind, können nicht partitioniert werden. 
+        > TabularDatasets, die mit SQL gesichert sind, können nicht partitioniert werden. TabularDatasets aus einer einzelnen Parquet-Datei und einer einzelnen Zeilengruppe können nicht partitioniert werden.
 
 - `error_threshold`: Die Anzahl von Datensatzfehlern für `TabularDataset` bzw. Dateifehlern für `FileDataset`, die während der Verarbeitung ignoriert werden sollen. Übersteigt die Fehleranzahl für die gesamte Eingabe diesen Wert, wird der Auftrag abgebrochen. Der Fehlerschwellenwert gilt für die gesamte Eingabe und nicht für den einzelnen Minibatch, der an die Methode `run()` gesendet wird. Zulässiger Bereich: `[-1, int.max]`. Der Teil `-1` gibt an, dass bei der Verarbeitung alle Fehler ignoriert werden sollen.
 - `output_action`: Gibt an, wie die Ausgabe strukturiert werden soll:
@@ -107,13 +111,22 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `source_directory`: Pfade zu Ordnern mit allen Dateien, die am Computeziel ausgeführt werden sollen (optional).
 - `compute_target`: Nur `AmlCompute` wird unterstützt.
 - `node_count`: Die Anzahl von Computeknoten, die zum Ausführen des Benutzerskripts verwendet werden sollen.
-- `process_count_per_node`: Die Anzahl von Prozessen pro Knoten. Die bewährte Methode besteht im Festlegen auf die Anzahl der GPUs oder CPUs pro Knoten (optional; der Standardwert ist `1`).
+- `process_count_per_node`: Die Anzahl der Workerprozesse pro Knoten zum parallelen Ausführen des Eingabeskripts. Für einen GPU-Computer ist der Standardwert 1. Für einen CPU-Computer ist der Standardwert die Anzahl der Kerne pro Knoten. Ein Workerprozess ruft `run()` wiederholt auf, indem er den von ihm abgerufenen Minibatch übergibt. Die Gesamtanzahl der Workerprozesse in Ihrem Auftrag ist `process_count_per_node * node_count`, wodurch die maximale Anzahl von `run()` für die parallele Ausführung bestimmt wird.  
 - `environment`: Die Python-Umgebungsdefinition. Sie kann für die Verwendung einer vorhandenen Python-Umgebung oder für die Einrichtung einer temporären Umgebung konfiguriert werden. Die Definition kann auch zum Festlegen der erforderlichen Anwendungsabhängigkeiten verwendet werden (optional).
 - `logging_level`: Die Ausführlichkeit des Protokolls. Mögliche Werte (mit zunehmender Ausführlichkeit): `WARNING`, `INFO`, `DEBUG`. (optional; Standardwert: `INFO`)
 - `run_invocation_timeout`: Das Timeout für den Aufruf der Methode `run()` in Sekunden. (optional; Standardwert `60`)
 - `run_max_try`: Maximale Anzahl der Versuche von `run()` für einen Minibatch. Ein `run()` ist fehlgeschlagen, wenn eine Ausnahme ausgelöst wird oder beim Erreichen von `run_invocation_timeout` nichts zurückgegeben wird (optional; der Standardwert ist `3`). 
 
 Sie können `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` und `run_max_try` als `PipelineParameter` festlegen, sodass Sie die Parameterwerte beim erneuten Senden einer Pipelineausführung optimieren können. In diesem Beispiel verwenden Sie `PipelineParameter` für `mini_batch_size` und `Process_count_per_node`, und Sie ändern diese Werte, wenn Sie erneut eine Ausführung senden. 
+
+#### <a name="cuda-devices-visibility"></a>Sichtbarkeit von CUDA-Geräten
+Für Computeziele, die mit GPUs ausgestattet sind, wird die Umgebungsvariable `CUDA_VISIBLE_DEVICES` in Workerprozessen festgelegt. In AmlCompute finden Sie die Gesamtzahl der GPU-Geräte in der Umgebungsvariablen `AZ_BATCHAI_GPU_COUNT_FOUND`, die automatisch festgelegt wird. Wenn jeder Workerprozess über eine dedizierte GPU verfügen soll, legen Sie `process_count_per_node` auf die Anzahl der GPU-Geräte auf einem Computer fest. Jeder Workerprozess weist `CUDA_VISIBLE_DEVICES` einen eindeutigen Index zu. Wenn ein Workerprozess aus irgendeinem Grund beendet wird, verwendet der nächste gestartete Workerprozess den freigegebenen GPU-Index.
+
+Wenn die Gesamtzahl der GPU-Geräte kleiner als `process_count_per_node` ist, wird den Workerprozessen ein GPU-Index zugewiesen, bis alle verwendet wurden. 
+
+Wenn beispielsweise die Gesamtzahl der GPU-Geräte 2 und `process_count_per_node = 4` ist, weisen Prozess 0 und Prozess 1 den Index 0 und 1 auf. Für Prozess 2 und 3 ist keine Umgebungsvariable vorhanden. Bei einer Bibliothek, die diese Umgebungsvariable für die GPU-Zuweisung verwendet, verfügen Prozess 2 und 3 nicht über GPUs und versuchen nicht, GPU-Geräte zu beziehen. Wenn Prozess 0 beendet wird, wird der GPU-Index 0 freigegeben. Dem nächsten Prozess (Prozess 4) wird GPU-Index 0 zugewiesen.
+
+Weitere Informationen finden Sie unter [CUDA Pro Tip: Control GPU Visibility with CUDA_VISIBLE_DEVICES](https://developer.nvidia.com/blog/cuda-pro-tip-control-gpu-visibility-cuda_visible_devices/).
 
 ### <a name="parameters-for-creating-the-parallelrunstep"></a>Parameter zum Erstellen von ParallelRunStep
 
@@ -224,6 +237,7 @@ Wenn weder `stdout` noch `stderr` angegeben ist, erbt ein Unterprozess die Einst
 ### <a name="how-could-i-write-to-a-file-to-show-up-in-the-portal"></a>Wie kann ich in eine Datei schreiben, die im Portal angezeigt werden soll?
 Dateien im Ordner `logs` werden ins Portal hochgeladen und dort angezeigt.
 Sie können den Ordner `logs/user/entry_script_log/<node_id>` wie unten gezeigt abrufen und ihren Dateipfad zum Schreiben zusammenstellen:
+
 ```python
 from pathlib import Path
 def init():
@@ -234,11 +248,30 @@ def init():
     fil_path = Path(folder) / "<file_name>"
 ```
 
-### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Wie könnte ich eine seitliche Eingabe, z. B. eine oder mehrere Dateien mit einer Nachschlagetabelle, an alle meine Mitarbeiter weitergeben?
+### <a name="how-do-i-write-a-file-to-the-output-directory-and-then-view-it-in-the-portal"></a>Wie kann ich eine Datei in das Ausgabeverzeichnis schreiben und dann im Portal anzeigen?
+
+Sie können das Ausgabeverzeichnis aus der Klasse `EntryScript` abrufen und in dieses schreiben. Zum Anzeigen der geschriebenen Dateien wählen Sie im Azure Machine Learning-Portal in der Schrittansicht „Ausführen“ die Registerkarte **Ausgaben + Protokolle** aus. Klicken Sie auf den Link **Datenausgaben**, und führen Sie dann die im Dialogfeld beschriebenen Schritte aus. 
+
+Verwenden Sie `EntryScript` in Ihrem Eingabeskript, wie im folgenden Beispiel gezeigt:
+
+```python
+from pathlib import Path
+from azureml_user.parallel_run import EntryScript
+
+def run(mini_batch):
+    output_dir = Path(entry_script.output_dir)
+    (Path(output_dir) / res1).write...
+    (Path(output_dir) / res2).write...
+```
+
+### <a name="how-can-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Wie kann ich eine seitliche Eingabe, z. B. eine oder mehrere Dateien mit einer Nachschlagetabelle, an alle meine Mitarbeiter weitergeben?
 
 Der Benutzer kann mit dem Parameter side_inputs von ParalleRunStep Verweisdaten an das Skript übergeben. Alle als side_inputs bereitgestellten Datasets werden auf den einzelnen Workerknoten eingebunden. Der Benutzer kann den Speicherort der Eingabe durch Übergeben des Arguments erhalten.
 
-Konstruieren Sie ein [Dataset](/python/api/azureml-core/azureml.core.dataset.dataset), das die Verweisdaten enthält, geben Sie einen lokalen Mount-Pfad an und registrieren Sie es in Ihrem Arbeitsbereich. Übergeben Sie es an den Parameter `side_inputs` für Ihr `ParallelRunStep`. Zusätzlich können Sie den Pfad im Abschnitt `arguments` hinzufügen, um einfach auf den eingebundenen Pfad zuzugreifen:
+Konstruieren Sie ein [Dataset](/python/api/azureml-core/azureml.core.dataset.dataset), das die Verweisdaten enthält, geben Sie einen lokalen Mount-Pfad an und registrieren Sie es in Ihrem Arbeitsbereich. Übergeben Sie es an den Parameter `side_inputs` für Ihr `ParallelRunStep`. Zusätzlich können Sie den zugehörigen Pfad im Abschnitt `arguments` hinzufügen, um einfach auf den eingebundenen Pfad zuzugreifen.
+
+> [!NOTE]
+> Verwenden Sie FileDatasets nur für side_inputs. 
 
 ```python
 local_path = "/tmp/{}".format(str(uuid.uuid4()))
@@ -264,7 +297,6 @@ labels_path = args.labels_dir
 ```
 
 ### <a name="how-to-use-input-datasets-with-service-principal-authentication"></a>Wie werden Eingabedatasets mit Dienstprinzipalauthentifizierung verwendet?
-
 Der Benutzer kann Eingabedatasets mit Dienstprinzipalauthentifizierung übergeben, die im Arbeitsbereich verwendet werden. Das Verwenden eines solchen Datasets in ParallelRunStep erfordert, dass das Dataset dafür registriert wird, damit die ParallelRunStep-Konfiguration erstellt werden kann.
 
 ```python
@@ -284,6 +316,38 @@ default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore
 ds = Dataset.File.from_files(default_blob_store, '**path***')
 registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
+
+## <a name="how-to-check-progress-and-analyze-it"></a>Überprüfen und Analysieren des Fortschritts
+In diesem Abschnitt erfahren Sie, wie Sie den Fortschritt eines ParallelRunStep-Auftrags überprüfen und die Ursache für unerwartetes Verhalten untersuchen können.
+
+### <a name="how-to-check-job-progress"></a>Überprüfen des Auftragsfortschritts
+Neben dem Gesamtstatus von StepRun können die Anzahl der geplanten/verarbeiteten Minibatches und der Fortschritt der Ausgabegenerierung in `~/logs/job_progress_overview.<timestamp>.txt` angezeigt werden. Die Datei wird täglich gewechselt. Sie können die Datei mit dem größten Zeitstempel auf die neuesten Informationen überprüfen.
+
+### <a name="what-should-i-check-if-there-is-no-progress-for-a-while"></a>Was sollte ich überprüfen, wenn es eine Weile keinen Fortschritt gibt?
+Sie können zu `~/logs/sys/errror` wechseln, um festzustellen, ob eine Ausnahme vorliegt. Ist dies nicht der Fall, nimmt Ihr Eingabeskript wahrscheinlich viel Zeit in Anspruch. Sie können Fortschrittsinformationen in Ihrem Code drucken, um den zeitaufwendigen Teil zu finden, oder `"--profiling_module", "cProfile"` zu den `arguments` von `ParallelRunStep` hinzufügen, um ein Profil namens `<process_name>.profile` im Ordner `~/logs/sys/node/<node_id>` zu generieren.
+
+### <a name="when-will-a-job-stop"></a>Wann wird ein Auftrag beendet?
+Wenn der Auftrag nicht abgebrochen wird, wird er mit folgendem Status beendet:
+- Abgeschlossen. Wenn alle Minibatches verarbeitet wurden und die Ausgabe für den Modus `append_row` generiert wurde.
+- Fehler. Wenn `error_threshold` in [`Parameters for ParallelRunConfig`](#parameters-for-parallelrunconfig) überschritten wird oder während des Auftrags ein Systemfehler aufgetreten ist.
+
+### <a name="where-to-find-the-root-cause-of-failure"></a>Wo ist die Ursache des Fehlers zu finden?
+Sie können dem Lead in `~logs/job_result.txt` folgen, um die Ursache und das ausführliche Fehlerprotokoll zu finden.
+
+### <a name="will-node-failure-impact-the-job-result"></a>Wirkt sich ein Knotenfehler auf das Auftragsergebnis aus?
+Nicht, wenn im angegebenen Computecluster andere verfügbare Knoten vorhanden sind. Der Orchestrator startet einen neuen Knoten als Ersatz, und ParallelRunStep ist gegenüber einem solchen Vorgang resilient.
+
+### <a name="what-happens-if-init-function-in-entry-script-fails"></a>Was geschieht, wenn die Funktion `init` im Eingabeskript fehlschlägt?
+ParallelRunStep verfügt über einen Mechanismus, mit dem Wiederholungsversuche für einen bestimmten Zeitraum ausgeführt werden können, um nach vorübergehenden Problemen eine Wiederherstellung zu ermöglichen, ohne den Auftragsfehler zu lange zu verzögern. Der Mechanismus funktioniert wie folgt:
+1. Wenn `init` nach dem Starten eines Knotens auf allen Agents kontinuierlich fehlschlägt, werden alle weiteren Versuche nach `3 * process_count_per_node` Fehlern aufgegeben.
+2. Wenn `init` nach dem Starten des Auftrags auf allen Agents aller Knoten kontinuierlich fehlschlägt, werden alle weiteren Versuche aufgegeben, wenn der Auftrag länger als 2 Minuten ausgeführt wird und `2 * node_count * process_count_per_node` Fehler auftreten.
+3. Wenn alle Agents länger als `3 * run_invocation_timeout + 30` Sekunden bei `init` hängenbleiben, würde der Auftrag fehlschlagen, weil es zu lange keinen Fortschritt gab.
+
+### <a name="what-will-happen-on-outofmemory-how-can-i-check-the-cause"></a>Was geschieht bei OutOfMemory? Wie kann ich die Ursache überprüfen?
+ParallelRunStep setzt den aktuellen Versuch, den Minibatch zu verarbeiten, auf den Fehlerstatus und versucht, den fehlgeschlagenen Prozess neu zu starten. Sie können `~logs/perf/<node_id>` überprüfen, um den speicherintensiven Prozess zu finden.
+
+### <a name="why-do-i-have-a-lot-of-processnnn-files"></a>Warum habe ich viele processNNN-Dateien?
+ParallelRunStep startet neue Workerprozesse als Ersatz für diejenigen, die auf ungewöhnliche Weise beendet wurden, und für jeden Prozess wird eine `processNNN`-Datei als Protokoll generiert. Wenn der Prozess jedoch aufgrund einer Ausnahme während der Funktion `init` des Benutzerskripts nicht ausgeführt werden konnte und sich dieser Fehler kontinuierlich `3 * process_count_per_node` Male wiederholte, wird kein neuer Workerprozess gestartet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
