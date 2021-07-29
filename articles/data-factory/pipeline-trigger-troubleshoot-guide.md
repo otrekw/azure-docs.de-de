@@ -7,12 +7,12 @@ ms.date: 04/01/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: d9827eab8c9d6187c78a979591f2c7ee0cad99e7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: aaaa9f2e82bb8db0ce4851359d7fb97d475f4e98
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741885"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812733"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Problembehandlung bei der Pipelineorchestrierung und Pipelinetriggern in Azure Data Factory
 
@@ -190,6 +190,16 @@ Fehlermeldungen im Zusammenhang mit langen Warteschlangen können aus verschiede
 * Falls Sie eine Fehlermeldung im Zusammenhang mit dem Zuordnungsdatenfluss erhalten, was eine lange Warteschlange zur Folge haben kann, lesen Sie den [Leitfaden zur Problembehandlung für Datenflüsse](./data-flow-troubleshoot-guide.md).
 * Falls Sie eine Fehlermeldung im Zusammenhang mit anderen Aktivitäten (z. B. Databricks, benutzerdefinierten Aktivitäten oder HDI) erhalten, was eine lange Warteschlange zur Folge haben kann, helfen Ihnen die Informationen im [Leitfaden zur Problembehandlung für Aktivitäten](./data-factory-troubleshoot-guide.md) weiter.
 * Falls Sie eine Fehlermeldung im Zusammenhang mit der Ausführung von SSIS-Paketen erhalten, was eine lange Warteschlange zur Folge haben kann, finden Sie weitere Informationen unter [Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime](./ssis-integration-runtime-ssis-activity-faq.md) und [Problembehandlung bei der SSIS Integration Runtime-Verwaltung in Azure Data Factory](./ssis-integration-runtime-management-troubleshoot.md).
+
+### <a name="error-message---codebadrequest-messagenull"></a>Fehlermeldung: "code":"BadRequest", "message":"null"
+
+**Ursache**
+
+Dies ist ein Benutzerfehler, weil die JSON-Nutzlast, die bei „management.azure.com“ ankommt, beschädigt ist. Es werden keine Protokolle gespeichert, weil der Benutzeraufruf die ADF-Dienstebene nicht erreicht hat.
+
+**Auflösung**
+
+Führen Sie die Netzwerkablaufverfolgung Ihres API-Aufrufs über das ADF-Portal im Edge-/Chrome-Browser mithilfe der **Entwicklertools** aus. Es wird eine fehlerhafte JSON-Nutzlast angezeigt, die möglicherweise auf ein Sonderzeichen (z. B. $), Leerzeichen und andere Arten von Benutzereingaben zurückzuführen ist. Nachdem Sie den Zeichenfolgenausdruck korrigiert haben, können Sie im Browser mit den restlichen ADF-Nutzungsaufrufen fortfahren.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

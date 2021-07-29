@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 2d3c946bc2f98b0c06fe33dcaaa77a5399f6d56b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 734986d2c9b372214a54c1308e4ca445940c5f65
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782727"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111808923"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster"></a>Beenden und Starten eines AKS-Clusters (Azure Kubernetes Service)
 
@@ -27,6 +27,7 @@ Wenn Sie das Feature zum Starten/Beenden von Clustern verwenden, gelten die folg
 - Diese Funktion wird nur für Back-End-Cluster für Virtual Machine Scale Sets unterstützt.
 - Der Clusterstatus eines beendeten AKS-Clusters wird bis zu 12 Monate beibehalten. Wenn Ihr Cluster länger als 12 Monate angehalten wird, kann der Clusterstatus danach nicht mehr wiederhergestellt werden. Weitere Informationen finden Sie unter [Unterstützungsrichtlinien für Azure Kubernetes Service](support-policies.md).
 - Nun ein angehaltener AKS-Cluster kann gestartet oder gelöscht werden. Wenn Sie einen Vorgang wie eine Skalierung oder ein Upgrade ausführen möchten, müssen Sie zuerst den Cluster starten.
+- Die vom Kunden bereitgestellten PrivateEndpoints, die mit dem privaten Cluster verknüpft sind, müssen gelöscht und erneut erstellt werden, wenn Sie einen beendeten AKS-Cluster starten.
 
 ## <a name="stop-an-aks-cluster"></a>Beenden eines AKS-Clusters
 
@@ -83,6 +84,9 @@ Mit dem Befehl [az aks show][az-aks-show] können Sie überprüfen, wann Ihr Clu
 ```
 
 Wenn für `provisioningState` `Starting` angezeigt wird, bedeutet das, dass Ihr Cluster noch nicht vollständig gestartet wurde.
+
+> [!NOTE]
+> Wenn Sie automatische Clusterskalierung verwenden, liegt Ihre aktuelle Knotenanzahl beim Starten des Clusters möglicherweise nicht zwischen den von Ihnen festgelegten Mindest- und Höchstwerten für den Bereich. Dies ist das erwartete Verhalten. Der Cluster beginnt mit der Anzahl von Knoten, die er zum Ausführen seiner Workloads benötigt. Dies hat keine Auswirkungen auf Ihre Einstellungen für automatische Skalierung. Wenn Ihr Cluster Skalierungsvorgänge ausführt, wirken sich die Mindest- und Höchstwerte auf Ihre aktuelle Knotenanzahl aus. Der Cluster wird schließlich in den gewünschten Bereich gelangen und dort verbleiben, bis Sie ihn beenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

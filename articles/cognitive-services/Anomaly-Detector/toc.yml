@@ -3,33 +3,35 @@
 - name: Übersicht
   expanded: true
   items:
-    - name: Worum handelt es sich bei der Anomalieerkennung (Multivariat)?
-      href: overview-multivariate.md
     - name: Worum handelt es sich bei der Anomalieerkennung (Univariat)?
       href: overview.md
+    - name: Worum handelt es sich bei der Anomalieerkennung (Multivariat)?
+      href: overview-multivariate.md
     - name: Preise
       href: 'https://aka.ms/adpricing'
+    - name: Neues
+      href: whats-new.md
 - name: Schnellstarts
   items:
-    - name: Multivariate Clientbibliotheken
-      href: ./quickstarts/client-libraries-multivariate.md
-    - name: Univariate Clientbibliotheken
+    - name: Clientbibliotheken (univariat)
       href: ./quickstarts/client-libraries.md
+    - name: Clientbibliotheken (multivariat)
+      href: ./quickstarts/client-libraries-multivariate.md
 - name: Beispiele
   items:
-    - name: Interaktive Demo (Univariat)
+    - name: Demowebanwendung (univariat)
       href: 'https://aka.ms/adDemo'
-    - name: Jupyter Notebook (Univariat)
+    - name: Jupyter Notebook
       href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
-    - name: Jupyter Notebook (Multivariat)
-      href: 'https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb'
-    - name: Azure-Beispiele
-      href: /samples/browse/?products=azure&terms=anomaly-detector
+    - name: Azure-Beispiele (univariat)
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/quickstarts'
+    - name: Azure-Beispiele (multivariat)
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/quickstarts-multivariate'
 - name: Anleitungen
   items:
-    - name: Ermitteln von Anomalien in Ihren Daten
+    - name: Ermitteln von Anomalien in Ihren Daten (univariat)
       href: how-to/identify-anomalies.md
-    - name: Bereitstellen der Anomalieerkennung
+    - name: Bereitstellen der Anomalieerkennung (univariat)
       items:
         - name: Bereitstellen für IoT Edge
           href: how-to/deploy-anomaly-detection-on-iot-edge.md
@@ -54,19 +56,33 @@
           href: ../authentication.md?context=/azure/cognitive-services/anomaly-detector/context/context
 - name: Konzepte
   items:
-    - name: Bewährte Methoden für die Anomalieerkennungs-API (Multivariat)
-      href: concepts/best-practices-multivariate.md
     - name: Bewährte Methoden für die Anomalieerkennungs-API (Univariat)
       href: concepts/anomaly-detection-best-practices.md
+    - name: Bewährte Methoden für die Anomalieerkennungs-API (Multivariat)
+      href: concepts/best-practices-multivariate.md
     - name: Predictive Maintenance-Architektur (Multivariat)
       href: concepts/multivariate-architecture.md
 - name: Tutorials
   items:
-    - name: Visualisieren von Anomalien als Batch mithilfe von Power BI
+    - name: "Visualisieren von Anomalien als Batch mithilfe von Power\_BI (univariat)"
       href: tutorials/batch-anomaly-detection-powerbi.md
-- name: Referenz
+    - name: Kennenlernen der Erkennung von multivariaten Anomalien in nur einer Stunde (multivariat)
+      href: tutorials/learn-multivariate-anomaly-detection.md
+- name: Verantwortungsvolle Verwendung von KI
   items:
-    - name: Anomalieerkennungs-REST-API
+    - name: Transparenzhinweise
+      items:
+        - name: Anwendungsfälle für die Anomalieerkennung
+          href: /legal/cognitive-services/anomaly-detector/transparency-note?context=/azure/cognitive-services/anomaly-detector/context/context
+        - name: Merkmale und Einschränkungen
+          href: /legal/cognitive-services/anomaly-detector/characteristics-and-limitations?context=/azure/cognitive-services/anomaly-detector/context/context
+    - name: Integration und verantwortungsvolle Verwendung
+      href: /legal/cognitive-services/anomaly-detector/guidance-integration-responsible-use?context=/azure/cognitive-services/anomaly-detector/context/context
+    - name: 'Daten, Datenschutz und Sicherheit'
+      href: /legal/cognitive-services/anomaly-detector/data-privacy-security?context=/azure/cognitive-services/anomaly-detector/context/context
+- name: Verweis
+  items:
+    - name: REST-API für die Anomalieerkennung (univariat)
       href: 'https://aka.ms/anomaly-detector-rest-api-ref'
     - name: Vorschauversion der Anomalieerkennungs-REST-API (Multivariat)
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector-v1-1-preview/operations/DetectAnomaly'
@@ -82,31 +98,35 @@
   items:
     - name: Unternehmensfähigkeit
       items:
-        - name: Unterstützung für Regionen
+        - name: Regionsunterstützung (univariat)
           href: 'https://aka.ms/adregion'
+        - name: Regionsunterstützung (multivariat)
+          href: overview-multivariate.md#region-support
         - name: Konformität und Zertifizierung
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Support- und Hilfeoptionen
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
-    - name: Microsoft Learn-Module
+    - name: "Microsoft\_Learn-Module (univariat)"
       href: /learn/modules/intro-to-anomaly-detector/
-    - name: Benutzergenerierter Inhalt
-      href: user-generated-content.md
     - name: Beitreten zur Ratgebergruppe für die Anomalieerkennung auf Microsoft Teams
       href: 'https://aka.ms/adadvisorsjoin'
-    - name: Architektur der Referenzlösung
+    - name: Architektur der Referenzlösung (univariat)
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Azure-Updates
       href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
-    - name: Problembehandlung bei multivariaten Anomalien
+    - name: Fehlercodes (multivariat)
       href: concepts/troubleshoot.md
     - name: Technische Artikel
       items:
-        - name: Einführung in die API für die Azure-Anomalieerkennung
+        - name: Einführung in die API für die Azure-Anomalieerkennung (univariat)
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
+        - name: Einführung in die Erkennung von multivariaten Anomalien
+          href: 'https://techcommunity.microsoft.com/t5/azure-ai/introducing-multivariate-anomaly-detection/ba-p/2260679'
         - name: Übersicht über den SR-CNN-Algorithmus
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
         - name: SR- und CNN-Anomalieerkennung (Spectral Residual und Convolutional Neural Net)
           href: 'https://arxiv.org/abs/1906.03821'
         - name: Multivariate Zeitreihen-Anomalieerkennung über ein Graph-Aufmerksamkeitsnetzwerk
           href: 'https://arxiv.org/abs/2009.02040'
+        - name: Weitere technische Artikel...
+          href: whats-new.md#technical-articles

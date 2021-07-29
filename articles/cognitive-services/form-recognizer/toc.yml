@@ -31,7 +31,7 @@
   items:
     - name: Transparenzhinweise
       items:
-        - name: Anwendungsfälle für die Azure-Formularerkennung
+        - name: Szenarien für die Azure-Formularerkennung
           href: /legal/cognitive-services/form-recognizer/fr-transparency-note?context=/azure/cognitive-services/form-recognizer/context/context
         - name: Merkmale und Einschränkungen
           href: /legal/cognitive-services/form-recognizer/fr-characteristics-and-limitations?context=/azure/cognitive-services/form-recognizer/context/context
@@ -41,15 +41,17 @@
       href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/cognitive-services/form-recognizer/context/context
 - name: Anleitungen
   items:
+    - name: Bereitstellen des Samplebezeichnungstools
+      href: deploy-label-tool.md
     - name: Trainieren eines benutzerdefinierten Modells mit dem Tool für die Beschriftung von Beispielen
       href: label-tool.md
     - name: Verwenden von Containern
       items:
         - name: Installieren und Ausführen von Containern
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
-          href: form-recognizer-container-howto.md
+          href: containers/form-recognizer-container-install-run.md
         - name: Konfigurieren von Containern
-          href: form-recognizer-container-configuration.md
+          href: containers/form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Verwenden von Containerinstanzen
           maintainContext: true
@@ -63,6 +65,8 @@
       items:
         - name: Einrichten von virtuellen Netzwerken
           href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/form-recognizer/context/context
+        - name: Erstellen und Verwenden einer verwalteten Identität
+          href: managed-identity-byos.md
         - name: Verwenden kundenseitig verwalteter Schlüssel
           href: encrypt-data-at-rest.md
         - name: "Verwenden der Azure\_AD-Authentifizierung"
@@ -95,7 +99,7 @@
       items:
         - name: "Referenz zu REST-API\_v2.1"
           href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm'
-        - name: SDKs v3.1.0
+        - name: Clientbibliotheken und SDKs
           items:
             - name: .NET
               href: /dotnet/api/overview/azure/ai.formrecognizer-readme

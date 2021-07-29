@@ -6,51 +6,42 @@ ms.author: tefa
 ms.date: 08/03/2020
 ms.service: signalr
 ms.topic: conceptual
-ms.openlocfilehash: c561bb507a5178f4a838b370a3da8af9447829f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b2766495c89b9be1a89e0648bcec83c160c1e0a8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092561"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479441"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-signalr-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure SignalR Service-Ressourcen
 Azure SignalR Service unterstützt die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md). Sie können verwaltete Identitäten für Azure-Ressourcen verwenden, um den Zugriff auf Azure SignalR Service-Ressourcen mithilfe von Azure AD-Anmeldeinformationen über Anwendungen zu autorisieren, die auf virtuellen Azure-Computern, in Funktions-Apps, in VM-Skalierungsgruppen und anderen Diensten ausgeführt werden. Durch Verwendung von verwalteten Identitäten für Azure-Ressourcen zusammen mit der Azure AD-Authentifizierung können Sie vermeiden, dass Anmeldeinformationen mit den in der Cloud ausgeführten Anwendungen gespeichert werden.
 
-In diesem Artikel wird die Autorisierung des Zugriffs auf Azure SignalR Service mithilfe einer verwalteten Identität über einen virtuellen Azure-Computer erläutert.
+In diesem Artikel wird die Autorisierung des Zugriffs auf Azure SignalR Service mithilfe einer verwalteten Identität erläutert.
 
-## <a name="enable-managed-identities-on-a-vm"></a>Aktivieren von verwalteten Identitäten auf einem virtuellen Computer
-Damit Sie verwaltete Identitäten für Azure-Ressourcen zum Autorisieren des Zugriffs auf Azure SignalR Service-Ressourcen über Ihren virtuellen Computer verwenden können, müssen Sie zunächst verwaltete Identitäten für Azure-Ressourcen auf dem virtuellen Computer aktivieren. Informationen zum Aktivieren von verwalteten Identitäten für Azure-Ressourcen finden Sie in diesen Artikeln:
+## <a name="enable-managed-identities"></a>Aktivieren von verwalteten Identitäten
+Damit Sie verwaltete Identitäten für Azure-Ressourcen zum Autorisieren des Zugriffs auf Azure SignalR Service-Ressourcen verwenden können, müssen Sie zunächst verwaltete Identitäten für Azure-Ressourcen aktivieren. 
+### <a name="for-azure-resources-on-a-vm"></a>Für Azure-Ressourcen auf einem virtuellen Computer
+Informationen zum Aktivieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer finden Sie in diesen Artikeln:
 
 - [Azure portal](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+  1. Wechseln Sie zu **Einstellungen** im Azure-Portal, und wählen Sie **Identität** aus. 
+  2. Legen Sie den **Status** auf **Ein** fest. 
+  3. Klicken Sie auf **Speichern**, um die Einstellung zu speichern. 
+
+      ![Verwaltete Identität für einen virtuellen Computer](./media/authenticate/identity-virtual-machine.png)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure-Befehlszeilenschnittstelle](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-Vorlage](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure Resource Manager-Clientbibliotheken](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
+### <a name="for-azure-functions"></a>Für Azure Functions
+
+Siehe [Verwenden verwalteter Identitäten für App Service und Azure Functions](../app-service/overview-managed-identity.md).
+
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Erteilen von Berechtigungen für eine verwaltete Identität in Azure AD
 Damit Sie eine Anforderung an Azure SignalR Service über eine verwaltete Identität in Ihrer Anwendung autorisieren können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für diese verwaltete Identität konfigurieren. Azure SignalR Service definiert RBAC-Rollen, die Berechtigungen für das Abrufen von `AccessKey` oder `ClientToken` beinhalten. Wenn die RBAC-Rolle einer verwalteten Identität zugewiesen wird, wird der verwalteten Identität der Zugriff auf Azure SignalR Service im entsprechenden Umfang erteilt.
 
-Weitere Informationen zum Zuweisen von RBAC-Rollen finden Sie unter [Autorisieren des Zugriffs auf Azure SignalR Service mit Azure Active Directory](authorize-access-azure-active-directory.md).
-
-## <a name="connect-to-azure-signalr-service-with-managed-identities"></a>Herstellen einer Verbindung mit Azure SignalR Service mithilfe verwalteter Identitäten
-Wenn mithilfe verwalteter Identitäten eine Verbindung mit Azure SignalR Service herstellen möchten, müssen Sie der Identität die Rolle und den entsprechenden Berechtigungsumfang zuweisen. Das Verfahren in diesem Abschnitt verwendet eine einfache Anwendung, die unter einer verwalteten Identität ausgeführt wird und auf Azure SignalR Service-Ressourcen zugreift.
-
-Hier wird eine beispielhafte Azure-VM-Ressource verwendet.
-
-1. Navigieren Sie zu **Einstellungen**, und wählen Sie **Identität** aus. 
-1. Legen Sie den **Status** auf **Ein** fest. 
-1. Klicken Sie auf **Speichern**, um die Einstellung zu speichern. 
-
-    ![Verwaltete Identität für einen virtuellen Computer](./media/authenticate/identity-virtual-machine.png)
-
-Nachdem Sie diese Einstellung aktiviert haben, wird in Ihrer Azure AD-Instanz (Azure Active Directory) eine neue Dienstidentität erstellt und auf dem App Service-Host konfiguriert.
-
-Weisen Sie dieser Dienstidentität jetzt eine Rolle im erforderlichen Umfang in Ihren Azure SignalR Service-Ressourcen zu.
-
-## <a name="assign-azure-roles-using-the-azure-portal"></a>Zuweisen von Azure-Rollen über das Azure-Portal  
-Weitere Informationen zum Verwalten des Zugriffs auf Azure-Ressourcen mithilfe der Azure RBAC und des Azure-Portals finden Sie in [diesem Artikel](..//role-based-access-control/role-assignments-portal.md). 
-
-Nachdem Sie den gewünschten Bereich für eine Rollenzuweisung festgelegt haben, navigieren Sie im Azure-Portal zur entsprechenden Ressource. Zeigen Sie die Einstellungen für die Zugriffssteuerung (IAM) für die Ressource an, und befolgen Sie diese Anweisungen zum Verwalten von Rollenzuweisungen:
+Befolgen Sie diese Anweisungen, um Rollenzuweisungen zu verwalten:
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer SignalR-Ressource.
 1. Wählen Sie **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für Azure SignalR Service anzuzeigen. 
@@ -59,7 +50,7 @@ Nachdem Sie den gewünschten Bereich für eine Rollenzuweisung festgelegt haben,
     ![Schaltfläche „Hinzufügen“ auf der Symbolleiste](./media/authenticate/role-assignments-add-button.png)
 
 1. Führen Sie auf der Seite **Rollenzuweisung hinzufügen** die folgenden Schritte aus:
-    1. Wählen Sie die **Azure SignalR Service-Rolle** aus, die Sie zuweisen möchten. 
+    1. Wählen Sie **SignalR-App-Server** als Rolle aus. Beachten Sie, dass dies auch für die **Azure Functions-App** gilt.
     1. Suchen Sie nach dem **Sicherheitsprinzipal** (Benutzer, Gruppe, Dienstprinzipal), dem Sie die Rolle zuweisen möchten.
     1. Klicken Sie auf **Speichern**, um die Rollenzuweisung zu speichern. 
 
@@ -71,15 +62,33 @@ Nachdem Sie den gewünschten Bereich für eine Rollenzuweisung festgelegt haben,
 
 Sie können ähnliche Schritte ausführen, um eine Rolle zuzuweisen, die für eine Ressourcengruppe oder ein Abonnement gilt. Nachdem Sie die Rolle und ihren Bereich definiert haben, können Sie dieses Verhalten mit den Beispielen [an diesem GitHub-Speicherort](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) testen.
 
-## <a name="samples-code-while-configuring-your-app-server"></a>Codebeispiele für das Konfigurieren des App-Servers
+Weitere Informationen zum Zuweisen von RBAC-Rollen finden Sie unter [Autorisieren des Zugriffs auf Azure SignalR Service mit Azure Active Directory](authorize-access-azure-active-directory.md).
+
+Weitere Informationen zum Verwalten des Zugriffs auf Azure-Ressourcen mithilfe der Azure RBAC und des Azure-Portals finden Sie in [diesem Artikel](..//role-based-access-control/role-assignments-portal.md). 
+
+## <a name="configure-your-app"></a>Konfigurieren Ihrer App
+### <a name="app-server"></a>App-Server
 
 Fügen Sie bei Verwendung von `AddAzureSignalR` folgende Optionen hinzu:
 
 ```C#
 services.AddSignalR().AddAzureSignalR(option =>
 {
-    option.ConnectionString = "Endpoint=https://<name>.signalr.net;AuthType=aad;";
+    option.ConnectionString = "Endpoint=https://<name>.signalr.net;AuthType=aad;Version=1.0;";
 });
+```
+
+### <a name="azure-functions-app"></a>Azure Functions-App
+
+Fügen Sie im Azure-Portal eine Anwendungseinstellung mit dem Namen `AzureSignalRConnectionString` und dem Wert `Endpoint=https://<name>.signalr.net;AuthType=aad;` hinzu.
+
+Fügen Sie lokal in Ihrer Datei `local.appsettings.json` im Abschnitt `Values` Folgendes hinzu:
+```json
+{
+    "Values": {
+        "AzureSignalRConnectionString": "Endpoint=https://<name>.signalr.net;AuthType=aad;Version=1.0;"
+    }
+}
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

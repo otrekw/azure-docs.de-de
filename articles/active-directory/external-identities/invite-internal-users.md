@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 802307a21873d15242c2e387ec0defe35f50bb20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa2356cf45c1b1a04fac14bff2888d031ca5a423
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99576429"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750985"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Einladen von internen Benutzern zur B2B-Zusammenarbeit
 
@@ -31,9 +31,12 @@ Das Senden einer Einladung an ein vorhandenes internes Konto ermöglicht es Ihne
 
 - **Die Einladung ist unidirektional:** Sie können interne Benutzer zur Verwendung der B2B-Zusammenarbeit einladen, aber Sie können die B2B-Anmeldeinformationen nach dem Hinzufügen nicht mehr entfernen. Um für den Benutzer wieder die Umstellung auf einen rein internen Benutzer durchzuführen, müssen Sie das Benutzerobjekt löschen und ein neues erstellen.
 
-- **Teams:** Wenn der Benutzer mit seinen externen Anmeldeinformationen auf Teams zugreift, ist sein Mandant anfangs nicht in der Teams-Mandantenauswahl verfügbar. Der Benutzer kann mithilfe einer URL auf Teams zugreifen, die den Mandantenkontext enthält (z. B. `https://team.microsoft.com/?tenantId=<TenantId>`). Danach wird der Mandant in der Teams-Mandantenauswahl verfügbar.
+- **Teams:** Wenn der Benutzer mit seinen externen Anmeldeinformationen auf Teams zugreift, ist sein Mandant anfangs nicht in der Teams-Mandantenauswahl verfügbar. Der Benutzer kann mithilfe einer URL auf Teams zugreifen, die den Mandantenkontext enthält (z. B. `https://teams.microsoft.com/?tenantId=<TenantId>`). Danach wird der Mandant in der Teams-Mandantenauswahl verfügbar.
 
 - **Lokal synchronisierte Benutzer**: Für Benutzerkonten, die zwischen dem lokalen Standort und der Cloud synchronisiert werden, bleibt das lokale Verzeichnis die Autoritätsquelle, nachdem die Einladung zur B2B-Zusammenarbeit erfolgt ist. Alle Änderungen, die Sie am lokalen Konto vornehmen, werden mit dem Cloudkonto synchronisiert, z. B. das Deaktivieren oder Löschen des Kontos. Aus diesem Grund können Sie durch das einfache Löschen des lokalen Kontos nicht verhindern, dass sich der Benutzer bei seinem lokalen Konto anmeldet, während das Cloudkonto beibehalten wird. Sie können aber das Kennwort für das lokale Konto auf eine zufällige GUID oder einen anderen unbekannten Wert festlegen.
+
+> [!NOTE]
+> Wenn Sie Azure AD Connect Cloud Sync verwenden, gibt es standardmäßig eine Regel, die „OnPremUserPrincipalName“ in den Benutzer schreibt. Diese Regel muss so geändert werden, dass sie diese Eigenschaft nicht für Benutzer schreibt, die Sie von internen in externe Benutzer konvertieren möchten.
 
 ## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>Gewusst wie: Einladen von internen Benutzern zur B2B-Zusammenarbeit
 

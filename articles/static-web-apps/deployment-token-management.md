@@ -1,5 +1,5 @@
 ---
-title: Zurücksetzen von Bereitstellungstoken in Azure Static Web Apps (Vorschau)
+title: Zurücksetzen von Bereitstellungstoken in Azure Static Web Apps
 description: Zurücksetzen von Token auf einer Azure Static Web Apps-Website
 services: static-web-apps
 author: webmaxru
@@ -7,14 +7,14 @@ ms.author: masalnik
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 1/31/2021
-ms.openlocfilehash: fe1edb2693993d02a705039c18b04c8d1b7b9725
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d516a448240e32f58318689d985bc0aad906b9f
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743400"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814008"
 ---
-# <a name="reset-deployment-tokens-in-azure-static-web-apps-preview"></a>Zurücksetzen von Bereitstellungstoken in Azure Static Web Apps (Vorschau)
+# <a name="reset-deployment-tokens-in-azure-static-web-apps"></a>Zurücksetzen von Bereitstellungstoken in Azure Static Web Apps
 
 Wenn Sie eine neue Azure Static Web Apps-Website erstellen, generiert Azure ein Token, das verwendet wird, um die Anwendung während der Bereitstellung zu identifizieren. Während der Bereitstellung wird dieses Token als Geheimnis im GitHub-Repository gespeichert. In diesem Artikel wird erläutert, wie Sie dieses Token verwenden und verwalten.
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/09/2020
+ms.date: 06/07/2021
 ms.author: justinha
-ms.openlocfilehash: 4caf804a274956556d6e9ca396c8f08594b11a87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8ed66f1c6a7b52015778239e1d8afc2af2f6d06
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092875"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744753"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Häufige Warnungen und deren Auflösung in Azure AD Domain Services
 
@@ -138,7 +138,8 @@ Diese Warnung wird generiert, wenn eine dieser erforderlichen Ressourcen gelösc
 1. Wählen Sie auf der Seite „Integrität“ die Warnung mit der ID *AADDS109* aus.
 1. Die Warnung enthält einen Zeitstempel für das erste Auftreten. Wenn dieser Zeitstempel vor weniger als 4 Stunden erstellt wurde, kann die Azure-Plattform die Ressource möglicherweise automatisch neu erstellen und die Warnung selbst auflösen.
 
-    Wenn die Warnung mehr als 4 Stunden alt ist, kann die verwaltete Domäne nicht wiederhergestellt werden. [Löschen Sie die verwaltete Domäne](delete-aadds.md), und [erstellen Sie dann eine verwaltete Ersatzdomäne](tutorial-create-instance.md).
+    Die Warnung kann aus unterschiedlichen Gründen älter als vier Stunden sein. In diesem Fall können Sie [die verwaltete Domäne löschen](delete-aadds.md) und dann [eine verwaltete Ersatzdomäne für eine sofortige Korrektur erstellen](tutorial-create-instance.md), oder Sie können eine Supportanfrage stellen, um die Instanz zu korrigieren. Je nach Art des Problems muss möglicherweise eine Wiederherstellung aus einer Sicherung durchgeführt werden.
+
 
 ## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: Das Ihrer verwalteten Domäne zugeordnete Subnetz ist voll
 
