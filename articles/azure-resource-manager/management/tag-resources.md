@@ -2,24 +2,24 @@
 title: Markieren von Ressourcen, Ressourcengruppen und Abonnements für die logische Organisation
 description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die Abrechnung und Verwaltung anwenden können.
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 05/05/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0ee2274dcd13af0bcbfe342039681ecc7b949a7b
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: b5278408ac1adf1e12adf8f7facebd26e6d96d6d
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330961"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111813905"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
-Durch Anwenden von Tags können Sie Ihre Ressourcen, Ressourcengruppen und Abonnements in Azure logisch in einer Taxonomie strukturieren. Jedes Tag besteht aus einem Paar mit einem Namen und einem Wert. So können Sie beispielsweise den Namen „Umgebung“ und den Wert „Produktion“ auf alle Ressourcen in der Produktion anwenden.
+Durch Anwenden von Tags können Sie Ihre Ressourcen, Ressourcengruppen und Abonnements in Azure logisch in einer Taxonomie strukturieren. Jedes Tag besteht aus einem Paar mit einem Namen und einem Wert. So können Sie beispielsweise den Namen _Umgebung_ und den Wert _Produktion_ auf alle Ressourcen in der Produktion anwenden.
 
 Empfehlungen zum Implementieren einer Tagstrategie finden Sie unter [Leitfaden zur Entscheidungsfindung für Ressourcenbenennung und -markierung](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).
 
 > [!IMPORTANT]
 > Bei Tagnamen wird für Vorgänge die Groß-/Kleinschreibung nicht beachtet. Ein Tag mit einem Tagnamen (unabhängig von der Groß-/Kleinschreibung) wird aktualisiert oder abgerufen. Der Ressourcenanbieter übernimmt jedoch möglicherweise die Groß-/Kleinschreibung, die Sie für den Tagnamen verwenden. Diese Groß-/Kleinschreibung erscheint in Kostenberichten.
-> 
+>
 > Bei den Tagwerten wird Groß- und Kleinschreibung unterschieden.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
@@ -28,7 +28,7 @@ Empfehlungen zum Implementieren einer Tagstrategie finden Sie unter [Leitfaden z
 
 Es gibt zwei Möglichkeiten, den erforderlichen Zugriff auf Tagressourcen zu erhalten.
 
-- Sie können Schreibzugriff auf den Ressourcentyp **Microsoft.Resources/tags** haben. Mit diesem Zugriff können Sie alle Ressourcen markieren, auch wenn Sie keinen Zugriff auf die Ressource selbst haben. Die Rolle [Tagmitwirkender](../../role-based-access-control/built-in-roles.md#tag-contributor) gewährt diesen Zugriff. Derzeit kann die Rolle „Tagmitwirkender“ keine Tags über das Portal auf Ressourcen oder Ressourcengruppen anwenden. Sie kann über das Portal Tags auf Abonnements anwenden. Sie unterstützt alle Tagvorgänge über PowerShell und die REST-API.  
+- Sie können Schreibzugriff auf den Ressourcentyp `Microsoft.Resources/tags` haben. Mit diesem Zugriff können Sie alle Ressourcen markieren, auch wenn Sie keinen Zugriff auf die Ressource selbst haben. Die Rolle [Tagmitwirkender](../../role-based-access-control/built-in-roles.md#tag-contributor) gewährt diesen Zugriff. Derzeit kann die Rolle „Tagmitwirkender“ keine Tags über das Portal auf Ressourcen oder Ressourcengruppen anwenden. Sie kann über das Portal Tags auf Abonnements anwenden. Sie unterstützt alle Tagvorgänge über PowerShell und die REST-API.
 
 - Sie können Schreibzugriff auf die Ressource selbst haben. Die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) gewährt den erforderlichen Zugriff zum Anwenden von Tags auf Entitäten. Zum Anwenden von Tags auf nur einen Ressourcentyp verwenden Sie die Rolle „Mitwirkender“ für die jeweilige Ressource. Zum Anwenden von Tags auf virtuelle Computer beispielsweise verwenden Sie [Mitwirkender von virtuellen Computern](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
@@ -36,9 +36,9 @@ Es gibt zwei Möglichkeiten, den erforderlichen Zugriff auf Tagressourcen zu erh
 
 ### <a name="apply-tags"></a>Anwenden von Tags
 
-Azure PowerShell umfasst zwei Befehle zum Anwenden von Tags: [New-AzTag](/powershell/module/az.resources/new-aztag) und [Update-AzTag](/powershell/module/az.resources/update-aztag). Sie benötigen das Modul Az.Resources 1.12.0 oder höher. Sie können die Version mit `Get-Module Az.Resources` überprüfen. Sie können dieses Modul oder [Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 oder höher installieren.
+Azure PowerShell umfasst zwei Befehle zum Anwenden von Tags: [New-AzTag](/powershell/module/az.resources/new-aztag) und [Update-AzTag](/powershell/module/az.resources/update-aztag). Sie benötigen das Modul `Az.Resources` 1.12.0 oder höher. Sie können die Version mit `Get-InstalledModule -Name Az.Resources` überprüfen. Sie können dieses Modul oder [Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 oder höher installieren.
 
-Mit dem Befehl **New-AzTag** werden alle Tags für die Ressource, die Ressourcengruppe oder das Abonnement ersetzt. Übergeben Sie beim Aufrufen des Befehls die Ressourcen-ID der Entität, die markiert werden soll.
+Mit dem Befehl `New-AzTag` werden alle Tags für die Ressource, die Ressourcengruppe oder das Abonnement ersetzt. Übergeben Sie beim Aufrufen des Befehls die Ressourcen-ID der Entität, die markiert werden soll.
 
 Im folgenden Beispiel wird eine Gruppe von Tags auf ein Speicherkonto angewandt:
 
@@ -73,7 +73,7 @@ Properties :
         Team         Compliance
 ```
 
-Um einer Ressource, die bereits Tags enthält, Tags hinzuzufügen, verwenden Sie **Update-AzTag**. Legen Sie den Parameter **-Operation** auf **Merge** fest.
+Um einer Ressource, die bereits Tags enthält, Tags hinzuzufügen, verwenden Sie `Update-AzTag`. Setzen Sie den `-Operation`-Parameter auf `Merge`.
 
 ```azurepowershell-interactive
 $tags = @{"Dept"="Finance"; "Status"="Normal"}
@@ -92,7 +92,7 @@ Properties :
         Environment  Production
 ```
 
-Jeder Tagname kann nur einen Wert enthalten. Wenn Sie einen neuen Wert für ein Tag angeben, wird der alte Wert auch dann ersetzt, wenn Sie den Zusammenführungsvorgang verwenden. Im folgenden Beispiel wird das Tag „Status“ von „Normal“ in „Green“ geändert.
+Jeder Tagname kann nur einen Wert enthalten. Wenn Sie einen neuen Wert für ein Tag angeben, wird der alte Wert auch dann ersetzt, wenn Sie den Zusammenführungsvorgang verwenden. Im folgenden Beispiel wird das Tag `Status` von _Normal_ in _Green_ geändert.
 
 ```azurepowershell-interactive
 $tags = @{"Status"="Green"}
@@ -109,7 +109,7 @@ Properties :
         Environment  Production
 ```
 
-Wenn Sie den Parameter **-Operation** auf **Replace** festlegen, werden die vorhandenen Tags durch die neue Gruppe von Tags ersetzt.
+Wenn Sie den Parameter `-Operation` auf `Replace` festlegen, werden die vorhandenen Tags durch die neue Gruppe von Tags ersetzt.
 
 ```azurepowershell-interactive
 $tags = @{"Project"="ECommerce"; "CostCenter"="00123"; "Team"="Web"}
@@ -215,7 +215,7 @@ Verwenden Sie zum Abrufen von Ressourcengruppen mit einem bestimmten Tagnamen un
 
 ### <a name="remove-tags"></a>Entfernen von Tags
 
-Um bestimmte Tags zu entfernen, verwenden Sie den Befehl **Update-AzTag**, und legen Sie **-Operation** auf **Delete** fest. Übergeben Sie die Tags, die gelöscht werden sollen.
+Um bestimmte Tags zu entfernen, verwenden Sie den Befehl `Update-AzTag`, und legen Sie `-Operation` auf `Delete` fest. Übergeben Sie die Tags, die gelöscht werden sollen.
 
 ```azurepowershell-interactive
 $removeTags = @{"Project"="ECommerce"; "Team"="Web"}
@@ -244,7 +244,7 @@ Remove-AzTag -ResourceId "/subscriptions/$subscription"
 
 Azure CLI bietet zwei Befehle zum Anwenden von Tags: [az tag create](/cli/azure/tag#az_tag_create) und [az tag update](/cli/azure/tag#az_tag_update). Sie müssen Azure CLI 2.10.0 oder höher verwenden. Sie können die Version mit `az version` überprüfen. Informationen zur Aktualisierung oder Installation finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-Mit dem Befehl **az tag create** werden alle Tags für die Ressource, die Ressourcengruppe oder das Abonnement ersetzt. Übergeben Sie beim Aufrufen des Befehls die Ressourcen-ID der Entität, die markiert werden soll.
+Mit dem Befehl `az tag create` werden alle Tags für die Ressource, die Ressourcengruppe oder das Abonnement ersetzt. Übergeben Sie beim Aufrufen des Befehls die Ressourcen-ID der Entität, die markiert werden soll.
 
 Im folgenden Beispiel wird eine Gruppe von Tags auf ein Speicherkonto angewandt:
 
@@ -298,7 +298,7 @@ Beachten Sie, dass die beiden neuen Tags den beiden vorhandenen Tags hinzugefüg
 },
 ```
 
-Jeder Tagname kann nur einen Wert enthalten. Wenn Sie einen neuen Wert für ein Tag angeben, wird der alte Wert auch dann ersetzt, wenn Sie den Zusammenführungsvorgang verwenden. Im folgenden Beispiel wird das Tag „Status“ von „Normal“ in „Green“ geändert.
+Jeder Tagname kann nur einen Wert enthalten. Wenn Sie einen neuen Wert für ein Tag angeben, wird der alte Wert auch dann ersetzt, wenn Sie den Zusammenführungsvorgang verwenden. Im folgenden Beispiel wird das Tag `Status` von _Normal_ in _Green_ geändert.
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Merge --tags Status=Green
@@ -443,186 +443,298 @@ az tag update --resource-id $group --operation Merge --tags "Cost Center"=Financ
 Sie können Ressourcen, Ressourcengruppen und Abonnements während der Bereitstellung mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) markieren.
 
 > [!NOTE]
-> Die Tags, die Sie über die ARM-Vorlage anwenden, überschreiben alle vorhandenen Tags.
+> Die Tags, die Sie über eine ARM-Vorlage oder Bicep-Datei anwenden, überschreiben alle vorhandenen Tags.
 
 ### <a name="apply-values"></a>Anwenden von Werten
 
 Im folgenden Beispiel wird ein Speicherkonto mit drei Tags bereitgestellt. Zwei der Tags (`Dept` und `Environment`) werden auf literale Werte festgelegt. Ein Tag (`LastDeployed`) wird auf einen Parameter festgelegt, der standardmäßig das aktuelle Datum angibt.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "utcShort": {
+      "type": "string",
+      "defaultValue": "[utcNow('d')]"
     },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "Dept": "Finance",
-                "Environment": "Production",
-                "LastDeployed": "[parameters('utcShort')]"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": {
+        "Dept": "Finance",
+        "Environment": "Production",
+        "LastDeployed": "[parameters('utcShort')]"
+      },
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+param utcShort string = utcNow('d')
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: {
+    Dept: 'Finance'
+    Environment: 'Production'
+    LastDeployed: utcShort
+  }
+}
+```
+
+---
 
 ### <a name="apply-an-object"></a>Anwenden eines Objekts
 
 Sie können einen Objektparameter definieren, der mehrere Tags speichert, und dieses Objekt auf das Tagelement anwenden. Dieser Ansatz bietet mehr Flexibilität als das vorherige Beispiel, da das Objekt unterschiedliche Eigenschaften enthalten kann. Jede Eigenschaft in dem Objekt wird zu einem separaten Tag für die Ressource. Das folgende Beispiel enthält einen Parameter namens `tagValues`, der auf das Tagelement angewendet wird.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        },
-        "tagValues": {
-            "type": "object",
-            "defaultValue": {
-                "Dept": "Finance",
-                "Environment": "Production"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
     },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": "[parameters('tagValues')]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+    "tagValues": {
+      "type": "object",
+      "defaultValue": {
+        "Dept": "Finance",
+        "Environment": "Production"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": "[parameters('tagValues')]",
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+param tagValues object = {
+  Dept: 'Finance'
+  Environment: 'Production'
+}
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: tagValues
+}
+```
+
+---
 
 ### <a name="apply-a-json-string"></a>Anwenden einer JSON-Zeichenfolge
 
-Wenn Sie mehrere Werte in einem einzelnen Tag speichern möchten, wenden Sie eine JSON-Zeichenfolge an, die die gewünschten Werte darstellt. Die gesamte JSON-Zeichenfolge wird als einzelnes Tag gespeichert und darf maximal 256 Zeichen lang sein. Im folgenden Beispiel gibt es ein einzelnes Tag namens `CostCenter`, das mehrere Werte aus einer JSON-Zeichenfolge enthält:  
+Wenn Sie mehrere Werte in einem einzelnen Tag speichern möchten, wenden Sie eine JSON-Zeichenfolge an, die die gewünschten Werte darstellt. Die gesamte JSON-Zeichenfolge wird als einzelnes Tag gespeichert und darf maximal 256 Zeichen lang sein. Im folgenden Beispiel gibt es ein einzelnes Tag namens `CostCenter`, das mehrere Werte aus einer JSON-Zeichenfolge enthält:
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": {
+        "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
+      },
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: {
+    CostCenter: '{"Dept":"Finance","Environment":"Production"}'
+  }
+}
+```
+
+---
 
 ### <a name="apply-tags-from-resource-group"></a>Anwenden von Tags aus der Ressourcengruppe
 
 Wenn Sie Tags aus einer Ressourcengruppe auf eine Ressource anwenden möchten, verwenden Sie die Funktion [resourceGroup()](../templates/template-functions-resource.md#resourcegroup). Wenn Sie den Tagwert abrufen, verwenden Sie die `tags[tag-name]`-Syntax anstelle der `tags.tag-name`-Syntax, da einige Zeichen in der Punktnotation nicht ordnungsgemäß analysiert werden.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "Dept": "[resourceGroup().tags['Dept']]",
-                "Environment": "[resourceGroup().tags['Environment']]"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": {
+        "Dept": "[resourceGroup().tags['Dept']]",
+        "Environment": "[resourceGroup().tags['Environment']]"
+      },
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: {
+    Dept: resourceGroup().tags['Dept']
+    Environment: resourceGroup().tags['Environment']
+  }
+}
+```
+
+---
 
 ### <a name="apply-tags-to-resource-groups-or-subscriptions"></a>Anwenden von Tags auf Ressourcengruppen oder Abonnements
 
-Durch Bereitstellen des Ressourcentyps **Microsoft.Resources/tags** können Sie einer Ressourcengruppe oder einem Abonnement Tags hinzufügen. Die Tags werden auf die Zielressourcengruppe oder das Zielabonnement für die Bereitstellung angewandt. Bei jeder Bereitstellung der Vorlage werden alle zuvor angewandten Tags ersetzt.
+Durch Bereitstellen des Ressourcentyps `Microsoft.Resources/tags` können Sie einer Ressourcengruppe oder einem Abonnement Tags hinzufügen. Die Tags werden auf die Zielressourcengruppe oder das Zielabonnement für die Bereitstellung angewandt. Bei jeder Bereitstellung der Vorlage werden alle zuvor angewandten Tags ersetzt.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "tagName": {
-            "type": "string",
-            "defaultValue": "TeamName"
-        },
-        "tagValue": {
-            "type": "string",
-            "defaultValue": "AppTeam1"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "tagName": {
+      "type": "string",
+      "defaultValue": "TeamName"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/tags",
-            "name": "default",
-            "apiVersion": "2019-10-01",
-            "dependsOn": [],
-            "properties": {
-                "tags": {
-                    "[parameters('tagName')]": "[parameters('tagValue')]"
-                }
-            }
+    "tagValue": {
+      "type": "string",
+      "defaultValue": "AppTeam1"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/tags",
+      "name": "default",
+      "apiVersion": "2021-04-01",
+      "properties": {
+        "tags": {
+          "[parameters('tagName')]": "[parameters('tagValue')]"
         }
-    ]
+      }
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param tagName string = 'TeamName'
+param tagValue string = 'AppTeam1'
+
+resource applyTags 'Microsoft.Resources/tags@2021-04-01' = {
+  name: 'default'
+  properties: {
+    tags: {
+      '${tagName}': tagValue
+    }
+  }
+}
+```
+
+---
 
 Zum Anwenden der Tags auf eine Ressourcengruppe können Sie entweder PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden. Führen Sie die Bereitstellung für die Ressourcengruppe aus, die markiert werden soll.
 
@@ -648,33 +760,55 @@ Weitere Informationen zu Abonnementbereitstellungen finden Sie unter [Erstellen 
 
 Mit der folgenden Vorlage werden die Tags eines Objekts entweder in einer Ressourcengruppe oder einem Abonnement hinzugefügt.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
-"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "tags": {
-            "type": "object",
-            "defaultValue": {
-                "TeamName": "AppTeam1",
-                "Dept": "Finance",
-                "Environment": "Production"
-            }
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/tags",
-            "name": "default",
-            "apiVersion": "2019-10-01",
-            "dependsOn": [],
-            "properties": {
-                "tags": "[parameters('tags')]"
-            }
-        }
-    ]
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "tags": {
+      "type": "object",
+      "defaultValue": {
+        "TeamName": "AppTeam1",
+        "Dept": "Finance",
+        "Environment": "Production"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/tags",
+      "apiVersion": "2021-04-01",
+      "name": "default",
+      "properties": {
+        "tags": "[parameters('tags')]"
+      }
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+targetScope = 'subscription'
+
+param tagObject object = {
+  TeamName: 'AppTeam1'
+  Dept: 'Finance'
+  Environment: 'Production'
+}
+
+resource applyTags 'Microsoft.Resources/tags@2021-04-01' = {
+  name: 'default'
+  properties: {
+    tags: tagObject
+  }
+}
+```
+
+---
 
 ## <a name="portal"></a>Portal
 
@@ -697,7 +831,7 @@ Auf eine Ressourcengruppe oder ein Abonnement angewandte Tags werden von den Res
 
 Abrechnungsdaten können mithilfe von Tags gruppiert werden. Wenn Sie beispielsweise mehrere virtuelle Computer für verschiedene Organisationen betreiben, können Sie die Nutzung mithilfe von Tags nach Kostenstelle organisieren. Mit Tags können Sie auch Kosten nach Runtimeumgebung kategorisieren, beispielsweise zur Abrechnung der Nutzung virtueller Computer in der Produktionsumgebung.
 
-Sie können Informationen zu Tags abrufen, indem Sie die Nutzungsdatei (eine durch Trennzeichen getrennte Datei, CSV-Datei) im Azure-Portal herunterladen. Weitere Informationen finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Wählen Sie beim Herunterladen der Nutzungsdatei aus dem Azure-Kontocenter die Option **Version 2**. Für Dienste, die die Verwendung von Tags für die Abrechnung unterstützen, sind die Tags in der Spalte **Tags** enthalten.
+Sie können Informationen zu Tags abrufen, indem Sie die Nutzungsdatei (eine durch Trennzeichen getrennte Datei, CSV-Datei) im Azure-Portal herunterladen. Weitere Informationen finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Für Dienste, die die Verwendung von Tags für die Abrechnung unterstützen, sind die Tags in der Spalte **Tags** enthalten.
 
 Hinweise zu REST-API-Vorgängen finden Sie unter [Azure Billing REST API Reference (Preview)](/rest/api/billing/)(in englischer Sprache).
 
@@ -716,7 +850,11 @@ Für Tags gelten folgende Einschränkungen:
    >
    > * Die Verwendung von `#` im Tagnamen wird in Azure Front Door nicht unterstützt.
    >
-   > * Azure Automation und Azure CDN unterstützen nur 15 Tags für Ressourcen.
+   > * Die folgenden Azure-Ressourcen unterstützen nur 15 Tags:
+   >     * Azure-Automatisierung 
+   >     * Azure CDN
+   >     * Azure DNS (Zonen- und A-Einträge)
+   >     * Azure Privates DNS (Zonen-, A-Einträge und virtuelle Netzwerkverknüpfung)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,37 +8,42 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 05/11/2021
 ms.author: ranku
-ms.openlocfilehash: 2d42cf0a59c3ff20078930559870f346efd7b6d9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 123916aebd743e0a5d0f40415f3d5eea956c2c3a
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970258"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605934"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>Konvertieren von Daten in FHIR (Vorschau)
 
 > [!IMPORTANT]
 > Diese Funktion befindet sich in der öffentlichen Vorschau und wird ohne Vereinbarung zum Servicelevel bereitgestellt. Für Produktionsworkloads wird sie nicht empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Der benutzerdefinierte Endpunkt „$convert-data“ in Azure API for FHIR ist für die Datenkonvertierung aus verschiedenen Formaten in FHIR vorgesehen. Er verwendet die Liquid-Vorlagen-Engine und die Vorlagen aus dem Projekt [FHIR Converter](https://github.com/microsoft/FHIR-Converter) als Standardvorlagen. Diese Konvertierungsvorlagen können nach Bedarf angepasst werden. Aktuell wird die Konvertierung von HL7v2 in FHIR unterstützt.
+Der $convert-data-Endpunkt im FHIR-Dienst ist für die Datenkonvertierung von verschiedenen Datentypen in FHIR bestimmt. Er verwendet die Liquid-Vorlagen-Engine und die Vorlagen aus dem Projekt [FHIR Converter](https://github.com/microsoft/FHIR-Converter) als Standardvorlagen. Diese Konvertierungsvorlagen können nach Bedarf angepasst werden. Derzeit werden zwei Konvertierungstypen unterstützt: **C-CDA in FHIR** und **HL7v2 in FHIR.**
 
 ## <a name="use-the-convert-data-endpoint"></a>Verwenden des Endpunkts „$convert-data“
 
+Der `$convert-data` Vorgang ist in den FHIR-Dienst integriert, um als Teil des Diensts ausgeführt zu werden. Sie müssen während der Bereitstellung des FHIR-Servers aktivieren, indem Sie die Einstellung auf dem `$convert-data` `FhirServer__Operations__ConvertData__Enabled` FHIR-Server auf "true" festlegen. Sie müssen auch sicherstellen, dass Sie die verwaltete Identität aktiviert haben, wie weiter unten in diesem Artikel beschrieben. Anschließend können Sie API-Aufrufe an den Server senden, um Ihre Daten in FHIR zu konvertieren:
+
 `https://<<FHIR service base URL>>/$convert-data`
 
-Von „$convert-data“ wird eine Ressource vom Typ [Parameter](http://hl7.org/fhir/parameters.html) im Anforderungstext akzeptiert, wie im Anschluss beschrieben:
+### <a name="parameter-resource"></a>Parameterressource
 
-**Parameterressource:**
+$convert-data nimmt eine [Parameterressource](http://hl7.org/fhir/parameters.html) im Anforderungskörper an, wie in der folgenden Tabelle beschrieben. Im Anforderungsteil des API-Aufrufs würden Sie die folgenden Parameter angeben:
 
 | Parametername      | Beschreibung | Zulässige Werte |
 | ----------- | ----------- | ----------- |
-| inputData      | Die zu konvertierenden Daten. | Ein gültiger Wert in Form einer JSON-Zeichenfolge.|
-| inputDataType   | Der Datentyp der Eingabe. | ```HL7v2``` |
-| templateCollectionReference | Ein Verweis auf eine Vorlagensammlung. Dies kann ein Verweis auf die **Standardvorlagen** oder ein benutzerdefiniertes Vorlagenimage sein, das bei der Azure API for FHIR. Weiter unten erfahren Sie, wie Sie die Vorlagen anpassen, in ACR hosten und bei Azure API for FHIR registrieren.  | ```microsofthealth/fhirconverter:default```, \<RegistryServer\>/\<imageName\>@\<imageDigest\> |
-| rootTemplate | Die Stammvorlage, die beim Transformieren der Daten verwendet werden soll. | ```ADT_A01```, ```OML_O21```, ```ORU_R01```, ```VXU_V04``` |  
+| inputData      | Die zu konvertierenden Daten. | Eine gültige JSON-Zeichenfolge|
+| inputDataType   | Der Datentyp der Eingabe. | ```HL7v2```, ``Ccda`` |
+| templateCollectionReference | Verweis auf eine [OCI-Imagevorlagensammlung](https://github.com/opencontainers/image-spec) auf [Azure Container Registry (ACR).](https://azure.microsoft.com/en-us/services/container-registry/) Es ist das Image, das Liquid-Vorlagen enthält, die für die Konvertierung verwendet werden. Dies kann ein Verweis auf die Standardvorlagen oder ein benutzerdefiniertes Vorlagenimage sein, das im FHIR-Dienst registriert ist. Im Folgenden finden Sie Informationen zum Anpassen der Vorlagen, zum Hosten dieser Vorlagen in ACR und zum Registrieren beim FHIR-Dienst. | Für **HL7v2-Standardvorlagen:** <br>```microsofthealth/fhirconverter:default``` <br>``microsofthealth/hl7v2templates:default``<br><br>Für **C-CDA-Standardvorlagen:**``microsofthealth/ccdatemplates:default`` <br>\<RegistryServer\>/\<imageName\>@\<imageDigest\>, \<RegistryServer\>/\<imageName\>:\<imageTag\> |
+| rootTemplate | Die Stammvorlage, die beim Transformieren der Daten verwendet werden soll. | Für **HL7v2:**<br>```ADT_A01```, ```OML_O21```, ```ORU_R01```, ```VXU_V04```<br><br> Für **C-CDA:**<br>```CCD```, `ConsultationNote`, `DischargeSummary`, `HistoryandPhysical`, `OperativeNote`, `ProcedureNote`, `ProgressNote`, `ReferralNote`, `TransferSummary` |
 
 > [!WARNING]
-> Standardvorlagen erleichtern den Einstieg. Sie werden jedoch möglicherweise im Zuge eines Upgrades für Azure API for FHIR aktualisiert. Damit die Datenkonvertierung über verschiedene Versionen von Azure API for FHIR hinweg konsistent bleibt, müssen Sie eine eigene Kopie der Vorlagen in einer Azure Container Registry-Instanz hosten, sie bei Azure API for FHIR registrieren und wie weiter unten beschrieben in Ihren API-Aufrufen verwenden.
+> Standardvorlagen werden unter MIT-Lizenz veröffentlicht und **nicht** von Microsoft-Support.
+>
+> Standardvorlagen werden nur bereitgestellt, um Ihnen den schnellen Einstieg zu unterstützen. Sie werden möglicherweise aktualisiert, wenn wir Versionen des Azure API for FHIR. Daher müssen Sie das Konvertierungsverhalten überprüfen und Ihre eigene Kopie von Vorlagen auf einem Azure Container Registry hosten, diese beim Azure API for FHIR registrieren und in Ihren API-Aufrufen verwenden, um ein konsistentes Datenkonvertierungsverhalten für die verschiedenen Versionen von Azure API for FHIR. 
+
 
 **Beispiel für eine Anforderung:**
 
@@ -131,12 +136,12 @@ Weitere Informationen zum Zuweisen von Rollen im Azure-Portal finden Sie unter [
 Sie können den ACR-Server mithilfe des Azure-Portal oder mithilfe der CLI registrieren.
 
 #### <a name="registering-the-acr-server-using-azure-portal"></a>Registrieren des ACR-Servers mit Azure-Portal
-Navigieren Sie zum **Blatt Artefakte unter** **Datentransformation** in Ihrer Azure API for FHIR Instanz. Die Liste der derzeit registrierten ACR-Server wird angezeigt. Wählen **Sie Hinzufügen** und dann im Dropdownmenü Ihren Registrierungsserver aus. Sie müssen Speichern **auswählen,** damit die Registrierung wirksam wird. Es kann einige Minuten dauern, bis die Änderung angewendet und Ihre Instanz neu gestartet wird.
+Navigieren Sie zum **Artifacts** Blatt **Datentransformation** in Ihrer Azure API for FHIR Instanz. Die Liste der derzeit registrierten ACR-Server wird angezeigt. Wählen **Sie Hinzufügen** und dann im Dropdownmenü Ihren Registrierungsserver aus. Sie müssen Speichern **auswählen,** damit die Registrierung wirksam wird. Es kann einige Minuten dauern, bis die Änderung angewendet und Ihre Instanz neu gestartet wird.
 
 #### <a name="registering-the-acr-server-using-cli"></a>Registrieren des ACR-Servers mithilfe der CLI
 Sie können bis zu 20 ACR-Server in der Azure API for FHIR.
 
-Installieren Sie die Healthcare-APIs-CLI Azure PowerShell bei Bedarf:
+Installieren Sie die Cli für Gesundheits-APIs über Azure PowerShell bei Bedarf:
 
 ```powershell
 az extension add -n healthcareapis

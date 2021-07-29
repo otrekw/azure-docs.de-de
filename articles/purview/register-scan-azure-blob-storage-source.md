@@ -6,13 +6,13 @@ ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/25/2020
-ms.openlocfilehash: b27b46c68d018d2ddf79d284b20cc05b51640891
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: a691c242cbe91ea4a3e76bd0b1a93f11a6dd7c8b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880640"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750582"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Azure Blob Storage registrieren und scannen
 
@@ -24,7 +24,7 @@ Für Azure Blob Storage werden vollständige und inkrementelle Überprüfungen z
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
+- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
 - Sie müssen ein Azure Purview-Datenquellenadministrator sein.
 
 ## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
@@ -79,7 +79,7 @@ Zur Nutzung eines Dienstprinzipals können Sie einen vorhandenen Dienstprinzipal
 Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals abzurufen:
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Dienstprinzipal.
-1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und von **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
+1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
 1. Navigieren zum Schlüsseltresor
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
 1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie unter **Name** einen gewünschten Namen und den **Wert** als **Geheimen Clientschlüssel** Ihres Dienstprinzipals ein.
@@ -110,23 +110,51 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 
 Gehen Sie wie folgt vor, um in Ihrem Datenkatalog ein neues Blob Storage-Konto zu registrieren:
 
-1. Navigieren Sie zu Ihrem Purview-Konto.
-1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+1. Navigieren Sie in Ihrem Purview-Konto im Portal zu Purview Studio.
+1. Wählen Sie auf der Startseite von Purview Studio die Option **Quellen registrieren** aus.
 1. Wählen Sie **Registrieren** aus.
 1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Blob Storage** aus.
-1. Wählen Sie **Weiter** aus.
+1. Wählen Sie **Weiter**.
 
 Gehen Sie auf dem Bildschirm **Register sources (Azure Blob Storage)** (Quellen registrieren (Azure Blob Storage)) wie folgt vor:
 
 1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll. 
 1. Wählen Sie Ihr Abonnement aus, um die Speicherkonten zu filtern.
-1. Auswählen eines Speicherkontos
-1. Optional: Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung.
-1. Wählen Sie **Fertig stellen** aus, um die Datenquelle zu registrieren.
+1. Wählen Sie ein Speicherkonto aus.
+1. Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung (optional).
+1. Wählen Sie **Registrieren** aus, um die Datenquelle zu registrieren.
 
 :::image type="content" source="media/register-scan-azure-blob-storage-source/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
+
+Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
+
+1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+
+1. Wählen Sie die von Ihnen registrierte Azure Blob-Datenquelle aus.
+
+1. Wählen Sie **Neue Überprüfung** aus.
+
+1. Wählen Sie die Anmeldeinformationen für die Verbindungsherstellung mit Ihrer Datenquelle aus. 
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/set-up-scan-blob.png" alt-text="Einrichten der Überprüfung":::
+
+1. Sie können den Bereich für Ihre Überprüfung auf bestimmte Ordner oder Unterordner festlegen, indem Sie die entsprechenden Elemente in der Liste auswählen.
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/blob-scope-your-scan.png" alt-text="Festlegen des Bereichs für Ihre Überprüfung":::
+
+1. Wählen Sie dann einen Überprüfungsregelsatz aus. Sie können zwischen der Standardeinstellung des Systems, den vorhandenen benutzerdefinierten Regelsätzen und der Inlineerstellung eines neuen Regelsatzes wählen.
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/blob-scan-rule-set.png" alt-text="Überprüfungsregelsatz":::
+
+1. Wählen Sie den Auslöser für die Überprüfung. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/trigger-scan.png" alt-text="trigger":::
+
+1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

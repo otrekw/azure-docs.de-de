@@ -1,21 +1,21 @@
 ---
-title: FSLogix-Profilcontainerdateien mit Windows Virtual Desktop – Azure
-description: Dieser Artikel beschreibt FSLogix-Profilcontainer in Windows Virtual Desktop und Azure Files.
+title: FSLogix-Profilcontainerdateien mit Azure Virtual Desktop – Azure
+description: Dieser Artikel beschreibt FSLogix-Profilcontainer in Azure Virtual Desktop und Azure Files.
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 945bf806a813943d02fb4db1245dfb74eb7fb1f9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: c7b8b400d2f927fa4b5d6f713b29dbda34eec959
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446892"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757677"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-Profilcontainer und Azure Files
 
-Der Windows Virtual Desktop-Dienst empfiehlt FSLogix-Profilcontainer als Lösung für Benutzerprofile. FSLogix ist für das Roaming von Profilen in Remotecomputingumgebungen wie z.B. Windows Virtual Desktop konzipiert. Das Feature speichert ein vollständiges Benutzerprofil in einem einzelnen Container. Bei der Anmeldung wird der Container dynamisch an die Computingumgebung angefügt. Hierzu werden nativ unterstützte VHD (Virtual Hard Disk) und VHDX (Hyper-V Virtual Hard Disk) verwendet. Das Benutzerprofil ist sofort verfügbar und wird im System genau so angezeigt wie ein natives Benutzerprofil. Dieser Artikel beschreibt, wie die mit Azure Files verwendeten FSLogix-Profilcontainer in Windows Virtual Desktop funktionieren.
+Der Azure Virtual Desktop-Dienst empfiehlt FSLogix-Profilcontainer als Lösung für Benutzerprofile. FSLogix ist für das Roaming von Profilen in Remotecomputingumgebungen wie z B. Azure Virtual Desktop konzipiert. Das Feature speichert ein vollständiges Benutzerprofil in einem einzelnen Container. Bei der Anmeldung wird der Container dynamisch an die Computingumgebung angefügt. Hierzu werden nativ unterstützte VHD (Virtual Hard Disk) und VHDX (Hyper-V Virtual Hard Disk) verwendet. Das Benutzerprofil ist sofort verfügbar und wird im System genau so angezeigt wie ein natives Benutzerprofil. Dieser Artikel beschreibt, wie die mit Azure Files verwendeten FSLogix-Profilcontainer in Azure Virtual Desktop funktionieren.
 
 >[!NOTE]
 >Wenn Sie nach Vergleichsmaterial zu den verschiedenen Speicheroptionen des FSLogix-Profilcontainers in Azure suchen, lesen Sie [Speicheroptionen für FSLogix-Profilcontainer](store-fslogix-profile.md).
@@ -77,13 +77,13 @@ Seit der Übernahme hat Microsoft damit begonnen, vorhandene Lösungen für Benu
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files-Integration im Azure Active Directory-Domänendienst
 
-FSLogix-Profilcontainer profitieren durch Bereitstellung von Leistung und Features von der Cloud. Am 7. August 2019 hat Microsoft Azure Files die allgemeine Verfügbarkeit von [AAD DS-Authentifizierung über SMB für Azure Files (Vorschau)](../storage/files/storage-files-active-directory-overview.md) angekündigt. Die Kombination aus Azure Files und Azure AD-Domänendienst-Authentifizierung reduziert sowohl die Kosten als auch den Verwaltungsaufwand – daher ist dies eine herausragende Lösung für Benutzerprofile im Windows Virtual Desktop-Dienst.
+FSLogix-Profilcontainer profitieren durch Bereitstellung von Leistung und Features von der Cloud. Am 7. August 2019 hat Microsoft Azure Files die allgemeine Verfügbarkeit von [AAD DS-Authentifizierung über SMB für Azure Files (Vorschau)](../storage/files/storage-files-active-directory-overview.md) angekündigt. Die Kombination aus Azure Files und Azure AD DS-Authentifizierung reduziert sowohl die Kosten als auch den Verwaltungsaufwand – daher ist dies eine herausragende Lösung für Benutzerprofile im Azure Virtual Desktop-Dienst.
 
-## <a name="best-practices-for-windows-virtual-desktop"></a>Best Practices für Windows Virtual Desktop
+## <a name="best-practices-for-azure-virtual-desktop"></a>Best Practices für Azure Virtual Desktop
 
-Windows Virtual Desktop bietet vollständige Kontrolle über Größe, Typ und Anzahl der von Kunden genutzten VMs. Weitere Informationen finden Sie unter [Was ist Windows Virtual Desktop?](overview.md)
+Azure Virtual Desktop bietet vollständige Kontrolle über Größe, Typ und Anzahl der von Kunden genutzten VMs. Weitere Informationen finden Sie unter [Was ist Azure Virtual Desktop?](overview.md).
 
-Um sicherzustellen, dass die Windows Virtual Desktop-Umgebung gemäß Best Practices funktioniert, müssen folgende Voraussetzungen erfüllt sein:
+Um sicherzustellen, dass die Azure Virtual Desktop-Umgebung den Best Practices entspricht, müssen folgende Voraussetzungen erfüllt sein:
 
 - Das Azure Files-Speicherkonto muss sich in derselben Region wie die Sitzungshost-VMs befinden.
 - Die Azure Files-Berechtigungen müssen den unter [Requirements – Profile Containers](/fslogix/fslogix-storage-config-ht) (Anforderungen – Profilcontainer) beschriebenen Berechtigungen entsprechen.
@@ -94,11 +94,11 @@ Um sicherzustellen, dass die Windows Virtual Desktop-Umgebung gemäß Best Pract
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Gehen Sie folgendermaßen vor, um eine Windows Virtual Desktop-Umgebung einzurichten.
+Gehen Sie folgendermaßen vor, um eine Azure Virtual Desktop-Umgebung einzurichten.
 
-- Um mit dem Aufbau Ihrer Desktopvirtualisierungslösung zu beginnen, informieren Sie sich zunächst unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
-- Informationen zum Erstellen eines Hostpools in Ihrem Windows Virtual Desktop-Mandanten finden Sie unter [Erstellen eines Hostpools mit Azure Marketplace](create-host-pools-azure-marketplace.md).
+- Um mit dem Aufbau Ihrer Desktopvirtualisierungslösung zu beginnen, informieren Sie sich zunächst unter [Erstellen eines Mandanten in Azure Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
+- Informationen zum Erstellen eines Hostpools in Ihrem Azure Virtual Desktop-Mandanten finden Sie unter [Erstellen eines Hostpools mit Azure Marketplace](create-host-pools-azure-marketplace.md).
 - Informationen zum Einrichten vollständig verwalteter Dateifreigaben in der Cloud finden Sie unter [Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files](/azure/storage/files/storage-files-active-directory-enable/).
 - Informationen zum Konfigurieren von FSLogix-Profilcontainern finden Sie unter [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md).
-- Informationen zum Zuweisen von Benutzern zu einem Hostpool finden Sie unter [Verwalten von App-Gruppen für Windows Virtual Desktop](manage-app-groups.md).
-- Informationen zum Zugriff auf Ihre Windows Virtual Desktop-Ressourcen über einen Browser finden Sie unter [Herstellen einer Verbindung über einen Webbrowser](connect-web.md).
+- Informationen zum Zuweisen von Benutzern zu einem Hostpool finden Sie unter [Verwalten von App-Gruppen für Azure Virtual Desktop](manage-app-groups.md).
+- Informationen zum Zugriff auf Ihre Azure Virtual Desktop-Ressourcen über einen Browser finden Sie unter [Herstellen einer Verbindung mit Azure Virtual Desktop](connect-web.md).

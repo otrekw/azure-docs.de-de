@@ -1,5 +1,5 @@
 ---
-title: 'Windows Virtual Desktop: Übersicht über das Anfügen von Apps mit MSIX – Azure'
+title: 'Azure Virtual Desktop: Übersicht über das Anfügen von Apps mit MSIX – Azure'
 description: Was ist das MSIX-Feature zum Anfügen von Apps? In diesem Artikel erfahren Sie es.
 services: virtual-desktop
 author: Heidilohr
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: cdbb7574f9da5ea6cd0695b74c269d8e1b88b7f4
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3da80de79490ce21ae99a4dd7dd36c08054cd666
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444070"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751575"
 ---
 # <a name="what-is-msix-app-attach"></a>Was ist das MSIX-Feature zum Anfügen von Apps?
 
 MSIX ist ein neues Paketformat, das viele Features zur Verbesserung der Paketerstellung für alle Windows-Apps bietet. Weitere Informationen zu MSIX finden Sie in der [MSIX-Übersicht](/windows/msix/overview).
 
-Das MSIX-Feature zum Anfügen von Apps ist eine Möglichkeit, MSIX-Anwendungen sowohl auf physischen als auch auf virtuellen Computern bereitzustellen. Dieses Feature unterscheidet sich von MSIX insofern, als es speziell für Windows Virtual Desktop entwickelt wurde. In diesem Artikel wird beschrieben, was das MSIX-Feature zum Anfügen von Apps ist und wie Sie davon profitieren können.
+Das MSIX-Feature zum Anfügen von Apps ist eine Möglichkeit, MSIX-Anwendungen sowohl auf physischen als auch auf virtuellen Computern bereitzustellen. Dieses Feature unterscheidet sich von MSIX insofern, als es speziell für Azure Virtual Desktop entwickelt wurde. In diesem Artikel wird beschrieben, was das MSIX-Feature zum Anfügen von Apps ist und wie Sie davon profitieren können.
 
-## <a name="application-delivery-options-in-windows-virtual-desktop"></a>Optionen für die Anwendungsbereitstellung in Windows Virtual Desktop
+## <a name="application-delivery-options-in-azure-virtual-desktop"></a>Optionen für die Anwendungsbereitstellung in Azure Virtual Desktop
 
-Sie können Apps in Windows Virtual Desktop mit einer der folgenden Methoden bereitstellen:
+Sie können Apps in Azure Virtual Desktop mit einer der folgenden Methoden bereitstellen:
 
 - Einfügen von Apps in ein Masterimage
 - Verwenden von Tools wie SCCM oder Intune für die zentrale Verwaltung
@@ -32,7 +32,7 @@ Sie können Apps in Windows Virtual Desktop mit einer der folgenden Methoden ber
 
 ## <a name="what-does-msix-app-attach-do"></a>Wie funktioniert das MSIX-Feature zum Anfügen von Apps?
 
-In einer Windows Virtual Desktop-Bereitstellung bietet das Feature folgende Vorteile:
+In einer Azure Virtual Desktop-Bereitstellung bietet das Feature folgende Vorteile:
 
 - Benutzer, Betriebssystem und Apps werden mithilfe von [MSIX-Containern](/windows/msix/msix-container) voneinander getrennt.
 - Beim dynamischen Bereitstellen von Anwendungen müssen keine neuen Pakete erstellt werden.

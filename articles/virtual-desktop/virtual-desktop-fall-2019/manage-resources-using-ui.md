@@ -1,28 +1,28 @@
 ---
 title: Bereitstellen eines Verwaltungstools mit einer Azure Resource Manager-Vorlage – Azure
-description: Hier erfahren Sie, wie Sie ein Benutzeroberflächentool zum Verwalten von Windows Virtual Desktop-Ressourcen (klassisch) mit einer Azure Resource Manager-Vorlage installieren.
+description: Hier erfahren Sie, wie Sie ein Benutzeroberflächentool zum Verwalten von Azure Virtual Desktop-Ressourcen (klassisch) mit einer Azure Resource Manager-Vorlage installieren.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1d562c483b340bee5f1c1aa5f63c068de6f54e42
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 2270f514f20d4bbe0fbd4382925b485cdc236a67
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444393"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751935"
 ---
-# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Bereitstellen eines Windows Virtual Desktop-Verwaltungstools (klassisch) mit einer Azure Resource Manager-Vorlage
+# <a name="deploy-a-azure-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Bereitstellen eines Azure Virtual Desktop-Verwaltungstools (klassisch) mit einer Azure Resource Manager-Vorlage
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager.
 
 Die Anweisungen in diesem Artikel beschreiben, wie die Benutzeroberfläche mit einer Azure Resource Manager-Vorlage bereitgestellt wird.
 
 ## <a name="important-considerations"></a>Wichtige Hinweise
 
-Da für die App die Einwilligung für die Interaktion mit Windows Virtual Desktop erforderlich ist, unterstützt dieses Tool keine Business-to-Business-Szenarien (B2B). Das Verwaltungstool muss für jedes Abonnement des Azure Active Directory-Mandanten (AAD) separat bereitgestellt werden.
+Da für die App die Einwilligung für die Interaktion mit Azure Virtual Desktop erforderlich ist, unterstützt dieses Tool keine Business-to-Business-Szenarien (B2B). Das Verwaltungstool muss für jedes Abonnement des Azure Active Directory-Mandanten (AAD) separat bereitgestellt werden.
 
 Dieses Verwaltungstool ist ein Beispiel. Microsoft stellt wichtige Sicherheits- und Qualitätsupdates zur Verfügung. Der [Quellcode steht auf GitHub zur Verfügung](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Kunden und Partnern wird empfohlen, das Tool an ihre Geschäftsanforderungen anzupassen.
 
@@ -40,11 +40,11 @@ Bevor Sie das Verwaltungstool bereitstellen, benötigen Sie einen Azure Active D
 - Er muss über die Berechtigung zum Erstellen von Ressourcen in Ihrem Azure-Abonnement verfügen.
 - Er muss über die Berechtigung zum Erstellen einer Azure AD-Anwendung verfügen. Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Benutzer über die erforderlichen Berechtigungen verfügt, indem Sie die Anweisungen unter [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) befolgen.
 
-Nachdem Sie das Verwaltungstool bereitgestellt und konfiguriert haben, sollten Sie einen Benutzer auffordern, die Verwaltungsbenutzeroberfläche aufzurufen, um sicherzustellen, dass alles funktioniert. Der Benutzer, der die Verwaltungsbenutzeroberfläche aufruft, muss über eine Rollenzuweisung verfügen, die es ihm erlaubt, den Windows Virtual Desktop-Mandanten anzuzeigen oder zu bearbeiten.
+Nachdem Sie das Verwaltungstool bereitgestellt und konfiguriert haben, sollten Sie einen Benutzer auffordern, die Verwaltungsbenutzeroberfläche aufzurufen, um sicherzustellen, dass alles funktioniert. Der Benutzer, der die Verwaltungsbenutzeroberfläche aufruft, muss über eine Rollenzuweisung verfügen, die es ihm erlaubt, den Azure Virtual Desktop-Mandanten anzuzeigen oder zu bearbeiten.
 
 ## <a name="deploy-the-management-tool"></a>Bereitstellen des Verwaltungstools
 
-Stellen Sie zunächst sicher, dass eine Einwilligung für die Server- und Client-Apps vorliegt, indem Sie zur [Windows Virtual Desktop-Seite für die Einwilligung](https://rdweb.wvd.microsoft.com) für die dargestellte Azure Active Directory-Instanz (AAD) wechseln.
+Stellen Sie zunächst sicher, dass eine Einwilligung für die Server- und Client-Apps vorliegt, indem Sie zur [Azure Virtual Desktop-Seite für die Einwilligung](https://rdweb.wvd.microsoft.com) für die dargestellte Azure Active Directory-Instanz (AAD) wechseln.
 
 Gehen Sie wie folgt vor, um die Azure Ressource Manager-Vorlage bereitzustellen:
 
@@ -67,7 +67,7 @@ Gehen Sie wie folgt vor, um die Azure Ressource Manager-Vorlage bereitzustellen:
 
 Nach der Ausführung der GitHub-Azure Resource Manager-Vorlage wird im Azure-Portal eine Ressourcengruppe mit zwei App Services und einem App Service-Plan angezeigt.
 
-Bevor Sie sich anmelden und das Verwaltungstool verwenden, müssen Sie die Einwilligung für die neue Azure AD-Anwendung erteilen, die mit dem Verwaltungstool verknüpft ist. Durch die Einwilligung kann das Verwaltungstool Windows Virtual Desktop-Verwaltungsaufrufe im Namen des Benutzers senden, der derzeit bei dem Tool angemeldet ist.
+Bevor Sie sich anmelden und das Verwaltungstool verwenden, müssen Sie die Einwilligung für die neue Azure AD-Anwendung erteilen, die mit dem Verwaltungstool verknüpft ist. Durch die Einwilligung kann das Verwaltungstool Azure Virtual Desktop-Verwaltungsentscheidungen im Namen des Benutzers treffen, der derzeit bei dem Tool angemeldet ist.
 
 > [!div class="mx-imgBorder"]
 > ![Screenshot, in dem bereitgestellte Berechtigungen nach erfolgter Einwilligung für das Benutzeroberflächen-Verwaltungstool gezeigt werden](../media/management-ui-delegated-permissions.png)
@@ -99,7 +99,7 @@ Nach der Erteilung der Einwilligung für die Organisation oder einen bestimmten 
 Führen Sie die folgenden Schritte aus, um das Tool zu starten:
 
 1. Wählen Sie die Azure App Services-Ressource mit dem Namen aus, den Sie in der Vorlage angegeben haben (z. B. Apr3UX), und navigieren Sie zu der damit verknüpften URL, z. B `https://rdmimgmtweb-210520190304.azurewebsites.net`.
-2. Melden Sie sich mit Ihren Windows Virtual Desktop-Anmeldeinformationen an.
+2. Melden Sie sich mit Ihren Azure Virtual Desktop-Anmeldeinformationen an.
 3. Wählen Sie bei der Aufforderung zum Auswählen einer Mandantengruppe in der Dropdownliste den Eintrag **Default Tenant Group** (Standardmandantengruppe) aus.
 4. Wenn Sie eine **Standardmandantengruppe** auswählen, sollte links im Fenster ein Menü angezeigt werden. Suchen Sie in diesem Menü nach dem Namen Ihrer Mandantengruppe, und wählen Sie sie aus.
 
@@ -108,7 +108,7 @@ Führen Sie die folgenden Schritte aus, um das Tool zu starten:
 
 ## <a name="report-issues"></a>Melden von Problemen
 
-Falls Probleme mit dem Verwaltungstool oder mit anderen Windows Virtual Desktop-Tools auftreten, sollten Sie die Anleitung unter [Azure Resource Manager-Vorlagen für Remotedesktopdienste](https://github.com/Azure/RDS-Templates/blob/master/README.md) befolgen, um diese auf GitHub zu melden.
+Falls Probleme mit dem Verwaltungstool oder mit anderen Azure Virtual Desktop-Tools auftreten, sollten Sie die Anleitung unter [Azure Resource Manager-Vorlagen für Remotedesktopdienste](https://github.com/Azure/RDS-Templates/blob/master/README.md) befolgen, um diese auf GitHub zu melden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: bd35af7ac6602bba7e23bd10eda2f2b0fdff71db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 41cc4c174028ff23cdcc248c6b10d746e5669349
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379753"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751233"
 ---
 # <a name="set-up-devops-deployment-for-single-tenant-azure-logic-apps"></a>Einrichten der DevOps-Bereitstellung für Azure Logic Apps-Instanzen mit nur einem Mandanten
 
@@ -115,14 +115,13 @@ Nachdem Sie Ihr Logik-App-Projekt in Ihr Quellrepository gepusht haben, können 
 
 ### <a name="build-your-project"></a>Erstellen Ihres Projekts
 
-Um eine Buildpipeline auf Grundlage Ihres Logik-App-Projekttyps einzurichten, führen Sie die entsprechenden Aktionen aus:
+Um eine Buildpipeline auf Grundlage Ihres Logik-App-Projekttyps einzurichten, führen Sie die entsprechenden, in der folgenden Tabelle aufgelisteten Aktionen aus:
 
-* NuGet-basiert: Die NuGet-basierte Projektstruktur basiert auf .NET Framework. Um diese Projekte zu erstellen, stellen Sie sicher, dass Sie die Buildschritte für .NET Standard einhalten. Weitere Informationen finden Sie in der Dokumentation zu [Erstellen eines NuGet-Pakets mit MSBuild](/nuget/create-packages/creating-a-package-msbuild).
-
-* Paketbasiert: Das paketbasierte Erweiterungsprojekt ist nicht sprachspezifisch und erfordert keine sprachspezifischen Buildschritte. Sie können eine beliebige Methode verwenden, um Ihre Projektdateien zu zippen.
-
-  > [!IMPORTANT]
-  > Stellen Sie sicher, dass die ZIP-Datei alle Workflowordner, Konfigurationsdateien wie host.json und connections.json sowie alle anderen zugehörigen Dateien enthält.
+| Projekttyp | Beschreibung und Schritte |
+|--------------|-----------------------|
+| NuGet-basiert | Die NuGet-basierte Projektstruktur basiert auf .NET Framework. Um diese Projekte zu erstellen, stellen Sie sicher, dass Sie die Buildschritte für .NET Standard einhalten. Weitere Informationen finden Sie in der Dokumentation zu [Erstellen eines NuGet-Pakets mit MSBuild](/nuget/create-packages/creating-a-package-msbuild). |
+| Paketbasiert | Das paketbasierte Erweiterungsprojekt ist nicht sprachspezifisch und erfordert keine sprachspezifischen Buildschritte. Sie können eine beliebige Methode verwenden, um Ihre Projektdateien zu zippen. <p><p>**Wichtig**: Stellen Sie sicher, dass ihre ZIP-Datei die tatsächlichen Buildartefakte einschließlich aller Workflowordner, Konfigurationsdateien wie „host.json“, „connections.json“ und alle anderen zugehörigen Dateien enthält. |
+|||
 
 ### <a name="release-to-azure"></a>Release in Azure
 
@@ -135,48 +134,146 @@ Um eine Releasepipeline einzurichten, die in Azure bereitstellt, wählen Sie die
 
 Für GitHub-Bereitstellungen können Sie Ihre Logik-App mithilfe von [GitHub Actions](https://docs.github.com/actions) bereitstellen, z. B. die GitHub-Aktion in Azure Functions. Diese Aktion erfordert, dass Sie die folgenden Informationen übergeben:
 
-* Ihr Buildartefakt
-* Den Namen der für die Bereitstellung zu verwendenden Logik-App
-* Ihr Veröffentlichungsprofil
+- Den Namen der für die Bereitstellung zu verwendenden Logik-App
+- Die ZIP-Datei, die Ihre tatsächlichen Buildartefakte einschließlich aller Workflowordner, Konfigurationsdateien wie „host.json“, „connections.json“ und alle anderen zugehörigen Dateien enthält.
+- Ihr für die Authentifizierung verwendetes [Veröffentlichungsprofil](../azure-functions/functions-how-to-github-actions.md#generate-deployment-credentials).
 
 ```yaml
 - name: 'Run Azure Functions Action'
   uses: Azure/functions-action@v1
   id: fa
   with:
-   app-name: {your-logic-app-name}
-   package: '{your-build-artifact}.zip'
-   publish-profile: {your-logic-app-publish-profile}
+   app-name: 'MyLogicAppName'
+   package: 'MyBuildArtifact.zip'
+   publish-profile: 'MyLogicAppPublishProfile'
 ```
 
 Weitere Informationen finden Sie in der Dokumentation zu [Continuous Delivery mithilfe einer GitHub-Aktion](../azure-functions/functions-how-to-github-actions.md).
 
 #### <a name="azure-devops"></a>[Azure DevOps](#tab/azure-devops)
 
-Für Azure DevOps-Bereitstellungen können Sie Ihre Logik-App mithilfe der [Azure Function-App-Bereitstellungsaufgabe (app deploy)](/devops/pipelines/tasks/deploy/azure-function-app) in Azure Pipelines bereitstellen. Diese Aktion erfordert, dass Sie die folgenden Informationen übergeben:
+Für Azure DevOps-Bereitstellungen können Sie Ihre Logik-App mithilfe der [Azure Function-App-Bereitstellungsaufgabe (app deploy)](/azure/devops/pipelines/tasks/deploy/azure-function-app?view=azure-devops&preserve-view=true) in Azure Pipelines bereitstellen. Diese Aktion erfordert, dass Sie die folgenden Informationen übergeben:
 
-* Ihr Buildartefakt
-* Den Namen der für die Bereitstellung zu verwendenden Logik-App
-* Ihr Veröffentlichungsprofil
+- Den Namen der für die Bereitstellung zu verwendenden Logik-App
+- Die ZIP-Datei, die Ihre tatsächlichen Buildartefakte einschließlich aller Workflowordner, Konfigurationsdateien wie „host.json“, „connections.json“ und alle anderen zugehörigen Dateien enthält.
+- Ihr für die Authentifizierung verwendetes [Veröffentlichungsprofil](../azure-functions/functions-how-to-github-actions.md#generate-deployment-credentials).
 
 ```yaml
 - task: AzureFunctionApp@1
   displayName: 'Deploy logic app workflows'
   inputs:
-     azureSubscription: '{your-service-connection}'
+     azureSubscription: 'MyServiceConnection'
      appType: 'workflowapp'
-     appName: '{your-logic-app-name}'
-     package: '{your-build-artifact}.zip'
+     appName: 'MyLogicAppName'
+     package: 'MyBuildArtifact.zip'
      deploymentMethod: 'zipDeploy'
 ```
 
-Weitere Informationen finden Sie in der Dokumentation zum [Bereitstellen einer Azure-Funktion mittels Azure Pipelines](/devops/pipelines/targets/azure-functions-windows).
+Weitere Informationen finden Sie in der Dokumentation zum [Bereitstellen einer Azure-Funktion mittels Azure Pipelines](/azure/devops/pipelines/targets/azure-functions-windows).
 
 #### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Wenn Sie andere Bereitstellungstools verwenden, können Sie Ihre Logik-App bereitstellen, indem Sie die Azure CLI-Befehle für Azure Logic Apps-Instanzen mit nur einem Mandanten verwenden. Führen Sie beispielsweise den folgenden CLI-Befehl aus, um Ihr gezipptes Artefakt in einer Azure-Ressourcengruppe bereitzustellen:
+Wenn Sie andere Bereitstellungstools verwenden, können Sie Ihre auf einem Einzelmandanten basierende Logik-App mithilfe der Azure CLI bereitstellen. Bevor Sie beginnen, benötigen Sie Folgendes:
 
-`az logicapp deployment source config-zip -g {your-resource-group} --name {your-logic-app-name} --src {your-build-artifact}.zip`
+- Die aktuelle Azure CLI-Erweiterung muss auf Ihrem Computer installiert sein.
+
+  - Wenn Sie nicht über diese Erweiterung verfügen, lesen Sie den [Installationsleitfaden für Ihr Betriebssystem oder Ihre Plattform](/cli/azure/install-azure-cli).
+
+  - Wenn Sie nicht sicher sind, ob Sie über die neueste Version verfügen, führen Sie die [Schritte zum Überprüfen Ihrer Umgebung und CLI-Version](#check-environment-cli-version) aus.
+
+- Die *Vorschau* der Einzelmandantenerweiterung für Azure Logic Apps (Standard) für Azure CLI.
+
+  Wenn Sie nicht über diese Erweiterung verfügen, führen Sie die [Schritte zum Installieren der Erweiterung](#install-logic-apps-cli-extension) aus. Obwohl Azure Logic Apps in der Einzelmandantenversion allgemein verfügbar ist, befindet sich die Azure Logic Apps-Einzelmandantenerweiterung für Azure CLI weiterhin in der Vorschau.
+
+- Eine Azure-Ressourcengruppe für die Bereitstellung Ihrer Logik-App.
+
+  Wenn Sie nicht über diese Ressourcengruppe verfügen, führen Sie die [Schritte zum Erstellen der Ressourcengruppe](#create-resource-group) aus.
+
+- Ein Azure-Speicherkonto, das mit Ihrer Logik-App für die Aufbewahrung von Daten und des Ausführungsverlaufs verwendet werden soll.
+
+  Wenn Sie nicht über dieses Speicherkonto verfügen, führen Sie die [Schritte zum Erstellen eines Speicherkontos](/cli/azure/storage/account#az_storage_account_create) aus.
+
+<a name="check-environment-cli-version"></a>
+
+##### <a name="check-environment-and-cli-version"></a>Überprüfen der Umgebung und CLI-Version
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Vergewissern Sie sich in einem Terminal- oder Befehlsfenster, dass Ihr Abonnement aktiv ist, indem Sie den Befehl [`az login`](/cli/azure/authenticate-azure-cli) ausführen:
+
+   ```azurecli-interactive
+   az login
+   ```
+
+1. Überprüfen Sie in einem Terminal- oder Befehlsfenster Ihre Version der Azure CLI, indem Sie den Befehl `az` mit dem folgenden erforderlichen Parameter ausführen:
+
+   ```azurecli-interactive
+   az --version
+   ```
+
+1. Sollten Sie nicht über die neueste Azure CLI-Version verfügen, aktualisieren Sie Ihre Installation wie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli) beschrieben.
+
+   Weitere Informationen zur neuesten Version finden Sie in den [neuesten Versionshinweisen](/cli/azure/release-notes-azure-cli?tabs=azure-cli).
+
+<a name="install-logic-apps-cli-extension"></a>
+
+##### <a name="install-azure-logic-apps-standard-extension-for-azure-cli"></a>Installieren der Azure Logic Apps-Erweiterung (Standard) für Azure CLI
+
+Installieren Sie die *Vorschau* der Einzelmandantenerweiterung für Azure Logic Apps (Standard) für Azure CLI, indem Sie den Befehl `az extension add` mit den folgenden erforderlichen Parametern ausführen:
+
+```azurecli-interactive
+az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
+```
+
+<a name="create-resource-group"></a>
+
+#### <a name="create-resource-group"></a>Ressourcengruppe erstellen
+
+Wenn Sie noch keine Ressourcengruppe für Ihre Logik-App eingerichtet haben, erstellen Sie die Gruppe, indem Sie den Befehl `az group create` ausführen. Wenn Sie nicht bereits ein Standardabonnement für Ihr Azure-Konto festgelegt haben, stellen Sie sicher, dass Sie den Parameter `--subscription` mit Ihrem Abonnementnamen oder -bezeichner verwenden. Andernfalls müssen Sie den Parameter `--subscription` nicht verwenden.
+
+> [!TIP]
+> Führen Sie zum Festlegen eines Standardabonnements den folgenden Befehl aus, und ersetzen Sie `MySubscription` durch Ihren Abonnementnamen oder -bezeichner.
+>
+> `az account set --subscription MySubscription`
+
+Der folgende Befehl erstellt beispielsweise eine Ressourcengruppe mit dem Namen `MyResourceGroupName` unter Verwendung des Azure-Abonnements mit dem Namen `MySubscription` am Speicherort `eastus`:
+
+```azurecli
+az group create --name MyResourceGroupName 
+   --subscription MySubscription 
+   --location eastus
+```
+
+Wenn Ihre Ressourcengruppe erfolgreich erstellt wurde, wird `provisioningState` als `Succeeded` angezeigt:
+
+```output
+<...>
+   "name": "testResourceGroup",
+   "properties": {
+      "provisioningState": "Succeeded"
+    },
+<...>
+```
+
+<a name="deploy-logic-app"></a>
+
+##### <a name="deploy-logic-app"></a>Bereitstellen einer Logik-App
+
+Um Ihr gezipptes Artefakt in einer Azure-Ressourcengruppe bereitzustellen, führen Sie den Befehl `az logicapp deployment` mit folgenden erforderlichen Parametern aus:
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass Ihre ZIP-Datei die Artefakte Ihres Projekts auf Stammebene enthält. Zu diesen Artefakten zählen alle Workflowordner, Konfigurationsdateien wie „host.json“ und „connections.json“ sowie alle anderen zugehörigen Dateien. Fügen Sie weder zusätzliche Ordner hinzu noch Artefakte, die noch nicht in Ihrer Projektstruktur vorhanden sind, Ordnern hinzu. Diese Liste zeigt ein Beispiel für die MyBuildArtifacts.zip-Dateistruktur:
+>
+> ```output
+> MyStatefulWorkflow1-Folder
+> MyStatefulWorkflow2-Folder
+> connections.json
+> host.json
+> ```
+
+```azurecli-interactive
+az logicapp deployment source config-zip --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --src MyBuildArtifact.zip
+```
 
 ---
 
@@ -188,7 +285,7 @@ Beispiele für die Implementierung einer End-to-End-Containerbuild- und -bereits
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [DevOps-Bereitstellung für Azure Logic Apps-Instanzen mit nur einem Mandanten](devops-deployment-single-tenant-azure-logic-apps.md)
+- [DevOps-Bereitstellung für Azure Logic Apps-Instanzen mit nur einem Mandanten](devops-deployment-single-tenant-azure-logic-apps.md)
 
 Teilen Sie uns bitte Ihre Erfahrungen mit den Azure Logic Apps-Instanzen mit nur einem Mandanten mit.
 

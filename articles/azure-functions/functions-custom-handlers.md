@@ -5,23 +5,23 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: dd112c74ea9f013a0e14bddd735060ddbf73c14e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82166ca69db6dc2dc1b7562e23078609b01cb2ed
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578524"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756021"
 ---
 # <a name="azure-functions-custom-handlers"></a>Benutzerdefinierte Azure Functions-Handler
 
-Jede Functions-App wird von einem sprachspezifischen Handler ausgeführt. Von Azure Functions werden zwar standardmäßig zahlreiche [Sprachhandler](./supported-languages.md) unterstützt, es gibt jedoch Fälle, in denen Sie möglicherweise andere Sprachen oder Runtimes verwenden möchten.
+Jede Functions-App wird von einem sprachspezifischen Handler ausgeführt. Azure Functions bietet zwar standardmäßig zahlreiche [Sprachhandler](./supported-languages.md), es gibt jedoch Fälle, in denen Sie möglicherweise andere Sprachen oder Runtimes verwenden möchten.
 
 Benutzerdefinierte Handler sind schlanke Webserver, die Ereignisse vom Functions-Host empfangen. Jede Sprache, die HTTP-Primitive unterstützt, kann einen benutzerdefinierten Handler implementieren.
 
 Benutzerdefinierte Handler eignen sich am besten für Situationen, in denen Sie Folgendes ausführen möchten:
 
-- Implementieren einer Funktions-App in einer derzeit nicht unterstützten Sprache wie Go oder Rust.
-- Implementieren einer Funktions-App in einer derzeit nicht unterstützten Runtime wie Deno
+- Implementieren einer Funktions-App in einer derzeit nicht standardmäßig angebotenen Sprache wie Go oder Rust
+- Implementieren einer Funktions-App in einer derzeit nicht standardmäßig angebotenen Runtime wie Deno
 
 Mit benutzerdefinierten Handlern können Sie alle [Trigger sowie Ein- und Ausgabebindungen](./functions-triggers-bindings.md) über [Erweiterungspakete](./functions-bindings-register.md) verwenden.
 

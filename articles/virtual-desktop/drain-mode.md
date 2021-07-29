@@ -1,23 +1,24 @@
 ---
-title: Festlegen des Windows Virtual Desktop-Ausgleichsmodus – Azure
-description: Konfigurieren und Verwenden des Ausgleichsmodus in Windows Virtual Desktop.
+title: Festlegen des Azure Virtual Desktop-Ausgleichsmodus – Azure
+description: Konfigurieren und Verwenden des Ausgleichsmodus in Azure Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/14/2021
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 19ef7d520800ac703ed77dc0520e5b860306c4bd
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 2ff90e2800da857dd5c82cd3b9402fa2454575ac
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107508951"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757839"
 ---
 # <a name="set-drain-mode"></a>Festlegen des Ausgleichsmodus
 
-Der Ausgleichsmodus isoliert einen Sitzungshost, wenn Sie Patches anwenden und Wartungsarbeiten ohne Unterbrechung der Benutzersitzungen ausführen möchten. Bei Isolation akzeptiert der Sitzungshost keine neuen Benutzersitzungen. Alle neuen Verbindungen werden an den nächsten verfügbaren Sitzungshost umgeleitet. Vorhandene Verbindungen im Sitzungshost funktionieren weiterhin, bis sich der Benutzer abmeldet oder der Administrator die Sitzung beendet. Wenn sich der Sitzungshost im Ausgleichsmodus befindet, können Administratoren auch eine Remoteverbindung mit dem Server herstellen, ohne Windows Virtual Desktop zu verwenden. Sie können diese Einstellung sowohl auf gepoolte als auch auf persönliche Desktops anwenden.
+Der Ausgleichsmodus isoliert einen Sitzungshost, wenn Sie Patches anwenden und Wartungsarbeiten ohne Unterbrechung der Benutzersitzungen ausführen möchten. Bei Isolation akzeptiert der Sitzungshost keine neuen Benutzersitzungen. Alle neuen Verbindungen werden an den nächsten verfügbaren Sitzungshost umgeleitet. Vorhandene Verbindungen im Sitzungshost funktionieren weiterhin, bis sich der Benutzer abmeldet oder der Administrator die Sitzung beendet. Wenn sich der Sitzungshost im Ausgleichsmodus befindet, können Administratoren auch eine Remoteverbindung mit dem Server herstellen, ohne Azure Virtual Desktop zu verwenden. Sie können diese Einstellung sowohl auf gepoolte als auch auf persönliche Desktops anwenden.
 
 ## <a name="set-drain-mode-using-the-azure-portal"></a>Festlegen des Ausgleichsmodus mithilfe des Azure-Portals
 
@@ -52,6 +53,6 @@ Update-AzWvdSessionHost -ResourceGroupName <resourceGroupName> -HostPoolName <ho
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie mehr über das Azure-Portal für Windows Virtual Desktop erfahren möchten, sehen Sie sich [unsere Tutorials](create-host-pools-azure-marketplace.md) an. Wenn Sie bereits mit den Grundlagen vertraut sind, sehen Sie sich einige der anderen Features an, die Sie mit dem Azure-Portal verwenden können, z. B. das [MSIX-Feature zum Anfügen von Apps](app-attach-azure-portal.md) und [Azure Advisor](azure-advisor.md).
+Wenn Sie mehr über das Azure-Portal für Azure Virtual Desktop erfahren möchten, sehen Sie sich [unsere Tutorials](create-host-pools-azure-marketplace.md) an. Wenn Sie bereits mit den Grundlagen vertraut sind, sehen Sie sich einige der anderen Features an, die Sie mit dem Azure-Portal verwenden können, z. B. das [MSIX-Feature zum Anfügen von Apps](app-attach-azure-portal.md) und [Azure Advisor](azure-advisor.md).
 
-Wenn Sie die PowerShell-Methode verwenden und sehen möchten, welche weiteren Aktionen das Modul durchführen kann, lesen Sie [Einrichten des PowerShell-Moduls für Windows Virtual Desktop](powershell-module.md) und unsere [PowerShell-Referenz](/powershell/module/az.desktopvirtualization/).
+Wenn Sie die PowerShell-Methode verwenden und sehen möchten, welche weiteren Aktionen das Modul durchführen kann, lesen Sie [Einrichten des PowerShell-Moduls für Azure Virtual Desktop](powershell-module.md) und unsere [PowerShell-Referenz](/powershell/module/az.desktopvirtualization/).
