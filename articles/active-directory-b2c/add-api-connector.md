@@ -5,18 +5,18 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 05/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 62de5eff098c467f048ae33cd38e7c730af863bc
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 1913b6cf14aaf31d610adcf446dbe91326e02ff1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108174612"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742911"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung
 
@@ -24,7 +24,7 @@ Als Entwickler oder IT-Administrator können Sie API-Connectors verwenden, um Ih
 
 ::: zone pivot="b2c-user-flow"
 
-In diesem Szenario überprüft die REST-API, ob die Domäne der E-Mail-Adresse „fabrikam.com“ oder „fabricam.com“ lautet. Die vom Benutzer angegebene Position umfasst mehr als fünf Zeichen. 
+In diesem Szenario überprüft die REST-API, ob die Domäne der E-Mail-Adresse „fabrikam.com“ oder „fabricam.com“ lautet. Der vom Benutzer angegebene Anzeigename umfasst mehr als fünf Zeichen. Anschließend wird die Auftragsbezeichnung mit einem statischen Wert zurückgegeben. 
 
 > [!IMPORTANT]
 > API-Connectors für die Registrierung sind ein Feature der öffentlichen Vorschauversion von Azure AD B2C. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

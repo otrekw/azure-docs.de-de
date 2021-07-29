@@ -10,20 +10,20 @@ ms.custom: deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/12/2020
-ms.openlocfilehash: 667174fbf36b7113d49ea5c5d700e2e3a7f41949
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/20/2021
+ms.openlocfilehash: 60978d2be1fdad5acf8ec00535ab844e6afd52b0
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367218"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111557160"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Bereitstellen eines Modells in Azure Container Instances
 
-Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azure Container Instances (ACI) bereitstellen. Verwenden Sie Azure Container Instances, wenn eine der folgenden Bedingungen zutrifft:
+Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azure Container Instances (ACI) bereitstellen. Verwenden Sie Azure Container Instances, wenn Folgendes zutrifft:
 
-- Sie müssen Ihr Modell schnell bereitstellen und überprüfen. Sie müssen vorab keine ACI-Container erstellen. Sie werden im Rahmen des Bereitstellungsprozesses erstellt.
-- Sie testen ein Modell in der Entwicklungsphase. 
+- Sie möchten keinen eigenen Kubernetes-Cluster verwalten.
+- Sie benötigen nur ein Replikat Ihres Diensts (kann sich auf die Uptime auswirken).
 
 Informationen zu den für ACI geltenden Kontingenten und zur Verfügbarkeit in den Regionen finden Sie im Artikel [Kontingente und Limits für Azure Container Instances](../container-instances/container-instances-quotas.md).
 
@@ -89,7 +89,7 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden un
 Verwenden Sie für die Bereitstellung mit der CLI den folgenden Befehl. Ersetzen Sie `mymodel:1` durch den Namen und die Version des registrierten Modells. Ersetzen Sie `myservice` durch den Namen, den dieser Dienst erhalten soll:
 
 ```azurecli-interactive
-az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f19425ea4a72f62689daa9dda08a22667aa50bc6
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: aa81fdb68e13f7898df060a6d85d8ff05f6d2528
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331356"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714060"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -55,7 +55,7 @@ Nachfolgend sind die grundlegenden Schritte zum Erstellen eines neuen Zugriffspa
 
 ## <a name="start-new-access-package"></a>Starten eines neuen Zugriffspakets
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -75,11 +75,11 @@ Auf der Registerkarte **Grundlagen** geben Sie dem Zugriffspaket einen Namen und
 
 1. Wählen Sie in der Dropdownliste **Katalog** den Katalog aus, in dem das Zugriffspaket erstellt werden soll. Beispielsweise verfügen Sie möglicherweise über einen Katalogbesitzer, der alle Marketingressourcen verwaltet, die angefordert werden können. In diesem Fall können Sie den Marketingkatalog auswählen.
 
-    Es werden nun Kataloge angezeigt, in denen Sie Zugriffspakete erstellen dürfen. Um ein Zugriffspaket in einem vorhandenen Katalog erstellen zu können, müssen Sie ein globaler Administrator, Benutzeradministrator, Katalogbesitzer oder aber Zugriffspaket-Manager für diesen Katalog sein.
+    Es werden nun Kataloge angezeigt, in denen Sie Zugriffspakete erstellen dürfen. Wenn Sie ein Zugriffspaket in einem vorhandenen Katalog erstellen möchten, müssen Sie ein globaler Administrator, Identity Governance-Administrator, Benutzeradministrator, Katalogbesitzer oder aber Zugriffspaket-Manager für diesen Katalog sein.
 
     ![Zugriffspaket – Grundlagen](./media/entitlement-management-access-package-create/basics.png)
 
-    Wenn Sie ein globaler Administrator, Benutzeradministrator oder Katalogersteller sind und Ihr Zugriffspaket in einem neuen Katalog erstellen möchten, der nicht aufgeführt ist, klicken Sie auf **Neuen Katalog erstellen**. Geben Sie einen Namen und eine Beschreibung für den Katalog ein, und klicken Sie dann auf **Erstellen**.
+    Wenn Sie ein globaler Administrator, Identity Governance-Administrator, Benutzeradministrator oder Katalogersteller sind und Ihr Zugriffspaket in einem neuen Katalog erstellen möchten, der nicht aufgeführt ist, klicken Sie auf **Neuen Katalog erstellen**. Geben Sie einen Namen und eine Beschreibung für den Katalog ein, und klicken Sie dann auf **Erstellen**.
 
     Das Zugriffspaket, das Sie erstellen, und alle darin enthaltenen Ressourcen werden dem neuen Katalog hinzugefügt. Sie können später weitere Katalogbesitzer hinzufügen.
 

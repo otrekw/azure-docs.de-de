@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual WAN und Remotearbeit
-description: Auf dieser Seite wird beschrieben, wie Sie Azure Virtual WAN nutzen können, um Remotearbeit aufgrund der COVID-19-Pandemie zu ermöglichen.
+description: Erfahren Sie, wie Sie Azure Virtual WAN nutzen können, um Remotearbeit aufgrund der COVID-19-Pandemie zu ermöglichen.
 services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: fc048f3da3156f5e17cfa32479b834b7320a60a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb3af5f19e81ccf21a9ca38fe45514aa0bdf471e
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023488"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580248"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure Virtual WAN und Unterstützung von Remotearbeit
 

@@ -1,5 +1,5 @@
 ---
-title: Verwenden des Moduls „Gebäudepläne“ von Azure Maps mit Microsoft Creator-Diensten (Vorschau)
+title: Verwenden des Moduls „Gebäudepläne“ von Azure Maps mit Microsoft Creator-Diensten
 description: Erfahren Sie, wie Sie das Modul „Gebäudepläne“ von Microsoft Azure Maps verwenden, um Karten durch Einbetten der JavaScript-Bibliotheken des Moduls zu rendern.
 author: anastasia-ms
 ms.author: v-stharr
@@ -9,25 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e527cf5fa6a7caaeaf56ea19d684dd0830d5ca8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59521aa0be652ef37c39f45bb323fbc49a93b99d
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708678"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030411"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Verwenden des Moduls „Gebäudepläne“ von Azure Maps
 
-> [!IMPORTANT]
-> Azure Maps Creator-Dienste befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Das Azure Maps Web-SDK umfasst das Modul *Azure Maps Indoor*. Mit dem Modul *Azure Maps Indoor* können Sie in Azure Maps Creator-Diensten (Vorschau) erstellte Gebäudepläne rendern. 
+Das Azure Maps Web-SDK umfasst das Modul *Azure Maps Indoor*. Mit dem Modul *Gebäudepläne* von Azure Maps können Sie Gebäudepläne rendern, die Sie in Azure Maps Creator-Diensten erstellt haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Erstellen einer Creator-Ressource (Vorschau)](how-to-manage-creator.md)
+1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Erstellen einer Erstellerressource](how-to-manage-creator.md)
 3. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account), auch bezeichnet als primärer Schlüssel oder Abonnementschlüssel.
 4. Rufen Sie eine `tilesetId` und eine `statesetId` ab, indem Sie das [Tutorial zum Erstellen von Gebäudeplänen](tutorial-creator-indoor-maps.md) absolvieren.
  Sie müssen diese Bezeichner verwenden, Gebäudepläne mit dem Azure Maps-Modul „Gebäudepläne“ zu rendern.
@@ -151,7 +147,7 @@ In diesem Beispiel wird gezeigt, wie Sie das Modul *Azure Maps Indoor* in Ihrer 
 4. Initialisieren Sie ein *Kartenobjekt*. Das *Kartenobjekt* unterstützt die folgenden Optionen:
     - `Subscription key` ist Ihr primärer Abonnementschlüssel für Azure Maps.
     - `center` definiert einen Breiten- und Längengrad für den Mittelpunkt Ihres Gebäudeplans. Geben Sie einen Wert für `center` an, wenn Sie keinen Wert für `bounds` angeben möchten. Das Format sollte als „`center`: [-122.13315, 47.63637]“ angezeigt werden.
-    - `bounds` ist die kleinste rechteckige Form, die die Kachelset-Kartendaten umschließt. Legen Sie einen Wert für `bounds` fest, wenn Sie keinen Wert für `center` festlegen möchten. Sie können Ihre Kartenbegrenzungen ermitteln, indem Sie die [Kachelsetlisten-API](/rest/api/maps/tileset/listpreview) aufrufen. Die Kachelsetlisten-API gibt `bbox` zurück, das Sie analysieren und `bounds` zuweisen können. Das Format sollte als „`bounds`: [# west, # south, # east, # north]“ angezeigt werden.
+    - `bounds` ist die kleinste rechteckige Form, die die Kachelset-Kartendaten umschließt. Legen Sie einen Wert für `bounds` fest, wenn Sie keinen Wert für `center` festlegen möchten. Sie können Ihre Kartenbegrenzungen ermitteln, indem Sie die [Kachelsetlisten-API](/rest/api/maps/v2/tileset/list) aufrufen. Die Kachelsetlisten-API gibt `bbox` zurück, das Sie analysieren und `bounds` zuweisen können. Das Format sollte als „`bounds`: [# west, # south, # east, # north]“ angezeigt werden.
     - `style` gestattet Ihnen, die Farbe des Hintergrunds festzulegen. Um einen weißen Hintergrund anzuzeigen, definieren Sie `style` als „blank“ (leer).
     - `zoom` ermöglicht es Ihnen, die minimalen und maximalen Zoomfaktoren für Ihre Karte anzugeben.
 
@@ -255,7 +251,7 @@ Informieren Sie sich über die APIs, die mit dem Modul *Azure Maps Indoor* in Zu
 > [Anforderungen an Zeichenpakete](drawing-requirements.md)
 
 >[!div class="nextstepaction"]
-> [Creator (Vorschau) für Gebäudepläne](creator-indoor-maps.md)
+> [Ersteller für Gebäudepläne](creator-indoor-maps.md)
 
 Weitere Informationen zum Hinzufügen weiterer Daten zu Ihrer Karte:
 

@@ -3,13 +3,13 @@ title: Azure Video Analyzer-Kontingente und -Einschränkungen – Azure
 description: Dieser Artikel beschreibt die Kontingente und Einschränkungen von Azure Video Analyzer.
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 03/26/2021
-ms.openlocfilehash: ca70737fd9bcf571dd4f0ca729bbe50b540de90e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/26/2021
+ms.openlocfilehash: d4bc488411319832b59540fb1392b5d3259cef69
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386093"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652185"
 ---
 # <a name="video-analyzer-quotas-and-limitations"></a>Video Analyzer-Kontingente und -Einschränkungen
 
@@ -44,6 +44,7 @@ Im Folgenden sind die Einschränkungen aufgeführt, wie verschiedene Knoten in e
    * Kann nicht im Anschluss an einen HTTP- oder gRPC-Erweiterungsprozessor verwendet werden.
 * Signalgateprozessor
    * Muss direkt hinter dem RTSP-Quellknoten angeordnet sein.
+   * Darf nicht vor einem HTTP- oder gRPC-Erweiterungsprozessor angeordnet sein.
 * Objekt-Tracker-Prozessor
    * Muss einem HTTP- oder einem gRPC-Erweiterungsprozessor unmittelbar nachgeschaltet sein. Der Erweiterungsprozessor sollte nicht auf jede Abbildung des Live-Videos ein KI-Modell anwenden.
 * Linienüberquerungs-Prozessor

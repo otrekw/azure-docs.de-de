@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 04/07/2021
-ms.openlocfilehash: 905224119b9df4e4003b1736443406e9548a49e3
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 9746c6509673d3268a4afa15bcbeee9fa676d8c1
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012528"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554406"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Skalieren einer Hyperscale (Citus)-Servergruppe
 
@@ -42,6 +42,15 @@ Klicken Sie auf die Schaltfläche **Speichern**, damit der geänderte Wert wirks
 Zusätzlich zum Hinzufügen neuer Knoten können Sie die Funktionen vorhandener Knoten erweitern. Das Anpassen der Computekapazität nach oben und unten kann bei Leistungsexperimenten und kurz- oder langfristigen Änderungen der Datenverkehrsanforderungen nützlich sein.
 
 Um die virtuellen Kerne für alle Workerknoten zu ändern, passen Sie den Schieberegler **Virtuelle Kerne** unter **Konfiguration (pro Workerknoten)** an. Die virtuellen Kerne des Koordinatorknotens können unabhängig voneinander angepasst werden. Schieben Sie den Schieberegler für **virtuelle Kerne** und **Konfiguration (Koordinatorknoten)** an die gewünschte Position.
+
+## <a name="increase-storage-on-nodes"></a>Erhöhen des Speichers auf Knoten
+
+Zusätzlich zum Hinzufügen neuer Knoten können Sie den Speicherplatz vorhandener Knoten erhöhen. Durch Erhöhen des Speicherplatzes können Sie mit vorhandenen Workerknoten mehr tun, bevor Sie weitere Workerknoten hinzufügen müssen.
+
+Um den Speicher für alle Workerknoten zu ändern, passen Sie den Schieberegler **Speicher** unter **Konfiguration (pro Workerknoten)** an. Der Speicher des Koordinatorknotens kann unabhängig davon angepasst werden. Passen Sie den Schieberegler **Speicher** unter **Konfiguration (Koordinatorknoten)** an.
+
+> [!NOTE]
+> Nachdem Sie den Speicher pro Knoten erhöht und gespeichert haben, kann er mit dem Schieberegler nicht mehr verringert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

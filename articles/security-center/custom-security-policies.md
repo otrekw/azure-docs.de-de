@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: 1231d4b14d4beb2b4e167b3e7572428ec99c8e54
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ab99d4aec732d2bc6b42576d30b59b0f8c0067c3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140279"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772039"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>Erstellen von benutzerdefinierten Sicherheitsinitiativen und -richtlinien
 
@@ -37,9 +37,7 @@ Wie in der [Azure Policy-Dokumentation](../governance/policy/concepts/definition
     [![Auswählen eines Abonnements, für das Sie die benutzerdefinierte Richtlinie erstellen](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > Sie müssen benutzerdefinierte Standards auf Abonnementebene (oder höher) hinzufügen, damit diese ausgewertet und in Security Center angezeigt werden. 
-    >
-    > Wenn Sie einen benutzerdefinierten Standard hinzufügen, wird diesem Bereich eine *Initiative* zugewiesen. Daher empfiehlt es sich, den größtmöglichen Bereich auszuwählen, der für diese Zuweisung erforderlich.
+    > Sie müssen benutzerdefinierte Initiativen auf Abonnementebene (oder höher) hinzufügen, damit diese ausgewertet und in Security Center angezeigt werden. Es wird empfohlen, den größtmöglichen verfügbaren Bereich auszuwählen.
 
 1. Klicken Sie auf der Seite „Sicherheitsrichtlinie“ unter „Ihre benutzerdefinierten Initiativen“ auf **Benutzerdefinierte Initiative hinzufügen**.
 

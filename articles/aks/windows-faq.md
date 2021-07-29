@@ -5,12 +5,12 @@ description: Hier finden Sie häufig gestellte Fragen zum Ausführen von Windows
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 192306d2aeb9abddef641c0b55adaacaf8442de2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5d3d78eb20a9ca8b663fa0cf381fcce1bd528345
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065708"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463302"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Häufig gestellte Fragen zu Windows Server-Knotenpools in AKS
 
@@ -175,6 +175,22 @@ Ist der Azure-Hybridvorteil für den Cluster aktiviert, sieht die Ausgabe von `a
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Kann ich das Kubernetes-Webdashboard für Windows-Container verwenden?
 
 Ja, Sie können das [Kubernetes-Webdashboard][kubernetes-dashboard] verwenden, um auf Informationen zu Windows-Containern zuzugreifen. Derzeit ist es jedoch nicht möglich, direkt über das Kubernetes-Webdashboard den Befehl *kubectl exec* für einen ausgeführten Windows-Container auszuführen. Weitere Informationen zum Herstellen einer Verbindung mit Ihrem ausgeführten Windows-Container finden Sie unter [Herstellen einer RDP-Verbindung mit Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS) zur Wartung oder Problembehandlung][windows-rdp].
+
+## <a name="how-do-i-change-the-time-zone-of-a-running-container"></a>Wie kann ich die Zeitzone eines ausgeführten Containers ändern?
+
+Stellen Sie eine Verbindung mit dem ausgeführten Container mithilfe einer PowerShell-Sitzung her, um die Zeitzone eines ausgeführten Windows Server-Containers zu ändern. Beispiel:
+    
+```azurecli-interactive
+kubectl exec -it CONTAINER-NAME -- powershell
+```
+
+Verwenden Sie im ausgeführten Container [Set-TimeZone](/powershell/module/microsoft.powershell.management/set-timezone), um die Zeitzone des ausgeführten Containers festzulegen. Beispiel:
+
+```powershell
+Set-TimeZone -Id "Russian Standard Time"
+```
+
+Mithilfe von [Get-TimeZone](/powershell/module/microsoft.powershell.management/get-timezone) können Sie die aktuelle Zeitzone des ausgeführten Containers oder eine verfügbare Liste von Zeitzonen anzeigen.
 
 ## <a name="what-if-i-need-a-feature-thats-not-supported"></a>Wie sieht es aus, wenn ich ein Feature benötige, das nicht unterstützt wird?
 

@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 03/16/2021
-ms.openlocfilehash: 6123b040be8076c3b05f0dc81e6ac707dc38d0ed
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 13a14854f373ca7297e454ddbdc9f475849dc0b8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017850"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100538"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Erstellen eines Azure Kubernetes Service-Clusters (AKS), der Verfügbarkeitszonen verwendet
 
@@ -57,6 +57,12 @@ Die folgenden Einschränkungen gelten, wenn Sie einen AKS-Cluster mit Verfügbar
 Volumes, die von Azure verwaltete Datenträger verwenden, sind derzeit keine zonenredundanten Ressourcen. Volumes können nicht Zonen übergreifend angefügt werden und müssen in derselben Zone wie ein bestimmter Knoten zusammengestellt werden, der den Zielpod hostet.
 
 Kubernetes kennt Azure-Verfügbarkeitszonen seit Version 1.12. Wenn Sie ein PersistentVolumeClaim-Objekt bereitstellen, das auf einen verwalteten Azure-Datenträger in einem AKS-Cluster mit mehreren Zonen verweist, [kümmert sich Kubernetes um die Planung](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones) aller Pods, die diesen PVC in der richtigen Verfügbarkeitszone beanspruchen.
+
+### <a name="azure-resource-manager-templates-and-availability-zones"></a>Azure Resource Manager-Vorlagen und -Verfügbarkeitszonen
+
+Wenn Sie beim *Erstellen* eines AKS-Clusters einen [NULL-Wert in einer Vorlage][arm-template-null] mit Syntax wie `"availabilityZones": null` explizit definieren, behandelt die Resource Manager-Vorlage die Eigenschaft so, als ob sie nicht vorhanden wäre. Dies bedeutet, dass bei Ihrem Cluster keine Verfügbarkeitszonen aktiviert sind. Außerdem sind Verfügbarkeitszonen deaktiviert, wenn Sie einen Cluster mit einer Resource Manager-Vorlage erstellen, bei der die Eigenschaft für Verfügbarkeitszonen weggelassen wird.
+
+Sie können die Einstellungen für Verfügbarkeitszonen in einem vorhandenen Cluster nicht aktualisieren, sodass das Verhalten beim Aktualisieren eines AKS-Clusters mit Resource Manager-Vorlagen anders ist.  Wenn Sie in Ihrer Vorlage einen NULL-Wert für Verfügbarkeitszonen explizit festlegen und Ihren Cluster *aktualisieren*, werden daran keine Änderungen für Verfügbarkeitszonen vorgenommen. Wenn Sie jedoch die Eigenschaft für Verfügbarkeitszonen mit Syntax wie `"availabilityZones": []` weglassen, versucht die Bereitstellung, Verfügbarkeitszonen in Ihrem vorhandenen AKS-Cluster zu deaktivieren, und **schlägt fehl**.
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>Übersicht über Verfügbarkeitszonen für AKS-Cluster
 
@@ -205,6 +211,7 @@ Dieser Artikel beschreibt, wie Sie einen AKS-Cluster erstellen, der Verfügbarke
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool#az_aks_nodepool_add
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [vmss-zone-balancing]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing
+[arm-template-null]: ../azure-resource-manager/templates/template-expressions.md#null-values
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

@@ -2,13 +2,13 @@
 title: Aufträge und Tasks in Azure Batch
 description: Erfahren Sie mehr über Aufträge und Tasks und deren Verwendung in einem Azure Batch-Workflow aus Entwicklersicht.
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: e1ca721ec7527d9d042c129c22cf0266e57c32e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: faedb912b0c21acdec977fe7651f0a5daddb2c6f
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95808587"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004167"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Aufträge und Tasks in Azure Batch
 
@@ -24,7 +24,7 @@ Ein Auftrag gibt den [Pool](nodes-and-pools.md#pools) an, in dem der Task ausgef
 
 Sie können den von Ihnen erstellten Aufträgen eine optionale Auftragspriorität zuweisen. Der Batch-Dienst verwendet den Prioritätswert des Auftrags, um die Reihenfolge der Planung (für alle Tasks innerhalb des Auftrags) für jeden Pool zu bestimmen.
 
-Rufen Sie zum Aktualisieren der Priorität eines Auftrags den Vorgang [Eigenschaften eines Auftrags aktualisieren](/rest/api/batchservice/job/update) (Batch REST) auf, oder ändern Sie die [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) (Batch .NET). Prioritätswerte liegen zwischen -1000 (niedrigste Priorität) und 1000 (höchste Priorität).
+Rufen Sie zum Aktualisieren der Priorität eines Auftrags den Vorgang [Eigenschaften eines Auftrags aktualisieren](/rest/api/batchservice/job/update) (Batch REST) auf, oder ändern Sie die [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob.priority) (Batch .NET). Prioritätswerte liegen zwischen -1000 (niedrigste Priorität) und 1000 (höchste Priorität).
 
 Innerhalb eines Pools haben Aufträge mit höherer Priorität bei der Planung Vorrang vor Aufträgen mit niedrigerer Priorität. Aufgaben in Aufträgen mit niedrigerer Priorität, die bereits ausgeführt werden, werden für Aufgaben in einem Auftrag mit höherer Priorität nicht zurückgestellt. Aufträge mit gleicher Prioritätsstufe verfügen über eine identische Planungswahrscheinlichkeit, und die Reihenfolge der Aufgabenausführung ist nicht definiert.
 
@@ -91,7 +91,7 @@ Wie bei jedem anderen Azure Batch-Task kann zusätzlich zu einer auszuführenden
 
 Der Starttask kann aber auch Referenzdaten für alle Tasks enthalten, die auf dem Computeknoten ausgeführt werden. Die Befehlszeile eines Starttasks kann etwa einen `robocopy`-Vorgang ausführen, um Anwendungsdateien (die als Ressourcendateien angegeben und auf den Knoten heruntergeladen wurden) aus dem [Arbeitsverzeichnis](files-and-directories.md) des Starttasks in den **freigegebenen Ordner** zu kopieren, und anschließend eine MSI-Datei oder `setup.exe` ausführen.
 
-In der Regel empfiehlt es sich, dass der Batch-Dienst auf den Abschluss des Starttasks wartet und erst dann davon ausgeht, dass der Knoten nun für die Taskzuweisung bereit ist. Dieses Verhalten ist jedoch konfigurierbar.
+In der Regel wartet der Batch-Dienst auf den Abschluss des Starttasks und geht erst dann davon aus, dass der Knoten nun für die Taskzuweisung bereit ist. Dieses Verhalten kann jedoch bei Bedarf individuell konfiguriert werden.
 
 Kann ein Starttask für einen Computeknoten nicht erfolgreich ausgeführt werden, wird der Status des Knotens entsprechend aktualisiert, und dem Knoten werden keine Tasks zugewiesen. Ein Starttask wird nicht erfolgreich durchgeführt, wenn ein Problem beim Kopieren der Ressourcendateien aus dem Speicher auftritt oder wenn der Prozess, der von der Befehlszeile ausgeführt wird, einen Exitcode ungleich NULL zurückgibt.
 
@@ -155,13 +155,13 @@ Weitere Informationen finden Sie unter [Taskabhängigkeiten in Azure Batch](batc
 
 ### <a name="environment-settings-for-tasks"></a>Umgebungseinstellungen für Tasks
 
-Jeder Task, der vom Batch-Dienst ausgeführt wird, hat Zugriff auf die Umgebungsvariablen, die für Computeknoten festgelegt werden. Dies gilt auch für Umgebungsvariablen, die vom Batch-Dienst definiert werden ([dienstdefiniert](./batch-compute-node-environment-variables.md)), und für benutzerdefinierte Umgebungsvariablen, die Sie für Ihre Tasks definieren können. Die Anwendungen und Skripts, die von Ihren Tasks ausgeführt werden, haben während der Ausführung Zugriff auf diese Umgebungsvariablen.
+Jeder Task, der vom Batch-Dienst ausgeführt wird, hat Zugriff auf die Umgebungsvariablen, die für Computeknoten festgelegt werden. Dies gilt auch für [Umgebungsvariablen, die vom Batch-Dienst definiert werden](./batch-compute-node-environment-variables.md), sowie für benutzerdefinierte Umgebungsvariablen, die Sie für Ihre Tasks definieren können. Anwendungen und Skripts, die von Ihren Tasks ausgeführt werden, haben während der Ausführung Zugriff auf diese Umgebungsvariablen.
 
-Sie können benutzerdefinierte Umgebungsvariablen auf Task- oder Auftragsebene festlegen, indem Sie die Eigenschaft *Umgebungseinstellungen* für diese Entitäten auffüllen. Weitere Informationen finden Sie unter dem Vorgang [Hinzufügen eines Tasks zu einem Auftrag](/rest/api/batchservice/task/add?) (Batch REST-API) oder unter den Eigenschaften [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) und [CloudJob.CommonEnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudjob) in Batch .NET.
+Sie können benutzerdefinierte Umgebungsvariablen auf Task- oder Auftragsebene festlegen, indem Sie die Eigenschaft *Umgebungseinstellungen* für diese Entitäten auffüllen. Weitere Informationen finden Sie unter dem Vorgang [Hinzufügen eines Tasks zu einem Auftrag](/rest/api/batchservice/task/add?) (Batch REST) oder unter den Eigenschaften [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask.environmentsettings) und [CloudJob.CommonEnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudjob.commonenvironmentsettings) in Batch .NET.
 
-Die Clientanwendung bzw. der Dienst kann die Umgebungsvariablen eines Tasks abrufen – sowohl dienstdefiniert als auch benutzerdefiniert –, indem der Vorgang [Abrufen von Informationen zu einer Aufgabe](/rest/api/batchservice/task/get) (Batch REST) verwendet oder auf die Eigenschaft [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) (Batch .NET) zugegriffen wird. Prozesse, die auf einem Computeknoten ausgeführt werden, können auf diese und andere Umgebungsvariablen auf dem Knoten zugreifen – beispielsweise mit der vertrauten `%VARIABLE_NAME%`-Syntax (Windows) oder mit der `$VARIABLE_NAME`-Syntax (Linux).
+Die Clientanwendung bzw. der Dienst kann die Umgebungsvariablen eines Tasks abrufen – sowohl dienstdefiniert als auch benutzerdefiniert –, indem der Vorgang [Abrufen von Informationen zu einer Aufgabe](/rest/api/batchservice/task/get) (Batch REST) verwendet oder auf die Eigenschaft [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask.environmentsettings) (Batch .NET) zugegriffen wird. Prozesse, die auf einem Computeknoten ausgeführt werden, können auf diese und andere Umgebungsvariablen auf dem Knoten zugreifen – beispielsweise mit der vertrauten `%VARIABLE_NAME%`-Syntax (Windows) oder mit der `$VARIABLE_NAME`-Syntax (Linux).
 
-Eine vollständige Liste mit allen vom Dienst definierten Umgebungsvariablen finden Sie unter [Compute node environment variables](batch-compute-node-environment-variables.md) (Computeknoten-Umgebungsvariablen).
+Eine Liste mit allen vom Dienst definierten Umgebungsvariablen finden Sie unter [Umgebungsvariablen für Computeknoten](batch-compute-node-environment-variables.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

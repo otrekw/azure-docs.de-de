@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc07e038ef382a44c4672b2d63c49d8f5a961cda
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 239778455f049822bd92a92c811fcacad270ae3e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486315"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076508"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Verlassen einer Organisation als Gastbenutzer
 
@@ -29,19 +29,17 @@ Ein Azure Active Directory B2B-Gastbenutzer (Azure AD) kann eine Organisation je
 
 Um eine Organisation zu verlassen, führen Sie die folgenden Schritte aus.
 
-1. Wechseln Sie zu Ihrer Seite „Zugriffspanel – Profil“, indem Sie einen der folgenden Schritte ausführen:
-   
-   - Klicken Sie im [Azure-Portal](https://portal.azure.com) oben rechts auf Ihren Namen, und wählen Sie **Konto anzeigen** aus.
-   - Öffnen Sie Ihren [Zugriffsbereich für Apps](https://myapps.microsoft.com), klicken Sie oben rechts auf Ihren Namen, und wählen Sie dann neben **Organisationen** die Option **Konto anzeigen** aus.
- 
- 
-2. Wählen Sie **Organisationen verwalten** aus.
-  ![Screenshot mit Benutzereinstellungen im Zugriffsbereich](media/leave-the-organization/manage-organizations.png) 
-  
-3. Suchen Sie unter **Organisationen** nach der Organisation, die Sie verlassen möchten, und wählen Sie **Organisation verlassen** aus.
+1. Wechseln Sie zu Ihrer Seite **Mein Konto**, indem Sie einen der folgenden Schritte ausführen:
+- Wenn Sie ein Geschäfts-, Schul- oder Unikonto verwenden, wechseln Sie zu https://myaccount.microsoft.com, und melden Sie sich an.
+- Wenn Sie ein persönliches Konto verwenden, wechseln Sie zu https://myapps.microsoft.com. Melden Sie sich an, klicken Sie rechts oben auf das Symbol Ihres Kontos, und wählen Sie **Konto anzeigen** aus.
+   > [!NOTE]
+   > Wenn Sie ein persönliches Konto verwenden, besteht eine weitere Möglichkeit darin, direkt zu Ihrer Seite „Mein Konto“ zu navigieren, indem Sie den Namen des Mandanten oder die Mandanten-ID in die URL einfügen, z. B: `https://myaccount.microsoft.com?tenantId=wingtiptoys.onmicrosoft.com` oder `https://myaccount.microsoft.com?tenantId=ab123456-cd12-ef12-gh12-ijk123456789`
+
+2. Suchen Sie unter **Organisationen** nach der Organisation, die Sie verlassen möchten, und wählen Sie **Organisation verlassen** aus.
 
    ![Screenshot der Option „Organisation verlassen“ auf der Benutzeroberfläche](media/leave-the-organization/leave-org.png)
-4. Wenn Sie aufgefordert werden, Ihre Auswahl zu bestätigen, wählen Sie **Beenden** aus.
+3. Wenn Sie aufgefordert werden, Ihre Auswahl zu bestätigen, wählen Sie **Beenden** aus.
+
 > [!NOTE]
    > Ihre eigene Organisation können Sie nicht verlassen.
 

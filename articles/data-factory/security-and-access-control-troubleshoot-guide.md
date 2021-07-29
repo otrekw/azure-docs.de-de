@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie Probleme mit der Sicherheit und Zugriffs
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/24/2021
+ms.date: 05/31/2021
 ms.author: lle
-ms.openlocfilehash: 5e94ea989002d3d3c6d0e96123d5b8ddb5f078c3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ff95f5c3f8d978d58146529825adee94f82eaf07
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568034"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110782891"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Beheben von Problemen mit der Sicherheit und Zugriffssteuerung in Azure Data Factory
 
@@ -188,6 +188,18 @@ ADF verwendet möglicherweise weiterhin die Integration Runtime für verwaltete 
 
 - Aktivieren Sie einen privaten Endpunkt für die Quell- und Senkenseite, wenn Sie die Integration Runtime für verwaltete VNETs verwenden.
 - Wenn Sie dennoch den öffentlichen Endpunkt verwenden möchten, können Sie stattdessen nur die Integration Runtime für verwaltete VNETs für die Quelle und die Senke verwenden. Selbst wenn Sie zur öffentlichen Integration Runtime zurückwechseln, verwendet ADF möglicherweise weiterhin die Integration Runtime für verwaltete VNETs, wenn diese noch vorhanden ist.
+
+## <a name="sharing-self-hosted-integration-runtime"></a>Freigeben der selbstgehosteten Integration Runtime
+
+### <a name="sharing-a-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>Die Freigabe der selbstgehosteten Integration Runtime von einem anderen Mandanten wird nicht unterstützt. 
+
+#### <a name="symptoms"></a>Symptome
+
+Beim Versuch, die selbstgehostete Integration Runtime über die Azure Data Factory-Benutzeroberfläche übergreifend für Data Factorys in anderen Mandanten freizugeben, werden Ihnen eventuell andere Data Factorys (in verschiedenen Mandanten) angezeigt, und der Versuch schlägt fehl.
+
+#### <a name="cause"></a>Ursache
+
+Die selbstgehostete Integration Runtime kann nicht mandantenübergreifend freigegeben werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

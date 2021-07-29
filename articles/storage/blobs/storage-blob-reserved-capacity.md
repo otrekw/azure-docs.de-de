@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 05/17/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6fd791495602846b95e2dd3e99423db5505f5307
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f130e2367ed2fa4c9095479e9ff9d9722b010e5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98600918"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098540"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimieren der Kosten für Blobspeicher mit reservierter Kapazität
 
@@ -49,7 +49,7 @@ Für Reservierungen werden alle Zugriffsebenen (heiß, kalt und Archiv) unterst�
 Für Reservierungen werden alle Redundanztypen unterstützt. Weitere Informationen zu Redundanzoptionen finden Sie unter [Azure Storage-Redundanz](../common/storage-redundancy.md).
 
 > [!NOTE]
-> Reservierte Azure Storage-Kapazität ist für Storage Premium-Konten, universelle v1-Speicherkonten (GPv1), Azure Data Lake Storage Gen1, Seitenblobs, Azure Queue Storage, Azure Table Storage oder Azure Files nicht verfügbar.  
+> Reservierte Azure Storage-Kapazität steht für Storage Premium-Konten, universelle v1-Speicherkonten (GPv1), Azure Data Lake Storage Gen1, Seitenblobs, Azure Queue Storage oder Azure Table Storage nicht zur Verfügung. Weitere Informationen zu reservierter Kapazität für Azure Files finden Sie unter [Optimieren der Kosten für Azure Files mit reservierter Kapazität](../files/files-reserve-capacity.md).  
 
 ### <a name="security-requirements-for-purchase"></a>Sicherheitsanforderungen für den Erwerb
 

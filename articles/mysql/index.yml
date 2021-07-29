@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 94f0a30c070578a441940b701a7110f1b0bf76fe
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 320ff38fecdab0cfd0a689e483a76a8422888085
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110464127"
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112457478"
 landingContent:
 - title: Informationen zu Azure Database for MySQL
   linkLists:
@@ -35,10 +35,12 @@ landingContent:
     links:
     - text: Was ist Single Server?
       url: single-server-overview.md
-    - text: Neues in Single Server
-      url: single-server-whats-new.md
     - text: Anzeigen der gesamten Single Server-Dokumentation
       url: single-server/index.yml
+  - linkListType: whats-new
+    links:
+    - text: Neues in Single Server
+      url: single-server-whats-new.md
   - linkListType: concept
     links:
     - text: Serverkonzepte
@@ -61,6 +63,10 @@ landingContent:
       url: flexible-server/overview.md
     - text: Anzeigen der gesamten Dokumentation zu Flexible Server
       url: flexible-server/index.yml
+  - linkListType: whats-new
+    links:
+    - text: Neues im flexiblen Server
+      url: flexible-server/whats-new.md
   - linkListType: concept
     links:
     - text: Serverkonzepte
@@ -95,6 +101,24 @@ landingContent:
       url: flexible-server/connect-php.md
     - text: Herstellen einer Verbindung mit Flexible Server per Python
       url: flexible-server/connect-python.md
+- title: Migrationen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Migrationsleitfaden für Azure Database for MySQL
+      url: migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md
+    - text: dbForge Studio for MySQL
+      url: concepts-migrate-dbforge-studio-for-mysql.md
+    - text: Sichern und Wiederherstellen
+      url: concepts-migrate-dump-restore.md
+    - text: Importieren und exportieren
+      url: concepts-migrate-import-export.md
+    - text: Migrieren von Amazon RDS für MySQL mit MySQL Workbench
+      url: how-to-migrate-rds-mysql-workbench.md
+    - text: Migration mit minimaler Downtime
+      url: howto-migrate-online.md
+    - text: Allgemeine Fehler während oder nach der Migration
+      url: howto-troubleshoot-common-errors.md
 - title: Verwalten und Migrieren von Daten
   linkLists:
   - linkListType: concept

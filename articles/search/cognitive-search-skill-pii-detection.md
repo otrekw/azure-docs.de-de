@@ -8,12 +8,12 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: acacf617d3f1d9ab891d08b32fc2dfb14deb64a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 448784987f3304303a1bd47c2038440db5cdd194
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91540522"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112063232"
 ---
 # <a name="pii-detection-cognitive-skill"></a>Die kognitive Qualifikation „PII-Erkennung“
 
@@ -41,16 +41,17 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| `defaultLanguageCode` |    Sprachcode des Eingabetexts. Derzeit wird nur `en` unterstützt. |
+| `defaultLanguageCode` | (Optional) Der Sprachcode, der auf Dokumente angewendet wird, in denen die Sprache nicht explizit angegeben ist.  Wenn kein Standardsprachcode festgelegt ist, wird Englisch (en) als Standardsprachcode verwendet. <br/> Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/text-analytics/language-support.md). |
 | `minimumPrecision` | Ein Wert zwischen 0,0 und 1,0. Wenn die Zuverlässigkeitsbewertung (in der `piiEntities`-Ausgabe) unter dem festgelegten `minimumPrecision`-Wert liegt, wird die Entität nicht zurückgegeben oder maskiert. Der Standard ist 0,0. |
-| `maskingMode` | Ein Parameter, der verschiedene Methoden bereitstellt, um die persönlichen Informationen zu maskieren, die im Eingabetext erkannt wurden. Die folgenden Optionen werden unterstützt: <ul><li>`none` (Standard): Es erfolgt keine Maskierung, und die `maskedText`-Ausgabe wird nicht zurückgegeben. </li><li> `redact`: Entfernt die erkannten Entitäten aus dem Eingabetext, ohne dass die gelöschten Werte ersetzt werden. In diesem Fall bezieht sich der Offset in der `piiEntities`-Ausgabe auf den ursprünglichen Text und nicht auf den maskierten Text. </li><li> `replace`: Ersetzt die erkannten Entitäten durch das im `maskingCharacter`-Parameter angegebene Zeichen. Das Zeichen wird auf die Länge der erkannten Entität wiederholt, sodass die Offsets ordnungsgemäß sowohl dem Eingabetext als auch dem ausgegebenen `maskedText` entsprechen.</li></ul> |
-| `maskingCharacter` | Das Zeichen, das zum Maskieren des Texts verwendet wird, wenn der Parameter `maskingMode` auf `replace` festgelegt ist. Die folgenden Optionen werden unterstützt: `*` (Standard), `#`, `X`. Dieser Parameter kann nur `null` sein, wenn `maskingMode` nicht auf `replace` festgelegt ist. |
+| `maskingMode` | Ein Parameter, der verschiedene Methoden bereitstellt, um die persönlichen Informationen zu maskieren, die im Eingabetext erkannt wurden. Die folgenden Optionen werden unterstützt: <ul><li>`none` (Standard): Es erfolgt keine Maskierung, und die `maskedText`-Ausgabe wird nicht zurückgegeben. </li><li> `replace`: Ersetzt die erkannten Entitäten durch das im `maskingCharacter`-Parameter angegebene Zeichen. Das Zeichen wird auf die Länge der erkannten Entität wiederholt, sodass die Offsets ordnungsgemäß sowohl dem Eingabetext als auch dem ausgegebenen `maskedText` entsprechen.</li></ul> <br/> Während der PIIDetectionSkill-Vorschau wurde die `maskingMode`-Option `redact` ebenfalls unterstützt, wodurch die erkannten Entitäten vollständig ohne Ersetzung entfernt werden konnten. Die `redact`-Option ist mittlerweile veraltet und wird in Zukunft im Skill nicht mehr unterstützt. |
+| `maskingCharacter` | Das Zeichen, das zum Maskieren des Texts verwendet wird, wenn der Parameter `maskingMode` auf `replace` festgelegt ist. Die folgende Option wird unterstützt: `*` (Standard). Dieser Parameter kann nur `null` sein, wenn `maskingMode` nicht auf `replace` festgelegt ist. <br/><br/> Während der PiIDetectionSkill-Vorschau wurden die zusätzlichen `maskingCharacter`-Optionen `X` und `#` unterstützt. Die Option `X` und `#` sind mittlerweile veraltet und werden in Zukunft im Skill nicht mehr unterstützt. |
+| `modelVersion`   | (Optional) Die Version des Modells, die beim Aufruf des Textanalysediensts verwendet werden soll. Wenn nichts angegeben ist, wird standardmäßig die neueste Version verwendet. Es empfiehlt sich, diesen Wert nur anzugeben, wenn es unbedingt notwendig ist. Weitere Einzelheiten finden Sie unter [Versionsverwaltung der Modelle in der Textanalyse-API](../cognitive-services/text-analytics/concepts/model-versioning.md). |
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
 | Eingabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| `languageCode`    | Optional. Der Standardwert ist `en`.  |
+| `languageCode`    | Eine Zeichenfolge, die die Sprache der Datensätze angibt. Wenn dieser Parameter nicht angegeben ist, wird der Standardsprachcode zur Analyse der Datensätze verwendet. <br/>Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/text-analytics/language-support.md).  |
 | `text`          | Der zu analysierende Text          |
 
 ## <a name="skill-outputs"></a>Skillausgaben

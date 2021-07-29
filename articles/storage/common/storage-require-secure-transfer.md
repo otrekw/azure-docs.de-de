@@ -6,27 +6,27 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 06/01/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7b62265d75aa7c7c09f1f6e55632dcbe98efc411
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1b45af43c9a5c76169deaef08c91ea7a9e8670c1
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128929"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371702"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Erzwingen einer sicheren Übertragung für sichere Verbindungen
 
 Sie können Ihr Speicherkonto so konfigurieren, dass nur Anforderungen von sicheren Verbindungen akzeptiert werden, indem Sie die Eigenschaft **Sichere Übertragung erforderlich** für das Speicherkonto festlegen. Wenn Sie eine sichere Übertragung benötigen, werden alle Anforderungen zurückgewiesen, die von einer unsicheren Verbindung stammen. Microsoft empfiehlt, immer eine sichere Übertragung für sämtliche Speicherkonten zu erzwingen.
 
-Wenn eine sichere Übertragung erforderlich ist, müssen Aufrufe von Azure Storage-REST-API-Vorgängen über HTTPS erfolgen. Jede Anforderung über HTTP wird abgelehnt.
+Wenn eine sichere Übertragung erforderlich ist, müssen Aufrufe von Azure Storage-REST-API-Vorgängen über HTTPS erfolgen. Jede Anforderung über HTTP wird abgelehnt. Die Eigenschaft **Sichere Übertragung erforderlich** ist standardmäßig aktiviert, wenn Sie ein Speicherkonto erstellen.
 
-Das Herstellen einer Verbindung mit einer Azure-Dateifreigabe über SMB ohne Verschlüsselung führt zu einem Fehler, wenn für das Speicherkonto eine sichere Übertragung erforderlich ist. Beispiele für unsichere Verbindungen sind solche, die über SMB 2.1, SMB 3.0 ohne Verschlüsselung oder einige Versionen des Linux-SMB-Clients vorgenommen werden.
+Azure Policy bietet eine integrierte Richtlinie, um sicherzustellen, dass für Ihre Speicherkonten eine sichere Übertragung erforderlich ist. Weitere Informationen finden Sie in [Integrierte Azure Policy-Richtliniendefinitionen](../../governance/policy/samples/built-in-policies.md#storage) im Abschnitt **Speicher**.
 
-Die Eigenschaft **Sichere Übertragung erforderlich** ist standardmäßig aktiviert, wenn Sie ein Speicherkonto erstellen.
+Das Herstellen einer Verbindung mit einer Azure-Dateifreigabe über SMB ohne Verschlüsselung führt zu einem Fehler, wenn für das Speicherkonto eine sichere Übertragung erforderlich ist. Beispiele für unsichere Verbindungen sind Verbindungen, die über SMB 2.1 oder SMB 3.x ohne Verschlüsselung hergestellt werden.
 
 > [!NOTE]
 > Da Azure Storage keine Unterstützung von HTTPS für benutzerdefinierte Domänennamen bietet, wird diese Option nicht angewendet, wenn ein benutzerdefinierter Domänenname verwendet wird. Zudem werden klassische Speicherkonten nicht unterstützt.

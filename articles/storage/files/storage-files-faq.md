@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 4d7123aa22d95e3e4c3850be775ddad96f28d280
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ff5d891b4374a61c8806666a48505a2ee4682a67
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785305"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094472"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -31,7 +31,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="file-access-options"></a>
   **Auf welche Arten kann auf Dateien in Azure Files zugegriffen werden?**  
-    Sie können SMB-Dateifreigaben mithilfe des SMB 3.0-Protokolls auf Ihrem lokalen Computer einbinden oder mithilfe von Tools wie dem [Storage-Explorer](https://storageexplorer.com/) auf Dateien in Ihrer Dateifreigabe zugreifen. NFS-Dateifreigaben können auf dem lokalen Computer durch Kopieren und Einfügen des im Azure-Portal bereitgestellten Skripts eingebunden werden. In Ihrer Anwendung können Sie über Speicherclientbibliotheken, REST-APIs, PowerShell oder die Azure CLI auf Ihre Dateien in der Azure-Dateifreigabe zugreifen.
+    Sie können SMB-Dateifreigaben mithilfe des SMB 3.x-Protokolls auf Ihrem lokalen Computer einbinden oder mithilfe von Tools wie dem [Storage-Explorer](https://storageexplorer.com/) auf Dateien in Ihrer Dateifreigabe zugreifen. NFS-Dateifreigaben können auf dem lokalen Computer durch Kopieren und Einfügen des im Azure-Portal bereitgestellten Skripts eingebunden werden. In Ihrer Anwendung können Sie über Speicherclientbibliotheken, REST-APIs, PowerShell oder die Azure CLI auf Ihre Dateien in der Azure-Dateifreigabe zugreifen.
 
 * <a id="what-is-afs"></a>
   **Was ist Azure-Dateisynchronisierung?**  
@@ -335,7 +335,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="backup-nfs-data"></a>
 **Wie sichere ich Daten, die in NFS-Freigaben gespeichert sind?**
 
-    Die Sicherung von Daten in NFS-Freigaben kann entweder mit bekannten Tools wie rsync oder mit Produkten eines unserer Partnerunternehmen zur Datensicherung orchestriert werden. Mehrere dieser Partner zur Datensicherung, wie etwa [Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm), [Veeam](https://www.veeam.com/blog/?p=123438) und [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001), waren Teil der ersten Vorschauversion und haben ihre Lösungen auf SMB 3.0 sowie NFS 4.1 für Azure Files erweitert.
+    Die Sicherung von Daten in NFS-Freigaben kann entweder mit bekannten Tools wie rsync oder mit Produkten eines unserer Partnerunternehmen zur Datensicherung orchestriert werden. Mehrere dieser Partner zur Datensicherung, darunter [Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm), [Veeam](https://www.veeam.com/blog/?p=123438) und [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001), waren Teil unserer ersten Vorschauversion und haben ihre Lösungen auf SMB 3.x sowie NFS 4.1 für Azure Files erweitert.
 
 * <a id="migrate-nfs-data"></a>
 **Kann ich vorhandene Daten zu einer NFS-Freigabe migrieren?**
@@ -347,7 +347,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="port-445-blocked"></a>
 **Mein ISP oder meine IT-Abteilung blockiert Port 445, wodurch das Bereitstellen von Azure Files fehlschlägt. Wie soll ich vorgehen?**
 
-    Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked). Azure Files erlaubt von außerhalb der Region oder des Rechenzentrums nur Verbindungen mit SMB 3.0 (mit Verschlüsselungsunterstützung). In das Protokoll SMB 3.0 wurden viele Sicherheitsfunktionen integriert, darunter die Kanalverschlüsselung, die sich sehr sicher über das Internet nutzen lässt. Es ist jedoch möglich, dass Port 445 aufgrund von Schwachstellen in niedrigeren SMB-Versionen blockiert wurde. Im Idealfall sollte der Port nur für SMB 1.0-Datenverkehr gesperrt werden und SMB 1.0 auf allen Clients deaktiviert sein.
+    Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked). Azure Files erlaubt von außerhalb der Region oder des Rechenzentrums nur Verbindungen über SMB 3.x (mit Verschlüsselungsunterstützung). In das Protokoll SMB 3.x wurden viele Sicherheitsfunktionen integriert, darunter die Kanalverschlüsselung, die sich über das Internet sehr sicher nutzen lässt. Es ist jedoch möglich, dass Port 445 aufgrund von Schwachstellen in niedrigeren SMB-Versionen blockiert wurde. Im Idealfall sollte der Port nur für SMB 1.0-Datenverkehr gesperrt werden und SMB 1.0 auf allen Clients deaktiviert sein.
 
 * <a id="expressroute-not-required"></a>
 **Muss ich Azure ExpressRoute verwenden, wenn ich eine Verbindung mit Azure Files herstellen oder die Azure-Dateisynchronisierung lokal verwenden möchte?**  
@@ -357,7 +357,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="mount-locally"></a>
 **Wie kann ich eine Azure-Dateifreigabe auf meinem lokalen Computer bereitstellen?**  
 
-    Sie können die Dateifreigabe über das SMB-Protokoll bereitstellen, sofern Port 445 (TCP ausgehend) geöffnet ist und Ihr Client das SMB 3.0-Protokoll unterstützt (beispielsweise unter Windows 10 oder Windows Server 2016 der Fall). Wenn Port 445 durch eine Richtlinie Ihrer Organisation oder Ihres ISP blockiert ist, können Sie über die Azure-Dateisynchronisierung auf Ihre Azure-Dateifreigabe zugreifen.
+    Sie können die Dateifreigabe über das SMB-Protokoll bereitstellen, sofern Port 445 (TCP ausgehend) geöffnet ist und Ihr Client das SMB 3.x-Protokoll unterstützt (wenn Sie beispielsweise Windows 10 oder Windows Server 2016 verwenden). Wenn Port 445 durch eine Richtlinie Ihrer Organisation oder Ihres ISP blockiert ist, können Sie über die Azure-Dateisynchronisierung auf Ihre Azure-Dateifreigabe zugreifen.
 
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>

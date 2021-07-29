@@ -3,12 +3,12 @@ title: Übersicht über Sicherungstresore
 description: Übersicht über Sicherungstresore
 ms.topic: conceptual
 ms.date: 04/19/2021
-ms.openlocfilehash: e2d720da9474a35870de01559201d22c9e5b567f
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 6748121bd85fe6dc26a09c038ab305bcf06e3902
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739078"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565954"
 ---
 # <a name="backup-vaults-overview"></a>Übersicht über Sicherungstresore
 
@@ -48,21 +48,20 @@ Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
 ### <a name="create-backup-vault"></a>Erstellen des Sicherungstresors
 
 1. Geben Sie im Suchfeld **Sicherungstresore** ein.
-1. Wählen Sie unter **Dienste** die Option **Sicherungstresore** aus.
-1. Wählen Sie auf der Seite **Sicherungstresore** die Option **Hinzufügen** aus.
-1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neue Ressourcengruppe erstellen** aus. Geben Sie als Namen *myResourceGroup* ein.
+2. Wählen Sie unter **Dienste** die Option **Sicherungstresore** aus.
+3. Wählen Sie auf der Seite **Sicherungstresore** die Option **Hinzufügen** aus.
+4. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neue Ressourcengruppe erstellen** aus. Geben Sie als Namen *myResourceGroup* ein.
 
-  ![Erstellen einer neuen Ressourcengruppe](./media/backup-vault-overview/new-resource-group.png)
+    ![Erstellen einer neuen Ressourcengruppe](./media/backup-vault-overview/new-resource-group.png)
 
-1. Geben Sie unter **Instanzendetails** die Zeichenfolge *myVault* als **Sicherungstresornamen** ein, und wählen Sie die gewünschte **Region** aus, in diesem Fall *USA, Osten*.
-1. Wählen Sie nun die **Speicherredundanz** aus. Die Speicherredundanz kann nach dem Schützen von Elementen im Tresor nicht mehr geändert werden.
-1. Wir empfehlen, dass Sie, wenn Sie Azure als primären Endpunkt für den Sicherungsspeicher verwenden, weiterhin die Standardeinstellung **Georedundant** verwenden.
-1. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher.
-1. Erfahren Sie mehr über [Georedundanz](../storage/common/storage-redundancy.md#geo-redundant-storage) and [lokale Redundanz](../storage/common/storage-redundancy.md#locally-redundant-storage).
+5. Geben Sie unter **Instanzendetails** die Zeichenfolge *myVault* als **Sicherungstresornamen** ein, und wählen Sie die gewünschte **Region** aus, in diesem Fall *USA, Osten*.
+6. Wählen Sie nun die **Speicherredundanz** aus. Die Speicherredundanz kann nach dem Schützen von Elementen im Tresor nicht mehr geändert werden.
+7. Wir empfehlen, dass Sie, wenn Sie Azure als primären Endpunkt für den Sicherungsspeicher verwenden, weiterhin die Standardeinstellung **Georedundant** verwenden.
+8. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher. Erfahren Sie mehr über [Georedundanz](../storage/common/storage-redundancy.md#geo-redundant-storage) and [lokale Redundanz](../storage/common/storage-redundancy.md#locally-redundant-storage).
 
-  ![Auswählen der Speicherredundanz](./media/backup-vault-overview/storage-redundancy.png)
+    ![Auswählen der Speicherredundanz](./media/backup-vault-overview/storage-redundancy.png)
 
-1. Wählen Sie unten auf der Seite die Schaltfläche „Überprüfen + erstellen“ aus.
+9. Wählen Sie unten auf der Seite die Schaltfläche „Überprüfen + erstellen“ aus.
 
     ![Auswählen von „Überprüfen + erstellen“](./media/backup-vault-overview/review-and-create.png)
 
@@ -80,6 +79,10 @@ Es ist nicht möglich, einen Sicherungstresor zu löschen, der eine der folgende
 Wenn Sie versuchen, den Tresor zu löschen, ohne die Abhängigkeiten zu entfernen, werden die folgenden Fehlermeldungen angezeigt:
 
 >Der Backup-Tresor kann nicht gelöscht werden, da im Tresor vorhandene Sicherungsinstanzen oder Sicherungsrichtlinien enthalten sind. Löschen Sie alle Sicherungsinstanzen und Sicherungsrichtlinien, die im Tresor vorhanden sind, und versuchen Sie dann, den Tresor zu löschen.
+
+Stellen Sie sicher, dass Sie die Filteroptionen des **Datenquellentyps** im **Backup Center** durchlaufen, um keine vorhandene Sicherungsinstanz oder Richtlinie zu übersehen, die entfernt werden muss, bevor Sie den Sicherungstresor löschen können.
+
+![Datenquellentypen](./media/backup-vault-overview/datasource-types.png)
 
 ### <a name="proper-way-to-delete-a-vault"></a>So Löschen Sie einen Tresor ordnungsgemäß
 

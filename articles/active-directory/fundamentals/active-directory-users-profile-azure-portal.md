@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 05/04/2021
+ms.date: 06/10/2021
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 173bd167a0814ddf735d90b257089a685d99cc58
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6239b0c7f56db49d54ee95b1d6fb0737d2ea9cb8
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762603"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017977"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory
 Lernen Sie, wie Sie Benutzerprofilinformationen, z.B. ein Profilbild oder Angaben zur Beschäftigung, und einige Einstellungen mit Azure Active Directory (Azure AD) hinzufügen. Weitere Informationen zum Hinzufügen neuer Benutzer finden Sie unter [Hinzufügen oder Löschen von Benutzern in Azure Active Directory](add-users-azure-active-directory.md).
@@ -38,9 +38,7 @@ Wie Sie sehen werden, lassen sich in Benutzerprofilen mehr Informationen angeben
 
     ![Benutzerprofilseite mit bearbeitbaren Informationen](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
 
-3. Wählen Sie **Bearbeiten** aus, falls Sie die Informationen in den angezeigten Bereichen hinzufügen oder aktualisieren möchten.
-
-    ![Benutzerprofilseite mit bearbeitbaren Bereichen](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
+3. Wählen Sie **Bearbeiten** aus, falls Sie die Informationen in den bearbeitbaren Bereichen hinzufügen oder aktualisieren möchten.
 
     - **Profilbild:** Wählen Sie ein Miniaturbild für das Benutzerkonto aus. Dieses Bild wird in Azure Active Directory und auf den persönlichen Seiten des Benutzers angezeigt, z.B. auf „myapps.microsoft.com“.
 

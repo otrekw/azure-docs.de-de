@@ -3,13 +3,13 @@ title: Übersicht über die Runtimeversionen von Azure Functions
 description: Azure Functions unterstützt mehrere Versionen der Runtime. Lernen Sie die Unterschiede kennen, und erfahren Sie, wie Sie die Version auswählen, die sich am besten für Ihre Anforderungen eignet.
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
-ms.date: 12/09/2019
-ms.openlocfilehash: b37cf33a96452f9f3e86f853d3d87fd3b4b3879c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/19/2021
+ms.openlocfilehash: b3d148bbf6aadaa9ed48d234fdd22d68412f3ec5
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102431845"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789632"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 
@@ -96,7 +96,7 @@ Der Hauptunterschied zwischen den Versionen bei der Ausführung von Funktionen d
 
 ## <a name="migrating-from-1x-to-later-versions"></a>Migrieren von 1.x zu neueren Versionen
 
-Eine vorhandene App, die für die Runtimeversion 1.x geschrieben wurde, kann zu einer neueren Version migriert werden. Die meisten erforderlichen Änderungen hängen mit der Sprachruntime zusammen – also beispielsweise C#-API-Änderungen zwischen .NET Framework 4.7 und .NET Core. Sie müssen auch sicherstellen, dass Ihr Code und Ihre Bibliotheken mit den ausgewählten Sprachruntimes kompatibel sind. Beachten Sie nicht zuletzt auch die unten genannten Änderungen an Triggern, Bindungen und Funktionen. Um ein optimales Migrationsergebnis zu erzielen, sollten Sie eine neue Funktions-App in einer neuen Version erstellen und Ihren vorhandenen Funktionscode der Version 1.x zur neuen App portieren.  
+Eine vorhandene App, die für die Runtimeversion 1.x geschrieben wurde, kann zu einer neueren Version migriert werden. Die meisten erforderlichen Änderungen hängen mit der Sprachruntime zusammen – also beispielsweise C#-API-Änderungen zwischen .NET Framework 4.8 und .NET Core. Sie müssen auch sicherstellen, dass Ihr Code und Ihre Bibliotheken mit den ausgewählten Sprachruntimes kompatibel sind. Beachten Sie nicht zuletzt auch die unten genannten Änderungen an Triggern, Bindungen und Funktionen. Um ein optimales Migrationsergebnis zu erzielen, sollten Sie eine neue Funktions-App in einer neuen Version erstellen und Ihren vorhandenen Funktionscode der Version 1.x zur neuen App portieren.  
 
 Es besteht zwar die Möglichkeit eines direkten Upgrades durch manuelles Aktualisieren der App-Konfiguration, die Umstellung von 1.x auf eine höhere Version beinhaltet jedoch einige Breaking Changes. In C# ändert sich beispielsweise das Debuggingobjekt von `TraceWriter` in `ILogger`. Durch die Erstellung eines neuen Projekts mit der Version 3.x stehen die aktualisierten Funktionen auf der Grundlage der neuesten Vorlagen der Version 3.x zur Verfügung.
 

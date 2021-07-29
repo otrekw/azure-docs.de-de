@@ -1,29 +1,30 @@
 ---
 title: Bereitstellen eines Machine Learning-Modells in Azure Functions mit Azure Cache for Redis
-description: In diesem Artikel stellen Sie ein Modell aus Azure Machine Learning als Funktions-App in Azure Functions mithilfe einer Azure Cache for Redis-Instanz bereit. Azure Cache for Redis ist extrem leistungsfähig und skalierbar – gepaart mit einem Azure Machine Learning-Modell erzielen Sie niedrige Latenzzeiten und hohen Durchsatz in Ihrer Anwendung.
+description: Mithilfe dieses Artikels stellen Sie ein Modell aus Azure Machine Learning als Funktions-App in Azure Functions mithilfe einer Azure Cache for Redis-Instanz bereit. Azure Cache for Redis ist leistungsfähig und skalierbar. Gepaart mit einem Azure Machine Learning-Modell erzielen Sie niedrige Latenzzeiten und hohen Durchsatz für Ihre Anwendung.
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: ec8943bc73cac2020350dd4916f040f031cd842b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0541b626168fb680daa2fc5c0c14df5bc8a4ea7c
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499695"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111904173"
 ---
-# <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Bereitstellen eines Machine Learning-Modells in Azure Functions mit Azure Cache for Redis 
+# <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Bereitstellen eines Machine Learning-Modells in Azure Functions mit Azure Cache for Redis
 
-In diesem Artikel stellen Sie ein Modell aus Azure Machine Learning als Funktions-App in Azure Functions mithilfe einer Azure Cache for Redis-Instanz bereit.  
+Mithilfe dieses Artikels stellen Sie ein Modell aus Azure Machine Learning als Funktions-App in Azure Functions mithilfe einer Azure Cache for Redis-Instanz bereit.  
 
-Azure Cache for Redis ist extrem leistungsfähig und skalierbar – gepaart mit einem Azure Machine Learning-Modell erzielen Sie niedrige Latenzzeiten und hohen Durchsatz in Ihrer Anwendung. Einige Szenarien, in denen ein Cache besonders vorteilhaft ist, beziehen sich auf den Rückschluss der Daten und die eigentlichen Modellrückschlussergebnisse. In allen diesen Szenarien werden die Metadaten oder Ergebnisse im Arbeitsspeicher gespeichert, was zu einer Leistungssteigerung führt. 
+Azure Cache for Redis ist leistungsfähig und skalierbar. Gepaart mit einem Azure Machine Learning-Modell erzielen Sie niedrige Latenzzeiten und hohen Durchsatz für Ihre Anwendung. Einige Szenarien, in denen ein Cache besonders vorteilhaft ist: beim Rückschließen der Daten und für die eigentlichen Modellrückschlussergebnisse. In allen diesen Szenarien werden die Metadaten oder Ergebnisse im Arbeitsspeicher gespeichert, was zu einer Leistungssteigerung führt.
 
 > [!NOTE]
 > Azure Machine Learning und Azure Functions sind zwar allgemein verfügbar, die Funktion zum Bereitstellen eines Modells aus dem Machine Learning-Dienst für Functions befindet sich jedoch in der Vorschauphase.  
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie im Artikel [Erstellen eines Arbeitsbereichs](../machine-learning/how-to-manage-workspace.md).
 * [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
@@ -38,44 +39,45 @@ Azure Cache for Redis ist extrem leistungsfähig und skalierbar – gepaart mit 
 >
 > Weitere Informationen zum Festlegen dieser Variablen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](../machine-learning/how-to-deploy-and-where.md).
 
-## <a name="create-an-azure-cache-for-redis-instance"></a>Erstellen einer Azure Cache for Redis-Instanz 
+## <a name="create-an-azure-cache-for-redis-instance"></a>Erstellen einer Azure Cache for Redis-Instanz
+
 Sie können ein Machine Learning-Modell für Azure Functions mit jeder Cache-Instanz des Typs „Basic“, „Standard“ oder „Premium“ bereitstellen. Führen Sie zum Erstellen einer Cache-Instanz die folgenden Schritte aus:  
 
-1. Navigieren Sie zur Homepage des Azure-Portals, oder öffnen Sie das Randleistenmenü, und wählen Sie dann **Ressource erstellen** aus. 
-   
+1. Navigieren Sie zur Homepage des Azure-Portals, oder öffnen Sie das Randleistenmenü, und wählen Sie dann **Ressource erstellen** aus.
+
 1. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann **Azure Cache for Redis** aus.
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Auswählen von „Azure Cache for Redis“.":::
-   
+
 1. Konfigurieren Sie auf der Seite **Neuer Redis Cache** die Einstellungen für den neuen Cache.
-   
+
    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS-Name** | Geben Sie einen global eindeutigen Namen ein. | Der Cachename muss zwischen 1 und 63 Zeichen lang sein und darf nur Zahlen, Buchstaben und Bindestriche enthalten. Der Name muss mit einer Zahl oder einem Buchstaben beginnen und enden und darf keine aufeinanderfolgenden Bindestriche enthalten. Der *Hostname* Ihrer Cache-Instanz lautet *\<DNS name>.redis.cache.windows.net*. | 
-   | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese neue Azure Cache for Redis-Instanz erstellt wird. | 
-   | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr Cache und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
+   | **DNS-Name** | Geben Sie einen global eindeutigen Namen ein. | Der Cache-Name muss eine Zeichenfolge mit 1 bis 63 Zeichen sein. Die Zeichenfolge darf nur Zahlen, Buchstaben oder Bindestriche enthalten. Der Name muss mit einer Zahl oder einem Buchstaben beginnen und enden und darf keine aufeinanderfolgenden Bindestriche enthalten. Der *Hostname* Ihrer Cache-Instanz lautet *\<DNS name>.redis.cache.windows.net*. |
+   | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese neue Azure Cache for Redis-Instanz erstellt wird. |
+   | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr Cache und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. |
    | **Location** | Öffnen Sie die Dropdownliste, und wählen Sie einen Standort aus. | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in der Nähe anderer Dienste aus, die Ihren Cache verwenden. |
    | **Preisstufe** | Öffnen Sie die Dropdownliste, und wählen Sie einen [Tarif](https://azure.microsoft.com/pricing/details/cache/) aus. |  Der Tarif bestimmt Größe, Leistung und verfügbare Features für den Cache. Weitere Informationen finden Sie unter [What is Azure Cache for Redis](cache-overview.md) (Was ist Azure Cache for Redis?). |
 
-1. Wählen Sie die Registerkarte **Netzwerk** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Netzwerk**.
+1. Wählen Sie die Registerkarte **Netzwerk** oder unten auf der Seite die Schaltfläche **Netzwerk** aus.
 
 1. Wählen Sie auf der Registerkarte **Netzwerk** Ihre Konnektivitätsmethode aus.
 
-1. Wählen Sie unten auf der Seite die Registerkarte **Weiter: Erweitert** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Erweitert**.
+1. Wählen Sie die Registerkarte **Weiter: Erweitert** oder unten auf der Seite die Schaltfläche **Weiter: Erweitert** aus.
 
 1. Aktivieren Sie auf der Registerkarte **Erweitert** für eine Basic- oder Standard-Cache-Instanz die Aktivierungsoption, wenn Sie einen TLS-fremden Port aktivieren möchten.
 
 1. Konfigurieren Sie auf der Registerkarte **Advanced** für eine Premium-Cache-Instanz die Einstellungen für einen TLS-fremden Port, Clustering und Datenpersistenz.
 
-1. Wählen Sie die Registerkarte **Weiter: Tags** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Tags** (Weiter: Tags) aus.
+1. Wählen Sie die Registerkarte **Weiter: Tags** oder unten auf der Seite die Schaltfläche **Weiter: Tags** aus.
 
-1. Geben Sie optional auf der Registerkarte **Tags** den Namen und den Wert ein, wenn Sie die Ressource kategorisieren möchten. 
+1. Geben Sie optional auf der Registerkarte **Tags** den Namen und den Wert ein, wenn Sie die Ressource kategorisieren möchten.
 
 1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
 1. Wenn die grüne Meldung „Validierung erfolgreich“ angezeigt wird, wählen Sie **Erstellen** aus.
 
-Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt auf der Seite **Übersicht** von Azure Cache for Redis überwachen. Wenn **Wird ausgeführt** als **Status** angezeigt wird, ist der Cache einsatzbereit. 
+Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt auf der Seite **Übersicht** von Azure Cache for Redis überwachen. Wenn **Wird ausgeführt** als **Status** angezeigt wird, ist der Cache einsatzbereit.
 
 ## <a name="prepare-for-deployment"></a>Vorbereiten der Bereitstellung
 
@@ -185,7 +187,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
 
 ## <a name="deploy-image-as-a-web-app"></a>Bereitstellen eines Images als Web-App
 
-1. Verwenden Sie den folgenden Befehl, um die Anmeldeinformationen für die Azure Container Registry-Instanz zu erhalten, die das Image enthält. Ersetzen Sie `<myacr>` durch den zuvor von `package.location` zurückgegebenen Wert: 
+1. Verwenden Sie den folgenden Befehl, um die Anmeldeinformationen für die Azure Container Registry-Instanz zu erhalten, die das Image enthält. Ersetzen Sie `<myacr>` durch den zuvor von `package.location` zurückgegebenen Wert:
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -211,7 +213,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
 
     Speichern Sie die Werte für __Benutzername__ und eines der __Kennwörter__.
 
-1. Wenn Sie noch nicht über eine Ressourcengruppe oder einen App Service-Plan für die Bereitstellung des Diensts verfügen, veranschaulichen die folgenden Befehle das Erstellen dieser beiden Elemente:
+1. Wenn Sie noch nicht über eine Ressourcengruppe oder einen App Service-Plan für die Bereitstellung des Diensts verfügen, veranschaulichen diese Befehle das Erstellen beider Elemente:
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
@@ -228,6 +230,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     ```azurecli-interactive
     az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
+
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
@@ -239,7 +242,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     ```
 
     > [!IMPORTANT]
-    > An diesem Punkt wurde die Funktions-App erstellt. Da Sie jedoch nicht die Verbindungszeichenfolge für den HTTP-Trigger oder Anmeldeinformationen für die Azure Container Registry-Instanz mit dem Image angegeben haben, ist die Funktions-App nicht aktiv. Im nächsten Schritt geben Sie die Verbindungszeichenfolge und die Authentifizierungsinformationen für die Containerregistrierung an. 
+    > An diesem Punkt wurde die Funktions-App erstellt. Da Sie jedoch nicht die Verbindungszeichenfolge für den HTTP-Trigger oder Anmeldeinformationen für die Azure Container Registry-Instanz mit dem Image angegeben haben, ist die Funktions-App nicht aktiv. Im nächsten Schritt geben Sie die Verbindungszeichenfolge und die Authentifizierungsinformationen für die Containerregistrierung an.
 
 1. Verwenden Sie den folgenden Befehl, um die für den Zugriff auf die Containerregistrierung erforderlichen Anmeldeinformationen für die Funktions-App bereitzustellen. Ersetzen Sie `<app-name>` durch den Namen der Funktions-App. Ersetzen Sie `<acrinstance>` und `<imagetag>` durch die Werte aus dem AZ CLI-Aufruf im vorherigen Schritt. Ersetzen Sie `<username>` und `<password>` durch die zuvor abgerufenen ACR-Anmeldeinformationen:
 
@@ -283,14 +286,14 @@ Zu diesem Zeitpunkt beginnt die Funktions-App mit dem Laden des Images.
 > [!IMPORTANT]
 > Es kann einige Minuten dauern, bis das Image geladen wurde. Sie können den Fortschritt im Azure-Portal überwachen.
 
-## <a name="test-azure-functions-http-trigger"></a>Testen des HTTP-Triggers in Azure Functions 
+## <a name="test-azure-functions-http-trigger"></a>Testen des HTTP-Triggers in Azure Functions
 
-Wir führen jetzt den Azure Functions-HTTP-Trigger aus und testen ihn.
+Nun soll der Azure Functions-HTTP-Trigger ausgeführt und getestet werden.
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Funktions-App.
-1. Wählen Sie unter „Developer“ die Option **Programmieren und testen** aus. 
-1. Wählen Sie auf der rechten Seite die Registerkarte **Eingabe** aus. 
-1. Klicken Sie auf die Schaltfläche **Ausführen**, um den Azure Functions-HTTP-Trigger zu testen. 
+1. Wählen Sie unter „Developer“ die Option **Programmieren und testen** aus.
+1. Wählen Sie auf der rechten Seite die Registerkarte **Eingabe** aus.
+1. Wählen Sie die Schaltfläche **Ausführen**, um den Azure Functions-HTTP-Trigger zu testen.
 
 Sie haben nun ein Modell aus Azure Machine Learning als Funktions-App in Azure Functions mithilfe einer Azure Cache for Redis-Instanz bereitgestellt. Weitere Informationen zu Azure Cache for Redis erhalten Sie anhand der Links im Abschnitt unten.
 
@@ -298,7 +301,7 @@ Sie haben nun ein Modell aus Azure Machine Learning als Funktions-App in Azure F
 
 Falls Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die in dieser Schnellstartanleitung erstellten Ressourcen beibehalten und wiederverwenden.
 
-Wenn Sie den Schnellstart nicht mehr benötigen, können Sie die in dieser Schnellstartanleitung erstellten Azure-Ressourcen löschen, um das Anfallen von Kosten zu vermeiden. 
+Wenn Sie den Schnellstart nicht mehr benötigen, können Sie die in dieser Schnellstartanleitung erstellten Azure-Ressourcen löschen, um das Anfallen von Kosten zu vermeiden.
 
 > [!IMPORTANT]
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen, statt die Ressourcengruppe zu löschen.
@@ -313,9 +316,9 @@ Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben
 
 Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 
-## <a name="next-steps"></a>Nächste Schritte 
+## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über [Azure Cache for Redis](./cache-overview.md).
 * Erfahren Sie in der Dokumentation zu [Functions](../azure-functions/functions-create-function-linux-custom-image.md), wie Sie Ihre Funktions-App konfigurieren.
-* [API-Referenz](/python/api/azureml-contrib-functions/azureml.contrib.functions) 
+* [API-Referenz](/python/api/azureml-contrib-functions/azureml.contrib.functions)
 * Erstellen einer [Python-App, die Azure Cache for Redis verwendet](./cache-python-get-started.md)

@@ -2,13 +2,13 @@
 title: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 description: Beschreibt das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 5c3bc66c2111c347f8ed0e32c9e597a52ed404ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.openlocfilehash: 42ce8990e4593fc734be619aa363f080f3055878
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104670425"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783584"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -62,22 +62,23 @@ Passen Sie die Speicherreplikationstyp wie folgt an:
 
 ## <a name="apply-a-backup-policy"></a>Anwenden einer Sicherungsrichtlinie
 
-Konfigurieren Sie eine Sicherungsrichtlinie für den Tresor.
+Führen Sie die folgenden Schritte aus, um eine Sicherungsrichtlinie auf Ihre Azure-VMs anzuwenden:
 
-1. Wählen Sie im Tresor im Abschnitt **Übersicht** die Option **+ Sichern** aus.
+1. Navigieren Sie zum Backup Center, und klicken Sie auf der Registerkarte **Übersicht** auf **+Sicherung**.
 
    ![Schaltfläche „Sicherung“](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-1. Wählen Sie unter **Sicherungsziel** > **Wo wird Ihre Workload ausgeführt?** die Option **Azure** aus. Wählen Sie für **Was möchten Sie sichern?** die Option **Virtueller Computer** >  **OK** aus. Dadurch wird die VM-Erweiterung im Tresor registriert.
+1. Wählen Sie **Virtuelle Azure-Computer** als **Datenquellentyp** und dann den Tresor aus, den Sie erstellt haben. Klicken Sie anschließend auf **Weiter**.
 
    ![Bereiche „Sicherung“ und „Sicherungsziel“](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-1. Wählen Sie unter **Sicherungsrichtlinie** die Richtlinie aus, die dem Tresor zugeordnet werden soll.
-    * Die Standardrichtlinie sichert den virtuellen Computer einmal täglich. Die täglichen Sicherungen werden 30 Tage lang aufbewahrt. Momentaufnahmen für die sofortige Wiederherstellung werden zwei Tage lang aufbewahrt.
+1. Weisen Sie eine Sicherungsrichtlinie zu.
+
+    - Die Standardrichtlinie sichert den virtuellen Computer einmal täglich. Die täglichen Sicherungen werden 30 Tage lang aufbewahrt. Momentaufnahmen für die sofortige Wiederherstellung werden zwei Tage lang aufbewahrt.
 
       ![Standardsicherungsrichtlinie](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-    * Wenn Sie nicht die Standardrichtlinie verwenden möchten, wählen Sie **Neu erstellen** aus, und erstellen Sie eine benutzerdefinierte Richtlinie, wie im nächsten Verfahren beschrieben.
+    - Wenn Sie nicht die Standardrichtlinie verwenden möchten, wählen Sie **Neu erstellen** aus, und erstellen Sie eine benutzerdefinierte Richtlinie, wie im nächsten Verfahren beschrieben.
 
 1. Wählen Sie in unter **Virtuelle Computer** die Option **Hinzufügen** aus.
 
@@ -129,12 +130,13 @@ Wenn Sie ausgewählt haben, eine neue Sicherungsrichtlinie zu erstellen, geben S
 
 Die erste Sicherung wird entsprechend dem festgelegten Zeitplan ausgeführt; Sie können sie aber auch mit den folgenden Schritten sofort ausführen:
 
-1. Wählen Sie im Tresormenü die Option **Sicherungselemente** aus.
-2. Wählen Sie unter **Sicherungselemente** die Option **Virtueller Azure-Computer** aus.
-3. Wählen Sie in der Liste **Sicherungselemente** das Auslassungszeichen (...) aus.
-4. Wählen Sie **Jetzt sichern** aus.
-5. Verwenden Sie unter **Jetzt sichern** den Kalender, um den letzten Tag zur Beibehaltung des Wiederherstellungspunkts auszuwählen. Klicken Sie anschließend auf **OK**.
-6. Überwachen Sie die Portalbenachrichtigungen. Sie können den Auftragsstatus im Dashboard des Tresors unter **Sicherungsaufträge** > **In Bearbeitung** überwachen. Je nach Größe Ihrer VM kann das Erstellen der ersten Sicherung einige Zeit dauern.
+1. Navigieren Sie zum Backup Center, und wählen Sie das Menüelement **Sicherungsinstanzen** aus.
+1. Wählen Sie **Virtuelle Azure-Computer** als **Datenquellentyp** aus. Suchen Sie dann nach dem virtuellen Computer, den Sie für die Sicherung konfiguriert haben.
+1. Klicken Sie mit der rechten Maustaste auf die entsprechende Zeile, oder wählen Sie das Symbol "Mehr" (...) aus, und klicken Sie dann auf **Jetzt sichern**.
+1. Verwenden Sie unter **Jetzt sichern** den Kalender, um den letzten Tag zur Beibehaltung des Wiederherstellungspunkts auszuwählen. Klicken Sie anschließend auf **OK**.
+1. Überwachen Sie die Portalbenachrichtigungen.
+   Um den Auftragsfortschritt zu überwachen, wechseln Sie zu **Backup Center** > **Sicherungsaufträge**, und filtern Sie die Liste nach Aufträgen **In Bearbeitung**.
+   Je nach Größe Ihrer VM kann das Erstellen der ersten Sicherung einige Zeit dauern.
 
 ## <a name="verify-backup-job-status"></a>Überprüfen des Status des Sicherungsauftrags
 

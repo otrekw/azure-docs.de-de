@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 06/14/2021
 ms.author: surmb
-ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 785741c029fa3b44fffca5140906689f478fb247
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397619"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081225"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Konfigurieren der Application Gateway-Infrastruktur
 
@@ -35,7 +35,13 @@ Stellen Sie sich ein Subnetz mit 27 Application Gateway-Instanzen und einer priv
 
 Die Application Gateway-SKU (Standard oder WAF) kann bis zu 32 Instanzen unterstützen (32 Instanz-IP-Adressen + 1 private Front-End-IP + 5 für Azure reserviert). Daher wird eine Subnetzmindestgröße von /26 empfohlen.
 
-Die Application Gateway-SKU (Standard_v2 oder WAF_v2) kann bis zu 125 Instanzen unterstützen (125 Instanz-IP-Adressen + 1 private Front-End-IP + 5 für Azure reserviert). Daher wird eine Subnetzmindestgröße von /24 empfohlen.
+Die Application Gateway-SKU (Standard_v2 oder WAF_v2) kann bis zu 125 Instanzen unterstützen (125 Instanz-IP-Adressen + 1 private Front-End-IP + 5 für Azure reserviert). Es wird eine Subnetzmindestgröße von /24 empfohlen.
+
+> [!IMPORTANT]
+> Obwohl ein /24-Subnetz nicht pro Application Gateway v2-SKU-Bereitstellung erforderlich ist, wird dies dringend empfohlen. Dadurch wird sichergestellt, dass Application Gateway v2 über ausreichend Speicherplatz für die automatischer Skalierung von Erweiterungs- und Wartungsupgrades verfügt. Sie sollten sicherstellen, dass das Application Gateway v2-Subnetz über ausreichend Adressraum verfügt, um die Anzahl der Instanzen aufzunehmen, die für die Verarbeitung des maximal zu erwartenden Datenverkehrs erforderlich sind. Wenn Sie die maximale Anzahl von Instanzen angeben, sollte das Subnetz über die Kapazität für mindestens ebenso viele Adressen verfügen. Informationen zur Kapazitätsplanung für die Anzahl von Instanzen finden Sie unter [Details zur Anzahl der Instanzen](understanding-pricing.md#instance-count).
+
+> [!TIP]
+> Es ist möglich, das Subnetz eines vorhandenen Application Gateway innerhalb desselben virtuellen Netzwerks zu ändern. Sie können dazu Azure PowerShell oder die Azure CLI verwenden. Weitere Informationen finden Sie in den [Häufig gestellten Fragen zu Application Gateway](application-gateway-faq.yml#can-i-change-the-virtual-network-or-subnet-for-an-existing-application-gateway).
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
 

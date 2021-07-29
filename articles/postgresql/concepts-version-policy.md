@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2020
+ms.date: 05/25/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 62fe1b3391eb4cb2d409a92b936fd3f1ae56d992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f4cf4c0109d524d0a8fe62ae1930165173db170
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100518418"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407055"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Versionsrichtlinie zu Azure Database for PostgreSQL
 
@@ -22,13 +22,16 @@ Auf dieser Seite wird die Versionsrichtlinie für Azure Database for PostgreSQL 
 
 Azure Database for PostgreSQL unterstützt die folgenden Datenbankversionen:
 
-| Version | Einzelner Server | Flexible Server (Vorschau) |
-| ----- | :------: | :----: |
-| PostgreSQL 12 |  | X  | 
-| PostgreSQL 11 | X | X |
-| PostgreSQL 10 | X |  |
-| PostgreSQL 9.6 | X |  |
-| *PostgreSQL 9.5 (eingestellt)* | X |  |
+| Version | Einzelner Server | Flexible Server (Vorschau) | Hyperscale (Citus) |
+| ----- | :------: | :----: | :----: |
+| PostgreSQL 13 |  | X  | X\* |
+| PostgreSQL 12 |  | X  | X\* |
+| PostgreSQL 11 | X | X | X |
+| PostgreSQL 10 | X |  |  |
+| PostgreSQL 9.6 | X |  |  |
+| *PostgreSQL 9.5 (eingestellt)* | X |  |  |
+
+(\* PostgreSQL 12 und 13 sind als Previewfunktion in Hyperscale (Citus) verfügbar.)
 
 ## <a name="major-version-support"></a>Support für die Hauptversion
 Jede Hauptversion von PostgreSQL wird durch Azure Database for PostgreSQL ab dem Datum, an dem Azure mit dem Support für die Version beginnt, bis zu dem Datum unterstützt, an dem die Version durch die PostgreSQL-Community entsprechend der [Versionsrichtlinie für die PostgreSQL-Community](https://www.postgresql.org/support/versioning/) eingestellt wird.
@@ -46,6 +49,7 @@ Die folgende Tabelle enthält die Details zur Einstellung von PostgreSQL-Hauptve
 | [PostgreSQL 10](https://www.postgresql.org/about/news/postgresql-10-released-1786/) | [Funktionen](https://wiki.postgresql.org/wiki/New_in_postgres_10) | 4. Juni 2018  | 10. November 2022
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Funktionen](https://www.postgresql.org/docs/11/release-11.html) | 24. Juli 2019  | 9\. November 2023
 | [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [Funktionen](https://www.postgresql.org/docs/12/release-12.html) | 22. September 2020  | 14. November 2024
+| [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/) | [Funktionen](https://www.postgresql.org/docs/13/release-13.html) | 25. Mai 2021   | 13. November 2025
 
 ## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>Eingestellte Versionen der PostgreSQL-Engine werden in Azure Database for PostgreSQL nicht unterstützt
 

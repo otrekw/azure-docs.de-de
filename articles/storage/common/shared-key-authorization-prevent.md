@@ -1,31 +1,29 @@
 ---
-title: Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln (Vorschau)
+title: Verhindern der Autorisierung mit gemeinsam verwendetem Schlüssel
 titleSuffix: Azure Storage
-description: Sie können von Clients erzwingen, für das Autorisieren von Anforderungen Azure AD zu verwenden. Dazu verhindern Sie Anforderungen an das Speicherkonto mit einem gemeinsam verwendeten Schlüssel (Vorschau).
+description: Sie können von Clients erzwingen, Azure AD für das Autorisieren von Anforderungen zu verwenden. Dazu verhindern Sie Anforderungen an das Speicherkonto, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 05/27/2021
 ms.author: tamram
-ms.reviewer: fryu
-ms.openlocfilehash: b7290abe102d22bb87c87c3c9d13ee99c127b942
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.reviewer: sohamnc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0262cdd348c03dafd378af95374beacf2bc77c23
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199913"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679268"
 ---
-# <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto (Vorschau)
+# <a name="prevent-shared-key-authorization-for-an-azure-storage-account"></a>Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto
 
-Jede sichere Anforderung an ein Azure Storage-Konto muss autorisiert werden. Standardmäßig können Anforderungen entweder mit Azure AD-Anmeldeinformationen (Azure Active Directory) oder mithilfe des Kontozugriffsschlüssels (bei einer Autorisierung mit einem gemeinsam verwendeten Schlüssel) autorisiert werden. Von diesen beiden Autorisierungsarten bietet Azure AD eine höhere Sicherheit und einfachere Verwendung gegenüber einem gemeinsam verwendeten Schlüssel und wird von Microsoft empfohlen. Sie können von Clients erzwingen, für das Autorisieren von Anforderungen Azure AD zu verwenden. Dazu verhindern Sie Anforderungen an das Speicherkonto mit einem gemeinsam verwendeten Schlüssel (Vorschau).
+Jede sichere Anforderung an ein Azure Storage-Konto muss autorisiert werden. Standardmäßig können Anforderungen entweder mit Azure AD-Anmeldeinformationen (Azure Active Directory) oder mithilfe des Kontozugriffsschlüssels (bei einer Autorisierung mit einem gemeinsam verwendeten Schlüssel) autorisiert werden. Von diesen beiden Autorisierungsarten bietet Azure AD eine höhere Sicherheit und einfachere Verwendung gegenüber einem gemeinsam verwendeten Schlüssel und wird von Microsoft empfohlen. Sie können von Clients erzwingen, Azure AD für das Autorisieren von Anforderungen zu verwenden. Dazu verhindern Sie Anforderungen an das Speicherkonto, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden.
 
 Wenn Sie die Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Speicherkonto nicht zulassen, lehnt Azure Storage alle nachfolgenden Anforderungen an dieses Konto ab, die mit den Kontozugriffsschlüsseln autorisiert sind. Nur sichere Anforderungen, die durch Azure AD autorisiert wurden, werden erfolgreich ausgeführt. Weitere Informationen zur Verwendung von Azure AD finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
 
-> [!IMPORTANT]
-> Das Aufheben der Autorisierung mit einem gemeinsam verwendeten Schlüsseln befindet sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
-
-In diesem Artikel wird beschrieben, wie Sie Anforderungen erkennen, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden, und wie Sie die Autorisierung mit gemeinsam verwendeten Schlüsseln für Ihr Speicherkonto aufheben. Informationen zum Registrieren für die Vorschauversion finden Sie unter [Informationen zur Vorschau](#about-the-preview).
+In diesem Artikel wird beschrieben, wie Sie Anforderungen erkennen, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden, und wie Sie die Autorisierung mit gemeinsam verwendeten Schlüsseln für Ihr Speicherkonto aufheben.
 
 ## <a name="detect-the-type-of-authorization-used-by-client-applications"></a>Ermitteln der von Clientanwendungen verwendeten Autorisierung
 
@@ -33,7 +31,7 @@ Wenn Sie die Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Speich
 
 Verwenden Sie Metriken, um zu ermitteln, wie viele Anforderungen, die mit einem gemeinsam verwendeten Schlüssel oder einer Shared Access Signature (SAS) autorisiert wurden, das Speicherkonto empfängt. Ermitteln Sie anhand der Protokolle, welche Clients diese Anforderungen senden.
 
-Weitere Informationen zum Interpretieren von Anforderungen, die während der Vorschau mit einer Shared Access Signature vorgenommen werden, finden Sie unter [Informationen zur Vorschau](#about-the-preview).
+Eine SAS kann entweder mit einem gemeinsam verwendeten Schlüssel oder mit Azure AD autorisiert werden. Weitere Informationen zum Interpretieren von Anforderungen, die mit einer Shared Access Signature ausgeführt werden, finden Sie unter [Grundlegendes zu den Auswirkungen der Aufhebung gemeinsam verwendeter Schlüssel auf SAS-Token](#understand-how-disallowing-shared-key-affects-sas-tokens).
 
 ### <a name="monitor-how-many-requests-are-authorized-with-shared-key"></a>Überwachen der Anzahl von Anforderungen mit einem gemeinsam verwendeten Schlüssel
 
@@ -77,7 +75,6 @@ Die Azure Storage-Protokollierung in Azure Monitor unterstützt die Verwendung 
 
 Wenn Sie Azure Storage-Daten mit Azure Monitor protokollieren und mit Azure Log Analytics analysieren möchten, müssen Sie zunächst eine Diagnoseeinstellung erstellen, die angibt, welche Anforderungstypen und für welche Speicherdienste Daten protokolliert werden sollen. Führen Sie zum Erstellen einer Diagnoseeinstellung im Azure-Portal die folgenden Schritte aus:
 
-1. Registrieren Sie sich für die [Azure Storage-Protokollierung in Azure Monitor (Vorschauversion)](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u).
 1. Erstellen Sie in dem Abonnement, das Ihr Azure Storage-Konto enthält, einen neuen Log Analytics-Arbeitsbereich, oder verwenden Sie einen vorhandenen. Nachdem Sie die Protokollierung für Ihr Speicherkonto konfiguriert haben, sind die Protokolle im Log Analytics-Arbeitsbereich verfügbar. Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../azure-monitor/logs/quick-create-workspace.md).
 1. Navigieren Sie zum Speicherkonto im Azure-Portal.
 1. Klicken Sie im Abschnitt „Überwachung“ auf **Diagnoseeinstellungen (Vorschau)** .
@@ -158,6 +155,8 @@ az storage account update \
 
 Nachdem Sie die Autorisierung mit gemeinsam verwendeten Schlüsseln aufgehoben haben, führen Anforderungen an das Speicherkonto, die mit gemeinsam verwendeten Schlüsseln autorisiert wurden, zu einem Fehler mit dem Fehlercode 403 (Verboten). Azure Storage gibt einen Fehler zurück, der angibt, dass die schlüsselbasierte Autorisierung für das Speicherkonto nicht zulässig ist.
 
+Die Eigenschaft **AllowSharedKeyAccess** wird nur bei Speicherkonten unterstützt, die das Azure Resource Manager-Bereitstellungsmodell verwenden. Informationen dazu, welche Speicherkonten das Azure Resource Manager-Bereitstellungsmodell verwenden, finden Sie unter [Typen von Speicherkonten](storage-account-overview.md#types-of-storage-accounts).
+
 ### <a name="verify-that-shared-key-access-is-not-allowed"></a>Überprüfen, ob der Zugriff mit gemeinsam verwendeten Schlüsseln verhindert wird
 
 Wenn Sie sich vergewissern möchten, dass die Autorisierung mit gemeinsam verwendeten Schlüsseln nicht mehr zulässig ist, können Sie versuchen, einen Datenvorgang mit dem Kontozugriffsschlüssel aufzurufen. Im folgenden Beispiel wird versucht, mit dem Zugriffsschlüssel einen Container zu erstellen. Dieser Aufruf führt zu einem Fehler, wenn die Autorisierung mit gemeinsam verwendeten Schlüsseln für das Speicherkonto nicht zulässig ist. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
@@ -213,6 +212,13 @@ Wenn der Zugriff mit gemeinsam verwendeten Schlüsseln für das Speicherkonto ni
 | Dienst-SAS | Gemeinsam verwendeter Schlüssel | Die Anforderung wird für alle Azure Storage-Dienste verweigert. |
 | Konto-SAS | Gemeinsam verwendeter Schlüssel | Die Anforderung wird für alle Azure Storage-Dienste verweigert. |
 
+Azure-Metriken und die Protokollierung in Azure Monitor unterscheiden nicht zwischen verschiedenen Typen von Shared Access Signatures. Der Filter **SAS** in Azure-Metrik-Explorer und das Feld **SAS** bei der Azure Storage-Protokollierung in Azure Monitor melden alle Anforderungen, die mit einem beliebigen SAS-Typ autorisiert wurden. Die verschiedenen Typen von Shared Access Signatures werden jedoch unterschiedlich autorisiert und verhalten sich unterschiedlich, wenn der Zugriff mit gemeinsam verwendeten Schlüsseln nicht zulässig ist:
+
+- Ein SAS-Token für einen Dienst oder ein Konto wird mit einem gemeinsam verwendeten Schlüssel autorisiert und ist daher für eine Anforderung an Blob Storage nicht zulässig, wenn die **AllowSharedKeyAccess**-Eigenschaft auf **FALSE** festgelegt ist.
+- Eine SAS zur Benutzerdelegierung wird mit Azure AD autorisiert und ist daher für eine Anforderung an Blob Storage zulässig, wenn die **AllowSharedKeyAccess**-Eigenschaft auf **FALSE** festgelegt ist.
+
+Wenn Sie den Datenverkehr zu Ihrem Speicherkonto auswerten, sollten Sie beachten, dass Metriken und Protokolle (wie in [Ermitteln der von Clientanwendungen verwendeten Autorisierung](#detect-the-type-of-authorization-used-by-client-applications) beschrieben) auch Anforderungen enthalten können, die mit einer Benutzerdelegierungs-SAS erfolgt sind.
+
 Weitere Informationen zu SAS (Shared Access Signatures) finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](storage-sas-overview.md).
 
 ## <a name="consider-compatibility-with-other-azure-tools-and-services"></a>Kompatibilität mit anderen Azure-Tools und -Diensten
@@ -238,21 +244,6 @@ Azure Storage unterstützt die Azure AD-Autorisierung nur bei Anforderungen an 
 Microsoft empfiehlt, entweder alle Daten aus Azure Files oder Table Storage zu einem separaten Speicherkonto zu migrieren, bevor Sie den Zugriff auf das Konto über gemeinsam verwendete Schlüssel verhindern, oder diese Einstellung nicht auf Speicherkonten anzuwenden, die Azure Files- oder Table Storage-Workloads unterstützen.
 
 Das Verhindern des Zugriffs auf ein Speicherkonto mit gemeinsam verwendeten Schlüsseln wirkt sich nicht auf SMB-Verbindungen mit Azure Files aus.
-
-## <a name="about-the-preview"></a>Informationen zur Vorschau
-
-Die Vorschauversion für das Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln ist in der öffentlichen Azure-Cloud verfügbar. Sie ist nur für Speicherkonten verfügbar, die das Azure Resource Manager-Bereitstellungsmodell verwenden. Informationen dazu, welche Speicherkonten das Azure Resource Manager-Bereitstellungsmodell verwenden, finden Sie unter [Typen von Speicherkonten](storage-account-overview.md#types-of-storage-accounts).
-
-Für die Vorschau gelten einige Einschränkungen, die in den folgenden Abschnitten beschrieben werden.
-
-### <a name="metrics-and-logging-report-all-requests-made-with-a-sas-regardless-of-how-they-are-authorized"></a>Metriken und Protokolle melden alle Anforderungen, die mit einer SAS durchgeführt wurden, unabhängig von ihrer Autorisierung.
-
-Azure-Metriken und die Protokollierung in Azure Monitor unterscheiden in der Vorschauversion nicht zwischen den verschiedenen Typen von Shared Access Signatures. Der Filter **SAS** in Azure-Metrik-Explorer und das Feld **SAS** bei der Azure Storage-Protokollierung in Azure Monitor melden alle Anforderungen, die mit einem beliebigen SAS-Typ autorisiert wurden. Die verschiedenen Typen von Shared Access Signatures werden jedoch unterschiedlich autorisiert und verhalten sich unterschiedlich, wenn der Zugriff mit gemeinsam verwendeten Schlüsseln nicht zulässig ist:
-
-- Ein SAS-Token für einen Dienst oder ein Konto wird mit einem gemeinsam verwendeten Schlüssel autorisiert und ist daher für eine Anforderung an Blob Storage nicht zulässig, wenn die **AllowSharedKeyAccess**-Eigenschaft auf **FALSE** festgelegt ist.
-- Eine SAS zur Benutzerdelegierung wird mit Azure AD autorisiert und ist daher für eine Anforderung an Blob Storage zulässig, wenn die **AllowSharedKeyAccess**-Eigenschaft auf **FALSE** festgelegt ist.
-
-Wenn Sie den Datenverkehr zu Ihrem Speicherkonto auswerten, sollten Sie beachten, dass Metriken und Protokolle (wie in [Ermitteln der von Clientanwendungen verwendeten Autorisierung](#detect-the-type-of-authorization-used-by-client-applications) beschrieben) auch Anforderungen enthalten können, die mit einer Benutzerdelegierungs-SAS erfolgt sind. Weitere Informationen zur Reaktion von Azure Storage auf eine SAS, wenn die **AllowSharedKeyAccess**-Eigenschaft auf **FALSE** festgelegt ist, finden Sie unter [Grundlegendes zu den Auswirkungen der Aufhebung gemeinsam verwendeter Schlüssel auf SAS-Token](#understand-how-disallowing-shared-key-affects-sas-tokens).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

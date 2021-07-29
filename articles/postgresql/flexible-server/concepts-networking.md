@@ -5,13 +5,13 @@ author: niklarin
 ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/22/2021
-ms.openlocfilehash: 5b832ca7f1b5fb8a6b0044ca299c75f01a2d0f32
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 06/04/2021
+ms.openlocfilehash: fbc9a4c3d315588c069a144cbcfd96cfc2d0b892
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987042"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559930"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Übersicht über Netzwerkkonzepte – Azure Database for PostgreSQL – Flexible Server
 
@@ -46,6 +46,8 @@ Die folgenden Eigenschaften gelten unabhängig davon, ob Sie den privaten oder d
 * Der Server verfügt über einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN). Für die Hostnamenseigenschaft in Verbindungszeichenfolgen wird empfohlen, den FQDN anstelle einer IP-Adresse zu verwenden.
 * Über beide Optionen wird der Zugriff auf Serverebene, nicht auf Datenbank- oder auf Tabellenebene gesteuert. Der Zugriff auf Datenbanken, Tabellen und andere Objekte wird mithilfe der Rolleneigenschaften in PostgreSQL gesteuert.
 
+>[!NOTE]
+> Da Azure Database for PostgreSQL ein verwalteter Datenbankdienst ist, erhalten Benutzer keinen Host- oder Betriebssystemzugriff, um Konfigurationsdateien wie `pg_hba.conf` anzuzeigen oder zu ändern. Der Inhalt der Datei wird abhängig den Netzwerkeinstellungen automatisch aktualisiert.
 
 ## <a name="private-access-vnet-integration"></a>Privater Zugriff (VNET-Integration)
 Der private Zugriff mit der Integration über ein virtuelles Netzwerk (VNET) gewährleistet eine private und sichere Kommunikation für Ihre PostgreSQL Flexible Server-Instanz.
@@ -68,24 +70,31 @@ Nachstehend werden einige Konzepte erläutert, die Sie kennen sollten, wenn Sie 
 
    Ihre PostgreSQL Flexible Server-Instanz muss sich in einem Subnetz befinden, das eigens für PostgreSQL Flexible Server-Instanzen eingeteilt (**delegiert**) wurde. Diese Delegierung bedeutet, dass dieses Subnetz nur von Azure Database for PostgreSQL Flexible Server-Instanzen genutzt werden kann. Im delegierten Subnetz können sich keine anderen Azure-Ressourcentypen befinden. Sie können ein Subnetz delegieren, indem Sie „Microsoft.DBforPostgreSQL/flexibleServers“ als Delegierungseigenschaft festlegen.
 
+   > [!IMPORTANT]
+   > Die Namen einschließlich `AzureFirewallSubnet`, `AzureFirewallManagementSubnet`, `AzureBastionSubnet` und `GatewaySubnet` sind reservierte Namen in Azure. Verwenden Sie diese nicht als Subnetznamen.
+
 * **Netzwerksicherheitsgruppen (NSG):** Mit Sicherheitsregeln in Netzwerksicherheitsgruppen können Sie den Typ des ein- und ausgehenden Netzwerkdatenverkehrs von Subnetzen virtueller Netzwerke und Netzwerkschnittstellen filtern. Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md).
 
-* **Integration von privatem DNS:** Mit der Integration privater Azure-DNS-Zonen können Sie das private DNS innerhalb des aktuellen VNet oder eines beliebigen Peer-VNet in derselben Region auflösen, in dem die private DNS-Zone verknüpft ist. Weitere Informationen finden Sie in der [Dokumentation zu privaten DNS-Zonen](https://docs.microsoft.com/azure/dns/private-dns-overview).
+* **Integration von privatem DNS-Zonen**: Mit der Integration privater Azure-DNS-Zonen können Sie das private DNS innerhalb des aktuellen VNet oder eines beliebigen Peer-VNet in derselben Region auflösen, in dem die private DNS-Zone verknüpft ist. Weitere Informationen finden Sie in der [Dokumentation zu privaten DNS-Zonen](../../dns/private-dns-overview.md).
 
 Unter den folgenden Links erfahren Sie, wie Sie einen flexiblen Server mit privatem Zugriff (VNET-Integration) im [Azure-Portal](how-to-manage-virtual-network-portal.md) oder über die [Azure CLI](how-to-manage-virtual-network-cli.md) erstellen.
 
-> [!NOTE]
-> Wenn Sie den benutzerdefinierten DNS-Server verwenden, müssen Sie eine DNS-Weiterleitung verwenden, um den FQDN von Azure Database for PostgreSQL – Flexible Server aufzulösen. Weitere Informationen finden Sie unter [Namensauflösung mithilfe eines eigenen DNS-Servers](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
+### <a name="integration-with-custom-dns-server"></a>Integration mit einem benutzerdefinierten DNS-Server
+
+Wenn Sie den benutzerdefinierten DNS-Server verwenden, müssen Sie eine DNS-Weiterleitung verwenden, um den FQDN von Azure Database for PostgreSQL – Flexible Server aufzulösen. Die IP-Adresse der Weiterleitung sollte [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md) sein. Der benutzerdefinierte DNS-Server sollte sich innerhalb des VNet befinden oder über die DNS-Servereinstellung des VNet erreichbar sein. Weitere Informationen finden Sie unter [Namensauflösung mithilfe eines eigenen DNS-Servers](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
 ### <a name="private-dns-zone-and-vnet-peering"></a>Private DNS-Zone und VNet-Peering
 
 Die Einstellungen für private DNS-Zonen und VNet-Peering sind voneinander unabhängig.
 
-* Standardmäßig wird eine neue private DNS-Zone automatisch pro Server unter Verwendung des angegebenen Servernamens bereitgestellt. Wenn Sie jedoch Ihre eigene private DNS-Zone für die Verwendung mit dem flexiblen Server einrichten möchten, lesen Sie die [Übersicht über privates DNS](https://docs.microsoft.com/azure/dns/private-dns-overview).
-* Wenn Sie von einem Client, der in einem anderen VNet bereitgestellt wurde, eine Verbindung mit dem flexiblen Server herstellen möchten, müssen Sie die private DNS-Zone mit dem VNet verknüpfen. Weitere Informationen finden Sie in der [Dokumentation zum Verknüpfen des virtuellen Netzwerks](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network).
+* Standardmäßig wird eine neue private DNS-Zone automatisch pro Server unter Verwendung des angegebenen Servernamens bereitgestellt. Wenn Sie jedoch Ihre eigene private DNS-Zone für die Verwendung mit dem flexiblen Server einrichten möchten, lesen Sie die [Übersicht über privates DNS](../../dns/private-dns-overview.md).
+* Wenn Sie von einem Client, der in einem anderen VNet bereitgestellt wurde, eine Verbindung mit dem flexiblen Server herstellen möchten, müssen Sie die private DNS-Zone mit dem VNet verknüpfen. Weitere Informationen finden Sie in der [Dokumentation zum Verknüpfen des virtuellen Netzwerks](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network).
 
+> [!NOTE]
+> Private DNS-Zonennamen, die mit `postgres.database.azure.com` enden, können nur verknüpft werden.
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Nicht unterstützte virtuelle Netzwerkszenarios
+
 * Öffentlicher Endpunkt (oder öffentliche IP-Adresse oder DNS): Ein flexibler Server, der in einem virtuellen Netzwerk bereitgestellt wird, kann keinen öffentlichen Endpunkt haben.
 * Nachdem der flexible Server in einem virtuellen Netzwerk und Subnetz bereitgestellt wurde, können Sie ihn in kein anderes virtuelles Netzwerk oder Subnetz verschieben. Auch das virtuelle Netzwerk kann in keine andere Ressourcengruppe oder kein anderes Abonnement verschoben werden.
 * Die Subnetzgröße (Adressräume) kann nicht erhöht werden, sobald Ressourcen im Subnetz vorhanden sind.
@@ -93,6 +102,7 @@ Die Einstellungen für private DNS-Zonen und VNet-Peering sind voneinander unabh
 
 
 ## <a name="public-access-allowed-ip-addresses"></a>Öffentlicher Zugriff (zugelassene IP-Adressen)
+
 Die öffentliche Zugriffsmethode weist u. a. folgende Eigenschaften auf:
 * Nur die IP-Adressen, die Sie zulassen, dürfen auf Ihre PostgreSQL Flexible Server-Instanz zugreifen. Standardmäßig sind keine IP-Adressen zugelassen. Sie können IP-Adressen während der Servererstellung oder später hinzufügen.
 * Ihr PostgreSQL-Server verfügt über einen öffentlich auflösbaren DNS-Namen.

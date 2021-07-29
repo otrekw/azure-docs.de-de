@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 332be773bca07acf178bd0754d3dad12f4879f51
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 3d7ba65e6965ff488ead6094376bea7142eb5ec9
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371134"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590592"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -27,6 +27,28 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
 ### <a name="announcing-the-20-cli-preview-for-azure-machine-learning"></a>Ankündigung der 2.0 CLI (Vorschauversion) für Azure Machine Learning
 
 Die Erweiterung `ml` für die Azure CLI ist die Benutzeroberfläche der nächsten Generation für Azure Machine Learning. Hiermit können Sie Modelle über die Befehlszeile trainieren und bereitstellen und Features nutzen, mit denen beim Nachverfolgen des Modelllebenszyklus das Hoch- und Aufskalieren von Data Science-Einheiten beschleunigt werden kann. [Führen Sie die Installation durch und die ersten Schritte aus](how-to-configure-cli.md).
+
+## <a name="2021-06-07"></a>2021-06-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1300"></a>Azure Machine Learning SDK für Python 1.30.0
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-core**
+    + Beschränken Sie die Abhängigkeit `ruamel-yaml` auf Versionen vor 0.17.5, da in 0.17.5 ein Breaking Change veröffentlicht wurde.
+    + Die `aml_k8s_config`-Eigenschaft wird durch die Parameter `namespace`, `default_instance_type` und `instance_types` für die Anfügung `KubernetesCompute` ersetzt.
+    + Die Schlüssel für die Arbeitsbereichssynchronisierung wurden in einen zeitintensiven Vorgang geändert.
+  + **azureml-automl-runtime**
+    + Es wurden Probleme behoben, bei denen bei Ausführungen mit Big Data mit möglicherweise der Fehler `Elements of y_test cannot be NaN` auftreten kann.
+  + **azureml-mlflow**
+    + Fehlerkorrektur des MLFlow-Bereitstellungs-Plug-Ins für Modelle ohne Signatur.
+  + **azureml-pipeline-steps**
+    + ParallelRunConfig: Dokumentation für process_count_per_node wurde aktualisiert.
+  + **azureml-train-automl-runtime**
+    + Unterstützung für benutzerdefinierte Quantilen während MM-Rückschlüssen
+    + Unterstützung für forecast_quantiles während Batchrückschlüssen.
+  + **azureml-contrib-automl-pipeline-steps**
+    + Unterstützung für benutzerdefinierte Quantilen während MM-Rückschlüssen
+    + Unterstützung für forecast_quantiles während Batchrückschlüssen.
+
 
 ### <a name="azure-machine-learning-sdk-for-python-v1290"></a>Azure Machine Learning SDK für Python v1.29.0
 + **Fehlerbehebungen und Verbesserungen**

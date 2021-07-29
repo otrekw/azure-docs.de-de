@@ -2,14 +2,14 @@
 title: Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Kubernetes Service (AKS).
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 05/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 00ca0579ee47ae38e40e966c818acfb7b48f6c5f
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 8feda70f346347a3559e2696d2912d2a976b0a63
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015589"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890303"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -49,6 +49,12 @@ Azure wendet automatisch Sicherheitspatches auf die Linux-Knoten in Ihrem Cluste
 ### <a name="windows-server-nodes"></a>Windows Server-Knoten
 
 Für Windows Server-Knoten werden die neuesten Updates von Windows Update nicht automatisch ausgeführt und angewendet. Sie sollten in regelmäßigen Abständen ein Upgrade für den Cluster und die Windows Server-Knotenpools in Ihrem AKS-Cluster durchführen, passend zum Windows Update-Freigabezyklus und Ihrem eigenen Validierungsprozess. Während dieses Upgrades werden Knoten erstellt, die das neueste Windows Server-Image und die neuesten Windows Server-Patches ausführen und die älteren Knoten entfernen. Weitere Informationen zu diesem Prozess finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
+
+### <a name="are-there-additional-security-threats-relevant-to-aks-that-customers-should-be-aware-of"></a>Gibt es zusätzliche für AKS relevante Sicherheitsbedrohungen, die Kunden beachten sollten?
+
+Microsoft bietet Anleitungen zu zusätzlichen Aktionen, mit denen Sie Ihre Workloads durch Dienste wie [Azure Security Center](https://azure.microsoft.com/services/security-center/) schützen können. Im Folgenden finden Sie eine Liste von zusätzlichen Sicherheitsbedrohungen im Zusammenhang mit AKS und Kubernetes, die Kunden beachten sollten:
+
+* [Neue umfangreiche Kampagne für Kubeflow](https://techcommunity.microsoft.com/t5/azure-security-center/new-large-scale-campaign-targets-kubeflow/ba-p/2425750) – 8. Juni 2021
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Warum werden zwei Ressourcengruppen mit AKS erstellt?
 
@@ -199,7 +205,7 @@ AKS verfügt zwar über Resilienzmechanismen, um eine solche Konfiguration zu ü
 
 ## <a name="can-i-use-custom-vm-extensions"></a>Kann ich benutzerdefinierte VM-Erweiterungen verwenden?
 
-Der Log Analytics-Agent wird unterstützt, da es sich hierbei um eine von Microsoft verwaltete Erweiterung handelt. Andernfalls trifft dies nicht zu, AKS ist ein verwalteter Dienst. Die Bearbeitung der IaaS-Ressourcen wird nicht unterstützt. Nutzen Sie die Kubernetes-APIs und -Mechanismen zum Installieren benutzerdefinierter Komponenten. Verwenden Sie beispielsweise DaemonSets, um erforderliche Komponenten zu installieren.
+Nein. AKS ist ein verwalteter Dienst, und die Bearbeitung der IaaS-Ressourcen wird nicht unterstützt. Nutzen Sie die Kubernetes-APIs und -Mechanismen zum Installieren benutzerdefinierter Komponenten. Verwenden Sie beispielsweise DaemonSets, um erforderliche Komponenten zu installieren.
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Speichert AKS Kundendaten außerhalb der Region des Clusters?
 
@@ -277,6 +283,9 @@ spec:
 
 Das Problem wurde mit Kubernetes v1.20 behoben. Weitere Informationen finden Sie unter [Kubernetes 1.20: Präzise Steuerung der Änderungen von Volumeberechtigungen](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/).
 
+## <a name="can-i-use-fips-cryptographic-libraries-with-deployments-on-aks"></a>Kann ich kryptografische FIPS-Bibliotheken bei Bereitstellungen in AKS verwenden?
+
+FIPS-fähige Knoten stehen zurzeit in der Vorschauversion für Linux-basierte Knotenpools zur Verfügung. Weitere Informationen finden Sie unter [Hinzufügen eines FIPS-fähigen Knotenpools (Vorschau)](use-multiple-node-pools.md#add-a-fips-enabled-node-pool-preview).
 
 <!-- LINKS - internal -->
 

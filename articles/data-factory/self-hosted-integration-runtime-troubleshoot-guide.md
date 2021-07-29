@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie eine Problembehandlung im Fall von Probl
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/25/2021
+ms.date: 05/31/2021
 ms.author: lle
-ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7abdd532e20a2514fcf96d97973a8fbfdd87d0df
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376461"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796270"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
@@ -289,6 +289,61 @@ Die einzige Möglichkeit zur Vermeidung dieses Problems besteht darin sicherzust
     ```
     certutil -importpfx FILENAME.pfx AT_KEYEXCHANGE
     ```
+
+### <a name="self-hosted-integration-runtime-nodes-out-of-the-sync-issue"></a>Synchronisierungsproblem bei Knoten der selbstgehosteten Integration Runtime
+
+#### <a name="symptoms"></a>Symptome
+
+Knoten der selbstgehosteten Integration Runtime versuchen, die Anmeldeinformationen knotenübergreifend zu synchronisieren. Der Prozess bleibt jedoch hängen, und nach einer Weile wird die folgende Fehlermeldung angezeigt:
+
+„Der Knoten der Integration Runtime (selbstgehostet) versucht, die Anmeldeinformationen knotenübergreifend zu synchronisieren. Dieser Vorgang kann einige Minuten dauern.“
+
+>[!Note]
+>Wenn dieser Fehler länger als 10 Minuten dauert, überprüfen Sie die Konnektivität mit dem Verteilerknoten.
+
+#### <a name="cause"></a>Ursache
+
+Der Grund dafür ist, dass die Workerknoten keinen Zugriff auf die privaten Schlüssel haben. Dies kann anhand der folgenden Protokolle der selbstgehosteten Integration Runtime bestätigt werden:
+
+`[14]0460.3404::05/07/21-00:23:32.2107988 [System] A fatal error occurred when attempting to access the TLS server credential private key. The error code returned from the cryptographic module is 0x8009030D. The internal error state is 10001.`
+
+Wenn Sie die Dienstprinzipalauthentifizierung im verknüpften ADF-Dienst verwenden, tritt kein Problem beim Synchronisierungsprozess auf. Sobald Sie jedoch den Authentifizierungstyp in den Kontoschlüssel ändern, beginnt das Synchronisierungsproblem. Dies liegt daran, dass der selbstgehostete Integration Runtime-Dienst unter einem Dienstkonto (NT SERVICE\DIAHostService) ausgeführt wird und den Berechtigungen für den privaten Schlüssel hinzugefügt werden muss.
+ 
+
+#### <a name="resolution"></a>Lösung
+
+Um dieses Problem zu beheben, müssen Sie den Berechtigungen für den privaten Schlüssel das Dienstkonto für die selbstgehostete Integration Runtime (NT SERVICE\DIAHostService) hinzufügen. Sie können die folgenden Schritte ausführen:
+
+1. Öffnen Sie mit dem Befehl „Ausführen“ die Microsoft Management Console (MMC).
+
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/management-console-run-command.png" alt-text="Screenshot: Befehl „Ausführen“ für MMC":::
+
+1. Führen Sie im MMC-Bereich die folgenden Schritte aus:
+
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-1.png" alt-text="Screenshot des zweiten Schritts zum Hinzufügen des Dienstkontos für die selbstgehostete IR zu den Berechtigungen für den privaten Schlüssel." lightbox="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-1-expanded.png":::
+
+    1. Wählen Sie **Datei** aus.
+    1. Wählen Sie im Dropdownmenü den Eintrag **Snap-In hinzufügen/entfernen** aus.
+    1. Wählen Sie im Bereich „Verfügbare Snap-Ins“ die Option **Zertifikate** aus.
+    1. Wählen Sie **Hinzufügen**.
+    1. Wählen Sie im Popupbereich „Zertifikat-Snap-In“ die Option **Computerkonto** aus.
+    1. Wählen Sie **Weiter** aus.
+    1. Wählen Sie im Bereich „Computer auswählen“ die Option **Lokaler Computer: (Computer, auf dem diese Konsole ausgeführt wird)** aus.
+    1. Wählen Sie **Fertig stellen** aus.
+    1. Klicken Sie im Bereich „Snap-Ins hinzufügen oder entfernen“ auf **OK**.
+
+1. Führen Sie dann im MMC-Bereich die folgenden Schritten aus:
+
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-2.png" alt-text="Screenshot des dritten Schritts zum Hinzufügen des Dienstkontos für die selbstgehostete IR zu den Berechtigungen für den privaten Schlüssel." lightbox="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-2-expanded.png":::
+
+    1. Wählen Sie in der linken Ordnerliste die Optionen **Konsolenstamm -> Zertifikate (Lokaler Computer) -> Persönlich -> Zertifikate** aus.
+    1. Klicken Sie mit der rechten Maustaste auf **Microsoft Intune Beta MDM**.
+    1. Wählen Sie in der Dropdownliste den Eintrag **Alle Aufgaben** aus.
+    1. Wählen Sie **Private Schlüssel verwalten** aus.
+    1. Wählen Sie unter „Gruppen- oder Benutzernamen“ die Option **Hinzufügen** aus.
+    1. Wählen Sie **NT SERVICE\DIAHostService** aus, um dem Konto Vollzugriff auf dieses Zertifikat zu gewähren. Übernehmen und speichern Sie die Änderung. 
+    1. Wählen Sie **Namen überprüfen** aus, und klicken Sie dann auf **OK**.
+    1. Wählen Sie im Bereich „Berechtigungen“ die Option **Übernehmen** aus, und klicken Sie dann auf **OK**.
 
 ## <a name="self-hosted-ir-setup"></a>Einrichten der selbstgehosteten IR
 
@@ -778,18 +833,6 @@ Wir haben eine neues, von DigiCert signiertes SSL-Zertifikat eingeführt. Überp
 
 Wenn sich das Zertifikat nicht unter den vertrauenswürdigen Stammzertifizierungsstellen befindet, können Sie es [hier herunterladen](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt ). 
 
-
-## <a name="self-hosted-ir-sharing"></a>Freigabe der selbstgehosteten Integration Runtime
-
-### <a name="sharing-a-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>Die Freigabe der selbstgehosteten Integration Runtime von einem anderen Mandanten wird nicht unterstützt. 
-
-#### <a name="symptoms"></a>Symptome
-
-Beim Versuch, die selbstgehostete Integration Runtime über die Azure Data Factory-Benutzeroberfläche übergreifend für Data Factorys in anderen Mandanten freizugeben, werden Ihnen eventuell andere Data Factorys (in verschiedenen Mandanten) angezeigt, und der Versuch schlägt fehl.
-
-#### <a name="cause"></a>Ursache
-
-Die selbstgehostete Integration Runtime kann nicht mandantenübergreifend freigegeben werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
