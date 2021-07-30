@@ -2,19 +2,19 @@
 title: Kopieren eines Blobs mit Azure Storage-APIs
 description: Erfahren Sie, wie Sie ein Blob mithilfe der Azure Storage-Clientbibliotheken kopieren.
 services: storage
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: bfd471a880e167bb2cc92bc87925b4aac91f66af
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 64bffb127c7d3fbcf56619ea17b23fc0a58d6a37
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278472"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652876"
 ---
 # <a name="copy-a-blob-with-azure-storage-client-libraries"></a>Kopieren eines Blobs mit Azure Storage-Clientbibliotheken
 
@@ -42,7 +42,7 @@ Ein Kopiervorgang kann eine der folgenden Formen haben:
 
 ## <a name="copy-a-blob"></a>Kopieren eines Blobs
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Zum Kopieren eines Blobs rufen Sie eine der folgenden Methoden auf:
 
@@ -55,7 +55,7 @@ Im folgenden Codebeispiel wird ein [BlobClient](/dotnet/api/azure.storage.blobs.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_CopyBlob":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Zum Kopieren eines Blobs rufen Sie eine der folgenden Methoden auf:
 
@@ -123,7 +123,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 }
 ```
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Um ein Blob zu kopieren, rufen Sie die [start_copy_from_url](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#start-copy-from-url-source-url--metadata-none--incremental-copy-false----kwargs-)-Methode auf. Die `start_copy_from_url`-Methode gibt ein Wörterbuch zurück, das Informationen über den Kopiervorgang enthält.
 
@@ -137,7 +137,7 @@ Im folgenden Codebeispiel wird ein [BlobClient](/azure/developer/python/sdk/stor
 
 Ein Abbrechen eines Kopiervorgangs führt zu einem Zielblob der Länge null. Die Metadaten für das Zielblob weisen jedoch die neuen Werte auf, die aus dem Quellblob kopiert oder explizit während des Kopiervorgangs festgelegt wurden. Zur Beibehaltung der ursprünglichen, vor dem Kopiervorgang vorliegenden Metadaten erstellen Sie eine Momentaufnahme des Zielblobs, bevor Sie eine der Kopiermethoden aufrufen.
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Überprüfen Sie die [BlobProperties.CopyStatus](/dotnet/api/azure.storage.blobs.models.blobproperties.copystatus)-Eigenschaft im Zielblob, um den Status des Kopiervorgangs zu erfahren. Das endgültige Blob wird bei Abschluss des Kopiervorgangs committet.
 
@@ -147,7 +147,7 @@ Mit den Methoden [AbortCopyFromUri](/dotnet/api/azure.storage.blobs.specialized.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_StopBlobCopy":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Überprüfen Sie die [CopyState.Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status)-Eigenschaft im Zielblob, um den Status des Kopiervorgangs zu erfahren. Das endgültige Blob wird bei Abschluss des Kopiervorgangs committet.
 
@@ -167,7 +167,7 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
 }
 ```
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 Überprüfen Sie den Eintrag „status“ im [CopyProperties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.copyproperties)-Wörterbuch, das von der [get_blob_properties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#get-blob-properties---kwargs-)-Methode zurückgegeben wurde, um den Status des Kopiervorgangs zu erfahren. Das endgültige Blob wird bei Abschluss des Kopiervorgangs committet.
 

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e4f31c560fe3dd91689b361ed520e466fd52da1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a16e571478428ef1eb068236369b6e9af9f19e1
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85360009"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853692"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Ändern des Kennworts für das Azure AD-Connector-Konto
 Das Azure AD-Connector-Konto sollte keine Verwaltung erfordern. Wenn Sie die Anmeldeinformationen des Kontos zurückzusetzen müssen, finden Sie die notwendigen Informationen in diesem Thema. Dies ist beispielsweise der Fall, wenn ein globaler Administrator versehentlich über PowerShell das Kennwort des Kontos zurückgesetzt hat.
@@ -30,12 +30,13 @@ Das Azure AD-Connector-Konto sollte keine Verwaltung erfordern. Wenn Sie die Anm
 ## <a name="reset-the-credentials"></a>Zurücksetzen der Anmeldeinformationen
 Kann das Azure AD-Connector-Konto aufgrund von Authentifizierungsproblemen keine Verbindung mit Azure AD herstellen, kann das Kennwort zurückgesetzt werden.
 
-1. Melden Sie sich beim Azure AD Connect-Synchronisierungsserver an, und starten Sie PowerShell.
-2. Führen Sie `Add-ADSyncAADServiceAccount` aus.
-   ![PowerShell-Cmdlet addadsyncaadserviceaccount](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
-3. Stellen Sie Anmeldeinformationen eines globalen Azure AD-Administrators bereit.
+1. Melden Sie sich beim Azure AD Connect-Synchronisierungsserver an, und öffnen Sie PowerShell.
+2. Führen Sie `$credential = Get-Credential` aus, um die Anmeldeinformationen des globalen Azure AD-Administrators bereitzustellen.
+3. Führen Sie das Cmdlet `Add-ADSyncAADServiceAccount -AADCredential $credential` aus.
 
-Dieses Cmdlet setzt das Kennwort für das Dienstkonto zurück und aktualisiert es sowohl in Azure AD als auch im Synchronisierungsmodul.
+   Wenn das Cmdlet erfolgreich ist, wird die PowerShell-Eingabeaufforderung angezeigt. 
+   
+Das Cmdlet setzt das Kennwort für das Dienstkonto zurück und aktualisiert es sowohl in Azure AD als auch im Synchronisierungsmodul.
 
 ## <a name="known-issues-these-steps-can-solve"></a>Bekannte Probleme, die sich mit diesen Schritten beheben lassen
 Dieser Abschnitt enthält eine Liste mit Fehlern, die von Kunden gemeldet und durch das Zurücksetzen der Anmeldeinformationen für das Azure AD-Connector-Konto behoben wurden.

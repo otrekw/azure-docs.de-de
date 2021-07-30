@@ -8,18 +8,20 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/30/2021
 ms.author: rishjai
-ms.openlocfilehash: 569687a6efca34e631b096b448d988c18b21a6c9
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 138dd9d576638cda52ca62e45cdb353920e9b00b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326913"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968552"
 ---
 # <a name="deprecation-of-ip-config-parameters-for-the-cmdlet-new-azrecoveryservicesasrvmnicconfig"></a>Einstellung der Unterstützung von IPConfig-Parametern für das Cmdlet „New-AzRecoveryServicesAsrVMNicConfig“
 
 In diesem Artikel werden die Einstellung, die entsprechenden Auswirkungen und die für die Kunden verfügbaren alternativen Optionen für das folgende Szenario beschrieben:
 
-Konfigurieren der Konfigurationseinstellungen für die primäre IP-Adresse für das Failover oder Testfailover Dieses Cmdlet wirkt sich auf alle Kunden des Szenarios „Notfallwiederherstellung von Azure zu Azure“ aus, die das Cmdlet „New-AzRecoveryServicesAsrVMNicConfig“ verwenden.
+Konfigurieren der Konfigurationseinstellungen für die primäre IP-Adresse für das Failover oder Testfailover 
+
+Dieses Cmdlet wirkt sich auf alle Kunden des Szenarios „Notfallwiederherstellung von Azure zu Azure“ aus, die das Cmdlet „New-AzRecoveryServicesAsrVMNicConfig“ in Version _Az Powershell 5.9.0 und höher_ verwenden.
 
 > [!IMPORTANT]
 > Den Kunden wird empfohlen, dass sie schnellstmöglich die erforderlichen Wartungsschritte ausführen, um jegliche Unterbrechung in ihrer Umgebung zu vermeiden. 
@@ -44,7 +46,7 @@ Diese Parameter werden vom Cmdlet nicht mehr akzeptiert.
  
 ## <a name="alternatives"></a>Alternativen 
 
-Als Alternative wird das neue Cmdlet [New-AzRecoveryServicesAsrVMNicIPConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrvmnicipconfig) zum Konfigurieren von IP-Konfigurationseinstellungen für Failover/Testfailover eingeführt. 
+Als Alternative wird das neue Cmdlet [New-AzRecoveryServicesAsrVMNicIPConfig](/powershell/module/az.recoveryservices/new-azrecoveryservicesasrvmnicipconfig) zum Konfigurieren von IP-Konfigurationseinstellungen für Failover/Testfailover eingeführt. 
 
 
 ## <a name="remediation-steps"></a>Schritte zur Bereinigung

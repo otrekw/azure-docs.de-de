@@ -8,29 +8,26 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 06/03/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 257ba16cf015705b8f6da264d9c25f28cef2ebb1
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: eb700a4432082f75cf1ddf1ce007cee801597948
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443439"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409449"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Hinzufügen von Benutzerattributen und Anpassen der Benutzereingabe in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-::: zone pivot="b2c-custom-policy"
-
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-::: zone-end
-
 In diesem Artikel erfahren Sie, wie Sie während der User Journey für die Registrierung in Azure Active Directory B2C (Azure AD B2C) ein neues Attribut sammeln. Sie erhalten den Ort des Benutzers, konfigurieren diesen als Dropdownoption und legen fest, ob er bereitgestellt werden muss.
+
+> [!IMPORTANT]
+> In diesem Beispiel wird der integrierte Anspruch „City“ verwendet. Stattdessen können Sie eines der unterstützten [integrierten Azure AD B2C-Attribute](user-profile-attributes.md) oder ein benutzerdefiniertes Attribut wählen. Um ein benutzerdefiniertes Attribut zu verwenden, [aktivieren Sie benutzerdefinierte Attribute](user-flow-custom-attributes.md). Um ein anderes integriertes oder benutzerdefiniertes Attribut zu verwenden, ersetzen Sie „city“ durch das Attribut Ihrer Wahl, z. B. das integrierte Attribut *jobTitle* oder ein benutzerdefiniertes Attribut wie *extension_loyaltyId*.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -89,7 +86,7 @@ So geben Sie eine Liste von Werten für das City-Attribut an
       "ElementType": "ClaimType",
       "ElementId": "city",
       "TargetCollection": "Restriction",
-      "Override": false,
+      "Override": true,
       "Items": [
         {
           "Name": "Berlin",
@@ -129,10 +126,9 @@ So geben Sie eine Liste von Werten für das City-Attribut an
 
 ::: zone pivot="b2c-custom-policy"
 
-> [!NOTE]
-> In diesem Beispiel wird der integrierte Anspruch „City“ verwendet. Stattdessen können Sie eines der unterstützten [integrierten Azure AD B2C-Attribute](user-profile-attributes.md) oder ein benutzerdefiniertes Attribut wählen. Um ein benutzerdefiniertes Attribut zu verwenden, [aktivieren Sie benutzerdefinierte Attribute](user-flow-custom-attributes.md). Um ein anderes integriertes oder benutzerdefiniertes Attribut zu verwenden, ersetzen Sie „city“ durch das Attribut Ihrer Wahl, z. B. das integrierte Attribut *jobTitle* oder ein benutzerdefiniertes Attribut wie *extension_loyaltyId*.  
+## <a name="overview"></a>Übersicht
 
-Sie können die anfänglichen Daten von Ihren Benutzern mithilfe der User Journey für die Registrierung bzw. Anmeldung sammeln. Weitere Ansprüche können später mit einer User Journey für die Profilbearbeitung gesammelt werden. Jedes Mal, wenn Azure AD B2C auf interaktive Weise Informationen direkt vom Benutzer sammelt, verwendet das Identity Experience Framework diese als [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md). In diesem Beispiel führen Sie folgende Schritte aus:
+Sie können die anfänglichen Daten von Ihren Benutzern mithilfe der User Journey für die Registrierung bzw. Anmeldung sammeln. Weitere Ansprüche können später mit einer User Journey für die Profilbearbeitung gesammelt werden. Jedes Mal, wenn Azure AD B2C auf interaktive Weise Informationen direkt vom Benutzer sammelt, wird das [selbstbestätigte technische Profil](self-asserted-technical-profile.md) verwendet. In diesem Beispiel führen Sie folgende Schritte aus:
 
 1. Sie definieren den Anspruch „Ort“. 
 1. Sie fragen den Benutzer nach seinem Ort.
@@ -164,14 +160,24 @@ Ein Anspruch stellt eine temporäre Speicherung von Daten während der Ausführu
       <DataType>string</DataType>
       <UserInputType>DropdownSingleSelect</UserInputType>
       <Restriction>
-        <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-        <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-        <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
+        <Enumeration Text="Berlin" Value="berlin" />
+        <Enumeration Text="London" Value="bondon" />
+        <Enumeration Text="Seattle" Value="seattle" />
       </Restriction>
     </ClaimType>
   <!-- 
   </ClaimsSchema>
 </BuildingBlocks>-->
+```
+
+Verwenden Sie das [SelectByDefault](claimsschema.md#enumeration)-Attribut für ein `Enumeration`-Element, damit es beim ersten Laden der Seite standardmäßig ausgewählt wird. Um beispielsweise das Element *London* vorab auszuwählen, ändern Sie das `Enumeration`-Element wie im folgenden Beispiel:
+
+```xml
+<Restriction>
+  <Enumeration Text="Berlin" Value="berlin" />
+  <Enumeration Text="London" Value="bondon" SelectByDefault="true" />
+  <Enumeration Text="Seattle" Value="seattle" />
+</Restriction>
 ```
 
 ## <a name="add-a-claim-to-the-user-interface"></a>Hinzufügen eines Anspruchs zur Benutzeroberfläche
@@ -314,15 +320,20 @@ Um den Anspruch „Ort“ an die Anwendung der vertrauenden Seite zurückzugeben
 </RelyingParty>
 ```
 
-## <a name="test-the-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
+## <a name="upload-and-test-your-updated-custom-policy"></a>Hochladen und Testen Ihrer aktualisierten benutzerdefinierten Richtlinie
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü den **Verzeichnis- und Abonnementfilter** und dann das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
-3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
-4. Wählen Sie **Framework für die Identitätsfunktion** aus.
-5. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus, und laden Sie dann die beiden geänderten Richtliniendateien hoch.
-2. Wählen Sie die hochgeladene Registrierungs- oder Anmelderichtlinie aus, und klicken Sie auf die Schaltfläche **Jetzt ausführen**.
-3. Sie sollten sich mit einer E-Mail-Adresse registrieren können.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Richtlinien** die Option **Identity Experience Framework** aus.
+1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus.
+1. Laden Sie die Richtliniendateien hoch, die Sie zuvor geändert haben.
+
+### <a name="test-the-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
+
+1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
+1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
+1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Jetzt registrieren** aus, um sich zu registrieren. Schließen Sie die Eingabe der Benutzerinformationen einschließlich des Ortsnamens ab, und klicken Sie dann auf **Erstellen**. Es sollten Ihnen jetzt die Inhalte des zurückgegebenen Tokens angezeigt werden.
 
 ::: zone-end
 
@@ -351,12 +362,69 @@ Das Token, das an die Anwendung zurückgesendet wird, enthält den Anspruch `cit
   "email": "joe@outlook.com",
   "given_name": "Emily",
   "family_name": "Smith",
-  "city": "Bellevue"
+  "city": "Berlin"
   ...
 }
 ```
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="optional-localize-the-ui"></a>[Optional] Lokalisieren der Benutzeroberfläche
+
+Azure AD B2C ermöglicht es Ihnen, Ihre Richtlinie in verschiedenen Sprachen bereitzustellen. Weitere Informationen finden Sie unter [Sprachanpassung in Azure Active Directory B2C](language-customization.md). Um die Registrierungsseite zu lokalisieren, [richten Sie die Liste der unterstützten Sprachen ein](language-customization.md#set-up-the-list-of-supported-languages), und [geben Sie sprachspezifische Bezeichnungen an](language-customization.md#provide-language-specific-labels).
+
+> [!NOTE]
+> Wenn Sie `LocalizedCollection` mit den sprachspezifischen Bezeichnungen verwenden, können Sie die `Restriction`-Sammlung aus der [Anspruchsdefinition](#define-a-claim) entfernen.
+
+Im folgenden Beispiel wird veranschaulicht, wie Sie die Liste der Städte für Englisch und Spanisch bereitstellen. Beide legen die `Restriction`-Sammlung des Anspruchs *city* auf eine Liste von Elementen für Englisch und Spanisch fest. Das [SelectByDefault](claimsschema.md#enumeration)-Attribut sorgt dafür, dass ein Element beim ersten Laden der Seite standardmäßig ausgewählt wird.
+   
+```xml
+<!-- 
+<BuildingBlocks>-->
+  <Localization Enabled="true">
+    <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+      <SupportedLanguage>en</SupportedLanguage>
+      <SupportedLanguage>es</SupportedLanguage>
+    </SupportedLanguages>
+    <LocalizedResources Id="api.localaccountsignup.en">
+      <LocalizedCollections>
+        <LocalizedCollection ElementType="ClaimType" ElementId="city" TargetCollection="Restriction">
+          <Item Text="Berlin" Value="Berlin"></Item>
+          <Item Text="London" Value="London" SelectByDefault="true"></Item>
+          <Item Text="Seattle" Value="Seattle"></Item>
+        </LocalizedCollection>
+      </LocalizedCollections>
+    </LocalizedResources>
+    <LocalizedResources Id="api.localaccountsignup.es">
+      <LocalizedCollections>
+        <LocalizedCollection ElementType="ClaimType" ElementId="city" TargetCollection="Restriction">
+          <Item Text="Berlina" Value="Berlin"></Item>
+          <Item Text="Londres" Value="London" SelectByDefault="true"></Item>
+          <Item Text="Seattle" Value="Seattle"></Item>
+        </LocalizedCollection>
+      </LocalizedCollections>
+    </LocalizedResources>
+  </Localization>
+<!-- 
+</BuildingBlocks>-->
+```
+
+Nachdem Sie das Lokalisierungselement hinzugefügt haben, können Sie [die Inhaltsdefinition mit der Lokalisierung bearbeiten](language-customization.md#edit-the-content-definition-with-the-localization). Im folgenden Beispiel werden der Registrierungsseite benutzerdefinierte lokalisierte Ressourcen für Englisch („en“) und Spanisch („es“) hinzugefügt:
+   
+```xml
+<!-- 
+<BuildingBlocks>
+  <ContentDefinitions> -->
+   <ContentDefinition Id="api.localaccountsignup">
+    <LocalizedResourcesReferences MergeBehavior="Prepend">
+        <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
+        <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
+    </LocalizedResourcesReferences>
+   </ContentDefinition>
+  <!-- 
+  </ContentDefinitions>
+</BuildingBlocks>-->
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

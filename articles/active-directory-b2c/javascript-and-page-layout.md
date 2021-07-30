@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 06/07/2021
 ms.custom: project-no-code, devx-track-js
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d234e57f7c11b0d9f2cd212bde93a8b8e478ef41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 652551635b84c18020bf928194923d0e6ca86149
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781363"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565271"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>JavaScript und Seitenlayoutversionen in Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ So geben Sie eine Seitenlayoutversion für die Seiten Ihres Benutzerflows an
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 1. Wählen Sie eine Richtlinie aus (z.B. „B2C_1_SignupSignin“), um sie zu öffnen.
-1. Wählen Sie **Seitenlayouts** aus. Wählen Sie einen **Layoutnamen** und dann **Seitenlayoutversion (Vorschau)** aus.
+1. Wählen Sie **Seitenlayouts** aus. Wählen Sie einen **Layoutnamen** und dann **Seitenlayoutversion** aus.
 
 Informationen zu den verschiedenen Seitenlayoutversionen finden Sie im [Versionsänderungsprotokoll für das Seitenlayout](page-layout.md).
 

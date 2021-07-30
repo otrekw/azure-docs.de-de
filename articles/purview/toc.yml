@@ -89,15 +89,18 @@ items:
             items:
               - name: Datenquellen verwalten
                 href: manage-data-sources.md
-              - name: "Purview-Connectors\_– Übersicht"
+              - name: "Azure\_Purview-Connectors"
                 href: purview-connector-overview.md
               - name: Mehrere Azure-Quellen
                 href: register-scan-azure-multiple-sources.md
-              - name: Azure Synapse Analytics (Arbeitsbereich)
+              - name: "Azure\_Synapse\_Analytics-Arbeitsbereiche"
                 href: register-scan-synapse-workspace.md
               - name: Azure Blob Storage
                 href: register-scan-azure-blob-storage-source.md
-                displayName: Register and scan azure blob storage
+                displayName: Register and scan Azure Blob Storage
+              - name: Azure Files
+                href: register-scan-azure-files-storage-source.md
+                displayName: Register and scan Azure Files
               - name: Azure Cosmos DB
                 href: register-scan-azure-cosmos-database.md
                 displayName: Register and scan Azure Cosmos DB
@@ -170,6 +173,8 @@ items:
             href: how-to-lineage-powerbi.md
           - name: Spark-Datenherkunft
             href: how-to-lineage-spark-atlas-connector.md
+          - name: "SQL\_Server Integration Services-Datenherkunft"
+            href: how-to-lineage-sql-server-integration-services.md
       - name: Überwachen
         items:
           - name: Überwachung mit Azure Monitor

@@ -1,31 +1,30 @@
 ---
-title: Erstellen und Bereitstellen von Modellen mithilfe von AutoML
+title: Einrichten des automatisierten maschinellen Lernens mit der Studio-Benutzeroberfläche
 titleSuffix: Azure Machine Learning
-description: Verwenden Sie Azure Machine Learning Studio zum Erstellen, Überprüfen und Bereitstellen von Modellen für automatisiertes maschinelles Lernen.
+description: Erfahren Sie, wie Sie Trainingsausführungen für automatisiertes maschinelles Lernen ohne eine einzige Codezeile in Azure Machine Learning Studio für Azure Machine Learning einrichten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: nibaccam
 author: cartacioS
 ms.reviewer: nibaccam
-ms.date: 12/20/2020
+ms.date: 06/11/2021
 ms.topic: how-to
-ms.custom: automl
-ms.openlocfilehash: e744f7bb4d457e18f73c308fa5eaf29918b97e88
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 3bf83c31c10245cb64a047c9d856489a4e0ce71a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888312"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030753"
 ---
-# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning
+# <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>Einrichten des Trainings für automatisiertes maschinelles Lernen ohne Code über die Studio-Benutzeroberfläche 
 
+In diesem Artikel erfahren Sie, wie Sie Trainingsausführungen für automatisiertes maschinelles Lernen ohne eine einzige Codezeile in [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) für Azure Machine Learning einrichten.
 
-In diesem Artikel erfahren Sie, wie Sie automatisierte Machine Learning-Modelle ohne eine einzige Codezeile in Azure Machine Learning Studio erstellen, untersuchen und bereitstellen.
-
-Automatisiertes Machine Learning ist ein Prozess, bei dem der beste Machine Learning-Algorithmus für Ihre spezifischen Daten für Sie ausgewählt wird. Dieser Prozess ermöglicht Ihnen die schnelle Erstellung von Machine Learning-Modellen. [Weitere Informationen zu automatisiertem Machine Learning](concept-automated-ml.md).
+Automatisiertes maschinelles Lernen (AutoML) ist ein Prozess, bei dem der beste Algorithmus für das maschinelle Lernen anhand Ihrer spezifischen Daten für Sie ausgewählt wird. Dieser Prozess ermöglicht Ihnen die schnelle Erstellung von Machine Learning-Modellen. [Weitere Informationen zur Implementierung des automatisierten maschinellen Lernens in Azure Machine Learning.](concept-automated-ml.md)
  
-Ein End-to-End-Beispiel finden Sie im [Tutorial zum Erstellen eines Klassifizierungsmodells mit der Oberfläche für automatisiertes maschinelles Lernen von Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
+Ein umfassendes Beispiel finden Sie im [Tutorial: Trainieren eines Klassifizierungsmodells mit AutoML ohne Schreiben von Code in Azure Machine Learning Studio](tutorial-first-experiment-automated-ml.md). 
 
 Wenn Sie eine auf Python-Code basierende Umgebung bevorzugen, [konfigurieren Sie Ihre Experimenten mit automatisiertem maschinellem Lernen](how-to-configure-auto-train.md) mit dem Azure Machine Learning SDK.
 
@@ -47,7 +46,7 @@ Wenn Sie eine auf Python-Code basierende Umgebung bevorzugen, [konfigurieren Sie
 
  Wenn Sie zum ersten Mal Experimente ausführen, werden eine leere Liste und Links zur Dokumentation angezeigt. 
 
-Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Experimente angezeigt, einschließlich derjenigen, die mit dem SDK erstellt wurden. 
+Andernfalls wird eine Liste Ihrer letzten Experimente für automatisiertes maschinelles Lernen angezeigt, einschließlich derjenigen, die mit dem SDK erstellt wurden. 
 
 ## <a name="create-and-run-experiment"></a>Erstellen und Ausführen eines Experiments
 
@@ -151,7 +150,7 @@ Im Formular **Featurisierung** können Sie die automatische Featurisierung aktiv
 
 In der folgenden Tabelle sind die derzeit in Studio verfügbaren Anpassungen zusammengefasst: 
 
-Column| Anpassung
+Spalte| Anpassung
 ---|---
 Enthalten | Gibt an, welche Spalten in das Training einbezogen werden sollen.
 Featuretyp| Dient zum Ändern des Werttyps für die ausgewählte Spalte.
@@ -179,6 +178,14 @@ Die Registerkarte **Modelle** enthält eine Liste der erstellten Modelle, wobei 
 Führen Sie einen Drilldown für eines der abgeschlossenen Modelle aus, um Details zur Trainingsausführung anzuzeigen, z. B. eine Modellzusammenfassung auf der Registerkarte **Modell** oder Leistungsmetrikdiagramme auf der Registerkarte **Metriken**. [Weitere Informationen zu Diagrammen](how-to-understand-automated-ml.md).
 
 [![Details zur Iteration](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
+
+
+Auf der Registerkarte „Datentransformation“ wird ein Diagramm mit der Datenvorverarbeitung, der Featurisierung, den Skalierungstechniken und dem Algorithmus für maschinelles Lernen angezeigt, die zum Generieren dieses Modells angewandt wurden.
+
+>[!IMPORTANT]
+> Die Registerkarte „Datentransformation“ befindet sich in der Vorschau. Diese Funktion sollte als [experimentell](/python/api/overview/azure/ml/#stable-vs-experimental) betrachtet werden und kann jederzeit geändert werden.
+
+![Datentransformation](./media/how-to-use-automated-ml-for-ml-models/data-transformation.png)
 
 ## <a name="model-explanations-preview"></a>Modellerklärungen (Vorschau)
 

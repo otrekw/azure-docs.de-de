@@ -11,16 +11,16 @@ ms.date: 06/01/2020
 ms.custom:
 - amqp
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4bb33721625f4fc752745ce2b43051c90b3aaa74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f98bf2cc4fb4946f6e4609db7a1428dd153cbc84
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147680"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787327"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt
 
-Standardmäßig werden Nachrichten an den integrierten dienstseitigen Endpunkt (**messages/events**) gesendet, der mit [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) kompatibel ist. Dieser Endpunkt wird derzeit nur mit dem [AMQP](https://www.amqp.org/)-Protokoll über Port 5671 verfügbar gemacht. Ein IoT Hub macht die folgenden Eigenschaften verfügbar, damit Sie den integrierten Event Hub-kompatiblen Messagingendpunkt für **messages/events** steuern können.
+Standardmäßig werden Nachrichten an den integrierten dienstseitigen Endpunkt (**messages/events**) gesendet, der mit [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) kompatibel ist. Dieser Endpunkt wird derzeit nur über das [AMQP](https://www.amqp.org/)-Protokoll an Port 5671 und über [AMQP über WebSockets](http://docs.oasis-open.org/amqp-bindmap/amqp-wsb/v1.0/cs01/amqp-wsb-v1.0-cs01.html) an Port 443 verfügbar gemacht. Ein IoT Hub macht die folgenden Eigenschaften verfügbar, damit Sie den integrierten Event Hub-kompatiblen Messagingendpunkt für **messages/events** steuern können.
 
 | Eigenschaft            | BESCHREIBUNG |
 | ------------------- | ----------- |

@@ -3,19 +3,19 @@ title: Wartungsfenster
 description: Hier finden Sie grundlegende Informationen zur Konfiguration von Wartungsfenstern für Azure SQL-Datenbank und Azure SQL Managed Instance.
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: service-overview
 ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 04/28/2021
-ms.openlocfilehash: a02735c20b7286df4aafef998066b9edfc519ef4
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.date: 05/02/2021
+ms.openlocfilehash: 765c6c79bf28ad01ab0253e85affd5d4cd95ed78
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228278"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031905"
 ---
 # <a name="maintenance-window-preview"></a>Wartungsfenster (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,7 @@ Sie können die Wartungsupdates weiter auf eine für Ihre Azure SQL-Ressourcen 
 * Wartungsfenster „Wochentag“, 22 Uhr bis 6 Uhr Ortszeit (Montag-Donnerstag)
 * Wartungsfenster „Wochenende“, 22 Uhr bis 6 Uhr Ortszeit (Freitag-Sonntag)
 
-Nach Auswahl des Wartungsfensters und nach Abschluss der Dienstkonfiguration werden alle geplanten Wartungen nur im von Ihnen ausgewählten Wartungsfenster ausgeführt.   
+Nach Auswahl des Wartungsfensters und nach Abschluss der Dienstkonfiguration werden alle geplanten Wartungen nur im von Ihnen ausgewählten Wartungsfenster ausgeführt. Wartungsereignisse werden in der Regel innerhalb eines einzelnen Fensters abgeschlossen, einige Wartungsereignisse können sich jedoch über zwei oder mehr angrenzende Fenster erstrecken.   
 
 > [!Important]
 > In sehr seltenen Fällen, in denen eine Verschiebung von Aktionen zu schwerwiegenden Auswirkungen führen könnte, wie z. B. das Anwenden eines wichtigen Sicherheitspatches, kann das konfigurierte Wartungsfenster vorübergehend außer Kraft gesetzt werden. 
@@ -84,12 +84,14 @@ Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters
 - East US
 - USA (Ost 2)
 - Asien, Osten
+- Deutschland, Westen-Mitte
 - Japan, Osten
 - USA, Norden-Mitte
 - Nordeuropa
 - USA, Süden-Mitte
 - Asien, Südosten
 - UK, Süden
+- UK, Westen
 - Europa, Westen
 - USA (Westen)
 - USA, Westen 2
@@ -108,7 +110,7 @@ Weitere Informationen zur Clientverbindungsrichtlinie in Azure SQL Managed Inst
 
 ## <a name="considerations-for-azure-sql-managed-instance"></a>Hinweise zu Azure SQL Managed Instance
 
-Azure SQL Managed Instance besteht aus Dienstkomponenten, die auf dedizierten isolierten virtuellen Computern gehostet werden, die wiederum im VNet-Subnetz des Kunden ausgeführt werden. Diese virtuellen Computer bilden [virtuelle Cluster](../managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture), in denen mehrere verwaltete Instanzen gehostet werden können. Das für die Instanzen eines Subnetzes konfigurierte Wartungsfenster kann Einfluss auf die Anzahl der virtuellen Cluster innerhalb des Subnetzes und auf die Verteilung von Instanzen zwischen virtuellen Clustern haben. Dies kann die Berücksichtigung einiger Auswirkungen erfordern.
+Azure SQL Managed Instance besteht aus Dienstkomponenten, die auf dedizierten isolierten virtuellen Computern gehostet werden, die wiederum im VNet-Subnetz des Kunden ausgeführt werden. Diese virtuellen Computer bilden [virtuelle Cluster](../managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture), in denen mehrere verwaltete Instanzen gehostet werden können. Das für die Instanzen eines Subnetzes konfigurierte Wartungsfenster kann Einfluss auf die Anzahl der virtuellen Cluster innerhalb des Subnetzes und auf die Verteilung von Instanzen zwischen virtuellen Clustern und Verwaltungsvorgänge für virtuelle Cluster haben. Dies kann die Berücksichtigung einiger Auswirkungen erfordern.
 
 ### <a name="maintenance-window-configuration-is-long-running-operation"></a>Die Konfiguration des Wartungsfensters ist ein zeitintensiver Vorgang 
 Für alle in einem virtuellen Cluster gehosteten Instanzen wird dasselbe Wartungsfenster verwendet. Standardmäßig werden alle verwalteten Instanzen im virtuellen Cluster mit dem Standardwartungsfenster gehostet. Wenn Sie während oder nach der Erstellung ein anderes Wartungsfenster für eine verwaltete Instanz angeben, muss sie im virtuellen Cluster mit dem entsprechenden Wartungsfenster platziert werden. Wenn kein solcher virtueller Cluster im Subnetz vorhanden ist, muss zuerst ein neuer Cluster erstellt werden, in dem die Instanz gehostet wird. Wenn Sie dem vorhandenen virtuellen Cluster eine zusätzliche Instanz hinzufügen möchten, muss möglicherweise die Clustergröße geändert werden. Beide Vorgänge wirken sich auf die Dauer der Konfiguration des Wartungsfensters für eine verwaltete Instanz aus.
@@ -126,6 +128,10 @@ Das Konfigurieren und Ändern des Wartungsfensters führt dazu, dass die IP-Adre
 > [!Important]
 >  Stellen Sie sicher, dass der Datenverkehr nach der Änderung der IP-Adresse nicht durch NSG- und Firewallregeln blockiert wird. 
 
+### <a name="serialization-of-virtual-cluster-management-operations"></a>Serialisierung von Verwaltungsvorgängen für virtuelle Cluster
+Vorgänge, die sich auf den virtuellen Cluster auswirken, z. B. Dienstupgrades und die Änderung der Größe virtueller Cluster (Hinzufügen neuer oder Entfernen nicht benötigter Computeknoten) werden serialisiert. Anders ausgedrückt: Ein neuer Verwaltungsvorgang für virtuelle Cluster kann erst gestartet werden, nachdem der vorherige beendet wurde. Wenn das Wartungsfenster geschlossen wird, bevor der laufende Dienstupgrade- oder Wartungsvorgang abgeschlossen ist, werden alle anderen in der Zwischenzeit übermittelten Verwaltungsvorgänge für virtuelle Cluster zurückgehalten, bis das nächste Wartungsfenster geöffnet und der Dienstupgrade- oder Wartungsvorgang abgeschlossen ist. Ein Wartungsvorgang für einen virtuellen Cluster dauert üblicherweise nicht länger als ein einzelnes Fenster. Dies kann jedoch bei sehr komplexen Wartungsvorgängen der Fall sein.
+Die Serialisierung von Verwaltungsvorgängen für virtuelle Cluster ist ein allgemeines Verhalten, das auch für die Standardwartungsrichtlinie gilt. Wenn ein Wartungsfensterplan konfiguriert ist, kann der Zeitraum zwischen zwei angrenzenden Fenstern einige Tage betragen. Übermittelte Vorgänge können ebenfalls mehrere Tage lang zurückhalten werden, wenn sich der Wartungsvorgang auf zwei Fenster erstreckt. Dies ist sehr selten, die Erstellung neuer Instanzen oder das Ändern der Größe von vorhandenen Instanzen (wenn zusätzliche Computeknoten erforderlich sind) kann aber während dieses Zeitraums blockiert werden.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Vorabbenachrichtigungen](advance-notifications.md)
@@ -136,4 +142,4 @@ Das Konfigurieren und Ändern des Wartungsfensters führt dazu, dass die IP-Adre
 * [Wartungsfenster – Häufig gestellte Fragen](maintenance-window-faq.yml)
 * [Azure SQL-Datenbank](sql-database-paas-overview.md) 
 * [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)
-* [Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank und Azure SQL Managed Instance](planned-maintenance.md)
+* [Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank und Azure SQL Managed Instance](planned-maintenance.md)

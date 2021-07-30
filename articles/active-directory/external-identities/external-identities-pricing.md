@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 05/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86a055bade77f92912134a295f7576e545fe7124
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92442064"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467147"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Abrechnungsmodell für externe Identitäten in Azure AD
 
@@ -38,8 +38,8 @@ Um die MAU-Abrechnung zu nutzen, muss Ihr Azure AD-Mandanten mit einem Azure-Ab
 ## <a name="about-monthly-active-users-mau-billing"></a>Informationen zur Abrechnung basierend auf den monatlich aktiven Benutzern (MAU)
 
 In Ihrem Azure AD-Mandanten wird der Verbrauch für die Kollaboration mit Gastbenutzern basierend auf der Anzahl eindeutiger Gastbenutzer mit Authentifizierungsaktivitäten innerhalb eines Kalendermonats abgerechnet. Dieses Modell ersetzt das Abrechnungsmodell im Verhältnis 1:5, das bis zu fünf Gastbenutzer pro Azure AD Premium-Lizenz in Ihrem Mandanten zuließ. Wenn Ihr Mandant mit einem Abonnement verknüpft ist und Sie Features externer Identitäten für die Zusammenarbeit mit Gastbenutzern verwenden, erfolgt Ihre Abrechnung automatisch nach dem MAU-basierten Abrechnungsmodell.
-  
-Der Tarif für Ihre Gastbenutzer basiert auf dem höchsten Tarif, der Ihrem Azure AD-Mandanten zugewiesen ist. Wenn der höchste Tarif in Ihrem Mandanten z. B. Azure AD Premium P1 ist, gilt der Tarif Premium P1 auch für Ihre Gastbenutzer. Ist der höchste Tarif Azure AD Free, werden Sie aufgefordert, ein Upgrade auf einen Premium-Tarif durchzuführen, wenn Sie versuchen, Premium-Features für Gastbenutzer zu verwenden.
+
+Der Tarif für Ihre Gastbenutzer basiert auf dem höchsten Tarif, der Ihrem Azure AD-Mandanten zugewiesen ist. Weitere Informationen finden Sie unter [Externe Azure Active Directory-Identitäten – Preise](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/).
 
 ## <a name="link-your-azure-ad-tenant-to-a-subscription"></a>Verknüpfen Ihres Azure AD-Mandanten mit einem Abonnement
 
@@ -64,7 +64,9 @@ Ein Azure AD-Mandant muss mit einem Azure-Abonnement verknüpft werden, um eine
 7. Wählen Sie im Bereich „Abonnement verknüpfen“ ein **Abonnement** und eine **Ressourcengruppe** aus. Wählen Sie dann **Anwenden** aus.
 
    > [!NOTE]
-   > Wenn keine Abonnements aufgeführt sind, können Sie [Ihrem Mandanten ein Abonnement zuordnen](../fundamentals/active-directory-how-subscriptions-associated-directory.md). Sie können aber auch ein neues Abonnement hinzufügen, indem Sie den Link **Wenn Sie noch kein Abonnement haben, können Sie hier ein Abonnement erstellen** auswählen.
+   >
+   > * Ihre ersten 50.000 MAUs pro Monat sind sowohl für Premium P1- als auch für Premium P2-Features kostenlos. Um die Gesamtzahl der MAUs zu ermitteln, kombinieren wir MAUs aus allen Ihren Mandanten (sowohl Azure AD als auch Azure AD B2C), die mit demselben Abonnement verknüpft sind.
+    >* Wenn keine Abonnements aufgeführt sind, können Sie [Ihrem Mandanten ein Abonnement zuordnen](../fundamentals/active-directory-how-subscriptions-associated-directory.md). Sie können aber auch ein neues Abonnement hinzufügen, indem Sie den Link **Wenn Sie noch kein Abonnement haben, können Sie hier ein Abonnement erstellen** auswählen.
 
     ![Auswählen eines Abonnements und einer Ressourcengruppe](media/external-identities-pricing/link-subscription-resource.png)
 

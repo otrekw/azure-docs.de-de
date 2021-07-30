@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2595dc95e4e7f489553548b7cfbf4f64bb9c82af
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 1355f6e6120f77ead063bb9246bf1c2864341373
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166125"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007569"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Verwenden von Container Storage Interface-Treibern (CSI) von Azure Files in Azure Kubernetes Service (AKS) (Vorschauversion)
 
@@ -198,36 +198,7 @@ Filesystem                                                                      
 
  Diese Option ist für Workloads mit zufälligem Zugriff und direkten Datenaktualisierungen optimiert und bietet vollständige Unterstützung für POSIX-Dateisysteme. In diesem Abschnitt erfahren Sie, wie Sie NFS-Freigaben mit dem Azure Files-CSI-Treiber in einem AKS-Cluster verwenden.
 
-Beachten Sie unbedingt die [Einschränkungen](../storage/files/storage-files-compare-protocols.md#limitations) und die [regionale Verfügbarkeit](../storage/files/storage-files-compare-protocols.md#regional-availability) während der Vorschauphase.
-
-### <a name="register-the-allownfsfileshares-preview-feature"></a>Registrieren der Previewfunktion `AllowNfsFileShares`
-
-Wenn Sie eine Dateifreigabe erstellen möchten, die NFS 4.1 nutzt, müssen Sie das Featureflag `AllowNfsFileShares` in Ihrem Abonnement aktivieren.
-
-Registrieren Sie das Featureflag `AllowNfsFileShares` mithilfe des Befehls [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
-```
-
-Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Überprüfen Sie den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list]:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
-```
-
-Wenn der Vorgang abgeschlossen ist, können Sie die Registrierung des Ressourcenanbieters *Microsoft.Storage* mit dem Befehl [az provider register][az-provider-register] aktualisieren:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Storage
-```
-
-### <a name="create-a-storage-account-for-the-nfs-file-share"></a>Erstellen eines Speicherkontos für die NFS-Dateifreigabe
-
-[Erstellen Sie ein Azure Storage-Konto vom Typ `Premium_LRS`](../storage/files/storage-how-to-create-file-share.md) mit den folgenden Konfigurationen, um NFS-Freigaben zu unterstützen:
-- Kontotyp: FileStorage
-- Sichere Übertragung erforderlich (nur HTTPS-Datenverkehr aktivieren): FALSE
-- Wählen Sie das virtuelle Netzwerk der Agent-Knoten in Firewalls und virtuellen Netzwerken aus. Daher sollten Sie das Speicherkonto in der MC_-Ressourcengruppe erstellen.
+Beachten Sie unbedingt die [Einschränkungen](../storage/files/storage-files-compare-protocols.md#limitations) und die [regionale Verfügbarkeit](../storage/files/storage-files-compare-protocols.md#regional-availability).
 
 ### <a name="create-nfs-file-share-storage-class"></a>Erstellen einer Speicherklasse für die NFS-Dateifreigabe
 
@@ -240,8 +211,6 @@ metadata:
   name: azurefile-csi-nfs
 provisioner: file.csi.azure.com
 parameters:
-  resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
-  storageAccount: EXISTING_STORAGE_ACCOUNT_NAME
   protocol: nfs
 ```
 
@@ -250,15 +219,15 @@ Erstellen Sie nach dem Bearbeiten und Speichern der Datei die Speicherklasse mit
 ```console
 $ kubectl apply -f nfs-sc.yaml
 
-storageclass.storage.k8s.io/azurefile-csi created
+storageclass.storage.k8s.io/azurefile-csi-nfs created
 ```
 
 ### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>Erstellen einer Bereitstellung mit einer NFS-gestützten Dateifreigabe
 
-Sie können einen [zustandsbehafteten Beispielsatz](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) bereitstellen, mit dem Zeitstempel in einer Datei `data.txt` gespeichert werden, indem Sie den folgenden Befehl mit dem Befehl [kubectl apply][kubectl-apply] bereitstellen:
+Sie können einen [zustandsbehafteten Beispielsatz](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/nfs/statefulset.yaml) bereitstellen, mit dem Zeitstempel in einer Datei `data.txt` gespeichert werden, indem Sie den folgenden Befehl mit dem Befehl [kubectl apply][kubectl-apply] bereitstellen:
 
 ```console
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/nfs/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
 ```

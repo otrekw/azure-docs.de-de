@@ -5,14 +5,14 @@
     - name: Was sind Kostenverwaltung und Abrechnung?
       href: cost-management-billing-overview.md
 - name: Schnellstarts
-  expanded: true
   items:
     - name: Beginn der Kostenanalyse
-      href: costs/quick-acm-cost-analysis.md
       displayName: 'Azure CLI, az costmanagement query, az costmanagement export'
+      href: costs/quick-acm-cost-analysis.md
     - name: 'Erstellen eines Budgets: ARM-Vorlage'
-      href: costs/quick-create-budget-template.md
       displayName: 'ARM template, resource manager template'
+      href: costs/quick-create-budget-template.md
+  expanded: true
 - name: Tutorials
   items:
     - name: Überprüfen Ihrer Einzelkontorechnung
@@ -26,8 +26,8 @@
     - name: Erstellen und Verwalten von Budgets
       href: costs/tutorial-acm-create-budgets.md
     - name: Exportieren von Daten
-      href: costs/tutorial-export-acm-data.md
       displayName: 'Azure CLI, az costmanagement query, az costmanagement export'
+      href: costs/tutorial-export-acm-data.md
     - name: Reagieren auf Empfehlungen
       href: costs/tutorial-acm-opt-recommendations.md
 - name: Konzepte
@@ -296,6 +296,8 @@
           href: manage/spending-limit.md
         - name: Nachverfolgung des Guthabens für Microsoft-Kundenvereinbarung
           href: manage/mca-check-azure-credits-balance.md
+        - name: Nachverfolgen von Microsoft Azure Consumption Commitment
+          href: manage/track-consumption-commitment.md
         - name: Migrieren von EA- zu MCA-APIs
           href: costs/migrate-cost-management-api.md
         - name: Zuweisen von Rollen zu EA-SPNs
@@ -366,6 +368,8 @@
               href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
     - name: Problembehandlung
       items:
+        - name: Probleme bei der Rechnungsanzeige oder -suche
+          href: manage/troubleshoot-cant-find-invoice.md
         - name: EA-Abrechnungsprobleme mit Nutzungsdateien
           href: manage/troubleshoot-ea-billing-issues-usage-file-pivot-tables.md
         - name: MCA-Abrechnungsprobleme mit Nutzungsdateien
@@ -453,56 +457,17 @@
 - name: Cloudyn
   items:
     - name: Übersicht
-      items:
-        - name: Was ist Cloudyn?
-          href: cloudyn/overview.md
     - name: Schnellstarts
-      items:
-        - name: Anzeigen von Kostendaten – CSP
-          href: cloudyn/quick-register-csp.md
     - name: Tutorials
-      items:
-        - name: Überprüfen der Nutzung und der Kosten
-          href: cloudyn/tutorial-review-usage.md
-        - name: Vorhersage der Ausgaben
-          href: cloudyn/tutorial-forecast-spending.md
-        - name: Verwalten von Kosten
-          href: cloudyn/tutorial-manage-costs.md
-        - name: Optimieren von reservierten Instanzen
-          href: cloudyn/tutorial-optimize-reserved-instances.md
-        - name: Steuern des Zugriffs auf Daten
-          href: cloudyn/tutorial-user-access.md
     - name: Konzepte
-      items:
-        - name: Grundlagen zu Kostenberichten
-          href: cloudyn/understanding-cost-reports.md
     - name: Anleitungen
-      items:
-        - name: Aktivieren von Azure-Abonnements und -Konten
-          href: cloudyn/activate-subs-accounts.md
-        - name: Hinzufügen von erweiterten Metriken für virtuelle Computer
-          href: cloudyn/azure-vm-extended-metrics.md
-        - name: Herstellen einer Verbindung mit einem AWS-Konto
-          href: cloudyn/connect-aws-account.md
-        - name: Konfigurieren von Speicherkonten
-          href: cloudyn/storage-accounts.md
-        - name: Verwenden der Cloudyn-Berichte
-          href: cloudyn/use-reports.md
-        - name: Verwenden von Dashboards
-          href: cloudyn/dashboards.md
-        - name: Verwalten von Budgets
-          href: cloudyn/manage-budgets.md
     - name: Ressourcen
       items:
-        - name: Cloudyn-Videos
-          href: cloudyn/ref-videos.md
         - name: Azure-Roadmap
           href: 'https://azure.microsoft.com/roadmap/'
         - name: Cloudyn-Preise
           href: 'https://azure.microsoft.com/pricing/details/cost-management'
         - name: Regionale Verfügbarkeit von Cloudyn
           href: 'https://azure.microsoft.com/regions/services/'
-        - name: Häufig gestellte Fragen zu Cloudyn
-          href: cloudyn/cost-mgt-faq.md
         - name: Kontaktieren des Cloudyn-Supports
           href: ./costs/open-support-request.md

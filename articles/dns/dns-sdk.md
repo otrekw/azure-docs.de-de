@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/19/2016
+ms.date: 05/05/2021
 ms.author: rohink
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3418ef3f0c6a85a21ef4f295fa3d0e4104a91e5a
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96015059"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794050"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Erstellen von DNS-Zonen und -Ressourceneintragssätzen mithilfe des .NET SDK
 
@@ -28,15 +28,18 @@ Sie können die Vorgänge zum Erstellen, Löschen oder Aktualisieren von DNS-Zon
 
 ## <a name="create-a-service-principal-account"></a>Erstellen eines Dienstprinzipalkontos
 
-Normalerweise wird der programmgesteuerte Zugriff auf Azure-Ressourcen über ein dediziertes Konto und nicht über Ihre eigenen Benutzeranmeldeinformationen gewährt. Diese dedizierten Konten werden als „Dienstprinzipalkonten“ bezeichnet. Zum Verwenden des Azure DNS SDK-Beispielprojekts müssen Sie zuerst ein Dienstprinzipalkonto erstellen und diesem die richtigen Berechtigungen zuweisen.
+Normalerweise wird der programmgesteuerte Zugriff auf Azure-Ressourcen mit einem dedizierten Konto und nicht über Ihre eigenen Benutzeranmeldeinformationen gewährt. Diese dedizierten Konten werden als „Dienstprinzipalkonten“ bezeichnet. Zum Verwenden des Azure DNS SDK-Beispielprojekts müssen Sie zuerst ein Dienstprinzipalkonto erstellen und diesem die richtigen Berechtigungen zuweisen.
 
-1. Führen Sie diese [Anleitungsschritte](../active-directory/develop/howto-authenticate-service-principal-powershell.md) aus, um ein Dienstprinzipalkonto zu erstellen (für das Azure DNS SDK-Beispielprojekt wird die kennwortbasierte Authentifizierung vorausgesetzt).
-2. Erstellen Sie eine Ressourcengruppe ([Anleitung](../azure-resource-manager/templates/deploy-portal.md)).
-3. Verwenden Sie Azure RBAC, um dem Dienstprinzipalkonto Berechtigungen vom Typ „DNS Zone Contributor“ (DNS-Zone – Mitwirkender) für die Ressourcengruppe zu gewähren ([Anleitung](../role-based-access-control/role-assignments-portal.md)).
-4. Bearbeiten Sie die Datei „program.cs“ wie folgt, wenn Sie das Azure DNS SDK-Beispielprojekt verwenden:
+1. [Erstellen Sie ein Dienstprinzipalkonto.](../active-directory/develop/howto-authenticate-service-principal-powershell.md) Das Azure DNS SDK-Beispielprojekt setzt die kennwortbasierte Authentifizierung voraus.
+
+1. Erstellen einer anschließend eine [Ressourcengruppe](../azure-resource-manager/templates/deploy-portal.md).
+
+1. Verwenden Sie [Azure RBAC](../role-based-access-control/role-assignments-portal.md), um dem Dienstprinzipalkonto Berechtigungen vom Typ „DNS Zone Contributor“ (DNS-Zone – Mitwirkender) für die Ressourcengruppe zu gewähren.
+
+1. Bearbeiten Sie die Datei „program.cs“ wie folgt, wenn Sie das Azure DNS SDK-Beispielprojekt verwenden:
 
    * Fügen Sie die richtigen Werte für `tenantId`, `clientId` (auch als Konto-ID bezeichnet), `secret` (Kennwort des Dienstprinzipalkontos) und `subscriptionId` gemäß Schritt 1 ein.
-   * Geben Sie den Ressourcengruppennamen ein, den Sie in Schritt 2 gewählt haben.
+   * Geben Sie den Ressourcengruppennamen ein, den Sie in Schritt 2 erstellt haben.
    * Geben Sie einen DNS-Zonennamen Ihrer Wahl ein.
 
 ## <a name="nuget-packages-and-namespace-declarations"></a>NuGet-Pakete und Namespacedeklarationen
@@ -44,10 +47,14 @@ Normalerweise wird der programmgesteuerte Zugriff auf Azure-Ressourcen über ein
 Zum Verwenden des Azure DNS .NET SDK müssen Sie das NuGet-Paket **Azure DNS Management Library** und andere erforderliche Azure-Pakete installieren.
 
 1. Öffnen Sie in **Visual Studio** ein vorhandenes oder neues Projekt.
-2. Navigieren Sie zu **Extras** **>** **NuGet-Paket-Manager** **>** **NuGet-Pakete für Projektmappe verwalten**.
-3. Klicken Sie auf **Durchsuchen**, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**, und geben Sie im Suchfeld den Text **Microsoft.Azure.Management.Dns** ein.
-4. Wählen Sie das Paket aus, und klicken Sie auf **Installieren** , um es dem Visual Studio-Projekt hinzuzufügen.
-5. Wiederholen Sie den obigen Vorgang, um auch die folgenden Pakete zu installieren: **Microsoft.Rest.ClientRuntime.Azure.Authentication** und **Microsoft.Azure.Management.ResourceManager**.
+
+1. Navigieren Sie zu **Extras** **>** **NuGet-Paket-Manager** **>** **NuGet-Pakete für Projektmappe verwalten**.
+
+1. Klicken Sie auf **Durchsuchen**, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**, und geben Sie im Suchfeld den Text **Microsoft.Azure.Management.Dns** ein.
+
+1. Wählen Sie das Paket aus, und wählen Sie dann **Installieren** aus, um es dem Visual Studio-Projekt hinzuzufügen.
+
+1. Wiederholen Sie den obigen Vorgang, um auch die folgenden Pakete zu installieren: **Microsoft.Rest.ClientRuntime.Azure.Authentication** und **Microsoft.Azure.Management.ResourceManager**.
 
 ## <a name="add-namespace-declarations"></a>Hinzufügen von Namespace-Deklarationen
 
@@ -72,9 +79,9 @@ dnsClient.SubscriptionId = subscriptionId;
 
 ## <a name="create-or-update-a-dns-zone"></a>Erstellen oder Aktualisieren einer DNS-Zone
 
-Für die Erstellung einer DNS-Zone wird zuerst ein Zone-Objekt erstellt, das die DNS-Zonenparameter enthält. Da DNS-Zonen nicht mit einer bestimmten Region verknüpft sind, wird der Standort auf „global“ festgelegt. In diesem Beispiel wird der Zone auch ein [Azure Resource Manager-„Tag“](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) hinzugefügt.
+Wenn Sie eine DNS-Zone erstellen möchten, müssen Sie zunächst ein „Zone“-Objekt erstellen, dass die Parameter der DNS-Zone enthält. Da DNS-Zonen nicht mit einer bestimmten Region verknüpft sind, wird der Standort auf „global“ festgelegt. In diesem Beispiel wird der Zone auch ein [Azure Resource Manager-„Tag“](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) hinzugefügt.
 
-Für die eigentliche Erstellung oder Aktualisierung der Zone in Azure DNS wird das Zonenobjekt, das die Zonenparameter enthält, an die `DnsManagementClient.Zones.CreateOrUpdateAsyc`-Methode übergeben.
+Für die Erstellung oder Aktualisierung der Zone in Azure DNS wird das Zonenobjekt, das die Zonenparameter enthält, an die `DnsManagementClient.Zones.CreateOrUpdateAsyc`-Methode übergeben.
 
 > [!NOTE]
 > DnsManagementClient unterstützt drei Betriebsmodi: synchron („CreateOrUpdate“), asynchron („CreateOrUpdateAsync“) oder asynchron mit Zugriff auf die HTTP-Antwort („CreateOrUpdateWithHttpMessagesAsync“).  Sie können je nach Ihren Anwendungsanforderungen einen beliebigen Modus auswählen.
@@ -132,7 +139,7 @@ var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetN
 
 ## <a name="update-an-existing-record-set"></a>Aktualisieren eines vorhandenen Ressourceneintragssatzes
 
-Rufen Sie zum Aktualisieren eines vorhandenen DNS-Ressourceneintragssatzes zuerst den Ressourceneintragssatz auf, und aktualisieren Sie dann seinen Inhalt, bevor Sie die Änderung übermitteln.  In diesem Beispiel geben wir das „ETag“ aus dem abgerufenen Ressourceneintragssatz im Parameter „If-Match“ an. Der Aufruf schlägt fehl, wenn ein gleichzeitiger Vorgang den Ressourceneintragssatz in der Zwischenzeit geändert hat.
+Rufen Sie zum Aktualisieren eines vorhandenen DNS-Ressourceneintragssatzes zuerst den Ressourceneintragssatz auf. Aktualisieren Sie dann seinen Inhalt, bevor Sie die Änderung übermitteln. In diesem Beispiel geben wir das „ETag“ aus dem abgerufenen Ressourceneintragssatz im Parameter „If-Match“ an. Der Aufruf schlägt fehl, wenn ein gleichzeitiger Vorgang den Ressourceneintragssatz in der Zwischenzeit geändert hat.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
@@ -147,7 +154,9 @@ recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zo
 
 ## <a name="list-zones-and-record-sets"></a>Auflisten von Zonen und Ressourceneintragssätzen
 
-Verwenden Sie zum Auflisten von Zonen die *DnsManagementClient.Zones.List...* -Methoden, die entweder das Auflisten aller Zonen einer bestimmten Ressourcengruppe oder aller Zonen eines bestimmten Azure-Abonnements (ressourcenübergreifend) unterstützen. Verwenden Sie zum Auflisten von Ressourceneintragssätzen die *DnsManagementClient.RecordSets.List...* -Methoden, die entweder das Auflisten aller Ressourceneintragssätze einer bestimmten Zone oder nur der Ressourceneintragssätze eines bestimmten Typs unterstützen.
+* Verwenden Sie zum Auflisten von Zonen die *DnsManagementClient.Zones.List...*-Methoden, die entweder das Auflisten aller Zonen einer bestimmten Ressourcengruppe oder aller Zonen eines bestimmten Azure-Abonnements (ressourcenübergreifend) unterstützen. 
+
+* Verwenden Sie zum Auflisten von Ressourceneintragssätzen die *DnsManagementClient.RecordSets.List...*-Methoden, die entweder das Auflisten aller Ressourceneintragssätze einer bestimmten Zone oder nur der Ressourceneintragssätze eines bestimmten Typs unterstützen.
 
 Beachten Sie beim Auflisten von Zonen und Ressourceneintragssätzen, dass die Ergebnisse auf mehrere Seiten aufgeteilt sein können.  Im folgenden Beispiel wird veranschaulicht, wie Sie die Seiten mit den Ergebnissen durchlaufen können. (Um die Aufteilung auf Seiten zu erzwingen, wird eine sehr kleine Seitengröße von „2“ verwendet. In der Praxis sollte dieser Parameter weggelassen und die Standardseitengröße verwendet werden.)
 
@@ -167,4 +176,4 @@ while (page.NextPageLink != null)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Laden Sie das [Azure DNS .NET SDK-Beispielprojekt](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True) herunter, in dem weitere Beispiele für die Verwendung des Azure DNS .NET SDK enthalten sind, z.B. für andere DNS-Eintragstypen.
+Laden Sie das [.NET SDK-Beispielprojekt für Azure DNS](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True) herunter. In diesem sind weitere Beispiele für die Verwendung des .NET SDK von Azure DNS und andere DNS-Eintragstypen enthalten.

@@ -10,16 +10,14 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: e0f3464420c5cb429f780999bf5983b2ab142567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2233e6f40c1023f1b02543f4e234b00422f6f77f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102608630"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077192"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Verbinden eines Azure IoT Edge-Geräts mit einer Azure IoT Central-Anwendung
-
-*Dieser Artikel gilt für Lösungs- und Geräteentwickler.*
 
 Azure IoT Edge verschiebt Cloudanalysen und benutzerdefinierte Geschäftslogik auf Geräte, damit Ihre Organisation sich auf geschäftliche Erkenntnisse konzentrieren kann und sich nicht mit der Datenverwaltung befassen muss. Skalieren Sie Ihre IoT-Lösung auf, indem Sie Ihre Geschäftslogik in Standardcontainer packen. Stellen Sie diese Container dann für Ihre Geräte bereit, und überwachen Sie sie über die Cloud.
 
@@ -198,8 +196,6 @@ Weitere Informationen finden Sie unter [Tutorial: Hinzufügen eines Azure IoT Ed
 
 ### <a name="update-a-deployment-manifest"></a>Aktualisieren eines Bereitstellungsmanifests
 
-Wenn Sie eine neue [Version](howto-version-device-template.md) der Gerätevorlage erstellen, können Sie das Bereitstellungsmanifest durch eine neue Version ersetzen:
-
 Wenn Sie das Bereitstellungsmanifest ersetzen, laden alle verbundenen IoT Edge-Geräte das neue Manifest herunter und aktualisieren ihre Module. Bei Änderungen an der Modulkonfiguration aktualisiert IoT Central allerdings nicht die Schnittstellen in der Gerätevorlage. Wenn Sie z. B. das im vorherigen Codeausschnitt gezeigte Manifest durch das folgende ersetzen, wird die Eigenschaft **SendUnits** nicht automatisch in der Schnittstelle **management** (Verwaltung) in der Gerätevorlage angezeigt. Fügen Sie der Schnittstelle **management** die neue Eigenschaft manuell hinzu, damit IoT Central sie erkennt:
 
 ```json
@@ -288,4 +284,4 @@ Weitere Informationen finden Sie unter [Verbinden von Geräten über ein transpa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie Geräteentwickler sind, wird empfohlen, dass Sie sich im nächsten Schritt darüber informieren, wie Sie [Ihre eigenen IoT Edge-Module entwickeln](../../iot-edge/module-development.md).
+Als Nächstes sollten Sie sich darüber informieren, wie Sie [Ihre eigenen IoT Edge-Module entwickeln](../../iot-edge/module-development.md).

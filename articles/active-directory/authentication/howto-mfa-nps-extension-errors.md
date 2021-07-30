@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: fa3a2366f007ff1481e7c84f049e606586392037
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b95286169df2960d8e7297a493354b8f01e2f667
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96742951"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029691"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-ad-multi-factor-authentication"></a>Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure AD Multi-Factor Authentication
 
-Wenn Fehler in der NPS-Erweiterung für Azure AD Multi-Factor Authentication auftreten, können Sie mit diesem Artikel schneller eine Lösung erreichen. NPS-Erweiterungsprotokolle befinden sich auf dem Server mit der NPS-Erweiterung in der Ereignisanzeige unter **Benutzerdefinierte Ansichten** > **Serverrollen** > **Netzwerkrichtlinien- und Zugriffsdienste**.
+Wenn Fehler in der NPS-Erweiterung für Azure AD Multi-Factor Authentication auftreten, können Sie mit diesem Artikel schneller eine Lösung erreichen. NPS-Erweiterungsprotokolle befinden sich auf dem Server mit der NPS-Erweiterung in der Ereignisanzeige unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **AzureMFA** > **AuthN** > **AuthZ**.
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>Schritte zur Problembehandlung bei häufigen Fehlern
 

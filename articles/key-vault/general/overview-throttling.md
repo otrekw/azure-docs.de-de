@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7a215b53f673a7414f1b3662f519de5c26faaa9d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: f9e3f2095e6fd7a744769c11209ed115767c3aed
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749531"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492593"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Anleitung zur Drosselung von Azure Key Vault
 
@@ -36,21 +36,7 @@ Key Vault wurde ursprünglich mit den unter [Grenzwerte des Azure Key Vault-Dien
 1. Wenn Sie Key Vault zum Speichern von Anmeldeinformationen für einen Dienst verwenden, überprüfen Sie, ob der Dienst die Azure AD-Authentifizierung unterstützt, sodass die Authentifizierung direkt erfolgen kann. Dadurch wird die Last in Key Vault reduziert, die Zuverlässigkeit optimiert und der Code vereinfacht, da dann in Key Vault das Azure AD-Token verwendet werden kann.  Viele Dienste sind zur Verwendung der Azure AD-Authentifizierung übergegangen.  Die aktuelle Liste dieser Dienste finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources).
 1. Sie können die Auslastung und Bereitstellung über einen längeren Zeitraum staffeln, um die aktuellen RPS-Grenzwerte einzuhalten.
 1. Wenn Ihre App mehrere Knoten umfasst, die die gleichen Geheimnisse lesen müssen, empfiehlt sich eine Auffächerung, bei der eine Entität das Geheimnis aus Key Vault liest und an alle anderen Knoten verteilt.   Die abgerufenen Geheimnisse sollten nur im Speicher zwischengespeichert werden.
-Wenn die oben genannten Punkte noch nicht Ihren Anforderungen entsprechen, füllen Sie bitte die untenstehende Tabelle aus, und kontaktieren Sie uns, um zum ermitteln, welche zusätzlichen Kapazitäten hinzugefügt werden können. (Das Beispiel unten dient nur der Veranschaulichung.)
 
-| Name des Tresors | Region des Tresors | Objekttyp (Geheimnis, Schlüssel oder Zertifikat) | Vorgänge* | Schlüsseltyp | Schlüssellänge oder Kurve | HSM-Schlüssel?| RPS für gleichartige Auslastung erforderlich | RPS für Spitzenlasten erforderlich |
-|--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Schlüssel | Signieren | EC | P-256 | Nein | 200 | 1000 |
-
-\* Eine vollständige Liste möglicher Werte finden Sie unter [Azure Key Vault-Vorgänge](/rest/api/keyvault/key-operations).
-
-Wenn zusätzliche Kapazität genehmigt wird, ist infolge der Kapazitätserweiterungen Folgendes zu beachten:
-1. Das Datenkonsistenzmodell ändert sich. Wenn ein Tresor mit zusätzlicher Durchsatzkapazität in einer Zulassungsliste aufgeführt ist, ändert sich die Datenkonsistenzgarantie des Key Vault-Diensts (notwendig, um RPS mit höherem Volumen zu ermöglichen, da der zugrunde liegende Azure Storage-Dienst nicht mithalten kann).  Kurz gesagt:
-  1. **Ohne Auflistung in Zulassungsliste:** Der Key Vault-Dienst übernimmt die Ergebnisse eines Schreibvorgangs (z. B. SecretSet, CreateKey) sofort in nachfolgenden Aufrufen (z. B. SecretGet, KeySign).
-  1. **Mit Auflistung in Zulassungsliste:** Der Key Vault-Dienst übernimmt die Ergebnisse eines Schreibvorgangs (z. B. SecretSet, CreateKey) innerhalb von 60 Sekunden in nachfolgenden Aufrufen (z. B. SecretGet, KeySign).
-1. Der Clientcode muss die Backoffrichtlinie für Wiederholungsversuche bei 429-Fehlern berücksichtigen. Mit dem Clientcode, mit dem der Key Vault-Dienst aufgerufen wird, dürfen Key Vault-Anforderungen beim Empfang eines 429-Antwortcodes nicht sofort wiederholt werden.  In dieser Anleitung zur Drosselung von Azure Key Vault wird empfohlen, ein exponentielles Backoff anzuwenden, wenn der HTTP-Antwortcode 429 zurückgegeben wird.
-
-Wenn bei Ihnen ein gültiger Geschäftsvorgang für höhere Drosselungsgrenzwerte vorliegt, wenden Sie sich bitte an uns.
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Drosseln einer App als Reaktion auf Diensteinschränkungen
 

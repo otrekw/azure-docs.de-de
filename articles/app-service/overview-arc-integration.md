@@ -3,16 +3,16 @@ title: App Service in Azure Arc
 description: Eine Einführung in App Service Integration in Azure Arc für Azure-Betreiber.
 ms.topic: article
 ms.date: 05/03/2021
-ms.openlocfilehash: 8119d983a891ac6a671920c745d6395f4418ce24
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bbdb7fb1426a5c63e579929806caa1b2008f11eb
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385376"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590088"
 ---
 # <a name="app-service-functions-and-logic-apps-on-azure-arc-preview"></a>App Service, Funktionen und Logic Apps in Azure Arc (Vorschau)
 
-Sie können App Service, Funktionen und Logic Apps auf einem Azure Arc-fähigen Kubernetes-Cluster ausführen. Der Kubernetes-Cluster kann lokal oder in einer Cloud eines Drittanbieters gehostet werden. Mit diesem Ansatz können App-Entwickler die Funktionen von App Service nutzen. Gleichzeitig können IT-Administratoren die Unternehmenskonformität beibehalten, indem sie die App Service-Apps in der internen Infrastruktur hosten. Außerdem können andere IT-Betreiber ihre früheren Investitionen in andere Cloud-Anbieter schützen, indem sie App Service auf bestehenden Kubernetes-Clustern ausführen.
+Sie können App Service, Funktionen und Logic Apps auf einem Kubernetes-Cluster mit Azure Arc-Unterstützung ausführen. Der Kubernetes-Cluster kann lokal oder in einer Cloud eines Drittanbieters gehostet werden. Mit diesem Ansatz können App-Entwickler die Funktionen von App Service nutzen. Gleichzeitig können IT-Administratoren die Unternehmenskonformität beibehalten, indem sie die App Service-Apps in der internen Infrastruktur hosten. Außerdem können andere IT-Betreiber ihre früheren Investitionen in andere Cloud-Anbieter schützen, indem sie App Service auf bestehenden Kubernetes-Clustern ausführen.
 
 > [!NOTE]
 > Informationen zum Einrichten Ihres Kubernetes-Clusters für App Service, Funktionen und Logic Apps finden Sie unter [Erstellen einer App Service Kubernetes-Umgebung (Vorschau)](manage-create-arc-environment.md).
@@ -26,19 +26,19 @@ In den meisten Fällen müssen App-Entwickler nur wissen, wie die Bereitstellung
 
 ## <a name="public-preview-limitations"></a>Einschränkungen der öffentlichen Vorschauversion
 
-Die folgenden Einschränkungen für die öffentliche Vorschau gelten für App Service Kubernetes-Umgebungen. Sie werden aktualisiert, wenn zusätzliche Verteilungen überprüft werden und weitere Regionen unterstützt werden.
+Die folgenden Einschränkungen für die öffentliche Vorschau gelten für App Service Kubernetes-Umgebungen. Sie werden aktualisiert, wenn Änderungen verfügbar gemacht werden.
 
-| Einschränkung                                              | Details                                                                          |
-|---------------------------------------------------------|----------------------------------------------------------------------------------|
-| Unterstützte Azure-Regionen                                 | Ost-USA, Europa, Westen                                                             |
-| Unterstützte Kubernetes-Distributionen                      | Azure Kubernetes Service                                                         |
-| Funktion: Netzwerk                                     | [Nicht verfügbar (angewiesen auf Clusternetzwerke)](#are-networking-features-supported) |
-| Funktion: Verwaltete Identitäten                             | [Nicht verfügbar](#are-managed-identities-supported)                               |
-| Funktion: Key Vault-Verweise                           | Nicht verfügbar (abhängig von verwalteten Identitäten)                                    |
-| Funktion: Images aus ACR mit verwalteter Identität herausziehen     | Nicht verfügbar (abhängig von verwalteten Identitäten)                                    |
-| Funktion: Portal-Bearbeitung für Funktionen und Logic Apps | Nicht verfügbar                                                                    |
-| Funktion: FTP-Veröffentlichung                                 | Nicht verfügbar                                                                    |
-| Protokolle                                                    | Log Analytics muss mit der Clustererweiterung konfiguriert werden. nicht pro Standort            |
+| Einschränkung                                              | Details                                                                               |
+|---------------------------------------------------------|---------------------------------------------------------------------------------------|
+| Unterstützte Azure-Regionen                                 | Ost-USA, Europa, Westen                                                                  |
+| Clusternetzwerkanforderung                          | Muss den `LoadBalancer`-Diensttyp unterstützen und eine öffentlich adressierbare statische IP-Adresse bereitstellen. |
+| Funktion: Netzwerk                                     | [Nicht verfügbar (angewiesen auf Clusternetzwerke)](#are-networking-features-supported)      |
+| Funktion: Verwaltete Identitäten                             | [Nicht verfügbar](#are-managed-identities-supported)                                    |
+| Funktion: Key Vault-Verweise                           | Nicht verfügbar (abhängig von verwalteten Identitäten)                                         |
+| Funktion: Images aus ACR mit verwalteter Identität herausziehen     | Nicht verfügbar (abhängig von verwalteten Identitäten)                                         |
+| Funktion: Portal-Bearbeitung für Funktionen und Logic Apps | Nicht verfügbar                                                                         |
+| Funktion: FTP-Veröffentlichung                                 | Nicht verfügbar                                                                         |
+| Protokolle                                                    | Log Analytics muss mit der Clustererweiterung konfiguriert werden. nicht pro Standort                 |
 
 ## <a name="pods-created-by-the-app-service-extension"></a>Pods, die von dem App Service erstellt werden
 
@@ -74,6 +74,7 @@ Es kann nur eine Kubernetes-Umgebungsressource an einem benutzerdefinierten Spei
 - [Werden Netzwerkfunktionen unterstützt?](#are-networking-features-supported)
 - [Werden verwaltete Identitäten unterstützt?](#are-managed-identities-supported)
 - [Welche Protokolle werden gesammelt?](#what-logs-are-collected)
+- [Was kann ich tun, wenn ein Anbieterregistrierungsfehler angezeigt wird?](#what-do-i-do-if-i-see-a-provider-registration-error)
 
 ### <a name="how-much-does-it-cost"></a>Wie viel kostet es?
 
@@ -108,6 +109,10 @@ Nein. Apps können keine verwalteten Identitäten zugewiesen werden, wenn sie in
 Protokolle für Systemkomponenten und Ihre Anwendungen werden in die Standardausgabe geschrieben. Beide Protokolltypen können für die Analyse mithilfe von Kubernetes-Standardtools gesammelt werden. Sie können die App Service Clustererweiterung auch mit einem [Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-overview.md) konfigurieren, und alle Protokolle werden an diesen Arbeitsbereich gesendet.
 
 Standardmäßig werden Protokolle von Systemkomponenten an das Azure-Team gesendet. Anwendungsprotokolle werden nicht gesendet. Sie können verhindern, dass diese Protokolle übertragen werden, indem Sie `logProcessor.enabled=false` als Erweiterungskonfigurationseinstellung festlegen. Dadurch wird auch die Weiterleitung der Anwendung an Ihren Log Analytics-Arbeitsbereich deaktiviert. Das Deaktivieren des Protokollprozessors kann sich auf die Zeit auswirken, die für Supportfälle benötigt wird, und Sie werden aufgefordert, Protokolle aus der Standardausgabe auf andere Weise zu erfassen.
+
+### <a name="what-do-i-do-if-i-see-a-provider-registration-error"></a>Was kann ich tun, wenn ein Anbieterregistrierungsfehler angezeigt wird?
+
+Beim Erstellen einer Kubernetes-Umgebungsressource wird für einige Abonnements möglicherweise der Fehler „Keinen registrierten Ressourcenanbieter gefunden“ angezeigt. Die Fehlerdetails können eine Reihe von Speicherorten und API-Versionen enthalten, die als gültig betrachtet werden. In diesem Fall muss das Abonnement möglicherweise erneut beim „Microsoft.Web“-Anbieter registriert werden. Dies ist ein Vorgang, der keine Auswirkungen auf vorhandene Anwendungen oder APIs hat. Verwenden Sie zum erneuten Registrieren die Azure CLI, um `az provider register --namespace Microsoft.Web --wait` auszuführen. Versuchen Sie dann erneut, den Kubernetes-Umgebungsbefehl auszuführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fddb3b171e5a26273cb2e0045f11e3a4dbb48c5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd47a623700c495a571bc4ca6b949d1a2229178a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97655100"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469159"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Genehmigen oder Ablehnen von Zugriffsanforderungen in der Azure AD-Berechtigungsverwaltung
 
@@ -85,9 +85,9 @@ Nachdem Sie eine Zugriffsanforderung geöffnet haben, deren Genehmigung aussteht
 
 1. Klicken Sie auf **Senden**, um Ihre Entscheidung zu übermitteln.
 
-    Wenn eine Richtlinie mit mehreren genehmigenden Personen konfiguriert ist, muss nur eine genehmigende Person eine Entscheidung über die ausstehende Genehmigung treffen. Nachdem eine genehmigende Person ihre Entscheidung über die Zugriffsanforderung übermittelt hat, wird die Anforderung abgeschlossen. Sie kann dann nicht mehr von den anderen genehmigenden Personen genehmigt oder abgelehnt werden. Die anderen genehmigenden Personen können die Entscheidung über die Anforderung und den Entscheidungsträger in ihrem Portal „Mein Zugriff“ anzeigen. Derzeit wird nur eine einstufige Genehmigung unterstützt.
+    Wenn eine Richtlinie mit mehreren genehmigenden Personen konfiguriert ist, muss nur eine genehmigende Person eine Entscheidung über die ausstehende Genehmigung treffen. Nachdem eine genehmigende Person ihre Entscheidung über die Zugriffsanforderung übermittelt hat, wird die Anforderung abgeschlossen. Sie kann dann nicht mehr von den anderen genehmigenden Personen genehmigt oder abgelehnt werden. Die anderen genehmigenden Personen können die Entscheidung über die Anforderung und den Entscheidungsträger in ihrem Portal „Mein Zugriff“ anzeigen.
 
-    Wenn keine der festgelegten genehmigenden Personen die Zugriffsanforderung genehmigen oder ablehnen kann, läuft die Anforderung nach der festgelegten Anforderungsdauer ab. Der Benutzer wird benachrichtigt, dass seine Zugriffsanforderung abgelaufen ist und er die Zugriffsanforderung erneut senden muss.
+    Wenn in einer Phase keine der festgelegten genehmigenden Personen die Zugriffsanforderung genehmigen oder ablehnen kann, läuft die Anforderung nach der konfigurierten Anforderungsdauer ab. Der Benutzer wird benachrichtigt, dass seine Zugriffsanforderung abgelaufen ist und er die Zugriffsanforderung erneut senden muss.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

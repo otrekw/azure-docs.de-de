@@ -6,13 +6,13 @@ ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/13/2020
-ms.openlocfilehash: 66ed42b79e4f6b5bac7fcb76b95a04257a437daf
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.date: 05/17/2021
+ms.openlocfilehash: 09ed5297bb6432640d6cce7674c2246088823d37
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733152"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750603"
 ---
 # <a name="supported-data-stores"></a>Unterstützte Datenspeicher
 
@@ -29,13 +29,16 @@ Purview unterstützt die folgenden Datenspeicher. Klicken Sie auf die einzelnen 
 ||[Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)|Ja| Ja| Ja| Ja| Ja| Ja|
 ||[Azure SQL-Datenbank](register-scan-azure-sql-database.md)|Ja| Ja| Nein| Ja| Ja| Ja|
 ||[Verwaltete Azure SQL-Datenbank-Instanz](register-scan-azure-sql-database-managed-instance.md)|Ja| Ja| Nein| Ja| Ja| Ja|
-||[Azure Synapse Analytics (ehemals SQL DW)](register-scan-azure-synapse-analytics.md)|Ja| Ja| Nein| Ja| Ja| Ja|
-|Datenbank|[Oracle Database](register-scan-oracle-source.md)|Ja| Ja| Nein| Nein| Nein| Ja|
+||[Dedizierter Azure-SQL-Pool (vormals SQL DW)](register-scan-azure-synapse-analytics.md)|Ja| Ja| Nein| Ja| Ja| Ja|
+||[Azure Synapse Analytics (Arbeitsbereich)](register-scan-synapse-workspace.md)|Ja| Ja| Nein| Ja| Ja| Ja|
+|Datenbank|[Hive Metastore DB](register-scan-oracle-source.md)|Ja| Ja| Nein| Nein| Nein| Ja|
+||[Oracle Database](register-scan-oracle-source.md)|Ja| Ja| Nein| Nein| Nein| Ja|
 ||[SQL Server](register-scan-on-premises-sql-server.md)|Ja| Ja| Nein| Ja| Ja| Ja|
 ||[Teradata](register-scan-teradata-source.md)|Ja| Ja| Nein| Nein| Nein| Ja|
 |Power BI|[Power BI](register-scan-power-bi-tenant.md)|Ja| Ja| Nein| Nein| Nein| Ja|
 |Dienste und Apps|[SAP ECC](register-scan-sapecc-source.md)|Ja| Ja| Nein| Ja| Ja| Ja|
 ||[SAP S4HANA](register-scan-saps4hana-source.md)|Ja| Ja| Nein| Ja| Ja| Ja|
+|Mehrere Clouds|[Amazon S3](register-scan-amazon-s3.md)|Ja| Ja| Nein| Nein| Nein| Ja|
 
 ## <a name="scan-regions"></a>Überprüfungsregionen
 Im Folgenden finden Sie eine Liste aller Azure-Datenquellregionen (Rechenzentren), in denen die Purview-Überprüfung ausgeführt wird. Wenn sich Ihre Azure-Datenquelle in einer Region befindet, die nicht in der Liste aufgeführt ist, erfolgt die Überprüfung in der Region Ihrer Purview-Instanz.

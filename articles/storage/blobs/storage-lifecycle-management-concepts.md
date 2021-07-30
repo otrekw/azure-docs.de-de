@@ -1,20 +1,20 @@
 ---
 title: Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen
 description: Erstellen Sie automatisierte Regeln zum Verschieben von Daten zwischen den Ebenen „heiß“, „kalt“ und „Archiv“.
-author: twooley
-ms.author: twooley
+author: tamram
+ms.author: tamram
 ms.date: 04/23/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 76ea6b916cc52292e8b56523d91d92ebfc957a94
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 19a828621f298759b87d8b0d4ca627d3ab7d27c3
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946104"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071279"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen
 
@@ -75,7 +75,7 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
 
 1. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, und wählen Sie es aus.
 
-1. Wählen Sie unter **Blob-Dienst** die Option **Lebenszyklusverwaltung** aus, um Ihre Regeln anzuzeigen oder zu ändern.
+1. Wählen Sie unter **Datenverwaltung** die Option **Lebenszyklusverwaltung** aus, um Ihre Regeln anzuzeigen oder zu ändern.
 
 1. Wählen Sie die Registerkarte **Listenansicht** aus.
 
@@ -86,12 +86,6 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
 1. Wählen Sie **Basisblobs** aus, um die Bedingungen für Ihre Regel festzulegen. Im nachstehenden Beispiel werden Blobs in den kalten Speicher verschoben, wenn sie während 30 Tagen nicht geändert wurden.
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Seite mit Basisblobs in der Lebenszyklusverwaltung im Azure-Portal":::
-
-   Die Option **Letzter Zugriff** ist in der Vorschau in den folgenden Regionen verfügbar:
-
-    - Frankreich, Mitte
-    - Kanada, Osten
-    - Kanada, Mitte
 
    > [!IMPORTANT]
    > Die Vorschau der Zeitüberwachung für den letzten Zugriff ist nur zur Verwendung in Umgebungen außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
@@ -327,7 +321,7 @@ Filter umfassen Folgendes:
 | blobIndexMatch | Ein Array von Wörterbuchwerten, die aus dem Blobindextag-Schlüssel und den Wertbedingungen bestehen, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Blobindextag-Bedingungen definiert werden. Wenn Sie beispielsweise alle Blobs mit `Project = Contoso` unter `https://myaccount.blob.core.windows.net/` für eine Regel abgleichen möchten, lautet der blobIndexMatch-Wert `{"name": "Project","op": "==","value": "Contoso"}`. | Wenn Sie blobIndexMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto. | Nein |
 
 > [!NOTE]
-> Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Kanada, Mitte**, **Kanada, Osten**, **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu dieser Funktion sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
+> Der Blobindex befindet sich in der öffentlichen Vorschau.  Weitere Informationen zu dieser Funktion sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Regelaktionen
 

@@ -10,13 +10,13 @@ ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 11/14/2019
-ms.openlocfilehash: 67e807e948caf1fec014457814c1b7f105630f9f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/26/2021
+ms.openlocfilehash: b1748de761ad5180e2ddb670f31874620e4c5ae8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784423"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111972001"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank
 
@@ -182,7 +182,7 @@ PolyBase und die COPY-Anweisung werden häufig verwendet, um Daten aus Azure Sto
 
 ### <a name="sql-database-blob-auditing"></a>SQL-Datenbank – Blobüberwachung
 
-Bei der Blobüberwachung werden die Überwachungsprotokolle in Ihr eigenes Speicherkonto gepusht. Wenn dieses Speicherkonto das Feature für VNET-Dienstendpunkte verwendet, wird die Konnektivität zwischen SQL-Datenbank und dem Speicherkonto unterbrochen.
+Die Azure SQL-Überwachung kann SQL-Überwachungsprotokolle in Ihr eigenes Speicherkonto schreiben. Wenn dieses Speicherkonto das VNET-Dienstendpunktfeature verwendet, finden Sie weitere Informationen unter [Schreiben von Überwachungsprotokollen in ein Speicherkonto hinter einem VNET oder einer Firewall](./audit-write-storage-account-behind-vnet-firewall.md).
 
 ## <a name="add-a-virtual-network-firewall-rule-to-your-server"></a>Hinzufügen einer Firewallregel für virtuelle Netzwerke auf dem Server
 

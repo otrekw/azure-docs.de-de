@@ -8,6 +8,7 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
 ms.service: virtual-machines-sql
+ms.subservice: performance
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -15,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 9a9cfc444c101b603b5287fa862c36d5befef91a
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: d3a4a8bb54c5bafa9eb50ed4441cd6eebe2acc6c
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110189656"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079911"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>Speicher: Bewährte Methoden zur Leistung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +30,7 @@ In diesem Artikel werden bewährte Methoden und Richtlinien zum Speicher bereitg
 
 In der Regel kommt es zu einem Kompromiss zwischen einer Kostenoptimierung und einer Leistungsoptimierung. Diese Folge von bewährten Methoden zur Leistung konzentriert sich darauf, die *beste* Leistung für SQL Server auf Azure Virtual Machines zu erzielen. Wenn Ihre Workload weniger anspruchsvoll ist, sind möglicherweise nicht alle empfohlenen Optimierungen erforderlich. Berücksichtigen Sie bei der Evaluierung dieser Empfehlungen Ihre Leistungsanforderungen und -kosten sowie Ihre Workloadmuster.
 
-Weitere Informationen finden Sie in den anderen Artikeln dieser Reihe: [Leistungsprüfliste](performance-guidelines-best-practices-checklist.md), [VM-Größe](performance-guidelines-best-practices-vm-size.md) und [Baseline erfassen](performance-guidelines-best-practices-collect-baseline.md). 
+Weitere Informationen finden Sie in den anderen Artikeln dieser Reihe: [Checkliste](performance-guidelines-best-practices-checklist.md), [VM-Größe](performance-guidelines-best-practices-vm-size.md), [Sicherheit](security-considerations-best-practices.md), [HADR-Konfiguration](hadr-cluster-best-practices.md) und [Baseline erfassen](performance-guidelines-best-practices-collect-baseline.md). 
 
 ## <a name="checklist"></a>Checkliste
 
@@ -277,10 +278,12 @@ Es gibt bestimmte Azure Monitor-Metriken, die von großem Nutzen sind, um die Be
 Weitere Informationen zu bewährten Methoden für die Leistung finden Sie in den anderen Artikeln dieser Reihe:
 - [Kurze Checkliste](performance-guidelines-best-practices-checklist.md)
 - [Größe des virtuellen Computers](performance-guidelines-best-practices-vm-size.md)
+- [Security](security-considerations-best-practices.md)
+- [HADR-Einstellungen](hadr-cluster-best-practices.md)
 - [Baseline auswählen](performance-guidelines-best-practices-collect-baseline.md)
 
 Bewährte Methoden für die Sicherheit finden Sie unter [Sicherheitsüberlegungen für SQL Server auf Azure Virtual Machines](security-considerations-best-practices.md).
 
 Ausführliche Informationen zum Testen der SQL Server-Leistung auf virtuellen Azure-Computern mit TPC-E- und TPC_C-Benchmarks finden Sie im Blog [Optimieren der OLTP-Leistung](https://techcommunity.microsoft.com/t5/sql-server/optimize-oltp-performance-with-sql-server-on-azure-vm/ba-p/916794).
 
-Weitere Artikel zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.md) weitere Informationen.
+Weitere Artikel zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.yml) weitere Informationen.

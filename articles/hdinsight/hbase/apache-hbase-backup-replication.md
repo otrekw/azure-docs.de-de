@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 1d5bcf9c04ad02eaf297f8971aa0f4ff599888c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c11a28fafc633879f22f0133b544fe99a8c4a72
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942991"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191755"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Einrichten der Sicherung und Replikation für Apache HBase und Apache Phoenix in HDInsight
 
@@ -111,13 +111,13 @@ Die Zieladresse besteht aus drei Teilen:
 
 `<destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>`
 
-* `<ZooKeeperQuorum>` ist eine kommagetrennte Liste mit Apache ZooKeeper-Knoten. Beispiel:
+* `<ZooKeeperQuorum>` ist eine kommagetrennte Liste mit FQDN-Namen von Apache ZooKeeper-Knoten. Beispiel:
 
-    zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
+    \<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername2>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername3>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
 * `<Port>` ist in HDInsight standardmäßig 2181, und `<ZnodeParent>` ist `/hbase-unsecure`. Die vollständige Angabe für `<destinationAddress>` lautet also wie folgt:
 
-    zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
+    \<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername2>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername3>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 
 Ausführliche Informationen zum Abrufen dieser Werte aus Ihrem HDInsight-Cluster finden Sie in diesem Artikel unter [Manuelles Erfassen der Apache ZooKeeper-Quorumliste](#manually-collect-the-apache-zookeeper-quorum-list).
 
@@ -145,7 +145,7 @@ curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterNam
 Der curl-Befehl ruft ein JSON-Dokument mit HBase-Konfigurationsinformationen ab. Der grep-Befehl gibt lediglich den Eintrag „hbase.zookeeper.quorum“ zurück. Beispiel:
 
 ```output
-"hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
+"hbase.zookeeper.quorum" : "<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,<zookeepername2>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,<zookeepername3>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
 ```
 
 Der Wert für die Quorumhostnamen ist die gesamte Zeichenfolge nach dem Doppelpunkt.
@@ -156,7 +156,7 @@ Verwenden Sie zum Abrufen der IP-Adressen für diese Hosts den folgenden curl-Be
 curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
 ```
 
-In diesem curl-Befehl ist `<zookeeperHostFullName>` der vollständige DNS-Name eines ZooKeeper-Hosts (Beispiel: `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`). Die Ausgabe des Befehls enthält die IP-Adresse für den angegebenen Host. Beispiel:
+In diesem curl-Befehl ist `<zookeeperHostFullName>` der vollständige DNS-Name eines ZooKeeper-Hosts (Beispiel: `<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`). Die Ausgabe des Befehls enthält die IP-Adresse für den angegebenen Host. Beispiel:
 
 `100    "ip" : "10.0.0.9",`
 

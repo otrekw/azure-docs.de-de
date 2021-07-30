@@ -1,0 +1,301 @@
+### YamlMime:FAQ
+metadata:
+  title: Antworten auf häufig gestellte Fragen
+  description: Antworten auf häufig gestellte Fragen zu
+  ms.topic: conceptual
+  ms.date: 06/10/2021
+  ms.openlocfilehash: 994e23fae780ecc3bf046d834810fbbf983473ed
+  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111907387"
+title: Azure Backup – häufig gestellte Fragen
+summary: In diesem Artikel werden allgemeine Fragen um Azure Backup-Dienst beantwortet.
+sections:
+- name: Recovery Services-Tresor
+  questions:
+  - question: >
+      Gibt es eine Beschränkung hinsichtlich der Anzahl von Tresoren, die in einem Azure-Abonnement erstellt werden können?
+    answer: >
+      Ja. Pro Abonnement können für jede unterstützte Region von Azure Backup bis zu 500 Recovery Services-Tresore erstellt werden. Erstellen Sie ein zusätzliches Abonnement, falls Sie zusätzliche Tresore benötigen.
+  - question: >
+      Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können?
+    answer: >
+      Sie können bis zu 1.000 virtuelle Azure-Computer pro Tresor registrieren. Bei Verwendung des Microsoft Azure Backup-Agents können Sie pro Tresor bis zu 50 MARS-Agents registrieren. Außerdem können Sie 50 MABS-Server/DPM-Server bei einem Tresor registrieren.
+  - question: >
+      Wie viele Datenquellen/Elemente können in einem Tresor geschützt werden?
+    answer: >
+      Sie können bis zu 2.000 Datenquellen/Elemente für alle Workloads (etwa IaaS-VM, SQL, AFS) in einem Tresor schützen.
+
+      Wenn Sie beispielsweise bereits 500 virtuelle Computer und 400 Azure-Dateifreigaben im Tresor geschützt haben, können Sie nur maximal 1100 SQL-Datenbanken darin schützen.
+  - question: >
+      Wie viele Richtlinien kann ich pro Tresor erstellen?
+    answer: >
+      Sie können nur maximal 200 Richtlinien pro Tresor erstellen. Es können jedoch in einem Zeitraum von 24 Stunden nur 50 neue Sicherungsrichtlinien hinzugefügt oder aktuelle Richtlinien durch ARM-Vorlagen (Azure Resource Manager) oder Azure Automation-Clients wie PowerShell bearbeitet werden.
+  - question: >
+      Wie kann ich Daten von unterschiedlichen Servern im Tresor isolieren, wenn meine Organisation über nur einen Tresor verfügt?
+    answer: >
+      Serverdaten, die Sie zusammen wiederherstellen möchten, sollten beim Einrichten der Sicherung die gleiche Passphrase verwenden. Wenn Sie die Wiederherstellung auf bestimmten Servern isolieren möchten, verwenden Sie eine Passphrase nur für diese Server. So können Sie beispielsweise für die Server der Personalabteilung, für die Server der Buchhaltung und für die Speicherserver jeweils eine eigene Verschlüsselungspassphrase verwenden.
+  - question: >
+      Kann ich meinen Tresor zwischen Abonnements verschieben?
+    answer: >
+      Ja. Informationen zum Verschieben eines Recovery Services-Tresors finden Sie in [diesem Artikel](backup-azure-move-recovery-services-vault.md).
+  - question: >
+      Kann ich Sicherungsdaten zu einem anderen Tresor verschieben?
+    answer: >
+      Nein. In einem Tresor gespeicherte Sicherungsdaten können nicht in einen anderen Tresor verschoben werden.
+  - question: >
+      Kann ich die Einstellung für die Speicherredundanz nach einer Sicherung ändern?
+    answer: >
+      Der Speicherreplikationstyp ist standardmäßig auf „Georedundant“ (GRS) festgelegt. Nachdem Sie die Sicherung konfiguriert haben, ist die Option zum Ändern deaktiviert, und der Typ kann nicht mehr geändert werden.
+
+
+      ![Speicherreplikationstyp](./media/backup-azure-backup-faq/storage-replication-type.png)
+
+
+      Wenn Sie die Sicherung bereits konfiguriert haben und von GRS zu LRS wechseln müssen, finden Sie weitere Informationen unter [Wechseln von GRS zu LRS nach dem Konfigurieren einer Sicherung](backup-create-rs-vault.md#how-to-change-from-grs-to-lrs-after-configuring-backup).
+  - question: >
+      Kann ich für virtuelle Computer, die in einem Recovery Services-Tresor gesichert wurden, eine Wiederherstellung auf Elementebene durchführen?
+    answer: >
+      - Die Wiederherstellung auf Elementebene wird für virtuelle Azure-Computer unterstützt, die von der Azure-VM-Sicherung gesichert wurden. Weitere Informationen finden Sie in [diesem Artikel](backup-azure-restore-files-from-vm.md).
+
+      - Die Wiederherstellung auf Elementebene wird nicht für Online-Wiederherstellungspunkte lokaler virtueller Computer unterstützt, die von Azure Backup Server (MABS) oder System Center DPM gesichert wurden.
+  - question: >
+      Wie kann ich Daten aus dem Recovery Services-Tresor in eine lokale Umgebung verschieben?
+    answer: >
+      Um Sicherungsdaten aus dem Recovery Services-Tresor zu verschieben, müssen Sie die erforderlichen Daten wiederherstellen. Wenn Ihr Tresor Sicherungen von Daten eines lokalen Rechenzentrums enthält, verwenden Sie den entsprechenden Agent ([MARS,](backup-azure-about-mars.md) [MABS](backup-azure-microsoft-azure-backup.md)oder [DPM](backup-azure-dpm-introduction.md#why-back-up-dpm-to-azure)), um sie im lokalen Rechenzentrum wiederherzustellen. <br><br> Cloudworkloads [(Azure-VMs,](backup-azure-arm-restore-vms.md#restore-options) [SQL](restore-sql-database-azure-vm.md#restore-as-files)und [SAP HANA](sap-hana-db-restore.md#restore-as-files) in Azure-VMs) können nicht durch direktes Exportieren von Daten aus dem Recovery Services-Tresor auf dem lokalen Speicher gesichert werden. Sie können diese jedoch in den entsprechenden Cloudressourcen in Azure Storage-Konten wiederherstellen und die Daten dann ins lokale Rechenzentrum verschieben. Sie können diese Daten auch über [Data Box](../databox/data-box-overview.md) oder [Import/Export](../import-export/storage-import-export-service.md) in die lokale Datenbank exportieren.
+  - question: >
+      Worin besteht der Unterschied zwischen einem georedundanten Speichertresor (GRS) mit und ohne aktivierter Funktion „Regionsübergreifende Wiederherstellung (Cross Region Restore, CRR)“?
+    answer: >
+      Im Falle eines [GRS](azure-backup-glossary.md#grs)-Tresors ohne aktivierte [CRR](azure-backup-glossary.md#cross-region-restore-crr)-Funktion kann auf die Daten in der sekundären Region erst dann zugegriffen werden, wenn Azure einen Notfall in der primären Region erklärt. In einem solchen Szenario erfolgt die Wiederherstellung vom sekundären Bereich aus. Ist CRR aktiviert, können Sie eine Wiederherstellung in der sekundären Region auslösen, auch wenn die primäre Region in Betrieb ist.
+  - question: >
+      Kann ich ein Abonnement, das einen Tresor enthält, in ein anderes Azure Active Directory verschieben?
+    answer: >
+      Ja. Informationen zum Verschieben eines Abonnements (das einen Tresor enthält) in ein anderes Azure Active Directory (AD) finden Sie unter [Übertragen eines Abonnements in ein anderes Verzeichnis](../role-based-access-control/transfer-subscription.md).
+
+
+      >[!IMPORTANT]
+
+      >Sie müssen nach dem Verschieben des Abonnements die folgenden Aktionen ausführen:<ul><li>Berechtigungen der rollenbasierten Zugriffssteuerung und benutzerdefinierte Rollen können nicht übertragen werden. Sie müssen die Berechtigungen und Rollen im neuen Azure AD neu erstellen.</li><li>Sie müssen die verwaltete Identität des Tresors neu erstellen, indem Sie sie deaktivieren und erneut aktivieren. Außerdem müssen Sie die Berechtigungen der verwalteten Identität neu bewerten und neu erstellen.</li><li>Wenn der Tresor Features der verwalteten Identität verwendet (z. B. [private Endpunkte](private-endpoints.md#before-you-start) und [kundenseitig verwaltete Schlüssel](encryption-at-rest-with-cmk.md#before-you-start)), müssen Sie diese Features neu konfigurieren.</li></ul>
+  - question: >
+      Kann ich ein Abonnement, das einen Recovery Services-Datenspeicher enthält, zu einem anderen Anker verschieben?
+    answer: "Ja. Stellen Sie bitte sicher, wie folgt vorzugehen: \n\n>[!IMPORTANT]\n>Sie müssen nach dem Verschieben des Abonnements die folgenden Aktionen ausführen:<ul><li>Wenn der Tresor CMK verwendet (vom Kunden verwaltete Schlüssel), müssen Sie den Tresor aktualisieren. Dies ermöglicht es dem Tresor, die vom Tresor verwaltete Identität und das CMK (das sich im neuen Anker befindet) neu zu erstellen und zu konfigurieren, andernfalls schlägt der Sicherungs-/Wiederherstellungsvorgang fehl.</li><li>Sie müssen die RBAC-Berechtigungen im Abonnement neu konfigurieren, da die vorhandenen Berechtigungen nicht verschoben werden können.</li></ul>\n"
+- name: Azure Backup-Agent
+  questions:
+  - question: >
+      Wo finde ich verbreitete Fragen zum Azure Backup-Agent für die Azure-VM-Sicherung?
+    answer: >
+      - Informationen zu den auf virtuellen Azure-Computern ausgeführten Agents finden Sie in diesen [häufig gestellten Fragen](backup-azure-vm-backup-faq.yml).
+
+      - Informationen zu den Agents für das Sichern von Azure-Dateiordnern finden Sie in diesen [häufig gestellten Fragen](backup-azure-file-folder-backup-faq.yml).
+- name: Allgemeine Sicherung
+  questions:
+  - question: >
+      Gibt es Beschränkungen bei der Planung der Sicherung?
+    answer: >
+      Ja.
+
+
+      - Sie können Computer mit Windows Server und Windows bis zu dreimal täglich sichern. Sie können die Planungsrichtlinie auf tägliche oder wöchentliche Zeitpläne festlegen.
+
+      - Sie können DPM bis zu zweimal täglich sichern. Sie können die Planungsrichtlinie auf tägliche, wöchentliche, monatliche oder jährliche Zeitpläne festlegen.
+
+      - Sie sichern Azure-VMs einmal täglich.
+  - question: >
+      Welche Betriebssysteme werden für die Sicherung unterstützt?
+    answer: >
+      Azure Backup unterstützt diese Betriebssysteme für die Sicherung von Dateien und Ordnern sowie von Apps, die mithilfe von Azure Backup Server und DPM geschützt werden.
+
+
+      **Betriebssystem** | **SKU** | **Details**
+
+      --- | --- | ---
+
+      Arbeitsstation | |
+
+      Windows 10, 64 Bit | Enterprise, Pro, Home | Auf Computern müssen die neuesten Service Packs und Updates ausgeführt werden.
+
+      Windows 8.1, 64 Bit | Enterprise, Pro | Auf Computern müssen die neuesten Service Packs und Updates ausgeführt werden.
+
+      Windows 8, 64 Bit | Enterprise, Pro | Auf Computern müssen die neuesten Service Packs und Updates ausgeführt werden.
+
+      Windows 7, 64 Bit | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter | Auf Computern müssen die neuesten Service Packs und Updates ausgeführt werden.
+
+      Server | |
+
+      Windows Server 2019, 64 Bit | Standard, Datacenter, Essentials | Mit den neuesten Service Packs/Updates.
+
+      Windows Server 2016, 64 Bit | Standard, Datacenter, Essentials | Mit den neuesten Service Packs/Updates.
+
+      Windows Server 2012 R2, 64 Bit | Standard, Datacenter, Foundation | Mit den neuesten Service Packs/Updates.
+
+      Windows Server 2012, 64 Bit | Datacenter, Foundation, Standard | Mit den neuesten Service Packs/Updates.
+
+      Windows Storage Server 2016, 64 Bit | Standard, Workgroup | Mit den neuesten Service Packs/Updates.
+
+      Windows Storage Server 2012 R2, 64 Bit | Standard, Workgroup, Essential | Mit den neuesten Service Packs/Updates.
+
+      Windows Storage Server 2012, 64 Bit | Standard, Workgroup | Mit den neuesten Service Packs/Updates.
+
+      Windows Server 2008 R2 SP1, 64 Bit | Standard, Enterprise, Datacenter, Foundation | Mit den neuesten Updates.
+
+      Windows Server 2008, 64 Bit | Standard, Enterprise, Datacenter | Mit den neuesten Updates.
+
+
+      Azure Backup unterstützt keine 32-Bit-Betriebssysteme.
+
+
+      Für Sicherungen von virtuellen Azure-Computern mit Linux unterstützt Azure Backup [die Liste der von Azure unterstützten Distributionen](../virtual-machines/linux/endorsed-distros.md), mit Ausnahme von CoreOS Linux und 32-Bit-Betriebssystem. Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird.
+  - question: >
+      Gibt es Größenbeschränkungen für die Datensicherung?
+    answer: >
+      Die folgenden Größengrenzwerte gelten:
+
+
+      Betriebssystem/Computer | Größengrenzwert der Datenquelle
+
+      --- | ---
+
+      Windows 8 oder höher | 54.400 GB
+
+      Windows 7 |1\.700 GB
+
+      Windows Server 2012 oder höher | 54.400 GB
+
+      Windows Server 2008, Windows Server 2008 R2 | 1\.700 GB
+
+      Azure VM | Weitere Informationen finden Sie in der [Unterstützungsmatrix für die Sicherung von Azure-VMs](./backup-support-matrix-iaas.md#vm-storage-support).
+  - question: >
+      Wie wird die Größe der Datenquelle bestimmt?
+    answer: >
+      In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengrößen bestimmt werden.
+
+
+      **Datenquelle** | **Details**
+
+      --- | ---
+
+      Volume |Die Datenmenge, die von einem virtuellen Computer mit einem Volume gesichert wird.
+
+      SQL Server-Datenbank |Größe einer einzelnen Datenbank, die gesichert wird.
+
+      SharePoint | Summe der Inhalts- und Konfigurationsdatenbanken in einer zu sichernden SharePoint-Farm
+
+      Exchange |Summe aller Exchange-Datenbanken eines zu sichernden Exchange-Servers
+
+      BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu sichernden Computers
+  - question: >
+      Gibt es einen Grenzwert für die Menge der in einem Recovery Services-Tresor gesicherten Daten?
+    answer: >
+      Es gibt keine Beschränkung für die Gesamtmenge der Daten, die in einem Recovery Services-Tresor gesichert werden können. Die einzelnen Datenquellen (neben Azure-VMs) können maximal 54.400 GB groß sein. Weitere Informationen zu Grenzwerten finden Sie im [Abschnitt zu Tresoreinschränkungen in der Unterstützungsmatrix](./backup-support-matrix.md#vault-support).
+  - question: >
+      Warum ist die Datenmenge, die an den Recovery Services-Tresor übertragen wird, kleiner als die Menge der für die Sicherung ausgewählten Daten?
+    answer: >
+      Daten, die vom Azure Backup-Agent, von DPM oder von Azure Backup Server gesichert werden, werden vor der Übertragung komprimiert und verschlüsselt. Nach Anwendung der Komprimierung und Verschlüsselung sind die Daten im Tresor um 30 bis 40 % kleiner.
+  - question: >
+      Kann ich einzelne Dateien für einen Wiederherstellungspunkt im Tresor löschen?
+    answer: >
+      Nein. Für Azure Backup wird das Löschen oder Bereinigen von einzelnen Dateien aus gespeicherten Sicherungen nicht unterstützt.
+  - question: >
+      Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche?
+    answer: >
+      Nein. Alle Daten, die vor dem Abbrechen des Sicherungsauftrags in den Tresor übertragen wurden, bleiben im Tresor erhalten.
+
+
+      - Azure Backup nutzt einen Prüfpunktmechanismus, um den Sicherungsdaten während des Sicherungsvorgangs von Zeit zu Zeit Prüfpunkte hinzuzufügen.
+
+      - Da in den Sicherungsdaten Prüfpunkte vorhanden sind, kann der nächste Sicherungsprozess die Integrität der Dateien überprüfen.
+
+      - Der nächste Sicherungsauftrag erfolgt inkrementell bezogen auf die zuvor gesicherten Daten. Inkrementelle Sicherungen übertragen nur neue oder geänderte Daten, wodurch eine bessere Nutzung der Bandbreite zustande kommt.
+
+
+      Wenn Sie einen Sicherungsauftrag für eine Azure-VM abbrechen, werden die übertragenen Daten ignoriert. Beim nächsten Sicherungsauftrag werden die Daten inkrementell bezogen auf den letzten erfolgreichen Sicherungsauftrag übertragen.
+- name: Aufbewahrung und Wiederherstellung
+  questions:
+  - question: >
+      Sind die Aufbewahrungsrichtlinien für DPM und Windows-Computer ohne DPM gleich?
+    answer: >
+      Ja, für beide gelten tägliche, wöchentliche, monatliche und jährliche Aufbewahrungsrichtlinien.
+  - question: >
+      Kann ich Aufbewahrungsrichtlinien anpassen?
+    answer: >
+      Ja, es gibt Anpassungsrichtlinien. Beispielsweise können Sie Anforderungen für wöchentliche und tägliche Aufbewahrung, jedoch nicht jährliche und monatliche, konfigurieren.
+  - question: >
+      Kann ich unterschiedliche Zeiten für den Sicherungszeitplan und für Aufbewahrungsrichtlinien verwenden?
+    answer: >
+      Nein. Aufbewahrungsrichtlinien können nur bei den Sicherungspunkten angewendet werden. Die Abbildung zeigt beispielsweise eine Aufbewahrungsrichtlinie für Sicherungen um 12:00 Uhr und 18:00 Uhr.
+
+
+      ![Planen von Sicherung und Aufbewahrung](./media/backup-azure-backup-faq/Schedule.png)
+  - question: >
+      Dauert die Wiederherstellung eines älteren Datenpunkts länger, wenn eine Sicherung lange Zeit aufbewahrt wird?
+    answer: >
+      Nein. Die Dauer zum Wiederherstellen des ältesten oder neuesten Punkts ist gleich. Jeder Wiederherstellungspunkt verhält sich wie ein vollständiger Punkt.
+  - question: >
+      Wenn jeder Wiederherstellungspunkt sich wie ein vollständiger Punkt verhält, wie wirkt sich dies auf den gesamten abrechenbaren Sicherungsspeicher aus?
+    answer: >
+      Bei typischen Produkten für die langfristige Aufbewahrung werden Sicherungsdaten als vollständige Punkte gespeichert.
+
+
+      - Die vollständigen Punkte sind im Hinblick auf den Speicher *ineffizient*, aber einfacher und schneller wiederherzustellen.
+
+      - Inkrementelle Kopien sind *speichereffizient*, jedoch muss eine Datenkette wiederhergestellt werden. Dies hat Auswirkungen auf die Wiederherstellungszeit.
+
+
+      Die Speicherarchitektur von Azure Backup bietet Ihnen die Vorteile beider Ansätze, indem die Daten optimal zur schnellen Wiederherstellung und zu geringen Speicherkosten gespeichert werden. Hierdurch wird sichergestellt, dass die Eingangs- und Ausgangsbandbreite effizient genutzt wird. So werden der Umfang der Datenspeicherung und die benötigte Zeit für die Wiederherstellung der Daten möglichst gering gehalten. Erfahren Sie mehr über [inkrementelle Sicherungen](backup-architecture.md#backup-types).
+  - question: >
+      Gibt es eine Beschränkung für die Anzahl von Wiederherstellungspunkten, die erstellt werden können?
+    answer: >
+      Pro geschützter Instanz können bis zu 9.999 Wiederherstellungspunkte erstellt werden. Geschützte Instanzen sind Computer, Server (physisch oder virtuell) oder Workloads, die in Azure gesichert werden.
+
+
+      - Erfahren Sie mehr über [Sicherung und Wiederherstellung](./backup-support-matrix.md).
+  - question: >
+      Wie oft kann ich in Azure gesicherte Daten wiederherstellen?
+    answer: >
+      Es gibt keine Beschränkung für die Anzahl der Wiederherstellungen aus Azure Backup.
+  - question: >
+      Fallen für mich beim Wiederherstellen von Daten für den ausgehenden Datenverkehr von Azure Kosten an?
+    answer: >
+      Nein. Die Wiederherstellung ist kostenlos, und der ausgehende Datenverkehr wird nicht in Rechnung gestellt.
+  - question: >
+      Was passiert, wenn ich meine Sicherungsrichtlinie ändere?
+    answer: >
+      Wenn eine neue Richtlinie angewendet wird, gelten der Zeitplan und die Aufbewahrungseinstellungen der neuen Richtlinie.
+
+
+      - Bei einer Ausweitung der Aufbewahrung werden bereits vorhandene Wiederherstellungspunkte markiert, um sie gemäß der neuen Richtlinie aufzubewahren.
+
+      - Bei einer Verkürzung der Aufbewahrung werden sie zum Löschen im Rahmen der nächsten Bereinigung markiert und demgemäß gelöscht.
+  - question: >
+      Wie lange werden die Daten nach dem Beenden der Sicherung aufbewahrt, wenn die Option zur Aufbewahrung der Sicherungsdaten ausgewählt ist?
+    answer: >
+      Wenn die Sicherungen beendet und die Daten aufbewahrt werden, enden die bestehenden Richtlinienregeln für die Datenbereinigung, und die Daten werden auf unbestimmte Zeit aufbewahrt, bis der Administrator die Löschung veranlasst.
+- name: Verschlüsselung
+  questions:
+  - question: >
+      Werden die Daten verschlüsselt an Azure gesendet?
+    answer: >
+      Ja. Daten werden auf dem lokalen Computer mit AES256 verschlüsselt. Die Daten werden über eine sichere HTTPS-Verbindung übertragen. Die in der Cloud übertragenen Daten werden nur zwischen dem Speicher und dem Wiederherstellungsdienst durch eine HTTPS-Verbindung geschützt. Die zwischen dem Wiederherstellungsdienst und dem Computer des Benutzers übertragenen Daten werden durch das iSCSI-Protokoll gesichert. Der iSCSI-Kanal wird durch sicheres Tunneling geschützt.
+  - question: >
+      Werden die Sicherungsdaten auf Azure ebenfalls verschlüsselt?
+    answer: >
+      Ja. Die Daten in Azure sind im Ruhezustand verschlüsselt.
+
+
+      - Für die lokale Sicherung erfolgt eine Verschlüsselung im Ruhezustand über die beim Sichern in Azure bereitgestellte Passphrase.
+
+      - Für virtuelle Azure-Computer werden die Daten mit der Speicherdienstverschlüsselung (Storage Service Encryption, SSE) im Ruhezustand verschlüsselt.
+
+
+      Die Sicherungsdaten werden zu keinem Zeitpunkt von Microsoft entschlüsselt.
+  - question: >
+      Wie lang muss der Verschlüsselungsschlüssel zur Verschlüsselung von Sicherungsdaten mindestens sein?
+    answer: >
+      Der vom Microsoft Azure Recovery Services-Agent (MARS) verwendete Verschlüsselungsschlüssel wird von einer Passphrase abgeleitet, die mindestens 16 Zeichen lang sein sollte. Bei virtuellen Azure-Computern gibt es keine Längenbegrenzung für Schlüssel, die von Azure Key Vault verwendet werden.
+  - question: >
+      Was geschieht, wenn ich den Schlüssel verlege? Kann ich die Daten wiederherstellen? Kann Microsoft die Daten wiederherstellen?
+    answer: >
+      Der Schlüssel zum Verschlüsseln der Sicherungsdaten ist nur an Ihrem Standort vorhanden. Microsoft behält keine Kopie in Azure und hat keinen Zugriff auf den Schlüssel. Wenn Sie den Schlüssel verlegen, kann Microsoft die gesicherten Daten nicht wiederherstellen.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nLesen Sie die anderen häufig gestellten Fragen:\n\n- [Gängige Fragen](backup-azure-vm-backup-faq.yml) zu Azure VM-Sicherungen\n- [Gängige Fragen](backup-azure-file-folder-backup-faq.yml) zum Azure Backup-Agent"
