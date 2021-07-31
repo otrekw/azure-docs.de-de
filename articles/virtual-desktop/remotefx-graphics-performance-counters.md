@@ -1,17 +1,17 @@
 ---
 title: Diagnostizieren von Problemen mit der Grafikleistung in Remotedesktop – Azure
-description: Dieser Artikel beschreibt, wie Sie Leistungsindikatoren in RemoteFX-Grafik in Remotedesktopprotokoll-Sitzungen verwenden, um Leistungsprobleme mit Grafiken in Windows Virtual Desktop zu diagnostizieren.
+description: Dieser Artikel beschreibt, wie Sie Leistungsindikatoren in RemoteFX-Grafik in Remotedesktopprotokoll-Sitzungen verwenden, um Leistungsprobleme mit Grafiken in Azure Virtual Desktop zu diagnostizieren.
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: fc1bb9d6dbdb024fba6544c25951ba94384132b0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 86d5aa82aaf51d0d2407799050f92a04a12c4a58
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445735"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752925"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostizieren von Problemen mit der Grafikleistung in Remotedesktop
 
@@ -100,6 +100,6 @@ Wenn Clientressourcen den Engpass verursachen, versuchen Sie die Leistung mit ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Erstellen eines GPU-optimierten virtuellen Azure-Computers finden Sie unter [Konfigurieren der Beschleunigung durch Graphics Processing Units (GPU) für die Windows Virtual Desktop-Umgebung](configure-vm-gpu.md).
+- Informationen zum Erstellen eines GPU-optimierten virtuellen Azure-Computers finden Sie unter [Konfigurieren der Beschleunigung durch Graphics Processing Units (GPU) für die Azure Virtual Desktop-Umgebung](configure-vm-gpu.md).
 - Eine Übersicht über die Problembehandlung und Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
 - Weitere Informationen zum Dienst finden Sie unter [Windows Desktop-Umgebung](environment-setup.md).

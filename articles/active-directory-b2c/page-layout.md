@@ -8,19 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/05/2021
+ms.date: 05/26/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8469e05b82a651760829761ca57af3bdb1b256a9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: bb2a0cbba9d1aaf4a4465de7d4b994cde45f6df1
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443405"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590178"
 ---
 # <a name="page-layout-versions"></a>Seitenlayoutversionen
 
 Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesserungen in ihre Seitenelemente aufzunehmen. Das folgende Änderungsprotokoll gibt die in den einzelnen Versionen eingeführten Änderungen an.
+
+> [!IMPORTANT]
+> Azure Active Directory B2C veröffentlicht Verbesserungen und Fehlerbehebungen für jede neue Seitenlayoutversion. Es wird dringend empfohlen, Ihre Seitenlayoutversionen auf dem neuesten Stand zu halten, damit alle Seitenelemente die neuesten Sicherheitserweiterungen, Standards der Barrierefreiheit und Ihr Feedback widerspiegeln.
+>
 
 ## <a name="jquery-version"></a>jQuery-Version
 
@@ -33,6 +37,12 @@ Das Azure AD B2C-Seitenlayout verwendet die folgende Version der [jQuery-Bibliot
 |1.1.0 | 1.10.2 |
 
 ## <a name="self-asserted-page-selfasserted"></a>Selbstbestätigte Seite (selbstbestätigt)
+
+**2.1.6**
+- Kennwortfehler bei zu schneller Eingabe in ein anderes Feld wurde behoben.
+
+**2.1.5**
+- Problem mit Cursorspringen unter iOS beim Bearbeiten in der Mitte des Texts behoben.
 
 **2.1.4**
 - JQuery auf Version 3.5.1 aktualisiert
@@ -93,6 +103,10 @@ Das Azure AD B2C-Seitenlayout verwendet die folgende Version der [jQuery-Bibliot
 
 > [!TIP]
 > Falls Sie Ihre Seite so lokalisieren, dass sie mehrere Gebietsschemas oder Sprachen in einem Benutzerflow unterstützt, können Sie für die ausgewählte Seitenversion die Liste mit Lokalisierungs-IDs aus dem Artikel [Lokalisierungs-IDs](localization-string-ids.md) verwenden.
+
+**2.1.5**
+- Es wurde ein Problem bei der Reihenfolge der Registerkarten behoben, bei dem die idp-Selektorvorlage auf der Anmeldeseite verwendet wurde.
+- Ein Codierungsproblem beim Text des Anmeldelinks wurde behoben.
 
 **2.1.4**
 - JQuery auf Version 3.5.1 aktualisiert

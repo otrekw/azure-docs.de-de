@@ -1,22 +1,22 @@
 ---
-title: Erweitern eines vorhandenen Hostpools in Windows Virtual Desktop (klassisch) mit neuen Sitzungshosts – Azure
-description: Hier finden Sie Informationen dazu, wie Sie einen vorhandenen Hostpool in Windows Virtual Desktop (klassisch) um neue Sitzungshosts erweitern.
+title: Erweitern eines vorhandenen Hostpools in Azure Virtual Desktop (klassisch) mit neuen Sitzungshosts – Azure
+description: Hier erfahren Sie, wie Sie einen vorhandenen Hostpool in Azure Virtual Desktop (klassisch) um neue Sitzungshosts erweitern.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f82b831d887f0ebdd659167935f2134583b3bb87
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: e459737db621dfb55b5534e60989437b293e57a9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551950"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745077"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Erweitern eines vorhandenen Hostpools in Windows Virtual Desktop (klassisch) mit neuen Sitzungshosts
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-azure-virtual-desktop-classic"></a>Erweitern eines vorhandenen Hostpools in Azure Virtual Desktop (klassisch) um neue Sitzungshosts
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../expand-existing-host-pool.md) weiter.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../expand-existing-host-pool.md) weiter.
 
 Wenn Sie die Nutzung in Ihrem Hostpool erhöhen, müssen Sie den vorhandenen Pool möglicherweise um neue Sitzungshosts erweitern, um die neue Last zu verarbeiten.
 
@@ -33,7 +33,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass der Hostpool und die Sitzungshost-V
 Sie benötigen außerdem folgende Informationen aus dem Vorgang der ersten Erstellung des Hostpools und der Sitzungshost-VMs:
 
 - Größe, Image und Namenspräfix der VM
-- Informationen zum Domänenbeitritt und Anmeldeinformationen für den Windows Virtual Desktop-Mandantenadministrator
+- Informationen zum Domänenbeitritt und Anmeldeinformationen für den Azure Virtual Desktop-Mandantenadministrator
 - Name des virtuellen Netzwerks und des Subnetzes
 
 In den nächsten Abschnitten werden die drei Methoden beschrieben, die Sie zum Erweitern des Hostpools verwenden können. Sie können jede dieser Methoden mit dem von Ihnen bevorzugten Bereitstellungstool verwenden.
@@ -83,7 +83,7 @@ Alle Werte in diesem Abschnitt müssen den Informationen entsprechen, die Sie be
 3.    Wählen Sie unter *Region* die Region aus, in der sich die Sitzungshost-VMs des vorhandenen Hostpools befinden.
 4.    Geben Sie unter *Hostpoolname* den Namen des vorhandenen Hostpools ein.
 5.    Wählen Sie als *Desktoptyp* den Typ aus, der mit dem vorhandenen Hostpool übereinstimmt.
-6.    Geben Sie für *Standarddesktopbenutzer* eine mit Trennzeichen getrennte Liste mit allen zusätzlichen Benutzern ein, denen Sie erlauben möchten, sich nach Abschluss des Azure Marketplace-Angebots bei Windows Virtual Desktop-Clients anzumelden und auf einen Desktop zuzugreifen. Geben Sie also beispielsweise „user3@contoso.com,user4@contoso.com“ ein, um user3@contoso.com und user4@contoso.com Zugriff zu gewähren.
+6.    Geben Sie für *Standarddesktopbenutzer* eine mit Trennzeichen getrennte Liste mit allen zusätzlichen Benutzern ein, denen Sie erlauben möchten, sich nach Abschluss des Azure Marketplace-Angebots bei Azure Virtual Desktop-Clients anzumelden und auf einen Desktop zuzugreifen. Geben Sie also beispielsweise „user3@contoso.com,user4@contoso.com“ ein, um user3@contoso.com und user4@contoso.com Zugriff zu gewähren.
 7.    Wählen Sie **Weiter: Virtuellen Computer konfigurieren** aus.
 
 >[!NOTE]
@@ -109,14 +109,14 @@ Alle Parameterwerte in diesem Abschnitt müssen den Informationen entsprechen, d
 1. Geben Sie für *Imagequelle* und *Betriebssystemversion des Images* dieselben Informationen ein, die Sie beim ersten Erstellen des Hostpools angegeben haben.
 2. Geben Sie für *UPN für AD-Domänenbeitritt* und die zugehörigen Kennwörter dieselben Informationen ein, die Sie beim ersten Erstellen des Hostpools angegeben haben, um die VMs in die Active Directory-Domäne einzubinden. Mit diesen Anmeldeinformationen wird ein lokales Konto auf Ihren virtuellen Computern erstellt. Sie können diese lokalen Konten später zurücksetzen, um die Anmeldeinformationen zu ändern.
 3. Wählen Sie dasselbe virtuelle Netzwerk und Subnetz aus, in dem sich die Sitzungshost-VMs des vorhandenen Hostpools befinden.
-4. Wählen Sie **Weiter: Informationen zu Windows Virtual Desktop konfigurieren** aus.
+4. Klicken Sie auf **Weiter: Konfigurieren von Azure Virtual Desktop-Informationen**.
 
-### <a name="windows-virtual-desktop-information"></a>Informationen zu Windows Virtual Desktop
+### <a name="azure-virtual-desktop-information"></a>Azure Virtual Desktop-Informationen
 
 Alle Parameterwerte in diesem Abschnitt müssen den Informationen entsprechen, die Sie beim ersten Erstellen des Hostpools und der Sitzungshost-VMs angegeben haben:
 
-1. Geben Sie in *Name der Windows Virtual Desktop-Mandantengruppe* den Namen für die Mandantengruppe ein, die Ihren Mandanten enthält. Lassen Sie den Standardnamen, es sei denn, Ihnen wurde ein spezieller Mandantengruppenname bereitgestellt.
-2. Geben Sie für *Name des Windows Virtual Desktop-Mandanten* den Namen des Mandanten ein, in dem Sie diesen Hostpool erstellen möchten.
+1. Geben Sie in *Name der Azure Virtual Desktop-Mandantengruppe* den Namen für die Mandantengruppe ein, die Ihren Mandanten enthält. Lassen Sie den Standardnamen, es sei denn, Ihnen wurde ein spezieller Mandantengruppenname bereitgestellt.
+2. Geben Sie für *Name des Azure Virtual Desktop-Mandanten* den Namen des Mandanten ein, in dem Sie diesen Hostpool erstellen möchten.
 3. Geben Sie dieselben Anmeldeinformationen an, die Sie beim ersten Erstellen des Hostpools und der Sitzungshost-VMs verwendet haben. Wenn Sie einen Dienstprinzipal verwenden, geben Sie die ID der Azure Active Directory-Instanz ein, in der sich der Dienstprinzipal befindet.
 4. Wählen Sie **Weiter: Überprüfen + erstellen**.
 
@@ -126,7 +126,7 @@ Befolgen Sie die Anweisungen unter [Ausführen der Azure Resource Manager-Vorlag
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihren vorhandenen Hostpool erweitert haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um die Einstellungen im Rahmen einer Benutzersitzung zu testen. Sie können jeden der folgenden Clients verwenden, um eine Verbindung mit einer Sitzung herzustellen:
+Nachdem Sie Ihren vorhandenen Hostpool erweitert haben, können Sie sich bei einem Azure Virtual Desktop-Client anmelden, um die Einstellungen im Rahmen einer Benutzersitzung zu testen. Sie können jeden der folgenden Clients verwenden, um eine Verbindung mit einer Sitzung herzustellen:
 
 - [Herstellen einer Verbindung mit dem Windows-Desktopclient](connect-windows-7-10-2019.md)
 - [Herstellen einer Verbindung mit dem Webclient](connect-web-2019.md)

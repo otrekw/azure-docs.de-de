@@ -114,7 +114,7 @@ Wenn Ihre Standardzahlungsmethode die Überweisung ist, überprüfen Sie Ihre Re
 > - [Guayana](/legal/pay/guyana)
 > - [Haiti](/legal/pay/haiti)
 > - [Honduras](/legal/pay/honduras)
-> - [Hongkong](/legal/pay/hong-kong)
+> - [Hongkong (SAR)](/legal/pay/hong-kong)
 > - [Ungarn](/legal/pay/hungary)
 > - [Island](/legal/pay/iceland)
 > - [Indien](/legal/pay/india)

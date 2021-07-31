@@ -1,24 +1,27 @@
 ---
 title: Behandeln von Konflikten zwischen Regionen in Azure Cosmos DB
 description: Erfahren Sie, wie Sie Konflikte in Azure Cosmos DB verwalten, indem Sie die Richtlinie zur Konfliktlösung erstellen, bei der der letzte Schreibvorgang Priorität hat.
-author: anfeldma-ms
+author: fsautomata
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
-ms.author: anfeldma
+ms.author: elioda
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd4743657e6ac45b37d1e5eb7b2687ab6fc52270
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339341"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591636"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Verwalten von Konfliktauflösungsrichtlinien in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bei Schreibvorgängen in mehreren Regionen können Konflikte auftreten, wenn mehrere Clients in das gleiche Element schreiben. Wenn es zu einem Konflikt kommt, können Sie diesen mithilfe verschiedener Konfliktlösungsrichtlinien beheben. In diesem Artikel erfahren Sie, wie Sie Konfliktlösungsrichtlinien verwalten.
+
+> [!TIP]
+> Die Konfliktlösungsrichtlinie kann nur zum Zeitpunkt der Containererstellung angegeben und nach der Containererstellung nicht mehr geändert werden.
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Erstellen einer Konfliktlösungsrichtlinie vom Typ „Letzter Schreiber gewinnt“
 

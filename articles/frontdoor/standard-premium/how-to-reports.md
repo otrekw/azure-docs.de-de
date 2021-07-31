@@ -364,7 +364,7 @@ Der Bericht enthält sieben Tabellen, die jeweils die folgenden Felder aufweisen
 * CustomRuleRequests 
 * BotRequests 
 
-Die sieben Tabellen enthalten Daten für Zeit, Regel-ID, Land, IP-Adresse, URL, Hostname und Benutzer-Agent. 
+Die sieben Tabellen enthalten Daten für Zeit, Regel-ID, Land/Region, IP-Adresse, URL, Hostname und Benutzer-Agent. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

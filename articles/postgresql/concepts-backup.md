@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: db3b62e7ce07c1e10bc5030c37cb8957d281ea05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/29/2021
+ms.openlocfilehash: 585a2cf1a3dcbc1c45ae40b728b28ece505efee3
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100517296"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110788364"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL – Einzelserver
 
@@ -34,13 +34,16 @@ Bei Servern, die bis zu 4 TB Speicher unterstützen, erfolgt jede Woche eine vo
 
 In einigen [Azure-Regionen](./concepts-pricing-tiers.md#storage) unterstützen alle neu bereitgestellten Server bis zu 16 TB Speicher. Die Sicherungen auf diesen großen Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen. Differenzielle Momentaufnahmensicherungen erfolgen nicht nach einem festgelegten Zeitplan. An einem Tag werden drei differenzielle Momentaufnahmensicherungen durchgeführt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt. 
 
+> [!NOTE]
+> Automatische Sicherungen werden für [Replikatserver](./concepts-read-replicas.md) ausgeführt, die mit einer Speicherkonfiguration von bis zu 4 TB konfiguriert sind.
+
 ### <a name="backup-retention"></a>Sicherungsaufbewahrung
 
 Sicherungen werden basierend auf der Einstellung für den Aufbewahrungszeitraum der Sicherung auf dem Server beibehalten. Sie können einen Aufbewahrungszeitraum von 7 bis 35 Tagen auswählen. Der Standardaufbewahrungszeitraum beträgt sieben Tage. Sie können den Aufbewahrungszeitraum bei der Servererstellung oder später festlegen, indem Sie die Sicherungskonfiguration mithilfe des [Azure-Portals](./howto-restore-server-portal.md#set-backup-configuration) oder über die [Azure CLI](./howto-restore-server-cli.md#set-backup-configuration) aktualisieren. 
 
 Mit „Aufbewahrungszeit für Sicherung“ wird auch gesteuert, für welchen zurückliegenden Zeitraum eine Point-in-Time-Wiederherstellung durchgeführt werden kann, da dies auf den verfügbaren Sicherungen basiert. Der Aufbewahrungszeitraum kann auch als Wiederherstellungsfenster im Hinblick auf die Wiederherstellung behandelt werden. Alle Sicherungen, die zum Durchführen einer Zeitpunktwiederherstellung innerhalb des Aufbewahrungszeitraums für die Sicherung erforderlich sind, werden im Sicherungsspeicher beibehalten. Wenn der Aufbewahrungszeitraum für Sicherungen beispielsweise auf sieben Tage festgelegt ist, entspricht das Wiederherstellungsfenster einer Dauer von sieben Tagen. In diesem Szenario bleiben alle Sicherungen erhalten, die zum Wiederherstellen des Servers in den letzten sieben Tagen erforderlich sind. Beispiel für Sicherungsaufbewahrungsfenster von sieben Tagen:
 - Bei Servern mit bis zu 4 TB Speicher werden bis zu zwei vollständige Datenbanksicherungen, alle differenziellen Sicherungen sowie Transaktionsprotokollsicherungen beibehalten, die seit der frühesten Datenbanksicherung durchgeführt wurden.
--   Bei Servern mit bis zu 16 TB Speicher werden die vollständige Datenbankmomentaufnahme, alle differenziellen Momentaufnahmen und die Transaktionsprotokollsicherungen der letzten acht Tage beibehalten.
+- Bei Servern mit bis zu 16 TB Speicher werden die vollständige Datenbankmomentaufnahme, alle differenziellen Momentaufnahmen und die Transaktionsprotokollsicherungen der letzten acht Tage beibehalten.
 
 ### <a name="backup-redundancy-options"></a>Optionen für Sicherungsredundanz
 

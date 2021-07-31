@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: 5a7b8c2f76abc9dd41894280e7cf610d0cae85ea
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90930315"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554869"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>Verwalten zonenredundanter Hochverfügbarkeit in flexiblen Servern
 
@@ -95,6 +95,46 @@ Führen Sie diese Schritte aus, um die Hochverfügbarkeit für Ihren flexiblen S
 5.  Klicken Sie auf die Schaltfläche **Hochverfügbarkeit deaktivieren**, um die Hochverfügbarkeit zu deaktivieren.
 
 6.  Es wird eine Benachrichtigung angezeigt, die besagt, dass die Außerbetriebnahme der Bereitstellung der Hochverfügbarkeit ausgeführt wird.
+
+## <a name="forced-failover"></a>erzwungenes Failover
+
+Führen Sie die folgenden Schritte aus, um ein Failover Ihres primären Servers auf den flexiblen Standbyserver zu erzwingen. Dadurch wird der primäre Server sofort heruntergefahren und ein Failover auf den Standbyserver ausgelöst. Dies kann bspw. nützlich sein, wenn Sie die Failoverzeit bei ungeplanten Ausfällen für Ihre Workload testen möchten.
+
+1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren vorhandenen flexiblen Server aus, für den das Hochverfügbarkeitsfeature bereits aktiviert ist.
+2.  Klicken Sie auf der Seite „Flexibler Server“ im vorderen Bereich auf Hochverfügbarkeit, um die Seite „Hochverfügbarkeit“ zu öffnen.
+3.  Überprüfen Sie die Primäre Verfügbarkeitszone und die Standbyverfügbarkeitszone.
+4.  Klicken Sie auf Erzwungenes Failover, um das manuelle Failoververfahren einzuleiten. In einem Popupfenster werden Sie über die potenzielle Ausfallzeit bis zum Abschluss des Failovers informiert. Lesen Sie die Meldung und klicken Sie dann auf OK.
+5.  In einer Benachrichtigung wird mitgeteilt, dass ein Failover ausgeführt wird.
+6.  Sobald das Failover auf den Standbyserver vollständig ist, wird eine entsprechende Benachrichtigung angezeigt.
+7.  Überprüfen Sie die neue Primäre Verfügbarkeitszone und die Standbyverfügbarkeitszone.
+    
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/ha-forced-failover.png" alt-text="Bedarfsgesteuertes erzwungenes Failover"::: 
+
+>[!IMPORTANT] 
+> * Bitte führen Sie nicht sofort ein erneutes Failover durch. Warten Sie mindestens 15 bis 20 Minuten zwischen mehreren Failovers, damit der neue Standbyserver vollständig eingerichtet werden kann.
+>
+> * Die insgesamt im Portal gemeldete End-to-End-Vorgangszeit ist möglicherweise länger als die tatsächliche Ausfallzeit der Anwendung. Sie sollten die Ausfallzeit der Anwendung messen. 
+
+## <a name="planned-failover"></a>Geplantes Failover
+
+Führen Sie die folgenden Schritte aus, um ein geplantes Failover von Ihrem primären Server auf den flexiblen Standbyserver durchzuführen. Dadurch wird zunächst der Standbyserver vorbereitet und anschließend das Failover ausgeführt. Auf diese Weise kann ein ordnungsgemäßer Failover auf den Standbyserver durchgeführt und die Downtime so gering wie möglich gehalten werden. Dies ist insbesondere in Situationen nützlich, in denen Sie den primären Server nach einem Failoverereignis wieder in die bevorzugte Verfügbarkeitszone zurückbringen möchten.
+1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren vorhandenen flexiblen Server aus, für den das Hochverfügbarkeitsfeature bereits aktiviert ist.
+2.  Klicken Sie auf der Seite „Flexibler Server“ im vorderen Bereich auf Hochverfügbarkeit, um die Seite „Hochverfügbarkeit“ zu öffnen.
+3.  Überprüfen Sie die Primäre Verfügbarkeitszone und die Standbyverfügbarkeitszone.
+4.  Klicken Sie auf „Geplantes Failover“, um das manuelle Failoververfahren einzuleiten. Ein Popupfenster informiert Sie über den Prozess. Lesen Sie die Meldung und klicken Sie dann auf OK.
+5.  In einer Benachrichtigung wird mitgeteilt, dass ein Failover ausgeführt wird.
+6.  Sobald das Failover auf den Standbyserver vollständig ist, wird eine entsprechende Benachrichtigung angezeigt.
+7.  Überprüfen Sie die neue Primäre Verfügbarkeitszone und die Standbyverfügbarkeitszone.
+        :::image type="content" source="./media/how-to-manage-high-availability-portal/ha-planned-failover.png" alt-text="Bedarfsgesteuertes geplantes Failover"::: 
+
+>[!IMPORTANT] 
+>
+> * Bitte führen Sie nicht sofort ein erneutes Failover durch. Warten Sie mindestens 15 bis 20 Minuten zwischen mehreren Failovers, damit der neue Standbyserver vollständig eingerichtet werden kann.
+>
+> * Es wird empfohlen, geplante Failover während eines Zeitraums mit geringer Aktivität durchzuführen.
+>
+> * Die gesamte End-to-End-Vorgangszeit ist möglicherweise länger als die tatsächliche Ausfallzeit der Anwendung. Sie sollten die Ausfallzeit der Anwendung messen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: Netzwerkisolation in Azure DevTest Labs
 description: Hier erfahren Sie mehr über die Netzwerkisolation in Azure DevTest Labs.
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: 28bfa048a8a6666deb58a8ecfff38779c91d95b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7a46d242d16cf1c84495fbd2f2f10911cf4f1e9
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96352931"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111809516"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>Netzwerkisolation in DevTest Labs
 
@@ -75,6 +75,10 @@ Dadurch lässt Azure Storage eingehende Verbindungen aus dem hinzugefügten virt
 Sie können diese Schritte auch automatisieren, um diese Einstellung für mehrere Labs zu konfigurieren. 
 
 [Weitere Informationen zum Verwalten standardmäßiger Netzwerkzugriffsregeln für Azure Storage mithilfe von PowerShell und der CLI](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#powershell)
+
+## <a name="network-isolation-for-an-existing-lab"></a>Netzwerkisolation für ein vorhandenes Lab
+
+Als Labbesitzer können Sie das Netzwerk für ein vorhandenes Lab isolieren. [Dieses Beispielskript](https://github.com/Azure/azure-devtestlab/blob/master/Tools/ConvertDtlLabToIsolatedNetwork/Convert-DtlLabToIsolatedNetwork.ps1) veranschaulicht, wie Sie ein vorhandenes Lab und zugeordnete Labressourcen in einen isolierten Netzwerkmodus versetzen. 
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>Wichtige Aspekte bei der Verwendung eines Labs im netzwerkisolierten Modus
 

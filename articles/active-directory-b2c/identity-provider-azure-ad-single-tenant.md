@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 05/26/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9a31fe8046e6bb0a933ade78ee2c7f4b208767a7
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: a6952679ad2497a059b6ad043ef5e1e23fea0236
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028348"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744069"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für eine bestimmte Azure Active Directory-Organisation in Azure Active Directory B2C
 
@@ -64,7 +64,7 @@ Wenn Sie die Anmeldung für Benutzer mit einem Azure AD-Konto einer bestimmten 
 
 Wenn Sie die Ansprüche `family_name` und `given_name` von Azure AD erhalten möchten, können Sie optionale Ansprüche für Ihre Anwendung im Azure-Portal oder im Anwendungsmanifest konfigurieren. Weitere Informationen finden Sie unter [Bereitstellen optionaler Ansprüche für Ihre Azure AD-App](../active-directory/develop/active-directory-optional-claims.md).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Melden Sie sich unter Verwendung des Azure AD-Mandanten Ihrer Organisation beim [Azure-Portal](https://portal.azure.com) an. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie im Abschnitt **Verwalten** die Option **App-Registrierungen** aus.
 1. Wählen Sie in der Liste die Anwendung aus, für die Sie optionale Ansprüche konfigurieren möchten.
 1. Wählen Sie im Abschnitt **Verwalten** die Option **Tokenkonfiguration** aus.
@@ -114,7 +114,7 @@ Der Azure AD-Identitätsanbieter wurde nun eingerichtet, er ist jedoch noch auf 
 1. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** die Option **Contoso Azure AD** aus.
 1. Wählen Sie **Speichern** aus.
 1. Um die Richtlinie zu testen, wählen Sie **Benutzerflow ausführen** aus.
-1. Wählen Sie für **Anwendung** die Webanwendung *testapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden. 
 1. Wählen Sie die Schaltfläche **Benutzerflow ausführen** aus.
 1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Contoso Azure AD** aus, um sich mit dem Azure AD-Konto für „Contoso“ anzumelden.
 

@@ -1,20 +1,20 @@
 ---
-title: Erstellen eines Azure-VM-Angebots aus einer genehmigten Basis, Azure Marketplace
-description: Erfahren Sie, wie Sie ein Azure-VM-Angebot aus einer genehmigten Basis erstellen.
+title: Erstellen eines Azure-VM-Angebots aus einer genehmigten Basis
+description: Erfahren Sie, wie Sie ein Azure-VM-Angebot aus einer genehmigten Basis erstellen (Azure Marketplace).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: 19ae4b929964aaeb971bef75a2a620e40e4667f5
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 23fc6f6f6a62230e2cfc710c1c738eb42d6cc115
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727166"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527536"
 ---
-# <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Erstellen eines virtuellen Computers mit einer genehmigten Basis
+# <a name="create-a-virtual-machine-using-an-approved-base"></a>Erstellen eines virtuellen Computers mit einer genehmigten Basis
 
 In diesem Artikel wird beschrieben, wie Sie mit Azure eine VM mit einem vorkonfigurierten, unterstützten Betriebssystem erstellen. Falls dies nicht mit Ihrer Lösung kompatibel ist, [können Sie eine lokale VM mit einem genehmigten Betriebssystem erstellen und konfigurieren](azure-vm-create-using-own-image.md).
 

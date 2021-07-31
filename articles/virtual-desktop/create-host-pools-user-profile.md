@@ -1,21 +1,21 @@
 ---
-title: FSLogix-Profilcontainerfreigabe mit Windows Virtual Desktop – Azure
-description: Es wird beschrieben, wie Sie einen FSLogix-Profilcontainer für einen Windows Virtual Desktop-Hostpool mit einer Dateifreigabe einrichten, die sich auf einem virtuellen Computer befindet.
+title: FSLogix-Profilcontainerfreigabe mit Azure Virtual Desktop – Azure
+description: Es wird beschrieben, wie Sie einen FSLogix-Profilcontainer für einen Azure Virtual Desktop-Hostpool mit einer Dateifreigabe einrichten, die sich auf einem virtuellen Computer befindet.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 33e1b069221331aed8f8ca13bd088ba067a85ba7
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: a1398c23adcadaf245bae7271ed91e7d2a6763da
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752461"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756093"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Erstellen eines Profilcontainers für einen Hostpool mit einer Dateifreigabe
 
-Der Windows Virtual Desktop-Dienst stellt FSLogix-Profilcontainer als empfohlene Lösung für Benutzerprofile bereit. Wir raten davon ab, die Lösung „Benutzerprofil-Datenträger“ (User Profile Disk, UPD) zu nutzen. Sie wird in den zukünftigen Versionen von Windows Virtual Desktop als veraltet eingestuft.
+Der Azure Virtual Desktop-Dienst stellt FSLogix-Profilcontainer als empfohlene Lösung für Benutzerprofile bereit. Wir raten davon ab, die Lösung „Benutzerprofil-Datenträger“ (User Profile Disk, UPD) zu nutzen. Sie wird in den zukünftigen Versionen von Azure Virtual Desktop als veraltet eingestuft.
 
 In diesem Artikel ist beschrieben, wie Sie eine FSLogix-Profilcontainerfreigabe für einen Hostpool mit einer Dateifreigabe einrichten, die sich auf einem virtuellen Computer befindet. Es wird dringend empfohlen, anstelle von Dateifreigaben Azure Files zu verwenden. Weitere FSLogix-Dokumentation finden Sie auf der [FSLogix-Website](https://docs.fslogix.com/).
 
@@ -42,12 +42,12 @@ Nachdem Sie den virtuellen Computer erstellt haben, können Sie ihn in die Domä
 
 Hier ist eine allgemeine Anleitung zum Vorbereiten eines virtuellen Computers als Dateifreigabe für Benutzerprofile angegeben:
 
-1. Fügen Sie die Windows Virtual Desktop Active Directory-Benutzer einer [Active Directory-Sicherheitsgruppe](/windows/security/identity-protection/access-control/active-directory-security-groups/) hinzu. Diese Sicherheitsgruppe wird zum Authentifizieren der Windows Virtual Desktop-Benutzer gegenüber dem virtuellen Dateifreigabencomputer verwendet, den Sie gerade erstellt haben.
+1. Fügen Sie die Azure Virtual Desktop Active Directory-Benutzer einer [Active Directory-Sicherheitsgruppe](/windows/security/identity-protection/access-control/active-directory-security-groups/) hinzu. Diese Sicherheitsgruppe wird zum Authentifizieren der Azure Virtual Desktop-Benutzer gegenüber dem virtuellen Dateifreigabencomputer verwendet, den Sie gerade erstellt haben.
 2. [Stellen Sie die Verbindung mit dem virtuellen Dateifreigabencomputer her](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine).
 3. Erstellen Sie auf dem virtuellen Dateifreigabencomputer einen Ordner auf **Laufwerk C**, der als Profilfreigabe verwendet wird.
 4. Klicken Sie mit der rechten Maustaste auf den neuen Ordner, und wählen Sie dann nacheinander die Optionen **Eigenschaften**, **Freigabe** und **Erweiterte Freigabe...** .
 5. Wählen Sie **Diesen Ordner freigeben**, **Berechtigungen...** und dann **Hinzufügen...** .
-6. Suchen Sie nach der Sicherheitsgruppe, der Sie die Windows Virtual Desktop-Benutzer hinzugefügt haben, und stellen Sie dann sicher, dass für die Gruppe **Vollzugriff** festgelegt wurde.
+6. Suchen Sie nach der Sicherheitsgruppe, der Sie die Azure Virtual Desktop-Benutzer hinzugefügt haben, und stellen Sie dann sicher, dass für die Gruppe **Vollzugriff** festgelegt wurde.
 7. Klicken Sie nach dem Hinzufügen der Sicherheitsgruppe mit der rechten Maustaste auf den Ordner, wählen Sie **Eigenschaften** und **Freigabe**, und kopieren Sie anschließend den **Netzwerkpfad** zur späteren Verwendung.
 
 Weitere Informationen über Berechtigungen finden Sie in der [FSLogix-Dokumentation](/fslogix/fslogix-storage-config-ht/).
@@ -70,4 +70,4 @@ Führen Sie auf allen Computern, die für den Hostpool registriert sind, Folgend
 | VHDLocations        | Mehrteiliger Zeichenfolgenwert | „Netzwerkpfad für Dateifreigabe“     |
 
 >[!IMPORTANT]
->Zum Schutz Ihrer Windows Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren virtuellen Computern nicht zu öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](../security-center/security-center-just-in-time.md).
+>Zum Schutz Ihrer Azure Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren virtuellen Computern nicht zu öffnen. Für Azure Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](../security-center/security-center-just-in-time.md).

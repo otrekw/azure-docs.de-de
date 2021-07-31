@@ -1,5 +1,7 @@
 - name: Dokumentation mit grundlegenden Informationen
   href: index.yml
+- name: Wiederherstellen nach kompromittierter Systemidentität
+  href: recover-from-identity-compromise.md
 - name: Übersicht
   items:
     - name: Einführung in die Azure-Sicherheit

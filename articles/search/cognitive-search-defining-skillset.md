@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ec7f9a874bff6eaa0e23f5fb926bf031f2b059d
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88935448"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555969"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Erstellen eines Skillsets in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche 
 
@@ -84,7 +84,7 @@ Content-Type: application/json
       "outputs": [
         {
           "name": "organizations",
-          "targetName": "organizations"
+          "targetName": "orgs"
         }
       ]
     },
@@ -110,11 +110,11 @@ Content-Type: application/json
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       },
-      "context": "/document/organizations/*",
+      "context": "/document/orgs/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/organizations/*"
+          "source": "/document/orgs/*"
         }
       ],
       "outputs": [
@@ -144,11 +144,11 @@ Das nächste Segment im Skillset ist ein Array von Skills. Man kann sich jeden S
 
 ## <a name="add-built-in-skills"></a>Hinzufügen integrierter Qualifikationen
 
-Betrachten Sie die erste Qualifikation, bei der es sich um die integrierte [Qualifikation „Entitätserkennung“](cognitive-search-skill-entity-recognition.md) handelt:
+Betrachten Sie die erste Qualifikation, bei der es sich um die integrierte [Qualifikation „Entitätserkennung“](cognitive-search-skill-entity-recognition-v3.md) handelt:
 
 ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
       "context": "/document",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
@@ -161,7 +161,7 @@ Betrachten Sie die erste Qualifikation, bei der es sich um die integrierte [Qual
       "outputs": [
         {
           "name": "organizations",
-          "targetName": "organizations"
+          "targetName": "orgs"
         }
       ]
     }
@@ -169,19 +169,21 @@ Betrachten Sie die erste Qualifikation, bei der es sich um die integrierte [Qual
 
 * Jede integrierte Qualifikation verfügt über die Eigenschaften `odata.type`, `input` und `output`. Skillspezifische Eigenschaften bieten zusätzliche Informationen, die auf diesen Skill anwendbar sind. Bei der Entitätserkennung ist `categories` eine Entität aus einem festen Satz von Entitätstypen, die das vortrainierte Modell erkennen kann.
 
-* Jeder Skill muss über ein ```"context"```-Element verfügen. Der Kontext stellt die Ebene dar, auf der Vorgänge ausgeführt werden. In der oben gezeigten Qualifikation ist der Kontext das gesamte Dokument. Das bedeutet, dass die Qualifikation „Entitätserkennung“ einmal pro Dokument aufgerufen wird. Auf dieser Ebene werden auch Ausgaben erzeugt. Genauer gesagt werden ```"organizations"``` als Element von ```"/document"``` generiert. In den nachfolgenden Skills wird auf diese neu erstellten Informationen mit ```"/document/organizations"``` verwiesen.  Wenn das Feld ```"context"``` nicht explizit festgelegt ist, wird das Dokument als Standardkontext genommen.
+* Jeder Skill muss über ein ```"context"```-Element verfügen. Der Kontext stellt die Ebene dar, auf der Vorgänge ausgeführt werden. In der oben gezeigten Qualifikation ist der Kontext das gesamte Dokument. Das bedeutet, dass die Qualifikation „Entitätserkennung“ einmal pro Dokument aufgerufen wird. Auf dieser Ebene werden auch Ausgaben erzeugt. Der Skill gibt eine Eigenschaft namens ```organizations``` zurück, die als ```orgs``` erfasst wird. Genauer gesagt wird ```"orgs"``` jetzt als Member von ```"/document"``` hinzugefügt. In den nachfolgenden Skills wird auf diese neu erstellte Anreicherung mit ```"/document/orgs"``` verwiesen.  Wenn das Feld ```"context"``` nicht explizit festgelegt ist, wird das Dokument als Standardkontext genommen.
 
-* Der Skill hat eine Eingabe namens „text“, wobei die Eingabe der Quelle auf ```"/document/content"``` gesetzt ist. Die Qualifikation (Entitätserkennung) wird für das *content*-Feld jedes Dokuments ausgeführt. Hierbei handelt es sich um ein Standardfeld, das vom Azure Blob-Indexer erstellt wird. 
+* Ausgaben dieses einen Skills können zu Konflikten mit Ausgaben eines anderen Skills führen. Wenn Sie über mehrere Skills verfügen, die eine ```result```-Eigenschaft zurückgeben, können Sie die ```targetName```-Eigenschaft von Skillausgaben verwenden, um eine benannte JSON-Ausgabe von einem Skill in einer anderen Eigenschaft zu erfassen.
 
-* Der Skill verfügt über eine Ausgabe mit der Bezeichnung ```"organizations"```. Ausgaben gibt es nur während der Verarbeitung. Um diese Ausgabe mit der Eingabe eines nachfolgenden Skills zu verketten, verweisen Sie auf die Ausgabe mit ```"/document/organizations"```.
+* Der Skill hat eine Eingabe namens „text“, wobei die Eingabe der Quelle auf ```"/document/content"``` gesetzt ist. Der Skill (Entitätserkennung) wird für das *content*-Feld jedes Dokuments ausgeführt. Hierbei handelt es sich um ein Standardfeld, das vom Azure-Blobindexer erstellt wird. 
 
-* Für ein bestimmtes Dokument ist der Wert von ```"/document/organizations"``` ein Array von Organisationen, die aus dem Text extrahiert werden. Beispiel:
+* Der Skill verfügt über eine Ausgabe namens ```"organizations"```, die in einer ```orgs```-Eigenschaft erfasst wird. Ausgaben gibt es nur während der Verarbeitung. Um diese Ausgabe mit der Eingabe eines nachfolgenden Skills zu verketten, verweisen Sie auf die Ausgabe mit ```"/document/orgs"```.
+
+* Für ein bestimmtes Dokument ist der Wert von ```"/document/orgs"``` ein Array von Organisationen, die aus dem Text extrahiert werden. Beispiel:
 
   ```json
   ["Microsoft", "LinkedIn"]
   ```
 
-In manchen Situationen ist es notwendig, auf jedes Element eines Arrays einzeln zu verweisen. Angenommen, Sie möchten jedes Element von ```"/document/organizations"``` separat an einen anderen Skill übergeben (wie z.B. die benutzerdefinierte Anreicherungsfunktion der Bing-Entitätssuche). Sie können auf jedes Element des Arrays verweisen, indem Sie dem Pfad ein Sternchen hinzufügen: ```"/document/organizations/*"``` 
+In manchen Situationen ist es notwendig, auf jedes Element eines Arrays einzeln zu verweisen. Angenommen, Sie möchten jedes Element von ```"/document/orgs"``` separat an einen anderen Skill übergeben (wie z.B. die benutzerdefinierte Anreicherungsfunktion der Bing-Entitätssuche). Sie können auf jedes Element des Arrays verweisen, indem Sie dem Pfad ein Sternchen hinzufügen: ```"/document/orgs/*"``` 
 
 Der zweite Skill zum Extrahieren von Stimmungen folgt dem gleichen Muster wie die erste Anreicherungsfunktion. Er verwendet ```"/document/content"``` als Eingabe und gibt einen Wert für die Stimmung für jede Inhaltsinstanz zurück. Da Sie das Feld ```"context"``` nicht explizit festgelegt haben, ist die Ausgabe (mySentiment) nun ein untergeordnetes Element von ```"/document"```.
 
@@ -215,11 +217,11 @@ Erinnern Sie sich an die Struktur der benutzerdefinierten Anreicherungsfunktion 
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       },
-      "context": "/document/organizations/*",
+      "context": "/document/orgs/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/organizations/*"
+          "source": "/document/orgs/*"
         }
       ],
       "outputs": [
@@ -233,9 +235,9 @@ Erinnern Sie sich an die Struktur der benutzerdefinierten Anreicherungsfunktion 
 
 Diese Definition ist ein [benutzerdefinierter Skill](cognitive-search-custom-skill-web-api.md), der eine Web-API als Teil des Anreicherungsprozesses aufruft. Für jede Organisation, die durch die Entitätserkennung identifiziert wird, ruft diese Qualifikation eine Web-API auf, um die Beschreibung dieser Organisation zu suchen. Eine interne Anreicherungs-Engine regelt die Orchestrierung, wann die Web-API aufgerufen werden soll und wie die empfangenen Informationen weitergeleitet werden sollen. Die für den Aufruf dieser benutzerdefinierten API erforderliche Initialisierung muss jedoch über das JSON-Dokument bereitgestellt werden (z.B. URI, HTTP-Header und die erwarteten Eingaben). Informationen zum Erstellen einer benutzerdefinierten Web-API für die Anreicherungspipeline finden Sie unter [Definieren einer benutzerdefinierten Schnittstelle](cognitive-search-custom-skill-interface.md).
 
-Beachten Sie, dass das Feld „context“ mit einem Sternchen auf ```"/document/organizations/*"``` gesetzt ist, d.h. der Anreicherungsschritt wird *für jede* Organisation unter ```"/document/organizations"``` aufgerufen. 
+Beachten Sie, dass das Feld „context“ mit einem Sternchen auf ```"/document/orgs/*"``` gesetzt ist, d.h. der Anreicherungsschritt wird *für jede* Organisation unter ```"/document/orgs"``` aufgerufen. 
 
-Die Ausgabe, in diesem Fall eine Firmenbeschreibung, wird für jede identifizierte Organisation generiert. Bei Bezugnahme auf die Beschreibung in einem nachfolgenden Schritt (z.B. bei der Schlüsselbegriffserkennung) würden Sie dazu den Pfad ```"/document/organizations/*/description"``` verwenden. 
+Die Ausgabe, in diesem Fall eine Firmenbeschreibung, wird für jede identifizierte Organisation generiert. Bei Bezugnahme auf die Beschreibung in einem nachfolgenden Schritt (z.B. bei der Schlüsselbegriffserkennung) würden Sie dazu den Pfad ```"/document/orgs/*/description"``` verwenden. 
 
 ## <a name="add-structure"></a>Hinzufügen einer Struktur
 

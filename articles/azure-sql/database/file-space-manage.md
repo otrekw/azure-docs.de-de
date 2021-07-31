@@ -3,20 +3,20 @@ title: Dateispeicherplatzverwaltung in Azure SQL-Datenbank
 description: Diese Seite beschreibt, wie Sie in Azure SQL-Datenbank Dateispeicherplatz bei Einzel- und Pooldatenbanken verwalten. Sie enthält Codebeispiele, mit denen Sie ermitteln können, ob eine Einzel- oder Pooldatenbank verkleinert werden muss. Außerdem erhalten Sie hierin die entsprechenden Anweisungen zum Verkleinern der Datenbank.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
-ms.custom: sqldbrb=1
+ms.subservice: deployment-configuration
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
-ms.date: 12/22/2020
-ms.openlocfilehash: 7bb754b892715adffc6ead99f3d866f9f9d8af9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: fb5ee8b096f64faa47756642b4e94bae429fb879
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99096490"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591258"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz für Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,7 +38,7 @@ Die Überwachung der Dateispeicherplatzverwendung und die Verkleinerung von Date
 
 ### <a name="monitoring-file-space-usage"></a>Überwachen der Dateispeicherplatzverwendung
 
-Bei den meisten Speicherplatzmetriken, die im Azure-Portal und über die folgenden APIs angezeigt werden, wird lediglich die Größe der verwendeten Datenseiten ermittelt:
+Bei den meisten Speicherplatzmetriken, die in den folgenden APIs angezeigt werden, wird lediglich die Größe der verwendeten Datenseiten ermittelt:
 
 - Azure Resource Manager-basierte Metrik-APIs einschließlich PowerShell [get-metrics](/powershell/module/az.monitor/get-azmetric)
 - T-SQL: [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
@@ -52,8 +52,15 @@ Bei den folgenden APIs wird jedoch auch die Größe des Speicherplatzes ermittel
 
 Azure SQL-Datenbank verkleinert Datendateien nicht automatisch, um aufgrund der möglichen Auswirkungen auf die Datenbankleistung ungenutzten zugewiesenen Speicherplatz freizugeben.  Kunden können Datendateien aber jederzeit selbst verkleinern, indem sie die Schritte unter [Freigeben von ungenutztem zugewiesenem Speicherplatz](#reclaim-unused-allocated-space) ausführen.
 
-> [!NOTE]
-> Im Gegensatz zu Datendateien werden die Protokolldateien von Azure SQL-Datenbank automatisch verkleinert, da dieser Vorgang die Datenbankleistung nicht beeinträchtigt.
+### <a name="shrinking-transaction-log-file"></a>Verkleinern der Transaktionsprotokolldatei
+
+Im Gegensatz zu Datendateien verkleinert Azure SQL-Datenbank die Transaktionsprotokolldatei automatisch, um eine übermäßige Speicherplatznutzung zu vermeiden, die zu Fehlern führen kann, weil nicht genügend Speicherplatz verfügbar ist. In der Regel müssen Kunden die Transaktionsprotokolldatei nicht verkleinern.
+
+Wenn das Transaktionsprotokoll in den Dienstebenen Premium und Unternehmenskritisch groß wird, kann es erheblich dazu beitragen, dass der Grenzwert für den [maximalen lokalen Speicher](resource-limits-logical-server.md#storage-space-governance) erreicht wird. Wenn sich der lokale Speicherverbrauch dem Grenzwert nähert, können Kunden das Transaktionsprotokoll mithilfe des Befehls [DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql) verkleinern, wie im folgenden Beispiel gezeigt. Dadurch wird lokaler Speicher freigegeben, nachdem der Befehl abgeschlossen wurde, ohne auf den regelmäßigen automatischen Verkleinerungsvorgang zu warten.
+
+```tsql
+DBCC SHRINKFILE (2);
+```
 
 ## <a name="understanding-types-of-storage-space-for-a-database"></a>Grundlegendes zu den Arten von Speicherplatz für eine Datenbank
 
@@ -61,7 +68,7 @@ Es wichtig, dass Sie mit den folgenden Speicherplatzmengen vertraut sind, damit 
 
 |Datenbankmenge|Definition|Kommentare|
 |---|---|---|
-|**Genutzter Speicherplatz**|Die Menge des Speicherplatzes, der zum Speichern von Daten in 8-KB-Seiten verwendet wird.|In der Regel erhöht (verringert) sich der Platzbedarf bei eingefügten (gelöschten) Daten. In manchen Fällen ändert sich der genutzte Speicherplatz beim Einfügen oder Löschen von Daten nicht, je nach Menge und Muster der an dem Vorgang beteiligten Daten und einer eventuellen Fragmentierung. Beispielsweise wird der genutzte Speicherplatz durch Löschen einer Zeile auf jeder Datenseite nicht zwangsläufig gesenkt.|
+|**Genutzter Speicherplatz**|Der Speicherplatz, der zum Speichern von Datenbankdaten verwendet wird.|In der Regel erhöht (verringert) sich der Platzbedarf bei eingefügten (gelöschten) Daten. In manchen Fällen ändert sich der genutzte Speicherplatz beim Einfügen oder Löschen von Daten nicht, je nach Menge und Muster der an dem Vorgang beteiligten Daten und einer eventuellen Fragmentierung. Beispielsweise wird der genutzte Speicherplatz durch Löschen einer Zeile auf jeder Datenseite nicht zwangsläufig gesenkt.|
 |**Zugeordneter Datenspeicherplatz**|Die Menge an formatiertem Dateispeicherplatz zum Speichern von Daten.|Die Menge des zugeordneten Speicherplatzes wächst automatisch an, wird aber nach dem Löschen nicht kleiner. Dieses Verhalten stellt sicher, dass Daten später schneller eingefügt werden, da der Platz nicht neu formatiert werden muss.|
 |**Zugeordneter Datenspeicherplatz (ungenutzt)**|Die Differenz zwischen der Menge des zugeordneten Datenspeicherplatzes und des genutzten Datenspeicherplatzes.|Diese Menge ist die maximale Menge des freien Speicherplatzes, die freigegeben werden kann, indem Datendateien von Datenbanken verkleinert werden.|
 |**Maximale Datengröße**|Die maximale Speicherplatzmenge, die zum Speichern von Datenbankdaten verwendet werden kann.|Die Menge des zugeordneten Datenspeicherplatzes kann die maximale Datengröße nicht überschreiten.|
@@ -223,21 +230,22 @@ Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](/sql/t-
 
 ### <a name="auto-shrink"></a>Automatisches Verkleinern
 
-Alternativ kann für die Datenbank auch das automatische Verkleinern aktiviert werden.  Automatisches Verkleinern vereinfacht die Dateiverwaltung und wirkt sich im Vergleich zu `SHRINKDATABASE` oder `SHRINKFILE` weniger stark auf die Datenbankleistung aus.  Insbesondere beim Verwalten von Pools für elastische Datenbanken mit zahlreichen Datenbanken kann automatisches Verkleinern äußerst hilfreich sein.  Verglichen mit `SHRINKDATABASE` und `SHRINKFILE` ist das automatische Verkleinern allerdings beim Freigeben von Dateispeicherplatz unter Umständen weniger effizient.
-Das automatische Verkleinern ist standardmäßig deaktiviert. Dies ist für die meisten Datenbanken die empfohlene Einstellung. Weitere Informationen finden Sie im Abschnitt unter [Überlegungen zu AUTO_SHRINK](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink).
+Alternativ kann für die Datenbank auch das automatische Verkleinern aktiviert werden.  Automatisches Verkleinern vereinfacht die Dateiverwaltung und wirkt sich im Vergleich zu `SHRINKDATABASE` oder `SHRINKFILE` weniger stark auf die Datenbankleistung aus. Das automatische Verkleinern kann besonders bei der Verwaltung von Pools für elastische Datenbanken mit vielen Datenbanken hilfreich sein, bei denen ein erhebliches Wachstum und eine Verringerung des belegten Speicherplatzes zu verzeichnen ist. Verglichen mit `SHRINKDATABASE` und `SHRINKFILE` ist das automatische Verkleinern allerdings beim Freigeben von Dateispeicherplatz unter Umständen weniger effizient.
 
-Wenn Sie automatisches Verkleinern aktivieren möchten, ändern Sie im folgenden Befehl den Namen der Datenbank.
+Das automatische Verkleinern ist standardmäßig deaktiviert. Dies ist für die meisten Datenbanken die empfohlene Einstellung. Wenn das automatische Verkleinern aktiviert werden muss, wird empfohlen, das automatische Verkleinern wieder zu deaktivieren, sobald die Ziele der Speicherplatzverwaltung erreicht wurden, anstatt das automatische Verkleinern dauerhaft aktiviert zu lassen. Weitere Informationen finden Sie im Abschnitt unter [Überlegungen zu AUTO_SHRINK](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink).
+
+Führen Sie den folgenden Befehl in Ihrer Datenbank aus (nicht in der Masterdatenbank), um das automatische Verkleinern zu aktivieren.
 
 ```sql
--- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON;
+-- Enable auto-shrink for the current database.
+ALTER DATABASE CURRENT SET AUTO_SHRINK ON;
 ```
 
 Weitere Informationen zu diesem Befehl finden Sie in den Optionen für [DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options).
 
 ### <a name="rebuild-indexes"></a>Neuerstellen von Indizes
 
-Nach dem Verkleinern von Datenbankdateien sind Indizes möglicherweise fragmentiert und verlieren ihre leistungsoptimierende Wirkung. Im Falle einer Leistungsbeeinträchtigung empfiehlt es sich daher ggf., die Datenbankindizes neu zu erstellen. Weitere Informationen zum Fragmentieren und Neuerstellen von Indizes finden Sie unter [Neuorganisieren und Neuerstellen von Indizes](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+Nach dem Verkleinern von Datendateien sind Indizes möglicherweise fragmentiert und verlieren ihre leistungsoptimierende Wirkung. Im Falle einer Leistungsbeeinträchtigung empfiehlt es sich daher, die Datenbankindizes neu zu erstellen. Weitere Informationen zur Fragmentierung und Indexwartung finden Sie unter [Optimale Wartung von Indizes zum Verbessern der Leistung und Verringern der Ressourcenauslastung](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26f8f5a4688eb5ccd472d7f402e6a543e318a7e2
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88935533"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559849"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Azure-Suche
 
@@ -25,7 +25,7 @@ Die Beispiele in diesem Artikel basieren auf dem *content*-Feld, das automatisch
 
 Gehen Sie vor dem Überprüfen der Syntax nun noch einmal einige wichtige Konzepte durch, um die später in diesem Artikel vorgestellten Beispiele besser zu verstehen.
 
-| Begriff | BESCHREIBUNG |
+| Begriff | Beschreibung |
 |------|-------------|
 | Angereichertes Dokument | Ein angereichertes Dokument ist eine interne Struktur, die von der Pipeline erstellt und verwendet wird, um alle Anmerkungen zu einem Dokument zu speichern. Stellen Sie sich ein angereichertes Dokument als einen Baum von Anmerkungen vor. Im Allgemeinen wird eine Anmerkung, die aus einer vorherigen Anmerkung erstellt wurde, zu deren untergeordnetem Element.<p/>Angereicherte Dokumente existieren nur für die Dauer der Skillsetausführung. Sobald der Inhalt dem Suchindex zugeordnet ist, wird das angereicherte Dokument nicht mehr benötigt. Obwohl Sie nicht direkt mit angereicherten Dokumenten interagieren, ist es nützlich, ein Gedankenmodell der Dokumente zu haben, wenn Sie ein Skillset erstellen. |
 | Anreicherungskontext | Der Kontext, in dem die Anreicherung stattfindet, d.h. welches Element angereichert wird. Standardmäßig befindet sich der Anreicherungskontext auf der Ebene `"/document"`, die auf einzelne Dokumente bezogen ist. Wenn ein Skill ausgeführt wird, werden die Ergebnisse dieses Skills zu [Eigenschaften des definierten Kontexts](#example-2).|
