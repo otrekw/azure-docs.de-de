@@ -1,6 +1,6 @@
 ---
-title: 'Häufig gestellte Fragen zu Windows Virtual Desktop: MSIX-Feature zum Anfügen von Apps – Azure'
-description: Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps für Windows Virtual Desktop.
+title: 'Häufig gestellte Fragen zu Azure Virtual Desktop: MSIX-Feature zum Anfügen von Apps – Azure'
+description: Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps für Azure Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1277e053e9a9eb6e54eb11a9ede42ca28d99d073
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cf9770fd58a7cbd75d4647284d3ee84042c7e187
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141305"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754617"
 ---
 # <a name="msix-app-attach-faq"></a>Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps
 
-In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps für Windows Virtual Desktop.
+In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps für Azure Virtual Desktop.
 
 ## <a name="whats-the-difference-between-msix-and-msix-app-attach"></a>Worin besteht der Unterschied zwischen MSIX und dem MSIX-Feature zum Anfügen von Apps?
 
@@ -27,9 +27,9 @@ MSIX ist ein Verpackungsformat für Apps, während das MSIX-Feature zum Anfügen
 
 Das MSIX-Feature zum Anfügen von Apps verwendet FSLogix nicht. Das MSIX-Feature zum Anfügen von Apps und FSLogix sind jedoch so konzipiert, dass sie zusammen verwendet werden können, um eine einheitliche Benutzererfahrung zu ermöglichen.
 
-## <a name="can-i-use-the-msix-app-attach-outside-of-windows-virtual-desktop"></a>Kann ich das MSIX-Feature zum Anfügen von Apps außerhalb von Windows Virtual Desktop verwenden?
+## <a name="can-i-use-the-msix-app-attach-outside-of-azure-virtual-desktop"></a>Kann ich das MSIX-Feature zum Anfügen von Apps außerhalb von Azure Virtual Desktop verwenden?
 
-Die APIs, die das MSIX-Feature zum Anfügen von Apps benötigt, sind für Windows 10 Enterprise verfügbar. Diese APIs können außerhalb von Windows Virtual Desktop verwendet werden. Es gibt jedoch keine Verwaltungsebene für das MSIX-Feature zum Anfügen von Apps außerhalb von Windows Virtual Desktop.
+Die APIs, die das MSIX-Feature zum Anfügen von Apps benötigt, sind für Windows 10 Enterprise verfügbar. Diese APIs können außerhalb von Azure Virtual Desktop verwendet werden. Es gibt jedoch keine Verwaltungsebene für das MSIX-Feature zum Anfügen von Apps außerhalb von Azure Virtual Desktop.
 
 ## <a name="how-do-i-get-an-msix-package"></a>Wie rufe ich ein MSIX-Paket ab?
 
@@ -43,9 +43,9 @@ Windows 10 Enterprise und Windows 10 Enterprise Multisession, mindestens Versi
 
 Das MSIX-Feature zum Anfügen von Apps ist ein Teil von Windows 10 Enterprise und Windows 10 Enterprise Multisession, mindestens Version 2004. Beide Betriebssysteme sind zurzeit allgemein verfügbar. 
 
-## <a name="can-i-use-msix-app-attach-outside-of-windows-virtual-desktop"></a>Kann ich das MSIX-Feature zum Anfügen von Apps außerhalb von Windows Virtual Desktop verwenden?
+## <a name="can-i-use-msix-app-attach-outside-of-azure-virtual-desktop"></a>Kann ich das MSIX-Feature zum Anfügen von Apps außerhalb von Azure Virtual Desktop verwenden?
 
-Die APIs für MSIX und das MSIX-Feature zum Anfügen von Apps sind Teil von Windows 10 Enterprise und Windows 10 Enterprise Multisession, mindestens Version 2004. Wir bieten derzeit außerhalb von Windows Virtual Desktop keine Verwaltungssoftware für das MSIX-Feature zum Anfügen von Apps.
+Die APIs für MSIX und das MSIX-Feature zum Anfügen von Apps sind Teil von Windows 10 Enterprise und Windows 10 Enterprise Multisession, mindestens Version 2004. Wir bieten derzeit außerhalb von Azure Virtual Desktop keine Verwaltungssoftware für das MSIX-Feature zum Anfügen von Apps.
 
 ## <a name="can-i-run-two-versions-of-the-same-application-at-the-same-time"></a>Kann ich zwei Versionen derselben Anwendung gleichzeitig ausführen?
 
@@ -58,6 +58,10 @@ Ja. Das MSIX-Feature zum Anfügen von Apps unterstützt keine automatische Aktua
 ## <a name="how-do-permissions-work-with-msix-app-attach"></a>Wie funktionieren Berechtigungen in Verbindung mit dem MSIX-Feature zum Anfügen von Apps?
 
 Alle virtuellen Computer (VMs) in einem Hostpool, der das MSIX-Feature zum Anfügen von Apps verwendet, müssen über Leseberechtigungen für die Dateifreigabe verfügen, in der die MSIX-Images gespeichert sind. Wenn er auch Azure Files verwendet, müssen ihnen sowohl rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) als auch NTFS-Berechtigungen (New Technology File System) gewährt werden.
+
+## <a name="how-many-users-can-use-an-msix-image-handle"></a>Wie viele Benutzer können ein MSIX-Imagehandle verwenden?
+
+Das MSIX-Feature zum Anfügen von Apps bindet MSIX-Images auf Computerbasis und nicht auf Benutzerbasis ein. Die Anzahl der Benutzer, die ein MSIX-Imagehandle verwenden können, basiert auf der Größe des Dateisystems des Computers und dem Durchsatz des Netzwerks. Außerdem gilt für Azure Files ein Grenzwert von 2.000 geöffneten Handles pro Datei. 
 
 ## <a name="can-i-use-azure-active-directory-domain-services-azure-ad-ds-with-msix-app-attach"></a>Kann ich Azure Active Directory Domain Services (Azure AD DS) mit dem MSIX-Feature zum Anfügen von Apps verwenden?
 
@@ -73,7 +77,7 @@ Ja. Sie können bereits bereitgestellte Anwendungen erneut bereitstellen. Dies s
 
 ## <a name="does-msix-app-attach-support-self-signed-certificates"></a>Unterstützt das MSIX-Feature zum Anfügen von Apps selbstsignierte Zertifikate?
 
-Ja. Sie müssen das selbst signierte Zertifikat auf allen Sitzungshost-VMs installieren, auf denen das MSIX-Feature zum Anfügen von Apps verwendet wird, um die selbst signierte Anwendung zu hosten.
+Ja. Sie müssen das selbst signierte Zertifikat auf allen Sitzungshost-VMs installieren, auf denen das MSIX-Feature zum Anfügen von Apps verwendet wird, um die selbst signierte Anwendung zu hosten. Informationen zum Erstellen eines selbstsignierten Zertifikats finden Sie unter [Erstellen eines Zertifikats für die Paketsignierung](/windows/msix/package/create-certificate-package-signing).
 
 ## <a name="what-applications-can-i-repackage-to-msix"></a>Welche Anwendungen kann ich für MSIX neu packen?
 

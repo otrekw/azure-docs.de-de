@@ -3,14 +3,14 @@ title: Anzeigen von Azure Automation-Updatebewertungen
 description: In diesem Artikel erfahren Sie, wie Sie Updatebewertungen für Bereitstellungen der Updateverwaltung anzeigen.
 services: automation
 ms.subservice: update-management
-ms.date: 09/17/2020
+ms.date: 06/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 39df5888a330a92ae043e34c3043da5b1f566345
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 270a48181e8eceb7b5e851f9bc69bb5a41428573
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92221619"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964462"
 ---
 # <a name="view-update-assessments-in-update-management"></a>Anzeigen von Updatebewertungen in der Updateverwaltung
 
@@ -46,6 +46,9 @@ Wählen Sie unter **Informationslink** den Link für ein Update aus, um den Supp
 
 [ ![Anzeigen des Updatestatus](./media/view-update-assessments/missing-updates.png)](./media/view-update-assessments/missing-updates-expanded.png#lightbox)
 
+> [!NOTE]
+> Informationen, die zum Status der Windows Defender-Definitionsupdates angezeigt werden, basieren auf den letzten Daten, die im Log Analytics-Arbeitsbereich zusammengefasst wurden und möglicherweise nicht aktuell sind. Weitere Informationen zu diesem Verhalten finden Sie unter [Szenario: Windows Defender-Update wird immer als fehlend angezeigt](../troubleshoot/update-management.md#windows-defender-update-missing-status).
+ 
 Klicken Sie im Update auf eine andere Stelle, um den Bereich „Protokollsuche“ zu öffnen. Die Abfrage für die Protokollsuche ist für das jeweilige Update vordefiniert. Sie können diese Abfrage ändern oder eine eigene erstellen, um ausführliche Informationen anzuzeigen.
 
 [ ![Anzeigen von Protokollabfrageergebnissen](./media/view-update-assessments/logsearch-results.png)](./media/view-update-assessments/logsearch-results-expanded.png#lightbox)

@@ -1,21 +1,21 @@
 ---
 title: Erstellen einer Azure Files-Dateifreigabe mit einem Domänencontroller (Azure)
-description: Richten Sie einen FSLogix-Profilcontainer auf einer Azure-Dateifreigabe in einem vorhandenen Windows Virtual Desktop-Hostpool mit Ihrer Active Directory-Domäne ein.
+description: Richten Sie einen FSLogix-Profilcontainer auf einer Azure-Dateifreigabe in einem vorhandenen Azure Virtual Desktop-Hostpool mit Ihrer Active Directory-Domäne ein.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e859da6b3ac38ddb89c998d172c39f2549455aaa
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: ab9a70dccdeff6ed16eb3f25e9dc78fb274b2449
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447929"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746931"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Erstellen eines Profilcontainers mit Azure Files und AD DS
 
-In diesem Artikel erfahren Sie, wie Sie eine Azure-Dateifreigabe erstellen, die von einem Domänencontroller auf einem vorhandenen Windows Virtual Desktop-Hostpool authentifiziert wird. Sie können diese Dateifreigabe zum Speichern von Speicherprofilen verwenden.
+In diesem Artikel erfahren Sie, wie Sie eine Azure-Dateifreigabe erstellen, die von einem Domänencontroller auf einem vorhandenen Azure Virtual Desktop-Hostpool authentifiziert wird. Sie können diese Dateifreigabe zum Speichern von Speicherprofilen verwenden.
 
 Bei diesem Prozess wird der lokale Verzeichnisdienst Active Directory Domain Services (AD DS) verwendet. Informationen zum Erstellen eines FSLogix-Profilcontainers mit Azure AD DS finden Sie unter [Erstellen eines FSLogix-Profilcontainers mit Azure Files](create-profile-container-adds.md).
 
@@ -39,8 +39,8 @@ So richten Sie ein Speicherkonto ein:
 
     - Erstellen Sie eine neue Ressourcengruppe.
     - Geben Sie einen eindeutigen Namen für Ihr Speicherkonto ein.
-    - Für **Speicherort** wird empfohlen, den gleichen Speicherort wie der Windows Virtual Desktop-Hostpool auszuwählen.
-    - Wählen Sie für **Leistung** die Option **Standard** aus. (Abhängig von Ihren IOPS-Anforderungen. Weitere Informationen finden Sie unter [Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop](store-fslogix-profile.md).)
+    - Für **Speicherort** wird empfohlen, den gleichen Speicherort wie der Azure Virtual Desktop-Hostpool auszuwählen.
+    - Wählen Sie für **Leistung** die Option **Standard** aus. (Abhängig von Ihren IOPS-Anforderungen. Weitere Informationen finden Sie unter [Speicheroptionen für FSLogix-Profilcontainer in Azure Virtual Desktop](store-fslogix-profile.md).)
     - Wählen Sie für **Kontotyp** die Option **StorageV2** oder **FileStorage-** (nur verfügbar, wenn die Leistungsstufe gleich „Premium“ ist) aus.
     - Wählen Sie für **Replikation** die Option **Lokal redundanter Speicher (LRS)** aus.
 
@@ -75,11 +75,11 @@ Als Nächstes müssen Sie die Active Directory-Authentifizierung (AD) aktivieren
      > [!div class="mx-imgBorder"]
      > ![Screenshot der Konfigurationsseite mit aktiviertem Azure Active Directory (AD)](media/active-directory-enabled.png)
 
-## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>Zuweisen von Berechtigungen für Windows Virtual Desktop-Benutzer
+## <a name="assign-azure-rbac-permissions-to-azure-virtual-desktop-users"></a>Zuweisen von Berechtigungen für Azure Virtual Desktop-Benutzer
 
 Allen Benutzern, die FSLogix-Profile im Speicherkonto speichern müssen, muss die Rolle „Mitwirkender für Speicherdateidaten-SMB-Freigabe“ zugewiesen werden.
 
-Benutzer, die sich bei den Windows Virtual Desktop-Sitzungshosts anmelden, benötigen Zugriffsberechtigungen für den Zugriff auf Ihre Dateifreigabe. Das Gewähren von Zugriff auf eine Azure-Dateifreigabe umfasst das Konfigurieren von Berechtigungen sowohl auf Freigabeebene als auch auf der NTFS-Ebene, ähnlich wie bei einer herkömmlichen Windows-Freigabe.
+Benutzer, die sich bei den Azure Virtual Desktop-Sitzungshosts anmelden, benötigen Zugriffsberechtigungen für den Zugriff auf Ihre Dateifreigabe. Das Gewähren von Zugriff auf eine Azure-Dateifreigabe umfasst das Konfigurieren von Berechtigungen sowohl auf Freigabeebene als auch auf der NTFS-Ebene, ähnlich wie bei einer herkömmlichen Windows-Freigabe.
 
 Zum Konfigurieren von Berechtigungen auf Freigabeebene weisen Sie jedem Benutzer eine Rolle mit den entsprechenden Zugriffsberechtigungen zu. Berechtigungen können entweder einzelnen Benutzern oder einer Azure AD-Gruppe zugewiesen werden. Weitere Informationen finden Sie unter [Zuweisen von Zugriffsberechtigungen zu einer Identität](../storage/files/storage-files-identity-ad-ds-assign-permissions.md).
 
@@ -167,7 +167,7 @@ So konfigurieren Sie NTFS-Berechtigungen:
 
     Sowohl *NT Authority\Authenticated Users* (NT-Autorität\Authentifizierte Benutzer) als auch *BUILTIN\Users* (Vordefiniert\Benutzer) verfügen standardmäßig über bestimmte Berechtigungen. Mit diesen Standardberechtigungen können diese Benutzer die Profilcontainer anderer Benutzer lesen. Mit den unter [Konfigurieren von Speicherberechtigungen für die Verwendung mit Profilcontainern und Office-Containern](/fslogix/fslogix-storage-config-ht) beschriebenen Berechtigungen können Benutzer jedoch nicht gegenseitig ihre Profilcontainer lesen.
 
-4. Führen Sie die folgenden Befehle aus, damit Ihre Windows Virtual Desktop-Benutzer eigene Profilcontainer erstellen können, während sie den Zugriff auf ihren Profilcontainer durch andere Benutzer blockieren.
+4. Führen Sie die folgenden Befehle aus, damit Ihre Azure Virtual Desktop-Benutzer ihre eigenen Profilcontainer erstellen können, während sie den Zugriff auf ihren Profilcontainer durch andere Benutzer verhindern.
 
      ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
@@ -194,7 +194,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine VM mit FSLogix konfigurieren. Sie
 
 So konfigurieren Sie FSLogix auf Ihrer Sitzungshost-VM:
 
-1. RDP zur Sitzungshost-VM des Windows Virtual Desktop-Hostpools
+1. RDP zur Sitzungshost-VM des Azure Virtual Desktop-Hostpools
 
 2. [Laden Sie FSLogix herunter, und installieren Sie es](/fslogix/install-ht).
 
@@ -220,7 +220,7 @@ Wenn sich der Benutzer zuvor bereits angemeldet hat, verfügt er über ein vorha
 
 So überprüfen Sie die Berechtigungen für Ihre Sitzung:
 
-1. Starten Sie eine Sitzung in Windows Virtual Desktop.
+1. Starten Sie eine Sitzung in Azure Virtual Desktop.
 
 2. Öffnen Sie das Azure-Portal.
 

@@ -2,14 +2,14 @@
 title: Supportmatrix für die Azure Disk-Sicherung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für Azure Disk Backup.
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 05/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 88ec26837cc8f69c1e84c77ea6b57ce16e462e0a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b6ea48a326ec42aaf33af61b0ec1a6a07bae8fe
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612856"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750927"
 ---
 # <a name="azure-disk-backup-support-matrix"></a>Supportmatrix für die Azure Disk-Sicherung
 
@@ -17,9 +17,7 @@ Sie können [Azure Backup](./backup-overview.md) zum Schutz von Azure-Datenträg
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Azure Disk Backup ist in den folgenden Regionen verfügbar: „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Kanada, Mitte“, „Brasilien, Süden“, „Südafrika, Norden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „Europa, Norden“, „Schweiz, Norden“, „Schweiz, Westen“, „Deutschland, Westen-Mitte“, „Frankreich, Mitte, „Norwegen, Osten“, „VAE, Norden“, „Australien, Mitte“, „Australien, Mitte 2“, „Australien, Osten“, „Südkorea, Mitte“, „Südkorea, Süden“, „Japan, Osten“, „Japan, Westen“, „Asien, Osten“, „Asien, Südosten“, „Indien, Mitte“. 
-
-Weitere Regionen werden angekündigt, sobald sie verfügbar werden.
+Azure Backup ist in allen öffentlichen Cloudregionen verfügbar, mit Ausnahme von „Frankreich, Süden“, „Südafrika, Westen“. In Sovereign Cloud-Regionen ist der Dienst derzeit nicht verfügbar. Diese Regionen werden angekündigt, sobald sie verfügbar werden.
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -62,6 +60,15 @@ Weitere Regionen werden angekündigt, sobald sie verfügbar werden.
 - Die Unterstützung für [private Verbindungen](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) für verwaltete Datenträger ermöglicht es Ihnen, den Export und Import von verwalteten Datenträgern einzuschränken, sodass diese Vorgänge nur in Ihrem virtuellen Azure-Netzwerk stattfinden. Azure Disk Backup unterstützt die Sicherung von Datenträgern, auf denen private Endpunkte aktiviert sind. Dies bedeutet nicht, dass die Sicherungsdaten oder Momentaufnahmen über den privaten Endpunkt zugänglich sind.
 
 - Sie können eine Sicherungsinstanz löschen. Dadurch wird die Sicherung beendet, und es werden alle Sicherungsdaten gelöscht. Aktuell können Sie eine Sicherung nicht deaktivieren, da die Option zum **Beenden der Sicherung und Beibehalten der Sicherungsdaten** nicht unterstützt wird.
+
+- Folgende Grenzwerte gelten für Azure Disk Backup:
+    
+    | Einstellung | Maximales Limit |
+    | --- | --- |
+    | Anzahl von Backup-Richtlinien pro Backup-Tresor | 5.000 |
+    | Anzahl von Backup-Instanzen pro Backup-Tresor | 5.000 |
+    | Zulässige Anzahl von On-Demand-Sicherungen in einer Backup-Instanz pro Tag | 10 |
+    | Zulässige Anzahl von Wiederherstellungen in einer Backup-Instanz pro Tag | 10 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,25 +8,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d69662ca24ab135db549ee108e93f9276e154e58
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 4fb616bce2f169061a6384148e3cbbe463c83be8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106907"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085904"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen
 
-Eine Rolle kann nur einer Gruppe zugewiesen werden, die mit der isAssignableToRole-Eigenschaft mit dem Wert TRUE oder die im Azure AD-Portal mit aktivierter Option **Azure AD-Rollen können der Gruppe zugewiesen werden** erstellt wurde. Mit diesem Gruppenattribut ist es möglich, der Gruppe eine Rolle in Azure Active Directory (Azure AD) zuzuweisen. In diesem Artikel wird beschrieben, wie Sie diesen besonderen Gruppentyp erstellen. **Hinweis:** Eine Gruppe, deren isAssignableToRole-Eigenschaft auf „true“ festgelegt ist, kann nicht den dynamischen Mitgliedschaftstyp aufweisen. Weitere Informationen finden Sie unter [Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)](groups-concept.md).
+Eine Rolle kann nur einer Gruppe zugewiesen werden, die mit der isAssignableToRole-Eigenschaft mit dem Wert TRUE oder die im Azure-Portal mit aktivierter Option **Azure AD-Rollen können der Gruppe zugewiesen werden** erstellt wurde. Mit diesem Gruppenattribut ist es möglich, der Gruppe eine Rolle in Azure Active Directory (Azure AD) zuzuweisen. In diesem Artikel wird beschrieben, wie Sie diesen besonderen Gruppentyp erstellen. **Hinweis:** Eine Gruppe, deren isAssignableToRole-Eigenschaft auf „true“ festgelegt ist, kann nicht den dynamischen Mitgliedschaftstyp aufweisen. Weitere Informationen finden Sie unter [Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)](groups-concept.md).
 
-## <a name="using-azure-ad-admin-center"></a>Mithilfe von Azure AD Admin Center
+## <a name="prerequisites"></a>Voraussetzungen
 
-1. Melden Sie sich bei [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit Berechtigungen vom Typ „Administrator für privilegierte Rollen“ oder „Globaler Administrator“ in der Azure AD-Organisation an.
+- Eine Lizenz vom Typ Azure AD Premium P1 oder P2
+- „Administrator für privilegierte Rollen“ oder „Globaler Administrator“
+- AzureADPreview-Modul bei Verwendung von PowerShell
+- Administratorzustimmung bei Verwendung von Graph-Tester für die Microsoft Graph-API
+
+Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
+
+## <a name="azure-portal"></a>Azure-Portal
+
+1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) an.
 1. Wählen Sie **Gruppen** > **Alle Gruppen** > **Neue Gruppe** aus.
 
     [![Öffnen von Azure Active Directory und Erstellen einer neuen Gruppe](./media/groups-create-eligible/new-group.png "Öffnen von Azure Active Directory und Erstellen einer neuen Gruppe")](./media/groups-create-eligible/new-group.png#<lightbox>)
@@ -46,20 +55,7 @@ Eine Rolle kann nur einer Gruppe zugewiesen werden, die mit der isAssignableToRo
 
 Die Gruppe wird mit allen Rollen erstellt, die Sie ihr zugewiesen haben.
 
-## <a name="using-powershell"></a>PowerShell
-
-### <a name="install-the-azure-ad-preview-module"></a>Installieren des Azure AD Preview-Moduls
-
-```powershell
-Install-Module -Name AzureADPreview
-Import-Module -Name AzureADPreview
-```
-
-Überprüfen Sie mithilfe des folgenden Befehls, ob das Modul verwendet werden kann:
-
-```powershell
-Get-Module -Name AzureADPreview
-```
+## <a name="powershell"></a>PowerShell
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>Erstellen einer Gruppe, der die Rolle zugewiesen werden kann
 
@@ -103,7 +99,7 @@ Add-AzureADGroupMember -ObjectId $roleAssignablegroup.Id -RefObjectId $member.Ob
 }
 ```
 
-## <a name="using-microsoft-graph-api"></a>Verwenden der Microsoft Graph-API
+## <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 ### <a name="create-a-role-assignable-group-in-azure-ad"></a>Erstellen einer Gruppe, der Rollen zugewiesen werden können, in Azure AD
 

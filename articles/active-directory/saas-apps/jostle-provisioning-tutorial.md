@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2021
 ms.author: Zhchia
-ms.openlocfilehash: 385a61b3bda6c75b6fb87a5655fadb45080b7f08
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c302f7731c111c0718ac7c4d5889208020cc09a8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124129"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067589"
 ---
 # <a name="tutorial-configure-jostle-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Jostle für die automatische Benutzerbereitstellung
 
@@ -96,6 +96,9 @@ Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwe
 
 In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren von Benutzern und Gruppen in der Jostle-App auf der Grundlage von Benutzer- und Gruppenzuweisungen in Azure AD erläutert.
 
+> [!NOTE]
+> Weitere Informationen zur automatischen Benutzerbereitstellung in Jostle finden Sie unter [User Provisioning: Azure Integration](https://forum.jostle.us/hc/en-us/articles/360056368534-User-Provisioning-Azure-Integration) (Benutzerbereitstellung: Azure-Integration).
+
 ### <a name="to-configure-automatic-user-provisioning-for-jostle-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Jostle in Azure AD:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
@@ -106,7 +109,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Jostle-Link in der Anwendungsliste](common/all-applications.png)
 
-1. Wählen Sie die Registerkarte **Bereitstellung**.
+1. Wählen Sie die Registerkarte **Bereitstellungen** aus, und klicken Sie auf **Erste Schritte**.
 
     ![Registerkarte „Bereitstellung“](common/provisioning.png)
 
@@ -118,17 +121,17 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
-1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**. Jostle sendet jedoch auch Benachrichtigungen zu Bereitstellungsfehlern. Diese Einstellung ist also optional.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
 1. Wählen Sie **Speichern** aus.
 
-1. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Jostle synchronisieren** aus.
+1. Wählen Sie im Abschnitt **Zuordnungen** die Option **Provision Azure Active Directory Users to Jostle** (Azure Active Directory-Benutzer in Jostle bereitstellen) aus.
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit Jostle synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Jostle für Updatevorgänge verwendet werden. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern, müssen Sie sicherstellen, dass die Jostle-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-   |Attribut|type|Unterstützung für das Filtern|
+   |Attribut|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |aktiv|Boolean|
@@ -147,7 +150,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
-1. Definieren Sie die Benutzer oder Gruppen, die in Jostle bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
+1. Definieren Sie die Benutzer oder Gruppen, die in Jostle bereitgestellt werden soll, indem Sie die gewünschten Werte unter **Geltungsbereich** im Abschnitt **Einstellungen** festlegen. Für Jostle sollte der **Geltungsbereich** auf „Nur zugewiesene Benutzer und Gruppen synchronisieren“ festgelegt werden.
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 

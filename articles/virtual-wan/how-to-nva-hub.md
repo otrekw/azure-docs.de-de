@@ -5,16 +5,16 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: be8a8dbe94404141781af4abf6cc8ec5bb9c2712
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0119d9b1938698ed27d9c1539c1366859d0fc7f9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060617"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411951"
 ---
-# <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Erstellen eines virtuellen Netzwerkgeräts in einem Azure Virtual WAN-Hub (Vorschau)
+# <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub"></a>Erstellen eines virtuellen Netzwerkgeräts in einem Azure Virtual WAN-Hub
 
 In diesem Artikel wird veranschaulicht, wie Sie mit Virtual WAN über ein **virtuelles Netzwerkgerät** in Azure eine Verbindung mit Ihren Ressourcen in Azure herstellen. Für diese Art von Verbindung wird ein lokales VPN-Gerät benötigt, dem eine extern zugängliche, öffentliche IP-Adresse zugewiesen ist. Weitere Informationen zu Virtual WAN finden Sie unter [Was ist Virtual WAN?](virtual-wan-about.md).
 
@@ -34,7 +34,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 * Ihr virtuelles Netzwerk verfügt nicht über Gateways für virtuelle Netzwerke. Falls Ihr virtuelles Netzwerk über ein Gateway verfügt (entweder VPN oder ExpressRoute), müssen Sie alle Gateways entfernen. Für diese Konfiguration ist es erforderlich, dass virtuelle Netzwerke stattdessen mit dem Gateway des Virtual WAN-Hubs verbunden werden.
 
-* Beschaffen Sie sich einen IP-Adressbereich für Ihre Hubregion. Der Hub ist ein virtuelles Netzwerk, das von Virtual WAN erstellt und verwendet wird. Der von Ihnen für den Hub angegebene Adressbereich darf sich nicht mit einem Ihrer vorhandenen virtuellen Netzwerke überlappen, mit denen Sie eine Verbindung herstellen. Außerdem ist keine Überlappung mit Ihren Adressbereichen möglich, mit denen Sie lokal eine Verbindung herstellen. Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, sollten Sie sich an eine Person wenden, die Ihnen diese Informationen zur Verfügung stellen kann.
+* Beschaffen Sie sich einen IP-Adressbereich für Ihre Hubregion. Der Hub ist ein virtuelles Netzwerk, das von Virtual WAN erstellt und verwendet wird. Der von Ihnen für den Hub angegebene Adressbereich darf sich nicht mit einem Ihrer vorhandenen virtuellen Netzwerke überlappen, mit denen Sie eine Verbindung herstellen. Außerdem ist keine Überlappung mit Ihren Adressbereichen möglich, mit denen Sie eine Verbindung zu Ihren lokalen Standorten herstellen. Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, sollten Sie sich an eine Person wenden, die Ihnen diese Informationen zur Verfügung stellen kann.
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
@@ -99,4 +99,4 @@ In diesem Schritt erstellen Sie ein virtuelles Netzwerkgerät im Hub. Die Prozed
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu Virtual WAN finden Sie auf der Seite [Was ist Virtual WAN?](virtual-wan-about.md).
-* Weitere Informationen zu virtuellen Netzwerkgeräten (NVAs) in einem Virtual WAN-Hub finden Sie unter [Informationen zum virtuellen Netzwerkgerät im Virtual WAN-Hub (Vorschau)](about-nva-hub.md).
+* Weitere Informationen zu virtuellen Netzwerkgeräten (NVAs) in einem Virtual WAN-Hub finden Sie unter [Informationen zum virtuellen Netzwerkgerät im Virtual WAN-Hub](about-nva-hub.md).

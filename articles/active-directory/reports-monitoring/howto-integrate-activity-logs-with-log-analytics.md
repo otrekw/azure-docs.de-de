@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie Azure Active Directory-Protokolle in Azu
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 06/11/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f328ed44252f7fb314552d6d05df9806f59d972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c29b631d3002f0c79fb2dd1b1f26dfa65051368c
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591127"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018955"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle
 
@@ -63,7 +63,11 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 
 ## <a name="licensing-requirements"></a>Lizenzanforderungen
 
-Für die Verwendung dieses Features ist eine Azure AD Premium P1- oder P2-Lizenz erforderlich. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
+Für die Verwendung dieses Features ist ein Azure AD Premium P1- oder P2-Mandant erforderlich. Den Lizenztyp Ihres Mandanten finden Sie auf der Seite **[Übersicht](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)** in **Azure Active Directory**.
+
+![Mandanteninformationen](./media/howto-integrate-activity-logs-with-log-analytics/tenant-information.png)
+ 
+Wenn Sie wissen möchten, wie lange die Aktivitätsdaten in einem Premium-Mandanten gespeichert werden, finden Sie weitere Informationen unter [Wie lange speichert Azure AD die Daten?](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)
 
 ## <a name="send-logs-to-azure-monitor"></a>Senden von Protokollen an Azure Monitor
 

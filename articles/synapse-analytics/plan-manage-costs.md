@@ -7,23 +7,21 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.subservice: overview
 ms.topic: how-to
-ms.date: 12/09/2020
-ms.openlocfilehash: 15ac6ce6a1a49bbbd15849adec373dd0fcd42c10
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.date: 06/08/2021
+ms.openlocfilehash: 7a5b9efce1c24aecb54d3f473b7227357c8fb99f
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568521"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890184"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Planen und Verwalten der Kosten für Azure Synapse Analytics
 
-In diesem Artikel wird beschrieben, wie Sie die Kosten für Azure Synapse Analytics planen und verwalten. Bevor Sie Ressourcen für den Dienst zur Kostenschätzung hinzufügen, verwenden Sie zunächst den Azure-Preisrechner, um die Kosten für Synapse Analytics zu planen. Überprüfen Sie dann beim Hinzufügen von Azure Synapse-Ressourcen die geschätzten Kosten.
-
-Nachdem Sie mit der Nutzung von Azure Synapse-Ressourcen begonnen haben, können Sie Cost Management-Features verwenden, um Budgets festzulegen und Kosten zu überwachen. Sie können auch vorhergesagte Kosten überprüfen und Ausgabentrends ermitteln, um die Bereiche zu identifizieren, in denen ggf. Maßnahmen erforderlich sind. Kosten für Azure Synapse stellen nur einen Teil der monatlichen Kosten Ihrer Azure-Rechnung dar. Zwar wird in diesem Artikel das Planen und Verwalten der Kosten für Azure Synapse erläutert, doch werden Ihnen alle Azure-Dienste und -Ressourcen in Rechnung gestellt, die für Ihr Azure-Abonnement verwendet werden, einschließlich der Dienste von Drittanbietern.
+In diesem Artikel wird beschrieben, wie Sie die Kosten für Azure Synapse Analytics planen und verwalten. Bevor Sie Ressourcen für den Dienst zur Kostenschätzung hinzufügen, verwenden Sie zunächst den Azure-Preisrechner, um die Kosten für Azure Synapse Analytics zu planen. Überprüfen Sie dann beim Hinzufügen von Azure-Ressourcen die voraussichtlichen Kosten. Nachdem Sie mit der Nutzung von Azure Synapse Analytics-Ressourcen begonnen haben, können Sie Cost Management-Features verwenden, um Budgets festzulegen und Kosten zu überwachen. Sie können auch vorhergesagte Kosten überprüfen und Ausgabentrends ermitteln, um die Bereiche zu identifizieren, in denen ggf. Maßnahmen erforderlich sind. Kosten für Azure Synapse Analytics stellen nur einen Teil der monatlichen Kosten Ihrer Azure-Rechnung dar. Zwar wird in diesem Artikel das Planen und Verwalten der Kosten für Azure Synapse Analytics erläutert, doch werden Ihnen alle Azure-Dienste und -Ressourcen in Rechnung gestellt, die für Ihr Azure-Abonnement verwendet werden, einschließlich der Dienste von Drittanbietern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Kostenanalyse in Cost Management unterstützt die meisten Azure-Kontotypen, jedoch nicht alle. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Um Kostendaten anzeigen zu können, müssen Sie mindestens über Lesezugriff auf ein Azure-Konto verfügen. Informationen zum Zuweisen des Zugriffs auf Azure Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Cost Management-Daten](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+Die Kostenanalyse in Cost Management unterstützt die meisten Azure-Kontotypen, jedoch nicht alle. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Um Kostendaten anzeigen zu können, müssen Sie mindestens über Lesezugriff auf ein Azure-Konto verfügen. Informationen zum Zuweisen des Zugriffs auf Azure Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Cost Management-Daten](../cost-management/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 ## <a name="estimate-costs-before-using-azure-synapse-analytics"></a>Schätzen der Kosten vor der Verwendung von Azure Synapse
 
@@ -35,9 +33,25 @@ Azure Synapse verfügt über verschiedene Ressourcen, für die unterschiedliche 
 
 ## <a name="understand-the-full-billing-model-for-azure-synapse-analytics"></a>Grundlegendes zum vollständigen Abrechnungsmodell für Azure Synapse Analytics
 
-Azure Synapse wird in einer Azure-Infrastruktur ausgeführt, für die beim Bereitstellen der neuen Ressource zusammen mit Azure Synapse Kosten anfallen. Es ist wichtig zu verstehen, dass die zusätzliche Infrastruktur Kosten verursachen kann. Sie müssen diese Kosten verwalten, wenn Sie Änderungen an bereitgestellten Ressourcen vornehmen. 
+Azure Synapse wird in einer Azure-Infrastruktur ausgeführt, für die beim Bereitstellen der neuen Ressource zusammen mit Azure Synapse Kosten anfallen. Es ist wichtig zu verstehen, dass die zusätzliche Infrastruktur Kosten verursachen kann. 
 
-### <a name="costs-that-typically-accrue-with-azure-synapse-analytics"></a>Häufig anfallende Kosten für Azure Synapse Analytics
+### <a name="how-youre-charged-for-azure-synapse-analytics"></a>Die Gebühren für Azure Synapse Analytics
+
+Wenn Sie Azure Synapse Analytics-Ressourcen erstellen oder verwenden, werden Ihnen möglicherweise die folgenden Verbrauchseinheiten in Rechnung gestellt:
+
+- Datenauswertung und Data Warehousing 
+    - Dedizierter SQL-Pool: Ihnen werden Gebühren basierend auf der Anzahl von DWU-Blöcken und den ausgeführten Stunden in Rechnung gestellt.
+    - Speicher: Ihnen werden Gebühren basierend auf der Anzahl der gespeicherten TBs in Rechnung gestellt.
+    - Serverloser SQL-Pool: Ihnen werden Gebühren basierend auf den verarbeiteten DAT-Daten in TB in Rechnung gestellt.
+- Apache Spark Pool: Ihnen werden Gebühren basierend auf der Anzahl der Instanzen und der ausgeführten Stunden in Rechnung gestellt.
+- Datenintegration 
+    - Orchestrierungsaktivitätsausführungen: Ihnen werden Gebühren basierend auf der Anzahl der Aktivitätsausführungen in Rechnung gestellt.
+    - Datenverschiebung: Für Kopieraktivitäten, die auf Azure Integration Runtime ausgeführt werden, werden Ihnen Gebühren basierend auf der Anzahl der verwendeten DIU und der Ausführungsdauer in Rechnung gestellt.
+    - Datenflüsse vCore-Stunden: Für das Ausführen und das Debuggen von Datenflüssen werden Ihnen Gebühren basierend auf Computetyp, Anzahl der virtuellen Kerne und Ausführungsdauer berechnet.
+
+Am Ende Ihres Abrechnungszeitraums werden die Gebühren für die einzelnen Verbrauchseinheiten summiert. Ihre Rechnung zeigt einen Abschnitt für alle Azure Synapse Analytics-Kosten an. Für jede Verbrauchseinheit besteht ein separates Zeilenelement.
+
+### <a name="other-costs-that-might-accrue-with-azure-synapse-analytics"></a>Sonstige ggf. anfallende Kosten für Azure Synapse Analytics
 
 Wenn Sie Ressourcen für Azure Synapse erstellen, werden auch Ressourcen für andere Azure-Dienste erstellt. Dazu gehören:
 
@@ -51,13 +65,14 @@ Nachdem Sie Azure Synapse-Ressourcen gelöscht haben, sind die folgenden Ressour
 
 ### <a name="using-azure-prepayment-credit-with-azure-synapse"></a>Verwenden der Azure-Vorauszahlungsgutschrift mit Azure Synapse 
 
-Sie können Azure Synapse-Gebühren mit der Azure-Vorauszahlungsgutschrift (früher als Mindestverbrauch bezeichnet) bezahlen. Allerdings können Sie mit der Azure-Vorauszahlungsgutschrift keine Gebühren für Produkte und Dienste von Drittanbietern, einschließlich derjenigen aus dem Azure Marketplace, bezahlen.
+Sie können Azure Synapse-Gebühren mit der Azure-Vorauszahlungsgutschrift begleichen. Allerdings können Sie mit der Azure-Vorauszahlungsgutschrift keine Gebühren für Produkte und Dienste von Drittanbietern, einschließlich derjenigen aus dem Azure Marketplace, bezahlen.
+
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>Überprüfen von geschätzten Kosten im Azure-Portal
 
 Wenn Sie Ressourcen für Azure Synapse Analytics erstellen, werden die geschätzten Kosten angezeigt. Ein Arbeitsbereich verfügt über einen serverlosen SQL-Pool, der mit dem Arbeitsbereich erstellt wurde. Für den serverlosen SQL-Pool fallen erst dann Gebühren an, wenn Sie Abfragen ausführen. Andere Ressourcen, wie z. B. dedizierte SQL-Pools und serverlose Apache Spark-Pools, müssen innerhalb des Arbeitsbereichs erstellt werden.
 
-So können Sie einen <ResourceName> erstellen und den geschätzten Preis anzeigen:
+So erstellen Sie Azure Synapse Analytics Arbeitsbereich und rufen den geschätzten Preis auf:
 
 1. Navigieren Sie im Azure-Portal zum Dienst.
 2. Erstellen Sie die Ressource.
@@ -95,14 +110,13 @@ Im obigen Beispiel sind die aktuellen Kosten für den Dienst angegeben. Die Kost
 
 ## <a name="create-budgets"></a>Erstellen von Budgets
 
-Sie können [Budgets](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) erstellen, um Kosten zu verwalten, und [Warnungen](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) erstellen, die die Beteiligten automatisch über Ausgabenanomalien und Überschreitungsrisiken informieren. Warnungen basieren auf Ausgaben im Vergleich zum Budget und zu Kostenschwellenwerten. Budgets und Warnungen werden für Azure-Abonnements und -Ressourcengruppen erstellt und sind daher im Rahmen einer umfassenden Strategie zur Kostenüberwachung hilfreich. 
+Sie können [Budgets](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) erstellen, um Kosten zu verwalten, und [Warnungen](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) erstellen, die die Beteiligten automatisch über Ausgabenanomalien und Überschreitungsrisiken informieren. Warnungen basieren auf Ausgaben im Vergleich zum Budget und zu Kostenschwellenwerten. Budgets und Warnungen werden für Azure-Abonnements und -Ressourcengruppen erstellt und sind daher im Rahmen einer umfassenden Strategie zur Kostenüberwachung hilfreich. 
 
-Sie können ein Budget mit Filtern für bestimmte Ressourcen oder Dienste in Azure erstellen, wenn Sie eine höhere Granularität in Ihrer Überwachung wünschen. Mit Filtern stellen Sie sicher, dass Sie nicht versehentlich neue Ressourcen erstellen, die Ihnen zusätzliche Kosten bereiten. Weitere Informationen zu den Filteroptionen beim Erstellen eines Budgets finden Sie unter [Gruppen- und Filteroptionen](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+Sie können ein Budget mit Filtern für bestimmte Ressourcen oder Dienste in Azure erstellen, wenn Sie eine höhere Granularität in Ihrer Überwachung wünschen. Mit Filtern stellen Sie sicher, dass Sie nicht versehentlich neue Ressourcen erstellen, die Ihnen zusätzliche Kosten bereiten. Weitere Informationen zu den beim Erstellen eines Budgets verfügbaren Filteroptionen finden Sie unter [Gruppen- und Filteroptionen](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 ## <a name="export-cost-data"></a>Exportieren von Kostendaten
 
-Sie können [Ihre Kostendaten](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) auch in ein Speicherkonto exportieren. Dies ist hilfreich, wenn Sie oder andere Personen zusätzliche Datenanalysen für Kosten ausführen müssen. Beispielsweise können Finanzteams die Daten mithilfe von Excel oder Power BI analysieren. Sie können Ihre Kosten täglich, wöchentlich oder monatlich exportieren und einen benutzerdefinierten Datumsbereich festlegen. Exportieren von Kostendaten ist die empfohlene Abrufmethode für Kostendatasets.
-
+Sie können [Ihre Kostendaten](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) auch in ein Speicherkonto exportieren. Dies ist hilfreich, wenn Sie oder andere Personen zusätzliche Datenanalysen für Kosten ausführen müssen. Beispielsweise kann ein Finanzteam die Daten mithilfe von Excel oder Power BI analysieren. Sie können Ihre Kosten täglich, wöchentlich oder monatlich exportieren und einen benutzerdefinierten Datumsbereich festlegen. Exportieren von Kostendaten ist die empfohlene Abrufmethode für Kostendatasets.
 
 ## <a name="other-ways-to-manage-and-reduce-costs-for-azure-synapse"></a>Weitere Optionen zum Verwalten und Reduzieren der Kosten für Azure Synapse 
 
@@ -120,7 +134,6 @@ Um die Kosten für Ihren serverlosen Apache Spark-Pool zu kontrollieren, aktivie
  
 Erstellen Sie während der Entwicklung mehrere Apache Spark-Pooldefinitionen unterschiedlicher Größe.  Das Erstellen von Apache Spark-Pooldefinitionen ist kostenlos und Ihnen wird nur deren Nutzung in Rechnung gestellt.  Die Nutzung von Apache Spark in Azure Synapse wird pro vCore-Stunde und anteilig pro Minute berechnet.  Verwenden Sie z. B. kleine Poolgrößen für die Codeentwicklung und -validierung, während Sie umfangreichere Poolgrößen für Leistungstests verwenden.
 
-
 ### <a name="data-integration---pipelines-and-data-flows"></a>Datenintegration: Pipelines und Datenflüsse 
 
 Weitere Informationen zu den Kosten für die Datenintegration finden Sie unter [Planen und Verwalten von Kosten für Azure Data Factory](../data-factory/plan-manage-costs.md).
@@ -129,6 +142,6 @@ Weitere Informationen zu den Kosten für die Datenintegration finden Sie unter [
 
 - Erfahren Sie, wie Sie Ihre [Cloudinvestitionen mit Azure Cost Management optimieren](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - Erfahren Sie mehr über die Verwaltung von Kosten mit der [Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
-- Erfahren Sie, wie Sie [unerwartete Kosten vermeiden](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Erfahren Sie, wie Sie [unerwartete Kosten vermeiden](../cost-management-billing/understand/analyze-unexpected-charges.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - Nehmen Sie an dem angeleiteten Kurs [Cost Management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) teil.
 - Erfahren Sie mehr über die Planung und Verwaltung von Kosten für [Azure Machine Learning](../machine-learning/concept-plan-manage-cost.md).

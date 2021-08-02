@@ -8,12 +8,13 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 8e928944a7508cc2a0ed35e89189fa2dd8c50665
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b1b2782f9bf7ab7e99478a547c2181598ff4cd12
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550381"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672749"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Ändern des von einem virtuellen Azure-Computer verwendeten Betriebssystem-Datenträgers mithilfe von PowerShell
 
@@ -24,7 +25,7 @@ Wenn Sie über einen virtuellen Computer verfügen, aber den Datenträger für e
 Der virtuelle Computer muss sich im Zustand „Beendet (Zuordnung aufgehoben)“ befinden, und dann kann die Ressourcen-ID des verwalteten Datenträgers durch die Ressourcen-ID eines anderen verwalteten Datenträgers ersetzt werden.
 
 Stellen Sie sicher, dass VM-Größe und Speichertyp mit dem Datenträger kompatibel sind, den Sie anfügen möchten. Wenn der Datenträger, den Sie verwenden möchten, sich z.B. im Storage Premium befindet, dann muss der virtuelle Computer für Storage Premium geeignet sein (z.B. eine Größe der DS-Serie). Beide Datenträger müssen ebenfalls dieselbe Größe haben.
-Und achten Sie darauf, dass Sie nicht eine verschlüsselte VM mit einem verschlüsselten Betriebssystemdatenträger mischen. Dies wird nicht unterstützt. Wenn Azure Disk Encryption nicht für die VM verwendet wird, darf auf dem Betriebssystem-Datenträger, der als Austauschdatenträger fungiert, nicht Azure Disk Encryption verwendet werden.
+Und achten Sie darauf, dass Sie nicht eine verschlüsselte VM mit einem verschlüsselten Betriebssystemdatenträger mischen. Dies wird nicht unterstützt. Wenn Azure Disk Encryption nicht für die VM verwendet wird, darf auf dem Betriebssystem-Datenträger, der als Austauschdatenträger fungiert, nicht Azure Disk Encryption verwendet werden. Wenn Datenträger Datenträgerverschlüsselungssätze verwenden, müssen beide Datenträger zu demselben Datenträgerverschlüsselungssatz gehören.
 
 Abrufen einer Liste von Datenträgern in einer Ressourcengruppe mit [Get-AzDisk](/powershell/module/az.compute/get-azdisk)
 

@@ -8,25 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 06/10/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7fac7df0978b23e535d8761b436b14e2f41e5f91
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 0944dfd177ba82680b315913046ce8a4103f1156
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209501"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960603"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Einrichten eines Flows zum Erzwingen der Kennwortzurücksetzung in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-> [!IMPORTANT]
-> Das Erzwingen der Kennwortzurücksetzung ist ein Feature von Azure AD B2C, das sich in der öffentlichen Vorschau befindet. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="overview"></a>Übersicht
+
 Als Administrator können Sie [das Kennwort für einen Benutzer zurücksetzen](manage-users-portal.md#reset-a-users-password), wenn der Benutzer sein Kennwort vergessen hat. Es kann auch sein, dass Sie die Kennwortzurücksetzung erzwingen möchten. In diesem Artikel wird beschrieben, wie Sie in diesen Szenarien eine Kennwortzurücksetzung erzwingen.
 
 Wenn ein Administrator das Kennwort eines Benutzers über das Azure-Portal zurücksetzt, wird der Wert des Attributs [forceChangePasswordNextSignIn](user-profile-attributes.md#password-profile-property) auf `true` festgelegt. Während des [Anmeldungs- und Registrierungsablaufs](add-sign-up-and-sign-in-policy.md) wird der Wert dieses Attributs überprüft. Nachdem der Benutzer die Anmeldung durchgeführt hat, muss er sein Kennwort zurücksetzen, wenn das Attribut auf `true` festgelegt ist. Anschließend wird der Wert des Attributs wieder auf `false` festgelegt.
@@ -37,17 +35,11 @@ Der Flow für die Kennwortzurücksetzung wird für lokale Konten in Azure AD B
 
 ::: zone pivot="b2c-user-flow"
 
-### <a name="force-a-password-reset-after-90-days"></a>Erzwingen einer Kennwortzurücksetzung nach 90 Tagen
-
-Als Administrator können Sie [MS Graph](microsoft-graph-operations.md) verwenden, um die Gültigkeitsdauer eines Benutzerkennworts auf 90 Tage festzulegen. Nach 90 Tagen wird der Wert des Attributs [forceChangePasswordNextSignIn](user-profile-attributes.md#password-profile-property) automatisch auf `true` festgelegt. Weitere Informationen zum Festlegen einer Kennwortablaufrichtlinie für einen Benutzer finden Sie unter [Attribut „passwordPolicies“/Kennwortrichtlinienattribut](user-profile-attributes.md#password-policy-attribute).
-
-Nachdem eine Kennwortablaufrichtlinie festgelegt wurde, müssen Sie auch den Flow zum Erzwingen der Kennwortzurücksetzung konfigurieren. Dies ist in diesem Artikel beschrieben.  
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
-## <a name="configure-your-policy"></a>Konfigurieren der Richtlinie
+## <a name="configure-your-user-flow"></a>Konfigurieren des Benutzerflows
 
 Gehen Sie wie folgt vor, um die Einstellung **Erzwungene Kennwortzurücksetzung** in einem Flow für die Registrierung oder Anmeldung zu aktivieren:
 
@@ -57,10 +49,10 @@ Gehen Sie wie folgt vor, um die Einstellung **Erzwungene Kennwortzurücksetzung*
 1. Wählen Sie **Benutzerflows** aus.
 1. Wählen Sie den (**empfohlenen**) Benutzerflow für die Registrierung/Anmeldung oder nur für die Anmeldung aus, den Sie anpassen möchten.
 1. Wählen Sie im linken Menü unter **Einstellungen** die Option **Eigenschaften** aus.
-1. Wählen Sie unter **Kennwortkomplexität** die Option **Erzwungene Kennwortzurücksetzung** aus.
+1. Wählen Sie unter **Kennwortkonfiguration** die Option **Erzwungene Kennwortzurücksetzung** aus.
 1. Wählen Sie **Speichern** aus.
 
-### <a name="test-the-user-flow"></a>Testen des Benutzerflows
+## <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
 1. Melden Sie sich als Benutzer- oder Kennwortadministrator beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zu den verfügbaren Rollen finden Sie unter [Zuweisen von Administratorrollen in Azure AD](../active-directory/roles/permissions-reference.md#all-roles).
 1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
@@ -75,11 +67,59 @@ Gehen Sie wie folgt vor, um die Einstellung **Erzwungene Kennwortzurücksetzung*
 1. Melden Sie sich mit dem Benutzerkonto an, für das Sie das Kennwort zurücksetzen.
 1. Nun müssen Sie das Kennwort für den Benutzer ändern. Ändern Sie das Kennwort, und klicken Sie auf **Weiter**. Das Token wird an `https://jwt.ms` zurückgegeben und sollte Ihnen angezeigt werden.
 
+## <a name="force-password-reset-on-next-login"></a>Erzwingen der Kennwortrücksetzung bei der nächsten Anmeldung
+
+Um das Zurücksetzen des Kennworts bei der nächsten Anmeldung zu erzwingen, aktualisieren Sie das Kontokennwortprofil mithilfe des MS Graph-Vorgangs [Benutzer aktualisieren](/graph/api/user-update). Im folgenden Beispiel wird das Attribut [ForceChangePasswordNextSignIn](user-profile-attributes.md#password-profile-property) des Kennwortprofils auf `true` aktualisiert, wodurch der Benutzer gezwungen wird, das Kennwort bei der nächsten Anmeldung zurückzusetzen.
+
+```http
+PATCH https://graph.microsoft.com/v1.0/users/<user-object-ID>
+Content-type: application/json
+
+{
+"passwordProfile": {
+  "forceChangePasswordNextSignIn": true
+}
+```
+
+Nachdem das Kontokennwortprofil festgelegt wurde, müssen Sie auch den Flow zum Erzwingen der Kennwortzurücksetzung konfigurieren. Dies ist in diesem Artikel beschrieben.
+
+## <a name="force-a-password-reset-after-90-days"></a>Erzwingen einer Kennwortzurücksetzung nach 90 Tagen
+
+Als Administrator können Sie [MS Graph](microsoft-graph-operations.md) verwenden, um die Gültigkeitsdauer eines Benutzerkennworts auf 90 Tage festzulegen. Nach 90 Tagen wird der Wert des Attributs [forceChangePasswordNextSignIn](user-profile-attributes.md#password-profile-property) automatisch auf `true` festgelegt. Entfernen Sie den Wert `DisablePasswordExpiration` aus dem Attribut [Kennwortrichtlinie](user-profile-attributes.md#password-policy-attribute) des Benutzerprofils, um eine Kennwortzurücksetzung nach 90 Tagen zu erzwingen.
+
+Im folgenden Beispiel wird die Kennwortrichtlinie auf `None` aktualisiert, wodurch eine Kennwortzurücksetzung nach 90 Tagen erzwungen wird:
+
+```http
+PATCH https://graph.microsoft.com/v1.0/users/<user-object-ID>
+Content-type: application/json
+
+{
+  "passwordPolicies": "None"
+}
+```
+
+Wenn Sie die hohe [Kennwortkomplexität](password-complexity.md) deaktiviert haben, aktualisieren Sie die Kennwortrichtlinie auf [DisableStrongPassword](user-profile-attributes.md#password-policy-attribute):
+
+```http
+PATCH https://graph.microsoft.com/v1.0/users/<user-object-ID>
+Content-type: application/json
+
+{
+  "passwordPolicies": "DisableStrongPassword"
+}
+```
+
+Nachdem eine Kennwortablaufrichtlinie festgelegt wurde, müssen Sie auch den Flow zum Erzwingen der Kennwortzurücksetzung konfigurieren. Dies ist in diesem Artikel beschrieben.
+
+### <a name="password-expiry-duration"></a>Zeitraum bis zum Ablauf des Kennworts
+
+Der Standardwert für die Kennwortablaufdauer beträgt **90** Tage. Der Wert kann im Azure Active Directory-Modul für Windows PowerShell mit dem Cmdlet [Set-MsolPasswordPolicy](/powershell/module/msonline/set-msolpasswordpolicy) konfiguriert werden. Mit diesem Befehl wird der Mandant aktualisiert, sodass die Kennwörter aller Benutzer nach der von Ihnen konfigurierten Anzahl von Tagen ablaufen.
+
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
-Dieses Feature ist derzeit nur für Benutzerflows verfügbar. Wählen Sie für die Einrichtungsschritte weiter oben **Benutzerflow** aus.
+Dieses Feature ist derzeit nur für Benutzerflows verfügbar. Wählen Sie für die Einrichtungsschritte weiter oben **Benutzerflow** aus. Verwenden Sie für benutzerdefinierte Richtlinien das [GitHub-Beispiel](https://github.com/azure-ad-b2c/samples/tree/master/policies/force-password-reset-first-logon) zum Erzwingen der Kennwortrücksetzung für die erste Anmeldung.
 
 ::: zone-end
 

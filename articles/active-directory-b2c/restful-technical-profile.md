@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 05/03/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cff76672c7c687d1755996ba0dbf81daf947b8c2
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 904b4ec201b38a817fe7a84d88878c62629b2625
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070621"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785929"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -91,7 +91,7 @@ Im folgenden `TechnicalProfile`-Beispiel wird eine Überprüfungs-E-Mail mit ein
 
 ## <a name="output-claims"></a>Ausgabeansprüche
 
-Das **OutputClaims**-Element enthält eine Liste von Ansprüchen, die von der REST-API zurückgegeben wurden. Sie müssen den Namen des Anspruchs, der in Ihrer Richtlinie definiert ist, dem Namen, der in der REST-API definiert wurde, zuordnen. Sie können auch Ansprüche, die nicht vom Identitätsanbieter der REST-API zurückgegeben wurden, einfügen, sofern Sie das `DefaultValue`-Attribut festlegen.
+Das **OutputClaims**-Element enthält eine Liste von Ansprüchen, die von der REST-API zurückgegeben wurden. Sie müssen den Namen des Anspruchs, der in Ihrer Richtlinie definiert ist, dem Namen, der in der REST-API definiert wurde, zuordnen. Sie können auch Ansprüche einfügen, die nicht von der REST-API zurückgegeben werden, sofern Sie das `DefaultValue`-Attribut festlegen.
 
 Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
 
@@ -117,7 +117,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | ServiceUrl | Ja | Die URL des REST-API-Endpunkts. |
 | AuthenticationType | Ja | Der Typ der Authentifizierung, die vom RESTful-Anspruchsanbieter ausgeführt wird. Mögliche Werte: `None`, `Basic`, `Bearer`, `ClientCertificate` oder `ApiKeyHeader`. <br /><ul><li>Der Wert `None` gibt an, dass die REST-API anonym ist. </li><li>Der Wert `Basic` gibt an, dass die REST-API mit HTTP-Standardauthentifizierung geschützt ist. Nur verifizierte Benutzer, einschließlich Azure AD B2C, haben Zugriff auf Ihre API. </li><li>Der (empfohlene) Wert `ClientCertificate` gibt an, dass die REST-API den Zugriff mithilfe von Clientzertifikatauthentifizierung einschränkt. Nur Dienste mit den richtigen Zertifikaten (z.B. Azure AD B2C) erhalten Zugriff auf Ihre API. </li><li>Der Wert `Bearer` gibt an, dass die REST-API den Zugriff mithilfe des OAuth2-Bearertokens des Clients beschränkt. </li><li>Der Wert `ApiKeyHeader` gibt an, dass die REST-API mit einem API-Schlüssel im HTTP-Header (z. B. *x-functions-key*) gesichert ist. </li></ul> |
 | AllowInsecureAuthInProduction| Nein| Gibt an, ob der `AuthenticationType` in der Produktionsumgebung auf `none` festgelegt werden kann (`DeploymentMode` von [TrustFrameworkPolicy](trustframeworkpolicy.md) ist auf `Production` festgelegt oder nicht angegeben). Mögliche Werte: TRUE oder FALSE (Standard). |
-| SendClaimsIn | Nein | Gibt an, wie Eingabeansprüche an den RESTful-Anspruchsanbieter gesendet werden. Mögliche Werte: `Body` (Standard), `Form`, `Header`, `Url` oder `QueryString`. Der Wert `Body` ist der Eingabeanspruch, der im Anforderungstext im JSON-Format gesendet wird. Der Wert `Form` ist der Eingabeanspruch, der im Anforderungstext in einem durch kaufmännische Und-Zeichen (&) getrenntes Schlüssel-Wert-Format gesendet wird. Der Wert `Header` ist der Eingabeanspruch, der im Anforderungsheader gesendet wird. Der Wert `Url` ist der Eingabeanspruch, der in der URL gesendet wird, zum Beispiel https://{Anspruch1}.example.com/{Anspruch2}/{Anspruch3}?{Anspruch4}={Anspruch5}. Der Wert `QueryString` ist der Eingabeanspruch, der in der Abfragezeichenfolge der Anforderung gesendet wird. Die jeweils aufgerufenen HTTP-Verben lauten wie folgt:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`Url`: GET</li><li>`QueryString`: GET</li></ul> |
+| SendClaimsIn | Nein | Gibt an, wie Eingabeansprüche an den RESTful-Anspruchsanbieter gesendet werden. Mögliche Werte: `Body` (Standard), `Form`, `Header`, `Url` oder `QueryString`. <br /> Der Wert `Body` ist der Eingabeanspruch, der im Anforderungstext im JSON-Format gesendet wird. <br />Der Wert `Form` ist der Eingabeanspruch, der im Anforderungstext in einem durch kaufmännische Und-Zeichen (&) getrenntes Schlüssel-Wert-Format gesendet wird. <br />Der Wert `Header` ist der Eingabeanspruch, der im Anforderungsheader gesendet wird. <br />Der Wert `Url` ist der Eingabeanspruch, der in der URL gesendet wird, z. B. `https://api.example.com/{claim1}/{claim2}?{claim3}={claim4}`. Der Teil der URL mit dem Hostnamen darf keine Ansprüche enthalten.  <br />Der Wert `QueryString` ist der Eingabeanspruch, der in der Abfragezeichenfolge der Anforderung gesendet wird. <br />Die jeweils aufgerufenen HTTP-Verben lauten wie folgt:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`Url`: GET</li><li>`QueryString`: GET</li></ul> |
 | ClaimsFormat | Nein | Derzeit nicht verwendet, kann ignoriert werden. |
 | ClaimUsedForRequestPayload| Nein | Der Name eines Zeichenfolgenanspruchs, der die an die REST-API zu sendende Nutzlast enthält. |
 | DebugMode | Nein | Führt das technische Profil im Debugmodus aus. Mögliche Werte sind `true` oder `false` (Standardwert). Im Debugmodus kann die REST-API mehr Informationen zurückgeben. Die entsprechenden Informationen finden Sie im Abschnitt [Zurückgegebene Fehlermeldung](#returning-validation-error-message). |
@@ -221,7 +221,7 @@ Wenn als Typ der Authentifizierung `Bearer` festgelegt ist, enthält das **Crypt
 
 Wenn als Typ der Authentifizierung `ApiKeyHeader` festgelegt ist, enthält das **CryptographicKeys**-Element das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Der Name des HTTP-Headers, z. B. `x-functions-key` oder `x-api-key`. | Ja | Der zur Authentifizierung verwendete Schlüssel. |
 
@@ -290,6 +290,6 @@ public class ResponseContent
 In den folgenden Artikeln finden Sie Beispiele für die Verwendung eines technischen RESTful-Profils:
 
 - [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie](api-connectors-overview.md)
-- [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey zur Validierung der Benutzereingabe](custom-policy-rest-api-claims-validation.md)
-- [Exemplarische Vorgehensweise: Hinzufügen von REST-API-Anspruchsaustauschvorgängen zu benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-rest-api-claims-validation.md)
+- [Exemplarische Vorgehensweise: Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung](add-api-connector.md)
+- [Exemplarische Vorgehensweise: Hinzufügen von REST-API-Anspruchsaustauschvorgängen zu benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-rest-api-claims-exchange.md)
 - [Sichern von REST-API-Diensten](secure-rest-api.md)

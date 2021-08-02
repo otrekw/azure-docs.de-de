@@ -1,25 +1,25 @@
 ---
 title: 'Erstellen eines Azure AD-Mandanten für P2S VPN-Verbindungen: Azure AD-Authentifizierung'
 titleSuffix: Azure VPN Gateway
-description: Erfahren Sie, wie Sie einen Azure AD-Mandanten für die P2S Open VPN-Authentifizierung einrichten.
+description: Erfahren Sie, wie Sie einen Azure AD-Mandanten für die P2S Azure AD-Authentifizierung einrichten – OpenVPN-Protokoll.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 05/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: c0d3aa376f11ca6b05a8fcbd10562ff2fed83258
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 34ea18e67752ed28986a08c4132ca10fbedce3c6
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228656"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652475"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Erstellen eines Azure Active Directory-Mandanten für Verbindungen mit dem P2S OpenVPN-Protokoll
 
-Beim Herstellen einer Verbindung mit Ihrem VNet können Sie die zertifikatbasierte Authentifizierung oder die RADIUS-Authentifizierung verwenden. Wenn Sie das Open VPN-Protokoll verwenden, können Sie jedoch auch die Azure Active Directory-Authentifizierung verwenden. Dieser Artikel unterstützt Sie beim Einrichten eines Azure AD-Mandanten für die P2S Open VPN-Authentifizierung.
+Wenn Sie eine Point-to-Site-Verbindung mit Ihrem VNet herstellen, können Sie das zu verwendende Protokoll auswählen. Das von Ihnen verwendete Protokoll bestimmt die Authentifizierungsoptionen, die Ihnen zur Verfügung stehen. Sie können die Azure Active Directory-Authentifizierung bei Verwendung des OpenVPN-Protokolls verwenden. Dieser Artikel hilft Ihnen, einen Azure AD-Mandanten einzurichten. Weitere Informationen zu Point-to-Site-Protokollen und zur Authentifizierung finden Sie unter [Informationen zu Point-to-Site-VPN](point-to-site-about.md).
 
-[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
+[!INCLUDE [OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="1-verify-azure-ad-tenant"></a><a name="tenant"></a>1. Überprüfen des Azure AD-Mandanten
 
@@ -28,11 +28,11 @@ Stellen Sie sicher, dass Sie über einen Azure AD-Mandanten verfügen. Wenn Sie 
 * Organisationsname
 * Name der Anfangsdomäne
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/newtenant.png" alt-text="Neuer Azure AD-Mandant" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/newtenant.png" alt-text="Screenshot: Seite „Verzeichnis erstellen“" border="false":::
 
 ## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2. Erstellen von Azure AD-Mandantenbenutzern
 
-Ihr Azure AD Mandant benötigt die folgenden Konten: ein globales Administratorkonto und ein Masterbenutzerkonto. Das Masterbenutzerkonto wird als Masterkonto für die Einbettung verwendet (Dienstkonto). Wenn Sie ein Azure AD-Mandantenbenutzerkonto erstellen, passen Sie die Verzeichnisrolle für den Typ des Benutzers an, den Sie erstellen möchten.
+Ihr Azure AD Mandant benötigt die folgenden Konten: ein globales Administratorkonto und ein Benutzerkonto. Das Benutzerkonto wird als Konto für die Einbettung verwendet (Dienstkonto). Wenn Sie ein Azure AD-Mandantenbenutzerkonto erstellen, passen Sie die Verzeichnisrolle für den Typ des Benutzers an, den Sie erstellen möchten.
 
 Führen Sie die Schritte unter [Hinzufügen oder Löschen von Benutzern: Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md) aus, um mindestens zwei Benutzer für Ihren Azure AD-Mandanten zu erstellen. Achten Sie darauf, dass Sie die **Verzeichnisrolle** ändern, um die Kontotypen zu erstellen:
 
@@ -43,7 +43,7 @@ Führen Sie die Schritte unter [Hinzufügen oder Löschen von Benutzern: Azure A
 
 1. Suchen Sie die Verzeichnis-ID des Verzeichnisses, das Sie für die Authentifizierung verwenden möchten. Sie wird im Abschnitt „Eigenschaften“ der Active Directory-Seite aufgeführt.
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="Screenshot der Verzeichniseigenschaften" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="Screenshot: Verzeichniseigenschaften" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
 
 1. Kopieren Sie die Verzeichnis-ID.
 
@@ -81,7 +81,7 @@ Führen Sie die Schritte unter [Hinzufügen oder Löschen von Benutzern: Azure A
 
 1. Wählen Sie das Konto **Globaler Administrator** aus, wenn Sie dazu aufgefordert werden.
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/pick.png" alt-text="Konto auswählen" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/pick.png" alt-text="Screnshot: Seite „Konto auswählen“" border="false":::
 1. Wählen Sie **Akzeptieren** aus, wenn Sie dazu aufgefordert werden.
 
    :::image type="content" source="./media/openvpn-create-azure-ad-tenant/accept.jpg" alt-text="Screenshot mit der Meldung „Berechtigungen angefordert: Akzeptieren“ für Ihre Organisation mit Details und der Option zum Akzeptieren." border="false":::
@@ -97,12 +97,18 @@ Führen Sie die Schritte unter [Hinzufügen oder Löschen von Benutzern: Azure A
 
    * **Tenant:** TenantID für den Azure AD-Mandanten ```https://login.microsoftonline.com/{AzureAD TenantID}/```
 
-   * **Audience:** ApplicationID der Azure AD-Unternehmens-App „Azure VPN“ ```{AppID of the "Azure VPN" AD Enterprise app}```
+   * **Audience:** Anwendungs-ID der Azure AD-Unternehmens-App „Azure VPN“
+
+       * Geben Sie 41b23e61-6c1e-4545-b367-cd054e0ed4b4 für Azure Public ein.
+       * Geben Sie 51bb15d4-3a4f-4ebf-9dca-40096fe32426 für Azure Government ein.
+       * Geben Sie 538ee9e6-310a-468d-afef-ea97365856a9 für Azure Germany ein.
+       * Geben Sie 49f817b6-84ae-4cc0-928c-73f27289b3aa für Azure China 21Vianet ein.
+
 
    * **Aussteller:** URL des Sicherheitstokendiensts ```https://sts.windows.net/{AzureAD TenantID}/```
 
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="SAzure VPN" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="Screenshot: Einstellungen für Tunneltyp, Authentifizierungstyp und Azure Active Directory" border="false":::
 
    > [!NOTE]
    > Achten Sie darauf, den nachgestellten Schrägstrich am Ende des `AadIssuerUri`-Werts anzugeben. Andernfalls kann es sein, dass die Verbindung fehlschlägt.

@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 05/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2441832ce13c98410cbd0d087ec4302ff7fa6428
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 0482146a7070083c795a60a4b01fdede7e1b3bf1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205897"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067382"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Informationen zu zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen
 
@@ -39,7 +39,7 @@ Um Gateways in einer bestimmten Zone bereitzustellen, verwenden Sie zonenbasiert
 
 ## <a name="gateway-skus"></a><a name="gwskus"></a>Gateway-SKUs
 
-Zonenredundante und zonenbasierte Gateways sind als neue Gateway-SKUs verfügbar. In Regionen mit Azure-Verfügbarkeitszonen haben wir neue SKUs für virtuelle Netzwerkgateways hinzugefügt. Diese SKUs ähneln den entsprechenden SKUs für ExpressRoute und VPN Gateway, sind aber speziell auf zonenredundante und zonenbasierte Gateways ausgelegt. Sie können diese SKUs am „AZ“ im SKU-Namen identifizieren.
+Zonenredundante und zonenbasierte Gateways sind als Gateway-SKUs verfügbar. In Regionen mit Azure-Verfügbarkeitszonen haben wir neue SKUs für virtuelle Netzwerkgateways hinzugefügt. Diese SKUs ähneln den entsprechenden SKUs für ExpressRoute und VPN Gateway, sind aber speziell auf zonenredundante und zonenbasierte Gateways ausgelegt. Sie können diese SKUs am „AZ“ im SKU-Namen identifizieren.
 
 Weitere Informationen zu Gateway-SKUs finden Sie unter [VPN-Gateway-SKUs](vpn-gateway-about-vpngateways.md#gwsku) und [ExpressRoute-Gateway-SKUs](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku).
 
@@ -64,17 +64,17 @@ Wenn Sie eine öffentliche IP-Adresse mit der **Basic**-SKU für öffentliche IP
 
 ## <a name="faq"></a><a name="faq"></a>Häufig gestellte Fragen
 
-### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Was ändert sich durch die Bereitstellung dieser neuen SKUs?
+### <a name="what-will-change-when-i-deploy-these-skus"></a>Was ändert sich, wenn ich diese SKUs bereitstelle?
 
 Aus Ihrer Sicht können Sie Ihre Gateways mit Zonenredundanz bereitstellen. Das bedeutet, dass alle Instanzen der Gateways in Azure-Verfügbarkeitszonen bereitgestellt werden und jede Verfügbarkeitszone eine eigene Fehler- und Updatedomäne darstellt. Dadurch werden Ihre Gateways zuverlässiger, verfügbarer und robuster bei Zonenausfällen.
 
 ### <a name="can-i-use-the-azure-portal"></a>Kann ich das Azure-Portal verwenden?
 
-Ja, Sie können die neuen SKUs über das Azure-Portal bereitstellen. Allerdings werden diese neuen SKUs nur in den Azure-Regionen angezeigt, die Azure-Verfügbarkeitszonen haben.
+Ja, Sie können diese SKUs über das Azure-Portal bereitstellen. Allerdings werden diese SKUs nur in den Azure-Regionen angezeigt, in denen es Azure-Verfügbarkeitszonen gibt.
 
-### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>In welchen Regionen stehen die neuen SKUs zur Verfügung?
+### <a name="what-regions-are-available-for-me-to-use-these-skus"></a>In welchen Regionen sind diese SKUs verfügbar?
 
-Die neuen SKUs sind in Azure-Regionen mit Azure-Verfügbarkeitszonen verfügbar. Hierzu zählen „USA, Mitte“, „Frankreich, Mitte“, „Europa, Norden“, „Europa, Westen“, „USA, Westen 2“, „USA, Osten“, „USA, Osten 2“, „Asien, Südosten“, „Japan, Osten“ und „Vereinigtes Königreich, Süden“. In Zukunft werden zonenredundante Gateways auch in anderen öffentlichen Azure-Regionen verfügbar sein.
+Diese SKUs sind in den Azure-Regionen verfügbar, in denen es Azure-Verfügbarkeitszonen gibt. Weitere Informationen finden Sie unter [Azure-Regionen mit Verfügbarkeitszonen](../availability-zones/az-region.md#azure-regions-with-availability-zones).
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Kann ich meine vorhandenen Gateways für virtuelle Netzwerke in zonenredundante oder zonenbasierte Gateways ändern/migrieren/aktualisieren?
 

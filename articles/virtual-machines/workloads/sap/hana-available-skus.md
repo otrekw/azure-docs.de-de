@@ -1,6 +1,6 @@
 ---
 title: SKUs für SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
-description: SKUs für SAP HANA in Azure (große Instanzen)
+description: Erfahren Sie mehr über die SKUs, die für SAP HANA in Azure (große Instanzen) verfügbar sind.
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -8,20 +8,23 @@ manager: juergent
 editor: ''
 keywords: HLI, HANA, SKUs, S896, S224, S448, S672, Optane, SAP
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 4/16/2021
-ms.author: juergent
+ms.date: 5/13/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017, references_regions
-ms.openlocfilehash: 3ecbbe4d477f3e6c3c6606528c51b934b6cf534a
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: b9079b242710bee831ebdc0381118da1d0ad80e5
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718735"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577632"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>Verfügbare SKUs für große HANA-Instanzen
+
+## <a name="baremetal-infrastructure-availability-by-region"></a>Verfügbarkeit der BareMetal-Infrastruktur nach Region
 
 Der auf Rev 4.2* basierende BareMetal-Infrastrukturdienst (zertifiziert für SAP HANA-Workloads) ist in den folgenden Regionen verfügbar:
 - Europa, Westen
@@ -39,12 +42,12 @@ Der auf Rev 3* basierende BareMetal-Infrastrukturdienst (zertifiziert für SAP 
 - Australien, Südosten
 - Japan, Osten
 
+## <a name="list-of-available-azure-large-instances"></a>Liste der verfügbaren großen Azure-Instanzen
 
-Es folgt eine Liste der verfügbaren großen Azure-Instanzen.
+Im Folgenden finden Sie eine Liste der verfügbaren großen Azure-Instanzen (auch als BareMetal-Infrastrukturinstanzen bekannt).
 
 > [!IMPORTANT]
 > Beachten Sie die erste Spalte, die den Status der HANA-Zertifizierung für jeden der Typen von großen Instanzen in der Liste enthält. Die Spalte sollte mit dem [SAP HANA-Hardwareverzeichnis](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) für die Azure-SKUs korrelieren, die mit dem Buchstaben **S** beginnen.
-
 
 
 | SAP HANA-zertifiziert | Modell | Gesamter Speicher | Arbeitsspeicher DRAM | Arbeitsspeicher Optane | Storage | Verfügbarkeit |
@@ -90,7 +93,7 @@ Es folgt eine Liste der verfügbaren großen Azure-Instanzen.
 
 
 > [!IMPORTANT]
-> Die folgenden SKUs werden zwar weiterhin unterstützt, können jedoch nicht mehr gekauft werden: S72, S72m, S144, S144m, S192, and S192m 
+> Die folgenden SKUs werden zwar weiterhin unterstützt, können jedoch nicht mehr gekauft werden: S72, S72m, S144, S144m, S192 und S192m.
 
 Die jeweils gewählten Konfigurationen hängen von der Workload, den CPU-Ressourcen und dem gewünschten Arbeitsspeicher ab. Die OLTP-Workload kann die SKUs nutzen, die für die OLAP-Workload optimiert sind. 
 
@@ -100,8 +103,9 @@ Die SKUs werden durch zwei unterschiedliche Hardwareklassen wie folgt unterteilt
 - Alle anderen SKUs werden als „Typ-II-Klasse“ von SKUs bezeichnet.
 - Wenn Sie an SKUs interessiert sind, die noch nicht im SAP-Hardwareverzeichnis aufgelistet sind, wenden Sie sich an das Microsoft-Konto-Team, um weitere Informationen zu erhalten. 
 
+## <a name="tenant-considerations"></a>Überlegungen zu Mandanten
 
-Ein vollständiges Umfeld von HANA (große Instanz) ist nicht ausschließlich zur Verwendung durch einen einzelnen Kunden zugeordnet. Dies gilt für Racks mit Compute- und Speicherressourcen, die über ein in Azure bereitgestelltes Netzwerkfabric verbunden sind. Die Infrastruktur von HANA (große Instanz) stellt wie Azure verschiedene &quot;Kundenmandanten&quot; bereit, die in den drei folgenden Ebenen voneinander isoliert sind:
+Ein vollständiges Umfeld von HANA (große Instanz) ist nicht ausschließlich zur Verwendung durch einen einzelnen Kunden zugeordnet. Dies gilt für Racks mit Compute- und Speicherressourcen, die über ein in Azure bereitgestelltes Netzwerkfabric verbunden sind. Die Infrastruktur von HANA (große Instanz) stellt wie Azure verschiedene „Kundenmandanten“ bereit, die in den drei folgenden Ebenen voneinander isoliert sind:
 
 - **Netzwerk:** Isolation durch virtuelle Netzwerke innerhalb des Umfelds von HANA (große Instanz).
 - **Storage**: Isolation durch Speicher-VMs, denen Speichervolumes zugewiesen sind und die Speichervolumes zwischen Mandanten isolieren.
@@ -111,11 +115,16 @@ Die Bereitstellungen von Einheiten von HANA (große Instanz) zwischen verschiede
 
 Ein bereitgestellter Mandant im Umfeld der großen Instanz wird zur Abrechnung einem Azure-Abonnement zugewiesen. In einem Netzwerk kann über virtuelle Netzwerke anderer Azure-Abonnements in derselben Azure-Registrierung darauf zugegriffen werden. Bei Bedarf können Sie auch einen getrennten HANA-Mandanten (große Instanz) beantragen, wenn Sie mit einem anderen Azure-Abonnement in derselben Azure-Region Bereitstellungen durchführen.
 
-Es gibt jedoch bedeutende Unterschiede zwischen der Ausführung von SAP HANA unter HANA (große Instanz) und der Ausführung von SAP HANA auf in Azure bereitgestellten VMs:
+## <a name="sap-hana-on-hana-large-instances-vs-on-vms"></a>SAP HANA in HANA (große Instanzen) im Vergleich zu VMs
+
+Es gibt jedoch bedeutende Unterschiede zwischen der Ausführung von SAP HANA unter HANA (große Instanzen) und der Ausführung von SAP HANA auf in Azure bereitgestellten VMs:
 
 - Es gibt keine Virtualisierungsschicht für SAP HANA in Azure (große Instanzen). Sie profitieren von der Leistung der zugrunde liegenden Bare-Metal-Hardware.
 - Im Gegensatz zu Azure ist der Server für SAP HANA in Azure (große Instanzen) für einen bestimmten Kunden vorgesehen. Die Hard- oder Softpartitionierung einer Servereinheit oder eines Hosts ist nicht möglich. Deshalb wird eine Einheit von HANA (große Instanz) als Ganzes einem Mandanten und somit Ihnen zugewiesen und verwendet. Ein Neustart oder das Herunterfahren des Servers führt nicht automatisch dazu, dass das Betriebssystem und SAP HANA auf einem anderen Server bereitgestellt werden. (Die einzige Ausnahme für Typ-I-Klasse-SKUs ist das Auftreten von Problemen auf einem Server, die eine erneute Bereitstellung auf einem anderen Server erfordern.)
 - Im Gegensatz zu Azure, wo die Auswahl der Hostprozessortypen nach dem besten Preis-Leistungs-Verhältnis erfolgt, werden für SAP HANA in Azure (große Instanzen) die Prozessortypen mit der höchsten Leistung der Intel E7v3- und E7v4-Prozessorserie ausgewählt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Siehe [HLI-Größenanpassung](hana-sizing.md).
+Erfahren Sie mehr über die Dimensionierung von HANA (große Instanzen).
+
+> [!div class="nextstepaction"]
+> [HLI-Dimensionierung](hana-sizing.md)

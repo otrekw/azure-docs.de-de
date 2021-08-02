@@ -1,18 +1,18 @@
 ---
 title: Herstellen einer Verbindung mit einer Windows-VM mit Azure Bastion
-description: In diesem Artikel erfahren Sie, wie Sie eine Verbindung mit einem virtuellen Azure-Computer mit Azure Bastion herstellen.
+description: Erfahren Sie, wie Sie Azure Bastion verwenden, um eine Verbindung mit einer Windows ausführenden Azure-VM herzustellen.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 708bd1f61da2f3973333f8e68cabdceee0717bee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fac6d5a0b7d7c8817dadead7e2a9269027140991
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92521532"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535302"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Herstellen einer Verbindung mit einem virtuellen Windows-Computer mit Azure Bastion
 

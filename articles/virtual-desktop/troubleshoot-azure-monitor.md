@@ -1,27 +1,27 @@
 ---
-title: Behandeln von Problemen mit Azure Monitor für Windows Virtual Desktop
-description: Hier erfahren Sie mehr über das Behandeln von Problemen mit Azure Monitor für Windows Virtual Desktop.
+title: Behandeln von Problemen mit Azure Monitor für Azure Virtual Desktop
+description: Hier erfahren Sie mehr über das Behandeln von Problemen mit Azure Monitor für Azure Virtual Desktop.
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a104f4d33e1bd38e130101b34d3fd2021de27cd2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 27234cab8ebd6beefdd3766b3dca234ba5b41515
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445481"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755355"
 ---
-# <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop"></a>Behandeln von Problemen mit Azure Monitor für Windows Virtual Desktop
+# <a name="troubleshoot-azure-monitor-for-azure-virtual-desktop"></a>Behandeln von Problemen mit Azure Monitor für Azure Virtual Desktop
 
-In diesem Artikel werden bekannte Probleme und Lösungen für häufig auftretende Probleme in Azure Monitor für Windows Virtual Desktop beschrieben.
+In diesem Artikel werden bekannte Probleme und Lösungen für häufig auftretende Probleme in Azure Monitor für Azure Virtual Desktop beschrieben.
 
 ## <a name="issues-with-configuration-and-setup"></a>Probleme mit der Konfiguration und dem Setup
 
 Wenn die Konfigurationsarbeitsmappe nicht richtig funktioniert, um das Setup zu automatisieren, können Sie diese Ressourcen verwenden, um Ihre Umgebung manuell einzurichten:
 
-- Informationen zum manuellen Aktivieren der Diagnose oder zum Zugreifen auf den Log Analytics-Arbeitsbereich finden Sie unter [Senden der Windows Virtual Desktop-Diagnose an Log Analytics](diagnostics-log-analytics.md).
+- Informationen zum manuellen Aktivieren der Diagnose oder zum Zugreifen auf den Log Analytics-Arbeitsbereich finden Sie unter [Senden der Azure Virtual Desktop-Diagnose an Log Analytics](diagnostics-log-analytics.md).
 - Informationen zum manuellen Installieren der Log Analytics-Erweiterung auf einem Sitzungshost finden Sie unter [Log Analytics-VM-Erweiterung für Windows](../virtual-machines/extensions/oms-windows.md).
 - Eine Anleitung zum Einrichten eines neuen Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
 - Informationen zum Hinzufügen, Entfernen oder Bearbeiten von Leistungsindikatoren finden Sie unter [Konfigurieren von Leistungsindikatoren](../azure-monitor/agents/data-sources-performance-counters.md).
@@ -31,10 +31,10 @@ Wenn die Konfigurationsarbeitsmappe nicht richtig funktioniert, um das Setup zu 
 
 Wenn Ihre Daten nicht ordnungsgemäß angezeigt werden, überprüfen Sie die folgenden allgemeinen Lösungen:
 
-- Stellen Sie zunächst sicher, dass Sie die Konfigurationsarbeitsmappe ordnungsgemäß eingerichtet haben, wie es unter [Verwenden von Azure Monitor für Windows Virtual Desktop zum Überwachen der Bereitstellung](azure-monitor.md) beschrieben ist. Wenn Leistungsindikatoren oder Ereignisse fehlen, werden die zugehörigen Daten nicht im Azure-Portal angezeigt.
-- Überprüfen Sie Ihre Zugriffsrechte und wenden Sie sich an die Ressourcenbesitzer, um fehlende Berechtigungen anzufordern. Jeder, der Windows Virtual Desktop überwacht, benötigt die folgenden Berechtigungen:
-    - Lesezugriff auf die Azure-Abonnements, die Ihre Windows Virtual Desktop-Ressourcen enthalten
-    - Lesezugriff auf die Ressourcengruppen des Abonnements, die Ihre Windows Virtual Desktop-Sitzungshosts enthalten 
+- Stellen Sie zunächst sicher, dass Sie die Konfigurationsarbeitsmappe ordnungsgemäß eingerichtet haben, wie es unter [Verwenden von Azure Monitor für Azure Virtual Desktop zum Überwachen der Bereitstellung](azure-monitor.md) beschrieben ist. Wenn Leistungsindikatoren oder Ereignisse fehlen, werden die zugehörigen Daten nicht im Azure-Portal angezeigt.
+- Überprüfen Sie Ihre Zugriffsrechte und wenden Sie sich an die Ressourcenbesitzer, um fehlende Berechtigungen anzufordern. Jeder, der Azure Virtual Desktop überwacht, benötigt die folgenden Berechtigungen:
+    - Lesezugriff auf die Azure-Abonnements, die Ihre Azure Virtual Desktop-Ressourcen enthalten
+    - Lesezugriff auf die Ressourcengruppen des Abonnements, die Ihre Azure Virtual Desktop-Sitzungshosts enthalten 
     - Lesezugriff auf die Log Analytics-Arbeitsbereiche, die Sie verwenden
 - Möglicherweise müssen Sie ausgehende Ports in der Firewall Ihres Servers öffnen, damit Azure Monitor und Log Analytics Daten an das Portal senden können. Weitere Informationen hierzu finden Sie in den folgenden Artikeln:
       - [Von Azure Monitor verwendete IP-Adressen](../azure-monitor/app/ip-addresses.md)
@@ -43,9 +43,9 @@ Wenn Ihre Daten nicht ordnungsgemäß angezeigt werden, überprüfen Sie die fol
 
 Wenn keine Informationen fehlen, die Daten aber dennoch nicht ordnungsgemäß angezeigt werden, liegt möglicherweise ein Problem in der Abfrage oder den Datenquellen vor. Informieren Sie sich über [Einschränkungen und bekannte Probleme](#known-issues-and-limitations). 
 
-## <a name="i-want-to-customize-azure-monitor-for-windows-virtual-desktop"></a>Ich möchte Azure Monitor für Windows Virtual Desktop anpassen
+## <a name="i-want-to-customize-azure-monitor-for-azure-virtual-desktop"></a>Ich möchte Azure Monitor für Azure Virtual Desktop anpassen
 
-Azure Monitor für Windows Virtual Desktop verwendet Azure Monitor-Arbeitsmappen. Mit Arbeitsmappen können Sie eine Kopie der Windows Virtual Desktop-Arbeitsmappenvorlage speichern und eigene Anpassungen vornehmen.
+Azure Monitor für Azure Virtual Desktop verwendet Azure Monitor-Arbeitsmappen. Mit Arbeitsmappen können Sie eine Kopie der Azure Virtual Desktop-Arbeitsmappenvorlage speichern und eigene Anpassungen vornehmen.
 
 Entwurfsbedingt übernehmen benutzerdefinierte Arbeitsmappenvorlagen nicht automatisch Updates aus der Produktgruppe. Weitere Informationen finden Sie unter [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](../azure-monitor/insights/troubleshoot-workbooks.md) und in der [Übersicht über Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md).
 
@@ -62,8 +62,8 @@ Wenn Sie mehr Leistungsindikatoren oder Windows-Ereignisprotokolle überwachen m
 
 Sie können keinen Datenpunkt finden, der bei der Diagnose eines Problems hilft? Senden Sie uns Feedback!
 
-- Informationen zum Bereitstellen von Feedback finden Sie unter [Problembehandlung von Übersicht, Feedback und Support für Windows Virtual Desktop](troubleshoot-set-up-overview.md).
-- Sie können Ihr Feedback in Bezug auf Windows Virtual Desktop auch im [Windows Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) hochladen.
+- Informationen zum Hinterlassen von Feedback finden Sie unter [Problembehandlung: Übersicht, Feedback und Support für Azure Virtual Desktop](troubleshoot-set-up-overview.md).
+- Sie können Ihr Feedback bezüglich Azure Virtual Desktop auch im [Azure Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) hochladen.
 
 ## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
 
@@ -81,6 +81,6 @@ Die folgenden Probleme und Einschränkungen sind uns bekannt, und wir arbeiten a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie zum Einstieg [Verwenden von Azure Monitor für Windows Virtual Desktop zum Überwachen der Bereitstellung](azure-monitor.md).
-- Informationen dazu, wie Sie Ihre Datenspeicherkosten schätzen, messen und verwalten können, finden Sie unter [Schätzen der Azure Monitor-Kosten](azure-monitor-costs.md).
-- Sehen Sie sich unser [Glossar](azure-monitor-glossary.md) an, um mehr über Begriffe und Konzepte im Zusammenhang mit Azure Monitor für Windows Virtual Desktop zu erfahren.
+- Lesen Sie zum Einstieg [Verwenden von Azure Monitor für Azure Virtual Desktop zum Überwachen Ihrer Bereitstellung](azure-monitor.md).
+- Informationen dazu, wie Sie Ihre Datenspeicherkosten schätzen, messen und verwalten können, finden Sie unter [Schätzung der Azure Monitor-Kosten](azure-monitor-costs.md).
+- Sehen Sie sich unser [Glossar](azure-monitor-glossary.md) an, um mehr über Begriffe und Konzepte im Zusammenhang mit Azure Monitor für Azure Virtual Desktop zu erfahren.

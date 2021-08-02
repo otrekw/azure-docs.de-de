@@ -3,12 +3,12 @@ title: Erfassen und Analysieren von Ressourcenprotokollen
 description: Erfahren Sie, wie Sie Ressourcenprotokolle und Ereignisdaten aus Containergruppen in Azure Container Instances an Azure Monitor-Protokolle senden können.
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: e46a1df65a4cfe5d10a58704aff485aa2834b55f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0c95535c80425abb8bdc904132581531b8cdd24e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763917"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029061"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen
 
@@ -146,6 +146,53 @@ ContainerInstanceLog_CL
 | where (ContainerGroup_s == "mycontainergroup001")
 | where (TimeGenerated > ago(1h))
 ```
+
+## <a name="log-schema"></a>Protokollschema
+
+> [!NOTE]
+> Einige der unten aufgeführten Spalten sind nur als Teil des Schemas vorhanden und enthalten keine Daten, die in Protokollen ausgegeben werden. Diese Spalten sind unten mit der Beschreibung „Leer“ angegeben.
+
+### <a name="containerinstancelog_cl"></a>ContainerInstanceLog_CL
+
+|Spalte|Typ|BESCHREIBUNG|
+|-|-|-|
+|Computer|string|Leer|
+|ContainerGroup_s|Zeichenfolge|Der Name der Containergruppe, der der Datensatz zugeordnet ist|
+|ContainerID_s|Zeichenfolge|Ein eindeutiger Bezeichner für den Container, dem der Datensatz zugeordnet ist|
+|ContainerImage_s|Zeichenfolge|Der Name des Container-Images, dem der Datensatz zugeordnet ist|
+|Location_s|Zeichenfolge|Der Speicherort der Ressource, der der Datensatz zugeordnet ist|
+|`Message`|Zeichenfolge|Falls zutreffend, die Nachricht von dem Container|
+|OSType_s|Zeichenfolge|Der Name des Betriebssystems, auf dem der Container basiert|
+|RawData|string|Leer|
+|ResourceGroup|Zeichenfolge|Name der Ressourcengruppe, der der Datensatz zugeordnet ist|
+|Source_s|Zeichenfolge|Name der Protokollierungskomponente, „LoggingAgent“|
+|SubscriptionId|Zeichenfolge|Ein eindeutiger Bezeichner für das Abonnement, dem der Datensatz zugeordnet ist.|
+|TimeGenerated|datetime|Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat|
+|type|Zeichenfolge|Der Name der Tabelle.|
+|_ResourceId|Zeichenfolge|Ein eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist.|
+|_SubscriptionId|Zeichenfolge|Ein eindeutiger Bezeichner für das Abonnement, dem der Datensatz zugeordnet ist.|
+
+### <a name="containerevent_cl"></a>ContainerEvent_CL
+
+|Spalte|Typ|BESCHREIBUNG|
+|-|-|-|
+|Computer|string|Leer|
+|ContainerGroupInstanceId_g|Zeichenfolge|Ein eindeutiger Bezeichner für die Containergruppe, der der Datensatz zugeordnet ist|
+|ContainerGroup_s|Zeichenfolge|Der Name der Containergruppe, der der Datensatz zugeordnet ist|
+|ContainerName_s|Zeichenfolge|Der Name des Containers, dem der Datensatz zugeordnet ist|
+|Count_d|real|Wie oft das Ereignis seit der letzten Abfrage aufgetreten ist|
+|FirstTimestamp_t|datetime|Der Zeitstempel des ersten Auftretens des Ereignisses|
+|Location_s|Zeichenfolge|Der Speicherort der Ressource, der der Datensatz zugeordnet ist|
+|`Message`|Zeichenfolge|Falls zutreffend, die Nachricht von dem Container|
+|OSType_s|Zeichenfolge|Der Name des Betriebssystems, auf dem der Container basiert|
+|RawData|string|Leer|
+|Reason_s|string|Leer|
+|ResourceGroup|Zeichenfolge|Der Name der Ressourcengruppe, der der Datensatz zugeordnet ist|
+|SubscriptionId|Zeichenfolge|Ein eindeutiger Bezeichner für das Abonnement, dem der Datensatz zugeordnet ist.|
+|TimeGenerated|datetime|Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat|
+|type|Zeichenfolge|Der Name der Tabelle.|
+|_ResourceId|Zeichenfolge|Ein eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist.|
+|_SubscriptionId|Zeichenfolge|Ein eindeutiger Bezeichner für das Abonnement, dem der Datensatz zugeordnet ist.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

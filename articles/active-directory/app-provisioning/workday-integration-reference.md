@@ -1,21 +1,22 @@
 ---
 title: Referenz zur Integration von Azure Active Directory mit Workday
-description: Fundierte technische Einblicke in die HR-Bereitstellung mit Workday
+description: Fundierte technische Einblicke in die HR-Bereitstellung mit Workday in Azure Active Directory
 services: active-directory
-author: cmmdesai
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 02/09/2021
-ms.author: chmutali
-ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.author: kenwith
+ms.reviewer: arvinh, chmutali
+ms.openlocfilehash: a67026238c0a3cf469cb7d6bc3112eb269cf5a13
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104330"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785895"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Integration der Azure Active Directory-Bereitstellung mit Workday
 
@@ -408,7 +409,7 @@ In der folgenden Tabelle finden Sie einen Leitfaden für die Zuordnung der Konfi
 
 Im Folgenden finden Sie einige Beispiele dazu, wie Sie die Workday-Integration erweitern können, um bestimmte Anforderungen zu erfüllen. 
 
-**Beispiel 1**
+### <a name="example-1-retrieving-cost-center-and-pay-group-information"></a>Beispiel 1: Abrufen von Informationen zu Kostenstelle und Lohngruppe
 
 Angenommen, Sie möchten die folgenden Datasets aus Workday abrufen und in Ihren Bereitstellungsregeln verwenden:
 
@@ -437,19 +438,31 @@ Die oben aufgeführten Datasets sind standardmäßig nicht enthalten. So rufen S
      >| CostCenterCode | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data/wd:Organization_Data[wd:Organization_Type_Reference/@wd:Descriptor='Cost Center']/wd:Organization_Code/text() |
      >| PayGroup | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data/wd:Organization_Data[wd:Organization_Type_Reference/@wd:Descriptor='Pay Group']/wd:Organization_Name/text() |
 
-**Beispiel 2**
+### <a name="example-2-retrieving-qualification-and-skills-data"></a>Beispiel 2: Abrufen von Daten zu Qualifikation und Fertigkeiten
 
 Angenommen, Sie möchten Zertifizierungen abrufen, die einem Benutzer zugeordnet sind. Diese Informationen sind im Dataset mit den *Qualifikationsdaten* enthalten. Verwenden Sie den folgenden XPATH-Ausdruck, um dieses Dataset in der *Get_Workers*-Antwort abzurufen: 
 
 `wd:Worker/wd:Worker_Data/wd:Qualification_Data/wd:Certification/wd:Certification_Data/wd:Issuer/text()`
 
-**Beispiel 3**
+### <a name="example-3-retrieving-provisioning-group-assignments"></a>Beispiel 3: Abrufen der Zuweisungen von Bereitstellungsgruppen
 
-Angenommen, Sie möchten die *Bereitstellungsgruppen* abrufen, die einem Mitarbeiter zugewiesen sind. Diese Informationen sind im Dataset mit den *Kontobereitstellungsdaten* enthalten. Verwenden Sie den folgenden XPATH-Ausdruck, um dieses Dataset in der *Get_Workers*-Antwort abzurufen: 
+Angenommen, Sie möchten die *Bereitstellungsgruppen* abrufen, die einem Mitarbeiter zugewiesen sind. Diese Informationen sind im Dataset mit den *Kontobereitstellungsdaten* enthalten. Verwenden Sie den folgenden XPATH-Ausdruck, um diese Daten in der *Get_Workers*-Antwort abzurufen: 
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
 
 ## <a name="handling-different-hr-scenarios"></a>Umgang mit verschiedenen HR-Szenarien
+
+### <a name="support-for-worker-conversions"></a>Unterstützung für Mitarbeiterumwandlungen
+
+Bei der Umwandlung eines Mitarbeiters in einen vorübergehend Beschäftigten oder eines vorübergehend Beschäftigten in einen Mitarbeiter erkennt der Workday-Connector diese Änderung automatisch und verknüpft das AD-Konto mit dem aktiven Mitarbeiterprofil, sodass alle AD-Attribute mit dem aktiven Mitarbeiterprofil synchronisiert sind. Zum Aktivieren dieser Funktion sind keine Konfigurationsänderungen erforderlich. Nachfolgend wird das Bereitstellungsverhalten im Falle einer Umwandlung beschrieben. 
+
+* Angenommen, John Smith wird im Januar als vorübergehend Beschäftigter eingestellt. Da Johns *WorkerID* (übereinstimmendes Attribut) kein AD-Konto zugeordnet ist, erstellt der Bereitstellungsdienst ein neues AD-Konto für den Benutzer und verknüpft Johns *WID (WorkdayID)* für vorübergehend Beschäftigte mit seinem AD-Konto.
+* Drei Monate später wird John in einen Vollzeitmitarbeiter umgewandelt. In Workday wird ein neues Mitarbeiterprofil für John erstellt. Obwohl Johns *WorkerID* in Workday unverändert bleibt, verfügt er nun über zwei *WID*-Elemente in Workday: eines ist dem Profil eines vorübergehend Beschäftigten zugeordnet und das andere dem Profil eines festen Mitarbeiters. 
+* Wenn der Bereitstellungsdienst während der inkrementellen Synchronisierung zwei Mitarbeiterprofile für dieselbe WorkerID erkennt, überträgt er automatisch den Besitz des AD-Kontos an das aktive Mitarbeiterprofil. In diesem Fall wird die Verknüpfung des Profils eines vorübergehend Beschäftigten mit dem AD-Konto entfernt und eine neue Verknüpfung zwischen Johns aktivem Mitarbeiterprofil und seinem AD-Konto erstellt. 
+
+>[!NOTE]
+>Während der ersten vollständigen Synchronisierung stellen Sie möglicherweise ein Verhalten fest, bei dem die Attributwerte, die dem vorherigen inaktiven Mitarbeiterprofil zugeordnet sind, an das AD-Konto des umgewandelten Mitarbeiters übertragen werden. Dies ist nur temporär, und im Verlauf der vollständigen Synchronisierung werden diese schließlich durch Attributwerte aus dem aktiven Mitarbeiterprofil überschrieben. Sobald die vollständige Synchronisierung abgeschlossen ist und der Bereitstellungsauftrag einen stabilen Zustand erreicht, wird während der inkrementellen Synchronisierung immer das aktive Mitarbeiterprofil ausgewählt. 
+
 
 ### <a name="retrieving-international-job-assignments-and-secondary-job-details"></a>Abrufen von Details zu zugewiesenen internationalen Aufträgen und sekundären Aufträgen
 

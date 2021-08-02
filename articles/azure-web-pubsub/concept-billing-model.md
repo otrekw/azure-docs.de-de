@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 03/29/2021
-ms.openlocfilehash: 0d1ba3de5686e161fbd118f78bd4734034dbc1bb
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: c7a7aaa47d40c9d49065f71bc9bebc998adbfc12
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108167031"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410475"
 ---
 # <a name="billing-model-of-azure-web-pubsub-service"></a>Abrechnungsmodell des Azure Web PubSub-Dienstes
 
@@ -60,7 +60,7 @@ Bei der Abrechnung wird nur der ausgehende Datenverkehr gezählt.
 
 Angenommen, Sie verfügen über eine Anwendung mit dem Azure Web PubSub-Dienst und Azure Functions. Ein Benutzer überträgt 4 KB Daten an 10 Verbindungen in einer Gruppe. Es ergibt 4 KB für Upstream von Dienst zu Funktion und 40 KB für Dienstübertragungen an 10 Verbindungen.
 
-> Ausgehender Datenverkehr für die Abrechnung = 4 KB + 40 KB = 44 KB
+> Ausgehender Datenverkehr für die Abrechnung = 4 KB (Upstreamdatenverkehr) + 4 KB * 10 (Dienstübertragung an Client-Datenverkehr) = 44 KB
 
 > Äquivalente Nachrichtenanzahl = 44 KB / 2 KB = 22
 

@@ -1,32 +1,35 @@
 ---
 title: Speicherarchitektur von SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
-description: Speicherarchitektur für die Bereitstellung von SAP HANA in Azure (große Instanzen)
+description: Erfahren Sie mehr über die Speicherarchitektur für SAP HANA in Azure (große Instanzen).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/10/2020
-ms.author: juergent
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cff0a674e4f07dd38eaab2ffdbafe1f39e44e6ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f862299dfb677a4b459611050832f602ff5598eb
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676850"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412491"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA-Speicherarchitektur (große Instanzen)
 
-Das Speicherlayout für SAP HANA in Azure (große Instanzen) wird von SAP HANA nach dem klassischen Bereitstellungsmodell anhand der von SAP empfohlenen Richtlinien konfiguriert. Die Richtlinien sind im Whitepaper [SAP HANA storage requirements](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) (SAP HANA-Speicheranforderungen) dokumentiert.
+In diesem Artikel wird die Speicherarchitektur für die Bereitstellung von SAP HANA in Azure (große Instanzen) (auch als BareMetal-Infrastruktur bezeichnet) behandelt. 
 
-Bei HANA (große Instanz) der Typ-I-Klasse ist das Arbeitsspeichervolume viermal so groß wie das Speichervolume. Bei Einheiten von HANA (große Instanz) der Typ-II-Klasse ist dies nicht der Fall. Die Einheiten verfügen über ein Volume zum Speichern von HANA-Transaktionsprotokollsicherungen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](hana-installation.md).
+Das Speicherlayout für SAP HANA in Azure (große Instanzen) wird von SAP HANA nach dem klassischen Bereitstellungsmodell anhand der von SAP empfohlenen Richtlinien konfiguriert. Weitere Informationen zu den Richtlinien finden Sie unter [SAP HANA-Speicheranforderungen](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html).
 
-Informationen zur Speicherzuordnung finden Sie in der folgenden Tabelle. Die Tabelle enthält die ungefähre Kapazität für die verschiedenen Volumes, die mit den unterschiedlichen Einheiten von HANA (große Instanz) bereitgestellt werden.
+Bei HANA (große Instanzen) der Typ-I-Klasse ist das Arbeitsspeichervolume viermal so groß wie das Speichervolume. Dies ist nicht der Fall bei der Klasse Typ II von Einheiten von HANA (große Instanzen), die über ein Volume verfügen, das zum Speichern von HANA-Transaktionsprotokollsicherungen vorgesehen ist. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](hana-installation.md).
+
+Informationen zur Speicherzuordnung finden Sie in der folgenden Tabelle. Die Tabelle enthält die ungefähre Kapazität für die Volumes, die mit den unterschiedlichen Einheiten von HANA (große Instanzen) bereitgestellt werden.
 
 | HANA-SKU (große Instanzen) | hana/data | hana/log | hana/shared | hana/logbackups |
 | --- | --- | --- | --- | --- |
@@ -47,7 +50,7 @@ Informationen zur Speicherzuordnung finden Sie in der folgenden Tabelle. Die Tab
 | S960m | 36.000 GB | 4\.100 GB | 2\.050 GB | 4\.100 GB |
 | S896m | 33.792 GB | 512 GB | 1\.024 GB | 512 GB |
 
-Neuere SKUs für große HANA-Instanzen werden mit folgenden Speicherkonfigurationen geliefert:
+Neuere SKUs von HANA (große Instanzen) werden mit folgenden Speicherkonfigurationen geliefert.
 
 | HANA-SKU (große Instanzen) | hana/data | hana/log | hana/shared | hana/logbackups |
 | --- | --- | --- | --- | --- |
@@ -89,23 +92,23 @@ Wenn Sie eine SKU von HANA (große Instanz) unterteilen, könnten die Unterteilu
 | 1\.536 | 3\.328 GB | 768 GB | 1\.280 GB | 768 GB |
 
 
-Diese Größen sind ungefähre Zahlen, die je nach Bereitstellung und den zum Anzeigen der Volumes verwendeten Tools geringfügig variieren können. Es sind auch weitere Partitionsgrößen wie 2,5 TB verfügbar. Diese Speichergrößen werden mit einer Formel berechnet, die der für die vorherigen Partitionen verwendeten Formel ähnelt. Der Begriff „Partitionen“ bedeutet nicht, dass das Betriebssystem, der Arbeitsspeicher oder die CPU-Ressourcen in irgendeiner Weise partitioniert werden. Er verweist nur auf Speicherpartitionen für die verschiedenen HANA-Instanzen, die Sie auf einer einzelnen Einheit von HANA (große Instanz) bereitstellen können. 
+Diese Größen sind ungefähre Zahlen, die je nach Bereitstellung und den zum Anzeigen der Volumes verwendeten Tools geringfügig variieren können. Es gibt auch weitere Partitionsgrößen wie 2,5 TB. Diese Speichergrößen werden mithilfe einer Formel berechnet, die der für die vorherigen Partitionen verwendeten Formel ähnelt. Der Begriff „Partitionen“ bedeutet nicht, dass das Betriebssystem, der Arbeitsspeicher oder die CPU-Ressourcen partitioniert werden. Er verweist nur auf Speicherpartitionen für die verschiedenen HANA-Instanzen, die Sie auf einer einzelnen Einheit von HANA (große Instanz) bereitstellen können. 
 
-Möglicherweise benötigen Sie mehr Speicher. Sie können Speicher hinzufügen, indem Sie zusätzlichen Speicher in Einheiten von 1 TB erwerben. Dieser zusätzliche Speicher kann als zusätzliches Volume hinzugefügt werden. Er kann auch verwendet werden, um vorhandene Volumes zu erweitern. Es ist nicht möglich, die Größe der ursprünglich bereitgestellten Volumes (größtenteils in den obigen Tabellen aufgeführt) zu verringern. Ebenso ist es nicht möglich, die Namen der Volumes oder Bereitstellungsnamen zu ändern. Die oben beschriebenen Speichervolumes werden als NFS4-Volumes an die Einheiten von HANA (große Instanz) angefügt.
+Wenn Sie mehr Speicher benötigen, können Sie mehr Speicher in 1-TB-Einheiten erwerben. Der zusätzliche Speicher kann als zusätzliches Volume hinzugefügt werden oder als Erweiterung mindestens eines vorhandenen Volumes verwendet werden. Es ist nicht möglich, die Größe der ursprünglich bereitgestellten Volumes, wie in den obigen Tabellen aufgeführt, zu verringern. Darüber hinaus können Sie nicht die Namen der Volumes oder die Bereitstellungsnamen ändern. Die oben beschriebenen Speichervolumes werden als NFS4-Volumes an die Einheiten von HANA (große Instanz) angefügt.
 
 Sie können Speichermomentaufnahmen zur Sicherung und Wiederherstellung sowie zur Notfallwiederherstellung verwenden. Weitere Informationen finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
 
-Speicherlayoutdetails für Ihr Szenario finden Sie unter [Unterstützte HLI-Szenarien](hana-supported-scenario.md).
+Weitere Informationen zum Speicherlayout für Ihr Szenario finden Sie unter [Unterstützte HLI-Szenarien](hana-supported-scenario.md).
 
 ## <a name="run-multiple-sap-hana-instances-on-one-hana-large-instance-unit"></a>Ausführen mehrerer SAP HANA-Instanzen auf einer Einheit von HANA (große Instanz)
 
 Es ist möglich, mehrere aktive SAP HANA-Instanzen auf Einheiten von HANA (große Instanz) zu hosten. Um Funktionen für Speichermomentaufnahmen und die Notfallwiederherstellung bereitzustellen, erfordert eine solche Konfiguration ein pro Instanz festgelegtes Volume. Zurzeit können Einheiten von HANA (große Instanz) wie folgt unterteilt werden:
 
-- **S72, S72m, S96, S144, S192:** In Inkrementen von 256 GB, wobei 256 GB die kleinste Einheit ist. Andere Inkremente wie 256 GB und 512 GB können bis zum Maximum des Arbeitsspeichers der Einheit kombiniert werden.
-- **S144m und S192m:** In Inkrementen von 256 GB, wobei 512 GB die kleinste Einheit ist. Andere Inkremente wie 512 GB und 768 GB können bis zum Maximum des Arbeitsspeichers der Einheit kombiniert werden.
-- **Typ II-Klasse**: In Inkrementen von 512 GB, wobei 2 TB die kleinste Einheit ist. Andere Inkremente wie 512 GB, 1 TB und 1,5 TB können bis zum Maximum des Arbeitsspeichers der Einheit kombiniert werden.
+- **S72, S72m, S96, S144, S192**: In Inkrementen von 256 GB, mit 256 GB als kleinste Starteinheit. Andere Inkremente wie 256 GB und 512 GB können bis zum maximalen Arbeitsspeicher der Einheit kombiniert werden.
+- **S144m und S192m**: In Inkrementen von 256 GB, mit 512 GB als kleinste Einheit. Andere Inkremente wie 512 GB und 768 GB können bis zum maximalen Arbeitsspeicher der Einheit kombiniert werden.
+- **Typ II-Klasse**: In Inkrementen von 512 GB, wobei 2 TB die kleinste Einheit ist. Andere Inkremente wie 512 GB, 1 TB und 1,5 TB können bis zum maximalen Arbeitsspeicher der Einheit kombiniert werden.
 
-Einige Beispiele für die Ausführung mehrerer SAP HANA-Instanzen können etwa wie folgt aussehen:
+In den folgenden Beispielen wird gezeigt, wie die Ausführung mehrerer SAP HANA-Instanzen aussehen kann.
 
 | SKU | Arbeitsspeichergröße | Speichergröße | Größen mit mehreren Datenbanken |
 | --- | --- | --- | --- |
@@ -118,23 +121,25 @@ Einige Beispiele für die Ausführung mehrerer SAP HANA-Instanzen können etwa w
 Andere Variationen sind ebenfalls möglich. 
 
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
-Der für HANA (große Instanz) genutzte Speicher verwendet seit Ende 2018 eine transparente Verschlüsselung für die Daten, die auf den Datenträgern gespeichert werden. In früheren Bereitstellungen konnten Sie entscheiden, ob die Volumes verschlüsselt werden sollten. Wenn Sie sich dagegen entschieden haben, konnten Sie die Verschlüsselung der Volumes online anfordern. Der Wechsel von unverschlüsselten zu verschlüsselten Volumes erfolgt transparent und erfordert keine Downtime. 
+Der Speicher für HANA (große Instanzen) verwendet eine transparente Verschlüsselung für die Daten, die auf den Datenträgern gespeichert werden. In Bereitstellungen vor Ende 2018 konnten Sie festlegen, dass die Volumes verschlüsselt werden sollen. Wenn Sie sich dagegen entschieden hatten, konnten Sie die Verschlüsselung der Volumes online anfordern. Der Wechsel von unverschlüsselten zu verschlüsselten Volumes erfolgt transparent und erfordert keine Downtime. 
 
-Bei SKUs der Typ-I-Klasse wird das Volume, auf dem die Start-LUN gespeichert ist, verschlüsselt. In Stempeln der Revision 3 großer HANA-Instanzen müssen Sie die Boot-LUN bei Verwendung von SKUs von großen HANA-Instanzen der Typ II-Klasse mithilfe von Methoden des Betriebssystems verschlüsseln. In Stempeln der Revision 4 großer HANA-Instanzen wird die Boot-LUN bei Verwendung von Typ II-Einheiten standardmäßig auch im Ruhezustand verschlüsselt. 
+Bei SKUs der Typ-I-Klasse wird das Volume, auf dem die Start-LUN gespeichert ist, verschlüsselt. In Stamps von HANA (große Instanzen) der Revision 3 müssen Sie bei Verwendung von SKUs von HANA (große Instanzen) der Typ-II-Klasse die Start-LUN mithilfe von Methoden des Betriebssystems verschlüsseln. In Stamps von HANA (große Instanzen) der Revision 4 wird bei Verwendung von Typ-II-Einheiten das Volume, auf dem die Start-LUN gespeichert ist, standardmäßig im Ruhezustand verschlüsselt. 
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>Erforderliche Einstellungen für größere HANA-Instanzen in HANA (große Instanzen)
-Der in HANA (große Instanzen) genutzte Speicher weist eine Dateigrößenbeschränkung auf. Die [Größenbeschränkung beträgt 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) pro Datei. Anders als bei den Einschränkungen der Dateigröße in EXT3-Dateisystemen wird die durch HANA (große Instanzen) erzwungene Speichereinschränkung in HANA nicht implizit behandelt. Daher erstellt HANA nicht automatisch eine neue Datendatei, wenn die maximale Dateigröße von 16 TB erreicht ist. Während HANA versucht, die Datei über 16 TB hinaus zu vergrößern, werden Fehler gemeldet, und der Indexserver stürzt am Ende ab.
+
+Der in HANA (große Instanzen) genutzte Speicher weist eine Dateigrößenbeschränkung auf. Die [Größenbeschränkung beträgt 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) pro Datei. Im Gegensatz zu den Einschränkungen der Dateigröße in EXT3-Dateisystemen wird die durch HANA (große Instanzen) erzwungene Speichereinschränkung in HANA nicht implizit behandelt. Daher erstellt HANA nicht automatisch eine neue Datendatei, wenn die maximale Dateigröße von 16 TB erreicht ist. Während HANA versucht, die Datei über 16 TB hinaus zu vergrößern, werden Fehler gemeldet, und der Indexserver stürzt schließlich ab.
 
 > [!IMPORTANT]
-> Um zu verhindern, dass HANA versucht, Datendateien über die Dateigrößenbeschränkung von 16 TB für den Speicher in HANA (große Instanzen) hinaus zu vergrößern, müssen Sie in der Konfigurationsdatei „Global.ini“ von HANA die folgenden Parameter festlegen
+> Um zu verhindern, dass HANA versucht, Datendateien über die Dateigrößenbeschränkung von 16 TB für den Speicher in HANA (große Instanzen) hinaus zu vergrößern, müssen Sie in der Konfigurationsdatei „global.ini“ von HANA die folgenden Parameter festlegen:
 > 
 > - datavolume_striping=true
 > - datavolume_striping_size_gb = 15000
 > - Siehe auch SAP-Hinweis [2400005](https://launchpad.support.sap.com/#/notes/2400005).
 > - Achten Sie auf SAP-Hinweis [2631285](https://launchpad.support.sap.com/#/notes/2631285).
 
+## <a name="next-steps"></a>Nächste Schritte
 
+Erfahren Sie mehr über die Bereitstellung von SAP HANA (große Instanzen).
 
-
-**Nächste Schritte**
-- Lesen Sie [Unterstützte Szenarien für HANA (große Instanzen)](hana-supported-scenario.md).
+> [!div class="nextstepaction"]
+> [Bereitstellung von SAP HANA (große Instanzen)](hana-overview-infrastructure-connectivity.md)

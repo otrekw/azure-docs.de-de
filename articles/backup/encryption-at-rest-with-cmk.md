@@ -2,13 +2,14 @@
 title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
-ms.date: 04/19/2021
-ms.openlocfilehash: bd51be06e707674f3e35b3478d7f99d096be912a
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.date: 05/12/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 48268af7ec4874d0e5c9ad3bb79a95307aba15b7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718771"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672165"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -153,6 +154,9 @@ Sie müssen jetzt dem Recovery Services-Tresor gestatten, auf den Azure Key Vaul
 1. Wählen Sie anschließend **Hinzufügen** aus, um die neue Zugriffsrichtlinie hinzuzufügen.
 
 1. Wählen Sie **Speichern** aus, um die Änderungen an der Zugriffsrichtlinie von Azure Key Vault zu speichern.
+
+>[!NOTE] 
+>Sie können dem Recovery Services-Tresor auch eine RBAC-Rolle zuweisen, die die oben genannten Berechtigungen enthält, z. B. die Rolle _[Key Vault-Kryptografiebeauftragter](../key-vault/general/rbac-guide.md#azure-built-in-roles-for-key-vault-data-plane-operations)_ .<br><br>Diese Rollen können neben den oben beschriebenen zusätzliche Berechtigungen enthalten.
 
 ## <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Aktivieren des vorläufigen Löschens und des Löschschutzes im Azure Key Vault
 

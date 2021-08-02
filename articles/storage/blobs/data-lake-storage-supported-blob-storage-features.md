@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/11/2021
+ms.date: 06/09/2021
 ms.author: normesta
-ms.openlocfilehash: 5c9eb1aa2e88019609f5ab26c2e995e4e43063ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 25fe02ea4103dec2539e429fd2c9aac4274cdd45
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640822"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074789"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2
 
@@ -40,7 +40,7 @@ Die folgende Tabelle zeigt, wie jedes Blob Storage-Feature mit Data Lake Storage
 |Richtlinien für die Lebenszyklusverwaltung (Blob löschen)|Allgemein verfügbar|Allgemein verfügbar|[Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)|
 |Protokollierung in Azure Monitor|Vorschau |Vorschau|[Überwachen von Azure Storage](./monitor-blob-storage.md)|
 |Momentaufnahmen|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Blobmomentaufnahmen](snapshots-overview.md)|
-|Statische Websites|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md)|
+|Statische Websites|Vorschau<div role="complementary" aria-labelledby="preview-form"></div>|Vorschau<div role="complementary" aria-labelledby="preview-form"></div>|[Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md)|
 |Unveränderlicher Speicher|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md)|
 |Vorläufiges Löschen von Containern|Vorschau|Vorschau|[Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md)|
 |Azure Storage-Inventar|Vorschau|Vorschau|[Verwalten von Blobdaten mit dem Azure Storage-Inventar (Vorschau)](blob-inventory.md)|
@@ -54,6 +54,8 @@ Die folgende Tabelle zeigt, wie jedes Blob Storage-Feature mit Data Lake Storage
 |Änderungsfeed|Noch nicht unterstützt|Noch nicht unterstützt|[Unterstützung für Änderungsfeeds in Azure Blob Storage](storage-blob-change-feed.md)|
 |Objektreplikation|Noch nicht unterstützt|Noch nicht unterstützt|[Konfigurieren der Objektreplikation für Blockblobs](object-replication-configure.md)|
 |Blobversionsverwaltung|Noch nicht unterstützt|Noch nicht unterstützt|[Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md)|
+|Wiederherstellung bis zu einem bestimmten Zeitpunkt|Noch nicht unterstützt|Noch nicht unterstützt|[Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md)|
+|Blobindextags|Noch nicht unterstützt|Noch nicht unterstützt|[Verwalten und Finden von Azure-Blobdaten mit Blobindextags](storage-manage-find-blobs.md)|
 
 <div id="preview-form"><sup>1</sup> Für die Verwendung von Momentaufnahmen, unveränderlichem Speicher oder statischen Websites mit Data Lake Storage Gen2 müssen Sie sich für die Vorschau registrieren. Füllen Sie dazu dieses <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>Formular</a> aus.  </div>
 <div id="preview-form-2"><sup>2</sup>Ein benutzerdefinierter Domänenname kann nur dem Blob-Dienstendpunkt oder dem statischen Websiteendpunkt zugeordnet werden. Der Data Lake Storage-Endpunkt wird nicht unterstützt.</a>.  </div>

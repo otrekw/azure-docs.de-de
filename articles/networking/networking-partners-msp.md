@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 2ce2d84a52a03dc08d73c7538a462a2b010f3c6e
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: b2e526d4462a21d40073e57292cce7eb075b9d3d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228026"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470180"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informationen zu Azure Networking-MSP-Partnern
 
@@ -43,7 +43,8 @@ Kunden können MSP-Dienstangebote im Azure Marketplace oder direkt beim MSP-erwe
 |[IIJ](https://www.iij.ad.jp/biz/cloudex/)|[ExpressRoute-Implementierung: Einstündige Einweisung](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[ExpressRoute: zweiwöchige Implementierung](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
 |[Infosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[Infosys Integrate+ for Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
 |[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Azure-Netzwerkbewertung – 5 Tage](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
-|[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/);||[ExpressRoute von IX Reach, einem BSO-Unternehmen](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/ixreach.cloudconnect?tab=Overview)||||
+|[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)||[ExpressRoute von IX Reach, einem BSO-Unternehmen](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/ixreach.cloudconnect?tab=Overview)||||
+|[KoçSistem](https://azure.kocsistem.com.tr/en)|[KoçSistem Managed Cloud Services for Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kocsistem.kocsistemcloudmanagementtool?tab=Overview)|[KoçSistem Azure ExpressRoute Management](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kocsistem.ks_azure_express_route?tab=Overview)|[KoçSistem Azure Virtual WAN Management](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kocsistem.ks_azure_virtual_wan?tab=Overview)||[KoçSistem Azure Security Center Managed Service](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kocsistem.ks_azure_security_center?tab=Overview)|
 |[Liquid Telecom](https://liquidcloud.africa/)|[Cloud Readiness: zweistündige Bewertung](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment); [Liquid Azure Expert Services](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/liquidtelecommunicationsoperationslimited.5dab29ab-bb14-4df8-8978-9a8608a41ad7?tab=Overview)|[Liquid Managed ExpressRoute für Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/liquidtelecommunicationsoperationslimited.42cfee0b-8f07-4948-94b0-c9fc3e1ddc42?tab=Overview)||||
 |[Lumen](https://www.lumen.com/en-us/solutions/hybrid-cloud.html)||[ExpressRoute Consulting Svcs: 8-wöchige Implementierung](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/centurylink2362604-2362604.centurylink_consultingservicesforexpressroute); [Lumen-Zielzone für ExpressRoute: 1 Tag](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/centurylinklimited.centurylink_landing_zone_for_azure_expressroute)||||
 |[Macquarie Telecom](https://macquariecloudservices.com/azure-managed-services/)|[Verwaltete Azure-Dienste aus der Macquarie-Cloud](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.managed_services?tab=Overview); [Azure Extend aus den Macquarie-Clouddiensten](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.azure_extend?tab=Overview)||[Azure-Bereitstellung von Macquarie Cloud Services](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.azure_deploy_vedge?tab=Overview); [SD-WAN Virtual Edge-Installation durch Macquarie Cloud](https://azuremarketplace.microsoft.com/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)||[Verwaltete Sicherheit von Macquarie Cloud Services](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.managed_security?tab=Overview)|

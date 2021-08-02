@@ -4,17 +4,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: d555322c0fd4067a4232e53387d811de7b50a8f5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 745ff6fddb3b175b4b046be71668f0c85ddd1c63
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103417720"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854487"
 ---
 Die Verarbeitung komprimierter Audiodaten wird mit [GStreamer](https://gstreamer.freedesktop.org) implementiert. Aus Lizenzierungsgründen werden die GStreamer-Binärdateien nicht kompiliert und mit dem Speech SDK verknüpft. Entwickler müssen mehrere Abhängigkeiten und Plug-Ins installieren.
 
 > [!NOTE]
-> Weitere Informationen finden Sie in der Liste mit den [unterstützten Linux-Distributionen und Zielarchitekturen](~/articles/cognitive-services/speech-service/speech-sdk.md).
+> Informationen zur verpflichtenden allgemeinen Einrichtung unter Linux finden Sie im Artikel zu [Systemanforderungen und Einrichtungsanweisungen](~/articles/cognitive-services/speech-service/speech-sdk.md#get-the-speech-sdk).
 
 # <a name="ubuntudebian"></a>[Ubuntu/Debian](#tab/debian)
 
@@ -37,9 +37,7 @@ gstreamer1-plugins-ugly-free
 ```
 
 > [!NOTE]
-> - Unter RHEL/CentOS 7 und RHEL/CentOS 8 müssen für das komprimierte Format "ANY" weitere GStreamer-Plug-Ins installiert werden, wenn sich das Format-Plug-In für Streamingmedien nicht unter den zuvor installierten Plug-Ins befindet. 
-> - Befolgen Sie in RHEL/CentOS 7 die Anweisungen zum [Konfigurieren von RHEL/CentOS 7 für das Speech SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md).
-> - Befolgen Sie unter RHEL/CentOS 8 die Anweisungen zum [Konfigurieren von OpenSSL für Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> - Unter RHEL/CentOS 7 und RHEL/CentOS 8 müssen für das komprimierte Format „ANY“ weitere GStreamer-Plug-Ins installiert werden, wenn sich das Format-Plug-In für Streamingmedien nicht unter den zuvor installierten Plug-Ins befindet. 
 
 
 ---

@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 11bfe1fbb9b0ba7c38eb946918b04d1568d2d1da
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 2f76be3bd5a2688e91f63da5da137492190b2ccb
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108000996"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789070"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetrie-, Eigenschaften- und Befehlsnutzlasten
-
-_Dieser Artikel gilt für Geräteentwickler._
 
 Eine Gerätevorlage in Azure IoT Central ist eine Blaupause, die Folgendes definiert:
 
@@ -25,7 +23,7 @@ Eine Gerätevorlage in Azure IoT Central ist eine Blaupause, die Folgendes defin
 * Die Eigenschaften, die ein Gerät mit IoT Central synchronisiert.
 * Die Befehle, die IoT Central auf einem Gerät aufruft.
 
-In diesem Artikel werden für Geräteentwickler die JSON-Nutzlasten beschrieben, die Geräte für die in einer Gerätevorlage definierten Telemetriedaten, Eigenschaften und Befehle senden und empfangen.
+In diesem Artikel werden die JSON-Nutzlasten beschrieben, die Geräte für die in einer Gerätevorlage definierten Telemetriedaten, Eigenschaften und Befehle senden und empfangen.
 
 Zwar wird nicht jeder mögliche Typ von Telemetrie-, Eigenschaften- und Befehlsnutzlast beschrieben, aber die Beispiele veranschaulichen alle wichtigen Typen.
 
@@ -480,7 +478,7 @@ Ein Geräteclient sollte eine JSON-Nutzlast, die wie im folgenden Beispiel aussi
 { "BooleanProperty": false }
 ```
 
-Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines `boolean`-Eigenschaftstyps:
+Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines `long`-Eigenschaftstyps:
 
 ```json
 {
@@ -1136,4 +1134,4 @@ Wenn Sie die Option **Warteschlange (falls offline)** in der Benutzeroberfläche
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich als Geräteentwickler mit Gerätevorlagen vertraut gemacht haben, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md) weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt.
+Nachdem Sie sich mit Gerätevorlagen vertraut gemacht haben, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md) weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt.

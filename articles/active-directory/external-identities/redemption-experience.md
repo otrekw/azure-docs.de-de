@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/04/2021
+ms.date: 05/27/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5273d2aedd1382146b83197afb48c5120dcbb11
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 80de2d30055d5a78f4a0105d33f01b4fabfbcd47
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108767741"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955086"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen
 
@@ -25,7 +25,7 @@ Wenn Sie Ihrem Verzeichnis einen Gastbenutzer hinzufügen, hat das Gastbenutzerk
 
    > [!IMPORTANT]
    > - **Ab der zweiten Hälfte des Jahres 2021** [stellt Google die Unterstützung für die Anmeldung in der Webansicht ein](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie den Google-Verbund für B2B-Einladungen oder [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) verwenden oder die Self-Service-Registrierung mit Gmail verwenden, können sich Google Gmail-Benutzer nicht anmelden, wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
-   > - **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf raten wir Kunden, sich für die [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) zu entscheiden. Wir freuen uns über Ihr Feedback zu diesem Feature, das sich derzeit in der öffentlichen Vorschauphase befindet, und möchten noch mehr Möglichkeiten zur Zusammenarbeit schaffen.
+   > - **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf wird Kunden die allgemein verfügbare [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) empfohlen.
 
 ## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>Einlösen und Anmelden über einen gemeinsamen Endpunkt
 
@@ -59,6 +59,20 @@ Wenn Sie Ihrem Verzeichnis [über das Azure-Portal](./b2b-quickstart-add-guest-u
 2. Der Gast wählt **Einladung annehmen** in der E-Mail aus.
 3. Der Gast verwendet seine eigenen Anmeldeinformationen, um sich bei Ihrem Verzeichnis anzumelden. Wenn der Gast kein Konto hat, das über einen Verbund in Ihrem Verzeichnis verwendet werden kann, und die Funktion für die [E-Mail-Einmalkennung](./one-time-passcode.md) (One-Time Passcode, OTP) nicht aktiviert ist, wird der Gast aufgefordert, ein persönliches [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) oder ein [Azure AD-Self-Service-Konto](../enterprise-users/directory-self-service-signup.md) zu erstellen. Ausführliche Informationen finden Sie unter [Flow beim Einlösen der Einladung](#invitation-redemption-flow).
 4. Der Gast wird schrittweise durch die im Folgenden beschriebene [Zustimmungsbenutzeroberfläche](#consent-experience-for-the-guest) geführt.
+
+## <a name="redemption-limitation-with-conflicting-contact-object"></a>Einlösungseinschränkung mit in Konflikt kommendem Contact-Objekt
+Manchmal kann die E-Mail des eingeladenen externen Gastbenutzers mit einem vorhandenen [Contact-Objekt](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true) in Konflikt treten, was dazu führt, dass der Gastbenutzer ohne proxyAddress erstellt wird. Dies ist eine bekannte Einschränkung, die verhindert, dass Gastbenutzer Folgendes tun: 
+- Einlösen einer Einladung über einen direkten Link mit [saml/WS-Fed IdP,](/azure/active-directory/external-identities/direct-federation) [Microsoft-Konten,](/azure/active-directory/external-identities/microsoft-account) [Google-Verbund](/azure/active-directory/external-identities/google-federation)oder [E-Mail-One-Time Kennungskonten](/azure/active-directory/external-identities/one-time-passcode). 
+- Einlösen einer Einladung über einen Link zum Einlösen von Einladungs-E-Mails mit [saml/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation) und [E-Mail One-Time Kennungskonten](/azure/active-directory/external-identities/one-time-passcode).
+- Anmelden bei einer Anwendung nach dem Einlösen mit [saml/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation) und [Google-Verbundkonten](/azure/active-directory/external-identities/google-federation).
+
+Führen Sie die folgenden Schritte aus, um die Blockierung von Benutzern aufzuheben, die eine Einladung aufgrund eines in Konflikt stehenden [Contact-Objekts](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true) nicht einlösen können:
+1. Löschen Sie das in Konflikt stehende Contact-Objekt.
+2. Löschen Sie den Gastbenutzer im Azure-Portal (die Eigenschaft „Einladung akzeptiert“ des Benutzers sollte den Status Ausstehend haben).
+3. Laden Sie den Gastbenutzer erneut ein.
+4. Warten, bis der Benutzer die Einladung einlöst
+5. Fügen Sie die Kontakt-E-Mail des Benutzers wieder zu Exchange hinzu, und fügen Sie alle DLs hinzu, zu denen er gehören sollte.
+
 ## <a name="invitation-redemption-flow"></a>Flow beim Einlösen der Einladung
 
 Wenn ein Benutzer in einer [Einladungs-E-Mail](invitation-email-elements.md) auf den Link **Einladung annehmen** klickt, löst Azure AD die Einladung automatisch ein, und zwar auf Grundlage des nachstehend gezeigten Einlösungsflows:

@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: e119d40cd0b8f482d33c3c86c644cf6a0846390a
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7d94bd0a4a9fb50cb211fd227c3022a46beef502
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727119"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527537"
 ---
 ## <a name="generalize-the-image"></a>Generalisieren des Images
 
@@ -55,17 +55,39 @@ Sobald Ihre VM bereit ist, können Sie sie in Azure Shared Image Gallery erfasse
 8. Wählen Sie **Bewerten + erstellen** aus, um Ihre Auswahl zu überprüfen.
 9. Klicken Sie auf **Erstellen**, sobald die Überprüfung bestanden wurde.
 
-So gewähren Sie den Zugriff:
+## <a name="set-the-right-permissions"></a>Festlegen der richtigen Berechtigungen
 
-1. Rufen Sie Shared Image Gallery auf.
+Wenn Ihr Partner Center-Konto der Besitzer des Abonnements ist, das Shared Image Gallery hostet, ist für Berechtigungen nichts weiter erforderlich.
+
+Wenn Sie nur Lesezugriff auf das Abonnement haben, verwenden Sie eine der beiden folgenden Optionen.
+
+### <a name="option-one--ask-the-owner-to-grant-owner-permission"></a>Option 1: Besitzer bitten, die Besitzerberechtigung zu erteilen
+
+Schritte zum Erteilen der Besitzerberechtigung durch den Besitzer:
+
+1. Wechseln Sie zur Shared Image Gallery-Instanz (SIG).
 2. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
-3. Klicken Sie auf **Hinzufügen**, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
-4. Wählen Sie eine **Rolle** oder einen **Besitzer** aus.
-5. Wählen Sie unter **Assign access to** (Zugriff zuweisen zu) die Option **User, group, or service principal** (Benutzer, Gruppe oder Dienstprinzipal) aus.
-6. Wählen Sie die Azure-E-Mail-Adresse der Person aus, die das Image veröffentlichen wird.
-7. Wählen Sie **Speichern** aus.
+3. Wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus.<br>
+    :::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="Screenshot des Fensters „Rollenzuweisung hinzufügen“":::
+1. Wählen Sie für **Rolle** die Option **Besitzer** aus.
+1. Wählen Sie für **Zugriff zuweisen zu** die Option **Benutzer, Gruppe oder Dienstprinzipal** aus.
+1. Geben Sie die unter **Auswählen** die Azure-E-Mail-Adresse der Person ein, die das Image veröffentlichen wird.
+1. Wählen Sie **Speichern** aus.
 
-:::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="Screenshot: Fenster „Rollenzuweisung hinzufügen“":::
+### <a name="option-two--run-a-command"></a>Option 2: Befehl ausführen
+
+Bitten Sie den Besitzer, einen dieser Befehle auszuführen (verwenden Sie in beiden Fällen die SusbscriptionId des Abonnements, in dem Sie die Shared Image Gallery erstellt haben).
+
+```azurecli
+az login
+az provider register --namespace Microsoft.PartnerCenterIngestion --subscription {subscriptionId}
+```
+ 
+```powershell
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId {subscriptionId}
+Register-AzResourceProvider -ProviderNamespace Microsoft.PartnerCenterIngestion
+```
 
 > [!NOTE]
 > Sie müssen keinen URI (Uniform Resource Identifier) generieren, da Sie nun ein Shared Image Gallery-Image in Partner Center veröffentlichen können. Wenn Sie dennoch Informationen zu den Schritten zum Erstellen eines SAS-URIs benötigen, finden Sie diese unter [Generieren eines SAS-URIs für ein VM-Image](../azure-vm-get-sas-uri.md).

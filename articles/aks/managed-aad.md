@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 3db9f8d895b4c13b5f969859f422e7b566722ffc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6b9bf8aea031b7dce88fbaa096d8e5996e1d6f57
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783069"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189767"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Von AKS verwaltete Azure Active Directory-Integration
 
@@ -188,6 +188,115 @@ Wenn Sie auf den Cluster zugreifen möchten, befolgen Sie die [hier][access-clus
 
 Es gibt einige nicht interaktive Szenarien, z. B. Continuous Integration-Pipelines, die für Kubectl derzeit nicht verfügbar sind. Sie können [`kubelogin`](https://github.com/Azure/kubelogin) verwenden, um über eine nicht interaktive Dienstprinzipalanmeldung auf den Cluster zuzugreifen.
 
+## <a name="disable-local-accounts-preview"></a>Deaktivieren lokaler Konten (Vorschauversion)
+
+Bei der Bereitstellung eines AKS-Clusters sind lokale Konten standardmäßig aktiviert. Selbst wenn Sie die RBAC- oder Azure Active Directory-Integration aktivieren, ist der Zugriff mit `--admin` weiterhin möglich. Dieser Befehl ist im Wesentlichen eine nicht überwachbare Hintertüroption. Vor diesem Hintergrund bietet AKS Benutzern die Möglichkeit, lokale Konten über das Flag `disable-local` zu deaktivieren. Der API für verwaltete Cluster wurde auch das Feld `properties.disableLocalAccounts` hinzugefügt, um anzugeben, ob das Feature im Cluster aktiviert ist.
+
+> [!NOTE]
+> In Clustern mit aktivierter Azure AD-Integration können Benutzer, die einer durch `aad-admin-group-object-ids` angegebenen Gruppe angehören, weiterhin mit gewöhnlichen Anmeldeinformationen (keine Administratoranmeldeinformationen) Zugriff erhalten. In Clustern, in denen die Azure AD-Integration nicht aktiviert und `properties.disableLocalAccounts` auf true festgelegt ist, können Benutzer- und Administratoranmeldeinformationen nicht abgerufen werden.
+
+### <a name="register-the-disablelocalaccountspreview-preview-feature"></a>Registrieren der Previewfunktion `DisableLocalAccountsPreview`
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+Sie müssen das Featureflag `DisableLocalAccountsPreview` für Ihr Abonnement aktivieren, um einen AKS-Cluster ohne lokale Konten zu verwenden. Stellen Sie sicher, dass Sie die neueste Version der Azure CLI und die Erweiterung `aks-preview` verwenden.
+
+Registrieren Sie das `DisableLocalAccountsPreview`-Featureflag mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "DisableLocalAccountsPreview"
+```
+
+Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/DisableLocalAccountsPreview')].{Name:name,State:properties.state}"
+```
+
+Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des Ressourcenanbieters *Microsoft.ContainerService*:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="create-a-new-cluster-without-local-accounts"></a>Erstellen eines neuen Clusters ohne lokale Konten
+
+Verwenden Sie den Befehl [az aks create][az-aks-create] mit dem Flag `disable-local`, um einen neuen AKS-Cluster ohne lokale Konten zu erstellen:
+
+```azurecli-interactive
+az aks create -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local
+```
+
+Wenn das Feld `properties.disableLocalAccounts` in der Ausgabe auf true festgelegt ist, sind lokale Konten deaktiviert:
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": true,
+    ...
+}
+```
+
+Beim Versuch, Administratoranmeldeinformationen abzurufen, wird eine Fehlermeldung angezeigt, dass das Feature den Zugriff verhindert:
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Operation failed with status: 'Bad Request'. Details: Getting static credential is not allowed because this cluster is set to disable local accounts.
+```
+
+### <a name="disable-local-accounts-on-an-existing-cluster"></a>Deaktivieren lokaler Konten in einem vorhandenen Cluster
+
+Verwenden Sie den Befehl [az aks update][az-aks-update] mit dem Flag `disable-local`, um lokale Konten in einem vorhandenen AKS-Cluster zu deaktivieren:
+
+```azurecli-interactive
+az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local
+```
+
+Wenn das Feld `properties.disableLocalAccounts` in der Ausgabe auf true festgelegt ist, sind lokale Konten deaktiviert:
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": true,
+    ...
+}
+```
+
+Beim Versuch, Administratoranmeldeinformationen abzurufen, wird eine Fehlermeldung angezeigt, dass das Feature den Zugriff verhindert:
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Operation failed with status: 'Bad Request'. Details: Getting static credential is not allowed because this cluster is set to disable local accounts.
+```
+
+### <a name="re-enable-local-accounts-on-an-existing-cluster"></a>Reaktivieren lokaler Konten in einem vorhandenen Cluster
+
+In AKS ist es auch möglich, lokale Konten in einem vorhandenen Cluster mit dem Flag `enable-local` zu reaktivieren:
+
+```azurecli-interactive
+az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --enable-local
+```
+
+Wenn das Feld `properties.disableLocalAccounts` in der Ausgabe auf false festgelegt ist, sind lokale Konten aktiviert:
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": false,
+    ...
+}
+```
+
+Sie können erfolgreich Administratoranmeldeinformationen abrufen:
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Merged "<cluster-name>-admin" as current context in C:\Users\<username>\.kube\config
+```
+
 ## <a name="use-conditional-access-with-azure-ad-and-aks"></a>Verwenden von bedingtem Zugriff mit Azure AD und AKS
 
 Wenn Sie Azure AD in Ihren AKS-Cluster integrieren, können Sie den Zugriff darauf auch mithilfe von [bedingtem Zugriff][aad-conditional-access] steuern.
@@ -327,3 +436,7 @@ Vergewissern Sie sich in diesem Fall, dass der Administrator der Sicherheitsgrup
 [access-cluster]: #access-an-azure-ad-enabled-cluster
 [aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration
 [aad-assignments]: ../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-aks-update]: /cli/azure/aks#az_aks_update

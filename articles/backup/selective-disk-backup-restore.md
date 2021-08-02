@@ -2,14 +2,14 @@
 title: Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 description: In diesem Artikel lernen Sie die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure-VM-Sicherungslösung kennen.
 ms.topic: conceptual
-ms.date: 07/17/2020
-ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: e82c959dc63222e8565243cc9ac805283cab6617
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.custom: references_regions , devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: cee95941aa091f77fe128457434a66398188a0a4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501827"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678200"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 
@@ -22,7 +22,7 @@ Diese Lösung ist besonders in den folgenden Szenarien nützlich:
 1. Sie verfügen über kritische Daten, die auf nur einem Datenträger oder einer Teilmenge der Datenträger gesichert werden sollen, und Sie möchten die übrigen, an einen virtuellen Computer angeschlossenen Datenträger nicht sichern, um die Sicherungsspeicherkosten zu minimieren.
 2. Sie verfügen für einen Teil Ihrer VM oder Daten über andere Sicherungslösungen. Sie sichern beispielsweise Ihre Datenbanken oder Daten mit einer anderen Workloadsicherungslösung und möchten für die übrigen Daten oder Datenträger eine Sicherung auf Azure-VM-Ebene verwenden, um ein effizientes und robustes System mit den besten verfügbaren Funktionen zu erstellen.
 
-Mithilfe von PowerShell oder Azure CLI können Sie die selektive Datenträgersicherung der Azure-VM konfigurieren.  Mithilfe eines Skripts können Sie Datenträger mit ihren LUN-Nummern einschließen oder ausschließen.  Zurzeit ist die Möglichkeit, die selektive Datenträgersicherung über das Azure-Portal zu konfigurieren, auf die Option **Nur Betriebssystemdatenträger sichern** beschränkt. Sie können also die Sicherung Ihres virtuellen Azure-Computers mit dem Betriebssystemdatenträger konfigurieren und alle daran angefügten Datenträger ausschließen.
+Mithilfe von PowerShell oder Azure CLI können Sie die selektive Datenträgersicherung der Azure-VM konfigurieren. Mithilfe eines Skripts können Sie Datenträger mit ihren LUN-Nummern einschließen oder ausschließen. Zurzeit ist die Möglichkeit, die selektive Datenträgersicherung über das Azure-Portal zu konfigurieren, auf die Option **Nur Betriebssystemdatenträger sichern** beschränkt. Sie können also die Sicherung Ihres virtuellen Azure-Computers mit dem Betriebssystemdatenträger konfigurieren und alle daran angefügten Datenträger ausschließen.
 
 >[!NOTE]
 > Der Betriebssystemdatenträger wird der VM-Sicherung standardmäßig hinzugefügt und kann nicht ausgeschlossen werden.
@@ -47,6 +47,9 @@ az account set -s {subscriptionID}
 ### <a name="configure-backup-with-azure-cli"></a>Konfigurieren der Sicherung mit Azure CLI
 
 Beim Konfigurieren des Schutzes müssen Sie die Datenträgerlisteneinstellung mit einem **inclusion** / **exclusion**-Parameter angeben und die LUN-Nummern der Datenträger angeben, die in die Sicherung eingeschlossen oder ausgeschlossen werden sollen.
+
+>[!NOTE]
+>Der Vorgang „Schutz konfigurieren“ überschreibt die vorherigen Einstellungen, sie sind nicht kumulativ.
 
 ```azurecli
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
@@ -124,6 +127,11 @@ Mit diesem Befehl können Sie die Details zu den gesicherten Datenträgern und a
    "Excluded disk(s)": "diskextest_DataDisk_2",
 ```
 
+_BackupJobID_ ist der Name des Sicherungsauftrags. Führen Sie den folgenden Befehl aus, um den Auftragsnamen abzurufen:
+
+```azurecli
+az backup job list --resource-group {resourcegroup} --vault-name {vaultname}
+```
 ### <a name="list-recovery-points-with-azure-cli"></a>Auflisten von Wiederherstellungspunkten mit Azure CLI
 
 ```azurecli
@@ -190,6 +198,9 @@ Wenn Sie diese Befehle ausführen, wird `"diskExclusionProperties": null` angeze
 Stellen Sie sicher, dass Sie Azure PowerShell Version 3.7.0 oder höher verwenden.
 
 Beim Konfigurieren des Schutzes müssen Sie die Einstellung zur Datenträgerauflistung mit einem inclusion-/exclusion-Parameter angeben und die LUN-Nummern der Datenträger angeben, die in die Sicherung eingeschlossen oder von dieser ausgeschlossen werden sollen.
+
+>[!NOTE]
+>Der Vorgang „Schutz konfigurieren“ überschreibt die vorherigen Einstellungen, sie sind nicht kumulativ.
 
 ### <a name="enable-backup-with-powershell"></a>Aktivieren der Sicherung mit PowerShell
 
@@ -311,6 +322,8 @@ Die Funktionalität der selektiven Datenträgersicherung wird für klassische un
 Die Wiederherstellungsoptionen **Neue VM erstellen** und **Vorhandene ersetzen** werden für den virtuellen Computer, für den die Funktionalität der selektiven Datenträgersicherung aktiviert ist, nicht unterstützt.
 
 Zurzeit unterstützt die Azure VM-Sicherung keine VMs mit angefügten Ultra-Datenträgern oder freigegebenen Datenträgern. Eine selektive Datenträgersicherung kann in Fällen, die den Datenträger ausschließen und die VM sichern, nicht verwendet werden.
+
+Wenn Sie den Ausschluss von Datenträgern oder selektive Datenträger beim Sichern einer Azure-VM verwenden, _[beenden Sie den Schutz, und behalten Sie die Sicherungsdaten bei](backup-azure-manage-vms.md#stop-protection-and-retain-backup-data)_ . Wenn Sie die Sicherung für diese Ressource fortsetzen, müssen Sie die Einstellungen für den Ausschluss von Datenträgern noch mal einrichten.
 
 ## <a name="billing"></a>Abrechnung
 

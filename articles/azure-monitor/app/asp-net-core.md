@@ -4,12 +4,12 @@ description: Überwachen Sie ASP.NET Core-Webanwendungen auf Verfügbarkeit, Lei
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: be4cbe5f95fa6901ae4299662750c232d4700a8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 488203b9b2e9a45cd85e72a1516418401502eb20
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711500"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082574"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights für ASP.NET Core-Anwendungen
 
@@ -25,7 +25,7 @@ Mit dem [Application Insights SDK für ASP.NET Core](https://nuget.org/packages/
 * **Bereitstellungsmethode:** Abhängig vom Framework oder eigenständig.
 * **Webserver:** IIS (Internet Information Server) oder Kestrel.
 * **Hostingplattform:** Beispielsweise das Web-Apps-Feature von Azure App Service, Azure Virtual Machines, Docker oder Azure Kubernetes Service (AKS).
-* **.NET Core-Version**: Alle offiziell [unterstützten](https://dotnet.microsoft.com/download/dotnet-core) .NET Core-Versionen.
+* **.NET Core-Version**: Alle offiziell [unterstützten .NET Core-Versionen](https://dotnet.microsoft.com/download/dotnet-core), die sich nicht in der Vorschauphase befinden.
 * **IDE:** Visual Studio, VS Code oder Befehlszeile.
 
 > [!NOTE]
@@ -37,7 +37,7 @@ Mit dem [Application Insights SDK für ASP.NET Core](https://nuget.org/packages/
 - Ein gültiger Application Insights-Instrumentierungsschlüssel. Dieser ist erforderlich, um Telemetriedaten an Application Insights zu senden. Wenn Sie eine neue Application Insights-Ressource erstellen müssen, um einen Instrumentierungsschlüssel abzurufen, finden Sie unter [Erstellen einer Application Insights-Ressource](./create-new-resource.md) weitere Informationen.
 
 > [!IMPORTANT]
-> Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=net) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+> [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) sind Instrumentierungsschlüsseln vorzuziehen. Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die Verbindungszeichenfolge identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Aktivieren der serverseitigen Telemetrie für Application Insights (Visual Studio)

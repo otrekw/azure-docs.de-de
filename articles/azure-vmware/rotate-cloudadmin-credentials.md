@@ -2,17 +2,17 @@
 title: Rotieren der Anmeldeinformationen von Cloudadministratoren für Azure VMware Solution
 description: Erfahren Sie, wie Sie die vCenter Server- und NSX-T Manager-Anmeldeinformationen für Ihre private Cloud in Azure VMware Solution rotieren.
 ms.topic: how-to
-ms.date: 05/11/2021
-ms.openlocfilehash: fbfed495fd904b67ce283934791cee516349dfa6
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.date: 06/01/2021
+ms.openlocfilehash: 305447f8eac40a08564b9b57d82709f223f6086d
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814950"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112021499"
 ---
 # <a name="rotate-the-cloudadmin-credentials-for-azure-vmware-solution"></a>Rotieren der Anmeldeinformationen von Cloudadministratoren für Azure VMware Solution
 
-In diesem Artikel werden die Schritte zum Rotieren der Anmeldeinformationen von Cloudadministratoren für Ihre private Cloud in Azure VMware Solution beschrieben.  Ihre Anmeldeinformationen für den vCenter-Cloudadministrator und den NSX-T Manager-Administrator laufen nicht ab. Sie können jedoch neue Kennwörter für diese Konten generieren. Nachdem Sie die Anmeldeinformationen rotiert haben, vergewissern Sie sich, dass der HCX-Connector über die neuesten Anmeldeinformationen für vCenter Server verfügt.
+In diesem Artikel rotieren Sie die Cloudadmin-Anmeldeinformationen (vCenter- und NSX-T-Anmeldeinformationen) für Ihre private Azure VMware Solution-Cloud.  Obwohl die Kennwörter für diese Konten nicht ablaufen, können Sie neue erstellen. Nachdem Sie neue Kennwörter generiert haben, müssen Sie den VMware HCX-Connector mit den neuesten übernommenen Anmeldeinformationen aktualisieren.
 
 Sie können sich auch ein Video zum [Zurücksetzen der Kennwörter des vCenter-Cloudadministrators und des NSX-T-Administrators](https://youtu.be/cK1qY3knj88) ansehen. 
 
@@ -20,7 +20,7 @@ Sie können sich auch ein Video zum [Zurücksetzen der Kennwörter des vCenter-C
 
 Wenn Sie Ihre Anmeldeinformationen für den Cloudadministrator für verbundene Dienste wie HCX, vRealize Orchestrator, vRealize, Operations Manager oder VMware Horizon verwenden, werden Ihre Verbindungen unterbrochen, sobald Sie Ihr Kennwort aktualisieren.  Beenden Sie diese Dienste, bevor Sie die Kennwortrotation starten. Andernfalls kann dies zu vorübergehendem Sperren Ihrer Konten für den vCenter-Cloudadministrator und den NSX-T-Administrator führen, da diese Dienste kontinuierlich Aufrufe mit Ihren alten Anmeldeinformationen übermitteln.  Weitere Informationen zur Einrichtung separater Konten für verbundene Dienste finden Sie unter [Zugriffs- und Identitätskonzepte](./concepts-identity.md).
 
-## <a name="reset-your-azure-vmware-solution-credentials"></a>Zurücksetzen der Anmeldeinformationen für Azure VMware Solution
+## <a name="reset-your-azure-vmware-solution-cloudadmin-credentials"></a>Zurücksetzen der Anmeldeinformationen für Azure VMware Solution Cloudadmin
 
 In diesem Schritt rotieren Sie die Anmeldeinformationen für den Cloudadministrator Ihrer Azure VMware Solution-Komponenten. 
 
@@ -41,7 +41,7 @@ In diesem Schritt rotieren Sie die Anmeldeinformationen für den Cloudadministra
    az resource invoke-action --action rotateNSXTPassword --ids "/subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroup}/providers/Microsoft.AVS/privateClouds/{PrivateCloudName}" --api-version "2020-07-17-preview"
    ```
 
-## <a name="verify-hcx-connector-has-the-latest-credentials"></a>Vergewissern, dass der HCX-Connector über die neuesten Anmeldeinformationen verfügt
+## <a name="update-hcx-connector-with-the-latest-cloudadmin-credentials"></a>Aktualisieren des HCX-Connectors mit den neuesten Cloudadmin-Anmeldeinformationen
 
 In diesem Schritt überprüfen Sie, ob der HCX-Connector über die aktualisierten Anmeldeinformationen verfügt.
 
@@ -62,5 +62,5 @@ In diesem Schritt überprüfen Sie, ob der HCX-Connector über die aktualisierte
 Nachdem Sie sich mit dem Zurücksetzen von vCenter Server- und NSX-T Manager-Anmeldeinformationen in Azure VMware Solution vertraut gemacht haben, sollten Sie sich den folgenden Themen zuwenden:
 
 - [Konfigurieren von NSX-Netzwerkkomponenten in Azure VMware Solution](configure-nsx-network-components-azure-portal.md)
-- [Überwachen und Verwalten von Azure VMware Solution-VMs](lifecycle-management-of-azure-vmware-solution-vms.md)
-- [Bereitstellen der Notfallwiederherstellung für VMs mithilfe von Azure VMware Solution](disaster-recovery-for-virtual-machines.md)
+- [Integrieren von nativen Azure-Diensten in Azure VMware Solution](integrate-azure-native-services.md)
+- [Bereitstellen der Notfallwiederherstellung für Azure VMware Solution Workloads mit VMware HCX](deploy-disaster-recovery-using-vmware-hcx.md)

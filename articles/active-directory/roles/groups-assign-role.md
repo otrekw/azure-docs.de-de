@@ -8,27 +8,36 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e585624cac534634f4927fcbb61993ca98aab4a6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98742946"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085886"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Zuweisen einer Rolle zu einer Cloudgruppe in Azure Active Directory
 
 In diesem Abschnitt wird beschrieben, wie ein IT-Administrator einer Azure AD-Gruppe (Azure Active Directory) eine Azure AD-Rolle zuweisen kann.
 
-## <a name="using-azure-ad-admin-center"></a>Mithilfe von Azure AD Admin Center
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Eine Lizenz vom Typ Azure AD Premium P1 oder P2
+- „Administrator für privilegierte Rollen“ oder „Globaler Administrator“
+- AzureADPreview-Modul bei Verwendung von PowerShell
+- Administratorzustimmung bei Verwendung von Graph-Tester für die Microsoft Graph-API
+
+Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
+
+## <a name="azure-portal"></a>Azure-Portal
 
 Das Zuweisen einer Gruppe zu einer Azure AD-Rolle ähnelt der Zuweisung von Benutzern und Dienstprinzipalen mit der Ausnahme, dass nur Gruppen verwendet werden können, denen Rollen zugewiesen werden können. Im Azure-Portal werden nur Gruppen angezeigt, denen Rollen zugewiesen werden können.
 
-1. Melden Sie sich bei [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit Berechtigungen vom Typ „Administrator für privilegierte Rollen“ oder „Globaler Administrator“ in der Azure AD-Organisation an.
+1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) an.
 
 1. Klicken Sie auf **Azure Active Directory** > **Rollen und Administratoren**, und wählen Sie die Rolle aus, die Sie zuweisen möchten.
 
@@ -44,7 +53,7 @@ Das Zuweisen einer Gruppe zu einer Azure AD-Rolle ähnelt der Zuweisung von Benu
 
 Weitere Informationen zum Zuweisen von Rollenberechtigungen finden Sie unter [Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
-## <a name="using-powershell"></a>PowerShell
+## <a name="powershell"></a>PowerShell
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>Erstellen einer Gruppe, der die Rolle zugewiesen werden kann
 
@@ -64,7 +73,7 @@ $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Helpdesk 
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope '/' -RoleDefinitionId $roleDefinition.Id -PrincipalId $group.Id 
 ```
 
-## <a name="using-microsoft-graph-api"></a>Verwenden der Microsoft Graph-API
+## <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 ### <a name="create-a-group-that-can-be-assigned-azure-ad-role"></a>Erstellen einer Gruppe, die einer Azure AD-Rolle zugewiesen werden kann
 

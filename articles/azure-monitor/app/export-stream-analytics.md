@@ -3,21 +3,25 @@ title: Exportieren aus Azure Application Insights mithilfe von Stream Analytics 
 description: Stream Analytics kann aus Application Insights exportierte Daten fortlaufend transformieren, filtern und weiterleiten.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: a517bddd8981554b7fb5044d33b6c6777df51e36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b54b6045c1def9d87636f4facfe65f8abd056cd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719796"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753915"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Verwenden von Stream Analytics zum Verarbeiten von Daten, die aus Application Insights exportiert wurden
 
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ist das ideale Tool für die Verarbeitung von Daten, die [aus Application Insights exportiert wurden](export-telemetry.md). Stream Analytics kann Daten aus einer Vielzahl von Quellen abrufen. Das Tool kann die Daten transformieren und filtern und anschließend an eine Vielzahl von Senken weiterleiten.
 
-In diesem Beispiel wird ein Adapter erstellt, der Daten aus Application Insights umbenennt, einige Felder bearbeitet und an Power BI weiterreicht.
+In diesem Beispiel wird ein Adapter erstellt, der Daten aus Application Insights mittels fortlaufendem Export abruft, einige Felder umbenennt und bearbeitet sowie an Power BI weiterreicht.
 
 > [!WARNING]
 > Es gibt wesentlich bessere und einfachere [empfohlene Möglichkeiten, Application Insights-Daten in Power BI anzuzeigen](./export-power-bi.md). Die hier beschriebene Möglichkeit ist lediglich ein Beispiel zum Veranschaulichen, wie exportierte Daten verarbeitet werden.
+
+> [!IMPORTANT]
+> Der fortlaufende Export ist veraltet und wird nur für klassische Application Insights-Ressourcen unterstützt. [Migrieren Sie zu einer arbeitsbereichsbasierten Application Insights-Ressource](convert-classic-resource.md), um [Diagnoseeinstellungen](export-telemetry.md#diagnostic-settings-based-export) zum Exportieren von Telemetriedaten zu verwenden.
+
 
 ![Blockdiagramm für Export über SA nach PBI](./media/export-stream-analytics/020.png)
 
@@ -38,7 +42,7 @@ Durch fortlaufende Exportaktivitäten werden Daten an ein Azure-Speicherkonto ü
 
 ## <a name="start-continuous-export-to-azure-storage"></a>Starten des fortlaufenden Exports in den Azure-Speicher
 
-[fortlaufenden Export](export-telemetry.md) werden Daten aus Application Insights in den Azure-Speicher verschoben.
+[fortlaufenden Export](export-telemetry.md) werden Daten aus Application Insights in den Azure-Speicher verschoben. 
 
 1. Navigieren Sie im Azure-Portal zu der Application Insights-Ressource, die Sie für Ihre Anwendung erstellt haben.
    

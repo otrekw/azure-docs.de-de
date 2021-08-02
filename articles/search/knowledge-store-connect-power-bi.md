@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac260f2fa8cd4f1fd469e3529b7ad6d55a965538
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89289170"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555715"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI
 
@@ -37,7 +37,7 @@ Klicken Sie auf der Seite **Kognitive Qualifikationen hinzufügen (Optional)** a
 ![Beispiel: Power BI-Vorlage für Azure Cognitive Search](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Beispiel für Power BI-Vorlage")
 
 > [!NOTE]
-> Die Vorlage wird zwar während der Ausführung des Assistenten heruntergeladen, Sie müssen jedoch warten, bis der Wissensspeicher in Azure Table Storage erstellt wurde, um ihn verwenden zu können.
+> Die Vorlage wird zwar während der Ausführung des Assistenten heruntergeladen, Sie müssen jedoch warten, bis der Wissensspeicher in Azure Table Storage erstellt wurde, bevor Sie die Vorlage verwenden können.
 
 ## <a name="connect-with-power-bi"></a>Herstellen einer Verbindung mit Power BI
 
@@ -110,7 +110,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](../
 
 ## <a name="clean-up"></a>Bereinigung
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie am Ende eines Projekts prüfen, ob Sie die Ressourcen, die Sie erstellt haben, noch benötigen. Für weiterhin aktive Ressourcen können Kosten anfallen. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie am Ende eines Projekts prüfen, ob Sie die Ressourcen, die Sie erstellt haben, noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 

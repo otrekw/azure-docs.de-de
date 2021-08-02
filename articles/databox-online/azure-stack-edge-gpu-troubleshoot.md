@@ -1,25 +1,26 @@
 ---
-title: Behandeln von Problemen mit Azure Stack Edge Pro mit GPU im Azure-Portal | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie Azure Stack Edge Pro-GPU-Probleme behandeln können.
+title: Ausführen von Diagnosen und Sammeln von Protokollen zum Behandeln von Problemen bei Azure Stack Edge-Geräten | Microsoft-Dokumentation
+description: Beschrieben wird, wie Diagnosen ausgeführt und Protokolle verwendet werden, um Probleme bei Azure Stack Edge Pro GPU-Geräten zu beheben.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 02/22/2021
+ms.date: 06/10/2021
 ms.author: alkohli
-ms.openlocfilehash: e108c2fade911c0b0c2f11548004ebbe3c958c51
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: 82f8fe0574ec98c71ace2aaddda2d0bc2bc6e99f
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139397"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006345"
 ---
-# <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Beheben von Problemen auf Ihrem Azure Stack Edge Pro-GPU-Gerät 
+# <a name="run-diagnostics-collect-logs-to-troubleshoot-azure-stack-edge-device-issues"></a>Ausführen von Diagnosen und Sammeln von Protokollen zum Behandeln von Problemen bei Azure Stack Edge-Geräten
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Probleme auf Ihrem Azure Stack Edge Pro-GPU-Gerät behandeln können. 
+In diesem Artikel wird beschrieben, wie Sie Diagnosen ausführen, ein Supportpaket erfassen, erweiterte Sicherheitsprotokolle sammeln und Protokolle überprüfen, um Probleme beim Geräteupload und Aktualisieren auf Ihrem Azure Stack Edge-Gerät zu beheben.
 
 
 ## <a name="run-diagnostics"></a>Ausführen von Diagnosen
@@ -108,7 +109,7 @@ Um jegliche Angriffe auf die Hardware des Geräts zu erkennen, werden derzeit al
     09/04/2019 15:51:30 system Ok The chassis is closed while the power is off.
     ```
 
-## <a name="use-logs-to-troubleshoot"></a>Behandeln von Problemen anhand von Protokollen
+## <a name="troubleshoot-device-upload-and-refresh-errors"></a>Behandeln von Problemen und Fehlern beim Geräteupload und Aktualisieren von Geräten
 
 Alle Fehler, die während der Upload- und Aktualisierungsprozesse aufgetreten sind, sind in den entsprechenden Fehlerdateien enthalten.
 
@@ -132,78 +133,10 @@ Alle Fehler, die während der Upload- und Aktualisierungsprozesse aufgetreten si
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
-## <a name="use-error-lists-to-troubleshoot"></a>Verwenden von Fehlerlisten zur Problembehandlung
-
-Die Fehlerlisten werden anhand identifizierter Szenarien zusammengestellt und können zur Selbstdiagnose und Problembehandlung dienen. 
-
-## <a name="azure-resource-manager"></a>Azure Resource Manager
-
-Hier sind die Fehler, die bei der Konfiguration von Azure Resource Manager für den Zugriff auf Ihr Gerät auftreten können. 
-
-| **Problem/Fehler** |  **Lösung** | 
-|------------|-----------------|
-|Allgemeine Probleme|<li>[Vergewissern Sie sich, dass das Edgegerät ordnungsgemäß konfiguriert ist](#verify-the-device-is-configured-properly).<li> [Vergewissern Sie sich, dass der Client ordnungsgemäß konfiguriert ist.](#verify-the-client-is-configured-properly)|
-|Add-AzureRmEnvironment: Fehler beim Senden der Anforderung.<br>Zeile:1 Zeichen:1<br>+ Add-AzureRmEnvironment -Name Az3 -ARMEndpoint "https://management.dbe ...|Dieser Fehler bedeutet, dass Ihr Azure Stack Edge Pro-Gerät nicht erreichbar oder nicht ordnungsgemäß konfiguriert ist. Überprüfen Sie, ob Edgegerät und Client ordnungsgemäß konfiguriert sind. Eine Anleitung finden Sie in der Zeile **Allgemeine Probleme** dieser Tabelle.|
-|Dienst hat einen Fehler zurückgegeben. Weitere Details finden Sie in der InnerException. Die zugrunde liegende Verbindung wurde geschlossen: Es konnte keine Vertrauensstellung für den sicheren SSL/TLS-Kanal eingerichtet werden. |   Dieser Fehler ist wahrscheinlich darauf zurückzuführen, dass ein oder mehrere Schritte bei der Bereitstellung Ihres eigenen Zertifikats nicht einwandfrei erfolgt sind. [Hier](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates) finden Sie Anleitungen. |
-|Operation returned an invalid status code 'BadRequest'. (Der Vorgang hat den ungültigen Statuscode „ServiceUnavailable“ zurückgegeben.) <br> Der Antwortstatuscode gibt keinen Erfolg an: 503 (Dienst nicht verfügbar). | Dieser Fehler kann auf eine der folgenden Bedingungen zurückzuführen sein.<li>ArmStsPool befindet sich im beendeten Zustand.</li><li>Die Azure Resource Manager- oder die Sicherheitstokendienst-Website ist ausgefallen.</li><li>Die Azure Resource Manager-Clusterressource ist nicht verfügbar.</li><br><strong>Hinweis:</strong> Ein Neustart des Geräts kann das Problem möglicherweise beheben, aber Sie sollten das Supportpaket zusammenstellen, damit Sie es weiter untersuchen können.|
-|AADSTS50126: Ungültiger Benutzername oder ungültiges Kennwort.<br>Ablaufverfolgungs-ID: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Korrelations-ID: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Timestamp: 2019-11-15 09:21:57Z: The remote server returned an error: (400) Bad Request (400 (Ungültige Anforderung)).<br>Zeile:1 Zeichen:1 |Dieser Fehler kann auf eine der folgenden Bedingungen zurückzuführen sein.<li>Bei ungültigem Benutzernamen und Kennwort prüfen Sie, ob der Kunde das Kennwort im Azure-Portal geändert hat, indem Sie den Schritten [hier](./azure-stack-edge-gpu-set-azure-resource-manager-password.md) folgen und dann das richtige Kennwort verwenden.<li>Bei einer ungültigen Mandanten-ID ist die Mandanten-ID eine feste GUID und muss auf `c0257de7-538f-415c-993a-1b87a031879d` festgelegt werden.</li>|
-|connect-AzureRmAccount: AADSTS90056: Die Ressource ist deaktiviert oder nicht vorhanden. Überprüfen Sie den Code Ihrer App, um sicherzustellen, dass Sie die genaue Ressourcen-URL für die Ressource angegeben haben, auf die Sie zugreifen möchten.<br>Ablaufverfolgungs-ID: e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>Korrelations-ID: 75c8ef5a-830e-48b5-b039-595a96488ff9 Zeitstempel: 2019-11-18 07:00:51Z: The remote server returned an error: (400) Fehlerhaft |Die im Befehl `Add-AzureRmEnvironment` verwendeten Ressourcenendpunkte sind falsch.|
-|Endpunkte können nicht aus der Cloud abgerufen werden.<br>Stellen Sie sicher, dass Sie über eine Netzwerkverbindung verfügen. Fehlerdetail: HTTPSConnectionPool(host='management.dbg-of4k6suvm.microsoftdatabox.com', port=30005): Maximale Anzahl von Wiederholungen überschritten mit URL: /metadata/endpoints?api-version=2015-01-01 (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),)) |Dieser Fehler tritt meist in einer Mac-/Linux-Umgebung auf und ist auf die folgenden Probleme zurückzuführen:<li>Ein Zertifikat im PEM-Format wurde nicht dem Python-Zertifikatsspeicher hinzugefügt.</li> |
-
-### <a name="verify-the-device-is-configured-properly"></a>Überprüfen, ob das Gerät ordnungsgemäß konfiguriert ist
-
-1. Überprüfen Sie auf der lokalen Benutzeroberfläche, ob das Gerätenetzwerk ordnungsgemäß konfiguriert ist.
-
-2. Vergewissern Sie sich, dass die Zertifikate für alle Endpunkte wie [hier](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates) erwähnt aktualisiert werden.
-
-3. Rufen Sie den Verwaltungs- und Anmeldeendpunkt für Azure Resource Manager auf der Seite **Gerät** der lokalen Benutzeroberfläche ab.
-
-4. Vergewissern Sie sich, dass das Gerät in Azure aktiviert und registriert ist.
-
-
-### <a name="verify-the-client-is-configured-properly"></a>Überprüfen, ob der Client ordnungsgemäß konfiguriert ist
-
-1. Vergewissern Sie sich, dass die richtige PowerShell-Version wie [hier](./azure-stack-edge-gpu-connect-resource-manager.md#step-3-install-powershell-on-the-client) erwähnt installiert ist.
-
-2. Vergewissern Sie sich, dass die richtigen PowerShell-Module wie [hier](./azure-stack-edge-gpu-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client) erwähnt installiert sind.
-
-3. Überprüfen Sie, ob die Azure Resource Manager- und Anmeldeendpunkte erreichbar sind. Sie können versuchen, die Endpunkte zu pingen. Beispiel:
-
-   `ping management.28bmdw2-bb9.microsoftdatabox.com`
-   `ping login.28bmdw2-bb9.microsoftdatabox.com`
-   
-   Wenn sie nicht erreichbar sind, fügen Sie DNS-/Hostdateieinträge wie [hier](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution) erwähnt hinzu.
-   
-4. Überprüfen Sie, ob die Clientzertifikate wie [hier](./azure-stack-edge-gpu-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell) erwähnt installiert sind.
-
-5. Wenn der Kunde PowerShell verwendet, sollten Sie die Debugvoreinstellung aktivieren, um detaillierte Meldungen anzuzeigen, indem Sie diesen PowerShell-Befehl ausführen. 
-
-    `$debugpreference = "continue"`
-
-## <a name="blob-storage-on-device"></a>Blob Storage auf dem Gerät 
-
-Nachfolgend sind die Fehler im Zusammenhang mit Blob Storage auf dem Azure Stack Edge Pro-/Data Box Gateway-Gerät aufgeführt.
-
-| **Problem/Fehler** |  **Lösung** | 
-|--------------------|-----------------|
-|Untergeordnete Ressourcen können nicht abgerufen werden. Der Wert eines der HTTP-Header weist nicht das richtige Format auf.| Wählen Sie im Menü **Bearbeiten** die Option **Target Azure Stack APIs** (Azure Stack-APIs als Ziel verwenden) aus. Starten Sie dann Azure Storage-Explorer neu.|
-|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Vergewissern Sie sich, dass der Endpunktname `<accountname>.blob.<serialnumber>.microsoftdatabox.com` der Datei „Hosts“ folgendem Pfad hinzugefügt wurde: `C:\Windows\System32\drivers\etc\hosts` unter Windows oder `/etc/hosts` unter Linux.|
-|Untergeordnete Ressourcen können nicht abgerufen werden.<br> Details: selbstsigniertes Zertifikat |Importieren Sie das SSL-Zertifikat für Ihr Gerät in Azure Storage-Explorer: <ol><li>Laden Sie das Zertifikat aus dem Azure-Portal herunter. Weitere Informationen finden Sie unter [Herunterladen des Zertifikats](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>Wählen Sie im Menü **Bearbeiten** die Option SSL-Zertifikate und dann **Zertifikate importieren** aus.</li></ol>|
-|Der AzCopy-Befehl reagiert eine Minute lang nicht mehr, dann wird dieser Fehler angezeigt:<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Vergewissern Sie sich, dass der Endpunktname `<accountname>.blob.<serialnumber>.microsoftdatabox.com` der Datei „Hosts“ unter `C:\Windows\System32\drivers\etc\hosts` hinzugefügt wurde.|
-|Der AzCopy-Befehl reagiert eine Minute lang nicht mehr, dann wird dieser Fehler angezeigt:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Importieren Sie das SSL-Zertifikat für Ihr Gerät in den Zertifikatsspeicher des Systems. Weitere Informationen finden Sie unter [Herunterladen des Zertifikats](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
-|Der AzCopy-Befehl reagiert 20 Minuten lang nicht mehr, dann wird dieser Fehler angezeigt:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |Vergewissern Sie sich, dass der Endpunktname `<accountname>.blob.<serialnumber>.microsoftdatabox.com` der Datei „Hosts“ unter `/etc/hosts` hinzugefügt wurde.|
-|Der AzCopy-Befehl reagiert 20 Minuten lang nicht mehr, dann wird dieser Fehler angezeigt:<br>`Error parsing source location… The SSL connection could not be established`. |Importieren Sie das SSL-Zertifikat für Ihr Gerät in den Zertifikatsspeicher des Systems. Weitere Informationen finden Sie unter [Herunterladen des Zertifikats](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
-|Der AzCopy-Befehl reagiert 20 Minuten lang nicht mehr, dann wird dieser Fehler angezeigt:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Vergewissern Sie sich, dass der Endpunktname `<accountname>.blob.<serialnumber>.microsoftdatabox.com` der Datei „Hosts“ unter `/etc/hosts` hinzugefügt wurde.|
-|Der AzCopy-Befehl reagiert 20 Minuten lang nicht mehr, dann wird dieser Fehler angezeigt: `Error parsing source location… The SSL connection could not be established`|Importieren Sie das SSL-Zertifikat für Ihr Gerät in den Zertifikatsspeicher des Systems. Weitere Informationen finden Sie unter [Herunterladen des Zertifikats](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
-|Der Wert eines der HTTP-Header weist nicht das richtige Format auf.|Die installierte Version der Microsoft Azure Storage-Bibliothek für Python wird von Data Box nicht unterstützt. Unterstützte Versionen finden Sie in den Azure Data Box-Blobspeicheranforderungen.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED] …| Legen Sie vor dem Ausführen von Python die Umgebungsvariable REQUESTS_CA_BUNDLE auf den Pfad der Base64-codierten SSL-Zertifikatsdatei fest. (Weitere Informationen zum [Herunterladen des Zertifikats](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).) Beispiel:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativ können Sie das Zertifikat dem Zertifikatspeicher des Systems hinzufügen und dann diese Umgebungsvariable auf den Pfad dieses Speichers festlegen. Beispiel für Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
-|Bei der Verbindung ist eine Zeitüberschreitung aufgetreten.|Melden Sie sich beim Azure Stack Edge Pro-Gerät an, und prüfen Sie dann, ob es entsperrt ist. Bei jedem Neustart des Geräts bleibt es gesperrt, bis sich ein Benutzer anmeldet.|
-
-## <a name="troubleshoot-iot-edge-errors"></a>Behandeln von IoT Edge-Fehlern
-
-[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Beheben von Problemen mit der Geräteaktivierung](azure-stack-edge-gpu-troubleshoot-activation.md).
+- [Behandeln von Problemen bei der Geräteaktivierung](azure-stack-edge-gpu-troubleshoot-activation.md).
+- [Problembehandlung für Azure Resource Manager.](azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md)
+- [Behandeln von Blob Storage-Problemen.](azure-stack-edge-gpu-troubleshoot-blob-storage.md)
+- [Behandeln von Computeproblemen in IoT Edge](azure-stack-edge-gpu-troubleshoot-iot-edge.md).

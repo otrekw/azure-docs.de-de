@@ -4,19 +4,20 @@ description: Erfahren Sie, wie Sie SMB Multichannel für Azure Premium-Dateifre
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/15/2021
+ms.date: 05/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da4e1a58aef28e5c47100a0311ff81a5af04a918
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a7b6feb2cfb255e231b8c2f9080915195f49d29a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718975"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663445"
 ---
 # <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>Aktivieren von SMB Multichannel für ein FileStorage-Konto (Vorschau) 
 
-Azure FileStorage-Konten unterstützen SMB Multichannel (Vorschau), wodurch die Leistung eines SMB 3.x-Clients erhöht wird, indem mehrere Netzwerkverbindungen mit Ihren Premium-Dateifreigaben hergestellt werden. Dieser Artikel enthält eine schrittweise Anleitung zum Aktivieren von SMB Multichannel für ein vorhandenes Speicherkonto. Ausführliche Informationen zu Azure Files SMB Multichannel finden Sie unter SMB Multichannel-Leistung.
+Azure FileStorage-Konten unterstützen SMB Multichannel (Vorschau), wodurch die Leistung eines SMB 3.x-Clients erhöht wird, indem mehrere Netzwerkverbindungen mit Ihren Premium-Dateifreigaben hergestellt werden. Dieser Artikel enthält eine schrittweise Anleitung zum Aktivieren von SMB Multichannel für ein vorhandenes Speicherkonto. Ausführliche Informationen zu Azure Files SMB Multichannel finden Sie unter  [SMB Multichannel-Leistung](storage-files-smb-multichannel-performance.md).
 
 ## <a name="limitations"></a>Einschränkungen
 
