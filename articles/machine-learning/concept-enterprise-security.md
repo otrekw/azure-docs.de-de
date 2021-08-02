@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: aashishb
+ms.author: jmartens
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 11/20/2020
-ms.openlocfilehash: a079504872eaf3840416a99e784c4d33a6828b0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/02/2021
+ms.openlocfilehash: 27bd8124c0b78d1fecd1f7027104c3b5c9b8a8a1
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94992028"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541516"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Sicherheit und Governance in Unternehmen für Azure Machine Learning
 
@@ -39,7 +39,7 @@ Dies ist der Authentifizierungsprozess für Azure Machine Learning mit Multi-Fac
 
 [![Authentifizierung in Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication.png#lightbox)
 
-Jedem Arbeitsbereich ist eine vom System zugewiesene [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) zugeordnet, die den gleichen Namen hat wie der Arbeitsbereich. Diese verwaltete Identität wird für den sicheren Zugriff auf Ressourcen verwendet, die vom Arbeitsbereich verwendet werden. Sie verfügt über die folgenden Azure RBAC-Berechtigungen für angefügte Ressourcen:
+Jedem Arbeitsbereich ist eine vom System zugewiesene [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) zugeordnet, die den gleichen Namen hat wie der Arbeitsbereich. Diese verwaltete Identität wird für den sicheren Zugriff auf Ressourcen verwendet, die vom Arbeitsbereich verwendet werden. Sie verfügt über die folgenden Azure RBAC-Berechtigungen für zugehörige Ressourcen:
 
 | Resource | Berechtigungen |
 | ----- | ----- |
@@ -48,13 +48,23 @@ Jedem Arbeitsbereich ist eine vom System zugewiesene [verwaltete Identität](../
 | Schlüsseltresor | Zugriff auf alle Schlüssel, Geheimnisse und Zertifikate |
 | Azure Container Registry | Mitwirkender |
 | Ressourcengruppe, die den Arbeitsbereich enthält | Mitwirkender |
-| Ressourcengruppe, die den Schlüsseltresor enthält (wenn sie nicht mit der Ressourcengruppe identisch ist, die den Arbeitsbereich enthält) | Mitwirkender |
+
+Die systemseitig zugewiesene verwaltete Identität wird für die interne Dienst-zu-Dienst-Authentifizierung von Azure Machine Learning bei anderen Azure-Ressourcen verwendet. Das Identitätstoken ist für Benutzer nicht zugänglich und kann nicht von ihnen verwendet werden, um Zugriff auf diese Ressourcen zu erhalten. Benutzer können nur dann über die [Steuerungs- und Datenebenen-APIs von Azure Machine Learning](how-to-assign-roles.md) auf die Ressourcen zugreifen, wenn sie über ausreichende RBAC-Berechtigungen verfügen.
+
+Die verwaltete Identität benötigt Berechtigungen für Mitwirkende in der Ressourcengruppe, die den Arbeitsbereich enthält, um die zugeordneten Ressourcen bereitzustellen und [Azure Container Instances für Webdienstendpunkte bereitzustellen](how-to-deploy-azure-container-instance.md).
 
 Administratoren sollten den Zugriff der verwalteten Identität auf die in der vorhergehenden Tabelle genannten Ressourcen nicht widerrufen. Sie können den Zugriff mithilfe des [Vorgangs zum erneuten Synchronisieren von Schlüsseln](how-to-change-storage-access-key.md) wiederherstellen.
 
-Azure Machine Learning erstellt auch eine weitere Anwendung (deren Name mit `aml-` oder `Microsoft-AzureML-Support-App-` beginnt) mit Zugriff auf Mitwirkendenebene in Ihrem Abonnement für jede Region des Arbeitsbereichs. Wenn Sie z. B. im selben Abonnement über einen Arbeitsbereich in „USA, Osten“ und einen anderen in „Europa, Norden“ verfügen, sehen Sie zwei dieser Anwendungen. Azure Machine Learning kann Sie mithilfe dieser Anwendungen beim Verwalten der Computeressourcen unterstützen.
+> [!NOTE]
+> Wenn Ihre Azure Machine Learning-Arbeitsbereiche über Computeziele (Computecluster, Compute-Instanz, Azure Kubernetes Service usw.) verfügen, die vor dem __14. Mai 2021__ erstellt wurden, verfügen Sie möglicherweise auch über ein zusätzliches Azure Active Directory-Konto. Der Kontoname beginnt mit `Microsoft-AzureML-Support-App-` und verfügt für jede Arbeitsbereichsregion über Zugriff der Mitwirkenderebene auf Ihr Abonnement.
+> 
+> Wenn Ihrem Arbeitsbereich kein Azure Kubernetes Service (AKS) angefügt ist, können Sie dieses Azure AD-Konto unbesorgt löschen. 
+> 
+> Wenn Ihrem Arbeitsbereich AKS-Cluster angefügt sind _und diese vor dem 14. Mai 2021 erstellt wurden_, __löschen Sie dieses Azure AD-Konto nicht__. In diesem Szenario müssen Sie zuerst den AKS-Cluster löschen und neu erstellen, bevor Sie das Azure AD-Konto löschen können.
 
-Sie können auch Ihre eigenen verwalteten Identitäten für die Verwendung mit Azure Virtual Machines und Azure Machine Learning-Computecluster konfigurieren. Bei einer VM kann die verwaltete Identität verwendet werden, um über das SDK anstatt das Azure AD-Konto eines einzelnen Benutzers auf Ihren Arbeitsbereich zuzugreifen. Bei einem Computecluster wird die verwaltete Identität verwendet, um auf Ressourcen wie gesicherte Datenspeicher zuzugreifen, auf die der Benutzer, der den Trainingsauftrag durchführt, möglicherweise keinen Zugriff hat. Weitere Informationen finden Sie unter [Authentifizierung für einen Azure Machine Learning-Arbeitsbereich](how-to-setup-authentication.md).
+Sie können den Arbeitsbereich für die Verwendung einer benutzerseitig zugewiesenen verwalteten Identität bereitstellen und der verwalteten Identität zusätzliche Rollen zuweisen, z. B. zum Zugreifen auf Ihre eigene Azure Container Registry für Docker-Basisimages. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](how-to-use-managed-identities.md).
+
+Sie können auch verwaltete Identitäten für die Verwendung mit Azure Machine Learning-Computeclustern konfigurieren. Diese verwaltete Identität ist unabhängig von der verwalteten Identität des Arbeitsbereichs. Bei einem Computecluster wird die verwaltete Identität verwendet, um auf Ressourcen wie gesicherte Datenspeicher zuzugreifen, auf die der Benutzer, der den Trainingsauftrag durchführt, möglicherweise keinen Zugriff hat. Weitere Informationen finden Sie unter [Identitätsbasierter Datenzugriff auf Speicherdienste in Azure](how-to-identity-based-data-access.md).
 
 > [!TIP]
 > Es gibt einige Ausnahmen bei der Verwendung von Azure AD und Azure RBAC in Azure Machine Learning:

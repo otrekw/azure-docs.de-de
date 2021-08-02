@@ -1,26 +1,26 @@
 ---
-title: Anpassen des Feeds für Benutzer von Windows Virtual Desktop (klassisch) – Azure
-description: Erfahren Sie, wie Sie den Feed für Benutzer von Windows Virtual Desktop (klassisch) mit PowerShell-Cmdlets anpassen.
+title: Anpassen des Feeds für Benutzer von Azure Virtual Desktop (klassisch) – Azure
+description: Erfahren Sie, wie Sie den Feed für Benutzer von Azure Virtual Desktop (klassisch) mit PowerShell-Cmdlets anpassen.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5653ba4b1bcaab9e7b82dae3fe0842cbc7fb86b9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 7a28185d16f0bc7787eccc76a9f4a0a98d5c6a38
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445107"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754149"
 ---
-# <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>Anpassen des Feeds für Benutzer von Windows Virtual Desktop (klassisch)
+# <a name="customize-feed-for-azure-virtual-desktop-classic-users"></a>Anpassen des Feeds für Benutzer von Azure Virtual Desktop (klassisch) – Azure
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../customize-feed-for-virtual-desktop-users.md) weiter.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../customize-feed-for-virtual-desktop-users.md) weiter.
 
 Sie können den Feed anpassen, damit die RemoteApp- und Remotedesktopressourcen den Benutzern auf erkennbare Weise angezeigt werden.
 
-Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](/powershell/windows-virtual-desktop/overview/), um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
+Zunächst müssen Sie das [PowerShell-Modul für Azure Virtual Desktop](/powershell/windows-virtual-desktop/overview/) herunterladen und importieren, um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -72,7 +72,7 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie den Feed für Benutzer angepasst haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um ihn zu testen. Wechseln Sie dafür zu den Vorgehensweisen für das Herstellen einer Verbindung mit Windows Virtual Desktop:
+Nachdem Sie den Feed für Benutzer angepasst haben, können Sie sich bei einem Azure Virtual Desktop-Client anmelden, um ihn zu testen. Wechseln Sie dafür zu den Anleitungen für das Herstellen einer Verbindung mit Azure Virtual Desktop:
 
  * [Herstellen einer Verbindung über Windows 10 oder Windows 7](connect-windows-7-10-2019.md)
  * [Herstellen einer Verbindung über einen Webbrowser](connect-web-2019.md)

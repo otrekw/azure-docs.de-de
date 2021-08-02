@@ -1,24 +1,25 @@
 ---
-title: 'Windows Virtual Desktop: PowerShell-Modul – Azure'
-description: Installieren und Einrichten des PowerShell-Moduls für Windows Virtual Desktop
+title: 'Azure Virtual Desktop: PowerShell-Modul – Azure'
+description: Anleitung zum Installieren und Einrichten des PowerShell-Moduls für Azure Virtual Desktop
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: fdd74a09e49a352d18cf4ceccf406a25bf6dffb3
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 029034cd4c4e118cca532509208f08843ca8b7fd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445838"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753123"
 ---
-# <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Einrichten des PowerShell-Moduls für Windows Virtual Desktop
+# <a name="set-up-the-powershell-module-for-azure-virtual-desktop"></a>Einrichten des PowerShell-Moduls für Azure Virtual Desktop
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Azure Resource Manager-Integration.
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Resource Manager-Integration.
 
-Das PowerShell-Modul für Windows Virtual Desktop ist in das Azure PowerShell-Modul integriert. In diesem Artikel erfahren Sie, wie Sie das PowerShell-Modul so einrichten, dass Sie Cmdlets für Windows Virtual Desktop ausführen können.
+Das PowerShell-Modul für Azure Virtual Desktop ist in das Azure PowerShell-Modul integriert. In diesem Artikel erfahren Sie, wie Sie das PowerShell-Modul so einrichten, dass Sie Cmdlets für Azure Virtual Desktop ausführen können.
 
 ## <a name="set-up-your-powershell-environment"></a>Einrichten Ihrer PowerShell-Umgebung
 
@@ -136,11 +137,11 @@ New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -W
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihr PowerShell-Modul eingerichtet haben, können Sie Cmdlets ausführen, um verschiedenste Aufgaben in Windows Virtual Desktop auszuführen. Hier einige Einsatzmöglichkeiten für Ihr Modul:
+Nachdem Sie Ihr PowerShell-Modul eingerichtet haben, können Sie Cmdlets ausführen, um verschiedenste Aufgaben in Azure Virtual Desktop auszuführen. Hier einige Einsatzmöglichkeiten für Ihr Modul:
 
-- Erkunden Sie unsere [Windows Virtual Desktop-Tutorials](), um Ihre individuelle Windows Virtual Desktop-Umgebung einzurichten.
+- Erkunden Sie unsere [Azure Virtual Desktop-Tutorials](), um Ihre individuelle Azure Virtual Desktop-Umgebung einzurichten.
 - [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md)
-- [Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop](configure-host-pool-load-balancing.md)
+- [Konfigurieren der Lastenausgleichsmethode für Azure Virtual Desktop](configure-host-pool-load-balancing.md)
 - [Konfigurieren des Zuweisungstyps für den Hostpool mit persönlichen Desktops](configure-host-pool-personal-desktop-assignment-type.md)
 - Und viele mehr!
 

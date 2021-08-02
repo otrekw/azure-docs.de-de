@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/20/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: d3ca94524c334a20f5ee75e5300ad419fa1542c5
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: dab6415e27239e9140cce7c03bae9a2e3a95ca7d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107873269"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072125"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -88,12 +88,19 @@ Bevor Sie ein SMB-Volume erstellen, müssen Sie zunächst eine Active Directory-
         ![Abschnitt „Erweitert“ anzeigen](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. Klicken Sie auf **Protokoll**, und geben Sie die folgenden Informationen an:  
-    * Wählen Sie **SMB** als Protokolltyp für das Volume aus. 
-    * Wählen Sie in der Dropdownliste Ihre **Active Directory**-Verbindung aus.
-    * Geben Sie in **Freigabename** den Namen des freigegebenen Volumes ein.
+    * Wählen Sie **SMB** als Protokolltyp für das Volume aus.  
+
+    * Wählen Sie in der Dropdownliste Ihre **Active Directory**-Verbindung aus.  
+    
+    * Geben Sie einen eindeutigen **Freigabenamen** für das Volume an. Dieser Freigabename wird verwendet, wenn Sie Einbindungsziele erstellen. Für den Freigabenamen gelten folgende Anforderungen:   
+        - Er muss innerhalb jedes Subnetzes in der Region eindeutig sein. 
+        - Er muss mit einem Buchstaben beginnen.
+        - Er darf nur Buchstaben, Ziffern oder Gedankenstriche (`-`) enthalten. 
+        - Er darf höchstens 80 Zeichen lang sein.   
+        
     * Wenn Sie die Verschlüsselung für SMB3 aktivieren möchten, wählen Sie **SMB3-Protokollverschlüsselung aktivieren** aus.   
         Durch dieses Feature wird die Verschlüsselung für In-Flight-SMB3-Daten aktiviert. SMB-Clients ohne Verwendung der SMB3-Verschlüsselung können nicht auf dieses Volume zugreifen.  Ruhende Daten werden unabhängig von dieser Einstellung verschlüsselt.  
-        Weitere Informationen finden Sie in den [häufig gestellten Fragen zur SMB-Verschlüsselung](azure-netapp-files-faqs.md#smb-encryption-faqs). 
+        Weitere Informationen finden Sie unter [SMB-Verschlüsselung](azure-netapp-files-smb-performance.md#smb-encryption). 
 
         Das Feature **SMB3-Protokollverschlüsselung** befindet sich zurzeit in der Vorschauphase. Wenn Sie dieses Feature zum ersten Mal verwenden, registrieren Sie es vor der Verwendung: 
 
@@ -116,7 +123,7 @@ Bevor Sie ein SMB-Volume erstellen, müssen Sie zunächst eine Active Directory-
         > [!IMPORTANT]   
         > Das SMB-Feature „Fortlaufende Verfügbarkeit“ ist derzeit als öffentliche Vorschauversion verfügbar. Sie müssen eine Wartelistenanforderung für den Zugriff auf das Feature über die Seite **[Azure NetApp Files SMB Continuous Availability Shares Public Preview](https://aka.ms/anfsmbcasharespreviewsignup)** übermitteln. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie das Feature für die fortlaufende Verfügbarkeit verwenden.   
         > 
-        > Sie sollten „Fortlaufende Verfügbarkeit nur für SQL Server und [FSLogix-Benutzerprofilcontainer](../virtual-desktop/create-fslogix-profile-container.md) aktivieren. Die Verwendung von SMB-Freigaben der fortlaufenden Verfügbarkeit für andere Workloads als SQL Server und FSLOGIX- Benutzerprofilcontainern wird *nicht* unterstützt. Dieses Feature wird derzeit für SQL Server unter Windows unterstützt. SQL Server unter Linux wird zurzeit nicht unterstützt. Wenn Sie für die Installation von SQL Server ein Nicht-Administratorkonto bzw. ein Nicht-Administratordomänenkonto verwenden, stellen Sie sicher, dass dem Konto die erforderlichen Sicherheitsberechtigungen zugewiesen sind. Wenn das Domänenkonto nicht über die erforderliche Sicherheitsberechtigung (`SeSecurityPrivilege`) verfügt und die Berechtigung nicht auf Domänenebene festgelegt werden kann, können Sie dem Konto die Berechtigung über das Feld **Benutzer mit Sicherheitsberechtigungen** der Active Directory-Verbindungen zuweisen. Weitere Informationen finden Sie unter [Erstellen einer Active Directory Domain Services-Verbindung](create-active-directory-connections.md#create-an-active-directory-connection).
+        Sie sollten „Fortlaufende Verfügbarkeit nur für SQL Server und [FSLogix-Benutzerprofilcontainer](../virtual-desktop/create-fslogix-profile-container.md) aktivieren. Die Verwendung von SMB-Freigaben der fortlaufenden Verfügbarkeit für andere Workloads als SQL Server und FSLOGIX- Benutzerprofilcontainern wird *nicht* unterstützt. Dieses Feature wird derzeit für SQL Server unter Windows unterstützt. SQL Server unter Linux wird zurzeit nicht unterstützt. Wenn Sie für die Installation von SQL Server ein Nicht-Administratorkonto bzw. ein Nicht-Administratordomänenkonto verwenden, stellen Sie sicher, dass dem Konto die erforderlichen Sicherheitsberechtigungen zugewiesen sind. Wenn das Domänenkonto nicht über die erforderliche Sicherheitsberechtigung (`SeSecurityPrivilege`) verfügt und die Berechtigung nicht auf Domänenebene festgelegt werden kann, können Sie dem Konto die Berechtigung über das Feld **Benutzer mit Sicherheitsberechtigungen** der Active Directory-Verbindungen zuweisen. Weitere Informationen finden Sie unter [Erstellen einer Active Directory Domain Services-Verbindung](create-active-directory-connections.md#create-an-active-directory-connection).
 
     <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
     <!-- 
@@ -167,7 +174,9 @@ Sie können Berechtigungen für eine Datei oder einen Ordner festlegen, indem Si
 
 * [Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)
-* [Häufig gestellte Fragen zu SMB](./azure-netapp-files-faqs.md#smb-faqs)
+* [Konfigurieren von ADDS LDAP über TLS für Azure NetApp Files](configure-ldap-over-tls.md) 
+* [Konvertieren vorhandener SMB-Volumes zur Verwendung von fortlaufender Verfügbarkeit](convert-smb-continuous-availability.md)
+* [SMB-Verschlüsselung](azure-netapp-files-smb-performance.md#smb-encryption)
 * [Problembehandlung für SMB-Volumes und Volumes mit dualem Protokoll](troubleshoot-dual-protocol-volumes.md)
 * [Erfahren Sie mehr über die Integration virtueller Netzwerke für Azure-Dienste](../virtual-network/virtual-network-for-azure-services.md)
 * [Installieren einer neuen Active Directory-Gesamtstruktur mit der Azure CLI](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

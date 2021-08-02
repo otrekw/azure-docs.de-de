@@ -1,25 +1,25 @@
 ---
-title: Speicher für FSLogix-Profilcontainer mit Windows Virtual Desktop – Azure
-description: Optionen zum Speichern Ihres Windows Virtual Desktop-FSLogix-Profils in Azure Storage.
+title: Speicher für FSLogix-Profilcontainer mit Azure Virtual Desktop – Azure
+description: Optionen zum Speichern Ihres FSLogix-Profils für Azure Virtual Desktop auf Azure Storage
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 34be20a1b8768414efa0ea32382dea6eab66035a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: ba1ae8c108f02dbd104361e1efe39f5583011124
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073195"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755697"
 ---
-# <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop
+# <a name="storage-options-for-fslogix-profile-containers-in-azure-virtual-desktop"></a>Speicheroptionen für FSLogix-Profilcontainer in Azure Virtual Desktop
 
-Azure bietet mehrere Speicherlösungen für die Speicherung Ihres FSLogix-Profilcontainers. In diesem Artikel werden die Speicherlösungen verglichen, die Azure für Windows Virtual Desktop-FSLogix-Benutzerprofilcontainer bietet. Für die meisten unserer Kunden wird empfohlen, die FSLogix-Profilcontainer in Azure Files zu speichern.
+Azure bietet mehrere Speicherlösungen für die Speicherung Ihres FSLogix-Profilcontainers. In diesem Artikel werden die Speicherlösungen verglichen, die Azure für Azure Virtual Desktop FSLogix-Benutzerprofilcontainer bietet. Für die meisten unserer Kunden wird empfohlen, die FSLogix-Profilcontainer in Azure Files zu speichern.
 
-Windows Virtual Desktop stellt FSLogix-Profilcontainer als empfohlene Lösung für Benutzerprofile bereit. FSLogix ist für das Roaming von Profilen in Remotecomputingumgebungen wie z.B. Windows Virtual Desktop konzipiert. Bei der Anmeldung wird dieser Container dynamisch an die Computingumgebung angefügt. Hierzu werden eine nativ unterstützte virtuelle Festplatte (Virtual Hard Disk, VHD) und eine virtuelle Hyper-V-Festplatte (VHDX) verwendet. Das Benutzerprofil ist sofort verfügbar und wird im System genau so angezeigt wie ein natives Benutzerprofil.
+Azure Virtual Desktop stellt FSLogix-Profilcontainer als empfohlene Lösung für Benutzerprofile bereit. FSLogix ist für das Roaming von Profilen in Remotecomputingumgebungen wie z B. Azure Virtual Desktop konzipiert. Bei der Anmeldung wird dieser Container dynamisch an die Computingumgebung angefügt. Hierzu werden eine nativ unterstützte virtuelle Festplatte (Virtual Hard Disk, VHD) und eine virtuelle Hyper-V-Festplatte (VHDX) verwendet. Das Benutzerprofil ist sofort verfügbar und wird im System genau so angezeigt wie ein natives Benutzerprofil.
 
-In den folgenden Tabellen werden die Speicherlösungen verglichen, die in Azure Storage für Benutzerprofile in einem Windows Virtual Desktop-FSLogix-Profilcontainer zur Verfügung stehen.
+In den folgenden Tabellen werden die Speicherlösungen verglichen, die in Azure Storage für Benutzerprofile in einem Azure Virtual Desktop-FSLogix-Profilcontainer zur Verfügung stehen.
 
 ## <a name="azure-platform-details"></a>Details zur Azure-Plattform
 
@@ -43,7 +43,7 @@ In den folgenden Tabellen werden die Speicherlösungen verglichen, die in Azure 
 |Sicherheit und Compliance|[Alle von Azure unterstützten Zertifikate](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO abgeschlossen|[Alle von Azure unterstützten Zertifikate](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory-Integration|[Natives Active Directory und Azure Active Directory Domain Services](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory Domain Services und Active Directory (nativ)](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Nur Unterstützung von Active Directory (nativ) oder Azure Active Directory Domain Services|
 
-Nachdem Sie sich für eine Speichermethode entschieden haben, können Sie sich unter [Windows Virtual Desktop – Preise](https://azure.microsoft.com/pricing/details/virtual-desktop/) über unsere Tarife informieren.
+Nachdem Sie sich für eine Speichermethode entschieden haben, können Sie sich unter [Azure Virtual Desktop – Preise](https://azure.microsoft.com/pricing/details/virtual-desktop/) über unsere Tarife informieren.
 
 ## <a name="azure-files-tiers"></a>Ebenen in Azure Files
 
@@ -59,7 +59,7 @@ In der folgenden Tabelle sind unsere Empfehlungen aufgeführt, welche Leistungss
 |--------|-----------|
 | Leicht (weniger als 200 Benutzer) | Standarddateifreigaben |
 | Leicht (mehr als 200 Benutzer) | Premium-Dateifreigaben oder Standard mit mehreren Dateifreigaben |
-|Medium (Mittel)|Premium-Dateifreigaben|
+|Medium|Premium-Dateifreigaben|
 |Schwer|Premium-Dateifreigaben|
 |Power|Premium-Dateifreigaben|
 
@@ -71,8 +71,8 @@ Weitere Informationen zu FSLogix-Profilcontainern, Benutzerprofil-Datenträgern 
 
 Wenn Sie zum Erstellen Ihrer eigenen FSLogix-Profilcontainer bereit sind, beginnen Sie mit einem der folgenden Tutorials:
 
-- [Erste Schritte mit FSLogix-Profilcontainern für Azure Files in Windows Virtual Desktop](create-file-share.md)
+- [Erste Schritte mit FSLogix-Profilcontainern für Azure Files in Azure Virtual Desktop](create-file-share.md)
 - [Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit Azure NetApp Files](create-fslogix-profile-container.md)
 - Die Anweisungen unter [Bereitstellen eines Scale-Out-Dateiservers mit direkten Speicherplätzen und zwei Knoten für die Speicherung von Benutzerprofil-Datenträgern](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) gelten auch, wenn Sie anstelle eines Benutzerprofil-Datenträgers einen FSLogix-Profilcontainer verwenden.
 
-Sie können auch ganz von vorn beginnen und Ihre eigene Windows Virtual Desktop-Lösung einrichten, wie unter [Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) beschrieben.
+Sie können auch ganz von vorn beginnen und Ihre eigene Azure Virtual Desktop-Lösung einrichten, wie unter [Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) beschrieben.

@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 631fdba451f69e44a675d396a42e1cddaea50a3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/30/2021
+ms.openlocfilehash: 67919f89167fbdb09bfed8e67dfda5fb49bb9bb0
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98013956"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592392"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure SQL-Datenbank aus Azure Stream Analytics
 
@@ -47,6 +47,10 @@ Die Partitionierung muss aktiviert werde und basiert auf der PARTITION BY-Klause
 ## <a name="output-batch-size"></a>Ausgabebatchgröße
 
 Die maximale Nachrichtengröße kann über die Option **Maximal zulässige Batchanzahl** konfiguriert werden. Der standardmäßige Höchstwert beträgt 10.000, der standardmäßige Mindestwert 100 Zeilen pro Masseneinfügungsvorgang. Weitere Informationen finden Sie unter [Azure SQL-Limits](../azure-sql/database/resource-limits-logical-server.md). Jeder Batch wird zunächst mit maximaler Batchanzahl als Massenvorgang eingefügt. Der Batch wird in der Mitte (bis zur minimalen Batchanzahl) basierend auf wiederholbaren Fehlern aus SQL unterteilt.
+
+## <a name="limitation"></a>Einschränkung
+
+Ein selbstsigniertes SSL-Zertifikat wird nicht unterstützt, wenn versucht wird, ASA-Aufträge mit SQL auf dem virtuellen Computer zu verbinden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

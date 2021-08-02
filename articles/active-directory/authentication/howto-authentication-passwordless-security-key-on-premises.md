@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef56db4ef67515d14f8462db2975e68a1a86f238
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 367d2679b360bfc90d84609384c61c9b66ba3706
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959856"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538317"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory 
 
@@ -106,6 +106,10 @@ Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 Mit diesem Befehl werden die Eigenschaften des Azure AD Kerberos-Servers ausgegeben. Sie können die Eigenschaften überprüfen, um sich zu vergewissern, dass alles in Ordnung ist.
 
+> [!NOTE]
+
+Bei der Ausführung für eine andere Domäne durch Angabe der entsprechenden Anmeldeinformationen wird eine Verbindung über NTLM hergestellt, und dann tritt ein Fehler auf. Wenn die Benutzer Teil der Sicherheitsgruppe „Geschützte Benutzer“ in AD sind, gilt folgende Problemumgehung: Melden Sie sich mit einem anderen Domänenbenutzer im Feld „ADConnect“ an, und geben Sie nicht „-domainCredential“ an. Dadurch würde das Kerberos-Ticket des aktuellen Anmeldebenutzers verwendet. Sie können dies bestätigen, indem Sie „whoami /groups“ ausführen, um zu überprüfen, ob der Benutzer in AD über die erforderlichen Berechtigungen zum Ausführen des obigen Befehls verfügt.
+ 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | id | Die eindeutige ID des AD DS DC-Objekts. Diese ID wird manchmal als „Slot-ID“ oder „Branch-ID“ bezeichnet. |

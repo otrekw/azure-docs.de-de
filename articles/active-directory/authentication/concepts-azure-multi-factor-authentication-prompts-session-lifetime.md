@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0033b6985313de351ffdaf7028d2c1e9bd76ba72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47898b1708ebecc43ace9888dfd237fa72079c6b
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963518"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590358"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Optimieren von Aufforderungen zur erneuten Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure AD Multi-Factor Authentication
 
@@ -41,7 +41,7 @@ Damit Sie Ihren Benutzern die richtige Balance zwischen Sicherheit und Benutzerf
     * Lassen Sie die Option *Remain signed-in* (Angemeldet bleiben) aktiviert, und weisen Sie Ihre Benutzer an, sie zu akzeptieren.
 * Stellen Sie in Szenarien mit mobilen Geräten sicher, dass Ihre Benutzer die Microsoft Authenticator-App verwenden. Diese App wird als Broker für andere Azure AD-Verbund-Apps verwendet und reduziert die Authentifizierungsaufforderungen auf dem Gerät.
 
-Unsere Untersuchungen zeigen, dass diese Einstellungen für die meisten Mandanten geeignet sind. Einige Kombinationen dieser Einstellungen, wie z. B. *Remember MFA* (MFA speichern) und *Remain signed-in* (Angemeldet bleiben), können dazu führen, dass Ihre Benutzer zu oft aufgefordert werden, sich zu authentifizieren. Reguläre Aufforderungen für die erneute Authentifizierung sind schlecht für die Produktivität der Benutzer und machen diese unter Umständen anfälliger für Angriffe.
+Unsere Untersuchungen zeigen, dass diese Einstellungen für die meisten Mandanten geeignet sind. Einige Kombinationen dieser Einstellungen, wie z. B. *MFA merken* und *Angemeldet bleiben*, können dazu führen, dass Ihre Benutzer zu oft aufgefordert werden, sich zu authentifizieren. Reguläre Aufforderungen für die erneute Authentifizierung sind schlecht für die Produktivität der Benutzer und machen diese unter Umständen anfälliger für Angriffe.
 
 ## <a name="azure-ad-session-lifetime-configuration-settings"></a>Konfigurationseinstellungen für die Azure AD-Sitzungslebensdauer
 

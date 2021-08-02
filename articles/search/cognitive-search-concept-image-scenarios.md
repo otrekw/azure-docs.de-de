@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68186c5294c0a3a2f376a93ef1902307780f48bb
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419590"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538293"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Verarbeiten und Extrahieren von Informationen aus Bildern in KI-Anreicherungsszenarien
 
@@ -90,7 +90,7 @@ Wenn *imageAction* auf einen anderen Wert als „none“ festgelegt wird, enthä
 
 ## <a name="image-related-skills"></a>Skills für Bilder
 
-Es gibt zwei integrierte kognitive Qualifikationen, die Bilder als Eingabe akzeptieren: [OCR](cognitive-search-skill-ocr.md) und [Bildanalyse](cognitive-search-skill-image-analysis.md). 
+Wenn Sie Bilder als Eingaben akzeptieren möchten, können Sie einen benutzerdefinierten Skill oder integrierte Skills verwenden. Zu den integrierten Skills gehören [OCR](cognitive-search-skill-ocr.md) und [Bildanalyse](cognitive-search-skill-image-analysis.md). 
 
 Momentan können diese Qualifikationen nur für Bilder verwendet werden, die durch den Dokumentaufschlüsselungsschritt generiert wurden. Daher wird als Eingabe ausschließlich `"/document/normalized_images"` unterstützt.
 
@@ -102,6 +102,21 @@ Die [Bildanalysequalifikation](cognitive-search-skill-image-analysis.md) extrahi
 
 Die [OCR-Qualifikation](cognitive-search-skill-ocr.md) extrahiert Text aus Bilddateien – etwa aus JPG-, PNG- und Bitmap-Dateien. Sie kann sowohl Text als auch Layoutinformationen extrahieren. Die Layoutinformationen bieten umgebende Rechtecke für die jeweils erkannten Zeichenfolgen.
 
+### <a name="custom-skills"></a>Benutzerdefinierte Qualifikationen
+
+Bilder können auch an benutzerdefinierte Skills übergeben und von benutzerdefinierten Skills zurückgegeben werden. Das Skillset codiert das Image, das an den benutzerdefinierten Skill übergeben wird, mit Base64. Um das Image innerhalb des benutzerdefinierten Skills zu verwenden, legen Sie `/document/normalized_images/*/data` als Eingabe für den benutzerdefinierten Skill fest. Decodieren Sie in dem Code des benutzerdefinierten Skills die Zeichenfolge mit Base64, bevor Sie sie in ein Bild konvertieren. Um ein Bild an das Skillset zurückzugeben, codieren Sie es mit Base64, bevor Sie es an das Skillset zurückgeben.
+
+ Das Bild wird als Objekt mit den folgenden Eigenschaften zurückgegeben:
+
+```json
+ { 
+  "$type": "file", 
+  "data": "base64String" 
+ }
+```
+
+Das Repository mit [Azure Search-Python-Beispielen](https://github.com/Azure-Samples/azure-search-python-samples) enthält ein vollständiges in Python implementiertes Beispiel für einen benutzerdefinierten Skill, der Bilder anreichert.
+
 ## <a name="embedded-image-scenario"></a>Szenario mit eingebettetem Bild
 
 Ein gängiges Szenario ist die Erstellung einer einzelnen Zeichenfolge mit sämtlichen Dateiinhalten (sowohl Text als auch Bildursprungstext):  
@@ -112,7 +127,8 @@ Ein gängiges Szenario ist die Erstellung einer einzelnen Zeichenfolge mit sämt
 
 Die folgende Beispielqualifikationsgruppe erstellt ein Feld namens *merged_text* mit dem Textinhalt Ihres Dokuments. Darüber hinaus enthält sie den per OCR erkannten Text aus den einzelnen eingebetteten Bildern. 
 
-#### <a name="request-body-syntax"></a>Syntax des Anforderungstexts
+### <a name="request-body-syntax"></a>Syntax des Anforderungstexts
+
 ```json
 {
   "description": "Extract text from images and merge with content text to produce merged_text",
@@ -213,13 +229,15 @@ Um die normalisierten Koordinaten auf den ursprünglichen Koordinatenraum zu üb
             return original;
         }
 ```
+
 ## <a name="passing-images-to-custom-skills"></a>Übergeben von Bildern an benutzerdefinierte Skills
 
 Für Szenarios, in denen Sie einen benutzerdefinierten Skill für Bilder erfordern, können Sie Bilder an den benutzerdefinierten Skill übergeben, damit dieser Text oder Bilder zurückgibt. Die Bildverarbeitung des [Python-Beispiels](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing) veranschaulicht den Workflow. Das folgende Skillset stammt aus dem Beispiel.
 
 Das folgende Skillset erfasst das normalisierte Bild (das bei der Dokumententschlüsselung abgerufen wird) und gibt Segmente des Bilds aus.
 
-#### <a name="sample-skillset"></a>Beispielskillset
+### <a name="sample-skillset"></a>Beispielskillset
+
 ```json
 {
   "description": "Extract text from images and merge with content text to produce merged_text",
@@ -253,7 +271,7 @@ Das folgende Skillset erfasst das normalisierte Bild (das bei der Dokumententsch
 }
 ```
 
-#### <a name="custom-skill"></a>Benutzerdefinierter Skill
+### <a name="custom-skill"></a>Benutzerdefinierter Skill
 
 Der benutzerdefinierte Skill selbst ist extern vom Skillset. In diesem Fall durchläuft der Python-Code zunächst den Batch der Anforderungsaufzeichnung im Format für den benutzerdefinierten Skill und konvertiert dann die mit Base64 verschlüsselte Zeichenfolge in ein Bild.
 
@@ -268,6 +286,7 @@ for value in values:
   jpg_as_np = np.frombuffer(inputBytes, dtype=np.uint8)
   # you now have an image to work with
 ```
+
 Ähnlich gilt, wenn Sie ein Bild zurückgeben möchten, geben Sie eine mit Base64 verschlüsselte Zeichenfolge in einem JSON-Objekt mit der `$type`-Eigenschaft `file` zurück.
 
 ```python
@@ -286,6 +305,7 @@ def base64EncodeImage(image):
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
+
 + [Create Indexer (Azure Search Service REST api-version=2017-11-11-Preview)](/rest/api/searchservice/create-indexer) (Erstellen eines Indexers (REST-API für den Azure Search-Dienst: Version 2017-11-11-Preview))
 + [Skill für Bildanalyse](cognitive-search-skill-image-analysis.md)
 + [OCR-Qualifikation](cognitive-search-skill-ocr.md)

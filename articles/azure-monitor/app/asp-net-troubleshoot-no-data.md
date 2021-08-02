@@ -4,20 +4,20 @@ description: Sie sehen in Azure Application Insights keine Daten? Versuchen Sie 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 3b550e434db5b616ffedef7ebe9891b36fa431a2
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2a301efe2ea7c6c74d503fda4a9bbf63f8ce7f80
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311225"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061576"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problembehandlung ohne Daten – Application Insights für .NET/.NET Core
 
 ## <a name="some-of-my-telemetry-is-missing"></a>Einige meiner Telemetriedaten fehlen
 *In Application Insights wird nur ein Bruchteil der Ereignisse angezeigt, die von meiner App generiert werden.*
 
-* Wenn immer der gleiche Anteil angezeigt wird, ist dies wahrscheinlich auf die adaptive [Stichprobenerstellung](./sampling.md)zurückzuführen. Um dies zu bestätigen, öffnen Sie „Suchen“ (auf dem Blatt „Übersicht“), und suchen Sie nach einer Instanz einer Anforderung oder eines anderen Ereignisses. Klicken Sie unten im Eigenschaftenbereich auf „...“, um die vollständigen Eigenschaftendetails anzuzeigen. Wenn „Anforderungsanzahl“ kleiner als 1 ist, ist die Stichprobenerstellung aktiviert.
-* Andernfalls ist es möglich, dass Sie einen [Grenzwert für die Datenrate](./pricing.md#limits-summary) in Ihrem Tarif erreicht haben. Diese Grenzwerte gelten pro Minute.
+* Wenn immer der gleiche Anteil angezeigt wird, ist dies wahrscheinlich auf die adaptive [Stichprobenerstellung](../../azure-monitor/app/sampling.md) zurückzuführen. Um dies zu bestätigen, öffnen Sie „Suchen“ (auf dem Blatt „Übersicht“), und suchen Sie nach einer Instanz einer Anforderung oder eines anderen Ereignisses. Zum Anzeigen der vollständigen Eigenschaftendetails wählen Sie unten im Abschnitt **Eigenschaften** die Auslassungspunkte ( **...** ) aus. Wenn „Anforderungsanzahl“ kleiner als 1 ist, ist die Stichprobenerstellung aktiviert.
+* Möglicherweise haben Sie einen [Grenzwert für die Datenrate](../../azure-monitor/app/pricing.md#limits-summary) in Ihrem Tarif erreicht. Diese Grenzwerte gelten pro Minute.
 
 *Daten gehen nach dem Zufallsprinzip verloren.*
 
@@ -34,17 +34,16 @@ ms.locfileid: "107311225"
 Internetinformationsdienste (IIS) protokollieren die Anzahl aller Anforderungen, die IIS erreichen und können sich grundsätzlich von der Gesamtanzahl der Anforderungen unterscheiden, die eine Anwendung erreicht. Aus diesem Grund kann nicht garantiert werden, dass die von den SDKs erfasste Anforderungsanzahl mit der Gesamtzahl der IIS-Protokolle übereinstimmt. 
 
 ## <a name="no-data-from-my-server"></a>Keine Daten vom Server
-*Ich habe meine App auf meinem Webserver installiert, und nun werden mit keine Telemetriedaten von ihm angezeigt. Auf dem Entwicklungscomputer hat dies aber funktioniert.*
-
-* Wahrscheinlich handelt es sich hierbei um ein Problem mit der Firewall. [Legen Sie Firewallausnahmen für Application Insights fest, damit das Senden von Daten möglich ist](./ip-addresses.md).
-* In IIS-Server fehlen unter Umständen einige erforderliche Komponenten: .NET-Erweiterbarkeit 4.5 und ASP.NET 4.5.
+* Ich habe meine App auf meinem Webserver installiert, und nun werden mit keine Telemetriedaten von ihm angezeigt. Auf dem Entwicklungscomputer hat dies aber funktioniert.*
+* Dies ist wahrscheinlich ein Firewallproblem. [Legen Sie Firewallausnahmen für Application Insights fest, damit das Senden von Daten möglich ist](../../azure-monitor/app/ip-addresses.md).
+* In IIS-Server fehlen unter Umständen einige erforderliche Komponenten wie .NET-Erweiterbarkeit 4.5 oder ASP.NET 4.5.
 
 *Ich habe [den Statusmonitor auf meinem Webserver installiert](./monitor-performance-live-website-now.md), um vorhandene Apps zu überwachen. Es werden keine Ergebnisse angezeigt.*
 
 * Siehe [Problembehandlung für den Statusmonitor](./monitor-performance-live-website-now.md#troubleshoot).
 
 > [!IMPORTANT]
-> Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=net) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+> [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) sind Instrumentierungsschlüsseln vorzuziehen. Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die Verbindungszeichenfolge identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 
 
 ## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException: Die Datei oder Assembly „Microsoft.AspNet TelemetryCorrelation“ konnte nicht geladen werden
@@ -186,7 +185,7 @@ Die Daten kommen von Skripts auf den Webseiten.
 Weitere Informationen finden Sie unter [Telemetriedaten zu Abhängigkeiten](./asp-net-dependencies.md) und [Telemetriedaten für Ausnahmen](asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Keine Leistungsdaten
-Leistungsdaten (CPU, E/A-Rate usw.) sind für [Java-Webdienste](./java-collectd.md), [Windows-Desktop-Apps](./windows-desktop.md), [IIS-Web-Apps und -Dienste bei Installation des Statusmonitors](./monitor-performance-live-website-now.md) und [Azure Cloud Services](./app-insights-overview.md) verfügbar. Sie finden die Leistungsdaten unter „Einstellungen“ > „Server“.
+Leistungsdaten (CPU, E/A-Rate usw.) sind für [Java-Webdienste](java-2x-collectd.md), [Windows-Desktop-Apps](./windows-desktop.md), [IIS-Web-Apps und -Dienste bei Installation des Statusmonitors](./monitor-performance-live-website-now.md) und [Azure Cloud Services](./app-insights-overview.md) verfügbar. Sie finden die Leistungsdaten unter „Einstellungen“ > „Server“.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Keine Daten (Serverdaten), seitdem ich die App auf meinem Server veröffentlicht habe
 * Überprüfen Sie, ob Sie tatsächlich alle Daten von Microsoft kopiert haben. ApplicationInsights-DLLs auf dem Server, zusammen mit „Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll“
@@ -282,7 +281,7 @@ Sie können die folgenden Parameter nach Bedarf ändern:
 
 Weitere Informationen finden Sie unter:
 - [Recording performance traces with PerfView (Aufzeichnen von Leistungsnachverfolgungen mit PerfView)](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
-- [Application Insights-Ereignisquellen](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ETW)
+- [Application Insights-Ereignisquellen](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/troubleshooting/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Sammeln von Protokollen mit dotnet-trace
 

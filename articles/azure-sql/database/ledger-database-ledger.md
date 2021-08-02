@@ -1,6 +1,6 @@
 ---
 title: Datenbank-Ledger
-description: Dieser Artikel enthält Informationen zu Ledger-Datenbanktabellen und zugeordneten Ansichten in der Azure SQL-Datenbank
+description: Dieser Artikel enthält Informationen zu Ledger-Datenbanktabellen und zugeordneten Ansichten in der Azure SQL-Datenbank.
 ms.custom: ''
 ms.date: 05/25/2021
 ms.service: sql-database
@@ -9,32 +9,34 @@ ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 031674854af41877483ece5c3969a0208a7a8167
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 01fad48fccb956ab44cd54e67120ac5f7425cacd
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386342"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080109"
 ---
-# <a name="what-is-the-database-ledger"></a>Was ist das Datenbank-Ledger
+# <a name="what-is-the-database-ledger"></a>Was ist der Datenbankledger?
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Das Azure SQL-Datenbank-Ledger ist zurzeit als **öffentliche Vorschau** verfügbar.
+> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschau und ist in der Region „USA, Westen-Mitte“ verfügbar.
 
-Das Datenbank-Ledger verwendet logisch eine Block Chain und [Merkle-Datenstrukturen](/archive/msdn-magazine/2018/march/blockchain-blockchain-fundamentals). Das Datenbank-Ledger erfasst schrittweise den Zustand der Datenbank, wie er sich im Laufe der Zeit entwickelt, während Updates in den Ledger-Tabellen stattfinden. Um dies zu erreichen, speichert das Datenbank-Ledger einen Eintrag für jede Transaktion und erfasst Metadaten zur Transaktion, z. B. den Commit-Zeitstempel. Es speichert außerdem die Identität des Benutzers, der ihn ausgeführt hat, sowie die Merkle-Stammstruktur in jeder Ledger-Tabelle aktualisierten Zeilen. Diese Einträge werden dann an eine manipulationssichere Datenstruktur angefügt, um die Überprüfung der Integrität in Zukunft zu ermöglichen.
+Der Datenbankledger ist Teil des Ledgerfeatures von Azure SQL-Datenbank. Der Datenbank-Ledger erfasst schrittweise den Zustand einer Datenbank, die sich im Laufe der Zeit entwickelt, während Aktualisierungen der Ledger-Tabellen stattfinden. Er verwendet logisch eine Blockchain und [Hashbaum-Datenstrukturen](/archive/msdn-magazine/2018/march/blockchain-blockchain-fundamentals). 
 
-:::image type="content" source="media/ledger/merkle-tree.png" alt-text="SQL Ledger Merkle-Struktur":::
+Um den Status der Datenbank zu erfassen, speichert der Datenbank-Ledger einen Eintrag für jede Transaktion. Er erfasst Metadaten zur Transaktion, z. B. den Commitzeitstempel und die Identität des Benutzers, der sie ausgeführt hat. Außerdem wird der Hashbaum-Stamm der Zeilen erfasst, die in jeder Ledgertabelle aktualisiert wurden. Diese Einträge werden dann an eine manipulationssichere Datenstruktur angefügt, um die Überprüfung der Integrität in Zukunft zu ermöglichen.
+
+:::image type="content" source="media/ledger/merkle-tree.png" alt-text="Diagramm, das einen Hashbaum für das Ledgerfeature zeigt":::.
 
 Weitere Informationen dazu, wie Azure SQL-Datenbank Ledger Datenintegrität bietet, finden Sie unter [Digest-Verwaltung und Datenbanküberprüfung](ledger-digest-management-and-database-verification.md).
 
 ## <a name="where-are-database-transaction-and-block-data-stored"></a>Wo werden Datenbanktransaktions- und Blockdaten gespeichert?
 
-Die Daten zu Transaktionen und Blöcken werden physisch als Zeilen in zwei neuen Systemkatalogsichten gespeichert:
+Die Daten zu Transaktionen und Blöcken werden physisch als Zeilen in zwei Systemkatalogsichten gespeichert:
 
-- [**sys.database_ledger_transactions**](/sql/relational-databases/system-catalog-views/sys-database-ledger-transactions-transact-sql): Verwaltet eine Zeile mit den Informationen jeder Transaktion im Ledger, einschließlich der ID des Blocks, zu dem diese Transaktion gehört, und der Ordnungszahl der Transaktion innerhalb des Blocks. 
-- [ **sys.database_ledger_blocks**](/sql/relational-databases/system-catalog-views/sys-database-ledger-blocks-transact-sql): Verwaltet eine Zeile für jeden Block im Ledger, einschließlich des Stamms der Merkle-Struktur über den Transaktionen innerhalb des Blocks und des Hashs des vorherigen Blocks, um eine Block Chain zu bilden.
+- [sys.database_ledger_transactions](/sql/relational-databases/system-catalog-views/sys-database-ledger-transactions-transact-sql): Verwaltet eine Zeile mit den Informationen jeder Transaktion im Datenbankbuch. Die Informationen umfassen die ID des Blocks, zu dem diese Transaktion gehört, und die Ordnungszahl der Transaktion innerhalb des Blocks. 
+- [sys.database_ledger_blocks](/sql/relational-databases/system-catalog-views/sys-database-ledger-blocks-transact-sql): Verwaltet eine Zeile für jeden Block im Ledger, einschließlich des Hashbaum-Stamms über den Transaktionen innerhalb des Blocks und des Hashs des vorherigen Blocks, um eine Blockchain zu bilden.
 
 Führen Sie zum Anzeigen des Datenbank-Ledgers die folgenden T-SQL-Anweisungen in [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) oder [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) aus.
 
@@ -49,14 +51,21 @@ SELECT * FROM sys.database_ledger_blocks
 GO
 ```
 
-Das folgende Beispiel zeigt eine Ledger-Tabelle, die aus vier Transaktionen besteht, aus denen ein Block in der Block Chain des Datenbank-Ledgers besteht.
+Das folgende Beispiel zeigt eine Ledger-Tabelle aus vier Transaktionen, aus denen ein Block in der Blockchain des Datenbank-Ledgers besteht:
 
-:::image type="content" source="media/ledger/database-ledger-1.png" alt-text="Beispiel-Ledger-Tabelle":::
+:::image type="content" source="media/ledger/database-ledger-1.png" alt-text="Screenshot einer Beispiel-Ledgertabelle":::
 
-Ein -Block wird alle 30 Sekunden geschlossen, oder wenn der Benutzer manuell einen Datenbank-Digest durch Ausführen der [sys.sp_generate_database_ledger_digest](/sql/relational-databases/system-stored-procedures/sys-sp-generate-database-ledger-digest-transact-sql) gespeicherten Prozedur generiert. Wenn ein Block geschlossen wird, werden neue Transaktionen in einen neuen Block eingefügt. Der Blockgenerierungsprozess ruft dann alle Transaktionen ab, die zum *geschlossenen* Block gehören, sowohl aus der In-Memory-Warteschlange als auch aus der [sys.database_ledger_transactions](/sql/relational-databases/system-catalog-views/sys-database-ledger-transactions-transact-sql) Systemkatalogsicht, berechnet den Merkle-Strukturstamm für diese Transaktionen und den Hash des vorherigen Blocks und bewahrt den geschlossenen Block in der [sys.database_ledger_blocks](/sql/relational-databases/system-catalog-views/sys-database-ledger-blocks-transact-sql) Systemkatalogsicht auf. Da es sich hierbei um ein reguläres Tabellenupdate handelt, wird die Dauerhaftigkeit automatisch vom System garantiert. Um die einzelne Kette von Blöcken aufrechtzuerhalten, ist dieser Vorgang single-threaded, aber er ist auch effizient, da er nur die Hashes über die Transaktionsinformationen berechnet und asynchron abläuft, wodurch die Transaktionsleistung nicht beeinträchtigt wird.   
+Ein Block wird alle 30 Sekunden geschlossen, oder wenn der Benutzer manuell einen Datenbank-Digest durch Ausführen der [sys.sp_generate_database_ledger_digest](/sql/relational-databases/system-stored-procedures/sys-sp-generate-database-ledger-digest-transact-sql) gespeicherten Prozedur generiert. 
+
+Wenn ein Block geschlossen wird, werden neue Transaktionen in einen neuen Block eingefügt. Der Blockgenerierungsprozess führt dann folgende Aktionen aus:
+
+1. Abrufen aller Transaktionen, die zum *geschlossenen* Block gehören, sowohl aus der Warteschlange im Arbeitsspeicher als auch der Systemkatalogsicht [sys.database_ledger_transactions](/sql/relational-databases/system-catalog-views/sys-database-ledger-transactions-transact-sql).
+1. Berechnen des Merkle-Strukturstamms für diese Transaktionen und des Hashs des vorherigen Blocks.
+1. Speichern des geschlossenen Blocks in der Systemkatalogsicht [sys.database_ledger_blocks](/sql/relational-databases/system-catalog-views/sys-database-ledger-blocks-transact-sql). 
+
+Da es sich hierbei um eine reguläre Tabellenaktualisierung handelt, wird die Dauerhaftigkeit automatisch vom System garantiert. Um die einzelne Kette von Blöcken zu verwalten, hat dieser Vorgang nur einen einzigen Thread. Er ist aber auch effizient, da er nur die Hashes über die Transaktionsinformationen berechnet und asynchron erfolgt. Dies verlangsamt nicht die Transaktion.   
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Digest-Verwaltung und Datenbanküberprüfung](ledger-digest-management-and-database-verification.md)
 - [Azure SQL-Datenbank-Ledger – Übersicht](ledger-overview.md) 
 - [Sicherheitskatalogsichten (Transact-SQL)](/sql/relational-databases/system-catalog-views/security-catalog-views-transact-sql)

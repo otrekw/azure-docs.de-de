@@ -1,24 +1,24 @@
 ---
-title: Verwalten von App-Gruppen für Windows Virtual Desktop PowerShell – Azure
-description: Erfahren Sie, wie Sie Windows Virtual Desktop-App-Gruppen mit PowerShell verwalten.
+title: Verwalten von App-Gruppen für Azure Virtual Desktop PowerShell – Azure
+description: Erfahren Sie, wie Sie Azure Virtual Desktop-App-Gruppen mit PowerShell verwalten.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1652048da8084007bc86a6793f14f10b4a1f2e0f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: a900d1d92509fab7b777ca5864a51c7699cb294e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446042"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749073"
 ---
 # <a name="manage-app-groups-using-powershell"></a>Verwalten von App-Gruppen mit PowerShell
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/manage-app-groups-2019.md).
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/manage-app-groups-2019.md).
 
-Die Standard-App-Gruppe, die für einen neuen Windows Virtual Desktop-Hostpool erstellt wird, veröffentlicht auch den vollständigen Desktop. Zusätzlich können Sie RemoteApp-Anwendungsgruppen für den Hostpool erstellen. In diesem Tutorial erfahren Sie, wie Sie eine RemoteApp-Gruppe erstellen und individuelle **Startmenü**-Apps veröffentlichen.
+Die Standard-App-Gruppe, die für einen neuen Azure Virtual Desktop-Hostpool erstellt wird, veröffentlicht auch den vollständigen Desktop. Zusätzlich können Sie RemoteApp-Anwendungsgruppen für den Hostpool erstellen. In diesem Tutorial erfahren Sie, wie Sie eine RemoteApp-Gruppe erstellen und individuelle **Startmenü**-Apps veröffentlichen.
 
 In diesem Tutorial lernen Sie Folgendes:
 

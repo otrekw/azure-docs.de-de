@@ -1,24 +1,24 @@
 ---
 title: Vorbereiten und Anpassen eines VHD-Masterimages – Azure
-description: Vorbereiten, Anpassen und Hochladen eines Windows Virtual Desktop-Masterimage in Azure.
+description: Vorbereiten, Anpassen und Hochladen eines Azure Virtual Desktop-Masterimage in Azure.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 654b5b293397af9737813d759a7c784d90629942
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 576a791ee8c252a8bc1fa73cd98174e6958cf606
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445804"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751431"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
-In diesem Artikel wird beschrieben, wie Sie ein VHD-Masterimage (Virtual Hard Disk) für den Upload in Azure vorbereiten und virtuelle Computer (VMs) erstellen und darauf Software installieren. Diese Anweisungen beziehen sich auf eine spezielle Konfiguration für Windows Virtual Desktop, die mit den in Ihrer Organisation vorhandenen Prozessen verwendet werden kann.
+In diesem Artikel wird beschrieben, wie Sie ein VHD-Masterimage (Virtual Hard Disk) für den Upload in Azure vorbereiten und virtuelle Computer (VMs) erstellen und darauf Software installieren. Diese Anweisungen beziehen sich auf eine spezielle Konfiguration für Azure Virtual Desktop, die mit den in Ihrer Organisation vorhandenen Prozessen verwendet werden kann.
 
 >[!IMPORTANT]
->Es wird empfohlen, ein Image aus dem Azure-Imagekatalog zu verwenden. Wenn Sie jedoch ein benutzerdefiniertes Image verwenden müssen, stellen Sie sicher, dass der Windows Virtual Desktop-Agent nicht bereits auf Ihrer VM installiert ist. Die Verwendung eines benutzerdefinierten Images mit dem Windows Virtual Desktop-Agent kann Probleme mit dem Image verursachen, z. B. das Blockieren der Registrierung oder das Verhindern von Benutzersitzungsverbindungen.  
+>Es wird empfohlen, ein Image aus dem Azure-Imagekatalog zu verwenden. Wenn Sie jedoch ein benutzerdefiniertes Image verwenden müssen, stellen Sie sicher, dass der Azure Virtual Desktop-Agent nicht bereits auf Ihrer VM installiert ist. Die Verwendung eines benutzerdefinierten Images mit dem Azure Virtual Desktop-Agent kann Probleme mit dem Image verursachen, z. B. das Blockieren der Registrierung oder das Verhindern von Benutzersitzungsverbindungen.  
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
@@ -128,7 +128,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 ### <a name="disable-storage-sense"></a>Deaktivieren der Speicheroptimierung
 
-Für Windows Virtual Desktop-Sitzungshosts, für die Windows 10 Enterprise oder Windows 10 Enterprise (mehrere Sitzungen) verwendet wird, empfehlen wir die Deaktivierung der Speicheroptimierung. Sie können die Speicheroptimierung im Menü „Einstellungen“ unter **Speicher** deaktivieren, wie im folgenden Screenshot gezeigt:
+Für Azure Virtual Desktop-Sitzungshosts, für die Windows 10 Enterprise oder Windows 10 Enterprise (mehrere Sitzungen) verwendet wird, empfehlen wir die Deaktivierung der Speicheroptimierung. Sie können die Speicheroptimierung im Menü „Einstellungen“ unter **Speicher** deaktivieren, wie im folgenden Screenshot gezeigt:
 
 > [!div class="mx-imgBorder"]
 > ![Screenshot: Menü „Speicher“ unter „Einstellungen“. Die Option „Speicheroptimierung“ ist deaktiviert.](media/storagesense.png)
@@ -215,6 +215,6 @@ Nachdem Sie nun über ein Image verfügen, können Sie Hostpools erstellen oder 
 - [Tutorial: Erstellen eines Hostpools mit Azure Marketplace](create-host-pools-azure-marketplace.md)
 - [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md)
 - [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md)
-- [Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop](configure-host-pool-load-balancing.md)
+- [Konfigurieren der Lastenausgleichsmethode für Azure Virtual Desktop](configure-host-pool-load-balancing.md)
 
 Wenn nach dem Vorbereiten oder Anpassen des VHD-Images ein Konnektivitätsproblem aufgetreten ist, ziehen Sie den [Leitfaden zur Problembehandlung](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) zurate.

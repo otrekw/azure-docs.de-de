@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 14f7a88e756123b807852d78b6511939b81fd9db
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cd87d2261ab89b521829d1049a0c17db125a14f3
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126055"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112063412"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure-Dienst für dedizierte HSMs – Netzwerke
 
@@ -41,10 +41,9 @@ Vor der Bereitstellung eines dedizierten HSM-Geräts müssen Kunden zunächst ei
 
 Subnetze unterteilen das virtuelle Netzwerk in getrennte Adressräume, die von den Azure-Ressourcen, die Sie darin platzieren, verwendet werden können. Dedizierte HSMs werden in einem Subnetz des virtuellen Netzwerks bereitgestellt. Jedes dedizierte HSM-Gerät, das im Subnetz des Kunden bereitgestellt wird, erhält eine private IP-Adresse aus diesem Subnetz. Das Subnetz, in dem das HSM-Gerät bereitgestellt wird, muss explizit an den Dienst delegiert werden: Microsoft.HardwareSecurityModules/dedicatedHSMs. Dadurch werden bestimmte Berechtigungen für den HSM-Dienst für die Bereitstellung im Subnetz gewährt. Die Delegierung an dedizierte HSMs erzwingt bestimmte Richtlinieneinschränkungen im Subnetz. Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierte Routen (User-Defined Routes, UDRs) werden in delegierten Subnetzen derzeit nicht unterstützt. Daher kann ein Subnetz, sobald es an dedizierte HSMs delegiert wird, nur zum Bereitstellen von HSM-Ressourcen verwendet werden. Bei der Bereitstellung anderer Kundenressourcen im Subnetz tritt ein Fehler auf.
 
-
 ### <a name="expressroute-gateway"></a>ExpressRoute-Gateway
 
-Eine Voraussetzung der aktuellen Architektur ist die Konfiguration eines ExpressRoute-Gateways im Kundensubnetz, wo ein HSM-Gerät platziert werden muss, um die Integration des HSM-Geräts in Azure zu ermöglichen. Dieses ExpressRoute-Gateway kann nicht für die Verbindung zwischen lokalen Standorten und Kunden-HSM-Geräten in Azure genutzt werden.
+Eine Voraussetzung der aktuellen Architektur ist die Konfiguration eines [ExpressRoute-Gateways im Kundensubnetz](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md), wo ein HSM-Gerät platziert werden muss, um die Integration des HSM-Geräts in Azure zu ermöglichen. Dieses [ExpressRoute-Gateway](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) kann nicht für die Verbindung zwischen lokalen Standorten und Kunden-HSM-Geräten in Azure genutzt werden.
 
 ## <a name="connecting-your-on-premises-it-to-azure"></a>Herstellen der Verbindung Ihrer lokalen IT mit Azure
 
@@ -105,7 +104,7 @@ Dieser Netzwerkentwurf erfordert die folgenden Elemente:
 
 Durch das Hinzufügen der Proxylösung für virtuelle Netzwerkgeräte (Network Virtual Appliances, NVA) kann auch eine NVA-Firewall im Transit-/DMZ-Hub logisch vor der HSM-NIC platziert werden und so die erforderlichen Standardverweigerungsrichtlinien bereitstellen. In unserem Beispiel verwenden wir zu diesem Zweck die Azure Firewall und benötigen die folgenden Elemente:
 1. Eine Azure Firewall, die im Subnetz „AzureFirewallSubnet“ im DMZ-Hub-VNet bereitgestellt ist.
-2. Eine Routingtabelle mit einer benutzerdefinierten Route, die an den privaten Endpunkt des Azure ILB gerichteten Datenverkehr an die Azure Firewall weiterleitet. Diese Routingtabelle wird auf das GatewaySubnet angewendet, in dem sich das virtuelle ExpressRoute-Gateway befindet.
+2. Eine Routingtabelle mit einer benutzerdefinierten Route, die an den privaten Endpunkt des Azure ILB gerichteten Datenverkehr an die Azure Firewall weiterleitet. Diese Routingtabelle wird auf das GatewaySubnet angewendet, in dem sich das [virtuelle ExpressRoute-Gateway](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) befindet.
 3. Netzwerksicherheitsregeln in der Azure Firewall, um die Weiterleitung zwischen einem vertrauenswürdigen Quellbereich und dem privaten Endpunkt des Azure ILB, der an TCP-Port 1792 lauscht, zuzulassen. Mit dieser Sicherheitslogik wird die erforderliche „Standardverweigerungs“richtlinie für den Dedicated HSM-Dienst hinzugefügt. Dies bedeutet, dass nur vertrauenswürdige Quell-IP-Adressbereiche in den Dedicated HSM-Dienst zugelassen werden. Alle anderen Bereiche werden getrennt.  
 4. Eine Routingtabelle mit einer benutzerdefinierten Route, die an den lokalen Standort gerichteten Datenverkehr an die Azure Firewall weiterleitet. Diese Routingtabelle wird auf das NVA-Proxysubnetz angewendet. 
 5. Eine Netzwerksicherheitsgruppe, die auf das Proxy-NVA-Subnetz angewendet wird, um nur dem Subnetzbereich der Azure Firewall als Quelle zu vertrauen und nur die Weiterleitung an die IP-Adresse der HSM-NIC über den TCP-Port 1792 zuzulassen. 
@@ -141,7 +140,7 @@ Es gibt eine Reihe von Architekturen, die Sie als Alternative zum globalen VNET-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Häufig gestellte Fragen](faq.md)
+- [Häufig gestellte Fragen](faq.yml)
 - [Unterstützungsmöglichkeiten](supportability.md)
 - [Hochverfügbarkeit](high-availability.md)
 - [Physische Sicherheit](physical-security.md)

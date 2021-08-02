@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 3ba0abe8510291351c10ba085ba7e42b8197d886
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af4958610f2be5aa31a6800203d06dd887191e15
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553237"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538311"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -32,7 +32,7 @@ Die Indizierung wird von Warnungen nicht beendet, aber Warnungen weisen auf Bedi
 
 Ab API-Version `2019-05-06` sind Indexerfehler und -warnungen auf der Elementebene strukturiert, sodass Ursachen und weiterführende Schritte besser verständlich sind. Sie enthalten die folgenden Eigenschaften:
 
-| Eigenschaft | BESCHREIBUNG | Beispiel |
+| Eigenschaft | Beschreibung | Beispiel |
 | --- | --- | --- |
 | Schlüssel | Die Dokument-ID des Dokuments, das von dem Fehler oder der Warnung betroffen ist. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | Der Vorgangsname, der beschreibt, wo der Fehler oder die Warnung aufgetreten ist. Dies wird durch die folgende Struktur generiert: [category].[subcategory].[resourceType].[resourceName] | DocumentExtraction.azureblob.myBlobContainerName Enrichment.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableName |
@@ -228,7 +228,7 @@ Wenn Sie einen Standardwert für fehlende Eingaben angeben möchten, können Sie
 
 | `Reason` | Details/Beispiel | Lösung |
 | --- | --- | --- |
-| Die Skilleingabe weist den falschen Typ auf. | „Bei der erforderlichen Qualifikationseingabe handelt es sich nicht um eine Eingabe des erwarteten Typs (`String`). Name: `text`, Quelle: `/document/merged_content`.“  „Die erforderliche Qualifikationseingabe hat nicht das erwartete Format. Name: `text`, Quelle: `/document/merged_content`.“  „Durchlaufen des Nichtarrays `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` nicht möglich.“  „Auswählen von `0` im Nichtarray `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` nicht möglich.“ | Bei bestimmten Skills wird die Eingabe spezifischer Typen erwartet, beim [Skill „Stimmung“](cognitive-search-skill-sentiment.md) wird beispielsweise erwartet, dass `text` eine Zeichenfolge ist. Wenn die Eingabe einen anderen Wert als einen Zeichenfolgenwert angibt, wird der Skill nicht ausgeführt, und es werden keine Ausgaben generiert. Stellen Sie sicher, dass das Dataset Eingabewerte mit einheitlichem Typ enthält, oder verwenden Sie den [Skill „Benutzerdefinierte Web-API“](cognitive-search-custom-skill-web-api.md), um die Eingabe vorzuverarbeiten. Wenn Sie den Skill über ein Array durchlaufen, überprüfen Sie, ob `*` im Skillkontext und in der Eingabe an der jeweils richtigen Position gesetzt ist. Normalerweise sollten der Kontext und die Eingabequelle für Arrays mit `*` enden. |
+| Die Skilleingabe weist den falschen Typ auf. | „Bei der erforderlichen Qualifikationseingabe handelt es sich nicht um eine Eingabe des erwarteten Typs (`String`). Name: `text`, Quelle: `/document/merged_content`.“  „Die erforderliche Qualifikationseingabe hat nicht das erwartete Format. Name: `text`, Quelle: `/document/merged_content`.“  „Durchlaufen des Nichtarrays `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` nicht möglich.“  „Auswählen von `0` im Nichtarray `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` nicht möglich.“ | Bei bestimmten Skills wird die Eingabe spezifischer Typen erwartet, beim [Skill „Stimmung“](cognitive-search-skill-sentiment-v3.md) wird beispielsweise erwartet, dass `text` eine Zeichenfolge ist. Wenn die Eingabe einen anderen Wert als einen Zeichenfolgenwert angibt, wird der Skill nicht ausgeführt, und es werden keine Ausgaben generiert. Stellen Sie sicher, dass das Dataset Eingabewerte mit einheitlichem Typ enthält, oder verwenden Sie den [Skill „Benutzerdefinierte Web-API“](cognitive-search-custom-skill-web-api.md), um die Eingabe vorzuverarbeiten. Wenn Sie den Skill über ein Array durchlaufen, überprüfen Sie, ob `*` im Skillkontext und in der Eingabe an der jeweils richtigen Position gesetzt ist. Normalerweise sollten der Kontext und die Eingabequelle für Arrays mit `*` enden. |
 | Die Skilleingabe fehlt. | „Eine erforderliche Qualifikationseingabe fehlt. Name: `text`, Quelle: `/document/merged_content`“ „Fehlender Wert: `/document/normalized_images/0/imageTags`.“  „Auswählen von `0` im Array `/document/pages` mit der Länge `0` nicht möglich.“ | Wenn diese Warnung für alle Ihre Dokumente angezeigt wird, enthalten die Eingabepfade sehr wahrscheinlich einen Tippfehler. Überprüfen Sie die Groß- und Kleinschreibung der Eigenschaftennamen. Prüfen Sie außerdem den Pfad auf überflüssige oder fehlende Sternchen (`*`), und stellen Sie sicher, dass die Dokumente aus der Datenquelle die erforderlichen Eingaben liefern. |
 | Der Sprachcode für die Skilleingabe ist ungültig. | Die Skilleingabe `languageCode` enthält die Sprachcodes `X,Y,Z`, von denen mindestens einer ungültig ist. | [Weiter unten](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) finden Sie weitere Details. |
 
@@ -257,7 +257,7 @@ Wenn Sie wissen, dass Ihr Dataset mehrere Sprachen enthält und Sie daher die Ei
 ```
 
 Im folgenden finden Sie einige Referenzen für die derzeit unterstützten Sprachen für jede der Qualifikationen, die diese Fehlermeldung verursachen können:
-* [Unterstützte Sprachen für die Textanalyse](../cognitive-services/text-analytics/language-support.md) (für die Qualifikationen [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md), [SentimentSkill](cognitive-search-skill-sentiment.md) und [PIIDetectionSkill](cognitive-search-skill-pii-detection.md))
+* [Unterstützte Sprachen für die Textanalyse](../cognitive-services/text-analytics/language-support.md) (für die Qualifikationen [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition-v3.md), [EntityLinkingSkill](cognitive-search-skill-entity-linking-v3.md), [SentimentSkill](cognitive-search-skill-sentiment-v3.md) und [PIIDetectionSkill](cognitive-search-skill-pii-detection.md))
 * [Unterstützte Sprachen für den Übersetzer](../cognitive-services/translator/language-support.md) (für die Qualifikation [Text TranslationSkill](cognitive-search-skill-text-translation.md))
 * [Text SplitSkill](cognitive-search-skill-textsplit.md) Unterstützte Sprachen: `da, de, en, es, fi, fr, it, ko, pt`
 

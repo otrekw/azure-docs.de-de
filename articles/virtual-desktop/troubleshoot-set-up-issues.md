@@ -1,29 +1,29 @@
 ---
-title: Erstellen von Hostpools für Windows Virtual Desktop-Umgebungen – Azure
-description: Behandeln von Problemen mit Mandanten und Hostpools während der Einrichtung einer Windows Virtual Desktop-Umgebung
+title: Erstellen von Hostpools für Azure Virtual Desktop-Umgebungen – Azure
+description: So behandeln Sie Probleme mit Mandanten und Hostpools während der Einrichtung einer Azure Virtual Desktop-Umgebung.
 author: Heidilohr
 ms.topic: troubleshooting
 ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 4d515e75aba9b3912507da07267c3dcb31f1ee34
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: a18d78fdc6714894a9ce038f1e67e72e0acc0b87
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445498"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744537"
 ---
 # <a name="host-pool-creation"></a>Hostpoolerstellung
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md).
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md).
 
-Dieser Artikel behandelt Probleme, die bei der ersten Einrichtung des Windows Virtual Desktop-Mandanten und der zugehörigen Infrastruktur für den Sitzungshostpool auftreten können.
+Dieser Artikel behandelt Probleme, die bei der ersten Einrichtung des Azure Virtual Desktop-Mandanten und der zugehörigen Infrastruktur für den Sitzungshostpool auftreten können.
 
 ## <a name="provide-feedback"></a>Feedback geben
 
-In der [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) können Sie sich mit dem Produktteam und aktiven Communitymitgliedern über den Windows Virtual Desktop-Dienst austauschen.
+In der [Azure Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) können Sie sich mit dem Produktteam und aktiven Communitymitgliedern über den Azure Virtual Desktop-Dienst austauschen.
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Abrufen des Windows 10 Enterprise-Images für mehrere Sitzungen
 
@@ -56,7 +56,7 @@ Wenn bei Ihrem Vorgang die Kontingentgrenze überschritten wird, können Sie ein
 
 ### <a name="i-only-see-us-when-setting-the-location-for-my-service-objects"></a>Beim Festlegen des Speicherorts für meine Dienstobjekte wird nur USA angezeigt
 
-**Ursache**: Azure unterstützt die Region derzeit nicht für den Windows Virtual Desktop-Dienst. Weitere Informationen zu den unterstützten Regionen finden Sie unter [Datenspeicherorte](data-locations.md). Wenn Windows Virtual Desktop den Speicherort unterstützt, dieser aber trotzdem nicht angezeigt wird, wenn Sie versuchen, einen Speicherort auszuwählen, bedeutet dies, dass Ihr Ressourcenanbieter noch nicht aktualisiert wurde.
+**Ursache**: Azure unterstützt die Region derzeit nicht für den Azure Virtual Desktop-Dienst. Weitere Informationen zu den unterstützten Regionen finden Sie unter [Datenspeicherorte](data-locations.md). Wenn Azure Virtual Desktop den Speicherort unterstützt, dieser aber trotzdem nicht angezeigt wird, wenn Sie versuchen, einen Speicherort auszuwählen, bedeutet dies, dass Ihr Ressourcenanbieter noch nicht aktualisiert wurde.
 
 **Behebung**: Um die aktuelle Liste der Regionen abzurufen, registrieren Sie den Ressourcenanbieter erneut:
 
@@ -122,11 +122,11 @@ Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
 > [!div class="mx-imgBorder"]
 > ![Screenshot: Fehler bei der Bereitstellung – fehlerhafter Status der Terminalbereitstellung](media/failure-vmextensionprovisioning.png)
 
-**Ursache 1:** Vorübergehender Fehler in der Windows Virtual Desktop-Umgebung.
+**Ursache 1:** Vorübergehender Fehler in der Azure Virtual Desktop-Umgebung.
 
 **Ursache 2:** Vorübergehender Verbindungsfehler.
 
-**Behebung:** Vergewissern Sie sich, ob die Windows Virtual Desktop-Umgebung fehlerfrei ausgeführt wird, indem Sie sich mithilfe von PowerShell anmelden. Schließen Sie die VM-Registrierung manuell ab. Informationen dazu finden Sie unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md).
+**Behebung:** Vergewissern Sie sich, ob die Azure Virtual Desktop-Umgebung fehlerfrei ausgeführt wird, indem Sie sich mithilfe von PowerShell anmelden. Schließen Sie die VM-Registrierung manuell ab. Informationen dazu finden Sie unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md).
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Error: Der angegebene Administratorbenutzername ist unzulässig
 
@@ -280,13 +280,13 @@ the VM.\\\"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die Problembehandlung von Windows Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
-- Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Windows Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
-- Informationen zur Problembehandlung beim Windows Virtual Desktop-Agent oder der Sitzungskonnektivität finden Sie unter [Beheben häufiger Probleme mit dem Windows Virtual Desktop-Agent](troubleshoot-agent.md).
-- Informationen zur Behebung von Problemen bei Windows Virtual Desktop-Clientverbindungen finden Sie unter [Windows Virtual Desktop – Clientverbindungen](troubleshoot-service-connection.md).
+- Eine Übersicht über die Problembehandlung von Azure Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
+- Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Azure Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
+- Informationen zur Problembehandlung beim Azure Virtual Desktop-Agent oder der Sitzungskonnektivität finden Sie unter [Beheben häufiger Probleme mit dem Azure Virtual Desktop-Agent](troubleshoot-agent.md).
+- Informationen zur Behebung von Problemen bei Azure Virtual Desktop-Clientverbindungen finden Sie unter [Azure Virtual Desktop – Dienstverbindungen](troubleshoot-service-connection.md).
 - Informationen zur Behebung von Problemen bei Remotedesktop-Clients finden Sie unter [Problembehandlung für den Remotedesktop-Client](troubleshoot-client.md).
-- Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop – PowerShell](troubleshoot-powershell.md).
-- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
+- Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Azure Virtual Desktop finden Sie unter [Azure Virtual Desktop – PowerShell](troubleshoot-powershell.md).
+- Weitere Informationen zum Dienst finden Sie unter [Azure Virtual Desktop-Umgebung](environment-setup.md).
 - Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
 - Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
 - Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../azure-resource-manager/templates/deployment-history.md).

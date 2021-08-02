@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 06/08/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a5e8b933f617d767f017f73fb6778a45b5a1ce3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb1504e406e5edb25cea01fa2add5751257802e8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725588"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744447"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Authentifizierungsmethoden in Azure Active Directory – Telefonoptionen
 
@@ -57,7 +57,7 @@ Bei der Überprüfung mit Telefonanruf erfolgt bei Azure AD Multi-Factor Authen
 Wenn bei der telefonischen Authentifizierung für Azure AD Probleme auftreten, überprüfen Sie die folgenden Schritte zur Problembehebung:
 
 * Fehlermeldungen „Sie haben das Limit für Verifizierungsanrufe erreicht“ oder „Sie haben das Limit für Textprüfcodes erreicht“ während Anmeldungen
-   * Microsoft begrenzt möglicherweise wiederholte Authentifizierungsversuche vom selben Benutzer innerhalb eines kurzen Zeitraums. Diese Einschränkung gilt nicht für die Verifizierung per Microsoft Authenticator oder Prüfcode. Wenn diese Grenzwerte erreicht sind, können Sie die Authenticator-App oder einen Prüfcode verwenden oder nach einigen Minuten erneut versuchen sich anzumelden.
+   * Microsoft begrenzt möglicherweise wiederholte Authentifizierungsversuche, die innerhalb kurzer Zeit vom gleichen Benutzer durchgeführt werden. Diese Einschränkung gilt nicht für die Verifizierung per Microsoft Authenticator oder Prüfcode. Wenn diese Grenzwerte erreicht sind, können Sie die Authenticator-App oder einen Prüfcode verwenden oder nach einigen Minuten erneut versuchen sich anzumelden.
 * Fehlermeldung „Die Überprüfung Ihres Kontos konnte nicht vorgenommen werden“ bei der Anmeldung
    * Microsoft kann Authentifizierungsversuche per Anruf oder SMS von demselben Benutzer, derselben Telefonnummer oder derselben Organisation aufgrund einer hohen Anzahl fehlerhafter Anruf- oder SMS-Authentifizierungsversuche einschränken oder blockieren. Wenn dieser Fehler auftritt, können Sie eine andere Methode ausprobieren, z. B. eine Authentifikator-App oder einen Prüfcode. Ansonsten bitten Sie Ihren Administrator um Unterstützung.
 * Gesperrte Anrufer-ID auf einem einzelnen Gerät.

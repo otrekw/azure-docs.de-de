@@ -2,13 +2,13 @@
 title: Azure Blob Storage als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Blob Storage-Ereignisse bereitgestellt werden.
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 909b70c65704d798bf0446732959f50b179c4bca
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.date: 05/12/2021
+ms.openlocfilehash: 37637a486bd80e9d0018495e6fd4713bab36e8ff
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073267"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541967"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob Storage als Event Grid-Quelle
 
@@ -29,11 +29,9 @@ Die folgenden Ereignisse werden ausgelöst, wenn ein Client durch Aufrufen von B
 
  |Ereignisname |BESCHREIBUNG|
  |----------|-----------|
- |**Microsoft.Storage.BlobCreated** |Wird ausgelöst, wenn ein Blob erstellt oder ersetzt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `PutBlob`, `PutBlockList` oder `CopyBlob` verwenden, die in der Blob-REST-API zur Verfügung stehen.   |
+ |**Microsoft.Storage.BlobCreated** |Wird ausgelöst, wenn ein Blob erstellt oder ersetzt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients die Vorgänge `PutBlob`, `PutBlockList` oder `CopyBlob` verwenden, die in der Blob-REST-API verfügbar sind, **und** wenn das Blockblob vollständig committet wird. <br>Wenn Clients den `CopyBlob`-Vorgang für Konten verwenden, für die die Funktion **hierarchischer Namespace** aktiviert ist, funktioniert der `CopyBlob`-Vorgang etwas anders. In diesem Fall wird das **Ereignis Microsoft.Storage.BlobCreated** ausgelöst, wenn der `CopyBlob`-Vorgang **initiiert** wird und nicht, wenn das Blockblob vollständig committet wird.   |
  |**Microsoft.Storage.BlobDeleted** |Wird ausgelöst, wenn ein Blob gelöscht wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `DeleteBlob` aufrufen, der in der Blob-REST-API zur Verfügung steht. |
-
-> [!NOTE]
-> Wenn Sie für **Azure Blob Storage** sicherstellen möchten, dass das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst wird, nachdem ein Blockblob vollständig committet wurde, filtern Sie das Ereignis nach Aufrufen der REST-APIs `CopyBlob`, `PutBlob` und `PutBlockList`. Bei diesen API-Aufrufen wird das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst, nachdem Daten vollständig in einem Blockblob committet wurden. Informationen zum Erstellen eines Filters finden Sie unter [Filtern von Ereignissen für Event Grid](./how-to-filter-events.md).
+ |**Microsoft.Storage.BlobTierChanged** |Wird ausgelöst, wenn die Blobzugriffsebene geändert wird. Dieses Ereignis wird insbesondere ausgelöst, nachdem die Ebenenänderung abgeschlossen wurde, wenn Clients den `Set Blob Tier`-Vorgang aufrufen, der in der Blob-REST-API zur Verfügung steht. |
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Ereignisliste für REST-APIs von Azure Data Lake Storage Gen2
 
@@ -184,6 +182,33 @@ Wenn das Blob Storage-Konto über einen hierarchischen Namespace verfügt, sehe
   "dataVersion": "2",
   "metadataVersion": "1"
 }]
+```
+
+### <a name="microsoftstorageblobtierchanged-event"></a>Microsoft.Storage.BlobTierChanged event
+
+```json
+{
+    "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+    "subject": "/blobServices/default/containers/testcontainer/blobs/Auto.jpg",
+    "eventType": "Microsoft.Storage.BlobTierChanged",
+    "id": "0fdefc06-b01e-0034-39f6-4016610696f6",
+    "data": {
+        "api": "SetBlobTier",
+        "clientRequestId": "68be434c-1a0d-432f-9cd7-1db90bff83d7",
+        "requestId": "0fdefc06-b01e-0034-39f6-401661000000",
+        "contentType": "image/jpeg",
+        "contentLength": 105891,
+        "blobType": "BlockBlob",
+        "url": "https://my-storage-account.blob.core.windows.net/testcontainer/Auto.jpg",
+        "sequencer": "000000000000000000000000000089A4000000000018d6ea",
+        "storageDiagnostics": {
+            "batchId": "3418f7a9-7006-0014-00f6-406dc6000000"
+        }
+    },
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "eventTime": "2021-05-04T15:00:00.8350154Z"
+}
 ```
 
 ### <a name="microsoftstorageblobrenamed-event"></a>Ereignis „Microsoft.Storage.BlobRenamed“
@@ -512,7 +537,7 @@ Wenn das Blob Storage-Konto über einen hierarchischen Namespace verfügt, sehe
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -527,7 +552,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -541,7 +566,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | `api` | Zeichenfolge | Der Vorgang, durch den das Ereignis ausgelöst wurde. |
 | `clientRequestId` | Zeichenfolge | Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang. Diese ID kann zur Korrelation mit Azure Storage-Diagnoseprotokollen anhand des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem Header „x-ms-client-request-id“ bereitgestellt werden. Informationen finden Sie unter [Storage Analytics Log Format](/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |

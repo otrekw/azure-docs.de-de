@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 7b986ad444ac62f8e42230df6e994ead1827b0bd
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e9d29b4e71221ca072699967d4af8fbaa7061467
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887761"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754023"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate-Servermigration: Häufig gestellte Fragen
 
@@ -71,7 +71,7 @@ Obwohl Sie in einem Azure Migrate-Projekt Bewertungen für mehrere Regionen erst
 
 ## <a name="can-we-use-the-same-azure-migrate-project-to-migrate-to-multiple-subscriptions"></a>Kann das gleiche Azure Migrate-Projekt verwendet werden, um zu mehreren Abonnements zu migrieren? 
 
-Ja, Sie können zu mehreren Abonnements in der gleichen Zielregion für ein Azure Migrate-Projekt migrieren. Sie können das Zielabonnement auswählen, während Sie die Replikation für einen Computer oder eine Gruppe von Computern aktivieren. Die Zielregion wird nach der ersten Replikation für VMware-Migrationen ohne Agent und während der Replikationsappliance- und Hyper-V-Anbieterinstallation für Agent-basierte Migrationen bzw. für Hyper-V-Migrationen ohne Agent gesperrt.
+Ja, Sie können zu mehreren Abonnements (desselben Azure-Mandanten) in der gleichen Zielregion für ein Azure Migrate-Projekt migrieren. Sie können das Zielabonnement auswählen, während Sie die Replikation für einen Computer oder eine Gruppe von Computern aktivieren. Die Zielregion wird nach der ersten Replikation für VMware-Migrationen ohne Agent und während der Replikationsappliance- und Hyper-V-Anbieterinstallation für Agent-basierte Migrationen bzw. für Hyper-V-Migrationen ohne Agent gesperrt.
 
 ## <a name="what-are-the-migration-options-in-azure-migrate-server-migration"></a>Welche Migrationsoptionen bietet Azure Migrate: Servermigration?
 

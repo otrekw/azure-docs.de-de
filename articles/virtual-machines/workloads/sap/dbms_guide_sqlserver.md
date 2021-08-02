@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/08/2021
+ms.date: 06/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b05d6c5cc520dd83318203b0bf6d0d7c0ab18382
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 92f92580fdfab00e6629ac53774f57abe59828f1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127202"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755301"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP NetWeaver
 
@@ -330,7 +330,7 @@ Einige spezifische Informationen für SQL Server in IaaS sollten Sie vor dem For
 * **SQL-Leistung**: Unter Microsoft Azure gehostete virtuelle Computer erbringen im Vergleich zu anderen Virtualisierungsangeboten in der öffentlichen Cloud eine gute Leistung. Die einzelnen Ergebnisse können allerdings variieren. Weitere Informationen finden Sie im Artikel [Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md).
 * **Verwenden von Images aus Azure Marketplace**: Die schnellste Möglichkeit zum Bereitstellen eines neuen virtuellen Microsoft Azure-Computers besteht darin, ein Image aus dem Azure Marketplace zu verwenden. Einige Images in Azure Marketplace enthalten die neuesten SQL Server-Releases. Die Images, bei denen SQL Server bereits installiert ist, können nicht sofort für SAP NetWeaver-Anwendungen verwendet werden. Dies liegt daran, dass innerhalb dieser Images die standardmäßige SQL Server-Sortierung und nicht die für SAP NetWeaver-Systeme erforderliche Sortierung installiert ist. Um solche Images zu verwenden, lesen Sie sich die Schritte im Kapitel [Verwenden eines SQL Server-Images aus dem Microsoft Azure Marketplace][dbms-guide-5.6] durch. 
 *  **Unterstützung mehrerer SQL Server-Instanzen auf einem einzelnen virtuellen Azure-Computer**: Diese Bereitstellungsmethode wird unterstützt. Beachten Sie jedoch die Ressourceneinschränkungen, insbesondere im Hinblick auf die Netzwerk- und Speicherbandbreite des verwendeten VM-Typs. Ausführliche Informationen finden Sie im Artikel [Größen für virtuelle Computer in Azure](../../sizes.md). Aufgrund dieser Kontingenteinschränkungen können Sie möglicherweise nicht die gleiche Architektur mit mehreren Instanzen implementieren, die Sie lokal implementieren können. Im Hinblick auf die Konfiguration und Einschränkungen der gemeinsamen Nutzung der auf einem einzelnen virtuellen Computer verfügbaren Ressourcen müssen die gleichen Aspekte wie bei der lokalen Bereitstellung berücksichtigt werden.
-*  **Mehrere SAP-Datenbanken in einer einzelnen SQL Server-Instanz auf einem einzelnen virtuellen Computer**: Konfigurationen wie diese werden wie oben beschrieben unterstützt. Für mehrere SAP-Datenbanken, die die freigegebenen Ressourcen einer einzelnen SQL Server-Instanz gemeinsam nutzen, müssen die gleichen Aspekte wie bei lokalen Bereitstellungen berücksichtigt werden. Beachten Sie außerdem andere Grenzwerte, z. B. die Anzahl von Datenträgern, die an einen bestimmten VM-Typ angefügt werden können, sowie die Netzwerk- und Speicherkontingentgrenzen bestimmter VM-Typen, die unter [Größen für virtuelle Computer in Azure](../../sizes.md) ausführlich beschrieben sind. 
+*  **Mehrere SAP-Datenbanken in einer einzelnen SQL Server-Instanz auf einem einzelnen virtuellen Computer**: Konfigurationen wie diese werden wie oben beschrieben unterstützt. Für mehrere SAP-Datenbanken, die die freigegebenen Ressourcen einer einzelnen SQL Server-Instanz gemeinsam nutzen, müssen die gleichen Aspekte wie bei lokalen Bereitstellungen berücksichtigt werden. Beachten Sie außerdem andere Grenzwerte, z. B. die Anzahl von Datenträgern, die an einen bestimmten VM-Typ angefügt werden können. sowie die Netzwerk- und Speicherkontingentgrenzen bestimmter VM-Typen, die unter [Größen für virtuelle Computer in Azure](../../sizes.md) ausführlich beschrieben sind. 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Empfehlungen für die VM-/VHD-Struktur für SAP-bezogene SQL Server-Bereitstellungen
@@ -513,10 +513,15 @@ Eine ausführliche Dokumentation der Bereitstellung von Always On mit SQL Server
 >[!NOTE]
 > Wenn Sie die Azure Load Balancer-Instanz für die virtuelle IP-Adresse vom Verfügbarkeitsgruppenlistener konfigurieren, überprüfen Sie, ob DirectServerReturn konfiguriert ist. Die Konfiguration dieser Option wird die Roundtrip-Netzwerklatenz zwischen der SAP-Anwendungsschicht und der DBMS-Schicht reduzieren. 
 
+>[!NOTE]
+>Lesen Sie [Einführung SQL Server Always On-Verfügbarkeitsgruppen für virtuelle Azure-Computer](../../../azure-sql/virtual-machines/windows/availability-group-overview.md). Hier erfahren Sie mehr über den [DNN-Listener (Direct Network Name)](../../../azure-sql/virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md) von SQL Server. Diese neue Funktionalität wurde mit SQL Server 2019 CU8 eingeführt. Diese neue Funktionalität kommt ohne die Verwendung eines Azure-Lastenausgleichs aus, der die virtuelle IP-Adresse des Verfügbarkeitsgruppenlisteners verwaltet.
+
+
 SQL Server Always On ist die am häufigsten in Azure verwendete Funktionalität für Hochverfügbarkeit und Notfallwiederherstellung für SAP-Workloadbereitstellungen. Die meisten Kunden nutzen Always On für Hochverfügbarkeit innerhalb einer einzelnen Azure-Region. Wenn die Bereitstellung auf nur zwei Knoten beschränkt ist, haben Sie zwei Verbindungsmöglichkeiten:
 
-- Verwenden des Verfügbarkeitsgruppenlisteners. Wenn Sie den Verfügbarkeitsgruppenlistener verwenden, müssen Sie eine Azure Load Balancer-Instanz bereitstellen. Dies ist die Standardbereitstellungsmethode. SAP-Anwendungen sind so konfiguriert, dass sie sich mit dem Verfügbarkeitsgruppenlistener und nicht mit einem einzelnen Knoten verbinden.
-- Verwenden des Konnektivitätsparameters der SQL Server-Datenbankspiegelung. In diesem Fall müssen Sie die Konnektivität der SAP-Anwendungen so konfigurieren, dass beide Knotennamen benannt sind. Ausführliche Informationen zu dieser SAP-Konfiguration finden Sie im SAP-Hinweis [965908](https://launchpad.support.sap.com/#/notes/965908). Indem Sie diese Option verwenden, müssen Sie den Verfügbarkeitsgruppenlistener nicht konfigurieren. Und daher ist kein Azure-Lastenausgleich erforderlich, um die Hochverfügbarkeit von SQL Server sicherzustellen. Dadurch ist die Netzwerklatenz zwischen der SAP-Anwendungsschicht und der DBMS-Schicht geringer. Denn der auf der SQL Server-Instanz eingehende Datenverkehr wird über keine Azure Load Balancer-Instanz weitergeleitet. Beachten Sie jedoch, dass diese Option nur funktioniert, wenn Sie Ihre Verfügbarkeitsgruppe auf zwei Instanzen beschränken. 
+- Verwenden des Verfügbarkeitsgruppenlisteners. Wenn Sie den Verfügbarkeitsgruppenlistener verwenden, müssen Sie eine Azure Load Balancer-Instanz bereitstellen. 
+- Verwenden SQL Server 2019 CU8 oder neueren Releases, in denen Sie stattdessen den [Direct Network Name (DNN)-Listener](../../../azure-sql/virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md) verwenden können. Damit entfällt die Anforderung an uns, einen Azure-Lastenausgleich zu erstellen.
+- Verwenden des Konnektivitätsparameters der SQL Server-Datenbankspiegelung. In diesem Fall müssen Sie die Konnektivität der SAP-Anwendungen so konfigurieren, dass beide Knotennamen benannt sind. Ausführliche Informationen zu dieser SAP-Konfiguration finden Sie im SAP-Hinweis [965908](https://launchpad.support.sap.com/#/notes/965908). Indem Sie diese Option verwenden, müssen Sie den Verfügbarkeitsgruppenlistener nicht konfigurieren. Und daher ist kein Azure-Lastenausgleich erforderlich, um die Hochverfügbarkeit von SQL Server sicherzustellen. Beachten Sie jedoch, dass diese Option nur funktioniert, wenn Sie Ihre Verfügbarkeitsgruppe auf zwei Instanzen beschränken. 
 
 Einige Kunden verwenden die SQL Server Always On-Funktion für Notfallwiederherstellungsfunktionen zwischen Azure-Regionen. Einige Kunden nutzen auch die Möglichkeit, Sicherungen von einem sekundären Replikat durchzuführen. 
 

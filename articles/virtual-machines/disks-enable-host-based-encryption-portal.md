@@ -4,16 +4,16 @@ description: Verwenden Sie Verschlüsselung auf dem Host, um die End-to-End-Vers
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 06/14/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: cdb22805e2e68893d3883272b66c2cfac13c807e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad053a0e97a8efa50fbb01798e639fb33e769bef
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721867"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078767"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Verwenden des Azure-Portals zum Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host
 
@@ -40,13 +40,13 @@ Sie müssen das Feature für Ihr Abonnement aktivieren, bevor Sie die Encryption
 
     ![Symbol zum Starten von Cloud Shell über das Azure-Portal](../Cloud-Shell/media/overview/portal-launch-icon.png)
     
-2.  Führen Sie den folgenden Befehl aus, um das Feature für Ihr Abonnement zu registrieren.
+1.  Führen Sie den folgenden Befehl aus, um das Feature für Ihr Abonnement zu registrieren.
 
     ```powershell
      Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute" 
     ```
 
-3.  Überprüfen Sie mithilfe des folgenden Befehls, ob der Registrierungsstatus „Registriert“ lautet (dies dauert einige Minuten), bevor Sie das Feature ausprobieren.
+1.  Überprüfen Sie mithilfe des folgenden Befehls, ob der Registrierungsstatus **Registriert** lautet (dies dauert einige Minuten), bevor Sie das Feature ausprobieren.
 
     ```powershell
      Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"  
@@ -66,7 +66,7 @@ Nach dem Aktivieren des Features müssen Sie eine Azure Key Vault-Instanz und ei
 
 ## <a name="deploy-a-vm"></a>Bereitstellen einer VM
 
-Sie müssen eine neue VM bereitstellen, um die Verschlüsselung auf dem Host zu aktivieren. Diese kann auf vorhandenen VMs nicht aktiviert werden.
+Nachdem Sie nun einen Azure Key Vault und einen Datenträgerverschlüsselungssatz eingerichtet haben, können Sie eine VM bereitstellen, die Verschlüsselung auf dem Host verwendet.
 
 1. Suchen Sie nach **Virtuelle Computer**, und wählen Sie **+ Hinzufügen** aus, um eine VM zu erstellen.
 1. Erstellen Sie einen neuen virtuellen Computer, und wählen Sie eine geeignete Region und eine unterstützte VM-Größe aus.

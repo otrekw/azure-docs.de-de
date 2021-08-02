@@ -1,26 +1,27 @@
 ---
-title: Übersicht über die Isolation und Sicherheit virtueller Netzwerke
+title: Schützen von Arbeitsbereichsressourcen mit virtuellen Netzwerken (VNETs)
 titleSuffix: Azure Machine Learning
-description: Mit einer isolierten Azure Virtual Network-Instanz mit Azure Machine Learning schützen Sie Arbeitsbereichsressourcen und Compute-Umgebungen.
+description: Schützen Sie Arbeitsbereichsressourcen und Compute-Umgebungen von Azure Machine Learning mithilfe eines isolierten Azure Virtual Network (VNet).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 03/02/2021
+ms.date: 06/11/2021
 ms.topic: how-to
-ms.custom: devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: e6b8a4bbbe596ec06f7f9b445dbaa439e1207e46
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack
+ms.openlocfilehash: c5e5461163b28ff53e77121a8e48dc478887ea6c
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888708"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081063"
 ---
-# <a name="virtual-network-isolation-and-privacy-overview"></a>Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken
+<!-- # Virtual network isolation and privacy overview -->
+# <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>Schützen von Azure Machine Learning-Arbeitsbereichsressourcen mit virtuellen Netzwerken (VNets)
 
-In diesem Artikel erfahren Sie, wie Sie die Netzwerkkommunikation in Azure Machine Learning mithilfe virtueller Netzwerke (VNETs) schützen. Hier wird anhand eines Beispielszenarios veranschaulicht, wie Sie ein vollständiges virtuelles Netzwerk konfigurieren.
+Schützen Sie Arbeitsbereichsressourcen und Compute-Umgebungen von Azure Machine Learning mithilfe virtueller Netzwerke (VNets). Hier wird anhand eines Beispielszenarios veranschaulicht, wie Sie ein vollständiges virtuelles Netzwerk konfigurieren.
 
 Der Artikel ist Teil einer fünf teiligen Artikelreihe, in der Sie schrittweise durch die Absicherung eines Azure Machine Learning-Workflows geführt werden. Wir empfehlen dringend, erst diesen Übersichtsartikel zu lesen, um zunächst die Konzepte zu verstehen. 
 

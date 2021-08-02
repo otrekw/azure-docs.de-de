@@ -4,19 +4,19 @@ description: Diese Seite beschreibt einige allgemeine V-Kern-Ressourcenlimits f�
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, references_regions
 ms.devlang: ''
 ms.topic: reference
-author: oslake
-ms.author: moslake
-ms.reviewer: sstein
-ms.date: 04/09/2021
-ms.openlocfilehash: 1d58f79d0fe8accc728c4484dd5d92159836aa88
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma
+ms.date: 06/04/2021
+ms.openlocfilehash: c0767ffd85e6d6e93f922f4d27e5d41167282b1c
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305139"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555432"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,6 +44,8 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 > [!IMPORTANT]
 > Anleitungen und Überlegungen zur Skalierung finden Sie unter [Skalieren eines Pools für elastische Datenbanken](elastic-pool-scale.md).
 
+Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet werden, erhält jede Datenbank im Pool gleich viel Computeressourcen zum Verarbeiten von Abfragen. Azure SQL-Datenbank bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in Pools für elastische Datenbanken ergänzt die Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn die Mindestanzahl von virtuellen Kernen pro Datenbank auf einen Wert ungleich null festgelegt ist.
+
 ## <a name="general-purpose---provisioned-compute---gen4"></a>Universell – bereitgestelltes Computing – Gen4
 
 > [!IMPORTANT]
@@ -60,14 +62,14 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|512|756|1536|1536|1536|2048|
-|Maximale Protokollgröße|154|227|461|461|461|614|
+|Max. Protokollgröße <sup>2</sup>|154|227|461|461|461|614|
 |Max. Datengröße von TempDB (GB)|32|64|96|128|160|192|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup> |400|800|1200|1600|2000|2400|
+|Max. Daten-IOPS pro Pool <sup>3</sup> |400|800|1200|1600|2000|2400|
 |Maximale Protokollrate pro Pool (MBit/s)|6|12|18|24|30|36|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup> |210|420|630|840|1050|1260|
-|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool <sup>3</sup> |210|420|630|840|1050|1260|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup> |210|420|630|840|1050|1260|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool <sup>4</sup> |210|420|630|840|1050|1260|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1...3|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...5|0, 0,25, 0,5, 1...6|
 |Anzahl von Replikaten|1|1|1|1|1|1|
@@ -77,9 +79,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Universelle Dienstebene: Computeplattform der 4. Generation (Teil 2)
 
@@ -92,14 +96,14 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|2048|2048|2048|2048|3.584|4096|
-|Maximale Protokollgröße (GB)|614|614|614|614|1075|1229|
+|Max. Protokollgröße (GB) <sup>2</sup>|614|614|614|614|1075|1229|
 |Max. Datengröße von TempDB (GB)|224|256|288|320|512|768|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|2800|3200|3600|4000|6400|9600|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|2800|3200|3600|4000|6400|9600|
 |Maximale Protokollrate pro Pool (MBit/s)|42|48|54|60|62,5|62,5|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
-|Max. Anzahl von gleichzeitigen Anmeldungen (Anforderungen) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|1470|1680|1890|2100|3360|5040|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|1470|1680|1890|2100|3360|5040|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...7|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...9|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...10, 16|0, 0,25, 0,5, 1...10, 16, 24|
 |Anzahl von Replikaten|1|1|1|1|1|1|
@@ -109,9 +113,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).    
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).    
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ## <a name="general-purpose---provisioned-compute---gen5"></a>Universell – bereitgestelltes Computing – Gen5
 
@@ -126,14 +132,14 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|512|756|1536|1536|1536|2048|2048|
-|Maximale Protokollgröße (GB)|154|227|461|461|461|614|614|
+|Max. Protokollgröße (GB) <sup>2</sup>|154|227|461|461|461|614|614|
 |Max. Datengröße von TempDB (GB)|64|128|192|256|320|384|448|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|800|1600|2400|3200|4000|4800|5600|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|800|1600|2400|3200|4000|4800|5600|
 |Maximale Protokollrate pro Pool (MBit/s)|12|24|36|48|60|62,5|62,5|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|210|420|630|840|1050|1260|1470|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|210|420|630|840|1050|1260|1470|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|210|420|630|840|1050|1260|1470|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|210|420|630|840|1050|1260|1470|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...6|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...12|0, 0,25, 0,5, 1...14|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
@@ -143,9 +149,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Universelle Dienstebene: Computeplattform der 5. Generation (Teil 2)
 
@@ -158,14 +166,14 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|2048|3072|3072|3072|4096|4096|4096|
-|Maximale Protokollgröße (GB)|614|922|922|922|1229|1229|1229|
+|Max. Protokollgröße (GB) <sup>2</sup>|614|922|922|922|1229|1229|1229|
 |Max. Datengröße von TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup> |6\.400|7\.200|8\.000|9\.600|12.800|16.000|16.000|
+|Max. Daten-IOPS pro Pool <sup>3</sup> |6\.400|7\.200|8\.000|9\.600|12.800|16.000|16.000|
 |Maximale Protokollrate pro Pool (MBit/s)|62,5|62,5|62,5|62,5|62,5|62,5|62,5|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|1680|1890|2100|2520|3360|4.200|8.400|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|1680|1890|2100|2520|3360|4.200|8.400|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|1680|1890|2100|2520|3360|4.200|8.400|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|1680|1890|2100|2520|3360|4.200|8.400|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...16|0, 0,25, 0,5, 1...18|0, 0,25, 0,5, 1...20|0, 0,25, 0,5, 1...20, 24|0, 0,25, 0,5, 1...20, 24, 32|0, 0,25, 0,5, 1...16, 24, 32, 40|0, 0,25, 0,5, 1...16, 24, 32, 40, 80|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
@@ -175,9 +183,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Universell – bereitgestelltes Computing – Fsv2-Serie
 
@@ -192,14 +202,14 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1536|
-|Maximale Protokollgröße (GB)|336|336|336|336|512|
+|Max. Protokollgröße (GB) <sup>2</sup>|336|336|336|336|512|
 |Max. Datengröße von TempDB (GB)|37|46|56|65|74|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|2560|3200|3840|4480|5120|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|2560|3200|3840|4480|5120|
 |Maximale Protokollrate pro Pool (MBit/s)|48|60|62,5|62,5|62,5|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|400|500|600|700|800|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|800|1000|1200|1400|1600|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|400|500|600|700|800|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|800|1000|1200|1400|1600|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0–8|0–10|0–12|0–14|0–16|
 |Anzahl von Replikaten|1|1|1|1|1|
@@ -209,9 +219,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ### <a name="fsv2-series-compute-generation-part-2"></a>Computegeneration der Fsv2-Serie (Teil 2)
 
@@ -224,14 +236,14 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|1536|1536|1536|3072|3072|4096|
-|Maximale Protokollgröße (GB)|512|512|512|1024|1024|1024|
+|Max. Protokollgröße (GB) <sup>2</sup>|512|512|512|1024|1024|1024|
 |Max. Datengröße von TempDB (GB)|83|93|111|148|167|333|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|5760|6400|7680|10.240|11.520|12800|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|5760|6400|7680|10.240|11.520|12800|
 |Maximale Protokollrate pro Pool (MBit/s)|62,5|62,5|62,5|62,5|62,5|62,5|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|900|1000|1200|1600|1800|3600|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|1800|2000|2400|3200|3600|7200|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|900|1000|1200|1600|1800|3600|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|1800|2000|2400|3200|3600|7200|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0–18|0 - 20|0-24|0–32|0–36|0–72|
 |Anzahl von Replikaten|1|1|1|1|1|1|
@@ -241,9 +253,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ## <a name="general-purpose---provisioned-compute---dc-series"></a>Universell – bereitgestelltes Computing – DC-Serie
 
@@ -256,14 +270,14 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|
 |Maximale Datengröße (GB)|756|1536|2048|2048|
-|Maximale Protokollgröße (GB)|227|461|614|614|
+|Max. Protokollgröße (GB) <sup>2</sup>|227|461|614|614|
 |Max. Datengröße von TempDB (GB)|64|128|192|256|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|800|1600|2400|3200|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|800|1600|2400|3200|
 |Maximale Protokollrate pro Pool (MBit/s)|12|24|36|48|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|168|336|504|672|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|168|336|504|672|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|168|336|504|672|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|168|336|504|672|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|2|2...4|2...6|2...8|
 |Anzahl von Replikaten|1|1|1|1|
@@ -273,9 +287,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ## <a name="business-critical---provisioned-compute---gen4"></a>Unternehmenskritisch – bereitgestelltes Computing – Gen4
 
@@ -294,13 +310,14 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |In-Memory-OLTP-Speicher (GB)|2|3|4|5|6|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|
-|Maximale Protokollgröße (GB)|307|307|307|307|307|
+|Max. Protokollgröße (GB) <sup>2</sup>|307|307|307|307|307|
 |Max. Datengröße von TempDB (GB)|64|96|128|160|192|
+|[Max. Größe des lokalen Speichers](resource-limits-logical-server.md#storage-space-governance) (GB)|1\.356|1\.356|1\.356|1\.356|1\.356|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|9\.000|13.500|18.000|22.500|27.000|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|9\.000|13.500|18.000|22.500|27.000|
 |Maximale Protokollrate pro Pool (MBit/s)|20|30|40|50|60|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|420|630|840|1050|1260|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|420|630|840|1050|1260|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|420|630|840|1050|1260|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|420|630|840|1050|1260|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1...3|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...5|0, 0,25, 0,5, 1...6|
 |Anzahl von Replikaten|4|4|4|4|4|
@@ -310,9 +327,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 4. Generation (Teil 2)
 
@@ -326,13 +345,14 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |In-Memory-OLTP-Speicher (GB)|7|8|9.5|11|20|36|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
-|Maximale Protokollgröße (GB)|307|307|307|307|307|307|
+|Max. Protokollgröße (GB) <sup>2</sup>|307|307|307|307|307|307|
 |Max. Datengröße von TempDB (GB)|224|256|288|320|512|768|
+|[Max. Größe des lokalen Speichers](resource-limits-logical-server.md#storage-space-governance) (GB)|1\.356|1\.356|1\.356|1\.356|1\.356|1\.356|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|31.500|36.000|40.500|45.000|72.000|96.000|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|31.500|36.000|40.500|45.000|72.000|96.000|
 |Maximale Protokollrate pro Pool (MBit/s)|70|80|80|80|80|80|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|1470|1680|1890|2100|3360|5040|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|1470|1680|1890|2100|3360|5040|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...7|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...9|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...10, 16|0, 0,25, 0,5, 1...10, 16, 24|
 |Anzahl von Replikaten|4|4|4|4|4|4|
@@ -342,9 +362,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ## <a name="business-critical---provisioned-compute---gen5"></a>Unternehmenskritisch – bereitgestelltes Computing – Gen5
 
@@ -359,14 +381,15 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|3,14|4.71|6,28|8,65|11,02|13,39|
 |Maximale Datengröße (GB)|1024|1536|1536|1536|3072|3072|
-|Maximale Protokollgröße (GB)|307|307|461|461|922|922|
+|Max. Protokollgröße (GB) <sup>2</sup>|307|307|461|461|922|922|
 |Max. Datengröße von TempDB (GB)|128|192|256|320|384|448|
+|[Max. Größe des lokalen Speichers](resource-limits-logical-server.md#storage-space-governance) (GB)|4829|4829|4829|4829|4829|4829|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|18.000|27.000|36.000|45.000|54.000|63.000|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|18.000|27.000|36.000|45.000|54.000|63.000|
 |Maximale Protokollrate pro Pool (MBit/s)|60|90|120|120|120|120|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|420|630|840|1050|1260|1470|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|420|630|840|1050|1260|1470|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|420|630|840|1050|1260|1470|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|420|630|840|1050|1260|1470|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...6|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...12|0, 0,25, 0,5, 1...14|
 |Anzahl von Replikaten|4|4|4|4|4|4|
@@ -376,9 +399,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 5. Generation (Teil 2)
 
@@ -391,14 +416,15 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|15,77|18,14|20,51|25,25|37,94|52,23|131,68|
 |Maximale Datengröße (GB)|3072|3072|3072|4096|4096|4096|4096|
-|Maximale Protokollgröße (GB)|922|922|922|1229|1229|1229|1229|
+|Max. Protokollgröße (GB) <sup>2</sup>|922|922|922|1229|1229|1229|1229|
 |Max. Datengröße von TempDB (GB)|512|576|640|768|1024|1280|2560|
+|[Max. Größe des lokalen Speichers](resource-limits-logical-server.md#storage-space-governance) (GB)|4829|4829|4829|4829|4829|4829|4829|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|72.000|81.000|90.000|108.000|144.000|180.000|256.000|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|72.000|81.000|90.000|108.000|144.000|180.000|256.000|
 |Maximale Protokollrate pro Pool (MBit/s)|120|120|120|120|120|120|120|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|1680|1890|2100|2520|3360|4.200|8.400|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|1680|1890|2100|2520|3360|4.200|8.400|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|1680|1890|2100|2520|3360|4.200|8.400|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|1680|1890|2100|2520|3360|4.200|8.400|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...16|0, 0,25, 0,5, 1...18|0, 0,25, 0,5, 1...20|0, 0,25, 0,5, 1...20, 24|0, 0,25, 0,5, 1...20, 24, 32|0, 0,25, 0,5, 1...20, 24, 32, 40|0, 0,25, 0,5, 1...20, 24, 32, 40, 80|
 |Anzahl von Replikaten|4|4|4|4|4|4|4|
@@ -408,9 +434,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ## <a name="business-critical---provisioned-compute---m-series"></a>Unternehmenskritisch – bereitgestelltes Computing – M-Serie
 
@@ -425,14 +453,15 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|64|80|96|112|128|150|
 |Maximale Datengröße (GB)|512|640|768|896|1024|1152|
-|Maximale Protokollgröße (GB)|171|213|256|299|341|384|
+|Max. Protokollgröße (GB) <sup>2</sup>|171|213|256|299|341|384|
 |Max. Datengröße von TempDB (GB)|256|320|384|448|512|576|
+|[Max. Größe des lokalen Speichers](resource-limits-logical-server.md#storage-space-governance) (GB)|13.836|13.836|13.836|13.836|13.836|13.836|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|12.499|15.624|18.748|21.873|24.998|28.123|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|12.499|15.624|18.748|21.873|24.998|28.123|
 |Maximale Protokollrate pro Pool (MBit/s)|48|60|72|84|96|108|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|800|1\.000|1\.200|1\.400|1\.600|1\.800|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|800|1\.000|1\.200|1\.400|1\.600|1\.800|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|800|1\.000|1\.200|1\.400|1\.600|1\.800|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|800|1\.000|1\.200|1\.400|1\.600|1\.800|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0–8|0–10|0–12|0–14|0–16|0–18|
 |Anzahl von Replikaten|4|4|4|4|4|4|
@@ -442,11 +471,11 @@ Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit f
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
 
-Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet werden, erhält jede Datenbank im Pool gleich viel Computeressourcen zum Verarbeiten von Abfragen. Azure SQL-Datenbank bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in Pools für elastische Datenbanken ergänzt die Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn die Mindestanzahl von virtuellen Kernen pro Datenbank auf einen Wert ungleich null festgelegt ist.
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ### <a name="m-series-compute-generation-part-2"></a>Computegeneration der M-Serie (Teil 2)
 
@@ -459,14 +488,15 @@ Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet wer
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|172|216|304|704|1768|
 |Maximale Datengröße (GB)|1280|1536|2048|4096|4096|
-|Maximale Protokollgröße (GB)|427|512|683|1024|1024|
+|Max. Protokollgröße (GB) <sup>2</sup>|427|512|683|1024|1024|
 |Max. Datengröße von TempDB (GB)|640|768|1024|2048|4096|
+|[Max. Größe des lokalen Speichers](resource-limits-logical-server.md#storage-space-governance) (GB)|13.836|13.836|13.836|13.836|13.836|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|31.248|37.497|49.996|99.993|160.000|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|31.248|37.497|49.996|99.993|160.000|
 |Maximale Protokollrate pro Pool (MBit/s)|120|144|192|264|264|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|2\.000|2\.400|3\.200|6\.400|12.800|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|2\.000|2\.400|3\.200|6\.400|12.800|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|2\.000|2\.400|3\.200|6\.400|12.800|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|2\.000|2\.400|3\.200|6\.400|12.800|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|4|4|4|4|4|
 |Multi-AZ|Nein|Nein|Nein|Nein|Nein|
@@ -475,11 +505,11 @@ Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet wer
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
 
-Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet werden, erhält jede Datenbank im Pool gleich viel Computeressourcen zum Verarbeiten von Abfragen. Azure SQL-Datenbank bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in Pools für elastische Datenbanken ergänzt die Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn die Mindestanzahl von virtuellen Kernen pro Datenbank auf einen Wert ungleich null festgelegt ist.
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ## <a name="business-critical---provisioned-compute---dc-series"></a>Unternehmenskritisch – bereitgestelltes Computing – DC-Serie
 
@@ -492,14 +522,15 @@ Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet wer
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|1.7|3,7|5.9|8,2|
 |Maximale Datengröße (GB)|768|768|768|768|
-|Maximale Protokollgröße (GB)|230|230|230|230|
+|Max. Protokollgröße (GB) <sup>2</sup>|230|230|230|230|
 |Max. Datengröße von TempDB (GB)|64|128|192|256|
+|[Max. Größe des lokalen Speichers](resource-limits-logical-server.md#storage-space-governance) (GB)|1406|1406|1406|1406|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|15750|31500|47250|56000|
+|Max. Daten-IOPS pro Pool <sup>3</sup>|15750|31500|47250|56000|
 |Maximale Protokollrate pro Pool (MBit/s)|20|60|90|120|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|168|336|504|672|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|168|336|504|672|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>4</sup>|168|336|504|672|
+|Max. Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>4</sup>|168|336|504|672|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|2|2...4|2...6|2...8|
 |Anzahl von Replikaten|4|4|4|4|
@@ -509,9 +540,11 @@ Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet wer
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
-<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+<sup>2</sup> Für dokumentierte Werte der maximalen Datengröße. Bei einer Reduzierung der maximalen Datengröße reduziert sich die maximale Protokollgröße proportional.
 
-<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+<sup>3</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>4</sup> Den Wert für „Max. gleichzeitige Worker (Anforderungen)“ für einzelne Datenbanken finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ## <a name="database-properties-for-pooled-databases"></a>Eigenschaften von Pooldatenbanken
 

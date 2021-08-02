@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder (Vorschauversion)
+title: Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder
 description: Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Linux.
 author: cynthn
 ms.author: cynthn
@@ -9,14 +9,14 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: 0887051ffa396f1eac8bc00dc2437b8e92bec45a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9508da2002035ee413d557c0cd48474b6e10e0d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695633"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071243"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>Vorschau: Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Linux
+# <a name="create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Linux
 
 In diesem Artikel erfahren Sie, wie Sie eine vorhandene Imageversion in einem [Katalog mit freigegebenen Images](../shared-image-galleries.md) aktualisieren und als neue Imageversion im Katalog veröffentlichen.
 
@@ -24,17 +24,7 @@ Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwen
 
 
 ## <a name="register-the-features"></a>Registrieren des Features
-Sie müssen das neue Feature registrieren, um Azure Image Builder während der Vorschauphase verwenden zu können.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
-
-Überprüfen Sie den Status der Featureregistrierung.
-
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
-```
+Um Azure Image Builder zu verwenden, müssen Sie das Feature registrieren.
 
 Überprüfen Sie die Registrierung.
 

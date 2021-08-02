@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d27223906727af3b45617c7162f5c5da5133d2e3
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358315"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569508"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>Konfigurieren eines DNN für eine Failoverclusterinstanz
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,6 +47,7 @@ Bevor Sie die in diesem Artikel aufgeführten Schritte ausführen, sollten Sie �
 - Sie sollten entschieden haben, dass der Name des verteilten Netzwerks die geeignete [Konnektivitätsoption für die HADR-Lösung](hadr-cluster-best-practices.md#connectivity) ist.
 - Konfigurierte [Failoverclusterinstanzen](failover-cluster-instance-overview.md). 
 - Sie müssen die neueste Version von [PowerShell](/powershell/azure/install-az-ps) installiert haben. 
+- Der Client, der eine Verbindung mit dem DNN-Listener herstellt, muss den Parameter `MultiSubnetFailover=True` in der Verbindungszeichenfolge unterstützen. 
 
 ## <a name="create-dnn-resource"></a>Erstellen einer DNN-Ressource 
 
@@ -203,6 +204,10 @@ Alternativ können Sie einen Netzwerkadapter in Azure konfigurieren, um die von 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu SQL Server-HADR-Features in Azure finden Sie unter [Verfügbarkeitsgruppen](availability-group-overview.md) und [Failoverclusterinstanz](failover-cluster-instance-overview.md). Sie können sich auch mit den [bewährten Methoden](hadr-cluster-best-practices.md) zum Konfigurieren Ihrer Umgebung für Hochverfügbarkeit und Notfallwiederherstellung vertraut machen. 
+Weitere Informationen finden Sie unter:
 
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Failoverclusterinstanzen mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md)
+- [AlwaysOn-Failoverclusterinstanzen (SQL Server)](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)
 

@@ -5,13 +5,13 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 01/04/2021
-ms.openlocfilehash: 4dc718f21f2ef3beabc31821bd60b571ac07be05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: c0f81c5abdffe307550d2b0b3e1f86f67f867f5a
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018750"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591294"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Verwenden von verwalteten Identitäten zum Zugriff auf Event Hubs aus einem Azure Stream Analytics-Auftrag (Vorschau)
 
@@ -63,6 +63,9 @@ Damit der Stream Analytics-Auftrag über eine verwaltete Identität auf Ihren Ev
 1. Klicken Sie auf **Speichern**, und warten Sie etwa eine Minute, damit die Änderungen weitergegeben werden können.
 
 Sie können diese Rolle auch auf Ebene des Event Hub-Namespace zuweisen. Damit werden die Berechtigungen automatisch an alle in diesem Namespace erstellten Event Hubs weitergegeben. Das bedeutet, dass alle Event Hubs in einem Namespace als Ressource für die Authentifizierung einer verwalteten Identität in Ihrem Stream Analytics-Auftrag verwendet werden können.
+
+> [!NOTE]
+> Aufgrund der globalen Replikations- oder Cachinglatenz kann es zu einer Verzögerung kommen, wenn Berechtigungen widerrufen oder erteilt werden. Änderungen sollten innerhalb von 8 Minuten widergespiegelt werden.
 
 ## <a name="create-anevent-hub-input-or-output"></a>Erstellen einer Event Hub-Eingabe oder -Ausgabe  
 

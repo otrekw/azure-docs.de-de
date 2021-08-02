@@ -1,28 +1,29 @@
 ---
-title: Anpassen des Feeds für Windows Virtual Desktop-Benutzer – Azure
-description: Erfahren Sie, wie Sie den Feed für Windows Virtual Desktop-Benutzer mit PowerShell-Cmdlets anpassen.
+title: Anpassen des Feeds für Azure Virtual Desktop-Benutzer – Azure
+description: Erfahren Sie, wie Sie den Feed für Azure Virtual Desktop-Benutzer mit PowerShell-Cmdlets anpassen.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 09/14/2019
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: a2d5a870ee8953a4388e58d21cf941f23434382b
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 24174d7ac9fa33cb1fb3ca6e325537dde346b3c3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447113"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752007"
 ---
-# <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>Anpassen des Feeds für Windows Virtual Desktop-Benutzer
+# <a name="customize-the-feed-for-azure-virtual-desktop-users"></a>Anpassen des Feeds für Azure Virtual Desktop-Benutzer
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md).
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md).
 
 Sie können den Feed anpassen, damit die RemoteApp- und Remotedesktopressourcen den Benutzern auf erkennbare Weise angezeigt werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie das Windows Virtual Desktop PowerShell-Modul bereits heruntergeladen und installiert haben. Wenn dies nicht der Fall ist, befolgen Sie die Anweisungen unter [Einrichten des PowerShell-Moduls](powershell-module.md).
+In diesem Artikel wird davon ausgegangen, dass Sie das Azure Virtual Desktop PowerShell-Modul bereits heruntergeladen und installiert haben. Wenn dies nicht der Fall ist, befolgen Sie die Anweisungen unter [Einrichten des PowerShell-Moduls](powershell-module.md).
 
 ## <a name="customize-the-display-name-for-a-remoteapp"></a>Anpassen des Anzeigenamens für eine RemoteApp
 
@@ -103,11 +104,11 @@ Sie können den Anzeigenamen für einen veröffentlichten Remotedesktop ändern,
 
 1. Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
 
-2. Suchen Sie nach **Windows Virtual Desktop**.
+2. Suchen Sie nach **Azure Virtual Desktop**.
 
-3. Wählen Sie unter „Dienste“ die Option **Windows Virtual Desktop** aus.
+3. Wählen Sie unter „Dienste“ die Option **Azure Virtual Desktop** aus.
 
-4. Wählen Sie auf der Seite „Windows Virtual Desktop“ auf der linken Bildschirmseite **Anwendungsgruppen** aus, und wählen Sie dann den Namen der App-Gruppe aus, den Sie bearbeiten möchten. (Wenn Sie beispielsweise den Anzeigenamen der Desktop-App-Gruppe bearbeiten möchten, klicken Sie auf die App-Gruppe mit dem Namen **Desktop**.)
+4. Wählen Sie auf der Seite „Azure Virtual Desktop“ auf der linken Bildschirmseite **Anwendungsgruppen** aus, und wählen Sie dann den Namen der App-Gruppe aus, den Sie bearbeiten möchten. (Wenn Sie beispielsweise den Anzeigenamen der Desktop-App-Gruppe bearbeiten möchten, klicken Sie auf die App-Gruppe mit dem Namen **Desktop**.)
 
 5. Wählen Sie im Menü auf der linken Bildschirmseite **Anwendungen** aus.
 
@@ -117,7 +118,7 @@ Sie können den Anzeigenamen für einen veröffentlichten Remotedesktop ändern,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie den Feed für Benutzer angepasst haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um ihn zu testen. Wechseln Sie dafür zu den Vorgehensweisen für das Herstellen einer Verbindung mit Windows Virtual Desktop:
+Nachdem Sie den Feed für Benutzer angepasst haben, können Sie sich bei einem Azure Virtual Desktop-Client anmelden, um ihn zu testen. Wechseln Sie dafür zu den Vorgehensweisen für das Herstellen einer Verbindung mit Azure Virtual Desktop:
 
  * [Herstellen einer Verbindung mit Windows 10 oder Windows 7](connect-windows-7-10.md)
  * [Herstellen einer Verbindung mit dem Webclient](connect-web.md)

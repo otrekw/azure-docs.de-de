@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: cc55cd17a547b9c63f2c26479d5797fae016d8d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 422ba2ecaed8803a49c0a82b85d821d3f55c9bbd
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044067"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071982"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy
 Während einige Features von Azure Monitor einmalig oder nur für eine begrenzte Zahl von Malen konfiguriert werden, muss dies bei anderen für jede Ressource wiederholt werden, die Sie überwachen möchten. In diesem Artikel werden Methoden beschrieben, wie Sie Azure Monitor mit Azure Policy bedarfsorientiert implementieren, um sicherzustellen, dass die Überwachung für alle Ihre Azure-Ressourcen konsistent und genau konfiguriert ist.
@@ -41,6 +41,29 @@ Führen Sie die folgenden Schritte aus, um die in Bezug auf die Überwachung int
 3. Wählen Sie für **Typ** die Option *Integriert* und für **Kategorie** die Option *Überwachung* aus.
 
   ![Screenshot der Seite „Definitionen“ von Azure Policy im Azure-Portal mit einer Liste von Richtliniendefinitionen für die Kategorie „Überwachung“ und den Typ „Integriert“](media/deploy-scale/builtin-policies.png)
+
+## <a name="azure-monitor-agent-preview"></a>Azure Monitor-Agent (Vorschau)
+Der [Azure Monitor-Agent](agents/azure-monitor-agent-overview.md) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer und übermittelt sie an Azure Monitor. Er nutzt [Datensammlungsregeln](agents/data-collection-rule-overview.md), um Daten für die Erfassung von den einzelnen Agents zu konfigurieren, die die Verwaltbarkeit von Sammlungseinstellungen im großen Stil und gleichzeitig eindeutige Bereichskonfigurationen für Teilmengen von Computern ermöglichen.  
+Verwenden Sie die unten angegebenen Richtlinien und Richtlinieninitiativen, um den Agent bei jeder Erstellung eines virtuellen Computers automatisch zu installieren und einer Datensammlungsregel zuzuordnen.
+
+### <a name="built-in-policy-initiatives"></a>Integrierte Richtlinieninitiativen
+Die Voraussetzungen für die Agent-Installation finden Sie [hier](agents/azure-monitor-agent-install.md#prerequisites). 
+
+Es gibt Richtlinieninitiativen für virtuelle Windows- und Linux-Computer, die aus einzelnen Richtlinien bestehen, die
+- die Azure Monitor-Agent-Erweiterung auf dem virtuellen Computer installieren.
+- die Zuordnung zum Verknüpfen des virtuellen Computers mit einer Datensammlungsregel erstellen und bereitstellen.
+
+  ![Teilscreenshot: Seite mit Azure Policy-Definitionen mit zwei integrierten Richtlinieninitiativen zum Konfigurieren des Azure Monitor-Agents](media/deploy-scale/built-in-ama-dcr-initiatives.png)  
+
+### <a name="built-in-policy"></a>Integrierte Richtlinie  
+Sie können die einzelnen Richtlinien gemäß Ihren Anforderungen aus der jeweiligen Richtlinieninitiative verwenden. Wenn Sie beispielsweise nur den Agent automatisch installieren möchten, verwenden Sie einfach die erste Richtlinie der Initiative, wie nachfolgend gezeigt:  
+
+  ![Teilscreenshot: Seite mit Azure Policy-Definitionen mit Richtlinien, die in der Initiative zum Konfigurieren des Azure Monitor-Agents enthalten sind](media/deploy-scale/built-in-ama-dcr-policy.png)  
+
+### <a name="remediation"></a>Wiederherstellung
+Die Initiativen oder Richtlinien gelten für jeden virtuellen Computer, während er erstellt wird. Mit einem [Wartungstask](../governance/policy/how-to/remediate-resources.md) werden die Richtliniendefinitionen in der Initiative für **vorhandene Ressourcen** bereitgestellt, sodass Sie den Azure Monitor-Agent für alle Ressourcen konfigurieren können, die bereits erstellt wurden. Wenn Sie die Zuweisung mithilfe des Azure-Portals erstellen, können Sie gleichzeitig einen Wartungstask erstellen. Weitere Informationen zur Wartung finden Sie unter [Korrigieren nicht konformer Ressourcen mit Azure Policy](../governance/policy/how-to/remediate-resources.md).
+
+![Initiativenwartung für AMA](media/deploy-scale/built-in-ama-dcr-remediation.png)
 
 
 ## <a name="diagnostic-settings"></a>Diagnoseeinstellungen

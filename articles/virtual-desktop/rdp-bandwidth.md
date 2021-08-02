@@ -1,23 +1,23 @@
 ---
-title: Remotedesktopprotokoll-Bandbreitenanforderungen für Windows Virtual Desktop – Azure
+title: Remotedesktopprotokoll-Bandbreitenanforderungen für Azure Virtual Desktop – Azure
 titleSuffix: Azure
-description: Grundlegendes zu den Bandbreitenanforderungen des Remotedesktopprotokolls (RDP) für Windows Virtual Desktop (WVD).
+description: Grundlegendes zu den Bandbreitenanforderungen des Remotedesktopprotokolls (RDP) für Azure Virtual Desktop (WVD).
 author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 6fe12c985f5d9a519380d1d9b5a7d6c2820630c6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b43a76e417505d4894396503ca93fc87f508d4c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932334"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753159"
 ---
 # <a name="remote-desktop-protocol-rdp-bandwidth-requirements"></a>Bandbreitenanforderungen des Remotedesktopprotokolls
 
 Das Remotedesktopprotokoll (Remote Desktop Protocol, RDP) ist eine ausgereifte Technologie, die verschiedene Techniken anwendet, um die Bereitstellung von Remotegrafiken durch den Server an den Client zu perfektionieren. Je nach Anwendungsfall, Verfügbarkeit von Computingressourcen und Netzwerkbandbreite passt das RDP dynamisch verschiedene Parameter an, um für ein optimales Benutzererlebnis zu sorgen.
 
-Das Remotedesktopprotokoll vereint mehrere dynamische virtuelle Kanäle (Dynamic Virtual Channels, DVCs) per Multiplexing in einem einzigen Datenkanal, der über verschiedene Methoden für den Netzwerktransport gesendet wird. Es gibt separate DVCs für Remotegrafiken, Eingabe, Geräteumleitung, Druckvorgänge und vieles mehr. Virtuelle Windows-Desktop Partner können auch Ihre Erweiterungen verwenden, die DVC-Schnittstellen verwenden.
+Das Remotedesktopprotokoll vereint mehrere dynamische virtuelle Kanäle (Dynamic Virtual Channels, DVCs) per Multiplexing in einem einzigen Datenkanal, der über verschiedene Methoden für den Netzwerktransport gesendet wird. Es gibt separate DVCs für Remotegrafiken, Eingabe, Geräteumleitung, Druckvorgänge und vieles mehr. Azure Virtual Desktop-Partner können auch Ihre Erweiterungen verwenden, die DVC-Schnittstellen verwenden.
 
 Die Menge der über RDP gesendeten Daten richtet sich nach der Benutzeraktivität. Ein Beispiel: Ein Benutzer arbeitet während des größten Teils einer Sitzung mit einfachen Textinhalten und benötigt dafür nur sehr wenig Bandbreite, sendet dann aber einen Druckauftrag für ein 200-seitigen Dokument an den Drucker. Dieser Druckauftrag verbraucht eine erhebliche Menge an Netzwerkbandbreite.
 
@@ -147,6 +147,6 @@ New-NetQosPolicy -Name "RDP Shortpath" -AppPathNameMatchCondition "svchost.exe" 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu den Bandbreitenanforderungen für Windows Virtual Desktop finden Sie unter [RDP-Bandbreitenanforderungen (Remotedesktopprotokoll)](rdp-bandwidth.md).
-* Weitere Informationen zur Netzwerkkonnektivität von Windows Virtual Desktop finden Sie unter [Grundlegendes zur Windows Virtual Desktop-Netzwerkkonnektivität](network-connectivity.md).
-* Informationen zu den ersten Schritten mit Quality of Service (QoS) für Windows Virtual Desktop finden Sie unter [Implementieren von Quality of Service (QoS) für Windows Virtual Desktop](rdp-quality-of-service-qos.md).
+* Informationen zu den Bandbreitenanforderungen für Azure Virtual Desktop finden Sie unter [Grundlegendes zu Bandbreitenanforderungen für das Remotedesktopprotokoll (RDP)](rdp-bandwidth.md).
+* Weitere Informationen zur Netzwerkkonnektivität von Azure Virtual Desktop finden Sie unter [Grundlegendes zur Azure Virtual Desktop-Netzwerkkonnektivität](network-connectivity.md).
+* Informationen zu den ersten Schritten mit Quality of Service (QoS) für Azure Virtual Desktop finden Sie unter [Implementieren von Quality of Service (QoS) für Azure Virtual Desktop](rdp-quality-of-service-qos.md).

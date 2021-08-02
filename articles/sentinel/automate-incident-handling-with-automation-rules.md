@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2021
 ms.author: yelevin
-ms.openlocfilehash: 1ff9fbbb6cd4b8827555a6cb1b222ed4eb0a5299
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 869693765463589c3e94aef9a1cee17867117c5d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608839"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072671"
 ---
 # <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>Automatisierung der Vorfallbehandlung in Azure Sentinel mit Automatisierungsregeln
 
@@ -42,7 +42,7 @@ Automatisierungsregeln bestehen aus mehreren Komponenten:
 
 Automatisierungsregeln werden durch die Erstellung eines Incidents ausgelöst. 
 
-Zur Übersicht: Vorfälle werden aus Alarmen durch Analyseregeln erstellt, von denen es vier Typen gibt, wie im Tutorial [Bedrohungen erkennen mit integrierten Analyseregeln in Azure Sentinel erläutert](tutorial-detect-threats-built-in.md).
+Zu überprüfen: Vorfälle werden durch Analyseregeln aus Alarmen erstellt, von denen es mehrere Typen gibt, wie im Tutorial [Erkennen von Bedrohungen mit integrierten Analyseregeln in Azure Sentinel](tutorial-detect-threats-built-in.md) erläutert.
 
 ### <a name="conditions"></a>Bedingungen
 
@@ -54,7 +54,7 @@ Es können Aktionen definiert werden, die ausgeführt werden, wenn die Bedingung
 
 - Ändern des Status eines Incidents, sodass der Workflow auf dem neuesten Stand bleibt.
 
-  - Wenn Sie zu „geschlossen“ wechseln, wird der [Schließungsgrund](tutorial-investigate-cases.md#closing-an-incident) angegeben und ein Kommentar hinzugefügt. Dies hilft Ihnen dabei, ihre Leistung und Effektivität zu verfolgen und eine Feinabstimmung durchführen, um falsch positive Ergebnisse zu reduzieren.
+  - Wenn Sie zu „geschlossen“ wechseln, wird der [Schließungsgrund](tutorial-investigate-cases.md#closing-an-incident) angegeben und ein Kommentar hinzugefügt. Dies hilft Ihnen dabei, ihre Leistung und Effektivität zu überwachen und eine Feinabstimmung durchführen, um [False Positives](false-positives.md) zu reduzieren.
 
 - Ändern des Schweregrades eines Incidents – basierend auf dem Vorhandensein, der Abwesenheit, den Werten oder den Attributen der am Incident beteiligten Entitäten können Sie eine Neubewertung und Neupriorisierung vornehmen.
 
@@ -62,7 +62,7 @@ Es können Aktionen definiert werden, die ausgeführt werden, wenn die Bedingung
 
 - Hinzufügen eines Tags zu einem Incident – dies ist hilfreich bei der Klassifizierung von Incidents nach Betreff, Angreifer oder nach einem anderen gemeinsamen Nenner.
 
-Außerdem können Sie eine Aktion zum Ausführen eines [Playbooks](tutorial-respond-threats-playbook.md)definieren, um komplexere Antwortaktionen zu erstellen, einschließlich solcher, die externe Systeme einschließen. Nur Playbooks, die durch den [Incident ausgelöst](automate-responses-with-playbooks.md#azure-logic-apps-basic-concepts) werden, sind für die Verwendung in Automatisierungsregeln verfügbar. Sie können eine Aktion so definieren, dass sie mehrere Playbooks oder Kombinationen von Playbooks und anderen Aktionen umfasst, sowie die Reihenfolge, in der sie ausgeführt werden sollen.
+Außerdem können Sie eine Aktion zum [**Ausführen eines Playbooks**](tutorial-respond-threats-playbook.md) definieren, um komplexere Antwortaktionen zu erstellen, die auch externe Systeme involvieren können. **Nur** durch den [**Incidenttrigger**](automate-responses-with-playbooks.md#azure-logic-apps-basic-concepts) aktivierte Playbooks sind für Automatisierungsregeln verfügbar. Sie können eine Aktion so definieren, dass sie mehrere Playbooks oder Kombinationen von Playbooks und anderen Aktionen umfasst, sowie die Reihenfolge, in der sie ausgeführt werden sollen.
 
 ### <a name="expiration-date"></a>Ablaufdatum
 
@@ -132,12 +132,27 @@ Damit eine Automatisierungsregel ein Playbook ausführen kann, muss diesem Konto
 
 Wenn Sie eine Automatisierungsregel konfigurieren und eine Aktion **Playbook ausführen** hinzufügen, wird eine Dropdown Liste mit Playbooks angezeigt. Playbooks, in denen Azure Sentinel nicht über Berechtigungen verfügt, werden als nicht verfügbar ("ausgeblendet") angezeigt. Sie können Azure Sentinel Berechtigungen für die Ressourcengruppen der Playbooks direkt erteilen, indem Sie den Link **Playbook Berechtigungen** verwalten auswählen.
 
-> [!NOTE]
-> **Berechtigungen in einer Multi-Tenant-Architektur**
->
-> Automatisierungsregeln unterstützen vollständig arbeitsplatzübergreifende und mandantenübergreifende Bereitstellungen (im Falle von mandantenübergreifenden Bereitstellungen unter Verwendung von [Azure Lighthouse](extend-sentinel-across-workspaces-tenants.md#managing-workspaces-across-tenants-using-azure-lighthouse) ).
->
-> Wenn Ihre Azure Sentinel Bereitstellung eine Multi-Tenant-Architektur verwendet (wenn Sie z. B. ein MSSP sind), können Sie daher eine Automatisierungsregel in einem Tenant ein Playbook ausführen lassen, das sich in einem anderen Tenant befindet, aber die Berechtigungen für Sentinel zur Ausführung der Playbooks müssen in dem Tenant definiert werden, in dem sich die Playbooks befinden, nicht in dem Tenant, in dem die Automatisierungsregeln definiert sind.
+#### <a name="permissions-in-a-multi-tenant-architecture"></a>Berechtigungen in einer Multi-Tenant-Architektur
+
+Automatisierungsregeln unterstützen arbeitsplatzübergreifende und [mehrinstanzfähige Bereitstellungen](extend-sentinel-across-workspaces-tenants.md#managing-workspaces-across-tenants-using-azure-lighthouse) vollständig (im Falle von mehrinstanzfähigen-Bereitstellungen unter Verwendung von [Azure Lighthouse](../lighthouse/index.yml)).
+
+Wenn Ihre Azure Sentinel Bereitstellung eine mehrinstanzfähige Architektur aufweist, können Sie daher eine Automatisierungsregel in einem Mandanten ein Playbook ausführen lassen, das sich in einem anderen Mandanten befindet, aber die Berechtigungen für Sentinel zur Ausführung der Playbooks müssen in dem Mandanten definiert werden, in dem sich die Playbooks befinden, nicht in dem Mandanten, in dem die Automatisierungsregeln definiert sind.
+
+Im speziellen Fall eines Dienstanbieters für verwaltete Sicherheit (Managed Security Service Provider, MSSP), bei dem ein Dienstanbieter-Mandant einen Azure Sentinel-Arbeitsbereich in einem Kunden-Mandanten verwaltet, gibt es zwei wichtige Szenarien:
+
+- **Eine Automatisierungsregel, die im Kunden-Mandanten erstellt wurde, ist so konfiguriert, dass ein Playbook ausgeführt wird, das sich im Mandanten des Dienstanbieters befindet.** 
+
+    Dieser Ansatz dient normalerweise zum Schutz geistigen Eigentums im Playbook. Dies ist ohne Weiteres umsetzbar. Wenn Sie eine Playbookaktion in Ihrer Automatisierungsregel definieren und die Phase erreichen, in der Sie Azure Sentinel-Berechtigungen für die Ressourcengruppe erteilen, in der sich das Playbook befindet (über das Panel **Playbookberechtigungen verwalten**), sehen Sie die zum Mandanten des Dienstanbieters gehörenden Ressourcengruppen unter den wählbaren Ressourcengruppen. [Sehen Sie sich hier eine Beschreibung des gesamten Ablaufs an.](tutorial-respond-threats-playbook.md#respond-to-incidents)
+
+- **Eine Automatisierungsregel, die (angemeldet beim Mandanten des Dienstanbieters) im Arbeitsbereich des Kunden erstellt wurde, ist so konfiguriert, dass ein Playbook ausgeführt wird, das sich im Mandanten des Kunden befindet.**
+
+    Diese Konfiguration wird verwendet, wenn keine Notwendigkeit besteht, geistiges Eigentum zu schützen. Damit dieses Szenario funktioniert, benötigt Azure Sentinel Berechtigungen zum Ausführen des Playbooks in ***beiden Mandanten** _. Im Kunden-Mandanten gewähren Sie diese im Panel _ *Playbookberechtigungen verwalten**, genau wie im obigen Szenario. Um die relevanten Berechtigungen im Mandanten des Dienstanbieters zu erteilen, müssen Sie der Ressourcengruppe, in der sich das Playbook befindet, eine zusätzliche Azure Lighthouse-Delegierung hinzufügen, die der **Azure Security Insights**-App mit der Rolle **Mitwirkender für Azure Sentinel-Automatisierung** Zugriffsrechte erteilt.
+
+    Das Szenario sieht folgendermaßen aus:
+
+    :::image type="content" source="./media/automate-incident-handling-with-automation-rules/automation-rule-multi-tenant.png" alt-text="Regelarchitektur der mehrinstanzfähigen Automatisierung":::
+
+    Informationen zum Einrichten finden Sie in [unseren Anweisungen](tutorial-respond-threats-playbook.md#permissions-to-run-playbooks).
 
 ## <a name="creating-and-managing-automation-rules"></a>Erstellen und Verwalten von Automatisierungsregeln
 

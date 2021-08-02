@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fcbf6cd22b67f2e3776c78b166da5733e606542
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95996711"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078346"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Was ist die Azure Active Directory-Architektur?
 
@@ -105,11 +105,11 @@ Mithilfe der Microsoft Graph-API von Azure AD ausgeführte Anwendungsschreibvorg
  >[!NOTE]
  >Schreibvorgänge werden sofort auf dem sekundären Replikat repliziert, für das die Lesevorgänge der logischen Sitzung ausgestellt wurden.
 
-#### <a name="backup-protection"></a>Sicherungsschutz
+#### <a name="service-level-backup"></a>Sicherung auf Dienstebene
 
-Das Verzeichnis implementiert anstelle des endgültigen Löschens das vorläufige Löschen für Benutzer und Mandanten, um eine einfache Wiederherstellung zu ermöglichen, falls Daten von einem Kunden versehentlich gelöscht werden. Wenn Ihr Mandantenadministrator Benutzer versehentlich löscht, kann der Vorgang leicht rückgängig gemacht werden, und die gelöschten Benutzer können wiederhergestellt werden.
-
-Azure AD implementiert tägliche Sicherungen aller Daten und kann die Daten so autoritativ wiederherstellen, falls es zu logischen Löschungen oder Beschädigungen kommt. Für die Datenschicht werden Fehlerbehebungscodes verwendet, damit eine Überprüfung auf Fehler durchgeführt werden kann und bestimmte Arten von Datenträgerfehlern automatisch behoben werden können.
+Azure AD implementiert eine tägliche Sicherung von Verzeichnisdaten und kann diese Sicherungen verwenden, um Daten bei einem dienstweiten Problem wiederherzustellen.
+ 
+Das Verzeichnis implementiert ebenfalls vorläufige Löschvorgänge anstelle von endgültigen Löschvorgängen für ausgewählte Objekttypen. Der Mandantenadministrator kann alle versehentlichen Löschungen dieser Objekte innerhalb von 30 Tagen rückgängig machen. Weitere Informationen finden Sie unter [API zum Wiederherstellen gelöschter Objekte](/graph/api/directory-deleteditems-restore).
 
 #### <a name="metrics-and-monitors"></a>Metriken und Überwachungen
 

@@ -7,12 +7,12 @@ author: StefArroyo
 ms.author: esarroyo
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperf-fy21q1
-ms.openlocfilehash: 3c8e2559d1dc8fce27815d498578d352fa9fe498
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 777eeb615596d353770b7abcbe10191707e6fbfe
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372823"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072737"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Installieren und Verwenden des Azure Cosmos DB-Emulators für lokale Entwicklung und Tests
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -97,8 +97,7 @@ Der Azure Cosmos DB-Emulator wird standardmäßig auf dem lokalen Computer („l
 
 ## <a name="use-the-emulator-on-linux-or-macos"></a><a id="run-on-linux-macos"></a>Verwenden des Emulators unter Linux oder macOS
 
-Der Azure Cosmos DB-Emulator kann derzeit nur unter Windows ausgeführt werden. Bei Verwenden von Linux oder macOS können Sie den Emulator in einer Windows-VM ausführen, die in einem Hypervisor wie Parallels oder VirtualBox gehostet wird.
-
+Der Azure Cosmos DB-Emulator kann derzeit nur unter Windows ausgeführt werden. Bei Verwenden von Linux oder macOS empfehlen wir Ihnen, den [Linux-Emulator (Vorschau)](linux-emulator.md) oder den Emulator in einer Windows-VM auszuführen, die in einem Hypervisor wie Parallels oder VirtualBox gehostet wird.
 > [!NOTE]
 > Bei jedem Neustart des virtuellen Windows-Computers, der in einem Hypervisor gehostet wird, müssen Sie das Zertifikat neu importieren, da sich die IP-Adresse des virtuellen Computers ändert. Der Import des Zertifikats ist nicht erforderlich, wenn Sie den virtuellen Computer so konfiguriert haben, dass die IP-Adresse beibehalten wird.
 

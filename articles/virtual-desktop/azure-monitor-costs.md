@@ -1,17 +1,17 @@
 ---
-title: Monitor Windows Virtual Desktop Kostenvoranschläge - Azure
-description: Wie Sie die Kosten und Preise für die Verwendung von Azure Monitor für Windows Virtual Desktop abschätzen können.
+title: Monitor Azure Virtual Desktop Kostenvoranschläge - Azure
+description: Wie Sie die Kosten und Preise für die Verwendung von Azure Monitor für Azure Virtual Desktop abschätzen können.
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d3c65c08691a234934a1641af9cc8203f655ef8c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9011e22359e7df72f1754ec4f588f41e5342e868
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144311"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745329"
 ---
 # <a name="estimate-azure-monitor-costs"></a>Azure-Monitor-Kosten abschätzen
 
@@ -29,11 +29,11 @@ In diesem Artikel werden die folgenden Punkte erläutert, die Ihnen dabei helfen
 
 Wir empfehlen Ihnen, einen vordefinierten Datensatz zu verwenden, die als Protokolle in Ihren Log Analytics-Arbeitsbereich geschrieben wurden. In den folgenden Beispielschätzungen betrachten wir die abrechenbaren Daten in der Standardkonfiguration
 
-Die vordefinierten Datensätze für Azure Monitor für Windows Virtual Desktop umfassen:
+Die vordefinierten Datensätze für Azure Monitor für Azure Virtual Desktop umfassen:
 
 - Leistungszähler von den Sitzungshosts
 - Windows-Ereignisprotokolle von den Sitzungshosts
-- Windows Virtual Desktop Diagnose aus der Service-Infrastruktur
+- Azure Virtual Desktop Diagnose aus der Service-Infrastruktur
 
 Die Kosten für die Aufnahme und Speicherung von Daten hängen von der Größe, dem Zustand und der Nutzung Ihrer Umgebung ab. Die Beispielschätzungen, die wir in diesem Artikel verwenden, um die zu erwartenden Kostenspannen zu berechnen, basieren auf gesunden virtuellen Maschinen mit geringem Stromverbrauch, basierend auf unseren [Richtlinien für die Dimensionierung virtueller Maschinen](/windows-server/remote/remote-desktop-services/virtual-machine-recs), um eine Spanne der zu erwartenden Kosten für Datenaufnahme und Speicherung zu berechnen.
 
@@ -53,7 +53,7 @@ Die Hochleistungs-VM, die wir in unserem Beispiel verwenden, umfasst die folgend
 
 ## <a name="estimating-performance-counter-ingestion"></a>Geschätzte Leistungszähleraufnahme
 
-Leistungszähler zeigen an, wie sich die Systemressourcen verhalten. Der Leistungszähler für die Datenaufnahme hängt von der Größe und Nutzung Ihrer Umgebung ab. In den meisten Fällen sollten die Leistungszähler 80 bis 99 % Ihrer Datenaufnahme für Azure Monitor für Windows Virtual Desktop ausmachen.
+Leistungszähler zeigen an, wie sich die Systemressourcen verhalten. Der Leistungszähler für die Datenaufnahme hängt von der Größe und Nutzung Ihrer Umgebung ab. In den meisten Fällen sollten die Leistungszähler 80 bis 99 % Ihrer Datenaufnahme für Azure Monitor für Azure Virtual Desktop ausmachen.
 
 Bevor Sie mit dem Schätzen beginnen, ist es wichtig, dass Sie verstehen, dass jeder Leistungsindikator Daten mit einer bestimmten Frequenz sendet. Wir stellen eine Standard-Sample-Rate pro Minute ein (Sie können diese Rate auch in den Einstellungen bearbeiten), aber diese Rate wird je nach Zähler mit unterschiedlichen Multiplikationsfaktoren angewandt. Die folgenden Faktoren beeinflussen die Rate:
 
@@ -87,7 +87,7 @@ Bevor Sie mit dem Schätzen beginnen, ist es wichtig, dass Sie verstehen, dass j
 
    Standardmäßige Stichprobenrate pro Minute × Sitzungen pro Tag × durchschnittliche Sitzungsdauer × durchschnittliche Anzahl von Prozessen pro Sitzung = Anzahl der pro Tag gesendeten Datensätze
 
-Die folgende Tabelle listet die 20 Leistungszähler auf, die Azure Monitor for Windows Virtual Desktop sammelt, sowie deren Standardwerte:
+Die folgende Tabelle listet die 20 Leistungszähler auf, die Azure Monitor for Azure Virtual Desktop sammelt, sowie deren Standardwerte:
 
 | Name des Leistungsindikators | Standard-Abtastrate | Frequenz Faktor |
 |--------------|---------------------|------------------|
@@ -120,7 +120,7 @@ Informationen zu Leistungsindikatoren zur Eingabeverzögerung finden Sie unter [
 
 Windows-Ereignisprotokolle sind Datenquellen, die von Log Analytics-Agents auf Windows-VMs gesammelt werden. Sie können Ereignisse sowohl aus Standardprotokollen wie „System“ und „Anwendung“ als auch aus benutzerdefinierten Protokollen sammeln, die von zu überwachenden Anwendungen erstellt wurden.
 
-Dies sind die standardmäßigen Windows-Ereignisse für Azure Monitor für virtuellen Windows-Desktop:
+Dies sind die standardmäßigen Windows-Ereignisse für Azure Monitor für virtuellen Azure-Desktop:
 
 - Application
 - Microsoft-Windows-TerminalServices-RemoteConnectionManager/Admin
@@ -150,7 +150,7 @@ Der Dienst sendet Diagnoseinformationen immer dann, wenn die Umgebung den zum Er
 
 Wenn wir beispielsweise schätzen, dass die Größe der einzelnen Diagnosedaten Sätze in diesem Beispiel 200 Bytes beträgt, beträgt die Gesamtzahl der erfassten Daten weniger als 1 MB pro VM pro Tag.
 
-Weitere Informationen zu den Kategorien von Aktivitäts-Protokollen finden Sie unter [Windows Virtual Desktop Diagnostics](diagnostics-log-analytics.md).
+Weitere Informationen zu den Kategorien von Aktivitäts-Protokollen finden Sie unter [Azure Virtual Desktop Diagnostik](diagnostics-log-analytics.md).
 
 ## <a name="estimating-total-costs"></a>Schätzung der Gesamtkosten
 
@@ -160,9 +160,9 @@ Abschließend werden die Gesamtkosten geschätzt. In diesem Beispiel nehmen wir 
 |-------------------------------------|------------------------------------------|
 | Leistungsindikatoren   | 90-130 |
 | Ereignisse    | 2 - 15 |
-| Windows Virtual Desktop Diagnostik | \< 1 |
+| Azure Virtual Desktop Diagnostik | \< 1 |
 
-In diesem Beispiel liegt die gesamte Datenaufnahme für Azure Monitor for Windows Virtual Desktop zwischen 92 und 145 Megabyte pro VM pro Tag. Mit anderen Worten: Alle 31 Tage nimmt jede VM etwa 3 bis 5 Gigabyte an Daten auf.
+In diesem Beispiel liegt die gesamte Datenaufnahme für Azure Monitor für Azure Virtual Desktop zwischen 92 und 145 Megabyte pro VM pro Tag. Mit anderen Worten: Alle 31 Tage nimmt jede VM etwa 3 bis 5 Gigabyte an Daten auf.
 
 Unter Verwendung des standardmäßigen Pay-as-you-go-Modells für die [Preisgestaltung von Log Analytics](https://azure.microsoft.com/pricing/details/monitor/) können Sie die Kosten für die Datensammlung und Speicherung von Azure Monitor pro Monat schätzen. Abhängig von der Datenerfassung können Sie auch das Kapazitäts-Reservierungs-Modell für Log Analytics Preise in Erwägung gezogen.
 
@@ -173,24 +173,24 @@ In diesem Abschnitt wird erläutert, wie Sie die Datenaufnahme messen und verwal
 Informationen zur Verwaltung von Rechten und Berechtigungen für die Arbeitsmappe finden Sie unter [Zugriffssteuerung](../azure-monitor/visualize/workbooks-access-control.md).
 
 >[!NOTE]
->Das Entfernen von Datenpunkten hat Auswirkungen auf die entsprechenden Darstellungen in Azure Monitor für Windows Virtual Desktop.
+>Das Entfernen von Datenpunkten hat Auswirkungen auf die entsprechenden Darstellungen in Azure Monitor für Azure Virtual Desktop.
 
 ### <a name="log-analytics-settings"></a>Log Analytics-Einstellungen
 
 Hier finden Sie einige Vorschläge zur Optimierung Ihrer Log Analytics-Einstellungen für die Verwaltung der Datenaufnahme:
 
-- Verwenden Sie einen bestimmten Log Analytics-Arbeitsbereich für Ihre Windows Virtual Desktop-Ressourcen, um sicherzustellen, dass Log Analytics nur Leistungszähler und Ereignisse für die virtuellen Maschinen in Ihrer Windows Virtual Desktop-Bereitstellung sammelt.
+- Verwenden Sie einen bestimmten Log Analytics-Arbeitsbereich für Ihre Azure Virtual Desktop-Ressourcen, um sicherzustellen, dass Log Analytics nur Leistungszähler und Ereignisse für die virtuellen Maschinen in Ihrer Azure Virtual Desktop-Bereitstellung sammelt.
 - Passen Sie Ihre Log Analytics-Speichereinstellungen an, um die Kosten zu verwalten. Sie können den Aufbewahrungszeitraum reduzieren, evaluieren, ob eine feste Speicherpreisstufe kosteneffektiver wäre, oder Grenzen für die Datenmenge festlegen, die Sie aufnehmen können, um die Auswirkungen einer ungesunden Bereitstellung zu begrenzen. Weitere Informationen finden Sie unter [Verwalten von Nutzung und Kosten für Azure Monitor Logs](../azure-monitor/logs/manage-cost-storage.md).
 
 ### <a name="remove-excess-data"></a>Überschüssige Daten entfernen
 
-Unsere Standardkonfiguration ist der einzige Datensatz, den wir für Azure Monitor für Windows Virtual Desktop empfehlen. Sie haben jederzeit die Möglichkeit, zusätzliche Datenpunkte hinzuzufügen und sie im Host-Diagnose anzuzeigen: Host-Browser oder benutzerdefinierte Diagramme für sie zu erstellen, allerdings erhöhen sich durch zusätzliche Daten die Kosten für Log Analytics. Diese können zur Kosteneinsparung entfernt werden.
+Unsere Standardkonfiguration ist der einzige Datensatz, den wir für Azure Monitor für Azure Virtual Desktop empfehlen. Sie haben jederzeit die Möglichkeit, zusätzliche Datenpunkte hinzuzufügen und sie im Host-Diagnose anzuzeigen: Host-Browser oder benutzerdefinierte Diagramme für sie zu erstellen, allerdings erhöhen sich durch zusätzliche Daten die Kosten für Log Analytics. Diese können zur Kosteneinsparung entfernt werden.
 
 ### <a name="measure-and-manage-your-performance-counter-data"></a>Messen und verwalten Sie Ihre Leistungszählerdaten
 
 Ihre tatsächlichen Überwachungskosten hängen von der Größe, der Nutzung und dem Zustand Ihrer Umgebung ab. Wie Sie den Dateneingang in Ihrem Log Analytics-Arbeitsbereich messen können, erfahren Sie unter [Verstehen des Volumens der aufgenommenen Protokolldaten](../azure-monitor/logs/manage-cost-storage.md#understanding-ingested-data-volume).
 
-Die Leistungszähler, die von den Sitzungshosts verwendet werden, sind wahrscheinlich die größte Quelle der aufgenommenen Daten für Azure Monitor für Windows Virtual Desktop. Die folgende benutzerdefinierte Abfragevorlage für einen Log Analytics-Arbeitsbereich kann die Häufigkeit und die pro Leistungszähler aufgenommenen Megabytes während des vergangenen Tages verfolgen:
+Die Leistungszähler, die von den Sitzungshosts verwendet werden, sind wahrscheinlich die größte Quelle der aufgenommenen Daten für Azure Monitor für Azure Virtual Desktop. Die folgende benutzerdefinierte Abfragevorlage für einen Log Analytics-Arbeitsbereich kann die Häufigkeit und die pro Leistungszähler aufgenommenen Megabytes während des vergangenen Tages verfolgen:
 
 ```azure
 let WVDHosts = dynamic(['Host1.MyCompany.com', 'Host2.MyCompany.com']);
@@ -206,7 +206,7 @@ Perf
 >[!NOTE]
 >Stellen Sie sicher, dass Sie die Platzhalterwerte der Vorlage durch die in Ihrer Umgebung verwendeten Werte ersetzen, sonst funktioniert die Abfrage nicht.
 
-Diese Abfrage zeigt alle Leistungszähler an, die Sie in der Umgebung aktiviert haben, nicht nur die Standardzähler für Azure Monitor for Windows Virtual Desktop. Diese Informationen können Ihnen helfen zu verstehen, welche Bereiche Sie ins Visier nehmen sollten, um die Kosten zu senken, z. B. die Häufigkeit eines Zählers zu reduzieren oder ihn ganz zu entfernen.
+Diese Abfrage zeigt alle Leistungszähler an, die Sie in der Umgebung aktiviert haben, nicht nur die Standardzähler für Azure Monitor for Azure Virtual Desktop. Diese Informationen können Ihnen helfen zu verstehen, welche Bereiche Sie ins Visier nehmen sollten, um die Kosten zu senken, z. B. die Häufigkeit eines Zählers zu reduzieren oder ihn ganz zu entfernen.
 
 Sie können auch Kosten reduzieren, indem Sie Leistungszähler entfernen. Wie Sie Leistungszähler entfernen oder vorhandene Zähler bearbeiten können, um ihre Häufigkeit zu verringern, erfahren Sie unter [Konfigurieren von Leistungszählern](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters).
 
@@ -216,13 +216,13 @@ Es ist unwahrscheinlich, dass Windows-Ereignisse eine Spitze im Datenaufkommen v
 
 ### <a name="manage-diagnostics"></a>Verwalten Sie die Diagnosen
 
-Die Diagnose von Windows Virtual Desktop sollte weniger als 1% Ihrer Datenspeicherkosten ausmachen, daher empfehlen wir nicht, sie zu entfernen. Um die Diagnose von Windows Virtual Desktop zu verwalten, [verwenden Sie Log Analytics für die Diagnosefunktion](diagnostics-log-analytics.md).
+Die Diagnose von Azure Virtual Desktop sollte weniger als 1% Ihrer Datenspeicherkosten ausmachen, daher empfehlen wir nicht, sie zu entfernen. Um die Diagnose von Azure Virtual Desktop zu verwalten, [verwenden Sie Log Analytics für die Diagnosefunktion](diagnostics-log-analytics.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Monitor for Windows Virtual Desktop finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Azure Monitor für Azure Virtual Desktop finden Sie in den folgenden Artikeln:
 
-- [Verwenden von Azure Monitor for Windows Virtual Desktop zum Überwachen Ihrer Bereitstellung](azure-monitor.md).
+- [Verwenden von Azure Monitor für Azure Virtual Desktop zum Überwachen Ihrer Bereitstellung](azure-monitor.md).
 - Verwenden Sie das [Glossar](azure-monitor-glossary.md), um mehr über Begriffe und Konzepte zu erfahren.
 - Wenn ein Problem auftritt, finden Sie weitere Informationen im [Leitfaden zur Problembehandlung](troubleshoot-azure-monitor.md).
 - Weitere Informationen zur Verwaltung Ihrer Überwachungskosten finden Sie unter[ Überwachen der Nutzung und geschätzte Kosten in Azure Monitor](../azure-monitor/usage-estimated-costs.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Einrichten eines Plans für die Notfallwiederherstellung für Windows Virtual Desktop: Azure'
-description: Anleitung zum Einrichten eines Plans für Geschäftskontinuität und Notfallwiederherstellung für Ihre Windows Virtual Desktop-Bereitstellung.
+title: 'Einrichten eines Plans für die Notfallwiederherstellung für Azure Virtual Desktop: Azure'
+description: Anleitung zum Einrichten eines Plans für Geschäftskontinuität und Notfallwiederherstellung für Ihre Azure Virtual Desktop-Bereitstellung.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 18089bc00e9d02087acb149511fbc2c55077c153
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 91795dbe4e648f12e9a088a5aeffb68bffb46a65
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446926"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757893"
 ---
 # <a name="set-up-a-business-continuity-and-disaster-recovery-plan"></a>Einrichten eines Plans für Geschäftskontinuität und Notfallwiederherstellung
 
 Zum Schützen der Daten Ihrer Organisation müssen Sie möglicherweise eine Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) einführen. Eine solide BCDR-Strategie sorgt dafür, dass Ihre Apps und Workloads während geplanter und ungeplanter Wartungen oder Azure-Ausfälle weiter in Betrieb bleiben.
 
-Windows Virtual Desktop bietet BCDR für den Windows Virtual Desktop-Dienst, um Metadaten von Kunden bei Ausfällen zu bewahren. Wenn ein Ausfall in einer Region auftritt, führen die Komponenten der Dienstinfrastruktur einen Failover auf den zweiten Standort aus und setzen ihre Funktion wie gewohnt fort. Sie können weiterhin auf die Metadaten für den Dienst zugreifen, und die Benutzer können weiterhin Verbindungen mit den verfügbaren Hosts herstellen. Die Verbindungen von Endbenutzern bleiben online, sofern auf die Mandantenumgebung oder die Hosts zugegriffen werden kann.
+Azure Virtual Desktop bietet BCDR für den Azure Virtual Desktop-Dienst, um Metadaten von Kunden bei Ausfällen zu bewahren. Wenn ein Ausfall in einer Region auftritt, führen die Komponenten der Dienstinfrastruktur einen Failover auf den zweiten Standort aus und setzen ihre Funktion wie gewohnt fort. Sie können weiterhin auf die Metadaten für den Dienst zugreifen, und die Benutzer können weiterhin Verbindungen mit den verfügbaren Hosts herstellen. Die Verbindungen von Endbenutzern bleiben online, sofern auf die Mandantenumgebung oder die Hosts zugegriffen werden kann.
 
 Damit sichergestellt ist, dass Benutzer auch während des Ausfalls einer Region Verbindungen herstellen können, müssen Sie ihre virtuellen Computer (VMs) an einen anderen Standort replizieren. Bei einem Ausfall erfolgt dann ein Failover vom primären Standort auf die replizierten VMs am sekundären Standort. Die Benutzer können ohne Unterbrechung weiterhin auf Apps am sekundären Standort zugreifen. Über die VM-Replikation hinaus müssen Sie den Zugriff auf die Benutzeridentitäten am sekundären Standort sicherstellen. Wenn Sie Profilcontainer verwenden, müssen diese ebenfalls repliziert werden. Stellen Sie schließlich sicher, dass Ihre Geschäftsanwendungen, die von Daten am primären Standort abhängig sind, einen Failover mit den restlichen Daten ausführen können.
 
@@ -40,17 +40,17 @@ Zunächst müssen Sie Ihre VMs an den sekundären Standort replizieren. Ihre Opt
 
 Wir empfehlen die Verwendung von [Azure Site Recovery](../site-recovery/site-recovery-overview.md) zum Verwalten der Replikation von VMs an anderen Azure-Standorten, wie in [Azure-zu-Azure-Notfallwiederherstellung](../site-recovery/azure-to-azure-architecture.md) beschrieben. Insbesondere empfehlen wir die Verwendung von Azure Site Recovery für persönliche Hostpools, da Azure Site Recovery sowohl [serverbasierte als auch clientbasierte SKUs](../site-recovery/azure-to-azure-support-matrix.md#replicated-machine-operating-systems) unterstützt.
 
-Wenn Sie Azure Site Recovery verwenden, brauchen Sie diese VMs nicht manuell zu registrieren. Der Windows Virtual Desktop-Agent in der sekundären VM verwendet automatisch das neueste Sicherheitstoken, um eine Verbindung mit der nächstgelegenen Dienstinstanz herzustellen. Die VM (Sitzungshost) am sekundären Standort wird automatisch Teil des Hostpools. Der Endbenutzer muss während des Prozesses automatisch erneut eine Verbindung herstellen, abgesehen davon gibt es aber keine weiteren manuellen Vorgänge.
+Wenn Sie Azure Site Recovery verwenden, brauchen Sie diese VMs nicht manuell zu registrieren. Der Azure Virtual Desktop-Agent in der sekundären VM verwendet automatisch das neueste Sicherheitstoken, um eine Verbindung mit der nächstgelegenen Dienstinstanz herzustellen. Die VM (Sitzungshost) am sekundären Standort wird automatisch Teil des Hostpools. Der Endbenutzer muss während des Prozesses automatisch erneut eine Verbindung herstellen, abgesehen davon gibt es aber keine weiteren manuellen Vorgänge.
 
 Wenn während des Ausfalls Benutzerverbindungen bestehen, müssen Sie die Benutzerverbindungen in der aktuellen Region beenden, bevor der Administrator den Failover auf die sekundäre Region einleiten kann.
 
-Führen Sie dieses Cmdlet aus, um die Benutzer in Windows Virtual Desktop (klassisch) zu trennen:
+Führen Sie dieses Cmdlet aus, um die Benutzer in Azure Virtual Desktop (klassisch) zu trennen:
 
 ```powershell
 Invoke-RdsUserSessionLogoff
 ```
 
-Führen Sie dieses Cmdlet aus, um die Benutzer in der in Azure integrierten Version von Windows Virtual Desktop zu trennen:
+Führen Sie dieses Cmdlet aus, um die Benutzer in der in Azure integrierten Version von Azure Virtual Desktop zu trennen:
 
 ```powershell
 Remove-AzWvdUserSession
@@ -84,7 +84,7 @@ Wenn Sie Profilcontainer verwenden, besteht der nächste Schritt darin, Datenrep
    - Azure NetApp Files
    - Cloudcache für die Replikation
 
-Weitere Informationen finden Sie unter [Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop](store-fslogix-profile.md).
+Weitere Informationen finden Sie unter [Speicheroptionen für FSLogix-Profilcontainer in Azure Virtual Desktop](store-fslogix-profile.md).
 
 Wenn Sie die Notfallwiederherstellung für Profile einrichten, bieten sich Ihnen die folgenden Optionen:
 

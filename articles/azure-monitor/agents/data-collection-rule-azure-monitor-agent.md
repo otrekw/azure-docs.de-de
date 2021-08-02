@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 884f048ac099cfc6b799fe266172a0eecef3db6f
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c1c0c7c2bf312b636c5ed16223a6bf8865d44fd1
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478368"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112070949"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)
 
@@ -38,26 +38,30 @@ Sie können das Azure-Portal verwenden, um eine Datensammlungsregel zu erstellen
 > [!IMPORTANT]
 > Derzeit besteht folgendes bekanntes Problem: Wenn die Datensammlungsregel eine verwaltete Identität auf einem virtuellen Computer erstellt, der bereits über eine benutzerseitig zugewiesene verwaltete Identität verfügt, wird die benutzerseitig zugewiesene Identität deaktiviert.
 
-Wählen Sie im Portal im Menü **Azure Monitor** unter **Einstellungen** die Option **Datensammlungsregeln** aus. Klicken Sie auf **Hinzufügen**, um eine neue Datensammlungsregel und eine Zuweisung hinzuzufügen.
+> [!NOTE]
+> Wenn Sie Daten an Log Analytics senden möchten, müssen Sie die Datensammlungsregel in **derselben Region** erstellen, in der sich auch Ihr Log Analytics-Arbeitsbereich befindet. Die Regel kann Computern in anderen unterstützten Regionen zugeordnet werden.
 
-[![Datensammlungsregeln](media/data-collection-rule-azure-monitor-agent/data-collection-rules.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rules.png#lightbox)
+Wählen Sie im Portal im Menü **Azure Monitor** unter **Einstellungen** die Option **Datensammlungsregeln** aus. Klicken Sie auf **Erstellen**, um eine neue Datensammlungsregel und Zuweisung zu erstellen.
 
-Klicken Sie auf **Hinzufügen**, um eine neue Regel und eine Gruppe von Zuordnungen zu erstellen. Geben Sie einen **Regelnamen** und dann ein **Abonnement** und eine **Ressourcengruppe** an. Hiermit wird angegeben, wo die Datensammlungsregel erstellt wird. Die virtuellen Computer und ihre Zuordnungen können unter einem beliebigen Abonnement bzw. einer Ressourcengruppe auf dem Mandanten angeordnet sein.
+[![Datensammlungsregeln](media/data-collection-rule-azure-monitor-agent/data-collection-rules-updated.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rules-updated.png#lightbox)
 
-[![Grundlagen von Datensammlungsregeln](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics.png#lightbox)
+Klicken Sie auf **Hinzufügen**, um eine neue Regel und eine Gruppe von Zuordnungen zu erstellen. Geben Sie einen **Regelnamen** und dann ein **Abonnement**, eine **Ressourcengruppe** und eine **Region** an. Hiermit wird angegeben, wo die Datensammlungsregel erstellt wird. Die virtuellen Computer und ihre Zuordnungen können unter einem beliebigen Abonnement bzw. einer Ressourcengruppe auf dem Mandanten angeordnet sein.
+Wählen Sie außerdem den geeigneten **Plattformtyp** aus, der den Ressourcentyp angibt, auf den diese Regel angewendet werden kann. Bei benutzerdefinierten Regeln sind sowohl Windows- als auch Linux-Typen zulässig. Dies ermöglicht vorab zusammengestellte Erstellungsoberflächen mit Optionen, die auf den ausgewählten Plattformtyp zugeschnitten sind.
 
-Fügen Sie auf der Registerkarte **Virtuelle Computer** virtuelle Computer hinzu, für die die Datensammlungsregel angewendet werden sollte. In Ihrer Umgebung sollten sowohl Azure-VMs als auch Server mit Azure Arc-Unterstützung aufgeführt sein. Der Azure Monitor-Agent wird auf virtuellen Computern installiert, auf denen dies noch nicht durchgeführt wurde.
+[![Grundlagen von Datensammlungsregeln](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics-updated.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics-updated.png#lightbox)
 
-[![Datensammlungsregeln für virtuelle Computer](media/data-collection-rule-azure-monitor-agent/data-collection-rule-virtual-machines.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-virtual-machines.png#lightbox)
+Fügen Sie auf der Registerkarte **Ressourcen** die Ressourcen (virtuelle Computer, VM-Skalierunggruppen, Arc für Server) hinzu, auf die die Datensammlungsregel angewendet werden soll. Der Azure Monitor-Agent wird auf Ressourcen installiert, auf denen er noch nicht installiert ist. Außerdem wird die verwaltete Azure-Identität aktiviert.
+
+[![Datensammlungsregeln für virtuelle Computer](media/data-collection-rule-azure-monitor-agent/data-collection-rule-virtual-machines-updated.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-virtual-machines-updated.png#lightbox)
 
 Klicken Sie auf der Registerkarte **Sammeln und übermitteln** auf **Datenquelle hinzufügen**, um eine Datenquelle und einen Zielsatz hinzuzufügen. Wählen Sie einen **Datenquellentyp** aus. Die entsprechenden Details für die Auswahl werden angezeigt. Für Leistungsindikatoren können Sie eine Auswahl aus einer Gruppe mit Objekten mit der zugehörigen Stichprobenhäufigkeit treffen. Für Ereignisse können Sie bestimmte Protokolle bzw. entsprechende Funktionen und den Schweregrad auswählen. 
 
-[![Einfache Datenquelle](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
+[![Einfache Datenquelle](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic-updated.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic-updated.png#lightbox)
 
 
 Um andere Protokolle und Leistungsindikatoren aus den [derzeit unterstützten Datenquellen](azure-monitor-agent-overview.md#data-sources-and-destinations) anzugeben oder um Ereignisse mithilfe von XPath-Abfragen zu filtern, wählen Sie **Benutzerdefiniert** aus. Anschließend können Sie einen [XPath](https://www.w3schools.com/xml/xpath_syntax.asp) für bestimmte Werte angeben, die gesammelt werden sollen. Beispiele hierzu finden Sie unter [Beispiel für eine Datensammlungsregel](data-collection-rule-overview.md#sample-data-collection-rule).
 
-[![Datenquelle: Benutzerdefiniert](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
+[![Datenquelle: Benutzerdefiniert](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-custom-updated.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-custom-updated.png#lightbox)
 
 Fügen Sie auf der Registerkarte **Ziel** mindestens ein Ziel für die Datenquelle hinzu. Für Windows-Ereignis- und Syslog-Datenquellen ist nur das Senden an Azure Monitor-Protokolle möglich. Bei Leistungsindikatoren ist sowohl das Senden an Azure Monitor-Metriken als auch an Azure Monitor-Protokolle möglich.
 
@@ -101,6 +105,9 @@ Die folgende Tabelle enthält Beispiele für das Filtern von Ereignissen mithilf
 
 Führen Sie die folgenden Schritte aus, um mithilfe der REST-API eine Datensammlungsregel und Zuordnungen zu erstellen.
 
+> [!NOTE]
+> Wenn Sie Daten an Log Analytics senden möchten, müssen Sie die Datensammlungsregel in **derselben Region** erstellen, in der sich auch Ihr Log Analytics-Arbeitsbereich befindet. Die Regel kann Computern in anderen unterstützten Regionen zugeordnet werden.
+
 1. Erstellen Sie die DCR-Datei manuell im JSON-Format, das im [Beispiel für eine Datensammlungsregel](data-collection-rule-overview.md#sample-data-collection-rule) gezeigt wird.
 
 2. Erstellen Sie die Regel mithilfe der [REST-API](/rest/api/monitor/datacollectionrules/create#examples).
@@ -110,8 +117,43 @@ Führen Sie die folgenden Schritte aus, um mithilfe der REST-API eine Datensamml
 
 ## <a name="create-association-using-resource-manager-template"></a>Erstellen einer Zuordnung mithilfe einer Resource Manager-Vorlage
 
+> [!NOTE]
+> Wenn Sie Daten an Log Analytics senden möchten, müssen Sie die Datensammlungsregel in **derselben Region** erstellen, in der sich auch Ihr Log Analytics-Arbeitsbereich befindet. Die Regel kann Computern in anderen unterstützten Regionen zugeordnet werden.
+
 Sie können eine Zuordnung zu einer Azure-VM oder einem Server mit Azure Arc-Unterstützung mithilfe einer Resource Manager-Vorlage erstellen. Beispielvorlagen finden Sie unter [Beispiele für Resource Manager-Vorlagen für Datensammlungsregeln in Azure Monitor](./resource-manager-data-collection-rules.md).
 
+
+## <a name="manage-rules-and-association-using-powershell"></a>Verwalten von Regeln und Zuordnungen mithilfe von PowerShell
+
+> [!NOTE]
+> Wenn Sie Daten an Log Analytics senden möchten, müssen Sie die Datensammlungsregel in **derselben Region** erstellen, in der sich auch Ihr Log Analytics-Arbeitsbereich befindet. Die Regel kann Computern in anderen unterstützten Regionen zugeordnet werden.
+
+**Datensammlungsregeln in Azure Monitor (Vorschau)**
+
+| Aktion | Befehl |
+|:---|:---|
+| Abrufen von Regeln | [Get-AzDataCollectionRule](/powershell/module/az.monitor/get-azdatacollectionrule?view=azps-5.4.0&preserve-view=true) |
+| Erstellen einer Regel | [New-AzDataCollectionRule](/powershell/module/az.monitor/new-azdatacollectionrule?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+| Aktualisieren einer Regel | [Set-AzDataCollectionRule](/powershell/module/az.monitor/set-azdatacollectionrule?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+| Löschen einer Regel | [Remove-AzDataCollectionRule](/powershell/module/az.monitor/remove-azdatacollectionrule?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+| Aktualisieren von „Tags“ für eine Regel | [Update-AzDataCollectionRule](/powershell/module/az.monitor/update-azdatacollectionrule?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+
+**Zuordnungen zu Datensammlungsregeln**
+
+| Aktion | Befehl |
+|:---|:---|
+| Abrufen von Zuordnungen | [Get-AzDataCollectionRuleAssociation](/powershell/module/az.monitor/get-azdatacollectionruleassociation?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+| Erstellen einer Zuordnung | [New-AzDataCollectionRuleAssociation](/powershell/module/az.monitor/new-azdatacollectionruleassociation?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+| Löschen einer Zuordnung | [Remove-AzDataCollectionRuleAssociation](/powershell/module/az.monitor/remove-azdatacollectionruleassociation?view=azps-6.0.0&viewFallbackFrom=azps-5.4.0&preserve-view=true) |
+
+
+
+## <a name="manage-rules-and-association-using-azure-cli"></a>Verwalten von Regeln und Zuordnungen mithilfe der Azure CLI
+
+> [!NOTE]
+> Wenn Sie Daten an Log Analytics senden möchten, müssen Sie die Datensammlungsregel in **derselben Region** erstellen, in der sich auch Ihr Log Analytics-Arbeitsbereich befindet. Die Regel kann Computern in anderen unterstützten Regionen zugeordnet werden.
+
+Dies ist als Teil der Erweiterung **monitor-control-service** der Azure CLI aktiviert. Eine Auflistung aller Befehle finden Sie [hier](/cli/azure/monitor/data-collection/rule?view=azure-cli-latest&preserve-view=true).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

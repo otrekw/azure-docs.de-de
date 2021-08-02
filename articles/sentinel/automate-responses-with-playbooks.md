@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0158c9f5b9debf0c47978e816951e25634621645
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0687b3bf486d2496763237164536be34f504f7ed
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608834"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112070883"
 ---
 # <a name="automate-threat-response-with-playbooks-in-azure-sentinel"></a>Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel
 
@@ -32,7 +32,7 @@ SIEM/SOC-Teams werden regelmäßig mit Sicherheitswarnungen und -vorfällen übe
 
 Viele – wenn nicht sogar der Großteil – dieser Warnungen und Incidents entsprechen wiederkehrenden Mustern, die mithilfe spezifischer, definierter Wartungsaktionen verarbeitet werden können.
 
-Ein Playbook ist eine Sammlung dieser Wartungsmaßnahmen, die von Azure Sentinel als Routine ausgeführt werden können. Ein Playbook kann dabei helfen, Ihre Bedrohungsreaktion zu automatisieren und zu orchestrieren. Es kann manuell ausgeführt oder so eingestellt werden, dass es automatisch als Reaktion auf bestimmte Alarme oder Incidents ausgeführt wird, wenn es durch eine Analyse- bzw. Automatisierungsregel ausgelöst wird.
+Ein Playbook ist eine Sammlung dieser Wartungsmaßnahmen, die von Azure Sentinel als Routine ausgeführt werden können. Ein Playbook kann dabei helfen, Ihre [**Bedrohungsreaktion zu automatisieren und zu orchestrieren**](tutorial-respond-threats-playbook.md). Es kann manuell ausgeführt oder so eingestellt werden, dass es automatisch als Reaktion auf bestimmte Alarme oder Incidents ausgeführt wird, wenn es durch eine Analyse- bzw. Automatisierungsregel ausgelöst wird.
 
 Playbooks werden auf Abonnementebene erstellt und angewendet, aber auf der Registerkarte **Playbooks** (im neuen **Automation** Blade) werden alle Playbooks angezeigt, die für alle ausgewählten Abonnements verfügbar sind.
 
@@ -81,7 +81,7 @@ Azure Logic Apps kommuniziert mit anderen Systemen und Diensten über Konnektore
 - Mit der Rolle **Azure Sentinel Responder** können Sie ein Playbook manuell ausführen.
 - Als **Azure Sentinel Automation Contributor** können Sie mit Automatisierungsregeln Playbooks ausführen. Es wird nicht für andere Zwecke genutzt.
 
-#### <a name="learn-more"></a>Erfahren Sie mehr
+#### <a name="learn-more"></a>Weitere Informationen
 
 - [Weitere Informationen zu Azure-Rollen finden Sie unter Azure Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md#access-to-logic-app-operations).
 - [Weitere Informationen zu Azure-Rollen finden Sie in Azure Sentinel](roles.md).
@@ -156,7 +156,7 @@ Der Incident löst eine Automatisierungsregel aus, die ein Playbook mit den folg
 
 Zwei Beispiele:
 
-**Beispiel 1:**  Reagieren Sie auf eine Analyseregel, die auf einen kompromittierten Benutzer hinweist, der von[Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) entdeckt wurde:
+**Beispiel 1:**  Reagieren Sie auf eine Analyseregel, die auf einen kompromittierten Benutzer hinweist, der von [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) entdeckt wurde:
 
    - Starten, wenn ein [neuer Azure Sentinel-Vorfall erstellt wird](/connectors/azuresentinel/#triggers).
 
@@ -210,13 +210,17 @@ Für Playbooks, die durch die Erstellung von Incidents ausgelöst werden und Inc
 - Erstellen Sie in der Registerkarte **Automatisierungsregeln** im **Automatisierung**-Blade eine neue Automatisierungsregel und geben Sie die entsprechenden Bedingungen und gewünschten Aktionen an. Diese Automatisierungsregel wird auf alle Analyseregeln angewendet, die die angegebenen Bedingungen erfüllen.
 
     > [!NOTE]
+    > **Azure Sentinel-Automatisierungsregeln erfordern Berechtigungen zum Ausführen von Playbooks.**
+    >
     > Zum Ausführen eines Playbooks aus einer Automatisierungsregel verwendet Azure Sentinel ein speziell für Sie genehmigtes Dienstkonto. Die Verwendung dieses Kontos (im Gegensatz zu Ihrem Benutzerkonto) erhöht das Sicherheitsniveau des Dienstes und aktiviert die Automatisierungsregeln-API zur Unterstützung von CI/CD-Anwendungsfällen.
     >
-    > Diesem Konto müssen explizite Berechtigungen für die Ressourcengruppe erteilt werden, in der sich das Playbook befindet. An diesem Punkt kann jede Automatisierungsregel jedes beliebige Playbook in dieser Ressourcengruppe ausführen.
+    > Diesem Konto müssen explizite Berechtigungen (in Form der Rolle **Mitwirkender für Azure Sentinel-Automatisierung**) für die Ressourcengruppe erteilt werden, in der sich das Playbook befindet. An diesem Punkt kann jede Automatisierungsregel jedes beliebige Playbook in dieser Ressourcengruppe ausführen.
     >
-    > Wenn Sie die Aktion **Playbook ausführen** zu einer Automatisierungsregel hinzufügen, wird eine Dropdown-Liste mit Playbooks angezeigt. Playbooks, in denen Azure Sentinel nicht über Berechtigungen verfügt, werden als nicht verfügbar ("ausgeblendet") angezeigt. Sie können Azure Sentinel direkt eine Berechtigung erteilen, indem Sie den Link **Berechtigungen für Playbook** verwalten auswählen.
+    > Wenn Sie die Aktion **Playbook ausführen** zu einer Automatisierungsregel hinzufügen, wird eine Dropdownliste mit Playbooks für Ihre Auswahl angezeigt. Playbooks, in denen Azure Sentinel nicht über Berechtigungen verfügt, werden als nicht verfügbar ("ausgeblendet") angezeigt. Sie können Azure Sentinel direkt eine Berechtigung erteilen, indem Sie den Link **Berechtigungen für Playbook** verwalten auswählen.
     >
     > In einem Szenario mit mehreren Mandanten ([Lighthouse](extend-sentinel-across-workspaces-tenants.md#managing-workspaces-across-tenants-using-azure-lighthouse)) müssen Sie die Berechtigungen für den Mandanten definieren, in dem sich das Playbook befindet, auch wenn sich die Automatisierungsregel, die das Playbook aufruft, in einem anderen Mandanten befindet. Dazu müssen Sie über **Besitzerberechtigungen** für die Ressourcengruppe des Playbooks verfügen.
+    >
+    > Es gibt ein spezifisches Szenario mit einem **Dienstanbieter für verwaltete Sicherheit (Managed Security Service Provider, MSSP)** , bei dem ein Dienstanbieter bei seinem eigenen Mandanten angemeldet ist und mithilfe von [Azure Lighthouse](../lighthouse/index.yml) eine Automatisierungsregel im Arbeitsbereich eines Kunden erstellt. Diese Automatisierungsregel ruft dann ein Playbook auf, das zum Mandanten des Kunden gehört. In diesem Fall müssen Azure Sentinel Berechtigungen für **_beide Mandanten_ *erteilt werden. Im Kundenmandanten erteilen Sie diese genau wie im normalen Szenario mit mehreren Mandanten im Bereich _* Manage playbook permissions** (Playbookberechtigungen verwalten). Um die relevanten Berechtigungen im Mandanten des Dienstanbieters zu erteilen, müssen Sie eine zusätzliche Azure Lighthouse-Delegierung hinzufügen, die Zugriffsrechte für die **Azure Security Insights**-App in Form der Rolle **Mitwirkender für Azure Sentinel-Automatisierung** für die Ressourcengruppe erteilt, in der sich das Playbook befindet. [Hier](tutorial-respond-threats-playbook.md#permissions-to-run-playbooks) erfahren Sie, wie Sie diese Delegierung hinzufügen.
 
 Weitere Informationen finden Sie in der [ausführlichen Anleitung zum Erstellen von Automatisierungsregeln](tutorial-respond-threats-playbook.md#respond-to-incidents).
 

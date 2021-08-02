@@ -1,28 +1,28 @@
 ---
-title: Erstellung eines Mandanten- und Hostpools in Windows Virtual Desktop (klassisch) – Azure
-description: Hier erfahren Sie, wie Sie Probleme mit Mandanten und Hostpools während der Einrichtung einer Mandantenumgebung in Windows Virtual Desktop (klassisch) behandeln.
+title: Erstellung eines Mandanten- und Hostpools in Azure Virtual Desktop (klassisch) – Azure
+description: Hier erfahren Sie, wie Sie Probleme mit Mandanten und Hostpools während der Einrichtung einer Mandantenumgebung in Azure Virtual Desktop (klassisch) behandeln.
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 12be4611f0583c6da630b9e5a0e4b5a82ebfa650
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3b8843d90f9e3cab43b6ec34fadd002e8bc5b475
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444274"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751702"
 ---
-# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Mandanten- und Hostpoolerstellung in Windows Virtual Desktop (klassisch)
+# <a name="tenant-and-host-pool-creation-in-azure-virtual-desktop-classic"></a>Mandanten- und Hostpoolerstellung in Azure Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../troubleshoot-set-up-issues.md) weiter.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../troubleshoot-set-up-issues.md) weiter.
 
-Dieser Artikel behandelt Probleme, die bei der ersten Einrichtung des Windows Virtual Desktop-Mandanten und der zugehörigen Infrastruktur für den Sitzungshostpool auftreten können.
+Dieser Artikel behandelt Probleme, die bei der ersten Einrichtung des Azure Virtual Desktop-Mandanten und der zugehörigen Infrastruktur für den Sitzungshostpool auftreten können.
 
 ## <a name="provide-feedback"></a>Feedback geben
 
-In der [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) können Sie sich mit dem Produktteam und aktiven Communitymitgliedern über den Windows Virtual Desktop-Dienst austauschen.
+In der [Azure Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) können Sie sich mit dem Produktteam und aktiven Communitymitgliedern über den Azure Virtual Desktop-Dienst austauschen.
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Abrufen des Windows 10 Enterprise-Images für mehrere Sitzungen
 
@@ -31,9 +31,9 @@ Um das Windows 10 Enterprise-Image für mehrere Sitzungen zu verwenden, wechseln
 > [!div class="mx-imgBorder"]
 > ![Screenshot: Auswählen von Windows 10 Enterprise for Virtual Desktops, Version 1809.](../media/AzureMarketPlace.png)
 
-## <a name="creating-windows-virtual-desktop-tenant"></a>Erstellen eines Windows Virtual Desktop-Mandanten
+## <a name="creating-azure-virtual-desktop-tenant"></a>Erstellen eines Azure Virtual Desktop-Mandanten
 
-Dieser Abschnitt behandelt mögliche Probleme beim Erstellen des Windows Virtual Desktop-Mandanten.
+Dieser Abschnitt behandelt mögliche Probleme beim Erstellen des Azure Virtual Desktop-Mandanten.
 
 ### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>Error: AADSTS650052 The app needs access to a service (Die APP benötigt Zugriff auf einen Dienst).
 
@@ -47,9 +47,9 @@ configuration of your service subscriptions.650052 Message The app needs access 
 Contact your IT Admin to review the configuration of your service subscriptions.
 ```
 
-**Ursache:** Windows Virtual Desktop in der Azure Active Directory-Instanz wurde keine Erlaubnis erteilt.
+**Ursache:** Azure Virtual Desktop in der Azure Active Directory-Instanz wurde keine Erlaubnis erteilt.
 
-**Behebung:** [Befolgen Sie diese Anleitung](./tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop), um die Erlaubnis zu erteilen.
+**Behebung:** [Befolgen Sie diese Anleitung](./tenant-setup-azure-active-directory.md#grant-permissions-to-azure-virtual-desktop), um die Erlaubnis zu erteilen.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Error: User is not authorized to query the management service (Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen)
 
@@ -78,13 +78,13 @@ Beispiel für unformatierten Fehler:
 > [!div class="mx-imgBorder"]
 > ![Screenshot: Zugewiesene Rolle „TenantCreator“](../media/TenantCreatorRoleAssigned.png)
 
-## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Erstellen von Windows Virtual Desktop-Sitzungshost-VMs
+## <a name="creating-azure-virtual-desktop-session-host-vms"></a>Erstellen von Azure Virtual Desktop-Sitzungshost-VMs
 
-Sitzungshost-VMs können auf unterschiedliche Weise erstellt werden. Das Windows Virtual Desktop-Team hilft aber nur bei VM-Bereitstellungsproblemen in Zusammenhang mit dem [Azure Marketplace](https://azuremarketplace.microsoft.com/)-Angebot. Weitere Informationen finden Sie unter [Probleme bei der Verwendung des Azure Marketplace-Angebots für das Bereitstellen eines Hostpools für Windows Virtual Desktop](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
+Sitzungshost-VMs können auf unterschiedliche Weise erstellt werden. Das Azure Virtual Desktop-Team hilft aber nur bei VM-Bereitstellungsproblemen in Zusammenhang mit dem [Azure Marketplace](https://azuremarketplace.microsoft.com/)-Angebot. Weitere Informationen finden Sie unter [Probleme bei der Verwendung des Azure Marketplace-Angebots für das Bereitstellen eines Hostpools für Azure Virtual Desktop](#issues-using-azure-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
 
-## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Probleme bei der Verwendung des Azure Marketplace-Angebots für das Bereitstellen eines Hostpools für Windows Virtual Desktop
+## <a name="issues-using-azure-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Probleme bei der Verwendung des Azure Marketplace-Angebots für das Bereitstellen eines Hostpools für Azure Virtual Desktop
 
-Die Vorlage „Windows Virtual Desktop – Provision a host pool“ (Windows Virtual Desktop – Bereitstellen eines Hostpools“) ist im Azure Marketplace verfügbar.
+Die Vorlage „Azure Virtual Desktop – Bereitstellen eines Hostpools“ ist im Azure Marketplace verfügbar.
 
 ### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Error: Beim Verwenden eines Links von GitHub wird die Meldung „Create a free account“ (Kostenloses Konto erstellen) angezeigt.
 
@@ -97,7 +97,7 @@ Die Vorlage „Windows Virtual Desktop – Provision a host pool“ (Windows Vir
 
 **Ursache 2:** Das verwendete Abonnement gehört zu einem Microsoft-Clouddienstanbieter-Mandanten (Cloud Service Provider, CSP).
 
-**Behebung 2:** Wechseln Sie zum GitHub-Verzeichnis für **Create and provision new Windows Virtual Desktop host pool** (Erstellen und Bereitstellen eines neuen Windows Virtual Desktop-Hostpools), und führen Sie die folgenden Schritte aus:
+**Behebung 2:** Wechseln Sie zum GitHub-Verzeichnis für **Erstellen und Bereitstellen eines neuen Azure Virtual Desktop-Hostpools**, und führen Sie die folgenden Schritte aus:
 
 1. Klicken Sie mit der rechten Maustaste auf **Deploy to Azure** (In Azure bereitstellen), und wählen Sie **Copy link address** (Linkadresse kopieren) aus.
 2. Öffnen Sie den **Editor**, und fügen Sie den Link ein.
@@ -192,11 +192,11 @@ Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
 > [!div class="mx-imgBorder"]
 > ![Screenshot: Fehler bei der Bereitstellung – fehlerhafter Status der Terminalbereitstellung](../media/7aaf15615309c18a984673be73ac969a.png)
 
-**Ursache 1:** Vorübergehender Fehler in der Windows Virtual Desktop-Umgebung.
+**Ursache 1:** Vorübergehender Fehler in der Azure Virtual Desktop-Umgebung.
 
 **Ursache 2:** Vorübergehender Verbindungsfehler.
 
-**Behebung:** Vergewissern Sie sich, ob die Windows Virtual Desktop-Umgebung fehlerfrei ausgeführt wird, indem Sie sich mithilfe von PowerShell anmelden. Schließen Sie die VM-Registrierung manuell ab. Informationen dazu finden Sie unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell-2019.md).
+**Behebung:** Vergewissern Sie sich, ob die Azure Virtual Desktop-Umgebung fehlerfrei ausgeführt wird, indem Sie sich mithilfe von PowerShell anmelden. Schließen Sie die VM-Registrierung manuell ab. Informationen dazu finden Sie unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell-2019.md).
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Error: Der angegebene Administratorbenutzername ist unzulässig
 
@@ -366,13 +366,13 @@ Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed 
 The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
 ```
 
-**Ursache:** Der angegebene Administrator für den Windows Virtual Desktop-Mandanten besitzt keine gültige Rollenzuweisung.
+**Ursache:** Der angegebene Administrator für den Azure Virtual Desktop-Mandanten besitzt keine gültige Rollenzuweisung.
 
-**Behebung:** Der Benutzer, der den Windows Virtual Desktop-Mandanten erstellt hat, muss sich bei Windows Virtual Desktop PowerShell anmelden und dem gewünschten Benutzer eine Rollenzuweisung zuweisen. Wenn Sie die GitHub-Azure Resource Manager-Vorlagenparameter verwenden, führen Sie folgende PowerShell-Befehle aus:
+**Behebung:** Der Benutzer, der den Azure Virtual Desktop-Mandanten erstellt hat, muss sich bei Azure Virtual Desktop PowerShell anmelden und dem gewünschten Benutzer eine Rollenzuweisung zuweisen. Wenn Sie die GitHub-Azure Resource Manager-Vorlagenparameter verwenden, führen Sie folgende PowerShell-Befehle aus:
 
 ```PowerShell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
+New-RdsRoleAssignment -TenantName <Azure Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
 ### <a name="error-user-requires-azure-ad-multi-factor-authentication-mfa"></a>Error: Benutzer erfordert Azure AD Multi-Factor Authentication (MFA)
@@ -386,18 +386,18 @@ Beispiel für unformatierten Fehler:
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**Ursache:** Der angegebene Administrator für den Windows Virtual Desktop-Mandanten erfordert Azure AD Multi-Factor Authentication (MFA) zum Anmelden.
+**Ursache:** Der angegebene Administrator für den Azure Virtual Desktop-Mandanten erfordert Azure AD Multi-Factor Authentication (MFA) zum Anmelden.
 
-**Behebung:** Erstellen Sie einen Dienstprinzipal, und weisen Sie diesem eine Rolle für Ihren Windows Virtual Desktop-Mandanten zu. Führen Sie dazu die Schritte in folgendem Artikel aus: [Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](create-service-principal-role-powershell.md). Nachdem Sie überprüft haben, ob Sie sich mit dem Dienstprinzipal bei Windows Virtual Desktop anmelden können, führen Sie das Azure Marketplace-Angebot oder die GitHub-Azure Resource Manager-Vorlage erneut aus, je nachdem, welche Methode Sie verwenden. Führen Sie die folgenden Schritte aus, um die richtigen Parameter für Ihre Methode einzugeben.
+**Behebung:** Erstellen Sie einen Dienstprinzipal, und weisen Sie ihm eine Rolle für Ihren Azure Virtual Desktop-Mandanten zu, indem Sie die Schritte unter [Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](create-service-principal-role-powershell.md) ausführen. Nachdem Sie überprüft haben, ob Sie sich mit dem Dienstprinzipal bei Azure Virtual Desktop anmelden können, führen Sie das Azure Marketplace-Angebot oder die GitHub-Azure Resource Manager-Vorlage erneut aus, je nachdem, welche Methode Sie verwenden. Führen Sie die folgenden Schritte aus, um die richtigen Parameter für Ihre Methode einzugeben.
 
-Wenn Sie das Azure Marketplace-Angebot ausführen, geben Sie Werte für die folgenden Parameter an, um sich ordnungsgemäß bei Windows Virtual Desktop zu authentifizieren:
+Wenn Sie das Azure Marketplace-Angebot ausführen, geben Sie Werte für die folgenden Parameter an, um sich ordnungsgemäß bei Azure Virtual Desktop zu authentifizieren:
 
-- RDS-Besitzer des Windows Virtual Desktop-Mandanten: Dienstprinzipal
+- RDS-Besitzer des Azure Virtual Desktop-Mandanten: Dienstprinzipal
 - Anwendungs-ID: Der Anwendungsbezeichner des neuen, von Ihnen erstellten Dienstprinzipals
 - Kennwort/Kennwort bestätigen: Das von Ihnen für den Dienstprinzipal generierte geheime Kennwort
 - Azure AD-Mandanten-ID: Die Azure AD-Mandanten-ID des von Ihnen erstellten Dienstprinzipals
 
-Wenn Sie die GitHub-Azure Resource Manager-Vorlage ausführen, geben Sie Werte für die folgenden Parameter an, um sich ordnungsgemäß bei Windows Virtual Desktop zu authentifizieren:
+Wenn Sie die GitHub-Azure Resource Manager-Vorlage ausführen, geben Sie Werte für die folgenden Parameter an, um sich ordnungsgemäß bei Azure Virtual Desktop zu authentifizieren:
 
 - Benutzerprinzipalname für den Mandantenadministrator oder Anwendungs-ID: Der Anwendungsbezeichner des neuen, von Ihnen erstellten Dienstprinzipals
 - Kennwort des Mandantenadministrators: Das von Ihnen für den Dienstprinzipal generierte geheime Kennwort
@@ -406,18 +406,18 @@ Wenn Sie die GitHub-Azure Resource Manager-Vorlage ausführen, geben Sie Werte f
 
 ### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>Fehler: vmSubnet nicht verfügbar, wenn virtuelle Netzwerke konfiguriert werden
 
-**Ursache:** In der Windows Virtual Desktop Marketplace-Vorlage zeigt die Benutzeroberfläche nur Subnetze an, die mindestens so viele IP-Adressen zur Verfügung haben, wie die Gesamtzahl der in der Vorlage angegebenen VMs. Die tatsächliche Anzahl der im Subnetz verfügbaren IP-Adressen muss nur mit der Anzahl der neuen VMs identisch sein, die bereitgestellt werden. Dies kann jedoch von der aktuellen Benutzeroberfläche nicht berechnet werden.
+**Ursache:** In der Azure Virtual Desktop Marketplace-Vorlage zeigt die Benutzeroberfläche nur Subnetze an, die mindestens so viele IP-Adressen zur Verfügung haben, wie die Gesamtzahl der in der Vorlage angegebenen VMs. Die tatsächliche Anzahl der im Subnetz verfügbaren IP-Adressen muss nur mit der Anzahl der neuen VMs identisch sein, die bereitgestellt werden. Dies kann jedoch von der aktuellen Benutzeroberfläche nicht berechnet werden.
 
 **Behebung:** Sie können ein Subnetz angeben, in dem mindestens so viele IP-Adressen verfügbar sind wie die Anzahl der VMs, die hinzugefügt werden. Dazu gehen Sie so vor, dass Sie nicht die Marketplace-Benutzeroberfläche verwenden, sondern den Subnetznamen im Parameter **existingSubnetName** angeben, wenn Sie [eine vorhandene Bereitstellung erneut bereitstellen](expand-existing-host-pool-2019.md#redeploy-from-azure) oder [über die zugrunde liegende ARM-Vorlage aus GitHub bereitstellen](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die Problembehandlung von Windows Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview-2019.md).
-- Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Windows Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration-2019.md).
-- Informationen zur Behebung von Problemen bei Windows Virtual Desktop-Clientverbindungen finden Sie unter [Windows Virtual Desktop – Clientverbindungen](troubleshoot-service-connection-2019.md).
+- Eine Übersicht über die Problembehandlung von Azure Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview-2019.md).
+- Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Azure Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration-2019.md).
+- Informationen zur Behebung von Problemen bei Azure Virtual Desktop-Clientverbindungen finden Sie unter [Azure Virtual Desktop – Clientverbindungen](troubleshoot-service-connection-2019.md).
 - Informationen zur Behebung von Problemen bei Remotedesktop-Clients finden Sie unter [Problembehandlung für den Remotedesktop-Client](../troubleshoot-client.md).
-- Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop – PowerShell](troubleshoot-powershell-2019.md).
-- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup-2019.md).
+- Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Azure Virtual Desktop finden Sie unter [Azure Virtual Desktop – PowerShell](troubleshoot-powershell-2019.md).
+- Weitere Informationen zum Dienst finden Sie unter [Azure Virtual Desktop-Umgebung](environment-setup-2019.md).
 - Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
 - Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../../azure-resource-manager/management/view-activity-logs.md).
 - Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../../azure-resource-manager/templates/deployment-history.md).

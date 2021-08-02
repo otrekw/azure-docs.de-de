@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Testangebots
-description: Erfahren Sie, wie Sie ein separates Entwicklungsangebot zum Testen Ihres Angebots für die Produktion im kommerziellen Marketplace-Programm im Microsoft Partner Center erstellen.
+title: Erstellen eines SaaS-Testangebots
+description: Erstellen Sie ein separates Entwicklungsangebot zum Testen Ihres Produktionsangebots in Azure Marketplace.
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 04/20/2021
-ms.openlocfilehash: 318eebcca3053be2164a1fc52905f36f26b11a6d
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 3c71dc08f58c73cf1fe35d4c2b42d30b30867a1e
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331122"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559032"
 ---
-# <a name="create-a-test-offer"></a>Erstellen eines Testangebots
+# <a name="create-a-test-saas-offer"></a>Erstellen eines SaaS-Testangebots
 
 Um in einer von Ihrem Produktionsangebot getrennten Umgebung zu entwickeln, erstellen Sie ein separates Angebot für Test- und Entwicklung (DEV) und ein separates Produktionsangebot (PROD). Informationen zu den Vorteilen der Verwendung eines separaten DEV-Angebots finden Sie unter [Planen eines SaaS-Angebots](plan-saas-offer.md#test-offer).
 

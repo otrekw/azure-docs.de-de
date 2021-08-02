@@ -1,22 +1,22 @@
 ---
 title: Erweitern eines vorhandenen Hostpools um neue Sitzungshosts – Azure
-description: Hier finden Sie Informationen dazu, wie Sie einen vorhandenen Hostpool in Windows Virtual Desktop um neue Sitzungshosts erweitern.
+description: Hier erfahren Sie, wie Sie einen vorhandenen Hostpool in Azure Virtual Desktop um neue Sitzungshosts erweitern.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 9c73d7434a002a5efc7d058095eb9743a7f3ebf8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 446052190df59f6dc53ac6a39cd4bc120752fa41
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446824"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757731"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Erweitern eines vorhandenen Hostpools um neue Sitzungshosts
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md).
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md).
 
 Wenn Sie die Nutzung in Ihrem Hostpool erhöhen, müssen Sie den vorhandenen Pool möglicherweise um neue Sitzungshosts erweitern, um die neue Last zu verarbeiten.
 
@@ -41,7 +41,7 @@ So erweitern Sie den Hostpool durch Hinzufügen von virtuellen Computern:
 
 1. Melden Sie sich beim Azure-Portal an.
 
-2. Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option aus.
+2. Suchen Sie **Azure Virtual Desktop**, und wählen Sie diese Option aus.
 
 3. Wählen Sie im Menü auf der linken Seite des Bildschirms **Hostpools** aus, und wählen Sie dann den Namen des Hostpools aus, dem Sie virtuelle Computer hinzufügen möchten.
 
@@ -71,7 +71,7 @@ So erweitern Sie den Hostpool durch Hinzufügen von virtuellen Computern:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihren vorhandenen Hostpool erweitert haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um die Einstellungen im Rahmen einer Benutzersitzung zu testen. Sie können jeden der folgenden Clients verwenden, um eine Verbindung mit einer Sitzung herzustellen:
+Nachdem Sie Ihren vorhandenen Hostpool erweitert haben, können Sie sich bei einem Azure Virtual Desktop-Client anmelden, um die Einstellungen im Rahmen einer Benutzersitzung zu testen. Sie können jeden der folgenden Clients verwenden, um eine Verbindung mit einer Sitzung herzustellen:
 
 - [Herstellen einer Verbindung mit dem Windows-Desktopclient](./connect-windows-7-10.md)
 - [Herstellen einer Verbindung mit dem Webclient](./connect-web.md)

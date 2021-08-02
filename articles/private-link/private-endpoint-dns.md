@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: 24a3c1ed9b94459eaa1993a26ce910b3f16e5383
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 36d45cf5b972feaecb8563f28e931cb344dcc36d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293114"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080379"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-Konfiguration für private Azure-Endpunkte
 
@@ -64,7 +64,7 @@ Verwenden Sie für Azure-Dienste die empfohlenen Zonennamen in der folgenden Tab
 | Azure Kubernetes Service: Kubernetes-API (Microsoft.ContainerService/managedClusters)/management | privatelink.{Region}.azmk8s.io | {Region}.azmk8s.io |
 | Azure Search (Microsoft.Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
 | Azure Container Registry (Microsoft.ContainerRegistry/registries)/Registrierung | privatelink.azurecr.io | azurecr.io |
-| Azure App Configuration (Microsoft.AppConfiguration/configurationStores)/configurationStore | privatelink.azconfig.io | azconfig.io |
+| Azure App Configuration (Microsoft.AppConfiguration/configurationStores) / configurationStores | privatelink.azconfig.io | azconfig.io |
 | Azure Backup (Microsoft.RecoveryServices/vaults)/Tresor | privatelink.{region}.backup.windowsazure.com | {Region}.backup.windowsazure.com |
 | Azure Site Recovery (Microsoft.RecoveryServices/vaults) / vault | {region}.privatelink.siterecovery.windowsazure.com | {region}.hypervrecoverymanager.windowsazure.com |
 | Azure Event Hubs (Microsoft.EventHub/namespaces)/Namespace | privatelink.servicebus.windows.net | servicebus.windows.net |
@@ -139,7 +139,7 @@ Sie können dieses Modell auf virtuelle Netzwerke mit Peering ausweiten, die dem
 > Für diese Konfiguration ist eine einzelne private DNS-Zone erforderlich. Zum Erstellen mehrerer Zonen mit demselben Namen für verschiedene virtuelle Netzwerke müssen die DNS-Einträge manuell zusammengeführt werden.
 
 > [!IMPORTANT]
-> Wenn Sie einen privaten Endpunkt in einem Hub-and-Spoke-Modell aus einem anderen Abonnement verwenden, sollten Sie dieselbe private DNS-Zone auf dem Hub wiederverwenden.
+> Wenn Sie einen privaten Endpunkt in einem Hub-and-Spoke-Modell aus einem anderen Abonnement oder sogar innerhalb desselben Abonnements verwenden, müssen Sie die gleichen privaten DNS-Zonen mit allen Spokes und virtuellen Hubnetzwerken verknüpfen, die Clients enthalten, die DNS-Auflösung aus den Zonen benötigen.
 
 In diesem Szenario wird eine [Hub-and-Spoke](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)-Netzwerktopologie verwendet. Die Spoke-Netzwerke nutzen einen gemeinsamen privaten Endpunkt. Die virtuellen Spoke-Netzwerke sind mit derselben privaten DNS-Zone verknüpft. 
 
@@ -147,7 +147,7 @@ In diesem Szenario wird eine [Hub-and-Spoke](/azure/architecture/reference-archi
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>Lokale Workloads mit DNS-Weiterleitung
 
-Damit der FQDN eines privaten Endpunkts von lokalen Workloads aufgelöst werden kann, verwenden Sie eine DNS-Weiterleitung, um die [öffentliche DNS-Zone](#azure-services-dns-zone-configuration) des Azure-Diensts in Azure aufzulösen.
+Damit der FQDN eines privaten Endpunkts von lokalen Workloads aufgelöst werden kann, verwenden Sie eine DNS-Weiterleitung, um die [öffentliche DNS-Zone](#azure-services-dns-zone-configuration) des Azure-Diensts in Azure aufzulösen. Eine [DNS-Weiterleitung](/windows-server/identity/ad-ds/plan/reviewing-dns-concepts#resolving-names-by-using-forwarding) ist eine VM, die auf dem mit der privaten DNS-Zone verknüpften virtuellen Netzwerk ausgeführt wird und als Proxy für DNS-Abfragen aus anderen virtuellen Netzwerken oder lokalen Netzwerken dient. Dies ist erforderlich, da die Abfrage an Azure DNS aus dem virtuellen Netzwerk stammen muss. Einige Optionen für DNS-Proxys sind: Unter Windows ausgeführte DNS-Dienste, unter Linux ausgeführte DNS-Dienste und [Azure Firewall](../firewall/dns-settings.md).
 
 Im folgenden Szenario wird ein lokales Netzwerk verwendet, das über eine DNS-Weiterleitung in Azure verfügt. Von dieser Weiterleitung werden DNS-Abfragen über eine Weiterleitung auf Serverebene in die von Azure bereitgestellte IP-Adresse [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) (DNS) aufgelöst. 
 

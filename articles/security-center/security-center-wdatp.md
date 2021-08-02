@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 06/10/2021
 ms.author: memildin
-ms.openlocfilehash: 58a616953afd15bd4098eaf7ec96838137d110c5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: df7d3d880161895b6cc883a15f7adf2def839a53
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764781"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062260"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Schützen Sie Ihre Endpunkte mit der in Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt
 
@@ -35,7 +35,7 @@ Microsoft Defender für den Endpunkt ist eine ganzheitliche, cloudbasierte Lösu
 
 | Aspekt                          | Details                                                                                                                                                                                                                                                                                                       |
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Status des Release:                  | Allgemein verfügbar (Generally Available, GA)                                                                                                                                                                                                                                                                                      |
+| Status des Release:                  | Allgemeine Verfügbarkeit (General Availability, GA)                                                                                                                                                                                                                                                                                      |
 | Preise:                        | Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)                                                                                                                                                                                                                                             |
 | Unterstützte Plattformen:            |  • Azure-Computer unter Windows<br> • Azure Arc-Computer unter Windows|
 | Unterstützte Versionen von Windows für die Erkennung:  |  • Windows Server 2019, 2016, 2012 R2, und 2008 R2 SP1<br> • [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)<br> • [Windows 10 Enterprise Multi-Session](../virtual-desktop/windows-10-multisession-faq.yml) (ehemals Enterprise for Virtual Desktops (EVD))|
@@ -89,7 +89,7 @@ Vergewissern Sie sich, dass Ihr Computer die erforderlichen Anforderungen für D
 
 ### <a name="enable-the-integration"></a>Die Integration aktivieren
 1. Wählen Sie im Menu des „Security Center“ **Preise und Einstellungen** und dann das Abonnement aus, das Sie ändern möchten.
-1. Wählen Sie **Bedrohungserkennung** aus.
+1. Wählen Sie **Integrationen** aus.
 1. Wählen Sie **Microsoft Defender für Endpunkt den Zugriff auf meine Daten erlauben** und dann **Speichern** aus.
 
     :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Aktivieren der Integration zwischen Azure Security Center und Microsoft Defender für den Endpunkt, der EDR-Lösung von Microsoft":::
@@ -126,11 +126,25 @@ So generieren Sie eine unbedenkliche Testwarnung in Microsoft Defender für den 
     > [!TIP]
     > Die Warnung wird mit dem Schweregrad **Info** ausgelöst.
 
-## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>Häufig gestellte Fragen zum in Security Center integrierten Microsoft Defender für den Endpunkt
+## <a name="faq---security-centers-integration-with-microsoft-defender-for-endpoint"></a>FAQ – Integration von Security Center mit Microsoft Defender für Endpunkt
 
+- [Worum handelt es sich bei der „MDE.Windows“-Erweiterung, die auf meiner VM ausgeführt wird?](#whats-this-mdewindows-extension-running-on-my-machine)
 - [Welche Lizenzierungsanforderungen gelten für Microsoft Defender für den Endpunkt?](#what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint)
 - [Kann ich für Azure Defender einen Rabatt erhalten, wenn ich bereits über eine Lizenz für Microsoft Defender für Endpunkt verfüge?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
 - [Wie steige ich von einem Drittanbieter-EDR-Tool um?](#how-do-i-switch-from-a-third-party-edr-tool)
+
+### <a name="whats-this-mdewindows-extension-running-on-my-machine"></a>Worum handelt es sich bei der „MDE.Windows“-Erweiterung, die auf meiner VM ausgeführt wird?
+
+In der Vergangenheit wurde Microsoft Defender für Endpunkt vom Log Analytics-Agent bereitgestellt. Als wir die [Unterstützung um Windows Server 2019 erweitert](release-notes.md#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga) haben, haben wir auch eine Erweiterung zum Ausführen des automatischen Onboardings hinzugefügt. 
+
+Security Center stellt automatisch die Erweiterung MDE.Windows auf VMs mit folgenden Betriebssystemen bereit:
+
+- Windows Server 2019 
+- Windows 10 Virtual Desktop (WVD)
+- Andere Versionen von Windows Server, wenn Security Center die Betriebssystemversion nicht erkennt (z. B. wenn ein benutzerdefiniertes VM-Image verwendet wird). In diesem Fall wird Microsoft Defender für Endpunkt weiterhin vom Log Analytics-Agent bereitgestellt.
+
+> [!TIP]
+> Wenn Sie die MDE.Windows-Erweiterung löschen, entfernt dies nicht Microsoft Defender für Endpunkt. Informationen zum Offboarden finden Sie unter [Offboarding von Windows-Servern](/microsoft-365/security/defender-endpoint/configure-server-endpoints?view=o365-worldwide).
 
 ### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Welche Lizenzierungsanforderungen gelten für Microsoft Defender für den Endpunkt?
 Defender für den Endpunkt ist ohne zusätzliche Kosten in **Azure Defender für Server** enthalten. Alternativ kann er separat für 50 Computer oder mehr erworben werden.
@@ -138,7 +152,9 @@ Defender für den Endpunkt ist ohne zusätzliche Kosten in **Azure Defender für
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Kann ich für Azure Defender einen Rabatt erhalten, wenn ich bereits über eine Lizenz für Microsoft Defender für Endpunkt verfüge?
 Wenn Sie bereits eine Lizenz für Microsoft Defender für Endpunkt besitzen, müssen Sie für diesen Teil Ihrer Azure Defender-Lizenz nicht bezahlen.
 
-Wenden Sie sich an das Security Center-Supportteam, um den Rabatt zu bestätigen, und geben Sie für jede relevante Lizenz die entsprechende Arbeitsbereichs-ID, die Region und die Lizenzinformationen an.
+Fordern Sie Ihren Rabatt beim Supportteam von Security Center an, und geben Sie die entsprechende Arbeitsbereichs-ID, die Region und die Anzahl der Microsoft Defender for Endpoint-Lizenzen an, die für Computer im angegebenen Arbeitsbereich angewendet wurden.
+
+Der Rabatt gilt ab dem Genehmigungsdatum und wird nicht rückwirkend wirksam.
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Wie steige ich von einem Drittanbieter-EDR-Tool um?
 Vollständige Anweisungen zum Wechseln von einer Nicht-Microsoft-Endpunktlösung finden Sie in der Dokumentation zu Microsoft Defender für den Endpunkt: [Übersicht über die Migration](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration).

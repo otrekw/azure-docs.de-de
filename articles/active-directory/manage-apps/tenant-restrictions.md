@@ -2,22 +2,22 @@
 title: Verwalten des Zugriffs auf SaaS-Apps mithilfe von Mandanteneinschränkungen – Azure AD
 description: Hier erfahren Sie, wie Sie mithilfe von Mandanteneinschränkungen auf der Grundlage des verwendeten Azure AD-Mandanten steuern, welcher Benutzer auf Apps zugreifen kann.
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 4/6/2021
-ms.author: iangithinji
+ms.date: 6/2/2021
+ms.author: mtillman
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dda21b70d7e65915b1ecd92de8a3ebcf2ac52059
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: c443f3084c465e1a8f2358c1b8db365e576b04f5
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108006942"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082233"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -29,7 +29,7 @@ Mit Mandanteneinschränkungen können Organisationen eine Liste mit Mandanten an
 
 In diesem Artikel liegt der Schwerpunkt auf Mandanteneinschränkungen für Microsoft 365, aber das Feature schützt alle Apps, die den Benutzer zum einmaligen Anmelden an Azure AD senden. Falls Sie SaaS-Apps mit einem Azure AD-Mandanten verwenden, der nicht dem von Microsoft 365 verwendeten Mandanten entspricht, müssen Sie sicherstellen, dass alle erforderlichen Mandanten zugelassen sind (z. B. in B2B Collaboration-Szenarien). Weitere Informationen zu SaaS-Cloud-Apps finden Sie im [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps).
 
-Darüber hinaus unterstützt das Mandanteneinschränkungsfeature nun [das Blockieren der Verwendung aller Microsoft-Consumeranwendungen](#blocking-consumer-applications-public-preview) (MSA-Apps), wie z. B. OneDrive, Hotmail und Xbox.com.  Dieses verwendet einen separaten Header zum `login.live.com`-Endpunkt und wird am Ende des Dokuments ausführlich erläutert.
+Darüber hinaus unterstützt das Mandanteneinschränkungsfeature nun [das Blockieren der Verwendung aller Microsoft-Consumeranwendungen](#blocking-consumer-applications) (MSA-Apps), wie z. B. OneDrive, Hotmail und Xbox.com.  Dieses verwendet einen separaten Header zum `login.live.com`-Endpunkt und wird am Ende des Dokuments ausführlich erläutert.
 
 ## <a name="how-it-works"></a>Funktionsweise
 
@@ -41,7 +41,7 @@ Die Lösung umfasst folgende Komponenten:
 
 3. **Clientsoftware**: Zur Unterstützung von Mandanteneinschränkungen muss Clientsoftware Token direkt von Azure AD anfordern, damit Datenverkehr von der Proxyinfrastruktur abgefangen werden kann. Browserbasierte Microsoft 365-Anwendungen unterstützen derzeit Mandanteneinschränkungen, ebenso wie Office-Clients, die eine moderne Authentifizierung verwenden (wie OAuth 2.0).
 
-4. **Moderne Authentifizierung**: Clouddienste müssen eine moderne Authentifizierung verwenden, um Mandanteneinschränkungen nutzen und den Zugriff auf nicht zugelassene Mandanten blockieren zu können. Microsoft 365-Clouddienste müssen so konfiguriert werden, dass sie standardmäßig moderne Authentifizierungsprotokolle verwenden. Aktuelle Informationen zur Unterstützung von moderner Authentifizierung in Microsoft 365 finden Sie unter [Office 2013: Public Preview für moderne Authentifizierung angekündigt](https://docs.microsoft.com/microsoft-365/enterprise/modern-auth-for-office-2013-and-2016?view=o365-worldwide).
+4. **Moderne Authentifizierung**: Clouddienste müssen eine moderne Authentifizierung verwenden, um Mandanteneinschränkungen nutzen und den Zugriff auf nicht zugelassene Mandanten blockieren zu können. Microsoft 365-Clouddienste müssen so konfiguriert werden, dass sie standardmäßig moderne Authentifizierungsprotokolle verwenden. Aktuelle Informationen zur Unterstützung von moderner Authentifizierung in Microsoft 365 finden Sie unter [Office 2013: Public Preview für moderne Authentifizierung angekündigt](/microsoft-365/enterprise/modern-auth-for-office-2013-and-2016).
 
 Das folgende Diagramm veranschaulicht den allgemeinen Datenverkehrsfluss. Mandanteneinschränkungen erfordern die TLS-Überprüfung nur bei Datenverkehr für Azure AD, nicht bei Datenverkehr für die Microsoft 365-Clouddienste. Diese Unterscheidung ist wichtig, da der durch die Authentifizierung bedingte Datenverkehr für Azure AD in der Regel erheblich geringer ausfällt als der Datenverkehr für SaaS-Anwendungen wie Exchange Online und SharePoint Online.
 
@@ -151,7 +151,7 @@ Fiddler ist ein kostenloser Web Debugging Proxy, mit dem Sie HTTP/HTTPS-Datenver
 
 1. [Laden Sie Fiddler herunter, und installieren Sie es.](https://www.telerik.com/fiddler)
 
-2. Konfigurieren Sie Fiddler wie in der [Hilfedokumentation](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS) beschrieben für die Entschlüsselung von HTTPS-Datenverkehr.
+2. Konfigurieren Sie Fiddler wie in dessen [Hilfedokumentation](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS) beschrieben für die Entschlüsselung von HTTPS-Datenverkehr.
 
 3. Konfigurieren Sie Fiddler mithilfe von benutzerdefinierten Regeln so, dass die Header *Restrict-Access-To-Tenants* und *Restrict-Access-Context* eingefügt werden:
 
@@ -197,7 +197,7 @@ Abhängig von den Funktionen Ihrer Proxyinfrastruktur können Sie unter Umständ
 
 Spezifische Details finden Sie in der Dokumentation Ihres Proxyservers.
 
-## <a name="blocking-consumer-applications-public-preview"></a>Blockieren von Consumer-Anwendungen (öffentliche Vorschau)
+## <a name="blocking-consumer-applications"></a>Blockieren von Consumer-Anwendungen
 
 Anwendungen von Microsoft, die sowohl Consumerkonten als auch Organisationskonten unterstützen (z. B. [OneDrive](https://onedrive.live.com/) oder [Microsoft Learn](/learn/)), können manchmal auf derselben URL gehostet werden.  Dies bedeutet, dass Benutzer, die für Arbeitszwecke auf diese URL zugreifen müssen, auch für den persönlichen Gebrauch darauf zugreifen können. Dies ist nach Ihren Betriebsrichtlinien möglicherweise nicht zulässig.
 

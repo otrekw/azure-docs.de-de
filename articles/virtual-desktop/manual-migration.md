@@ -1,38 +1,38 @@
 ---
-title: Manuelles Migrieren von Windows Virtual Desktop (klassisch) – Azure
-description: Erfahren Sie, wie Sie manuell von Windows Virtual Desktop (klassisch) zu Windows Virtual Desktop migrieren.
+title: 'Manuelles Migrieren von Azure Virtual Desktop (klassisch): Azure'
+description: Hier erfahren Sie, wie Sie manuell von Azure Virtual Desktop (klassisch) zu Azure Virtual Desktop migrieren.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 350b7306b6d39b42fbfebcc6566762df305b11b4
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 633925c8e7a990bcdfa822f77996072f87ae7e90
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445974"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753303"
 ---
-# <a name="migrate-manually-from-windows-virtual-desktop-classic"></a>Manuelles Migrieren von Windows Virtual Desktop (klassisch)
+# <a name="migrate-manually-from-azure-virtual-desktop-classic"></a>Manuelles Migrieren von Azure Virtual Desktop (klassisch)
 
-Windows Virtual Desktop (klassisch) erstellt seine Dienstumgebung mit PowerShell-Cmdlets, REST-APIs und Dienstobjekten. Ein „Objekt“ in einer Windows Virtual Desktop-Dienstumgebung ist ein von Windows Virtual Desktop erstelltes Element. Zu Dienstobjekten gehören Mandanten, Hostpools, Anwendungsgruppen und Sitzungshosts.
+Azure Virtual Desktop (klassisch) erstellt seine Dienstumgebung mit PowerShell-Cmdlets, REST-APIs und Dienstobjekten. Ein „Objekt“ in einer Azure Virtual Desktop-Dienstumgebung ist ein von Azure Virtual Desktop erstelltes Element. Zu Dienstobjekten gehören Mandanten, Hostpools, Anwendungsgruppen und Sitzungshosts.
 
-Windows Virtual Desktop (klassisch) ist jedoch nicht in Azure integriert. Ohne Azure-Integration werden Objekte, die Sie erstellen, nicht automatisch vom Azure-Portal verwaltet, da sie nicht mit Ihrem Azure-Abonnement verbunden sind.
+Azure Virtual Desktop (klassisch) ist jedoch nicht in Azure integriert. Ohne Azure-Integration werden Objekte, die Sie erstellen, nicht automatisch vom Azure-Portal verwaltet, da sie nicht mit Ihrem Azure-Abonnement verbunden sind.
 
-Das vor Kurzem erfolgte große Update von Windows Virtual Desktop stellt eine Umstellung des Diensts auf eine vollständige Azure-Integration dar. In Windows Virtual Desktop erstellte Objekte werden automatisch vom Azure-Portal verwaltet.
+Das vor Kurzem erfolgte große Update von Azure Virtual Desktop stellt eine Umstellung des Diensts auf eine vollständige Azure-Integration dar. In Azure Virtual Desktop erstellte Objekte werden automatisch vom Azure-Portal verwaltet.
 
-In diesem Artikel wird erläutert, warum Sie eine Migration zur neuesten Version von Windows Virtual Desktop in Erwägung ziehen sollten. Anschließend erfahren Sie, wie Sie manuell von Windows Virtual Desktop (klassisch) zum neuesten Update von Windows Virtual Desktop migrieren.
+In diesem Artikel wird erläutert, warum Sie eine Migration zur neuesten Version von Azure Virtual Desktop in Erwägung ziehen sollten. Anschließend erfahren Sie, wie Sie manuell von Azure Virtual Desktop (klassisch) zum neuesten Update von Azure Virtual Desktop migrieren.
 
 ## <a name="why-migrate"></a>Vorteile der Migration
 
 Umfangreiche Updates können unpraktisch sein, besonders wenn Sie sie manuell durchführen müssen. Es gibt jedoch einige Gründe, warum eine automatische Migration nicht in Frage kommt:
 
-- Vorhandene Dienstobjekte, die mit dem klassischen Release erstellt wurden, sind nicht in Azure vorhanden. Ihr Projektumfang erstreckt sich nicht über den Windows Virtual Desktop-Dienst hinaus.
-- Mit dem neuesten Update wurde die Anwendungs-ID des Diensts dahin gehend geändert, dass für Apps keine Einwilligung mehr erfolgen muss, wie es bei Windows Virtual Desktop (klassisch) noch nötig war. Sie können mit Windows Virtual Desktop nur dann neue Azure-Objekte erstellen, wenn sie mit der neuen Anwendungs-ID authentifiziert werden.
+- Vorhandene Dienstobjekte, die mit dem klassischen Release erstellt wurden, sind nicht in Azure vorhanden. Ihr Projektumfang geht nicht über den Azure Virtual Desktop-Dienst hinaus.
+- Mit dem neuesten Update wurde die Anwendungs-ID des Diensts dahin gehend geändert, dass für Apps keine Einwilligung mehr erfolgen muss, wie es bei Azure Virtual Desktop (klassisch) noch nötig war. Sie können mit Azure Virtual Desktop nur dann neue Azure-Objekte erstellen, wenn sie mit der neuen Anwendungs-ID authentifiziert werden.
 
 Trotz des Aufwands ist eine Migration von der klassischen Version wichtig. Nach der Migration haben Sie folgende Möglichkeiten:
 
-- Verwalten von Windows Virtual Desktop über das Azure-Portal
+- Verwalten von Azure Virtual Desktop über das Azure-Portal
 - Zuweisen von Azure Active Directory-Benutzergruppen (AD) zu Anwendungsgruppen
 - Verwenden des verbesserten Log Analytics-Features für die Problembehandlung in Ihrer Bereitstellung
 - Verwenden der nativen rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) zum Verwalten des administrativen Zugriffs
@@ -68,10 +68,10 @@ Sie benötigen Folgendes, um den Migrationsvorgang zu beginnen:
 
 Nachdem Sie sich auf den Migrationsvorgang vorbereitet haben, folgt nun die eigentliche Migration.
 
-So migrieren Sie manuell von Windows Virtual Desktop (klassisch) zu Windows Virtual Desktop
+So migrieren Sie manuell von Azure Virtual Desktop (klassisch) zu Azure Virtual Desktop:
 
 1. Befolgen Sie die Anweisungen unter [Erstellen eines Hostpools mit dem Azure-Portal](create-host-pools-azure-marketplace.md), um alle Objekte auf hoher Ebene über das Azure-Portal zu erstellen.
-2. Wenn Sie die bereits verwendeten virtuellen Computer übernehmen möchten, befolgen Sie die Anweisungen unter [Registrieren der virtuellen Computer für den Windows Virtual Desktop-Hostpool](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool), um sie manuell für den neuen Hostpool zu registrieren, den Sie in Schritt 1 erstellt haben.
+2. Wenn Sie die bereits verwendeten virtuellen Computer übernehmen möchten, befolgen Sie die Anweisungen unter [Registrieren der virtuellen Computer für den Azure Virtual Desktop-Hostpool](create-host-pools-powershell.md#register-the-virtual-machines-to-the-azure-virtual-desktop-host-pool), um sie manuell für den neuen Hostpool zu registrieren, den Sie in Schritt 1 erstellt haben.
 3. Erstellen der neuen RemoteApp-App-Gruppen
 4. Veröffentlichen Sie Benutzer oder Benutzergruppen in den neuen Desktop- und RemoteApp-App-Gruppen.
 5. Aktualisieren Sie Ihre Richtlinie für bedingten Zugriff so, dass die neuen Objekte zugelassen werden, indem Sie die Anweisungen unter [Einrichten der mehrstufigen Authentifizierung](set-up-mfa.md) befolgen.
@@ -80,6 +80,6 @@ Um Ausfallzeiten zu vermeiden, sollten Sie zuerst Ihre vorhandenen Sitzungshosts
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach der Migration können Sie sich in [unseren Tutorials](create-host-pools-azure-marketplace.md) über die Funktionsweise von Windows Virtual Desktop informieren. Informationen zu erweiterten Verwaltungsfunktionen finden Sie unter [Erweitern eines vorhandenen Hostpools](expand-existing-host-pool.md) und [Anpassen der RDP-Eigenschaften](customize-rdp-properties.md).
+Nach der Migration können Sie sich in [unseren Tutorials](create-host-pools-azure-marketplace.md) über die Funktionsweise von Azure Virtual Desktop informieren. Informationen zu erweiterten Verwaltungsfunktionen finden Sie unter [Erweitern eines vorhandenen Hostpools](expand-existing-host-pool.md) und [Anpassen der RDP-Eigenschaften](customize-rdp-properties.md).
 
-Informationen zu Dienstobjekten finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
+Informationen zu Dienstobjekten finden Sie unter [Azure Virtual Desktop-Umgebung](environment-setup.md).

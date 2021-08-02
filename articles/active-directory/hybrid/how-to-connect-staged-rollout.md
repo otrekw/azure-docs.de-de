@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8460e428239a652d2accb3d1818b0a709dc16c3e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f3474d14b84e41fdf808b5a5b5c612b3a872f2c6
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108758662"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753501"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts
 
@@ -92,6 +92,10 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 - Windows 10 Hybrid Join oder Azure AD Join – Abrufen eines primären Aktualisierungstokens für Windows 10-Versionen vor 1903. Dieses Szenario greift auf den WS-Trust-Endpunkt des Verbundservers zurück, auch wenn sich der anmeldende Benutzer im Bereich des gestaffelten Rollouts befindet.
 
 - Windows 10 Hybrid Join oder Azure AD Join – Abrufen eines primären Aktualisierungstokens für alle Versionen, wenn der lokale UPN des Benutzers nicht routingfähig ist. Im Modus „Gestaffelter Rollout“ greift dieses Szenario auf den WS-Trust-Endpunkt zurück. Dies funktioniert jedoch nicht mehr, wenn die gestaffelte Migration abgeschlossen ist und die Benutzeranmeldung nicht mehr auf den Verbundserver angewiesen ist.
+
+- Wenn Sie ein nicht persistentes VDI-Setup mit Windows 10 Version 1903 oder höher verwenden, müssen Sie in einer Verbunddomäne verbleiben. Das Verschieben in eine verwaltete Domäne wird für nicht persistente VDI nicht unterstützt. Weitere Informationen finden Sie unter [Geräteidentität und Desktopvirtualisierung](../devices/howto-device-identity-virtual-desktop-infrastructure.md).
+
+- Wenn Sie über eine Windows Hello for Business-Hybridzertifikat-Vertrauensstellung mit Zertifikaten verfügen, die entweder über Ihren Verbundserver, der als Registrierungszertifizierungsstelle agiert oder über Smartcardbenutzer ausgestellt werden, wird kein gestaffelter Rollout unterstützt. 
 
   >[!NOTE]
   >Die endgültige Umstellung von Verbundauthentifizierung auf Cloudauthentifizierung muss weiterhin mithilfe von Azure AD Connect oder PowerShell erfolgen. Bei einem gestaffelten Rollout werden Domänen nicht von Verbunddomänen auf verwaltete Domänen umgestellt.  Weitere Informationen zur Domänenumstellung finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) und [Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso).

@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: d7fc04e65e2b79d43c48acd5a8c621f28d5c0403
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 7a660b6da0d391e7e2671302432c937b5142f4b0
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714666"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747723"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -42,9 +42,6 @@ Die Appliance kann mithilfe verschiedener Methoden bereitgestellt werden:
 
 In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für VMware zusammengefasst.
 
-> [!Note]
-> Das Feature für die Ermittlung und Bewertung von SQL Server-Instanzen und -Datenbanken, die in Ihrer VMware-Umgebung ausgeführt werden, befindet sich nun in der Vorschauphase. Verwenden Sie [**diesen Link**](https://aka.ms/AzureMigrate/SQL), und erstellen Sie ein Projekt in der Region **Australien, Osten**, um dieses Feature zu testen. Falls Sie bereits über ein Projekt in „Australien, Osten“ verfügen und dieses Feature ausprobieren möchten, sollten Sie sicherstellen, dass Sie im Portal die [**Voraussetzungen**](how-to-discover-sql-existing-project.md) erfüllt haben.
-
 **Anforderung** | **VMware**
 --- | ---
 **Berechtigungen** | Für den lokalen oder Remotezugriff auf den Appliance-Konfigurations-Manager benötigen Sie ein lokales Benutzerkonto oder ein Domänenbenutzerkonto mit Administratorrechten auf dem Applianceserver.
@@ -56,7 +53,7 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 **OVA-Überprüfung** | [Überprüfen](tutorial-discover-vmware.md#verify-security) Sie die aus dem Projekt heruntergeladene OVA-Vorlage, indem Sie die Hashwerte überprüfen.
 **PowerShell-Skript** | Informationen zum Bereitstellen einer Appliance mithilfe des PowerShell-Installationsskripts finden Sie in diesem [Artikel](./deploy-appliance-script.md#set-up-the-appliance-for-vmware).<br/><br/> 
 **Hardware- und Netzwerkanforderungen** |  Die Appliance sollte auf einem Server mit Windows Server 2016, 32 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance mithilfe der OVA-Vorlage bereitstellen, benötigen Sie genügend Ressourcen auf der vCenter Server-Instanz, um einen Server zu erstellen, der die Hardwareanforderungen erfüllt.<br/><br/> Wenn Sie die Appliance auf einem vorhandenen Server ausführen, stellen Sie sicher, dass auf dem Server Windows Server 2016 ausgeführt wird und die Hardwareanforderungen erfüllt werden.<br/>_(Derzeit wird die Bereitstellung einer Appliance nur unter Windows Server 2016 unterstützt.)_
-**VMware-Anforderungen** | Wenn Sie die Appliance als Server auf vCenter Server bereitstellen, muss sie auf einer vCenter Server-Instanz, auf der 5.5, 6.0, 6.5 oder 6.7 ausgeführt wird, und auf einem ESXi-Host, auf dem Version 5.5 oder höher ausgeführt wird, bereitgestellt werden.<br/><br/> 
+**VMware-Anforderungen** | Wenn Sie die Appliance als Server auf vCenter Server bereitstellen, muss sie auf einer vCenter Server-Instanz, auf der 5.5, 6.0, 6.5, 6.7 oder 7.0 ausgeführt wird, und auf einem ESXi-Host, auf dem Version 5.5 oder höher ausgeführt wird, bereitgestellt werden.<br/><br/> 
 **VDDK (Migration ohne Agent)** | Um die Appliance für die Migration von Servern ohne Agent zu nutzen, muss das VMware vSphere-VDDK auf dem Applianceserver installiert sein.
 
 ## <a name="appliance---hyper-v"></a>Appliance – Hyper-V
@@ -144,28 +141,8 @@ management.azure.com | Erstellen von Azure AD-Apps, damit die Appliance mit Azu
 aka.ms/* (optional) | Zulassen des Zugriffs auf aka-Links; die für das Herunterladen und Installieren der neuesten Updates für Appliancedienste verwendet werden.
 download.microsoft.com/download | Zulassen von Downloads vom Microsoft Download Center.
 *.servicebus.windows.net | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst
-*.vault.azure.net | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/>  Stellen Sie sicher, dass die zu replizierenden Server darauf zugreifen können.
 *.hypervrecoverymanager.windowsazure.com | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
-*.blob.core.windows.net |  **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/>Hochladen von Daten in Storage für die Migration
-
-### <a name="government-cloud-urls-for-private-link-connectivity"></a>URLs für Government-Clouds für Private Link-Konnektivität   
-
-Die Appliance benötigt Zugriff auf die folgenden URLs (direkt oder über einen Proxy) über den Private Link-Zugriff hinaus. 
-
-**URL** | **Details**  
---- | --- |
-*.portal.azure.us  | Navigieren Sie zum Azure-Portal.
-graph.windows.net | Melden Sie sich bei Ihrem Azure-Abonnement an.
-login.microsoftonline.us  | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
-management.usgovcloudapi.net | Erstellen von Azure AD-Apps, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
-*.services.visualstudio.com (optional) | Hochladen von Applianceprotokollen, die für die interne Überwachung verwendet werden.
-aka.ms/* (optional) | Zulassen des Zugriffs auf aka-Links; die für das Herunterladen und Installieren der neuesten Updates für Appliancedienste verwendet werden.
-download.microsoft.com/download | Zulassen von Downloads vom Microsoft Download Center.
-*.servicebus.usgovcloudapi.net  | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst 
-*.vault.usgovcloudapi.net | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Verwalten von Geheimnissen in Azure Key Vault
-*.hypervrecoverymanager.windowsazure.us | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
-*.blob.core.usgovcloudapi.net  |  **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/>Hochladen von Daten in Storage für die Migration
-*.applicationinsights.us (optional) | Hochladen von Applianceprotokollen, die für die interne Überwachung verwendet werden.  
+*.blob.core.windows.net |  **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/>Hochladen von Daten in Storage für die Migration <br/>Dies ist optional und nicht erforderlich, wenn an die Speicherkonten (sowohl das Cachespeicherkonto als auch das Gatewayspeicherkonto) ein privater Endpunkt angefügt ist.
 
 ## <a name="collected-data---vmware"></a>Gesammelte Daten – VMware
 
@@ -304,9 +281,6 @@ Aufbau | uname
 ### <a name="sql-server-instances-and-databases-data"></a>Daten von SQL Server-Instanzen und -Datenbanken
 
 Die Appliance sammelt Daten auf SQL Server-Instanzen und -Datenbanken.
-
-> [!Note]
-> Das Feature für die Ermittlung und Bewertung von SQL Server-Instanzen und -Datenbanken, die in Ihrer VMware-Umgebung ausgeführt werden, befindet sich nun in der Vorschauphase. Verwenden Sie [**diesen Link**](https://aka.ms/AzureMigrate/SQL), und erstellen Sie ein Projekt in der Region **Australien, Osten**, um dieses Feature zu testen. Falls Sie bereits über ein Projekt in „Australien, Osten“ verfügen und dieses Feature ausprobieren möchten, sollten Sie sicherstellen, dass Sie im Portal die [**Voraussetzungen**](how-to-discover-sql-existing-project.md) erfüllt haben.
 
 #### <a name="sql-database-metadata"></a>SQL-Datenbankmetadaten
 
@@ -505,13 +479,13 @@ Nachstehend finden Sie die vollständige Liste der Linux-Servermetadaten, die di
 **Daten** | **Befehle**
 --- | ---
 FQDN | cat /proc/sys/kernel/hostname, hostname -f
-Anzahl der Prozessorkerne |  /proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
+Anzahl der Prozessorkerne |  cat/proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
 Zugeordneter Arbeitsspeicher | cat /proc/meminfo \| grep MemTotal \| awk '{printf "%.0f", $2/1024}'
 Seriennummer des BIOS | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}'
 BIOS-GUID | cat /sys/class/dmi/id/product_uuid
 Starttyp | [ -d /sys/firmware/efi ] && echo EFI \|\| echo BIOS
 Betriebssystemname/-version | Für die Version und den Namen des Betriebssystems wird auf folgende Dateien zugegriffen:<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
-Betriebssystemarchitektur | Uname -m
+Betriebssystemarchitektur | uname -m
 Datenträgeranzahl | fdisk -l \| egrep 'Disk.*bytes' \| awk '{print $2}' \| cut -f1 -d ':'
 Startdatenträger | df /boot \| sed -n 2p \| awk '{print $1}'
 Datenträgergröße | fdisk -l \| egrep 'Disk.*bytes' \| egrep $disk: \| awk '{print $5}'

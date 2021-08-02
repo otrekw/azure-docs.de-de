@@ -1,14 +1,14 @@
 ---
 title: Überwachen von delegierten Ressourcen in beliebigem Umfang
-description: Erfahren Sie, wie Sie Azure Monitor-Protokolle für alle von Ihnen verwalteten Mandanten auf skalierbare Weise verwenden.
+description: Azure Lighthouse unterstützt Sie dabei, Azure Monitor-Protokolle für alle Kundenmandanten auf skalierbare Weise zu verwenden.
 ms.date: 05/10/2021
 ms.topic: how-to
-ms.openlocfilehash: 9490d439b0614c0191843c0a25322f6c0183aa3f
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 29f78eb677b17193876ec45250e639cb9086cf6b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751309"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082305"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Überwachen von delegierten Ressourcen in beliebigem Umfang
 

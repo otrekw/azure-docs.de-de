@@ -1,5 +1,5 @@
 ---
-title: 'Windows Virtual Desktop: Glossar zum MSIX-Feature zum Anfügen von Apps – Azure'
+title: 'Azure Virtual Desktop: Glossar zum MSIX-Feature zum Anfügen von Apps – Azure'
 description: Ein Glossar der Begriffe und Konzepte des MSIX-Features zum Anfügen von Apps.
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: cd038a0632823e4833e75596378f9b25c386d9d0
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 66f3cc71c27ff80991f3cded1957f90e622f447f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330528"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745671"
 ---
 # <a name="msix-app-attach-glossary"></a>Glossar des MSIX-Features zum Anfügen von Apps
 
@@ -65,15 +65,15 @@ So erweitern Sie ein MSIX-Paket
 
 Das Hochladen eines MSIX-Pakets umfasst das Hochladen der VHD(x) oder [CIM](#cim), die ein erweitertes MSIX-Paket enthält, auf die MSIX-Freigabe.
 
-In Windows Virtual Desktop erfolgen Uploads einmalig pro MSIX-Freigabe. Nachdem Sie ein Paket hochgeladen haben, können alle Hostpools im selben Abonnement darauf verweisen.
+In Azure Virtual Desktop erfolgen Uploads einmalig pro MSIX-Freigabe. Nachdem Sie ein Paket hochgeladen haben, können alle Hostpools im selben Abonnement darauf verweisen.
 
 ## <a name="add-an-msix-package"></a>Hinzufügen eines MSIX-Pakets
 
-In Windows Virtual Desktop wird ein MSIX-Paket mit einem Hostpool verknüpft, wenn dieses hinzugefügt wird.
+In Azure Virtual Desktop wird ein MSIX-Paket mit einem Hostpool verknüpft, wenn dieses hinzugefügt wird.
 
 ## <a name="publish-an-msix-package"></a>Veröffentlichen eines MSIX-Pakets 
 
-In Windows Virtual Desktop muss ein veröffentlichtes MSIX-Paket einem Active Directory Domain Service (AD DS) oder einem Benutzer bzw. einer Benutzergruppe in Azure Active Directory (Azure AD) zugewiesen werden.
+In Azure Virtual Desktop muss ein veröffentlichtes MSIX-Paket einem Active Directory Domain Service (AD DS) oder einem Benutzer bzw. einer Benutzergruppe in Azure Active Directory (Azure AD) zugewiesen werden.
 
 ## <a name="staging"></a>Staging
 
@@ -90,11 +90,11 @@ Es gibt zwei Arten der Registrierung: regulär und verzögert.
 
 ### <a name="regular-registration"></a>Reguläre Registrierung
 
-Bei der regulären Registrierung ist jede Anwendung, die einem Benutzer zugewiesen ist, vollständig registriert. Die Registrierung erfolgt in der Zeit, in der sich der Benutzer bei der Sitzung anmeldet, was sich auf die Dauer auswirken kann, die dieser benötigt, um mit der Verwendung von Windows Virtual Desktop zu beginnen.
+Bei der regulären Registrierung ist jede Anwendung, die einem Benutzer zugewiesen ist, vollständig registriert. Die Registrierung erfolgt in der Zeit, in der sich der Benutzer bei der Sitzung anmeldet, was sich auf die Dauer auswirken kann, die dieser benötigt, um mit der Verwendung von Azure Virtual Desktop zu beginnen.
 
 ### <a name="delayed-registration"></a>Verzögerte Registrierung
 
-Bei der verzögerten Registrierung ist jede dem Benutzer zugewiesene Anwendung nur teilweise registriert. Die teilweise Registrierung bedeutet, dass die Kachel des Startmenüs und Doppelklick-Dateizuordnungen registriert sind. Die Registrierung erfolgt, während sich der Benutzer bei seiner Sitzung anmeldet, sodass sich dies nur minimal auf die Dauer auswirkt, die benötigt wird, um mit der Verwendung von Windows Virtual Desktop zu beginnen. Die Registrierung wird nur abgeschlossen, wenn der Benutzer die Anwendung im MSIX-Paket ausführt.
+Bei der verzögerten Registrierung ist jede dem Benutzer zugewiesene Anwendung nur teilweise registriert. Die teilweise Registrierung bedeutet, dass die Kachel des Startmenüs und Doppelklick-Dateizuordnungen registriert sind. Die Registrierung erfolgt, während sich der Benutzer bei seiner Sitzung anmeldet, sodass sich dies nur minimal auf die Dauer auswirkt, die benötigt wird, um mit der Verwendung von Azure Virtual Desktop zu beginnen. Die Registrierung wird nur abgeschlossen, wenn der Benutzer die Anwendung im MSIX-Paket ausführt.
 
 Die verzögerte Registrierung ist derzeit die Standardkonfiguration für das MSIX-Feature zum Anfügen von Apps.
 

@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 04/21/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c9f59c5c4410bbb3a8f53a53b0febaa2b04ba2aa
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: fc66f79e09021a10c2dde3cc973cd608baeedc32
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315989"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061612"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -261,7 +261,7 @@ Folgen Sie dem im [Artikel zu dedizierten Clustern](./logs-dedicated-clusters.md
 
 > [!IMPORTANT]
 > - Die empfohlene Vorgehensweise zum Widerrufen des Zugriffs auf Ihre Daten besteht darin, Ihren Schlüssel zu deaktivieren oder die Zugriffsrichtlinie auf Ihrer Key Vault-Instanz zu löschen.
-> - Wenn Sie für das `identity`-Element Ihres Clusters unter `type` die Option „None“ angeben, wird auch der Zugriff auf Ihre Daten widerrufen. Dieser Ansatz ist aber nicht zu empfehlen, da Sie den Widerruf nicht einfach rückgängig machen können, indem Sie `identity` im Cluster wieder angeben. Sie müssen hierfür eine Supportanfrage erstellen.
+> - Wenn Sie `identity` `type` für den Cluster auf `None` festlegen, wird auch der Zugriff auf Ihre Daten widerrufen. Dieser Ansatz wird jedoch nicht empfohlen, da Sie ihn nicht ohne Kontaktaufnahme mit dem Support rückgängig machen können.
 
 Im Clusterspeicher werden Änderungen der Schlüsselberechtigungen immer innerhalb einer Stunde berücksichtigt, und der Speicher steht dann nicht mehr zur Verfügung. Neue Daten, die in den mit Ihrem Cluster verknüpften Arbeitsbereichen erfasst wurden, werden gelöscht und können nicht wiederhergestellt werden. Der Zugriff auf die Daten und Abfragen in diesen Arbeitsbereichen sind nicht mehr möglich. Zuvor erfasste Daten verbleiben im Speicher, solange der Cluster und Ihre Arbeitsbereiche nicht gelöscht werden. Daten, auf die nicht zugegriffen werden kann, unterliegen der Datenaufbewahrungsrichtlinie und werden bereinigt, sobald der Aufbewahrungszeitraum abgelaufen ist. Die in den letzten 14 Tagen erfassten Daten werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese werden beim Schlüsselsperrungsvorgang gelöscht, und es kann dann nicht mehr darauf zugegriffen werden.
 
@@ -275,7 +275,7 @@ Für die Schlüsselrotation stehen zwei Modi zur Verfügung:
 
 Nach der Schlüsselrotation kann auf alle Ihre Daten weiter zugegriffen werden, da Daten immer mit dem Kontoverschlüsselungsschlüssel (Account Encryption Key, AEK) verschlüsselt werden, während AEK nun mit der neuen Version des Schlüsselverschlüsselungsschlüssels (Key Encryption Key, KEK) in Key Vault verschlüsselt wird.
 
-## <a name="customer-managed-key-for-saved-queries"></a>Kundenseitig verwalteter Schlüssel für gespeicherte Abfragen
+## <a name="customer-managed-key-for-saved-queries-and-log-alerts"></a>Kundenseitig verwalteter Schlüssel für gespeicherte Abfragen und Protokollwarnungen
 
 Die in Log Analytics verwendete Abfragesprache ist ausdrucksstark und kann vertrauliche Informationen in Kommentaren enthalten, die Sie Abfragen oder in der Abfragesyntax hinzufügen. Einige Organisationen verlangen, dass diese Informationen als Teil der Richtlinie für kundenseitig verwaltete Schlüssel geschützt werden, und Sie müssen Ihre Abfragen mit Ihrem Schlüssel verschlüsselt speichern. Azure Monitor ermöglicht Ihnen das Speichern von Abfragen für *gespeicherter Suchvorgänge* und *Protokollwarnungen* mit Verschlüsselung mit Ihrem Schlüssel in Ihrem eigenen Speicherkonto, sofern Sie mit Ihrem Arbeitsbereich verbunden sind. 
 
@@ -292,6 +292,7 @@ Wenn Sie Bring Your Own Storage (BYOS) verwenden und es mit Ihrem Arbeitsbereich
 * Der Abfrageverlauf wird nicht unterstützt, und Sie können keine Abfragen sehen, die Sie ausgeführt haben.
 * Sie können mit dem Arbeitsbereich ein einzelnes Speicherkonto zum Speichern von Abfragen verknüpfen, es kann aber sowohl für Abfragen für *gespeicherte Suchvorgänge* als auch *Protokollwarnungen* verwendet werden.
 * Anheften an das Dashboard wird nicht unterstützt.
+* Ausgelöste Protokollwarnungen enthalten keine Suchergebnisse oder Warnungsabfragen. Sie können [Warnungsdimensionen](../alerts/alerts-unified-log.md#split-by-alert-dimensions) verwenden, um Kontext in den ausgelösten Warnungen zu erhalten.
 
 **Konfigurieren von BYOS für Abfragen für gespeicherte Suchvorgänge**
 
@@ -426,9 +427,9 @@ Der kundenseitig verwaltete Schlüssel wird im dedizierten Cluster bereitgestell
   - Wenn Sie einen Cluster erstellen und die Fehlermeldung „Die doppelte Verschlüsselung für Cluster wird von <Regionsname> nicht unterstützt.“ erhalten, können Sie den Cluster immer noch ohne doppelte Verschlüsselung erstellen, indem Sie `"properties": {"isDoubleEncryptionEnabled": false}` im REST-Anforderungstext hinzufügen.
   - Die Einstellung für doppelte Verschlüsselung kann nach dem Erstellen des Clusters nicht mehr geändert werden.
 
-  - Wenn für Ihren Cluster die benutzerseitig zugewiesene verwaltete Identität festgelegt ist, wird durch das Festlegen von `UserAssignedIdentities` auf `None` der Cluster angehalten und der Zugriff auf Ihre Daten verhindert. Sie können die Sperrung nur zurücksetzen und den Cluster aktivieren, indem Sie eine Supportanfrage öffnen. Diese Einschränkung gilt nicht für die systemseitig zugewiesene verwaltete Identität.
+  - Wenn Sie `identity` `type` für den Cluster auf `None` festlegen, wird auch der Zugriff auf Ihre Daten widerrufen. Dieser Ansatz wird jedoch nicht empfohlen, da Sie ihn nicht ohne Kontaktaufnahme mit dem Support rückgängig machen können. Die empfohlene Methode zum Widerrufen des Zugriffs auf Ihre Daten ist die [Schlüsselsperrung](#key-revocation).
 
-  - Sie können einen kundenseitig verwalteten Schlüssel mit benutzerseitig zugewiesener verwalteter Identität nicht verwenden, wenn Ihre Key Vault-Instanz unter einer privaten Verbindung (VNET) angeordnet ist. Für dieses Szenario können Sie die systemseitig zugewiesene verwaltete Identität verwenden.
+  - Sie können einen kundenseitig verwalteten Schlüssel mit benutzerseitig zugewiesener verwalteter Identität nicht verwenden, wenn sich Ihre Key Vault-Instanz in einer Private Link-Instanz (VNet) befindet. Für dieses Szenario können Sie die systemseitig zugewiesene verwaltete Identität verwenden.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

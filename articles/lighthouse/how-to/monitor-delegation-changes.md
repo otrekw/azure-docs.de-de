@@ -1,14 +1,15 @@
 ---
 title: Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
-description: Erfahren Sie, wie Sie Delegierungsaktivitäten von Kundenmandanten für Ihren Verwaltungsmandanten überwachen.
-ms.date: 02/18/2021
+description: Erfahren Sie, wie Sie alle Azure Lighthouse-Delegierungsaktivitäten für Ihren verwaltenden Mandanten überwachen können.
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 1a12b916fae9794d6d695191a81ec076917bda31
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2472e7519a6c45ff62fb0c0280f0886b4aa0ff4d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814890"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077698"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 
@@ -180,6 +181,6 @@ else {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das Onboarding von Kunden in [Azure Lighthouse](../concepts/azure-delegated-resource-management.md).
+- Erfahren Sie mehr über das [Onboarding von Kunden in Azure Lighthouse](onboard-customer.md).
 - Erfahren Sie mehr über [Azure Monitor](../../azure-monitor/index.yml) und das [Azure-Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md).
 - Mithilfe der Beispielarbeitsmappe [Aktivitätsprotokolle nach Domäne](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) können Sie lernen, wie Sie Azure-Aktivitätsprotokolle über mehrere Abonnements hinweg anzeigen und nach Domänenname filtern können.
