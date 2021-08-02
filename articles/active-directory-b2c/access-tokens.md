@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 05/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a633a7656a287c0b8df050b6d14afb73c27a7460
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: df14f8fef3c5f71d5d80756eb629fc3ce5f16a74
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382135"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534563"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Anfordern eines Zugriffstokens in Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ Ein *Zugriffstoken* enthält Ansprüche, mit denen Sie in Azure Active Directory
 In diesem Artikel wird erläutert, wie Sie ein Zugriffstoken für eine Webanwendung und eine Web-API anfordern. Weitere Informationen zu Token in Azure AD B2C finden Sie in der [Übersicht über Token in Azure Active Directory B2C](tokens-overview.md).
 
 > [!NOTE]
-> **Web-API-Ketten (im Auftrag von) werden von Azure AD B2C nicht unterstützt.** Viele Architekturen umfassen eine Web-API, mit der eine andere Downstream-Web-API aufgerufen werden muss, wobei beide durch Azure AD B2C gesichert sind. Dieses Szenario kommt häufig bei Clients mit einem Web-API-Back-End vor, über das wiederum ein anderer Dienst aufgerufen wird. Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf. Der „Im Auftrag von“-Ablauf ist in Azure AD B2C derzeit noch nicht implementiert.
+> **Web-API-Ketten (im Auftrag von) werden von Azure AD B2C nicht unterstützt.** Viele Architekturen umfassen eine Web-API, mit der eine andere Downstream-Web-API aufgerufen werden muss, wobei beide durch Azure AD B2C gesichert sind. Dieses Szenario kommt häufig bei Clients mit einem Web-API-Back-End vor, über das wiederum ein anderer Dienst aufgerufen wird. Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf. Der „Im Auftrag von“-Ablauf ist in Azure AD B2C derzeit noch nicht implementiert. „Im Auftrag von“ funktioniert zwar für Anwendungen, die in Azure AD registriert sind, jedoch nicht für solche, die in Azure AD B2C registriert sind, unabhängig vom Mandanten (Azure AD oder Azure AD B2C), der die Token ausstellt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

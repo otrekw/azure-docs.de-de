@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1a07acedadfaf3d5158ba8e494d4527301655425
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f0d29e55e0bf1a88f5fb787b96b5bc549107fe8f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035100"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469395"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Verwenden von Georedundanz zum Entwerfen von hochverfügbaren Anwendungen
 
@@ -148,11 +148,11 @@ Sie haben drei Hauptoptionen für die Überwachung der Fehlerhäufigkeit in der 
 
 * Fügen Sie dem [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext)-Objekt, das Sie an die Speicheranforderungen übergeben, einen Handler für das [**Wiederholungsereignis**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) hinzu – dies ist die Methode, die in diesem Artikel erläutert und im zugehörigen Beispiel verwendet wird. Diese Ereignisse werden ausgelöst, wenn der Client eine Anforderung wiederholt. Dadurch können Sie verfolgen, wie oft der Client wiederholbare Fehler auf einem primären Endpunkt feststellt.
 
-    # <a name="net-v12"></a>[.NET v12](#tab/current)
+    # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/current)
 
     Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
+    # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/legacy)
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -166,11 +166,11 @@ Sie haben drei Hauptoptionen für die Überwachung der Fehlerhäufigkeit in der 
 
 * In der Methode [**Evaluieren**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) in einer benutzerdefinierten Wiederholungsrichtlinie können Sie benutzerdefinierten Code ausführen, sobald ein erneuter Versuch stattfindet. Zusätzlich zur Erfassung des Zeitpunkts einer Wiederholung erhalten Sie auch die Möglichkeit, das Wiederholungsverhalten zu ändern.
 
-    # <a name="net-v12"></a>[.NET v12](#tab/current)
+    # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/current)
 
     Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
+    # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/legacy)
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -233,12 +233,11 @@ Es ist wichtig, zu testen, ob Ihre Anwendung sich erwartungsgemäß verhält, we
 
 Sie können [Fiddler](https://www.telerik.com/fiddler) zum Abfangen und Bearbeiten von HTTP-Antworten in einem Skript verwenden. Dieses Skript kann Antworten vom primären Endpunkt identifizieren und den HTTP-Statuscode in einen Statuscode ändern, den die Speicherclientbibliothek als wiederholbaren Fehler erkennt. Dieser Codeausschnitt zeigt ein einfaches Beispiel eines Fiddler-Skripts, das Antworten auf Leseanforderungen an die **employeedata**-Tabelle abfängt, um einen 502-Status zurückzugeben:
 
-
-# <a name="java-v12"></a>[Java v12](#tab/current)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/current)
 
 Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
 
-# <a name="java-v11"></a>[Java v11](#tab/legacy)
+# <a name="java-v11-sdk"></a>[Java v11 SDK](#tab/legacy)
 
 ```java
 static function OnBeforeResponse(oSession: Session) {

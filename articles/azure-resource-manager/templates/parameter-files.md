@@ -2,18 +2,18 @@
 title: Erstellen einer Parameterdatei
 description: Erstellen einer Parameterdatei zum Übergeben von Werten während der Bereitstellung einer Azure Resource Manager-Vorlage
 ms.topic: conceptual
-ms.date: 04/15/2021
+ms.date: 05/11/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50404df278da22352344bbd12e139cc86f0a0615
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 8b7d9afc91462ec3dc61b25135460e347b121e5c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321643"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960278"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Erstellen einer Resource Manager-Parameterdatei
 
-Anstatt Parameter als Inlinewerte in Ihrem Skript zu übergeben, können Sie eine JSON-Datei verwenden, die die Parameterwerte enthält. In diesem Artikel erfahren Sie, wie Sie eine Parameterdatei erstellen, die Sie mit einer JSON-Vorlage oder einer Bicep-Datei verwenden.
+Anstatt Parameter als Inlinewerte in Ihrem Skript zu übergeben, können Sie eine JSON-Datei verwenden, die die Parameterwerte enthält. In diesem Artikel erfahren Sie, wie Sie eine Parameterdatei erstellen, die Sie mit einer JSON-Vorlage verwenden.
 
 ## <a name="parameter-file"></a>Parameterdatei
 
@@ -62,9 +62,7 @@ Weitere Informationen zur Verwendung von Werten aus einem Schlüsseltresor finde
 
 ## <a name="define-parameter-values"></a>Definieren von Parameterwerten
 
-Um zu bestimmen, wie die Parameternamen und -werte definiert werden, öffnen Sie Ihre JSON- oder Bicep-Vorlage. Sehen Sie sich den Parameterabschnitt der Vorlage an. Die folgenden Beispiele zeigen die Parameter aus JSON- und Bicep-Vorlagen.
-
-# <a name="json"></a>[JSON](#tab/json)
+Öffnen Sie Ihre JSON-Vorlage und prüfen Sie den Abschnitt `parameters`, um zu bestimmen, wie die Parameternamen und -werte definiert werden. Im folgenden Beispiel sind die Parameter aus einer JSON-Vorlage dargestellt.
 
 ```json
 "parameters": {
@@ -84,23 +82,6 @@ Um zu bestimmen, wie die Parameternamen und -werte definiert werden, öffnen Sie
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-@maxLength(11)
-param storagePrefix string
-
-@allowed([
-  'Standard_LRS'
-  'Standard_GRS'
-  'Standard_ZRS'
-  'Premium_LRS'
-])
-param storageAccountType string = 'Standard_LRS'
-```
-
----
 
 In der Parameterdatei ist das erste Detail der Name der einzelnen Parameter. Der Parameternamen in der Parameterdatei müssen mit den Parameternamen in der Vorlage identisch sein.
 
@@ -217,7 +198,7 @@ az deployment group create \
   --parameters @storage.parameters.json
 ```
 
-Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI](./deploy-cli.md#parameters). Zum Bereitstellen von _.bicep_-Dateien benötigen Sie Version 2.20 oder höher der Azure CLI.
+Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI](./deploy-cli.md#parameters).
 
 In Azure PowerShell übergeben Sie eine lokale Parameterdatei mithilfe des `TemplateParameterFile`-Parameters.
 
@@ -227,7 +208,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile C:\MyTemplates\storage.parameters.json
 ```
 
-Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](./deploy-powershell.md#pass-parameter-values) Zum Bereitstellen von BICEP-Dateien benötigen Sie _Version 5.6.0 oder höher von Azure PowerShell_.
+Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
 
 > [!NOTE]
 > Es ist nicht möglich, eine Parameterdatei mit dem benutzerdefinierten Vorlagenblatt im Portal zu verwenden.
@@ -253,5 +234,5 @@ Wenn Ihre Vorlage einen Parameter enthält, der den gleichen Namen besitzt wie e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Definieren von Parametern in einer Vorlage finden Sie unter [Parameter in ARM-Vorlagen](template-parameters.md).
+- Weitere Informationen zum Definieren von Parametern in einer Vorlage finden Sie unter [Parameter in ARM-Vorlagen](./parameters.md).
 - Weitere Informationen zur Verwendung von Werten aus einem Schlüsseltresor finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](key-vault-parameter.md).

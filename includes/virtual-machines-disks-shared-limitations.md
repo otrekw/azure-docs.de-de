@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/30/2020
+ms.date: 06/11/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 22a1a4b99717df32a40ea69ebb65a3a8e14ee2b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19b9cfc6ad6467b2779abb3561899fd3bd8d037e
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102510785"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112040266"
 ---
 Die Aktivierung freigegebener Datenträger ist nur für eine Teilmenge von Datenträgertypen verfügbar. Derzeit können nur Disk Ultra und SSD Premium freigegebene Datenträger ermöglichen. Jeder verwaltete Datenträger, für den freigegebene Datenträger aktiviert sind, unterliegt den folgenden Einschränkungen, die nach Datenträgertyp geordnet sind:
 
@@ -25,6 +25,7 @@ Bei der Freigabe von Disk Ultra-Datenträgern gelten die folgenden zusätzlichen
 
 - Derzeit beschränkt auf Azure Resource Manager oder die SDK-Unterstützung. 
 - Nur Basisdatenträger können mit einigen Versionen des Windows Server-Failoverclusters verwendet werden. Weitere Informationen finden Sie unter [Hardwareanforderungen und Speicheroptionen für Failoverclustering](/windows-server/failover-clustering/clustering-requirements).
+- Nur [serverseitige Verschlüsselung](../articles/virtual-machines/disk-encryption.md) wird unterstützt, [Azure Disk Encryption](../articles/virtual-machines/windows/disk-encryption-overview.md) wird aktuell nicht unterstützt.
 
 Freigegebene Disk Ultra-Datenträger sind in allen Regionen verfügbar, die diese Datenträger standardmäßig unterstützen. Sie müssen sich nicht für den Zugriff registrieren, um diese zu verwenden.
 
@@ -38,7 +39,8 @@ Freigegebene Disk Ultra-Datenträger sind in allen Regionen verfügbar, die dies
 - Bei der Verwendung von [Näherungsplatzierungsgruppen (PPGs)](../articles/virtual-machines/windows/proximity-placement-groups.md) müssen alle virtuellen Computer, die einen Datenträger freigeben, zur selben Näherungsplatzierungsgruppe gehören.
 - Nur Basisdatenträger können mit einigen Versionen des Windows Server-Failoverclusters verwendet werden. Weitere Informationen finden Sie unter [Hardwareanforderungen und Speicheroptionen für Failoverclustering](/windows-server/failover-clustering/clustering-requirements).
 - Die Unterstützung für Azure Site Recovery ist noch nicht verfügbar.
-- Azure Backup ist über [Azure Disk Backup (Vorschauversion)](../articles/backup/disk-backup-overview.md) verfügbar.
+- Azure Backup ist über [Azure Disk Backup](../articles/backup/disk-backup-overview.md) verfügbar.
+- Nur [serverseitige Verschlüsselung](../articles/virtual-machines/disk-encryption.md) wird unterstützt, [Azure Disk Encryption](../articles/virtual-machines/windows/disk-encryption-overview.md) wird aktuell nicht unterstützt.
 
 #### <a name="regional-availability"></a>Regionale Verfügbarkeit
 

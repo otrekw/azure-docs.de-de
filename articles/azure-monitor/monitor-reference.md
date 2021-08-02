@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 513f262f5d09cf56c4506a4f20c9aa41507c2abd
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 3fa167233c5afe7b50b2794f6c0fff5458e9acf7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515276"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089054"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -26,13 +26,13 @@ Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte A
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | Erweiterbarer APM-Dienst (Application Performance Management) zum Überwachen Ihrer Live-Webanwendung auf einer beliebigen Plattform. |
 | [Container Insights](containers/container-insights-overview.md) | Überwacht die Leistung von Containerworkloads, die entweder in Azure Container Instances oder in Managed Kubernetes-Clustern bereitgestellt sind, die im Azure Kubernetes Service (AKS) gehostet werden. |
-| [Azure Monitor für Cosmos DB](insights/cosmosdb-insights-overview.md) | Bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen auf einer vereinheitlichten interaktiven Oberfläche. |
-| [Azure Monitor für Netzwerke (Vorschauversion)](insights/network-insights-overview.md) | Bietet einen umfassenden Überblick über Integrität und Metriken Ihrer gesamten Netzwerkressource. Die erweiterte Suchfunktion unterstützt Sie beim Identifizieren von Ressourcenabhängigkeiten und ermöglicht Szenarien wie das Identifizieren von Ressourcen, die Ihre Website gehostet werden, indem einfach nach dem Namen Ihrer Website gesucht wird. |
-[Azure Monitor für Ressourcengruppen (Vorschauversion)](insights/resource-group-insights.md) |  Selektieren und Diagnostizieren von Problemen Ihrer individuellen Ressourcen und Bereitstellen eines Kontexts für die Integrität und Leistung der Ressourcengruppe als Ganzes. |
-| [Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage (Vorschauversion)](insights/storage-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. |
+| [Cosmos DB-Erkenntnisse](insights/cosmosdb-insights-overview.md) | Bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen auf einer vereinheitlichten interaktiven Oberfläche. |
+| [Netzwerkerkenntnisse (Vorschau)](insights/network-insights-overview.md) | Bietet einen umfassenden Überblick über Integrität und Metriken Ihrer gesamten Netzwerkressource. Die erweiterte Suchfunktion unterstützt Sie beim Identifizieren von Ressourcenabhängigkeiten und ermöglicht Szenarien wie das Identifizieren von Ressourcen, die Ihre Website gehostet werden, indem einfach nach dem Namen Ihrer Website gesucht wird. |
+[Resource Group Insights (Vorschau)](insights/resource-group-insights.md) |  Selektieren und Diagnostizieren von Problemen Ihrer individuellen Ressourcen und Bereitstellen eines Kontexts für die Integrität und Leistung der Ressourcengruppe als Ganzes. |
+| [Storage Insights](insights/storage-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. |
 | [VM Insights](vm/vminsights-overview.md) | Überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. |
-| [Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)](./insights/key-vault-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Latenz im Zusammenhang mit Key Vault bereitgestellt. |
-| [Erkunden von Azure Monitor für Azure Cache for Redis (Vorschauversion)](insights/redis-cache-insights-overview.md) |  Bietet eine einheitliche, interaktive Ansicht der Leistung, Fehler, Kapazität und Betriebsintegrität insgesamt. |
+| [Key Vault Insights (Vorschau)](./insights/key-vault-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Latenz im Zusammenhang mit Key Vault bereitgestellt. |
+| [Erkenntnisse zu Azure Cache for Redis (Vorschau)](insights/redis-cache-insights-overview.md) |  Bietet eine einheitliche, interaktive Ansicht der Leistung, Fehler, Kapazität und Betriebsintegrität insgesamt. |
 
 
 ### <a name="core-solutions"></a>Wichtige Lösungen
@@ -57,111 +57,111 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 | Dienst | Metriken | Protokolle | Erkenntnis | Notizen |
 |:---|:---|:---|:---|:---|
 |Active Directory | Nein | Ja | [Ja](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
-|Active Directory B2C | Nein | Nein  | Nein |  |
+|Active Directory B2C | Nein | Nein | Nein |  |
 |Active Directory Domain Services | Nein | Ja | Nein |  |
 |Aktivitätsprotokoll | Nein | Ja | Nein | |
-|Erweiterter Schutz vor Bedrohungen | Nein | Nein  | Nein |  |
-|Advisor | Nein | Nein  | Nein |  |
-|AI Builder | Nein | Nein  | Nein |  |
+|Erweiterter Schutz vor Bedrohungen | Nein | Nein | Nein |  |
+|Advisor | Nein | Nein | Nein |  |
+|AI Builder | Nein | Nein | Nein |  |
 |Analysis Services | Ja | Ja | Nein |  |
-|API for FHIR | Nein | Nein  | Nein |  |
+|API for FHIR | Nein | Nein | Nein |  |
 |API Management | Ja | Ja | Nein |  |
 |App Service | Ja | Ja | Nein |  |
-|AppConfig | Nein | Nein  | Nein |  |
+|AppConfig | Nein | Nein | Nein |  |
 |Application Gateway | Ja | Ja | Nein |  |
-|Nachweisdienst | Nein | Nein  | Nein |  |
+|Nachweisdienst | Nein | Nein | Nein |  |
 |Automation | Ja | Ja | Nein |  |
-|Azure Service Manager (RDFE) | Nein | Nein  | Nein |  |
+|Azure Service Manager (RDFE) | Nein | Nein | Nein |  |
 |Backup | Nein | Ja | Nein |  |
-|Bastion | Nein | Nein  | Nein |  |
+|Bastion | Nein | Nein | Nein |  |
 |Batch | Ja | Ja | Nein |  |
-|Batch KI | Nein | Nein  | Nein |  |
+|Batch KI | Nein | Nein | Nein |  |
 |Blockchain-Dienst | Nein | Ja | Nein |  |
-|Blaupausen | Nein | Nein  | Nein |  |
-|Botdienst | Nein | Nein  | Nein |  |
+|Blaupausen | Nein | Nein | Nein |  |
+|Botdienst | Nein | Nein | Nein |  |
 |Cloud Services | Ja | Ja | Nein | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.  |
-|Cloud Shell | Nein | Nein  | Nein |  |
+|Cloud Shell | Nein | Nein | Nein |  |
 |Cognitive Services | Ja | Ja | Nein |  |
-|Container Instances | Ja | Nein  | Nein |  |
+|Container Instances | Ja | Nein | Nein |  |
 |Containerregistrierung | Ja | Ja | Nein |  |
 |Content Delivery Network (CDN) | Nein | Ja | Nein |  |
 |Cosmos DB | Ja | Ja | [Ja](insights/cosmosdb-insights-overview.md) |  |
-|Cost Management | Nein | Nein  | Nein |  |
-|Data Box | Nein | Nein  | Nein |  |
-|Data Catalog Gen2 | Nein | Nein  | Nein |  |
+|Cost Management | Nein | Nein | Nein |  |
+|Data Box | Nein | Nein | Nein |  |
+|Data Catalog Gen2 | Nein | Nein | Nein |  |
 |Data Explorer | Ja | Ja | Nein |  |
 |Data Factory | Ja | Ja | Nein |  |
 |Data Factory v2 | Nein | Ja | Nein |  |
-|Datenfreigabe | Nein | Nein  | Nein |  |
+|Datenfreigabe | Nein | Nein | Nein |  |
 |Database for MariaDB | Ja | Ja | Nein |  |
 |Database for MySQL | Ja | Ja | Nein |  |
 |Database for PostgreSQL | Ja | Ja | Nein |  |
-|Database Migration Service | Nein | Nein  | Nein |  |
+|Database Migration Service | Nein | Nein | Nein |  |
 |Databricks | Nein | Ja | Nein |  |
 |DDoS Protection | Ja | Ja | Nein |  |
-|DevOps | Nein | Nein  | Nein |  |
-|DNS | Ja | Nein  | Nein |  |
-|Domänennamen | Nein | Nein  | Nein |  |
-|DPS | Nein | Nein  | Nein |  |
-|Dynamics 365 Customer Engagement | Nein | Nein  | Nein |  |
-|Dynamics 365 Finance and Operations | Nein | Nein  | Nein |  |
-|Event Grid | Ja | Nein  | Nein |  |
+|DevOps | Nein | Nein | Nein |  |
+|DNS | Ja | Nein | Nein |  |
+|Domänennamen | Nein | Nein | Nein |  |
+|DPS | Nein | Nein | Nein |  |
+|Dynamics 365 Customer Engagement | Nein | Nein | Nein |  |
+|Dynamics 365 Finance and Operations | Nein | Nein | Nein |  |
+|Event Grid | Ja | Nein | Nein |  |
 |Event Hubs | Ja | Ja | Nein |  |
 |ExpressRoute | Ja | Ja | Nein |  |
 |Firewall | Ja | Ja | Nein |  |
 |Front Door | Ja | Ja | Nein |  |
 |Functions | Ja | Ja | Nein |  |
 |HDInsight | Nein | Ja | Nein |  |
-|HPC Cache | Nein | Nein  | Nein |  |
+|HPC Cache | Nein | Nein | Nein |  |
 |Information Protection | Nein | Ja | Nein |  |
 |Intune | Nein | Ja | Nein |  |
-|IoT Central | Nein | Nein  | Nein |  |
+|IoT Central | Nein | Nein | Nein |  |
 |IoT Hub | Ja | Ja | Nein |  |
 |Key Vault | Ja | Ja | [Ja](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes Service (AKS) | Nein | Nein | [Ja](containers/container-insights-overview.md)  |  |
-|Load Balancer | Ja | Nein  | Nein |  |
+|Load Balancer | Ja | Nein | Nein |  |
 |Logic Apps | Ja | Ja | Nein |  |
-|Machine Learning Service | Nein | Nein  | Nein |  |
-|Verwaltete Anwendungen  | Nein | Nein  | Nein |  |
-|Karten  | Nein | Nein  | Nein |  |
+|Machine Learning Service | Nein | Nein | Nein |  |
+|Verwaltete Anwendungen  | Nein | Nein | Nein |  |
+|Karten  | Nein | Nein | Nein |  |
 |Media Services | Ja | Ja | Nein |  |
-|Microsoft Managed Desktop | Nein | Nein  | Nein |  |
-|Microsoft PowerApps | Nein | Nein  | Nein |  |
-|Microsoft Social Engagement | Nein | Nein  | Nein |  |
+|Microsoft Managed Desktop | Nein | Nein | Nein |  |
+|Microsoft PowerApps | Nein | Nein | Nein |  |
+|Microsoft Social Engagement | Nein | Nein | Nein |  |
 |Microsoft Stream | Ja | Ja | Nein |  |
-|Migrieren | Nein | Nein  | Nein |  |
+|Migrieren | Nein | Nein | Nein |  |
 |Multi-Factor Authentication | Nein | Ja | Nein |  |
 |Network Watcher | Ja | Ja | Nein |  |
-|Notification Hubs | Ja | Nein  | Nein |  |
-|Open Datasets | Nein | Nein  | Nein |  |
-|Richtlinie | Nein | Nein  | Nein |  |
-|Power Automate | Nein | Nein  | Nein |  |
+|Notification Hubs | Ja | Nein | Nein |  |
+|Open Datasets | Nein | Nein | Nein |  |
+|Richtlinie | Nein | Nein | Nein |  |
+|Power Automate | Nein | Nein | Nein |  |
 |Power BI Embedded | Ja | Ja | Nein |  |
-|Private Link | Nein | Nein  | Nein |  |
-|Project Spool Communication Platform | Nein | Nein  | Nein |  |
-|Red Hat OpenShift | Nein | Nein  | Nein |  |
+|Private Link | Nein | Nein | Nein |  |
+|Project Spool Communication Platform | Nein | Nein | Nein |  |
+|Red Hat OpenShift | Nein | Nein | Nein |  |
 |Redis Cache | Ja | Ja | [Ja](insights/redis-cache-insights-overview.md) | |
-|Ressourcendiagramm | Nein | Nein  | Nein |  |
-|Ressourcen-Manager | Nein | Nein  | Nein |  |
-|Retail Search – by Bing | Nein | Nein  | Nein |  |
+|Ressourcendiagramm | Nein | Nein | Nein |  |
+|Ressourcen-Manager | Nein | Nein | Nein |  |
+|Retail Search – by Bing | Nein | Nein | Nein |  |
 |Suchen, | Ja | Ja | Nein |  |
 |Service Bus | Ja | Ja | Nein |  |
 |Service Fabric | Nein | Ja | Nein | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.  |
-|Signup Portal | Nein | Nein  | Nein |  |
+|Signup Portal | Nein | Nein | Nein |  |
 |Site Recovery | Nein | Ja | Nein |  |
-|Spring Cloud Service | Nein | Nein  | Nein |  |
+|Spring Cloud Service | Nein | Nein | Nein |  |
 |Azure Synapse Analytics | Ja | Ja | Nein |  |
 |SQL-Datenbank | Ja | Ja | Nein |  |
 |SQL Server Stretch Database | Ja | Ja | Nein |  |
-|Stapel | Nein | Nein  | Nein |  |
+|Stapel | Nein | Nein | Nein |  |
 |Storage | Ja | Nein | [Ja](insights/storage-insights-overview.md) |  |
-|Storage Cache | Nein | Nein  | Nein |  |
-|Speichersynchronisierungsdienste | Nein | Nein  | Nein |  |
+|Storage Cache | Nein | Nein | Nein |  |
+|Speichersynchronisierungsdienste | Nein | Nein | Nein |  |
 |Stream Analytics | Ja | Ja | Nein |  |
 |Time Series Insights | Ja | Ja | Nein |  |
-|TINA | Nein | Nein  | Nein |  |
+|TINA | Nein | Nein | Nein |  |
 |Traffic Manager | Ja | Ja | Nein |  |
-|Universal Print | Nein | Nein  | Nein |  |
+|Universal Print | Nein | Nein | Nein |  |
 |Virtual Machine Scale Sets | Nein | Ja | [Ja](vm/vminsights-overview.md) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich. |
 |Virtual Machines | Ja | Ja | [Ja](vm/vminsights-overview.md) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich. |
 |Virtual Network | Ja | Ja | [Ja](insights/network-insights-overview.md) |  |

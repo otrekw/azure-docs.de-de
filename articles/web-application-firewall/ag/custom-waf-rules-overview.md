@@ -7,12 +7,13 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 9a5f64687937479d65f94010bbe4f0a5f1cf5ca2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dcce15618159b9d6a06a513435f0e091e02a2b2c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548222"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411250"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Benutzerdefinierte Regeln für Web Application Firewall v2 in Azure Application Gateway
 
@@ -22,7 +23,7 @@ Benutzerdefinierte Regeln ermöglichen die Erstellung eigener Regeln, die für j
 
 So können beispielsweise alle Anforderungen von einer IP-Adresse im Bereich 192.168.5.4/24 blockiert werden. In dieser Regel ist der Operator *IPMatch*, „matchValues“ ist der IP-Adressbereich (192.168.5.4/24), und die Aktion ist die Blockierung des Datenverkehrs. Sie legen auch den Namen und die Priorität der Regel fest.
 
-Benutzerdefinierte Regeln unterstützen die Verwendung von Verknüpfungslogik zur Erstellung komplexerer Regeln für Ihre individuellen Sicherheitsanforderungen. Beispiel: (Bedingung 1 **und** Bedingung 2) **oder** Bedingung 3). In diesem Beispiel soll die WAF die in der benutzerdefinierten Regel angegebene Aktion ausführen, wenn Bedingung 1 **und** Bedingung 2 erfüllt sind **oder** wenn Bedingung 3 erfüllt ist.
+Benutzerdefinierte Regeln unterstützen die Verwendung von Verknüpfungslogik zur Erstellung komplexerer Regeln für Ihre individuellen Sicherheitsanforderungen. Beispiel: ((Bedingung 1 **und** Bedingung 2) **oder** Bedingung 3). In diesem Beispiel soll die WAF die in der benutzerdefinierten Regel angegebene Aktion ausführen, wenn Bedingung 1 **und** Bedingung 2 erfüllt sind **oder** wenn Bedingung 3 erfüllt ist.
 
 Verschiedene Abgleichsbedingungen innerhalb der gleichen Regel sind immer durch **und** verknüpft. Beispiel: Blockieren des Datenverkehrs von einer bestimmten IP-Adresse nur bei Verwendung eines bestimmten Browsers.
 

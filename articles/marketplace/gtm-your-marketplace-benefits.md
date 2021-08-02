@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/09/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 3f94b22d4f439769b27d38943603f7c726bfc40d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f0f75a305a411e49a29124599dfa90aa0aee9056
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468406"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004276"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
 Sie haben Ihr Angebot im kommerziellen Microsoft-Marketplace veröffentlicht und möchten nun natürlich, dass es auf Interesse stößt. Wir bieten Ihnen vom Vertrieb über die technische Umsetzung bis hin zum Marketing Vorteile, die Ihrem Angebot schneller zum Erfolg verhelfen können.
 
-Sobald Ihr Angebot in Microsoft AppSource oder im Azure Marketplace live geschaltet ist, wechseln Sie zum [Partner Center](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace), um auf die Ihnen zustehenden Marketing- und Verkaufsvorteile sowie technischen Vorteile zuzugreifen und diese zu aktivieren. Marketplace-Prämienvorteile werden basierend auf Ihrem Engagement im kommerziellen Marketplace und Ihrem Umsatz angesammelt. Je mehr Sie sich engagieren, desto mehr erhalten Sie zurück.
+Sobald Ihr Angebot in Microsoft AppSource oder im Azure Marketplace live geschaltet ist, wechseln Sie zum [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165457), um auf die Ihnen zustehenden Marketing- und Verkaufsvorteile sowie technischen Vorteile zuzugreifen und diese zu aktivieren. Marketplace-Prämienvorteile werden basierend auf Ihrem Engagement im kommerziellen Marketplace und Ihrem Umsatz angesammelt. Je mehr Sie sich engagieren, desto mehr erhalten Sie zurück.
 
 ## <a name="marketplace-rewards"></a>Marketplace-Prämien
 
@@ -38,10 +38,10 @@ Sie erhalten Informationen zu den für Sie verfügbaren Ressourcen und der Imple
 
 Ausführliche Beschreibungen aller Programmvorteile finden Sie in der [Präsentation des Marketplace-Prämienprogramms](https://aka.ms/marketplacerewards).
 
-## <a name="getting-started-is-easy"></a>Der Anfang ist denkbar einfach:
+## <a name="getting-started-is-easy"></a>Der Anfang ist denkbar einfach
 
 1. Veröffentlichen Sie ein Angebot bei Microsoft AppSource oder im Azure Marketplace.
-2. Wechseln Sie im Partner Center zu [Marketplace-Prämien](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace), und wählen Sie **Registrieren für Marketplace-Prämienprogramm**.
+2. Wechseln Sie im Partner Center zu [Marketplace-Prämien](https://go.microsoft.com/fwlink/?linkid=2165388), und wählen Sie **Registrieren für Marketplace-Prämienprogramm**.
 3. Um Verkaufs- und Marketingvorteile zu aktivieren, weisen Sie einen Marketingkontakt zu. Dieser Kontakt erhält dann weitere Informationen zu Ihren Marketplace-Prämien.
 4. Zum Hinzufügen oder Aktualisieren Ihrer Marketingkontaktinformationen navigieren Sie auf der Seite für Marketplace-Prämien zum oberen Bereich der Registerkarte für Verkaufs- und Marketingvorteile, und wählen Sie dann **Hinzufügen, aktualisieren oder ändern** aus.  Gehen Sie anschließend wie folgt vor:
     1. Wählen Sie in der Liste einen Benutzer aus. Wenn der Benutzer, den Sie zuweisen möchten, nicht in der Liste enthalten ist, können Sie unter **Kontoeinstellungen** neue Benutzer hinzufügen.
@@ -50,7 +50,7 @@ Ausführliche Beschreibungen aller Programmvorteile finden Sie in der [Präsenta
     1. Nachdem Sie den Marketingkontakt aktualisiert haben, wählen Sie für den Vorteil, den Sie verwenden möchten, die Option **Aktivieren** aus. Sobald Sie einen Vorteil aktiviert haben, wird Ihr Marketingkontakt innerhalb einer Woche von einem Mitglied des Prämienteams kontaktiert.
 
 > [!NOTE]
-> Wenn Ihr Angebot seit mehr als vier Wochen aktiv ist und Sie keine Nachricht erhalten haben, überprüfen Sie in Ihrer Organisation, wer der Besitzer des fraglichen Angebots ist, indem Sie in Partner Center nachsehen. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben.<br><br>Wenn Sie den Besitzer nicht ermitteln können oder dieser Ihr Unternehmen verlassen hat, können Sie unter [Hilfe und Support](https://aka.ms/marketplacepublishersupport) ein Supportticket erstellen.
+> Wenn Ihr Angebot seit mehr als vier Wochen aktiv ist und Sie keine Nachricht erhalten haben, überprüfen Sie in Ihrer Organisation, wer der Besitzer des fraglichen Angebots ist, indem Sie in Partner Center nachsehen. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben.<br><br>Wenn Sie den Besitzer nicht ermitteln können oder dieser Ihr Unternehmen verlassen hat, können Sie unter [Hilfe und Support](https://go.microsoft.com/fwlink/?linkid=2165533) ein Supportticket erstellen.
 
 Der Umfang der für Sie verfügbaren Aktivitäten erweitert sich mit der Anzahl Ihrer Angebote im kommerziellen Marketplace. Alle Angebote erhalten im Rahmen einer Self-Service-E-Mail mit Ressourcen und bewährten Methoden eine Basisebene von Optimierungsempfehlungen und Werbung.
 

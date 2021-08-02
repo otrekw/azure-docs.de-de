@@ -7,14 +7,14 @@ ms.topic: include
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/19/2020
-ms.openlocfilehash: d562ae234d251a568bd6dafc293d5a431cc9aea7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db7c869d6c2c203b9e1c4a0b2cb3a7472beeecb2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92283209"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472063"
 ---
-Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Sie wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt.
+Geben Sie eine genaue **Beschreibung** Ihres Angebots an (bis zu 3.000 Zeichen). Sie wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt.
 
 Schließen Sie mindestens eines der folgenden Elemente in die Beschreibung ein:
 

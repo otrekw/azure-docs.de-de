@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: beaeb0131a2c9b326d663f6fcbb8273a9b52b412
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 450dd67c272de8ee250f0af66522ab3be26f63e5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100966"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077210"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -291,7 +291,7 @@ Das Application Insights .NET SDK verwendet `DiagnosticSource` und `Activity` , 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Telemetriekorrelation in Java
 
-Die automatische Korrelation von Telemetriedaten wird vom [Java-Agent](./java-in-process-agent.md) und vom [Java SDK](../../azure-monitor/app/java-get-started.md) (Version 2.0.0 oder höher) unterstützt. Das SDK füllt `operation_id` automatisch für alle Telemetriedaten (z.B. Ablaufverfolgungen, Ausnahmen und benutzerdefinierte Ereignisse) auf, die im Zusammenhang mit einer Anforderung ausgegeben werden. Es gibt außerdem die Korrelationsheader (weiter oben beschrieben) für Dienst-zu-Dienst-Aufrufe über HTTP weiter, wenn der [Java SDK-Agent](../../azure-monitor/app/java-agent.md) konfiguriert ist.
+Der [Java-Agent](./java-in-process-agent.md) unterstützt die automatische Korrelation von Telemetriedaten. Das SDK füllt `operation_id` automatisch für alle Telemetriedaten (z.B. Ablaufverfolgungen, Ausnahmen und benutzerdefinierte Ereignisse) auf, die im Zusammenhang mit einer Anforderung ausgegeben werden. Es gibt außerdem die Korrelationsheader (weiter oben beschrieben) für Dienst-zu-Dienst-Aufrufe über HTTP weiter, wenn der [Java SDK-Agent](java-2x-agent.md) konfiguriert ist.
 
 > [!NOTE]
 > Der Java-Agent von Application Insights erfasst automatisch Anforderungen und Abhängigkeiten für JMS, Kafka, Netty/Webflux usw. Beim Java SDK werden für die Korrelationsfunktion nur Aufrufe unterstützt, die per Apache HttpClient erfolgen. Die automatische Kontextweitergabe über verschiedene Messagingtechnologien (z. B. Kafka, RabbitMQ und Azure Service Bus) wird im SDK nicht unterstützt. 

@@ -1,21 +1,24 @@
 ---
-title: Upgrade mithilfe von Sicherung und Wiederherstellung – Azure Database for PostgreSQL – Single Server
-description: Beschreibt, wie Offlineupgrades für Datenbanken mithilfe der Sicherungs- und Wiederherstellungsfunktionen durchgeführt werden, um zu einer höheren Version von Azure Database for PostgreSQL – Single Server zu migrieren.
+title: Upgraden mithilfe von Sicherung und Wiederherstellung – Azure Database for PostgreSQL
+description: Erfahren Sie, wie Offlineupgrades für Datenbanken mithilfe der Sicherungs- und Wiederherstellungsfunktionen durchgeführt werden, um zu einer höheren Version von Azure Database for PostgreSQL zu migrieren.
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/10/2020
-ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/02/2021
+ms.openlocfilehash: d528d75bd26bf17ca0da20447848d315e2dc9057
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96493660"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111406875"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>Upgrade einer PostgreSQL-Datenbank durch Sichern und Wiederherstellen
 
-Sie können einen in Azure Database for PostgreSQL – Single Server bereitgestellten PostgreSQL-Server aktualisieren, indem Sie Ihre Datenbanken mithilfe der folgenden Methoden zu einem Server mit einer höheren Hauptversion migrieren.
+>[!NOTE]
+> Die in dieser Dokumentation erläuterten Konzepte gelten sowohl für Azure Database for PostgreSQL – Einzelserver als auch für Azure Database for PostgreSQL – Flexible Server (Vorschau). 
+
+Sie können einen in Azure Database for PostgreSQL bereitgestellten PostgreSQL-Server aktualisieren, indem Sie Ihre Datenbanken mithilfe der folgenden Methoden zu einem Server mit einer höheren Hauptversion migrieren.
 * **Offlinemethode** mit [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) und [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) von PostgreSQL – die Datenmigration verursacht eine Downtime. Im vorliegenden Dokument wird diese Upgrade-/Migrationsmethode behandelt.
 * **Onlinemethode** mit [Database Migration Service](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) (DMS). Bei dieser Methode erfolgt die Migration mit einer geringeren Downtime. Außerdem bleibt die Zieldatenbank mit der Quelldatenbank synchron, und Sie können wählen, wann der Übergang erfolgen soll. Allerdings müssen bei Verwendung von DMS einige Voraussetzungen und Einschränkungen beachtet werden. Ausführliche Informationen finden Sie in der [DMS-Dokumentation](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md). 
 
@@ -41,8 +44,8 @@ Dieser Leitfaden enthält einige Methoden und Beispiele für die Offlinemigratio
  
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 
-- Eine PostgreSQL-**Quelldatenbank** mit Version 9.5, 9.6 oder 10, für die Sie ein Upgrade ausführen möchten
-- Ein PostgreSQL-[Zieldatenbankserver](quickstart-create-server-database-portal.md) mit der gewünschten Hauptversion von **Azure Database for PostgreSQL** 
+- Einen PostgreSQL-**Quelldatenbankserver**, auf dem eine niedrigere Version der Engine ausgeführt wird, die Sie aktualisieren möchten
+- Einen PostgreSQL-**Zieldatenbankserver** mit der gewünschten Hauptversion von [Azure Database for PostgreSQL – Einzelserver](quickstart-create-server-database-portal.md) oder [Azure Database for PostgreSQL – Flexible Server](./flexible-server/quickstart-create-server-portal.md) 
 - Ein PostgreSQL-Clientsystem zum Ausführen der Sicherungs- und Wiederherstellungsbefehle
   - Dabei kann es sich um einen Linux- oder Windows-Client handeln, auf dem PostgreSQL sowie die Befehlszeilenprogramme [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) und [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) installiert sind. 
   - Alternativ können Sie [Azure Cloud Shell](https://shell.azure.com) verwenden, indem Sie auf der Menüleiste rechts oben im [Azure-Portal](https://portal.azure.com) auf Azure Cloud Shell klicken. Sie müssen sich bei Ihrem Konto `az login` anmelden, ehe Sie die Befehle zur Sicherung und Wiederherstellung ausführen können.
@@ -71,6 +74,9 @@ In den Beispielen in diesem Leitfaden werden zur Veranschaulichung die folgenden
  | Zielserver (Version 11) | pg-11.postgres.database.azure.com |
  | Zieldatenbank | bench5gb |
  | Zielbenutzername | pg@pg-11 |
+
+>[!NOTE]
+> Flexible Server unterstützen PostgreSQL ab Version 11. Außerdem ist beim Benutzernamen für flexible Server nicht „@<servername>“ erforderlich.
 
 ## <a name="upgrade-your-databases-using-offline-migration-methods"></a>Datenbankupgrade mithilfe von Offlinemigrationsmethoden
 Sie können eine der in diesem Abschnitt beschriebenen Methoden für Ihre Upgrades verwenden. Sie können die folgenden Tipps bei der Durchführung der Aufgaben nutzen.
@@ -164,5 +170,5 @@ Diese Methode eignet sich, wenn die Datenbank nur wenige größere Tabellen enth
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Wenn Sie mit der Funktionsweise der Zieldatenbank zufrieden sind, können Sie Ihren alten Datenbankserver löschen. 
-- Wenn Sie den gleichen Datenbankendpunkt wie der Quellserver verwenden möchten, können Sie, nachdem Sie Ihren alten Quelldatenbankserver gelöscht haben, ein Lesereplikat mit dem Namen des alten Datenbankservers erstellen. Sobald der Zustand stabil ist, können Sie das Replikat beenden, wodurch der Replikatserver zu einem unabhängigen Server höher gestuft wird. Weitere Informationen finden Sie unter [Replikation](./concepts-read-replicas.md).
+- Nur für Azure Database for PostgreSQL – Einzelserver. Wenn Sie den gleichen Datenbankendpunkt wie der Quellserver verwenden möchten, können Sie, nachdem Sie Ihren alten Quelldatenbankserver gelöscht haben, ein Lesereplikat mit dem Namen des alten Datenbankservers erstellen. Sobald der Replikationszustand stabil ist, können Sie das Replikat beenden, wodurch der Replikatserver zu einem unabhängigen Server höher gestuft wird. Weitere Informationen finden Sie unter [Replikation](./concepts-read-replicas.md).
 - Denken Sie daran, diese Befehle in einer Testumgebung zu testen und zu überprüfen, bevor Sie sie in der Produktionsumgebung verwenden.

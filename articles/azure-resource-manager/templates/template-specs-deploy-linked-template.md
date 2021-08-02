@@ -2,15 +2,16 @@
 title: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage
 description: Erfahren Sie, wie Sie eine vorhandene Vorlagenspezifikation in einer verknüpften Bereitstellung bereitstellen.
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 8d4ccd77c8b37a696fab7494a8d3f8052fc89b35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/04/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d80442a2ee03bcf85d7173517661d42389542e82
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889262"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696250"
 ---
-# <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage (Vorschau)
+# <a name="tutorial-deploy-a-template-spec-as-a-linked-template"></a>Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage
 
 Erfahren Sie, wie Sie eine vorhandene [Vorlagenspezifikation](template-specs.md) mithilfe einer [verknüpften Bereitstellung](linked-templates.md#linked-template) bereitstellen. Mithilfe von Vorlagenspezifikationen teilen Sie ARM-Vorlagen mit anderen Benutzer in Ihrer Organisation. Nachdem Sie eine Vorlagenspezifikation erstellt haben, können Sie die Vorlagenspezifikation mithilfe von Azure PowerShell oder Azure CLI bereitstellen. Sie können die Vorlagenspezifikation auch als Teil ihrer Projektmappe bereitstellen, indem Sie eine verknüpfte Vorlage verwenden.
 
@@ -19,7 +20,7 @@ Erfahren Sie, wie Sie eine vorhandene [Vorlagenspezifikation](template-specs.md)
 Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Vorlagenspezifikationen befinden sich derzeit in der Vorschauphase. Zur Verwendung mit Azure PowerShell müssen Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) installieren. Zur Verwendung mit der Azure-Befehlszeilenschnittstelle verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli).
+> Um Vorlagenspezifikationen mit Azure PowerShell zu verwenden, müssen Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) installieren. Zur Verwendung mit der Azure CLI verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-template-spec"></a>Erstellen einer Vorlagenspezifikation
 

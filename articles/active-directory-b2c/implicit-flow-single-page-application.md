@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2a4e58201557d64602cc0740b83373ce53c8f69
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7c3197a8eb9f6734cdd04d609ea0f59465ffa86d
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070675"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535509"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Single-Page-Anmeldung mithilfe des impliziten OAuth 2.0-Flusses in Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Viele moderne Anwendungen verfügen über ein Single-Page-App-Front-End, das hau
 
 Die empfohlene Methode zur Unterstützung von Single-Page-Webanwendungen ist [OAuth 2.0-Autorisierungscodefluss (mit PKCE)](./authorization-code-flow.md).
 
-Einige Frameworks, z. B. [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core), unterstützen nur den Fluss für implizite Genehmigung. In diesen Fällen unterstützt Azure Active Directory B2C (Azure AD B2C) den Fluss für implizite Genehmigung für OAuth 2.0-Autorisierung. Dieser Fluss wird in [Abschnitt 4.2 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749) beschrieben. Beim impliziten Ablauf empfängt die App Token direkt vom Azure AD-Autorisierungsendpunkt (Azure Active Directory), ohne dass eine Kommunikation zwischen Servern stattfindet. Die gesamte Authentifizierungslogik und Sitzungsverarbeitung wird vollständig im JavaScript-Client abgewickelt – entweder mit einer Seitenumleitung oder mit einem Popupfeld.
+Einige Frameworks, z. B. [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core), unterstützen nur den Fluss für implizite Genehmigung. In diesen Fällen unterstützt Azure Active Directory B2C (Azure AD B2C) den Fluss für implizite Genehmigung für OAuth 2.0-Autorisierung. Dieser Ablauf wird in [Abschnitt 4.2 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749) beschrieben. Beim impliziten Ablauf empfängt die App Token direkt vom Azure AD-Autorisierungsendpunkt (Azure Active Directory), ohne dass eine Kommunikation zwischen Servern stattfindet. Die gesamte Authentifizierungslogik und Sitzungsverarbeitung wird vollständig im JavaScript-Client abgewickelt – entweder mit einer Seitenumleitung oder mit einem Popupfeld.
 
 Azure AD B2C erweitert den impliziten OAuth 2.0-Standardfluss, sodass mehr als nur eine einfache Authentifizierung und Autorisierung erfolgt. Azure AD B2C führt den [Richtlinienparameter](user-flow-overview.md) ein. Mit dem Richtlinienparameter können Sie OAuth 2.0 zum Hinzufügen von Richtlinien zu Ihrer App verwenden, z. B. für Benutzerflows für die Registrierung, Anmeldung und Profilverwaltung. In den HTTP-Beispielanforderungen in diesem Artikel wird **{tenant}.onmicrosoft.com** als Beispiel verwendet. Ersetzen Sie `{tenant}` durch den Namen Ihres Mandanten, wenn ein solcher vorhanden ist und Sie einen Benutzerflow erstellt haben.
 
@@ -83,7 +83,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &state=arbitrary_data_you_sent_earlier
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --------- | ----------- |
 | access_token | Das von der App angeforderte Zugriffstoken. |
 | token_type | Der Wert des Tokentyps. Bearertoken ist der einzige Typ, den Azure AD unterstützt. |
@@ -195,7 +195,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fapi.contoso.com%2Ftasks.read
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | access_token |Das von der App angeforderte Token |
 | token_type |Der Tokentyp wird immer Träger sein. |

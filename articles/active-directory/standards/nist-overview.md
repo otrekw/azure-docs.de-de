@@ -1,5 +1,5 @@
 ---
-title: Erreichen von NIST-Authenticator-Sicherheitsstufen mit Azure Active Directory
+title: Erreichen von NIST-Authentifikator-Sicherheitsstufen mit Azure Active Directory
 description: Übersicht
 services: active-directory
 ms.service: active-directory
@@ -13,26 +13,27 @@ ms.reviewer: ''
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b27145a67c46578230fe9a9d588a149937d7f56
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 500b22546089335563fd12953414aa74612cedf3
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108294085"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537068"
 ---
-# <a name="configure-azure-active-directory-to-meet-nist-authenticator-assurance-levels"></a>Konfigurieren von Azure Active Directory zur Einhaltung der Anforderungen von NIST-Authenticator-Sicherheitsstufen
+# <a name="configure-azure-active-directory-to-meet-nist-authenticator-assurance-levels"></a>Konfigurieren von Azure Active Directory zur Einhaltung der Anforderungen von NIST-Authentifikator-Sicherheitsstufen
 
-Die Bereitstellung von Diensten für Bundesbehörden wird durch die Anzahl und Komplexität der unterschiedlichen Standards erschwert, die Sie erfüllen müssen. Als Clouddienstanbieter (Cloud Service Provider, CSP) oder Bundesbehörde sind Sie dafür verantwortlich, für die Einhaltung aller relevanten Standards zu sorgen. Diese Aufgabe wird mit Azure und Azure Active Directory vereinfacht, da Sie unsere Zertifizierungen nutzen und anschließend die Konfiguration gemäß Ihren spezifischen Anforderungen vornehmen können.
-Azure ist für mehr als 90 Complianceangebote zertifiziert. Ausführliche Informationen zur Azure-Compliance und den zugehörigen Zertifizierungen finden Sie unter [Vertrauen Sie Ihrer Cloud](https://azure.microsoft.com/overview/trusted-cloud/).
+Die Bereitstellung von Diensten für Bundesbehörden wird durch die Anzahl und Komplexität der unterschiedlichen Standards erschwert, die Sie erfüllen müssen. Als Cloud-Dienstanbieter (Cloud Service Provider, CSP) oder Bundesbehörde sind Sie dafür verantwortlich, für die Einhaltung aller relevanten Standards zu sorgen. Diese Aufgabe wird mit Azure und Azure Active Directory (Azure AD) vereinfacht, da Sie unsere Zertifizierungen verwenden und anschließend die Konfiguration gemäß Ihren spezifischen Anforderungen vornehmen können.
+
+Azure ist zum Zeitpunkt dieser Erstellung für mehr als 90 Complianceangebote zertifiziert. Weitere Informationen finden Sie unter [Vertrauen Sie Ihrer Cloud](https://azure.microsoft.com/overview/trusted-cloud/).
 
 ## <a name="why-meet-nist-standards"></a>Warum müssen NIST-Standards eingehalten werden? 
 
-Das National Institute of Standards and Technology (NIST) entwickelt die technischen Anforderungen für US-Bundesbehörden, die Identitätslösungen implementieren. Organisationen, die mit Bundesbehörden zusammenarbeiten, müssen diese Anforderungen ebenfalls erfüllen. Die Anforderungen in Bezug auf die NIST-Identität finden Sie im Dokument [Special Publication 800-63 Revision 3](https://pages.nist.gov/800-63-3/sp800-63-3.html) (NIST SP 800-63-3).
+Das National Institute of Standards and Technology (NIST) entwickelt die technischen Anforderungen für US-Bundesbehörden, die Identitätslösungen implementieren. Organisationen, die mit Bundesbehörden zusammenarbeiten, müssen diese Anforderungen ebenfalls erfüllen. Weitere Informationen zu den Identitätsanforderungen des NIST finden Sie unter [Special Publication 800-63 Revision 3](https://pages.nist.gov/800-63-3/sp800-63-3.html) (NIST SP 800-63-3).
 
 Auf NIST SP 800-63 wird auch in den folgenden Dokumenten bzw. von den folgenden Stellen verwiesen:
-* Programm [Electronic Prescription of Controlled Substances (ECPS)](https://deadiversion.usdoj.gov/ecomm/e_rx/) 
+* Programm [Electronic Prescription of Controlled Substances (EPCS)](https://deadiversion.usdoj.gov/ecomm/e_rx/) 
 * [FINRA-Anforderungen (Financial Industry Regulatory Authority)](https://www.finra.org/rules-guidance) 
-* Von Stellen im Gesundheitswesen, der Verteidigung und anderen Branchen wird NIST SP 800-63-3 häufig als Grundlage für Anforderungen in Bezug auf die Identitäts- und Zugriffsverwaltung (Identity & Access Management, IAM) genutzt
+* Von Stellen im Gesundheitswesen, der Verteidigung und anderen Branchen wird NIST SP 800-63-3 häufig als Grundlage für Anforderungen in Bezug auf die Identitäts- und Zugriffsverwaltung genutzt.
 
 Auf NIST-Richtlinien wird auch in anderen Standards verwiesen, z. B. vor allem im Rahmen des Federal Risk and Authorization Management Program (FedRAMP) für CSPs. Azure verfügt über die „FedRAMP High Impact“-Zertifizierung. 
 
@@ -46,18 +47,18 @@ Die Richtlinien für die digitale Identität in NIST SP 800-63-3 umfassen drei 
 
 * [SP 800-63C](https://pages.nist.gov/800-63-3/sp800-63c.html): Verbund und Assertionen
 
-Jedem Bereich sind Sicherungsstufen zugeordnet. Diese Artikelreihe enthält Informationen dazu, wie Sie die Authenticator-Sicherheitsstufen (Authenticator Assurance Levels, AALs) in NIST SP 800-63B erreichen, indem Sie Azure Active Directory und andere Microsoft-Lösungen verwenden.
+Jedem Bereich sind Sicherungsstufen zugeordnet. Diese Artikelreihe enthält Informationen dazu, wie Sie die Authentifikator-Sicherheitsstufen (Authenticator Assurance Levels, AALs) in NIST SP 800-63B erreichen, indem Sie Azure AD und andere Microsoft-Lösungen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-[Informationen zu AALs](nist-about-authenticator-assurance-levels.md)
+[Weitere Informationen zu AALs](nist-about-authenticator-assurance-levels.md)
 
 [Authentifizierungsszenarien für Azure AD](nist-authentication-basics.md)
 
-[NIST-Authenticator-Typen](nist-authenticator-types.md)
+[NIST-Authentifikatortypen](nist-authenticator-types.md)
 
-[Erzielen von NIST AAL1 mit Azure AD](nist-authenticator-assurance-level-1.md)
+[Erreichen von NIST AAL1 mit Azure AD](nist-authenticator-assurance-level-1.md)
 
-[Erzielen von NIST AAL2 mit Azure AD](nist-authenticator-assurance-level-2.md)
+[Erreichen von NIST AAL2 mit Azure AD](nist-authenticator-assurance-level-2.md)
 
-[Erzielen von NIST AAL3 mit Azure AD](nist-authenticator-assurance-level-3.md) 
+[Erreichen von NIST AAL3 mit Azure AD](nist-authenticator-assurance-level-3.md) 

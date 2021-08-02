@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 0fa6777dc5b587150f630ed8ccc110d16448cc21
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 45b9fa1fb96f45b5b24d7a0b823b11f89a471bd4
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602246"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752313"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Sichern und Wiederherstellen in einem dedizierten Azure Synapse SQL-Pool
 
@@ -26,7 +26,7 @@ Hier erfahren Sie, wie Sie Sicherungen und Wiederherstellungen in einem dedizier
 
 Mit einer *Data Warehouse-Momentaufnahme* wird ein Wiederherstellungspunkt erstellt, mit dessen Hilfe Sie einen vorherigen Zustand Ihres Data Warehouse wiederherstellen oder kopieren können.  Da ein dedizierter SQL-Pool ein verteiltes System ist, besteht eine Data Warehouse-Momentaufnahme aus vielen Dateien, die in Azure Storage gespeichert sind. Momentaufnahmen erfassen inkrementelle Änderungen der Daten, die in Ihrem Data Warehouse gespeichert sind.
 
-Eine *Data Warehouse-Wiederherstellung* ist ein neues Data Warehouse, das auf der Grundlage eines Wiederherstellungspunkts eines vorhandenen oder gelöschten Data Warehouse erstellt wird. Die Wiederherstellung Ihrer Data Warehouse-Instanz ist ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten nach versehentlichen Beschädigungen oder Löschungen neu erstellt werden. Data Warehouse ist darüber hinaus ein leistungsstarker Mechanismus, mit dem Sie zu Test- und Entwicklungszwecken Kopien Ihres Data Warehouse erstellen können. Die Wiederherstellungsraten von dedizierten SQL-Pools können je nach der Datenbankgröße und dem Speicherort des Quell- und Ziel-Data Warehouse variieren.
+Eine *Data Warehouse-Wiederherstellung* ist ein neues Data Warehouse, das auf der Grundlage eines Wiederherstellungspunkts eines vorhandenen oder gelöschten Data Warehouse erstellt wird. Die Wiederherstellung Ihrer Data Warehouse-Instanz ist ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten nach versehentlichen Beschädigungen oder Löschungen neu erstellt werden. Die Data Warehouse-Momentaufnahme ist darüber hinaus ein leistungsstarker Mechanismus, mit dem Sie zu Test- und Entwicklungszwecken Kopien Ihres Data Warehouse erstellen können. Die Wiederherstellungsraten von dedizierten SQL-Pools können je nach der Datenbankgröße und dem Speicherort des Quell- und Ziel-Data Warehouse variieren.
 
 ## <a name="automatic-restore-points"></a>Automatische Wiederherstellungspunkte
 
@@ -57,7 +57,7 @@ In Folgenden sind ausführliche Details zu den Aufbewahrungszeiträumen für Wie
 1. Der dedizierte SQL-Pool löscht einen Wiederherstellungspunkt, wenn der Aufbewahrungszeitraum von sieben Tagen erreicht wird **und** insgesamt mindestens 42 (benutzerdefinierte und automatische) Wiederherstellungspunkte vorhanden sind.
 2. Wenn ein dedizierter SQL-Pool angehalten wurde, werden keine Momentaufnahmen erstellt.
 3. Das Alter eines Wiederherstellungspunkts basiert auf den absoluten Kalendertagen ab Erstellung des Wiederherstellungspunkts und umfasst auch Zeiten, in denen der SQL-Pool angehalten war.
-4. Es wird garantiert, dass ein dedizierter SQL-Pool jeweils 42 benutzerdefinierte Wiederherstellungspunkte und 42 automatische Wiederherstellungspunkte speichern kann, solange diese Wiederherstellungspunkte den siebentägigen Aufbewahrungszeitraum nicht erreicht haben.
+4. Es wird garantiert, dass ein dedizierter SQL-Pool jeweils 42 benutzerdefinierte Wiederherstellungspunkte oder 42 automatische Wiederherstellungspunkte speichern kann, solange diese Wiederherstellungspunkte den siebentägigen Aufbewahrungszeitraum nicht erreicht haben.
 5. Wenn eine Momentaufnahme erstellt wurde, dann der dedizierte SQL-Pool länger als sieben Tage angehalten und anschließend fortgesetzt wird, wird der Wiederherstellungspunkt so lange beibehalten, bis insgesamt 42 (benutzerdefinierte und automatische) Wiederherstellungspunkte vorhanden sind.
 
 ### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>Aufbewahrung von Momentaufnahmen, wenn ein SQL-Pool gelöscht wird
@@ -78,7 +78,7 @@ Wenn Sie keine Geosicherungen für Ihren dedizierten SQL-Pool benötigen, könne
 
 ## <a name="data-residency"></a>Datenresidenz 
 
-Wenn sich das gekoppelte Rechenzentrum außerhalb ihrer geografischen Grenzen befindet, können Sie sicherstellen, dass Ihre Daten innerhalb Ihrer geografischen Grenze verbleiben, indem Sie den georedundanten Speicher deaktivieren. Dies kann geschehen, wenn Sie Ihren dedizierten SQL-Pool (ehemals SQL DW) über die Option „georedundanter Speicher“ bereitstellen, wenn Sie einen dedizierten SQL-Pool (früher SQL DW) erstellen oder wiederherstellen. 
+Wenn sich Ihr gekoppeltes Rechenzentrum außerhalb Ihres Landes befindet, können Sie sicherstellen, dass Ihre Daten in Ihrer Region verbleiben, indem Sie Ihre Datenbank in lokal redundanten Speicher (LRS) bereitstellen. Wenn Ihre Datenbank bereits in RA-GRS (Georedundanter Speicher mit Lesezugriff, aktuelle Standardeinstellung) bereitgestellt wurde, können Sie Geosicherungen deaktivieren. Ihre Datenbank befindet sich jedoch weiterhin im Speicher, der in einem regionsbezogenen Paar repliziert wird. Um sicherzustellen, dass Kundendaten in Ihrer Region verbleiben, können Sie Ihren dedizierten SQL-Pool in lokal redundanten Speicher bereitstellen oder wiederherstellen. Weitere Informationen zum Bereitstellen oder Wiederherstellen in einem lokal redundanten Speicher finden Sie in der [Anleitung zum Konfigurieren der Einregionsresidenz für einen dedizierten SQL-Pool (ehemals SQL DW) in Azure Synapse Analytics](single-region-residency.md).
 
 Unter [Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) können Sie überprüfen, ob sich das gekoppelte Rechenzentrum in einem anderen Land/einer anderen Region befindet.
 

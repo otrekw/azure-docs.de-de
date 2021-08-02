@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: e427d51068115db27a36243d738c0e93a10d3cb1
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 452d24d95fc0c43d8301e29b2304b9f0baa3cb25
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375915"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673923"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netzwerk für Azure-VM-Skalierungsgruppen
 
@@ -130,7 +130,7 @@ Virtuelle Computer in Azure-Skalierungsgruppen benötigen im Allgemeinen keine e
 In einigen Szenarien müssen virtuelle Computer in Skalierungsgruppen jedoch über eine eigene öffentliche IP-Adresse verfügen. Ein Beispiel sind etwa Spiele, bei denen eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, der die Spielphysik verarbeitet. Ein weiteres Beispiel, bei dem virtuelle Computer regionsübergreifend gegenseitige externe Verbindungen herstellen müssen, sind verteilte Datenbanken.
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Erstellen einer Skalierungsgruppe mit öffentlicher IP-Adresse pro virtuellem Computer
-Um mithilfe der CLI eine Skalierungsgruppe zu erstellen, die jedem virtuellen Computer eine öffentliche IP-Adresse zuweist, fügen Sie dem Befehl **vmss create** den Parameter **--public-ip-per-vm** hinzu. 
+Um mithilfe der CLI eine Skalierungsgruppe zu erstellen, die jedem virtuellen Computer eine öffentliche IP-Adresse zuweist, fügen Sie dem Befehl **vmss create** den Parameter **--public-ip-per-vm** hinzu.
 
 Wenn Sie eine Skalierungsgruppe mithilfe einer Azure-Vorlage erstellen möchten, sollten Sie sich vergewissern, dass die API-Version der Ressource „Microsoft.Compute/virtualMachineScaleSets“ mindestens **2017-03-30** lautet. Fügen Sie dem Abschnitt „ipConfigurations“ für die Skalierungsgruppe dann eine JSON-Eigenschaft vom Typ **publicIpAddressConfiguration** hinzu. Beispiel:
 
@@ -143,7 +143,7 @@ Wenn Sie eine Skalierungsgruppe mithilfe einer Azure-Vorlage erstellen möchten,
 }
 ```
 
-Beispielvorlage: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
+Beispielvorlage: [vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Abfragen der öffentlichen IP-Adressen der virtuellen Computer in einer Skalierungsgruppe
 Um mithilfe der CLI die öffentlichen IP-Adressen aufzulisten, die den virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, verwenden Sie den Befehl **az vmss list-instance-public-ips**.
@@ -384,7 +384,7 @@ az vmss show \
 
 ## <a name="make-networking-updates-to-specific-instances"></a>Erstellen von Netzwerkupdates für bestimmte Instanzen
 
-Sie können Netzwerkupdates für bestimmte Instanzen von VM-Skalierungsgruppen vornehmen. 
+Sie können Netzwerkupdates für bestimmte Instanzen von VM-Skalierungsgruppen vornehmen.
 
 Mit einem `PUT` für die Instanz können Sie die Netzwerkkonfiguration aktualisieren. Dies kann beispielsweise zum Hinzufügen oder Entfernen von Netzwerkschnittstellenkarten (NICs) oder zum Entfernen einer Instanz aus einem Back-End-Pool verwendet werden.
 
@@ -395,8 +395,8 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
 Im folgenden Beispiel wird gezeigt, wie Sie Ihrer NIC eine zweite IP-Konfiguration hinzufügen.
 
 1. Rufen Sie mit `GET` die Details einer bestimmten VM-Skalierungsgruppeninstanz ab.
-    
-    ``` 
+
+    ```
     GET https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```
 
@@ -449,10 +449,10 @@ Im folgenden Beispiel wird gezeigt, wie Sie Ihrer NIC eine zweite IP-Konfigurati
       }
     }
     ```
- 
+
 2. Aktualisieren Sie die Instanz mit `PUT`, um die zusätzliche IP-Konfiguration hinzuzufügen. Dies ähnelt dem Hinzufügen weiterer `networkInterfaceConfiguration`.
 
-    
+
     ```
     PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```

@@ -1,47 +1,47 @@
 ---
-title: 'Konfigurieren einer GPU für Windows Virtual Desktop: Azure'
-description: Erfahren Sie, wie Sie durch GPU beschleunigtes Rendering und schnellere Codierung in Windows Virtual Desktop ermöglichen.
+title: Konfigurieren einer GPU für Azure Virtual Desktop – Azure
+description: Erfahren Sie, wie Sie durch GPU beschleunigtes Rendering und schnellere Codierung in Azure Virtual Desktop ermöglichen.
 author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: f95b9c1615cc58d9cc0589bad98c7315e571686e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e55564ab1534b145958e128f58d50911ae9c51fa
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709462"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746283"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurieren der Beschleunigung durch Graphics Processing Units (GPUs) für Windows Virtual Desktop
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-azure-virtual-desktop"></a>Konfigurieren der Beschleunigung durch Graphics Processing Units (GPUs) für Azure Virtual Desktop
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md).
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md).
 
-Windows Virtual Desktop unterstützt durch GPU beschleunigtes Rendern und Codieren, um die Leistung und Skalierbarkeit von Apps zu erhöhen. Die GPU-Beschleunigung ist besonders für grafikintensive Apps essentiell.
+Azure Virtual Desktop unterstützt durch GPU beschleunigtes Rendern und Codieren, um die Leistung und Skalierbarkeit von Apps zu erhöhen. Die GPU-Beschleunigung ist besonders für grafikintensive Apps essentiell.
 
-Anhand der Anweisungen in diesem Artikel können Sie eine GPU-optimierte Azure-VM erstellen, ihrem Hostpool hinzufügen und so konfigurieren, dass sie die GPU-Beschleunigung zum Rendern und Codieren verwendet. In diesem Artikel wird vorausgesetzt, dass Sie den Windows Virtual Desktop-Mandanten bereits konfiguriert haben.
+Anhand der Anweisungen in diesem Artikel können Sie eine GPU-optimierte Azure-VM erstellen, ihrem Hostpool hinzufügen und so konfigurieren, dass sie die GPU-Beschleunigung zum Rendern und Codieren verwendet. In diesem Artikel wird vorausgesetzt, dass Sie bereits einen Azure Virtual Desktop-Mandanten konfiguriert haben.
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>Auswählen einer geeigneten GPU-optimierten Größe für virtuelle Azure-Computer
 
 Wählen Sie eine der VM-Größen von Azure der [NV-Serie](../virtual-machines/nv-series.md), [NVv3-Serie](../virtual-machines/nvv3-series.md) oder [NVv4-Serie](../virtual-machines/nvv4-series.md) aus. Diese sind auf die App- und Desktopvirtualisierung ausgerichtet und ermöglichen es, die meisten Apps und die Windows-Benutzeroberfläche über die GPU zu beschleunigen. Welche VM-Größe sich am besten für Ihren Hostpool eignet, hängt von mehreren Faktoren ab, z. B. von den Workloads Ihrer App, der gewünschten Benutzerfreundlichkeit und den Kosten. Im Allgemeinen bieten größere und leistungsfähigere GPUs ein besseres Benutzererlebnis bei einer gegebenen Benutzerdichte, während kleinere und fraktionierte GPU-Größen eine differenziertere Kontrolle über Kosten und Qualität ermöglichen.
 
 >[!NOTE]
->Die VMs der NC-, NCv2-, NCv3-, ND- und NDv2-Serien von Azure sind im Allgemeinen nicht für Windows Virtual Desktop-Sitzungshost geeignet. Diese VMs sind auf spezialisierte, hochleistungsfähige Compute- oder Machine Learning-Tools ausgerichtet, wie die mit NVIDIA CUDA erstellten. Sie unterstützen keine GPU-Beschleunigung für die meisten Anwendungen oder die Windows-Benutzeroberfläche.
+>Die VMs der NC-, NCv2-, NCv3-, ND- und NDv2-Serien von Azure sind im Allgemeinen nicht für Azure Virtual Desktop-Sitzungshosts geeignet. Diese VMs sind auf spezialisierte, hochleistungsfähige Compute- oder Machine Learning-Tools ausgerichtet, wie die mit NVIDIA CUDA erstellten. Sie unterstützen keine GPU-Beschleunigung für die meisten Anwendungen oder die Windows-Benutzeroberfläche.
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Erstellen eines Hostpools, Bereitstellen der VM und Konfigurieren einer App-Gruppe
 
 Erstellen Sie einen neuen Hostpool mit der gewählten VM-Größe. Anweisungen dazu finden Sie unter: [Tutorial: Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
 
-Windows Virtual Desktop unterstützt das durch GPU beschleunigte Rendern und Codieren für die folgenden Betriebssysteme:
+Azure Virtual Desktop unterstützt das durch GPU beschleunigte Rendern und Codieren für die folgenden Betriebssysteme:
 
 * Windows 10, Version 1511 und höher
 * Windows Server 2016 oder höher
 
-Außerdem müssen Sie eine App-Gruppe konfigurieren oder die Standarddesktop-App-Gruppe „Desktop Application Group“ verwenden, die automatisch erstellt wird, wenn Sie einen neuen Hostpool erstellen. Anweisungen dazu finden Sie unter: [Tutorial: Verwalten von App-Gruppen für Windows Virtual Desktop](./manage-app-groups.md).
+Außerdem müssen Sie eine App-Gruppe konfigurieren oder die Standarddesktop-App-Gruppe „Desktop Application Group“ verwenden, die automatisch erstellt wird, wenn Sie einen neuen Hostpool erstellen. Anweisungen finden Sie unter [Tutorial: Verwalten von App-Gruppen für Azure Virtual Desktop (klassisch)](./manage-app-groups.md)
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Installieren unterstützter Grafiktreiber auf Ihrer VM
 
-Nach der Bereitstellung müssen Sie die entsprechenden Grafiktreiber installieren, um die GPU-Funktionen von Azure-VMs der N-Serie in Windows Virtual Desktop nutzen zu können. Folgen Sie den Anweisungen unter [Unterstützte Betriebssysteme und Treiber](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers), um Treiber zu installieren. Es werden nur von Azure verteilte Treiber unterstützt.
+Nach der Bereitstellung müssen Sie die entsprechenden Grafiktreiber installieren, um die GPU-Funktionen von Azure-VMs der N-Serie in Azure Virtual Desktop nutzen zu können. Folgen Sie den Anweisungen unter [Unterstützte Betriebssysteme und Treiber](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers), um Treiber zu installieren. Es werden nur von Azure verteilte Treiber unterstützt.
 
 * Für Azure-VMs der NV-Serie oder NVv3-Serie unterstützen nur NVIDIA GRID-Treiber und nicht NVIDIA CUDA-Treiber die GPU-Beschleunigung für die meisten Anwendungen und die Windows-Benutzeroberfläche. Wenn Sie sich für die manuelle Installation von Treibern entscheiden, stellen Sie sicher, dass Sie GRID-Treiber installieren. Wenn Sie sich für die Installation von Treibern über die Azure VM-Erweiterung entscheiden, werden GRID-Treiber automatisch für diese VM-Größen installiert.
 * Für Azure-VMs der NVv4-Serie installieren Sie die von Azure bereitgestellten AMD-Treiber. Sie können sie automatisch mit der Azure-VM-Erweiterung installieren oder manuell installieren.
@@ -100,7 +100,7 @@ Führen Sie einen der folgenden Schritte durch, um zu überprüfen, dass Ihre Ap
 
 So können Sie überprüfen, ob der Remotedesktop die durch GPU beschleunigte Codierung verwendet:
 
-1. Stellen Sie eine Verbindung mit dem Desktop der VM mithilfe des Windows Virtual Desktop-Clients her.
+1. Stellen Sie eine Verbindung mit dem Desktop der VM mithilfe des Azure Virtual Desktop-Clients her.
 2. Starten Sie die Ereignisanzeige, und navigieren Sie zum folgenden Knoten: **Applications and Services Logs** > **Microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreCDV** > **Operational** (Anwendungs- und Dienstprotokolle > Microsoft > Windows > RemoteDesktopServices-RdpCoreCDV > Betriebsbereit)
 3. Suchen Sie nach der Ereignis-ID 170, um zu überprüfen, ob die durch GPU beschleunigte Codierung verwendet wird. Wenn „Der AVC-Hardware-Encoder ist aktiviert: 1“ angezeigt wird, wird die GPU-Codierung verwendet.
 
@@ -108,7 +108,7 @@ So können Sie überprüfen, ob der Remotedesktop die durch GPU beschleunigte Co
 
 So überprüfen Sie, ob Remotedesktop die Vollbildvideocodierung verwendet:
 
-1. Stellen Sie eine Verbindung mit dem Desktop der VM mithilfe des Windows Virtual Desktop-Clients her.
+1. Stellen Sie eine Verbindung mit dem Desktop der VM mithilfe des Azure Virtual Desktop-Clients her.
 2. Starten Sie die Ereignisanzeige, und navigieren Sie zum folgenden Knoten: **Applications and Services Logs** > **Microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreCDV** > **Operational** (Anwendungs- und Dienstprotokolle > Microsoft > Windows > RemoteDesktopServices-RdpCoreCDV > Betriebsbereit)
 3. Suchen Sie nach der Ereignis-ID 162, um zu ermitteln, ob die Vollbildvideocodierung verwendet wird. Wenn „AVC aktiviert: 1, Anfangsprofil: 2048“ angezeigt wird, wird AVC 444 verwendet.
 

@@ -8,23 +8,32 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dac23897f8a17c9adb4ae78736a6a8afa85a18b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e44dc442180631b0ebe11cae374a59fed37cc13
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103012002"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085741"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>Anzeigen der zugewiesenen Rollen einer Gruppe in Azure Active Directory
 
 In diesem Abschnitt wird beschrieben, wie die einer Gruppe zugewiesenen Rollen mithilfe von Azure AD Admin Center angezeigt werden können. Das Anzeigen von Gruppen und zugewiesenen Rollen gehört zu den Standardbenutzerberechtigungen.
 
-1. Melden Sie sich mit beliebigen Anmeldeinformationen (nicht zwingend als Administrator) bei [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) an.
+## <a name="prerequisites"></a>Voraussetzungen
+
+- AzureADPreview-Modul bei Verwendung von PowerShell
+- Administratorzustimmung bei Verwendung von Graph-Tester für die Microsoft Graph-API
+
+Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
+
+## <a name="azure-portal"></a>Azure-Portal
+
+1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) an.
 
 1. Wählen Sie die Gruppe aus, an der Sie interessiert sind.
 
@@ -32,7 +41,7 @@ In diesem Abschnitt wird beschrieben, wie die einer Gruppe zugewiesenen Rollen m
 
    ![Anzeigen aller einer ausgewählten Gruppe zugewiesenen Rollen](./media/groups-view-assignments/view-assignments.png)
 
-## <a name="using-powershell"></a>PowerShell
+## <a name="powershell"></a>PowerShell
 
 ### <a name="get-object-id-of-the-group"></a>Abrufen der Objekt-ID der Gruppe
 
@@ -46,7 +55,7 @@ Get-AzureADMSGroup -SearchString "Contoso_Helpdesk_Administrators"
 Get-AzureADMSRoleAssignment -Filter "principalId eq '<object id of group>" 
 ```
 
-## <a name="using-microsoft-graph-api"></a>Verwenden der Microsoft Graph-API
+## <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 ### <a name="get-object-id-of-the-group"></a>Abrufen der Objekt-ID der Gruppe
 

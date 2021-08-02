@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/02/2020
+ms.date: 05/28/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cec0f2be9dc86b156bc76f0de5afb1cc19fda99b
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: ffe851cc39ab8856133a5ac24508bc9b6df53a8f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016489"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110782329"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory
 
@@ -28,12 +28,12 @@ Verwenden Sie die folgenden Informationen und Beispiele, um ein besseres Verstä
 
 ## <a name="usage-location"></a>Verwendungsstandort
 
-Einige Microsoft-Dienste sind nicht an allen Standorten verfügbar. Bevor einem Benutzer eine Lizenz zugewiesen werden kann, muss der Administrator die Eigenschaft **Usage location** (Verwendungsstandort) für den Benutzer angeben. Im [Azure-Portal](https://portal.azure.com) können Sie den Verwendungsstandort unter **Benutzer** &gt; **Profil** &gt; **Einstellungen** angeben.
+Einige Microsoft-Dienste sind nicht an allen Standorten verfügbar. Bevor einem Benutzer eine Lizenz zugewiesen werden kann, sollte der Administrator die Eigenschaft **Nutzungsstandort** für den Benutzer angeben. Im [Azure-Portal](https://portal.azure.com) können Sie den Verwendungsstandort unter **Benutzer** &gt; **Profil** &gt; **Einstellungen** angeben.
 
 Bei der Gruppenlizenzzuweisung erben alle Benutzer ohne Verwendungsstandort den Standort des Verzeichnisses. Wenn sich Ihre Benutzer an mehreren Standorten befinden, sollten Sie darauf achten, diese in Ihren Benutzerressourcen richtig anzugeben, bevor Sie Gruppen mit Lizenzen Benutzer hinzufügen.
 
 > [!NOTE]
-> Bei der Zuweisung von Gruppenlizenzen wird ein vorhandener Verwendungsstandortwert für einen Benutzer nie geändert. Es wird empfohlen, die Angabe des Verwendungsstandorts als Teil des Benutzererstellungsablaufs in Azure AD (z.B. über die AAD Connect-Konfiguration) festzulegen. Hierdurch wird sichergestellt, dass das Ergebnis der Lizenzzuweisung immer korrekt ist und die Benutzer keine Dienste für Standorte empfangen, die nicht zugelassen sind.
+> Bei der Zuweisung von Gruppenlizenzen wird ein vorhandener Verwendungsstandortwert für einen Benutzer nie geändert. Es wird empfohlen, die Angabe des Nutzungsstandorts als Teil des Benutzererstellungsablaufs in Azure AD (z. B. über die AAD Connect-Konfiguration) festzulegen. Hierdurch wird sichergestellt, dass das Ergebnis der Lizenzzuweisung immer korrekt ist und die Benutzer keine Dienste für Standorte empfangen, die nicht zugelassen sind.
 
 ## <a name="use-group-based-licensing-with-dynamic-groups"></a>Verwenden der gruppenbasierten Lizenzierung mithilfe von dynamischen Gruppen
 
@@ -63,40 +63,34 @@ Es kann sein, dass Benutzer eine Lizenz benötigen, eine andere Lizenz jedoch ni
 
 > [!WARNING]
 > Beim Ändern der Mitgliedschaftsregel einer vorhandenen Gruppe ist Vorsicht geboten. Wenn eine Regel geändert wird, wird die Mitgliedschaft der Gruppe erneut ausgewertet, und Benutzer, für die sich keine Übereinstimmung mit der neuen Regel mehr ergibt, werden entfernt (Benutzer, die die Vorgaben der neuen Regel erfüllen, sind von diesem Prozess nicht betroffen). Für diese Benutzer werden während des Prozesses die Lizenzen entfernt, was unter Umständen zu einer Nichtverfügbarkeit des Diensts oder in einigen Fällen auch zu Datenverlust führen kann.
-> 
+>
 > Wenn Sie über eine große dynamische Gruppe verfügen, von der die Lizenzzuweisung abhängig ist, sollten Sie die Überprüfung von größeren Änderungen für eine kleinere Testgruppe erwägen, bevor Sie die Änderungen auf die Hauptgruppe anwenden.
 
 ## <a name="multiple-groups-and-multiple-licenses"></a>Mehrere Gruppen und mehrere Lizenzen
 
 Ein Benutzer kann Mitglied mehrerer Gruppen mit Lizenzen sein. Folgende Punkte sollten berücksichtigt werden:
 
-- Mehrere Lizenzen für das gleiche Produkt können sich überlappen und führen dazu, dass alle aktivierten Dienste auf den Benutzer angewendet werden. Das folgende Beispiel zeigt zwei Lizenzierungsgruppen: *E3 base services* (E3-Basisdienste) enthält die grundlegenden Dienste, die wir zuerst für alle Benutzer bereitstellen möchten. *E3 extended services* (Erweiterte E3-Dienste) enthält zusätzliche Dienste (Sway und Planner), die nur für einige Benutzer bereitgestellt werden sollen. In diesem Beispiel wurde der Benutzer beiden Gruppen hinzugefügt:
-
-  ![Screenshot: Aktivierte Dienste](./media/licensing-group-advanced/view-enabled-services.png)
-
-  Ergebnis: Für den Benutzer sind sieben der zwölf Dienste im Produkt aktiviert, und es wird nur eine Lizenz dafür genutzt.
+- Mehrere Lizenzen für das gleiche Produkt können sich überlappen und führen dazu, dass alle aktivierten Dienste auf den Benutzer angewendet werden. *E3 – Basisdienste* enthalten z. B. die grundlegenden Dienste, die zuerst für alle Benutzer bereitgestellt werden sollen, und *E3 – erweiterte Dienste* umfassen zusätzliche Dienste (Sway und Planner), die nur für einige Benutzer bereitgestellt werden. Sie können Benutzer auch beiden Gruppen hinzufügen. Ergebnis: Für den Benutzer sind sieben der zwölf Dienste im Produkt aktiviert, und es wird nur eine Lizenz dafür genutzt.
 
 - Bei Auswahl der *E3*-Lizenz werden weitere Details angezeigt, einschließlich der Informationen dazu, welche Dienste für den Benutzer durch die Gruppenlizenzzuweisung aktiviert wurden.
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>Gleichzeitig bestehende direkte Lizenzen und Gruppenlizenzen
 
-Wenn ein Benutzer eine Lizenz von einer Gruppe erbt, können Sie diese Lizenzzuweisung in den Eigenschaften des Benutzers nicht direkt entfernen oder ändern. Änderungen müssen in der Gruppe vorgenommen und dann an alle Benutzer propagiert werden.
+Wenn ein Benutzer eine Lizenz von einer Gruppe erbt, können Sie diese Lizenzzuweisung in den Eigenschaften des Benutzers nicht direkt entfernen oder ändern. Sie können die Lizenzzuweisung nur in der Gruppe ändern, die Änderungen werden dann an alle Benutzer propagiert. Es ist jedoch möglich, dem Benutzer die gleiche Produktlizenz direkt und durch eine Gruppenlizenzzuweisung zuzuweisen. Auf diese Weise können Sie zusätzliche Dienste aus dem Produkt ohne Auswirkungen auf andere Benutzer nur für einen Benutzer aktivieren.
 
-Es ist aber möglich, dem Benutzer zusätzlich zur geerbten Lizenz die gleiche Produktlizenz direkt zuzuweisen. Sie können zusätzliche Dienste aus dem Produkt ohne Auswirkungen auf andere Benutzer nur für einen Benutzer aktivieren.
-
-Direkt zugewiesene Lizenzen können entfernt werden und wirken sich nicht auf geerbte Lizenzen aus. Angenommen, ein Benutzer erbt eine Office 365 Enterprise E3-Lizenz von einer Gruppe.
+Direkt zugewiesene Lizenzen können entfernt werden und wirken sich nicht auf geerbte Lizenzen des Benutzers aus. Angenommen, ein Benutzer erbt eine Office 365 Enterprise E3-Lizenz von einer Gruppe.
 
 Zuerst erbt der Benutzer die Lizenz nur von der *Basic E3-Dienste*-Gruppe, sodass sich vier Dienstpläne ergeben.
 
-1. Wählen Sie **Zuweisen** aus, um dem Benutzer eine E3-Lizenz direkt zuzuweisen. In diesem Fall deaktivieren Sie alle Dienstpläne mit Ausnahme von Yammer Enterprise.
+1. Wählen Sie **Zuweisen** aus, um dem Benutzer eine E3-Lizenz direkt zuzuweisen. Dies gilt z. B., wenn Sie alle Dienstpläne mit Ausnahme von Yammer Enterprise deaktivieren möchten.
 
-    Das Ergebnis ist, dass der Benutzer weiterhin nur eine Lizenz des E3-Produkts verwendet. Mit der direkten Zuweisung wird der Yammer Enterprise-Dienst aber nur für diesen Benutzer aktiviert. Sie sehen, welche Dienste jeweils durch die Gruppenmitgliedschaft und die direkte Zuweisung aktiviert sind.
+   Das Ergebnis ist, dass der Benutzer weiterhin nur eine Lizenz des E3-Produkts verwendet. Mit der direkten Zuweisung wird der Yammer Enterprise-Dienst aber nur für diesen Benutzer aktiviert. Sie sehen, welche Dienste jeweils durch die Gruppenmitgliedschaft und die direkte Zuweisung aktiviert sind.
 
 1. Wenn Sie die direkte Zuweisung verwenden, sind die folgenden Vorgänge zulässig:
 
-   - Yammer Enterprise kann direkt in der Benutzerressource deaktiviert werden. Der Umschalter **Ein/Aus** in der Abbildung war für diesen Dienst aktiviert (im Gegensatz zu den Umschaltern für die anderen Dienste). Da der Dienst direkt für den Benutzer aktiviert wurde, kann er geändert werden.
+   - Yammer Enterprise kann für einzelne Benutzer deaktiviert werden. Da der Dienst Benutzern direkt zugewiesen wird, kann er geändert werden.
    - Außerdem können zusätzliche Dienste als Teil der direkt zugewiesenen Lizenz aktiviert werden.
-   - Mit der Schaltfläche **Entfernen** kann die direkte Lizenz vom Benutzer entfernt werden. Sie können sehen, dass der Benutzer jetzt nur die geerbte Gruppenlizenz hat und nur die ursprünglichen Dienste aktiviert bleiben:
+   - Mit der Schaltfläche **Entfernen** kann die direkte Lizenz vom Benutzer entfernt werden. Sie können sehen, dass der Benutzer dann nur die geerbte Gruppenlizenz hat und nur die ursprünglichen Dienste aktiviert bleiben.
 
 ## <a name="managing-new-services-added-to-products"></a>Verwalten von neuen Diensten, die Produkten hinzugefügt werden
 

@@ -2,14 +2,14 @@
 title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 04/21/2021
+ms.date: 06/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: c96c80721cd66f895c9c0dade590fc11d25de346
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: be9db68720f8af1fa3c00e3919b1acd7a63969c0
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890760"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410259"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -151,7 +151,7 @@ Wiederherstellen von an Zonen angehefteten virtuellen Computern | Unterstützt (
 Gen2-VMS | Unterstützt <br> Azure Backup unterstützt die Sicherung und Wiederherstellung von [Gen2-VMS](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Bei Wiederherstellung über einen Wiederherstellungspunkt werden diese VMs als [Gen2-VMs](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) wiederhergestellt.
 Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete virtuelle Computer nicht unterstützt. <br><br> Wird für verwaltete virtuelle Computer unterstützt.
 [Spot-VMs](../virtual-machines/spot-vms.md) | Nicht unterstützt. Azure Backup stellt Spot-VMs als reguläre Azure-VMs wieder her.
-[Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | Unterstützt<br></br>Beim Wiederherstellen eines virtuellen Azure-Computers über die Option [Neu erstellen](backup-azure-arm-restore-vms.md#create-a-vm) kann der virtuelle Azure-Computer auf dem dedizierten Host nicht wiederhergestellt werden, obwohl die Wiederherstellung erfolgreich ist. Um dies zu erreichen, empfiehlt sich das Wiederherstellen als Datenträger. Erstellen Sie beim [Wiederherstellen als Datenträger](backup-azure-arm-restore-vms.md#restore-disks) mit der Vorlage einen virtuellen Computer auf einem dedizierten Host, und fügen Sie die Datenträger dann an.<br></br>Dies gilt auch für die sekundäre Region bei Ausführen einer [regionsübergreifenden Wiederherstellung](backup-azure-arm-restore-vms.md#cross-region-restore).
+[Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | Unterstützt<br></br>Beim Wiederherstellen eines virtuellen Azure-Computers über die Option [Neu erstellen](backup-azure-arm-restore-vms.md#create-a-vm) kann der virtuelle Azure-Computer auf dem dedizierten Host nicht wiederhergestellt werden, obwohl die Wiederherstellung erfolgreich ist. Um dies zu erreichen, empfiehlt sich das Wiederherstellen als Datenträger. Erstellen Sie beim [Wiederherstellen als Datenträger](backup-azure-arm-restore-vms.md#restore-disks) mit der Vorlage einen virtuellen Computer auf einem dedizierten Host, und fügen Sie die Datenträger dann an.<br></br>Dies gilt nicht in der sekundären Region beim Ausführen einer [regionsübergreifenden Wiederherstellung](backup-azure-arm-restore-vms.md#cross-region-restore).
 Konfiguration von „Windows-Speicherplätze“ für eigenständige virtuelle Azure-Computer | Unterstützt
 [Skaliersets für virtuelle Azure-Computer](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | Wird sowohl für einheitliche als auch flexible Orchestrierungsmodelle zum Sichern und Wiederherstellen einzelner virtueller Azure-Computer unterstützt.
 
@@ -164,7 +164,7 @@ Datenträgergröße | Die Größe einzelner Datenträger kann bis zu 32 TB und m
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.
 Verschlüsselte Datenträger | Unterstützt.<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte VMs können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
-Datenträger mit aktivierter Schreibbeschleunigung | Ab dem 23. November 2020 wird dies nur in den Regionen „Südkorea, Mitte“ (KRC) und „Südafrika, Norden“ (SAN) und für eine begrenzte Anzahl von Abonnements unterstützt. Für diese unterstützten Abonnements sichert Azure Backup die VMs mit Datenträgern mit aktivierter Schreibbeschleunigung während der Sicherung.<br><br>Für die nicht unterstützten Regionen ist eine Internetverbindung auf der VM erforderlich, um Momentaufnahmen von virtuellen Computern mit aktivierter Schreibbeschleunigung zu erstellen.<br><br> **Wichtiger Hinweis**: In diesen nicht unterstützten Regionen benötigen VMs mit WA-Datenträgern eine Internetverbindung für eine erfolgreiche Sicherung (auch wenn diese Datenträger von der Sicherung ausgeschlossen sind).
+Datenträger mit aktivierter Schreibbeschleunigung | Seit dem 23. November 2020 wird dies nur in den Regionen „Südkorea, Mitte“ (KRC) und „Südafrika, Norden“ (SAN) für eine begrenzte Anzahl von Abonnements unterstützt (eingeschränkte Vorschau). Für diese unterstützten Abonnements sichert Azure Backup die VMs mit Datenträgern mit aktivierter Schreibbeschleunigung während der Sicherung.<br><br>Für die nicht unterstützten Regionen ist eine Internetverbindung auf der VM erforderlich, um Momentaufnahmen von virtuellen Computern mit aktivierter Schreibbeschleunigung zu erstellen.<br><br> **Wichtiger Hinweis**: In diesen nicht unterstützten Regionen benötigen VMs mit WA-Datenträgern eine Internetverbindung für eine erfolgreiche Sicherung (auch wenn diese Datenträger von der Sicherung ausgeschlossen sind).
 Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup unterstützt die Deduplizierung nicht. Weitere Informationen finden Sie in [diesem Artikel](./backup-support-matrix.md#disk-deduplication-support). <br/> <br/>  – Azure Backup dedupliziert nicht VM-übergreifend im Recovery Services-Tresor. <br/> <br/>  – Wenn es während der Wiederherstellung VMs im Deduplizierungsstatus gibt, können die Dateien nicht wiederhergestellt werden, da der Tresor das Format nicht verarbeiten kann. Allerdings können Sie die vollständige VM-Wiederherstellung erfolgreich ausführen.
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.
@@ -172,7 +172,7 @@ Freigegebener Speicher| Das Sichern von VMs mit freigegebenem Clustervolume (Clu
 [Freigegebene Datenträger](../virtual-machines/disks-shared-enable.md) | Wird nicht unterstützt.
 SSD Ultra-Datenträger | Wird nicht unterstützt. Weitere Informationen finden Sie unter [Einschränkungen](selective-disk-backup-restore.md#limitations).
 [Temporäre Datenträger](../virtual-machines/managed-disks-overview.md#temporary-disk) | Temporäre Datenträger werden nicht von Azure Backup gesichert.
-NVMe- oder kurzlebige Datenträger | Wird nicht unterstützt.
+NVMe/[kurzlebige Datenträger](../virtual-machines/ephemeral-os-disks.md) | Wird nicht unterstützt.
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
 

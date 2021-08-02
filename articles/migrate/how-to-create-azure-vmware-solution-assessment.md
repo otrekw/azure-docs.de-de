@@ -6,14 +6,14 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 72372e6365a2535e449681549a515c3f8594f2f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f7014f8a403614740bdbc05abab4e7024f83c196
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786599"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111570518"
 ---
-# <a name="create-an-azure-vmware-solution-avs-assessment"></a>Erstellen einer Bewertung vom Typ „Azure VMware Solution (AVS)“
+# <a name="create-an-azure-vmware-solution-assessment"></a>Erstellen einer Azure VMware Solution-Bewertung
 
 Dieser Artikel beschreibt die Erstellung einer AVS-Bewertung (Azure VMware Solution) für lokale Server in einer VMware-Umgebung mit „Azure Migrate: Ermittlung und Bewertung“.
 
@@ -63,7 +63,7 @@ Es gibt zwei Arten von Kriterien zur Größenanpassung, die Sie für die Erstell
 1. Unter **Ermittlungsquelle**:
 
     - Wählen Sie die Option **Von Azure Migrate-Appliance erkannte Server** aus, falls Sie Server mit der Appliance ermittelt haben.
-    - Wählen Sie die Option **Imported servers** (Importierte Server) aus, falls Sie Server unter Verwendung einer importierten CSV-Datei ermittelt haben. 
+    - Wählen Sie die Option **Importierte Server** aus, falls Sie Server unter Verwendung einer importierten CSV-Datei ermittelt haben. 
     
 1. Klicken Sie auf **Bearbeiten**, um die Eigenschaften für die Bewertung zu überprüfen.
 

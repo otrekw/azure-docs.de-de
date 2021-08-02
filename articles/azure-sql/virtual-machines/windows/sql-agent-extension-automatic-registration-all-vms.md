@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.openlocfilehash: 139852949a3744fd603cb197b2e27fa32679aae0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 187e51d049d965d0fb9cef1af93a5036819e957f
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042418"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665808"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>Automatische Registrierung von VMs mit der SQL-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,12 +29,12 @@ In diesem Artikel erfahren Sie, wie Sie die automatische Registrierungsfunktion 
 
 Wenn Sie Ihre SQL Server-VM mit der [SQL-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) registrieren, können Sie den vollen Funktionsumfang nutzen. 
 
-Wenn die automatische Registrierung aktiviert ist, wird täglich ein Auftrag ausgeführt, um zu ermitteln, ob SQL Server auf allen nicht registrierten virtuellen Computern im Abonnement installiert ist. Hierzu werden die Binärdateien der Erweiterung für den SQL-IaaS-Agent auf den virtuellen Computer kopiert. Anschließend wird einmalig ein Hilfsprogramm ausgeführt, um nach der SQL Server-Registrierungsstruktur zu suchen. Wenn die SQL Server-Struktur erkannt wird, erfolgt die Registrierung des virtuellen Computers mit der Erweiterung im Modus „Lightweight“. Ist in der Registrierung keine SQL Server-Struktur vorhanden, werden die Binärdateien entfernt.
+Wenn die automatische Registrierung aktiviert ist, wird täglich ein Auftrag ausgeführt, um zu ermitteln, ob SQL Server auf allen nicht registrierten virtuellen Computern im Abonnement installiert ist. Hierzu werden die Binärdateien der Erweiterung für den SQL-IaaS-Agent auf den virtuellen Computer kopiert. Anschließend wird einmalig ein Hilfsprogramm ausgeführt, um nach der SQL Server-Registrierungsstruktur zu suchen. Wenn die SQL Server-Struktur erkannt wird, erfolgt die Registrierung des virtuellen Computers mit der Erweiterung im Modus „Lightweight“. Ist in der Registrierung keine SQL Server-Struktur vorhanden, werden die Binärdateien entfernt. Bei der automatischen Registrierung kann es bis zu 4 Tage dauern, bis neu erstellte SQL Server-VMs erkannt werden.
 
-Nach der Aktivierung der automatischen Registrierung für ein Abonnement werden alle aktuellen und zukünftigen VMs, auf denen SQL Server installiert ist, mit der SQL-IaaS-Agent-Erweiterung im Modus „Lightweight“ registriert. **Dies geschieht ohne Ausfallzeiten, und der SQL Server-Dienst muss nicht neu gestartet werden.** Sie müssen weiterhin [manuell auf den Modus „Vollständige Verwaltbarkeit“ aktualisieren](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full), um den vollständigen Fuktionssatz nutzen zu können. 
+Nach der Aktivierung der automatischen Registrierung für ein Abonnement werden alle aktuellen und zukünftigen VMs, auf denen SQL Server installiert ist, mit der SQL-IaaS-Agent-Erweiterung im Modus „Lightweight“ registriert. **Dies geschieht ohne Ausfallzeiten, und der SQL Server-Dienst muss nicht neu gestartet werden.** Sie müssen weiterhin [manuell auf den Modus „Vollständige Verwaltbarkeit“ aktualisieren](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full), um den vollständigen Fuktionssatz nutzen zu können. Der Lizenztyp wird standardmäßig automatisch auf den des VM-Images eingestellt. Wenn Sie ein Image mit nutzungsbasierter Bezahlung für Ihren virtuellen Computer verwenden, lautet Ihr Lizenztyp `PAYG`, andernfalls ist Ihr Lizenztyp standardmäßig `AHUB`. 
 
 > [!IMPORTANT]
-> Die Erweiterung für den SQL-IaaS-Agent sammelt Daten ausschließlich, um Kunden bei der Verwendung von SQL Server in Azure Virtual Machines optionale Vorteile zu bieten. Microsoft verwendet diese Daten ohne vorherige Zustimmung des Kunden nicht für Lizenzierungsüberprüfungen. Weitere Informationen finden Sie unter [Ergänzende Datenschutzbestimmungen zu SQL Server](/sql/sql-server/sql-server-privacy#non-personal-data).
+> Die SQL-IaaS-Agent-Erweiterung sammelt Daten ausschließlich, um Kunden zu ermöglichen, bei der Verwendung von SQL Server in Azure Virtual Machines optionale Vorteile zu nutzen. Microsoft verwendet diese Daten ohne vorherige Zustimmung des Kunden nicht für Lizenzierungsüberprüfungen. Weitere Informationen finden Sie unter [Ergänzende Datenschutzbestimmungen zu SQL Server](/sql/sql-server/sql-server-privacy#non-personal-data).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -87,7 +88,7 @@ Sie können die automatische Registrierungsfunktion mit PowerShell für mehrere 
 
 Gehen Sie dazu folgendermaßen vor:
 
-1. Speichern Sie [dieses Skript](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/RegisterSubscriptionsToSqlVmAutomaticRegistration.ps1) in einer `.ps1`-Datei, z. B. `EnableBySubscription.ps1`. 
+1. Speichern Sie [dieses Skript](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/AutoRegTools.psm1).
 1. Navigieren Sie in einem administrativen Eingabeaufforderungs- oder PowerShell-Fenster zu dem Speicherort, in dem Sie das Skript gespeichert haben. 
 1. Stellen Sie eine Verbindung mit Azure her `az login`.
 1. Führen Sie das Skript aus, wobei Sie die Abonnement-IDs (SubscriptionIds) wie folgt als Parameter übergeben:   

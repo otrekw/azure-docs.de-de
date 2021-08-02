@@ -4,13 +4,13 @@ description: In diesem Artikel erfahren Sie, wie Sie VMs aus Änderungsnachverfo
 services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 0b79fa22d3203504e63161aba03b32830d74d016
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/26/2021
+ms.openlocfilehash: 3a39294c2ecfe7b26cb3ef3d65c11cbcd665d220
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93131274"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110654123"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>Entfernen virtueller Computer aus Änderungsnachverfolgung und Bestand
 
@@ -32,13 +32,30 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 3. Navigieren Sie im Azure-Portal zu **Log Analytics-Arbeitsbereiche**. Wählen Sie Ihren Arbeitsbereich in der Liste aus.
 
-4. Wählen Sie in Ihrem Log Analytics-Arbeitsbereich im oberen Aktionsmenü **Protokolle** und dann **Abfrage-Explorer** aus.
+4. Wählen Sie in Ihrem Log Analytics-Arbeitsbereich im linken Menü **Computergruppen** aus.
 
-5. Erweitern Sie unter **Abfrage-Explorer** im rechten Bereich **Gespeicherte Abfragen > Updates**, und wählen Sie die gespeicherte Suchabfrage `MicrosoftDefaultComputerGroup`, um sie zu bearbeiten.
+5. Im rechten Bereich unter **Computergruppen** wird standardmäßig die Registerkarte **Gespeicherte Gruppen** angezeigt.
 
-6. Überprüfen Sie die Abfrage im Abfrage-Editor, und suchen Sie die UUID für den virtuellen Computer. Entfernen Sie die UUID für den virtuellen Computer, und wiederholen Sie die Schritte für alle anderen VMs, die Sie entfernen möchten.
+6. Klicken Sie in der Tabelle auf das Symbol **Abfrage ausführen** rechts neben dem Element **MicrosoftDefaultComputerGroup** mit dem **Legacykategorie**-Wert **ChangeTracking**.
 
-7. Speichern Sie die gespeicherte Suche, wenn Sie die Bearbeitung abgeschlossen haben, indem Sie auf der oberen Leiste **Speichern** auswählen.
+7. Überprüfen Sie die Abfrage im Abfrage-Editor, und suchen Sie die UUID für den virtuellen Computer. Entfernen Sie die UUID für den virtuellen Computer, und wiederholen Sie die Schritte für alle anderen VMs, die Sie entfernen möchten.
+
+   > [!NOTE]
+   > Erstellen Sie als zusätzlichen Schutz unbedingt eine Kopie der Abfrage, bevor Sie Bearbeitungen vornehmen. Auf diese Weise können Sie sie wiederherstellen, wenn ein Problem auftritt.
+
+   Wenn Sie mit der ursprünglichen Abfrage beginnen und VMs zum Zweck einer Bereinigungs- oder Wartungsaktivität erneut hinzufügen möchten, kopieren Sie die folgende Abfrage:
+
+   ```kusto
+   Heartbeat
+   | where Computer in~ ("") or VMUUID in~ ("")
+   | distinct Computer
+   ```
+
+8. Speichern Sie die gespeicherte Suche, wenn Sie die Bearbeitung abgeschlossen haben, indem Sie in der oberen Leiste **Speichern > Als Funktion speichern** auswählen. Geben Sie bei Aufforderung Folgendes an:
+
+    * **Name**: ChangeTracking__MicrosoftDefaultComputerGroup
+    * **Als Computergruppe speichern** ist ausgewählt
+    * **Legacykategorie:** ChangeTracking
 
 >[!NOTE]
 >Computer werden weiterhin angezeigt, nachdem Sie die Registrierung aufgehoben haben, da wir alle in den letzten 24 Stunden bewerteten Computer melden. Nachdem Sie den Computer entfernt haben, müssen Sie 24 Stunden warten, bis er nicht mehr aufgelistet wird.

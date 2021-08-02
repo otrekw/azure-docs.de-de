@@ -1,26 +1,26 @@
 ---
-title: 'Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) unter macOS: Azure'
-description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des macOS-Clients.
+title: 'Herstellen einer Verbindung mit Azure Virtual Desktop (klassisch) unter macOS: Azure'
+description: Informationen zum Herstellen einer Verbindung mit Azure Virtual Desktop (klassisch) mithilfe des macOS-Clients.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 4014de262490259ed2e61eb17c80b40679e62773
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3a372e09c575f1805050af6ea427f7650c614aff
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445209"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749973"
 ---
-# <a name="connect-to-windows-virtual-desktop-classic-with-the-macos-client"></a>Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des macOS-Clients
+# <a name="connect-to-azure-virtual-desktop-classic-with-the-macos-client"></a>Herstellen einer Verbindung mit Azure Virtual Desktop (klassisch) mithilfe des macOS-Clients
 
 > Gilt für: macOS 10.12 oder höher
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../connect-macos.md) weiter.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../connect-macos.md) weiter.
 
-Mit unserem herunterladbaren Client können Sie über Ihre macOS-Geräte auf Windows Virtual Desktop-Ressourcen zugreifen. In dieser Anleitung erfahren Sie, wie Sie den-Client einrichten.
+Mit unserem herunterladbaren Client können Sie von Ihren macOS-Geräten auf Azure Virtual Desktop-Ressourcen zugreifen. In dieser Anleitung erfahren Sie, wie Sie den-Client einrichten.
 
 ## <a name="install-the-client"></a>Installieren des Clients
 
@@ -34,7 +34,7 @@ Abonnieren Sie einen Feed wie folgt:
 
 1. Wählen Sie auf der Hauptseite **Arbeitsbereich hinzufügen** aus, um eine Verbindung mit dem Dienst herzustellen und Ihre Ressourcen abzurufen.
 2. Geben Sie die Feed-URL ein. Dies kann eine URL oder E-Mail-Adresse sein:
-   - Wenn Sie eine URL verwenden, verwenden Sie die URL, die Ihr Administrator Ihnen mitgeteilt hat. Normalerweise lautet die URL <https://rdweb.wvd.microsoft.com>.
+   - Verwende im Fall einer URL die vom Administrator erhaltene. Normalerweise lautet die URL <https://rdweb.wvd.microsoft.com>.
    - Um E-Mail zu verwenden, gib deine E-Mail-Adresse ein. Dies weist den Client an, nach einer URL zu suchen, die Ihrer E-Mail-Adresse zugeordnet ist, wenn der Administrator den Server auf diese Weise konfiguriert hat.
 3. Wählen Sie **Hinzufügen**.
 4. Melden Sie sich mit Ihrem Benutzerkonto an, wenn Sie dazu aufgefordert werden.

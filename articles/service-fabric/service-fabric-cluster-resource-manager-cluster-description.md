@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5d27a09f0ff38ec7422636ef0933552aa310c387
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb012c1f0cb60e590cb38fc9e362e400439b24b3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92911765"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479802"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Beschreiben eines Service Fabric-Clusters in Azure mithilfe des Clusterressourcen-Managers
 
@@ -231,7 +231,7 @@ Wenn im vorherigen Layout der **TargetReplicaSetSize**-Wert fünf beträgt und N
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |– |Nicht zutreffend |Nicht zutreffend |Nicht zutreffend |Nicht zutreffend |– |
+| **UD0** |– |N/V |N/V |N/V |N/V |– |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
@@ -349,7 +349,7 @@ In Service Fabric wird davon ausgegangen, dass Situationen eintreten, in denen b
 * Eine Workload muss aus Gründen der Leistung, Skalierbarkeit oder Sicherheitsisolation auf einer bestimmten Hardware ausgeführt werden.
 * Eine Workload sollte aufgrund von Richtlinien oder des Ressourcenverbrauchs von anderen Workloads isoliert werden.
 
-Service Fabric unterstützt diese Konfigurationen durch Tags, die Sie auf Knoten anwenden können. Diese Tags werden als *Knoteneigenschaften* bezeichnet. *Platzierungseinschränkungen* sind die Anweisungen, die an einzelne Dienste angefügt sind. Diese Anweisungen wählen Sie für mindestens eine Knoteneigenschaft aus. Platzierungseinschränkungen definieren, an welcher Stelle Dienste ausgeführt werden sollen. Die Einschränkungen sind erweiterbar. Dafür können beliebige Schlüssel-Wert-Paare verwendet werden.
+Service Fabric unterstützt diese Konfigurationen durch Tags, die Sie auf Knoten anwenden können. Diese Tags werden als *Knoteneigenschaften* bezeichnet. *Platzierungseinschränkungen* sind die Anweisungen, die an einzelne Dienste angefügt sind. Diese Anweisungen wählen Sie für mindestens eine Knoteneigenschaft aus. Platzierungseinschränkungen definieren, an welcher Stelle Dienste ausgeführt werden sollen. Die Einschränkungen sind erweiterbar. Dafür können beliebige Schlüssel-Wert-Paare verwendet werden. Ab Service Fabric8.1 können Knoteneigenschaften dynamisch aktualisiert werden, ohne dass die aktuelle Ausführung von Workloads unterbrochen wird.
 
 ![Verschiedene Workloads für ein Clusterlayout][Image5]
 
@@ -473,7 +473,7 @@ Der Clusterressourcen-Manager von Service Fabric kann die Namen von Metriken ebe
 
 ## <a name="capacity"></a>Capacity
 
-Wenn Sie den *Lastenausgleich* für alle Ressourcen deaktivieren, kann der Clusterressourcen-Manager von Service Fabric dennoch versuchen sicherzustellen, dass kein Knoten überlastet wird. Das Verwalten von Kapazitätsüberläufen ist möglich, es sei denn, der Cluster ist zu belegt und die Workload ist größer als jeder einzelne Knoten. Die Kapazität ist eine weitere *Einschränkung*, anhand der der Clusterressourcen-Manager ermittelt, wie viele Ressourcen auf einem Knoten verfügbar sind. Auch die verbleibende Kapazität wird für den gesamten Cluster nachverfolgt.
+Wenn Sie den *Lastenausgleich* für alle Ressourcen deaktivieren, kann der Clusterressourcen-Manager von Service Fabric dennoch versuchen sicherzustellen, dass kein Knoten überlastet wird. Das Verwalten von Kapazitätsüberläufen ist möglich, es sei denn, der Cluster ist zu belegt und die Workload ist größer als jeder einzelne Knoten. Die Kapazität ist eine weitere *Einschränkung*, anhand der der Clusterressourcen-Manager ermittelt, wie viele Ressourcen auf einem Knoten verfügbar sind. Auch die verbleibende Kapazität wird für den gesamten Cluster nachverfolgt. Ab Service Fabric 8.1 können Knotenkapazitäten dynamisch aktualisiert werden, ohne dass die aktuelle Ausführung von Workloads unterbrochen wird.
 
 Sowohl die Kapazität als auch der Verbrauch auf Dienstebene werden als Metrik ausgedrückt. Die Metrik kann beispielsweise „ClientConnections“ lauten, und ein Knoten kann für „ClientConnections“ eine Kapazität von 32.768 Verbindungen aufweisen. Anderen Knoten können andere Grenzwerte aufweisen. Ein Dienst, der auf diesem Knoten ausgeführt wird, kann beispielsweise melden, dass aktuell 32.256 Einheiten der Metrik „ClientConnections“ genutzt werden.
 

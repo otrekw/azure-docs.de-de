@@ -1,25 +1,23 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/04/2021
+ms.date: 06/02/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 4162fe12ff54f16cd5f982f6a576905227c9a107
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: c0c170fefe85393fb3c8b443a96aaddbb98eb65e
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820950"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528316"
 ---
-## <a name="disk-level-bursting"></a>Bursting auf Datenträgerebene
-
 ### <a name="on-demand-bursting-preview"></a>Bedarfsgesteuertes Bursting (Vorschau)
 
-Datenträger, die das bedarfsgesteuerte Burstingmodell des Datenträgerburstings verwenden, können das Bursting über ihre ursprünglich bereitgestellten Ziele hinaus durchführen und auch so oft wie von ihrer Workload benötigt (bis zum maximalen Burstziel). Beispielsweise ist für einen P30-Datenträger (1 TiB) der bereitgestellte IOPS-Wert 5000 IOPS. Wenn auf diesem Datenträger das Datenträgerbursting aktiviert ist, können Ihre Workloads E/As bis zur maximalen Burstleistung von 30.000 IOPS und 1.000 Mbit/s auf diesem Datenträger ausgeben.
+SSD Premium-Datenträger, die das bedarfsgesteuerte Burstingmodell des Datenträgerburstings verwenden, können das Bursting über ihre ursprünglich bereitgestellten Ziele hinaus durchführen und auch so oft wie von ihrer Workload benötigt (bis zum maximalen Burstziel). Beispielsweise ist für einen P30-Datenträger (1 TiB) der bereitgestellte IOPS-Wert 5000 IOPS. Wenn auf diesem Datenträger das Datenträgerbursting aktiviert ist, können Ihre Workloads E/As bis zur maximalen Burstleistung von 30.000 IOPS und 1.000 Mbit/s auf diesem Datenträger ausgeben.
 
 Das Datenträgerbursting ist nicht kostengünstig, wenn Sie davon ausgehen, dass Ihre Workloads häufig über das bereitgestellte Leistungsziel hinaus ausgeführt werden. In diesem Fall wird empfohlen, dass Sie stattdessen die Leistungsstufe Ihres Datenträgers auf eine [höhere Ebene](../articles/virtual-machines/disks-performance-tiers.md) ändern, um eine bessere Baselineleistung zu erzielen. Überprüfen Sie die Abrechnungsdetails, und vergleichen Sie diese mit dem Datenverkehrsmuster Ihrer Workloads.
 
@@ -33,7 +31,7 @@ Bevor Sie das bedarfsgesteuerte Bursting aktivieren, sollten Sie Folgendes beach
 
 #### <a name="billing"></a>Abrechnung
 
-Datenträger, die das bedarfsgesteuerte Burstingmodell verwenden, wird eine stündliche Pauschalgebühr für die Burstaktivierung berechnet. Die Transaktionskosten gelten für alle Bursttransaktionen, die über das bereitgestellte Ziel hinausgehen. Die Transaktionskosten werden mithilfe des Modells für die nutzungsbasierte Bezahlung basierend auf nicht zwischengespeicherten Datenträger-E/As in Rechnung gestellt, einschließlich Lese- und Schreibvorgängen, die bereitgestellte Ziele überschreiten. Nachstehend finden Sie ein Beispiel von Datenverkehrsmustern über eine Abrechnungsstunde:
+Für SSD Premium-Datenträger, die das bedarfsgesteuerte Burstingmodell verwenden, wird eine stündliche Pauschalgebühr für die Burstaktivierung berechnet. Die Transaktionskosten gelten für alle Bursttransaktionen, die über das bereitgestellte Ziel hinausgehen. Die Transaktionskosten werden mithilfe des Modells für die nutzungsbasierte Bezahlung basierend auf nicht zwischengespeicherten Datenträger-E/As in Rechnung gestellt, einschließlich Lese- und Schreibvorgängen, die bereitgestellte Ziele überschreiten. Nachstehend finden Sie ein Beispiel von Datenverkehrsmustern über eine Abrechnungsstunde:
 
 Datenträgerkonfiguration: SSD Premium, 1 TiB (P30), Datenträgerbursting aktiviert
 
@@ -64,7 +62,7 @@ Informationen zum Aktivieren des bedarfsgesteuerten Burstings finden Sie unter [
 
 ### <a name="credit-based-bursting"></a>Guthabenbasiertes Bursting
 
-Das guthabenbasierte Bursting steht für Datenträgergrößen P20 und kleiner in allen Regionen („Azure, öffentlich“, „Government“ und „China-Clouds“) zur Verfügung. Das Datenträgerbursting ist standardmäßig für alle neuen und vorhandenen Bereitstellungen der unterstützten Datenträgergrößen aktiviert. Beim Bursting auf VM-Ebene wird nur das guthabenbasierte Bursting verwendet.
+Für SSD Premium-Datenträger ist guthabenbasiertes Bursting für die Datenträgergrößen P20 und kleiner verfügbar. Für Standard-SSDs ist guthabenbasiertes Bursting für die Datenträgergrößen E30 und kleiner verfügbar. Sowohl für Standard-SSDs als auch für SSD Premium-Datenträger ist das guthabenbasierte Bursting in allen Regionen (Clouds „Azure, öffentlich“, „Azure Government“ und „Azure China“) verfügbar. Das Datenträgerbursting ist standardmäßig für alle neuen und vorhandenen Bereitstellungen der unterstützten Datenträgergrößen aktiviert. Beim Bursting auf VM-Ebene wird nur das guthabenbasierte Bursting verwendet.
 
 ## <a name="virtual-machine-level-bursting"></a>Bursting auf VM-Ebene
 

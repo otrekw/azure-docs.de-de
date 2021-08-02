@@ -1,15 +1,15 @@
 ---
 title: Informationen zu Azure Policy für Kubernetes
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten.
-ms.date: 03/22/2021
+ms.date: 05/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2610d788c18883d7aaffc3f7cae3ab7774eed1fa
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5a479c6f6bf22f416b3508c08dff5d60a8297d1a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752595"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985020"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster
 
@@ -130,16 +130,6 @@ Sind die obigen Voraussetzungen erfüllt, installieren Sie das Azure Policy-Add
 
   1. Wählen Sie auf der Hauptseite die Schaltfläche **Add-On aktivieren** aus.
 
-     <a name="migrate-from-v1"></a>
-     > [!NOTE]
-     > Wenn die Schaltfläche **Add-On deaktivieren** aktiviert ist und eine Migrationswarnung für v2 angezeigt wird, ist Version 1 des Add-Ons noch installiert und muss entfernt werden, bevor Sie v2-Richtliniendefinitionen zuweisen können. Die _veraltete_ Version 1 des Add-Ons wird ab 24. August 2020 durch Version 2 ersetzt.
-     > 2020. Dann müssen neue Richtliniendefinitionen für v2 zugewiesen werden. Um das Upgrade jetzt auszuführen, gehen Sie folgendermaßen vor:
-     >
-     > 1. Überprüfen Sie, ob Version 1 des Add-Ons in Ihrem AKS-Cluster installiert ist, indem Sie nachsehen, ob auf der Seite **Richtlinien** für Ihren AKS-Cluster die Meldung „Der aktuelle Cluster verwendet das Azure Policy-Add-On v1...“ angezeigt wird.
-     > 1. [Entfernen Sie das Add-On](#remove-the-add-on-from-aks).
-     > 1. Klicken Sie auf die Schaltfläche **Add-On aktivieren**, um Version 2 des Add-Ons zu installieren.
-     > 1. [Weisen Sie v2-Versionen Ihrer integrierten v1-Richtliniendefinitionen zu](#assign-a-built-in-policy-definition).
-
 - Azure CLI
 
   ```azurecli-interactive
@@ -158,17 +148,13 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-Vergewissern Sie sich abschließend, dass das neueste Add-On installiert ist. Führen Sie hierzu den folgenden Azure CLI-Befehl aus, und ersetzen Sie dabei `<rg>` durch den Namen Ihrer Ressourcengruppe und `<cluster-name>` durch den Namen Ihres AKS-Clusters: `az aks show --query addonProfiles.azurepolicy -g <rg> -n <cluster-name>`. Das Ergebnis sollte in etwa wie die folgende Ausgabe aussehen, und **config.version** sollte `v2` lauten:
+Vergewissern Sie sich abschließend, dass das neueste Add-On installiert ist. Führen Sie hierzu den folgenden Azure CLI-Befehl aus, und ersetzen Sie dabei `<rg>` durch den Namen Ihrer Ressourcengruppe und `<cluster-name>` durch den Namen Ihres AKS-Clusters: `az aks show --query addonProfiles.azurepolicy -g <rg> -n <cluster-name>`. Das Ergebnis sollte so ähnlich wie die folgende Ausgabe aussehen:
 
 ```output
-"addonProfiles": {
-    "azurepolicy": {
-        "config": {
-            "version": "v2"
-        },
+{
+        "config": null,
         "enabled": true,
         "identity": null
-    },
 }
 ```
 

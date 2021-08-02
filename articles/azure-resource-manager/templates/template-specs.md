@@ -2,17 +2,18 @@
 title: Erstellen und Bereitstellen von Vorlagenspezifikationen
 description: Beschreibt, wie Sie Vorlagenspezifikationen erstellen und diese mit anderen Benutzern in Ihrer Organisation teilen.
 ms.topic: conceptual
-ms.date: 03/26/2021
+ms.date: 05/04/2021
 ms.author: tomfitz
+ms.custom: devx-track-azurepowershell
 author: tfitzmac
-ms.openlocfilehash: 2f4aec6d9fa07edf36dea68a23ba12eb5f72d308
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bfbf876f8621beec4d8eddb80c3db285cd6d4c49
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626083"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688291"
 ---
-# <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager-Vorlagenspezifikationen (Vorschau)
+# <a name="azure-resource-manager-template-specs"></a>Azure Resource Manager-Vorlagenspezifikationen
 
 Eine Vorlagenspezifikation ist ein Ressourcentyp zum Speichern einer Azure Resource Manager-Vorlage (ARM-Vorlage) in Azure für die spätere Bereitstellung. Mit diesem Ressourcentyp können Sie ARM-Vorlagen mit anderen Benutzer in Ihrer Organisation teilen. Wie bei jeder anderen Azure-Ressource können Sie die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) verwenden, um die Vorlagenspezifikation zu teilen.
 
@@ -21,7 +22,7 @@ Eine Vorlagenspezifikation ist ein Ressourcentyp zum Speichern einer Azure Resou
 Zum Bereitstellen der Vorlagenspezifikation verwenden Sie Azure-Standardtools wie PowerShell, Azure CLI, Azure-Portal, REST und andere unterstützte SDKs und Clients. Sie verwenden dieselben Befehle wie für die Vorlage.
 
 > [!NOTE]
-> Vorlagenspezifikationen befinden sich derzeit in der Vorschauphase. Zur Verwendung mit Azure PowerShell müssen Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) installieren. Zur Verwendung mit der Azure CLI verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli).
+> Um Vorlagenspezifikationen mit Azure PowerShell zu verwenden, müssen Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) installieren. Zur Verwendung mit der Azure CLI verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli).
 
 ## <a name="why-use-template-specs"></a>Gründe zur Verwendung von Vorlagenspezifikationen
 

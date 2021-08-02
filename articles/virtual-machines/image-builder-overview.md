@@ -1,54 +1,45 @@
 ---
-title: Weitere Informationen zu Azure Image Builder (Vorschauversion)
+title: Weitere Informationen zu Azure Image Builder
 description: Erfahren Sie mehr über Azure Image Builder für virtuelle Computer in Azure.
-author: danielsollondon
-ms.author: danis
-ms.date: 03/05/2021
+author: kof-f
+ms.author: kofiforson
+ms.date: 05/24/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 20bb6925f859d497046eb42bbafb5264826b77b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7289d9d814385f31a71cbd598889e564958a0140
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604065"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441814"
 ---
-# <a name="preview-azure-image-builder-overview"></a>Vorschau: Übersicht über Azure Image Builder
+# <a name="azure-image-builder-overview"></a>Übersicht über Azure Image Builder
 
 Standardisierte VM-Images ermöglichen es Organisationen, in die Cloud zu migrieren und die Konsistenz der Bereitstellung sicherzustellen. Die Images beinhalten üblicherweise vordefinierte Sicherheits- und Konfigurationseinstellungen und die notwendige Software. Das Einrichten einer eigenen Imaging-Pipeline erfordert Zeit, Infrastruktur und Aufwand. Mit Azure VM Image Builder müssen Sie lediglich eine Konfiguration bereitstellen, die Ihr Image beschreibt, und an den Dienst senden. Dann wird das Image erstellt und verteilt.
  
 Mit Azure VM Image Builder (Azure Image Builder) können Sie mit einem Windows- oder Linux-basierten Azure Marketplace-Image oder vorhandenen benutzerdefinierten Images beginnen und dann eigene Anpassungen vornehmen. Da Image Builder auf [HashiCorp Packer](https://packer.io/) aufbaut, gibt es einige Ähnlichkeiten, Sie haben jedoch den Vorteil eines verwalteten Diensts. Sie können auch angeben, wo Ihre Images gehostet werden sollen: in [Azure Shared Image Gallery](shared-image-galleries.md), als verwaltetes Image oder als VHD.
 
-> [!IMPORTANT]
-> Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Previewfunktionen
+## <a name="features"></a>Funktionen
 
-In der Vorschauversion werden diese Funktionen unterstützt:
+Azure Image Builder unterstützt die folgenden Funktionen:
 
 - Erstellung von Basisimages, die Ihre minimalen Sicherheits- und Unternehmenskonfigurationen umfassen und die die Abteilungen weiter anpassen können
 - Integration von Kernanwendungen, sodass Workloads nach der Erstellung auf VMs verwendet werden oder Konfigurationen zur Unterstützung von Windows Virtual Desktop-Images hinzugefügt werden können.
 - Patchen von vorhandenen Images: Image Builder ermöglicht es Ihnen, bestehende benutzerdefinierte Images kontinuierlich zu patchen.
 - Verbinden Sie Image Builder mit Ihren vorhandenen virtuellen Netzwerken, damit Sie eine Verbindung mit vorhandenen Konfigurationsservern (DSC, Chef, Puppet usw.), Dateifreigaben oder anderen routingfähigen Servern/Diensten herstellen können.
 - Die Integration mit dem Azure-Katalog mit freigegebenen Images ermöglicht es Ihnen, Images global zu verteilen, zu versionieren und zu skalieren, und bietet Ihnen ein System für die Imageverwaltung.
-- Für die Integration in bestehende Image Buildpipelines, rufen Sie einfach Image Builder aus Ihrer Pipeline auf, oder verwenden Sie die einfache Vorschauversion der Azure DevOps-Task von Image Builder.
+- Für die Integration in bestehende Image Buildpipelines, rufen Sie einfach Image Builder aus Ihrer Pipeline auf, oder verwenden Sie die einfache Version der Azure DevOps-Task von Image Builder.
 - Migrieren Sie eine bestehende Pipeline zur Imageanpassung zu Azure. Verwenden Sie Ihre vorhandenen Skripts, Befehle und Prozesse, um Images anzupassen.
 - Erstellung von Images im VHD-Format zur Unterstützung von Azure Stack.
  
 
 ## <a name="regions"></a>Regions
-Der Azure Image Builder-Dienst wird in folgenden Regionen als Vorschauversion verfügbar sein. Images können außerhalb dieser Regionen verteilt werden.
-- East US
-- USA (Ost) 2
-- USA, Westen-Mitte
-- USA (Westen)
-- USA, Westen 2
-- Nordeuropa
-- Europa, Westen
+
+Der Azure Image Builder-Dienst ist in [diesen](./linux/image-builder-json.md#location) Regionen verfügbar. Images können außerhalb dieser Regionen verteilt werden.
 
 ## <a name="os-support"></a>Betriebssystemunterstützung
 AIB unterstützt Basisbetriebssystem-Images aus dem Azure Marketplace:

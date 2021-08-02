@@ -3,15 +3,15 @@ title: Ausführen von Azure Automation-Runbooks in einem Hybrid Runbook Worker
 description: In diesem Artikel wird beschrieben, wie Sie Runbooks auf Computern in Ihrem lokalen Rechenzentrum oder bei anderen Cloudanbietern mit dem Hybrid Runbook Worker ausführen.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/10/2021
+ms.date: 05/24/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ab4e623e91987e7fa415b94ff8278a1de4c03700
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: b3f7afde2d681c2516d6915e4edd5c291795224d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945969"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481533"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks in einer Hybrid Runbook Worker-Instanz
 
@@ -339,4 +339,5 @@ Zur Unterstützung der Problembehandlung bei Runbooks, die auf einem Hybrid Runb
 
 * Wenn Ihre Runbooks nicht erfolgreich ausgeführt werden, lesen Sie den Problembehandlungsleitfaden zu [Fehlern bei der Ausführung von Runbooks](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 * Weitere Informationen zu PowerShell, einschließlich Sprachverzeichnis und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](/powershell/scripting/overview).
+* Hier erfahren Sie mehr über [Azure Policy zum Verwalten der Runbookausführung](enforce-job-execution-hybrid-worker.md) mit Hybrid Runbook Workers.
 * Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation).

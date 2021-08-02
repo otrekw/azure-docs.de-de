@@ -6,13 +6,14 @@ author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 04/27/2021
-ms.openlocfilehash: fad2fce019848c752217f15aaba8ba4c28a7c874
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.date: 05/12/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1b8502363d7868b32bf2576742ca443b673c5123
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177342"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971984"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -161,9 +162,15 @@ Unter Umständen tritt bei der Azure Key Vault-Aufgabe ein Fehler vom Typ „Zug
 
 ### <a name="updating-active-triggers"></a>Aktualisieren von aktiven Triggern
 
+Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-Az-ps) befolgen.
+
+>[!WARNING]
+>Wenn Sie nicht die neuesten Versionen von PowerShell und des Data Factory-Moduls verwenden, treten beim Ausführen der Befehle möglicherweise Deserialisierungsfehler auf. 
+>
+
 Für die Bereitstellung kann ein Fehler auftreten, wenn Sie versuchen, aktive Trigger zu aktualisieren. Zum Aktualisieren von aktiven Triggern müssen Sie sie manuell beenden und nach der Bereitstellung wieder starten. Dies ist über eine Azure PowerShell-Aufgabe möglich:
 
-1.  Fügen Sie auf der Registerkarte **Tasks** des Release eine **Azure PowerShell**-Aufgabe hinzu. Wählen Sie die Aufgabenversion „4.*“ aus. 
+1.  Fügen Sie auf der Registerkarte **Tasks** des Release eine **Azure PowerShell**-Aufgabe hinzu. Wählen Sie die Aufgabenversion der neuesten Azure PowerShell-Version aus. 
 
 1.  Wählen Sie das Abonnement aus, in dem sich Ihre Factory befindet.
 
@@ -618,6 +625,8 @@ Denken Sie daran, die Data Factory-Skripts vor und nach dem Bereitstellungstask 
 
 Wenn Sie Git nicht konfiguriert haben, können Sie über die Option **Export ARM Template** (ARM-Vorlage exportieren) in der Liste **ARM-Vorlage** auf die verknüpften Vorlagen zugreifen.
 
+Bei der Bereitstellung Ihrer Ressourcen geben Sie an, dass es sich bei der Bereitstellung entweder um ein inkrementelles Update oder um ein vollständiges Update handelt. Der Unterschied zwischen diesen beiden Modi besteht darin, wie Resource Manager vorhandene Ressourcen in der Ressourcengruppe behandelt, die nicht in der Vorlage enthalten sind. Weitere Informationen finden Sie unter [Bereitstellungsmodi](../azure-resource-manager/templates/deployment-modes.md).
+
 ## <a name="hotfix-production-environment"></a>Hotfix für Produktionsumgebung
 
 Wenn Sie eine Factory in der Produktionsumgebung bereitstellen und ein sofort zu behebender Fehler vorhanden ist, Sie den aktuellen Kollaborationsbranch aber nicht bereitstellen können, müssen Sie unter Umständen einen Hotfix verwenden. Dieser Ansatz wird als Quick Fix Engineering oder QFE bezeichnet.
@@ -687,7 +696,14 @@ Wenn Sie die Git-Integration mit Ihrer Data Factory verwenden und über eine CI/
 
 ## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> Beispielskript für vor und nach der Bereitstellung
 
-Das folgende Beispielskript kann verwendet werden, um Trigger vor der Bereitstellung zu beenden und anschließend neu starten. Außerdem enthält das Skript den Code zum Löschen von Ressourcen, die entfernt wurden. Speichern Sie das Skript in einem Azure DevOps-Git-Repository, und verweisen Sie es über eine Azure PowerShell Aufgabe unter Verwendung von „Version 4.*“.
+Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-Az-ps) befolgen.
+
+>[!WARNING]
+>Wenn Sie nicht die neuesten Versionen von PowerShell und des Data Factory-Moduls verwenden, treten beim Ausführen der Befehle möglicherweise Deserialisierungsfehler auf. 
+>
+
+Das folgende Beispielskript kann verwendet werden, um Trigger vor der Bereitstellung zu beenden und anschließend neu starten. Außerdem enthält das Skript den Code zum Löschen von Ressourcen, die entfernt wurden. Speichern Sie das Skript in einem Azure DevOps-Git-Repository, und verweisen Sie auf es über eine Azure PowerShell-Aufgabe der neuesten Azure PowerShell-Version.
+
 
 Wenn Sie ein Skript vor der Bereitstellung ausführen, müssen Sie im Feld **Skriptargumente** eine Variation der folgenden Parameter angeben.
 

@@ -1,0 +1,141 @@
+### YamlMime:FAQ
+metadata:
+  title: 'Azure Media Services: Häufig gestellte Fragen'
+  description: Erhalten Sie Antworten auf häufig gestellte Fragen zu Azure Media Services.
+  ms.custom: contperf-fy21q4
+  ms.openlocfilehash: e7689af4dd7824fdc764d56269c1bb6394594ef9
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111949168"
+title: Häufig gestellte Fragen zu Azure Media Services
+summary: Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Azure Media Services.
+sections:
+- name: Problembehandlung
+  questions:
+  - question: Wo finde ich Informationen zur Problembehandlung für Media Services?
+    answer: >
+      Möglicherweise ist jemand anderes auf das gleiche Problem gestoßen wie Sie.  Eine Liste dieser Fragen finden Sie in der [Sammlung der Fragen zur Problembehandlung](./questions-collection.md). Wir aktualisieren diese Fragen regelmäßig basierend auf häufigen Problemen aus Supporttickets. Wenn Sie dort keine Antworten finden, erstellen Sie ein Supportticket.
+  - question: Wie kann ich herausfinden, was dieser Fehlercode bedeutet?
+    answer: >
+      Wir haben Fehlercodes in den folgenden Referenzen dokumentiert: [Fehlercodes für Streamingendpunkte](./stream-streaming-endpoint-error-codes-reference.md), [Fehlercodes für Liveereignisse](./live-event-error-codes-reference.md), [Fehlercodes für Aufträge](./job-error-codes-reference.md).  Wenn Sie dort keine Antworten finden, erstellen Sie ein Supportticket.
+  - question: Wie kann ich meine Anmeldeinformationen zurücksetzen?
+    answer: >
+      Sie können [Ihre Kontoanmeldeinformationen mit der CLI zurücksetzen](./account-reset-account-credentials.md).
+- name: Allgemein
+  questions:
+  - question: Was ist Azure Media Services?
+    answer: >
+      Azure Media Services ist eine cloudbasierte Plattform für die Erstellung von Lösungen, die Videostreaming in Broadcastqualität ermöglichen, Barrierefreiheit und Verteilung optimieren, Inhalte analysieren und vieles mehr. Ganz gleich, ob Sie ein Anwendungsentwickler sind oder in einem Callcenter, bei einer Regierungsbehörde oder in einem Unterhaltungsunternehmen arbeiten – Media Services unterstützt Sie bei der Erstellung von Apps, die Medienerlebnisse von herausragender Qualität für ein breites Publikum auf den beliebtesten mobilen Geräten und Browsern von heute bieten. Informationen zu den ersten Schritten mit Azure Media Services finden Sie unter [Azure Media Services v3: Übersicht](media-services-overview.md).
+- name: Referenzen
+  questions:
+  - question: Wo finde ich die Media Services-API und SDKs?
+    answer: >
+      Hier folgt eine Liste:
+
+      - [OpenAPI-Spezifikation (Swagger)](https://aka.ms/ams-v3-rest-sdk)
+
+      - [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
+
+      - [.NET](https://aka.ms/ams-v3-dotnet-sdk)
+
+      - [Java](https://aka.ms/ams-v3-java-sdk)
+
+      - [Python](https://aka.ms/ams-v3-python-sdk)
+
+      - [Node.js](https://aka.ms/ams-v3-nodejs-sdk)
+
+      - [Go](https://aka.ms/ams-v3-go-sdk)
+
+      - [Ruby](https://aka.ms/ams-v3-ruby-sdk)
+  - question: Wo kann ich Media Services-Beispiele finden?
+    answer: >
+      Eine Liste mit Beispielen finden Sie im Artikel [Media Services v3: Beispiele](samples-overview.md).
+  - question: Wie viel kostet Media Services?
+    answer: >
+      Weitere Informationen finden Sie unter den [Preisinformationen zu Media Services](https://azure.microsoft.com/pricing/details/media-services/).
+  - question: Welche Kontingente und Grenzwerte gelten für Media Services?
+    answer: >
+      Weitere Informationen finden Sie unter [Media Services: Kontingente und Grenzwerte](limits-quotas-constraints-reference.md).
+- name: Verwenden von Media Services
+  questions:
+  - question: Was ist ein Media Services-Medienobjekt?
+    answer: >
+      Ein Media Services-Medienobjekt ist ein Azure Storage-Kontocontainer, der für jede hochgeladene Videodatei verwendet wird.  Sie verfügt über einen eindeutigen Bezeichner, der mit Transformationen und anderen Vorgängen verwendet wird.  Weitere Informationen finden Sie unter [Medienobjekte in Media Services v3](assets-concept.md).
+  - question: Wie erstelle ich ein Media Services-Medienobjekt?
+    answer: >
+      Jedes Mal, wenn Sie eine Mediendatei hochladen und Vorgänge damit durchführen möchten, z. B. Codierung oder Streaming, erstellen Sie ein Medienobjekt, um die Mediendatei und andere mit dieser Mediendatei verbundene Dateien zu speichern. Medienobjekte werden automatisch für Sie erstellt, wenn Sie das Azure-Portal verwenden. Wenn Sie das Portal nicht zum Hochladen von Dateien verwenden, müssen Sie zuerst ein Medienobjekt erstellen.  Informationen zum Erstellen eines Medienobjekts finden Sie unter [Erstellen eines Medienobjekts](asset-create-asset-how-to.md).
+  - question: Was ist eine Media Services-Transformation?
+    answer: >
+      Eine Transformation enthält die Anweisungen zum Codieren oder Analysieren von Mediendateien. Betrachten Sie sie als Anleitung. Sie kann mehrere Codierungsanweisungen auf eine Mediendatei anwenden.  Sie wird von einem Auftrag zum Transformieren von Dateien verwendet. Weitere Informationen zu Transformationen finden Sie unter „Transformationen“ in [Transformationen und Aufträge in Media Services](transform-jobs-concept.md#transforms).
+  - question: Wie erstelle ich eine Media Services-Transformation?
+    answer: >
+      Sie können eine Transformation mithilfe von REST, der CLI oder den SDKs erstellen, die für Media Services verfügbar sind.  Weitere Informationen finden Sie unter [Erstellen einer Transformation](transform-create-transform-how-to.md) zur Verwendung von REST oder der CLI.  Informationen zur Verwendung des SDK finden Sie unter [Media Services: Beispiele](https://github.com/Azure-Samples?q=media-services&type=&language=&sort=), das im Repository mit den Azure-Beispielen verfügbar sind.
+  - question: Was ist ein Media Services-Auftrag?
+    answer: >
+      Ein Auftrag ist die Anforderung, die Sie senden, um mit der Verwendung einer Transformation zum Codieren oder Analysieren von Dateien zu beginnen.  Sie teilen ihm mit, eine in einem Eingabemedienobjekt enthaltene Datei zu transformieren.  Sie teilen ihm außerdem mit, entweder ein Ausgabemedienobjekt zu erstellen oder ein bereits vorhandenes Ausgabemedienobjekt zu verwenden.  Sobald der Auftrag abgeschlossen ist, sind die transformierten (codierten, analysierten) Dateien im Ausgabemedienobjekt sowie in anderen Dateien enthalten, die diesen Dateien zugeordnet sind. Weitere Informationen zu Aufträgen finden Sie unter [Transformationen und Aufträge in Media Services](transform-jobs-concept.md#jobs).
+  - question: Wie erstelle ich einen Media Services-Auftrag?
+    answer: >
+      Sie können einen Auftrag im Azure-Portal mit der [CLI](job-create-cli-how-to.md), mit REST oder einem der SDKs erstellen. Informationen zur bevorzugten Sprache finden Sie unter [Media Services: Beispiele](https://github.com/Azure-Samples?q=media-services&type=&language=&sort=).
+  - question: Was ist Codierung?
+    answer: >
+      Der Begriff Codierung beschreibt in Media Services den Prozess der Konvertierung von Dateien, die digitale Video- und/oder Audiodateien enthalten, von einem Format in ein anderes Format. Ziel ist es, (a) die Größe der Dateien zu verringern und/oder (b) ein Format zu erzeugen, das mit einer Vielzahl von Geräten und Anwendungen kompatibel ist. Dieser Prozess wird auch als Videokomprimierung oder Transcodierung bezeichnet. Weitere Informationen finden Sie unter [Codieren von Video- und Audiodaten mit Media Services](./encode-concept.md).
+  - question: Welche Codierungsformate sind für Media Services verfügbar?
+    answer: >
+      Die gängigen Codierungsformate sind mit Media Services Standard Encoder verfügbar. Eine Liste aller Formate finden Sie unter [Media Encoder Standard-Formate und -Codecs](encode-media-encoder-standard-formats-reference.md).
+  - question: Kann ich mit Media Services eine automatisch generierte Reihe von Bitraten erstellen?
+    answer: >
+      Ja.  Weitere Informationen finden Sie auf der Seite [Codieren mit einer automatisch generierten Reihe von Bitraten-/Auflösungspaaren](./encode-autogen-bitrate-ladder.md).
+  - question: Kann ich eine Audio- oder Videodatei analysieren?
+    answer: >
+      Ja, das ist möglich. Mit Azure Media Services, Version 3 können Sie Inhalte aus Video- und Audiodateien mit Video Indexer extrahieren. Voreinstellungen des Media Services v3-Analysetools können verwendet werden, um diese Inhalte zu extrahieren. Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie Video Indexer direkt. Was für die Verwendung von Video Indexer anstelle von Voreinstellungen des Media Services-Analysetools spricht, erfahren Sie im [Vergleichsdokument](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md).
+  - question: Was ist ein Media Services-Liveereignis?
+    answer: >
+      Ein Media Services-Liveereignis ist der Prozess der Erfassung von Livevideofeeds und deren Übertragung über ein RTMPS-Protokoll oder über Smooth Streaming. Weitere Informationen zu Media Services-Liveereignissen finden Sie unter [Liveereignisse und Liveausgabe in Media Services](live-event-outputs-concept.md).
+  - question: Wie erstelle ich ein Media Services-Liveereignis?
+    answer: >
+      Der erste Schritt ist die Auswahl eines lokalen Encoders.  Wir haben Beispiele zum Erstellen eines Liveereignisses mit [Wirecast](live-event-wirecast-quickstart.md) und [OBS](live-event-obs-quickstart.md) bereitgestellt. Wenn Sie lieber mit einer Übersicht über Media Services-Liveereignisse beginnen möchten, finden Sie weitere Informationen unter [Liveereignistypen](stream-live-streaming-concept.md#live-event-types).
+  - question: Wie führe ich eine Livetranskription mit einem Media Services-Liveereignis durch?
+    answer: >
+      Azure Media Service übermittelt Video, Audio und Text in unterschiedlichen Protokollen. Wenn Sie Ihren Livestream mittels MPEG-DASH oder HLS/CMAF veröffentlichen, stellt unser Dienst neben den Video- und Audiospuren auch den transkribierten Text im IMSC1.1-kompatiblen TTML-Format bereit. Weitere Informationen zur Livetranskription finden Sie unter [Livetranskription](live-event-live-transcription-how-to.md).
+  - question: Was ist ein Media Services-Streamingendpunkt?
+    answer: >
+      In Media Services stellt ein Streamingendpunkt einen dynamischen (Just-In-Time-)Paketerstellungs- und Ursprungsdienst dar, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayer-App bereitstellen kann und dabei eines der allgemeinen Streamingmedienprotokolle (HLS oder DASH) verwendet. Zudem sorgt der Streamingendpunkt für eine dynamische (Just-In-Time-)Verschlüsselung zu branchenführenden DRMs.  Weitere Informationen zu Streamingendpunkten finden Sie unter [Streamingendpunkte (Ursprung) in Azure Media Services](stream-streaming-endpoint-concept.md)
+  - question: Was ist ein Media Services-Streaminglocator?
+    answer: >
+      Um Videos für die Wiedergabe durch Clients verfügbar zu machen, erstellen Sie einen Streaminglocator und dann die Streaming-URLs. Der Streaminglocator wird auch verwendet, um Streamingrichtlinien anzuwenden, die Regeln für die Verwendung der Mediendateien enthalten.
+  - question: Wie erstelle ich einen Media Services-Streaminglocator?
+    answer: >
+      Um eine Streaming-URL zu erstellen, erstellen Sie zunächst einen Streaminglocator. Sie müssen dann den Hostnamen des Streamingendpunkts und den Pfad des Streaminglocators miteinander verketten.  Weitere Informationen finden Sie unter [Erstellen eines Streaminglocators und von URLs](create-streaming-locator-build-url.md).
+  - question: Was ist eine Streamingrichtlinie?
+    answer: >
+      Mithilfe von Streamingrichtlinien können Sie Streamingprotokolle und Verschlüsselungsoptionen für Ihren Streaminglocator definieren. Media Services v3 bietet einige vordefinierte Streamingrichtlinien. Weitere Informationen finden Sie unter [Streamingrichtlinien](./stream-streaming-policy-concept.md).
+  - question: Wie erstelle ich eine Media Services-Streamingrichtlinie?
+    answer: >
+      Eine Liste der vordefinierten Richtlinien, die Sie für die ersten Schritte verwenden können, finden Sie unter [Streamingrichtlinien](./stream-streaming-policy-concept.md).
+  - question: Wie kann ich meine Medieninhalte mit dynamischer Verschlüsselung bereitstellen?
+    answer: >
+      Die dynamische Verschlüsselung schützt Ihre Medien ab dem Zeitpunkt, an dem sie Ihren Computer verlassen, während des gesamten Prozesses der Speicherung, Verarbeitung und Übermittlung. Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Weitere Informationen finden Sie unter [Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services](./drm-content-protection-concept.md).
+  - question: Wie überwache ich meine Media Services-Ressourcen?
+    answer: >
+      Verwenden Sie Azure Monitor, um nachzuverfolgen, was mit Ihren Media Services-Ressourcen geschieht.  Weitere Informationen finden Sie unter [Überwachen von Media Services](./monitoring/monitor-media-services.md). Schrittanleitungen umfassen [Überwachen von Media Services-Metriken](./monitoring/media-services-metrics-howto.md) und [Überwachen von Media Services-Diagnoseprotokolle](./monitoring/media-services-diagnostic-logs-howto.md).
+  - question: Wie überwache ich mein Media Services-Liveereignis?
+    answer: >
+      Verwenden Sie [Azure Event Grid](./monitoring/reacting-to-media-services-events.md), um Ihr Liveereignis ohne einen Abrufdienst zu überwachen. Schrittanleitungen umfassen [Erstellen und Überwachen von Media Services-Ereignissen mit Event Grid mithilfe des Azure-Portal](./monitoring/monitor-events-portal-how-to.md) und [Erstellen und Überwachen von Media Services-Ereignissen mit Event Grid mithilfe der Azure CLI](./monitoring/job-state-events-cli-how-to.md).
+  - question: Welche Videoplayer kann ich mit Media Services verwenden?
+    answer: >
+      Media Services funktioniert mit Azure Media Player, Shaka und Video.js. Weitere Informationen finden Sie in der [Azure Media Player-Dokumentation](../azure-media-player/azure-media-player-overview.md) unter [Verwenden des Shaka-Players mit Azure Media Services](./player-shaka-player-how-to.md) oder [Verwenden des Video.js-Players mit Azure Media Services](./player-media-players-concept.md).
+  - question: Unterstützt Media Services Hochverfügbarkeit?
+    answer: >
+      Weitere Informationen zu Media Services und Hochverfügbarkeit finden sich unter [Hochverfügbarkeit bei Media Services und Video on Demand (VoD)](./architecture-high-availability-encoding-concept.md).
+  - question: Wo finde ich einige Media Services-Beispielarchitekturen?
+    answer: >
+      Kein Problem! Lesen Sie [Media Services-Architekturen](./architecture-concept.md), oder besuchen Sie das Azure Architecture Center.
+  - question: Wie kann ich von Media Services v2 zu Media Services v3 migrieren?
+    answer: >
+      Wir haben einen [umfassenden Leitfaden für die Migration von v2 zu v3](./migrate-v-2-v-3-migration-introduction.md) erstellt.  Wir sind sehr daran interessiert, mehr über Ihre Migrationserfahrung und Ihre Anforderungen zu erfahren. Senden Sie uns daher gerne Ihr Feedback über ein GitHub-Problem oder Supportticket.
+  - question: Wie verwende ich eine verwaltete Identität, um Daten für Media Services zu verschlüsseln?
+    answer: "Werfen Sie einen Blick auf das Tutorial zum [Verwenden eines Key Vault-Schlüssels zur Verschlüsselung von Daten in einem Media Services-Konto](security-encrypt-data-managed-identity-cli-tutorial.md) zur Verwendung der CLI zum Koppeln von Media Services mit Key Vault, um Ihre Daten zu verschlüsseln.  \n"
+  - question: Wie verwende ich eine verwaltete Identität, um Media Services Zugriff auf ein eingeschränktes Speicherkonto zu erteilen?
+    answer: Wenn Sie auf ein Speicherkonto zugreifen möchten und das Speicherkonto so konfiguriert ist, dass Anforderungen von unbekannten IP-Adressen blockiert werden, führen Sie die Schritte unter [Zugreifen auf Speicher mit einer verwalteten Media Services-Identität](security-access-storage-managed-identity-cli-tutorial.md) aus.

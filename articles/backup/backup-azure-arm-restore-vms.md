@@ -3,13 +3,13 @@ title: Wiederherstellen von VMs über das Azure-Portal
 description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wiederherstellungspunkts über das Azure-Portal, einschließlich des Features zur regionsübergreifenden Wiederherstellung
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 04/19/2021
-ms.openlocfilehash: 0f3a715f4fef85b90fd8f06558a8cfdab1ca8900
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.date: 05/01/2021
+ms.openlocfilehash: 26efe6cafc5829cedcb7bb74f8ea796256d45d10
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739042"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966800"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -53,13 +53,20 @@ Wenn dies nicht zutrifft, können Sie [einen Datenträger wiederherstellen](#res
 
 ## <a name="select-a-restore-point"></a>Auswählen eines Wiederherstellungspunkts
 
-1. Wählen Sie in dem Tresor, der der wiederherzustellenden VM zugeordnet ist, die Option **Sicherungselemente** > **Virtuelle Azure-Computer** aus.
-1. Wählen Sie einen virtuellen Computer aus. Standardmäßig werden im VM-Dashboard die Wiederherstellungspunkte der letzten 30 Tage angezeigt. Sie können Wiederherstellungspunkte anzeigen, die älter als 30 Tage sind, oder nach Wiederherstellungspunkten filtern, die auf Daten, Zeitbereichen und verschiedenen Arten von Momentaufnahmen basieren.
-1. Wählen Sie die Option **Virtuellen Computer wiederherstellen** aus, um die VM wiederherzustellen.
+1. Navigieren Sie im Azure-Portal zum **Sicherungscenter**, und klicken Sie in der Registerkarte **Übersicht** auf **Wiederherstellen**.
 
-    ![Wiederherstellungspunkt](./media/backup-azure-arm-restore-vms/restore-point.png)
+    ![Navigieren zu Wiederherstellen](./media/backup-azure-arm-restore-vms/select-restore.png)
 
-1. Wählen Sie einen Wiederherstellungspunkt für die Wiederherstellung aus.
+1. Wählen Sie **Azure-VMs** als **Datenquellentyp** aus, und wählen Sie dann eine Sicherungsinstanz aus.
+
+    ![Auswählen des Datenquellentyps](./media/backup-azure-arm-restore-vms/virtual-machine-as-datasource.png)
+
+1. Wählen Sie einen virtuellen Computer aus, und klicken Sie auf **Weiter**.
+1. Wählen Sie im nächsten angezeigten Bildschirm einen Wiederherstellungspunkt aus, der für die Wiederherstellung verwendet werden soll.
+
+    ![Auswählen des Wiederherstellungspunkts für einen virtuellen Computer](./media/backup-azure-arm-restore-vms/restore-point.png)
+
+
 
 ## <a name="choose-a-vm-restore-configuration"></a>Auswählen einer Konfiguration für die VM-Wiederherstellung
 
@@ -116,7 +123,7 @@ Nachdem der Datenträger wiederhergestellt wurde, verwenden Sie die Vorlage, die
 
 1. Um die in der Vorlage angegebene VM-Einstellung anzupassen, wählen Sie **Vorlage bearbeiten** aus. Wenn Sie weitere Anpassungen hinzufügen möchten, wählen Sie **Parameter bearbeiten** aus.
     - [Erfahren Sie mehr](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) zum Bereitstellen von Ressourcen aus einer benutzerdefinierten Vorlage.
-    - [Erfahren Sie mehr](../azure-resource-manager/templates/template-syntax.md) zum Erstellen von Vorlagen.
+    - [Erfahren Sie mehr](../azure-resource-manager/templates/syntax.md) zum Erstellen von Vorlagen.
 
    ![Laden der Vorlagenbereitstellung](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
@@ -165,10 +172,6 @@ Aktuell beträgt die [RPO](azure-backup-glossary.md#rpo-recovery-point-objective
 ![Auswählen der wiederherzustellenden VM](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
 ![Auswählen eines Wiederherstellungspunkts](./media/backup-azure-arm-restore-vms/sec-rp.png)
-
-![Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/rest-config.png)
-
-![Auslösen der Benachrichtigung „Wiederherstellung wird ausgeführt“](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 - Informationen zum Wiederherstellen und Erstellen eines virtuellen Computers finden Sie unter [Erstellen eines virtuellen Computers](#create-a-vm).
 - Informationen zum Wiederherstellen als Datenträger finden Sie unter [Wiederherstellen von Datenträgern](#restore-disks).

@@ -7,16 +7,16 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 02/25/2021
-ms.openlocfilehash: 5efc48d348e9cfceab590bcfba8c621e7721376f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 50ab34a73a7709a47efdf6904acf005cd5db9da5
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102107123"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753591"
 ---
 # <a name="access-and-track-your-secure-score"></a>Zugreifen auf Ihre Sicherheitsbewertung und Nachverfolgen dieser Bewertung
 
-Ihre Sicherheitsbewertung insgesamt sowie Ihre Bewertung pro Abonnement können Sie im Azure-Portal finden oder entsprechend den Angaben in den folgenden Abschnitten programmgesteuert abrufen:
+Ihre insgesamte Sicherheitsbewertung sowie Ihre Bewertung pro Abonnement können Sie im Azure-Portal finden oder entsprechend den Angaben in den folgenden Abschnitten programmgesteuert abrufen:
 
 > [!TIP]
 > Eine ausführliche Erläuterung, wie diese Bewertungen berechnet werden, finden Sie unter [Berechnungen – Verstehen der Bewertung](secure-score-security-controls.md#calculations---understanding-your-score).

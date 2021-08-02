@@ -5,16 +5,17 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 06/09/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 51e0205fddf9c3e6e3d622465204e647c0099f53
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d6922eaec624141c8acab2d8d8e133db5becd66d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109715806"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950041"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -39,7 +40,7 @@ Sie können Firewallregeln kombinieren, die den Zugriff aus bestimmten virtuelle
 
 Storage-Firewallregeln gelten für den öffentlichen Endpunkt eines Speicherkontos. Sie benötigen keine Firewallzugriffsregeln, um Datenverkehr für private Endpunkte eines Speicherkontos zuzulassen. Der Vorgang zur Genehmigung der Erstellung eines privaten Endpunkts gewährt impliziten Zugriff auf Datenverkehr aus dem Subnetz, das den privaten Endpunkt hostet.
 
-Netzwerkregeln werden für alle Netzwerkprotokolle für Azure Storage, einschließlich REST und SMB, erzwungen. Für den Zugriff auf Daten mithilfe von Tools wie Azure-Portal, Storage-Explorer und AZCopy müssen explizite Netzwerkregeln konfiguriert werden.
+Netzwerkregeln werden für alle Netzwerkprotokolle für Azure Storage, einschließlich REST und SMB, erzwungen. Für den Zugriff auf Daten mithilfe von Tools wie Azure-Portal, Storage-Explorer und AzCopy müssen explizite Netzwerkregeln konfiguriert werden.
 
 Angewendete Netzwerkregeln werden für alle Anforderungen erzwungen. SAS-Token, die Zugriff auf eine bestimmte IP-Adresse gewähren, beschränken den Zugriff des Tokeninhabers, gewähren jedoch keinen neuen Zugriff außerhalb der konfigurierten Netzwerkregeln.
 
@@ -48,6 +49,9 @@ Datenverkehr für VM-Datenträger (einschließlich Vorgängen zur Einbindung/Auf
 Firewalls und virtuelle Netzwerke werden von klassischen Speicherkonten nicht unterstützt.
 
 Sie können nicht verwaltete Datenträger in Speicherkonten mit angewendeten Netzwerkregeln verwenden, um virtuelle Computer durch Erstellung einer Ausnahme zu sichern und wiederherzustellen. Dieser Prozess ist im Abschnitt [Verwalten von Ausnahmen](#manage-exceptions) dieses Artikels dokumentiert. Firewallausnahmen gelten nicht für verwaltete Datenträger, da sie bereits von Azure verwaltet werden.
+
+> [!IMPORTANT] 
+> Wenn Sie das Subnetz löschen, das in eine Netzwerkregel eingeschlossen wurde, sorgen Sie dafür, dieses Subnetz auch aus der Netzwerkregel zu entfernen. Wenn Sie andernfalls ein Subnetz mit demselben Namen erstellen, können Sie dieses Subnetz in den Netzwerkregeln Ihrer Speicherkonten nicht verwenden. 
 
 ## <a name="change-the-default-network-access-rule"></a>Ändern der Standard-Netzwerkzugriffsregel
 
@@ -582,7 +586,11 @@ Ressourcen einiger Dienste können, **sofern sie in Ihrem Abonnement registriert
 
 ### <a name="trusted-access-based-on-system-assigned-managed-identity"></a>Vertrauenswürdiger Zugriff auf der Grundlage einer systemseitig zugewiesenen verwalteten Identität
 
-Die folgende Tabelle enthält eine Liste mit Diensten, die Zugriff auf Ihre Speicherkontodaten haben, wenn den Ressourceninstanzen dieser Dienste die entsprechende Berechtigung erteilt wird. Um die Berechtigung zu erteilen, müssen Sie der [systemseitig zugewiesenen verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) für jede Ressourceninstanz explizit [eine Azure-Rolle zuweisen](storage-auth-aad.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist. 
+Die folgende Tabelle enthält eine Liste mit Diensten, die Zugriff auf Ihre Speicherkontodaten haben, wenn den Ressourceninstanzen dieser Dienste die entsprechende Berechtigung erteilt wird. 
+
+Wenn für Ihr Konto das Feature für hierarchische Namespaces nicht aktiviert ist, können Sie keine Berechtigung erteilen, indem Sie explizit der [systemseitig zugewiesenen verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) pro Ressourceninstanz eine [Azure-Rolle zuweisen](storage-auth-aad.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist. 
+
+Sie können dieselbe Methode für ein Konto verwenden, für das das Feature für hierarchische Namespaces aktiviert wurde. Sie müssen jedoch keine Azure-Rolle zuweisen, wenn Sie die systemseitig zugewiesene verwaltete Identität der Zugriffssteuerungsliste (ACL) eines Verzeichnisses oder Blobs zuweisen, das bzw. der sich im Speicherkonto befindet. In diesem Fall entspricht der Zugriffsbereich der Instanz dem Verzeichnis oder der Datei, auf das bzw. die der systemseitig zugewiesenen verwalteten Identität Zugriff gewährt wurde. Sie können Azure-Rollen und ACLs auch miteinander kombinieren. Wenn Sie mehr dazu erfahren möchten, wie Sie sie miteinander kombinieren, um Zugriff zu gewähren, können Sie den Artikel [Zugriffssteuerungsmodell in Azure Data Lake Storage Gen2](../blobs/data-lake-storage-access-control-model.md) lesen.
 
 > [!TIP]
 > Soll Zugriff auf bestimmte Ressourcen gewährt werden, empfiehlt sich die Verwendung von Ressourceninstanzregeln. Informationen zum Gewähren von Zugriff auf bestimmte Ressourceninstanzen finden Sie im Abschnitt [Gewähren von Zugriff über Azure-Ressourceninstanzen (Vorschau)](#grant-access-specific-instances) dieses Artikels.
@@ -592,7 +600,7 @@ Die folgende Tabelle enthält eine Liste mit Diensten, die Zugriff auf Ihre Spei
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API Management           | Microsoft.ApiManagement/service        | Ermöglicht dem API Management-Dienst Zugriff auf Speicherkonten hinter der Firewall mithilfe von Richtlinien. [Weitere Informationen](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy) |
 | Azure Cognitive Search         | Microsoft.Search/searchServices        | Ermöglicht Cognitive Search-Diensten den Zugriff auf Speicherkonten zur Indizierung, Verarbeitung und Abfrage. |
-| Azure Cognitive Services       | Microsoft.CognitiveService/accounts    | Ermöglicht Cognitive Services den Zugriff auf Speicherkonten. |
+| Azure Cognitive Services       | Microsoft.CognitiveService/accounts    | Ermöglicht Cognitive Services den Zugriff auf Speicherkonten. [Weitere Informationen](../..//cognitive-services/cognitive-services-virtual-networks.md)|
 | Azure Container Registry Tasks | Microsoft.ContainerRegistry/registries | ACR Tasks können beim Erstellen von Containerimages auf Speicherkonten zugreifen. |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Ermöglicht den Zugriff auf Speicherkonten über die ADF Runtime. |
 | Azure Data Share               | Microsoft.DataShare/accounts           | Ermöglicht den Zugriff auf Speicherkonten über Data Share. |

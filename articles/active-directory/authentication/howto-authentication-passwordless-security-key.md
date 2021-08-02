@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/04/2021
+ms.date: 06/03/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba71fb0dd543780ebfb8783ed937a14e2afbe417
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3373c1f9a82f79782ed1758fd09c83bcfbe6fc03
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467305"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963721"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln 
 
@@ -32,7 +32,6 @@ In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf Sicherheits
 - WebAuthN erfordert Windows 10, Version 1903 oder höher**
 
 Um Sicherheitsschlüssel für die Anmeldung bei Web-Apps und-Diensten verwenden zu können, benötigen Sie einen Browser, der das WebAuthN-Protokoll unterstützt. Hierzu zählen Microsoft Edge, Chrome, Firefox und Safari.
-
 
 ## <a name="prepare-devices"></a>Vorbereiten von Geräten
 
@@ -65,11 +64,32 @@ Es gibt einige optionale Einstellungen für die Verwaltung von Sicherheitsschlü
 **Allgemein**
 
 - **Self-Service-Einrichtung zulassen** sollte auf **Ja** festgelegt bleiben. Wenn diese Einstellung auf „Nein“ festgelegt ist, können Ihre Benutzer keinen FIDO-Schlüssel über das MySecurityInfo-Portal registrieren, auch wenn dies durch die Richtlinie für Authentifizierungsmethoden aktiviert ist.  
-- Die **Nachweis erzwingen**-Einstellung auf **Ja** erfordert, dass die FIDO-Sicherheitsschlüsselmetadaten mit der FIDO Alliance Metadata Service veröffentlicht und überprüft werden, und sie müssen auch den zusätzlichen Überprüfungstest von Microsoft bestehen. Weitere Informationen finden Sie unter [Was ist ein Microsoft-kompatibler Sicherheitsschlüssel?](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)
+- Die **Nachweis erzwingen**-Einstellung auf **Ja** erfordert, dass die FIDO-Sicherheitsschlüsselmetadaten mit der FIDO Alliance Metadata Service veröffentlicht und überprüft werden, und sie müssen auch den zusätzlichen Überprüfungstest von Microsoft bestehen. Weitere Informationen finden Sie unter [Was ist ein Microsoft-kompatibler Sicherheitsschlüssel?](/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)
 
 **Schlüsseleinschränkungsrichtlinie**
 
 - **Erzwingung von Schlüsseleinschränkungen** sollte nur auf **Ja** festgelegt werden, wenn Ihre Organisation nur bestimmte FIDO-Sicherheitsschlüssel zulassen oder nicht zulassen möchte, die durch ihre AAGuids identifiziert werden. Sie können mit Ihrem Sicherheitsschlüsselanbieter zusammenarbeiten, um die AAGuids ihrer Geräte zu bestimmen. Wenn der Schlüssel bereits registriert ist, kann AAGUID auch durch Anzeigen der Details der Authentifizierungsmethode des Schlüssels pro Benutzer gefunden werden. 
+
+
+## <a name="disable-a-key"></a>Deaktivieren eines Schlüssels 
+
+Um einen FIDO2-Schlüssel zu entfernen, der einem Benutzerkonto zugeordnet ist, löschen Sie den Schlüssel aus den Authentifizierungsmethoden des Benutzers.
+
+1. Melden Sie sich beim Azure AD-Portal an, und suchen Sie nach dem Benutzerkonto, aus dem der FIDO-Schlüssel entfernt werden soll.
+1. Wählen Sie **Authentifizierungsmethoden** aus, klicken Sie mit der rechten Maustaste auf **FIDO2-Sicherheitsschlüssel**, und klicken Sie dann auf **Löschen**. 
+
+    ![Anzeigen von Details zu Authentifizierungsmethoden](media/howto-authentication-passwordless-deployment/security-key-view-details.png)
+
+## <a name="security-key-authenticator-attestation-guid-aaguid"></a>AAGUID (Authenticator Attestation GUID, Authenticator-Nachweis-GUID) als Sicherheitsschlüssel
+
+Gemäß FIDO2-Spezifikation muss jeder Sicherheitsschlüsselanbieter während des Nachweises eine AAGUID (Authenticator Attestation GUID) bereitstellen. Die AAGUID ist eine 128-Bit-ID, die den Schlüsseltyp angibt (z. B. Aussteller und Modell). 
+
+>[!NOTE]
+>Der Hersteller muss sicherstellen, dass die AAGUID für alle ähnlichen Schlüssel dieses Herstellers identisch ist und sich gleichzeitig (mit hoher Wahrscheinlichkeit) von den AAGUIDs aller anderen Schlüsseltypen unterscheidet. Um dies sicherzustellen, sollte die AAGUID für einen bestimmten Sicherheitsschlüsseltyp nach dem Zufallsprinzip generiert werden. Weitere Informationen finden Sie unter [Web Authentication: An API for accessing Public Key Credentials – Level 3](https://w3c.github.io/webauthn/) (Webauthentifizierung: Eine API für den Zugriff auf Anmeldeinformationen für öffentliche Schlüssel – Ebene 3 (w3.org)).
+
+Es gibt zwei Möglichkeiten für das Abrufen Ihrer AAGUID. Sie können entweder Ihren Sicherheitsschlüsselanbieter fragen oder die Details zu den Authentifizierungsmethoden des Schlüssels pro Benutzer anzeigen.
+
+![Anzeigen der AAGUID für einen Sicherheitsschlüssel](media/howto-authentication-passwordless-deployment/security-key-aaguid-details.png)
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>Benutzerregistrierung und Verwaltung von FIDO2-Sicherheitsschlüsseln
 
@@ -110,7 +130,7 @@ Die Administratorbereitstellung und Bereitstellungsaufhebung von Sicherheitsschl
 
 ### <a name="upn-changes"></a>Änderungen des Benutzerprinzipalnamens
 
-Wir arbeiten derzeit an der Unterstützung eines Features, das eine Änderung des Benutzerprinzipalnamens auf Geräten mit Azure AD Hybrid- und Azure AD-Einbindung ermöglicht. Wenn der Benutzerprinzipalname eines Benutzers geändert wird, können Sie die FIDO2-Sicherheitsschlüssel nicht mehr ändern, um dies zu berücksichtigen. Zur Lösung dieses Problems muss das Gerät zurückgesetzt werden, und der Benutzer muss die Registrierung erneut ausführen.
+Wenn der Benutzerprinzipalname eines Benutzers geändert wird, können Sie die FIDO2-Sicherheitsschlüssel nicht mehr ändern, um dies zu berücksichtigen. Die Lösung für einen Benutzer mit einem FIDO2-Sicherheitsschlüssel besteht darin, sich bei MySecurityInfo anzumelden, den alten Schlüssel zu löschen und einen neuen hinzuzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

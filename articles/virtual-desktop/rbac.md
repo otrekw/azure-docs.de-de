@@ -1,6 +1,6 @@
 ---
-title: 'Integrierte Rollen für Windows Virtual Desktop: Azure'
-description: Hier finden Sie eine Übersicht über integrierte Rollen für Windows Virtual Desktop, die für Azure RBAC verfügbar sind.
+title: 'Integrierte Rollen für Azure Virtual Desktop: Azure'
+description: Hier finden Sie eine Übersicht über integrierte Rollen für Azure Virtual Desktop, die für Azure RBAC verfügbar sind.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1094004bc523a59c3fcf7eb77c6f11bc4554080
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f19035ea08e95d5535903467ddbc11fc53c0deb7
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445855"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753105"
 ---
-# <a name="built-in-roles-for-windows-virtual-desktop"></a>Integrierte Rollen für Windows Virtual Desktop
+# <a name="built-in-roles-for-azure-virtual-desktop"></a>Integrierte Rollen für Azure Virtual Desktop
 
-Windows Virtual Desktop verwendet die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure, um Benutzern und Administratoren Rollen zuzuweisen. Diese Rollen erteilen Administratoren die Berechtigung, bestimmte Aufgaben auszuführen. Weitere Informationen zu integrierten Rollen für Azure RBAC finden Sie unter [Integrierte Azure-Rollen](../role-based-access-control/built-in-roles.md).
+Azure Virtual Desktop verwendet die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure, um Benutzern und Administratoren Rollen zuzuweisen. Diese Rollen erteilen Administratoren die Berechtigung, bestimmte Aufgaben auszuführen. Weitere Informationen zu integrierten Rollen für Azure RBAC finden Sie unter [Integrierte Azure-Rollen](../role-based-access-control/built-in-roles.md).
 
-Die standardmäßigen integrierten Rollen für Azure sind Besitzer, Mitwirkender und Leser. Windows Virtual Desktop verfügt jedoch über zusätzliche Rollen, mit denen Sie Verwaltungsrollen für Hostpools, App-Gruppen und Arbeitsbereiche trennen können. Diese Trennung ermöglicht Ihnen eine genauere Steuerung der administrativen Aufgaben. Diese Rollen sind gemäß den Azure-Standardrollen und der Methodik minimaler Berechtigungen benannt.
+Die standardmäßigen integrierten Rollen für Azure sind Besitzer, Mitwirkender und Leser. Azure Virtual Desktop verfügt jedoch über zusätzliche Rollen, mit denen Sie Verwaltungsrollen für Hostpools, App-Gruppen und Arbeitsbereiche trennen können. Diese Trennung ermöglicht Ihnen eine genauere Steuerung der administrativen Aufgaben. Diese Rollen sind gemäß den Azure-Standardrollen und der Methodik minimaler Berechtigungen benannt.
 
-Windows Virtual Desktop verfügt über keine bestimmte Besitzerrolle. Allerdings können Sie für die Dienstobjekte eine Standardbesitzerrolle verwenden.
+Azure Virtual Desktop verfügt über keine bestimmte Besitzerrolle. Allerdings können Sie für die Dienstobjekte eine Standardbesitzerrolle verwenden.
 
 ## <a name="desktop-virtualization-contributor"></a>Desktopvirtualisierungsmitwirkender
 

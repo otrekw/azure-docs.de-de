@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 65ee741ee928a4883def68a5c0b6d20beee441c7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fca6e59d3aa5b95db0b9ad28f652226ae2eb30ba
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609206"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556527"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Cognitive Search-Features
 
@@ -32,7 +32,7 @@ Azure Cognitive Search bietet eine Volltextsuche-Engine, die persistente Speiche
 | Kategorie &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Features |
 |-------------------|----------|
 |KI-Verarbeitung während der Indizierung | [**KI-Anreicherung**](cognitive-search-concept-intro.md) für Bild- und Textanalyse kann auf eine Indizierungspipeline angewandt werden, um Textinformationen aus Rohdateninhalten zu extrahieren. Zu den [integrierten Skills](cognitive-search-predefined-skills.md) zählen beispielsweise die optische Zeichenerkennung (ermöglicht das Durchsuchen gescannter JPEG-Dateien), die Entitätserkennung (Ermitteln einer Organisation, eines Namens oder eines Standorts) und die Schlüsselbegriffserkennung. Sie können auch [benutzerdefinierte Skills codieren](cognitive-search-create-custom-skill-example.md) und sie an die Pipeline anfügen. Sie können auch [von Azure Machine Learning erstellte Qualifikationen integrieren](./cognitive-search-tutorial-aml-custom-skill.md). |
-| Speichern von angereicherten Inhalten für die Analyse und Nutzung in Szenarien ohne Suche | Der [**Wissensspeicher**](knowledge-store-concept-intro.md) ist eine alternative Ausgabe einer Indizierungspipeline. Anstatt tokenisierte Begriffe an einen Index zu senden, können Sie in Abhängigkeit von der Konfiguration von der Indizierungspipeline erstellte, erweiterte Dokumente an einen Wissensspeicher entweder in Azure Blob Storage oder in Table Storage senden. Wissensspeicher werden aus KI-basierten Indizierungen (Skillsets) erstellt. Der Zweck eines Wissensspeichers ist die Unterstützung von Downstreamanalysen oder -verarbeitungen. Mit neuen Informationen und Strukturen in einem Wissensspeicher können Sie diesen an einen Machine Learning-Prozess anfügen oder eine Verbindung von Power BI aus herstellen, um die Daten zu untersuchen.<br/><br/> |
+| Speichern von angereicherten Inhalten für die Analyse und Nutzung in Szenarien ohne Suche | Der [**Wissensspeicher**](knowledge-store-concept-intro.md) ist eine alternative Ausgabe einer Indizierungspipeline. Anstatt mit Token versehene Begriffe an einen Index zu senden, können Sie von der Indizierungspipeline erstellte angereicherte Dokumente an einen Wissensspeicher senden, der sich je nach Konfiguration entweder in Azure Blob Storage oder in Table Storage befindet. Wissensspeicher werden aus KI-basierten Indizierungen (Skillsets) erstellt. Der Zweck eines Wissensspeichers ist die Unterstützung von Downstreamanalysen oder -verarbeitungen. Mit neuen Informationen und Strukturen in einem Wissensspeicher können Sie diesen an einen Machine Learning-Prozess anfügen oder eine Verbindung von Power BI aus herstellen, um die Daten zu untersuchen.<br/><br/> |
 | Zwischengespeicherte Inhalte | Bei der [**inkrementellen Anreicherung (Vorschauversion)**](cognitive-search-incremental-indexing-conceptual.md) ist die Verarbeitung auf nur die Dokumente beschränkt, die durch eine spezifische Bearbeitung der Pipeline geändert werden, wobei für die unveränderten Teile der Pipeline zwischengespeicherte Inhalte verwendet werden. |
 
 ## <a name="query-and-user-experience"></a>Abfrage und Benutzeroberfläche

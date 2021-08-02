@@ -6,16 +6,22 @@ author: harelbr
 ms.author: harelbr
 ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: e3a7b71cd8975957754ba014ecc700484c27a6d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f13bc07ce5ae6a11b59b6d18a609ca2ee259964
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726120"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949393"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
 
-Intelligente Erkennungsregeln in Application Insights können mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) verwaltet und konfiguriert werden.
+>[!NOTE]
+>Sie können Ihre Application Insight-Ressourcen zu der auf Warnungen basierenden intelligenten Erkennung (Vorschauversion) migrieren. Bei der Migration werden Warnungsregeln für die verschiedenen Module der intelligenten Erkennung erstellt. Nach der Erstellung können Sie diese Regeln wie alle anderen Azure Monitor-Warnungsregeln verwalten und konfigurieren. Sie können auch Aktionsgruppen für diese Regeln konfigurieren, was mehrere Methoden für das Ausführen von Aktionen oder für das Auslösen von Benachrichtigungen bei neuen Erkennungen ermöglicht.
+>
+> Weitere Informationen zum Migrationsprozess und zum Verhalten der intelligenten Erkennung nach der Migration finden Sie unter [Migration zu intelligenten Erkennungswarnungen](../alerts/alerts-smart-detections-migration.md).
+> 
+
+Intelligente Erkennungsregeln in Application Insights können mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md) verwaltet und konfiguriert werden.
 Diese Methode kann bei der Bereitstellung neuer Application Insights-Ressourcen mit Azure Resource Manager-Automatisierung oder zur Änderung der Einstellungen vorhandener Ressourcen verwendet werden.
 
 ## <a name="smart-detection-rule-configuration"></a>Konfiguration der intelligenten Erkennungsregel
@@ -195,4 +201,3 @@ Weitere Informationen zur automatischen Erkennung finden Sie hier:
 - [Anomalien bei Fehlern](./proactive-failure-diagnostics.md)
 - [Arbeitsspeicherverluste](./proactive-potential-memory-leak.md)
 - [Leistungsanomalien](./proactive-performance-diagnostics.md)
-

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: a8aae2dc03ba87e9782cdf3952be1bfc4a1aae75
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 274d907c4fd8d09e444b938447365a4df64af3e4
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767039"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061630"
 ---
 # <a name="azure-data-explorer-insights-preview"></a>Azure Data Explorer Insights (Vorschau)
 
@@ -114,7 +114,7 @@ Auf der Registerkarte **Verbrauch** können Benutzer Details zur Leistung der Be
 
 Die Registerkarte **Tabellen** zeigt die neuesten und bisherigen Eigenschaften von Tabellen im Cluster. Sie können feststellen, welche Tabellen den meisten Platz beanspruchen und den Wachstumsverlauf anhand von Tabellengröße, heißen Daten und der Anzahl von Zeilen im Lauf der Zeit nachverfolgen.
 
-Auf der Registerkarte **Cache** können Benutzer die tatsächlichen Suchmuster ihrer Abfragen analysieren und mit der konfigurierten Cacherichtlinie vergleichen (für jede Tabelle). Sie können sowohl Tabellen identifizieren, die von sehr vielen Abfragen verwendet werden, als auch Tabellen, die gar nicht abgefragt werden. Dann können Sie die Cacherichtlinie entsprechend anpassen. Sie können in Azure Advisor bestimmte Empfehlungen zu Cacherichtlinien für bestimmte Tabellen abrufen (derzeit sind Cacheempfehlungen nur auf dem [Hauptdashboard von Azure Advisor](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) verfügbar). Die Empfehlungen basieren auf den tatsächlichen Suchvorgängen der Abfragen in den letzten 30 Tagen und einer nicht optimierten Cacherichtlinie für mindestens 95 % der Abfragen. Die Empfehlungen von Azure Advisor zur Cachereduzierung sind für Cluster verfügbar, die „datengebunden“ sind (das bedeutet, dass der Cluster eine geringe CPU- und Erfassungsauslastung aufweist, aufgrund einer hohen Datenkapazität jedoch nicht ab- oder herunterskaliert werden konnte).
+Auf der Registerkarte **Cache** können Benutzer die Muster im Rückblickfenster ihrer tatsächlichen Abfragen analysieren und mit der konfigurierten Cacherichtlinie vergleichen (für jede Tabelle). Sie können sowohl Tabellen identifizieren, die von sehr vielen Abfragen verwendet werden, als auch Tabellen, die gar nicht abgefragt werden. Dann können Sie die Cacherichtlinie entsprechend anpassen. Sie können in Azure Advisor bestimmte Empfehlungen zu Cacherichtlinien für bestimmte Tabellen abrufen (derzeit sind Cacheempfehlungen nur auf dem [Hauptdashboard von Azure Advisor](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) verfügbar). Die Empfehlungen basieren auf dem Rückblickfenster der tatsächlichen Abfragen in den letzten 30 Tagen und einer nicht optimierten Cacherichtlinie für mindestens 95 % der Abfragen. Die Empfehlungen von Azure Advisor zur Cachereduzierung sind für Cluster verfügbar, die „datengebunden“ sind (das bedeutet, dass der Cluster eine geringe CPU- und Erfassungsauslastung aufweist, aufgrund einer hohen Datenkapazität jedoch nicht ab- oder herunterskaliert werden konnte).
 
 [![Screenshot von Cachedetails](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 

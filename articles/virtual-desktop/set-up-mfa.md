@@ -1,28 +1,28 @@
 ---
-title: 'Einrichten von Azure Multi-Factor Authentication für Windows Virtual Desktop: Azure'
-description: Erfahren Sie, wie Sie Azure Multi-Factor Authentication einrichten, um die Sicherheit in Windows Virtual Desktop zu erhöhen.
+title: Einrichten der mehrstufigen Authentifizierung von Azure für Azure Virtual Desktop – Azure
+description: So richten Sie die mehrstufige Authentifizierung von Azure ein, um die Sicherheit in Azure Virtual Desktop zu erhöhen.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/10/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 719b4579d97992cdfc3563ccb72b31809569182c
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 6e01b132dd68fd711af30f816df15795991efd41
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107898259"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754185"
 ---
-# <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Aktivieren von Azure Multi-Factor Authentication für Windows Virtual Desktop
+# <a name="enable-azure-multifactor-authentication-for-azure-virtual-desktop"></a>Aktivieren der mehrstufigen Authentifizierung von Azure für Azure Virtual Desktop
 
 >[!IMPORTANT]
-> Wenn Sie diese Seite von der Dokumentation zu Windows Virtual Desktop (klassisch) aus besuchen, stellen Sie sicher, dass Sie [zur Dokumentation zu Windows Virtual Desktop (klassisch) zurückkehren](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md), wenn Sie fertig sind.
+> Wenn Sie diese Seite von der Dokumentation zu Azure Virtual Desktop (klassisch) aus besuchen, stellen Sie sicher, dass Sie [zur Dokumentation zu Azure Virtual Desktop (klassisch) zurückkehren](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md), wenn Sie fertig sind.
 
-Der Windows-Client für Windows Virtual Desktop ist eine hervorragende Option für die Integration von Windows Virtual Desktop in Ihren lokalen Computer. Wenn Sie jedoch Ihr Windows Virtual Desktop-Konto für den Windows-Client konfigurieren, müssen Sie bestimmte Maßnahmen ergreifen, um sich selbst und Ihre Benutzer zu schützen.
+Der Windows-Client für Azure Virtual Desktop ist eine hervorragende Option für die Integration von Azure Virtual Desktop in Ihren lokalen Computer. Wenn Sie jedoch Ihr Azure Virtual Desktop-Konto für den Windows-Client konfigurieren, müssen Sie bestimmte Maßnahmen ergreifen, um sich selbst und Ihre Benutzer zu schützen.
 
 Wenn Sie sich zum ersten Mal anmelden, fragt der Client nach Benutzernamen, Kennwort und Azure Multi-Factor Authentication. Wenn Sie sich das nächste Mal anmelden, speichert der Client Ihr Token von ihrer Azure Active Directory-Unternehmensanwendung. Wenn Sie in der Eingabeaufforderung für Anmeldeinformationen für den Sitzungshost **Speichern** auswählen, können sich Ihre Benutzer nach dem Neustart des Clients anmelden, ohne ihre Anmeldeinformationen erneut eingeben zu müssen.
 
-Das Speichern von Anmeldeinformationen ist zwar praktisch, kann aber auch die Sicherheit von Bereitstellungen in Unternehmensszenarien oder auf persönlichen Geräten beeinträchtigen. Zum Schutz der Benutzer können Sie sicherstellen, dass der Client häufiger zur Eingabe von Anmeldeinformationen für Azure Multi-Factor Authentication auffordert. In diesem Artikel erfahren Sie, wie Sie die Richtlinie für bedingten Zugriff für Windows Virtual Desktop konfigurieren, um diese Einstellung zu aktivieren.
+Das Speichern von Anmeldeinformationen ist zwar praktisch, kann aber auch die Sicherheit von Bereitstellungen in Unternehmensszenarien oder auf persönlichen Geräten beeinträchtigen. Zum Schutz der Benutzer können Sie sicherstellen, dass der Client häufiger zur Eingabe von Anmeldeinformationen für Azure Multi-Factor Authentication auffordert. In diesem Artikel erfahren Sie, wie Sie die Richtlinie für bedingten Zugriff für Azure Virtual Desktop konfigurieren, um diese Einstellung zu aktivieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,11 +33,11 @@ Voraussetzungen für die ersten Schritte:
 - Aktivieren Sie die Azure Multi-Factor Authentication für all Ihre Benutzer. Weitere Informationen dazu finden Sie unter [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user).
 
 > [!NOTE]
-> Die folgende Einstellung gilt auch für den [Windows Virtual Desktop-Webclient](https://rdweb.wvd.microsoft.com/arm/webclient/index.html).
+> Die folgende Einstellung gilt auch für den [Azure Virtual Desktop-Webclient](https://rdweb.wvd.microsoft.com/arm/webclient/index.html).
 
 ## <a name="create-a-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 
-Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die beim Herstellen einer Verbindung mit Windows Virtual Desktop Multi-Factor Authentication erfordert:
+Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die zur Verbindung mit Azure Virtual Desktop mehrstufige Authentifizierung erfordert:
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 2. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
@@ -47,25 +47,25 @@ Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die
 6. Wählen Sie unter **Einschließen** **Benutzer und Gruppen auswählen** > **Benutzer und Gruppen** aus, und wählen Sie die Gruppe aus, die Sie in der [Voraussetzungsphase](#prerequisites) erstellt haben.
 7. Wählen Sie **Fertig** aus.
 8. Wählen Sie unter **Cloud-Apps oder -Aktionen** > **Einschließen** die Option **Apps auswählen** aus.
-9. Wählen Sie eine der folgenden Apps aus, je nach der verwendeten Version von Windows Virtual Desktop.
+9. Wählen Sie eine der folgenden Apps aus, je nach der verwendeten Version von Azure Virtual Desktop.
    
-   - Wenn Sie Windows Virtual Desktop (klassisch) verwenden, wählen Sie diese Apps aus:
+   - Wenn Sie Azure Virtual Desktop (klassisch) verwenden, wählen Sie diese Apps aus:
        
-       - **Windows Virtual Desktop** (App-ID 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
-       - **Windows Virtual Desktop Client** (App-ID fa4345a4-a730-4230-84a8-7d9651b86739), mit der Sie Richtlinien für den Webclient festlegen können
+       - **Azure Virtual Desktop** (App ID 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
+       - **Azure Virtual Desktop Client** (App-ID fa4345a4-a730-4230-84a8-7d9651b86739), mit der Sie Richtlinien für den Webclient festlegen können
        
         Fahren Sie danach mit Schritt 11 fort.
 
-   - Wenn Sie Windows Virtual Desktop verwenden, wählen Sie stattdessen diese App aus:
+   - Wenn Sie Azure Virtual Desktop verwenden, wählen Sie stattdessen diese App aus:
        
-       -  **Windows Virtual Desktop** (App-ID 9cdead84-a844-4324-93f2-b2e6bb768d07)
+       -  **Azure Virtual Desktop** (App-ID 9cdead84-a844-4324-93f2-b2e6bb768d07)
        
         Fahren Sie anschließend mit Schritt 10 fort.
 
    >[!IMPORTANT]
-   > Wählen Sie nicht die App namens Windows Virtual Desktop Azure Resource Manager-Anbieter (50e95039-b200-4007-bc97-8d5790743a63) aus. Diese App wird nur zum Abrufen des Benutzerfeeds verwendet und sollte keine Multi-Factor Authentication erfordern.
+   > Wählen Sie nicht die App namens Azure Virtual Desktop Azure Resource Manager-Anbieter (50e95039-b200-4007-bc97-8d5790743a63) aus. Diese App wird nur zum Abrufen des Benutzerfeeds verwendet und sollte keine Multi-Factor Authentication erfordern.
    > 
-   > Wenn Sie Windows Virtual Desktop (klassisch) verwenden und die Richtlinie für bedingten Zugriff den gesamten Zugriff blockiert und nur Windows Virtual Desktop-App-IDs ausnimmt, können Sie das Problem beheben, indem Sie der Richtlinie die App-ID „9cdead84-a844-4324-93f2-b2e6bb768d07“ hinzufügen. Wenn Sie diese App-ID nicht hinzufügen, wird die Feedermittlung für Ressourcen von Windows Virtual Desktop (klassisch) blockiert.
+   > Wenn Sie Azure Virtual Desktop (klassisch) verwenden und die Richtlinie für bedingten Zugriff den gesamten Zugriff blockiert und nur Azure Virtual Desktop-App-IDs ausnimmt, können Sie das Problem beheben, indem Sie der Richtlinie die App-ID „9cdead84-a844-4324-93f2-b2e6bb768d07“ hinzufügen. Wenn Sie diese App-ID nicht hinzufügen, wird die Feedermittlung für Ressourcen von Azure Virtual Desktop (klassisch) blockiert.
 
 10. Wechseln Sie zu **Bedingungen** > **Client-Apps**. Wählen Sie unter **Konfigurieren** die Option **Ja** aus, und wählen Sie dann aus, wo die Richtlinie angewendet werden soll:
     
@@ -79,7 +79,7 @@ Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die
 11. Nachdem Sie Ihre App ausgewählt haben, wählen Sie **Auswählen** und dann **Fertig** aus.
 
     > [!div class="mx-imgBorder"]
-    > ![Screenshot der Seite „Cloud-Apps oder -aktionen“. Die Windows Virtual Desktop- und Windows Virtual Desktop-Client-Apps werden rot hervorgehoben.](media/cloud-apps-enterprise.png)
+    > ![Screenshot der Seite „Cloud-Apps oder -aktionen“. Die Azure Virtual Desktop- und Azure Virtual Desktop-Client-Apps werden rot hervorgehoben.](media/cloud-apps-enterprise.png)
 
     >[!NOTE]
     >Um die App-ID der auszuwählenden App zu finden, wechseln Sie zu **Unternehmensanwendungen**, und wählen Sie **Microsoft-Anwendungen** aus dem Dropdownmenü für den Anwendungstyp aus.
@@ -90,7 +90,7 @@ Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die
 15. Wählen Sie **Erstellen** aus, um die Richtlinie zu aktivieren.
 
 >[!NOTE]
->Wenn Sie den Webclient verwenden, um sich über Ihren Browser bei Windows Virtual Desktop anzumelden, listet das Protokoll die Client-App-ID als a85cf173-4192-42f8-81fa-777a763e6e2c (Windows Virtual Desktop-Client) auf. Dies liegt daran, dass die Client-App intern mit der Server-App-ID verknüpft ist, in der die Richtlinie für bedingten Zugriff festgelegt wurde. 
+>Wenn Sie den Webclient verwenden, um sich über Ihren Browser bei Azure Virtual Desktop anzumelden, listet das Protokoll die Client-App-ID als a85cf173-4192-42f8-81fa-777a763e6e2c (Azure Virtual Desktop-Client) auf. Dies liegt daran, dass die Client-App intern mit der Server-App-ID verknüpft ist, in der die Richtlinie für bedingten Zugriff festgelegt wurde. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

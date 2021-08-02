@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
 ms.date: 02/10/2021
-ms.openlocfilehash: e4be6e297fafb3184224806f0bde4db468ce3b79
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 92e7f2af175182886dbc5904c5a50b485ca87d64
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788180"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681192"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 
@@ -191,6 +192,9 @@ Hier finden Sie Details zu den Aktionen und Argumenten der Anwendung:
     2. Optional: Wählen Sie **Authentifizierungsschlüssel anzeigen**, um den Schlüsseltext anzuzeigen.
 
     3. Wählen Sie **Registrieren**.
+
+> [!NOTE]
+> Sie finden die Versionshinweise auf der [Downloadseite der Microsoft Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717).
 
 ## <a name="service-account-for-self-hosted-integration-runtime"></a>Dienstkonto für die selbstgehostete Integration Runtime
 

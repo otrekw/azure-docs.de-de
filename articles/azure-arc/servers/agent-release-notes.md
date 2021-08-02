@@ -2,13 +2,13 @@
 title: Neuerungen im Agent für Azure Arc-fähige Server
 description: Dieser Artikel enthält Versionshinweise für den Agent für Azure Arc-fähige Server. Für viele der zusammengefassten Issues werden Links zu ausführlicheren Informationen bereitgestellt.
 ms.topic: conceptual
-ms.date: 04/27/2021
-ms.openlocfilehash: c223b5dd75ac82706a2b35268813391899170f73
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.date: 05/24/2021
+ms.openlocfilehash: 35822fb47add5c355ad9461b09e8e910f0a5a1fd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071539"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480372"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Neuerungen im Agent für Azure Arc-fähige Server
 
@@ -17,6 +17,19 @@ Der Connected Machine-Agent für Azure Arc-fähige Server wird ständig verbesse
 - Neueste Versionen
 - Bekannte Probleme
 - Behebung von Programmfehlern
+
+## <a name="may-2021"></a>Mai 2021
+
+Version 1.6
+
+### <a name="new-features"></a>Neue Funktionen
+
+- Die Unterstützung für SUSE Enterprise Linux 12 wurde hinzugefügt
+- Der Gastkonfigurationsagent wurde auf die Version 1.26.12.0 aktualisiert, um Folgendes einzuschließen:
+
+   - Die Richtlinien werden in einem separaten Prozess ausgeführt.
+   - Die Unterstützung der V2-Signatur für die Erweiterungsüberprüfung wurde hinzugefügt.
+   - Eine kleinere Aktualisierung für die Datenprotokollierung.
 
 ## <a name="april-2021"></a>April 2021
 
@@ -49,7 +62,7 @@ Version: 1.3
 
 ### <a name="new-feature"></a>Neues Feature
 
-Unterstützung für Windows Server 2008 R2 wurde hinzugefügt.
+Die Unterstützung für den Windows Server 2008 R2 SP1 wurde hinzugefügt.
 
 ### <a name="fixed"></a>Fest
 

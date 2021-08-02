@@ -1,17 +1,17 @@
 ---
-title: Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites - Azure Monitor
+title: Überwachen der Verfügbarkeit mit URL-Pingtests – Azure Monitor
 description: Richten Sie Pingtests in Application Insights ein. Erhalten Sie Benachrichtigungen, wenn eine Website nicht mehr zur Verfügung steht oder langsam reagiert.
 ms.topic: conceptual
-ms.date: 04/15/2021
+ms.date: 05/25/2021
 ms.reviewer: sdash
-ms.openlocfilehash: eba55212b4b40a364f37d6f86d41a25a1564281a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e7e52cb5db6db5fbd1e73713d3d3558be9e859f0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108767327"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968403"
 ---
-# <a name="monitor-the-availability-of-any-website"></a>Überwachen der Verfügbarkeit von Websites
+# <a name="monitor-availability-with-url-ping-tests"></a>Überwachen der Verfügbarkeit mit URL-Pingtests
 
 Der Begriff „URL-Pingtest“ ist irreführend. Diese Tests setzen nämlich kein ICMP (Internet Control Message Protocol) ein, um die Verfügbarkeit der jeweiligen Website zu prüfen. Stattdessen verwenden sie erweiterte Funktionen von HTTP-Anforderungen, um zu überprüfen, ob ein Endpunkt reagiert. Außerdem wird die Leistung gemessen, die in Zusammenhang mit dieser Antwort steht, und es können benutzerdefinierte Erfolgskriterien festgelegt werden, die an erweiterte Features wie das Analysieren von abhängigen Anforderungen und das Zulassen von Wiederholungsversuchen gekoppelt sind.
 
@@ -64,6 +64,15 @@ Beim Bereitstellen eines URL-Pingtests für die Verfügbarkeit mithilfe von Azur
 | USGov Texas    | usgov-tx-azr        |
 | USDoD, Osten     | usgov-ddeast-azr    |
 | USDoD, Mitte  | usgov-ddcentral-azr |
+
+### <a name="azure-china"></a>Azure China
+
+| Anzeigename   | Auffüllungsname     |
+|----------------|---------------------|
+| China, Osten     | mc-cne-azr          |
+| China, Osten 2   | mc-cne2-azr         |
+| China, Norden    | mc-cnn-azr          |
+| China, Norden 2  | mc-cnn2-azr         |
 
 #### <a name="azure"></a>Azure
 
@@ -144,4 +153,4 @@ Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](../essent
 * [Availability Alerts (Verfügbarkeitswarnungen)](availability-alerts.md)
 * [Multi-step web tests (Mehrstufige Webtests)](availability-multistep.md)
 * [Problembehandlung](troubleshoot-availability.md)
-* [Webtests: Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/templates/microsoft.insights/webtests?tabs=json)
+* [Webtests: Azure Resource Manager-Vorlage](/azure/templates/microsoft.insights/webtests?tabs=json)

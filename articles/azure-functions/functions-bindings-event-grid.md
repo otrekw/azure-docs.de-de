@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bbe52f6902d1c0803727fe325b51a238e46c0ff1
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: f346995e47c0156f546722031ebaa8734239549c
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228548"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536706"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Event Grid-Bindungen für Azure Functions
 
@@ -50,7 +50,7 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 
 #### <a name="event-grid-extension-3x-and-higher"></a>Event Grid-Erweiterung 3.x und höher
 
-Eine neue Version der Event Grid-Bindungserweiterung ist als [NuGet-Vorschaupaket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/3.0.0-beta.1) verfügbar. Für .NET-Anwendungen werden die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `Microsoft.Azure.EventGrid.Models` durch neuere Typen aus [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) ersetzt.
+Eine neue Version der Event Grid-Bindungserweiterung ist als [NuGet-Vorschaupaket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/3.0.0-beta.2) verfügbar. Für .NET-Anwendungen werden die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `Microsoft.Azure.EventGrid.Models` durch neuere Typen aus [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) ersetzt. [Cloudereignisse](/dotnet/api/azure.messaging.cloudevent) werden auch in der neuen Event Grid-Erweiterung unterstützt.
 
 > [!NOTE]
 > Das Vorschaupaket ist nicht in einem Erweiterungspaket enthalten und muss manuell installiert werden. Fügen Sie für .NET-Apps einen Verweis auf das Paket hinzu. Informationen zu allen anderen App-Typen finden Sie unter [Aktualisieren Ihrer Erweiterungen].

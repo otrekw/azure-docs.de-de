@@ -1,5 +1,5 @@
 ---
-title: Planen eines SaaS-Angebots im kommerziellen Marketplace von Microsoft
+title: Planen eines SaaS-Angebots im kommerziellen Marketplace von Microsoft – Azure Marketplace
 description: Hier finden Sie Informationen zum Planen eines neuen Software-as-a-Service-Angebots (SaaS), das in Microsoft AppSource, Azure Marketplace oder über das CSP-Programm (Cloud Solution Provider) des kommerziellen Marketplace im Microsoft Partner Center aufgelistet oder verkauft werden kann.
 author: mingshen-ms
 ms.author: mingshen
@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/26/2021
-ms.openlocfilehash: b9b2270034853832f6795203dfaa60b6809a89ba
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 05/25/2021
+ms.openlocfilehash: 92edc1e2e2ae1e359cfd951a239e30d506d2452c
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138947"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692018"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -49,15 +49,13 @@ Für die Auflistungsoption _Kontakt mit mir aufnehmen_ gelten keine technischen 
 
 Für die Auflistungsoptionen _Jetzt abrufen (kostenlos)_ , _Kostenlose Testversion_ und _Über Microsoft verkaufen_ gelten die folgenden technischen Anforderungen:
 
-- Ihre SaaS-Anwendung muss eine mehrinstanzenfähige Lösung sein.
-- Zum Authentifizieren von Benutzern können Sie sowohl Microsoft-Konten (MSA) als auch [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) aktivieren.
-- Sie müssen eine Landing Page erstellen. Nachdem ein Benutzer das Angebot erworben hat, wird er auf die Landing Page umgeleitet. Dort können alle erforderlichen zusätzlichen Bereitstellungs- oder Einrichtungsschritte durchgeführt werden. Anleitungen zum Erstellen der Landing Page finden Sie in den folgenden Artikeln:
+- Zum Authentifizieren von Käufern auf Ihrer Website müssen Sie sowohl Microsoft-Konten (MSA) als auch [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) aktivieren. Sie müssen Käufern mit einem Azure AD-Konto erlauben, sich mithilfe von Azure AD und einmaligem Anmelden (Single Sign-On, SSO) bei Ihrer Anwendung anzumelden.
+- Sie müssen eine Angebotsseite erstellen, die nahtloses Anmelden und Onboarding für einen Kunden bietet, der Ihr Angebot erworben hat. Auf dieser Angebotsseite können alle erforderlichen zusätzlichen Bereitstellungs- oder Einrichtungsschritte durchgeführt werden. Anleitungen zum Erstellen der Landing Page finden Sie in den folgenden Artikeln:
   - [Erstellen der Landing Page für Ihr transaktionsfähiges SaaS-Angebot im kommerziellen Marketplace](azure-ad-transactable-saas-landing-page.md)
   - [Erstellen der Landing Page für Ihr kostenloses SaaS-Angebot oder Ihr SaaS-Testangebot im kommerziellen Marketplace](azure-ad-free-or-trial-landing-page.md)
 
 Diese zusätzlichen technischen Anforderungen gelten nur für die Auflistungsoption _Über Microsoft verkaufen_ (transaktionsfähig):
 
-- Azure AD mit SSO-Identitätsverwaltung (einmaliges Anmelden) und Authentifizierung ist für den kaufenden Benutzer erforderlich, der auf die Angebotsseite zugreift. Ausführliche Informationen finden Sie unter [Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace](azure-ad-saas.md).
 - Zur Integration des Angebots in Azure Marketplace und Microsoft AppSource müssen Sie die [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-api-v2.md) verwenden. Sie müssen einen Dienst bereitstellen, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht. Diagramme und ausführliche Erläuterungen zur Verwendung der gesammelten Felder finden Sie in der Dokumentation zu den [APIs](./partner-center-portal/pc-saas-fulfillment-api-v2.md).
 - Sie müssen mindestens einen Plan für Ihr Angebot erstellen. Der Plan für Ihr Angebot basiert auf dem Preismodell, das Sie vor der Veröffentlichung ausgewählt haben: _Pauschalgebühr_ oder _Pro Benutzer_. Weitere Details zu [Plänen](#plans) finden Sie weiter unten in diesem Artikel.
 - Der Kunde kann Ihr Angebot jederzeit stornieren.
@@ -149,12 +147,13 @@ Durch die Integration von Microsoft 365 kann auf Ihrem SaaS-Angebot eine verbund
 Für verknüpfte Produkte wird die Suche in AppSource mit einem Ergebnis zurückgegeben, das sowohl SaaS als auch alle verknüpften Add-Ins enthält. Der Kunde kann zwischen den Produktdetailseiten des Saas-Angebots und verknüpften Add-ins navigieren. IT-Administratoren können sowohl SaaS-als auch verknüpfte Add-Ins innerhalb desselben Prozesses über eine integrierte und verbundene Darstellung innerhalb des Microsoft 365 Admin Centers überprüfen und bereitstellen. Weitere Informationen finden Sie unter [Testen und Bereitstellen von Microsoft 365-Apps Microsoft 365 Administrator](/microsoft-365/admin/manage/test-and-deploy-microsoft-365-apps).
 
 ### <a name="microsoft-365-integration-support-limitations"></a>Einschränkungen des Supports der Microsoft 365 Integration
+
 Die Ermittlung als einzelne E2E-Lösung wird in AppSource für alle Fälle unterstützt. Allerdings wird die vereinfachte Bereitstellung der E2E-Lösung, wie Microsoft 365 oben beschrieben, für die folgenden Szenarien nicht unterstützt:
 
+   - Angebote, die nur in der Liste „Kontakt mit mir aufnehmen“ enthalten sind. 
    - Dasselbe Add-in ist mit mehr als einem SaaS-Angebot verknüpft.
    - Das SaaS-Angebot ist mit Add-Ins verknüpft, aber es ist nicht in Microsoft Graph integriert, und es wird keine Aad-APP-ID bereitgestellt.
   - Das SaaS-Angebot ist mit Add-Ins verknüpft, aber die für die Microsoft Graph Integration angegebene Aad-APP-ID ist für mehrere SaaS-Angebote freigegeben.
-
  
 ## <a name="offer-listing-details"></a>Details zur Angebotsauflistung
 
@@ -198,7 +197,7 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
 
     Dieses Textfeld enthält Rich-Text-Editor-Steuerelemente, mit denen Sie die Beschreibung ansprechender gestalten können. Die Beschreibung kann mithilfe von HTML-Tags formatiert werden. Sie können in diesem Feld bis zu 3.000 Zeichen Text eingeben, einschließlich HTML-Markup. Weitere Tipps finden Sie unter [Erstellen einer interessanten App-Beschreibung](/windows/uwp/publish/write-a-great-app-description).
 
-- **Anweisungen zu den ersten Schritten**: Wenn Sie Ihr Angebot über Microsoft (transaktionsfähiges Angebot) verkaufen möchten, muss dieses Feld ausgefüllt werden. Diese Anweisungen helfen Kunden, eine Verbindung mit Ihrem SaaS-Angebot herzustellen. Sie können bis zu 3.000 Zeichen Text sowie Links zu einer ausführlicheren Onlinedokumentation hinzufügen.
+- **Anweisungen zu den ersten Schritten:** Wenn Sie Ihr Angebot über Microsoft (transaktionsfähiges Angebot) verkaufen möchten, muss dieses Feld ausgefüllt werden. Diese Anweisungen helfen Kunden, eine Verbindung mit Ihrem SaaS-Angebot herzustellen. Sie können bis zu 3.000 Zeichen Text sowie Links zu einer ausführlicheren Onlinedokumentation hinzufügen.
 - **Suchbegriffe** (optional): Geben Sie bis zu drei Suchbegriffe ein, mit denen Kunden in den Onlineshops nach Ihrem Angebot suchen können. Sie müssen den **Namen** und die **Beschreibung** des Angebots nicht einschließen: Dieser Text wird automatisch in die Suche aufgenommen.
 - **Link zur Datenschutzrichtlinie**: Die URL zur Datenschutzrichtlinie Ihres Unternehmens. Sie müssen eine gültige Datenschutzrichtlinie bereitstellen und sicherstellen, dass die App die Datenschutzgesetze und -bestimmungen erfüllt.
 - **Kontaktinformationen**: Sie müssen die folgenden Kontakte in Ihrer Organisation bereitstellen:
@@ -221,12 +220,12 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
 
 - **Medien – Screenshots**: Fügen Sie gemäß den folgenden Anforderungen mindestens einen und höchstens fünf Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert:
   - 1280 x 720 Pixel
-  - PNG-Datei
+  - Dateityp PNG
   - Beschriftung erforderlich
 - **Medien – Videos** (optional): Fügen Sie gemäß den folgenden Anforderungen bis zu vier Videos hinzu, die Ihr Angebot veranschaulichen:
   - Name
   - URL: Video darf nur auf YouTube oder Vimeo gehostet werden.
-  - Miniaturansicht: PNG-Datei (1280 x 720)
+  - Miniaturansicht: PNG-Datei (1280 × 720)
 
 > [!Note]
 > Ihr Angebot muss die allgemeinen [Zertifizierungsrichtlinien für den kommerziellen Marketplace](/legal/marketplace/certification-policies#100-general) und die [Software-as-a-Service-Richtlinien](/legal/marketplace/certification-policies#1000-software-as-a-service-saas) für die Veröffentlichung auf dem kommerziellen Marketplace erfüllen.
@@ -321,7 +320,7 @@ Sie haben die Möglichkeit, sich für von Microsoft unterstützte Marketing- und
 
 - **Verkauf über CSPs**: Verwenden Sie diese Option, um Microsoft CSP-Partnern (Cloud Solution Providers) zu ermöglichen, Ihre Lösung als Teil eines Bundleangebots weiterzuverkaufen. Weitere Informationen zu diesem Programm finden Sie unter [Cloud Solution Provider-Programm](cloud-solution-providers.md).
 
-- **Co-Selling mit Microsoft**: Mit dieser Option können die Microsoft-Verkaufsteams Ihre für IP-Co-Selling in Frage kommende Lösung in Betracht ziehen, wenn sie Kundenanforderungen evaluieren. Einzelheiten zur Berechtigung für das Co-Selling finden Sie unter [Requirements for Co-sell Status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status). Ausführliche Informationen dazu, wie Sie Ihr Angebot auf die Auswertung vorbereiten, finden Sie unter [Co-Selling-Option im Partner Center](./co-sell-configure.md).
+- **Co-Selling mit Microsoft**: Mit dieser Option können die Microsoft-Verkaufsteams Ihre für IP-Co-Selling in Frage kommende Lösung in Betracht ziehen, wenn sie Kundenanforderungen evaluieren. Einzelheiten zur Berechtigung für das Co-Selling finden Sie unter [Requirements for Co-sell Status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status). Ausführliche Informationen dazu, wie Sie Ihr Angebot auf die Auswertung vorbereiten, finden Sie unter [Co-Selling-Option im Partner Center](co-sell-configure.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

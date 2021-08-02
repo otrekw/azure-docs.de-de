@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/25/2021
-ms.openlocfilehash: 146a1dba3e13ac594e3b4d9edc358d46b0d54201
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 26858ca04af7a96896229c44757fa963ae362f1c
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378489"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534170"
 ---
 # <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB serverlos
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,12 +41,12 @@ Weitere Anleitungen zum Auswählen des Angebots, das Ihrem Anwendungsfall am bes
 
 ## <a name="using-serverless-resources"></a>Verwenden von serverlosen Ressourcen
 
-Serverlos ist ein neuer Azure Cosmos-Kontotyp. Dies bedeutet, dass Sie zwischen **bereitgestelltem Durchsatz** und **serverlos** wählen müssen, wenn Sie ein neues Konto erstellen. Sie müssen ein neues serverloses Konto erstellen, um mit serverless zu beginnen. Während der Vorschauversion ist die einzige unterstützte Möglichkeit, ein neues serverloses Konto zu erstellen, die [Verwendung des Azure-Portals](create-cosmosdb-resources-portal.md). Das Migrieren vorhandener Konten zum/aus dem serverlosen Modus wird derzeit nicht unterstützt.
+Serverlos ist ein neuer Azure Cosmos-Kontotyp. Dies bedeutet, dass Sie zwischen **bereitgestelltem Durchsatz** und **serverlos** wählen müssen, wenn Sie ein neues Konto erstellen. Sie müssen ein neues serverloses Konto erstellen, um mit serverless zu beginnen. Das Migrieren vorhandener Konten zum/aus dem serverlosen Modus wird derzeit nicht unterstützt.
 
 Jeder Container, der in einem serverlosen Konto erstellt wird, ist ein serverloser Container. Serverlose Container stellen dieselben Funktionen wie Container bereit, die im Modusfpr bereitgestellten Durchsatz erstellt wurden, sodass Sie Ihre Daten genau auf die gleiche Weise lesen, schreiben und abfragen. Serverlose Konten und Container haben jedoch auch bestimmte Merkmale:
 
 - Ein serverloses Konto kann nur in einer einzelnen Azure-Region ausgeführt werden. Es ist nicht möglich, einem serverlosen Konto nach der Erstellung zusätzliche Azure-Regionen hinzuzufügen.
-- Es ist nicht möglich, die [Synapse Link-Vorschaufunktion](synapse-link.md) für ein serverloses Konto zu aktivieren.
+- Es ist nicht möglich, die [Synapse Link-Funktion](synapse-link.md) für ein serverloses Konto zu aktivieren.
 - Bereitstellung von Durchsatz ist für serverlose Container nicht erforderlich, daher gelten die folgenden Aussagen:
     - Wenn Sie einen serverlosen Container erstellen, können Sie keinen Durchsatz übergeben. Bei einem Versuch wird ein Fehler zurückgegeben.
     - Sie können den Durchsatz für einen serverlosen Container nicht lesen oder aktualisieren, und es wird ein Fehler zurückgegeben.

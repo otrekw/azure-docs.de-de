@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 06/07/2021
 ms.author: yushwang
-ms.openlocfilehash: 2c2730025d39f03824489c6f46ae625de49ea0cf
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 56f10ec6178281deaa529e5c94f1cd4b565a381c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753541"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746607"
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -57,6 +57,12 @@ Weitere Informationen zu VPN Gateway-Verbindungen finden Sie unter [Informatione
 Mithilfe von **Point-to-Site**-Konfigurationen (VPN über SSTP) können Sie ortsunabhängig eine Verbindung zwischen einem einzelnen Computer und einer beliebigen Ressource in Ihrem virtuellen Netzwerk herstellen. Hierbei kommt der in Windows enthaltene VPN-Client zum Einsatz. Im Rahmen der Punkt-zu-Standort-Konfiguration installieren Sie ein Zertifikat und ein VPN-Clientkonfigurationspaket mit den Einstellungen, die es Ihrem Computer ermöglichen, eine Verbindung mit einem beliebigen virtuellen Computer oder einer beliebigen Rolleninstanz innerhalb des virtuellen Netzwerks herzustellen. Dieser Verbindungstyp eignet sich hervorragend, wenn Sie eine Verbindung mit einem virtuellen Netzwerk herstellen möchten, sich aber nicht vor Ort befinden. Er ist auch eine gute Wahl, wenn Ihnen keine VPN-Hardware oder keine extern ausgerichtete IPv4-Adresse zur Verfügung steht (beides Voraussetzungen für eine Standort-zu-Standort-Verbindung).
 
 Sie können Ihr virtuelles Netzwerk für die parallele Verwendung von Site-to-Site- und Point-to-Site-Verbindungen konfigurieren. Hierzu müssen Sie Ihre Site-to-Site-Verbindung mit einem routenbasierten VPN-Typ für Ihr Gateway erstellen. Routenbasierte VPN-Typen werden im klassischen Bereitstellungsmodell als dynamische Gateways bezeichnet.
+
+## <a name="privacy"></a><a name="privacy"></a>Datenschutz
+
+### <a name="does-the-vpn-service-store-customer-data"></a>Speichert der VPN-Dienst Kundendaten?
+
+Nein.
 
 ## <a name="virtual-network-gateways"></a><a name="gateways"></a>Gateways für virtuelle Netzwerke
 
@@ -176,17 +182,13 @@ Für die standortübergreifende Standort-zu-Standort-Konfiguration werden Routin
 
 Auch andere VPN-Softwarelösungen können mit unserem Gateway verwendet werden, sofern sie über branchenübliche IPsec-Implementierungen verfügen. Konfigurations- und Supportinformationen erhalten Sie vom Anbieter der Software.
 
-## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Wie ändere ich den Authentifizierungstyp für meine Point-to-Site-Verbindungen?
-
-Sie können die Authentifizierungsmethode für die Point-to-Site-Verbindungen ändern, indem Sie zum Abschnitt **Point-to-Site-Konfiguration** unter dem unter dem VPN-Gateway navigieren und das gewünschte Optionsfeld aktivieren. Aktuelle Optionen sind **Azure-Zertifikat, RADIUS-Authentifizierung und Azure Active Directory**. Beachten Sie, dass die aktuellen Clients nach der Änderung **möglicherweise keine Verbindung herstellen können**, bis das neue Profil auf dem Client heruntergeladen und konfiguriert wurde.
-
-## <a name="point-to-site-using-native-azure-certificate-authentication"></a><a name="P2S"></a>Point-to-Site-Verbindungen mit nativer Azure-Zertifikatauthentifizierung
+## <a name="point-to-site---certificate-authentication"></a><a name="P2S"></a>Point-to-Site – Zertifikatauthentifizierung
 
 Dieser Abschnitt gilt für das Ressourcen-Manager-Bereitstellungsmodell.
 
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="point-to-site-using-radius-authentication"></a><a name="P2SRADIUS"></a>Point-to-Site-Verbindungen mit RADIUS-Authentifizierung
+## <a name="point-to-site---radius-authentication"></a><a name="P2SRADIUS"></a>Point-to-Site – RADIUS-Authentifizierung
 
 Dieser Abschnitt gilt für das Ressourcen-Manager-Bereitstellungsmodell.
 

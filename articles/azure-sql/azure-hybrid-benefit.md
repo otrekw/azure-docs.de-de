@@ -4,19 +4,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: In diesem Artikel erfahren Sie, wie Sie vorhandene SQL Server-Lizenzen für Rabatte bei Azure SQL-Datenbank und verwalteten SQL-Instanzen nutzen.
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=4
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: sashan, moslake
 ms.date: 02/16/2021
-ms.openlocfilehash: b5f85e0dcb8ca70d5773b8f1c3b53e0b449ef013
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d8557c24b1f6ef46559f57d09c6e273dd4041272
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779199"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018169"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure-Hybridvorteil: Azure SQL-Datenbank und verwaltete SQL-Instanzen
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -33,8 +33,8 @@ Bei der bereitgestellten Computeebene des vCore-basierten Kaufmodells können Si
 Mit dem Azure-Hybridvorteil können Sie wahlweise nur die zugrunde liegende Azure-Infrastruktur bezahlen und Ihre vorhandene SQL Server-Lizenz für die eigentliche SQL Server-Datenbank-Engine verwenden (Grundpreis für Computeleistung), oder Sie bezahlen für die zugrunde liegende Infrastruktur sowie für die SQL Server-Lizenz (Preismodell mit enthaltener Lizenz).
 
 Sie können Ihr Lizenzierungsmodell im Azure-Portal wie folgt auswählen oder ändern: 
-- Wählen Sie bei neuen Datenbanken während der Erstellung auf der Registerkarte **Grundlagen** die Option **Datenbank konfigurieren** aus, und wählen Sie dann die Option aus, mit der Sie Geld sparen.
-- Wählen Sie bei vorhandenen Datenbanken im Menü **Einstellungen** die Option **Konfigurieren** aus, und wählen Sie dann die Option aus, mit der Sie Geld sparen.
+- Wählen Sie bei neuen Datenbanken während der Erstellung auf der Registerkarte **Grundlagen** die Option **Datenbank konfigurieren** aus, und wählen Sie dann die Option aus, mit der Sie **Geld sparen**.
+- Wählen Sie bei vorhandenen Datenbanken im Menü **Einstellungen** die Option **Compute + Speicher** aus, und wählen Sie dann die Option aus, mit der Sie **Geld sparen**.
 
 Sie können auch eine neue oder vorhandene Datenbank mithilfe einer der folgenden APIs konfigurieren:
 

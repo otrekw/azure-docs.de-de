@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d36836bf0a0803573f930b0f352a6179be962f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f6093413fb2f82a009288903ced191dcd56cfc44
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451476"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984894"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -90,12 +90,13 @@ Unter dem Link [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.
    - Es wurden neue Standardsynchronisierungsregeln zum Begrenzen der Anzahl der Mitgliedschaften beim Gruppenrückschreiben (Ausgehend an AD – Mitgliederbeschränkung für Gruppenrückschreiben) und Gruppensynchronisierung mit Azure Active Directory (Ausgehend an AAD – Mitgliederbeschränkung für Gruppenhochschreiben) hinzugefügt.
    - Ein Mitgliedsattribut wurde der Regel „Ausgehend an AD: Gruppe SOAInAAD – Exchange“ hinzugefügt, um die Mitglieder in zurückgeschriebenen Gruppen auf 50.000 einzuschränken.
  - Die Synchronisierungsregeln wurden aktualisiert, um das Gruppenrückschreiben V2 zu unterstützen. – Wenn die Regel „Eingehend aus AAD – Gruppe SOAInAAD“ geklont und AADConnect aktualisiert wird.
-     – Die aktualisierte Regel wird standardmäßig deaktiviert, sodass targetWritebackType NULL ist.
+     - Die aktualisierte Regel wird standardmäßig deaktiviert, sodass targetWritebackType NULL ist.
      - AADConnect schreibt alle Cloudgruppen (einschließlich für das Rückschreiben aktivierter Azure Active Directory-Sicherheitsgruppen) als Verteilergruppen zurück.
    – Wenn die Regel „Ausgehend an AD – Gruppe SOAInAAD“ geklont und AADConnect aktualisiert wird.
      - Die aktualisierte Regel wird standardmäßig deaktiviert. Allerdings wird eine Synchronisierungsregel aktiviert, die neu hinzugefügt wird: „Ausgehend an AD – Gruppe SOAInAAD: Exchange“.
      - Abhängig von der Rangfolge der geklonten benutzerdefinierten Synchronisierungsregel leitet AADConnect die Mail- und Exchange-Attribute weiter.
      - Wenn die geklonte benutzerdefinierte Synchronisierungsregel einige Mail- und Exchange-Attribute nicht weiterleitet, werden diese Attribute von der neuen Exchange-Synchronisierungsregel hinzugefügt.
+     - Beachten Sie, dass sich Group Writeback V2 derzeit in der privaten Vorschau befindet und nicht öffentlich verfügbar ist.
  - Unterstützung für das [Konfigurieren der selektiven Kennworthashsynchronisierung für Azure AD Connect](./how-to-connect-selective-password-hash-synchronization.md) wurde hinzugefügt.
  - Das neue [Cmdlet Single Object Sync](./how-to-connect-single-object-sync.md) wurde hinzugefügt. Behandeln Sie mit diesem Cmdlet Probleme mit der Konfiguration der Azure AD Connect-Synchronisierung. 
  -  Azure AD Connect unterstützt jetzt die Rolle „Hybrididentitätsadministrator“ zum Konfigurieren des Diensts.

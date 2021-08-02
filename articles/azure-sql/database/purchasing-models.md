@@ -1,23 +1,23 @@
 ---
 title: Kaufmodelle
-titleSuffix: Azure SQL Database & Azure SQL Managed Instance
+titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Informieren Sie sich über die Kaufmodelle, die für Azure SQL-Datenbank und Azure SQL Managed Instance verfügbar sind.
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0c499ad15618d874a99be65f6d3af8d11fd88ec
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92788824"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408945"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Auswählen zwischen dem vCore-basierten und dem DTU-basierten Kaufmodell – Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -156,7 +156,7 @@ Allerdings können die Auswirkungen der Verwendung unterschiedlicher Hardware f�
 
 So ist beispielsweise die Leistung bei einer Anwendung, die von Netzwerklatenz abhängig ist, auf einer Gen5-Hardware besser als auf Gen4 aufgrund der Nutzung von beschleunigtem Netzwerkbetrieb in Gen5, während bei einer Anwendung mit intensiven E/A-Lesevorgängen die Leistung auf Gen4-Hardware aufgrund eines höheren Arbeitsspeicher-pro-Kern-Verhältnisses auf Gen4 besser ist als auf Gen5.
 
-Kunden mit Workloads, die von Hardwareänderungen abhängig sind, oder Kunden, die die Auswahl der Hardwaregeneration für ihre Datenbank steuern möchten, können das [Kaufmodell für virtuelle Kerne](service-tiers-vcore.md) verwenden, um beim Erstellen und Skalieren von Datenbanken ihre bevorzugte Hardwaregeneration auszuwählen. Im Modell „V-Kern“ werden Ressourcenlimits der jeweiligen Dienstziele auf jeder Hardwaregeneration dokumentiert – sowohl für [Einzeldatenbanken](resource-limits-vcore-single-databases.md) (Singletons) als auch für [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md). Weitere Informationen zu Hardwaregenerationen im vCore-basierten Modell finden Sie unter [Hardwaregenerationen](./service-tiers-vcore.md#hardware-generations).
+Kunden mit Workloads, die von Hardwareänderungen abhängig sind, oder Kunden, die die Auswahl der Hardwaregeneration für ihre Datenbank steuern möchten, können das [Kaufmodell für virtuelle Kerne](service-tiers-vcore.md) verwenden, um beim Erstellen und Skalieren von Datenbanken ihre bevorzugte Hardwaregeneration auszuwählen. Im Modell „V-Kern“ werden Ressourcenlimits der jeweiligen Dienstziele auf jeder Hardwaregeneration dokumentiert – sowohl für [Einzeldatenbanken](resource-limits-vcore-single-databases.md) (Singletons) als auch für [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md). Weitere Informationen zu Hardwaregenerationen beim V-Kern-Modell finden Sie unter [Hardwaregenerationen für SQL-Datenbank](./service-tiers-sql-database-vcore.md#hardware-generations) oder [Hardwaregenerationen für SQL Managed Instance](../managed-instance/service-tiers-managed-instance-vcore.md#hardware-generations).
 
 ## <a name="frequently-asked-questions-faqs"></a>Häufig gestellte Fragen (FAQs)
 

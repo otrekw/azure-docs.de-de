@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 367dd261e9147c2dc14f1085af553222b621d91e
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 2744a1dd36751175e7bd421210bdb5b92b53dfe5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279782"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456919"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokollwarnungen in Azure Monitor
 
@@ -26,7 +26,7 @@ Protokollwarnungen sind einer der Warnungstypen, die in [Azure Alerts](./alerts-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bei Protokollwarnungen werden Abfragen für Log Analytics-Daten ausgeführt. Zunächst sollten Sie [Protokolldaten erfassen](../essentials/resource-logs.md) und für die Protokolldaten abfragen, ob Probleme vorhanden sind. Unter [Gespeicherte Abfragen in Azure Monitor Log Analytics](../logs/example-queries.md) können Sie sich anhand von Beispielen mit den Ermittlungsoptionen vertraut machen. Alternativ können Sie [mit dem Schreiben einer eigenen Abfrage beginnen](../logs/log-analytics-tutorial.md).
+Bei Protokollwarnungen werden Abfragen für Log Analytics-Daten ausgeführt. Zunächst sollten Sie [Protokolldaten erfassen](../essentials/resource-logs.md) und für die Protokolldaten abfragen, ob Probleme vorhanden sind. Sie können den [Artikel mit Beispielen für eine Warnungsabfrage](../logs/queries.md) in der Protokoll-Analytics verwenden, um zu verstehen, was Sie ermitteln können. Alternativ können Sie [mit dem Schreiben einer eigenen Abfrage beginnen](../logs/log-analytics-tutorial.md).
 
 [Mitwirkender der Azure-Überwachung](../roles-permissions-security.md) ist eine häufig verwendete Rolle, die zum Erstellen, Ändern und Aktualisieren von Protokollwarnungen benötigt wird. Rechte zum Zugreifen und zum Ausführen von Abfragen für die Ressourcenprotokolle werden ebenfalls benötigt. Bei einem Teilzugriff auf Ressourcenprotokolle kann es zu Abfragefehlern kommen, oder es wird nur ein Teil der Ergebnisse zurückgegeben. Informieren Sie sich über das [Konfigurieren von Protokollwarnungen in Azure](./alerts-log.md).
 
@@ -120,7 +120,7 @@ Bei Arbeitsbereichen und in Application Insights wird nur der Measuretyp **Metri
 
 Teilen Sie Warnungen nach Zahlen- oder Zeichenfolgenspalten in separate Warnungen auf, indem Sie eine Gruppierung nach eindeutigen Kombinationen durchführen. Beim Erstellen von ressourcenbezogenen Warnungen im großen Stil (Abonnement- oder Ressourcengruppenbereich) können Sie eine Aufteilung nach der Spalte mit der Azure-Ressourcen-ID vornehmen. Beim Aufteilen nach der Spalte mit der Azure-Ressourcen-ID ändert sich das Ziel der Warnung in die angegebene Ressource.
 
-Das Aufteilen nach Spalte „Azure resource ID“ (Azure-Ressourcen-ID) wird empfohlen, wenn Sie dieselbe Bedingung auf mehreren Azure-Ressourcen überwachen möchten. Ein Beispiel hierfür ist das Überwachen aller VMs, deren CPU-Auslastung über 80 Prozent beträgt. Sie können sich auch gegen eine Aufteilung entscheiden, wenn Sie eine Bedingung für mehrere Ressourcen im Bereich festlegen und dann überwachen möchten, ob mindestens fünf Computer im Ressourcengruppenbereich eine CPU-Auslastung von über 80 Prozent aufweisen.
+Das Aufteilen nach Spalte „Azure resource ID“ (Azure-Ressourcen-ID) wird empfohlen, wenn Sie dieselbe Bedingung auf mehreren Azure-Ressourcen überwachen möchten. Ein Beispiel hierfür ist das Überwachen aller VMs, deren CPU-Auslastung über 80 Prozent beträgt. Sie können sich auch dafür entscheiden, keine Aufteilung vorzunehmen, wenn Sie eine Bedingung für mehrere Ressourcen in dem Bereich haben möchten. Sie können beispielsweise überwachen, dass mindestens fünf Computer im Ressourcengruppenbereich über eine CPU-Auslastung von mehr als 80 % verfügen.
 
 Bei Arbeitsbereichen und in Application Insights wird nur der Measuretyp **Metrische Maßeinheit** unterstützt. Das Feld hat die Bezeichnung **Aggregieren nach**. Es ist auf drei Spalten beschränkt. Wenn eine Abfrage mehr als drei Gruppierungen nach Spalten enthält, kann dies zu unerwarteten Ergebnissen führen. Bei allen anderen Ressourcentypen wird dies im Abschnitt **Split by dimensions** (Nach Dimensionen aufteilen) der Bedingung konfiguriert (auf sechs Aufteilungen beschränkt).
 
@@ -166,13 +166,11 @@ Die Abfrageergebnisse werden in eine Zahl transformiert, die mit dem Schwellenwe
 ### <a name="frequency"></a>Häufigkeit
 
 > [!NOTE]
-> Für Protokollwarnungen im 1-Minuten-Takt fallen zurzeit keine zusätzlichen Gebühren an. Die Preise für Previewfunktionen werden später bekannt gegeben, und vor Abrechnungsbeginn erhalten Sie eine entsprechende Benachrichtigung. Falls Sie sich dafür entscheiden, Protokollwarnungen im 1-Minuten-Takt über den Benachrichtigungszeitraum hinaus zu verwenden, wird Ihnen der entsprechende Tarif in Rechnung gestellt.
+> Für die Vorschau der Protokollwarnungen im 1-Minuten-Takt fallen zurzeit keine zusätzlichen Gebühren an. Die Preise für Previewfunktionen werden später bekannt gegeben, und vor Abrechnungsbeginn erhalten Sie eine entsprechende Benachrichtigung. Falls Sie sich dafür entscheiden, Protokollwarnungen im 1-Minuten-Takt über den Benachrichtigungszeitraum hinaus zu verwenden, wird Ihnen der entsprechende Tarif in Rechnung gestellt.
 
-Das Intervall für die Ausführung der Abfrage. Kann auf einen Zeitraum von 1 Minute bis zu einem Tag festgelegt werden. Der Zeitraum muss kleiner oder gleich dem [Abfragezeitbereich](#query-time-range) sein, damit keine Protokolldatensätze fehlen.
+Das Intervall für die Ausführung der Abfrage. Es kann ein Intervall im Bereich von einer Minute bis zu einem Tag festgelegt werden. Der Zeitraum muss kleiner oder gleich dem [Abfragezeitbereich](#query-time-range) sein, damit keine Protokolldatensätze fehlen.
 
 Beispiel: Sie legen den Zeitraum auf 30 Minuten und die Häufigkeit auf 1 Stunde fest.  Wenn die Abfrage um 00:00 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 23:30 und 00:00 Uhr zurück. Wenn die Abfrage dann das nächste Mal um 01:00 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 00:30 und 01:00 Uhr zurück. Alle Datensätze, die zwischen 00:00 und 00:30 erstellt werden, werden also nicht ausgewertet.
-
-Um Warnungen im 1-Minuten-Takt zu verwenden, müssen Sie eine Eigenschaft über die API festlegen. Wenn Sie in der API-Version `2020-05-01-preview` neue Protokollwarnungsregeln erstellen oder vorhandene Protokollwarnungen aktualisieren, fügen Sie im Abschnitt `properties` `evaluationFrequency` mit dem Wert `PT1M` vom Typ `String` hinzu. Wenn Sie in der API-Version `2018-04-16` neue Protokollwarnungsregeln erstellen oder vorhandene Protokollwarnungen aktualisieren, fügen Sie im Abschnitt `schedule` `frequencyInMinutes` mit dem Wert `1` vom Typ `Int` hinzu. 
 
 ### <a name="number-of-violations-to-trigger-alert"></a>Auslösung der Warnung aufgrund der Anzahl von Verstößen
 
@@ -182,11 +180,11 @@ Wenn für die [**Aggregationsgranularität**](#aggregation-granularity) Ihrer Re
 
 ## <a name="state-and-resolving-alerts"></a>Zustand und Beseitigung von Warnungen
 
-Protokollwarnungen können entweder zustandslos oder zustandsbehaftet sein (derzeit in der Vorschau bei Verwendung der API). 
+Die Protokollwarnungen können entweder zustandslos oder zustandsbehaftet sein (derzeit in der Vorschauversion verfügbar).
 
 Zustandslose Warnungen werden jedes Mal ausgelöst, wenn die Bedingung erfüllt ist. Dies gilt auch, wenn sie bereits zuvor ausgelöst wurden. Sie können [die Warnung als geschlossen markieren](../alerts/alerts-managing-alert-states.md), sobald die Warnungsinstanz aufgelöst wurde. Darüber hinaus können Sie Aktionen auch stummschalten, um zu verhindern, dass sie während eines bestimmten Zeitraums nach der Auslösung einer Warnungsregel ausgelöst werden. In Log Analytics-Arbeitsbereichen und Application Insights wird dies als **Warnungen unterdrücken** bezeichnet. Bei allen anderen Ressourcentypen lautet die Bezeichnung **Aktionen unterdrücken**. 
 
-Sehen Sie sich dieses Beispiel für eine Warnungsauswertung an:
+Sehen Sie sich dieses Beispiel für eine zustandslose Auswertung der Warnung an:
 
 | Time    | Auswertung der Protokollbedingung | Ergebnis 
 | ------- | ----------| ----------| ------- 
@@ -195,7 +193,13 @@ Sehen Sie sich dieses Beispiel für eine Warnungsauswertung an:
 | 00:15 | TRUE  | Die Warnung wird ausgelöst, und Aktionsgruppen werden aufgerufen. Neuer Warnungsstatus lautet AKTIV.
 | 00:20 | FALSE | Warnung wird nicht ausgelöst. Es werden keine Aktionen aufgerufen. Status für vorherige Warnungen lautet weiter AKTIV.
 
-Zustandsbehaftete Warnungen werden einmal pro Vorfall ausgelöst und aufgelöst. Wenn Sie neue Protokollwarnungsregeln erstellen oder vorhandene Protokollwarnungsregeln aktualisieren, fügen Sie unter dem Abschnitt `properties` das Flag `autoMitigate` mit dem Wert `true` vom Typ `Boolean` hinzu. Sie können dieses Feature in den folgenden API-Versionen verwenden: `2018-04-16` und `2020-05-01-preview`.
+Zustandsbehaftete Warnungen werden einmal pro Vorfall ausgelöst und aufgelöst. Diese Funktion befindet sich derzeit in der Vorschauversion in der öffentlichen Azure-Cloud. Sie können dies im Abschnitt „Warnungsdetails“, mithilfe der Option  **Warnungen automatisch auflösen,** festlegen.
+
+## <a name="location-selection-in-log-alerts"></a>Standortauswahl in den Protokollwarnungen
+
+Mit den Protokollwarnungen können Sie einen Speicherort für die Warnungsregeln festlegen. In den Log Analytics-Arbeitsbereichen muss der Regelspeicherort mit dem des Arbeitsbereichs übereinstimmen. In allen anderen Ressourcen können Sie einen der unterstützten Standorte auswählen, die an der Liste der von [Log Analytics unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) ausgerichtet sind.
+
+Der Standort wirkt sich darauf aus, in welcher Region die Warnungsregel ausgewertet wird. Die Abfragen für die Protokolldaten werden in der ausgewählten Region ausgeführt. Der End-to-End-Warnungsdienst ist global. Das bedeutet, dass die Warnungsregeldefinition, die ausgelösten Warnungen, Benachrichtigungen und Aktionen nicht an den Speicherort in der Warnungsregel gebunden sind. Daten werden aus der festgelegten Region übertragen, da der Azure Monitor-Warnungsdienst ein [nicht regionaler Dienst](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=non-regional) ist.
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Preise und Abrechnung von Protokollwarnungen
 

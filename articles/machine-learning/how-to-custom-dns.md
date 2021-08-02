@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 04/01/2021
+ms.date: 06/04/2021
 ms.topic: how-to
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: d0b62baf596250e75d9aa6c4a6210790a7211ce7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: contperf-fy21q3, devx-track-azurepowershell
+ms.openlocfilehash: 616354174f5eb4bdae8e4b76379106e309c0dd14
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764829"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969103"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Verwenden Ihres Arbeitsbereichs mit einem benutzerdefinierten DNS-Server
 
@@ -35,7 +35,7 @@ Wenn Sie einen Azure Machine Learning-Arbeitsbereich mit einem privaten Endpunkt
 
 - Vertrautheit mit der [DNS-Zonenkonfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md)
 
-- Vertrautheit mit [Azure Private DNS](/azure/dns/private-dns-privatednszone)
+- Vertrautheit mit [Azure Private DNS](../dns/private-dns-privatednszone.md)
 
 - Optional die [Azure CLI](/cli/azure/install-azure-cli) oder [Azure PowerShell](/powershell/azure/install-az-ps).
 
@@ -165,7 +165,10 @@ $workspaceDns.CustomDnsConfigs | format-table
 1. Wählen Sie den Link in der Spalte __Privater Endpunkt__ aus, der angezeigt wird.
 1. Eine Liste der vollqualifizierten Domänennamen (FQDN) und IP-Adressen für den privaten Endpunkt des Arbeitsbereichs finden Sie unten auf der Seite.
 
-:::image type="content" source="./media/how-to-custom-dns/private-endpoint-custom-dns.png" alt-text="Liste der FQDNs im Portal":::
+    :::image type="content" source="./media/how-to-custom-dns/private-endpoint-custom-dns.png" alt-text="Liste der FQDNs im Portal":::
+
+    > [!TIP]
+    > Wenn die DNS-Einstellungen unten auf der Seite nicht angezeigt werden, verwenden Sie den Link __DNS-Konfiguration__ links auf der Seite, um die FQDNs anzuzeigen.
 
 ---
 

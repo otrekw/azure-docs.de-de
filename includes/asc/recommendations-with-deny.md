@@ -2,26 +2,26 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/21/2021
+ms.date: 06/14/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 5fc36e327a9530105182f0a23b3ef22ab324e01c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7433dd53346141147f8d7f0c7bdb1b3b076d152
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803200"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112084075"
 ---
+- [Bei Bedarf aktivieren] Azure Cosmos DB-Konten müssen kundenseitig verwaltete Schlüssel zur Verschlüsselung ruhender Daten verwenden
+- [Bei Bedarf aktivieren] Azure Machine Learning-Arbeitsbereiche müssen mit einem kundenseitig verwalteten Schlüssel (CMK) verschlüsselt werden
+- [Bei Bedarf aktivieren] Cognitive Services-Konten müssen eine Datenverschlüsselung mit einem kundenseitig verwalteten Schlüssel (CMK) aktivieren
+- [Bei Bedarf aktivieren] Containerregistrierungen müssen mit einem kundenseitig verwalteten Schlüssel (CMK) verschlüsselt werden
 - Der Zugriff auf Speicherkonten mit Konfiguration für Firewall und virtuelle Netzwerke sollte eingeschränkt werden.
 - Automation-Kontovariablen sollten verschlüsselt werden.
 - Azure Cache for Redis muss sich in einem virtuellen Netzwerk befinden.
-- Azure Cosmos DB-Konten sollten kundenseitig verwaltete Schlüssel zur Verschlüsselung ruhender Daten verwenden.
-- Azure Machine Learning-Arbeitsbereiche müssen mit einem kundenseitig verwalteten Schlüssel (CMK) verschlüsselt werden
 - Azure Spring Cloud muss Netzwerkinjektion verwenden
-- Cognitive Services-Konten müssen eine Datenverschlüsselung mit einem kundenseitig verwalteten Schlüssel (CMK) aktivieren
 - Für Container müssen CPU- und Arbeitsspeicherlimits erzwungen werden
 - Containerimages dürfen nur aus vertrauenswürdigen Registrierungen bereitgestellt werden
-- Containerregistrierungen müssen mit einem kundenseitig verwalteten Schlüssel (CMK) verschlüsselt werden
 - Container mit Rechteausweitung müssen vermieden werden
 - Container mit Freigabe sensibler Hostnamespaces vermeiden
 - Container dürfen nur an zulässigen Ports lauschen

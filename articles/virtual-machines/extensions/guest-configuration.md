@@ -7,12 +7,13 @@ ms.subservice: extensions
 author: mgreenegit
 ms.author: migreene
 ms.date: 04/15/2021
-ms.openlocfilehash: 2fda3cc2cf9adc3a734780209a0c9cc06a04e7cf
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d189cf54edfaca13b801e786254eec9fc5aa96f6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368494"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662829"
 ---
 # <a name="overview-of-the-azure-policy-guest-configuration-extension"></a>Übersicht über die Azure Policy-Gastkonfigurationserweiterung
 
@@ -45,12 +46,15 @@ Weitere Informationen zu privaten Netzwerken finden Sie in folgenden Artikeln:
 
 ## <a name="how-can-i-install-the-extension"></a>Wie kann ich eine Erweiterung installieren?
 
-Um die neueste Version der Erweiterung einschließlich der Identitätsanforderungen in großem Umfang bereitzustellen, weisen Sie die Azure-Richtlinie zu und schaffen Sie die Voraussetzungen, um [Richtlinien für die Gastkonfiguration auf virtuellen Computern zu aktivieren](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json).
-Für einzelne Computer kann die Erweiterung mithilfe der Azure CLI, PowerShell, Resource Manager-Vorlagen oder Tools von Drittanbietern bereitgestellt werden.
-
 Der Instanzname der Erweiterung muss auf „AzurePolicyforWindows“ oder „AzurePolicyforLinux“ festgelegt werden, da die oben genannten Richtlinien diese spezifischen Zeichenfolgen erfordern.
 
 Standardmäßig werden alle Bereitstellungen auf die neueste Version aktualisiert. Der Wert der Eigenschaft _autoUpgradeMinorVersion_ ist standardmäßig auf „true“ festgelegt, sofern nichts anderes angegeben ist. Sie müssen sich keine Gedanken über das Aktualisieren Ihres Codes machen, wenn neue Versionen der Erweiterung veröffentlicht werden.
+
+### <a name="azure-policy"></a>Azure Policy
+
+Zum Bereitstellen der neuesten Version der Erweiterung einschließlich der Identitätsanforderungen in großem Umfang [weisen Sie die Azure-Richtlinie zu](../../governance/policy/assign-policy-portal.md):
+
+[Schaffen Sie die Voraussetzungen, um Richtlinien für die Gastkonfiguration auf virtuellen Computern zu aktivieren](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AzureBaseline.json).
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1e8ea30ddfcaeff1a177a14a0b1d911d14b76b4
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97504405"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526086"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal
 
@@ -49,8 +49,6 @@ Sie können Ihre verfügbaren Dienstpläne einschließlich der einzelnen Lizenze
 
 1. Wählen Sie **Azure Active Directory** und dann **Lizenzen** aus.
 
-    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="Seite „Lizenzen“ mit der Anzahl der erworbenen Dienste und zugewiesenen Lizenzen":::
-
 1. Wählen Sie **Alle Produkte** aus, um die Seite „Alle Produkte“ und die Angaben **Gesamt**, **Zugewiesen**, **Verfügbar** und **Läuft bald ab** für Ihre Lizenzpläne anzuzeigen.
 
     :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="Dienstseite mit Dienstlizenzplänen und den zugehörigen Lizenzinformationen":::
@@ -72,11 +70,9 @@ Stellen Sie sicher, dass jeder, der einen lizenzierten Azure AD-Dienst nutzen mu
 
 1. Wählen Sie auf der Seite **Produkte** den Namen des Lizenzplans aus, den Sie dem Benutzer zuweisen möchten.
 
-    ![Dienstseite mit hervorgehobenem Dienstlizenzplan](media/license-users-groups/license-products-blade-with-product-highlight.png)
+1. Nachdem Sie den Lizenzplan ausgewählt haben, wählen Sie **Zuweisen** aus.
 
-1. Wählen Sie auf der Übersichtsseite des Lizenzplans die Option **Zuweisen** aus.
-
-    ![Dienstseite mit hervorgehobener Option „Zuweisen“](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
+    ![Seite „Dienste“ mit hervorgehobener Lizenzplanauswahl und Zuweisungsoptionen](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
 1. Wählen Sie auf der Seite **Zuweisen****Benutzer und Gruppen**, und suchen und wählen Sie dann den Benutzer, dem Sie die Lizenz zuweisen.
 

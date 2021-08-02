@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von SaaS-Angebotseigenschaften in Microsoft Partner Center
-description: Erfahren Sie, wie Sie die Eigenschaften für Ihr Angebot im kommerziellen Microsoft-Marketplace für Software-as-a-Service (SaaS) in Partner Center konfigurieren.
+title: Konfigurieren Ihrer SaaS-Angebotseigenschaften in Azure Marketplace
+description: Konfigurieren der Eigenschaften für Ihre SaaS (Software-as-a-Service) in Azure Marketplace
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 7d90c9b9b2c9aa97083e17d5ab7d20fc6b471658
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac4461d01ea020886b83e0f643bbca5c0fba5ab0
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94492122"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614454"
 ---
-# <a name="how-to-configure-your-saas-offer-properties"></a>Konfigurieren von SaaS-Angebotseigenschaften
+# <a name="configure-saas-offer-properties"></a>Konfigurieren von SaaS-Angebotseigenschaften
 
 In diesem Artikel wird beschrieben, wie Sie die Eigenschaften für ein SaaS-Angebot (Software-as-a-Service) im kommerziellen Microsoft-Marketplace konfigurieren.
 
@@ -93,4 +93,4 @@ Sie können anstelle des Standardvertrags Ihre eigenen Geschäftsbedingungen ang
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren von Angebotsdetails für Ihr SaaS-Angebot](create-new-saas-offer-listing.md)
+- [Konfigurieren der SaaS-Angebotslistendetails](create-new-saas-offer-listing.md)

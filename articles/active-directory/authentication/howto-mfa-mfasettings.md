@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 5a65480cbfa279614250ddeaf7d565b112333a05
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 45efa0e955040931516924a1a8a8576a1a8bf12f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285554"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744501"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen
 
@@ -61,7 +61,7 @@ Wenn das Gerät eines Benutzers verloren geht oder gestohlen wird, können Sie A
 
 ### <a name="block-a-user"></a>Sperren eines Benutzers
 
-Führen Sie die folgenden Schritte aus, um einen Benutzer zu sperren:
+Um einen Benutzer zu blockieren, führen Sie die folgenden Schritte aus oder sehen Sie sich [dieses kurze Video](https://www.youtube.com/watch?v=WdeE1On4S1o&feature=youtu.be) an.
 
 1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **MFA** > **Benutzer sperren/zulassen**.
 1. Wählen Sie **Hinzufügen** aus, um einen Benutzer zu sperren.

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 0a203531e026d00b274ac98784076d33b22666d8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 31c5be9ce48ffea8ebd23e893e2d77e6365d2327
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800141"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467662"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -92,7 +92,7 @@ Für Clients außerhalb der Sitzung, die Schreibvorgänge ausführen, gelten fol
 - Konsistenz für Clients in derselben Region für ein Konto mit einer einzelnen Schreibregion = Präfixkonsistenz
 - Konsistenz für Clients in unterschiedlichen Regionen für ein Konto mit einer einzelnen Schreibregion = Präfixkonsistenz
 - Konsistenz für Clients, die in nur einer Region schreiben, für ein Konto mit mehreren Schreibregionen = Präfixkonsistenz
-- Konsistenz für Clients, die in mehreren Region schreiben, für ein Konto mit mehreren Schreibregionen = Letztlich
+- Konsistenz für Clients, die in mehrere Region schreiben, für ein Konto mit mehreren Schreibregionen = Letztliche Konsistenz
 
   Die Sitzungskonsistenz ist die gängigste Konsistenzebene für Anwendungen in einer einzelnen Region sowie für weltweit verteilte Anwendungen. Sie bietet Schreibwartezeiten, Verfügbarkeit und Lesedurchsatz, die mit der letztlichen Konsistenz vergleichbar sind. Darüber hinaus stellt sie die Konsistenzgarantien für Anwendungen bereit, die für den Betrieb im Benutzerkontext geschrieben wurden. In der folgenden Grafik wird die Sitzungskonsistenz anhand von Noten veranschaulicht. Für „USA, Westen 2“ (Schreiben) und „USA, Westen 2“ (Lesen) wird dieselbe Sitzung (Sitzung A) verwendet, sodass beide dieselben Daten zur gleichen Zeit lesen. Die Region „Australien, Osten“ dagegen verwendet „Sitzung B“ und empfängt Daten somit später, aber weiterhin in der Reihenfolge der Schreibvorgänge.
 

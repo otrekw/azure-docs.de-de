@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 04/14/2021
-ms.openlocfilehash: b523b20a3d7f22cfd5e608c6793c55583050028f
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.date: 05/21/2021
+ms.openlocfilehash: f4ef8d7d29b65af4876912e6dbbd3827693737c6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109635281"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110450363"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Verwenden eines HTTPS-Endpunkts zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -25,23 +25,23 @@ In diesem Artikel wird erläutert, wie ein neuer Flow in Power Automate erstellt
 
 ## <a name="create-a-flow-by-using-power-automate"></a>Erstellen eines Flows mit Power Automate
 
-1. Rufen Sie die [Power Automate](https://flow.microsoft.com/)-Webseite auf. Wählen Sie **Anmelden**. Wenn Sie noch nicht über ein Konto verfügen, wählen Sie **Kostenlos registrieren** aus, um ein kostenloses Power Automate-Konto zu erstellen.
+1. Rufen Sie die [Power Automate](https://flow.microsoft.com/)-Webseite auf. Wählen Sie **Anmelden**. Wenn Sie noch nicht über ein Konto verfügen, wählen Sie **Kostenlos registrieren** aus, um eins zu erstellen.
 
-1. Melden Sie sich an, und wählen Sie auf der Menüleiste **Meine Flows** aus.
+1. Melden Sie sich an, wählen Sie **Meine Flows** aus und wechseln Sie die Umgebung von **Microsoft (Standard)** in Ihre Dataverse-Umgebung (CRM).
 
-    ![Anmelden bei „Meine Flows“](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png" alt-text="Zeigt an, wie Sie sich bei „Meine Flows“ anmelden.":::
 
 1. Wählen Sie unter **+ Neu** die Option **+ Sofortiger Cloud-Flow**  aus.
 
-    ![„+Automatisiert – ohne Vorlage“ unter „Meine Flows“](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png" alt-text="Zeigt an, wie „Meine Flows“ ausgewählt werden, gefolgt von „Sofortiger Cloudflow“.":::
 
 1. Geben Sie dem Flow einen Namen, und wählen Sie dann unter **Auslöser für diesen Flow auswählen** die Option **Beim Empfang einer HTTP-Anforderung** aus.
 
-    ![Schaltfläche „Überspringen“ im Fenster „Automatisierten Flow erstellen“](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png" alt-text="Zeigt an wie eine Schaltfläche „Überspringen“ im Fenster „Automatisierter Flow“ erstellt wird.":::
 
 1. Klicken Sie auf den Flowschritt, um ihn zu erweitern.
 
-    ![Erweitern des Flowschritts](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png" alt-text="Zeigt an, wie der Flowschritt erweitert wird.":::
 
 1. Verwenden Sie eine der folgenden Methoden, um das **JSON-Schema für Anforderungstext** zu konfigurieren:
 
@@ -137,25 +137,25 @@ In diesem Artikel wird erläutert, wie ein neuer Flow in Power Automate erstellt
 ### <a name="connect-to-a-crm-system"></a>Verbinden mit einem CRM-System
 
 1. Wählen Sie **+ Neuer Schritt** aus.
-1. Wählen Sie das gewünschte CRM-System aus, indem Sie unter **Connectors und Aktionen durchsuchen** nach ihm suchen. Auf dem folgenden Bildschirm wird beispielsweise das Erstellen eines neuen Datensatzes (Common Data Service) dargestellt.
+1. Suchen Sie nach einem CRM-System und wählen Sie es im Feld **Connectors und Aktionen Suche** aus. Auf dem folgenden Bildschirm wird als Beispiel das **Erstellen eines neuen Datensatzes (Microsoft Dataverse)** dargestellt.
 
-    ![Create a new record (Neuen Datensatz erstellen)](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/create-new-record.png" alt-text="Zeigt an, wie ein neuer Datensatz erstellt wird.":::
 
-1. Wählen Sie die Registerkarte **Aktionen** mit der Aktion **Neuen Datensatz erstellen** aus.
+1. Wählen Sie die Registerkarte **Aktionen** mit der Aktion **Neu Zeile hinzufügen** aus.
 
-    ![Auswählen der Erstellung eines neuen Datensatzes](./media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png" alt-text="Zeigt an, wie Sie „Neuen Datensatz erstellen“ auswählen.":::
 
-1. Geben Sie den **Organisationsnamen** für das CRM-System an. Wählen Sie in der Dropdownliste **Entitätsname** die Option **Leads** aus.
+1. Wählen Sie **Lead** aus der Dropdownliste **Tabellennamen** aus.
 
-    ![Leads auswählen](./media/commercial-marketplace-lead-management-instructions-https/select-leads.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/select-leads.png" alt-text="Zeigt an, wie Leads ausgewählt werden.":::
 
 1. In Power Automate wird ein Formular für die Eingabe von Leadinformationen angezeigt. Sie können Elemente aus der Eingabeanforderung zuordnen, indem Sie auswählen, dass dynamischer Inhalt hinzugefügt werden soll. Auf dem folgenden Bildschirm wird beispielsweise **OfferTitle** verwendet.
 
-    ![Dynamischen Inhalt hinzufügen](./media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png" alt-text="Zeigt an, wie ein dynamischer Inhalt hinzugefügt wird.":::
 
 1. Ordnen Sie die gewünschten Felder zu, und wählen Sie dann **Speichern** aus, um den Flow zu speichern. Eine HTTP-POST-URL wird erstellt. Diese ist im Fenster **Beim Empfang einer HTTP-Anforderung** zugänglich. Kopieren Sie diese URL mit dem Steuerelement zum Kopieren, das sich rechts neben der HTTP POST-URL befindet. Die Verwendung des Kopiersteuerelements ist wichtig, damit Sie keinen Teil der gesamten URL auslassen. Speichern Sie diese URL, da Sie sie beim Konfigurieren der Leadverwaltung im Veröffentlichungsportal benötigen.
 
-    ![Wenn eine HTTP-Anforderung empfangen wird](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png" alt-text="Zeigt an, wie eine HTTP-Anforderung empfangen wird.":::
 
 ### <a name="set-up-email-notification"></a>Einrichten von E-Mail-Benachrichtigungen
 
@@ -222,7 +222,7 @@ Sie können Ihre Konfiguration mit [Postman](https://app.getpostman.com/app/down
 
    ![Überprüfen der Ergebnisse](./media/commercial-marketplace-lead-management-instructions-https/my-flow-check-results.png)
 
-1. Außerdem sollten Sie eine E-Mail erhalten haben. Überprüfen Sie Ihren Posteingang. 
+1. Außerdem sollten Sie eine E-Mail erhalten haben. Überprüfen Sie Ihren Posteingang.
 
     >[!NOTE] 
     >Wenn keine E-Mail aus dem Test angezeigt wird, überprüfen Sie Ihren Spamordner. Auf dem folgenden Bildschirm werden nur die Feldbezeichnungen angezeigt, die Sie beim Konfigurieren der E-Mail-Benachrichtigung hinzugefügt haben. Wäre dies ein tatsächlicher, von Ihrem Angebot generierter Lead, wären außerdem im Text und in der Betreffzeile die tatsächlichen Informationen aus dem Leadkontakt angegeben.

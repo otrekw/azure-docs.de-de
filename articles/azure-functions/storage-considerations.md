@@ -3,12 +3,12 @@ title: Speicheraspekte für Azure Functions
 description: Erfahren Sie über die Speicheranforderungen von Azure Functions und über das Verschlüsseln gespeicherter Daten.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 8c7f5ef6e1e9c354806994e5116e40523d660e9e
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 41e78acf37f2f5b9cc0346384fc4964187945386
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627706"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026451"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Speicheraspekte für Azure Functions
 
@@ -18,7 +18,7 @@ Azure Functions erfordert ein Azure Storage-Konto, wenn Sie eine Funktions-App-I
 |Speicherdienst  | Verwendung in Functions  |
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Aufrechterhalten von Bindungszustand und Funktionsschlüsseln.  <br/>Wird auch von [Aufgabenhubs in Durable Functions](durable/durable-functions-task-hubs.md) verwendet. |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | Dateifreigabe, die zum Speichern und Ausführen Ihres Funktions-App-Codes in einem [Verbrauchstarif](consumption-plan.md) und [Premium-Plan](functions-premium-plan.md) verwendet wird. |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | Dateifreigabe, die zum Speichern und Ausführen Ihres Funktions-App-Codes in einem [Verbrauchstarif](consumption-plan.md) und [Premium-Plan](functions-premium-plan.md) verwendet wird. <br/>Azure Files wird standardmäßig eingerichtet, aber Sie können unter bestimmten Bedingungen eine App ohne [Azure Files](#create-an-app-without-azure-files) erstellen. |
 | [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | Wird von [Aufgabenhubs in Durable Functions](durable/durable-functions-task-hubs.md) verwendet.   |
 | [Azure Table Storage](../storage/tables/table-storage-overview.md)  |  Wird von [Aufgabenhubs in Durable Functions](durable/durable-functions-task-hubs.md) verwendet.       |
 
@@ -66,6 +66,19 @@ Es ist möglich, dass mehrere Funktions-Apps dasselbe Speicherkonto ohne Problem
 Wenn alle Kundendaten in einer einzelnen Region verbleiben müssen, muss das Speicherkonto, das der Funktions-App zugeordnet ist, eines mit [regionsinterner Redundanz](../storage/common/storage-redundancy.md) sein. Für Speicherkonten mit regionsinterner Redundanz muss auch [Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection) verwendet werden.
 
 Andere plattformseitig verwaltete Kundendaten werden nur dann in der Region gespeichert, wenn sie in einer App Service-Umgebung (ASE) mit internem Lastenausgleich gehostet werden. Weitere Informationen finden Sie unter [ASE-Zonenredundanz](../app-service/environment/zone-redundancy.md#in-region-data-residency).
+
+## <a name="create-an-app-without-azure-files"></a>Erstellen einer App ohne Azure Files
+
+Azure Files wird standardmäßig für Premium- und Nicht-Linux-Verbrauchspläne eingerichtet, um als freigegebenes Dateisystem in Szenarien mit hoher Skalierung zu dienen. Das Dateisystem wird von der Plattform für einige Features wie Protokollstreaming verwendet, stellt aber in erster Linie die Konsistenz der bereitgestellten Funktionsnutzdaten sicher. Wenn eine App mithilfe einer externen [Paket-URL](./run-functions-from-deployment-package.md) bereitgestellt wird, wird der App-Inhalt von einem separaten schreibgeschützten Dateisystem bereitgestellt, sodass Azure Files auf Wunsch weggelassen werden kann. In solchen Fällen wird ein beschreibbares Dateisystem bereitgestellt, aber es wird nicht garantiert, dass es für alle Funktions-App-Instanzen freigegeben wird.
+
+Wenn Azure Files nicht verwendet wird, müssen Sie Folgendes berücksichtigen:
+
+* Sie müssen die Bereitstellung über eine externe Paket-URL ausführen
+* Ihre App kann sich nicht auf ein freigegebenes beschreibbares Dateisystem verlassen
+* Die App kann runtime v1 von Functions nicht verwenden
+* Für Protokollstreaming in Clients wie dem Azure-Portal werden standardmäßig Dateisystemprotokolle verwendet. Sie sollten stattdessen Application Insights-Protokolle verwenden.
+
+Wenn die oben genannten Punkte ordnungsgemäß berücksichtigt werden, können Sie die App ohne Azure Files erstellen. Erstellen Sie die Funktions-App, ohne die Anwendungseinstellungen `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` und `WEBSITE_CONTENTSHARE` anzugeben.
 
 ## <a name="mount-file-shares"></a>Einbinden von Dateifreigaben
 

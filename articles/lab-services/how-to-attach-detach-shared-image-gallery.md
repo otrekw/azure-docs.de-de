@@ -3,12 +3,12 @@ title: Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure La
 description: In diesem Artikel wird beschrieben, wie Sie einen freigegebenen Imagekatalog an ein Classroom-Lab in Azure Lab Services anfügen.
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: 99b944ad85e311cd66b0a1cec4e585de37f83500
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a460e25d59d2c5fcde341212e7912882f5fe111
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98786400"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190689"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure Lab Services
 Dieser Artikel zeigt, wie Sie einen Katalog mit freigegebenen Images einem Labkonto anfügen können. 
@@ -88,5 +88,7 @@ An ein Lab kann immer nur ein einzelner Katalog mit freigegebenen Images angefü
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Speichern eines Labimages im Katalog mit freigegebenen Images oder zum Verwenden eines Images aus dem Katalog mit freigegebenen Images zum Erstellen einer VM finden Sie unter [Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services](how-to-use-shared-image-gallery.md).
+
+Informationen zum Hochladen eines benutzerdefinierten Windows-Images in eine Shared Image Gallery außerhalb des Kontexts eines Labs finden Sie unter [Hochladen eines benutzerdefinierten Images in eine Shared Image Gallery](upload-custom-image-shared-image-gallery.md).
 
 Weitere allgemeine Informationen zu Katalogen mit freigegebenen Images finden Sie in der [Übersicht über den Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md).

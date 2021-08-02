@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 04/13/2021
+ms.date: 05/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87516ddcce32ab205b13139c057a2ab999146b74
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 3d13b1f515d5585c6378e48eb64feed59615cdef
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376357"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616913"
 ---
 # <a name="what-is-risk"></a>Was bedeutet Risiko?
 
@@ -66,6 +66,7 @@ Diese Risiken können in Echtzeit oder offline anhand interner und externer Thre
 | Neues Land/neue Region | Offline | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) erkannt. Bei dieser Erkennungsmethode werden anhand von in der Vergangenheit verwendeten Aktivitätsstandorten neue und selten verwendete Standorte ermittelt. Die Anomalieerkennungsengine speichert Informationen zu Standorten, die Benutzer der Organisation in der Vergangenheit verwendet haben. |
 | Aktivität über anonyme IP-Adresse | Offline | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) erkannt. Diese Erkennung stellt fest, ob Benutzer eine IP-Adresse verwendet haben, die als anonyme Proxy-IP-Adresse identifiziert wurde. |
 | Verdächtige Weiterleitung des Posteingangs | Offline | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) erkannt. Durch diese Erkennungsmethode werden verdächtige Regeln zur E-Mail-Weiterleitung erkannt. Hierzu gehört beispielsweise die Erstellung einer Posteingangsregel, die eine Kopie aller E-Mails an eine externe Adresse weiterleitet. |
+| Azure AD Threat Intelligence | Offline | Dieser Risikoerkennungstyp gibt Anmeldeaktivitäten an, die für den angegebenen Benutzer unüblich sind oder mit bekannten Angriffsmustern übereinstimmen (basierend auf internen und externen Threat Intelligence-Quellen von Microsoft). |
 
 ### <a name="other-risk-detections"></a>Andere Risikoerkennungen
 
@@ -109,6 +110,10 @@ Wenn Ihnen keine Risikoereignisse mit kompromittierten Anmeldeinformationen ange
 #### <a name="how-often-does-microsoft-process-new-credentials"></a>Wie oft verarbeitet Microsoft neue Anmeldeinformationen?
 
 Anmeldeinformationen werden sofort nach deren Auffinden verarbeitet, in der Regel in mehreren Batches pro Tag.
+
+### <a name="locations"></a>Standorte
+
+Der Standort wird bei der Risikoerkennung durch die IP-Adresssuche bestimmt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,13 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 39990a557315c3fcc79f2b9dab59f25f758ab2bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 21cb737cf6168f44c1e71815d90139a04ba1d37b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443113"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697083"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Ihr Azure Stack Edge Pro-GPU-Gerät
 
@@ -37,7 +38,9 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Der Zugriff auf Ihr Azure Stack Edge Pro-Gerät wird mithilfe eines Gerätekennworts gesteuert. Sie können das Kennwort über die lokale Webbenutzeroberfläche ändern. Das Gerätekennwort kann auch über das Azure-Portal zurückgesetzt werden.
 
-Der Zugriff auf die Daten auf den Gerätedatenträgern wird ebenfalls durch Schlüssel für die Verschlüsselung von ruhenden Daten gesteuert.
+Der Zugriff auf die Daten auf den Gerätedatenträgern wird ebenfalls durch Schlüssel für die Verschlüsselung von ruhenden Daten gesteuert. 
+
+Sie können auf das Gerät zugreifen, indem Sie eine PowerShell-Remotesitzung über HTTP oder HTTPS über die lokale Weboberfläche des Geräts öffnen.
 
 ### <a name="change-device-password"></a>Ändern des Gerätekennworts
 
@@ -96,6 +99,21 @@ Führen Sie die folgenden Schritte aus, um die Schlüssel für die Verschlüssel
     Speichern Sie die Schlüsseldatei `.json` an einem sicheren Ort. Diese Datei wird für eine potenzielle zukünftige Wiederherstellung des Geräts verwendet.
 
     ![Screenshot des Dialogfelds „Gerätekennwort zurücksetzen“](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+
+## <a name="enable-device-access-via-remote-powershell-over-http"></a>Aktivieren des Gerätezugriffs über PowerShell-Remotezugriff über HTTP
+
+Sie können über HTTP oder HTTPS eine PowerShell-Remotesitzung für Ihr Gerät öffnen. Standardmäßig greifen Sie über eine PowerShell-Sitzung über HTTPS auf das Gerät zu. In vertrauenswürdigen Netzwerken ist es jedoch akzeptabel, die PowerShell-Remotesitzung über HTTP zu aktivieren.
+
+Führen Sie die folgenden Schritte auf der lokalen Benutzeroberfläche aus, um eine PowerShell-Remotesitzung über HTTP zu aktivieren:
+
+1. Klicken Sie auf der lokalen Webbenutzeroberfläche Ihres Geräts in der oberen rechten Ecke der Seite auf **Einstellungen**.
+1. Wählen Sie **Aktivieren** aus, um eine PowerShell-Remotesitzung für Ihr Gerät über HTTP zu öffnen. Diese Einstellung sollte nur in vertrauenswürdigen Netzwerken aktiviert werden.
+
+    ![Screenshot: Einstellung „Aktivieren“ für eine PowerShell-Remotesitzung über HTTP.](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/enable-remote-powershell-http-1.png)
+
+1. Wählen Sie **Übernehmen**.
+
+Sie können jetzt über HTTP eine Verbindung zur PowerShell-Schnittstelle des Geräts herstellen. Einzelheiten finden Sie unter [Herstellen einer Verbindung zur PowerShell-Schnittstelle Ihres Geräts](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
 ## <a name="manage-resource-access"></a>Verwalten des Ressourcenzugriffs
 

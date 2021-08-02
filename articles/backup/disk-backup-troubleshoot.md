@@ -2,13 +2,13 @@
 title: Problembehandlung bei Sicherungsfehlern in Azure Disk Backup
 description: Informationen zur Problembehandlung bei Sicherungsfehlern in Azure Disk Backup
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: f6e9bcbbd618cf820ce91f8a3092d5be4aa045cb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/08/2021
+ms.openlocfilehash: a749c87949d53781dc810148d01cc5d179d70f77
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107243"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754113"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup"></a>Problembehandlung bei Sicherungsfehlern in Azure Disk Backup
 
@@ -172,6 +172,12 @@ Fehlermeldung: Der Vorgang kann nicht gestartet werden, da die maximale Anzahl z
 
 Empfohlene Maßnahme: Warten Sie, bis die frühere laufende Sicherung abgeschlossen ist.
 
+### <a name="error-code-usererrormissingsubscriptionregistration"></a>Fehlercode: UserErrorMissingSubscriptionRegistration
+
+Fehlermeldung: Das Abonnement ist nicht zur Verwendung des Namespace „Microsoft.Compute“ registriert.
+
+Empfohlene Maßnahme: Der erforderliche Ressourcenanbieter wurde für Ihr Abonnement nicht registriert. Registrieren Sie den Namespace des Ressourcenanbieters (_Microsoft.Compute_ und _Microsoft.Storage_) mithilfe der Schritte in [Lösung 3](../azure-resource-manager/templates/error-register-resource-provider.md#solution-3---azure-portal).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Supportmatrix für die Azure Disk-Sicherung](disk-backup-support-matrix.md)
+[Supportmatrix für die Azure Disk-Sicherung](disk-backup-support-matrix.md)

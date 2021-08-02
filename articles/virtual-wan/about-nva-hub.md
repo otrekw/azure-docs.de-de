@@ -1,20 +1,20 @@
 ---
 title: 'Azure Virtual WAN: Virtuelles Netzwerkgerät im Hub'
-description: In diesem Artikel erfahren Sie mehr über virtuelle Netzwerkgeräte im Virtual WAN-Hub.
+description: Erfahren Sie mehr über virtuelle Netzwerkgeräte auf dem Virtual WAN-Hub.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.author: scottnap
-ms.openlocfilehash: 36987789487e97f42a51ff509df58ee0ff2dd2ed
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 68e5216257fd32237f3d67f05f0e17a0b8e16dbd
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951250"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411903"
 ---
-# <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Virtuelles Netzwerkgerät in einem Azure Virtual WAN-Hub (Vorschauversion)
+# <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub"></a>Virtuelles Netzwerkgerät in einem Azure Virtual WAN-Hub
 
 Für Azure Virtual WAN wurde in Zusammenarbeit mit Netzwerkpartnern eine Automatisierung erstellt, mit der Geräte in der Kundenumgebung (Customer Premises Equipment, CPE) ganz einfach mit einem Azure-VPN-Gateway im virtuellen Hub verbunden werden können. Azure arbeitet mit ausgewählten Netzwerkpartnern zusammen, um Kunden die direkte Bereitstellung eines virtuellen Netzwerkgeräts (Network Virtual Appliance, NVA) von einem Drittanbieter im virtuellen Hub zu ermöglichen. Dadurch können Kunden ihr Zweigniederlassungs-CPE mit dem gleichen Marken-NVA im virtuellen Hub verbinden und so proprietäre End-to-End-SD-WAN-Funktionen nutzen.
 
@@ -73,7 +73,7 @@ Sie müssen jedoch Hub-to-VNET-Verbindungen erstellen, um den Virtual WAN-Hub m
 
 ## <a name="supported-regions"></a><a name="regions"></a>Unterstützte Regionen
 
-NVAs im virtuellen Hub sind in den folgenden Regionen als Vorschauversion verfügbar:
+NVAs im virtuellen Hub sind in den folgenden Regionen verfügbar:
 
 |Geopolitische Region | Azure-Regionen|
 |---|---|
@@ -85,35 +85,10 @@ NVAs im virtuellen Hub sind in den folgenden Regionen als Vorschauversion verfü
 | Australien | „Australien, Südosten“, „Australien, Osten“, „Australien, Mitte“, „Australien, Mitte 2“|
 | Afrika | Südafrika, Norden |
 | Indien | „Indien, Süden“, „Indien, Westen“, „Indien, Mitte“ | 
-## <a name="faq"></a>Häufig gestellte Fragen
 
-### <a name="i-am-a-network-appliance-partner-and-want-to-get-our-nva-in-the-hub--can-i-join-this-partner-program"></a>Ich bin ein Partner für Netzwerkgeräte und möchte die Bereitstellung unseres NVA im Hub ermöglichen.  Kann ich an diesem Partnerprogramm teilnehmen?
+## <a name="nva-faq"></a>Häufig gestellte Fragen zu NVAs
 
-Leider haben wir zurzeit keine Kapazität für neue Partnerangebote. Versuchen Sie es bitte im November nochmal.
-
-### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Kann ich ein beliebiges NVA aus dem Azure Marketplace im Virtual WAN-Hub bereitstellen?
-
-Zurzeit sind nur [Barracuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer), [Cisco Cloud vWAN Application](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) und [VMware Sd-WAN](https://aka.ms/vmwareMarketplaceLink) zur Bereitstellung im Virtual WAN-Hub verfügbar.
-
-### <a name="what-is-the-cost-of-the-nva"></a>Welche Kosten fallen für das NVA an?
-
-Sie müssen eine Lizenz für das virtuelle Netzwerkgerät (NVA) vom NVA-Anbieter erwerben.  Informationen zur Lizenz für Ihr Barracuda CloudGen WAN-NVA von Barracuda finden Sie auf der Seite zum [Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan). Cisco bietet zurzeit nur das BYOL-Lizenzierungsmodell (Bring Your Own License, Verwendung Ihrer eigenen Lizenz) an, das direkt von Cisco erhalten werden muss. Außerdem stellt Ihnen Microsoft Gebühren für die NVA-Infrastruktureinheiten und anderen Ressourcen in Rechnung, die Sie nutzen. Weitere Informationen finden Sie unter [Informationen zu den Preisen von Virtual WAN](pricing-concepts.md).
-
-### <a name="can-i-deploy-an-nva-to-a-basic-hub"></a>Kann ich ein NVA in einem Basic-Hub bereitstellen?
-
-Nein. Sie müssen einen Standard-Hub verwenden, wenn Sie ein NVA bereitstellen möchten.
-
-### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>Kann ich ein NVA in einem geschützten Hub bereitstellen?
-
-Ja. Partner-NVAs können in einem Hub mit Azure Firewall bereitgestellt werden.
-
-### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>Kann ich ein beliebiges CPE-Gerät in meiner Zweigstelle mit dem Barracuda CloudGen WAN-NVA im Hub verbinden?
-
-Nein. Barracuda CloudGen WAN ist nur mit CPE-Geräten von Barracuda kompatibel. Weitere Informationen zu den Anforderungen von CloudGen WAN finden Sie auf der [Seite zu CloudGen WAN von Barracuda](https://www.barracuda.com/products/cloudgenwan). Für Cisco gibt es mehrere kompatible SD-WAN-CPE-Geräte. Weitere Informationen zu kompatiblen CPEs finden Sie in der Dokumentation zu [Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701).
-
-### <a name="what-routing-scenarios-are-supported-with-nva-in-the-hub"></a>Welche Routingszenarien werden mit NVAs im Hub unterstützt?
-
-Alle von Virtual WAN unterstützten Routingszenarien werden mit NVAs im Hub unterstützt.
+[!INCLUDE [NVA FAQ](../../includes/virtual-wan-nva-hub-faq.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

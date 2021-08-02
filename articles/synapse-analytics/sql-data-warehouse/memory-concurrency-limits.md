@@ -7,20 +7,23 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 04/04/2021
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: fb0ad93fb4a1269b4cca02b114c0427f0c44a31b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fd628c649d379e60ddf8ec772e1cf708f3e50d1
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96455356"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540296"
 ---
 # <a name="memory-and-concurrency-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Speicher- und Parallelitätsgrenzwerte für einen dedizierten SQL-Pool in Azure Synapse Analytics
 
 Zeigen Sie die Speicher- und Parallelitätsgrenzwerte an, die den verschiedenen Leistungsstufen und Ressourcenklassen in Azure Synapse Analytics zugewiesen sind.  
+
+> [!NOTE]
+> Arbeitsauslastungsgruppen für die Workloadverwaltung bieten mehr Flexibilität beim Konfigurieren von Ressourcen pro Anforderung sowie höhere Parallelität als dynamische oder statische Ressourcenklassen.  Ausführlichere Informationen finden Sie unter [Azure Synapse Analytics – Workloadisolation mit Arbeitsauslastungsgruppen](sql-data-warehouse-workload-isolation.md) und [CREATE WORKLOAD GROUP (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql).
 
 ## <a name="data-warehouse-capacity-settings"></a>Data Warehouse-Kapazitätseinstellungen
 
@@ -131,5 +134,7 @@ Wenn nicht genügend Parallelitätsslots verfügbar sind, um die Abfrageausführ
 
 Weitere Informationen zum Verwenden von Ressourcenklassen zum weiteren Optimieren Ihrer Workload finden Sie in den folgenden Artikeln:
 
+* [Azure Synapse Analytics – Workloadisolation mit Arbeitsauslastungsgruppen](sql-data-warehouse-workload-isolation.md)
+* [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql)
 * [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md)
 * [Analysieren Ihrer Workload](analyze-your-workload.md)

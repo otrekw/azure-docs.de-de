@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: 2eabd6462edd609d70fc302ce2d0d64cb99dbdc3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/03/2021
+ms.openlocfilehash: a3ccea075dd4ce4bce06b31fdbe6dc2a55812ebc
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475360"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754077"
 ---
 # <a name="create-and-deploy-single-tenant-based-logic-app-workflows-with-azure-arc-enabled-logic-apps-preview"></a>Erstellen und Bereitstellen von Logik-App-Workflows auf Basis eines einzelnen Mandanten mit Logic Apps mit Azure Arc-Unterstützung (Vorschau)
 
@@ -39,20 +39,21 @@ In diesem Abschnitt werden die allgemeinen Voraussetzungen für alle Ansätze un
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Eine Kubernetes-Umgebung mit einem Kubernetes-Cluster mit Azure Arc-Unterstützung und einem *benutzerdefinierten Standort*, an dem Sie Azure Logic Apps, Azure App Service und Azure Functions hosten und ausführen können. Stellen Sie sicher, dass Sie für Ihre Kubernetes-Umgebung, den benutzerdefinierten Standort und die Logik-App-Ressource denselben Standort verwenden.
+- Eine Kubernetes-Umgebung mit einem Kubernetes-Cluster mit Azure Arc-Unterstützung und einem *benutzerdefinierten Standort*, an dem Sie Azure Logic Apps, Azure App Service und Azure Functions hosten und ausführen können.
 
-  Verwenden Sie z. B. für die Bereitstellung und Ausführung in „Europa, Westen“ entsprechend „Europa, Westen“ als Standort für alle drei Ressourcen.
+  > [!IMPORTANT]
+  > Stellen Sie sicher, dass Sie für Ihre Kubernetes-Umgebung, Ihren benutzerdefinierten Speicherort und Ihre Logik-App denselben Ressourcenspeicherort verwenden.
 
-  Wenn Sie die App Service-Paketerweiterung auf Ihrem Kubernetes-Cluster erstellen, können Sie außerdem das [Standardskalierungsverhalten für die Ausführung Ihrer Logik-App-Workflows ändern](#change-scaling). Wenn Sie die Erweiterung mithilfe des Azure CLI-Befehls [ **`az k8s-extension create`**](/cli/azure/k8s-extension) erstellen, stellen Sie sicher, dass Sie die Konfigurationseinstellung `keda.enabled=true` einschließen:
+  Wenn Sie die App Service-Bundleerweiterung in Ihrem Kubernetes-Cluster erstellen, können Sie außerdem das [Standardskalierungsverhalten ändern](#change-scaling), das für die Ausführung Ihrer Logik-App-Workflows gilt. Wenn Sie die Erweiterung mithilfe des Azure CLI-Befehls [ **`az k8s-extension create`**](/cli/azure/k8s-extension) erstellen, stellen Sie sicher, dass Sie die Konfigurationseinstellung `keda.enabled=true` einschließen:
 
   `az k8s-extension create {other-command-options} --configuration-settings "keda.enabled=true"`
 
   Weitere Informationen finden Sie in der folgenden Dokumentation:
 
-  * [App Service, Funktionen und Logic Apps in Azure Arc (Vorschau)](../app-service/overview-arc-integration.md)
-  * [Clustererweiterungen in Kubernetes mit Azure Arc-Unterstützung](../azure-arc/kubernetes/conceptual-extensions.md)
-  * [Einrichten eines Kubernetes-Clusters mit Azure Arc-Unterstützung zum Ausführen von App Service, Funktionen und Logic Apps (Vorschau)](../app-service/manage-create-arc-environment.md)
-  * [Ändern des Standardskalierungsverhaltens](#change-scaling)
+  - [App Service, Funktionen und Logic Apps in Azure Arc (Vorschau)](../app-service/overview-arc-integration.md)
+  - [Clustererweiterungen in Kubernetes mit Azure Arc-Unterstützung](../azure-arc/kubernetes/conceptual-extensions.md)
+  - [Einrichten eines Kubernetes-Clusters mit Azure Arc-Unterstützung zum Ausführen von App Service, Funktionen und Logic Apps (Vorschau)](../app-service/manage-create-arc-environment.md)
+  - [Ändern des Standardskalierungsverhaltens](#change-scaling)
 
 - Ihre eigene Azure AD-Identität (Azure Active Directory)
 
@@ -62,15 +63,22 @@ In diesem Abschnitt werden die allgemeinen Voraussetzungen für alle Ansätze un
   > Die Unterstützung verwalteter Identitäten ist für Logic Apps mit Azure Arc-Unterstützung derzeit nicht verfügbar.
 
   Führen Sie die folgenden Schritte aus, um eine Azure AD-App-Registrierung (Azure Active Directory) mithilfe der Azure CLI zu erstellen:
-    1. Erstellen Sie mit dem [`az ad sp create`](/cli/azure/ad/sp#az_ad_sp_create)-Befehl eine App-Registrierung.
-    1. Führen Sie den [`az ad sp show`](/cli/azure/ad/sp#az_ad_sp_show)-Befehl aus, um alle Details zu überprüfen.
-    1. Suchen und speichern Sie in der Ausgabe beider Befehle die Werte für Client-ID, Objekt-ID, Mandanten-ID und geheimer Clientschlüssel, die Sie zur späteren Verwendung beibehalten müssen.
+
+  1. Erstellen Sie mit dem [`az ad sp create`](/cli/azure/ad/sp#az_ad_sp_create)-Befehl eine App-Registrierung.
+
+  1. Führen Sie den [`az ad sp show`](/cli/azure/ad/sp#az_ad_sp_show)-Befehl aus, um alle Details zu überprüfen.
+
+  1. Suchen und speichern Sie in der Ausgabe beider Befehle die Werte für Client-ID, Objekt-ID, Mandanten-ID und geheimer Clientschlüssel, die Sie zur späteren Verwendung beibehalten müssen.
 
   Führen Sie die folgenden Schritte aus, um eine Azure AD-App-Registrierung (Azure Active Directory) mithilfe des Azure-Portals zu erstellen:
-    1. Erstellen Sie mithilfe des [Azure-Portals](../active-directory/develop/quickstart-register-app.md) eine neue Azure AD-App-Registrierung.
-    1. Suchen Sie nach Abschluss der Erstellung die neue App-Registrierung im Portal.
-    1. Wählen Sie im Registrierungsmenü **Übersicht** aus, und speichern Sie die Werte für Client-ID, Mandanten-ID und geheimer Clientschlüssel.
-    1. Um die Objekt-ID zu ermitteln, wählen Sie neben dem Feld **Verwaltete Anwendung im lokalen Verzeichnis** den Namen für Ihre App-Registrierung aus. Kopieren Sie in der Eigenschaftenansicht die Objekt-ID.
+
+  1. Erstellen Sie mithilfe des [Azure-Portals](../active-directory/develop/quickstart-register-app.md) eine neue Azure AD-App-Registrierung.
+
+  1. Suchen Sie nach Abschluss der Erstellung die neue App-Registrierung im Portal.
+
+  1. Wählen Sie im Registrierungsmenü **Übersicht** aus, und speichern Sie die Werte für Client-ID, Mandanten-ID und geheimer Clientschlüssel.
+
+  1. Um die Objekt-ID zu ermitteln, wählen Sie neben dem Feld **Verwaltete Anwendung im lokalen Verzeichnis** den Namen für Ihre App-Registrierung aus. Kopieren Sie in der Eigenschaftenansicht die Objekt-ID.
 
 ## <a name="create-and-deploy-logic-apps"></a>Erstellen und Bereitstellen von Logik-Apps
 
@@ -78,12 +86,29 @@ Wählen Sie abhängig davon, ob Sie Azure CLI, Visual Studio Code oder das Azure
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-#### <a name="prerequisites"></a>Voraussetzungen
+Bevor Sie beginnen, benötigen Sie Folgendes:
 
-- [Installation der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) auf Ihrem lokalen Computer.
+- Die aktuelle Azure CLI-Erweiterung muss auf Ihrem Computer installiert sein.
+
+  - Wenn Sie nicht über diese Erweiterung verfügen, lesen Sie den [Installationsleitfaden für Ihr Betriebssystem oder Ihre Plattform](/cli/azure/install-azure-cli).
+
+  - Wenn Sie nicht sicher sind, ob Sie über die neueste Version verfügen, führen Sie die [Schritte zum Überprüfen Ihrer Umgebung und CLI-Version](#check-environment-cli-version) aus.
+
+- Die Azure Logic Apps-Erweiterung (Standard) für die Azure CLI (*Vorschauversion*).
+
+  Azure Logic Apps in der Einzelmandantenversion ist allgemein verfügbar, die Azure Logic Apps-Erweiterung befindet sich allerdings weiterhin in der Vorschau.
+
 - Eine [Azure-Ressourcengruppe](#create-resource-group) für die Erstellung Ihrer Logik-App.
 
-Überprüfen Sie Ihre Umgebung, bevor Sie beginnen:
+  Wenn Sie nicht über eine solche Ressourcengruppe verfügen, führen Sie die [Schritte zum Erstellen der Ressourcengruppe](#create-resource-group) aus.
+
+- Ein Azure-Speicherkonto, das mit Ihrer Logik-App für die Aufbewahrung von Daten und des Ausführungsverlaufs verwendet werden soll.
+
+  Wenn Sie nicht über ein solches Speicherkonto verfügen, können Sie während der Erstellung der Logik-App eines erstellen. Alternativ dazu können Sie die [Schritte zum Erstellen eines Speicherkontos](/cli/azure/storage/account#az_storage_account_create) ausführen.
+
+<a name="check-environment-cli-version"></a>
+
+#### <a name="check-environment-and-cli-version"></a>Überprüfen der Umgebung und CLI-Version
 
 1. Melden Sie sich beim Azure-Portal an. Überprüfen Sie, ob Ihr Abonnement aktiv ist, indem Sie den folgenden Befehl ausführen:
 
@@ -101,28 +126,36 @@ Wählen Sie abhängig davon, ob Sie Azure CLI, Visual Studio Code oder das Azure
 
 1. Sollten Sie nicht über die neueste Version verfügen, aktualisieren Sie Ihre Installation wie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli) beschrieben.
 
-#### <a name="install-logic-apps-extension"></a>Installieren der Logic Apps-Erweiterung
+<a name="install-logic-apps-cli-extension"></a>
 
-Installieren Sie die Vorschauversion der Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle:
+##### <a name="install-azure-logic-apps-standard-extension-for-azure-cli"></a>Installieren der Azure Logic Apps-Erweiterung (Standard) für die Azure CLI
 
-```azurecli
+Installieren Sie die *Vorschau* der Einzelmandantenerweiterung für Azure Logic Apps (Standard) für die Azure CLI, indem Sie den folgenden Befehl ausführen:
+
+```azurecli-interactive
 az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
 ```
 
+<a name="create-resource-group"></a>
+
 #### <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
-Sollten Sie noch nicht über eine Ressourcengruppe für Ihre Logik-App verfügen, erstellen Sie die Gruppe mithilfe des Befehls `az group create`. Stellen Sie sicher, dass Sie den `--subscription`-Parameter mit Ihrem Abonnementnamen oder -bezeichner verwenden. Mit dem folgenden Befehl wird z. B. eine Ressourcengruppe namens `MyResourceGroupName` am Standort `eastus` erstellt:
-
-```azurecli
-az group create --name MyResourceGroupName --location eastus --subscription MySubscription
-```
+Sollten Sie noch nicht über eine Ressourcengruppe für Ihre Logik-App verfügen, erstellen Sie die Gruppe mithilfe des Befehls `az group create`. Wenn Sie nicht bereits ein Standardabonnement für Ihr Azure-Konto festgelegt haben, stellen Sie sicher, dass Sie den Parameter `--subscription` mit Ihrem Abonnementnamen oder -bezeichner verwenden. Andernfalls müssen Sie den Parameter `--subscription` nicht verwenden.
 
 > [!TIP]
-> Sie müssen den Parameter `--subscription` nicht verwenden, wenn Sie ein Standardabonnement für Ihr Azure-Konto festgelegt haben.
 > Führen Sie zum Festlegen eines Standardabonnements den folgenden Befehl aus, und ersetzen Sie `MySubscription` durch Ihren Abonnementnamen oder -bezeichner.
+>
 > `az account set --subscription MySubscription`
 
-In der Ausgabe wird `provisioningState` als `Succeeded` angezeigt, wenn Ihre Ressourcengruppe erfolgreich erstellt wurde:
+Der folgende Befehl erstellt beispielsweise eine Ressourcengruppe mit dem Namen `MyResourceGroupName` unter Verwendung des Azure-Abonnements mit dem Namen `MySubscription` am Speicherort `eastus`:
+
+```azurecli
+az group create --name MyResourceGroupName 
+   --subscription MySubscription 
+   --location eastus
+```
+
+Wenn Ihre Ressourcengruppe erfolgreich erstellt wurde, wird `provisioningState` als `Succeeded` angezeigt:
 
 ```output
 <...>
@@ -135,40 +168,35 @@ In der Ausgabe wird `provisioningState` als `Succeeded` angezeigt, wenn Ihre Res
 
 #### <a name="create-logic-app"></a>Erstellen einer Logik-App
 
-Um eine Logik-App mit Azure Arc-Unterstützung mithilfe der Azure-Befehlszeilenschnittstelle zu erstellen, führen Sie den Befehl `az logicapp create` wie folgt aus:
-
-```azurecli
-az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName 
-   --storage-account MyStorageAccount --custom-location MyCustomLocation 
-   --subscription MySubscription
-```
-
-> [!IMPORTANT]
-> Stellen Sie sicher, dass Sie denselben Ressourcenstandort (Azure-Region) wie für Ihren benutzerdefinierten Standort und Ihre Kubernetes-Umgebung verwenden. Die Ressourcenstandorte für Ihre Logik-App, den benutzerdefinierten Standort und die Kubernetes-Umgebung müssen identisch sein. Dieser Wert ist *nicht* identisch mit dem *Namen* Ihres benutzerdefinierten Standorts.
-
-Achten Sie darauf, dass Sie in Ihrem Befehl die folgenden erforderlichen Parameter angeben:
+Führen Sie zum Erstellen einer Logik-App mit Azure Arc-Unterstützung den Befehl `az logicapp create` mit den folgenden erforderlichen Parametern aus. Die Ressourcenstandorte für Ihre Logik-App, den benutzerdefinierten Standort und die Kubernetes-Umgebung müssen identisch sein.
 
 | Parameter | Beschreibung |
 |------------|-------------|
 | `--name -n` | Ein eindeutiger Name für Ihre Logik-App. |
 | `--resource-group -g` | Der Name der [Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-cli.md), in der Sie Ihre Logik-App erstellen möchten. [Erstellen Sie eine Ressourcengruppe](#create-resource-group), falls noch keine vorhanden ist. |
-| `--storage-account -s` | Das [Speicherkonto](/cli/azure/storage/account), das Sie mit Ihrer Logik-App verwenden möchten. Für Speicherkonten in derselben Ressourcengruppe verwenden Sie einen Zeichenfolgenwert. Für Speicherkonten in einer anderen Ressourcengruppe verwenden Sie eine Ressourcen-ID. |
+| `--storage-account -s` | Das [Speicherkonto](/cli/azure/storage/account), das mit Ihrer Logik-App verwendet werden soll. Für Speicherkonten in derselben Ressourcengruppe verwenden Sie einen Zeichenfolgenwert. Für Speicherkonten in einer anderen Ressourcengruppe verwenden Sie eine Ressourcen-ID. |
 |||
 
-Führen Sie `az logicapp create` wie folgt aus, um eine Logik-App in Azure Arc mithilfe eines privaten Azure Container Registry-Images zu erstellen:
+```azurecli
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation
+```
+
+Um eine Logik-App mit Azure Arc-Unterstützung über ein privates Azure Container Registry-Image zu erstellen, führen Sie den Befehl `az logicapp create` mit den folgenden erforderlichen Parametern aus:
 
 ```azurecli
-az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName 
-   --storage-account MyStorageAccount --subscription MySubscription
-   --custom-location MyCustomLocation 
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation 
    --deployment-container-image-name myacr.azurecr.io/myimage:tag
-   --docker-registry-server-password passw0rd 
-   --docker-registry-server-user MyUser
+   --docker-registry-server-password MyPassword 
+   --docker-registry-server-user MyUsername
 ```
 
 #### <a name="show-logic-app-details"></a>Anzeigen von Logik-App-Details
 
-Führen Sie den Befehl `az logicapp show` wie folgt aus, um Details zu Ihrer Logik-App mit Azure Arc-Unterstützung anzuzeigen:
+Um Details zu Ihrer Logik-App mit Azure Arc-Unterstützung anzuzeigen, führen Sie den Befehl `az logicapp show` mit den folgenden erforderlichen Parametern aus:
 
 ```azurecli
 az logicapp show --name MyLogicAppName 
@@ -177,13 +205,22 @@ az logicapp show --name MyLogicAppName
 
 #### <a name="deploy-logic-app"></a>Bereitstellen einer Logik-App
 
-Führen Sie den Befehl `az logicapp deployment source config-zip` aus, um Ihre Logik-App mithilfe der ZIP-Bereitstellung von Kudu bereitzustellen. Beispiel:
+Um Ihre Logik-App mit Azure Arc-Unterstützung über die [Kudu-ZIP-Bereitstellung von Azure App Service](../app-service/resources-kudu.md) bereitzustellen, führen Sie den Befehl `az logicapp deployment source config-zip` mit den folgenden erforderlichen Parametern aus:
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass Ihre ZIP-Datei die Artefakte Ihres Projekts auf Stammebene enthält. Zu diesen Artefakten zählen alle Workflowordner, Konfigurationsdateien wie „host.json“ und „connections.json“ sowie alle anderen zugehörigen Dateien. Fügen Sie keine zusätzlichen Ordner hinzu, und platzieren Sie keine Artefakte in Ordnern, die noch nicht in Ihrer Projektstruktur vorhanden sind. Diese Liste zeigt ein Beispiel für die MyBuildArtifacts.zip-Dateistruktur:
+>
+> ```output
+> MyStatefulWorkflow1-Folder
+> MyStatefulWorkflow2-Folder
+> connections.json
+> host.json
+> ```
 
 ```azurecli
 az logicapp deployment source config-zip --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --src C:\uploads\v22.zip 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --src MyBuildArtifact.zip
 ```
 
 #### <a name="start-logic-app"></a>Starten einer Logik-App
@@ -217,17 +254,14 @@ az logicapp restart --name MyLogicAppName
 
 Führen Sie zum Löschen Ihrer Logik-App mit Azure Arc-Unterstützung den Befehl `az logicapp delete` mit den folgenden erforderlichen Parametern aus:
 
-Beispiel: 
-
 ```azurecli
-az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --subscription MySubscription
+az logicapp delete --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription
 ```
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Sie können Ihre Logik-App-Workflows von Anfang bis Ende in Visual Studio Code erstellen, bereitstellen und überwachen. Es gibt keine Änderungen oder Unterschiede bei den Designer-Funktionen zwischen der Entwicklung von Logik-App-Workflows, die in Azure Logic Apps mit einem einzelnen Mandanten ausgeführt werden, und Logic Apps mit Azure Arc-Unterstützung.
-
-#### <a name="create-and-deploy-logic-app-workflows"></a>Erstellen und Bereitstellen von Logik-App-Workflows
 
 1. Um ein Logik-App-Projekt zu erstellen, befolgen Sie die Voraussetzungen und Schritte in der Dokumentation [Erstellen von Integrationsworkflows in Azure Logic Apps mit einzelnem Mandanten mit Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md).
 
@@ -260,16 +294,14 @@ Sie können Ihre Logik-App-Workflows von Anfang bis Ende in Visual Studio Code e
 
 ### <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
 
-#### <a name="create-and-deploy-logic-app-workflows"></a>Erstellen und Bereitstellen von Logik-App-Workflows
-
 Die Bearbeitungsfunktion des portalbasierten Designers wird derzeit für Logic Apps mit Azure Arc-Unterstützung entwickelt. Sie können Ihre Logik-Apps mithilfe des portalbasierten Designers erstellen, bereitstellen und anzeigen, Sie können sie jedoch nach der Bereitstellung nicht mehr im Portal bearbeiten. Vorerst können Sie ein Logik-App-Projekt lokal in Visual Studio Code erstellen und bearbeiten und dann mithilfe von Visual Studio Code, der Azure CLI oder automatisierten Bereitstellungen bereitstellen.
 
-1. [Erstellen Sie im Portal eine **Logik-App-Ressource** (Standard)](create-single-tenant-workflows-azure-portal.md), stellen Sie dabei jedoch sicher, dass Sie den zuvor erstellten benutzerdefinierten Standort als Standort Ihrer App verwenden.
+1. Verwenden Sie das Azure-Portal, und [erstellen Sie eine Ressource für eine **Logik- App (Standard)** ](create-single-tenant-workflows-azure-portal.md). Wählen Sie für das Ziel **Veröffentlichen** die Option **Docker-Container** aus. Wählen Sie unter **Region** Ihren zuvor erstellen benutzerdefinierten Speicherort als Speicherort für die App aus.
+
+   Standardmäßig wird die **Logik-App-Ressource (Standard)** in Azure Logic Apps mit einzelnem Mandanten ausgeführt. Für Logic Apps mit Azure Arc-Unterstützung wird Ihre Logik-App-Ressource jedoch an dem benutzerdefinierten Standort ausgeführt, den Sie für Ihre Kubernetes-Umgebung erstellt haben. Außerdem müssen Sie nicht selbst einen App-Service-Plan erstellen – dieser wird für Sie erstellt.
 
    > [!IMPORTANT]
-   > Die Standorte für Ihre Logik-App-Ressource, den benutzerdefinierten Standort und die Kubernetes-Umgebung müssen identisch sein.
-
-   Standardmäßig wird die **Logik-App-Ressource (Standard)** in Azure Logic Apps mit einzelnem Mandanten ausgeführt. Für Logic Apps mit Azure Arc-Unterstützung wird Ihre Logik-App-Ressource jedoch an dem benutzerdefinierten Standort ausgeführt, den Sie für Ihre Kubernetes-Umgebung erstellt haben. Außerdem müssen Sie keinen App-Service-Plan erstellen, der für Sie erstellt wird.
+   > Die Ressourcenstandorte für Ihre Logik-App, den benutzerdefinierten Standort und die Kubernetes-Umgebung müssen identisch sein.
 
 1. [Bearbeiten Sie die Logik-App mithilfe von Visual Studio Code, und stellen Sie sie bereit](create-single-tenant-workflows-visual-studio-code.md).
 
@@ -358,7 +390,7 @@ Fügen Sie in Ihrer ARM-Vorlage (Azure Resource Manager) die folgende Ressourcen
 }
 ```
 
-Weitere Informationen finden Sie in der Dokumentation zu [Microsoft.Web/connections/accesspolicies (ARM-Vorlage)](/templates/microsoft.web/connections?tabs=json). 
+Weitere Informationen finden Sie in der Dokumentation zu [Microsoft.Web/connections/accesspolicies (ARM-Vorlage)](/azure/templates/microsoft.web/connections?tabs=json). 
 
 #### <a name="azure-portal"></a>Azure-Portal
 
@@ -369,7 +401,7 @@ Verwenden Sie für diese Aufgabe Ihre zuvor gespeicherte Client-ID als *Anwendun
 1. Wählen Sie unter **API-Verbindungen** eine Verbindung aus (in diesem Beispiel `office365`).
 
 1. Wählen Sie im Menü der Verbindung unter **Einstellungen** die Option **Zugriffsrichtlinien** > **Hinzufügen** aus.
- 
+
 1. Suchen Sie im Bereich **Zugriffsrichtlinie hinzufügen** im Suchfeld nach Ihrer zuvor gespeicherten Client-ID, und wählen Sie sie aus.
 
 1. Wenn Sie fertig sind, wählen Sie **Hinzufügen** aus.
@@ -391,7 +423,7 @@ Fügen Sie in Ihre [ARM-Vorlage (Azure Resource Manager)](../azure-resource-mana
 
 | Element | JSON-Eigenschaft | BESCHREIBUNG |
 |------|---------------|-------------|
-| Standort | `location` | Stellen Sie sicher, dass Sie denselben Ressourcenstandort (Azure-Region) wie für Ihren benutzerdefinierten Standort und Ihre Kubernetes-Umgebung verwenden. Die Standorte für Ihre Logik-App-Ressource, den benutzerdefinierten Standort und die Kubernetes-Umgebung müssen identisch sein. <p><p>**Hinweis**: Dieser Wert ist *nicht identisch mit dem Namen Ihres benutzerdefinierten Standorts*. |
+| Standort | `location` | Stellen Sie sicher, dass Sie denselben Ressourcenstandort (Azure-Region) wie für Ihren benutzerdefinierten Standort und Ihre Kubernetes-Umgebung verwenden. Die Ressourcenstandorte für Ihre Logik-App, den benutzerdefinierten Standort und die Kubernetes-Umgebung müssen identisch sein. <p><p>**Hinweis**: Dieser Wert ist *nicht identisch mit dem Namen Ihres benutzerdefinierten Standorts*. |
 | App-Art | `kind` | Der Typ der App, die Sie bereitstellen, damit die Azure-Plattform Ihre App identifizieren kann. Für Azure Logic Apps sehen diese Informationen wie im folgenden Beispiel aus: `kubernetes,functionapp,workflowapp,linux` |
 | Erweiterter Standort | `extendedLocation` | Für dieses Objekt muss das Element `"name"` Ihres *benutzerdefinierten Standorts* für Ihre Kubernetes-Umgebung vorhanden sein, und `"type"` muss auf `"CustomLocation"` festgelegt sein. |
 | Ressourcen-ID des Hostingplans | `serverFarmId` | Die Ressourcen-ID des zugeordneten App Service-Plans, die wie folgt formatiert ist: <p><p>`"/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}"` |
@@ -400,7 +432,7 @@ Fügen Sie in Ihre [ARM-Vorlage (Azure Resource Manager)](../azure-resource-mana
 
 #### <a name="arm-template"></a>ARM-Vorlage
 
-Das folgende Beispiel beschreibt eine beispielhafte Logic Apps-Ressourcendefinition mit Azure Arc-Unterstützung, die Sie in Ihrer ARM-Vorlage verwenden können. Weitere Informationen finden Sie in der Dokumentation zu [Microsoft.Web/sites – Vorlagenformat (JSON)](/templates/microsoft.web/sites?tabs=json).
+Das folgende Beispiel beschreibt eine beispielhafte Logic Apps-Ressourcendefinition mit Azure Arc-Unterstützung, die Sie in Ihrer ARM-Vorlage verwenden können. Weitere Informationen finden Sie in der Dokumentation zu [Microsoft.Web/sites – Vorlagenformat (JSON)](/azure/templates/microsoft.web/sites?tabs=json).
 
 ```json
 {
@@ -483,7 +515,7 @@ Fügen Sie diese Werte in Ihre Vorlage ein, um auf Ihre Docker-Registrierung und
 
 #### <a name="arm-template"></a>ARM-Vorlage
 
-Das folgende Beispiel beschreibt eine beispielhafte Logic Apps-Ressourcendefinition mit Azure Arc-Unterstützung, die Sie in Ihrer ARM-Vorlage verwenden können. Weitere Informationen finden Sie in der Dokumentation zu [Microsoft.Web/sites – Vorlagenformat (ARM-Vorlage)](/templates/microsoft.web/sites?tabs=json).
+Das folgende Beispiel beschreibt eine beispielhafte Logic Apps-Ressourcendefinition mit Azure Arc-Unterstützung, die Sie in Ihrer ARM-Vorlage verwenden können. Weitere Informationen finden Sie in der Dokumentation zu [Microsoft.Web/sites – Vorlagenformat (ARM-Vorlage)](/azure/templates/microsoft.web/sites?tabs=json).
 
 ```json
 {
@@ -558,7 +590,7 @@ Fügen Sie in Ihre [ARM-Vorlage (Azure Resource Manager)](../azure-resource-mana
 
 | Element | JSON-Eigenschaft | BESCHREIBUNG |
 |------|---------------|-------------|
-| Standort | `location` | Stellen Sie sicher, dass Sie denselben Ressourcenstandort (Azure-Region) wie für Ihren benutzerdefinierten Standort und Ihre Kubernetes-Umgebung verwenden. Die Standorte für Ihre Logik-App-Ressource, den benutzerdefinierten Standort und die Kubernetes-Umgebung müssen identisch sein. <p><p>**Hinweis**: Dieser Wert ist *nicht identisch mit dem Namen Ihres benutzerdefinierten Standorts*. |
+| Standort | `location` | Stellen Sie sicher, dass Sie denselben Ressourcenstandort (Azure-Region) wie für Ihren benutzerdefinierten Standort und Ihre Kubernetes-Umgebung verwenden. Die Ressourcenstandorte für Ihre Logik-App, den benutzerdefinierten Standort und die Kubernetes-Umgebung müssen identisch sein. <p><p>**Hinweis**: Dieser Wert ist *nicht identisch mit dem Namen Ihres benutzerdefinierten Standorts*. |
 | Typ | `kind` | Die Art des bereitzustellenden App Service-Plans. Dies muss `kubernetes,linux` sein. |
 | Erweiterter Standort | `extendedLocation` | Für dieses Objekt muss das Element `"name"` Ihres *benutzerdefinierten Standorts* für Ihre Kubernetes-Umgebung vorhanden sein, und `"type"` muss auf `"CustomLocation"` festgelegt sein. |
 | Name des Hostingplans | `name` | Der Name für den App Service-Plan. |
@@ -568,7 +600,7 @@ Fügen Sie in Ihre [ARM-Vorlage (Azure Resource Manager)](../azure-resource-mana
 
 #### <a name="arm-template"></a>ARM-Vorlage
 
-Im folgenden Beispiel wird eine Beispielressourcendefinition für den App Service-Plan beschrieben, die Sie mithilfe Ihrer App-Bereitstellung verwenden können. Weitere Informationen finden Sie in der Dokumentation zu [Microsoft.Web/serverfarms – Vorlagenformat (ARM-Vorlage)](/templates/microsoft.web/serverfarms?tabs=json).
+Im folgenden Beispiel wird eine Beispielressourcendefinition für den App Service-Plan beschrieben, die Sie mithilfe Ihrer App-Bereitstellung verwenden können. Weitere Informationen finden Sie in der Dokumentation zu [Microsoft.Web/serverfarms – Vorlagenformat (ARM-Vorlage)](/azure/templates/microsoft.web/serverfarms?tabs=json).
 
 ```json
 {
@@ -634,12 +666,12 @@ Um dieses Maximum zu ändern, verwenden Sie die Azure CLI (nur Erstellen der Log
 
 #### <a name="azure-cli"></a>Azure CLI
 
-Für eine neue Logik-App führen Sie den Azure CLI-Befehl, `az logicapp create`, aus. Beispiel:
+Um eine neue Logik-App zu erstellen, führen Sie den Befehl `az logicapp create` mit den folgenden Parametern aus:
 
 ```azurecli
-az logicapp create --resource-group MyResourceGroupName 
-   --name MyLogicAppName --storage-account MyStorageAccount 
-   --custom-location --subscription MySubscription  MyCustomLocation 
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation 
    [--plan MyHostingPlan] [--min-worker-count 1] [--max-worker-count 4]
 ```
 
@@ -647,9 +679,8 @@ Verwenden Sie den Parameter `--settings`, um die maximale Anzahl von Instanzen z
 
 ```azurecli
 az logicapp config appsettings set --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --settings "K8SE_APP_MAX_INSTANCE_COUNT=10" 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription
+   --settings "K8SE_APP_MAX_INSTANCE_COUNT=10"
 ```
 
 #### <a name="azure-portal"></a>Azure-Portal
@@ -657,7 +688,9 @@ az logicapp config appsettings set --name MyLogicAppName
 Fügen Sie in den Einstellungen Ihrer auf einem einzelnen Mandanten basierenden Logik-App den Einstellungswert `K8SE_APP_MAX_INSTANCE_COUNT` hinzu oder bearbeiten Sie diesen, indem Sie die folgenden Schritte ausführen:
 
 1. Suchen Sie im Azure-Portal Ihre auf einem einzelnen Mandanten basierende Logik-App, und öffnen Sie diese.
+
 1. Wählen Sie im Menü der Logik-App unter **Einstellungen** die Option **Konfiguration** aus.
+
 1. Fügen Sie im Bereich **Konfiguration** unter **Anwendungseinstellungen** entweder eine neue Anwendungseinstellung hinzu, oder bearbeiten Sie den vorhandenen Wert, sofern er bereits hinzugefügt wurde.
 
    1. Wählen Sie **Neue Anwendungseinstellung** aus, und fügen Sie die `K8SE_APP_MAX_INSTANCE_COUNT`-Einstellung mit dem gewünschten maximalen Wert hinzu.
@@ -674,19 +707,20 @@ Verwenden Sie die Azure CLI oder das Azure-Portal, um diesen minimalen Wert zu �
 
 #### <a name="azure-cli"></a>Azure CLI
 
-Führen Sie für eine vorhandene Logik-App-Ressource den Azure CLI-Befehl `az logicapp scale` aus. Beispiel:
+Für eine vorhandene Logik-App-Ressource führen Sie den Befehl `az logicapp scale` mit den folgenden Parametern aus:
 
 ```azurecli
-az logicapp scale --name MyLogicAppName --resource-group MyResourceGroupName 
-   --instance-count 5 --subscription MySubscription
+az logicapp scale --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --instance-count 5 
 ```
 
-Für eine neue Logik-App führen Sie den Azure CLI-Befehl, `az logicapp create`, aus. Beispiel:
+Um eine neue Logik-App zu erstellen, führen Sie den Befehl `az logicapp create` mit den folgenden Parametern aus:
 
 ```azurecli
-az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName 
-   --storage-account MyStorageAccount --custom-location 
-   --subscription MySubscription MyCustomLocation 
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation 
    [--plan MyHostingPlan] [--min-worker-count 2] [--max-worker-count 4]
 ```
 
@@ -695,8 +729,11 @@ az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName
 Ändern Sie in den Einstellungen Ihrer auf einem einzelnen Mandanten basierenden Logik-App den Eigenschaftswert **Aufskalieren**, indem Sie die folgenden Schritte ausführen:
 
 1. Suchen Sie im Azure-Portal Ihre auf einem einzelnen Mandanten basierende Logik-App, und öffnen Sie diese.
+
 1. Wählen Sie im Menü der Logik-App unter **Einstellungen** die Option **Aufskalieren** aus.
+
 1. Ziehen Sie im Bereich **Aufskalieren** den Schieberegler für die Mindestanzahl der Instanzen auf den gewünschten Wert.
+
 1. Speichern Sie Ihre Änderungen, wenn Sie fertig sind.
 
 ## <a name="troubleshoot-problems"></a>Behandeln von Problemen
@@ -705,37 +742,36 @@ Versuchen Sie die folgenden Optionen, um weitere Informationen über Ihre bereit
 
 ### <a name="access-app-settings-and-configuration"></a>Zugreifen auf App-Einstellungen und die Konfiguration
 
-Führen Sie den folgenden Azure CLI-Befehl aus, um auf Ihre App-Einstellungen zuzugreifen:
+Um auf Ihre App-Einstellungen zuzugreifen, führen Sie den Befehl `az logicapp config appsettings` mit den folgenden Parametern aus:
 
 ```azurecli
 az logicapp config appsettings list --name MyLogicAppName 
    --resource-group MyResourceGroupName --subscription MySubscription
 ```
 
-Führen Sie den Befehl `az logicapp config appsettings set` wie folgt aus, um eine App-Einstellung zu konfigurieren. Stellen Sie sicher, dass Sie den Parameter `--settings` mit dem Namen und Wert Ihrer Einstellung verwenden.
+Um eine App-Einstellung zu konfigurieren, führen Sie den Befehl `az logicapp config appsettings set` mit den folgenden Parametern aus. Stellen Sie sicher, dass Sie den Parameter `--settings` mit dem Namen und Wert Ihrer Einstellung verwenden.
 
 ```azurecli
 az logicapp config appsettings set --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --settings "MySetting=1" 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --settings "MySetting=1"
 ```
 
-Führen Sie den Befehl `az logicapp config appsettings delete` wie folgt aus, um eine App-Einstellung zu löschen. Stellen Sie sicher, dass Sie den Parameter `--setting-names` mit dem Namen der Einstellung verwenden, die Sie löschen möchten.
+Um eine App-Einstellung zu löschen, führen Sie den Befehl `az logicapp config appsettings delete` mit den folgenden Parametern aus. Stellen Sie sicher, dass Sie den Parameter `--setting-names` mit dem Namen der Einstellung verwenden, die Sie löschen möchten.
 
 ```azurecli
 az logicapp config appsettings delete --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --setting-names MySetting 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription
+   --setting-names MySetting
 ```
 
 ### <a name="view-logic-app-properties"></a>Anzeigen von Logik-App-Eigenschaften
 
-Um die Informationen und Eigenschaften Ihrer App anzuzeigen, führen Sie den folgenden Azure CLI-Befehl aus: 
+Um die Informationen und Eigenschaften Ihrer App anzuzeigen, führen Sie den Befehl `az logicapp show` mit den folgenden Parametern aus:
 
 ```azurecli
-az logicapp show --name MyLogicAppName --resource-group MyResourceGroupName --subscription MySubscription
+az logicapp show --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription
 ```
 
 ### <a name="monitor-workflow-activity"></a>Überwachen der Workflowaktivität
@@ -754,4 +790,4 @@ Wenn Sie protokollierte Daten zu Ihrer Logik-App abrufen möchten, aktivieren Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu [Logic Apps mit Azure Arc-Unterstützung](azure-arc-enabled-logic-apps-overview.md)
+- [Informationen zu Azure Arc-fähigen Logik-Apps](azure-arc-enabled-logic-apps-overview.md)

@@ -4,18 +4,20 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 07/13/2020
 ms.author: jingwang
-ms.openlocfilehash: f2d93449744ea7993ec22f200c51fea8280d1576
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 66b7159d19838cf08158d794f9b8e8819efc3f41
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747795"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112041709"
 ---
 <!--
-    Separate the generic requirement on Self-hosted Integration Runtime set-up from connector articles.
+    Separate the generic requirement on Self-hosted Integration Runtime setup from connector articles.
 -->
 Wenn sich Ihr Datenspeicher in einem lokalen Netzwerk, in einem virtuellen Azure-Netzwerk oder in einer virtuellen privaten Amazon-Cloud befindet, müssen Sie eine [selbstgehostete Integration Runtime](../create-self-hosted-integration-runtime.md) konfigurieren, um eine Verbindung herzustellen.
 
-Handelt es sich bei Ihrem Datenspeicher um einen verwalteten Clouddatendienst, können Sie alternativ Azure Integration Runtime verwenden. Ist der Zugriff auf IP-Adressen beschränkt, die in den Firewallregeln genehmigt sind, können Sie [Azure Integration Runtime-IPs](../azure-integration-runtime-ip-addresses.md) zur Positivliste hinzufügen. 
+Handelt es sich bei Ihrem Datenspeicher um einen verwalteten Clouddatendienst, können Sie die Azure Integration Runtime verwenden. Ist der Zugriff auf IP-Adressen beschränkt, die in den Firewallregeln genehmigt sind, können Sie [Azure Integration Runtime-IPs](../azure-integration-runtime-ip-addresses.md) zur Positivliste hinzufügen. 
+
+Sie können auch das Feature [managed virtual network integration runtime](../tutorial-managed-virtual-network-on-premise-sql-server.md) (Integration Runtime für verwaltete virtuelle Netzwerke) in Azure Data Factory verwenden, um auf das lokale Netzwerk zuzugreifen, ohne eine selbstgehostete Integration Runtime zu installieren und zu konfigurieren.
 
 Weitere Informationen zu den von Data Factory unterstützten Netzwerksicherheitsmechanismen und -optionen finden Sie unter [Datenzugriffsstrategien](../data-access-strategies.md).

@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Twilio für Sprachanrufe und SMS (Python) | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Codebeispiele wurden in Python geschrieben.
+description: Hier erfahren Sie, wie Sie mit dem Twilio-API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Codebeispiele wurden in Python geschrieben.
 services: ''
 documentationcenter: python
 author: georgewallace
@@ -13,54 +13,58 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: fc1400ef97c93e356b3b2d34fb9cfb29b792c3fc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6d2f2b9cd145a2472ccc9ed24fd78f30107db710
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135579"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463807"
 ---
-# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen in Python
-Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anwendungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
+# <a name="use-twilio-for-voice-and-sms-capabilities-in-python"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen in Python
+In diesem Artikel wird veranschaulicht, wie gängige Programmieraufgaben mit dem Twilio-API-Dienst in Azure ausgeführt werden. Die behandelten Szenarios umfassen das Tätigen eines Telefonanrufs und das Senden einer SMS-Nachricht (Short Message Service). 
+
+Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anweisungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
 
 ## <a name="what-is-twilio"></a><a id="WhatIs"></a>Was ist Twilio?
-Twilio ist ein leistungsstarkes und zukunftsorientiertes Tool für die Unternehmenskommunikation, mit dem Entwickler Telefonie-, VoIP- und Messagingfunktionalitäten in Anwendungen einbetten können. Die gesamte in einer cloudbasierten, globalen Umgebung benötigte Infrastruktur wird virtualisiert und über die Twilio-API-Kommunikationsplattform zur Verfügung gestellt. Anwendungen können einfach erstellt und skaliert werden. Sie profitieren von flexiblen Pay-as-you-go-Preisen und der Zuverlässigkeit der Cloud.
+Mit Twilio können Entwickler Sprachfunktionen, die Sprachtelefonie über IP (VoIP) und das Messaging in Anwendungen einbetten. Entwickler virtualisieren die gesamte erforderliche Infrastruktur in einer cloudbasierten, globalen Umgebung und machen diese über die Twilio-API-Plattform verfügbar. Anwendungen können einfach erstellt und skaliert werden.
 
-**Twilio Voice** ermöglicht Anwendungen das Tätigen und Entgegennehmen von Telefonanrufen.
-**Twilio SMS** ermöglicht Ihren Anwendungen das Senden und Empfangen von SMS-Nachrichten.
-**Twilio Client** ermöglicht Ihnen das Tätigen von VoIP-Anrufen von jedem Telefon, Tablet-PC oder Browser und unterstützt WebRTC.
+Zu den Twilio-Komponenten gehören folgende:
+
+- **Twilio Voice:** Hiermit können Ihre Anwendungen Telefonanrufe tätigen und empfangen.
+- **Twilio SMS:** Hiermit kann Ihre Anwendung Textnachrichten senden und empfangen.
+- **Twilio Client:** Hiermit können Sie VoIP-Anrufe von jedem Telefon, Tablet oder Browser aus tätigen. Dabei wird die WebRTC-Spezifikation für die Echtzeitkommunikation unterstützt.
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio-Preise und -Sonderangebote
-Azure-Kunden erhalten ein [Sonderangebot][special_offer]: eine Twilio-Gutschrift in Höhe von 10 US-Dollar bei einem Upgrade Ihres Twilio-Kontos. Diese Twilio-Gutschrift kann für jede beliebige Twilio-Nutzung ausgegeben werden (eine Gutschrift von 10 US-Dollar reicht für den Versand von 1.000 SMS-Nachrichten oder für bis zu 1.000 eingehende Telefonminuten, abhängig vom Standort der Telefonnummer und dem Nachrichten- oder Anrufziel). Lösen Sie diese [Twilio-Gutschrift][special_offer] ein, und legen Sie los.
+Azure-Kunden erhalten ein [spezielles Angebot][special_offer]: eine Twilio-Gutschrift in Höhe von 10 US-Dollar bei einem Upgrade Ihres Twilio-Kontos. Diese Gutschrift kann für jede beliebige Twilio-Nutzung eingesetzt werden. Eine Gutschrift von 10 US-Dollar reicht für den Versand von 1.000 SMS-Nachrichten oder für bis zu 1.000 eingehende Telefonminuten, abhängig vom Standort der Telefonnummer und dem Nachrichten- oder Anrufziel.
 
 Twilio ist ein Pay-as-you-go-Dienst, also vertragsungebunden. Es fallen keine Einrichtungsgebühren an, und Sie können Ihr Konto jederzeit schließen. Weitere Informationen finden Sie unter [Twilio-Preise][twilio_pricing].
 
 ## <a name="concepts"></a><a id="Concepts"></a>Konzepte
-Die Twilio-API ist eine RESTful-API, die Telefonie- und SMS-Funktionen für Anwendungen bereitstellt. Clientbibliotheken stehen in mehreren Sprachen zur Verfügung. Eine Liste finden Sie unter [Twilio-API-Bibliotheken][twilio_libraries].
+Die Twilio-API ist eine RESTful-API, die Telefonie- und SMS-Funktionen für Anwendungen bereitstellt. Clientbibliotheken stehen in mehreren Sprachen zur Verfügung. Eine Liste finden Sie in den [Twilio-API-Bibliotheken][twilio_libraries].
 
 Schlüsselaspekte der Twilio API sind Twilio-Verben und die Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio-Verben
-Die API verwendet Twilio-Verben; so weist beispielsweise das Verb **&lt;Say&gt;** Twilio an, eine Nachricht in einem Anruf akustisch zu übermitteln.
-
-Nachfolgend finden Sie eine Liste mit Twilio-Verben. Andere Verben und Funktionen werden in der [Twilio Markup Language documentation (Dokumentation zur Twilio Markup Language)][twiml] erläutert.
+Die API verwendet Verben wie die folgenden, um Twilio mitzuteilen, was zu tun ist:
 
 * **&lt;Dial&gt;** : Verbindet den Anrufer mit einem anderen Telefon.
 * **&lt;Gather&gt;** : Erfasst Ziffern, die über die Telefontasten eingegeben werden.
 * **&lt;Hangup&gt;** : Beendet einen Anruf.
 * **&lt;Pause&gt;** : Wartet ohne Ton für eine angegebene Anzahl von Sekunden.
 * **&lt;Play&gt;** : Gibt eine Audiodatei wieder.
-* **&lt;Queue&gt;** : Hinzufügen an eine Warteschlange von Aufrufern.
+* **&lt;Queue&gt;** : Hiermit wird das Element zu einer Warteschlange von Aufrufern hinzugefügt.
 * **&lt;Record&gt;** : Zeichnet die Stimme des Anrufers auf und gibt eine URL einer Datei mit der Aufzeichnung zurück.
 * **&lt;Redirect&gt;** : Überträgt die Steuerung eines Anrufs oder einer SMS an die TwiML an einer anderen URL.
 * **&lt;Reject&gt;** : Lehnt einen bei Ihrer Twilio-Nummer eingehenden Anruf ab, ohne dass Ihnen Kosten entstehen.
-* **&lt;Say&gt;** : Konvertiert Text in Sprache für einen Anruf.
+* **&lt;Say&gt;** : Hiermit wird bei einem Aufruf Text in Sprache konvertiert.
 * **&lt;Sms&gt;** : Sendet eine SMS-Nachricht.
 
-### <a name="twiml"></a><a id="TwiML"></a>TwiML
-TwiML ist ein Satz XML-basierter Anweisungen auf Grundlage der Twilio-Verben, die Twilio anweisen, wie ein Anruf oder eine SMS verarbeitet werden soll.
+Andere Verben und Funktionen werden in der [Dokumentation zur Twilio Markup Language][twiml] erläutert.
 
-Die TwiML im folgenden Beispiel konvertiert den Text **Hello World** in Sprache.
+### <a name="twiml"></a><a id="TwiML"></a>TwiML
+TwiML ist eine Gruppe XML-basierter Anweisungen, die auf Twilio-Verben basieren und Twilio anweisen, wie ein Anruf oder eine SMS-Nachricht verarbeitet werden soll.
+
+Die TwiML-Anweisung im folgenden Beispiel konvertiert den Text **Hello World** in Sprache:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -69,55 +73,51 @@ Die TwiML im folgenden Beispiel konvertiert den Text **Hello World** in Sprache.
   </Response>
 ```
 
-Wenn eine Anwendung die Twilio-API aufruft, ist einer der API-Parameter die URL, die die TwiML-Antwort zurückgibt. Zu Entwicklungszwecken können Sie die von Twilio zur Verfügung gestellten URLs verwenden, um die von Ihren Anwendungen verwendeten TwiML-Antworten bereitzustellen. Sie können auch Ihre eigenen URLs hosten, um TwiML-Antworten zu generieren; eine weitere Option ist die Verwendung des `TwiMLResponse`-Objekts.
-
-Weitere Informationen zu Twilio-Verben, ihren Attributen sowie TwiML finden Sie unter [TwiML][twiml]. Weitere Informationen zur Twilio-API finden Sie unter [Twilio-API][twilio_api].
+Wenn eine Anwendung die [Twilio-API][twilio_api] aufruft, ist einer der API-Parameter die URL, die die TwiML-Antwort zurückgibt. Zu Entwicklungszwecken können Sie von Twilio bereitgestellte URLs verwenden, um die von Ihren Anwendungen genutzten TwiML-Antworten bereitzustellen. Sie können auch Ihre eigenen URLs hosten, um TwiML-Antworten zu generieren. Eine weitere Option besteht in der Verwendung des `TwiMLResponse`-Objekts.
 
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>Erstellen von Twilio-Konten
 Wenn Sie ein Twilio-Konto erstellen möchten, melden Sie sich bei [Try Twilio][try_twilio] an. Sie können mit einem kostenlosen Konto beginnen und später ein Upgrade vornehmen.
 
-Wenn Sie sich für ein Twilio-Konto anmelden, erhalten Sie eine Konto-SID und ein Authentifizierungstoken. Beide Angaben benötigen Sie zum Tätigen von Twilio-API-Anrufen. Bewahren Sie Ihr Authentifizierungstoken sicher auf, um unbefugten Zugriff auf Ihr Konto zu verhindern. Ihre Konto-SID und das Authentifizierungstoken können Sie in der [Twilio-Konsole][twilio_console] in den Feldern **ACCOUNT SID** bzw. **AUTH TOKEN** einsehen.
+Wenn Sie sich für ein Twilio-Konto anmelden, erhalten Sie eine Konto-SID (Sicherheits-ID) und ein Authentifizierungstoken. Sie benötigen beides, um Twilio-API-Aufrufe durchführen zu können. Bewahren Sie Ihr Authentifizierungstoken sicher auf, um unbefugten Zugriff auf Ihr Konto zu verhindern. Ihre Konto-SID und das Authentifizierungstoken können Sie in der [Twilio-Konsole][twilio_console] in den Feldern **ACCOUNT SID** bzw. **AUTH TOKEN** einsehen.
 
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Erstellen einer Python-Anwendung
-Eine Python-Anwendung, die den Twilio-Dienst verwendet und in Azure ausgeführt wird, unterscheidet sich nicht von anderen Python-Anwendungen, die den Twilio-Dienst verwenden. Twilio-Dienste sind REST-basiert und können in Python auf verschiedene Arten aufgerufen werden. Dieser Artikel konzentriert sich auf die Verwendung von Twilio-Diensten mit der [Twilio-Bibliothek für Python von GitHub][twilio_python]. Weitere Informationen zur Verwendung der Twilio-Bibliothek für Python finden Sie unter [https://www.twilio.com/docs/libraries/python][twilio_lib_docs].
+Eine Python-Anwendung, die Twilio verwendet und in Azure ausgeführt wird, unterscheidet sich nicht von anderen Python-Anwendungen, die Twilio verwenden. Obwohl Twilio-Dienste REST-basiert sind und in Python auf verschiedene Arten aufgerufen werden können, konzentriert sich dieser Artikel auf die Verwendung von Twilio-Diensten mit der [Twilio-Bibliothek für Python von GitHub][twilio_python]. Weitere Informationen zur Verwendung dieser Bibliothek finden Sie in der [Dokumentation zur Twilio Python Helper Library][twilio_lib_docs].
 
-[Richten Sie zuerst eine neue Azure-Linux-VM ein][azure_vm_setup], die als Host für Ihre neue Python-Webanwendung fungiert. Sobald der virtuelle Computer ausgeführt wird, müssen Sie Ihre Anwendung auf einem öffentlichen Port verfügbar machen, wie unten beschrieben.
+[Richten Sie zuerst eine neue Azure-Linux-VM ein][azure_vm_setup], die als Host für Ihre neue Python-Webanwendung fungiert. Nachdem der virtuelle Computer ausgeführt wird, müssen Sie Ihre Anwendung an einem öffentlichen Port verfügbar machen.
 
-### <a name="add-an-incoming-rule"></a>Eine eingehende Regel hinzufügen
+So fügen Sie eine Eingangsregel hinzu:
   1. Rufen Sie die Seite [Netzwerksicherheitsgruppe][azure_nsg] auf.
-  2. Wählen Sie die mit Ihrem virtuellen Computer entsprechende Netzwerksicherheitsgruppe.
-  3. Hinzufügen einer **Ausgehenden Regel** für **Port 80**. Achten Sie darauf, dass Sie Eingehende von einer beliebigen Adresse zulassen.
+  2. Wählen Sie die Ihrem virtuellen Computer entsprechende Netzwerksicherheitsgruppe aus.
+  3. Fügen Sie die Informationen für die **Ausgangsregel** für **Port 80** hinzu. Achten Sie darauf, eingehende Aufrufe von allen beliebigen Adressen zuzulassen.
 
-### <a name="set-the-dns-name-label"></a>DNS-Namensbezeichnung eingeben
-  1. Navigieren Sie zur Seite [Die öffentlichen IP-Adressen][azure_ips].
+So legen Sie die DNS-Namensbezeichnung fest:
+  1. Navigieren Sie zur Seite [Verwalten öffentlicher IP-Adressen][azure_ips].
   2. Wählen Sie die öffentliche IP-Adresse aus, die Ihrem virtuellen Computer entspricht.
-  3. Legen Sie den **DNS-Namensbezeichnung** im Abschnitt **Konfiguration** fest. Bei diesem Beispiel sieht es etwa wie folgt *ihr Domänenname*.centralus.cloudapp.azure.com
+  3. Legen Sie die Information **DNS-Namensbezeichnung** im Abschnitt **Konfiguration** fest. In diesem Beispiel sieht dies etwa wie folgt aus: *\<your-domain-label\>.centralus.cloudapp.azure.com*.
 
-Sobald Sie über SSH eine Verbindung mit dem virtuellen Computer herstellen können, können Sie das Web Framework Ihrer Wahl installieren (die beiden am häufigsten bekannten in Python sind [Flask](http://flask.pocoo.org/) und [Django](https://www.djangoproject.com)). Sie können einem der beiden nur durch Ausführen des `pip install`-Befehls installieren.
+Nachdem Sie über SSH eine Verbindung mit dem virtuellen Computer herstellen konnten, können Sie das Webframework Ihrer Wahl installieren. Die beiden bekanntesten Webframeworks in Python sind [Flask](http://flask.pocoo.org/) und [Django](https://www.djangoproject.com). Sie können eine der beiden installieren, indem Sie den Befehl `pip install` ausführen.
 
-Bedenken Sie, dass wir den virtuellen Computer zum Zulassen von Datenverkehr nur an Port 80 konfiguriert haben. Stellen Sie sicher, dass die Anwendung für die Verwendung dieses Ports konfiguriert wird.
+Bedenken Sie, dass Sie den virtuellen Computer zum Zulassen von Datenverkehr nur an Port 80 konfiguriert haben. Stellen Sie daher sicher, dass Sie die Anwendung so konfigurieren, dass dieser Port verwendet wird.
 
-## <a name="configure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>Konfigurieren einer Anwendung für die Verwendung von Twilio-Bibliotheken
+## <a name="configure-your-application-to-use-the-twilio-library"></a><a id="configure_app"></a>Konfigurieren einer Anwendung für die Verwendung der Twilio-Bibliothek
 Sie können die Anwendung auf zwei verschiedene Arten für die Twilio-Bibliothek für Python konfigurieren:
 
-* Sie können die Twilio-Bibliothek für Python als Pip-Paket installieren. Führen Sie dazu die folgenden Befehle aus:
+* Installieren Sie die Twilio-Bibliothek für Python mithilfe des folgenden Befehls als PIP-Paket:
    
   `$ pip install twilio`
 
-    ODER
-
-* Laden Sie die Twilio-Bibliothek für Python von GitHub ([https://github.com/twilio/twilio-python][twilio_python]) herunter, und installieren Sie sie wie folgt:
+* Laden Sie die [Twilio-Bibliothek für Python von GitHub][twilio_python] herunter, und installieren Sie sie wie folgt:
 
   `$ python setup.py install`
 
-Nachdem Sie die Twilio-Bibliothek für Python installiert haben, können Sie es anschließend in Ihre Python-Dateien `import`:
+Nachdem Sie die Twilio-Bibliothek für Python installiert haben, können Sie sie in Ihre Python-Dateien importieren:
 
-  `import twilio`
+`import twilio`
 
-Weitere Informationen finden Sie unter [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.md).
+Weitere Informationen finden Sie in der [Infodatei für twilio-python](https://github.com/twilio/twilio-python/blob/master/README.md).
 
-## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Tätigen von ausgehenden Anrufen
-Im Folgenden ist dargestellt, wie Sie einen ausgehenden Anruf tätigen. Dieser Code verwendet eine von Twilio bereitgestellte Website für die Rückgabe der TwiML-Antwort (Twilio Markup Language). Geben Sie Ihre Werte für die Telefonnummern **from_number** und **to_number** ein, und stellen Sie sicher, dass Sie die **from_number**-Telefonnummer für Ihr Twilio-Konto verifiziert haben, bevor Sie den Code ausführen.
+## <a name="make-an-outgoing-call"></a><a id="howto_make_call"></a>Tätigen von ausgehenden Anrufen
+Das folgende Beispiel veranschaulicht, wie Sie einen ausgehenden Anruf tätigen. Dieser Code verwendet ebenfalls eine von Twilio bereitgestellte Website für die Rückgabe der TwiML-Antwort. Ersetzen Sie die Werte für die Telefonnummern `from_number` und `to_number`. Stellen Sie sicher, dass Sie vor der Ausführung des Codes die Telefonnummer `from_number` für Ihr Twilio-Konto überprüft haben.
 
 ```python
 from urllib.parse import urlencode
@@ -130,7 +130,7 @@ account_sid = "your_twilio_account_sid"
 auth_token = "your_twilio_authentication_token"
 
 # The number of the phone initiating the call.
-# This should either be a Twilio number or a number that you've verified
+# This should either be a Twilio number or a number that you've verified.
 from_number = "NNNNNNNNNNN"
 
 # The number of the phone receiving call.
@@ -153,12 +153,12 @@ print(call.sid)
 ```
 
 > [!IMPORTANT]
-> Telefonnummern sind mit "+" und Ländercode zu formatieren. Zum Beispiel: +16175551212 (E.164 Format). Twilio akzeptiert auch unformatierte US-Nummern. Beispiel: 415 oder 555-1212.
+> Telefonnummern sollten mit einem Pluszeichen und einem Ländercode formatiert werden. Ein Beispiel hierfür ist `+16175551212` (E.164-Format). Twilio akzeptiert auch unformatierte US-Nummern wie `(415) 555-1212` oder `415-555-1212`.
 
-Wie bereits erwähnt, verwendet dieser Code eine von Twilio bereitgestellte Website für die Rückgabe der TwiML-Antwort. Stattdessen können Sie die TwiML-Antwort auch von Ihrer eigenen Website bereitstellen lassen. Weitere Informationen dazu finden Sie unter [Bereitstellen von TwiML-Antworten von der eigenen Website](#howto_provide_twiml_responses).
+Dieser Code verwendet eine von Twilio bereitgestellte Website für die Rückgabe der TwiML-Antwort. Sie können stattdessen Ihre eigene Website verwenden, um die TwiML-Antwort bereitzustellen. Weitere Informationen finden Sie unter [Bereitstellen von TwiML-Antworten von der eigenen Website](#howto_provide_twiml_responses).
 
-## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Senden von SMS-Nachrichten
-Das folgende Beispiel zeigt, wie Sie eine SMS-Nachricht mit der `TwilioRestClient`-Klasse senden. Die **from_number**-Nummer wird von Twilio für Testkonten zum Senden von SMS-Nachrichten bereitgestellt. Die **to_number**-Nummer muss für Ihr Twilio-Konto überprüft werden, bevor Sie den Code ausführen.
+## <a name="send-an-sms-message"></a><a id="howto_send_sms"></a>Senden einer SMS
+Das folgende Beispiel zeigt, wie Sie mithilfe der `TwilioRestClient`-Klasse eine SMS-Nachricht senden. Twilio gibt die Nummer `from_number` für Testkonten zum Senden von SMS-Nachrichten an. Die `to_number` -Nummer muss für Ihr Twilio-Konto verifiziert werden, bevor Sie den Code ausführen.
 
 ```python
 # Import the Twilio Python Client.
@@ -168,7 +168,7 @@ from twilio.rest import TwilioRestClient
 account_sid = "your_twilio_account_sid"
 auth_token = "your_twilio_authentication_token"
 
-from_number = "NNNNNNNNNNN"  # With trial account, texts can only be sent from your Twilio number.
+from_number = "NNNNNNNNNNN"  # With a trial account, texts can only be sent from your Twilio number.
 to_number = "NNNNNNNNNNN"
 message = "Hello world."
 
@@ -181,10 +181,13 @@ message = client.messages.create(to=to_number,
                                     body=message)
 ```
 
-## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Bereitstellen von TwiML-Antworten von der eigenen Website
-Wenn Ihre Anwendung einen Anruf an die Twilio-API initiiert, sendet Twilio Ihre Anforderung an eine URL, von der die Rückgabe einer TwiML-Antwort erwartet wird. Das obige Beispiel verwendet die von Twilio bereitgestellte URL [https://twimlets.com/message][twimlet_message_url]. (TwiML wurde für die Verwendung durch Twilio konzipiert, kann jedoch im Browser angezeigt werden. Klicken Sie beispielsweise auf [https://twimlets.com/message][twimlet_message_url], um ein leeres `<Response>` -Element anzuzeigen. Ein weiteres Beispiel: Klicken Sie auf [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world], um ein `<Response>` -Element mit einem `<Say>` -Element anzuzeigen.)
+## <a name="provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Bereitstellen von TwiML-Antworten von der eigenen Website
+Wenn Ihre Anwendung einen Aufruf der Twilio-API startet, sendet Twilio Ihre Anforderung an eine URL, von der die Rückgabe einer TwiML-Antwort erwartet wird. Im vorausgehenden Beispiel wird die von Twilio bereitgestellte URL [https://twimlets.com/message][twimlet_message_url] verwendet. 
 
-Anstelle der von Twilio bereitgestellten URL können Sie auch Ihre eigene Website für die Rückgabe von HTTP-Antworten erstellen. Sie können die Website in allen Sprachen erstellen, die XML-Antworten zurückgeben. Dieses Beispiel geht davon aus, dass Sie die TwiML-Antwort mit Python erstellen.
+> [!NOTE]
+> Obwohl TwiML für die Verwendung durch Twilio konzipiert ist, kann TwiML dennoch im Browser angezeigt werden. Wählen Sie beispielsweise [https://twimlets.com/message][twimlet_message_url] aus, um ein leeres `<Response>` -Element anzuzeigen. Wählen Sie als weiteres Beispiel [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] aus, um ein `<Response>` -Element anzuzeigen, das ein `<Say>` -Element enthält.
+
+Anstelle der von Twilio bereitgestellten URL können Sie auch Ihre eigene Website für die Rückgabe von HTTP-Antworten erstellen. Sie können die Website mit jeder Sprache erstellen, die XML-Antworten zurückgibt. In diesem Artikel wird davon ausgegangen, dass Sie Python zum Erstellen von TwiML-Antworten verwenden.
 
 Die folgenden Beispiele geben eine TwiML-Antwort aus, die beim Anruf **Hello World** sagt.
 
@@ -207,7 +210,7 @@ def hello(request):
     return HttpResponse(xml, content_type='text/xml')
 ```
 
-Wie das vorstehende Beispiel zeigt, handelt es sich bei der TwiML-Antwort einfach um ein XML-Dokument. Die Twilio-Bibliothek für Python enthält Klassen, die TwiML für Sie generieren. Das folgende Beispiel generiert die gleiche Antwort wie oben, jedoch unter Verwendung des `twiml`-Moduls in der Twilio-Bibliothek für Python:
+Wie das vorherige Beispiel zeigt, handelt es sich bei der TwiML-Antwort einfach um ein XML-Dokument. Die Twilio-Bibliothek für Python enthält Klassen, die TwiML für Sie generieren. Das folgende Beispiel generiert die gleiche Antwort wie zuvor, jedoch unter Verwendung des `twiml`-Moduls in der Twilio-Bibliothek für Python:
 
 ```python
 from twilio import twiml
@@ -217,9 +220,9 @@ response.say("Hello world.")
 print(str(response))
 ```
 
-Weitere Informationen zu TwiML finden Sie unter [https://www.twilio.com/docs/api/twiml][twiml_reference].
+Weitere Informationen zu TwiML finden Sie in der [TwiML-Referenz][twiml_reference].
 
-Sobald Sie Ihre Python-Anwendung mit den TwiML-Antworten eingerichtet haben, können Sie die URL der Anwendung an die `client.calls.create`-Methode übergeben. Wenn Sie z.B. eine Webanwendung mit dem Namen **MyTwiML** für einen gehosteten Azure-Dienst bereitgestellt haben, können Sie die URL als Webhook verwenden, wie im folgenden Beispiel gezeigt:
+Nachdem Sie Ihre Python-Anwendung für das Zurückgeben von TwiML-Antworten eingerichtet haben, können Sie die URL der Anwendung an die `client.calls.create`-Methode übergeben. Wenn Sie beispielsweise eine Webanwendung mit dem Namen *MyTwiML* für einen gehosteten Azure-Dienst bereitgestellt haben, können Sie die URL wie im folgenden Beispiel gezeigt als Webhook verwenden:
 
 ```python
 from twilio.rest import TwilioRestClient
@@ -230,7 +233,7 @@ from_number = "NNNNNNNNNNN"
 to_number = "NNNNNNNNNNN"
 url = "http://your-domain-label.centralus.cloudapp.azure.com/MyTwiML/"
 
-# Initialize the Twilio client.
+# Initialize the Twilio Client.
 client = TwilioRestClient(account_sid, auth_token)
 
 # Make the call.
@@ -240,15 +243,15 @@ call = client.calls.create(to=to_number,
 print(call.sid)
 ```
 
-## <a name="how-to-use-additional-twilio-services"></a><a id="AdditionalServices"></a>Verwenden zusätzlicher Twilio-Dienste
+## <a name="use-additional-twilio-services"></a><a id="AdditionalServices"></a>Verwenden zusätzlicher Twilio-Dienste
 Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit denen Sie zusätzliche Twilio-Funktionen in Ihrer Azure-Anwendung verwenden können. Ausführliche Informationen finden Sie in der [Twilio API-Dokumentation][twilio_api].
 
 ## <a name="next-steps"></a><a id="NextSteps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie unter diesen Links weitere Informationen:
 
-* [Twilio Security Guidelines (Twilio-Sicherheitsrichtlinien)][twilio_security_guidelines]
+* [Twilio-Sicherheitsrichtlinien][twilio_security_guidelines]
 * [Twilio-Anleitungen und Beispielcode][twilio_howtos]
-* [Twilio-Schnellstart-Tutorials][twilio_quickstarts]
+* [Twilio-Schnellstarttutorials][twilio_quickstarts]
 * [Twilio auf GitHub][twilio_on_github]
 * [Kontakt zum Twilio-Support][twilio_support]
 

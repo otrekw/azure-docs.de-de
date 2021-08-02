@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 24/02/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 49ab38b0fe9f8b61e42b60ba4637a58214c72520
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 73174081d416f8ff1ab532baaf62b5b466aeb178
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107925350"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110166245"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -21,6 +21,16 @@ ms.locfileid: "107925350"
 - Gehen Sie den Schnellstart [Erste Schritte beim Hinzufügen von Teams Embed zu Ihrer Anwendung](../getting-started-with-teams-embed.md) durch.
 
 ## <a name="teams-embed-events"></a>Teams Embed-Ereignisse
+
+Fügen Sie `MainActivity.java` den folgenden Code hinzu.
+
+```java
+import androidx.core.content.ContextCompat;
+import com.azure.android.communication.ui.meetings.MeetingUIClientCallState;
+import com.azure.android.communication.ui.meetings.MeetingUIClientEventListener;
+import com.azure.android.communication.ui.meetings.MeetingUIClientIdentityProvider;
+import com.azure.android.communication.ui.meetings.MeetingUIClientIdentityProviderCallback;
+```
 
 Fügen Sie Ihrer Klasse den `MeetingUIClientEventListener` hinzu.
 

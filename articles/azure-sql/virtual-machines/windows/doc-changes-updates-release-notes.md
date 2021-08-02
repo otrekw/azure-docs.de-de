@@ -7,21 +7,28 @@ ms.author: mathoma
 tags: azure-service-management
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: virtual-machines-sql
+ms.subservice: service-overview
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/25/2021
-ms.openlocfilehash: ba33373cb89e5d1faba0a9dc66233fc363e9e47d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 512d502dc5877c15086d69f96643d4251dfc167b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755655"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078688"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Dokumentationsänderungen für SQL Server auf virtuellen Azure-Computern
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL Server-Image bereitstellen. In diesem Artikel werden die Dokumentationsänderungen zusammengefasst, die mit neuen Funktionen und Verbesserungen in den neuesten Releases von [SQL Server in Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) in Zusammenhang stehen. 
+
+## <a name="may-2021"></a>Mai 2021
+
+| Änderungen | Details |
+| --- | --- |
+| **Überarbeitete Inhalte in HADR** | Wir haben Inhalte in HADR (High Availability and Disaster Recovery, Hochverfügbarkeit und Notfallwiederherstellung) aktualisiert und verbessert. Es gibt jetzt eine [Übersicht des Windows Server-Failoverclusters](hadr-windows-server-failover-cluster-overview.md)sowie eine konsolidierte [Anleitung zum Konfigurieren des Quorums](hadr-cluster-quorum-configure-how-to.md) für SQL Server-VMs.  Darüber hinaus haben wir die [Best Practices für Cluster](hadr-cluster-best-practices.md) durch umfassendere, an die Cloud angepasste Einstellungsempfehlungen erweitert.| 
 
 
 ## <a name="april-2021"></a>April 2021
@@ -104,5 +111,5 @@ In Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL 
 
 * [Übersicht über SQL Server auf einem virtuellen Linux-Computer](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Bereitstellen eines virtuellen SQL Server-Computers über das Azure-Portal](../linux/sql-vm-create-portal-quickstart.md)
-* [Häufig gestellte Fragen (Linux)](../linux/frequently-asked-questions-faq.md)
+* [Häufig gestellte Fragen (Linux)](../linux/frequently-asked-questions-faq.yml)
 * [SQL Server unter Linux – Dokumentation](/sql/linux/sql-server-linux-overview)

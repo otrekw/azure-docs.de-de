@@ -1,24 +1,24 @@
 ---
-title: Liste der erforderlichen URLs für Windows Virtual Desktop – Azure
-description: Eine Liste der URLs, die Sie freigeben müssen, um sicherzustellen, dass Ihre Windows Virtual Desktop-Bereitstellung wie vorgesehen funktioniert.
+title: Liste der erforderlichen URLs für Azure Virtual Desktop – Azure
+description: Eine Liste der URLs, die Sie entsperren müssen, um sicherzustellen, dass Ihre Azure Virtual Desktop-Bereitstellung wie vorgesehen funktioniert.
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 183b956c0ec38101f7875fe01dd7c6ef9c8c8c8f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 7206b035724027f346fe49c8834c2fd35ec83af9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891678"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752961"
 ---
 # <a name="required-url-list"></a>Erforderliche URL-Liste
 
-Damit Sie Windows Virtual Desktop bereitstellen und verwenden können, müssen Sie bestimmte URLs freigeben, sodass Ihre virtuellen Computer (VMs) jederzeit auf diese zugreifen können. In diesem Artikel werden die erforderlichen URLs aufgelistet, die Sie für die ordnungsgemäße Funktion von Windows Virtual Desktop freigeben müssen. 
+Damit Sie Azure Virtual Desktop bereitstellen und verwenden können, müssen Sie bestimmte URLs freigeben, damit Ihre VMs jederzeit darauf zugreifen können. In diesem Artikel werden die erforderlichen URLs aufgelistet, die Sie für die ordnungsgemäße Funktion von Azure Virtual Desktop entsperren müssen. 
 
 >[!IMPORTANT]
->Windows Virtual Desktop unterstützt keine Bereitstellungen, die die in diesem Artikel aufgeführten URLs blockieren.
+>Azure Virtual Desktop unterstützt keine Bereitstellungen, die die in diesem Artikel aufgeführten URLs blockieren.
 
 ## <a name="required-url-check-tool"></a>Erforderliches URL-Überprüfungstool
 
@@ -29,7 +29,7 @@ Dabei sollten Sie unbedingt folgendes berücksichtigen:
 - Sie können das erforderliche URL-Überprüfungstool nur für Bereitstellungen in kommerziellen Clouds verwenden.
 - Das erforderliche URL-Überprüfungstool kann URLs nicht mit Platzhaltern überprüfen. Stellen Sie daher sicher, dass Sie die Blockierung dieser URLs zuerst entsperren.
 
-### <a name="requirements"></a>Anforderungen
+### <a name="requirements"></a>Requirements (Anforderungen)
 
 Sie benötigen Folgendes, um das erforderliche URL-Überprüfungstool zu verwenden:
 
@@ -68,7 +68,7 @@ Wie das erforderliche URL-Überprüfungstool verwendet wird:
 
 ## <a name="virtual-machines"></a>Virtuelle Computer
 
-Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen über Zugriff auf die folgenden URLs in der kommerziellen Azure-Cloud verfügen:
+Die Azure-VMs, die Sie für Azure Virtual Desktop erstellen, müssen über Zugriff auf die folgenden URLs in der kommerziellen Azure-Cloud verfügen:
 
 |Adresse|Ausgehender TCP-Port|Zweck|Diensttag|
 |---|---|---|---|
@@ -87,11 +87,11 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 | 168.63.129.16 | 80 | [Sitzungshost-Systemüberwachung](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | – |
 
 >[!IMPORTANT]
->Windows Virtual Desktop unterstützt jetzt das FQDN-Tag. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md).
+>Azure Virtual Desktop unterstützt jetzt das FQDN-Tag. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md).
 >
->Wir empfehlen Ihnen, FQDN- oder Diensttags anstelle von URLs zu verwenden, um Dienstprobleme zu verhindern. Die aufgeführten URLs und Tags beziehen sich nur auf Windows Virtual Desktop-Websites und -Ressourcen. Sie enthalten keine URLs für andere Dienste, z. B. Azure Active Directory.
+>Wir empfehlen Ihnen, FQDN- oder Diensttags anstelle von URLs zu verwenden, um Dienstprobleme zu verhindern. Die aufgeführten URLs und Tags beziehen sich nur auf Azure Virtual Desktop-Websites und -Ressourcen. Sie enthalten keine URLs für andere Dienste, z. B. Azure Active Directory.
 
-Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen über Zugriff auf die folgenden URLs in der Azure Government-Cloud verfügen:
+Die Azure-VMs, die Sie für Azure Virtual Desktop erstellen, müssen über Zugriff auf die folgenden URLs in der Azure Government-Cloud verfügen:
 
 |Adresse|Ausgehender TCP-Port|Zweck|Diensttag|
 |---|---|---|---|
@@ -123,7 +123,7 @@ In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuelle
 |*.azure-dns.net|443|Azure DNS-Auflösung|Keine|
 
 >[!NOTE]
->Windows Virtual Desktop verfügt derzeit über keine Liste mit IP-Adressbereichen, die Sie freigeben können, um Netzwerkdatenverkehr zuzulassen. Momentan wird nur das Freigeben von spezifischen URLs unterstützt.
+>Azure Virtual Desktop verfügt derzeit über keine Liste mit IP-Adressbereichen, die Sie entsperren können, um Netzwerkdatenverkehr zuzulassen. Momentan wird nur das Freigeben von spezifischen URLs unterstützt.
 >
 >Wenn Sie eine Firewall der nächsten Generation (Next Generation Firewall, NGFW) verwenden, müssen Sie eine dynamische Liste verwenden, die speziell für Azure-IP-Adressen erstellt wurde, um sicherzustellen, dass Sie eine Verbindung herstellen können.
 >
@@ -131,7 +131,7 @@ In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuelle
 >
 >Sie müssen das Platzhalterzeichen (*) für URLs für Dienstdatenverkehr verwenden. Wenn Sie kein Platzhalterzeichen (*) für Agent-Datenverkehr verwenden möchten, ermitteln Sie wie folgt die URLs ohne Platzhalter:
 >
->1. Registrieren Sie Ihre virtuellen Computer für den Windows Virtual Desktop-Hostpool.
+>1. Registrieren Sie Ihre VMs beim Azure Virtual Desktop-Hostpool.
 >2. Öffnen Sie die **Ereignisanzeige**, navigieren Sie dann zu **Windows-Protokolle** > **Anwendung** > **WVD-Agent**, und suchen Sie nach der Ereignis-ID 3701.
 >3. Heben Sie die Blockierung von URLs auf, die Sie unter der Ereignis-ID 3701 finden. Die URLs unter der Ereignis-ID 3701 sind regionsspezifisch. Sie müssen den Freigabeprozess mit den relevanten URLs für jede Region wiederholen, in der Sie Ihre virtuellen Computer bereitstellen möchten.
 

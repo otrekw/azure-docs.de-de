@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Vorschauzielgruppe für Ihr SaaS-Angebot im kommerziellen Microsoft-Marketplace
-description: Erfahren Sie, wie Sie Ihrem SaaS-Angebot (Software-as-a-Service) in Microsoft Partner Center eine Vorschauzielgruppe hinzufügen.
+title: Hinzufügen einer Vorschauzielgruppe für ein SaaS-Angebot im Azure Marketplace
+description: Hinzufügen einer Vorschauzielgruppe für ein SaaS-Angebot (Software-as-a-Service) in Azure Marketplace
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 041df9b77e85f09d2cf680773edc995c6288acaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe42b5c7d9953a3e8bc15c4dbd351d3d2beb4d33
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746419"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614403"
 ---
-# <a name="how-to-add-a-preview-audience-for-your-saas-offer"></a>Hinzufügen einer Vorschauzielgruppe für Ihr SaaS-Angebot
+# <a name="add-a-preview-audience-for-a-saas-offer"></a>Hinzufügen einer Vorschauzielgruppe für ein SaaS-Angebot
 
 Wenn Sie Ihr SaaS-Angebot (Software-as-a-Service) in Partner Center erstellen, müssen Sie eine Vorschauzielgruppe definieren, die Ihre Angebotsauflistung überprüfen kann, bevor sie online gestellt wird. In diesem Artikel wird das Konfigurieren einer Vorschauzielgruppe erläutert.
 
@@ -51,4 +51,4 @@ Auf der Registerkarte **Preview audience** (Vorschauzielgruppe) können Sie eine
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hinzufügen von technischen Details für Ihr SaaS-Angebot](create-new-saas-offer-technical.md)
+- [Hinzufügen von technischen Details für ein SaaS-Angebot](create-new-saas-offer-technical.md)

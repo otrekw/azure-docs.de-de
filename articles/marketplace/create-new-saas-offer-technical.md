@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen von technischen Details für Ihr SaaS-Angebot im Microsoft Partner Center
-description: Erfahren Sie, wie Sie technische Details für Ihr SaaS (Software-as-a-Service)-Angebot für den kommerziellen Microsoft-Marketplace bereitstellen.
+title: Hinzufügen technischer Details für ein SaaS-Angebot in Azure Marketplace
+description: Geben Sie technische Details für ein SaaS-Angebot (Software-as-a-Service) in Azure Marketplace an.
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 28c0be40387f411286230f94c19fa23a80e650af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 236a7729a8be0fb1ad20be28efd7b45f5796c1dd
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746402"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615161"
 ---
-# <a name="how-to-add-technical-details-for-your-saas-offer"></a>Hinzufügen von technischen Details für Ihr SaaS-Angebot
+# <a name="add-technical-details-for-a-saas-offer"></a>Hinzufügen technischer Details für ein SaaS-Angebot
 
 In diesem Artikel wird beschrieben, wie technische Details eingegeben werden, die es ermöglichen, eine Verbindung zwischen dem kommerziellen Microsoft-Marketplace und Ihrer Lösung herzustellen. Durch diese Verbindung können wir Ihr Angebot für den Kunden bereitstellen, wenn er es kaufen und verwalten möchte. Weitere Informationen zu diesen Einstellungen finden Sie unter [Technische Informationen](plan-saas-offer.md#technical-information).
 
@@ -44,4 +44,4 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen von Plänen für Ihr SaaS-Angebot](create-new-saas-offer-plans.md)
+- [Erstellen von Plänen für ein SaaS-Angebot](create-new-saas-offer-plans.md)

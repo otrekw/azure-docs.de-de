@@ -7,40 +7,40 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/18/2021
-ms.openlocfilehash: c33739124092a17acf0590f00b2f9c3c09bf894e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/27/2021
+ms.openlocfilehash: b87f36b755037519d29881eeaefddfa8c92f6a3f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104654661"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744933"
 ---
-# <a name="create-a-query-for-semantic-captions-in-cognitive-search"></a>Erstellen Sie eine Abfrage für semantische Beschriftungen in Cognitive Search
+# <a name="create-a-query-that-invokes-semantic-ranking-and-returns-semantic-captions"></a>Erstellen einer Abfrage zum Aufrufen der semantischen Rangfolge und zum Zurückgeben semantischer Beschriftungen
 
 > [!IMPORTANT]
-> Die semantische Suche befindet sich in der öffentlichen Vorschau und ist über die Vorschau-REST-API und das Azure-Portal verfügbar. Vorschaufeatures werden wie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) beschrieben im Ist-Zustand angeboten. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
+> Die semantische Suche befindet sich in der öffentlichen Vorschau gemäß [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sie ist über das Azure-Portal, die Vorschau-REST-API und Beta-SDKs verfügbar. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
 
-In diesem Artikel erfahren Sie, wie Sie eine Suchanfrage formulieren, die die semantische Rangfolge verwendet und semantische Beschriftungen (und optional [semantische Antworten](semantic-answers.md)) zurückgibt, wobei die wichtigsten Begriffe und Ausdrücke hervorgehoben werden. Beschriftungen und Antworten werden in Abfragen zurückgegeben, die mit dem Abfragetyp "Semantik" formuliert werden.
+Die semantische Suche ist ein Premium-Feature in Azure Cognitive Search, das einen semantischen Rangfolgealgorithmus für ein Resultset aufruft und semantische Beschriftungen (und optional [semantische Antworten](semantic-answers.md)) zurückgibt. Die relevantesten Begriffe und Ausdrücke werden dabei hervorgehoben. Beschriftungen und Antworten werden in Abfrageanforderungen zurückgegeben, die mit dem Abfragetyp „Semantik“ formuliert werden.
 
 Sowohl Beschriftungen als auch Antworten werden wörtlich aus dem Text im Suchdokument extrahiert. Das semantische Subsystem bestimmt, welcher Inhalt die Merkmale einer Beschriftung oder Antwort hat, aber es werden keine neuen Sätze oder Ausdrücke verfasst. Aus diesem Grund funktionieren Inhalte, die Erläuterungen oder Definitionen enthalten, am besten für die semantische Suche.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Ein Suchdienst in einem Standard-Tarif (S1, S2, S3) in einer der folgenden Regionen: „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten 2“, „Europa, Norden“, „Europa, Westen“. Wenn Sie in einer dieser Regionen über einen Dienst mit der Ebene S1 oder höher verfügen, können Sie Zugriff anfordern, ohne einen neuen Dienst erstellen zu müssen.
++ Ein Cognitive Search-Dienst in einem Standard-Tarif (S1, S2, S3) in einer der folgenden Regionen: „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten 2“, „Europa, Norden“, „Europa, Westen“. Wenn Sie in einer dieser Regionen über einen Dienst mit Tarif S1 oder höher verfügen, können Sie sich für die Vorschau registrieren, ohne einen neuen Dienst erstellen zu müssen.
 
-+ Zugriff auf die Vorschau der semantischen Suche: [Registrieren](https://aka.ms/SemanticSearchPreviewSignup)
++ [Registrieren Sie sich hier für die Vorschau.](https://aka.ms/SemanticSearchPreviewSignup) Die erwartete Verarbeitungszeit beträgt etwa zwei Werktage.
 
-+ Ein bestehender Suchindex, der englischen Inhalt enthält.
++ Ein vorhandener Suchindex mit Inhalt in einer [unterstützten Sprache](/rest/api/searchservice/preview-api/search-documents#queryLanguage)
 
 + Ein Suchclient zum Senden von Abfragen
 
-  Der Suchclient muss in der Abfrageanforderung Vorschau-REST-APIs unterstützen. Sie können [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md) oder Code verwenden, um REST-Aufrufe an die Vorschau-APIs zu senden. Sie können auch den [Suchexplorer](search-explorer.md) im Azure-Portal verwenden, um eine Semantikabfrage zu übermitteln.
+  Der Suchclient muss in der Abfrageanforderung Vorschau-REST-APIs unterstützen. Sie können [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md) oder Code verwenden, um REST-Aufrufe an die Vorschau-APIs zu senden. Sie können auch den [Suchexplorer](search-explorer.md) im Azure-Portal verwenden, um eine Semantikabfrage zu übermitteln. Sie können auch [Azure.Search.Documents 11.3.0-beta.2](https://www.nuget.org/packages/Azure.Search.Documents/11.3.0-beta.2) verwenden.
 
-+ Eine [Abfrageanforderung](/rest/api/searchservice/preview-api/search-documents) muss die semantische Option und weitere in diesem Artikel beschriebene Parameter enthalten.
++ Eine [Abfrageanforderung](/rest/api/searchservice/preview-api/search-documents) muss den Parameter `queryType=semantic` und weitere in diesem Artikel beschriebene Parameter enthalten.
 
-## <a name="whats-a-semantic-query"></a>Was ist eine Semantikabfrage?
+## <a name="whats-a-semantic-query-type"></a>Was ist ein Semantikabfragetyp?
 
-In Azure Cognitive Search handelt es sich bei einer Abfrage um eine parametrisierte Anforderung, mit der die Abfrageverarbeitung und die Form der Antwort bestimmt werden. Eine *Semantikabfrage* fügt Parameter hinzu, die das Modell zur semantischen Neuanordnung aufrufen. Mit diesem können der Kontext sowie die Bedeutung übereinstimmender Ergebnisse bewertet, relevantere Übereinstimmungen in der Rangfolge nach oben verschoben und semantische Antworten und Beschriftungen zurückgegeben werden.
+In Azure Cognitive Search handelt es sich bei einer Abfrage um eine parametrisierte Anforderung, mit der die Abfrageverarbeitung und die Form der Antwort bestimmt werden. Eine *Semantikabfrage* [fügt Parameter hinzu](#query-using-rest), die das Modell zur semantischen Neuanordnung aufrufen. Mit diesem können der Kontext sowie die Bedeutung übereinstimmender Ergebnisse bewertet, relevantere Übereinstimmungen in der Rangfolge nach oben verschoben und semantische Antworten und Beschriftungen zurückgegeben werden.
 
 Die folgende Anforderung ist charakteristisch für eine minimale Semantikabfrage (ohne Antwort).
 
@@ -58,27 +58,27 @@ Wie bei allen Abfragen in Azure Cognitive Search zielt die Anforderung auf die D
 
 Der Unterschied liegt in der Relevanz und Bewertung. Wie in diesem Vorschaurelease definiert, ist eine Semantikabfrage eine Abfrage, deren *Ergebnisse* mithilfe eines semantischen Sprachmodells erneut bewertet werden. Dadurch wird eine Möglichkeit bereitgestellt, die Übereinstimmungen, die von dem Semantikrangfolge-Modul als am relevantesten eingestuft werden, als erstes anzuzeigen.
 
-Nur die 50 besten Treffer aus den anfänglichen Ergebnissen können in eine semantische Rangfolge gebracht werden, und alle enthalten Beschriftungen in der Antwort. Optional können Sie bei der Anforderung einen **`answer`** -Parameter angeben, um eine mögliche Antwort zu extrahieren. Weitere Informationen finden Sie unter [Semantische Antworten](semantic-answers.md).
+Nur die 50 besten Treffer aus den anfänglichen Ergebnissen können in eine semantische Rangfolge gebracht werden, und alle Ergebnisse enthalten Beschriftungen in der Antwort. Optional können Sie bei der Anforderung einen **`answer`** -Parameter angeben, um eine mögliche Antwort zu extrahieren. Weitere Informationen finden Sie unter [Semantische Antworten](semantic-answers.md).
 
-## <a name="query-with-search-explorer"></a>Abfragen mit Suchexplorer
+## <a name="query-in-azure-portal"></a>Abfragen im Azure-Portal
 
 Der [Suchexplorer](search-explorer.md) wurde aktualisiert und enthält nun Optionen für semantische Abfragen. Diese Optionen werden im Portal angezeigt, nachdem Sie die folgenden Schritte ausgeführt haben:
 
-1. [Registrieren](https://aka.ms/SemanticSearchPreviewSignup) und Zutritt Ihres Suchdienstes in das Vorschauprogramm
+1. Öffnen Sie das Portal mit der Syntax `https://portal.azure.com/?feature.semanticSearch=true` in einem Suchdienst, für den die Vorschau aktiviert ist.
 
-1. Öffnen Sie das Portal mit dieser Syntax: `https://portal.azure.com/?feature.semanticSearch=true`
+1. Klicken Sie oben auf der Übersichtsseite auf **Suchexplorer**.
 
-Abfrageoptionen können Semantikabfragen, SearchFields und die Rechtschreibkorrektur aktivieren. Sie können auch die erforderlichen Abfrageparameter in die Abfragezeichenfolge einfügen.
+1. Wählen Sie einen Index mit Inhalt in einer [unterstützten Sprache](/rest/api/searchservice/preview-api/search-documents#queryLanguage) aus.
+
+1. Legen Sie im Suchexplorer Abfrageoptionen fest, die Semantikabfragen, searchFields und Rechtschreibkorrekturen ermöglichen. Sie können auch die erforderlichen Abfrageparameter in die Abfragezeichenfolge einfügen.
 
 :::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="Abfrageoptionen im Suchexplorer" border="true":::
 
 ## <a name="query-using-rest"></a>Abfragen über REST
 
-Verwenden Sie die [Suchdokumente (REST-Vorschau)](/rest/api/searchservice/preview-api/search-documents), um die Anforderung programmgesteuert zu formulieren.
+Verwenden Sie die [Suchdokumente (REST-Vorschau)](/rest/api/searchservice/preview-api/search-documents), um die Anforderung programmgesteuert zu formulieren. Eine Antwort enthält automatisch Beschriftungen und Hervorhebungen. Wenn Sie eine Rechtschreibkorrektur oder Antworten in der Antwort wünschen, fügen Sie der Anforderung **`speller`** oder **`answers`** hinzu.
 
-Eine Antwort enthält automatisch Beschriftungen und Hervorhebungen. Wenn das Ergebnis die Rechtschreibkorrektur oder Antworten enthalten soll, können Sie für die Anforderung einen optionalen **`speller`** - oder **`answers`** -Parameter hinzufügen.
-
-Im folgenden Beispiel wird „hotels-sample-index“ verwendet, um eine semantische Abfrageanforderung mit semantischen Antworten und Beschriftungen zu erstellen:
+Im folgenden Beispiel wird [hotels-sample-index](search-get-started-portal.md) dazu verwendet, eine Semantikabfrageanforderung mit Rechtschreibprüfung, semantischen Antworten und Beschriftungen zu erstellen:
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30-Preview      
@@ -96,19 +96,19 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 }
 ```
 
-In der folgenden Tabelle erhalten Sie eine Gesamtübersicht über die zusammengefassten Abfrageparameter, die in einer Semantikabfrage verwendet werden. Eine Liste aller Parameter finden Sie unter [Dokumente durchsuchen (REST-Vorschau)](/rest/api/searchservice/preview-api/search-documents).
+In der folgenden Tabelle werden die in einer Semantikabfrage verwendeten Parameter zusammengefasst. Eine Liste aller Parameter finden Sie unter [Dokumente durchsuchen (Vorschau-REST-API)](/rest/api/searchservice/preview-api/search-documents).
 
 | Parameter | Typ | BESCHREIBUNG |
 |-----------|-------|-------------|
 | queryType | String | Gültige Werte sind „simple“, „full“ und „semantic“. Der Wert „semantic“ wird für Semantikabfragen benötigt. |
-| queryLanguage | String | Für Semantikabfragen erforderlich. Derzeit wird nur „en-us“ implementiert. |
+| queryLanguage | String | Für Semantikabfragen erforderlich. Das von Ihnen angegebene Lexikon gilt gleichermaßen für die semantische Rangfolge, Beschriftungen, Antworten und die Rechtschreibprüfung. Weitere Informationen finden Sie unter [Unterstützte Sprachen (REST-API-Referenz)](/rest/api/searchservice/preview-api/search-documents#queryLanguage). |
 | searchFields | String | Hierbei handelt es sich um eine durch Trennzeichen getrennte Liste mit durchsuchbaren Feldern. Gibt die Felder an, für die eine semantische Rangfolge auftritt, von der Beschriftungen und Antworten extrahiert werden. </br></br>Im Gegensatz zu einfachen und vollständigen Abfragetypen bestimmt die Reihenfolge, in der Felder aufgeführt sind, welches Feld Vorrang hat. Weitere Anweisungen zur Verwendung finden Sie unter [Schritt 2: Festlegen von searchFields](#searchfields). |
 | speller | String | Dies ist ein optionaler Parameter und nicht spezifisch für semantische Abfragen. Er korrigiert falsch geschriebene Begriffe, bevor diese die Suchmaschine erreichen. Weitere Informationen finden Sie unter [Hinzufügen von Rechtschreibkorrekturen zu Abfragen](speller-how-to-add.md). |
 | answers |String | Dies sind optionale Parameter, um anzugeben, ob semantische Antworten in das Ergebnis einbezogen werden sollen. Derzeit wird nur „extractive“ implementiert. Antworten können so konfiguriert werden, dass maximal fünf Werte zurückgegeben werden. Der Standardwert ist 1. In diesem Beispiel ist die Anzahl der semantischen Antworten 3: „extractive\|count3“. Weitere Informationen finden Sie unter [Rückgabe von semantischen Antworten](semantic-answers.md).|
 
 ### <a name="formulate-the-request"></a>Formulieren der Anforderung
 
-In diesem Abschnitt werden die für die semantische Suche erforderlichen Abfrageparameter beschrieben.
+In diesem Abschnitt wird die Abfrageformulierung Schritt für Schritt erläutert.
 
 #### <a name="step-1-set-querytype-and-querylanguage"></a>Schritt 1: Festlegen von queryType und queryLanguage
 
@@ -119,9 +119,9 @@ Fügen Sie der REST-API folgende Parameter hinzu. Es müssen beide Parameter ang
 "queryLanguage": "en-us",
 ```
 
-Der queryLanguage-Parameter muss mit den [Sprachanalysetools](index-add-language-analyzers.md) übereinstimmen, die den Felddefinitionen im Indexschema zugewiesen sind. Wenn „queryLanguage=en-us“ ist, dann müssen alle Sprachananalysetools auch eine englische Variante sein („en.microsoft“ oder „en.lucene“). Alle sprachunabhängigen Analysetools, wie z. B. „keyword“ oder „simple“, verursachen keinen Konflikt mit den queryLanguage-Werten.
+Der queryLanguage-Parameter muss einer [unterstützten Sprache](/rest/api/searchservice/preview-api/search-documents#queryLanguage) entsprechen und mit den [Sprachanalysetools](index-add-language-analyzers.md) übereinstimmen, die den Felddefinitionen im Indexschema zugewiesen sind. Beispiel: Wenn Sie französische Zeichenfolgen mithilfe eines französischen Sprachanalysetools (z. B. „fr.microsoft“ oder „fr.lucene“) indiziert haben, dann muss auch der queryLanguage-Parameter eine Variante der französischen Sprache sein.
 
-Wenn Sie in einer Abfrageanforderung auch die [Rechtschreibkorrektur](speller-how-to-add.md) verwenden, gilt die festgelegte „queryLanguage“ gleichermaßen für Rechtschreibprüfung, Antworten und Beschriftungen. Es gibt keine Außerkraftsetzung einzelner Teile. 
+Wenn Sie in einer Abfrageanforderung auch die [Rechtschreibkorrektur](speller-how-to-add.md) verwenden, gilt die festgelegte „queryLanguage“ gleichermaßen für Rechtschreibprüfung, Antworten und Beschriftungen. Es gibt keine Außerkraftsetzung einzelner Teile. Die Rechtschreibprüfung unterstützt [weniger Sprachen](speller-how-to-add.md#supported-languages). Wenn Sie dieses Feature verwenden, müssen Sie den queryLanguage-Parameter also auf eine aus dieser Liste festlegen.
 
 Inhalt in einem Suchindex kann zwar aus mehreren Sprachen zusammengesetzt sein, die Abfrageeingabe erfolgt jedoch höchstwahrscheinlich nur in einer Sprache. Die Suchmaschine prüft nicht die Kompatibilität von „queryLanguage“, dem Sprachanalysetool und der Sprache, in der der Inhalt verfasst ist. Stellen Sie daher sicher, dass Sie Abfragen entsprechend einschränken, um falsche Ergebnisse zu vermeiden.
 
@@ -129,35 +129,67 @@ Inhalt in einem Suchindex kann zwar aus mehreren Sprachen zusammengesetzt sein, 
 
 #### <a name="step-2-set-searchfields"></a>Schritt 2: Festlegen von searchFields
 
+Fügen Sie der Anforderung searchFields hinzu. Dieser Schritt ist optional, wird jedoch dringend empfohlen.
+
+```json
+"searchFields": "HotelName,Category,Description",
+```
+
 Der searchFields-Parameter wird verwendet, um Passagen zu identifizieren, die für die „semantische Ähnlichkeit“ zur Abfrage evaluiert werden. Für die Vorschau empfiehlt es sich nicht, searchFields leer zu lassen, da das Modell einen Hinweis benötigt, welche Felder für die Verarbeitung am wichtigsten sind.
 
-Die Reihenfolge der Suchfelder ist wichtig. Wenn Sie SearchFields bereits in vorhandenen einfachen oder vollständigen Lucene-Abfragen verwenden, rufen Sie diesen Parameter beim Wechsel zu einer Semantikabfrage erneut auf, um die Feldreihenfolge zu überprüfen.
+Im Gegensatz zu anderen Parametern sind searchFields nicht neu. Möglicherweise verwenden Sie searchFields bereits in vorhandenem Code für einfache oder vollständige Lucene-Abfragen. Wenn ja, überprüfen Sie erneut, wie der Parameter verwendet wird, damit Sie beim Wechseln zu einem Semantikabfragetyp eine Überprüfung nach Feldreihenfolge durchführen können.
 
-Für zwei oder mehr SearchFields:
+##### <a name="allowed-data-types"></a>Zulässige Datentypen
 
-+ Fügen Sie nur Zeichenfolgenfelder und Zeichenfolgenfelder der obersten Ebene in Sammlungen ein. Wenn Sie in eine Sammlung Nicht-Zeichenfolgenfelder oder Felder niedrigerer Ebenen einschließen, wird kein Fehler angezeigt. Diese Felder werden in der semantischen Rangfolge jedoch nicht verwendet.
+Wählen Sie beim Festlegen von searchFields nur Felder der folgenden [unterstützten Datentypen](/rest/api/searchservice/supported-data-types) aus. Wenn Sie ungültige Felder einbeziehen, wird zwar kein Fehler ausgegeben, aber die betreffenden Felder werden nicht in der semantischen Rangfolge verwendet.
 
-+ Das erste Feld sollte immer präzise sein (z. B. ein Titel oder ein Name) und idealerweise weniger als 25 Wörter enthalten.
+| Datentyp | Beispiel aus hotels-sample-index |
+|-----------|----------------------------------|
+| Edm.String | HotelName, Category, Description |
+| Edm.ComplexType | Address.StreetNumber, Address.City, Address.StateProvince, Address.PostalCode |
+| Collection(Edm.String) | Tags (eine durch Trennzeichen getrennte Liste von Zeichenfolgen) |
 
-+ Falls der Index ein URL-Feld besitzt, das Textinhalt aufweist, also für Benutzer lesbar (wie `www.domain.com/name-of-the-document-and-other-details`) und nicht computerbezogen (wie `www.domain.com/?id=23463&param=eis`) ist, platzieren Sie es in der Liste an zweiter Stelle. Wenn kein präzises Titelfeld vorhanden ist, platzieren Sie es an erster Stelle.
+##### <a name="order-of-fields-in-searchfields"></a>Reihenfolge der Felder in searchFields
 
-+ Folgen Sie diesen Feldern nach beschreibenden Feldern, in denen die Antworten auf Semantikabfragen gefunden werden können, z. B. der Hauptinhalt eines Dokuments.
+Die Feldreihenfolge ist entscheidend, da vom Semantikbewerter die Menge an Inhalten, die von ihm verarbeitet werden können, eingeschränkt wird, während die Antwortzeit dennoch angemessen bleibt. Inhalte aus Feldern am Anfang der Liste werden wahrscheinlicher einbezogen. Inhalte vom Ende können abgeschnitten werden, wenn die maximale Grenze erreicht wird. Weitere Informationen finden Sie unter [Vorabverarbeitung während der semantischen Bewertung](semantic-ranking.md#pre-processing).
 
-Wenn nur ein Feld angegeben ist, verwenden Sie ein beschreibendes Feld, in dem die Antwort auf Semantikabfragen gefunden werden kann, z. B. der Hauptinhalt eines Dokuments. 
++ Wenn Sie nur ein Feld angeben, verwenden Sie ein beschreibendes Feld, in dem die Antwort auf Semantikabfragen gefunden werden kann, z. B. der Hauptinhalt eines Dokuments. 
+
++ Für zwei oder mehr Felder in SearchFields:
+
+  + Das erste Feld sollte immer präzise sein (z. B. ein Titel oder ein Name) und idealerweise eine Zeichenfolge von weniger als 25 Wörtern enthalten.
+
+  + Falls der Index ein URL-Feld besitzt, das für Benutzer lesbar ist (wie `www.domain.com/name-of-the-document-and-other-details`) und nicht computerbezogen ist (wie `www.domain.com/?id=23463&param=eis`), platzieren Sie es in der Liste an zweiter Stelle. Wenn kein präzises Titelfeld vorhanden ist, platzieren Sie es an erster Stelle.
+
+  + Lassen Sie den obigen Feldern andere beschreibende Felder folgen, in denen die Antworten auf Semantikabfragen gefunden werden können, z. B. der Hauptinhalt eines Dokuments.
 
 #### <a name="step-3-remove-orderby-clauses"></a>Schritt 3: Entfernen der orderBy-Klauseln
 
-Entfernen Sie alle orderBy-Klauseln, wenn diese in einer vorhandenen Anforderung existieren. Die semantische Bewertung dient zum Sortieren der Ergebnisse, und wenn Sie eine explizite Sortierlogik hinzufügen, wird ein HTTP 400-Fehler zurückgegeben.
+Entfernen Sie alle orderBy-Klauseln aus vorhandenem Abfragecode. Die semantische Bewertung dient zum Sortieren der Ergebnisse, und wenn Sie eine explizite Sortierlogik hinzufügen, wird ein HTTP 400-Fehler zurückgegeben.
 
 #### <a name="step-4-add-answers"></a>Schritt 4: Hinzufügen von Antworten
 
-Fügen Sie optional semantische Antworten („answers“) hinzu, wenn Sie zusätzliche Verarbeitungsschritte einschließen möchten, die eine semantische Antwort bereitstellen. Antworten (und Beschriftungen) werden aus den in searchFields aufgeführten Feldern extrahiert. Stellen Sie sicher, dass Sie inhaltsreiche Felder in searchFields einschließen, um die besten Antworten in einer Antwort zu erhalten. Weitere Informationen finden Sie unter [Rückgabe von semantischen Antworten](semantic-answers.md).
+Fügen Sie optional semantische Antworten („answers“) hinzu, wenn Sie zusätzliche Verarbeitungsschritte einschließen möchten, die eine semantische Antwort bereitstellen. Weitere Informationen zu diesem Parameter finden Sie unter [Angeben von semantischen Antworten](semantic-answers.md).
+
+```json
+"answers": "extractive|count-3",
+```
+
+Antworten (und Beschriftungen) werden aus den in searchFields aufgeführten Feldern extrahiert. Aus diesem Grund empfiehlt es sich, inhaltsreiche Felder in searchFields einzubeziehen, damit Sie die besten Antworten in einer Antwort erhalten können. Antworten sind nicht bei jeder Anforderung garantiert. Die Abfrage muss wie eine Frage aussehen, und der Inhalt muss Text enthalten, der wie eine Antwort aussieht.
 
 #### <a name="step-5-add-other-parameters"></a>Schritt 5: Hinzufügen weiterer Parameter
 
 Legen Sie alle anderen Parameter fest, die in der Anforderung enthalten sein sollen. Parameter wie [speller](speller-how-to-add.md), [select](search-query-odata-select.md) und „count“ verbessern die Qualität der Anforderung und die Lesbarkeit der Antwort.
 
-Optional können Sie den hervorgehobenen Stil anpassen, der auf Beschriftungen angewendet wird. Beschriftungen stellen eine Hervorhebung der Formatierung für Schlüsselpassagen im Dokument dar, die die Antwort zusammenfassen. Der Standardwert lautet `<em>`. Wenn Sie den Formatierungstyp angeben möchten (beispielsweise gelber Hintergrund), können Sie „highlightPreTag“ und „highlightPostTag“ festlegen.
+```json
+"speller": "lexicon",
+"select": "HotelId,HotelName,Description,Category",
+"count": true,
+"highlightPreTag": "<mark>",
+"highlightPostTag": "</mark>",
+```
+
+Hervorhebungsstile werden auf Beschriftungen in der Antwort angewendet. Sie können den Standardstil verwenden oder optional den auf Beschriftungen angewendeten Hervorhebungsstil anpassen. Beschriftungen stellen eine Hervorhebung der Formatierung für Schlüsselpassagen im Dokument dar, die die Antwort zusammenfassen. Der Standardwert lautet `<em>`. Wenn Sie den Formatierungstyp angeben möchten (beispielsweise gelber Hintergrund), können Sie „highlightPreTag“ und „highlightPostTag“ festlegen.
 
 ## <a name="evaluate-the-response"></a>Auswertung der Antwort
 

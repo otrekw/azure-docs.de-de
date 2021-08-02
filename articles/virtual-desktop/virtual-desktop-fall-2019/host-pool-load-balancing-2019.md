@@ -1,26 +1,26 @@
 ---
-title: Lastenausgleich für Windows Virtual Desktop-Hostpools (klassisch) – Azure
-description: Enthält eine Beschreibung der Lastenausgleichsmethoden für Hostpools in einer Windows Virtual Desktop-Umgebung.
+title: Lastenausgleich für Azure Virtual Desktop-Hostpools (klassisch) – Azure
+description: Beschreibung der Lastenausgleichsmethoden für Hostpools in einer Azure Virtual Desktop-Umgebung
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 50f25422fb30f5d519acd70c632145d51454ed62
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: abd52941efc06b79a21e490e4e94f39a6e1d34be
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444427"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745041"
 ---
-# <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Hostpool-Lastenausgleichsmethoden in Windows Virtual Desktop (klassisch)
+# <a name="host-pool-load-balancing-methods-in-azure-virtual-desktop-classic"></a>Hostpool-Lastenausgleichsmethoden in Azure Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../host-pool-load-balancing.md) weiter.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../host-pool-load-balancing.md) weiter.
 
-Windows Virtual Desktop unterstützt zwei Lastenausgleichsmethoden. Bei beiden Methoden wird ermittelt, welcher Sitzungshost die Sitzung eines Benutzers hostet, wenn dieser eine Verbindung mit einer Ressource in einem Hostpool herstellt.
+Azure Virtual Desktop unterstützt zwei Lastenausgleichsmethoden. Bei beiden Methoden wird ermittelt, welcher Sitzungshost die Sitzung eines Benutzers hostet, wenn dieser eine Verbindung mit einer Ressource in einem Hostpool herstellt.
 
-Unter Windows Virtual Desktop sind die folgenden Lastenausgleichsmethoden verfügbar:
+Unter Azure Virtual Desktop sind folgende Lastausgleichsmethoden verfügbar:
 
 - Beim Lastenausgleich vom Typ „Breiter Ansatz“ können Sie Benutzersitzungen gleichmäßig auf die Sitzungshosts in einem Hostpool verteilen.
 - Beim Lastenausgleich vom Typ „Tiefer Ansatz“ können Sie einen Sitzungshost mit Benutzersitzungen in einem Hostpool füllen. Nachdem für die erste Sitzung der Schwellenwert des Sitzungslimits erreicht wurde, leitet der Lastenausgleich alle neuen Benutzerverbindungen an den nächsten Sitzungshost im Hostpool weiter, bis dessen Limit erreicht ist, usw.

@@ -2,19 +2,19 @@
 title: Skalierbarkeit – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zum Skalieren von Azure Event Hubs mithilfe von Partitionen und Durchsatzeinheiten.
 ms.topic: article
-ms.date: 03/16/2021
-ms.openlocfilehash: acfc300ff7e6bd77c570c68bda50a731df10409c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/26/2021
+ms.openlocfilehash: ef894e0f14c140691b43da121a1983017ab03150
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367085"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616460"
 ---
 # <a name="scaling-with-event-hubs"></a>Skalierung mit Event Hubs
 
 Es gibt zwei Faktoren, die die Skalierung mit Event Hubs beeinflussen.
-*   Durchsatzeinheiten
-*   Partitionen
+* Durchsatzeinheiten (Standard-Tarif) oder Verarbeitungseinheiten (Premium-Tarif) 
+* Partitionen
 
 ## <a name="throughput-units"></a>Durchsatzeinheiten
 
@@ -42,7 +42,10 @@ Weitere Informationen zum Feature für die automatische Vergrößerung finden Si
 
 Welche Datenmengen Sie mit einer Verarbeitungseinheit erfassen und streamen können, hängt von verschiedenen Faktoren ab, z. B. von den Producern, den Consumern oder der Rate für die Erfassung und Verarbeitung. Eine Verarbeitungseinheit kann ungefähr eine Kernkapazität von ca. 5 bis 10 MB/s eingehend und 10 bis 20 MB/s ausgehend bieten. Dies setzt voraus, dass genügend Partitionen vorhanden sind, sodass der Speicher keinen Drosselungsfaktor darstellt.  
 
+Informationen zum Konfigurieren von Verarbeitungseinheiten (PUs) für einen Namespace im Premium-Tarif finden Sie unter [Konfigurieren von Verarbeitungseinheiten](configure-processing-units-premium-namespace.md).
 
+> [!NOTE]
+> Weitere Informationen zu Kontingenten und Grenzwerten finden Sie unter [Azure Event Hubs – Kontingente und Grenzwerte](event-hubs-quotas.md).
 
 ## <a name="partitions"></a>Partitionen
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
@@ -53,5 +56,5 @@ Welche Datenmengen Sie mit einer Verarbeitungseinheit erfassen und streamen kön
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
-- [Automatisches Skalieren von Durchsatzeinheiten](event-hubs-auto-inflate.md)
-- [Event Hubs-Dienst: Übersicht](./event-hubs-about.md)
+- [Automatisches Skalieren von Durchsatzeinheiten für einen Namespace der Standardebene](event-hubs-auto-inflate.md)
+- [Konfigurieren von Verarbeitungseinheiten für einen Namespace der Premium-Ebene](configure-processing-units-premium-namespace.md)

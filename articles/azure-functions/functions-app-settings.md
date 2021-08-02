@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b1a3563d766f0f4636086024a1f23d157e8e9a06
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: eb595d666641003c813573a70ab7365732e0a386
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228602"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983148"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -18,12 +18,12 @@ App-Einstellungen in einer Funktionen-App enthalten globale Konfigurationsoption
 
 Es gibt andere globale Konfigurationsoptionen in der Datei [host.json](functions-host-json.md) und in der Datei [local.settings.json](functions-run-local.md#local-settings-file).
 
-> [!NOTE]  
+> [!NOTE]
 > Sie können Anwendungseinstellungen verwenden, um host.json-Einstellungswerte zu überschreiben, ohne die Datei „host.json“ ändern zu müssen. Dies ist hilfreich für Szenarien, in denen bestimmte host.json-Einstellungen für eine bestimmte Umgebung konfiguriert oder geändert werden müssen. So können Sie auch host.json-Einstellungen ändern, ohne das Projekt erneut veröffentlichen zu müssen. Weitere Informationen finden Sie im [Referenzartikel zu „host.json“](functions-host-json.md#override-hostjson-values). Zur Durchführung von Änderungen an den Funktions-App-Einstellungen muss Ihre Funktions-App neu gestartet werden.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Der Instrumentierungsschlüssel für Application Insights. Verwenden Sie jeweils nur `APPINSIGHTS_INSTRUMENTATIONKEY` oder `APPLICATIONINSIGHTS_CONNECTION_STRING`. Wenn Application Insights in einer Sovereign Cloud ausgeführt wird, verwenden Sie `APPLICATIONINSIGHTS_CONNECTION_STRING`. Weitere Informationen finden Sie unter [Konfigurieren der Überwachung für Azure Functions](configure-monitoring.md). 
+Der Instrumentierungsschlüssel für Application Insights. Verwenden Sie jeweils nur `APPINSIGHTS_INSTRUMENTATIONKEY` oder `APPLICATIONINSIGHTS_CONNECTION_STRING`. Wenn Application Insights in einer Sovereign Cloud ausgeführt wird, verwenden Sie `APPLICATIONINSIGHTS_CONNECTION_STRING`. Weitere Informationen finden Sie unter [Konfigurieren der Überwachung für Azure Functions](configure-monitoring.md).
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -33,10 +33,10 @@ Der Instrumentierungsschlüssel für Application Insights. Verwenden Sie jeweils
 
 Die Verbindungszeichenfolge für Application Insights. Verwenden Sie in den folgenden Fällen `APPLICATIONINSIGHTS_CONNECTION_STRING` anstelle von `APPINSIGHTS_INSTRUMENTATIONKEY`:
 
-+ Für Ihre Funktions-App sind die zusätzlichen Anpassungen erforderlich, die bei Verwendung der Verbindungszeichenfolge unterstützt werden. 
++ Für Ihre Funktions-App sind die zusätzlichen Anpassungen erforderlich, die bei Verwendung der Verbindungszeichenfolge unterstützt werden.
 + Ihre Application Insights-Instanz wird in einer Sovereign Cloud ausgeführt, für die ein benutzerdefinierter Endpunkt erforderlich ist.
 
-Weitere Informationen finden Sie unter [Verbindungszeichenfolgen](../azure-monitor/app/sdk-connection-string.md). 
+Weitere Informationen finden Sie unter [Verbindungszeichenfolgen](../azure-monitor/app/sdk-connection-string.md).
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -53,7 +53,7 @@ Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfun
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
-Diese Einstellung steuert, ob die Zeichen `%2F` in Routenparametern als Schrägstrich decodiert werden, wenn sie in die Back-End-URL eingefügt werden. 
+Diese Einstellung steuert, ob die Zeichen `%2F` in Routenparametern als Schrägstrich decodiert werden, wenn sie in die Back-End-URL eingefügt werden.
 
 |Schlüssel|Wert|BESCHREIBUNG|
 |-|-|-|
@@ -159,7 +159,7 @@ Bestimmt, ob die Bearbeitung im Azure-Portal aktiviert ist. Gültige Werte sind 
 
 ## <a name="functions_extension_version"></a>FUNCTIONS\_EXTENSION\_VERSION
 
-Die Version der Functions-Runtime, die ihre Funktions-App hostet. Eine Tilde (`~`) mit Hauptversion bedeutet, dass die neueste Version dieser Hauptversion verwendet werden soll (z. B. „~3“). Wenn neue Versionen für dieselbe Hauptversion verfügbar sind, werden sie automatisch in der Funktionen-App installiert. Verwenden Sie die vollständige Versionsnummer (z. B. „3.0.12345“), um die App an eine bestimmte Version anzuheften. Der Standardwert lautet „~3“. Der Wert `~1` heftet Ihre App an Version 1.x der Runtime an. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](functions-versions.md).
+Die Version der Functions-Runtime, die ihre Funktions-App hostet. Eine Tilde (`~`) mit Hauptversion bedeutet, dass die neueste Version dieser Hauptversion verwendet werden soll (z. B. „~3“). Wenn neue Versionen für dieselbe Hauptversion verfügbar sind, werden sie automatisch in der Funktionen-App installiert. Verwenden Sie die vollständige Versionsnummer (z. B. „3.0.12345“), um die App an eine bestimmte Version anzuheften. Der Standardwert lautet „~3“. Der Wert `~1` heftet Ihre App an Version 1.x der Runtime an. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](functions-versions.md). Mit dem Wert `~4` können Sie eine Vorschauversion von Azure Functions ausführen, um die Vorschauversion von .NET 6.0 zu verwenden. Weitere Informationen finden Sie auf der Seite zur [frühen Vorschauversion von Azure Functions v4](https://aka.ms/functions-dotnet6earlypreview-wiki).
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -167,7 +167,7 @@ Die Version der Functions-Runtime, die ihre Funktions-App hostet. Eine Tilde (`~
 
 ## <a name="functions_v2_compatibility_mode"></a>FUNCTIONS\_V2\_COMPATIBILITY\_MODE
 
-Diese Einstellung ermöglicht die Ausführung Ihrer Funktions-App in einem mit Version 2.x kompatiblen Modus unter Runtimeversion 3.x. Verwenden Sie diese Einstellung nur, wenn beim [Aktualisieren Ihrer Funktions-App von Runtimeversion 2.x auf 3.x](functions-versions.md#migrating-from-2x-to-3x) Probleme auftreten. 
+Diese Einstellung ermöglicht die Ausführung Ihrer Funktions-App in einem mit Version 2.x kompatiblen Modus unter Runtimeversion 3.x. Verwenden Sie diese Einstellung nur, wenn beim [Aktualisieren Ihrer Funktions-App von Runtimeversion 2.x auf 3.x](functions-versions.md#migrating-from-2x-to-3x) Probleme auftreten.
 
 >[!IMPORTANT]
 > Diese Einstellung ist nur als kurzfristige Problemumgehung gedacht, während Sie Ihre App für die ordnungsgemäße Ausführung unter Version 3.x aktualisieren. Diese Einstellung wird unterstützt, solange die [Runtime 2.x unterstützt wird](functions-versions.md). Wenn Probleme auftreten, die die Ausführung Ihrer App unter Version 3.x ohne diese Einstellung verhindern, [melden Sie Ihr Problem](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md).
@@ -188,7 +188,7 @@ Gibt die maximale Anzahl von Sprachworkerprozessen mit einem Standardwert von `1
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-Die Sprachworkerruntime, die in der Funktionen-App geladen werden soll.  Dies entspricht der Sprache, die in der Anwendung verwendet wird (z. B. `dotnet`). Ab Version 2.x der Azure Functions-Runtime kann eine bestimmte Funktions-App nur eine einzige Sprache unterstützen.   
+Die Sprachworkerruntime, die in der Funktionen-App geladen werden soll.  Dies entspricht der Sprache, die in der Anwendung verwendet wird (z. B. `dotnet`). Ab Version 2.x der Azure Functions-Runtime kann eine bestimmte Funktions-App nur eine einzige Sprache unterstützen.
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -205,11 +205,11 @@ Gültige Werte:
 | `powershell` | [PowerShell](functions-reference-powershell.md) |
 | `python` | [Python](functions-reference-python.md) |
 
-## <a name="mdmaxbackgroundupgradeperiod"></a>MDMaxBackgroundUpgradePeriod 
+## <a name="mdmaxbackgroundupgradeperiod"></a>MDMaxBackgroundUpgradePeriod
 
-Steuert den Zeitraum für Hintergrundupdates von verwalteten Abhängigkeiten für PowerShell-Funktions-Apps. Der Standardwert ist `7.00:00:00` (wöchentlich). 
+Steuert den Zeitraum für Hintergrundupdates von verwalteten Abhängigkeiten für PowerShell-Funktions-Apps. Der Standardwert ist `7.00:00:00` (wöchentlich).
 
-Jeder PowerShell-Workerprozess löst die Überprüfung auf Modulupgrades im PowerShell-Katalog beim Start des Prozesses und alle `MDMaxBackgroundUpgradePeriod` danach aus. Wenn im PowerShell-Katalog eine neue Modulversion verfügbar ist, wird sie im Dateisystem installiert und PowerShell-Workern zur Verfügung gestellt. Wenn Sie diesen Wert verringern, erhält Ihre Funktions-App schneller eine neuere Modulversion. Dies steigert aber auch den App-Ressourceneinsatz (Netzwerk-E/A, CPU, Speicher). Wenn Sie diesen Wert erhöhen, wird der App-Ressourceneinsatz verringert, aber auch die Bereitstellung neuer Modulversionen für Ihre App verzögert. 
+Jeder PowerShell-Workerprozess löst die Überprüfung auf Modulupgrades im PowerShell-Katalog beim Start des Prozesses und alle `MDMaxBackgroundUpgradePeriod` danach aus. Wenn im PowerShell-Katalog eine neue Modulversion verfügbar ist, wird sie im Dateisystem installiert und PowerShell-Workern zur Verfügung gestellt. Wenn Sie diesen Wert verringern, erhält Ihre Funktions-App schneller eine neuere Modulversion. Dies steigert aber auch den App-Ressourceneinsatz (Netzwerk-E/A, CPU, Speicher). Wenn Sie diesen Wert erhöhen, wird der App-Ressourceneinsatz verringert, aber auch die Bereitstellung neuer Modulversionen für Ihre App verzögert.
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -219,11 +219,11 @@ Weitere Informationen finden Sie unter [Abhängigkeitsverwaltung](functions-refe
 
 ## <a name="mdnewsnapshotcheckperiod"></a>MDNewSnapshotCheckPeriod
 
-Gibt an, wie oft jeder PowerShell-Worker überprüft, ob Upgrades verwalteter Abhängigkeiten installiert wurden. Die Standardhäufigkeit ist `01:00:00` (stündlich). 
+Gibt an, wie oft jeder PowerShell-Worker überprüft, ob Upgrades verwalteter Abhängigkeiten installiert wurden. Die Standardhäufigkeit ist `01:00:00` (stündlich).
 
-Nach der Installation neuer Modulversionen im Dateisystem müssen alle PowerShell-Workerprozesse neu gestartet werden. Das Neustarten von PowerShell-Workern wirkt sich auf die Verfügbarkeit der App aus, da dadurch die Ausführung der aktuellen Funktion unterbrochen werden kann. Bis zum Abschluss des Neustarts aller PowerShell-Workerprozesse können Funktionsaufrufe entweder die alte oder neue Modulversion verwenden. Alle PowerShell-Worker werden innerhalb von `MDNewSnapshotCheckPeriod` neu gestartet. 
+Nach der Installation neuer Modulversionen im Dateisystem müssen alle PowerShell-Workerprozesse neu gestartet werden. Das Neustarten von PowerShell-Workern wirkt sich auf die Verfügbarkeit der App aus, da dadurch die Ausführung der aktuellen Funktion unterbrochen werden kann. Bis zum Abschluss des Neustarts aller PowerShell-Workerprozesse können Funktionsaufrufe entweder die alte oder neue Modulversion verwenden. Alle PowerShell-Worker werden innerhalb von `MDNewSnapshotCheckPeriod` neu gestartet.
 
-In jeder `MDNewSnapshotCheckPeriod` überprüft der PowerShell-Worker, ob Upgrades verwalteter Abhängigkeiten installiert wurden. Falls Upgrades installiert wurden, wird ein Neustart initiiert. Das Erhöhen dieses Wert verringert die Häufigkeit von Unterbrechungen durch Neustarts. Die Erhöhung kann jedoch auch die Zeit verlängern, in der Funktionsaufrufe nicht deterministisch entweder die alte oder die neue Modulversion verwenden können. 
+In jeder `MDNewSnapshotCheckPeriod` überprüft der PowerShell-Worker, ob Upgrades verwalteter Abhängigkeiten installiert wurden. Falls Upgrades installiert wurden, wird ein Neustart initiiert. Das Erhöhen dieses Wert verringert die Häufigkeit von Unterbrechungen durch Neustarts. Die Erhöhung kann jedoch auch die Zeit verlängern, in der Funktionsaufrufe nicht deterministisch entweder die alte oder die neue Modulversion verwenden können.
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -234,9 +234,9 @@ Weitere Informationen finden Sie unter [Abhängigkeitsverwaltung](functions-refe
 
 ## <a name="mdminbackgroundupgradeperiod"></a>MDMinBackgroundUpgradePeriod
 
-Zeitraum nach einer vorherigen Überprüfung auf Upgrades verwalteter Abhängigkeiten, bevor eine weitere Upgradeüberprüfung gestartet wird. Der Standardwert ist `1.00:00:00` (täglich). 
+Zeitraum nach einer vorherigen Überprüfung auf Upgrades verwalteter Abhängigkeiten, bevor eine weitere Upgradeüberprüfung gestartet wird. Der Standardwert ist `1.00:00:00` (täglich).
 
-Um übermäßige Modulupgrades bei häufigen Workerneustarts zu vermeiden, wird die Überprüfung auf Modulupgrades nicht durchgeführt, wenn ein Worker diese Prüfung bereits innerhalb der letzten `MDMinBackgroundUpgradePeriod` ausgelöst hat. 
+Um übermäßige Modulupgrades bei häufigen Workerneustarts zu vermeiden, wird die Überprüfung auf Modulupgrades nicht durchgeführt, wenn ein Worker diese Prüfung bereits innerhalb der letzten `MDMinBackgroundUpgradePeriod` ausgelöst hat.
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -246,13 +246,31 @@ Weitere Informationen finden Sie unter [Abhängigkeitsverwaltung](functions-refe
 
 ## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
 
-Durch den Wert für diese Einstellung wird eine benutzerdefinierte Paketindex-URL für Python-Apps angegeben. Verwenden Sie diese Einstellung, wenn Sie einen Remotebuild mit benutzerdefinierten Abhängigkeiten ausführen müssen, die sich in einem zusätzlichen Paketindex befinden.   
+Durch den Wert für diese Einstellung wird eine benutzerdefinierte Paketindex-URL für Python-Apps angegeben. Verwenden Sie diese Einstellung, wenn Sie einen Remotebuild mit benutzerdefinierten Abhängigkeiten ausführen müssen, die sich in einem zusätzlichen Paketindex befinden.
 
 |Schlüssel|Beispielwert|
 |---|------------|
 |PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
 
 Weitere Informationen finden Sie in der Python-Entwicklerreferenz unter [Benutzerdefinierte Abhängigkeiten](functions-reference-python.md#remote-build-with-extra-index-url).
+
+## <a name="python_isolate_worker_dependencies"></a>PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES
+
+Die Konfiguration ist spezifisch für Python-Funktions-Apps. Sie definiert die Priorisierung der Modulladereihenfolge. Wenn ihre Python-Funktions-Apps Probleme im Zusammenhang mit Modulkollisionen haben (z. B. wenn Sie protobuf, tensorflow oder grpcio in Ihrem Projekt verwenden), sollte das Festlegen dieser App-Einstellung auf `1` Ihr Problem beheben. Standardmäßig ist dieser Wert auf `0` festgelegt.
+
+|Key|Wert|BESCHREIBUNG|
+|---|-----|-----------|
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|0| Priorisiert das Laden der Python-Bibliotheken aus den Abhängigkeiten interner Python-Worker. Für Bibliotheken von Drittanbietern, die in „requirements.txt“ definiert sind, kann ggf. Shadowing durchgeführt werden. |
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|1| Priorisiert das Laden der Python-Bibliotheken aus dem in „requirements.txt“ definierten Paket der Anwendung. Dadurch wird verhindert, dass Ihre Bibliotheken mit den Bibliotheken des internen Python-Workers kollidieren. |
+
+## <a name="python_enable_worker_extensions"></a>PYTHON\_ENABLE\_WORKER\_EXTENSIONS
+
+Die Konfiguration ist spezifisch für Python-Funktions-Apps. Wenn diese Einstellung auf `1` festgelegt wird, kann der Worker [Python-Workererweiterungen](functions-reference-python.md#python-worker-extensions) laden, die in „requirements.txt“ definiert sind. Sie ermöglicht Ihrer Funktions-App den Zugriff auf neue Features, die von Paketen von Drittanbietern bereitgestellt werden. Sie kann auch das Verhalten des Ladens und Aufrufs von Funktionen in Ihrer App ändern. Stellen Sie sicher, dass die von Ihnen ausgewählte Erweiterung vertrauenswürdig ist, da Sie das Risiko ihrer Verwendung tragen. Azure Functions gewährt keine ausdrücklichen Gewährleistungen für Erweiterungen. Informationen zur Verwendung einer Erweiterung finden Sie auf der jeweiligen Manpage oder in der Infodatei zur Erweiterung. Standardmäßig wird dieser Wert auf `0` festgelegt.
+
+|Key|Wert|BESCHREIBUNG|
+|---|-----|-----------|
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|0| Deaktiviert alle Python-Workererweiterungen. |
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|1| Erlaubt dem Python-Worker das Laden von Erweiterungen aus „requirements.txt“. |
 
 ## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
 
@@ -264,7 +282,7 @@ Gibt die maximale Anzahl von Threads an, die von einem Python-Sprachworker zum A
 
 ## <a name="scale_controller_logging_enabled"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLED
 
-_Diese Einstellung befindet sich derzeit in der Vorschauphase._  
+_Diese Einstellung befindet sich derzeit in der Vorschauphase._
 
 Diese Einstellung dient zum Steuern der Protokollierung über den Azure Functions-Skalierungscontroller. Weitere Informationen finden Sie unter [Skalierungscontrollerprotokolle (Vorschau)](functions-monitoring.md#scale-controller-logs).
 
@@ -284,7 +302,7 @@ Die Verbindungszeichenfolge für das Speicherkonto, in dem der Code der Funktion
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[Name];AccountKey=[Schlüssel]|
 
-Wird nur bei der Bereitstellung für einen Premium-Plan oder Verbrauchsplan verwendet, der unter Windows ausgeführt wird. Wird nicht für Verbrauchspläne unter Linux unterstützt. Das Ändern oder Entfernen dieser Einstellung kann dazu führen, dass Ihre Funktions-App nicht gestartet wird. Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](functions-recover-storage-account.md#storage-account-application-settings-were-deleted). 
+Wird nur bei der Bereitstellung für einen Premium-Plan oder Verbrauchsplan verwendet, der unter Windows ausgeführt wird. Wird nicht für Verbrauchspläne unter Linux unterstützt. Das Ändern oder Entfernen dieser Einstellung kann dazu führen, dass Ihre Funktions-App nicht gestartet wird. Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
@@ -304,19 +322,19 @@ Der Dateipfad für den Funktions-App-Code und die Konfiguration in einem ereigni
 
 Wird nur bei der Bereitstellung für einen Premium-Plan oder Verbrauchsplan verwendet, der unter Windows ausgeführt wird. Wird nicht für Verbrauchspläne unter Linux unterstützt. Das Ändern oder Entfernen dieser Einstellung kann dazu führen, dass Ihre Funktions-App nicht gestartet wird. Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
 
-Wenn Sie während der Bereitstellung eine Azure Resource Manager-Vorlage zum Erstellen einer Funktions-App verwenden, schließen Sie WEBSITE_CONTENTSHARE nicht in die Vorlage ein. Diese Anwendungseinstellung wird während der Bereitstellung generiert. Weitere Informationen finden Sie unter [Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions](functions-infrastructure-as-code.md#windows).   
+Wenn Sie während der Bereitstellung eine Azure Resource Manager-Vorlage zum Erstellen einer Funktions-App verwenden, schließen Sie WEBSITE_CONTENTSHARE nicht in die Vorlage ein. Diese Anwendungseinstellung wird während der Bereitstellung generiert. Weitere Informationen finden Sie unter [Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions](functions-infrastructure-as-code.md#windows).
 
 ## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
 
-Legt den von einer App verwendeten DNS-Server beim Auflösen von IP-Adressen fest. Diese Einstellung ist häufig erforderlich, wenn bestimmte Netzwerkfunktionen wie [private Zonen von Azure DNS](functions-networking-options.md#azure-dns-private-zones) und [private Endpunkte](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network) verwendet werden.   
+Legt den von einer App verwendeten DNS-Server beim Auflösen von IP-Adressen fest. Diese Einstellung ist häufig erforderlich, wenn bestimmte Netzwerkfunktionen wie [private Zonen von Azure DNS](functions-networking-options.md#azure-dns-private-zones) und [private Endpunkte](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network) verwendet werden.
 
 |Schlüssel|Beispielwert|
 |---|------------|
 |WEBSITE\_DNS\_SERVER|168.63.129.16|
 
-## <a name="website_enable_brotli_encoding"></a>WEBSITE\_ENABLE\_BROTLI\_ENCODING 
+## <a name="website_enable_brotli_encoding"></a>WEBSITE\_ENABLE\_BROTLI\_ENCODING
 
-Steuert, ob Brotli-Codierung für die Komprimierung anstelle der GZIP-Standardkomprimierung verwendet wird. Wenn `WEBSITE_ENABLE_BROTLI_ENCODING` auf `1` festgelegt ist, wird Brotli-Codierung verwendet, andernfalls wird GZIP-Codierung verwendet. 
+Steuert, ob Brotli-Codierung für die Komprimierung anstelle der GZIP-Standardkomprimierung verwendet wird. Wenn `WEBSITE_ENABLE_BROTLI_ENCODING` auf `1` festgelegt ist, wird Brotli-Codierung verwendet, andernfalls wird GZIP-Codierung verwendet.
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
@@ -331,8 +349,8 @@ Die maximale Anzahl der Instanzen, auf denen die App aufskaliert werden kann. Di
 
 ## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
-_Nur Windows._  
-Legt die Version von Node.js fest, die beim Ausführen Ihrer Funktions-App unter Windows verwendet werden soll. Verwenden Sie eine Tilde (~), damit die Laufzeit die neueste verfügbare Version der Zielhauptversion verwendet. Wenn Sie beispielsweise auf `~10` festlegen, wird die neueste Version von Node.js 10 verwendet. Wenn eine Hauptversion mittels Tilde vorgegeben wird, müssen Sie die Nebenversion nicht manuell aktualisieren. 
+_Nur Windows._
+Legt die Version von Node.js fest, die beim Ausführen Ihrer Funktions-App unter Windows verwendet werden soll. Verwenden Sie eine Tilde (~), damit die Laufzeit die neueste verfügbare Version der Zielhauptversion verwendet. Wenn Sie beispielsweise auf `~10` festlegen, wird die neueste Version von Node.js 10 verwendet. Wenn eine Hauptversion mittels Tilde vorgegeben wird, müssen Sie die Nebenversion nicht manuell aktualisieren.
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -350,7 +368,7 @@ Gültige Werte sind entweder eine URL, die in den Speicherort einer Bereitstellu
 
 ## <a name="website_time_zone"></a>WEBSITE\_TIME\_ZONE
 
-Ermöglicht das Festlegen der Zeitzone für Ihre Funktions-App. 
+Ermöglicht das Festlegen der Zeitzone für Ihre Funktions-App.
 
 |Schlüssel|OS|Beispielwert|
 |---|--|------------|
@@ -361,7 +379,7 @@ Ermöglicht das Festlegen der Zeitzone für Ihre Funktions-App.
 
 ## <a name="website_vnet_route_all"></a>WEBSITE\_VNET\_ROUTE\_ALL
 
-Gibt an, ob der gesamte ausgehende Datenverkehr von der App über das virtuelle Netzwerk weitergeleitet wird. Der Einstellungswert `1` gibt an, dass der gesamte Datenverkehr über das virtuelle Netzwerk weitergeleitet wird. Sie müssen diese Einstellung verwenden, wenn Sie die Features der [regionalen Integration des virtuellen Netzwerks](functions-networking-options.md#regional-virtual-network-integration) verwenden. Sie wird auch verwendet, wenn ein [Virtual Network NAT Gateway verwendet wird, um eine statische ausgehende IP-Adresse zu definieren](functions-how-to-use-nat-gateway.md). 
+Gibt an, ob der gesamte ausgehende Datenverkehr von der App über das virtuelle Netzwerk weitergeleitet wird. Der Einstellungswert `1` gibt an, dass der gesamte Datenverkehr über das virtuelle Netzwerk weitergeleitet wird. Sie müssen diese Einstellung verwenden, wenn Sie die Features der [regionalen Integration des virtuellen Netzwerks](functions-networking-options.md#regional-virtual-network-integration) verwenden. Sie wird auch verwendet, wenn ein [Virtual Network NAT Gateway verwendet wird, um eine statische ausgehende IP-Adresse zu definieren](functions-how-to-use-nat-gateway.md).
 
 |Schlüssel|Beispielwert|
 |---|------------|

@@ -7,15 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 06/09/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 409b51682700a8b13b2840f171642bdcbee6f6d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daecd065779919defc66d9668a6d5d7b972d60be
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93340225"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891984"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Änderungsfeedprozessor in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,6 +69,9 @@ Der normale Lebenszyklus einer Hostinstanz sieht wie folgt aus:
 ## <a name="error-handling"></a>Fehlerbehandlung
 
 Der Änderungsfeedprozessor bietet Resilienz bei Benutzercodefehlern. Das bedeutet: Wenn Ihre Delegatimplementierung eine nicht behandelte Ausnahme (Schritt 4) aufweist, wird der Thread, der diesen speziellen Batch von Änderungen verarbeitet, beendet, und ein neuer Thread wird erstellt. Der neue Thread prüft den letzten Zeitpunkt, der im Leasespeicher für diesen Bereich von Partitionsschlüsselwerten vorliegt, und setzt den Vorgang an dieser Stelle fort, sodass letztendlich der gleiche Batch von Änderungen an den Delegaten gesendet wird. Dieses Verhalten wird so lange fortgesetzt, bis der Delegat die Änderungen ordnungsgemäß verarbeitet. Dies ist auch der Grund dafür, dass der Änderungsfeedprozessor über eine At-Least-Once-Garantie verfügt, denn sollte der Delegatcode eine Ausnahme auslösen, wird der entsprechende Batch wiederholt.
+
+> [!NOTE]
+> Es gibt nur ein Szenario, in dem ein Batch von Änderungen nicht wiederholt wird. Wenn der Fehler bei der ersten Delegatausführung eintritt, gibt es keinen zuvor gespeicherten Zustand des Leasespeichers, der für den Wiederholungsversuch verwendet werden kann. In diesen Fällen wird bei der Wiederholung die [anfängliche Startkonfiguration](#starting-time) verwendet, die möglicherweise den letzten Batch enthält.
 
 Um zu verhindern, dass der Änderungsfeedprozessor fortlaufend denselben Batch von Änderungen wiederholt, sollten Sie im Delegatcode Logik hinzufügen, um bei einer Ausnahme Dokumente in eine Warteschlange für unzustellbare Nachrichten zu schreiben. Dieser Entwurf stellt sicher, dass Sie nicht verarbeitete Änderungen nachverfolgen und gleichzeitig zukünftige Änderungen verarbeiten können. Die Warteschlange für unzustellbare Nachrichten kann ein anderer Cosmos-Container sein. Der genaue Datenspeicher spielt keine Rolle, da in ihm lediglich die nicht verarbeiteten Änderungen gespeichert werden sollen.
 

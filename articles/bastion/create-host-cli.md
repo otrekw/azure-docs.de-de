@@ -1,18 +1,18 @@
 ---
 title: Erstellen eines Bastion-Host über die Azure CLI | Azure Bastion
-description: In diesem Artikel erfahren Sie, wie Sie einen Bastion-Host erstellen und löschen
+description: Hier erfahren Sie, wie Sie einen Bastion-Host per Azure CLI erstellen und löschen.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8654b557de8242910c665596ca8bfd29fe86d1ff
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 4944ae62bda23f33aa30011314826beb499ac791
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106578827"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534752"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Erstellen eines Azure Bastion-Hosts über die Azure CLI
 
@@ -27,7 +27,7 @@ Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch
 [!INCLUDE [Cloud Shell CLI](../../includes/vpn-gateway-cloud-shell-cli.md)]
 
  >[!NOTE]
- >Die Verwendung von Azure Bastion in Verbindung mit privaten Azure DNS-Zonen wird derzeit nicht unterstützt. Stellen Sie zunächst sicher, dass das virtuelle Netzwerk, in dem Sie Ihre Bastion-Ressource bereitstellen möchten, nicht mit einer privaten DNS-Zone verknüpft ist.
+ >Die Verwendung von Azure Bastion in Verbindung mit privaten Azure DNS-Zonen wird derzeit nicht unterstützt. Stellen Sie zunächst sicher, dass das virtuelle Netzwerk, in dem Sie Ihre Bastion-Ressource bereitstellen möchten, nicht mit einer privaten DNS-Zone verknüpft ist.
  >
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Erstellen eines Bastion-Hosts

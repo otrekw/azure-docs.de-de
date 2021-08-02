@@ -5,13 +5,14 @@ ms.service: data-factory
 ms.topic: conceptual
 author: minhe-msft
 ms.author: hemin
-ms.date: 03/15/2021
-ms.openlocfilehash: 3598ede0cab3c001854d0ba46501692935397923
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 05/12/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b699b7929709fd9ae9e206d6a50291f02aca2a18
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905388"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675241"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globale Parameter in Azure Data Factory
 
@@ -46,17 +47,18 @@ Es gibt zwei Möglichkeiten, globale Parameter in Ihre Continuous Integration- u
 * Einschließen globaler Parameter in die ARM-Vorlage
 * Bereitstellen globaler Parameter über ein PowerShell-Skript
 
-Für die meisten Anwendungsfälle empfiehlt es sich, globale Parameter in die ARM-Vorlage einzuschließen. Dies ist nativ in die in der [Dokumentation zu CI/CD](continuous-integration-deployment.md) beschriebenen Lösung integriert. Globale Parameter werden standardmäßig als ARM-Vorlagenparameter hinzugefügt, da sie häufig zwischen Umgebungen geändert werden. Sie können das Einschließen globaler Parameter in die ARM-Vorlage über den Hub **Verwalten** aktivieren.
-
-> [!NOTE]
-> Die Konfiguration **In ARM-Vorlage einschließen** ist nur im Git-Modus verfügbar. Im Livemodus und Data Factory-Modus ist sie derzeit deaktiviert. 
-
-> [!WARNING]
->Sie können das Zeichen „-“ nicht im Parameternamen verwenden. Wenn Sie das tun, wird die Fehlermeldung „{"code":"BadRequest","message":"ErrorCode=InvalidTemplate,ErrorMessage=Der Ausdruck >'pipeline().globalParameters.myparam-dbtest-url' ist ungültig: .....}“ angezeigt. Stattdessen können Sie das Zeichen „_“ im Parameternamen verwenden.
+Für allgemeine Anwendungsfälle empfiehlt es sich, globale Parameter in die ARM-Vorlage einzuschließen. Dies lässt sich nativ in die Lösung integrieren, die in der [CI/CD-Dokumentation](continuous-integration-deployment.md) beschrieben ist. Bei automatischer Veröffentlichung und Purview-Verbindung ist eine **PowerShell-Skriptmethode** erforderlich. Weitere Informationen zur PowerShell-Skriptmethode erhalten Sie im Folgenden. Globale Parameter werden standardmäßig als ARM-Vorlagenparameter hinzugefügt, da sie häufig zwischen Umgebungen geändert werden. Sie können das Einschließen globaler Parameter in die ARM-Vorlage über den Hub **Verwalten** aktivieren.
 
 ![Einschließen in eine ARM-Vorlage](media/author-global-parameters/include-arm-template.png)
 
-Durch das Hinzufügen globaler Parameter zur ARM-Vorlage wird eine Einstellung auf Factoryebene hinzugefügt, die andere Einstellungen auf Factoryebene in anderen Umgebungen außer Kraft setzt, z. B. einen kundenseitig verwalteten Schlüssel oder eine Git-Konfiguration. Wenn Sie diese Einstellungen in einer erweiterten Umgebung aktiviert haben, z. B. vom Typ UAT (Benutzerakzeptanztests) oder PRODUKTION, ist es besser, globale Parameter über ein PowerShell-Skript anhand der unten hervorgehobenen Schritte bereitzustellen.
+> [!NOTE]
+> Die Konfiguration **In ARM-Vorlage einschließen** ist nur im Git-Modus verfügbar. Im Livemodus und Data Factory-Modus ist sie derzeit deaktiviert. Verwenden Sie bei einer automatischen Veröffentlichung oder Purview-Verbindung nicht die Methode zum Einschließen globaler Parameter. Verwenden Sie die PowerShell-Skriptmethode. 
+
+> [!WARNING]
+>Sie können das Zeichen „-“ nicht im Parameternamen verwenden. Wenn Sie das tun, wird die Fehlermeldung „{"code":"BadRequest","message":"ErrorCode=InvalidTemplate,ErrorMessage=Der Ausdruck >'pipeline().globalParameters.myparam-dbtest-url' ist ungültig: .....}“ angezeigt. Stattdessen können Sie das Zeichen „_“ im Parameternamen verwenden. 
+
+Durch das Hinzufügen globaler Parameter zur ARM-Vorlage wird eine Einstellung auf Factoryebene hinzugefügt, die andere Einstellungen auf Factoryebene in anderen Umgebungen außer Kraft setzt, z. B. einen kundenseitig verwalteten Schlüssel oder eine Git-Konfiguration. Wenn Sie diese Einstellungen in einer erweiterten Umgebung aktiviert haben, z. B. vom Typ UAT (Benutzerakzeptanztests) oder PRODUKTION, ist es besser, globale Parameter über ein PowerShell-Skript anhand der unten hervorgehobenen Schritte bereitzustellen. 
+
 
 ### <a name="deploying-using-powershell"></a>Bereitstellen mithilfe von PowerShell
 

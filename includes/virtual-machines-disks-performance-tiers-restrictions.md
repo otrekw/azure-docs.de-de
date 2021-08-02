@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/18/2021
+ms.date: 05/13/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7151c110fd50f7485aa0b130832aace4f3143ad9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5915d8628254f24343571c1adc254c548558415
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101750761"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077702"
 ---
 - Dieses Feature wird derzeit nur für SSD Premium unterstützt.
 - Sie müssen entweder die Zuordnung des virtuellen Computers aufheben oder den Datenträger von einem ausgeführten virtuellen Computer trennen, damit Sie die Stufe des Datenträgers ändern können.
@@ -22,9 +22,13 @@ ms.locfileid: "101750761"
 
 ## <a name="change-performance-tier-without-downtime-preview"></a>Ändern der Leistungsstufe ohne Downtime (Vorschau)
 
-Normalerweise müssen Sie die Zuordnung Ihres virtuellen Computers aufheben oder Ihren Datenträger trennen, um die Leistungsstufe zu ändern. Wenn Sie jedoch diese Previewfunktion aktivieren, müssen Sie die Zuordnung Ihres virtuellen Computers nicht aufheben oder Ihren Datenträger trennen, um die Leistungsstufe zu ändern. [Hier](https://aka.ms/liveperftiersignup) können Sie sich für die Vorschauversion registrieren.
+Normalerweise müssen Sie die Zuordnung Ihres virtuellen Computers aufheben oder Ihren Datenträger trennen, um die Leistungsstufe zu ändern. Wenn Sie jedoch diese Previewfunktion aktivieren, müssen Sie die Zuordnung Ihres virtuellen Computers nicht aufheben oder Ihren Datenträger trennen, um die Leistungsstufe zu ändern.
 
 Für die Vorschauversion gelten folgende Einschränkungen:
-- Nur in der Region „EastUS2EUAP“ verfügbar
-- Aktuell nicht für freigegebene Datenträger verfügbar
-- Erfordert die Verwendung von Azure Resource Manager-Vorlagen mit der API `2020-12-01`, um Leistungsstufen ohne Downtime ändern zu können
+- Sie ist nur in der Region „USA, Westen-Mitte“ verfügbar.
+- Sie ist derzeit nicht für freigegebene Datenträger verfügbar.
+- Sie muss eine der folgenden Methoden verwenden, um die Stufe ohne Downtime zu wechseln:
+    - Azure Resource Manager-Vorlagen mit der `2020-12-01`-API, um Leistungsstufen ohne Downtime zu ändern
+    - Aufrufen des Azure-Portals über den folgenden Link: [https://aka.ms/diskPerfTiersPreview](https://aka.ms/diskPerfTiersPreview)
+    - Die aktuelle Version der Azure CLI
+- Sie ist derzeit mit dem Azure PowerShell-Modul nicht verfügbar.

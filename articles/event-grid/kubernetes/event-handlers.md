@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 740930a342706eeaf3adc3b0e8ad1e01e4c70932
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 838084204ed2c1979f618bb2bfe644d1f88cd51e
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385510"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536497"
 ---
 # <a name="event-handlers-destinations-in-event-grid-on-kubernetes"></a>Ereignishandler und Ziele in Event Grid in Kubernetes
 Ein Ereignishandler ist ein beliebiges System, das einen Endpunkt verfügbar macht und das Ziel für Ereignisse ist, die von Event Grid gesendet werden. Ein Ereignishandler, der ein Ereignis empfängt, reagiert darauf und verwendet die Ereignisnutzdaten, um Logik auszuführen, was zum Auftreten neuer Ereignisse führen kann.
@@ -79,18 +79,18 @@ Legen Sie zum Veröffentlichen eines Webhook-Endpunkts `endpointType` auf `WebHo
 
 Legen Sie zum Veröffentlichen auf einem Azure Event Grid-Cloudendpunkt `endpointType` auf `WebHook` fest, und geben Sie Folgendes an:
 
-* **endpointUrl**: Azure Event Grid-Themen-URL in der Cloud.
+* **endpointUrl:** Azure Event Grid-Themen-URL in der Cloud, bei der der API-Versionsparameter auf **2018-01-01** und `aeg-sas-key` auf den URL-codierten SAS-Schlüssel festgelegt ist. 
 
    ```json
-        {
-          "properties": {
+    {
+        "properties": {
             "destination": {
-              "endpointType": "WebHook",
-              "properties": {
-                 "endpointUrl": "<your-event-grid-cloud-topic-endpoint-url>?api-version=2018-01-01",
-              }
+                "endpointType": "WebHook",
+                "properties": {
+                    "endpointUrl": "<your-event-grid-cloud-topic-endpoint-url>?api-version=2018-01-01&aeg-sas-key=urlencoded(sas-key-value)"
+                }
             }
-          }
+        }
     }
    ```
 

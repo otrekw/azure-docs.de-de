@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Azure Private Link für den Zugriff auf ein A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/26/2021
+ms.date: 06/08/2021
 ms.author: thweiss
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 034eb35eeef975be23cc318aa797282008d71728
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 633148279332c8d2b30cae525dfa7cc6b14f849e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936902"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744303"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurieren von Azure Private Link für ein Azure Cosmos-Konto
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -651,7 +651,7 @@ Folgende Fälle und Ergebnisse sind bei Verwendung von Private Link in Verbindun
 
 Wie im vorherigen Abschnitt beschrieben wurde und sofern keine bestimmten Firewallregeln festgelegt wurden, kann durch das Hinzufügen eines privaten Endpunkts nur über private Endpunkte auf Ihr Azure Cosmos-Konto zugegriffen werden. Dies bedeutet, dass das Azure Cosmos-Konto über öffentlichen Datenverkehr erreicht werden könnte, nachdem es erstellt wurde und bevor ein privater Endpunkt hinzugefügt wird. Wenn Sie sicherstellen möchten, dass der Zugriff auf öffentliche Netzwerke sogar vor der Erstellung von privaten Endpunkten deaktiviert wird, können Sie das Flag `publicNetworkAccess` während der Kontoerstellung auf `Disabled` festlegen. Beachten Sie, dass dieses Flag Vorrang vor allen IP- oder VNET-Regeln hat. Der gesamte Datenverkehr in öffentlichen und virtuellen Netzwerken wird blockiert, wenn das Flag auf `Disabled` festgelegt ist, selbst wenn die Quell-IP-Adresse oder das virtuelle Netzwerk in der Firewallkonfiguration zugelassen wurde.
 
-Ein Beispiel für die Verwendung dieses Flags finden Sie in [dieser Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/).
+Ein Beispiel für die Verwendung dieses Flags finden Sie in [dieser Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/cosmosdb-private-endpoint/).
 
 ## <a name="adding-private-endpoints-to-an-existing-cosmos-account-with-no-downtime"></a>Hinzufügen privater Endpunkte zu einem vorhandenen Cosmos-Konto ohne Ausfallzeit
 
@@ -688,7 +688,7 @@ Bei Verwendung von Private Link mit einem Azure Cosmos-Konto gelten die folgende
 
 * Wenn Sie Private Link mit einem Azure Cosmos-Konto über eine Verbindung im direkten Modus verwenden, können Sie lediglich das TCP-Protokoll verwenden. Das HTTP-Protokoll wird derzeit nicht unterstützt.
 
-* Wenn Sie die Azure Cosmos DB-API für MongoDB-Konten verwenden, wird ein privater Endpunkt nur für Konten unter Serverversion 3.6 unterstützt (d. h. Konten mit Endpunkt im Format `*.mongo.cosmos.azure.com`). Private Link wird nicht für Konten unter Serverversion 3.2 unterstützt (d. h. Konten mit Endpunkt im Format `*.documents.azure.com`). Zur Verwendung von Private Link sollten Sie alte Konten zur neuen Version migrieren.
+* Wenn Sie die Azure Cosmos DB-API für MongoDB-Konten verwenden, wird ein privater Endpunkt für Konten unter Serverversion 3.6 oder höher unterstützt (d. h. Konten mit Endpunkt im Format `*.mongo.cosmos.azure.com`). Private Link wird nicht für Konten unter Serverversion 3.2 unterstützt (d. h. Konten mit Endpunkt im Format `*.documents.azure.com`). Zur Verwendung von Private Link sollten Sie alte Konten zur neuen Version migrieren.
 
 * Bei Verwendung einer Azure Cosmos DB-API für das MongoDB-Konto, das über eine Private Link-Instanz verfügt, müssen die Tools/Bibliotheken SNI (Service Name Identification, Dienstnamenidentifikation) unterstützen oder den Parameter `appName` aus der Verbindungszeichenfolge übergeben, um eine ordnungsgemäße Verbindung zu ermöglichen. Einige ältere Tools/Bibliotheken sind möglicherweise nicht mit der Private Link-Funktion kompatibel.
 

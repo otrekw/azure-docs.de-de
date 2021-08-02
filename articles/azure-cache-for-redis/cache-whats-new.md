@@ -6,18 +6,18 @@ ms.service: cache
 ms.topic: reference
 ms.date: 09/28/2020
 ms.author: yegu
-ms.openlocfilehash: b30e83b89b25e6400b8c7e0419406631fa1edcd0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21ee51ac53147482210aa0bda410e11d12e5f479
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91491684"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413787"
 ---
 # <a name="whats-new-in-azure-cache-for-redis"></a>Neuerungen in Azure Cache for Redis
 
 ## <a name="azure-tls-certificate-change"></a>TLS-Zertifikatänderungen für Azure
 
-Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Serverzertifikaten aus einer anderen Gruppe von Zertifizierungsstellen (Certificate Authorities, CAs). Diese Änderung wird in Phasen zwischen 13. August 2020 und 26. Oktober 2020 (geschätzt) eingeführt. Diese Änderung wird in Azure vorgenommen, da die aktuellen Zertifikate der Zertifizierungsstellen [eine der grundlegenden Anforderungen des Zertifizierungsstellen-/Browserforums nicht erfüllen](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951). Das Problem wurde am 1. Juli 2020 gemeldet und gilt für mehrere beliebte PKI-Anbieter (Public Key-Infrastruktur) weltweit. Die meisten TLS-Zertifikate, die heute von Azure-Diensten verwendet werden, stammen aus der *Baltimore CyberTrust Root*-PKI. Der Azure Cache for Redis-Dienst wird weiterhin mit Baltimore CyberTrust Root verkettet. Seine TLS-Serverzertifikate werden jedoch ab 12. Oktober 2020 von neuen Zwischenzertifizierungsstellen (Intermediate Certificate Authorities, ICAs) ausgestellt.
+Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Serverzertifikaten aus einer anderen Gruppe von Zertifizierungsstellen (Certificate Authorities, CAs). Diese Änderung wird in Phasen zwischen 13. August 2020 und 26. Oktober 2020 (geschätzt) eingeführt. Diese Änderung wird in Azure vorgenommen, da [die aktuellen Zertifikate der Zertifizierungsstellen eine der grundlegenden Anforderungen des Zertifizierungsstellen-/Browserforums nicht erfüllen](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951). Das Problem wurde am 1. Juli 2020 gemeldet und gilt für mehrere beliebte PKI-Anbieter (Public Key-Infrastruktur) weltweit. Die meisten TLS-Zertifikate, die heute von Azure-Diensten verwendet werden, stammen aus der *Baltimore CyberTrust Root*-PKI. Der Azure Cache for Redis-Dienst wird weiterhin mit Baltimore CyberTrust Root verkettet. Seine TLS-Serverzertifikate werden jedoch ab 12. Oktober 2020 von neuen Zwischenzertifizierungsstellen (Intermediate Certificate Authorities, ICAs) ausgestellt.
 
 > [!NOTE]
 > Diese Änderung ist auf Dienste in öffentlichen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/geographies/) beschränkt. Dies schließt unabhängige (z. B. China) oder Government Clouds aus.
@@ -37,7 +37,9 @@ Die folgende Tabelle enthält Informationen zu den Zertifikaten, die umgestellt 
 
 ### <a name="what-actions-should-i-take"></a>Welche Aktionen zieht das für mich nach sich?
 
-Wenn Ihre Anwendung den Zertifikatspeicher des Betriebssystems verwendet oder Baltimore Root angibt, ist keine Aktion erforderlich. Wenn Ihre Anwendung dagegen ein Zwischen- oder Blatt-TLS-Zertifikat angibt, empfiehlt es sich, die folgenden Stämme anzuheften:
+Wenn Ihre Anwendung den Zertifikatspeicher des Betriebssystems verwendet oder Baltimore Root angibt, ist keine Aktion erforderlich. 
+
+Wenn Ihre Anwendung ein Zwischen- oder Blatt-TLS-Zertifikat angibt, empfiehlt es sich, die folgenden Stämme anzuheften:
 
 | Zertifikat | Fingerabdruck |
 | ----- | ----- |
@@ -50,7 +52,7 @@ Wenn Ihre Anwendung den Zertifikatspeicher des Betriebssystems verwendet oder Ba
 >
 >
 
-Um weiterhin Zwischenzertifikate anzuheften, fügen Sie Folgendes der Liste der angehefteten Zwischenzertifikate hinzu, die nur wenige zusätzliche Zertifikate enthält, um zukünftige Änderungen zu minimieren:
+Um weiterhin Zwischenzertifikate anzuheften, fügen Sie Folgendes der Liste der angehefteten Zwischenzertifikate hinzu, die nur wenige weitere Zertifikate enthält, um zukünftige Änderungen zu minimieren:
 
 | Allgemeiner Name der Zertifizierungsstelle | Fingerabdruck |
 | ----- | ----- |
@@ -61,7 +63,7 @@ Um weiterhin Zwischenzertifikate anzuheften, fügen Sie Folgendes der Liste der 
 | [Microsoft Azure TLS Issuing CA 05](https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2005.cer) | 6c3af02e7f269aa73afd0eff2a88a4a1f04ed1e5 |
 | [Microsoft Azure TLS Issuing CA 06](https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2006.cer) | 30e01761ab97e59a06b41ef20af6f2de7ef4f7b0 |
 
-Wenn Ihre Anwendung das Zertifikat im Code überprüft, müssen Sie ihn ändern, um die Eigenschaften (z. B. Aussteller, Fingerabdruck) der neu angehefteten Zertifikate zu erkennen. Diese zusätzliche Überprüfung sollte alle angehefteten Zertifikate abdecken, um für die Zukunft gerüstet zu sein.
+Wenn Ihre Anwendung das Zertifikat im Code überprüft, müssen Sie ihn ändern, um die Eigenschaften --- beispielsweise Aussteller, Fingerabdruck --- der neu angehefteten Zertifikate zu erkennen. Diese zusätzliche Überprüfung sollte alle angehefteten Zertifikate abdecken, um für die Zukunft gerüstet zu sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

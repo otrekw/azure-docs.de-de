@@ -3,12 +3,12 @@ title: Sichern eines Azure Service Fabric-Clusters
 description: Lernen Sie Sicherheitsszenarien für einen Azure Service Fabric-Cluster und die verschiedenen Technologien kennen, die Sie verwenden können, um sie zu implementieren.
 ms.topic: conceptual
 ms.date: 08/14/2018
-ms.openlocfilehash: 6f7bb785184938fe5c1e20e3c915b0112c7723ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: feeb6bf0844dc9f0d835d934b148484010979441
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96573067"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034047"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
 
@@ -30,9 +30,9 @@ Cluster unter Azure und eigenständige Cluster unter Windows können beide entwe
 
 ### <a name="node-to-node-certificate-security"></a>Zertifikatsicherheit (Knoten zu Knoten)
 
-Service Fabric verwendet X.509-Serverzertifikate, die Sie als Teil der Knotentypkonfiguration angeben, wenn Sie einen Cluster erstellen. Ein kurzer Überblick darüber, was diese Zertifikate sind und wie Sie sie abrufen oder erstellen können, wird am Ende dieses Artikels bereitgestellt.
+Service Fabric verwendet X.509-Serverzertifikate, die Sie als Teil der Knotentypkonfiguration angeben, wenn Sie einen Cluster erstellen. Sie können die Zertifikatsicherheit entweder im Azure-Portal, über Azure Resource Manager-Vorlagen oder eine eigenständige JSON-Vorlage einrichten. Ein kurzer Überblick darüber, was diese Zertifikate sind und wie Sie sie abrufen oder erstellen können, wird am Ende dieses Artikels bereitgestellt.
 
-Richten Sie die Zertifikatsicherheit beim Erstellen des Clusters im Azure-Portal, über Azure Resource Manager-Vorlagen oder eine eigenständige JSON-Vorlage ein. Das Standardverhalten des Service Fabric SDK ist die Bereitstellung und Installation des Zertifikats mit dem am weitesten in der Zukunft liegenden Ablaufdatum. Das klassische Verhalten erlaubt die Definition von primären und sekundären Zertifikaten, um manuell initiierte Rollover zu ermöglichen, und wird nicht für die Verwendung mit der neuen Funktionalität empfohlen. Die primären Zertifikate, die verwendet werden, weisen das am weitesten in die Zukunft reichende Ablaufdatum auf und sollten sich vom Verwaltungsclient und den schreibgeschützten Clientzertifikaten unterscheiden, die Sie für [Client-zu-Knoten-Sicherheit](#client-to-node-security) festgelegt haben.
+Das Standardverhalten des Service Fabric SDK ist die Bereitstellung und Installation des Zertifikats mit dem am weitesten in der Zukunft liegenden Ablaufdatum. Dieses primäre Zertifikat muss sich von den Administratorclientzertifikaten und den schreibgeschützten Clientzertifikaten für die [Client-zu-Knoten-Sicherheit](#client-to-node-security) unterscheiden. Das klassische Verhalten des SDK erlaubt die Definition von primären und sekundären Zertifikaten, um manuell initiierte Rollover zu ermöglichen. Es wird nicht für die Verwendung mit der neuen Funktionalität empfohlen. 
 
 Informationen zum Einrichten der Zertifikatsicherheit in einem Cluster für Azure finden Sie unter [Einrichten eines Clusters mit einer Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md).
 
@@ -67,11 +67,9 @@ Informationen zum Einrichten der Zertifikatsicherheit in einem Cluster für eine
 
 ### <a name="client-to-node-azure-active-directory-security-on-azure"></a>Client-zu-Knoten-Sicherheit von Azure Active Directory in Azure
 
-Mit Azure AD können Organisationen (so genannte Mandanten) den Benutzerzugriff auf Anwendungen verwalten. Bei den Anwendungen wird zwischen Anwendungen mit webbasierter Anmeldebenutzeroberfläche und Anwendungen mit nativer Clientumgebung unterschieden. Falls Sie noch keinen Mandanten erstellt haben, sollten Sie zunächst den Artikel [Schnellstart: Einrichten einer Entwicklungsumgebung][active-directory-howto-tenant] lesen.
+Mit Azure Active Directory (Azure AD) können Organisationen (so genannte Mandanten) den Benutzerzugriff auf Anwendungen verwalten. Bei den Anwendungen wird zwischen Anwendungen mit webbasierter Anmeldebenutzeroberfläche und Anwendungen mit nativer Clientumgebung unterschieden. Falls Sie noch keinen Mandanten erstellt haben, sollten Sie zunächst den Artikel [Schnellstart: Einrichten einer Entwicklungsumgebung][active-directory-howto-tenant] lesen.
 
-Service Fabric-Cluster bieten unterschiedliche Einstiegspunkte für ihre Verwaltungsfunktionen. Hierzu zählen etwa [Service Fabric Explorer][service-fabric-visualizing-your-cluster] (webbasiert) und [Visual Studio][service-fabric-manage-application-in-visual-studio]. Daher erstellen Sie zwei Azure AD-Anwendungen, um den Zugriff auf den Cluster zu steuern: eine Webanwendung und eine native Anwendung.
-
-Für in Azure ausgeführte Cluster können Sie den Zugriff auf die Verwaltungsendpunkte auch mit Azure Active Directory (Azure AD) schützen. Um zu erfahren, wie die benötigten Azure AD-Artefakte erstellt und bei der Erstellung des Clusters mit Daten aufgefüllt werden, lesen Sie [Einrichten von Azure AD, um Clients zu authentifizieren](service-fabric-cluster-creation-setup-aad.md).
+Für Cluster, die in Azure ausgeführt werden, können Sie Azure AD verwenden, um den Zugriff auf Verwaltungsendpunkte zu schützen. Service Fabric-Cluster bieten unterschiedliche Einstiegspunkte für ihre Verwaltungsfunktionen. Hierzu zählen etwa [Service Fabric Explorer][service-fabric-visualizing-your-cluster] (webbasiert) und [Visual Studio][service-fabric-manage-application-in-visual-studio]. Daher erstellen Sie zwei Azure AD-Anwendungen, um den Zugriff auf den Cluster zu steuern: eine Webanwendung und eine native Anwendung. Um zu erfahren, wie die benötigten Azure AD-Artefakte erstellt und bei der Erstellung des Clusters mit Daten aufgefüllt werden, lesen Sie [Einrichten von Azure AD, um Clients zu authentifizieren](service-fabric-cluster-creation-setup-aad.md).
 
 ## <a name="security-recommendations"></a>Sicherheitsempfehlungen
 

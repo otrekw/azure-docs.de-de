@@ -3,12 +3,12 @@ title: Speicherwarteschlange als Ereignishandler für Azure Event Grid-Ereigniss
 description: Hier wird beschrieben, wie Sie Azure-Speicherwarteschlangen als Ereignishandler für Azure Event Grid-Ereignisse verwenden können.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7c8b7a111c29fe11cc11ee191d78ae2a5f13610
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91270184"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421732"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>Speicherwarteschlange als Ereignishandler für Azure Event Grid-Ereignisse
 Ein Ereignishandler ist der Ort, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Mehrere Azure-Dienste werden automatisch für die Behandlung von Ereignissen konfiguriert. **Azure Queue Storage** ist einer dieser Dienste. 
@@ -71,7 +71,7 @@ Im folgenden Tutorial finden Sie ein Beispiel für die Verwendung von Queue Stor
 }
 ```
 
-### <a name="storage-queue-as-a-deadletter-destination"></a>Speicherwarteschlange als Ziel für unzustellbare Nachrichten
+### <a name="storage-queue-as-the-event-handler-with-a-deadletter-destination"></a>Speicherwarteschlange als Ereignishandler mit einem Ziel für unzustellbare Nachrichten
 
 ```json
 {
@@ -101,7 +101,7 @@ Im folgenden Tutorial finden Sie ein Beispiel für die Verwendung von Queue Stor
 }
 ```
 
-### <a name="storage-queue-as-a-deadletter-destination---managed-identity"></a>Speicherwarteschlange als Ziel für unzustellbare Nachrichten: verwaltete Identität
+### <a name="storage-queue-as-the-event-handler-with-a-deadletter-destination---managed-identity"></a>Speicherwarteschlange als Ereignishandler mit einem Ziel für unzustellbare Nachrichten: Verwaltete Identität
 
 ```json
 {

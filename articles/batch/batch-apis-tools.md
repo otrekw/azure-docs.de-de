@@ -2,14 +2,14 @@
 title: APIs und Tools für Entwickler
 description: Es werden die APIs und Tools beschrieben, die zum Entwickeln von Lösungen mit dem Azure Batch-Dienst verfügbar sind.
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 06/11/2021
 ms.custom: seodec18
-ms.openlocfilehash: b7c68ab16834bbd746cf52708db0cdb3f31c8d4d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0c378ae34ca74df7bb639464818f13f86a8f5ec2
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219925"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006633"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Übersicht über Batch-APIs und -Tools
 
@@ -66,16 +66,16 @@ Die Azure Resource Manager-APIs für Batch ermöglichen den programmgesteuerten 
 Diese Befehlszeilentools bieten die gleiche Funktionalität wie die Batch-Dienst- und Batch Management-APIs: 
 
 - [Batch-PowerShell-Cmdlets](/powershell/module/az.batch/): Mit den Azure Batch-Cmdlets im [Azure PowerShell](/powershell/azure/)-Modul können Sie Batch-Ressourcen mit PowerShell verwalten.
-- [Azure CLI](/cli/azure): Die Azure CLI ist ein plattformübergreifendes Toolset mit Shellbefehlen für die Interaktion mit vielen Azure-Diensten, z.B. dem Batch-Dienst und dem Batch Management-Dienst. Weitere Informationen zur Verwendung der Azure CLI mit Batch finden Sie unter [Verwalten von Batch-Ressourcen mit der Azure CLI](batch-cli-get-started.md).
+- [Azure CLI](/cli/azure): Die Azure CLI ist ein plattformübergreifendes Toolset mit Shellbefehlen für die Interaktion mit vielen Azure-Diensten, z.B. dem Batch-Dienst und dem Batch Management-Dienst. Weitere Informationen finden Sie unter [Verwalten von Batch-Ressourcen mit Azure CLI](batch-cli-get-started.md).
 
 ## <a name="other-tools-for-application-development"></a>Weitere Tools für die Anwendungsentwicklung
 
 Diese zusätzlichen Tools können beim Entwickeln und Debuggen Ihrer Batch-Anwendungen und -Dienste hilfreich sein.
 
 - [Azure-Portal](https://portal.azure.com/): Über das Azure-Portal können Sie Batch-Pools, -Aufträge und -Aufgaben erstellen, überwachen und löschen. Sie können Statusinformationen für diese und andere Ressourcen beim Ausführen der Aufträge anzeigen und sogar Dateien von den Serverknoten in Ihre Pools herunterladen. Beispielsweise können Sie bei der Problembehandlung die Datei `stderr.txt` einer fehlerhaften Aufgabe herunterladen. Außerdem können Sie RDP-Dateien (Remotedesktop) herunterladen, die sich zum Anmelden an Computeknoten eignen.
-- [Azure Batch Explorer](https://azure.github.io/BatchExplorer/): Batch Explorer (früher: BatchLabs) ist ein kostenloses eigenständiges Clienttool mit zahlreichen Features, das Sie beim Erstellen, Debuggen und Überwachen von Azure Batch-Anwendungen unterstützt. Ein Installationspaket für Mac, Linux oder Windows können Sie [hier](https://azure.github.io/BatchExplorer/) herunterladen.
+- Weitere Informationen finden Sie unter [Verwalten von Batch-Ressourcen mit Azure CLI](https://azure.github.io/BatchExplorer/). Ein Installationspaket für Mac, Linux oder Windows können Sie [hier](https://azure.github.io/BatchExplorer/) herunterladen.
 - [Azure Batch Shipyard:](https://github.com/Azure/batch-shipyard) Batch Shipyard ist ein Tool, das Sie beim Bereitstellen, Ausführen und Überwachen der containerbasierten Batchverarbeitung und von HPC-Workloads in Azure Batch unterstützt.
-- [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/): Dies ist zwar kein Azure Batch-Tool, aber der Storage-Explorer ist ein weiteres wertvolles Tool, das Sie beim Entwickeln und Debuggen Ihrer Batch-Lösungen einsetzen können.
+- [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/): Dies ist zwar kein Azure Batch-Tool, aber Storage-Explorer kann Ihnen beim Entwickeln und Debuggen Ihrer Batch-Lösungen helfen.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

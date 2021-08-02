@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 01/14/2020
+ms.date: 06/01/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b93da489d1d2cbaa96ea8ed99b096ea8b7af45e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f1b9ceb41300d8a53d192602812f1e3c04017609
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108746151"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371461"
 ---
-# <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Einschränken von Gastzugriffsberechtigungen (Vorschau) in Azure Active Directory
+# <a name="restrict-guest-access-permissions-in-azure-active-directory"></a>Einschränken von Gastzugriffsberechtigungen in Azure Active Directory
 
-Mit Azure Active Directory (Azure AD) können Sie einschränken, was externe Gastbenutzer in ihrer Organisation in Azure AD sehen können. Gastbenutzern ist in Azure AD standardmäßig eine eingeschränkte Berechtigungsstufe zugewiesen, während die Standardeinstellung für Mitgliedsbenutzer den vollständige Satz von Standardbenutzerberechtigungen umfasst. Dies ist eine Vorschau einer neuen Berechtigungsstufe für Gastbenutzer in den Einstellungen für die externe Zusammenarbeit Ihrer Azure AD-Organisation, die einen noch eingeschränkteren Zugriff bietet. Somit sind für den Gastzugriff jetzt folgende Auswahlmöglichkeiten vorhanden:
+Mit Azure Active Directory (Azure AD) können Sie einschränken, was externe Gastbenutzer in ihrer Organisation in Azure AD sehen können. Gastbenutzern ist in Azure AD standardmäßig eine eingeschränkte Berechtigungsstufe zugewiesen, während die Standardeinstellung für Mitgliedsbenutzer den vollständigen Satz von Benutzerberechtigungen umfasst. Dies ist eine neue Berechtigungsstufe für Gastbenutzer in den Einstellungen für die externe Zusammenarbeit Ihrer Azure AD-Organisation, die einen noch eingeschränkteren Zugriff bietet. Somit sind für den Gastzugriff jetzt folgende Stufen vorhanden:
 
 Berechtigungsstufe         | Zugriffsebene | Wert
 ----------------         | ------------ | -----

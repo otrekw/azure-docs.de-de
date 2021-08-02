@@ -1,14 +1,30 @@
 ---
-ms.openlocfilehash: 69f0da2f1528ad1f45762a8f754cc2020b4cb880
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5208f497fc5423cd0e9c2343af2a5757088399b1
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98900931"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111449680"
 ---
-In diesem Artikel werden die veröffentlichten Versionen und Features des Azure Active Directory Connect-Bereitstellungs-Agent aufgeführt. Das Azure AD-Team aktualisiert den Bereitstellungs-Agent regelmäßig mit neuen Features und Funktionen. Der Bereitstellungs-Agent wird automatisch aktualisiert, wenn eine neue Version veröffentlicht wird. 
+In diesem Artikel werden die veröffentlichten Versionen und Features des Azure Active Directory Connect-Bereitstellungs-Agent aufgeführt. Das Azure AD-Team aktualisiert den Bereitstellungs-Agent regelmäßig mit neuen Features und Funktionen. 
 
 Microsoft stellt direkte Unterstützung für die neueste Agent-Version und die unmittelbare Vorgängerversion bereit.
+
+## <a name="113590"></a>1.1.359.0
+
+### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+- GMSA-Cmdlets zum Festlegen/Zurücksetzen von Berechtigungen
+
+### <a name="fixed-issues"></a>Behobene Probleme
+- Fehlerbehebung der GMSA-Ordnerberechtigung (ursprünglich führte das Problem zu Bootstrapproblemen)
+- Fehlerbehebung für die Behandlung mehrerer Änderungen an einem einzelnen Wertverweisattribut (z. B. Manager)
+- Fehlerbehebung für Fehler in der anfänglichen Enumeration sowie verbesserte Ablaufverfolgung des Fehlers
+- Optimieren von Gruppenmitgliedschaftsupdates für eine Bereichsgruppe Dadurch können Kunden jetzt eine Gruppe von bis zu 50.000 Mitgliedern mithilfe des Bereichsfilters für Gruppen synchronisieren. 
+- Unterstützung des Abrufens eines einzelnen Objekts durch DN mit Bereichsbestimmung, die von der Bedarfsbereitstellung verwendet wird, um Bereichslogik zu befolgen
+
+
+
+
 
 ## <a name="113540"></a>1.1.354.0
 
@@ -97,5 +113,4 @@ Microsoft stellt direkte Unterstützung für die neueste Agent-Version und die u
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
 
 * Bereitstellungs-Agent und Connector-Architektur wurden für bessere Leistung, Stabilität und Zuverlässigkeit überarbeitet 
-* Die Konfiguration des Bereitstellungs-Agent wurde durch Verwendung eines Installationsassistenten auf der Benutzeroberfläche vereinfacht 
-* Unterstützung für automatische Agent-Updates hinzugefügt
+* Die Konfiguration des Bereitstellungs-Agent wurde durch Verwendung eines Installationsassistenten auf der Benutzeroberfläche vereinfacht

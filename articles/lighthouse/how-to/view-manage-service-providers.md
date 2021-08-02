@@ -1,14 +1,14 @@
 ---
 title: Dienstanbieter anzeigen und verwalten
-description: Kunden können die Seite „Dienstanbieter“ im Azure-Portal verwenden, um Informationen zu Dienstanbietern, Angeboten von Dienstanbietern und delegierten Ressourcen anzuzeigen.
+description: Kunden können Informationen zu Azure Lighthouse-Dienstanbietern, Angeboten von Dienstanbietern und delegierten Ressourcen im Azure-Portal einsehen.
 ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: f6ee5fb154d75ff715acf99c5184cd1652ccdb80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23fe84132b3c2dbee584f452b14503adfdb6db7d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555576"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080919"
 ---
 # <a name="view-and-manage-service-providers"></a>Dienstanbieter anzeigen und verwalten
 

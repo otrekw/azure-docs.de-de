@@ -11,18 +11,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 06/01/2021
 ms.author: apimpm
-ms.openlocfilehash: 553b4527796db3e5d0f430afd6c5e614626187e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d000b9db658c76b5d7cdb586599f04d9078dde5d
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988886"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812155"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Sichern von APIs über eine Clientzertifikatauthentifizierung in API Management
 
-API Management bietet die Möglichkeit, den Zugriff auf APIs (d.h. vom Client auf API Management) mithilfe von Clientzertifikaten zu sichern. Sie können eingehende Zertifikate überprüfen und die Zertifikateigenschaften mit den gewünschten Werten vergleichen, indem Sie Richtlinienausdrücke verwenden.
+API Management bietet die Möglichkeit, den Zugriff auf APIs (d.h. vom Client auf API Management) mithilfe von Clientzertifikaten zu sichern. Mithilfe von Richtlinienausdrücken können Sie die von dem Client, der eine Verbindung herstellen möchte, angegebenen Zertifikate überprüfen, und Sie können Zertifikateigenschaften anhand von gewünschten Werten überprüfen.
 
 Informationen zum Schützen des Zugriffs auf den Back-End-Dienst einer API mithilfe von Clientzertifikaten (von API Management auf das Back-End) finden Sie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](./api-management-howto-mutual-certificates.md).
 
@@ -36,7 +36,22 @@ Informationen zum Schützen des Zugriffs auf den Back-End-Dienst einer API mithi
 
 ![Anfordern des Clientzertifikats](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
-## <a name="checking-the-issuer-and-subject"></a>Prüfen des Ausstellers und des Antragstellers
+## <a name="policy-to-validate-client-certificates"></a>Richtlinie zum Überprüfen von Clientzertifikaten
+
+Verwenden Sie die Richtlinie [validate-client-certificate](api-management-access-restriction-policies.md#validate-client-certificate), um ein oder mehrere Attribute eines Clientzertifikats zu überprüfen, das für den Zugriff auf in Ihrer API Management-Instanz gehostete APIs verwendet wird.
+
+Konfigurieren Sie die Richtlinie zum Überprüfen eines oder mehrerer Attribute, wie z. B.: Zertifikataussteller, Antragsteller, Fingerabdruck, Informationen dazu, ob das Zertifikat anhand einer Onlinesperrliste überprüft wird, sowie weitere Attribute.
+
+Weitere Informationen finden Sie unter [API Management-Richtlinien für die Zugriffsbeschränkung](api-management-access-restriction-policies.md).
+
+## <a name="certificate-validation-with-context-variables"></a>Zertifikatüberprüfung mit Kontextvariablen
+
+Sie können auch Richtlinienausdrücke mit der [`context`-Variable](api-management-policy-expressions.md#ContextVariables) erstellen, um Clientzertifikate zu überprüfen. Die Beispiele in den folgenden Abschnitten zeigen Ausdrücke, die die Eigenschaft `context.Request.Certificate` sowie weitere `context`-Eigenschaften verwenden.
+
+> [!IMPORTANT]
+> Ab Mai 2021 fordert die `context.Request.Certificate`-Eigenschaft nur dann das Zertifikat an, wenn die [`hostnameConfiguration`](/rest/api/apimanagement/2019-12-01/apimanagementservice/createorupdate#hostnameconfiguration) der API Management-Instanz die `negotiateClientCertificate`-Eigenschaft auf TRUE festlegt. Standardmäßig ist `negotiateClientCertificate` auf FALSE festgelegt.
+
+### <a name="checking-the-issuer-and-subject"></a>Prüfen des Ausstellers und des Antragstellers
 
 Die unten stehenden Richtlinien konfiguriert werden, um den Aussteller und den Antragsteller eines Clientzertifikats zu prüfen:
 
@@ -54,7 +69,7 @@ Die unten stehenden Richtlinien konfiguriert werden, um den Aussteller und den A
 > Verwenden Sie `context.Request.Certificate.VerifyNoRevocation()` anstelle von `context.Request.Certificate.Verify()`, um die Überprüfung der Zertifikatssperrliste zu deaktivieren.
 > Wenn das Clientzertifikat selbstsigniert ist, müssen Stamm- oder Zwischen-Zertifizierungsstellenzertifikate in API Management [hochgeladen](api-management-howto-ca-certificates.md) werden, damit `context.Request.Certificate.Verify()` und `context.Request.Certificate.VerifyNoRevocation()` funktionieren.
 
-## <a name="checking-the-thumbprint"></a>Prüfen des Fingerabdrucks
+### <a name="checking-the-thumbprint"></a>Prüfen des Fingerabdrucks
 
 Die folgenden Richtlinien können zum Prüfen des Fingerabdrucks eines Clientzertifikats konfiguriert werden:
 
@@ -72,7 +87,7 @@ Die folgenden Richtlinien können zum Prüfen des Fingerabdrucks eines Clientzer
 > Verwenden Sie `context.Request.Certificate.VerifyNoRevocation()` anstelle von `context.Request.Certificate.Verify()`, um die Überprüfung der Zertifikatssperrliste zu deaktivieren.
 > Wenn das Clientzertifikat selbstsigniert ist, müssen Stamm- oder Zwischen-Zertifizierungsstellenzertifikate in API Management [hochgeladen](api-management-howto-ca-certificates.md) werden, damit `context.Request.Certificate.Verify()` und `context.Request.Certificate.VerifyNoRevocation()` funktionieren.
 
-## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Prüfen eines Fingerabdrucks anhand von auf API Management hochgeladenen Zertifikaten
+### <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Prüfen eines Fingerabdrucks anhand von auf API Management hochgeladenen Zertifikaten
 
 Das folgende Beispiel zeigt, wie Sie den Fingerabdruck eines Clientzertifikats anhand von auf API Management hochgeladenen Zertifikaten prüfen können:
 
@@ -94,19 +109,6 @@ Das folgende Beispiel zeigt, wie Sie den Fingerabdruck eines Clientzertifikats a
 > [!TIP]
 > Das Problem aufgrund eines Clientzertifikat-Deadlocks, das in [diesem Artikel](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) beschrieben ist, kann auf unterschiedliche Art und Weise auftreten, z. B. Einfrieren von Anforderungen, Anforderungen führen nach dem Timeout zum Status `403 Forbidden` oder `context.Request.Certificate` ist `null`. Dieses Problem wirkt sich normalerweise auf Anforderungen vom Typ `POST` und `PUT` mit einer Inhaltslänge von ca. 60 KB oder mehr aus.
 > Um dieses Problem zu verhindern, aktivieren Sie auf dem Blatt „Benutzerdefinierte Domänen“ die Einstellung „Clientzertifikat aushandeln“ für gewünschte Hostnamen, wie auf der ersten Abbildung dieses Dokuments gezeigt. Dieses Feature ist im Tarif „Verbrauch“ nicht verfügbar.
-
-## <a name="certificate-validation-in-self-hosted-gateway"></a>Zertifikatsüberprüfung in selbs gehostetem Gateway
-
-Das Standardimage des [selbstgehosteten Gateways](self-hosted-gateway-overview.md) von API Management unterstützt nicht die Validierung von Server- und Clientzertifikaten mithilfe von [Stammzertifikaten von Zertifizierungsstellen](api-management-howto-ca-certificates.md), die in eine API Management-Instanz hochgeladen wurden. Bei Clients, die dem selbstgehosteten Gateway ein benutzerdefiniertes Zertifikat vorlegen, kann es zu langsamen Antworten kommen, da es bei der Überprüfung der Zertifikatssperrliste auf dem Gateway sehr lange bis zu einem Timeout dauern kann. 
-
-Als Problemumgehung beim Ausführen des Gateways können Sie die IP-Adresse der PKI so konfigurieren, dass sie auf die Adresse von localhost (127.0.0.1) statt auf die API Management-Instanz zeigt. Dies führt dazu, dass die Überprüfung der Zertifikatsperrliste schnell fehlschlägt, wenn das Gateway versucht, das Zertifikat des Clients zu überprüfen. Fügen Sie zum Konfigurieren des Gateways einen DNS-Eintrag für die API Management-Instanz hinzu, der in der Datei `/etc/hosts` im Container in localhost aufgelöst wird. Sie können diesen Eintrag während der Gatewaybereitstellung hinzufügen:
- 
-* Fügen Sie für die Docker-Bereitstellung dem Befehl `docker run` den Parameter `--add-host <hostname>:127.0.0.1` hinzu. Weitere Informationen finden Sie unter [Hinzufügen von Einträgen zur Containerdatei „hosts“](https://docs.docker.com/engine/reference/commandline/run/#add-entries-to-container-hosts-file---add-host).
- 
-* Fügen Sie für die Kubernetes-Bereitstellung zur Konfigurationsdatei `myGateway.yaml` die Spezifikation `hostAliases` hinzu. Weitere Informationen finden Sie unter [Adding entries to Pod /etc/hosts with Host Aliases](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/) (Hinzufügen von Einträgen zu Pod (/etc/hosts) mit Hostaliasen).
-
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

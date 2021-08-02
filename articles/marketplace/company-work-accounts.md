@@ -1,18 +1,18 @@
 ---
 title: Geschäftskonten und Partner Center
-description: Überprüfen, ob Ihr Unternehmen ein Geschäftskonto eingerichtet hat, Erstellen eines neuen Geschäftskontos und Einrichten mehrerer Geschäftskonten für die Verwendung mit Partner Center
+description: Überprüfen, ob Ihr Unternehmen ein Geschäftskonto eingerichtet hat, Erstellen eines neuen Geschäftskontos und Einrichten mehrerer Geschäftskonten für die Verwendung mit Partner Center (Azure Marketplace)
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 05/30/2019
-ms.openlocfilehash: c4433572f503ca086b88e6e42600fff623f34a11
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 06/08/2021
+ms.openlocfilehash: d40bce42d687f546b5944a845ce8f7963e1c1258
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133203"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111981984"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Geschäftskonten und Partner Center
 
@@ -23,6 +23,7 @@ Partner Center verwendet Geschäftskonten (auch bekannt als Azure Active Directo
 Wenn Ihr Unternehmen einen Microsoft-Clouddienst wie Azure, Microsoft Intune oder Microsoft 365 abonniert hat, haben Sie bereits eine E-Mail-Kontodomäne (auch als Azure Active Directory-Mandant bezeichnet), die mit Partner Center verwendet werden kann.
 
 Führen Sie die folgenden Schritte aus, um dies zu überprüfen:
+
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Verwaltungsportal an.
 2. Wählen Sie zunächst im linken Navigationsmenü **Azure Active Directory** und dann **Benutzerdefinierte Domänennamen** aus.
 3. Ihr Domänenname wird aufgeführt, wenn Sie bereits über ein Geschäftskonto verfügen.
@@ -38,11 +39,11 @@ Sie sollten überlegen, wie viele Benutzer im Geschäftskonto auf Partner Center
 Führen Sie die folgenden Schritte aus, um ein neues Geschäftskonto für Ihr Unternehmen zu erstellen. Sie müssen möglicherweise Unterstützung von jemandem mit Administratorberechtigungen für das Microsoft Azure-Konto Ihres Unternehmens anfordern.
 
 1. Melden Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com)an.
-2. Wählen Sie im linken Navigationsbereich **Azure Active Directory** -> **Benutzer** aus.
-3. Wählen Sie **Neuer Benutzer** aus, und erstellen Sie ein neues Azure-Geschäftskonto, indem Sie einen Namen und eine E-Mail-Adresse eingeben. Stellen Sie sicher, dass die **Verzeichnisrolle** auf **Benutzer** festgelegt ist, und aktivieren Sie im unteren Bereich das Kontrollkästchen **Kennwort anzeigen**, um das automatisch generierte Kennwort anzuzeigen und zu notieren.
-4. Klicken Sie auf **Erstellen**, um den neuen Benutzer zu speichern.
+2. Wählen Sie im linken Navigationsbereich **Azure Active Directory** > **Benutzer** aus.
+3. Wählen Sie **Neuer Benutzer** aus, und erstellen Sie ein neues Azure-Geschäftskonto, indem Sie einen Namen und eine geschäftliche E-Mail-Adresse eingeben. Stellen Sie sicher, dass die **Verzeichnisrolle** nach den Benutzeranforderungen festgelegt ist, und aktivieren Sie im unteren Bereich das Kontrollkästchen **Kennwort anzeigen**, um das automatisch generierte Kennwort anzuzeigen und zu notieren.
+4. Füllen Sie die anderen Pflichtfelder aus, und wählen Sie **Erstellen** aus, um den neuen Benutzer zu speichern. 
 
-Die E-Mail-Adresse für das Benutzerkonto muss ein verifizierter Domänenname in Ihrem Verzeichnis sein. Wählen Sie im linken Navigationsmenü **Azure Active Directory** -> **Benutzerdefinierte Domänennamen** aus, um alle verifizierten Domänennamen in Ihrem Verzeichnis aufzulisten.
+Die E-Mail-Adresse für das Benutzerkonto muss ein verifizierter Domänenname in Ihrem Verzeichnis sein. Wählen Sie im linken Navigationsmenü **Azure Active Directory** > **Benutzerdefinierte Domänennamen** aus, um alle verifizierten Domänennamen in Ihrem Verzeichnis aufzulisten.
 
 Weitere Informationen zum Hinzufügen von benutzerdefinierten Domänen in Azure Active Directory finden Sie unter [Hinzufügen oder Zuordnen einer Domäne in Azure AD](../active-directory/fundamentals/add-custom-domain.md).
 
@@ -50,7 +51,7 @@ Weitere Informationen zum Hinzufügen von benutzerdefinierten Domänen in Azure 
 
 Wenn Sie Probleme mit der Anmeldung bei Ihrem Geschäftskonto haben (auch bekannt als Azure AD-Mandant), suchen Sie unten im Diagramm das Szenario, das Ihrer Situation am besten entspricht, und führen Sie dann die empfohlenen Schritte aus.
 
-![Diagramm für Problembehandlung: Anmeldedaten für Geschäftskonto](./media/manage-accounts/onboarding-aad-flow.png)
+[![Diagramm für Problembehandlung: Anmeldedaten für Geschäftskonto](media/manage-accounts/onboarding-aad-flow.png)](media/manage-accounts/onboarding-aad-flow.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

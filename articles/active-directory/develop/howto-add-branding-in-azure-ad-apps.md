@@ -1,5 +1,5 @@
 ---
-title: Brandingrichtlinien für Apps | Azure
+title: Anmelden bei Microsoft – Brandingrichtlinien | Azure AD
 titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie mehr zu Brandingrichtlinien für Anwendungen für Microsoft Identity Platform.
 services: active-directory
@@ -13,14 +13,14 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 236e82ab97244e1428441f83295f6a5d4ed56350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: beccbb77f27ef462f8725cf6b2ffb6966c68e23b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581991"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471362"
 ---
-# <a name="branding-guidelines-for-applications"></a>Brandingrichtlinien für Anwendungen
+# <a name="sign-in-with-microsoft-branding-guidelines-for-applications"></a>Anmelden bei Microsoft: Brandingrichtlinien für Anwendungen
 
 Wenn Sie Anwendungen mit der Microsoft Identity Platform entwickeln, müssen Sie Ihre Kunden entsprechend anweisen, wenn sie ihr Geschäfts-, Schul- oder Unikonto (verwaltet in Azure AD) oder ihr persönliches Konto für die Registrierung und Anmeldung bei Ihrer Anwendung verwenden möchten.
 

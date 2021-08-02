@@ -8,46 +8,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f0fb81a4daa57b473e8b2b4b937426eafbf903d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60517714e0aa19a2cf465c22c6511b0c89648942
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014535"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792441"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Zuweisen benutzerdefinierter Rollen mit Ressourcengeltungsbereich unter Verwendung von PowerShell in Azure Active Directory
 
 In diesem Artikel erfahren Sie, wie Sie eine Rollenzuweisung mit organisationsweitem Geltungsbereich in Azure Active Directory (Azure AD) erstellen. Durch Zuweisen einer Rolle mit organisationsweitem Geltungsbereich wird Zugriff innerhalb der gesamten Azure AD-Organisation gewährt. Informationen zum Erstellen einer Rollenzuweisung mit einem Geltungsbereich für eine einzelne Azure AD-Ressource finden Sie unter [Erstellen einer benutzerdefinierten Rolle und Zuweisen der Rolle im Ressourcengeltungsbereich](custom-create.md). Dieser Artikel verwendet das [Azure Active Directory PowerShell Version 2](/powershell/module/azuread/#directory_roles)-Modul.
 
-Weitere Informationen zu Azure AD-Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](permissions-reference.md).
+Weitere Informationen zu Azure AD-Rollen finden Sie unter [Integrierte Rollen in Azure AD](permissions-reference.md).
 
-## <a name="required-permissions"></a>Erforderliche Berechtigungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie eine Verbindung mit Ihrer Azure AD-Organisation mithilfe eines globalen Administratorkontos her, um Rollen zuzuweisen oder zu entfernen.
+- Eine Lizenz vom Typ Azure AD Premium P1 oder P2
+- „Administrator für privilegierte Rollen“ oder „Globaler Administrator“
+- AzureADPreview-Modul bei Verwendung von PowerShell
 
-## <a name="prepare-powershell"></a>Vorbereiten von PowerShell
-
-Installieren Sie das Azure AD PowerShell-Modul aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureADPreview). Importieren Sie anschließend das Azure AD PowerShell-Vorschaumodul mithilfe des folgenden Befehls:
-
-``` PowerShell
-Import-Module -Name AzureADPreview
-```
-
-Gleichen Sie die Version, die durch den folgenden Befehl zurückgegeben wird, mit der hier aufgeführten Version ab, um sich zu vergewissern, dass das Modul verwendungsbereit ist:
-
-``` PowerShell
-Get-Module -Name AzureADPreview
-  ModuleType Version      Name                         ExportedCommands
-  ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    AzureADPreview               {Add-AzureADMSAdministrati...}
-```
-
-Sie können die Cmdlets jetzt im Modul verwenden. Eine ausführliche Beschreibung der Cmdlets im Azure AD-Modul finden Sie in der Onlinereferenzdokumentation für das [Azure AD-Vorschaumodul](https://www.powershellgallery.com/packages/AzureADPreview).
+Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
 
 ## <a name="assign-a-directory-role-to-a-user-or-service-principal-with-resource-scope"></a>Zuweisen einer Verzeichnisrolle zu einem Benutzer oder Dienstprinzipal mit Ressourcengeltungsbereich
 

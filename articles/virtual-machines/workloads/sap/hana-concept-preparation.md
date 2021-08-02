@@ -3,26 +3,27 @@ title: Prinzipien der Notfallwiederherstellung und Vorbereitung darauf unter SAP
 description: Prinzipien der Notfallwiederherstellung und Vorbereitung darauf unter SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
-ms.author: saghorpa
+ms.date: 05/10/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: babd7c1dcae9d83af1f6c41e756b663d92d6d486
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a7127477be68d931efa2b0de69961f314b88879
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677120"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580179"
 ---
 # <a name="disaster-recovery-principles"></a>Prinzipien für die Notfallwiederherstellung
 
-Für große HANA-Instanzen ist eine Notfallwiederherstellungsfunktion zwischen Stapeln für HANA (große Instanzen) in verschiedenen Azure-Regionen verfügbar. Wenn Sie beispielsweise Einheiten von HANA (große Instanzen) in der Azure-Region „USA, Westen“ bereitstellen, können Sie Einheiten von HANA (große Instanzen) in der Region „USA, Osten“ als Notfallwiederherstellungseinheiten verwenden. Die Notfallwiederherstellung wird wie bereits erwähnt nicht automatisch konfiguriert, da sie eine weitere kostenpflichtige Einheit von HANA (große Instanzen) in der Notfallwiederherstellungsregion erfordert. Die Notfallwiederherstellungseinrichtung kann mit zentralem und mit horizontalem Hochskalieren verwendet werden. 
+Für große HANA-Instanzen ist eine Notfallwiederherstellungsfunktion zwischen Stapeln für HANA (große Instanzen) in verschiedenen Azure-Regionen verfügbar. Wenn Sie beispielsweise Einheiten von HANA (große Instanzen) in der Azure-Region „USA, Westen“ bereitstellen, können Sie Einheiten von HANA (große Instanzen) in der Region „USA, Osten“ als Notfallwiederherstellungseinheiten verwenden. Die Notfallwiederherstellung wird wie bereits erwähnt nicht automatisch konfiguriert, da sie eine weitere kostenpflichtige Einheit von HANA (große Instanzen) in der Notfallwiederherstellungsregion erfordert. Die Notfallwiederherstellungseinrichtung kann mit zentralem und horizontalem Hochskalieren verwendet werden. 
 
 In den bislang bereitgestellten Szenarien haben Kunden die Einheit in der Notfallwiederherstellungsregion zum Ausführen produktionsfremder Systeme mit einer installierten HANA-Instanz verwendet. Die Einheit von HANA (große Instanzen) muss der gleichen SKU angehören wie die für die Produktion verwendete SKU. In der folgenden Abbildung ist dargestellt, wie die Datenträgerkonfiguration zwischen der Servereinheit in der Azure-Produktionsregion und der Region für die Notfallwiederherstellung aussieht:
 
@@ -34,9 +35,9 @@ Wie in dieser Übersichtsgrafik dargestellt, müssen Sie anschließend eine zwei
 - /hana/logbackups 
 - /hana/shared (einschließlich „/usr/sap“)
 
-Das Volume „/hana/log“ wird nicht repliziert, da das SAP HANA-Transaktionsprotokoll für ein solches Wiederherstellungsverfahren basierend auf diesen Volumes nicht erforderlich ist. 
+Das Volume „/hana/log“ wird nicht repliziert, da das SAP HANA-Transaktionsprotokoll bei der Wiederherstellung von diesen Volumes nicht benötigt wird. 
 
-Die bereitgestellte Notfallwiederherstellungsfunktion basiert auf der Speicherreplikationsfunktion der Infrastruktur für HANA (große Instanzen). Die speicherseitig verwendete Funktion ist kein konstanter Datenstrom mit Änderungen, die asynchron repliziert werden, wenn Änderungen am Speichervolume auftreten. Stattdessen basiert der Mechanismus darauf, dass in regelmäßigen Abständen Momentaufnahmen dieser Volumes erstellt werden. Anschließend werden die Veränderungen zwischen einer bereits replizierten und einer neuen, noch nicht replizierten Momentaufnahme auf Zieldatenträgervolumes am Standort für die Notfallwiederherstellung übertragen.  Diese Momentaufnahmen werden auf den Volumes gespeichert und müssen bei einer Notfallwiederherstellung auf diesen Volumes wiederhergestellt werden.  
+Die bereitgestellte Notfallwiederherstellungsfunktion basiert auf der Speicherreplikation der Infrastruktur für HANA (große Instanzen). Die speicherseitig verwendete Funktion ist kein konstanter Datenstrom mit Änderungen, die asynchron repliziert werden, wenn Änderungen am Speichervolume auftreten. Stattdessen basiert der Mechanismus darauf, dass in regelmäßigen Abständen Momentaufnahmen dieser Volumes erstellt werden. Anschließend werden die Veränderungen zwischen einer bereits replizierten und einer neuen, noch nicht replizierten Momentaufnahme auf Zieldatenträgervolumes am Standort für die Notfallwiederherstellung übertragen.  Diese Momentaufnahmen werden auf den Volumes gespeichert und müssen bei einer Notfallwiederherstellung auf diesen Volumes wiederhergestellt werden.  
 
 Die erste Übertragung der gesamten Daten des Volumes sollte durchgeführt werden, bevor die Menge der Daten kleiner wird als die Veränderungen zwischen den Momentaufnahmen. Somit enthalten die Volumes am Standort für die Notfallwiederherstellung sämtliche Volumemomentaufnahmen, die am Produktionsstandort durchgeführt wurden. Sie können das Notfallwiederherstellungssystem dann verwenden, um zu einem früheren Status zurückzukehren und verloren gegangene Daten wiederherzustellen, ohne dass ein Rollback des Produktionssystems erforderlich ist.
 
