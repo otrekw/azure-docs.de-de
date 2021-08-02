@@ -1,6 +1,6 @@
 ---
-title: 'Azure Stack Edge Pro-Gerät: Zugriff, Energieeinstellungen und Konnektivitätsmodus | Microsoft-Dokumentation'
-description: Hier wird beschrieben, wie Sie den Zugriff, die Energieeinstellungen und den Konnektivitätsmodus für das Azure Stack Edge Pro-Gerät verwalten, mit dem Daten an Azure übertragen werden.
+title: 'Azure Stack Edge Pro FPGA-Gerät: Zugriff, Energieeinstellungen und Konnektivitätsmodus'
+description: Erfahren Sie, wie Sie den Zugriff, die Energieeinstellungen und den Konnektivitätsmodus für das Azure Stack Edge Pro FPGA-Gerät verwalten, mit dem Daten an Azure übertragen werden.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,17 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 240d3872536e6974d7f65eed22dace6816844e9e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a07bf9490332ee829182900b2626dfdf99f00dda
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200204"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703818"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Ihr Azure Stack Edge Pro-Gerät
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-fpga"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Ihr Azure Stack Edge Pro FPGA-Gerät
 
-In diesem Artikel wird beschrieben, wie Sie den Zugriff, die Energieeinstellungen und den Konnektivitätsmodus für Ihr Azure Stack Edge Pro-Gerät verwalten. Diese Vorgänge werden über die lokale Webbenutzeroberfläche oder das Azure-Portal ausgeführt.
+In diesem Artikel wird beschrieben, wie Sie den Zugriff, die Energieeinstellungen und den Konnektivitätsmodus für Ihr Azure Stack Edge Pro FPGA-Gerät verwalten. Diese Vorgänge werden über die lokale Webbenutzeroberfläche oder das Azure-Portal ausgeführt.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -29,7 +30,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="manage-device-access"></a>Verwalten des Gerätezugriffs
 
-Der Zugriff auf Ihr Azure Stack Edge Pro-Gerät wird mithilfe eines Gerätekennworts gesteuert. Sie können das Kennwort über die lokale Webbenutzeroberfläche ändern. Das Gerätekennwort kann auch über das Azure-Portal zurückgesetzt werden.
+Der Zugriff auf Ihr Azure Stack Edge Pro FPGA-Gerät wird mithilfe eines Gerätekennworts gesteuert. Sie können das Kennwort über die lokale Webbenutzeroberfläche ändern. Das Gerätekennwort kann auch über das Azure-Portal zurückgesetzt werden.
 
 ### <a name="change-device-password"></a>Ändern des Gerätekennworts
 
@@ -61,12 +62,12 @@ Für das Erstellen Ihrer Azure Stack Edge-/Data Box Gateway-, IoT Hub- und Az
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Verwalten von Microsoft Graph-API-Berechtigungen
 
-Wenn Sie den Aktivierungsschlüssel für das Azure Stack Edge Pro-Gerät generieren oder Vorgänge ausführen, die Anmeldeinformationen erfordern, müssen Sie über Berechtigungen für die Azure Active Directory-Graph-API verfügen. Im Anschluss folgen einige Beispiele für Vorgänge, die Anmeldeinformationen erfordern:
+Wenn Sie den Aktivierungsschlüssel für das Azure Stack Edge Pro FPGA-Gerät generieren oder Vorgänge ausführen, die Anmeldeinformationen erfordern, müssen Sie über Berechtigungen für die Azure Active Directory-Graph-API verfügen. Im Anschluss folgen einige Beispiele für Vorgänge, die Anmeldeinformationen erfordern:
 
 -  Erstellen einer Freigabe mit einem zugeordneten Speicherkonto
 -  Erstellen eines Benutzers, der auf die Freigaben auf dem Gerät zugreifen kann
 
-Sie müssen über `User`-Zugriff auf den Active Directory-Mandanten verfügen, da Sie die Aktion `Read all directory objects` ausführen können müssen. Gastbenutzer sind nicht zur Aktion `Read all directory objects` berechtigt. Für Gastbenutzer tritt bei Vorgängen wie dem Generieren eines Aktivierungsschlüssels, dem Erstellen einer Freigabe auf Ihrem Azure Stack Edge Pro-Gerät, dem Erstellen eines Benutzers, dem Konfigurieren der Edgecomputingrolle und dem Zurücksetzen des Gerätekennworts jeweils ein Fehler auf.
+Sie müssen über `User`-Zugriff auf den Active Directory-Mandanten verfügen, da Sie die Aktion `Read all directory objects` ausführen können müssen. Gastbenutzer sind nicht zur Aktion `Read all directory objects` berechtigt. Für Gastbenutzer tritt bei Vorgängen wie dem Generieren eines Aktivierungsschlüssels, dem Erstellen einer Freigabe auf Ihrem Azure Stack Edge Pro FPGA-Gerät, dem Erstellen eines Benutzers, dem Konfigurieren der Edgecomputingrolle und dem Zurücksetzen des Gerätekennworts jeweils ein Fehler auf.
 
 Weitere Informationen dazu, wie Sie Benutzern Zugriff auf die Microsoft Graph-API gewähren, finden Sie unter [Referenz zu Microsoft Graph-Berechtigungen](/graph/permissions-reference).
 
@@ -89,7 +90,7 @@ Führen Sie den folgenden Befehl aus, um eine Liste mit den registrierten Ressou
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Für das Azure Stack Edge Pro-Gerät sollte `Microsoft.DataBoxEdge` registriert werden. Zum Registrieren von `Microsoft.DataBoxEdge` muss der Abonnementadministrator den folgenden Befehl ausführen:
+Für das Azure Stack Edge Pro FPGA-Gerät sollte `Microsoft.DataBoxEdge` registriert werden. Zum Registrieren von `Microsoft.DataBoxEdge` muss der Abonnementadministrator den folgenden Befehl ausführen:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

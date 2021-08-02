@@ -3,12 +3,12 @@ title: 'Azure Service Bus-Messaging: Warteschlangen, Themen und Abonnements'
 description: Dieser Artikel bietet eine Übersicht über Azure Service Bus-Messagingentitäten (Warteschlangen, Themen und Abonnements).
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: ccd91d5091dbbba072cf222e5a73c3db1d48c321
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: c3e50c5f8487a0f6dc26a50ec6bfb10f4136f899
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209823"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479093"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-Warteschlangen, -Themen und -Abonnements
 Azure Service Bus unterstützt einen Satz cloudbasierter, nachrichtenorientierter Middlewaretechnologien, darunter zuverlässiges Message Queuing und dauerhaftes Veröffentlichungs-/Abonnementmessaging. Diese Brokermessagingfunktionen können Sie sich als asynchrone, entkoppelte Messagingfeatures vorstellen, die unter Verwendung der Service Bus-Messagingworkload verschiedene Szenarien wie Veröffentlichung/Abonnement, vorübergehende Entkopplung und Lastenausgleich unterstützen. Die entkoppelte Kommunikation bietet viele Vorteile. Beispielsweise können Clients und Server Verbindungen nach Bedarf herstellen und Vorgänge asynchron ausführen.
@@ -23,7 +23,7 @@ Daraus ergibt als weiterer Vorteil ein **Lastenausgleich**, durch den Producer u
 Die Verwendung von Warteschlangen als Zwischenglied zwischen Nachrichtenproducern und -consumern sorgt für eine inhärente lockere Kopplung zwischen den Komponenten. Da Producer und Consumer voneinander unabhängig sind, kann ein Upgrade für einen Consumer ohne Auswirkungen auf den Producer durchgeführt werden.
 
 ### <a name="create-queues"></a>Erstellen von Warteschlangen
-Sie können Warteschlangen über das [Azure-Portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), die [Befehlszeilenschnittstelle](service-bus-quickstart-cli.md) oder [Resource Manager-Vorlagen](service-bus-resource-manager-namespace-queue.md) erstellen. Für das Senden und Empfangen von Nachrichten können Sie dann Clients verwenden, die in [C#](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md), [Python](service-bus-python-how-to-use-queues.md), [JavaScript](service-bus-nodejs-how-to-use-queues.md), [PHP](service-bus-php-how-to-use-queues.md) oder [Ruby](service-bus-ruby-how-to-use-queues.md) geschrieben wurden. 
+Sie können Warteschlangen über das [Azure-Portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), die [Befehlszeilenschnittstelle](service-bus-quickstart-cli.md) oder [Resource Manager-Vorlagen](service-bus-resource-manager-namespace-queue.md) erstellen. Für das Senden und Empfangen von Nachrichten können Sie Clients verwenden, die in [C#](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md), [Python](service-bus-python-how-to-use-queues.md), [JavaScript](service-bus-nodejs-how-to-use-queues.md) und [PHP](service-bus-php-how-to-use-queues.md) geschrieben wurden. 
 
 ### <a name="receive-modes"></a>Empfangsmodi
 Sie können für den Nachrichtenempfang von Service Bus zwischen zwei Modi wählen.
@@ -46,7 +46,7 @@ Eine Warteschlange ermöglicht die Verarbeitung einer Nachricht durch einen einz
 Die Sendefunktionalität einer Warteschlange ist mit der eines Themas identisch, und die Empfangsfunktionalität entspricht einem Abonnement. Das bedeutet unter anderem, dass Abonnements das weiter oben beschriebene Muster hinsichtlich Warteschlangen unterstützen: konkurrierender Consumer, vorübergehende Entkopplung, Belastungsausgleich und Lastenausgleich.
 
 ### <a name="create-topics-and-subscriptions"></a>Erstellen von Themen und Abonnements
-Das Erstellen eines Themas ähnelt dem Erstellen einer Warteschlange (siehe vorheriger Abschnitt). Sie können Themen und Abonnements über das [Azure-Portal](service-bus-quickstart-topics-subscriptions-portal.md), [PowerShell](service-bus-quickstart-powershell.md), die [Befehlszeilenschnittstelle](service-bus-tutorial-topics-subscriptions-cli.md) oder [Resource Manager-Vorlagen](service-bus-resource-manager-namespace-topic.md) erstellen. Für das Senden von Nachrichten an ein Thema und das Empfangen von Nachrichten vom Abonnement können Sie dann Clients verwenden, die in [C#](service-bus-dotnet-how-to-use-topics-subscriptions.md), [Java](service-bus-java-how-to-use-topics-subscriptions.md), [Python](service-bus-python-how-to-use-topics-subscriptions.md), [JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions.md), [PHP](service-bus-php-how-to-use-topics-subscriptions.md) oder [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md) geschrieben wurden. 
+Das Erstellen eines Themas ähnelt dem Erstellen einer Warteschlange (siehe vorheriger Abschnitt). Sie können Themen und Abonnements über das [Azure-Portal](service-bus-quickstart-topics-subscriptions-portal.md), [PowerShell](service-bus-quickstart-powershell.md), die [Befehlszeilenschnittstelle](service-bus-tutorial-topics-subscriptions-cli.md) oder [Resource Manager-Vorlagen](service-bus-resource-manager-namespace-topic.md) erstellen. Für das Senden von Nachrichten zu einem Thema und das Empfangen von Nachrichten von Abonnements können Sie Clients verwenden, die in [C#](service-bus-dotnet-how-to-use-topics-subscriptions.md), [Java](service-bus-java-how-to-use-topics-subscriptions.md), [Python](service-bus-python-how-to-use-topics-subscriptions.md), [JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions.md) und [PHP](service-bus-php-how-to-use-topics-subscriptions.md) geschrieben wurden. 
 
 ### <a name="rules-and-actions"></a>Regeln und Aktionen
 In vielen Fällen müssen Nachrichten mit bestimmten Merkmalen auf unterschiedliche Weise verarbeitet werden. Um dies zu ermöglichen, können Sie Abonnements so konfigurieren, dass sie nach Nachrichten mit bestimmten Eigenschaften suchen und dann bestimmte Änderungen an diesen Eigenschaften vornehmen. Auch wenn Service Bus-Abonnements alle Nachrichten angezeigt werden, die an das Thema gesendet wurden, können Sie nur eine Teilmenge dieser Nachrichten in die virtuelle Abonnementwarteschlange kopieren. Diese Filterung wird mithilfe von Abonnementfiltern erreicht. Solche Änderungen werden als **Filteraktionen** bezeichnet. Beim Erstellen eines Abonnements können Sie einen Filterausdruck angeben, der auf die Eigenschaften der Nachricht angewandt wird. Die Eigenschaften können Systemeigenschaften (z. B. **Label**) und benutzerdefinierte Anwendungseigenschaften (z. B. **StoreName**) sein. Der SQL-Filterausdruck ist in diesem Fall optional. Ohne SQL-Filterausdruck wird jede für ein Abonnement definierte Filteraktion auf alle Nachrichten in diesem Abonnement angewandt.

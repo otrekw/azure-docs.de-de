@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 320bd87aa78d26cee44c48f27365febd1dd426ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bdf660d57f4fa8cb3a804ff55028dc442f96b8b
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96620289"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786134"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>Ändern der SKU für eine vorhandene, von Azure Active Directory Domain Services verwaltete Domäne
 
@@ -42,7 +42,7 @@ Nach Bereitstellung der verwalteten Domäne können Sie die SKU erhöhen oder ve
 
 Beispiel:
 
-* Wenn Sie zwei Gesamtstrukturvertrauensstellungen mit der *Premium*-SKU erstellt haben, können Sie nicht auf die *Standard*-SKU herunterstufen. Die *Standard*-SKU unterstützt keine Gesamtstrukturvertrauensstellungen.
+* Sie können nicht auf die *Standard*-SKU herunterstufen. Die Azure AD DS-Ressourcengesamtstruktur unterstützt die *Standard*-SKU nicht. 
 * Oder wenn Sie z. B. sieben Vertrauensstellungen für die *Premium*-SKU erstellt haben, können Sie nicht auf die *Enterprise*-SKU umsteigen. Die *Enterprise*-SKU unterstützt maximal fünf Vertrauensstellungen.
 
 Weitere Informationen zu diesen Grenzwerten finden Sie unter [Azure AD DS-Funktionen und -Grenzwerte][concepts-sku].

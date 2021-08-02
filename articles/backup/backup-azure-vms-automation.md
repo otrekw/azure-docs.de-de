@@ -3,12 +3,13 @@ title: Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShel
 description: Beschreibt das Sichern und Wiederherstellen von virtuellen Azure-Computern mithilfe von Azure Backup und PowerShell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f59c18aecf577bc7f7d0b1360dd36504305af893
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 44dc53100e44d6d10179b65e0ccd221199661836
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100633188"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421722"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -398,12 +399,23 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -Workl
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
+### <a name="resume-backup"></a>Sicherung fortsetzen
+
+Wenn der Schutz beendet wird und die Sicherungsdaten beibehalten werden, können Sie den Schutz erneut fortsetzen. Sie müssen eine Richtlinie für den erneuerten Schutz zuweisen. Das Cmdlet ist identisch mit dem zum [Ändern der Richtlinie für Sicherungselemente](#change-policy-for-backup-items).
+
+````powershell
+$TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName> -VaultId $targetVault.ID
+$anotherBkpItem = Get-AzRecoveryServicesBackupItem -WorkloadType AzureVM -BackupManagementType AzureVM -Name "<BackupItemName>" -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $anotherBkpItem -Policy $TargetPol1 -VaultId $targetVault.ID
+````
+
 #### <a name="delete-backup-data"></a>Löschen von Sicherungsdaten
 
 Wenn Sie die gespeicherten Sicherungsdaten im Tresor vollständig entfernen möchten, fügen Sie dem [Befehl „disable protection“](#retain-data) das Flag/den Switch „-RemoveRecoveryPoints“ hinzu.
 
 ````powershell
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
+
 ````
 
 ## <a name="restore-an-azure-vm"></a>Wiederherstellen eines virtuellen Azure-Computers

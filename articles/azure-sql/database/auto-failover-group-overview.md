@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, sstein
-ms.date: 04/29/2021
-ms.openlocfilehash: 8c07026681f5381d9c4e54438c9503d170022658
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
+ms.date: 05/10/2021
+ms.openlocfilehash: ea50d8f4fd614d450685c7efa3004c8853eb8643
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226784"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966893"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -374,7 +374,7 @@ Wenn Sie eine Failovergruppe zwischen primären und sekundären SQL Managed Inst
 - Die von den Instanzen von SQL Managed Instance verwendeten virtuellen Netzwerke müssen per [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbunden werden. Wenn zwei virtuelle Netzwerke über ein lokales Netzwerk verbunden sind, müssen Sie sicherstellen, dass die Ports 5022 und 11000-11999 nicht durch Firewallregeln blockiert werden. Globales VNET-Peering wird unterstützt. Die einzige Einschränkung ist im folgenden Hinweis beschrieben.
 
    > [!IMPORTANT]
-   > [Am 22.09.2020 wurde globales Peering virtueller Netzwerke für neu erstellte virtuelle Cluster angekündigt](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dies bedeutet, dass globales Peering virtueller Netzwerke sowohl für SQL Managed Instances, die nach dem Ankündigungsdatum in leeren Subnetzen erstellt wurden, als auch für alle späteren verwalteten Instanzen, die in diesen Subnetzen erstellt werden, unterstützt wird. Für alle anderen SQL Managed Instances ist die Peeringunterstützung aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in derselben Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Um globales Peering virtueller Netzwerke für verwaltete SQL-Instanzen aus virtuellen Clustern verwenden zu können, die vor dem Ankündigungsdatum erstellt wurden, sollten Sie das [Wartungsfenster](https://docs.microsoft.com/azure/azure-sql/database/maintenance-window) für die Instanzen konfigurieren, da die Instanzen in neue virtuelle Cluster verschoben werden, die globales Peering virtueller Netzwerke unterstützen.
+   > [Am 22.09.2020 wurde globales Peering virtueller Netzwerke für neu erstellte virtuelle Cluster angekündigt](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dies bedeutet, dass globales Peering virtueller Netzwerke sowohl für SQL Managed Instances, die nach dem Ankündigungsdatum in leeren Subnetzen erstellt wurden, als auch für alle späteren verwalteten Instanzen, die in diesen Subnetzen erstellt werden, unterstützt wird. Für alle anderen SQL Managed Instances ist die Peeringunterstützung aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in derselben Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Um globales Peering virtueller Netzwerke für verwaltete SQL-Instanzen aus virtuellen Clustern verwenden zu können, die vor dem Ankündigungsdatum erstellt wurden, sollten Sie das [Wartungsfenster](./maintenance-window.md) für die Instanzen konfigurieren, da die Instanzen in neue virtuelle Cluster verschoben werden, die globales Peering virtueller Netzwerke unterstützen.
 
 - Die VNETs der beiden SQL Managed Instances dürfen keine überlappenden IP-Adressen aufweisen.
 - Sie müssen die Netzwerksicherheitsgruppen (NSGs) so einrichten, dass die Ports 5022 und der Bereich von 11.000 bis 12.000 für ein- und ausgehende Verbindungen vom Subnetz der jeweils anderen verwalteten Instanz geöffnet sind. Hierdurch wird der Replikationsdatenverkehr zwischen den Instanzen zugelassen.
@@ -389,7 +389,7 @@ Wenn Sie eine Failovergruppe zwischen primären und sekundären SQL Managed Inst
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade oder Downgrade einer primären Datenbank
 
-Sie können für eine primäre Datenbank ein Upgrade oder Downgrade auf eine andere Computegröße (innerhalb der gleichen Dienstebene; nicht zwischen „Universell“ und „Unternehmenskritisch“) ausführen, ohne die Verbindung mit sekundären Datenbanken zu trennen. Bei einem Upgrade wird empfohlen, zuerst das Upgrade für alle sekundären Datenbanken und anschließend das Upgrade für die primäre Datenbank auszuführen. Drehen Sie bei einem Downgrade die Reihenfolge um: Führen Sie zuerst das Downgrade für die primäre Datenbank und anschließend das Downgrade für alle sekundären Datenbanken aus. Wenn Sie ein Upgrade oder Downgrade der Datenbank auf eine andere Dienstebene durchführen, wird diese Empfehlung erzwungen.
+Sie können für eine primäre Datenbank ein Upgrade oder Downgrade auf eine andere Computegröße durchführen, ohne die Verbindung mit sekundären Datenbanken zu trennen. Bei einem Upgrade wird empfohlen, zuerst das Upgrade für alle sekundären Datenbanken und anschließend das Upgrade für die primäre Datenbank auszuführen. Drehen Sie bei einem Downgrade die Reihenfolge um: Führen Sie zuerst das Downgrade für die primäre Datenbank und anschließend das Downgrade für alle sekundären Datenbanken aus. Wenn Sie ein Upgrade oder Downgrade der Datenbank auf eine andere Dienstebene durchführen, wird diese Empfehlung erzwungen.
 
 Diese Reihenfolge ist besonders zur Vermeidung des Überladens der sekundären Datenbank auf einer niedrigeren SKU empfehlenswert, damit nicht während des Upgrade- oder Downgradevorgangs ein erneutes Seeding durchgeführt werden muss. Sie können dieses Problem auch vermeiden, indem Sie die primäre Datenbank mit Schreibschutz versehen. Das geht allerdings zu Lasten aller Lese-/Schreibworkloads für die primäre Datenbank.
 

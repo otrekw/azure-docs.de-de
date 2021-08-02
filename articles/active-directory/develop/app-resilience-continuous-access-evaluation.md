@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: 5b00cca584958f3e7d741a2a4f9e6669ff0d241e
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 970985193245a4d7482979c2fc753c2c0b67834b
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904314"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111406731"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>Verwenden von APIs mit aktivierter fortlaufender Zugriffsevaluierung in Ihren Anwendungen
 
 Die [fortlaufende Zugriffsevaluierung](../conditional-access/concept-continuous-access-evaluation.md) (Continuous Access Evaluation, CAE) ist ein Azure AD-Feature, mit dem Zugriffstoken basierend auf [kritischen Ereignissen](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation) und [Richtlinienauswertungen](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview) widerrufen werden können, statt sich auf den Tokenablauf basierend auf der Lebensdauer zu verlassen. Dies kann bei einigen Ressourcen-APIs die Lebensdauer eines Tokens um bis zu 28 Stunden verlängern, weil Risiken und Richtlinien in Echtzeit ausgewertet werden. Diese langlebigen Token werden von der Microsoft Authentication Library (MSAL) proaktiv aktualisiert, wodurch die Resilienz Ihrer Anwendungen steigt.
 
-In diesem Artikel erfahren Sie, wie Sie APIs mit aktivierter fortlaufender Zugriffsevaluierung in Ihren Anwendungen verwenden.
+In diesem Artikel erfahren Sie, wie Sie APIs mit aktivierter fortlaufender Zugriffsevaluierung in Ihren Anwendungen verwenden. Anwendungen, die MSAL nicht verwenden, können Unterstützung für [Anspruchsherausforderungen, Anspruchsanforderungen und Clientfunktionen](claims-challenge.md) zur Verwendung von CAE hinzufügen.
 
 ## <a name="implementation-considerations"></a>Überlegungen zur Implementierung
 
@@ -116,4 +116,5 @@ Sie können Ihre App testen, indem einen Benutzer bei der App anmelden und dann 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Fortlaufende Zugriffsevaluierung](../conditional-access/concept-continuous-access-evaluation.md).
+- Konzeptionelle Übersicht über die[kontinuierliche Zugriffsevaluierung](../conditional-access/concept-continuous-access-evaluation.md)
+- [Anspruchsherausforderungen, Anspruchsanforderungen und Clientfunktionen](claims-challenge.md)

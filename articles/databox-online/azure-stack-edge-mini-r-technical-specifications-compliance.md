@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 05/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 8f48a007069c243442888f47ed75deb75b271df6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1f57e7f25a9e34a88c9ae279083a2cf1d9be2ff1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108759831"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099422"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack Edge Mini R: Technische Spezifikationen
 
@@ -54,7 +54,7 @@ Das Azure Stack Edge Mini R-Gerät verfügt über einen Datenträger für Daten
 |    Gesamtkapazität (nur Daten)              |    1 TB                                                |
 |    Insgesamt nutzbare Kapazität*                  |    ~ 750 GB                                            |
 
-**Etwas Speicherplatz ist für die interne Verwendung reserviert.*
+*Etwas Speicherplatz ist für die interne Verwendung reserviert.*
 
 ## <a name="network"></a>Netzwerk
 
@@ -62,15 +62,11 @@ Das Azure Stack Edge Mini R-Gerät verfügt über die folgenden Spezifikationen 
 
 |Spezifikation         |Wert                                                               |
 |----------------------|--------------------------------------------------------------------|
-|Netzwerkschnittstellen    |2 x 10 GBit/s SFP+ <br> Wird als ANSCHLUSS 3 und ANSCHLUSS 4 auf der lokalen Benutzeroberfläche angezeigt.     |
-|Netzwerkschnittstellen    |2 x 1 GBit/s RJ45 <br> Wird als ANSCHLUSS 1 und ANSCHLUSS 2 auf der lokalen Benutzeroberfläche angezeigt.      |
+|Netzwerkschnittstellen    |2 x 10 GBit/s SFP+ <br> Wird als ANSCHLUSS 3 und ANSCHLUSS 4 auf der lokalen Benutzeroberfläche angezeigt.    |
+|Netzwerkschnittstellen    |2 x 1 GBit/s RJ45 <br> Wird als ANSCHLUSS 1 und ANSCHLUSS 2 auf der lokalen Benutzeroberfläche angezeigt.     |
 |WLAN                 |802.11ac                                                            |
 
-|Spezifikation  |Wert  |
-|---------|---------|
-|Netzwerkschnittstellen    |2 x 10 GbE SFP+ <br> Wird als ANSCHLUSS 3 und ANSCHLUSS 4 auf der lokalen Benutzeroberfläche angezeigt.           |
-|Netzwerkschnittstellen    |2 x 1 GbE RJ45 <br> Wird als ANSCHLUSS 1 und ANSCHLUSS 2 auf der lokalen Benutzeroberfläche angezeigt.          |
-|WLAN   |802.11ac         |
+## <a name="routers-and-switches"></a>Router und Switches
 
 Die folgenden Router und Switches sind mit den SPF+-Netzwerkschnittstellen mit 10 GBit/s (Port 3 und Port 4) auf Ihren Azure Stack Edge Mini R-Geräten kompatibel:
 
@@ -85,7 +81,7 @@ Die folgenden Router und Switches sind mit den SPF+-Netzwerkschnittstellen mit 1
 
 ## <a name="transceivers-cables"></a>Transceiver, Kabel
 
-Die folgenden kupferbasierten SFP+-Transceiver und -Kabel (10 GBit/s) werden dringend für die Verwendung mit Azure Stack Edge Mini R-Geräten empfohlen. Kompatible Glasfaserkabel können mit SFP+-Netzwerkschnittstellen (Port 3 und Port 4) verwendet werden, wurden jedoch nicht getestet. 
+Die folgenden kupferbasierten SFP+-Transceiver und -Kabel (10 GBit/s) werden dringend für die Verwendung mit Azure Stack Edge Mini R-Geräten empfohlen. Kompatible Glasfaserkabel können mit SFP+-Netzwerkschnittstellen (Port 3 und Port 4) verwendet werden, wurden jedoch nicht getestet.
 
 |SFP+-Transceivertyp |Unterstützte Kabel    | Notizen |
 |----------------------|--------------------|-------|
@@ -108,7 +104,6 @@ Die folgende Tabelle zeigt die Netzteilspezifikationen:
 Das Azure Stack Edge Mini R-Gerät enthält auch einen eingebauten Akku, der durch das Netzteil aufgeladen wird.
 
 Ein zusätzlicher [Akku des Typs 2590](https://www.bren-tronics.com/bt-70791ck.html) kann in Verbindung mit dem eingebauten Akku verwendet werden, um den Einsatz des Geräts zwischen den Ladevorgängen zu verlängern. Dieser Akku sollte allen Sicherheits-, Transport- und Umweltvorschriften des Landes entsprechen, in dem er verwendet wird.
-
 
 | Spezifikation            | Wert      |
 |--------------------------|------------|

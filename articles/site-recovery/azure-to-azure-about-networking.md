@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e1d7bba91ca9283b00432a06e24d1b8beaa49fc
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92370439"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111811313"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -58,6 +58,10 @@ login.microsoftonline.com | Erforderlich für die Autorisierung und Authentifizi
 *.automation.ext.azure.com | Ermöglicht das Aktivieren automatischer Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal
 
 ## <a name="outbound-connectivity-using-service-tags"></a>Ausgehende Konnektivität mithilfe von Diensttags
+
+Neben der Steuerung von URLs können Sie auch Diensttags verwenden, um die Konnektivität zu steuern. Hierzu müssen Sie zunächst eine [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/network-security-group-how-it-works) in Azure erstellen. Nach der Erstellung müssen Sie unsere vorhandenen Diensttags verwenden und eine NSG-Regel erstellen, um den Zugriff auf Azure Site Recovery-Dienste zuzulassen. 
+
+Der Vorteil der Verwendung von Diensttags zum Steuern der Konnektivität im Vergleich zur Steuerung der Konnektivität mithilfe von IP-Adressen besteht darin, dass keine feste Abhängigkeit von einer bestimmten IP-Adresse besteht, um mit unseren Diensten verbunden zu bleiben. Wenn sich in einem solchen Szenario die IP-Adresse eines unserer Dienste ändert, wird die laufende Replikation für Ihre Computer nicht beeinträchtigt. Dagegen führt eine Abhängigkeit von hartcodierten IP-Adressen dazu, dass der Replikationsstatus kritisch wird und Ihre Systeme gefährdet werden. Darüber hinaus sorgen Diensttags für eine bessere Sicherheit, Stabilität und Resilienz als hartcodierte IP-Adressen.
 
 Wenn Sie NSG zum Steuern der ausgehenden Konnektivität verwenden, müssen diese Diensttags zugelassen werden.
 

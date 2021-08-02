@@ -1,31 +1,30 @@
 ---
-title: Cloud-Apps oder -aktionen in Richtlinien für bedingten Zugriff – Azure Active Directory
-description: Was sind Cloud-Apps oder -aktionen in einer Richtlinie für bedingten Zugriff in Azure AD?
+title: Cloud-Apps, -Aktionen und -Authentifizierungskontext in Richtlinien für bedingten Zugriff – Azure Active Directory
+description: Was sind Cloud-Apps, -Aktionen und -Authentifizierungskontext in einer Richtlinie für bedingten Zugriff in Azure AD?
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 05/20/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f179ba02a47617a931906bb2b7575eb2bb3963d
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 99da9afc9afb3c6eb19caf696c6b9802aed6a2dd
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750607"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953664"
 ---
-# <a name="conditional-access-cloud-apps-or-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
+# <a name="conditional-access-cloud-apps-actions-and-authentication--context"></a>Bedingter Zugriff: Cloud-Apps, Aktionen und Authentifizierungskontext
 
-Cloud-Apps oder -aktionen sind ein wichtiger Bestandteil einer Richtlinie für bedingten Zugriff. Richtlinien für bedingten Zugriff ermöglichen Administratoren das Zuweisen von Steuerelementen zu bestimmten Anwendungen oder Aktionen.
+Cloud-Apps, -Aktionen und -Authentifizierungskontext sind wichtige Signale in einer Richtlinie für bedingten Zugriff. Richtlinien für bedingten Zugriff ermöglichen Administratoren das Zuweisen von Steuerelementen zu bestimmten Anwendungen, Aktionen oder Authentifizierungskontext.
 
-- Administratoren stehen eine Reihe von Anwendungen zur Auswahl. Dazu zählen integrierte Microsoft-Anwendungen und alle [in Azure AD integrierten Anwendungen](../manage-apps/what-is-application-management.md) (Katalog- und Nicht-Kataloganwendungen) sowie über den [Anwendungsproxy](../manage-apps/what-is-application-proxy.md) veröffentlichte Anwendungen.
-- Administratoren haben die Wahl, die Richtlinie nicht auf Basis einer Cloudanwendung, sondern basierend auf einer Benutzeraktion zu definieren. Wir unterstützen zwei Benutzeraktionen:
-   - „Sicherheitsinformationen registrieren (Vorschau)“, um Kontrollen rund um die [kombinierte Registrierung von Sicherheitsinformationen](../authentication/howto-registration-mfa-sspr-combined.md) zu erzwingen. 
-   - „Geräte registrieren oder einbinden (Vorschau)“, um Kontrollen zu erzwingen, wenn Benutzer Geräte in Azure AD [registrieren](../devices/concept-azure-ad-register.md) oder [einbinden](../devices/concept-azure-ad-join.md). 
+- Administratoren stehen eine Reihe von Anwendungen zur Auswahl. Dazu zählen integrierte Microsoft-Anwendungen und alle [in Azure AD integrierten Anwendungen](../manage-apps/what-is-application-management.md) (Katalog- und Nicht-Kataloganwendungen) sowie über den [Anwendungsproxy](../app-proxy/what-is-application-proxy.md) veröffentlichte Anwendungen.
+- Administratoren können sich entscheiden, die Richtlinie nicht basierend auf einer Cloudanwendung zu definieren, sondern basierend auf einer [Benutzeraktion](#user-actions) wie etwa **Sicherheitsinformationen registrieren** oder **Geräte registrieren oder beitreten (Vorschauversion)** , sodass der bedingte Zugriff Kontrollmaßnahmen bezüglich dieser Aktionen durchsetzen kann.
+- Administratoren können den [Authentifizierungskontext](#authentication-context-preview) verwenden, um eine zusätzliche Sicherheitsebene innerhalb von Anwendungen zu schaffen. 
 
 ![Definieren einer Richtlinie für bedingten Zugriff und Angeben von Cloud-Apps](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
@@ -71,7 +70,7 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - Virtuelles privates Netzwerk (VPN):
 - Windows Defender ATP
 
-Anwendungen, die für den bedingten Zugriff verfügbar sind, haben einen Onboarding- und Validierungsprozess durchlaufen. Dies schließt nicht alle Microsoft-Apps ein, da viele Back-End-Dienste sind und keine Richtlinie direkt auf sie angewendet werden soll. Wenn Sie eine fehlende Anwendung suchen, können Sie sich an das jeweilige Anwendungsteam wenden oder eine Anforderung an [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259) senden.
+Anwendungen, die für den bedingten Zugriff verfügbar sind, haben einen Onboarding- und Validierungsprozess durchlaufen. Diese Liste schließt nicht alle Microsoft-Apps ein, da viele Back-End-Dienste sind und nicht vorgesehen ist, Richtlinien direkt auf sie anzuwenden. Wenn Sie eine fehlende Anwendung suchen, können Sie sich an das jeweilige Anwendungsteam wenden oder eine Anforderung an [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259) senden.
 
 ### <a name="office-365"></a>Office 365
 
@@ -116,11 +115,11 @@ Die Microsoft Azure Management-Anwendung enthält mehrere zugrundeliegende Diens
 > [!NOTE]
 > Die Microsoft Azure Management-Anwendung gilt für Azure PowerShell, die die Azure Resource Manager-API aufruft. Sie gilt nicht für Azure AD PowerShell, die Microsoft Graph aufruft.
 
-## <a name="other-applications"></a>Andere Anwendungen
+### <a name="other-applications"></a>Andere Anwendungen
 
 Neben den Microsoft-Apps können Administratoren jede für Azure AD registrierte Anwendung zu Richtlinien für bedingten Zugriff hinzufügen. Dazu zählen u.a. die folgenden Anwendungen: 
 
-- Über den [Azure AD-Anwendungsproxy](../manage-apps/what-is-application-proxy.md) veröffentlichte Anwendungen
+- Über den [Azure AD-Anwendungsproxy](../app-proxy/what-is-application-proxy.md) veröffentlichte Anwendungen
 - [Aus dem Katalog hinzugefügte Anwendungen](../manage-apps/add-application-portal.md)
 - [Benutzerdefinierte Nicht-Kataloganwendungen](../manage-apps/view-applications-portal.md)
 - [Ältere Anwendungen, die über App-Bereitstellungscontroller und -netzwerke veröffentlicht wurden](../manage-apps/secure-hybrid-access.md)
@@ -139,10 +138,42 @@ Benutzeraktionen sind Aufgaben, die von einem Benutzer ausgeführt werden könne
    - `Require multi-factor authentication` ist die einzige Zugriffssteuerung, die bei dieser Benutzeraktion verfügbar ist. Alle anderen Zugriffssteuerungen sind deaktiviert. Durch diese Einschränkung werden Konflikte mit Zugriffssteuerungen verhindert, die entweder von der Azure AD-Geräteregistrierung abhängig sind oder nicht für die Azure AD-Geräteregistrierung gelten. 
    - Die Bedingungen `Client apps` und `Device state` sind bei dieser Benutzeraktion nicht verfügbar, da sie zum Erzwingen von Richtlinien für den bedingten Zugriff von der Azure AD-Geräteregistrierung abhängig sind.
    - Wenn bei dieser Benutzeraktion eine Richtlinie für bedingten Zugriff aktiviert ist, muss **Azure Active Directory** > **Geräte** > **Geräteeinstellungen** - `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` auf **Nein** festgelegt werden. Anderenfalls wird die Richtlinie für den bedingten Zugriff bei dieser Benutzeraktion nicht ordnungsgemäß erzwungen. Weitere Informationen zu dieser Geräteeinstellung finden Sie unter [Konfigurieren von Geräteeinstellungen](../devices/device-management-azure-portal.md#configure-device-settings). 
-   
+
+## <a name="authentication-context-preview"></a>Authentifizierungskontext (Vorschau)
+
+Der Authentifizierungskontext kann verwendet werden, um Daten und Aktionen in Anwendungen besser zu schützen. Bei diesen Anwendungen kann es sich um Ihre eigenen benutzerdefinierten Anwendungen, um benutzerdefinierte Branchenanwendungen, um Anwendungen wie SharePoint oder um durch Microsoft Cloud App Security (MCAS) geschützte Anwendungen handeln. 
+
+Eine Organisation kann z. B. Dateien auf SharePoint-Websites speichern, z. B. eine Speisekarte oder die geheime Rezeptur ihrer BBQ-Soße. Möglicherweise haben alle Zugriff auf die Speisekartenwebsite, aber Benutzer mit Zugriff auf die geheime Soßenrezepturwebsite müssen möglicherweise von einem verwalteten Gerät aus darauf zugreifen und bestimmten Nutzungsbedingungen zustimmen.
+
+### <a name="configure-authentication-contexts"></a>Authentifizierungskontexte konfigurieren
+
+Authentifizierungskontexte werden im Azure-Portal unter **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** > **Authentifizierungskontext** verwaltet.
+
+![Verwalten von Authentifizierungskontext im Azure-Portal](./media/concept-conditional-access-cloud-apps/conditional-access-authentication-context-get-started.png)
+
+> [!WARNING]
+> * Das Löschen von Authentifizierungskontextdefinitionen ist während der Vorschau nicht möglich. 
+> * Die Vorschau ist auf insgesamt 25 Authentifizierungskontextdefinitionen im Azure-Portal beschränkt.
+
+Erstellen Sie neue Authentifizierungskontextdefinitionen, indem Sie im Azure-Portal **Neuer Authentifizierungskontext** auswählen. Konfigurieren Sie folgende Attribute:
+
+- **Anzeigename** ist der Name, der verwendet wird, um den Authentifizierungskontext in Azure AD und anwendungsübergreifend in Authentifizierungskontext nutzenden Anwendungen zu identifizieren. Wir empfehlen Namen, die ressourcenübergreifend verwendet werden können, z. B. „vertrauenswürdige Geräte“, um die Anzahl der erforderlichen Authentifizierungskontexte zu reduzieren. Durch einen reduzierten Satz an Namen wird die Anzahl der Umleitungen eingeschränkt, und die Endbenutzererfahrung wird verbessert.
+- Die **Beschreibung** enthält weitere Informationen zu Richtlinien, die von Azure AD-Administratoren verwendet werden, und solchen, die Authentifizierungskontexte auf Ressourcen anwenden.
+- Wenn das Kontrollkästchen **In Apps veröffentlichen** aktiviert ist, wird der Authentifizierungskontext für Apps ankündigen und zur Zuweisung zur Verfügung gestellt. Wenn es nicht aktiviert ist, ist der Authentifizierungskontext für Downstream-Ressourcen nicht verfügbar. 
+- Die **ID** ist schreibgeschützt und wird in Token und Apps für anforderungsspezifische Authentifizierungskontextdefinitionen verwendet. Sie ist hier zu Zwecken der Problembehandlung und für die Entwicklung aufgeführt. 
+
+Administratoren können dann veröffentlichte Authentifizierungskontexte in ihren Richtlinien für bedingten Zugriff unter **Zuweisungen** > **Cloud-Apps oder -Aktionen** > **Authentifizierungskontext** auswählen.
+
+### <a name="tag-resources-with-authentication-contexts"></a>Ressourcen mit Authentifizierungskontexten markieren 
+
+Weitere Informationen zur Verwendung des Authentifizierungskontexts in Anwendungen finden Sie in den folgenden Artikeln.
+
+- [SharePoint Online](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#more-information-about-the-dependencies-for-the-authentication-context-option)
+- [Microsoft Cloud App Security](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
+- Benutzerdefinierte Anwendungen
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Bedingter Zugriff: Bedingungen](concept-conditional-access-conditions.md)
-
 - [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
 - [Abhängigkeiten von Clientanwendungen](service-dependencies.md)

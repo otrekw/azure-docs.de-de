@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2cae673dd319e55670357ae468d21ff63e4f9c72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: fasttrack-edit, devx-track-azurepowershell
+ms.openlocfilehash: 6aab2d1d681cbfd55cc275b1f647562d54a08f0c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104669439"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791329"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Erstellen von NSG-Flussprotokollen aus einer Azure Resource Manager-Vorlage
 
@@ -77,7 +77,7 @@ Fügen Sie zum Erstellen einer Ressource vom Typ Microsoft.Network/networkWatche
 
 Wenn Sie zum ersten Mal Azure Resource Manager-Vorlagen verwenden, finden Sie unter den nachstehenden Links weitere Informationen.
 
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
 * [Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)
 
 

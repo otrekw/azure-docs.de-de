@@ -1,0 +1,39 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zu Azure Applied AI Services
+  description: Antworten auf häufig gestellte Fragen zu Azure Applied AI Services
+  author: mrbullwinkle
+  ms.author: mbullwin
+  manager: nitinme
+  ms.topic: conceptual
+  ms.service: applied-ai-services
+  ms.date: 05/28/2021
+  ms.openlocfilehash: e424501e4b5ce6f6731f093394a6536c332b3cbc
+  ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/02/2021
+  ms.locfileid: "111907323"
+title: Häufig gestellte Fragen zu Azure Applied AI Services
+summary: >
+  Hier finden Sie Antworten auf häufig gestellte Fragen zur Verwendung von Azure Applied AI Services.
+sections:
+- name: Einzelner Abschnitt – ignoriert
+  questions:
+  - question: Unterstützt Azure Applied AI Services die Verschlüsselung von ruhenden Daten und kundenseitig verwaltete Schlüssel (Customer Managed Keys, CMK)?
+    answer: >
+      Ja, der Prozess zum Aktivieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault für Applied AI Services variiert je nach Produkt. Unter den folgenden Links finden Sie dienstspezifische Anweisungen:
+
+      - [Cognitive Search Verschlüsselung ruher Daten](../search/search-security-manage-encryption-keys.md)
+
+      - [Verschlüsselung für ruhende Daten der Formularerkennung](../cognitive-services/form-recognizer/encrypt-data-at-rest.md)
+
+      - [Verschlüsselung für ruhende Daten des Metrics Advisor-Diensts](../cognitive-services/metrics-advisor/encryption.md#customer-managed-keys-with-azure-key-vault)
+
+      - [Video Analyzer Verschlüsselung ruhender Daten](../azure-video-analyzer/video-analyzer-docs/customer-managed-keys.md)
+additionalContent: >-
+  ## <a name="next-steps"></a>Nächste Schritte
+
+  - [What is Azure Key Vault? (Was ist Azure Key Vault?)](../key-vault/general/overview.md)
+
+  - [Formular zum Anfordern von kundenseitig verwalteten Schlüsseln für Applied AI Services](https://aka.ms/cogsvc-cmk)

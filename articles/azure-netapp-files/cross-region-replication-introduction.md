@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 04/22/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: 68672ccc93871a3baa26da81a25a31d1850ef599
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 4273e69e3143c25fb78961c5b6b128b69b69dbd1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897071"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068121"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Regionsübergreifende Replikation von Azure NetApp Files-Volumes
 
 Die Replikationsfunktion für Azure NetApp Files bietet Datenschutz durch regionsübergreifende Volumereplikation. Sie können Daten asynchron aus einem Azure NetApp Files-Volume (Quelle) in einer Region in ein anderes Azure NetApp Files-Volume (Ziel) in einer anderen Region replizieren.  Diese Funktion ermöglicht es Ihnen, bei einem regionsweiten Ausfall oder Notfall ein Failover für Ihre kritische Anwendung durchzusetzen.
 
 > [!IMPORTANT]
-> Das Features für die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion. Sie müssen eine Wartelistenanforderung für den Zugriff auf das Feature über die [Seite für Wartelistenanforderungen für die regionsübergreifende Replikation von Azure NetApp Files-Volumes](https://aka.ms/anfcrrpreviewsignup) übermitteln. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie das Feature für die regionsübergreifende Replikation verwenden.
+> Das Feature für die regionsübergreifende Replikation befindet sich derzeit in der Vorschauphase. Sie müssen eine Wartelistenanforderung für den Zugriff auf das Feature über die [Seite für Wartelistenanforderungen für die regionsübergreifende Replikation von Azure NetApp Files-Volumes](https://aka.ms/anfcrrpreviewsignup) übermitteln. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie das Feature für die regionsübergreifende Replikation verwenden.
 
 ## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>Unterstützte regionsübergreifende Replikationspaare
 
@@ -45,7 +45,7 @@ Die Azure NetApp Files-Volumereplikation wird zwischen verschiedenen [Azure-Regi
 * Europa, Norden und Europa, Westen
 * Vereinigtes Königreich, Süden und Vereinigtes Königreich, Westen
 
-### <a name="azure-regional-non-pairs"></a>Azure-Nicht-Regionspaare
+### <a name="azure-regional-non-standard-pairs"></a>Nicht dem Standard entsprechende Azure-Regionspaare
 
 *   „USA, Westen 2“ und „USA, Osten“
 *   „USA, Süden-Mitte“ und „USA, Mitte“

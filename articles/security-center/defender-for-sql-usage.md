@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: a497e5bc9d04577f4b4f9d373aa68d07b5a08043
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: b375ad72d3ef459635c4a786391ef7b9836d8a99
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905052"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411582"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Aktivieren von „Azure Defender für SQL Server-Instanzen auf Computern“ 
 
@@ -40,15 +40,23 @@ Es werden Warnungen angezeigt, wenn verdächtige Datenbankaktivitäten, potenzie
 
 So aktivieren Sie diesen Plan
 
-[Schritt 1 – Bereitstellen des Log Analytics-Agents auf dem Host Ihrer SQL Server-Instanz:](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
+[Schritt 1: Installieren der Agent-Erweiterung](#step-1-install-the-agent-extension)
 
-[Schritt 2 – Aktivieren des optionalen Plans auf der Security Center-Seite „Preise und Einstellungen“:](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
+[Schritt 2: Bereitstellen des Log Analytics-Agents auf dem Host Ihrer SQL Server-Instanz:](#step-2-provision-the-log-analytics-agent-on-your-sql-servers-host)
+
+[Schritt 3: Aktivieren des optionalen Plans auf der Security Center-Seite „Preise und Einstellungen“:](#step-3-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
 
-### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Schritt 1: Bereitstellen des Log Analytics-Agents auf dem Host Ihrer SQL Server-Instanz:
+### <a name="step-1-install-the-agent-extension"></a>Schritt 1: Installieren der Agent-Erweiterung
+
+- **SQL Server auf einer Azure-VM:** Registrieren Sie Ihre SQL Server-VM bei der SQL-IaaS-Agent-Erweiterung, wie unter [Registrieren einer SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) erläutert.
+
+- **SQL Server auf Azure Arc:** Installieren Sie den Azure Arc-Agent anhand der Installationsmethoden, die in der [Azure Arc-Dokumentation](../azure-arc/servers/manage-vm-extensions.md) beschrieben sind.
+
+### <a name="step-2-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Schritt 2: Bereitstellen des Log Analytics-Agents auf dem Host Ihrer SQL Server-Instanz:
 
 - **SQL Server auf einer Azure-VM:** Wenn Ihr SQL-Computer auf einer Azure-VM gehostet wird, können Sie [die automatische Bereitstellung des Log Analytics-Agents aktivieren <a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma). Alternativ dazu können Sie das manuelle Verfahren zum [Integrieren Ihrer Azure Stack Hub-VMs](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms) befolgen.
-- **SQL Server unter Azure Arc**: Wenn Ihre SQL Server-Instanz auf [Azure Arc](../azure-arc/index.yml)-fähigen Servern gehostet wird, können Sie den Log Analytics-Agent unter Verwendung der Security Center-Empfehlung „Log Analytics-Agent muss auf Ihren Windows-basierten Azure Arc-Computern installiert sein (Vorschau)“ bereitstellen. Alternativ können Sie die Installationsmethoden befolgen, die in der [Azure Arc-Dokumentation](../azure-arc/servers/manage-vm-extensions.md) beschrieben sind.
+- **SQL Server unter Azure Arc**: Wenn Ihre SQL Server-Instanz auf [Azure Arc](../azure-arc/index.yml)-fähigen Servern gehostet wird, können Sie den Log Analytics-Agent unter Verwendung der Security Center-Empfehlung „Log Analytics-Agent muss auf Ihren Windows-basierten Azure Arc-Computern installiert sein (Vorschau)“ bereitstellen.
 
 - **Lokale SQL Server-Instanz**: Wenn Ihre SQL Server-Instanz auf einem lokalen Windows-Computer ohne Azure Arc gehostet wird, haben Sie zwei Möglichkeiten, ihn mit Azure zu verbinden:
     
@@ -57,7 +65,7 @@ So aktivieren Sie diesen Plan
     - **Verbinden des Windows-Computers ohne Azure Arc**: Wenn Sie sich dafür entscheiden, eine auf einem Windows-Computer ausgeführte SQL Server-Instanz ohne Azure Arc zu verbinden, folgen Sie den Anweisungen unter [Verbinden von Windows-Computern mit Azure Monitor](../azure-monitor/agents/agent-windows.md).
 
 
-### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>Schritt 2: Aktivieren des optionalen Plans auf der Security Center-Seite „Preise und Einstellungen“:
+### <a name="step-3-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>Schritt 3: Aktivieren des optionalen Plans auf der Security Center-Seite „Preise und Einstellungen“:
 
 1. Öffnen Sie im Menü von Security Center die Seite **Preise und Einstellungen**.
 
@@ -86,7 +94,7 @@ Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuch
 
 ## <a name="explore-and-investigate-security-alerts"></a>Erkunden und Untersuchen von Sicherheitswarnungen
 
-Azure Defender für SQL-Warnungen sind auf der Security Center-Seite „Warnungen“, auf der Registerkarte „Sicherheit“ der Ressource, im [Azure Defender-Dashboard](azure-defender-dashboard.md) oder über den direkten Link in den Benachrichtigungs-E-Mails verfügbar.
+Azure Defender für SQL-Warnungen sind auf der Security Center-Seite „Warnungen“, auf der Seite „Sicherheit“ des Computers, auf dem [Azure Defender-Dashboard](azure-defender-dashboard.md) oder über den direkten Link in den Warnungs-E-Mails verfügbar.
 
 1. Um die Warnungen anzuzeigen, wählen Sie im Menü von Security Center **Sicherheitswarnungen** und dann eine Warnung aus.
 

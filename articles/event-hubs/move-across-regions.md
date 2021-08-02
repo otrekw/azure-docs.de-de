@@ -2,13 +2,13 @@
 title: Verschieben eines Azure Event Hubs-Namespace in eine andere Region | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie einen Azure Event Hubs-Namespace aus der aktuellen Region in eine andere verschieben.
 ms.topic: how-to
-ms.date: 09/01/2020
-ms.openlocfilehash: b177c3916919e3d97325f9d8c6b6027c00cb476f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/08/2021
+ms.openlocfilehash: 9e10cd220a18849336fdc520b269c8af2cb257bd
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019921"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111811600"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Verschieben eines Azure Event Hubs-Namespace in eine andere Region
 In diesem Artikel erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage für einen vorhandenen Event Hubs-Namespace exportieren und anschließend mithilfe der Vorlage einen Namespace mit denselben Konfigurationseinstellungen in einer anderen Region erstellen können. Bei diesem Vorgang werden jedoch keine Ereignisse verschoben, die noch nicht verarbeitet wurden. Sie müssen die Ereignisse im ursprünglichen Namespace verarbeiten, bevor Sie ihn löschen.
@@ -26,7 +26,7 @@ Exportieren Sie zunächst eine Resource Manager-Vorlage. Diese Vorlage enthält 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Alle Ressourcen** und dann Ihren Event Hubs-Namespace aus.
-3. Wählen Sie **Einstellungen** > **Vorlage exportieren** aus.
+3. Wählen Sie auf der Seite **Event Hubs-Namespace** im linken Menü unter **Automatisierung** die Option **Vorlage exportieren** aus. 
 4. Wählen Sie **Herunterladen** auf der Seite **Vorlage exportieren** aus.
 
     ![Herunterladen einer Resource Manager-Vorlage](./media/move-across-regions/download-template.png)

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 0be2bb59b46dc827001d89f8e0f1be23f35a714d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 534efc4723c0a526bd8d607299bbf3ec4effaa86
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536094"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895008"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Konfigurieren der Georeplikation für Azure Cache for Redis-Instanzen (Premium)
 
@@ -32,6 +32,9 @@ Um die Georeplikation zwischen zwei Caches zu konfigurieren, müssen die folgend
 - Beide Caches müssen sich in demselben Azure-Abonnement befinden.
 - Der sekundäre verknüpfte Cache hat entweder die gleiche Größe oder ist größer als der primäre verknüpfte Cache.
 - Beide Caches wurden erstellt und werden ausgeführt.
+
+> [!NOTE]
+> Die Datenübertragung zwischen Azure-Regionen wird mit den [Standardbandbreitensätzen](https://azure.microsoft.com/pricing/details/bandwidth/) abgerechnet.
 
 Einige Funktionen werden für die Georeplikation nicht unterstützt:
 
@@ -152,7 +155,7 @@ Ja. Die Georeplikation von Caches in VNETs wird mit Einschränkungen unterstütz
   - Wenn sich die VNETs in derselben Region befinden, können Sie sie per [VNET-Peering](../virtual-network/virtual-network-peering-overview.md) oder per [VPN Gateway-VNET-zu-VNET-Verbindung](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) verbinden.
   - Wenn sich die VNETs in verschiedenen Regionen befinden, wird Georeplikation über VNET-Peering unterstützt, aber eine Client-VM in VNET 1 (Region 1) kann aufgrund einer Einschränkung mit internen Lastausgleichsmodulenvom Typ „Basic“ nicht über ihren DNS-Namen auf den Cache in VNET 2 (Region 2) zugreifen. Weitere Informationen zu Einschränkungen beim VNET-Peering finden Sie im Artikel zu den [Anforderungen und Einschränkungen beim VNET-Peering](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Die empfohlene Lösung ist die Verwendung einer VPN Gateway-VNET-zu-VNET-Verbindung.
   
-Mit [dieser Azure-Vorlage](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/) können Sie schnell zwei georeplizierte Caches in einem VNET bereitstellen, indem Sie eine VPN Gateway-VNET-zu-VNET-Verbindung verwenden.
+Mit [dieser Azure-Vorlage](https://azure.microsoft.com/resources/templates/redis-vnet-geo-replication/) können Sie schnell zwei georeplizierte Caches in einem VNET bereitstellen, indem Sie eine VPN Gateway-VNET-zu-VNET-Verbindung verwenden.
 
 ### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Was ist der Replikationszeitplan für die Redis-Georeplikation?
 

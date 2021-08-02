@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 11/06/2020
-ms.openlocfilehash: 2133f3da926dfd1e92d911004393893f58d27db6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d7c315694b5b25597abdacce74813b3578682f89
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136448"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111972058"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-virtual-machines"></a>Migrationsleitfaden: Oracle zu SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -265,6 +265,7 @@ Weitere Hilfe beim Abschließen dieses Migrationsszenarios finden Sie in den fol
 | [Automate SSMA Oracle Assessment Collection & Consolidation](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | Diese Ressourcensammlung verwendet eine CSV-Datei als Eingabe („sources.csv“ in den Projektordnern), um die XML-Dateien zu erstellen, die zum Ausführen der SSMA-Bewertung im Konsolenmodus benötigt werden. Sie stellen die Datei „source.csv“ bereit, indem Sie eine Inventur der vorhandenen Oracle-Instanzen durchführen. Die Ausgabedateien sind „AssessmentReportGeneration_source_1.xml“, „ServersConnectionFile.xml“ und „VariableValueFile.xml“.|
 | [SSMA-Probleme und mögliche Abhilfemaßnahmen beim Migrieren von Oracle-Datenbanken](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | In Oracle kann eine nicht skalare Bedingung in einer WHERE-Klausel zugewiesen werden. Dieser Bedingungstyp wird von SQL Server nicht unterstützt. SSMA für Oracle konvertiert also keine Abfragen, die eine nicht skalare Bedingung in der WHERE-Klausel aufweisen. Stattdessen wird ein Fehler generiert: O2SS0001. In diesem Whitepaper finden Sie Einzelheiten zu diesem Problem sowie die erforderlichen Schritte zur Problembehandlung.          |
 | [Handbuch für die Migration von Oracle zu SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | In diesem Whitepaper sind die Aufgaben bei der Migration eines Oracle-Schemas zur neuesten Version von SQL Server beschrieben. Wenn für die Migration Änderungen an Features/Funktionen erforderlich sind, müssen Sie die möglichen Auswirkungen jeder Änderung auf die Anwendungen, die die Datenbank verwenden, sorgfältig berücksichtigen.                                                     |
+|[Oracle zu SQL Server – Hilfsprogramm „Database Compare“](https://www.microsoft.com/download/details.aspx?id=103016)|SSMA für Oracle Tester ist das empfohlene Tool, um automatisch die Umwandlung von Datenbankobjekten und Datenmigration zu überprüfen. Außerdem enthält es eine Obermenge der Database Compare-Funktionen.<br /><br />Wenn Sie nach einer alternativen Datenüberprüfungsoption suchen, können Sie Daten mithilfe des Hilfsprogramms „Database Compare“ in ausgewählten oder allen Tabellen, Zeilen und Spalten bis auf Zeilen- oder Spaltenebene vergleichen.|
 
 
 Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptaufgabe dieses Teams ist die Aufhebung der Blockierung und Beschleunigung komplexer Modernisierungsprojekte für die Migration von Datenplattformen zur Microsoft Azure-Datenplattform.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 282a1aed4ff678ebe2d7ec507d95f899cf21793f
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 59ed6dea79e1ae827c35bc7ccb60fe1bb7373778
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326811"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794395"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Auswählen des richtigen Tarifs in Azure Maps
 
@@ -21,7 +21,7 @@ Azure Maps bietet jetzt zwei Preisstufen an:  Gen 1 und Gen 2. Die neue Preisstu
 
 ## <a name="pricing-tier-targeted-customers"></a>Tarife und Kundenzielgruppen
 
-Zum besseren Verständnis der Preisstufen Gen 1 und Gen 2 beachten Sie bitte die untenstehende Tabelle mit den **Zielkunden für die Preisstufen**.  Weitere Informationen finden Sie unter [Azure Maps – Preise](https://azure.microsoft.com/pricing/details/azure-maps/). Wenn Sie ein aktueller Azure Maps-Kunde sind, erfahren Sie [hier](how-to-manage-pricing-tier.md), wie Sie von der Gen 1 Preisstufe zur Gen 2 Preisstufe wechseln
+Zum besseren Verständnis der Preisstufen Gen 1 und Gen 2 beachten Sie bitte die untenstehende Tabelle mit den **Zielkunden für die Preisstufen**.  Weitere Informationen finden Sie unter [Azure Maps – Preise](https://azure.microsoft.com/pricing/details/azure-maps/). Wenn Sie ein aktueller Azure Maps-Kunde sind, erfahren Sie [hier](how-to-manage-pricing-tier.md), wie Sie von der Preisstufe für Gen 1 zur Preisstufe für Gen 2 wechseln.
 
 | Tarif  | SKU | Zielkunden|
 |-----------------|----| -----------------|

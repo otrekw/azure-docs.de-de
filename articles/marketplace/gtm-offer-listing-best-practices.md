@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 07/06/2020
-ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/03/2021
+ms.openlocfilehash: 856a72be8e1bb69f86c2a96b8e7b57e964d26dfa
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94492088"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410241"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
@@ -30,21 +30,23 @@ Dieser Artikel enthält Vorschläge für die Erstellung ansprechender Angebote f
 
 ## <a name="online-store-listing-details"></a>Onlineshop-Listungsdetails
 
-Für verschiedene Angebotstypen gelten Kategorien und Branchen für verschiedene Onlineshops.
+In dieser Tabelle wird gezeigt, bei welchen Angebotstypen Kategorien und Branchen für die verschiedenen Onlineshops gelten: Azure Marketplace und Microsoft AppSource.
 
-| Onlineshop | Kategorien <br>nach Onlineshop | Kategorien <br>nach Onlineshop | Branchen <br> für AppSource |
+| Angebotstyp | Kategorien für Azure Marketplace | Kategorien für AppSource | Branchen für AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
-| **Angebotstyp**   |  **Azure Marketplace**  | **AppSource**  |
-| Azure-App | X | |
-| Container | X | |
-| Beratungsdienste | | | X |
-| Dynamics 365 Customer Engagement und Power Platform | | X | X |
-| Dynamics 365 Finance und Supply Chain Management | | X | X | 
+| Azure-Anwendung     | X |   |   |
+| Azure-Container       | X |   |   |
+| Virtueller Azure-Computer | X |   |   |
+| Beratungsdienst    | X<sup>*</sup> |   | X<sup>*</sup> |
+| Dynamics 365 Customer Engagement & Power Apps | | X | X |
+| Dynamics 365 for Operations | | X | X |
 | Dynamics 365 Business Central | | X | X |
-| IoT Edge-Module | X | |
-| Power BI | | X | X |
+| IoT Edge-Modul | X | |  |
+| Verwalteter Dienst | X | |  |
+| Power BI-App | | X | X |
 | SaaS | X | X | X |
-| Virtueller Azure-Computer |  X |    |
+
+* Das Angebot wird basierend auf dem primären Produkt im relevanten Onlineshop veröffentlicht. Ist das primäre Produkt Azure, wird es in Azure Marketplace veröffentlicht. Andernfalls wird es in AppSource veröffentlicht.
 
 ### <a name="categories"></a>Kategorien
 
@@ -63,22 +65,24 @@ Wählen Sie die Kategorien und Unterkategorien aus, die am besten zu Ihrem Lösu
 
 Unter [Transaktionsfunktionen im kommerziellen Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md) wird ausführlich beschrieben, wie sich die Transaktionsfähigkeit ggf. darauf auswirkt, wie Ihr Angebot von Marketplace-Kunden angezeigt und erworben werden kann. Bei SaaS-Angeboten bestimmen sowohl die Transaktionsfähigkeit des Angebots als auch die Kategorieauswahl, in welchem Onlineshop Ihr Angebot veröffentlicht wird:
 
+In der folgenden Tabelle sind die Kombinationen von Optionen gezeigt, die für die verschiedenen Onlineshops gelten: Azure Marketplace und Microsoft AppSource.
 
-| SaaS-Angebot    | SaaS-Angebot   | SaaS-Angebot  | SaaS-Angebot   | SaaS-Angebot   | SaaS-Angebot   | SaaS-Angebot    | Onlineshop| Onlineshop |
-|:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
-| Getaktete Abrechnung | Microsoft 365-Add-Ins | Kontakt mit mir aufnehmen | Transaktion (mindestens 1 Plan) | Nur privater Plan | Nur öffentlicher Plan | Öffentliche und private Pläne | AppSource | Azure Marketplace |
-|  | X |  |  |  |  |  | X |  |
-| X |  |  | X | X |  |  |  | X |
-| X |  |  | X |  | X |  |  | X |
-| X |  |  | X |  |  | X |  | X<sup>2</sup> |
-|  |  |  | X | X |  |  |  | X |
-|  |  |  | X |  | X |  | X<sup>1</sup> | X<sup>1</sup> |
-|  |  |  | X |  |  | X | X<sup>1</sup> | X<sup>1,2</sup> |
-|  |  | X |  |  |  |  | x<sup>1</sup> | X<sup>1</sup> | 
+| Getaktete Abrechnung | Microsoft 365-Add-Ins | Nur privater Plan | Nur öffentlicher Plan | Öffentliche und private Pläne | Onlineshop |
+|:-------------:|:---:|:--------:|:---------:|:---------------------:|:-------------:|
+|  | X |  |  |  | AppSource |
+| X |  | X |  |  | Azure Marketplace |
+| X |  |  | X |  | Azure Marketplace |
+| X |  |  |  | X | Azure Marketplace<sup>2</sup> |
+|  |  | X |  |  | Azure Marketplace |
+|  |  |  | X |  | AppSource<sup>1</sup><br>Azure Marketplace<sup>1</sup> |
+|  |  |  |  | X | AppSource<sup>1</sup><br>Azure Marketplace<sup>1,2</sup> |
+|  |  |  |  | X | AppSource<sup>1</sup><br>Azure Marketplace<sup>1</sup> |
 
 1. Abhängig von der Auswahl der Kategorie/Unterkategorie und Branche
 2. Angebote mit privaten Plänen werden im Azure-Portal veröffentlicht.
 
+> [!NOTE]
+> Das gleiche Angebot kann nicht sowohl Auflistungspläne als auch transaktionsfähige Pläne enthalten.
 
 ### <a name="industries"></a>Branchen
 

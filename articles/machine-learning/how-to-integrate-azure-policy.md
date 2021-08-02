@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mithilfe von Azure Policy integrierte Richtlinien für Azure Machine Learning erstellen können, um sicherzustellen, dass Ihre Arbeitsbereiche Ihren Anforderungen entsprechen.
 author: aashishb
 ms.author: aashishb
-ms.date: 05/03/2021
+ms.date: 05/10/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 688af6bbc4de786c36011312f64fb6d67e34183f
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 02225a3be02612b9baa0a66aff3d3dcd5ef1bb87
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633805"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067472"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Überwachen und Verwalten von Azure Machine Learning mit Azure Policy
 
@@ -28,8 +28,14 @@ ms.locfileid: "109633805"
 | **Privater Endpunkt** | Konfigurieren Sie das Azure Virtual Network-Subnetz, in dem der private Endpunkt erstellt werden soll. |
 | **Private DNS-Zone** | Konfigurieren Sie die private DNS-Zone, die für die private Verbindung verwendet werden soll. |
 | **Benutzerseitig zugewiesene verwaltete Identität** | Überwachen oder erzwingen Sie, ob Arbeitsbereiche eine vom Benutzer zugewiesene verwaltete Identität verwenden. |
+| **Deaktivieren der lokalen Authentifizierung** | Überwachen oder erzwingen Sie, ob lokale Authentifizierungsmethoden für Azure Machine Learning-Computeressourcen deaktiviert sein sollen. |
+| **Ändern oder Deaktivieren der lokalen Authentifizierung** | Konfigurieren Sie Computeressourcen für die Deaktivierung lokaler Authentifizierungsmethoden. |
 
 Richtlinien können in unterschiedlichen Bereichen festgelegt werden, z. B. auf Abonnement- oder Ressourcengruppenebene. Weitere Informationen finden Sie in der [Dokumentation zu Azure Policy](../governance/policy/overview.md).
+
+## <a name="conditional-access-policies"></a>Bedingte Zugriffsrichtlinien
+
+Mit dem [bedingten Zugriff](../active-directory/conditional-access/overview.md) von Azure Active Directory können Sie steuern, welche Benutzer auf Ihren Azure Machine Learning-Arbeitsbereich zugreifen dürfen.
 
 ## <a name="built-in-policies"></a>Integrierte Richtlinien
 
@@ -79,6 +85,21 @@ Steuert, ob ein Arbeitsbereich mit einer vom System zugewiesenen verwalteten Ide
 Um diese Richtlinie zu konfigurieren, setzen Sie den Effekt-Parameter auf __prüfen__, __ablehnen__, oder __deaktiviert__ ein. Wenn diese Option auf __Audit__ gesetzt ist, können Sie einen Arbeitsbereich erstellen, ohne eine dem Benutzer zugewiesene verwaltete Identität anzugeben. Es wird eine vom System zugewiesene Identität verwendet und ein Warnereignis im Aktivitätsprotokoll erstellt.
 
 Wenn die Richtlinie auf __Verweigern__ eingestellt ist, können Sie keinen Arbeitsbereich erstellen, es sei denn, Sie geben während des Erstellungsprozesses eine dem Benutzer zugewiesene Identität an. Der Versuch, einen Arbeitsbereich zu erstellen, ohne eine dem Benutzer zugewiesene Identität anzugeben, führt zu einem Fehler. Der Fehler wird auch in das Aktivitätsprotokoll aufgenommen. Der Richtlinienbezeichner wird als Teil dieses Fehlers zurückgegeben.
+
+## <a name="disable-local-authentication"></a>Deaktivieren der lokalen Authentifizierung
+
+Hiermit legen Sie fest, ob die lokale Authentifizierung (SSH) für einen Computecluster oder eine Instanz von Azure Machine Learning deaktiviert werden soll.
+
+Um diese Richtlinie zu konfigurieren, setzen Sie den Effekt-Parameter auf __prüfen__, __ablehnen__, oder __deaktiviert__ ein. Wenn __audit__ festgelegt ist, können Sie einen Computecluster mit aktiviertem SSH-Protokoll erstellen, und ein Warnungsereignis wird im Aktivitätsprotokoll erstellt.
+
+Wenn die Richtlinie auf __deny__ festgelegt ist, können Sie einen Computecluster nur erstellen, wenn SSH deaktiviert ist. Der Versuch, einen Computecluster mit aktiviertem SSH-Protokoll zu erstellen, führt zu einem Fehler. Der Fehler wird auch im Aktivitätsprotokoll protokolliert. Der Richtlinienbezeichner wird als Teil dieses Fehlers zurückgegeben.
+
+
+## <a name="modifydisable-local-authentication"></a>Ändern oder Deaktivieren der lokalen Authentifizierung
+
+Hiermit deaktivieren Sie die lokale Authentifizierung (SSH) in einer Erstellungsanforderung für einen Computecluster oder eine Instanz von Azure Machine Learning.
+
+Legen Sie den Parameter „effect“ auf __Modify__ oder __Disabled__ fest, um diese Richtlinie zu konfigurieren. Wenn __Modify__ festgelegt ist, wird die lokale Authentifizierung für erstellte Computecluster oder Instanzen automatisch deaktiviert, die im Anwendungsbereich der Richtlinie liegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

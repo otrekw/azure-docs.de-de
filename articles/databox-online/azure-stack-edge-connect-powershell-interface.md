@@ -1,6 +1,6 @@
 ---
-title: Herstellen einer Verbindung mit und Verwalten von Microsoft Azure Stack Edge Pro-Geräten über die Windows PowerShell-Schnittstelle | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie über die Windows PowerShell-Schnittstelle eine Verbindung mit einem Azure Stack Edge Pro-Gerät herstellen und dieses anschließend verwalten.
+title: Herstellen einer Verbindung mit und Verwalten von Microsoft Azure Stack Edge Pro FPGA-Geräten über die Windows PowerShell-Schnittstelle
+description: Beschreibt das Verbinden und Verwalten von Azure Stack Edge Pro FPGA-Geräten über die Windows PowerShell-Schnittstelle.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: c9c6247f021b7af4cfdd899ffd4b6bd178f2256c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09271ddeac59446d134feaa0f2acb6c3e3d9d89f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96345592"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461272"
 ---
 # <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Verwalten eines Azure Stack Edge Pro FPGA-Geräts über Windows PowerShell
 
-Azure Stack Edge Pro ist eine Lösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben für Ihr Azure Stack Edge Pro-Gerät beschrieben. Sie können das Azure-Portal, die lokale Webbenutzeroberfläche oder die Windows PowerShell-Schnittstelle verwenden, um Ihr Gerät zu verwalten.
+Azure Stack Edge Pro FPGA ist eine Lösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben für Ihr Azure Stack Edge Pro FPGA-Gerät beschrieben. Sie können das Azure-Portal, die lokale Webbenutzeroberfläche oder die Windows PowerShell-Schnittstelle verwenden, um Ihr Gerät zu verwalten.
 
 Der Schwerpunkt dieses Artikels liegt auf den Aufgaben, die mithilfe der PowerShell-Schnittstelle ausgeführt werden. 
 
@@ -94,4 +94,4 @@ Schließen Sie das PowerShell-Fenster, um die PowerShell-Remotesitzung zu beende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Stellen Sie [Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md) im Azure-Portal bereit.
+- Stellen Sie [Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-prep.md) im Azure-Portal bereit.

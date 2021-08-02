@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Objekte
 description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Arbeiten mit Objekten verwendet werden können.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.openlocfilehash: aa52cee2236ac3eab5090b1caad27b6cbf516c7a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96920439"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959610"
 ---
 # <a name="object-functions-for-arm-templates"></a>Objektfunktionen für ARM-Vorlagen
 
@@ -23,8 +23,6 @@ Resource Manager stellt mehrere Funktionen für das Arbeiten mit Objekten in Ihr
 * [null](#null)
 * [union](#union)
 
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
-
 ## <a name="contains"></a>contains
 
 `contains(container, itemToFind)`
@@ -33,7 +31,7 @@ Resource Manager stellt mehrere Funktionen für das Arbeiten mit Objekten in Ihr
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | Container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enthält. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
@@ -45,8 +43,6 @@ Resource Manager stellt mehrere Funktionen für das Arbeiten mit Objekten in Ihr
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) zeigt die Verwendung von „contains“ mit unterschiedlichen Typen:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -101,34 +97,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringToTest string = 'OneTwoThree'
-param objectToTest object = {
-  'one': 'a'
-  'two': 'b'
-  'three': 'c'
-}
-param arrayToTest array = [
-  'one'
-  'two'
-  'three'
-]
-
-output stringTrue bool = contains(stringToTest, 'e')
-output stringFalse bool = contains(stringToTest, 'z')
-output objectTrue bool = contains(objectToTest, 'one')
-output objectFalse bool = contains(objectToTest, 'a')
-output arrayTrue bool = contains(arrayToTest, 'three')
-output arrayFalse bool = contains(arrayToTest, 'four')
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -141,11 +112,13 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 `createObject(key1, value1, key2, value2, ...)`
 
-Erstellt ein Objekt aus den Schlüsseln und Werten. Die `createObject`-Funktion wird von Bicep nicht unterstützt.  Erstellen Sie ein-Objekt, indem Sie `{}` verwenden.
+Erstellt ein Objekt aus den Schlüsseln und Werten.
+
+Die `createObject`-Funktion wird von Bicep nicht unterstützt.  Erstellen Sie ein-Objekt, indem Sie `{}` verwenden. Weitere Informationen finden Sie unter [Objekte](../bicep/data-types.md#objects).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | key1 |Nein |Zeichenfolge |Der Name des Schlüssels. |
 | value1 |Nein |int, boolean, string, object oder array |Der Wert für den Schlüssel. |
@@ -162,8 +135,6 @@ Ein Objekt mit jedem Schlüssel-Wert-Paar.
 
 Im folgenden Beispiel wird ein Objekt aus verschiedenen Werttypen erstellt.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -178,26 +149,6 @@ Im folgenden Beispiel wird ein Objekt aus verschiedenen Werttypen erstellt.
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output newObject object = {
-  'intProp': 1
-  'stringProp': 'abc'
-  'boolProp': true
-  'arrayProp': [
-    'a'
-    'b'
-    'c'
-  ]
-  'objectProp': {
-    'key1': 'value1'
-  }
-}
-```
-
----
 
 Die Ausgabe des vorherigen Beispiels mit den Standardwerten ist ein Objekt namens `newObject` mit folgendem Wert:
 
@@ -219,7 +170,7 @@ Bestimmt, ob ein Array, Objekt oder eine Zeichenfolge leer ist.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den überprüft werden soll, ob er leer ist. |
 
@@ -230,8 +181,6 @@ Gibt **True** zurück, wenn der Werte leer ist. Andernfalls wird **False** zurü
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) überprüft, ob ein Array, ein Objekt und eine Zeichenfolge leer sind.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -270,23 +219,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testArray array = []
-param testObject object = {}
-param testString string = ''
-
-output arrayEmpty bool = empty(testArray)
-output objectEmpty bool = empty(testObject)
-output stringEmpty bool = empty(testString)
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -300,7 +235,7 @@ Gibt ein einzelnes Array oder ein Objekt mit den gemeinsamen Elementen aus den P
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Objekt |Der erste Wert für die Suche nach gemeinsamen Elementen. |
 | arg2 |Ja |Array oder Objekt |Der zweite Wert für die Suche nach gemeinsamen Elementen. |
@@ -313,8 +248,6 @@ Ein Array oder Objekt mit den gemeinsamen Elementen.
 ### <a name="example"></a>Beispiel
 
 In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/intersection.json) wird die Verwendung von „intersection“ mit Arrays und Objekten gezeigt:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -361,38 +294,9 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstObject object = {
-  'one': 'a'
-  'two': 'b'
-  'three': 'c'
-}
-param secondObject object = {
-  'one': 'a'
-  'two': 'z'
-  'three': 'c'
-}
-param firstArray array = [
-  'one'
-  'two'
-  'three'
-]
-param secondArray array = [
-  'two'
-  'three'
-]
-
-output objectOutput object = intersection(firstObject, secondObject)
-output arrayOutput array = intersection(firstArray, secondArray)
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
@@ -407,7 +311,7 @@ Konvertiert eine gültige JSON-Zeichenfolge in einen JSON-Datentyp.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge |Der in JSON zu konvertierende Wert. Die Zeichenfolge muss eine ordnungsgemäß formatierte JSON-Zeichenfolge sein. |
 
@@ -424,8 +328,6 @@ Sie können auch [null()](#null) verwenden, um einen NULL-Wert zu erhalten.
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) zeigt die Verwendung der JSON-Funktion. Beachten Sie, dass Sie **NULL** für ein leeres-Objekt übergeben können.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -496,31 +398,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param jsonEmptyObject string = 'null'
-param jsonObject string = '{\'a\': \'b\'}'
-param jsonString string = '\'test\''
-param jsonBoolean string = 'true'
-param jsonInt string = '3'
-param jsonArray string = '[[1,2,3]]'
-param concatValue string = 'demo value'
-
-output emptyObjectOutput bool = empty(json(jsonEmptyObject))
-output objectOutput object = json(jsonObject)
-output stringOutput string =json(jsonString)
-output booleanOutput bool = json(jsonBoolean)
-output intOutput int = json(jsonInt)
-output arrayOutput array = json(jsonArray)
-output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | emptyObjectOutput | Boolesch | True |
 | objectOutput | Object | {"a": "b"} |
@@ -538,7 +418,7 @@ Gibt die Anzahl von Elementen in einem Array, Zeichen in einer Zeichenfolge oder
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array, Zeichenfolge oder Objekt |Das Array, von dem die Anzahl der Elemente ermittelt werden soll, die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll, oder das Objekt, von dem die Anzahl der Eigenschaften auf Stammebene ermittelt werden soll. |
 
@@ -549,8 +429,6 @@ Eine ganze Zahl.
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) zeigt die Verwendung von „length“ mit einem Array und einer Zeichenfolge:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -600,35 +478,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param arrayToTest array = [
-  'one'
-  'two'
-  'three'
-]
-param stringToTest string = 'One Two Three'
-param objectToTest object = {
-  'propA': 'one'
-  'propB': 'two'
-  'propC': 'three'
-  'propD': {
-      'propD-1': 'sub'
-      'propD-2': 'sub'
-  }
-}
-
-output arrayLength int = length(arrayToTest)
-output stringLength int = length(stringToTest)
-output objectLength int = length(objectToTest)
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | arraylength | Int | 3 |
 | stringLength | Int | 13 |
@@ -638,7 +490,9 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 `null()`
 
-Gibt NULL zurück. Die Funktion `null` ist in Bicep nicht verfügbar. Verwenden Sie stattdessen das Schlüsselwort `null`.
+Gibt NULL zurück.
+
+Die Funktion `null` ist in Bicep nicht verfügbar. Verwenden Sie stattdessen das Schlüsselwort `null`.
 
 ### <a name="parameters"></a>Parameter
 
@@ -651,8 +505,6 @@ Ein Wert, der immer „NULL“ lautet.
 ### <a name="example"></a>Beispiel
 
 Das folgende Beispiel verwendet die „null“-Funktion.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -668,17 +520,9 @@ Das folgende Beispiel verwendet die „null“-Funktion.
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output emptyOutput bool = empty(null)
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | emptyOutput | Bool | True |
 
@@ -690,7 +534,7 @@ Gibt ein einzelnes Array oder Objekt mit allen Elementen aus den Parametern zur�
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Objekt |Der erste zum Verknüpfen von Elementen zu verwendende Wert. |
 | arg2 |Ja |Array oder Objekt |Der zweite zum Verknüpfen von Elementen zu verwendende Wert. |
@@ -703,8 +547,6 @@ Ein Array oder Objekt.
 ### <a name="example"></a>Beispiel
 
 In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/union.json) wird die Verwendung von „union“ mit Arrays und Objekten gezeigt:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -751,45 +593,13 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstObject object = {
-  'one': 'a'
-  'two': 'b'
-  'three': 'c1'
-}
-
-param secondObject object = {
-  'three': 'c2'
-  'four': 'd'
-  'five': 'e'
-}
-
-param firstArray array = [
-  'one'
-  'two'
-  'three'
-]
-
-param secondArray array = [
-  'three'
-  'four'
-]
-
-output objectOutput object = union(firstObject, secondObject)
-output arrayOutput array = union(firstArray, secondArray)
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](./syntax.md).

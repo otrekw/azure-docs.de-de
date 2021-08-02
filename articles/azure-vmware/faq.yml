@@ -1,0 +1,224 @@
+### YamlMime:FAQ
+metadata:
+  title: Microsoft Azure VMware Solution – Häufig gestellte Fragen
+  description: Erhalten Sie Antworten auf häufig gestellte Fragen zu Azure VMware Solution.
+  ms.topic: troubleshooting
+  ms.custom: contperf-fy21q4
+  ms.date: 05/25/2021
+  ms.openlocfilehash: cd72bb3dd857d91ae486555a7fae3cdce0b5eec2
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111953009"
+title: Häufig gestellte Fragen zu Azure VMware Solution
+summary: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure VMware Solution.
+sections:
+- name: Allgemein
+  questions:
+  - question: Was ist Azure VMware Solution?
+    answer: Im Zuge der IT-Modernisierungsstrategien von Unternehmen zur Verbesserung der Geschäftsflexibilität, Kostensenkung und Innovationsbeschleunigung haben sich hybride Cloudplattformen als Schlüsselfaktoren für die digitale Transformation von Kunden erwiesen. Azure VMware Solution kombiniert die SDDC-Software (Software Defined Data Center) von VMware mit dem globalen Clouddienstökosystem von Microsoft Azure. Azure VMware Solution wird verwaltet, um die Anforderungen an Leistung, Verfügbarkeit, Sicherheit und Compliance zu erfüllen. Weitere Informationen finden Sie unter [Was ist Azure VMware Solution?](introduction.md).
+  - question: Wo ist Azure VMware Solution aktuell verfügbar?
+    answer: Der Dienst wird laufend zu neuen Regionen hinzugefügt. Weitere Informationen finden Sie in den [neuesten Informationen zur Dienstverfügbarkeit](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware).
+  - question: Können Workloads, die in einer Azure VMware Solution-Instanz ausgeführt werden, in Azure-Dienste integriert werden?
+    answer: Alle Azure-Dienste stehen Azure VMware Solution-Kunden zur Verfügung. Leistungs- und Verfügbarkeitseinschränkungen für bestimmte Dienste müssen von Fall zu Fall behandelt werden.
+  - question: Welche Gastbetriebssysteme sind mit Azure VMware Solution kompatibel?
+    answer: Informationen über die mit vSphere kompatiblen Gastbetriebssysteme finden Sie im [VMware-Kompatibilitätsleitfaden](https://www.vmware.com/resources/compatibility/search.php?deviceCategory=software&details=1&releases=485&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc&testConfig=16). Informationen zum Identifizieren der vSphere-Version, die in Azure VMware Solution ausgeführt wird, finden Sie unter [VMware-Softwareversionen](concepts-private-clouds-clusters.md#vmware-software-versions).
+  - question: Wie sieht der Änderungssteuerungsvorgang aus?
+    answer: Updates, die am Dienst selbst vorgenommen werden, folgen dem Change Management-Standardprozess von Microsoft Azure. Kunden sind für alle Workloadverwaltungsaufgaben und die zugehörigen Change Management-Prozesse verantwortlich.
+  - question: Wie unterscheidet sich diese Version von Azure VMware Solution by CloudSimple?
+    answer: Mit dem neuen Dienst Azure VMware Solution verfügen Microsoft und VMware über eine direkte Cloudanbieterpartnerschaft. Es handelt sich dabei um eine vollständig von Microsoft entworfene, erstellte und unterstützte Lösung, die von VMware unterstützt wird. Die Architektur der beiden Lösungen ist konsistent. Bei beiden wird der VMware-Technologiestapel in einer dedizierten Azure-Infrastruktur ausgeführt.
+- name: Kundenkommunikation
+  questions:
+  - question: Wie kann ich eine Warnung erhalten, wenn Azure Benachrichtigungen zur Dienstintegrität an mein Azure-Abonnement sendet?
+    answer: >
+      [!INCLUDE [customer-communications](includes/customer-communications.md)]
+- name: Konfiguration und Setup
+  questions:
+  - question: Wie lange dauert die Bereitstellung der ersten drei Knoten in einem Cluster?
+    answer: Derzeit kann die Bereitstellung etwa 3 bis 4 Stunden dauern.  Das Hinzufügen eines einzelnen Knotens in einem vorhandenen/gleichen Cluster dauert zwischen 30 und 45 Minuten.
+- name: VMware-Software
+  questions:
+  - question: Können virtuelle Computer von Azure VMware Solution durch VMRC verwaltet werden?
+    answer: Ja. Sofern das System, auf dem es installiert ist, auf vCenter für die private Cloud zugreifen kann und es ein öffentliches DNS verwendet, um ESXi-Hostnamen aufzulösen.
+  - question: Gibt es spezielle Anweisungen für die Installation und Verwendung von VMRC mit virtuellen Azure VMware Solution-Computern (VMs)?
+    answer: Nein. Um die VM-Voraussetzungen zu erfüllen, befolgen Sie die [Anweisungen von VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html).
+  - question: Kann ich eine lokal ausgeführte vRealize-Suite verwenden?
+    answer: Bestimmte Integrationen und Anwendungsfälle können von Fall zu Fall ausgewertet werden.
+  - question: Kann ich vSphere-VMs aus lokalen Umgebungen zu privaten Azure VMware Solution-Clouds migrieren?
+    answer: Ja. Die VM-Migration und vMotion können verwendet werden, um VMs in eine private Cloud zu verschieben, wenn die standardmäßigen vCenter-übergreifenden [vMotion-Anforderungen](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) erfüllt sind.
+  - question: Ist eine bestimmte Version von vSphere in lokalen Umgebungen erforderlich?
+    answer: Alle Cloudumgebungen stellen VMware HCX und vSphere 5.5 oder höher in lokalen Umgebungen für vMotion bereit.
+  - question: Wird VMware HCX auf VPNs unterstützt?
+    answer: Nein, aufgrund der Anforderungen an Bandbreite und Wartezeit.
+  - question: Welche Versionen von VMware-Software werden in privaten Clouds verwendet?
+    answer: >
+      [!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
+  - question: Wie oft wird für die VMware-Software (ESXi, vCenter, PSC und NXS) in der privaten Azure VMware Solution-Cloud ein Patch, Update oder Upgrade durchgeführt?
+    answer: >
+      [!INCLUDE [vmware-software-update-frequency](includes/vmware-software-update-frequency.md)]
+  - question: Verwenden private Clouds VMware NSX? Wenn ja, welche Version wird unterstützt?
+    answer: Ja, NSX-T 2.5 wird für softwaredefinierte Netzwerke in privaten Azure VMware Solution-Clouds verwendet. | NSX-T ist die einzige unterstützte Version von NSX.
+  - question: Ist NSX in lokalen Umgebungen oder Netzwerken erforderlich, die eine Verbindung mit einer privaten Cloud herstellen?
+    answer: Nein, Sie müssen NSX nicht lokal verwenden.
+  - question: Ist VMware Horizon 8 2012 mit Azure VMware Solution kompatibel?
+    answer: Ja.
+  - question: Kann ich den Standardtimeoutwert des vSphere-Webclients ändern?
+    answer: Ja. Informationen zum Ändern des Timeoutwerts finden Sie im Artikel zum [Konfigurieren des vSphere-Webclienttimeoutwerts](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vcenterhost.doc/GUID-975412DE-CDCB-49A1-8E2A-0965325D33A5.html).
+- name: Migrieren
+  questions:
+  - question: Warum wird keine Registerkarte für die Sentinel-Verwaltung im HCX-Manager angezeigt, wenn ich den Sentinel Appliance-Dienst verwende?
+    answer: Auf der Registerkarte für die Sentinel-Verwaltung können Sie die Sentinal-Software herunterladen.  Sie wird in der HCX Interconnect-Oberfläche angezeigt, wenn eine HCX Enterprise-Lizenz aktiviert ist und Sie ein Dienstmesh mit einem gekoppelten Sentinel-Gateway (SGW) und Sentinel-Datenempfänger (SDR) bereitgestellt haben. Bei herkömmlichen Bereitstellungen von lokalen Umgebungen in der Cloud ist die Sentinel-Registerkarte nur im Connector und nicht im Cloud-Manager sichtbar.
+  - question: Wird Thin Provisioning für einen virtuellen Computer übernommen, wenn wir einen virtuellen Computer, der in der lokalen Umgebung mit Thin Provisioning erstellt wurde, zu Azure VMware Solution migrieren?
+    answer: Nein. Wenn der virtuelle Computer jedoch mit Thick Provisioning migriert wird, können Sie Richtlinien für die einzelnen VMs und einzelnen VMDKs über eine Kombination von Benutzeroberfläche und PowerCLI ändern.
+- name: Compute
+  questions:
+  - question: Wie lauten die CPU-Spezifikationen in den einzelnen Hosttypen?
+    answer: Die Server verfügen über Intel Dual-CPUs mit 18 Kernen mit 2,3 GHz.
+  - question: Wie viel Arbeitsspeicher ist auf jedem Host vorhanden?
+    answer: Die Server verfügen über 576 GB RAM.
+  - question: Unterstützt Azure VMware Solution die Ausführung von ESXi/ESX als geschachtelte Virtualisierungslösung?
+    answer: Nein. VMware unterstützt offiziell keine geschachtelte Virtualisierung.
+- name: Sicherung und Wiederherstellung von Drittanbietern
+  questions:
+  - question: Werden Cloudadmin-Erweiterungsberechtigungen von Azure VMware Solution unterstützt?
+    answer: Nein. Derzeit werden keine Cloudadmin-Erweiterungsberechtigungen unterstützt, und es ist in naher Zukunft nicht geplant, diese zu unterstützen.
+  - question: Welche Sicherungslösungen von unabhängigen Softwareanbietern (ISVs) funktionieren mit Azure VMware Solution?
+    answer: Commvault, Veritas und Veeam haben ihre Sicherungslösungen erweitert, um mit Azure VMware Solution zu arbeiten.  Jede Sicherungslösung, die VMware vStorage API for Data Protection (VADP) mit dem HotAdd-Transportmodus verwendet, funktioniert standardmäßig mit Azure VMware Solution. Weitere Informationen finden Sie unter [Sicherungslösungen für virtuelle Azure VMware Solution-Computer](ecosystem-back-up-vms.md).
+  - question: Was ist mit der Unterstützung für ISV-Sicherungslösungen?
+    answer: Da diese Sicherungslösungen von Kunden installiert und verwaltet werden, können sie sich an den jeweiligen unabhängigen Softwareanbieter wenden, um Unterstützung zu erhalten.
+- name: Netzwerk und Interkonnektivität
+  questions:
+  - question: Kann Azure Bastion zum Herstellen einer Verbindung mit Azure VMware Solution-VMs verwendet werden?
+    answer: Azure Bastion ist der Dienst, der empfohlen wird, um eine Verbindung mit der Jumpbox herzustellen, damit die Azure VMware Solution-Instanz nicht im Internet veröffentlicht wird. Sie können Azure Bastion nicht verwenden, um eine Verbindung mit Azure VMware Solution-VMs herzustellen, da es sich hierbei nicht um Azure-IaaS-Objekte handelt.
+  - question: Wie viel Netzwerkbandbreite ist in jedem ESXi-Host verfügbar?
+    answer: Jeder ESXi-Host in Azure VMware Solution ist mit vier Netzwerkadaptern mit 25 GBit/s konfiguriert. Dabei werden zwei Netzwerkadapter für ESXi-Systemdatenverkehr und zwei Netzwerkadapter für Workloaddatenverkehr bereitgestellt.
+  - question: Werden die Protokolle der SNMP-Infrastruktur freigegeben?
+    answer: Nein.
+  - question: Unterstützt ExpressRoute Pakete, die eine MTU von 1500 überschreiten?
+    answer: Nein.
+  - question: Kann Azure Load Balancer intern für VMs der Azure VMware Solution-VMs verwendet werden?
+    answer: Nein. Azure Load Balancer unterstützt intern nur Azure-IaaS-VMs. Azure Load Balancer unterstützt keine auf der IP-Adresse basierenden Back-End-Pools, sondern nur Azure-VMs oder VM-Skalierungsgruppenobjekte, bei denen Azure VMware Solution-VMs keine Azure-Objekte sind.
+  - question: Kann ein vorhandenes ExpressRoute Gateway verwendet werden, um eine Verbindung mit Azure VMware Solution herzustellen?
+    answer: Ja. Verwenden Sie ein vorhandenes ExpressRoute-Gateway, um eine Verbindung mit Azure VMware Solution herzustellen, sofern der Grenzwert von vier ExpressRoute-Verbindungen pro virtuellem Netzwerk nicht überschritten wird. Für den lokalen Zugriff auf Azure VMware Solution über ExpressRoute benötigen Sie ExpressRoute Global Reach, da das ExpressRoute-Gateway kein transitives Routing zwischen den verbundenen Leitungen unterstützt.
+  - question: Warum verwendet Azure VMware Solution eine öffentliche 4-Byte-ASN (Autonomous System Number)?
+    answer: Azure VMware Solution verwendet die offiziell registrierten öffentlichen 4-Byte-ASNs, um sicherzustellen, dass kein Konflikt mit Ihren lokal verwendeten privaten ASNs im Routingpfad des Kunden zu Azure VMware Solution auftreten.
+  - question: Wie kann ich mit ExpressRoute eine Verbindung mit Azure VMware Solution herstellen, wenn die lokalen Netzbetreiber/ISPs für ExpressRoute keine 4-Byte-ASNs unterstützen?
+    answer: Die einzige Möglichkeit zum Herstellen einer Verbindung mit Azure VMware Solution über ExpressRoute besteht darin, dass Ihre Umgebung und die lokalen ExpressRoute-Netzbetreiber/-ISPs 4-Byte-ASNs unterstützen oder zumindest Abwärtskompatibilität zu 2-Byte-ASNs im BGP-Präfix des ASN-Pfads der Ankündigung besteht.
+  - question: Welche Planung von Netzwerk-IP-Adressen ist erforderlich, um private Clouds in lokale Umgebungen einzubinden?
+    answer: Ein /22-Adressraum eines privaten Netzwerks ist erforderlich, um eine private Azure VMware Solution-Cloud bereitzustellen. Dieser private Adressraum darf sich nicht mit anderen virtuellen Netzwerken in einem Abonnement oder mit lokalen Netzwerken überschneiden.
+  - question: Wie kann ich eine Verbindung aus lokalen Umgebungen mit einer privaten Azure VMware Solution-Cloud herstellen?
+    answer: "Sie können mit einer von zwei Methoden eine Verbindung mit dem Dienst herstellen: \n\n- Mit einer VM oder einem Anwendungsgateway in einem virtuellen Azure-Netzwerk, die bzw. das über ExpressRoute und Peering mit der privaten Cloud verbunden ist.\n- Über ExpressRoute Global Reach aus Ihrem lokalen Rechenzentrum mit einer Azure ExpressRoute-Verbindung\n"
+  - question: Kann ich HCX über die öffentliche Internetkommunikation als Problemumgehung für die fehlende Unterstützbarkeit von HCX verwenden, wenn ich VPN S2S mit vWAN für die lokale Kommunikation verwende?
+    answer: Derzeit wird nur die Methode über ExpressRoute für VMware HCX unterstützt.
+  - question: Wie verbinde ich eine Workload-VM mit dem Internet oder einem Azure-Dienstendpunkt?
+    answer: >
+      Aktivieren Sie im Azure-Portal Internetkonnektivität für eine private Cloud. Erstellen Sie mit NSX-T Manager einen NSX-T T1-Router und einen logischen Switch. Sie verwenden dann vCenter, um eine VM in dem Netzwerksegment bereitzustellen, das durch den logischen Switch definiert wird. Diese VM verfügt über Netzwerkzugriff auf das Internet und Azure-Dienste.
+
+
+      > [!NOTE]
+
+      > Ein T0-Router wird im Rahmen der Bereitstellung einer privaten Cloud erstellt und konfiguriert.
+
+      > Änderungen an diesem logischen Router oder den NSX-T-Edgeknoten-VMs können sich auf die Konnektivität mit Ihrer privaten Cloud auswirken.
+  - question: Muss ich den Zugriff aus dem Internet auf VMs in logischen Netzwerken in einer privaten Cloud einschränken?
+    answer: Nein. Eingehender Netzwerkdatenverkehr aus dem Internet direkt in private Clouds ist standardmäßig nicht zulässig.  Sie können Azure VMware Solution-VMs jedoch für den Empfang von Datenverkehr aus dem Internet konfigurieren, indem Sie die Option [Öffentliche IP-Adresse](./enable-public-internet-access.md) im Azure-Portal für Ihre private Azure VMware Solution-Cloud verwenden.
+  - question: Muss ich Internetzugriff von VMs in logischen Netzwerken auf das Internet in einer privaten Cloud einschränken?
+    answer: Ja. Sie müssen NSX-T Manager zum Erstellen einer Firewall verwenden, um den VM-Zugriff auf das Internet einzuschränken.
+  - question: Welcher IP-Adressbereich kann als IP für den DNS-Dienst und als IP für den DHCP-Server verwendet werden?
+    answer: Der IP-Adressbereich darf sich nicht mit dem IP-Bereich überlappen, der in anderen virtuellen Netzwerken in Ihrem Abonnement und in Ihren lokalen Netzwerken verwendet wird.
+  - question: Kann Azure VMware Solution mit Azure Virtual WAN gehostete ExpressRoute-Gateways verwenden?
+    answer: Ja.
+  - question: Kann die Transitkonnektivität zwischen der lokalen Lösung und Azure VMware Solution mit Azure Virtual WAN über ExpressRoute Global Reach hergestellt werden?
+    answer: Azure Virtual WAN bietet kein transitives Routing zwischen zwei ExpressRoute-Verbindungen und einem nicht virtuellen WAN-ExpressRoute-Gateway. ExpressRoute Global Reach ermöglicht Konnektivität zwischen Ihrer lokalen Infrastruktur und Azure VMware Solution, wobei die Verbindung über das globale Microsoft-Netzwerk, nicht über den Virtual WAN-Hub hergestellt wird.
+- name: Storage
+  questions:
+  - question: Welche ist die richtige Speicherrichtlinie für die Dedup-Einrichtung?
+    answer: Verwenden Sie die Richtlinie *thin_provision* für die Speicherung Ihrer VM-Vorlage.  Der Standardwert ist *thick_provision*.
+  - question: Wie groß ist die Speicherkapazität jedes Hosts?
+    answer: Jeder ESXi-Host verfügt über zwei vSAN-Datenträgergruppen mit einer Kapazitätsebene von 15,2 TB und einer NVMe-Cacheebene von 3,2 TB (1,6 TB in jeder Datenträgergruppe).
+  - question: Werden Daten, die in den vSAN-Datenspeichern gespeichert sind, im Ruhezustand verschlüsselt?
+    answer: Ja, vSAN-Datenspeicher verwenden für ruhende Daten standardmäßig eine Verschlüsselung mit Schlüsseln, die in Azure Key Vault gespeichert sind. Die Verschlüsselungslösung ist KMS-basiert und unterstützt vCenter-Vorgänge für die Schlüsselverwaltung.  Wenn ein Host aus einem Cluster entfernt wird, werden die Daten auf SSDs sofort ungültig.
+  - question: Kann ich einen Datenspeicher oder Cluster bei der Erstellung umbenennen?
+    answer: Nein, der Name von Datenspeichern oder Clustern kann nicht geändert werden. Der Clustername kann über Bereitstellungsmechanismen außerhalb des Portals für nicht-primäre Cluster konfiguriert werden.
+  - question: Wie sieht die Fehlertoleranz für Hardwarefehler im vSAN aus?
+    answer: "Die Standardspeicherrichtlinie für das SDDC ist FTT-1, RAID-1 (Spiegelung) mit Thick Provisioning-Reservierung des Objektspeicherplatzes.\n\n:::image type=\"content\" source=\"media/vsphere-vm-storage-policies.png\" alt-text=\"Screenshot, der die VM-Speicherrichtlinien des vSphere-Clients zeigt.\":::  \n"
+  - question: Warum ist Thick Provisioning die vSAN-Standardrichtlinie in Azure VMware Solution?
+    answer: Bei Thick Provisioning handelt es sich um einen reservierten oder vorab zugewiesenen Speicherplatz.  Thick Provisioning schützt Systeme, da sie auch dann noch funktionieren, wenn der vSAN-Datenspeicher voll ist, da der Speicherplatz bereits reserviert ist. Angenommen, Sie erstellen einen virtuellen Datenträger mit 10 GB und Thick Provisioning. In diesem Fall wird die gesamte Speicherkapazität des virtuellen Datenträgers auf dem physischen Speicher des virtuellen Datenträgers vorbelegt und der gesamte ihm zugewiesenen Speicherplatz im Datenspeicher genutzt.  Andere virtuelle Computer können den Speicherplatz des Datenspeichers nicht mitbenutzen. Ein virtueller Datenträger mit Thin Provisioning nutzt den anfänglich benötigten Speicherplatz und wächst auf den im Datenspeicher verwendeten Speicherplatzbedarf an.
+  - question: Kann ich einen neuen virtuellen Computer in Azure VMware Solution mit Thin Provisioning erstellen, obwohl die vSAN-Standardrichtlinie Thick Provisioning angibt?
+    answer: Ja. Abgesehen vom Standard (Thick Provisioning) können Sie VMs mit FTT-1 Thin Provisioning erstellen.
+  - question: Wie viele Datenträger können im vSAN ausfallen, bevor ein Datenverlust auftritt?
+    answer: Dies hängt davon ab, wie Sie die Ausführung Ihrer Anwendungsworkloads in SDDC (private Cloud) planen. Microsoft reguliert diese Ausfälle regelmäßig und tauscht die Hardware aus, sobald Ereignisse aus Sicht der Infrastruktur erkannt werden. Standardmäßig wird die Einstellung FFT-1 verwendet, die Schutz bei Ausfall eines einzelnen Hosts bietet.
+  - question: Welche Art von Warnungen kann ich für vSAN erwarten?
+    answer: Wenn die Kapazitätsauslastung 75 % überschreitet, gibt Microsoft Warnungen aus. Alternativ können Sie auch Metriken zum Kapazitätsverbrauch überwachen, die in Azure Monitor integriert sind.
+  - question: Aus wie vielen NVMe-Laufwerken mit 1,6 TB bestehen die Datenträgergruppen, um die unformatierten SSD-Speicher von 15,4 TB pro Host bereitzustellen?
+    answer: Die [AV36-SKU](https://azure.microsoft.com/pricing/details/azure-vmware/) umfasst einen NVMe-Cache von 2 x 1,6 TB und eine unformatierte Speicherkapazität von 8 x 1,9 TB. Diese Datenträger werden dann in zwei Datenträgergruppen aufgeteilt.
+  - question: Wie sieht die RAID-Konfiguration der Datenträgergruppen aus?
+    answer: Die Datenträgergruppen sind nicht RAID-konfiguriert. Sie sind stattdessen nur mehrere JBOD-Datenträger (Just a Bunch Of Disks), die [direkt von vSAN gesteuert werden](https://core.vmware.com/vsan-learn-and-evaluate).
+- name: Hosts, Cluster und private Clouds
+  questions:
+  - question: Sind mehrere Hosttypen verfügbar?
+    answer: Nein. Es ist nur ein Typ verfügbar.
+  - question: Verwende ich die gleichen Tools, die ich jetzt zum Verwalten von privaten Cloudressourcen verwende?
+    answer: Ja. Das Azure-Portal wird für die Bereitstellung und einige Verwaltungsvorgänge verwendet. vCenter und NSX Manager werden zum Verwalten von vSphere- und NSX-T-Ressourcen verwendet.
+  - question: Kann ich eine private Cloud mit meiner lokalen vCenter-Instanz verwalten?
+    answer: Beim Start unterstützt Azure VMware Solution keine einzelne Verwaltungsumgebung für lokale und private Cloudumgebungen. Cluster der privaten Cloud werden mit vCenter und NSX Manager lokal für eine private Cloud verwaltet.
+  - question: Kann ein Cluster, der hochskaliert wurde, wieder herunterskaliert werden, wenn der Workloadbedarf sinkt?
+    answer: Ja, solange Sie das Kontingent für Ihre private Cloud zugewiesen haben, können Sie Ihre Cluster horizontal skalieren. Wenn der Workloadbedarf sinkt, können Sie Knoten aus dem Cluster löschen, um ihn herunter zu skalieren. Sie können dies über das Azure VMware Solution-Portal erledigen.
+  - question: Wird die zugrunde liegende Infrastruktur gemeinsam verwendet?
+    answer: Nein, private Cloudhosts und Cluster sind dediziert und werden vor und nach der Verwendung sicher gelöscht.
+  - question: Wie hoch ist die minimale und maximale Anzahl von Hosts pro Cluster?
+    answer: Cluster können zwischen drei (Minimum) und 16 (Maximum) ESXi-Hosts skaliert werden. Testcluster sind auf drei Hosts beschränkt.
+  - question: Kann ich die Cluster meiner privaten Cloud skalieren?
+    answer: Ja, Sie können Cluster zwischen drei (Minimum) und 16 (Maximum) ESXi-Hosts skalieren.
+  - question: Was sind Testcluster?
+    answer: Testcluster sind auf drei Hosts beschränkt und ermöglichen die Evaluierung von privaten Azure VMware Solution-Clouds für einen Monat.
+- name: Identitätsverwaltung
+  questions:
+  - question: Welche Konten und Berechtigungen erhalte ich mit meiner neuen privaten Azure VMware Solution-Cloud?
+    answer: Sie erhalten Anmeldeinformationen für einen Cloudadministratorbenutzer in vCenter und Administratorzugriff auf NSX-T Manager. Es gibt auch eine Cloudadministratorgruppe, die verwendet werden kann, um Azure Active Directory zu integrieren. Weitere Informationen finden Sie unter [Zugriffs- und Identitätskonzepte](concepts-identity.md).
+  - question: Kann Administratorzugriff auf ESXi-Hosts erhalten?
+    answer: Nein, Administratorzugriff auf ESXi ist darauf beschränkt, die Sicherheitsanforderungen der Lösung zu erfüllen.
+  - question: Welche Zugriffsberechtigungen und Berechtigungen erhalte ich in vCenter?
+    answer: Sie verfügen über CloudAdmin-Rollenberechtigungen. Weitere Informationen finden Sie unter [Zugriffs- und Identitätskonzepte](concepts-identity.md).
+  - question: Welche Zugriffsberechtigungen und Berechtigungen erhalte ich für NSX-T Manager?
+    answer: >
+      Sie verfügen über vollständige Administratorrechte für NSX-T und können rollenbasierte vSphere-Zugriffssteuerung wie im lokalen NSX-T-Rechenzentrum verwalten. Weitere Informationen finden Sie unter [Zugriffs- und Identitätskonzepte](concepts-identity.md).
+
+
+      > [!NOTE]
+
+      > Ein T0-Router wird im Rahmen der Bereitstellung einer privaten Cloud erstellt und konfiguriert. Änderungen an diesem logischen Router oder den NSX-T-Edgeknoten-VMs können sich auf die Konnektivität mit Ihrer privaten Cloud auswirken.
+  - question: Wie kann ich meine Anmeldeinformationen ändern?
+    answer: Informationen zum Zurücksetzen von Anmeldeinformationen finden Sie im Artikel zum [Zurücksetzen von vSphere-Anmeldeinformationen für Azure VMware Solution](rotate-cloudadmin-credentials.md).
+  - question: Werden Cloudadmin-Erweiterungsberechtigungen von Azure VMware Solution unterstützt?
+    answer: Nein. Derzeit werden keine Cloudadmin-Erweiterungsberechtigungen unterstützt, und es ist nicht geplant, diese zu unterstützen.
+- name: Abrechnung und Support
+  questions:
+  - question: Gibt es eine SLA für den Austausch von Datenträgern, wenn Fehler auftreten?
+    answer: Jeder Host mit Datenträgerproblemen wird ersetzt. Die Verfügbarkeit des Azure VMware Solution-Diensts entspricht einer SLA von 99,9.
+  - question: Wie werden die Preise für Azure VMware Solution strukturiert sein?
+    answer: Allgemeine Fragen zu Preisen finden Sie auf der Seite [Preise](https://azure.microsoft.com/pricing/details/azure-vmware) für Azure VMware Solution.
+  - question: Ist es möglich, Azure VMware Solution über einen Microsoft-Cloudlösungsanbieter (CSP) zu erwerben?
+    answer: Ja. Kunden können Azure VMware Solution unter einem Azure-Abonnement bereitstellen, das von einem CSP verwaltet wird.
+  - question: Wer unterstützt Azure VMware Solution?
+    answer: >-
+      Der Support für Azure VMware Solution wird von Microsoft bereitgestellt. Sie können eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) übermitteln.
+
+      Für von einem CSP (Cloud Solution Provider) verwaltete Abonnements wird die erste Supportebene vom Lösungsanbieter genauso bereitgestellt, wie es der CSP für andere Azure-Dienste tut.
+  - question: Welche Konten benötige ich zum Erstellen einer privaten Azure VMware Solution-Cloud?
+    answer: Sie benötigen ein Azure-Konto in einem Azure-Abonnement.
+  - question: Werden Red Hat-Lösungen unter Azure VMware Solution unterstützt?
+    answer: Microsoft und Red Hat teilen sich ein integriertes gemeinsames Supportteam, das eine einheitliche Anlaufstelle in Bezug auf Red Hat-Ökosysteme darstellt, die auf der Azure-Plattform ausgeführt werden.  Wie andere Dienste der Azure-Plattform, die mit Red Hat Enterprise Linux zusammenarbeiten, fällt Azure VMware Solution unter den Bereich von Cloudzugriff und integriertem Support. Red Hat Enterprise Linux wird für die Ausführung auf Azure VMware Solution in Azure unterstützt.
+  - question: Ist VMware HCX Enterprise verfügbar, und wenn ja, wie hoch ist der Preis?
+    answer: VMware HCX Enterprise ist mit Azure VMware Solution als *Vorschau*-Funktion/-Dienst verfügbar. Solange sich VMware HCX Enterprise für Azure VMware Solution in der Vorschau befindet, handelt es sich um eine kostenlose Funktion/einen kostenlosen Dienst, für die bzw. den die Nutzungsbedingungen für Dienste in der Vorschau gelten. Sobald der VMware HCX Enterprise-Dienst die Phase „Allgemeine Verfügbarkeit“ erreicht hat, erhalten Sie eine Benachrichtigung, dass in 30 Tagen die Abrechnung umgestellt wird. Sie können den Dienst ausschalten oder deaktivieren.
+  - question: Wie beantrage ich eine Erhöhung des Hostkontingents für eine Azure-VMware-Lösung?
+    answer: Unabhängig davon, ob Sie die Anzahl der Hosts für eine vorhandene private Cloud erhören möchten oder eine neue private Cloud erstellen, müssen Sie ein Supportticket einreichen, damit die Hosts zugeteilt werden.  Weitere Informationen finden Sie unter [Aktivieren einer Azure VMware Solution-Ressource](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider).
+  - question: Können reservierte Instanzen über das CSP-Programm (Cloud Solution Provider) erworben werden?
+    answer: Ja. Cloud Solution Provider können reservierte Instanzen für ihre Kunden erwerben. Weitere Informationen finden Sie unter [Einsparen von Kosten mit einer reservierten Instanz](reserved-instance.md).
+  - question: Bietet Azure VMware Solution Mehrinstanzenfähigkeit für das Hosting von CSP-Partnern?
+    answer: Nein. Derzeit bietet Azure VMware Solution keine Mehrinstanzenfähigkeit.
+  - question: Fallen für den Datenverkehr zwischen einem lokalen Standort und Azure VMware Solution über ExpressRoute Gebühren für ausgehende Datenübertragungen im Volumentarif an?
+    answer: Der Datenverkehr zwischen ExpressRoute und Azure VMware Solution wird in keiner Weise gemessen. Der Datenverkehr auf Ihrer ExpressRoute-Verbindung zwischen Ihrem lokalen Standort und Azure wird nach ExpressRoute-Tarifen abgerechnet.
+  - question: Ist bei einer Migration von der lokalen VM-Umgebung mit L2-Erweiterung eine Beschaffung anderer Lizenzen und Ressourcen als der AV36-Instanz erforderlich?
+    answer: Nein

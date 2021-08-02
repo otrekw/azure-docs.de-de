@@ -1,40 +1,43 @@
 ---
-title: Konfigurieren Ihres verwalteten Service Fabric-Clusters (Vorschau)
+title: Konfigurieren Ihres verwalteten Service Fabric-Clusters
 description: Erfahren Sie, wie Sie Ihren verwalteten Service Fabric-Cluster für automatische Betriebssystemupgrades, NSG-Regeln und mehr konfigurieren.
 ms.topic: how-to
-ms.date: 02/15/2021
-ms.openlocfilehash: 44b1b949fe314231cb44f190c31b53903e47a904
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 5/10/2021
+ms.openlocfilehash: 5fd2736917517f20d3d093492c6011d6fcf716cf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732631"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067436"
 ---
-# <a name="service-fabric-managed-cluster-preview-configuration-options"></a>Konfigurationsoptionen für verwaltete Service Fabric-Cluster (Vorschau)
+# <a name="service-fabric-managed-cluster-configuration-options"></a>Konfigurationsoptionen für verwaltete Service Fabric-Cluster
 
-Zusätzlich zur Auswahl der [SKUs für verwaltete Service Fabric-Cluster](overview-managed-cluster.md#service-fabric-managed-cluster-skus) beim Erstellen des Clusters gibt es eine Reihe weiterer Möglichkeiten, sie zu konfigurieren. In der aktuellen Vorschau können Sie folgende Aktionen ausführen:
+Zusätzlich zur Auswahl der [SKUs für verwaltete Service Fabric-Cluster](overview-managed-cluster.md#service-fabric-managed-cluster-skus) beim Erstellen des Clusters gibt es eine Reihe weiterer Möglichkeiten, sie zu konfigurieren:
 
-* Konfigurieren von [Netzwerkoptionen](how-to-managed-cluster-networking.md) für Ihren Cluster
 * Hinzufügen einer [VM-Skalierungsgruppenerweiterung](how-to-managed-cluster-vmss-extension.md) zu einem verwalteten Knotentyp
-* Konfigurieren der [verwalteten Identität](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) für Ihre Knotentypen
-* Aktivieren [automatischer Betriebssystemupgrades](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades) für Ihre Knoten
-* Aktivieren der [Betriebssystem- und Datenträgerverschlüsselung](how-to-enable-managed-cluster-disk-encryption.md) für Ihre Knoten
+* Konfigurieren eines [verfügbarkeitszonenübergreifenden](how-to-managed-cluster-availability-zones.md) Clusters
+* Konfigurieren von [NSG-Regeln und anderen Netzwerkoptionen](how-to-managed-cluster-networking.md) für einen Cluster
+* Konfigurieren der [verwalteten Identität](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) für Clusterknotentypen
+* Aktiveren [automatischer Betriebssystemupgrades](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades) für Clusterknoten
+* Aktivieren der [Betriebssystem- und Datenträgerverschlüsselung](how-to-enable-managed-cluster-disk-encryption.md) für Clusterknoten
+* Auswählen der [SKU für den verwalteten Datenträger](how-to-managed-cluster-managed-disk.md) des Clusters
+* Konfigurieren von [Upgradeoptionen für die Runtime](how-to-managed-cluster-upgrades.md) im Cluster
 
 ## <a name="enable-automatic-os-image-upgrades"></a>Aktivieren automatischer Betriebssystemupgrades
 
-Sie können automatische Betriebssystemimage-Upgrades für die virtuellen Computer aktivieren, auf denen Ihre verwalteten Clusterknoten ausgeführt werden. Obwohl die VM-Skalierungsgruppenressourcen in Ihrem Auftrag mit verwalteten Service Fabric-Clustern verwaltet werden, können Sie automatische Betriebssystemimage-Upgrades für Ihre Clusterknoten aktivieren. Wie [klassische Service Fabric](service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)-Cluster werden verwaltete Clusterknoten nicht standardmäßig aktualisiert, um unbeabsichtigte Störungen Ihres Clusters zu verhindern.
+Sie können automatische Betriebssystemimage-Upgrades für die virtuellen Computer aktivieren, auf denen Ihre verwalteten Clusterknoten ausgeführt werden. Obwohl die VM-Skalierungsgruppenressourcen in Ihrem Auftrag mit verwalteten Service Fabric-Clustern verwaltet werden, können Sie automatische Betriebssystemimage-Upgrades für Ihre Clusterknoten aktivieren. Wie [klassische Service Fabric](service-fabric-best-practices-infrastructure-as-code.md#virtual-machine-os-automatic-upgrade-configuration)-Cluster werden verwaltete Clusterknoten nicht standardmäßig aktualisiert, um unbeabsichtigte Störungen Ihres Clusters zu verhindern.
 
 So aktivieren Sie automatische Betriebssystemupgrades:
 
-* Verwenden Sie die Version `2021-01-01-preview` (oder höher) von *Microsoft.ServiceFabric/managedclusters*- und *Microsoft.ServiceFabric/managedclusters/nodetypes*-Ressourcen.
+* Verwenden Sie die Version `2021-05-01` (oder höher) von *Microsoft.ServiceFabric/managedclusters*- und *Microsoft.ServiceFabric/managedclusters/nodetypes*-Ressourcen.
 * Setzen Sie die Eigenschaft `enableAutoOSUpgrade` des Clusters auf *TRUE*.
 * Setzen Sie die nodeTypes-Ressourceneigenschaft `vmImageVersion` des Clusters auf *latest*.
 
-Zum Beispiel:
+Beispiel:
 
 ```json
     {
-      "apiVersion": "2021-01-01-preview",
+      "apiVersion": "2021-05-01",
       "type": "Microsoft.ServiceFabric/managedclusters",
       ...
       "properties": {
@@ -43,7 +46,7 @@ Zum Beispiel:
       },
     },
     {
-      "apiVersion": "2021-01-01-preview",
+      "apiVersion": "2021-05-01",
       "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
        ...
       "properties": {

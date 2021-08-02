@@ -4,19 +4,19 @@ description: Erstellen Sie eine transaktionskonsistente Kopie einer vorhandenen 
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sashan
-ms.reviewer: wiassaf
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma
 ms.date: 03/10/2021
-ms.openlocfilehash: 895219622999334c4d5a91e7af922ae9d54f30a5
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 325a2feb0cf29a03a88249e2d0ac3a22f685d498
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073951"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694552"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Datenbank in Azure SQL-Datenbank
 
@@ -182,6 +182,7 @@ AS COPY OF source_server_name.source_database_name;
 
 > [!TIP]
 > Die Datenbankkopie, die T-SQL verwendet, unterstützt das Kopieren einer Datenbank aus einem Abonnement in einem anderen Azure-Mandanten. Dies wird nur unterstützt, wenn für die Anmeldung am Zielserver eine SQL-Authentifizierungsanmeldung verwendet wird.
+> Das Erstellen einer Datenbankkopie auf einem logischen Server in einem anderen Azure-Mandanten wird nicht unterstützt, wenn die [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/support-for-azure-ad-user-creation-on-behalf-of-azure-ad/ba-p/2346849)-Authentifizierung auf dem logischen Quell- oder Zielserver aktiviert ist.
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>Überwachen des Fortschritts des Kopiervorgangs
 

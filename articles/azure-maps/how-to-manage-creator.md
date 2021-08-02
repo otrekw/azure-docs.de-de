@@ -1,89 +1,95 @@
 ---
-title: Verwalten von Microsoft Azure Maps Creator (Vorschau)
-description: In diesem Artikel erfahren Sie, wie Sie Microsoft Azure Maps Creator (Vorschau) verwalten.
+title: Verwalten von Microsoft Azure Maps Creator
+description: In diesem Artikel erfahren Sie, wie Sie Microsoft Azure Maps Creator verwalten.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/26/2021
+ms.date: 05/18/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 24a462fdb2c68bcccd539c9d18252822e2730bd6
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 8d916c34443cba6849d329c9f27d68f484957343
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326883"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110782007"
 ---
-# <a name="manage-azure-maps-creator-preview"></a>Verwalten von Azure Maps Creator (Vorschau) 
+# <a name="manage-azure-maps-creator"></a>Verwalten von Azure Maps Creator
 
-> [!IMPORTANT]
-> Azure Maps Creator-Dienste befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Azure Maps Creator ermöglicht die Erstellung privater Gebäudeplandaten. Mit der Azure Maps-API und dem Modul für Gebäudepläne können Sie interaktive und dynamische Gebäudeplan-Webanwendungen entwickeln. Aktuell steht Creator nur in den USA in den Tarifen „Gen 2“ und „Gen 1 (S1)“ zur Verfügung.
+Sie können Azure Maps Creator verwenden, um private Gebäudeplandaten zu erstellen. Mit der Azure Maps-API und dem Modul für Gebäudepläne können Sie interaktive und dynamische Gebäudeplan-Webanwendungen entwickeln. Preisinformationen finden Sie unter [Auswählen des richtigen Tarifs in Azure Maps](choose-pricing-tier.md).
 
 In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Creator-Ressource in einem Azure Maps-Konto erstellen und löschen.
 
-## <a name="create-creator-preview-resource"></a>Erstellen einer Creator-Ressource (Vorschau)
+## <a name="create-creator-resource"></a>Erstellen einer Creator-Ressource
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
 
-2. Wählen Sie Ihr Azure Maps-Konto aus. Sollte Ihr Azure Maps-Konto unter **Kürzlich verwendete Ressourcen** nicht angezeigt werden, navigieren Sie zum Azure-Portalmenü. Wählen Sie **Alle Ressourcen**. Navigieren Sie zu Ihrem Azure Maps-Konto, und wählen Sie es aus.
+2. Navigieren Sie zum Menü des Azure-Portals. Wählen Sie **Alle Ressourcen** und dann Ihr Azure Maps-Konto aus.
 
-    ![Startseite des Azure Maps-Portals](./media/how-to-manage-creator/select-maps-account.png)
+      :::image type="content" border="true" source="./media/how-to-manage-creator/select-all-resources.png" alt-text="Auswählen des Azure Maps-Kontos":::
 
-3. Navigieren Sie auf der Seite des Azure Maps-Kontos unter **Creator** zur Option **Übersicht**. Wählen Sie **Erstellen** aus, um eine Azure Maps Creator-Ressource zu erstellen.
+3. Wählen Sie im Navigationsbereich **Creator-Übersicht** und dann **Erstellen** aus.
 
-    ![Azure Maps Creator-Erstellungsseite](./media/how-to-manage-creator/creator-blade-settings.png)
+    :::image type="content" border="true" source="./media/how-to-manage-creator/creator-blade-settings.png" alt-text="Azure Maps Creator-Erstellungsseite":::
 
-4. Geben Sie den Namen und den Standort für Ihre Creator-Ressource ein. Aktuell wird Creator nur in den USA unterstützt. Klicken Sie auf **Überprüfen + erstellen**.
+4. Geben Sie den Namen, den Ort und die Kartenbereitstellungs-Speichereinheiten für Ihre Creator-Ressource ein. Aktuell wird Creator nur in den USA unterstützt. Klicken Sie auf **Überprüfen + erstellen**.
 
-   ![Seite zum Eingeben der Creator-Kontoinformationen](./media/how-to-manage-creator/creator-creation-dialog.png)
+   :::image type="content" source="./media/how-to-manage-creator/creator-creation-dialog.png" alt-text="Seite zum Eingeben der Creator-Kontoinformationen":::
 
-5. Überprüfen Sie die Einstellungen, und wählen Sie **Erstellen** aus.
+5. Überprüfen Sie Ihre Einstellungen, und wählen Sie anschließend **Erstellen** aus.
 
-    ![Seite zum Bestätigen der Creator-Kontoeinstellungen](./media/how-to-manage-creator/creator-create-dialog.png)
+    :::image type="content" source="./media/how-to-manage-creator/creator-create-dialog.png" alt-text="Seite zum Bestätigen der Creator-Kontoeinstellungen":::
 
-6. Nach Abschluss der Bereitstellung wird eine Seite mit einer Erfolgs- oder Fehlermeldung angezeigt.
+    Nach Abschluss der Bereitstellung wird eine Seite mit einer Erfolgs- oder Fehlermeldung angezeigt.
 
-   ![Statusseite für die Ressourcenbereitstellung](./media/how-to-manage-creator/creator-resource-created.png)
+    :::image type="content" source="./media/how-to-manage-creator/creator-resource-created.png" alt-text="Statusseite für die Ressourcenbereitstellung":::
 
-7. Wählen Sie **Zu Ressource wechseln** aus. Auf der Ansichtsseite Ihrer Creator-Ressource werden der Status Ihrer Creator-Ressource und die gewählte demografische Region angezeigt.
-
-    ![Creator-Statusseite](./media/how-to-manage-creator/creator-resource-view.png)
+6. Wählen Sie **Zu Ressource wechseln** aus. Auf der Ansichtsseite Ihrer Creator-Ressource werden der Status Ihrer Creator-Ressource und die gewählte demografische Region angezeigt.
+      :::image type="content" source="./media/how-to-manage-creator/creator-resource-view.png" alt-text="Creator-Statusseite":::
 
    >[!NOTE]
-   >Auf der Creator-Ressourcenseite können Sie wieder zum zugehörigen Azure Maps-Konto navigieren, indem Sie „Azure Maps-Konto“ auswählen.
+   >Um zum Azure Maps-Konto zurückzukehren, wählen Sie **Azure Maps-Konto** im Navigationsbereich aus.
 
-## <a name="delete-creator-preview-resource"></a>Löschen einer Creator-Ressource (Vorschau)
+## <a name="delete-creator-resource"></a>Löschen der Creator-Ressource
 
-Navigieren Sie zum Löschen der Creator-Ressource zu Ihrem Azure Maps-Konto. Wählen Sie unter **Creator** die Option **Übersicht** aus. Klicken Sie auf die Schaltfläche **Löschen**.
+So löschen Sie die Creator-Ressource:
 
->[!WARNING]
->Wenn Sie die Creator-Ressource Ihres Azure Maps-Kontos löschen, werden auch die mit Creator-Diensten erstellten Datasets, Kachelsets und Featurezustandssets gelöscht.
+1. Wählen Sie in Ihrem Azure Maps-Konto unter **Creator** die Option **Übersicht** aus.
 
-![Creator-Seite mit Schaltfläche „Löschen“](./media/how-to-manage-creator/creator-delete.png)
+2. Wählen Sie **Löschen**.
 
-Wählen Sie die Schaltfläche **Löschen** aus, und geben Sie Ihren Creator-Namen ein, um den Löschvorgang zu bestätigen. Nach dem Löschen der Ressource wird eine Bestätigungsseite wie die folgende angezeigt:
+    >[!WARNING]
+    >Wenn Sie die Creator-Ressource Ihres Azure Maps-Kontos löschen, löschen Sie auch die mit Creator-Diensten erstellten Konvertierungen, Datasets, Kachelsets und Featurezustandssets.
 
-![Creator-Seite mit Löschbestätigung](./media/how-to-manage-creator/creator-confirm-delete.png)
+     :::image type="content" source="./media/how-to-manage-creator/creator-delete.png" alt-text="Creator-Seite mit Schaltfläche „Löschen“":::
+
+3. Sie werden aufgefordert, den Löschvorgang zu bestätigen, indem Sie den Namen Ihrer Creator-Ressource eingeben. Nachdem die Ressource gelöscht wurde, wird eine Bestätigungsseite angezeigt, die wie folgt aussieht:
+
+     :::image type="content" source="./media/how-to-manage-creator/creator-confirm-delete.png" alt-text="Creator-Seite mit Löschbestätigung":::
 
 ## <a name="authentication"></a>Authentifizierung
 
-Für Creator (Vorschau) gelten die Zugriffssteuerungseinstellungen (IAM) von Azure Maps. Alle API-Aufrufe für Datenzugriff müssen mit Authentifizierungs- und Autorisierungsregeln gesendet werden.
+Von Creator werden die Zugriffssteuerungseinstellungen (IAM) von Azure Maps geerbt. Alle API-Aufrufe für Datenzugriff müssen mit Authentifizierungs- und Autorisierungsregeln gesendet werden.
 
 Creator-Nutzungsdaten fließen in Ihre Azure Maps-Nutzungsdiagramme und in das Aktivitätsprotokoll mit ein.  Weitere Informationen finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
+>[!Important]
+>Es wird empfohlen, Folgendes zu verwenden:
+>
+> * Azure Active Directory (Azure AD) in allen Lösungen, die mit einem Azure Maps-Konto mit Creator-Diensten erstellt werden. Weitere Informationen zu Azure AD finden Sie unter [Azure AD-Authentifizierung](azure-maps-authentication.md#azure-ad-authentication).
+>
+>* Einstellungen für rollenbasierte Zugriffssteuerung (RBAC). Mithilfe dieser Einstellungen können Kartenersteller als Rolle „Azure Maps-Datenmitwirkender“ und Azure Maps-Datenbenutzer als Rolle „Azure Maps-Datenleser“ fungieren. Weitere Informationen finden Sie unter [Autorisierung mit rollenbasierter Zugriffssteuerung](azure-maps-authentication.md#authorization-with-role-based-access-control).
+
 ## <a name="access-to-creator-services"></a>Zugreifen auf Creator-Dienste
 
-Die Creator-Dienste (Vorschau) und Dienste, die in Creator gehostete Daten verwenden (z. B. Renderingdienst), sind über eine geografische URL zugänglich. Die geografische URL wird durch den Standort bestimmt, der bei der Erstellung ausgewählt wird. Wenn Creator also beispielsweise an einem geografischen Standort in den USA erstellt wird, müssen alle für den Konvertierungsdienst bestimmten Aufrufe an `us.atlas.microsoft.com/conversion/convert` übermittelt werden.
+Die Creator-Dienste und Dienste, die in Creator gehostete Daten verwenden (z. B. Renderingdienst), sind über eine geografische URL zugänglich. Die geografische URL wird durch den Standort bestimmt, der bei der Erstellung ausgewählt wird. Wenn Creator also beispielsweise in einer Region an einem geografischen Standort in den USA erstellt wird, müssen alle für den Konvertierungsdienst bestimmten Aufrufe an `us.atlas.microsoft.com/conversions` übermittelt werden. Informationen zum Anzeigen von Zuordnungen der Region zum geografischen Standort finden Sie unter [Geografischer Bereich des Creator-Diensts](creator-geographic-scope.md).
 
 Darüber hinaus sollten alle in Creator importierten Daten an den gleichen geografischen Standort hochgeladen werden, an dem sich auch die Creator-Ressource befindet. Wenn Creator also beispielsweise in den USA bereitgestellt wurde, sollten alle Rohdaten über `us.atlas.microsoft.com/mapData/upload` hochgeladen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Einführung in Creator-Dienste (Vorschau) für Gebäudepläne:
+Einführung in Creator-Dienste für Gebäudepläne:
 
 > [!div class="nextstepaction"]
 > [Datenupload](creator-indoor-maps.md#upload-a-drawing-package)
@@ -100,7 +106,7 @@ Einführung in Creator-Dienste (Vorschau) für Gebäudepläne:
 > [!div class="nextstepaction"]
 > [Featurezustandsset](creator-indoor-maps.md#feature-statesets)
 
-In den folgenden Artikeln erfahren Sie, wie Sie mithilfe der Creator-Dienste (Vorschau) Gebäudepläne in Ihrer Anwendung rendern:
+In den folgenden Artikeln erfahren Sie, wie Sie mithilfe der Creator-Dienste Gebäudepläne in Ihrer Anwendung rendern:
 
 > [!div class="nextstepaction"]
 > [Verwenden von Creator zum Erstellen von Gebäudeplänen](tutorial-creator-indoor-maps.md)

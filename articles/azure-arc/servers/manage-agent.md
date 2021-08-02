@@ -1,14 +1,14 @@
 ---
 title: Verwalten des Agents für Azure Arc-fähige Server
 description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server ausführen.
-ms.date: 04/27/2021
+ms.date: 05/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 25cd997bc1b90da07fd9c463f0097c7bdf53b885
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 728e67930366f1b62b405f503a775b6d14a90bd0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076615"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068228"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -234,7 +234,10 @@ Führen Sie den folgenden Befehl aus, um die Verbindung mit Ihren Anmeldeinforma
 
 ## <a name="remove-the-agent"></a>Entfernen des Agents
 
-Führen Sie eine der folgenden Methoden aus, um den Conncected Machine-Agent für Windows oder Linux von dem Computer zu deinstallieren. Durch das Entfernen des Agents wird weder die Registrierung des Computers bei Azure Arc-fähigen Servern aufgehoben noch werden die installierten Azure-VM-Erweiterungen entfernt. Heben Sie die Registrierung des Computers auf, und entfernen Sie die installierten VM-Erweiterungen separat, wenn Sie den Computer in Azure nicht mehr verwalten müssen. Diese Schritte müssen vor dem Deinstallieren des Agents ausgeführt werden.
+Führen Sie eine der folgenden Methoden aus, um den Conncected Machine-Agent für Windows oder Linux von dem Computer zu deinstallieren. Durch das Entfernen des Agents wird weder die Registrierung des Computers bei Azure Arc-fähigen Servern aufgehoben noch werden die installierten Azure-VM-Erweiterungen entfernt. Für Server oder Computer, die nicht mehr über Azure Arc-fähige Server verwaltet werden sollen, müssen Sie folgende Schritte ausführen, um die Verwaltung erfolgreich zu beenden: 
+
+1. Entfernen Sie mit der [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) oder [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) über das [Azure-Portal](manage-vm-extensions-portal.md#uninstall-extension) installierte VM-Erweiterungen, die nicht auf dem Computer bleiben sollen.
+1. Heben Sie die Registrierung des Computers auf, indem Sie `azcmagent disconnect` ausführen, um die Arc-fähigen Serverressourcen in Azure zu löschen. Wenn hierbei ein Fehler auftritt, können Sie die Ressource auch manuell in Azure löschen. Andernfalls müssen Sie, wenn die Ressource in Azure gelöscht wurde, `azcmagent disconnect --force-local-only` auf dem Server ausführen, um die lokale Konfiguration zu entfernen.
 
 ### <a name="windows-agent"></a>Windows-Agent
 

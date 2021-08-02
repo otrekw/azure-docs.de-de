@@ -13,22 +13,18 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 3529361cacf0890b7c4752bbd745a9240020b4f3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dc87ad0af7eac71d7f2835b2b0d582fe8d1ec1b9
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217821"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985380"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (Java)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-Dieses Tutorial baut auf dem Code im Tutorial [Senden von C2D-Nachrichten mit IoT Hub (Java)](iot-hub-java-java-c2d.md) auf, um zu zeigen, wie Sie die [IoT Hub-Funktionen zum Hochladen von Dateien](iot-hub-devguide-file-upload.md) zum Hochladen einer Datei in [Azure Blob Storage](../storage/index.yml) nutzen. Das Tutorial veranschaulicht folgende Vorgehensweisen:
-
-* Sicheres Bereitstellen eines Geräts mit einem Azure-Blob-URI für das Hochladen einer Datei.
-
-* Verwenden der IoT Hub-Dateihochlade-Benachrichtigungen zum Auslösen der Dateiverarbeitung in Ihrem App-Back-End.
+In diesem Tutorial wird gezeigt, wie Sie die Dateihochladefunktionen von IoT Hub mit Java verwenden. Eine Übersicht über den Dateiuploadprozess finden Sie unter [Hochladen von Dateien mit IoT Hub](iot-hub-devguide-file-upload.md).
 
 Die Schnellstartanleitung [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-java.md) und das Tutorial [Senden von Nachrichten aus der Cloud an das Gerät mit IoT Hub (.NET)](iot-hub-java-java-c2d.md) veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. Unter [Tutorial: Konfigurieren der Nachrichtenweiterleitung mit IoT Hub](tutorial-routing.md) wird eine Möglichkeit für das zuverlässige Speichern von Gerät-zu-Cloud-Nachrichten in Azure Blob Storage beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiel:
 
@@ -37,13 +33,7 @@ Die Schnellstartanleitung [Senden von Telemetriedaten von einem Gerät an eine I
 * Vibrationsdaten, die mit hoher Häufigkeit als Stichproben erfasst werden
 * Eine Form vorverarbeiteter Daten.
 
-Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure Data Factory](../data-factory/introduction.md) oder dem [Hadoop](../hdinsight/index.yml)-Stapel verarbeitet. Wenn Sie Dateien von einem Gerät hochladen müssen, können Sie weiterhin die Sicherheit und Zuverlässigkeit des IoT Hub nutzen.
-
-Am Ende dieses Tutorials führen Sie zwei Java-Konsolen-Apps aus:
-
-* **simulated-device**, eine modifizierte Version der App, die im Tutorial [Senden von C2D-Nachrichten mit IoT Hub (Java)] erstellt wurde. Diese App lädt mithilfe eines SAS-URI, den Ihr IoT Hub bereitstellt, eine Datei in den Speicher hoch.
-
-* **read-file-upload-notification**, die Benachrichtigungen zum Hochladen von Dateien von Ihrem IoT Hub empfängt.
+Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure Data Factory](../data-factory/introduction.md) oder dem [Hadoop](../hdinsight/index.yml)-Stapel verarbeitet. Wenn Sie Dateien von einem Gerät hochladen müssen, können Sie aber weiterhin die Sicherheit und Zuverlässigkeit von IoT Hub nutzen. In diesem Beispiel wird die entsprechende Vorgehensweise erläutert. Darüber hinaus gibt es zwei Beispiele auf GitHub unter [https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/file-upload-sample/src/main/java/samples/com/microsoft/azure/sdk/iot](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/file-upload-sample/src/main/java/samples/com/microsoft/azure/sdk/iot).
 
 > [!NOTE]
 > IoT Hub bietet über Azure IoT-Geräte-SDKs Unterstützung für zahlreiche Geräteplattformen und Sprachen (u.a. C, .NET und JavaScript). Im [Azure IoT Developer Center](https://azure.microsoft.com/develop/iot) finden Sie Schritt-für-Schritt-Anweisungen zum Verbinden eines Geräts mit Azure IoT Hub.
@@ -58,102 +48,376 @@ Am Ende dieses Tutorials führen Sie zwei Java-Konsolen-Apps aus:
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
-* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit einem IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
-## <a name="upload-a-file-from-a-device-app"></a>Hochladen einer Datei von einer Geräte-App
+## <a name="create-a-project-using-maven"></a>Erstellen eines Projekts mithilfe von Maven
 
-In diesem Abschnitt ändern Sie die Geräte-App, die Sie in [Senden von C2D-Nachrichten mit IoT Hub (Java)](iot-hub-java-java-c2d.md) erstellt haben, um eine Datei in den IoT-Hub hochzuladen.
+Erstellen Sie ein Verzeichnis für Ihr Projekt, und starten Sie eine Shell in diesem Verzeichnis. Führen Sie in der Befehlszeile Folgendes aus:
 
-1. Kopieren Sie eine Bilddatei in den `simulated-device`-Ordner und benennen Sie sie in `myimage.png` um.
+```cmd/sh
+mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+```
 
-2. Öffnen Sie in einem Text-Editor die Datei `simulated-device\src\main\java\com\mycompany\app\App.java`.
+Dadurch wird ein Verzeichnis mit einer Standardprojektstruktur und der Artefakt-ID (*artifactId*) als Name generiert:
 
-3. Fügen Sie die Variablendeklaration der **App**-Klasse hinzu:
+```
+  my-app
+  |-- pom.xml
+   -- src
+      -- main
+         -- java
+            -- com
+               -- mycompany
+                  -- app
+                     --App.Java
+```
 
-    ```java
-    private static String fileName = "myimage.png";
-    ```
+Ersetzen Sie mithilfe eines Text-Editors die Datei „pom.xml“ durch Folgendes:
 
-4. Fügen Sie zum Verarbeiten der Rückrufmeldungen zum Dateihochladestatus die folgende geschachtelte Klasse der **App**-Klasse hinzu:
+```xml
 
-    ```java
-    // Define a callback method to print status codes from IoT Hub.
-    protected static class FileUploadStatusCallBack implements IotHubEventCallback {
-      public void execute(IotHubStatusCode status, Object context) {
-        System.out.println("IoT Hub responded to file upload for " + fileName
-            + " operation with status " + status.name());
-      }
-    }
-    ```
+<?xml version="1.0" encoding="UTF-8"?>
 
-5. Um Bilder in IoT Hub hochzuladen, fügen Sie die folgende Methode zum Hochladen von Bildern in IoT Hub der **App**-Klasse hinzu:
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    ```java
-    // Use IoT Hub to upload a file asynchronously to Azure blob storage.
-    private static void uploadFile(String fullFileName) throws FileNotFoundException, IOException
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>my-app</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>my-app</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+      <dependency>
+      <groupId>com.microsoft.azure.sdk.iot</groupId>
+      <artifactId>iot-device-client</artifactId>
+      <version>1.30.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.29</version>
+    </dependency>    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.3</version>
+            <configuration>
+              <source>1.7</source>
+              <target>1.7</target>
+            </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>2.4</version>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                    <goal>shade</goal>
+                  </goals>
+                  <configuration>
+                      <filters>
+                          <filter>
+                              <artifact>*:*</artifact>
+                              <excludes>
+                                  <exclude>META-INF/*.SF</exclude>
+                                  <exclude>META-INF/*.RSA</exclude>
+                              </excludes>
+                          </filter>
+                      </filters>
+                      <shadedArtifactAttached>true</shadedArtifactAttached>
+                      <shadedClassifierName>with-deps</shadedClassifierName>
+                  </configuration>
+              </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
+
+```
+
+
+## <a name="upload-a-file"></a>Hochladen einer Datei
+
+Kopieren Sie die Datei, die Sie hochladen möchten, in den Ordner `my-app` in Ihrer Projektstruktur. Ersetzen Sie mithilfe eines Text-Editors „App.java“ durch den folgenden Code. Geben Sie an den entsprechend gekennzeichneten Stellen Ihre Verbindungszeichenfolge und den Dateinamen an.
+
+```java
+package com.mycompany.app;
+
+import com.azure.storage.blob.BlobClient;
+import com.azure.storage.blob.BlobClientBuilder;
+import com.microsoft.azure.sdk.iot.deps.serializer.FileUploadCompletionNotification;
+import com.microsoft.azure.sdk.iot.deps.serializer.FileUploadSasUriRequest;
+import com.microsoft.azure.sdk.iot.deps.serializer.FileUploadSasUriResponse;
+import com.microsoft.azure.sdk.iot.device.DeviceClient;
+import com.microsoft.azure.sdk.iot.device.IotHubClientProtocol;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.Scanner;
+
+public class App 
+{
+    /**
+     * Upload a single file to blobs using IoT Hub.
+     *
+     */
+    public static void main(String[] args)throws IOException, URISyntaxException
     {
-      File file = new File(fullFileName);
-      InputStream inputStream = new FileInputStream(file);
-      long streamLength = file.length();
+        String connString = "Your device connection string here";
+        String fullFileName = "Path of the file to upload";
 
-      client.uploadToBlobAsync(fileName, inputStream, streamLength, new FileUploadStatusCallBack(), null);
+        System.out.println("Starting...");
+        System.out.println("Beginning setup.");
+
+        // File upload will always use HTTPS, DeviceClient will use this protocol only
+        //   for the other services like Telemetry, Device Method and Device Twin.
+        IotHubClientProtocol protocol = IotHubClientProtocol.MQTT;
+
+        System.out.println("Successfully read input parameters.");
+
+        DeviceClient client = new DeviceClient(connString, protocol);
+
+        System.out.println("Successfully created an IoT Hub client.");
+
+        try
+        {
+            File file = new File(fullFileName);
+            if (file.isDirectory())
+            {
+                throw new IllegalArgumentException(fullFileName + " is a directory, please provide a single file name, or use the FileUploadSample to upload directories.");
+            }
+
+            System.out.println("Retrieving SAS URI from IoT Hub...");
+            FileUploadSasUriResponse sasUriResponse = client.getFileUploadSasUri(new FileUploadSasUriRequest(file.getName()));
+
+            System.out.println("Successfully got SAS URI from IoT Hub");
+            System.out.println("Correlation Id: " + sasUriResponse.getCorrelationId());
+            System.out.println("Container name: " + sasUriResponse.getContainerName());
+            System.out.println("Blob name: " + sasUriResponse.getBlobName());
+            System.out.println("Blob Uri: " + sasUriResponse.getBlobUri());
+
+            System.out.println("Using the Azure Storage SDK to upload file to Azure Storage...");
+
+            try
+            {
+                BlobClient blobClient =
+                    new BlobClientBuilder()
+                        .endpoint(sasUriResponse.getBlobUri().toString())
+                        .buildClient();
+
+                blobClient.uploadFromFile(fullFileName);
+            }
+            catch (Exception e)
+            {
+                System.out.println("Exception encountered while uploading file to blob: " + e.getMessage());
+
+                System.out.println("Failed to upload file to Azure Storage.");
+
+                System.out.println("Notifying IoT Hub that the SAS URI can be freed and that the file upload failed.");
+
+                // Note that this is done even when the file upload fails. IoT Hub has a fixed number of SAS URIs allowed active
+                // at any given time. Once you are done with the file upload, you should free your SAS URI so that other
+                // SAS URIs can be generated. If a SAS URI is not freed through this API, then it will free itself eventually
+                // based on how long SAS URIs are configured to live on your IoT Hub.
+                FileUploadCompletionNotification completionNotification = new FileUploadCompletionNotification(sasUriResponse.getCorrelationId(), false);
+                client.completeFileUpload(completionNotification);
+
+                System.out.println("Notified IoT Hub that the SAS URI can be freed and that the file upload was a failure.");
+
+                client.closeNow();
+                return;
+            }
+
+            System.out.println("Successfully uploaded file to Azure Storage.");
+
+            System.out.println("Notifying IoT Hub that the SAS URI can be freed and that the file upload was a success.");
+            FileUploadCompletionNotification completionNotification = new FileUploadCompletionNotification(sasUriResponse.getCorrelationId(), true);
+            client.completeFileUpload(completionNotification);
+            System.out.println("Successfully notified IoT Hub that the SAS URI can be freed, and that the file upload was a success");
+        }
+        catch (Exception e)
+        {
+            System.out.println("On exception, shutting down \n" + " Cause: " + e.getCause() + " \nERROR: " +  e.getMessage());
+            System.out.println("Shutting down...");
+            client.closeNow();
+        }
+
+        System.out.println("Press any key to exit...");
+
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        System.out.println("Shutting down...");
+        client.closeNow();
     }
-    ```
+}
+```
+## <a name="get-the-device-connection-string"></a>Abrufen der Geräte-Verbindungszeichenfolge
 
-6. Ändern Sie die Methode **main** zum Aufrufen der Methode **uploadFile**, wie im folgenden Codeausschnitt dargestellt:
+Führen Sie den folgenden Befehl in Azure Cloud Shell aus, um die _Geräteverbindungszeichenfolge_ für Ihr Gerät abzurufen. Ersetzen Sie die folgenden Platzhalter durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben, und den Namen Ihres Geräts.
 
-    ```java
-    client.open();
+```azurecli-interactive
+az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id {YourDevice} --output table
+```
+    
+Kopieren Sie die Geräteverbindungszeichenfolge, die wie folgt aussieht, und fügen Sie sie an den entsprechend gekennzeichneten Stellen in das Codebeispiel ein.
+  
+```cmd/sh
+HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDotnetDevice;SharedAccessKey={YourSharedAccessKey}
+```
 
-    try
-    {
-      // Get the filename and start the upload.
-      String fullFileName = System.getProperty("user.dir") + File.separator + fileName;
-      uploadFile(fullFileName);
-      System.out.println("File upload started with success");
-    }
-    catch (Exception e)
-    {
-      System.out.println("Exception uploading file: " + e.getCause() + " \nERROR: " + e.getMessage());
-    }
+Fügen Sie den Pfad zur hochzuladenden Datei an der entsprechend gekennzeichneten Stelle in das Codebeispiel ein.
+    
+## <a name="build-and-run-the-application"></a>Erstellen und Ausführen der Anwendung
 
-    MessageSender sender = new MessageSender();
-    ```
+Führen Sie an der Eingabeaufforderung im `my-app`-Ordner folgenden Befehl aus:
 
-7. Verwenden Sie den folgenden Befehl zum Erstellen der **simulated-device**-App, und prüfen Sie, ob Fehler vorliegen:
+```cmd/sh
+mvn clean package -DskipTests
+```
 
-    ```cmd/sh
-    mvn clean package -DskipTests
-    ```
+Verwenden Sie nach Abschluss des Buildvorgangs den folgenden Befehl, um die Anwendung auszuführen:
 
-## <a name="get-the-iot-hub-connection-string"></a>Abrufen der IoT-Hub-Verbindungszeichenfolge
+```cmd/sh
+mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+```
 
-In diesem Artikel erstellen Sie einen Back-End-Dienst, um Dateiuploadbenachrichtigungen von dem IoT-Hub zu erhalten, den Sie unter [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-java.md) erstellt haben. Damit Ihr Dienst Dateiuploadbenachrichtigungen empfangen kann, muss er über die Berechtigung **Dienstverbindung** verfügen. Standardmäßig wird jeder IoT-Hub mit einer SAS-Richtlinie namens **service** erstellt, die diese Berechtigung erteilt.
+Sie können das Verwaltungsportal verwenden, um die hochgeladene Datei im Speichercontainer anzuzeigen, den Sie konfiguriert haben:
 
-[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
+![Hochgeladene Datei](media/iot-hub-java-java-upload/uploaded-file.png)
 
 ## <a name="receive-a-file-upload-notification"></a>Erhalten einer Benachrichtigung zum Dateiupload
 
 In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die Uploadbenachrichtigungen von IoT Hub empfängt.
 
-1. Erstellen Sie mithilfe des folgenden Befehls über die Eingabeaufforderung ein Maven-Projekt namens **read-file-upload-notification**. Beachten Sie, dass es sich hierbei um einen einzelnen langen Befehl handelt:
+1. Erstellen Sie ein Verzeichnis für Ihr Projekt, und starten Sie eine Shell in diesem Verzeichnis. Führen Sie in der Befehlszeile Folgendes aus:
 
     ```cmd/sh
-    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-file-upload-notification -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
     ```
 
-2. Navigieren Sie an der Eingabeaufforderung zum neuen `read-file-upload-notification`-Ordner.
+2. Navigieren Sie an der Eingabeaufforderung zum neuen `my-app`-Ordner.
 
-3. Öffnen Sie mit einem Text-Editor die Datei `pom.xml` im Ordner `read-file-upload-notification`, und fügen Sie dem Knoten **dependencies** die folgende Abhängigkeit hinzu. Durch Hinzufügen der Abhängigkeit können Sie in Ihrer Anwendung das Paket **iothub-java-service-client** verwenden, um mit Ihrem IoT Hub-Dienst zu kommunizieren:
+3. Ersetzen Sie mithilfe eines Text-Editors die Datei `pom.xml` im Ordner `my-app` durch Folgendes. Durch Hinzufügen der Dienstclientabhängigkeit können Sie in Ihrer Anwendung das Paket **iothub-java-service-client** verwenden, um mit Ihrem IoT Hub-Dienst zu kommunizieren:
 
     ```xml
-    <dependency>
-      <groupId>com.microsoft.azure.sdk.iot</groupId>
-      <artifactId>iot-service-client</artifactId>
-      <version>1.7.23</version>
-    </dependency>
+    <?xml version="1.0" encoding="UTF-8"?>
+
+    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+      <modelVersion>4.0.0</modelVersion>
+
+      <groupId>com.mycompany.app</groupId>
+      <artifactId>my-app</artifactId>
+      <version>1.0-SNAPSHOT</version>
+
+      <name>my-app</name>
+      <!-- FIXME change it to the project's website -->
+      <url>http://www.example.com</url>
+
+      <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+      </properties>
+
+      <dependencies>
+          <dependency>
+          <groupId>com.microsoft.azure.sdk.iot</groupId>
+          <artifactId>iot-device-client</artifactId>
+          <version>1.30.1</version>
+        </dependency>
+        <dependency>
+          <groupId>com.microsoft.azure.sdk.iot</groupId>
+          <artifactId>iot-service-client</artifactId>
+          <version>1.7.23</version>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <version>1.7.29</version>
+        </dependency>    
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.11</version>
+          <scope>test</scope>
+        </dependency>
+      </dependencies>
+
+      <build>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                  <source>1.7</source>
+                  <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+              <artifactId>maven-shade-plugin</artifactId>
+              <version>2.4</version>
+              <executions>
+                  <execution>
+                      <phase>package</phase>
+                      <goals>
+                        <goal>shade</goal>
+                      </goals>
+                      <configuration>
+                          <filters>
+                              <filter>
+                                  <artifact>*:*</artifact>
+                                  <excludes>
+                                      <exclude>META-INF/*.SF</exclude>
+                                      <exclude>META-INF/*.RSA</exclude>
+                                  </excludes>
+                              </filter>
+                          </filters>
+                          <shadedArtifactAttached>true</shadedArtifactAttached>
+                          <shadedClassifierName>with-deps</shadedClassifierName>
+                      </configuration>
+                  </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </project>
     ```
 
     > [!NOTE]
@@ -161,116 +425,74 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die Uploadbenachrichti
 
 4. Speichern und schließen Sie die `pom.xml`-Datei.
 
-5. Öffnen Sie in einem Text-Editor die Datei `read-file-upload-notification\src\main\java\com\mycompany\app\App.java`.
+5. Rufen Sie die IoT Hub-Dienstverbindungszeichenfolge ab.
+    [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-6. Fügen Sie der Datei die folgenden **import** -Anweisungen hinzu:
+6. Öffnen Sie die Datei `my-app\src\main\java\com\mycompany\app\App.java` mithilfe eines Text-Editors, und ersetzen Sie den Code durch Folgendes:
 
     ```java
+    package com.mycompany.app;
+
     import com.microsoft.azure.sdk.iot.service.*;
     import java.io.IOException;
     import java.net.URISyntaxException;
     import java.util.concurrent.ExecutorService;
     import java.util.concurrent.Executors;
-    ```
 
-7. Fügen Sie die folgenden Variablen auf Klassenebene der **App** -Klasse die folgende Variable auf Klassenebene hinzu. Ersetzen Sie den Platzhalterwert `{Your IoT Hub connection string}` durch die IoT-Hub-Verbindungszeichenfolge, die Sie zuvor unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben:
 
-    ```java
-    private static final String connectionString = "{Your IoT Hub connection string}";
-    private static final IotHubServiceClientProtocol protocol = IotHubServiceClientProtocol.AMQPS;
-    private static FileUploadNotificationReceiver fileUploadNotificationReceiver = null;
-    ```
+    public class App 
+    {
+        private static final String connectionString = "{Your service connection string here}";
+        private static final IotHubServiceClientProtocol protocol = IotHubServiceClientProtocol.AMQPS;
 
-8. Um Informationen über das Hochladen der Datei an der Konsole auszugeben, fügen Sie die folgende geschachtelte Klasse der **App**-Klasse hinzu:
+        public static void main(String[] args) throws Exception
+        {
+            ServiceClient sc = ServiceClient.createFromConnectionString(connectionString, protocol);
 
-    ```java
-    // Create a thread to receive file upload notifications.
-    private static class ShowFileUploadNotifications implements Runnable {
-      public void run() {
-        try {
-          while (true) {
-            System.out.println("Receive file upload notifications...");
-            FileUploadNotification fileUploadNotification = fileUploadNotificationReceiver.receive();
-            if (fileUploadNotification != null) {
-              System.out.println("File Upload notification received");
-              System.out.println("Device Id : " + fileUploadNotification.getDeviceId());
-              System.out.println("Blob Uri: " + fileUploadNotification.getBlobUri());
-              System.out.println("Blob Name: " + fileUploadNotification.getBlobName());
-              System.out.println("Last Updated : " + fileUploadNotification.getLastUpdatedTimeDate());
-              System.out.println("Blob Size (Bytes): " + fileUploadNotification.getBlobSizeInBytes());
-              System.out.println("Enqueued Time: " + fileUploadNotification.getEnqueuedTimeUtcDate());
+            FileUploadNotificationReceiver receiver = sc.getFileUploadNotificationReceiver();
+            receiver.open();
+            FileUploadNotification fileUploadNotification = receiver.receive(2000);
+    
+            if (fileUploadNotification != null)
+            {
+                System.out.println("File Upload notification received");
+                System.out.println("Device Id : " + fileUploadNotification.getDeviceId());
+                System.out.println("Blob Uri: " + fileUploadNotification.getBlobUri());
+                System.out.println("Blob Name: " + fileUploadNotification.getBlobName());
+                System.out.println("Last Updated : " + fileUploadNotification.getLastUpdatedTimeDate());
+                System.out.println("Blob Size (Bytes): " + fileUploadNotification.getBlobSizeInBytes());
+                System.out.println("Enqueued Time: " + fileUploadNotification.getEnqueuedTimeUtcDate());
             }
-          }
-        } catch (Exception ex) {
-          System.out.println("Exception reading reported properties: " + ex.getMessage());
+            else
+            {
+                System.out.println("No file upload notification");
+            }
+    
+            receiver.close();
         }
-      }
+    
     }
     ```
 
-9. Um den Thread zu starten, der auf Dateiuploadbenachrichtigungen lauscht, fügen Sie den folgenden Code in die **main**-Methode ein:
 
-    ```java
-    public static void main(String[] args) throws IOException, URISyntaxException, Exception {
-      ServiceClient serviceClient = ServiceClient.createFromConnectionString(connectionString, protocol);
+7. Speichere und schließe die Datei `my-app\src\main\java\com\mycompany\app\App.java`.
 
-      if (serviceClient != null) {
-        serviceClient.open();
-
-        // Get a file upload notification receiver from the ServiceClient.
-        fileUploadNotificationReceiver = serviceClient.getFileUploadNotificationReceiver();
-        fileUploadNotificationReceiver.open();
-
-        // Start the thread to receive file upload notifications.
-        ShowFileUploadNotifications showFileUploadNotifications = new ShowFileUploadNotifications();
-        ExecutorService executor = Executors.newFixedThreadPool(1);
-        executor.execute(showFileUploadNotifications);
-
-        System.out.println("Press ENTER to exit.");
-        System.in.read();
-        executor.shutdownNow();
-        System.out.println("Shutting down sample...");
-        fileUploadNotificationReceiver.close();
-        serviceClient.close();
-      }
-    }
-    ```
-
-10. Speichern und schließen Sie die `read-file-upload-notification\src\main\java\com\mycompany\app\App.java`-Datei.
-
-11. Verwenden Sie den folgenden Befehl zum Erstellen der **read-file-upload-notification**-App, und prüfen Sie, ob Fehler vorliegen:
-
+8. Verwenden Sie den folgenden Befehl zum Erstellen der App, und prüfen Sie, ob Fehler vorliegen:
     ```cmd/sh
     mvn clean package -DskipTests
     ```
+## <a name="run-the-application"></a>Ausführen der Anwendung
 
-## <a name="run-the-applications"></a>Ausführen der Anwendungen
+Sie können die Anwendung jetzt ausführen.
 
-Sie können jetzt die Anwendung ausführen.
-
-Führen Sie an der Eingabeaufforderung im `read-file-upload-notification`-Ordner folgenden Befehl aus:
-
-```cmd/sh
-mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
-```
-
-Führen Sie an der Eingabeaufforderung im `simulated-device`-Ordner folgenden Befehl aus:
+Führen Sie an der Eingabeaufforderung im `my-app`-Ordner folgenden Befehl aus:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
-
-Der folgende Screenshot zeigt die Ausgabe der **simulated-device**-App an:
-
-![Ausgabe der simulated-device-App](media/iot-hub-java-java-upload/simulated-device.png)
-
 Der folgende Screenshot zeigt die Ausgabe der **read-file-upload-notification**-App:
 
 ![Ausgabe der read-file-upload-notification-App](media/iot-hub-java-java-upload/read-file-upload-notification.png)
-
-Sie können das Verwaltungsportal verwenden, um die hochgeladene Datei im Speichercontainer anzuzeigen, den Sie konfiguriert haben:
-
-![Hochgeladene Datei](media/iot-hub-java-java-upload/uploaded-file.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

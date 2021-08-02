@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b69daf9e9fbbb3f6d6597a8e8349dc8bec61fbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5513aff9bed85293978061f8989c1389e9e7a9c4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008773"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954953"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Microsoft 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
@@ -66,13 +66,16 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
 
            Sie können den für die Anmeldeseite eingegebenen Text anpassen. Um einen neuen Absatz zu beginnen, verwenden Sie zweimal die EINGABETASTE. Sie können den Text auch so ändern, dass fette und kursive Formatierungen, ein Unterstrich oder ein klickbarer Link enthalten sind. Verwenden Sie die folgende Syntax, um eine Textformatierung hinzuzufügen: 
 
-          > Hyperlink: ```[text](link)``` 
+          > Hyperlink: `[text](link)` 
           
-          > Fett: ``` **text** ``` oder ``` __text__ ``` 
+          > Fett: `**text**` oder `__text__` 
           
-          > Kursiv: ``` *text* ``` oder ``` _text_ ``` 
+          > Kursiv: `*text*` oder `_text_` 
           
-          > Unterstrich: ``` ++text++ ``` 
+          > Unterstrich: `++text++` 
+         
+          > [!IMPORTANT]
+          > Links, die mit Anmeldeseitentext hinzugefügt werden, werden in nativen Umgebungen wie Desktopanwendungen und mobilen Anwendungen als Text gerendert.
 
     - **Erweiterte Einstellungen**
             

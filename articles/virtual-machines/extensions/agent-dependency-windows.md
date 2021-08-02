@@ -7,13 +7,14 @@ ms.subservice: extensions
 author: mgoedtel
 ms.author: magoedte
 ms.collection: windows
-ms.date: 03/29/2019
-ms.openlocfilehash: 429cc01f466c55283985729c3395bb2137e38fa6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1de4facc6cc945b5cada2201d3da667efae793aa
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566299"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797355"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Azure Monitor Dependency-VM-Erweiterung für Windows
 
@@ -133,6 +134,29 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -TypeHandlerVersion 9.5 `
     -Location WestUS 
 ```
+
+## <a name="automatic-upgrade-preview"></a>Automatisches Upgrade (Vorschau)
+Ein neues Feature zum automatischen Aktualisieren von Nebenversionen der Dependency-Erweiterung ist jetzt als öffentliche Vorschau verfügbar. Zum Aktivieren dieses Features müssen Sie die folgenden Konfigurationsänderungen vornehmen.
+
+-   Verwenden Sie eine der Methoden unter [Aktivieren des Vorschauzugriffs](../automatic-extension-upgrade.md#enabling-preview-access), um das Feature für Ihr Abonnement zu aktivieren.
+- Fügen Sie der Vorlage das Attribut `enableAutomaticUpgrade` hinzu.
+
+Für das Schema der Versionsverwaltung der Dependency-Agent-Erweiterung gilt das folgende Format:
+
+```
+<MM.mm.bb.rr> where M = Major version number, m = minor version number, b = bug number, r = revision number.
+```
+
+Die Attribute `enableAutomaticUpgrade` und `autoUpgradeMinorVersion` bestimmen gemeinsam, wie Upgrades für virtuelle Computer im Abonnement behandelt werden.
+
+| enableAutomaticUpgrade | autoUpgradeMinorVersion | Wirkung |
+|:---|:---|:---|
+| true | false | Aktualisierung des Dependency-Agents, falls eine neuere Version von „bb.rr“ vorhanden ist. Wenn Sie beispielsweise Version 9.6.0.1355 ausführen und die neuere Version 9.6.2.1366 lautet, werden Ihre virtuellen Computer in aktivierten Abonnements auf 9.6.2.1366 aktualisiert. |
+| true | true |  Dadurch wird der Dependency-Agent aktualisiert, wenn eine neuere Version von „mm.bb.rr“ oder „bb.rr“ vorhanden ist. Wenn Sie beispielsweise Version 9.6.0.1355 ausführen und die neuere Version 9.7.1.1416 lautet, werden Ihre virtuellen Computer in aktivierten Abonnements auf 9.7.1.1416 aktualisiert. Wenn Sie beispielsweise Version 9.6.0.1355 ausführen und die neuere Version 9.6.2.1366 lautet, werden Ihre virtuellen Computer in aktivierten Abonnements ebenfalls auf 9.6.2.1366 aktualisiert. |
+| false | true oder false | Das automatische Upgrade ist deaktiviert.
+
+> [!IMPORTANT]
+> Wenn Sie Ihrer Vorlage `enableAutomaticUpgrade` hinzufügen, stellen Sie sicher, dass Sie mindestens die API-Version 2019-12-01 verwenden.
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 

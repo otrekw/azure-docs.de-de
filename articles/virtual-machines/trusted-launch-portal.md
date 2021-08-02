@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 295579d17f3b24adcf43f6907cc4b1aca01dcae2
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 15386baa369b18678ef84ebed8144d358fa8177f
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565915"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839363"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Bereitstellen eines virtuellen Computers mit aktiviertem vertrauenswürdigem Start (Vorschau)
 
@@ -22,7 +22,7 @@ Der [vertrauenswürdige Start](trusted-launch.md) ist eine Möglichkeit zur Verb
 
 > [!IMPORTANT]
 > Der vertrauenswürdige Start befindet sich derzeit in der öffentlichen Vorschau.
-> 
+>
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 >
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -32,9 +32,9 @@ Der [vertrauenswürdige Start](trusted-launch.md) ist eine Möglichkeit zur Verb
 Erstellen Sie einen virtuellen Computer, für den vertrauenswürdiger Start aktiviert ist.
 
 1. Melden Sie sich beim Azure-[Portal](https://aka.ms/TL_preview) an.
-   > [!NOTE] 
+   > [!NOTE]
    > Der Portal-Link ist für die Vorschauversion des vertrauenswürdigen Starts eindeutig.
-   >  
+   >
 2. Suchen Sie nach **Virtuellen Computern**.
 3. Wählen Sie unter **Dienste** die Option **Virtuelle Computer** aus.
 4. Wählen Sie auf der Seite **Virtuelle Computer** die Option **Hinzufügen** und dann **Virtueller Computer** aus.
@@ -48,7 +48,7 @@ Erstellen Sie einen virtuellen Computer, für den vertrauenswürdiger Start akti
     :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="Screenshot mit der Meldung, die bestätigt, dass dieses Gen 2-Image den vertrauenswürdigen Start unterstützt.":::
 
 13. Wählen Sie eine VM-Größe, die den vertrauenswürdigen Start unterstützt. Die Liste der unterstützten Größen finden Sie [hier](trusted-launch.md#public-preview-limitations).
-14. Geben Sie die Informationen für das **Administratorkonto** und dann die **Regeln für eingehende Ports** ein. 
+14. Geben Sie die Informationen für das **Administratorkonto** und dann die **Regeln für eingehende Ports** ein.
 1. Wechseln Sie zur Registerkarte **Erweitert**, indem Sie sie oben auf der Seite auswählen.
 1. Scrollen Sie nach unten zum Abschnitt **VM-Generierung**. Vergewissern Sie sich, dass **2. Generation** ausgewählt ist.
 1. Scrollen Sie auf der Registerkarte **Erweitert** nach unten zu **Vertrauenswürdiger Start**, und aktivieren Sie dann das Kontrollkästchen **Vertrauenswürdiger Start**. Dadurch werden zwei weitere Optionen angezeigt: „Sicherer Start“ und „vTPM“. Wählen Sie die passenden Optionen für Ihre Bereitstellung aus.
@@ -61,23 +61,21 @@ Erstellen Sie einen virtuellen Computer, für den vertrauenswürdiger Start akti
     :::image type="content" source="media/trusted-launch/validation.png" alt-text="Sceenshot der Validierungsseite, die anzeigt, dass die Optionen für den vertrauenswürdigen Start enthalten sind.":::
 
 
-Die Bereitstellung des virtuellen Computers dauert ein paar Minuten. 
+Die Bereitstellung des virtuellen Computers dauert ein paar Minuten.
 
 ## <a name="deploy-using-a-template"></a>Mithilfe einer Vorlage bereitstellen
 
 Sie können VMs für den vertrauenswürdigen Start mithilfe einer Schnellstartvorlage bereitstellen:
 
-**Linux:**    
-[![In Azure bereitstellen](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
+**Linux**: [![Bereitstellen in Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-linux%2FcreateUiDefinition.json)
 
-**Windows**:    
-[![In Azure bereitstellen](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
+**Windows**: [![Bereitstellen in Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ## <a name="view-and-update"></a>Anzeigen und Aktualisieren
 
 Sie können die Konfiguration für den vertrauenswürdigen Start für einen vorhandenen virtuellen Computer anzeigen, indem Sie die Seite **Übersicht** für den virtuellen Computer im Portal aufrufen.
 
-Um die Konfiguration des vertrauenswürdigen Starts zu ändern, wählen Sie im Menü auf der linken Seite im Abschnitt **Einstellungen** die Option **Konfiguration** aus. Sie können „Sicherer Start“ und „vTPM“ im Abschnitt **Vertrauenswürdiger Start** aktivieren oder deaktivieren. Wählen Sie abschließend im oberen Bereich der Seite **Speichern** aus. 
+Um die Konfiguration des vertrauenswürdigen Starts zu ändern, wählen Sie im Menü auf der linken Seite im Abschnitt **Einstellungen** die Option **Konfiguration** aus. Sie können „Sicherer Start“ und „vTPM“ im Abschnitt **Vertrauenswürdiger Start** aktivieren oder deaktivieren. Wählen Sie abschließend im oberen Bereich der Seite **Speichern** aus.
 
 :::image type="content" source="media/trusted-launch/configuration.png" alt-text="Screenshot zum Ändern der Konfiguration für den vertrauenswürdigen Start.":::
 
@@ -87,24 +85,24 @@ Wenn die VM ausgeführt wird, erhalten Sie eine Meldung, dass der virtuelle Comp
 ## <a name="verify-secure-boot-and-vtpm"></a>Überprüfen von sicherem Start und vTPM
 
 Sie können überprüfen, ob sicherer Start und vTPM auf dem virtuellen Computer aktiviert sind.
-    
+
 ### <a name="linux-validate-if-secure-boot-is-running"></a>Linux: Überprüfen, ob der sichere Start ausgeführt wird
 
-Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her, und führen Sie dann folgenden Befehl aus: 
+Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her, und führen Sie dann folgenden Befehl aus:
 
 ```bash
 mokutil --sb-state
 ```
 
 Wenn der sichere Start aktiviert ist, gibt der Befehl Folgendes zurück:
- 
+
 ```bash
-SecureBoot enabled 
+SecureBoot enabled
 ```
 
 ### <a name="linux-validate-if-vtpm-is-enabled"></a>Linux: Überprüfen, ob vTPM aktiviert ist
 
-Stellen Sie eine SSH-Verbindung mit Ihrem virtuellen Computer her. Überprüfen Sie, ob das tpm0-Gerät vorhanden ist: 
+Stellen Sie eine SSH-Verbindung mit Ihrem virtuellen Computer her. Überprüfen Sie, ob das tpm0-Gerät vorhanden ist:
 
 ```bash
 ls /dev/tpm0
@@ -130,7 +128,7 @@ Stellen Sie über Remote Desktop eine Verbindung mit dem virtuellen Computer her
 
 ## <a name="enable-the-azure-security-center-experience"></a>Aktivieren der Azure Security Center-Erfahrung
 
-Um Azure Security Center das Anzeigen von Informationen zu Ihren VMs für den vertrauenswürdigen Start zu ermöglichen, müssen Sie mehrere Richtlinien aktivieren. Die einfachste Möglichkeit, die Richtlinien zu aktivieren, ist die Bereitstellung dieser [Resource Manager-Vorlage](https://github.com/prash200/azure-quickstart-templates/tree/master/101-asc-trustedlaunch-policies) für Ihr Abonnement. 
+Um Azure Security Center das Anzeigen von Informationen zu Ihren VMs für den vertrauenswürdigen Start zu ermöglichen, müssen Sie mehrere Richtlinien aktivieren. Die einfachste Möglichkeit, die Richtlinien zu aktivieren, ist die Bereitstellung dieser [Resource Manager-Vorlage](https://github.com/prash200/azure-quickstart-templates/tree/master/101-asc-trustedlaunch-policies) für Ihr Abonnement.
 
 Wählen Sie die Schaltfläche unten aus, um die Richtlinien für Ihr Abonnement bereitzustellen:
 
@@ -139,7 +137,7 @@ Wählen Sie die Schaltfläche unten aus, um die Richtlinien für Ihr Abonnement 
 Die Vorlage muss nur einmal pro Abonnement bereitgestellt werden. Es werden automatisch `GuestAttestation`- und `AzureSecurity`-Erweiterungen auf allen unterstützten VMs installiert. Wenn Sie Fehlermeldungen erhalten, versuchen Sie erneut, die Vorlage bereitzustellen.
 
 Empfehlungen für vTPM und sicheren Start für VMs für vertrauenswürdigen Start finden Sie unter [So fügen Sie eine benutzerdefinierte Initiative zu Ihrem Abonnement hinzu](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription).
- 
+
 ## <a name="sign-things-for-secure-boot-on-linux"></a>Signierungen für den sicheren Start unter Linux
 
 In einigen Fällen sind möglicherweise Signierungen für den sicheren UEFI-Start erforderlich.  Beispielsweise müssen Sie möglicherweise die Schritte in [How to sign things for Secure Boot](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) (Signierungen für den sicheren Start) für Ubuntu durchführen. In diesen Fällen müssen Sie die Registrierungsschlüssel des MOK-Hilfsprogramms für Ihre VM eingeben. Hierzu müssen Sie über die serielle Azure-Konsole auf das MOK-Hilfsprogramm zugreifen.
@@ -152,7 +150,7 @@ In einigen Fällen sind möglicherweise Signierungen für den sicheren UEFI-Star
 1. Wenn Sie angemeldet sind, importieren Sie mit `mokutil` die `.der`-Datei mit dem öffentlichen Schlüssel.
 
     ```bash
-    sudo mokutil –import <path to public key.der> 
+    sudo mokutil –import <path to public key.der>
     ```
 1. Starten Sie den Computer von der seriellen Konsole von Azure neu, indem Sie `sudo reboot` eingeben. Ein 10-Sekunden-Countdown beginnt.
 1. Drücken Sie die NACH-OBEN- oder NACH-UNTEN-TASTE, um den Countdown zu unterbrechen und im UEFI-Konsolenmodus zu warten. Wenn der Timer nicht unterbrochen wird, wird der Startvorgang fortgesetzt, und alle MOK-Änderungen gehen verloren.

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9b40c934cb428a31a3feb77195518d5351818d7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f340ac18cb74523d64f4dbf8d6ae1d6f4559582a
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785359"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411879"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind
 
@@ -45,7 +45,7 @@ az storage account update \
 
 ## <a name="assign-a-role-to-the-storage-account-for-access-to-the-managed-hsm"></a>Zuweisen einer Rolle zum Speicherkonto für den Zugriff auf das verwaltete HSM
 
-Weisen Sie als Nächstes der verwalteten Identität des Speicherkontos die Rolle **Managed HSM Crypto Service Encryption** (Kryptografiedienstverschlüsselung für verwaltete HSMs) zu, sodass das Speicherkonto über Berechtigungen für das verwaltete HSM verfügt. Microsoft empfiehlt, die Rollenzuweisung auf die Ebene des einzelnen Schlüssels festzulegen, sodass der verwalteten Identität nur die notwendigsten Berechtigungen erteilt werden.
+Weisen Sie als Nächstes der verwalteten Identität des Speicherkontos die Rolle **Managed HSM Crypto Service Encryption User** (Kryptografiedienstverschlüsselung für verwaltete HSMs) zu, sodass das Speicherkonto über Berechtigungen für das verwaltete HSM verfügt. Microsoft empfiehlt, die Rollenzuweisung auf die Ebene des einzelnen Schlüssels festzulegen, sodass der verwalteten Identität nur die notwendigsten Berechtigungen erteilt werden.
 
 Um die Rollenzuweisung für das Speicherkonto zu erstellen, rufen Sie [az keyvault role assignment create](/cli/azure/role/assignment#az_role_assignment_create) auf. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
   
@@ -58,7 +58,7 @@ storage_account_principal = $(az storage account show \
 
 az keyvault role assignment create \
     --hsm-name <hsm-name> \
-    --role "Managed HSM Crypto Service Encryption" \
+    --role "Managed HSM Crypto Service Encryption User" \
     --assignee $storage_account_principal \
     --scope /keys/<key-name>
 ```

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 0c0b3bd81e0f73a7879382e28516378bd722bc17
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8bc17ef020ae61a18f5259a956c7b5d3b3998a4d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877555"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463578"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Verwenden von Berechtigungen in Azure Spring Cloud
 In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Rollen erstellen, die Berechtigungen an Azure Spring Cloud-Ressourcen vergeben. Benutzerdefinierte Rollen erweitern [integrierte Azure-Rollen](../role-based-access-control/built-in-roles.md) um verschiedene Bestandsberechtigungen.
@@ -29,7 +29,7 @@ Die folgenden benutzerdefinierten Rollen werden implementiert:
     * Apps neu starten
     * Protokolldatenströme abrufen
     * Kann keine Änderungen an Apps oder Konfigurationen vornehmen
-* **Azure Pipelines/Jenkins/Github Actions-Rolle**:
+* **Azure Pipelines/Jenkins/Github Actions-Rolle:**
     * Kann Erstell-, Lese-, Aktualisierungs- und Löschvorgänge ausführen
     * Kann alles in der Azure Spring Cloud und in den Apps innerhalb der Dienstinstanz erstellen und konfigurieren: Azure Pipelines, Jenkins oder GitHub Actions mit TERRAFORM- oder ARM-Vorlagen
 
@@ -194,7 +194,7 @@ Wählen Sie unter **Microsoft.AppPlatform/locations/operationStatus/operationId*
 5. Klicken Sie auf **Überprüfen und erstellen**.
 
 ## <a name="define-azure-pipelinesprovisioning-role"></a>Definieren der Rolle „Azure Pipelines/Bereitstellung“
-Diese Rolle für Jenkins/GitHub Actions kann alles in der Azure Spring Cloud und in den Apps innerhalb einer Dienstinstanz erstellen und konfigurieren. Diese Rolle dient zum Freigeben oder Bereitstellen von Code.
+Diese Rolle für Jenkins/GitHub Actions kann alles in Azure Spring Cloud und in den Apps innerhalb einer Dienstinstanz erstellen und konfigurieren. Diese Rolle dient zum Freigeben oder Bereitstellen von Code.
 
 1. Wiederholen Sie das Verfahren zum Navigieren in Abonnement, Ressourcengruppe und Zugriffssteuerung (IAM).
 

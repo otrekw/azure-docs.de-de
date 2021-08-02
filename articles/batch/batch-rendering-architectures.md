@@ -4,12 +4,12 @@ description: Architekturen für die Verwendung von Azure Batch und anderen Azure
 ms.date: 02/07/2019
 ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: 784fd89c3dea88e25a2058713897c7a655c8a3af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abd67312c9ff8d74cc2a73d9750daca80f28391b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83726518"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481379"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Referenzarchitekturen für das Rendering in Azure
 
@@ -51,9 +51,7 @@ Das folgende Diagramm zeigt ein vollständig verbundenes Hybridszenario für Com
 
   ![Cloudbursting – hybrides Compute und Speichern](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Verwendung von [Render-Managern](batch-rendering-render-managers.md) mit Azure Batch.
-
-* Weitere Informationen zu Optionen für das [Rendering in Azure](batch-rendering-service.md).
+* Informieren Sie sich weiter über die Optionen für das [Rendern mit Azure](batch-rendering-service.md).
+* Weitere Informationen erhalten Sie unter [Vorinstallierte Anwendungen in VM-Images für das Batch-Rendering](batch-rendering-applications.md).

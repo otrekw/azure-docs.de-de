@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktualisier
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 329cfed646a2dbc2a417c1468895de62088058f6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 3d6092d694d1c99ff7755dfcbec5c0edbfb7567f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316693"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077300"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrieren zu arbeitsbereichsbasierten Application Insights-Ressourcen
 
@@ -41,7 +41,7 @@ Die Migration ist **dauerhaft und kann nicht rückgängig gemacht werden**. Nach
 
 Wenn Sie eine vorhandene Ressource nicht migrieren müssen und stattdessen eine neue arbeitsbereichsbasierte Application Insights-Ressource erstellen möchten, finden Sie weitere Informationen in der [Anleitung zum Erstellen arbeitsbereichsbasierter Ressourcen](create-workspace-resource.md).
 
-## <a name="pre-requisites"></a>Voraussetzungen 
+## <a name="pre-requisites"></a>Voraussetzungen
 
 - Ein Log Analytics Arbeitsbereich, bei dem der Zugriffssteuerungsmodus auf die Einstellung **`use resource or workspace permissions`** festgelegt ist. 
 
@@ -76,6 +76,9 @@ Nachdem Ihre Ressource migriert wurde, sehen Sie die Informationen zum entsprech
 ![Name des Arbeitsbereichs](./media/create-workspace-resource/workspace-name.png)
 
 Durch Klicken auf den blauen Linktext gelangen Sie zum zugeordneten Log Analytics-Arbeitsbereich, wo Sie die neue einheitliche Umgebung für Arbeitsbereichsabfragen nutzen können.
+
+> [!NOTE]
+> Nach der Migration zu einer arbeitsbereichsbasierten Application Insights-Ressource wird empfohlen, die [tägliche Obergrenze des Arbeitsbereichs](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume) zur Begrenzung der Erfassung und Kosten zu verwenden, anstatt die Obergrenze in Application Insights.
 
 ## <a name="understanding-log-queries"></a>Grundlegendes zu Protokollabfragen
 

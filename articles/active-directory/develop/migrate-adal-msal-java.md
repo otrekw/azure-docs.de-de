@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 620f77655f8281919ba0831a7e53af8cd28bc5f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eda9b3a65b4db6b058c0279575c0414285216975
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583992"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539962"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Leitfaden für die Migration von ADAL zu MSAL für Java
 
@@ -34,6 +34,8 @@ MSAL bietet folgende Vorteile:
 - Ihre Anwendung kann inkrementelle Zustimmung aktivieren, und Unterstützung des bedingten Zugriffs ist einfacher.
 
 MSAL für Java ist die empfohlene Authentifizierungsbibliothek für die Verwendung mit Microsoft Identity Platform. Für ADAL4J werden keine neuen Features implementiert. Der Schwerpunkt liegt künftig auf der Verbesserung von MSAL.
+
+Für weitere Informationen über MSAL beginnen Sie am besten mit einer [Übersicht über die Microsoft Authentication Library](msal-overview.md).
 
 ## <a name="differences"></a>Unterschiede
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce0916d4107fdcf97875d1c6a428bbfa75164a65
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255372"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068504"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Schützen von Benutzerkonten vor Angriffen mithilfe von Smart Lockout von Azure Active Directory
 
@@ -24,7 +24,7 @@ Smart Lockout unterstützt Sie dabei, Angreifer auszusperren, die versuchen, Ben
 
 ## <a name="how-smart-lockout-works"></a>Funktionsweise von Smart Lockout
 
-Nach zehn Fehlversuchen sperrt Smart Lockout das Konto standardmäßig eine Minute lang für Anmeldeversuche. Das Konto wird nach jedem weiteren fehlgeschlagenen Anmeldeversuch zuerst für eine Minute und bei anschließenden Versuchen länger gesperrt. Um die Möglichkeiten eines Angreifers zum Umgehen dieses Verhaltens auf ein Minimum zu beschränken, geben wir nicht bekannt, mit welcher Rate der Sperrzeitraum bei weiteren erfolglosen Anmeldeversuchen ausgeweitet wird.
+Standardmäßig blockiert Smart Lockout Anmeldungsversuche für das Konto für eine Minute, wenn zehn Versuche bei öffentlichen Azure-Mandanten oder drei Versuche bei Azure Government-Mandanten für US-Behörden fehlgeschlagen sind. Das Konto wird nach jedem weiteren fehlgeschlagenen Anmeldeversuch zuerst für eine Minute und bei anschließenden Versuchen länger gesperrt. Um die Möglichkeiten eines Angreifers zum Umgehen dieses Verhaltens auf ein Minimum zu beschränken, geben wir nicht bekannt, mit welcher Rate der Sperrzeitraum bei weiteren erfolglosen Anmeldeversuchen ausgeweitet wird.
 
 Smart Lockout verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Sperrungszähler für dasselbe Kennwort erhöht wird. Wenn eine Person mehrmals das falsche Kennwort eingibt, hat dies keine Sperrung des Kontos zur Folge.
 
@@ -73,7 +73,7 @@ Gehen Sie wie folgt vor, um die Smart Lockout-Werte zu überprüfen und ggf. f�
 1. Suchen Sie nach *Azure Active Directory*, und wählen Sie die entsprechende Option aus. Wählen Sie anschließend **Sicherheit** > **Authentifizierungsmethoden** > **Kennwortschutz** aus.
 1. Legen Sie **Schwellenwert für Sperre** auf die Anzahl nicht erfolgreicher Anmeldeversuche fest, nach der das Konto erstmals gesperrt werden soll.
 
-    Der Standardwert ist 10.
+    Die Standardeinstellung liegt bei zehn Versuchen für öffentliche Azure-Mandanten und drei Versuchen für Azure Government-Mandanten für US-Behörden.
 
 1. Legen unter **Sperrdauer in Sekunden** fest, wie viele Sekunden die Sperre jeweils dauern soll.
 

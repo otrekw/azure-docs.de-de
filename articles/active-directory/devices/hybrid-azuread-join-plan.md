@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 05/28/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cadba181ea7d6a12ca64c78f3c7c58654d5f756f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30c0d0fa394c8b962206879a80d600987753f2f6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500807"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953461"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -74,7 +74,6 @@ Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln,
 ## <a name="review-things-you-should-know"></a>Überprüfung wichtiger Informationen
 
 ### <a name="unsupported-scenarios"></a>Nicht unterstützte Szenarien
-- Azure AD-Hybrideinbindung wird zurzeit nicht unterstützt, wenn Ihre Umgebung aus einer einzelnen AD-Gesamtstruktur besteht, die Identitätsdaten mit mehr als einem Azure AD-Mandanten synchronisiert.
 
 - Azure AD Hybrideinbindung wird für Windows Server, die die Domänencontrollerrolle ausführen, nicht unterstützt.
 
@@ -85,6 +84,7 @@ Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln,
 - Das Migrationstool für den Benutzerzustand (USMT) funktioniert nicht mit der Geräteregistrierung.  
 
 ### <a name="os-imaging-considerations"></a>Überlegungen zur Erstellung von Betriebssystemimages
+
 - Wenn Sie das Systemvorbereitungstool (Sysprep) verwenden und ein Image einer niedrigeren Version als **Windows 10 1809** für die Installation verwenden, stellen Sie sicher, dass dieses Image nicht von einem Gerät stammt, das bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
 
 - Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass diese Momentaufnahme nicht von einem Computer stammt, der bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
@@ -92,6 +92,7 @@ Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln,
 - Wenn Sie den [vereinheitlichten Schreibfilter](/windows-hardware/customize/enterprise/unified-write-filter) und ähnliche Technologien verwenden, die Änderungen am Datenträger beim Neustart löschen, müssen diese angewandt werden, nachdem das Gerät in Azure AD Hybrid eingebunden wurde. Das Aktivieren solcher Technologien vor dem Abschluss der Einbindung in Azure AD Hybrid führt dazu, dass das Gerät bei jedem Neustart getrennt wird.
 
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Behandeln von Geräten mit registriertem Azure AD-Status
+
 Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten [bei Azure AD registriert](overview.md#getting-devices-in-azure-ad) sind, kann dies zu einem Doppelstatus der Azure AD-Hybrideinbindung und der Registrierung bei Azure AD des Geräts führen. Es wird empfohlen, ein Upgrade auf Windows 10 1803 (mit angewandtem KB4489894) oder höher durchzuführen, um dieses Szenario automatisch zu beheben. In Releases vor 1803 müssen Sie die Registrierung bei Azure AD manuell entfernen, bevor Sie die Azure AD-Hybrideinbindung aktivieren. In Releases ab 1803 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
 
 - Jeder vorhandene Azure AD-Registrierungsstatus für einen Benutzer wird nach der <i>Azure AD-Hybrideinbindung des Geräts und der Anmeldung desselben Benutzers</i> automatisch entfernt. Wenn Benutzer A beispielsweise einen Azure AD-Registrierungsstatus auf dem Gerät hat, wird der Doppelstatus für Benutzer A nur dann bereinigt, wenn sich Benutzer A beim Gerät anmeldet. Bei mehreren Benutzern auf demselben Gerät wird der Doppelstatus individuell bei der Anmeldung der jeweiligen Benutzer bereinigt. Windows 10 entfernt die Registrierung bei Azure AD und hebt darüber hinaus auch die Registrierung des Geräts bei Intune oder einer anderen mobilen Geräteverwaltung auf, wenn die Registrierung im Rahmen der Azure AD-Registrierung über die automatische Registrierung erfolgt ist.
@@ -102,7 +103,18 @@ Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten 
 > [!NOTE]
 > Obwohl Windows 10 die Registrierung bei Azure AD lokal automatisch entfernt, wird das Geräteobjekt in Azure AD nicht sofort gelöscht, wenn es von Intune verwaltet wird. Sie können die Entfernung der Registrierung bei Azure AD überprüfen, indem Sie „dsregcmd /status“ ausführen und das Gerät auf dieser Grundlage als nicht bei Azure AD registriert betrachten.
 
+### <a name="hybrid-azure-ad-join-for-single-forest-multiple-azure-ad-tenants"></a>Azure AD-Hybrideinbindung für eine einzelne Gesamtstruktur und mehrere Azure AD-Mandanten
+
+Um Geräte als Azure AD-Hybrideinbindung bei dem jeweiligen Mandanten registrieren zu können, müssen Organisationen sicherstellen, dass die SCP-Konfiguration auf den Geräten erfolgt und nicht in AD. Weitere Informationen dazu finden Sie im Artikel [Kontrollierte Überprüfung der Azure AD-Hybrideinbindung](hybrid-azuread-join-control.md). Darüber hinaus ist es wichtig zu verstehen, dass bestimmte Azure AD-Funktionen nicht in einer einzelnen Gesamtstruktur mit mehreren Azure AD-Mandantenkonfigurationen funktionieren.
+- Das [Geräterückschreiben](../hybrid/how-to-connect-device-writeback.md) funktioniert nicht. Dies wirkt sich auf den [gerätebasierten bedingten Zugriff für lokale Apps aus, die über ADFS verbunden sind](/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises). Dies wirkt sich auch auf die [Windows Hello for Business-Bereitstellung aus, bei denen das hybride zertifikatbasierte Vertrauensmodell verwendet wird](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust).
+- Das [Gruppenrückschreiben](../hybrid/how-to-connect-group-writeback.md) funktioniert nicht. Dies beeinflusst das Rückschreiben von Office 365-Gruppen in eine Gesamtstruktur, in der Exchange installiert ist.
+- [Nahtloses einmaliges Anmelden](../hybrid/how-to-connect-sso.md) funktioniert nicht. Dies wirkt sich auf SSO-Szenarien aus, die Organisationen möglicherweise auf betriebssystem- und browserübergreifenden Plattformen nutzen, z. B. iOS/Linux mit Firefox, Safari und Chrome ohne die Windows 10-Erweiterung.
+- [Azure AD-Hybrideinbindung für kompatible Windows-Geräte in verwalteten Umgebungen](./hybrid-azuread-join-managed-domains.md#enable-windows-down-level-devices) funktioniert nicht. Die Azure AD-Hybrideinbindung in einer verwalteten Umgebung unter Windows Server 2012 R2 erfordert beispielsweise ein nahtloses einmaliges Anmelden, und da dies nicht funktioniert, funktioniert auch die Azure AD-Hybrideinbindung in einem solchen Setup nicht.
+- [Der lokale Azure AD-Kennwortschutz](../authentication/concept-password-ban-bad-on-premises.md) funktioniert nicht. Dies wirkt sich auf die Fähigkeit aus, Kennwortänderungen und -zurücksetzungsereignisse für lokale AD DS-Domänencontroller durchzuführen, bei denen die gleichen, in Azure AD gespeicherten, globalen und benutzerdefinierten Listen gesperrter Kennwörter verwendet werden.
+
+
 ### <a name="additional-considerations"></a>Weitere Überlegungen
+
 - Wenn in Ihrer Umgebung Virtual Desktop Infrastructure (VDI) verwendet wird, finden Sie unter [Geräteidentität und Desktopvirtualisierung](./howto-device-identity-virtual-desktop-infrastructure.md) weitere Informationen.
 
 - Azure AD Hybrid Join wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Hybrid Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. 

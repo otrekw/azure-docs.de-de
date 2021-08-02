@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Erfahren Sie, wie Sie reservierte Kapazitäten für Azure SQL-Datenbank- und verwaltete SQL-Instanzen kaufen, um Computekosten einzusparen.
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: sstein
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 10/13/2020
-ms.openlocfilehash: cacd43502a01352c24f8fcfd85b12aac781dccbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e4f1ba5d15921f30319b001474351d637a0e338
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98602513"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413751"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Sparen von Kosten für Ressourcen mit reservierter Kapazität – Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -55,7 +55,7 @@ Nehmen Sie beispielsweise an, Sie führen einen universellen Pool für elastisch
 
     In der folgenden Tabelle werden die erforderlichen Felder beschrieben.
     
-    | Feld      | BESCHREIBUNG|
+    | Feld      | Beschreibung|
     |------------|--------------|
     |Subscription|Das zum Bezahlen für die Kapazitätsreservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung belastet. Als Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummer MS-AZR-0017P oder MS-AZR-0148P) oder ein Einzelvertrag mit nutzungsbasierter Bezahlung (Angebotsnummer MS-AZR-0003P oder MS-AZR-0023P) festgelegt werden. Bei einem Enterprise-Abonnement werden die Gebühren vom Saldo der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) der Registrierung abgezogen oder als Überschreitung berechnet. Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung für das Abonnement in Rechnung gestellt.|
     |`Scope`       |Die Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <br/><br/>**Gemeinsam**: Der Rabatt auf die Reservierung virtueller Kerne wird auf die Datenbank oder verwaltete Instanz angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt wird. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.<br/><br/>**Einzelabonnement**: Der Rabatt auf die Reservierung virtueller Kerne wird auf die Datenbank oder verwaltete Instanz in diesem Abonnement angewendet. <br/><br/>**Einzelne Ressourcengruppe**: Der Reservierungsrabatt wird auf die Datenbankinstanzen oder die verwalteten Instanzen im ausgewählten Abonnement und die ausgewählte Ressourcengruppe in diesem Abonnement angewendet.|
@@ -88,6 +88,9 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 ## <a name="next-steps"></a>Nächste Schritte
 
 Der Rabatt auf die Reservierung virtueller Kerne wird automatisch auf die Anzahl von Datenbanken oder verwalteten Instanzen angewendet, die dem Kapazitätsreservierungsumfang und entsprechenden Attributen entsprechen. Sie können den Umfang der Kapazitätsreservierung im [Azure-Portal](https://portal.azure.com), mit PowerShell, der Azure-Befehlszeilenschnittstelle oder der API aktualisieren.
+
+- Informationen zu Dienstebenen für Azure SQL-Datenbank für das V-Kern-Modell finden Sie unter [Übersicht über das V-Kern-Modell – Azure SQL-Datenbank](service-tiers-sql-database-vcore.md).
+- Informationen zu Dienstebenen für Azure SQL Managed Instance für das V-Kern-Modell finden Sie unter [Übersicht über das V-Kern-Modell – Azure SQL Managed Instance](../managed-instance/service-tiers-managed-instance-vcore.md).
 
 Informationen zum Verwalten der Kapazitätsreservierung finden Sie unter [Verwalten von Reservekapazität](../../cost-management-billing/reservations/manage-reserved-vm-instance.md).
 

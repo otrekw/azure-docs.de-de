@@ -7,14 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 03/26/2021
+ms.date: 05/06/2021
 ms.author: rolyon
-ms.openlocfilehash: b285755d24cdbf1f8ef06eb850fc218a00734f16
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 66efe0015e0ca85ac793100ee6d8d0944e3614c1
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771729"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690881"
 ---
 # <a name="list-azure-role-definitions"></a>Auflisten von Azure-Rollendefinitionen
 
@@ -28,7 +29,7 @@ Eine Liste mit Administratorrollen für Azure Active Directory finden Sie unter 
 
 Führen Sie diese Schritte aus, um alle Rollen im Azure-Portal aufzulisten.
 
-Wenn Sie an der Anzeige einer aktualisierten Rollenansicht interessiert sind, sehen Sie sich die Registerkarte **Rollen (Vorschau)** an, die sich zurzeit in der öffentlichen Vorschau befindet. Auf der Registerkarte **Rollen (Vorschau)** wird die gleiche Rollenliste wie auf der Registerkarte **Rollen** mit einigen zusätzlichen Features angezeigt. Sie können die Registerkarte „Rollen“ verwenden, um mit ihren Rollen zu arbeiten. Wenn Sie jedoch benutzerdefinierte Rollen erstellen oder löschen, müssen Sie die Seite möglicherweise manuell aktualisieren, um die neuesten Änderungen anzuzeigen.
+Die Registerkarte **Rollen** wurde vor Kurzem um einige zusätzliche Funktionen erweitert. Sie finden die alte Benutzeroberfläche auf der Registerkarte **Rollen (klassisch)** . Sie können die Registerkarte „Rollen“ verwenden, um mit Ihren Rollen zu arbeiten. Wenn Sie jedoch benutzerdefinierte Rollen erstellen oder löschen, müssen Sie die Seite möglicherweise manuell aktualisieren, um die neuesten Änderungen anzuzeigen.
 
 #### <a name="roles"></a>[Rollen](#tab/roles/)
 
@@ -40,21 +41,7 @@ Wenn Sie an der Anzeige einer aktualisierten Rollenansicht interessiert sind, se
 
 1. Klicken Sie auf die Registerkarte **Rollen**, um eine Liste aller integrierten und benutzerdefinierten Rollen anzuzeigen.
 
-   Sie können die Anzahl von Benutzern und Gruppen anzeigen, die jeder Rolle für den aktuellen Bereich zugewiesen sind.
-
-   ![Rollenliste](./media/role-definitions-list/roles-list-current.png)
-
-#### <a name="roles-preview"></a>[Rollen (Vorschau)](#tab/roles-preview/)
-
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie anschließend einen Bereich aus. Sie können beispielsweise **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine Ressource auswählen.
-
-1. Klicken Sie auf die gewünschte Ressource.
-
-1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
-
-1. Klicken Sie auf die Registerkarte **Rollen (Vorschau)** , um eine Liste aller integrierten und benutzerdefinierten Rollen anzuzeigen.
-
-   ![Rollenliste mit Vorschau](./media/role-definitions-list/roles-list.png)
+   ![Screenshot der Liste „Rollen“ mit neuer Benutzeroberfläche](./media/shared/roles-list.png)
 
 1. Klicken Sie in der Spalte **Details** auf den Link **Ansicht**, um die Berechtigungen für eine bestimmte Rolle anzuzeigen.
 
@@ -62,7 +49,21 @@ Wenn Sie an der Anzeige einer aktualisierten Rollenansicht interessiert sind, se
 
 1. Klicken Sie auf die Registerkarte **Berechtigungen**, um die Berechtigungen für die ausgewählte Rolle anzuzeigen und zu durchsuchen.
 
-   ![Rollenberechtigungen mithilfe der Vorschau](./media/role-definitions-list/role-permissions.png)
+   ![Screenshot der Rollenberechtigungen mit neuer Benutzeroberfläche](./media/role-definitions-list/role-permissions.png)
+
+#### <a name="roles-classic"></a>[Rollen (klassisch)](#tab/roles-classic/)
+
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie anschließend einen Bereich aus. Sie können beispielsweise **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine Ressource auswählen.
+
+1. Klicken Sie auf die gewünschte Ressource.
+
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
+
+1. Klicken Sie auf die Registerkarte **Rollen (klassisch)** , um eine Liste aller integrierten und benutzerdefinierten Rollen anzuzeigen.
+
+   Sie können die Anzahl von Benutzern und Gruppen anzeigen, die jeder Rolle für den aktuellen Bereich zugewiesen sind.
+
+   ![Rollenliste](./media/role-definitions-list/roles-list-classic.png)
 
 ---
 

@@ -3,15 +3,15 @@ title: Azure Automation-Runbooktypen
 description: In diesem Artikel werden die Runbooktypen beschrieben, die Sie in Azure Automation verwenden können, sowie Aspekte, die Sie bei der Auswahl des geeigneten Typs berücksichtigen sollten.
 services: automation
 ms.subservice: process-automation
-ms.date: 05/17/2021
+ms.date: 06/10/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9528443e7e89ecb91db70736d2051f813b130cce
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c64a712cc916cad0f6f6fec77f33fcb422f834fb
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073178"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982968"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-Runbooktypen
 
@@ -126,7 +126,10 @@ Python 3-Runbooks werden in den folgenden globalen Azure-Infrastrukturen unterst
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
-Bei Python 3-Aufträgen tritt manchmal ein Fehler mit der Ausnahmemeldung *Ungültiger Ausführungspfad des Interpreters* auf. Diese Ausnahme wird möglicherweise angezeigt, wenn ein Auftrag verzögert wird, wenn der Start länger als 10 Minuten dauert oder wenn **Start-AutomationRunbook** verwendet wurde, um Python 3-Runbooks zu starten. Wenn der Auftrag verzögert wurde, sollte ein Neustart des Runbooks ausreichen.
+Bei Cloudaufträgen schlagen Python 3-Aufträge manchmal mit einer Ausnahmemeldung `invalid interpreter executable path` fehl. Diese Ausnahme wird möglicherweise angezeigt, wenn ein Auftrag verzögert wird, wenn der Start länger als 10 Minuten dauert oder wenn **Start-AutomationRunbook** verwendet wurde, um Python 3-Runbooks zu starten. Wenn der Auftrag verzögert wurde, sollte ein Neustart des Runbooks ausreichen. Hybridaufträge sollten ohne Probleme funktionieren, wenn Sie die folgenden Schritte ausführen:
+
+1. Erstellen Sie eine neue Umgebungsvariable mit dem Namen `PYTHON_3_PATH`, und geben Sie dafür den Installationsordner an. Wenn der Installationsordner beispielsweise `C:\Python3` ist, muss dieser Pfad der Variablen hinzugefügt werden.
+1. Starten Sie den Computer neu, nachdem Sie die Umgebungsvariable festgelegt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

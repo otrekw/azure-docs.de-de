@@ -3,12 +3,12 @@ title: Absichern von Azure Functions
 description: Erfahren Sie, wie Sie Ihren in Azure ausgeführten Funktionscode vor gängigen Angriffen schützen können.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4e667cd8509e73624d7ef14d978480897d6636f0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: c8649c342b237a321c3c47510644451ceb3581fe
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202315"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467921"
 ---
 # <a name="securing-azure-functions"></a>Absichern von Azure Functions
 

@@ -3,20 +3,20 @@ title: Ressourcenlimits für logische Server in Azure
 description: Dieser Artikel bietet eine Übersicht über die Ressourcenlimits für den logischen Server in Azure, der von Azure SQL-Datenbank und Azure Synapse Analytics verwendet wird. Darüber hinaus bietet er Informationen darüber, was geschieht, wenn diese Ressourcenlimits erreicht oder überschritten werden.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: service-overview
 ms.custom: ''
 ms.devlang: ''
 ms.topic: reference
-author: stevestein
-ms.author: sstein
-ms.reviewer: sashan,moslake,josack
-ms.date: 03/25/2021
-ms.openlocfilehash: 08b2d3ec205e22c85188a718a12b13aff04f311e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma
+ms.date: 04/16/2021
+ms.openlocfilehash: fa5e8bc8ec3e0ebbc93d682d8ff9988f110ffe69
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108771701"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708356"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Ressourcenlimits für Azure SQL-Datenbank und Azure Synapse Analytics-Server.
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -49,7 +49,7 @@ Dieser Artikel bietet eine Übersicht über die Ressourcenlimits für den [logis
 
 ### <a name="storage-size"></a>Speichergröße
 
-Informationen zu den Grenzwerten bei der Speichergröße pro Tarif für Ressourcenspeichergrößen von Einzeldatenbanken finden Sie unter [DTU-Ressourcenlimits](resource-limits-dtu-single-databases.md) und [V-Kern-Ressourcenlimits](resource-limits-vcore-single-databases.md).
+Informationen zu den Grenzwerten bei der Speichergröße pro Tarif für Ressourcenspeichergrößen von Einzeldatenbanken (auch als Dienstziel bezeichnet) finden Sie unter [DTU-Ressourcenlimits](resource-limits-dtu-single-databases.md) und [V-Kern-Ressourcenlimits](resource-limits-vcore-single-databases.md).
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Was geschieht, wenn die Datenbankressourcen erreicht werden?
 
@@ -63,14 +63,17 @@ Wenn eine hohe Computenutzung festgestellt wird, stehen folgende Optionen als Ge
 
 ### <a name="storage"></a>Storage
 
-Wenn der verwendete Datenbankspeicherplatz die maximale Größe erreicht, treten bei Einfügungen in die Datenbank und Updates, die die Datenmenge erhöhen, Fehler auf, sodass Clients eine [Fehlermeldung](troubleshoot-common-errors-issues.md) erhalten. SELECT- und DELETE-Anweisungen werden weiterhin erfolgreich ausgeführt.
+Wenn der verwendete Datenbankspeicherplatz die maximale Datengröße erreicht, treten bei Einfügungen in die Datenbank und Updates, die die Datenmenge erhöhen, Fehler auf, sodass Clients eine [Fehlermeldung](troubleshoot-common-errors-issues.md) erhalten. SELECT- und DELETE-Anweisungen sind davon nicht betroffen.
+
+Bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ erhalten Clients auch eine Fehlermeldung, wenn der kombinierte Speicherverbrauch durch Daten, Transaktionsprotokoll und tempdb die maximale lokale Speichergröße überschreitet. Weitere Informationen finden Sie unter [Speicherplatzgovernance](#storage-space-governance).
 
 Wenn eine hohe Speicherplatznutzung festgestellt wird, stehen folgende Optionen als Gegenmaßnahmen zur Verfügung:
 
-- Erhöhen der maximalen Größe der Datenbank oder des Pools für elastische Datenbanken oder Hinzufügen von zusätzlichem Speicher. Siehe [Skalieren der Ressourcen für einzelne Datenbanken](single-database-scale.md) und [Skalieren der Ressourcen für elastische Pools in Azure SQL-Datenbank](elastic-pool-scale.md).
+- Erhöhen Sie die maximale Datengröße der Datenbank oder des Pools für elastische Datenbanken, oder skalieren Sie auf ein Dienstziel mit einer höheren maximalen Datengröße hoch. Siehe [Skalieren der Ressourcen für einzelne Datenbanken](single-database-scale.md) und [Skalieren der Ressourcen für elastische Pools in Azure SQL-Datenbank](elastic-pool-scale.md).
 - Wenn sich die Datenbank in einem Pool für elastische Datenbanken befindet, kann sie auch aus dem Pool heraus verschoben werden, damit ihr Speicherplatz nicht mit anderen Datenbanken geteilt wird.
-- Verkleinern Sie eine Datenbank, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](file-space-manage.md).
+- Verkleinern Sie eine Datenbank, um ungenutzten Speicherplatz freizugeben. In Pools für elastische Datenbanken wird durch das Verkleinern einer Datenbank mehr Speicher für andere Datenbanken im Pool freigegeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](file-space-manage.md).
 - Überprüfen Sie, ob der Grund für die hohe Speicherplatznutzung eine Spitze bei der Größe des permanenten Versionsspeichers (PVS) ist. PVS ist ein Teil jeder Datenbank und wird zum Implementieren der [beschleunigten Datenbankwiederherstellung](../accelerated-database-recovery.md) verwendet. Informationen zum Ermitteln der aktuellen PVS-Größe finden Sie unter [PVS-Problembehandlung](/sql/relational-databases/accelerated-database-recovery-management#troubleshooting). Ein häufiger Grund für eine große PVS-Größe ist eine Transaktion, die während eines langen Zeitraums (Stunden) geöffnet ist und so die Bereinigung älterer Versionen in PVS verhindert.
+- Bei großen Datenbanken mit den Dienstebenen „Premium“ und „Unternehmenskritisch“ tritt möglicherweise ein Fehler über unzureichenden Speicherplatz auf, obwohl der in der Datenbank verwendete Speicherplatz unterhalb der maximalen Größenbeschränkung liegt. Dies kann auftreten, wenn tempdb oder das Transaktionsprotokoll sehr viel Speicherplatz bis fast zum maximalen lokalen Speichergrenzwert verbrauchen. Führen Sie ein [Failover](high-availability-sla.md#testing-application-fault-resiliency) für die Datenbank oder den Pool für elastische Datenbanken aus, um tempdb auf die ursprüngliche Größe zurückzusetzen, oder [verkleinern](file-space-manage.md#shrinking-transaction-log-file) Sie das Transaktionsprotokoll, um den lokalen Speicherverbrauch zu reduzieren.
 
 ### <a name="sessions-and-workers-requests"></a>Sitzungen und Worker (Anforderungen)
 
@@ -132,7 +135,7 @@ Die Azure SQL-Datenbank-Ressourcenkontrolle ist hierarchisch strukturiert. Grenz
 
 In Azure SQL-Datenbank ist die Daten-E/A-Governance ein Prozess zum Begrenzen der physischen E/A-Lese- und -Schreibvorgänge für Datendateien einer Datenbank. IOPS-Grenzwerte werden für jeden Servicelevel festgelegt, um den „Noisy Neighbor“-Effekt zu minimieren, eine gerechte Ressourcenzuordnung im mehrinstanzenfähigen Dienst zu gewährleisten und die Funktionen der zugrunde liegenden Hardware und Speicher zu unterstützen.
 
-Bei Einzeldatenbanken gelten die Grenzwerte für Arbeitsauslastungsgruppen für alle Speicher-E/A-Vorgänge für die Datenbank, während die Ressourcenpool-Grenzwerte für alle Speicher-E/A-Vorgänge bei allen Datenbanken im gleichen Ressourcenpool (einschließlich der Datenbank `tempdb`) gelten. Bei Pools für elastische Datenbanken gelten die Grenzwerte für Arbeitsauslastungsgruppen für jede Datenbank im Pool, während die Grenzwerte für Ressourcenpools für den gesamten Pool für elastische Datenbanken gelten, einschließlich der Datenbank `tempdb`, die von allen Datenbanken im Pool gemeinsam genutzt wird. Im Allgemeinen können die Grenzwerte für Ressourcenpools nicht von der Workload einer Datenbank (entweder einzeln oder in einem Pool) erreicht werden, weil die Grenzwerte für Arbeitsauslastungsgruppen niedriger sind als die Grenzwerte für Ressourcenpools und IOPS/den Durchsatz früher begrenzen. Poolgrenzwerte können jedoch von der kombinierten Workload mehrerer Datenbanken für denselben Pool erreicht werden.
+Bei Einzeldatenbanken gelten die Grenzwerte für Arbeitsauslastungsgruppen für alle Speicher-E/A-Vorgänge für die Datenbank, während die Grenzwerte für Ressourcenpools für alle Speicher-E/A-Vorgänge für alle Datenbanken im gleichen dedizierten SQL-Pool (einschließlich der Datenbank tempdb) gelten. Bei Pools für elastische Datenbanken gelten die Grenzwerte für Arbeitsauslastungsgruppen für jede Datenbank im Pool, während die Grenzwerte für Ressourcenpools für den gesamten Pool für elastische Datenbanken gelten, einschließlich der Datenbank tempdb, die von allen Datenbanken im Pool gemeinsam genutzt wird. Im Allgemeinen können die Grenzwerte für Ressourcenpools nicht von der Workload einer Datenbank (entweder einzeln oder in einem Pool) erreicht werden, weil die Grenzwerte für Arbeitsauslastungsgruppen niedriger sind als die Grenzwerte für Ressourcenpools und IOPS/den Durchsatz früher begrenzen. Poolgrenzwerte können jedoch von der kombinierten Workload mehrerer Datenbanken für denselben Pool erreicht werden.
 
 Beispiel: Wenn eine Abfrage 1.000 IOPS ohne E/A-Ressourcenkontrolle generiert, der maximale IOPS-Grenzwert für die Workloadgruppe aber auf 900 IOPS festgelegt ist, kann die Abfrage maximal 900 IOPS generieren. Wenn der maximale IOPS-Grenzwert für den Ressourcenpool jedoch auf 1.500 IOPS festgelegt ist und die Gesamtanzahl der E/A-Vorgänge aller dem Ressourcenpool zugeordneten Arbeitsauslastungsgruppen 1.500 IOPS überschreitet, kann die Anzahl der E/A-Vorgänge der gleichen Abfrage so reduziert werden, dass sie unter dem Grenzwert von 900 IOPS liegt.
 
@@ -177,11 +180,40 @@ Wenn es zu einer Begrenzung der Protokollrate zu kommen droht, die die gewünsch
 
 ### <a name="storage-space-governance"></a>Speicherplatzgovernance
 
-Auf den Dienstebenen „Premium“ und „Unternehmenskritisch“ werden Daten und Transaktionsprotokolldateien auf dem lokalen SSD-Volume des Computers gespeichert, der die Datenbank oder den elastischen Pool hostet. Dies bietet hohe IOPS und Durchsätze sowie eine niedrige E/A-Wartezeit. Die Größe dieses lokalen Volumes hängt von den Hardwarefunktionen ab und ist begrenzt. Auf einem bestimmten Computer wird der lokale Volumespeicherplatz von Kundendatenbanken einschließlich `tempdb`, des Betriebssystems, der Verwaltungssoftware, Überwachungsdaten, Protokollen und weiteren Komponenten genutzt. Wenn Datenbanken erstellt oder gelöscht werden und ihre Speicherplatznutzung erhöht bzw. verringert wird, schwankt die lokale Speicherplatzbelegung auf einem Computer im Laufe der Zeit. 
+Bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ werden Kundendaten wie *Datendateien*, *Transaktionsprotokolldateien* und *tempdb-Dateien* im lokalen SSD-Speicher des Computers gespeichert, der die Datenbank oder den Pool für elastische Datenbanken hostet. Der lokale SSD-Speicher bietet hohe IOPS und Durchsätze sowie eine niedrige E/A-Wartezeit. Zusätzlich zu den Kundendaten wird der lokale Speicher für das Betriebssystem, die Verwaltungssoftware, Überwachungsdaten und Protokolle sowie andere Dateien verwendet, die für den Systembetrieb erforderlich sind.
 
-Wenn das System erkennt, dass der verfügbare freie Speicherplatz auf einem Computer gering ist und eine Datenbank oder ein Pool für elastische Datenbanken nicht mehr über genügend Speicherplatz verfügt, wird die Datenbank oder der Pool für elastische Datenbanken auf einen anderen Computer mit ausreichend freiem Speicherplatz verschoben, sodass eine Nutzung bis zur maximalen Größenbeschränkung des konfigurierten Dienstziels möglich ist. Wie bei einem Datenbankskalierungsvorgang erfolgt diese Verschiebung online und hat eine ähnliche [Auswirkung](single-database-scale.md#impact) (kurzes Failover von mehreren Sekunden am Ende des Vorgangs). Dieses Failover beendet offene Verbindungen und führt ein Rollback für Transaktionen durch, die sich potenziell auf Anwendungen auswirken, die zu diesem Zeitpunkt die Datenbank verwenden.
+Die Größe des lokalen Speichers ist begrenzt und hängt von Hardwarefunktionen ab, die den **maximalen lokalen Speichergrenzwert** bestimmen, oder von lokalem Speicher, der für Kundendaten reserviert ist. Dieser Grenzwert wird festgelegt, um den Speicherplatz für Kundendaten zu maximieren und gleichzeitig einen sicheren und zuverlässigen Systembetrieb sicherzustellen. Den Wert für den **maximalen lokalen Speicher** für jedes Dienstziel finden Sie in der Dokumentation zu Ressourcenlimits für [Einzeldatenbanken](resource-limits-vcore-single-databases.md) und [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md).
 
-Da Daten physisch auf einen anderen Computer kopiert werden, kann es möglicherweise lange dauern, größere Datenbanken zu verschieben. Wenn der lokale Speicherplatz während dieser Zeit von einer großen Benutzerdatenbank oder einem Pool für elastische Datenbanken beansprucht wird oder die `tempdb`-Datenbank schnell wächst, steigt das Risiko, dass der gesamte Speicherplatz aufgebraucht ist. Das System initiiert die Datenbankverschiebung auf eine ausgeglichene Weise, um Fehler aufgrund von nicht genügend Speicherplatz und unnötige Failover zu vermeiden.
+Sie können diesen Wert und die Menge des lokalen Speichers, der derzeit von einer bestimmten Datenbank oder einem bestimmten Pool für elastische Datenbanken verwendet wird, auch mithilfe der folgenden Abfrage ermitteln:
+
+```tsql
+SELECT server_name, database_name, slo_name, user_data_directory_space_quota_mb, user_data_directory_space_usage_mb
+FROM sys.dm_user_db_resource_governance
+WHERE database_id = DB_ID();
+```
+
+|Spalte|Beschreibung|
+| :----- | :----- |
+|`server_name`|Name des logischen Servers|
+|`database_name`|Datenbankname|
+|`slo_name`|Name des Dienstziels, einschließlich Hardwaregeneration|
+|`user_data_directory_space_quota_mb`|**Maximaler lokaler Speicher** in MB|
+|`user_data_directory_space_usage_mb`|Aktueller lokaler Speicherverbrauch durch Datendateien, Transaktionsprotokolldateien und tempdb-Dateien in MB. Wird alle fünf Minuten aktualisiert.|
+|||
+
+Diese Abfrage sollte in der Benutzerdatenbank und nicht in der Masterdatenbank ausgeführt werden. Bei Pools für elastische Datenbanken kann die Abfrage in einer beliebigen Datenbank im Pool ausgeführt werden. Die zurückgegebenen Werte gelten für den gesamten Pool.
+
+> [!IMPORTANT]
+> Wenn die Workload in den Dienstebenen „Premium“ und „Unternehmenskritisch“ versucht, den kombinierten lokalen Speicherverbrauch durch Datendateien, Transaktionsprotokolldateien und tempdb-Dateien über den **maximalen lokalen Speichergrenzwert** zu erhöhen, tritt ein Fehler aufgrund von unzureichendem Speicherplatz auf.
+
+Wenn Datenbanken erstellt oder gelöscht werden und ihr Speicherplatzverbrauch erhöht bzw. verringert wird, schwankt die lokale Speicherplatzbelegung auf einem Computer im Lauf der Zeit. Wenn das System erkennt, dass der verfügbare freie Speicherplatz auf einem Computer gering ist und eine Datenbank oder ein Pool für elastische Datenbanken nicht mehr über genügend Speicherplatz verfügt, wird die Datenbank oder der Pool für elastische Datenbanken auf einen anderen Computer mit ausreichend freiem lokalem Speicherplatz verschoben.
+
+Wie bei einem Datenbankskalierungsvorgang erfolgt diese Verschiebung online und hat eine ähnliche [Auswirkung](single-database-scale.md#impact) (kurzes Failover von mehreren Sekunden am Ende des Vorgangs). Dieses Failover beendet offene Verbindungen und führt ein Rollback für Transaktionen durch, die sich potenziell auf Anwendungen auswirken, die zu diesem Zeitpunkt die Datenbank verwenden.
+
+Da alle Daten auf ein lokales Speichervolume auf einem anderen Computer kopiert werden, kann es möglicherweise lange dauern, größere Datenbanken zu verschieben. Wenn der lokale Speicherplatz während dieser Zeit von einer Datenbank oder einem Pool für elastische Datenbanken beansprucht wird oder die tempdb-Datenbank schnell wächst, steigt das Risiko, dass der gesamte Speicherplatz aufgebraucht ist. Das System initiiert die Datenbankverschiebung auf eine ausgeglichene Weise, um Fehler aufgrund von nicht genügend Speicherplatz und unnötige Failover zu vermeiden.
+
+> [!NOTE]
+> Eine Datenverschiebung aufgrund von unzureichendem lokalem Speicher tritt nur in den Dienstebenen „Premium“ oder „Unternehmenskritisch“ auf. Sie tritt in den Dienstebenen „Hyperscale“, „Universell“, „Standard“ und „Basic“ nicht auf, da Datendateien in diesen Ebenen nicht im lokalen Speicher gespeichert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

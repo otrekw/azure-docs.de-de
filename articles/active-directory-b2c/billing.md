@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 02/01/2021
+ms.date: 05/28/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a54ed9dc6557d9b613485bf28e74af0c59fc9e5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 623799b894846034dcf3f58a4bd6e53c56d526df
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99225207"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690484"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Abrechnungsmodell für Azure Active Directory B2C
 
@@ -27,22 +27,23 @@ Die Preisgestaltung für Azure Active Directory B2C (Azure AD B2C) basiert au
 
 ## <a name="what-do-i-need-to-do"></a>Wie muss ich vorgehen?
 
-Um die MAU-Abrechnung nutzen zu können, muss Ihr Azure AD B2C-Mandant mit einem Azure-Abonnement verknüpft sein. Möglicherweise müssen Sie auch Ihren Azure AD B2C-Mandanten auf einen anderen Tarif umstellen, wenn Sie Azure AD B2C Premium P2-Features (z. B. risikobasierter bedingter Zugriff) verwenden möchten.
+Um die MAU-Abrechnung nutzen zu können, muss Ihr Azure AD B2C-Mandant mit einem Azure-Abonnement verknüpft sein. Möglicherweise müssen Sie auch Ihren Azure AD B2C-Mandanten auf einen anderen Tarif umstellen, wenn Sie Azure AD B2C Premium P2-Features (z. B. risikobasierte Richtlinien für bedingten Zugriff) verwenden möchten.
 
-|Für Ihren Mandanten gilt Folgendes:  |Sie müssen folgende Schritte durchführen:  |
+|Wenn für Ihren Mandanten Folgendes gilt:  |Sie müssen folgende Schritte durchführen:  |
 |---------|---------|
 | Azure AD B2C-Mandant, der bereits nach MAU abgerechnet wird     | Sie unternehmen nichts. Wenn sich Benutzer bei Ihrem Azure AD B2C-Mandanten authentifizieren, wird die Abrechnung automatisch anhand des MAU-basierten Abrechnungsmodells vorgenommen.        |
 | Azure AD B2C-Mandant, der noch nicht mit einem Abonnement verknüpft ist     |  [Verknüpfen Sie Ihren Azure AD B2C-Mandanten mit einem Abonnement](#link-an-azure-ad-b2c-tenant-to-a-subscription), um die MAU-Abrechnung zu aktivieren.     |
 | Azure AD B2C-Mandant, der vor dem 1. November 2019 mit einem Abonnement verknüpft wurde    | [Wechseln Sie zur MAU-Abrechnung (empfohlen)](#switch-to-mau-billing-pre-november-2019-azure-ad-b2c-tenants), oder behalten Sie das Abrechnungsmodell pro Authentifizierung bei.     |
-| Azure AD B2C-Mandant, für den Sie Premium-Features (z. B. risikobasierter bedingter Zugriff) verwenden möchten    | [Wechseln Sie zu einem Azure AD-Tarif](#change-your-azure-ad-pricing-tier), der die gewünschten Features unterstützt.        |
+| Azure AD B2C-Mandant, für den Sie Premium-Features (z. B. risikobasierte Richtlinien für bedingten Zugriff) verwenden möchten    | [Wechseln Sie zu einem Azure AD-Tarif](#change-your-azure-ad-pricing-tier), der die gewünschten Features unterstützt.        |
 |  |  |
 
 ## <a name="about-the-monthly-active-users-mau-billing-model"></a>Informationen zum MAU-Abrechnungsmodell (auf Basis der monatlich aktiven Benutzer)
 
 Das MAU-Abrechnungsmodell für Azure AD B2C-Mandanten ist am **1. November 2019** in Kraft getreten. Alle Azure AD B2C-Mandanten, die Sie an oder nach diesem Datum erstellt und mit einem Abonnement verknüpft haben, werden auf MAU-Basis abgerechnet. Wenn Sie einen Azure AD B2C-Mandanten haben, der noch nicht mit einem Abonnement verknüpft wurde, müssen Sie dies jetzt tun. Wenn Sie einen vorhandenen Azure AD B2C-Mandanten haben, der vor dem 1. November 2019 mit einem Abonnement verknüpft wurde, empfiehlt es sich, ein Upgrade auf das MAU-Abrechnungsmodell (auf Basis der monatlich aktiven Benutzer) auszuführen. Alternativ können Sie auch das Abrechnungsmodell pro Authentifizierung beibehalten.
   
-Ihren Azure AD B2C-Mandanten müssen Sie außerdem mit dem entsprechenden Azure-Tarif verknüpfen, der die gewünschten Features unterstützt. Für Premium-Features ist der Azure AD B2C [Premium P1- oder P2-Tarif](https://azure.microsoft.com/pricing/details/active-directory-b2c/) erforderlich. Möglicherweise müssen Sie Ihren Tarif aktualisieren, wenn Sie neue Features verwenden. Beispielsweise müssen Sie für den bedingten Zugriff den Azure AD B2C Premium P2-Tarif für Ihren Mandanten auswählen.
-
+Ihren Azure AD B2C-Mandanten müssen Sie außerdem mit dem entsprechenden Azure-Tarif verknüpfen, der die gewünschten Features unterstützt. Für Premium-Features ist der Azure AD B2C [Premium P1- oder P2-Tarif](https://azure.microsoft.com/pricing/details/active-directory-b2c/) erforderlich. Möglicherweise müssen Sie Ihren Tarif aktualisieren, wenn Sie neue Features verwenden. Beispielsweise müssen Sie für risikobasierte Richtlinien für bedingten Zugriff den Azure AD B2C Premium P2-Tarif für Ihren Mandanten auswählen.
+> [!NOTE]
+>  Ihre ersten 50.000 MAUs pro Monat sind sowohl für Premium P1- als auch für Premium P2-Features kostenlos. Um die Gesamtzahl der MAUs zu ermitteln, kombinieren wir MAUs aus allen Ihren Mandanten (sowohl Azure AD als auch Azure AD B2C), die mit demselben Abonnement verknüpft sind.
 ## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>Verknüpfen eines Azure AD B2C-Mandanten mit einem Abonnement
 
 Nutzungsgebühren für Azure Active Directory B2C (Azure AD B2C) werden einem Azure-Abonnement in Rechnung gestellt. Sie müssen einen Azure AD B2C-Mandanten explizit mit einem Azure-Abonnement verknüpfen, indem Sie eine Azure AD B2C-*Ressource* im Azure-Zielabonnement erstellen. In einem einzelnen Azure-Abonnement können neben anderen Azure-Ressourcen wie virtuellen Computern, Speicherkonten und Logik-Apps auch mehrere Azure AD B2C-Ressourcen erstellt werden. Sie können alle Ressourcen in einem Abonnement anzeigen, indem Sie den Azure Active Directory (Azure AD)-Mandanten aufrufen, dem das Abonnement zugeordnet ist.
@@ -74,7 +75,7 @@ Nachdem Sie diese Schritte für einen Azure AD B2C-Mandanten ausgeführt haben
 
 ## <a name="change-your-azure-ad-pricing-tier"></a>Ändern Ihres Azure AD-Tarifs
 
-Ein Mandant muss auf Basis der Features, die Sie mit Ihrem Azure AD B2C-Mandanten nutzen möchten, mit dem entsprechenden Azure-Tarif verknüpft werden. Für Premium-Features ist Azure AD B2C Premium P1 oder P2 erforderlich, wie unter [Azure Active Directory B2C – Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/) beschrieben. In manchen Fällen müssen Sie ein Upgrade für Ihren Tarif vornehmen, wenn Sie neue Features verwenden. Wenn Sie z. B. Identity Protection, den risikobasierten bedingten Zugriff und alle zukünftigen Premium P2-Funktionen mit Azure AD B2C nutzen möchten, müssen Sie den Azure AD B2C Premium P2-Tarif für Ihren Mandanten auswählen.
+Ein Mandant muss auf Basis der Features, die Sie mit Ihrem Azure AD B2C-Mandanten nutzen möchten, mit dem entsprechenden Azure-Tarif verknüpft werden. Für Premium-Features ist Azure AD B2C Premium P1 oder P2 erforderlich, wie unter [Azure Active Directory B2C – Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/) beschrieben. In manchen Fällen müssen Sie ein Upgrade für Ihren Tarif vornehmen, wenn Sie neue Features verwenden. Wenn Sie z. B. Identity Protection, risikobasierte Richtlinien für bedingten Zugriff und alle zukünftigen Premium P2-Funktionen mit Azure AD B2C nutzen möchten, müssen Sie den Azure AD B2C Premium P2-Tarif für Ihren Mandanten auswählen.
 
 Führen Sie zum Ändern Ihres Tarifs die folgenden Schritte aus.
 

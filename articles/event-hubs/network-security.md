@@ -3,12 +3,12 @@ title: Netzwerksicherheit für Azure Event Hubs
 description: In diesem Artikel wird beschrieben, wie Sie Zugriff über private Endpunkte konfigurieren.
 ms.topic: conceptual
 ms.date: 05/04/2021
-ms.openlocfilehash: 51977e9b9f9b0164acfb640392c16b20e58202ca
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 39bad6fabb0f8f639449cd20033b8b31139d98b1
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367131"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413409"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Netzwerksicherheit für Azure Event Hubs 
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Event Hubs verwenden: 
@@ -46,7 +46,7 @@ Nachdem die Konfiguration der Bindung an mindestens einen Dienstendpunkt des VNE
 Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, die an das Subnetz gebunden sind, und dem entsprechenden Event Hubs-Namespace, obwohl sich die beobachtbare Netzwerkadresse des Messaging-Dienstendpunkts in einem öffentlichen IP-Bereich befindet. Es gibt bei diesem Verhalten eine Ausnahme. Durch die Aktivierung eines Dienstendpunkts wird standardmäßig die `denyall`-Regel in der [IP-Firewall](event-hubs-ip-filtering.md) aktiviert, die dem virtuellen Netzwerk zugeordnet ist. Sie können bestimmte IP-Adressen in der IP-Firewall hinzufügen, um den Zugriff auf den öffentlichen Endpunkt des Event Hub zu ermöglichen. 
 
 > [!IMPORTANT]
-> Virtuelle Netzwerke werden in der **Basisstufe** nicht unterstützt.
+> Virtuelle Netzwerke werden auf den Dienstebenen **Basic** und **Premium** nicht unterstützt.
 
 ### <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Erweiterte Sicherheitsszenarien basierend auf der VNET-Integration 
 
@@ -73,7 +73,8 @@ Mit dem [Azure Private Link-Dienst](../private-link/private-link-overview.md) 
 Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNET und bindet den Dienst dadurch in Ihr VNET ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
 
 > [!IMPORTANT]
-> Dieses Funktion wird in der **Basisstufe** nicht unterstützt.
+> Dieses Funktion wird auf den Dienstebenen **Basic** und **Premium** nicht unterstützt. 
+
 
 Weitere Informationen finden Sie unter [Konfigurieren privater Endpunkte für einen Event Hub](private-link-service.md).
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 4/27/2021
+ms.date: 05/28/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60473d034820627605616c0bc280f1f105f4b3e5
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cdd4fe2f749f36fe0016e0cba71093cd6083dda8
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124102"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783783"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Erstellen einer Zugriffsüberprüfung für Azure AD-Rollen in Privileged Identity Management
 
@@ -29,20 +29,20 @@ In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüf
 
 ## <a name="prerequisite-license"></a>Erforderliche Lizenz
 
-[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]Weitere Informationen zu Lizenzen für PIM finden Sie unter [Lizenzanforderungen für die Verwendung von Privileged Identity Management](subscription-requirements.md).
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)] Weitere Informationen zu Lizenzen für PIM finden Sie unter [Lizenzanforderungen für die Verwendung von Privileged Identity Management](subscription-requirements.md).
 
 > [!Note]
->  Derzeit können Sie eine Zugriffsüberprüfung auf Dienstprinzipale mit Zugriff auf Azure AD und Azure-Ressourcenrollen (Vorschau) mit einer in Ihrem Anker aktiven Azure Active Directory Premium P2-Edition durchführen. Das Lizenzierungsmodell für Dienstprinzipale wird für die allgemeine Verfügbarkeit dieses Features fertig gestellt, und es sind möglicherweise zusätzliche Lizenzen erforderlich.
+> Derzeit können Sie eine Zugriffsüberprüfung auf Dienstprinzipale mit Zugriff auf Azure AD und Azure-Ressourcenrollen (Vorschau) mit einer in Ihrem Anker aktiven Azure Active Directory Premium P2-Edition durchführen. Das Lizenzierungsmodell für Dienstprinzipale wird für die allgemeine Verfügbarkeit dieses Features fertig gestellt, und es sind möglicherweise zusätzliche Lizenzen erforderlich.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator)
+[Globaler Administrator](../roles/permissions-reference.md#global-administrator)
 
 ## <a name="open-access-reviews"></a>Öffnen von Zugriffsüberprüfungen
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Benutzer an, der Mitglied der Rolle „Administrator für privilegierte Rollen“ ist.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Benutzer an, dem die Rolle „Globaler Administrator“ zugewiesen ist.
 
-2. Wählen Sie **Identity Governance** aus
+2. Wählen Sie **Identity Governance** aus.
  
 3. Wählen Sie **Azure AD-Rollen** unter  **Azure AD Privileged Identity Management** aus.
  
@@ -73,16 +73,16 @@ In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüf
 12. Wählen Sie unter **Überprüfen der Rollenmitgliedschaft** die privilegierten Azure AD-Rollen aus, die zu überprüfen sind. 
 
     > [!NOTE]
-    > - Die hier ausgewählten Rollen enthalten [permanente und berechtigte Rollen](../privileged-identity-management/pim-how-to-add-role-to-user.md).
     > - Bei der Auswahl mehrerer Rollen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Rollen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
     > - Für Rollen, denen Gruppen zugewiesen sind, wird der Zugriff auf jede Gruppe, die mit der zu überprüfenden Rolle verknüpft ist, im Rahmen der Zugriffsüberprüfung überprüft.
     Wenn Sie eine Zugriffsüberprüfung für **Azure AD-Rollen** erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie im folgenden Beispiel aus.
 
-    ![Bereich „Mitgliedschaft überprüfen“ mit aufgeführten Azure AD-Rollen, die Sie auswählen können](./media/pim-how-to-start-security-review/review-membership.png)
+    > [!NOTE]
+    > Bei der Auswahl mehrerer Rollen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Rollen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
 
-    Wenn Sie eine Zugriffsüberprüfung für **Azure-Ressourcenrollen** erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie in der folgenden Abbildung aus.
+1. Schränken Sie unter **Zuweisungstyp** den Bereich für die Überprüfung nach Art der Zuweisung des Prinzipals zur Rolle ein. Wählen Sie **(Vorschau) Nur berechtigte Zuweisungen** aus, um berechtigte Zuweisungen (unabhängig vom Aktivierungsstatus beim Erstellen der Überprüfung) zu überprüfen, oder wählen Sie **(Vorschau) Nur aktive Zuweisungen** aus, um aktive Zuweisungen zu überprüfen. Wählen Sie **alle aktiven und berechtigten Zuweisungen** aus, um alle Zuweisungen unabhängig vom Typ zu überprüfen.
 
-    ![Bereich „Mitgliedschaft überprüfen“ mit aufgeführten Azure-Ressourcenrollen, die Sie auswählen können](./media/pim-how-to-start-security-review/review-membership-azure-resource-roles.png)
+     ![Liste der Prüfer für Zuweisungstypen](./media/pim-how-to-start-security-review/assignment-type-select.png)
 
 13. Wählen Sie im Abschnitt **Prüfer** mindestens eine Person für die Überprüfung aller Benutzer aus. Alternativ können Sie auswählen, dass die Mitglieder ihren eigenen Zugriff überprüfen.
 
@@ -107,9 +107,9 @@ In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüf
     - **Zugriff genehmigen**: Der Zugriff des Benutzers wird genehmigt.
     - **Empfehlungen annehmen**: Die Systemempfehlungen hinsichtlich der Ablehnung oder Gewährung des weiteren Benutzerzugriffs werden verwendet.
 
-1. Sie können Benachrichtigungen an weitere Benutzer oder Gruppen (Vorschauversion) senden, um Überprüfungsabschlussupdates zu erhalten. Mit diesem Feature können andere Beteiligte als der Ersteller der Überprüfung über den Fortschritt der Überprüfung aktualisiert werden. Um dieses Feature zu verwenden, wählen Sie **Benutzer oder Gruppen auswählen** aus, und fügen Sie einen zusätzlichen Benutzer oder eine Gruppe hinzu, wenn Sie den Status des Abschlusses erhalten möchten.
+1. Sie können Benachrichtigungen an weitere Benutzer oder Gruppen (Vorschau) senden, um Updates zum Überprüfungsabschluss zu erhalten. Mit diesem Feature können andere Beteiligte als der Ersteller der Überprüfung über den Fortschritt der Überprüfung informiert werden. Um dieses Feature zu verwenden, wählen Sie **Benutzer oder Gruppen auswählen** aus, und fügen Sie einen weiteren Benutzer oder eine weitere Gruppe hinzu, wenn Sie Statusinformationen zur Überprüfung erhalten möchten.
 
-    ![Nach Abschluss der Einstellungen: Hinzufügen zusätzlicher Benutzer zum Empfangen von Benachrichtigungen](./media/pim-how-to-start-security-review/upon-completion-settings-additional-receivers.png) 
+    ![Einstellungen nach Abschluss: Hinzufügen zusätzlicher Benutzer zum Empfangen von Benachrichtigungen](./media/pim-how-to-start-security-review/upon-completion-settings-additional-receivers.png) 
 
 ### <a name="advanced-settings"></a>Erweiterte Einstellungen
 

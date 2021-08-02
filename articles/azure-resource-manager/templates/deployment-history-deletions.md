@@ -2,14 +2,14 @@
 title: Löschung des Bereitstellungsverlaufs
 description: Hier erfahren Sie, wie Azure Resource Manager Bereitstellungen automatisch aus dem Bereitstellungsverlauf löscht. Bereitstellungen werden gelöscht, wenn der Verlauf den Grenzwert von 800 Einträgen überschreitet.
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 06/04/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: e2920eb1daa626b6a817b2fe3b388e8c531f12e4
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: eaffae3ea5e901719969632cb1f889c8914978a0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751616"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963361"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische Löschungen aus dem Bereitstellungsverlauf
 
@@ -17,23 +17,21 @@ Jedes Mal, wenn Sie eine Vorlage bereitstellen, werden Informationen über die B
 
 Azure Resource Manager löscht Bereitstellungen automatisch aus dem Verlauf, wenn der Grenzwert fast erreicht ist. Die automatische Löschung unterscheidet sich vom bisherigen Verhalten. Zuvor mussten Sie Bereitstellungen manuell aus dem Bereitstellungsverlauf löschen, um einen Fehler zu vermeiden. Diese Änderung wurde am 6. August 2020 implementiert.
 
-**Automatische Löschungen werden für Ressourcengruppenbereitstellungen unterstützt. Aktuell werden Bereitstellungen im Verlauf für Bereitstellungen vom Typ [Abonnement](deploy-to-subscription.md), [Verwaltungsgruppe](deploy-to-management-group.md)und [Mandant](deploy-to-tenant.md) nicht automatisch gelöscht.**
+**Automatische Löschungen werden für Ressourcengruppen- und Abonnementbereitstellungen unterstützt. Aktuell werden Bereitstellungen im Verlauf für Bereitstellungen vom Typ [Verwaltungsgruppe](deploy-to-management-group.md) und [Mandant](deploy-to-tenant.md) nicht automatisch gelöscht.**
 
 > [!NOTE]
 > Das Löschen einer Bereitstellung aus dem Verlauf hat keinerlei Auswirkungen auf die bereitgestellten Ressourcen.
 
 ## <a name="when-deployments-are-deleted"></a>Wann Bereitstellungen gelöscht werden
 
-Bereitstellungen werden aus Ihrem Verlauf gelöscht, wenn der Grenzwert von 775 Bereitstellungen überschritten wird. Azure Resource Manager löscht Bereitstellungen, bis der Verlauf wieder 750 Bereitstellungen enthält. Die ältesten Bereitstellungen werden immer zuerst gelöscht.
+Bereitstellungen werden aus Ihrem Verlauf gelöscht, wenn der Grenzwert von 700 Bereitstellungen überschritten wird. Azure Resource Manager löscht Bereitstellungen, bis der Verlauf wieder 600 Bereitstellungen enthält. Die ältesten Bereitstellungen werden immer zuerst gelöscht.
 
-:::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Löschungen aus dem Bereitstellungsverlauf":::
+:::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.png" alt-text="Diagramm des Löschens des Bereitstellungsverlaufs":::
 
-> [!NOTE]
-> Die Anfangszahl (775) und die Endzahl (750) können geändert werden.
->
+> [!IMPORTANT]
 > Wenn Ihre Ressourcengruppe bereits den Grenzwert von 800 erreicht hat, schlägt Ihre nächste Bereitstellung fehl. Der automatische Löschvorgang wird sofort gestartet. Nach einer kurzen Wartezeit können Sie die Bereitstellung noch mal versuchen.
 
-Neben Bereitstellungen können Sie Löschungen auch auslösen, wenn Sie den [what-if-Vorgang](template-deploy-what-if.md) ausführen oder eine Bereitstellung überprüfen.
+Neben Bereitstellungen können Sie Löschungen auch auslösen, wenn Sie den [what-if-Vorgang](./deploy-what-if.md) ausführen oder eine Bereitstellung überprüfen.
 
 Wenn Sie einer Bereitstellung einen Namen geben, der bereits im Verlauf vorhanden ist, setzen Sie dessen Position im Verlauf zurück. Die Bereitstellung wechselt dann zur aktuellsten Position im Verlauf. Die Position einer Bereitstellung wird auch zurückgesetzt, wenn Sie nach einem Fehler ein [Rollback auf diese Bereitstellung ausführen](rollback-on-error.md).
 

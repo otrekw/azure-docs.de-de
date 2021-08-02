@@ -3,20 +3,21 @@ title: Aktivieren des öffentlichen Internetzugriffs in Azure VMware Solution
 description: In diesem Artikel wird erläutert, wie Sie die Funktion „öffentliche IP-Adresse“ in Azure Virtual WAN verwenden.
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: e5d4d73bf65842946e9c0f0c16869779e2e6f787
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c3900462862bea94bbad4f21cb2dcd7e439ba674
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776682"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954381"
 ---
-# <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Verwenden der Funktionalität öffentlicher IP-Adressen in Azure VMware Solution
+# <a name="enable-public-internet-access-in-azure-vmware-solution"></a>Aktivieren des öffentlichen Internetzugriffs in Azure VMware Solution
 
-„Öffentliche IP-Adresse“ ist ein neues Feature bei der Azure VMware Solution-Konnektivität. Dadurch können Ressourcen wie Webserver, virtuelle Computer (VMs) und Hosts über ein öffentliches Netzwerk zugänglich gemacht werden. 
+„Öffentliche IP-Adresse“ ist ein Feature bei der Azure VMware Solution-Konnektivität. Dadurch können Ressourcen wie Webserver, virtuelle Computer (VMs) und Hosts über ein öffentliches Netzwerk zugänglich gemacht werden. 
 
 Der öffentliche Zugriff auf das Internet wird auf zwei Arten ermöglicht. 
 
-- Anwendungen können unter dem Application Gateway-Lastenausgleich für HTTP-/HTTPS-Datenverkehr gehostet und veröffentlicht werden.
+- Hosten und Veröffentlichen Sie Anwendungen unter dem Application Gateway-Lastenausgleich für HTTP-/HTTPS-Datenverkehr.
+
 - Sie können über Funktionen für öffentliche IP-Adressen in Azure Virtual WAN veröffentlicht werden.
 
 Als Teil der Bereitstellung der privaten Cloud von Azure VMware Solution werden bei Aktivierung der Funktion „öffentliche IP-Adresse“ die erforderlichen Komponenten automatisch erstellt und aktiviert:
@@ -32,7 +33,9 @@ In diesem Artikel wird erläutert, wie Sie die Funktionalität öffentlicher IP-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure VMware Solution-Umgebung
+
 - Ein Webserver, der in der Azure VMware Solution-Umgebung ausgeführt wird.
+
 - Ein neuer, nicht überlappender IP-Adressbereich für die Virtual WAN-Hubbereitstellung, in der Regel `/24`.
 
 ## <a name="reference-architecture"></a>Referenzarchitektur
@@ -162,4 +165,4 @@ Pro privater Cloud sind 100 öffentliche IP-Adressen zulässig.
 Nachdem Sie nun erfahren haben, wie Sie die Funktion für öffentliche IP-Adressen in Azure VMware Solution verwenden, informieren Sie sich über die folgenden Themen:
 
 - Verwenden von öffentlichen IP-Adressen mit [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md)
-- [Erstellen eines IPsec-Tunnels zu Azure VMware Solution](create-ipsec-tunnel.md)
+- [Erstellen eines IPsec-Tunnels zu Azure VMware Solution](./configure-site-to-site-vpn-gateway.md)

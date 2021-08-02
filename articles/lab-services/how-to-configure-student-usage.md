@@ -3,12 +3,12 @@ title: Konfigurieren von Nutzungseinstellungen in Labs von Azure Lab Services
 description: Erfahren Sie, wie Sie die Anzahl der Kursteilnehmer für ein Lab konfigurieren, sie beim Lab registrieren, die Anzahl der Stunden steuern, in denen sie den virtuellen Computer verwenden können, und vieles mehr.
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 380a587eecb276c457b93ca3c3f3ac08b2239275
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7c0fb7b0228ee17705af2dfd70279f6fc7bda3c
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791962"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190721"
 ---
 # <a name="add-and-manage-lab-users"></a>Hinzufügen und Verwalten von Labbenutzern
 
@@ -156,6 +156,9 @@ In diesem Abschnitt können Sie den Registrierungslink über das Portal abrufen 
     Im Bereich **Benutzer** wird eine Liste von Kursteilnehmern angezeigt, die sich bei Ihrem Lab registriert haben.  
 
     ![Liste der registrierten Benutzer](./media/tutorial-track-usage/registered-users.png)
+
+    > [!NOTE] 
+    > Wenn Sie ein [Lab erneut veröffentlichen](how-to-create-manage-template.md#publish-the-template-vm) oder [Kursteilnehmer-VMs zurücksetzen](how-to-set-virtual-machine-passwords.md#reset-vms), bleiben die Kursteilnehmer für die VMs der Labs registriert.  Der Inhalt der VMs wird jedoch gelöscht, und die VMs werden mit dem Image der Vorlagen-VM erneut erstellt.
 
 ## <a name="set-quotas-for-users"></a>Festlegen von Kontingenten für Benutzer
 

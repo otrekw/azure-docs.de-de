@@ -12,22 +12,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2020
+ms.date: 06/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 018368b6284cf39edec01f0a9a943b8ea15c85d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d2a9c69108211b1342c553731c28785e1f2cc79
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98103880"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421794"
 ---
 # <a name="connect-dynamics-365-activity-logs-to-azure-sentinel"></a>Verbinden von Dynamics 365-Aktivitätsprotokollen mit Azure Sentinel
 
 Der Connector für [Dynamics 365](/office365/servicedescriptions/microsoft-dynamics-365-online-service-description) Common Data Service-Aktivitäten (CDS) bietet Erkenntnisse zu Administrator-, Benutzer- und Supportaktivitäten und zu Protokollierungsereignissen von Microsoft Social Engagement. Indem Sie Dynamics 365 CRM-Protokolle mit Azure Sentinel verbinden, können Sie diese Daten in Arbeitsmappen anzeigen oder damit benutzerdefinierte Warnungen erstellen oder Ihren Untersuchungsprozess optimieren. Dieser neue Azure Sentinel-Connector sammelt die Dynamics CDS-Daten über die Office-Verwaltungs-API. Weitere Informationen zu den Dynamics CDS-Aktivitäten, die in Power Platform überwacht werden, finden Sie unter [Aktivieren und Verwenden der Aktivitätsprotokollierung](/power-platform/admin/enable-use-comprehensive-auditing).
 
-> [!IMPORTANT]
->
-> Der Connector für Dynamics 365 Common Data Service-Aktivitäten (CDS) befindet sich derzeit in der **Vorschauphase**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +43,7 @@ Der Connector für [Dynamics 365](/office365/servicedescriptions/microsoft-dyna
 
 1. Klicken Sie im Azure Sentinel-Navigationsmenü auf **Data connectors** (Datenconnectors).
 
-1. Wählen Sie im **Katalog für Datenconnectors** die Option **Dynamics 365 (Vorschau)** und dann im Vorschaubereich **Connectorseite öffnen** aus.
+1. Wählen Sie im **Katalog für Datenconnectors** die Option **Dynamics 365** und dann im Vorschaubereich **Connectorseite öffnen** aus.
 
 1. Klicken Sie auf der Registerkarte **Anweisungen** unter **Konfiguration** auf **Verbinden**. 
 

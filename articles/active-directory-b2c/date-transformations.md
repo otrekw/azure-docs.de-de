@@ -10,12 +10,13 @@ ms.topic: reference
 ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: b2c-support
+ms.openlocfilehash: ccf8c5fceea71c3781ae420c1c36c629ebb97a7b
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85202550"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783817"
 ---
 # <a name="date-claims-transformations"></a>Transformationen von Datumsansprüchen
 
@@ -31,7 +32,7 @@ Dieser Artikel enthält Beispiele für die Verwendung von Transformationen von D
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | leftOperand | Zeichenfolge | Typ des ersten Anspruchs, der nach dem zweiten Anspruch liegen sollte. |
 | InputClaim | rightOperand | Zeichenfolge | Typ des zweiten Anspruchs, der vor dem ersten Anspruch liegen sollte. |
-| InputParameter | AssertIfEqualTo | boolean | Gibt an, ob diese Assertion positiv ausfallen soll, wenn der linke Operand gleich dem rechten Operanden ist. |
+| InputParameter | AssertIfEqualTo | boolean | Gibt an, ob diese Assertion einen Fehler auslösen soll, wenn der linke Operand gleich dem rechten Operanden ist. Ein Fehler wird ausgelöst, wenn der linke Operand gleich dem rechten Operanden ist und der Wert auf `true` festgelegt ist. Mögliche Werte: `true` (Standard) oder `false`. |
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | Gibt an, ob diese Assertion positiv ausfallen soll, wenn der rechte Operanden fehlt. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | INT | Gibt die Anzahl der Millisekunden an, die zwischen den beiden Datum/Uhrzeit-Werten liegen darf, damit die Zeiten als gleich angesehen werden (z. B. Abweichungen durch Gangungenauigkeiten bei Uhren). |
 
@@ -39,7 +40,7 @@ Die Anspruchstransformation **AssertDateTimeIsGreaterThan** wird immer über ein
 
 ![Ausführung von AssertStringClaimsAreEqual](./media/date-transformations/assert-execution.png)
 
-Im folgenden Beispiel wird der `currentDateTime`-Anspruch mit dem `approvedDateTime`-Anspruch verglichen. Ein Fehler wird ausgelöst, wenn `currentDateTime` nach `approvedDateTime` liegt. Die Transformation behandelt Werte als gleich, wenn sie innerhalb eines Abstands von 5 Minuten (30.000 Millisekunden) liegen.
+Im folgenden Beispiel wird der `currentDateTime`-Anspruch mit dem `approvedDateTime`-Anspruch verglichen. Ein Fehler wird ausgelöst, wenn `currentDateTime` nach `approvedDateTime` liegt. Die Transformation behandelt Werte als gleich, wenn sie innerhalb eines Abstands von 5 Minuten (30.000 Millisekunden) liegen. Es wird kein Fehler ausgelöst, wenn die Werte gleich sind, da `AssertIfEqualTo` auf `false` festgelegt ist.
 
 ```xml
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -54,6 +55,10 @@ Im folgenden Beispiel wird der `currentDateTime`-Anspruch mit dem `approvedDateT
   </InputParameters>
 </ClaimsTransformation>
 ```
+
+> [!NOTE]
+> Wenn Sie im obigen Beispiel den Eingabeparameter `AssertIfEqualTo` entfernen und `currentDateTime` gleich `approvedDateTime` ist, wird ein Fehler ausgelöst. Der Standardwert für `AssertIfEqualTo` lautet `true`.
+>
 
 Das `login-NonInteractive`technische Validierungsprofil ruft die `AssertApprovedDateTimeLaterThanCurrentDateTime`-Anspruchstransformation auf.
 ```xml

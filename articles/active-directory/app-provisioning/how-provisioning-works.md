@@ -1,25 +1,24 @@
 ---
-title: Grundlegendes zur Funktionsweise der Azure AD-Bereitstellung | Microsoft-Dokumentation
-description: Grundlegendes zur Funktionsweise der Azure AD-Bereitstellung
+title: Funktionsweise der Anwendungsbereitstellung in Azure Active Directory
+description: So funktioniert die Anwendungsbereitstellung in Azure Active Directory.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 19ec3ec95fbbccbaa5c646c8de16999b86349626
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e95359d24cda6b0d23084010d8ab19566dd2197c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579449"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409377"
 ---
-# <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
+# <a name="how-application-provisioning-works-in-azure-active-directory"></a>Funktionsweise der Anwendungsbereitstellung in Azure Active Directory
 
 Die automatische Bereitstellung bezieht sich auf das Erstellen von Benutzeridentitäten und -rollen in den Cloudanwendungen, auf die Benutzer Zugriff benötigen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die automatische Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern. Bevor Sie eine Bereitstellung starten, können Sie diesen Artikel lesen, um Informationen zur Funktionsweise der Azure AD-Bereitstellung und Konfigurationsempfehlungen zu erhalten. 
 

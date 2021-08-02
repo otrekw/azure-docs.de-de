@@ -1,7 +1,7 @@
 ---
-title: Parität zwischen öffentlichen und unabhängigen Regionen
+title: Cloudregionsübergreifende Featureverfügbarkeit
 titleSuffix: Azure Machine Learning
-description: In diesem Artikel wird die Featureparität zwischen der öffentlichen Cloud und Azure Government-, Azure Deutschland- und Azure China 21Vianet-Regionen aufgeführt.
+description: In diesem Artikel sind die Unterschiede bei der Featureverfügbarkeit zwischen der öffentlichen Cloud und Azure Government-, Azure Deutschland- und Azure China 21Vianet-Regionen aufgeführt.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,34 +9,30 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 12/21/2020
+ms.date: 06/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: b0a720b1b51c2f1bafa581e75cb8ab00b15a4b2d
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 0e8c63827ba6e2e022e0d7876952b0a159c1e569
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750427"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984624"
 ---
-# <a name="azure-machine-learning-sovereign-cloud-parity"></a>Sovereign Cloud-Parität für Azure Machine Learning
+# <a name="azure-machine-learning-feature-availability-across-clouds-regions"></a>Verfügbarkeit von Azure Machine Learning-Features über Cloudregionen hinweg
 
-Hier erfahren Sie, welche Azure Machine Learning-Features in Sovereign Cloud-Regionen verfügbar sind. 
+Hier erfahren Sie, welche Azure Machine Learning-Features in den Regionen „Azure Government“, „Azure Deutschland“ und „Azure China 21Vianet“ verfügbar sind. 
 
-Die Liste mit den globalen Azure-Regionen enthält mehrere unabhängige Regionen für bestimmte Märkte. Hierzu zählen beispielsweise die Regionen „Azure Government“ und „Azure China 21Vianet“. Azure Machine Learning wird aktuell in folgenden Sovereign Cloud-Regionen bereitgestellt:
+Die Liste mit den globalen Azure-Regionen enthält neben den öffentlichen Cloudregionen mehrere Regionen für bestimmte Märkte. Hierzu zählen beispielsweise die Regionen „Azure Government“ und „Azure China 21Vianet“. Azure Machine Learning wird sowohl in den öffentlichen Cloudregionen als auch in den folgenden Regionen bereitgestellt:
 
 * Azure Government-Regionen **US-Arizona** und **US-Virginia**.
 * Azure China 21Vianet-Region **China-East-2**.
 
-> [!TIP]
-> In diesem Artikel wird für nicht unabhängige Regionen der Begriff __öffentliche Cloud__ verwendet, um zwischen unabhängigen und nicht unabhängigen Regionen zu unterscheiden.
-
-Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlichen Cloud und unseren unabhängigen Regionen zu erreichen. Alle Azure Machine Learning-Features werden spätestens **30 Tage nach ihrer allgemeinen Verfügbarkeit (General Availability, GA)** in unserer öffentlichen Cloud in diesen Regionen verfügbar. Darüber hinaus aktivieren wir auch eine gewisse Anzahl von Previewfunktionen in diesen Regionen. Im Anschluss finden Sie Informationen zu den aktuellen Paritätsunterschieden zwischen unseren unabhängigen und öffentlichen Clouds.
-
+Die Informationen im übrigen Teil dieses Dokuments enthalten Informationen dazu, welche Features von Azure Machine Learning in diesen Regionen verfügbar sind, sowie regionsspezifische Informationen zur Verwendung dieser Features.
 ## <a name="azure-government"></a>Azure Government 
 
 | Funktion | Status der öffentlichen Cloud  | US-Virginia | US-Arizona| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
-| **Automatisiertes maschinelles Lernen** | | | |
+| **[Automatisiertes maschinelles Lernen](concept-automated-ml.md)** | | | |
 | Erstellen und Ausführen von Experimenten in Notebooks                                    | Allgemein verfügbar                   | YES                | YES         |
 | Erstellen und Ausführen von Experimenten über die Studioweboberfläche                        | Öffentliche Vorschau       | YES                | YES         |
 | Branchenführende Vorhersagefunktionen                                  | Allgemein verfügbar                   | YES                | YES         |
@@ -44,7 +40,7 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
 | Unterstützung umfangreicher Daten (bis zu 100 GB)                                          | Öffentliche Vorschau       | YES                | YES         |
 | Azure Databricks-Integration                                              | Allgemein verfügbar                   | Nein                 | Nein          |
 | SQL-, Cosmos DB- und HDInsight-Integrationen                                   | Allgemein verfügbar                   | YES                | YES         |
-| **Machine Learning-Pipelines** |   |  | | 
+| **[Machine Learning-Pipelines](concept-ml-pipelines.md)** |   |  | | 
 | Erstellen, Ausführen und Veröffentlichen von Pipelines mit dem Azure ML SDK                   | Allgemein verfügbar                   | YES                | YES         |
 | Erstellen von Pipelineendpunkten mit dem Azure ML SDK                           | Allgemein verfügbar                   | YES                | YES         |
 | Erstellen, Bearbeiten und Löschen geplanter Ausführungen von Pipelines mit dem Azure ML SDK | Allgemein verfügbar                   | JA*               | JA*        |
@@ -52,62 +48,62 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
 | Erstellen, Ausführen, Visualisieren und Veröffentlichen von Pipelines in Azure ML Designer          | Allgemein verfügbar      | YES                | YES         |
 | Azure Databricks-Integration mit ML-Pipeline                             | Allgemein verfügbar                   | Nein                 | Nein          |
 | Erstellen von Pipelineendpunkten in Azure ML Designer                             | Allgemein verfügbar      | YES                | YES         |
-| **Integrierte Notebooks** |   |  | | 
+| **[Integrierte Notebooks](how-to-run-jupyter-notebooks.md)** |   |  | | 
 | Arbeitsbereichnotebook und Dateifreigabe                                        | Allgemein verfügbar                   | YES                | YES         |
 | R- und Python-Unterstützung                                                       | Allgemein verfügbar                   | YES                | YES         |
 | Unterstützung von Virtual Network                                                    | Öffentliche Vorschau       | Nein                 | Nein          |
-| **Compute-Instanz** |   |  | | 
+| **[Compute-Instanz](concept-compute-instance.md)** |   |  | | 
 | Verwaltete Compute-Instanzen für integrierte Notebooks                         | Allgemein verfügbar                   | YES                | YES         |
 | Jupyter, JupyterLab-Integration                                            | Allgemein verfügbar                   | YES                | YES         |
 | Unterstützung von virtuellen Netzwerken (VNETs)                                             | Öffentliche Vorschau       | YES                | YES         |
 | **SDK-Unterstützung** |  |  | | 
-| R SDK-Unterstützung                                                              | Öffentliche Vorschau       | YES                | YES         |
-| Python SDK-Unterstützung                                                         | Allgemein verfügbar                   | YES                | YES         |
-| **Security** |   | | | 
+| [R SDK-Unterstützung](https://azure.github.io/azureml-sdk-for-r/reference/index.html)                                                              | Öffentliche Vorschau       | YES                | YES         |
+| [Python SDK-Unterstützung](/python/api/overview/azure/ml/)                                                         | Allgemein verfügbar                   | YES                | YES         |
+| **[Security](concept-enterprise-security.md)** |   | | | 
 | VNET-Unterstützung (virtuelles Netzwerk) zu Trainingszwecken                                | Allgemein verfügbar                   | YES                | YES         |
 | VNET-Unterstützung (virtuelles Netzwerk) für Rückschlüsse                               | Allgemein verfügbar                   | YES                | YES         |
 | Bewerten der Endpunktauthentifizierung                                            | Öffentliche Vorschau       | YES                | YES         |
-| Private Link für Arbeitsplätze                                                     | Öffentliche Vorschau       | Nein                 | Nein          |
+| Privater Endpunkt am Arbeitsplatz                                                 | Öffentliche Vorschau       | Nein                 | Nein          |
 | ACI hinter VNET                                                            | Öffentliche Vorschau       | Nein                 | Nein          |
 | ACR hinter VNET                                                            | Öffentliche Vorschau       | Nein                 | Nein          |
 | Private IP-Adresse des AKS-Clusters                                                  | Öffentliche Vorschau       | Nein                 | Nein          |
 | **Compute** |   | | |
-| Arbeitsbereichsübergreifende Kontingentverwaltung                                         | Allgemein verfügbar                   | YES                | YES         |
-| **Daten für maschinelles Lernen** |   | | |
+| [Arbeitsbereichsübergreifende Kontingentverwaltung](how-to-manage-quotas.md)                                         | Allgemein verfügbar                   | YES                | YES         |
+| **[Daten für maschinelles Lernen](concept-data.md)** |   | | |
 | Erstellen, Anzeigen oder Bearbeiten von Datasets und Datenspeichern über das SDK                  | Allgemein verfügbar                   | YES                | YES         |
 | Erstellen, Anzeigen oder Bearbeiten von Datasets und Datenspeichern über die Benutzeroberfläche                   | Allgemein verfügbar                   | YES                | YES         |
 | Anzeigen, Bearbeiten oder Löschen von Datendriftüberwachungen über das SDK                   | Öffentliche Vorschau       | YES                | YES         |
 | Anzeigen, Bearbeiten oder Löschen von Datendriftüberwachungen über die Benutzeroberfläche                    | Öffentliche Vorschau       | YES                | YES         |
 | **Machine Learning-Lebenszyklus** |   | | |
-| Erstellung von Modellprofilen                                                            | Allgemein verfügbar                   | YES                | PARTIAL     |
-| Die Azure DevOps-Erweiterung für Machine Learning und die Azure ML CLI         | Allgemein verfügbar                   | YES                | YES         |
-| FPGA-basierte hardwarebeschleunigte Modelle                                     | Allgemein verfügbar                   | Nein                 | Nein          |
-| Visual Studio Code-Integration                                             | Öffentliche Vorschau       | Nein                 | Nein          |
-| Event Grid-Integration                                                     | Öffentliche Vorschau       | Nein                 | Nein          |
-| Integrieren von Azure Stream Analytics mit Azure Machine Learning               | Öffentliche Vorschau       | Nein                 | Nein          |
-| **Bezeichnung** |   | | |
+| [Erstellung von Modellprofilen](how-to-deploy-profile-model.md)                                                            | Allgemein verfügbar                   | YES                | PARTIAL     |
+| [Azure ML CLI 1.0](reference-azure-machine-learning-cli.md)     | Allgemein verfügbar                   | YES                | YES         |
+| [FPGA-basierte hardwarebeschleunigte Modelle](how-to-deploy-fpga-web-service.md)                                     | Allgemein verfügbar                   | Nein                 | Nein          |
+| [Visual Studio Code-Integration](how-to-setup-vs-code.md)                                             | Öffentliche Vorschau       | Nein                 | Nein          |
+| [Event Grid-Integration](how-to-use-event-grid.md)                                                     | Öffentliche Vorschau       | Nein                 | Nein          |
+| [Integrieren von Azure Stream Analytics in Azure Machine Learning](../stream-analytics/machine-learning-udf.md)               | Öffentliche Vorschau       | Nein                 | Nein          |
+| **[Bezeichnung](how-to-create-labeling-projects.md)** |   | | |
 | Verwaltungsportal für Beschriftungsprojekte                                        | Allgemein verfügbar                   | YES                | YES         |
 | Portal für Beschriftungsersteller                                                            | Allgemein verfügbar                   | YES                | YES         |
 | Beschriften mithilfe privater Mitarbeiter                                          | Allgemein verfügbar                   | YES                | YES         |
 | ML-gestützte Beschriftung (Bildklassifizierung und Objekterkennung)           | Öffentliche Vorschau       | YES                | YES         |
-| **Verantwortungsvolles maschinelles Lernen** |   | | |
+| **[Verantwortungsvolles maschinelles Lernen](concept-responsible-ml.md)** |   | | |
 | Erklärbarkeit auf der Benutzeroberfläche                                                       | Öffentliche Vorschau       | Nein                 | Nein          |
 | Differenzieller Datenschutz: SmartNoise-Toolkit                                    | OSS                  | Nein                 | Nein          |
 | Benutzerdefinierte Tags in Azure Machine Learning zur Implementierung von Datenblättern              | Allgemein verfügbar                   | Nein                 | Nein          |
 | Fairness bei der AzureML-Integration                                               | Öffentliche Vorschau       | Nein                 | Nein          |
 | Interpretability SDK                                                      | Allgemein verfügbar                   | YES                | YES         |
 | **Training** |   | | |
-| Protokollstreaming für Experimente                                              | Allgemein verfügbar                   | YES                | YES         |
-| Vertiefendes Lernen                                                     | Öffentliche Vorschau       | Nein                 | Nein          |
-| Benutzeroberfläche zum Experimentieren                                                         | Allgemein verfügbar                   | YES                | YES         |
-| .NET-Integration ML.NET 1.0                                                | Allgemein verfügbar                   | YES                | YES         |
+| [Protokollstreaming für Experimente](how-to-track-monitor-analyze-runs.md)                                              | Allgemein verfügbar                   | YES                | YES         |
+| [Vertiefendes Lernen](how-to-use-reinforcement-learning.md)                                                     | Öffentliche Vorschau       | Nein                 | Nein          |
+| [Benutzeroberfläche zum Experimentieren](how-to-track-monitor-analyze-runs.md)                                                         | Öffentliche Vorschau                   | YES                | YES         |
+| [.NET-Integration ML.NET 1.0](/dotnet/machine-learning/tutorials/object-detection-model-builder)                                                | Allgemein verfügbar                   | YES                | YES         |
 | **Rückschluss** |   | | |
-| Batchrückschluss                                                          | Allgemein verfügbar                   | YES                | YES         |
-| Data Box Edge mit FPGA                                                    | Öffentliche Vorschau       | Nein                 | Nein          |
+| [Batchrückschluss](tutorial-pipeline-batch-scoring-classification.md)                                                          | Allgemein verfügbar                   | YES                | YES         |
+| [Data Box Edge mit FPGA](how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)                                                    | Öffentliche Vorschau       | Nein                 | Nein          |
 | **Andere** |   | | |
-| Open Datasets                                                              | Öffentliche Vorschau       | YES                | YES         |
-| Benutzerdefinierte Cognitive Search-Instanz                                                    | Öffentliche Vorschau       | YES                | YES         |
-| Viele Modelle                                                                | Öffentliche Vorschau       | Nein                 | Nein          |
+| [Open Datasets](/azure/open-datasets/samples)                                                              | Öffentliche Vorschau       | YES                | YES         |
+| [Benutzerdefinierte Cognitive Search-Instanz](how-to-deploy-model-cognitive-search.md)                                                    | Öffentliche Vorschau       | YES                | YES         |
+| [Solution Accelerator für zahlreiche Modelle](https://github.com/microsoft/solution-accelerator-many-models)                                                                | Öffentliche Vorschau       | Nein                 | Nein          |
 
 
 ### <a name="azure-government-scenarios"></a>Azure Government-Szenarien
@@ -131,14 +127,14 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
 
 
 
-### <a name="additional-azure-government-limitations"></a>Zusätzliche Einschränkungen für Azure Government
+### <a name="other-azure-government-limitations"></a>Weitere Einschränkungen von Azure Government
 
 * Für Azure Machine Learning-Compute-Instanzen können in Azure Government keine Token mit einer Gültigkeitsdauer von mehr 24 Stunden aktualisiert werden.
 * Von der Modellprofilerstellung werden in der Region „US-Arizona“ keine vier CPUs unterstützt.   
 * Beispielnotebooks funktionieren in Azure Government möglicherweise nicht, wenn sie Zugriff auf öffentliche Daten benötigen.
 * IP-Adressen: Von dem CLI-Befehl, der in der [Anleitung für VNET und Tunnelerzwingung](how-to-secure-training-vnet.md#forced-tunneling) verwendet wird, werden keine IP-Adressbereiche zurückgegeben. Verwenden Sie stattdessen die [Azure-IP-Adressbereiche und -Diensttags für Azure Government](https://www.microsoft.com/download/details.aspx?id=57063).
 * Für geplante Pipelines steht auch ein blobbasierter Triggermechanismus zur Verfügung. Dieser Mechanismus wird für CMK-Arbeitsbereiche nicht unterstützt. Wenn Sie einen blobbasierten Trigger für CMK-Arbeitsbereiche aktivieren möchten, sind zusätzliche Setupschritte erforderlich. Weitere Informationen finden Sie unter [Auslösen der Ausführung einer Machine Learning-Pipeline aus einer Logik-App](how-to-trigger-published-pipeline.md).
-* Firewalls: Fügen Sie Ihrer Firewalleinstellung bei Verwendung einer Azure Government-Region die folgenden zusätzlichen Hosts hinzu:
+* Firewalls: Fügen Sie Ihrer Firewalleinstellung bei Verwendung einer Azure Government-Region die folgenden Hosts hinzu:
 
     * Arizona: `usgovarizona.api.ml.azure.us`
     * Virginia: `usgovvirginia.api.ml.azure.us`
@@ -224,7 +220,7 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
 
 
 
-### <a name="additional-azure-china-limitations"></a>Zusätzliche Einschränkungen für Azure China
+### <a name="other-azure-china-limitations"></a>Weitere Einschränkungen für Azure China
 
 * Azure China verfügt über eingeschränkte VM-SKUs. Das gilt insbesondere für die GPU-SKUs. Es steht nur die NCv3-Familie (V100) zur Verfügung.
 * Rest-API-Endpunkte unterscheiden sich von globalen Azure-Umgebungen. Verwenden Sie die folgende Tabelle, um den REST-API-Endpunkt für Azure China-Regionen zu finden:

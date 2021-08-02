@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 05/14/2021
-ms.openlocfilehash: 27f763e16ecda6935f194dcab78c35919efbddd6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bf096e8e444ae9fd0832ad446d79db37fa365951
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099719"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954802"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-database"></a>Migrationsleitfaden: IBM Db2 zu Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -156,8 +156,9 @@ Weitere Unterstützung erhalten Sie in Form der folgenden Ressourcen, die im Rah
 |Asset  |BESCHREIBUNG  |
 |---------|---------|
 |[Data Workload Assessment Model and Tool (Datenarbeitsauslastungs-Bewertungsmodell und -tool)](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Dieses Tool stellt für eine angegebene Arbeitsauslastung Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch Bereitstellung eines automatisierten und einheitlichen Zielplattform-Entscheidungsprozesses dabei helfen, umfangreiche Bewertungen zu beschleunigen.|
-|[Db2 zOS-Paket zur Erkennung und Bewertung von Datenbeständen](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|Nach dem Ausführen des SQL-Skripts für eine-Datenbank können Sie die Ergebnisse in eine Datei im Dateisystem exportieren. Es werden verschiedene Dateiformate unterstützt, z. B. *.csv, damit Sie die Ergebnisse in externen Tools wie Tabellen erfassen können. Diese Methode kann nützlich sein, wenn Sie Ergebnisse einfach für Teams freigeben möchten, die die Workbench nicht installiert haben.|
-|[IBM Db2 LUW Inventory Scripts and Artifacts](https://github.com/microsoft/DataMigrationTeam/blob/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts) (IBM Db2 LUW-Inventarskripts und -artefakte)|Dieses Asset enthält eine SQL-Abfrage, die auf IBM Db2 LUW Version 11.1-Systemtabellen zugreift und eine Zählung der Objekte nach Schema und Objekttyp, eine grobe Schätzung der "Rohdaten" in jedem Schema und die Größenordnung der Tabellen in jedem Schema liefert, wobei die Ergebnisse in einem CSV-Format gespeichert werden.|
+|[Db2 zOS-Paket zur Erkennung und Bewertung von Datenbeständen](https://www.microsoft.com/download/details.aspx?id=103108)|Nach dem Ausführen des SQL-Skripts für eine-Datenbank können Sie die Ergebnisse in eine Datei im Dateisystem exportieren. Es werden verschiedene Dateiformate unterstützt (z. B. \*.csv), damit Sie die Ergebnisse in externen Tools wie Tabellen erfassen können. Diese Methode kann nützlich sein, wenn Sie Ergebnisse einfach für Teams freigeben möchten, die die Workbench nicht installiert haben.|
+|[IBM Db2 LUW Inventory Scripts and Artifacts](https://www.microsoft.com/download/details.aspx?id=103109) (IBM Db2 LUW-Inventarskripts und -artefakte)|Dieses Asset enthält eine SQL-Abfrage, die auf IBM Db2 LUW Version 11.1-Systemtabellen zugreift und eine Zählung der Objekte nach Schema und Objekttyp, eine grobe Schätzung der "Rohdaten" in jedem Schema und die Größenordnung der Tabellen in jedem Schema liefert, wobei die Ergebnisse in einem CSV-Format gespeichert werden.|
+|[IBM Db2 zu SQL DB – Hilfsprogramm „Database Compare“](https://www.microsoft.com/download/details.aspx?id=103016)|Beim Hilfsprogramm „Database Compare“ handelt es sich um eine Windows-Konsolenanwendung, mit der Sie überprüfen können, ob die Daten sowohl auf der Quell- als auch auf der Zielplattform identisch sind. Sie können das Tool verwenden, um Daten auf Zeilen- oder Spaltenebene in allen ausgewählten Tabellen, Zeilen und Spalten effizient zu vergleichen.|
 
 Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
 

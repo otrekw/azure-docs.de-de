@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/24/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: b10d31cf069bc4f28a1597ec12160fa6ed98b8ce
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 77b35d776b8fcd71f26278a6fda8a102113bd570
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789553"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109844968"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)
 
@@ -170,7 +170,7 @@ In der [Schrittanleitung zu der von AKS verwalteten Azure AD-Integration](manag
 
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ist ein Autorisierungssystem, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert und eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen ermöglicht.
 
-| RBAC-System | Beschreibung |
+| RBAC-System | BESCHREIBUNG |
 |---|---|
 | RBAC in Kubernetes | Ist für Kubernetes-Ressourcen innerhalb Ihres AKS-Clusters bestimmt. |
 | Azure RBAC | Ist für Ressourcen innerhalb Ihres Azure-Abonnements bestimmt. |
@@ -185,7 +185,7 @@ Für den vollständigen Betrieb eines AKS-Clusters sind zwei Zugriffsebenen erfo
   * Pullen von `kubeconfig`
 * Zugriff auf die Kubernetes-API. Dieser Zugriff wird mit einer der beiden folgenden Methoden gesteuert:
   * [Kubernetes RBAC](#kubernetes-rbac) (herkömmlich)
-  * [Integration von Azure RBAC in AKS für die Kubernetes-Autorisierung](#azure-rbac-for-kubernetes-authorization-preview)
+  * [Integration von Azure RBAC in AKS für die Kubernetes-Autorisierung](#azure-rbac-for-kubernetes-authorization)
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>Azure RBAC zum Autorisieren des Zugriffs auf die AKS-Ressource
 
@@ -195,7 +195,7 @@ Alternativ können Sie dem Benutzer die allgemeine Rolle [Mitwirkender](../role-
 
 [Verwenden Sie Azure RBAC, um den Zugriff auf die Kubernetes-Konfigurationsdatei in AKS zu definieren](control-kubeconfig-access.md).
 
-### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC für die Kubernetes-Autorisierung (Vorschau)
+### <a name="azure-rbac-for-kubernetes-authorization"></a>Azure RBAC für die Kubernetes-Autorisierung
 
 Bei der Azure RBAC-Integration verwendet AKS einen Kubernetes-Webhookserver für die Autorisierung, damit Sie Berechtigungen und Zuweisungen von in Azure AD integrierten Kubernetes-Clusterressourcen mit Azure-Rollendefinitionen und -Rollenzuweisungen verwalten können.
 

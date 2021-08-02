@@ -3,19 +3,19 @@ title: Hinzufügen von Ressourcen zu Integrationsdienstumgebungen
 description: Hinzufügen von Logik-Apps, Integrationskonten, benutzerdefinierten Connectors und verwalteten Connectors zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: azla
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.openlocfilehash: 147247c663311cfb3e05a986c6fb2bffbb41158b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 02/28/2021
+ms.openlocfilehash: 5cb857c7aec7246c3b6b763e39c6f36c4de24db1
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92675199"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111986070"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Hinzufügen von Ressourcen zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
 
-Fügen Sie nach dem Erstellen einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) Ressourcen wie Logik-Apps, Integrationskonten und Connectors hinzu, damit diese auf die Ressourcen in Ihrem virtuellen Azure-Netzwerk zugreifen können. Beispielsweise werden verwaltete ISE-Connectors, die nach dem Erstellen der ISE verfügbar werden, nicht automatisch im Logik-App-Designer angezeigt. Bevor Sie diese ISE-Connectors verwenden können, müssen Sie [diese Connectors manuell Ihrer ISE hinzufügen und bereitstellen](#add-ise-connectors-environment), damit Sie im Logik-App-Designer angezeigt werden.
+Nach dem Erstellen einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) können Sie Ressourcen wie Logik-Apps für den **Verbrauch**, Integrationskonten und Connectors hinzufügen, damit diese auf die Ressourcen in Ihrem virtuellen Azure-Netzwerk zugreifen können. Beispielsweise werden verwaltete ISE-Connectors, die nach dem Erstellen der ISE verfügbar werden, nicht automatisch im Logik-App-Designer angezeigt. Bevor Sie diese ISE-Connectors verwenden können, müssen Sie [diese Connectors manuell Ihrer ISE hinzufügen und bereitstellen](#add-ise-connectors-environment), damit Sie im Logik-App-Designer angezeigt werden.
 
 > [!IMPORTANT]
 > Damit Logik-Apps und Integrationskonten in einer ISE zusammenarbeiten können, muss jeweils *dieselbe ISE* als Speicherort genutzt werden.
@@ -40,14 +40,16 @@ Führen Sie die folgenden Schritte aus, um Logik-Apps zu erstellen, die in Ihrer
 
 1. Stellen Sie Informationen zu der Logik-App bereit, die Sie erstellen möchten, z. B.:
 
-   ![Screenshot, der das „Logik-App“-Fenster „Erstellen“ mit eingegebenen Beispielinformationen zeigt.](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
+   ![Screenshot: Bereich „Logik-App erstellen“ mit eingegebenen Beispielinformationen](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
-   | **Name** | Ja | Der Name der zu erstellenden Logik-App. |
+   | **Name der Logik-App** | Ja | Der Name der zu erstellenden Logik-App. |
    | **Abonnement** | Ja | Der Name des zu verwendenden Azure-Abonnements |
-   | **Ressourcengruppe** | Ja | Der Name der (neuen oder vorhandenen) zu verwendenden Ressourcengruppe in Azure. |
-   | **Location** | Ja | Wählen Sie unter **Integrationsdienstumgebungen** die zu verwendende ISE aus, sofern diese nicht bereits ausgewählt ist. <p><p> **Wichtig**: Um Ihre Logik-Apps mit einem Integrationskonto zu verwenden, müssen beide dieselbe ISE verwenden. |
+   | **Ressourcengruppe** | Ja | Der Name der neuen oder vorhandenen Azure-Ressourcengruppe, die verwendet werden soll |
+   | **Region** | Ja | Die Azure-Region für Ihre Logik-App, die dem Standort für die ISE entspricht, die Sie später auswählen |
+   | **Einer Integrationsdienstumgebung zuordnen*** | Ja | Wählen Sie diese Option aus, damit Sie eine zu verwendende ISE auswählen können. |
+   | **Integrationsdienstumgebung** | Ja | Wählen Sie in der Liste die ISE aus, die Sie verwenden möchten, sofern sie noch nicht ausgewählt ist. <p><p>**Wichtig:** Um ein Integrationskonto mit Ihrer Logik-App zu verwenden, müssen beide dieselbe ISE verwenden. |
    ||||
 
 1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
@@ -79,8 +81,8 @@ Führen Sie die folgenden Schritte aus, um ein Integrationskonto zu erstellen, d
    | **Name** | Ja | Der Name des zu erstellenden Integrationskontos. |
    | **Abonnement** | Ja | Der Name des zu verwendenden Azure-Abonnements. |
    | **Ressourcengruppe** | Ja | Der Name der (neuen oder vorhandenen) zu verwendenden Ressourcengruppe in Azure. |
-   | **Preisstufe** | Ja | Der für das Integrationskonto zu verwendende Tarif. |
-   | **Location** | Ja | Wählen Sie unter **Integrationsdienstumgebungen** dieselbe ISE aus, die Ihre Logik-Apps verwenden, sofern diese nicht bereits ausgewählt ist. <p><p> **Wichtig**: Um Ihr Integrationskonto mit Logik-Apps zu verwenden, müssen beide dieselbe ISE verwenden. |
+   | **Tarif** | Ja | Der für das Integrationskonto zu verwendende Tarif. |
+   | **Location** | Ja | Wählen Sie in der Liste unter **Integrationsdienstumgebungen** dieselbe ISE aus, die Ihre Logik-Apps verwenden, sofern diese nicht bereits ausgewählt ist. <p><p>**Wichtig:** Um ein Integrationskonto mit Ihrer Logik-App zu verwenden, müssen beide dieselbe ISE verwenden. |
    ||||
 
 1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
@@ -115,7 +117,7 @@ Nach dem Erstellen der ISE werden die verwalteten ISE-Connectors nicht automatis
 
    ![Anzeigen verwalteter Connectors](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. Öffnen Sie im Bereich **Neuen verwalteten Connector hinzufügen** die Liste **Connector suchen**. Wählen Sie den ISE-Connector aus, den Sie verwenden möchten, der aber noch nicht in Ihrer ISE bereitgestellt ist. Klicken Sie auf **Erstellen**.
+1. Öffnen Sie im Bereich **Neuen verwalteten Connector hinzufügen** die Liste **Connector suchen**. Suchen Sie den ISE-Connector, den Sie verwenden möchten, der aber noch nicht in Ihrer ISE bereitgestellt ist, und wählen Sie ihn aus. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
    ![Wählen Sie den ISE-Connector aus, den Sie in Ihrer ISE bereitstellen möchten.](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 

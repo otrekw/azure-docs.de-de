@@ -3,12 +3,12 @@ title: Übersicht über Vorlagen
 description: Beschreibung der Vorteile der Verwendung von Azure Resource Manager-Vorlagen (ARM-Vorlagen) für die Bereitstellung von Ressourcen
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 14bcbbd7a7ae7315dbb8e9d3e7e44ce0ffe0a4b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62d25d2bd87f9335ac6442a7038f9326b04b36b0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419982"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960365"
 ---
 # <a name="what-are-arm-templates"></a>Was sind ARM-Vorlagen?
 
@@ -18,7 +18,7 @@ Um diese Herausforderungen zu erfüllen, können Bereitstellungen automatisiert 
 
 Verwenden Sie Azure Resource Manager-Vorlagen (ARM-Vorlagen), um Infrastructure-as-Code für Ihre Azure-Lösungen zu implementieren. Die Vorlage ist eine JSON-Datei (JavaScript Object Notation), in der die Infrastruktur und die Konfiguration für Ihr Projekt definiert sind. Für die Vorlage wird deklarative Syntax verwendet. Hiermit können Sie angeben, was Sie bereitstellen möchten, ohne dass Sie die Folge der Programmierbefehle für die Erstellung schreiben müssen. In der Vorlage geben Sie die bereitzustellenden Ressourcen und die Eigenschaften für diese Ressourcen an.
 
-Wir haben eine neue Sprache für die Entwicklung von ARM-Vorlagen eingeführt. Die Sprache heißt Bicep und befindet sich derzeit in der Vorschauphase. Bicep- und JSON-Vorlagen bieten dieselben Funktionen. Sie können Vorlagen zwischen den beiden Sprachen konvertieren. Bicep bietet eine einfacher zu verwendende Syntax für das Erstellen von Vorlagen. Weitere Informationen finden Sie unter [Was ist Bicep (Vorschau)?](bicep-overview.md).
+Wir haben eine neue Sprache namens Bicep eingeführt, die zum Entwickeln von ARM-Vorlagen in JSON verwendet wird. Bicep-Dateien und JSON-Vorlagen bieten dieselben Funktionen. Sie können Vorlagen zwischen den beiden Sprachen konvertieren. Bicep bietet eine einfacher zu verwendende Syntax für das Erstellen von Vorlagen. Weitere Informationen finden Sie unter [Was ist Bicep?](../bicep/overview.md).
 
 Im folgenden Video erfahren Sie, wie Sie Ihre ersten Schritte mit ARM-Vorlagen tätigen können.
 
@@ -44,7 +44,7 @@ Bei der Entscheidung zwischen ARM-Vorlagen und einem der anderen Infrastructure-
 
 * **Testen:** Sie können sicherstellen, dass Ihre Vorlage den empfohlenen Richtlinien entspricht, indem Sie sie mit dem ARM-Vorlagentoolkit (arm-ttk) testen. Dieses Testkit ist ein PowerShell-Skript, das Sie von [GitHub](https://github.com/Azure/arm-ttk) herunterladen können. Das Toolkit erleichtert Ihnen das Erlangen von Kenntnissen mithilfe der Vorlagensprache.
 
-* **Vorschau der Änderungen:** Sie können den [Was-wäre-wenn-Vorgang](template-deploy-what-if.md) verwenden, um vor der Bereitstellung der Vorlage eine Vorschau der Änderungen anzuzeigen. Mit Was-wäre-wenn können Sie feststellen, welche Ressourcen erstellt, aktualisiert oder gelöscht und welche Ressourceneigenschaften geändert werden. Der Was-wäre-wenn-Vorgang überprüft den aktuellen Zustand Ihrer Umgebung, sodass Sie diesen nicht verwalten müssen.
+* **Vorschau der Änderungen:** Sie können den [Was-wäre-wenn-Vorgang](./deploy-what-if.md) verwenden, um vor der Bereitstellung der Vorlage eine Vorschau der Änderungen anzuzeigen. Mit Was-wäre-wenn können Sie feststellen, welche Ressourcen erstellt, aktualisiert oder gelöscht und welche Ressourceneigenschaften geändert werden. Der Was-wäre-wenn-Vorgang überprüft den aktuellen Zustand Ihrer Umgebung, sodass Sie diesen nicht verwalten müssen.
 
 * **Integrierte Überprüfung**: Ihre Vorlage wird erst bereitgestellt, wenn sie die Überprüfung bestanden hat. Resource Manager überprüft die Vorlage vor Beginn der Bereitstellung, um sicherzustellen, dass die Bereitstellung erfolgreich sein wird. Es ist weniger wahrscheinlich, dass die Bereitstellung in einem halbfertigen Zustand beendet wird.
 
@@ -68,15 +68,15 @@ Innerhalb Ihrer Vorlage können Sie [Vorlagenausdrücke](template-expressions.md
 
 Die Vorlage hat die folgenden Abschnitte:
 
-* [Parameter](template-parameters.md): Angeben von Werten während der Bereitstellung, mit denen dieselbe Vorlage für verschiedene Umgebungen verwendet werden kann.
+* [Parameter](./parameters.md): Angeben von Werten während der Bereitstellung, mit denen dieselbe Vorlage für verschiedene Umgebungen verwendet werden kann.
 
-* [Variablen](template-variables.md): Definieren von Werten, die in Ihren Vorlagen wiederverwendet werden. Diese können aus Parameterwerten erstellt werden.
+* [Variablen](./variables.md): Definieren von Werten, die in Ihren Vorlagen wiederverwendet werden. Diese können aus Parameterwerten erstellt werden.
 
-* [Benutzerdefinierte Funktionen](template-user-defined-functions.md): Erstellen angepasster Funktionen zum Vereinfachen Ihrer Vorlage.
+* [Benutzerdefinierte Funktionen](./user-defined-functions.md): Erstellen angepasster Funktionen zum Vereinfachen Ihrer Vorlage.
 
 * [Ressourcen](resource-declaration.md): Angeben der bereitzustellenden Ressourcen.
 
-* [Ausgaben](template-outputs.md): Zurückgeben von Werte aus den bereitgestellten Ressourcen.
+* [Ausgaben](./outputs.md): Zurückgeben von Werte aus den bereitgestellten Ressourcen.
 
 ## <a name="template-deployment-process"></a>Prozess für die Vorlagenbereitstellung
 
@@ -151,6 +151,6 @@ Dieser Ansatz bedeutet, dass Sie problemlos Vorlagen freigeben können, die die 
 
 * Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](template-tutorial-create-first-template.md).
 * Informationen zu ARM-Vorlagen durch einen Satz anleitender Module auf Microsoft Learn finden Sie unter [Bereitstellen und Verwalten von Ressourcen in Azure mithilfe von ARM-Vorlagen](/learn/paths/deploy-manage-resource-manager-templates/).
-* Informationen zu den Eigenschaften in Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Informationen zu den Eigenschaften in Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./syntax.md).
 * Weitere Informationen zum Exportieren von Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von ARM-Vorlagen über das Azure-Portal](quickstart-create-templates-use-the-portal.md).
 * Antworten auf gängige Fragen finden Sie unter [Häufig gestellte Fragen zu ARM-Vorlagen](frequently-asked-questions.md).

@@ -3,21 +3,21 @@ title: 'Azure Maps: Fehler und Warnungen bei der Zeichnungskonvertierung'
 description: Hier finden Sie Informationen zu Konvertierungsfehlern und -warnungen, die bei der Verwendung des Azure Maps-Konvertierungsdiensts auftreten können. Die Informationen enthalten Empfehlungen zur Behebung der Fehler/Warnungen sowie einige Beispiele.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 05/21/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: cecc19f0984ce1801d50e5cbda73e98a01e2825b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd6c20277098d0a2d1909cfb93243dd8e3bbcca0
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96906215"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793234"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Fehler und Warnungen bei der Zeichnungskonvertierung
 
-Mit dem [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) können Sie hochgeladene Zeichnungspakete in Kartendaten konvertieren. Zeichnungspakete müssen die [Anforderungen für Zeichnungspakete](drawing-requirements.md) erfüllen. Bei nicht erfüllten Anforderungen werden vom Konvertierungsdienst entsprechende Fehler oder Warnungen zurückgegeben. Dieser Artikel enthält die Fehler- und Warnungscodes im Zusammenhang mit der Konvertierung sowie Empfehlungen zur Behebung. Darüber hinaus finden Sie hier einige Beispiele für Zeichnungen, die zur Rückgabe dieser Codes durch den Konvertierungsdienst führen können.
+Mit dem [Azure Maps-Konvertierungsdienst](/rest/api/maps/v2/conversion) können Sie hochgeladene Zeichnungspakete in Kartendaten konvertieren. Zeichnungspakete müssen die [Anforderungen für Zeichnungspakete](drawing-requirements.md) erfüllen. Bei nicht erfüllten Anforderungen werden vom Konvertierungsdienst entsprechende Fehler oder Warnungen zurückgegeben. Dieser Artikel enthält die Fehler- und Warnungscodes im Zusammenhang mit der Konvertierung sowie Empfehlungen zur Behebung. Darüber hinaus finden Sie hier einige Beispiele für Zeichnungen, die zur Rückgabe dieser Codes durch den Konvertierungsdienst führen können.
 
 Die Konvertierung ist erfolgreich, auch wenn Konvertierungswarnungen vorhanden sind. Es empfiehlt sich jedoch, alle Warnungen zu überprüfen und zu beheben. Im Falle einer Warnung wurde ein Teil der Konvertierung ignoriert oder automatisch korrigiert. Wird die Warnung nicht behoben, kann dies Fehler in späteren Prozessen zur Folge haben.
 
@@ -95,7 +95,7 @@ Die Warnung **automaticRepairPerformed** tritt auf, wenn ungültige Geometrie au
 
     ![Beispiel für eine zusammengeführte Polylinie](./media/drawing-conversion-error-codes/automatic-repair-2.png)
 
-* Das folgende Bild zeigt, wie in einer Schicht, in der nur geschlossene Polylinien unterstützt werden, mehrere nicht geschlossene Polylinien durch den Konvertierungsdienst repariert wurden. Die nicht geschlossenen Polylinien wurden dabei durch den Dienst zu einer einzelnen geschlossenen Polylinie zusammengeführt, damit sie nicht verworfen werden:
+* Das folgende Bild zeigt, wie in einer Schicht, in der nur geschlossene Polylinien unterstützt werden, mehrere nicht geschlossene Polylinien durch den Konvertierungsdienst repariert wurden. Die nicht geschlossenen Polylinien wurden dabei durch den Dienst zu einer einzelnen geschlossenen Polylinie zusammengeführt, damit sie nicht verworfen werden.
 
     ![Beispiel für nicht geschlossene Polylinien, die zu einer einzelnen geschlossenen Polylinie zusammengeführt wurden](./media/drawing-conversion-error-codes/automatic-repair-3.png)
 
@@ -330,7 +330,7 @@ Sie haben versucht, ein Zeichnungspaket mit einem falschen Parameter vom Typ `ud
 Stellen Sie zum Beheben eines Fehlers vom Typ **invalidUserData** sicher, dass Folgendes erfüllt ist:
 
 * Sie haben für das hochgeladene Paket einen korrekten Parameter vom Typ `udid` angegeben.
-* Azure Maps Creator (Vorschau) wurde für das Azure Maps-Konto aktiviert, das Sie zum Hochladen des Zeichnungspakets verwendet haben.
+* Azure Maps Creator wurde für das Azure Maps-Konto aktiviert, das Sie zum Hochladen des Zeichnungspakets verwendet haben.
 * Die an den Konvertierungsdienst gesendete API-Anforderung enthält den Abonnementschlüssel für das Azure Maps-Konto, das Sie zum Hochladen des Zeichnungspakets verwendet haben.
 
 ### <a name="dwgerror"></a>**dwgError**
@@ -339,7 +339,7 @@ Stellen Sie zum Beheben eines Fehlers vom Typ **invalidUserData** sicher, dass F
 
 Ein Fehler vom Typ **dwgError** wird ausgelöst, wenn im Zeichnungspaket ein Problem mit einzelnen oder mehreren DWG-Dateien des hochgeladenen ZIP-Archivs vorliegt.
 
-Der Fehler **dwgError** tritt auf, wenn das Zeichnungspaket eine ungültige oder beschädigte DWG-Datei enthält, die nicht geöffnet werden kann:
+Der Fehler **dwgError** tritt auf, wenn das Zeichnungspaket eine ungültige oder beschädigte DWG-Datei enthält, die nicht geöffnet werden kann.
 
 * Bei einer DWG-Datei handelt es sich nicht um eine gültige Zeichnung im DWG-Dateiformat von AutoCAD.
 * Eine DWG-Datei ist beschädigt.
@@ -506,4 +506,7 @@ Informieren Sie sich zum Beheben eines Fehlers vom Typ **verticalPenetrationErro
 > [Verwenden der Azure Maps-Schnellansicht für Zeichnungsfehler](drawing-error-visualizer.md)
 
 > [!div class="nextstepaction"]
-> [Creator (Vorschau) für Gebäudepläne](creator-indoor-maps.md)
+> [Leitfaden für Zeichnungspakete](drawing-package-guide.md)
+
+> [!div class="nextstepaction"]
+> [Creator für Gebäudepläne](creator-indoor-maps.md)

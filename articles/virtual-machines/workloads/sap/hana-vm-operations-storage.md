@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/27/2021
+ms.date: 06/09/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4350f60029673af04ad263c9e9f25d7a74bc532b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 818d39417689fd5fad80b69b2ee63af9114dc239
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131022"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004635"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -174,13 +174,13 @@ Konfiguration für SAP **/hana/data**-Volume:
 | M64s, M64ds_v2, M64s_v2 | 1.024 GiB | 1\.000 MBit/s | 4 x P15 | 500 MBit/s | 680 MBit/s | 4\.400 | 14.000 |
 | M64ms, M64dms_v2, M64ms_v2 | 1\.792 GiB | 1\.000 MBit/s | 4 x P20 | 600 MBit/s | 680 MBit/s | 9\.200 | 14.000 |  
 | M128s, M128ds_v2, M128s_v2 | 2.048 GiB | 2\.000 MBit/s | 4 x P20 | 600 MBit/s | 680 MBit/s | 9\.200| 14.000 | 
-| M192ds_v2, M192s_v2 | 2.048 GiB | 2\.000 MBit/s | 4 x P20 | 600 MBit/s | 680 MBit/s | 9\.200| 14.000 | 
+| M192ids_v2, M192is_v2 | 2.048 GiB | 2\.000 MBit/s | 4 x P20 | 600 MBit/s | 680 MBit/s | 9\.200| 14.000 | 
 | M128ms, M128dms_v2, M128ms_v2 | 3\.892 GiB | 2\.000 MBit/s | 4 x P30 | 800 MBit/s | kein Bursting | 20.000 | kein Bursting | 
-| M192ms, M192dms_v2, M128ms_v2 | 4\.096 GiB | 2\.000 MBit/s | 4 x P30 | 800 MBit/s | kein Bursting | 20.000 | kein Bursting | 
+| M192ims, M192idms_v2 | 4\.096 GiB | 2\.000 MBit/s | 4 x P30 | 800 MBit/s | kein Bursting | 20.000 | kein Bursting | 
 | M208s_v2 | 2\.850 GiB | 1\.000 MBit/s | 4 x P30 | 800 MBit/s | kein Bursting | 20.000| kein Bursting | 
 | M208ms_v2 | 5\.700 GiB | 1\.000 MBit/s | 4 x P40 | 1\.000 MBit/s | kein Bursting | 30.000 | kein Bursting |
 | M416s_v2 | 5\.700 GiB | 2\.000 MBit/s | 4 x P40 | 1\.000 MBit/s | kein Bursting | 30.000 | kein Bursting |
-| M416ms_v2 | 11.400 GiB | 2\.000 MBit/s | 4 x P50 | 2\.000 MBit/s | kein Bursting | 30.000 | kein Bursting |
+| M416ms_v2 | 11.400 GiB | 2\.000 MBit/s | 4 x P50 | 1\.000 MBit/s | kein Bursting | 30.000 | kein Bursting |
 
 
 Für das Volume **/hana/log**. Die Konfiguration würde wie folgt aussehen:
@@ -194,9 +194,9 @@ Für das Volume **/hana/log**. Die Konfiguration würde wie folgt aussehen:
 | M64s, M64ds_v2, M64s_v2 | 1.024 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
 | M64ms, M64dms_v2, M64ms_v2 | 1\.792 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
 | M128s, M128ds_v2, M128s_v2 | 2.048 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500| 
-| M192ds_v2, M192s_v2 | 2.048 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500| 
+| M192ids_v2, M192is_v2 | 2.048 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500| 
 | M128ms, M128dms_v2, M128ms_v2 | 3\.892 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |
-| M192dms_v2, M192ms_v2 | 4\.096 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
+| M192idms_v2, M192ims_v2 | 4\.096 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 | 
 | M208s_v2 | 2\.850 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
 | M208ms_v2 | 5\.700 GiB | 1\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
 | M416s_v2 | 5\.700 GiB | 2\.000 MBit/s | 3 x P15 | 375 MBit/s | 510 MBit/s | 3\.300 | 10.500 |  
@@ -214,9 +214,9 @@ Für die anderen Volumes würde die Konfiguration wie folgt aussehen:
 | M64s, M64ds_v2, M64s_v2 | 1.024 GiB | 1\.000 MBit/s | 1 x P30 | 1 x P6 | 1 x P6 |
 | M64ms, M64dms_v2, M64ms_v2 | 1\.792 GiB | 1\.000 MBit/s | 1 x P30 | 1 x P6 | 1 x P6 | 
 | M128s, M128ds_v2, M128s_v2 | 2.048 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 | 
-| M192ds_v2, M192s_v2  | 2.048 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 | 
+| M192ids_v2, M192is_v2  | 2.048 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 | 
 | M128ms, M128dms_v2, M128ms_v2 | 3\.892 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 |
-| M192dms_v2, M192ms_v2  | 4\.096 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 |
+| M192idms_v2, M192ims_v2  | 4\.096 GiB | 2\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 |
 | M208s_v2 | 2\.850 GiB | 1\.000 MBit/s |  1 x P30 | 1 x P10 | 1 x P6 |
 | M208ms_v2 | 5\.700 GiB | 1\.000 MBit/s | 1 x P30 | 1 x P10 | 1 x P6 | 
 | M416s_v2 | 5\.700 GiB | 2\.000 MBit/s |  1 x P30 | 1 x P10 | 1 x P6 | 
@@ -285,9 +285,9 @@ Bei den Empfehlungen werden die Mindestanforderungen für SAP häufig überschri
 | M64s, M64ds_v2, M64s_v2 | 1.024 GiB | 1\.000 MB/s |  1\.200 GB | 600 MBit/s | 5\.000 | 512 GB | 250 MBit/s  | 2\.500 |
 | M64ms, M64dms_v2, M64ms_v2 | 1\.792 GiB | 1\.000 MB/s | 2\.100 GB | 600 MBit/s | 5\.000 | 512 GB | 250 MBit/s  | 2\.500 |
 | M128s, M128ds_v2, M128s_v2 | 2.048 GiB | 2\.000 MB/s |2\.400 GB | 750 MBit/s | 7\.000 | 512 GB | 250 MBit/s  | 2\.500 |
-| M192ds_v2, M192s_v2 | 2.048 GiB | 2\.000 MB/s |2\.400 GB | 750 MBit/s | 7\.000 | 512 GB | 250 MBit/s  | 2\.500 | 
+| M192ids_v2, M192is_v2 | 2.048 GiB | 2\.000 MB/s |2\.400 GB | 750 MBit/s | 7\.000 | 512 GB | 250 MBit/s  | 2\.500 | 
 | M128ms, M128dms_v2, M128ms_v2 | 3\.892 GiB | 2\.000 MB/s | 4\.800 GB | 750 MBit/s |9\.600 | 512 GB | 250 MBit/s  | 2\.500 | 
-| M192dms_v2, M192ms_v2 | 4\.096 GiB | 2\.000 MB/s | 4\.800 GB | 750 MBit/s |9\.600 | 512 GB | 250 MBit/s  | 2\.500 | 
+| M192idms_v2, M192ims_v2 | 4\.096 GiB | 2\.000 MB/s | 4\.800 GB | 750 MBit/s |9\.600 | 512 GB | 250 MBit/s  | 2\.500 | 
 | M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 3\.500 GB | 750 MBit/s | 7\.000 | 512 GB | 250 MBit/s  | 2\.500 | 
 | M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 7\.200 GB | 750 MBit/s | 14\.400 | 512 GB | 250 MBit/s  | 2\.500 | 
 | M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 7\.200 GB | 1\.000 MBit/s | 14\.400 | 512 GB | 400 MBit/s  | 4\.000 | 
@@ -328,9 +328,9 @@ Eine kostengünstigere Alternative für derartige Konfigurationen könnte wie fo
 | M64s, M64ds_v2, M64s_v2 | 1.024 GiB | 1\.000 MB/s | 7 x P15 | 1 × E30 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
 | M64ms, M64dms_v2, M64ms_v2| 1\.792 GiB | 1\.000 MB/s | 6 x P20 | 1 × E30 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
 | M128s, M128ds_v2, M128s_v2 | 2.048 GiB | 2\.000 MB/s |6 x P20 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
-| M192ds_v2, M192s_v2 | 2.048 GiB | 2\.000 MB/s |6 x P20 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
+| M192ids_v2, M192is_v2 | 2.048 GiB | 2\.000 MB/s |6 x P20 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
 | M128ms, M128dms_v2, M128ms_v2  | 3\.800 GiB | 2\.000 MB/s | 5 x P30 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
-| M192dms_v2, M192ms_v2  | 4\.096 GiB | 2\.000 MB/s | 5 x P30 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
+| M192idms_v2, M192ims_v2  | 4\.096 GiB | 2\.000 MB/s | 5 x P30 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
 | M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 4 x P30 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
 | M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 4 x P40 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
 | M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 4 x P40 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |

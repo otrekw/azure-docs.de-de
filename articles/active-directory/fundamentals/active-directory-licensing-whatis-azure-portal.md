@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b23b4a60795dc01667df3c6a9efa8e9cde4aeda9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92369810"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409899"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Was ist die gruppenbasierte Lizenzierung in Azure Active Directory?
 
@@ -30,7 +30,7 @@ Bislang konnten Lizenzen nur auf Ebene einzelner Benutzer zugewiesen werden, was
 Um diese Probleme zu beheben, enthält Azure AD jetzt die gruppenbasierte Lizenzierung. Sie können einer Gruppe eine oder mehrere Produktlizenzen zuweisen. Azure AD stellt sicher, dass die Lizenzen allen Mitgliedern der Gruppe zugewiesen werden. Allen neuen Mitgliedern, die der Gruppe beitreten, werden die entsprechenden Lizenzen zugewiesen. Wenn sie die Gruppe verlassen, werden diese Lizenzen entfernt. Dadurch ist keine automatisierte Lizenzverwaltung über PowerShell mehr erforderlich, um Änderungen in der Organisations- und Abteilungsstruktur benutzerbezogen widerzuspiegeln.
 
 ## <a name="licensing-requirements"></a>Lizenzanforderungen
-Zur Verwendung der gruppenbasierten Lizenzierung müssen Sie über eine der folgenden Lizenzen verfügen:
+Sie benötigen **für jeden Benutzer**, der von der gruppenbasierten Lizenzierung profitiert, eine der folgenden Lizenzen:
 
 - Kostenpflichtiges oder Testabonnement für Azure AD Premium P1 oder höher
 

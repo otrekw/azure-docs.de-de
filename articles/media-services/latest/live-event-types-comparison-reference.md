@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7d64684b5e8e73e82b6d778a193de617301a14eb
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 8f11c6d02649f85eddc39aa151ab7df3d8b72ab6
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123113"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797672"
 ---
 # <a name="live-event-types-comparison"></a>Vergleich von Liveereignistypen
 
@@ -45,7 +45,7 @@ In der folgenden Tabelle werden die Features der Liveereignistypen verglichen. D
 | Maximale aggregierte Bandbreite von Beitragsfeeds|60 MBit/s|–|
 | Maximale Bitrate für eine einzelne Ebene im Beitrag |20 MBit/s|20 MBit/s|
 | Unterstützung von Audiotiteln mit mehreren Sprachen|Ja|Nein|
-| Unterstützte Codecs für Videoeingang |H.264/AVC und H.265/HEVC|H.264/AVC|
+| Unterstützte Codecs für Videoeingang |H.264/AVC (RTMP und Smooth) oder H.265/HEVC (nur Smooth Streaming-Erfassung)|H.264/AVC (RTMP und Smooth Streaming-Erfassung)|
 | Unterstützte Codecs für Videoausgang|Identisch mit der Eingabe|H.264/AVC|
 | Unterstützte Videobittiefe, -eingang und -ausgang|Bis zu 10 Bit, einschließlich HDR 10/HLG|8 Bit|
 | Unterstützte Codecs für Audioeingang|AAC-LC, HE-AAC v1, HE-AAC v2|AAC-LC, HE-AAC v1, HE-AAC v2|

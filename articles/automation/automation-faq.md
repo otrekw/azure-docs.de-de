@@ -4,14 +4,14 @@ description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu A
 services: automation
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 06/04/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ab4ce9b8691f27fe392d2e3099677d45900d2e3
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 9e9168f7ef3cf49f4c13fdc67807061f23b6b402
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834226"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984012"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Automation
 
@@ -63,19 +63,55 @@ Ja, es gibt keine Einschränkung für die Verwendung von Python 2- und Python 3-
 
 ### <a name="what-is-the-plan-for-migrating-existing-python-2-runbooks-and-packages-to-python-3"></a>Wie sieht der Plan für die Migration vorhandener Python 2-Runbooks und -Pakete zu Python 3 aus?
 
-Azure Automation plant nicht, Python 2-Runbooks und -Pakete zu Python 3 zu migrieren. Diese Migration müssen Sie selbst durchführen. Vorhandene und neue Python 2-Runbooks und -Pakete werden weiterhin funktionieren.
+Azure Automation plant nicht, Python 2-Runbooks und -Pakete zu Python 3 zu migrieren. Sie müssen diese Migration selbst durchführen. Vorhandene und neue Python 2-Runbooks und -Pakete werden weiterhin funktionieren.
 
 ### <a name="what-are-the-packages-supported-by-default-in-python-3-environment"></a>Welche Pakete werden standardmäßig in der Python 3-Umgebung unterstützt?
 
 Das Azure-Paket 4.0.0 wird standardmäßig in der Automation-Umgebung von Python 3 installiert. Sie können manuell eine höhere Version des Azure-Pakets importieren, um die Standardversion außer Kraft zu setzen.
 
-### <a name="what-if-i-run-a-python-3-runbook-that-references-a-python-2-package-or-vice-versa"></a>Was geschieht, wenn ein Python 3-Runbook ausgeführt wird, das auf ein Python 2-Paket verweist oder umgekehrt?
+### <a name="what-if-i-run-a-python-3-runbook-that-references-a-python-2-package-or-the-other-way-around"></a>Was geschieht, wenn ein Python 3-Runbook ausgeführt wird, das auf ein Python 2-Paket verweist oder umgekehrt?
 
 Python 2 und Python 3 verfügen über unterschiedliche Ausführungsumgebungen. Während ein Python 2-Runbook ausgeführt wird, können nur Python 2-Pakete importiert werden. Für Python 3 gilt dasselbe Prinzip.
 
 ### <a name="how-do-i-differentiate-between-python-2-and-python-3-runbooks-and-packages"></a>Wie kann man zwischen Python 2- und Python 3-Runbooks und -Paketen unterscheiden?
 
 Python 3 ist eine neue Runbookdefinition, die zwischen Python 2- und Python 3-Runbooks unterscheidet. Ebenso wird ein weiterer Pakettyp für Python 3-Pakete eingeführt.
+
+### <a name="how-does-a-hybrid-runbook-worker-know-which-version-of-python-to-run-when-both-python2-and-python3-are-installed"></a>Woher weiß ein Hybrid Runbook Worker, welche Version von Python ausgeführt werden soll, wenn Sowohl Python2 als auch Python3 installiert sind?
+
+Ein Windows Runbook Worker sucht beim Ausführen eines Python 2-Runbooks zuerst nach der Umgebungsvariable `PYTHON_2_PATH` und überprüft, ob sie auf eine gültige ausführbare Datei verweist. Wenn der Installationsordner beispielsweise `C:\Python2` lautet, wird überprüft, ob `C:\Python2\python.exe` ein gültiger Pfad ist. Wenn er nicht gefunden wird, sucht der Worker nach der Umgebungsvariable `PATH`, um eine ähnliche Überprüfung durchzuführen.
+
+Für Python 3 sucht er zuerst nach der Umgebungsvariable `PYTHON_3_PATH` und greift dann auf die Umgebungsvariable `PATH` zurück.
+
+Wenn Sie nur eine Version von Python verwenden, können Sie der Variable den Installationspfad `PATH` hinzufügen. Wenn Sie beide Versionen auf dem Runbook Worker verwenden möchten, legen Sie für `PYTHON_2_PATH` und `PYTHON_3_PATH` den Speicherort des Moduls für diese Versionen fest.
+
+### <a name="how-does-a-hybrid-runbook-worker-locate-the-python-interpreter"></a>Wie findet ein Hybrid Runbook Worker den Python-Interpreter?
+
+Die Suche nach dem Python-Modul wird durch Umgebungsvariablen gesteuert, wie weiter oben erläutert.
+
+### <a name="is-python-3-supported-in-source-control"></a>Wird Python 3 in der Quellcodeverwaltung unterstützt?
+
+Nein. Die Quellcodeverwaltung wird für Python 3 derzeit nicht unterstützt. Python-Runbooks werden standardmäßig als Python 2-Runbooks synchronisiert.
+
+### <a name="how-can-a-runbook-author-know-what-python-packages-are-available-in-an-azure-sandbox"></a>Wie kann ein Runbookautor wissen, welche Python-Pakete in einer Azure-Sandbox verfügbar sind?
+
+Verwenden Sie den folgenden Code, um die installierten Standardmodule aufzulisten:
+
+```python
+#!/usr/bin/env python3
+
+import pkg_resources
+installed_packages = pkg_resources.working_set
+installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
+   for i in installed_packages])
+
+for package in installed_packages_list:
+    print(package)
+```
+
+### <a name="how-can-a-runbook-author-set-which-version-of-a-package-module-to-be-used-if-there-are-multiple-modules"></a>Wie kann ein Runbookautor festlegen, welche Version eines Paketmoduls verwendet werden soll, wenn mehrere Module vorhanden sind?
+
+Die Standardversion kann überschrieben werden, indem die Python-Pakete in das Automation-Konto importiert werden. Die importierte Version im Automation-Konto wird bevorzugt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

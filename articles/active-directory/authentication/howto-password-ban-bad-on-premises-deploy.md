@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24c93d189dd4c11ff5c8c08ad75bd62085dc225a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9f344b0f4dd93b921abc0c1c95c18c54e4486716
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766095"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951896"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -127,14 +127,14 @@ Die folgenden Anforderungen gelten für den Azure AD-Kennwortschutz-Proxydienst
     * Wenn .NET 4.7.2 nicht bereits installiert ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7.2-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2) herunter, und führen Sie es aus.
 * Alle Computer, auf denen der Proxydienst für den Azure AD-Kennwortschutz gehostet wird, müssen so konfiguriert werden, dass Domänencontrollern die Anmeldung beim Proxydienst ermöglicht wird. Dies wird über die Zuweisung der Berechtigung „Auf diesen Computer vom Netzwerk aus zugreifen“ gesteuert.
 * Alle Computer, die den Proxydienst für den Azure AD-Kennwortschutz hosten, müssen so konfiguriert sein, dass sie ausgehenden HTTP-Datenverkehr mit TLS 1.2 zulassen.
-* Ein Konto vom Typ *Globaler Administrator* oder *Sicherheitsadministrator* zum Registrieren des Azure AD-Kennwortschutz-Proxydiensts und der Gesamtstruktur bei Azure AD.
-* Außerdem müssen Sie Netzwerkzugriff für die Ports und URLs aktivieren, die im Artikel [Setupprozeduren für die Anwendungsproxyumgebung](../app-proxy/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) angegeben sind.
+* Für die erstmalige Registrierung des Azure AD-Kennwortschutz-Proxydiensts in einem bestimmten Mandanten ist ein Konto mit der Rolle *Globaler Administrator* erforderlich. Bei nachfolgenden Proxy- und Gesamtstrukturregistrierungen mit Azure AD kann ein Konto mit den Anmeldeinformationen eines *globalen Administrators* oder eines *Sicherheitsadministrators* verwendet werden.
+* Außerdem müssen Sie Netzwerkzugriff für die Ports und URLs aktivieren, die im Artikel [Setupprozeduren für die Anwendungsproxyumgebung](../app-proxy/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) angegeben sind. Dies gilt zusätzlich zu den beiden oben beschriebenen Endpunkten.
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Voraussetzungen für Microsoft Azure AD Connect Agent Updater
 
 Der Microsoft Azure AD Connect Agent Updater-Dienst wird zusammen mit dem Azure AD-Kennwortschutz-Proxydienst installiert. Damit der Microsoft Azure AD Connect Agent Updater-Dienst funktionieren kann, ist eine zusätzliche Konfiguration erforderlich:
 
-* Wenn in Ihrer Umgebung ein HTTP-Proxyserver verwendet wird, befolgen Sie die im Artikel [Verwenden von vorhandenen lokalen Proxyservern](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md) angegebenen Richtlinien.
+* Wenn in Ihrer Umgebung ein HTTP-Proxyserver verwendet wird, befolgen Sie die im Artikel [Verwenden von vorhandenen lokalen Proxyservern](../app-proxy/application-proxy-configure-connectors-with-proxy-servers.md) angegebenen Richtlinien.
 * Der Microsoft Azure AD Connect Agent Updater-Dienst erfordert auch die TLS 1.2-Schritte, die in den [TLS-Anforderungen](../app-proxy/application-proxy-add-on-premises-application.md#tls-requirements) angegeben werden.
 
 > [!WARNING]
@@ -199,7 +199,7 @@ Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folg
 
 1. Der Proxydienst wird auf dem Computer ausgeführt, verfügt aber nicht über die Anmeldeinformationen für die Kommunikation mit Azure AD. Registrieren Sie den Azure AD-Kennwortschutz-Proxyserver mithilfe des Cmdlets `Register-AzureADPasswordProtectionProxy` bei Azure AD.
 
-    Dieses Cmdlet erfordert die Anmeldeinformationen des *globalen Administrators* oder des *Sicherheitsadministrators* für Ihren Azure-Mandanten. Dieses Cmdlet muss außerdem mit einem Konto mit lokalen Administratorrechten ausgeführt werden.
+    Dieses Cmdlet erfordert Anmeldeinformationen eines *globalen Administrators*, wenn ein Proxy zum ersten Mal für einen bestimmten Mandanten registriert wird. Bei nachfolgenden Proxyregistrierungen in diesem Mandanten können unabhängig davon, ob sie für denselben oder verschiedene Proxys ausgeführt werden, entweder die Anmeldeinformationen eines *globalen Administrators* oder eines *Sicherheitsadministrators* verwendet werden.
 
     Nachdem dieser Befehl einmal erfolgreich ausgeführt wurde, sind auch weitere Aufrufe erfolgreich, aber unnötig.
 

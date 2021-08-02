@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – logisch
 description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Bestimmen von logischen Werten verwendet werden können.
 ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: f37f43d8fcec63ee4ae3d8a1064d87b0ec3d68a7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 05/13/2021
+ms.openlocfilehash: c69e10b660d5b7cbf768ea31fda6678d07053224
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736881"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959640"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logikfunktionen für ARM-Vorlagen
 
@@ -22,17 +22,17 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in I
 * [or](#or)
 * [true](#true)
 
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
-
 ## <a name="and"></a>und
 
 `and(arg1, arg2, ...)`
 
-Überprüft, ob alle Parameterwerte zutreffen. Die `and`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den Operator `&&`.
+Überprüft, ob alle Parameterwerte zutreffen.
+
+Die Funktion `and` wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den [&&-Operator](../bicep/operators-logical.md#and-).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
 | arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
@@ -45,8 +45,6 @@ Gibt **True** zurück, wenn alle Werte zutreffen. Andernfalls wird **False** zur
 ### <a name="examples"></a>Beispiele
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) zeigt die Verwendung logischer Funktionen.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -70,19 +68,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output andExampleOutput bool = bool('true') && bool('false')
-output orExampleOutput bool = bool('true') || bool('false')
-output notExampleOutput bool = !(bool('true'))
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -96,7 +84,7 @@ Konvertiert den Parameter in einen booleschen Wert.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der in einen booleschen Wert konvertiert werden soll. |
 
@@ -111,8 +99,6 @@ Sie können auch [true()](#true) und [false()](#false) verwenden, um boolesche W
 ### <a name="examples"></a>Beispiele
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) zeigt, wie „bool“ mit einer Zeichenfolge oder ganzen Zahl verwendet wird.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -140,19 +126,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output trueString bool = bool('true')
-output falseString bool = bool('false')
-output trueInt bool = bool(1)
-output falseInt bool = bool(0)
-```
-
----
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -163,7 +139,9 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 `false()`
 
-Gibt false zurück. Die Funktion `false` ist in Bicep nicht verfügbar.  Verwenden Sie stattdessen das Schlüsselwort `false`.
+Gibt false zurück.
+
+Die Funktion `false` ist in Bicep nicht verfügbar.  Verwenden Sie stattdessen das Schlüsselwort `false`.
 
 ### <a name="parameters"></a>Parameter
 
@@ -176,8 +154,6 @@ Ein boolescher Wert, der immer „false“ lautet.
 ### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird ein Ausgabewert „false“ zurückgegeben.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -193,17 +169,9 @@ Im folgenden Beispiel wird ein Ausgabewert „false“ zurückgegeben.
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output falseOutput bool = false
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | falseOutput | Bool | False |
 
@@ -211,11 +179,13 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 `if(condition, trueValue, falseValue)`
 
-Gibt einen Wert abhängig davon zurück, ob eine Bedingung zutrifft oder nicht. Die `if`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den Operator `?:`.
+Gibt einen Wert abhängig davon zurück, ob eine Bedingung zutrifft oder nicht.
+
+Die `if`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den [?:-Operator](../bicep/operators-logical.md#conditional-expression--).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | condition |Ja |boolean |Der Wert, für den überprüft wird, ob er zutrifft oder nicht. |
 | trueValue |Ja | Zeichenfolge, Integer, Objekt oder Array |Der zurückzugebende Wert, wenn die Bedingung zutrifft. |
@@ -232,8 +202,6 @@ Wenn die Bedingung zutrifft (**True**), wird nur der Wert „True“ ausgewertet
 ### <a name="examples"></a>Beispiele
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) zeigt die Verwendung der `if`-Funktion.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -258,27 +226,15 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output yesOutput string = 'a' == 'a' ? 'yes' : 'no'
-output noOutput string = 'a' == 'b' ? 'yes' : 'no'
-output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('null')
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | yesOutput | String | ja |
 | noOutput | Zeichenfolge | nein |
 | objectOutput | Object | { "test": "value1" } |
 
 In der folgenden [Beispielvorlage](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) wird gezeigt, wie Sie diese Funktion mit Ausdrücken verwenden, die nur bedingt gültig sind.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -326,44 +282,17 @@ In der folgenden [Beispielvorlage](https://github.com/krnese/AzureDeploy/blob/ma
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param vmName string
-param location string
-param logAnalytics string = ''
-
-resource vmName_omsOnboarding 'Microsoft.Compute/virtualMachines/extensions@2017-03-30' = if (!empty(logAnalytics)) {
-  name: '${vmName}/omsOnboarding'
-  location: location
-  properties: {
-    publisher: 'Microsoft.EnterpriseCloud.Monitoring'
-    type: 'MicrosoftMonitoringAgent'
-    typeHandlerVersion: '1.0'
-    autoUpgradeMinorVersion: true
-    settings: {
-      workspaceId: ((!empty(logAnalytics)) ? reference(logAnalytics, '2015-11-01-preview').customerId : json('null'))
-    }
-    protectedSettings: {
-      workspaceKey: ((!empty(logAnalytics)) ? listKeys(logAnalytics, '2015-11-01-preview').primarySharedKey : json('null'))
-    }
-  }
-}
-
-output mgmtStatus string = ((!empty(logAnalytics)) ? 'Enabled monitoring for VM!' : 'Nothing to enable')
-```
-
----
-
 ## <a name="not"></a>not
 
 `not(arg1)`
 
-Konvertiert den booleschen Wert in seinen gegenteiligen Wert. Die `not`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den Operator `!`.
+Konvertiert den booleschen Wert in seinen gegenteiligen Wert.
+
+Die Funktion `not` wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den [!-Operator](../bicep/operators-logical.md#not-).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |boolean |Der zu konvertierende Wert. |
 
@@ -374,8 +303,6 @@ Gibt **True** zurück, wenn der Parameter **False** ist. Gibt **False** zurück,
 ### <a name="examples"></a>Beispiele
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) zeigt die Verwendung logischer Funktionen.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -399,27 +326,15 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output andExampleOutput bool = bool('true') && bool('false')
-output orExampleOutput bool = bool('true') || bool('false')
-output notExampleOutput bool = !(bool('true'))
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
 In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) wird **not** mit „[equals](template-functions-comparison.md#equals)“ verwendet.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -436,17 +351,9 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output checkNotEquals bool = !(1 == 2)
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -454,11 +361,13 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 `or(arg1, arg2, ...)`
 
-Überprüft, ob einer der Parameterwerte zutrifft. Die `or`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den Operator `||`.
+Überprüft, ob einer der Parameterwerte zutrifft.
+
+Die Funktion `or` wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den [||-Operator](../bicep/operators-logical.md#or-).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
 | arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
@@ -471,8 +380,6 @@ Gibt **True** zurück, wenn einer der Werte zutrifft. Andernfalls wird **False**
 ### <a name="examples"></a>Beispiele
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) zeigt die Verwendung logischer Funktionen.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -496,19 +403,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output andExampleOutput bool = bool('true') && bool('false')
-output orExampleOutput bool = bool('true') || bool('false')
-output notExampleOutput bool = !(bool('true'))
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -518,11 +415,13 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 `true()`
 
-Gibt true zurück. Die Funktion `true` ist in Bicep nicht verfügbar.  Verwenden Sie stattdessen das Schlüsselwort `true`.
+Gibt true zurück.
+
+Die Funktion `true` ist in Bicep nicht verfügbar.  Verwenden Sie stattdessen das Schlüsselwort `true`.
 
 ### <a name="parameters"></a>Parameter
 
-Die Funktion „true“ akzeptiert keine Parameter. Die Funktion `true` ist in Bicep nicht verfügbar.  Verwenden Sie stattdessen das Schlüsselwort `true`.
+Die Funktion „true“ akzeptiert keine Parameter.
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -531,8 +430,6 @@ Ein boolescher Wert, der immer „true“ lautet.
 ### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird ein Ausgabewert „true“ zurückgegeben.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -548,20 +445,12 @@ Im folgenden Beispiel wird ein Ausgabewert „true“ zurückgegeben.
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output trueOutput bool = true
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | trueOutput | Bool | True |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](./syntax.md).

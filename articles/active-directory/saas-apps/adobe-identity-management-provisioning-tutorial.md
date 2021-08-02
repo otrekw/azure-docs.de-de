@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2020
+ms.date: 04/30/2021
 ms.author: Zhchia
-ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9608a3a9e086cc6c03dc80f0666becbcbc06290
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673299"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688402"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Adobe Identity Management für die automatische Benutzerbereitstellung
 
@@ -42,6 +42,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * [Einen Azure AD-Mandanten](../develop/quickstart-create-new-tenant.md)
 * Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Ein Verbundverzeichnis in der [Adobe Admin Console](https://adminconsole.adobe.com/) mit bestätigten Domänen.
+* Lesen Sie die [Adobe-Dokumentation](https://helpx.adobe.com/enterprise/admin-guide.html/enterprise/using/add-azure-sync.ug.html) zur Benutzerbereitstellung. 
 
 > [!NOTE]
 > Wenn Ihre Organisation das Benutzer-Synchronisationstool oder eine UMAPI-Integration verwendet, müssen Sie die Integration zuerst anhalten. Fügen Sie dann die automatische Azure AD-Bereitstellung hinzu, um die Benutzerverwaltung über das Azure-Portal zu automatisieren. Wenn die automatische Azure AD-Bereitstellung konfiguriert ist und ausgeführt wird, können Sie das Benutzer-Synchronisationstool oder die UMAPI-Integration vollständig entfernen.
@@ -116,7 +117,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Adobe Identity Management synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Adobe Identity Management für Aktualisierungsvorgänge verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Adobe Identity Management-API das Filtern von Benutzern basierend auf diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|
+   |attribute|type|
    |---|---|
    |userName|String|
    |emails[type eq "work"].value|String|
@@ -130,7 +131,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Adobe Identity Management synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Adobe Identity Management für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |Attribut|type|
+      |attribute|type|
       |---|---|
       |displayName|String|
       |members|Verweis|

@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 05/13/2021
 ms.custom: references_regions
-ms.openlocfilehash: b020c74ce7479f9925c1a4e1db06fb4b3b9ef22b
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: e339c9847024aa35665b9a8b4114102c8fde22a1
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065437"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470286"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure Purview-Connector für Amazon S3
 
@@ -27,11 +27,10 @@ In dieser Schrittanleitung erfahren Sie, wie Sie Amazon S3-Buckets als Purview-R
 
 Der folgende Umfang ist spezifisch für die Registrierung und Überprüfung von Amazon S3-Buckets als Purview-Datenquellen.
 
-|`Scope`  |BESCHREIBUNG  |
+|`Scope`  |Beschreibung  |
 |---------|---------|
-|**Datengrenzwerte**     |    Der Purview-Überprüfungsdienst unterstützt derzeit das Überprüfen von Amazon S3-Buckets von bis zu 100 GB Daten pro Mandant.     |
 |**Dateitypen**     | Der Purview-Überprüfungsdienst unterstützt derzeit die folgenden Dateitypen: <br><br>.avro, .csv, .doc, .docm, .docx, .dot, .json, .odp, .ods, .odt, .orc, .parquet, .pdf, .pot, .pps, .ppsx, .ppt, .pptm, .pptx, .psv, .ssv, .tsv, .txt, .xlc, .xls, .xlsb, .xlsm, .xlsx, .xlt, .xml        |
-|**Regionen**     | Der Purview-Connector für den Amazon S3-Dienst wird zurzeit in den AWS-Regionen **USA, Osten (Ohio)** , **USA, Osten (Nordvirginia)** , **Europa (Irland)** , **Europa (Frankfurt)** und **Asien-Pazifik (Sydney)** bereitgestellt. <br><br>Weitere Informationen finden Sie unter [Speicher- und Überprüfungsregionen](#storage-and-scanning-regions).   |
+|**Regionen**     | Der Purview-Connector für den Amazon S3-Dienst wird derzeit nur in bestimmten Regionen bereitgestellt. <br><br>Weitere Informationen finden Sie unter [Speicher- und Überprüfungsregionen](#storage-and-scanning-regions).   |
 |     |         |
 
 Weitere Informationen finden Sie in den dokumentierten Purview-Grenzwerten unter:
@@ -52,24 +51,24 @@ In der folgenden Tabelle werden die Regionen, in denen Ihre Daten gespeichert si
 | ------------------------------- | ------------------------------------- |
 | USA, Osten (Ohio)                  | USA, Osten (Ohio)                        |
 | USA, Osten (Nord Virginia)           | USA, Osten (Nord Virginia)                       |
-| USA, Westen (Nord Kalifornien)         | USA, Osten (Ohio)                        |
-| USA, Westen (Oregon)                | USA, Osten (Ohio)                        |
+| USA, Westen (Nord Kalifornien)         | USA, Osten (Ohio) oder USA, Westen (N. Kalifornien)                        |
+| USA, Westen (Oregon)                | USA, Osten (Ohio) oder USA, Westen (Oregon)                      |
 | Afrika (Kapstadt)              | Europa (Frankfurt)                    |
-| Asien-Pazifik (Hongkong)        | Asien-Pazifik, (Sydney)                   |
-| Asien-Pazifik (Mumbai)           | Asien-Pazifik, (Sydney)                   |
-| Asien-Pazifik (Osaka lokal)      | Asien-Pazifik, (Sydney)                   |
-| Asien-Pazifik (Seoul)            | Asien-Pazifik, (Sydney)                   |
-| Asien-Pazifik, (Singapur)        | Asien-Pazifik, (Sydney)                   |
+| Asien-Pazifik (Hongkong)        | Asien-Pazifik (Sydney) oder Asien-Pazifik (Singapur)                |
+| Asien-Pazifik (Mumbai)           | Asien-Pazifik (Sydney) oder Asien-Pazifik (Singapur)                |
+| Asien-Pazifik (Osaka lokal)      | Asien-Pazifik (Sydney) oder Asien-Pazifik (Tokio)                 |
+| Asien-Pazifik (Seoul)            | Asien-Pazifik (Sydney) oder Asien-Pazifik (Tokio)                 |
+| Asien-Pazifik, (Singapur)        | Asien-Pazifik (Sydney) oder Asien-Pazifik (Singapur)                 |
 | Asien-Pazifik, (Sydney)           | Asien-Pazifik, (Sydney)                  |
-| Asien-Pazifik, (Tokio)            | Asien-Pazifik, (Sydney)                 |
+| Asien-Pazifik, (Tokio)            | Asien-Pazifik (Sydney) oder Asien-Pazifik (Tokio)                |
 | Kanada (Mitte)                | USA, Osten (Ohio)                        |
 | China (Beijing)                 | Nicht unterstützt                    |
 | China (Ningxia)                 | Nicht unterstützt                   |
 | Europa (Frankfurt)              | Europa (Frankfurt)                    |
 | Europa (Irland)                | Europa (Irland)                   |
-| Europa (London)                 | Europa (Irland)                   |
+| Europa (London)                 | Europa (Irland) oder Europa (London)                 |
 | Europa (Mailand)                  | Europa (Frankfurt)                    |
-| Europa (Paris)                  | Europa (Frankfurt)                    |
+| Europa (Paris)                  | Europa (Frankfurt) oder Europa (Paris)                   |
 | Europa (Stockholm)              | Europa (Frankfurt)                    |
 | Naher Osten (Bahrain)           | Europa (Frankfurt)                    |
 | Südamerika (São Paulo)       | USA, Osten (Ohio)                        |

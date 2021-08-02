@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: fc1246d079760fd86513840aebbffa34d192f8ed
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1c4a32e79f54bd2626f2eb4f3a3cc97266d3bab0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044174"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958483"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>Verwalten des Zugriffs auf Azure Sentinel-Daten nach Ressource
 
@@ -39,10 +39,11 @@ Wenn Benutzer nicht über den Azure Sentinel-Arbeitsbereich, sondern über die f
 Aktivieren Sie in Azure Monitor die rollenbasierte Zugriffssteuerung (RBAC) für den Ressourcenkontext. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor](../azure-monitor/logs/manage-access.md).
 
 > [!NOTE]
-> Falls es sich bei Ihren Daten nicht um eine Azure-Ressource, z. B. Syslog-, CEF- oder AAD-Daten, oder von einem benutzerdefinierten Sammler erfasste Daten handelt, müssen Sie manuell die Ressourcen-ID konfigurieren, die zum Ermitteln der Daten und Aktivieren des Zugriffs verwendet wird.
+> Falls es sich bei Ihren Daten nicht um eine Azure-Ressource, z. B. Syslog-, CEF- oder AAD-Daten, oder von einem benutzerdefinierten Sammler erfasste Daten handelt, müssen Sie manuell die Ressourcen-ID konfigurieren, die zum Ermitteln der Daten und Aktivieren des Zugriffs verwendet wird. Weitere Informationen finden Sie unter [Explizites Konfigurieren der rollenbasierten Zugriffssteuerung im Ressourcenkontext](#explicitly-configure-resource-context-rbac).
 >
-> Weitere Informationen finden Sie unter [Explizites Konfigurieren der rollenbasierten Zugriffssteuerung im Ressourcenkontext](#explicitly-configure-resource-context-rbac).
->
+> Darüber hinaus werden [Funktionen](../azure-monitor/logs/functions.md) und gespeicherte Suchvorgänge in ressourcenorientierten Kontexten nicht unterstützt. Daher werden Azure Sentinel-Features wie Analyse und [Normalisierung](normalization.md) für die rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext in Azure Sentinel nicht unterstützt.
+> 
+
 ## <a name="scenarios-for-resource-context-rbac"></a>Szenarien für die rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext
 
 In der folgenden Tabelle sind die Szenarien angegeben, in denen RBAC im Ressourcenkontext am hilfreichsten ist. Beachten Sie die Unterschiede bei den Zugriffsanforderungen zwischen SOC-Teams und anderen Teams.
@@ -64,7 +65,7 @@ Die folgende Liste enthält Beschreibungen von Szenarien, in denen andere Datenz
 
 |Szenario  |Lösung  |
 |---------|---------|
-|**Ein SOC-Team in einem Tochterunternehmen benötigt eine vollständige Azure Sentinel-Umgebung**.     |  Verwenden Sie in diesem Fall eine Architektur mit mehreren Arbeitsbereichen, damit Sie Ihre Datenberechtigungen trennen können. <br><br>Weitere Informationen finden Sie unter: <br>- [Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten](extend-sentinel-across-workspaces-tenants.md)<br>    - [Arbeiten mit Vorfällen in vielen Arbeitsbereichen gleichzeitig](multiple-workspace-view.md)          |
+|**Ein SOC-Team in einem Tochterunternehmen benötigt eine vollständige Azure Sentinel-Umgebung**.     |  Verwenden Sie in diesem Fall eine Architektur mit mehreren Arbeitsbereichen, damit Sie Ihre Datenberechtigungen trennen können. <br><br>Weitere Informationen finden Sie unter <br>- [Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten](extend-sentinel-across-workspaces-tenants.md)<br>    - [Arbeiten mit Vorfällen in vielen Arbeitsbereichen gleichzeitig](multiple-workspace-view.md)          |
 |**Sie möchten Zugriff auf eine bestimmte Art von Ereignis gewähren**.     |  Gewähren Sie für einen Windows-Administrator den Zugriff auf Windows-Sicherheitsereignisse auf allen Systemen. <br><br>Verwenden Sie in solchen Fällen [RBAC auf Tabellenebene](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043), um die Berechtigungen für die einzelnen Tabellen festzulegen.       |
 | **Der Zugriff auf eine Ebene mit höherer Granularität soll eingeschränkt werden (entweder nicht basierend auf der Ressource oder nur auf einen Teil der Felder eines Ereignisses).**   |   Es kann beispielsweise sein, dass Sie den Zugriff auf Office 365-Protokolle auf ein Tochterunternehmen eines Benutzers beschränken möchten. <br><br>Gewähren Sie in diesem Fall Zugriff auf die Daten, indem Sie die integrierte Integration mit [Power BI-Dashboards und -Berichten](../azure-monitor/visualize/powerbi.md) verwenden.      |
 | | |

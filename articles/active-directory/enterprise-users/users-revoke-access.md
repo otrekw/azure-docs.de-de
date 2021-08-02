@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 03/29/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f6e636be885fa2e647a61a6ca1a3d35281a9eb
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 727b5997045694a1a9242b30d865ec6229fbd3bf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226586"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963629"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Widerrufen des Benutzerzugriffs in Azure Active Directory
 
@@ -46,7 +46,7 @@ Die meisten browserbasierten Anwendungen verwenden Sitzungstoken anstelle von Zu
 
 - Wenn ein Benutzer einen Browser öffnet und sich über Azure AD bei einer Anwendung authentifiziert, empfängt der Benutzer zwei Sitzungstoken: eines von Azure AD und ein zweites von der Anwendung.  
 
-- Sobald eine Anwendung ein eigenes Sitzungstoken ausstellt, wird der Zugriff auf die Anwendung durch die Sitzung der Anwendung geregelt. Zu diesem Zeitpunkt unterliegt der Benutzer nur den Autorisierungsrichtlinien, die der Anwendung bekannt sind.
+- Wenn eine Anwendung ein eigenes Sitzungstoken ausstellt, wird der Zugriff auf die Anwendung durch die Sitzung der Anwendung geregelt. Zu diesem Zeitpunkt unterliegt der Benutzer nur den Autorisierungsrichtlinien, die der Anwendung bekannt sind.
 
 - Die Autorisierungsrichtlinien von Azure AD werden so oft neu ausgewertet, wie die Anwendung den Benutzer zu Azure AD zurückleitet. Die erneute Auswertung erfolgt in der Regel automatisch, obwohl die Häufigkeit von der Konfiguration der Anwendung abhängt. Es ist möglich, dass die App den Benutzer keinesfalls zu Azure AD zurückleitet, solange das Sitzungstoken gültig ist.
 
@@ -54,19 +54,20 @@ Die meisten browserbasierten Anwendungen verwenden Sitzungstoken anstelle von Zu
 
 ## <a name="revoke-access-for-a-user-in-the-hybrid-environment"></a>Widerrufen des Zugriffs eines Benutzers in der Hybridumgebung
 
-Für eine Hybridumgebung mit lokalem Active Directory, das mit Azure Active Directory synchronisiert ist, empfiehlt Microsoft IT-Administratoren, die folgenden Maßnahmen zu ergreifen. Wenn Sie über eine **reine Azure AD-Umgebung** verfügen, können Sie den Abschnitt [Lokale Active Directory-Umgebung](https://docs.microsoft.com/azure/active-directory/enterprise-users/users-revoke-access#on-premises-active-directory-environment) überspringen.
+Für eine Hybridumgebung mit lokalem Active Directory, das mit Azure Active Directory synchronisiert ist, empfiehlt Microsoft IT-Administratoren, die folgenden Maßnahmen zu ergreifen. Wenn Sie über eine **reine Azure AD-Umgebung** verfügen, können Sie direkt mit dem Abschnitt [Azure Active Directory-Umgebung](#azure-active-directory-environment) fortfahren.
+
 
 ### <a name="on-premises-active-directory-environment"></a>Lokale Active Directory-Umgebung
 
 Stellen Sie als Active Directory-Administrator eine Verbindung mit Ihrem lokalen Netzwerk her, öffnen Sie PowerShell, und führen Sie die folgenden Aktionen durch:
 
-1. Deaktivieren Sie den Benutzer in Active Directory. Weitere Informationen finden Sie unter [Disable-ADAccount](/powershell/module/activedirectory/disable-adaccount?view=win10-ps).
+1. Deaktivieren Sie den Benutzer in Active Directory. Weitere Informationen finden Sie unter [Disable-ADAccount](/powershell/module/activedirectory/disable-adaccount).
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-2. Setzen Sie das Kennwort des Benutzers in Active Directory zweimal zurück. Weitere Informationen finden Sie unter [Set-ADAccountPassword](/powershell/module/activedirectory/set-adaccountpassword?view=win10-ps).
+2. Setzen Sie das Kennwort des Benutzers in Active Directory zweimal zurück. Weitere Informationen finden Sie unter [Set-ADAccountPassword](/powershell/module/activedirectory/set-adaccountpassword).
 
     > [!NOTE]
     > Der Grund für das zweimalige Ändern des Kennworts eines Benutzers besteht darin, das Pass-the-Hash-Risiko zu verringern, insbesondere wenn es zu Verzögerungen bei der Replikation des lokalen Kennworts kommt. Wenn Sie sicher davon ausgehen können, dass dieses Konto nicht kompromittiert ist, genügt es, das Kennwort nur einmal zurückzusetzen.
@@ -83,19 +84,19 @@ Stellen Sie als Active Directory-Administrator eine Verbindung mit Ihrem lokalen
 
 Öffnen Sie als Azure Active Directory-Administrator PowerShell. Führen Sie dann ``Connect-AzureAD`` und die folgenden Aktionen aus:
 
-1. Deaktivieren Sie den Benutzer in Azure AD. Weitere Informationen finden Sie unter [Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0).
+1. Deaktivieren Sie den Benutzer in Azure AD. Weitere Informationen finden Sie unter [Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser).
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
 
-2. Widerrufen Sie die Azure AD-Aktualisierungstoken des Benutzers. Weitere Informationen finden Sie unter [Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0).
+2. Widerrufen Sie die Azure AD-Aktualisierungstoken des Benutzers. Weitere Informationen finden Sie unter [Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken).
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-3. Deaktivieren Sie die Geräte des Benutzers. Weitere Informationen finden Sie unter [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0).
+3. Deaktivieren Sie die Geräte des Benutzers. Weitere Informationen finden Sie unter [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice).
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false
@@ -117,7 +118,7 @@ Sobald Administratoren die oben genannten Schritte ausgeführt haben, kann der B
   - Verwenden Sie für Anwendungen, die nicht die SaaS-App-Bereitstellung von Azure AD verwenden, [Identity Manager (MIM)](/microsoft-identity-manager/mim-how-provision-users-adds) oder eine Drittanbieterlösung, um die Aufhebung der Benutzerbereitstellung zu automatisieren.  
   - Ermitteln und entwickeln Sie einen Prozess für Anwendungen, für die eine manuelle Aufhebung der Bereitstellung erforderlich ist. Stellen Sie sicher, dass Administratoren die erforderlichen manuellen Aufgaben zum Aufheben der Benutzerbereitstellung für diese Apps schnell ausführen können.
   
-- [Verwalten Sie Geräte und Anwendungen mit Microsoft Intune](/mem/intune/remote-actions/device-management). Mit Intune verwaltete [Geräte können auf die Werkseinstellungen zurückgesetzt werden](/mem/intune/remote-actions/devices-wipe). Wenn das Gerät nicht verwaltet wird, können Sie [Unternehmensdaten aus verwalteten Apps löschen](/mem/intune/apps/apps-selective-wipe). Diese Prozesse sind effektiv, um potenziell sensible Daten von Endbenutzergeräten zu entfernen. Allerdings muss das Gerät mit dem Internet verbunden sein, damit diese Prozesse ausgelöst werden können. Wenn das Gerät offline ist, kann das Gerät weiterhin auf lokal gespeicherte Daten zugreifen.
+- [Verwalten Sie Geräte und Anwendungen mit Microsoft Intune](/mem/intune/remote-actions/device-management). Mit Intune verwaltete [Geräte können auf die Werkseinstellungen zurückgesetzt werden](/mem/intune/remote-actions/devices-wipe). Wenn das Gerät nicht verwaltet wird, können Sie [Unternehmensdaten aus verwalteten Apps löschen](/mem/intune/apps/apps-selective-wipe). Diese Prozesse sind effektiv, um potenziell vertrauliche Daten von Endbenutzergeräten zu entfernen. Allerdings muss das Gerät mit dem Internet verbunden sein, damit diese Prozesse ausgelöst werden können. Wenn das Gerät offline ist, kann das Gerät weiterhin auf lokal gespeicherte Daten zugreifen.
 
 > [!NOTE]
 > Daten auf dem Gerät können nach dem Zurücksetzen nicht wiederhergestellt werden.
@@ -130,4 +131,4 @@ Sobald Administratoren die oben genannten Schritte ausgeführt haben, kann der B
 
 - [Sichere Zugriffsmethoden für Azure AD-Administratoren](../roles/security-planning.md)
 - [Hinzufügen oder Aktualisieren von Benutzerprofilinformationen](../fundamentals/active-directory-users-profile-azure-portal.md)
-- [Entfernen oder Löschen eines ehemaligen Mitarbeiters](https://docs.microsoft.com/microsoft-365/admin/add-users/remove-former-employee?view=o365-worldwide)
+- [Entfernen oder Löschen eines ehemaligen Mitarbeiters](/microsoft-365/admin/add-users/remove-former-employee)

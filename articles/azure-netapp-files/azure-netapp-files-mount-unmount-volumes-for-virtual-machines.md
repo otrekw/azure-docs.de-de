@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 11/17/2020
-ms.openlocfilehash: 83d6e051f520737e750e6c46c192eb698e7bf0e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: 2da352a10f5ff9bacdfb28de8752e5ffefa3fd82
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94842256"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068192"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern 
 
@@ -39,7 +39,7 @@ Volumes für virtuelle Windows- oder Linux-Computer lassen sich nach Bedarf einb
     * Wenn Sie ein NFS-Volume einbinden, stellen Sie sicher, dass Sie die Option `vers` im `mount`-Befehl verwenden, um die NFS-Protokollversion anzugeben, die dem Volume entspricht, das Sie einbinden möchten. 
     * Wenn Sie mit NFSv4.1 arbeiten, binden Sie Ihr Dateisystem mit dem folgenden Befehl ein: `sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
         > [!NOTE]
-        > Stellen Sie bei Verwendung von NFSv4.1 sicher, dass alle virtuellen Computer, auf denen der Export eingebunden wird, eindeutige Hostnamen verwenden.
+        > Wenn Sie NFSv4.1 verwenden und Ihr Anwendungsfall die Nutzung von VMs mit demselben Hostnamen umfasst (z. B. bei einem DR-Test), sehen Sie sich den Abschnitt [Konfigurieren von zwei VMs mit demselben Hostnamen für den Zugriff auf NFSv4.1-Volumes](configure-nfs-clients.md#configure-two-vms-with-the-same-hostname-to-access-nfsv41-volumes) an.
 
 3. Wenn Sie möchten, dass ein NFS-Volume automatisch bereitgestellt wird, wenn eine Azure-VM gestartet oder neu gestartet wird, fügen Sie der Datei `/etc/fstab` auf dem Host einen Eintrag hinzu. 
 
@@ -63,3 +63,4 @@ Volumes für virtuelle Windows- oder Linux-Computer lassen sich nach Bedarf einb
 * [Häufig gestellte Fragen zu NFS](./azure-netapp-files-faqs.md#nfs-faqs)
 * [Network File System (Übersicht)](/windows-server/storage/nfs/nfs-overview)
 * [Einbinden eines NFS-Kerberos-Volumes](configure-kerberos-encryption.md#kerberos_mount)
+* [Konfigurieren von zwei VMs mit demselben Hostnamen für den Zugriff auf NFSv4.1-Volumes](configure-nfs-clients.md#configure-two-vms-with-the-same-hostname-to-access-nfsv41-volumes) 

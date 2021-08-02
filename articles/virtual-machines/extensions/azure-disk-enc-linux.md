@@ -8,12 +8,12 @@ author: ejarvi
 ms.author: ejarvi
 ms.date: 03/19/2020
 ms.collection: linux
-ms.openlocfilehash: 8c0f233c2eb154636d64f747bb43bd392295aa9b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7b383c4fdc0d1b5a04c100a574b814938ed83f2b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792379"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087776"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption für Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -34,7 +34,7 @@ Eine vollständige Liste mit den Voraussetzungen finden Sie unter [Azure Disk En
 
 Es gibt zwei Versionen des Erweiterungsschemas für Azure Disk Encryption (ADE):
 - v1.1 – Ein neueres empfohlenes Schema, das keine Azure Active Directory (AAD)-Eigenschaften verwendet.
-- v0.1 – Ein älteres Schema, für das keine Azure Active Directory (AAD)-Eigenschaften erforderlich sind. 
+- v0.1 – Ein älteres Schema, für das keine Azure Active Directory (AAD)-Eigenschaften erforderlich sind.
 
 Zum Auswählen eines Zielschemas muss die Eigenschaft `typeHandlerVersion` auf die gewünschte Schemaversion festgelegt werden.
 
@@ -69,7 +69,7 @@ Das v1.1-Schema wird empfohlen und erfordert keine Azure Active Directory (AAD)-
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Schema v0.1: mit AAD 
+### <a name="schema-v01-with-aad"></a>Schema v0.1: mit AAD
 
 Das 0.1-Schema erfordert `AADClientID` und entweder `AADClientSecret` oder `AADClientCertificate`.
 
@@ -142,12 +142,12 @@ Verwenden von `AADClientCertificate`:
 | publisher | Microsoft.Azure.Security | Zeichenfolge |
 | type | AzureDiskEncryptionForLinux | Zeichenfolge |
 | typeHandlerVersion | 1.1, 0.1 | INT |
-| (0.1-Schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (0.1-Schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid |
 | (0.1-Schema) AADClientSecret | password | Zeichenfolge |
 | (0.1-Schema) AADClientCertificate | thumbprint | Zeichenfolge |
 | (optional) (0.1-Schema) Passphrase | password | Zeichenfolge |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-Wörterbuch |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | Zeichenfolge | 
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | Zeichenfolge |
 | (optional – Standard-RSA-OAEP) KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | Zeichenfolge |
 | KeyVaultURL | url | Zeichenfolge |
 | KeyVaultResourceId | url | Zeichenfolge |
@@ -160,12 +160,12 @@ Verwenden von `AADClientCertificate`:
 
 Ein Beispiel für eine Vorlagenbereitstellung, die auf Schema v1.1 basiert, finden Sie in der Azure-Schnellstartvorlage [201-encrypt-running-linux-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad).
 
-Ein Beispiel für eine Vorlagenbereitstellung, die auf Schema v0.1 basiert, finden Sie in der Azure-Schnellstartvorlage [201-encrypt-running-linux-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
+Ein Beispiel für eine Vorlagenbereitstellung, die auf Schema v0.1 basiert, finden Sie in der Azure-Schnellstartvorlage [encrypt-running-linux-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm).
 
 >[!WARNING]
 > - Wenn Sie zuvor Azure Disk Encryption mit Azure AD zum Verschlüsseln eines virtuellen Computers verwendet haben, müssen Sie diese Option auch weiterhin zum Verschlüsseln Ihres virtuellen Computers verwenden.
-> - Beim Verschlüsseln von Linux-Betriebssystemvolumes sollte die VM als nicht verfügbar angesehen werden. Es wird dringend empfohlen, SSH-Anmeldungen zu vermeiden, während die Verschlüsselung ausgeführt wird, damit es nicht aufgrund von Problemen zur Blockierung geöffneter Dateien kommt, auf die während des Verschlüsselungsvorgangs zugegriffen werden muss. Verwenden Sie zum Überprüfen des Fortschritts das PowerShell-Cmdlet [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) oder den CLI-Befehl [vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show). Es ist zu erwarten, dass dieser Prozess bei einem Betriebssystemvolume mit 30 GB einige Stunden in Anspruch nimmt, zuzüglich der Zeit für die Verschlüsselung von Datenvolumes. Die Verschlüsselungszeit für das Datenvolume hängt proportional von der Größe und Menge der Datenvolumes ab, es sei denn, es wird die Verschlüsselungsformatoption „all“ verwendet. 
-> - Das Deaktivieren der Verschlüsselung auf virtuellen Linux-Computern wird nur für Datenvolumes unterstützt. Dies wird nicht auf Daten- oder Betriebssystemvolumes unterstützt, wenn das Betriebssystemvolume verschlüsselt wurde. 
+> - Beim Verschlüsseln von Linux-Betriebssystemvolumes sollte die VM als nicht verfügbar angesehen werden. Es wird dringend empfohlen, SSH-Anmeldungen zu vermeiden, während die Verschlüsselung ausgeführt wird, damit es nicht aufgrund von Problemen zur Blockierung geöffneter Dateien kommt, auf die während des Verschlüsselungsvorgangs zugegriffen werden muss. Verwenden Sie zum Überprüfen des Fortschritts das PowerShell-Cmdlet [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) oder den CLI-Befehl [vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show). Es ist zu erwarten, dass dieser Prozess bei einem Betriebssystemvolume mit 30 GB einige Stunden in Anspruch nimmt, zuzüglich der Zeit für die Verschlüsselung von Datenvolumes. Die Verschlüsselungszeit für das Datenvolume hängt proportional von der Größe und Menge der Datenvolumes ab, es sei denn, es wird die Verschlüsselungsformatoption „all“ verwendet.
+> - Das Deaktivieren der Verschlüsselung auf virtuellen Linux-Computern wird nur für Datenvolumes unterstützt. Dies wird nicht auf Daten- oder Betriebssystemvolumes unterstützt, wenn das Betriebssystemvolume verschlüsselt wurde.
 
 >[!NOTE]
 > Wenn der `VolumeType`-Parameter auf „All“ festgelegt ist, werden Datenträger nur dann verschlüsselt, wenn sie ordnungsgemäß eingebunden sind.
@@ -178,7 +178,7 @@ Informationen zur Problembehandlung finden Sie unter [Leitfaden zur Azure Disk E
 
 ### <a name="support"></a>Support
 
-Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/community/) mit Azure-Experten in Verbindung setzen. 
+Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/community/) mit Azure-Experten in Verbindung setzen.
 
 Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Navigieren Sie zum [Azure-Support](https://azure.microsoft.com/support/options/), und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
 

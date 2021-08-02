@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei Azure Active Directory B2C (Business-to-Customer)
 description: Neue und aktualisierte Dokumentation für Azure Active Directory B2C (Business-to-Customer)
-ms.date: 06/04/2021
+ms.date: 06/02/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,33 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: ee4e371a17a717bbb3a520301478b92e65deecc2
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 1c68040022da094090e3fcd870b8a615fc045dcd
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802250"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409413"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: Neuerungen
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation von Azure Active Directory B2C. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim B2C-Dienst finden Sie unter [Neuerungen in Azure Active Directory](../active-directory/fundamentals/whats-new.md).
+
+## <a name="may-2021"></a>Mai 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Definieren eines technischen Profils für benutzerdefinierte OAuth2-Fehler in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](oauth2-error-technical-profile.md)
+- [Konfigurieren der Authentifizierung in einer Beispielwebanwendung mit Azure Active Directory B2C](configure-authentication-sample-web-app.md)
+- [Konfigurieren der Authentifizierung in einer Beispielwebanwendung mit Azure Active Directory B2C-Optionen](enable-authentication-web-application-options.md)
+- [Aktivieren der Authentifizierung in Ihrer eigenen Webanwendung mit Azure Active Directory B2C](enable-authentication-web-application.md)
+- [Azure Active Directory B2C TLS- und Cipher Suite-Anforderungen](https-cipher-tls-requirements.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Hinzufügen von bedingtem Zugriff zu Benutzerflows in Azure Active Directory B2C](conditional-access-user-flow.md)
+- [Entschärfen von Angriffen auf Anmeldeinformationen in Azure AD B2C](threat-management.md)
+- [Dienstlimits und -einschränkungen für Azure Active Directory B2C](service-limits.md)
+
 
 ## <a name="april-2021"></a>April 2021
 

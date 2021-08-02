@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6644f495f28fb76503948c18354a5af0fcf832e5
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: fcac9eee73f509de5903030b77d567cbe11ee043
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364752"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787558"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK für die SQL-API: Versionshinweise und Ressourcen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,6 +54,13 @@ Dies ist das ursprüngliche Sync Java SDK v2 von Azure Cosmos DB für die SQL-
 |**Unterstützte Mindestlaufzeit**|[Java Development Kit (JDK) 7+](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>Versionshinweise
+### <a name="263"></a><a name="2.6.3"></a>2.6.3
+* Korrektur der Wiederholungsrichtlinie, wenn `GoneException` von `IllegalStateException` umschlossen ist: Diese Änderung ist erforderlich, um sicherzustellen, dass der Gatewaycache auf 410 aktualisiert wird, damit der Spark-Connector (für Spark 2.4) eine benutzerdefinierte Wiederholungsrichtlinie verwenden kann, damit Abfragen während der Partitionsteilung erfolgreich sind.
+
+### <a name="262"></a><a name="2.6.2"></a>2.6.2
+* Neue Wiederholungsrichtlinie für Wiederholungsversuche bei Lesezeitüberschreitungen hinzugefügt
+* Abhängigkeit auf `com.fasterxml.jackson.core/jackson-databind` 2.9.10.8 aktualisiert
+* Abhängigkeit auf `org.apache.httpcomponents/httpclient` 4.5.13 aktualisiert
 
 ### <a name="261"></a><a name="2.6.1"></a>2.6.1
 * Es wurde ein Fehler bei der Verarbeitung einer Abfrage durch Dienstinteroperabilität behoben.

@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Leistungsstufen für vorhandene verwaltete Da
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 05/13/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 429845aa22b6d069b8d7233132de8eb3b24b2985
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 32f589be39740d62ef77967867522688d29a3618
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043676"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673497"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Ändern der Leistungsstufe mithilfe des Azure PowerShell-Moduls oder der Azure CLI
 
@@ -117,8 +117,39 @@ $disk.Tier
 
 ## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>Ändern der Leistungsstufe eines Datenträgers ohne Downtime (Vorschau)
 
-Sie können Ihre Leistungsstufe auch ohne Downtime ändern, damit Sie Ihre VM nicht freigeben oder Ihren Datenträger trennen müssen, um die Stufe zu ändern. Weitere Informationen und den Registrierungslink für die Vorschauversion finden Sie im Abschnitt [Ändern der Leistungsstufe eines Datenträgers ohne Downtime (Vorschau)](#change-performance-tier-without-downtime-preview).
+Sie können Ihre Leistungsstufe auch ohne Downtime ändern, damit Sie Ihre VM nicht freigeben oder Ihren Datenträger trennen müssen, um die Stufe zu ändern.
 
+### <a name="prerequisites"></a>Voraussetzungen
+
+Ihr Datenträger muss die Anforderungen erfüllen, die im Abschnitt [Leistungsstufe ohne Downtime ändern (Vorschau)](#change-performance-tier-without-downtime-preview) beschrieben sind. Wenn dies nicht der Fall ist, kommt es beim Ändern der Leistungsstufe zu Ausfallzeiten.
+
+Sie müssen das Feature für Ihr Abonnement aktivieren, bevor Sie die Leistungsstufe eines Datenträgers ohne Ausfallzeiten ändern können. Führen Sie die folgenden Schritte aus, um das Feature für Ihr Abonnement zu aktivieren:
+
+1.  Führen Sie den folgenden Befehl aus, um das Feature für Ihr Abonnement zu registrieren.
+
+    ```azurecli
+    az feature register --namespace Microsoft.Compute --name LiveTierChange
+    ```
+ 
+1.  Überprüfen Sie mithilfe des folgenden Befehls, ob der Registrierungsstatus **Registriert** lautet (dies kann einige Minuten dauern), bevor Sie das Feature ausprobieren.
+
+    ```azurecli
+    az feature show --namespace Microsoft.Compute --name LiveTierChange
+    ```
+
+### <a name="update-the-performance-tier-of-a-disk-without-downtime-via-azure-cli"></a>Aktualisieren der Leistungsstufe eines Datenträgers ohne Downtime über die Azure CLI
+
+Das folgende Skript aktualisiert die Stufe eines Datenträgers, der höher als die Basisstufe ist. Ersetzen Sie `<yourResourceGroupNameHere>`, `<yourDiskNameHere>` und `<yourDesiredPerformanceTier>`, und führen Sie dann das Skript aus:
+
+```azurecli
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+performanceTier=<yourDesiredPerformanceTier>
+ 
+az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
+```
+
+### <a name="update-the-performance-tier-of-a-disk-without-downtime-via-arm-template"></a>Aktualisieren der Leistungsstufe eines Datenträgers ohne Downtime mithilfe einer ARM-Vorlage
 
 Das folgende Skript aktualisiert die Stufe eines Datenträgers, die höher als die Baselinestufe ist, mithilfe der Beispielvorlage [CreateUpdateDataDiskWithTier.json](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json). Ersetzen Sie `<yourSubScriptionID>`, `<yourResourceGroupName>`, `<yourDiskName>`, `<yourDiskSize>` und `<yourDesiredPerformanceTier>`, und führen Sie dann das Skript aus:
 
@@ -139,10 +170,20 @@ region=EastUS2EUAP
 --parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
 ```
 
-Ein Wechsel der Leistungsstufe kann bis zu 15 Minuten dauern. Verwenden Sie den folgenden Befehl, um zu bestätigen, dass Ihr Datenträger die Leistungsstufen gewechselt hat:
+## <a name="confirm-your-disk-has-changed-tiers"></a>Überprüfen der Leistungsstufenänderung Ihres Datenträgers
+
+Ein Wechsel der Leistungsstufe kann bis zu 15 Minuten dauern. Verwenden Sie eine der folgenden Methoden, um zu bestätigen, dass Ihr Datenträger die Leistungsstufe gewechselt hat:
+
+### <a name="azure-resource-manager"></a>Azure Resource Manager
 
 ```cli
 az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-12-01 --query [properties.tier] -o tsv
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+```azurecli
+az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

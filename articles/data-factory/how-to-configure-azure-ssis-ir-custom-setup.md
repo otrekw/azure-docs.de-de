@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
-ms.date: 04/29/2021
-ms.openlocfilehash: cb6ac2143d19cf522f973316c4ef9e1fe7e5c4e0
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.date: 04/30/2021
+ms.openlocfilehash: ddd837387de955e04cdf39ec73104dfda98e3cf4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109664886"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470899"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Anpassen des Setups für eine Azure-SSIS Integration Runtime
 
@@ -134,23 +134,23 @@ Wenn Sie den Typ **Azure PowerShell installieren** für das benutzerdefinierte E
 
 Wenn Sie den Typ **Lizenzierte Komponente installieren** für das benutzerdefinierte Express-Setup auswählen, können Sie anschließend in der Dropdownliste **Komponentenname** eine integrierte Komponente unserer ISV-Partner auswählen:
 
-   * Wenn Sie die Komponente **Task Factory von SentryOne** auswählen, können Sie die [Task Factory](https://www.sentryone.com/products/task-factory/high-performance-ssis-components)-Komponentensammlung von SentryOne in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **2020.1.3**.
+* Wenn Sie die Komponente **Task Factory von SentryOne** auswählen, können Sie die [Task Factory](https://www.sentryone.com/products/task-factory/high-performance-ssis-components)-Komponentensuite von SentryOne in Ihrer Azure-SSIS IR installieren, indem Sie im Feld **Lizenzschlüssel** den erworbenen Produktlizenzschlüssel eingeben. Die aktuelle integrierte Version ist **2020.21.2**.
 
-   * Wenn Sie die Komponente **HEDDA.IO von oh22** auswählen, können Sie die [HEDDA.IO](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR)-Datenqualitäts-/Bereinigungskomponente von oh22 in Ihrer Azure-SSIS IR installieren. Dazu müssen Sie den entsprechenden Dienst zuvor erworben haben. Die aktuelle integrierte Version ist **1.0.14**.
+* Wenn Sie die Komponente **HEDDA.IO von oh22** auswählen, können Sie die [HEDDA.IO](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR)-Datenqualitäts-/Bereinigungskomponente von oh22 in Ihrer Azure-SSIS IR installieren. Dazu müssen Sie den entsprechenden Dienst zuvor erworben haben. Die aktuelle integrierte Version ist **1.0.14**.
 
-   * Wenn Sie die Komponente **SQLPhonetics.NET von oh22** auswählen, können Sie die [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis)-Datenqualitäts-/Zuordnungskomponente von oh22 in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **1.0.45**.
+* Wenn Sie die Komponente **SQLPhonetics.NET von oh22** auswählen, können Sie die [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis)-Datenqualitäts-/Zuordnungskomponente von oh22 in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **1.0.45**.
+   
+* Wenn Sie die Komponente **KingswaySoft's SSIS Integration Toolkit** auswählen, können Sie die Connector-Sammlung [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) für Apps für CRM/ERP/Marketing/Zusammenarbeit, z. B. Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud usw., von KingswaySoft in Ihrer Azure-SSIS Integration Runtime installieren, indem Sie den erworbenen Produktlizenzschlüssel im Feld **Lizenzschlüssel** eingeben. Die aktuelle integrierte Version ist **20.2**.
 
-   * Wenn Sie die Komponente **SSIS Integration Toolkit von KingswaySoft** auswählen, können Sie die [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365)-Connector-Sammlung für Apps für CRM/ERP/Marketing/Zusammenarbeit, z. B. Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud usw., von KingswaySoft in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **2020.1**.
+* Wenn Sie die Komponente **KingswaySoft's SSIS Productivity Pack** auswählen, können Sie die Komponentensammlung [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack) von KingswaySoft in Ihrer Azure-SSIS Integration Runtime installieren, indem Sie den erworbenen Produktlizenzschlüssel im Feld **Lizenzschlüssel** eingeben. Die aktuelle integrierte Version ist **20.2**.
 
-   * Wenn Sie die Komponente **SSIS Productivity Pack von KingswaySoft** auswählen, können Sie die [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack)-Komponentensammlung von KingswaySoft in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **20.1**.
+* Wenn Sie die Komponente **Theobald Software's Xtract IS** auswählen, können Sie die [Xtract IS](https://theobald-software.com/en/xtract-is/)-Suite von Connectors für das SAP-System (ERP, S/4HANA, BW) aus Theobald Software in Ihrer Azure-SSIS IR installieren, indem Sie die erworbene Produktlizenzdatei in das Feld **Lizenzdatei** ziehen und ablegen/hochladen. Die aktuelle integrierte Version ist **6.5.13.18**.
 
-   * Wenn Sie die Komponente **Xtract IS von Theobald Software** auswählen, können Sie die [Xtract IS](https://theobald-software.com/en/xtract-is/)-Connector-Sammlung für SAP-Systeme (ERP, S/4HANA, BW) von Theobald Software in Ihrer Azure-SSIS IR installieren. Dazu müssen Sie die zuvor erworbene Produktlizenzdatei per Drag & Drop in das Eingabefeld **Lizenzdatei** ziehen oder hochladen. Die aktuelle integrierte Version ist **6.1.1.3**.
+* Wenn Sie die Komponente **Integration Service von AecorSoft** auswählen, können Sie die [Integration Service](https://www.aecorsoft.com/en/products/integrationservice)-Connector-Sammlung für SAP- und Salesforce-Systeme von AecorSoft in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **3.0.00**.
 
-   * Wenn Sie die Komponente **Integration Service von AecorSoft** auswählen, können Sie die [Integration Service](https://www.aecorsoft.com/en/products/integrationservice)-Connector-Sammlung für SAP- und Salesforce-Systeme von AecorSoft in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **3.0.00**.
+* Wenn Sie die Komponente **CData's SSIS Standard Package** auswählen, können Sie die Suite [SSIS Standard Package](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) mit den gängigsten Komponenten von CData (wie etwa Microsoft SharePoint-Connectors) in Ihrer Azure-SSIS IR-Instanz installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **19.7354**.
 
-   * Wenn Sie die Komponente **CData's SSIS Standard Package** auswählen, können Sie die Suite [SSIS Standard Package](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) mit den gängigsten Komponenten von CData (wie etwa Microsoft SharePoint-Connectors) in Ihrer Azure-SSIS IR-Instanz installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **19.7354**.
-
-   * Wenn Sie die Komponente **CData's SSIS Extended Package** auswählen, können Sie die Suite [SSIS Extended Package](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) mit allen Komponenten von CData (etwa Microsoft Dynamics 365 Business Central-Connectors und andere Komponenten aus **SSIS Standard Package**) in Ihrer Azure-SSIS IR-Instanz installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **19.7354**. Stellen Sie aufgrund des großen Umfangs sicher, dass Ihre Azure-SSIS IR-Instanz über mindestens vier CPU-Kerne pro Knoten verfügt, um ein Timeout bei der Installation zu vermeiden.
+* Wenn Sie die Komponente **CData's SSIS Extended Package** auswählen, können Sie die Suite [SSIS Extended Package](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) mit allen Komponenten von CData (etwa Microsoft Dynamics 365 Business Central-Connectors und andere Komponenten aus **SSIS Standard Package**) in Ihrer Azure-SSIS IR-Instanz installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **19.7354**. Stellen Sie aufgrund des großen Umfangs sicher, dass Ihre Azure-SSIS IR-Instanz über mindestens vier CPU-Kerne pro Knoten verfügt, um ein Timeout bei der Installation zu vermeiden.
 
 Ihre hinzugefügten benutzerdefinierten Express-Setups werden auf der Seite **Erweiterte Einstellungen** angezeigt. Wenn Sie sie entfernen möchten, können Sie die entsprechenden Kontrollkästchen aktivieren und dann **Löschen** auswählen.
 

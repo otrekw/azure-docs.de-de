@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 11/06/2020
-ms.openlocfilehash: 72e27e79bc1eea7633d7594f1f72e31abbfd7744
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 06da7175456125cfb65c6007f283da2eb6b93622
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136515"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786803"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>Migrationsübersicht: SQL Server zu Azure SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -41,6 +41,8 @@ In SQL-Datenbank sind zudem mehrere [Bereitstellungsmodelle](../../database/sql-
 Einer der wichtigsten Vorteile der Migration in SQL-Datenbank besteht darin, dass Sie Ihre Anwendung mithilfe der PaaS-Funktionen modernisieren können. Sie können dann jede Abhängigkeit von technischen Komponenten eliminieren, die auf die Instanzebene beschränkt sind, wie z. b. SQL-Agentaufträge.
 
 Sie können auch Kosten sparen, indem Sie den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) für SQL Server verwenden, um Ihre lokalen Lizenzen von SQL Server zu Azure SQL-Datenbank zu migrieren. Diese Option ist verfügbar, wenn Sie das [v-Core-basierte Kaufmodell](../../database/service-tiers-vcore.md) auswählen.
+
+Überprüfen Sie die in [Azure SQL-Datenbank verfügbaren Features](../../database/features-comparison.md) der SQL Server-Datenbank-Engine, um die Unterstützungsfähigkeit Ihres Migrationsziels sicherzustellen.  
 
 ## <a name="considerations"></a>Überlegungen 
 
@@ -153,17 +155,12 @@ Die Funktionen der SQL Server-Hochverfügbarkeit wie Always On Failover-Cluster-
 
 Über die Hochverfügbarkeitsarchitektur hinaus, die in Azure SQL-Datenbank enthalten ist, können Sie mit der Funktion für [automatische Failover-Gruppen](../../database/auto-failover-group-overview.md) die Replikation und das Failover von Datenbanken in einer verwalteten Instanz in eine andere Region verwalten. 
 
+### <a name="logins-and-groups"></a>Anmeldungen und Gruppen
+
+Windows-Anmeldungen werden in Azure SQL-Datenbank nicht unterstützt. Erstellen Sie stattdessen eine Azure Active Directory-Anmeldung. Erstellen Sie alle SQL-Anmeldungen manuell neu. 
+
 ### <a name="sql-agent-jobs"></a>SQL-Agent-Aufträge
 SQL-Agent-Aufträge werden in Azure SQL-Datenbank nicht direkt unterstützt und müssen als [Aufträge für elastische Datenbanken (Vorschauversion)](../../database/job-automation-overview.md) bereitgestellt werden.
-
-### <a name="logins-and-groups"></a>Anmeldungen und Gruppen
-Verschieben Sie SQL-Anmeldungen von der SQL Server-Quelle zu Azure SQL Managed Instance, indem Sie den Datenbankmigrationsdienst im Offline-Modus verwenden. Verwenden Sie das Blatt **Ausgewählte Anmeldungen** im Migrations-Assistenten, um Anmeldungen in Ihre Zielinstanz von SQL-Datenbank zu migrieren. 
-
-Sie können Windows-Benutzer und -Gruppen auch über Database Migration Service migrieren, indem Sie die entsprechende Umschaltfläche auf der Seite **Konfiguration** des Azure Database Migration Service aktivieren. 
-
-Alternativ können Sie das [PowerShell-Hilfsprogramm](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins) verwenden, das speziell von den Datenmigrationsarchitekten von Microsoft entworfen wurde. Das Hilfsprogramm erstellt mithilfe von PowerShell ein Transact-SQL-Skript (T-SQL) zum Neuerstellen von Anmeldungen und ausgewählten Datenbankbenutzern aus der Quelle in der Zielinstanz. 
-
-Das PowerShell-Hilfsprogramm ordnet Windows Server Active Directory-Konten automatisch Azure AD-Konten zu und kann für jede Anmeldung einen UPN-Abgleich mit der Active Directory-Quellinstanz durchführen. Das Hilfsprogramm erstellt benutzerdefinierte Server- und Datenbankrollen sowie Rollenmitgliedschaften und Benutzerberechtigungen. Eigenständige Datenbanken werden noch nicht unterstützt, und nur einige der möglichen SQL Server-Berechtigungen werden erstellt. 
 
 ### <a name="system-databases"></a>Systemdatenbanken
 Die einzigen in Azure SQL-Datenbank anwendbaren Systemdatenbanken sind die [Masterdatenbank](/sql/relational-databases/databases/master-database) und tempdb. Weitere Informationen finden Sie unter [tempdb in Azure SQL-Datenbank](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

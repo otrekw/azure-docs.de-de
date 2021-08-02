@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 01470dac716ea26b36fb8bb13eac312cc8387ae1
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 51194dbcdfd967a40da96842cf58d373fd28f96f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186526"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468286"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy
 
@@ -55,6 +55,9 @@ Bei Auswahl einer benutzerdefinierten Domäne für eine externe URL wird in eine
 ## <a name="set-up-and-use-custom-domains"></a>Einrichten und Verwenden von benutzerdefinierten Domänen
 
 Zum Konfigurieren einer lokalen App für die Verwendung einer benutzerdefinierten Domäne benötigen Sie eine verifizierte benutzerdefinierte Azure Active Directory-Domäne, ein PFX-Zertifikat für die benutzerdefinierte Domäne und eine lokale App für die Konfiguration. 
+
+> [!IMPORTANT]
+> Sie sind für die Verwaltung von DNS-Einträgen verantwortlich, die Ihre benutzerdefinierten Domänen an die Domäne *msappproxy.net* umleiten. Wenn Sie Ihre Anwendung oder Ihren Mandanten später löschen möchten, stellen Sie sicher, dass Sie auch zugeordnete DNS-Einträge für den Anwendungsproxy löschen, um eine falsche Verwendung verbleibender DNS-Einträge zu verhindern. 
 
 ### <a name="create-and-verify-a-custom-domain"></a>Erstellen und Überprüfen einer benutzerdefinierten Domäne
 

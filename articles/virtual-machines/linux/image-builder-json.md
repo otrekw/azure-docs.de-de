@@ -1,22 +1,23 @@
 ---
-title: Erstellen einer Azure Image Builder-Vorlage (Preview)
+title: Erstellen einer Azure Image Builder-Vorlage
 description: Erfahren Sie, wie Sie eine Vorlage für die Verwendung mit Azure Image Builder erstellen.
-author: danielsollondon
-ms.author: danis
-ms.date: 05/04/2021
+author: kof-f
+ms.author: kofiforson
+ms.date: 05/24/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 94083c8811d92d05a68295f9ac75f38123b3f771
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 07dfd9eb2dab9ae8c7e7a024bbf09c641e0910e4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732594"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967242"
 ---
-# <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
+# <a name="create-an-azure-image-builder-template"></a>Erstellen einer Azure Image Builder-Vorlage 
 
 Azure Image Builder verwendet eine JSON-Datei, um Informationen an den Image Builder-Dienst zu übermitteln. In diesem Artikel werden die einzelnen Abschnitte der JSON-Datei erläutert, sodass Sie Ihre eigene erstellen können. Vollständige JSON-Beispieldateien finden Sie im [GitHub-Repository für Azure Image Builder](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts).
 
@@ -55,7 +56,7 @@ Das grundlegende Format der Vorlage:
 
 ## <a name="type-and-api-version"></a>Typ und API-Version
 
-`type` ist der Ressourcentyp, der `"Microsoft.VirtualMachineImages/imageTemplates"` entsprechen muss. `apiVersion` ändert sich im Laufe der Zeit, in der sich die API ändert. Für die Preview sollte jedoch `"2020-02-14"` festgelegt sein.
+`type` ist der Ressourcentyp, der `"Microsoft.VirtualMachineImages/imageTemplates"` entsprechen muss. Die `apiVersion` ändert sich im Laufe der Zeit, wenn die API geändert wird, sollte aber momentan `"2020-02-14"` sein.
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -64,18 +65,16 @@ Das grundlegende Format der Vorlage:
 
 ## <a name="location"></a>Standort
 
-„Location“ entspricht der Region, in der das benutzerdefinierte Image erstellt wird. Die Image Builder-Preview unterstützt die folgenden Regionen:
+„Location“ entspricht der Region, in der das benutzerdefinierte Image erstellt wird. Die folgenden Regionen werden unterstützt:
 
 - East US
 - USA (Ost) 2
 - USA, Westen-Mitte
 - USA (Westen)
 - USA, Westen 2
+- USA Süd Mitte
 - Nordeuropa
 - Europa, Westen
-- USA Süd Mitte
-
-Demnächst verfügbar (Mitte 2021):
 - Südostasien
 - Australien, Südosten
 - Australien (Osten)
@@ -89,21 +88,23 @@ Demnächst verfügbar (Mitte 2021):
 ### <a name="data-residency"></a>Datenresidenz
 Der Azure VM Image Builder-Dienst speichert/verarbeitet Kundendaten nicht außerhalb von Regionen, die strenge Anforderungen an die Datenresidenz in einer Region haben, wenn ein Kunde einen Build in dieser Region an fordert. Bei einem Dienstausfall für Regionen mit Anforderungen an die Datenresidenz müssen Sie Vorlagen in einer anderen Region und Geografie erstellen.
 
+### <a name="zone-redundancy"></a>Zonenredundanz
+Die Verteilung unterstützt Zonenredundanz, VHDs werden standardmäßig auf ein Konto für zonenredundanten Speicher verteilt, und die Version der Shared Image Gallery unterstützt einen [ZRS-Speichertyp](../disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview), falls angegeben.
  
 ## <a name="vmprofile"></a>vmProfile
 ## <a name="buildvm"></a>buildVM
 Standardmäßig verwendet Image Builder eine „Standard_D1_v2“-Build-VM. Diese wird aus dem Image erstellt, das Sie in `source` festlegen. Sie können dies außer Kraft setzen und dies aus folgenden Gründen tun:
 1. Durchführen von Anpassungen, die mehr Arbeitsspeicher, CPU und Verarbeitung großer Dateien (GBs) erfordern.
 2. Wenn Sie Windows-Builds ausführen, sollten Sie „Standard_D2_v2“ oder eine gleichmäßige VM-Größe verwenden.
-3. Forderung nach [VM-Isolation](https://docs.microsoft.com/azure/virtual-machines/isolation).
+3. Forderung nach [VM-Isolation](../isolation.md).
 4. Passen Sie ein Image an, das bestimmte Hardware erfordert, z. B. für eine GPU-VM benötigen Sie eine GPU-VM-Größe. 
-5. Fordern Sie End-to-end-Verschlüsselung im Ruhespeicher des virtuellen Buildcomputers an. Sie müssen die [Größe des virtuellen Buildcomputers](https://docs.microsoft.com/azure/virtual-machines/azure-vms-no-temp-disk) angeben, für den keine lokalen temporären Datenträger verwendet werden.
+5. Fordern Sie End-to-end-Verschlüsselung im Ruhespeicher des virtuellen Buildcomputers an. Sie müssen die [Größe des virtuellen Buildcomputers](../azure-vms-no-temp-disk.md) angeben, für den keine lokalen temporären Datenträger verwendet werden.
  
 Diese Eingabe ist optional.
 
 
 ## <a name="proxy-vm-size"></a>Proxy-VM-Größe
-Die Proxy-VM wird zum Senden von Befehlen zwischen dem Azure Image Builder-Dienst und der Build-VM verwendet. Diese wird nur bereitgestellt, wenn ein vorhandenes VNET angegeben wird. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking#why-deploy-a-proxy-vm) zu Netzwerkoptionen.
+Die Proxy-VM wird zum Senden von Befehlen zwischen dem Azure Image Builder-Dienst und der Build-VM verwendet. Diese wird nur bereitgestellt, wenn ein vorhandenes VNET angegeben wird. Weitere Informationen finden Sie in der [Dokumentation](image-builder-networking.md#why-deploy-a-proxy-vm) zu Netzwerkoptionen.
 ```json
  {
     "proxyVmSize": "Standard A1_v2"
@@ -142,7 +143,7 @@ Mit diesem optionalen Abschnitt kann sichergestellt werden, dass Abhängigkeiten
     "dependsOn": [],
 ```
 
-Weitere Informationen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/define-resource-dependency.md#dependson).
+Weitere Informationen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/resource-dependency.md#dependson).
 
 ## <a name="identity"></a>Identity
 
@@ -177,7 +178,7 @@ Die API erfordert eine SourceType-Eigenschaft, die die Quelle für die Imageerst
 
 
 > [!NOTE]
-> Bei Verwendung vorhandener benutzerdefinierter Windows-Images können Sie den Sysprep-Befehl bis zu 8-mal in einem einzigen Windows-Image ausführen. Weitere Informationen finden Sie in der Dokumentation zu [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep).
+> Wenn Sie vorhandene benutzerdefinierte Windows-Images verwenden, können Sie den Sysprep-Befehl bis zu dreimal für ein einzelnes Windows 7- oder Windows Server 2008 R2-Image oder 1001-mal für ein einzelnes Windows-Image für spätere Versionen ausführen. Weitere Informationen finden Sie in der [sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)-Dokumentation.
 
 ### <a name="platformimage-source"></a>PlatformImage-Quelle 
 Azure Image Builder unterstützt Windows Server- und -Client- sowie Azure Marketplace Linux-Images. Die vollständige Liste finden Sie [hier](../image-builder-overview.md#os-support). 
@@ -303,7 +304,7 @@ Der Abschnitt „customize“ ist ein Array. Azure Image Builder durchläuft die
  
 ### <a name="shell-customizer"></a>Shellanpassung
 
-Die Shellanpassung unterstützt das Ausführen von Shellskripts. Diese müssen öffentlich zugänglich sein, damit Image Builder auf diese zugreifen kann.
+Die Shellanpassung unterstützt die Ausführung von Shellskripts. Die Shellskripts müssen öffentlich zugänglich sein, oder Sie müssen eine [MSI](./image-builder-user-assigned-identity.md) konfiguriert haben, damit Image Builder auf sie zugreifen kann.
 
 ```json
     "customize": [ 
@@ -421,7 +422,7 @@ Anpassungseigenschaften:
 
 ### <a name="file-customizer"></a>Dateianpassung
 
-Mithilfe der Dateianpassung kann Image Builder eine Datei aus GitHub oder Azure Storage herunterladen. Wenn Sie über eine Buildpipeline für Images verfügen, die Buildartefakte verwendet, können Sie die Dateianpassung für den Download aus der Buildfreigabe konfigurieren und die Artefakte in das Image verschieben.  
+Mithilfe der Dateianpassung kann Image Builder eine Datei aus einem GitHub-Repository oder Azure Storage herunterladen. Wenn Sie über eine Buildpipeline für Images verfügen, die Buildartefakte verwendet, können Sie die Dateianpassung für den Download aus der Buildfreigabe konfigurieren und die Artefakte in das Image verschieben.  
 
 ```json
      "customize": [ 
@@ -450,11 +451,11 @@ Diese Vorgehensweise wird von Windows-Verzeichnissen und Linux-Pfaden unterstüt
 - Linux-Betriebssysteme: Image Builder kann nur in den Pfad „/tmp“ schreiben.
 - Windows: Es besteht keine Pfadeinschränkung, jedoch muss der Pfad vorhanden sein.
  
- 
+
 Wenn beim Herunterladen der Datei oder beim Platzieren der Datei im festgelegten Verzeichnis ein Fehler auftritt, schlägt der Anpassungsschritt fehl. Dies wird im Protokoll „customization.log“ dokumentiert.
 
 > [!NOTE]
-> Die Dateianpassung ist nur für kleine Dateidownloads geeignet, < 20 MB. Für größere Dateidownloads verwenden Sie einen Skript- oder Inline-Befehl, den Verwendungscode zum Herunterladen von Dateien, wie z. B. Linux `wget` oder `curl`, Windows, `Invoke-WebRequest`.
+> Die Dateianpassung ist nur für kleine Dateidownloads geeignet, < 20 MB. Für größere Dateidownloads verwenden Sie einen Skript- oder Inline-Befehl und dann den Code zum Herunterladen von Dateien, z. B. Linux `wget` oder `curl`, Windows, `Invoke-WebRequest`.
 
 ### <a name="windows-update-customizer"></a>Windows Update-Anpassung
 Diese Anpassung basiert auf dem [Community Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html) für Packer. Dabei handelt es sich um ein von der Packer-Community verwaltetes Open-Source-Projekt. Microsoft testet und überprüft den Provisioner mit dem Image Builder-Dienst und unterstützt das Untersuchen von Problemen mit dem Dienst sowie das Beheben von Problemen. Das Open-Source-Projekt wird jedoch nicht offiziell von Microsoft unterstützt. Eine ausführliche Dokumentation und Hilfe zu Windows Update Provisioner finden Sie im Projektrepository.
@@ -471,8 +472,9 @@ Diese Anpassung basiert auf dem [Community Windows Update Provisioner](https://p
                 "updateLimit": 20
             }
                ], 
-OS support: Windows
 ```
+
+Betriebssystemunterstützung: Windows
 
 Anpassungseigenschaften:
 - **type**: WindowsUpdate.

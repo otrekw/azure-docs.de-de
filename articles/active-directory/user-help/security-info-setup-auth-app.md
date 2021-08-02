@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/13/2019
+ms.date: 06/10/2021
 ms.author: curtand
-ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e03fe3ca7a66dc361988151b558fef0c4b4f390
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103197479"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982572"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Einrichten der Microsoft Authenticator-App als Überprüfungsmethode
 
@@ -129,6 +129,9 @@ Wenn Sie Ihre Authentifikator-App nicht mehr als Methode für Sicherheitsinforma
 ## <a name="change-your-default-security-info-method"></a>Ändern der Standardmethode für Sicherheitsinformationen
 
 Wenn Sie die Authentifikator-App als Standardmethode für das Anmelden bei Ihrem Geschäfts-, Schul- oder Unikonto mit zweistufiger Überprüfung oder für das Anfordern von Kennwortzurücksetzungen verwenden möchten, können Sie diese Option auf der Seite **Sicherheitsinformationen** einrichten.
+
+>[!NOTE]
+>Wenn Ihre Standardanmeldemethode eine SMS oder ein Anruf an Ihre Telefonnummer ist, wird der SMS-Code oder Sprachanruf während der mehrstufigen Authentifizierung automatisch gesendet. Ab Juni 2021 werden einige Apps Benutzer auffordern, zuerst **SMS** oder **Anruf** auszuwählen. Diese Option verhindert, dass zu viele Sicherheitscodes für verschiedene Apps gesendet werden. Wenn Ihre Standardanmeldungsmethode die Microsoft Authenticator-App ist ([was dringend empfohlen wird](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)), wird die App-Benachrichtigung automatisch gesendet.
 
 ### <a name="to-change-your-default-security-info-method"></a>So ändern Sie die Standardmethode für Sicherheitsinformationen
 

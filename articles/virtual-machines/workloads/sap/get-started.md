@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/27/2021
+ms.date: 06/09/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 322b39f6f0356086c770efb4ef940ae0fbb85eca
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2761262950c2a10709ccfa37b35a2d3e4c556359
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130987"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903485"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -80,6 +80,10 @@ In diesem Abschnitt finden Sie Informationen zum Konfigurieren des einmaligen An
 In diesem Abschnitt finden Sie Dokumente zur Integration von Microsoft Power BI in SAP-Datenquellen sowie zur Integration von Azure Data Factory in SAP BW.
 
 ## <a name="change-log"></a>Änderungsprotokoll
+- 9\. Juni 2021: Korrigieren der VM-SKU-Namen für M192---_v2 in [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md)
+- 26. Mai 2021: Änderung in [Horizontal skalierte SAP HANA-Systeme mit HSR und Pacemaker auf Azure-VMs unter SLES](./sap-hana-high-availability-scale-out-hsr-suse.md), [HA für SAP HANA-Hochskalierung mit ANF auf RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) und [SAP HANA-Scale-Out-HSR mit Pacemaker auf Azure-VMs unter RHEL ](./sap-hana-high-availability-scale-out-hsr-rhel.md) um die Konfiguration zur Vorbereitung des Betriebssystems für die Ausführung von HANA auf ANF hinzuzufügen  
+- 13. Mai 2021: Änderung in [Einrichten von Pacemaker unter SLES in Azure](./high-availability-guide-suse-pacemaker.md), um zu verdeutlichen, wie der Ressourcen-Agent „azure-events“ funktioniert 
+- 30. April 2021: Änderung in [Einrichten von Pacemaker unter SLES in Azure](./high-availability-guide-suse-pacemaker.md), um Warnungen zu inkompatiblen Änderungen mit dem Azure Fence-Agent in einer Version des Pakets „python3-azure-mgmt-compute“ (SLES 15) einzubeziehen  
 - 27. April 2021: Änderung in der [SAP ASCS/SCS-Instanz mit WSFC und Dateifreigabe,](./sap-high-availability-guide-wsfc-file-share.md) um Links zu wichtigen SAP-Hinweisen im Abschnitt „Voraussetzungen“ hinzuzufügen
 - 27. April 2021: Neue virtuelle Msv2-, Mdsv2-VM wurden in [SAP HANA Azure-VM-Speicherkonfigurationen](./hana-vm-operations-storage.md) zur HANA-Speicherkonfiguration hinzugefügt
 - 27. April 2021: Anforderung für die Verwendung derselben Speichertypen in der HANA-Systemreplikation für alle VM mit HSR-Konfiguration in [SAP HANA Azure-VM-Speicherkonfigurationen](./hana-vm-operations-storage.md) hinzugefügt

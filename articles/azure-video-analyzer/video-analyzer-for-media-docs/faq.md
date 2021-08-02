@@ -6,14 +6,14 @@ services: media-services
 author: Juliako
 manager: femila
 ms.topic: article
-ms.date: 05/06/2021
+ms.date: 05/25/2021
 ms.author: juliako
-ms.openlocfilehash: 620ebb81462f807b46c12aeee596e8873c99a1e4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1c4b96bf7874c5ade93601f7ff40238ef04cb7ee
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385577"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966667"
 ---
 # <a name="video-analyzer-for-media-frequently-asked-questions"></a>Video Analyzer for Media: Häufig gestellte Fragen
 
@@ -102,6 +102,12 @@ Wenn Sie Erkenntnisse zu Ihrem neuen Video erhalten möchten, indizieren Sie es 
 
 Wenn mehrere Audiodatenströme vorhanden sind, greift Video Analyzer for Media den ersten angetroffenen Datenstrom auf und verarbeitet ausschließlich ihn. In jedem Audiodatenstrom, den Video Analyzer for Media verarbeitet, greift er die verschiedenen Kanäle auf (sofern vorhanden) und verarbeitet sie gemeinsam als Monosignal. Zur Bearbeitung von Datenströmen/Kanälen können Sie vor der Indizierung ffmpeg-Befehle auf die Datei anwenden.
 
+### <a name="can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall"></a>Kann sich ein Speicherkonto, das mit dem Media Services-Konto verbunden ist, hinter einer Firewall befinden?
+
+Ihr kostenpflichtiges Video Analyzer for Media-Konto verwendet das angegebene Media Services-Konto, das mit einem Speicherkonto verbunden ist. Um ein verbundenes Speicherkonto zu verwenden, das sich hinter einer Firewall befindet, müssen Sie sich derzeit an den Kundensupport von Video Analyzer for Media wenden und die Anweisungen der Berater befolgen. 
+
+Navigieren Sie zu [Supportanfrage](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) (support request), um eine neue Supportanfrage im Azure-Portal zu öffnen.
+
 ### <a name="what-is-the-sla-for-video-analyzer-for-media"></a>Welche SLA ist für Video Analyzer for Media gültig?
 
 Die SLA von Azure Media Services gilt für Video Analyzer for Media. Sie finden sie auf der [SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/)-Seite. Die SLA gilt nur für kostenpflichtige Video Analyzer for Media-Konten, nicht für die kostenlose Testversion.
@@ -136,7 +142,7 @@ Den [Azure Online Services-Nutzungsbedingungen](https://www.microsoftvolumelicen
 
 Ja, der Inhalt und die gewonnenen Informationen befinden sich weiterhin in der entsprechenden Azure-Region (mit Ausnahme von „Singapur“ und „Brasilien, Süden“). Eine Ausnahme stellt die manuelle Konfiguration, die mehrere Azure-Regionen verwendet, im Azure-Abonnement dar.
 
-Kundendaten in einer Region werden aus BCDR-Gründen in die [gekoppelte Region](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs) repliziert.
+Kundendaten in einer Region werden aus BCDR-Gründen in die [gekoppelte Region](../../best-practices-availability-paired-regions.md#azure-regional-pairs) repliziert.
 
 ### <a name="what-is-the-privacy-policy-for-video-analyzer-for-media"></a>Welche Datenschutzrichtlinie gilt für Video Analyzer for Media?
 

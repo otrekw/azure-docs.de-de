@@ -1,27 +1,37 @@
 ---
-title: Zugriff auf virtuelle Azure-Netzwerke
-description: Übersicht darüber, wie Logik-Apps mit Integrationsdienstumgebungen (ISEs) auf virtuelle Azure-Netzwerke (VNETs) zugreifen können
+title: 'Übersicht: Zugriff auf virtuelle Azure-Netzwerke'
+description: Hier erfahren Sie, wie Sie mithilfe einer Integrationsdienstumgebung (ISE) von Azure Logic Apps aus auf virtuelle Azure-Netzwerke (VNETs) zugreifen können.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: 3070083040424b877159955dc2138f15319f05c8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/16/2021
+ms.openlocfilehash: ce3526f824d34e69cf33d41ba591a8ae6a634ea5
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766387"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985297"
 ---
-# <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Zugreifen auf Ressourcen virtueller Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)
+# <a name="access-to-azure-virtual-networks-from-azure-logic-apps-using-an-integration-service-environment-ise"></a>Zugreifen auf virtuelle Azure-Netzwerken aus Azure Logic Apps mithilfe einer Integrationsdienstumgebung (ISE)
 
-Manchmal benötigen Ihre Logik-Apps Zugriff auf geschützte Ressourcen wie virtuelle Computer (virtual machines, VMs) und andere Systeme oder Dienste, die sich innerhalb eines [virtuellen Azure-Netzwerks](../virtual-network/virtual-networks-overview.md) befinden oder damit verbunden sind. Um diesen Zugriff einzurichten, können Sie eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE) erstellen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). Eine ISE ist eine Instanz des Logic Apps-Diensts, die dedizierte Ressourcen verwendet und getrennt vom „globalen“ mehrinstanzenfähigen Logic Apps-Dienst ausgeführt wird. Daten in einer ISE verbleiben in [derselben Region, in der Sie diese ISE erstellen und bereitstellen](https://azure.microsoft.com/global-infrastructure/data-residency/).
+Manchmal benötigen Ihre Logik-App-Flows Zugriff auf geschützte Ressourcen wie virtuelle Computer (virtual machines, VMs) und andere Systeme oder Dienste, die sich innerhalb eines virtuellen Azure-Netzwerks befinden oder damit verbunden sind. Um direkt aus Workflows heraus auf diese Ressourcen zuzugreifen, die in der Regel in mehrinstanzenfähigen Azure Logic Apps ausgeführt werden, können Sie Ihre Logik-Apps stattdessen in einer *Integrationsdienstumgebung* (ISE) erstellen und ausführen. Eine ISE ist eigentlich eine Instanz von Azure Logic Apps, die gesondert auf dedizierten Ressourcen ausgeführt wird, getrennt von der globalen, mehrinstanzenfähigen Azure-Umgebung.
 
-Einige virtuelle Azure-Netzwerke verwenden beispielsweise private Endpunkte, die Sie mittels [Azure Private Link](../private-link/private-link-overview.md) einrichten können, um den Zugriff auf Azure-PaaS-Dienste wie Azure Storage, Azure Cosmos DB oder Azure SQL-Datenbank sowie auf Partnerdienste oder auf Kundendienste zu ermöglichen, die in Azure gehostet werden. Falls Ihre Logik-Apps Zugriff auf virtuelle Netzwerke mit privaten Endpunkten benötigen, müssen diese Logik-Apps in einer ISE erstellt, bereitgestellt und ausgeführt werden.
+Einige virtuelle Azure-Netzwerke verwenden beispielsweise private Endpunkte ([Azure Private Link](../private-link/private-link-overview.md)), um den Zugriff auf Azure-PaaS-Dienste wie Azure Storage, Azure Cosmos DB oder Azure SQL-Datenbank sowie auf Partnerdienste oder auf Kundendienste zu ermöglichen, die in Azure gehostet werden. Wenn Ihre Logik-App-Workflows Zugriff auf virtuelle Netzwerke erfordern, die private Endpunkte verwenden, haben Sie die folgenden Optionen:
 
-Wenn Sie eine ISE erstellen, *injiziert* Azure diese ISE bzw. stellt sie in Ihrem virtuellen Azure-Netzwerk bereit. Anschließend können Sie diese ISE als Speicherort für Logik-Apps und Integrationskonten verwenden, die Zugriff benötigen.
+* Wenn Sie Workflows mithilfe des Ressourcentyps **Logik-App (Verbrauch)** entwickeln möchten und Ihre Workflows private Endpunkte verwenden müssen, *müssen* Sie Ihre Logik-Apps in einer Integrationsdienstumgebung erstellen und ausführen. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+
+* Wenn Sie Workflows mit dem Ressourcentyp **Logik-App (Standard)** entwickeln möchten und Ihre Workflows private Endpunkte verwenden müssen, benötigen Sie keine ISE. Stattdessen können Ihre Workflows privat und sicher mit virtuellen Netzwerken kommunizieren, indem für eingehenden Datenverkehr private Endpunkte und für ausgehenden Datenverkehr die Integration virtueller Netzwerke verwendet werden. Weitere Informationen finden Sie unter [Schützen des Datenverkehrs zwischen virtuellen Netzwerken und Workflows mit nur einem Mandanten in Azure Logic Apps mithilfe privater Endpunkte](secure-single-tenant-workflow-virtual-network-private-endpoint.md).
+
+Weitere Informationen finden Sie in den [Unterschieden zwischen mehrinstanzenfähigen Azure Logic Apps und Integrationsdienstumgebungen](logic-apps-overview.md#resource-environment-differences).
+
+## <a name="how-an-ise-works-with-a-virtual-network"></a>Funktionsweise einer ISE mit einem virtuellen Netzwerk
+
+Wenn Sie eine ISE erstellen, wählen Sie das virtuelle Azure-Netzwerk aus, in das Azure Ihre ISE *einschleusen* bzw. darin bereitstellen soll. Wenn Sie Logik-Apps und Integrationskonten erstellen, die Zugriff auf dieses virtuelle Netzwerk benötigen, können Sie Ihre ISE als Hoststandort für diese Logik-Apps und Integrationskonten auswählen. Innerhalb der ISE werden Logik-Apps auf dedizierten Ressourcen getrennt von anderen in der mehrinstanzenfähigen Azure Logic Apps-Umgebung ausgeführt. Daten in einer ISE verbleiben in [derselben Region, in der Sie diese ISE erstellen und bereitstellen](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 ![Auswählen der Integrationsdienstumgebung](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
+
+Für mehr Kontrolle über die von Azure Storage verwendeten Verschlüsselungsschlüssel können Sie mit [Azure Key Vault](../key-vault/general/overview.md) Ihren eigenen Schlüssel einrichten, verwenden und verwalten. Diese Funktion wird auch als „Bring Your Own Key“ (BYOK) bezeichnet, und Ihr Schlüssel wird als „vom Kunden verwalteter Schlüssel“ bezeichnet. Weitere Informationen finden Sie unter [Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps](../logic-apps/customer-managed-keys-integration-service-environment.md).
 
 Diese Übersicht enthält weitere Informationen zu den [Gründen, warum Sie eine ISE verwenden sollten](#benefits), zu den [Unterschieden zwischen dem dedizierten und dem mehrinstanzenfähigen Logic Apps-Dienst](#difference) und wie Sie direkt auf Ressourcen zugreifen können, die sich in Ihrem virtuellen Azure-Netzwerk befinden bzw. mit diesem verbunden sind.
 
@@ -122,13 +132,13 @@ Beim Erstellen Ihrer ISE können Sie auswählen, ob interne oder externe Zugriff
 * **Intern:** Private Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE *nur innerhalb des virtuellen Netzwerks* zulassen, wo Sie auf Ein- und Ausgaben aus dem Ausführungsverlauf von Logik-Apps zugreifen können.
 
   > [!IMPORTANT]
-  > Wenn Sie diese webhook-basierten Trigger verwenden müssen, verwenden Sie externe Endpunkte, *nicht* interne Endpunkte, wenn Sie Ihre ISE erstellen:
+  > Wenn Sie diese Webhook-basierten Trigger verwenden müssen und sich der Dienst außerhalb Ihres virtuellen Netzwerks und gepeerter virtueller Netzwerke befindet, verwenden Sie externe Endpunkte, *keine* internen Endpunkte, wenn Sie Ihre ISE erstellen:
   > 
   > * Azure DevOps
   > * Azure Event Grid
   > * Common Data Service
   > * Office 365
-  > * SAP (ISE-Version)
+  > * SAP (multi-tenant version)
   > 
   > Stellen Sie auch sicher, dass Sie über eine Netzwerkverbindung zwischen den privaten Endpunkten und dem Computer verfügen, von dem aus Sie auf den Ausführungsverlauf zugreifen möchten. Andernfalls wird beim Versuch, den Ausführungsverlauf der Logik-App anzuzeigen, Folgendes angezeigt: „Unerwarteter Fehler. Fehler beim Abrufen.“
   >

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/05/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 090db9c84786735071ef82e60ab2234fb01d5d6e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bf50f0bdc3c8e654a3d2f780bb7f0c32533948eb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385750"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465798"
 ---
 # <a name="durable-functions-storage-providers"></a>Durable Functions-Speicheranbieter
 
@@ -39,7 +39,7 @@ Den Quellcode für die DTFx-Komponenten des Azure Storage-Speicheranbieters find
 > [!NOTE]
 > Für die Verwendung des Azure Storage-Anbieters sind universelle Azure Storage-Standardkonten erforderlich. Andere Speicherkontotypen werden nicht unterstützt. Es wird dringend empfohlen, allgemeine Legacyspeicherkonten der Version 1 zu verwenden, da die neueren v2-Speicherkonten für Durable Functions-Workloads um einiges teurer sein können. Weitere Informationen zu Azure Storage-Kontotypen finden Sie in der Dokumentation unter [Speicherkontoübersicht](../../storage/common/storage-account-overview.md).
 
-## <a name=""></a><a name="netherite">Netherite (Vorschau)</a>
+## <a name="netherite-preview"></a><a name="netherite"></a>Netherite (Vorschau)
 
 Das Netherite-Speicher-Back-End wurde von [Microsoft Research](https://www.microsoft.com/research) entworfen und entwickelt. Dabei werden, zusätzlich zu [Azure-Seiten-Blobs](../../storage/blobs/storage-blob-pageblob-overview.md), [Azure Event Hubs](../../event-hubs/event-hubs-about.md) sowie die [FASTER](https://www.microsoft.com/research/project/faster/)-Datenbanktechnologie verwendet. Das Design von Netherite ermöglicht im Vergleich zu anderen Anbietern eine Verarbeitung von Orchestrierungen und Entitäten mit deutlich höherem Durchsatz. In einigen Benchmarkszenarios wurde deutlich, dass der Durchsatz im Vergleich zum Azure Storage-Standardanbieter um mehr als eine Größenordnung zunimmt.
 
@@ -55,7 +55,7 @@ Weitere Informationen zu den technischen Details des Netherite-Speicheranbieters
 > [!NOTE]
 > Der Name _Netherite_ stammt aus der Welt von [Minecraft](https://minecraft.fandom.com/wiki/Netherite).
 
-## <a name=""></a><a name="mssql">Microsoft SQL Server (MSSQL) (Vorschau)</a>
+## <a name="microsoft-sql-server-mssql-preview"></a><a name="mssql"></a>Microsoft SQL Server (MSSQL) (Vorschau)
 
 Der Microsoft SQL Server-Speicheranbieter (MSSQL) speichert alle Zustände dauerhaft in einer Microsoft SQL Server-Datenbank. Er ist sowohl mit lokalen als auch in der Cloud gehosteten Bereitstellungen von SQL Server kompatibel, einschließlich mit [Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md).
 

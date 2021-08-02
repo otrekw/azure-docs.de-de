@@ -1,6 +1,6 @@
 ---
-title: Systemanforderungen für Microsoft Azure Stack Edge Pro | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie mehr über die Software- und Netzwerkanforderungen für Ihre Azure Stack Edge Pro-Instanz.
+title: Azure Stack Edge Pro-FPGA-Systemanforderungen
+description: Hier erfahren Sie mehr über die Software- und Netzwerkanforderungen für das Azure Stack Edge Pro-FPGA.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 0e49d460d5ba7bf9131bc0a2f7ec0c1c9a6e653b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7be7715586339a4d38370acbe4a047f86b3a917f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076777"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460512"
 ---
-# <a name="azure-stack-edge-pro-system-requirements"></a>Systemanforderungen für Azure Stack Edge Pro
+# <a name="azure-stack-edge-pro-fpga-system-requirements"></a>Azure Stack Edge Pro-FPGA-Systemanforderungen
 
-In diesem Artikel werden die wichtigen Systemanforderungen für Ihre Microsoft Azure Stack Edge Pro-Lösung und die mit Azure Stack Edge Pro verbundenen Clients beschrieben. Es wird empfohlen, dass Sie die Informationen sorgfältig lesen, bevor Sie Ihre Azure Stack Edge Pro-Instanz bereitstellen. Sie können diese Informationen ggf. während der Bereitstellung und des nachfolgenden Betriebs als Referenz nutzen.
+In diesem Artikel werden die wichtigen Systemanforderungen für die Azure Stack Edge Pro-FPGA-Lösung und die mit dem Azure Stack Edge Pro-FPGA (Field Programmable Gate Array) verbundenen Clients beschrieben. Es wird empfohlen, dass Sie sich die Informationen sorgfältig ansehen, bevor Sie das Azure Stack Edge Pro-FPGA bereitstellen. Sie können diese Informationen ggf. während der Bereitstellung und des nachfolgenden Betriebs als Referenz nutzen.
 
-Die Systemanforderungen für Azure Stack Edge Pro umfassen Folgendes: 
+Die Systemanforderungen für das Azure Stack Edge Pro-FPGA umfassen Folgendes: 
 
 - **Softwareanforderungen für Hosts:** beschreibt die unterstützten Plattformen, Browser für die lokale Konfigurationsbenutzeroberfläche, SMB-Clients und alle weiteren Anforderungen an Clients, die auf das Gerät zugreifen.
 - **Netzwerkanforderungen für das Gerät:** enthält Informationen zu den Netzwerkanforderungen für den Betrieb des physischen Geräts.
@@ -46,9 +46,9 @@ Die Systemanforderungen für Azure Stack Edge Pro umfassen Folgendes:
 
 ## <a name="networking-port-requirements"></a>Anforderungen für den Netzwerkport
 
-### <a name="port-requirements-for-azure-stack-edge-pro"></a>Portanforderungen für Azure Stack Edge Pro
+### <a name="port-requirements-for-azure-stack-edge-pro-fpga"></a>Portanforderungen für das Azure Stack Edge Pro-FPGA
 
-In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für SMB-, Cloud- oder Verwaltungsdatenverkehr geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in der Ihr Azure Stack Edge Pro-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet, z. B. ausgehende Verbindungen mit dem Internet.
+In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für SMB-, Cloud- oder Verwaltungsdatenverkehr geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in die Ihr Azure Stack Edge Pro-FPGA-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet (z. B. ausgehende Verbindungen mit dem Internet).
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
@@ -66,9 +66,9 @@ Ausführliche Informationen finden Sie unter [Firewall- und Portkonfigurationsre
 
 ## <a name="url-patterns-for-firewall-rules"></a>URL-Muster für Firewallregeln
 
-Netzwerkadministratoren können häufig erweiterte, auf den URL-Mustern basierende Firewallregeln konfigurieren, die zum Filtern des eingehenden und ausgehenden Verkehrs verwendet werden. Ihr Azure Stack Edge Pro-Gerät und der Dienst sind abhängig von anderen Microsoft-Anwendungen wie Azure Service Bus, Azure Active Directory Access Control, Speicherkonten und Microsoft Update-Servern. Die URL-Muster, die diesen Anwendungen zugeordnet sind, können verwendet werden, um Firewallregeln zu konfigurieren. Es ist wichtig, zu verstehen, dass sich diese den Anwendungen zugeordneten URL-Muster ändern können. Diese Änderungen erfordern, dass der Netzwerkadministrator die Firewallregeln für Ihre Azure Stack Edge Pro-Instanz nach Bedarf überwacht und aktualisiert.
+Netzwerkadministratoren können häufig erweiterte, auf den URL-Mustern basierende Firewallregeln konfigurieren, die zum Filtern des eingehenden und ausgehenden Verkehrs verwendet werden. Ihr Azure Stack Edge Pro-FPGA-Gerät und der Dienst sind abhängig von anderen Microsoft-Anwendungen wie Azure Service Bus, Azure Active Directory Access Control, Speicherkonten und Microsoft Update-Servern. Die URL-Muster, die diesen Anwendungen zugeordnet sind, können verwendet werden, um Firewallregeln zu konfigurieren. Es ist wichtig, zu verstehen, dass sich diese den Anwendungen zugeordneten URL-Muster ändern können. Diese Änderungen erfordern, dass der Netzwerkadministrator die Firewallregeln für das Azure Stack Edge Pro-FPGA nach Bedarf überwacht und aktualisiert.
 
-Es wird empfohlen, dass Sie Ihre Firewallregeln für den ausgehenden Datenverkehr basierend auf den festen IP-Adressen für Azure Stack Edge Pro in den meisten Fällen recht locker festlegen. Sie können jedoch die folgenden Informationen verwenden, um erweiterte Firewallregeln festzulegen, die erforderlich sind, um sichere Umgebungen zu erstellen.
+Es wird empfohlen, dass Sie Ihre Firewallregeln für den ausgehenden Datenverkehr basierend auf den festen IP-Adressen für das Azure Stack Edge Pro-FPGA in den meisten Fällen recht locker festlegen. Sie können jedoch die folgenden Informationen verwenden, um erweiterte Firewallregeln festzulegen, die erforderlich sind, um sichere Umgebungen zu erstellen.
 
 > [!NOTE]
 > - Die Geräte-IPs (Quell-IPs) sollten immer für alle cloudaktivierten Netzwerkschnittstellen eingerichtet sein.
@@ -104,7 +104,7 @@ Es wird empfohlen, dass Sie Ihre Firewallregeln für den ausgehenden Datenverkeh
 
 ## <a name="compute-sizing-considerations"></a>Berechnen von Überlegungen zur Größenanpassung
 
-Nutzen Sie Ihre Erfahrung beim Entwickeln und Testen Ihrer Lösung, um sicherzustellen, dass auf Ihrem Azure Stack Edge Pro-Gerät ausreichend Kapazität vorhanden ist und Sie die optimale Geräteleistung erzielen.
+Nutzen Sie Ihre Erfahrung beim Entwickeln und Testen Ihrer Lösung, um sicherzustellen, dass auf Ihrem Azure Stack Edge Pro-FPGA-Gerät ausreichend Kapazität vorhanden ist und Sie die optimale Geräteleistung erzielen.
 
 Zu den zu berücksichtigenden Faktoren gehören:
 
@@ -130,9 +130,9 @@ Um die Leistung Ihrer Lösung zu verstehen und zu optimieren, können Sie Folgen
 
     Weitere Informationen zu den verfügbaren Befehlen finden Sie unter [Überwachung und Problembehandlung von Computemodulen](azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
 
-Stellen Sie abschließend sicher, dass Sie Ihre Lösung für Ihr Dataset überprüfen und die Leistung auf Azure Stack Edge Pro quantifizieren, bevor Sie sie in der Produktionsumgebung bereitstellen.
+Stellen Sie abschließend sicher, dass Sie Ihre Lösung für das Dataset vor der Bereitstellung in der Produktionsumgebung überprüfen und die Leistung des Azure Stack Edge Pro-FPGA quantifizieren.
 
 
 ## <a name="next-step"></a>Nächster Schritt
 
-- [Bereitstellen Ihrer Azure Stack Edge Pro-Instanz](azure-stack-edge-deploy-prep.md)
+- [Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-prep.md)
