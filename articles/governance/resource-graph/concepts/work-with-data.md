@@ -1,15 +1,15 @@
 ---
 title: Arbeiten mit großen Datasets
 description: Erfahren Sie, wie Sie bei der Verwendung von Azure Resource Graph Datensätze in großen Datasets abrufen, formatieren, paginieren und überspringen.
-ms.date: 05/01/2021
+ms.date: 05/17/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 44fb92287eada08a573d6ff70cea5d33612cfa23
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d860ea4af08c8982e2205bb98c82b5475734d35c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751893"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099170"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
@@ -88,7 +88,7 @@ Ein Beispiel finden Sie unter [Next page query](/rest/api/azureresourcegraph/res
 
 Die Ergebnisse einer Resource Graph-Abfrage werden in zwei Formaten bereitgestellt: _Table_ und _ObjectArray_. Das Format wird als Teil der Anforderungsoptionen mit dem Parameter **resultFormat**  konfiguriert. Das _Table_-Format ist der Standardwert für **resultFormat**.
 
-Ergebnisse von Azure CLI werden standardmäßig im JSON-Format bereitgestellt. Ergebnisse in Azure PowerShell sind standardmäßig **PSCustomObject**, können jedoch schnell mithilfe des Cmdlets `ConvertTo-Json` in das JSON-Format konvertiert werden. Bei anderen SDKs können die Abfrageergebnisse für die Ausgabe im _ObjectArray_-Format konfiguriert werden.
+Ergebnisse von Azure CLI werden standardmäßig im JSON-Format bereitgestellt. In Azure PowerShell resultiert ein **PSResourceGraphResponse**-Objekt, das jedoch schnell in JSON konvertiert werden kann, indem Sie das Cmdlet `ConvertTo-Json` auf die Eigenschaft **Data** anwenden. Bei anderen SDKs können die Abfrageergebnisse für die Ausgabe im _ObjectArray_-Format konfiguriert werden.
 
 ### <a name="format---table"></a>Format „Table“
 

@@ -1,24 +1,24 @@
 ---
-title: Bekannte Probleme bei der Anwendungsbereitstellung in Azure AD
-description: Hier finden Sie Informationen über bekannte Probleme bei der Arbeit mit der automatisierten Anwendungsbereitstellung in Azure AD.
+title: Bekannte Probleme bei der Anwendungsbereitstellung in Azure Active Directory
+description: Hier finden Sie Informationen über bekannte Probleme bei der Arbeit mit der automatisierten Anwendungsbereitstellung in Azure Active Directory.
 author: kenwith
 ms.author: kenwith
-manager: daveba
+manager: mtillman
 services: active-directory
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/05/2021
+ms.date: 05/28/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 9eba671f6c824c8c88388f2b9d61512dfb1d122f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1674e3aae978c16b8ef736dc6605bd30e7201e10
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256642"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962027"
 ---
-# <a name="known-issues-application-provisioning"></a>Bekannte Probleme: Bereitstellung von Anwendungen
+# <a name="known-issues-for-application-provisioning-in-azure-active-directory"></a>Bekannte Probleme bei der Anwendungsbereitstellung in Azure Active Directory
 In diesem Artikel werden bekannte Probleme behandelt, die Sie bei der App-Bereitstellung berücksichtigen sollten. Sie können Ihr Feedback zum Anwendungsbereitstellungsdienst über UserVoice angeben. Weitere Informationen finden Sie auf der [UserVoice-Seite zur Azure AD-Anwendungsbereitstellung](https://aka.ms/appprovisioningfeaturerequest). Wir beobachten UserVoice genau, damit wir den Dienst verbessern können. 
 
 > [!NOTE]
@@ -98,6 +98,40 @@ Wenn sich eine Gruppe im Gültigkeitsbereich und ein Mitglied außerhalb des Gü
 **Verwalter nicht bereitgestellt**
 
 Wenn sich ein Benutzer und der entsprechende Verwalter im Gültigkeitsbereich für die Bereitstellung befinden, stellt der Dienst den Benutzer bereit und aktualisiert dann den Verwalter. Sollte sich jedoch am ersten Tag der Benutzer im Gültigkeitsbereich befinden, der Verwalter aber nicht, stellen wir den Benutzer ohne Verwalterverweis bereit. Wenn der Verwalter sich dann zu einem späteren Zeitpunkt im Gültigkeitsbereich befindet, wird der Verwalterverweis erst aktualisiert, wenn Sie die Bereitstellung neu starten und den Dienst veranlassen, alle Benutzer erneut zu bewerten. 
+
+## <a name="on-premises-application-provisioning"></a>Bereitstellung lokaler Anwendungen
+Die folgenden Informationen enthalten eine aktuelle Liste sämtlicher bekannter Einschränkungen für den Azure AD ECMA-Connectorhost und für die Bereitstellung von lokalen Anwendungen.
+
+### <a name="application-and-directories"></a>Anwendungen und Verzeichnisse
+Die folgenden Anwendungen und Verzeichnisse werden noch nicht unterstützt.
+
+**AD DS: (Benutzer-/Gruppenrückschreiben von Azure AD mithilfe der lokalen Bereitstellungsvorschau)**
+   - Wenn ein Benutzer von Azure AD Connect verwaltet wird, ist die zugehörige Autoritätsquelle das lokale Active Directory. Deshalb können Benutzerattribute in Azure AD nicht geändert werden. Diese Vorschau kann die Autoritätsquelle für Benutzer, die von der Azure AD Connect verwaltet werden, nicht ändern.
+   - Der Versuch, Azure AD Connect und die lokale Bereitstellung zu nutzen, um Gruppen/Benutzer in AD DS bereitzustellen, kann zur Entstehung einer Schleife führen, bei der Azure AD Connect Änderungen überschreibt, die vom Cloud-Bereitstellungsdienst vorgenommen wurden. Microsoft arbeitet an der Entwicklung einer dedizierten Funktion für das Gruppen-/Benutzerrückschreiben.  Stimmen Sie [hier](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/16887037-enable-user-writeback-to-on-premise-ad-from-azure) über das UserVoice-Feedback ab, um den Status der Vorschau zu verfolgen. Alternativ können Sie [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) für das Benutzer-/Gruppenrückschreiben von Azure AD zu AD verwenden.
+
+**Andere Connectors als SQL**
+   - Der Azure AD ECMA-Connectorhost wird offiziell für generische SQL-Connectors (GSQL) unterstützt. Es ist zwar möglich, andere Connectors wie den Webdienstconnector oder benutzerdefinierte ECMA-Connectors zu verwenden, aber dies wird **noch nicht unterstützt**.
+
+**Azure Active Directory**
+   - Mit der lokalen Bereitstellung können Sie einen Benutzer aus Azure AD in einer Drittanbieteranwendung bereitstellen. **Es ist jedoch nicht möglich, einen Benutzer aus einer Drittanbieteranwendung in das Verzeichnis zu verschieben.** Kunden müssen sich auf unsere nativen HR-Integrationen, Azure AD Connect, MIM oder Microsoft Graph verlassen, um Benutzer in das Verzeichnis zu integrieren.
+
+### <a name="attributes-and-objects"></a>Attribute und Objekte 
+Die folgenden Attribute und Objekte werden nicht unterstützt:
+   - Mehrwertige Attribute
+   - Verweisattribute (z. B. manager).
+   - Gruppen
+   - Komplexe Anker (z. B. ObjectTypeName+UserName).
+   - Lokale Anwendungen befinden sich manchmal nicht im Verbund mit Azure AD und benötigen deshalb lokale Kennwörter. Die lokale Bereitstellungsvorschau **unterstützt nicht die Bereitstellung einmaliger Kennwörter oder das Synchronisieren von Kennwörtern** zwischen Azure AD und Drittanbieteranwendungen.
+   - Das Attribut export_password sowie die Vorgänge SetPassword und ChangePassword werden nicht unterstützt.
+
+#### <a name="ssl-certificates"></a>SSL-Zertifikate
+   - Für den Azure AD ECMA-Connectorhost muss derzeit entweder das SSL-Zertifikat von Azure als vertrauenswürdig eingestuft oder der Bereitstellungs-Agent verwendet werden. Das Subjekt des Zertifikats muss mit dem Namen des Hosts übereinstimmen, auf dem der Azure AD ECMA-Connectorhost installiert ist.
+
+#### <a name="anchor-attributes"></a>Ankerattribute
+   - Der Azure AD ECMA-Connectorhost unterstützt derzeit keine Änderungen von Ankerattributen (Umbenennungen) oder Zielsysteme, die mehrere Attribute erfordern, um einen Anker zu bilden. 
+
+#### <a name="attribute-discovery-and-mapping"></a>Attributermittlung und -zuordnung
+   - Die von der Zielanwendung unterstützten Attribute werden zunächst ermittelt und anschließend im Azure-Portal im Bereich Attributzuordnungen angezeigt. Auch neu hinzugefügte Attribute werden ermittelt. Wenn sich jedoch der Typ eines Attributs ändert, das bereits Teil der Zuordnung ist (z. B. eine Zeichenfolge in einen booleschen Wert), dann wird dieser Typ nicht automatisch im Azure-Portal geändert. Kunden müssen im Bereich Zuordnungen die erweiterten Einstellungen aufrufen und den Attributtyp manuell aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Funktionsweise der Bereitstellung](how-provisioning-works.md)

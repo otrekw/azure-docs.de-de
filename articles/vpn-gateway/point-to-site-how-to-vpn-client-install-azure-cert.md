@@ -6,22 +6,26 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 06/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: faa2d1924b0953bbf8da660ac7702c959fe7b272
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: d4ab1009b38d250a39455a9e8a470cd7f1156793
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292232"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527104"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>Installieren eines Clientzertifikats für die Zertifikatauthentifizierung bei P2S-Verbindungen
 
-Alle Clients, die mithilfe der P2S-Azure-Zertifikatauthentifizierung eine Verbindung mit virtuellen Netzwerken herstellen, benötigen ein Clientzertifikat. Dieser Artikel unterstützt Sie beim Installieren eines Clientzertifikats, das beim Herstellen einer Verbindung mit einem VNET über P2S für die Authentifizierung verwendet wird.
+Wenn ein P2S-VPN-Gateway so konfiguriert ist, dass es eine Zertifikatauthentifizierung erfordert, muss auf jedem Client ein lokales Clientzertifikat installiert sein. Sie können ein Clientzertifikat entweder mithilfe eines selbstsignierten Stammzertifikats oder mithilfe eines Stammzertifikats, das mit einer Lösung einer Unternehmenszertifizierungsstelle generiert wurde, erstellen. 
 
-## <a name="acquire-a-client-certificate"></a><a name="generate"></a>Abrufen eines Clientzertifikats
+Wenn Sie ein Clientzertifikat generieren, wird das Zertifikat in der Regel automatisch auf dem Clientcomputer installiert, von dem es generiert wurde. Wenn Sie von einem anderen Clientcomputer aus eine Verbindung mit Ihrem VNet herstellen möchten, müssen Sie ein Clientzertifikat auf dem Computer installieren, von dem aus Sie eine Verbindung herstellen. Dies ist zusätzlich zur Konfiguration des VPN-Clients auf diesem Computer erforderlich.
 
-Unabhängig davon, über welches Clientbetriebssystem Sie eine Verbindung herstellen möchten, benötigen Sie immer ein Clientzertifikat. Sie können ein Clientzertifikat mithilfe eines Stammzertifikats, das mit einer Lösung einer Unternehmenszertifizierungsstelle generiert wurde, oder mithilfe eines selbstsignierten Zertifikats erstellen. Die Schritte zum Generieren eines Clientzertifikats finden Sie in den Anweisungen für [PowerShell](vpn-gateway-certificates-point-to-site.md), [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) und [Linux](vpn-gateway-certificates-point-to-site-linux.md). 
+Sie können mehrere Methoden verwenden, um selbstsignierte Zertifikate zu generieren und zu exportieren. Weitere Informationen finden Sie in den folgenden Artikeln:
+
+* [PowerShell](vpn-gateway-certificates-point-to-site.md)
+* [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
+* [Linux](vpn-gateway-certificates-point-to-site-linux.md) 
 
 ## <a name="windows"></a><a name="installwin"></a>Windows
 

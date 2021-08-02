@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: a0644342c417cb06c257372e526fff55df62f9b9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 389460e79dbcc9c6ba9480540d7f361382ef5987
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095426"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112021085"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning?
 
@@ -86,28 +86,29 @@ In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Seri
 
 | **Unterstützte VM-Serie**  | **Einschränkungen** | **Kategorie** | **Unterstützt von** |
 |------------|------------|------------|------------|
-| D | Keine. | Allgemeiner Zweck | Computecluster und -instanzen |
-| DDSv4 | Keine. | Allgemeiner Zweck | Computecluster und -instanzen |
-| Dv2 | Keine. | Allgemeiner Zweck | Computecluster und -instanzen |
-| Dv3 | Keine.| Allgemeiner Zweck | Computecluster und -instanzen |
-| DSv2 | Keine. | Allgemeiner Zweck | Computecluster und -instanzen |
-| DSv3 | Keine.| Allgemeiner Zweck | Computecluster und -instanzen |
-| EAv4 | Keine. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
-| Ev3 | Keine. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
-| FSv2 | Keine. | Computeoptimiert | Computecluster und -instanzen |
-| H | Keine. | High Performance Computing | Computecluster und -instanzen |
-| HB | Genehmigung erforderlich. | High Performance Computing | Computecluster und -instanzen |
-| HBv2 | Genehmigung erforderlich. |  High Performance Computing | Computecluster und -instanzen |
-| HCS | Genehmigung erforderlich. |  High Performance Computing | Computecluster und -instanzen |
-| M | Genehmigung erforderlich. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
-| NC | Keine. |  GPU | Computecluster und -instanzen |
-| NC Promo | Keine. | GPU | Computecluster und -instanzen |
-| NCsv2 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
-| NCsv3 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
-| NDs | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
-| NDv2 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
-| SH | Keine. | GPU | Computecluster und -instanzen |
-| NVv3 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| [DDSv4](../virtual-machines/ddv4-ddsv4-series.md#ddsv4-series) | Keine. | Allgemeiner Zweck | Computecluster und -instanzen |
+| [Dv2](../virtual-machines/dv2-dsv2-series.md#dv2-series) | Keine. | Allgemeiner Zweck | Computecluster und -instanzen |
+| [Dv3](../virtual-machines/dv3-dsv3-series.md#dv3-series) | Keine.| Allgemeiner Zweck | Computecluster und -instanzen |
+| [DSv2](../virtual-machines/dv2-dsv2-series.md#dsv2-series) | Keine. | Allgemeiner Zweck | Computecluster und -instanzen |
+| [DSv3](../virtual-machines/dv3-dsv3-series.md#dsv3-series) | Keine.| Allgemeiner Zweck | Computecluster und -instanzen |
+| [EAv4](../virtual-machines/eav4-easv4-series.md) | Keine. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
+| [Ev3](../virtual-machines/ev3-esv3-series.md) | Keine. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
+| [FSv2](../virtual-machines/fsv2-series.md) | Keine. | Computeoptimiert | Computecluster und -instanzen |
+| [H](../virtual-machines/h-series.md) | Keine. | High Performance Computing | Computecluster und -instanzen |
+| [HB](../virtual-machines/hb-series.md) | Genehmigung erforderlich. | High Performance Computing | Computecluster und -instanzen |
+| [HBv2](../virtual-machines/hbv2-series.md) | Genehmigung erforderlich. |  High Performance Computing | Computecluster und -instanzen |
+| [HC](../virtual-machines/hc-series.md) | Genehmigung erforderlich. |  High Performance Computing | Computecluster und -instanzen |
+| [M](../virtual-machines/m-series.md) | Genehmigung erforderlich. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
+| [NC](../virtual-machines/nc-series.md) | Keine. |  GPU | Computecluster und -instanzen |
+| [NC Promo](../virtual-machines/nc-series.md) | Keine. | GPU | Computecluster und -instanzen |
+| [NCv2](../virtual-machines/ncv2-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| [NCv3](../virtual-machines/ncv3-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| [ND](../virtual-machines/nd-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| [NDv2](../virtual-machines/ndv2-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| [SH](../virtual-machines/nv-series.md) | Keine. | GPU | Computecluster und -instanzen |
+| [NVv3](../virtual-machines/nvv3-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| [NCT4_v3](../virtual-machines/nct4-v3-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| [NDA100_v4](../virtual-machines/nda100-v4-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
 
 
 Obwohl Azure Machine Learning diese VM-Serien unterstützt, sind sie möglicherweise nicht in allen Azure-Regionen verfügbar. Informationen zum Überprüfen, ob VM-Serien verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
@@ -117,6 +118,22 @@ Obwohl Azure Machine Learning diese VM-Serien unterstützt, sind sie möglicherw
 > * [REST-API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
 > * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-)
 >
+
+Bei Verwendung der GPU-fähigen Computeziele ist es wichtig sicherzustellen, dass die richtigen CUDA-Treiber in der Trainingsumgebung installiert sind. Bestimmen Sie anhand der folgenden Tabelle die richtige CUDA-Version, die verwendet werden soll:
+
+| **GPU-Architektur**  | **Azure-VM-Serie** | **Unterstützte CUDA-Versionen** |
+|------------|------------|------------|
+| Ampere | NDA100_v4 | 11.0+ |
+| Turing | NCT4_v3 | 10.0 und höher |
+| Volta | NCv3, NDv2 | 9.0+ |
+| Pascal | NCv2, ND | 9.0+ |
+| Maxwell | NV, NVv3 | 9.0+ |
+| Kepler | NC, NC Promo| 9.0+ |
+
+Stellen Sie nicht nur sicher, dass die CUDA-Version und die Hardware kompatibel sind, sondern auch, dass die CUDA-Version mit der Version des verwendeten Machine Learning-Frameworks kompatibel ist: 
+
+- Für PyTorch können Sie die Kompatibilität [hier](https://pytorch.org/get-started/previous-versions/) überprüfen. 
+- Für Tensorflow können Sie die Kompatibilität [hier](https://www.tensorflow.org/install/source#gpu) überprüfen.
 
 ### <a name="compute-isolation"></a>Computeisolation
 

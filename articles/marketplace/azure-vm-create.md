@@ -1,20 +1,20 @@
 ---
 title: Erstellen eines VM-Angebots im Azure Marketplace
-description: Erfahren Sie, wie Sie ein VM-Angebot im kommerziellen Microsoft-Marketplace erstellen.
+description: Erstellen eines VM-Angebots im Azure Marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/08/2021
-ms.openlocfilehash: f0c1d9d528ed4fbf61786042fb6fb34f05fec5d5
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 626ee3d9fb7ec193e1384712a03c23feefef67af
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812591"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525028"
 ---
-# <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Erstellen eines VM-Angebots im Azure Marketplace
+# <a name="create-a-virtual-machine-offer-on-azure-marketplace"></a>Erstellen eines VM-Angebots im Azure Marketplace
 
 In diesem Artikel wird beschrieben, wie Sie ein Azure-VM-Angebot für den [Azure Marketplace](https://azuremarketplace.microsoft.com/) erstellen. Er bezieht sich auf virtuelle Computer auf Windows- und Linux-Basis, die ein Betriebssystem, eine virtuelle Festplatte (VHD) und bis zu 16 Datenträger für Daten enthalten.
 
@@ -47,16 +47,16 @@ Geben Sie einen **Angebotsalias** ein. Der Angebotsalias ist der Name, der für 
 
 Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren. In Partner Center wird die Seite **Angebotseinrichtung** geöffnet.
 
-## <a name="enable-a-test-drive-optional"></a>Aktivieren einer Testversion (optional)
+## <a name="test-drive-optional"></a>Testversion (optional)
 
 Eine Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen für eine festgelegte Anzahl von Stunden Zugang zu einer vorkonfigurierten Umgebung gewähren. Wenn Sie eine Testversion anbieten, können Sie die Konvertierungsrate erhöhen und hochqualifizierte Leads generieren. Weitere Informationen zu Testversionen finden Sie unter [Was ist eine Testversion?](./what-is-test-drive.md)
 
 > [!TIP]
 > Eine Testversion unterscheidet sich von einer kostenlosen Testversion. Sie können entweder eine Testversion, eine kostenlose Testversion oder beides anbieten. Mit beiden können Kunden Ihre Lösung für einen festgelegten Zeitraum nutzen. Eine Testversion umfasst jedoch auch eine praktische, selbstgesteuerte Tour durch die wichtigsten Features und Vorteile Ihres Produkts, die in einem praxisnahen Implementierungsszenario veranschaulicht werden.
 
-Aktivieren Sie das Kontrollkästchen **Aktivieren einer Testversion**, um eine Testversion zu aktivieren. Sie konfigurieren die Testversion später. Eine Testversion erfordert das Konfigurieren eines CRM-Systems (siehe nächster Abschnitt).
+Aktivieren Sie das Kontrollkästchen **Aktivieren einer Testversion**, um eine Testversion zu aktivieren. Sie konfigurieren die Testversion später. Eine Testversion erfordert das Konfigurieren eines CRM-Systems (siehe nächster Abschnitt). Deaktivieren Sie dieses Kontrollkästchen, um die Testversion aus Ihrem Angebot zu entfernen.
 
-## <a name="configure-customer-leads-management"></a>Konfigurieren der Verwaltung von Kundenleads
+## <a name="customer-leads"></a>Kundenleads
 
 [!INCLUDE [Customer leads](includes/customer-leads.md)] 
 

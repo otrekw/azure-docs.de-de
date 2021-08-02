@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: 493f6759f63f023572f38647076e04425acf9d6a
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 169f0b76e1009931d51339fe6b058ca24608af30
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581521"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061046"
 ---
 # <a name="availability-and-business-continuity-in-azure-cognitive-search"></a>Verfügbarkeit und Geschäftskontinuität in Azure Cognitive Search
 
@@ -44,15 +44,19 @@ Sie können Verfügbarkeitszonen mit Azure Cognitive Search nutzen, indem Sie Ih
 Azure Cognitive Search unterstützt derzeit Verfügbarkeitszonen für Suchdienste ab dem Standard-Tarif, die in einer der folgenden Regionen erstellt wurden:
 
 + Australien, Osten (Datum der Erstellung: ab dem 30. Januar 2021)
++ Brasilien, Süden (erstellt am 2. Mai 2021 oder später)
 + Kanada, Mitte (Datum der Erstellung: ab dem 30. Januar 2021)
 + USA, Mitte (Datum der Erstellung: ab dem 4. Dezember 2020)
 + USA, Osten (Datum der Erstellung: ab dem 27. Januar 2021)
 + USA, Osten 2 (Datum der Erstellung: ab dem 30. Januar 2021)
 + Frankreich, Mitte (Datum der Erstellung: ab dem 23. Oktober 2020)
++ Deutschland, Westen-Mitte (erstellt am 3. Mai 2021 oder später)
 + Japan, Osten (Datum der Erstellung: ab dem 30. Januar 2021)
 + Europa, Norden (Datum der Erstellung: ab dem 28. Januar 2021)
++ USA, Süden-Mitte (erstellt am 30. April 2021 oder später)
 + Asien, Südosten (Datum der Erstellung: ab dem 31. Januar 2021)
 + Vereinigtes Königreich, Süden (Datum der Erstellung: ab dem 30. Januar 2021)
++ US Gov Virginia (erstellt am 30. April 2021 oder später)
 + Europa, Westen (Datum der Erstellung: ab dem 29. Januar 2021)
 + USA, Westen 2 (Datum der Erstellung: ab dem 30. Januar 2021)
 

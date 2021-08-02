@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 05/19/2021
 ms.author: phjensen
-ms.openlocfilehash: 16e758ac520c8584a11c88c0823fac7cfec43c0b
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 0eae929d60ce852e7a98f12430de796aa664d86f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226298"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481448"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool"></a>Installieren des Tools für konsistente Momentaufnahmen
 
@@ -42,6 +42,12 @@ Befolgen Sie die Richtlinien zum Einrichten und Ausführen der Befehle für Mome
 1. **HANA ist installiert**: Anweisungen zum Installieren von HANA finden Sie unter [SAP NetWeaver-Installation in einer HANA-Datenbank](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database).
 1. **[Aktivieren der Kommunikation mit dem Speicher](#enable-communication-with-storage)** (Details dazu finden Sie im entsprechenden Abschnitt): Der Kunde muss SSH mit einem Paar aus privatem/öffentlichem Schlüssel einrichten und dem Microsoft-Betriebsteam den öffentlichen Schlüssel für jeden Knoten zur Verfügung stellen, auf dem die Ausführung der Momentaufnahmetools geplant ist, damit das Team die Schlüssel im Speicher-Back-End einrichten kann.
    1. **Für Azure NetApp Files (Details dazu finden Sie im entsprechenden Abschnitt)** : Der Kunde muss die Authentifizierungsdatei für den Dienstprinzipal generieren.
+      
+      > [!IMPORTANT]
+      > Bei der Validierung der Kommunikation mit Azure NetApp Files kann bei der Kommunikation ein Fehler oder ein Timeout auftreten. Stellen Sie sicher, dass die Firewallregeln den ausgehenden Datenverkehr vom System, auf dem AzAcSnap läuft, zu den folgenden Adressen und TCP/IP-Ports nicht blockieren:
+      > - (https://)management.azure.com:443
+      > - (https://)login.microsoftonline.com:443
+      
    1. **Für große Azure-Instanzen (Details dazu finden Sie im entsprechenden Abschnitt)** : Der Kunde muss SSH mit einem Paar aus privatem/öffentlichem Schlüssel einrichten und dem Microsoft-Betriebsteam den öffentlichen Schlüssel für jeden Knoten zur Verfügung stellen, auf dem die Ausführung der Momentaufnahmetools geplant ist, damit das Team die Schlüssel im Speicher-Back-End einrichten kann.
 
       Testen Sie das Setup, indem Sie über SSH eine Verbindung mit einem der Knoten herstellen (z. B. `ssh -l <Storage UserName> <Storage IP Address>`).

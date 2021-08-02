@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 1f28ee0cb174c02ba05d93ac0c8eba309bfc3872
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 314e2cf6991a33fb50ee14b9e54f9d47069dc20c
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739815"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027891"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
@@ -39,14 +39,14 @@ Weitere Informationen und zusätzliche Konfigurationsoptionen finden Sie unten.
 
 ## <a name="configuration-file-path"></a>Pfad der Konfigurationsdatei
 
-Standardmäßig erwartet Application Insights Java 3.0 eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.0.3.jar` befindet.
+Standardmäßig erwartet Application Insights Java 3.x eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.1.1.jar` befindet.
 
 Verwenden Sie eines der folgenden Elemente, um einen eigenen Pfad für Ihre Konfigurationsdatei anzugeben:
 
 * Umgebungsvariable `APPLICATIONINSIGHTS_CONFIGURATION_FILE` oder
 * Java-Systemeigenschaft `applicationinsights.configuration.file`
 
-Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.0.3.jar` aufgelöst.
+Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.1.1.jar` aufgelöst.
 
 ## <a name="connection-string"></a>Verbindungszeichenfolge
 
@@ -331,7 +331,8 @@ Sie können diese Instrumentierungen auch unterdrücken, indem Sie folgende Umge
 
 ## <a name="heartbeat"></a>Heartbeat
 
-Application Insights Java 3.0 sendet standardmäßig alle 15 Minuten eine Heartbeatmetrik. Wenn Sie die Taktmetrik zum Auslösen von Warnungen verwenden, können Sie die Frequenz für den Takt erhöhen:
+Application Insights Java 3.x sendet standardmäßig alle 15 Minuten eine Heartbeatmetrik.
+Wenn Sie die Taktmetrik zum Auslösen von Warnungen verwenden, können Sie die Frequenz für den Takt erhöhen:
 
 ```json
 {
@@ -346,7 +347,7 @@ Application Insights Java 3.0 sendet standardmäßig alle 15 Minuten eine Hear
 
 ## <a name="http-proxy"></a>HTTP-Proxy
 
-Wenn sich Ihre Anwendung hinter einer Firewall befindet und nicht direkt mit Application Insights verbunden werden kann (siehe [Von Application Insights verwendete IP-Adressen](./ip-addresses.md)), können Sie Application Insights Java 3.0 zur Verwendung eines HTTP-Proxys konfigurieren:
+Wenn sich Ihre Anwendung hinter einer Firewall befindet und nicht direkt mit Application Insights verbunden werden kann (siehe [Von Application Insights verwendete IP-Adressen](./ip-addresses.md)), können Sie Application Insights Java 3.x für die Verwendung eines HTTP-Proxys konfigurieren:
 
 ```json
 {
@@ -357,7 +358,7 @@ Wenn sich Ihre Anwendung hinter einer Firewall befindet und nicht direkt mit App
 }
 ```
 
-Application Insights Java 3.0 respektiert auch die globalen Systemeigenschaften `https.proxyHost` und `https.proxyPort`, wenn diese festgelegt sind (sowie `http.nonProxyHosts`, falls erforderlich).
+Application Insights Java 3.x respektiert auch die globalen Systemeigenschaften `https.proxyHost` und `https.proxyPort`, wenn diese festgelegt sind (sowie `http.nonProxyHosts`, falls erforderlich).
 
 ## <a name="metric-interval"></a>Metrikintervall
 
@@ -401,11 +402,11 @@ Diese Einstellung gilt für alle folgenden Metriken:
 
 ## <a name="self-diagnostics"></a>Selbstdiagnose
 
-„Selbstdiagnose“ bezeichnet die interne Protokollierung von Application Insights Java 3.0.
+„Selbstdiagnose“ bezeichnet die interne Protokollierung von Application Insights Java 3.x.
 
 Diese Funktionalität kann hilfreich sein, um Probleme mit Application Insights selbst zu identifizieren und zu diagnostizieren.
 
-Application Insights Java 3.0 protokolliert standardmäßig auf Ebene `INFO` in der Datei `applicationinsights.log` und der Konsole entsprechend der folgenden Konfiguration:
+Application Insights Java 3.x protokolliert standardmäßig auf Ebene `INFO` in der Datei `applicationinsights.log` und der Konsole entsprechend der folgenden Konfiguration:
 
 ```json
 {
@@ -425,7 +426,7 @@ Application Insights Java 3.0 protokolliert standardmäßig auf Ebene `INFO` in
 
 `level` kann `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG` oder `TRACE` sein.
 
-`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.0.3.jar` befindet.
+`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.1.1.jar` befindet.
 
 `maxSizeMb` entspricht der maximalen Größe der Protokolldatei, bevor ein Rollover durchgeführt wird.
 

@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 055e212e0f8fcd53f74c7e1b99dd0a217412c21f
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 7aca099b4396237a80255a24149d9977c96b87cd
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166755"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794101"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 
@@ -50,6 +50,8 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 * Sicherungen von Azure Database for PostgreSQL mit aktiviertem TLS werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
 * In-App-MySQL-Datenbanken werden automatisch ohne Konfiguration gesichert. Wenn Sie manuell Einstellungen für In-App-MySQL-Datenbanken festlegen (beispielsweise durch Hinzufügen von Verbindungszeichenfolgen), funktionieren die Sicherungen unter Umständen nicht ordnungsgemäß.
 * Die Verwendung eines Speicherkontos mit aktivierter Firewall als Ziel für Ihre Sicherungen wird nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
+* Derzeit können Sie die Sicherungs- und Wiederherstellungsfunktion nicht mit der Azure App Service-Funktion für die VNet-Integration verwenden. 
+* Derzeit können Sie die Sicherungs- und Wiederherstellungsfunktion nicht mit Azure-Speicherkonten verwenden, die für die Verwendung des privaten Endpunkts konfiguriert sind.
 
 <a name="manualbackup"></a>
 

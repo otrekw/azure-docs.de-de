@@ -5,16 +5,17 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: d849c3d611cefab7db20197d3c43dd9faefe9b47
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 28bb55b24cdc758906ab9aff5746e4c5d4c7bfc3
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097892"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059704"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die Core-API (SQL) von Azure Cosmos DB mit Azure Resource Manager-Vorlagen
+
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Ihre Azure Cosmos DB-Konten, -Datenbanken und -Container mithilfe von Azure Resource Manager-Vorlagen bereitstellen und verwalten.
@@ -27,6 +28,7 @@ Dieser Artikel enthält nur Azure Resource Manager-Vorlagenbeispiele für Core-A
 > * Sie müssen die Vorlage mit aktualisierter Angabe der RU/s erneut bereitstellen, um die Durchsatzwerte ändern zu können.
 > * Wenn Sie einem Azure Cosmos-Konto Speicherorte hinzufügen oder aus ihm entfernen, können Sie nicht gleichzeitig andere Eigenschaften ändern. Diese Vorgänge müssen separat ausgeführt werden.
 > * Azure Cosmos DB-Ressourcen können nicht umbenannt werden, da dies gegen die Arbeitsweise von Azure Resource Manager mit Ressourcen-URIs verstößt.
+> * Wenn Sie Durchsatz auf Datenbankebene bereitstellen und für alle Container freigeben möchten, wenden Sie die Durchsatzwerte auf die Eigenschaft „Datenbankoptionen“ an.
 
 Wenn Sie eine der unten aufgeführten Azure Cosmos DB-Ressourcen erstellen möchten, kopieren Sie die folgende Beispielvorlage in eine neue JSON-Datei. Optional können Sie eine JSON-Parameterdatei erstellen, die beim Bereitstellen mehrerer Instanzen derselben Ressource mit unterschiedlichen Namen und Werten verwendet werden soll. Für das Bereitstellen von Azure Resource Manager-Vorlagen stehen Ihnen viele Möglichkeiten zur Verfügung, beispielsweise das [Azure-Portal](../azure-resource-manager/templates/deploy-portal.md), die [Azure CLI](../azure-resource-manager/templates/deploy-cli.md), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) und [GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md).
 

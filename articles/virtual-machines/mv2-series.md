@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: b15fdc3826a72e9cfb039b6b2994179ab9565404
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bafae485c16923f3a4f7f5db6db0456f4b2f3bf7
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562519"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109844950"
 ---
 # <a name="mv2-series"></a>Mv2-Serie
 
@@ -34,8 +34,8 @@ Virtuelle Computer der Mv2-Serie verfügen über Hyperthreading-Technologie von 
 |---|---|---|---|---|---|---|---|---|
 | Standard_M208ms_v2<sup>1</sup> | 208 | 5.700 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 | 16000 |
 | Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 | 16000 |
-| Standard_M416ms_v2<sup>1</sup> | 416 | 11.400 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 | 32000 |
-| Standard_M416s_v2<sup>1</sup> | 416 | 5.700 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 | 32000 |
+| Standard_M416ms_v2<sup>1,2</sup> | 416 | 11.400 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 | 32000 |
+| Standard_M416s_v2<sup>1,2</sup> | 416 | 5.700 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 | 32000 |
 
 <sup>1</sup> VMs der Mv2-Serie sind nur Generation 2 und unterstützen eine Teilmenge der unterstützten Images der Generation 2. Im Folgenden finden Sie eine vollständige Liste der unterstützten Images für die Mv2-Serie. Wenn Sie Linux verwenden, finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](./generation-2.md) Anweisungen zum Suchen und Auswählen eines Images. Wenn Sie Windows verwenden, finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](./generation-2.md) Anweisungen zum Suchen und Auswählen eines Images. 
 
@@ -44,6 +44,7 @@ Virtuelle Computer der Mv2-Serie verfügen über Hyperthreading-Technologie von 
 - Red Hat Enterprise Linux 7.6, 7.7, 8.1 oder höher 
 - Oracle Enterprise Linux 7.7 oder höher
 
+<sup>2</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md)
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 164bb6ca0c84120dbef2ab8307e723ed5723cf2f
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: 13fb05fe04988320c46755b38bfc952b7265d30d
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107991997"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059902"
 ---
 # <a name="microsoft-365-defender-integration-with-azure-sentinel"></a>Microsoft 365 Defender-Integration in Azure Sentinel
 
@@ -74,9 +74,10 @@ Sobald die Microsoft 365 Defender-Integration verbunden ist, werden alle Kompone
 
 - Die gemeinsame Verwendung beider Mechanismen wird vollständig unterstützt, und diese Konfiguration kann verwendet werden, um den Übergang zur neuen Microsoft 365 Defender-Logik für die Erstellung von Vorfällen zu erleichtern. Dies führt jedoch zu **duplizierten Vorfällen** für dieselben Warnungen.
 
-- Um die Erstellung von duplizierten Vorfällen für dieselben Alarme zu vermeiden, empfehlen wir Kunden, alle **Regeln zur Erstellung von Microsoft-Vorfällen** für Microsoft 365-Produkte (Defender für Endpoint, Defender für Identity und Defender für Office 365 - siehe Cloud App Security unten) zu deaktivieren, wenn sie den Microsoft 365 Defender verbinden. Dies kann durch das Deaktivieren der Vorfall-Erstellung auf der Verbinder-Seite erfolgen. Beachten Sie bitte, dass in diesem Fall alle Filter, die durch die Regeln zur Vorfallerstellung angewendet wurden, nicht auf die Microsoft 365 Defender-Vorfallintegration angewendet werden.
+- Um die Erstellung von duplizierten Vorfällen für dieselben Alarme zu vermeiden, empfehlen wir Kunden, alle **Regeln zur Erstellung von Microsoft-Vorfällen** für Microsoft 365-Produkte (Defender für Endpoint, Defender für Identity und Defender für Office 365 und Cloud App Security) zu deaktivieren, wenn sie den Microsoft 365 Defender verbinden. Dies kann durch das Deaktivieren der Vorfall-Erstellung auf der Verbinder-Seite erfolgen. Beachten Sie bitte, dass in diesem Fall alle Filter, die durch die Regeln zur Vorfallerstellung angewendet wurden, nicht auf die Microsoft 365 Defender-Vorfallintegration angewendet werden.
 
-- Für die Microsoft Cloud App Security-Warnungen sind derzeit nicht alle Warnmeldungstypen im Microsoft 365 Defender integriert. Um sicherzustellen, dass Sie weiterhin Vorfälle für alle Cloud App Sicherheitswarnungen erhalten, müssen Sie die **Microsoft-Regeln zur Erstellung von Vorfällen** für die [Alarmtypen *, die nicht in* Microsoft 365 Defender](microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md) integriert sind, beibehalten oder erstellen.
+    > [!NOTE]
+    > Alle Warnmeldungstypen von Microsoft Cloud App Security werden gerade in den Microsoft 365 Defender integriert.
 
 ### <a name="working-with-microsoft-365-defender-incidents-in-azure-sentinel-and-bi-directional-sync"></a>Mit Microsoft 365 Defender-Vorfällen in Azure Sentinel und der bidirektionalen Synchronisierung arbeiten
 

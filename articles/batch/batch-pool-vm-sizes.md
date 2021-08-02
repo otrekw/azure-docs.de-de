@@ -2,14 +2,14 @@
 title: Auswählen von VM-Größen und Images für Pools
 description: 'Vorgehensweise: Auswahl aus den verfügbaren VM-Größen und Betriebssystemversionen für Computeknoten in Azure Batch-Pools'
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 06/01/2021
 ms.custom: seodec18
-ms.openlocfilehash: 6de7decbf40eede74dd7b92f9f1139e1b31450c8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b5314d3672da87ac1d2fadca61046348a369e218
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126253"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789115"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe und eines Images für Computeknoten in einem Azure Batch-Pool
 
@@ -35,7 +35,7 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | Dv4, Dsv4 | Nicht unterstützt |
 | Ev3, Esv3 | Alle Größen außer E64is_v3 |
 | Eav4, Easv4 | Alle Größen |
-| Edv4, Edsv4 |  Alle Größen |
+| Edv4, Edsv4 |  Alle Größen, mit Ausnahme von Standard_E20d_v4, Standard_E20ds_v4, Standard_E80ids_v4 |
 | Ev4, Esv4 | Nicht unterstützt |
 | F, Fs | Alle Größen |
 | Fsv2 | Alle Größen |
@@ -43,7 +43,7 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | H | Alle Größen |
 | HB | Alle Größen |
 | HBv2 | Alle Größen |
-| HBv3 | Standard_HB120rs_v3 (andere Größen sind noch nicht verfügbar) |
+| HBv3 | Alle Größen |
 | HC | Alle Größen |
 | Ls | Alle Größen |
 | Lsv2 | Alle Größen |
@@ -55,6 +55,7 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | NCasT4_v3 | Alle Größen |
 | ND | Alle Größen |
 | NDv2 | Keine: Noch nicht verfügbar |
+| NP | Alle Größen |
 | SH | Alle Größen |
 | NVv3 | Alle Größen |
 | NVv4 | Alle Größen |

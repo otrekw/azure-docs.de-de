@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Clust
 services: container-service
 ms.topic: article
 ms.date: 3/31/2021
-ms.openlocfilehash: 2a897c9b3b104193e9ad2395c3f502a242001a48
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7238b0d9fdf3ada1f4133c68e5248b7e20aecf91
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764115"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371599"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters
 
@@ -70,11 +70,11 @@ Dabei gilt: `--enable-private-cluster` ist ein obligatorisches Flag für einen p
 
 Zum Konfigurieren einer privaten DNS-Zone können die folgenden Parameter verwendet werden.
 
-- „System“ ist der Standardwert. Wenn das Argument „--private-dns-zone“ weggelassen wird, erstellt AKS eine private DNS-Zone in der Knotenressourcengruppe.
-- Wenn sich „Private DNS Zone“ in einem anderen Abonnement als der AKS-Cluster befindet, müssen Sie Microsoft.ContainerServices in beiden Abonnements registrieren.
-- „None“ bedeutet, dass AKS keine private DNS-Zone erstellt.  Dies erfordert, dass Sie selbst einen DNS-Server bereitstellen und die DNS-Auflösung für den privaten FQDN konfigurieren.  Wenn Sie keine DNS-Auflösung konfigurieren, kann DNS nur innerhalb der Agent-Knoten aufgelöst werden; dies führt nach der Bereitstellung zu Clusterproblemen. 
-- „"CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID“ erfordert, dass Sie eine private DNS-Zone in diesem Format für die globale Azure-Cloud erstellen: `privatelink.<region>.azmk8s.io`. In Zukunft benötigen Sie die Ressourcen-ID dieser privaten DNS-Zone.  Außerdem benötigen Sie eine benutzerseitig zugewiesene Identität oder einen benutzerseitig zugewiesenen Dienstprinzipal, der/dem mindestens die Rollen `private dns zone contributor` und `vnet contributor` zugewiesen wurden.
-- „fqdn-subdomain“ kann bei „CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID“ nur verwendet werden, um Unterdomänenfunktionen für `privatelink.<region>.azmk8s.io` bereitzustellen.
+- „System“ (Standardwert). Wenn das Argument „--private-dns-zone“ weggelassen wird, erstellt AKS eine private DNS-Zone in der Knotenressourcengruppe.
+- „None“ bedeutet, dass AKS keine private DNS-Zone erstellt (VORSCHAU).  Dies erfordert, dass Sie selbst einen DNS-Server bereitstellen und die DNS-Auflösung für den privaten FQDN konfigurieren.  Wenn Sie keine DNS-Auflösung konfigurieren, kann DNS nur innerhalb der Agent-Knoten aufgelöst werden; dies führt nach der Bereitstellung zu Clusterproblemen. 
+- „CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID“ erfordert, dass Sie eine private DNS-Zone in diesem Format für die globale Azure-Cloud erstellen: `privatelink.<region>.azmk8s.io`. In Zukunft benötigen Sie die Ressourcen-ID dieser privaten DNS-Zone.  Außerdem benötigen Sie eine benutzerseitig zugewiesene Identität oder einen benutzerseitig zugewiesenen Dienstprinzipal, der/dem mindestens die Rollen `private dns zone contributor` und `vnet contributor` zugewiesen wurden.
+  - Wenn sich „Private DNS Zone“ in einem anderen Abonnement als der AKS-Cluster befindet, müssen Sie Microsoft.ContainerServices in beiden Abonnements registrieren.
+  - „fqdn-subdomain“ kann bei „CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID“ nur verwendet werden, um Unterdomänenfunktionen für `privatelink.<region>.azmk8s.io` bereitzustellen.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 

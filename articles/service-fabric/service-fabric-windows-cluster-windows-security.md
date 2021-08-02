@@ -3,12 +3,12 @@ title: Schützen eines Windows-Clusters mithilfe von Windows-Sicherheit
 description: Es wird beschrieben, wie Sie die Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit in einem eigenständigen Cluster unter Windows mit Windows-Sicherheit konfigurieren.
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: a34c7084a9faaf0d676d4f6c68da53b2bc84f01b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b0de9799e09b0f5812c85380191bb24b0a12c7a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574610"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110781665"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Schützen eines eigenständigen Windows-Clusters mit Windows-Sicherheit
 Um nicht autorisierten Zugriff auf einen Service Fabric-Cluster zu verhindern, müssen Sie den Cluster schützen. Sicherheit ist besonders wichtig, wenn der Cluster Produktionsworkloads ausführt. In diesem Artikel wird beschrieben, wie Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit mit Windows-Sicherheit in der *ClusterConfig.JSON*-Datei konfiguriert wird.  Der Prozess entspricht dem Sicherheitskonfigurationsschritt von [Erstellen eines eigenständigen Clusters unter Windows Server](service-fabric-cluster-creation-for-windows-server.md). Weitere Informationen zur Verwendung von Windows-Sicherheit durch Service Fabric finden Sie unter [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md).
@@ -43,14 +43,11 @@ gMSA (gruppenverwaltetes Dienstkonto) ist das bevorzugte Sicherheitsmodell. Die 
 | ClusterCredentialType |Legen Sie den Wert *Windows* fest, um Windows-Sicherheit für Knoten-zu-Knoten-Kommunikation zu aktivieren.  | 
 | ServerCredentialType |Legen Sie den Wert *Windows* fest, um Windows-Sicherheit für Client-zu-Knoten-Kommunikation zu aktivieren. |
 | WindowsIdentities |Enthält die Cluster und Clientidentitäten. |
-| ClustergMSAIdentity |Konfiguriert die Knoten-zu-Knoten-Sicherheit. Ein von der Gruppe verwaltetes Dienstkonto |
+| ClustergMSAIdentity |Konfiguriert die Knoten-zu-Knoten-Sicherheit. Ein von der Gruppe verwaltetes Dienstkonto Muss das Format „mysfgmsa@mydomain“ haben. |
 | ClusterSPN |Registrierter SPN für gMSA-Konto|
 | ClientIdentities |Konfiguriert die Client-zu-Knoten-Sicherheit. Ein Array mit Clientbenutzerkonten. |
 | Identity |Fügen Sie den Domänenbenutzer – „Domäne\Benutzername“ – für die Identität des Clients hinzu. |
 | IsAdmin |Legen Sie den Wert „true“ fest, um anzugeben, dass der Domänenbenutzer über Administratorclientzugriff verfügt, oder „false“ für Benutzerclientzugriff. |
-
-> [!NOTE]
-> Der ClustergMSAIdentity-Wert muss das Format „mysfgmsa@mydomain“ aufweisen.
 
 Die [Knoten-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#node-to-node-security) wird durch Festlegen von **ClustergMSAIdentity** konfiguriert, wenn Service Fabric in einem gMSA ausgeführt werden muss. Um Vertrauensstellungen zwischen Knoten erstellen zu können, müssen die Knoten über das Vorhandensein des jeweils anderen Knotens informiert sein. Dies kann auf zwei Arten erreicht werden: Geben Sie das gruppenverwaltete Dienstkonto an, das alle Knoten im Cluster enthält, oder geben Sie die Domänencomputergruppe an, die alle Knoten im Cluster enthält. Wir empfehlen Ihnen dringend, den Ansatz der [gruppenverwalteten Dienstkonten](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) zu verwenden. Dies gilt besonders für größere Cluster (mehr als zehn Knoten) oder für Cluster, die sich voraussichtlich vergrößern oder verkleinern.  
 Für diesen Ansatz ist keine Erstellung einer Domänengruppe erforderlich, für die Clusteradministratoren die Zugriffsrechte zum Hinzufügen und Entfernen von Mitgliedern gewährt wurden. Diese Konten sind auch nützlich für die automatische Kennwortverwaltung. Weitere Informationen finden Sie unter [Erste Schritte mit gruppenverwalteten Dienstkonten](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11)).  

@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 3dcb66c0659c8d76ab53c7537f1b9a4343bd17a1
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: c39417697dd88d3faa64ce47493ab5e7c08faa0d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987468"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481345"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch-Renderingfunktionen
 
@@ -37,7 +37,7 @@ In der Poolkonfiguration kann ein Rendering-VM-Image von Azure Marketplace angeg
 
 Zur Verfügung stehen ein Windows-Image und ein CentOS-Image.  Im [Azure Marketplace](https://azuremarketplace.microsoft.com) finden Sie die VM-Images, indem Sie nach „Batch-Rendering“ suchen.
 
-Ein Beispiel für eine Poolkonfiguration finden Sie im [Tutorial zum Rendern von Azure CLI](./tutorial-rendering-cli.md).  Das Azure-Portal und Batch Explorer umfassen GUI-Tools zum Auswählen eines Rendering-VM-Images beim Erstellen eines Pools.  Wenn Sie eine Batch-API verwenden, geben Sie beim Erstellen eines Pools die folgenden Eigenschaftswerte für [ImageReference](/rest/api/batchservice/pool/add#imagereference) an:
+Das Azure-Portal und Batch Explorer umfassen GUI-Tools zum Auswählen eines Rendering-VM-Images beim Erstellen eines Pools.  Wenn Sie eine Batch-API verwenden, geben Sie beim Erstellen eines Pools die folgenden Eigenschaftswerte für [ImageReference](/rest/api/batchservice/pool/add#imagereference) an:
 
 | Herausgeber | Angebot | Sku | Version |
 |---------|---------|---------|--------|
@@ -98,7 +98,5 @@ Wenn die VM-Images von Azure Marketplace verwendet werden, empfiehlt es sich, de
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Beispiele für das Rendering mit Batch finden Sie in den folgenden beiden Tutorials:
-
-* [Tutorial: Rendern einer Szene mit Azure Batch](./tutorial-rendering-cli.md)
-* [Rendern einer Blender-Szene mithilfe von Batch Explorer](./tutorial-rendering-batchexplorer-blender.md)
+* Weitere Informationen erhalten Sie unter [Vorinstallierte Anwendungen in VM-Images für das Batch-Rendering](batch-rendering-applications.md).
+* Informieren Sie sich weiter über die [Optionen für die Speicherung und Datenverschiebung zum Rendern von Medienobjekt- und Ausgabedateien](batch-rendering-storage-data-movement.md).

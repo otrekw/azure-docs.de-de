@@ -1,14 +1,14 @@
 ---
 title: 'Verwenden von Verwaltungsgruppen: Azure Governance'
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
-ms.date: 05/01/2021
+ms.date: 06/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 31d63cf493ae548b8172071c133655900d8c3be7
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: a42800bb40f0c94de9b852eb77b3b87b698bdb09
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753811"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020941"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -199,14 +199,16 @@ Ein Grund zum Erstellen einer Verwaltungsgruppe ist das Bündeln von Abonnements
 
 Wenn eine Verwaltungsgruppe oder ein Abonnement verschoben und einer anderen Verwaltungsgruppe untergeordnet wird, müssen drei Regeln als TRUE ausgewertet werden.
 
-Wenn Sie die Verschiebung durchführen, muss Folgendes zutreffen:
+Wenn Sie eine solche Verschiebung durchführen, müssen Ihnen auf jeder der folgenden Ebenen die entsprechenden Berechtigungen erteilt werden:
 
-- Verwaltungsgruppenschreib- und Rollenzuweisungsschreibberechtigung für das untergeordnete Abonnement oder die untergeordnete Verwaltungsgruppe.
-  - Beispiel für eine integrierte Rolle: **Besitzer**
-- Verwaltungsgruppen-Schreibzugriff auf die übergeordnete Zielverwaltungsgruppe.
-  - Beispiel für eine integrierte Rolle: **Besitzer**, **Mitwirkender**, **Verwaltungsgruppenmitwirkender**
-- Verwaltungsgruppen-Schreibzugriff auf die bestehende übergeordnete Verwaltungsgruppe.
-  - Beispiel für eine integrierte Rolle: **Besitzer**, **Mitwirkender**, **Verwaltungsgruppenmitwirkender**
+- Untergeordnetes Abonnement / Untergeordnete Verwaltungsgruppe
+  - `Microsoft.management/managementgroups/write`
+  - `Microsoft.management/managementgroups/subscription/write` (nur für Abonnements)
+  - `Microsoft.Authorization/roleassignment/write`
+- Übergeordnete Zielverwaltungsgruppe
+  - `Microsoft.management/managementgroups/write`
+- Aktuelle übergeordnete Verwaltungsgruppe
+  - `Microsoft.management/managementgroups/write`
 
 **Ausnahme**: Wenn die Zielverwaltungsgruppe oder die vorhandene übergeordnete Verwaltungsgruppe die Stammverwaltungsgruppe ist, gelten die Berechtigungsanforderungen nicht. Da die Stammverwaltungsgruppe die standardmäßige Landing-Gruppe für alle neuen Verwaltungsgruppen und Abonnements ist, benötigen Sie keine Berechtigungen für diese Gruppe, wenn ein Element hierhin verschoben werden soll.
 

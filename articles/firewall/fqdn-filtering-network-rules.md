@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/06/2020
+ms.date: 06/11/2021
 ms.author: victorh
-ms.openlocfilehash: f7196c7715ad5d2c02759040b780b96218e1655e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f28092c050e58c6ef90a3faf07034be21198008a
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94695944"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017197"
 ---
 # <a name="use-fqdn-filtering-in-network-rules"></a>Verwenden der FQDN-Filterung in Netzwerkregeln
 
@@ -32,8 +32,9 @@ Wenn eine neue DNS-Auflösung stattfindet, werden die neuen IP-Adressen zu Firew
 - Die FQDN-Filterung in Anwendungsregeln für HTTP/S und MSSQL basiert auf einem auf Anwendungsebene transparenten Proxy und dem SNI-Header. Daher kann hierbei zwischen zwei FQDNs unterschieden werden, die zur selben IP-Adresse aufgelöst werden. Bei der Verwendung von FQDN-Filterung in Netzwerkregeln ist dies nicht der Fall. 
 
    Verwenden Sie nach Möglichkeit immer Anwendungsregeln:
-     - Wenn das Protokoll HTTP/S oder MSSQL lautet, verwenden Sie Anwendungsregeln für die FQDN-Filterung.
-   - Bei allen anderen Protokollen können Sie Anwendungs- oder Netzwerkregeln für die FQDN-Filterung verwenden.
+  - Wenn das Protokoll HTTP/S oder MSSQL lautet, verwenden Sie Anwendungsregeln für die FQDN-Filterung.
+  - Verwenden Sie für Dienste wie AzureBackup, HDInsight usw. Anwendungsregeln mit FQDN-Tags.
+  - Bei allen anderen Protokollen können Sie Anwendungs- oder Netzwerkregeln für die FQDN-Filterung verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

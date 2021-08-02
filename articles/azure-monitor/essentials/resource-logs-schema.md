@@ -2,13 +2,13 @@
 title: 'Azure-Ressourcenprotokolle: Unterstützte Dienste und Schemas'
 description: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.
 ms.topic: reference
-ms.date: 04/07/2020
-ms.openlocfilehash: d219153f9d1dfbcd05cbe28a5ac0609a156c68a9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 05/10/2021
+ms.openlocfilehash: 5d9ae1cd9ca1d5f71d4ad2baff95159bf0e2e7f8
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142565"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026433"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle
 
@@ -47,7 +47,7 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 
 | Dienst | Schema und Dokumente |
 | --- | --- |
-| Azure Active Directory | [Übersicht](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [Überwachungsprotokollschema](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) und [Anmeldeschema](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Azure Active Directory | [Übersicht](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [Überwachungsprotokollschema](../../active-directory/reports-monitoring/overview-reports.md) und [Anmeldeschema](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | [Azure Analysis Services: Einrichten der Diagnoseprotokollierung](../../analysis-services/analysis-services-logging.md) |
 | API Management | [API Management-Ressourcenprotokolle](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
 | App Service | [App Service-Protokolle](../../app-service/troubleshoot-diagnostic-logs.md)
@@ -55,6 +55,7 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 | Azure-Automatisierung |[Protokollanalysen für Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch-Protokollierung](../../batch/batch-diagnostics.md) |
 | Cognitive Services | [Protokollierung für Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
+| Container Instances | [Protokollierung für Azure Container Instances](../../container-instances/container-instances-log-analytics.md#log-schema) |
 | Containerregistrierung | [Protokollierung für Azure Container Registry](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [Azure-Protokolle für CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB-Protokollierung](../../cosmos-db/monitor-cosmos-db.md) |
@@ -76,6 +77,7 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 | Kubernetes Service |[Azure Kubernetes-Protokollierung](../../aks/view-control-plane-logs.md#log-event-schema) |
 | Load Balancer |[Protokollanalysen für den Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
+| Media Services | [Media Services-Überwachungsschemas](../../media-services/latest/monitoring/monitor-media-services-data-reference.md#schemas) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | Power BI Dedicated | [Protokollierung für Power BI Embedded in Azure](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datenmodell für Azure Backup](../../backup/backup-azure-reports-data-model.md)|

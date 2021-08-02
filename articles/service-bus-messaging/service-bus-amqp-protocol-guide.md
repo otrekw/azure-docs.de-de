@@ -3,12 +3,12 @@ title: AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Mic
 description: Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs.
 ms.topic: article
 ms.date: 04/14/2021
-ms.openlocfilehash: 8d346aeef74e1f67d3d525c061d40314ee5342aa
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0c1c053378c8c2dec1f769fe489eb823ea81390f
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531011"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438736"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -404,12 +404,7 @@ Mit dieser Funktionalität erstellen Sie einen Sender und richten den Link zur `
 | | <------ | attach(<br/>name={Name der Verknüpfung},<br/>role=receiver,<br/>source={Clientverknüpfungs-ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Weitere Informationen zu AMQP finden Sie unter den folgenden Links:
-
-* [Übersicht über Service Bus AMQP]
-* [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]
-* [AMQP in Service Bus für Windows Server]
+Weitere Informationen zu AMQP finden Sie unter [Übersicht über Service Bus AMQP](service-bus-amqp-overview.md).
 
 [this video course]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp-protocol-guide/amqp1.png
@@ -417,6 +412,3 @@ Weitere Informationen zu AMQP finden Sie unter den folgenden Links:
 [3]: ./media/service-bus-amqp-protocol-guide/amqp3.png
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
-[Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
-[AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: 
-[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

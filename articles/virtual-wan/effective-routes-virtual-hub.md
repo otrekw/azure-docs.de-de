@@ -1,18 +1,18 @@
 ---
 title: 'Anzeigen der effektiven Routen für einen virtuellen Hub: Azure Virtual WAN | Microsoft-Dokumentation'
-description: Anzeigen der effektiven Routen für einen virtuellen Hub in Azure Virtual WAN
+description: Hier erfahren Sie, wie Sie die effektiven Routen für einen virtuellen Hub in Azure Virtual WAN anzeigen.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 955bf9fb9881fcf5fb37b75352c25d2d639bfb3c
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90983656"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579836"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Anzeigen effektiver Routen eines virtuellen Hubs
 
@@ -51,7 +51,7 @@ Verwenden Sie die Scrollleiste am unteren Rand der Tabelle, um den „AS-Pfad“
 
 * Wenn beim Anzeigen effektiver Routen auf einer VM-NIC der nächste Hop als „Gateway für virtuelle Netzwerke“ angezeigt wird, beinhaltet dies den virtuellen Hubrouter, wenn sich der virtuelle Computer in einer Spoke befindet, die mit einem virtuellen WAN-Hub verbunden ist.
 
-* Die Anzeige effektiver Routen für eine Routingtabelle eines virtuellen Hubs wird nur aufgefüllt, wenn der virtuelle Hub mindestens einen Verbindungstyp (VPN/ER/VNET) aufweist.
+* Die **Anzeige effektiver Routen** für eine Routingtabelle eines virtuellen Hubs wird nur aufgefüllt, wenn der virtuelle Hub mindestens einen Verbindungstyp (VPN/ER/VNET) aufweist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

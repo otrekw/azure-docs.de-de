@@ -13,18 +13,18 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8a3015fa2c078232ca9c37c2b0ce0ded313c859
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: d037f93b1381fcd7f1816104f6fd7b2e1200c852
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480831"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438934"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)
 
 In Azure Active Directory (Azure AD) wird eine öffentliche Vorschau eingeführt, in der Sie den in Azure AD integrierten Rollen eine Cloudgruppe zuweisen können. Mithilfe dieses Features können Sie Gruppen verwenden, um Administratorzugriff in Azure AD mit minimalem Aufwand von globalen Administratoren und Administratoren für privilegierte Rollen zu gewähren.
 
-Betrachten Sie dieses Beispiel: Contoso hat Personal in verschiedenen geografischen Regionen eingestellt, um Kennwörter für Mitarbeiter in seiner Azure AD-Organisation zu verwalten und zurückzusetzen. Anstatt einen Administrator für privilegierte Rollen oder globalen Administrator zu bitten, jeder Person einzeln die Helpdesk-Administratorrolle zuzuweisen, kann eine Gruppe „Contoso_Helpdesk_Administrators“ erstellt und der Rolle zugewiesen werden. Wenn Benutzer der Gruppe beitreten, wird ihnen die Rolle indirekt zugewiesen. Der vorhandene Governanceworkflow kann dann den Genehmigungsprozess und die Überwachung der Gruppenmitgliedschaft übernehmen, um sicherzustellen, dass nur berechtigte Benutzer Mitglieder der Gruppe sind und somit der Helpdesk-Administratorrolle zugewiesen werden.
+Betrachten Sie dieses Beispiel: Contoso hat Personal in verschiedenen geografischen Regionen eingestellt, um Kennwörter für Mitarbeiter in seiner Azure AD-Organisation zu verwalten und zurückzusetzen. Anstatt einen Administrator für privilegierte Rollen oder einen globalen Administrator zu bitten, jeder Person einzeln die Rolle „Helpdeskadministrator“ zuzuweisen, kann eine Gruppe „Contoso_Helpdesk_Administrators“ erstellt und der Rolle zugewiesen werden. Wenn Benutzer der Gruppe beitreten, wird ihnen die Rolle indirekt zugewiesen. Der vorhandene Governanceworkflow kann dann den Genehmigungsprozess und die Überwachung der Gruppenmitgliedschaft übernehmen, um sicherzustellen, dass nur berechtigte Benutzer Mitglieder der Gruppe sind und somit der Rolle „Helpdeskadministrator“ zugewiesen werden.
 
 ## <a name="how-this-feature-works"></a>Funktionsweise dieses Features
 
@@ -37,14 +37,14 @@ Wenn Sie nicht möchten, dass Mitglieder der Gruppe dauerhaften Zugriff auf die 
 
 ## <a name="why-we-enforce-creation-of-a-special-group-for-assigning-it-to-a-role"></a>Gründe für das Erstellen einer speziellen Gruppe für die Zuweisung zu einer Rolle
 
-Wenn eine Gruppe einer Rolle zugewiesen wird, kann jeder IT-Administrator, der die Gruppenmitgliedschaft verwalten kann, indirekt auch die Mitgliedschaft in dieser Rolle verwalten. Angenommen, eine Gruppe namens „Contoso_User_Administrators“ wird der Rolle des Benutzerkontoadministrators zugewiesen. Ein Exchange-Administrator, der die Gruppenmitgliedschaft ändern kann, kann sich selbst der Gruppe „Contoso_User_Administrators“ hinzufügen und auf diese Weise zu einem Benutzerkontoadministrator werden. Wie Sie sehen, kann ein Administrator seine Berechtigung auf nicht erwünschte Weise erweitern.
+Wenn eine Gruppe einer Rolle zugewiesen wird, kann jeder IT-Administrator, der die Gruppenmitgliedschaft verwalten kann, indirekt auch die Mitgliedschaft in dieser Rolle verwalten. Angenommen, eine Gruppe namens „Contoso_User_Administrators“ wird der Rolle „Benutzeradministrator“ zugewiesen. Ein Exchange-Administrator, der die Gruppenmitgliedschaft ändern kann, kann sich selbst der Gruppe „Contoso_User_Administrators“ hinzufügen und auf diese Weise zu einem Benutzerkontoadministrator werden. Wie Sie sehen, kann ein Administrator seine Berechtigung auf nicht erwünschte Weise erweitern.
 
 Mit Azure AD können Sie eine Gruppe, die einer Rolle zugewiesen ist, durch eine neue Eigenschaft für Gruppen namens „isAssignableToRole“ schützen. Nur Cloudgruppen, bei denen zum Erstellungszeitpunkt die Eigenschaft „isAssignableToRole“ auf „true“ festgelegt wurde, können einer Rolle zugewiesen werden. Diese Eigenschaft ist unveränderlich. Sobald eine Gruppe mit dieser Eigenschaft als „true“ erstellt wurde, kann dies nicht mehr geändert werden. Sie können die Eigenschaft nicht für eine vorhandene Gruppe festlegen. Die Zuweisung von Gruppen zu Rollen wurde von uns so konzipiert, dass potenzielle Verletzungen verhindert werden können:
 
-- Nur globale Administratoren und Administratoren für privilegierte Rollen können eine Gruppe mit Rollenzuweisung erstellen (mit aktivierter Eigenschaft „isAssignableToRole“).
+- Nur globale Administratoren und Administratoren für privilegierte Rollen können eine Gruppe mit Rollenzuweisung erstellen (mit aktivierter isAssignableToRole-Eigenschaft).
 - Es darf sich nicht um eine dynamische Azure AD-Gruppe handeln. Das heißt, der Mitgliedschaftstyp muss „Zugewiesen“ lauten. Das automatisierte Auffüllen dynamischer Gruppen kann dazu führen, dass der Gruppe ein unerwünschtes Konto hinzugefügt und sie somit der Rolle zugewiesen wird.
 - Standardmäßig können nur globale Administratoren und Administratoren für privilegierte Rollen die Mitgliedschaft in einer Gruppe mit Rollenzuweisung verwalten, Sie können jedoch die Verwaltung von Gruppen mit Rollenzuweisung delegieren, indem Sie Gruppenbesitzer hinzufügen.
-- Um eine Rechteerweiterung zu verhindern, können die Anmeldeinformationen von Mitgliedern und Besitzern einer Gruppe mit Rollenzuweisung nur von einem privilegierten Authentifizierungsadministrator oder einem globalen Administrator geändert werden.
+- Um eine Rechteerweiterung zu verhindern, können die Anmeldeinformationen oder die mehrstufige Authentifizierung von Mitgliedern und Besitzern einer Gruppe mit Rollenzuweisung nur von einem privilegierten Authentifizierungsadministrator oder einem globalen Administrator geändert werden.
 - Keine Schachtelung. Eine Gruppe kann nicht als Mitglied einer Gruppe mit Rollenzuweisung hinzugefügt werden.
 
 ## <a name="limitations"></a>Einschränkungen
@@ -66,9 +66,9 @@ Folgende Szenarios werden derzeit nicht unterstützt:
 
 Diese Probleme werden derzeit behoben.
 
-## <a name="required-license-plan"></a>Erforderlicher Lizenzplan
+## <a name="license-requirements"></a>Lizenzanforderungen
 
-Zur Nutzung dieses Features benötigen Sie in Ihrer Azure AD-Organisation eine verfügbare Azure AD Premium P1-Lizenz. Um auch Privileged Identity Management für die Just-in-Time-Rollenaktivierung zu verwenden, benötigen Sie eine verfügbare Azure AD Premium P2-Lizenz. Informationen zur Ermittlung der richtigen Lizenz für Ihre Anforderungen finden Sie unter [Vergleich der allgemein verfügbaren Features der Free- und Premium-Pläne](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses).
+Für die Verwendung dieses Features ist eine Azure AD Premium P1-Lizenz erforderlich. Um auch Privileged Identity Management für die Just-In-Time-Rollenaktivierung zu verwenden, benötigen Sie eine Azure AD Premium P2-Lizenz. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich der allgemein verfügbaren Features der Editionen Free und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

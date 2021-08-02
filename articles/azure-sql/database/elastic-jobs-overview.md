@@ -3,20 +3,20 @@ title: Aufträge für die elastische Datenbank (Vorschau)
 description: Konfigurieren von Aufträgen für elastische Datenbanken (Vorschauversion), um T-SQL-Skripts (Transact-SQL) für einzelne oder mehrere Datenbanken in Azure SQL-Datenbank auszuführen
 services: sql-database
 ms.service: sql-database
-ms.subservice: scale-out
+ms.subservice: elastic-jobs
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: srinia
 ms.author: srinia
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35e13b483141e841d9cca5a2e5d3aa3c77ee7b4a
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792173"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017611"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Die Vorschauversion ist aktuell auf 100 gleichzeitige Aufträge beschränkt.
 
 Die Anzahl von Datenbanken, für die ein Auftrag gleichzeitig ausgeführt werden kann, kann beschränkt werden, um sicherzustellen, dass es beim Ausführen von Aufträgen für Datenbanken in einem elastischen SQL-Pool nicht zu einer Überlastung der Ressourcen kommt.
 
-Legen Sie die Anzahl der gleichzeitigen Datenbanken, in denen ein Auftrag ausgeführt wird, mit dem Parameter `@max_parallelism` der gespeicherten Prozedur `sp_add_jobstep` in T-SQL oder mit `Add-AzSqlElasticJobStep -MaxParallelism` in PowerShell fest.
+Legen Sie die Anzahl der gleichzeitigen Datenbanken, in denen ein Auftrag ausgeführt wird, mit dem Parameter `@max_parallelism` der gespeicherten Prozedur `sp_add_jobstep` in T-SQL fest.
 
 ## <a name="best-practices-for-creating-jobs"></a>Best Practices für die Auftragserstellung
 

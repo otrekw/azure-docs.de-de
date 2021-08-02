@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ea7d44cc704e6937a0d3f396b8eea3f298a02931
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 724c02f56b49957934deefe9f4733cda57620987
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772313"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019987"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Erstellen von Demozertifikaten zum Testen der Features von IoT Edge-Geräten
 
@@ -362,7 +362,7 @@ Das IoT-Gerät benötigt außerdem eine Kopie seiner Gerätezertifikate, damit d
 
 ### <a name="ca-signed-certificates"></a>Von einer Zertifizierungsstelle signierte Zertifikate
 
-Wenn Sie ein IoT-Gerät mit selbst signierten Zertifikaten authentifizieren, müssen Sie das Stammzertifizierungsstellen-Zertifikat für Ihre Lösung in IoT Hub hochladen.
+Wenn Sie ein IoT-Gerät mit von einer Zertifizierungsstelle signierten Zertifikaten authentifizieren, müssen Sie das Stammzertifizierungsstellen-Zertifikat für Ihre Lösung in IoT Hub hochladen.
 Anschließend führen Sie eine Überprüfung durch, um gegenüber IoT Hub zu belegen, dass Sie das Stammzertifizierungsstellen-Zertifikat besitzen.
 Schließlich verwenden Sie das gleiche Stammzertifizierungsstellen-Zertifikat zum Erstellen von Gerätezertifikaten, die auf dem IoT-Gerät abgelegt werden, damit es sich bei IoT Hub authentifizieren kann.
 

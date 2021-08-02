@@ -1,7 +1,7 @@
 ---
-title: Automatisches Trainieren eines Modells für die Zeitreihenprognose
+title: Einrichten von AutoML für die Zeitreihenvorhersage
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie mit Azure Machine Learning ein Regressionsmodell für die Zeitreihenprognose mit automatisiertem maschinellem Lernen trainieren.
+description: Richten Sie automatisiertes ML in Azure Machine Learning ein, um Zeitreihenvorhersagemodelle mit dem Azure Machine Learning Python-SDK zu trainieren.
 services: machine-learning
 author: nibaccam
 ms.author: nibaccam
@@ -9,18 +9,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.custom: contperf-fy21q1, automl
-ms.date: 08/20/2020
-ms.openlocfilehash: ed4047b7ac4187138f29bc3f53b5bc5995132296
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.date: 06/11/2021
+ms.openlocfilehash: d2c4f759f6b2f7ef769148c99dfcbfb738b19f5e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107898133"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030862"
 ---
-# <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
+# <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>Einrichten von AutoML zum Trainieren eines Zeitreihenvorhersagemodells mit Python
 
-
-In diesem Artikel erfahren Sie, wie Sie ein Regressionsmodell für Zeitreihenvorhersagen mit automatisiertem maschinellem Lernen (AutoML) im [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) konfigurieren und trainieren. 
+In diesem Artikel erfahren Sie, wie Sie das AutoML-Training für Zeitreihenvorhersagemodelle mit dem automatisierten ML von Azure Machine Learning im [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/)einrichten.
 
 Dazu gehen Sie wie folgt vor: 
 
@@ -29,7 +28,7 @@ Dazu gehen Sie wie folgt vor:
 > * Konfigurieren spezifischer Zeitreihenparameter in einem Objekt vom Typ [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)
 > * Ausführen von Vorhersagen mit Zeitreihendaten
 
-Falls Sie wenig Erfahrung mit Code haben, lesen Sie das [Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen](tutorial-automated-ml-forecast.md) für ein Zeitreihenvorhersagebeispiel mit automatisiertem maschinellen Lernen im [Azure Machine Learning-Studio](https://ml.azure.com/).
+Für ein Vorgehen mit wenig Code folgen Sie dem [Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen](tutorial-automated-ml-forecast.md) für ein Zeitreihenvorhersagebeispiel mit automatisiertem ML im [Azure Machine Learning Studio](https://ml.azure.com/).
 
 Im Gegensatz zu klassischen Methoden für Zeitreihen werden beim automatisierten maschinellen Lernen Zeitreihenwerte aus der Vergangenheit „pivotiert“ und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor. Dieser Ansatz umfasst mehrere Kontextvariablen und deren Beziehung zueinander beim Training. Da sich mehrere Faktoren auf eine Vorhersage auswirken können, richtet sich diese Methode gut an realen Vorhersageszenarios aus. Wenn z. B. Verkaufszahlen vorhergesagt werden sollen, wird das Ergebnis auf der Grundlage von Wechselwirkungen zwischen historischen Trends, des Wechselkurses und des Preises berechnet. 
 
@@ -43,7 +42,7 @@ Für diesen Artikel ist Folgendes erforderlich:
 
 ## <a name="preparing-data"></a>Aufbereiten der Daten
 
-Der wichtigste Unterschied zwischen einem Regressionsaufgabentyp für Vorhersagen und einem Regressionsaufgabentyp in AutoML liegt in der Einbeziehung eines Features in Ihre Daten, das eine gültige Zeitreihe darstellt. Eine reguläre Zeitreihe besitzt ein klar definiertes und konsistentes Intervall sowie einen Wert an jedem Stichprobenpunkt in einem ununterbrochenen Zeitraum. 
+Der wichtigste Unterschied zwischen einem Regressionsaufgabentyp für Vorhersagen und einem Regressionsaufgabentyp im automatisierten ML liegt in der Einbeziehung eines Features in Ihre Daten, das eine gültige Zeitreihe darstellt. Eine reguläre Zeitreihe besitzt ein klar definiertes und konsistentes Intervall sowie einen Wert an jedem Stichprobenpunkt in einem ununterbrochenen Zeitraum. 
 
 Betrachten Sie die folgende Momentaufnahme der Datei `sample.csv`:
 Bei diesem Dataset handelt es sich um tägliche Vertriebsdaten für ein Unternehmen, das über zwei Ladengeschäfte verfügt: A und B. 
@@ -286,7 +285,7 @@ Unterstützte Aggregationsvorgänge für Zielspaltenwerte:
 ### <a name="enable-deep-learning"></a>Aktivieren von Deep Learning
 
 > [!NOTE]
-> Die DNN-Unterstützung für Vorhersagen beim automatisierten maschinellen Lernen befindet sich in der **Vorschauphase** und wird für lokale Ausführungen nicht unterstützt.
+> Die DNN-Unterstützung für Vorhersagen beim automatisiertem maschinellen Lernen befindet sich in der **Vorschauphase** und wird für lokales Ausführen sowie in Databricks gestartetes Ausführen nicht unterstützt.
 
 Sie können auch Deep Learning mit Deep Neural Networks (DNNs) anwenden, um die Scores des Modells zu verbessern. Deep Learning mit automatisiertem maschinellem Lernen ermöglicht das Vorhersagen von ein- und mehrdimensionalen Zeitreihendaten.
 
@@ -418,4 +417,4 @@ Sehen Sie sich die [Notebooks zum Vorhersagebeispiel](https://github.com/Azure/M
 * Lernen Sie, [wie und wo Sie Modelle bereitstellen](how-to-deploy-and-where.md) können.
 * Informieren Sie sich über [Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen (Vorschau)](how-to-machine-learning-interpretability-automl.md). 
 * Hier erfahren Sie, wie Sie mehrere Modelle mit AutoML im [Many Models Solution Accelerator](https://aka.ms/many-models) trainieren.
-* Im [Tutorial](tutorial-auto-train-models.md) finden Sie ein End-to-End-Beispiel für das Erstellen von Experimenten mit automatisiertem Machine Learning.
+* Im [Tutorial: Trainieren von Regressionsmodellen](tutorial-auto-train-models.md) finden Sie ein umfassendes Beispiel für das Erstellen von Experimenten mit automatisiertem Machine Learning.

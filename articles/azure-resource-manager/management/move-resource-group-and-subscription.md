@@ -2,14 +2,14 @@
 title: Verschieben von Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe
 description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben.
 ms.topic: conceptual
-ms.date: 04/16/2021
+ms.date: 06/03/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e899319460c4d9b144a580e0cb093488ea76683c
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: fdda54f31fe4a85a5ac62d8ce60fffd03c5a785d
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322165"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526638"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -122,7 +122,117 @@ Der Einfachheit halber verwenden wir hier nur eine abhängige Ressource.
 * Schritt 2: Verschieben Sie die Ressource und die abhängigen Ressourcen zusammen aus dem Quellabonnement in das Zielabonnement.
 * Schritt 3: Optional können Sie die abhängigen Ressourcen auf unterschiedliche Ressourcengruppen im Zielabonnement verteilen.
 
-## <a name="validate-move"></a>Überprüfen der Verschiebung
+## <a name="use-the-portal"></a>Verwenden des Portals
+
+Wählen Sie zum Verschieben von Ressourcen die Ressourcengruppe aus, die diese Ressourcen enthält.
+
+Auswählen der Ressourcen, die Sie verschieben möchten Aktivieren Sie das Kontrollkästchen oben in der Liste, um alle Ressourcen zu verschieben. Oder wählen Sie Ressourcen einzeln aus.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources-to-move.png" alt-text="Auswählen von Ressourcen":::
+
+Wählen Sie die Schaltfläche **Verschieben** aus.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-move.png" alt-text="Optionen für den Verschiebevorgang":::
+
+Diese Schaltfläche bietet Ihnen drei Optionen:
+
+* Verschieben in eine neue Ressourcengruppe.
+* Verschieben in ein neues Abonnement.
+* Verschieben in eine neue Region. Wenn Sie Regionen ändern möchten, finden Sie weitere Informationen unter [Regionsübergreifendes Verschieben von Ressourcen (aus Ressourcengruppe)](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json).
+
+Wählen Sie aus, ob Sie die Ressource in eine neue Ressourcengruppe oder ein neues Abonnement verschieben.
+
+Die Quellressourcengruppe wird automatisch festgelegt. Wählen Sie die Zielressourcengruppe aus. Wenn Sie zu einem neuen Abonnement umstiegen, geben Sie auch das Abonnement an. Wählen Sie **Weiter** aus.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-destination-group.png" alt-text="Zielressourcengruppe auswählen":::
+
+Das Portal überprüft, ob die Ressourcen verschoben werden können. Warten Sie, bis die Validierung abgeschlossen ist.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/validation.png" alt-text="Validierung verschobener Ressourcen":::
+
+Wenn die Validierung erfolgreich abgeschlossen wurde, wählen Sie **Weiter** aus.
+
+Bestätigen Sie, dass Sie Tools und Skripts für diese Ressourcen aktualisieren müssen. Um mit dem Verschieben der Ressourcen zu beginnen, wählen Sie **Verschieben** aus.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/acknowledge-change.png" alt-text="Auswählen des Ziels":::
+
+Sobald das Verschieben abgeschlossen ist, werden Sie über das Ergebnis informiert.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/view-notification.png" alt-text="Ergebnisse des Verschiebens anzeigen":::
+
+## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
+
+### <a name="validate"></a>Überprüfen
+
+Verwenden Sie den Befehl [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction), um Ihre Verschiebeaktion zu testen, ohne die Ressourcen tatsächlich zu verschieben. Verwenden Sie diesen Befehl nur, wenn Sie die Ergebnisse vorab bestimmen müssen. Um diesen Vorgang ausführen zu können, benötigen Sie Folgendes:
+
+* Ressourcen-ID der Quellressourcengruppe
+* Ressourcen-ID der Zielressourcengruppe
+* Ressourcen-ID der einzelnen zu verschiebenden Ressourcen
+
+```azurepowershell
+Invoke-AzResourceAction -Action validateMoveResources `
+-ResourceId "/subscriptions/{subscription-id}/resourceGroups/{source-rg}" `
+-Parameters @{ resources= @("/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}", "/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}", "/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}");targetResourceGroup = '/subscriptions/{subscription-id}/resourceGroups/{destination-rg}' }  
+```
+
+Wenn die Validierung erfolgreich ist, erfolgt keine Ausgabe.
+
+Wenn die Validierung fehlschlägt, wird eine Fehlermeldung angezeigt, die beschreibt, warum die Ressourcen nicht verschoben werden können.
+
+### <a name="move"></a>Move
+
+Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [Move-AzResource](/powershell/module/az.resources/move-azresource). Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden.
+
+```azurepowershell-interactive
+$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
+$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
+Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
+```
+
+Um Ressourcen in ein neues Abonnement zu verschieben, schließen Sie einen Wert für den Parameter `DestinationSubscriptionId` ein.
+
+## <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+
+### <a name="validate"></a>Überprüfen
+
+Verwenden Sie den Befehl [az resource invoke-action](/cli/azure/resource#az_resource_invoke_action), um Ihre Verschiebeaktion zu testen, ohne die Ressourcen tatsächlich zu verschieben. Verwenden Sie diesen Befehl nur, wenn Sie die Ergebnisse vorab bestimmen müssen. Um diesen Vorgang ausführen zu können, benötigen Sie Folgendes:
+
+* Ressourcen-ID der Quellressourcengruppe
+* Ressourcen-ID der Zielressourcengruppe
+* Ressourcen-ID der einzelnen zu verschiebenden Ressourcen
+
+Verwenden Sie im Anforderungstext `\"`, um doppelte Anführungszeichen zu maskieren.
+
+```azurecli
+az resource invoke-action --action validateMoveResources \
+  --ids "/subscriptions/{subscription-id}/resourceGroups/{source-rg}" \
+  --request-body "{  \"resources\": [\"/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}\", \"/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}\", \"/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}\"],\"targetResourceGroup\":\"/subscriptions/{subscription-id}/resourceGroups/{destination-rg}\" }" 
+```
+
+Ausgabe bei erfolgreicher Validierung:
+
+```azurecli
+{} Finished .. 
+```
+
+Wenn die Validierung fehlschlägt, wird eine Fehlermeldung angezeigt, die beschreibt, warum die Ressourcen nicht verschoben werden können.
+
+### <a name="move"></a>Move
+
+Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [az resource move](/cli/azure/resource#az_resource_move). Geben Sie die Ressourcen-IDs der zu verschiebenden Ressourcen an. Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden. Geben Sie im `--ids`-Parameter eine durch Leerzeichen getrennte Liste der zu verschiebenden Ressourcen-IDs an.
+
+```azurecli
+webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
+plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/serverfarms" --query id --output tsv)
+az resource move --destination-group newgroup --ids $webapp $plan
+```
+
+Um Ressourcen in ein neues Abonnement zu verschieben, geben Sie den Parameter`--destination-subscription-id` an.
+
+## <a name="use-rest-api"></a>REST-API
+
+### <a name="validate"></a>Überprüfen
 
 Der [Vorgang zum Überprüfen der Verschiebung](/rest/api/resources/resources/moveresources) ermöglicht Ihnen, Ihr Verschiebungsszenario zu testen, ohne tatsächlich Ressourcen zu verschieben. Verwenden Sie diesen Vorgang, um zu überprüfen, ob die Verschiebung erfolgreich sein wird. Die Überprüfung wird automatisch aufgerufen, wenn Sie eine Verschiebeanforderung senden. Verwenden Sie diesen Vorgang nur, wenn Sie die Ergebnisse vorab bestimmen müssen. Um diesen Vorgang ausführen zu können, benötigen Sie Folgendes:
 
@@ -175,65 +285,7 @@ Während der Vorgang ausgeführt wird, wird weiterhin der Statuscode 202 angezei
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
 ```
 
-## <a name="use-the-portal"></a>Verwenden des Portals
-
-Wählen Sie zum Verschieben von Ressourcen die Ressourcengruppe aus, die diese Ressourcen enthält.
-
-Wenn Sie die Ressourcengruppe anzeigen, ist die Option zum Verschieben deaktiviert.
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="Deaktivierte Option zum Verschieben":::
-
-Um die Option zum Verschieben zu aktivieren, wählen Sie die Ressourcen aus, die Sie verschieben möchten. Aktivieren Sie das Kontrollkästchen oben in der Liste, um alle Ressourcen auszuwählen. Oder wählen Sie Ressourcen einzeln aus. Nachdem Sie Ressourcen ausgewählt haben, ist die Option zum Verschieben aktiviert.
-
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="Auswählen von Ressourcen":::
-
-Wählen Sie die Schaltfläche **Verschieben** aus.
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="Optionen für den Verschiebevorgang":::
-
-Diese Schaltfläche bietet Ihnen drei Optionen:
-
-* Verschieben in eine neue Ressourcengruppe.
-* Verschieben in ein neues Abonnement.
-* Verschieben in eine neue Region. Wenn Sie Regionen ändern möchten, finden Sie weitere Informationen unter [Regionsübergreifendes Verschieben von Ressourcen (aus Ressourcengruppe)](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json).
-
-Wählen Sie aus, ob Sie die Ressource in eine neue Ressourcengruppe oder ein neues Abonnement verschieben.
-
-Wählen Sie die Zielressourcengruppe aus. Bestätigen, dass Sie Skripts für diese Ressourcen aktualisieren müssen, und wählen Sie **OK** aus. Wenn Sie Verschieben in ein neues Abonnement ausgewählt haben, müssen Sie auch das Zielabonnement auswählen.
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="Auswählen des Ziels":::
-
-Nachdem Sie überprüft haben, dass die Ressourcen verschoben werden können, wird eine Benachrichtigung angezeigt, dass der Verschiebevorgang ausgeführt wird.
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="Benachrichtigung":::
-
-Sobald der Vorgang abgeschlossen ist, werden Sie über das Ergebnis informiert.
-
-## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
-
-Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [Move-AzResource](/powershell/module/az.resources/move-azresource). Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden.
-
-```azurepowershell-interactive
-$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
-$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
-Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
-```
-
-Um Ressourcen in ein neues Abonnement zu verschieben, schließen Sie einen Wert für den Parameter `DestinationSubscriptionId` ein.
-
-## <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
-
-Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [az resource move](/cli/azure/resource#az_resource_move). Geben Sie die Ressourcen-IDs der zu verschiebenden Ressourcen an. Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden. Geben Sie im `--ids`-Parameter eine durch Leerzeichen getrennte Liste der zu verschiebenden Ressourcen-IDs an.
-
-```azurecli
-webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
-plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/serverfarms" --query id --output tsv)
-az resource move --destination-group newgroup --ids $webapp $plan
-```
-
-Um Ressourcen in ein neues Abonnement zu verschieben, geben Sie den Parameter`--destination-subscription-id` an.
-
-## <a name="use-rest-api"></a>REST-API
+### <a name="move"></a>Move
 
 Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Vorgang zum [Verschieben von Ressourcen](/rest/api/resources/resources/moveresources).
 
@@ -291,6 +343,12 @@ Beispielsweise könnte das Verschieben eines virtuellen Computers erfordern, das
   * storageAccounts
 
 Ein weiteres gängiges Beispiel beinhaltet das Verschieben eines virtuellen Netzwerks. Sie müssen möglicherweise mehrere weitere Ressourcen verschieben, die diesem virtuellen Netzwerk zugeordnet sind. Die Verschiebeanforderung kann es erfordern, dass öffentliche IP-Adressen, Routingtabellen, virtuelle Netzwerkgateways, Netzwerksicherheitsgruppen und anderes verschoben werden.
+
+**Frage: Was bedeutet der Fehlercode „RequestDisallowedByPolicy“?**
+
+Resource Manager validiert Ihre Verschiebungsanforderung, bevor versucht wird, sie auszuführen. Diese Validierung umfasst das Überprüfen von Richtlinien, die für die an der verschobenen Ressourcen definiert sind. Wenn Sie z. B. versuchen, einen Schlüsseltresor zu verschieben, Ihre Organisation jedoch über eine Richtlinie verfügt, um die Erstellung eines Schlüsseltresors in der Zielressourcengruppe zu verweigern, schlägt die Validierung fehl, und die Verschiebung wird blockiert. Der zurückgegebene Fehlercode ist **RequestDisallowedByPolicy**. 
+
+Weitere Informationen zu Richtlinien finden Sie unter [Was ist Azure Policy?](../../governance/policy/overview.md).
 
 **Frage: Warum kann ich einige Ressourcen in Azure nicht verschieben?**
 

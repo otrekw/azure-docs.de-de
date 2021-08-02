@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 12/09/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 8b3304c673e8606667246a7d0df9ad8f3be11d9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ad0fbacdfe8b6205dd32ecd75e5291b504adcac
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101686698"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407775"
 ---
 # <a name="back-up-and-restore-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Sichern und Wiederherstellen von PostgreSQL Hyperscale-Servergruppen mit Azure Arc-Unterstützung
 
@@ -90,6 +90,9 @@ In der Zeitstempelspalte wird der Zeitpunkt (in UTC) angegeben, zu dem die Siche
 
 ## <a name="restore-a-backup"></a>Wiederherstellen einer Sicherung
 In diesem Abschnitt erfahren Sie, wie Sie eine vollständige Wiederherstellung oder eine Point-in-Time-Wiederherstellung durchführen. Wenn Sie eine vollständige Sicherung wiederherstellen, wird der gesamte Inhalt der Sicherung wiederhergestellt. Bei einer Point-in-Time-Wiederherstellung werden die Daten bis zu dem von Ihnen angegebenen Zeitpunkt wiederhergestellt. Transaktionen, die nach diesem Zeitpunkt stattgefunden haben, werden nicht wiederhergestellt.
+
+> [!CAUTION]
+> Sie können die Wiederherstellung nur für eine Servergruppe durchführen, die über dieselbe Anzahl von Workerknoten verfügt wie zum Zeitpunkt der Erstellung der Sicherung. Wenn Sie die Anzahl der Workerknoten seit dem Erstellen der Sicherung erhöht oder verringert haben, müssen Sie vor der Wiederherstellung die Anzahl der Workerknoten erhöhen/verringern oder eine neue Servergruppe erstellen, damit es eine Übereinstimmung mit dem Inhalt der Sicherung gibt. Die Wiederherstellung schlägt fehl, wenn die Anzahl der Workerknoten nicht übereinstimmt.
 
 ### <a name="restore-a-full-backup"></a>Wiederherstellen einer vollständigen Sicherung
 Wenn Sie den gesamten Inhalt einer Sicherung wiederherstellen möchten, führen Sie den folgenden Befehl aus:
@@ -215,5 +218,5 @@ azdata arc postgres backup delete --help
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über das [Aufskalieren](scale-out-postgresql-hyperscale-server-group.md) der Servergruppe (Hinzufügen von Workerknoten).
+- Erfahren Sie mehr über das [Aufskalieren](scale-out-in-postgresql-hyperscale-server-group.md) der Servergruppe (Hinzufügen von Workerknoten).
 - Erfahren Sie mehr über das [zentrale Hoch- oder Herunterskalieren](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) der Servergruppe (Vergrößern/Verkleinern von Arbeitsspeicher/virtuellen Kernen).

@@ -2,13 +2,13 @@
 title: Workflow und Ressourcen des Batch-Diensts
 description: Hier lernen Sie die Features des Batch-Diensts und seinen allgemeinen Workflow aus der Sicht eines Entwicklers kennen.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: c525b635bbda4284c876fa092c285e884a33db73
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85965211"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006993"
 ---
 # <a name="batch-service-workflow-and-resources"></a>Workflow und Ressourcen des Batch-Diensts
 
@@ -17,7 +17,7 @@ In dieser Übersicht über die Hauptkomponenten des Azure Batch-Diensts werden 
 Sie werden viele der hier beschriebenen Ressourcen und Features nutzen. Dies gilt unabhängig davon, ob Sie eine verteilte Computeanwendung oder einen Computedienst mit direkter Ausgabe von [REST-API](/rest/api/batchservice/)-Aufrufen entwickeln oder eines der [Batch SDKs](batch-apis-tools.md#batch-service-apis) verwenden.
 
 > [!TIP]
-> Eine allgemeiner gehaltene Einführung in den Batch-Dienst finden Sie unter [Grundlagen von Azure Batch](batch-technical-overview.md). Siehe auch die aktuellen [Batchdienstupdates](https://azure.microsoft.com/updates/?product=batch).
+> Eine allgemeiner gehaltene Einführung in den Batch-Dienst finden Sie unter [Was ist Azure Batch?](batch-technical-overview.md). Siehe auch die aktuellen [Batchdienstupdates](https://azure.microsoft.com/updates/?product=batch).
 
 ## <a name="basic-workflow"></a>Grundlegender Workflow
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 1ac3c25458df19ca1db7ee16e5c231512a7663b0
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 9328b8159b04d4e7e7bc2383739c86c76dbf156a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076903"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985884"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Was ist der Azure Cosmos DB-Analysespeicher?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -78,9 +78,16 @@ Mithilfe der horizontalen Partitionierung kann der Transaktionsspeicher von Azur
 
 ## <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Automatische Handhabung von Schemaaktualisierungen
 
-Der Azure Cosmos DB-Transaktionsspeicher ist schemaunabhängig und ermöglicht es Ihnen, Ihre Transaktionsanwendungen zu durchlaufen, ohne sich mit Schema- oder Indexverwaltung befassen zu müssen. Im Gegensatz dazu wird der Azure Cosmos DB-Analysespeicher schematisiert, um die Leistung von analytischen Abfragen zu optimieren. Mit der Funktion der automatischen Synchronisierung verwaltet Azure Cosmos DB den Schemarückschluss über die neuesten Aktualisierungen aus dem Transaktionsspeicher.  Außerdem wird die Schemadarstellung im Analysespeicher standardmäßig verwaltet, einschließlich der Handhabung geschachtelter Datentypen.
+Der Azure Cosmos DB-Transaktionsspeicher ist schemaunabhängig und ermöglicht es Ihnen, Ihre Transaktionsanwendungen zu durchlaufen, ohne sich mit Schema- oder Indexverwaltung befassen zu müssen. Im Gegensatz dazu wird der Azure Cosmos DB-Analysespeicher schematisiert, um die Leistung von analytischen Abfragen zu optimieren. Mit der Funktion der automatischen Synchronisierung verwaltet Azure Cosmos DB den Schemarückschluss über die neuesten Aktualisierungen aus dem Transaktionsspeicher. Außerdem wird die Schemadarstellung im Analysespeicher standardmäßig verwaltet, einschließlich der Handhabung geschachtelter Datentypen.
 
 Während Ihr Schema weiterentwickelt wird und im Laufe der Zeit neue Eigenschaften hinzugefügt werden, stellt der Analysespeicher ein zusammengefasstes Schema für alle verlaufsbezogenen Schemata im Transaktionsspeicher automatisch dar.
+
+> [!NOTE]
+> Im Kontext des Analysespeichers betrachten wir die folgenden Strukturen als Eigenschaft:
+> * JSON-„Elemente“ oder „Zeichenfolgen-Wert-Paare, die durch ein `:`getrennt sind.“
+> * JSON-Objekte, getrennt durch `{` und `}`.
+> * JSON-Arrays, getrennt durch `[` und `]`.
+
 
 ### <a name="schema-constraints"></a>Schemaeinschränkungen
 
@@ -89,6 +96,34 @@ Die folgenden Einschränkungen gelten für die operativen Daten in Azure Cosmos 
 * Sie können maximal 1000 Eigenschaften auf jeder Schachtelungsebene im Schema und eine maximale Schachtelungstiefe von 127 festlegen.
   * Nur die ersten 1000 Eigenschaften werden im Analysespeicher dargestellt.
   * Nur die ersten 127 Eigenschaften werden im Analysespeicher dargestellt.
+  * Die erste Ebene eines JSON-Dokuments ist die Stammebene `/`.
+  * Eigenschaften in der ersten Ebene des Dokuments werden als Spalten dargestellt.
+
+
+* Beispielszenarien:
+  * Wenn die erste Ebene Ihres Dokuments 2000 Eigenschaften aufweist, werden nur die ersten 1000 dargestellt.
+  * Wenn Ihre Dokumente 5 Ebenen mit jeweils 200 Eigenschaften aufweisen, werden alle Eigenschaften dargestellt.
+  * Wenn Ihre Dokumente 10 Ebenen mit jeweils 400 Eigenschaften aufweisen, werden nur die beiden ersten Ebenen vollständig im Analysespeicher dargestellt. Die Hälfte der dritten Ebene wird ebenfalls dargestellt.
+
+* Das folgende hypothetische Dokument enthält vier Eigenschaften und drei Ebenen.
+  * Die Ebenen sind `root`, `myArray` und die geschachtelte Struktur innerhalb von `myArray`.
+  * Die Eigenschaften sind `id`, `myArray`, `myArray.nested1` und `myArray.nested2`.
+  * Die Darstellung des Analysespeichers enthält zwei Spalten, `id` und `myArray`. Sie können Spark- oder T-SQL-Funktionen verwenden, um die geschachtelten Strukturen auch als Spalten verfügbar zu machen.
+
+
+```json
+{
+  "id": "1",
+  "myArray": [
+    "string1",
+    "string2",
+    {
+      "nested1": "abc",
+      "nested2": "cde"
+    }
+  ]
+}
+```
 
 * Während JSON-Dokumente (und Cosmos DB-Sammlungen/Container) im Hinblick auf die Eindeutigkeit zwischen Groß- und Kleinschreibung unterscheiden, ist dies beim Analysespeicher nicht der Fall.
 
@@ -109,13 +144,12 @@ Die folgenden Einschränkungen gelten für die operativen Daten in Azure Cosmos 
 
 
 * Das erste Dokument der Auflistung definiert das anfängliche Schema des Analysespeichers.
-  * Eigenschaften in der ersten Ebene des Dokuments werden als Spalten dargestellt.
   * Dokumente, die mehr Eigenschaften als das anfängliche Schema aufweisen, generieren neue Spalten im Analysespeicher.
   * Spalten können nicht entfernt werden.
   * Das Löschen aller Dokumente in einer Sammlung setzt das Schema des analytischen Speichers nicht zurück.
   * Eine Versionierung des Schemas gibt es nicht. Die letzte Version, die aus dem Transaktionsspeicher abgeleitet wird, ist die, die Sie im Analysespeicher sehen werden.
 
-* Derzeit unterstützen wir das Lesen von Spaltennamen, die Leerzeichen enthalten, durch Azure Synapse Spark nicht.
+* Derzeit unterstützen wir nicht das Lesen von Eigenschaften mit Leerzeichen im Namen durch Azure Synapse Spark. Sie müssen Spark-Funktionen wie `cast` oder `replace` verwenden, um die Daten in einen Spark-Datenrahmen zu laden.
 
 ### <a name="schema-representation"></a>Schemadarstellung
 
@@ -163,6 +197,8 @@ Die genau definierte Schemadarstellung erstellt eine einfache tabellarische Dars
 Die Schemadarstellung mit vollständiger Genauigkeit ist so konzipiert, dass sie die gesamte Breite von polymorphen Schemata in den schemaunabhängigen operativen Daten verarbeitet. In dieser Schemadarstellung werden keine Elemente aus dem Analysespeicher gelöscht, selbst wenn die genau definierten Schemaeinschränkungen (d. h. keine Felder mit gemischtem Datentyp oder Arrays mit gemischtem Datentyp) verletzt werden.
 
 Dies wird erreicht, indem die Blatteigenschaften der operativen Daten in den Analysespeicher mit unterschiedlichen Spalten – basierend auf dem Datentyp der Werte in der-Eigenschaft – übersetzt werden. Die Namen der Blatteigenschaften werden mit Datentypen als Suffix im Analysespeicherschema erweitert, sodass sie Abfragen ohne Mehrdeutigkeit sein können.
+
+In der Schemadarstellung mit vollständiger Genauigkeit generiert jeder Datentyp jeder Eigenschaft eine Spalte für den jeweiligen Datentyp. Jede davon zählt als eine der maximal 1.000 Eigenschaften.
 
 Sehen Sie sich beispielsweise das folgende Beispieldokument im Transaktionsspeicher an:
 
@@ -248,6 +284,10 @@ Der Analysespeicher folgt einem nutzungsbasierten Preismodell, bei dem Folgendes
 Die Preise für den Analysespeicher sind vom Preismodell für den Transaktionsspeicher getrennt. Es gibt kein Konzept für bereitgestellte RUs im Analysespeicher. Ausführliche Informationen zum Preismodell für den Analysespeicher finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 Wenn Sie eine allgemeine Kostenschätzung für das Aktivieren des Analysespeichers in einem Azure Cosmos DB-Container erhalten möchten, können Sie den [Azure Cosmos DB Capacity Planner](https://cosmos.azure.com/capacitycalculator/) verwenden und so eine Schätzung der Kosten für den Analysespeicher und Analyseschreibvorgänge abrufen. Die Kosten für Analyselesevorgänge hängen von den Merkmalen der Analyseworkloads ab, doch als grobe Schätzung führt das Scannen von 1 TB Daten im Analysespeicher in der Regel zu 130.000 Analyselesevorgängen und somit zu Kosten von 0,065 US-Dollar.
+
+> [!NOTE]
+> Schätzungen zu Lesevorgängen in Analysespeichern sind im Cosmos DB Kostenrechner nicht enthalten, da sie eine Funktion Ihrer analytischen Workload sind. Während die obige Schätzung für das Scannen von 1 TB Daten im Analysespeicher gilt, reduziert das Anwenden von Filtern die Menge gescannter Daten, und dies bestimmt die genaue Anzahl analytischer Lesevorgänge gemäß des nutzungsbasierten Preismodells. Ein Proof of Concept für die analytische Workload bietet einen exakteren Schätzwert der Anzahl analytischer Lesevorgänge.
+
 
 ## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a> Analytische Gültigkeitsdauer (TTL)
 

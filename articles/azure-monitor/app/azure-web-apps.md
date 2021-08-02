@@ -2,28 +2,28 @@
 title: Überwachen der Leistung von Azure App Services | Microsoft-Dokumentation
 description: Überwachung der Anwendungsleistung für Azure App Services. Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung.
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 05/17/2021
 ms.custom: devx-track-js, devx-track-dotnet, devx-track-azurepowershell
-ms.openlocfilehash: e8c794e056dca42a06bdf6b7deb274e7f5f5bfd4
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5557031080ddb7d625cc31be48c496bcbf30b7b4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315901"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967173"
 ---
-# <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
+# <a name="application-monitoring-for-azure-app-service"></a>Anwendungsüberwachung für Azure App Service
 
-Das Aktivieren der Überwachung für Ihre ASP.NET-, ASP.NET Core- und Node.js-basierten Webanwendungen unter [Azure App Services](../../app-service/index.yml) ist jetzt einfacher als je zuvor. Während Sie zuvor manuell eine Websiteerweiterung installieren mussten, ist die neueste Erweiterung/der neueste Agent nun standardmäßig in das App Service-Image integriert. Dieser Artikel führt Sie Schritt für Schritt durch das Aktivieren der Application Insights-Überwachung und bietet eine vorläufige Anleitung zur Automatisierung des Prozesses für umfangreiche Bereitstellungen.
+Das Aktivieren der Überwachung für Ihre ASP.NET-, ASP.NET Core-, Java- und Node.js-basierten Webanwendungen unter [Azure App Services](../../app-service/index.yml) ist jetzt einfacher als je zuvor. Während Sie Ihre App zuvor manuell instrumentieren mussten, ist die neueste Erweiterung/der neueste Agent nun standardmäßig in das App Service-Image integriert. Dieser Artikel führt Sie Schritt für Schritt durch das Aktivieren der Application Insights-Überwachung von Azure Monitor und bietet eine vorläufige Anleitung zur Automatisierung des Prozesses für umfangreiche Bereitstellungen.
 
 > [!NOTE]
-> Das manuelle Hinzufügen einer Application Insights-Websiteerweiterung über **Entwicklungstools** > **Erweiterungen** ist veraltet. Diese Methode der Erweiterungsinstallation war von manuellen Updates für jede neue Version abhängig. Die neueste stabile Version der Erweiterung ist jetzt als Teil des App Service-Images [vorinstalliert](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions). Die Dateien befinden sich in `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` und werden mit jeder stabilen Version automatisch aktualisiert. Wenn Sie den weiter unten beschriebenen Anweisungen zum Aktivieren der Agent-basierten Überwachung folgen, wird die veraltete Erweiterung automatisch entfernt.
+> Nur für .NET unter Windows: Das manuelle Hinzufügen einer Application Insights-Websiteerweiterung über **Entwicklungstools** > **Erweiterungen** ist veraltet. Diese Methode der Erweiterungsinstallation war von manuellen Updates für jede neue Version abhängig. Die neueste stabile Version der Erweiterung ist jetzt als Teil des App Service-Images [vorinstalliert](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions). Die Dateien befinden sich in `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` und werden mit jeder stabilen Version automatisch aktualisiert. Wenn Sie den weiter unten beschriebenen Anweisungen zum Aktivieren der Agent-basierten Überwachung folgen, wird die veraltete Erweiterung automatisch entfernt.
 
 ## <a name="enable-application-insights"></a>Aktivieren von Application Insights
 
 Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete Anwendungen zu aktivieren:
 
 * **Agent-basierte Anwendungsüberwachung** (ApplicationInsightsAgent).  
-    * Diese Methode stellt die einfachste Möglichkeit der Aktivierung dar und erfordert keine erweiterte Konfiguration. Sie wird häufig als „Laufzeitüberwachung“ bezeichnet. Für Azure App Services wird empfohlen, mindestens diese Überwachungsstufe zu aktivieren. Anschließend können Sie je nach Ihrem spezifischen Szenario bewerten, ob eine erweiterte Überwachung durch manuelle Instrumentierung erforderlich ist.
+    * Diese Methode ist am einfachsten zu aktivieren, und es sind keine Codeänderung oder erweiterte Konfigurationen erforderlich. Sie wird häufig als „Laufzeitüberwachung“ bezeichnet. Für Azure App Services wird empfohlen, mindestens diese Überwachungsstufe zu aktivieren. Anschließend können Sie je nach Ihrem spezifischen Szenario bewerten, ob eine erweiterte Überwachung durch manuelle Instrumentierung erforderlich ist.
 
 * **Manuelles Instrumentieren der Anwendung über Code** durch Installieren des Application Insights SDK.
 
@@ -76,7 +76,7 @@ Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
 > [!IMPORTANT]
-> Unterstützte ASP.NET Core-Versionen: ASP.NET Core 2.1 und 3.1. Die Versionen 2.0, 2.2 und 3.0 wurden eingestellt und werden nicht mehr unterstützt. Führen Sie ein Upgrade auf eine [unterstützte Version](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) von .NET Core aus, damit die automatische Instrumentierung funktioniert.
+> Unterstützte ASP.NET Core-Versionen: ASP.NET Core 2.1, 3.1 und 5.0. Die Versionen 2.0, 2.2 und 3.0 wurden eingestellt und werden nicht mehr unterstützt. Führen Sie ein Upgrade auf eine [unterstützte Version](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) von .NET Core aus, damit die automatische Instrumentierung funktioniert.
 
 Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework aus ASP.NET Core, eigenständiger Bereitstellung und Linux-basierten Anwendungen wird derzeit **nicht unterstützt**. (Die [manuelle Instrumentierung](./asp-net-core.md) über Code kann in allen zuvor genannten Szenarien verwendet werden.)
 
@@ -89,7 +89,7 @@ Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework au
      > [!NOTE]
      > Beim Klicken auf **OK** zum Erstellen der neuen Ressource wird die Aufforderung **Überwachungseinstellungen anwenden** angezeigt. Wenn Sie **Weiter** wählen, wird Ihre neue Application Insights-Ressource mit Ihrer App Service-Instanz verknüpft, und außerdem wird **ein Neustart Ihrer App Service-Instanz ausgelöst**. 
 
-     ![Instrumentieren Ihrer Web-App](./media/azure-web-apps/create-resource-01.png)
+    ![Instrumentieren Ihrer Web-App](./media/azure-web-apps/create-resource-01.png)
 
 2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll. ASP.NET Core bietet die Optionen **Empfohlene Sammlung** oder **Deaktiviert** für ASP.NET Core 2.1 und 3.1.
 
@@ -99,10 +99,45 @@ Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework au
 
 Die Agent-basierte Überwachung unter Windows wird nicht unterstützt. Wenn Sie Linux aktivieren möchten, finden Sie in der [App Service-Dokumentation zu Node.js](../../app-service/configure-language-nodejs.md?pivots=platform-linux#monitor-with-application-insights) weitere Informationen.
 
+Sie können Ihre Node.js-Apps, die in Azure App Service ausgeführt werden, ohne Codeänderung mit nur wenigen einfachen Schritten überwachen. Application Insights für Node.js-Anwendungen ist in App Service unter Linux sowohl für codebasierte als auch benutzerdefinierte Container und in App Service unter Windows für codebasierte Apps integriert. Die Integration befindet sich in der öffentlichen Vorschau. Durch die Integration wird das Node.js SDK hinzugefügt, das allgemein verfügbar ist (GA). 
+
+1. In der Azure-Systemsteuerung für Ihre App Service-Instanz können Sie **Application Insights auswählen**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Auswählen von „Application Insights“ unter „Einstellungen“](./media/azure-web-apps/ai-enable.png)
+
+   * Wählen Sie die Option zum Erstellen einer neuen Ressource, sofern Sie nicht bereits eine Application Insights-Ressource für diese Anwendung eingerichtet haben. 
+
+     > [!NOTE]
+     > Beim Klicken auf **OK** zum Erstellen der neuen Ressource wird die Aufforderung **Überwachungseinstellungen anwenden** angezeigt. Wenn Sie **Weiter** wählen, wird Ihre neue Application Insights-Ressource mit Ihrer App Service-Instanz verknüpft, und außerdem wird **ein Neustart Ihrer App Service-Instanz ausgelöst**. 
+
+    ![Instrumentieren Ihrer Web-App](./media/azure-web-apps/create-resource-01.png)
+
+2. Nachdem Sie angegeben haben, welche Ressource verwendet werden soll, ist alles bereit. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Auswählen plattformspezifischer Optionen](./media/azure-web-apps/app-service-node.png)
+
 # <a name="java"></a>[Java](#tab/java)
 
-Befolgen Sie die Anweisungen für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md), um die automatische Instrumentierung für Ihre Java-Apps zu aktivieren, ohne den Code zu ändern.
-Die automatische Integration ist für App Service noch nicht verfügbar.
+Sie können die Überwachung für Ihre Java-Apps, die in Azure App Service ausgeführt werden, mit nur einem Klick aktivieren, ohne dass Code geändert werden muss. Application Insights für Java ist in App Service unter Linux sowohl für codebasierte als auch benutzerdefinierte Container und in App Service unter Windows für codebasierte Apps integriert. Die Integration befindet sich in der öffentlichen Vorschau. Es ist wichtig zu wissen, wie Ihre Anwendung überwacht wird. Die Integration fügt [Application Insights Java 3.0](./java-in-process-agent.md) hinzu, das allgemein verfügbar ist (GA). Sie erhalten alle Telemetriedaten, die automatisch erfasst werden.
+
+1. In der Azure-Systemsteuerung für Ihre App Service-Instanz können Sie **Application Insights auswählen**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Auswählen von „Application Insights“ unter „Einstellungen“](./media/azure-web-apps/ai-enable.png)
+
+   * Wählen Sie die Option zum Erstellen einer neuen Ressource aus, sofern Sie nicht bereits eine Application Insights-Ressource für diese Anwendung eingerichtet haben. 
+
+     > [!NOTE]
+     > Beim Klicken auf **OK** zum Erstellen der neuen Ressource wird die Aufforderung **Überwachungseinstellungen anwenden** angezeigt. Wenn Sie **Weiter** wählen, wird Ihre neue Application Insights-Ressource mit Ihrer App Service-Instanz verknüpft, und außerdem wird **ein Neustart Ihrer App Service-Instanz ausgelöst**. 
+
+    ![Instrumentieren Ihrer Web-App](./media/azure-web-apps/create-resource-01.png)
+
+2. Nachdem Sie angegeben haben, welche Ressource verwendet werden soll, können Sie den Java-Agent konfigurieren. Der vollständige [Satz von Konfigurationen](./java-standalone-config.md) ist verfügbar. Sie müssen lediglich eine gültige JSON-Datei einfügen, ohne die Verbindungszeichenfolge anzugeben. Sie haben bereits eine Application Insights-Ressource ausgewählt, mit der eine Verbindung hergestellt werden soll. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Auswählen plattformspezifischer Optionen](./media/azure-web-apps/create-app-service-ai.png)
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -167,14 +202,14 @@ Sie müssen nur die Anwendungseinstellungen festlegen, um die Sammlung von Telem
 |Name der App-Einstellung |  Definition | Wert |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | Die Haupterweiterung, die die Laufzeitüberwachung steuert. | `~2` |
-|XDT_MicrosoftApplicationInsights_Mode |  Wichtige Features werden nur im Standardmodus aktiviert, um eine optimale Leistung zu gewährleisten. | `default` oder `recommended` |
+|XDT_MicrosoftApplicationInsights_Mode |  Im Standardmodus werden nur wichtige Features aktiviert, um eine optimale Leistung zu gewährleisten. | `default` oder `recommended` |
 |InstrumentationEngine_EXTENSION_VERSION | Legt fest, ob die Engine zum binären erneuten Generieren `InstrumentationEngine` aktiviert ist. Diese Einstellung wirkt sich auf die Leistung aus und beeinträchtigt den Kaltstart/die Startzeit. | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | Legt fest, ob SQL- und Azure-Tabellentext gemeinsam mit Abhängigkeitsaufrufen erfasst wird. Leistungswarnung: die Kaltstartzeit der Anwendung wird beeinträchtigt. Diese Einstellung erfordert die `InstrumentationEngine`. | `~1` |
 |XDT_MicrosoftApplicationInsights_PreemptSdk | Diese Einstellung ist nur für ASP.NET Core-Apps geeignet. Sie aktiviert die Interoperabilität mit dem Application Insights-SDK. Außerdem lädt sie die Erweiterung zusammen mit dem SDK und verwendet es, um Telemetriedaten zu senden. Das Application Insights-SDK wird dabei deaktiviert. |`1`|
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>App Service-Anwendungseinstellungen mit dem Azure Resource Manager.
 
-Sie können die App Service-Anwendungseinstellungen mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) verwalten und konfigurieren. Diese Methode kann bei der Bereitstellung neuer App Service-Ressourcen mit Azure Resource Manager-Automatisierung oder zur Änderung der Einstellungen vorhandener Ressourcen verwendet werden.
+Sie können die App Service-Anwendungseinstellungen mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md) verwalten und konfigurieren. Diese Methode kann bei der Bereitstellung neuer App Service-Ressourcen mit Azure Resource Manager-Automatisierung oder zur Änderung der Einstellungen vorhandener Ressourcen verwendet werden.
 
 Die Grundstruktur des JSON-Codes für die Anwendungseinstellungen für eine App Service-Instanz sieht folgendermaßen aus:
 
@@ -331,9 +366,9 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 Das Upgrade von Version 2.8.9 erfolgt automatisch ohne zusätzliche Aktionen. Die neuen Überwachungsfunktionen werden dem Ziel-App-Service im Hintergrund bereitgestellt und beim Neustart der Anwendung übernommen.
 
-Informationen zur aktuell verwendeten Version der Erweiterung finden Sie unter `http://yoursitename.scm.azurewebsites.net/ApplicationInsights`.
+Informationen zur aktuell verwendeten Version der Erweiterung finden Sie unter `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`.
 
-![Screenshot des URL-Pfads http://yoursitename.scm.azurewebsites.net/ApplicationInsights](./media/azure-web-apps/extension-version.png)
+![Screenshot des URL-Pfads zum Überprüfen der Version der aktuell verwendeten Erweiterung](./media/azure-web-apps/extension-version.png)
 
 ### <a name="upgrade-from-versions-100---265"></a>Upgrade von Version 1.0.0 – 2.6.5
 
@@ -351,9 +386,6 @@ Wenn das Upgrade für eine frühere Version als 2.5.1 ausgeführt wird, vergewis
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Nachfolgend finden Sie schrittweise Anleitungen zur Problembehandlung für die Erweiterung/Agent-basierte Überwachung für Anwendungen, die auf ASP.NET und ASP.NET Core basieren und unter Azure App Services ausgeführt werden.
-
-> [!NOTE]
-> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Leitlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
 
 
 1. Überprüfen Sie, ob die Anwendung über `ApplicationInsightsAgent` überwacht wird.

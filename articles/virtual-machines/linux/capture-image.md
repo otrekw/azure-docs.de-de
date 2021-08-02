@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: dff0425c119015d69ef994540e03e56dfc2decb6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b77702ea78d9b44da7843d08b2f32adeecfb9383
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744585"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440608"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Erstellen eines verwalteten Images eines virtuellen Computers oder einer VHD
 
@@ -26,7 +26,7 @@ Wenn Sie ein verwaltetes Image erstellen möchten, müssen Sie persönliche Kont
 
 Wenn Sie zum Sichern oder Debuggen eine Kopie Ihres vorhandenen virtuellen Linux-Computers erstellen oder eine spezielle Linux-VHD über einen lokalen virtuellen Computer hochladen möchten, lesen Sie [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage](upload-vhd.md).  
 
-Sie können den **Azure VM Image Builder (Public Preview)** -Dienst nutzen, um ein eigenes Bild zu erstellen, ohne vorher den Umgang mit Tools zu erlernen oder eine Buildpipeline einzurichten. Sie geben einfach nur eine Bildkonfiguration an, und der Image Builder erstellt dann das Bild. Weitere Informationen finden Sie unter [Erste Schritte mit Azure VM Image Builder](../image-builder-overview.md).
+Sie können **Azure VM Image Builder** nutzen, um Ihr benutzerdefiniertes Image zu erstellen, ohne vorher den Umgang mit Tools zu erlernen oder eine Buildpipeline einzurichten. Sie geben einfach nur eine Imagekonfiguration ein und der Image Builder erstellt das Image. Weitere Informationen finden Sie unter [Erste Schritte mit Azure VM Image Builder](../image-builder-overview.md).
 
 Damit Sie ein Image erstellen können, müssen die folgenden Voraussetzungen erfüllt sein:
 

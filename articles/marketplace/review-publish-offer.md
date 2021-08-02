@@ -7,15 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 04/13/2021
-ms.openlocfilehash: bff07f18d0c72e4c4dc4e6b079924b9062442c9d
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.date: 03/10/2021
+ms.openlocfilehash: eb50a6418c296e98b12af481df33509af3f0a06d
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633877"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536583"
 ---
-# <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace
+# <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Partner Centers Ihr Angebot für die Veröffentlichung übermitteln, eine Vorschau Ihres Angebots anzeigen und es dann im kommerziellen Marketplace veröffentlichen. Außerdem wird erläutert, wie Sie den Veröffentlichungsstatus überprüfen, während das Angebot die Veröffentlichungsschritte durchläuft. Sie müssen bereits ein Angebot erstellt haben, das Sie veröffentlichen möchten.
 
@@ -30,17 +30,17 @@ Sie können den Status Ihres Angebots im [Partner Center](https://partner.micros
 | Eingreifen erforderlich | Wir haben während der Zertifizierung oder einer anderen Veröffentlichungsphase ein kritisches Problem festgestellt. |
 | Vorschau | Wir haben das Angebot zertifiziert. Nun muss es abschließend durch den Herausgeber verifiziert werden. Wählen Sie **Live schalten** aus, um das Angebot live zu veröffentlichen. |
 | Live | Das Angebot ist im Marketplace live geschaltet und kann von Kunden angezeigt und erworben werden. |
-| Ausstehende eingestellte Unterstützung | Der Herausgeber hat „Als veraltet markieren (früher: Einstellung des Verkaufs)“ für ein Angebot oder einen Plan ausgewählt, aber die Aktion wurde noch nicht abgeschlossen. |
+| Ausstehender Verkaufsstopp | Der Herausgeber hat „Verkaufsstopp“ für ein Angebot oder einen Plan ausgewählt, aber die Aktion ist noch nicht abgeschlossen. |
 | Im Marketplace nicht verfügbar | Ein zuvor im Marketplace veröffentlichtes Angebot wurde entfernt. |
-|||
+|
 
 ## <a name="validation-and-publishing-steps"></a>Schritte für die Validierung und Veröffentlichung
 
 Wenn Sie bereit sind, ein Angebot für die Veröffentlichung zu übermitteln, wählen Sie oben rechts im Portal **Überprüfen und veröffentlichen** aus. Auf der Seite **Überprüfen und veröffentlichen** wird der Status jeder Seite für Ihr Angebot angezeigt. Folgende Werte sind möglich:
 
-   - **Nicht gestartet**: Die Seite ist unvollständig.
-   - **Unvollständig**: Auf der Seite fehlen erforderliche Informationen, oder sie enthält Fehler, die korrigiert werden müssen. Sie müssen zur Seite zurückkehren und diese aktualisieren.
-   - **Abgeschlossen**: Die Seite ist vollständig. Alle erforderlichen Daten wurden angegeben, und es liegen keine Fehler vor.
+- **Nicht gestartet**: Die Seite ist unvollständig.
+- **Unvollständig**: Auf der Seite fehlen erforderliche Informationen, oder sie enthält Fehler, die korrigiert werden müssen. Sie müssen zur Seite zurückkehren und diese aktualisieren.
+- **Abgeschlossen**: Die Seite ist vollständig. Alle erforderlichen Daten wurden angegeben, und es liegen keine Fehler vor.
 
 Wenn eine der Seiten einen anderen Status als **Abgeschlossen** aufweist, müssen Sie das Problem auf dieser Seite beheben und dann zur Seite **Überprüfen und veröffentlichen** zurückkehren, um sich zu vergewissern, dass der Status nun **Abgeschlossen** lautet. Einige Angebotstypen müssen getestet werden. In diesem Fall wird ein Feld **Hinweise zur Zertifizierung** angezeigt, in dem Sie Testanweisungen für das Zertifizierungsteam und ergänzende Hinweise angeben müssen, die das Verständnis Ihrer App erleichtern.
 
@@ -54,6 +54,10 @@ Wenn alle Seiten vollständig sind und Sie die geeigneten Testhinweise eingegebe
 | [Abzeichnung des Verlegers](#publisher-sign-off-phase) | Wir senden Ihnen eine E-Mail mit der Aufforderung, Ihr Angebot in der Vorschau zu überprüfen und zu genehmigen. |
 | [Veröffentlichen](#publish-phase) | Wir stellen anhand einiger Schritte sicher, dass das Vorschauangebot im kommerziellen Marketplace live veröffentlicht wird. |
 |||
+
+Weitere Informationen zur Validierung in Azure Marketplace finden Sie unter den [Richtlinien für die Azure Marketplace-Auflistung](marketplace-criteria-content-validation.md).
+
+Weitere Informationen zu Testanweisungen und zum Abschließen einer ersten Veröffentlichung in Microsoft AppSource finden Sie unter [Funktionale Überprüfung für Dynamics 365 Operations](dynamics-365-operations-validation.md).
 
 ## <a name="automated-validation-phase"></a>Phase „Automatisierte Validierung“
 
@@ -150,7 +154,7 @@ Wenn Sie das Angebot zu einem späteren Zeitpunkt veröffentlichen möchten, mü
 
 Wenn das Angebot für Ihre Prüfung und Genehmigung bereit ist, senden wir Ihnen eine E-Mail mit der Bitte, Ihre Angebotsvorschau zu prüfen und zu genehmigen. Sie können auch die Seite **Angebotsübersicht** in Ihrem Browser aktualisieren, um festzustellen, ob Ihr Angebot die Phase „Einholen der Genehmigung des Herausgebers“ erreicht hat. Wenn dies der Fall ist, sind die Schaltfläche **Live schalten** und Vorschaulinks verfügbar.
 
-Der folgende Screenshot zeigt die Seite **Angebotsübersicht** im Programm „Kommerzieller Marketplace“ in Partner Center. Die auf dieser Seite angezeigten Validierungsschritte variieren je nach Angebotstyp und der Auswahl, die Sie beim Erstellen des Angebots getroffen haben. Beachten Sie, dass die Zertifizierungsphase je nach Angebotstyp während der Übermittlung zur Vorschau oder zur Liveschaltung erfolgen kann.
+Der folgende Screenshot zeigt die Seite **Angebotsübersicht** im Programm „Kommerzieller Marketplace“ in Partner Center. Die auf dieser Seite angezeigten Validierungsschritte variieren je nach Angebotstyp und der Auswahl, die Sie beim Erstellen des Angebots getroffen haben. Die Zertifizierungsphase kann je nach Angebotstyp während der Übermittlung zur Vorschau oder zur Liveschaltung erfolgen.
 
 ![Veranschaulicht die Seite „Angebotsübersicht“ für ein Angebot im Partner Center. Die Schaltfläche „Live schalten“ und Vorschaulinks sind dargestellt.](./media/publish-status-publisher-signoff.png)
 
@@ -166,7 +170,7 @@ Auf der Seite **Angebotsübersicht** werden unter der Schaltfläche **Live schal
 
 Nachdem Sie Ihre Vorschau genehmigt haben, wählen Sie **Live schalten** aus, um Ihr Angebot live im kommerziellen Marketplace zu veröffentlichen. 
 
-Wenn Sie nach der Vorschauphase Änderungen am Angebot vornehmen möchten, können Sie es bearbeiten und die Veröffentlichungsanforderung erneut übermitteln. Wenn Ihr Angebot bereits live geschaltet und im Marketplace für die Öffentlichkeit verfügbar ist, werden alle von Ihnen vorgenommenen Aktualisierungen erst dann live geschaltet, wenn Sie *Live schalten* auswählen. Weitere Informationen finden Sie unter [Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace](partner-center-portal/update-existing-offer.md).
+Wenn Sie nach der Vorschauphase Änderungen am Angebot vornehmen möchten, können Sie es bearbeiten und die Veröffentlichungsanforderung erneut übermitteln. Wenn Ihr Angebot bereits live geschaltet und im Marketplace für die Öffentlichkeit verfügbar ist, werden alle von Ihnen vorgenommenen Aktualisierungen erst dann live geschaltet, wenn Sie *Live schalten* auswählen. Weitere Informationen finden Sie unter [Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace](update-existing-offer.md).
 
 ## <a name="publish-phase"></a>Phase „Veröffentlichung“
 
@@ -200,18 +204,18 @@ Auf der Seite **Verlauf** im Partner Center werden die Veröffentlichungsereigni
 
 Zum Anzeigen des Verlaufs Ihres Angebots gehen Sie folgendermaßen vor:
 
-1.    Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-2.    Wählen Sie im Navigationsmenü auf der linken Seite **Kommerzieller Marketplace** > **Übersicht** aus.
-3.    Wählen Sie Ihr Angebot aus.
-4.    Wählen Sie im Navigationsmenü auf der linken Seite die Registerkarte **Verlauf** aus. Die Seite enthält Details zu den folgenden Ereignissen, die für Ihr Angebot zutreffen:
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+2. Wählen Sie im Navigationsmenü auf der linken Seite **Kommerzieller Marketplace** > **Übersicht** aus.
+3. Wählen Sie Ihr Angebot aus.
+4. Wählen Sie im Navigationsmenü auf der linken Seite die Registerkarte **Verlauf** aus. Die Seite enthält Details zu den folgenden Ereignissen, die für Ihr Angebot zutreffen:
 
 |Ereignis    |Beschreibung    |
 |---------|---------------|
 |Angebot erstellt    |Das Angebot wurde im Partner Center erstellt. Ein Benutzer hat den Angebotstyp, die Angebots-ID und den Angebotsalias in **Kommerzieller Marketplace** > **Übersicht** ausgewählt.    |
 |Plan erstellt: *Planname*    |Ein Benutzer hat einen neuen Plan erstellt, indem er die Plan-ID und den Plannamen auf der Registerkarte **Planübersicht** eingegeben hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
-|Plan gelöscht  |Ein Benutzer hat einen nicht veröffentlichten Planentwurf gelöscht, indem er auf der Seite **Planübersicht** die Option **Entwurf löschen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
-|Eingeleitete eingestellte Unterstützung für einen Plan: *Planname*    |Ein Benutzer hat eingestellte Unterstützung für einen Plan (früher: Einstellung des Verkaufs) eingeleitet, indem er auf der Seite **Planübersicht** die Option **Als veraltet markieren** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
-|Eingestellte Unterstützung für einen Plan rückgängig machen: *Planname*    |Ein Benutzer hat eingestellte Unterstützung für einen Plan (früher: Einstellung des Verkaufs) rückgängig gemacht, indem er auf der Seite **Planübersicht** die Option **Als veraltet markieren rückgängig machen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Plan gelöscht    |Ein Benutzer hat einen nicht veröffentlichten Planentwurf gelöscht, indem er auf der Seite **Planübersicht** die Option **Entwurf löschen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Einstellung des Verkaufs für den Plan initiiert: *Planname*    |Ein Benutzer hat die Einstellung des Verkaufs für den Plan initiiert, indem er auf der Seite **Planübersicht** die Option **Verkauf beenden** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Einstellung des Verkaufs für den Plan rückgängig gemacht: *Planname*    |Ein Benutzer hat die Einstellung des Verkaufs für den Plan abgebrochen, indem er auf der Seite **Planübersicht** die Option **Verkaufsstopp rückgängig machen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
 |Angebot für die Vorschau übermittelt    |Ein Benutzer hat das Angebot für die Vorschau übermittelt, indem er auf der Seite **Überprüfen und veröffentlichen** die Option **Veröffentlichen** ausgewählt hat.    |
 |Abbruch der Übermittlung für die Vorschau initiiert    |Ein Benutzer hat einen Abbruch der Angebotsveröffentlichung für die Vorschau angefordert, indem er nach der Übermittlung für die Vorschau auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, während die Abbruchanforderung verarbeitet wird*.    |
 |Übermittlung für die Vorschau abgebrochen    |Ein Benutzer hat die Angebotsveröffentlichung für die Vorschau abgebrochen, indem er nach der Übermittlung für die Vorschau auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, nachdem die Abbruchanforderung erfolgreich verarbeitet wurde*.    |
@@ -219,7 +223,7 @@ Zum Anzeigen des Verlaufs Ihres Angebots gehen Sie folgendermaßen vor:
 |Abbruch der Veröffentlichung im Marketplace initiiert    |Ein Benutzer hat einen Abbruch der Angebotsveröffentlichung angefordert, indem er nach Freigabe der Liveschaltung auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, während die Abbruchanforderung verarbeitet wird*.    |
 |Veröffentlichung im kommerziellen Marketplace abgebrochen    |Ein Benutzer hat die Angebotsveröffentlichung abgebrochen, indem er nach Freigabe der Liveschaltung auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, nachdem die Abbruchanforderung erfolgreich verarbeitet wurde*.    |
 |Private Zielgruppe synchronisiert    |Ein Benutzer hat die private Zielgruppe aktualisiert und synchronisiert, indem er auf der Seite **Planübersicht** oder der Seite **Preise und Verfügbarkeit des Plans** die Option **Private Zielgruppe synchronisieren** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die private Pläne unterstützen*.    |
-|Angebot als veraltet markieren (früher: Einstellung des Verkaufs)    |Ein Benutzer hat den Verkauf des Angebots eingestellt, indem er auf der Seite **Angebotsübersicht** die Option **Als veraltet markieren** ausgewählt hat.    |
+|Verkauf des Angebots eingestellt    |Ein Benutzer hat den Verkauf des Angebots eingestellt, indem er auf der Seite **Angebotsübersicht** die Option **Verkauf beenden** ausgewählt hat.    |
 
 > [!NOTE]
 > Die Seite „Verlauf“ gibt nicht an, wann ein Angebotsentwurf gespeichert wurde.
@@ -228,21 +232,22 @@ Zum Anzeigen des Verlaufs Ihres Angebots gehen Sie folgendermaßen vor:
 
 Mithilfe von Filtern können Sie den vollständigen Verlauf Ihres Angebots auf bestimmte Veröffentlichungsereignisse eingrenzen:
 
-1.    Wählen Sie die Filterschaltfläche oben rechts auf der Seite aus.
-2.    Wählen Sie einen Filter und dann **Anwenden** aus, um zu sehen, welche Verlaufsereignisse den von Ihnen ausgewählten Kriterien entsprechen.
-3.    Wählen Sie **Filter löschen** aus, um zum vollständigen Verlauf Ihres Angebots zurückzukehren.
+1. Wählen Sie die Filterschaltfläche oben rechts auf der Seite aus.
+2. Wählen Sie einen Filter und dann **Anwenden** aus, um zu sehen, welche Verlaufsereignisse den von Ihnen ausgewählten Kriterien entsprechen.
+3. Wählen Sie **Filter löschen** aus, um zum vollständigen Verlauf Ihres Angebots zurückzukehren.
 
 Es gibt vier Filter:
-* Ereignisse
-* Benutzer
-* Date
-* Seiten
+
+- Ereignisse
+- Benutzer
+- Date
+- Seiten
 
 Wenn Sie den Filter **Seiten** auswählen, können Sie beliebige Partner Center-Seiten auswählen, die für Ihren Angebotstyp zutreffen. Bei Verwendung des Filters **Seiten** werden alle Ereignisse vom Typ **Angebot für die Vorschau übermittelt** mit Änderungen an der von Ihnen ausgewählten Seite angezeigt.
 
-* Bei allen Angeboten wird die Seite **Angebotseinrichtung** standardmäßig für jedes Übermittlungsereignis eingeschlossen.
-* Bei Angeboten, die Pläne unterstützen, wird die Seite **Planübersicht** für jedes Übermittlungsereignis eingeschlossen.
-* Bei Angeboten, die Testversionen unterstützen, wird die Seite **Testversion** für jedes Übermittlungsereignis eingeschlossen.
+- Bei allen Angeboten wird die Seite **Angebotseinrichtung** standardmäßig für jedes Übermittlungsereignis eingeschlossen.
+- Bei Angeboten, die Pläne unterstützen, wird die Seite **Planübersicht** für jedes Übermittlungsereignis eingeschlossen.
+- Bei Angeboten, die Testversionen unterstützen, wird die Seite **Testversion** für jedes Übermittlungsereignis eingeschlossen.
 
 ### <a name="users"></a>Benutzer
 
@@ -274,4 +279,4 @@ Für Systemprozesse, die den [Schritten für die Validierung und Veröffentlichu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](partner-center-portal/analytics.md)
+- [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](analytics.md)

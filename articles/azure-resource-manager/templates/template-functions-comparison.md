@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Vergleich
 description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Vergleichen von Werten verwendet werden können.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 95655a4c92a1de9bb7a7faebcdaa83fb0fa75696
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: 0572ff1815cd8ede87d490457a5cb689bed80467
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833999"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959719"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>Vergleichsfunktionen für ARM-Vorlagen
 
@@ -21,17 +21,17 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in I
 * [less](#less)
 * [lessOrEquals](#lessorequals)
 
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
-
 ## <a name="coalesce"></a>coalesce
 
 `coalesce(arg1, arg2, arg3, ...)`
 
 Gibt den ersten Wert aus den Parametern zurück, der nicht NULL ist. Leere Zeichenfolgen, leere Arrays und leere Objekte sind nicht NULL.
 
+In Bicep verwenden Sie stattdessen den Operator `??`. Siehe [Coalesce ??](../bicep/operators-logical.md#coalesce-).
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int, string, array oder object |Der erste Wert, der auf NULL getestet werden soll. |
 | weitere arg-Parameter |Nein  |int, string, array oder object |Weitere Werte, die auf NULL getestet werden sollen. |
@@ -43,8 +43,6 @@ Der Wert des ersten Parameters ungleich NULL, der Zeichenfolge, ganze Zahl, Arra
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json) zeigt die Ausgabe bei unterschiedlichen Verwendungen von „coalesce“:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -90,34 +88,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param objectToTest object = {
-  'null1': null
-  'null2': null
-  'string': 'default'
-  'int': 1
-  'object': {
-    'first': 'default'
-  }
-  'array': [
-    1
-  ]
-}
-
-output stringOutput string = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.string
-output intOutput int = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.int
-output objectOutput object = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.object
-output arrayOutput array = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.array
-output emptyOutput bool =empty(objectToTest.null1 ?? objectToTest.null2)
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | stringOutput | String | default |
 | intOutput | Int | 1 |
@@ -129,11 +102,13 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 `equals(arg1, arg2)`
 
-Überprüft, ob zwei Werte einander entsprechen. Die `equals`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den Operator `==`.
+Überprüft, ob zwei Werte einander entsprechen.
+
+In Bicep verwenden Sie stattdessen den Operator `==`. Siehe [Equals ==](../bicep/operators-comparison.md#equals-).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int, string, array oder object |Der erste auf Gleichheit zu überprüfende Wert. |
 | arg2 |Ja |int, string, array oder object |Der zweite auf Gleichheit zu überprüfende Wert. |
@@ -145,8 +120,6 @@ Gibt **True** zurück, wenn die Werte gleich sind. Andernfalls wird **False** zu
 ### <a name="remarks"></a>Hinweise
 
 Die Funktion „equals“ wird häufig mit dem Element `condition` verwendet, um zu prüfen, ob eine Ressource bereitgestellt wurde.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -163,18 +136,9 @@ Die Funktion „equals“ wird häufig mit dem Element `condition` verwendet, um
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-> [!NOTE]
-> `Conditions` sind noch nicht in Bicep implementiert. Siehe unter [Conditions](https://github.com/Azure/bicep/issues/186) (Bedingungen).
-
----
-
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json) überprüft verschiedene Werttypen auf Gleichheit. Alle Standardwerte geben „True“ zurück.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -237,39 +201,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstInt int = 1
-param secondInt int = 1
-param firstString string = 'a'
-param secondString string = 'a'
-param firstArray array = [
-  'a'
-  'b'
-]
-param secondArray array = [
-  'a'
-  'b'
-]
-param firstObject object = {
-  'a': 'b'
-}
-param secondObject object = {
-  'a': 'b'
-}
-
-output checInts bool = firstInt == secondInt
-output checkStrings bool = firstString == secondString
-output checkArrays bool = firstArray == secondArray
-output checkObjects bool = firstObject == secondObject
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | True |
@@ -277,8 +211,6 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | checkObjects | Bool | True |
 
 In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) wird [not](template-functions-logical.md#not) mit „**equals**“ verwendet.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -295,17 +227,9 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output checkNotEquals bool = ! (1 == 2)
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -313,11 +237,13 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 `greater(arg1, arg2)`
 
-Überprüft, ob der erste Wert größer als der zweite Wert ist. Die `greater`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den Operator `>`.
+Überprüft, ob der erste Wert größer als der zweite Wert ist.
+
+In Bicep verwenden Sie stattdessen den Operator `>`. Siehe [Größer als >](../bicep/operators-comparison.md#greater-than-).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Größer als“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Größer als“. |
@@ -329,8 +255,6 @@ Gibt **True** zurück, wenn der erste Wert größer als der zweite Wert ist. And
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json) überprüft, ob der eine Wert größer als der andere Wert ist.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -369,23 +293,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstInt int = 1
-param secondInt int = 2
-param firstString string = 'A'
-param secondString string = 'a'
-
-output checkInts bool = firstInt > secondInt
-output checkStrings bool = firstString > secondString
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
@@ -394,11 +304,13 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 `greaterOrEquals(arg1, arg2)`
 
-Überprüft, ob der erste Wert größer als oder gleich Wert 2 ist. Die `greaterOrEquals`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den Operator `>=`.
+Überprüft, ob der erste Wert größer als oder gleich Wert 2 ist.
+
+In Bicep verwenden Sie stattdessen den Operator `>=`. Siehe [Größer als oder gleich >=](../bicep/operators-comparison.md#greater-than-or-equal-).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Größer als oder gleich“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Größer als oder gleich“. |
@@ -410,8 +322,6 @@ Gibt **True** zurück, wenn der erste Wert größer als oder gleich Wert 2 ist. 
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json) überprüft, ob der eine Wert größer als der andere Wert oder gleich groß ist.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -450,23 +360,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstInt int = 1
-param secondInt int = 2
-param firstString string = 'A'
-param secondString string = 'a'
-
-output checkInts bool = firstInt >= secondInt
-output checkStrings bool = firstString >= secondString
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
@@ -475,11 +371,13 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 `less(arg1, arg2)`
 
-Überprüft, ob der erste Wert kleiner als der zweite Wert ist. Die `less`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den Operator `<`.
+Überprüft, ob der erste Wert kleiner als der zweite Wert ist.
+
+In Bicep verwenden Sie stattdessen den Operator `<`. Siehe [Kleiner als <](../bicep/operators-comparison.md#less-than-).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Kleiner als“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Kleiner als“. |
@@ -491,8 +389,6 @@ Gibt **True** zurück, wenn der erste Wert kleiner als der zweite Wert ist. Ande
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json) überprüft, ob der eine Wert kleiner als der andere Wert ist.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -531,23 +427,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstInt int = 1
-param secondInt int = 2
-param firstString string = 'A'
-param secondString string = 'a'
-
-output checkInts bool = firstInt < secondInt
-output checkStrings bool = firstString < secondString
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
@@ -556,11 +438,13 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 `lessOrEquals(arg1, arg2)`
 
-Überprüft, ob der erste Wert kleiner als oder gleich Wert 2 ist. Die `lessOrEquals`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen den Operator `<=`.
+Überprüft, ob der erste Wert kleiner als oder gleich Wert 2 ist.
+
+In Bicep verwenden Sie stattdessen den Operator `<=`. Siehe [Kleiner als oder gleich <=](../bicep/operators-comparison.md#less-than-or-equal-).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Kleiner als oder gleich“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Kleiner als oder gleich“. |
@@ -572,8 +456,6 @@ Gibt **True** zurück, wenn der erste Wert kleiner als oder gleich Wert 2 ist. A
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json) überprüft, ob der eine Wert kleiner als der andere Wert oder gleich groß ist.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -612,27 +494,13 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstInt int = 1
-param secondInt int = 2
-param firstString string = 'A'
-param secondString string = 'a'
-
-output checkInts bool = firstInt <= secondInt
-output checkStrings bool = firstString <= secondString
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](./syntax.md).

@@ -6,12 +6,12 @@ author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9a79a9f863e4deaee27ddfbfdcefd3511fac5032
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 3b4a98e37c16feeb2ad8203caaeb5bc231761379
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752173"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004221"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Dedizierte Azure Monitor-Protokollcluster
 
@@ -22,7 +22,7 @@ Folgende Funktionen erfordern dedizierte Cluster:
 - **[Kundenseitig verwaltete Schlüssel](../logs/customer-managed-keys.md)** : Die Clusterdaten werden mithilfe von Schlüsseln verschlüsselt, die vom Kunden bereitgestellt und gesteuert werden.
 - **[Lockbox](../logs/customer-managed-keys.md#customer-lockbox-preview)** : Kunden können Zugriffsanforderungen von Mitarbeitern des Microsoft-Supports für Daten steuern.
 - **[Doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** schützt vor dem Szenario, dass einer der Verschlüsselungsalgorithmen oder Schlüssel kompromittiert wurde. In diesem Fall werden die Daten weiterhin durch die zusätzliche Verschlüsselungsebene geschützt.
-- **[Mehrere Arbeitsbereiche](../logs/cross-workspace-query.md)** : Wenn ein Kunde mehr als einen Arbeitsbereich für die Produktion verwendet, ist es möglicherweise sinnvoll, einen dedizierten Cluster zu verwenden. Arbeitsbereichsübergreifende Abfragen werden schneller ausgeführt, wenn sich alle Arbeitsbereiche im selben Cluster befinden. Möglicherweise ist die Verwendung eines dedizierten Clusters auch kostengünstiger, da die zugewiesenen Tarife für die Kapazitätsreservierung die gesamte Clustererfassung berücksichtigen und auf alle Arbeitsbereiche angewendet werden, auch wenn einige davon klein sind und nicht für den Kapazitätsreservierungsrabatt berechtigt sind.
+- **[Mehrere Arbeitsbereiche](../logs/cross-workspace-query.md)** : Wenn ein Kunde mehr als einen Arbeitsbereich für die Produktion verwendet, ist es möglicherweise sinnvoll, einen dedizierten Cluster zu verwenden. Arbeitsbereichsübergreifende Abfragen werden schneller ausgeführt, wenn sich alle Arbeitsbereiche im selben Cluster befinden. Möglicherweise ist die Verwendung eines dedizierten Clusters auch kostengünstiger, da die zugewiesenen Mindestabnahmenstufen die gesamte Clustererfassung berücksichtigen und auf alle Arbeitsbereiche angewendet werden, auch wenn einige davon klein sind und nicht für den Mindestabnahmerabatt berechtigt sind.
 
 Dedizierte Cluster erfordern es, dass sich Kunden zur Verwendung einer Datenerfassung von mindestens 1 TB pro Tag verpflichten. Die Migration zu einem dedizierten Cluster ist einfach. Es gibt keinen Datenverlust und keine Dienstunterbrechung. 
 
@@ -39,19 +39,19 @@ Für alle Vorgänge auf Clusterebene ist die Aktionsberechtigung `Microsoft.Oper
 
 ## <a name="cluster-pricing-model"></a>Preismodell für Cluster
 
-Dedizierte Log Analytics-Cluster verwenden ein Preismodell für die Kapazitätsreservierung mit mindestens 1000 GB/Tag. Jeder über die Reservierung hinausgehende Verbrauch wird entsprechend der nutzungsbasierten Bezahlung berechnet.  Preisinformationen zur Kapazitätsreservierung finden Sie auf der Seite [Azure Monitor – Preise]( https://azure.microsoft.com/pricing/details/monitor/).  
+Dedizierte Log Analytics-Cluster verwenden ein Preismodell mit Mindestabnahme von mindestens 1000 GB/Tag. Jede den Tarif überschreitende Nutzung wird mit dem effektiven Prozentsatz pro GB dieser Mindestabnahmestufe abgerechnet.  Mindestabnahme-Tarifinformationen finden Sie auf der Seite [Azure Monitor – Preise]( https://azure.microsoft.com/pricing/details/monitor/).  
 
-Die Reservierungsebene für die Clusterkapazität wird programmgesteuert mit Azure Resource Manager mithilfe des `Capacity`-Parameters unter `Sku` konfiguriert. `Capacity` wird in Einheiten von GB und in Schritten von 100 GB pro Tag in Werten von 1000 GB/Tag oder mehr angegeben.
+Die Mindestabnahmestufe für die Clusterkapazität wird programmgesteuert mit Azure Resource Manager mithilfe des `Capacity`-Parameters unter `Sku` konfiguriert. Die `Capacity` wird in GB-Einheiten angegeben und kann Werte von 1.000, 2.000 oder 5.000 GB/Tag haben.
 
 Für die Abrechnung des Verbrauchs in einem Cluster stehen zwei Modi zur Verfügung. Diese können beim Konfigurieren Ihres Clusters mithilfe des Parameters `billingType` festgelegt werden. 
 
 1. **Cluster** (Standardeinstellung): In diesem Fall werden erfasste Daten auf der Clusterebene abgerechnet. Die erfassten Datenmengen aus den einzelnen Arbeitsbereichen, die einem Cluster zugeordnet sind, werden aggregiert, um die tägliche Abrechnung für den Cluster zu berechnen. 
 
-2. **Arbeitsbereiche**: Die Kapazitätsreservierungskosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet (nach Berücksichtigung der knotenspezifischen Zuordnungen von [Azure Security Center](../../security-center/index.yml) für den jeweiligen Arbeitsbereich).
+2. **Arbeitsbereiche**: Die Kosten der Mindestabnahmestufe für Ihren Cluster werden proportional zu den Arbeitsbereichen im Cluster gemäß dem Datenerfassungsvolumen jedes Arbeitsbereichs (nach Einbezihen der Knotenzuordnungen von [Azure Security Center](../../security-center/index.yml) für jeden Arbeitsbereich) zugeordnet. Die vollständigen Details dieses Preismodells werden [hier]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) erläutert. 
 
-Wenn Ihr Arbeitsbereich den Legacytarif pro Knoten verwendet, wird er, wenn er mit einem Cluster verknüpft ist, basierend auf den in Bezug auf die Kapazitätsreservierung des Clusters erfassten Daten und nicht mehr pro Knoten abgerechnet. Datenzuweisungen pro Knoten von Azure Security Center werden weiterhin angewendet.
+Wenn Ihr Arbeitsbereich den alten Tarif auf Knotenbasis verwendet, wird er, wenn er mit einem Cluster verknüpft ist, nicht mehr pro Knoten abgerechnet, sondern mit den erfassten Daten der Mindestabnahmestufe des Clusters verrechnet. Datenzuweisungen pro Knoten von Azure Security Center werden weiterhin angewendet.
 
-Weitere Informationen zur Abrechnung für dedizierte Log Analytics-Cluster finden Sie [hier]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters).
+Vollständige Informationen zur Abrechnung für dedizierte Log Analytics-Cluster finden Sie [hier]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters).
 
 ## <a name="asynchronous-operations-and-status-check"></a>Asynchrone Vorgänge und Statusüberprüfung
 
@@ -77,9 +77,9 @@ Die folgenden Eigenschaften müssen angegeben werden:
 - **ClusterName**: Wird zu Verwaltungszwecken verwendet. Benutzer werden für diesen Namen nicht offengelegt.
 - **ResourceGroupName**: Wie bei jeder Azure-Ressource gehören Cluster zu einer Ressourcengruppe. Es wird empfohlen, dass Sie eine zentrale IT-Ressourcengruppe verwenden, da Cluster in der Regel von vielen Teams in der Organisation gemeinsam genutzt werden. Weitere Entwurfsaspekte finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../logs/design-logs-deployment.md).
 - **Standort**: Ein Cluster befindet sich in einer bestimmten Azure-Region. Nur Arbeitsbereiche, die sich in dieser Region befinden, können mit diesem Cluster verknüpft werden.
-- **SkuCapacity**: Beim Erstellen einer *Clusterressource* müssen Sie die *Kapazitätsreservierungsebene* (sku) angeben. Die *Kapazitätsreservierungsebene* kann im Bereich von 1.000 bis 3.000 GB pro Tag liegen. Sie können sie bei Bedarf später in 100er Schritten aktualisieren. Wenn Sie eine Kapazitätsreservierungsebene von mehr als 3.000 GB pro Tag benötigen, kontaktieren Sie uns unter LAIngestionRate@microsoft.com. Weitere Informationen zu den Clusterkosten finden Sie unter [Verwalten von Kosten für Log Analytics-Cluster](./manage-cost-storage.md#log-analytics-dedicated-clusters).
+- **SkuCapacity**: Beim Erstellen einer Clusterressource müssen Sie die Mindestabnahmestufe (SKU) angeben. Die Mindestabnahmestufe kann auf 1.000, 2.000 oder 5.000 GB/Tag festgelegt werden. Weitere Informationen zu den Clusterkosten finden Sie unter [Verwalten von Kosten für Log Analytics-Cluster](./manage-cost-storage.md#log-analytics-dedicated-clusters). Beachten Sie, dass Mindestabnahmestufen früher als Kapazitätsreservierungen bezeichnet wurden. 
 
-Nachdem Sie die *Clusterressource* erstellt haben, können Sie sie mit *sku*, *keyVaultProperties oder *billingType* aktualisieren. Weitere Einzelheiten finden Sie unten.
+Nachdem Sie die *Clusterressource* erstellt haben, können Sie weitere Eigenschaften wie *sku*, *keyVaultProperties oder *billingType* bearbeiten. Weitere Einzelheiten finden Sie unten.
 
 Pro Abonnement und Region können bis zu zwei aktive Cluster vorhanden sein. Wenn ein Cluster gelöscht wird, ist er weiterhin für 14 Tage reserviert. Pro Abonnement und Region können bis zu vier reservierte Cluster (aktiv oder kürzlich gelöscht) vorhanden sein.
 
@@ -299,8 +299,8 @@ Nachdem Sie Ihre *Clusterressource* erstellt und vollständig bereitgestellt hab
 
 - **keyVaultProperties**: Hiermit wird der Schlüssel in Azure Key Vault aktualisiert. Weitere Informationen finden Sie unter [Aktualisieren des Clusters mit Schlüsselbezeichnerdetails](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details). Sie enthält die folgenden Parameter: *KeyVaultUri*, *KeyName*, *KeyVersion*. 
 - **billingType**: Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für die *Clusterressource* und deren Daten:
-  - **Cluster** (Standard): Die Kapazitätsreservierungskosten für Ihren Cluster werden der *Clusterressource* zugeordnet.
-  - **Arbeitsbereiche**: Die Kapazitätsreservierungskosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet. Wenn die Gesamtmenge der erfassten Daten unter der Kapazitätsreservierung liegt, wird ein Teil des Verbrauchs über die *Clusterressource* abgerechnet. Weitere Informationen zum Clusterpreismodell finden Sie unter [Dedizierte Log Analytics-Cluster](./manage-cost-storage.md#log-analytics-dedicated-clusters).
+  - **Cluster** (Standard): Die Kosten für Ihren Cluster werden der *Clusterressource* zugeordnet.
+  - **Arbeitsbereiche**: Die Kosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet. Wenn die Gesamtmenge der erfassten Daten unter der Mindestabnahme liegt, wird ein Teil des Verbrauchs über die *Clusterressource* abgerechnet. Weitere Informationen zum Clusterpreismodell finden Sie unter [Dedizierte Log Analytics-Cluster](./manage-cost-storage.md#log-analytics-dedicated-clusters).
   - **Identität**: Die für die Authentifizierung bei Key Vault zu verwendende Identität. Diese kann vom System oder vom Benutzer zugewiesen sein.
 
 >[!IMPORTANT]
@@ -396,9 +396,9 @@ Dasselbe wie bei „Cluster in einer Ressourcengruppe“, jedoch im Abonnementbe
 
 
 
-### <a name="update-capacity-reservation-in-cluster"></a>Aktualisieren der Kapazitätsreservierung in einem Cluster
+### <a name="update-commitment-tier-in-cluster"></a>Aktualisieren der Mindestabnahmestufe im Cluster
 
-Wenn sich das Datenvolumen Ihrer verknüpften Arbeitsbereiche im Laufe der Zeit ändert und Sie die Kapazitätsreservierungsebene entsprechend aktualisieren möchten. Die Kapazität wird in der Einheit GB angegeben und kann Werte von 1000 GB/Tag oder mehr in Schritten von 100 GB pro Tag aufweisen. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen, aber die SKU einschließen sollten.
+Wenn sich das Datenvolumen Ihrer verknüpften Arbeitsbereiche im Laufe der Zeit ändert und Sie die Mindestabnahme entsprechend aktualisieren möchten. Die Stufe wird in GB-Einheiten angegeben und kann Werte von 1000, 2000 oder 5000 GB/Tag haben. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen, aber die SKU einschließen sollten.
 
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)**
 

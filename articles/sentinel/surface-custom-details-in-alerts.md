@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 45f0ef5366d97c275c40d4d436020dbaf3501d42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97cd4d51da70b9b1cca501c7f04a3b0ccfc51305
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456153"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059674"
 ---
 # <a name="surface-custom-event-details-in-alerts-in-azure-sentinel"></a>Anzeigen benutzerdefinierter Ereignisdetails in Azure Sentinel-Warnungen 
 
@@ -39,13 +39,13 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 
 1. Wählen Sie im Azure Sentinel-Navigationsmenü die Option **Analysen** aus.
 
-1. Wählen Sie eine geplante Abfrageregel aus, und klicken Sie auf **Bearbeiten**. Oder erstellen Sie eine neue Regel, indem Sie oben auf dem Bildschirm auf **Erstellen &#10132; Geplante Abfrageregel** klicken.
+1. Wählen Sie eine geplante Abfrageregel aus, und klicken Sie auf **Bearbeiten**. Oder erstellen Sie eine neue Regel, indem Sie oben auf dem Bildschirm auf **Erstellen > Geplante Abfrageregel** klicken.
 
 1. Klicken Sie auf die Registerkarte **Regellogik festlegen**.
 
-1. Wählen Sie im Abschnitt **Warnungserweiterung** die Option **Custom details** (Benutzerdefinierte Details) aus.
+1. Erweitern Sie im Abschnitt **Warnungsanreicherung (Vorschau)** den Bereich **Benutzerdefinierte Details**.
 
-    :::image type="content" source="media/surface-custom-details-in-alerts/alert-enhancement.png" alt-text="Suchen und Auswählen der benutzerdefinierten Details":::
+    :::image type="content" source="media/surface-custom-details-in-alerts/alert-enrichment.png" alt-text="Suchen und Auswählen der benutzerdefinierten Details":::
 
 1. Fügen Sie im nun aufgeklappten Bereich **Custom details** (Benutzerdefinierte Details) Schlüssel-Wert-Paare entsprechend der Details hinzu, die Sie anzeigen möchten:
 
@@ -63,7 +63,7 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 
     > [!NOTE]
     > 
-    >**Diensteinschränkungen**
+    > **Diensteinschränkungen**
     > - Sie können **bis zu 20 benutzerdefinierte Details** in einer Analyseregel definieren.
     >
     > - Die Größenbeschränkung für alle benutzerdefinierten Details beträgt insgesamt **2 KB**.
@@ -71,4 +71,4 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie mithilfe von Azure Sentinel-Analyseregeln benutzerdefinierte Details in Warnungen anzeigen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md) können Sie sich ein Gesamtbild machen.
-- Weitere Informationen zu [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md)
+- Erfahren Sie mehr über [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md).

@@ -10,12 +10,12 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2de1dc71579e6915a54e3815edd2858532ba263
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: ee77fd8ee7f9b209fa1639c787295e380e8dce0b
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075931"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901995"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung
 
@@ -31,7 +31,7 @@ Anhand der Beispielanwendung können Sie in einer End-to-End-Umgebung sehen, wie
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Zuweisen einer Rolle zu einem Azure AD-Sicherheitsprinzipal
 
-Um einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren zu können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffskontrolle in Azure (Azure Role-Based Access Control, RBAC) für diesen Sicherheitsprinzipal konfigurieren. Azure Storage definiert integrierte Rollen, die Berechtigungen für Container und Warteschlangen beinhalten. Wird die Azure-Rolle einem Sicherheitsprinzipal zugewiesen, wird diesem Sicherheitsprinzipal Zugriff auf die Ressource gewährt. Weitere Informationen finden Sie unter [Verwalten von Zugriffsrechten für Blob- und Warteschlangendaten mit Azure RBAC](./storage-auth-aad-rbac-portal.md).
+Um einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren zu können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffskontrolle in Azure (Azure Role-Based Access Control, RBAC) für diesen Sicherheitsprinzipal konfigurieren. Azure Storage definiert integrierte Rollen, die Berechtigungen für Container und Warteschlangen beinhalten. Wird die Azure-Rolle einem Sicherheitsprinzipal zugewiesen, wird diesem Sicherheitsprinzipal Zugriff auf die Ressource gewährt. Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../blobs/assign-azure-role-data-access.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrieren der Anwendung bei einem Azure AD-Mandanten
 
@@ -127,7 +127,7 @@ Sie benötigen die folgenden Werte aus der App-Registrierung, um das Token anzuf
 
 Erstellen Sie mit demselben Abonnement, das Sie auch für Azure Active Directory verwenden, ein Speicherkonto, um das Codebeispiel auszuführen. Erstellen Sie anschließend einen Container innerhalb dieses Speicherkontos. Der Beispielcode wird in diesem Container einen Blockblob erstellen.
 
-Weisen Sie anschließend die Rolle **Storage Blob Data Contributor** (Mitwirkender an Speicherblobdaten) explizit dem Benutzerkonto zu, unter dem Sie den Beispielcode ausführen werden. Informationen zum Zuweisen dieser Rolle im Azure-Portal finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](storage-auth-aad-rbac-portal.md).
+Weisen Sie anschließend die Rolle **Storage Blob Data Contributor** (Mitwirkender an Speicherblobdaten) explizit dem Benutzerkonto zu, unter dem Sie den Beispielcode ausführen werden. Informationen zum Zuweisen dieser Rolle im Azure-Portal finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../blobs/assign-azure-role-data-access.md).
 
 > [!NOTE]
 > Wenn Sie ein Azure Storage-Konto erstellen, erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten über Azure AD. Sie müssen sich selbst explizit eine Azure-Rolle für Azure Storage zuweisen. Sie können sie auf Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
@@ -293,5 +293,5 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Microsoft Identity Platform](../../active-directory/develop/index.yml)
-- [Verwalten von Rechten für den Zugriff auf Speicherdaten mithilfe der Azure RBAC](./storage-auth-aad-rbac-portal.md)
+- [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../blobs/assign-azure-role-data-access.md)
 - [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](storage-auth-aad-msi.md)

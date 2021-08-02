@@ -1,6 +1,6 @@
 ---
 title: 'Anmeldeprotokolle in Azure Active Directory: Vorschau | Microsoft-Dokumentation'
-description: Übersicht über die Anmeldeprotokolle in Azure Active Directory, einschließlich neuer Features in der Vorschauphase.
+description: Übersicht über die Anmeldeprotokolle in Azure Active Directory, einschließlich neuer Features in der Vorschauversion.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,29 +13,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/25/2021
+ms.date: 06/11/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e25fc61fe99a5c7df19b7c0ecb8265f4dcc681cc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: baf000169c993290dc45ef6ec9ed4591f87d1def
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137019"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030640"
 ---
-# <a name="sign-ins-logs-in-azure-active-directory---preview"></a>Anmeldeprotokolle in Azure Active Directory: Vorschau
+# <a name="sign-in-logs-in-azure-active-directory---preview"></a>Anmeldeprotokolle in Azure Active Directory: Vorschau
 
 Als IT-Administrator müssen Sie wissen, wie Ihre IT-Umgebung funktioniert. Anhand der Informationen zur Integrität Ihres Systems können Sie bewerten, ob und wie Sie auf potenzielle Probleme reagieren müssen. 
 
 Um Sie bei diesem Ziel zu unterstützen, bietet Ihnen das Azure Active Directory-Portal Zugriff auf drei Aktivitätsprotokolle:
 
-- **[Anmeldungen](concept-sign-ins.md)** : Informationen zu Anmeldungen und zur Verwendung Ihrer Ressourcen durch Ihre Benutzer.
+- **[Anmeldung:](concept-sign-ins.md)** Informationen zu Anmeldungen und zur Verwendung Ihrer Ressourcen durch Ihre Benutzer
 - **[Überwachung](concept-audit-logs.md)** : Informationen zu Änderungen, die auf Ihren Mandanten angewendet wurden, z. B. Benutzer- und Gruppenverwaltung oder Updates, die auf die Ressourcen Ihres Mandanten angewendet wurden.
 - **[Bereitstellung](concept-provisioning-logs.md)** : Vom Bereitstellungsdienst ausgeführte Aktivitäten, z. B. die Erstellung einer Gruppe in ServiceNow oder der Import eines Benutzers aus Workday.
 
 
-Der klassische Bericht zu Anmeldeaktivitäten in Azure Active Directory bietet Ihnen einen Überblick über interaktive Benutzeranmeldungen. Außerdem haben Sie jetzt Zugriff auf drei zusätzliche Anmeldeprotokolle, die sich zurzeit in der Vorschauphase befinden:
+Das klassische Protokoll zu Anmeldeaktivitäten in Azure Active Directory bietet Ihnen einen Überblick über interaktive Benutzeranmeldungen. Außerdem haben Sie jetzt Zugriff auf drei zusätzliche Anmeldeprotokolle, die sich zurzeit in der Vorschau befinden:
 
 - Nicht interaktive Benutzeranmeldungen
 
@@ -49,7 +49,7 @@ In diesem Artikel erhalten Sie einen Überblick über den Bericht zu Anmeldeakti
 
 ## <a name="what-can-you-do-with-it"></a>Was können Sie damit machen?
 
-Der Bericht zu Anmeldeaktivitäten enthält etwa Antworten auf die folgenden Fragen:
+Das Protokoll zu Anmeldeaktivitäten enthält etwa Antworten auf die folgenden Fragen:
 
 - Wie sieht das Anmeldemuster eines Benutzers, einer Anwendung oder eines Dienstes aus?
 
@@ -79,9 +79,9 @@ Das Azure-Portal bietet Ihnen mehrere Optionen für den Zugriff auf das Protokol
 
 ![Öffnen von Anmeldeprotokollen](./media/concept-sign-ins/sign-ins-logs-menu.png)
 
-Zudem können Sie über diesen Link direkt zu den Anmeldeprotokollen gelangen: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)
+Außerdem können Sie über diesen Link direkt zum Anmeldeprotokoll gelangen: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)
 
-Auf dem Blatt mit dem Bericht zu Anmeldeaktivitäten können Sie zwischen folgenden Aktionen wechseln:
+Auf der Anmeldeseite können Sie zwischen Folgendem wechseln:
 
 - **Interaktive Benutzeranmeldungen** – Anmeldungen, bei denen ein Benutzer einen Authentifizierungsfaktor angibt, z. B. ein Kennwort, eine Antwort über eine MFA-App, einen biometrischen Faktor oder einen QR-Code.
 
@@ -92,11 +92,11 @@ Auf dem Blatt mit dem Bericht zu Anmeldeaktivitäten können Sie zwischen folgen
 - **Verwaltete Identitäten für Azure-Ressourcenanmeldungen** – Anmeldungen durch Azure-Ressourcen mit Geheimnissen, die von Azure verwaltet werden. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../managed-identities-azure-resources/overview.md). 
 
 
-![Arten von Berichten zu Anmeldeaktivitäten](./media/concept-all-sign-ins/sign-ins-report-types.png)
+![Anmeldeprotokolltypen](./media/concept-all-sign-ins/sign-ins-report-types.png)
 
 
 
-Jede Registerkarte auf dem Blatt „Anmeldungen“ zeigt die unten aufgeführten Standardspalten. Einige Registerkarten enthalten zusätzliche Spalten:
+Jede Registerkarte auf der Anmeldeseite enthält die unten aufgeführten Standardspalten. Einige Registerkarten enthalten zusätzliche Spalten:
 
 - Sign-in date (Anmeldedatum)
 
@@ -118,12 +118,12 @@ Jede Registerkarte auf dem Blatt „Anmeldungen“ zeigt die unten aufgeführten
 Interaktive Benutzeranmeldungen sind Anmeldungen, bei denen ein Benutzer einen Authentifizierungsfaktor für Azure AD angibt oder aber mit Azure AD oder einer Hilfsanwendung (z. B. der Microsoft Authenticator-App) direkt interagiert. Zu den von Benutzern angegebenen Faktoren gehören Kennwörter, Antworten auf MFA-Anfragen, biometrische Faktoren oder QR-Codes, die ein Benutzer für Azure AD oder eine Hilfsanwendung angibt.
 
 > [!NOTE]
-> Dieser Bericht enthält auch Verbundanmeldungen von Identitätsanbietern, die im Verbund mit Azure AD sind.  
+> Dieses Protokoll enthält auch Verbundanmeldungen von Identitätsanbietern, die im Verbund mit Azure AD sind.  
 
 
 
 > [!NOTE] 
-> Der Bericht mit interaktiven Benutzeranmeldungen enthält einige nicht interaktive Anmeldungen von Microsoft Exchange-Clients. Obwohl diese Anmeldungen nicht interaktiv waren, werden sie zur besseren Sichtbarkeit in den Bericht zu interaktiven Benutzeranmeldungen eingeschlossen. Seitdem der Bericht zu nicht interaktiven Benutzeranmeldungen im November 2020 als öffentliche Vorschauversion veröffentlicht wurde, werden die Protokolle zu nicht interaktiven Anmeldeereignissen richtigerweise dort erfasst. 
+> Das Protokoll mit interaktiven Benutzeranmeldungen enthält einige nicht interaktive Anmeldungen von Microsoft Exchange-Clients. Obwohl diese Anmeldungen nicht interaktiv waren, werden sie zur besseren Sichtbarkeit in das Protokoll zu interaktiven Benutzeranmeldungen eingeschlossen. Seitdem das Protokoll zu nicht interaktiven Benutzeranmeldungen im November 2020 als öffentliche Vorschauversion veröffentlicht wurde, werden die Protokolle zu nicht interaktiven Anmeldeereignissen richtigerweise dort erfasst. 
 
 
 **Berichtsgröße:** klein <br> 
@@ -138,7 +138,7 @@ Interaktive Benutzeranmeldungen sind Anmeldungen, bei denen ein Benutzer einen A
 - Ein Benutzer ist im Verbund mit Azure AD mit einer AD FS SAML-Assertion.
 
 
-Zusätzlich zu den Standardfeldern werden im Bericht zu interaktiven Anmeldungen auch folgende Informationen angezeigt: 
+Zusätzlich zu den Standardfeldern werden im Protokoll zu interaktiven Anmeldungen auch folgende Informationen angezeigt: 
 
 - Der Standort der Anmeldung
 
@@ -184,7 +184,7 @@ Nicht interaktive Benutzeranmeldungen sind Anmeldungen, die von einer Client-App
 
 
 
-Zusätzlich zu den Standardfeldern werden im Bericht zu nicht interaktiven Anmeldungen auch folgende Informationen angezeigt: 
+Zusätzlich zu den Standardfeldern werden im Protokoll zu nicht interaktiven Anmeldungen auch folgende Informationen angezeigt: 
 
 - Ressourcen-ID
 
@@ -226,7 +226,7 @@ Sie können:
 
 ## <a name="service-principal-sign-ins"></a>Dienstprinzipalanmeldungen
 
-Anders als interaktive und nicht interaktive Benutzeranmeldungen enthalten Dienstprinzipalanmeldungen keinen Benutzer. Stattdessen sind dies Anmeldungen durch ein beliebiges Nichtbenutzerkonto, z. B. Apps oder Dienstprinzipale (außer bei der Anmeldung von verwalteten Identitäten, die nur im Bericht zu Anmeldungen verwalteter Identitäten enthalten sind). Bei diesen Anmeldungen stellt die App oder der Dienst eigene Anmeldeinformationen bereit, z. B. ein Zertifikat oder ein App-Geheimnis für die Authentifizierung oder den Zugriff auf Ressourcen.
+Anders als interaktive und nicht interaktive Benutzeranmeldungen enthalten Dienstprinzipalanmeldungen keinen Benutzer. Stattdessen sind dies Anmeldungen durch ein beliebiges Nichtbenutzerkonto, z. B. Apps oder Dienstprinzipale (außer bei der Anmeldung von verwalteten Identitäten, die nur im Protokoll zu Anmeldungen verwalteter Identitäten enthalten sind). Bei diesen Anmeldungen stellt die App oder der Dienst eigene Anmeldeinformationen bereit, z. B. ein Zertifikat oder ein App-Geheimnis für die Authentifizierung oder den Zugriff auf Ressourcen.
 
 
 **Berichtsgröße:** Groß <br>

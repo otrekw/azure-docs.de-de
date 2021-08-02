@@ -9,23 +9,32 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 04/14/2021
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e24bf5df84015ada6b62c35fdd29571c66e06ebd
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 932fc71617846f2839767546a8fac00a3d16008c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505257"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792253"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Zuweisen von bereichsbezogenen Rollen zu einer Verwaltungseinheit
 
 Um in Azure Active Directory (Azure AD) eine präzisere administrative Steuerung zu ermöglichen, können Sie Benutzer einer Azure AD-Rolle mit einem auf einzelne oder mehrere Verwaltungseinheiten beschränkten Bereich zuweisen.
 
-Informationen zur Vorbereitung auf den Einsatz von PowerShell und Microsoft Graph für die Verwaltung von Verwaltungseinheiten finden Sie unter [Erste Schritte](admin-units-manage.md#get-started).
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Azure AD Premium P1- oder P2-Lizenz für jeden Administrator der Verwaltungseinheit
+- Azure AD Free-Lizenzen für Mitglieder von Verwaltungseinheiten
+- „Administrator für privilegierte Rollen“ oder „Globaler Administrator“
+- AzureAD-Modul bei Verwendung von PowerShell
+- Administratorzustimmung bei Verwendung von Graph-Tester für die Microsoft Graph-API
+
+Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
+
 
 ## <a name="available-roles"></a>Verfügbare Rollen
 
@@ -50,7 +59,7 @@ Die folgenden Sicherheitsprinzipale können einer Rolle im Bereich von Verwaltun
 
 Eine bereichsbezogene Rolle kann über das Azure-Portal, mithilfe von PowerShell oder per Microsoft Graph zugewiesen werden.
 
-### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+### <a name="azure-portal"></a>Azure-Portal
 
 1. Navigieren Sie im Azure-Portal zu **Azure AD**.
 
@@ -69,7 +78,7 @@ Eine bereichsbezogene Rolle kann über das Azure-Portal, mithilfe von PowerShell
 > [!Note]
 > Informationen zum Zuweisen einer Rolle für eine Verwaltungseinheit unter Verwendung von Azure AD Privileged Identity Management (PIM) finden Sie unter [Zuweisen von Azure AD-Rollen in Privileged Identity Management](../privileged-identity-management/pim-how-to-add-role-to-user.md?tabs=new#assign-a-role-with-restricted-scope).
 
-### <a name="use-powershell"></a>Verwenden von PowerShell
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 $adminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
@@ -82,7 +91,7 @@ Add-AzureADMSScopedRoleMembership -Id $adminUnitObj.Id -RoleId $role.ObjectId -R
 
 Der hervorgehobene Abschnitt kann nach Bedarf für die jeweilige Umgebung geändert werden.
 
-### <a name="use-microsoft-graph"></a>Verwenden von Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 Anforderung
 
@@ -105,7 +114,7 @@ Text
 
 Eine Liste mit bereichsbezogenen Administratoren kann über das Azure-Portal, mithilfe von PowerShell oder per Microsoft Graph angezeigt werden.
 
-### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+### <a name="azure-portal"></a>Azure-Portal
 
 Alle Rollenzuweisungen, die mit einem auf Verwaltungseinheiten bezogenen Bereich erstellt wurden, können im Abschnitt [Verwaltungseinheiten von Azure AD](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit) angezeigt werden. 
 
@@ -115,7 +124,7 @@ Alle Rollenzuweisungen, die mit einem auf Verwaltungseinheiten bezogenen Bereich
 
 1. Wählen Sie **Rollen und Administratoren** aus, und öffnen Sie anschließend eine Rolle, um die Zuweisungen in der Verwaltungseinheit anzuzeigen.
 
-### <a name="use-powershell"></a>Verwenden von PowerShell
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 $adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
@@ -124,7 +133,7 @@ Get-AzureADMSScopedRoleMembership -Id $adminUnitObj.Id | fl *
 
 Der hervorgehobene Abschnitt kann nach Bedarf für Ihre individuelle Umgebung geändert werden.
 
-### <a name="use-microsoft-graph"></a>Verwenden von Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 Anforderung
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: duau
-ms.openlocfilehash: 56d6a76991c4386be45b2c18f4edb3d363e58fa5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fd890c8e8d72609d109fa466e260dd7315fd553b
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027141"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441220"
 ---
 # <a name="about-expressroute-direct"></a>Informationen zu ExpressRoute Direct
 
@@ -69,7 +69,7 @@ Die Funktionalität ist in den meisten Szenarios vergleichbar mit der von Leitun
 
 ## <a name="circuit-skus"></a>Leitungs-SKUs
 
-ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmengen in Azure Storage und anderen Big Data-Diensten. ExpressRoute-Leitungen auf 100-GBit/s-ExpressRoute Direct unterstützen nun auch die Leitungs-SKUs mit **40 GBit/s** und **100 GBit/s. Die physischen Portpaare unterstützen nur **100 oder 10 Gbit/s** und können über mehrere virtuelle Leitungen verfügen. Leitungsgrößen:
+ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmengen in Azure Storage und anderen Big Data-Diensten. ExpressRoute-Leitungen in ExpressRoute Direct mit 100 GBit/s unterstützen nun auch die Leitungs-SKUs mit **40 GBit/s** und **100 GBit/s**. Die physischen Portpaare unterstützen nur **100 oder 10 Gbit/s** und können über mehrere virtuelle Leitungen verfügen. Leitungsgrößen:
 
 | **100-GBit/s-ExpressRoute Direct** | **10-GBit/s-ExpressRoute Direct** | 
 | --- | --- |

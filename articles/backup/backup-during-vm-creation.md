@@ -2,13 +2,13 @@
 title: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 description: Hier wird beschrieben, wie die Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup aktiviert wird.
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/03/2021
+ms.openlocfilehash: 48798dc276c10276e0effd458bd15e9cfbab32dd
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89377334"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006057"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 
@@ -57,16 +57,20 @@ Der Backup-Dienst erstellt eine separate Ressourcengruppe (RG) neben der Ressour
 
 Beachten Sie Folgendes:
 
-1. Sie können entweder den Standardnamen der RG verwenden oder ihn entsprechend den Anforderungen Ihres Unternehmens bearbeiten.
-2. Beim Erstellen der VM-Sicherungsrichtlinie geben Sie das RG-Namensmuster als Eingabe an. Der RG-Name sollte das folgende Format aufweisen: `<alpha-numeric string>* n <alpha-numeric string>`. „n“ wird durch eine ganze Zahl (beginnend mit 1) ersetzt und zum horizontalen Hochskalieren verwendet, wenn die erste RG voll ist. Eine RG kann heute maximal 600 Remoteprozeduraufrufe umfassen.
+1. Sie können entweder den Standardnamen der RG verwenden oder ihn entsprechend den Anforderungen Ihres Unternehmens bearbeiten.<br>Wenn Sie keine RG erstellt haben, führen Sie die folgenden Schritte aus, um eine RG für restorepointcollection anzugeben:
+   1. Erstellen Sie eine RG für restorepointcollection, zum Beispiel „rpcrg“.
+   1. Geben Sie den Namen der RG in der VM-Sicherungsrichtlinie an.
+   >[!NOTE]
+   >Dadurch wird eine RG mit dem angefügten Zahl erstellt und für restorepointcollection verwendet.
+1. Beim Erstellen der VM-Sicherungsrichtlinie geben Sie das RG-Namensmuster als Eingabe an. Der RG-Name sollte das folgende Format aufweisen: `<alpha-numeric string>* n <alpha-numeric string>`. „n“ wird durch eine ganze Zahl (beginnend mit 1) ersetzt und zum horizontalen Hochskalieren verwendet, wenn die erste RG voll ist. Eine RG kann heute maximal 600 Remoteprozeduraufrufe umfassen.
               ![Wählen Sie den Namen beim Erstellen einer Richtlinie aus](./media/backup-during-vm-creation/create-policy.png)
-3. Das Muster sollte den nachstehend aufgeführten RG-Benennungsregeln folgen, und die Gesamtlänge sollte die maximal zulässige Länge für RG-Namen nicht überschreiten.
+1. Das Muster sollte den nachstehend aufgeführten RG-Benennungsregeln folgen, und die Gesamtlänge sollte die maximal zulässige Länge für RG-Namen nicht überschreiten.
     1. Ressourcengruppennamen dürfen nur alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern enthalten. Sie dürfen nicht mit einem Punkt enden.
     2. Ressourcengruppennamen können bis zu 74 Zeichen enthalten, einschließlich des Namens der RG und des Suffixes.
-4. Die erste `<alpha-numeric-string>` ist obligatorisch, während die zweite nach dem „n“ optional ist. Dies gilt nur, wenn Sie einen benutzerdefinierten Namen vergeben. Wenn Sie beide Textfelder leer lassen, wird der Standardname verwendet.
-5. Sie können den Namen der RG bearbeiten, indem Sie die Richtlinie ändern, wenn dies erforderlich ist. Wenn das Namensmuster geändert wird, werden in der neuen RG neue RPs erstellt. Die alten RPs befinden sich jedoch weiterhin in der alten RG und werden nicht verschoben, da die RP-Sammlung kein Verschieben von Ressourcen unterstützt. Schließlich erfolgt eine automatische Speicherbereinigung der RPs, wenn die Punkte ablaufen.
+1. Die erste `<alpha-numeric-string>` ist obligatorisch, während die zweite nach dem „n“ optional ist. Dies gilt nur, wenn Sie einen benutzerdefinierten Namen vergeben. Wenn Sie beide Textfelder leer lassen, wird der Standardname verwendet.
+1. Sie können den Namen der RG bearbeiten, indem Sie die Richtlinie ändern, wenn dies erforderlich ist. Wenn das Namensmuster geändert wird, werden in der neuen RG neue RPs erstellt. Die alten RPs befinden sich jedoch weiterhin in der alten RG und werden nicht verschoben, da die RP-Sammlung kein Verschieben von Ressourcen unterstützt. Schließlich erfolgt eine automatische Speicherbereinigung der RPs, wenn die Punkte ablaufen.
 ![Ändern des Namens beim Ändern der Richtlinie](./media/backup-during-vm-creation/modify-policy.png)
-6. Die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe sollte nicht gesperrt werden.
+1. Die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe sollte nicht gesperrt werden.
 
 Informationen zum Konfigurieren der Azure Backup-Ressourcengruppe für Virtual Machines mithilfe von PowerShell finden Sie unter [Erstellen einer Azure Backup-Ressourcengruppe während der Aufbewahrung von Momentaufnahmen](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention).
 
@@ -83,7 +87,7 @@ Nachdem die VM erstellt wurde, gehen Sie wie folgt vor:
 
 ## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Bereitstellen einer geschützten VM mithilfe einer Resource Manager-Vorlage
 
-In den vorherigen Schritten wurde erläutert, wie Sie eine VM über das Azure-Portal erstellen und in einem Recovery Services-Tresor schützen. Informationen zur schnellen Bereitstellung und zum Schützen von VMs in einem Recovery Services-Tresor finden Sie unter [Deploy a Windows VM and enable backup (Bereitstellen einer Windows-VM und Aktivieren der Sicherung)](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
+In den vorherigen Schritten wurde erläutert, wie Sie eine VM über das Azure-Portal erstellen und in einem Recovery Services-Tresor schützen. Informationen zur schnellen Bereitstellung und zum Schützen von VMs in einem Recovery Services-Tresor finden Sie unter [Deploy a Windows VM and enable backup (Bereitstellen einer Windows-VM und Aktivieren der Sicherung)](https://azure.microsoft.com/resources/templates/recovery-services-create-vm-and-configure-backup/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

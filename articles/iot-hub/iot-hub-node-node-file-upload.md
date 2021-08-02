@@ -10,18 +10,18 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.custom: mqtt, devx-track-js
-ms.openlocfilehash: db4f78e14696c421adaedd16b0b3f8d598f12846
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b94cd4cc5c76495cb08f743b1a6849b6eb6c77b2
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91251897"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005931"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-Dieses Tutorial baut auf dem Code im Tutorial [Senden von C2D-Nachrichten mit IoT Hub (Java)](iot-hub-node-node-c2d.md) auf, um zu zeigen, wie Sie die [IoT Hub-Funktionen zum Hochladen von Dateien](iot-hub-devguide-file-upload.md) zum Hochladen einer Datei in [Azure Blob Storage](../storage/index.yml) nutzen. Das Tutorial veranschaulicht folgende Vorgehensweisen:
+Das Tutorial veranschaulicht folgende Vorgehensweisen:
 
 * Sicheres Bereitstellen eines Geräts mit einem Azure-Blob-URI für das Hochladen einer Datei.
 
@@ -38,7 +38,7 @@ Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure D
 
 Am Ende dieses Tutorials führen Sie zwei Node.js-Konsolen-Apps aus:
 
-* **SimulatedDevice.js** lädt mithilfe eines SAS-URI, den Ihr IoT-Hub bereitstellt, eine Datei in den Speicher hoch.
+* **FileUpload.js** lädt mithilfe eines SAS-URI, den Ihr IoT-Hub bereitstellt, eine Datei in den Speicher hoch.
 
 * **ReadFileUploadNotification.js** empfängt Benachrichtigungen zum Hochladen von Dateien von Ihrem IoT-Hub.
 
@@ -53,78 +53,71 @@ Am Ende dieses Tutorials führen Sie zwei Node.js-Konsolen-Apps aus:
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
-* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit einem IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Hochladen einer Datei von einer Geräte-App
 
-In diesem Abschnitt erstellen Sie die Geräte-App zum Hochladen einer Datei in IoT Hub.
+In diesem Abschnitt kopieren Sie die Geräte-App von GitHub, um eine Datei in den IoT-Hub hochzuladen.
 
-1. Erstellen Sie einen leeren Ordner mit dem Namen ```simulateddevice```.  Erstellen Sie im Ordner ```simulateddevice``` die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
+1. Auf GitHub stehen zwei Beispiele für Dateiuploads für Node.js zur Verfügung: ein einfaches und ein komplexeres Beispiel. Kopieren Sie das einfache Beispiel aus [diesem Repository](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/upload_to_blob.js). Das komplexere Beispiel finden Sie [hier](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/upload_to_blob_advanced.js).   
+
+2. Erstellen Sie einen leeren Ordner mit dem Namen ```fileupload```.  Erstellen Sie im Ordner ```fileupload``` die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
 
     ```cmd/sh
     npm init
     ```
 
-2. Führen Sie an der Eingabeaufforderung im Ordner ```simulateddevice``` den folgenden Befehl aus, um das Geräte-SDK-Paket **azure-iot-device** und das Paket **azure-iot-device-mqtt** zu installieren:
+3. Führen Sie an der Eingabeaufforderung im Ordner ```fileupload``` den folgenden Befehl aus, um das Geräte-SDK-Paket **azure-iot-device** und das Paket **azure-iot-device-mqtt** zu installieren:
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. Erstellen Sie mit einem Text-Editor im Ordner ```simulateddevice``` die Datei **SimulatedDevice.js**.
-
-4. Fügen Sie am Anfang der Datei **SimulatedDevice.js** die folgenden ```require```-Anweisungen hinzu:
+4. Erstellen Sie im Ordner ```fileupload``` mithilfe eines Text-Editors eine Datei vom Typ **FileUpload.js**, und kopieren Sie das einfache Beispiel in den Ordner.
 
     ```javascript
+    // Copyright (c) Microsoft. All rights reserved.
+    // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
     'use strict';
 
+    var Protocol = require('azure-iot-device-mqtt').Mqtt;
+    var Client = require('azure-iot-device').Client;
     var fs = require('fs');
-    var mqtt = require('azure-iot-device-mqtt').Mqtt;
-    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
-    ```
 
-5. Fügen Sie die Variable `deviceconnectionstring` hinzu, und verwenden Sie sie zum Erstellen einer **Client**-Instanz.  Ersetzen Sie `{deviceconnectionstring}` durch den Namen des Geräts, das Sie im Abschnitt *Erstellen eines IoT Hubs* erstellt haben:
+    var deviceConnectionString = process.env.ConnectionString;
+    var filePath = process.env.FilePath;
 
-    ```javascript
-    var connectionString = '{deviceconnectionstring}';
-    var filename = 'myimage.png';
-    ```
+    var client = Client.fromConnectionString(deviceConnectionString, Protocol);
+    fs.stat(filePath, function (err, fileStats) {
+      var fileStream = fs.createReadStream(filePath);
 
-    > [!NOTE]
-    > Der Einfachheit halber ist die Verbindungszeichenfolge im Code enthalten: Dies ist jedoch kein empfohlenes Verfahren. Abhängig von Ihrem Anwendungsfall und der Architektur sollten sie unter Umständen sicherere Methoden zum Speichern dieses Geheimnisses in Betracht ziehen.
-
-6. Fügen Sie den folgenden Code hinzu, um eine Verbindung mit dem Client herzustellen:
-
-    ```javascript
-    var client = clientFromConnectionString(connectionString);
-    console.log('Client connected');
-    ```
-
-7. Erstellen Sie einen Rückruf, und verwenden Sie die **uploadToBlob**-Funktion zum Hochladen der Datei.
-
-    ```javascript
-    fs.stat(filename, function (err, stats) {
-        const rr = fs.createReadStream(filename);
-
-        client.uploadToBlob(filename, rr, stats.size, function (err) {
-            if (err) {
-                console.error('Error uploading file: ' + err.toString());
-            } else {
-                console.log('File uploaded');
-            }
-        });
+      client.uploadToBlob('testblob.txt', fileStream, fileStats.size, function (err, result) {
+        if (err) {
+          console.error('error uploading file: ' + err.constructor.name + ': ' + err.message);
+        } else {
+          console.log('Upload successful - ' + result);
+        }
+        fileStream.destroy();
+      });
     });
     ```
 
-8. Speichern und schließen Sie die Datei **SimulatedDevice.js** .
+5. Fügen Sie Umgebungsvariablen für Ihre Geräteverbindungszeichenfolge und den Pfad zur Datei hinzu, die Sie hochladen möchten.
 
-9. Kopieren Sie eine Bilddatei in den `simulateddevice`-Ordner und benennen Sie sie in `myimage.png` um.
+6. Speichern und schließen Sie die Datei **FileUpload.js**.
+
+7. Kopieren Sie eine Bilddatei in den Ordner `fileupload`, und geben Sie ihr einen Namen, etwa `myimage.png`. Platzieren Sie den Pfad zur Datei in der Umgebungsvariablen `FilePath`.
 
 ## <a name="get-the-iot-hub-connection-string"></a>Abrufen der IoT-Hub-Verbindungszeichenfolge
 
-In diesem Artikel erstellen Sie einen Back-End-Dienst, um Dateiuploadbenachrichtigungen von dem IoT-Hub zu erhalten, den Sie unter [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-node.md) erstellt haben. Damit Ihr Dienst Dateiuploadbenachrichtigungen empfangen kann, muss er über die Berechtigung **Dienstverbindung** verfügen. Standardmäßig wird jeder IoT-Hub mit einer SAS-Richtlinie namens **service** erstellt, die diese Berechtigung erteilt.
+In diesem Artikel erstellen Sie einen Back-End-Dienst, um Dateiuploadbenachrichtigungen von dem IoT-Hub zu erhalten, den Sie erstellt haben. Damit Ihr Dienst Dateiuploadbenachrichtigungen empfangen kann, muss er über die Berechtigung **Dienstverbindung** verfügen. Standardmäßig wird jeder IoT-Hub mit einer SAS-Richtlinie namens **service** erstellt, die diese Berechtigung erteilt.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -205,13 +198,13 @@ Führen Sie an der Eingabeaufforderung im `fileuploadnotification`-Ordner folgen
 node FileUploadNotification.js
 ```
 
-Führen Sie an der Eingabeaufforderung im `simulateddevice`-Ordner folgenden Befehl aus:
+Führen Sie an der Eingabeaufforderung im `fileupload`-Ordner folgenden Befehl aus:
 
 ```cmd/sh
-node SimulatedDevice.js
+node FileUpload.js
 ```
 
-Der folgende Screenshot zeigt die Ausgabe der **SimulatedDevice**-App:
+Der folgende Screenshot zeigt die Ausgabe der App **FileUpload**:
 
 ![Ausgabe der simulated-device-App](./media/iot-hub-node-node-file-upload/simulated-device.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Windows-VM mit Azure VM Image Builder mithilfe eines vorhandenen VNETs (Vorschau)
+title: Erstellen einer Windows-VM mit Azure VM Image Builder mithilfe eines vorhandenen VNETs
 description: Erstellen einer Windows-VM mit Azure VM Image Builder mithilfe eines vorhandenen VNETs
 author: cynthn
 ms.author: cynthn
@@ -9,36 +9,18 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.reviewer: danis
-ms.openlocfilehash: 3695732f81463efcadb3d8d8b49e367501cb6e29
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 12ec69f3976cb156bc04bf2ed7b79b1fd775b142
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034063"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031088"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Verwenden von Azure VM Image Builder für Windows-VMs mit Zugriff auf ein vorhandenes Azure-VNET
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure VM Image Builder ein grundlegendes, benutzerdefiniertes Windows-Image erstellen, das über Zugriff auf vorhandene Ressourcen in einem VNET verfügt. Die von Ihnen erstellte Build-VM wird für ein neues oder vorhandenes VNET bereitgestellt, das Sie in Ihrem Abonnement angeben. Wenn Sie ein vorhandenes Azure-VNET verwenden, ist für den Azure VM Image Builder-Dienst keine Verbindung mit einem öffentlichen Netzwerk erforderlich.
 
-> [!IMPORTANT]
-> Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-## <a name="register-the-features"></a>Registrieren des Features
-
-Sie müssen sich zunächst für den Azure VM Image Builder-Dienst registrieren. Die Registrierung gewährt Ihnen die Dienstberechtigungen zum Erstellen, Verwalten und Löschen einer Ressourcengruppe für das Staging. Der Dienst verfügt auch über die Berechtigung, der Gruppe Ressourcen hinzuzufügen, die für das Erstellen des Images erforderlich sind.
-
-```powershell-interactive
-# Register for Azure Image Builder Feature
-
-Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-
-Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-
-# wait until RegistrationState is set to 'Registered'
-```
 ## <a name="set-variables-and-permissions"></a>Festlegen von Variablen und Berechtigungen 
 
 Einige Informationselemente werden wiederholt verwendet. Erstellen Sie Variablen zum Speichern dieser Informationen.

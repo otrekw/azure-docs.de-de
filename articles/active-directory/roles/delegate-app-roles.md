@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9dcbb12f48a98a35013a80f986b67f75118d74c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2dd14da92eedc14a3da8e9eb0a29b08d96acd204
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060250"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790781"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegieren von App-Registrierungsberechtigungen in Azure Active Directory
 
@@ -60,7 +60,7 @@ In einigen Fällen enthalten Unternehmensanwendungen, die über den Anwendungska
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>So weisen Sie einer Unternehmensanwendung einen Besitzer zu
 
-1. Melden Sie sich bei Ihrer [Azure AD-Organisation](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit einem Konto an, das für den Anwendungsadministrator oder Cloudanwendungsadministrator für die Organisation berechtigt ist.
+1. Melden Sie sich bei Ihrer [Azure AD-Organisation](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit einem Konto an, das für die Rollen „Anwendungsadministrator“ oder „Cloudanwendungsadministrator“ für die Organisation berechtigt ist.
 1. Wählen Sie auf der Seite [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) für die Organisation eine App aus, um die Seite „Übersicht“ für die App zu öffnen.
 1. Wählen Sie **Besitzer** aus, um die Liste der Besitzer für die App anzuzeigen.
 1. Wählen Sie **Hinzufügen** aus, um einen oder mehrere Besitzer der App hinzuzufügen.
@@ -95,8 +95,8 @@ Die Erstellung von benutzerdefinierten Rollen und deren Zuweisung erfolgen in zw
 Durch diese separaten Schritte können Sie eine einzelne Rollendefinition erstellen und dann für verschiedene *Bereiche* mehrmals zuzuweisen. Eine benutzerdefinierte Rolle kann im organisationsweiten Bereich oder im Bereich eines einzelnen Azure AD-Objekts zugewiesen werden. Ein Beispiel für einen Objektbereich ist eine einzelne Anwendungsregistrierung. Durch Verwendung verschiedener Bereiche kann die gleiche Rollendefinition Sally für alle Anwendungsregistrierungen in der Organisation und dann Naveen nur für die Anwendungsregistrierung der Contoso-Spesenabrechnungen zugewiesen werden.
 
 Tipps für die Erstellung und Verwendung von benutzerdefinierten Rollen für die Delegierung der Anwendungsverwaltung:
-- Benutzerdefinierte Rollen gewähren nur Zugriff auf den Blättern für die aktuellen Anwendungsregistrierungen im Azure AD-Portal. Sie gewähren keinen Zugriff auf den Blättern für Legacyanwendungsregistrierungen.
-- Benutzerdefinierte Rollen gewähren keinen Zugriff auf das Azure AD-Portal, wenn die Benutzereinstellung „Zugriff auf Azure AD-Verwaltungsportal einschränken“ auf „Ja“ festgelegt ist.
+- Benutzerdefinierte Rollen gewähren nur Zugriff auf den Blättern für die aktuellen Anwendungsregistrierungen im Azure-Portal. Sie gewähren keinen Zugriff auf den Blättern für Legacyanwendungsregistrierungen.
+- Benutzerdefinierte Rollen gewähren keinen Zugriff auf das Azure-Portal, wenn die Benutzereinstellung „Zugriff auf Azure AD-Verwaltungsportal einschränken“ auf „Ja“ festgelegt ist.
 - Anwendungsregistrierungen, auf die der Benutzer unter Verwendung von Rollenzuweisungen Zugriff hat, werden nur auf der Registerkarte „Alle Anwendungen“ auf der Seite „App-Registrierungen“ angezeigt. Auf der Registerkarte „Anwendungen mit Besitzer“ werden sie dagegen nicht angezeigt.
 
 Weitere Informationen zu den Grundlagen von benutzerdefinierten Rollen finden Sie in der [Übersicht über benutzerdefinierte Rollen](custom-overview.md) sowie unter [Erstellen einer benutzerdefinierten Rolle](custom-create.md) und unter [Zuweisen einer Rolle](custom-assign-powershell.md).
@@ -104,4 +104,4 @@ Weitere Informationen zu den Grundlagen von benutzerdefinierten Rollen finden Si
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Anwendungsregistrierungsuntertypen und -berechtigungen](custom-available-permissions.md)
-- [Berechtigungen der Administratorrolle in Azure Active Directory](permissions-reference.md)
+- [Integrierte Rollen in Azure AD](permissions-reference.md)

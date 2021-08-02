@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 0d09851cf8e68cead4a67615aaa792512482f351
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: fc27ed68f5dedefa0b4bf77a206faa15c94f083f
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955121"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018313"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>Python-Codebeispiele für Azure Cognitive Search
 
@@ -49,6 +49,7 @@ Die Codebeispiele vom Cognitive Search-Team veranschaulichen die Funktionen und 
 | Beispiele | Artikel |
 |---------|---------|
 | [Schnellstart](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Quickstart) | Quellcode für [Schnellstart: Erstellen eines Suchindex in Python](search-get-started-python.md). In diesem Artikel wird der allgemeine Workflow zum Erstellen, Laden und Abfragen eines Suchindex unter Verwendung von Beispieldaten beschrieben. |
+| [search-website](https://github.com/azure-samples/azure-search-python-samples/tree/master/search-website) | Quellcode für [Tutorial: Hinzufügen der Suche zu Web-Apps](tutorial-python-overview.md). Veranschaulicht eine End-to-End-Such-App, die einen Rich-Client sowie Komponenten zum Hosting der App und zur Verarbeitung von Suchanforderungen enthält.|
 | [tutorial-ai-enrichment](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)  | Quellcode für [Tutorial: Verwenden von Python und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs](cognitive-search-tutorial-blob-python.md). In diesem Artikel wird gezeigt, wie Sie einen Blobindexer mit einem Cognitive-Skillset erstellen, in dem das Skillset Rohdaten erstellt und transformiert, um sie durchsuchbar oder nutzbar zu machen. |
 | [AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill)  | Quellcode für [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit Python](cognitive-search-custom-skill-python.md). Dieser Artikel veranschaulicht die Indexer- und Skillsetintegration mit Deep Learning-Modellen in Azure Machine Learning. |
 

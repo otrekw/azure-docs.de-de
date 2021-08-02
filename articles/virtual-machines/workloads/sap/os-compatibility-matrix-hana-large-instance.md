@@ -1,24 +1,25 @@
 ---
-title: Betriebssystem-Kompatibilitätsmatrix für SAP HANA (große Instanzen) | Microsoft-Dokumentation
+title: Betriebssystem-Kompatibilitätsmatrix für SAP HANA (große Instanzen) | Microsoft-Dokumentation
 description: In der Kompatibilitätsmatrix wird die Kompatibilität verschiedener Betriebssystemversionen mit verschiedenen Hardwaretypen (große Instanzen) dargestellt.
 services: virtual-machines-linux
 documentationcenter: ''
-author: sasarava
+author: Ajayan1008
 manager: hrushib
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/21/2020
-ms.author: sasarava
+ms.date: 05/18/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccfdffc4e488de7f3cecb150305596743b3a9e44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad1eb1428493d8488e803560e0dc421765aab465
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675401"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579444"
 ---
 # <a name="compatible-operating-systems-for-hana-large-instances"></a>Kompatible Betriebssysteme für HANA (große Instanzen)
 
@@ -34,6 +35,7 @@ ms.locfileid: "101675401"
 
   
 ### <a name="persistent-memory-skus"></a>SKUs für persistenten Speicher
+
   | Betriebssystem | Verfügbarkeit | SKUs                             |
   |------------------|--------------|----------------------------------|
   | SLES 12 SP4      | Verfügbar    | S224oo, S224om, S224ooo, S224oom |
@@ -48,11 +50,11 @@ ms.locfileid: "101675401"
   | SLES 15 SP1             | Verfügbar           | S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, S896m, S960m |
   | RHEL 7.6                | Verfügbar           | S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, S896m, S960m |
 
-## <a name="related-documents"></a>Verwandte Dokumente
+## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu verfügbaren SKUs finden Sie [hier](hana-available-skus.md).
-- Informationen zum Upgraden des Betriebssystems finden Sie [hier](os-upgrade-hana-large-instance.md).
-  
+Weitere Informationen:
 
-  
+- [Verfügbare SKUs](hana-available-skus.md)
+- [Upgraden des Betriebssystems](os-upgrade-hana-large-instance.md)
+- [Unterstützte Szenarien für große HANA-Instanzen](hana-supported-scenario.md)
   

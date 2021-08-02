@@ -5,17 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 05/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 21278eab6da23282465c807be103ab47271bbe60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 056a45713672922d4e3052d37abdc1b0b171fc14
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019774"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110165139"
 ---
 > [!NOTE]
->* Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt.
->* Die Azure AD-Authentifizierung erfordert den nur für Windows 10 verfügbaren Azure-VPN-Client.
+>Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt und erfordert den Azure-VPN-Client.
 >

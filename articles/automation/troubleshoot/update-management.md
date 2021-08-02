@@ -3,22 +3,70 @@ title: Beheben von Problemen bei der Azure Automation-Updateverwaltung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Azure Automation-Updateverwaltung beheben.
 services: automation
 ms.subservice: update-management
-ms.date: 04/18/2021
+ms.date: 06/10/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5d73f7232afc9dcd6f7e069297efac763c242f7b
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 0f773bdedcbcb014e15436732e489f9b15900f58
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164253"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951782"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
-In diesem Artikel werden Probleme beschrieben, die bei der Bereitstellung des Features für die Updateverwaltung auf Ihren Computern auftreten können. Es gibt eine Agent-Problembehandlung für den Hybrid Runbook Worker-Agent, mit dem das zugrunde liegende Problem bestimmt werden kann. Informationen dazu finden Sie unter [Beheben von Problemen mit dem Windows Update-Agent](update-agent-issues.md) und [Beheben von Problemen mit dem Linux Update-Agent](update-agent-issues-linux.md). Informationen zu anderen Problemen bei der Bereitstellung von Features finden Sie unter [Behandeln von Problemen beim Onboarding von Lösungen](onboarding.md).
+In diesem Artikel werden Probleme beschrieben, die bei der Verwendung des Features für die Updateverwaltung zum Bewerten und Verwalten von Update auf Ihren Computern auftreten können. Es gibt eine Agent-Problembehandlung für den Hybrid Runbook Worker-Agent, mit dem das zugrunde liegende Problem bestimmt werden kann. Informationen dazu finden Sie unter [Beheben von Problemen mit dem Windows Update-Agent](update-agent-issues.md) und [Beheben von Problemen mit dem Linux Update-Agent](update-agent-issues-linux.md). Informationen zu anderen Problemen bei der Bereitstellung von Features finden Sie unter [Behandeln von Problemen beim Onboarding von Lösungen](onboarding.md).
 
 >[!NOTE]
 >Wenn beim Bereitstellen der Updateverwaltung auf einem Windows-Computer Probleme auftreten, öffnen Sie die Windows-Ereignisanzeige, und sehen Sie sich auf dem lokalen Computer das **Operations Manager**-Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle** an. Suchen Sie nach Ereignissen mit der Ereignis-ID 4502 und Ereignisdetails, die `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` enthalten.
+
+## <a name="scenario-windows-defender-update-always-show-as-missing"></a><a name="windows-defender-update-missing-status"></a>Szenario: Windows Defender-Update wird immer als fehlend angezeigt.
+
+### <a name="issue"></a>Problem
+
+Das Definitionsupdate für Windows Defender (**KB2267602**) wird in einer Bewertung immer als fehlend angezeigt, obwohl es installiert ist, und bei der Überprüfung über den Windows Update-Verlauf ist es als aktuell angegeben.
+
+### <a name="cause"></a>Ursache
+
+Definitionsupdates werden mehrmals täglich veröffentlicht. Daher sehen Sie unter Umständen, dass mehrere Releases von KB2267602 an einem einzigen Tag veröffentlicht wurden – jedoch mit einer anderen Update-ID und -version.
+
+Die Bewertung der Updateverwaltung wird alle elf Stunden ausgeführt. In diesem Beispiel wurde um 10:00 Uhr eine Bewertung ausgeführt, und zu diesem Zeitpunkt war Version 1.237.316.0 verfügbar. Wenn Sie die Tabelle **Update** in Ihrem Log Analytics-Arbeitsbereich durchsuchen, wird das Definitionsupdate 1.237.316.0 mit dem Updatezustand (**UpdateState**) **Erforderlich** angezeigt. Wenn eine geplante Bereitstellung einige Stunden später (etwa um 13:00 Uhr) ausgeführt wird und Version 1.237.316.0 noch verfügbar oder bereits eine neuere Version verfügbar ist, wird die neuere Version installiert. Dies spiegelt sich im Datensatz wider, der in die Tabelle **UpdateRunProgress** geschrieben wird. In der Tabelle **Update** wird jedoch weiterhin Version 1.237.316.0 als **Erforderlich** angezeigt, bis die nächste Bewertung ausgeführt wird. Wenn die Bewertung erneut ausgeführt wird, ist möglicherweise kein neueres Definitionsupdate verfügbar. Daher wird in der Tabelle **Update** die Definitionsupdateversion 1.237.316.0 nicht als fehlend bzw. eine neuere Version nicht als erforderlich angezeigt. Aufgrund der Häufigkeit von Definitionsupdates werden in der Protokollsuche unter Umständen mehrere Versionen zurückgegeben. 
+
+### <a name="resolution"></a>Lösung
+
+Führen Sie die folgende Protokollabfrage aus, um zu überprüfen, ob installierte Definitionsupdates ordnungsgemäß gemeldet werden. Diese Abfrage gibt die Erstellungszeit, Version und Update-ID von KB2267602 in der Tabelle **Updates** zurück. Ersetzen Sie den Wert für *Computer* durch den vollqualifizierten Namen des Computers.
+
+```kusto
+Update
+| where TimeGenerated > ago(14h) and OSType != "Linux" and (Optional == false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((
+    Heartbeat
+    | where TimeGenerated > ago(12h) and OSType =~ "Windows" and notempty(Computer)
+    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+    | where Solutions has "updates"
+    | distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Computer, SourceComputerId, UpdateID
+| where UpdateState =~ "Needed" and Approved != false and Computer == "<computerName>"
+| render table
+```
+
+Die zurückgegebenen Abfrageergebnisse sollten etwa wie folgt aussehen:
+
+:::image type="content" source="./media/update-management/example-query-updates-table.png" alt-text="Beispiel: Ergebnisse der Protokollabfrage aus der Tabelle „Updates“":::
+
+Führen Sie die folgende Protokollabfrage aus, um die Erstellungszeit, Version und Update-ID von KB2267602 in der Tabelle **UpdatesRunProgress** zu erhalten. Anhand dieser Abfrage können Sie nachvollziehen, ob die Installation auf dem Computer über die Updateverwaltung oder automatisch über Microsoft Update erfolgt ist. Sie müssen den Wert für *CorrelationId* durch die Runbookauftrags-GUID für das Update (d. h. den Eigenschaftswert **MasterJOBID** aus dem Runbookauftrag **Patch-MicrosoftOMSComputer**) und *SourceComputerId* durch die GUID des Computers ersetzen.
+
+```kusto
+UpdateRunProgress
+| where OSType!="Linux" and CorrelationId=="<master job id>" and SourceComputerId=="<source computer id>"
+| summarize arg_max(TimeGenerated, Title, InstallationStatus) by UpdateId
+| project TimeGenerated, id=UpdateId, displayName=Title, InstallationStatus
+```
+
+Die zurückgegebenen Abfrageergebnisse sollten etwa wie folgt aussehen:
+
+:::image type="content" source="./media/update-management/example-query-updaterunprogress-table.png" alt-text="Beispiel: Ergebnisse der Protokollabfrage aus der Tabelle „UpdatesRunProgress“":::
+
+Wenn der Wert **TimeGenerated** für die Protokollabfrageergebnisse aus der Tabelle **Updates** vor dem Zeitstempel (d. h. dem Wert von **TimeGenerated**) der Updateinstallation auf dem Computer oder aus den Protokollabfrageergebnissen aus der Tabelle **UpdateRunProgress** liegt, warten Sie auf die nächste Bewertung. Führen Sie anschließend die Protokollabfrage erneut für die Tabelle **Updates** aus. Entweder wird kein Update für KB2267602 angezeigt, oder es wird mit einer neueren Version angezeigt. Wenn aber auch nach der letzten Bewertung dieselbe Version in der Tabelle **Updates** als **Erforderlich** angezeigt wird, die Version jedoch bereits installiert ist, öffnen Sie einen Azure-Supportfall.
 
 ## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>Szenario: Linux-Updates, die als ausstehend angezeigt werden, und die, die installiert sind, unterscheiden sich
 
@@ -290,7 +338,17 @@ Computer werden in Ergebnissen einer Azure Resource Graph-Abfrage aufgeführt, s
 
 4. Überprüfen Sie, ob der Hybrid Worker für diesen Computer vorhanden ist.
 
-5. Wenn der Computer nicht als Hybrid Runbook Worker-System eingerichtet ist, lesen Sie die Methoden zum Aktivieren des Computers im Abschnitt [Updateverwaltung aktivieren](../update-management/overview.md#enable-update-management) des Artikels „Übersicht über die Updateverwaltung“. Die zu aktivierende Methode basiert auf der Umgebung, in der der Computer ausgeführt wird.
+5. Ist der Computer nicht als Hybrid Runbook Worker-System eingerichtet, sehen Sie sich die Optionen zum Aktivieren an, und verwenden Sie eine der folgenden Methoden:
+
+   - Über Ihr [Automation-Konto](../update-management/enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer, einschließlich Server mit Arc-Unterstützung
+
+   - Verwenden des [Runbooks](../update-management/enable-from-runbook.md) **Enable-AutomationSolution** zum Automatisieren des Onboardings von Azure-VMs
+
+   - Für eine [ausgewählte Azure-VM](../update-management/enable-from-vm.md) über die Seite **Virtuelle Computer** im Azure-Portal. Dieses Szenario steht für virtuelle Computer unter Linux oder Windows zur Verfügung.
+
+   - Für [mehrere virtuelle Azure-Computer](../update-management/enable-from-portal.md), indem Sie sie auf der Seite **Virtuelle Computer** im Azure-Portal auswählen.
+
+   Die zu aktivierende Methode basiert auf der Umgebung, in der der Computer ausgeführt wird.
 
 6. Wiederholen Sie die obigen Schritte für alle Computer, die nicht in der Vorschau angezeigt werden.
 
@@ -326,7 +384,7 @@ Update
 
 #### <a name="communication-with-automation-account-blocked"></a>Kommunikation mit dem Automation-Konto blockiert
 
-Rufen Sie den Abschnitt [Netzwerkplanung](../update-management/overview.md#ports) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.
+Rufen Sie den Abschnitt [Netzwerkplanung](../update-management/plan-deployment.md#ports) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.
 
 #### <a name="duplicate-computer-name"></a>Doppelter Computername
 
@@ -416,7 +474,7 @@ Sie können weitere Details programmgesteuert mithilfe der REST-API abrufen. Inf
 
 Verwenden Sie [dynamische Gruppen](../update-management/configure-groups.md) (falls vorhanden) für Ihre Updatebereitstellungen. Außerdem können Sie die folgenden Schritte ausführen.
 
-1. Vergewissern Sie sich, dass der Computer oder Server die [Anforderungen](../update-management/overview.md#system-requirements) erfüllt.
+1. Vergewissern Sie sich, dass der Computer oder Server die [Anforderungen](../update-management/operating-system-requirements.md) erfüllt.
 2. Überprüfen Sie die Konnektivität mit dem Hybrid Runbook Worker mithilfe der Problembehandlung für den Hybrid Runbook Worker-Agent. Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit dem Update-Agent](update-agent-issues.md).
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Szenario: Updates werden ohne Bereitstellung installiert.
@@ -514,7 +572,7 @@ Das Standardwartungsfenster für Updates beträgt 120 Minuten. Sie können das W
 
 Um zu ermitteln, warum dieses Problem während der Ausführung eines Updates nach dem erfolgreichen Start auftritt, [überprüfen Sie die Auftragsausgabe](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment) des von der Ausführung betroffenen Computers. Möglicherweise finden Sie spezifische Fehlermeldungen von Ihren Computern, die Sie untersuchen können, um dann Maßnahmen zu ergreifen.  
 
-Sie können weitere Details programmgesteuert mithilfe der REST-API abrufen. Informationen zum Abrufen einer Liste von Updatekonfigurations-Computerausführungen oder einer einzelnen Softwareupdatekonfigurations-Computerausführung anhand der ID finden Sie unter [Softwareupdatekonfigurations-Computerausführungen](https://docs.microsoft.com/rest/api/automation/softwareupdateconfigurationmachineruns).
+Sie können weitere Details programmgesteuert mithilfe der REST-API abrufen. Informationen zum Abrufen einer Liste von Updatekonfigurations-Computerausführungen oder einer einzelnen Softwareupdatekonfigurations-Computerausführung anhand der ID finden Sie unter [Softwareupdatekonfigurations-Computerausführungen](/rest/api/automation/softwareupdateconfigurationmachineruns).
 
 Bearbeiten Sie alle fehlgeschlagenen, geplanten Updatebereitstellungen, und vergrößern Sie das Wartungsfenster.
 
@@ -549,7 +607,7 @@ Wird ein HRESULT angezeigt, doppelklicken Sie auf die rot angezeigte Ausnahme, u
 |Ausnahme  |Lösung oder Aktion  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | Suchen Sie den entsprechenden Fehlercode in der [Windows Update-Fehlercodeliste](https://support.microsoft.com/help/938205/windows-update-error-code-list), um weitere Details zur Ursache der Ausnahme zu erfahren.        |
-|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Diese Fehler deuten auf Netzwerkkonnektivitätsprobleme hin. Stellen Sie sicher, dass Ihr Computer über Netzwerkkonnektivität zur Updateverwaltung verfügt. Im Abschnitt [Netzwerkplanung](../update-management/overview.md#ports) finden Sie eine Liste der erforderlichen Ports und Adressen.        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Diese Fehler deuten auf Netzwerkkonnektivitätsprobleme hin. Stellen Sie sicher, dass Ihr Computer über Netzwerkkonnektivität zur Updateverwaltung verfügt. Im Abschnitt [Netzwerkplanung](../update-management/plan-deployment.md#ports) finden Sie eine Liste der erforderlichen Ports und Adressen.        |
 |`0x8024001E`| Der Updatevorgang konnte nicht abgeschlossen werden, weil der Dienst oder das System heruntergefahren wurden.|
 |`0x8024002E`| Der Windows Update-Dienst ist deaktiviert.|
 |`0x8024402C`     | Wenn Sie einen WSUS-Server verwenden, stellen Sie sicher, dass die Registrierungswerte für `WUServer` und `WUStatusServer` unter dem Registrierungsschlüssel `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` den richtigen WSUS-Server angeben.        |
@@ -615,7 +673,7 @@ Updates werden oft durch andere Updates ersetzt. Weitere Informationen finden Si
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Installieren von Updates durch Klassifizierung unter Linux
 
-Die Bereitstellung von Updates für Linux durch Klassifizierung („Kritische und Sicherheitsupdates“) hat wichtige Einschränkungen, insbesondere für CentOS. Diese Einschränkungen sind auf der [Übersichtsseite für die Updateverwaltung](../update-management/overview.md#linux) dokumentiert.
+Die Bereitstellung von Updates für Linux durch Klassifizierung („Kritische und Sicherheitsupdates“) hat wichtige Einschränkungen, insbesondere für CentOS. Diese Einschränkungen sind auf der [Übersichtsseite für die Updateverwaltung](../update-management/overview.md#update-classifications) dokumentiert.
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 fehlt dauerhaft.
 

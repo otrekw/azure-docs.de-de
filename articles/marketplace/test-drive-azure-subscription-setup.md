@@ -7,18 +7,18 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 03/16/2020
-ms.openlocfilehash: a7f12891bf394e54ee46c60598536faed1731202
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c82f68ee35ae95a424c0847be9a9cc770185af43
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600881"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005733"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>Einrichten eines Azure Marketplace-Abonnements für gehostete Testversionen
 
-In diesem Artikel erfahren Sie, wie Sie ein Azure Marketplace-Abonnement und eine Umgebung für Testversionen von **Dynamics 365 Customer Engagement** oder **Dynamics 365 for Operations** einrichten.
+In diesem Artikel erfahren Sie, wie Sie ein Azure Marketplace-Abonnement und eine Umgebung für Testversionen von **Dynamics 365 Customer Engagement und Power Apps** oder **Dynamics 365 for Operations** einrichten.
 
-## <a name="set-up-for-dynamics-365-for-customer-engagement"></a>Einrichten von Dynamics 365 for Customer Engagement
+## <a name="set-up-for-dynamics-365-for-customer-engagement--power-apps"></a>Einrichtung für Dynamics 365 for Customer Engagement und Power Apps
 
 1. Melden Sie sich mit einem Administratorkonto beim [Azure-Portal](https://portal.azure.com/) an.
 2. Stellen Sie sicher, dass Sie sich in dem Mandanten befinden, der der Instanz Ihrer Dynamics 365-Testversion zugeordnet ist, indem Sie in der oberen rechten Ecke auf das Symbol für Ihr Konto zeigen. Wenn Sie sich nicht im richtigen Mandanten befinden, klicken Sie auf das Kontosymbol, um zum richtigen Mandanten zu wechseln.

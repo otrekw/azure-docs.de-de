@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines virtuellen Windows-Computers mit Azure Image Builder (Vorschauversion)
+title: Erstellen eines virtuellen Windows-Computers mit Azure Image Builder
 description: Erstellen Sie mit Azure Image Builder einen virtuellen Windows-Computer.
 author: kof-f
 ms.author: kofiforson
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: cd941868cd03a456ba78b57bcfeae5f8adfb59f4
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 6eaa59521a864b3d93d4c79706ca8ec7ff100d70
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107948201"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030969"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Vorschau: Erstellen eines virtuellen Windows-Computers mit Azure Image Builder
+# <a name="create-a-windows-vm-with-azure-image-builder"></a>Erstellen eines virtuellen Windows-Computers mit Azure Image Builder
 
 In diesem Artikel erfahren Sie, wie Sie mit Azure VM Image Builder ein benutzerdefiniertes Windows-Image erstellen können. Im Beispiel in diesem Artikel werden [Anpassungen](../linux/image-builder-json.md#properties-customize) für das Image verwendet:
 - PowerShell (ScriptUri): lädt ein [PowerShell-Skript](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1) herunter und führt es aus.
@@ -33,24 +33,14 @@ Sie können auch `buildTimeoutInMinutes` angeben. Der Standardwert ist 240 Minu
 Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwenden die JSON-Datei [helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
 
 
-> [!IMPORTANT]
-> Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+> [!NOTE]
+> Für Windows-Benutzer können die folgenden Beispiele der Azure-Befehlszeilenschnittstelle mithilfe von Bash in [Azure Cloud Shell](https://shell.azure.com) ausgeführt werden.
 
 
 ## <a name="register-the-features"></a>Registrieren des Features
 
-Sie müssen das neue Feature registrieren, um Azure Image Builder während der Vorschauphase verwenden zu können.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
-
-Überprüfen Sie den Status der Featureregistrierung.
-
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
-```
+Um Azure Image Builder zu verwenden, müssen Sie das Feature registrieren.
 
 Überprüfen Sie die Registrierung.
 

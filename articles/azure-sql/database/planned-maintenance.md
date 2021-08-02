@@ -3,20 +3,20 @@ title: Planen von Azure-Wartungsereignissen
 description: Es wird beschrieben, wie Sie Ereignisse der geplanten Wartung für Azure SQL-Datenbank und für verwaltete Azure SQL-Instanzen vorbereiten.
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 3/23/2021
-ms.openlocfilehash: 76b094cbaf75c093afef308d85f549786928287d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7de0db8245908e8342abbbe6a8f7cc4f2359e7f5
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128395"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017863"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ Es wird beschrieben, wie Sie Ereignisse der geplanten Wartung in Ihrer Datenbank
 
 Damit die Dienste Azure SQL-Datenbank und Azure SQL Managed Instance sicher, konform, stabil und leistungsfähig bleiben, werden nahezu fortlaufend Updates über die Dienstkomponenten ausgeführt. Dank der modernen und robusten Dienstarchitektur und innovativer Technologien wie [Hotpatching](https://aka.ms/azuresqlhotpatching) sind die meisten Updates in Bezug auf die Dienstverfügbarkeit vollständig transparent und stellen keine Beeinträchtigung dar. Trotzdem verursachen einige Arten von Updates kurze Dienstunterbrechungen und erfordern eine besondere Behandlung. 
 
-Für jede Datenbank halten Azure SQL-Datenbank und verwaltete Azure SQL-Instanzen ein bestimmtes Quorum an Datenbankreplikaten vor, von denen eines das primäre Replikat ist. Zu jeder Zeit muss ein primäres Replikat online in Betrieb sein, und mindestens ein sekundäres Replikat muss fehlerfrei sein. Während der geplanten Wartung werden die Mitglieder des Datenbankquorums nacheinander mit der Absicht offline geschaltet, dass ein antwortendes primäres Replikat und mindestens ein sekundäres Replikat online vorhanden ist, um sicherzustellen, dass es keine Ausfallzeiten des Clients auftreten. Wenn das primäre Replikat offline geschaltet werden muss, erfolgt ein Neukonfigurationsprozess, bei dem ein einziges sekundäres Replikat zum neuen primären Replikat wird.  
+Während der geplanten Wartung werden die Mitglieder des Datenbankquorums nacheinander mit der Absicht offline geschaltet, dass ein antwortendes primäres Replikat vorhanden ist. Für Datenbanken der Kategorien Unternehmenskritisch und Premium bleibt auch mindestens ein sekundäres Replikat online, um sicherzustellen, dass keine Clientausfälle auftreten. Wenn das primäre Replikat offline geschaltet werden muss, erfolgt ein Neukonfigurationsprozess. Für Datenbanken der Kategorien Unternehmenskritisch und Premium wird eines der sekundären Replikate zum neuen primären Replikat. Für Universell-, Standard- und Basic-Datenbanken wird das primäre Replikat auf einen anderen zustandslosen Computeknoten mit ausreichend freier Kapazität verschoben.
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Was Sie bei einem geplanten Wartungsereignis erwarten können
 

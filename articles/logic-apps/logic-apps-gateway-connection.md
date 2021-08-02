@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: 49da5d7f045ed06ba16696ebd16ad212b9d140d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 490750fecf1634f8d0bbcd92bd71cdf3cb531c71
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763307"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888588"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
@@ -170,7 +170,7 @@ Um eine andere Gatewayressource zu erstellen, Ihre Gatewayinstallation mit einer
 
 * Ihr Azure-Konto gehört nicht zu einem einzigen [Azure AD-Mandanten oder -Verzeichnis](../active-directory/fundamentals/active-directory-whatis.md#terminology). Überprüfen Sie, ob Sie denselben Azure AD-Mandanten oder dasselbe Azure AD-Verzeichnis verwenden, den bzw. das Sie während der Gatewayinstallation verwendet haben.
 
-* Ihre Gatewayressource und die Gatewayinstallation befinden sich nicht in derselben Region. Der Standort Ihrer Logik-App kann jedoch vom Standort Ihrer Gatewayressource abweichen.
+* Ihre Gatewayressource und die Gatewayinstallation befinden sich nicht in derselben Region. Stellen Sie sicher, dass ihre Gatewayinstallation in derselben Region befindet, in der Sie die Gatewayressource in Azure erstellen möchten. Der Standort Ihrer Logik-App kann jedoch vom Standort Ihrer Gatewayressource abweichen.
 
 * Ihre Gatewayinstallation ist bereits einer anderen Gatewayressource zugeordnet. Jede Gatewayressource kann nur mit einer Gatewayinstallation verknüpft sein, die wiederum nur mit einem Azure-Konto und einem Abonnement verknüpft ist. Gatewayinstallationen, die bereits anderen Gatewayressourcen zugeordnet sind, können also nicht ausgewählt werden. Diese Installationen werden nicht in der Liste **Installationsname** angezeigt.
 

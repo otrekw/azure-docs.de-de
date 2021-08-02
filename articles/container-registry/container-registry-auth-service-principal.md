@@ -3,12 +3,12 @@ title: Authentifizieren mit dem Dienstprinzipal
 description: Gewähren Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden.
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: a32538e5fc5354427bafc5098634becdcedd1239
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 7d64f63de3227394d1f69b2049f0a58dda35e6e6
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285534"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440716"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry-Authentifizierung mit Dienstprinzipalen
 
@@ -28,10 +28,12 @@ Konfigurieren Sie beispielsweise Ihre Webanwendung für die Verwendung eines Die
 
 ## <a name="when-to-use-a-service-principal"></a>Einsatzbereiche eines Dienstprinzipals
 
-Sie sollten einen Dienstprinzipal verwenden, um in **monitorlosen Szenarien** Zugriff auf die Registrierung bieten. Das heißt, dies betrifft jede Anwendung, jeden Dienst oder jedes Skript, das Containerimages in automatisierter oder anderweitig unbeaufsichtigter Weise pushen oder pullen muss. Beispiel:
+Sie sollten einen Dienstprinzipal verwenden, um in **monitorlosen Szenarien** Zugriff auf die Registrierung bieten. Das heißt, dies betrifft Anwendungen, Dienste oder Skripte, die Containerimages in automatisierter oder anderweitig unbeaufsichtigter Weise pushen oder pullen müssen. Beispiel:
 
-  * *Pull*: Bereitstellen von Containern aus einer Registrierung für Orchestrierungssysteme, z. B. Kubernetes, DC/OS und Docker Swarm. Sie können auch Pullvorgänge aus Containerregistrierungen in verwandte Azure-Dienste durchführen, z. B. [Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md), [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](../service-fabric/index.yml) und weitere Dienste.
+  * *Pull*: Bereitstellen von Containern aus einer Registrierung für Orchestrierungssysteme, z. B. Kubernetes, DC/OS und Docker Swarm. Sie können auch Pullvorgänge aus Containerregistrierungen in verwandte Azure-Dienste durchführen, z. B. [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](../service-fabric/index.yml) und weitere Dienste.
 
+    > [!TIP]
+    > Ein Dienstprinzipal wird in mehreren [Kubernetes-Szenarien](authenticate-kubernetes-options.md) empfohlen, um Images aus einer Azure-Containerregistrierung zu pullen. Mit Azure Kubernetes Service (AKS) können Sie auch einen automatisierten Mechanismus zur Authentifizierung bei einer Zielregistrierung verwenden, indem Sie die [verwaltete Identität](../aks/cluster-container-registry-integration.md)des Clusters aktivieren. 
   * *Push*: Erstellen von Containerimages und deren Übertragung per Pushvorgang in eine Registrierung mithilfe von Lösungen für Continuous Integration und Continuous Deployment wie Azure Pipelines oder Jenkins.
 
 Für den individuellen Zugriff auf eine Registrierung, etwa, wenn Sie manuell ein Containerimage auf Ihre Entwicklungsarbeitsstation pullen, empfehlen wir, dass Sie stattdessen Ihre eigene [Azure AD-Identität](container-registry-authentication.md#individual-login-with-azure-ad) für den Registrierungszugriff verwenden (beispielsweise mit [az acr login][az-acr-login]).
@@ -55,7 +57,7 @@ Sobald Sie einem Dienstprinzipal Zugriff auf Ihre Containerregistrierung gewähr
 Jeder Wert hat das Format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
 
 > [!TIP]
-> Sie können das Kennwort eines Dienstprinzipals neu generieren, indem Sie den Befehl [az ad sp reset-credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) ausführen.
+> Sie können das Kennwort eines Dienstprinzipals neu generieren, indem Sie den Befehl [az ad sp reset-credentials](/cli/azure/ad/sp/credential#az_ad_sp_credential_reset) ausführen.
 >
 
 ### <a name="use-credentials-with-azure-services"></a>Verwenden von Anmeldeinformationen mit Azure-Diensten
@@ -95,6 +97,19 @@ az acr login --name myregistry
 
 Die CLI verwendet das Token, das bei Ihrer Ausführung von `az login` erstellt wurde, um Ihre Sitzung bei der Registrierung zu authentifizieren.
 
+## <a name="create-service-principal-for-cross-tenant-scenarios"></a>Erstellen eines Dienstprinzipals für mandantenübergreifende Szenarien
+
+Ein Dienstprinzipal kann auch in Azure-Szenarien verwendet werden, die das Pullen von Images aus einer Containerregistrierung in einem Azure Active Directory (Mandant) in einen Dienst oder eine App in einer anderen erfordern. Beispielsweise kann eine Organisation eine App in Mandant A ausführen, die ein Image aus einer freigegebenen Containerregistrierung in Mandant B pullen muss.
+
+So erstellen Sie einen Dienstprinzipal, der sich in einem mandantenübergreifenden Szenario bei einer Containerregistrierung authentifizieren kann:
+
+*  Erstellen einer [mehrinstanzenfähigen App](../active-directory/develop/single-and-multi-tenant-apps.md) (Dienstprinzipal) in Mandant A 
+* Die App in Mandant B bereitstellen.
+* Dem Dienstprinzipal Berechtigungen zum Pullen aus der Registrierung in Mandant B erteilen.
+* Den Dienst oder die App in Mandant A für die Authentifizierung mit dem neuen Dienstprinzipal aktualisieren.
+
+Beispielschritte finden Sie unter [Pullen von Images aus einer Containerregistrierung in einen AKS-Cluster in einem anderen AD-Mandanten](authenticate-aks-cross-tenant.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Szenarios für die Authentifizierung mit einer Azure-Containerregistrierung finden Sie in der [Authentifizierungsübersicht](container-registry-authentication.md).
@@ -106,6 +121,6 @@ Die CLI verwendet das Token, das bei Ihrer Ausführung von `az login` erstellt w
 [acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-login]: /cli/azure/reference-index#az-login
-[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-login]: /cli/azure/reference-index#az_login
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset

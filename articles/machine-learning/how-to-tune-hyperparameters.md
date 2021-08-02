@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 4154d73cbf7a82c78dcc8ea30f11b8d984dd6af0
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 40c94b367f827d727e1d255f677e26b5b17fd95b
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896673"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440932"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Optimierung der Hyperparameter eines Modells mit Azure Machine Learning
 
@@ -430,7 +430,7 @@ Sie können alle Ihre Ausführungen der Hyperparameteroptimierung im [Azure Mach
 
     :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="Metrikdiagramm für die Hyperparameteroptimierung":::
 
-- **Diagramm mit parallelen Koordinaten:** Diese Visualisierung zeigt die Korrelation zwischen der Leistung der primären Metrik und individuellen Hyperparameterwerten. Das Diagramm ist interaktiv. Da bedeutet, die Achsen können durch Klicken und Ziehen der Achsenbezeichnung verschoben werden. Außerdem können Werte auf einer einzelnen Achse hervorgehoben werden. (Klicken und ziehen Sie vertikal entlang einer einzelnen Achse, um einen gewünschten Wertebereich hervorzuheben.)
+- **Diagramm mit parallelen Koordinaten:** Diese Visualisierung zeigt die Korrelation zwischen der Leistung der primären Metrik und individuellen Hyperparameterwerten. Das Diagramm ist interaktiv. Da bedeutet, die Achsen können durch Klicken und Ziehen der Achsenbezeichnung verschoben werden. Außerdem können Werte auf einer einzelnen Achse hervorgehoben werden. (Klicken und ziehen Sie vertikal entlang einer einzelnen Achse, um einen gewünschten Wertebereich hervorzuheben.) Auf der rechten Seite des Diagramm mit parallelen Koordinaten befindet sich eine Achse, die den besten Metrikwert entsprechend der für diese Ausführungsinstanz festgelegten Hyperparameter kennzeichnet. Mit dieser Achse wird die Diagrammgradientenlegende besser lesbar auf die Daten projiziert.
 
     :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="Diagramm mit parallelen Koordinaten für die Hyperparameteroptimierung":::
 

@@ -4,14 +4,15 @@ description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 05/05/2021
 ms.author: v-erkel
-ms.openlocfilehash: 02934a1943ef37d282dd2a2e7862c5695bbd6ecb
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 72c9590cca805d0a6e22d42f482ad80935e842d3
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862703"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706784"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
@@ -42,7 +43,7 @@ Legen Sie unter **Dienstdetails** den Cachenamen sowie folgende weitere Attribut
 
 Legen Sie auf der Seite **Cache** die Kapazität Ihres Caches fest. Die hier festgelegten Werte bestimmen, wie viele Daten der Cache enthalten und wie schnell er Clientanforderungen bewältigen kann.
 
-Die Kapazität wirkt sich auch auf die Kosten des Caches aus.
+Die Kapazität wirkt sich auch auf die Kosten für den Cache und darauf aus, wie viele Speicherziele unterstützt werden können.
 
 Legen Sie zum Auswählen der Kapazität die beiden folgenden Werte fest:
 
@@ -50,6 +51,9 @@ Legen Sie zum Auswählen der Kapazität die beiden folgenden Werte fest:
 * Die zugeordnete Speichermenge für zwischengespeicherte Daten in TB
 
 Wählen Sie einen der verfügbaren Durchsatzwerte und eine der verfügbaren Cachespeichergrößen aus.
+
+> [!TIP]
+> Wenn Sie mehr als 10 Speicherziele mit Ihrem Cache verwenden möchten, müssen Sie den höchsten verfügbaren Wert für die Cachespeichergröße für Ihre Durchsatzgröße auswählen. Weitere Informationen finden Sie unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets).
 
 Beachten Sie, dass die tatsächliche Datenübertragungsrate von der Arbeitsauslastung, der Netzwerkgeschwindigkeit und der Art der Speicherziele abhängt. Die von Ihnen ausgewählten Werte bestimmen den maximalen Durchsatz für das gesamte Cachesystem, ein Teil davon wird jedoch für zusätzliche Aufgaben verwendet. Wenn ein Client beispielsweise eine Datei anfordert, die noch nicht im Cache gespeichert ist, oder wenn die Datei als veraltet markiert ist, nutzt der Cache einen Teil des Durchsatzes, um sie aus dem Back-End-Speicher abzurufen.
 
@@ -132,11 +136,13 @@ nets/<cache_subnet_name>"``
 
   | Cachegröße | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3\.072 GB    | ja         | nein          | nein          |
+  | 3\.072 GB    | ja         | Nein          | nein          |
   | 6144 GB    | ja         | ja         | nein          |
   | 12288 GB   | ja         | ja         | ja         |
   | 24576 GB   | nein          | ja         | ja         |
-  | 49152 GB   | nein          | nein          | ja         |
+  | 49152 GB   | nein          | Nein          | ja         |
+
+  Wenn Sie mehr als 10 Speicherziele mit Ihrem Cache verwenden möchten, wählen Sie den höchsten verfügbaren Wert für die Cachegröße für Ihre SKU aus. Diese Konfigurationen unterstützen bis zu 20 Speicherziele.
 
   Lesen Sie den Abschnitt **Cachekapazität festlegen** auf der Portalregisterkarte mit Anweisungen, um wichtige Informationen zu den Preisen, dem Durchsatz und der richtigen Dimensionierung des Caches für Ihren Workflow zu erhalten.
 
@@ -235,11 +241,11 @@ nets/<cache_subnet_name>"`
 
   | Cachegröße | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3\.072 GB    | ja         | nein          | nein          |
+  | 3\.072 GB    | ja         | Nein          | nein          |
   | 6144 GB    | ja         | ja         | nein          |
   | 12.288 GB   | ja         | ja         | ja         |
   | 24.576 GB   | nein          | ja         | ja         |
-  | 49.152 GB   | nein          | nein          | ja         |
+  | 49.152 GB   | nein          | Nein          | ja         |
 
   Lesen Sie den Abschnitt **Cachekapazität festlegen** auf der Portalregisterkarte mit Anweisungen, um wichtige Informationen zu den Preisen, dem Durchsatz und der richtigen Dimensionierung des Caches für Ihren Workflow zu erhalten.
 

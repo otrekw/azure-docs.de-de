@@ -3,12 +3,12 @@ title: Ändern von Azure Service Fabric-Clustereinstellungen
 description: Dieser Artikel beschreibt die Fabric-Einstellungen und Fabric-Upgraderichtlinien, die Sie anpassen können.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 65ae2337ac7dbe4370411a154463a6ddc37f83b2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ef89cb50770eecb7b61798562ba6228f0ecd0071
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107255970"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479819"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -490,7 +490,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodeCapacityCollectionMap |statischen|Eine Sammlung von Knotenkapazitäten für verschiedene Metriken. |
+|PropertyGroup |NodeCapacityCollectionMap | Dynamisch |Eine Sammlung von Knotenkapazitäten für verschiedene Metriken. Dynamisch ab Service Fabric-Version 8.1, *Statisch* in früheren Versionen. |
 
 ## <a name="nodedomainids"></a>NodeDomainIds
 
@@ -503,7 +503,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodePropertyCollectionMap |statischen|Eine Sammlung der Zeichenfolgen von Schlüssel-Wert-Paaren für Knoteneigenschaften. |
+|PropertyGroup |NodePropertyCollectionMap | Dynamisch |Eine Sammlung der Zeichenfolgen von Schlüssel-Wert-Paaren für Knoteneigenschaften. Dynamisch ab Service Fabric-Version 8.1, *Statisch* in früheren Versionen. |
 
 ## <a name="paas"></a>Paas
 

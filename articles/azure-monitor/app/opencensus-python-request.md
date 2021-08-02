@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 3b029a9cb14a81c80072847dc17d6b71f480743f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 093a31991300867e2598cabacbef7f56dfe890e9
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585679"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472715"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Nachverfolgen eingehender Anforderungen mit OpenCensus Python
 
@@ -87,7 +87,10 @@ Instrumentieren Sie zunächst Ihre Python-Anwendung mit dem aktuellen [OpenCensu
         }
     }
     ```
-
+    
+    > [!NOTE]
+    > Um Flask unter uWSGI in einer Docker-Umgebung auszuführen, müssen Sie der uWSGI-Konfigurationsdatei („uwsgi.ini“) zunächst `lazy-apps = true` hinzufügen. Weitere Informationen finden Sie in der [Problembeschreibung](https://github.com/census-instrumentation/opencensus-python/issues/660). 
+    
 ## <a name="tracking-pyramid-applications"></a>Nachverfolgen von Pyramid-Anwendungen
 
 1. Laden Sie `opencensus-ext-django` von [PyPI](https://pypi.org/project/opencensus-ext-pyramid/) herunter, installieren Sie das Paket, und instrumentieren Sie Ihre Anwendung mit dem `pyramid`-Tween. An Ihre `pyramid`-Anwendung gesendete eingehende Anforderungen werden nachverfolgt.

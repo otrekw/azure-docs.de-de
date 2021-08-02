@@ -1,5 +1,5 @@
 ---
-title: DevOps-Task des Azure Image Builder-Diensts
+title: 'Vorschau: DevOps-Task des Azure VM Image Builder-Diensts'
 description: Mit diesem Azure DevOps-Task zum Einfügen von Buildartefakten in ein VM-Image können Sie Ihre Anwendung und Ihr Betriebssystem installieren und konfigurieren.
 author: danielsollondon
 ms.author: danis
@@ -8,14 +8,15 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: d02a5c6bc194009d459647721dab16be0dcade84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7055aa967058e1592f757c2dabf7890b1da76632
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670471"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441796"
 ---
-# <a name="azure-image-builder-service-devops-task"></a>DevOps-Task des Azure Image Builder-Diensts
+# <a name="azure-image-builder-service-devops-task-preview"></a>DevOps-Task des Azure VM Image Builder-Diensts (Vorschau)
 
 In diesem Artikel erfahren Sie, wie Sie mit einem Azure DevOps-Task zum Einfügen von Buildartefakten in ein VM-Image Ihre Anwendung und Ihr Betriebssystem installieren und konfigurieren können.
 
@@ -28,6 +29,9 @@ In Azure VM Image Builder (AIB) gibt es zwei DevOps-Tasks:
 * Mithilfe des [„instabilen“ AIB-Tasks](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary) lassen sich die neuesten Updates und Features aufspielen. Kunden erhalten die Möglichkeit, diese zu testen, bevor sie als „stabiler“ Task eingestuft werden. Wenn es keine gemeldeten Probleme gibt und die Telemetrie keine Probleme aufweist, wird der Taskcode etwa eine Woche später als „stabil“ eingestuft. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+> [!NOTE]
+> Der AIB-Task unterstützt derzeit keine Windows-Neustarts und das Ausführen von Befehlen mit erhöhten Rechten als Administrator. Dies bedeutet, dass er nicht für Windows Virtual Desktop-Szenarien oder Windows-Anpassungen geeignet ist, die dies erfordern. Wenn Sie DevOps mit Image Builder verwenden möchten, sollten Sie die Vorlage in einen Azure Resource Manager-Task schachteln oder die Azure-Befehlszeilenschnittstelle bzw. PowerShell-Tasks verwenden.
 
 * Installieren Sie den [stabilen DevOps-Task aus Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder).
 * Sie müssen über ein VSTS-DevOps-Konto verfügen und eine Buildpipeline erstellt haben.

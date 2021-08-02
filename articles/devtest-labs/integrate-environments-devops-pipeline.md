@@ -3,12 +3,12 @@ title: Integrieren von Umgebungen in Azure Pipelines in Azure DevTest Labs
 description: Hier erfahren Sie, wie Sie Azure DevTest Labs-Umgebungen in Ihre CI- und CD-Pipelines (Continuous Integration und Continuous Delivery) von Azure DevOps integrieren.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18f334fe85b6a38c38fc41d55c711ee6d6629760
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85483022"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006129"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrieren von Umgebungen in Ihre Azure DevOps-CI/CD-Pipelines
 Mithilfe der in Azure DevOps Services (ehemals Visual Studio Team Services) installierten Erweiterung „Azure DevTest Labs Tasks“ können Sie Ihre Build- und Releasepipeline mit Continuous Integration (CI)/Continuous Delivery (CD) problemlos in Azure DevTest Labs integrieren. Diese Erweiterungen vereinfachen beispielsweise die schnelle Bereitstellung einer [Umgebung](devtest-lab-test-env.md) für eine bestimmte Testaufgabe und die anschließende Löschung der Umgebung nach Abschluss des Tests. 
@@ -26,8 +26,8 @@ In diesem Abschnitt erfahren Sie, wie Sie ein Lab für die Bereitstellung der Az
 
 1. [Erstellen Sie ein Lab](devtest-lab-create-lab.md), falls Sie noch keines besitzen. 
 2. Konfigurieren Sie das Lab, und erstellen Sie eine Umgebungsvorlage. Befolgen Sie hierzu die Anweisungen im folgenden Artikel: [Erstellen von Umgebungen mit mehreren VMs und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md).
-3. Verwenden Sie für dieses Beispiel die bereits vorhandene Azure-Schnellstartvorlage [https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/](https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/).
-4. Kopieren Sie den Ordner **201-web-app-redis-cache-sql-database** in den Ordner **ArmTemplate** des Repositorys, das Sie in Schritt 2 konfiguriert haben.
+3. Verwenden Sie für dieses Beispiel die bereits vorhandene Azure-Schnellstartvorlage [https://azure.microsoft.com/resources/templates/web-app-redis-cache-sql-database](https://azure.microsoft.com/resources/templates/web-app-redis-cache-sql-database).
+4. Kopieren Sie den Ordner **web-app-redis-cache-sql-database** in den Ordner **ArmTemplate** des Repositorys, das Sie in Schritt 2 konfiguriert haben.
 
 ## <a name="create-a-release-definition"></a>Erstellen einer Releasedefinition
 So erstellen Sie die Releasedefinition

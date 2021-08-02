@@ -1,18 +1,18 @@
 ---
 title: Testen eines Azure-VM-Images für Azure Marketplace
-description: Hier erfahren Sie, wie Sie ein Azure-VM-Angebot im Azure Marketplace testen und übermitteln.
+description: Erfahren Sie, wie Sie ein Azure-VM-Angebot in Azure Marketplace testen und übermitteln.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: 467b7d605b57c479d84fc995b4e0dc53b3ac5275
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c885f7e953849825c9a0ef87f68df6e9e2d3360a
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558294"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528574"
 ---
 # <a name="test-a-virtual-machine-image"></a>Testen eines VM-Images
 

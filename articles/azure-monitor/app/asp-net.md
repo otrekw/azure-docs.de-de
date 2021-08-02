@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie mehr über die Leistung, die Verfüg
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f9cb5370dcddf783e533664c4c141779402103f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7cc1038e662950e8f7207d3cf4d9bf9e45f90e1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97028987"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097262"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Konfigurieren von Application Insights für Ihre ASP.NET-Website
 
@@ -27,7 +27,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 - Erstellen Sie eine [arbeitsbereichsbasierte Ressource für Application Insights](create-workspace-resource.md).
 
 > [!IMPORTANT]
-> Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=net) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+> [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) sind Instrumentierungsschlüsseln vorzuziehen. Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die Verbindungszeichenfolge identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 
 
 ## <a name="create-a-basic-aspnet-web-app"></a>Erstellen einer einfachen ASP.NET-Web-App

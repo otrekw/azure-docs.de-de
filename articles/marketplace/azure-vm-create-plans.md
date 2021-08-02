@@ -6,19 +6,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 04/01/2021
-ms.openlocfilehash: b1111caf2eaab1114371cbfed1e929afcff20898
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 05/20/2021
+ms.openlocfilehash: f0e05f06258cc30253fefdc7113fce045009f500
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219364"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527620"
 ---
-# <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Erstellen von Plänen für ein VM-Angebot
+# <a name="create-plans-for-a-virtual-machine-offer"></a>Erstellen von Plänen für ein VM-Angebot
 
 Auf der Seite **Planübersicht** (Auswahl im Partner Center im linken Navigationsmenü) können Sie eine Vielzahl von Planoptionen innerhalb desselben Angebots bereitstellen. Ein Angebot erfordert mindestens einen Plan (zuvor als SKU bezeichnet), der sich hinsichtlich der Monetarisierungszielgruppe, Azure-Region, Features oder VM-Images unterscheiden kann.
 
-Sie können bis zu 100 Pläne für jedes Angebot erstellen. Bis zu 45 davon können privat sein. Erfahren Sie unter [Private Angebote im kommerziellen Microsoft-Marketplace](private-offers.md) mehr über private Pläne.
+Sie können bis zu 100 Pläne für jedes Angebot erstellen, von denen bis zu 45 privat sein können. Erfahren Sie unter [Private Angebote im kommerziellen Microsoft-Marketplace](private-offers.md) mehr über private Pläne.
 
 Wählen Sie nach dem Erstellen Ihrer Pläne die Registerkarte **Planübersicht** aus, um folgende Informationen anzuzeigen:
 
@@ -28,7 +28,7 @@ Wählen Sie nach dem Erstellen Ihrer Pläne die Registerkarte **Planübersicht**
 - Aktueller Veröffentlichungsstatus
 - Verfügbare Aktionen
 
-Die im Bereich **Planübersicht** verfügbaren Aktionen unterscheiden sich je nach dem aktuellen Status Ihres Plans.
+Die in diesem Bereich verfügbaren Aktionen unterscheiden sich abhängig vom aktuellen Status Ihres Plans.
 
 - Wenn es sich bei dem Plan um einen Entwurf handelt, wählen Sie **Entwurf löschen** aus.
 - Wenn der Planstatus live veröffentlicht wurde, wählen Sie **Stop sell plan** (Verkauf des Plans einstellen) oder **Sync private audience** (Private Zielgruppe synchronisieren) aus.
@@ -49,13 +49,6 @@ Klicken Sie auf **Erstellen**. Dadurch wird die Seite **Plansetup** geöffnet.
 ## <a name="plan-setup"></a>Plansetup
 
 Legen Sie die allgemeine Konfiguration für den Plantyp fest, geben Sie an, ob die technische Konfiguration von einem anderen Plan wiederverwendet wird, und nennen Sie die Azure-Regionen, in denen der Plan verfügbar sein soll. Ihre hier getroffene Auswahl legt fest, welche Felder in anderen Bereichen desselben Plans angezeigt werden.
-
-### <a name="reuse-technical-configuration"></a>Wiederverwenden der technischen Konfiguration
-
-Wenn Sie über mehrere Pläne desselben Typs verfügen und deren Pakete identisch sind, können Sie **This plan reuses technical configuration from another plan** (Dieser Plan verwendet eine technische Konfiguration aus einem anderen Plan wieder) auswählen. Mit dieser Option können Sie einen der anderen Pläne desselben Typs für dieses Angebot auswählen und seine technische Konfiguration wiederverwenden.
-
-> [!NOTE]
-> Wenn Sie die technische Konfiguration aus einem anderen Plan wiederverwenden, wird die gesamte Registerkarte **Technische Konfiguration** nicht mehr in diesem Plan angezeigt. Die Details der technischen Konfiguration aus dem anderen Plan, einschließlich aller Updates, die Sie in Zukunft vornehmen, werden für diesen Plan ebenfalls verwendet. Diese Einstellung kann nicht mehr geändert werden, nachdem der Plan veröffentlicht wurde.
 
 ### <a name="azure-regions"></a>Azure-Regionen
 
@@ -164,8 +157,9 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte
 
 Geben Sie die Images und andere technische Eigenschaften an, die diesem Plan zugeordnet sind.
 
-> [!NOTE]
-> Diese Registerkarte wird nicht angezeigt, wenn Sie den Plan auf der Registerkarte **Plansetup** so konfiguriert haben, dass Pakete aus einem anderen Plan wiederverwendet werden.
+### <a name="reuse-technical-configuration"></a>Wiederverwenden der technischen Konfiguration
+
+Wenn Sie über mehrere Pläne desselben Typs verfügen und deren Pakete identisch sind, können Sie **This plan reuses the technical configuration from another plan** (In diesem Plan wird die technische Konfiguration aus einem anderen Plan wiederverwendet) auswählen. Mit dieser Option können Sie einen der anderen Pläne desselben Typs für dieses Angebot auswählen und seine technische Konfiguration wiederverwenden.
 
 ### <a name="operating-system"></a>Betriebssystem
 
@@ -216,11 +210,14 @@ Geben Sie eine Datenträgerversion und den SAS-URI (Shared Access Signature) fü
 Diese beiden erforderlichen Felder werden in der obigen Abbildung angezeigt:
 
 - **Datenträgerversion**: Die Version des Images, das Sie bereitstellen.
-- **Link zu Betriebssystem-VHD**: Der Speicherort in Ihrem Azure Storage-Konto für die Betriebssystem-VHD. Informationen zum Abrufen eines SAS-URI finden Sie unter [Abrufen des Shared Access Signature-URI für Ihr VM-Image](azure-vm-get-sas-uri.md).
+- **Link zu Betriebssystem-VHD:** Das im Katalog mit freigegebenen Azure-Images gespeicherte Image. Erfahren Sie, wie Sie Ihr Image in einem [Katalog mit freigegebenen Images](azure-vm-create-using-approved-base.md#capture-image) erfassen.
 
 Datenträger (wählen Sie **Datenträger hinzufügen (max. 16)** aus) sind ebenfalls VHD-SAS-URIs, die in den zugehörigen Azure Storage-Konten gespeichert sind. Fügen Sie einem Plan pro Übermittlung nur ein Image hinzu.
 
 Fügen Sie unabhängig vom verwendeten Betriebssystem immer nur die für die Lösung erforderliche Mindestanzahl von Datenträgern für Daten hinzu. Bei der Bereitstellung können Kunden Datenträger, die Teil eines Images sind, nicht entfernen. Sie haben aber immer die Möglichkeit, während oder nach der Bereitstellung Datenträger hinzuzufügen.
+
+> [!NOTE]
+> Wenn Sie Ihre Images mit einer SAS bereitstellen und über Datenträger verfügen, müssen Sie diese ebenfalls als SAS-URI bereitstellen. Wenn Sie freigegebene Images verwenden, werden diese als Teil Ihres Images in Shared Image Gallery erfasst. Nachdem Ihr Angebot in Azure Marketplace veröffentlicht wurde, können Sie das Image aus Ihrem Azure-Speicher oder Ihrem Katalog mit freigegebenen Images löschen.
 
 Wählen Sie **Entwurf speichern** und dann oben links **Planübersicht** aus, um den soeben erstellten Plan anzuzeigen.
 
