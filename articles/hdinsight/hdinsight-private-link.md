@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Azure HDInsight-Cluster in einem virtu
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: bc7834a0f8272da3f8954c7dd9f3e18163795cba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe3b9617db20f445d4139c006c283bbfe537d544
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98939369"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616477"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Schützen und Isolieren von Azure HDInsight-Clustern mit Private Link (Vorschauversion)
 
@@ -28,7 +28,7 @@ Bei den grundlegenden Lastenausgleichsmodulen der Standardarchitektur für virtu
 
 Die Festlegung von `resourceProviderConnection` auf „Outbound“ (Ausgehend) ermöglicht Ihnen auch den Zugriff auf clusterspezifische Ressourcen, z. B. Azure Data Lake Storage Gen2 oder externe Metastores, über private Endpunkte. Die Verwendung privater Endpunkte ist für diese Ressourcen nicht vorgeschrieben. Wenn Sie jedoch beabsichtigen, private Endpunkte für diese Ressourcen zu verwenden, müssen Sie die privaten Endpunkte und DNS-Einträge konfigurieren, `before` Sie den HDInsight-Cluster erstellen. Es wird empfohlen, während der Clustererstellung alle benötigten externen SQL-Datenbanken zu erstellen und bereitzustellen, z. B. Apache Ranger, Ambari, Oozie und Hive-Metastores. Es wird vorausgesetzt, dass auf alle diese Ressourcen von innerhalb des Clustersubnetzes zugegriffen werden kann – entweder über einen eigenen privaten Endpunkt oder auf andere Weise.
 
-Das Verwenden privater Endpunkte für Azure Key Vault wird nicht unterstützt. Bei Verwendung von Azure Key Vault für die Verschlüsselung ruhender Daten mit kundenseitig verwalteten Schlüsseln (CMK) muss der Azure Key Vault-Endpunkt aus dem HDInsight-Subnetz ohne privaten Endpunkt zugänglich sein.
+Stellen Sie beim Herstellen einer Verbindung mit Azure Data Lake Storage Gen2 über einen privaten Endpunkt sicher, dass für das Gen2-Speicherkonto ein Endpunkt für „blob“ und „dfs“ festgelegt ist. Weitere Informationen finden Sie unter [Verwenden privater Endpunkte für Azure Storage](../storage/common/storage-private-endpoints.md).
 
 Im folgenden Diagramm ist dargestellt, wie eine potenzielle HDInsight-Architektur für virtuelle Netzwerke aussehen kann, wenn `resourceProviderConnection` auf „Outbound“ (Ausgehend) festgelegt ist:
 

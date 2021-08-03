@@ -1,6 +1,6 @@
 ---
 title: Digest-Verwaltung und Datenbanküberprüfung
-description: Dieser Artikel enthält Informationen zum Digest der Ledger-Datenbank und zur Datenbanküberprüfung in Azure SQL-Datenbank
+description: Dieser Artikel enthält Informationen zur Digest-Verwaltung und Datenbanküberprüfung für eine Ledgerdatenbank in Azure SQL-Datenbank.
 ms.custom: ''
 ms.date: 05/25/2021
 ms.service: sql-database
@@ -9,44 +9,48 @@ ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: cb5c0d4b6a569e93052c2923b609935cd3934ec8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e133ee1c8492bf63cbfd4702e795743009abfdc7
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386330"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080091"
 ---
 # <a name="digest-management-and-database-verification"></a>Digest-Verwaltung und Datenbanküberprüfung
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger ist zurzeit als **öffentliche Vorschauversion** verfügbar.
+> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in der Region „USA, Westen-Mitte“ verfügbar.
 
-Azure SQL-Datenbank Ledger bietet eine Form der Datenintegrität namens Forward-Integrity, die einen Beweis für die Manipulation von Daten in Ihren Ledger-Tabellen liefert. Wenn beispielsweise eine Banktransaktion in einer Ledger-Tabelle auftritt, in der ein Saldo auf den Wert `x` aktualisiert wurde, wird diese Manipulationsaktivität durch die Datenbanküberprüfung erkannt, wenn ein Angreifer die Daten später ändert und den Saldo von `x` in `y` ändert.  
+Der Azure SQL-Datenbank-Ledger ermöglicht eine Form der Datenintegrität, die als *Forward Integrity* („Vorwärtsintegrität“) bezeichnet wird und einen Beweis für die Manipulation von Daten in Ihren Ledgertabellen liefern kann. Wenn beispielsweise eine Banktransaktion in einer Ledgertabelle auftritt, in der ein Saldo auf den Wert `x` aktualisiert wurde, und ein Angreifer die Daten später ändert (Änderung des Saldos von `x` in `y`), wird diese Manipulationsaktivität durch die Datenbanküberprüfung erkannt.  
 
-Der Datenbank-Überprüfungsprozess verwendet einen oder mehrere zuvor generierte Datenbank Digests als Eingabe und berechnet die im Datenbank-Ledger gespeicherten Hashes – basierend auf dem aktuellen Status der Ledger-Tabellen – neu. Wenn die berechneten Hashes nicht mit den Eingabe-Digests übereinstimmen, schlägt die Überprüfung fehl (was auf eine Manipulation der Daten hinweist) und meldet alle erkannten Inkonsistenzen.
+Für den Prozess der Datenbanküberprüfung werden als Eingabe ein oder mehrere zuvor generierte Datenbank-Digests verwendet. Anschließend werden die Hashes, die im Datenbankledger gespeichert sind, anhand des aktuellen Status der Ledgertabellen neu berechnet. Falls die berechneten Hashes nicht mit den Eingabe-Digests übereinstimmen, wird bei der Überprüfung ein Fehler angezeigt. Der Fehler ist ein Hinweis darauf, dass die Daten manipuliert wurden. Beim Überprüfungsprozess werden alle erkannten Inkonsistenzen gemeldet.
 
-## <a name="database-digests"></a>Datenbank-Digests
+## <a name="database-digests"></a>Datenbankhashes
 
-Der Hash des letzten Blocks im Datenbank-Ledger wird als „Datenbank-Digest“ bezeichnet und stellt den Status aller Ledger-Tabellen in der Datenbank zum Zeitpunkt der Blockgenerierung dar. Das Generieren eines Datenbank-Digests ist effizient, da es nur das Berechnen der Hashes der Blöcke umfasst, die vor Kurzem angefügt wurden. Datenbank-Digests können entweder automatisch vom System oder manuell vom Benutzer generiert und später zum Überprüfen der Datenintegrität der Datenbank verwendet werden. Datenbank-Digests werden in Form eines JSON-Dokuments generiert, das den Hash des letzten Blocks zusammen mit Metadaten zur Block-ID enthält. Die Metadaten enthalten den Zeitpunkt der Generierung des Digests und den Commit-Zeitstempel der letzten Transaktion in diesem Block.
+Der Hash des letzten Blocks im Datenbankledger wird als *Datenbankhash* bezeichnet. Er stellt den Status aller Ledgertabellen in der Datenbank zum Zeitpunkt der Blockgenerierung dar. Die Generierung eines Datenbank-Digests ist effizient, da bei diesem Vorgang nur die Hashes der Blöcke berechnet werden, die vor Kurzem angefügt wurden. 
 
-Der Überprüfungsprozess und die Integrität der Datenbank hängen von der Integrität der Eingabe-Digests ab. Zu diesem Zweck müssen Datenbank-Digests, die aus der Datenbank extrahiert werden, in einem vertrauenswürdigen Speicher gespeichert werden, die nicht von den Benutzern oder Angreifern mit hohen Berechtigungen des Azure SQL-Datenbank-Servers manipuliert werden können.
+Datenbank-Digests können entweder automatisch vom System oder manuell vom Benutzer generiert werden. Später können Sie sie dann verwenden, um die Integrität der Datenbank zu überprüfen. 
+
+Datenbank-Digests werden in Form eines JSON-Dokuments generiert, das den Hash des letzten Blocks zusammen mit den Metadaten für die Block-ID enthält. Die Metadaten enthalten den Zeitpunkt der Generierung des Digests und den Commit-Zeitstempel der letzten Transaktion in diesem Block.
+
+Der Überprüfungsprozess und die Integrität der Datenbank hängen von der Integrität der Eingabe-Digests ab. Zu diesem Zweck müssen aus der Datenbank extrahierte Datenbank-Digests in einem vertrauenswürdigen Speicher gespeichert werden, der von Benutzern oder Angreifern mit hohem Berechtigungsgrad, die auf den Azure SQL-Datenbank-Server zugreifen, nicht manipuliert werden kann.
 
 ### <a name="automatic-generation-and-storage-of-database-digests"></a>Automatisches Generieren und Speichern von Datenbank-Digests
 
-Azure SQL-Datenbank Ledger lässt sich in [unveränderlichen Speicher für Azure Blob Storage](../../storage/blobs/storage-blob-immutable-storage.md) und [Azure Confidential Ledger](/azure/confidential-ledger/) integrieren und bietet sichere Speicherdienste in Azure, um die Datenbank-Digests vor potenziellen Manipulationen zu schützen. Diese Integration bietet Benutzern eine einfache und kostengünstige Möglichkeit, die Digest-Verwaltung zu automatisieren, ohne sich um ihre Verfügbarkeit und geografische Replikation kümmern zu müssen. 
+Der Azure SQL-Datenbank-Ledger ist mit dem [Feature „Unveränderlicher Speicher“ von Azure Blob Storage](../../storage/blobs/storage-blob-immutable-storage.md) und mit [Azure Confidential Ledger](../../confidential-ledger/index.yml) integriert. Im Rahmen dieser Integration werden sichere Speicherdienste in Azure bereitgestellt, um die Datenbank-Digests vor potenziellen Manipulationen zu schützen. Diese Integration bietet Benutzern eine einfache und kostengünstige Möglichkeit, die Digest-Verwaltung zu automatisieren, ohne sich um ihre Verfügbarkeit und geografische Replikation kümmern zu müssen. 
 
-Das Konfigurieren des automatischen Generierens und Speichern von Datenbank-Digests kann entweder über das Azure-Portal, PowerShell oder Azure CLI erfolgen. Bei der Konfiguration werden Datenbank-Digests in einem vordefinierten Intervall von 30 Sekunden generiert und in den ausgewählten Speicherdienst hochgeladen. Wenn im System im 30-Sekunden-Intervall keine Transaktionen auftreten, wird kein Datenbank-Digest generiert und hochgeladen. Dadurch wird sichergestellt, dass Datenbank-Digests nur generiert werden, wenn Daten in Ihrer Datenbank aktualisiert wurden.
+Sie können die automatische Generierung und Speicherung von Datenbank-Digests über das Azure-Portal, PowerShell oder die Azure CLI konfigurieren. Beim Konfigurieren der automatischen Generierung und Speicherung werden Datenbank-Digests nach einem vordefinierten Intervall von 30 Sekunden generiert und in den ausgewählten Speicherdienst hochgeladen. Falls im System während des 30-Sekunden-Intervalls keine Transaktionen erfolgen, wird kein Datenbank-Digest generiert und hochgeladen. Mit diesem Mechanismus wird sichergestellt, dass Datenbank-Digests nur generiert werden, wenn Daten in Ihrer Datenbank aktualisiert wurden.
 
-:::image type="content" source="media/ledger/automatic-digest-management.png" alt-text="Aktivieren von Digest-Speicher"::: 
+:::image type="content" source="media/ledger/automatic-digest-management.png" alt-text="Screenshot: Auswahl für die Aktivierung des Digest-Speichers"::: 
 
 > [!IMPORTANT]
-> Nach der Bereitstellung sollte eine [Unveränderlichkeitsrichtlinie](../../storage/blobs/storage-blob-immutability-policies-manage.md) für Ihren Container konfiguriert werden, um sicherzustellen, dass die Datenbank-Digests vor Manipulationen geschützt sind.
+> Konfigurieren Sie nach der Bereitstellung in Ihrem Container eine [Unveränderlichkeitsrichtlinie](../../storage/blobs/storage-blob-immutability-policies-manage.md), um sicherzustellen, dass die Datenbank-Digests vor Manipulationen geschützt sind.
 
 ### <a name="manual-generation-and-storage-of-database-digests"></a>Manuelles Generieren und Speichern von Datenbank-Digests
 
-Das Azure SQL-Datenbank Ledger ermöglicht es Benutzern auch, bei Bedarf einen Datenbank-Digest zu generieren, sodass sie den Digest manuell in jedem Dienst oder jedes Gerät speichern können, der bzw. das sie als vertrauenswürdiges Speicherziel betrachten, z. B. in einem lokalen Write-Once-Read-Many-Gerät (WORM). Das manuelle Generieren eines Datenbank-Digests erfolgt durch Ausführen der gespeicherten [sys.sp_generate_database_ledger_digest](/sql/relational-databases/system-stored-procedures/sys-sp-generate-database-ledger-digest-transact-sql)-Prozedur in [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) oder [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio).
+Sie können den Azure SQL-Datenbank-Ledger auch nutzen, um einen Datenbank-Digest bedarfsabhängig zu generieren. Auf diese Weise können Sie den Digest manuell in einem beliebigen Dienst oder auf einem beliebigen Gerät speichern, den bzw. das Sie als vertrauenswürdiges Speicherziel ansehen. Beispielsweise können Sie ein lokales WORM-Gerät (Write Once, Read Many) als Ziel auswählen. Sie generieren einen Datenbank-Digest manuell, indem Sie die gespeicherte Prozedur [sys.sp_generate_database_ledger_digest](/sql/relational-databases/system-stored-procedures/sys-sp-generate-database-ledger-digest-transact-sql) in [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) oder [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) ausführen.
 
 > [!IMPORTANT]
 > Zum Generieren von Datenbank-Digests ist die **GENERATE LEDGER DIGEST**-Berechtigung erforderlich. Weitere Informationen zu Berechtigungen im Zusammenhang mit Ledger-Tabellen finden Sie unter [Berechtigungen](/sql/relational-databases/security/permissions-database-engine#asdbpermissions). 
@@ -55,7 +59,7 @@ Das Azure SQL-Datenbank Ledger ermöglicht es Benutzern auch, bei Bedarf einen D
 EXECUTE sp_generate_database_ledger_digest
 ```
 
-Das zurückgegebene Ergebnisset ist eine einzelne Datenzeile, die wie folgt als JSON-Dokument am vertrauenswürdigen Speicherort gespeichert werden sollte:
+Das zurückgegebene Resultset enthält nur eine Zeile mit Daten. Es sollte wie folgt als JSON-Dokument an einem vertrauenswürdigen Speicherort gespeichert werden:
 
 ```json
     {
@@ -69,18 +73,24 @@ Das zurückgegebene Ergebnisset ist eine einzelne Datenzeile, die wie folgt als 
 
 ## <a name="database-verification"></a>Datenbanküberprüfung
 
-Der Überprüfungsprozess scannt alle Ledger- und Verlaufstabellen und berechnet die SHA-256-Hashes ihrer Zeilen neu und vergleicht sie mit den Datenbank-Digest-Dateien, die an die gespeicherte Überprüfungsprozedur übergeben werden. Bei großen Ledger-Tabellen kann die Datenbanküberprüfung ein ressourcenintensiver Prozess sein und sollte nur ausgeführt werden, wenn Benutzer die Integrität ihrer Datenbank überprüfen müssen. Sie kann stündlich oder täglich ausgeführt werden, wenn die Integrität der Datenbank häufig überwacht werden muss oder nur, wenn die Organisation, die die Daten hostet, eine Überwachung durchläuft und kryptografische Beweise in Bezug auf die Integrität ihrer Daten bereitstellen muss. Zur Senkung der Überprüfungskosten macht Ledger Optionen verfügbar, um einzelne Ledger-Tabellen oder nur eine Teilmenge des Ledgers zu überprüfen. 
+Beim Überprüfungsprozess werden alle Ledger- und Verlaufstabellen überprüft. Die SHA-256-Hashes der darin enthaltenen Zeilen werden neu berechnet und mit den Datenbank-Digest-Dateien verglichen, die an die gespeicherte Prozedur für die Überprüfung übergeben wurden. 
 
-Die Datenbanküberprüfung erfolgt über zwei gespeicherte Prozeduren, je nachdem, ob ein [automatischer Digest-Speicher](#database-verification-using-automatic-digest-storage) verwendet wird oder ob [Digests manuell vom Benutzer verwaltet werden](#database-verification-using-manual-digest-storage).
+Bei großen Ledgertabellen kann die Datenbanküberprüfung ein ressourcenintensiver Prozess sein. Sie sollten diesen Prozess nur verwenden, wenn Sie die Integrität einer Datenbank überprüfen müssen. 
+
+Der Überprüfungsprozess kann auch stündlich oder täglich ausgeführt werden, falls die Integrität einer Datenbank häufiger überwacht werden muss. Alternativ kann der Prozess auch nur dann ausgeführt werden, wenn die Organisation, die die Daten hostet, eine Überprüfung durchläuft und kryptografische Beweise zur Integrität ihrer Daten bereitstellen muss. Zur Senkung der Überprüfungskosten verfügt der Ledger über Optionen, mit denen festgelegt werden kann, dass nur einzelne Ledgertabellen oder nur ein Teil der Ledgertabellen überprüft werden soll. 
+
+Für die Datenbanküberprüfung können Sie zwei gespeicherte Prozeduren nutzen. Die Vorgehensweise hängt hierbei davon ab, ob Sie [automatischen Digest-Speicher verwenden](#database-verification-that-uses-automatic-digest-storage) oder [Digests manuell verwalten](#database-verification-that-uses-manual-digest-storage).
 
 > [!IMPORTANT]
-> Für die Datenbanküberprüfung ist die Berechtigung **VIEW LEDGER CONTENT** erforderlich. Weitere Informationen zu Berechtigungen im Zusammenhang mit Ledger-Tabellen finden Sie unter [Berechtigungen](/sql/relational-databases/security/permissions-database-engine#asdbpermissions). 
+> Für die Datenbanküberprüfung ist die Berechtigung *View Ledger Content* erforderlich. Weitere Informationen zu Berechtigungen im Zusammenhang mit Ledger-Tabellen finden Sie unter [Berechtigungen](/sql/relational-databases/security/permissions-database-engine#asdbpermissions). 
 
-### <a name="database-verification-using-automatic-digest-storage"></a>Datenbanküberprüfung mithilfe der automatischen Digest-Speicherung
+### <a name="database-verification-that-uses-automatic-digest-storage"></a>Datenbanküberprüfung mit automatischem Digest-Speicher
 
-Wenn Sie den automatischen Digest-Speicher zum Generieren und Speichern von Datenbank-Digests verwenden, befindet sich der Speicherort des Digest-Speichers in der Systemkatalogsicht [sys.database_ledger_digest_locations](/sql/relational-databases/system-catalog-views/sys-database-ledger-digest-locations-transact-sql) als JSON-Objekte. Das Ausführen der Datenbanküberprüfung besteht aus der Ausführung der [sp_verify_database_ledger_from_digest_storage](/sql/relational-databases/system-stored-procedures/sys-sp-verify-database-ledger-from-digest-storage-transact-sql) gespeicherten Systemprozedur, wobei die JSON-Objekte aus  der [sys.database_ledger_digest_locations](/sql/relational-databases/system-catalog-views/sys-database-ledger-digest-locations-transact-sql)-Systemkatalogsicht angegeben werden, in der Datenbank-Digests für die Speicherung konfiguriert sind. 
+Wenn Sie den automatischen Digest-Speicher zum Generieren und Speichern von Datenbank-Digests verwenden, befindet sich der Speicherort des Digest-Speichers in der Systemkatalogsicht [sys.database_ledger_digest_locations](/sql/relational-databases/system-catalog-views/sys-database-ledger-digest-locations-transact-sql) (in Form von JSON-Objekten). Die Datenbanküberprüfung umfasst die Ausführung der gespeicherten Systemprozedur [sp_verify_database_ledger_from_digest_storage](/sql/relational-databases/system-stored-procedures/sys-sp-verify-database-ledger-from-digest-storage-transact-sql). Geben Sie die JSON-Objekte aus der Systemkatalogsicht [sys.database_ledger_digest_locations](/sql/relational-databases/system-catalog-views/sys-database-ledger-digest-locations-transact-sql) an, die für die Speicherung der Datenbank-Digests konfiguriert wurde. 
 
-Mithilfe des automatischen Digest-Speichers können Sie den Speicherort während des gesamten Lebenszyklus der Ledger-Tabellen ändern.  Wenn Sie beispielsweise Azure Immutable Blob Storage verwenden, um Ihre Digest-Dateien zu speichern, aber später stattdessen Azure Confidential Ledger verwenden möchten, können Sie dies tun. Diese Änderung des Speicherorts wird in [sys.database_ledger_digest_locations](/sql/relational-databases/system-catalog-views/sys-database-ledger-digest-locations-transact-sql)gespeichert. Um die Ausführung der Überprüfung zu vereinfachen, wenn mehrere Digest-Speicherorte verwendet wurden, ruft das folgende Skript die Speicherorte der Digests ab und führt die Überprüfung mit diesen Speicherorten aus.
+Bei Verwendung des automatischen Digest-Speichers können Sie die Speicherorte während des gesamten Lebenszyklus der Ledgertabellen ändern.  Wenn Sie beispielsweise zunächst unveränderlichen Azure-Speicher nutzen, um Ihre Digest-Dateien zu speichern, und dann auf Azure Confidential Ledger umstellen möchten, können Sie dies tun. Diese Änderung des Speicherorts wird in [sys.database_ledger_digest_locations](/sql/relational-databases/system-catalog-views/sys-database-ledger-digest-locations-transact-sql)gespeichert. 
+
+Um die Ausführung der Überprüfung bei Verwendung mehrerer Digest-Speicherorte zu vereinfachen, werden mit dem folgenden Skript die Speicherorte der Digests abgerufen, und anschließend wird die Überprüfung anhand dieser Speicherorte ausgeführt.
 
 ```sql
 DECLARE @digest_locations NVARCHAR(MAX) = (SELECT * FROM sys.database_ledger_digest_locations FOR JSON AUTO, INCLUDE_NULL_VALUES);
@@ -94,15 +104,17 @@ BEGIN CATCH
 END CATCH
 ```
 
-### <a name="database-verification-using-manual-digest-storage"></a>Datenbanküberprüfung mithilfe der automatischen Digest-Speicherung
+### <a name="database-verification-that-uses-manual-digest-storage"></a>Datenbanküberprüfung mit manuellem Digest-Speicher
 
-Wenn Sie manuellen Digest-Sspeicher zum Generieren und Speichern von Datenbank-Digests verwenden, wird die folgende gespeicherte Prozedur verwendet, um das Ledger zu überprüfen und den JSON-Inhalt des Digests in der gespeicherten Prozedur anzufügen. Beim Ausführen der Datenbanküberprüfung können Sie auswählen, ob alle Tabellen in der Datenbank oder bestimmte Tabellen überprüft werden sollen. Im Folgenden finden Sie die Syntax für die gespeicherte [sp_verify_database_ledger](/sql/relational-databases/system-stored-procedures/sys-sp-verify-database-ledger-transact-sql)-Prozedur:
+Wenn Sie manuellen Digest-Speicher zum Generieren und Speichern von Datenbank-Digests verwenden, wird die folgende gespeicherte Prozedur verwendet, um die Ledgerdatenbank zu überprüfen. Der JSON-Inhalt des Digests wird an die gespeicherte Prozedur angefügt. Beim Ausführen der Datenbanküberprüfung können Sie auswählen, ob alle oder nur bestimmte Tabellen der Datenbank überprüft werden sollen. 
+
+Hier ist die Syntax für die gespeicherte Prozedur [sp_verify_database_ledger](/sql/relational-databases/system-stored-procedures/sys-sp-verify-database-ledger-transact-sql) angegeben:
 
 ```sql
 sp_verify_database_ledger <JSON_document_containing_digests>, <table_name> 
 ```
 
-Im Folgenden finden Sie ein Beispiel für die Ausführung der gespeicherten [sp_verify_database_ledger](/sql/relational-databases/system-stored-procedures/sys-sp-verify-database-ledger-transact-sql)-Prozedur, indem zwei Digests zur Überprüfung übergeben werden: 
+Der folgende Code ist ein Beispiel für die Ausführung der gespeicherten Prozedur [sp_verify_database_ledger](/sql/relational-databases/system-stored-procedures/sys-sp-verify-database-ledger-transact-sql) mit einer Übergabe von zwei Digests zur Überprüfung: 
 
 ```sql
 EXECUTE sp_verify_database_ledger N'
@@ -124,11 +136,11 @@ EXECUTE sp_verify_database_ledger N'
 ]
 ```
 
-Rückgabecodes für `sp_verify_database_ledger` und `sp_verify_database_ledger_from_digest_storage` sind `0` (**Erfolg**) oder `1` (**Fehler**).
+Die Rückgabecodes für `sp_verify_database_ledger` und `sp_verify_database_ledger_from_digest_storage` lauten `0` (Erfolg) und `1` (Fehler).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Azure SQL-Datenbank-Ledger – Übersicht](ledger-overview.md)
 - [Aktualisierbare Ledger-Tabellen](ledger-updatable-ledger-tables.md)   
 - [Ledger-Tabellen, die nur Anfügevorgänge unterstützen](ledger-append-only-ledger-tables.md)   
-- [Datenbank-Ledger](ledger-database-ledger.md)   
+- [Datenbank-Ledger](ledger-database-ledger.md)

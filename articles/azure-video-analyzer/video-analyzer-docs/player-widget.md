@@ -4,12 +4,12 @@ description: In diesem Referenzartikel wird erläutert, wie Sie Ihrer Anwendung 
 ms.service: azure-video-analyzer
 ms.topic: reference
 ms.date: 05/11/2021
-ms.openlocfilehash: 12565f2ca1a86d3a9e57fef652abab9564cb7b5e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f4c2d3f7d13002d0de231859bc31a74b72b1c7fd
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386098"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555126"
 ---
 # <a name="using-the-azure-video-analyzer-player-widget"></a>Verwenden des Player-Widgets des Azure Video Analyzers
 
@@ -44,7 +44,7 @@ In diesem Abschnitt erstellen wir ein JWT-Token, das wir später im Dokument ver
 > [!NOTE] 
 > Wenn Sie mit dem Generieren eines JWT-Tokens auf der Grundlage eines RSA- oder ECC-Zertifikats vertraut sind, können Sie diesen Abschnitt überspringen.
 
-1. Laden Sie die JWTTokenIssuer-Anwendung [hier](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp/tree/main/src/jwt-token-issuer/readme.md) herunter.
+1. Laden Sie die JWTTokenIssuer-Anwendung [hier](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp/tree/main/src/jwt-token-issuer/) herunter.
 
    > [!NOTE] 
    > Weitere Informationen zum Konfigurieren ihrer Zielgruppenwerte finden Sie in diesem [Artikel](./access-policies.md)
@@ -260,10 +260,15 @@ Das Paket, das zum Herunterladen des Codes in Ihre Anwendung verwendet wird, ist
 npm install @azure/video-analyzer/widgets
 ```
 
-Sie können sie auch in Ihren Anwendungscode importieren, mithilfe von:
+Sie können sie auch in Ihren Anwendungscode importieren, indem Sie dies für Typescript verwenden:
 
 ```typescript
 import { Player } from '@video-analyzer/widgets';
+```
+
+Oder für JavaScript, wenn Sie ein Player-Widget dynamisch erstellen möchten:
+```javascript
+<script async type="module" src="https://unpkg.com/@azure/video-analyzer-widgets@latest/dist/global.min.js"></script>
 ```
 
 Wenn Sie diese Methode zum Importieren verwenden, müssen Sie das Player-Objekt programmgesteuert erstellen, nachdem der Import abgeschlossen ist.  Im obigen Beispiel haben Sie das Modul mithilfe des `ava-player`-HTML-Tags zur Seite hinzugefügt.  Um ein Player-Objekt mithilfe von Code zu erstellen, können Sie in die folgenden Schritte ausführen, entweder in JavaScript:

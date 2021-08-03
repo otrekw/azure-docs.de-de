@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 05/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ecece3a00a788b67f6c831804bf5b00372fef93d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba24afb329b5d588ab7a71976f56f50eb475b04b
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99056792"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575406"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -36,6 +36,9 @@ Das Branding und Anpassen der Benutzeroberfläche, die Azure Active Directory B2
 ## <a name="overview"></a>Übersicht
 
 Azure AD B2C bietet eine Reihe von integrierten Vorlagen, unter denen Sie auswählen können, um Ihren Seiten mit Benutzererfahrung einen professionellen Look zu verleihen. Diese Seitenvorlagen können auch als Ausgangspunkt für eigene Anpassungsschritte mit dem [Unternehmensbranding](#company-branding) dienen.
+
+> [!NOTE]
+> Zu den unterstützten Browsern für die klassische Vorlage gehören aktuelle und frühere Versionen von Internet Explorer, Microsoft Edge, Google Chrome, Mozilla Firefox und Safari. Die Vorlagen „Ozeanblau“ und „Schiefergrau“ bieten möglicherweise nur eingeschränkte Unterstützung bei älteren Browserversionen wie Internet Explorer 11 und 10. Es wird daher empfohlen, Ihre Anwendung mit den Browsern zu testen, die Sie unterstützen möchten.
 
 ### <a name="ocean-blue"></a>Ozeanblau
 

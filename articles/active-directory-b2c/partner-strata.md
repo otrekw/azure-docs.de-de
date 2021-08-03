@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 49def79c467aa8f2b3fda9688dc77fcb003a34a5
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: a58042c7098116a2800453dcca46cae62011dfac
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256564"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111570482"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Tutorial: Erweitern von Azure AD B2C zum Schützen lokaler Anwendungen mithilfe von Strata
 
@@ -49,7 +49,7 @@ Die Strata Maverics-Integration umfasst die folgenden Komponenten:
 
 - **Azure AD B2C**: Der Autorisierungsserver, mit dem die Anmeldeinformationen des Benutzers überprüft werden. Authentifizierte Benutzer können mit einem im Azure AD B2C-Verzeichnis gespeicherten lokalen Konto auf lokale Apps zugreifen.
 
-- **Einen externen sozialen oder Unternehmensidentitätsanbieter**: Dabei kann es sich um einen beliebigen OpenID Connect-Anbieter, Facebook, Google oder GitHub handeln. Lesen Sie die Informationen zum Verwenden [externer Identitätsanbieter](./technical-overview.md#external-identity-providers) mit Azure AD B2C.  
+- **Einen externen sozialen oder Unternehmensidentitätsanbieter**: Dabei kann es sich um einen beliebigen OpenID Connect-Anbieter, Facebook, Google oder GitHub handeln. Weitere Informationen finden Sie unter [Hinzufügen eines Identitätsanbieters](./add-identity-provider.md).  
 
 - **Maverics Identity Orchestrator von Strata**: Der Dienst, der die Benutzeranmeldung orchestriert und die Identität über HTTP-Header transparent an Apps übergibt.
 

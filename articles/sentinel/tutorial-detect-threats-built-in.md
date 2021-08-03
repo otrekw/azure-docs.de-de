@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2021
+ms.date: 05/11/2021
 ms.author: yelevin
-ms.openlocfilehash: ba757474ab24006b7b8b514bda085522bd353ea8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 95158fc5aa9d768e7174bc3c72736614efa7f57c
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312670"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371651"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Tutorial: Standardmäßig verfügbare Erkennung von Bedrohungen
 
@@ -54,7 +54,9 @@ Basierend auf der Fusion-Technologie werden für die erweiterte Erkennung mehrst
 >
 > Unter [Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel](fusion.md) erfahren Sie, welche Erkennungsfunkionen als Vorschau verfügbar sind.
 
-### <a name="machine-learning-behavioral-analytics"></a>Machine Learning Behavioral Analytics
+Darüber hinaus kann die Fusion-Engine jetzt Warnungen, die von [geplanten Analyseregeln](#scheduled) generiert werden, mit denen anderer Systeme korrelieren, was zu High-Fidelity-Incidents führt.
+
+### <a name="machine-learning-ml-behavioral-analytics"></a>Machine Learning-Verhaltensanalysen
 
 Da diese Vorlagen auf proprietären Machine Learning-Algorithmen von Microsoft basieren, ist die interne Logik in Bezug auf die Funktionsweise und den Zeitpunkt der Ausführung für Sie nicht sichtbar. Da die Logik ausgeblendet und daher nicht anpassbar ist, können Sie mit jeder Vorlage dieses Typs nur eine Regel erstellen.
 
@@ -63,9 +65,18 @@ Da diese Vorlagen auf proprietären Machine Learning-Algorithmen von Microsoft b
 >
 > - Durch Erstellen und Aktivieren von Regeln, die auf den Vorlagen für die ML-Verhaltensanalyse basieren, **erteilen Sie Microsoft die Berechtigung, erfasste Daten nach Bedarf für die Verarbeitung durch die Machine Learning-Engines und -Modelle außerhalb der geografischen Region Ihres Azure Sentinel-Arbeitsbereichs zu kopieren**.
 
+### <a name="anomaly"></a>Anomalie
+
+Vorlagen für Anomalieregel verwenden SOC-ML (Machine Learning), um bestimmte Arten von anomalen Verhaltensweisen zu erkennen. Jede Regel verfügt über eigene eindeutige Parameter und Schwellenwerte, die für das analysierte Verhalten geeignet sind. Deren Konfiguration kann zwar nicht geändert oder optimiert werden, Sie können die Regel aber duplizieren, das Duplikat ändern und optimieren, das Duplikat im **Flightingmodus** und das Original gleichzeitig im **Produktionsmodus** ausführen, Ergebnisse vergleichen und das Duplikat dann in die **Produktion** wechseln, wenn die Optimierung Ihren Wünschen entspricht. Erfahren Sie mehr über [SOC-ML](soc-ml-anomalies.md) und das [Arbeiten mit Anomalieregeln](work-with-anomaly-rules.md).
+
+> [!IMPORTANT]
+> Die Vorlagen für Anomalieregeln befinden sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
 ### <a name="scheduled"></a>Geplant
 
 Geplante Analyseregeln basieren auf integrierten Abfragen, die von Microsoft-Sicherheitsexperten geschrieben wurden. Sie sehen die Abfragelogik und können Änderungen daran vornehmen. Sie können die Vorlage für geplante Regeln verwenden und die Abfragelogik- und Planungseinstellungen anpassen, um neue Regeln zu erstellen.
+
+Mehrere neue Vorlagen für geplante Analyseregel erzeugen Warnungen, die von der Fusion-Engine mit Warnungen anderer Systeme korreliert werden, um High-Fidelity-Incidents zu erzeugen. Details finden Sie unter [Erweiterte Erkennung von mehrstufigen Angriffen](fusion.md#configure-scheduled-analytics-rules-for-fusion-detections).
 
 > [!TIP]
 > Zu den Planungsoptionen für Regeln gehört es, die Regel so zu konfigurieren, dass sie jede angegebene Anzahl von Minuten, Stunden oder Tagen ausgeführt wird, wobei die Zeit beginnt, wenn Sie die Regel aktivieren.
@@ -82,6 +93,10 @@ Geplante Analyseregeln basieren auf integrierten Abfragen, die von Microsoft-Sic
 1. Durch Klicken auf die Schaltfläche **Regel erstellen** wird je nach ausgewählter Vorlage der Assistent zum Erstellen von Regeln geöffnet. Alle Details werden automatisch ausgefüllt, und Sie können mit der Vorlage **Geplant** oder **Microsoft-Sicherheit** die Logik und andere Regeleinstellungen entsprechend Ihren speziellen Anforderungen anpassen. Sie können diesen Vorgang wiederholen, um zusätzliche Regeln basierend auf der integrierten Vorlage zu erstellen. Nach dem Ausführen aller Schritte im Assistenten zum Erstellen von Regeln haben Sie die Erstellung einer Regel basierend auf der Vorlage abgeschlossen. Die neuen Regeln werden auf der Registerkarte **Aktive Regeln** angezeigt.
 
     Weitere Informationen zum Anpassen der Regeln im Regelerstellungs-Assistenten finden Sie unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md)
+
+## <a name="export-rules-to-an-arm-template"></a>Exportieren von Regeln in eine ARM-Vorlage
+
+Sie können [Ihre Regel problemlos in eine Azure Resource Manager-Vorlage (ARM) exportieren](import-export-analytics-rules.md), wenn Sie Ihre Regeln als Code verwalten und bereitstellen möchten. Sie können auch Regeln aus Vorlagendateien importieren und dann auf der Benutzeroberfläche anzeigen und bearbeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

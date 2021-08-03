@@ -1,55 +1,51 @@
 ---
 title: Verwaltete Identitäten
 description: Media Services kann mit verwalteten Azure-Identitäten verwendet werden.
-keywords: ''
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 1/29/2020
+ms.date: 05/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 0bbfb54d6ba7483e96633bdf05bb580e5517d216
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 02f832c7fc25003950d6a112d951c07d1332e08a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277741"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454366"
 ---
 # <a name="managed-identities"></a>Verwaltete Identitäten
 
 Die Verwaltung von Geheimnissen und Anmeldeinformationen für eine sichere Kommunikation zwischen verschiedenen Diensten stellt für Entwickler eine häufige Herausforderung dar. In Azure brauchen Entwickler dank verwalteter Identitäten keine Anmeldeinformationen mehr zu verwalten. Für die Azure-Ressource in Azure AD wird eine Identität bereitgestellt, mit der Azure Active Directory (Azure AD)-Token abgerufen werden.
 
-Es gibt derzeit zwei Szenarien, in denen verwaltete Identitäten mit Media Services verwendet werden können:
+## <a name="media-services-managed-identity-scenarios"></a>Szenarien mit verwalteter Media Services-Identität
 
-- Verwendung der verwalteten Identität des Media Services Kontos für den Zugriff auf Speicherkonten
+Es gibt drei Szenarien, in denen verwaltete Identitäten mit Media Services verwendet werden können:
 
-- Verwendung der verwalteten Identität des Media Services Kontos für den Zugriff auf Kundenschlüssel über Key Vault
+- [Gewähren des Zugriffs für ein Media Services-Konto auf Key Vault zum Aktivieren von kundenseitig verwalteten Schlüsseln](security-encrypt-data-managed-identity-cli-tutorial.md)
+- [Gewähren des Zugriffs für ein Media Services-Konto auf Speicherkonten, um Media Services das Umgehen von Zugriffssteuerungslisten für Azure Storage-Netzwerke zu gestatten](security-access-storage-managed-identity-cli-tutorial.md)
+- Anderen Diensten (z. B. virtuellen Computern oder [Azure Functions](security-function-app-managed-identity-cli-tutorial.md)) den Zugriff auf Media Services gestatten
 
-In den nächsten beiden Abschnitten werden die Schritte der beiden Szenarien beschrieben.
+In den ersten beiden Szenarien wird die verwaltete Identität verwendet, um dem *Media Services*-Konto Zugriff auf andere Dienste zu gewähren.  Im dritten Szenario verfügt der *Dienst* über eine verwaltete Identität, die für den Zugriff auf Media Services verwendet wird.
 
-## <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>Verwenden der verwalteten Identität des Media Services Kontos für den Zugriff auf Speicherkonten
+:::image type="content" source="media/diagrams/managed-identities-scenario-comparison.svg" alt-text="Vergleich des Szenarios für verwaltete Identitäten":::
 
-1. Erstellen Sie ein Media Services-Kontos mit einer verwalteten Identität.
-1. Gewähren Sie dem Prinzipal der verwalteten Identität Zugriff auf ein Speicherkonto, das Sie besitzen.
-1. Von Media Services kann daraufhin unter Verwendung der verwalteten Identität in Ihrem Namen auf das Speicherkonto zugegriffen werden.
+> [!NOTE]
+> Diese Szenarien können kombiniert werden. Sie können verwaltete Identitäten sowohl für das Media Services-Konto (z. B. für den Zugriff auf kundenseitig verwaltete Schlüssel) als auch für die Azure Functions-Ressource für den Zugriff auf das Media Services-Konto erstellen.
 
-## <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>Verwenden der verwalteten Identität des Media Services Kontos für den Zugriff auf Kundenschlüssel über Key Vault
+## <a name="tutorials-and-how-tos"></a>Tutorials und Vorgehensweisen
 
-1. Erstellen Sie ein Media Services-Kontos mit einer verwalteten Identität.
-1. Gewähren Sie dem Prinzipal der verwalteten Identität Zugriff auf eine Key Vault-Instanz, die Sie besitzen.
-1. Konfigurieren Sie das Media Services-Konto für die Verwendung der kundenschlüsselbasierten Kontoverschlüsselung.
-1. Von Media Services wird unter Verwendung der verwalteten Identität in Ihrem Namen auf Key Vault zugegriffen.
+Probieren Sie diese Tutorials aus, um praktische Erfahrungen mit der Verwendung einer verwalteten Identität mit Media Services zu sammeln.
 
-Weitere Informationen zu kundenseitig verwalteten Schlüsseln und zu Key Vault finden Sie unter [Bring Your Own Key (vom Kunden verwaltete Schlüssel) in Media Services](concept-use-customer-managed-keys-byok.md).
+- [CLI: Verschlüsseln von Daten in einem Media Services-Konto mithilfe eines Key Vault-Schlüssels](security-encrypt-data-managed-identity-cli-tutorial.md)
+- [CLI: Gestatten des Zugriffs für Media Services auf ein Speicherkonto, das für das Blockieren von Anforderungen von unbekannten IP-Adressen konfiguriert ist](security-access-storage-managed-identity-cli-tutorial.md)
+- [CLI: Gewähren des Zugriffs auf ein Media Services-Konto für eine Funktions-App](security-function-app-managed-identity-cli-tutorial.md)
+- [PORTAL: Verwenden von kundenseitig verwalteten Schlüsseln oder BYOK mit Media Services über das Azure-Portal](security-customer-managed-keys-portal-tutorial.md)
+- [POSTMAN/REST: Verwenden von kundenseitig verwalteten Schlüsseln (BYOK) mit der Media Services-REST-API](security-customer-managed-keys-rest-postman-tutorial.md)
 
-## <a name="tutorials"></a>Tutorials
-
-Die folgenden Tutorials enthalten beide oben erwähnten Szenarien:
-
-- [Tutorial: Verwenden von kundenseitig verwalteten Schlüsseln (BYOK) mit Media Services über das Azure-Portal](security-customer-managed-keys-portal-tutorial.md)
-- [Tutorial: Verwenden von kundenseitig verwalteten Schlüsseln (BYOK) mit der Media Services-REST-API](security-customer-managed-keys-rest-postman-tutorial.md)
-
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="further-reading"></a>Weiterführende Themen
 
 Weitere Informationen zu den Funktionen verwalteter Identitäten für Sie und Ihre Azure-Anwendungen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../active-directory/managed-identities-azure-resources/overview.md).
+
+Weitere Informationen zu Azure Functions finden Sie unter [Informationen zu Azure Functions](../../azure-functions/functions-overview.md).

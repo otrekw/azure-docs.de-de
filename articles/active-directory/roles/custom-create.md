@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e0e1543f18c18c7fdf97c39f35ba38ded658392
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bef0dc016b2b216d51a4844c469d14a24e11068b
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103007816"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111437764"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Erstellen und Zuweisen einer benutzerdefinierten Rolle in Azure Active Directory
 
@@ -26,11 +26,20 @@ In diesem Artikel wird beschrieben, wie Sie neue benutzerdefinierte Rollen in Az
 
 Benutzerdefinierte Rollen können auf der Übersichtsseite für Azure AD auf der Registerkarte [Rollen und Administratoren](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) erstellt werden.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Eine Lizenz vom Typ Azure AD Premium P1 oder P2
+- „Administrator für privilegierte Rollen“ oder „Globaler Administrator“
+- AzureADPreview-Modul bei Verwendung von PowerShell
+- Administratoreinwilligung bei Verwendung von Graph-Tester für die Microsoft Graph-API
+
+Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
+
 ## <a name="create-a-role-in-the-azure-portal"></a>Erstellen einer Rolle im Azure-Portal
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Erstellen einer neuen benutzerdefinierten Rolle für den Zugriff zum Verwalten von App-Registrierungen
 
-1. Melden Sie sich bei [Azure AD Admin Center](https://aad.portal.azure.com) mit Berechtigungen vom Typ „Administrator für privilegierte Rollen“ oder „Globaler Administrator“ in der Azure AD-Organisation an.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
 1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** > **Neue benutzerdefinierte Rolle** aus.
 
    ![Erstellen oder Bearbeiten von Rollen auf der Seite „Rollen und Administratoren“](./media/custom-create/new-custom-role.png)
@@ -50,27 +59,6 @@ Benutzerdefinierte Rollen können auf der Übersichtsseite für Azure AD auf der
 Die benutzerdefinierte Rolle wird in der Liste der für die Zuweisung verfügbaren Rollen angezeigt.
 
 ## <a name="create-a-role-using-powershell"></a>Erstellen einer Rolle mit PowerShell
-
-### <a name="prepare-powershell"></a>Vorbereiten von PowerShell
-
-Zunächst müssen Sie das [Azure AD PowerShell-Vorschaumodul herunterladen](https://www.powershellgallery.com/packages/AzureADPreview).
-
-Verwenden Sie die folgenden Befehle, um das Azure AD PowerShell-Modul zu installieren:
-
-``` PowerShell
-Install-Module -Name AzureADPreview 
-Import-Module -Name AzureADPreview 
-```
-
-Überprüfen Sie mithilfe des folgenden Befehls, ob das Modul verwendet werden kann:
-
-``` PowerShell
-Get-Module -Name AzureADPreview 
-
-  ModuleType Version      Name                         ExportedCommands 
-  ---------- ---------    ----                         ---------------- 
-  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...} 
-```
 
 ### <a name="connect-to-azure"></a>Herstellen einer Verbindung mit Azure
 
@@ -102,7 +90,7 @@ $rolePermissions = @{'allowedResourceActions'= $allowedResourceAction}
 $customAdmin = New-AzureADMSRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
 ```
 
-### <a name="assign-the-custom-role-using-azure-ad-powershell"></a>Zuweisen der benutzerdefinierten Rolle mithilfe von Azure AD PowerShell
+### <a name="assign-the-custom-role-using-powershell"></a>Zuweisen der benutzerdefinierten Rolle mithilfe von PowerShell
 
 Weisen Sie die Rolle mithilfe des folgenden PowerShell-Skripts zu:
 
@@ -119,7 +107,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-## <a name="create-a-role-with-graph-api"></a>Erstellen einer Rolle mit der Graph-API
+## <a name="create-a-role-with-the-microsoft-graph-api"></a>Erstellen einer Rolle mit der Microsoft Graph-API
 
 1. Erstellen Sie die Rollendefinition.
 
@@ -175,9 +163,9 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Zuweisen einer auf eine Ressource begrenzten benutzerdefinierten Rolle
 
-Wie integrierte Rollen werden benutzerdefinierte Rollen standardmäßig im organisationsweiten Standardbereich zugewiesen, um Zugriffsberechtigungen für alle App-Registrierungen in Ihrer Organisation zu erteilen. Anders als integrierte Rollen können benutzerdefinierte Rollen jedoch auch im Bereich einer einzelnen Azure AD-Ressource zugewiesen werden. Dadurch können Sie dem Benutzer die Berechtigung zum Aktualisieren von Anmeldeinformationen und grundlegenden Eigenschaften einer einzelnen App erteilen, ohne eine zweite benutzerdefinierte Rolle erstellen zu müssen.
+Wie integrierte Rollen werden benutzerdefinierte Rollen standardmäßig im organisationsweiten Standardbereich zugewiesen, um Zugriffsberechtigungen für alle App-Registrierungen in Ihrer Organisation zu erteilen. Darüber hinaus können benutzerdefinierte Rollen und einige relevante integrierte Rollen (je nach Typ der Azure AD-Ressource) auch im Bereich einer einzelnen Azure AD-Ressource zugewiesen werden. Dadurch können Sie dem Benutzer die Berechtigung zum Aktualisieren von Anmeldeinformationen und grundlegenden Eigenschaften einer einzelnen App erteilen, ohne eine zweite benutzerdefinierte Rolle erstellen zu müssen.
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit Berechtigungen des Typs „Anwendungsentwickler“ in der Azure AD-Organisation an.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit Berechtigungen des Typs „Anwendungsentwickler“ an.
 1. Wählen Sie **App-Registrierungen** aus.
 1. Wählen Sie die App-Registrierung aus, für die Sie Zugriff zum Verwalten gewähren möchten. Möglicherweise müssen Sie die Option **Alle Anwendungen** auswählen, um die vollständige Liste der App-Registrierungen in ihrer Azure AD-Organisation anzuzeigen.
 
@@ -191,5 +179,5 @@ Wie integrierte Rollen werden benutzerdefinierte Rollen standardmäßig im organ
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Im [Forum für Azure AD-Administratorrollen](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) können Sie sich gerne mit uns in Verbindung setzen.
-- Weitere Informationen zu Rollen und zur Zuweisung von Administratorrollen finden Sie unter [Zuweisen von Administratorrollen](permissions-reference.md).
+- Weitere Informationen zu Rollenberechtigungen finden Sie unter [Integrierte Rollen in Azure AD](permissions-reference.md).
 - Informationen zu Standardbenutzerberechtigungen finden Sie unter [Vergleich von Standardbenutzerberechtigungen für Gäste und Mitglieder](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context).

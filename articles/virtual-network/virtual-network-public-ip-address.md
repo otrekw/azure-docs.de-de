@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 65883d34a6161a0bd0faf2a11a0ab528c7e12191
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 80976d3c73a20f7f152f33a8d70cbbd4687a7bd9
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883956"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111810353"
 ---
 # <a name="manage-public-ip-addresses"></a>Verwalten öffentlicher IP-Adressen
 
@@ -97,7 +97,7 @@ Weitere Details zu den spezifischen Attributen einer öffentlichen IP-Adresse w�
 
 ## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
-Bei Verwendung einer VM-Skalierungsgruppe mit öffentlichen IP-Adressen sind den einzelnen VM-Instanzen keine separaten öffentlichen IP-Objekte zugeordnet. Allerdings kann ein öffentliches IP-Präfixobjekt verwendet werden, um die [Instanz-IPs zu generieren](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/).
+Bei Verwendung einer VM-Skalierungsgruppe mit öffentlichen IP-Adressen sind den einzelnen VM-Instanzen keine separaten öffentlichen IP-Objekte zugeordnet. Allerdings kann ein öffentliches IP-Präfixobjekt verwendet werden, um die [Instanz-IPs zu generieren](https://azure.microsoft.com/resources/templates/vmms-with-public-ip-prefix/).
 
 Um die öffentlichen IP-Adressen für eine VM-Skalierungsgruppe aufzulisten, können Sie PowerShell ([Get-AzPublicIpAddress -VirtualMachineScaleSetName](/powershell/module/az.network/get-azpublicipaddress)) oder die CLI ([az vmss list-instance-public-ips](/cli/azure/vmss#az_vmss_list_instance_public_ips)) verwenden.
 

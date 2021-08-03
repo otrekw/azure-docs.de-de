@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 4f5cc0d5eefd5969566040e4148ca7358d348736
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53428a0185b003e22fd0ad68001b2b1588f994b1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951503"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750747"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>Erstellen von Abfragen in Azure Cognitive Search
 
@@ -21,11 +21,11 @@ Wenn Sie zum ersten Mal eine Abfrage erstellen, finden Sie in diesem Artikel Ans
 
 ## <a name="whats-a-query-request"></a>Was ist eine Abfrageanforderung?
 
-Eine Abfrage ist eine Nur-Lese-Anforderung an die Dokumentsammlung eines einzelnen Suchindexes. Sie gibt einen search-Parameter an und enthält den Abfrageausdruck, bestehend aus Begriffen, in Anführungszeichen eingeschlossenen Ausdrücken und Operatoren.
+Eine Abfrage ist eine Nur-Lese-Anforderung an die Dokumentsammlung eines einzelnen Suchindexes. Sie gibt einen „search“-Parameter an, der den Abfrageausdruck enthält, bestehend aus Begriffen, in Anführungszeichen eingeschlossenen Ausdrücken und Operatoren.
 
-Abfrage und Antwort können durch zusätzliche Parameter weiter definiert werden. Zum Beispiel begrenzt „searchFields“ die Ausführung der Abfrage auf bestimmte Felder, „select“ gibt an, welche Felder in den Ergebnissen zurückgegeben werden, und „count“ legt die Anzahl der gefundenen Übereinstimmungen im Index fest.
+Abfrage und Antwort können durch zusätzliche Parameter in der Anforderung weiter definiert werden. Zum Beispiel begrenzt „searchFields“ die Ausführung der Abfrage auf bestimmte Felder, „select“ gibt an, welche Felder in den Ergebnissen zurückgegeben werden, und „count“ legt die Anzahl der gefundenen Übereinstimmungen im Index fest.
 
-Das folgende Beispiel zeigt eine Teilmenge der verfügbaren Parameter, um Ihnen eine allgemeine Vorstellung von einer Abfrageanforderung zu geben. Weitere Informationen zur Abfragekomposition finden Sie unter [Abfragetypen und -kompositionen](search-query-overview.md) sowie [Dokumente durchsuchen (REST)](/rest/api/searchservice/search-documents).
+Das folgende Beispiel zeigt einige der verfügbaren Parameter, um Ihnen eine allgemeine Vorstellung von einer Abfrageanforderung zu geben. Weitere Informationen zur Abfragekomposition finden Sie unter [Abfragetypen und -kompositionen](search-query-overview.md) sowie [Dokumente durchsuchen (REST)](/rest/api/searchservice/search-documents).
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -45,7 +45,7 @@ Sie benötigen ein Tool (z. B. Azure-Portal oder Postman) oder Code, der einen 
 
 ### <a name="permissions"></a>Berechtigungen
 
-Alle Vorgänge, einschließlich Abfrageanforderungen, können unter einem [Administrator-API-Schlüssel](search-security-api-keys.md) verwendet werden, aber Abfrageanforderungen können optional einen [Abfrage-API-Schlüssel](search-security-api-keys.md#create-query-keys) verwenden. Abfrage-API-Schlüssel werden dringend empfohlen. Sie können bis zu 50 Schlüssel pro Dienst erstellen und den verschiedenen Anwendungen unterschiedliche Schlüssel zuweisen.
+Eine Abfrageanforderung erfordert Leseberechtigungen, die über einen im Header übergebenen API-Schlüssel erteilt werden. Alle Vorgänge, einschließlich Abfrageanforderungen, können unter einem [Administrator-API-Schlüssel](search-security-api-keys.md) verwendet werden, aber Abfrageanforderungen können optional einen [Abfrage-API-Schlüssel](search-security-api-keys.md#create-query-keys) verwenden. Abfrage-API-Schlüssel werden dringend empfohlen. Sie können bis zu 50 Schlüssel pro Dienst erstellen und den verschiedenen Anwendungen unterschiedliche Schlüssel zuweisen.
 
 Im Azure-Portal erfordert der Zugriff auf Tools, Assistenten und Objekte die Mitgliedschaft in der Rolle „Mitwirkender“ oder höher für den Dienst. 
 

@@ -3,12 +3,12 @@ title: Von Azure Monitor verwendete IP-Adressen
 description: Für Application Insights erforderliche Serverfirewallausnahmen
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 56ff33cc0a34cb254ca88f96d69a07bc131bebf4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e98419c805b7012a20ef08090c8cf3025baf30e
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714033"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111420822"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>Von Azure Monitor verwendete IP-Adressen
 
@@ -67,144 +67,26 @@ Wenn Sie Azure-Netzwerksicherheitsgruppen verwenden, fügen Sie einfach eine **E
 
 Öffnen Sie die Ports 80 (HTTP) und 443 (HTTPS) für eingehenden Datenverkehr von folgenden Adressen (die IP-Adressen sind nach Speicherort gruppiert):
 
-### <a name="addresses-grouped-by-location"></a>Nach Speicherort gruppierte Adressen
+### <a name="ip-addresses"></a>IP-Adressen
+
+Wenn Sie nach den tatsächlichen IP-Adressen suchen, damit Sie diese der Liste der zulässigen IP-Adressen in Ihrer Firewall hinzufügen können, laden Sie die JSON-Datei mit den Azure-IP-Adressbereichen herunter. Diese Dateien enthalten die aktuellsten Informationen.
+
+Nachdem Sie die entsprechende Datei heruntergeladen haben, öffnen Sie sie in Ihrem bevorzugten Text-Editor, und suchen Sie nach „ApplicationInsightsAvailability“, um direkt zu dem Abschnitt in der Datei zu gelangen, der das Diensttag für Verfügbarkeitstests enthält.
 
 > [!NOTE]
 > Diese Adressen sind anhand der Notation für klassenloses domänenübergreifendes Routing (Classless Inter-Domain Routing, CIDR) aufgelistet. Das bedeutet, dass ein Eintrag wie z. B. `51.144.56.112/28` 16 IP-Adressen von `51.144.56.112` bis `51.144.56.127` entspricht.
 
-```
-Australia East
-20.40.124.176/28
-20.40.124.240/28
-20.40.125.80/28
+#### <a name="azure-public-cloud"></a>Öffentliche Azure-Cloud
+Laden Sie die [IP-Adressen der öffentlichen Cloud](https://www.microsoft.com/download/details.aspx?id=56519) herunter.
 
-Brazil South
-191.233.26.176/28
-191.233.26.128/28
-191.233.26.64/28
+#### <a name="azure-us-government-cloud"></a>Azure-Cloud für US-Behörden
+Laden Sie die [IP-Adressen der Government Cloud](https://www.microsoft.com/download/details.aspx?id=57063) herunter.
 
-France Central (Formerly France South)
-20.40.129.96/28
-20.40.129.112/28
-20.40.129.128/28
-20.40.129.144/28
+#### <a name="azure-china-cloud"></a>Azure-Cloud China
+Laden Sie die [IP-Adressen der China Cloud](https://www.microsoft.com/download/details.aspx?id=57062) herunter.
 
-France Central
-20.40.129.32/28
-20.40.129.48/28
-20.40.129.64/28
-20.40.129.80/28
-
-East Asia
-52.229.216.48/28
-52.229.216.64/28
-52.229.216.80/28
-
-North Europe
-52.158.28.64/28
-52.158.28.80/28
-52.158.28.96/28
-52.158.28.112/28
-
-Japan East
-52.140.232.160/28
-52.140.232.176/28
-52.140.232.192/28
-
-West Europe
-51.144.56.96/28
-51.144.56.112/28
-51.144.56.128/28
-51.144.56.144/28
-51.144.56.160/28
-51.144.56.176/28
-
-UK South
-51.105.9.128/28
-51.105.9.144/28
-51.105.9.160/28
-
-UK West
-20.40.104.96/28
-20.40.104.112/28
-20.40.104.128/28
-20.40.104.144/28
-
-Southeast Asia
-52.139.250.96/28
-52.139.250.112/28
-52.139.250.128/28
-52.139.250.144/28
-
-West US
-40.91.82.48/28
-40.91.82.64/28
-40.91.82.80/28
-40.91.82.96/28
-40.91.82.112/28
-40.91.82.128/28
-
-Central US
-13.86.97.224/28
-13.86.97.240/28
-13.86.98.48/28
-13.86.98.0/28
-13.86.98.16/28
-13.86.98.64/28
-
-North Central US
-23.100.224.16/28
-23.100.224.32/28
-23.100.224.48/28
-23.100.224.64/28
-23.100.224.80/28
-23.100.224.96/28
-23.100.224.112/28
-23.100.225.0/28
-
-South Central US
-20.45.5.160/28
-20.45.5.176/28
-20.45.5.192/28
-20.45.5.208/28
-20.45.5.224/28
-20.45.5.240/28
-
-East US
-20.42.35.32/28
-20.42.35.64/28
-20.42.35.80/28
-20.42.35.96/28
-20.42.35.112/28
-20.42.35.128/28
-
-```  
-
-#### <a name="azure-government"></a>Azure Government
-
-Nicht erforderlich, wenn Sie ein Kunde der öffentlichen Azure-Cloud sind.
-
-```
-USGov Virginia
-52.227.229.80/31
-
-
-USGov Arizona
-52.244.35.112/31
-
-
-USGov Texas
-52.243.157.80/31
-
-
-USDoD Central
-52.182.23.96/31
-
-
-USDoD East
-52.181.33.96/31
-
-```
+### <a name="discovery-api"></a>Ermittlungs-API
+Sie können die aktuelle Liste der Diensttags zusammen mit Details zum IP-Adressbereich auch [programmgesteuert abrufen](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview).
 
 ## <a name="application-insights--log-analytics-apis"></a>Application Insights- und Log Analytics-APIs
 

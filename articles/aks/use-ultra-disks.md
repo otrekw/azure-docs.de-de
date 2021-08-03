@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ultra Disks in einem Azure Kubernetes Service
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 7dbe0a75ce2079bdec752f7fee0c3e97e3ae2ffa
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d42834252416a2aeed40db5fe307cd97f1bbada9
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767347"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007299"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Verwenden von Azure Ultra Disks in Azure Kubernetes Service (Vorschauversion)
 
@@ -21,30 +21,6 @@ Diese Funktion kann nur bei der Erstellung des Clusters oder bei der Erstellung 
 
 > [!IMPORTANT]
 > Azure Ultra Disks erfordern Knotenpools in Verfügbarkeitszonen und Regionen, die diese Datenträger unterstützen, sowie bestimmte VM-Serien. Weitere Informationen finden Sie unter [**Umfang und Einschränkungen für die allgemeine Verfügbarkeit von Ultra Disks**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
-
-### <a name="register-the-enableultrassd-preview-feature"></a>Registrieren der Previewfunktion `EnableUltraSSD`
-
-Um einen AKS-Cluster oder einen Knotenpool zu erstellen, der Ultra Disks verwenden kann, müssen Sie das Featureflag `EnableUltraSSD` in Ihrem Abonnement aktivieren.
-
-Registrieren Sie das `EnableUltraSSD`-Featureflag mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "EnableUltraSSD"
-```
-
-Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableUltraSSD')].{Name:name,State:properties.state}"
-```
-
-Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des Ressourcenanbieters *Microsoft.ContainerService*:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
@@ -64,7 +40,7 @@ az extension update --name aks-preview
 
 ## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>Erstellen eines neuen Clusters, der Ultra Disks verwenden kann
 
-Erstellen Sie mithilfe der folgenden CLI-Befehle einen AKS-Cluster, der Ultra Disks verwenden kann. Verwenden Sie das Flag `--aks-custom-headers`, um das Feature `EnableUltraSSD` festzulegen.
+Erstellen Sie mithilfe der folgenden CLI-Befehle einen AKS-Cluster, der Ultra Disks verwenden kann. Verwenden Sie das Flag `--enable-ultra-ssd`, um das Feature `EnableUltraSSD` festzulegen.
 
 Erstellen Sie eine Azure-Ressourcengruppe:
 
@@ -77,20 +53,20 @@ Erstellen Sie den AKS-Cluster mit Unterstützung für Ultra Disks.
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
-az aks create -g MyResourceGroup -n MyManagedCluster -l westus2 --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
+az aks create -g MyResourceGroup -n MyManagedCluster -l westus2 --node-vm-size Standard_D2s_v3 --zones 1 2 --node-count 2 --enable-ultra-ssd
 ```
 
-Wenn Sie Cluster ohne Unterstützung für Ultra Disks erstellen möchten, lassen Sie den benutzerdefinierten Parameter `--aks-custom-headers` weg.
+Wenn Sie Cluster ohne Unterstützung für Ultra Disks erstellen möchten, lassen Sie den Parameter `--enable-ultra-ssd` weg.
 
 ## <a name="enable-ultra-disks-on-an-existing-cluster"></a>Aktivieren von Ultra Disks in einem vorhandenen Cluster
 
-Sie können Ultra Disks in vorhandenen Clustern aktivieren, indem Sie dem Cluster einen neuen Knotenpool hinzufügen, der Ultra Disks unterstützt. Konfigurieren Sie einen neuen Knotenpool zur Verwendung mithilfe des Flags `--aks-custom-headers`.
+Sie können Ultra Disks in vorhandenen Clustern aktivieren, indem Sie dem Cluster einen neuen Knotenpool hinzufügen, der Ultra Disks unterstützt. Konfigurieren Sie einen neuen Knotenpool zur Verwendung mithilfe des Flags `--enable-ultra-ssd`.
 
 ```azurecli
-az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
+az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_D2s_v3 --zones 1 2 --node-count 2 --enable-ultra-ssd
 ```
 
-Wenn Sie neue Knotenpools ohne Unterstützung für Ultra Disks erstellen möchten, lassen Sie den benutzerdefinierten Parameter `--aks-custom-headers` weg.
+Wenn Sie neue Knotenpools ohne Unterstützung für Ultra Disks erstellen möchten, lassen Sie den Parameter `--enable-ultra-ssd` weg.
 
 ## <a name="use-ultra-disks-dynamically-with-a-storage-class"></a>Dynamisches Verwenden von Ultra Disks mit einer Speicherklasse
 

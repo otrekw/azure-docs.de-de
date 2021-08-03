@@ -1,7 +1,7 @@
 ---
 title: Konfigurieren eines privaten Endpunkts
 titleSuffix: Azure Machine Learning
-description: Verwenden Sie Azure Private Link, um sicher von einem virtuellen Netzwerk aus auf Ihren Azure Machine Learning-Arbeitsbereich zuzugreifen.
+description: Verwenden Sie einen privaten Endpunkt, um sicher von einem virtuellen Netzwerk aus auf Ihren Azure Machine Learning-Arbeitsbereich zuzugreifen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,34 +10,45 @@ ms.custom: devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 05/06/2021
-ms.openlocfilehash: 894e25d0ee44bd057c95efba3b6389ec116c8e07
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 06/10/2021
+ms.openlocfilehash: 9a8e4351b88c1b9c4f166dff71fe906177870d9a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486249"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984696"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurieren von Azure Private Link für einen Azure Machine Learning-Arbeitsbereich
+# <a name="configure-a-private-endpoint-for-an-azure-machine-learning-workspace"></a>Konfigurieren eines privaten Endpunkts für einen Azure Machine Learning-Arbeitsbereich
 
-In diesem Dokument erfahren Sie, wie Sie Azure Private Link mit Ihrem Azure Machine Learning-Arbeitsbereich verwenden. Informationen zum Erstellen eines virtuellen Netzwerks für Azure Machine Learning finden Sie unter [Übersicht über die Isolation virtueller Netzwerke und Datenschutz](how-to-network-security-overview.md).
+Hier erfahren Sie, wie Sie einen privaten Endpunkt für Ihren Azure Machine Learning-Arbeitsbereich konfigurieren. Informationen zum Erstellen eines virtuellen Netzwerks für Azure Machine Learning finden Sie unter [Übersicht über die Isolation virtueller Netzwerke und Datenschutz](how-to-network-security-overview.md).
 
-Azure Private Link ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem Arbeitsbereich über einen privaten Endpunkt. Bei einem privaten Endpunkt handelt es sich um eine Gruppe privater IP-Adressen in Ihrem virtuellen Netzwerk. Sie können dann den Zugriff auf Ihren Arbeitsbereich so einschränken, dass er nur über die privaten IP-Adressen erfolgt. Private Link hilft dabei, das Risiko einer Datenexfiltration zu verringern. Weitere Informationen zu privaten Endpunkten finden Sie im Artikel zu [Azure Private Link](../private-link/private-link-overview.md).
+Azure Private Link ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem Arbeitsbereich über einen privaten Endpunkt. Bei einem privaten Endpunkt handelt es sich um eine Gruppe privater IP-Adressen in Ihrem virtuellen Netzwerk. Sie können dann den Zugriff auf Ihren Arbeitsbereich so einschränken, dass er nur über die privaten IP-Adressen erfolgt. Private Endpunkte helfen dabei, das Risiko einer Datenexfiltration zu verringern. Weitere Informationen zu privaten Endpunkten finden Sie im Artikel zu [Azure Private Link](../private-link/private-link-overview.md).
 
-> [!IMPORTANT]
-> Azure Private Link hat keine Auswirkungen auf die Azure-Steuerungsebene (Verwaltungsvorgänge) aus, etwa das Löschen des Arbeitsbereichs oder das Verwalten von Computeressourcen. Beispiele: Erstellen, Aktualisieren oder Löschen eines Computeziels. Diese Vorgänge werden ganz normal über das öffentliche Internet ausgeführt. Bei Vorgängen auf Datenebene, etwa bei der Verwendung von Azure Machine Learning Studio, APIs (einschließlich veröffentlichter Pipelines) oder des SDK, wird der private Endpunkt verwendet.
+> [!WARNING]
+> Wenn Sie einen Arbeitsbereich mit privaten Endpunkten sichern, wird die End-to-End-Sicherheit allein nicht sichergestellt. Sie müssen alle verschiedenen Komponenten Ihrer Lösung sichern. Wenn Sie z. B. einen privaten Endpunkt für den Arbeitsbereich verwenden, ihr Azure Storage-Konto sich jedoch nicht hinter dem VNet befindet, wird der Datenverkehr zwischen dem Arbeitsbereich und dem Speicher nicht vom VNet geschützt.
 >
-> Wenn Sie Mozilla Firefox verwenden, treten möglicherweise Probleme beim Zugriff auf den privaten Endpunkt für Ihren Arbeitsbereich auf. Dieses Problem kann im Zusammenhang mit DNS über HTTPS in Mozilla auftreten. Es wird empfohlen, zur Problemumgehung Microsoft Edge oder Google Chrome zu verwenden.
+> Weitere Informationen zum Sichern von Ressourcen, die von Azure Machine Learning verwendet werden, finden Sie in den folgenden Artikeln:
+>
+> * [Übersicht zu Isolation und Datenschutz in virtuellen Netzwerken](how-to-network-security-overview.md)
+> * [Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
+> * [Schützen von Trainingsumgebungen](how-to-secure-training-vnet.md)
+> * [Schützen von Rückschlussumgebungen](how-to-secure-inferencing-vnet.md)
+> * [Verwenden von Azure Machine Learning Studio in einem VNet](how-to-enable-studio-virtual-network.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Wenn Sie vorhaben, einen durch Private Link aktivierten Arbeitsbereich mit einem kundenseitig verwalteten Schlüssel zu verwenden, müssen Sie dieses Feature mithilfe eines Supporttickets anfordern. Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+[!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
+
+* Wenn Sie vorhaben, einen private Endpunkte nutzenden Arbeitsbereich mit einem kundenseitig verwalteten Schlüssel zu verwenden, müssen Sie dieses Feature mithilfe eines Supporttickets anfordern. Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 * Sie benötigen ein vorhandenes virtuelles Netzwerk, in dem der private Endpunkt erstellt werden soll. Außerdem müssen Sie vor dem Hinzufügen des privaten Endpunkts [Netzwerkrichtlinien für private Endpunkte deaktivieren](../private-link/disable-private-endpoint-network-policy.md).
+
 ## <a name="limitations"></a>Einschränkungen
 
-* Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit privater Verbindung ist in den Regionen vom Typ „Azure Government“ nicht verfügbar.
-* Wenn öffentlicher Zugriff für einen Arbeitsbereich aktiviert wird, der mit einer privaten Verbindung abgesichert ist, und Sie Azure Machine Learning Studio über das öffentliche Internet verwenden, können einige Features wie der Designer beim Zugriff auf Ihre Daten fehlschlagen. Dieses Problem tritt auf, wenn die Daten in einem Dienst gespeichert werden, der hinter dem VNet geschützt ist. Dies gilt z. B. für ein Azure Storage-Konto.
+* Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit einem privaten Endpunkt ist in den Regionen vom Typ „Azure Government“ nicht verfügbar.
+* Wenn öffentlicher Zugriff für einen Arbeitsbereich aktiviert wird, der mit einem privaten Endpunkt abgesichert ist, und Sie Azure Machine Learning Studio über das öffentliche Internet verwenden, können einige Features wie der Designer beim Zugriff auf Ihre Daten fehlschlagen. Dieses Problem tritt auf, wenn die Daten in einem Dienst gespeichert werden, der hinter dem VNet geschützt ist. Dies gilt z. B. für ein Azure Storage-Konto.
+* Wenn Sie Mozilla Firefox verwenden, treten möglicherweise Probleme beim Zugriff auf den privaten Endpunkt für Ihren Arbeitsbereich auf. Dieses Problem kann im Zusammenhang mit DNS über HTTPS in Mozilla auftreten. Es wird empfohlen, zur Problemumgehung Microsoft Edge oder Google Chrome zu verwenden.
+* Einen privaten Endpunkt zu verwenden hat keine Auswirkungen auf die Azure-Steuerungsebene, d. h. auf Verwaltungsvorgänge wie das Löschen des Arbeitsbereichs oder das Verwalten von Computeressourcen. Beispiele: Erstellen, Aktualisieren oder Löschen eines Computeziels. Diese Vorgänge werden ganz normal über das öffentliche Internet ausgeführt. Bei Vorgängen auf Datenebene, etwa bei der Verwendung von Azure Machine Learning Studio, APIs (einschließlich veröffentlichter Pipelines) oder des SDK, wird der private Endpunkt verwendet.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Erstellen eines Arbeitsbereichs, der einen privaten Endpunkt verwendet
 
@@ -66,7 +77,7 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) stellt den Befehl [az ml workspace create](/cli/azure/ml/workspace#az_ml_workspace_create) bereit. Mit den folgenden Parametern für diesen Befehl kann ein Arbeitsbereich mit einem privaten Netzwerk erstellt werden, aber er erfordert ein vorhandenes virtuelles Netzwerk:
+Die Azure CLI-[Erweiterung 1.0 für maschinelles Lernen](reference-azure-machine-learning-cli.md) bietet den Befehl [az ml workspace create](/cli/azure/ml/workspace#az_ml_workspace_create). Mit den folgenden Parametern für diesen Befehl kann ein Arbeitsbereich mit einem privaten Netzwerk erstellt werden, aber er erfordert ein vorhandenes virtuelles Netzwerk:
 
 * `--pe-name`: Der Name des erstellten privaten Endpunkts.
 * `--pe-auto-approval`: Gibt an, ob private Endpunktverbindungen mit dem Arbeitsbereich automatisch genehmigt werden sollen.
@@ -116,7 +127,7 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen und Methoden
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) stellt den Befehl [az ml workspace private-endpoint add](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_add) bereit.
+Die Azure CLI-[Erweiterung 1.0 für maschinelles Lernen](reference-azure-machine-learning-cli.md) bietet den Befehl [az ml workspace private-endpoint add](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_add).
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval --pe-vnet-name myvnet
@@ -153,7 +164,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) stellt den Befehl [az ml workspace private-endpoint delete](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete) bereit.
+Die Azure CLI-[Erweiterung 1.0 für maschinelles Lernen](reference-azure-machine-learning-cli.md) bietet den Befehl [az ml workspace private-endpoint delete](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -166,7 +177,7 @@ Wählen Sie im Azure Machine Learning-Arbeitsbereich im Portal die Option __Priv
 Da die Kommunikation mit dem Arbeitsbereich nur aus dem virtuellen Netzwerk zulässig ist, müssen alle Entwicklungsumgebungen, in denen der Arbeitsbereich verwendet wird, Mitglieder des virtuellen Netzwerks sein. Beispiel: ein virtueller Computer im virtuellen Netzwerk.
 
 > [!IMPORTANT]
-> Um eine vorübergehende Unterbrechung der Konnektivität zu vermeiden, empfiehlt Microsoft, den DNS-Cache auf Computern, die eine Verbindung mit dem Arbeitsbereich herstellen, nach dem Aktivieren von Private Link zu leeren. 
+> Um eine vorübergehende Unterbrechung der Konnektivität zu vermeiden, empfiehlt Microsoft, den DNS-Cache auf Computern, die eine Verbindung mit dem Arbeitsbereich herstellen, nach dem Aktivieren eines privaten Endpunkts zu leeren. 
 
 Weitere Informationen zu Azure Virtual Machines finden Sie in der [Dokumentation zu Virtual Machines](../virtual-machines/index.yml).
 
@@ -177,7 +188,7 @@ Es kann Situationen geben, in denen Sie jemandem ermöglichen möchten, eine Ver
 > [!WARNING]
 > Bei der Verbindungsherstellung über den öffentlichen Endpunkt haben einige Features von Studio keinen Zugriff auf Ihre Daten. Dieses Problem tritt auf, wenn die Daten in einem Dienst gespeichert werden, der hinter dem VNet geschützt ist. Dies gilt z. B. für ein Azure Storage-Konto. Beachten Sie bitte auch die Compute-Instanz jupyter/jupyterlab/rstudio-Funktionalität, und dass das Ausführen von Notebooks nicht funktioniert.
 
-Führen Sie die folgenden Schritte aus, um den öffentlichen Zugriff auf einen Arbeitsbereich mit aktivierter privater Verbindung zu ermöglichen:
+Führen Sie die folgenden Schritte aus, um den öffentlichen Zugriff auf einen private Endpunkte nutzenden Arbeitsbereich zu ermöglichen:
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -192,7 +203,7 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) bietet den Befehl [az ml workspace update](/cli/azure/ml/workspace#az_ml_workspace_update). Fügen Sie zum Aktivieren des öffentlichen Zugriffs auf den Arbeitsbereich den Parameter `--allow-public-access true` hinzu.
+Die Azure CLI-[Erweiterung 1.0 für maschinelles Lernen](reference-azure-machine-learning-cli.md) bietet den Befehl [az ml workspace update](/cli/azure/ml/workspace#az_ml_workspace_update). Fügen Sie zum Aktivieren des öffentlichen Zugriffs auf den Arbeitsbereich den Parameter `--allow-public-access true` hinzu.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

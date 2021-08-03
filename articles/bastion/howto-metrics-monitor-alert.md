@@ -1,19 +1,19 @@
 ---
 title: Konfigurieren der Überwachung und der Metriken mithilfe von Azure Monitor
 titleSuffix: Azure Bastion
-description: Hier erfahren Sie mehr über die Überwachung und die Metriken in Azure Bastion, die Azure Monitor verwenden, die Azure-Lösung für Metriken, Warnungen und Diagnoseprotokolle.
+description: Erfahren Sie, wie Sie die Überwachung von Azure Bastion und die zugehörigen Metriken mithilfe von Azure Monitor konfigurieren.
 services: bastion
 author: mialdrid
 ms.service: bastion
 ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: c4e03318fae8d8d3a8b4d29538cad49f9ef39593
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: bed26390a2a64b7bbb39f1df014d0d63ccce6a5f
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259114"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534771"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>Konfigurieren der Überwachung und der Metriken für Azure Bastion mithilfe von Azure Monitor
 

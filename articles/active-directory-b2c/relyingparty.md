@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/15/2021
+ms.date: 05/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b1c8bf5cb8944b990737d557326b2741716bab3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a1771dd6f312129d418cac3ddac8ef2411e95c6
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579755"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496132"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -92,7 +92,7 @@ Das Element **Endpoints** enthält das folgende Element:
 
 Das Element **Endpoint** enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein eindeutiger Bezeichner des Endpunkts|
 | UserJourneyReferenceId | Ja | Ein Bezeichner der User Journey in der Richtlinie. Weitere Informationen finden Sie unter [User Journeys](userjourneys.md).  | 
@@ -142,7 +142,7 @@ Das **UserJourneyBehaviors**-Element enthält die folgenden Elemente:
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Der Bereich des SSO-Sitzungsverhaltens (Einmaliges Anmelden, Single Sign-On) einer User Journey. |
 | SessionExpiryType |0:1 | Das Authentifizierungsverhalten der Sitzung. Mögliche Werte: `Rolling` oder `Absolute`. Der (Standard-) Wert `Rolling` gibt an, dass der Benutzer angemeldet bleibt, solange der Benutzer ständig in der Anwendung aktiv ist. Der Wert `Absolute` gibt an, dass der Benutzer zur erneuten Authentifizierung gezwungen wird, nachdem der Zeitraum abgelaufen ist, der von der Sitzungsdauer der Anwendung festgelegt wird. |
-| SessionExpiryInSeconds | 0:1 | Die Lebensdauer des als Integer angegebenen Azure AD B2C-Sitzungscookies, das bei erfolgreicher Authentifizierung im Benutzerbrowser gespeichert wird. |
+| SessionExpiryInSeconds | 0:1 | Die Lebensdauer des als Integer angegebenen Azure AD B2C-Sitzungscookies, das bei erfolgreicher Authentifizierung im Benutzerbrowser gespeichert wird. Der Standardwert ist 86.400 Sekunden (24 Stunden). Der Mindestwert ist 900 Sekunden (15 Minuten). Der Höchstwert ist 86.400 Sekunden (24 Stunden). |
 | JourneyInsights | 0:1 | Kopieren des Azure Application Insights-Instrumentierungsschlüssels, der verwendet werden soll. |
 | ContentDefinitionParameters | 0:1 | Die Liste von Schlüssel-Wert-Paaren, die an der LoadUri-Parameter der ContentDefinition angefügt wird. |
 |ScriptExecution| 0:1| Die unterstützten [JavaScript](javascript-and-page-layout.md)-Ausführungsmodi. Mögliche Werte: `Allow` und `Disallow` (Standardwert).
@@ -152,7 +152,7 @@ Das **UserJourneyBehaviors**-Element enthält die folgenden Elemente:
 
 Das **SingleSignOn**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Scope` | Ja | Der Bereich des SSO-Verhaltens. Mögliche Werte: `Suppressed`, `Tenant`, `Application` oder `Policy`. Der Wert `Suppressed` gibt an, dass das Verhalten unterdrückt wird, und der Benutzer wird immer aufgefordert, einen Identitätsanbieter auszuwählen.  Der Wert `Tenant` gibt an, dass das Verhalten auf alle Richtlinien im Mandanten angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Mandanten navigiert nicht, dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Application` gibt an, dass das Verhalten auf alle Richtlinien für die Anwendung angewendet wird, die die Anforderung stellt. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien einer Anwendung navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Policy` gibt an, dass das Verhalten nur auf eine Richtlinie angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, dazu aufgefordert, einen Identitätsanbieter auszuwählen, wenn er zwischen Richtlinien wechselt. |
 | KeepAliveInDays | Nein | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Weitere Informationen finden Sie unter [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
@@ -200,7 +200,7 @@ Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche mi
 
 Das **JourneyFraming**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | Beschreibung |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Aktiviert | Ja | Ermöglicht das Laden dieser Richtlinie innerhalb eines iFrame. Mögliche Werte: `false` (Standard) oder `true`. |
 | Quellen | Ja | Enthält die Domänen, die den iFrame laden. Weitere Informationen finden Sie unter [Laden von Azure B2C in einem iFrame](embedded-login.md). |

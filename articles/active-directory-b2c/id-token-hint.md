@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/16/2020
+ms.date: 04/30/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a3f8a0562df4b4eeef338ddf357f37d7d0bc8f5a
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 6477283b3eb96579b943baf0aa34c2737bf43a58
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946635"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059595"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen ID-Tokenhinweisprofils in einer benutzerdefinierten Azure Active Directory B2C-Richtlinie
 
@@ -95,11 +95,13 @@ Die folgenden Metadaten sind relevant, wenn ein asymmetrischer Schlüssel verwen
 | Issuer (Aussteller) | Nein | Hiermit wird der Sicherheitstokendienst (Tokenaussteller) identifiziert. Dieser Wert kann verwendet werden, um den in den Metadaten konfigurierten Wert zu überschreiben. Er muss mit dem `iss`-Anspruch innerhalb des JWT-Tokenanspruchs identisch sein. |  
 | IdTokenAudience | Nein | Identifiziert den vorgesehenen Empfänger des Tokens. Dieser Wert muss mit dem `aud`-Anspruch innerhalb des JWT-Tokenanspruchs identisch sein. |  
 
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
+
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 
 Bei Verwendung eines symmetrischen Schlüssels enthält das Element **CryptographicKeys** die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Dies ist der Kryptografieschlüssel, der zum Überprüfen der JWT-Tokensignatur verwendet wird.|
 
@@ -219,7 +221,7 @@ Das folgende technische Profil überprüft das Token und extrahiert die Ansprüc
       <Metadata>
         <!-- Replace with your endpoint location -->
         <Item Key="METADATA">https://your-app.azurewebsites.net/.well-known/openid-configuration</Item>
-        <Item Key="IdTokenAudience">your_optional_audience</Item> -->
+        <Item Key="IdTokenAudience">your_optional_audience</Item>
         <!-- <Item Key="issuer">your_optional_token_issuer_override</Item> -->
       </Metadata>
       <OutputClaims>

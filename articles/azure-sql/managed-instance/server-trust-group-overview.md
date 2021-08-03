@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: Erfahren Sie mehr über Serververtrauensgruppen und die Verwaltung der Vertrauensstellung zwischen Instanzen von Azure SQL Managed Instance.
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: service-overview
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: sasapopo
 ms.author: sasapopo
-ms.reviewer: sstein, bonova
+ms.reviewer: mathoma
 ms.date: 10/08/2020
-ms.openlocfilehash: f9d5528746a85668677ab122d98e954bd39cd163
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f66050545c2c30c592b41cb21c30394316c80711
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790728"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692728"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>Sie verwenden Serververtrauensgruppen, um die Vertrauensstellung zwischen Instanzen von SQL Managed Instance einzurichten und zu verwalten.
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ Die [Serververtrauensgruppe](/azure/templates/microsoft.sql/allversions) ist ein
 
 ## <a name="server-trust-group-setup"></a>Einrichten von Serververtrauensgruppen
 
-Im folgenden Abschnitt wird das Einrichten einer Serververtrauensgruppe beschrieben.
+Die Serververtrauensgruppe kann über [Azure PowerShell](/powershell/module/az.sql/new-azsqlservertrustgroup) oder [Azure CLI](/cli/azure/sql/stg) eingerichtet werden. Im folgenden Abschnitt wird das Einrichten einer Serververtrauensgruppe mithilfe des Azure-Portals beschrieben.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/).
 

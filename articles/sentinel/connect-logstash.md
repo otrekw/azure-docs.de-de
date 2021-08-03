@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 25deccdd190e13d3f0ade319c7a8243e20847ee6
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 328dd2145cb72de929c421e8688cd35db435ca30
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071048"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075302"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Verwenden von Logstash zum Verbinden von Datenquellen mit Azure Sentinel
 
@@ -44,7 +44,9 @@ Die Logstash-Engine besteht aus drei Komponenten:
 - Ausgabe-Plug-Ins: Angepasstes Senden gesammelter und verarbeiteter Daten an verschiedene Ziele.
 
 > [!NOTE]
-> - Azure Sentinel unterstützt nur das eigene bereitgestellte Ausgabe-Plug-In. Die aktuelle Version dieses Plug-Ins ist v1.0.0, veröffentlicht am 25.08.2020. Ausgabe-Plug-Ins von Drittanbietern für Azure Sentinel oder Logstash-Plug-Ins eines anderen Typs werden nicht unterstützt.
+> - Microsoft unterstützt nur das von Azure Sentinel bereitgestellte Logstash-Ausgabe-Plug-In, das hier beschrieben wird. Die aktuelle Version dieses Plug-Ins ist v1.0.0, veröffentlicht am 25.08.2020. Für Probleme im Zusammenhang mit dem Ausgabe-Plug-In können Sie [ein Supportticket erstellen](https://ms.portal.azure.com/#create/Microsoft.Support).
+>
+> - Logstash-Ausgabe-Plug-Ins von Drittanbietern für Azure Sentinel, andere Logstash-Plug-Ins oder Komponenten eines anderen Typs werden von Microsoft nicht unterstützt.
 >
 > - Das Logstash-Ausgabe-Plug-In von Azure Sentinel unterstützt nur **Logstash-Versionen von 7.0 bis 7.9**.
 

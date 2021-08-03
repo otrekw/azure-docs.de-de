@@ -1,18 +1,18 @@
 ---
 title: 'Kopieren und Einfügen bei virtuellen Computern: Azure Bastion'
-description: In diesem Artikel lernen Sie das Kopieren und Einfügen bei einer Azure-VM mit Bastion kennen.
+description: Erfahren Sie, wie das Kopieren und Einfügen bei einer Azure-VM mit Bastion funktioniert.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4b0c2b734366f9a74a9b007ab9450ab4b4f51feb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b8c90e3c8bea7f6471a60804f546957f5236b70b
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800430"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536011"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Kopieren und Einfügen bei virtuellen Computern: Azure Bastion
 

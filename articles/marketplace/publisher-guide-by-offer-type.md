@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 04/06/2021
-ms.openlocfilehash: 381ee45bd678ef22222483675ddf001e16970628
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 72cae8aee9b1bcca286696b5685ef69b84167a8e
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552052"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537852"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Leitfaden zur Veröffentlichung nach Angebotstyp
 
@@ -37,12 +37,11 @@ Die folgende Tabelle zeigt die Angebotstypen im kommerziellen Marketplace in Par
 | [**Azure-Container**](marketplace-containers.md) | Verwenden Sie den Angebotstyp „Azure Container“, wenn Ihre Lösung ein Docker-Container-Image ist, das als Kubernetes-basierter Azure-Containerdienst bereitgestellt wird. |
 | [**Virtueller Azure-Computer**](marketplace-virtual-machines.md) | Verwenden Sie den VM-Angebotstyp beim Bereitstellen einer virtuellen Appliance für das Abonnement Ihres Kunden. |
 | [**Beratungsdienst**](./plan-consulting-service-offer.md) | Beratungsdienste unterstützen Kunden dabei, Verbindungen mit Diensten herzustellen, um die Nutzung von Azure-, Dynamics 365- oder Power Suite-Diensten zu unterstützen und zu erweitern.|
-| [**Dynamics 365**](appsource-offer-publishing-guide.md) | Sie können AppSource-Angebote veröffentlichen, die Dynamics 365 Business Central, Dynamics 365 Customer Engagement, Power Apps sowie die Apps „Finance“ und „Operations“ ergänzen oder erweitern.|
-| [**IoT Edge-Modul**](iot-edge-module.md) | Azure IoT Edge-Module sind die kleinste von IoT Edge verwaltete Recheneinheit. Sie können Microsoft-Dienste (wie Azure Stream Analytics), Dienste von Drittanbietern oder Ihren eigenen lösungsspezifischen Code enthalten. |
-| [**Verwalteter Dienst**](./plan-managed-service-offer.md) | Über [Azure Lighthouse](../lighthouse/overview.md) können Sie verwaltete Dienstangebote erstellen und vom Kunden delegierte Abonnements oder Ressourcengruppen verwalten.|
-| [**Power BI-App**<br/>**Microsoft 365**](appsource-offer-publishing-guide.md) | Sie können AppSource-Angebote veröffentlichen, die Power BI und Microsoft 365 ergänzen oder erweitern.|
+| [**Dynamics 365**](marketplace-dynamics-365.md) | Veröffentlichen Sie AppSource-Angebote, die Dynamics 365 Business Central, Dynamics 365 Customer Engagement, Power Apps sowie die Apps „Finance“ und „Operations“ ergänzen oder erweitern.|
+| [**IoT Edge-Modul**](marketplace-iot-edge.md) | Azure IoT Edge-Module sind die kleinste von IoT Edge verwaltete Recheneinheit. Sie können Microsoft-Dienste (wie Azure Stream Analytics), Dienste von Drittanbietern oder Ihren eigenen lösungsspezifischen Code enthalten. |
+| [**Verwalteter Dienst**](./plan-managed-service-offer.md) | Erstellen Sie verwaltete Dienstangebote, und verwalten Sie vom Kunden delegierte Abonnements oder Ressourcengruppen über [Azure Lighthouse](../lighthouse/overview.md).|
+| [**Power BI-App**<br/>**Microsoft 365**](marketplace-dynamics-365.md) | Veröffentlichen Sie AppSource-Angebote, die Power BI und Microsoft 365 ergänzen oder erweitern.|
 | [**Software-as-a-Service**](plan-saas-offer.md) | Verwenden Sie den SaaS-Angebotstyp (Software-as-a-Service), um Ihren Kunden die Möglichkeit zu geben, Ihre SaaS-basierte, technische Lösung als Abonnement zu kaufen. Informationen zu den Anforderungen des einmaligen Anmeldens für SaaS-Angebote finden Sie unter [Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace](azure-ad-saas.md). |
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

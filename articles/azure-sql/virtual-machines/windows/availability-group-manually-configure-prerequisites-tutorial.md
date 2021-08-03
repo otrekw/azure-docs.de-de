@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 29830357f7899d821d627595a3e533788e788205
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 21d9c4cebfdb22fb694cef8064991572159dcf48
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769847"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569834"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Tutorial: Voraussetzungen für die Erstellung von Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
@@ -351,7 +351,7 @@ Bevor Sie fortfahren, sollten Sie die folgenden Entwurfsentscheidungen treffen.
 
 * **Speicher – Azure Managed Disks**
 
-   Verwenden Sie als Speicher für virtuelle Computer Azure Managed Disks. Microsoft empfiehlt Managed Disks für virtuelle SQL Server-Computer. Managed Disks verwaltet den Speicher im Hintergrund. Wenn sich virtuelle Computer mit verwalteten Datenträgern in derselben Verfügbarkeitsgruppe befinden, verteilt Azure darüber hinaus die Speicherressourcen so, dass eine ausreichende Redundanz bereitgestellt wird. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md). Genauere Informationen zu verwalteten Datenträgern in einer Verfügbarkeitsgruppe finden Sie unter [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe](../../../virtual-machines/availability.md).
+   Verwenden Sie als Speicher für virtuelle Computer Azure Managed Disks. Microsoft empfiehlt Managed Disks für virtuelle SQL Server-Computer. Managed Disks verwaltet den Speicher im Hintergrund. Wenn sich virtuelle Computer mit verwalteten Datenträgern in derselben Verfügbarkeitsgruppe befinden, verteilt Azure darüber hinaus die Speicherressourcen so, dass eine ausreichende Redundanz bereitgestellt wird. Weitere Informationen finden Sie unter [Azure Managed Disks – Übersicht](../../../virtual-machines/managed-disks-overview.md). Genauere Informationen zu verwalteten Datenträgern in einer Verfügbarkeitsgruppe finden Sie unter [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe](../../../virtual-machines/availability.md).
 
 * **Netzwerk – private IP-Adressen in der Produktion**
 
@@ -541,4 +541,11 @@ Wiederholen Sie diese Schritte auf dem zweiten virtuellen SQL Server-Computer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen einer SQL Server Always On-Verfügbarkeitsgruppe auf Azure Virtual Machines](availability-group-manually-configure-tutorial.md)
+Nachdem Sie die Voraussetzungen konfiguriert haben, beginnen Sie mit dem [Konfigurieren Ihrer Verfügbarkeitsgruppe](availability-group-manually-configure-tutorial.md).
+
+Weitere Informationen finden Sie unter:
+
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
+- [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)

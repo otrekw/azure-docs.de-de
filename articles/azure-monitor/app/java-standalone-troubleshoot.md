@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Probleme mit dem Java-Agent für Azure Monito
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9bcd0ead2516b040a5a5aee4a7fae042a5f678a2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: cea6e93999477f7f33daaf5440e161a0da6fb2a2
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449986"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027837"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Handbuch zur Problembehandlung: Azure Monitor Application Insights für Java
 
@@ -17,7 +17,7 @@ In diesem Artikel werden einige der häufigsten Probleme behandelt, die beim Ins
 
 ## <a name="check-the-self-diagnostic-log-file"></a>Überprüfen der Protokolldatei zur Selbstdiagnose
 
-Standardmäßig wird vom Java 3.0-Agent für Application Insights eine Protokolldatei mit dem Namen `applicationinsights.log` in dem Verzeichnis erstellt, in dem sich auch die Datei `applicationinsights-agent-3.0.3.jar` befindet.
+Standardmäßig erzeugt Application Insights Java 3.x eine Protokolldatei mit dem Namen `applicationinsights.log` in demselben Verzeichnis, in dem sich auch die Datei `applicationinsights-agent-3.1.1.jar` befindet.
 
 Diese Protokolldatei sollten Sie als Erstes auf Hinweise auf aufgetretene Probleme untersuchen.
 
@@ -27,7 +27,9 @@ Wenn beim Starten der JVM die Fehlermeldung „Fehler beim Öffnen der ZIP-Datei
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>Durchführen eines Upgrades vom Application Insights SDK für Java 2.x
 
-Wenn Sie bereits das Application Insights Java 2.x SDK in Ihrer Anwendung nutzen, können Sie es weiterhin verwenden. Der Java 3.0-Agent wird es erkennen. Weitere Informationen finden Sie unter [Upgrade des Application Insights Java 2.x SDK](./java-standalone-upgrade-from-2x.md).
+Wenn Sie bereits das Application Insights Java 2.x SDK in Ihrer Anwendung nutzen, können Sie es weiterhin verwenden.
+Der Application Insights Java 3.x-Agent erkennt es und erfasst sowie korreliert alle benutzerdefinierten Telemetriedaten, die über das 2.x SDK gesendet werden, während gleichzeitig alle vom 2.x SDK durchgeführten automatischen Sammlungen unterdrückt werden, um doppelte Telemetriedaten zu verhindern.
+Weitere Informationen finden Sie unter [Upgrade des Application Insights Java 2.x SDK](./java-standalone-upgrade-from-2x.md).
 
 ## <a name="upgrade-from-application-insights-java-30-preview"></a>Durchführen eines Upgrades von Application Insights für Java 3.0 (Vorschau)
 

@@ -13,13 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 4a3c48a5be457a7e789c4ce05d4faf8cbb50daab
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: seo-lt-2019, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 060d09d17bf622af5ca5c062e00d2961a0a2b566
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769775"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572468"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Verwenden von PowerShell oder Azure CLI, um eine Verfügbarkeitsgruppe für SQL Server auf Azure-VMs zu konfigurieren 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -189,6 +189,12 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 ```
 
 ---
+
+## <a name="configure-quorum"></a>Konfigurieren des Quorums
+
+Obwohl der Datenträgerzeuge die resilienteste Quorumoption ist, erfordert er einen freigegebenen Azure-Datenträger, der einige Einschränkungen für die Verfügbarkeitsgruppe mit sich bringt. Daher ist der Cloudzeuge die empfohlene Quorumlösung für Cluster, die Verfügbarkeitsgruppen für SQL Server auf Azure-VMs hosten. 
+
+Wenn Sie im Cluster über eine gerade Anzahl von Stimmen verfügen, konfigurieren Sie die [Quorumlösung](hadr-cluster-quorum-configure-how-to.md), die Ihren Geschäftsanforderungen am besten entspricht. Weitere Informationen finden Sie unter [Quorum mit SQL Server-VMs](hadr-windows-server-failover-cluster-overview.md#quorum). 
 
 
 ## <a name="validate-cluster"></a>Validieren des Clusters 
@@ -514,15 +520,11 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie in den folgenden Artikeln: 
+Nachdem die Verfügbarkeitsgruppe bereitgestellt wurde, sollten Sie die [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md) optimieren. 
 
-* [Was ist SQL Server auf virtuellen Azure-Computern? (Windows)](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure](frequently-asked-questions-faq.md)
-* [SQL Server auf Azure-VMs – Versionshinweise](../../database/doc-changes-updates-release-notes.md)
-* [Ändern des Lizenzierungsmodells für eine SQL Server-VM in Azure](licensing-model-azure-hybrid-benefit-ahb-change.md)
-* [Übersicht über Always On-Verfügbarkeitsgruppen (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)   
-* [Aktivieren des Features für Always On-Verfügbarkeitsgruppen für eine SQL Server-Instanz](/sql/database-engine/availability-groups/windows/configuration-of-a-server-instance-for-always-on-availability-groups-sql-server)   
-* [Verwalten einer Verfügbarkeitsgruppe](/sql/database-engine/availability-groups/windows/administration-of-an-availability-group-sql-server)   
-* [Tools zum Überwachen von Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server)
-* [Transact-SQL-Anweisungen für Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/transact-sql-statements-for-always-on-availability-groups)   
-* [Übersicht über PowerShell-Cmdlets für Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)
+
+Weitere Informationen finden Sie unter:
+
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
+- [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

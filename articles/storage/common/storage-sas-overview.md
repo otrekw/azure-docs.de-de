@@ -10,12 +10,12 @@ ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 51e73222233602491b0c8ed3835d032610c68e0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7f8f46cf8d6195df7d47663cae809c7074129e4
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722785"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903939"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)
 
@@ -78,7 +78,7 @@ Eine Shared Access Signature kann eine von zwei Formen haben:
 Eine Shared Access Signature ist ein signierter URI, der auf eine oder mehrere Speicherressourcen zeigt. Der URI enthält ein Token mit einem speziellen Satz von Abfrageparametern. Das Token gibt an, wie der Client auf die Ressourcen zugreifen kann. Einer der Abfrageparameter ist die Signatur. Sie besteht aus den SAS-Parametern und wird mit dem Schlüssel signiert, der zum Erstellen der SAS verwendet wurde. Diese Signatur wird von Azure Storage verwendet, um den Zugriff auf die Speicherressource zu autorisieren.
 
 > [!NOTE]
-> Es ist nicht möglich, die Generierung von SAS-Token zu überwachen. Jeder Benutzer mit Berechtigungen zum Generieren eines SAS-Tokens (entweder über den Kontoschlüssel oder eine Azure RBAC-Rollenzuweisung), kann diesen Vorgang ohne Kenntnis des Speicherkontobesitzers durchführen. Schränken Sie die Berechtigungen ein, die Benutzern das Generieren von SAS-Token ermöglichen. Um zu verhindern, dass Benutzer eine SAS erstellen, die mit dem Kontoschlüssel für Blob- und Warteschlangenworkloads signiert ist, können Sie den Zugriff auf das Speicherkonto mit dem gemeinsam verwendeten Schlüssel sperren. Weitere Informationen finden Sie unter [Verhindern der Autorisierung mit gemeinsam verwendetem Schlüssel](shared-key-authorization-prevent.md).
+> Es ist nicht möglich, die Generierung von SAS-Token zu überwachen. Jeder Benutzer mit Berechtigungen zum Generieren eines SAS-Tokens (entweder über den Kontoschlüssel oder eine Azure-Rollenzuweisung), kann diesen Vorgang ohne Kenntnis des Speicherkontobesitzers durchführen. Schränken Sie die Berechtigungen ein, die Benutzern das Generieren von SAS-Token ermöglichen. Um zu verhindern, dass Benutzer eine SAS erstellen, die mit dem Kontoschlüssel für Blob- und Warteschlangenworkloads signiert ist, können Sie den Zugriff auf das Speicherkonto mit dem gemeinsam verwendeten Schlüssel sperren. Weitere Informationen finden Sie unter [Verhindern der Autorisierung mit gemeinsam verwendetem Schlüssel](shared-key-authorization-prevent.md).
 
 ### <a name="sas-signature-and-authorization"></a>SAS-Signatur und Autorisierung
 

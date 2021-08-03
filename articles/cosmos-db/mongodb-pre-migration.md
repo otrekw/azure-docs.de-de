@@ -5,41 +5,85 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 05/17/2021
 ms.author: anfeldma
-ms.openlocfilehash: cdc5dc9cee3520d9a3f22ff710dfa193e6ef4fed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb62219b8579fb0e87011ccfcae04b28aa7f0181
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553288"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471102"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Vorbereitende Schritte für Datenmigrationen von MongoDB zur Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!IMPORTANT]  
-> Dieser MongoDB-Leitfaden zur Vorbereitung der Migration ist der erste in einer Reihe zum Migrieren von MongoDB zur Azure Cosmos DB-API für MongoDB im großen Stil. Kunden, die MongoDB in einer selbstverwalteten Infrastruktur lizenzieren und bereitstellen, können die Kosten für ihren Datenbestand reduzieren und verwalten, indem sie zu einem verwalteten Clouddienst wie Azure Cosmos DB mit nutzungsbasierter Bezahlung und elastischer Skalierbarkeit migrieren. Diese Reihe verfolgt das Ziel, den Kunden durch den Migrationsprozess zu leiten:
->
-> 1. [Vorbereitung der Migration](mongodb-pre-migration.md): Inventarisieren des MongoDB-Datenbestands, Planen der Migration und Auswahl der entsprechenden Migrationstools.
-> 2. Ausführung: Migrieren von MongoDB zu Azure Cosmos DB mithilfe der bereitgestellten [Tutorials]().
-> 3. [Nachbereitung der Migration](mongodb-post-migration.md): Aktualisieren und Optimieren vorhandener Anwendungen, die für Ihren neuen Azure Cosmos DB-Datenbestand ausgeführt werden sollen.
+> Lesen Sie bitte diesen gesamten Leitfaden, bevor Sie Ihre vorbereitenden Schritte für die Migration ausführen.
 >
 
-Ein solider Plan zur Vorbereitung der Migration kann sich erheblich auf die Aktualität und den Erfolg der Migration Ihres Teams auswirken. Eine gute Analogie für die Vorbereitung der Migration ist das Starten eines neuen Projekts: Sie können zunächst die Anforderungen definieren, dann die notwendigen Aufgaben gliedern und die größten Aufgaben, die zuerst angegangen werden sollten, priorisieren. So wird Ihr Projektzeitplan vorhersagbar, aber natürlich können unerwartete Anforderungen entstehen und den Projektzeitplan verkomplizieren. Zurück zur Migration: Das Erstellen eines umfassenden Ausführungsplans in der Phase der Migrationsvorbereitung reduziert das Risiko, dass Sie in einer späten Phase des Prozesses unerwartete Migrationsaufgaben erkennen, sodass Sie während der Migration Zeit sparen und sicherstellen, dass Sie Ihre Ziele erreichen.
+Dieser MongoDB-Leitfaden für die Migrationsvorbereitung ist ein Teil der Reihe zur MongoDB-Migration. Die wichtigen MongoDB-Migrationsschritte umfassen die Migrationsvorbereitung, die Migration und die [Migrationsnachbereitung](mongodb-post-migration.md), wie unten dargestellt.
 
-Vor dem Migrieren Ihrer Daten aus MongoDB (lokal oder in der Cloud) zur Azure Cosmos DB-API für MongoDB sollten Sie die folgenden Schritte ausführen:
+![Ein Diagramm der Migrationsschritte.](./media/mongodb-pre-migration/overall-migration-steps.png)
 
-1. [Lesen der zentralen Aspekte beim Verwenden der Azure Cosmos DB-API für MongoDB](#considerations)
-2. [Auswählen einer Option zum Migrieren Ihrer Daten](#options)
-3. [Schätzen des benötigten Durchsatzes für Ihre Workloads](#estimate-throughput)
-4. [Auswählen eines optimalen Partitionsschlüssels für Ihre Daten](#partitioning)
-5. [Verstehen der Indizierungsrichtlinie, die Sie für die Daten festlegen können](#indexing)
+## <a name="overview-of-pre-migration"></a>Eine Übersicht der Migrationsvorbereitung
 
-Wenn Sie die obigen erforderlichen vorbereitenden Schritte für die Migration bereits ausgeführt haben, können Sie mit dem [Migrieren von MongoDB-Daten zur Azure Cosmos DB-API für MongoDB mit Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) beginnen. Wenn Sie noch kein Konto erstellt haben, können Sie außerdem alle [Schnellstarts](create-mongodb-dotnet.md) durchsuchen, in denen die Schritte zum Erstellen eines Kontos beschrieben werden.
+Es ist wichtig, im Vorfeld eine bestimmte Planung und Entscheidungsfindung für Ihre Migration durchzuführen, bevor Sie tatsächlich Daten verschieben. Dieser anfängliche Entscheidungsprozess ist die "Migrationsvorbereitung". Ihr Ziel bei der Migrationsvorbereitung ist es (1) sicherzustellen, dass Sie Azure Cosmos DB einrichten, um die Anforderungen Ihrer Anwendung nach der Migration zu erfüllen und (2) die Ausführung der Migration zu planen.
 
-## <a name="considerations-when-using-azure-cosmos-dbs-api-for-mongodb"></a><a id="considerations"></a>Aspekte beim Verwenden der Azure Cosmos DB-API für MongoDB
+Führen Sie diese Schritte aus, um eine umfassende Migrationsvorbereitung durchzuführen
+* [Entdecken Sie Ihre vorhandenen MongoDB-Ressourcen und erstellen Sie ein Artefakt zum Nachverfolgen dieser Ressourcen](#pre-migration-discovery)
+* [Bewerten Sie die Bereitschaft Ihrer vorhandenen MongoDB-Ressourcen für die Datenmigration](#pre-migration-assessment)
+* [Ordnen Sie Ihre vorhandenen MongoDB-Ressourcen den neuen Azure Cosmos DB Ressourcen zu](#pre-migration-mapping)
+* [Planen Sie die Logistik des End-to-End Migrationsprozesses, bevor Sie mit der vollständigen Datenmigration beginnen](#execution-logistics)
 
-Nachfolgend werden spezifische Merkmale der Azure Cosmos DB-API für MongoDB aufgeführt:
+Führen Sie ihre Migration dann in Übereinstimmung mit Ihrem Migrationsvorbereitungsplan aus.
+
+Führen Sie abschließend die wichtigen [Schritte der Migrationsnachbereitung wie die Übernahme und die Optimierung durch](mongodb-post-migration.md).
+
+Alle der oben genannten Schritte sind wichtig, um eine erfolgreiche Migration sicherzustellen.
+
+Wenn Sie eine Migration planen, wird empfohlen, dass Sie, nach Möglichkeit, auf der Ebene einzelner Ressourcen planen.
+
+## <a name="pre-migration-discovery"></a>Die Ermittlung der Migrationsvorbereitung
+
+Der erste Migrationsvorbereitungsschritt ist die Ressourcenermittlung. In diesem Schritt versuchen Sie, eine umfassende Liste der vorhandenen Ressourcen in Ihrem MongoDB-Datenressourcenbereich zu erstellen.
+
+### <a name="create-a-data-estate-migration-spreadsheet"></a>Das Erstellen einer Datenbestandsmigrationstabelle
+
+Das Erstellen einer **Datenbestandsmigrationstabelle** als Nachverfolgungsdokument für Ihre Migration mit Ihrer bevorzugten Produktivitätssoftware. 
+   * Der Zweck dieser Tabelle besteht darin, Ihre Produktivität zu steigern und Sie bei der Planung der Migration von End-to-End zu unterstützen.
+   * Die Struktur der Tabelle liegt bei Ihnen. Die folgenden Aufzählungspunkte enthalten einige Empfehlungen.
+   * Diese Tabelle sollte als ein Datensatz Ihrer Datenbestandsressourcen in Listenform strukturiert werden.
+   * Jede Zeile entspricht einer Ressource (Datenbank oder Sammlung).
+   * Jede Spalte entspricht einer Eigenschaft der Ressource. Vorerst sollten Sie mindestens den *Namen* und die *Datengröße (GB)* als Spalten haben. Im Idealfall können Sie jedoch auch die Informationen zur MongoDB-Version für jede Ressource sammeln. Fügen Sie in diesem Fall auch eine *Mongo-Versionsspalte* hinzu. 
+   * Zunächst füllen Sie diese Tabelle mit einer Liste der vorhandenen Ressourcen in Ihrem MongoDB-Datenbestand aus. Während Sie diesen Leitfaden durchlaufen, verarbeiten Sie diese Tabelle in ein Nachverfolgungsdokument für Ihre End-to-End-Migrationsplanung und fügen bei Bedarf Spalten hinzu.
+
+### <a name="discover-existing-mongodb-data-estate-resources"></a>Das Ermitteln vorhandener MongoDB-Datenbestandsressourcen
+
+Identifizieren Sie mithilfe eines geeigneten Ermittlungstools die Ressourcen (Datenbanken, Sammlungen) in Ihrem vorhandenen MongoDB-Datenbestand so umfassend wie möglich. 
+
+Hier sind einige Tools, die Sie zum Ermitteln von den Ressourcen verwenden können:
+   * [MongoDB-Shell](https://www.mongodb.com/try/download/shell)
+   * [MongoDB-Kompass](https://www.mongodb.com/try/download/compass)
+
+## <a name="pre-migration-assessment"></a>Die Migrationsvorbereitungsbewertung
+
+Bewerten Sie als zweiten Schritt, zur Vorbereitung der Planung Ihrer Migration, die Bereitschaft der einzelnen Ressourcen in Ihrem Datenbestand für die Migration. 
+
+Die MongoDB-Version ist der primäre Faktor, der sich auf die Bereitschaft auswirkt. Azure Cosmos DB unterstützt derzeit die Binärprotokollversionen 3.2, 3.6 und 4.0 von der MongoDB. Idealerweise haben Sie in Ihrem Tabellenblatt zur Migrationsplanung eine Spalte für die *MongoDB-Version*. Gehen Sie die Tabelle schrittweise durch und markieren Sie alle Ressourcen, die inkompatible MongoDB-Versionen für die Azure Cosmos DB verwenden.
+
+## <a name="pre-migration-mapping"></a>Die Zuordnung der Migrationsvorbereitung
+
+Wenn die Ermittlungs- und Bewertungsschritte abgeschlossen sind, ist die MongoDB-Seite der Gleichung fertig. Jetzt wird die Azure Cosmos DB-Seite der Gleichung geplant. Wie werden Sie Ihre Produktions-Azure Cosmos DB-Ressourcen einrichten und konfigurieren? Führen Sie Ihre Planung auf *einzelnen Ressourcen* ebenen durch. Das bedeutet, dass Sie Ihrer Planungstabelle die folgenden Spalten hinzufügen sollten: 
+* Azure Cosmos DB-Zuordnung 
+* Shardschlüssel 
+* Datenmodell
+* Der Dedizierte und gemeinsam genutzter Durchsatz im Vergleich
+
+Weitere Details hierzu finden Sie in den folgenden Abschnitten.
+
+### <a name="considerations-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Aspekte beim Verwenden der Azure Cosmos DB-API für MongoDB
+
+Bevor Sie Ihren Azure Cosmos DB-Datenbestand planen, stellen Sie sicher, dass Sie die folgenden Azure Cosmos DB-Konzepte verstehen:
 
 - **Kapazitätsmodell**: Die Datenbankkapazität in Azure Cosmos DB basiert auf einem durchsatzbasierten Modell. Dieses Modell basiert auf [Anforderungseinheiten pro Sekunde](request-units.md). Dabei handelt es sich um eine Einheit, die die Anzahl von Datenbankvorgängen darstellt, die pro Sekunde für eine Sammlung ausgeführt werden können. Diese Kapazität kann auf [Datenbank- oder Sammlungsebene](set-throughput.md) zugeordnet werden, und sie kann in einem Zuordnungsmodell oder mithilfe des [per Autoskalierung bereitgestellten Durchsatzes](provision-throughput-autoscale.md) bereitgestellt werden.
 
@@ -49,52 +93,103 @@ Nachfolgend werden spezifische Merkmale der Azure Cosmos DB-API für MongoDB auf
 
 - **Automatisches Sharding**: Azure Cosmos DB bietet ein automatisches Partitionierungssystem, das nur einen Shard (oder einen Partitionsschlüssel) erfordert. Der [automatische Partitionierungsmechanismus](partitioning-overview.md) wird von allen Azure Cosmos DB-APIs gemeinsam genutzt und ermöglicht nahtlose Daten und die gesamte Skalierung durch horizontale Verteilung.
 
-## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>Migrationsoptionen für die Azure Cosmos DB-API für MongoDB
+### <a name="plan-the-azure-cosmos-db-data-estate"></a>Planen Sie den Azure Cosmos DB-Datenbestand
 
-Der [Azure Database Migration Service für die Azure Cosmos DB-API für MongoDB](../dms/tutorial-mongodb-cosmos-db.md) bietet einen Mechanismus, der die Datenmigration vereinfacht, indem eine vollständig verwaltete Hostingplattform, Migrationsüberwachungsoptionen und die automatische Drosselung bereitgestellt werden. Nachfolgend finden Sie die vollständige Liste der Optionen:
+Bestimmen Sie, welche Azure Cosmos DB-Ressourcen Sie erstellen werden. Das bedeutet, dass Sie Ihre Datenbestandsmigrationstabelle schrittweise durchgehen und jede vorhandene MongoDB-Ressource einer neuen Azure Cosmos DB-Ressource zuordnen. 
+* Gehen Sie davon aus, dass aus jeder MongoDB-Datenbank eine Azure Cosmos DB Datenbank wird
+* Gehen Sie davon aus, dass aus jeder MongoDB-Sammlung eine Azure Cosmos DB-Sammlung wird
+* Wählen Sie eine Namenskonvention für Ihre Azure Cosmos DB-Ressourcen aus. Sofern sich die Struktur von den Datenbanken und Sammlungen nicht ändert, ist es in der Regel eine gute Wahl, die gleichen Ressourcennamen beizubehalten.
+* In der MongoDB sind die Sharding-Sammlungen optional. In der Azure Cosmos DB unterliegt jede Sammlung dem Shard.
+* *Gehen Sie nicht davon aus, dass Ihr MongoDB-Sammlung Shard-Schlüssel ihr Azure Cosmos DB-Sammlung Shard-Schlüssel wird. Gehen Sie nicht davon aus, dass Ihre vorhandene MongoDB-Datenmodell-/Dokumentstruktur das ist, was Sie für die Azure Cosmos DB einstellen werden.* 
+   * Der Shard-Schlüssel ist die wichtigste Einstellung zum Optimieren der Skalierbarkeit und Leistung von der Azure Cosmos DB. Die Datenmodellierung ist die zweit wichtigste Einstellung. Beide Einstellungen sind unveränderlich und können nicht mehr geändert werden, nachdem sie festgelegt wurden. Es ist daher äußerst wichtig, sie bereits in der Planungsphase zu optimieren. Für weitere Informationen, befolgen Sie die Anleitung im Abschnitt [Unveränderliche Entscheidungen](#immutable-decisions).
+* Die Azure Cosmos DB erkennt bestimmte MongoDB-Sammlungstypen, z. B. die begrenzten Sammlungen, nicht. Erstellen Sie für diese Ressourcen einfach normale Azure Cosmos DB Sammlungen.
+* Azure Cosmos DB verfügt über zwei eigene Sammlungstypen: den gemeinsam genutzten und den dedizierten Durchsatz. Den gemeinsamen oder den dedizierten Durchsatz zu nutzen ist eine weitere wichtige, unveränderliche Entscheidung, die in der Planungsphase unbedingt getroffen werden muss. Für weitere Informationen, befolgen Sie die Anleitung im Abschnitt [Unveränderliche Entscheidungen](#immutable-decisions).
 
-|**Migrationstyp**|**Lösung**|**Überlegungen**|
-|---------|---------|---------|
-|Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
-|Offline|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
-|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Fehlende Prüfpunktausführung: Wenn während der Migration ein Problem auftritt, muss der gesamte Migrationsprozess neu gestartet werden.<br/>&bull; Fehlende Warteschlange für unzustellbare Nachrichten: Dies bedeutet, dass wenige fehlerhafte Dateien den gesamten Migrationsprozess unterbrechen können. <br/>&bull; Erfordert benutzerdefinierten Code, um den Lesedurchsatz für bestimmte Datenquellen zu erhöhen|
-|Offline|[Vorhandene Mongo-Tools (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; Einfache Einrichtung und Integration <br/>&bull; Erfordert die benutzerdefinierte Behandlung von Drosselungen|
+### <a name="immutable-decisions"></a>Die Unveränderlichen Entscheidungen
 
-## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a> Schätzen des benötigten Durchsatzes für Ihre Workloads
+Die folgenden Azure Cosmos DB Konfigurationsoptionen können nicht mehr geändert oder rückgängig gemacht werden, nachdem Sie eine Azure Cosmos DB-Ressource erstellt haben. Es ist daher wichtig, für sie die richtige Entscheidung bei der Planung der Migrationsvorbereitung zu treffen, bevor Sie irgendeine Migrationen starten:
+* Befolgen Sie [diese Anleitung](partitioning-overview.md), um den besten Shard-Schlüssel auszuwählen. Die Partitionierung (auch als Sharding bezeichnet) ist ein wichtiger Aspekt, den Sie vor dem Migrieren von Daten berücksichtigen müssen. Azure Cosmos DB verwendet die vollständig verwaltete Partitionierung, um die Kapazität in einer Datenbank zur Erfüllung der Speicher- und Durchsatzanforderungen zu erhöhen. Diese Funktion erfordert weder das Hosting noch die Konfiguration von Routingservern.   
+   * Auf ähnliche Weise fügt die Partitionierungsfunktion automatisch Kapazität hinzu und gleicht die Daten entsprechend neu aus. Ausführliche Informationen und Empfehlungen zum Auswählen des richtigen Partitionsschlüssels für Ihre Daten finden Sie unter [Auswählen eines Partitionsschlüssels](partitioning-overview.md#choose-partitionkey). 
+* Befolgen Sie [diese Anleitung](modeling-data.md), um ein Datenmodell auszuwählen
+* Befolgen Sie [diese Anleitung,](optimize-cost-throughput.md#optimize-by-provisioning-throughput-at-different-levels) um zwischen dediziertem und gemeinsam genutzten Durchsatz für jede Ressource zu wählen, die Sie migrieren möchten
+* [Hier](how-to-model-partition-example.md) sehen Sie ein praxisorientiertes Beispiel für Sharding und Datenmodellierung, um Sie bei der Entscheidungsfindung zu unterstützen
 
-In Azure Cosmos DB wird der Durchsatz vorab bereitgestellt und in Anforderungseinheiten (RU) pro Sekunde gemessen. Im Gegensatz zu VMs oder lokalen Servern können RUs jederzeit einfach hoch- und herunterskaliert werden. Sie können die Anzahl der bereitgestellten RUs sofort ändern. Weitere Informationen finden Sie unter [Anforderungseinheiten in Azure Cosmos DB](request-units.md).
+### <a name="cost-of-ownership"></a>Die Betriebskosten
 
-Sie können den [Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com/capacitycalculator/) verwenden, um die Anzahl von Anforderungseinheiten basierend auf der Konfiguration Ihres Datenbankkontos, der Datenmenge, der Dokumentgröße und den erforderlichen Lese- und Schreibvorgängen pro Sekunde zu ermitteln.
+* Schätzen Sie die Betriebskosten Ihrer neuen Azure Cosmos DB Ressourcen mithilfe des [Azure Cosmos DB-Kapazitätsrechners](https://cosmos.azure.com/capacitycalculator/).
 
-Im Folgenden sind wichtige Faktoren beschrieben, die sich auf die Anzahl der erforderlichen RUs auswirken:
-- **Dokumentgröße**: Je größer ein Element/Dokument, desto mehr RUs werden beim Lesen oder Schreiben des Elements/Dokuments genutzt.
+### <a name="estimating-throughput"></a>Das Schätzen des Durchsatzes
 
-- **Anzahl der Dokumenteigenschaften**: Die Anzahl der zum Erstellen oder Aktualisieren eines Dokuments verbrauchten RUs bezieht sich auf die Anzahl, Komplexität und Länge der zugehörigen Eigenschaften. Sie können die für Schreibvorgänge genutzten Anforderungseinheiten verringern, indem Sie die [Anzahl indizierter Eigenschaften begrenzen](mongodb-indexing.md).
+* In Azure Cosmos DB wird der Durchsatz vorab bereitgestellt und in Anforderungseinheiten (RU) pro Sekunde gemessen. Im Gegensatz zu VMs oder lokalen Servern können RUs jederzeit einfach hoch- und herunterskaliert werden. Sie können die Anzahl der bereitgestellten RUs sofort ändern. Weitere Informationen finden Sie unter [Anforderungseinheiten in Azure Cosmos DB](request-units.md).
 
-- **Abfragemuster**: Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten von ihr verbraucht werden. 
+* Sie können den [Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com/capacitycalculator/) verwenden, um die Anzahl von Anforderungseinheiten basierend auf der Konfiguration Ihres Datenbankkontos, der Datenmenge, der Dokumentgröße und den erforderlichen Lese- und Schreibvorgängen pro Sekunde zu ermitteln.
 
-Am besten können Sie die Kosten von Abfragen verstehen, wenn Sie Beispieldaten in Azure Cosmos DB verwenden und mithilfe des Befehls `getLastRequestStastistics` [Beispielabfragen aus der MongoDB-Shell ausführen](connect-mongodb-account.md), um die Anforderungsgebühr abzurufen. Dadurch wird die Anzahl der verbrauchten RUs ausgegeben:
+* Im Folgenden sind wichtige Faktoren beschrieben, die sich auf die Anzahl der erforderlichen RUs auswirken:
+   * **Dokumentgröße**: Je größer ein Element/Dokument, desto mehr RUs werden beim Lesen oder Schreiben des Elements/Dokuments genutzt.
 
-`db.runCommand({getLastRequestStatistics: 1})`
+   * **Anzahl der Dokumenteigenschaften**: Die Anzahl der zum Erstellen oder Aktualisieren eines Dokuments verbrauchten RUs bezieht sich auf die Anzahl, Komplexität und Länge der zugehörigen Eigenschaften. Sie können die für Schreibvorgänge genutzten Anforderungseinheiten verringern, indem Sie die [Anzahl indizierter Eigenschaften begrenzen](mongodb-indexing.md).
 
-Dieser Befehl gibt ein JSON-Dokument wie das folgende aus:
+   * **Abfragemuster**: Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten von ihr verbraucht werden. 
 
-```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
+* Am besten können Sie die Kosten von Abfragen verstehen, wenn Sie Beispieldaten in Azure Cosmos DB verwenden und mithilfe des Befehls `getLastRequestStastistics` [Beispielabfragen aus der MongoDB-Shell ausführen](connect-mongodb-account.md), um die Anforderungsgebühr abzurufen. Dadurch wird die Anzahl der verbrauchten RUs ausgegeben:
 
-Sie können auch die [Diagnoseeinstellungen](cosmosdb-monitor-resource-logs.md) verwenden, um die Häufigkeit und die Muster der für Azure Cosmos DB ausgeführten Abfragen zu verstehen. Die Ergebnisse der Diagnoseprotokolle können an ein Speicherkonto, eine EventHub-Instanz oder an [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) gesendet werden.  
+    `db.runCommand({getLastRequestStatistics: 1})`
 
-## <a name="choose-your-partition-key"></a><a id="partitioning"></a>Auswählen des Partitionsschlüssels
-Die Partitionierung (auch als Sharding bezeichnet) ist ein wichtiger Aspekt, den Sie vor dem Migrieren von Daten berücksichtigen müssen. Azure Cosmos DB verwendet die vollständig verwaltete Partitionierung, um die Kapazität in einer Datenbank zur Erfüllung der Speicher- und Durchsatzanforderungen zu erhöhen. Diese Funktion erfordert weder das Hosting noch die Konfiguration von Routingservern.   
+    Dieser Befehl gibt ein JSON-Dokument wie das folgende aus:
 
-Auf ähnliche Weise fügt die Partitionierungsfunktion automatisch Kapazität hinzu und gleicht die Daten entsprechend neu aus. Ausführliche Informationen und Empfehlungen zum Auswählen des richtigen Partitionsschlüssels für Ihre Daten finden Sie unter [Auswählen eines Partitionsschlüssels](partitioning-overview.md#choose-partitionkey). 
+    ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-## <a name="index-your-data"></a><a id="indexing"></a>Indizieren Ihrer Daten
+* Sie können auch die [Diagnoseeinstellungen](cosmosdb-monitor-resource-logs.md) verwenden, um die Häufigkeit und die Muster der für Azure Cosmos DB ausgeführten Abfragen zu verstehen. Die Ergebnisse der Diagnoseprotokolle können an ein Speicherkonto, eine EventHub-Instanz oder an [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) gesendet werden.  
 
-Die Azure Cosmos DB-API für die MongoDB-Serverversion 3.6 und höhere Versionen indiziert automatisch nur das Feld `_id`. Dieses Feld kann nicht gelöscht werden. Sie erzwingt automatisch die Eindeutigkeit des Felds `_id` durch einen Shardschlüssel. Um zusätzliche Felder zu indizieren, verwenden Sie die [MongoDB-Indexverwaltungsbefehle](mongodb-indexing.md). Diese Standardindizierungsrichtlinie unterscheidet sich von der Azure Cosmos DB-SQL-API, die standardmäßig alle Felder indiziert.
+## <a name="pre-migration-logistics-planning"></a>Das Planen der Migrationsvorbereitungslogistik
 
-Die von Azure Cosmos DB bereitgestellten Indizierungsfunktionen umfassen das Hinzufügen von zusammengesetzten Indizes, eindeutigen Indizes und Time-to-Live-Indizes (TTL-Indizes). Die Indexverwaltungsschnittstelle wird dem Befehl `createIndex()` zugeordnet. Weitere Informationen finden Sie im Artikel [Indizieren in der API für MongoDB von Azure Cosmos DB](mongodb-indexing.md).
+Nachdem Sie nun einen Überblick über Ihren bestehenden Datenbestand und ein Design für Ihren neuen Azure Cosmos DB-Datenbestand haben, können Sie planen, wie Sie Ihren Migrationsprozess End-to-End durchführen. Auch hier planen Sie auf der Ebene der *einzelnen Ressourcen* und fügen Spalten in Ihre Tabelle hinzu, um die unten aufgeführten logistischen Dimensionen zu erfassen.
 
-MongoDB-Sammlungen mit eindeutigen Indizes werden von [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) automatisch migriert. Die eindeutigen Indizes müssen jedoch vor der Migration erstellt werden. Wenn sich in den Sammlungen bereits Daten befinden, wird die Erstellung eindeutiger Indizes von Azure Cosmos DB nicht unterstützt. Weitere Informationen finden Sie unter [Eindeutige Schlüssel in Azure Cosmos DB](unique-keys.md).
+### <a name="execution-logistics"></a>Die Ausführungslogistik
+* Das Zuweisen der Verantwortung für die Migration jeder vorhandenen Ressource von der MongoDB zur Azure Cosmos DB. Wie Sie die Ressourcen Ihres Teams einsetzen, um Ihre Migration zum Abschluss zu bringen, bleibt Ihnen überlassen. Bei kleinen Migrationen können Sie ein Team die gesamte Migration starten und den Fortschritt überwachen lassen. Bei größeren Migrationen können Sie den Teammitgliedern ressourcenspezifische Verantwortung für die Migration und Überwachung dieser Ressource zuweisen.
+* Nachdem Sie die Verantwortung für die Migration Ihren Ressourcen zugewiesen haben, sollten Sie nun das/die richtige(n) Migrationstool(s) für die Migration auswählen. Bei kleinen Migrationen können Sie möglicherweise ein Migrationstool wie ein natives MongoDB-Tool oder den Azure DMS verwenden, um alle Ihre Ressourcen auf einmal zu migrieren. Für größere Migrationen oder solche mit speziellen Anforderungen sollten Sie Migrationstools mit einer Granularität für die einzelnen Ressourcen auswählen.
+   * Bevor Sie die zu verwendenden Migrationstools planen, sollten Sie sich mit den verfügbaren Optionen vertraut machen. Der [Azure Database Migration Service für die Azure Cosmos DB-API für MongoDB](../dms/tutorial-mongodb-cosmos-db.md) bietet einen Mechanismus, der die Datenmigration vereinfacht, indem eine vollständig verwaltete Hostingplattform, Migrationsüberwachungsoptionen und die automatische Drosselung bereitgestellt werden. Nachfolgend finden Sie die vollständige Liste der Optionen:
+
+   |**Migrationstyp**|**Lösung**|**Überlegungen**|
+   |---------|---------|---------|
+   |Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
+   |Offline|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
+   |Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Fehlende Prüfpunktausführung: Wenn während der Migration ein Problem auftritt, muss der gesamte Migrationsprozess neu gestartet werden.<br/>&bull; Fehlende Warteschlange für unzustellbare Nachrichten: Dies bedeutet, dass wenige fehlerhafte Dateien den gesamten Migrationsprozess unterbrechen können. <br/>&bull; Erfordert benutzerdefinierten Code, um den Lesedurchsatz für bestimmte Datenquellen zu erhöhen|
+   |Offline|[Vorhandene Mongo-Tools (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; Einfache Einrichtung und Integration <br/>&bull; Erfordert die benutzerdefinierte Behandlung von Drosselungen|
+
+   * Wenn Ihre Ressource eine Offline-Migration tolerieren kann, verwenden Sie das folgende Diagramm, um das entsprechende Migrationstool zu wählen:
+
+   ![Die Offline-Migrationstools.](./media/mongodb-pre-migration/offline-tools.png)
+
+   * Wenn Ihre Ressource eine Online-Migration erfordert, verwenden Sie das folgende Diagramm, um das entsprechende Migrationstool zu wählen:
+
+   ![Die Online-Migrationstools.](./media/mongodb-pre-migration/online-tools.png)
+
+* Nachdem Sie die Migrationstools für jede Ressource ausgewählt haben, besteht der nächste Schritt im Priorisieren der zu migrierenden Ressourcen. Eine gute Priorisierung kann dazu beitragen, ihre Migration im Zeitplan zu halten. Eine bewährte Methode ist, die Migration der Ressourcen zu priorisieren, die am meisten Zeit für das Verschieben beanspruchen. Diese Ressourcen zuerst zu migrieren, bringt den größten Fortschritt in Richtung Fertigstellung. Diese zeitaufwändigen Migrationen umfassen in der Regel mehr Daten und sind daher ressourcenintensiver für das Migrationstool. Daher ist es wahrscheinlicher, dass frühzeitig Probleme mit Ihrer Migrationspipeline auftreten. Das minimiert die Wahrscheinlichkeit, dass Ihr Zeitplan aufgrund von Schwierigkeiten mit Ihrer Migrationspipeline ins Wanken gerät.
+* Planen Sie die Überwachung des Migrationsfortschritts nach dem Start. Wenn Sie Ihren Datenmigrationsaufwand unter einem Team koordinieren, planen Sie einen regelmäßigen Rhythmus von Team-Synchronisierungen. So behalten Sie einen umfassenden Überblick über die Migrationen mit hoher Priorität.
+
+### <a name="supported-migration-scenarios"></a>Unterstützte Migrationsszenarien
+
+Die beste Wahl für das MongoDB-Migrationstool hängt von Ihrem Migrationsszenario ab. 
+
+#### <a name="types-of-migrations"></a>Die Migrationstypen
+
+Die kompatiblen Tools für jedes Migrationsszenario sind nachfolgend dargestellt:
+
+![Die unterstützten Migrationsszenarien.](./media/mongodb-pre-migration/migration-tools-use-case-table.png)
+
+#### <a name="tooling-support-for-mongodb-versions"></a>Die Toolunterstützung für die MongoDB-Versionen
+
+Unter der Voraussetzung, dass Sie von einer bestimmten MongoDB-Version migrieren, sind die unterstützten Tools nachfolgend aufgeführt:
+
+![Die MongoDB-Versionen, die von Migrationstools unterstützt werden.](./media/mongodb-pre-migration/migration-tool-compatibility.png)
+
+### <a name="post-migration"></a>Nach der Migration
+
+Nehmen Sie sich in der Migrationsvorbereitungsphase etwas Zeit, um zu planen, welche Schritte Sie für die App-Migration und die Optimierung nach der Migration unternehmen werden.
+* In der Phase der Migrationsnachbereitung führen Sie eine Umstellung Ihrer Anwendung aus, um die Azure Cosmos DB anstelle Ihres vorhandenen MongoDB-Datenbestands zu verwenden. 
+* Achten Sie darauf, die Indizierung, die globale Verteilung, die Konsistenz und andere *veränderliche* Azure Cosmos DB-Eigenschaften auf den einzelnen Ressourcenebenen zu planen. Diese Azure Cosmos DB-Konfigurationseinstellungen *können* jedoch später geändert werden. Rechnen sie also damit, später Anpassungen an diesen Einstellungen vorzunehmen. Lassen Sie nicht zu, dass diese Aspekte eine Ursache für eine Analyseparalyse sind. Sie werden diese veränderlichen Konfigurationen nach der Migration anwenden.
+* Die beste Anleitung für die Migrationsnachbereitung finden Sie [hier](mongodb-post-migration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Migrieren von MongoDB-Daten in Cosmos DB mit dem Database Migration Service.](../dms/tutorial-mongodb-cosmos-db.md) 

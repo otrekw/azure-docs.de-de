@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 30579536b8051e9a045c217751871287636a3976
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6f3368619395934dd358536e39f227bc66dfbfd
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454277"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110497397"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Unterstützungsrichtlinien in Azure Red Hat OpenShift
 
@@ -35,6 +35,7 @@ Bestimmte Konfigurationen Ihrer Cluster in Azure Red Hat OpenShift 4 können si
 * Legen Sie keine unsupportedConfigOverrides-Optionen fest. Durch Festlegen dieser Optionen werden Upgrades von Nebenversionen verhindert.
 * Der Azure Red Hat OpenShift-Dienst greift auf Ihre Cluster über den Private Link-Dienst zu.  Ändern oder entfernen Sie den Dienstzugriff nicht.
 * Nicht-RHCOS-Serverknoten werden nicht unterstützt. Sie können z. B. keinen RHEL-Serverknoten verwenden.
+* Platzieren Sie in Ihrem Abonnement oder Ihrer Verwaltungsgruppe keine Richtlinien, die SREs an der Durchführung normaler Wartungsarbeiten am ARO-Cluster hindern, z. B. das Erfordernis von Tags für die von ARO RP verwaltete Clusterressourcengruppe.
 
 ## <a name="supported-virtual-machine-sizes"></a>Unterstützte VM-Größen
 

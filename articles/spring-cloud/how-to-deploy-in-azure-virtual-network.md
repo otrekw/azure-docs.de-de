@@ -7,16 +7,16 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java, devx-track-azurecli, subject-rbac-steps
-ms.openlocfilehash: 2ff56857eca112ebd808a96f3aaa097ab4be5c18
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 0921c3d9bf254e3d486ec381c3243a8035bb6f50
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291530"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750351"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
 
-**Dieser Artikel gilt für:** âœ”ï¸ Java âœ”ï¸ C#
+**Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
 In diesem Tutorial wird erläutert, wie Sie eine Azure Spring Cloud-Instanz in Ihrem virtuellen Netzwerk bereitstellen. Diese Bereitstellung wird manchmal als VNET-Einschleusung bezeichnet.
 
@@ -88,9 +88,7 @@ Wählen Sie das virtuelle Netzwerk **azure-spring-cloud-vnet** aus, das Sie zuvo
 
     ![Screenshot: Bildschirm „Zugriffssteuerung“.](./media/spring-cloud-v-net-injection/access-control.png)
 
-1. Weisen Sie die [azure-spring-cloud-data-reader](../role-based-access-control/built-in-roles.md#azure-spring-cloud-data-reader)-Rolle [user | group | service-principal | managed-identity] unter [management-group | subscription | resource-group | resource] scope zu.
-
-    Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+1. Weisen Sie dem **Azure Spring Cloud-Ressourcenanbieter** die Rolle *Besitzer* zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 Das gleiche Ergebnis erzielen Sie, wenn Sie den folgenden Azure CLI-Befehl ausführen:
 
@@ -189,7 +187,7 @@ Die Routingtabellen, denen Ihr benutzerdefiniertes virtuelles Netzwerk zugeordne
 
 * Sie können Ihre Azure-Routingtabellen nur dann Ihrem virtuellen Netzwerk zuordnen, wenn Sie eine neue Azure Spring Cloud-Dienstinstanz erstellen. Nach dem Erstellen der Azure Spring Cloud-Instanz können Sie nicht mehr zu einer anderen Routingtabelle wechseln.
 * Sowohl dem Microserviceanwendungs-Subnetz als auch dem Dienst-Runtime-Subnetz müssen unterschiedliche Routingtabellen zugeordnet sein oder keinem von beiden.
-* Vor dem Erstellen einer Instanz müssen Berechtigungen zugewiesen werden. Stellen Sie sicher, Ihren Routingtabellen die Azure *Spring Cloud-Besitzer*-Berechtigung zuzuweisen.
+* Vor dem Erstellen einer Instanz müssen Berechtigungen zugewiesen werden. Stellen Sie sicher, dass Sie dem **Azure Spring Cloud-Ressourcenanbieter** die Berechtigung *Besitzer* für Ihre Routentabellen erteilen.
 * Die zugeordnete Routingtabellenressource kann nach der Clustererstellung nicht mehr aktualisiert werden. Benutzerdefinierte Regeln in der Routingtabelle können jedoch geändert werden.
 * Sie können eine Routingtabelle nicht für mehrere Instanzen verwenden, da es zu Konflikten bei den Routingregeln kommen kann.
 

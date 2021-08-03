@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 7e225f3f58e6e24d21c3100fd182934f9caae40b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 775cb6f7cfc19b0009fc92cc5afbd3ac383b3ea3
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108210187"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663857"
 ---
 # <a name="virtual-machines-on-your-azure-stack-edge-pro-gpu-device"></a>Virtuelle Computer auf Ihrem Azure Stack Edge Pro-Gerät mit GPU
 
@@ -78,7 +78,7 @@ Für die VMs auf Ihrem Gerät sind benutzerdefinierte Skripterweiterungen verfü
 
 Weitere Informationen finden Sie unter [Bereitstellen von benutzerdefinierten Skripterweiterungen auf VMs, die auf Ihrem Gerät ausgeführt werden](azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md).
 
-Sie können auch GPU-Erweiterungen für Ihre VM verwenden, wenn Sie GPU-Treiber bei der Bereitstellung der GPU-VMs installieren möchten. Weitere Informationen finden Sie unter [Erstellen von GPU-VMs](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#create-gpu-vms) und [Installieren von GPU-Erweiterungen](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#install-gpu-extension).
+Sie können auch GPU-Erweiterungen für Ihre VM verwenden, falls Sie GPU-Treiber bei der Bereitstellung der GPU-VMs installieren möchten. Weitere Informationen finden Sie unter [Erstellen von GPU-VMs](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#create-gpu-vms) und [Installieren von GPU-Erweiterungen](azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md).
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 

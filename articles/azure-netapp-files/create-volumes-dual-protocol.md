@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: b195b1a816576ec8a065ebe83bd02fa3aeb53c5a
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 92ba9ea8b63671112b6f9e16a984b50439c9d45d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161391"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072035"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Erstellen eines Volumes mit dualem Protokoll (NFSv3 und SMB) für Azure NetApp Files
 
@@ -37,20 +37,34 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
 ## <a name="considerations"></a>Überlegungen
 
 * Achten Sie darauf, die [Anforderungen für Active Directory-Verbindungen](create-active-directory-connections.md#requirements-for-active-directory-connections) zu erfüllen. 
+* Erstellen Sie das Konto `pcuser` in Ihrer Active Directory-Instanz (AD), und stellen Sie sicher, dass das Konto aktiviert ist. Dieses Konto dient als Standardbenutzer. Es wird zum Zuordnen von UNIX-Benutzern verwendet, damit diese mit dem Stil „NTFS-Sicherheit“ auf ein mit zwei Protokollen konfiguriertes Volume zugreifen können. Das Konto `pcuser` wird nur verwendet, wenn kein Benutzer in AD vorhanden ist. Wenn ein Benutzer in AD über ein Konto mit festgelegten POSIX-Attributen verfügt, wird dieses Konto für die Authentifizierung verwendet, und es wird nicht dem Konto `pcuser` zugeordnet. 
 * Erstellen Sie eine Reverse-Lookup-Zone auf dem DNS-Server, und fügen Sie dann einen Zeigereintrag (PTR) des AD-Hostcomputers in dieser Reverse-Lookup-Zone hinzu. Andernfalls kann das Volume mit dualem Protokoll nicht erstellt werden.
+* Die Option **Lokale NFS-Benutzer mit LDAP zulassen** für Active Directory-Verbindungen dient dazu, lokalen Benutzern gelegentlichen und temporären Zugriff zu bieten. Wenn diese Option aktiviert ist, funktionieren Benutzerauthentifizierung und -suche vom LDAP-Server nicht mehr. Daher sollten Sie diese Option für Active Directory-Verbindungen *deaktivieren*, außer wenn ein lokaler Benutzer auf LDAP-fähige Volumes zugreifen muss. In diesem Fall sollten Sie diese Option deaktivieren, sobald der lokale Benutzer keinen Zugriff mehr auf das Volume benötigt. Informationen zum Verwalten lokaler Benutzer finden Sie unter [Lokalen NFS-Benutzern mit LDAP den Zugriff auf ein Doppelprotokollvolume gestatten](#allow-local-nfs-users-with-ldap-to-access-a-dual-protocol-volume).
 * Stellen Sie sicher, dass der NFS-Client auf dem neuesten Stand ist, und führen Sie die neuesten Updates für das Betriebssystem aus.
-* Doppelprotokollvolumes unterstützen zurzeit keine Azure Active Directory Domain Services (AADDS). LDAP über TLS darf nicht aktiviert werden, wenn Sie AADDS verwenden.
+* Volumes mit zwei Protokollen unterstützen sowohl Active Directory Domain Services (AD DS) als auch Azure Active Directory Domain Services (AAD DS). 
+* Volumes mit zwei Protokollen unterstützen die Verwendung von LDAP über TLS mit AAD DS nicht. Weitere Informationen finden Sie unter [Überlegungen zu LDAP über TLS](configure-ldap-over-tls.md#considerations).
 * Die von einem Doppelprotokollvolume verwendete NFS-Version ist NFSv3. Dabei gelten die folgenden Bedingungen:
     * Das duale Protokoll unterstützt die erweiterten Attribute `set/get` von Windows-ACLs von NFS-Clients nicht.
     * NFS-Clients können keine Berechtigungen für den NTFS-Sicherheitsstil ändern, und Windows-Clients können keine Berechtigungen für Doppelprotokollvolumes im UNIX-Format ändern.   
 
-    In der folgenden Tabelle werden die Sicherheitsstile und deren Auswirkungen beschrieben:  
+        In der folgenden Tabelle werden die Sicherheitsstile und deren Auswirkungen beschrieben:  
+        
+        | Sicherheitsstil    | Clients, die Berechtigungen ändern können   | Berechtigungen, die von Clients verwendet werden können  | Resultierender effektiver Sicherheitsstil    | Clients, die auf Dateien zugreifen können     |
+        |-  |-  |-  |-  |-  |
+        | `Unix`    | NFS   | NFSv3-Modusbits   | UNIX  | NFS und Windows   |
+        | `Ntfs`    | Windows   | NTFS-ACLs     | NTFS  |NFS und Windows|
+
+    * Die Richtung, in der die Namenszuordnung erfolgt (Windows zu UNIX oder UNIX zu Windows), hängt davon ab, welches Protokoll verwendet wird und welcher Sicherheitsstil auf ein Volume angewendet wird. Ein Windows-Client erfordert immer eine Windows-zu-UNIX-Namenszuordnung. Ob ein Benutzer zur Überprüfung von Berechtigungen zugewiesen ist, hängt vom Sicherheitsstil ab. Umgekehrt muss ein NFS-Client nur dann eine UNIX-zu-Windows-Namenszuordnung verwenden, wenn der NTFS-Sicherheitsstil verwendet wird. 
+
+        Die folgende Tabelle beschreibt die Namenszuordnungen und Sicherheitsstile:  
     
-    | Sicherheitsstil    | Clients, die Berechtigungen ändern können   | Berechtigungen, die von Clients verwendet werden können  | Resultierender effektiver Sicherheitsstil    | Clients, die auf Dateien zugreifen können     |
-    |-  |-  |-  |-  |-  |
-    | `Unix`    | NFS   | NFSv3-Modusbits   | UNIX  | NFS und Windows   |
-    | `Ntfs`    | Windows   | NTFS-ACLs     | NTFS  |NFS und Windows|
-* UNIX-Benutzer, die das NTFS-Sicherheitsvolume mithilfe von NFS einbinden, werden für den UNIX-Benutzer `root` als Windows-Benutzer `root` und für allen anderen Benutzer als `pcuser` authentifiziert. Stellen Sie bei Verwendung von NFS sicher, dass diese Benutzerkonten in Ihrem Active Directory vorhanden sind, bevor Sie das Volume einbinden. 
+        |     Protokoll          |     Sicherheitsstil          |     Richtung der Namenszuordnung          |     Angewendete Berechtigungen          |
+        |-|-|-|-|
+        |  SMB  |  `Unix`  |  Windows zu UNIX  |  UNIX (Modusbits oder NFSv4.x-ACLs)  |
+        |  SMB  |  `Ntfs`  |  Windows zu UNIX  |  NTFS-ACLs (basierend auf der Windows-SID, die auf die Freigabe zugreift)  |
+        |  NFSv3  |  `Unix`  |  Keine  |  UNIX (Modusbits oder NFSv4.x-ACLs) <br><br>  Beachten Sie, dass NFSv4.x-ACLs mit einem NFSv4.x-Administratorclient angewendet und von NFSv3-Clients berücksichtigt werden können.  |
+        |  NFS  |  `Ntfs`  |  UNIX zu Windows  |  NTFS-ACLs (basierend auf der zugeordneten Windows-Benutzer-SID)  |
+
 * Wenn Sie über große Topologien verfügen und den `Unix`-Sicherheitsstil mit einem Doppelprotokollvolume oder LDAP mit erweiterten Gruppen verwenden, kann Azure NetApp Files möglicherweise nicht auf alle Server in Ihren Topologien zugreifen.  Wenn diese Situation eintritt, wenden Sie sich wegen Unterstützung an Ihr Kontoteam.  <!-- NFSAAS-15123 --> 
 * Sie benötigen zum Erstellen eines Volumes mit dualem Protokoll kein Serverzertifikat von einer Stammzertifizierungsstelle. Dies ist nur erforderlich, wenn LDAP über TLS aktiviert ist.
 
@@ -106,14 +120,18 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
 3. Klicken Sie auf **Protokoll**, und führen Sie anschließend die folgenden Aktionen aus:  
     * Wählen Sie **Dual-protocol (NFSv3 and SMB)** (Duales Protokoll (NFSv3 und SMB)) als Protokolltyp für das Volume aus.   
 
-    * Geben Sie den **Volumepfad** für das Volume an.   
-    Der Volumepfad ist der Name des freigegebenen Volumes. Der Name muss mit einem alphabetischen Zeichen beginnen und innerhalb jedes Abonnements und jeder Region eindeutig sein.  
+    * Geben Sie einen eindeutigen **Volumepfad** an. Dieser Pfad wird verwendet, wenn Sie Einbindungsziele erstellen. Für den Pfad gelten die folgenden Anforderungen:  
+
+        - Er muss innerhalb jedes Subnetzes in der Region eindeutig sein. 
+        - Er muss mit einem Buchstaben beginnen.
+        - Er darf nur Buchstaben, Ziffern oder Gedankenstriche (`-`) enthalten. 
+        - Er darf höchstens 80 Zeichen lang sein.
 
     * Geben Sie den zu verwendenden **Sicherheitsstil** an: NTFS (Standard) oder UNIX.
 
     * Wenn Sie die SMB3-Protokollverschlüsselung für das Volume mit dualem Protokoll aktivieren möchten, wählen Sie **SMB3-Protokollverschlüsselung aktivieren** aus.   
 
-        Durch dieses Feature wird die Verschlüsselung nur für In-Flight-SMB3-Daten aktiviert. NfSv3-In-Flight-Daten werden nicht verschlüsselt. SMB-Clients ohne Verwendung der SMB3-Verschlüsselung können nicht auf dieses Volume zugreifen. Ruhende Daten werden unabhängig von dieser Einstellung verschlüsselt. Weitere Informationen finden Sie in den [häufig gestellten Fragen zur SMB-Verschlüsselung](azure-netapp-files-faqs.md#smb-encryption-faqs). 
+        Durch dieses Feature wird die Verschlüsselung nur für In-Flight-SMB3-Daten aktiviert. NfSv3-In-Flight-Daten werden nicht verschlüsselt. SMB-Clients ohne Verwendung der SMB3-Verschlüsselung können nicht auf dieses Volume zugreifen. Ruhende Daten werden unabhängig von dieser Einstellung verschlüsselt. Weitere Informationen finden Sie unter [SMB-Verschlüsselung](azure-netapp-files-smb-performance.md#smb-encryption). 
 
         Das Feature **SMB3-Protokollverschlüsselung** befindet sich zurzeit in der Vorschauphase. Wenn Sie dieses Feature zum ersten Mal verwenden, registrieren Sie es vor der Verwendung: 
 
@@ -144,11 +162,14 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
 
 ## <a name="allow-local-nfs-users-with-ldap-to-access-a-dual-protocol-volume"></a>Lokalen NFS-Benutzern mit LDAP den Zugriff auf ein Doppelprotokollvolume gestatten 
 
-Sie können lokalen NFS-Client Benutzern, die auf dem Windows LDAP-Server nicht vorhanden sind, den Zugriff auf ein Doppelprotokollvolume ermöglichen, das über aktiviertes LDAP mit erweiterten Gruppen verfügt. Aktivieren Sie hierzu die Option **Lokale NFS-Benutzer mit LDAP zulassen** wie folgt:
+Mit der Option **Lokale NFS-Benutzer mit LDAP zulassen** für Active Directory-Verbindungen können lokale NFS-Clientbenutzer, die auf dem Windows-LDAP-Server nicht vorhanden sind, auf ein Volume mit zwei Protokollen zugreifen, für das LDAP mit aktivierten erweiterten Gruppen aktiviert ist. 
+
+> [!NOTE] 
+> Bevor Sie diese Option aktivieren, sollten Sie sich diese [Überlegungen](#considerations) ansehen. 
 
 1. Klicken Sie auf **Active Directory-Verbindungen**.  Klicken Sie in einer vorhandenen Active Directory-Verbindung auf das Kontextmenü (die drei Punkte `…`), und wählen Sie **Bearbeiten** aus.  
 
-2. Wählen Sie im angezeigten Fenster **Active Directory-Einstellungen bearbeiten** die Option **Lokale NFS-Benutzer mit LDAP zulassen** aus.  
+2. Wählen Sie im angezeigten Fenster **Active Directory-Einstellungen bearbeiten** die Option **lokale NFS-Benutzer mit LDAP zulassen** aus.  
 
     ![Screenshot, der die Option „Lokale NFS-Benutzer mit LDAP zulassen“ zeigt](../media/azure-netapp-files/allow-local-nfs-users-with-ldap.png)  
 
@@ -164,7 +185,19 @@ Sie müssen die folgenden Attribute für LDAP-Benutzer und LDAP-Gruppen festlege
     `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
 * Erforderliche Attribute für LDAP-Gruppen:   
     `objectClass: posixGroup`, `gidNumber: 555`
+* Alle Benutzer und Gruppen müssen über eindeutige Werte für `uidNumber` und `gidNumber` verfügen. 
 
+### <a name="access-active-directory-attribute-editor"></a>Zugreifen auf den Active Directory-Attribut-Editor 
+
+Auf einem Windows-System können Sie wie folgt auf den Active Directory-Attribut-Editor zugreifen:  
+
+1. Klicken Sie auf **Start**, navigieren Sie zu **Windows-Verwaltungsprogramme**, und klicken Sie auf **Active Directory-Benutzer und -Computer,** um das Fenster „Active Directory-Benutzer und -Computer“ zu öffnen.  
+2.  Klicken Sie auf den Domänennamen, den Sie anzeigen möchten, und erweitern Sie dann den Inhalt.  
+3.  Um den erweiterten Attribut-Editor anzuzeigen, aktivieren Sie die Option **Erweiterte Features** im Menü **Ansicht** des Fensters „Active Directory-Benutzer und -Computer“.   
+    ![Screenshot: Zugriff auf das Menü „Erweiterte Features“ des Attribut-Editors.](../media/azure-netapp-files/attribute-editor-advanced-features.png) 
+4. Doppelklicken Sie im linken Bereich auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
+5. Doppelklicken Sie auf einen bestimmten Benutzer, um die zugehörige Registerkarte **Attribut-Editor** anzuzeigen.
+ 
 ## <a name="configure-the-nfs-client"></a>Konfigurieren des NFS-Clients 
 
 Befolgen Sie die Anweisungen unter [Konfigurieren eines NFS-Clients für Azure NetApp Files](configure-nfs-clients.md), um den NFS-Client zu konfigurieren.  
@@ -172,5 +205,6 @@ Befolgen Sie die Anweisungen unter [Konfigurieren eines NFS-Clients für Azure N
 ## <a name="next-steps"></a>Nächste Schritte  
 
 * [Konfigurieren eines NFS-Clients für Azure NetApp Files](configure-nfs-clients.md)
+* [Konfigurieren von ADDS LDAP über TLS für Azure NetApp Files](configure-ldap-over-tls.md)
 * [Problembehandlung für SMB-Volumes und Volumes mit dualem Protokoll](troubleshoot-dual-protocol-volumes.md)
 * [Behandeln von Problemen mit LDAP-Volumes](troubleshoot-ldap-volumes.md)

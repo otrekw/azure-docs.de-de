@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 11/06/2020
-ms.openlocfilehash: 0e4585e801b356bd1c0e4bc1fb0f2ab9ee7ab7bf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 61f169c447b61c6c072971fb5913b37a3752e09e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136335"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790260"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-managed-instance"></a>SQL Server zu Azure SQL Managed Instance: Anleitung zur Migration
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -36,12 +36,13 @@ Weitere Informationen zur Migration finden Sie in [dieser Übersicht](sql-server
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-Sorgen Sie zunächst dafür, dass diese Voraussetzungen erfüllt sind, um Ihre SQL Server-Datenbank-Instanz zu Azure SQL Managed Instance zu migrieren: 
+Zum Migrieren Ihrer SQL Server-Datenbank-Instanzen zu Azure SQL Managed Instance ist Folgendes erforderlich: 
 
-- Wählen Sie eine [Migrationsmethode](sql-server-to-managed-instance-overview.md#compare-migration-options) und die jeweils erforderlichen Tools aus.
-- Installieren Sie den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) auf einem Computer, der eine Verbindung mit Ihrer SQL Server-Quelldatenbank herstellen kann.
-- Konnektivität und geeignete Berechtigungen für den Zugriff auf die Quelle und das Ziel. 
-
+- Sie haben eine [Migrationsmethode](sql-server-to-managed-instance-overview.md#compare-migration-options) und die entsprechenden Tools für Ihre Methode ausgewählt.
+- Sie haben den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) auf einem Computer installiert, der eine Verbindung mit Ihrer SQL Server-Quelldatenbank herstellen kann.
+- Sie haben eine Zielinstanz von [Azure SQL Managed Instance](../../managed-instance/instance-create-quickstart.md) erstellt.
+- Sie haben Konnektivität und geeignete Berechtigungen für den Zugriff auf die Quelle und das Ziel konfiguriert. 
+- Sie haben die [in Azure SQL Managed Instance verfügbaren Features](../../database/features-comparison.md) der SQL Server-Datenbank-Engine überprüft. 
 
 
 ## <a name="pre-migration"></a>Vor der Migration

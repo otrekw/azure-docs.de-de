@@ -1,14 +1,14 @@
 ---
 title: Angebote für verwaltete Dienste im Azure Marketplace
-description: Angebote für verwaltete Dienste ermöglichen es Ihnen, Ressourcenverwaltungsangebote an Kunden in Azure Marketplace zu verkaufen.
-ms.date: 02/17/2021
+description: Bieten Sie Ihre Azure Lighthouse-Verwaltungsdienste für Kunden über Angebote für verwaltete Dienste im Azure Marketplace an.
+ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: e66a87751e0375804031e777a40c5fc1d0e8a7e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df3cd76d840e37e711bdd92d93c2499d701afef9
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093002"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074771"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Angebote für verwaltete Dienste im Azure Marketplace
 
@@ -18,7 +18,7 @@ In diesem Artikel wird der neue Angebotstyp **Verwaltete Dienste** im [Azure Mar
 
 Angebote für verwaltete Dienste optimieren den Prozess des Onboardings von Kunden für Azure Lighthouse. Wenn ein Kunde ein Angebot im Azure Marketplace kauft, kann er angeben, welche Abonnements und/oder Ressourcengruppen integriert werden sollen.
 
-Danach können Benutzer in Ihrer Organisation entsprechend dem Zugriff, den Sie beim Erstellen des Angebots festgelegt haben, mithilfe der [delegierten Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) mit diesen Ressourcen in Ihrem Verwaltungsmandanten arbeiten. Dazu wird ein Manifest verwendet, das die Azure Active Directory-Benutzer (Azure AD), -Gruppen und -Dienstprinzipale, die Zugriff auf Kundenressourcen erhalten, sowie die [Rollen](tenants-users-roles.md) für die jeweilige Zugriffsebene angibt.
+Danach können Benutzer in Ihrer Organisation entsprechend dem Zugriff, den Sie beim Erstellen des Angebots festgelegt haben, mithilfe der [delegierten Azure-Ressourcenverwaltung](architecture.md) mit diesen Ressourcen in Ihrem Verwaltungsmandanten arbeiten. Dazu wird ein Manifest verwendet, das die Azure Active Directory-Benutzer (Azure AD), -Gruppen und -Dienstprinzipale, die Zugriff auf Kundenressourcen erhalten, sowie die [Rollen](tenants-users-roles.md) für die jeweilige Zugriffsebene angibt.
 
 > [!NOTE]
 > Verwaltete Dienste sind in der Azure Government-Cloud und anderen nationalen Clouds möglicherweise nicht verfügbar.
@@ -45,5 +45,5 @@ Informationen zum Veröffentlichen eines Angebots für verwaltete Dienste finden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie über [Delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) und [Mandantenübergreifende Verwaltungserfahrungen](cross-tenant-management-experience.md).
+- Erfahren Sie mehr über die Azure Lighthouse-[Architektur](architecture.md) und über [mandantenübergreifende Verwaltungsmöglichkeiten](cross-tenant-management-experience.md).
 - [Veröffentlichen von Angeboten für verwaltete Dienste im Azure Marketplace](../how-to/publish-managed-services-offers.md)

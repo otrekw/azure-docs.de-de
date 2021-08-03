@@ -3,12 +3,12 @@ title: Planen der Bereitstellung eines Azure Service Fabric-Clusters
 description: Erfahren Sie in diesem Artikel, wie Sie die Bereitstellung von Service Fabric-Clusters für eine Produktionsumgebung in Azure planen und vorbereiten.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 82521487b9a3e9438784e010a32cf6df8e7be2ef
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e6b7c0a14f6e5f63e84c8efa484347cd4ff322f4
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046316"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789541"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planen und Vorbereiten der Clusterbereitstellung
 
@@ -33,7 +33,7 @@ Zuerst müssen Sie ermitteln, für welche Zwecke der von Ihnen erstellte Cluster
 ### <a name="select-node-properties-for-each-node-type"></a>Auswählen der Knoteneigenschaften für die einzelnen Knotentypen
 Knotentypen definieren die VM-SKU, die Anzahl und die Eigenschaften der virtuellen Computer in der zugehörigen Skalierungsgruppe.
 
-Die Mindestgröße der VMs für jeden Knotentyp hängt von der [Dauerhaftigkeitsstufe][durability] ab, die Sie für den Knotentyp auswählen.
+Die Mindestgröße der VMs für jeden Knotentyp hängt von der [Dauerhaftigkeitsstufe][durability] ab, die Sie für den Knotentyp auswählen. Bevor Sie eine VM-SKU auswählen, sollten Sie sich mit den Schritten vertraut machen, die für die [vertikale Skalierung](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) erforderlich sind, wenn Sie in Zukunft eine andere VM-SKU benötigen.
 
 Die Mindestanzahl der VMs für den primären Knotentyp hängt von der von Ihnen ausgewählten [Zuverlässigkeitsstufe][reliability] ab.
 

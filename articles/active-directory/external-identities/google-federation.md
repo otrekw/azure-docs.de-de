@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/30/2021
+ms.date: 06/08/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e9c7d246c1cfb10c43979365c090a3a70775767
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: c21e03870a53858fe877410a7cd75fdc7e82a83b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315541"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963515"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
@@ -28,10 +28,10 @@ Nachdem Sie Google als Anmeldeoption für Ihre Anwendung hinzugefügt haben, kö
 ![Anmeldeoptionen für Google-Benutzer](media/google-federation/sign-in-with-google-overview.png)
 
 > [!NOTE]
-> Der Google-Verbund wurde speziell für Gmail-Benutzer konzipiert. Um einen Verbund mit G Suite-Domänen einzurichten, verwenden Sie den [direkten Verbund](direct-federation.md).
+> Der Google-Verbund wurde speziell für Gmail-Benutzer konzipiert. Verwenden Sie für einen Verbund mit G Suite-Domänen den [SAML-/WS-Fed-Identitätsanbieterverbund](direct-federation.md).
 
 > [!IMPORTANT]
-> **Ab der zweiten Hälfte des Jahres 2021** wird Google die [Unterstützung für die Anmeldung in der Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie den Google-Verbund für B2B-Einladungen oder [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) verwenden oder die Self-Service-Registrierung mit Gmail verwenden, können sich Google Mail-Benutzer nicht anmelden, wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren. [Weitere Informationen](#deprecation-of-web-view-sign-in-support)
+> **Ab der zweiten Hälfte des Jahres 2021** [stellt Google die Unterstützung für die Anmeldung in der Webansicht ein](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie den Google-Verbund für B2B-Einladungen oder [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) verwenden oder die Self-Service-Registrierung mit Gmail verwenden, können sich Google Gmail-Benutzer nicht anmelden, wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren. [Weitere Informationen](#deprecation-of-web-view-sign-in-support)
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Wie läuft der Vorgang für Google-Benutzer ab?
 
@@ -61,7 +61,7 @@ Sie können Google-Gastbenutzern auch einen direkten Link zu einer Anwendung ode
 Ab der zweiten Hälfte des Jahres 2021 wird Google die [Unterstützung für die Anmeldung in der Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie den Google-Verbund für B2B oder [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) verwenden oder die [Self-Service-Registrierung mit Gmail](identity-providers.md) verwenden, oder wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren, können sich Google Gmail-Benutzer nicht authentifizieren.
 
 Im Folgenden finden Sie bekannte Szenarien mit Auswirkungen auf Gmail-Benutzer:
-- Windows-Apps, die das [WebView](https://docs.microsoft.com/windows/communitytoolkit/controls/wpf-winforms/webview)-Steuerelement [WebView2](https://docs.microsoft.com/microsoft-edge/webview2/) oder das ältere WebBrowser-Steuerelement für die Authentifizierung verwenden. Diese Apps sollten mithilfe des WAM-Flows (Web Account Manager) migriert werden.
+- Windows-Apps, die das [WebView](/windows/communitytoolkit/controls/wpf-winforms/webview)-Steuerelement [WebView2](/microsoft-edge/webview2/) oder das ältere WebBrowser-Steuerelement für die Authentifizierung verwenden. Diese Apps sollten mithilfe des WAM-Flows (Web Account Manager) migriert werden.
 - Android-Anwendungen, die das WebView-Benutzeroberflächenelement verwenden 
 - iOS-Anwendungen, die UIWebView/WKWebview verwenden 
 - Apps, die ADAL verwenden
@@ -71,18 +71,22 @@ Diese Änderung wirkt sich nicht auf Folgendes aus:
 - Microsoft-Apps unter Windows
 - Web-Apps
 - Mobile Apps, die Systemwebansichten für die Authentifizierung verwenden ([SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) unter iOS, [Benutzerdefinierte Registerkarten](https://developer.chrome.com/docs/android/custom-tabs/overview/) unter Android).  
-- G Suite-Identitäten, z. B. bei Verwendung eines SAML-basierten [direkten Verbunds](direct-federation.md) mit G Suite
+- G Suite-Identitäten, z. B. bei Verwendung eines [SAML-basierten Verbunds](direct-federation.md) mit G Suite
 
 Wir ermitteln derzeit in Rücksprache mit Google, ob diese Änderung Folgendes betrifft:
 - Windows-Apps, die WAM (Web Account Manager) oder WAB (Web Authentication Broker) verwenden.  
 
 Wir testen weiterhin verschiedene Plattformen und Szenarien und werden diesen Artikel auf dem neuesten Stand halten.
 ### <a name="action-needed-for-embedded-web-views"></a>Für eingebettete Webansichten erforderliche Aktion
-Ändern Sie Ihre Apps so, dass diese den Systembrowser für die Anmeldung verwenden. Weitere Informationen finden Sie in der MSAL.NET-Dokumentation unter [Eingebettete Webbenutzeroberfläche im Vergleich zur System-Webbenutzeroberfläche](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers#embedded-vs-system-web-ui). Alle MSAL-SDKs verwenden standardmäßig die Systemwebansicht.
+Ändern Sie Ihre Apps so, dass diese den Systembrowser für die Anmeldung verwenden. Weitere Informationen finden Sie in der MSAL.NET-Dokumentation unter [Eingebettete Webbenutzeroberfläche im Vergleich zur System-Webbenutzeroberfläche](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui). Alle MSAL-SDKs verwenden standardmäßig die Systemwebansicht.
 ### <a name="what-to-expect"></a>Ausblick
 Bevor Google diese Änderungen in der zweiten Hälfte von 2021 einführt, stellt Microsoft eine Problemumgehung für Apps zur Verfügung, die noch eingebettete Webansichten verwenden, um sicherzustellen, dass die Authentifizierung nicht blockiert wird.
 
 Anwendungen, die zu einer zulässigen Webansicht für die Authentifizierung migriert werden, sind nicht betroffen, und Benutzer können sich wie gewohnt über Google authentifizieren.
+
+Wenn Anwendungen nicht zu einer zulässigen Webansicht für die Authentifizierung migriert werden, wird den betroffenen Gmail-Benutzern der folgende Bildschirm angezeigt.
+
+![Google-Anmeldefehler, wenn Apps nicht zu Systembrowsern migriert werden](media/google-federation/google-sign-in-error-ewv.png)
 
 Wir werden dieses Dokument aktualisieren, sobald Google uns Datumsangaben und weitere Details mitteilt.
 

@@ -3,13 +3,13 @@ title: Verwenden verwalteter Identitäten in Azure Kubernetes Service
 description: Erfahren Sie, wie Sie verwaltete Identitäten in Azure Kubernetes Service (AKS) verwenden.
 services: container-service
 ms.topic: article
-ms.date: 12/16/2020
-ms.openlocfilehash: c87b6dbde14c8b736301846faa8471dd518a98a4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.date: 05/12/2021
+ms.openlocfilehash: a5bf71a654afd122aad682df732e5a6c9dcd9538
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289766"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476192"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Verwenden verwalteter Identitäten in Azure Kubernetes Service
 
@@ -21,7 +21,7 @@ Derzeit erfordert ein AKS-Cluster (Azure Kubernetes Service) und insbesondere de
 
 Die folgenden Ressourcen müssen installiert sein:
 
-- Azure CLI, Version 2.15.1 oder höher
+- Azure-Befehlszeilenschnittstelle, Version 2.23.0 oder höher
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -74,32 +74,12 @@ Rufen Sie schließlich Anmeldeinformationen für den Zugriff auf den Cluster ab:
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
 
-## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>Aktualisieren eines AKS-Clusters auf verwaltete Identitäten (Vorschau)
+## <a name="update-an-aks-cluster-to-managed-identities"></a>Aktualisieren eines AKS-Clusters auf verwaltete Identitäten
 
 Sie können einen AKS-Cluster, der derzeit mit Dienstprinzipalen arbeitet, jetzt mithilfe der folgenden CLI-Befehle auf die Verwendung von verwalteten Identitäten aktualisieren.
 
-Registrieren Sie zuerst das Featureflag für die systemseitig zugewiesene Identität:
-
-```azurecli-interactive
-az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview
-```
-
-Aktualisieren Sie die systemseitig zugewiesene Identität:
-
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
-```
-
-Registrieren Sie das Featureflag für die benutzerseitig zugewiesene Identität:
-
-```azurecli-interactive
-az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
-```
-
-Aktualisieren Sie die benutzerseitig zugewiesene Identität:
-
-```azurecli-interactive
-az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
 > Sobald die system- oder benutzerseitig zugewiesenen Identitäten auf verwaltete Identitäten aktualisiert sind, führen Sie `az aks nodepool upgrade --node-image-only` auf Ihren Knoten aus, um das Update auf verwalteten Identitäten abzuschließen.
@@ -223,7 +203,6 @@ Mit einer Kubelet-Identität kann der Zugriff auf die vorhandene Identität vor 
 ### <a name="limitations"></a>Einschränkungen
 
 - Es funktioniert ausschließlich mit einem benutzerzugeordneten verwalteten Cluster.
-- Azure Government wird derzeit nicht unterstützt.
 - Azure China 21Vianet wird derzeit nicht unterstützt.
 
 Registrieren Sie zunächst den Funktionsbanner für die Kubelet-Identität:

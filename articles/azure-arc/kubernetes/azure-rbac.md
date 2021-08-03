@@ -6,62 +6,62 @@ ms.date: 04/05/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
-description: Verwenden von Azure RBAC für Autorisierungsüberprüfungen in Kubernetes-Clustern mit Azure Arc-Unterstützung
-ms.openlocfilehash: f0275e1516e8487b5a00fb08c885b09b6df1684c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+description: Verwenden von Azure RBAC für die Berechtigungsprüfungen in Azure Arc-fähigen Kubernetes-Clustern.
+ms.openlocfilehash: b4c8d6f4f7abcd9090a0b4aaa69038b75a4aa1b1
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145697"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479597"
 ---
 # <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>Integrieren von Azure Active Directory in Azure Arc-fähige Kubernetes-Cluster
 
-Die Kubernetes-Objekttypen [„ClusterRoleBinding“ und „RoleBinding“](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) bieten Unterstützung bei der nativen Definition der Autorisierung in Kubernetes. Mithilfe dieses Features können Sie unter Verwendung von Azure Active Directory und Rollenzuweisungen in Azure Autorisierungsüberprüfungen für den Cluster steuern. Dies impliziert, dass Sie ab sofort mithilfe von Azure-Rollenzuweisungen differenziert steuern können, wer Ihre Kubernetes-Objekte – z. B. Bereitstellungen, Pods und Dienste – lesen, schreiben und löschen kann.
+Die Kubernetes-Objekttypen [„ClusterRoleBinding“ und „RoleBinding“](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) bieten Unterstützung bei der nativen Definition der Autorisierung in Kubernetes. Mit dieser Funktion können Sie Azure Active Directory (Azure AD) und Rollenzuweisungen in Azure verwenden, um die Berechtigungsprüfungen auf dem Cluster zu steuern. Das bedeutet, dass Sie jetzt mit Azure-Rollenzuweisungen detailliert steuern können, wer Ihre Kubernetes-Objekte – z. B. die Bereitstellung, den Pod und Dienst – lesen, schreiben und löschen kann.
 
-Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [Azure RBAC: Kubernetes mit Azure Arc-Unterstützung](conceptual-azure-rbac.md).
+Eine konzeptionelle Übersicht zu dieser Funktion finden Sie in dem Artikel [Azure RBAC auf Azure Arc-fähigem Kubernetes](conceptual-azure-rbac.md).
 
 [!INCLUDE [preview features note](./includes/preview/preview-callout.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Installieren oder aktualisieren Sie Azure CLI](/cli/azure/install-azure-cli) auf eine Version >= 2.16.0
+- [Installieren oder aktualisieren Sie die Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) auf die Version 2.16.0 oder höher.
 
-- Installieren Sie die Azure CLI-Erweiterung `connectedk8s` in Version >= 1.1.0:
+- Installieren Sie die Azure-Befehlszeilenschnittstellen-Erweiterung `connectedk8s` der Version 1.1.0 oder höher:
 
     ```azurecli
     az extension add --name connectedk8s
     ```
     
-    Wenn die Erweiterung `connectedk8s` bereits installiert ist, können Sie sie mit dem folgenden Befehl auf die neueste Version aktualisieren: 
+    Wenn die Erweiterung `connectedk8s` bereits installiert ist, kann sie mit dem folgenden Befehl auf die neueste Version aktualisiert werden: 
 
     ```azurecli
     az extension update --name connectedk8s
     ```
 
-- Ein vorhandener Cluster, der mit Kubernetes mit Azure Arc-Aktivierung verbunden ist.
+- Verbinden eines vorhandenen Azure Arc-fähigen Kubernetes-Clusters:
     - Wenn Sie noch keine Verbindung mit einem Cluster hergestellt haben, verwenden Sie unseren [Schnellstart](quickstart-connect-cluster.md).
-    - [Aktualisieren Sie Ihre Agents](agent-upgrade.md#manually-upgrade-agents) auf Version >= 1.1.0.
+    - [Führen Sie für Ihre Agents ein Upgrade](agent-upgrade.md#manually-upgrade-agents) auf Version 1.1.1.0 oder höher aus.
 
 > [!NOTE]
-> Dieses Feature kann für Managed Kubernetes-Angebote von Cloudanbietern wie Elastic Kubernetes Service oder Google Kubernetes Engine eingerichtet werden, bei denen der Benutzer keinen Zugriff auf den `apiserver` des Clusters hat. Für Azure Kubernetes Service-Cluster (AKS) ist dieses [Feature nativ verfügbar](../../aks/manage-azure-rbac.md) und erfordert nicht, dass der AKS-Cluster mit Azure Arc verbunden ist.
+> Diese Funktion kann für Managed Kubernetes-Angebote von Cloudanbietern wie Elastic Kubernetes-Dienst oder Google Kubernetes-Engine eingerichtet werden, bei denen der Benutzer keinen Zugriff auf den API-Server des Clusters hat. Für Azure Kubernetes Service-Cluster (AKS) ist dieses [Feature nativ verfügbar](../../aks/manage-azure-rbac.md) und erfordert nicht, dass der AKS-Cluster mit Azure Arc verbunden ist.
 
 ## <a name="set-up-azure-ad-applications"></a>Einrichten von Azure AD-Anwendungen
 
-### <a name="create-server-application"></a>Erstellen einer Serveranwendung
+### <a name="create-a-server-application"></a>Das Erstellen einer Serveranwendung
 
-1. Erstellen Sie eine neue Azure AD-Anwendung, und rufen Sie den zugehörigen `appId`-Wert ab, der in den späteren Schritten als `serverApplicationId` verwendet wird:
+1. Das Erstellen einer neuen Azure AD-Anwendung und deren Wert `appId` abrufen. Dieser Wert wird in späteren Schritten als `serverApplicationId` verwendet.
 
     ```azurecli
     az ad app create --display-name "<clusterName>Server" --identifier-uris "https://<clusterName>Server" --query appId -o tsv
     ```
 
-1. Aktualisieren Sie die Anwendungsgruppen-Mitgliedschaftsansprüche:
+1. Das Aktualisieren der Gruppenmitgliedschaftsansprüche für die Anwendung:
 
     ```azurecli
     az ad app update --id <serverApplicationId> --set groupMembershipClaims=All
     ```
 
-1. Erstellen Sie einen Dienstprinzipal, und rufen Sie den zugehörigen `password`-Feldwert ab, der später als `serverApplicationSecret` benötigt wird, wenn dieses Feature für den Cluster aktiviert wird:
+1. Das Erstellen eines Dienstprinzipals und dessen Feldwert `password` abrufen. Dieser Wert wird später als `serverApplicationSecret` benötigt, wenn Sie diese Funktion auf dem Cluster aktivieren.
 
     ```azurecli
     az ad sp create --id <serverApplicationId>
@@ -76,12 +76,13 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [Azure RB
     ```
 
     > [!NOTE]
-    > * Dieser Schritt muss von einem Azure-Mandantenadministrator ausgeführt werden.
-    > * Zur Verwendung dieses Features in der Produktionsumgebung wird empfohlen, für jeden Cluster eine andere Serveranwendung zu erstellen.
+    > Dieser Schritt muss von einem Azure-Mandantenadministrator ausgeführt werden.
+    > 
+    > Es wird empfohlen für jeden Cluster eine andere Serveranwendung zu erstellen, um diese Funktion in der Produktion zu verwenden.
 
-### <a name="create-client-application"></a>Erstellen einer Clientanwendung
+### <a name="create-a-client-application"></a>Das Erstellen einer Clientanwendung
 
-1. Erstellen Sie eine neue Azure AD-Anwendung, und rufen Sie den zugehörigen appId-Wert ab, der in den späteren Schritten als `clientApplicationId` verwendet wird:
+1. Das Erstellen einer neuen Azure AD-Anwendung und deren Wert `appId` abrufen. Dieser Wert wird in späteren Schritten als `clientApplicationId` verwendet.
 
     ```azurecli
     az ad app create --display-name "<clusterName>Client" --native-app --reply-urls "https://<clusterName>Client" --query appId -o tsv
@@ -93,7 +94,7 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [Azure RB
     az ad sp create --id <clientApplicationId>
     ```
 
-3. Rufen Sie die `oAuthPermissionId` für die Serveranwendung ab:
+3. Das Abrufen des Werts `oAuthPermissionId` für die Serveranwendung:
 
     ```azurecli
     az ad app show --id <serverApplicationId> --query "oauth2Permissions[0].id" -o tsv
@@ -110,7 +111,7 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [Azure RB
 
 Die Serveranwendung benötigt die Berechtigungen `Microsoft.Authorization/*/read`, um zu überprüfen, ob der Benutzer, der die Anforderung sendet, für die in der Anforderung enthaltenen Kubernetes-Objekte autorisiert ist.
 
-1. Erstellen Sie eine Datei namens „accessCheck.json“ mit den folgenden Inhalten:
+1. Das Erstellen einer Datei namens *accessCheck.json* mit den folgenden Inhalten:
 
     ```json
     {
@@ -127,39 +128,40 @@ Die Serveranwendung benötigt die Berechtigungen `Microsoft.Authorization/*/read
     }
     ```
 
-    Ersetzen Sie `<subscription-id>` durch die tatsächliche Abonnement-ID.
+    Das Ersetzen von `<subscription-id>` durch die tatsächliche Abonnement-ID.
 
-2. Führen Sie den folgenden Befehl aus, um die neue benutzerdefinierte Rolle zu erstellen:
+2. Das Ausführen des folgenden Befehls, um die neue benutzerdefinierte Rolle zu erstellen:
 
     ```azurecli
     az role definition create --role-definition ./accessCheck.json
     ```
 
-3. Speichern Sie den Wert des Felds `id` aus der Ausgabe des obigen Befehls. Dieser Wert wird in den späteren Schritten als `roleId` verwendet.
+3. Das Speichern des Werts für Feld `id` aus der Ausgabe des vorangegangenen Befehls. Dieses Feld wird in späteren Schritten als `roleId` verwendet.
 
-4. Erstellen Sie unter Verwendung der oben erstellten Rolle eine Rollenzuweisung mit der Serveranwendung als zugewiesener Person:
+4. Das Erstellen einer Rollenzuweisung auf der Serveranwendung als `assignee`, durch die Verwendung der von Ihnen erstellten Rolle:
 
     ```azurecli
     az role assignment create --role <roleId> --assignee <serverApplicationId> --scope /subscriptions/<subscription-id>
     ```
 
-## <a name="enable-azure-rbac-on-cluster"></a>Aktivieren von Azure RBAC für den Cluster
+## <a name="enable-azure-rbac-on-the-cluster"></a>Das Aktivieren von Azure RBAC auf dem Cluster
 
-1. Aktivieren Sie Azure RBAC für Ihren Kubernetes-Cluster mit Arc-Unterstützung, indem Sie den folgenden Befehl ausführen:
+Das Aktivieren von der rollenbasierte Zugriffskontrolle (RBAC) auf Ihrem Arc-fähigen Kubernetes-Cluster, indem Sie den folgenden Befehl ausführen:
 
-    ```console
-    az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features azure-rbac --app-id <serverApplicationId> --app-secret <serverApplicationSecret>
-    ```
+```console
+az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features azure-rbac --app-id <serverApplicationId> --app-secret <serverApplicationSecret>
+```
     
-    > [!NOTE]
-    > 1. Stellen Sie vor der Ausführung des obigen Befehls sicher, dass die Datei `kubeconfig` auf dem Computer auf den Cluster zeigt, für den Sie Azure RBAC aktivieren möchten.
-    > 2. Verwenden Sie `--skip-azure-rbac-list` mit dem vorstehenden Befehl, um eine durch Komma getrennte Liste der Benutzernamen/E-Mail-Adressen/OIDs anzugeben, für die anstelle einer Verwendung von Azure RBAC Autorisierungsprüfungen unter Verwendung der nativen Kubernetes-Objekte „ClusterRoleBinding“ und „RoleBinding“ durchgeführt werden.
+> [!NOTE]
+> Stellen Sie vor der Ausführung des obigen Befehls sicher, dass die `kubeconfig`-Datei auf dem Computer auf den Cluster verweist, für den Sie die Azure RBAC-Funktion aktivieren möchten.
+>
+> Verwenden Sie `--skip-azure-rbac-list` mit dem vorherigen Befehl, um eine kommagetrennte Liste mit Benutzernamen, E-Mails und OpenID-Verbindungen zu erhalten, die den Berechtigungsprüfungen unterzogen werden. Verwenden Sie hierzu native Kubernetes `ClusterRoleBinding`- und `RoleBinding`-Objekte anstelle von Azure RBAC.
 
-### <a name="for-a-generic-cluster-where-there-is-no-reconciler-running-on-apiserver-specification"></a>Für einen generischen Cluster ohne Abstimmung gemäß apiserver-Spezifikation
+### <a name="generic-cluster-where-no-reconciler-is-running-on-the-apiserver-specification"></a>Ein generischer Cluster, ohne ausgeführte Synchronisierung in der API-Server-Spezifikation
 
-1. Stellen Sie über SSH eine Verbindung mit jedem Masterknoten des Clusters her, und führen Sie die folgenden Schritte aus:
+1. Stellen Sie über SSH eine Verbindung mit jedem Masterknoten des Clusters her, folgen Sie den nachstehenden Schritten:
 
-    1. Öffnen Sie das Manifest `apiserver` im Bearbeitungsmodus:
+    1. Öffnen Sie das `apiserver`-Manifest im Bearbeitungsmodus:
         
         ```console
         sudo vi /etc/kubernetes/manifests/kube-apiserver.yaml
@@ -192,24 +194,24 @@ Die Serveranwendung benötigt die Berechtigungen `Microsoft.Authorization/*/read
         - --authorization-mode=Node,Webhook,RBAC
         ```
     
-        Wenn der Kubernetes-Cluster Version 1.19.0 oder höher verwendet, muss auch das folgende `apiserver argument` festgelegt werden:
+        Wenn Sie das Kubernetes-Cluster mit der Version 1.19.0 oder höher verwenden, müssen Sie auch das folgende `apiserver`-Argument festlegen:
 
         ```yml
         - --authentication-token-webhook-version=v1
         ```
 
-    1. Speichern Sie Ihre Änderungen, und beenden Sie den Editor, um den `apiserver`-Pod zu aktualisieren.
+    1. Speichern und schließen Sie den Editor, um den `apiserver`-Pod zu aktualisieren.
 
 
-### <a name="for-a-cluster-created-using-cluster-api"></a>Für einen mithilfe der Cluster-API erstellten Cluster
+### <a name="cluster-created-by-using-cluster-api"></a>Mit Cluster-API erstellte Cluster
 
-1. Kopieren Sie das guard-Geheimnis mit den Konfigurationsdateien für Authentifizierungs- und Autorisierungswebhooks `from the workload cluster` auf Ihren Computer:
+1. Kopieren Sie das Wächtergeheimnis, das die Authentifizierungs- und Autorisierungs-Webhookkonfigurationsdateien aus dem Workloadcluster enthält, auf Ihren Computer:
 
     ```console
     kubectl get secret azure-arc-guard-manifests -n kube-system -o yaml > azure-arc-guard-manifests.yaml
     ```
 
-1. Ändern Sie das Feld `namespace` in der Datei `azure-arc-guard-manifests.yaml` in den Namespace innerhalb des Verwaltungsclusters, in dem Sie die benutzerdefinierten Ressourcen zum Erstellen von Workloadclustern anwenden.
+1. Ändern Sie das Feld `namespace` in der Datei *azure-arc-guard-manifests.yaml* in den Namespace innerhalb des Verwaltungsclusters in dem Sie die benutzerdefinierten Ressourcen zur Erstellung von Workloadclustern hinzufügen.
 
 1. Wenden Sie dieses Manifest an:
 
@@ -219,7 +221,7 @@ Die Serveranwendung benötigt die Berechtigungen `Microsoft.Authorization/*/read
 
 1. Bearbeiten Sie das Objekt `KubeadmControlPlane` durch Ausführung von `kubectl edit kcp <clustername>-control-plane`:
     
-    1. Fügen Sie unter `files:` den folgenden Codeausschnitt hinzu:
+    1. Fügen Sie unter `files` den folgenden Codeausschnitt hinzu:
     
         ```console
         - contentFrom:
@@ -238,7 +240,7 @@ Die Serveranwendung benötigt die Berechtigungen `Microsoft.Authorization/*/read
           permissions: "0644"
         ```
 
-    1. Fügen Sie unter `apiServer:` -> `extraVolumes:` den folgenden Codeausschnitt hinzu:
+    1. Fügen Sie unter `apiServer` > `extraVolumes` den folgenden Codeausschnitt hinzu:
     
         ```console
         - hostPath: /etc/kubernetes/guard-authn-webhook.yaml
@@ -251,7 +253,7 @@ Die Serveranwendung benötigt die Berechtigungen `Microsoft.Authorization/*/read
             readOnly: true
         ```
 
-    1. Fügen Sie unter `apiServer:` -> `extraArgs:` den folgenden Codeausschnitt hinzu:
+    1. Fügen Sie unter `apiServer` > `extraArgs` den folgenden Codeausschnitt hinzu:
     
         ```console
         authentication-token-webhook-cache-ttl: 5m0s
@@ -263,46 +265,46 @@ Die Serveranwendung benötigt die Berechtigungen `Microsoft.Authorization/*/read
         authorization-webhook-version: v1
         ```
 
-    1. Speichern und beenden Sie, um das Objekt `KubeadmControlPlane` zu aktualisieren. Warten Sie, bis diese Änderungen für den Workloadcluster übernommen wurden.
+    1. Wählen Sie speichern und schließen, um das Objekt `KubeadmControlPlane` zu aktualisieren. Warten Sie, bis diese Änderungen auf dem Workloadcluster angezeigt werden.
 
 
 ## <a name="create-role-assignments-for-users-to-access-the-cluster"></a>Erstellen von Rollenzuweisungen für Benutzer zum Zugriff auf den Cluster
 
-Benutzer der Kubernetes-Ressource mit Azure Arc-Unterstützung können entweder integrierte Rollen oder benutzerdefinierte Rollen verwenden, um Benutzern Zugriff auf den Kubernetes-Cluster zu gewähren.
+Die Besitzer der Azure Arc-fähigen Kubernetes-Ressource können entweder integrierte Rollen oder benutzerdefinierte Rollen verwenden, um anderen Benutzern den Zugriff auf die Kubernetes-Cluster zu gewähren.
 
 ### <a name="built-in-roles"></a>Integrierte Rollen
 
 | Role | BESCHREIBUNG |
 |---|---|
-| [Anzeigeberechtigter für Azure Arc Kubernetes](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-viewer) | Ermöglicht schreibgeschützten Zugriff, um die meisten Objekte in einem Namespace anzuzeigen. Mit dieser Rolle können keine Geheimnisse angezeigt werden. Dies liegt daran, dass durch eine `read`-Berechtigung für Geheimnisse Zugriff auf `ServiceAccount`-Anmeldeinformationen im Namespace gewährt würde, wodurch wiederum API-Zugriff über dieses `ServiceAccount` erteilt würde (eine Form der Rechteausweitung). |
-| [Schreibberechtigter für Azure Arc Kubernetes](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-writer) | Ermöglicht Lese-/Schreibzugriff auf die meisten Objekte in einem Namespace. Diese Rolle lässt das Anzeigen oder Ändern von Rollen oder Rollenbindungen nicht zu. Diese Rolle ermöglicht jedoch den Zugriff auf Geheimnisse und das Ausführen von Pods als beliebiges `ServiceAccount` im Namespace, sodass sie verwendet werden kann, um die API-Zugriffsebenen für ein beliebiges `ServiceAccount` im Namespace zu erhalten. |
-| [Azure Arc Kubernetes-Administrator](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-admin) | Mit dieser Rolle wird Administratorzugriff gewährt. Die Zuweisung ist unter Verwendung von „RoleBinding“ innerhalb eines Namespace vorgesehen. Bei Verwendung in „RoleBinding“ wird Lese-/Schreibzugriff auf die meisten Ressourcen in einem Namespace gewährt, einschließlich der Möglichkeit zum Erstellen von Rollen und Rollenbindungen innerhalb des Namespace. Diese Rolle lässt keinen Schreibzugriff auf das Ressourcenkontingent oder den Namespace selbst zu. |
-| [Azure Arc Kubernetes-Clusteradministrator](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-cluster-admin) | Ermöglicht Superuserzugriff, um beliebige Aktionen für beliebige Ressourcen auszuführen. Bei Verwendung in „ClusterRoleBinding“ wird über diese Rolle Vollzugriff auf jede Ressource im Cluster und in allen Namespaces gewährt. Bei Verwendung in „RoleBinding“ wird über diese Rolle Vollzugriff auf jede Ressource im Namespace der Rollenbindung gewährt, einschließlich des Namespace selbst.|
+| [Anzeigeberechtigter für Azure Arc Kubernetes](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-viewer) | Ermöglicht schreibgeschützten Zugriff, um die meisten Objekte in einem Namespace anzuzeigen. Mit dieser Rolle können keine Geheimnisse angezeigt werden. Dies liegt daran, dass die `read`-Berechtigung für Geheimnisse den Zugriff auf die `ServiceAccount`-Anmeldeinformationen im Namespace aktivieren würde. Diese Anmeldeinformationen würden wiederum den API-Zugriff über den Wert `ServiceAccount` (eine Form der Rechteauswertung) ermöglichen. |
+| [Schreibberechtigter für Azure Arc Kubernetes](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-writer) | Ermöglicht Lese-/Schreibzugriff auf die meisten Objekte in einem Namespace. Diese Rolle lässt das Anzeigen oder Ändern von Rollen oder Rollenbindungen nicht zu. Diese Rolle erlaubt jedoch den Zugriff auf die Geheimnisse und das Ausführen von Pods als beliebigen `ServiceAccount`-Wert im Namespace. Sie kann verwendet werden, um die API-Zugriffsebenen eines beliebigen `ServiceAccount`-Wertes im Namespace zu erzielen. |
+| [Azure Arc Kubernetes-Administrator](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-admin) | Mit dieser Rolle wird Administratorzugriff gewährt. Sie soll innerhalb eines Namespace durch `RoleBinding` vergeben werden. Wenn Sie sie in `RoleBinding` verwenden, wird der Lese-/Schreibzugriff auf die meisten Ressourcen in einem Namespace gewährt, einschließlich der Möglichkeit zum Erstellen von Rollen und Rollenbindungen innerhalb des Namespace. Diese Rolle lässt keinen Schreibzugriff auf das Ressourcenkontingent oder den Namespace selbst zu. |
+| [Azure Arc Kubernetes-Clusteradministrator](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-cluster-admin) | Es ermöglicht den Administratoren-Zugriff, um beliebige Aktionen für beliebige Ressourcen auszuführen. Wenn Sie sie in `ClusterRoleBinding` verwenden, wird die vollständige Steuerung über jede Ressource in dem Cluster und in allen Namespaces gewährt. Wenn Sie sie in `RoleBinding` verwenden, wird die vollständige Steuerung über jede Ressource im Namespace der Rollenbindung, einschließlich des Namespace selbst gewährt.|
 
-Sie können auf den Kubernetes-Cluster mit Arc-Unterstützung beschränkte Rollenzuweisungen im Azure-Portal auf dem Blatt `Access Control (IAM)` der Clusterressource erstellen. Sie können auch Azure CLI-Befehle verwenden, wie nachstehend gezeigt:
+Sie können Rollenzuweisungen, bezogen auf dem Arc-fähigen Kubernetes-Cluster im Azure-Portal in dem Bereich **Zugriffssteuerung (IAM)** der Cluster-Ressource, erstellen. Sie können auch die folgenden Azure CLI-Befehle verwenden:
 
 ```azurecli
 az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee <AZURE-AD-ENTITY-ID> --scope $ARM_ID
 ```
 
-Dabei kann `AZURE-AD-ENTITY-ID` ein Benutzername (z. B. testuser@mytenant.onmicrosoft.com) oder sogar die `appId` eines Dienstprinzipals sein.
+Bei diesen Befehlen kann `AZURE-AD-ENTITY-ID` ein Benutzername (z. B. `testuser@mytenant.onmicrosoft.com`) oder sogar der `appId`-Wert eines Dienstprinzipals sein.
 
-Hier sehen Sie ein weiteres Beispiel für die Erstellung einer Rollenzuweisung, die auf einen bestimmten Namespace innerhalb des Clusters beschränkt ist:
+Hier sehen Sie ein weiteres Beispiel für die Erstellung einer Rollenzuweisung, die auf einen bestimmten Namespace innerhalb des Clusters bezogen ist:
 
 ```azurecli
 az role assignment create --role "Azure Arc Kubernetes Viewer" --assignee <AZURE-AD-ENTITY-ID> --scope $ARM_ID/namespaces/<namespace-name>
 ```
 
 > [!NOTE]
-> Rollenzuweisungen, die auf den Cluster beschränkt sind, können entweder mithilfe des Azure-Portals oder unter Verwendung der CLI erstellt werden. Rollenzuweisungen, die auf Namespaces beschränkt sind, können nur über die CLI erstellt werden.
+> Sie können auf den Cluster bezogene Rollenzuweisungen erstellen, indem Sie entweder das Azure-Portal oder die Azure CLI verwenden. Rollenzuweisungen, die auf Namespaces bezogen sind, können aber nur mithilfe der CLI erstellt werden.
 
 ### <a name="custom-roles"></a>Benutzerdefinierte Rollen
 
-Sie können eine eigene Rollendefinition für die Verwendung in Rollenzuweisungen erstellen.
+Sie können Ihre eigene Rollendefinition für die Verwendung in den Rollenzuweisungen erstellen.
 
-Die nachstehende exemplarische Vorgehensweise zeigt eine Rollendefinition, durch die ein Benutzer Bereitstellungen nur lesen kann. Weitere Informationen finden Sie in der [vollständigen Liste der Datenaktionen, die zum Erstellen einer Rollendefinition verwendet werden können](../../role-based-access-control/resource-provider-operations.md#microsoftkubernetes).
+Das folgende Beispiel zeigt eine Rollendefinition, die zulässt, dass der Benutzer die Bereitstellungen nur lesen kann. Weitere Informationen finden Sie in der [vollständigen Liste der Datenaktionen, die zum Erstellen einer Rollendefinition verwendet werden können](../../role-based-access-control/resource-provider-operations.md#microsoftkubernetes).
 
-Kopieren Sie das nachstehende JSON-Objekt in eine Datei mit dem Namen „custom-role.json“. Ersetzen Sie den Platzhalter `<subscription-id>` durch die tatsächliche Abonnement-ID. Die nachstehende benutzerdefinierte Rolle verwendet eine der Datenaktionen und ermöglicht Ihnen die Anzeige aller Bereitstellungen in dem Bereich (Cluster/Namespace), in dem die Rollenzuweisung erstellt wird.
+Kopieren Sie das nachstehende JSON-Objekt in eine Datei mit dem Namen *custom-role.json*. Ersetzen Sie den Platzhalter `<subscription-id>` durch die tatsächliche Abonnement-ID. Die benutzerdefinierte Rolle verwendet eine der Datenaktionen. Sie ermöglicht Ihnen die Anzeige aller Bereitstellungen in dem Bereich (Cluster oder Namespace), in dem die Rollenzuweisung erstellt wird.
 
 ```json
 {
@@ -320,13 +322,13 @@ Kopieren Sie das nachstehende JSON-Objekt in eine Datei mit dem Namen „custom-
 }
 ```
 
-1. Erstellen Sie die Rollendefinition, indem Sie den folgenden Befehl aus dem Ordner ausführen, in dem Sie `custom-role.json` gespeichert haben:
+1. Das Erstellen Sie die Rollendefinition, indem Sie den folgenden Befehl aus dem Ordner ausführen, in dem Sie die Datei *custom-role.json* gespeichert haben:
 
     ```bash
     az role definition create --role-definition @custom-role.json
     ```
 
-1. Erstellen Sie eine Rollenzuweisung unter Verwendung dieser benutzerdefinierten Rollendefinition:
+1. Das Erstellen einer Rollenzuweisung unter Verwendung dieser benutzerdefinierten Rollendefinition:
 
     ```bash
     az role assignment create --role "Arc Deployment Viewer" --assignee <AZURE-AD-ENTITY-ID> --scope $ARM_ID/namespaces/<namespace-name>
@@ -334,21 +336,22 @@ Kopieren Sie das nachstehende JSON-Objekt in eine Datei mit dem Namen „custom-
 
 ## <a name="configure-kubectl-with-user-credentials"></a>Konfigurieren von kubectl mit Benutzeranmeldeinformationen
 
-Es gibt zwei Möglichkeiten zum Abruf der Datei `kubeconfig`, die zum Zugriff auf den Cluster benötigt wird:
-1. Verwenden Sie das Feature [Cluster Connect](cluster-connect.md) (`az connectedk8s proxy`) des Kubernetes-Clusters mit Azure Arc-Unterstützung.
-1. Der Clusteradministrator gibt die Datei `kubeconfig` für jeden anderen Benutzer frei.
+Es gibt zwei Möglichkeiten, die *kubeconfig*-Datei abzurufen, die Sie für den Zugriff auf den Cluster benötigen:
 
-### <a name="if-you-are-accessing-cluster-using-cluster-connect-feature"></a>Bei Clusterzugriff über das Feature für die Clusterverbindung
+- Verwenden Sie die [Cluster Connect](cluster-connect.md)-Funktion (`az connectedk8s proxy`) des Azure Arc-fähigen Kubernetes-Clusters.
+- Der Clusteradministrator gibt die *kubeconfig*-Datei für jeden anderen Benutzer frei.
 
-Führen Sie den folgenden Befehl aus, um den Proxyprozess zu starten:
+### <a name="if-youre-accessing-the-cluster-by-using-the-cluster-connect-feature"></a>Wenn Sie mit der Clusterverbindung-Funktion auf den Cluster zugreifen
+
+Führen Sie den folgenden Befehl aus, um den Proxy-Prozess zu starten:
 
 ```console
 az connectedk8s proxy -n <clusterName> -g <resourceGroupName>
 ```
 
-Sobald der Proxyprozess ausgeführt wird, können Sie eine weitere Registerkarte in Ihrer Konsole öffnen, um [Anforderungen an den Cluster zu senden](#sending-requests-to-cluster).
+Nachdem der Proxy-Prozess ausgeführt wird, können Sie eine weitere Registerkarte in Ihrer Konsole öffnen, um [Anforderungen an den Cluster zu senden](#send-requests-to-the-cluster).
 
-### <a name="if-cluster-admin-shared-the-kubeconfig-file-with-you"></a>Bei Freigabe der Datei `kubeconfig` durch den Clusteradministrator 
+### <a name="if-the-cluster-admin-shared-the-kubeconfig-file-with-you"></a>Wenn der Clusteradministrator die kubeconfig-Datei für Sie freigegeben hat 
 
 1. Führen Sie den folgenden Befehl aus, um Anmeldeinformationen für den Benutzer festzulegen:
 
@@ -361,9 +364,9 @@ Sobald der Proxyprozess ausgeführt wird, können Sie eine weitere Registerkarte
     --auth-provider-arg=apiserver-id=<serverApplicationId>
     ```
 
-1. Öffnen Sie die zuvor erstellte Datei `kubeconfig`. Vergewissern Sie sich, dass unter `contexts` der dem Cluster zugeordnete Kontext auf die im vorherigen Schritt erstellten Benutzeranmeldeinformationen zeigt.
+1. Öffnen Sie die *kubeconfig*-Datei, die Sie vorher erstellt haben. Überprüfen Sie unter `contexts`, dass der mit dem Cluster verknüpfte Kontext auf die Benutzeranmeldeinformationen verweist, die Sie im vorherigen Schritt erstellt haben.
 
-1. Fügen Sie unterhalb der Benutzerkonfiguration die Einstellung **config-mode** hinzu:
+1. Hinzufügen der **config-mode**-Einstellung unter `user` > `config`:
   
     ```console
     name: testuser@mytenant.onmicrosoft.com
@@ -378,28 +381,133 @@ Sobald der Proxyprozess ausgeführt wird, können Sie eine weitere Registerkarte
         name: azure
     ```
 
-## <a name="sending-requests-to-cluster"></a>Senden von Anforderungen an den Cluster
+## <a name="send-requests-to-the-cluster"></a>Versenden von Anforderungen an den Cluster
 
 1. Führen Sie einen beliebigen `kubectl`-Befehl aus. Beispiel:
-  * `kubectl get nodes` 
-  * `kubectl get pods`
+   * `kubectl get nodes` 
+   * `kubectl get pods`
 
-1. Wenn Sie zur Durchführung einer browserbasierten Authentifizierung aufgefordert werden, kopieren Sie die URL `https://microsoft.com/devicelogin` für die Geräteanmeldung, und öffnen Sie diese in Ihrem Webbrowser.
+1. Wenn Sie zur Durchführung einer browserbasierten Authentifizierung aufgefordert werden, kopieren Sie die URL (`https://microsoft.com/devicelogin`) für die Geräteanmeldung, und öffnen Sie diese in Ihrem Webbrowser.
 
-1. Geben Sie den in der Konsole angezeigten Code ein. Kopieren Sie den Code, und fügen Sie ihn im Terminal an der Eingabeaufforderung für die Geräteauthentifizierung ein.
+1. Geben Sie den auf Ihrer Konsole aufgedruckten Code ein. Kopieren Sie den Code und fügen Sie ihn auf Ihrem Endgerät in die Eingabeaufforderung für die Geräteauthentifizierung ein.
 
-1. Geben Sie den Benutzernamen (testuser@mytenant.onmicrosoft.com) und das zugehörige Kennwort ein.
+1. Geben Sie den Benutzernamen (`testuser@mytenant.onmicrosoft.com`) und das zugehörige Kennwort ein.
 
-1. Falls eine Fehlermeldung wie die folgende angezeigt wird, sind Sie nicht zum Zugriff auf die angeforderte Ressource autorisiert:
+1. Falls eine Fehlermeldung, wie die folgende, angezeigt wird, sind Sie nicht berechtigt auf die angeforderte Ressource zuzugreifen:
 
     ```console
     Error from server (Forbidden): nodes is forbidden: User "testuser@mytenant.onmicrosoft.com" cannot list resource "nodes" in API group "" at the cluster scope: User doesn't have access to the resource in Azure. Update role assignment to allow access.
     ```
 
-    Ein Administrator muss eine neue Rollenzuweisung erstellen, die diesen Benutzer zum Zugriff auf die Ressource berechtigt.
+    Ein Administrator muss eine neue Rollenzuweisung erstellen, die diesem Benutzer den Zugriff auf die Ressource gewährt.
 
+## <a name="use-conditional-access-with-azure-ad"></a>Das Verwenden von bedingtem Zugriff mit dem Azure AD
+
+Wenn Sie das Azure AD mit Ihrem Arc-fähigen Kubernetes-Cluster integrieren, können Sie den Zugriff darauf auch mithilfe des [bedingten Zugriffs](../../active-directory/conditional-access/overview.md) steuern.
+
+> [!NOTE]
+> Bedingter Azure AD-Zugriff ist eine Azure AD Premium-Funktion.
+
+Um eine Beispielrichtlinie für den bedingten Zugriff zu erstellen, die mit dem Cluster verwendet werden soll, führen Sie die folgenden Schritte aus:
+
+1. Suchen Sie oben im Azure-Portal nach dem Dienst **Azure Active Directory Domain Services** und wählen Sie ihn aus.
+1. Wählen Sie auf der linken Seite im Menü „Azure Active Directory Domain Services“ **Unternehmensanwendungen** aus.
+1. Wählen Sie auf der linken Seite im Menü „Unternehmensanwendungen“ **Bedingter Zugriff** aus.
+1. Wählen Sie auf der linken Seite im Menü „Bedingter Zugriff“ **Richtlinien** > **Neue Richtlinie** aus.
+    
+    [ ![Screenshot: Die Schaltfläche zum Hinzufügen einer Richtlinie für den bedingten Zugriff.](./media/azure-rbac/conditional-access-new-policy.png) ](./media/azure-rbac/conditional-access-new-policy.png#lightbox)
+
+1. Geben Sie einen Namen für die Richtlinie, z. B. **arc-k8s-Richtlinie**, ein.
+1. Wählen Sie **Benutzer und Gruppen**. Wählen Sie unter **Einschließen** die Option **Benutzer und Gruppen auswählen** aus. Wählen Sie dann die Benutzer und Gruppen aus, auf die Sie die Richtlinie anwenden möchten. Wählen Sie für dieses Beispiel dieselbe Azure AD Gruppe aus, die Administratorzugriff auf Ihren Cluster hat.
+
+    [ ![Screenshot: Das Auswählen von Benutzern oder Gruppen, um die Richtlinie für den bedingten Zugriff anzuwenden.](./media/azure-rbac/conditional-access-users-groups.png) ](./media/azure-rbac/conditional-access-users-groups.png#lightbox)
+
+1. Wählen Sie **Cloud-Apps oder -aktionen** aus. Wählen Sie unter **Einschließen** die Option **Apps auswählen** aus. Suchen Sie dann nach der Serveranwendung, die Sie zuvor erstellt haben, und wählen Sie sie aus.
+
+    [ ![Screenshot: Das Auswählen einer Serveranwendung zum Anwenden der Richtlinie für den bedingten Zugriff.](./media/azure-rbac/conditional-access-apps.png) ](./media/azure-rbac/conditional-access-apps.png#lightbox)
+
+1. Klicken Sie unter **Zugriffssteuerungen** auf **Gewähren**. Wählen Sie **Zugriff gewähren** > **Markieren des Geräts als konform erforderlich** aus.
+
+    [ ![Screenshot: Das Auswählen, dass nur konforme Geräte für die Richtlinie für den bedingten Zugriff zugelassen werden.](./media/azure-rbac/conditional-access-grant-compliant.png) ](./media/azure-rbac/conditional-access-grant-compliant.png#lightbox)
+    
+1. Wählen Sie unter **Richtlinie aktivieren** die Option **An** > **Erstellen** aus.
+
+    [ ![Screenshot: Das Aktivieren der Richtlinie für den bedingten Zugriff.](./media/azure-rbac/conditional-access-enable-policies.png) ](./media/azure-rbac/conditional-access-enable-policies.png#lightbox)
+
+Ein erneutes Zugreifen auf den Cluster. Das Ausführen des `kubectl get nodes`-Befehls zum Anzeigen der Knoten im Cluster:
+
+```console
+kubectl get nodes
+```
+
+Befolgen Sie die Anweisungen zum erneuten Anmelden. Eine Fehlermeldung zeigt an, dass Sie erfolgreich angemeldet sind. Ihr Administrator fordert aber an, dass das Zugriff anfordernde Gerät von Ihrem Azure AD verwaltet werden muss, damit es auf die Ressource zugreifen kann. Folgen Sie diesen Schritten:
+
+1. Navigieren Sie im Azure-Portal zu **Azure Active Directory**.
+1. Wählen Sie **Unternehmensanwendungen**. Wählen Sie dann unter **Aktivität** die Option **Anmeldungen** aus. 
+1. Ein Eintrag oben zeigt einen **Fehler** für den **Status** und den **Erfolg** für den **bedingten Zugriff** an. Wählen Sie den Eintrag und dann unter **Details** die Option **Bedingter Zugriff** aus. Wie Sie sehen können, ist Ihre Richtlinie für den bedingten Zugriff aufgeführt.
+
+   [ ![Screenshot: Ein Fehler ist beim Anmeldeeintrag aufgrund der Richtlinie für den bedingten Zugriff aufgetreten.](./media/azure-rbac/conditional-access-sign-in-activity.png) ](./media/azure-rbac/conditional-access-sign-in-activity.png#lightbox)
+
+## <a name="configure-just-in-time-cluster-access-with-azure-ad"></a>Das Konfigurieren von Just-In-Time-Clusterzugriff mit Azure AD
+
+Eine weitere Option für die Clusterzugriffssteuerung ist die Verwendung von Privileged Identity Management (PIM) für Just-In-Time-Anforderungen.
+
+>[!NOTE]
+> Das PIM ist eine Azure AD Premium-Funktion, die eine Premium P2-SKU erfordert. Weitere Informationen zu Azure AD-SKUs finden Sie im [Preisleitfaden](https://azure.microsoft.com/pricing/details/active-directory/).
+
+Führen Sie die folgenden Schritte aus, um die Just-In-Time-Zugriffsanforderungen für Ihren Cluster zu konfigurieren:
+
+1. Suchen Sie oben im Azure-Portal nach dem Dienst **Azure Active Directory Domain Services** und wählen Sie ihn aus.
+1. Notieren Sie die Mandanten-ID. Im nachfolgenden Teil dieser Anleitung bezeichnen wir diese ID als `<tenant-id>`.
+
+    [ ![Screenshot: Die Azure Active Directory Domain Services Mandantendetails.](./media/azure-rbac/jit-get-tenant-id.png) ](./media/azure-rbac/jit-get-tenant-id.png#lightbox)
+
+1. Wählen Sie im Menü „Azure Active Directory Domain Services“ auf der linken Seite unter **Verwalten** die Option **Gruppen** > **Neue Gruppe** aus.
+
+    [ ![Screenshot: Das Auswählen für die Erstellung einer neuen Gruppe.](./media/azure-rbac/jit-create-new-group.png) ](./media/azure-rbac/jit-create-new-group.png#lightbox)
+
+1. Stellen Sie sicher, dass die **Sicherheit** als **Gruppentyp** ausgewählt ist.  Die Eingabe eine Gruppennamens, z. B. **myJITGroup**. Wählen Sie unter **Azure AD-Rollen können der Gruppe zugewiesen werden (Vorschau)** die Option **Ja** aus. Wählen Sie abschließend **Erstellen**.
+
+    [ ![Screenshot: Die Details für die neue Gruppe.](./media/azure-rbac/jit-new-group-created.png) ](./media/azure-rbac/jit-new-group-created.png#lightbox)
+
+1. Sie werden zur Seite **Gruppen** zurückgeleitet. Wählen Sie Ihre neu erstellte Gruppe aus, und notieren Sie die Objekt-ID. Im nachfolgenden Teil dieser Anleitung bezeichnen wir diese ID als `<object-id>`.
+
+    [ ![Screenshot: Der Objektbezeichner für die erstellte Gruppe ](./media/azure-rbac/jit-get-object-id.png) ](./media/azure-rbac/jit-get-object-id.png#lightbox)
+
+1. Zurück im Azure-Portal, wählen Sie auf der linken Seite im Menü **Aktivität** die Option **Privilegierter Zugriff (Vorschau)** aus. Wählen Sie dann **Privilegierten Zugriff aktivieren** aus.
+
+    [ ![Screenshot: Die Auswahl zum Aktivieren des privilegierten Zugriffs.](./media/azure-rbac/jit-enabling-priv-access.png) ](./media/azure-rbac/jit-enabling-priv-access.png#lightbox)
+
+1. Wählen Sie **Zuweisungen hinzufügen** aus, um mit der Zugriffsgewährung zu beginnen.
+
+    [ ![Screenshot: Die Schaltfläche zum Hinzufügen der aktiven Zuweisungen.](./media/azure-rbac/jit-add-active-assignment.png) ](./media/azure-rbac/jit-add-active-assignment.png#lightbox)
+
+1. Wählen Sie eine Rolle für das **Mitglied** und anschließend die Benutzer und Gruppen aus, denen Sie Clusterzugriff gewähren möchten. Ein Gruppenadministrator kann diese Zuweisungen jederzeit ändern. Wenn Sie so weit sind, wählen Sie **Weiter** aus.
+
+    [ ![Screenshot: Die Zuweisungen hinzufügen.](./media/azure-rbac/jit-adding-assignment.png) ](./media/azure-rbac/jit-adding-assignment.png#lightbox)
+
+1. Wählen Sie einen Zuweisungstyp von **Aktiv** und die gewünschte Dauer aus, und geben Sie eine Begründung an. Wenn Sie so weit sind, wählen Sie **Zuweisen** aus. Weitere Informationen zu Zuweisungstypen finden Sie unter [Zuweisen eines Besitzers oder Mitglieds einer Gruppe](../../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group).
+
+    [ ![Screenshot: Das Auswählen von Eigenschaften für eine Zuweisung.](./media/azure-rbac/jit-set-active-assignment.png) ](./media/azure-rbac/jit-set-active-assignment.png#lightbox)
+
+Überprüfen Sie sich nach dem Einrichtung der Zuweisungen, dass der Just-In-Time-Zugriff funktioniert, indem Sie auf den Cluster zugreifen. Verwenden Sie dafür z. B. den `kubectl get nodes`-Befehl zum Anzeigen der Knoten im Cluster:
+
+```console
+kubectl get nodes
+```
+
+Beachten Sie die Authentifizierungsanforderung, und führen Sie die Authentifizierungsschritte aus. Wenn der Authentifizierungsvorgang erfolgreich war, sollte eine Ausgabe wie die folgende angezeigt werden:
+
+```output
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code AAAAAAAAA to authenticate.
+
+NAME      STATUS   ROLES    AGE      VERSION
+node-1    Ready    agent    6m36s    v1.18.14
+node-2    Ready    agent    6m42s    v1.18.14
+node-3    Ready    agent    6m33s    v1.18.14
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> Sicheres Herstellen einer Verbindung mit dem Cluster über [Cluster Connect](cluster-connect.md)
+> Stellen Sie eine sichere Verbindung mit dem Cluster über [Cluster Connect](cluster-connect.md) her.

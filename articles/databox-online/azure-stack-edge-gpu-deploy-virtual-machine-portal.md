@@ -1,25 +1,25 @@
 ---
-title: Bereitstellen von VMs auf einem Azure Stack Edge Pro-GPU-Gerät über das Azure-Portal
-description: Erfahren Sie, wie Sie VMs auf Azure Stack Edge Pro über das Azure-Portal erstellen und verwalten.
+title: Bereitstellen von VMs auf einem Azure Stack Edge Pro GPU-Gerät über das Azure-Portal
+description: Erfahren Sie, wie Sie VMs auf Azure Stack Edge Pro GPU über das Azure-Portal erstellen und verwalten.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 05/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 68f0ee86d0882f0a8e44f5af926af4a92d824082
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 79cc482d5bbd32cd4ba4efbce692d32ecc0cad8e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108758290"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081315"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Bereitstellen von VMs auf einem Azure Stack Edge Pro-GPU-Gerät über das Azure-Portal
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Sie können virtuelle Computer (Virtual Machines, VMs) auf einem Azure Stack Edge-Gerät über das Azure-Portal, Vorlagen und Azure PowerShell-Cmdlets sowie über die Azure CLI bzw. Python-Skripts erstellen und verwalten. In diesem Artikel wird beschrieben, wie Sie eine VM auf Ihrem Azure Stack Edge-Gerät über das Azure-Portal erstellen und verwalten. 
+Sie können virtuelle Computer (Virtual Machines, VMs) auf einem Azure Stack Edge Pro GPU-Gerät über das Azure-Portal, Vorlagen und Azure PowerShell-Cmdlets sowie über die Azure CLI bzw. Python-Skripts erstellen und verwalten. In diesem Artikel wird beschrieben, wie Sie eine VM auf Ihrem Azure Stack Edge Pro GPU-Gerät über das Azure-Portal erstellen und verwalten. 
 
 > [!IMPORTANT] 
 > Es wird empfohlen, für Benutzer, die auf Ihrem Gerät bereitgestellte VMs über die Cloud verwalten, die mehrstufige Authentifizierung zu aktivieren.
@@ -48,28 +48,30 @@ Die allgemeine Zusammenfassung des Bereitstellungsworkflows lautet wie folgt:
 
 Bevor Sie mit dem Erstellen und Verwalten von VMs auf Ihrem Gerät über das Azure-Portal beginnen, stellen Sie Folgendes sicher:
 
-1. Sie haben die Netzwerkeinstellungen auf Ihrem Azure Stack Edge Pro-Gerät wie unter [Schritt 1: Konfigurieren eines Azure Stack Edge Pro-Geräts](./azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device) beschrieben festgelegt.
+1. Sie haben die Netzwerkeinstellungen auf Ihrem Azure Stack Edge Pro GPU-Gerät wie unter [Schritt 1: Konfigurieren eines Azure Stack Edge Pro GPU-Geräts](./azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device) beschrieben festgelegt.
 
     1. Sie haben eine Netzwerkschnittstelle für Compute aktiviert. Diese IP-Adresse der Netzwerkschnittstelle wird verwendet, um einen virtuellen Switch für die VM-Bereitstellung zu erstellen. Navigieren Sie auf der lokalen Benutzeroberfläche Ihres Geräts zu **Compute**. Wählen Sie die Netzwerkschnittstelle aus, die Sie verwenden möchten, um einen virtuellen Switch zu erstellen.
 
         > [!IMPORTANT] 
         > Sie können nur einen Port für Compute konfigurieren.
 
-    1. Aktivieren Sie Compute für die Netzwerkschnittstelle. Azure Stack Edge Pro erstellt und verwaltet einen virtuellen Switch, der dieser Netzwerkschnittstelle entspricht.
+    1. Aktivieren Sie Compute für die Netzwerkschnittstelle. Azure Stack Edge Pro GPU erstellt und verwaltet einen virtuellen Switch, der dieser Netzwerkschnittstelle entspricht.
 
 1. Sie haben Zugriff auf eine Windows- oder Linux-VHD, die Sie verwenden, um das VM-Image für den virtuellen Computer zu erstellen, den Sie erstellen möchten.
 
 ## <a name="deploy-a-vm"></a>Bereitstellen einer VM
 
-Führen Sie die folgenden Schritte aus, um auf Ihrem Azure Stack Edge-Gerät eine VM zu erstellen.
+Führen Sie die folgenden Schritte aus, um auf Ihrem Azure Stack Edge Pro GPU-Gerät eine VM zu erstellen.
 
 ### <a name="add-a-vm-image"></a>Hinzufügen eines VM-Images
 
-1. Laden Sie eine VHD in ein Azure Storage-Konto hoch. Führen Sie die Schritte unter [Hochladen einer VHD mithilfe des Azure Storage-Explorers](../devtest-labs/devtest-lab-upload-vhd-using-storage-explorer.md) aus.
+1. Laden Sie eine VHD in ein Azure Storage-Konto hoch. Folgen Sie den Schritten unter [Verwenden des Storage-Explorer für den Upload](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload).
 
-1. Wechseln Sie im Azure-Portal zur Azure Stack Edge-Ressource für Ihr Azure Stack Edge-Gerät. Wechseln Sie zu **Edgecomputing** > **Virtuelle Computer**.
+   Informationen zum Vorbereiten der VHD finden Sie unter [Vorbereiten eines generalisierten Images von einer Windows-VHD](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md).
 
-    ![Screenshot: Edgecomputing und virtuelle Computer](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
+1. Wechseln Sie im Azure-Portal zur Azure Stack Edge-Ressource für Ihr Gerät. Wechseln Sie zu **Edgedienste** > **VMs**.
+
+    ![Screenshot: Edgedienste und VMs](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
 
 1. Wählen Sie **Virtuelle Computer** aus, um zur Seite **Übersicht** zu wechseln. Wählen Sie **Aktivieren** aus, um die Cloudverwaltung für virtuelle Computer zu aktivieren.
 
@@ -131,7 +133,7 @@ Führen Sie diese Schritte aus, um eine VM zu erstellen, nachdem Sie ein VM-Imag
     |Size     | Wählen Sie aus den [Unterstützten VM-Größen](azure-stack-edge-gpu-virtual-machine-sizes.md) aus.        |
     |Username     | Verwenden Sie den Standardbenutzernamen **azureuser** für den Administrator, um sich bei der VM anzumelden.        |
     |Authentifizierungsart    | Wählen Sie einen öffentlichen SSH-Schlüssel oder ein benutzerdefiniertes Kennwort aus.       |
-    |Kennwort     | Geben Sie ein Kennwort zur Anmeldung bei der VM ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die definierten [Komplexitätsanforderungen](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.        |
+    |Kennwort     | Geben Sie ein Kennwort zur Anmeldung bei der VM ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die definierten [Komplexitätsanforderungen](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-) erfüllen.        |
     |Kennwort bestätigen    | Geben Sie das Kennwort erneut ein.        |
 
 
@@ -189,9 +191,11 @@ Führen Sie diese Schritte aus, um eine VM zu erstellen, nachdem Sie ein VM-Imag
 
     ![Screenshot zur Auswahl der neuen VM](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
 
-    Wählen Sie die VM aus, um die Details anzuzeigen. 
+    Wählen Sie die VM aus, um die Details anzuzeigen.
 
     ![Screenshot zu den VM-Details](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
+
+    Sie verwenden die IP-Adresse für die Netzwerkschnittstelle, um eine Verbindung mit der VM herzustellen.
 
 ## <a name="connect-to-a-vm"></a>Herstellen einer Verbindung mit einem virtuellen Computer
 
@@ -211,4 +215,4 @@ Führen Sie diese Schritte aus, um eine Verbindung mit einer Windows-VM herzuste
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Verwalten Ihres Azure Stack Edge Pro-Geräts finden Sie unter [Verwenden der lokalen Webbenutzeroberfläche zur Verwaltung eines Azure Stack Edge Pro-Geräts](azure-stack-edge-manage-access-power-connectivity-mode.md).
+Informationen zum Verwalten Ihres Azure Stack Edge Pro GPU-Geräts finden Sie unter [Verwenden der lokalen Webbenutzeroberfläche zur Verwaltung eines Azure Stack Edge Pro GPU-Geräts](azure-stack-edge-manage-access-power-connectivity-mode.md).

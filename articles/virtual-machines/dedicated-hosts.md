@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 8824ea38121b8f440f1b0ef1f07737f46e8b7295
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: d1bb111bbaa909c52261a0dbafe6d6e0a24390ac
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732882"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007260"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedizierte Azure-Hosts
 
@@ -63,7 +63,7 @@ Bei virtuellen Computern, die auf Hosts mit unterschiedlichen Fehlerdomänen ber
 
 Sie können beide Funktionen kombinieren, um eine noch höhere Fehlerisolation zu erzielen. In diesem Fall geben Sie die Verfügbarkeitszone und die Anzahl der Fehlerdomänen für jede Hostgruppe an und weisen jedem Host in der Gruppe eine Fehlerdomäne und jeder VM eine Verfügbarkeitszone zu.
 
-[Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md) finden Sie die Resource Manager-Beispielvorlage, die für maximale Resilienz in einer Region Zonen und Fehlerdomänen zum Verteilen der Hosts verwendet.
+Die [Resource Manager-Beispielvorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md) verwendet Zonen und Fehlerdomänen, um die Hosts zu verteilen und so für maximale Resilienz in einer Region zu sorgen.
 
 
 ## <a name="manual-vs-automatic-placement"></a>Manuelle und automatische Platzierung
@@ -176,6 +176,6 @@ Azure überwacht und verwaltet den Integritätsstatus Ihrer Hosts. Die folgenden
 
 - Sie können einen dedizierten Host über [Azure PowerShell](./windows/dedicated-hosts-powershell.md), das [Portal](./dedicated-hosts-portal.md) und die [Azure-Befehlszeilenschnittstelle](./linux/dedicated-hosts-cli.md) bereitstellen.
 
-- [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md) finden Sie eine Beispielvorlage, die sowohl Zonen als auch Fehlerdomänen für maximale Resilienz in einer Region verwendet.
+- Es gibt eine [Beispielvorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md), die sowohl Zonen als auch Fehlerdomänen verwendet, um für maximale Resilienz in einer Region zu sorgen.
 
 - Sie können auch mit einer [reservierten Instanz von Azure Dedicated Hosts](prepay-dedicated-hosts-reserved-instances.md) Kosten einsparen.

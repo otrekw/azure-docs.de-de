@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 05/20/2021
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b61636d6048f63ae962d4f755a29c02e6785d5e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1f997ff34703e95c498a0f3c1646bf3acb0129e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100557534"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469989"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Verwaltung von Azure-Abonnements im klassischem Bereitstellungsmodell
 
@@ -42,7 +42,7 @@ In diesem Artikel wird das Hinzufügen oder Ändern der Azure-Rollen „Co-Admin
 
 1. Klicken Sie auf die Registerkarte **Klassische Administratoren**.
 
-    ![Screenshot des Öffnens von „Klassische Administratoren“](./media/classic-administrators/classic-administrators.png)
+    ![Screenshot des Öffnens von „Klassische Administratoren“](./media/shared/classic-administrators.png)
 
 1. Klicken Sie auf **Hinzufügen** > **Co-Administrator hinzufügen**, um den Bereich „Co-Administratoren hinzufügen“ zu öffnen.
 
@@ -97,7 +97,9 @@ Eine vergleichende Betrachtung zu Mitglieds- und Gastbenutzern finden Sie unter 
 
 ## <a name="change-the-service-administrator"></a>Ändern des Dienstadministrators
 
-Nur der Kontoadministrator kann den Dienstadministrator für ein Abonnement ändern. Wenn Sie sich für ein Azure-Abonnement registrieren, ist der Dienstadministrator standardmäßig mit dem Kontoadministrator identisch. Der Benutzer mit der Rolle „Kontoadministrator“ kann nicht auf das Azure-Portal zugreifen. Der Benutzer mit der Rolle „Dienstadministrator“ hat Vollzugriff auf das Azure-Portal. Wenn Kontoadministrator und Dienstadministrator identisch sind und Sie den Dienstadministrator in einen anderen Benutzer ändern, verliert der Kontoadministrator den Zugriff auf das Azure-Portal. Der Kontoadministrator kann aber immer das Kontocenter verwenden, um den Dienstadministrator wieder auf sich selbst festzulegen.
+Nur der Kontoadministrator kann den Dienstadministrator für ein Abonnement ändern. Wenn Sie sich für ein Azure-Abonnement registrieren, ist der Dienstadministrator standardmäßig mit dem Kontoadministrator identisch.
+
+Benutzer mit der Rolle „Kontoadministrator“ können auf das Azure-Portal zugreifen und die Abrechnung verwalten, aber keine Abonnements kündigen. Benutzer mit der Rolle „Dienstadministrator“ haben Vollzugriff auf das Azure-Portal und können auch Abonnements kündigen. Kontoadministratoren können sich selbst zu Dienstadministratoren machen.
 
 Befolgen Sie diese Schritte, um den Dienstadministrator im Azure-Portal zu ändern.
 
@@ -109,7 +111,7 @@ Befolgen Sie diese Schritte, um den Dienstadministrator im Azure-Portal zu ände
 
 1. Klicken Sie im linken Navigationsbereich auf **Eigenschaften**.
 
-1. Klicken Sie auf **Dienstadministrator**.
+1. Klicken Sie auf **Dienstadministrator ändern**.
 
     ![Screenshot der Abonnementeigenschaften im Azure-Portal](./media/classic-administrators/service-admin.png)
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 3d427d80e502eed0825165e640acc0755515c5b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bdf5f2708daee0a3dc05ec8bc3d861633a3b7b7f
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99222047"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590574"
 ---
 # <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>Verwenden von KI zum Verarbeiten und Analysieren von Blobinhalten in Azure Cognitive Search
 
@@ -96,7 +96,7 @@ In Azure Storage stellt sich ein Wissensspeicher auf zwei Arten dar: als Blobcon
 
 + Ein Blobcontainer erfasst angereicherte Dokumente in ihrer Gesamtheit, was nützlich ist, wenn Sie an andere Prozesse übergeben möchten. 
 
-+ Im Gegensatz dazu kann Tabellenspeicher physische Projektionen angereicherter Dokumente aufnehmen. Sie können Slices oder Ebenen von angereicherten Dokumenten erstellen, die bestimmte Teile ein- bzw. ausschließen. Für die Analyse in Power BI werden die Tabellen im Azure-Tabellenspeicher zur Datenquelle für die weitere Visualisierung und Erkundung.
++ Im Gegensatz dazu kann Tabellenspeicher physische Projektionen angereicherter Dokumente aufnehmen. Sie können Slices oder Ebenen von angereicherten Dokumenten erstellen, die bestimmte Teile ein- bzw. ausschließen. Für die Analyse in Power BI werden die Tabellen in Azure Table Storage zur Datenquelle für die weitere Visualisierung und Erkundung.
 
 Ein angereichertes Dokument am Ende der Pipeline unterscheidet sich von der ursprünglichen Eingabeversion durch das Vorhandensein zusätzlicher Felder, die neue Informationen enthalten, die während der Anreicherung extrahiert oder generiert wurden. Daher können Sie mit einer Kombination aus ursprünglichen und erstellten Inhalten arbeiten, unabhängig von der verwendeten Ausgabestruktur.
 

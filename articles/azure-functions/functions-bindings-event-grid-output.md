@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 888afdc2764fed9f0b2c8b548c3e2b1c48e9a31e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ebf502fc2ae83651e8f69472b3b2042cef723d8
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97094675"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537242"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid-Ausgabebindung für Azure Functions
 
@@ -28,6 +28,8 @@ Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht]
 ## <a name="example"></a>Beispiel
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="c-2x-and-higher"></a>C# (ab 2.x)
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die eine Nachricht in ein benutzerdefiniertes Event Grid-Thema schreibt. Dabei wird der Rückgabewert der Methode als Ausgabe verwendet:
 
@@ -53,6 +55,64 @@ public static async Task Run(
     {
         var myEvent = new EventGridEvent("message-id-" + i, "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
         await outputEvents.AddAsync(myEvent);
+    }
+}
+```
+
+### <a name="version-3x-preview"></a>Version 3.x (Vorschau)
+
+Das folgende Beispiel zeigt eine Functions 3.x-[C#-Funktion](functions-dotnet-class-library.md) für die Bindung an `CloudEvent`:
+
+```cs
+using System.Threading.Tasks;
+using Azure.Messaging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+
+namespace Azure.Extensions.WebJobs.Sample
+{
+    public static class CloudEventBindingFunction
+    {
+        [FunctionName("CloudEventBindingFunction")]
+        public static async Task<IActionResult> RunAsync(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [EventGrid(TopicEndpointUri = "EventGridEndpoint", TopicKeySetting = "EventGridKey")] IAsyncCollector<CloudEvent> eventCollector)
+        {
+            CloudEvent e = new CloudEvent("IncomingRequest", "IncomingRequest", await req.ReadAsStringAsync());
+            await eventCollector.AddAsync(e);
+            return new OkResult();
+        }
+    }
+}
+```
+
+Das folgende Beispiel zeigt eine Functions 3.x-[C#-Funktion](functions-dotnet-class-library.md) für die Bindung an `EventGridEvent`:
+
+```cs
+using System.Threading.Tasks;
+using Azure.Messaging.EventGrid;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+
+namespace Azure.Extensions.WebJobs.Sample
+{
+    public static class EventGridEventBindingFunction
+    {
+        [FunctionName("EventGridEventBindingFunction")]
+        public static async Task<IActionResult> RunAsync(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [EventGrid(TopicEndpointUri = "EventGridEndpoint", TopicKeySetting = "EventGridKey")] IAsyncCollector<EventGridEvent> eventCollector)
+        {
+            EventGridEvent e = new EventGridEvent(await req.ReadAsStringAsync(), "IncomingRequest", "IncomingRequest", "1.0.0");
+            await eventCollector.AddAsync(e);
+            return new OkResult();
+        }
     }
 }
 ```
@@ -343,9 +403,15 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 Senden Sie Nachrichten mithilfe eines Methodenparameters wie `out EventGridEvent paramName`. Um mehrere Nachrichten zu schreiben, können Sie `ICollector<EventGridEvent>` oder `IAsyncCollector<EventGridEvent>` anstelle von `out EventGridEvent` verwenden.
 
+### <a name="additional-types"></a>Zusätzliche Typen 
+Apps, die mindestens Version 3.0.0 der Event Grid-Erweiterung nutzen, verwenden den Typ `EventGridEvent` aus dem Namespace [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent). Darüber hinaus können Sie eine Bindung an den Typ `CloudEvent` aus dem Namespace [Azure.Messaging](/dotnet/api/azure.messaging.cloudevent) erstellen.
+
 # <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Senden Sie Nachrichten mithilfe eines Methodenparameters wie `out EventGridEvent paramName`. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Um mehrere Nachrichten zu schreiben, können Sie `ICollector<EventGridEvent>` oder `IAsyncCollector<EventGridEvent>` anstelle von `out EventGridEvent` verwenden.
+
+### <a name="additional-types"></a>Zusätzliche Typen 
+Apps, die mindestens Version 3.0.0 der Event Grid-Erweiterung nutzen, verwenden den Typ `EventGridEvent` aus dem Namespace [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent). Darüber hinaus können Sie eine Bindung an den Typ `CloudEvent` aus dem Namespace [Azure.Messaging](/dotnet/api/azure.messaging.cloudevent) erstellen.
 
 # <a name="java"></a>[Java](#tab/java)
 

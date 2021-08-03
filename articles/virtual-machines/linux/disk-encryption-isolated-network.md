@@ -7,14 +7,14 @@ ms.subservice: disks
 ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
-ms.date: 02/27/2020
+ms.date: 05/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: 8d8d2b88251f837a23c4e82a90eb4d4eb0043702
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de8a03fd9d843f91872ddab7bd13db70f7297cb0
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553050"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469226"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption in einem isolierten Netzwerk
 
@@ -27,9 +27,9 @@ Azure Disk Encryption hängt von einer Reihe von Komponenten ab, die in der Rege
 Dies sind die Pakete, die für die einzelnen Distributionen erforderlich sind. Eine vollständige Liste der unterstützten Distributionen und Volumetypen finden Sie unter [Unterstützte VMs und Betriebssysteme](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
 - **Ubuntu 14.04, 16.04, 18.04**: lsscsi, psmisc, at, cryptsetup-bin, python-parted, python-six, procps, grub-pc-bin
-- **CentOS 7.2 bis 7.7**: lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup, cryptsetup-reencrypt, pyparted, procps-ng, util-linux
+- **CentOS 7.2 bis 7.9, 8.1, 8.2**: lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup, cryptsetup-reencrypt, pyparted, procps-ng, util-linux
 - **CentOS 6.8**: lsscsi, psmisc, lvm2, uuid, at, cryptsetup-reencrypt, pyparted, python-six
-- **RedHat 7.2 bis 7.7**: lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup, cryptsetup-reencrypt, procps-ng, util-linux
+- **RedHat 7.2 bis 7.9, 8.1, 8.2**: lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup, cryptsetup-reencrypt, procps-ng, util-linux
 - **RedHat 6.8**: lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup-reencrypt
 - **openSUSE 42.3, SLES 12-SP4, 12-SP3**: lsscsi, cryptsetup
 

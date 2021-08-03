@@ -1,36 +1,34 @@
 ---
-title: Zurücksetzen und Reaktivieren Ihres Azure Stack Edge Pro-Geräts | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie die Daten auf Ihrem Azure Stack Edge Pro-Gerät löschen und es dann reaktivieren.
+title: Zurücksetzen und Reaktivieren des Azure Stack Edge-Geräts
+description: Hier erfahren Sie, wie Sie die Daten auf Ihrem Azure Stack Edge-Gerät löschen und es dann reaktivieren.
 services: databox
 author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 05/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 95fbe5dc4a934fee10c558f640bc24f261203a33
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4afe7235cb4122e4c4fe7e26fff4b34504663892
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443514"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460597"
 ---
-# <a name="reset-and-reactivate-your-azure-stack-edge-pro-device"></a>Zurücksetzen und Reaktivieren Ihres Azure Stack Edge Pro-Geräts
+# <a name="reset-and-reactivate-your-azure-stack-edge-device"></a>So setzen Sie Ihr Azure Stack Edge-Gerät zurück und reaktivieren es
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-In diesem Artikel wird beschrieben, wie Sie ein Azure Stack Edge Pro-Gerät zurücksetzen, neu konfigurieren und reaktivieren, wenn Sie Probleme mit dem Gerät haben oder es aus einem anderen Grund neu starten müssen.
+In diesem Artikel wird beschrieben, wie Sie ein Azure Stack Edge-Gerät zurücksetzen, neu konfigurieren und reaktivieren, wenn Sie Probleme mit dem Gerät haben oder es aus einem anderen Grund neu starten müssen.
 
 Nachdem Sie das Gerät zurückgesetzt haben, um die Daten zu entfernen, müssen Sie es als neue Ressource reaktivieren. Wenn Sie ein Gerät zurücksetzen, wird die Gerätekonfiguration entfernt, sodass Sie es über die lokale Webbenutzeroberfläche neu konfigurieren müssen.
 
-In diesem Artikel werden folgende Vorgehensweisen behandelt:
+Ein Grund dafür könnte sein, wenn Sie Beispielsweise eine vorhandene Azure Stack Edge-Ressource in ein neues Abonnement verschieben möchten. Dazu gehen Sie wie folgt vor:
 
-> [!div class="checklist"]
->
-> * Löschen der Daten von den Datenträgern des Geräts
-> * Reaktivieren des Geräts, indem Sie einen neuen Auftrag erstellen, das Gerät neu konfigurieren und dann aktivieren
+1. Setzen Sie Die Daten auf dem Gerät zurück, indem Sie die Schritte unter [Zurücksetzen des Geräts](#reset-device)ausführen.
+2. Erstellen Sie eine neue Ressource, die das neue Abonnement mit Ihrem vorhandenen Gerät verwendet, und aktivieren Sie das Gerät dann. Führen Sie die Schritte unter [Reaktivieren des Geräts](#reactivate-device) aus.
 
-## <a name="reset-data-from-the-device"></a>Zurücksetzen von Daten auf dem Gerät
+## <a name="reset-device"></a>Zurücksetzen eines Geräts
 
 Um die Daten von den Datenträgern Ihres Geräts zu löschen, müssen Sie Ihr Gerät zurücksetzen.
 
@@ -67,4 +65,4 @@ Führen Sie zum Reaktivieren Ihres vorhandenen Geräts die folgenden Schritte au
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich darüber, wie Sie [eine Verbindung mit einem Azure Stack Edge Pro-Gerät herstellen](azure-stack-edge-gpu-deploy-connect.md) können.
+- Hier erfahren Sie, wie Sie eine[Verbindung mit einem Azure Stack Edge-Gerät](azure-stack-edge-gpu-deploy-connect.md) herstellen.

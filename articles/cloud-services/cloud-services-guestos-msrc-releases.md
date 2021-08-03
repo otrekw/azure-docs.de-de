@@ -11,17 +11,129 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/30/2021
+ms.date: 6/14/2021
 ms.author: gunnarc
-ms.openlocfilehash: bdf729d3f5842953be6cf87b7dcaab38582711fc
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a516fd1706fdd07ad3c28a0a9e3058de5603cd40
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736126"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078634"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="june-2021-guest-os"></a>Gastbetriebssystem für Juni 2021
+
+>[!NOTE] 
+
+>Das Gastbetriebssystem für Juni wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Juni enthalten. Änderungen der Liste vorbehalten. 
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 21-06 |  [5003646]  |  Letztes kumulatives Update | 6.32 | 8\. Juni 2021 |
+|  Rel 21-06 |  [4580325]  |  Flash-Update | 3.98, 4.91, 5.56, 6.32 | 13. Oktober 2020 |
+|  Rel 21-06 |  [5003636]  |  Kumulative IE-Updates | 2.111, 3.98, 4.91 | 8\. Juni 2021 |
+|  Rel 21-06 |  [5003638]  |  Letztes kumulatives Update | 5.56 | 8\. Juni 2021 |
+|  Rel 21-06 |  [4578952]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup  | 2.111 | 13. Oktober 2020 |
+|  Rel 21-06 |  [4578955]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup  | 2.111 | 13. Oktober 2020 |
+|  Rel 21-06 |  [4578953]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup  | 4,91 | 13. Oktober 2020 |
+|  Rel 21-06 |  [4578956]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup  | 4,91 | 13. Oktober 2020 |
+|  Rel 21-06 |  [4578950]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup  | 3,98 | 13. Oktober 2020 |
+|  Rel 21-06 |  [4578954]  |  . .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup  | 3,98 | 13. Oktober 2020 |
+|  Rel 21-06 |  [4601060]  |  . Kumulatives Update für .NET Framework 3.5 und 4.7.2  | 6.32 | 9\. Februar 2021 |
+|  Rel 21-06 |  [5003667]  |  Monatlicher Rollup  | 2.111 | 8\. Juni 2021 |
+|  Rel 21-06 |  [5003697]  |  Monatlicher Rollup  | 3,98 | 8\. Juni 2021 |
+|  Rel 21-06 |  [5003671]  |  Monatlicher Rollup  | 4,91 | 8\. Juni 2021 |
+|  Rel 21-06 |  [5001401]  |  Wartungsstapelaktualisierung  | 3,98 | 13. April 2021 |
+|  Rel 21-06 |  [5001403]  |  Wartungsstapelaktualisierung  | 4,91 | 13. April 2021 |
+|  Rel 21-06 OOB |  [4578013]  |  Eigenständiges Sicherheitsupdate  | 4,91 | 19. August 2020 |
+|  Rel 21-06 |  [5001402]  |  Wartungsstapelaktualisierung  | 5.56 | 13. April 2021 |
+|  Rel 21-06 |  [4592510]  |  Wartungsstapelaktualisierung  | 2.111 | 8\. Dezember 2020 |
+|  Rel 21-06 |  [5003711]  |  Wartungsstapelaktualisierung  | 6.32 | 8\. Juni 2021 |
+|  Rel 21-06 |  [4494175]  |  Microcode  | 5.56 | 1\. September 2020 |
+|  Rel 21-06 |  [4494174]  |  Microcode  | 6.32 | 1\. September 2020 |
+|  Rel 21-06 |  [4052623]  |  Update für die Microsoft Defender-Antischadsoftwareplattform | 6.32, 5.56 | 13. Mai 2021 |
+
+[5003646]: https://support.microsoft.com/kb/5003646
+[4580325]: https://support.microsoft.com/kb/4580325
+[5003636]: https://support.microsoft.com/kb/5003636
+[5003638]: https://support.microsoft.com/kb/5003638
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4601060]: https://support.microsoft.com/kb/4601060
+[5003667]: https://support.microsoft.com/kb/5003667
+[5003697]: https://support.microsoft.com/kb/5003697
+[5003671]: https://support.microsoft.com/kb/5003671
+[5001401]: https://support.microsoft.com/kb/5001401
+[5001403]: https://support.microsoft.com/kb/5001403
+[4578013]: https://support.microsoft.com/kb/4578013
+[5001402]: https://support.microsoft.com/kb/5001402
+[4592510]: https://support.microsoft.com/kb/4592510
+[5003711]: https://support.microsoft.com/kb/5003711
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+[4052623]: https://support.microsoft.com/kb/4052623
+
+## <a name="may-2021-guest-os"></a>Gastbetriebssystem für Mai 2021
+
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 21-05 |  [5003171]  |  Letztes kumulatives Update | [6.31] | 11. Mai 2021 |
+|  Rel 21-05 |  [4580325]  |  Flash-Update | [3.97], [4.90], [5.55], [6.31] | 13. Oktober 2020 |
+|  Rel 21-05 |  [5003165]  |  Kumulative IE-Updates | [2.110], [3.97], [4.90] | 11. Mai 2021 |
+|  Rel 21-05 |  [5003197]  |  Letztes kumulatives Update | [5.55] | 11. Mai 2021 |
+|  Rel 21-05 |  [4578952]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup  | [2.110] | 13. Oktober 2020 |
+|  Rel 21-05 |  [4578955]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup  | [2.110] | 13. Oktober 2020 |
+|  Rel 21-05 |  [4578953]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup  | [4.90] | 13. Oktober 2020 |
+|  Rel 21-05 |  [4578956]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup  | [4.90] | 13. Oktober 2020 |
+|  Rel 21-05 |  [4578950]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup  | [3.97] | 13. Oktober 2020 |
+|  Rel 21-05 |  [4578954]  |  . .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup  | [3.97] | 13. Oktober 2020 |
+|  Rel 21-05 |  [4601060]  |  . Kumulatives Update für .NET Framework 3.5 und 4.7.2  | [6.31] | 9\. Februar 2021 |
+|  Rel 21-05 |  [5003233]  |  Monatlicher Rollup  | [2.110] | 11. Mai 2021 |
+|  Rel 21-05 |  [5003208]  |  Monatlicher Rollup  | [3.97] | 11. Mai 2021 |
+|  Rel 21-05 |  [5003209]  |  Monatlicher Rollup  | [4.90] | 11. Mai 2021 |
+|  Rel 21-05 |  [5001401]  |  Wartungsstapelaktualisierung  | [3.97] | 13. April 2021 |
+|  Rel 21-05 |  [5001403]  |  Wartungsstapelaktualisierung  | [4.90] | 13. April 2021 |
+|  Rel 21-05 OOB |  [4578013]  |  Eigenständiges Sicherheitsupdate  | [4.90] | 19. August 2020 |
+|  Rel 21-05 |  [5001402]  |  Wartungsstapelaktualisierung  | [5.55] | 13. April 2021 |
+|  Rel 21-05 |  [4592510]  |  Wartungsstapelaktualisierung  | [2.110] | 8\. Dezember 2020 |
+|  Rel 21-05 |  [5003243]  |  Wartungsstapelaktualisierung  | [6.31] | 11. Mai 2021 |
+|  Rel 21-05 |  [4494175]  |  Microcode  | [5.55] | 1\. September 2020 |
+|  Rel 21-05 |  [4494174]  |  Microcode  | [6.31] | 1\. September 2020 |
+
+[5003171]: https://support.microsoft.com/kb/5003171
+[4580325]: https://support.microsoft.com/kb/4580325
+[5003165]: https://support.microsoft.com/kb/5003165
+[5003197]: https://support.microsoft.com/kb/5003197
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4601060]: https://support.microsoft.com/kb/4601060
+[5003233]: https://support.microsoft.com/kb/5003233
+[5003208]: https://support.microsoft.com/kb/5003208
+[5003209]: https://support.microsoft.com/kb/5003209
+[5001401]: https://support.microsoft.com/kb/5001401
+[5001403]: https://support.microsoft.com/kb/5001403
+[4578013]: https://support.microsoft.com/kb/4578013
+[5001402]: https://support.microsoft.com/kb/5001402
+[4592510]: https://support.microsoft.com/kb/4592510
+[5003243]: https://support.microsoft.com/kb/5003243
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+[2.110]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3.97]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.90]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5.55]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6.31]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 ## <a name="april-2021-guest-os"></a>Gastbetriebssystem April 2021
 

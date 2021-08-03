@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 8980a8920b4f41f5a8e6afe106415032eef2055b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: ab24c9157a82591352e3511e15d4b45c750444db
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375836"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110497657"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Tutorial: Untersuchen von Vorfällen mit Azure Sentinel
 
 > [!IMPORTANT]
-> Das Untersuchungsdiagramm weist jetzt den Status **Allgemeine Verfügbarkeit** (GA) auf. 
+> Das Untersuchungsdiagramm weist jetzt den Status **Allgemeine Verfügbarkeit** (GA) auf.
 
 In diesem Tutorial erfahren Sie, wie Sie Vorfälle mit Azure Sentinel untersuchen. Nachdem Sie Ihre Datenquellen mit Azure Sentinel verbunden haben, möchten Sie gewarnt werden, wenn etwas Verdächtiges geschieht. Damit Sie dies tun können, können Sie in Azure Sentinel erweiterte Warnungsregeln erstellen, die Vorfälle generieren, die Sie zuweisen und untersuchen können.
 
@@ -85,12 +85,14 @@ So verwenden Sie das Untersuchungsdiagramm:
 
 1. Wählen Sie einen Vorfall und anschließend **Untersuchen** aus. Dadurch wird das Untersuchungsdiagramm aufgerufen. Im Diagramm erhalten Sie eine anschauliche Zuordnung der Entitäten, die direkt mit dem Vorfall verbunden sind, sowie aller darüber hinaus damit verbundenen Ressourcen.
 
+
+    [ ![Anzeigen der Karte.](media/tutorial-investigate-cases/investigation-map.png) ](media/tutorial-investigate-cases/investigation-map.png#lightbox)
+
    > [!IMPORTANT] 
    > - Sie können den Vorfall nur untersuchen, wenn Sie beim Einrichten der Analyseregel die Entitätszuordnungsfelder verwendet haben. Das Untersuchungsdiagramm fordert, dass Ihr ursprünglicher Vorfall Entitäten enthält.
    >
    > - Azure Sentinel unterstützt derzeit die Untersuchung von **bis zu 30 Tage alten Vorfällen**.
 
-   ![Anzeigen der Karte](media/tutorial-investigate-cases/map1.png)
 
 1. Wählen Sie eine Entität aus, um den Bereich **Entitäten** zu öffnen, in dem Sie Informationen zur betreffenden Entität untersuchen können.
 
@@ -125,6 +127,8 @@ Nachdem Sie einen bestimmten Incident gelöst haben (beispielsweise dann, wenn d
 - Unbestimmt
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Screenshot, der die in der Liste „Klassifizierung auswählen“ verfügbaren Klassifizierungen hervorhebt.":::
+
+Weitere Informationen zu falsch positiven und unbedenklichen positiven Ergebnissen finden Sie unter [Behandeln falsch positiver Ergebnisse in Azure Sentinel](false-positives.md).
 
 Nachdem Sie eine geeignete Klassifizierung ausgewählt haben, fügen Sie in das Feld **Kommentar** einen beschreibenden Text hinzu. Dies ist nützlich, falls Sie sich noch einmal auf diesen Incident beziehen müssen. Wenn Sie fertig sind, klicken Sie auf **Anwenden**. Der Incident wird geschlossen.
 

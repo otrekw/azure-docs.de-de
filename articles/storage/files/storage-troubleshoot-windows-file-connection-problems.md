@@ -7,12 +7,13 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 115c083a75adab96e416fc200bf7db287a99ff4e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ccaa432de640e7d4bf89675c750e965e0058f847
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788419"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676108"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Behandeln von Azure Files-Problemen unter Windows (SMB)
 
@@ -32,7 +33,7 @@ Wenn Sie versuchen, eine Dateifreigabe bereitzustellen, erhalten Sie möglicherw
 
 Aus Sicherheitsgründen werden Verbindungen mit Azure-Dateifreigaben blockiert, wenn der Kommunikationskanal nicht verschlüsselt ist und der Verbindungsversuch nicht von dem gleichen Datencenter aus erfolgt, in dem sich die Azure-Dateifreigaben befinden. Unverschlüsselte Verbindungen innerhalb desselben Datencenters können auch blockiert werden, wenn die Einstellung [Sichere Übertragung erforderlich](../common/storage-require-secure-transfer.md) für das Speicherkonto aktiviert ist. Ein verschlüsselter Kommunikationskanal wird nur dann bereitgestellt, wenn das Clientbetriebssystem des Benutzers SMB-Verschlüsselung unterstützt.
 
-Windows 8, Windows Server 2012 und höhere Versionen jedes Systems handeln Anforderung aus, die SMB 3.0 umfassen, wodurch die Verschlüsselung unterstützt wird.
+Windows 8, Windows Server 2012 und höhere Versionen dieser Systeme handeln Anforderung aus, die SMB 3.x umfassen, wodurch die Verschlüsselung unterstützt wird.
 
 ### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 11/15/2020
+ms.date: 05/11/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 04c9bc429d9663f7ac36b6ba8f40abf225eb71c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 329ddb32282d91ec5e990753057aea606622a266
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359109"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535183"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos in der Microsoft Authenticator-App
 
@@ -35,7 +35,7 @@ Sie können Ihr Geschäfts-, Schul- oder Unikonto zur Microsoft Authenticator-A
 ### <a name="sign-in-with-your-credentials"></a>Mit Ihren Anmeldeinformationen anmelden
 
 >[!Note]
->Diese Funktion kann nur von Benutzern verwendet werden, deren Administratoren die Anmeldung per Telefon mithilfe der Authenticator-App aktiviert haben.
+>Sie können sich jetzt bei der Microsoft Authenticator-App anmelden, um Ihr Arbeits- oder Schulkonto hinzuzufügen.
 
 So fügen Sie ein Konto hinzu, indem Sie sich mit Ihren Anmeldeinformationen bei Ihrem Geschäfts-, Schul- oder Unikonto anmelden:
 
@@ -45,13 +45,13 @@ So fügen Sie ein Konto hinzu, indem Sie sich mit Ihren Anmeldeinformationen bei
 
    - Wenn Sie nicht über genügend Authentifizierungsmethoden für Ihr Konto verfügen, um ein sicheres Authentifizierungstoken zu erhalten, können Sie den Vorgang zum Hinzufügen eines Kontos nicht fortsetzen.
 
-   - Wenn die Meldung `You might be signing in from a location that is restricted by your admin` angezeigt wird, sind Sie gesperrt, und ein Administrator muss Sie unter [Sicherheitsinformation](https://mysignins.microsoft.com/security-info) entsperren.
+   - Wenn Sie die Meldung `You might be signing in from a location that is restricted by your admin` erhalten, hat Ihr Administrator dieses Feature nicht für Sie aktiviert. Sie können versuchen, Ihr Konto einzurichten, indem Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** oder unter  [Sicherheitsinformationen](https://mysignins.microsoft.com/security-info) einen QR-Code scannen.
 
-   - Wenn Sie nicht von Ihrem Administrator für die Anmeldung per Telefon mit der Authenticator-App gesperrt wurden, können Sie die Geräteregistrierung durchführen, um die kennwortlose Anmeldung per Telefon sowie Azure Multi-Factor Authentication (MFA) einzurichten.
+1. Wenn Ihnen die Anmeldung per Smartphone-Authentifikatorapp nicht vom Administrator gestattet wurde, können Sie ihr Gerät Registrieren, um die kennwortlose Anmeldung per Telefon sowie Azure Multi-Factor Authentication (MFA) einzurichten. Sie können MFA jedoch unabhängig davon einrichten, ob Anmeldung per Telefon für Sie aktiviert ist.
 
 1. Zu diesem Zeitpunkt werden Sie unter Umständen aufgefordert, einen von Ihrer Organisation bereitgestellten QR-Code zu scannen, um ein lokales Multi-Factor Authentication-Konto in der App einzurichten. Dies ist nur erforderlich, wenn Ihre Organisation einen lokalen MFA-Server verwendet.
 
-1. Tippen Sie auf Ihrem Gerät auf das Konto, und überprüfen Sie in der Vollbildansicht, ob Ihre Kontoinformationen korrekt sind und ein zugehöriger sechsstelliger Prüfcode vorhanden ist. Um die Sicherheit zu erhöhen, wird der Prüfcode alle 30 Sekunden geändert, um zu verhindern, dass jemand einen Code mehrmals verwendet.
+1. Tippen Sie auf Ihrem Gerät auf das Konto, und überprüfen Sie in der Vollbildansicht, ob Ihre Kontoinformationen korrekt sind. Um die Sicherheit zu erhöhen, wird der Prüfcode alle 30 Sekunden geändert, um zu verhindern, dass jemand einen Code mehrmals verwendet.
 
 ## <a name="sign-in-with-a-qr-code"></a>Anmelden mit einem QR-Code
 
@@ -71,7 +71,17 @@ Gehen Sie folgendermaßen vor, um ein Konto durch Scannen eines QR-Codes hinzuzu
 
 Wenn Sie nicht dazu aufgefordert werden, Ihre Kamera zum Scannen eines QR-Codes zu verwenden, stellen Sie in den Einstellungen Ihres Telefons sicher, dass die Authenticator-App Zugriff auf die Telefonkamera hat.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="sign-in-on-a-remote-computer"></a>Auf einem Remotecomputer anmelden
+
+Viele Apps ermöglichen Ihnen die Authentifizierung durch Eingabe eines Codes auf einem anderen Gerät, z. B. einem PC. Gehen Sie folgendermaßen vor, um sich zur Installation der Microsoft Authenticator-App auf einem Remotecomputer anzumelden:
+
+1. Öffnen Sie die Microsoft Authenticator-App und wählen Sie die **+** -Schaltfläche &gt;**Arbeits- oder Schulkonto hinzufügen** &gt; **Anmelden** aus.
+1. Wählen Sie **Anmeldung über ein anderes Gerät** aus.
+1. Öffnen Sie auf dem Remotebildschirm die [Seite **Bei Ihrem Konto anmelden**](https://microsoft.com/devicelogin) und geben Sie den Code ein, der in Ihrer Authenticator-App angezeigt wird.
+1. Melden Sie sich auf dem Remotebildschirm mit den Anmeldeinformationen Ihres Arbeits- oder Schulkontos an. Wenn Sie über einen befristeten Zugriffspass (Temporary Access Pass, TAP) verfügen, können Sie diesen für die Anmeldung verwenden.
+1. Nachdem Sie die Authentifizierung auf dem Remotebildschirm abgeschlossen haben, kehren Sie zur Authenticator-App zurück, um die Registrierung abzuschließen.
+
+ ## <a name="next-steps"></a>Nächste Schritte
 
 - Nachdem Ihre Konten der App hinzugefügt wurden, können Sie sich unter Verwendung der Authenticator-App auf Ihrem Gerät anmelden. Weitere Informationen finden Sie unter [Anmelden mithilfe der App](user-help-auth-app-sign-in.md).
 

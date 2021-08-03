@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/23/2020
+ms.date: 05/17/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f6cf40e7b384c9b0e88db679f9de8ac9bbba1607
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "88815469"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "112078766"
 ---
 Das erstmalige Einrichten von kundenseitig verwalteten Schlüssel für Ihre Datenträger erfordert die Erstellung von Ressourcen in einer bestimmten Reihenfolge. Zuerst müssen Sie eine Azure Key Vault-Instanz erstellen und einrichten.
 
@@ -49,6 +49,13 @@ Das erstmalige Einrichten von kundenseitig verwalteten Schlüssel für Ihre Date
 
     ![Screenshot des Blatts „Schlüssel erstellen“, das nach dem Auswählen der Schaltfläche „Generieren/Importieren“ angezeigt wird.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
 
+### <a name="add-an-azure-rbac-role"></a>Hinzufügen einer Azure RBAC-Rolle
+
+Nachdem Sie den Azure-Schlüsseltresor und einen Schlüssel erstellt haben, müssen Sie eine Azure RBAC-Rolle hinzufügen, damit Sie Ihren Azure-Schlüsseltresor mit Ihrem Datenträgerverschlüsselungssatz verwenden können.
+
+1. Wählen Sie **Zugriffssteuerung (IAM)** aus, und fügen Sie eine Rolle hinzu.
+1. Fügen Sie die Rolle **Key Vault-Administrator,** **Besitzer** oder **Mitwirkender** hinzu.
+
 ## <a name="set-up-your-disk-encryption-set"></a>Einrichten des Datenträgerverschlüsselungssatzes
 
 1. Suchen Sie nach **Datenträgerverschlüsselungssätze**, und wählen Sie sie aus.
@@ -68,11 +75,3 @@ Das erstmalige Einrichten von kundenseitig verwalteten Schlüssel für Ihre Date
 1. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen** aus.
 
     ![Screenshot des Blatts zum Erstellen der Datenträgerverschlüsselung. Dargestellt sind das Abonnement, die Ressourcengruppe, der Name des Datenträgerverschlüsselungssatzes, die Region und das Auswahlelement für den Schlüsseltresor und den Schlüssel.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
-
-1. Öffnen Sie den Datenträgerverschlüsselungssatz, nachdem die Erstellung abgeschlossen ist, und wählen Sie die angezeigte Warnung aus.
-
-    ![Screenshot des Benachrichtigungs-Popups: „Um einem Datenträgerverschlüsselungssatz einen Datenträger, ein Image oder eine Momentaufnahme zuzuordnen, müssen Sie dem Schlüsseltresor Berechtigungen erteilen“. Wählen Sie diese Warnung aus, um fortzufahren.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-encryption-set-alert-fix.png)
-
-    Es sollten zwei Benachrichtigungen angezeigt werden. Dadurch können Sie den Datenträgerverschlüsselungssatz mit Ihrem Schlüsseltresor verwenden.
-
-    ![Screenshot der erfolgreichen Berechtigungs- und Rollenzuweisung für Ihren Schlüsseltresor.](./media/virtual-machines-disk-encryption-portal/disk-encryption-notification-success.png)

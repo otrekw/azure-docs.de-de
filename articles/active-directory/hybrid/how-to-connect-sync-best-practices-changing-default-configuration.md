@@ -16,12 +16,12 @@ ms.date: 08/29/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70e91ff8fa3666a2dfc5aaad07be7927852b08bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afe4db68b5a5d508aaf9760f4da0a8fd15890e15
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85357697"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614862"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration
 Dieses Thema dient zur Beschreibung der unterstützten und nicht unterstützten Änderungen der Azure AD Connect-Synchronisierung.
@@ -31,7 +31,9 @@ Die von Azure AD Connect erstellte Konfiguration funktioniert in der vorliegende
 ## <a name="changes-to-the-service-account"></a>Änderungen des Dienstkontos
 Die Azure AD Connect-Synchronisierung läuft unter einem Dienstkonto, das vom Installations-Assistenten erstellt wurde. Dieses Dienstkonto enthält die Verschlüsselungsschlüssel für die von der Synchronisierung verwendete Datenbank. Es ist mit einem 127 Zeichen langen Kennwort erstellt, das nicht abläuft.
 
-* Das Ändern oder Zurücksetzen des Kennworts des Dienstkontos wird **nicht unterstützt** . Dadurch würden die Verschlüsselungsschlüssel gelöscht, und der Dienst wäre nicht in der Lage, auf die Datenbank zuzugreifen und zu starten.
+> [!WARNING]
+> Wenn Sie das Kennwort für das ADSync-Dienstkonto ändern oder zurücksetzen, kann der Synchronisierungsdienst nicht ordnungsgemäß gestartet werden, bis der Verschlüsselungsschlüssel verworfen und das Kennwort für das ADSync-Dienstkonto erneut initialisiert wurde.
+> Informationen hierzu finden Sie unter [Ändern des Kennworts für das ADSync-Dienstkonto](how-to-connect-sync-change-serviceacct-pass.md).
 
 ## <a name="changes-to-the-scheduler"></a>Änderungen am Scheduler
 Ab den Versionen von Build 1.1 (Februar 2016) können Sie den [Scheduler](how-to-connect-sync-feature-scheduler.md) so konfigurieren, dass ein anderer Synchronisierungszyklus als der Standardwert von 30 Minuten verwendet wird.

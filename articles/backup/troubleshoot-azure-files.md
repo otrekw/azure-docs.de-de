@@ -3,12 +3,12 @@ title: Problembehandlung der Sicherung von Azure-Dateifreigaben
 description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 4c934d2295fa702425e8df0a03636b9f9208cfa4
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 86324c80f0df70713c6ea76a43e4b9da50c1fae6
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515072"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555018"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 
@@ -42,6 +42,7 @@ Wiederholen Sie die Registrierung. Wenden Sie sich an den Support, wenn das Prob
 - Vergewissern Sie sich, dass die Dateifreigabe, die Sie schützen möchten, nicht gelöscht wurde.
 - Vergewissern Sie sich, dass das Speicherkonto für die Sicherung von Dateifreigaben unterstützt wird. Sie können die [Unterstützungsmatrix für Sicherungen von Azure-Dateifreigaben](azure-file-share-support-matrix.md) verwenden, um unterstützte Speicherkonten zu finden.
 - Überprüfen Sie, ob die Dateifreigabe bereits im gleichen Recovery Services-Tresor geschützt wird.
+- Überprüfen Sie die Einstellung „Netzwerkrouting“ des Speicherkontos, um sicherzustellen, dass die Routingpräferenz auf „Microsoft-Netzwerkrouting“ festgelegt ist.
 
 ### <a name="backup-file-share-configuration-or-the-protection-policy-configuration-is-failing"></a>Bei der Konfiguration der Dateifreigabesicherung (oder der Schutzrichtlinie) tritt ein Fehler auf.
 
@@ -126,6 +127,14 @@ Fehlermeldung: Für diese Dateifreigabe wird bereits ein Sicherungsauftrag ausge
 - Die Dateifreigabesicherung unterstützt keine parallelen Momentaufnahmeanforderungen für dieselbe Dateifreigabe.
 
 - Warten Sie, bis der aktuelle Sicherungsauftrag abgeschlossen ist, und wiederholen Sie den Vorgang. Sollten Sie im Recovery Services-Tresor keinen Sicherungsauftrag finden, überprüfen Sie andere Recovery Services-Tresore im gleichen Abonnement.
+
+### <a name="usererrorstorageaccountinternetroutingnotsupported--storage-accounts-with-internet-routing-configuration-are-not-supported-by-azure-backup"></a>UserErrorStorageAccountInternetRoutingNotSupported: Speicherkonten mit Internetroutingkonfiguration werden von Azure Backup nicht unterstützt.
+
+Fehlercode: UserErrorStorageAccountInternetRoutingNotSupported
+
+Fehlermeldung: Speicherkonten mit Internetroutingkonfiguration werden von Azure Backup nicht unterstützt.
+
+Stellen Sie sicher, dass die Routingpräferenz, die für das Speicherkonto festgelegt ist, auf dem die gesicherte Dateifreigabe gehostet wird, „Microsoft-Netzwerkrouting“ lautet.
 
 ### <a name="filesharebackupfailedwithazurerprequestthrottling-filesharerestorefailedwithazurerprequestthrottling--file-share-backup-or-restore-failed-due-to-storage-service-throttling-this-may-be-because-the-storage-service-is-busy-processing-other-requests-for-the-given-storage-account"></a>FileshareBackupFailedWithAzureRpRequestThrottling/FileshareRestoreFailedWithAzureRpRequestThrottling: Fehler bei der Sicherung oder Wiederherstellung einer Dateifreigabe aufgrund von Drosselung des Speicherdiensts. Möglicherweise ist der Speicherdienst mit der Verarbeitung anderer Anforderungen für das angegebene Speicherkonto ausgelastet.
 

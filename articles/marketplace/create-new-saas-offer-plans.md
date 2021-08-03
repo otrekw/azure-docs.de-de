@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Plänen für Ihr SaaS-Angebot in Microsoft Partner Center
-description: Hier erfahren Sie, wie Sie Pläne für ein neues SaaS-Angebot (Software-as-a-Service) über das Portal des kommerziellen Marketplace von Microsoft im Partner Center erstellen.
+title: Erstellen von Plänen für ein SaaS-Angebot im Azure Marketplace
+description: Erstellen von Plänen für ein neues SaaS-Angebot (Software-as-a-Service) in Azure Marketplace
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,28 +8,25 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: fb1514c146dcd352451597e6182c6d99ed8836d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 714197288708691cb35e887975d1fabbe27cb406
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044718"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555378"
 ---
-# <a name="how-to-create-plans-for-your-saas-offer"></a>Erstellen von Plänen für Ihr SaaS-Angebot
+# <a name="create-plans-for-a-saas-offer"></a>Erstellen von Plänen für ein SaaS-Angebot
 
 Angebote, die über den kommerziellen Marketplace von Microsoft verkauft werden, müssen mindestens einen Plan aufweisen. Sie können eine Vielzahl von Plänen mit unterschiedlichen Optionen im gleichen Angebot erstellen. Diese Pläne (auch als SKUs bezeichnet) können sich in Bezug auf Version, Monetarisierung und Dienstebenen unterscheiden. Ausführliche Anleitungen zu Plänen finden Sie unter [Pläne und Preise für Angebote im kommerziellen Marketplace](plans-pricing.md).
 
 > [!NOTE]
-> Wenn Sie Transaktionen unabhängig verarbeiten, wird diese Option nicht angezeigt. In diesem Fall können Sie mit [Verkaufen Ihres SaaS-Angebots](create-new-saas-offer-marketing.md) fortfahren.
+> Wenn Sie Transaktionen unabhängig verarbeiten, wird diese Option nicht angezeigt. Fahren Sie stattdessen mit [Verkaufen eines SaaS-Angebots](create-new-saas-offer-marketing.md) fort.
 
 ## <a name="create-a-plan"></a>Erstellen von Plänen
 
 1. Wählen Sie oben auf der Registerkarte **Planübersicht** die Option **+ Neuen Plan erstellen** aus.
-
 1. Geben Sie im angezeigten Dialogfeld im Feld **Plan-ID** eine eindeutige Plan-ID ein. Verwenden Sie bis zu 50 Kleinbuchstaben, Ziffern, Bindestriche und Unterstriche. Die Plan-ID kann nicht mehr geändert werden, nachdem Sie **Erstellen** ausgewählt haben.
-
 1. Geben Sie im Feld **Planname** einen eindeutigen Namen für diesen Plan ein. Es sind maximal 50 Zeichen zulässig.
-
 1. Klicken Sie auf **Erstellen**.
 
 ## <a name="define-the-plan-listing"></a>Definieren des Planlistings
@@ -37,7 +34,6 @@ Angebote, die über den kommerziellen Marketplace von Microsoft verkauft werden,
 Auf der Registerkarte **Planlisting** können Sie den Plannamen und die Beschreibung so definieren, wie sie im kommerziellen Marketplace angezeigt werden sollen.
 
 1. Im Feld **Planname** wird der Name angezeigt, den Sie zuvor für diesen Plan angegeben haben. Sie können diesen jederzeit ändern. Dieser Name wird als Titel des Softwareplans für Ihr Angebot im kommerziellen Marketplace angezeigt.
-
 1. Erläutern Sie im Feld **Planbeschreibung**, was diesen Softwareplan einzigartig macht und von anderen Softwareplänen in Ihrem Angebot unterscheidet. Diese Beschreibung kann bis zu 500 Zeichen umfassen.
 1. Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte **Preise und Verfügbarkeit** fortfahren.
 
@@ -152,9 +148,9 @@ Die Aktionen, die in der Spalte **Aktion** der Registerkarte **Planübersicht** 
 
 ## <a name="before-you-publish-your-offer"></a>Vor dem Veröffentlichen Ihres Angebots
 
-Falls noch nicht geschehen, erstellen Sie ein Entwicklungs- und Testangebot (DEV), um Ihr Angebot zu testen, bevor Sie es als Produktionsangebot live veröffentlichen. Weitere Informationen finden Sie unter [Erstellen eines Entwicklungs- und Testangebots](create-saas-dev-test-offer.md).
+Falls noch nicht geschehen, erstellen Sie ein Entwicklungs- und Testangebot (DEV), um Ihr Angebot zu testen, bevor Sie es als Produktionsangebot live veröffentlichen. Weitere Informationen finden Sie unter [Erstellen eines SaaS-Testangebots](create-saas-dev-test-offer.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie die Programme **Co-Selling mit Microsoft** und **Verkaufen über CSPs** zum [Verkaufen Ihres SaaS-Angebots](create-new-saas-offer-marketing.md) nutzen.
-- [Testen und Veröffentlichen eines SaaS-Angebots im kommerziellen Marketplace](test-publish-saas-offer.md)
+- So nutzen Sie die Programme **Co-Selling mit Microsoft** und **Verkaufen über CSPs** zum [Verkaufen Ihres SaaS-Angebots](create-new-saas-offer-marketing.md).
+- [Testen und Veröffentlichen eines SaaS-Angebots](test-publish-saas-offer.md)

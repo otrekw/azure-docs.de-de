@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/14/2021
+ms.date: 05/25/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 2a975a0aba06ecfd010fe328ef6c8cda75290f2b
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: fed830833e9f68bcf734be65cba16f1cc84c8f89
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515582"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494350"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
@@ -51,7 +51,7 @@ Eine App fordert diese Berechtigungen meist durch Angabe der Bereiche in Anforde
 
 Microsoft Identity Platform unterstützt zwei Arten von Berechtigungen: *delegierte Berechtigungen* und *Anwendungsberechtigungen*.
 
-* **Delegierte Berechtigungen** werden von Apps verwendet, bei denen ein angemeldeter Benutzer vorhanden ist. Bei diesen Apps willigt entweder der Benutzer oder ein Administrator in die von der App angeforderten Berechtigungen ein. An die App wird die Berechtigung delegiert, bei an die Zielressource gerichteten Aufrufen als angemeldeter Benutzer zu fungieren. 
+* **Delegierte Berechtigungen** werden von Apps verwendet, bei denen ein angemeldeter Benutzer vorhanden ist. Bei diesen Apps willigt entweder der Benutzer oder ein Administrator in die von der App angeforderten Berechtigungen ein. An die App wird mit der Berechtigung delegiert, bei an die Zielressource gerichteten Aufrufen als angemeldeter Benutzer zu fungieren. 
 
     Bei einigen delegierten Berechtigungen ist eine Einwilligung durch Benutzer ohne Administratorberechtigungen möglich. Bei bestimmten erhöhten Berechtigungen ist jedoch eine [Administratoreinwilligung](#admin-restricted-permissions) erforderlich. Informationen dazu, welche Administratorrollen in delegierte Berechtigungen einwilligen können, finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../roles/permissions-reference.md) (Azure AD).
 
@@ -105,6 +105,13 @@ Im Rahmen von Microsoft Identity Platform (Anforderungen an den v2.0-Endpunkt) m
 Das Zugriffstoken ist für eine kurze Zeit gültig. Es läuft in der Regel nach einer Stunde ab. Zu diesem Zeitpunkt muss Ihre App den Benutzer zurück auf den `/authorize`-Endpunkt leiten, um einen neuen Autorisierungscode abzurufen. Während dieser Umleitung muss der Benutzer möglicherweise seine Anmeldeinformationen erneut eingeben oder den Berechtigungen erneut zustimmen, je nach App-Typ.
 
 Weitere Informationen zum Abrufen und Verwenden von Aktualisierungstoken finden Sie in der [Microsoft Identity Platform-Protokollreferenz](active-directory-v2-protocols.md).
+
+## <a name="incremental-and-dynamic-consent"></a>Inkrementelle und dynamische Zustimmung
+Mit dem Microsoft Identity Platform-Endpunkt können Sie die in den App-Registrierungsinformationen im Azure-Portal definierten statischen Berechtigungen ignorieren und stattdessen Berechtigungen schrittweise anfordern.  Sie können zunächst nach einem absoluten Minimum an Berechtigungen fragen und im Lauf der Zeit mehr anfordern, wenn der Kunde zusätzliche Anwendungsfunktionen verwendet. Hierzu können Sie die Bereiche angeben, die für Ihre Anwendung zu beliebigen Zeitpunkten benötigt werden, indem Sie die neuen Bereiche in den Parameter `scope` einfügen, wenn Sie ein [Zugriffstoken anfordern](#requesting-individual-user-consent). Es ist nicht erforderlich, sie in den Informationen der Anwendungsregistrierung vorab zu definieren. Wenn der Benutzer noch nicht seine Zustimmung zu den neuen Bereichen gegeben hat, die der Anforderung hinzugefügt wurden, wird er aufgefordert, seine Zustimmung nur für die neuen Berechtigungen zu erteilen. Die inkrementelle oder dynamische Einwilligung gilt nur für delegierte Berechtigungen und nicht für Anwendungsberechtigungen.
+
+Wenn es für eine App zugelassen wird, Berechtigungen dynamisch über den `scope`-Parameter anzufordern, erhalten Entwickler die vollständige Kontrolle über die Erfahrung des Benutzers. Sie können die Zustimmungserfahrung auch vorziehen und alle Berechtigungen in einer anfänglichen Autorisierungsanforderung erfragen. Wenn Ihre Anwendung eine große Anzahl von Berechtigungen erfordert, können Sie die Berechtigungen des Benutzers inkrementell erfassen, während er über die Zeit bestimmte Features der Anwendung verwendet.
+
+Die [Administratoreinwilligung](#using-the-admin-consent-endpoint) im Namen einer Organisation erfordert weiterhin, dass die für die Anwendung registrierten statischen Berechtigungen verwendet werden. Sie sollten diese Berechtigungen für die Anwendungen im Anwendungsregistrierungsportal festzulegen, falls ein Administrator die Zustimmung im Namen der gesamten Organisation erteilen muss. Hierdurch werden die Zyklen reduziert, die der Administrator der Organisation zum Einrichten der Anwendung benötigt.
 
 ## <a name="requesting-individual-user-consent"></a>Anfordern der Zustimmung einzelner Benutzer
 

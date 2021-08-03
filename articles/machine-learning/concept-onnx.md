@@ -1,5 +1,5 @@
 ---
-title: 'ONNX: plattformübergreifender Hochleistungsrückschluss'
+title: 'ONNX-Modelle: Optimierung des Rückschlusses'
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie der Einsatz von Open Neural Network Exchange (ONNX) zur Optimierung des Rückschlusses Ihres Machine Learning-Modells beitragen kann.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5a1ed6c43e4d3a96e0e19d7be50e1e16bcab780e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e12b1761f8b6536895c1441667f77add002cd860
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98071237"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480010"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX und Azure Machine Learning: Erstellen und Beschleunigen von ML-Modellen
 

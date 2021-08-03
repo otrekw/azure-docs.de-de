@@ -6,16 +6,16 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: reference
 ms.date: 3/22/2021
-ms.openlocfilehash: d4aea455a33f45973c2329fb44fdda6c2a508f53
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 77469a9232361cf680eca69f4a2e9d131581d14d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104787469"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677942"
 ---
 # <a name="opc-publisher-telemetry-format"></a>OPC Publisher: Telemetrieformat
 
-OPC Publisher Version 2.6 und höher unterstützt das standardisierte OPC UA PubSub JSON-Format, wie in [Teil 14 der OPC UA-Spezifikation](https://opcfoundation.org/developer-tools/specifications-unified-architecture/part-14-pubsub/) angegeben, und sieht wie folgt aus:
+OPC Publisher Version 2.6 und höher unterstützt das standardisierte OPC UA PubSub JSON-Format, wie in [Teil 14 der OPC UA-Spezifikation](https://opcfoundation.org/developer-tools/specifications-unified-architecture/part-14-pubsub/) angegeben:
 ```
 {
   "MessageId": "18",
@@ -82,10 +82,15 @@ Außerdem unterstützen alle Versionen von OPC Publisher ein nicht standardisier
 ```
 
 ## <a name="opc-publisher-telemetry-configuration-file-format"></a>OPC Publisher-Telemetriekonfigurationsdatei-Format
+
+> [!NOTE]
+> Das Konfigurationsformat für Telemetriedaten ist veraltet. Es ist nur bis Version 2.5 verfügbar.
+
+
 ```
     // The configuration settings file consists of two objects:
     // 1) The 'Defaults' object, which defines defaults for the telemetry configuration
-    // 2) An array 'EndpointSpecific' of endpoint specific configuration
+    // 2) An array 'EndpointSpecific' of endpoint-specific configuration
     // Both objects are optional and if they are not specified, then OPC Publisher uses
     // its internal default configuration:
     //  {
@@ -215,7 +220,7 @@ Außerdem unterstützen alle Versionen von OPC Publisher ein nicht standardisier
         // or the defaults used by publisher.
         // It is not allowed to specify 'Name' and 'Flat' properties in this object.
         "EndpointSpecific": [
-            // The following shows how a endpoint specific configuration can look like:
+            // The following shows how an endpoint-specific configuration can look like:
             {
                 // 'ForEndpointUrl' allows to configure for which OPC UA server this
                 // object applies and is a required property for all objects in the

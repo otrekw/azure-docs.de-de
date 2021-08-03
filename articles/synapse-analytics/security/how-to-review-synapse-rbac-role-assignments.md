@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9065ca9c7638f3d2bda36e4831b81963936f4b45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acc1ed8cece087628f6f8deb41696acefe124874
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100102154"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784028"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>Überprüfen von Synapse RBAC-Rollenzuweisungen
 
@@ -24,7 +24,7 @@ In diesem Artikel wird erläutert, wie Sie die aktuellen Rollenzuweisungen für 
 Sie können für jede Synapse RBAC-Rolle die Synapse RBAC-Rollenzuweisungen für alle Bereiche auflisten, einschließlich Zuweisungen für Objekte, auf die Sie keinen Zugriff haben. Nur ein Synapse-Administrator kann Synapse RBAC-Zugriff gewähren.  
 
 >[!Note]
->Gastbenutzer (Benutzer aus einem anderen AD-Mandanten) können Rollenzuweisungen nicht anzeigen oder verwalten, selbst wenn ihnen die Rolle „Synapse-Administrator“ zugewiesen wurde.    
+> Gastbenutzer (aus einem anderen AD-Mandanten) können Rollenzuweisungen auch anzeigen und verwalten, nachdem ihnen die Rolle „Synapse-Administrator“ zugewiesen wurde.    
 
 ## <a name="open-synapse-studio"></a>Öffnen von Synapse Studio  
 

@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 3a6afa0fadf5a84ad938b0b0cec321c0e17adeff
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e26434ae1ff2f9d8829d3665807f7d9916233833
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317521"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792236"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Replizieren von Daten über ExpressRoute mithilfe des Azure Migrate-Servermigrationstools
 
@@ -87,7 +87,7 @@ Sie können private Endpunkte nur für ein Speicherkonto des Typs „Universell 
 1. Geben Sie unter **Upgrade bestätigen** den Namen Ihres Kontos ein.
 1. Klicken Sie unten auf der Seite auf **Upgrade durchführen**.
 
-   ![Screenshot: Durchführen eines Upgrades eines Speicherkontos.](./media/replicate-using-expressroute/upgrade-storage-account.png)
+   ![Screenshot: Durchführen eines Upgrades eines Speicherkontos.](./media/replicate-using-expressroute/upgrade-storage-account.png) 
 
 ### <a name="create-a-private-endpoint-for-the-storage-account"></a>Erstellen eines privaten Endpunkts für das Speicherkonto
 
@@ -148,7 +148,27 @@ So erstellen Sie eine private DNS-Zone:
     1. Fügen Sie auf der Seite **Datensatzgruppe hinzufügen** einen Eintrag für den FQDN und die private IP-Adresse als A-Eintrag hinzu.
 
 > [!Important]
-> Möglicherweise benötigen Sie zusätzliche DNS-Einstellungen, um die private IP-Adresse des privaten Endpunkts des Speicherkontos aus der Quellumgebung aufzulösen. Informationen zur erforderlichen DNS-Konfiguration finden Sie unter [DNS-Konfiguration des privaten Azure-Endpunkts](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder).
+> Möglicherweise benötigen Sie zusätzliche DNS-Einstellungen, um die private IP-Adresse des privaten Endpunkts des Speicherkontos aus der Quellumgebung aufzulösen. Informationen zur erforderlichen DNS-Konfiguration finden Sie unter [DNS-Konfiguration des privaten Azure-Endpunkts](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder).  
+
+### <a name="verify-network-connectivity-to-the-storage-account"></a>Die Netzwerkkonnektivität des Speicherkontos verifizieren
+
+Um die private Verbindung zu überprüfen, führen Sie von der lokal ausgeführten, die Azure Migrate-Appliance hostenden VM eine DNS-Auflösung für den Ressourcen-Endpunkt des Cachespeicherkontos aus und stellen Sie sicher, dass dabei eine private IP-Adresse zurückgegeben wird.
+
+Ein anschauliches Beispiel für die DNS-Auflösung des Cachespeicherkontos. 
+
+- „nslookup _Speicherkontoname_.blob.core.windows.net“ eingeben. Ersetzen Sie dabei <Speicherkontoname> durch den Namen des von Azure Migrate erstellten Cachespeicherkontos.  
+
+    Sie erhalten eine Meldung ähnlich der folgenden:  
+
+   ![Beispiel für die DNS-Auflösung](./media/how-to-use-azure-migrate-with-private-endpoints/dns-resolution-example.png)
+
+- Für das Speicherkonto wird als private IP-Adresse 10.1.0.5 zurückgegeben. Diese Adresse sollte zum privaten Endpunkt des Speicherkontos gehören. 
+
+Führen Sie bei einer nicht korrekten DNS-Auflösung die folgenden Schritte aus:  
+
+- **Tipp:** Sie können die DNS-Einträge Ihrer Quellumgebung manuell aktualisieren, indem Sie die DNS-Hostdatei auf Ihrer lokalen Appliance mit dem FQDN-Link des Speicherkontos, „_Speicherkontoname_.blob.core.windows.net“ und der zugehörigen privaten IP-Adresse bearbeiten. Diese Option wird nur für Testzwecke empfohlen. 
+- Wenn Sie ein benutzerdefiniertes DNS verwenden, überprüfen Sie dessen Einstellungen und vergewissern sich, dass die DNS-Konfiguration korrekt ist. Einen entsprechenden Leitfaden finden Sie unter [Was ist privater Endpunkt in Azure? – DNS-Konfiguration](../private-link/private-endpoint-overview.md#dns-configuration). 
+- Wenn Sie von Azure bereitgestellte DNS-Server verwenden, verwenden Sie diesen Leitfaden als Referenz [für die weitere Problembehandlung](./troubleshoot-network-connectivity.md#validate-the-private-dns-zone).   
 
 ## <a name="replicate-data-by-using-an-expressroute-circuit-with-microsoft-peering"></a>Replizieren von Daten mithilfe einer ExpressRoute-Verbindung mit Microsoft-Peering
 
@@ -181,7 +201,7 @@ Führen Sie die folgenden Schritte aus, um die Proxyumgehungsliste auf dem Konfi
 1. Laden Sie das [PsExec-Tool](/sysinternals/downloads/psexec) herunter, um auf Systembenutzerkontext zuzugreifen.
 1. Öffnen Sie Internet Explorer im Systembenutzerkontext, indem Sie den folgenden Befehl in einer Eingabeaufforderung ausführen: `psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"`.
 1. Fügen Sie Proxyeinstellungen in Internet Explorer hinzu.
-1. Fügen Sie in der Umgehungsliste die Azure Storage-URL „*.blob.core.windows.net“ hinzu.
+1. Fügen Sie der Umgehungsliste die URLs *.blob.core.windows.net, *.hypervrecoverymanager.windowsazure.com und *.backup.windowsazure.com hinzu. 
 
 Mit den oben genannten Umgehungsregeln wird sichergestellt, dass der Replikationsdatenverkehr über ExpressRoute weitergeleitet werden kann, während die Verwaltungskommunikation über den Proxyserver für das Internet erfolgt.
 

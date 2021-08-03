@@ -7,16 +7,16 @@ ms.subservice: elastic-pools
 ms.custom: seo-lt-2019 sqldbrb=1 references_regions
 ms.devlang: ''
 ms.topic: reference
-author: sachinpMSFT
-ms.author: sachinp
-ms.reviewer: sstein
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma
 ms.date: 04/09/2021
-ms.openlocfilehash: 906d34a91736d28f0da4a5ba34b7114fbe410adb
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: fbbd345e6b2832d8b992ea42a8a2c1fb33615af7
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306635"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689957"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Grenzwerte für Ressourcen für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -76,7 +76,7 @@ Bei derselben Anzahl von DTUs überschreiten die für einen Pool für elastische
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Inbegriffener Speicher pro Pool (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
 | Max. Speicherkapazität pro Pool (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2048 |
-| Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | – | – | – | – | – |
+| Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | Nicht zutreffend | Nicht zutreffend | Nicht zutreffend | Nicht zutreffend | – |
 | Max. Anzahl Datenbanken pro Pool <sup>2</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | Max. gleichzeitige Worker (Anforderungen) pro Pool <sup>3</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Max. gleichzeitige Sitzungen pro Pool <sup>3</sup> | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
@@ -161,6 +161,8 @@ Wenn alle DTUs eines Pools für elastische Datenbanken verwendet werden, erhält
 
 > [!NOTE]
 > Weitere Informationen zu `tempdb`-Einschränkungen finden Sie unter [tempdb-Grenzwerte](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).
+>
+> Weitere Informationen zu Speichergrenzwerten der Dienstebene „Premium“ finden Sie unter [Speicherplatzgovernance](resource-limits-logical-server.md#storage-space-governance).
 
 ### <a name="database-properties-for-pooled-databases"></a>Eigenschaften von Pooldatenbanken
 

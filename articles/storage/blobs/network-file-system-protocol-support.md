@@ -9,19 +9,19 @@ ms.date: 04/28/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 033893ac0f939929eda597a1eb978e0dde4c57d9
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 709f4ed6fb57dc11d4a2b8672f253664835f20e3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181488"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965022"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)
 
 Blob Storage unterstützt jetzt das NFS 3.0-Protokoll (Network File System). Diese Unterstützung bietet Linux-Dateisystemkompatibilität bei Objektspeicherskalierung und -preisen und ermöglicht es Linux-Clients, einen Container aus einem virtuellen Azure-Computer (VM) oder einem lokalen Computer in Blob Storage einzubinden. 
 
 > [!NOTE]
-> Die Unterstützung für das NFS 3.0-Protokoll in Azure Blob Storage befindet in der öffentlichen Vorschau. Das Protokoll unterstützt GPV2-Speicherkonten mit der Leistungsstufe „Standard“ in den folgenden Regionen: „Australien, Osten“, „Südkorea, Mitte“, „USA, Osten“ und „USA, Süden-Mitte“. Die Vorschau unterstützt auch Blockblobs mit der Leistungsstufe „Premium“ in allen öffentlichen Regionen.
+> Die Unterstützung für das NFS 3.0-Protokoll in Azure Blob Storage befindet sich in der öffentlichen Vorschauphase. Es unterstützt GPV2-Speicherkonten mit Leistung im Standard-Tarif und Blockblob-Speicherkonten mit Leistungsstufe „Premium“ in allen öffentlichen Regionen.
 
 Es war immer eine Herausforderung, umfangreiche Legacy-Workloads wie High Performance Computing (HPC) in der Cloud auszuführen. Ein Grund hierfür ist, dass Anwendungen oft herkömmliche Dateiprotokolle wie NFS oder SMB (Server Message Block) für den Zugriff auf Daten verwenden. Außerdem haben sich native Cloudspeicherdienste auf Objektspeicher mit einem flachen Namespace und umfangreichen Metadaten statt auf Dateisysteme konzentriert, die einen hierarchischen Namespace und effiziente Metadatenvorgänge bereitstellen. 
 
@@ -106,21 +106,22 @@ Der Status der Elemente in dieser Tabelle ändert sich im Laufe der Zeit, da die
 
 | Storage-Feature | Premium | Standard |Storage-Feature | Premium | Standard |
 |-----------------|---------|----------|----------------|---------|----------|
-| [REST-API des Blob-Diensts](/rest/api/storageservices/blob-service-rest-api)  | ✔️ |  ⛔ | [Azure Data Lake Store-REST-API](/rest/api/storageservices/data-lake-storage-gen2) | ⛔ |    ⛔ |
-| [Zugriffsebenen für Azure Blob Storage](storage-blob-storage-tiers.md) |    ✔️ |    ⛔ | [Blobindextags](storage-blob-index-how-to.md) |   ⛔ | ⛔ |
-| [Azure Blob Storage-Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md) | ✔️  |   ⛔ | [Azure Storage Analytics-Protokollierung](../common/storage-analytics-logging.md?toc=/azure/storage/blobs/toc.json) | ⛔ |   ⛔ |
-|  [Azure Storage-Blobbestand](blob-inventory.md) |  ✔️  |   ⛔ | [Änderungsfeed](storage-blob-change-feed.md) |    ⛔ | ⛔ |
-| [Azure Monitor](monitor-blob-storage.md) |    ✔️ |    ⛔ | [Blobversionsverwaltung](versioning-enable.md) | ⛔ |   ⛔ |
-| [Blobmomentaufnahmen](snapshots-overview.md) | ✔️  |   ⛔ | [Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md) | ⛔ |    ⛔ |
-| [Private Endpunkte](../common/storage-private-endpoints.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ⛔ | [Azure Backup-Integration](/azure/backup/blob-backup-overview) | ⛔ |    ⛔ |
-| [Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md) | ✔️  |  ⛔ | [Vorläufiges Löschen für Container](soft-delete-container-overview.md) |   ⛔ | ⛔ |
-| [Firewallregeln](../common/storage-network-security.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ⛔ | [Vorläufiges Löschen für Blobs](soft-delete-blob-overview.md) | ⛔ | ⛔ |
-| [Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln](../common/shared-key-authorization-prevent.md)  | ✔️ |    ⛔ | [Nachverfolgung des Zeitpunkts des letzten Zugriffs für die Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md#move-data-based-on-last-accessed-date-preview) |  ⛔|  ⛔ |
-| [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](../common/customer-managed-keys-overview.md) |   ✔️ |    ⛔ | [Kundenseitig angegebene Schlüssel für die Azure Storage-Verschlüsselung](encryption-customer-provided-keys.md)  |  ⛔ | ⛔ |
-| [Unveränderlicher Blobspeicher](storage-blob-immutable-storage.md) | ✔️    | ⛔ | [Hosten von statischen Websites](storage-blob-static-website.md) | ⛔  |    ⛔ |
-| [Anfügeblobs](storage-blobs-introduction.md#blobs) | ✔️   |  ⛔ | [Seitenblobs](storage-blobs-introduction.md#blobs) | ⛔ | ⛔ |
+| [REST-API des Blob-Diensts](/rest/api/storageservices/blob-service-rest-api)  | ✔️ |  ✔️ | [Azure Data Lake Store-REST-API](/rest/api/storageservices/data-lake-storage-gen2) | ✔️ |  ✔️ |
+| [Zugriffsebenen für Azure Blob Storage](storage-blob-storage-tiers.md) |    ✔️ |    ✔️ | [Blobindextags](storage-blob-index-how-to.md) |  ⛔ | ⛔ |
+| [Azure Blob Storage-Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md) | ✔️  |   ✔️ | [Azure Storage Analytics-Protokollierung](../common/storage-analytics-logging.md?toc=/azure/storage/blobs/toc.json) | ⛔ |  ⛔ |
+|  [Azure Storage-Blobbestand](blob-inventory.md) |  ✔️  |   ✔️ | [Änderungsfeed](storage-blob-change-feed.md) |   ⛔ | ⛔ |
+| [Azure Monitor](monitor-blob-storage.md) |    ✔️ |    ✔️ | [Blobversionsverwaltung](versioning-enable.md) | ⛔ |  ⛔ |
+| [Blobmomentaufnahmen](snapshots-overview.md) | ✔️  |   ✔️ | [Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md) | ⛔ |   ⛔ |
+| [Private Endpunkte](../common/storage-private-endpoints.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ✔️ | [Azure Backup-Integration](../../backup/blob-backup-overview.md) | ⛔ | ⛔ |
+| [Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md) | ✔️  |  ✔️ | [Vorläufiges Löschen für Container](soft-delete-container-overview.md) |  ⛔ | ⛔ |
+| [Firewallregeln](../common/storage-network-security.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ✔️ | [Vorläufiges Löschen für Blobs](soft-delete-blob-overview.md) |    ⛔ | ⛔ |
+| [Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln](../common/shared-key-authorization-prevent.md)  | ✔️ |    ✔️ | [Nachverfolgung des Zeitpunkts des letzten Zugriffs für die Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md#move-data-based-on-last-accessed-date-preview) | ⛔|  ⛔ |
+| [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](../common/customer-managed-keys-overview.md) |   ✔️ |    ✔️ | [Kundenseitig angegebene Schlüssel für die Azure Storage-Verschlüsselung](encryption-customer-provided-keys.md)  | ⛔ | ⛔ |
+| [Unveränderlicher Blobspeicher](storage-blob-immutable-storage.md) | ✔️    | ✔️ | [Hosten von statischen Websites](storage-blob-static-website.md) |    ⛔  |    ⛔ |
+| [Anfügeblobs](storage-blobs-introduction.md#blobs) | ✔️   |  ✔️ | [Seitenblobs](storage-blobs-introduction.md#blobs) | ⛔ |    ⛔ |
 | [Azure Active Directory (AD)-Sicherheit](../common/storage-auth-aad.md?toc=/azure/storage/blobs/toc.json) | ⛔ | ⛔ | [Verschlüsselungsbereiche](encryption-scope-overview.md)  |    ⛔ | ⛔ |
 | [Objektreplikation für Blockblobs](object-replication-overview.md) | ⛔  |   ⛔ | [Failover für kundenseitig verwaltetes Konto](../common/storage-disaster-recovery-guidance.md?toc=/azure/storage/blobs/toc.json) | ⛔ |    ⛔ |
+| [Blob Storage-Ereignisse](storage-blob-event-overview.md)| ⛔ |    ⛔ 
 
   
 ## <a name="known-issues"></a>Bekannte Probleme
@@ -128,8 +129,6 @@ Der Status der Elemente in dieser Tabelle ändert sich im Laufe der Zeit, da die
 - Die Unterstützung von NFS 3.0 kann für vorhandene Speicherkonten nicht aktiviert werden.
 
 - Die Unterstützung von NFS 3.0 kann in einem Speicherkonto nicht mehr deaktiviert werden, nachdem Sie sie aktiviert haben.
-
--  Dateien können weder im Azure-Portal noch im Azure Storage-Explorer angezeigt werden. Sie müssen entweder einen [Blob Storage-Container per NFS 3.0-Protokoll einbinden](network-file-system-protocol-support-how-to.md) oder die [Blob-Dienst-REST-API](/rest/api/storageservices/blob-service-rest-api) verwenden, um Dateien und Verzeichnisse aufzulisten.
 
 ### <a name="nfs-30-features-not-yet-supported"></a>Noch nicht unterstützte NFS 3.0-Funktionen
 

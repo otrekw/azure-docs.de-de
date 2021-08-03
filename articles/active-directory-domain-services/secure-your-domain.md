@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 05/27/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 367657b803ce50cd923c08b4b7b58dc3f945e1f4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6f344496bab8f2864c8ccbdff4f98b57e1d6f432
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748983"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613252"
 ---
 # <a name="harden-an-azure-active-directory-domain-services-managed-domain"></a>Härten einer über Azure Active Directory Domain Services verwalteten Domäne
 
@@ -47,7 +47,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
 1. Suchen Sie nach **Azure AD Domain Services**, und wählen Sie den Eintrag aus.
 1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie auf der linken Seite die Option **Sicherheitseinstellungen** aus.
-1. Klicken Sie bei den folgenden Einstellungen auf **Deaktivieren**:
+1. Klicken Sie bei den folgenden Einstellungen auf **Aktivieren** oder **Deaktivieren**:
    - **Reiner TLS 1.2-Modus**
    - **NTLM-Authentifizierung**
    - **NTLM-Kennwortsynchronisierung aus lokaler Umgebung**
@@ -55,6 +55,15 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
    - **Kerberos-Schutz**
 
    ![Screenshot der Sicherheitseinstellungen zum Deaktivieren schwacher Verschlüsselungen und der NTLM-Kennworthashsynchronisierung](media/secure-your-domain/security-settings.png)
+
+## <a name="assign-azure-policy-compliance-for-tls-12-usage"></a>Zuweisen der Azure Policy-Compliance für die TLS 1.2-Verwendung
+
+Zusätzlich zu den **Sicherheitseinstellungen** verfügt Microsoft Azure Policy über die Einstellung **Compliance**, um die Verwendung von TLS 1.2 zu erzwingen. Die Richtlinie hat keine Auswirkungen, bis sie zugewiesen wurde. Wenn die Richtlinie zugewiesen ist, wird sie unter **Compliance** angezeigt:
+
+- Wenn die Zuweisung **Überprüfung** lautet, meldet die Compliance, ob die Azure AD DS-Instanz konform ist.
+- Wenn die Zuweisung **Verweigern** lautet, verhindert die Compliance, dass eine Azure AD DS-Instanz erstellt wird, wenn TLS 1.2 nicht erforderlich ist, und verhindert jegliche Aktualisierung einer Azure AD DS-Instanz, bis TLS 1.2 erforderlich ist.
+
+![Screenshot der Compliance-Einstellungen](media/secure-your-domain/policy-tls.png)
 
 ## <a name="use-powershell-to-harden-your-domain"></a>Verwenden von PowerShell zum Härten Ihrer Domäne
 

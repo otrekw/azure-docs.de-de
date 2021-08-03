@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: cbb84a4934eed4d258cf07772753315785f98019
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32fbdae5719e2f8e379b39076f8557b3db0d61ca
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99218161"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020023"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>.NET-Codebeispiele (C#) für Azure Cognitive Search
 
@@ -46,8 +46,9 @@ Die Codebeispiele vom Cognitive Search-Team veranschaulichen die Funktionen und 
 
 | Beispiele | Artikel  |
 |---------|-------------|
-| [quickstart](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | Quellcode für [Schnellstart: Schnellstart: Erstellen eines Suchindexes mithilfe der Clientbibliothek „Azure.Search.Documents“](search-get-started-dotnet.md) In diesem Artikel wird der allgemeine Workflow zum Erstellen, Laden und Abfragen eines Suchindex unter Verwendung von Beispieldaten beschrieben. |
-| [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | Quellcode für [Verwenden von Azure.Search.Documents in einer in C# geschriebenen .NET-Anwendung](search-howto-dotnet-sdk.md). In diesem Artikel wird der grundlegende Workflow erläutert, jedoch mit mehr Details und einer Diskussion der API-Nutzung.  |
+| [quickstart](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | Quellcode für [Schnellstart: Schnellstart: Erstellen eines Suchindexes mithilfe der Clientbibliothek „Azure.Search.Documents“](search-get-started-dotnet.md) Hier wird der allgemeine Workflow zum Erstellen, Laden und Abfragen eines Suchindex unter Verwendung von Beispieldaten beschrieben. |
+| [search-website](https://github.com/azure-samples/azure-search-dotnet-samples/tree/master/search-website) | Quellcode für [Tutorial: Hinzufügen der Suche zu Web-Apps](tutorial-csharp-overview.md). Veranschaulicht eine End-to-End-Such-App, die einen Rich-Client sowie Komponenten zum Hosting der App und zur Verarbeitung von Suchanforderungen enthält.|
+| [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | Quellcode für [Verwenden von Azure.Search.Documents in einer in C# geschriebenen .NET-Anwendung](search-howto-dotnet-sdk.md). Hier wird der grundlegende Workflow erläutert, jedoch mit mehr Details und einer Diskussion der API-Nutzung.  |
 | [DotNetHowToSynonyms](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)  | Quellcode für [Beispiel: Hinzufügen von Synonymen für die kognitive Azure-Suche in C#](search-synonyms-tutorial-sdk.md) enthalten. Synonymlisten werden für die Abfrageerweiterung verwendet und bieten Begriffe für den Abgleich, die für einen Index extern sind. |
 | [DotNetToIndexers](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) | Quellcode für [Tutorial: Indizieren von Azure SQL-Daten mithilfe des .NET SDK](search-indexer-tutorial.md). In diesem Artikel wird gezeigt, wie Sie einen Azure SQL-Indexer konfigurieren, der über einen Zeitplan, Feldzuordnungen und Parameter verfügt.  |
 | [DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)  | Quellcode für [Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung in Azure Cognitive Search](search-security-manage-encryption-keys.md). |

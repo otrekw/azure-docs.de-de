@@ -13,30 +13,68 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/04/2021
+ms.date: 05/10/2021
 ms.author: yelevin
-ms.openlocfilehash: daba8fc1f645b51dc8668c806be63744b6ae0842
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f782228866d73c84409f394a014bad519d988a9
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97901613"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809632"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Referenz zu Azure Sentinel-UEBA-Anreicherungen
 
-In diesen Tabellen werden Entitätsanreicherungen aufgeführt und beschrieben, die verwendet werden können, um die Untersuchung von Sicherheitsvorfällen zu fokussieren und zu vertiefen.
+Dieser Artikel befasst sich mit der Azure Sentinel-Tabelle **BehaviorAnalytics**, die sich unter **Protokolle** befindet und die auf den [Seiten mit den Entitätsdetails](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages) erwähnt wird. Außerdem werden Details zu den Feldern für Entitätsanreicherungen in dieser Tabelle beschrieben, deren Inhalte Sie verwenden können, um Ihre Untersuchungen zu Sicherheitsvorfällen zu fokussieren und zu verbessern.
 
-Die ersten beiden Tabellen, **Benutzererkenntnisse** und **Geräteerkenntnisse**, enthalten Entitätsinformationen aus Active Directory/Azure AD- und Microsoft Threat Intelligence-Quellen.
+Die folgenden drei dynamischen Felder aus der Tabelle „BehaviorAnalytics“ werden in den [folgenden Tabellen](#entity-enrichments-dynamic-fields) beschrieben.
 
-<a name="baseline-explained"></a>Die übrigen Tabellen unter **Aktivitätserkenntnissetabelle** enthalten Entitätsinformationen, die auf den aus der Entitätsverhaltensanalyse von Azure Sentinel resultierenden Verhaltensprofilen basieren. Die Aktivitäten werden anhand einer Baseline analysiert, die bei jeder Verwendung dynamisch kompiliert wird. Jede Aktivität verfügt über ihren eigenen definierten Rückblickzeitraum, von dem diese dynamische Baseline abgeleitet ist. Dieser Zeitraum wird in der Spalte [**Baseline**](#activity-insights-tables) in dieser Tabelle angegeben.
+Die Felder [UsersInsights](#usersinsights-field) und [DevicesInsights](#devicesinsights-field), enthalten Entitätsinformationen aus Active Directory/Azure AD- und Microsoft Threat Intelligence-Quellen.
+
+Das Feld [ActivityInsights](#activityinsights-field) enthält Entitätsinformationen, die auf den aus der Entitätsverhaltensanalyse von Azure Sentinel resultierenden Verhaltensprofilen basieren. 
+
+<a name="baseline-explained"></a>Benutzeraktivitäten werden anhand einer Baseline analysiert, die bei jeder Verwendung dynamisch kompiliert wird. Jede Aktivität verfügt über ihren eigenen definierten Rückblickzeitraum, von dem die dynamische Baseline abgeleitet ist. Dieser Rückblickzeitraum wird in der Spalte [**Baseline**](#activityinsights-field) in dieser Tabelle angegeben.
 
 > [!NOTE] 
-> In allen drei Tabellen werden im Feld **Anreicherungsname** zwei Zeilen mit Informationen angezeigt. Die erste in **Fett** ist der „Anzeigename“ der Anreicherung. Der zweite *(kursiv und in Klammern)* ist der Feldname der Anreicherung, der in der [**Behavior Analytics-Tabelle**](identify-threats-with-entity-behavior-analytics.md#data-schema) gespeichert ist.
+> In der Spalte **Anreicherungsname** in allen [Entitätsanreicherungsfeld](#entity-enrichments-dynamic-fields)-Tabellen werden zwei Zeilen mit Informationen angezeigt. 
+> 
+> - Die erste in **Fett** ist der „Anzeigename“ der Anreicherung.
+> - Der zweite *(kursiv und in Klammern)* ist der Feldname der Anreicherung, der in der [**Behavior Analytics-Tabelle**](#behavioranalytics-table) gespeichert ist.
 
-## <a name="user-insights-table"></a>Benutzererkenntnissetabelle
+## <a name="behavioranalytics-table"></a>Tabelle „BehaviorAnalytics“
+
+In der folgenden Tabelle werden die Verhaltensanalysedaten beschrieben, die auf jeder [Seite mit Entitätsdetails](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages) in Azure Sentinel angezeigt werden.
+
+| Feld                     | Typ | BESCHREIBUNG                                                  |
+|---------------------------|------|--------------------------------------------------------------|
+| **TenantId**              | Zeichenfolge | Eindeutige ID des Mandanten                             |
+| **SourceRecordId**        | Zeichenfolge | Eindeutige ID des EBA-Ereignisses                          |
+| **TimeGenerated**         | datetime | Zeitstempel des Auftretens der Aktivität                   |
+| **TimeProcessed**         | datetime | Zeitstempel der Verarbeitung der Aktivität durch die EBA-Engine |
+| **ActivityType**          | Zeichenfolge | Allgemeine Kategorie der Aktivität                        |
+| **ActionType**            | Zeichenfolge | Normalisierter Name der Aktivität                            |
+| **UserName**              | Zeichenfolge | Benutzername des Benutzers, der die Aktivität initiiert hat           |
+| **UserPrincipalName**     | Zeichenfolge | Vollständiger Benutzername des Benutzers, der die Aktivität initiiert hat      |
+| **EventSource**           | Zeichenfolge | Datenquelle, die das ursprüngliche Ereignis bereitgestellt hat               |
+| **SourceIPAddress**       | Zeichenfolge | IP-Adresse, über die die Aktivität initiiert wurde               |
+| **SourceIPLocation** | Zeichenfolge | Land/Region, von dem bzw. der aus die Aktivität initiiert wurde, ergänzt durch die IP-Adresse |
+| **SourceDevice**          | Zeichenfolge | Hostname des Geräts, das die Aktivität initiiert hat         |
+| **DestinationIPAddress**  | Zeichenfolge | IP-Adresse des Ziels der Aktivität                   |
+| **DestinationIPLocation** | Zeichenfolge | Land/Region des Ziels der Aktivität, ergänzt durch die IP-Adresse |
+| **DestinationDevice**     | Zeichenfolge | Name des Zielgeräts                                  |
+| **UsersInsights**         | dynamisch | Kontextabhängige Anreicherungen der beteiligten Benutzer ([Details siehe unten](#usersinsights-field)) |
+| **DevicesInsights**       | dynamisch | Kontextabhängige Anreicherungen der beteiligten Geräte ([Details siehe unten](#devicesinsights-field)) |
+| **ActivityInsights**      | dynamisch | Kontextabhängige Analyse von Aktivitäten basierend auf unserer Profilerstellung ([Details siehe unten](#activityinsights-field)) |
+| **InvestigationPriority** | INT | Score für Anomalie zwischen 0 und 10 (0 = harmlos, 10 = äußerst anormal)   |
+|
+
+## <a name="entity-enrichments-dynamic-fields"></a>Dynamische Felder für Entitätsanreicherungen
+
+### <a name="usersinsights-field"></a>Feld „UsersInsights“
+
+In der folgenden Tabelle werden die Anreicherungen beschrieben, die im dynamischen Feld **UsersInsights** in der Tabelle „BehaviorAnalytics“ aufgeführt sind:
 
 | Anreicherungsname | BESCHREIBUNG | Beispielwert |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **Anzeigename des Kontos**<br>*(AccountDisplayName)* | Der Kontoanzeigename des Benutzers. | Admin, Hayden Cook |
 | **Kontodomäne**<br>*(AccountDomain)* | Der Kontodomänenname des Benutzers. |  |
 | **Kontoobjekt-ID**<br>*(AccountObjectID)* | Die Kontoobjektobjekt-ID des Benutzers. | a58df659-5cab-446c-9dd0-5a3af20ce1c2 |
@@ -47,10 +85,12 @@ Die ersten beiden Tabellen, **Benutzererkenntnisse** und **Geräteerkenntnisse**
 | **Lokale SID**<br>*(OnPremisesSID)* | Die lokale SID des Benutzers, der mit der Aktion verknüpft ist. | S-1-5-21-1112946627-1321165628-2437342228-1103 |
 |
 
-## <a name="device-insights-table"></a>Geräteerkenntnissetabelle
+### <a name="devicesinsights-field"></a>Feld „DevicesInsights“
+
+In der folgenden Tabelle werden die Anreicherungen beschrieben, die im dynamischen Feld **DevicesInsights** in der Tabelle „BehaviorAnalytics“ aufgeführt sind:
 
 | Anreicherungsname | BESCHREIBUNG | Beispielwert |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **Browser**<br>*(Browser)* | Der in der Aktion verwendete Browser. | Microsoft Edge, Chrome |
 | **Gerätefamilie**<br>*(DeviceFamily)* | Die in der Aktion verwendete Gerätefamilie. | Windows |
 | **Gerätetyp**<br>*(DeviceType)* | Der in der Aktion verwendete Clientgerätetyp. | Desktop |
@@ -62,7 +102,9 @@ Die ersten beiden Tabellen, **Benutzererkenntnisse** und **Geräteerkenntnisse**
 | **Benutzer-Agent-Familie**<br>*(UserAgentFamily)* | Die in der Aktion verwendete Benutzer-Agent-Familie. | Chrome, Microsoft Edge, Firefox |
 |
 
-## <a name="activity-insights-tables"></a>Aktivitätserkenntnissetabelle
+### <a name="activityinsights-field"></a>Feld „ActivityInsights“
+
+In der folgenden Tabelle werden die Anreicherungen beschrieben, die im dynamischen Feld **ActivityInsights** in der Tabelle „BehaviorAnalytics“ aufgeführt sind:
 
 #### <a name="action-performed"></a>Ausgeführte Aktion
 
@@ -162,3 +204,10 @@ Die ersten beiden Tabellen, **Benutzererkenntnisse** und **Geräteerkenntnisse**
 | **Ungewöhnliche Anzahl von Geräten wurde gelöscht**<br>*(UnusualNumberOfDevicesDeleted)* | 5 | Ein Benutzer hat eine ungewöhnliche Anzahl von Geräten gelöscht. | TRUE, FALSE |
 | **Ungewöhnliche Anzahl von Benutzern wurde der Gruppe hinzugefügt**<br>*(UnusualNumberOfUsersAddedToGroup)* | 5 | Ein Benutzer hat eine ungewöhnliche Anzahl von Benutzern einer Gruppe hinzugefügt. | TRUE, FALSE |
 |
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Dokument wurde das Tabellenschema der Entitätsverhaltensanalyse in Azure Sentinel beschrieben.
+
+- Erfahren Sie mehr über die [Entitätsverhaltensanalyse](identify-threats-with-entity-behavior-analytics.md).
+- [Verwenden von UEBA](investigate-with-ueba.md) in Ihren Untersuchungen.

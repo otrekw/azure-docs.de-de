@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: 24298734a46b8339a2a8818692641b4c10812294
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 06/03/2021
+ms.openlocfilehash: 1228f89c2037e1a181fd1f881a1a8d0262b4dbbd
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104880"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410133"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 
@@ -36,6 +36,7 @@ Im Folgenden finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.Automation/automationAccounts | Ja| Nein | [Automation-Konten](../essentials/metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft.AVS/privateClouds | Nein | Nein | [Azure VMware Solution](../essentials/metrics-supported.md#microsoftavsprivateclouds) |
 |Microsoft.Batch/batchAccounts | Ja | Nein | [Batch-Konten](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
+|Microsoft.Bing/accounts | Ja | Nein | [Bing-Konten](../essentials/metrics-supported.md#microsoftbingaccounts) |
 |Microsoft.BotService/botServices | Ja | Nein  | [Botdienste](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
 |Microsoft.Cache/redis | Ja | Ja | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
 |microsoft.Cdn/profiles | Ja | Nein | [CDN-Profile](../essentials/metrics-supported.md#microsoftcdnprofiles) |
@@ -51,6 +52,7 @@ Im Folgenden finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.Compute/cloudServices/roles | Ja | Nein  |  [Clouddienstrollen](../essentials/metrics-supported.md#microsoftcomputecloudservicesroles) |
 |Microsoft.Compute/virtualMachines | Ja | Ja<sup>1</sup> | [Virtuelle Computer](../essentials/metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Ja | Nein |[Skalierungsgruppen für virtuelle Computer](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft.ConnectedVehicle/platformAccounts | Ja | Nein |[Connected Vehicle Platform-Konten](../essentials/metrics-supported.md#microsoftconnectedvehicleplatformaccounts) |
 |Microsoft.ContainerInstance/containerGroups | Ja| Nein | [Containergruppen](../essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Microsoft.ContainerRegistry/registries | Nein | Nein | [Containerregistrierungen](../essentials/metrics-supported.md#microsoftcontainerregistryregistries) |
 |Microsoft.ContainerService/managedClusters | Ja | Nein | [Verwaltete Cluster](../essentials/metrics-supported.md#microsoftcontainerservicemanagedclusters) |

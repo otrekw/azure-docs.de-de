@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c00090ec6b63f41a92beb485433d4667fc85860
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 357a9f7e3e498a477d6cadf3742e11696eafa896
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766014"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786549"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection und B2B-Benutzer
 
@@ -65,8 +65,8 @@ Das Benutzerrisiko für Benutzer von B2B-Zusammenarbeit wird in deren Basisverze
 Es gibt Einschränkungen bei der Implementierung von Identity Protection für Benutzer von B2B-Zusammenarbeit in einem Ressourcenverzeichnis, weil sich ihre Identität im eigenen Basisverzeichnis befindet. Die wichtigsten Einschränkungen sind folgende:
 
 - Wenn ein Gastbenutzer die Richtlinie zum Benutzerrisiko von Identity Protection auslöst, um eine Kennwortzurücksetzung zu erzwingen, **wird er gesperrt**. Diese Sperrung ist darauf zurückzuführen, dass Kennwörter nicht im Ressourcenverzeichnis zurückgesetzt werden können.
-- **Gastbenutzer werden im Bericht „Riskante Benutzer“ nicht angezeigt**. Dieser Sichtbarkeitsverlust ist darauf zurückzuführen, dass die Risikobewertung im Basisverzeichnis des B2B-Benutzers erfolgt.
-- Administratoren **können einen riskanten Benutzer von B2B-Zusammenarbeit in ihrem Ressourcenverzeichnis nicht verwerfen oder bereinigen**. Dieser Funktionsverlust ist darauf zurückzuführen, dass Administratoren im Ressourcenverzeichnis keinen Zugriff auf das Basisverzeichnis des B2B-Benutzers haben.
+- **Gastbenutzer werden im Bericht „Riskante Benutzer“ nicht angezeigt**. Diese Einschränkung ist darauf zurückzuführen, dass die Risikobewertung im Basisverzeichnis des B2B-Benutzers erfolgt.
+- Administratoren **können einen riskanten Benutzer von B2B-Zusammenarbeit in ihrem Ressourcenverzeichnis nicht verwerfen oder bereinigen**. Diese Einschränkung ist darauf zurückzuführen, dass Administratoren im Ressourcenverzeichnis keinen Zugriff auf das Basisverzeichnis des B2B-Benutzers haben.
 
 ### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>Warum kann ich riskante Benutzer von B2B-Zusammenarbeit in meinem Verzeichnis nicht bereinigen?
 

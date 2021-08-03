@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 92500be4ef793fc71c828b84b6b62f833884b372
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 4f46dc092776e73556a67fee705a98fa883dfbc6
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109628282"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810694"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -370,14 +370,13 @@ Darüber hinaus wird beim Löschen einer NSG standardmäßig die zugeordnete Dat
 
 **Kosten der Datenflussprotokollierung**: Die NSG-Datenflussprotokollierung wird über die Menge der erzeugten Protokolle abgerechnet. Hohe Datenverkehrsvolumen können zu großen Datenflussprotokollvolumen und den damit verbundenen Kosten führen. Preise für NSG-Datenflussprotokolle enthalten nicht die zugrunde liegenden Kosten der Speicherung. Die Verwendung der Aufbewahrungsrichtlinienfunktion mit NSG-Datenflussprotokollierung bedeutet, dass separate Speicherkosten für längere Zeiträume anfallen. Wenn Sie keine Aufbewahrungsrichtlinie anwenden möchten und die Daten dauerhaft gespeichert werden sollen, legen Sie Aufbewahrung (Tage) auf 0 (null) fest. Weitere Informationen und zusätzliche Details finden Sie unter [Network Watcher – Preise](https://azure.microsoft.com/pricing/details/network-watcher/) und [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-**Probleme mit benutzerdefinierten TCP-Eingangsregeln:** [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/network-security-groups-overview.md) werden als eine [zustandsbehaftete Firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) implementiert. Aufgrund der aktuellen Plattformeinschränkungen werden benutzerdefinierte Regeln, die sich auf eingehende TCP-Flows auswirken, jedoch in einer zustandslosen Weise implementiert. Aus diesem Grund führen die von den benutzerdefinierten Eingangsregeln betroffenen Flows zu keiner Beendigung. Darüber hinaus wird die Byte- und Paketanzahl für diese Flows nicht aufgezeichnet. Entsprechend kann die Anzahl der Bytes und Pakete, die in den NSG-Flussprotokollen (und der Datenverkehrsanalyse) gemeldet wird, von den tatsächlichen Werten abweichen. Ein Flag, das diese Probleme behebt und abonniert werden kann, soll spätestens im März 2021 zur Verfügung stehen. In der Zwischenzeit können Kunden mit schwerwiegenden Problemen, die infolge dieses Verhaltens auftreten, die Aktivierung des Flags über den Support anfordern. Stellen Sie dazu unter „Network Watcher“ > „NSG-Flowprotokolle“ eine Supportanfrage.  
+**Probleme mit benutzerdefinierten TCP-Eingangsregeln:** [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/network-security-groups-overview.md) werden als eine [zustandsbehaftete Firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) implementiert. Aufgrund der aktuellen Plattformeinschränkungen werden benutzerdefinierte Regeln, die sich auf eingehende TCP-Flows auswirken, jedoch in einer zustandslosen Weise implementiert. Aus diesem Grund führen die von den benutzerdefinierten Eingangsregeln betroffenen Flows zu keiner Beendigung. Darüber hinaus wird die Byte- und Paketanzahl für diese Flows nicht aufgezeichnet. Entsprechend kann die Anzahl der Bytes und Pakete, die in den NSG-Flussprotokollen (und der Datenverkehrsanalyse) gemeldet wird, von den tatsächlichen Werten abweichen. Ein Flag, das diese Probleme behebt und abonniert werden kann, soll spätestens im Juni 2021 zur Verfügung stehen. In der Zwischenzeit können Kunden mit schwerwiegenden Problemen, die infolge dieses Verhaltens auftreten, die Aktivierung des Flags über den Support anfordern. Stellen Sie dazu unter „Network Watcher“ > „NSG-Flowprotokolle“ eine Supportanfrage.  
 
 **Aus Internet-IP-Adressen protokollierte eingehende Datenflüsse an virtuelle Computer ohne öffentliche IP-Adressen**: Für virtuelle Computer, denen keine öffentliche IP-Adresse über eine öffentliche IP-Adresse zugewiesen wurde, die der Netzwerkkarte als öffentliche IP-Adresse auf Instanzebene zugeordnet ist, oder die zu einem Basis-Back-End-Pool für Lastenausgleich gehören, werden [standardmäßiges SNAT](../load-balancer/load-balancer-outbound-connections.md) und eine IP-Adresse verwendet, die von Azure zugewiesen wurde, um ausgehende Verbindung zu unterstützen. Daher sehen Sie möglicherweise Datenflussprotokolleinträge für Datenflüsse von Internet-IP-Adressen, wenn der jeweilige Datenfluss für einen Port im Bereich der Ports bestimmt war, die für SNAT zugewiesen sind. Obwohl Azure diese Datenflüsse zu dem virtuellen Computer nicht zulässt, wird der Versuch protokolliert und konzeptbedingt im NSG-Datenflussprotokoll von Network Watcher aufgeführt. Es empfiehlt sich, unerwünschten eingehenden Internet-Datenverkehr explizit mit NSG zu blockieren.
 
 **Problem mit der Netzwerksicherheitsgruppe des Application Gateway V2-Subnetzes:** Datenflussprotokollierung wird für die NSG des Application Gateway V2-Subnetzes derzeit [nicht unterstützt](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet). Dieses Problem wirkt sich nicht auf Application Gateway V1 aus.
 
 **Inkompatible Dienste**: Aufgrund der derzeitigen Plattformeinschränkungen wird eine kleine Anzahl von Azure-Diensten nicht von NSG-Datenflussprotokollen unterstützt. Die aktuelle Liste der inkompatiblen Dienste lautet:
-- [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
 - [Azure Container Instances (ACI)](https://azure.microsoft.com/services/container-instances/)
 - [Logik-Apps](https://azure.microsoft.com/services/logic-apps/) 
 
@@ -390,6 +389,7 @@ Darüber hinaus wird beim Löschen einer NSG standardmäßig die zugeordnete Dat
 Gängige Szenarien:
 1. **Mehrere NICs auf einem virtuellen Computer**: Falls einem virtuellen Computer mehrere NICs angefügt sind, muss die Datenflussprotokollierung für alle aktiviert werden.
 1. **NSG auf NIC- und Subnetzebene:** Falls die NSG auf NIC- und auf Subnetzebene konfiguriert ist, muss die Datenflussprotokollierung in beiden NSGs aktiviert werden. 
+1. **AKS-Clustersubnetz**: AKS fügt eine Standard-NSG im Clustersubnetz hinzu. Wie im oben erläutert, muss die Datenflussprotokollierung für diese Standard-NSG aktiviert sein.
 
 **Speicherbereitstellung**: Speicher sollte in Abstimmung mit dem erwarteten Datenflussprotokoll-Volumen bereitgestellt werden.
 

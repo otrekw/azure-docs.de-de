@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 1b3d13402e18659d0deba723eaf52d4eb5959253
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7eff89301fa54312ffef323023100660237185a4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379249"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955342"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -28,6 +28,12 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Behebung von Programmfehlern
 * Veraltete Funktionen
+
+## <a name="may-2021"></a>Mai 2021
+
+### <a name="availability-zones-default-support-in-media-services"></a>Verfügbarkeitszonen: Standardunterstützung in Media Services
+
+Media Services unterstützt jetzt [Verfügbarkeitszonen](concept-availability-zones.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten.  Media Services-Konten sind jetzt standardmäßig zonenredundante Konten, und es sind keine zusätzlichen Konfigurationen oder Einstellungen erforderlich. Dies gilt nur für Regionen, in denen [Verfügbarkeitszonen unterstützt](../../availability-zones/az-region.md#azure-regions-with-availability-zones) werden.
 
 ## <a name="march-2021"></a>März 2021
 
@@ -498,7 +504,7 @@ CMAF- und „cbcs“-Verschlüsselungsunterstützung für Apple HLS- (iOS 11 und
 
 ### <a name="video-indexer"></a>Video Indexer
 
-Das Video Indexer-GA-Release wurde im August angekündigt. Neue Informationen zu derzeit unterstützten Funktionen finden Sie unter [Was ist Video Indexer?](../video-indexer/video-indexer-overview.md?bc=/azure/media-services/video-indexer/breadcrumb/toc.json&toc=/azure/media-services/video-indexer/toc.json). 
+Das Video Indexer-GA-Release wurde im August angekündigt. Neue Informationen zu derzeit unterstützten Funktionen finden Sie unter [Was ist Video Indexer?](../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md?bc=%2fazure%2fmedia-services%2fvideo-indexer%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fmedia-services%2fvideo-indexer%2ftoc.json). 
 
 ### <a name="plans-for-changes"></a>Pläne für Änderungen
 

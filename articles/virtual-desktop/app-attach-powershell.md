@@ -1,17 +1,18 @@
 ---
-title: Einrichten des MSIX-Features zum Anfügen von Apps für Windows Virtual Desktop mithilfe von PowerShell – Azure
-description: Einrichten des MSIX-Features zum Anfügen von Apps für Windows Virtual Desktop über PowerShell.
+title: 'Azure Virtual Desktop: Verwenden von MSIX App Attach über PowerShell – Azure'
+description: Einrichten von MSIX App Attach für Azure Virtual Desktop über PowerShell.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: ebc403553443a9ea04525323b751fbdb51d23c6e
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 6a5dd53bee4e6ae99559d63441f1240d5905644e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500582"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745419"
 ---
 # <a name="set-up-msix-app-attach-using-powershell"></a>Einrichten des MSIX-Features zum Anfügen von Apps mit PowerShell
 
@@ -21,12 +22,12 @@ Neben dem Azure-Portal können Sie auch PowerShell verwenden, um das MSIX-Featur
 
 Folgendes benötigen Sie, um das MSIX-Feature zum Anfügen von Apps zu konfigurieren:
 
-- Eine funktionierende Windows Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung von Windows Virtual Desktop (klassisch) finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zum Bereitstellen von Windows Virtual Desktop mit Azure Resource Manager-Integration finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
-- Ein Windows Virtual Desktop-Hostpool mit mindestens einem aktiven Sitzungshost.
+- Eine funktionierende Azure Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung von Azure Virtual Desktop (klassisch) finden Sie unter [Erstellen eines Mandanten in Azure Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zum Bereitstellen von Azure Virtual Desktop mit Azure Resource Manager-Integration finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
+- Ein Azure Virtual Desktop-Hostpool mit mindestens einem aktiven Sitzungshost.
 - Eine Desktop-/Remote-App-Gruppe.
 - Das MSIX-Pakettool.
 - Eine MSIX-gepackte Anwendung, die in ein MSIX-Image erweitert wurde, das in eine Dateifreigabe hochgeladen wird.
-- Eine Dateifreigabe in der Windows Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird.
+- Eine Dateifreigabe in der Azure Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird.
 - Die Dateifreigabe, in die Sie das MSIX-Image hochgeladen haben, muss auch für alle virtuellen Computer (VMs) im Hostpool zugänglich sein. Benutzer benötigen Leseberechtigungen, um auf das Image zugreifen zu können.
 - Laden Sie PowerShell Core herunter, und installieren Sie die Anwendung.
 - Laden Sie das Azure PowerShell-Modul in der öffentlichen Vorschau herunter, und erweitern Sie es in einen lokalen Ordner.
@@ -234,9 +235,9 @@ Schließlich müssen Sie die App veröffentlichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Stellen Sie unserer Community unter [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Ihre Fragen zu dieser Funktion.
+Stellen Sie unserer [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Fragen zu dieser Funktion.
 
-Sie können Ihr Feedback in Bezug auf Windows Virtual Desktop auch im [Windows Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) hochladen.
+Sie können auch Feedback zu Azure Virtual Desktop im [Azure Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) bereitstellen.
 
 Folgende Artikel sind eventuell hilfreich:
 

@@ -8,6 +8,7 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
 ms.service: virtual-machines-sql
+ms.subservice: performance
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -15,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b1909d5fd5e3c02f104c73acb515740cb6ff65f6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 46dff70c8d1064f05d89af9340b5b07e7adc747e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572228"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079893"
 ---
 # <a name="collect-baseline-performance-best-practices-for-sql-server-on-azure-vm"></a>Baseline auswählen: Bewährte Methoden zur Leistung für SQL Server auf Azure-VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -63,7 +64,7 @@ Stellen Sie sicher, dass Sie sowohl die Durchsatz- als auch die IOPS-Anforderung
 Verfolgen Sie sowohl den vom Betriebssystem verwendeten externen Arbeitsspeicher als auch den von SQL Server intern verwendeten Arbeitsspeicher. Wenn Sie die Belastung für eine der Komponenten ermitteln, können Sie die Größe der virtuellen Computer leichter auswählen und Optimierungsmöglichkeiten identifizieren. 
 
 Die folgenden Leistungsindikatoren des Systemmonitors können Ihnen als Hilfe beim Überprüfen der Speicherintegrität eines virtuellen SQL Server-Computers dienen: 
-* [\Arbeitsspeicher\Verfügbare MB](/azure/monitoring/infrastructure-health/vmhealth-windows/winserver-memory-availmbytes)
+* \Arbeitsspeicher\Verfügbare MB
 * [\SQLServer:Speicher-Manager\Zielserverspeicher (KB)](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
 * [\SQLServer:Speicher-Manager\Serverspeicher gesamt (KB)](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
 * [SQLServer:Puffer-Manager\Verzögerte Schreibvorgänge/Sekunde](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
@@ -91,8 +92,10 @@ Sehen Sie sich auch die anderen Artikel in dieser Reihe an, um mehr zu erfahren:
 - [Kurze Checkliste](performance-guidelines-best-practices-checklist.md)
 - [Größe des virtuellen Computers](performance-guidelines-best-practices-vm-size.md)
 - [Storage](performance-guidelines-best-practices-storage.md)
+- [Security](security-considerations-best-practices.md)
+- [HADR-Einstellungen](hadr-cluster-best-practices.md)
 
 
 Bewährte Methoden für die Sicherheit finden Sie unter [Sicherheitsüberlegungen für SQL Server auf Azure Virtual Machines](security-considerations-best-practices.md).
 
-Weitere Artikel zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.md) weitere Informationen.
+Weitere Artikel zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.yml) weitere Informationen.

@@ -3,20 +3,20 @@ title: Einzeldatenbanken mit DTU-Ressourcenlimits
 description: Diese Seite beschreibt einige allgemeine DTU-Ressourcenlimits für Einzeldatenbanken in Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: service-overview
 ms.custom: references_regions, seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: reference
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
-ms.date: 04/09/2021
-ms.openlocfilehash: 3afc2a1e3b279e7c4fd350e96787454e01e01f79
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma
+ms.date: 04/16/2021
+ms.openlocfilehash: aecf872bcac77c94090d374cc18415eba6323b61
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303218"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689815"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Ressourcengrenzwerte für Einzeldatenbanken, die das DTU-Kaufmodell verwenden: Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,8 +114,11 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 
 > [!IMPORTANT]
 > In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: China, Osten; China, Norden; Deutschland, Mitte; Deutschland, Nordosten. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt.  Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
+
 > [!NOTE]
 > Weitere Informationen zu `tempdb`-Einschränkungen finden Sie unter [tempdb-Grenzwerte](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).
+> 
+> Weitere Informationen zu Speichergrenzwerten der Dienstebene „Premium“ finden Sie unter [Speicherplatzgovernance](resource-limits-logical-server.md#storage-space-governance).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,20 +1,20 @@
 ---
-title: Überwachen von Azure Cosmos DB mit Azure Monitor für Cosmos DB | Microsoft-Dokumentation
-description: In diesem Artikel wird das Azure Monitor für Cosmos DB-Feature beschrieben, das Cosmos DB-Besitzern ein schnelles Verständnis der Leistungs- und Nutzungsprobleme bei ihren CosmosDB-Konten ermöglicht.
+title: Überwachen von Azure Cosmos DB mit Cosmos DB-Erkenntnissen von Azure Monitor | Microsoft-Dokumentation
+description: In diesem Artikel wird das Feature für Cosmos DB-Erkenntnisse von Azure Monitor beschrieben, das Cosmos DB-Besitzern ein schnelles Verständnis der Leistungs- und Nutzungsprobleme bei ihren CosmosDB-Konten ermöglicht.
 author: lgayhardt
 ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: d88bf65f1bd94e29bd9f60f5597d655f0040623b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6666e43e1dc3461bf7e0cc5849d26c1a8fef70e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101725761"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095084"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Informationen zu Azure Monitor für Azure Cosmos DB
+# <a name="explore-azure-monitor-cosmos-db-insights"></a>Informationen zu Cosmos DB-Erkenntnissen von Azure Monitor
 
-Azure Monitor für Azure Cosmos DB bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen in einer vereinheitlichten interaktiven Oberfläche. Anhand dieses Artikels können Sie sich mit den Vorteilen dieser neuen Überwachungsoberfläche vertraut machen, und Sie erfahren, wie Sie diese entsprechend den konkreten Anforderungen Ihrer Organisation ändern und anpassen können.   
+Das Feature für Cosmos DB-Erkenntnisse bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen auf einer vereinheitlichten interaktiven Benutzeroberfläche. Anhand dieses Artikels können Sie sich mit den Vorteilen dieser neuen Überwachungsoberfläche vertraut machen, und Sie erfahren, wie Sie diese entsprechend den konkreten Anforderungen Ihrer Organisation ändern und anpassen können.   
 
 ## <a name="introduction"></a>Einführung
 
@@ -147,7 +147,7 @@ Wenn Sie alle Dropdownansichten in der Arbeitsmappe erweitern oder reduzieren m�
 
 ![Symbol „Arbeitsmappe erweitern“](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>Anpassen von Azure Monitor für Azure Cosmos DB
+## <a name="customize-cosmos-db-insights"></a>Anpassen von Cosmos DB-Erkenntnissen
 
 Da diese Oberfläche auf Azure Monitor-Arbeitsmappenvorlagen aufbaut, stehen Ihnen die Optionen **Anpassen** > **Bearbeiten** zur Verfügung, und mit **Speichern** können Sie eine Kopie der geänderten Version in einer benutzerdefinierten Arbeitsmappe speichern. 
 

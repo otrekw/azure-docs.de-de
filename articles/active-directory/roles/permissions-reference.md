@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 04/26/2021
+ms.date: 06/03/2021
 ms.author: rolyon
 ms.reviewer: vincesm
-ms.custom: it-pro, fasttrack-edit
+ms.custom: generated, it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25b4494fedec61fd2e23c793271d53a703fc5c8c
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 54aa35ce49dc75a337d2eabd4c062aa7e5d40ff8
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064429"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439258"
 ---
 # <a name="azure-ad-built-in-roles"></a>Integrierte Rollen in Azure AD
 
@@ -44,6 +44,7 @@ In diesem Artikel werden die in Azure AD integrierten Rollen aufgelistet, die Si
 > | [B2C-IEF-Schlüsselsatzadministrator](#b2c-ief-keyset-administrator) | Kann Geheimnisse für Verbund und Verschlüsselung im Identity Experience Framework (IEF) verwalten. | aaf43236-0c0d-4d5f-883a-6955382ac081 |
 > | [B2C-IEF-Richtlinienadministrator](#b2c-ief-policy-administrator) | Kann Vertrauensframeworkrichtlinien im Identity Experience Framework (IEF) erstellen und verwalten. | 3edaf663-341e-4475-9f94-5c398ef6c070 |
 > | [Rechnungsadministrator](#billing-administrator) | Ausführen von allgemeinen Abrechnungsaufgaben wie der Aktualisierung der Zahlungsinformationen. | b0f54661-2d74-4c50-afa3-1ec803f12efe |
+> | [Cloud App Security-Administrator](#cloud-app-security-administrator) | Kann alle Aspekte des Cloud App Security-Produkts verwalten. | 892c5842-a9a6-463a-8041-72aa08ca3cf6 |
 > | [Cloudanwendungsadministrator](#cloud-application-administrator) | Erstellen und Verwalten sämtlicher Aspekte von App-Registrierungen und Enterprise-Apps außer App-Proxy. | 158c047a-c907-4556-b7ef-446551a6b5f7 |
 > | [Cloudgeräteadministrator](#cloud-device-administrator) | Hat eingeschränkten Zugriff auf die Verwaltung von Geräten in Azure AD. | 7698a772-787b-4ac8-901f-60d6b08affd2 |
 > | [Complianceadministrator](#compliance-administrator) | Lesen und Verwalten der Konformitätskonfiguration und der zugehörigen Berichte in Azure AD und Microsoft 365. | 17315797-102d-40b4-93e0-432062caca18 |
@@ -67,6 +68,7 @@ In diesem Artikel werden die in Azure AD integrierten Rollen aufgelistet, die Si
 > | [Gasteinladender](#guest-inviter) | Einladen von Gastbenutzernunabhängig von der Einstellung „Mitglieder können Gäste einladen“. | 95e79109-95c0-4d8e-aee3-d01accf2d47b |
 > | [Helpdeskadministrator](#helpdesk-administrator) | Zurücksetzen von Kennwörtern für Nicht-Administratoren und Helpdeskadministratoren. | 729827e3-9c14-49f7-bb1b-9608f156bbb8 |
 > | [Hybrididentitätsadministrator](#hybrid-identity-administrator) | Verwalten der Cloudbereitstellung zwischen AD und Azure AD sowie von Azure AD Connect und Verbundeinstellungen. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
+> | [Identity Governance-Administrator](#identity-governance-administrator) | Verwaltet den Zugriff mithilfe von Azure AD für Identity Governance-Szenarien. | 45d8d3c5-c802-45c6-b32a-1d70b5e1e86e |
 > | [Insights Administrator](#insights-administrator) | Administratorzugriff in der Microsoft 365 Insights-App. | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c |
 > | [Insights Business Leader](#insights-business-leader) | Kann Dashboards und Erkenntnisse über die M365-Insights-App anzeigen und freigeben. | 31e939ad-9672-4796-9c2e-873181342d2d |
 > | [Intune-Administrator](#intune-administrator) | Verwalten sämtlicher Aspekte des Produkts Intune. | 3a2c62db-5318-420d-8d74-23affee5d9d5 |
@@ -131,6 +133,7 @@ Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und An
 > | microsoft.directory/applications/authentication/update | Aktualisieren der Authentifizierung für alle Anwendungstypen |
 > | microsoft.directory/applications/basic/update | Aktualisieren grundlegender Eigenschaften für Anwendungen |
 > | microsoft.directory/applications/credentials/update | Aktualisieren von Anwendungsanmeldeinformationen |
+> | microsoft.directory/applications/extensionProperties/update | Aktualisieren von Erweiterungseigenschaften von Anwendungen |
 > | microsoft.directory/applications/owners/update | Aktualisieren von Anwendungsbesitzern |
 > | microsoft.directory/applications/permissions/update | Aktualisieren von verfügbar gemachten und erforderlichen Berechtigungen für alle Anwendungstypen |
 > | microsoft.directory/applications/policies/update | Aktualisieren von Anwendungsrichtlinien |
@@ -143,7 +146,9 @@ Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und An
 > | microsoft.directory/connectorGroups/create | Erstellen von Anwendungsproxy-Connectorgruppen |
 > | microsoft.directory/connectorGroups/delete | Löschen von Anwendungsproxy-Connectorgruppen |
 > | microsoft.directory/connectorGroups/allProperties/read | Lesen sämtlicher Eigenschaften von Anwendungsproxy-Connectorgruppen |
-> | microsoft.directory/connectorGroups/allProperties/update | Aktualisieren aller Eigenschaften von Anwendungsproxy-Connectorgruppen |
+> | microsoft.directory/connectorGroups/allProperties/update | Aktualisieren sämtlicher Eigenschaften von Anwendungsproxy-Connectorgruppen |
+> | microsoft.directory/deletedItems.applications/delete | Dauerhaftes Löschen von Anwendungen, die nicht mehr wiederhergestellt werden können |
+> | microsoft.directory/deletedItems.applications/restore | Wiederherstellen vorläufig gelöschter Anwendungen in ihrem ursprünglichen Zustand |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Erstellen und Löschen von OAuth 2.0-Berechtigungszuweisungen und Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/applicationPolicies/create | Erstellen von Anwendungsrichtlinien |
 > | microsoft.directory/applicationPolicies/delete | Löschen von Anwendungsrichtlinien |
@@ -215,9 +220,9 @@ Benutzer mit dieser Rolle können alle Aspekte der Angriffssimulationserstellung
 
 ## <a name="authentication-administrator"></a>Authentifizierungsadministrator
 
-Benutzer mit dieser Rolle können alle Authentifizierungsmethoden (einschließlich Kennwörter) für Nicht-Administratoren und einige andere Rollen festlegen oder zurücksetzen. Authentifizierungsadministratoren können Benutzer, die keine Administratoren sind, oder die Rollen zugewiesen sind, auffordern, ihre vorhandenen Anmeldeinformationen ohne Kennwort (z. B. MFA oder FIDO) erneut zu registrieren, und können auch **Speichern der MFA auf dem Gerät** widerrufen. Dann werden Benutzer bei der nächsten Anmeldung zur Eingabe ihrer MFA-Anmeldeinformationen aufgefordert. Eine Liste der Rollen, die ein Authentifizierungsadministrator lesen oder deren Authentifizierungsmethoden er aktualisieren kann, finden Sie unter [Berechtigungen für die Kennwortzurücksetzung](#password-reset-permissions).
+Benutzer mit dieser Rolle können alle Authentifizierungsmethoden (einschließlich Kennwörter) für Nicht-Administratoren und einige andere Rollen festlegen oder zurücksetzen. Authentifizierungsadministratoren können Benutzer, die keine Administratoren sind oder die Rollen zugewiesen sind, auffordern, ihre vorhandenen Anmeldeinformationen ohne Kennwort (z. B. MFA oder FIDO) erneut zu registrieren, und sie können auch **Speichern der MFA auf dem Gerät** widerrufen. Dann werden Benutzer bei der nächsten Anmeldung zur Eingabe ihrer MFA-Anmeldeinformationen aufgefordert. Eine Liste der Rollen, die ein Authentifizierungsadministrator lesen oder deren Authentifizierungsmethoden er aktualisieren kann, finden Sie unter [Berechtigungen für die Kennwortzurücksetzung](#password-reset-permissions).
 
-Die Rolle [Privilegierter Authentifizierungsadministrator](#privileged-authentication-administrator) verfügt über die Berechtigung zum Erzwingen einer erneuten Registrierung und der Multi-Factor Authentication für alle Benutzer.
+Die Rolle [Privilegierter Authentifizierungsadministrator](#privileged-authentication-administrator) verfügt über die Berechtigung zum Erzwingen einer erneuten Registrierung und der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für alle Benutzer.
 
 Die Rolle [Authentifizierungsrichtlinienadministrator](#authentication-policy-administrator) verfügt über Berechtigungen zum Festlegen der Authentifizierungsmethodenrichtlinie des Mandanten, mit der bestimmt wird, welche Methoden die einzelnen Benutzer registrieren und verwenden können.
 
@@ -256,7 +261,7 @@ Benutzer mit dieser Rolle können die Authentifizierungsmethodenrichtlinie, mand
 
 Die Rollen [Authentifizierungsadministrator](#authentication-administrator) und [Privilegierter Authentifizierungsadministrator](#privileged-authentication-administrator) verfügen über die Berechtigung zum Verwalten registrierter Authentifizierungsmethoden für Benutzer und können für alle Benutzer eine erneute Registrierung und Multi-Factor Authentication erzwingen.
 
-| Rolle | Verwalten der Authentifizierungsmethoden des Benutzers | Aktivieren der Multi-Factor Authentication (MFA) pro Benutzer | Verwalten der MFA-Einstellungen | Verwalten der Authentifizierungsmethodenrichtlinie | Verwalten der Kennwortschutzrichtlinie |
+| Role | Verwalten der Authentifizierungsmethoden des Benutzers | Aktivieren der Multi-Factor Authentication (MFA) pro Benutzer | Verwalten der MFA-Einstellungen | Verwalten der Authentifizierungsmethodenrichtlinie | Verwalten der Kennwortschutzrichtlinie |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Authentifizierungsadministrator | Ja, für einige Benutzer (siehe oben) | Ja, für einige Benutzer (siehe oben) | Nein | Nein | Nein |
 | Privilegierter Authentifizierungsadministrator| Ja, für alle Benutzer | Ja, für alle Benutzer | Nein | Nein | Nein |
@@ -363,6 +368,16 @@ Tätigt Käufe, verwaltet Abonnements und Supporttickets und überwacht die Dien
 > | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
 
+## <a name="cloud-app-security-administrator"></a>Cloud App Security-Administrator
+
+Benutzer mit dieser Rolle verfügen über vollständige Berechtigungen in Cloud App Security. Sie können Administratoren, MCAS-Richtlinien (Microsoft Cloud App Security) und -Einstellungen hinzufügen, Protokolle hochladen und Governanceaktionen ausführen.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | microsoft.directory/cloudAppSecurity/allProperties/allTasks | Erstellen und Löschen aller Ressourcen sowie Lesen und Aktualisieren von Standardeigenschaften in Microsoft Cloud App Security |
+> | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
+
 ## <a name="cloud-application-administrator"></a>Cloudanwendungsadministrator
 
 Benutzer mit dieser Rolle haben die gleichen Berechtigungen wie die Rolle des Anwendungsadministrators, mit Ausnahme der Möglichkeit, den Anwendungsproxy zu verwalten. Diese Rolle ermöglicht die Erstellung und Verwaltung aller Aspekte von Unternehmensanwendungen und Anwendungsregistrierungen. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
@@ -384,13 +399,16 @@ Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und An
 > | microsoft.directory/applications/authentication/update | Aktualisieren der Authentifizierung für alle Anwendungstypen |
 > | microsoft.directory/applications/basic/update | Aktualisieren grundlegender Eigenschaften für Anwendungen |
 > | microsoft.directory/applications/credentials/update | Aktualisieren von Anwendungsanmeldeinformationen |
+> | microsoft.directory/applications/extensionProperties/update | Aktualisieren von Erweiterungseigenschaften von Anwendungen |
 > | microsoft.directory/applications/owners/update | Aktualisieren von Anwendungsbesitzern |
 > | microsoft.directory/applications/permissions/update | Aktualisieren von verfügbar gemachten und erforderlichen Berechtigungen für alle Anwendungstypen |
 > | microsoft.directory/applications/policies/update | Aktualisieren von Anwendungsrichtlinien |
 > | microsoft.directory/applications/verification/update | Aktualisieren der applicationsverification-Eigenschaft |
 > | microsoft.directory/applications/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die dem Anwendungsobjekt zugeordnet sind |
 > | microsoft.directory/applicationTemplates/instantiate | Instanziieren von Kataloganwendungen über Anwendungsvorlagen |
-> | microsoft.directory/auditLogs/allProperties/read | Lesen aller Eigenschaften von Überwachungsprotokollen (einschließlich privilegierter Eigenschaften) |
+> | microsoft.directory/auditLogs/allProperties/read | Lesen sämtlicher Eigenschaften von Überwachungsprotokollen (einschließlich privilegierter Eigenschaften) |
+> | microsoft.directory/deletedItems.applications/delete | Dauerhaftes Löschen von Anwendungen, die nicht mehr wiederhergestellt werden können |
+> | microsoft.directory/deletedItems.applications/restore | Wiederherstellen vorläufig gelöschter Anwendungen in ihrem ursprünglichen Zustand |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Erstellen und Löschen von OAuth 2.0-Berechtigungszuweisungen und Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/applicationPolicies/create | Erstellen von Anwendungsrichtlinien |
 > | microsoft.directory/applicationPolicies/delete | Löschen von Anwendungsrichtlinien |
@@ -439,7 +457,6 @@ Benutzer mit dieser Rolle können Geräte in Azure AD aktivieren, deaktivieren u
 > | microsoft.directory/devices/delete | Löschen von Geräten aus Azure AD |
 > | microsoft.directory/devices/disable | Deaktivieren von Geräten in Azure AD |
 > | microsoft.directory/devices/enable | Aktivieren von Geräten in Azure AD |
-> | microsoft.directory/devices/extensionAttributes/update | Aktualisieren sämtlicher Werte der devices.extensionAttributes-Eigenschaft |
 > | microsoft.directory/deviceManagementPolicies/standard/read | Lesen der Standardeigenschaften von Anwendungsrichtlinien zur Geräteverwaltung |
 > | microsoft.directory/deviceManagementPolicies/basic/update | Aktualisieren grundlegender Eigenschaften für Anwendungsrichtlinien der Geräteverwaltung |
 > | microsoft.directory/deviceRegistrationPolicy/standard/read | Lesen der Standardeigenschaften von Richtlinien zur Geräteregistrierung |
@@ -567,11 +584,11 @@ Benutzer in dieser Rolle können grundlegende Verzeichnisinformationen lesen. Di
 > | microsoft.directory/directoryRoles/eligibleMembers/read | Lesen von berechtigten Mitgliedern von Azure AD-Rollen |
 > | microsoft.directory/directoryRoles/members/read | Lesen sämtlicher Mitglieder von Azure AD-Rollen |
 > | microsoft.directory/domains/standard/read | Lesen grundlegender Eigenschaften für Domänen |
-> | microsoft.directory/groups/standard/read | Lesen grundlegender Eigenschaften für Gruppen |
+> | microsoft.directory/groups/standard/read | Lesen der Standardeigenschaften von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen eingeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/appRoleAssignments/read | Lesen von Anwendungsrollenzuweisungen von Gruppen |
-> | microsoft.directory/groups/memberOf/read | Lesen von Gruppen, bei denen eine Gruppe Mitglied in Azure AD ist |
-> | microsoft.directory/groups/members/read | Lesen der Mitglieder von Gruppen |
-> | microsoft.directory/groups/owners/read | Lesen der Besitzer von Gruppen |
+> | microsoft.directory/groups/memberOf/read | Lesen der memberOf-Eigenschaft von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen eingeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/members/read | Lesen der Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen eingeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/owners/read | Lesen der Besitzer von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen eingeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/settings/read | Lesen der Einstellungen von Gruppen |
 > | microsoft.directory/groupSettings/standard/read | Lesen grundlegender Eigenschaften für Gruppeneinstellungen |
 > | microsoft.directory/groupSettingTemplates/standard/read | Lesen grundlegender Eigenschaften von Vorlagen für Gruppeneinstellungen |
@@ -591,7 +608,7 @@ Benutzer in dieser Rolle können grundlegende Verzeichnisinformationen lesen. Di
 > | microsoft.directory/servicePrincipals/policies/read | Lesen der Richtlinien von Dienstprinzipalen |
 > | microsoft.directory/subscribedSkus/standard/read | Lesen grundlegender Eigenschaften für Abonnements |
 > | microsoft.directory/users/standard/read | Lesen grundlegender Eigenschaften für Benutzer |
-> | microsoft.directory/users/appRoleAssignments/read | Lesen von Anwendungsrollenzuweisungen von Benutzern |
+> | microsoft.directory/users/appRoleAssignments/read | Lesen von Anwendungsrollenzuweisungen für Benutzer |
 > | microsoft.directory/users/directReports/read | Lesen von direkten Berichten für Benutzer |
 > | microsoft.directory/users/manager/read | Lesen der Manager von Benutzern |
 > | microsoft.directory/users/memberOf/read | Lesen von Gruppenmitgliedschaften von Benutzern |
@@ -655,20 +672,21 @@ Darf nicht verwendet werden. Diese Rolle wird automatisch dem Azure AD Connect-D
 Benutzer mit dieser Rolle können grundlegende Informationen von Benutzern, Gruppen und Dienstprinzipalen lesen und aktualisieren. Weisen Sie diese Rolle nur Anwendungen zu, die das [Zustimmungsframework](../develop/quickstart-register-app.md) nicht unterstützen. Diese Rolle sollte keinem Benutzer zugewiesen werden.
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
+> | Aktionen | Beschreibung |
 > | --- | --- |
+> | microsoft.directory/applications/extensionProperties/update | Aktualisieren von Erweiterungseigenschaften von Anwendungen |
 > | microsoft.directory/groups/assignLicense | Zuweisen von Produktlizenzen zu Gruppen für die gruppenbasierte Lizenzierung |
-> | microsoft.directory/groups/create | Erstellen von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/create | Erstellen von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/reprocessLicenseAssignment | Erneutes Verarbeiten von Lizenzzuweisungen für die gruppenbasierte Lizenzierung |
-> | microsoft.directory/groups/basic/update | Aktualisieren grundlegender Eigenschaften für Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/classification/update | Aktualisieren der Klassifizierungseigenschaft von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/dynamicMembershipRule/update | Aktualisieren der Regel für die dynamische Mitgliedschaft von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/groupType/update | Aktualisieren der groupType-Eigenschaft für eine Gruppe |
-> | microsoft.directory/groups/members/update | Aktualisieren der Mitglieder von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/basic/update | Aktualisieren grundlegender Eigenschaften von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/classification/update | Aktualisieren der Klassifizierungseigenschaft von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/dynamicMembershipRule/update | Aktualisieren der Regel für eine dynamische Mitgliedschaft für Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/groupType/update | Aktualisieren von Eigenschaften, die sich auf den Gruppentyp von Sicherheitsgruppen und Microsoft 365-Gruppen auswirken (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/onPremWriteBack/update | Aktualisieren von Azure Active Directory-Gruppen, die mit Azure AD Connect in die lokale Umgebung zurückgeschrieben werden sollen |
-> | microsoft.directory/groups/owners/update | Aktualisieren der Besitzer von Gruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
+> | microsoft.directory/groups/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/settings/update | Aktualisieren von Gruppeneinstellungen |
-> | microsoft.directory/groups/visibility/update | Aktualisieren der visibility-Eigenschaft von Gruppen |
+> | microsoft.directory/groups/visibility/update | Aktualisieren der visibility-Eigenschaft von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groupSettings/create | Create group settings (Gruppeneinstellungen erstellen) |
 > | microsoft.directory/groupSettings/delete | Delete group settings (Gruppeneinstellungen löschen) |
 > | microsoft.directory/groupSettings/basic/update | Aktualisieren grundlegender Eigenschaften für Gruppeneinstellungen |
@@ -698,6 +716,7 @@ Benutzer mit dieser Rolle können Domänennamen verwalten (lesen, hinzufügen, �
 > | --- | --- |
 > | microsoft.directory/domains/allProperties/allTasks | Erstellen und Löschen von Domänen sowie Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
+> | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
 
 ## <a name="dynamics-365-administrator"></a>Dynamics 365-Administrator
 
@@ -726,13 +745,13 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen in Microsoft Exchange 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
 > | --- | --- |
-> | microsoft.directory/groups/hiddenMembers/read | Lesen ausgeblendeter Mitglieder einer Gruppe |
-> | microsoft.directory/groups.unified/create | Erstellen von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.unified/delete | Löschen von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/hiddenMembers/read | Lesen der ausgeblendeten Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen eingeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/create | Erstellen von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/delete | Löschen von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups.unified/restore | Wiederherstellen von Microsoft 365-Gruppen |
-> | microsoft.directory/groups.unified/basic/update | Aktualisieren grundlegender Eigenschaften von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.unified/members/update | Aktualisieren von Mitgliedern von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.unified/owners/update | Aktualisieren der Besitzer von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/basic/update | Aktualisieren grundlegender Eigenschaften von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/members/update | Aktualisieren der Mitglieder von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/owners/update | Aktualisieren der Besitzer von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 > | microsoft.office365.exchange/allEntities/basic/allTasks | Verwalten sämtlicher Aspekte von Exchange Online |
@@ -811,6 +830,8 @@ Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in 
 > | microsoft.directory/connectorGroups/allProperties/update | Aktualisieren sämtlicher Eigenschaften von Anwendungsproxy-Connectorgruppen |
 > | microsoft.directory/contacts/allProperties/allTasks | Erstellen und Löschen von Kontakten sowie Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/contracts/allProperties/allTasks | Erstellen und Löschen von Partnerkontakten sowie Lesen und Aktualisieren aller Eigenschaften |
+> | microsoft.directory/deletedItems/delete | Dauerhaftes Löschen von Objekten, die nicht mehr wiederhergestellt werden können |
+> | microsoft.directory/deletedItems/restore | Wiederherstellen vorläufig gelöschter Objekte in ihrem ursprünglichen Zustand |
 > | microsoft.directory/devices/allProperties/allTasks | Erstellen und Löschen von Geräten sowie Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/deviceManagementPolicies/standard/read | Lesen der Standardeigenschaften von Anwendungsrichtlinien zur Geräteverwaltung |
 > | microsoft.directory/deviceManagementPolicies/basic/update | Aktualisieren grundlegender Eigenschaften für Anwendungsrichtlinien der Geräteverwaltung |
@@ -830,7 +851,7 @@ Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in 
 > | microsoft.directory/identityProtection/allProperties/allTasks | Erstellen und Löschen sämtlicher Ressourcen sowie Lesen und Aktualisieren der Standardeigenschaften in Azure AD Identity Protection |
 > | microsoft.directory/loginOrganizationBranding/allProperties/allTasks | Erstellen und Löschen von „loginTenantBranding“ sowie Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Erstellen und Löschen von OAuth 2.0-Berechtigungszuweisungen und Lesen und Aktualisieren aller Eigenschaften |
-> | microsoft.directory/organization/allProperties/allTasks | Erstellen und Löschen von Organisationen sowie Lesen und Aktualisieren aller Eigenschaften |
+> | microsoft.directory/organization/allProperties/allTasks | Lesen und Aktualisieren aller Eigenschaften einer Organisation |
 > | microsoft.directory/policies/allProperties/allTasks | Erstellen und Löschen von Richtlinien sowie Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/conditionalAccessPolicies/allProperties/allTasks | Verwalten sämtlicher Richtlinieneigenschaften für den bedingten Zugriff |
 > | microsoft.directory/crossTenantAccessPolicies/allProperties/allTasks |  |
@@ -900,20 +921,21 @@ Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in 
 > | microsoft.powerApps/allEntities/allTasks | Verwalten sämtlicher Aspekte von Power Apps |
 > | microsoft.powerApps.powerBI/allEntities/allTasks | Verwalten sämtlicher Aspekte von Power BI |
 > | microsoft.windows.defenderAdvancedThreatProtection/allEntities/allTasks | Verwalten sämtlicher Aspekte von Microsoft Defender für Endpunkt |
+> | microsoft.windows.updatesDeployments/allEntities/allProperties/allTasks | Lesen und Konfigurieren aller Aspekte des Windows Update-Diensts |
 
 ## <a name="global-reader"></a>Globaler Leser
 
-Benutzer in dieser Rolle können in Microsoft 365-Diensten Einstellungen und administrative Informationen lesen, aber keine Verwaltungsaktionen ausführen. Die Rolle „Globaler Leser“ ist das Gegenstück zu „Globaler Administrator“, hat jedoch eine Nur-Lese-Berechtigung. Weisen Sie die Rolle „Globaler Leser“ anstelle der Rolle „Globaler Administrator“ für Planungen, Audits oder Untersuchungen zu. Kombinieren Sie die Rolle „Globaler Leser“ mit anderen eingeschränkten Administratorrollen (z.B. Exchange-Administrator), um bei der Arbeit leichter auf die Rolle „Globaler Administrator“ verzichten zu können. Die Rolle „Globaler Leser“ funktioniert mit Microsoft 365 Admin Center, Exchange Admin Center, SharePoint Admin Center, Teams Admin Center, Security Center, Compliance Center, Azure AD Admin Center und Device Management Admin Center.
+Benutzer in dieser Rolle können in Microsoft 365-Diensten Einstellungen und administrative Informationen lesen, aber keine Verwaltungsaktionen ausführen. Die Rolle „Globaler Leser“ ist das Gegenstück zu „Globaler Administrator“, hat jedoch nur Leseberechtigungen. Weisen Sie die Rolle „Globaler Leser“ anstelle der Rolle „Globaler Administrator“ für Planungen, Audits oder Untersuchungen zu. Kombinieren Sie die Rolle „Globaler Leser“ mit anderen eingeschränkten Administratorrollen (z. B. Exchange-Administrator), um die Arbeit zu vereinfachen, ohne die Rolle „Globaler Administrator“ verwenden zu müssen. Die Rolle „Globaler Leser“ funktioniert mit Microsoft 365 Admin Center, Exchange Admin Center, SharePoint Admin Center, Teams Admin Center, Security Center, Compliance Center, Azure AD Admin Center und Device Management Admin Center.
 
 > [!NOTE]
-> Die Rolle „Globaler Leser“ weist zurzeit einige Einschränkungen auf.
+> Die Rolle „Globaler Leser“ weist zurzeit einige Einschränkungen auf:
 >
 >- [OneDrive Admin Center:](https://admin.onedrive.com/) OneDrive Admin Center unterstützt die Rolle „Globaler Leser“ nicht.
->- [Microsoft 365 Admin Center](https://admin.microsoft.com/Adminportal/Home#/homepage) – Die Rolle „Globaler Leser“ kann integrierte Apps nicht lesen. Die Registerkarte **Integrierte Apps** wird im linken Bereich des Microsoft 365 Admin Centers unter **Einstellungen** nicht angezeigt.
->- [Office Security & Compliance Center](https://sip.protection.office.com/homepage): Die Rolle „Globaler Leser“ kann weder SCC-Überwachungsprotokolle lesen, die Inhaltssuche durchführen noch die Sicherheitsbewertung anzeigen.
->- [Teams Admin Center](https://admin.teams.microsoft.com): Die Rolle „Globaler Leser“ kann den **Teams-Lebenszyklus**, **Analysen und Berichte**, die **IP-Telefon-Geräteverwaltung** und den **App-Katalog** nicht lesen.
+>- [Microsoft 365 Admin Center:](https://admin.microsoft.com/Adminportal/Home#/homepage) Die Rolle „Globaler Leser“ kann integrierte Apps nicht lesen. Die Registerkarte **Integrierte Apps** wird im linken Bereich des Microsoft 365 Admin Centers unter **Einstellungen** nicht angezeigt.
+>- [Office Security & Compliance Center:](https://sip.protection.office.com/homepage) Die Rolle „Globaler Leser“ kann weder SCC-Überwachungsprotokolle lesen, noch eine Inhaltssuche durchführen oder die Sicherheitsbewertung anzeigen.
+>- [Teams Admin Center:](https://admin.teams.microsoft.com) Die Rolle „Globaler Leser“ kann den **Teams-Lebenszyklus**, **Analysen und Berichte**, die **IP-Telefon-Geräteverwaltung** und den **App-Katalog** nicht lesen.
 >- [Privileged Access Management (PAM)](/office365/securitycompliance/privileged-access-management-overview) unterstützt die Rolle „Globaler Leser“ nicht.
->- [Azure Information Protection:](/azure/information-protection/what-is-information-protection) Die Rolle „Globaler Leser“ wird nur für die [zentrale Berichterstellung](/azure/information-protection/reports-aip) unterstützt, wenn sich Ihre Azure AD-Organisation nicht auf der [Plattform für einheitliche Bezeichnungen](/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform) befindet.
+>- [Azure Information Protection:](/azure/information-protection/what-is-information-protection) Die Rolle „Globaler Leser“ wird nur für die [zentrale Berichterstellung](/azure/information-protection/reports-aip) unterstützt, wenn sich Ihre Azure AD-Organisation nicht auf der [Plattform für einheitliche Bezeichnungen](/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform) befindet.
 >
 > Diese Features befinden sich zurzeit in der Entwicklung.
 >
@@ -930,7 +952,7 @@ Benutzer in dieser Rolle können in Microsoft 365-Diensten Einstellungen und adm
 > | microsoft.directory/entitlementManagement/allProperties/read | Lesen sämtlicher Eigenschaften in der Azure AD-Berechtigungsverwaltung |
 > | microsoft.directory/deviceManagementPolicies/standard/read | Lesen der Standardeigenschaften von Anwendungsrichtlinien zur Geräteverwaltung |
 > | microsoft.directory/deviceRegistrationPolicy/standard/read | Lesen der Standardeigenschaften von Richtlinien zur Geräteregistrierung |
-> | microsoft.directory/groups/hiddenMembers/read | Lesen ausgeblendeter Mitglieder einer Gruppe |
+> | microsoft.directory/groups/hiddenMembers/read | Lesen der ausgeblendeten Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen eingeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/organization/strongAuthentication/read | Lesen der Eigenschaft „Strenge Authentifizierung“ für eine Organisation |
 > | microsoft.directory/policies/standard/read | Lesen grundlegender Eigenschaften für Richtlinien |
 > | microsoft.directory/policies/owners/read | Lesen der Besitzer von Richtlinien |
@@ -955,29 +977,30 @@ Benutzer in dieser Rolle können in Microsoft 365-Diensten Einstellungen und adm
 > | microsoft.office365.securityComplianceCenter/allEntities/read | Lesen von Standardeigenschaften im Microsoft 365 Security and Compliance Center |
 > | microsoft.office365.usageReports/allEntities/allProperties/read | Lesen von Office 365-Nutzungsberichten |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
+> | microsoft.windows.updatesDeployments/allEntities/allProperties/read | Lesen aller Aspekte des Windows Update-Diensts |
 
 ## <a name="groups-administrator"></a>Gruppenadministrator
 
-Benutzer mit dieser Rolle können Gruppen und die zugehörigen Einstellungen wie Benennungs- und Ablaufrichtlinien erstellen und verwalten. Es ist wichtig zu verstehen, dass der Benutzer durch die Zuweisung dieser Rolle alle Gruppen in der Organisation nicht nur in Outlook, sondern in verschiedenen Workloads wie Teams, SharePoint und Yammer verwalten kann. Außerdem kann der Benutzer die verschiedenen Gruppeneinstellungen in verschiedenen Verwaltungsportalen wie Microsoft Admin Center und Azure-Portal sowie den workloadspezifischen Portalen wie Teams Admin Center und SharePoint Admin Center verwalten.
+Benutzer mit dieser Rolle können Gruppen und die zugehörigen Einstellungen wie Benennungs- und Ablaufrichtlinien erstellen und verwalten. Es ist wichtig zu verstehen, dass der Benutzer durch die Zuweisung dieser Rolle alle Gruppen in der Organisation nicht nur in Outlook, sondern in verschiedenen Workloads wie Teams, SharePoint und Yammer verwalten kann. Außerdem kann der Benutzer die verschiedenen Gruppeneinstellungen in verschiedenen Verwaltungsportalen wie Microsoft Admin Center und dem Azure-Portal sowie den workloadspezifischen Portalen wie Teams Admin Center und SharePoint Admin Center verwalten.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | microsoft.directory/groups/assignLicense | Zuweisen von Produktlizenzen zu Gruppen für die gruppenbasierte Lizenzierung |
-> | microsoft.directory/groups/create | Erstellen von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/delete | Löschen von Gruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
-> | microsoft.directory/groups/hiddenMembers/read | Lesen ausgeblendeter Mitglieder einer Gruppe |
+> | microsoft.directory/groups/create | Erstellen von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/delete | Löschen von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/hiddenMembers/read | Lesen der ausgeblendeten Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen eingeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/reprocessLicenseAssignment | Erneutes Verarbeiten von Lizenzzuweisungen für die gruppenbasierte Lizenzierung |
 > | microsoft.directory/groups/restore | Wiederherstellen gelöschter Gruppen |
-> | microsoft.directory/groups/basic/update | Aktualisieren grundlegender Eigenschaften für Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/classification/update | Aktualisieren der Klassifizierungseigenschaft von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/dynamicMembershipRule/update | Aktualisieren der Regel für die dynamische Mitgliedschaft von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/groupType/update | Aktualisieren der groupType-Eigenschaft für eine Gruppe |
-> | microsoft.directory/groups/members/update | Aktualisieren der Mitglieder von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/basic/update | Aktualisieren grundlegender Eigenschaften von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/classification/update | Aktualisieren der Klassifizierungseigenschaft von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/dynamicMembershipRule/update | Aktualisieren der Regel für eine dynamische Mitgliedschaft für Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/groupType/update | Aktualisieren von Eigenschaften, die sich auf den Gruppentyp von Sicherheitsgruppen und Microsoft 365-Gruppen auswirken (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/onPremWriteBack/update | Aktualisieren von Azure Active Directory-Gruppen, die mit Azure AD Connect in die lokale Umgebung zurückgeschrieben werden sollen |
-> | microsoft.directory/groups/owners/update | Aktualisieren der Besitzer von Gruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
+> | microsoft.directory/groups/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/settings/update | Aktualisieren von Gruppeneinstellungen |
-> | microsoft.directory/groups/visibility/update | Aktualisieren der visibility-Eigenschaft von Gruppen |
+> | microsoft.directory/groups/visibility/update | Aktualisieren der visibility-Eigenschaft von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | Gewähren des direkten Zugriffs auf Gruppendaten für einen Dienstprinzipal |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
@@ -994,7 +1017,7 @@ Wenn die Benutzereinstellung **Mitglieder können einladen** auf „Nein“ fest
 > | --- | --- |
 > | microsoft.directory/users/inviteGuest | Einladen von Gastbenutzern |
 > | microsoft.directory/users/standard/read | Lesen grundlegender Eigenschaften für Benutzer |
-> | microsoft.directory/users/appRoleAssignments/read | Lesen von Anwendungsrollenzuweisungen von Benutzern |
+> | microsoft.directory/users/appRoleAssignments/read | Lesen von Anwendungsrollenzuweisungen für Benutzer |
 > | microsoft.directory/users/directReports/read | Lesen von direkten Berichten für Benutzer |
 > | microsoft.directory/users/manager/read | Lesen der Manager von Benutzern |
 > | microsoft.directory/users/memberOf/read | Lesen von Gruppenmitgliedschaften von Benutzern |
@@ -1053,6 +1076,8 @@ Benutzer mit dieser Rolle können die Konfigurationseinrichtung bei Bereitstellu
 > | microsoft.directory/applicationTemplates/instantiate | Instanziieren von Kataloganwendungen über Anwendungsvorlagen |
 > | microsoft.directory/auditLogs/allProperties/read | Lesen sämtlicher Eigenschaften von Überwachungsprotokollen (einschließlich privilegierter Eigenschaften) |
 > | microsoft.directory/cloudProvisioning/allProperties/allTasks | Lesen und Konfigurieren aller Eigenschaften des Azure AD-Cloudbereitstellungsdiensts |
+> | microsoft.directory/deletedItems.applications/delete | Dauerhaftes Löschen von Anwendungen, die nicht mehr wiederhergestellt werden können |
+> | microsoft.directory/deletedItems.applications/restore | Wiederherstellen vorläufig gelöschter Anwendungen in ihrem ursprünglichen Zustand |
 > | microsoft.directory/domains/allProperties/read | Lesen sämtlicher Eigenschaften von Domänen |
 > | microsoft.directory/domains/federation/update | Aktualisieren der Verbundeigenschaft von Domänen |
 > | microsoft.directory/organization/dirSync/update | Aktualisieren der Synchronisierungseigenschaft für das Organisationsverzeichnis |
@@ -1081,9 +1106,21 @@ Benutzer mit dieser Rolle können die Konfigurationseinrichtung bei Bereitstellu
 > | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
 
+## <a name="identity-governance-administrator"></a>Identity Governance-Administrator
+
+Benutzer mit dieser Rolle können die Azure AD Identity Governance-Konfiguration verwalten. Dies schließt die Verwaltung von Zugriffspaketen, Zugriffsüberprüfungen, Katalogen und Richtlinien ein. So kann sichergestellt werden, dass der Zugriff genehmigt und überprüft wurde und Gastbenutzer entfernt werden, wenn sie keinen Zugriff mehr benötigen.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | Beschreibung |
+> | --- | --- |
+> | microsoft.directory/accessReviews/allProperties/allTasks | Erstellen und Löschen von Zugriffsüberprüfungen sowie Lesen und Aktualisieren aller Eigenschaften von Zugriffsüberprüfungen in Azure AD |
+> | microsoft.directory/entitlementManagement/allProperties/allTasks | Erstellen und Löschen von Ressourcen sowie Lesen und Aktualisieren aller Eigenschaften in der Azure AD-Berechtigungsverwaltung |
+> | microsoft.directory/groups/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Aktualisieren von Rollenzuweisungen für Dienstprinzipale |
+
 ## <a name="insights-administrator"></a>Insights Administrator
 
-Benutzer mit dieser Rolle können auf alle administrativen Funktionen in der [M365-Insights-Anwendung](https://go.microsoft.com/fwlink/?linkid=2129521) zugreifen. Diese Rolle kann Verzeichnisinformationen lesen, die Dienstintegrität überwachen, Supporttickets einordnen und auf die Einstellungsaspekte für Insights-Administratoren zuzugreifen.
+Benutzer mit dieser Rolle können auf alle administrativen Funktionen in der [M365-Insights-Anwendung](https://go.microsoft.com/fwlink/?linkid=2129521) zugreifen. Diese Rolle kann Verzeichnisinformationen lesen, die Dienstintegrität überwachen, Supporttickets einordnen und auf die Einstellungsaspekte für Insights-Administratoren zugreifen.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -1097,7 +1134,7 @@ Benutzer mit dieser Rolle können auf alle administrativen Funktionen in der [M3
 
 ## <a name="insights-business-leader"></a>Insights Business Leader
 
-Benutzer mit dieser Rolle können über die [M365-Insights-Anwendung](https://go.microsoft.com/fwlink/?linkid=2129521) auf eine Gruppe von Dashboards und Erkenntnisse zugreifen. Dies umfasst Vollzugriff auf alle Dashboards und die dargestellten Funktionen für Erkenntnisse sowie das Durchsuchen von Daten. Benutzer mit dieser Rolle haben keinen Zugriff auf die Einstellungen für die Produktkonfiguration, für die die Rolle „Insights Administrator“ zuständig ist.
+Benutzer mit dieser Rolle können über die [M365-Insights-Anwendung](https://go.microsoft.com/fwlink/?linkid=2129521) auf eine Gruppe von Dashboards und Erkenntnisse zugreifen. Dies umfasst Vollzugriff auf alle Dashboards und die dargestellten Funktionen für Erkenntnisse sowie das Durchsuchen von Daten. Benutzer mit dieser Rolle haben keinen Zugriff auf die Einstellungen für die Produktkonfiguration, für die die Rolle „Insights-Administrator“ zuständig ist.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -1126,20 +1163,22 @@ Mit dieser Rolle können alle Sicherheitsgruppen erstellt und verwaltet werden. 
 > | microsoft.directory/devices/disable | Deaktivieren von Geräten in Azure AD |
 > | microsoft.directory/devices/enable | Aktivieren von Geräten in Azure AD |
 > | microsoft.directory/devices/basic/update | Aktualisieren grundlegender Eigenschaften für Geräte |
-> | microsoft.directory/devices/extensionAttributes/update | Aktualisieren sämtlicher Werte der devices.extensionAttributes-Eigenschaft |
+> | microsoft.directory/devices/extensionAttributeSet1/update | Aktualisieren der Eigenschaften „extensionAttribute1“ bis „extensionAttribute5“ auf Geräten |
+> | microsoft.directory/devices/extensionAttributeSet2/update | Aktualisieren der Eigenschaften „extensionAttribute6“ bis „extensionAttribute10“ auf Geräten |
+> | microsoft.directory/devices/extensionAttributeSet3/update | Aktualisieren der Eigenschaften „extensionAttribute11“ bis „extensionAttribute15“ auf Geräten |
 > | microsoft.directory/devices/registeredOwners/update | Lesen der registrierten Besitzer von Geräten |
 > | microsoft.directory/devices/registeredUsers/update | Aktualisieren der registrierten Besitzer von Geräten |
 > | microsoft.directory/deviceManagementPolicies/standard/read | Lesen der Standardeigenschaften von Anwendungsrichtlinien zur Geräteverwaltung |
 > | microsoft.directory/deviceRegistrationPolicy/standard/read | Lesen der Standardeigenschaften von Richtlinien zur Geräteregistrierung |
-> | microsoft.directory/groups/hiddenMembers/read | Lesen ausgeblendeter Mitglieder einer Gruppe |
-> | microsoft.directory/groups.security/create | Erstellen von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/delete | Löschen von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/basic/update | Aktualisieren grundlegender Eigenschaften für Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/classification/update | Aktualisieren der Klassifizierungseigenschaft der Sicherheitsgruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
+> | microsoft.directory/groups/hiddenMembers/read | Lesen der ausgeblendeten Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen eingeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/create | Erstellen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/delete | Löschen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/basic/update | Aktualisieren grundlegender Eigenschaften von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/classification/update | Aktualisieren der classification-Eigenschaft von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups.security/dynamicMembershipRule/update | Aktualisieren der Regel für die dynamische Mitgliedschaft von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/visibility/update | Aktualisieren der Sichtbarkeitseigenschaft der Sicherheitsgruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
+> | microsoft.directory/groups.security/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/visibility/update | Aktualisieren der visibility-Eigenschaft von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/users/basic/update | Aktualisieren grundlegender Eigenschaften für Benutzer |
 > | microsoft.directory/users/manager/update | Aktualisieren der Manager für Benutzer |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
@@ -1165,12 +1204,12 @@ Benutzer mit dieser Rolle haben Vollzugriff auf alle Einstellungen für Wissens-
 > [!div class="mx-tableFixed"]
 > | Aktionen | Beschreibung |
 > | --- | --- |
-> | microsoft.directory/groups.security/create | Erstellen von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/createAsOwner | Erstellen von Sicherheitsgruppen mit der Ausnahme von Gruppen, denen Rollen zugewiesen werden können, und der Ersteller wird als erster Besitzer hinzugefügt |
-> | microsoft.directory/groups.security/delete | Löschen von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/basic/update | Aktualisieren grundlegender Eigenschaften für Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/create | Erstellen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/createAsOwner | Erstellen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) Der Ersteller wird als erster Besitzer hinzugefügt. |
+> | microsoft.directory/groups.security/delete | Löschen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/basic/update | Aktualisieren grundlegender Eigenschaften von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.office365.knowledge/contentUnderstanding/allProperties/allTasks | Lesen und Aktualisieren aller Eigenschaften von Content Understanding in Microsoft 365 Admin Center |
 > | microsoft.office365.knowledge/knowledgeNetwork/allProperties/allTasks | Lesen und Aktualisieren aller Eigenschaften des Wissensnetzwerks in Microsoft 365 Admin Center |
 > | microsoft.office365.knowledge/learningSources/allProperties/allTasks | Verwalten von Lernquellen und allen zugehörigen Eigenschaften in der Learning-App. |
@@ -1186,12 +1225,12 @@ Benutzer in dieser Rolle können Inhalte wie Themen, Akronyme und Lerninhalte er
 > [!div class="mx-tableFixed"]
 > | Aktionen | Beschreibung |
 > | --- | --- |
-> | microsoft.directory/groups.security/create | Erstellen von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/createAsOwner | Erstellen von Sicherheitsgruppen mit der Ausnahme von Gruppen, denen Rollen zugewiesen werden können, und der Ersteller wird als erster Besitzer hinzugefügt |
-> | microsoft.directory/groups.security/delete | Löschen von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/basic/update | Aktualisieren grundlegender Eigenschaften für Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.security/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/create | Erstellen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/createAsOwner | Erstellen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) Der Ersteller wird als erster Besitzer hinzugefügt. |
+> | microsoft.directory/groups.security/delete | Löschen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/basic/update | Aktualisieren grundlegender Eigenschaften von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.office365.knowledge/contentUnderstanding/analytics/allProperties/read | Lesen von Analyseberichten zum Inhaltsverständnis im Microsoft 365 Admin Center |
 > | microsoft.office365.knowledge/knowledgeNetwork/topicVisibility/allProperties/allTasks | Verwalten der Themensichtbarkeit des Wissensnetzwerks im Microsoft 365 Admin Center |
 > | microsoft.office365.sharePoint/allEntities/allTasks | Erstellen und Löschen aller Ressourcen sowie Lesen und Aktualisieren der Standardeigenschaften in SharePoint |
@@ -1241,14 +1280,14 @@ Darf nicht verwendet werden. Diese Rolle wird automatisch von Commerce zugewiese
 
 Mit der Rolle „Modern Commerce User“ sind bestimmte Benutzer berechtigt, auf Microsoft 365 Admin Center zuzugreifen und die Navigationseinträge links für **Home**, **Abrechnung** und **Support** anzuzeigen. Der in diesen Bereichen verfügbare Inhalt wird von [commercespezifischen Rollen gesteuert](../../cost-management-billing/manage/understand-mca-roles.md), die Benutzern zugewiesen werden, um Produkte zu verwalten, die sie für sich selbst oder für Ihre Organisation gekauft haben. Dies kann Aufgaben wie das Bezahlen von Rechnungen oder den Zugriff auf Abrechnungskonten und Abrechnungsprofile umfassen.
 
-Benutzer mit der Rolle „Modern Commerce User“ verfügen in der Regel über administrative Berechtigungen in anderen Microsoft-Einkaufssystemen, jedoch nicht über die Rollen „Unternehmensadministrator“ oder „Abrechnungsadministrator“, die für den Zugriff auf Admin Center verwendet werden.
+Benutzer mit der Rolle „Modern Commerce-Benutzer“ verfügen in der Regel über administrative Berechtigungen in anderen Microsoft-Einkaufssystemen, jedoch nicht über die Rollen „Globaler Administrator“ oder „Abrechnungsadministrator“, die für den Zugriff auf Admin Center verwendet werden.
 
 **Wann wird die Rolle „Modern Commerce User“ zugewiesen?**
 
 * **Self-Service-Käufe in Microsoft 365 Admin Center**: Self-Service-Käufe bieten Benutzern die Möglichkeit, neue Produkte zu testen, indem sie sich diese Produkte selbst kaufen oder sich dafür registrieren. Diese Produkte werden in Admin Center verwaltet. Benutzern, die einen Self-Service-Kauf tätigen, werden eine Rolle im Commercesystem und die Rolle „Modern Commerce User“ zugewiesen, damit sie ihre Käufe in Admin Center verwalten können. Administratoren können über [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell) Self-Service-Käufe (für Power BI, Power Apps, Power Automate) blockieren. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Self-Service-Einkäufen](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).
-* **Käufe über den kommerziellen Microsoft Marketplace:** Wenn ein Benutzer ein Produkt oder einen Dienst von Microsoft AppSource oder im Azure Marketplace kauft, wird ihm ähnlich wie beim Self-Service-Kauf die Rolle „Modern Commerce User“ zugewiesen, wenn er nicht über die Rolle „Globaler Administrator“ oder „Abrechnungsadministrator“ verfügt. In einigen Fällen werden Benutzer möglicherweise daran gehindert, diese Käufe durchzuführen. Weitere Informationen finden Sie unter [Kommerzieller Microsoft Marketplace](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
-* **Vorschläge von Microsoft**: Ein Vorschlag ist ein formales Angebot von Microsoft für Ihre Organisation für den Kauf von Microsoft-Produkten und -Diensten. Wenn die Person, die den Vorschlag annimmt, nicht in Azure AD über eine der Rollen „Globaler Administrator“ oder „Abrechnungsadministrator“ verfügt, wird ihr eine commercespezifische Rolle zugewiesen, um den Vorschlag abzuschließen, sowie die Rolle „Modern Commerce User“ für den Zugriff auf Admin Center. Wenn diese Person auf Admin Center zugreifen, kann sie nur Funktionen verwenden, die von ihrer commercespezifischen Rolle autorisiert werden.
-* **Commercespezifische Rollen**: Einigen Benutzern werden commercespezifische Rollen zugewiesen. Wenn ein Benutzer kein globaler Administrator oder Abrechnungsadministrator ist, erhält er die Rolle „Modern Commerce User“, damit er auf Admin Center zugreifen kann.
+* **Käufe über den kommerziellen Microsoft Marketplace:** Wenn ein Benutzer ein Produkt oder einen Dienst von Microsoft AppSource oder im Azure Marketplace kauft, wird ihm ähnlich wie beim Self-Service-Kauf die Rolle „Modern Commerce-Benutzer“ zugewiesen, sofern er nicht über die Rolle „Globaler Administrator“ oder „Abrechnungsadministrator“ verfügt. In einigen Fällen werden Benutzer möglicherweise daran gehindert, diese Käufe durchzuführen. Weitere Informationen finden Sie unter [Kommerzieller Microsoft Marketplace](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
+* **Vorschläge von Microsoft**: Ein Vorschlag ist ein formales Angebot von Microsoft für Ihre Organisation für den Kauf von Microsoft-Produkten und -Diensten. Wenn die Person, die den Vorschlag annimmt, nicht in Azure AD über eine der Rollen „Globaler Administrator“ oder „Abrechnungsadministrator“ verfügt, wird ihr eine commercespezifische Rolle zugewiesen, um den Vorschlag abzuschließen, sowie die Rolle „Modern Commerce-Benutzer“ für den Zugriff auf Admin Center. Wenn diese Person auf Admin Center zugreifen, kann sie nur Funktionen verwenden, die von ihrer commercespezifischen Rolle autorisiert werden.
+* **Commercespezifische Rollen**: Einigen Benutzern werden commercespezifische Rollen zugewiesen. Wenn ein Benutzer kein globaler Administrator oder Abrechnungsadministrator ist, erhält er die Rolle „Modern Commerce-Benutzer“, damit er auf Admin Center zugreifen kann.
 
 Wenn die Zuweisung der Rolle „Modern Commerce User“ für einen Benutzer aufgehoben wird, verliert er den Zugriff auf Microsoft 365 Admin Center. Wenn er Produkte entweder für sich selbst oder für Ihre Organisation verwaltet hat, kann er die Verwaltung nicht fortsetzen. Dies kann das Zuweisen von Lizenzen, das Ändern von Zahlungsmethoden, das Bezahlen von Rechnungen oder andere Aufgaben zum Verwalten von Abonnements umfassen.
 
@@ -1307,11 +1346,11 @@ Darf nicht verwendet werden. Diese Rolle wurde als veraltet markiert und wird au
 > | microsoft.directory/contacts/create | Erstellen von Kontakten |
 > | microsoft.directory/contacts/delete | Löschen von Kontakten |
 > | microsoft.directory/contacts/basic/update | Aktualisieren grundlegender Eigenschaften für Kontakte |
-> | microsoft.directory/groups/create | Erstellen von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/delete | Löschen von Gruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
+> | microsoft.directory/groups/create | Erstellen von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/delete | Löschen von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/restore | Wiederherstellen gelöschter Gruppen |
-> | microsoft.directory/groups/members/update | Aktualisieren der Mitglieder von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/owners/update | Aktualisieren der Besitzer von Gruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
+> | microsoft.directory/groups/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Erstellen und Löschen von OAuth 2.0-Berechtigungszuweisungen und Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Aktualisieren von Rollenzuweisungen für Dienstprinzipale |
 > | microsoft.directory/users/assignLicense | Verwalten von Benutzerlizenzen |
@@ -1353,11 +1392,11 @@ Darf nicht verwendet werden. Diese Rolle wurde als veraltet markiert und wird au
 > | microsoft.directory/contacts/delete | Löschen von Kontakten |
 > | microsoft.directory/contacts/basic/update | Aktualisieren grundlegender Eigenschaften für Kontakte |
 > | microsoft.directory/domains/allProperties/allTasks | Erstellen und Löschen von Domänen sowie Lesen und Aktualisieren aller Eigenschaften |
-> | microsoft.directory/groups/create | Erstellen von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/delete | Löschen von Gruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
+> | microsoft.directory/groups/create | Erstellen von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/delete | Löschen von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/restore | Wiederherstellen gelöschter Gruppen |
-> | microsoft.directory/groups/members/update | Aktualisieren der Mitglieder von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/owners/update | Aktualisieren der Besitzer von Gruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
+> | microsoft.directory/groups/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Erstellen und Löschen von OAuth 2.0-Berechtigungszuweisungen und Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/organization/basic/update | Aktualisieren grundlegender Eigenschaften für Organisationen |
 > | microsoft.directory/roleAssignments/allProperties/allTasks | Erstellen und Löschen von Rollenzuweisungen und Lesen und Aktualisieren aller Rollenzuweisungseigenschaften |
@@ -1394,7 +1433,7 @@ Benutzer mit dieser Rolle haben eingeschränkte Möglichkeiten zum Verwalten von
 
 ## <a name="power-bi-administrator"></a>Power BI-Administrator
 
-Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsoft Power BI, wenn der Dienst verfügbar ist, und können Supporttickets verwalten und die Dienstintegrität überwachen. Weitere Informationen finden Sie unter [Grundlegendes zur Power BI-Administratorrolle](/power-bi/service-admin-role).
+Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsoft Power BI, wenn der Dienst verfügbar ist, und können Supporttickets verwalten und die Dienstintegrität überwachen. Weitere Informationen finden Sie unter [Grundlegendes zur Power BI-Administratorrolle](/power-bi/service-admin-role).
 
 > [!NOTE]
 > In Microsoft Graph-API und Azure AD PowerShell wird diese Rolle als „Power BI-Dienstadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com) lautet sie „Power BI-Administrator“.
@@ -1451,7 +1490,7 @@ Benutzer mit dieser Rolle können Drucker registrieren und den Druckerstatus in 
 
 Benutzer mit dieser Rolle können alle Authentifizierungsmethoden (einschließlich Kennwörter) für jeden Benutzer (einschließlich globale Administratoren) festlegen oder zurücksetzen. Privilegierte Authentifizierungsadministratoren können eine erneute Registrierung von Benutzern anhand von vorhandenen Anmeldeinformationen ohne Kennwort (z. B. MFA oder FIDO) erzwingen und die Einstellung „Speichern der MFA auf dem Gerät“ widerrufen, sodass alle Benutzer beim nächsten Anmeldevorgang zur mehrstufigen Authentifizierung aufgefordert werden.
 
-Die Rolle [Authentifizierungsadministrator](#authentication-administrator) verfügt über die Berechtigung zum Erzwingen einer erneuten Registrierung und Multi-Factor Authentication für Standardbenutzer und Benutzer mit einigen Administratorrollen.
+Die Rolle [Authentifizierungsadministrator](#authentication-administrator) verfügt über die Berechtigung zum Erzwingen einer erneuten Registrierung und der mehrstufigen Authentifizierung für Standardbenutzer und Benutzer mit einigen Administratorrollen.
 
 Die Rolle [Authentifizierungsrichtlinienadministrator](#authentication-policy-administrator) verfügt über Berechtigungen zum Festlegen der Authentifizierungsmethodenrichtlinie des Mandanten, mit der bestimmt wird, welche Methoden die einzelnen Benutzer registrieren und verwenden können.
 
@@ -1621,16 +1660,16 @@ Windows Defender ATP und EDR | Zuweisen von Rollen<br>Verwalten von Computergrup
 
 Benutzer mit dieser Rolle können Warnungen verwalten und besitzen globalen schreibgeschützten Zugriff auf sicherheitsbezogene Features. Dies schließt sämtliche Informationen in Microsoft 365 Security Center, Azure Active Directory, Identity Protection, Privileged Identity Management und Office 365 Security & Compliance Center ein. Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Security & Compliance Center](/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
-Geben Sie in | Möglich
---- | ---
-[Microsoft 365 Security Center](https://protection.office.com) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br>Anzeigen und Untersuchen von sowie Reagieren auf Warnungen zu Sicherheitsbedrohungen
-Azure AD Identity Protection | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br>Darüber hinaus die Möglichkeit, alle Vorgänge im Identity Protection Center auszuführen, mit Ausnahme des Zurücksetzens von Kennwörtern und des Konfigurierens von Benachrichtigungs-E-Mails.
-[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“
-[Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br>Anzeigen und Untersuchen von sowie Reagieren auf Sicherheitswarnungen
-Windows Defender ATP und EDR | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br>Anzeigen und Untersuchen von sowie Reagieren auf Sicherheitswarnungen
-[Intune](/intune/role-based-access-control) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“
-[Cloud App Security](/cloud-app-security/manage-admins) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“
-[Microsoft 365-Dienststatus](/office365/enterprise/view-service-health) | Anzeigen des Status von Microsoft 365-Diensten
+| Geben Sie in | Möglich |
+| --- | --- |
+| [Microsoft 365 Security Center](https://protection.office.com) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br/>Anzeigen und Untersuchen von sowie Reagieren auf Warnungen zu Sicherheitsbedrohungen<br/>Verwalten von Sicherheitseinstellungen in Security Center |
+| [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br>Darüber hinaus die Möglichkeit, alle Vorgänge im Identity Protection Center auszuführen, mit Ausnahme des Zurücksetzens von Kennwörtern und des Konfigurierens von Benachrichtigungs-E-Mails. |
+| [Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“ |
+| [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br>Anzeigen und Untersuchen von sowie Reagieren auf Sicherheitswarnungen |
+| Windows Defender ATP und EDR | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br>Anzeigen und Untersuchen von sowie Reagieren auf Sicherheitswarnungen |
+| [Intune](/intune/role-based-access-control) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“ |
+| [Cloud App Security](/cloud-app-security/manage-admins) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“ |
+| [Microsoft 365-Dienststatus](/microsoft-365/enterprise/view-service-health) | Anzeigen des Status von Microsoft 365-Diensten |
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -1658,7 +1697,7 @@ Geben Sie in | Möglich
 Identity Protection Center | Lesen von allen Sicherheitsberichten und Einstellungsinformationen für die Sicherheitsfunktionen<br><ul><li>Antispam<li>Verschlüsselung<li>Verhindern von Datenverlusten<li>Antischadsoftware<li>Erweiterter Schutz vor Bedrohungen<li>Antiphishing<li>Regeln für den Nachrichtenfluss
 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Verfügt über schreibgeschützten Zugriff auf alle eingeblendeten Informationen in Azure AD Privileged Identity Management: Richtlinien und Berichte für Azure AD-Rollenzuweisungen und Sicherheitsüberprüfungen.<br>Kann sich **nicht** für Azure AD Privileged Identity Management registrieren oder Änderungen daran vornehmen. Im Privileged Identity Management-Portal oder über PowerShell können Personen mit dieser Rolle zusätzliche Rollen (z. B. „Globaler Administrator“ oder „Administrator für privilegierte Rollen“) aktivieren, wenn der Benutzer dazu berechtigt ist.
 [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Anzeigen von Sicherheitsrichtlinien<br>Anzeigen und Untersuchen von Sicherheitsbedrohungen<br>Berichte anzeigen
-Windows Defender ATP und EDR | Anzeigen und Untersuchen von Warnungen. Wenn Sie in Windows Defender ATP die rollenbasierte Zugriffssteuerung aktivieren, verlieren Benutzer mit reinen Leseberechtigungen (wie die Rolle „Azure AD-Sicherheitsleseberechtigter“) den Zugriff, bis ihnen eine Windows Defender ATP-Rolle zugewiesen wird.
+Windows Defender ATP und EDR | Anzeigen und Untersuchen von Warnungen. Wenn Sie in Windows Defender ATP die rollenbasierte Zugriffssteuerung aktivieren, verlieren Benutzer mit reinen Leseberechtigungen (wie die Rolle „Azure AD-Sicherheitsleseberechtigter“) den Zugriff, bis ihnen eine Windows Defender ATP-Rolle zugewiesen wird.
 [Intune](/intune/role-based-access-control) | Anzeigen von Benutzern, Geräten, Registrierung, Konfiguration und Anwendungsinformationen Kann keine Änderungen an Intune vornehmen
 [Cloud App Security](/cloud-app-security/manage-admins) | Verfügt über schreibgeschützten Zugriff und kann Warnungen verwalten
 [Azure Security Center](../../key-vault/managed-hsm/built-in-roles.md) | Kann Empfehlungen und Warnungen sowie Sicherheitsrichtlinien und -zustände anzeigen, aber keine Änderungen vornehmen.
@@ -1718,12 +1757,12 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsof
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
 > | --- | --- |
-> | microsoft.directory/groups.unified/create | Erstellen von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.unified/delete | Löschen von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/create | Erstellen von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/delete | Löschen von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups.unified/restore | Wiederherstellen von Microsoft 365-Gruppen |
-> | microsoft.directory/groups.unified/basic/update | Aktualisieren grundlegender Eigenschaften von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.unified/members/update | Aktualisieren von Mitgliedern von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.unified/owners/update | Aktualisieren der Besitzer von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/basic/update | Aktualisieren grundlegender Eigenschaften von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/members/update | Aktualisieren der Mitglieder von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/owners/update | Aktualisieren der Besitzer von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 > | microsoft.office365.network/performance/allProperties/read | Lesen aller Netzwerkleistungseigenschaften im Microsoft 365 Admin Center |
@@ -1735,7 +1774,7 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsof
 
 ## <a name="skype-for-business-administrator"></a>Skype for Business-Administrator
 
-Benutzer mit dieser Rolle besitzen globale Berechtigungen in Microsoft Skype for Business, wenn der Dienst vorhanden ist, sowie die Berechtigung zur Verwaltung von Skype-spezifischen Benutzerattributen in Azure Active Directory. Darüber hinaus bietet diese Rolle die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen, sowie auf Teams und Skype for Business Admin Center zuzugreifen. Das Konto muss auch für Teams lizenziert sein, andernfalls kann es keine PowerShell-Cmdlets von Teams ausführen. Weitere Informationen dazu finden Sie unter [Skype for Business Online-Administrator](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) und Informationen zur Teams-Lizenzierung unter [Add-On-Lizenzierung für Skype for Business und Microsoft Teams](/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing).
+Benutzer mit dieser Rolle besitzen globale Berechtigungen in Microsoft Skype for Business, wenn der Dienst vorhanden ist, sowie die Berechtigung zur Verwaltung von Skype-spezifischen Benutzerattributen in Azure Active Directory. Darüber hinaus bietet diese Rolle die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen, sowie auf die Admin Center von Teams und Skype for Business zuzugreifen. Das Konto muss auch für Teams lizenziert sein, andernfalls kann es keine PowerShell-Cmdlets von Teams ausführen. Weitere Informationen dazu finden Sie unter [Skype for Business Online-Administrator](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) und Informationen zur Teams-Lizenzierung unter [Add-On-Lizenzierung für Skype for Business und Microsoft Teams](/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing).
 
 > [!NOTE]
 > In Microsoft Graph-API und Azure AD PowerShell wird diese Rolle als „Lync-Dienstadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com/) lautet sie „Skype for Business-Administrator“.
@@ -1758,13 +1797,13 @@ Benutzer mit dieser Rolle können alle Aspekte der Microsoft Teams-Workload übe
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
 > | --- | --- |
-> | microsoft.directory/groups/hiddenMembers/read | Lesen ausgeblendeter Mitglieder einer Gruppe |
-> | microsoft.directory/groups.unified/create | Erstellen von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.unified/delete | Löschen von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/hiddenMembers/read | Lesen der ausgeblendeten Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen eingeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/create | Erstellen von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/delete | Löschen von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups.unified/restore | Wiederherstellen von Microsoft 365-Gruppen |
-> | microsoft.directory/groups.unified/basic/update | Aktualisieren grundlegender Eigenschaften von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.unified/members/update | Aktualisieren von Mitgliedern von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups.unified/owners/update | Aktualisieren der Besitzer von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/basic/update | Aktualisieren grundlegender Eigenschaften von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/members/update | Aktualisieren der Mitglieder von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.unified/owners/update | Aktualisieren der Besitzer von Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | Gewähren des direkten Zugriffs auf Gruppendaten für einen Dienstprinzipal |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
@@ -1822,7 +1861,7 @@ Benutzer in dieser Rolle können Kommunikationsprobleme innerhalb von Microsoft 
 
 ## <a name="teams-devices-administrator"></a>Teams-Geräteadministrator
 
-Benutzer mit dieser Rolle können im Teams Admin Center [von Teams zertifizierte Geräte](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) verwalten. Diese Rolle bietet eine Übersicht über alle Geräte, mit der Möglichkeit, Geräte zu suchen und zu filtern. Der Benutzer kann Details zu jedem Gerät überprüfen, darunter das angemeldete Konto sowie Marke und Modell des Geräts. Der Benutzer kann die Einstellungen auf dem Gerät ändern und die Softwareversionen aktualisieren. Diese Rolle gewährt keine Berechtigungen zum Überprüfen der Teams-Aktivität und der Anrufqualität des Geräts.
+Benutzer mit dieser Rolle können im Teams Admin Center [für Teams zertifizierte Geräte](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) verwalten. Diese Rolle bietet eine Übersicht über alle Geräte, mit der Möglichkeit, Geräte zu suchen und zu filtern. Der Benutzer kann Details zu jedem Gerät überprüfen, darunter das angemeldete Konto sowie Marke und Modell des Geräts. Der Benutzer kann die Einstellungen auf dem Gerät ändern und die Softwareversionen aktualisieren. Diese Rolle gewährt keine Berechtigungen zum Überprüfen der Teams-Aktivität und der Anrufqualität des Geräts.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -1832,7 +1871,7 @@ Benutzer mit dieser Rolle können im Teams Admin Center [von Teams zertifizierte
 
 ## <a name="usage-summary-reports-reader"></a>Leseberechtigter für Berichte mit Nutzungszusammenfassung
 
-Benutzer mit dieser Rolle können zur Nutzungs- und Produktivitätsbewertung im Microsoft 365 Admin Center auf aggregierte Daten sowie zugehörige Erkenntnisse auf Mandantenebene, aber nicht auf Details oder Erkenntnisse auf Benutzerebene zugreifen. Im Microsoft 365 Admin Center für die beiden Berichte unterscheiden wir zwischen aggregierten Daten auf Mandantenebene und Details auf Benutzerebene. Diese Rolle bietet eine zusätzliche Sicherheitsebene für personenbezogene Daten, die von Kunden und Rechtsabteilungen angefordert werden.
+Benutzer mit dieser Rolle können zur Nutzungs- und Produktivitätsbewertung im Microsoft 365 Admin Center auf aggregierte Daten sowie zugehörige Erkenntnisse auf Mandantenebene, aber nicht auf Details oder Erkenntnisse auf Benutzerebene zugreifen. Im Microsoft 365 Admin Center für die beiden Berichte wird zwischen aggregierten Daten auf Mandantenebene und Details auf Benutzerebene unterschieden. Diese Rolle bietet eine zusätzliche Sicherheitsebene für personenbezogene Daten, die von Kunden und Rechtsabteilungen angefordert werden.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -1872,20 +1911,20 @@ Benutzer mit dieser Rolle können Benutzer erstellen und alle Aspekte von Benutz
 > | microsoft.directory/contacts/basic/update | Aktualisieren grundlegender Eigenschaften für Kontakte |
 > | microsoft.directory/entitlementManagement/allProperties/allTasks | Erstellen und Löschen von Ressourcen sowie Lesen und Aktualisieren aller Eigenschaften in der Azure AD-Berechtigungsverwaltung |
 > | microsoft.directory/groups/assignLicense | Zuweisen von Produktlizenzen zu Gruppen für die gruppenbasierte Lizenzierung |
-> | microsoft.directory/groups/create | Erstellen von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/delete | Löschen von Gruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
-> | microsoft.directory/groups/hiddenMembers/read | Lesen ausgeblendeter Mitglieder einer Gruppe |
+> | microsoft.directory/groups/create | Erstellen von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/delete | Löschen von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/hiddenMembers/read | Lesen der ausgeblendeten Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen eingeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/reprocessLicenseAssignment | Erneutes Verarbeiten von Lizenzzuweisungen für die gruppenbasierte Lizenzierung |
 > | microsoft.directory/groups/restore | Wiederherstellen gelöschter Gruppen |
-> | microsoft.directory/groups/basic/update | Aktualisieren grundlegender Eigenschaften für Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/classification/update | Aktualisieren der Klassifizierungseigenschaft von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/dynamicMembershipRule/update | Aktualisieren der Regel für die dynamische Mitgliedschaft von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/groups/groupType/update | Aktualisieren der groupType-Eigenschaft für eine Gruppe |
-> | microsoft.directory/groups/members/update | Aktualisieren der Mitglieder von Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/basic/update | Aktualisieren grundlegender Eigenschaften von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/classification/update | Aktualisieren der Klassifizierungseigenschaft von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/dynamicMembershipRule/update | Aktualisieren der Regel für eine dynamische Mitgliedschaft für Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/groupType/update | Aktualisieren von Eigenschaften, die sich auf den Gruppentyp von Sicherheitsgruppen und Microsoft 365-Gruppen auswirken (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/onPremWriteBack/update | Aktualisieren von Azure Active Directory-Gruppen, die mit Azure AD Connect in die lokale Umgebung zurückgeschrieben werden sollen |
-> | microsoft.directory/groups/owners/update | Aktualisieren der Besitzer von Gruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
+> | microsoft.directory/groups/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups/settings/update | Aktualisieren von Gruppeneinstellungen |
-> | microsoft.directory/groups/visibility/update | Aktualisieren der visibility-Eigenschaft von Gruppen |
+> | microsoft.directory/groups/visibility/update | Aktualisieren der visibility-Eigenschaft von Sicherheitsgruppen und Microsoft 365-Gruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Erstellen und Löschen von OAuth 2.0-Berechtigungszuweisungen und Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Aktualisieren von Rollenzuweisungen für Dienstprinzipale |
 > | microsoft.directory/users/assignLicense | Verwalten von Benutzerlizenzen |
@@ -1970,7 +2009,8 @@ Kennwortadministrator | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_m
 Privilegierter Authentifizierungsadministrator | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 Administrator für privilegierte Rollen | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 Meldet Reader | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-Benutzer (keine Administratorrolle) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Benutzer<br/>(keine Administratorrolle) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Benutzer<br/>(keine Administratorrolle, aber Mitglied einer Gruppe, der Rollen zugewiesen werden können) | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 Benutzeradministrator | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Leseberechtigter für Berichte mit Nutzungszusammenfassung | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 

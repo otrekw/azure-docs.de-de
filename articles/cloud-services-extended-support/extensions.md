@@ -8,16 +8,22 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 58377252e163894cdfee83d9c68146a9131f94c5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: c9ee7e475957ca41c9094cab3b149f53e48a3764
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288776"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900903"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>Erweiterungen für Cloud Services (erweiterter Support)
 
-Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungstasks für Rollen nach der Bereitstellung bereitstellen. Beispielsweise können Sie eine Remotedesktopverbindung in Ihrer Rolle während der Bereitstellung von Cloud Service (erweiterter Support) mithilfe der Remotedesktoperweiterung aktivieren.  
+Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungstasks für Rollen nach der Bereitstellung bereitstellen. Beispielsweise können Sie eine Remotedesktopverbindung in Ihrer Rolle während der Bereitstellung von Cloud Service (erweiterter Support) mithilfe der Remotedesktoperweiterung aktivieren. 
+
+## <a name="key-vault-extension"></a>Key Vault-Erweiterung
+
+Die Key Vault-VM-Erweiterung ermöglicht die automatische Aktualisierung von Zertifikaten, die in einem Azure Key Vault gespeichert sind. Hierbei überwacht die Erweiterung eine Liste mit beobachteten Zertifikaten, die in Schlüsseltresoren gespeichert sind. Erkennt sie eine Änderung, werden die entsprechenden Zertifikate abgerufen und installiert. Sie ermöglicht auch das regions- bzw. abonnementübergreifende Verweisen auf Zertifikate für den Clouddienst (erweiterter Support).
+
+Weitere Informationen finden Sie unter [Konfigurieren der Schlüsseltresorerweiterung für den Clouddienst (erweiterter Support)](https://docs.microsoft.com/azure/cloud-services-extended-support/enable-key-vault-virtual-machine).
 
 ## <a name="remote-desktop-extension"></a>Remotedesktoperweiterung
 

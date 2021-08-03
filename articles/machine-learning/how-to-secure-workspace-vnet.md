@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 03/17/2021
+ms.date: 06/10/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 32893a29b0fa6a22ca0b9d9a64281f6fb5df1cae
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 668584c7c254c1d1f200050154256621ba220b5a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888618"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111981798"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Schützen eines Azure Machine Learning-Arbeitsbereichs mit virtuellen Netzwerken
 
@@ -56,8 +56,8 @@ Azure Private Link ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem A
 
 Weitere Informationen zum Einrichten eines Private Link-Arbeitsbereichs finden Sie unter [Konfigurieren von Azure Private Link für einen Azure Machine Learning-Arbeitsbereich (Vorschauversion)](how-to-configure-private-link.md).
 
-> [!Warning]
-> Wenn Sie einen Arbeitsbereich mit privaten Endpunkten sichern, wird die End-to-End-Sicherheit allein nicht sichergestellt. Sie müssen die Schritte im restlichen Artikel und in der VNET-Serie ausführen, um einzelne Komponenten Ihrer Lösung zu sichern.
+> [!WARNING]
+> Wenn Sie einen Arbeitsbereich mit privaten Endpunkten sichern, wird die End-to-End-Sicherheit allein nicht sichergestellt. Sie müssen die Schritte im restlichen Artikel und in der VNET-Serie ausführen, um einzelne Komponenten Ihrer Lösung zu sichern. Wenn Sie z. B. einen privaten Endpunkt für den Arbeitsbereich verwenden, ihr Azure Storage-Konto sich jedoch nicht hinter dem VNet befindet, verwendet der Datenverkehr zwischen dem Arbeitsbereich und dem Speicher das VNet nicht zur Sicherung.
 
 ## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Schützen von Azure-Speicherkonten mit Dienstendpunkten
 
@@ -94,6 +94,9 @@ Führen Sie die folgenden Schritte aus, um ein Azure-Speicherkonto für den Arbe
 
    [![Der Bereich „Firewalls und virtuelle Netzwerke“ im Azure-Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
+> [!TIP]
+> Wenn Sie einen Dienstendpunkt verwenden, können Sie auch den öffentlichen Zugriff deaktivieren. Weitere Informationen finden Sie unter [Öffentlichen Lesezugriff verweigern](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account).
+
 ## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Schützen von Azure-Speicherkonten mit privaten Endpunkten
 
 Azure Machine Learning unterstützt Speicherkonten, die so konfiguriert sind, dass sie Dienstendpunkte oder private Endpunkte verwenden. Wenn das Speicherkonto private Endpunkte verwendet, müssen Sie zwei private Endpunkte für Ihr Standardspeicherkonto konfigurieren:
@@ -106,6 +109,8 @@ Wenn Sie einen privaten Endpunkt für ein Speicherkonto konfigurieren möchten, 
 
 Weitere Informationen finden Sie unter [Verwenden privater Endpunkte für Azure Storage](../storage/common/storage-private-endpoints.md).
 
+> [!TIP]
+> Wenn Sie einen privaten Endpunkt verwenden, können Sie auch den öffentlichen Zugriff deaktivieren. Weitere Informationen finden Sie unter [Öffentlichen Lesezugriff verweigern](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account).
 ## <a name="secure-datastores-and-datasets"></a>Schützen von Datenspeichern und Datasets
 
 In diesem Abschnitt erfahren Sie, wie Sie Datenspeicher und Datasets im SDK mit einem virtuellen Netzwerk verwenden. Weitere Informationen zu Studio finden Sie im Abschnitt [Verwenden von Azure Machine Learning Studio in einem virtuellen Azure-Netzwerk](how-to-enable-studio-virtual-network.md).
@@ -238,6 +243,8 @@ Sind diese Anforderungen erfüllt, führen Sie die folgenden Schritte zum Aktivi
     
     Weitere Informationen finden Sie in der Referenz zur [update()](/python/api/azureml-core/azureml.core.workspace.workspace#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-)-Methode.
 
+> [!TIP]
+> Wenn sich ACR hinter einem VNet befindet, können Sie auch [den öffentlichen Zugriff darauf deaktivieren](../container-registry/container-registry-access-selected-networks.md#disable-public-network-access).
 ## <a name="next-steps"></a>Nächste Schritte
 
 Dieser Artikel ist der zweite Teil einer fünfteiligen Serie zu virtuellen Netzwerken. Weitere Informationen zum Schützen eines virtuellen Netzwerks finden Sie in den verbleibenden Artikeln:

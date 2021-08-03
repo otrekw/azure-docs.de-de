@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b60b447d8302b89813ca462c3220603ef926eb26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50bf5f3188728db41f74b6fefe5946ef2127efe3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102631182"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062306"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
@@ -258,43 +258,46 @@ Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemen
 
 Im Folgenden finden Sie die IDs für eine Inhaltsdefinition mit der ID `api.phonefactor` und einem [technischen PhoneFactor-Profil](phone-factor-technical-profile.md).
 
-| id | Standardwert |
-| -- | ------------- |
-| **button_verify** | Rückruf |
-| **country_code_label** | Landesvorwahl |
-| **cancel_message** | Der Benutzer hat die mehrstufige Authentifizierung abgebrochen. |
-| **text_button_send_second_code** | Neuen Code senden |
-| **code_pattern** | \\d{6} |
-| **intro_mixed** | Bei uns ist die folgende Nummer für Sie hinterlegt. Wir können Ihnen einen Code per SMS senden oder Sie anrufen, um Sie zu authentifizieren. |
-| **intro_mixed_p** | Bei uns sind die folgenden Nummern für Sie hinterlegt. Wählen Sie eine Nummer aus, an die wir per Telefon oder SMS einen Code senden können, um Sie zu authentifizieren. |
-| **button_verify_code** | Code überprüfen |
-| **requiredField_code** | Geben Sie den Prüfcode ein, den Sie erhalten haben. |
-| **invalid_code** | Geben Sie den 6-stelligen Code ein, den Sie erhalten haben. |
-| **button_cancel** | Abbrechen |
-| **local_number_input_placeholder_text** | Telefonnummer |
-| **button_retry** | Wiederholen |
-| **alternative_text** | Mein Telefon ist nicht verfügbar. |
-| **intro_phone_p** | Bei uns sind die folgenden Nummern für Sie hinterlegt. Wählen Sie eine Nummer aus, die wir anrufen können, um Sie zu authentifizieren. |
-| **intro_phone** | Bei uns ist die folgende Nummer für Sie hinterlegt. Wir rufen Sie an, um Sie zu authentifizieren. |
-| **enter_code_text_intro** | Geben Sie unten Ihren Prüfcode ein, oder  |
-| **intro_entry_phone** | Geben Sie unten eine Nummer ein, die wir anrufen können, um Sie zu authentifizieren. |
-| **intro_entry_sms** | Geben Sie unten eine Nummer ein, an die wir per SMS einen Code senden können, um Sie zu authentifizieren. |
-| **button_send_code** | Code senden |
-| **invalid_number** | Geben Sie eine gültige Telefonnummer ein. |
-| **intro_sms** | Bei uns ist die folgende Nummer für Sie hinterlegt. Wir senden einen Code per SMS, um Sie zu authentifizieren. |
-| **intro_entry_mixed** | Geben Sie unten eine Nummer ein, damit wir Ihnen einen Code per SMS senden oder Sie anrufen können, um Sie zu authentifizieren. |
-| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ |
-| **intro_sms_p** |Bei uns sind die folgenden Nummern für Sie hinterlegt. Wählen Sie eine Nummer aus, an die wir per SMS einen Code senden können, um Sie zu authentifizieren. |
-| **requiredField_countryCode** | Wählen Sie Ihre Landeskennzahl aus. |
-| **requiredField_number** | Geben Sie Ihre Telefonnummer ein. |
-| **country_code_input_placeholder_text** |Land oder Region |
-| **number_label** | Rufnummer |
-| **error_tryagain** | Die angegebene Telefonnummer ist besetzt oder nicht erreichbar. Überprüfen Sie die Nummer, und versuchen Sie es erneut. |
-| **error_incorrect_code** | Der eingegebene Prüfcode stimmt nicht mit unseren Daten überein. Versuchen Sie es erneut, oder fordern Sie einen neuen Code an. |
-| **countryList** | Informationen finden Sie in der [Länderliste](#phone-factor-authentication-page-example). |
-| **error_448** | Die angegebene Telefonnummer ist nicht erreichbar. |
-| **error_449** | Der Benutzer hat die zulässige Anzahl von Wiederholungsversuchen überschritten. |
-| **verification_code_input_placeholder_text** | Prüfcode |
+| id | Standardwert | Seitenlayoutversion |
+| -- | ------------- | ------ |
+| **button_verify** | Rückruf | `All` |
+| **country_code_label** | Landesvorwahl | `All` |
+| **cancel_message** | Der Benutzer hat die mehrstufige Authentifizierung abgebrochen. | `All` |
+| **text_button_send_second_code** | Neuen Code senden | `All` |
+| **code_pattern** | \\d{6} | `All` |
+| **intro_mixed** | Bei uns ist die folgende Nummer für Sie hinterlegt. Wir können Ihnen einen Code per SMS senden oder Sie anrufen, um Sie zu authentifizieren. | `All` |
+| **intro_mixed_p** | Bei uns sind die folgenden Nummern für Sie hinterlegt. Wählen Sie eine Nummer aus, an die wir per Telefon oder SMS einen Code senden können, um Sie zu authentifizieren. | `All` |
+| **button_verify_code** | Code überprüfen | `All` |
+| **requiredField_code** | Geben Sie den Prüfcode ein, den Sie erhalten haben. | `All` |
+| **invalid_code** | Geben Sie den 6-stelligen Code ein, den Sie erhalten haben. | `All` |
+| **button_cancel** | Abbrechen | `All` |
+| **local_number_input_placeholder_text** | Telefonnummer | `All` |
+| **button_retry** | Wiederholen | `All` |
+| **alternative_text** | Mein Telefon ist nicht verfügbar. | `All` |
+| **intro_phone_p** | Bei uns sind die folgenden Nummern für Sie hinterlegt. Wählen Sie eine Nummer aus, die wir anrufen können, um Sie zu authentifizieren. | `All` |
+| **intro_phone** | Bei uns ist die folgende Nummer für Sie hinterlegt. Wir rufen Sie an, um Sie zu authentifizieren. | `All` |
+| **enter_code_text_intro** | Geben Sie unten Ihren Prüfcode ein, oder  | `All` |
+| **intro_entry_phone** | Geben Sie unten eine Nummer ein, die wir anrufen können, um Sie zu authentifizieren. | `All` |
+| **intro_entry_sms** | Geben Sie unten eine Nummer ein, an die wir per SMS einen Code senden können, um Sie zu authentifizieren. | `All` |
+| **button_send_code** | Code senden | `All` |
+| **invalid_number** | Geben Sie eine gültige Telefonnummer ein. | `All` |
+| **intro_sms** | Bei uns ist die folgende Nummer für Sie hinterlegt. Wir senden einen Code per SMS, um Sie zu authentifizieren. | `All` |
+| **intro_entry_mixed** | Geben Sie unten eine Nummer ein, damit wir Ihnen einen Code per SMS senden oder Sie anrufen können, um Sie zu authentifizieren. | `All` |
+| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ | `All` |
+| **intro_sms_p** |Bei uns sind die folgenden Nummern für Sie hinterlegt. Wählen Sie eine Nummer aus, an die wir per SMS einen Code senden können, um Sie zu authentifizieren. | `All` |
+| **requiredField_countryCode** | Wählen Sie Ihre Landeskennzahl aus. | `All` |
+| **requiredField_number** | Geben Sie Ihre Telefonnummer ein. | `All` |
+| **country_code_input_placeholder_text** |Land oder Region | `All` |
+| **number_label** | Rufnummer | `All` |
+| **error_tryagain** | Die angegebene Telefonnummer ist besetzt oder nicht erreichbar. Überprüfen Sie die Nummer, und versuchen Sie es erneut. | `All` |
+| **error_sms_throttled** | Sie haben das Limit für die Anzahl von Textnachrichten erreicht. Versuchen Sie es in Kürze noch mal. | `>= 1.2.3` |
+| **error_phone_throttled** | Sie haben das Limit für die Anzahl von Aufrufversuchen erreicht. Versuchen Sie es in Kürze noch mal. | `>= 1.2.3` |
+| **error_throttled** | Sie haben das Limit für die Anzahl von Überprüfungsversuchen erreicht. Versuchen Sie es in Kürze noch mal. | `>= 1.2.3` |
+| **error_incorrect_code** | Der eingegebene Prüfcode stimmt nicht mit unseren Daten überein. Versuchen Sie es erneut, oder fordern Sie einen neuen Code an. | `All` |
+| **countryList** | Informationen finden Sie in der [Länderliste](#phone-factor-authentication-page-example). | `All` |
+| **error_448** | Die angegebene Telefonnummer ist nicht erreichbar. | `All` |
+| **error_449** | Der Benutzer hat die zulässige Anzahl von Wiederholungsversuchen überschritten. | `All` |
+| **verification_code_input_placeholder_text** | Prüfcode | `All` |
 
 Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemente auf der MFA-Registrierungsseite:
 
@@ -339,6 +342,9 @@ Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemen
     <LocalizedString ElementType="UxElement" StringId="country_code_input_placeholder_text">Country or region</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="number_label">Phone Number</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="error_tryagain">The phone number you provided is busy or unavailable. Please check the number and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_sms_throttled">You hit the limit on the number of text messages. Try again shortly.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_phone_throttled">You hit the limit on the number of call attempts. Try again shortly.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_throttled">You hit the limit on the number of verification attempts. Try again shortly.</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="error_incorrect_code">The verification code you have entered does not match our records. Please try again, or request a new code.</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="countryList">{"DEFAULT":"Country/Region","AF":"Afghanistan","AX":"Åland Islands","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BQ":"Bonaire","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","VG":"British Virgin Islands","BN":"Brunei","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","CV":"Cabo Verde","KH":"Cambodia","CM":"Cameroon","CA":"Canada","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo (DRC)","CK":"Cook Islands","CR":"Costa Rica","CI":"Côte d'Ivoire","HR":"Croatia","CU":"Cuba","CW":"Curaçao","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","HN":"Honduras","HK":"Hong Kong SAR","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KR":"Korea","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Laos","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao SAR","MK":"North Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Authority","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn Islands","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Réunion","RO":"Romania","RU":"Russia","RW":"Rwanda","BL":"Saint Barthélemy","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","ST":"São Tomé and Príncipe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SX":"Sint Maarten","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and South Sandwich Islands","SS":"South Sudan","ES":"Spain","LK":"Sri Lanka","SH":"St Helena, Ascension, Tristan da Cunha","SD":"Sudan","SR":"Suriname","SJ":"Svalbard","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syria","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UM":"U.S. Outlying Islands","VI":"U.S. Virgin Islands","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VA":"Vatican City","VE":"Venezuela","VN":"Vietnam","WF":"Wallis and Futuna","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"}</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="error_448">The phone number you provided is unreachable.</LocalizedString>

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 05/24/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f451d08dfbde643d91705f54296e9757a51c9d88
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 81bdc8550f57a7c1c4992825cd231a9bb3cad4ce
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798392"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457474"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Einrichten eines Kennwortzurücksetzungsflows in Azure Active Directory B2C
 
@@ -28,8 +28,13 @@ ms.locfileid: "104798392"
 
 Im Rahmen des [Registrierungs- und Anmeldeflows](add-sign-up-and-sign-in-policy.md) können Benutzer ihr eigenes Kennwort über den Link **Kennwort vergessen?** zurücksetzen. Der Kennwortzurücksetzungsflow umfasst folgende Schritte:
 
-1. Der Benutzer klickt auf der Registrierungs- und Anmeldeseite auf den Link **Kennwort vergessen?** . Daraufhin wird von Azure AD B2C der Kennwortzurücksetzungsflow initiiert. 
-2. Der Benutzer gibt seine E-Mail-Adresse an und bestätigt sie mithilfe einer Einmalkennung mit begrenzter Gültigkeitsdauer.
+1. Der Benutzer klickt auf der Registrierungs- und Anmeldeseite auf den Link **Kennwort vergessen?** . Daraufhin wird von Azure AD B2C der Kennwortzurücksetzungsflow initiiert.
+2. Der Benutzer gibt seine E-Mail-Adresse ein und wählt dann den **Prüfcode senden** aus. Das Azure AD B2C sendet dem Benutzer dann einen Überprüfungscode.
+
+* Der Benutzer muss das Postfach öffnen und den Überprüfungscode kopieren. Der Benutzer gibt dann den Überprüfungscode auf der Seite Azure AD B2C Kennwortzurücksetzung ein und wählt die Option **Code überprüfen** aus.
+
+> [!NOTE]
+> Nachdem die E-Mail überprüft wurde, kann der Benutzer weiterhin die Option **E-Mail ändern** auswählen, die andere E-Mail eingeben und die E-Mail-Überprüfung von Anfang an wiederholen.
 3. Anschließend kann der Benutzer ein neues Kennwort eingeben.
 
 ![Kennwortzurücksetzungsflow](./media/add-password-reset-policy/password-reset-flow.png)
@@ -61,17 +66,17 @@ So aktivieren Sie die Self-Service-Kennwortzurücksetzung für den Benutzerflow 
 1. Wählen Sie **Benutzerflows** aus.
 1. Wählen Sie einen Benutzerflow für die Registrierung oder Anmeldung (vom Typ **empfohlen**) aus, den Sie anpassen möchten.
 1. Wählen Sie im Menü auf der linken Seite unter **Einstellungen** die Option **Eigenschaften** aus.
-1. Wählen Sie unter **Kennwortkomplexität** die Option **Self-Service-Kennwortzurücksetzung** aus.
+1. Wählen Sie unter der Registerkarte **Kennwortkonfiguration** die Option **Self-Service-Kennwortzurücksetzung** aus.
 1. Wählen Sie **Speichern** aus.
 1. Wählen Sie im linken Menü unter **Anpassen** die Option **Seitenlayouts** aus.
-1. Wählen Sie unter **Seitenlayoutversion** mindestens **2.1.2 – aktuell** aus.
+1. Wählen Sie unter der Registerkarte **Seitenlayout-Version** die Version **2.1.3** oder höher aus.
 1. Wählen Sie **Speichern** aus.
 
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
-In den folgenden Abschnitten erfahren Sie, wie Sie einer benutzerdefinierten Richtlinie eine Self-Service-Kennwortfunktion hinzufügen. Das Beispiel basiert auf den Richtliniendateien aus dem [Starter Pack für benutzerdefinierte Richtlinien](./custom-policy-get-started.md). 
+In den folgenden Abschnitten erfahren Sie, wie Sie einer benutzerdefinierten Richtlinie eine Self-Service-Kennwortfunktion hinzufügen. Das Beispiel basiert auf den Richtliniendateien aus dem [Starter Pack für benutzerdefinierte Richtlinien](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack). 
 
 > [!TIP]
 > Ein umfassendes Beispiel für die Richtlinie zur Registrierung oder Anmeldung mit Kennwortzurücksetzung finden Sie auf [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/embedded-password-reset).
@@ -316,7 +321,7 @@ Damit Benutzer Ihrer Anwendung ihr eigenes Kennwort zurücksetzten können, erst
 
 ### <a name="create-a-password-reset-policy"></a>Erstellen einer Richtlinie zur Kennwortrücksetzung
 
-Benutzerdefinierte Richtlinien bestehen aus mehreren XML-Dateien, die Sie in den Azure AD B2C-Mandanten hochladen, um User Journeys zu definieren. Es sind Starter Packs mit mehreren integrierten Richtlinien verfügbar, z. B. für die Registrierung und Anmeldung, für die Kennwortzurücksetzung und für die Profilbearbeitung. Weitere Informationen finden Sie unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md).
+Benutzerdefinierte Richtlinien bestehen aus mehreren XML-Dateien, die Sie in den Azure AD B2C-Mandanten hochladen, um User Journeys zu definieren. Es sind Starter Packs mit mehreren integrierten Richtlinien verfügbar, z. B. für die Registrierung und Anmeldung, für die Kennwortzurücksetzung und für die Profilbearbeitung. Weitere Informationen finden Sie unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 
 ::: zone-end
 

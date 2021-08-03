@@ -1,17 +1,17 @@
 ---
-title: Installieren von FSLogix-Anwendungscontainern für Microsoft Office in Windows Virtual Desktop – Azure
-description: Verwenden des Regel-Editors für Apps zum Erstellen eines FSLogix-Anwendungscontainers mit Office in Windows Virtual Desktop.
+title: Installieren von FSLogix-Anwendungscontainern für Microsoft Office in Azure Virtual Desktop – Azure
+description: Verwenden des Regel-Editors für Apps zum Erstellen eines FSLogix-Anwendungscontainers mit Office in Azure Virtual Desktop.
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a144adcfbf6c7cefc6b946f95bdb734868de801f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 4e145e8ff578d7e8663e45aa550906a1594f5228
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446807"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757659"
 ---
 # <a name="install-microsoft-office-using-fslogix-application-containers"></a>Installieren von Microsoft Office mithilfe von FSLogix-Anwendungscontainern
 
@@ -22,7 +22,7 @@ Die Verwendung eines FSLogix-App-Containers kann aus folgenden Gründen die Inst
 - Das Auslagern der Office-Apps in einen App-Container reduziert die Anforderungen an die Größe des Laufwerks „C“.
 - Momentaufnahmen oder VM-Sicherungen weniger Ressourcen.
 - Mit einer automatisierten Pipeline durch das Aktualisieren eines einzelnen Images wird das Aktualisieren der VMs vereinfacht.
-- Sie benötigen nur ein Image, um Office (und andere Anwendungen) auf allen VMs in der Bereitstellung von Windows Virtual Desktop zu installieren.
+- Sie benötigen nur ein Image, um Office (und andere Anwendungen) auf allen VMs in der Bereitstellung von Azure Virtual Desktop zu installieren.
 
 In diesem Artikel erfahren Sie, wie Sie einen FSLogix-Anwendungscontainer für Office einrichten.
 
@@ -40,7 +40,7 @@ Zum Einrichten des Regel-Editors benötigen Sie Folgendes:
 Um Office auf dem VHD- oder VHDX-Image zu installieren, aktivieren Sie das Remotedesktopprotokoll auf Ihrer VM, und befolgen Sie dann die Anweisungen unter [Installieren von Office für ein VHD-Masterimage](install-office-on-wvd-master-image.md). Stellen Sie bei der Installation sicher, dass Sie [die richtigen Lizenzen](overview.md#requirements) verwenden.
 
 >[!NOTE]
->Für Windows Virtual Desktop ist die Aktivierung gemeinsam genutzter Computer (Shared Computer Activation, SCA) erforderlich.
+>Für Azure Virtual Desktop ist die Aktivierung gemeinsam genutzter Computer (Shared Computer Activation, SCA) erforderlich.
 
 ## <a name="install-fslogix"></a>Installieren von FSLogix
 

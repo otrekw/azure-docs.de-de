@@ -3,33 +3,26 @@ title: Bereitstellen eines Clusters für Verfügbarkeitszonen
 description: Erfahren Sie, wie Sie einen Azure Service Fabric-Cluster über Verfügbarkeitszonen hinweg bereitstellen.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 04/16/2021
+ms.date: 05/24/2021
 ms.author: pepogors
-ms.openlocfilehash: 60c9a378c1ac6e7c16bac05a3f6ee0baf47a0076
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 347fd606e1c91d583ec81f17d9203bbe46020b57
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749391"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473154"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
 
 Verfügbarkeitszonen in Azure sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
 
-Zur Unterstützung von Clustern, die sich über mehrere Verfügbarkeitszonen erstrecken, bietet Azure Service Fabric Knotentypen, die an bestimmte Zonen angeheftet sind. Verfügbarkeitszonen sind nur in ausgewählten Regionen verfügbar. Weitere Informationen finden Sie in der [Übersicht über Verfügbarkeitszonen](../availability-zones/az-overview.md).
+Zur Unterstützung von Clustern, die sich über die Verfügbarkeitszonen erstrecken, bietet Azure Service Fabric die beiden Konfigurationsmethoden, die im folgenden Artikel beschrieben werden. Verfügbarkeitszonen sind nur in ausgewählten Regionen verfügbar. Weitere Informationen finden Sie in der [Übersicht über Verfügbarkeitszonen](../availability-zones/az-overview.md).
 
 Beispielvorlagen sind auf der Seite mit [verfügbarkeitszonenübergreifenden Service Fabric-Vorlagen](https://github.com/Azure-Samples/service-fabric-cluster-templates) verfügbar.
 
-## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>Empfohlene Topologie für den primären Knotentyp von Azure Service Fabric-Clustern, die sich über Verfügbarkeitszonen erstrecken
-
-Um einen Service Fabric-Cluster über mehrere Verfügbarkeitszonen hinweg zu verteilen, müssen Sie in jeder von der Region unterstützten Verfügbarkeitszone einen primären Knotentyp erstellen. Dadurch werden Startknoten gleichmäßig auf jeden der primären Knotentypen verteilt.
-
-Für die empfohlene Topologie für den primären Knotentyp werden die folgenden Ressourcen benötigt:
+## <a name="recommended-topology-for-spanning-a-primary-node-type-across-availability-zones"></a>Die empfohlene Topologie für das Verteilen eines primären Knotentyps über die Verfügbarkeitszonen
 
 * Die Clusterzuverlässigkeitsstufe muss auf `Platinum` festgelegt werden
-* Es müssen drei Knotentypen vorhanden sein, die als primäre Knotentypen markiert sind
-  * Jeder Knotentyp sollte einer eigenen VM-Skalierungsgruppe zugeordnet sein, die sich in einer anderen Zone befindet.
-  * Jede VM-Skalierungsgruppe sollte mindestens fünf Knoten aufweisen (Dauerhaftigkeit „Silver“ (Silber)).
 * Eine einzelne Ressource für öffentliche IP-Adressen mit Standard-SKU
 * Eine einzelne Lastenausgleichsressource mit Standard-SKU
 * Eine Netzwerksicherheitsgruppe (Network Security Group, NSG), auf die das Subnetz verweist, in dem Sie Ihre VM-Skalierungsgruppen bereitstellen
@@ -37,15 +30,11 @@ Für die empfohlene Topologie für den primären Knotentyp werden die folgenden 
 >[!NOTE]
 >Die Eigenschaft für die einzelne Platzierungsgruppe der VM-Skalierungsgruppe muss auf `true` festgelegt werden.
 
-Das folgende Diagramm zeigt die Architektur der Azure Service Fabric-Verfügbarkeitszonen:
-
-![Diagramm der Architektur der Azure Service Fabric-Verfügbarkeitszone][sf-architecture]
-
 Die folgende Beispielknotenliste zeigt FD/UD-Formate in einer zonenübergreifenden VM-Skalierungsgruppe:
 
 ![Screenshot einer Beispielknotenliste mit FD/UD-Formaten in einer zonenübergreifenden VM-Skalierungsgruppe.][sf-multi-az-nodes]
 
-## <a name="distribution-of-service-replicas-across-zones"></a>Zonenübergreifende Verteilung von Dienstreplikaten
+### <a name="distribution-of-service-replicas-across-zones"></a>Zonenübergreifende Verteilung von Dienstreplikaten
 
 Wenn ein Dienst für Knotentypen bereitgestellt wird, die sich über mehrere Verfügbarkeitszonen erstrecken, werden die Replikate in verschiedenen Zonen platziert. Die Fehlerdomänen für die Knoten dieser Knotentypen werden mit den Zoneninformationen konfiguriert (FD = fd:/zone1/1 usw.). Beispiel: Bei fünf Replikaten oder Dienstinstanzen lautet die Verteilung 2-2-1, und die Laufzeit versucht, die Replikate bzw. Instanzen gleichmäßig auf die Verfügbarkeitszonen zu verteilen.
 
@@ -53,7 +42,7 @@ Wenn ein Dienst für Knotentypen bereitgestellt wird, die sich über mehrere Ver
 
 Zustandsbehaftete Benutzerdienste, die auf den Knotentypen innerhalb der Verfügbarkeitszonen bereitstellt werden, sollten wie folgt konfiguriert werden: Replikatanzahl mit Ziel = 9, Minimum = 5. Diese Konfiguration unterstützt den Dienst auch dann, wenn eine Zone ausfällt, da in den anderen beiden Zonen weiterhin sechs Replikate verfügbar sind. Ein Anwendungsupgrade ist in diesem Szenario ebenfalls erfolgreich.
 
-## <a name="cluster-reliabilitylevel"></a>Clusterzuverlässigkeitsstufe
+### <a name="cluster-reliabilitylevel"></a>Clusterzuverlässigkeitsstufe
 
 Mit diesem Wert werden die Anzahl von Startknoten im Cluster sowie die Replikatgröße der Systemdienste definiert. Ein verfügbarkeitszonenübergreifendes Setup verfügt über eine größere Anzahl von Knoten, die für Zonenresilienz auf mehrere Zonen verteilt sind.
   
@@ -64,6 +53,10 @@ Mit einem höheren `ReliabilityLevel`-Wert wird sichergestellt, dass mehr Startk
 Wenn eine Zone ausfällt, werden alle Knoten und Dienstreplikate für diese Zone als ausgefallen angezeigt. Da in den anderen Zonen Replikate vorhanden sind, ist der Dienst jedoch weiterhin verfügbar. Für primäre Replikate wird ein Failover auf die funktionierenden Zonen durchgeführt. Für die Dienste wird ein Warnungszustand angezeigt, da die Anzahl von Zielreplikaten noch nicht erreicht wurde und die Anzahl von VMs immer noch höher ist als der Mindestwert der Zielreplikate.
 
 Der Service Fabric-Lastenausgleich stellt in den Arbeitszonen die erforderliche Anzahl von Zielreplikaten bereit. An diesem Punkt erscheinen die Dienste fehlerfrei. Wenn die ausgefallene Zone wieder verfügbar ist, verteilt die Lastenausgleichsressource alle Dienstreplikate gleichmäßig auf die Zonen.
+
+## <a name="upcoming-optimizations"></a>Die Anstehenden Optimierungen
+* Um zuverlässige Infrastruktur-Updates bereitzustellen, erfordert Service Fabric, dass die Dauerhaftigkeit der virtuellen Computer-Skalierungsgruppe mindestens auf Silber festgelegt wird. Dadurch können die zugrunde liegende virtuellen Computer-Skalierungsgruppe und die Service Fabric-Laufzeit zuverlässige Updates bereitstellen. Dazu muss jede Zone mindestens 5 virtuelle Computer haben. Wir arbeiten daran, diese Anforderung auf 3 und 2 virtuelle Computer pro Zone für die primären und nicht-primären Knotentypen zu reduzieren.
+* Alle unten genannten Konfigurationen und zukünftigen Aufgaben bieten eine direkte Migration zu den Kunden, bei denen derselbe Cluster aktualisiert werden kann, um die neue Konfiguration zu verwenden. Dazu werden neue Knotentypen hinzugefügt und die alten eingestellt.
 
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 
@@ -175,6 +168,130 @@ Die Ressource für öffentlichen IP-Adressen und die Lastenausgleichsressource m
 
 >[!IMPORTANT]
 > Für jeden Knotentyp in einem Service Fabric-Cluster, der eine Lastenausgleichsressource mit Standard-SKU verwendet, muss eine Regel definiert werden, die ausgehenden Datenverkehr an Port 443 zulässt. Dieser Schritt ist erforderlich, um die Clustereinrichtung abzuschließen. Bei Bereitstellungen ohne diese Regel tritt ein Fehler auf.
+
+
+## <a name="1-preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set"></a>1. (Vorschau) Aktivieren Sie mehrere Verfügbarkeitszonen in einer einzelnen virtuellen Computer-Skalierungsgruppe
+
+Mit dieser Lösung können die Benutzer drei Verfügbarkeitszonen in demselben Knotentyp umfassen. Dies ist die empfohlene Bereitstellungstopologie, da sie eine Bereitstellung über die Verfügbarkeitszonen hinweg ermöglicht, während sie eine einzelne virtuelle Computer-Skalierungsgruppe verwaltet.
+
+> [!NOTE]
+> Da dieses Feature sich derzeit in der Vorschauphase befindet, wird es in Produktionsszenarien aktuell jedoch nicht unterstützt.
+
+Eine vollständige Beispielvorlage ist auf [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure) verfügbar.
+
+![Darstellung der Architektur mit Azure Service Fabric-Verfügbarkeitszonen.][sf-multi-az-arch]
+
+### <a name="configuring-zones-on-a-virtual-machine-scale-set"></a>Konfigurieren von Zonen für eine VM-Skalierungsgruppe
+
+Um Zonen für eine VM-Skalierungsgruppe zu aktivieren, fügen Sie die folgenden drei Werte in der VM-Skalierungsgruppenressource hinzu:
+
+* Der erste Wert ist die `zones`-Eigenschaft, die angibt, welche Verfügbarkeitszonen in der VM-Skalierungsgruppe vorhanden sind.
+* Der zweite Wert ist die Eigenschaft `singlePlacementGroup`, die auf `true` festgelegt werden muss. Die Skalierungsgruppe, die sich über drei Verfügbarkeitszonen erstreckt, kann selbst mit der Einstellung `singlePlacementGroup = true` auf bis zu 300 VMs hochskaliert werden.
+* Der dritte Wert ist `zoneBalance`, der einen strikten Zonenausgleich sicherstellt. Dieser Wert sollte auf `true` festgelegt werden. Dadurch wird sichergestellt, dass die zonenübergreifenden VM-Verteilungen nicht unausgeglichen sind. Beim Ausfall einer Zone verfügen die anderen Zonen also über genügend VMs für einen unterbrechungsfreien Betrieb des Clusters.
+
+  Ein Cluster mit einer unausgeglichenen VM-Verteilung ist in einem Szenario mit Zonenausfall möglicherweise nicht länger verfügbar, da diese Zone gegebenenfalls über die meisten VMs verfügt. Eine unausgeglichene zonenübergreifende VM-Verteilung führt außerdem zu Problemen bei der Dienstplatzierung sowie dazu, dass Infrastrukturupdates nicht erfolgreich abgeschlossen werden können. Weitere Informationen finden Sie unter [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+
+Die Außerkraftsetzungen `FaultDomain` und `UpgradeDomain` müssen nicht konfiguriert werden.
+
+```json
+{
+    "apiVersion": "2018-10-01",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+    "name": "[parameters('vmNodeType1Name')]",
+    "location": "[parameters('computeLocation')]",
+    "zones": ["1", "2", "3"],
+    "properties": {
+        "singlePlacementGroup": "true",
+        "zoneBalance": true
+    }
+}
+```
+
+>[!NOTE]
+>
+> * Service Fabric-Cluster sollten über mindestens einen primären Knotentyp verfügen. Die Dauerhaftigkeitsstufe primärer Knotentypen sollte auf „Silver“ (Silber) oder höher festgelegt werden.
+> * Die Verfügbarkeitszone, die VM-Skalierungsgruppen umfasst, sollte mit mindestens drei Verfügbarkeitszonen konfiguriert werden (unabhängig von der Dauerhaftigkeitsstufe).
+> * Verfügbarkeitszonen, die VM-Skalierungsgruppen mit der Dauerhaftigkeit „Silver“ (Silber) oder höher umfassen, sollten über mindestens 15 VMs verfügen.
+> * Verfügbarkeitszonen, die VM-Skalierungsgruppen mit der Dauerhaftigkeit „Bronze“ umfassen, sollten über mindestens sechs VMs verfügen.
+
+### <a name="enable-support-for-multiple-zones-in-the-service-fabric-node-type"></a>Aktivieren der Unterstützung für mehrere Zonen im Service Fabric-Knotentyp
+
+Der Service Fabric-Knotentyp muss aktiviert werden, um mehrere Verfügbarkeitszonen zu unterstützen.
+
+* Der erste Wert lautet `multipleAvailabilityZones`. Dieser Wert sollte für den Knotentyp auf `true` gesetzt werden.
+* Der zweite, optionale Wert ist `sfZonalUpgradeMode`. Diese Eigenschaft kann nicht geändert werden, wenn im Cluster bereits ein Knotentyp mit mehreren Verfügbarkeitszonen vorhanden ist.
+  Diese Eigenschaft steuert die logische Gruppierung von VMs in Upgradedomänen.
+
+  * Bei Festlegung auf `Parallel` gilt Folgendes: VMs, die dem Knotentyp zugeordnet sind, werden in Upgradedomänen gruppiert. Die Zoneninformationen zu den fünf Upgradedomänen werden ignoriert. Mit dieser Einstellung werden die Upgradedomänen aller Zonen gleichzeitig aktualisiert. Dieser Bereitstellungsmodus ist bei Upgrades schneller, wird jedoch nicht empfohlen, da er gegen die SDP-Richtlinien verstößt, die festlegen, dass Updates jeweils in nur einer Zone angewendet werden sollten.
+  * Wird dieser Wert ausgelassen oder auf `Hierarchical` festgelegt, gilt Folgendes: VMs werden gemäß der Zonenverteilung in bis zu 15 Upgradedomänen gruppiert. Jede der drei Zonen verfügt über fünf Upgradedomänen. Dadurch wird sichergestellt, dass die Zonen nacheinander aktualisiert werden. Erst wenn der Vorgang für die fünf Upgradedomänen innerhalb der ersten Zone abgeschlossen wurde, wird mit der nächsten Zone fortgefahren. Dieser Updatevorgang bietet eine höhere Sicherheit für den Cluster und die Benutzeranwendung.
+
+  Diese Eigenschaft definiert lediglich das Upgradeverhalten für Service Fabric-Anwendungen und Codeupgrades. Upgrades der zugrunde liegenden VM-Skalierungsgruppen werden weiterhin in allen Verfügbarkeitszonen parallel ausgeführt. Diese Eigenschaft wirkt sich nicht auf die Verteilung von Upgradedomänen für Knotentypen aus, für die nicht mehrere Zonen aktiviert sind.
+* Der dritte Wert ist `vmssZonalUpgradeMode = Parallel`. Diese Eigenschaft ist obligatorisch, wenn ein Knotentyp mit mehreren Verfügbarkeitszonen hinzugefügt wird. Diese Eigenschaft definiert den Upgrademodus für die Updates der VM-Skalierungsgruppen, die in allen Verfügbarkeitszonen gleichzeitig ausgeführt werden.
+
+  Diese Eigenschaft kann derzeit nur auf „parallel“ festgelegt werden.
+
+>[!IMPORTANT]
+>Die API-Version der Service Fabric-Clusterressource sollte „2020-12-01-preview“ oder höher lauten.
+>
+>Die Clustercodeversion sollte 7.2.445 oder höher sein.
+
+```json
+{
+    "apiVersion": "2020-12-01-preview",
+    "type": "Microsoft.ServiceFabric/clusters",
+    "name": "[parameters('clusterName')]",
+    "location": "[parameters('clusterLocation')]",
+    "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
+    ],
+    "properties": {
+        "reliabilityLevel": "Platinum",
+        "SFZonalUpgradeMode": "Hierarchical",
+        "VMSSZonalUpgradeMode": "Parallel",
+        "nodeTypes": [
+          {
+                "name": "[parameters('vmNodeType0Name')]",
+                "multipleAvailabilityZones": true,
+          }
+        ]
+}
+```
+
+>[!NOTE]
+>
+> * Die Ressource für öffentliche IP-Adressen und die Lastenausgleichsressource sollten die Standard-SKU verwenden, wie zuvor in diesem Artikel beschrieben.
+> * Die Eigenschaft `multipleAvailabilityZones` kann für den Knotentyp nur beim Erstellen definiert werden. Eine spätere Änderung ist nicht möglich. Vorhandene Knotentypen können also nicht mit dieser Eigenschaft konfiguriert werden.
+> * Wenn `sfZonalUpgradeMode` ausgelassen oder auf `Hierarchical` festgelegt wird, werden die Cluster- und Anwendungsbereitstellungen langsamer, da im Cluster mehr Upgradedomänen vorhanden sind. Für die erforderliche Upgradedauer der 15 Upgradedomänen müssen angemessene Upgraderichtlinientimeouts festgelegt werden. Die Upgraderichtlinie für App und Cluster sollte aktualisiert werden, um sicherzustellen, dass die Bereitstellung nicht das Timeout von 12 Stunden überschreitet, das für die Azure-Ressourcendienstbereitstellung festgelegt ist. Das bedeutet, dass die Bereitstellung für 15 Upgradedomänen nicht länger als 12 Stunden dauern sollte (also nicht mehr als 40 Minuten pro Upgradedomäne).
+> * Legen Sie für den Cluster die Zuverlässigkeitsstufe `Platinum` fest, um sicherzustellen, dass der Cluster in einem Szenario mit einer ausgefallenen Zone weiterhin verfügbar ist.
+
+>[!TIP]
+> Es wird empfohlen, `sfZonalUpgradeMode` auf `Hierarchical` festzulegen oder diesen Wert auszulassen. Bei der Bereitstellung wird die Zonenverteilung von VMs befolgt, die sich auf eine geringere Anzahl von Replikaten oder Instanzen auswirkt und sie dadurch sicherer macht.
+> Verwenden Sie `sfZonalUpgradeMode` mit der Einstellung `Parallel`, wenn die Bereitstellungsgeschwindigkeit Priorität hat oder lediglich eine zustandslose Workload auf dem Knotentyp mit mehreren Verfügbarkeitszonen ausgeführt wird. Dies führt dazu, dass die Upgradedomänen in allen Verfügbarkeitszonen parallel aktualisiert werden.
+
+### <a name="migrate-to-the-node-type-with-multiple-availability-zones"></a>Migration zum Knotentyp mit mehreren Verfügbarkeitszonen
+
+Für jedes Migrationsszenario muss ein neuer Knotentyp hinzugefügt werden, der mehrere Verfügbarkeitszonen unterstützt. Vorhandene Knotentypen können nicht migriert werden, um mehrere Zonen zu unterstützen.
+Im Artikel [Hochskalieren des primären Knotentyps eines Service Fabric-Clusters](./service-fabric-scale-up-primary-node-type.md) sind die Schritte zum Hinzufügen eines neuen Knotentyps sowie weiterer Ressourcen beschrieben, die für den neuen Knotentyp benötigt werden (z. B. IP- und Lastenausgleichsressourcen). Außerdem wird in diesem Artikel beschrieben, wie Sie den vorhandenen Knotentyp außer Betrieb nehmen, nachdem der neue Knotentyp mit mehreren Verfügbarkeitszonen dem Cluster hinzugefügt wurde.
+
+* Die Migration von einem Knotentyp der einen grundlegenden Lastenausgleicher und IP-Ressourcen verwendet. Dieser Vorgang ist bereits in einem [nachfolgenden Unterabschnitt](#migrate-to-availability-zones-from-a-cluster-by-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) für die Lösung mit einem Knotentyp pro Verfügbarkeitszone beschrieben.
+
+  Der einzige Unterschied für den neuen Knotentyp besteht darin, dass nur eine VM-Skalierungsgruppe und ein Knotentyp für alle Verfügbarkeitszonen vorhanden sind (anstelle von einem Knotentyp pro Verfügbarkeitszone).
+* Migration von einem Knotentyp mit Lastenausgleichs- und IP-Ressourcen der Standard-SKU: Befolgen Sie die zuvor beschriebenen Schritte. Es ist jedoch nicht erforderlich, neue Lastenausgleichs-, IP- und NSG-Ressourcen hinzuzufügen. Für den neuen Knotentyp können dieselben Ressourcen wiederverwendet werden.
+
+
+## <a name="2-deploy-zones-by-pinning-one-virtual-machine-scale-set-to-each-zone"></a>2. Bereitstellen von Zonen durch das Anheften von virtuellen Computer-Skalierungsgruppen an jede Zone
+
+Das ist momentan die allgemein verfügbare Konfiguration.
+Um einen Service Fabric-Cluster über mehrere Verfügbarkeitszonen hinweg zu verteilen, müssen Sie in jeder von der Region unterstützten Verfügbarkeitszone einen primären Knotentyp erstellen. Dadurch werden Startknoten gleichmäßig auf jeden der primären Knotentypen verteilt.
+
+Die empfohlene Topologie für den primären Knotentyp erfordert folgendes:
+* Es müssen drei Knotentypen vorhanden sein, die als primäre Knotentypen markiert sind
+  * Jeder Knotentyp sollte einer eigenen VM-Skalierungsgruppe zugeordnet sein, die sich in einer anderen Zone befindet.
+  * Jede VM-Skalierungsgruppe sollte mindestens fünf Knoten aufweisen (Dauerhaftigkeit „Silver“ (Silber)).
+
+Das folgende Diagramm zeigt die Architektur der Azure Service Fabric-Verfügbarkeitszonen:
+
+![Diagramm der Architektur der Azure Service Fabric-Verfügbarkeitszone][sf-architecture]
 
 ### <a name="enable-zones-on-a-virtual-machine-scale-set"></a>Aktivieren von Zonen für VM-Skalierungsgruppen
 
@@ -366,114 +483,6 @@ Verweisen Sie in den neuen verfügbarkeitszonenübergreifenden Knotentypen, die 
    Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
  
    ```
-
-## <a name="preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set"></a>(Vorschau) Aktivieren mehrerer Verfügbarkeitszonen in einer einzelnen VM-Skalierungsgruppe
-
-In der vorherigen Lösung wird ein Knotentyp in jeder Verfügbarkeitszone verwendet. Mit der folgenden Lösung können Benutzer drei Verfügbarkeitszonen für einen einzelnen Knotentyp bereitstellen.
-
-> [!NOTE]
-> Da dieses Feature sich derzeit in der Vorschauphase befindet, wird es in Produktionsszenarien aktuell jedoch nicht unterstützt.
-
-Eine vollständige Beispielvorlage ist auf [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure) verfügbar.
-
-![Darstellung der Architektur mit Azure Service Fabric-Verfügbarkeitszonen.][sf-multi-az-arch]
-
-### <a name="configuring-zones-on-a-virtual-machine-scale-set"></a>Konfigurieren von Zonen für eine VM-Skalierungsgruppe
-
-Um Zonen für eine VM-Skalierungsgruppe zu aktivieren, fügen Sie die folgenden drei Werte in der VM-Skalierungsgruppenressource hinzu:
-
-* Der erste Wert ist die `zones`-Eigenschaft, die angibt, welche Verfügbarkeitszonen in der VM-Skalierungsgruppe vorhanden sind.
-* Der zweite Wert ist die Eigenschaft `singlePlacementGroup`, die auf `true` festgelegt werden muss. Die Skalierungsgruppe, die sich über drei Verfügbarkeitszonen erstreckt, kann selbst mit der Einstellung `singlePlacementGroup = true` auf bis zu 300 VMs hochskaliert werden.
-* Der dritte Wert ist `zoneBalance`, der einen strikten Zonenausgleich sicherstellt. Dieser Wert sollte auf `true` festgelegt werden. Dadurch wird sichergestellt, dass die zonenübergreifenden VM-Verteilungen nicht unausgeglichen sind. Beim Ausfall einer Zone verfügen die anderen Zonen also über genügend VMs für einen unterbrechungsfreien Betrieb des Clusters.
-
-  Ein Cluster mit einer unausgeglichenen VM-Verteilung ist in einem Szenario mit Zonenausfall möglicherweise nicht länger verfügbar, da diese Zone gegebenenfalls über die meisten VMs verfügt. Eine unausgeglichene zonenübergreifende VM-Verteilung führt außerdem zu Problemen bei der Dienstplatzierung sowie dazu, dass Infrastrukturupdates nicht erfolgreich abgeschlossen werden können. Weitere Informationen finden Sie unter [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
-
-Die Außerkraftsetzungen `FaultDomain` und `UpgradeDomain` müssen nicht konfiguriert werden.
-
-```json
-{
-    "apiVersion": "2018-10-01",
-    "type": "Microsoft.Compute/virtualMachineScaleSets",
-    "name": "[parameters('vmNodeType1Name')]",
-    "location": "[parameters('computeLocation')]",
-    "zones": ["1", "2", "3"],
-    "properties": {
-        "singlePlacementGroup": "true",
-        "zoneBalance": true
-    }
-}
-```
-
->[!NOTE]
->
-> * Service Fabric-Cluster sollten über mindestens einen primären Knotentyp verfügen. Die Dauerhaftigkeitsstufe primärer Knotentypen sollte auf „Silver“ (Silber) oder höher festgelegt werden.
-> * Die Verfügbarkeitszone, die VM-Skalierungsgruppen umfasst, sollte mit mindestens drei Verfügbarkeitszonen konfiguriert werden (unabhängig von der Dauerhaftigkeitsstufe).
-> * Verfügbarkeitszonen, die VM-Skalierungsgruppen mit der Dauerhaftigkeit „Silver“ (Silber) oder höher umfassen, sollten über mindestens 15 VMs verfügen.
-> * Verfügbarkeitszonen, die VM-Skalierungsgruppen mit der Dauerhaftigkeit „Bronze“ umfassen, sollten über mindestens sechs VMs verfügen.
-
-### <a name="enable-support-for-multiple-zones-in-the-service-fabric-node-type"></a>Aktivieren der Unterstützung für mehrere Zonen im Service Fabric-Knotentyp
-
-Der Service Fabric-Knotentyp muss aktiviert werden, um mehrere Verfügbarkeitszonen zu unterstützen.
-
-* Der erste Wert lautet `multipleAvailabilityZones`. Dieser Wert sollte für den Knotentyp auf `true` gesetzt werden.
-* Der zweite, optionale Wert ist `sfZonalUpgradeMode`. Diese Eigenschaft kann nicht geändert werden, wenn im Cluster bereits ein Knotentyp mit mehreren Verfügbarkeitszonen vorhanden ist.
-  Diese Eigenschaft steuert die logische Gruppierung von VMs in Upgradedomänen.
-  
-  * Bei Festlegung auf `Parallel` gilt Folgendes: VMs, die dem Knotentyp zugeordnet sind, werden in Upgradedomänen gruppiert. Die Zoneninformationen zu den fünf Upgradedomänen werden ignoriert. Mit dieser Einstellung werden die Upgradedomänen aller Zonen gleichzeitig aktualisiert. Dieser Bereitstellungsmodus ist bei Upgrades schneller, wird jedoch nicht empfohlen, da er gegen die SDP-Richtlinien verstößt, die festlegen, dass Updates jeweils in nur einer Zone angewendet werden sollten.
-  * Wird dieser Wert ausgelassen oder auf `Hierarchical` festgelegt, gilt Folgendes: VMs werden gemäß der Zonenverteilung in bis zu 15 Upgradedomänen gruppiert. Jede der drei Zonen verfügt über fünf Upgradedomänen. Dadurch wird sichergestellt, dass die Zonen nacheinander aktualisiert werden. Erst wenn der Vorgang für die fünf Upgradedomänen innerhalb der ersten Zone abgeschlossen wurde, wird mit der nächsten Zone fortgefahren. Dieser Updatevorgang bietet eine höhere Sicherheit für den Cluster und die Benutzeranwendung.
-  
-  Diese Eigenschaft definiert lediglich das Upgradeverhalten für Service Fabric-Anwendungen und Codeupgrades. Upgrades der zugrunde liegenden VM-Skalierungsgruppen werden weiterhin in allen Verfügbarkeitszonen parallel ausgeführt. Diese Eigenschaft wirkt sich nicht auf die Verteilung von Upgradedomänen für Knotentypen aus, für die nicht mehrere Zonen aktiviert sind.
-* Der dritte Wert ist `vmssZonalUpgradeMode = Parallel`. Diese Eigenschaft ist obligatorisch, wenn ein Knotentyp mit mehreren Verfügbarkeitszonen hinzugefügt wird. Diese Eigenschaft definiert den Upgrademodus für die Updates der VM-Skalierungsgruppen, die in allen Verfügbarkeitszonen gleichzeitig ausgeführt werden.
-  
-  Diese Eigenschaft kann derzeit nur auf „parallel“ festgelegt werden.
-
->[!IMPORTANT]
->Die API-Version der Service Fabric-Clusterressource sollte „2020-12-01-preview“ oder höher lauten.
->
->Die Clustercodeversion sollte 7.2.445 oder höher sein.
-
-```json
-{
-    "apiVersion": "2020-12-01-preview",
-    "type": "Microsoft.ServiceFabric/clusters",
-    "name": "[parameters('clusterName')]",
-    "location": "[parameters('clusterLocation')]",
-    "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
-    ],
-    "properties": {
-        "reliabilityLevel": "Platinum",
-        "SFZonalUpgradeMode": "Hierarchical",
-        "VMSSZonalUpgradeMode": "Parallel",
-        "nodeTypes": [
-          {
-                "name": "[parameters('vmNodeType0Name')]",
-                "multipleAvailabilityZones": true,
-          }
-        ]
-}
-```
-
->[!NOTE]
->
-> * Die Ressource für öffentliche IP-Adressen und die Lastenausgleichsressource sollten die Standard-SKU verwenden, wie zuvor in diesem Artikel beschrieben.
-> * Die Eigenschaft `multipleAvailabilityZones` kann für den Knotentyp nur beim Erstellen definiert werden. Eine spätere Änderung ist nicht möglich. Vorhandene Knotentypen können also nicht mit dieser Eigenschaft konfiguriert werden.
-> * Wenn `sfZonalUpgradeMode` ausgelassen oder auf `Hierarchical` festgelegt wird, werden die Cluster- und Anwendungsbereitstellungen langsamer, da im Cluster mehr Upgradedomänen vorhanden sind. Für die erforderliche Upgradedauer der 15 Upgradedomänen müssen angemessene Upgraderichtlinientimeouts festgelegt werden. Die Upgraderichtlinie für App und Cluster sollte aktualisiert werden, um sicherzustellen, dass die Bereitstellung nicht das Timeout von 12 Stunden überschreitet, das für die Azure-Ressourcendienstbereitstellung festgelegt ist. Das bedeutet, dass die Bereitstellung für 15 Upgradedomänen nicht länger als 12 Stunden dauern sollte (also nicht mehr als 40 Minuten pro Upgradedomäne).
-> * Legen Sie für den Cluster die Zuverlässigkeitsstufe `Platinum` fest, um sicherzustellen, dass der Cluster in einem Szenario mit einer ausgefallenen Zone weiterhin verfügbar ist.
-
->[!TIP]
-> Es wird empfohlen, `sfZonalUpgradeMode` auf `Hierarchical` festzulegen oder diesen Wert auszulassen. Bei der Bereitstellung wird die Zonenverteilung von VMs befolgt, die sich auf eine geringere Anzahl von Replikaten oder Instanzen auswirkt und sie dadurch sicherer macht.
-> Verwenden Sie `sfZonalUpgradeMode` mit der Einstellung `Parallel`, wenn die Bereitstellungsgeschwindigkeit Priorität hat oder lediglich eine zustandslose Workload auf dem Knotentyp mit mehreren Verfügbarkeitszonen ausgeführt wird. Dies führt dazu, dass die Upgradedomänen in allen Verfügbarkeitszonen parallel aktualisiert werden.
-
-### <a name="migrate-to-the-node-type-with-multiple-availability-zones"></a>Migration zum Knotentyp mit mehreren Verfügbarkeitszonen
-
-Für jedes Migrationsszenario muss ein neuer Knotentyp hinzugefügt werden, der mehrere Verfügbarkeitszonen unterstützt. Vorhandene Knotentypen können nicht migriert werden, um mehrere Zonen zu unterstützen.
-Im Artikel [Hochskalieren des primären Knotentyps eines Service Fabric-Clusters](./service-fabric-scale-up-primary-node-type.md) sind die Schritte zum Hinzufügen eines neuen Knotentyps sowie weiterer Ressourcen beschrieben, die für den neuen Knotentyp benötigt werden (z. B. IP- und Lastenausgleichsressourcen). Außerdem wird in diesem Artikel beschrieben, wie Sie den vorhandenen Knotentyp außer Betrieb nehmen, nachdem der neue Knotentyp mit mehreren Verfügbarkeitszonen dem Cluster hinzugefügt wurde.
-
-* Migration von einem Knotentyp mit Lastenausgleichs- und IP-Ressourcen der Basic-SKU: Dieser Vorgang ist in [einem vorherigen Abschnitt](#migrate-to-availability-zones-from-a-cluster-by-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) für die Lösung mit einem Knotentyp pro Verfügbarkeitszone beschrieben.
-
-  Der einzige Unterschied für den neuen Knotentyp besteht darin, dass nur eine VM-Skalierungsgruppe und ein Knotentyp für alle Verfügbarkeitszonen vorhanden sind (anstelle von einem Knotentyp pro Verfügbarkeitszone).
-* Migration von einem Knotentyp mit Lastenausgleichs- und IP-Ressourcen der Standard-SKU: Befolgen Sie die zuvor beschriebenen Schritte. Es ist jedoch nicht erforderlich, neue Lastenausgleichs-, IP- und NSG-Ressourcen hinzuzufügen. Für den neuen Knotentyp können dieselben Ressourcen wiederverwendet werden.
 
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
 [sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png

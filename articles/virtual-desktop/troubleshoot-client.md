@@ -1,17 +1,17 @@
 ---
-title: Troubleshooting für den Remotedesktopclient in Windows Virtual Desktop – Azure
-description: Informationen zum Beheben von Problemen beim Einrichten von Clientverbindungen in einer Windows Virtual Desktop-Mandantenumgebung
+title: Troubleshooting für den Remotedesktopclient in Azure Virtual Desktop – Azure
+description: Informationen zum Beheben von Problemen beim Einrichten von Clientverbindungen in einer Azure Virtual Desktop-Mandantenumgebung
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e31ff0bfdb0ead13c2636ea2f4d175c9ced34581
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 9534425344a09bb2e2e733cde5294d08d175eb96
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445430"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755337"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Troubleshooting für den Remotedesktopclient
 
@@ -60,9 +60,9 @@ Wenn bei der Verwendung des Webclients Probleme mit Ihrem Browser auftreten oder
 
 ## <a name="client-doesnt-show-my-resources"></a>Der Client zeigt meine Ressourcen nicht an
 
-Überprüfen Sie zunächst das Azure Active Directory-Konto, das Sie verwenden. Wenn Sie sich bereits mit einem anderen Azure Active Directory-Konto angemeldet haben als dem, das Sie für Windows Virtual Desktop verwenden möchten, sollten Sie sich entweder abmelden oder ein privates Browserfenster verwenden.
+Überprüfen Sie zunächst das Azure Active Directory-Konto, das Sie verwenden. Wenn Sie sich bereits mit einem anderen Azure Active Directory-Konto angemeldet haben als dem, das Sie für Azure Virtual Desktop verwenden möchten, sollten Sie sich entweder abmelden oder ein privates Browserfenster verwenden.
 
-Wenn Sie Windows Virtual Desktop (klassisch) verwenden, verwenden Sie den Webclientlink in [diesem Artikel](./virtual-desktop-fall-2019/connect-web-2019.md), um eine Verbindung mit Ihren Ressourcen herzustellen.
+Wenn Sie Azure Virtual Desktop (klassisch) verwenden, verwenden Sie den Webclientlink in [diesem Artikel](./virtual-desktop-fall-2019/connect-web-2019.md), um eine Verbindung mit Ihren Ressourcen herzustellen.
 
 Wenn das nicht funktioniert, stellen Sie sicher, dass Ihre App-Gruppe einem Arbeitsbereich zugeordnet ist.
 
@@ -79,19 +79,19 @@ Wenn selbst nach einem Browserwechsel weiterhin Probleme auftreten, liegt es mö
 Wenn der Webclient immer wieder zur Eingabe von Anmeldeinformationen auffordert, gehen Sie wie folgt vor:
 
 1. Vergewissern Sie sich, dass die URL des Webclients richtig ist.
-2. Vergewissern Sie sich, dass die verwendeten Anmeldeinformationen für die an die URL gebundene Windows Virtual Desktop-Umgebung gültig sind.
+2. Vergewissern Sie sich, dass die verwendeten Anmeldeinformationen für die an die URL gebundene Azure Virtual Desktop-Umgebung gültig sind.
 3. Löschen Sie die Browsercookies. Weitere Informationen finden Sie unter [Löschen von Cookiedateien in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
 4. Löschen Sie den Browsercache. Weitere Informationen finden Sie unter [Leeren des Browsercaches für Ihren Browser](https://binged.it/2RKyfdU).
 5. Öffnen Sie den Browser im privaten Modus.
 
-## <a name="windows-client-blocks-windows-virtual-desktop-classic-feed"></a>Windows-Client blockiert Feed für Windows Virtual Desktop (klassisch)
+## <a name="windows-client-blocks-azure-virtual-desktop-classic-feed"></a>Windows-Client blockiert Feed für Azure Virtual Desktop (klassisch)
 
-Wenn der Windows-Clientfeed keine Apps für Windows Virtual Desktop (klassisch) anzeigt, befolgen Sie die folgenden Anweisungen:
+Wenn der Windows-Clientfeed keine Apps für Azure Virtual Desktop (klassisch) anzeigt, befolgen Sie die folgenden Anweisungen:
 
-1. Überprüfen Sie, ob die Richtlinie für bedingten Zugriff die App-IDs umfasst, die mit Windows Virtual Desktop (klassisch) verknüpft sind.
-2. Überprüfen Sie, ob die Richtlinie für bedingten Zugriff den gesamten Zugriff außer von App-IDs von Windows Virtual Desktop (klassisch) blockiert. In diesem Fall müssen Sie der Richtlinie die App-ID **9cdead84-a844-4324-93f2-b2e6bb768d07** hinzufügen, damit der Client die Feeds ermitteln kann.
+1. Überprüfen Sie, ob die Richtlinie für bedingten Zugriff die App-IDs umfasst, die mit Azure Virtual Desktop (klassisch) verknüpft sind.
+2. Überprüfen Sie, ob die Richtlinie für bedingten Zugriff den gesamten Zugriff außer von App-IDs von Azure Virtual Desktop (klassisch) blockiert. In diesem Fall müssen Sie der Richtlinie die App-ID **9cdead84-a844-4324-93f2-b2e6bb768d07** hinzufügen, damit der Client die Feeds ermitteln kann.
 
-Wenn Sie die App-ID „9cdead84-a844-4324-93f2-b2e6bb768d07“ nicht in der Liste finden, müssen Sie den Windows Virtual Desktop-Ressourcenanbieter registrieren. So registrieren Sie den Ressourcenanbieter:
+Wenn Sie die App-ID „9cdead84-a844-4324-93f2-b2e6bb768d07“ nicht in der Liste finden, müssen Sie den Azure Virtual Desktop-Ressourcenanbieter registrieren. So registrieren Sie den Ressourcenanbieter:
 
 1. Melden Sie sich beim Azure-Portal an.
 2. Wechseln Sie zu **Abonnements**, und wählen Sie Ihr Abonnement aus.
@@ -100,9 +100,9 @@ Wenn Sie die App-ID „9cdead84-a844-4324-93f2-b2e6bb768d07“ nicht in der List
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die Problembehandlung von Windows Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
-- Informationen zur Problembehandlung beim Erstellen einer Windows Virtual Desktop-Umgebung und eines Hostpools in einer Windows Virtual Desktop-Umgebung finden Sie unter [Umgebungs- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
-- Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Windows Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
-- Informationen zur Problembehandlung beim Windows Virtual Desktop-Agent oder der Sitzungskonnektivität finden Sie unter [Beheben häufiger Probleme mit dem Windows Virtual Desktop-Agent](troubleshoot-agent.md).
-- Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop – PowerShell](troubleshoot-powershell.md).
+- Eine Übersicht über die Problembehandlung von Azure Virtual Desktop und die Eskalationspfade finden Sie unter [Problembehandlung: Übersicht, Feedback und Support](troubleshoot-set-up-overview.md).
+- Informationen zur Problembehandlung beim Erstellen einer Azure Virtual Desktop-Umgebung und eines Hostpools in einer Azure Virtual Desktop-Umgebung finden Sie unter [Umgebungs- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
+- Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Azure Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
+- Informationen zur Problembehandlung beim Azure Virtual Desktop-Agent oder der Sitzungskonnektivität finden Sie unter [Beheben häufiger Probleme mit dem Azure Virtual Desktop-Agent](troubleshoot-agent.md).
+- Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Azure Virtual Desktop finden Sie unter [Azure Virtual Desktop – PowerShell](troubleshoot-powershell.md).
 - Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

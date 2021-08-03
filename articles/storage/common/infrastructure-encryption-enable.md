@@ -5,18 +5,18 @@ description: Kunden, die besonders sicher sein müssen, dass Ihre Daten sicher s
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 05/11/2021
+ms.date: 06/01/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3c3c6f00cb6c2ca5d8b0006a7436fba70fd38655
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 5c87ed5222b5bb95660b6e63e259a2b5e14b7b47
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787309"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372672"
 ---
 # <a name="enable-infrastructure-encryption-for-double-encryption-of-data"></a>Aktivieren von Infrastruktur-Verschlüsselung für Mehrfachverschlüsselung von Daten
 
@@ -140,6 +140,9 @@ Im folgenden JSON-Beispiel wird ein Speicherkonto vom Typ „Universell v2“ e
 ```
 
 ---
+
+Azure Policy stellt eine integrierte Richtlinie zur Verfügung, mit der die Aktivierung der Infrastrukturverschlüsselung für ein Speicherkonto erforderlich ist. Weitere Informationen finden Sie in [Integrierte Azure Policy-Richtliniendefinitionen](../../governance/policy/samples/built-in-policies.md#storage) im Abschnitt **Speicher**.
+
 
 ## <a name="create-an-encryption-scope-with-infrastructure-encryption-enabled"></a>Erstellen eines Verschlüsselungsbereichs mit aktivierter Infrastrukturverschlüsselung
 

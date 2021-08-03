@@ -1,24 +1,24 @@
 ---
-title: Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop – Azure
-description: Konfigurieren und Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop.
+title: Bereitstellen eines virtuellen Windows 7-Computers in Azure Virtual Desktop – Azure
+description: Konfigurieren und Bereitstellen eines virtuellen Windows 7-Computers in Azure Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 65ef7af1247fdb38a7c85c1a8134257942f5ef5b
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 4e52594578202046d36e2cbd5a727d4973f26f39
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447028"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751970"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop
+# <a name="deploy-a-windows-7-virtual-machine-on-azure-virtual-desktop"></a>Bereitstellen eines virtuellen Windows 7-Computers in Azure Virtual Desktop
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md).
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md).
 
-Der Vorgang zum Bereitstellen eines virtuellen Windows 7-Computers (VM) in Windows Virtual Desktop unterscheidet sich geringfügig von der Bereitstellung auf virtuellen Computern, auf denen höhere Versionen von Windows ausgeführt werden. In dieser Anleitung erfahren Sie, wie Sie Windows 7 bereitstellen.
+Der Vorgang zum Bereitstellen eines virtuellen Windows 7-Computers (VM) in Azure Virtual Desktop unterscheidet sich geringfügig von der Bereitstellung auf virtuellen Computern, auf denen höhere Versionen von Windows ausgeführt werden. In dieser Anleitung erfahren Sie, wie Sie Windows 7 bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -26,9 +26,9 @@ Bevor Sie beginnen, befolgen Sie die Anleitungen unter [Erstellen eines Hostpool
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>Konfigurieren eines virtuellen Windows 7-Computers
 
-Nachdem Sie die Voraussetzungen erfüllt haben, können Sie Ihre Windows 7-VM für die Bereitstellung in Windows Virtual Desktop konfigurieren.
+Wenn alle Voraussetzungen erfüllt sind, können Sie Ihren virtuellen Windows 7-Computer für die Bereitstellung in Azure Virtual Desktop konfigurieren.
 
-So richten Sie einen virtuellen Windows 7-Computer in Windows Virtual Desktop ein:
+So richten Sie einen virtuellen Windows 7-Computer in Azure Virtual Desktop ein
 
 1. Melden Sie sich am Azure-Portal an, und suchen Sie entweder nach dem Windows 7 Enterprise-Image, oder laden Sie ein eigenes benutzerdefiniertes Windows 7 Enterprise-Image (x64) hoch.
 2. Stellen Sie mindestens einen virtuellen Computer mit Windows 7 Enterprise als Hostbetriebssystem bereit. Stellen Sie sicher, dass die virtuellen Computer das Remotedesktopprotokoll (RDP) zulassen (TCP-Port/Port 3389).
@@ -50,15 +50,15 @@ So richten Sie einen virtuellen Windows 7-Computer in Windows Virtual Desktop ei
 
       - Wenn Sie stattdessen das Azure-Portal verwenden möchten, können Sie auch zur Übersichtsseite des Hostpools wechseln, dem Sie den virtuellen Computer hinzufügen möchten, und dort ein Token erstellen.
 
-13. [Herunterladen des Windows Virtual Desktop-Agents für Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
-14. [Herunterladen des Windows Virtual Desktop-Agent-Managers für Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
-15. Öffnen Sie das Installationsprogramm für den Windows Virtual Desktop-Agent, und befolgen Sie die Anweisungen. Wenn Sie dazu aufgefordert werden, geben Sie den in Schritt 12 erstellten Registrierungsschlüssel ein.
-16. Öffnen Sie den Windows Virtual Desktop-Agent-Manager, und befolgen Sie die Anweisungen.
+13. [Laden Sie den Azure Virtual Desktop-Agent für Windows 7 herunter](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
+14. [Laden Sie den Azure Virtual Desktop-Agent-Manager für Windows 7 herunter](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
+15. Öffnen Sie das Installationsprogramm für den Azure Virtual Desktop-Agent, und befolgen Sie die Anweisungen. Wenn Sie dazu aufgefordert werden, geben Sie den in Schritt 12 erstellten Registrierungsschlüssel ein.
+16. Öffnen Sie das Installationsprogramm für den Azure Virtual Desktop-Agent-Manager, und befolgen Sie die Anweisungen.
 17. Blockieren Sie optional den Port TCP/3389, um den direkten Zugriff auf die VM über das Remotedesktopprotokoll zu entfernen.
 18. Vergewissern Sie sich ggf., dass .NET Framework mindestens in der Version 4.7.2 vorliegt. Insbesondere wenn Sie ein benutzerdefiniertes Image erstellen ist es wichtig, dass Sie Ihr Framework aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ihre Windows Virtual Desktop-Bereitstellung kann jetzt verwendet werden. [Laden Sie die neueste Version des Windows Virtual Desktop-Clients herunter](https://aka.ms/wvd/clients/windows), um loszulegen.
+Ihre Azure Virtual Desktop-Bereitstellung kann jetzt verwendet werden. [Laden Sie die neueste Version des Azure Virtual Desktop-Clients herunter](https://aka.ms/wvd/clients/windows), um zu beginnen.
 
-Eine Liste bekannter Probleme und Anleitungen zur Problembehandlung für Windows 7 in Windows Virtual Desktop finden Sie im Artikel zur Problembehandlung unter [Problembehandlung für virtuelle Windows 7-Computer in Windows Virtual Desktop](./virtual-desktop-fall-2019/troubleshoot-windows-7-vm.md).
+Eine Liste bekannter Probleme und Anleitungen zur Problembehandlung für Windows 7 in Azure Virtual Desktop finden Sie im Artikel zur Problembehandlung unter [Problembehandlung für virtuelle Windows 7-Computer in Azure Virtual Desktop](./virtual-desktop-fall-2019/troubleshoot-windows-7-vm.md).

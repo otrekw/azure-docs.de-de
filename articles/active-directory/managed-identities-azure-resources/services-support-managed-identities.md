@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: ea3f5cb896bb023a38474be71aa1570d9f5b4806
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 886e0ffb2ba9d367c5f0bb89ec1f48b5fbf7ef5a
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176664"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061270"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -35,7 +35,7 @@ Die folgenden Azure-Dienste unterstützen verwaltete Identitäten für Azure-Res
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
-| Vom Benutzer zugewiesen | Vorschau | Vorschau | Nicht verfügbar | Vorschau |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
 
 Konfigurieren Sie die verwaltete Identität für Azure API Management anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -137,15 +137,6 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 | Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
 | Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
-
-### <a name="azure-communication-services"></a>Azure Communication Services
-
-Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
-
-
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
@@ -236,11 +227,11 @@ Konfigurieren Sie die verwaltete Identität für Azure Functions anhand der folg
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
-| Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
 Konfigurieren Sie die verwaltete Identität für Azure IoT Hub anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
-- [Azure portal](../../iot-hub/virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
+- Weitere Informationen finden Sie unter [Azure IoT Hub-Unterstützung für verwaltete Identitäten](../../iot-hub/iot-hub-managed-identity.md).
 
 ### <a name="azure-importexport"></a>Azure Import/Export
 
@@ -461,25 +452,18 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|:-:|
 | Azure Global | `https://eventhubs.azure.net` | ![Verfügbar][check] |
-| Azure Government |  | Nicht verfügbar. |
-| Azure Deutschland |   | Nicht verfügbar. |
-| Azure China 21Vianet |  | Nicht verfügbar. |
+| Azure Government | `https://eventhubs.azure.net` | ![Verfügbar][check] |
+| Azure Deutschland | `https://eventhubs.azure.net` | ![Verfügbar][check] |
+| Azure China 21Vianet | `https://eventhubs.azure.net` | ![Verfügbar][check] |
 
 ### <a name="azure-service-bus"></a>Azure-Servicebus
 
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|:-:|
 | Azure Global | `https://servicebus.azure.net`  | ![Verfügbar][check] |
-| Azure Government |  | ![Verfügbar][check] |
-| Azure Deutschland |   | Nicht verfügbar. |
-| Azure China 21Vianet |  | Nicht verfügbar. |
-
-
-
-
-
-
-
+| Azure Government | `https://servicebus.azure.net`  | ![Verfügbar][check] |
+| Azure Deutschland |  `https://servicebus.azure.net`  | ![Verfügbar][check] |
+| Azure China 21Vianet | `https://servicebus.azure.net`  | ![Verfügbar][check] |
 
 
 ### <a name="azure-storage-blobs-and-queues"></a>Azure Storage-Blobs und -Warteschlangen
@@ -499,6 +483,14 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | ![Verfügbar][check] |
 | Azure Deutschland | `https://*.asazure.cloudapi.de` | ![Verfügbar][check] |
 | Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![Verfügbar][check] |
+
+### <a name="azure-communication-services"></a>Azure Communication Services
+
+Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+
 
 > [!Note]
 > Microsoft Power BI bietet auch [Unterstützung für verwaltete Identitäten](../../stream-analytics/powerbi-output-managed-identity.md).

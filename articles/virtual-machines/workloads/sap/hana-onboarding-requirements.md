@@ -1,40 +1,41 @@
 ---
 title: Onboardinganforderungen für SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
-description: Onboardinganforderungen für SAP HANA in Azure (große Instanzen)
+description: Erfahren Sie mehr über die Onboardinganforderungen für SAP HANA in Azure (große Instanzen).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/31/2019
-ms.author: juergent
+ms.date: 05/14/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 16608facab27fc18924cf3a5c6da7e35db048f76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 899fd32a60f4938f42dc03b5ac836ff809c5c61f
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675610"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579275"
 ---
 # <a name="onboarding-requirements"></a>Onboardinganforderungen
 
-Diese Liste führt die Anforderungen zum Ausführen von SAP HANA in Azure (große Instanzen) auf.
+In diesem Artikel werden die Anforderungen für die Ausführung von SAP HANA in Azure (große Instanzen) aufgeführt (auch als BareMetal Infrastructure-Instanzen bekannt).
 
-**Microsoft Azure**
+## <a name="microsoft-azure"></a>Microsoft Azure
 
 - Ein Azure-Abonnement, das mit SAP HANA in Azure (große Instanzen) verknüpft werden kann.
 - Microsoft Premier Support-Vertrag. Spezifische Informationen im Zusammenhang mit der Ausführung von SAP in Azure finden Sie im [SAP-Supporthinweis 2015553 – SAP in Microsoft Azure: Supportvoraussetzungen](https://launchpad.support.sap.com/#/notes/2015553). Wenn Sie Einheiten von HANA (große Instanz) mit 384 und mehr CPUs verwenden, muss der Premier Support-Vertrag Azure Rapid Response beinhalten.
-- Kenntnis der SKUs von HANA (große Instanz), die Sie nach dem Ausführen einer Größenanpassung mit SAP benötigen.
+- Kenntnis der [SKUs von HANA (große Instanz)](hana-available-skus.md), die Sie nach dem Abschluss eines [Dimensionierungsschritts](hana-sizing.md) mit SAP benötigen.
 
-**Netzwerkverbindungen**
+## <a name="network-connectivity"></a>Netzwerkkonnektivität
 
-- ExpressRoute zwischen lokalen Systemen und Azure: Um Ihr lokales Rechenzentrum mit Azure zu verbinden, benötigen Sie mindestens eine 1-GBit/s-Verbindung von Ihrem Internetdienstanbieter (ISP). Für die Verbindungen zwischen HANA-Einheiten (große Instanzen) und Azure wird ebenfalls ExpressRoute-Technologie verwendet. Diese ExpressRoute-Verbindung zwischen den HANA-Einheiten (große Instanzen) und Azure ist im Preis für die HANA-Einheiten (große Instanzen) enthalten, einschließlich aller Gebühren für eingehende und ausgehende Daten für diese spezifische ExpressRoute-Verbindung. Aus diesem Grund entstehen für Sie als Kunde über Ihre ExpressRoute-Verbindung zwischen lokalen Systemen und Azure hinaus keine zusätzlichen Kosten.
+- ExpressRoute zwischen lokalen Systemen und Azure: Um Ihr lokales Rechenzentrum mit Azure zu verbinden, benötigen Sie mindestens eine 1-GBit/s-Verbindung von Ihrem Internetdienstanbieter (ISP). Für die Verbindungen zwischen HANA (große Instanzen) und Azure wird ebenfalls ExpressRoute-Technologie verwendet. Diese ExpressRoute-Verbindung zwischen HANA (große Instanzen) und Azure ist im Preis für HANA (große Instanzen) enthalten. Der Preis umfasst auch alle Gebühren für den ein- und ausgehenden Datenverkehr für diese bestimmte ExpressRoute-Leitung. Somit entstehen Ihnen keine zusätzlichen Kosten über Ihre ExpressRoute-Verbindung zwischen der lokalen Umgebung und Azure hinaus.
 
-**Betriebssystem**
+## <a name="operating-system"></a>Betriebssystem
 
 - Lizenzen für SUSE Linux Enterprise Server 12 für SAP-Anwendungen.
 
@@ -61,26 +62,30 @@ Die Kompatibilitätsmatrix des Betriebssystems und der HLI-Firmware-/Treibervers
 > Derzeit wird für Einheiten vom Typ II nur die Betriebssystemversion SLES 12 SP2 unterstützt. 
 
 
-**Datenbank**
+## <a name="database"></a>Datenbank
 
 - Lizenzen und Softwareinstallationskomponenten für SAP HANA (Plattform oder Enterprise Edition).
 
-**Anwendungen**
+## <a name="applications"></a>Anwendungen
 
 - Lizenzen und Softwareinstallationskomponenten für alle SAP-Anwendungen, die eine Verbindung mit SAP HANA herstellen, sowie zugehörige SAP-Supportverträge.
 - Lizenzen und Softwareinstallationskomponenten für alle Nicht-SAP-Anwendungen, die mit Umgebungen für SAP HANA in Azure (große Instanzen) verwendet werden, sowie zugehörige Supportverträge.
 
-**Fähigkeiten**
+## <a name="skills"></a>Fähigkeiten
 
 - Erfahrung und Kenntnisse in Bezug auf IaaS und die zugehörigen Komponenten
 - Erfahrung und Kenntnisse in Bezug auf die Bereitstellung von SAP-Workloads in Azure
 - Für die SAP HANA-Installation zertifizierte Mitarbeiter.
 - Kenntnisse der SAP-Architektur zum Entwerfen der Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA
 
-**SAP**
+## <a name="sap"></a>SAP
 
 - Es wird vorausgesetzt, das Sie ein SAP-Kunde sind und über einen Supportvertrag mit SAP verfügen.
 - Insbesondere für Implementierungen der Typ-II-Klasse-SKUs von HANA (große Instanz) sollten Sie SAP bezüglich der SAP HANA-Versionen und möglichen Konfigurationen auf großer, zentral hochskalierter Hardware zurate ziehen.
 
-**Nächste Schritte**
-- Lesen Sie [Architektur von SAP HANA in Azure (große Instanzen)](hana-architecture.md).
+## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über das Verwenden von SAP HANA Data Tiering und Extension Nodes.
+
+> [!div class="nextstepaction"]
+> [Verwenden von SAP HANA Data Tiering und Extension Nodes](hana-data-tiering-extension-nodes.md)

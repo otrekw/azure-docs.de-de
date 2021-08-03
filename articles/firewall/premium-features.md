@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 04/22/2021
+ms.date: 06/01/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: fa7d17b208c4a950e82a8bdc4db243ebb44e4c41
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 21ea2dcb6f7ffc70a1ed5db15117b39b5b0016bd
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896277"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796557"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Features der Azure Firewall Premium-Vorschau
 
@@ -54,7 +54,7 @@ Weitere Informationen zu den Anforderungen für das Zertifikat von Zwischenzerti
 
 Ein System zur Erkennung und Verhinderung von Eindringversuchen in Netzwerke (IDPS) ermöglicht es Ihnen, Ihr Netzwerk auf schädliche Aktivitäten zu überwachen, Informationen über diese Aktivitäten zu protokollieren, sie zu melden und optional zu versuchen, sie zu blockieren. 
 
-Die Vorschauversion von Azure Firewall Premium bietet signaturbasiertes IDPS, um eine schnelle Erkennung von Angriffen zu ermöglichen, indem nach bestimmten Mustern gesucht wird, z. B. nach Bytesequenzen im Netzwerkdatenverkehr oder nach bekannten schädlichen Anweisungssequenzen, die von Malware verwendet werden. Die IDPS-Signaturen werden vollständig verwaltet und fortlaufend aktualisiert.
+Die Vorschauversion von Azure Firewall Premium bietet signaturbasiertes IDPS, um eine schnelle Erkennung von Angriffen zu ermöglichen, indem nach bestimmten Mustern gesucht wird, z. B. nach Bytesequenzen im Netzwerkdatenverkehr oder nach bekannten schädlichen Anweisungssequenzen, die von Malware verwendet werden. Die IDPS-Signaturen werden vollständig verwaltet und fortlaufend aktualisiert. IDPS kann auf eingehenden Datenverkehr, Datenverkehr zwischen Spokes (Ost-West) und ausgehenden Datenverkehr angewendet werden.
 
 Die Signaturen/Regelsätze in Azure Firewall bieten Folgendes:
 - Schwerpunkt auf der Erstellung von Fingerabdrücken von tatsächlicher Schadsoftware, Command-and-Control, Exploitkits und schädlichen Aktivitäten in der Praxis, die herkömmliche Präventionsmethoden übersehen

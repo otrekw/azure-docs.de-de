@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 4d1dd358c03d051be4be5733d9e729d1d7ef5b0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7b2e6ee4b54427f33ba9701ae13f139341a1941
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026171"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030951"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -43,7 +43,7 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 
 | | Azure Monitor-Agent (Vorschau) | Diagnose<br>erweiterung (LAD) | Telegraf-<br>Agent | Log Analytics<br>Agent | Abhängigkeit<br>Agent |
 |:---|:---|:---|:---|:---|:---|
-| **Unterstützte Umgebungen** | Azure<br>Andere Cloud (Azure Arc)<br>Lokal (Azure Arc) | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal |
+| **Unterstützte Umgebungen** (unterstützte Betriebssysteme finden Sie in der folgenden Tabelle) | Azure<br>Andere Cloud (Azure Arc)<br>Lokal (Azure Arc) | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal |
 | **Agent-Anforderungen**  | Keine | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
 | **Gesammelte Daten** | syslog<br>Leistung | syslog<br>Leistung | Leistung | syslog<br>Leistung| Prozessabhängigkeiten<br>Netzwerkverbindungsmetriken |
 | **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken | Azure Storage<br>Event Hub | Azure Monitor-Metriken | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
@@ -140,8 +140,9 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | Betriebssystem | Azure Monitor-Agent | Log Analytics-Agent | Abhängigkeits-Agent | Diagnoseerweiterung | 
 |:---|:---:|:---:|:---:|:---:|
 | Windows Server 2019                                      | X | X | X | X |
+| Windows Server 2019 Core                                 | X |   |   |   |
 | Windows Server 2016                                      | X | X | X | X |
-| Windows Server 2016 Core                                 |   |   |   | X |
+| Windows Server 2016 Core                                 | X |   |   | X |
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2 SP1                               | X | X | X | X |
@@ -168,13 +169,16 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | Oracle Linux 7                                              | X | X |   | X |
 | Oracle Linux 6                                              |   | X |   |   |
 | Oracle Linux 6.4+                                           |   | X |   | X |
+| Red Hat Enterprise Linux Server 8.3                         | X<sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 8                           | X<sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 7                           | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                           |   | X | X |   |
 | Red Hat Enterprise Linux Server 6.7+                        |   | X | X | X |
 | SUSE Linux Enterprise Server 15.2                           | X<sup>3</sup> |   |   |   |
 | SUSE Linux Enterprise Server 15.1                           | X<sup>3</sup> | X |   |   |
+| SUSE Linux Enterprise Server 15 SP1                         | X | X | X |   |
 | SUSE Linux Enterprise Server 15                             | X | X | X |   |
+| SUSE Linux Enterprise Server 12 SP5                         | X | X | X | X |
 | SUSE Linux Enterprise Server 12                             | X | X | X | X |
 | Ubuntu 20.04 LTS                                            | X | X | X |   |
 | Ubuntu 18.04 LTS                                            | X | X | X | X |
@@ -183,9 +187,7 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 
 <sup>1</sup> Erfordert die Installation von Python (2 oder 3) auf dem Computer.
 
-<sup>2</sup> Erfordert die Installation von Python 2 auf dem Computer.
-
-<sup>3</sup> Bekanntes Problem beim Sammeln von Syslog-Ereignissen. Zurzeit werden nur Leistungsdaten unterstützt.
+<sup>3</sup> Bekanntes Problem beim Sammeln von Syslog-Ereignissen in Versionen vor 1.9.0
 #### <a name="dependency-agent-linux-kernel-support"></a>Unterstützung des Linux-Kernels für den Dependency-Agent
 
 Da der Dependency-Agent auf der Kernelebene arbeitet, ist die Unterstützung auch von der Kernelversion abhängig. In der folgenden Tabelle sind die Haupt- und Nebenversionen des Linux-Betriebssystems sowie die unterstützten Kernelversionen für den Dependency-Agent aufgeführt:

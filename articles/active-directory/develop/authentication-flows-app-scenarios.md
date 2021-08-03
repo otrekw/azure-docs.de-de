@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: ffa52805a5e2680d534b2b24a210465cb3fc7cac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ebed470f7998025a3b8dc8f733442fd25183ae3
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100557856"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554641"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Authentifizierungsflows und Anwendungsszenarien
 
@@ -243,7 +243,7 @@ Szenarien mit Tokenabruf werden auch OAuth 2.0-Authentifizierungsflows zugeordne
   <tr>
    <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
    <td><a href="v2-oauth2-device-code.md">Gerätecode</a></td>
-   <td>Geschäfts-, Schul- oder Unikonten, persönliche Konten und Azure AD B2C</td>
+   <td>Geschäfts-, Schul- oder Unikonten, persönliche Konten, jedoch nicht Azure AD B2C</td>
  </tr>
 
  <tr>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: cb91d269f6b166510db54637d17d776e71137408
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 247ae926dde9b07b1d627621c456333282f00a42
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456160"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060046"
 ---
 # <a name="map-data-fields-to-entities-in-azure-sentinel"></a>Zuordnen von Datenfeldern zu Entitäten in Azure Sentinel 
 
@@ -41,17 +41,23 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 
 1. Wählen Sie im Azure Sentinel-Navigationsmenü die Option **Analysen** aus.
 
-1. Wählen Sie eine geplante Abfrageregel aus, und klicken Sie auf **Bearbeiten**. Oder erstellen Sie eine neue Regel, indem Sie oben auf dem Bildschirm auf **Erstellen &#10132; Geplante Abfrageregel** klicken.
+1. Wählen Sie eine geplante Abfrageregel aus, und klicken Sie auf **Bearbeiten**. Oder erstellen Sie eine neue Regel, indem Sie oben auf dem Bildschirm auf **Erstellen > Geplante Abfrageregel** klicken.
 
-1. Klicken Sie auf die Registerkarte **Regellogik festlegen**.
+1. Klicken Sie auf die Registerkarte **Regellogik festlegen**. 
 
-    :::image type="content" source="media/map-data-fields-to-entities/map-entities.png" alt-text="Zuordnen von Feldern zu Entitäten":::
+1. Erweitern Sie im Abschnitt **Warnungsanreicherung (Vorschau)** den Bereich **Entitätszuordnung**.
 
-1. Wählen Sie im Bereich **Warnungserweiterung** unter **Entitätszuordnung** in der Dropdownliste **Entitätstyp** einen Entitätstyp aus.
+    :::image type="content" source="media/map-data-fields-to-entities/alert-enrichment.png" alt-text="Erweitern der Entitätszuordnung":::
+
+1. Wählen Sie im jetzt erweiterten Abschnitt **Entitätszuordnung** in der Dropdownliste **Entitätstyp** einen Entitätstyp aus.
+
+    :::image type="content" source="media/map-data-fields-to-entities/choose-entity-type.png" alt-text="Auswählen eines Entitätstyps":::
 
 1. Wählen Sie einen **Bezeichner** für die Entität aus. Bezeichner sind Attribute einer Entität, die diese ausreichend identifizieren können. Wählen Sie einen Bezeichner in der Dropdownliste **Bezeichner** und dann in der Dropdownliste **Wert** ein Datenfeld aus, das dem Bezeichner entspricht. Mit wenigen Ausnahmen wird die Liste **Wert** durch die Datenfelder in der Tabelle gefüllt, die als Gegenstand der Regelabfrage definiert ist.
 
     Pro Entität können Sie **bis zu drei Bezeichner** definieren. Einige Bezeichner sind erforderlich, andere dagegen optional. Sie müssen mindestens einen erforderlichen Bezeichner auswählen. Andernfalls werden Sie in einer Warnmeldung auf die erforderlichen Bezeichner hingewiesen. Um optimale Ergebnisse (die bestmögliche eindeutige Identifizierung) zu erzielen, sollten Sie nach Möglichkeit **starke Bezeichner** verwenden. Die Verwendung mehrerer starker Bezeichner ermöglicht eine größere Korrelation zwischen Datenquellen. Die vollständige Liste der verfügbaren Entitäten und Bezeichner finden Sie [hier](entities-reference.md).
+
+    :::image type="content" source="media/map-data-fields-to-entities/map-entities.png" alt-text="Zuordnen von Feldern zu Entitäten":::
 
 1. Klicken Sie auf **Neue Entität hinzufügen**, um weitere Entitäten zuzuordnen. Sie können **bis zu fünf Entitäten** in einer Analyseregel zuordnen. Außerdem können Sie mehrere Entitäten desselben Typs zuordnen. Beispielsweise können Sie zwei **IP**-Entitäten zuordnen: eine aus dem Feld *Quell-IP-Adresse* und eine aus dem Feld *Ziel-IP-Adresse*. So können beide nachverfolgt werden.
 
@@ -76,4 +82,4 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 
 In diesem Dokument wurde beschrieben, wie Sie Datenfelder Entitäten in Azure Sentinel-Analyseregeln zuordnen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md) können Sie sich ein Gesamtbild machen.
-- Weitere Informationen zu [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md)
+- Erfahren Sie mehr über [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md).

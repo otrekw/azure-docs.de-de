@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 9cf4caf77d14dd1296276ca48827c170ef265e9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4761550c3d08b66fc949c9b6e2950dc08278eea8
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718062"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592230"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor
 
@@ -22,7 +22,7 @@ Wir freuen uns auf Ihr Feedback: <azurealertsfeedback@microsoft.com>
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Warum und wann ist der dynamische Bedingungstyp empfehlenswert?
 
-1. **Skalierbare Warnungen:** Warnungsregeln für den dynamischen Schwellenwert können individuelle Schwellenwerte für Hunderte von Metriken erstellen. Gleichzeitig kann eine Warnungsregel für eine einzelne Metrik ganz einfach definiert werden. Dadurch müssen Sie weniger Warnungen erstellen und verwalten. Zur Erstellung können Sie entweder das Azure-Portal oder die Azure Resource Manager-API verwenden. Der skalierbare Ansatz ist besonders hilfreich beim Umgang mit Metrikdimensionen oder bei der Anwendung auf mehrere Ressourcen, z. B. auf alle Abonnementressourcen.  [Erfahren Sie mehr über das Konfigurieren von Metrikwarnungen mit dynamischen Schwellenwerten mithilfe von Vorlagen](./alerts-metric-create-templates.md).
+1. **Skalierbare Warnungen:** Warnungsregeln für den dynamischen Schwellenwert können individuelle Schwellenwerte für Hunderte von Metriken erstellen. Gleichzeitig kann eine Warnungsregel für eine einzelne Metrik ganz einfach definiert werden. Dadurch müssen Sie weniger Warnungen erstellen und verwalten. Zur Erstellung können Sie entweder das Azure-Portal oder die Azure Resource Manager-API verwenden. Der skalierbare Ansatz ist besonders hilfreich beim Umgang mit Metrikdimensionen oder bei der Anwendung auf mehrere Ressourcen, z. B. auf alle Abonnementressourcen. [Erfahren Sie mehr über das Konfigurieren von Metrikwarnungen mit dynamischen Schwellenwerten mithilfe von Vorlagen](./alerts-metric-create-templates.md).
 
 1. **Intelligente Erkennung von Metrikmustern:** Mit unserer ML-Technologie können wir Metrikmuster automatisch erkennen und uns im Laufe der Zeit an Metrikänderungen anpassen, die häufig Saisonalität (stündlich/täglich/wöchentlich) enthalten. Durch die Anpassung an das Metrikverhalten und Warnungen basierend auf Abweichungen von Mustern müssen Sie nicht mehr den „richtigen“ Schwellenwert für die einzelnen Metriken ermitteln. Der ML-Algorithmus in dynamischen Schwellenwerten soll überflüssige (geringe Genauigkeit) oder zu weit gefasste (geringe Trefferquote) Schwellenwerte ohne erwartetes Muster verhindern.
 

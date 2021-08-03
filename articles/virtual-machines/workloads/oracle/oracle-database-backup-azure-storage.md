@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: a6ce5446bd6470ef7a829925646d486801b28ebc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5616c627fbddb7ba1340807a8369f59197e804d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670021"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081980"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure-Linux-VM mithilfe von Azure Storage
 
@@ -125,7 +125,7 @@ In diesem Artikel wird die Verwendung von Azure Storage als Medium zum Sichern u
 10. Legen Sie die Umgebungsvariablen der Datenbank für die Fast Recovery Area fest:
 
     ```bash
-    SQL>  system set db_recovery_file_dest_size=4096M scope=both;
+    SQL> alter system set db_recovery_file_dest_size=4096M scope=both;
     SQL> alter system set db_recovery_file_dest='/u02/fast_recovery_area' scope=both;
     ```
     
@@ -368,7 +368,7 @@ Die Verwendung von RMAN und Azure File Storage für die Datenbanksicherung hat z
     ORACLE instance shut down.
     ```
 
-2.  Entfernen Sie die Datendateien und Sicherungen:
+2.  Entfernen Sie die Datenbankdatendateien:
 
     ```bash
     cd /u02/oradata/TEST

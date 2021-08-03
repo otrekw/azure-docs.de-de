@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 19183da24a3652757626cb37fae96027ed01a8ea
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 51a79058ec4456b173b1f50169198d3ea3ba2e93
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633175"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541876"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Abrufen von Protokollen aus IoT Edge-Bereitstellungen
 
@@ -54,6 +54,9 @@ Die [Protokollierungsklasse in IoT Edge](https://github.com/Azure/iotedge/blob/m
 
 Verwenden Sie die direkte Methode **GetModuleLogs**, um die Protokolle eines IoT Edge-Moduls abzurufen.
 
+>[!TIP]
+>Die IoT Edge-Problembehandlungsseite im Azure-Portal bietet eine vereinfachte Benutzeroberfläche zum Anzeigen von Modulprotokollen. Weitere Informationen finden Sie unter [Überwachen und Beheben von Problemen bei IoT Edge-Geräten über das Azure-Portal](troubleshoot-in-portal.md).
+
 Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
 
 ```json
@@ -76,7 +79,7 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
     }
 ```
 
-| Name | type | Beschreibung |
+| Name | Typ | Beschreibung |
 |-|-|-|
 | schemaVersion | Zeichenfolge | Legen Sie den Wert `1.0` |
 | items | JSON-Array | Ein Array mit den Tupeln `id` und `filter` |
@@ -95,7 +98,7 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
 
 Bei einem erfolgreichen Abruf von Protokollen wird der **Status 200** zurückgegeben, gefolgt von einer Nutzlast, die die vom Modul abgerufenen Protokolle enthält, gefiltert nach den Einstellungen, die Sie in Ihrer Anforderung angeben.
 
-Zum Beispiel:
+Beispiel:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetModuleLogs' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -136,7 +139,7 @@ Rufen Sie im Azure-Portal die Methode mit dem Namen `GetModuleLogs` und der folg
 
 ![Aufrufen der direkten Methode „GetModuleLogs“ im Azure-Portal](./media/how-to-retrieve-iot-edge-logs/invoke-get-module-logs.png)
 
-Sie können die CLI-Ausgabe auch an Linux-Hilfsprogramme wie [gzip](https://en.wikipedia.org/wiki/Gzip) umleiten, um eine komprimierte Antwort zu verarbeiten. Zum Beispiel:
+Sie können die CLI-Ausgabe auch an Linux-Hilfsprogramme wie [gzip](https://en.wikipedia.org/wiki/Gzip) umleiten, um eine komprimierte Antwort zu verarbeiten. Beispiel:
 
 ```azurecli
 az iot hub invoke-module-method \
@@ -185,7 +188,7 @@ Diese Methode akzeptiert eine JSON-Nutzlast, die **GetModuleLogs** ähnelt, wobe
     }
 ```
 
-| Name | type | Beschreibung |
+| Name | Typ | Beschreibung |
 |-|-|-|
 | sasURL | Zeichenfolge (URI) | [Shared Access Signature-URL mit Schreibzugriff auf den Azure Blob Storage-Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
 
@@ -199,13 +202,13 @@ Bei einer erfolgreichen Anforderung zum Hochladen von Protokollen wird der **Sta
     }
 ```
 
-| Name | type | BESCHREIBUNG |
+| Name | Typ | BESCHREIBUNG |
 |-|-|-|
 | status | Zeichenfolge | `NotStarted`, `Running`, `Completed`, `Failed` oder `Unknown` |
 | message | Zeichenfolge | Meldung bei einem Fehler, andernfalls leere Zeichenfolge |
 | correlationId | Zeichenfolge   | ID zum Abfragen des Status der Uploadanforderung |
 
-Zum Beispiel:
+Beispiel:
 
 Der folgende Aufruf lädt die letzten 100 Protokollzeilen aus allen Modulen im komprimierten JSON-Format hoch:
 
@@ -302,7 +305,7 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
     }
 ```
 
-| Name | type | BESCHREIBUNG |
+| Name | Typ | Beschreibung |
 |-|-|-|
 | schemaVersion | Zeichenfolge | Legen Sie den Wert `1.0` |
 | sasURL | Zeichenfolge (URI) | [Shared Access Signature-URL mit Schreibzugriff auf den Azure Blob Storage-Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -323,13 +326,13 @@ Bei einer erfolgreichen Anforderung zum Hochladen von Protokollen wird der **Sta
     }
 ```
 
-| Name | type | BESCHREIBUNG |
+| Name | Typ | BESCHREIBUNG |
 |-|-|-|
 | status | Zeichenfolge | `NotStarted`, `Running`, `Completed`, `Failed` oder `Unknown` |
 | message | Zeichenfolge | Meldung bei einem Fehler, andernfalls leere Zeichenfolge |
 | correlationId | Zeichenfolge   | ID zum Abfragen des Status der Uploadanforderung |
 
-Zum Beispiel:
+Beispiel:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -381,13 +384,13 @@ Bei einer erfolgreichen Anforderung zum Hochladen von Protokollen wird der **Sta
     }
 ```
 
-| Name | type | BESCHREIBUNG |
+| Name | Typ | BESCHREIBUNG |
 |-|-|-|
 | status | Zeichenfolge | `NotStarted`, `Running`, `Completed`, `Failed` oder `Unknown` |
 | message | Zeichenfolge | Meldung bei einem Fehler, andernfalls leere Zeichenfolge |
 | correlationId | Zeichenfolge   | ID zum Abfragen des Status der Uploadanforderung |
 
-Zum Beispiel:
+Beispiel:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \

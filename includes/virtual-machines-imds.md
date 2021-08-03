@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 49704de9eb4a392b552429180da98568cafa210f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 669304159a525248dbd4f9d1c3f7b34660274b74
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108157582"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110487100"
 ---
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu Instanzen virtueller Computer bereit, die derzeit ausgeführt werden. Sie können ihn zur Verwaltung und Konfiguration Ihrer virtuellen Computer verwenden.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine umfassende Liste der verfügbaren Daten finden Sie in der [Übersicht über die Endpunktkategorien](#endpoint-categories).
@@ -40,13 +40,13 @@ Hier finden Sie ein Codebeispiel zum Abrufen aller Metadaten für eine Instanz. 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | jq
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | jq
 ```
 
 ---
@@ -99,14 +99,14 @@ Endpunkte unterstützen möglicherweise erforderliche und/oder optionale Paramet
 IMDS-Endpunkte unterstützen HTTP-Abfragezeichenfolgenparameter. Zum Beispiel: 
 
 ```
-http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=json
+http://169.254.169.254/metadata/instance/compute?api-version=2021-01-01&format=json
 ```
 
 Gibt die Parameter an:
 
 | Name | Wert |
 |------|-------|
-| `api-version` | `2019-06-04`
+| `api-version` | `2021-01-01`
 | `format` | `json`
 
 Anforderungen mit doppelten Abfrageparameternamen werden abgelehnt.
@@ -248,6 +248,7 @@ Wenn Sie keine Version angeben, erhalten Sie eine Fehlermeldung mit einer Liste 
 - 2020-10-01
 - 2020-12-01
 - 2021-01-01
+- 2021-02-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -315,7 +316,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich/Optional | Beschreibung |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `format` | Optional* | Das Format (`json` oder `text`) der Antwort. *Hinweis: Ist möglicherweise erforderlich, wenn Anforderungsparameter verwendet werden.
@@ -370,7 +371,7 @@ Aufschlüsselung des Schemas:
 
 **Speicherprofil**
 
-Das Speicherprofil eines virtuellen Computers ist in drei Kategorien unterteilt: Imagereferenz, Betriebssystemdatenträger und Datenträger für Daten.
+Das Speicherprofil eines virtuellen Computers ist in drei Kategorien unterteilt: Imagereferenz, Betriebssystemdatenträger und Datenträger sowie ein zusätzliches Objekt für den lokalen temporären Datenträger.
 
 Das Imagereferenzobjekt enthält die folgenden Informationen zum Betriebssystemimage:
 
@@ -413,6 +414,13 @@ Daten | BESCHREIBUNG |
 | `vhd` | Virtuelle Festplatte
 | `writeAcceleratorEnabled` | Gibt an, ob writeAccelerator für den Datenträger aktiviert ist.
 
+Das Ressourcendatenträgerobjekt enthält die Größe (in Kilobyte) des [lokalen temporären Datenträgers](../articles/virtual-machines/managed-disks-overview.md#temporary-disk), der an den virtuellen Computer angefügt ist (sofern vorhanden).
+Wenn [kein lokaler temporärer Datenträger für die VM](../articles/virtual-machines/azure-vms-no-temp-disk.md) vorhanden ist, lautet dieser Wert 0. 
+
+| Daten | BESCHREIBUNG | Eingeführt in Version |
+|------|-------------|--------------------|
+| `resourceDisk.size` | Größe des lokalen temporären Datenträgers für den virtuellen Computer (in KB) | 2021-02-01
+
 **Network**
 
 | Daten | BESCHREIBUNG | Eingeführt in Version |
@@ -438,7 +446,8 @@ Beim Erstellen eines neuen virtuellen Computers können Sie einen Datensatz ange
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" | base64 --decode
+$userData = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text"
+[System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($userData))
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -709,6 +718,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
                 "uri": ""
             },
             "writeAcceleratorEnabled": "false"
+        },
+        "resourceDisk": {
+            "size": "4096"
         }
     },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
@@ -810,6 +822,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
                 "uri": ""
             },
             "writeAcceleratorEnabled": "false"
+        },
+        "resourceDisk": {
+            "size": "4096"
         }
     },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
@@ -935,7 +950,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich/Optional | Beschreibung |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `nonce` | Optional | Eine 10-stellige Zeichenfolge, die als kryptografische Nonce fungiert. Wenn kein Wert angegeben wird, verwendet IMDS den aktuellen UTC-Zeitstempel.

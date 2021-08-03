@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, sstein
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 04/28/2021
-ms.openlocfilehash: 04831c7cb56082854097a2091b3c8099e4d488a6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 820c69135acbecde8c2c918e26a7b8cf9dc69428
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124795"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699880"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Erstellen und Verwenden der aktiven Georeplikation: Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,8 +24,11 @@ ms.locfileid: "108124795"
 Die aktive Georeplikation ist ein Feature in Azure SQL-Datenbank, mit der Sie lesbare sekundäre Datenbanken für einzelne Datenbanken auf einem Server im selben oder in einem anderen Rechenzentrum (Region) erstellen können.
 
 > [!NOTE]
-> Die aktive Georeplikation für Azure SQL Hyperscale [befindet sich jetzt in der öffentlichen Vorschau](https://aka.ms/hsgeodr). Die aktuellen Einschränkungen umfassen: nur eine sekundäre Geodatenbank in derselben oder einer anderen Region; nur erzwungenes Failover wird unterstützt; Wiederherstellung einer Datenbank aus sekundärer Geodatenbank wird nicht unterstützt; Verwendung einer sekundären Geodatenbank als Quelldatenbank für Datenbankkopie oder als primäre Datenbank für eine andere sekundäre Geodatenbank wird nicht unterstützt.
-
+> Die aktive Georeplikation für Azure SQL Hyperscale befindet sich [jetzt in der öffentlichen Vorschau](https://aka.ms/hsgeodr). Die aktuellen Einschränkungen umfassen: nur eine sekundäre Geodatenbank in derselben oder einer anderen Region; erzwungene und geplante Failover werden derzeit nicht unterstützt; Wiederherstellung einer Datenbank aus sekundärer Geodatenbank wird nicht unterstützt; Verwendung einer sekundären Geodatenbank als Quelldatenbank für Datenbankkopie oder als primäre Datenbank für eine andere sekundäre Geodatenbank wird nicht unterstützt.
+> Wenn Sie die sekundäre Geodatenbank beschreibbar machen müssen, können Sie dazu den Link für die Georeplikation mit den folgenden Schritten unterbrechen:
+> 1. Machen Sie die sekundäre Datenbank mithilfe des Cmdlets [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) zu einer eigenständigen Datenbank mit Lese-/Schreibzugriff. Dabei gehen alle Datenänderungen verloren, die zwar in der primären Datenbank committet, aber noch nicht in die sekundäre Datenbank repliziert wurden. Diese Änderungen können wiederhergestellt werden, wenn die alte primäre Datenbank verfügbar ist, oder (in einigen Fällen) durch Wiederherstellen der alten primären Datenbank auf den letzten verfügbaren Zeitpunkt.
+> 2. Wenn die alte primäre Datenbank verfügbar ist, löschen Sie sie, und richten Sie dann die Georeplikation für die neue primäre Datenbank ein (es wird eine neue sekundäre Datenbank erstellt). 
+> 3. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrer Anwendung entsprechend.
 
 > [!NOTE]
 > Die aktive Georeplikation wird von Azure SQL Managed Instance nicht unterstützt. Für ein geografisches Failover von Instanzen von Azure SQL Managed Instance können Sie [Autofailover-Gruppen](auto-failover-group-overview.md) verwenden.
@@ -144,6 +147,9 @@ Die Sicherungsspeicherredundanz der sekundären Datenbank ist standardmäßig id
 Weitere Informationen zu SQL-Datenbank-Computegrößen finden Sie im Artikel über die [SQL-Datenbank-Dienstebenen](purchasing-models.md).
 
 ## <a name="cross-subscription-geo-replication"></a>Abonnementübergreifende Georeplikation
+
+> [!NOTE]
+> Das Erstellen eines Georeplikats auf einem logischen Server in einem anderen Azure-Mandanten wird nicht unterstützt, wenn die [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/support-for-azure-ad-user-creation-on-behalf-of-azure-ad/ba-p/2346849)-Authentifizierung auf einem primären oder sekundären logischen Server aktiviert ist.
 
 Zum Einrichten der aktiven Georeplikation zwischen zwei Datenbanken, die verschiedenen Abonnements angehören (unabhängig davon, ob sie sich im selben Mandanten befinden oder nicht), müssen Sie die in diesem Abschnitt beschriebene spezielle Vorgehensweise befolgen.  Diese basiert auf SQL-Befehlen und erfordert folgende Schritte:
 

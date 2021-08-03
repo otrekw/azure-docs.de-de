@@ -3,12 +3,12 @@ title: Verwalten und Überwachen von Azure-VM-Sicherungen
 description: Erfahren Sie mehr über das Verwalten und Überwachen von Azure-VM-Sicherungen mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 51ce88bb67d64ce129a3479d38db9a66dfe65d0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70ce8ababcb596c3eb804e429156000ff7d64ecc
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100635076"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372570"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Verwalten von Azure-VM-Sicherungen mit dem Azure Backup-Dienst
 
@@ -21,7 +21,7 @@ Im Azure-Portal ermöglicht das Dashboard für den Recovery Services-Tresor den 
 * Die Gesamtgröße aller Sicherungsmomentaufnahmen.
 * Die Anzahl von virtuellen Computern, die für die Sicherung aktiviert sind.
 
-Sie können Backups über das Dashboard und durch ein Drilldown auf einzelne virtuelle Computer verwalten. Öffnen Sie den Tresor über das Dashboard, um mit dem Sichern von virtuellen Computern zu beginnen.
+Sie können Backups über das Dashboard und durch ein Drilldown auf einzelne virtuelle Computer verwalten. Öffnen Sie den Tresor über das Dashboard, um mit dem Sichern von VMs zu beginnen:
 
 ![Vollständige Dashboardansicht mit Schieberegler](./media/backup-azure-manage-vms/bottom-slider.png)
 

@@ -3,15 +3,15 @@ title: Verwenden von Key Vault-Verweisen
 description: Erfahren Sie, wie Sie Azure App Service und Azure Functions einrichten, um Azure Key Vault-Verweise zu verwenden. Machen Sie Key Vault-Geheimnisse für den Anwendungscode verfügbar.
 author: mattchenderson
 ms.topic: article
-ms.date: 04/23/2021
+ms.date: 05/25/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 0ca620d50706f10081e955cf206fcf8c06ae5fd4
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 3300f5fbb5613672d7979f161ca0c92126f26a83
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064933"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578114"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Verwenden von Key Vault-Verweisen für App Service und Azure Functions
 
@@ -77,7 +77,7 @@ Wenn in der Referenz keine Version angegeben ist, verwendet die App die neueste 
 
 Key Vault-Verweise können als Werte für [Anwendungseinstellungen](configure-common.md#configure-app-settings) verwendet werden, sodass Sie Geheimnisse in Key Vault anstelle der Websitekonfiguration behalten können. Die Anwendungseinstellungen sind im Ruhezustand sicher verschlüsselt, aber wenn Sie die Funktion zum Verwalten von Geheimnissen benötigen, sollten sie in Key Vault aufgenommen werden.
 
-Um einen Key Vault-Verweis für eine Anwendungseinstellung zu verwenden, legen Sie den Verweis als Wert für die Einstellung fest. Ihre App kann wie gewohnt durch seinen Schlüssel auf das Geheimnis verweisen. Es sind keine Codeänderungen erforderlich.
+Um einen Key Vault-Verweis für eine [Anwendungseinstellung](configure-common.md#add-or-edit) zu verwenden, legen Sie den Verweis als Wert für die Einstellung fest. Ihre App kann wie gewohnt durch seinen Schlüssel auf das Geheimnis verweisen. Es sind keine Codeänderungen erforderlich.
 
 > [!TIP]
 > Die meisten Anwendungseinstellungen, die Key Vault-Verweise verwenden, sollten als Slot-Einstellungen markiert werden, da Sie für jede Umgebung eigene Tresore verwenden sollten.
@@ -161,8 +161,8 @@ Ein Beispiel für eine Pseudovorlage für eine Funktions-App könnte wie folgt a
                 //...
                 "accessPolicies": [
                     {
-                        "tenantId": "[reference(concat('Microsoft.Web/sites/',  variables('functionAppName'), '/providers/Microsoft.ManagedIdentity/Identities/default'), '2015-08-31-PREVIEW').tenantId]",
-                        "objectId": "[reference(concat('Microsoft.Web/sites/',  variables('functionAppName'), '/providers/Microsoft.ManagedIdentity/Identities/default'), '2015-08-31-PREVIEW').principalId]",
+                        "tenantId": "[reference(resourceId('Microsoft.Web/sites/', variables('functionAppName')), '2020-12-01', 'Full').identity.tenantId]",
+                        "objectId": "[reference(resourceId('Microsoft.Web/sites/', variables('functionAppName')), '2020-12-01', 'Full').identity.principalId]",
                         "permissions": {
                             "secrets": [ "get" ]
                         }
@@ -179,7 +179,7 @@ Ein Beispiel für eine Pseudovorlage für eine Funktions-App könnte wie folgt a
                         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
                     ],
                     "properties": {
-                        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountResourceId'),'2015-05-01-preview').key1)]"
+                        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountResourceId'),'2019-09-01').key1)]"
                     }
                 },
                 {
@@ -191,7 +191,7 @@ Ein Beispiel für eine Pseudovorlage für eine Funktions-App könnte wie folgt a
                         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
                     ],
                     "properties": {
-                        "value": "[reference(resourceId('microsoft.insights/components/', variables('appInsightsName')), '2015-05-01').InstrumentationKey]"
+                        "value": "[reference(resourceId('microsoft.insights/components/', variables('appInsightsName')), '2019-09-01').InstrumentationKey]"
                     }
                 }
             ]

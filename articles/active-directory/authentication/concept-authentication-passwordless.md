@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b3ce98a55057b90f26cdc91d52a514fe4bb3c9e
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 981402a2b0558514b26b5a4240dde3db7c9c193a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517692"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068644"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
@@ -123,7 +123,7 @@ Ein Sicherheitsschlüssel **MUSS** die folgenden Features und Erweiterungen aus 
 
 Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formfaktoren an, die bekanntermaßen mit der kennwortlosen Benutzererfahrung kompatibel sind. Wir empfehlen Ihnen, die Sicherheitseigenschaften dieser Schlüssel zu bewerten, indem sie sich an den Hersteller und die FIDO Alliance wenden.
 
-| Anbieter | Kontakt |
+| Anbieter | Contact |
 | --- | --- |
 | Yubico | [https://www.yubico.com/solutions/passwordless/](https://www.yubico.com/solutions/passwordless/) |
 | Feitian | [https://ftsafe.us/pages/microsoft](https://ftsafe.us/pages/microsoft) |
@@ -141,11 +141,12 @@ Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formf
 | Token2, Schweiz | [https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key](https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key) |
 | GoTrustID Inc. | [https://www.gotrustid.com/idem-key](https://www.gotrustid.com/idem-key) |
 | Kensington | [https://www.kensington.com/solutions/product-category/why-biometrics/](https://www.kensington.com/solutions/product-category/why-biometrics/) |
+| Nymi | [https://www.nymi.com/product](https://www.nymi.com/product) |
 
 > [!NOTE]
 > Wenn Sie NFC-basierte Sicherheitsschlüssel erwerben und sie verwenden möchten, benötigen Sie einen unterstützten NFC-Leser für den Sicherheitsschlüssel. Der NFC-Leser ist keine Azure-Anforderung oder -Einschränkung. Eine Liste der unterstützten NFC-Leser finden Sie beim Anbieter für Ihren NFC-basierten Sicherheitsschlüssel.
 
-Wenn Sie ein Anbieter sind und Ihr Gerät in dieser Liste von unterstützten Geräten aufgeführt werden soll, wenden Sie sich an [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
+Wenn Sie Anbieter sind und Ihr Gerät zur Liste der unterstützten Geräte hinzufügen möchten, lesen Sie die Anleitung, wie Sie [Anbieter Microsoft-kompatibler FIDO2-Sicherheitsschlüssel werden](https://docs.microsoft.com/security/zero-trust/isv/fido2-hardware-vendor).
 
 Um mit FIDO2-Sicherheitsschlüsseln zu beginnen, lesen Sie folgende Anleitung:
 

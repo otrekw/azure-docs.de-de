@@ -5,19 +5,19 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 34fec713c3764987f07bc7fb89ecb0a0d770a840
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 460176dd8c86abc59d2f82948a6a35655b9eef84
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728018"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530597"
 ---
 ### <a name="functional-limits"></a>Funktionale Grenzwerte
 
 In der folgenden Tabelle werden die funktionalen Einschränkungen von Azure Digital Twins aufgeführt. 
 
 > [!TIP]
-> Empfehlungen zur Modellierung, die diese funktionalen Einschränkungen einhalten, finden Sie unter [Bewährte Methoden zum Entwerfen von Modellen](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models).
+> Empfehlungen zur Modellierung, die diese funktionalen Einschränkungen einhalten, finden Sie unter [Bewährte Methoden zum Modellieren](../articles/digital-twins/concepts-models.md#modeling-best-practices).
 
 | Bereich | Funktion | Standardlimit | Anpassbar? |
 | --- | --- | --- | --- |
@@ -56,6 +56,6 @@ Die folgende Tabelle gibt die Ratengrenzwerte verschiedener APIs an.
 
 ### <a name="other-limits"></a>Andere Limits
 
-Grenzwerte für Datentypen und Felder in DTDL-Dokumenten für Azure Digital Twins-Modelle finden Sie in der Dokumentation zu den entsprechenden Spezifikationen in GitHub: [*Digital Twins Definition Language (DTDL): Version 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
+Grenzwerte für Datentypen und Felder in DTDL-Dokumenten für Azure Digital Twins-Modelle finden Sie in der Dokumentation zu den entsprechenden Spezifikationen in GitHub: [Digital Twins Definition Language (DTDL) – Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
  
-Details zur Abfragelatenz und anderen Abfrageeinschränkungen finden Sie unter [*Vorgehensweise: Abfragen des Zwillingsgraphen*](../articles/digital-twins/how-to-query-graph.md).
+Details zur Abfragelatenz werden unter [Konzepte: Abfragesprache](../articles/digital-twins/concepts-query-language.md#considerations-for-querying) beschrieben. Einschränkungen bestimmter Funktionen der Abfragesprache finden Sie in der [Referenzdokumentation zu Abfragen](../articles/digital-twins/concepts-query-language.md#reference-documentation).

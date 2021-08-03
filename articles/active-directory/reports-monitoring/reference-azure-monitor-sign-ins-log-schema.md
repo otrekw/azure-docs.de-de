@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/12/2021
+ms.date: 05/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bad8ae86827144269e816a6c2e01d6af3f4d88ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa9bc861ffdc2c8671f062bb41499c8ffee1123d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225417"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965630"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretieren des Azure AD-Anmeldeprotokollschemas in Azure Monitor
 
@@ -151,8 +151,8 @@ Dieser Artikel beschreibt das Azure Active Directory-Anmeldeprotokollschema (Azu
 | OperationVersion | - | Die vom Client angeforderte REST-API-Version. |
 | Category | - | Für Anmeldungen ist dieser Wert immer *SignIn*. | 
 | TenantId | - | Die mit den Protokollen verknüpfte Mandanten-GUID. |
-| ResultType | - | Das Ergebnis des Anmeldevorgangs ist *Erfolgreich* oder *Fehler*. | 
-| ResultSignature | - | Gibt den Fehlercode (falls vorhanden) des Anmeldevorgangs an. |
+| ResultType | - | Als Ergebnis für den Anmeldevorgang kann `0` bei einem Erfolg oder ein *Fehlercode* bei einem Fehler zurückgegeben werden. | 
+| ResultSignature | - | Dieser Wert ist immer *None*. |
 | ResultDescription | Nicht zutreffend oder leer | Gibt die Fehlerbeschreibung des Anmeldevorgangs an. |
 | riskDetail | riskDetail | Gibt den „Grund“ für einen bestimmten Zustand eines riskanten Benutzers, einer Anmeldung oder einer Risikoerkennung an. Die möglichen Werte sind: `none`, `adminGeneratedTemporaryPassword`, `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset`, `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe`, `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser`, `adminConfirmedSigninCompromised`, `unknownFutureValue`. Der Wert `none` bedeutet, dass für den Benutzer bzw. die Anmeldung bisher keine Aktion ausgeführt wurde. <br>**Hinweis:** Die Details für diese Eigenschaft erfordern eine Azure AD Premium P2-Lizenz. Andere Lizenzen geben den Wert `hidden` zurück. |
 | riskEventTypes | riskEventTypes | Der der Anmeldung zugeordnete Risikoerkennungstyp. Die möglichen Werte sind: `unlikelyTravel`, `anonymizedIPAddress`, `maliciousIPAddress`, `unfamiliarFeatures`, `malwareInfectedIPAddress`, `suspiciousIPAddress`, `leakedCredentials`, `investigationsThreatIntelligence`, `generic` und `unknownFutureValue`. |
@@ -171,5 +171,5 @@ Dieser Artikel beschreibt das Azure Active Directory-Anmeldeprotokollschema (Azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Interpret audit logs schema in Azure Monitor](reference-azure-monitor-audit-log-schema.md) (Interpretieren des Überwachungsprotokollschemas in Azure Monitor)
+* [Interpret audit logs schema in Azure Monitor](./overview-reports.md) (Interpretieren des Überwachungsprotokollschemas in Azure Monitor)
 * [Weitere Informationen zu Protokollen der Azure-Plattform](../../azure-monitor/essentials/platform-logs-overview.md)

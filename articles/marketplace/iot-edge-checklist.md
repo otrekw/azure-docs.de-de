@@ -1,18 +1,18 @@
 ---
-title: Prüfliste vor der Zertifizierung für IoT Edge-Modulangebote im Azure Marketplace
-description: Erfahren Sie mehr über die spezifischen Zertifizierungsanforderungen für die Veröffentlichung von IoT Edge-Modulangeboten im Azure Marketplace.
+title: Prüfliste vor der Zertifizierung für IoT Edge-Modulangebote auf dem Azure Marketplace
+description: Erfahren Sie mehr über die spezifischen Zertifizierungsanforderungen für die Veröffentlichung von IoT Edge-Modulangeboten auf dem Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-author: keferna
-ms.author: keferna
-ms.date: 03/01/2021
-ms.openlocfilehash: 31c19f62f0328fca05562eaa2f19b7a79c0f3e15
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+author: aarathin
+ms.author: aarathin
+ms.date: 05/21/2021
+ms.openlocfilehash: ec24d4df5a792166812693ad90f21396771ecdd6
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562697"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537888"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>Prüfliste vor der Zertifizierung für IoT Edge-Module
 
@@ -79,5 +79,5 @@ Das Zertifizierungsteam verwendet die folgende Hardware zum Überprüfen von Ima
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Bereitstellen von Modulen aus dem kommerziellen Marketplace](../iot-edge/how-to-deploy-modules-portal.md#deploy-from-azure-marketplace)
-- [Veröffentlichen des Edge-Moduls im Partner Center](./partner-center-portal/azure-iot-edge-module-creation.md)
+- [Veröffentlichen des Edge-Moduls im Partner Center](./iot-edge-offer-setup.md)
 - [Bereitstellen eines IoT Edge-Moduls](../iot-edge/quickstart-linux.md)

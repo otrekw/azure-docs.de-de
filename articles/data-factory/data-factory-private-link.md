@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: f84d7d7a02b75723f78cfbed9ee23e19ebea9a15
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 12fd830b47e28b893e2e26bf11919676da62af97
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481677"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464509"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link für Azure Data Factory
 
@@ -63,7 +63,7 @@ Die Aktivierung des Private Link-Diensts für die genannten Kommunikationskanäl
    > Das Herstellen einer Verbindung mit Azure Data Factory über einen privaten Endpunkt gilt nur für eine selbstgehostete Integration Runtime in Data Factory. In Synapse wird dieser Vorgang nicht unterstützt.
 
 > [!WARNING]
-> Wenn Sie einen verknüpften Dienst erstellen, stellen Sie sicher, dass die Anmeldeinformationen in Azure Key Vault gespeichert werden. Andernfalls funktionieren die Anmeldeinformationen nicht, wenn Sie Private Link in Azure Data Factory aktivieren.
+> Wenn Sie Private Link in Azure Data Factory aktivieren und gleichzeitig den öffentlichen Zugriff blockieren, müssen Sie beim Erstellen eines verknüpften Diensts sicherstellen, dass Ihre Anmeldeinformationen in einem Azure-Schlüsseltresor gespeichert sind. Anderenfalls funktionieren die Anmeldeinformationen nicht.
 
 ## <a name="dns-changes-for-private-endpoints"></a>DNS-Änderungen für private Endpunkte
 Wenn Sie einen privaten Endpunkt erstellen, wird der DNS-CNAME-Ressourceneintrag für die Data Factory auf einen Alias in einer Unterdomäne mit dem Präfix „privatelink“ aktualisiert. Standardmäßig erstellen wir außerdem eine [private DNS-Zone](../dns/private-dns-overview.md), die der Unterdomäne „privatelink“ entspricht, mit den DNS-A-Ressourceneinträgen für die privaten Endpunkte.
@@ -72,7 +72,7 @@ Wenn Sie die Endpunkt-URL der Data Factory außerhalb des VNET mit dem privaten 
 
 Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für die Data Factory „DataFactoryA“ bei Auflösung von außerhalb des VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net | CNAME   | < öffentlicher Endpunkt des Data Factory-Diensts > |
@@ -80,7 +80,7 @@ Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für die Data Fa
 
 Die DNS-Ressourceneinträge für „DataFactoryA“ lauten nach dem Auflösen im VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net   | Ein | < IP-Adresse des privaten Endpunkts > |

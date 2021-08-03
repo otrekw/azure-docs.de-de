@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 23afe1e91a07277a3b6e583fcf5d767a843ef4e5
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 2f1892ab7cafae0b344026ed73a801ca30f4d9ee
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320473"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421542"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Behandeln von Fehlern aufgrund eines ungültigen Gateways in Application Gateway
 
@@ -131,7 +131,7 @@ Vergewissern Sie sich anhand der Tabelle weiter oben, dass die benutzerdefiniert
 
 ### <a name="cause"></a>Ursache
 
-Wenn eine Benutzeranforderung empfangen wird, wendet Application Gateway die konfigurierten Regeln auf die Anforderung an und leitet sie an eine Back-End-Poolinstanz weiter. Danach wartet Application Gateway eine bestimmte Zeit auf eine Antwort der Back-End-Instanz. Dieses Intervall ist standardmäßig auf **20** Sekunden festgelegt. Wenn Application Gateway innerhalb dieses Intervalls keine Antwort von der Back-End-Anwendung erhält, wird dem Benutzer der Fehler 502 angezeigt.
+Wenn eine Benutzeranforderung empfangen wird, wendet Application Gateway die konfigurierten Regeln auf die Anforderung an und leitet sie an eine Back-End-Poolinstanz weiter. Danach wartet Application Gateway eine bestimmte Zeit auf eine Antwort der Back-End-Instanz. Dieses Intervall ist standardmäßig auf **20** Sekunden festgelegt. Wenn bei Application Gateway v1 der Anwendungsgateway innerhalb dieses Intervalls keine Antwort von der Back-End-Anwendung erhält, resultiert die Benutzeranforderung im Fehler 502.  Wenn bei Application Gateway v2 der Anwendungsgateway innerhalb dieses Intervalls keine Antwort von der Back-End-Anwendung erhält, wird die Anforderung an ein zweites Back-End-Poolmitglied gesendet.  Wenn die zweite Anforderung fehlschlägt, resultiert die Benutzeranforderung im Fehler 502.
 
 ### <a name="solution"></a>Lösung
 
