@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5833308f03d328d988ac818d83ff5ee618a4c79c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3baf87cc1b14ca4d8d7d3630e777b03801398968
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563571"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737547"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Konvertieren von Konfigurationen in zusammengesetzte Ressourcen
 
@@ -26,7 +26,7 @@ Beispiele wären:
 
 - Erstellen eines Webservers
 - Erstellen eines DNS-Servers
-- Erstellen eines SharePoint-Servers
+- Erstellen eines Servers, auf dem SharePoint ausgeführt wird
 - Konfigurieren eines SQL-Clusters
 - Verwalten von Firewalleinstellungen
 - Verwalten von Kennworteinstellungen

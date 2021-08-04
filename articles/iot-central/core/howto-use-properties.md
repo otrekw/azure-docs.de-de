@@ -7,16 +7,16 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 39bab52a564439d34b8702de11edabe7f0d6dfbc
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: a605046c8cf76a425f7df5b1cdf637f7dc4bfc90
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492255"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747249"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Verwenden von Eigenschaften in einer Azure IoT Central-Lösung
 
-In dieser Schrittanleitung für Geräteentwickler wird gezeigt, wie Sie Geräteeigenschaften verwenden können, die in Ihrer Azure IoT Central-Anwendung in einer Gerätevorlage definiert sind.
+In dieser Schrittanleitung wird gezeigt, wie Sie Geräteeigenschaften verwenden können, die in Ihrer Azure IoT Central-Anwendung in einer Gerätevorlage definiert werden.
 
 Eigenschaften stellen Zeitpunktwerte dar. Ein Gerät kann beispielsweise eine Eigenschaft verwenden, um die Zieltemperatur zu melden, die es zu erreichen versucht. Standardmäßig sind Geräteeigenschaften in IoT Central schreibgeschützt. Mithilfe von schreibbaren Eigenschaften können Sie den Zustand zwischen Ihrem Gerät und der Azure IoT Central-Anwendung synchronisieren.
 

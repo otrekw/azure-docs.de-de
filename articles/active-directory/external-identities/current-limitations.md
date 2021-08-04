@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4f960819aa208dcc8d3e476fc45a766452b612c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6049b2b8f3562689255113efa3b2454927ffe7ef
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96168949"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750750"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Einschränkungen der Azure AD B2B-Zusammenarbeit
 Azure Active Directory B2B-Zusammenarbeit (Azure AD) unterliegt derzeit den in diesem Artikel beschriebenen Einschränkungen.
@@ -34,7 +34,7 @@ Azure AD B2B unterliegt den Einschränkungen des Azure AD-Dienstverzeichnisses. 
 [Nationale Clouds](../develop/authentication-national-cloud.md) sind physisch isolierte Azure-Instanzen. Die B2B-Zusammenarbeit wird über die Grenzen nationaler Clouds hinweg nicht unterstützt. Beispiel: Wenn sich Ihr Azure-Mandant in der öffentlichen globalen Cloud befindet, können Sie keinen Benutzer einladen, dessen Konto sich in einer nationalen Cloud befindet. Damit Sie mit dem Benutzer zusammenarbeiten können, fragen Sie ihn nach einer anderen E-Mail-Adresse, oder erstellen Sie ein Mitgliedsbenutzerkonto in Ihrem Verzeichnis.
 
 ## <a name="azure-us-government-clouds"></a>Microsoft Azure Cloud for US Government (Azure-Cloud für US-Behörden)
-Innerhalb der Azure-Cloud für US-Behörden wird die B2B-Zusammenarbeit zwischen Mandanten unterstützt, die sich beide in der Azure-Cloud für US-Behörden befinden und die B2B-Zusammenarbeit unterstützen. Azure-Mandanten für US-Behörden, die B2B-Zusammenarbeit unterstützen, können auch mit Benutzern von sozialen Netzwerken zusammenarbeiten, die Microsoft- oder Google-Konten verwenden. Wenn Sie einen Benutzer, der zu keiner dieser Gruppen gehört (z. B. wenn er sich in einem Mandanten befindet, der nicht zur Azure-Cloud für US-Behörden gehört oder die B2B-Zusammenarbeit noch nicht unterstützt), einladen, schlägt die Einladung fehl, oder der Benutzer kann die Einladung nicht einlösen. Ausführliche Informationen zu weiteren Einschränkungen finden Sie unter [Azure Active Directory Premium P1 und P2](../../azure-government/compare-azure-government-global-azure.md#azure-active-directory-premium-p1-and-p2).
+Innerhalb der Azure-Cloud für US-Behörden wird die B2B-Zusammenarbeit zwischen Mandanten unterstützt, die sich beide in der Azure-Cloud für US-Behörden befinden und die B2B-Zusammenarbeit unterstützen. Azure-Mandanten für US-Behörden, die B2B-Zusammenarbeit unterstützen, können auch mit Benutzern von sozialen Netzwerken zusammenarbeiten, die Microsoft- oder Google-Konten oder Konten mit Einmalkennung per E-Mail verwenden. Wenn Sie einen Benutzer, der zu keiner dieser Gruppen gehört (z. B. wenn er sich in einem Mandanten befindet, der nicht zur Azure-Cloud für US-Behörden gehört oder die B2B-Zusammenarbeit noch nicht unterstützt), einladen, schlägt die Einladung fehl, oder der Benutzer kann die Einladung nicht einlösen. Ausführliche Informationen zu weiteren Einschränkungen finden Sie unter [Azure Active Directory Premium P1 und P2](../../azure-government/compare-azure-government-global-azure.md#azure-active-directory-premium-p1-and-p2).
 
 ### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>Wie kann ich erkennen, ob die B2B-Zusammenarbeit in meinem Mandanten der Azure-Cloud für US-Behörden verfügbar ist?
 Gehen Sie wie folgt vor, um herauszufinden, ob Ihr Mandant der Azure-Cloud für US-Behörden die B2B-Zusammenarbeit unterstützt:

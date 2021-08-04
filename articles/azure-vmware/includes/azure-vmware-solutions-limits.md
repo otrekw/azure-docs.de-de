@@ -3,12 +3,12 @@ title: Einschränkungen für Azure VMware Solution
 description: In diesem Artikel erhalten Sie Informationen zu Einschränkungen für Azure VMware Solution.
 ms.topic: include
 ms.date: 03/24/2021
-ms.openlocfilehash: 856aca934b7a80b8f5dc7e336b91821ab299b34c
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: ce0f346c66c7eb982f0891b82e710affdcc956a8
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951166"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109719190"
 ---
 <!-- Used in /azure/azure-resource-manager/management/azure-subscription-service-limits.md and concepts-networking.md -->
 
@@ -22,7 +22,7 @@ In der nachstehenden Tabelle werden die maximalen Grenzwerte für Azure VMware S
 | Knoten pro privater Cloud | 96 |
 | vCenter-Instanzen pro privater Cloud | 1  |
 | HCX-Standortkopplungen | 3 mit Version „Advanced“, 10 mit Version „Enterprise“ |
-| Maximale Anzahl verknüpfter AVS-ExpressRoute-SDDCs | 4 |
+| Maximale Anzahl verknüpfter privater AVS-ExpressRoute-Clouds | 4<br />Das verwendete Gateway für virtuelle Netzwerke bestimmt die tatsächliche maximale Anzahl von verknüpften privaten Clouds.  Weitere Informationen finden Sie unter [Informationen zu ExpressRoute-Gateways für virtuelle Netzwerke](../../expressroute/expressroute-about-virtual-network-gateways.md). | 
 | AVS-ExpressRoute-Portgeschwindigkeit | 10 GBit/s<br />Das verwendete virtuelle Netzwerkgateway bestimmt die tatsächliche Bandbreite. Weitere Informationen finden Sie unter [Informationen zu ExpressRoute-Gateways für virtuelle Netzwerke](../../expressroute/expressroute-about-virtual-network-gateways.md). | 
 | Über vWAN verfügbar gemachte öffentliche IPs | 100 |
 | vSAN-Kapazitätsgrenzen | 75 Prozent der insgesamt nutzbaren Kapazität (25 Prozent werden für die SLA vorgehalten)  |

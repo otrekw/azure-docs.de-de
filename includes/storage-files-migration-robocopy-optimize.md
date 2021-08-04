@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 4/05/2021
 ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: 57d14ae6e6da7cfa883f1aed74cce390c0185d98
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: a3dc42ece6bbd05b61ef9a4f1a0f82e147b2a762
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491674"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749289"
 ---
 Die Geschwindigkeit und die Erfolgsrate einer bestimmten Robocopy-Ausführung hängt von mehreren Faktoren ab:
 
@@ -51,6 +51,8 @@ Häufig wird die Bandbreite als der am stärksten einschränkende Faktor bei der
 Die Ursache für diesen Unterschied ist die Verarbeitungsleistung, die für das Durchlaufen eines Namespace erforderlich ist. Robocopy unterstützt Multithread-Kopien über den Parameter `/MT:n`, wobei „n“ für die Anzahl von Prozessorthreads steht. Wenn Sie einen Computer speziell für Robocopy bereitstellen, sollten Sie also auf die Anzahl von Prozessorkernen und deren Beziehung zur jeweiligen Threadanzahl achten. Eine gängige Vorgehensweise ist die Nutzung von zwei Threads pro Kern. Die Anzahl von Kernen und Threads eines Computers stellt einen wichtigen Datenpunkt dar, der hilfreich beim Treffen der Entscheidung ist, welche Multithread-Werte (`/MT:n`) Sie angeben sollten. Berücksichtigen Sie auch, wie viele Robocopy-Aufträge Sie auf einem bestimmten Computer parallel ausführen möchten.
 
 Bei einer höheren Anzahl von Threads verläuft der Kopiervorgang für die kleinen Dateien aus dem Beispiel mit 1 TiB erheblich schneller als bei einer geringeren Anzahl von Threads. Gleichzeitig kann es sein, dass die zusätzliche Investition in Ressourcen beim Beispiel mit 1 TiB an größeren Dateien nicht zu proportionalen Vorteilen führt. Bei einer höheren Anzahl von Threads wird versucht, eine größere Zahl von großen Dateien gleichzeitig über das Netzwerk zu kopieren. Durch diese zusätzliche Netzwerkaktivität erhöht sich die Wahrscheinlichkeit, dass es zu Einschränkungen in Bezug auf den Durchsatz oder den Speicher-IOPS-Wert kommt.
+
+Beim ersten Kopieren in ein leeres Ziel mithilfe von RoboCopy oder bei einem differenziellen Vorgang mit zahlreichen geänderten Dateien ist Ihr Netzwerkdurchsatz wahrscheinlich ein limitierender Faktor. Beginnen Sie mit einer hohen Threadanzahl für eine erste Ausführung. Eine hohe Threadanzahl, die über die derzeit verfügbaren Threads auf dem Computer hinausgeht, hilft bei der Auslastung der verfügbaren Netzwerkbandbreite. Nachfolgende /MIR-Ausführungen werden progressiv durch die Verarbeitung von Elementen beeinflusst. Weniger Änderungen bei einem differenziellen Vorgang bedeuten weniger Datentransporte über das Netzwerk. Ihre Geschwindigkeit hängt nun weniger von der Übertragungsgeschwindigkeit über die Netzwerkverbindung und vielmehr von der Verarbeitungsgeschwindigkeit für Namespaceelemente ab. Stimmen Sie bei nachfolgenden Ausführungen den Threadanzahlwert auf die Prozessorkernanzahl und die Threadanzahl pro Kern ab. Berücksichtigen Sie, ob Kerne für andere Aufgaben reserviert werden müssen, die ein Produktionsserver möglicherweise hat.
 
 ### <a name="avoid-unnecessary-work"></a>Vermeiden von unnötigem Arbeitsaufwand
 

@@ -3,12 +3,12 @@ title: Einrichten von Project Lead The Way-Labs mit Azure Lab Services
 description: Hier erfahren Sie, wie Sie Labs einrichten, um Project Lead The Way-Kurse zu unterrichten.
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: 12efa11d2062b5a4d919dbdcdb4a824dec33f5fb
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: aaaddcb2c2111ccfbf0edfc79bbefafb711b19dc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278720"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768533"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Einrichten von Labs für Project Lead The Way-Kurse
 
@@ -48,7 +48,7 @@ ms.locfileid: "108278720"
 
 - **Computer Science A (Informatik A)**
 
-    In diesem Kurs erweitern die Kursteilnehmer ihre Programmierkenntnisse, indem sie die Entwicklung mobiler Apps erlernen.  Sie verwenden die [Visual Studio Code-Entwicklungsumgebung von Microsoft](https://code.visualstudio.com/), um sich mit [Java](https://www.java.com/) vertraut zu machen.  Außerdem verwenden die Kursteilnehmer einen Emulator, der Ihnen das Ausführen und Testen Ihres Codes für mobile Apps ermöglicht.  Informationen zum Einrichten eines Emulators in Azure Lab Services erhalten Sie vom [Azure Lab Services-Support](mailto:AzLabsCOVIDSupport@microsoft.com).
+    In diesem Kurs erweitern die Kursteilnehmer ihre Programmierkenntnisse, indem sie die Entwicklung mobiler Apps erlernen.  Sie verwenden die [Visual Studio Code-Entwicklungsumgebung von Microsoft](https://code.visualstudio.com/), um sich mit [Java](https://www.java.com/) vertraut zu machen.  Außerdem verwenden die Kursteilnehmer einen Emulator, der Ihnen das Ausführen und Testen Ihres Codes für mobile Apps ermöglicht.  Wenn Sie Informationen zum Einrichten eines Emulators in Azure Lab Services benötigen, kontaktieren Sie uns über die [Azure Lab Services-Foren](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices).
 
 Eine vollständige Liste der Software für die einzelnen Kurse finden Sie auf der [PLTW-Website](https://www.pltw.org/pltw-software).
 
@@ -122,6 +122,9 @@ Zum Einrichten eines Labs führen Sie unter Berücksichtigung dieser Empfehlung 
 1.  Starten Sie nach dem Erstellen des Labs die Vorlagen-VM, und stellen Sie eine Verbindung mit dieser her, um zu überprüfen, ob das Image erwartungsgemäß funktioniert.
 
 1.  Veröffentlichen Sie zum Schluss die Vorlagen-VM, um die VMs der Kursteilnehmer zu erstellen.
+
+> [!NOTE]
+> Wenn Ihre Schule eine Inhaltsfilterung durchführen muss, etwa um den [Children‘s Internet Protection Act (CIPA)](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act) einzuhalten, müssen Sie Drittanbietersoftware verwenden.  Weitere Informationen finden Sie im Leitfaden zum [Filtern von Inhalten mit Lab Services](./administrator-guide.md#content-filtering).
 
 ## <a name="student-devices"></a>Kursteilnehmergeräte
 Kursteilnehmer können mit Windows- und Mac-Computern sowie Chromebooks eine Verbindung mit ihren Lab-VMs herstellen. Anweisungen dazu finden Sie unter:

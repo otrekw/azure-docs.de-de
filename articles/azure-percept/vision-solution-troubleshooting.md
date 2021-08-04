@@ -7,105 +7,113 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7befc9648e696e80e0469d5e91173786354574d8
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 80e25690e133b348ad5ee180bb5a3e01d4176c90
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685745"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136242"
 ---
 # <a name="vision-solution-troubleshooting"></a>Problembehandlung für die Vision-Lösung
 
-In den folgenden Anleitungen finden Sie Informationen zum Beheben von Problemen mit Vision-Lösungen ohne Code in Azure Percept Studio.
+In diesem Artikel finden Sie Informationen zum Beheben von Problemen mit Vision-Lösungen ohne Code in Azure Percept Studio.
 
 ## <a name="delete-a-vision-project"></a>Löschen eines Vision-Projekts
 
-1. Wechseln Sie zu https://www.customvision.ai/projects.
+1. Navigieren Sie zur Seite [Custom Vision-Projekte](https://www.customvision.ai/projects).
 
-1. Zeigen Sie auf das Projekt, das Sie löschen möchten, und klicken Sie auf das Papierkorbsymbol, um das Projekt zu löschen.
+1. Zeigen Sie auf das Projekt, das Sie löschen möchten, und wählen Sie das Papierkorbsymbol aus, um das Projekt zu löschen.
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/vision-delete-project.png" alt-text="Seite „Projekte“ in Custom Vision mit hervorgehobenem Löschsymbol":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/vision-delete-project.png" alt-text="Screenshot: Seite „Projekte“ in Custom Vision mit hervorgehobenem Symbol „Löschen“":::
 
 ## <a name="check-which-modules-are-on-a-device"></a>Überprüfen, welche Module sich auf einem Gerät befinden
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home).
 
-1. Klicken Sie auf das Symbol **IoT Hub**.
+1. Wählen Sie das Symbol **IoT Hub** aus.
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/vision-iot-hub-2-inline.png" alt-text="Startseite des Azure-Portals mit hervorgehobenem IoT Hub-Symbol" lightbox= "./media/vision-solution-troubleshooting/vision-iot-hub-2.png":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/vision-iot-hub-2-inline.png" alt-text="Screenshot: Startseite des Azure-Portals mit hervorgehobenem Symbol „IoT Hub“" lightbox= "./media/vision-solution-troubleshooting/vision-iot-hub-2.png":::
 
-1. Wählen Sie die IoT Hub-Instanz aus, mit der das Zielgerät verbunden ist.
+1. Wählen Sie den IoT-Hub aus, mit dem das Zielgerät verbunden ist.
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/vision-iot-hub.png" alt-text="Liste der IoT Hub-Instanzen":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/vision-iot-hub.png" alt-text="Screenshot: Liste mit IoT-Hubs":::
 
-1. Wählen Sie **IoT Edge** aus, und klicken Sie unter der Registerkarte **Geräte-ID** auf Ihr Gerät.
+1. Wählen Sie **IoT Edge** und anschließend unter der Registerkarte **Geräte-ID** Ihr Gerät aus.
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/vision-iot-edge.png" alt-text="IoT Edge-Startseite":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/vision-iot-edge.png" alt-text="Screenshot: IoT Edge-Startseite":::
 
-1. Ihre Gerätemodule sind auf der Registerkarte **Module** aufgeführt.
+1. Ihre Gerätemodule werden in einer Liste auf der Registerkarte **Module** angezeigt.
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/vision-device-modules-inline.png" alt-text="Azure Iot Edge-Seite für ausgewähltes Gerät mit dem Inhalt der Registerkarte Module." lightbox= "./media/vision-solution-troubleshooting/vision-device-modules.png":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/vision-device-modules-inline.png" alt-text="Screenshot: Seite „IoT Edge“ für das ausgewählte Gerät mit dem Inhalt der Registerkarte „Module“" lightbox= "./media/vision-solution-troubleshooting/vision-device-modules.png":::
 
 ## <a name="delete-a-device"></a>Löschen eines Mediums
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home).
 
-1. Klicken Sie auf das Symbol **IoT Hub**.
+1. Wählen Sie das Symbol **IoT Hub** aus.
 
-1. Wählen Sie die IoT Hub-Instanz aus, mit der das Zielgerät verbunden ist.
+1. Wählen Sie den IoT-Hub aus, mit dem das Zielgerät verbunden ist.
 
-1. Wählen Sie **IoT Edge** aus, und aktivieren Sie das Kontrollkästchen neben der Zielgeräte-ID. Klicken Sie auf das Papierkorbsymbol, um das Gerät zu löschen.
+1. Wählen Sie **IoT Edge** aus, und aktivieren Sie das Kontrollkästchen neben der Zielgeräte-ID. Wählen Sie **Löschen** aus, um Ihr Gerät zu löschen.
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/vision-delete-device.png" alt-text="Hervorgehobenes Löschsymbol auf der IoT Edge-Startseite.":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/vision-delete-device.png" alt-text="Screenshot: Hervorgehobene Schaltfläche „Löschen“ auf der IoT Edge-Startseite":::
 
-## <a name="eye-module-troubleshooting-tips"></a>Tipps zur Problembehandlung für das visuelle Modul
+## <a name="check-the-runtime-status-of-azureeyemodule"></a>Prüfen des Laufzeitstatus von azureeyemodule
 
-### <a name="check-the-runtime-status-of-azureeyemodule"></a>Prüfen des Laufzeitstatus von azureeyemodule
+Vergewissern Sie sich bei einem Problem mit **WebStreamModule**, dass **azureeyemodule** (zuständig für Vision-Modellrückschlüsse) ausgeführt wird. So überprüfen Sie den Laufzeitstatus:
 
-Vergewissern Sie sich bei einem Problem mit **WebStreamModule**, dass **azureeyemodule**, das (zuständig für Vision-Modellrückschlüsse) ausgeführt wird. Navigieren Sie zum Überprüfen des Laufzeitstatus zum [Azure-Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home) und anschließend zu **Alle Ressourcen** ->  **\<your IoT hub>**  -> **IoT Edge** ->  **\<your device ID>** . Klicken Sie auf die Registerkarte **Module**, um den Laufzeitstatus aller installierten Module anzuzeigen.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home) und dann zu **Alle Ressourcen** >  *\<your IoT hub>*  > **IoT Edge** >  *\<your device ID>* . 
+1. Wählen Sie die Registerkarte **Module** aus, um den Laufzeitstatus aller installierten Module anzuzeigen.
 
-:::image type="content" source="./media/vision-solution-troubleshooting/over-the-air-iot-edge-device-page-inline.png" alt-text="Bildschirm mit dem Laufzeitstatus der Gerätemodule" lightbox= "./media/vision-solution-troubleshooting/over-the-air-iot-edge-device-page.png":::
+   :::image type="content" source="./media/vision-solution-troubleshooting/over-the-air-iot-edge-device-page-inline.png" alt-text="Screenshot: Bildschirm zum Laufzeitstatus der Gerätemodule" lightbox= "./media/vision-solution-troubleshooting/over-the-air-iot-edge-device-page.png":::
 
-Ist der Laufzeitstatus von **azureeyemodule** nicht als **Wird ausgeführt** angegeben, klicken Sie auf **Module festlegen** -> **azureeyemodule**. Legen Sie auf der Seite **Moduleinstellungen** die Option **Gewünschter Status** auf **Wird ausgeführt** fest, und klicken Sie auf **Aktualisieren**.
+1. Ist der Laufzeitstatus von **azureeyemodule** nicht als **Wird ausgeführt** angegeben, wählen Sie **Module festlegen** > **azureeyemodule** aus. 
+1. Legen Sie auf der Seite **Moduleinstellungen** die Option **Gewünschter Status** auf **Wird ausgeführt** fest, und wählen Sie **Aktualisieren** aus.
 
- :::image type="content" source="./media/vision-solution-troubleshooting/firmware-desired-status-stopped.png" alt-text="Konfigurationsbildschirm für Moduleinstellungen":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/firmware-desired-status-stopped.png" alt-text="Screenshot: Konfigurationsbildschirm „Moduleinstellungen“":::
 
-### <a name="update-telemetryintervalneuralnetworkms"></a>TelemetryIntervalNeuralNetworkMs aktualisieren
+## <a name="change-how-often-messages-are-sent-from-the-azureeyemodule"></a>Ändern, wie oft Nachrichten von azureeyemodule gesendet werden
 
-Wenn der folgende Fehler bei der Zählbegrenzung auftritt, muss der Wert TelemetryIntervalNeuralNetworkMs in den Modulzwilling-Einstellungen des azureeyemodule-Moduls aktualisiert werden.
+Ihre Abonnementebene kann die Anzahl von Nachrichten begrenzen, die von Ihrem Gerät an IoT Hub gesendet werden können. Die Ebene „Free“ beispielsweise beschränkt die Anzahl von Nachrichten auf 8.000 pro Tag. Sobald dieser Grenzwert erreicht ist, funktioniert azureeyemodule nicht mehr, und Sie erhalten möglicherweise den folgenden Fehler:
 
 |Fehlermeldung|
 |------|
-|Die Gesamtanzahl der Nachrichten auf IotHub 'xxxxxxxxx' hat die zugewiesene Quote überschritten. Maximal erlaubte Nachrichtenanzahl: '8000', aktuelle Meldungsanzahl: 'xxxx'. Sende- und Empfangsvorgänge sind für diesen Hub bis zum nächsten UTC-Tag gesperrt. Erwägen Sie eine Erhöhung der Einheiten für diesen Hub, um die Quote zu erhöhen.|
+|*Die Gesamtanzahl der Nachrichten auf IotHub 'xxxxxxxxx' hat die zugewiesene Quote überschritten. Maximal erlaubte Nachrichtenanzahl: '8000', aktuelle Meldungsanzahl: 'xxxx'. Sende- und Empfangsvorgänge sind für diesen Hub bis zum nächsten UTC-Tag gesperrt. Erwägen Sie eine Erhöhung der Einheiten für diesen Hub, um die Quote zu erhöhen.*|
 
-TelemetryIntervalNeuralNetworkMs bestimmt, wie oft Nachrichten (in Millisekunden) vom neuronalen Netzwerk gesendet werden sollen. Azure-Abonnements haben eine begrenzte Anzahl von Nachrichten pro Tag, abhängig von Ihrer Abonnementstufe. Wenn Sie sich selbst aussperren, weil Sie zu viele Nachrichten gesendet haben, erhöhen Sie diesen Wert auf eine höhere Zahl. 12000 (d.h. einmal alle 12 Sekunden) ergibt eine schöne runde Zahl von 7200 Nachrichten pro Tag, was unter dem Limit von 8000 Nachrichten für das kostenlose Abonnement liegt.
+Mit dem Modulzwilling „azureeyemodule“ können Sie die Intervallrate für das Senden von Nachrichten ändern. Der für die Intervallrate eingegebene Wert gibt die Häufigkeit an, mit der die einzelnen Nachrichten gesendet werden (in Millisekunden). Je größer die Zahl, desto mehr Zeit liegt zwischen den einzelnen Nachrichten. Wenn Sie beispielsweise die Intervallrate auf 12.000 festlegen, bedeutet dies, dass alle 12 Sekunden eine Nachricht gesendet wird. Bei einem Modell, das den ganzen Tag ausgeführt wird, ergibt diese Rate 7.200 Nachrichten pro Tag. Dieser Wert liegt unter dem Grenzwert der Ebene „Free“. Der von Ihnen ausgewählte Wert hängt davon ab, wie reaktionsfähig Ihr Vision-Modell sein soll.
 
-Gehen Sie folgendermaßen vor, um den Wert TelemetryIntervalNeuralNetworkMs zu aktualisieren:
+> [!NOTE]
+> Eine Änderung der Nachrichtenintervallrate wirkt sich nicht auf die Größe der einzelnen Nachrichten aus. Die Nachrichtengröße hängt von einigen verschiedenen Faktoren ab, etwa dem Modelltyp und der Anzahl von Objekten, die in jeder Nachricht erkannt werden. Daher ist es schwierig, die Nachrichtengröße zu bestimmen.
+
+Führen Sie die folgenden Schritte aus, um das Nachrichtenintervall zu aktualisieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod#home) an, und öffnen Sie **Alle Ressourcen**.
 
-1. Klicken Sie auf der Seite **Alle Ressourcen** auf den Namen der IOT Hub, die während des Setups in Ihrem devkit bereitgestellt wurde.
+1. Wählen Sie auf der Seite **Alle Ressourcen** den Namen des IoT-Hubs aus, der während des Setups für Ihr Development Kit bereitgestellt wurde.
 
-1. Klicken Sie Links auf der Seite IOT Hub unter **Automatische Geräteverwaltung** auf **Azure IOT Edge**. Suchen Sie auf der Seite Azure IOT Edge-Geräte die Geräte-ID Ihres devkit. Klicken Sie auf die Geräte-ID Ihres devkit, um die Seite Azure IOT Edge-Geräts zu öffnen.
+1. Wählen Sie links auf der Seite **IoT Hub** unter **Automatische Geräteverwaltung** die Option **IoT Edge** aus. Suchen Sie auf der Seite „IoT Edge-Geräte“ die Geräte-ID Ihres Development Kit. Wählen Sie die Geräte-ID Ihres Development Kit aus, um die Seite „IoT Edge-Gerät“ zu öffnen.
 
-1. Wählen Sie unter der Registerkarte **Module** die Option **azureeyemodule** aus.
+1. Wählen Sie auf der Registerkarte **Module** die Option **azureeyemodule** aus.
 
-1. Öffnen Sie auf der Seite azureeyemodule den Typ **Zwilling der Modulkennung**.
+1. Öffnen Sie auf der Seite **azureeyemodule** die Option **Zwilling der Modulkennung**.
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/module-page-inline.png" alt-text="Screenshot der Modulseite." lightbox= "./media/vision-solution-troubleshooting/module-page.png":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/module-page-inline.png" alt-text="Screenshot: Modulseite" lightbox= "./media/vision-solution-troubleshooting/module-page.png":::
 
-1. Scrollen Sie nach unten zu **Eigenschaften**. Die Eigenschaften „Running“ (Wird ausgeführt) und „Logging“ (Protokollierung) sind zu diesem Zeitpunkt nicht aktiv.
+1. Scrollen Sie nach unten zu **Eigenschaften**.
+1. Suchen Sie nach **TelemetryInterval**, und ersetzen Sie das Element durch **TelemetryIntervalNeuralNetworkMs**.
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/module-identity-twin-inline.png" alt-text="Screenshot: Eigenschaften von Modulzwillingen." lightbox= "./media/vision-solution-troubleshooting/module-identity-twin.png":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/module-identity-twin-inline-02.png" alt-text="Screenshot: Eigenschaften von „Zwilling der Modulkennung“" lightbox= "./media/vision-solution-troubleshooting/module-identity-twin.png":::
 
-1. Aktualisieren Sie den Wert von **TelemetryIntervalNeuralNetworkMs** wie gewünscht, und klicken Sie auf das Symbol **Speichern**.
+1. Aktualisieren Sie den Wert für **TelemetryIntervalNeuralNetworkMs** auf den erforderlichen Wert.
+
+1. Wählen Sie das Symbol **Speichern** aus.
 
 ## <a name="view-device-rtsp-video-stream"></a>Anzeigen des Geräte-RTSP-Videostreams
 
 Zeigen Sie den RTSP-Videostream Ihres Geräts über [Azure Percept Studio](./how-to-view-video-stream.md) oder [VLC Media Player](https://www.videolan.org/vlc/index.html) an.
 
-Navigieren Sie zum Öffnen des RTSP-Stream in VLC Media Player zu **Medien** -> **Netzwerkstream öffnen** -> **rtsp://[Geräte-IP-Adresse]:8554/result**.
+Navigieren Sie zum Öffnen des RTSP-Stream in VLC Media Player zu **Medien** > **Netzwerkstream öffnen** > **rtsp://[Geräte-IP-Adresse]:8554/result**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Problembehandlung von Azure Percept DK finden Sie im [allgemeinen Problembehandlungsleitfaden](./troubleshoot-dev-kit.md).
+Weitere Informationen zur Problembehandlung der Azure Percept DK-Instanz finden Sie unter [Azure Percept DK-Fehlerbehebung](./troubleshoot-dev-kit.md).

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 6c5371a98900e000b15cde669fcfaea4a7c676b4
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: cda3ad4cd6ecf0c7a72a3dfb05aae2a6541dd43b
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112240205"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710239"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-Cassandra-API-Daten (v4-Treiber)
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -36,6 +36,9 @@ In dieser Schnellstartanleitung erstellen Sie ein Azure Cosmos DB-Cassandra-API-
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Die Umgebungsvariable `JAVA_HOME` muss auf den Ordner verweisen, in dem das JDK installiert ist.
 - Ein [binäres Maven-Archiv](https://maven.apache.org/download.cgi). Führen Sie unter Ubuntu `apt-get install maven` aus, um Maven zu installieren.
 - [Git](https://www.git-scm.com/downloads). Führen Sie unter Ubuntu `sudo apt-get install git` aus, um Git zu installieren.
+
+> [!NOTE]
+> Dies ist eine einfache Schnellstartanleitung, in der [Version 4](https://github.com/datastax/java-driver/tree/4.x) des Apache Cassandra-Open-Source-Treibers für Java verwendet wird. In den meisten Fällen sollten Sie eine vorhandene, von Apache Cassandra abhängige Java-Anwendung mit der Cassandra-API für Azure Cosmos DB verbinden können, ohne dass Änderungen an Ihrem vorhandenen Code erforderlich sind. Es wird jedoch empfohlen, unsere [benutzerdefinierte Java-Erweiterung](https://github.com/Azure/azure-cosmos-cassandra-extensions/tree/release/java-driver-4/1.0.1) hinzuzufügen. Sie enthält benutzerdefinierte Wiederholungs- und Lastenausgleichsrichtlinien sowie empfohlene Verbindungseinstellungen für eine bessere allgemeine Benutzerfreundlichkeit. Sie dient bei Bedarf zum Behandeln der [Ratenbegrenzung](manage-scale-cassandra.md#handling-rate-limiting-429-errors) und des Failovers auf Anwendungsebene in Azure Cosmos DB. Ein umfassendes Beispiel, das die Erweiterung implementiert, finden Sie [hier](https://github.com/Azure-Samples/azure-cosmos-cassandra-extensions-java-sample-v4).
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 

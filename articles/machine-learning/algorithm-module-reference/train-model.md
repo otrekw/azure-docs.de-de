@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2021
-ms.openlocfilehash: 41b327e793c6b35a2b2aeae825c493a484d84fb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/10/2021
+ms.openlocfilehash: 4bbb85593d41b56ba465f577c3be35de43ba610a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562765"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468612"
 ---
 # <a name="train-model-module"></a>Train Model-Modul
 
@@ -75,9 +75,16 @@ Derzeit unterstützt das Modul **Modell trainieren** [die Verwendung des Interpr
 
 - Lineare Regression
 - Regression mit neuronalen Netzwerken
+- Regression mit verstärkter Entscheidungsstruktur
+- Entscheidungswaldregression
+- Poisson-Regression
 - Logistische Regression mit zwei Klassen
 - Two-Class Support Vector Machine
+- Verstärkte Entscheidungsstruktur mit zwei Klassen
+- Entscheidungswald mit zwei Klassen
 - Entscheidungswald mit mehreren Klassen
+- Logistische Regression mit mehreren Klassen
+- Neuronales Netz mit mehreren Klassen
 
 Zum Generieren von Modellerklärungen können Sie in der Dropdownliste **Model Explanation** (Modellerklärung) im Modul „Modell trainieren“ die Option **true** auswählen. Standardmäßig ist der Wert im Modul **Modell trainieren** auf „false“ festgelegt. Hinweis: Durch die Generierung von Erklärungen entstehen zusätzliche Computekosten.
 

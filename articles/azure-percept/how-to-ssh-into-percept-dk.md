@@ -1,18 +1,18 @@
 ---
 title: Herstellen einer Verbindung mit Ihrem Azure Percept DK über SSH
 description: Erfahren Sie, wie Sie mithilfe von PuTTY eine SSH-Verbindung mit Ihrem Azure Percept DK herstellen.
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 39ee1c1cc5b52dc62e3199536234c1f7d9381436
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ee194e6d501d967d37453763c9cd4b25d1bedbe
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721476"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754197"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-ssh"></a>Herstellen einer Verbindung mit Ihrem Azure Percept DK über SSH
 
@@ -23,7 +23,7 @@ Führen Sie die folgenden Schritte aus, um über OpenSSH oder [PuTTY](https://ww
 - Ein Windows-, Linux- oder OS X-basierter Hostcomputer mit WLAN-Funktion
 - Ein SSH-Client (weitere Informationen zur Installation finden Sie im nächsten Abschnitt)
 - Ein Azure Percept DK (Development Kit)
-- SSH-Anmeldung, die während des [Azure Percept DK-Setups](./quickstart-percept-dk-set-up.md) erstellt wurde
+- Ein SSH-Konto, das während des [Azure Percept DK-Setups](./quickstart-percept-dk-set-up.md) erstellt wurde
 
 ## <a name="install-your-preferred-ssh-client"></a>Installieren Ihres bevorzugten SSH-Clients
 
@@ -41,11 +41,11 @@ Windows 10 enthält einen integrierten SSH-Client namens OpenSSH, der mit einem 
 
 1. Wählen Sie unter **Apps & Features** die Option **Optionale Features** aus.
 
-1. Geben Sie **OpenSSH-Client** in die Suchleiste **Installierte Features** ein. Wenn OpenSSH angezeigt wird, ist der Client bereits installiert, und Sie können mit dem nächsten Abschnitt fortfahren. Wenn OpenSSH nicht angezeigt wird, klicken Sie auf **Feature hinzufügen**.
+1. Geben Sie **OpenSSH-Client** in die Suchleiste **Installierte Features** ein. Wenn OpenSSH angezeigt wird, ist der Client bereits installiert, und Sie können mit dem nächsten Abschnitt fortfahren. Wenn OpenSSH nicht angezeigt wird, wählen Sie **Feature hinzufügen** aus.
 
     :::image type="content" source="./media/how-to-ssh-into-percept-dk/open-ssh-install.png" alt-text="Screenshot der Einstellungen mit OpenSSH-Installationsstatus.":::
 
-1. Wählen Sie **OpenSSH-Client** aus, und klicken Sie auf **Installieren**. Sie können jetzt mit dem nächsten Abschnitt fortfahren. Wenn OpenSSH nicht zur Installation auf Ihrem Computer verfügbar ist, führen Sie die folgenden Schritte aus, um PuTTY, einen Drittanbieter-SSH-Client, zu installieren.
+1. Wählen Sie **OpenSSH-Client** und dann **Installieren** aus. Sie können jetzt mit dem nächsten Abschnitt fortfahren. Wenn OpenSSH nicht zur Installation auf Ihrem Computer verfügbar ist, führen Sie die folgenden Schritte aus, um PuTTY, einen Drittanbieter-SSH-Client, zu installieren.
 
 ### <a name="putty"></a>PuTTY.
 
@@ -53,9 +53,9 @@ Wenn OpenSSH auf Ihrem Windows-Computer nicht vorhanden ist, sollten Sie [PuTTY]
 
 1. Wechseln Sie zur [PuTTY-Downloadseite](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html).
 
-1. Klicken Sie unter **Paketdateien** auf die 32-Bit- oder 64-Bit-MSI-Datei, um das Installationsprogramm herunterzuladen. Wenn Sie nicht sicher sind, welche Version ausgewählt werden soll, lesen Sie die [häufig gestellten Fragen](https://www.chiark.greenend.org.uk/~sgtatham/putty/faq.html#faq-32bit-64bit).
+1. Wählen Sie unter **Paketdateien** die 32-Bit- oder 64-Bit-MSI-Datei aus, um das Installationsprogramm herunterzuladen. Wenn Sie nicht sicher sind, welche Version ausgewählt werden soll, lesen Sie die [häufig gestellten Fragen](https://www.chiark.greenend.org.uk/~sgtatham/putty/faq.html#faq-32bit-64bit).
 
-1. Klicken Sie auf das Installationsprogramm, um die Installation zu starten. Befolgen Sie die Anweisungen.
+1. Wählen Sie das Installationsprogramm aus, um die Installation zu starten. Befolgen Sie die Anweisungen.
 
 1. Herzlichen Glückwunsch! Der PuTTY-SSH-Client wurde erfolgreich installiert.
 
@@ -63,7 +63,7 @@ Wenn OpenSSH auf Ihrem Windows-Computer nicht vorhanden ist, sollten Sie [PuTTY]
 
 1. Aktivieren Sie Ihr Azure Percept DK.
 
-1. Wenn Ihr DevKit Kit bereits über Ethernet oder WLAN mit einem Netzwerk verbunden ist, fahren Sie mit dem nächsten Schritt fort. Stellen Sie andernfalls eine direkte Verbindung Ihres Hostcomputers mit dem WLAN-Zugriffspunkt des Development Kits her. Öffnen Sie dazu genau wie bei anderen WLAN-Verbindungen die Netzwerk- und Interneteinstellungen auf Ihrem Computer, klicken Sie auf das folgende Netzwerk, und geben Sie das Netzwerkkennwort ein, wenn Sie dazu aufgefordert werden:
+1. Wenn Ihr DevKit Kit bereits über Ethernet oder WLAN mit einem Netzwerk verbunden ist, fahren Sie mit dem nächsten Schritt fort. Stellen Sie andernfalls eine direkte Verbindung Ihres Hostcomputers mit dem WLAN-Zugriffspunkt des Development Kits her. Öffnen Sie dazu genau wie bei anderen WLAN-Verbindungen die Netzwerk- und Interneteinstellungen auf Ihrem Computer, wählen Sie das folgende Netzwerk aus, und geben Sie das Netzwerkkennwort ein, wenn Sie dazu aufgefordert werden:
 
     - **Netzwerkname:** Der Name des WLAN-Zugriffspunkts lautet abhängig von der Betriebssystemversion Ihres Development Kits entweder **scz-xxxx** oder **apd-xxxx** (wobei „xxxx“ für die letzten vier Ziffern der MAC-Adresse des Dev Kits steht).
     - **Kennwort:** Das Kennwort finden Sie auf der Begrüßungskarte, die im Lieferumfang des Development Kits enthalten war.
@@ -98,7 +98,7 @@ Wenn OpenSSH auf Ihrem Windows-Computer nicht vorhanden ist, sollten Sie [PuTTY]
 
 ### <a name="using-putty"></a>Verwenden von PuTTY
 
-1. Öffnen Sie PuTTY. Geben Sie im Fenster der **PuTTY-Konfiguration** Folgendes ein, und klicken Sie auf **Öffnen**, um per SSH eine Verbindung mit Ihrem Dev Kit herzustellen:
+1. Öffnen Sie PuTTY. Geben Sie im Fenster der **PuTTY-Konfiguration** Folgendes ein, und wählen Sie **Öffnen** aus, um per SSH eine Verbindung mit Ihrem Dev Kit herzustellen:
 
     1. Hostname: [IP-Adresse]
     1. Port: 22

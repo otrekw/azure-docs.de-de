@@ -1,19 +1,19 @@
 ---
-title: Datei einfügen
+title: include file
 description: include file
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/27/2021
+ms.date: 06/30/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c5741ab0207d5631aab4abd594f5ff557ebfe23b
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 82db4939b6f980e1d9fb9a82a6cd255bb10c04cb
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110658245"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126350"
 ---
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Geben Sie in **Nach Ressourcen, Diensten und Dokumenten suchen (G+/)** den Begriff *virtuelles Netzwerk* ein.
@@ -47,7 +47,7 @@ ms.locfileid: "110658245"
 
 1. Behalten Sie auf der Registerkarte **Sicherheit** vorläufig die Standardwerte bei:
 
-   - **DDoS Protection**: Basic
+   - **DDos Protection**: Deaktiviert
    - **Firewall**: Disabled
 1. Wählen Sie **Bewerten + erstellen** aus, um die Einstellungen für das virtuelle Netzwerk zu überprüfen.
 1. Nachdem die Einstellungen überprüft wurden, wählen Sie **Erstellen** aus.

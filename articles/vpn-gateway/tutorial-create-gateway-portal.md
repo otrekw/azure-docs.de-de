@@ -6,13 +6,13 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 04/28/2021
-ms.openlocfilehash: 29f479444679d1f76dc90eec4546539faea5337f
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.date: 07/21/2021
+ms.openlocfilehash: d0723d4a5e77fe9bcf52f515a1310dfc270338f6
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202567"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721827"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Tutorial: Erstellen und Verwalten eines VPN-Gateways über das Azure-Portal
 
@@ -50,7 +50,7 @@ Erstellen Sie ein VNet unter Verwendung der folgenden Werte:
 
 ## <a name="create-a-vpn-gateway"></a><a name="VNetGateway"></a>Erstellen eines VPN-Gateways
 
-In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern.
+In diesem Schritt erstellen Sie das VNET-Gateway (VPN-Gateway) für Ihr VNet. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern.
 
 Erstellen Sie ein virtuelles Netzwerkgateway mit den folgenden Werten:
 
@@ -58,16 +58,17 @@ Erstellen Sie ein virtuelles Netzwerkgateway mit den folgenden Werten:
 * **Region:** East US
 * **Gatewaytyp**: VPN
 * **VPN-Typ:** routenbasiert
-* **SKU**: VpnGw1
-* **Generation**: Generation1
+* **SKU:** VpnGw2
+* **Generation:** Generation 2
 * **Virtuelles Netzwerk:** VNet1
 * **Adressbereich für Gatewaysubnetz**: 10.1.255.0/27
 * **Öffentliche IP-Adresse**: Neu erstellen
 * **Öffentliche IP-Adresse:** VNet1GWpip
-* **Aktiv/Aktiv-Modus aktivieren**: Disabled
-* **BGP konfigurieren:** Disabled
 
-[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+Die gesamte Erstellung und Bereitstellung eines Gateways kann 45 Minuten oder länger dauern. Der Bereitstellungsstatus wird auf der Übersichtsseite für Ihr Gateway angezeigt. Nach der Erstellung des Gateways können Sie die zugewiesene IP-Adresse unter dem Virtual Network im Portal anzeigen. Das Gateway wird als verbundenes Gerät angezeigt.
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 

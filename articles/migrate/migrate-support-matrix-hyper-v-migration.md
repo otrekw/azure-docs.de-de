@@ -6,12 +6,12 @@ ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 33e34e777a78e1c609d2eacdcb501c0bce1f5c9d
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 14660ca026dc51bc6e722559a28ef4a77361100b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714918"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094562"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Unterstützungsmatrix für die Hyper-V-Migration
 
@@ -46,7 +46,7 @@ Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Si
 | **Linux-Start**                 | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition („/“) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und nicht auf andere Datenträger erstrecken. |
 | **UEFI-Start**                  | Unterstützt. UEFI-basierte VMs werden zu Azure-VMs der 2. Generation migriert.  |
 | **UEFI: Sicherer Start**         | Nicht unterstützt für die Migration.|
-| **Datenträgergröße**                  | 2 TB für den Betriebssystemdatenträger (BIOS-Start), 4 TB für den Betriebssystemdatenträger (UEFI-Start), 4 TB für Datenträger für Daten.|
+| **Datenträgergröße**                  | Bis zu 2 TB Betriebssystemdatenträger, 8 TB für Datenträger.|
 | **Anzahl der Datenträger** | Maximal 16 Datenträger pro virtuellem Computer|
 | **Verschlüsselte Datenträger/Volumes**    | Nicht unterstützt für die Migration.|
 | **RDM-Datenträger/Pass-Through-Datenträger**      | Nicht unterstützt für die Migration.|

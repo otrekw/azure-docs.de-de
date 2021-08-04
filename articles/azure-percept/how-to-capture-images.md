@@ -1,22 +1,22 @@
 ---
 title: Erstellen von Bildern für eine codelose Lösung für maschinelles Sehen in Azure Percept Studio
-description: Hier erfahren Sie, wie Sie mit Azure Percept DK in Azure Percept Studio Bilder für eine codelose Lösung für maschinelles Sehen erstellen.
-author: elqu20
-ms.author: v-elqu
+description: Erfassen von Bildern mit Ihrem Azure Percept DK-Gerät in Azure Percept Studio
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: d6cece6ee3079ba9f400f40026ca26ea36668710
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c7116d7e62afe6a59ad48bbb28dabf3c05bc311
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024641"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754395"
 ---
 # <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>Erstellen von Bildern für ein Projekt für maschinelles Sehen in Azure Percept Studio
 
-In dieser Anleitung erfahren Sie, wie Sie Bilder mit dem Vision-SOM von Azure Percept DK für ein bereits vorhandenes Vision-Projekt in Azure Percept Studio erfassen. Falls Sie noch kein Vision-Projekt erstellt haben, sehen Sie sich das [Vision-Tutorial ohne Code](./tutorial-nocode-vision.md) an.
+In dieser Anleitung erfahren Sie, wie Sie Bilder mit Azure Percept DK für ein bereits vorhandenes Vision-Projekt erfassen. Falls Sie noch kein Vision-Projekt erstellt haben, sehen Sie sich das [Vision-Tutorial ohne Code](./tutorial-nocode-vision.md) an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,7 +31,7 @@ In dieser Anleitung erfahren Sie, wie Sie Bilder mit dem Vision-SOM von Azure Pe
 
 1. Navigieren Sie zu [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819).
 
-1. Klicken Sie auf der linken Seite der Übersicht auf **Geräte**.
+1. Wählen Sie auf der linken Seite der Übersicht **Geräte** aus.
 
     :::image type="content" source="./media/how-to-capture-images/overview-devices-inline.png" alt-text="Übersichtsbildschirm von Azure Percept Studio" lightbox="./media/how-to-capture-images/overview-devices.png":::
 
@@ -39,19 +39,19 @@ In dieser Anleitung erfahren Sie, wie Sie Bilder mit dem Vision-SOM von Azure Pe
 
     :::image type="content" source="./media/how-to-capture-images/select-device.png" alt-text="Liste der Percept-Geräte":::
 
-1. Klicken Sie auf der Seite Ihres Geräts auf **Capture images for a project** (Bilder für ein Projekt erfassen).
+1. Wählen Sie auf der Seite Ihres Geräts **Bilder für ein Projekt erfassen** aus.
 
     :::image type="content" source="./media/how-to-capture-images/capture-images.png" alt-text="Seite mit Percept-Geräten und den verfügbaren Aktionen":::
 
-1. Gehen Sie im Fenster **Image capture** (Bilderfassung) wie folgt vor:
+1. Gehen Sie im Fenster **Bilderfassung** wie folgt vor:
 
     1. Wählen Sie im Dropdownmenü **Projekt** das Vision-Projekt aus, für das Sie Bilder erfassen möchten.
 
-    1. Klicken Sie auf **View device stream** (Gerätestream anzeigen), und vergewissern Sie sich, dass die Kamera des Vision-SOM korrekt platziert ist.
+    1. Wählen Sie **Gerätestream anzeigen** aus, und vergewissern Sie sich, dass die Kamera des Vision-SOM korrekt platziert ist.
 
-    1. Klicken Sie auf **Take photo** (Foto aufnehmen), um ein Bild aufzunehmen.
+    1. Wählen Sie **Foto aufnehmen** aus, um ein Bild aufzunehmen.
 
-    1. Aktivieren Sie alternativ das Kontrollkästchen neben **Automatic image capture** (Automatische Bilderfassung), um einen Selbstauslöser für die Bilderfassung einzurichten:
+    1. Aktivieren Sie stattdessen das Kontrollkästchen neben **Automatische Bilderfassung**, um einen Selbstauslöser für die Bilderfassung einzurichten:
 
         1. Wählen Sie unter **Capture rate** (Erfassungsrate) die gewünschte Rate für die Erfassung aus.
         1. Wählen Sie unter **Ziel** aus, wie viele Bilder insgesamt erfasst werden sollen.

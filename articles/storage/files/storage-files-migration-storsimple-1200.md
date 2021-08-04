@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 8562d63bf227fff665c70674c7fe66922bce9992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67ddcf5fd7d3ef3c1def12a325eb19980176a8ba
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98882279"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756213"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200: Migration zur Azure-Dateisynchronisierung
 
@@ -23,7 +23,7 @@ Die StorSimple 1200-Serie erreicht im Dezember 2022 das [Ende des Lebenszyklus](
 ## <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
 
 > [!IMPORTANT]
-> Microsoft ist bestrebt, Kunden bei der Migration zu unterstützen. Senden Sie eine E-Mail an AzureFilesMigration@microsoft.com, um einen angepassten Migrationsplan sowie Unterstützung bei der Migration zu erhalten.
+> Microsoft ist bestrebt, Kunden bei der Migration zu unterstützen. Senden Sie eine E-Mail an AzureFilesMigration@microsoft.com, um einen angepassten Migrationsplan oder Unterstützung bei der Migration zu erhalten.
 
 Die Azure-Dateisynchronisierung ist ein Microsoft-Clouddienst, der auf zwei Hauptkomponenten basiert:
 
@@ -32,12 +32,12 @@ Die Azure-Dateisynchronisierung ist ein Microsoft-Clouddienst, der auf zwei Haup
 
 In diesem Artikel werden hauptsächlich die Migrationsschritte behandelt. Wenn Sie vor der Migration mehr über die Azure-Dateisynchronisierung erfahren möchten, empfehlen wir die folgenden Artikel:
 
-* [Azure-Dateisynchronisierung – Übersicht](./storage-sync-files-planning.md "Übersicht")
-* [Azure-Dateisynchronisierung – Bereitstellungsleitfaden](storage-sync-files-deployment-guide.md)
+* [Azure-Dateisynchronisierung – Übersicht](../file-sync/file-sync-planning.md "Übersicht")
+* [Azure-Dateisynchronisierung – Bereitstellungsleitfaden](../file-sync/file-sync-deployment-guide.md)
 
 ## <a name="migration-goals"></a>Migrationsziele
 
-Das Ziel ist, die Integrität der Produktionsdaten sowie deren Verfügbarkeit zu gewährleisten. Letztere erfordert minimale Ausfallzeiten, sodass sie in normalen Wartungsfenstern stattfinden oder diese nur geringfügig überschreiten.
+Das Ziel ist, die Integrität der Produktionsdaten und deren Verfügbarkeit zu gewährleisten. Letztere erfordert minimale Ausfallzeiten, sodass sie in normalen Wartungsfenstern stattfinden oder diese nur geringfügig überschreiten.
 
 ## <a name="storsimple-1200-migration-path-to-azure-file-sync"></a>StorSimple 1200: Migrationspfad zur Azure-Dateisynchronisierung
 
@@ -78,6 +78,15 @@ In diesem Artikel wird davon ausgegangen, dass Sie eine 1:1-Zuordnung verwenden.
 
 [!INCLUDE [storage-files-migration-provision-azfs](../../../includes/storage-files-migration-provision-azure-file-share.md)]
 
+#### <a name="storage-account-settings"></a>Speicherkontoeinstellungen
+
+Es gibt viele Konfigurationen, die Sie für ein Speicherkonto vornehmen können. Für Ihre Speicherkontokonfigurationen sollte die folgende Prüfliste verwendet werden. Sie können beispielsweise die Netzwerkkonfiguration nach Abschluss der Migration ändern. 
+
+> [!div class="checklist"]
+> * Große Dateifreigaben: Aktiviert – Große Dateifreigaben verbessern die Leistung und ermöglichen es Ihnen, bis zu 100 TiB in einer Freigabe zu speichern.
+> * Firewall und virtuelle Netzwerke: Deaktiviert – Konfigurieren Sie keine IP-Einschränkungen, oder beschränken Sie nicht den Speicherkontozugriff auf ein bestimmtes VNet. Der öffentliche Endpunkt des Speicherkontos wird während der Migration verwendet. Alle IP-Adressen von Azure-VMs müssen erlaubt sein. Es ist am besten, alle Firewallregeln für das Speicherkonto nach der Migration zu konfigurieren.
+> * Private Endpunkte: Unterstützt – Sie können private Endpunkte aktivieren, aber der öffentliche Endpunkt wird für die Migration verwendet und muss verfügbar bleiben.
+
 ### <a name="step-6-configure-windows-server-target-folders"></a>Schritt 6: Konfigurieren von Windows Server-Zielordnen
 
 In den vorherigen Schritten haben Sie alle Aspekte in Erwägung gezogen, die die Komponenten Ihrer Synchronisierungstopologien festlegen. Jetzt ist es an der Zeit, den Server für den Empfang von Dateien für den Upload vorzubereiten.
@@ -112,76 +121,7 @@ Erstellen Sie die erste lokale Kopie in Ihrem Windows Server-Zielordner:
 
 Mit dem folgenden RoboCopy-Befehl werden Dateien aus dem StorSimple-Azure-Speicher in Ihren lokalen StorSimple-Speicher zurückgerufen und dann in den Windows Server-Zielordner verschoben. Der Windows-Server synchronisiert diesen Ordner mit den Azure-Dateifreigaben. Wenn das lokale Windows Server-Volume voll ist, beginnt das Cloudtiering von Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopieren von der virtuellen StorSimple-Appliance fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-Hintergrund:
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      Ermöglicht RoboCopy die Multithread-Ausführung. Der Standardwert ist 8, der Höchstwert 128.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:<file name>
-   :::column-end:::
-   :::column span="1":::
-      Gibt den Status als UNICODE in die LOG-Datei aus (überschreibt vorhandenes Protokoll).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      Ausgabe an das Konsolenfenster. Wird in Verbindung mit der Ausgabe in eine Protokolldatei verwendet.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      Führt RoboCopy in dem Modus aus, den auch eine Sicherungsanwendung verwenden würde. Diese Option ermöglicht RoboCopy, Dateien zu verschieben, für die der aktuelle Benutzer keine Berechtigungen hat.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      Ermöglicht, diesen RoboCopy-Befehl mehrmals auf demselben Ziel auszuführen. Dabei werden die bereits kopierten Daten erkannt und ausgelassen. Es werden nur Änderungen, Ergänzungen und „*Löschungen*“ verarbeitet, die seit der letzten Ausführung aufgetreten sind. Wenn der Befehl noch nicht ausgeführt wurde, wird nichts ausgelassen. Dies ist eine hervorragende Option für Quellspeicherorte, die weiterhin aktiv verwendet werden und Änderungen unterliegen.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY:Kopierflag[s]
-   :::column-end:::
-   :::column span="1":::
-      Genauigkeit der Dateikopie (Standard: „/COPY:DAT“), Kopierflags: D = Daten, A = Attribute, T = Zeitstempel, S = Sicherheit = NTFS-ACLs, O = Eigentümerinformationen, U = Überprüfungsinformationen
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      Kopieren aller Dateiinformationen (äquivalent zu „/COPY:DATSOU“)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY:Kopierflag[s]
-   :::column-end:::
-   :::column span="1":::
-      Genauigkeit für Kopien von Verzeichnissen (Standard: „/DCOPY:DA“), Kopierflags: D = Daten, A = Attribute, T = Zeitstempel
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 Wenn Sie den RoboCopy-Befehl zum ersten Mal ausführen, greifen Ihre Benutzer und Anwendungen weiterhin auf die StorSimple-Dateien und -Ordner zu und ändern sie möglicherweise. Es kann vorkommen, dass RoboCopy ein Verzeichnis verarbeitet und mit dem nächsten fortfährt und dann ein Benutzer am Quellspeicherort (StorSimple) eine Datei hinzufügt, ändert oder löscht. Diese wird dann während dieser aktuellen RoboCopy-Ausführung nicht verarbeitet. Das geht.
 
@@ -225,6 +165,8 @@ Wenn Ihr Windows-Server ausreichende Kapazität aufweist, wird das Problem durch
 Sie können auch auf andere Probleme mit der Azure-Dateisynchronisierung stoßen.
 Dies ist sehr unwahrscheinlich, aber falls es geschieht, lesen Sie das **Handbuch zur Problembehandlung bei der Azure-Dateisynchronisierung**.
 
+[!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
+
 ## <a name="relevant-links"></a>Relevante Links
 
 Inhalte für die Migration:
@@ -233,6 +175,6 @@ Inhalte für die Migration:
 
 Inhalte für die Azure-Dateisynchronisierung:
 
-* [AFS-Übersicht](./storage-sync-files-planning.md)
-* [AFS-Bereitstellungshandbuch](./storage-how-to-create-file-share.md)
-* [AFS-Problembehandlung](storage-sync-files-troubleshoot.md)
+* [Azure-Dateisynchronisierung – Übersicht](../file-sync/file-sync-planning.md)
+* [Bereitstellen der Azure-Dateisynchronisierung](../file-sync/file-sync-deployment-guide.md)
+* [Leitfaden zur Problembehandlung bei der Azure-Dateisynchronisierung](../file-sync/file-sync-troubleshoot.md)

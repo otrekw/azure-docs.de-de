@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/28/2021
+ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 5282c806f5c6011418dabc14d6f82d6b9c0df251
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e16e95bbb65bde6c4c0b38b9c68c0f7287b8b9b3
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206347"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795580"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriken für Azure NetApp Files
 
@@ -71,24 +71,6 @@ Sie finden Metriken für einen Kapazitätspool oder ein Volume, indem Sie den **
     Die Anzahl der Lesevorgänge auf dem Volume pro Sekunde.
 - *Schreib-IOPS*   
     Die Anzahl der Schreibvorgänge auf dem Volume pro Sekunde.
-<!-- These two metrics are not yet available, until ~ 2020.09
-- *Read MiB/s*   
-    Read throughput in bytes per second.
-- *Write MiB/s*   
-    Write throughput in bytes per second.
---> 
-<!-- ANF-4128; 2020.07
-- *Pool Provisioned Throughput*   
-    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
-- *Pool Allocated to Volume Throughput*   
-    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
--->
-
-<!-- ANF-6443; 2020.11
-- *Pool Consumed Throughput*    
-    The total throughput being consumed by volumes in a given capacity pool.
--->
-
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>Metriken für die Volumereplikation
 
@@ -116,6 +98,32 @@ Sie finden Metriken für einen Kapazitätspool oder ein Volume, indem Sie den **
 
 - *Insgesamt bei der Volumereplikation übertragene Bytes*   
     Die kumulative Anzahl der für die Beziehung übertragenen Bytes. 
+
+## <a name="throughput-metrics-for-capacity-pools"></a>Durchsatzmetriken für Kapazitätspools   
+
+* *Zugeordneter Pool für Volumedurchsatz*    
+    Der Gesamtdurchsatz, der Volumes in einem bestimmten Kapazitätspool zugeordnet ist. Dies ist der gesamte zugeordnete Durchsatz der Volumes im Kapazitätspool.   
+
+* *Verbrauchter Durchsatz eines Pools*   
+    Der gesamte Durchsatz, der von Volumes in einem bestimmten Kapazitätspool genutzt wird   
+
+* *Prozentsatz des zugeordneten Pools für Volumedurchsatz*   
+    Prozentsatz des bereitgestellten Durchsatzes des Kapazitätspools, der Volumes zugeordnet ist   
+
+* *Prozentsatz des verbrauchten Durchsatzes eines Pools*    
+    Prozentsatz des bereitgestellten Durchsatzes des Kapazitätspools, der von Volumes verbraucht wird
+
+## <a name="throughput-metrics-for-volumes"></a>Durchsatzmetriken für Volumes   
+
+*  *Zugeordneter Volumedurchsatz*    
+    Der Durchsatz des übergeordneten Kapazitätspools (MiB/s), dem das Volume zugeordnet ist. Dies ist der maximale Durchsatz, den das Volume nutzen kann.
+
+* *Verbrauchter Durchsatz eines Volumes*    
+    Der tatsächliche Durchsatz (MiB/s), den das Volume nutzt
+
+* *Prozentsatz des verbrauchten Durchsatzes eines Volumes*   
+    Prozentsatz des zugeordneten Durchsatzes, den das Volume nutzt. Das heißt, *Verbrauchter Durchsatz eines Volumes* ist ein Prozentsatz von *Zugeordneter Volumedurchsatz*.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

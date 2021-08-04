@@ -15,12 +15,12 @@ ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40779e4517b610e52e41caacc46fc613b72023e5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 10242d867c5d9676b4f6833151863b820b2f11d1
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567134"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481803"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Azure-Ressourcenrollen in Privileged Identity Management
 
@@ -40,7 +40,7 @@ Führen Sie diese Schritte aus, um die Einstellungen für eine Azure-Ressourcenr
 
     ![Seite „Azure-Ressourcen“, auf der die Ressourcen aufgelistet werden, die verwaltet werden können](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. Klicken Sie auf **Rolleneinstellungen**.
+1. Wählen Sie **Einstellungen** aus.
 
     ![Seite „Rolleneinstellungen“ mit einer Auflistung der Azure-Ressourcenrollen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -48,7 +48,7 @@ Führen Sie diese Schritte aus, um die Einstellungen für eine Azure-Ressourcenr
 
     ![Seite „Details zur Rolleneinstellung“ mit einer Auflistung mehrerer Zuweisungs- und Aktivierungseinstellungen](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. Klicken Sie auf **Bearbeiten**, um den Bereich **Rolleneinstellungen** zu öffnen. Auf der ersten Registerkarte können Sie die Konfiguration für die Rollenaktivierung in Privileged Identity Management aktualisieren.
+1. Wählen Sie **Bearbeiten** aus, um den Bereich **Rolleneinstellung bearbeiten** zu öffnen. Auf der ersten Registerkarte können Sie die Konfiguration für die Rollenaktivierung in Privileged Identity Management aktualisieren.
 
     ![Seite „Rolleneinstellungen bearbeiten“ mit geöffneter Registerkarte „Aktivierung“](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 
@@ -78,14 +78,14 @@ Bei der Konfiguration von Einstellungen für eine Rolle können Sie für jeden Z
 
 Sie können beim Typ **Berechtigt** eine dieser Optionen für die Zuweisungsdauer wählen:
 
-| | Beschreibung |
+| | BESCHREIBUNG |
 | --- | --- |
 | **Dauerhafte berechtigte Zuweisung zulassen** | Ressourcenadministratoren können dauerhaft berechtigte Zuweisungen veranlassen. |
 | **Berechtigte Zuweisungen laufen ab nach** | Ressourcenadministratoren können verlangen, dass alle berechtigten Zuweisungen ein bestimmtes Start- und Enddatum haben. |
 
 Beim Typ **Aktiv** können Sie eine dieser Optionen für die Zuweisungsdauer wählen:
 
-| | Beschreibung |
+| | BESCHREIBUNG |
 | --- | --- |
 | **Permanente aktive Zuweisung zulassen** | Ressourcenadministratoren können dauerhaft aktive Zuweisungen veranlassen. |
 | **Aktive Zuweisungen laufen ab nach** | Ressourcenadministratoren können verlangen, dass alle aktiven Zuweisungen ein bestimmtes Start- und Enddatum haben. |

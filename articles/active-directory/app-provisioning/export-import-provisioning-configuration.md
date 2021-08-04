@@ -1,21 +1,22 @@
 ---
-title: Exportieren einer Bereitstellungskonfiguration und Ausführen eines Rollbacks zu einem als funktionierend bekannten Zustand zur Notfallwiederherstellung
-description: Erfahren Sie, wie Sie Ihre Bereitstellungskonfiguration exportieren und einen Rollback auf einen als funktionierend bekannten Zustand zur Notfallwiederherstellung ausführen.
+title: Exportieren der Konfiguration für die Anwendungsbereitstellung und Ausführen eines Rollbacks auf einen bekannten fehlerfreien Status für die Notfallwiederherstellung in Azure Active Directory
+description: Hier erfahren Sie, wie Sie für die Notfallwiederherstellung in Azure Active Directory die Konfiguration für die Anwendungsbereitstellung exportieren und ein Rollback auf einen bekannten fehlerfreien Status ausführen.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.openlocfilehash: c6af42c78bda66c4b397cbb99b26af7d6a5c7f07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: 202450e66fe9f91257364b6840f1056435299f55
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256372"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782935"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Gewusst wie: Exportieren einer Bereitstellungskonfiguration und Ausführen eines Rollbacks zu einem als funktionierend bekannten Zustand
 

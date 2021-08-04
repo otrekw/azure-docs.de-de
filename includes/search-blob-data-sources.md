@@ -4,18 +4,19 @@ ms.service: cognitive-search
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: magottei
-ms.openlocfilehash: c4d727ffdd7e6517638b46f1f809890f5bb46354
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 449ea830d08af5bd36d2464bb2db8eeb232d759b
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91403607"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483609"
 ---
 * PDF
 * Microsoft Office-Formate: DOCX/DOC/DOCM, XLSX/XLS/XLSM, PPTX/PPT/PPTM, MSG (Outlook-E-Mails), XML (WORD XML 2003 und 2006)
 * Öffnen von Dokumentformaten: ODT, ODS, ODP  
 * HTML
 * XML
+* KML (XML für geografische Darstellungen)
 * ZIP
 * GZ
 * EPUB

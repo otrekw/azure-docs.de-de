@@ -10,16 +10,6 @@
       href: overview-azure-percept-dk.md
     - name: "Azure\_Percept-Audio"
       href: overview-azure-percept-audio.md
-    - name: "Azure\_Percept-KI-Modelle"
-      href: overview-ai-models.md
-    - name: Erweiterte Entwicklung
-      href: overview-advanced-code.md
-    - name: "Azure\_Percept-Sicherheit"
-      href: overview-percept-security.md
-    - name: 80/20-Integration
-      href: overview-8020-integration.md
-    - name: Geräteupdates
-      href: overview-update-experience.md
 - name: Schnellstarts
   items:
     - name: "Einrichten Ihrer Azure\_Percept-Geräte"
@@ -42,14 +32,28 @@
   items:
     - name: "Azure Percept\_DK"
       items:
+        - name: 80/20-Integration
+          href: overview-8020-integration.md
         - name: Herstellen einer Mobilfunkverbindung
           href: connect-over-cellular.md
+        - name: Geräteupdates
+          href: overview-update-experience.md
     - name: "Azure\_Percept-Audio"
       items:
         - name: LED- und Tastenverhalten
           href: audio-button-led-behavior.md
+    - name: Erweiterte Entwicklung
+      items:
+        - name: Erweiterte Entwicklung
+          href: overview-advanced-code.md
+        - name: Azure Percept-KI-Modelle
+          href: overview-ai-models.md
+        - name: Schnittstelle und Workflow des Speech-Moduls
+          href: speech-module-interface-workflow.md
     - name: Sicherheit
       items:
+        - name: "Azure\_Percept-Sicherheit"
+          href: overview-percept-security.md
         - name: Empfehlungen für Firewallkonfiguration und Sicherheit
           href: concept-security-configuration.md
 - name: Anleitungen
@@ -84,6 +88,8 @@
       items:
         - name: Herstellen einer Ethernet-Verbindung
           href: how-to-connect-over-ethernet.md
+        - name: Einrichten von erweiterten Netzwerkeinstellungen
+          href: how-to-set-up-advanced-network-settings.md
         - name: Herstellen einer SSH-Verbindung
           href: how-to-ssh-into-percept-dk.md
         - name: Herstellen einer seriellen Verbindung
@@ -104,6 +110,8 @@
           href: troubleshoot-audio-accessory-speech-module.md
         - name: Bekannte Probleme
           href: known-issues.md
+        - name: Hardwaresupport
+          href: how-to-get-hardware-support.md
 - name: Verweis
   items:
     - name: "Datenblätter für Azure\_Percept-Geräte"

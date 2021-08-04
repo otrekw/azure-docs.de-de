@@ -2,13 +2,13 @@
 title: Arbeitsmappe für Downtime, SLA und Ausfälle – Application Insights
 description: Berechnen und melden Sie die Vereinbarung zum Servicelevel für Webtests über eine einzelne zentralisierte Benutzeroberfläche in Ihren Application Insights-Ressourcen und Azure-Abonnements.
 ms.topic: conceptual
-ms.date: 02/8/2021
-ms.openlocfilehash: d225627a27bffd9088956e5aee37ca543e528d4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/4/2021
+ms.openlocfilehash: 4063cd28111dd0ea3c3d0cabe44f884f6605c063
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714050"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750531"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>Arbeitsmappe für Downtime, SLA und Ausfälle
 
@@ -23,15 +23,15 @@ Sie können über den Arbeitsmappenkatalog in Ihrer Application Insights-Ressour
 
 Die in der Arbeitsmappe festgelegten Parameter beeinflussen den Rest des Berichts.
 
-:::image type="content" source="./media/sla-report/outages.png" alt-text="Screenshot: Registerkarte „Outage/Maintenance Parameters“ (Ausfall- und Wartungsparameter) in der Arbeitsmappe „Downtime & Outages“ (Downtime und Ausfälle)" lightbox ="./media/sla-report/outages.png":::
+:::image type="content" source="./media/sla-report/parameters.png" alt-text=" Screenshot: Parameter" lightbox= "./media/sla-report/parameters.png":::
 
-Die Parameter `Subscriptions`, `App Insights Resources` und `Web Test` legen die Optionen für Ressourcen auf allgemeiner Ebene fest. Diese Parameter basieren auf Log Analytics-Abfragen und werden in jeder Berichtsabfrage verwendet.
+Die Parameter `Subscriptions`,  `App Insights Resources` und  `Web Test` legen die Optionen für Ressourcen auf allgemeiner Ebene fest. Diese Parameter basieren auf Log Analytics-Abfragen und werden in jeder Berichtsabfrage verwendet.
 
-`Failure Threshold` und `Outage Window` ermöglichen es Ihnen, Ihre eigenen Kriterien für einen Dienstausfall festzulegen, beispielsweise die Kriterien für eine App Insights-Verfügbarkeitswarnung basierend auf dem Zähler für Standorte, bei denen in einem bestimmten Zeitraum ein Fehler aufgetreten ist. Der typische Schwellenwert beträgt drei Standorte in einem Zeitfenster von fünf Minuten.
+`Failure Threshold` und  `Outage Window` ermöglichen es Ihnen, Ihre eigenen Kriterien für einen Dienstausfall festzulegen, beispielsweise die Kriterien für eine App Insights-Verfügbarkeitswarnung basierend auf dem Zähler für Standorte, bei denen in einem bestimmten Zeitraum ein Fehler aufgetreten ist. Der typische Schwellenwert beträgt drei Standorte in einem Zeitfenster von fünf Minuten.
 
-Mit `Maintenance Period` können Sie die normale Wartungshäufigkeit auswählen. `Maintenance Window` ist ein DateTime-Selektor für einen Beispielwartungszeitraum. Alle Daten, die während des identifizierten Zeitraums auftreten, werden in den Ergebnissen ignoriert.
+Mit `Maintenance Period` können Sie die normale Wartungshäufigkeit auswählen.  `Maintenance Window` ist ein datetime-Selektor für einen Beispielwartungszeitraum. Alle Daten, die während des identifizierten Zeitraums auftreten, werden in den Ergebnissen ignoriert.
 
-`Availability Target 9s` gibt Ihr Ziel in Bezug auf Neunen mit zwei bis fünf Neunen an.
+`Availability Target %` gibt Ihr Ziel an und verwendet benutzerdefinierte Werte.
 
 ## <a name="overview-page"></a>Seite „Übersicht“
 

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 2a3c788ce50ccc1d537fd2903fe05acffd079b0b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 84b10fefbfae4ca42fa96cc96f357dbfe0d25800
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104591009"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794770"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>Erstellen der Volumereplikation für Azure NetApp Files
 
 > [!IMPORTANT]
-> Das Features für die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion. Sie müssen eine Wartelistenanforderung für den Zugriff auf das Feature über die [Seite für Wartelistenanforderungen für die regionsübergreifende Replikation von Azure NetApp Files-Volumes](https://aka.ms/anfcrrpreviewsignup) übermitteln. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie das Feature für die regionsübergreifende Replikation verwenden.
+> Das Feature für die regionsübergreifende Replikation befindet sich derzeit in der Vorschauphase. Sie müssen eine Wartelistenanforderung für den Zugriff auf das Feature über die [Seite für Wartelistenanforderungen für die regionsübergreifende Replikation von Azure NetApp Files-Volumes](https://aka.ms/anfcrrpreviewsignup) übermitteln. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie das Feature für die regionsübergreifende Replikation verwenden.
 
 In diesem Artikel erfahren Sie, wie Sie regionsübergreifende Replikation einrichten, indem Sie Replikationspeering erstellen. 
 

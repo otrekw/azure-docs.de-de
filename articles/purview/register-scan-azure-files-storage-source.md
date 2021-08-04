@@ -6,13 +6,13 @@ ms.author: suvirdi
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 10/01/2020
-ms.openlocfilehash: a0bd7a4cd8afafc16f05b4a37cd5723304ad931e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: c88134e978615d53bdfbde26492096212c3f582f
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96550902"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656403"
 ---
 # <a name="register-and-scan-azure-files"></a>Registrieren und Überprüfen von Azure Files
 
@@ -40,10 +40,10 @@ Gehen Sie wie folgt vor, um in Ihrem Datenkatalog ein neues Azure Files-Konto zu
 Gehen Sie auf dem Bildschirm **Register sources (Azure Files)** (Quellen registrieren (Azure Files)) wie folgt vor:
 
 1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
-1. Wählen Sie aus, wie auf Ihr gewünschtes Speicherkonto verwiesen werden soll:
-   1. Wählen Sie die Option **Aus Azure-Abonnement** und dann im Dropdownfeld **Azure-Abonnement** das entsprechende Abonnement und im Dropdownfeld **Speicherkontoname** das entsprechende Speicherkonto aus.
-   1. Alternativ können Sie auch die Option **Manuell eingeben** auswählen und einen Dienstendpunkt (URL) eingeben.
-1. Wählen Sie **Fertig stellen** aus, um die Datenquelle zu registrieren.
+2. Wählen Sie Ihr Azure-Abonnement aus, um Azure Storage-Konten zu filtern.
+3. Wählen Sie ein Azure Storage-Konto aus.
+4. Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung (optional).
+5. Wählen Sie **Registrieren** aus, um die Datenquelle zu registrieren.
 
 :::image type="content" source="media/register-scan-azure-files/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 

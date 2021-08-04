@@ -3,20 +3,20 @@ title: Grundlegendes zur Integration der Bereitstellung mit Azure Monitor-Protok
 description: Grundlegendes zur Integration der Bereitstellung mit Azure Monitor-Protokollen in Azure Active Directory
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/12/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: arvinh,luleon
-ms.openlocfilehash: f656f55b0c74103053f110b8c66645d353db9fbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: 8ad80b7fb8c148ae42d52b15719ddadf4b5302e2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561567"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783277"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Grundlegendes zur Integration der Bereitstellung in Azure Monitor-Protokolle
 
@@ -96,7 +96,7 @@ AADProvisioningLogs
 
 Mit Azure Monitor können Sie benutzerdefinierte Warnungen konfigurieren, damit Sie über wichtige Ereignisse in Verbindung mit der Bereitstellung benachrichtigt werden. So können Sie beispielsweise Warnungen über Spitzen bei Ausfällen oder über Spitzen bei Deaktivierungen oder Löschvorgängen erhalten. Ein weiteres Beispiel ist eine Warnung bei einer fehlenden Bereitstellung, die auf einen möglichen Fehler hinweist.
 
-Weitere Informationen zu Warnungen finden Sie unter [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../../azure-monitor/alerts/tutorial-response.md).
+Weitere Informationen zu Warnungen finden sie unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../../azure-monitor/alerts/alerts-log.md).
 
 Warnung über Spitze bei Ausfällen Ersetzen Sie die jobID durch die Auftrags-ID Ihrer Anwendung.
 

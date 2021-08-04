@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 05/07/2021
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cae2bcb1a3302814a426fa0cb2dfb36ba1b013fa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e473e7305f7e2dd9609edf0f2d18a12a950b9d40
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218365"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656918"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting
 
@@ -152,11 +152,23 @@ Diese Gruppierungsabfrage würde ein ähnliches Ergebnis wie im folgenden Beispi
 
 In diesem Beispiel meldeten drei Geräte eine erfolgreiche Konfiguration, zwei wenden die Konfiguration noch an und ein Gerät hat einen Fehler gemeldet.
 
-Mithilfe von Projektionsabfragen können Entwickler nur die interessierenden Eigenschaften zurückgeben. Um beispielsweise den Zeitpunkt der letzten Aktivität aller getrennten Geräte abzurufen, verwenden Sie die folgende Abfrage:
+Mithilfe von Projektionsabfragen können Entwickler nur die interessierenden Eigenschaften zurückgeben. Um beispielsweise den Zeitpunkt der letzten Aktivität zusammen mit der Geräte-ID aller aktivierten Geräte abzurufen, die getrennt sind, verwenden Sie die folgende Abfrage:
 
 ```sql
-SELECT LastActivityTime FROM devices WHERE status = 'enabled'
+SELECT DeviceId, LastActivityTime FROM devices WHERE status = 'enabled' AND connectionState = 'Disconnected'
 ```
+
+Hier sehen Sie ein Beispiel für ein Abfrageergebnis dieser Abfrage im **Abfrage-Explorer** für IoT Hub:
+
+```json
+[
+  {
+    "deviceId": "AZ3166Device",
+    "lastActivityTime": "2021-05-07T00:50:38.0543092Z"
+  }
+]
+```
+
 
 ### <a name="module-twin-queries"></a>Modulzwillingsabfragen
 

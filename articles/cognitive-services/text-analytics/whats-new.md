@@ -8,29 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2021
+ms.date: 07/12/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 63063ef205b456c368cec2d5c1a8ce1f456aaa59
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f79c9cb7381f2325de2efca5e20b37c60ab72013
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756471"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113652465"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
 Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu neuen Releases und Funktionen.
 
+## <a name="july-2021"></a>Juli 2021
+
+### <a name="ga-release-updates"></a>Aktualisierungen des allgemein verfügbaren Release
+
+* Allgemeine Verfügbarkeit der [Textanalyse für das Gesundheitssystem](how-tos/text-analytics-for-health.md?tabs=ner) für Container und die gehostete API (/health)
+* Allgemeine Verfügbarkeit für [Opinion Mining](how-tos/text-analytics-how-to-sentiment-analysis.md?tabs=version-3-1#opinion-mining)
+* Allgemeine Verfügbarkeit für die [Extraktion und Bearbeitung von personenbezogenen Informationen](how-tos/text-analytics-how-to-entity-linking.md?tabs=version-3-1#personally-identifiable-information-pii)
+* Allgemeine Verfügbarkeit für den [asynchronen Endpunkt (`/analyze`)](how-tos/text-analytics-how-to-call-api.md?tabs=synchronous#using-the-api-asynchronously)
+* Aktualisierte [Schnellstartbeispiele](quickstarts/client-libraries-rest-api.md) im neuen SDK 
+
 ## <a name="june-2021"></a>Juni 2021
 
 ### <a name="general-api-updates"></a>Allgemeine API-Updates
 
-* Neue Modellversion `2021-06-01` für die Schlüsselbegriffserkennung, die Unterstützung für vereinfachtes Chinesisch hinzufügt.
+* Neue Modellversion `2021-06-01` für die Schlüsselbegriffserkennung basierend auf Transformatoren Sie bietet:
+  * Unterstützung für zehn Sprachen (Lateinisch und CJK) 
+  * Verbesserte Schlüsselbegriffserkennung
 * Die `2021-06-01`-Modellversion für die [Erkennung benannter Entitäten](how-tos/text-analytics-how-to-entity-linking.md), Version 3.x bietet Folgendes: 
   * Verbesserte KI-Qualität und erweiterte Sprachunterstützung für die *Skill*-Entitätskategorie. 
   * Unterstützung der Sprachen „Spanisch“, „Französisch“, „Deutsch“, „Italienisch“ und „Portugiesisch“ für die *Skill*-Entitätskategorie hinzugefügt.
-* Asynchroner Vorgang und Textanalyse für Gesundheit sind in allen Regionen verfügbar 
+* Der asynchrone Vorgang (/analyze) und die Textanalyse für das Gesundheitssystem (nicht geschlossene Vorschauversion) sind in allen Regionen verfügbar. 
 
 ### <a name="text-analytics-for-health-updates"></a>Updates von Text Analytics for Health
 
@@ -40,7 +52,7 @@ Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktu
     * 14 neue Beziehungstypen
     * Die Assertionserkennung wurde für neue Entitätstypen erweitert und
     * Verknüpfungsunterstützung für den ALLERGEN-Entitätstyp
-
+* Ein neues Image für den Container für die Textanalyse für das Gesundheitssystem mit Tag `3.0.016230002-onprem-amd64` und Modellversion `2021-05-15`. Dieser Container kann aus Microsoft Container Registry heruntergeladen werden.
  
 ## <a name="may-2021"></a>Mai 2021
 
