@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: gahllevy
-ms.openlocfilehash: 1e9062b111c30efa90b98c4ebcee710b1d975a1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3852aec23a6ad894cd3f89c09c9013564fad4c4e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99507929"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062900"
 ---
 # <a name="prevent-rate-limiting-errors-for-azure-cosmos-db-api-for-mongodb-operations"></a>Verhindern von Ratenbegrenzungsfehlern bei Vorgängen der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -38,28 +38,42 @@ Sie können das Feature für die serverseitige Wiederholung (Server-Side Retry, 
 ## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
 1. Überprüfen Sie, ob SSR für Ihr Konto bereits aktiviert ist:
-```bash
-az cosmosdb show --name accountname --resource-group resourcegroupname
-```
-2. **Aktivieren** Sie SSR für alle Sammlungen in Ihrem Datenbankkonto. Es kann bis zu 15 Minuten dauern, bis diese Änderung wirksam wird.
-```bash
-az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo DisableRateLimitingResponses
-```
-Mit dem folgenden Befehl wird SSR für alle Sammlungen in Ihrem Datenbankkonto **deaktiviert**, indem „DisableRateLimitingResponses“ aus der Funktionenliste entfernt wird. Es kann bis zu 15 Minuten dauern, bis diese Änderung wirksam wird.
-```bash
-az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo
-```
+
+   ```azurecli-interactive
+   az cosmosdb show --name accountname --resource-group resourcegroupname
+   ```
+
+1. **Aktivieren** Sie SSR für alle Sammlungen in Ihrem Datenbankkonto. Es kann bis zu 15 Minuten dauern, bis diese Änderung wirksam wird.
+
+   ```azurecli-interactive
+   az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo DisableRateLimitingResponses
+   ```
+
+1. Mit dem folgenden Befehl wird die serverseitige Wiederholung für alle Sammlungen in Ihrem Datenbankkonto **deaktiviert**, indem `DisableRateLimitingResponses` aus der Liste der Funktionen entfernt wird. Es kann bis zu 15 Minuten dauern, bis diese Änderung wirksam wird.
+
+   ```azurecli-interactive
+   az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo
+   ```
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-* Wie werden Anforderungen wiederholt?
-    * Anforderungen werden fortlaufend (also immer wieder) wiederholt, bis ein 60-Sekunden-Timeout erreicht wird. Bei Erreichen des Timeouts empfängt der Client eine [Ausnahme vom Typ „ExceededTimeLimit“ (50)](mongodb-troubleshoot.md).
-*  Wie kann ich die Auswirkungen von SSR überwachen?
-    *  Sie können sich im Bereich mit den Cosmos DB-Metriken die serverseitig wiederholten Ratenbegrenzungsfehler (429) ansehen. Beachten Sie, dass diese Fehler nicht an den Client gesendet werden, wenn SSR aktiviert ist, da sie serverseitig behandelt und wiederholt werden. 
-    *  Sie können in Ihren [Cosmos DB-Ressourcenprotokollen](cosmosdb-monitor-resource-logs.md) nach Protokolleinträgen suchen, die „estimatedDelayFromRateLimitingInMilliseconds“ enthalten.
-*  Wirkt sich SSR auf die Konsistenz aus?
-    *  SSR hat keine Auswirkung auf die Konsistenz einer Anforderung. Anforderungen werden serverseitig wiederholt, wenn bei ihnen eine Ratenbegrenzung vorliegt (Fehler vom Typ 429). 
-*  Hat SSR Auswirkungen auf Fehlertypen, die ggf. von meinem Client empfangen werden?
-    *  Nein. SSR hat nur Auswirkungen auf Ratenbegrenzungsfehler (429), indem diese serverseitig wiederholt werden. Dieses Feature sorgt dafür, dass Ratenbegrenzungsfehler nicht in der Clientanwendung behandelt werden müssen. Alle [anderen Fehler](mongodb-troubleshoot.md) werden an den Client gesendet. 
+
+### <a name="how-are-requests-retried"></a>Wie werden Anforderungen wiederholt?
+
+Anforderungen werden fortlaufend (also immer wieder) wiederholt, bis ein 60-Sekunden-Timeout erreicht wird. Bei Erreichen des Timeouts empfängt der Client eine [Ausnahme vom Typ „ExceededTimeLimit“ (50)](mongodb-troubleshoot.md).
+
+### <a name="how-can-i-monitor-the-effects-of-a-server-side-retry"></a>Wie kann ich die Auswirkungen einer serverseitigen Wiederholung überwachen?
+
+Sie können im Bereich mit den Cosmos DB-Metriken die serverseitig wiederholten Ratenbegrenzungsfehler (429) anzeigen. Beachten Sie, dass diese Fehler nicht an den Client gesendet werden, wenn SSR aktiviert ist, da sie serverseitig behandelt und wiederholt werden.
+
+Sie können in Ihren [Cosmos DB-Ressourcenprotokollen](cosmosdb-monitor-resource-logs.md) nach Protokolleinträgen suchen, die *estimatedDelayFromRateLimitingInMilliseconds* enthalten.
+
+### <a name="will-server-side-retry-affect-my-consistency-level"></a>Wirkt sich die serverseitige Wiederholung auf meine Konsistenzebene aus?
+
+Die serverseitige Wiederholung hat keine Auswirkung auf die Konsistenz einer Anforderung. Anforderungen werden serverseitig wiederholt, wenn bei ihnen eine Ratenbegrenzung vorliegt (Fehler vom Typ 429).
+
+### <a name="does-server-side-retry-affect-any-type-of-error-that-my-client-might-receive"></a>Hat die serverseitige Wiederholung Auswirkungen auf Fehlertypen, die ggf. von meinem Client empfangen werden?
+
+Nein, die serverseitige Wiederholung hat nur Auswirkungen auf Ratenbegrenzungsfehler (429), indem diese serverseitig wiederholt werden. Dieses Feature sorgt dafür, dass Ratenbegrenzungsfehler nicht in der Clientanwendung behandelt werden müssen. Alle [anderen Fehler](mongodb-troubleshoot.md) werden an den Client gesendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

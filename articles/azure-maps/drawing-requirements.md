@@ -3,26 +3,23 @@ title: Anforderungen für Zeichnungspakete in Microsoft Azure Maps Creator (Vors
 description: Erfahren Sie, welche Anforderungen für Zeichnungspakete erfüllt sein müssen, um Ihre Plandateien für Einrichtungen in Kartendaten zu konvertieren
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 1/08/2021
+ms.date: 4/16/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a663042cbd8d48d5495d24e5e23db0433f15d55f
+ms.sourcegitcommit: 5c136a01bddfccb2cc9f7e7e7741e2cf2651ddbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98895270"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111352765"
 ---
 # <a name="drawing-package-requirements"></a>Anforderungen für Zeichnungspakete
 
+Mit dem [Azure Maps-Konvertierungsdienst](/rest/api/maps/v2/conversion) können Sie hochgeladene Zeichnungspakete in Kartendaten konvertieren. In diesem Artikel werden die Anforderungen für Zeichnungspakete für die Konvertierungs-API beschrieben. Wenn Sie sich ein Beispielpaket ansehen möchten, können Sie das exemplarische [Zeichnungspaket](https://github.com/Azure-Samples/am-creator-indoor-data-examples) herunterladen.
 
-> [!IMPORTANT]
-> Azure Maps Creator-Dienste befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Mit dem [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) können Sie hochgeladene Zeichnungspakete in Kartendaten konvertieren. In diesem Artikel werden die Anforderungen für Zeichnungspakete für die Konvertierungs-API beschrieben. Wenn Sie sich ein Beispielpaket ansehen möchten, können Sie das exemplarische [Zeichnungspaket](https://github.com/Azure-Samples/am-creator-indoor-data-examples) herunterladen.
+Eine Anleitung zum Vorbereiten des Zeichnungspakets finden Sie unter [Leitfaden zum Konvertieren von Zeichnungspaketen](drawing-package-guide.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,7 +27,7 @@ Das Zeichnungspaket enthält gespeicherte Zeichnungen im DWG-Format. Hierbei han
 
 Die Zeichnungen im Zeichnungspaket können mithilfe einer beliebigen CAD-Software erstellt werden.  
 
-Das Zeichnungspaket wird vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) in Kartendaten konvertiert. Der Konvertierungsdienst kann mit dem DWG-Dateiformat von AutoCAD verwendet werden. `AC1032` ist die interne Formatversion für die DWG-Dateien. Es empfiehlt sich, als interne DWG-Dateiformatversion `AC1032` auszuwählen.  
+Das Zeichnungspaket wird vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/v2/conversion) in Kartendaten konvertiert. Der Konvertierungsdienst kann mit dem DWG-Dateiformat von AutoCAD verwendet werden. `AC1032` ist die interne Formatversion für die DWG-Dateien. Es empfiehlt sich, als interne DWG-Dateiformatversion `AC1032` auszuwählen.  
 
 ## <a name="glossary-of-terms"></a>Glossarbegriffe
 
@@ -62,7 +59,7 @@ Für jede Ebene der Einrichtung ist jeweils eine einzelne DWG-Datei erforderlich
 * Sie darf keine Features mehrerer Einrichtungen enthalten.
 * Sie muss auf das gleiche Maßsystem und die gleiche Maßeinheit wie die anderen DWG-Dateien im Zeichnungspaket verweisen.
 
-Vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) können folgende Featureklassen aus einer DWG-Datei extrahiert werden:
+Vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/v2/conversion) können folgende Featureklassen aus einer DWG-Datei extrahiert werden:
 
 * Levels
 * Units
@@ -79,11 +76,11 @@ DWG-Schichten müssen außerdem folgende Kriterien erfüllen:
 
 * Der Ursprung von Zeichnungen muss für alle DWG-Dateien am gleichen Breiten- und Längengrad ausgerichtet sein.
 * Alle Ebenen müssen über die gleiche Ausrichtung verfügen.
-* Polygone, die sich selbst schneiden, werden automatisch repariert, und vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) wird eine entsprechende Warnung ausgelöst. Es empfiehlt sich, die reparierten Ergebnisse manuell zu überprüfen, da sie möglicherweise nicht mit den erwarteten Ergebnissen übereinstimmen.
+* Polygone, die sich selbst schneiden, werden automatisch repariert, und vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/v2/conversion) wird eine entsprechende Warnung ausgelöst. Es empfiehlt sich, die reparierten Ergebnisse manuell zu überprüfen, da sie möglicherweise nicht mit den erwarteten Ergebnissen übereinstimmen.
 
 Bei allen Schichtentitäten muss es sich um einen der folgenden Typen handeln: Linie, Polylinie, Polygon, Kreisbogen, Kreis, Ellipse (geschlossen) oder Text (einzeilig). Alle anderen Entitätstypen werden ignoriert.
 
-In der folgenden Tabelle werden die unterstützten Entitätstypen und die konvertierten Map-Funktionen für die einzelnen Schichten beschrieben. Sollte eine Schicht nicht unterstützte Entitätstypen enthalten, werden diese Entitäten vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) ignoriert.  
+In der folgenden Tabelle werden die unterstützten Entitätstypen und die konvertierten Map-Funktionen für die einzelnen Schichten beschrieben. Sollte eine Schicht nicht unterstützte Entitätstypen enthalten, werden diese Entitäten vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/v2/conversion) ignoriert.  
 
 | Ebene | Entitätstypen | Konvertierte Funktionen |
 | :----- | :-------------------| :-------
@@ -178,11 +175,11 @@ Ein Beispiel für die ZoneLabel-Schicht ist im [Beispielzeichenpaket](https://gi
 
 ## <a name="manifest-file-requirements"></a>Anforderungen für die Manifestdatei
 
-Der ZIP-Ordner muss eine Manifestdatei auf der Stammebene des Verzeichnisses enthalten, und die Datei muss **manifest.json** heißen. In dieser Datei werden die DWG-Dateien beschrieben, damit deren Inhalt vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) analysiert werden kann. Bei der Erfassung werden nur die im Manifest angegebenen Dateien berücksichtigt. Dateien, die sich zwar im ZIP-Ordner befinden, aber nicht ordnungsgemäß im Manifest aufgeführt sind, werden ignoriert.
+Der ZIP-Ordner muss eine Manifestdatei auf der Stammebene des Verzeichnisses enthalten, und die Datei muss **manifest.json** heißen. In dieser Datei werden die DWG-Dateien beschrieben, damit deren Inhalt vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/v2/conversion) analysiert werden kann. Bei der Erfassung werden nur die im Manifest angegebenen Dateien berücksichtigt. Dateien, die sich zwar im ZIP-Ordner befinden, aber nicht ordnungsgemäß im Manifest aufgeführt sind, werden ignoriert.
 
 Die Dateipfade im `buildingLevels`-Objekt der Manifestdatei müssen relativ zum Stamm des ZIP-Ordners angegeben sein. Der DWG-Dateiname muss exakt dem Namen der Einrichtungsebene entsprechen. Eine DWG-Datei für die Ebene „Keller“ heißt also beispielsweise „Keller.dwg“. Eine DWG-Datei für Ebene 2 heißt „Ebene_2.dgw“. Sollte der Name Ihrer Ebene ein Leerzeichen enthalten, ersetzen Sie dieses durch einen Unterstrich.
 
-Im Zusammenhang mit der Verwendung der Manifestobjekte müssen zwar gewisse Anforderungen erfüllt werden, es sind aber nicht alle Objekte erforderlich. Die folgende Tabelle enthält die erforderlichen und optionalen Objekte für die Version 1.1 des [Azure Maps-Konvertierungsdiensts](/rest/api/maps/conversion).
+Im Zusammenhang mit der Verwendung der Manifestobjekte müssen zwar gewisse Anforderungen erfüllt werden, es sind aber nicht alle Objekte erforderlich. Die folgende Tabelle enthält die erforderlichen und optionalen Objekte für die Version 1.1 des [Azure Maps-Konvertierungsdiensts](/rest/api/maps/v2/conversion).
 
 | Object | Erforderlich | BESCHREIBUNG |
 | :----- | :------- | :------- |
@@ -198,7 +195,7 @@ In den nächsten Abschnitten werden die Anforderungen für die einzelnen Objekte
 
 ### `directoryInfo`
 
-| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | Typ | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 | `name`      | Zeichenfolge | true   |  Name des Gebäudes. |
 | `streetAddress`|    Zeichenfolge |    false    | Adresse des Gebäudes. |
@@ -219,7 +216,7 @@ In den nächsten Abschnitten werden die Anforderungen für die einzelnen Objekte
 
 Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
-| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | Typ | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 |`levelName`    |Zeichenfolge    |true |    Beschreibender Ebenenname. Beispiel: 1. Stock, Eingangsbereich, blaue Parkebene oder Keller.|
 |`ordinal` | integer |    true | Bestimmt die vertikale Reihenfolge der Ebenen. Jede Einrichtung muss über eine Ebene mit der Ordnungszahl 0 verfügen. |
@@ -229,7 +226,7 @@ Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
 ### `georeference`
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | Typ | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 |`lat`    | NUMERIC |    true |    Dezimaldarstellung des Breitengrads am Ursprung der Anlagenzeichnung. Die Ursprungskoordinaten müssen als WGS 84-Web-Mercator-Koordinaten (`EPSG:3857`) vorliegen.|
 |`lon`    |NUMERIC|    true|    Dezimaldarstellung des Längengrads am Ursprung der Anlagenzeichnung. Die Ursprungskoordinaten müssen als WGS 84-Web-Mercator-Koordinaten (`EPSG:3857`) vorliegen. |
@@ -237,7 +234,7 @@ Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
 ### `dwgLayers`
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | Typ | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 |`exterior`    |array of strings|    true|    Namen von Schichten zum Definieren des äußeren Gebäudeprofils.|
 |`unit`|    array of strings|    true|    Namen von Schichten zum Definieren von Einheiten.|
@@ -251,7 +248,7 @@ Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
 Das Objekt `unitProperties` enthält ein JSON-Array mit Einheiteneigenschaften.
 
-| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | Typ | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 |`unitName`    |Zeichenfolge    |true    |Name der Einheit, die diesem Datensatz vom Typ `unitProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schichten vom Typ `unitLabel` eine Bezeichnung vom Typ `unitName` enthalten. |
 |`categoryName`|    Zeichenfolge|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |
@@ -271,7 +268,7 @@ Das Objekt `unitProperties` enthält ein JSON-Array mit Einheiteneigenschaften.
 
 Das Objekt `zoneProperties` enthält ein JSON-Array mit Zoneneigenschaften.
 
-| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | Typ | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 |zoneName        |Zeichenfolge    |true    |Name der Zone, der dem Datensatz `zoneProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schicht `zoneLabel` der Zone eine Bezeichnung vom Typ `zoneName` enthält.  |
 |categoryName|    Zeichenfolge|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |
@@ -414,13 +411,16 @@ Unten finden Sie die Manifestdatei für das Beispielzeichnungspaket. Wechseln Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Zeichnungspaket den Anforderungen entspricht, können Sie es mithilfe des [Azure Maps-Konvertierungsdiensts](/rest/api/maps/conversion) in ein Kartendataset konvertieren. Anschließend können Sie mit dem Dataset und dem Modul für Gebäudepläne einen Gebäudeplan generieren.
+Wenn Ihr Zeichnungspaket den Anforderungen entspricht, können Sie es mithilfe des [Azure Maps-Konvertierungsdiensts](/rest/api/maps/v2/conversion) in ein Kartendataset konvertieren. Anschließend können Sie mit dem Dataset und dem Modul für Gebäudepläne einen Gebäudeplan generieren.
 
 > [!div class="nextstepaction"]
->[Creator (Vorschau) für Gebäudepläne](creator-indoor-maps.md)
+> [Leitfaden für Zeichnungspakete](drawing-package-guide.md)
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen von Gebäudeplänen mithilfe von Creator (Vorschau)](tutorial-creator-indoor-maps.md)
+>[Creator für Gebäudepläne](creator-indoor-maps.md)
+
+> [!div class="nextstepaction"]
+> [Tutorial: Erstellen von Gebäudeplänen mithilfe von Creator](tutorial-creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [Implementieren dynamischer Stile für Gebäudepläne](indoor-map-dynamic-styling.md)

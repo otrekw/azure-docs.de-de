@@ -3,16 +3,18 @@ title: Synchronisieren der Einstellung für DNS-Server virtueller Netzwerke in e
 description: Erfahren Sie, wie Sie die Einstellung für DNS-Server virtueller Netzwerke in einem virtuellen SQL Managed Instance-Cluster synchronisieren.
 services: sql-database
 ms.service: sql-managed-instance
+ms.subservice: deployment-configuration
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.topic: how-to
 ms.date: 01/17/2021
-ms.openlocfilehash: b95afe513dba2f1da9556b27ec17bcccc9fe88e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 276b4033dc2a5c157245448453b72a8074b79702
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173550"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707145"
 ---
 # <a name="synchronize-virtual-network-dns-servers-setting-on-sql-managed-instance-virtual-cluster"></a>Synchronisieren der Einstellung für DNS-Server virtueller Netzwerke in einem virtuellen SQL Managed Instance-Cluster
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,8 +36,7 @@ Wenn diese Änderung nach dem Erstellen des [virtuellen Clusters](connectivity-a
 
 Benutzer, die die DNS-Serverkonfiguration synchronisieren, benötigen eine der folgenden Azure-Rollen:
 
-- Rolle „Besitzer des Abonnements“ oder
-- Rolle „Mitwirkender“ der verwalteten Instanz oder
+- Rolle „Abonnementmitwirkender“ oder
 - Benutzerdefinierte Rolle mit der folgenden Berechtigung:
   - `Microsoft.Sql/virtualClusters/updateManagedInstanceDnsServers/action`
 

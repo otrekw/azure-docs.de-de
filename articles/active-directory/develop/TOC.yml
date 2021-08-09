@@ -322,6 +322,8 @@
             - name: Migrieren von Apps von ADAL zu MSAL
               href: msal-migration.md
               displayName: migration
+            - name: Auflisten aller Apps mithilfe von ADAL
+              href: howto-get-list-of-all-active-directory-auth-library-apps.md
             - name: Nationale Clouds und MSAL
               href: msal-national-cloud.md
               displayName: 'china, germany, gov, 21vianet'
@@ -337,11 +339,17 @@
             - name: Integrieren in ADFS
               href: msal-net-adfs-support.md
             - name: Migrieren zu MSAL.NET
-              href: msal-net-migration.md
-            - name: Migrieren einer Xamarin Android-App mithilfe eines Brokers zu MSAL.NET
-              href: msal-net-migration-android-broker.md
-            - name: Migrieren einer Xamarin iOS-App mithilfe eines Brokers zu MSAL.NET
-              href: msal-net-migration-ios-broker.md
+              items:
+                - name: Migrieren von ADAL.NET zu MSAL.NET
+                  href: msal-net-migration.md
+                - name: Migrieren vertraulicher Client-Apps zu MSAL.NET
+                  href: msal-net-migration-confidential-client.md
+                - name: Migrieren einer Xamarin Android-App mithilfe eines Brokers zu MSAL.NET
+                  href: msal-net-migration-android-broker.md
+                - name: Migrieren einer Xamarin iOS-App mithilfe eines Brokers zu MSAL.NET
+                  href: msal-net-migration-ios-broker.md
+                - name: Unterschiede zwischen ADAL.NET und MSAL.NET
+                  href: msal-net-differences-adal-net.md
             - name: Überlegungen zum Webbrowser
               href: msal-net-web-browsers.md
             - name: Behandeln von Fehlern und Ausnahmen in MSAL.NET
@@ -684,7 +692,7 @@
         - name: Häufige Bereitstellungsszenarien
           href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: Automatisieren der Konfiguration mit MS Graph
-          href: /graph/application-provisioning-configure-api?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
+          href: /azure/active-directory/app-provisioning/application-provisioning-configuration-api?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
 - name: Ressourcen
   items:
     - name: Videos

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 012eefe9140703a62d7bb1074ab763191a0976cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf34223e44ddfb59a72f98d31f0df5d9a882e0eb
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798510"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713592"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Erstellen einer Zugriffsüberprüfung für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -31,7 +31,7 @@ Um das Risiko eines veralteten Zugriffs zu verringern, sollten Sie regelmäßige
 
 Um Überprüfungen von Zugriffspaketen aktivieren zu können, müssen Sie die Voraussetzungen für das Erstellen eines Zugriffspakets erfüllen:
 - Azure AD Premium P2
-- Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+- Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 Weitere Informationen finden Sie unter [Lizenzanforderungen](entitlement-management-overview.md#license-requirements).
 

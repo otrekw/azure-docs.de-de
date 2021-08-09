@@ -4,12 +4,12 @@ description: Grundlegendes zur Handhabung von IP-Adressen und der Geolocation mi
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js, devx-track-azurepowershell
-ms.openlocfilehash: d5bacde864d42dfefab9c4b0d5dc90072081a25f
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 8115ea2334d0ea90ef0e31bb857f3e76154912ce
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321355"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082538"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geolocation und Verarbeitung von IP-Adressen
 
@@ -58,7 +58,7 @@ Die Eigenschaft `DisableIpMasking` der Application Insights-Komponente muss auf 
 }
 ```
 
-### <a name="portal"></a>Portal 
+### <a name="portal"></a>Portal
 
 Wenn Sie nur das Verhalten für eine einzelne Application Insights-Ressource ändern müssen, verwenden Sie das Azure-Portal. 
 
@@ -79,15 +79,14 @@ Wenn Sie nur das Verhalten für eine einzelne Application Insights-Ressource än
     > [!WARNING]
     > Wenn eine Fehlermeldung mit folgendem Text angezeigt wird: **_The resource group is in a location that is not supported by one or more resources in the template. Please choose a different resource group._** (Die Ressourcengruppe befindet sich an einem Speicherort, der von keiner Ressource in der Vorlage unterstützt wird. Bitte wählen Sie eine andere Ressourcengruppe). Wählen Sie vorübergehend eine andere Ressourcengruppe aus der Dropdownliste aus, und wählen Sie dann erneut die ursprüngliche Ressourcengruppe aus, um den Fehler zu beheben.
 
-5. Klicken Sie auf **Ich stimme zu** > **Kaufen**. 
+5. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus.
 
-    ![Kontrollkästchen mit Häkchen vor der rot hervorgehobenen Schaltfläche „Ich stimme den oben genannten Geschäftsbedingungen zu“ über einer rot hervorgehobenen Schaltfläche mit dem Wort „Kaufen“](media/ip-collection/purchase.png)
-
-    In diesem Fall wird tatsächlich nichts Neues erworben. Es wird lediglich die Konfiguration der vorhandenen Application Insights-Ressource aktualisiert.
+    > [!NOTE]
+    > Wenn „Fehler bei der Bereitstellung“ angezeigt wird, suchen Sie in den Bereitstellungsdetails nach dem Eintrag mit dem Typ „microsoft.insights/components“, und überprüfen Sie den Status. Wenn dieser als erfolgreich angegeben ist, wurden die an „DisableIpMasking“ vorgenommenen Änderungen bereitgestellt.
 
 6. Sobald die Bereitstellung abgeschlossen ist, werden neue Telemetriedaten aufgezeichnet.
 
-    Wenn Sie die Vorlage noch mal auswählen und bearbeiten, wird nur die Standardvorlage ohne der neu hinzugefügten Eigenschaft angezeigt. Wenn die IP-Adressdaten nicht angezeigt werden und Sie bestätigen möchten, dass `"DisableIpMasking": true` festgelegt ist, führen Sie den folgenden PowerShell-Befehl aus: 
+    Wenn Sie die Vorlage noch mal auswählen und bearbeiten, wird nur die Standardvorlage ohne der neu hinzugefügten Eigenschaft angezeigt. Wenn die IP-Adressdaten nicht angezeigt werden und Sie bestätigen möchten, dass `"DisableIpMasking": true` festgelegt ist, führen Sie den folgenden PowerShell-Befehl aus:
     
     ```powershell
     # Replace `Fabrikam-dev` with the appropriate resource and resource group name.

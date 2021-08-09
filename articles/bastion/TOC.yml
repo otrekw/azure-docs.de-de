@@ -7,11 +7,11 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen eines Hosts mithilfe von VM-Einstellungen
+    - name: Konfigurieren von Bastion über VM-Einstellungen
       href: quickstart-host-portal.md
 - name: Tutorials
   items:
-    - name: Erstellen eines Hosts und Herstellen einer Verbindung mit einer Windows-VM
+    - name: Konfigurieren von Bastion und Herstellen einer Verbindung
       href: tutorial-create-host-portal.md
 - name: Konzepte
   items:
@@ -29,7 +29,7 @@
           href: /security/benchmark/azure/baselines/bastion-security-baseline?toc=/azure/bastion/TOC.json
 - name: Anleitungen
   items:
-    - name: Erstellen eines Hosts
+    - name: Konfigurieren von Bastion
       items:
         - name: Azure-Portal
           href: tutorial-create-host-portal.md
@@ -55,12 +55,14 @@
           href: bastion-vm-full-screen.md
     - name: Arbeiten mit NSGs
       href: bastion-nsg.md
-    - name: Konfigurieren und Nutzen von Diagnoseprotokollen
-      href: diagnostic-logs.md
-    - name: Überwachen und Verwalten von Sitzungen
-      href: session-monitoring.md
-    - name: 'Metriken, Überwachung und Warnungen'
-      href: howto-metrics-monitor-alert.md
+    - name: Systemüberwachung
+      items:
+        - name: Überwachen von Azure Bastion
+          href: howto-metrics-monitor-alert.md
+        - name: Konfigurieren und Nutzen von Diagnoseprotokollen
+          href: diagnostic-logs.md
+        - name: Überwachen und Verwalten von Sitzungen
+          href: session-monitoring.md
     - name: Problembehandlung
       href: troubleshoot.md
 - name: Verweis

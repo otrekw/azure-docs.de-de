@@ -2,13 +2,14 @@
 title: Vorlagenfunktionen – Ressourcen
 description: Beschreibung der Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Abrufen von Werten zu Ressourcen verwendet werden können.
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: 2869f1ba1f7819fc793d95c7318b77fd8db8d7da
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 05/13/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 92fd160a8ce08c8fc9969e76b74a05a87a644109
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304884"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959547"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Ressourcenfunktionen für ARM-Vorlagen
 
@@ -26,8 +27,6 @@ Resource Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerte
 
 Informationen zum Abrufen von Werten aus Parametern, Variablen oder der aktuellen Bereitstellung finden Sie unter [Funktionen für Bereitstellungswerte](template-functions-deployment.md).
 
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
-
 ## <a name="extensionresourceid"></a>extensionResourceId
 
 `extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)`
@@ -36,7 +35,7 @@ Gibt die Ressourcen-ID für eine [Erweiterungsressource](../management/extension
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | resourceId |Ja |Zeichenfolge |Die Ressourcen-ID für die Ressource, auf die die Erweiterungsressource angewendet wird. |
 | resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
@@ -83,8 +82,6 @@ Wenn die Erweiterungsressource auf eine **Verwaltungsgruppe** angewendet wird, i
 
 Im folgenden Beispiel wird die Ressourcen-ID für eine Ressourcengruppensperre zurückgegeben.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -105,65 +102,9 @@ Im folgenden Beispiel wird die Ressourcen-ID für eine Ressourcengruppensperre z
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param lockName string
-
-output lockResourceId string = extensionResourceId(resourceGroup().Id, 'Microsoft.Authorization/locks', lockName)
-```
-
----
-
 Eine benutzerdefinierte, für eine Verwaltungsgruppe bereitgestellte Richtliniendefinition wird als Erweiterungsressource implementiert. Stellen Sie die folgende Vorlage für eine Verwaltungsgruppe bereit, um eine Richtlinie zu erstellen und zuzuweisen.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 :::code language="json" source="~/quickstart-templates/managementgroup-deployments/mg-policy/azuredeploy.json":::
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param targetMG string
-param allowedLocations array = [
-  'australiaeast'
-  'australiasoutheast'
-  'australiacentral'
-]
-
-var mgScope = tenantResourceId('Microsoft.Management/managementGroups', targetMG)
-var policyDefinition = 'LocationRestriction'
-
-resource myDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01' = {
-  name: policyDefinition
-  properties: {
-    policyType: 'Custom'
-    mode: 'All'
-    parameters: {}
-    policyRule: {
-      'if': {
-        'not': {
-          'field': 'location'
-          'in': allowedLocations
-        }
-      }
-      'then': {
-        'effect': 'deny'
-      }
-    }
-  }
-}
-
-resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
-  name: 'location-lock'
-  properties: {
-    scope: mgScope
-    policyDefinitionId: extensionResourceId(mgScope, 'Microsoft.Authorization/policyDefinitions', policyDefinition)
-  }
-}
-```
-
----
 
 Integrierte Richtliniendefinitionen sind Ressourcen auf Mandantenebene. Ein Beispiel für die Bereitstellung einer integrierten Richtliniendefinition finden Sie unter [tenantResourceId](#tenantresourceid).
 
@@ -178,7 +119,7 @@ Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgän
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | resourceName oder resourceIdentifier |Ja |Zeichenfolge |Eindeutiger Bezeichner für die Ressource. |
 | apiVersion |Ja |Zeichenfolge |API-Version eines Ressourcen-Laufzeitstatus. In der Regel im Format **jjjj-mm-tt**. |
@@ -312,17 +253,17 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.Web/customApis | listWsdlInterfaces |
 | microsoft.web/locations | listwsdlinterfaces |
 | microsoft.web/apimanagementaccounts/apis/connections | listconnectionkeys |
-| microsoft.web/apimanagementaccounts/apis/connections | listsecrets |
+| microsoft.web/apimanagementaccounts/apis/connections | `listSecrets` |
 | microsoft.web/sites/backups | [list](/rest/api/appservice/webapps/listbackups) |
 | Microsoft.Web/sites/config | [list](/rest/api/appservice/webapps/listconfigurations) |
 | microsoft.web/sites/functions | [listkeys](/rest/api/appservice/webapps/listfunctionkeys)
-| microsoft.web/sites/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
+| microsoft.web/sites/functions | [listSecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
 | microsoft.web/sites/hybridconnectionnamespaces/relays | [listkeys](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | microsoft.web/sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
-| microsoft.web/sites/slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| microsoft.web/sites/slots/functions | [listSecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 | microsoft.web/sites/slots/backups | [list](/rest/api/appservice/webapps/listbackupsslot) |
 | Microsoft.Web/sites/slots/config | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
-| microsoft.web/sites/slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| microsoft.web/sites/slots/functions | [listSecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
 Um zu bestimmen, welche Ressourcentypen einen list-Vorgang aufweisen, stehen die folgenden Optionen zur Verfügung:
 
@@ -366,13 +307,11 @@ Andere list-Funktionen weisen andere Rückgabeformate auf. Um das Format einer F
 
 Geben Sie die Ressource entweder mithilfe des Ressourcennamens oder der [resourceId-Funktion](#resourceid) an. Wenn Sie eine list-Funktion in der gleichen Vorlage verwenden, die auch die referenzierte Ressource bereitstellt, verwenden Sie den Ressourcennamen.
 
-Bei Verwendung einer **list**-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird. Es wird eine Fehlermeldung angezeigt, wenn die **list**-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie die **if**-Funktion, um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource bereitgestellt wird. Eine Beispielvorlage, die „if“ und „list“ mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](template-functions-logical.md#if)-Funktion.
+Bei Verwendung einer `list`-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird. Es wird eine Fehlermeldung angezeigt, wenn die `list`-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie die `if`-Funktion, um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource bereitgestellt wird. Eine Beispielvorlage, die „if“ und „list“ mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](template-functions-logical.md#if)-Funktion.
 
 ### <a name="list-example"></a>list-Beispiel
 
 Im folgenden Beispiel wird listKeys beim Festlegen eines Werts für [Bereitstellungsskripts](deployment-script-template.md) verwendet.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "storageAccountSettings": {
@@ -381,21 +320,7 @@ Im folgenden Beispiel wird listKeys beim Festlegen eines Werts für [Bereitstell
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-storageAccountSettings: {
-  storageAccountName: storageAccountName
-  storageAccountKey: listKeys(resourceId('Microsoft.Storage/storageAccounts', storageAccountName), '2019-06-01').keys[0].value
-}
-
-```
-
----
-
 Das nächste Beispiel zeigt eine list-Funktion, die einen Parameter verwendet. In diesem Fall handelt es sich um die Funktion **listAccountSas**. Übergeben Sie ein Objekt für die Ablaufzeit. Die Ablaufzeit muss in der Zukunft liegen.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "parameters": {
@@ -413,23 +338,6 @@ Das nächste Beispiel zeigt eine list-Funktion, die einen Parameter verwendet. I
 "sasToken": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties')).accountSasToken]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param accountSasProperties object {
-  default: {
-    signedServices: 'b'
-    signedPermission: 'r'
-    signedExpiry: '2020-08-20T11:00:00Z'
-    signedResourceTypes: 's'
-  }
-}
-...
-sasToken: listAccountSas(storagename, '2018-02-01', accountSasProperties).accountSasToken
-```
-
----
-
 ## <a name="pickzones"></a>pickZones
 
 `pickZones(providerNamespace, resourceType, location, [numberOfZones], [offset])`
@@ -438,12 +346,12 @@ Bestimmt, ob ein Ressourcentyp Zonen für eine Region unterstützt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | Ja | Zeichenfolge | Der Ressourcenanbieternamespace für den Ressourcentyp, der auf Zonenunterstützung überprüft werden soll. |
 | resourceType | Ja | Zeichenfolge | Der Ressourcentyp, der auf Zonenunterstützung überprüft werden soll. |
 | location | Ja | Zeichenfolge | Die Region, die auf Zonenunterstützung überprüft werden soll. |
-| numberOfZones | Nein | integer | Die Anzahl der zurückzugebenden logischen Zonen. Der Standardwert ist 1. Die Anzahl muss eine positive ganze Zahl zwischen 1 und 3 sein.  Verwenden Sie 1 für Ressourcen mit nur einer Zone. Für Ressourcen mit mehreren Zonen muss der Wert kleiner als oder gleich der Anzahl der unterstützten Zonen sein. |
+| numberOfZones | Nein | integer | Die Anzahl der zurückzugebenden logischen Zonen. Der Standardwert ist 1. Die Anzahl muss eine positive ganze Zahl zwischen 1 und 3 sein.  Verwenden Sie 1 für Ressourcen mit nur einer Zone. Für Ressourcen mit mehreren Zonen muss der Wert kleiner als oder gleich der Anzahl der unterstützten Zonen sein. |
 | offset | Nein | integer | Der Offset von der beginnenden logischen Zone. Die Funktion gibt einen Fehler zurück, wenn Offset plus numberOfZones die Anzahl der unterstützten Zonen überschreitet. |
 
 ### <a name="return-value"></a>Rückgabewert
@@ -477,8 +385,6 @@ Wenn der Ressourcentyp oder die Region keine Zonen unterstützt, wird ein leeres
 
 Die folgende Vorlage zeigt drei Ergebnisse für die Verwendung der pickZones-Funktion.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -504,19 +410,9 @@ Die folgende Vorlage zeigt drei Ergebnisse für die Verwendung der pickZones-Fun
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output supported array = pickZones('Microsoft.Compute', 'virtualMachines', 'westus2')
-output notSupportedRegion array = pickZones('Microsoft.Compute', 'virtualMachines', 'northcentralus')
-output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2')
-```
-
----
-
 Die Ausgabe aus den vorherigen Beispielen gibt drei Arrays zurück.
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | Unterstützt | array | [ "1" ] |
 | notSupportedRegion | array | [] |
@@ -524,20 +420,11 @@ Die Ausgabe aus den vorherigen Beispielen gibt drei Arrays zurück.
 
 Sie können anhand der Antwort von pickZones bestimmen, ob NULL für Zonen bereitgestellt werden soll oder virtuelle Computer verschiedenen Zonen zugewiesen werden sollen. Im folgenden Beispiel wird ein Wert für die Zone auf der Verfügbarkeit von Zonen basierend festgelegt.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "zones": {
   "value": "[if(not(empty(pickZones('Microsoft.Compute', 'virtualMachines', 'westus2'))), string(add(mod(copyIndex(),3),1)), json('null'))]"
 },
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-> [!NOTE]
-> „Loops“ (Schleifen) und „copyIndex()“ sind noch nicht implementiert.  Siehe unter [Loops](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md) (Schleifen).
-
----
 
 ## <a name="reference"></a>Referenz
 
@@ -547,7 +434,7 @@ Gibt ein Objekt zurück, das den Laufzeitstatus einer Ressource darstellt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | resourceName oder resourceIdentifier |Ja |Zeichenfolge |Name oder eindeutiger Bezeichner einer Ressource Wenn Sie auf eine Ressource in der aktuellen Vorlage verweisen, stellen Sie nur den Ressourcennamen als Parameter bereit. Wenn Sie auf eine zuvor bereitgestellte Ressource verweisen oder der Name der Ressource nicht eindeutig ist, geben Sie die Ressourcen-ID an. |
 | apiVersion |Nein |Zeichenfolge |API-Version der angegebenen Ressource. **Dieser Parameter ist erforderlich, wenn die Ressource nicht innerhalb derselben Vorlage bereitgestellt wird.** In der Regel im Format **jjjj-mm-tt**. Informationen zu gültigen API-Versionen für Ihre Ressource finden Sie in der [Vorlagenreferenz](/azure/templates/). |
@@ -561,9 +448,7 @@ Jeder Ressourcentyp gibt andere Eigenschaften für die Verweisfunktion zurück. 
 
 Die Verweisfunktion ruft den Runtime-Status einer zuvor bereitgestellten Ressource oder einer in der aktuellen Vorlage bereitgestellten Ressource ab. Dieser Artikel zeigt Beispiele für beide Szenarios.
 
-Sie verwenden in der Regel die Funktion **Verweis**, um einen bestimmten Wert aus einem Objekt zurückzugeben, wie z.B. den Blob-Endpunkt-URI oder den vollständig qualifizierten Domänennamen.
-
-# <a name="json"></a>[JSON](#tab/json)
+Sie verwenden in der Regel die Funktion `reference`, um einen bestimmten Wert aus einem Objekt zurückzugeben, wie z.B. den Blob-Endpunkt-URI oder den vollständig qualifizierten Domänennamen.
 
 ```json
 "outputs": {
@@ -578,18 +463,7 @@ Sie verwenden in der Regel die Funktion **Verweis**, um einen bestimmten Wert au
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output BlobUri string = reference(resourceId('Microsoft.Storage/storageAccounts', storageAccountName)).primaryEndpoints.blob
-output FQDN string = reference(resourceId('Microsoft.Network/publicIPAddresses', ipAddressName)).dnsSettings.fqdn
-```
-
----
-
 Verwenden Sie `'Full'`, wenn Sie Ressourcenwerte benötigen, die nicht Teil des Eigenschaftsschemas sind. Rufen Sie zum Festlegen von Schlüsseltresor-Zugriffsrichtlinien beispielsweise die Identitätseigenschaften für einen virtuellen Computer ab.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -615,42 +489,15 @@ Verwenden Sie `'Full'`, wenn Sie Ressourcenwerte benötigen, die nicht Teil des 
     ...
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resource myVault 'Microsoft.KeyVault/vaults@2019-09-01' = {
-  name: 'vaultName'
-  properties: {
-    tenantId: subscription().tenantId
-    accessPolicies: [
-      {
-        'tenantId': reference(resourceId('Microsoft.Compute/virtualMachines', vmName), '2019-03-01', 'Full').identity.tenantId
-        'objectId': reference(resourceId('Microsoft.Compute/virtualMachines', vmName), '2019-03-01', 'Full').identity.principalId
-        'permissions': {
-          'keys': [
-            'all'
-          ]
-          'secrets': [
-            'all'
-          ]
-        }
-      }
-    ]
-  }
-}
-```
-
----
-
 ### <a name="valid-uses"></a>Gültige Verwendungen
 
 Die Verweisfunktion kann nur in den Eigenschaften einer Ressourcendefinition und im Abschnitt „outputs“ einer Vorlage oder Bereitstellung verwendet werden. Wenn sie mit [Eigenschafteniteration](copy-properties.md) verwendet wird, können Sie die Verweisfunktion für `input` verwenden, weil der Ausdruck der Ressourceneigenschaft zugewiesen wird.
 
 Sie können die Verweisfunktion nicht verwenden, um den Wert der `count`-Eigenschaft in einer Kopierschleife festzulegen. Sie können damit andere Eigenschaften in der Schleife festlegen. Der Verweis ist für die count-Eigenschaft gesperrt, da diese Eigenschaft vor dem Auflösen der Verweisfunktion bestimmt werden muss.
 
-Wenn Sie die reference-Funktion oder eine beliebige list*-Funktion im Abschnitt „outputs“ einer geschachtelten Vorlage verwenden möchten, müssen Sie die ```expressionEvaluationOptions``` festlegen, um die Auswertung des [inneren Bereichs](linked-templates.md#expression-evaluation-scope-in-nested-templates) oder eine verknüpfte anstelle einer geschachtelten Vorlage zu verwenden.
+Wenn Sie die `reference`-Funktion oder eine beliebige `list*`-Funktion im Abschnitt „outputs“ einer geschachtelten Vorlage verwenden möchten, müssen Sie die `expressionEvaluationOptions` so festlegen, dass die Auswertung des [inneren Bereichs](linked-templates.md#expression-evaluation-scope-in-nested-templates) verwendet wird, oder Sie müssen eine verknüpfte anstelle einer geschachtelten Vorlage verwenden.
 
-Bei Verwendung der **reference**-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird.  Es wird eine Fehlermeldung angezeigt, wenn die **reference**-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie die **if**-Funktion, um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource bereitgestellt wird. Eine Beispielvorlage, die „if“ und „reference“ mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](template-functions-logical.md#if)-Funktion.
+Bei Verwendung der `reference`-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird.  Es wird eine Fehlermeldung angezeigt, wenn die `reference`-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie die `if`-Funktion, um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource bereitgestellt wird. Eine Beispielvorlage, die „if“ und „reference“ mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](template-functions-logical.md#if)-Funktion.
 
 ### <a name="implicit-dependency"></a>Implizite Abhängigkeit
 
@@ -660,55 +507,25 @@ Mithilfe der Referenzfunktion deklarieren Sie implizit, dass eine Ressource von 
 
 Wenn Sie auf eine Ressource verweisen, die in der gleichen Vorlage bereitgestellt wird, geben Sie den Namen der Ressource an.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-value: reference(storageAccountName)
-```
-
----
-
 Wenn Sie auf eine Ressource verweisen, die nicht in derselben Vorlage bereitgestellt wird, geben Sie die Ressourcen-ID und die `apiVersion` an.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-value: reference(resourceId(storageResourceGroup, 'Microsoft.Storage/storageAccounts', storageAccountName), '2018-07-01')]"
-```
-
----
-
 Um Mehrdeutigkeiten in Bezug auf die Ressource zu vermeiden, auf die Sie verweisen, können Sie eine vollqualifizierte Ressourcen-ID angeben.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-value: reference(resourceId('Microsoft.Network/publicIPAddresses', ipAddressName))
-```
-
----
-
 Wenn Sie einen vollqualifizierten Verweis auf eine Ressource erstellen, ist die Reihenfolge für die Kombination von Segmenten von Typ und Name nicht einfach eine Verkettung beider Werte. Verwenden Sie stattdessen nach dem Namespace eine Folge von *Typ-Name*-Paaren, beginnend mit dem am wenigsten spezifischen bis zum spezifischsten:
 
-**{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]**
+`{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]`
 
 Beispiel:
 
@@ -726,41 +543,19 @@ Das Muster lautet:
 
 Um z. B. die Prizipal-ID für eine verwaltete Identität abzurufen, die auf einen virtuellen Computer angewandt wird, verwenden Sie:
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-reference(resourceId('Microsoft.Compute/virtualMachines', vmName),'2019-12-01', 'Full').identity.principalId
-```
-
----
-
 Um die Mandanten-ID für eine verwaltete Identität abzurufen, die auf eine VM-Skalierungsgruppe angewandt wird, verwenden Sie:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  vmNodeType0Name), 2019-12-01, 'Full').Identity.tenantId
-```
-
----
-
 ### <a name="reference-example"></a>reference-Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) stellt eine Ressource bereit und verweist auf diese Ressource.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -798,28 +593,6 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
     }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param storageAccountName string
-
-resource myStorage 'Microsoft.Storage/storageAccounts@2016-12-01' = {
-  name: storageAccountName
-  location: resourceGroup().location
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'Storage'
-  tags: {}
-  properties: {}
-}
-
-output referenceOutput object = reference(storageAccountName)
-output fullReferenceOutput object = reference(storageAccountName, '2016-12-01', 'Full')
-```
-
----
 
 Im vorherigen Beispiel werden die beiden Objekt zurückgegeben. Das Eigenschaftenobjekt hat das folgende Format:
 
@@ -878,8 +651,6 @@ Das vollständige Objekt hat das folgende Format:
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) verweist auf ein Speicherkonto, das nicht in dieser Vorlage bereitgestellt wird. Das Speicherkonto ist bereits in demselben Abonnement vorhanden.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -901,17 +672,6 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param storageResourceGroup string
-param storageAccountName string
-
-output ExistingStorage object = reference(resourceId(storageAccountName), 'Microsoft.Storage/storageAccounts', storageAccountName), '2018-07-01')
-```
-
----
 
 ## <a name="resourcegroup"></a>resourceGroup
 
@@ -946,8 +706,6 @@ Die Funktion `resourceGroup()` kann nicht in einer Vorlage verwendet werden, die
 
 Die Funktion „resourceGroup“ wird häufig verwendet, um Ressourcen am gleichen Speicherort wie die Ressourcengruppe zu erstellen. Das folgende Beispiel nutzt den Speicherort der Ressourcengruppe als einen Parameterstandardwert.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "parameters": {
   "location": {
@@ -957,23 +715,13 @@ Die Funktion „resourceGroup“ wird häufig verwendet, um Ressourcen am gleich
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
+Die Funktion `resourceGroup` kann auch verwendet werden, um Tags aus einer Ressourcengruppe auf eine Ressource anzuwenden. Weitere Informationen finden Sie unter [Apply tags from resource group](../management/tag-resources.md#apply-tags-from-resource-group) (Anwenden von Tags aus einer Ressourcengruppe).
 
-```bicep
-param location string = resourceGroup().location
-```
-
----
-
-Die Funktion „resourceGroup“ kann auch verwendet werden, um Tags aus einer Ressourcengruppe auf eine Ressource anzuwenden. Weitere Informationen finden Sie unter [Apply tags from resource group](../management/tag-resources.md#apply-tags-from-resource-group) (Anwenden von Tags aus einer Ressourcengruppe).
-
-Wenn Sie für die Bereitstellung in mehreren Ressourcengruppen geschachtelte Vorlagen verwenden, können Sie den Bereich zum Auswerten der resourceGroup-Funktion angeben. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](./deploy-to-resource-group.md).
+Wenn Sie für die Bereitstellung in mehreren Ressourcengruppen geschachtelte Vorlagen verwenden, können Sie den Bereich zum Auswerten der `resourceGroup`-Funktion angeben. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](./deploy-to-resource-group.md).
 
 ### <a name="resource-group-example"></a>resourceGroup-Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) gibt die Eigenschaften der Ressourcengruppe zurück.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -988,14 +736,6 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output resourceGroupOutput object = resourceGroup()
-```
-
----
 
 Im vorherigen Beispiel wird ein Objekt im folgenden Format zurückgegeben:
 
@@ -1019,7 +759,7 @@ Gibt den eindeutigen Bezeichner einer Ressource zurück. Diese Funktion wird ver
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nein |Zeichenfolge (im GUID-Format) |Der Standardwert ist das aktuelle Abonnement. Geben Sie diesen Wert an, wenn Sie eine Ressource in einem anderen Abonnement abrufen möchten. Geben Sie diesen Wert nur an, wenn die Bereitstellung im Bereich einer Ressourcengruppe oder eines Abonnements erfolgt. |
 | resourceGroupName |Nein |Zeichenfolge |Der Standardwert ist die aktuelle Ressourcengruppe. Geben Sie diesen Wert an, wenn Sie eine Ressource in einer anderen Ressourcengruppe abrufen möchten. Geben Sie diesen Wert nur an, wenn die Bereitstellung im Bereich einer Ressourcengruppe erfolgt. |
@@ -1051,7 +791,7 @@ Wenn Sie die resourceId-Funktion beim Bereitstellen für eine Verwaltungsgruppe 
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-Um Verwechslungen zu vermeiden, empfiehlt es sich, „resourceId“ bei der Arbeit mit Ressourcen, die für das Abonnement, für die Verwaltungsgruppe oder für den Mandanten bereitgestellt werden, nicht zu verwenden. Verwenden Sie stattdessen die für den jeweiligen Bereich vorgesehene ID-Funktion.
+Um Verwechslungen zu vermeiden, empfiehlt es sich, `resourceId` bei der Arbeit mit Ressourcen, die für das Abonnement, für die Verwaltungsgruppe oder für den Mandanten bereitgestellt werden, nicht zu verwenden. Verwenden Sie stattdessen die für den jeweiligen Bereich vorgesehene ID-Funktion.
 
 Verwenden Sie für [Ressourcen auf Abonnementebene](deploy-to-subscription.md) die Funktion [subscriptionResourceId](#subscriptionresourceid).
 
@@ -1065,71 +805,29 @@ Die Anzahl der Parameter, die Sie angeben, hängt davon ab, ob es sich bei der R
 
 Um die Ressourcen-ID für eine übergeordnete Ressource im gleichen Abonnement und in der gleichen Ressourcengruppe abzurufen, geben Sie den Typ und den Namen der Ressource an.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')
-```
-
----
-
 Um die Ressourcen-ID für eine untergeordnete Ressource abzurufen, achten Sie auf die Anzahl der Segmente im Ressourcentyp. Geben Sie einen Ressourcennamen für jedes Segment des Ressourcentyps an. Der Name des Segments entspricht der Ressource, die für den jeweiligen Teil der Hierarchie vorhanden ist.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')
-```
-
----
-
 Um die Ressourcen-ID für eine Ressource im gleichen Abonnement, jedoch in einer anderen Ressourcengruppe abzurufen, geben Sie den Ressourcengruppennamen an.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')
-```
-
----
-
 Um die Ressourcen-ID für eine Ressource in einem anderen Abonnement und in einer anderen Ressourcengruppe abzurufen, geben Sie die Abonnement-ID und den Ressourcengruppennamen an.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')
-```
-
----
-
 Sie müssen diese Funktion oft nutzen, wenn Sie ein Speicherkonto oder einen virtuellen Computer in einer alternativen Ressourcengruppe verwenden. Das folgende Beispiel zeigt, wie eine Ressource von einer externen Ressourcengruppe leicht verwendet werden kann:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -1178,44 +876,10 @@ Sie müssen diese Funktion oft nutzen, wenn Sie ein Speicherkonto oder einen vir
   ]
 }
 ```
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param location string
-param virtualNetworkName string
-param virtualNetworkResourceGroup string
-param subnet1Name string
-param nicName string
-
-var subnet1Ref = resourceId('virtualNetworkResourceGroup', 'Microsoft.Network/virtualNetworks/subnets', 'virtualNetworkName', 'subnet1Name')
-
-resource myInterface 'Microsoft.Network/networkInterfaces@2015-05-01-preview' = {
-  name: nicName
-  location: location
-  properties: {
-    ipConfigurations: [
-      {
-        name: 'ipconfig1'
-        properties: {
-          privateIPAllocationMethod: 'Dynamic'
-          subnet: {
-            id: subnet1Ref
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
----
-
 
 ### <a name="resource-id-example"></a>resourceId-Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) gibt die Ressourcen-ID für ein Speicherkonto in der Ressourcengruppe zurück:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -1243,20 +907,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output sameRGOutput string = resourceId('Microsoft.Storage/storageAccounts','examplestorage')
-output differentRGOutput string = resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')
-output differentSubOutput string = resourceId('11111111-1111-1111-1111-111111111111', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')
-output nestedResourceOutput string = resourceId('Microsoft.SQL/servers/databases', 'serverName', 'databaseName')
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -1290,8 +943,6 @@ Wenn Sie für die Bereitstellung in mehreren Abonnements geschachtelte Vorlagen 
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) zeigt die im Abschnitt „outputs“ abgerufene subscription-Funktion.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -1306,14 +957,6 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output subscriptionOutput object = subscription()
-```
-
----
-
 ## <a name="subscriptionresourceid"></a>subscriptionResourceId
 
 `subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)`
@@ -1322,7 +965,7 @@ Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Abonnemente
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nein |Zeichenfolge (im GUID-Format) |Der Standardwert ist das aktuelle Abonnement. Geben Sie diesen Wert an, wenn Sie eine Ressource in einem anderen Abonnement abrufen möchten. |
 | resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
@@ -1346,8 +989,6 @@ Mit dieser Funktion können Sie die Ressourcen-ID für Ressourcen abrufen, die [
 ### <a name="subscriptionresourceid-example"></a>Beispiel für „subscriptionResourceId“
 
 Mit der folgenden Vorlage wird eine integrierte Rolle zugewiesen. Sie können diese entweder in einer Ressourcengruppe oder einem Abonnement bereitstellen. Hierbei wird die Funktion „subscriptionResourceId“ verwendet, um die Ressourcen-ID für integrierte Rollen abzurufen.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -1398,54 +1039,6 @@ Mit der folgenden Vorlage wird eine integrierte Rolle zugewiesen. Sie können di
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param principalId string {
-  metadata: {
-    'description': 'principalId'
-  }
-}
-param builtInRoleType string {
-  'allowed': [
-    'Owner'
-    'Contributor'
-    'Reader'
-  ]
-  'metadata': {
-      'description': 'Built-in role to assign'
-  }
-}
-param roleNameGuid string {
-  default: newGuid()
-  metadata: {
-    'description': 'A new GUID used to identify the role assignment'
-  }
-}
-
-var roleDefinitionId = {
-  Owner: {
-    id: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')
-  }
-  Contributor: {
-    id: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')
-  }
-  Reader: {
-    id: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')
-  }
-}
-
-resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-preview' = {
-  name: roleNameGuid
-  properties: {
-    roleDefinitionId: roleDefinitionId[builtInRoleType].id
-    principalId: principalId
-  }
-}
-```
-
----
-
 ## <a name="tenantresourceid"></a>tenantResourceId
 
 `tenantResourceId(resourceType, resourceName1, [resourceName2], ...)`
@@ -1454,7 +1047,7 @@ Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Mandanteneb
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
 | resourceName1 |Ja |Zeichenfolge |Name der Ressource. |
@@ -1477,8 +1070,6 @@ Mit dieser Funktion können Sie die Ressourcen-ID für eine Ressource abrufen, d
 ### <a name="tenantresourceid-example"></a>Beispiel für „tenantResourceId“
 
 Integrierte Richtliniendefinitionen sind Ressourcen auf Mandantenebene. Verwenden Sie die tenantResourceId-Funktion, um eine Richtlinienzuweisung bereitzustellen, die auf eine integrierte Richtliniendefinition verweist.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -1514,37 +1105,9 @@ Integrierte Richtliniendefinitionen sind Ressourcen auf Mandantenebene. Verwende
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param policyDefinitionID string{
-  default: '0a914e76-4921-4c19-b460-a2d36003525a'
-  metadata: {
-    'description': 'Specifies the ID of the policy definition or policy set definition being assigned.'
-  }
-}
-
-param policyAssignmentName string {
-  default: guid(policyDefinitionID, resourceGroup().name)
-  metadata: {
-    'description': 'Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides.'
-  }
-}
-
-resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
-  name: policyAssignmentName
-  properties: {
-    scope: subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)
-    policyDefinitionId: tenantResourceId('Microsoft.Authorization/policyDefinitions', policyDefinitionID)
-  }
-}
-```
-
----
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](./syntax.md).
 * Weitere Informationen zum Mergen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen](linked-templates.md).
 * Wenn Sie beim Erstellen eines Ressourcentyps eine angegebene Anzahl von Wiederholungen durchlaufen möchten, finden Sie weitere Informationen unter [Ressourceniteration in ARM-Vorlagen](copy-resources.md).
 * Informationen zum Bereitstellen der von Ihnen erstellten Vorlage finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).

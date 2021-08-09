@@ -4,12 +4,12 @@ description: Exportieren Sie Diagnose- und Nutzungsdaten in Microsoft Azure-Spei
 ms.topic: conceptual
 ms.date: 02/19/2021
 ms.custom: references_regions
-ms.openlocfilehash: e7831123834df9186310453106c50261373160ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8a302717ed962971069ee56a07d78747d82b00df
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737034"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110455045"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportieren von Telemetriedaten aus Application Insights
 Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.  
@@ -68,7 +68,7 @@ Der fortlaufende Export wird in den folgenden Regionen unterstützt:
 * Japan, Westen
 
 > [!NOTE]
-> Anwendungen, die bereits in **Europa, Westen** und **USA, Osten** konfiguriert sind, werden unterstützt, das Onboarding neuer Anwendungen in diesen Regionen jedoch nicht.
+> Der fortlaufende Export funktioniert weiterhin für Anwendungen in den Regionen **USA, Osten** und **Europa, Westen**, wenn der Export vor dem 23. Februar 2021 konfiguriert wurde. Für Anwendungen in den Regionen **USA, Osten** oder **Europa, Westen** können keine neuen Regeln für den fortlaufenden Export konfiguriert werden, unabhängig davon, wann die Anwendung erstellt wurde.
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>Fortlaufender Export – erweiterte Speicherkonfiguration
 

@@ -1,28 +1,29 @@
 ---
-title: Konfigurieren des Lastenausgleichs für Windows Virtual Desktop – Azure
-description: Es wird beschrieben, wie Sie die Lastenausgleichsmethode für eine Windows Virtual Desktop-Umgebung konfigurieren.
+title: Konfigurieren des Lastenausgleichs für Azure Virtual Desktop – Azure
+description: Hier wird beschrieben, wie Sie die Lastenausgleichsmethode für eine Azure Virtual Desktop-Umgebung konfigurieren.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 0e742a046d43fef6e8263f73fc2ca8460848ad40
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: a39aad7889ee395c723d76a74cfb006b6d09caa3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448116"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751053"
 ---
-# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop
+# <a name="configure-the-azure-virtual-desktop-load-balancing-method"></a>Konfigurieren der Lastenausgleichsmethode für Azure Virtual Desktop
 
-Beim Konfigurieren der Lastenausgleichsmethode für einen Hostpool können Sie die Windows Virtual Desktop-Umgebung anpassen, damit Ihre Anforderungen besser erfüllt werden.
+Beim Konfigurieren der Lastenausgleichsmethode für einen Hostpool können Sie die Azure Virtual Desktop-Umgebung anpassen, damit Ihre Anforderungen besser erfüllt werden.
 
 >[!NOTE]
 > Dies gilt nicht für einen dauerhaften Desktophostpool, da Benutzer im Hostpool immer über eine 1:1-Zuordnung zu einem Sitzungshost verfügen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie die Anweisungen unter [Einrichten des Windows Virtual Desktop PowerShell-Moduls](powershell-module.md) zum Herunterladen und Installieren des PowerShell-Moduls und zum Anmelden bei Ihrem Azure-Konto befolgt haben.
+In diesem Artikel wird davon ausgegangen, dass Sie die Anweisungen unter [Einrichten des Azure Virtual Desktop PowerShell-Moduls](powershell-module.md) zum Herunterladen und Installieren des PowerShell-Moduls und zum Anmelden bei Ihrem Azure-Konto befolgt haben.
 
 ## <a name="configure-breadth-first-load-balancing"></a>Konfigurieren der Lastenausgleichsmethode „Breiter Ansatz“
 
@@ -82,8 +83,8 @@ Sie können Lastenausgleich auch mit dem Azure-Portal konfigurieren.
 So konfigurieren Sie Lastenausgleich:
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
-2. Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option unter „Dienste“ aus.
-3. Wählen Sie auf der Seite „Windows Virtual Desktop“ die Option **Hostpools** aus.
+2. Suchen Sie nach **Azure Virtual Desktop** und wählen Sie diese Option unter „Dienste“ aus.
+3. Wählen Sie auf der Seite „Azure Virtual Desktop“ die Option **Hostpools** aus.
 4. Wählen Sie den Namen des Hostpools aus, den Sie bearbeiten möchten.
 5. Wählen Sie **Eigenschaften** aus.
 6. Geben Sie in das Feld das **maximale Sitzungslimit** ein, und wählen Sie im Dropdownmenü den **Lastenausgleichsalgorithmus** aus, den Sie für diesen Hostpool wünschen.

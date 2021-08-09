@@ -6,85 +6,59 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 342c535cadb1a2d3f2d18478d8941d9ea61bdf72
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 5f6b5eb64de1e904805446f731158443205d6b68
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448966"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082428"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Upgrade des Application Insights Java 2.x SDK
 
-Wenn Sie bereits das Application Insights Java 2.x SDK in Ihrer Anwendung nutzen, müssen Sie es nicht entfernen.
-Der Java 3.0-Agent erkennt es und erfasst sowie korreliert alle benutzerdefinierten Telemetriedaten, die über das 2.x SDK gesendet werden, während gleichzeitig alle vom 2.x SDK durchgeführten automatischen Sammlungen unterdrückt werden, um doppelte Telemetriedaten zu verhindern.
+Wenn Sie bereits das Application Insights Java 2.x SDK in Ihrer Anwendung nutzen, können Sie es weiterhin verwenden.
+Der Application Insights Java 3.x-Agent erkennt es und erfasst sowie korreliert alle benutzerdefinierten Telemetriedaten, die über das 2.x SDK gesendet werden, während gleichzeitig alle vom 2.x SDK durchgeführten automatischen Sammlungen unterdrückt werden, um doppelte Telemetriedaten zu verhindern.
 
 Wenn Sie den Application Insights 2.x-Agent verwendet haben, müssen Sie das JVM-Argument `-javaagent:` entfernen, das auf den 2.x-Agent verweist.
 
-Im restlichen Dokument werden die Einschränkungen und Änderungen beschrieben, die beim Upgrade von 2.x auf 3.0 auftreten können, sowie einige Problemumgehungen, die für Sie nützlich sein können.
+Im restlichen Dokument werden die Einschränkungen und Änderungen beschrieben, die beim Upgrade von 2.x auf 3.x auftreten können, sowie einige Problemumgehungen, die für Sie nützlich sein können.
 
 ## <a name="telemetryinitializers-and-telemetryprocessors"></a>TelemetryInitializers und TelemetryProcessors
 
-TelemetryInitializers und TelemetryProcessors des 2.x SDK werden bei Verwendung des 3.0-Agents nicht ausgeführt.
-Viele der Anwendungsfälle, in denen diese Eigenschaften zuvor erforderlich waren, können in 3.0 gelöst werden, indem [benutzerdefinierte Dimensionen](./java-standalone-config.md#custom-dimensions) oder [Telemetrieprozessoren](./java-standalone-telemetry-processors.md) konfiguriert werden.
+TelemetryInitializers und TelemetryProcessors des 2.x SDK werden bei Verwendung des 3.x-Agents nicht ausgeführt.
+Viele der Anwendungsfälle, in denen diese Eigenschaften zuvor erforderlich waren, können in Application Insights Java 3.x gelöst werden, indem [benutzerdefinierte Dimensionen](./java-standalone-config.md#custom-dimensions) oder [Telemetrieprozessoren](./java-standalone-telemetry-processors.md) konfiguriert werden.
 
 ## <a name="multiple-applications-in-a-single-jvm"></a>Mehrere Anwendungen in einer einzelnen JVM
 
-Derzeit unterstützt Version 3.0 pro laufendem Prozess nur eine einzige [ Verbindungszeichenfolge und einen einzigen Rollennamen](./java-standalone-config.md#connection-string-and-role-name). Insbesondere sind in derselben Tomcat-Bereitstellung noch nicht mehrere Tomcat-Web-Apps mit unterschiedlichen Verbindungszeichenfolgen oder Rollennamen möglich.
+Derzeit unterstützt Application Insights Java 3.x pro laufendem Prozess nur eine einzige [Verbindungszeichenfolge und einen einzigen Rollennamen](./java-standalone-config.md#connection-string-and-role-name). Insbesondere sind in derselben Tomcat-Bereitstellung noch nicht mehrere Tomcat-Web-Apps mit unterschiedlichen Verbindungszeichenfolgen oder Rollennamen möglich.
 
 ## <a name="operation-names"></a>Vorgangsnamen
 
-Vorgangsnamen in Version 3.0 haben sich geändert, um allgemein eine bessere aggregierte Ansicht auf der Benutzeroberfläche des Application Insights-Portals zu bieten.
+Im Application Insights Java 2.x SDK enthielten die Vorgangsnamen in einigen Fällen den vollständigen Pfad.
 
-:::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-3-0.png" alt-text="Vorgangsnamen in Version 3.0":::
+:::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-with-full-path.png" alt-text="Screenshot: Vorgangsnamen mit vollständigem Pfad":::
 
-Bei einigen Anwendungen bevorzugen Sie jedoch möglicherweise immer noch die aggregierte Ansicht auf der Benutzeroberfläche, die durch die vorherigen Vorgangsnamen bereitgestellt wurde. In diesem Fall können Sie die Funktion [Telemetrieprozessoren](./java-standalone-telemetry-processors.md) (Vorschau) in Version 3.0 verwenden, um das vorherige Verhalten zu replizieren.
+Vorgangsnamen in Application Insights Java 3.x haben sich geändert, um allgemein eine bessere aggregierte Ansicht auf der Benutzeroberfläche des Application Insights-Portals zu bieten.
 
-### <a name="prefix-the-operation-name-with-the-http-method-get-post-etc"></a>Voranstellen der HTTP-Methode (`GET`, `POST` usw.) als Präfix für den Vorgangsnamen
+:::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-parameterized.png" alt-text="Screenshot mit parametrisierten Vorgangsnamen":::
 
-Im 2.x SDK wurde den Vorgangsnamen die HTTP-Methode (`GET`, `POST` usw.) als Präfix vorangestellt.
+Bei einigen Anwendungen bevorzugen Sie jedoch möglicherweise immer noch die aggregierte Ansicht auf der Benutzeroberfläche, die durch die vorherigen Vorgangsnamen bereitgestellt wurde. In diesem Fall können Sie die Funktion [Telemetrieprozessoren](./java-standalone-telemetry-processors.md) (Vorschau) in Version 3.x verwenden, um das vorherige Verhalten zu replizieren.
 
-:::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-prefixed-by-http-method.png" alt-text="Vorgangsnamen mit HTTP-Methode als Präfix":::
-
-Ab 3.0.3 können Sie dieses 2.x-Verhalten wiederherstellen, indem Sie
-
-```json
-{
-  "preview": {
-    "httpMethodInOperationName": true
-  }
-}
-```
-
-### <a name="set-the-operation-name-to-the-full-path"></a>Festlegen des Vorgangsnamens auf den vollständigen Pfad
-
-Im 2.x SDK enthielten die Vorgangsnamen außerdem in einigen Fällen den vollständigen Pfad.
-
-:::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-with-full-path.png" alt-text="Vorgangsnamen mit vollständigem Pfad":::
-
-Mit dem folgenden Codeausschnitt werden vier Telemetrieprozessoren konfiguriert, die zum Replizieren des vorherigen Verhaltens kombiniert werden.
+Mit dem folgenden Codeausschnitt werden drei Telemetrieprozessoren konfiguriert, die zum Replizieren des vorherigen Verhaltens kombiniert werden.
 Die Telemetrieprozessoren führen die folgenden Aktionen aus (in der angegebenen Reihenfolge):
 
-1. Der erste Telemetrieprozessor ist ein Span-Prozessor (Typ `span`). Das bedeutet, dass er für `requests` und `dependencies` zutrifft.
+1. Der erste Telemetrieprozessor ist ein Attributprozessor (Typ `attribute`). Das bedeutet, dass er für alle Telemetrien zutrifft, die über Attribute verfügen (derzeit `requests` und `dependencies`, bald aber auch `traces`).
 
-   Er sucht nach Spans, die über ein Attribut mit dem Namen `http.url` verfügen.
+   Er sucht nach Telemetrien, die über Attribute mit dem Namen `http.method` und `http.url` verfügen.
 
-   Anschließend wird der Span-Name mit dem Wert des `http.url`-Attributs aktualisiert.
+   Anschließend wird der Pfadteil des Attributs `http.url` in ein neues Attribut mit dem Namen `tempName` extrahiert.
 
-   Damit wäre der Vorgang abgeschlossen, außer dass `http.url` so ähnlich aussieht wie `http://host:port/path`, und Sie wahrscheinlich nur den `/path`-Teil wünschen.
-
-2. Der zweite Telemetrieprozessor ist ebenfalls ein Span-Prozessor.
-
-   Er sucht nach Spans, die über ein Attribut mit dem Namen `http.url` verfügen (d. h. alle Spans, die vom ersten Prozessor gefunden wurden).
-
-   Anschließend wird der Pfadteil des Span-Namens in ein Attribut mit dem Namen `tempName` extrahiert.
-
-3. Der dritte Telemetrieprozessor ist ebenfalls ein Span-Prozessor.
+2. Der zweite Telemetrieprozessor ist ein Span-Prozessor (Typ `span`). Das bedeutet, dass er für `requests` und `dependencies` zutrifft.
 
    Er sucht nach Spans, die über ein Attribut mit dem Namen `tempPath` verfügen.
 
    Anschließend wird der Span-Name aus dem Attribut `tempPath` aktualisiert.
 
-4. Der letzte Telemetrieprozessor ist ein Attributprozessor (Typ `attribute`). Das bedeutet, dass er für alle Telemetrien zutrifft, die über Attribute verfügen (derzeit`requests`, `dependencies` und `traces`).
+3. Der letzte Telemetrieprozessor ist ein Attributprozessor, der dem ersten Telemetrieprozessor entspricht.
 
    Er sucht nach Telemetrien, die über ein Attribut mit dem Namen `tempPath` verfügen.
 
@@ -95,30 +69,21 @@ Die Telemetrieprozessoren führen die folgenden Aktionen aus (in der angegebenen
   "preview": {
     "processors": [
       {
-        "type": "span",
+        "type": "attribute",
         "include": {
           "matchType": "strict",
           "attributes": [
+            { "key": "http.method" },
             { "key": "http.url" }
           ]
         },
-        "name": {
-          "fromAttributes": [ "http.url" ]
-        }
-      },
-      {
-        "type": "span",
-        "include": {
-          "matchType": "strict",
-          "attributes": [
-            { "key": "http.url" }
-          ]
-        },
-        "name": {
-          "toAttributes": {
-            "rules": [ "https?://[^/]+(?<tempPath>/[^?]*)" ]
+        "actions": [
+          {
+            "key": "http.url",
+            "pattern": "https?://[^/]+(?<tempPath>/[^?]*)",
+            "action": "extract"
           }
-        }
+        ]
       },
       {
         "type": "span",
@@ -129,7 +94,8 @@ Die Telemetrieprozessoren führen die folgenden Aktionen aus (in der angegebenen
           ]
         },
         "name": {
-          "fromAttributes": [ "tempPath" ]
+          "fromAttributes": [ "http.method", "tempPath" ],
+          "separator": " "
         }
       },
       {
@@ -151,14 +117,14 @@ Die Telemetrieprozessoren führen die folgenden Aktionen aus (in der angegebenen
 
 ## <a name="dependency-names"></a>Abhängigkeitsnamen
 
-Die Abhängigkeitsnamen in Version 3.0 haben sich ebenfalls geändert, um allgemein eine bessere aggregierte Ansicht auf der Benutzeroberfläche des Application Insights-Portals zu bieten.
+Die Abhängigkeitsnamen in Application Insights Java 3.x haben sich ebenfalls geändert, um allgemein eine bessere aggregierte Ansicht auf der Benutzeroberfläche des Application Insights-Portals zu bieten.
 
 Auch hier bevorzugen Sie bei einigen Anwendungen möglicherweise immer noch die aggregierte Ansicht auf der Benutzeroberfläche, die durch die vorherigen Abhängigkeitsnamen bereitgestellt wurde. In diesem Fall können Sie ähnliche Vorgehensweisen wie oben verwenden, um das vorherige Verhalten zu replizieren.
 
 ## <a name="operation-name-on-dependencies"></a>Vorgangsname für Abhängigkeiten
 
-Zuvor wurde im 2.x SDK der Vorgangsname aus der Anforderungstelemetrie auch für die Abhängigkeitstelemetrie festgelegt.
-In Application Insights Java 3.0 wird der Vorgangsname für die Abhängigkeitstelemetrie nicht mehr aufgefüllt.
+Zuvor wurde im Application Insights Java 2.x SDK der Vorgangsname aus der Anforderungstelemetrie auch für die Abhängigkeitstelemetrie festgelegt.
+In Application Insights Java 3.x wird der Vorgangsname für die Abhängigkeitstelemetrie nicht mehr aufgefüllt.
 Wenn Sie den Vorgangsnamen für die Anforderung anzeigen möchten, die der Abhängigkeitstelemetrie übergeordnet ist, können Sie eine Protokollabfrage (Kusto) zur Verknüpfung der Abhängigkeitstabelle mit der Anforderungstabelle schreiben. Hier ein Beispiel:
 
 ```
@@ -176,13 +142,13 @@ dependencies
 
 ## <a name="2x-sdk-logging-appenders"></a>2.x SDK-Protokollierungs-Appender
 
-Der 3.0-Agent [erfasst die Protokollierung automatisch](./java-standalone-config.md#auto-collected-logging), ohne dass Protokollierungs-Appender konfiguriert werden müssen.
-Wenn Sie 2.x SDK-Protokollierungs-Appender verwenden, können Sie diese entfernen, da sie vom 3.0-Agent ohnehin unterdrückt werden.
+Application Insights Java 3.x [erfasst die Protokollierung automatisch](./java-standalone-config.md#auto-collected-logging), ohne dass Protokollierungs-Appender konfiguriert werden müssen.
+Wenn Sie 2.x SDK-Protokollierungs-Appender verwenden, können Sie diese entfernen, da sie von Application Insights Java 3.x ohnehin unterdrückt werden.
 
 ## <a name="2x-sdk-spring-boot-starter"></a>2.x SDK Spring Boot Starter
 
-In 3.0 gibt es keinen Spring Boot Starter.
-Bei der Einrichtung und Konfiguration des 3.0-Agents gelten dieselben [einfachen Schritte](./java-in-process-agent.md#quickstart), unabhängig davon, ob Sie Spring Boot verwenden.
+Es gibt keinen Application Insights Java 3.x Spring Boot Starter.
+Bei der Einrichtung und Konfiguration von 3.x gelten dieselben [einfachen Schritte](./java-in-process-agent.md#quickstart), unabhängig davon, ob Sie Spring Boot verwenden.
 
-Beachten Sie beim Upgrade vom 2.x SDK Spring Boot Starter, dass der Name der Cloudrolle nicht mehr standardmäßig `spring.application.name` lautet.
-Informationen zum Festlegen des Cloudrollennamens in 3.0 über die JSON-Konfiguration oder die Umgebungsvariable finden Sie in der [Dokumentation zur 3.0-Konfiguration](./java-standalone-config.md#cloud-role-name).
+Beachten Sie beim Upgrade vom Application Insights Java 2.x SDK Spring Boot Starter, dass der Name der Cloudrolle nicht mehr standardmäßig `spring.application.name` lautet.
+Informationen zum Festlegen des Cloudrollennamens in 3.x über die JSON-Konfiguration oder die Umgebungsvariable finden Sie in der [Dokumentation zur 3.x-Konfiguration](./java-standalone-config.md#cloud-role-name).

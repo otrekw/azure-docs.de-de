@@ -8,25 +8,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ed23f563fce9760768a99e5bbf58f68500d665
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c56c6597e7ff2553089b62cabb84b24168b7cabf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103012019"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085724"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>Entfernen von Rollenzuweisungen für eine Gruppe in Azure Active Directory
 
 In diesem Artikel wird beschrieben, wie ein IT-Administrator Azure AD-Rollen entfernen kann, die Gruppen zugewiesen sind. Im Azure-Portal können Sie jetzt sowohl direkte als auch indirekte Rollenzuweisungen für einen Benutzer entfernen. Ist einem Benutzer durch eine Gruppenmitgliedschaft eine Rolle zugewiesen, entfernen Sie den Benutzer aus der Gruppe, um die Rollenzuweisung zu entfernen.
 
-## <a name="using-azure-admin-center"></a>Mithilfe von Azure Admin Center
+## <a name="prerequisites"></a>Voraussetzungen
 
-1. Melden Sie sich bei [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit Berechtigungen vom Typ „Administrator für privilegierte Rollen“ oder „Globaler Administrator“ in der Azure AD-Organisation an.
+- Eine Lizenz vom Typ Azure AD Premium P1 oder P2
+- „Administrator für privilegierte Rollen“ oder „Globaler Administrator“
+- AzureADPreview-Modul bei Verwendung von PowerShell
+- Administratorzustimmung bei Verwendung von Graph-Tester für die Microsoft Graph-API
+
+Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
+
+## <a name="azure-portal"></a>Azure-Portal
+
+1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) an.
 
 1. Wählen Sie **Rollen und Administratoren** > **_Rollenname_** aus.
 
@@ -36,7 +45,7 @@ In diesem Artikel wird beschrieben, wie ein IT-Administrator Azure AD-Rollen en
 
 1. Wählen Sie **Ja** aus, wenn Sie zur Bestätigung der Aktion aufgefordert werden.
 
-## <a name="using-powershell"></a>PowerShell
+## <a name="powershell"></a>PowerShell
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>Erstellen einer Gruppe, die der Rolle zugewiesen werden kann
 
@@ -62,7 +71,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope '/' -RoleDefinition
 Remove-AzureAdMSRoleAssignment -Id $roleAssignment.Id 
 ```
 
-## <a name="using-microsoft-graph-api"></a>Verwenden der Microsoft Graph-API
+## <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 ### <a name="create-a-group-that-can-be-assigned-an-azure-ad-role"></a>Erstellen einer Gruppe, die einer Azure AD-Rolle zugewiesen werden kann
 

@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie Azure Video Analyzer verwe
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 05/12/2021
-ms.openlocfilehash: 7b1122c098fc30150699f6c878058d37f74a007f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 89aef5db89110ee7e12a313820f8f62d0b010faf
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465815"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755163"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>Tutorial: Aufzeichnen und Streamen von Rückschlussmetadaten mit Video
   
@@ -34,7 +34,7 @@ Dies sind die Voraussetzungen für dieses Tutorial: [!INCLUDE [prerequisites](./
 
 ## <a name="set-up-azure-resources"></a>Einrichten von Azure-Ressourcen
 
-[![Bereitstellen in Azure](https://aka.ms/deploytoazurebutton)](https://aka.ms/ava-click-to-deploy)
+[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://aka.ms/ava-click-to-deploy)
 [!INCLUDE [resources](./includes/common-includes/azure-resources.md)]
 
 ## <a name="overview"></a>Überblick
@@ -132,7 +132,7 @@ Navigieren Sie als Nächstes zum Ordner „src/cloud-to-device-console-app“. H
 1. Vergewissern Sie sich anschließend unter den Knoten **livePipelineSet** und **pipelineTopologyDelete**, dass der Wert von **topologyName** dem Wert der Eigenschaft **name** in der obigen Pipelinetopologie entspricht:
 
     `"pipelineTopologyName" : "CVRHttpExtensionObjectTracking"`
-1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-objTracking/topology.json) in einem Browser, und sehen Sie die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-cvr-with-inference-metadata` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera über eine Videoressource mit einem eindeutigen Namen erfolgt.  
+1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-objTracking/topology.json) in einem Browser, und sehen Sie sich die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-cvr-with-inference-metadata` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera über eine Videoressource mit einem eindeutigen Namen erfolgt.  
 
 1. Überprüfen Sie die Einstellungen für den HTTP-Erweiterungsknoten.
 
@@ -143,7 +143,7 @@ Navigieren Sie als Nächstes zum Ordner „src/cloud-to-device-console-app“. H
     }
   ```
 
-Hier wird `skipSamplesWithoutAnnotation` auf `false` festgelegt, da der Erweiterungsknoten alle Frames an den Downstream-Objektverfolgungsknoten übergeben muss – unabhängig davon, ob sie über Rückschlussergebnisse verfügen. Von der Objektverfolgung können Objekte über ca. 15 Frames hinweg verfolgt werden. Wenn das Livevideo eine Bildfrequenz von 30 Frames/Sek. hat, sollten mindestens zwei Frames pro Sekunde zum Rückschluss an den HTTP-Server gesendet werden. Daher wird `maximumSamplesPerSecond` auf „2“ festgelegt.
+Hier wird `skipSamplesWithoutAnnotation` auf `false` festgelegt, da der Erweiterungsknoten alle Frames an den Downstream-Objektverfolgungsknoten übergeben muss – unabhängig davon, ob sie über Rückschlussergebnisse verfügen. Mit der Objektnachverfolgung können Objekte über ca. 15 Frames hinweg verfolgt werden. Wenn das Livevideo eine Bildfrequenz von 30 Frames/Sek. hat, sollten mindestens zwei Frames pro Sekunde zum Rückschluss an den HTTP-Server gesendet werden. Daher wird `maximumSamplesPerSecond` auf „2“ festgelegt.
 
 ## <a name="run-the-sample-program"></a>Ausführen des Beispielprogramms
 
@@ -215,7 +215,7 @@ In den folgenden Nachrichten werden vom Video Analyzer-Modul die Anwendungseigen
 ## <a name="diagnostics-events"></a>Diagnoseereignisse
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished-Ereignis
 
-Wenn eine Livepipeline aktiviert wird, versucht der RTSP-Quellknoten eine Verbindung mit dem RTSP-Server herzustellen, der im Container „rtspsim-live555“ ausgeführt wird. Wenn die Verbindungsherstellung erfolgreich ist, wird das folgende Ereignis ausgegeben. Der Ereignistyp lautet „Microsoft.VideoAnalyzer.Diagnostics.MediaSessionEstablished“.
+Wenn eine Livepipeline aktiviert wird, versucht der Knoten der RTSP-Quelle eine Verbindung mit dem RTSP-Server herzustellen, der im Container „rtspsim-live555“ ausgeführt wird. Wenn die Verbindungsherstellung erfolgreich ist, wird das folgende Ereignis ausgegeben. Der Ereignistyp lautet „Microsoft.VideoAnalyzer.Diagnostics.MediaSessionEstablished“.
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [avasample-iot-edge-device/avaedge]:
@@ -244,7 +244,7 @@ Beachten Sie in dieser Meldung diese Details:
 
 ### <a name="object-tracking-events"></a>Ereignisse der Objektnachverfolgung
 
-Der Knoten des HTTP-Erweiterungsprozessors sendet den 0., 15., 30. (usw.) Frame an das Modul „yolov3“ und empfängt die Rückschlussergebnisse. Anschließend werden diese Ergebnisse und alle Videoframes an den Knoten für die Objektnachverfolgung gesendet. Angenommen, für Frame 0 wurde ein Objekt erkannt. Die Objektnachverfolgung weist diesem Objekt dann eine eindeutige „sequenceId“ zu. Falls das Objekt dann in den Frames 1, 2, usw. bis 14 nachverfolgt werden kann, wird ein Ergebnis mit derselben „sequenceId“ ausgegeben. Beachten Sie in den folgenden Codeausschnitten aus den Ergebnissen, wie sich `sequenceId` wiederholt, während sich die Position des Begrenzungsrahmens ändert, wenn sich das Objekt bewegt.
+Der Knoten des HTTP-Erweiterungsprozessors sendet Frame 0, 15, 30 usw. an das Modul „yolov3“ und empfängt die Rückschlussergebnisse. Anschließend werden diese Ergebnisse und alle Videoframes an den Knoten für die Objektnachverfolgung gesendet. Angenommen, für Frame 0 wurde ein Objekt erkannt. Die Objektnachverfolgung weist diesem Objekt dann eine eindeutige „sequenceId“ zu. Falls das Objekt dann in den Frames 1, 2, usw. bis 14 nachverfolgt werden kann, wird ein Ergebnis mit derselben „sequenceId“ ausgegeben. Beachten Sie in den folgenden Codeausschnitten aus den Ergebnissen, wie sich `sequenceId` wiederholt, während sich die Position des Begrenzungsrahmens ändert, wenn sich das Objekt bewegt.
 
 Aus Frame M:
 
@@ -345,7 +345,7 @@ Der Textabschnitt enthält Informationen über den Ausgabespeicherort. In diesem
 
 ### <a name="recordingstopped-event"></a>Ereignis „RecordingStopped“
 
-Wenn Sie die Livepipeline deaktivieren, beendet der Videosenke-Knoten die Aufzeichnung von Medien. Ein Ereignis vom Typ **Microsoft.VideoAnalyzers.Pipeline.Operational.RecordingStopped** wird ausgegeben:
+Wenn Sie die Livepipeline deaktivieren, beendet der Videosenke-Knoten die Aufzeichnung von Medien. Das folgende Ereignis vom Typ **Microsoft.VideoAnalyzers.Pipeline.Operational.RecordingStopped** wird ausgegeben:
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [ava-sample-device/avaedge]:
@@ -380,13 +380,9 @@ Sie können von der Livepipeline erstellte Video Analyzer-Ressource für Videoda
 1. Ein Video mit dem Namen `sample-cvr-with-inference-metadata` ist aufgeführt. Dies ist der Name, den Sie in Ihrer Datei mit der Pipelinetopologie ausgewählt haben.
 1. Wählen Sie das Video aus.
 1. Klicken Sie auf der Seite mit den Videodetails auf das **Wiedergabesymbol**.
-
+1. Klicken Sie auf das **Begrenzungsrahmensymbol**, um die Rückschlussmetadaten als Begrenzungsrahmen im Video anzuzeigen (rot markiert).
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/record-stream-inference-data-with-video/video-playback.png" alt-text="Screenshot: Videowiedergabe":::
-   
-1. Klicken Sie auf das **Begrenzungsrahmensymbol**, um die Rückschlussmetadaten als Begrenzungsrahmen im Video anzuzeigen.
-   > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/record-stream-inference-data-with-video/bounding-box.png" alt-text="Begrenzungsrahmensymbol":::
 
 > [!NOTE]
 > Da es sich bei der Quelle des Videos um einen Container zum Simulieren eines Kamerafeeds handelt, beziehen sich die Zeitstempel im Video auf den Zeitpunkt, zu dem Sie die Livepipeline aktiviert bzw. deaktiviert haben.

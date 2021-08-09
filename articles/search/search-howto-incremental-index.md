@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 2b305955dbfcf99bccede041cbfcd18aef065cf1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e8164a6ee56a332528cdce8e81cd85460af0c1db
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770099"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752385"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung in Azure Cognitive Search
 
@@ -75,7 +75,7 @@ Der Standardwert der `cache`-Eigenschaft ist NULL. Verwenden Sie einen API-Clien
 ```
 
 > [!NOTE]
-> Der Indexercache erfordert ein Speicherkonto vom Typ „Universell v2“. Weitere Informationen finden Sie im Thema zu den [verschiedenen Typen von Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts).
+> Der Indexercache erfordert ein Speicherkonto vom Typ „Universell v2“. Weitere Informationen finden Sie im Thema zu den [verschiedenen Typen von Speicherkonten](../storage/common/storage-account-overview.md#types-of-storage-accounts).
 
 ### <a name="step-3-reset-the-indexer"></a>Schritt 3: Zurücksetzen des Indexers
 

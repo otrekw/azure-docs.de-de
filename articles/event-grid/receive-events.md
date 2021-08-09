@@ -4,19 +4,19 @@ description: Beschreibt, wie ein HTTP-Endpunkt überprüft und dann Ereignisse a
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93494bc35099c2ef9cbc93ed6713d8a2608f2c4c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023714"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473437"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Empfangen von Ereignissen an einem HTTP-Endpunkt
 
 In diesem Artikel wird beschrieben, wie Sie [einen HTTP-Endpunkt überprüfen](webhook-event-delivery.md), um Ereignisse von einem Ereignisabonnement zu empfangen, und dann Ereignisse empfangen und deserialisieren. In diesem Artikel wird zu Demonstrationszwecken eine Azure-Funktion verwendet, doch treffen die gleichen Konzepte unabhängig davon zu, wo die Anwendung gehostet wird.
 
 > [!NOTE]
-> Es wird **dringend** empfohlen, beim Auslösen einer Azure-Funktion mit Event Grid einen [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md) zu verwenden. Die Verwendung eines generischen WebHook-Triggers dient hier lediglich zur Veranschaulichung.
+> Es wird empfohlen, beim Auslösen einer Azure-Funktion mit Event Grid einen [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md) zu verwenden. Er ermöglicht eine einfachere und schnellere Integration zwischen Event Grid und Azure Functions. Beachten Sie jedoch, dass der Event Grid-Trigger von Azure Functions nicht das Szenario unterstützt, in dem der gehostete Code den HTTP-Statuscode steuern muss, der an Event Grid zurückgegeben wird. Aufgrund dieser Einschränkung kann Ihr Code, der auf einer Azure-Function ausgeführt wird, beispielsweise keinen 5XX-Fehler zurückgeben, um einen erneuten Versuch der Ereignisübermittlung durch Event Grid zu initiieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

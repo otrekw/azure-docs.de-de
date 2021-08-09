@@ -6,12 +6,12 @@ ms.author: kimal
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 369348133f7395f5db5b5923bd438cec8e4ad733
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98a78d9d769300fc4963869fbc4fa2607b800fad
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954377"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591114"
 ---
 # <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>Verwendung von verwalteten Identitäten (Vorschau) zum Authentifizieren von Azure Stream Analytics-Aufträgen für Azure Blob Storage
 
@@ -21,15 +21,22 @@ Dieser Artikel zeigt Ihnen, wie Sie verwaltete Identitäten für die Blobausgabe
 
 ## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals
 
-1. Erstellen Sie einen neuen Stream Analytics-Auftrag oder öffnen Sie einen vorhandenen im Azure-Portal. Wählen Sie in der Menüleiste auf der linken Bildschirmseite unter **Konfigurieren** die Option **Verwaltete Identität**. Vergewissern Sie sich, dass „Systemseitig zugewiesene verwaltete Identität verwenden“ ausgewählt ist, und klicken Sie dann auf die Schaltfläche **Speichern** am unteren Bildschirmrand.
+Erstellen Sie zuerst eine verwaltete Identität für den Azure Stream Analytics-Auftrag.  
 
-   ![Konfigurieren einer verwalteten Identität für Stream Analytics](./media/common/stream-analytics-enable-managed-identity.png)
+1. Öffnen Sie den Azure Stream Analytics-Auftrag im Azure-Portal.  
 
-2. Wählen Sie im Fenster mit den Ausgabeeigenschaften der Azure Blob Storage-Ausgabesenke die Dropdownliste der Authentifizierungsmodi, und wählen Sie **Verwaltete Identität** aus. Informationen zu den anderen Ausgabeeigenschaften finden Sie unter [Grundlegendes zu den Ausgaben von Azure Stream Analytics](./stream-analytics-define-outputs.md). Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+2. Wählen Sie im linken Navigationsmenü unter  *Konfigurieren* die Option  **Verwaltete Identität** aus. Aktivieren Sie dann das Kontrollkästchen neben  **Systemseitig zugewiesene verwaltete Identität verwenden**, und klicken Sie auf  **Speichern**.
 
-   ![Konfigurieren der Azure Blob Storage-Ausgabe](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
+   :::image type="content" source="media/event-hubs-managed-identity/system-assigned-managed-identity.png" alt-text="Systemseitig zugewiesene verwaltete Identität":::  
 
-3. Nachdem der Auftrag nun erstellt wurde, finden Sie weitere Informationen im Abschnitt [Stream Analytics-Auftrag Zugriff auf Ihr Speicherkonto geben](#give-the-stream-analytics-job-access-to-your-storage-account) in diesem Artikel.
+3. Ein Dienstprinzipal für die Identität des Stream Analytics-Auftrags wird in Azure Active Directory erstellt. Der Lebenszyklus der neu erstellten Identität wird von Azure verwaltet. Wenn der Stream Analytics-Auftrag gelöscht wird, wird die zugeordnete Identität (also der Dienstprinzipal) von Azure automatisch ebenfalls gelöscht.  
+
+   Wenn Sie die Konfiguration speichern, wird die Objekt-ID (OID) des Dienstprinzipals als Prinzipal-ID aufgeführt, wie hier gezeigt:  
+
+   :::image type="content" source="media/event-hubs-managed-identity/principal-id.png" alt-text="Prinzipal-ID":::
+
+   Der Dienstprinzipal weist den gleichen Namen auf wie der Stream Analytics-Auftrag. Wenn der Name des Auftrags z. B.  `MyASAJob` lautet, erhält auch der Dienstprinzipal den Namen  `MyASAJob`. 
+
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager-Bereitstellung
 
@@ -160,6 +167,9 @@ Es gibt zwei Zugriffsebenen, die Sie wählen können, um Ihren Stream Analytics-
 
 Wenn Sie den Auftrag nicht benötigen, um Container für Sie zu erstellen, sollten Sie den **Zugriff auf Containerebene** wählen, da diese Option dem Auftrag den erforderlichen Mindestzugang gewährt. Beide Optionen werden im Folgenden für das Azure-Portal und die Befehlszeile erläutert.
 
+> [!NOTE]
+> Aufgrund der globalen Replikations- oder Cachinglatenz kann es zu einer Verzögerung kommen, wenn Berechtigungen widerrufen oder erteilt werden. Änderungen sollten innerhalb von 8 Minuten widergespiegelt werden.
+
 ### <a name="grant-access-via-the-azure-portal"></a>Zugriff über das Azure-Portal gewähren
 
 #### <a name="container-level-access"></a>Zugriff auf Containerebene
@@ -213,6 +223,15 @@ Um Zugriff auf das gesamte Konto zu erhalten, führen Sie den folgenden Befehl m
    ```azurecli
    az role assignment create --role "Storage Blob Data Contributor" --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
    ```
+   
+## <a name="create-a-blob-input-or-output"></a>Erstellen einer Blobeingabe oder -ausgabe  
+
+Nachdem die verwaltete Identität konfiguriert wurde, können Sie dem Stream Analytics-Auftrag die Blobressource als Eingabe oder Ausgabe hinzufügen.
+
+1. Wählen Sie im Fenster mit den Ausgabeeigenschaften der Azure Blob Storage-Ausgabesenke die Dropdownliste der Authentifizierungsmodi, und wählen Sie **Verwaltete Identität** aus. Informationen zu den anderen Ausgabeeigenschaften finden Sie unter [Grundlegendes zu den Ausgaben von Azure Stream Analytics](./stream-analytics-define-outputs.md). Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+
+   ![Konfigurieren der Azure Blob Storage-Ausgabe](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
+
 
 ## <a name="enable-vnet-access"></a>Aktivieren des VNET-Zugriffs
 

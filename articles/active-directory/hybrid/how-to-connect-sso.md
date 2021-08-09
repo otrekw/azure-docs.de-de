@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeede88bfbe024a66e40270240d32488e581dd77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42c73e2fa0439b247267f8d1021c0a779b6ca2ba
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517700"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627904"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Nahtlose einmalige Anmeldung mit Azure Active Directory
 
@@ -66,23 +66,25 @@ Das einmalige Anmelden (SSO) über das primäre Aktualisierungstoken funktionier
 - Es handelt sich um ein kostenloses Feature, sodass Sie für dessen Verwendung keine kostenpflichtigen Editionen von Azure AD benötigen.
 - Ist auf webbrowserbasierten Clients und Office-Clients möglich, die eine [moderne Authentifizierung](/office365/enterprise/modern-auth-for-office-2013-and-2016) auf Plattformen und Browsern unterstützen, die eine Kerberos-Authentifizierung ausführen können:
 
-| Betriebssystem/Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
+| Betriebssystem/Browser |Internet Explorer|Microsoft Edge\*\*\*\*|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|Ja\*|Ja|Ja|Ja\*\*\*|–
 |Windows 8.1|Ja\*|Ja*\*\*\*|Ja|Ja\*\*\*|–
 |Windows 8|Ja\*|–|Ja|Ja\*\*\*|–
-|Windows 7|Ja\*|–|Ja|Ja\*\*\*|–
 |Windows Server 2012 R2 oder höher|Ja\*\*|–|Ja|Ja\*\*\*|–
 |Mac OS X|–|–|Ja\*\*\*|Ja\*\*\*|Ja\*\*\*
 
+ > [!NOTE]
+ >Die Legacyversion von Microsoft Edge wird nicht mehr unterstützt.
 
-\*Erfordert Internet Explorer 10 oder höher.
 
-\*\*Erfordert Internet Explorer 10 oder höher. Deaktivieren Sie den erweiterten geschützten Modus.
+\*Erfordert Internet Explorer 11 oder höher ([Ab dem 17. August 2021 unterstützen Microsoft 365-Apps und -Dienste IE 11 nicht mehr.](https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-365-apps-say-farewell-to-internet-explorer-11-and/ba-p/1591666))
+
+\*\*Erfordert Internet Explorer 11 oder höher Deaktivieren Sie den erweiterten geschützten Modus.
 
 \*\*\*Erfordert [zusätzliche Konfigurationsschritte](how-to-connect-sso-quick-start.md#browser-considerations).
 
-\*\*\*\*Erfordert Microsoft Edge, Version 77 oder höher.
+\*\* \* \*Microosft Edge auf Chromium-Basis
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,24 +1,24 @@
 ---
-title: Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
+title: Referenz zum Schreiben von Ausdrücken für Attributzuordnungen bei der Anwendungsbereitstellung von Azure Active Directory
 description: Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, um Attributwerte während der automatisierten Bereitstellung von SaaS-App-Objekten in Azure Active Directory in ein akzeptables Format zu transformieren. Enthält eine Referenzliste mit Funktionen
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 0334f52b87071c8f363a0dfcc793170316747096
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.reviewer: arvinh
+ms.openlocfilehash: 3cd910cac906af54e039e38c9ccdd9d563cd9b8c
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198505"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111570313"
 ---
-# <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure AD
+# <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
 
@@ -369,7 +369,7 @@ Gibt „True“ zurück, wenn das Attribut nicht vorhanden ist oder eine leere Z
 | **Index** |Erforderlich |Integer | Index für ein Element in der mehrwertigen Zeichenfolge|
 
 **Beispiel:** 
-`Item([proxyAddresses], 1)` gibt das zweite Element im mehrwertigen Attribut zurück.
+`Item([proxyAddresses], 1)` gibt das erste Element im mehrwertigen Attribut zurück. Index 0 sollte nicht verwendet werden. 
 
 ---
 ### <a name="join"></a>Join

@@ -3,14 +3,14 @@ title: Konfigurieren eines benutzerdefinierten Containers
 description: Erfahren Sie, wie Sie einen benutzerdefinierten Container in Azure App Service konfigurieren. In diesem Artikel werden die gängigsten Konfigurationsaufgaben vorgestellt.
 ms.topic: article
 ms.date: 02/23/2021
-ms.custom: devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 48d2eeec1bdb1b9b4a393b4116092f043716077c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 7648482fcf1d3618c02e4c8c8cf18aa521013baf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832031"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078271"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Containers für Azure App Service
 
@@ -371,7 +371,7 @@ Ordnen Sie in Ihrer Datei *docker-compose.yml* die `volumes`-Option zu `${WEBAPP
 
 ```yaml
 wordpress:
-  image: wordpress:latest
+  image: <image name:tag>
   volumes:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
@@ -385,6 +385,7 @@ Apps mit mehreren Containern befinden sich derzeit in der Vorschauphase. Die fol
 - Authentifizierung/Autorisierung
 - Verwaltete Identitäten
 - CORS
+- VNET-Integration wird für Docker Compose-Szenarien nicht unterstützt.
 
 ### <a name="docker-compose-options"></a>Optionen von Docker Compose
 

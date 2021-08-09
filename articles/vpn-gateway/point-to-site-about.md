@@ -1,19 +1,19 @@
 ---
 title: Informationen zu Azure-Point-to-Site-VPN-Verbindungen
 titleSuffix: Azure VPN Gateway
-description: Erfahren Sie mehr über Point-to-Site-Verbindungen und darüber, welcher P2S-VPN Gateway-Authentifizierungstyp verwendet werden sollte.
+description: Erfahren Sie mehr über Point-to-Site-VPN.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 04/28/2021
+ms.date: 05/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: c7c9d1ad6aefe9fc05b77925ee6bbf4160b988d8
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 1be0ecfe773bfa56900295db8701d9a582389046
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202405"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554676"
 ---
 # <a name="about-point-to-site-vpn"></a>Informationen zu Point-to-Site-VPN
 
@@ -23,11 +23,11 @@ Mit einer P2S-VPN-Gatewayverbindung (Point-to-Site) können Sie von einem einzel
 
 P2S-VPN kann eins der folgenden Protokolle verwenden:
 
-* **OpenVPN®-Protokoll**, ein auf SSL/TLS basierendes VPN-Protokoll. Eine TLS-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von TLS verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. OpenVPN kann zum Herstellen einer Verbindung von Android-, iOS- (Versionen 11.0 und höher), Windows-, Linux- und Mac-Geräten (OSX-Version 10.13 und höher) verwendet werden.
+* **OpenVPN®-Protokoll**, ein auf SSL/TLS basierendes VPN-Protokoll. Eine TLS-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von TLS verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. OpenVPN kann zum Herstellen einer Verbindung von Android-, iOS- (Version 11.0 und höher), Windows-, Linux- und Mac-Geräten (macOS-Version 10.13 und höher) verwendet werden.
 
 * Secure Socket Tunneling-Protokoll (SSTP), ein proprietäres TLS-basiertes VPN-Protokoll. Eine TLS-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von TLS verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. SSTP wird nur auf Windows-Geräten unterstützt. Azure unterstützt alle Versionen von Windows, die über SSTP verfügen (Windows 7 und höher).
 
-* IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (OSX-Version 10.11 und höher) verwendet werden.
+* IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (macOS-Version 10.11 und höher) verwendet werden.
 
 
 >[!NOTE]
@@ -169,20 +169,28 @@ Eine P2S-Konfiguration erfordert einige bestimmte Schritte. Die folgenden Artike
 
 ### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>Entfernen der Konfiguration einer P2S-Verbindung
 
-Eine entsprechende Anleitung finden Sie weiter unten in den [häufig gestellten Fragen](#removeconfig).
+Sie können die Konfiguration einer Verbindung mithilfe von PowerShell oder der CLI entfernen. Beispiele finden Sie in den [häufig gestellten Fragen](vpn-gateway-vpn-faq.md#removeconfig).
+
+## <a name="how-does-p2s-routing-work"></a>Wie funktioniert P2S-Routing?
+
+Weitere Informationen finden Sie in folgenden Artikeln:
+
+* [Informationen zu Point-to-Site-VPN-Routing](vpn-gateway-about-point-to-site-routing.md)
+
+* [Ankündigen benutzerdefinierter Routen](vpn-gateway-p2s-advertise-custom-routes.md)
+
+## <a name="faqs"></a>Häufig gestellte Fragen
+
+Es gibt mehrere FAQ-Abschnitte für P2S, die sich auf die Authentifizierung beziehen.
+
+* [Häufig gestellte Fragen: Zertifikatauthentifizierung](vpn-gateway-vpn-faq.md#P2S)
+
+* [Häufig gestellte Fragen: RADIUS-Authentifizierung](vpn-gateway-vpn-faq.md#P2SRADIUS)
  
-## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>Häufig gestellte Fragen zur nativen Azure-Zertifikatauthentifizierung
-
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
-
-## <a name="faq-for-radius-authentication"></a><a name="faqradius"></a>Häufig gestellte Fragen zur RADIUS-Authentifizierung
-
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Konfigurieren einer Point-to-Site-Verbindung unter Verwendung der RADIUS-Authentifizierung](point-to-site-how-to-radius-ps.md)
 
-* [Konfigurieren einer Point-to-Site-Verbindung unter Verwendung der nativen Azure-Zertifikatauthentifizierung](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Konfigurieren einer Point-to-Site-Verbindung unter Verwendung der Azure-Zertifikatauthentifizierung](vpn-gateway-howto-point-to-site-rm-ps.md)
 
 **„OpenVPN“ ist eine Marke von OpenVPN Inc.**

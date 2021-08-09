@@ -1,74 +1,96 @@
 ---
 title: Standortbedingung beim bedingten Zugriff in Azure Active Directory
-description: Erfahren Sie, wie Sie die auf dem Netzwerkstandort eines Benutzers beruhende Standortbedingung zum Steuern des Zugriffs auf Ihre Cloud-App verwenden können.
+description: Verwenden Sie die Standortbedingung, um den Zugriff basierend auf dem Benutzerstandort zu steuern.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 06/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: calebb, olhuan
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: c17814b51f1ebd6640bc6f500fbedbd7874cdd94
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: fff7512523b50c7bb0e7652832cfa27db688fff0
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947787"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111570833"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Verwenden der Standortbedingung in einer Richtlinie für bedingten Zugriff 
 
-Wie im [Übersichtsartikel](overview.md) erläutert wurde, sind Richtlinien für bedingten Zugang in ihrer grundlegendsten Form eine If-Then-Anweisung, die Signale kombiniert, um Entscheidungen zu treffen und Organisationsrichtlinien zu erzwingen. Eines dieser Signale, das in den Entscheidungsfindungsprozess integriert werden kann, ist der Netzwerkstandort.
+Wie im [Übersichtsartikel](overview.md) erläutert wurde, sind Richtlinien für bedingten Zugang in ihrer grundlegendsten Form eine If-Then-Anweisung, die Signale kombiniert, um Entscheidungen zu treffen und Organisationsrichtlinien zu erzwingen. Eines dieser Signale, das in den Entscheidungsprozess integriert werden kann, ist der Standort.
 
 ![Konzeptionelles bedingtes Signal plus Entscheidung zum Erzwingen](./media/location-condition/conditional-access-signal-decision-enforcement.png)
 
-Organisationen können diesen Netzwerkstandort für gängige Aufgaben wie die folgenden nutzen: 
+Organisationen können diesen Standort für gängige Aufgaben wie die folgenden nutzen: 
 
 - Das Vorschreiben von mehrstufiger Authentifizierung für Benutzer beim Zugriff auf einen Dienst, wenn sie sich außerhalb des Unternehmensnetzwerks befinden
 - Das Blockieren des Zugriffs auf einen Dienst für Benutzer, die sich in bestimmten Ländern oder Regionen aufhalten.
 
-Der Netzwerkstandort wird über die öffentliche IP-Adresse bestimmt, die ein Client in Azure Active Directory angibt. Richtlinien für bedingten Zugriff werden standardmäßig auf alle IPv4- und IPv6-Adressen angewendet. 
+Der Standort wird durch die öffentliche IP-Adresse bestimmt, die ein Client für Azure Active Directory bereitstellt, oder durch die von der Microsoft Authenticator-App gelieferten GPS-Koordinaten. Richtlinien für bedingten Zugriff werden standardmäßig auf alle IPv4- und IPv6-Adressen angewendet. 
 
 ## <a name="named-locations"></a>Benannte Orte
 
-Standorte werden im Azure-Portal unter **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** > **Benannte Standorte** angegeben. Diese benannten Netzwerkstandorte können Standorte wie z. B. die Netzwerkbereiche des Hauptsitzes einer Organisation, VPN-Netzwerkbereiche oder Bereiche umfassen, die Sie blockieren möchten. Benannte Standorte können durch IPv4/IPv6-Adressbereiche oder durch Länder/Regionen definiert werden. 
+Standorte werden im Azure-Portal unter **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** > **Benannte Standorte** angegeben. Diese benannten Netzwerkstandorte können Standorte wie z. B. die Netzwerkbereiche des Hauptsitzes einer Organisation, VPN-Netzwerkbereiche oder Bereiche umfassen, die Sie blockieren möchten. Benannte Standorte können nach IPv4/IPv6-Adressbereichen oder Länder/Regionen definiert werden. 
 
 ![Benannte Standorte im Azure-Portal](./media/location-condition/new-named-location.png)
 
 ### <a name="ip-address-ranges"></a>IP-Adressbereiche
 
-Geben Sie einen **Namen** und einen IP-Adressbereich an, um einen benannten Speicherort durch IPv4-/IPv6-Adressbereiche zu definieren. 
+Zum Definieren eines benannten Standorts nach IPv4-/IPv6-Adressbereichen müssen Sie Folgendes angeben: 
+
+- **Name** für den Standort
+- Mindestens ein IP-Adressbereich
+- **Als vertrauenswürdigen Standort markieren** (optional)
+
+![Neue IP-Standorte im Azure-Portal](./media/location-condition/new-trusted-location.png)
 
 Benannte Speicherorte, die durch IPv4/IPv6-Adressbereiche definiert werden, unterliegen den folgenden Einschränkungen: 
+
 - Konfigurieren von bis zu 195 benannten Standorten
 - Konfigurieren von bis zu 2.000 IP-Adressbereichen pro benanntem Standort
 - IPv4- und IPv6-Adressbereiche werden unterstützt.
 - Private IP-Adressbereiche können nicht konfiguriert werden.
 - Die Anzahl von IP-Adressen innerhalb eines Bereichs ist begrenzt. Beim Konfigurieren eines IP-Adressbereichs sind nur CIDR-Masken größer als /8 zulässig. 
 
-### <a name="trusted-locations"></a>Vertrauenswürdige Standorte
+#### <a name="trusted-locations"></a>Vertrauenswürdige Standorte
 
-Administratoren können benannte Standorte, die durch IP-Adressbereiche definiert sind, als vertrauenswürdige benannte Standorte festlegen. 
+Administratoren können Standorte, die nach IP-Adressbereichen definiert sind, als vertrauenswürdige benannte Standorte festlegen. 
 
-![Vertrauenswürdige Standorte im Azure-Portal](./media/location-condition/new-trusted-location.png)
+Die Anmeldung von vertrauenswürdigen benannten Standorten verbessert die Genauigkeit der Risikoberechnung von Azure AD Identity Protection. Außerdem wird das Anmelderisiko von Benutzern verringert, wenn sie sich von einem als vertrauenswürdig gekennzeichneten Standort authentifizieren. Darüber hinaus können vertrauenswürdige benannte Standorte in Richtlinien für bedingten Zugriff verwendet werden. Sie können beispielsweise die [Registrierung für mehrstufige Authentifizierung auf vertrauenswürdige Standorte beschränken](howto-conditional-access-policy-registration.md). 
 
-Die Anmeldung von vertrauenswürdigen benannten Standorten verbessert die Genauigkeit der Risikoberechnung von Azure AD Identity Protection. Außerdem wird das Anmelderisiko von Benutzern verringert, wenn sie sich von einem als vertrauenswürdig gekennzeichneten Standort authentifizieren. Darüber hinaus können vertrauenswürdige benannte Standorte in Richtlinien für bedingten Zugriff verwendet werden. Sie können zum Beispiel festlegen, dass nur für vertrauenswürdige benannte Standorte eine Registrierung mit mehrstufiger Authentifizierung durchgeführt werden muss. 
+### <a name="countries"></a>Länder
 
-### <a name="countries-and-regions"></a>Länder und Regionen
+Organisationen können den Standort des Landes anhand der IP-Adresse oder GPS-Koordinaten bestimmen. 
 
-Einige Organisationen können mit bedingtem Zugriff den Zugriff auf bestimmte Länder oder Regionen einschränken. Zusätzlich zum Definieren benannter Standorte durch IP-Adressbereiche können Administratoren benannte Standorte durch Länder oder Regionen definieren. Wenn sich Benutzer anmelden, löst Azure AD ihre IPv4-Adresse in ein Land oder eine Region auf, und die Zuordnung wird regelmäßig aktualisiert. Organisationen können durch Länder definierte benannte Standorte verwenden, um Datenverkehr aus Ländern zu blockieren, in denen sie nicht tätig sind, zum Beispiel Nordkorea. 
+Zum Definieren eines benannten Standorts nach Land müssen Sie Folgendes angeben: 
+
+- **Name** für den Standort
+- Auswählen, ob der Standort anhand der IP-Adresse oder GPS-Koordinaten bestimmt werden soll
+- Mindestens ein Land hinzufügen
+- **Unbekannte Länder/Regionen einbeziehen** auswählen (optional)
+
+![Land als Standort im Azure-Portal](./media/location-condition/new-named-location-country-region.png)
+
+Wenn Sie **Standort anhand der IP-Adresse bestimmen (nur IPv4)** auswählen, erfasst das System die IP-Adresse des Geräts, bei dem sich der Benutzer anmelden möchte. Wenn sich Benutzer anmelden, löst Azure AD ihre IPv4-Adresse in ein Land oder eine Region auf, und die Zuordnung wird regelmäßig aktualisiert. Organisationen können durch Länder definierte benannte Standorte verwenden, um Datenverkehr aus Ländern zu blockieren, in denen sie nicht tätig sind. 
 
 > [!NOTE]
 > Anmeldungen von IPv6-Adressen können keinen Ländern oder Regionen zugeordnet werden und gelten als unbekannte Bereiche. Nur IPv4-Adressen können Ländern oder Regionen zugeordnet werden.
 
-![Erstellen eines neuen Standorts basierend auf Land oder Region im Azure-Portal](./media/location-condition/new-named-location-country-region.png)
+Wenn Sie **Standort anhand von GPS-Koordinaten bestimmen (Vorschau)** auswählen, muss die Microsoft Authenticator-App auf dem mobilen Gerät des Benutzers installiert sein. Die Microsoft Authenticator-App des Benutzers wird vom System stündlich kontaktiert, um den GPS-Standort des mobilen Geräts des Benutzers zu erfassen.
 
-#### <a name="include-unknown-areas"></a>Einschließen unbekannter Bereiche
+Wenn der Benutzer seinen Standort zum ersten Mal über die Microsoft Authenticator-App übermitteln muss, erhält er eine Benachrichtigung in der App. Der Benutzer muss die App öffnen und Standortberechtigungen erteilen. 
 
-Einige IP-Adressen (einschließlich aller IPv6-Adressen) sind weder einem bestimmten Land noch einer bestimmten Region zugeordnet. Um diese IP-Standorte zu erfassen, aktivieren Sie beim Definieren eines Standorts die Option **Unbekannte Bereiche einschließen**. Mithilfe dieser Option können Sie auswählen, ob der benannte Standort diese IP-Adressen umfassen soll. Verwenden Sie diese Einstellung, wenn die Richtlinie für den benannten Standort auch für unbekannte Standorte gelten soll.
+Wenn der Benutzer in den nächsten 24 Stunden immer noch auf die Ressource zugreift und der App die Berechtigung erteilt hat, im Hintergrund ausgeführt zu werden, wird der Standort des Geräts einmal pro Stunde automatisch übermittelt. Nach 24 Stunden muss der Benutzer die App öffnen und die Benachrichtigung genehmigen. Jedes Mal, wenn der Benutzer seinen GPS-Standort übermittelt, führt die App die Jailbreakerkennung durch (mit der gleichen Logik wie das Intune MAM SDK). Wenn das Gerät einen Jailbreak aufweist, wird der Standort nicht als gültig betrachtet, und dem Benutzer wird kein Zugriff gewährt. 
+
+Eine Richtlinie für bedingten Zugriff mit GPS-basierten benannten Standorten im Modus „Nur melden“ fordert Benutzer auf, ihren GPS-Standort zu übermitteln, auch wenn sie nicht von der Anmeldung blockiert sind.
+
+#### <a name="include-unknown-countriesregions"></a>Unbekannte Länder/Regionen einbeziehen
+
+Einige IP-Adressen (einschließlich aller IPv6-Adressen) sind weder einem bestimmten Land noch einer bestimmten Region zugeordnet. Aktivieren Sie beim Definieren eines geografischen Standorts das Kontrollkästchen **Unbekannte Länder/Regionen einbeziehen**, um diese IP-Standorte zu erfassen. Mithilfe dieser Option können Sie auswählen, ob der benannte Standort diese IP-Adressen umfassen soll. Verwenden Sie diese Einstellung, wenn die Richtlinie für den benannten Standort auch für unbekannte Standorte gelten soll.
 
 ### <a name="configure-mfa-trusted-ips"></a>Konfigurieren durch MFA bestätigter IP-Adressen
 
@@ -76,7 +98,7 @@ Ferner können Sie in den [Einstellungen für den mehrstufigen Authentifizierung
 
 Wenn Sie vertrauenswürdige IP-Adressen konfiguriert haben, werden diese in der Liste der Standorte für die Standortbedingung als **Durch MFA bestätigte IP-Adressen** angezeigt.
 
-### <a name="skipping-multi-factor-authentication"></a>Überspringen der mehrstufigen Authentifizierung
+#### <a name="skipping-multi-factor-authentication"></a>Überspringen der mehrstufigen Authentifizierung
 
 Auf der Einstellungsseite für den mehrstufigen Authentifizierungsdienst können Sie Benutzer aus dem Unternehmensintranet identifizieren, indem Sie **Für Anforderungen von Partnerbenutzern in meinem Intranet die mehrstufige Authentifizierung überspringen** aktivieren. Diese Einstellung gibt an, dass der Anspruch innerhalb des Unternehmensnetzwerks, der von AD FS ausgestellt wird, als vertrauenswürdig angesehen und dazu verwendet wird, den Benutzer als innerhalb des Unternehmensnetzwerks ansässig zu erkennen. Weitere Informationen finden Sie unter [Aktivieren des Features vertrauenswürdige IPs beim bedingten Zugriff](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
@@ -91,7 +113,7 @@ Wenn bei beiden Schritten ein Fehler auftritt, wird ein Benutzer nicht mehr als 
 
 ## <a name="location-condition-in-policy"></a>Standortbedingung in Richtlinie
 
-Beim Konfigurieren der Standortbedingung können Sie zwischen diesen Optionen wählen:
+Beim Konfigurieren der Standortbedingung können Sie zwischen folgenden Elementen unterscheiden:
 
 - Jeden beliebigen Speicherort
 - Alle vertrauenswürdigen Speicherorte
@@ -114,7 +136,13 @@ Mit dieser Option können Sie einen oder mehrere benannte Speicherorte auswähle
 
 ## <a name="ipv6-traffic"></a>IPv6-Datenverkehr
 
-Richtlinien für bedingten Zugriff werden standardmäßig auf den gesamten IPv6-Datenverkehr angewendet. Sie können bestimmte IPv6-Adressbereiche aus einer Richtlinie für bedingten Zugriff ausschließen, wenn Sie bei diesen nicht möchten, dass Richtlinien erzwungen werden. Beispiel: Sie möchten eine Richtlinie für Anwendungsfälle in Ihrem Unternehmensnetzwerk nicht erzwingen, und Ihr Unternehmensnetzwerk wird in öffentlichen IPv6-Adressbereichen gehostet.  
+Richtlinien für bedingten Zugriff werden standardmäßig auf den gesamten IPv6-Datenverkehr angewendet. Sie können bestimmte IPv6-Adressbereiche aus einer Richtlinie für bedingten Zugriff ausschließen, wenn Sie bei diesen nicht möchten, dass Richtlinien erzwungen werden. Beispiel: Sie möchten eine Richtlinie für Anwendungsfälle in Ihrem Unternehmensnetzwerk nicht erzwingen, und Ihr Unternehmensnetzwerk wird in öffentlichen IPv6-Adressbereichen gehostet.
+
+### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>Identifizieren von IPv6-Datenverkehr in den Azure AD-Anmeldeaktivitätsberichten
+
+Sie können den IPv6-Datenverkehr in Ihrem Mandanten ermitteln, indem Sie die [Azure AD-Anmeldeaktivitätsberichte](../reports-monitoring/concept-sign-ins.md) aufrufen. Nachdem Sie den Aktivitätsbericht geöffnet haben, fügen Sie die Spalte „IP-Adresse“ hinzu. Diese Spalte gibt Ihnen die Möglichkeit, den IPv6-Datenverkehr zu ermitteln.
+
+Sie können auch nach der Client-IP-Adresse suchen, indem Sie auf eine Zeile im Bericht klicken und dann in den Details der Anmeldeaktivität zur Registerkarte „Standort“ wechseln. 
 
 ### <a name="when-will-my-tenant-have-ipv6-traffic"></a>Wann tritt bei meinem Mandanten IPv6-Datenverkehr auf?
 
@@ -125,16 +153,10 @@ Der größte Teil des IPv6-Datenverkehrs, der über einen Proxy an Azure AD gel
 - Wenn für die Verbindung mit Exchange Online ein E-Mail-Client mit Legacyauthentifizierung verwendet wird, empfängt Azure AD möglicherweise eine IPv6-Adresse. Die anfängliche Authentifizierungsanforderung gelangt zu Exchange und wird dann über einen Proxy an Azure AD geleitet.
 - Wenn Sie Outlook Web Access (OWA) im Browser verwenden, wird in regelmäßigen Abständen überprüft, ob alle Richtlinien für bedingten Zugriff weiterhin erfüllt werden. Diese Überprüfung wird zum Erfassen von Fällen verwendet, in denen ein Benutzer möglicherweise von einer zulässigen IP-Adresse an einen neuen Standort gewechselt ist (z. B. ein Cafe, das in der Straße ein paar Häuser weitergezogen ist). Wenn Sie in diesem Fall eine IPv6-Adresse verwenden, die sich nicht in einem konfigurierten Bereich befindet, wird die Sitzung möglicherweise unterbrochen, und der Benutzer wird zur erneuten Authentifizierung zurück zu Azure AD geleitet. 
 
-Dies sind die häufigsten Gründe, bei denen Sie an Ihren benannten Standorten möglicherweise IPv6-Adressbereiche konfigurieren müssen. Wenn Sie Azure-VNets verwenden, geht außerdem Datenverkehr von einer IPv6-Adresse ein. Wenn der VNet-Datenverkehr durch eine Richtlinie für bedingten Zugriff blockiert wird, überprüfen Sie Ihr Azure AD-Anmeldeprotokoll. Nachdem Sie den Datenverkehr identifiziert haben, können Sie die verwendete IPv6-Adresse von Ihrer Richtlinie ausschließen. 
+Wenn Sie Azure-VNets verwenden, geht außerdem Datenverkehr von einer IPv6-Adresse ein. Wenn der VNet-Datenverkehr durch eine Richtlinie für bedingten Zugriff blockiert wird, überprüfen Sie Ihr Azure AD-Anmeldeprotokoll. Nachdem Sie den Datenverkehr identifiziert haben, können Sie die verwendete IPv6-Adresse von Ihrer Richtlinie ausschließen. 
 
 > [!NOTE]
 > Wenn Sie für eine einzelne Adresse einen IP-CIDR-Bereich angeben möchten, wenden Sie die /128-Bitmaske an. Wenn die IPv6-Adresse „2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a“ angezeigt wird und Sie diese einzelne Adresse als Adressbereich ausschließen möchten, würden Sie „2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/128“ verwenden.
-
-### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>Identifizieren von IPv6-Datenverkehr in den Azure AD-Anmeldeaktivitätsberichten
-
-Sie können den IPv6-Datenverkehr in Ihrem Mandanten ermitteln, indem Sie die [Azure AD-Anmeldeaktivitätsberichte](../reports-monitoring/concept-sign-ins.md) aufrufen. Nachdem Sie den Aktivitätsbericht geöffnet haben, fügen Sie die Spalte „IP-Adresse“ hinzu. Diese Spalte gibt Ihnen die Möglichkeit, den IPv6-Datenverkehr zu ermitteln.
-
-Sie können auch nach der Client-IP-Adresse suchen, indem Sie auf eine Zeile im Bericht klicken und dann in den Details der Anmeldeaktivität zur Registerkarte „Standort“ wechseln. 
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 
@@ -167,10 +189,6 @@ Wenn ein Cloud-Proxy zum Einsatz kommt, kann eine Richtlinie verwendet werden, m
 
 Eine Vorschauversion der Graph-API für benannte Standorte ist verfügbar. Weitere Informationen finden Sie unter [namedLocation-API](/graph/api/resources/namedlocation).
 
-> [!NOTE]
-> Benannte Standorte, die Sie mithilfe von PowerShell erstellen, werden nur unter „Benannte Standorte (Vorschau)“ angezeigt. Benannte Orte können nicht in der alten Ansicht angezeigt werden.  
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie wissen möchten, wie Sie eine Richtlinie für bedingten Zugriff konfigurieren, finden Sie weitere Informationen im Artikel [Erstellen einer Richtlinie für bedingten Zugriff](concept-conditional-access-policies.md).
-- Suchen Sie nach einer Beispielrichtlinie mit Verwendung der Standortbedingung? Lesen Sie den Artikel [Bedingter Zugriff: Blockieren des Zugriffs nach Standort](howto-conditional-access-policy-location.md).
+- Informationen zum Konfigurieren einer Richtlinie für bedingten Zugriff mithilfe des Standorts finden Sie im Artikel [Bedingter Zugriff: Blockieren des Zugriffs nach Standort](howto-conditional-access-policy-location.md).

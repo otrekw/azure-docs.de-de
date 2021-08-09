@@ -7,14 +7,14 @@ tags: azure-key-vault
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
-ms.date: 09/17/2020
+ms.date: 06/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 9ef3b19e5064c8a88bf80eebf57539be72747fe4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a7cccecc47973d372453ce86d0d5d12c8d773b3a
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482516"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413967"
 ---
 # <a name="best-practices-when-using-managed-hsm"></a>Bewährte Methoden bei der Verwendung verwalteter HSMs
 
@@ -42,8 +42,8 @@ Verwaltetes HSM ist ein Clouddienst zum Schutz von Verschlüsselungsschlüsseln.
 
 ## <a name="turn-on-recovery-options"></a>Aktivieren von Wiederherstellungsoptionen
 
-- Standardmäßig ist das [vorläufige Löschen](../general/soft-delete-overview.md) aktiviert.
-- Aktivieren Sie den Löschschutz, wenn Sie sich auch nach dem Aktivieren des vorläufigen Löschens vor dem erzwungenen Löschen der HSM schützen möchten.
+- Standardmäßig ist das [vorläufige Löschen](soft-delete-overview.md) aktiviert. Sie können einen Aufbewahrungszeitraum von 7 bis 90 Tagen auswählen.
+- Aktivieren Sie den Löschschutz, um das sofortige dauerhafte Löschen von HSMs oder Schlüsseln zu verhindern. Ist der Löschschutz aktiviert, verbleiben das HSM oder die Schlüssel im gelöschten Zustand, bis der Aufbewahrungszeitraum abgelaufen sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -51,3 +51,4 @@ Verwaltetes HSM ist ein Clouddienst zum Schutz von Verschlüsselungsschlüsseln.
 - Informationen zum Verwenden von Azure Monitor zum Konfigurieren der Protokollierung finden Sie unter [Protokollierung für verwaltete HSMs](logging.md).
 - Informationen zur Schlüsselverwaltung finden Sie unter [Verwalten verwalteter HSM-Schlüssel](key-management.md).
 - Informationen zum Verwalten von Rollenzuweisungen finden Sie unter [Rollenverwaltung für verwaltetes HSM](role-management.md).
+- Informationen zu Wiederherstellungsoptionen finden Sie unter [Übersicht über vorläufiges Löschen von verwaltetem HSM](soft-delete-overview.md).

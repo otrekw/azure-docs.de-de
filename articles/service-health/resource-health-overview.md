@@ -3,12 +3,12 @@ title: Übersicht über Azure Resource Health
 description: Erfahren Sie, wie Azure Resource Health Sie bei der Diagnose und bei Supportanfragen unterstützt, wenn Dienstprobleme Auswirkungen auf Ihre Azure-Ressourcen haben.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 903a86d216e118f783411b38ef7ad75ad004df7f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90967875"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786254"
 ---
 # <a name="resource-health-overview"></a>Übersicht über Resource Health
  
@@ -52,7 +52,7 @@ Nicht-Plattformereignisse werden durch Benutzeraktionen ausgelöst. Beispiele da
 
 ### <a name="unknown"></a>Unknown
 
-*Unbekannt* bedeutet, dass Resource Health seit mehr als 10 Minuten keine Informationen mehr zu der Ressource empfangen hat. Dieser Status ist zwar keine definitive Angabe des Ressourcenzustands, aber ein wichtiger Datenpunkt für die Problembehandlung.
+*Unbekannt* bedeutet, dass Resource Health seit mehr als 10 Minuten keine Informationen mehr zu der Ressource empfangen hat. Dies tritt häufig auf, wenn die Zuordnung virtueller Computer aufhoben wurde. Dieser Status ist zwar keine definitive Angabe des Ressourcenzustands, kann aber ein wichtiger Datenpunkt für die Problembehandlung sein.
 
 Wenn die Ressource wie erwartet ausgeführt wird, wird der Status der Ressource nach wenigen Minuten in *Verfügbar* geändert.
 
@@ -68,17 +68,15 @@ Verschiedene Ressourcen verwenden eigene Kriterien, anhand derer sie angeben, da
 
 ![Status „Heruntergestuft“ bei einem virtuellen Computer](./media/resource-health-overview/degraded.png)
 
-## <a name="reporting-an-incorrect-status"></a>Melden eines falschen Status
-
-Wenn Sie glauben, dass der aktuelle Integritätsstatus falsch ist, können Sie uns dies durch die Auswahl von **Falschen Integritätsstatus melden** mitteilen. In Fällen, in denen Sie von einem Azure-Problem betroffen sind, empfehlen wir Ihnen, sich in Resource Health an den Support zu wenden.
-
-![Formular zum Übermitteln von Informationen zu einem falschen Status](./media/resource-health-overview/incorrect-status.png)
-
 ## <a name="history-information"></a>Verlaufsinformationen
 
 Im Abschnitt **Integritätsverlauf** von Resource Health stehen bis zu 30 Tage alte Verlaufsdaten zur Verfügung.
 
 ![Liste der Resource Health-Ereignisse in den letzten zwei Wochen](./media/resource-health-overview/history-blade.png)
+
+## <a name="root-cause-information"></a>Informationen zur Grundursache
+
+Wenn Azure über weitere Informationen zur Grundursache einer Nichtverfügbarkeit verfügt, die von der Plattform initiiert wurde, können diese Informationen bis zu 72 Stunden nach der ersten Nichtverfügbarkeit in Resource Health veröffentlicht werden. Diese Informationen sind derzeit nur für virtuelle Computer verfügbar. 
 
 ## <a name="get-started"></a>Erste Schritte
 

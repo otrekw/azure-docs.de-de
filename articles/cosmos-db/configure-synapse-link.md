@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
-ms.custom: references_regions, synapse-cosmos-db
-ms.openlocfilehash: 5cfe932d4f9ea60a044ce0b594df800fa37af6f1
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.custom: references_regions, synapse-cosmos-db, devx-track-azurepowershell
+ms.openlocfilehash: bba594a6b0482457acad8bead382099a1e8e3a5b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904926"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968039"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurieren und Verwenden von Azure Synapse Link für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -270,7 +270,8 @@ Mit einem serverlosen SQL-Pool können Sie Daten in Ihren Azure Cosmos DB-Conta
 
 ## <a name="use-serverless-sql-pool-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>Verwenden eines serverlosen SQL-Pools zum Analysieren und Visualisieren von Daten in Power BI
 
-Sie können eine serverlose SQL-Pooldatenbank und Sichten über Synapse Link für Azure Cosmos DB erstellen. Später können Sie die Azure Cosmos-Container abfragen und dann ein Modell mit Power BI über diese Sichten erstellen, um die betreffende Abfrage anzuzeigen. Weitere Informationen finden Sie im Artikel zum [Verwenden von Power BI und serverlosem Synapse SQL-Pool zum Analysieren von Azure Cosmos DB-Daten mit Synapse Link (Vorschau)](synapse-link-power-bi.md).
+Sie können eine serverlose SQL-Pooldatenbank und Sichten über Synapse Link für Azure Cosmos DB erstellen. Später können Sie die Azure Cosmos-Container abfragen und dann ein Modell mit Power BI über diese Sichten erstellen, um die betreffende Abfrage anzuzeigen. Es gibt keine Auswirkungen auf die Leistung oder Kosten Ihrer Transaktionsworkloads, und auch die Verwaltung von ETL-Pipelines bleibt unverändert. Sie können entweder den Modus [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) oder [Import](/power-bi/connect-data/service-dataset-modes-understand#import-mode) verwenden. Weitere Informationen finden Sie im Artikel zum [Verwenden von Power BI und serverlosem Synapse SQL-Pool zum Analysieren von Azure Cosmos DB-Daten mit Synapse Link (Vorschau)](synapse-link-power-bi.md).
+
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 

@@ -8,31 +8,36 @@ ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 04/02/2021
+ms.date: 05/27/2021
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2
-ms.openlocfilehash: 44468f056cb9e13b8384c86fa5858ef1c3edb44b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 5f8f2c1f6d48a5c1b128643258af083b1811570e
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070027"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854628"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows
 
 
-Erfahren Sie, wie Sie die Authentifizierung für Ihren Azure Machine Learning-Arbeitsplatz einrichten. Die Authentifizierung für Ihren Azure Machine Learning-Arbeitsbereich basiert größtenteils auf __Azure Active Directory__ (Azure AD). Im Allgemeinen gibt es drei Authentifizierungsworkflows, die Sie beim Herstellen einer Verbindung mit dem Arbeitsbereich verwenden können:
+Erfahren Sie, wie Sie die Authentifizierung für Ihren Azure Machine Learning-Arbeitsplatz einrichten. Die Authentifizierung für Ihren Azure Machine Learning-Arbeitsbereich basiert größtenteils auf __Azure Active Directory__ (Azure AD). Im Allgemeinen gibt es vier Authentifizierungsworkflows zum Herstellen einer Verbindung mit dem Arbeitsbereich:
 
 * __Interaktiv:__ Sie verwenden Ihr Konto in Azure Active Directory, um sich entweder direkt zu authentifizieren oder ein Token zu erhalten, das für die Authentifizierung verwendet wird. Die interaktive Authentifizierung wird beim _Experimentieren und bei der iterativen Entwicklung_ verwendet. Mit der interaktiven Authentifizierung können Sie den Zugriff auf Ressourcen (z. B. einen Webdienst) pro Benutzer steuern.
 
 * __Dienstprinzipal__: Sie erstellen ein Dienstprinzipalkonto in Azure Active Directory und verwenden es, um sich zu authentifizieren oder ein Token zu erhalten. Ein Dienstprinzipal wird verwendet, wenn ein _automatisierter Prozess sich beim Dienst authentifizieren_ soll, ohne dass eine Benutzerinteraktion erforderlich ist. Ein Beispiel hierfür wäre ein Continuous-Integration- und Bereitstellungsskript, das ein Modell bei jeder Änderung des Trainingscodes trainiert und testet.
 
+* __Azure CLI-Sitzung:__ Eine aktive Azure CLI-Sitzung zur Authentifizierung verwenden. Die Azure CLI-Authentifizierung wird für _Experimente und iterative Entwicklung_ verwendet, oder wenn Sie einen _automatisierten Prozess für die Authentifizierung_ beim Dienst mithilfe einer vorauthentifizierten Sitzung benötigen. Sie können sich auf Ihrer lokalen Arbeitsstation über die Azure CLI bei Azure anmelden, ohne Anmeldeinformationen im Python-Code zu hinterlegen oder den Benutzer zur Authentifizierung aufzufordern. Auf ähnliche Weise können Sie die gleichen Skripts als Teil von Continuous Integration- und Continuous Deployment-Pipelines wiederverwenden, während Sie die Azure CLI mit einer Dienstprinzipalidentität authentifizieren.
+
 * __Verwaltete Identität__: Wenn Sie das Azure Machine Learning SDK _auf einem virtuellen Azure-Computer_ nutzen, können Sie eine verwaltete Identität für Azure verwenden. Dieser Workflow ermöglicht es der VM, mithilfe der verwalteten Identität eine Verbindung mit dem Arbeitsbereich herzustellen, ohne Anmeldeinformationen im Python-Code zu speichern oder den Benutzer zur Authentifizierung aufzufordern. Azure Machine Learning-Computecluster können auch so konfiguriert werden, dass sie _beim Trainieren von Modellen_ mithilfe einer verwalteten Identität auf den Arbeitsbereich zugreifen.
 
-> [!IMPORTANT]
-> Unabhängig vom verwendeten Authentifizierungsworkflow wird die rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) verwendet, um die zulässige Zugriffsebene (Autorisierung) für die Ressourcen zu beschränken. Beispielsweise könnte ein Administrator oder ein Automatisierungsprozess Zugriff haben, um eine Compute-Instanz zu erstellen, sie aber nicht verwenden, während eine wissenschaftliche Fachkraft für Daten sie verwenden, aber nicht löschen oder erstellen könnte. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
+Unabhängig vom verwendeten Authentifizierungsworkflow wird die rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) verwendet, um die zulässige Zugriffsebene (Autorisierung) für die Ressourcen zu beschränken. Beispielsweise könnte ein Administrator oder ein Automatisierungsprozess Zugriff haben, um eine Compute-Instanz zu erstellen, sie aber nicht verwenden, während eine wissenschaftliche Fachkraft für Daten sie verwenden, aber nicht löschen oder erstellen könnte. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
+
+Azure AD Conditional Access kann verwendet werden, um darüber hinaus den Zugriff auf den Arbeitsbereich für jeden Authentifizierungsworkflow zu steuern oder einzuschränken. Beispielsweise kann ein Administrator das Zugreifen auf den Arbeitsbereichs nur von verwalteten Geräten zulassen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
 
 * Erstellen Sie einen [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 * [Konfigurieren Sie Ihre Entwicklungsumgebung](how-to-configure-environment.md) für die Installation des Azure Machine Learning SDK, oder verwenden Sie eine [Azure Machine Learning-Compute-Instanz](concept-azure-machine-learning-architecture.md#compute-instance) mit bereits installiertem SDK.
@@ -392,6 +397,10 @@ ws = Workspace(subscription_id="your-sub-id",
                 auth=msi_auth
                 )
 ```
+
+## <a name="use-conditional-access"></a>Verwenden von bedingtem Zugriff
+
+Administratoren können [Azure AD Conditional Access-Richtlinien](../active-directory/conditional-access/overview.md) für Benutzer durchsetzen, die sich beim Arbeitsbereich anmelden. Benutzer können beispielsweise zur zweistufigen Authentifizierung verpflichtet werden oder sich nur von verwalteten Geräten anmelden dürfen. Um Conditional Access für Azure Machine Learning-Arbeitsbereiche zu verwenden, [weisen Sie der Machine Learning Cloud-App die Conditional Access-Richtlinie](../active-directory/conditional-access/concept-conditional-access-cloud-apps.md) zu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

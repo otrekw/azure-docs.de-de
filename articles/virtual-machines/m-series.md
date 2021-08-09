@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 91c29864367380a303a006d4aac823a22a966a2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83bb3b8e2f6704c595b6398a15f620be6927f3d5
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563091"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846624"
 ---
 # <a name="m-series"></a>M-Serie
 
@@ -33,16 +33,16 @@ Virtuelle Computer der M-Serie verfügen über Hyperthreading-Technologie von In
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|
-| Standard_M8ms                    | 8   | 218,75 | 256   | 8  | 10.000/100 (793)     | 5000/125   | 4|2000  |
-| Standard_M16ms                   | 16  | 437,5  | 512   | 16 | 20.000/200 (1587)    | 10.000/250  | 8|4000  |
+| Standard_M8ms <sup>3</sup>       | 8   | 218,75 | 256   | 8  | 10.000/100 (793)     | 5000/125   | 4|2000  |
+| Standard_M16ms <sup>3</sup>      | 16  | 437,5  | 512   | 16 | 20.000/200 (1587)    | 10.000/250  | 8|4000  |
 | Standard_M32ts                   | 32  | 192    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8|8.000  |
 | Standard_M32ls                   | 32  | 256    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8|8.000  |
-| Standard_M32ms                   | 32  | 875    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8|8.000  |
+| Standard_M32ms <sup>3</sup>      | 32  | 875    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8|8.000  |
 | Standard_M64s <sup>1</sup>       | 64  | 1024   | 2048  | 64 | 80.000/800 (6348)    | 40000/1000 | 8|16000 |
 | Standard_M64ls <sup>1</sup>      | 64  | 512    | 2048  | 64 | 80.000/800 (6348)    | 40000/1000 | 8|16000 |
-| Standard_M64ms <sup>1</sup>      | 64  | 1792   | 2048  | 64 | 80.000/800 (6348)    | 40000/1000 | 8|16000 |
+| Standard_M64ms <sup>1,3</sup>    | 64  | 1792   | 2048  | 64 | 80.000/800 (6348)    | 40000/1000 | 8|16000 |
 | Standard_M128s <sup>1</sup>    | 128 | 2048   | 4096  | 64 | 160.000/1.600 (12696) | 80.000/2.000 | 8|30.000 |
-| Standard_M128ms <sup>1,2</sup>   | 128 | 3.892   | 4096  | 64 | 160.000/1.600 (12696) | 80.000/2.000 | 8|30.000 |
+| Standard_M128ms <sup>1,2,3</sup> | 128 | 3.892   | 4096  | 64 | 160.000/1.600 (12696) | 80.000/2.000 | 8|30.000 |
 | Standard_M64 <sup>1</sup>        | 64  | 1024   | 7168  | 64 | 80.000/800 (1228)    | 40.000/1.000 | 8|16000 |
 | Standard_M64m <sup>1</sup>       | 64  | 1792   | 7168  | 64 | 80.000/800 (1228)    | 40.000/1.000 | 8|16000 |
 | Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250.000/1.600 (2456)  | 80.000/2.000 | 8|32000 |
@@ -51,6 +51,8 @@ Virtuelle Computer der M-Serie verfügen über Hyperthreading-Technologie von In
 <sup>1</sup> Bei mehr als 64 vCPUs ist eine der folgenden Versionen des Gastbetriebssystems erforderlich: Windows Server 2016, Ubuntu 16.04 LTS, SLES 12 SP2 und Red Hat Enterprise Linux, CentOS 7.3 oder Oracle Linux 7.3 mit LIS 4.2.1.
 
 <sup>2</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
+
+<sup>3</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md).
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

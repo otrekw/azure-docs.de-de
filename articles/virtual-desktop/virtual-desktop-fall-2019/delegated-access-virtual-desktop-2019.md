@@ -1,26 +1,26 @@
 ---
-title: 'Delegierter Zugriff in Windows Virtual Desktop (klassisch): Azure'
-description: Es wird beschrieben, wie Sie Verwaltungsfunktionen in einer Windows Virtual Desktop-Bereitstellung (klassisch) delegieren, und es werden Beispiele gezeigt.
+title: Delegierter Zugriff in Azure Virtual Desktop (klassisch) – Azure
+description: Anleitung mit Beispielen zum Delegieren von Verwaltungsfunktionen in einer Azure Virtual Desktop-Bereitstellung (klassisch).
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d683548c32baa37f9657541d90d7a58561a1d723
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 9db8ad454ad38f24f32e05bf2f72d67ef7db1971
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445022"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752043"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Delegierter Zugriff in Windows Virtual Desktop (klassisch)
+# <a name="delegated-access-in-azure-virtual-desktop-classic"></a>Delegierter Zugriff in Azure Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../delegated-access-virtual-desktop.md) weiter.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../delegated-access-virtual-desktop.md) weiter.
 
-Windows Virtual Desktop verfügt über ein Modell mit delegiertem Zugriff, mit dem Sie für Benutzer eine bestimmte Zugriffsebene festlegen können, indem Sie ihnen eine Rolle zuweisen. Eine Rollenzuweisung besteht aus drei Komponenten: Sicherheitsprinzipal, Rollendefinition und Bereich. Das Modell für delegierten Zugriff von Windows Virtual Desktop basiert auf dem Azure RBAC-Modell (rollenbasierte Zugriffssteuerung). Weitere Informationen zu bestimmten Rollenzuweisungen und den zugehörigen Komponenten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/built-in-roles.md).
+Azure Virtual Desktop verfügt über ein Modell mit delegiertem Zugriff, mit dem Sie für Benutzer eine bestimmte Zugriffsebene festlegen können, indem Sie ihnen eine Rolle zuweisen. Eine Rollenzuweisung besteht aus drei Komponenten: Sicherheitsprinzipal, Rollendefinition und Bereich. Das Modell für delegierten Zugriff von Azure Virtual Desktop basiert auf dem Azure RBAC-Modell. Weitere Informationen zu bestimmten Rollenzuweisungen und den zugehörigen Komponenten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/built-in-roles.md).
 
-Beim delegierten Zugriff von Windows Virtual Desktop werden für jedes Element der Rollenzuweisung die folgenden Werte unterstützt:
+Beim delegierten Zugriff von Azure Virtual Desktop werden für jedes Element der Rollenzuweisung die folgenden Werte unterstützt:
 
 * Sicherheitsprinzipal
     * Benutzer
@@ -35,7 +35,7 @@ Beim delegierten Zugriff von Windows Virtual Desktop werden für jedes Element d
 
 ## <a name="built-in-roles"></a>Integrierte Rollen
 
-Der delegierte Zugriff in Windows Virtual Desktop verfügt über mehrere integrierte Rollendefinitionen, die Sie Benutzern und Dienstprinzipalen zuweisen können.
+Der delegierte Zugriff in Azure Virtual Desktop verfügt über mehrere integrierte Rollendefinitionen, die Sie Benutzern und Dienstprinzipalen zuweisen können.
 
 * RDS-Besitzer können alles verwalten, einschließlich des Zugriffs auf Ressourcen.
 * RDS-Mitwirkende können alles verwalten, besitzen jedoch keinen Zugriff auf Ressourcen.
@@ -68,4 +68,4 @@ Sie können die drei grundlegenden Cmdlets mit den folgenden Parametern ändern:
 
 Eine vollständigere Liste mit PowerShell-Cmdlets, die von den einzelnen Rollen verwendet werden können, finden Sie in der [PowerShell-Referenz](/powershell/windows-virtual-desktop/overview).
 
-Eine Anleitung zum Einrichten einer Windows Virtual Desktop-Umgebung finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup-2019.md).
+Eine Anleitung zum Einrichten einer Azure Virtual Desktop-Umgebung finden Sie unter [Azure Virtual Desktop-Umgebung](environment-setup-2019.md).

@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9184bf7baa85420e067edb4c0aafccb7e6711225
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cda31ad3bd830112d7be2dbf3370e4130473228
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86512179"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474414"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Logik für die Azure Firewall-Regelverarbeitung
 
@@ -21,6 +21,15 @@ Azure Firewall verfügt über NAT-Regeln, Netzwerkregeln und Anwendungsregeln. D
 ## <a name="network-rules-and-applications-rules"></a>Netzwerkregeln und Anwendungsregeln
 
 Zuerst werden die Netzwerkregeln angewendet, und dann die Anwendungsregeln. Die Regeln können zur Beendigung von Vorgängen führen. Wenn sich für eine Netzwerkregel eine Übereinstimmung ergibt, werden die Anwendungsregeln also nicht verarbeitet.  Wenn keine Netzwerkregel übereinstimmt und als Paketprotokoll HTTP/HTTPS verwendet wird, wird das Paket von den Anwendungsregeln ausgewertet. Falls sich immer noch keine Übereinstimmung ergibt, wird das Paket von der Regelsammlung der Infrastruktur ausgewertet. Wenn sich auch hierbei keine Übereinstimmung ergibt, wird das Paket standardmäßig abgelehnt.
+
+![Allgemeine Regelverarbeitungslogik](media/rule-processing/rule-logic-processing.png)
+
+### <a name="example-of-processing-logic"></a>Ein Beispiel für die Verarbeitungslogik
+Ein Beispielszenario: Es gibt drei Regelsammlungsgruppen in einer Azure Firewall-Richtlinie.  Jede Regelsammlungsgruppe verfügt über eine Reihe von Anwendungs- und Netzwerkregeln.
+
+![Die Regelausführungsreihenfolge](media/rule-processing/rule-execution-order.png)
+
+Im abgebildeten Diagramm werden die Netzwerkregeln zuerst ausgeführt, gefolgt von den Anwendungsregeln. Der Grund dafür ist die Regelverarbeitungslogik von Azure Firewall, die festlegt, dass die Netzwerkregeln immer eine Ausführungspriorität vor den Anwendungsregeln haben.
 
 ## <a name="nat-rules"></a>NAT-Regeln
 

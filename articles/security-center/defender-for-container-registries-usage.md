@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ee4992e41e792b570d8937edfe31efb4c651d742
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 286ce9b628eff0975cff1cfa006f914ed43c3c46
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100728"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469677"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Verwenden von Azure Defender für Containerregistrierungen zum Überprüfen Ihrer Images auf Sicherheitsrisiken
 
@@ -21,6 +21,9 @@ Auf dieser Seite wird erläutert, wie Sie den integrierten Sicherheitsrisikoscan
 Wenn **Azure Defender für Containerregistrierungen** aktiviert ist, wird jedes in Ihre Registrierung gepushte Image sofort überprüft. Außerdem wird jedes in den letzten 30 Tagen gepullte Image ebenfalls überprüft. 
 
 Wenn der Scanner Sicherheitsrisiken an Security Center meldet, stellt Security Center die Ergebnisse und zugehörigen Informationen als Empfehlungen dar. Darüber hinaus enthalten die Ergebnisse zugehörige Informationen, etwa Problembehandlungsschritte, relevante CVEs, CVSS-Bewertungen und mehr. Sie können die ermittelten Sicherheitsrisiken für ein oder mehrere Abonnements oder für eine bestimmte Registrierung anzeigen.
+
+> [!TIP]
+> Sie können Containerimages auch auf Sicherheitsrisiken überprüfen, da die Images in Ihren CI/CD-GitHub-Workflows erstellt werden. Weitere Informationen finden Sie unter [Identifizieren von anfälligen Containerimages in Ihren CI/CD-Workflows](defender-for-container-registries-cicd.md).
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Identifizieren von Sicherheitsrisiken in Images in Azure-Containerregistrierungen 

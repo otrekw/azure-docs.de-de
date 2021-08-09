@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: 1b66397fcc6ed32c7630aea1287c8f6865ebcbc5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 3034f117f8efa383a9f7a5e768e8d5627ea32099
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749751"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668403"
 ---
 # <a name="glossary-of-iot-terms"></a>Glossar mit IoT-Begriffen
 
@@ -85,6 +85,10 @@ Ein Typ von [Endpunkt](#endpoint), der in IoT Hub integriert ist. Jeder IoT Hub 
 ### <a name="cloud-gateway"></a>Cloudgateway
 
 Mit einem Cloudgateway können Verbindungen für Geräte hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Ein Cloudgateway wird in der Cloud gehostet, während ein [Bereichsgateway](#field-gateway) lokal auf Ihren Geräten ausgeführt wird. Ein typischer Anwendungsfall für ein Cloudgateway ist die Implementierung der Protokollübersetzung für Ihre Geräte.
+
+### <a name="cloud-property"></a>Cloudeigenschaft
+
+In IoT Central sind Cloudeigenschaften Teil der [Gerätevorlage](#device-model), aber nicht des [Gerätemodells](#device-model). Mit Cloudeigenschaften kann der Lösungsentwickler Gerätemetadaten angeben, die in der IoT Central-Anwendung gespeichert werden sollen. Cloudeigenschaften haben keinen Einfluss auf den Code, den ein Geräteentwickler zum Implementieren des Gerätemodells schreibt.
 
 ### <a name="cloud-to-device"></a>Cloud-zu-Gerät (C2D)
 
@@ -195,6 +199,10 @@ Der IoT Hub Device Provisioning Service (DPS) ist ein Hilfsdienst für [IoT Hub]
 ### <a name="device-rest-api"></a>Geräte-REST-API
 
 Sie können die [Geräte-REST-API](/rest/api/iothub/device) auf einem Gerät nutzen, um D2C-Nachrichten an IoT Hub zu senden und [C2D-Nachrichten](#cloud-to-device) von IoT Hub zu empfangen. Es ist in der Regel ratsam, eines der allgemeinen [Geräte-SDKs](#azure-iot-device-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
+
+### <a name="device-template"></a>Gerätevorlage
+
+In IoT Central ist eine [Gerätevorlage](../iot-central/core/concepts-device-templates.md) eine Blaupause, die die Merkmale und das Verhalten eines Gerätetyps definiert, der eine Verbindung mit Ihrer Anwendung herstellt. Beispielsweise definiert die Gerätevorlage die Telemetrie, die ein Gerät sendet, sodass IoT Central Visualisierungen mit den richtigen Einheiten und Datentypen erstellen kann. Ein [Gerätemodell](#device-model) ist Teil der Gerätevorlage.
 
 ### <a name="device-twin"></a>Gerätezwilling
 
@@ -368,7 +376,9 @@ In Azure IoT-Solution Accelerators werden mehrere Azure-Dienste zu Lösungen zus
 
 ### <a name="job"></a>Auftrag
 
-Ihr Lösungs-Back-End kann mithilfe von [Aufträgen](../iot-hub/iot-hub-devguide-jobs.md) Aktivitäten für eine Gruppe von Geräten planen und nachverfolgen, die bei Ihrem IoT Hub registriert sind. Aktivitäten sind beispielsweise das Aktualisieren der [gewünschten Eigenschaften](#desired-properties) von Gerätezwillingen und ihrer [Tags](#tags) sowie das Aufrufen [direkter Methoden](#direct-method). [IoT Hub](#iot-hub) nutzt zudem Aufträge zum [Importieren und Exportieren](../iot-hub/iot-hub-devguide-identity-registry.md#import-and-export-device-identities) aus der [Identitätsregistrierung](#identity-registry).
+In [IoT Hub](#iot-hub) können Sie mit [Aufträgen](../iot-hub/iot-hub-devguide-jobs.md) Aktivitäten für eine Gruppe von Geräten planen und nachverfolgen, die bei Ihrem IoT-Hub registriert sind. Aktivitäten sind beispielsweise das Aktualisieren der [gewünschten Eigenschaften](#desired-properties) von Gerätezwillingen und ihrer [Tags](#tags) sowie das Aufrufen [direkter Methoden](#direct-method). Außerdem nutzt IoT Hub Aufträge zum [Importieren und Exportieren](../iot-hub/iot-hub-devguide-identity-registry.md#import-and-export-device-identities) aus der [Identitätsregistrierung](#identity-registry).
+
+In IoT Central können Sie Ihre verbundenen Geräte mit [Aufträgen](../iot-central/core/howto-run-a-job.md) gesammelt verwalten und für diese Eigenschaften festlegen und Befehle aufrufen. IoT Central-Aufträge ermöglichen auch das Aktualisieren von [Cloudeigenschaften](#cloud-property) in einem Massenvorgang.
 
 ## <a name="l"></a>L
 
@@ -386,7 +396,7 @@ Der [Device Provisioning Service (DPS)](#device-provisioning-service) kann Gerä
 
 ## <a name="m"></a>M
 
-### <a name="model"></a>Modell
+### <a name="model"></a>Modellieren
 
 Ein Modell definiert einen Typ von Entität in Ihrer physischen Umgebung, einschließlich ihrer Eigenschaften, Telemetrien, Komponenten und zuweilen weiterer Informationen. Modelle werden verwendet, um [digitale Zwillinge](#digital-twin) zu erstellen, die bestimmte physische Objekte dieses Typs darstellen. Modelle werden in der [Digital Twins Definition Language](#digital-twins-definition-language-dtdl) geschrieben.
 

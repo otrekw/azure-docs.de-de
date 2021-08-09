@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 06/4/2021
 ms.author: damaerte
-ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 250e4bc171950bb643a75bdc9d80bdb2941cb97a
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89468656"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539296"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Übersicht über Azure Cloud Shell
 
@@ -112,6 +112,10 @@ Erfahren Sie mehr darüber, wie Sie ein [neues oder vorhandenes Speicherkonto](p
 * Berechtigungen werden auf einen normalen Linux-Benutzer in Bash festgelegt.
 
 Weitere Informationen erhalten Sie unter [Bash in Cloud Shell](features.md) und [PowerShell in Cloud Shell](./features.md).
+
+## <a name="complaince"></a>Compliance
+### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
+Die gesamte Cloud Shell-Infrastruktur ist standardmäßig mit der Mehrfachverschlüsselung ruhender Daten kompatibel. Auf Benutzerseite ist keine Aktion erforderlich.
 
 ## <a name="pricing"></a>Preise
 

@@ -1,24 +1,28 @@
 ---
-title: Authentifizieren über einen Kubernetes-Cluster
+title: Authentifizieren per Azure-Containerregistrierung mithilfe eines Kubernetes-Pullgeheimnis
 description: Erfahren Sie, wie Sie durch Erstellen eines Geheimnisses für Pullvorgänge unter Verwendung eines Dienstprinzipals einen Kubernetes-Cluster mit Zugriff auf Images in Ihrer Azure-Containerregistrierung bereitstellen.
 ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
-ms.date: 05/28/2020
-ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/02/2021
+ms.openlocfilehash: 149035de0fc84c75cdcaa73c91d6cd5379c53498
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84309814"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439618"
 ---
-# <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Abrufen von Images aus einer Azure-Containerregistrierung per Pull in einem Kubernetes-Cluster
+# <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster-using-a-pull-secret"></a>Pullen von Images aus einer Azure-Containerregistrierung in einen Kubernetes-Cluster mithilfe eines Pullgeheimnisses
 
-Sie können eine Azure-Containerregistrierung als Quelle von Containerimages mit einem beliebigen Kubernetes-Cluster verwenden, einschließlich „lokaler“ Kubernetes-Cluster wie [minikube](https://minikube.sigs.k8s.io/) und [kind](https://kind.sigs.k8s.io/). In diesem Artikel wird beschrieben, wie Sie ein Geheimnis für Pullvorgänge in Kubernetes basierend auf einem Azure Active Directory-Dienstprinzipal erstellen. Dann verwenden Sie das Geheimnis, um Images aus einer Azure-Containerregistrierung in einer Kubernetes-Bereitstellung zu pullen.
+Sie können eine Azure-Containerregistrierung als Quelle von Containerimages mit einem beliebigen Kubernetes-Cluster verwenden, einschließlich „lokaler“ Kubernetes-Cluster wie [minikube](https://minikube.sigs.k8s.io/) und [kind](https://kind.sigs.k8s.io/). Dieser Artikel beschreibt, wie Sie ein Kubernetes-Pullgeheimnis mit Anmeldeinformationen für eine Azure-Containerregistrierung erstellen. Mit dem Geheimnis pullen Sie dann Images aus einer Azure-Containerregistrierung in einer Pod-Bereitstellung.
 
-> [!TIP]
-> Wenn Sie den verwalteten [Azure Kubernetes Service](../aks/intro-kubernetes.md) verwenden, können Sie für Imagepullvorgänge Ihren Cluster außerdem in eine Azure-Zielcontainerregistrierung [integrieren](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json). 
+In diesem Beispiel wird ein Pullgeheimnis mithilfe Azure Active Directory [Dienstprinzipal-Anmeldeinformationen](container-registry-auth-service-principal.md) erstellt. Sie können ein Pullgeheimnis auch mit anderen Azure Container Registry-Anmeldeinformationen konfigurieren, z. B. einem [repositoryspezifischen Zugriffstoken.](container-registry-repository-scoped-permissions.md)
+
+> [!NOTE]
+> Pullgeheimnisse werden zwar häufig verwendet, verursachen aber zusätzlichen Verwaltungsaufwand. Wenn Sie [Azure Kubernetes Service](../aks/intro-kubernetes.md) verwenden, empfehlen wir [andere Optionen](authenticate-kubernetes-options.md), z. B. die Verwendung der verwalteten Identität oder des Dienstprinzipals des Clusters, um das Image ohne zusätzliche `imagePullSecrets`-Einstellung auf jedem Pod sicher zu pullen.
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits eine private Azure-Containerregistrierung erstellt haben. Außerdem benötigen Sie einen Kubernetes-Cluster, auf den über das Befehlszeilentool `kubectl` zugegriffen werden kann.
 
@@ -90,4 +94,4 @@ In diesem Beispiel ist `my-awesome-app:v1` der Name des aus der Azure-Containerr
 [acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
-[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset

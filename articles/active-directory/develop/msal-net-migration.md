@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 0e7dc3540dc54e0563a5ea416510bddb9a41fb65
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 3d877641948635a47dd69ddb03b98acc2ddf3eaf
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107861695"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633139"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrieren von Anwendungen zu MSAL.NET
 
@@ -49,13 +49,15 @@ Wenn Sie bereits mit dem Endpunkt von Azure AD für Entwickler (v1.0) und ADAL.
 
 Wenn Benutzer in Ihrer Anwendung mit früheren Versionen der [Active Directory-Verbunddienste (AD FS)](/windows-server/identity/active-directory-federation-services) angemeldet werden müssen, benötigen Sie jedoch weiterhin ADAL.NET. Weitere Informationen finden Sie unter [ADFS-Support](https://aka.ms/msal-net-adfs-support).
 
-In der folgenden Abbildung sind einige Unterschiede zwischen ADAL.NET und MSAL.NET für eine öffentliche Clientanwendung in einem ![Codevergleich](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png) gegenübergestellt.
+In der folgenden Abbildung sind einige Unterschiede zwischen ADAL.NET und MSAL.NET für eine öffentliche Clientanwendung [![ zusammengefasst. Screenshot: Einige der Unterschiede zwischen ADAL.NET und MSAL.NET für eine öffentliche Clientanwendung.](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png#lightbox)
+
+Und in der folgenden Abbildung sind einige Unterschiede zwischen ADAL.NET und MSAL.NET für eine vertrauliche Clientanwendung [![ zusammengefasst. Screenshot: Einige der Unterschiede zwischen ADAL.NET und MSAL.NET für eine vertrauliche Clientanwendung.](./media/msal-net-migration/confidential-client-application.png)](./media/msal-net-migration/confidential-client-application.png#lightbox)
 
 ### <a name="nuget-packages-and-namespaces"></a>NuGet-Pakete und Namespaces
 
 ADAL.NET wird vom NuGet-Paket [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) genutzt. Der zu verwendende Namespace lautet `Microsoft.IdentityModel.Clients.ActiveDirectory`.
 
-Zur Verwendung von MSAL.NET müssen Sie das NuGet-Paket [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) hinzufügen und den `Microsoft.Identity.Client`-Namespace verwenden.
+Zur Verwendung von MSAL.NET müssen Sie das NuGet-Paket [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) hinzufügen und den `Microsoft.Identity.Client` Namespace verwenden. Wenn Sie eine vertrauliche Clientanwendung erstellen, sollten Sie sich auch [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) ansehen.
 
 ### <a name="scopes-not-resources"></a>Geltungsbereiche im Gegensatz zu Ressourcen
 
@@ -147,7 +149,7 @@ Web-App | Authentifizierungscode | [Abrufen von Token mit Autorisierungscodes f�
 
 ADAL.NET unterstützt die Erweiterung der `TokenCache`-Klasse. Auf diese Weise können die gewünschten Persistenzfunktionen auf Plattformen ohne sicheren Speicher (.NET Framework und .NET Core) mithilfe der `BeforeAccess`-Methode und `BeforeWrite`-Methode implementiert werden. Ausführliche Informationen finden Sie im Thema zur [Tokencacheserialisierung in ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization).
 
-In MSAL.NET stellt der Tokencache eine versiegelte Klasse dar und kann daher nicht erweitert werden. Aus diesem Grund muss die Tokencachepersistenz in Form einer Hilfsklasse implementiert werden, die mit dem versiegelten Tokencache interagiert. Diese Interaktion wird im Thema zur [Tokencacheserialisierung in MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization) beschrieben.
+In MSAL.NET stellt der Tokencache eine versiegelte Klasse dar und kann daher nicht erweitert werden. Aus diesem Grund muss die Tokencachepersistenz in Form einer Hilfsklasse implementiert werden, die mit dem versiegelten Tokencache interagiert. Diese Interaktion wird im Thema zur [Tokencacheserialisierung in MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization) beschrieben. Die Serialisierung unterscheidet sich für eine öffentliche Clientanwendung (siehe [Tokencache für eine öffentliche Clientanwendung](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization#token-cache-for-a-public-client-application)) und für eine vertrauliche Clientanwendung (siehe [Tokencache für eine Web-App oder Web-API](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization#token-cache-for-a-public-client-application))
 
 ## <a name="signification-of-the-common-authority"></a>Bedeutung der allgemeinen Autorität
 

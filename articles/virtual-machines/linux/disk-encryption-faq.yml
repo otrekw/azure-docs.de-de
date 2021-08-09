@@ -10,12 +10,12 @@ metadata:
   ms.author: mbaldwin
   ms.date: 06/05/2019
   ms.custom: seodec18
-  ms.openlocfilehash: 2c16b3b0f75a00d045edbfebdeaf12216074b92f
-  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+  ms.openlocfilehash: ad41c27a7a0c3c3de92938fafd9d05b119a52379
+  ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112063618"
+  ms.lasthandoff: 06/21/2021
+  ms.locfileid: "112416465"
 title: Häufig gestellte Fragen zu Azure Disk Encryption für Linux-VMs
 summary: >
   Dieser Artikel bietet Antworten auf häufig gestellte Fragen (FAQ) zu Azure Disk Encryption für virtuelle Linux-Computer (VMs). Weitere Informationen zu diesem Dienst finden Sie unter [Azure Disk Encryption-Übersicht](disk-encryption-overview.md).
@@ -148,6 +148,9 @@ sections:
 
 
       Die Verschlüsselung von XFS-Datenträgern für Daten wird nur bei Verwendung des Parameters EncryptFormatAll unterstützt. Das Volume wird hierbei neu formatiert, und alle zuvor vorhandenen Daten werden gelöscht. Weitere Informationen finden Sie unter den [Kriterien für EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).
+  - question: >
+      Wird die Größenänderung der Betriebssystempartition unterstützt?
+    answer: "Die Größenänderung eines per ADE verschlüsselten Betriebssystemdatenträgers wird derzeit nicht unterstützt.\n          \n"
   - question: "Kann ich einen verschlüsselten virtuellen Computer sichern und wiederherstellen? \n"
     answer: "Azure Backup bietet einen Mechanismus zum Sichern und Wiederherstellen verschlüsselter virtueller Computer innerhalb desselben Abonnements und derselben Region.  Anleitungen finden Sie unter [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup](../../backup/backup-azure-vms-encryption.md).  Das Wiederherstellen eines verschlüsselten virtuellen Computers in einer anderen Region wird derzeit nicht unterstützt.  \n"
   - question: >

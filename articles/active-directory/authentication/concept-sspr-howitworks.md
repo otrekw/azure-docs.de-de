@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 06/14/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94077a1c6329aa1fecf9593f2df41fa77afc8a44
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a46d77b088d854bdd6ee8781b545d1236f357853
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765915"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071477"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
-Mit der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) können Benutzer ihr Kennwort ohne Beteiligung eines Administrators oder des Helpdesks ändern oder zurücksetzen. Wenn das Konto eines Benutzers gesperrt ist oder dieser sein Kennwort vergessen hat, kann er die Schritte zum Entsperren ausführen und anschließend weiterarbeiten. Dies führt zu weniger Anrufen beim Helpdesk und Produktivitätsverlusten, wenn sich ein Benutzer nicht an seinem Gerät oder einer Anwendung anmelden kann.
+Mit der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) können Benutzer ihr Kennwort ohne Beteiligung eines Administrators oder des Helpdesks ändern oder zurücksetzen. Wenn das Konto eines Benutzers gesperrt ist oder dieser sein Kennwort vergessen hat, kann er die Schritte zum Entsperren ausführen und anschließend weiterarbeiten. Dies führt zu weniger Anrufen beim Helpdesk und Produktivitätsverlusten, wenn sich ein Benutzer nicht an seinem Gerät oder einer Anwendung anmelden kann. Sehen Sie sich dieses Video zum [Aktivieren und Konfigurieren von SSPR in Azure AD](https://www.youtube.com/watch?v=rA8TvhNcCvQ) an.
 
 > [!IMPORTANT]
 > In diesem Konzeptartikel erfahren Administratoren, wie die Self-Service-Kennwortzurücksetzung funktioniert. Wenn Sie bereits als Endbenutzer für die Self-Service-Kennwortzurücksetzung registriert sind und den Zugriff auf Ihr Konto verloren haben, navigieren Sie zu [https://aka.ms/sspr](https://aka.ms/sspr).
@@ -105,7 +105,7 @@ Die folgenden Authentifizierungsmethoden sind für den SSPR verfügbar:
 * Code der mobilen App:
 * Email
 * Mobiltelefon
-* Bürotelefon
+* Geschäftliche Rufnummer (nur für Mandanten mit kostenpflichtigen Abonnements verfügbar)
 * Sicherheitsfragen
 
 Benutzer können ihr Kennwort nur zurücksetzen, wenn sie eine Authentifizierungsmethode registriert haben, die vom Administrator freigegeben wurde.

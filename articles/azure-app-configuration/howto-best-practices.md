@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 33661eafee6b180819b18d9a9a980eff1e2aeceb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c322ebcbda0d123a9048e92971e20c6b7c7c5fee
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371548"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064502"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Bewährte Methoden für Azure App Configuration
 
@@ -92,8 +92,10 @@ App Configuration ist ein regionaler Dienst. Bei Anwendungen mit unterschiedlich
 
 ## <a name="client-applications-in-app-configuration"></a>Clientanwendungen in App Configuration 
 
-Übermäßige Anforderungen an die App-Konfiguration können zur Drosselung oder zu Überschreitungsgebühren führen. Anwendungen profitieren von der Zwischenspeicherung und intelligenten Aktualisierung, die derzeit verfügbar ist, um die Anzahl der gesendeten Anforderungen zu optimieren. Dieser Prozess kann in Clientanwendungen mit hohem Volumen abgebildet werden, indem direkte Verbindungen mit dem Konfigurationsspeicher vermieden werden. Stattdessen stellen Clientanwendungen eine Verbindung mit einem benutzerdefinierten Dienst her, und dieser Dienst kommuniziert mit dem Konfigurationsspeicher. Diese Proxylösung kann sicherstellen, dass die Clientanwendungen den Einschränkungsgrenzwert für den Konfigurationsspeicher nicht erreichen. Weitere Informationen zu Einschränkungen finden Sie in den [Häufig gestellten Fragen (FAQ)](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
+Wenn Sie App Configuration in Clientanwendungen verwenden, stellen Sie sicher, dass Sie zwei Hauptfaktoren berücksichtigen. Zunächst, wenn Sie die Verbindungszeichenfolge in einer Clientanwendung verwenden, riskieren Sie, den Zugriffsschlüssel Ihres App Configuration-Speichers für die Öffentlichkeit verfügbar zu machen. Zweitens kann die typische Skalierung einer Clientanwendung zu übermäßigen Anforderungen an Ihren App Configuration-Speicher führen, was zu Überschreitungsgebühren oder Drosselung führen kann. Weitere Informationen zur Drosselung finden Sie in den [Häufig gestellten Fragen](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).
+
+Um diese Bedenken zu berücksichtigen, empfiehlt es sich, einen Proxydienst zwischen Ihren Clientanwendungen und Ihrem App Configuration-Speicher zu verwenden. Der Proxydienst kann sich sicher bei Ihrem App Configuration-Speicher authentifizieren, ohne dass ein Sicherheitsproblem durch offengelegte Authentifizierungsinformationen besteht. Sie können einen Proxydienst erstellen, indem Sie eine der App Configuration-Anbieterbibliotheken verwenden, sodass Sie die integrierten Cache- und Aktualisierungsfunktionen nutzen können, um die Menge der Anforderungen zu optimieren, die an App Configuration gesendet werden. Weitere Informationen zur Verwendung von App Configuration-Anbietern finden Sie in den Artikeln unter „Schnellstarts“ und „Tutorials“. Der Proxydienst stellt die Konfiguration aus seinem Cache für Ihre Clientanwendungen bereit, und Sie vermeiden die beiden potenziellen Probleme, die in diesem Abschnitt erörtert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schlüssel und Werte](./concept-key-value.md)
+* [Schlüssel und Werte](./concept-key-value.md) 

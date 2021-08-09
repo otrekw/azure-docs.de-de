@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbd7eecd80b528b1d20d016d51c985bc24d1301d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55a68d42a6b7292a68e60f67fb123fb097f63a78
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92371799"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408693"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory
 In diesem Artikel erfahren Sie mehr zum Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory.
@@ -30,7 +30,7 @@ In diesem Artikel erfahren Sie mehr zum Hinzufügen oder Entfernen einer Gruppe 
 Sie können eine bestehende Sicherheitsgruppe zu einer anderen bestehenden Sicherheitsgruppe hinzufügen (dieser Vorgang wird auch als Schachteln von Gruppen bezeichnet), indem Sie eine Mitgliedergruppe (Untergruppe) und eine übergeordnete Gruppe erstellen. Die Mitgliedergruppe übernimmt die Attribute und Eigenschaften der übergeordneten Gruppe, wodurch Sie Zeit bei der Konfiguration sparen.
 
 >[!Important]
->Folgendes wird derzeit nicht unterstützt:<ul><li>Hinzufügen von Gruppen zu einer mit der lokalen Active Directory-Instanz synchronisierten Gruppe</li><li>Hinzufügen von Sicherheitsgruppen zu Microsoft 365-Gruppen</li><li>Hinzufügen von Microsoft 365-Gruppen zu Sicherheitsgruppen oder anderen Microsoft 365-Gruppen</li><li>Zuweisen von Apps zu geschachtelten Gruppen</li><li>Anwenden von Lizenzen auf geschachtelte Gruppen</li><li>Hinzufügen von Verteilergruppen in geschachtelten Szenarien</li></ul>
+>Folgendes wird derzeit nicht unterstützt:<ul><li>Hinzufügen von Gruppen zu einer mit der lokalen Active Directory-Instanz synchronisierten Gruppe</li><li>Hinzufügen von Sicherheitsgruppen zu Microsoft 365-Gruppen</li><li>Hinzufügen von Microsoft 365-Gruppen zu Sicherheitsgruppen oder anderen Microsoft 365-Gruppen</li><li>Zuweisen von Apps zu geschachtelten Gruppen</li><li>Anwenden von Lizenzen auf geschachtelte Gruppen</li><li>Hinzufügen von Verteilergruppen in geschachtelten Szenarien</li><li> Hinzufügen von Sicherheitsgruppen als Mitglieder von E-Mail-aktivierten Sicherheitsgruppen</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>So fügen Sie eine Gruppe als Mitglied zu einer anderen Gruppe hinzu
 

@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/15/2020
+ms.date: 06/14/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5f78b70599d6d0ae8825accf4cc55cdc1c01d9ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9d5f47b6f1552c769a7827eeebfb46dc79d8a75
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861237"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077795"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>Verwenden des Anmeldeberichts zum Überprüfen von Azure AD Multi-Factor Authentication-Ereignissen
 
@@ -31,6 +31,7 @@ Der Anmeldebericht enthält Informationen zur Nutzung von verwalteten Anwendunge
 
 - Wurde bei der Anmeldung MFA verwendet?
 - Wie hat der Benutzer den MFA-Vorgang durchgeführt?
+- Welche Authentifizierungsmethoden wurden während einer Anmeldung verwendet?
 - Warum konnte der Benutzer den MFA-Vorgang nicht durchführen?
 - Wie viele Benutzer werden zur Durchführung des MFA-Vorgangs aufgefordert?
 - Wie viele Benutzer können den MFA-Vorgang nicht durchführen?
@@ -43,13 +44,39 @@ Führen Sie die folgenden Schritte aus, um den Bericht zu den Anmeldeaktivitäte
 1. Wählen Sie im Menü auf der linken Seite unter **Aktivität** die Option *Anmeldungen* aus.
 1. Angezeigt wird eine Liste mit Anmeldeereignissen und Statusangaben. Sie können ein Ereignis auswählen, um weitere Details anzuzeigen.
 
-    Als Ereignisdetails werden auf der Registerkarte *Authentifizierungsdetails* oder *Bedingter Zugriff* der Statuscode bzw. die Richtlinie angezeigt, durch die die Aufforderung zur mehrstufigen Authentifizierung ausgelöst wurde.
+    Als Ereignisdetails werden auf der Registerkarte **Authentifizierungsdetails** oder **Bedingter Zugriff** der Statuscode bzw. die Richtlinie angezeigt, durch die die Aufforderung zur mehrstufigen Authentifizierung ausgelöst wurde.
 
     [![Screenshot mit einem Beispiel für einen Azure Active Directory-Anmeldebericht im Azure-Portal](media/howto-mfa-reporting/sign-in-report-cropped.png)](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
 Sofern verfügbar, wird die Art der Authentifizierung angezeigt, z. B. Textnachricht, Benachrichtigung der Microsoft Authenticator-App oder Telefonanruf.
 
-Im Fenster *Authentifizierungsdetails* werden die folgenden Einzelheiten für ein Anmeldeereignis angezeigt, aus denen hervorgeht, ob die MFA-Anforderung erfolgreich war oder abgelehnt wurde:
+Die Registerkarte **Authentifizierungsdetails** enthält die folgenden Informationen für jeden Authentifizierungsversuch:
+
+- Eine Liste der angewendeten Authentifizierungsrichtlinien (z. B. bedingter Zugriff, MFA pro Benutzer, Sicherheitsstandards)
+- Die Abfolge der für die Anmeldung verwendeten Authentifizierungsmethoden
+- Ob der Authentifizierungsversuch erfolgreich war oder nicht
+- Ausführliche Informationen zu den Gründen, aus denen der Authentifizierungsversuch erfolgreich war oder nicht
+
+Mit diesen Informationen können Administratoren die Problembehandlung für jeden Schritt bei der Anmeldung eines Benutzers und Nachverfolgungen durchführen:
+
+- Umfang der durch mehrstufige Authentifizierung geschützten Anmeldungen 
+- Nutzungs- und Erfolgsraten für jede Authentifizierungsmethode 
+- Verwendung kennwortloser Authentifizierungsmethoden (z. B. kennwortlose Anmeldung per Telefon, FIDO2 und Windows Hello for Business) 
+- Wie häufig Authentifizierungsanforderungen durch Tokenansprüche erfüllt werden (wobei Benutzer nicht interaktiv zur Eingabe eines Kennworts, eines SMS-OTP usw. aufgefordert werden)
+
+Wählen Sie beim Anzeigen des Anmeldeberichts die Registerkarte **Authentifizierungsdetails** aus: 
+
+![Screenshot der Registerkarte „Authentifizierungsdetails“](media/howto-mfa-reporting/auth-details-tab.png)
+
+>[!NOTE]
+>Der **OATH-Überprüfungscode** wird sowohl für OATH-Hardware- als auch für Softwaretoken (z. B. die Microsoft Authenticator-App) als Authentifizierungsmethode protokolliert.
+
+>[!IMPORTANT]
+>Auf der Registerkarte **Authentifizierungsdetails** können zunächst unvollständige oder ungenaue Daten angezeigt werden, bis die Protokollinformationen vollständig aggregiert sind. Bekannte Beispiele sind: 
+>- Eine **Erfüllt durch Anspruch im Token**-Meldung wird fälschlicherweise angezeigt, wenn Anmeldeereignisse anfänglich protokolliert werden. 
+>- Die Zeile **Primäre Authentifizierung** wird anfänglich nicht protokolliert. 
+
+Im Fenster **Authentifizierungsdetails** werden die folgenden Einzelheiten für ein Anmeldeereignis angezeigt, aus denen hervorgeht, ob die MFA-Anforderung erfolgreich war oder abgelehnt wurde:
 
 * Wenn der MFA-Vorgang erfolgreich war, enthält diese Spalte weitere Details dazu.
    * completed in the cloud (in der Cloud durchgeführt)
@@ -108,11 +135,7 @@ Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0 -an
 Identifizieren Sie die registrierten Benutzer und Ausgabemethoden:
 
 ```powershell
-Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},
-
-@{N='MFA Status';E={if ($_.StrongAuthenticationRequirements.State){$_.StrongAuthenticationRequirements.State} else {"Disabled"}}},
-
-@{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
+Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},@{N='MFA Status';E={if ($_.StrongAuthenticationRequirements.State){$_.StrongAuthenticationRequirements.State} else {"Disabled"}}},@{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
 ```
 
 ## <a name="downloaded-activity-reports-result-codes"></a>Ergebniscodes im heruntergeladenen Aktivitätsbericht
@@ -167,6 +190,7 @@ Mithilfe der Version des Aktivitätsberichts, die Sie in den vorherigen Schritte
 | FAILED_AUTH_RESULT_TIMEOUT | Zeitüberschreitung bei Authentifizierung | Der Benutzer hat zu lange gebraucht, um den Multi-Factor Authentication-Vorgang durchzuführen. |
 | FAILED_AUTHENTICATION_THROTTLED | Authentifizierung wurde gedrosselt | Der Multi-Factor Authentication-Vorgang wurde vom Dienst gedrosselt. |
 
+
 ## <a name="additional-mfa-reports"></a>Weitere MFA-Berichte
 
 Für Ereignisse der mehrstufigen Authentifizierung (und für den MFA-Server) sind die folgenden weiteren Informationen und Berichte verfügbar:
@@ -177,6 +201,7 @@ Für Ereignisse der mehrstufigen Authentifizierung (und für den MFA-Server) sin
 | Nutzung für lokale Komponenten | Azure AD > Sicherheit > MFA > Aktivitätsbericht | Enthält Informationen zur allgemeinen Nutzung für MFA-Server durch die NPS-Erweiterung, AD FS und den MFA-Server. |
 | Verlauf – Umgangene Benutzer | Azure AD > Sicherheit > MFA > Einmalige Umgehung | Stellt den Verlauf der MFA-Serveranforderungen zum Umgehen der MFA für einen Benutzer bereit. |
 | Serverstatus | Azure AD > Sicherheit > MFA > Serverstatus | Zeigt den Status der MFA-Server an, die mit Ihrem Konto verknüpft sind. |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

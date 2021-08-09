@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 04/15/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: ca3a08cedacce23f9b3086a4bd6d8da98042d7c4
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 580e5aab7b7ac1edcfee58345291afcb9eb0e977
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737245"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562160"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Verwalten eines Azure Stack Edge Pro-GPU-Geräts mithilfe von Windows PowerShell
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Azure Stack Edge Pro GPU ist eine Lösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben für Ihr Azure Stack Edge Pro GPU-Gerät beschrieben. Sie können das Azure-Portal, die lokale Webbenutzeroberfläche oder die Windows PowerShell-Schnittstelle verwenden, um Ihr Gerät zu verwalten.
+Azure Stack Edge Pro ist eine Lösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben für Ihr Azure Stack Edge Pro-Gerät beschrieben. Sie können das Azure-Portal, die lokale Webbenutzeroberfläche oder die Windows PowerShell-Schnittstelle verwenden, um Ihr Gerät zu verwalten.
 
 Dieser Artikel befasst sich schwerpunktmäßig damit, wie Sie eine Verbindung mit der PowerShell-Schnittstelle des Geräts herstellen können und welche Aufgaben Sie mithilfe dieser Schnittstelle ausführen können. 
 
@@ -72,64 +72,6 @@ Ein Multiprozessdienst (MPS) auf NVIDIA-GPUs bietet einen Mechanismus, bei dem G
 
 [!INCLUDE [Enable MPS](../../includes/azure-stack-edge-gateway-enable-mps.md)]
 
-> [!NOTE]
-> Wenn die Gerätesoftware und der Kubernetes-Cluster aktualisiert werden, wird die MPS-Einstellung für die Workloads nicht beibehalten. Sie müssen MPS erneut aktivieren.
-
-<!--## Enable compute on private network
-
-Use the `Add-HcsNetRoute` cmdlet to enable compute on a private network. This cmdlet lets you add custom routes on Kubernetes master and worker VMs. 
-#### Add new route configuration
-
-IP routing is the process of forwarding a packet based on the destination IP address. For the Kubernetes VMs on your device, you can route the traffic by adding a new route configuration.  
-
-A route configuration is a routing table entry that includes the following fields:
-
-| Parameter | Description  |
-|---------|---------|
-|Destination     | Either an IP address or an IP address prefix.         |
-|Prefix length     | The prefix length corresponding to the address or range of addresses in the destination.        |
-|Next hop     | The IP address to which the packet is forwarded.        |
-|Interface     | The network interface that forwards the IP packet.        |
-|Metric     |Routing metric determines the preferred network interface used to reach the destination.          |
-
-
-Consider the following information before you add these routes:
-
-- The Kubernetes network where you are adding this route is in a private network and not connected to the internet.
-- The device port on which the compute is enabled does not have a gateway configured.
-- If you have a flat subnet, then you don't need to add these routes to the private network. You can (optionally) add these routes when there are multiple subnets on your private network.
-- You can add these routes only to the Kubernetes master and worker VMs and not to the device (Windows host). 
-- The Kubernetes compute need not be configured before you add this route. You can also add or update routes after the Kubernetes compute is configured. You can only add a new route configuration via the PowerShell interface of the device and not through the local UI.
-- Make sure that the network interface that you'll use has a static configuration. 
-
-Consider an example where Port 1 and Port 2 on your device are connected to the internet. Ports 3 to Port 6 are on a private network and is the same network that has the Kubernetes master and worker VMs. None of the ports 3 to 6 have a default gateway configured. There are cameras that are connected to the private network. And the camera feed creates a traffic that flows between the camera and the network interfaces on the Kubernetes VMs. 
-
-To add a new custom route, use the cmdlet as follows:
-
-```powershell
-Add-HcsNetRoute -InterfaceAlias "Port3" -DestinationPrefix "192.168.21.0/24" -NextHop "192.168.20.1" -RouteMetric 100 
-```
-
-Here the compute is enabled on the Port 3 network interface on your device and a virtual switch is created. The above route defines a destination subnet 192.168.21.0/24 and specifies the next hop as 192.168.20.1. This routing configuration has a routing metric of 100. Lower the routing metric, higher the priority assigned to the route.
- 
-
-#### Check route configuration for an interface 
-
-Use this cmdlet to check for all the custom route configurations that you added on your device. These routes do not include all the system routes or default routes that already exist on the device. 
-
-```powershell
-Get-HcsNetRoute -InterfaceAlias Port3
-```
-
-
-#### Remove a route configuration
-
-Use this cmdlet to remove a route configuration that you added on your device.
-
-```powershell
-Remove-HcsNetRoute -InterfaceAlias "Port3" -DestinationPrefix "192.168.21.0/24"
-```
--->
 
 ## <a name="reset-your-device"></a>Zurücksetzen Ihres Geräts
 
@@ -188,7 +130,7 @@ Bevor Sie beginnen, müssen Sie :
 - Das Computenetzwerk konfiguriert haben. Informieren Sie sich dazu im [Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Pro mit GPU](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 - Die Computerolle auf Ihrem Gerät konfiguriert haben.
     
-Ein Azure Stack Edge Pro GPU-Gerät, auf dem die Computerolle konfiguriert wurde, können Sie mit zwei verschiedenen Befehlssätzen überwachen oder dafür eine Problembehandlung vornehmen.
+Ein Azure Stack Edge Pro-Gerät, auf dem die Computerolle konfiguriert wurde, können Sie mit zwei verschiedenen Befehlssätzen überwachen oder eine Problembehandlung vornehmen.
 
 - Unter Verwendung von `iotedge`-Befehlen. Diese Befehle sind für grundlegende Vorgänge auf dem Gerät vorgesehen.
 - Unter Verwendung von `kubectl`-Befehlen. Diese Befehle sind für umfangreiche Vorgänge auf dem Gerät vorgesehen.
@@ -300,7 +242,7 @@ Nachfolgend ist eine Beispielausgabe gezeigt.
 
 ### <a name="use-kubectl-commands"></a>Verwenden von kubectl-Befehlen
 
-Auf einem Azure Stack Edge Pro GPU-Gerät, für das die Computerolle konfiguriert wurde, stehen alle `kubectl`-Befehle für die Überwachung oder Problembehandlung von Modulen zur Verfügung. Führen Sie `kubectl --help` im Befehlsfenster aus, um eine Liste der verfügbaren Befehle anzuzeigen.
+Auf einem Azure Stack Edge Pro-Gerät, für das die Computerolle konfiguriert wurde, stehen alle `kubectl`-Befehle für die Überwachung oder Problembehandlung von Modulen zur Verfügung. Führen Sie `kubectl --help` im Befehlsfenster aus, um eine Liste der verfügbaren Befehle anzuzeigen.
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
@@ -660,4 +602,4 @@ Schließen Sie das PowerShell-Fenster, um die PowerShell-Remotesitzung zu beende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Stellen Sie [Azure Stack Edge Pro GPU](azure-stack-edge-gpu-deploy-prep.md) im Azure-Portal bereit.
+- Stellen Sie [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) im Azure-Portal bereit.

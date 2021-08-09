@@ -1,20 +1,20 @@
 ---
 title: Konfigurieren von Details zu VM-Angebotsauflistungen im Azure Marketplace
-description: Erfahren Sie, wie Sie Details zu VM-Angebotsauflistungen im Azure Marketplace konfigurieren.
+description: Erfahren Sie, wie Sie Details zu VM-Angebotsauflistungen in Azure Marketplace konfigurieren.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 7030ffeb49c0a3919894f6dcf81e7252777267c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ce7b1302a290bb4a7fefa3077e0937c7544015a
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629596"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525424"
 ---
-# <a name="how-to-configure-virtual-machine-offer-listing-details"></a>Konfigurieren von Details zu VM-Angebotsauflistungen
+# <a name="configure-virtual-machine-offer-listing-details"></a>Konfigurieren von Details zu VM-Angebotsauflistungen
 
 Auf der Seite **Angebotsliste** (Auswahl im Partner Center im linken Navigationsmenü) können Sie Angebotsdetails wie Name, Beschreibung, Links und Kontakte definieren.
 
@@ -25,7 +25,7 @@ Auf der Seite **Angebotsliste** (Auswahl im Partner Center im linken Navigations
 
 ### <a name="name"></a>Name
 
-Der hier eingegebene Name wird Kunden als Titel Ihres Angebots angezeigt. In dieses Feld wird automatisch der Name eingetragen, den Sie beim Erstellen des Angebots im Feld **Angebotsalias** eingegeben haben. Der Name:
+Der hier eingegebene Name wird Kunden als Titel Ihrer Angebotsliste angezeigt. In dieses Feld wird automatisch der Name eingetragen, den Sie beim Erstellen des Angebots im Feld **Angebotsalias** eingegeben haben. Der Name:
 
 - Kann Marken- und Copyrightsymbole enthalten.
 - Darf höchstens 50 Zeichen umfassen.
@@ -81,8 +81,6 @@ Geben Sie **Name**, **E-Mail-Adresse** und **Telefonnummer** der Person an, die 
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Bei unscharfen Bildern wird Ihre Übermittlung abgelehnt.
 
-[!INCLUDE [logo tips](includes/graphics-suggestions.md)]
-
 >[!NOTE]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
@@ -90,9 +88,9 @@ Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilde
 
 Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um ein **kleines** und ein **mittleres** Logo zu erstellen. Sie können diese Logos später durch andere Bilder ersetzen.
 
-- **Groß** (von 216 × 216 bis 350 × 350 Pixel, erforderlich)
+- **Groß** (von 216 x 216 bis 350 x 350 Pixel, erforderlich)
 - **Mittel** (90 × 90 Pixel, optional)
-- **Klein** (48 × 48 Pixel, optional)
+- **Klein** (48 x 48 Pixel, optional)
 
 Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 

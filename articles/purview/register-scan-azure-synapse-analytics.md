@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 10/22/2020
-ms.openlocfilehash: 7d6a0b04306c2ed6ae4887c79962cbb5528643fc
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 05/08/2021
+ms.openlocfilehash: f2797af01dad10c04c8a56cf52a584ea0f04af31
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106971"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656744"
 ---
 # <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>Registrieren und Überprüfen dedizierter SQL-Pools (ehemals SQL DW)
 
@@ -124,17 +124,17 @@ Gehen Sie wie folgt vor, um einen neuen Azure Synapse Analytics-Server für Ihre
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
 1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
-1. Wählen Sie **Registrieren** aus.
+1. Wählen Sie **Registrieren**.
 1. Wählen Sie unter **Quellen registrieren** die Option **SQL dedicated pool (formerly SQL DW)** (Dedizierter SQL-Pool (ehemals SQL DW)) aus.
-1. Wählen Sie **Weiter** aus.
+1. Wählen Sie **Weiter**.
 
 Gehen Sie unter **Register sources (Azure Synapse Analytics)** (Quellen registrieren (Azure Synapse Analytics)) wie folgt vor:
 
 1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
-1. Wählen Sie aus, auf welche Weise Sie auf die gewünschte logische SQL Server-Instanz verweisen möchten:
-   1. Wählen Sie die Option **Aus Azure-Abonnement** und dann im Dropdownfeld **Azure-Abonnement** das entsprechende Abonnement und im Dropdownfeld **Servername** den entsprechenden Server aus.
-   1. Alternativ können Sie auch die Option **Manuell eingeben** auswählen und einen **Servernamen** eingeben.
-1. Wählen Sie **Fertig stellen** aus, um die Datenquelle zu registrieren.
+2. Wählen Sie Ihr Azure-Abonnement aus, um nach Azure Synapse-Arbeitsbereichen zu filtern.
+3. Wählen Sie einen Azure Synapse-Arbeitsbereich aus.
+4. Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung (optional).
+5. Wählen Sie **Registrieren** aus, um die Datenquelle zu registrieren.
 
 :::image type="content" source="media/register-scan-azure-synapse-analytics/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 

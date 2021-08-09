@@ -4,29 +4,30 @@ description: In diesem Artikel ist beschrieben, wie Sie mit Sicherheitsrichtlini
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/24/2021
+ms.date: 05/25/2021
 ms.author: memildin
-ms.openlocfilehash: 6ecedc20cf6924a82b6b4640d3caa75bc5958de0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b48adf5e6c2c7b91e98ef410c71802b5d47d2845
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101323"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459787"
 ---
 # <a name="manage-security-policies"></a>Verwalten von Sicherheitsrichtlinien
 
 In diesem Artikel wird beschrieben, wie Sicherheitsrichtlinien konfiguriert werden und wie Sie sie in Security Center anzeigen. 
 
-## <a name="who-can-edit-security-policies"></a>Wer kann Sicherheitsrichtlinien bearbeiten?
+Um Die Beziehungen zwischen Initiativen, Richtlinien und Empfehlungen zu verstehen, lesen Sie [Was sind Sicherheitsrichtlinien, Initiativen und Empfehlungen?](security-policy-concept.md)
 
-Sie können Sicherheitsrichtlinien über das Azure Policy-Portal, über die REST-API oder über Windows PowerShell bearbeiten.
+## <a name="who-can-edit-security-policies"></a>Wer kann Sicherheitsrichtlinien bearbeiten?
 
 Security Center verwendet die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC). Hierbei werden integrierte Rollen bereitgestellt, die Sie Azure-Benutzern, -Gruppen und -Diensten zuweisen können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Dies bedeutet, dass Benutzern die Rolle *Besitzer*, *Mitwirkender* oder *Leser* für das Abonnement der Ressource zugewiesen wird. Darüber hinaus gibt es noch zwei spezifische Security Center-Rollen:
 
 - **Sicherheitsleseberechtigter**: Verfügt über Rechte zum Anzeigen von Security Center-Elementen, z. B. Empfehlungen, Warnungen, Richtlinie und Integrität. Änderungen können nicht vorgenommen werden.
 - **Sicherheitsadministrator**: Verfügt über die gleichen Rechte wie *Sicherheitsleseberechtigter*. Kann außerdem die Sicherheitsrichtlinie aktualisieren und Warnungen schließen.
+
+Sie können Sicherheitsrichtlinien über das Azure Policy-Portal, über die REST-API oder über Windows PowerShell bearbeiten.
 
 ## <a name="manage-your-security-policies"></a>Verwalten der Sicherheitsrichtlinien
 
@@ -81,27 +82,48 @@ Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheit
 
     :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Starten des Richtlinienverwaltungsvorgangs in Azure Security Center":::
 
-2. Wählen Sie das Abonnement aus, für das Sie die Empfehlung deaktivieren möchten.
+1. Wählen Sie das Abonnement oder die Verwaltungsgruppe aus, für das/die Sie die Empfehlung (und Richtlinie) deaktivieren möchten.
 
    > [!NOTE]
    > Denken Sie daran, dass eine Verwaltungsgruppe ihre Richtlinien auf ihre Abonnements anwendet. Wenn Sie die Richtlinie eines Abonnements deaktivieren und es zu einer Verwaltungsgruppe gehört, in der dieselbe Richtlinie weiterhin angewendet wird, erhalten Sie auch weiterhin die Empfehlungen für die Richtlinie. Die Richtlinie wird immer noch von der Verwaltungsebene aus angewandt, und die Empfehlungen werden immer noch generiert.
 
-1. Wählen Sie **Effektive Richtlinie anzeigen** aus.
+1. Wählen Sie in den Abschnitten **Security Center-Standardrichtlinie**, **Branchen- und gesetzliche Standards** oder **Ihre benutzerdefinierten Initiativen** die relevante Initiative aus, die die Richtlinie enthält, die Sie deaktivieren möchten.
 
-    :::image type="content" source="./media/tutorial-security-policy/view-effective-policy.png" alt-text="Öffnen der Ihrem Abonnement zugewiesenen effektiven Richtlinie":::
+1. Suchen Sie im Abschnitt **Parameter** die Richtlinie, die die zu Empfehlung aufruft, die Sie deaktivieren möchten.
 
-1. Wählen Sie die zugewiesene Richtlinie aus.
-
-   ![Richtlinie auswählen](./media/tutorial-security-policy/security-policy.png)
-
-1. Suchen Sie im Abschnitt **PARAMETER** die Richtlinie, die die zu deaktivierende Empfehlung aufruft, und wählen Sie in der Dropdownliste die Option **Deaktiviert** aus.
+1. Ändern Sie in der Dropdownliste den Wert für die entsprechende Richtlinie in **Disabled**.
 
    ![Richtlinie deaktivieren](./media/tutorial-security-policy/disable-policy.png)
 
 1. Wählen Sie **Speichern** aus.
 
    > [!NOTE]
-   > Es kann bis zu 12 Stunden dauern, bis die Änderungen zum Deaktivieren der Richtlinie wirksam werden.
+   > Es kann bis zu 12 Stunden dauern, bis die Änderung in Kraft tritt.
+
+
+## <a name="enable-a-security-policy"></a>Aktivieren einer Sicherheitsrichtlinie
+
+Einige Richtlinien in Ihren Initiativen sind möglicherweise standardmäßig deaktiviert. In der Initiative „Vergleichstest für die Azure-Sicherheit“ werden z. B. einige Richtlinien bereitgestellt, die Sie nur aktivieren können, wenn sie bestimmte gesetzliche oder Complianceanforderungen für Ihre Organisation erfüllen. Zu diesen Richtlinien gehören Empfehlungen zum Verschlüsseln ruhender Daten mit vom Kunden verwalteten Schlüsseln, z. B. „Containerregistrierungen müssen mit einem vom Kunden verwalteten Schlüssel (CMK) verschlüsselt werden“.
+
+So aktivieren Sie eine deaktivierte Richtlinie und stellen sicher, dass sie für Ihre Ressourcen bewertet wird:
+
+1. Wählen Sie in Security Center im Abschnitt **Richtlinie und Konformität** die Option **Sicherheitsrichtlinie** aus.
+
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Starten des Richtlinienverwaltungsvorgangs in Azure Security Center":::
+
+1. Wählen Sie das Abonnement oder die Verwaltungsgruppe aus, für das/die Sie die Empfehlung (und Richtlinie) aktivieren möchten.
+
+1. Wählen Sie in den Abschnitten **Security Center-Standardrichtlinie**, **Branchen- und gesetzliche Standards** oder **Ihre benutzerdefinierten Initiativen** die relevante Initiative mit der Richtlinie aus, die Sie aktivieren möchten.
+
+1. Suchen Sie im Abschnitt **Parameter** die Richtlinie, die die zu Empfehlung aufruft, die Sie deaktivieren möchten.
+
+1. Ändern Sie in der Dropdownliste den Wert für die entsprechende Richtlinie in **AuditIfNotExists** oder **Enforce**.
+
+1. Wählen Sie **Speichern** aus.
+
+   > [!NOTE]
+   > Es kann bis zu 12 Stunden dauern, bis die Änderung in Kraft tritt.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Auf dieser Seite werden die Sicherheitsrichtlinien beschrieben. Zugehörige Informationen finden Sie auf den folgenden Seiten:

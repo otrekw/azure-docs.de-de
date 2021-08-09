@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: e870134e2ecd431aa3e5c02638120027f0d47df2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ba00e1f3bd28b3fa24b14bc31080655a8d4c98b
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101459"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792081"
 ---
 # <a name="create-a-data-source-android-sdk"></a>Erstellen einer Datenquelle (Android SDK)
 
@@ -590,7 +590,7 @@ Azure Maps hält den offenen Standard [Mapbox Vector Tile Specification](https:/
 - Straßenkacheln: [Dokumentation](/rest/api/maps/renderv2/getmaptilepreview) | [Details zum Datenformat](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
 - Verkehrsmeldungen: [Dokumentation](/rest/api/maps/traffic/gettrafficincidenttile) | [Details zum Datenformat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
 - Verkehrsfluss: [Dokumentation](/rest/api/maps/traffic/gettrafficflowtile) | [Details zum Datenformat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- In Azure Maps Creator können Sie über [Render V2 – Get Map Tiles](/rest/api/maps/renderv2/getmaptilepreview) auch benutzerdefinierte Vektorkacheln erstellen und auf diese zugreifen.
+- In Azure Maps Creator können Sie über die [API Render V2 Get Map Tile](/rest/api/maps/renderv2/getmaptilepreview) auch benutzerdefinierte Vektorkacheln erstellen und auf diese zugreifen.
 
 > [!TIP]
 > Wenn Sie Vektor- oder Rasterbildkacheln des Azure Maps-Renderdiensts mit dem Web-SDK verwenden, können Sie `atlas.microsoft.com` durch den Platzhalter `azmapsdomain.invalid` ersetzen. Dieser Platzhalter wird durch dieselbe Domäne ersetzt, die von der Karte verwendet wird, und automatisch an dieselben Authentifizierungsdetails angefügt. Dies vereinfacht die Authentifizierung beim Renderdienst bei Verwendung der Azure Active Directory-Authentifizierung erheblich.

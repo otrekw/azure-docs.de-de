@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 54be25317717bcf98b9e296d5c9ed59643cd334e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0337a9aec4991dddbf95cf1ac2e2ec6adf7d28ea
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044752"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471588"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 Dieser Artikel enthält eine Einführung in die Sicherheitsdienste in Azure, die helfen, Ihre Daten, Ressourcen und Anwendungen in der Cloud zu schützen, und die Sicherheitsanforderungen Ihres Unternehmens erfüllen.
@@ -147,7 +147,7 @@ Azure AD Privileged Identity Management ermöglicht Ihnen Folgendes:
 
 ## <a name="secure-resource-access"></a>Sicherer Ressourcenzugriff
 
-Die Zugriffssteuerung in Azure unterliegt zunächst den Abrechnungsaspekten. Der Besitzer eines Azure-Kontos, auf das über das [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) zugegriffen wird, ist der Kontoadministrator (Account Administrator, AA). Abonnements fungieren nicht nur als Container für die Abrechnung, sondern auch als Sicherheitsgrenze: Jedes Abonnement verfügt über einen Dienstadministrator (SA), der Azure-Ressourcen für dieses Abonnement mit dem Azure-Portal hinzufügen, entfernen und ändern kann. Der standardmäßige Dienstadministrator eines neuen Abonnements ist der Kontoadministrator. Der Kontoadministrator kann den Dienstadministrator jedoch im Azure-Kontocenter ändern.
+Die Zugriffssteuerung in Azure unterliegt zunächst den Abrechnungsaspekten. Der Besitzer eines Azure-Kontos, auf das über das [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) zugegriffen wird, ist der Kontoadministrator (Account Administrator, AA). Abonnements fungieren nicht nur als Container für die Abrechnung, sondern auch als Sicherheitsgrenze: Jedes Abonnement verfügt über einen Dienstadministrator (SA), der Azure-Ressourcen für dieses Abonnement mit dem Azure-Portal hinzufügen, entfernen und ändern kann. Der Standarddienstadministrator eines neuen Abonnements ist der Kontoadministrator. Der Kontoadministrator kann den Dienstadministrator jedoch im Azure-Portal ändern.
 
 ![Zugriff auf geschützte Ressourcen in Azure](./media/technical-capabilities/azure-security-technical-capabilities-fig3.png)
 

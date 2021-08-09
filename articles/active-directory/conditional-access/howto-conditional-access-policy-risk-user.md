@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 05/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5423a61c8febee72f32935f3dee4e9f9e868630
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a6509c7b47a0f8c3f36df72e1d3aa16c834594f
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89049076"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110612816"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Bedingter Zugriff: Auf dem Benutzerrisiko basierender bedingter Zugriff
 
 Microsoft arbeitet mit Ermittlern, Strafverfolgungsbehörden, mehreren eigenen Sicherheitsteams und anderen vertrauenswürdigen Quellen zusammen, um kompromittierte Paare aus Benutzername und Kennwort zu finden. Organisationen mit Azure AD Premium P2-Lizenzen können Richtlinien für bedingten Zugriff erstellen, die [das Erkennen des Benutzerrisikos mit Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md#user-risk) umfassen. 
 
-Es gibt zwei Möglichkeiten, diese Richtlinie zuzuweisen. Organisationen sollten eine der folgenden Optionen wählen, um eine Richtlinie für bedingten Zugriff anhand des Benutzerrisikos zu aktivieren, die die Änderung in ein sicheres Kennwort erfordert.
+Es gibt zwei Orte, an denen diese Richtlinie konfiguriert werden kann: bedingter Zugriff und Identity Protection. Die Konfiguration mithilfe einer Richtlinie für bedingten Zugriff ist die bevorzugte Methode, da sie mehr Kontext bietet, z. B. erweiterte Diagnosedaten, die Integration nur im Berichtsmodus, Graph-API-Unterstützung und die Möglichkeit, andere Attribute für bedingten Zugriff in der Richtlinie zu verwenden.
 
 ## <a name="enable-with-conditional-access-policy"></a>Aktivieren mit einer Richtlinie für bedingten Zugriff
 

@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
 description: Verwenden benutzerdefinierter Speicherorte zum Bereitstellen von Azure-PaaS-Diensten in Kubernetes-Clustern mit Azure Arc-Unterstützung
-ms.openlocfilehash: 15309599b12b10344b59d46c47c11dfa243726db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 5f25260041fe7d5998d7f1716c9d20e288168e9d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367184"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951663"
 ---
 # <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>Erstellen und Verwalten benutzerdefinierter Standorte in Kubernetes mit Azure Arc-Unterstützung
 
@@ -77,16 +77,29 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benut
 
 ## <a name="enable-custom-locations-on-cluster"></a>Aktivieren benutzerdefinierter Speicherorte im Cluster
 
-Führen Sie den folgenden Befehl aus, um dieses Feature in Ihrem Cluster zu aktivieren:
+Wenn Sie bei Azure CLI als Azure AD-Benutzer angemeldet sind, führen Sie den folgenden Befehl aus, um dieses Feature in Ihrem Cluster zu aktivieren:
 
 ```console
 az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features cluster-connect custom-locations
 ```
 
+Wenn Sie bei Azure CLI über einen Dienstprinzipal angemeldet sind, führen Sie den folgenden Befehl aus, um dieses Feature in Ihrem Cluster zu aktivieren:
+
+1. Rufen Sie die Objekt-ID der Azure AD-Anwendung ab, die vom Azure Arc-Dienst verwendet wird:
+
+    ```console
+    az ad sp show --id 'bc313c14-388c-4e7d-a58e-70017303ee3b' --query objectId -o tsv
+    ```
+
+1. Verwenden Sie den `<objectId>`-Wert aus dem obigen Schritt, um das Feature „Benutzerdefinierte Speicherorte“ im Cluster zu aktivieren:
+
+    ```console
+    az connectedk8s enable-features -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId> --features cluster-connect custom-locations
+    ```
+
 > [!NOTE]
 > 1. Das Feature „Benutzerdefinierte Speicherorte“ ist vom Cluster Connect-Feature abhängig. Daher müssen beide Features aktiviert werden, damit „Benutzerdefinierte Speicherorte“ funktioniert.
 > 2. `az connectedk8s enable-features` muss auf einem Computer ausgeführt werden, auf dem die `kubeconfig`-Datei auf den Cluster verweist, auf dem die Features aktiviert werden sollen.
-> 3. Wenn Sie mithilfe Azure CLI Dienstprinzipals bei einem Dienstprinzipal angemeldet sind, müssen dem Dienstprinzipal [zusätzliche Berechtigungen](troubleshooting.md#enable-custom-locations-using-service-principal) erteilt werden, bevor sie das benutzerdefinierte Speicherort-Feature aktivieren.
 
 ## <a name="create-custom-location"></a>Erstellen eines benutzerdefinierten Speicherorts
 
@@ -107,7 +120,7 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
         az k8s-extension create --name <extensionInstanceName> --extension-type 'Microsoft.Web.Appservice' --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace appservice-ns --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" --configuration-settings "appsNamespace=appservice-ns" 
         ```
 
-    * [Event Grid in Kubernetes](/azure/event-grid/kubernetes/overview)
+    * [Event Grid in Kubernetes](../../event-grid/kubernetes/overview.md)
 
         ```azurecli
           az k8s-extension create --name <extensionInstanceName> --extension-type Microsoft.EventGrid --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace eventgrid-ext --configuration-protected-settings-file protected-settings-extension.json --configuration-settings-file settings-extension.json
@@ -135,6 +148,5 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 - Stellen Sie eine sichere Verbindung mit dem Cluster über [Cluster Connect](cluster-connect.md) her.
 - Fahren Sie mit [Azure App Service auf Azure Arc](../../app-service/overview-arc-integration.md) fort, um umfassende Anweisungen zum Installieren von Erweiterungen, Erstellen benutzerdefinierter Standorte und Erstellen der App Service-Kubernetes-Umgebung abzurufen. 
-- Erstellen Sie ein Event Grid-Thema und ein Ereignisabonnement für [Event Grid in Kubernetes](/azure/event-grid/kubernetes/overview).
+- Erstellen Sie ein Event Grid-Thema und ein Ereignisabonnement für [Event Grid in Kubernetes](../../event-grid/kubernetes/overview.md).
 - In den derzeit verfügbaren [Azure Arc-fähigen Kubernetes-Erweiterungen](extensions.md#currently-available-extensions) finden Sie weitere Details.
-

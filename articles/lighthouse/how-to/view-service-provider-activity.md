@@ -1,18 +1,18 @@
 ---
 title: Anzeigen der Dienstanbieteraktivität
-description: Kunden können anhand von protokollierten Aktivitäten überprüfen, welche Aktionen Dienstanbieter im Rahmen der delegierten Azure-Ressourcenverwaltung ausgeführt haben.
-ms.date: 12/11/2020
+description: Kunden können anhand von protokollierten Aktivitäten einsehen, welche Aktionen von Dienstanbietern über Azure Lighthouse durchgeführt wurden.
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 40deca310eea2fc9618cfc83d34caadcf2b2b14d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef9f8e76c9b6c2ab23c4075b81874816ff784f67
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571748"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785955"
 ---
 # <a name="view-service-provider-activity"></a>Anzeigen der Dienstanbieteraktivität
 
-Kunden, die delegierte Abonnements für [Azure Lighthouse](../overview.md) haben, können [Daten des Azure-Aktivitätsprotokolls anzeigen](../../azure-monitor/essentials/platform-logs-overview.md), um sich alle ausgeführten Aktionen anzusehen. Dadurch erhalten Kunden nicht nur einen umfassenden Einblick in Vorgänge, die von Dienstanbietern im Rahmen der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) ausgeführt werden, sondern auch in Vorgänge, die von Benutzern innerhalb des eigenen Azure AD-Mandanten (Azure Active Directory) des Kunden ausgeführt werden.
+Kunden, die delegierte Abonnements für [Azure Lighthouse](../overview.md) haben, können [Daten des Azure-Aktivitätsprotokolls anzeigen](../../azure-monitor/essentials/platform-logs-overview.md), um sich alle ausgeführten Aktionen anzusehen. Dadurch erhalten Kunden nicht nur einen umfassenden Einblick in Vorgänge, die von Dienstanbietern im Rahmen der [delegierten Azure-Ressourcenverwaltung](../concepts/architecture.md) ausgeführt werden, sondern auch in Vorgänge, die von Benutzern innerhalb des eigenen Azure AD-Mandanten (Azure Active Directory) des Kunden ausgeführt werden.
 
 > [!TIP]
 > Wir bieten in Azure Policy integrierte Richtliniendefinitionen, um die [Delegierung an bestimmte verwaltende Mandanten einzuschränken](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json) und die [Delegierung von Bereichen an einen verwaltenden Mandanten zu überwachen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Weitere Informationen finden Sie unter [Überwachen von Delegierungen in Ihrer Umgebung](view-manage-service-providers.md#audit-delegations-in-your-environment).

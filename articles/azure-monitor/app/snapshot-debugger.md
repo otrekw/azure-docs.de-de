@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: 57a417948d23d40801eb34cf10aab1e6f17037e6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c377f6b1ff84f04506badf581dc7c12d64e68e0d
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644082"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839381"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 Wenn eine Ausnahme auftritt, können Sie automatisch eine Debugmomentaufnahme von Ihrer aktiven Webanwendung erfassen. Die Momentaufnahme zeigt den Status des Quellcodes und der Variablen in dem Moment, in dem die Ausnahme ausgelöst wurde. Der Momentaufnahmedebugger in [Azure Application Insights](./app-insights-overview.md) überwacht Ausnahmetelemetriedaten aus Ihrer Web-App. Er erfasst Momentaufnahmen Ihrer am häufigsten ausgelösten Ausnahmen, damit Sie die erforderlichen Informationen zur Diagnose von Problemen in der Produktion erhalten. Binden Sie das [NuGet-Paket des Momentaufnahmesammlers](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre Anwendung ein, und konfigurieren Sie optional Parameter für die Datensammlung in [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Momentaufnahmen finden Sie im Application Insights-Portal unter [Ausnahmen](./asp-net-exceptions.md).
@@ -61,7 +61,7 @@ Abonnementbesitzer sollten Benutzern, die Momentaufnahmen untersuchen, die Rolle
 
 
 > [!IMPORTANT]
-> In Variablen- und Parameterwerten von Momentaufnahmen können persönliche und andere vertrauliche Informationen enthalten sein.
+> Momentaufnahmen können personenbezogene Daten oder andere vertrauliche Informationen in Variablen- und Parameterwerten enthalten. Momentaufnahmedaten werden in derselben Region wie Ihre Application Insights-Ressource gespeichert.
 
 ## <a name="view-snapshots-in-the-portal"></a>Anzeigen von Momentaufnahmen im Portal
 

@@ -3,18 +3,18 @@ title: Anfordern einer Kontingenterhöhung
 description: Auf dieser Seite wird beschrieben, wie Sie eine Supportanfrage zum Erhöhen der Kontingente für Azure SQL-Datenbank und Azure SQL Managed Instance erstellen.
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: deployment-configuration
 ms.topic: how-to
 author: sachinpMSFT
 ms.author: sachinp
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 06/04/2020
-ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5530becdcbe150ddc7ab2608bdf964ac269ed99
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251850"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409017"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,7 +54,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal eine neue Supportanfr
 
    ![Link zum Eingeben von Details](./media/quota-increase-request/provide-details-link.png)
 
-Wenn Sie auf **Details eingeben** klicken, wird das Fenster **Kontingentdetails** angezeigt, in dem Sie zusätzliche Informationen hinzufügen können. In den folgenden Abschnitten werden die verschiedenen Optionen für die Kontingenttypen von **SQL-Datenbank** und **Verwaltete SQL-Datenbank-Instanz** beschrieben.
+Wenn Sie auf **Details eingeben** klicken, wird das Fenster **Kontingentdetails** angezeigt, in dem Sie zusätzliche Informationen hinzufügen können. In den folgenden Abschnitten werden die verschiedenen Optionen für die Kontingenttypen von **SQL-Datenbank** und **SQL Managed Instance** beschrieben.
 
 ## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a> Kontingenttypen von SQL-Datenbank
 
@@ -110,7 +110,7 @@ Wenn Ihr Abonnement Zugriff auf eine bestimmte Region benötigt, wählen Sie die
 
 ### <a name="request-enabling-specific-hardware-in-a-region"></a>Anfordern der Aktivierung bestimmter Hardware in einer Region
 
-Wenn eine [Hardwaregeneration](service-tiers-vcore.md#hardware-generations), die Sie verwenden möchten, in Ihrer Region nicht verfügbar ist (siehe [Hardwareverfügbarkeit](service-tiers-vcore.md#hardware-availability)), können Sie diese mithilfe der folgenden Schritte anfordern.
+Wenn eine Hardwaregeneration, die Sie verwenden möchten, in Ihrer Region nicht verfügbar ist, können Sie diese mithilfe der folgenden Schritte anfordern. Weitere Informationen zu Hardwaregenerationen und regionaler Verfügbarkeit finden Sie unter [Hardwaregenerationen für SQL-Datenbank](./service-tiers-sql-database-vcore.md#hardware-generations) oder [Hardwaregenerationen für SQL Managed Instance](../managed-instance/service-tiers-managed-instance-vcore.md#hardware-generations).
 
 1. Wählen Sie den Kontingenttyp **Andere Kontingentanforderung** aus.
 

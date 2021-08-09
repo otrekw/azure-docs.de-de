@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 9c5e7d1cf318e50e778c59b97b20b03d23fbfe5c
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: e6b2e331c274013ccad445c4e203388b8b7b8048
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903126"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903867"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Autorisieren des Zugriffs auf Blobs mit AzCopy und Azure Active Directory (Azure AD)
 
@@ -42,7 +42,7 @@ Diese Rollen können Ihrem Sicherheitsprinzipal in jedem dieser Bereiche zugewie
 - Resource group
 - Subscription
 
-Informationen zum Überprüfen und Zuweisen von Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](./storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Informationen zum Überprüfen und Zuweisen von Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../blobs/assign-azure-role-data-access.md).
 
 > [!NOTE]
 > Denken Sie daran, dass die Weitergabe von Azure-Rollenzuweisungen bis zu fünf Minuten dauern kann.

@@ -1,0 +1,18 @@
+- name: Zugreifen auf Windows Virtual Desktop
+  href: index.yml
+- name: Vorgehensweise
+  items:
+    - name: Herstellen einer Verbindung mit dem Windows-Desktopclient
+      href: connect-windows-7-10.md
+    - name: Herstellen einer Verbindung mit dem Webclient
+      href: connect-web.md
+    - name: Herstellen einer Verbindung mit dem Android-Client
+      href: connect-android.md
+    - name: Herstellen einer Verbindung mit dem macOS-Client
+      href: connect-macos.md
+    - name: Herstellen einer Verbindung mit dem iOS-Client
+      href: connect-ios.md
+    - name: "Herstellen einer Verbindung mit dem Microsoft\_Store-Client"
+      href: connect-microsoft-store.md
+    - name: Herstellen einer Verbindung mit Thin Clients
+      href: linux-overview.md

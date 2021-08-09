@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: b38f2831136b0ccec4aa241135f2fd342c939845
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ae33d1695188e103c7c56374a5f39e8fc0d27430
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936885"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061406"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Schnellstart: Erstellen und Konfigurieren von Azure DDoS Protection Standard
 
@@ -76,7 +76,7 @@ Ein virtuelles Netzwerk kann nicht in eine andere Ressourcengruppe oder ein ande
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>Aktivieren des DDoS-Schutzes für alle virtuellen Netzwerke
 
-Diese [Richtlinie](https://aka.ms/ddosvnetpolicy) erkennt alle virtuellen Netzwerke in einem definierten Bereich, für die DDoS Protection Standard nicht aktiviert ist, und erstellt optional eine Wartungsaufgabe, die die Zuordnung zum Schutz des VNET erstellt. Ausführliche schrittweise Anleitungen zum Bereitstellen dieser Richtlinie finden Sie unter https://aka.ms/ddosvnetpolicy-techcommunity.
+Diese [integrierte Richtlinie](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d) erkennt alle virtuellen Netzwerke in einem definierten Bereich, für die DDoS Protection Standard nicht aktiviert ist, und erstellt optional einen Wartungstask, der die Zuordnung zum Schutz des VNet erstellt. Eine vollständige Liste der integrierten Richtlinien finden Sie unter [Integrierte Azure Policy-Definitionen für Azure DDoS Protection Standard](policy-reference.md). 
 
 ## <a name="validate-and-test"></a>Überprüfen und Testen
 

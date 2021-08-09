@@ -3,19 +3,19 @@ title: Hinweis zur Migration des Gatewaydatenverkehrs
 description: Dieser Artikel enthält Hinweise zur Migration der IP-Adressen von Azure SQL-Datenbank-Gateways
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: vanto
+ms.reviewer: vanto, mathoma
 ms.date: 07/01/2019
-ms.openlocfilehash: 07611a3620a2fd8efe0da075b03b55a5be3a5be9
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 58194f74bb32fec7d58f707d74720c37e26dba5a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505376"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699496"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migration des Azure SQL-Datenbank-Datenverkehrs zu neueren Gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,14 @@ Aktuelle Informationen finden Sie in der Tabelle mit den [Gateway-IP-Adressen vo
 ## <a name="status-updates"></a>Statusaktualisierungen
 
 # <a name="in-progress"></a>[Vorgang wird ausgeführt](#tab/in-progress-ip)
+## <a name="june-2021"></a>Juni 2021
+Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
+- Vereinigtes Königreich, Westen: 51.140.208.96, 51.140.208.97
+- Südkorea, Mitte: 20.44.24.32, 20.194.64.33
+- Japan, Osten: 13.78.104.32
+
+Dieses SQL-Gateway nimmt Kundendatenverkehr ab dem 1. Juni 2021 an.
+
 ## <a name="may-2021"></a>Mai 2021
 Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
 - Vereinigtes Königreich, Süden: 51.140.144.36, 51.105.72.32  
@@ -84,7 +92,7 @@ Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
 - Australien, Mitte 2:  20.36.112.6 
 - Brasilien, Süden: 191.234.144.16 ,191.234.152.3 
 - Kanada, Osten: 40.69.105.9 ,40.69.105.10
-- Indien, Mitte: 104.211.86.30 , 104.211.86.31 
+- Indien, Mitte: 104.211.86.30, 104.211.86.31 
 - Asien, Osten: 13.75.32.14 
 - Frankreich, Mitte: 40.79.137.8, 40.79.145.12 
 - Frankreich, Süden: 40.79.177.10 ,40.79.177.12

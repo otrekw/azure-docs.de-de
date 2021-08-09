@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Az
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 0892f11a79c62669d77cceb2dbc4f9a9f86c623a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 257f3473da4284080d7977021cb97c6dbce0fbde
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765933"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535165"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -214,6 +214,10 @@ Wenn der Bereitstellungsstatus Ihres Clusters weiterhin *Fehlerhaft* lautet oder
 ## <a name="my-watch-is-stale-or-azure-ad-pod-identity-nmi-is-returning-status-500"></a>Mein Überwachungselement ist veraltet, oder die NMI der Azure AD-Podidentität gibt Status 500 zurück
 
 Wenn Sie Azure Firewall verwenden – wie in diesem [Beispiel](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall) –, kann dieses Problem auftreten, da langlebige TCP-Verbindungen über die Firewall, für die Anwendungsregeln verwendet werden, zurzeit einen Fehler aufweisen, der dazu führt, dass Go-`keepalives` in der Firewall beendet werden (dieser Fehler soll im 1. Quartal des Kalenderjahrs 2021 behoben werden). Bis dieses Problem behoben ist, können Sie es entschärfen, indem Sie der IP-Adresse des AKS-API-Servers eine Netzwerkregel (anstelle einer Anwendungsregel) hinzufügen.
+
+## <a name="when-resuming-my-cluster-after-a-stop-operation-why-is-my-node-count-not-in-the-autoscaler-min-and-max-range"></a>Warum liegt meine Knotenanzahl beim Fortsetzen meines Clusters nach einem Beendigungsvorgang nicht im definierten Bereich der Autoskalierung?
+
+Wenn Sie automatische Clusterskalierung verwenden, liegt Ihre aktuelle Knotenanzahl beim Starten des Clusters möglicherweise nicht zwischen den von Ihnen festgelegten Mindest- und Höchstwerten für den Bereich. Dies ist das erwartete Verhalten. Der Cluster beginnt mit der Anzahl von Knoten, die er zum Ausführen seiner Workloads benötigt. Dies hat keine Auswirkungen auf Ihre Einstellungen für automatische Skalierung. Wenn Ihr Cluster Skalierungsvorgänge ausführt, wirken sich die Mindest- und Höchstwerte auf Ihre aktuelle Knotenanzahl aus. Der Cluster wird schließlich in den gewünschten Bereich gelangen und dort verbleiben, bis Sie ihn beenden.
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Problembehandlung für Azure Storage und AKS
 

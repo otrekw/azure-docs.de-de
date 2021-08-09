@@ -13,39 +13,43 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/12/2021
   ms.author: mbullwin
-  ms.openlocfilehash: 5424c2af354bbecd124e39c7566c23d964563cac
-  ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+  ms.openlocfilehash: 4360e47ff4028e5102f851b4ca4ea905e3067a4b
+  ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112005499"
+  ms.lasthandoff: 07/05/2021
+  ms.locfileid: "113296503"
 landingContent:
 - title: Informationen zu den Anomalieerkennungs-API
   linkLists:
   - linkListType: overview
     links:
-    - text: Worum handelt es sich bei der univariaten Anomalieerkennung?
+    - text: Worum handelt es sich bei der Anomalieerkennung (Univariat)?
       url: overview.md
-    - text: Worum handelt es sich bei der multivariaten Anomalieerkennung?
+    - text: Worum handelt es sich bei der Anomalieerkennung (Multivariat)?
       url: overview-multivariate.md
+    - text: Neues in der Anomalieerkennung
+      url: whats-new.md
   - linkListType: get-started
     links:
-    - text: Demo zur Anomalieerkennung
+    - text: Demowebanwendung (univariat)
       url: https://aka.ms/adDemo
   - linkListType: video
     links:
-    - text: Einführung der Anomalieerkennungs-API
+    - text: Einführung in die Anomalieerkennungs-API (univariat)
       url: https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner
-    - text: Von der Anomalieerkennungs-API verwendete Algorithmen
-      url: https://www.youtube.com/embed/ERTaAnwCarM
+    - text: Einführung in die neuen multivariaten Funktionen
+      url: https://channel9.msdn.com/Shows/AI-Show/New-to-Anomaly-Detector-Multivariate-Capabilities
+    - text: Weitere Videos...
+      url: whats-new.md#videos
   - linkListType: reference
     links:
-    - text: Einführung in die API für die Azure-Anomalieerkennung
+    - text: Einführung in die API für die Azure-Anomalieerkennung (univariat)
       url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162
-    - text: Übersicht über den SR-CNN-Algorithmus
-      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798
-    - text: In der Anomalieerkennung verwendete Algorithmen (KDD-Artikel)
-      url: https://arxiv.org/abs/1906.03821
+    - text: Einführung in die Erkennung von multivariaten Anomalien
+      url: https://techcommunity.microsoft.com/t5/azure-ai/introducing-multivariate-anomaly-detection/ba-p/2260679
+    - text: Weitere technische Artikel...
+      url: whats-new.md#technical-articles
 - title: Erkennen von Anomalien in Ihren Daten
   linkLists:
   - linkListType: quickstart
@@ -56,6 +60,8 @@ landingContent:
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-javascript
     - text: Verwenden von Python (univariat)
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-python
+  - linkListType: quickstart
+    links:
     - text: Verwenden von C# (multivariat)
       url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-csharp
     - text: Verwenden von JavaScript (multivariat)
@@ -66,39 +72,39 @@ landingContent:
       url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-java
   - linkListType: tutorial
     links:
-    - text: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI
+    - text: Kennenlernen der Erkennung von multivariaten Anomalien in nur einer Stunde
+      url: tutorials/learn-multivariate-anomaly-detection.md
+    - text: Visualisieren (univariater) Anomalien mithilfe von Batcherkennung und Power BI
       url: tutorials/batch-anomaly-detection-powerbi.md
-  - linkListType: video
-    links:
-    - text: Anomalieerkennung für Streamingdaten mit Azure Databricks
-      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-detection-on-streaming-data-using-Azure-Databricks
 - title: Optimieren der Erkennungsergebnisse
   linkLists:
   - linkListType: concept
     links:
-    - text: Anpassen der Anomalieerkennungsmodi und -parameter für Ihre Daten
+    - text: Anpassen der Anomalieerkennungsmodi und -parameter für Ihre Daten (univariat)
       url: how-to/identify-anomalies.md
-    - text: Optimieren der Anomalieerkennungsergebnisse unter Verwendung von Best Practices
+    - text: Optimieren der Anomalieerkennungsergebnisse mithilfe bewährter Methoden (univariat)
       url: concepts/anomaly-detection-best-practices.md
+    - text: Optimieren der Anomalieerkennungsergebnisse unter Verwendung von Best Practices (multivariat)
+      url: concepts/best-practices-multivariate.md
   - linkListType: video
     links:
-    - text: Best Practices für die Anomalieerkennung
+    - text: Bewährte Methoden für die Anomalieerkennung (univariat)
       url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-Detector-v10-Best-Practices
 - title: Verwenden von Docker-Containern
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Installieren und Ausführen von Containern für die Anomalieerkennung
+    - text: Installieren und Ausführen von Containern für die Anomalieerkennung (univariat)
       url: anomaly-detector-container-howto.md
-    - text: Konfigurieren von Containern für die Anomalieerkennung
+    - text: Konfigurieren von Containern für die Anomalieerkennung (univariat)
       url: anomaly-detector-container-configuration.md
-    - text: Bereitstellen einer Containerinstanz in Azure
+    - text: Bereitstellen einer Containerinstanz für Azure (univariat)
       url: how-to/deploy-anomaly-detection-on-container-instances.md
-    - text: Bereitstellen für IoT Edge
+    - text: Bereitstellen für IoT Edge (univariat)
       url: how-to/deploy-anomaly-detection-on-iot-edge.md
   - linkListType: video
     links:
-    - text: Implementieren der Anomalieerkennung in der lokalen Umgebung mit Containerunterstützung
+    - text: Implementieren der Anomalieerkennung in der lokalen Umgebung mit Containerunterstützung (univariat)
       url: https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support
 - title: Hilfe und Feedback
   linkLists:
@@ -106,11 +112,9 @@ landingContent:
     links:
     - text: Beitreten zur Ratgebergruppe für die Anomalieerkennung auf Microsoft Teams
       url: https://aka.ms/adadvisorsjoin
-    - text: Ausgewählter benutzergenerierter Inhalt
-      url: user-generated-content.md
   - linkListType: reference
     links:
-    - text: Problembehandlung bei multivariaten Anomalien
+    - text: Fehlercodes (multivariat)
       url: concepts/troubleshoot.md
     - text: Support- und Hilfeoptionen
       url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
@@ -118,29 +122,29 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Univariate REST-API
+    - text: REST API (univariat)
       url: https://aka.ms/anomaly-detector-rest-api-ref
-    - text: .NET SDK
+    - text: .NET SDK (univariat)
       url: https://aka.ms/anomaly-detector-dotnet-ref
-    - text: .Python SDK
+    - text: Python SDK (univariat)
       url: https://go.microsoft.com/fwlink/?linkid=2090370
-    - text: Go SDK
+    - text: Go SDK (univariat)
       url: https://go.microsoft.com/fwlink/?linkid=2089915
-    - text: Node.js SDK
+    - text: Node.js SDK (univariat)
       url: https://go.microsoft.com/fwlink/?linkid=2090788
-    - text: Azure PowerShell
+    - text: Azure PowerShell (univariat)
       url: /powershell/module/az.cognitiveservices/#cognitive_services
-    - text: Azure CLI
+    - text: Azure CLI (univariat)
       url: /cli/azure/cognitiveservices#az_cognitiveservices_list
   - linkListType: reference
     links:
-    - text: Multivariate REST-API
+    - text: REST-API (multivariat)
       url: https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector-v1-1-preview/operations/DetectAnomaly
-    - text: .NET SDK
+    - text: .NET SDK (multivariat)
       url: https://go.microsoft.com/fwlink/?linkid=2165601&clcid=0x409
-    - text: Python SDK
+    - text: Python SDK (multivariat)
       url: https://go.microsoft.com/fwlink/?linkid=2165298&clcid=0x409
-    - text: Java-SDK
+    - text: Java SDK (multivariat)
       url: https://go.microsoft.com/fwlink/?linkid=2165600&clcid=0x409
-    - text: Node.js SDK
+    - text: Node.js SDK (multivariat)
       url: https://go.microsoft.com/fwlink/?linkid=2165523&clcid=0x409

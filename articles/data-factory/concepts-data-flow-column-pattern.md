@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 68c211608cfceedaa9d13a595be6d1e5de17f1d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/21/2021
+ms.openlocfilehash: aca49982cf6e25e95002c1fab40b46ef05c842e2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94845004"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454941"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Verwenden von Spaltenmustern in Mappingdatenflüssen
 
@@ -33,7 +33,6 @@ Um ein Spaltenmuster in einer Transformation einer abgeleiteten Spalte, eines Ag
 
 Verwenden Sie den [Ausdrucks-Generator](concepts-data-flow-expression-builder.md), um die Übereinstimmungsbedingung einzugeben. Erstellen Sie einen booleschen Ausdruck, um Spalten auf der Grundlage von `name`, `type`, `stream`, `origin` und `position` der Spalte abzugleichen. Das Muster wirkt sich sowohl auf Spalten mit Datendrift als auch auf definierte Spalten aus, bei denen die Bedingung zutrifft (also „true“ zurückgegeben wird).
 
-Die beiden Ausdrucksfelder unterhalb der Übereinstimmungsbedingung geben die neuen Namen und Werte der betroffenen Spalten an. Verwenden Sie `$$`, um auf den vorhandenen Wert des abgeglichenen Felds zu verweisen. Das linke Ausdrucksfeld definiert den Namen, das rechte den Wert.
 
 ![Screenshot: Registerkarte mit den Einstellungen der abgeleiteten Spalte](media/data-flow/edit-column-pattern.png "Spaltenmuster")
 
@@ -85,7 +84,7 @@ Das obige Beispiel stimmt mit allen Unterspalten der komplexen Spalte `a` übere
 
 * `$$` wird zur Laufzeit in den Namen oder Wert der jeweiligen Übereinstimmung umgewandelt. Stellen Sie sich `$$` als gleichwertig zu `this` vor.
 * `name` stellt den Namen der einzelnen eingehenden Spalten dar.
-* `type` stellt den Datentyp der einzelnen eingehenden Spalten dar.
+* `type` stellt den Datentyp der einzelnen eingehenden Spalten dar. Die Liste der Datentypen im Datenflusstypsystem finden Sie [hier](concepts-data-flow-overview.md#data-flow-data-types).
 * `stream` stellt den Namen dar, der dem jeweiligen Datenstrom oder der Transformation in Ihrem Flow zugeordnet ist.
 * `position` ist die Ordinalposition von Spalten in Ihrem Datenfluss.
 * `origin` ist die Transformation, von der eine Spalte stammt oder bei der sie zuletzt aktualisiert wurde.

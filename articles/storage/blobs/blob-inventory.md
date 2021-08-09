@@ -2,24 +2,24 @@
 title: Verwalten von Blobdaten mit dem Azure Storage-Bestand (Vorschau)
 description: Der Azure Storage-Bestand ist ein Tool, mit dem Sie eine Übersicht über alle Ihre Blobdaten in einem Speicherkonto erhalten.
 services: storage
-author: twooley
+author: normesta
 ms.service: storage
 ms.date: 04/01/2021
 ms.topic: conceptual
-ms.author: twooley
+ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 33d50d1a6b5e84d178b522851795bcc42f5fc169
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 14092e4d6ea63c96b653aaf09160e69a8ad30299
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277265"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753771"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Verwalten von Blobdaten mit dem Azure Storage-Blobbestand (Vorschau)
 
-Die Funktion Azure Storage-Blobbestand bietet Ihnen eine Übersicht über Ihre Blobdaten in einem Speicherkonto. Mithilfe des Bestandsberichts können Sie die gesamte Datengröße, das Alter, den Verschlüsselungsstatus usw. besser verstehen. Der Bericht enthält eine Übersicht über Ihre Daten, die Sie auch für Geschäfts- und Complianceanforderungen nutzen können. Nach der Aktivierung wird automatisch täglich ein Bestandsbericht erstellt.
+Die Funktion Azure Storage-Blobbestand bietet Ihnen eine Übersicht über Ihre Blobdaten in einem Speicherkonto. Mithilfe des Bestandsberichts können Sie Ihre gesamte Datengröße, das Alter, die Zugriffsebenen usw. besser verstehen. Der Bericht enthält eine Übersicht über Ihre Daten, die Sie auch für Geschäfts- und Complianceanforderungen nutzen können. Nach der Aktivierung wird automatisch täglich ein Bestandsbericht erstellt.
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -30,14 +30,7 @@ Der Blobbestand wird sowohl für die universelle Version 2 (General Purpose Ver
 
 ### <a name="preview-regions"></a>Vorschauregionen
 
-Die Vorschauversion des Blobbestands ist für Speicherkonten in den folgenden Regionen verfügbar:
-
-- Frankreich, Mitte
-- Kanada, Mitte
-- Kanada, Osten
-- East US
-- USA (Ost 2)
-- Europa, Westen
+Die Blobinventurvorschau steht für Speicherkonten in allen öffentlichen Regionen (mit Ausnahme von „USA, Westen“) zur Verfügung.
 
 ### <a name="pricing-and-billing"></a>Preise und Abrechnung
 

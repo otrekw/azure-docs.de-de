@@ -5,17 +5,38 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI, devx-track-azurecli
-ms.openlocfilehash: 07b0897de3fce6a108836f1e72ce956a3a8092f1
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: c52dfe33de673f6ad529a3065b9567a685acfad5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107893120"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062546"
 ---
 <!--Create a media services account -->
 
-Der folgende Azure CLI-Befehl erstellt ein neues Media Services-Konto. Sie können die folgenden Werte ersetzen: `amsaccount`, `storageaccountforams` (muss dem Wert für Ihr Speicherkonto entsprechen) und `amsResourceGroup` (muss dem Wert für Ihre Ressourcengruppe entsprechen).
+Der folgende Azure CLI-Befehl erstellt ein neues Media Services-Konto. Sie können die folgenden Werte ersetzen: `your-media-services-account-name`, `your-storage-account-name` und `your-resource-group-name`. Der Befehl setzt voraus, dass Sie bereits eine Ressourcengruppe und ein Speicherkonto erstellt haben.
 
-```azurecli
-az ams account create --name amsaccount -g amsResourceGroup --storage-account storageaccountforams -l westus2
+```azurecli-interactive
+az ams account create --name <your-media-services-account-name> -g <your-resource-group-name> --storage-account <your-storage-account-name> -l <your-region>
+```
+
+JSON-Beispielantwort:
+
+```json
+{
+  "id": "/subscriptions/00000000-0000-0000-000000000000/resourceGroups/your-resource-group-name/providers/Microsoft.Media/mediaservices/your-media-services-account-name",
+  "location": "your-region",
+  "mediaServiceId": "the-media-services-account-id",
+  "name": "your-media-services-account-name",
+  "resourceGroup": "your-resource-group-name",
+  "storageAccounts": [
+    {
+      "id": "/subscriptions/00000000-0000-0000-000000000000/resourceGroups/your-resource-group-name/providers/Microsoft.Storage/storageAccounts/your-storage-account-name",
+      "resourceGroup": "your-resource-group-name",
+      "type": "Primary"
+    }
+  ],
+  "tags": null,
+  "type": "Microsoft.Media/mediaservices"
+}
 ```

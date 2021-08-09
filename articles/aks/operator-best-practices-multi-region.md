@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5bcd30c22132bc53ff28fdefcb73f686e08e34ea
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: eda7816050aedc0ff910d975f920d79771f7d0b4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105084"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461620"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,8 @@ Ein AKS-Cluster wird in einer einzelnen Region bereitgestellt. Um für Schutz Ih
     * AKS wird fortlaufend auf neue Regionen ausgeweitet.
 * [**Azure-Regionspaare**](../best-practices-availability-paired-regions.md)
     * Wählen Sie für den geografischen Bereich zwei miteinander gekoppelte Regionen aus.
-    * Regionspaare koordinieren Plattformupdates und priorisieren bei Bedarf Wiederherstellungsvorgänge.
+    * AKS-Plattform-Updates (geplante Wartungen) werden nach einer Verzögerung von mindestens 24 Stunden zwischen gekoppelten Regionen serialisiert. 
+    * Der Wiederherstellungsaufwand für gekoppelte Regionen wird bei Bedarf priorisiert. 
 * **Dienstverfügbarkeit**
     * Entscheiden Sie, ob Ihre Regionspaare heiß/heiß, heiß/warm oder heiß/kalt sein sollen.
     * Möchten Sie beide Regionen gleichzeitig betreiben, sodass eine Region sofort zur Verarbeitung des Datenverkehrs *bereit* ist? Oder:

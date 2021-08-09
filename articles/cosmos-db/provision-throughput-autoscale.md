@@ -5,14 +5,14 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 05/18/2021
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 675cd12c905a65cec0dd2fbb4209b5e2cc3a59ac
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 55899fc38652462f0f98b4ad2d916cf10f203458
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065258"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470969"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken mit automatisch skaliertem Durchsatz
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -59,7 +59,7 @@ Der Einstiegspunkt für den maximalen Durchsatz `Tmax` bei Autoskalierung beträ
 
 ## <a name="enable-autoscale-on-existing-resources"></a>Aktivieren der Autoskalierung für vorhandene Ressourcen
 
-Verwenden Sie [Azure-Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), eine [Azure Resource Manager-Vorlage](how-to-provision-autoscale-throughput.md#azure-resource-manager), [CLI](how-to-provision-autoscale-throughput.md#azure-cli) oder [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell), um die automatische Skalierung für eine vorhandene Datenbank oder einen Container zu aktivieren. Sie können jederzeit zwischen per Autoskalierung bereitgestelltem Durchsatz und Standarddurchsatz (manuell) wechseln. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
+Verwenden des [Microsoft Azure-Portals](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), der [CLI](how-to-provision-autoscale-throughput.md#azure-cli) oder der [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) um die Autoskalierung für eine vorhandene Datenbank oder einen vorhandenen Container zu aktivieren. Sie können jederzeit zwischen per Autoskalierung bereitgestelltem Durchsatz und Standarddurchsatz (manuell) wechseln. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Durchsatz- und Speicherlimits für die Autoskalierung
 

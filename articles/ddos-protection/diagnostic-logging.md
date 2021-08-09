@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 7f8e3df927b74cff7e4dc8bf1456600740c07088
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b8ae9365199edfde078cad39783458fc3f86ebd6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567677"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061496"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung
 
@@ -128,9 +128,7 @@ In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt:
 
 ## <a name="enable-diagnostic-logging-on-all-public-ips"></a>Aktivieren der Diagnoseprotokollierung für alle öffentlichen IP-Adressen
 
-Diese [Vorlage](https://aka.ms/ddosdiaglogs) erstellt eine Azure Policy-Definition, um die Diagnoseprotokollierung für alle Protokolle für öffentliche IP-Adressen in einem definierten Bereich automatisch zu aktivieren.
-
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FPolicy%20-%20DDOS%20Enable%20Diagnostic%20Logging%2FAzure%20Policy%2FDDoSLogs.json)
+Diese [integrierte Richtlinie](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F752154a7-1e0f-45c6-a880-ac75a7e4f648) aktiviert automatisch Diagnoseprotokollierung für alle öffentlichen IP-Protokolle in einem definierten Bereich. Eine vollständige Liste der integrierten Richtlinien finden Sie unter [Integrierte Azure Policy-Definitionen für Azure DDoS Protection Standard](policy-reference.md).
 
 ## <a name="view-log-data-in-workbooks"></a>Anzeigen von Protokolldaten in Arbeitsmappen
 

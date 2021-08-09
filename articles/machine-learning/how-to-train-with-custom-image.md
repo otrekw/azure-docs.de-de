@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7340b137ddc2eb1e51c3734c85e860636ef9797b
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 31b1ac989e90b525f754f49ccf2f6d5fd254ff58
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752641"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098594"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Trainieren eines Modells mithilfe eines benutzerdefinierten Docker-Images
 
@@ -53,13 +53,12 @@ ws = Workspace.from_config()
 
 ### <a name="define-your-environment"></a>Definieren der Umgebung
 
-Erstellen Sie ein `Environment`-Objekt, und aktivieren Sie Docker.
+Erstellen Sie ein `Environment`-Objekt.
 
 ```python
 from azureml.core import Environment
 
 fastai_env = Environment("fastai2")
-fastai_env.docker.enabled = True
 ```
 
 Das Basisimage im folgenden Code unterstützt die Bibliothek „fast.ai“, die Funktionen für verteiltes Deep Learning ermöglicht. Weitere Informationen finden Sie im [Docker Hub-Repository für „fast.ai“](https://hub.docker.com/u/fastdotai). 
@@ -145,7 +144,7 @@ print(compute_target.get_status().serialize())
 
 ## <a name="configure-your-training-job"></a>Konfigurieren Ihres Trainingsauftrags
 
-Verwenden Sie für dieses Tutorial das auf [GitHub](https://github.com/Azure/azureml-examples/blob/main/workflows/train/fastai/pets/src/train.py) verfügbare Trainingsskript *train.py*. In der Praxis können Sie jedes benutzerdefinierte Trainingsskript verwenden und so, wie es ist, mit Azure Machine Learning ausführen.
+Verwenden Sie für dieses Tutorial das auf [GitHub](https://github.com/Azure/azureml-examples/blob/main/python-sdk/workflows/train/fastai/pets/src/train.py) verfügbare Trainingsskript *train.py*. In der Praxis können Sie jedes benutzerdefinierte Trainingsskript verwenden und so, wie es ist, mit Azure Machine Learning ausführen.
 
 Erstellen Sie eine `ScriptRunConfig`-Ressource, um den Auftrag für die Ausführung auf dem gewünschten [Computeziel](how-to-set-up-training-targets.md) zu konfigurieren.
 

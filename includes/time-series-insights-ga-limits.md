@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: e584b6eff16636f0657c586f6c630dbf8bbb99b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9af31fb52a888148f33268a30c37609a5e8f2cd3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96025785"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110487564"
 ---
 Im Folgenden werden die wichtigsten Grenzwerte in Azure Time Series Insights Gen1 zusammengefasst.
 
@@ -24,13 +24,13 @@ Eingangsraten und Kapazitäten der S1- und S2-SKU bieten Flexibilität bei der K
 
 | Kapazität der SKU „S1“ | Eingangsrate | Maximale Speicherkapazität
 | --- | --- | --- |
-| 1 | 1 GB (1 Mio. Ereignisse) pro Tag | 30 GB (30 Mio. Ereignisse) pro Monat |
-| 10 | 10 GB (10 Mio. Ereignisse) pro Tag | 300 GB (300 Mio. Ereignisse) pro Monat |
+| 1 | 1 GB (1 Mio. Ereignisse) pro Tag | 30 GB (30 Mio. Ereignisse) |
+| 10 | 10 GB (10 Mio. Ereignisse) pro Tag | 300 GB (300 Mio. Ereignisse) |
 
 | Kapazität der SKU „S2“ | Eingangsrate | Maximale Speicherkapazität
 | --- | --- | --- |
-| 1 | 10 GB (10 Mio. Ereignisse) pro Tag | 300 GB (300 Mio. Ereignisse) pro Monat |
-| 10 | 100 GB (100 Mio. Ereignisse) pro Tag | 3 TB (3 Mrd. Ereignisse) pro Monat |
+| 1 | 10 GB (10 Mio. Ereignisse) pro Tag | 300 GB (300 Mio. Ereignisse) |
+| 10 | 100 GB (100 Mio. Ereignisse) pro Tag | 3 TB (3 Mrd. Ereignisse) |
 
 > [!NOTE]
 > Kapazitäten werden linear skaliert, sodass eine S1-SKU mit der Kapazität „2“ eine Erfassungsrate von 2 GB (2 Mio. Ereignisse) pro Tag und 60 GB (60 Mio. Ereignisse) pro Monat unterstützt.

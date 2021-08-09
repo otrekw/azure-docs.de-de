@@ -1,6 +1,6 @@
 ---
-title: C#-IoT Edge-Modul für Azure Stack Edge Pro | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie ein C#-IoT Edge-Modul entwickeln, das auf Ihrem Azure Stack Edge Pro-Gerät bereitgestellt werden kann.
+title: C#-IoT Edge-Modul für Azure Stack Edge Pro FPGA
+description: Erfahren Sie, wie Sie ein C#-IoT Edge-Modul für Azure Stack Edge Pro FPGA entwickeln.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,36 +9,36 @@ ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4519bc187c4ec53294e5eef15c4ad1954b691224
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cc7b71d644fa26c0262f2304b380827b36b6c193
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870839"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461325"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien mit Azure Stack Edge Pro
+# <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro-fpga"></a>Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien mit Azure Stack Edge Pro FPGA
 
-In diesem Artikel wird Schritt für Schritt erläutert, wie Sie ein IoT Edge-Modul zur Bereitstellung mit Ihrem Azure Stack Edge Pro-Gerät erstellen. Azure Stack Edge Pro ist eine Speicherlösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können.
+In diesem Artikel wird Schritt für Schritt erläutert, wie Sie ein IoT Edge-Modul zur Bereitstellung mit Ihrem Azure Stack Edge Pro FPGA-Gerät erstellen. Azure Stack Edge Pro FPGA ist eine Speicherlösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können.
 
-Sie können Azure IoT Edge-Module mit Azure Stack Edge Pro verwenden, um die Daten beim Verschieben in Azure zu transformieren. Mit dem in diesem Artikel verwendeten Modul wird die Logik zum Kopieren einer Datei von einer lokalen Freigabe in eine Cloudfreigabe auf Ihrem Azure Stack Edge Pro-Gerät implementiert.
+Sie können Azure IoT Edge-Module mit Azure Stack Edge Pro FPGA verwenden, um die Daten beim Verschieben in Azure zu transformieren. Mit dem in diesem Artikel verwendeten Modul wird die Logik zum Kopieren einer Datei von einer lokalen Freigabe in eine Cloudfreigabe auf Ihrem Azure Stack Edge Pro FPGA-Gerät implementiert.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 >
 > * Erstellen einer Containerregistrierung zum Speichern und Verwalten Ihrer Module (Docker-Images)
-> * Erstellen eines IoT Edge Pro-Moduls zur Bereitstellung auf Ihrem Azure Stack Edge Pro-Gerät 
+> * Erstellen eines IoT Edge-Moduls zur Bereitstellung auf Ihrem Azure Stack Edge Pro FPGA-Gerät 
 
 
 ## <a name="about-the-iot-edge-module"></a>Informationen zum IoT Edge-Modul
 
-Auf dem Azure Stack Edge Pro-Gerät können IoT Edge-Module bereitgestellt und ausgeführt werden. Edge-Module sind im Wesentlichen Docker-Container, die eine bestimmte Aufgabe ausführen, z.B. Erfassen einer Nachricht von einem Gerät, Transformieren einer Nachricht oder Senden einer Nachricht an einen IoT Hub. In diesem Artikel erstellen Sie ein Modul, mit dem Dateien auf Ihrem Azure Stack Edge Pro-Gerät von einer lokalen Freigabe in eine Cloudfreigabe kopiert werden.
+Auf dem Azure Stack Edge Pro FPGA-Gerät können IoT Edge-Module bereitgestellt und ausgeführt werden. Edge-Module sind im Wesentlichen Docker-Container, die eine bestimmte Aufgabe ausführen, z.B. Erfassen einer Nachricht von einem Gerät, Transformieren einer Nachricht oder Senden einer Nachricht an einen IoT Hub. In diesem Artikel erstellen Sie ein Modul, mit dem Dateien auf Ihrem Azure Stack Edge Pro FPGA-Gerät von einer lokalen Freigabe in eine Cloudfreigabe kopiert werden.
 
-1. Die Dateien werden in die lokale Freigabe auf Ihrem Azure Stack Edge Pro-Gerät geschrieben.
+1. Die Dateien werden in die lokale Freigabe auf Ihrem Azure Stack Edge Pro FPGA-Gerät geschrieben.
 2. Der Dateiereignisgenerator erstellt ein Dateiereignis für jede in die lokale Freigabe geschriebene Datei. Die Dateiereignisse werden auch generiert, wenn eine Datei geändert wird. Die Dateiereignisse werden dann an den IoT Edge-Hub gesendet (in der IoT Edge-Runtime).
 3. Das benutzerdefinierte IoT Edge-Modul verarbeitet das Dateiereignis und erstellt ein Dateiereignisobjekt, das auch einen relativen Pfad für die Datei enthält. Das Modul generiert anhand des relativen Dateipfads einen absoluten Pfad und kopiert die Datei von der lokalen Freigabe in die Cloudfreigabe. Das Modul löscht dann die Datei aus der lokalen Freigabe.
 
-![Funktionsweise des Azure IoT Edge-Moduls mit Azure Stack Edge Pro](./media/azure-stack-edge-create-iot-edge-module/how-module-works-1.png)
+![Funktionsweise des Azure IoT Edge-Moduls mit Azure Stack Edge Pro FPGA](./media/azure-stack-edge-create-iot-edge-module/how-module-works-1.png)
 
 Sobald sich die Datei in der Cloudfreigabe befindet, wird sie automatisch in Ihr Azure Storage-Konto hochgeladen.
 
@@ -46,11 +46,11 @@ Sobald sich die Datei in der Cloudfreigabe befindet, wird sie automatisch in Ihr
 
 Vergewissern Sie sich zunächst, dass Sie über Folgendes verfügen:
 
-- Ein Azure Stack Edge Pro-Gerät, das ausgeführt wird.
+- Ein Azure Stack Edge Pro FPGA-Gerät, das ausgeführt wird.
 
     - Das Gerät verfügt auch über eine zugeordnete IoT Hub-Ressource.
     - Auf dem Gerät ist die Rolle „Edgecomputing“ konfiguriert.
-    Weitere Informationen zu Azure Stack Edge Pro finden Sie unter [Compute konfigurieren](azure-stack-edge-deploy-configure-compute.md#configure-compute).
+    Weitere Informationen zu Azure Stack Edge Pro FPGA finden Sie unter [Konfigurieren von Compute](azure-stack-edge-deploy-configure-compute.md#configure-compute).
 
 - Folgende Entwicklungsressourcen sind installiert:
 
@@ -278,4 +278,4 @@ Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und Code i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Bereitstellen und Ausführen dieses Moduls in Azure Stack Edge Pro finden Sie in den Schritten unter [Hinzufügen eines Moduls](azure-stack-edge-deploy-configure-compute.md#add-a-module).
+Informationen zum Bereitstellen und Ausführen dieses Moduls in Azure Stack Edge Pro FPGA finden Sie in den Schritten unter [Hinzufügen eines Moduls](azure-stack-edge-deploy-configure-compute.md#add-a-module).

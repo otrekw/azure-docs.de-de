@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 89e648099a5ac6d905f475319cc108dd0d05a6e9
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 6f732f7c59f76c99d82d5c4f7b062532c60a5a78
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106081084"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110164026"
 ---
 Je nach Betriebssystem des Clients unterscheiden sich die Verfahren für Remoteverbindungen mit dem Gerät.
 
@@ -38,35 +38,33 @@ Befolgen Sie die folgenden Schritte, um eine Remoteverbindung von einem Windows-
 1. Führen Sie eine Windows PowerShell-Sitzung als Administrator aus.
 2. Stellen Sie sicher, dass der Dienst Windows-Remoteverwaltung auf dem Client ausgeführt wird. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
-    `winrm quickconfig`
+    ```powershell
+    winrm quickconfig
+    ```
 
     Weitere Informationen finden Sie unter [Installation und Konfiguration für die Windows-Remoteverwaltung](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration).
 
-3. Weisen Sie der IP-Adresse des Geräts eine Variable zu.
+3. Weisen Sie der in der Datei `hosts` verwendeten Verbindungszeichenfolge eine Variable zu.
 
-    $ip = "<device_ip>"
+    ```powershell
+    $Name = "<Node serial number>.<DNS domain of the device>"
+    ``` 
 
-    Ersetzen Sie `<device_ip>` durch die IP-Adresse des Geräts.
+    Ersetzen Sie `<Node serial number>` und `<DNS domain of the device>` durch die Seriennummer des Knotens und die DNS-Domäne Ihres Geräts. Sie können die Werte für die Seriennummer des Knotens von der Seite **Zertifikate** und die DNS-Domäne von der Seite **Gerät** in der lokalen Webbenutzeroberfläche Ihres Geräts abrufen.
 
-4. Geben Sie den folgenden Befehl ein, um der Liste der vertrauenswürdigen Hosts des Clients die IP-Adresse Ihres Geräts hinzuzufügen:
+4. Geben Sie den folgenden Befehl ein, um der Liste der vertrauenswürdigen Hosts des Clients die Verbindungszeichenfolge für Ihr Gerät hinzuzufügen:
 
-    `Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force`
+    ```powershell
+    Set-Item WSMan:\localhost\Client\TrustedHosts $Name -Concatenate -Force
+    ```
 
 5. Starten Sie eine Windows PowerShell-Sitzung auf dem Gerät:
 
-    `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL`
-
-    Wenn ein Fehler im Zusammenhang mit der Vertrauensstellung auftritt, überprüfen Sie, ob die Signaturkette des Knotenzertifikats, das auf Ihr Gerät hochgeladen wurde, auch auf dem Client installiert ist, der auf Ihr Gerät zugreift.
-
-    Wenn Sie die Zertifikate nicht verwenden (es wird empfohlen, dass Sie die Zertifikate verwenden!), können Sie diese Überprüfung überspringen, indem Sie die Sitzungsoptionen verwenden: `-SkipCACheck -SkipCNCheck -SkipRevocationCheck`.
-
     ```powershell
-    $sessOptions = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck 
-    Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL -SessionOption $sessOptions    
+    Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL
     ```
 
-    > [!NOTE] 
-    > Wenn Sie die Option `-UseSSL` verwenden, führen Sie Remoting über PowerShell per *HTTPS* aus. Sie sollten immer *HTTPS* für Remoteverbindungen über PowerShell verwenden. 
+    Wenn ein Fehler im Zusammenhang mit der Vertrauensstellung auftritt, überprüfen Sie, ob die Signaturkette des Knotenzertifikats, das auf Ihr Gerät hochgeladen wurde, auch auf dem Client installiert ist, der auf Ihr Gerät zugreift.
 
 6. Geben Sie das Kennwort an, wenn Sie dazu aufgefordert werden. Verwenden Sie dasselbe Kennwort wie für die Anmeldung bei der lokalen Webbenutzeroberfläche. Das Standardkennwort für die lokale Webbenutzeroberfläche lautet *Password1*. Wenn Sie mithilfe von PowerShell eine Verbindung mit dem Gerät herstellen konnten, wird die folgende Beispielausgabe angezeigt:  
 
@@ -76,13 +74,59 @@ Befolgen Sie die folgenden Schritte, um eine Remoteverbindung von einem Windows-
     
     PS C:\WINDOWS\system32> winrm quickconfig
     WinRM service is already running on this machine.
-    PS C:\WINDOWS\system32> $ip = "10.100.10.10"
-    PS C:\WINDOWS\system32> Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force
-    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL
+    PS C:\WINDOWS\system32> $Name = "1HXQG13.wdshcsso.com"
+    PS C:\WINDOWS\system32> Set-Item WSMan:\localhost\Client\TrustedHosts $Name -Concatenate -Force
+    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL
 
     WARNING: The Windows PowerShell interface of your device is intended to be used only for the initial network configuration. Please engage Microsoft Support if you need to access this interface to troubleshoot any potential issues you may be experiencing. Changes made through this interface without involving Microsoft Support could result in an unsupported configuration.
-    [10.100.10.10]: PS>
+    [1HXQG13.wdshcsso.com]: PS>
     ```
+
+Wenn Sie die Option `-UseSSL` verwenden, führen Sie Remoting über PowerShell per *HTTPS* aus. Sie sollten immer *HTTPS* für Remoteverbindungen über PowerShell verwenden. In vertrauenswürdigen Netzwerken sind PowerShell-Remotesitzungen über HTTP zulässig. Sie müssen PowerShell-Remotesitzungen über HTTP jedoch zunächst über die lokale Benutzeroberfläche aktivieren. Dann können Sie eine Verbindung mit der PowerShell-Schnittstelle des Geräts herstellen, indem Sie die zuvor beschriebene Prozedur ohne die Option `-UseSSL` befolgen.
+
+Wenn Sie die Zertifikate nicht verwenden (nicht empfohlen), können Sie die Zertifikatvalidierung überspringen, indem Sie die Sitzungsoptionen verwenden: `-SkipCACheck -SkipCNCheck -SkipRevocationCheck`.
+
+```powershell
+$sessOptions = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck 
+Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL -SessionOption $sessOptions    
+```
+Hier sehen Sie eine Beispielausgabe, wenn die Zertifikatvalidierung übersprungen wird:
+
+```powershell
+PS C:\WINDOWS\system32> $Name = "1HXQG13.wdshcsso.com"
+PS C:\WINDOWS\system32> $sessOptions = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
+PS C:\WINDOWS\system32> $sessOptions
+
+MaximumConnectionRedirectionCount : 5
+NoCompression                     : False
+NoMachineProfile                  : False
+ProxyAccessType                   : None
+ProxyAuthentication               : Negotiate
+ProxyCredential                   :
+SkipCACheck                       : True
+SkipCNCheck                       : True
+SkipRevocationCheck               : True
+OperationTimeout                  : 00:03:00
+NoEncryption                      : False
+UseUTF16                          : False
+IncludePortInSPN                  : False
+OutputBufferingMode               : None
+MaxConnectionRetryCount           : 0
+Culture                           :
+UICulture                         :
+MaximumReceivedDataSizePerCommand :
+MaximumReceivedObjectSize         :
+ApplicationArguments              :
+OpenTimeout                       : 00:03:00
+CancelTimeout                     : 00:01:00
+IdleTimeout                       : -00:00:00.0010000
+
+PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL -SessionOption $sessOptions
+WARNING: The Windows PowerShell interface of your device is intended to be used only for the initial network configuration. Please
+engage Microsoft Support if you need to access this interface to troubleshoot any potential issues you may be experiencing.
+Changes made through this interface without involving Microsoft Support could result in an unsupported configuration.
+[1HXQG13.wdshcsso.com]: PS>
+```
 
 > [!IMPORTANT]
 > In der aktuellen Version können Sie eine Verbindung mit der PowerShell-Schnittstelle des Geräts nur über einen Windows-Client herstellen. Die `-UseSSL` Option funktioniert nicht mit den Linux-Clients.

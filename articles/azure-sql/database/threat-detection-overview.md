@@ -5,27 +5,26 @@ description: Advanced Threat Protection erkennt anomale Datenbankaktivitäten, d
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.devlang: ''
 ms.custom: sqldbrb=2
 ms.topic: conceptual
-author: monhaber
-ms.author: ronmat
+author: davidtrigano
+ms.author: datrigan
 ms.reviewer: vanto, sstein
-ms.date: 12/01/2020
+ms.date: 06/09/2021
 tags: azure-synapse
-ms.openlocfilehash: 931e914cd3c184136395a9bb9a7e148a90e9fb91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 688a171b7f84b1aeb91adcd45115389c92e652d0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96461946"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970687"
 ---
-# <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Advanced Threat Protection für Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
-[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
+# <a name="sql-advanced-threat-protection"></a>SQL Advanced Threat Protection
+[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)] :::image type="icon" source="../media/applies-to/yes.png" border="false":::SQL Server auf Azure-VMs :::image type="icon" source="../media/applies-to/yes.png" border="false":::SQL Server mit Azure Arc-Unterstützung
 
-Advanced Threat Protection für [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) erkennt anomale Aktivitäten, die auf ungewöhnliche und möglicherweise schädigende Zugriffs- oder Exploitversuche auf Datenbanken hinweisen.
+Advanced Threat Protection für [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md), [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md), [SQL Server auf Azure-VMs](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) und [SQL Server mit Azure Arc-Unterstützung](/sql/sql-server/azure-arc/overview.ms) erkennt anomale Aktivitäten, die auf ungewöhnliche und möglicherweise schädliche Zugriffs- oder Exploitversuche auf Datenbanken hinweisen.
 
-Advanced Threat Protection ist Teil des [Azure Defender für SQL](azure-defender-for-sql.md)-Angebots. Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf Advanced Threat Protection und dessen Verwaltung sind über das zentrale Azure Defender für SQL-Portal möglich.
+Advanced Threat Protection ist Teil des [Azure Defender für SQL](../../security-center/defender-for-sql-introduction.md)-Angebots. Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf Advanced Threat Protection und dessen Verwaltung sind über das zentrale Azure Defender für SQL-Portal möglich.
 
 ## <a name="overview"></a>Übersicht
 
@@ -35,7 +34,7 @@ Zur vollständigen Untersuchung empfiehlt es sich, die Datenbanküberwachung zu 
 
 ## <a name="alerts"></a>Alerts
 
-Advanced Threat Protection für Azure SQL-Datenbank erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Ihre Datenbanken zuzugreifen oder diese zu nutzen. Eine Liste der Warnungen für Azure SQL-Datenbank finden Sie in den [Warnungen für SQL-Datenbank und Azure Synapse Analytics in Azure Security Center](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse).
+Advanced Threat Protection erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu nutzen. Eine Liste der Warnungen finden Sie in den [Warnungen für SQL-Datenbank und Azure Synapse Analytics](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse) in Azure Security Center.
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>Erkennen eines verdächtigen Ereignisses
 

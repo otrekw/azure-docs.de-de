@@ -12,16 +12,14 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: c365f367a090f1697b71c51f24679b9ea09561d0
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: fb9c9f460b46f8dec741f4c22460cbe9d44c6a0e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490011"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791109"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
-
-*Dieser Artikel gilt für Operatoren und Geräteentwickler.*
 
 In diesem Artikel wird beschrieben, wie Geräte die Verbindung mit einer Azure IoT Central-Anwendung herstellen. Bevor ein Gerät Daten mit IoT Central austauschen kann, muss es folgende Aktionen ausführen:
 
@@ -184,7 +182,7 @@ Wenn das Gerät eine Verbindung herstellt, ordnet IoT Central automatisch einem
 1. Wenn die Gerätevorlage nicht bereits in der IoT Central-Anwendung veröffentlicht ist, sucht IoT Central im [öffentlichen Modellrepository](https://github.com/Azure/iot-plugandplay-models) nach dem Gerätemodell. Wenn IoT Central das Modell findet, wird es verwendet, um eine einfache Gerätevorlage zu generieren.
 1. Wenn IoT Central das Modell nicht im öffentlichen Modellrepository findet, wird das Gerät als **Nicht zugeordnet** gekennzeichnet. Ein Operator kann eine Gerätevorlage für das Gerät erstellen und dann das nicht zugeordnete Gerät zur neuen Gerätevorlage migrieren.
 
-Der folgende Screenshot zeigt, wie Sie die Modell-ID einer Gerätevorlage in IoT Central anzeigen. Wählen Sie in einer Gerätevorlage eine Komponente aus, und wählen Sie dann **Identität anzeigen** aus:
+Der folgende Screenshot zeigt, wie Sie die Modell-ID einer Gerätevorlage in IoT Central anzeigen. Wählen Sie in einer Gerätevorlage eine Komponente und dann **Identität bearbeiten** aus:
 
 :::image type="content" source="media/concepts-get-connected/model-id.png" alt-text="Screenshot der Modell-ID in der Thermostatgerätevorlage.":::
 
@@ -213,7 +211,16 @@ Wenn ein echtes Gerät eine Verbindung mit Ihrer IoT Central-Anwendung herstellt
     - Eine Gruppe von Geräten wurde auf der Seite **Geräte** mithilfe der Option **Importieren** hinzugefügt, ohne die Gerätevorlage anzugeben.
     - Ein Geräte wurde auf der Seite **Geräte** manuell hinzugefügt, ohne die Gerätevorlage anzugeben. Das Gerät stellte dann eine Verbindung mit gültigen Anmeldeinformationen her.  
 
-    Der Operator kann auf der Seite **Geräte** mithilfe der Schaltfläche **Migrieren** einem Gerät eine Gerätevorlage zuordnen.
+    Ein Operator kann auf der Seite **Geräte** über die Schaltfläche **Migrieren** einem Gerät eine Gerätevorlage zuordnen.
+
+## <a name="device-connection-status"></a>Geräteverbindungsstatus
+Wenn ein Gerät oder Edgegerät eine Verbindung mithilfe des MQTT-Protokolls herstellt, werden _verbundene_ und _getrennte_ Ereignisse für das Gerät angezeigt. Diese Ereignisse werden nicht vom Gerät gesendet, sondern intern von IoT Central generiert.
+
+Das folgende Diagramm zeigt, wie die Verbindung beim Herstellen einer Verbindung mit einem Gerät am Ende eines Zeitfensters registriert wird. Wenn mehrere Verbindungs- und Trennungsereignisse eintreten, registriert IoT Central das Ereignis, das dem Ende des Zeitfensters am nächsten ist. Wenn beispielsweise ein Gerät die Verbindung trennt und innerhalb des Zeitfensters wieder herstellt, registriert IoT Central das Verbindungsereignis. Zurzeit beträgt das Zeitfenster ungefähr eine Minute.
+
+:::image type="content" source="media/concepts-get-connected/device-connectivity-diagram.png" alt-text="Diagramm des Ereignisfensters für verbundene und getrennte Ereignisse" border="false":::
+
+Sie können Verbindungs- und Trennungsereignisse in [Exporte aus IoT Central](howto-export-data.md#set-up-data-export) einbeziehen. Weitere Informationen finden Sie unter [Reagieren auf IoT Hub-Ereignisse > Beschränkungen bei den Ereignissen „Gerät verbunden“ und „Gerät getrennt“](../../iot-hub/iot-hub-event-grid.md#limitations-for-device-connected-and-device-disconnected-events).
 
 ## <a name="sdk-support"></a>SDK-Unterstützung
 
@@ -261,7 +268,7 @@ Alle Daten, die zwischen Geräten und Azure IoT Central ausgetauscht werden, wer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie ein Geräteentwickler sind, werden einige der folgenden nächsten Schritte empfohlen:
+Als Nächstes werden die folgenden Schritte empfohlen:
 
 - Informieren Sie sich über [bewährte Methoden](concepts-best-practices.md) zum Entwickeln von Geräten.
 - Beispielcode, der die Verwendung von SAS-Token zeigt, finden Sie in [Tutorial: Erstellen einer Node.js-Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)](tutorial-connect-device.md)

@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/15/2020
+ms.date: 05/19/2021
 ms.author: rolyon
-ms.openlocfilehash: 9779c2a269902d856d1639ce78028d0e658656bb
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c9ab7faebc28354e96cf1c54332fc1d7b19ef196
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479830"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469904"
 ---
 # <a name="azure-custom-roles"></a>Benutzerdefinierte Azure-Rollen
 
@@ -155,7 +155,7 @@ Wenn Sie eine benutzerdefinierte Rolle erstellt haben, wird sie im Azure-Portal 
 
 In der folgenden Tabelle wird erläutert, was die Eigenschaften der benutzerdefinierten Rollen bedeuten.
 
-| Eigenschaft | Erforderlich | type | Beschreibung |
+| Eigenschaft | Erforderlich | Typ | Beschreibung |
 | --- | --- | --- | --- |
 | `Name`</br>`roleName` | Ja | String | Der Anzeigename der benutzerdefinierten Rolle. Obwohl es sich bei einer Rollendefinition um eine Ressource auf Verwaltungsgruppen- oder Abonnementebene handelt, kann eine solche Definition in mehreren Abonnements verwendet werden, die dasselbe Azure AD-Verzeichnis gemeinsam nutzen. Der Anzeigename muss im Bereich des Azure AD-Verzeichnisses eindeutig sein. Er kann Buchstaben, Ziffern, Leerzeichen und Sonderzeichen enthalten. Die maximale Anzahl von Zeichen ist 128. |
 | `Id`</br>`name` | Ja | String | Die eindeutige ID der benutzerdefinierten Rolle. Für Azure PowerShell und Azure CLI wird diese ID automatisch generiert, wenn Sie eine neue Rolle erstellen. |
@@ -185,12 +185,6 @@ Anstatt all diese Zeichenfolgen hinzuzufügen, können Sie jedoch auch einfach e
 Microsoft.CostManagement/exports/*
 ```
 
-Eine Zeichenfolge kann auch mehrere Platzhalter enthalten. Die folgende Zeichenfolge stellt z. B. alle Abfrageberechtigungen für Cost Management dar.
-
-```
-Microsoft.CostManagement/*/query/*
-```
-
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Rollen zum Erstellen, Löschen, Aktualisieren oder Anzeigen einer benutzerdefinierten Rolle
 
 Wie integrierte Rollen legt die `AssignableScopes`-Eigenschaft die Bereiche fest, in denen die Rolle zur Zuweisung verfügbar ist. Die `AssignableScopes`-Eigenschaft für eine benutzerdefinierte Rolle steuert auch, wer zum Erstellen, Löschen, Aktualisieren oder Anzeigen der benutzerdefinierten Rolle berechtigt ist.
@@ -210,6 +204,7 @@ In der nachstehenden Liste werden die Grenzwerte bei benutzerdefinierten Rollen 
 - `AssignableScopes` kann nicht auf den Stammbereich (`"/"`) festgelegt werden.
 - In `AssignableScopes` können Sie keine Platzhalter (`*`) verwenden. Diese Platzhaltereinschränkung soll sicherstellen, dass ein Benutzer keinen Zugriff auf einen Bereich durch Aktualisieren der Rollendefinition erhalten kann.
 - Sie können in den `AssignableScopes` einer benutzerdefinierten Rolle nur eine einzige Verwaltungsgruppe definieren. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
+- Sie können nur einen Platzhalter in einer Aktionszeichenfolge verwenden.
 - Benutzerdefinierte Rollen mit `DataActions` können im Verwaltungsgruppenbereich nicht zugewiesen werden.
 - Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist.
 

@@ -1,23 +1,23 @@
 ---
 title: Supportmatrix für Azure-Blobsicherung
-description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-Blobs (Vorschau).
+description: Dieser Artikel bietet eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-Blobs.
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 05/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: 12d289fdc3f84e7cbb3489a3ece283179e51772c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 06e6d193ec929961dd4eeb192045a217aefa4ab2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561898"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475099"
 ---
-# <a name="support-matrix-for-azure-blobs-backup-in-preview"></a>Supportmatrix für Azure-Blobsicherung (Vorschau)
+# <a name="support-matrix-for-azure-blobs-backup"></a>Supportmatrix für Azure-Blobsicherung
 
 In diesem Artikel erhalten Sie einen Überblick über die regionale Verfügbarkeit, die unterstützten Szenarien und die Einschränkungen der operativen Sicherung von Blobs.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Die operative Sicherung für Blobs ist derzeit in den folgenden Regionen verfügbar: Australien, Mitte; Australien, Osten; Brasilien, Süden; Kanada, Mitte; Indien, Mitte; USA, Mitte; Asien, Osten; USA, Osten; USA, Osten 2, Deutschland, Westen-Mitte; Japan, Osten; Japan, Westen; Südkorea, Mitte; Südkorea, Süden; Europa, Norden; USA, Süden-Mitte, Asien, Südosten; Schweiz, Norden, VAE, Norden; Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen; USA, Westen-Mitte; Europa, Westen; USA, Westen; USA, Westen 2
+Operative Sicherungen für Blobs sind derzeit in den folgenden Regionen verfügbar: „Australien, Mitte“, „Australien, Mitte 2“, „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Brasilien, Südosten“, „Kanada, Mitte“, „Kanada, Osten“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Frankreich, Mitte“, „Deutschland, Norden“, „Deutschland, Westen-Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „Norwegen, Osten“, „Norwegen, Westen“, „Südafrika, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Schweiz, Norden“, „Schweiz, Westen“, „VAE, Mitte“, „VAE, Norden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Westen-Mitte“, „Europa, Westen“, „Indien, Westen“, „USA, Westen“ und „USA, Westen 2“.
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -35,4 +35,4 @@ Die operative Sicherung von Blobs verwendet die Zeitpunktwiederherstellung von B
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Übersicht über die operative Sicherung für Azure-Blobs (Vorschau)](blob-backup-overview.md)
+[Übersicht über die operative Sicherung für Azure-Blobs](blob-backup-overview.md)

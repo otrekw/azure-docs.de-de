@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 3ec44d20b763a98683d9b947c94ad6be75180113
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 585c2985850d47b8df80df6d748bff3a8fafcb1b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93092239"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464934"
 ---
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Erstellen/Einfügen von Daten in die Cassandra-API für Azure Cosmos DB aus Spark
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,8 +28,8 @@ import org.apache.spark.sql.cassandra._
 import com.datastax.spark.connector._
 import com.datastax.spark.connector.cql.CassandraConnector
 
-//CosmosDB library for multiple retry
-import com.microsoft.azure.cosmosdb.cassandra
+//if using Spark 2.x, CosmosDB library for multiple retry
+//import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
 spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
@@ -37,15 +37,22 @@ spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
 spark.conf.set("spark.cassandra.auth.password","YOUR_ACCOUNT_KEY")
-spark.conf.set("spark.cassandra.connection.factory", "com.microsoft.azure.cosmosdb.cassandra.CosmosDbConnectionFactory")
+// if using Spark 2.x
+// spark.conf.set("spark.cassandra.connection.factory", "com.microsoft.azure.cosmosdb.cassandra.CosmosDbConnectionFactory")
+
 //Throughput-related...adjust as needed
 spark.conf.set("spark.cassandra.output.batch.size.rows", "1")
-spark.conf.set("spark.cassandra.connection.connections_per_executor_max", "10")
+//spark.conf.set("spark.cassandra.connection.connections_per_executor_max", "10") // Spark 2.x
+spark.conf.set("spark.cassandra.connection.remoteConnectionsPerExecutor", "10") // Spark 3.x
 spark.conf.set("spark.cassandra.output.concurrent.writes", "1000")
 spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
+
+> [!NOTE]
+> Wenn Sie Spark 3.0 oder höher verwenden, müssen Sie die Cosmos DB-Hilfs- und Verbindungs-Factory nicht installieren. Sie sollten auch `remoteConnectionsPerExecutor` anstelle von `connections_per_executor_max` für den Spark 3-Connector verwenden (siehe oben). Sie sehen, dass verbindungsbezogene Eigenschaften im obigen Notebook definiert sind. Mit der folgenden Syntax können so Verbindungseigenschaften definiert werden, ohne diese auf Clusterebene definierem zu müssen (Spark-Kontextinitialisierung).
+
 ## <a name="dataframe-api"></a>Datenrahmen-API
 
 ### <a name="create-a-dataframe-with-sample-data"></a>Erstellen eines Datenrahmens mit Beispieldaten
@@ -97,9 +104,11 @@ select * from books;
 
 ### <a name="create-a-rdd-with-sample-data"></a>Erstellen eines RDD mit Beispieldaten
 ```scala
-//Delete records created in the previous section 
+//Drop and re-create table to delete records created in the previous section 
 val cdbConnector = CassandraConnector(sc)
-cdbConnector.withSessionDo(session => session.execute("delete from books_ks.books where book_id in ('b00300','b00001','b00023','b00501','b09999','b01001','b00999','b03999','b02999');"))
+cdbConnector.withSessionDo(session => session.execute("DROP TABLE IF EXISTS books_ks.books;"))
+
+cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks.books(book_id TEXT,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT, PRIMARY KEY(book_id,book_pub_year)) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
 
 //Create RDD
 val booksRDD = sc.parallelize(Seq(
@@ -144,4 +153,3 @@ Nachdem Sie Daten in die Cassandra-API-Tabelle für Azure Cosmos DB eingefügt h
 * [Löschvorgänge](cassandra-spark-delete-ops.md)
 * [Aggregationsvorgänge](cassandra-spark-aggregation-ops.md)
 * [Tabellenkopiervorgänge an der Azure Cosmos DB-Cassandra-API von Spark aus](cassandra-spark-table-copy-ops.md)
-

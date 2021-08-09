@@ -4,16 +4,17 @@ description: Skalieren Sie Ihren Service Fabric-Cluster vertikal, indem Sie eine
 ms.date: 12/11/2020
 ms.author: pepogors
 ms.topic: how-to
-ms.openlocfilehash: 325ece761481077171a670c52e9d98071237601a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ad6b105d18f431c53c9fc46a463271e0481b4f0b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251176"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688586"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Hochskalieren des primären Knotentyps eines Service Fabric-Clusters
 
-Dieser Artikel beschreibt, wie Sie den primären Knotentyp eines Service Fabric-Clusters mit minimalen Ausfallzeiten hochskalieren können. Beim Upgraden eines Service Fabric-Clusterknotentyps gilt die folgende allgemeine Vorgehensweise:
+Dieser Artikel beschreibt, wie Sie den primären Knotentyp eines Service Fabric-Clusters mit minimalen Ausfallzeiten hochskalieren können. Direkte SKU-Upgrades auf Service Fabric-Clusterknoten werden nicht unterstützt, da solche Vorgänge potenziell Datenverluste und Verfügbarkeitsausfälle nach sich ziehen. Als sicherste und zuverlässigste Methode zum Hochskalieren eines Service Fabric-Knotentyps wird Folgendes empfohlen:
 
 1. Fügen Sie Ihrem Service Fabric-Cluster einen neuen Knotentyp hinzu, der durch die SKU und die Konfiguration der aktualisierten (oder geänderten) VM-Skalierungsgruppe unterstützt wird. Dieser Schritt umfasst auch das Einrichten eines neuen Load Balancers, Subnetzes und einer öffentlichen IP-Adresse für die Skalierungsgruppe.
 

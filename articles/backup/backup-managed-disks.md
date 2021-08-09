@@ -2,13 +2,13 @@
 title: Sichern von Azure Managed Disks
 description: Erfahren Sie, wie Sie Azure Managed Disks über das Azure-Portal sichern können.
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: e234495eb483d6d0cc6ca556ca418138c61a99f5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/27/2021
+ms.openlocfilehash: c47499c371a9eccfd97224344a48c166d0e1f811
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110626"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653629"
 ---
 # <a name="back-up-azure-managed-disks"></a>Sichern von Azure Managed Disks
 
@@ -81,6 +81,13 @@ Ein Sicherungstresor ist eine Speicherentität in Azure, die Sicherungsdaten fü
 
 ## <a name="configure-backup"></a>Konfigurieren der Sicherung
 
+- Azure Disk Backup unterstützt nur das Sichern der Betriebsebene. Das Kopieren von Sicherungen auf die Tresorspeicherebene ist derzeit nicht verfügbar. Die Speicherredundanzeinstellung des Sicherungstresors (LRS/GRS) gilt nicht für Sicherungen, die auf der Betriebsebene gespeichert sind.
+Inkrementelle Momentaufnahmen werden im Standard-HDD- Speicher gespeichert, unabhängig vom Speichertyp des Quelldatenträgers. Für höhere Zuverlässigkeit werden inkrementelle Momentaufnahmen standardmäßig in [zonenredundantem Speicher](../storage/common/storage-redundancy.md) (ZRS) gespeichert, wenn die entsprechende Region ZRS unterstützt.
+
+- Azure Disk Backup unterstützt abonnementübergreifende Sicherungen und Wiederherstellungen, bei denen sich der Sicherungstresor und der Quelldatenträger in unterschiedlichen Abonnements befinden. Die regionsübergreifende Sicherung und Wiederherstellung wird hingegen nicht unterstützt. Der Sicherungstresor und die zu sichernden Datenträger können sich also im selben oder in unterschiedlichen Abonnements befinden. Allerdings müssen sich der Sicherungstresor und die zu sichernden Datenträger in derselben Region befinden.
+
+- Beim Konfigurieren der Datenträgersicherung können Sie die Momentaufnahme-Ressourcengruppe, die einer Sicherungsinstanz zugewiesen ist, nicht ändern. 
+
 Der Sicherungstresor verwendet die verwaltete Identität für den Zugriff auf andere Azure-Ressourcen. Zum Konfigurieren der Sicherung verwalteter Datenträger benötigt die verwaltete Identität des Sicherungstresors einen Satz von Berechtigungen für die Quelldatenträger und Ressourcengruppen, in denen Momentaufnahmen erstellt und verwaltet werden.
 
 Eine systemseitig zugewiesene verwaltete Identität ist auf eine Ressource beschränkt und an den Lebenszyklus dieser Ressource gebunden. Sie können der verwalteten Identität mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Berechtigungen erteilen. Eine verwaltete Identität ist ein spezieller Dienstprinzipal, der nur zusammen mit Azure-Ressourcen verwendet werden kann. Informieren Sie sich ausführlicher über [verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md).
@@ -112,7 +119,24 @@ Die folgenden Voraussetzungen müssen erfüllt sein, um das Sichern von verwalte
 
    - Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Wählen Sie daher eine Ressourcengruppe im selben Abonnement wie der zu sichernde Datenträger aus. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) für verwaltete Datenträger.
 
-   Gehen Sie wie folgt vor, um eine Rolle zuzuweisen:
+   - Beim Konfigurieren der Datenträgersicherung können Sie die Momentaufnahme-Ressourcengruppe, die einer Sicherungsinstanz zugewiesen ist, nicht ändern.
+
+   - Während eines Sicherungsvorgangs erstellt der Azure Backup-Dienst ein Speicherkonto in der Momentaufnahme-Ressourcengruppe, in der die Momentaufnahmen gespeichert werden. Pro Momentaufnahme-Ressourcengruppe wird nur ein Speicherkonto erstellt. Das Konto wird auf mehreren Datenträger-Sicherungsinstanzen wiederverwendet, die dieselbe Ressourcengruppe wie die Momentaufnahme-Ressourcengruppe verwenden.
+     
+     - Momentaufnahmen werden nicht im Speicherkonto gespeichert. Inkrementelle Momentaufnahmen von verwalteten Datenträgern sind ARM-Ressourcen, die in der Ressourcengruppe und nicht in einem Speicherkonto erstellt werden. 
+     
+     - Das Speicherkonto wird verwendet, um Metadaten für jeden Wiederherstellungspunkt zu speichern. Azure Backup Dienst erstellt einen Blobcontainer pro Datenträgersicherungsinstanz. Für jeden Wiederherstellungspunkt wird ein Blockblob erstellt, um Metadaten zu speichern, die den Wiederherstellungspunkt beschreiben (z. B. Abonnement, Datenträger-ID, Datenträgerattribute usw.) und kaum Speicherplatz (wenige KiBs) belegen.
+     
+     - Das Speicherkonto wird als RA-GZRS erstellt, wenn die Region Zonenredundanz unterstützt. Wenn die Region keine Zonenredundanz unterstützt, wird das Speicherkonto als RA-GRS erstellt.<br>Wenn eine vorhandene Richtlinie die Erstellung eines Speicherkontos mit GRS-Redundanz für das Abonnement oder die Ressourcengruppe verhindert, wird das Speicherkonto als LRS erstellt. Das erstellte Speicherkonto ist **Universell v2**, wobei Blockblobs auf der heißen Ebene im Blobcontainer gespeichert werden. 
+     
+     - Die Anzahl der Wiederherstellungspunkte wird durch die Sicherungsrichtlinie bestimmt, die zum Konfigurieren der Sicherung der Datenträgersicherungsinstanz verwendet wird. Ältere Blockblobs werden gemäß dem Garbage Collection-Prozess gelöscht, wenn die entsprechenden älteren Wiederherstellungspunkte gelöscht werden.
+   
+   - Wenden Sie keine Ressourcensperren oder -richtlinien auf vom Azure Backup-Dienst erstellte Momentaufnahme-Ressourcengruppen oder Speicherkonten an. Der Dienst erstellt und verwaltet Ressourcen in dieser Momentaufnahme-Ressourcengruppe, die einer Sicherungsinstanz zugewiesen ist, wenn Sie die Sicherung eines Datenträgers konfigurieren. Das Speicherkonto und die darin gespeicherten Ressourcen werden vom Dienst erstellt und sollten nicht gelöscht oder verschoben werden.
+
+     >[!NOTE]
+     >Wenn ein Speicherkonto gelöscht wird, schlagen Sicherungen fehl, und die Wiederherstellung aller vorhandenen Wiederherstellungspunkte schlägt fehl.
+
+Gehen Sie wie folgt vor, um eine Rolle zuzuweisen:
 
    1. Wechseln Sie zur Ressourcengruppe. Sie Ressourcengruppe ist z. B. *SnapshotRG* und befindet sich im selben Abonnement wie der zu sichernde Datenträger.
 

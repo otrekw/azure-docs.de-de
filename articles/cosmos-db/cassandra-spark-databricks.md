@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 0a83dd143ae626108fdf8d2645b8cc368a3f3e05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ad08f613fc6f7b712c5443ad935c40c97bfdba4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100516565"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464886"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Zugriff auf die Azure Cosmos DB-Cassandra-API-Daten von Azure Databricks aus
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -48,9 +48,12 @@ Dieser Artikel behandelt die Arbeit mit der Azure Cosmos DB-Cassandra-API von S
 
 * **Cassandra-Spark-Connector**: Zur Integration der Azure Cosmos DB-Cassandra-API in Spark sollte der Cassandra-Connector dem Azure Databricks-Cluster angefügt werden. So fügen Sie das Cluster an:
 
-  * Überprüfen Sie die Version der Databricks Runtime, die Spark-Version. Suchen Sie dann die [Maven-Koordinaten](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector), die mit dem Cassandra-Spark-Connector kompatibel sind, und fügen Sie sie dem Cluster hinzu. Informationen zum Anfügen der Connector-Bibliothek an den Cluster finden Sie im Artikel [Upload a Maven package or Spark package (Hochladen eines Maven- oder Spark-Pakets)](https://docs.databricks.com/user-guide/libraries.html). Die Maven-Koordinate für „Databricks Runtime Version 4.3“, „Spark 2.3.1“ und „Scala 2.11“ ist z.B. `spark-cassandra-connector_2.11-2.3.1`.
+  * Überprüfen Sie die Version der Databricks Runtime, die Spark-Version. Suchen Sie dann die [Maven-Koordinaten](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector), die mit dem Cassandra-Spark-Connector kompatibel sind, und fügen Sie sie dem Cluster hinzu. Informationen zum Anfügen der Connector-Bibliothek an den Cluster finden Sie im Artikel [Upload a Maven package or Spark package (Hochladen eines Maven- oder Spark-Pakets)](https://docs.databricks.com/user-guide/libraries.html). Wir empfehlen die Auswahl der Version 7.5 der Databricks-Runtime, die Spark 3.0 unterstützt. Wählen Sie **Bibliotheken** > **Neu installieren** > **Maven** aus, und fügen Sie dann `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` in den Maven-Koordinaten hinzu, um den Apache Spark Cassandra-Connector ihrem Cluster hinzuzufügen. Bei Verwendung von Spark 2.x wird eine Umgebung mit Spark-Version 2.4.5 empfohlen, in der der Spark-Connector bei den maven-Koordinaten `com.datastax.spark:spark-cassandra-connector_2.11:2.4.3` verwendet wird.
 
-* **Azure Cosmos DB-Cassandra-API-spezifische Bibliothek**: Eine benutzerdefinierte Verbindungsfactory ist erforderlich, um die Wiederholungsrichtlinie des Cassandra-Spark-Connectors für die Azure Cosmos DB-Cassandra-API zu konfigurieren. Fügen Sie die `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`[Maven-Koordinaten](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) hinzu, um die Bibliothek dem Cluster anzufügen.
+* **Azure Cosmos DB Cassandra-API-spezifische Bibliothek**: Wenn Sie Spark 2.x verwenden, ist eine benutzerdefinierte Verbindungsfactory ist erforderlich, um die Wiederholungsrichtlinie des Cassandra-Spark-Connectors für die Azure Cosmos DB-Cassandra-API zu konfigurieren. Fügen Sie die `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.2.0`[Maven-Koordinaten](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.2.0/jar) hinzu, um die Bibliothek dem Cluster anzufügen.
+
+> [!NOTE]
+> Wenn Sie Spark 3.0 oder höher verwenden, müssen Sie die oben genannte Cosmos DB Cassandra-API-spezifische Bibliothek nicht installieren.
 
 ## <a name="sample-notebooks"></a>Beispiel-Notebooks
 

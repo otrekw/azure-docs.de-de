@@ -251,7 +251,7 @@
         - name: 'Load Balancer: öffentlich'
           href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: NAT Gateway
-          href: ../../virtual-network/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+          href: ../../virtual-network/nat-gateway/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Privater Endpunkt
           href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: "Private\_Link-Dienst"
@@ -293,7 +293,7 @@
     - name: Datentypen
       href: data-types.md
     - name: Häufig gestellte Fragen
-      href: frequently-asked-questions.md
+      href: frequently-asked-questions.yml
     - name: Vorlagen für Cloudkonsistenz
       href: template-cloud-consistency.md
     - name: Bereitstellungsmodi
@@ -313,7 +313,7 @@
           href: template-expressions.md
         - name: Parameter
           href: parameters.md
-        - name: Variablen
+        - name: Variables
           href: variables.md
         - name: Benutzerdefinierte Funktionen
           href: user-defined-functions.md
@@ -346,16 +346,16 @@
         - name: Erstellen mehrerer Instanzen
           items:
             - name: Ressourcen
-              displayName: 'iteration,copy,multiple'
+              displayName: 'iteration,copy'
               href: copy-resources.md
             - name: Eigenschaften
-              displayName: 'iteration,copy,multiple'
+              displayName: 'iteration,copy'
               href: copy-properties.md
             - name: Variables
-              displayName: 'iteration,copy,multiple'
+              displayName: 'iteration,copy'
               href: copy-variables.md
             - name: Ausgaben
-              displayName: 'iteration,copy,multiple'
+              displayName: 'iteration,copy'
               href: copy-outputs.md
     - name: Bereitstellen von Vorlagen
       items:
@@ -413,6 +413,8 @@
           href: test-toolkit.md
         - name: Testfälle
           href: test-cases.md
+        - name: CreateUiDefinition-Testfälle
+          href: createuidefinition-test-cases.md
     - name: Vorlagenspezifikationen
       items:
         - name: Erstellen und Bereitstellen von Vorlagenspezifikationen

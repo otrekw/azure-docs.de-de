@@ -9,12 +9,13 @@ ms.date: 02/12/2021
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 286e230a501b8730dd3c33e33639d89aa319d047
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 83e6cfa8589e7ba2df4d6d8452496cf7680cf5c6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286976"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676282"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt
 
@@ -56,7 +57,7 @@ Der Hostname entspricht der Speicherendpunkt-URL ohne die Protokoll-ID und den n
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
-2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Eigenschaften** aus.  
+2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Endpunkte** aus.  
 
 3. Kopieren Sie den Wert des **Blob-Dienstendpunkts** oder des **statischen Websiteendpunkts** in eine Textdatei. 
   
@@ -100,7 +101,7 @@ Erstellen Sie einen CNAME-Eintrag, der auf Ihren Hostnamen verweist. Ein CNAME-E
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
-2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Netzwerk** aus.
+2. Wählen Sie im Menübereich unter **Sicherheit + Netzwerkbetrieb** die Option **Netzwerk** aus.
 
 3. Wählen Sie auf der Seite **Netzwerk** die Registerkarte **Benutzerdefinierte Domäne** aus.
 
@@ -190,7 +191,7 @@ Der Hostname entspricht der Speicherendpunkt-URL ohne die Protokoll-ID und den n
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
-2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Eigenschaften** aus.  
+2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Endpunkte** aus.  
 
 3. Kopieren Sie den Wert des **Blob-Dienstendpunkts** oder des **statischen Websiteendpunkts** in eine Textdatei.  
 
@@ -236,7 +237,7 @@ Wenn Sie Ihre benutzerdefinierte Domäne vorab bei Azure registrieren, kann Azur
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
-2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Netzwerk** aus.
+2. Wählen Sie im Menübereich unter **Sicherheit + Netzwerkbetrieb** die Option **Netzwerk** aus.
 
 3. Wählen Sie auf der Seite **Netzwerk** die Registerkarte **Benutzerdefinierte Domäne** aus.
 
@@ -327,7 +328,7 @@ Wenn Sie die Zuordnung einer benutzerdefinierten Domäne entfernen möchten, mü
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
-2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Netzwerk** aus.
+2. Wählen Sie im Menübereich unter **Sicherheit + Netzwerkbetrieb** die Option **Netzwerk** aus.
 
 3. Wählen Sie auf der Seite **Netzwerk** die Registerkarte **Benutzerdefinierte Domäne** aus.
 

@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Computingnetzwerks in Azure Stack Edge Pro für den Zugriff auf Module | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie das Computingnetzwerk in Azure Stack Edge Pro erweitern, um über eine externe IP-Adresse auf Module zuzugreifen.
+title: Azure Stack Edge Pro FPGA-Compute-Netzwerkverwaltung für den Zugriff auf Module
+description: In diesem Artikel wird beschrieben, wie das Compute-Netzwerk in Azure Stack Edge Pro FPGA erweitert wird, um über eine externe IP-Adresse auf Module zuzugreifen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbbd43d07bbb07e13f2e0301e15d73ee727a86fd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90894114"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461237"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Aktivieren des Computingnetzwerks auf Ihrem Azure Stack Edge Pro-Gerät
 

@@ -3,12 +3,12 @@ title: Azure Video Analyzer-Pipeline
 description: Mit einer Azure Video Analyzer-Pipeline können Sie festlegen, woher die Eingabedaten erfasst werden sollen, wie sie verarbeitet werden sollen und wohin die Ergebnisse geliefert werden sollen. Eine Pipeline besteht aus Knoten, die verbunden sind, um den gewünschten Datenfluss zu erzielen.
 ms.topic: conceptual
 ms.date: 05/13/2021
-ms.openlocfilehash: 9e3945624a52b64612c7edca2f3380b072f60bec
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: deed7eec980272dd3dd001219016eee139f22ad6
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386113"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591240"
 ---
 # <a name="pipeline"></a>Pipeline
 
@@ -74,11 +74,11 @@ Mithilfe des Verarbeitungsknotens für die Bewegungserkennung können Sie Bewegu
 
 #### <a name="http-extension-processor"></a>Verarbeitungsknoten für die HTTP-Erweiterung
 
-Der HTTP-Erweiterungsprozessorknoten ermöglicht es Ihnen, die Pipeline auf Ihr eigenes IoT-Edge-Modul zu erweitern. Dieser Knoten nimmt dekodierte Videoframes als Eingabe und leitet diese Frames an einen HTTP-REST-Endpunkt weiter, der von Ihrem Modul bereitgestellt wird, wo Sie das Frame mit einem KI-Modell analysieren und die Ergebnisse der Inferenz zurückgeben können. Erfahren Sie hier mehr über den [Prozessor](pipeline-extension.md#http-extension-processor). Zusätzlich verfügt dieser Knoten über einen eingebauten Bildformatierer zur Skalierung und Codierung von Videobildern, bevor sie an den HTTP-Endpunkt weitergeleitet werden. Der Skalierer verfügt über Optionen, mit denen das Bildseitenverhältnis beibehalten, aufgefüllt oder gestreckt werden kann. Der Bild-Encoder unterstützt die Formate JPEG, PNG, BMP und RAW. Weitere Informationen zum [Prozessor finden Sie hier](/pipeline-extension.md#grpc-extension-processor).
+Der HTTP-Erweiterungsprozessorknoten ermöglicht es Ihnen, die Pipeline auf Ihr eigenes IoT-Edge-Modul zu erweitern. Dieser Knoten nimmt dekodierte Videoframes als Eingabe und leitet diese Frames an einen HTTP-REST-Endpunkt weiter, der von Ihrem Modul bereitgestellt wird, wo Sie das Frame mit einem KI-Modell analysieren und die Ergebnisse der Inferenz zurückgeben können. Zusätzlich verfügt dieser Knoten über einen eingebauten Bildformatierer zur Skalierung und Codierung von Videobildern, bevor sie an den HTTP-Endpunkt weitergeleitet werden. Der Skalierer verfügt über Optionen, mit denen das Bildseitenverhältnis beibehalten, aufgefüllt oder gestreckt werden kann. Der Bild-Encoder unterstützt die Formate JPEG, PNG, BMP und RAW. Weitere Informationen zum [Prozessor finden Sie hier](pipeline-extension.md#http-extension-processor).
 
 #### <a name="grpc-extension-processor"></a>gRPC-Erweiterungsprozessor
 
-Dieser gRPC-Erweiterungsprozessor verwendet decodierte Videoeinzelbilder als Eingabe und leitet diese an einen [gRPC](pipeline-extension.md#grpc-extension-processor)-Endpunkt weiter, der von Ihrem Modul zur Verfügung gestellt wird. Der Knoten unterstützt die Übertragung von Daten über [Shared Memory](https://en.wikipedia.org/wiki/Shared_memory) oder das direkte Einbetten des Frames in den Körper von gRPC-Nachrichten. Genau wie der HTTP-Erweiterungsprozess verfügt auch dieser Knoten über einen integrierten Bildformatierer für die Skalierung und Codierung von Videobildern, bevor sie an den gRPC-Endpunkt weitergeleitet werden. Weitere Informationen zum [Prozessor finden Sie hier](/pipeline-extension.md#grpc-extension-processor).
+Dieser gRPC-Erweiterungsprozessor verwendet decodierte Videoeinzelbilder als Eingabe und leitet diese an einen [gRPC](terminology.md#grpc)-Endpunkt weiter, der von Ihrem Modul zur Verfügung gestellt wird. Der Knoten unterstützt die Übertragung von Daten über [Shared Memory](https://en.wikipedia.org/wiki/Shared_memory) oder das direkte Einbetten des Frames in den Körper von gRPC-Nachrichten. Genau wie der HTTP-Erweiterungsprozess verfügt auch dieser Knoten über einen integrierten Bildformatierer für die Skalierung und Codierung von Videobildern, bevor sie an den gRPC-Endpunkt weitergeleitet werden. Weitere Informationen zum [Prozessor finden Sie hier](pipeline-extension.md#grpc-extension-processor).
 
 #### <a name="cognitive-services-extension-processor"></a>Erweiterungsprozessor für kognitive Dienste
 
@@ -86,7 +86,7 @@ Der Cognitive Services-Erweiterungsprozessorknoten ermöglicht es Ihnen, die Pip
 
 #### <a name="signal-gate-processor"></a>Signalgateprozessor
 
-Der Signalgate-Verarbeitungsknoten erlaubt es Ihnen, Medien bedingt von einem Knoten zu einem anderen weiterzuleiten. Ein Beispiel für einen Anwendungsfall ist das Einfügen eines Signal-Tor-Prozessorknotens zwischen dem RTSP-Quellknoten und dem Video-Senkknoten und die Verwendung des Ausgangs eines Bewegungsmelder-Prozessorknotens zum Auslösen des Gates. Mit einer solchen Pipeline würden Sie nur dann ein Video aufzeichnen, wenn eine Bewegung erkannt wird. Sie können auch die Ausgabe vom HTTP- oder gRPC-Erweiterungsknoten zum Auslösen des Gates anstelle des Prozessorknotens für die Bewegungserkennung verwenden und so die Aufzeichnung von Videos ermöglichen, wenn etwas Interessantes erkannt wird.
+Der Signalgate-Verarbeitungsknoten erlaubt es Ihnen, Medien bedingt von einem Knoten zu einem anderen weiterzuleiten. Auf den Knoten eines Signalgateprozessors muss unmittelbar eine Videosenke oder Dateisenke folgen. Ein Beispiel für einen Anwendungsfall ist das Einfügen eines Signal-Tor-Prozessorknotens zwischen dem RTSP-Quellknoten und dem Video-Senkknoten und die Verwendung des Ausgangs eines Bewegungsmelder-Prozessorknotens zum Auslösen des Gates. Mit einer solchen Pipeline würden Sie nur dann ein Video aufzeichnen, wenn eine Bewegung erkannt wird. Sie können auch die Ausgabe vom HTTP- oder gRPC-Erweiterungsknoten zum Auslösen des Gates anstelle des Prozessorknotens für die Bewegungserkennung verwenden und so die Aufzeichnung von Videos ermöglichen, wenn etwas Interessantes erkannt wird.
 
 #### <a name="object-tracker-processor"></a>Objekt-Verfolgungsprozessor
 

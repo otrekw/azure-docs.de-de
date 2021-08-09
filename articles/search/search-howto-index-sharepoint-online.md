@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 5888a7cc8aa58d1c6edab191e1243ebc60000fd6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea65011a27b7dab65ea75b5365bdcdf2be67d8b2
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048866"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747129"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Konfigurieren der SharePoint Online-Indizierung in Cognitive Search (Vorschau)
 
@@ -49,6 +49,10 @@ Die Erkennung von Löschungen wird ebenfalls standardmäßig unterstützt. Wenn 
 
 ## <a name="setting-up-sharepoint-online-indexing"></a>Einrichten der SharePoint Online-Indizierung
 Zum Einrichten des SharePoint Online-Indexers müssen Sie einige Schritte im Azure-Portal und einige Aktionen mithilfe der Vorschau-REST-API ausführen. Diese Vorschauversion wird nicht vom SDK unterstützt.
+
+ Im folgenden Video wird gezeigt, wie Sie den SharePoint Online-Indexer einrichten.
+ 
+> [!VIDEO https://www.youtube.com/embed/QmG65Vgl0JI]
 
 ### <a name="step-1-enable-system-assigned-managed-identity"></a>Schritt 1: Aktivieren einer systemseitig zugewiesenen verwalteten Identität
 Wenn eine systemseitig zugewiesene verwaltete Identität aktiviert wird, erstellt Azure eine Identität für Ihren Suchdienst, die vom Indexer verwendet werden kann.
@@ -87,7 +91,7 @@ Der SharePoint Online-Indexer verwendet diese Azure Active Directory-Anwendung 
 
 1.  Erteilen Sie die Administratoreinwilligung (nur für bestimmte Mandanten erforderlich).
 
-    Einige Mandanten sind so gesperrt, dass die Administratoreinwilligung für diese delegierten API-Berechtigungen erforderlich ist. Wenn dies der Fall ist, muss ein Administrator vor dem Erstellen des Indexers die Administratoreinwilligung für die AAD-Anwendung erteilen. 
+    Einige Mandanten sind so gesperrt, dass die Administratoreinwilligung für diese delegierten API-Berechtigungen erforderlich ist. Wenn dies der Fall ist, muss ein Administrator vor dem Erstellen des Indexers die Administratoreinwilligung für die AAD-Anwendung erteilen.
 
     Da diese Anforderung nicht für alle Mandanten gilt, sollten Sie diesen Schritt zunächst überspringen und mit den weiteren Anweisungen fortfahren. Wenn die Authentifizierung beim Erstellen des Indexers fehlschlägt und Sie darauf hingewiesen werden, dass die Authentifizierung von einem Administrator genehmigt werden muss, wissen Sie, dass eine Administratoreinwilligung erforderlich ist. Bitten Sie in diesem Fall einen Mandantenadministrator, die Einwilligung mit der Schaltfläche unten zu erteilen.
 

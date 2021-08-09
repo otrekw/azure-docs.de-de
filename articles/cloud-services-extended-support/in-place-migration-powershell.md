@@ -8,12 +8,13 @@ ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: aab67914b1317bc0cc443f333932ecef924176b6
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d813cc32d3b635e6da767e3f04386c0e35ea503c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293024"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949374"
 ---
 # <a name="migrate-to-azure-cloud-services-extended-support-using-powershell"></a>Migrieren zu Azure Cloud Services (erweiterter Support) mit PowerShell
 
@@ -86,7 +87,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 
 Überprüfen Sie den Status der Registrierung wie folgt:  
 ```powershell
-Get-AzProviderFeature -FeatureName CloudServices
+Get-AzProviderFeature -FeatureName CloudServices -ProviderNamespace Microsoft.Compute
 ```
 
 Stellen Sie sicher, dass der RegistrationState-Wert für beide `Registered` lautet, bevor Sie fortfahren.
@@ -119,6 +120,8 @@ Select-AzureSubscription –SubscriptionName "My Azure Subscription"
 
 
 ## <a name="5-migrate-your-cloud-services"></a>5) Migrieren Ihrer Cloud Services-Instanzen 
+Bevor Sie mit der Migration beginnen, sollten Sie verstehen, wie [die Migrationsschritte](./in-place-migration-overview.md#migration-steps) funktionieren und welchen Zweck sie jeweils haben. 
+
 * [Migrieren eines Clouddiensts (nicht in einem virtuellen Netzwerk)](#51-option-1---migrate-a-cloud-service-not-in-a-virtual-network)
 * [Migrieren eines Clouddiensts (in einem virtuellen Netzwerk)](#51-option-2---migrate-a-cloud-service-in-a-virtual-network)
 
@@ -141,17 +144,27 @@ $deployment = Get-AzureDeployment -ServiceName $serviceName
 $deploymentName = $deployment.DeploymentName
 ```
 
-Überprüfen Sie zuerst mit dem folgenden Befehl, ob Sie den Clouddienst migrieren können:
+Überprüfen Sie zuerst mit folgenden Befehlen, ob Sie den Clouddienst migrieren können. Der Befehl zeigt ggf. Fehler an, die die Migration blockieren. 
 
 ```powershell
 $validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
 $validate.ValidationMessages
  ```
 
-Der folgende Befehl zeigt ggf. Warnungen und Fehler an, die die Migration blockieren. Wenn die Überprüfung erfolgreich ist, können Sie mit dem Vorbereitungsschritt fortfahren.
+Wenn die Überprüfung erfolgreich ist, Fahren Sie im nächsten Schritt mit der Vorbereitung fort. 
 
 ```powershell
 Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+```
+
+Überprüfen Sie die Konfiguration für den vorbereiteten Clouddienst (erweiterter Support) entweder mit Azure PowerShell oder im Azure-Portal. Wenn Sie noch nicht für die Migration bereit sind und zum alten Zustand zurückkehren möchten, brechen Sie die Migration ab.
+```powershell
+Move-AzureService -Abort -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+```
+Wenn Sie bereit sind, die Migration durchzuführen, führen Sie einen Commit aus.
+
+```powershell
+Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
 ```
 
 ### <a name="51-option-2---migrate-a-cloud-service-in-a-virtual-network"></a>5.1) Option 2: Migrieren eines Clouddiensts (in einem virtuellen Netzwerk)
@@ -179,7 +192,7 @@ Der folgende Befehl zeigt ggf. Warnungen und Fehler an, die die Migration blocki
 Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
 ```
 
-Überprüfen Sie die Konfiguration für den vorbereiteten Clouddienst entweder mit Azure PowerShell oder im Azure-Portal. Wenn Sie noch nicht für die Migration bereit sind und zum alten Zustand zurückkehren möchten, verwenden Sie den folgenden Befehl:
+Überprüfen Sie die Konfiguration für den vorbereiteten Clouddienst (erweiterter Support) entweder mit Azure PowerShell oder im Azure-Portal. Wenn Sie noch nicht für die Migration bereit sind und zum alten Zustand zurückkehren möchten, verwenden Sie den folgenden Befehl:
 
 ```powershell
 Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName

@@ -5,14 +5,14 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 06/03/2021
 ms.author: victorh
-ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0800373919ba95f48d30b9fe6eb5e7f8eb99a82a
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001285"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111422064"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway
 
@@ -107,7 +107,7 @@ Authentifizierungszertifikate wurden als veraltet markiert und durch Trusted Roo
 >
 > Damit ein TLS/SSL-Zertifikat als vertrauenswürdig eingestuft wird, muss dieses Zertifikat des Back-End-Servers von einer bekannten Zertifizierungsstelle ausgestellt worden sein. Wenn das Zertifikat nicht von einer vertrauenswürdigen Zertifizierungsstelle ausgestellt wurde, überprüft das Anwendungsgateway, ob das Zertifikat der ausstellenden Zertifizierungsstelle von einer vertrauenswürdigen Zertifizierungsstelle stammt. Dieser Vorgang wird so lange fortgesetzt, bis entweder eine vertrauenswürdige Zertifizierungsstelle gefunden wurde (woraufhin eine vertrauenswürdige, sichere Verbindung hergestellt wird) oder keine vertrauenswürdige Zertifizierungsstelle gefunden werden kann (woraufhin das Back-End vom Anwendungsgateway als fehlerhaft markiert wird). Das Back-End-Serverzertifikat sollte daher sowohl die Stammzertifizierungsstelle als auch die Zwischenzertifizierungsstellen enthalten.
 
-- Wenn das Zertifikat selbstsigniert ist oder von einem unbekannten Vermittler signiert wurde, müssen Sie zum Aktivieren von End-to-End-TLS in der v2-SKU ein vertrauenswürdiges Stammzertifikat definieren. Application Gateway kommuniziert nur mit Back-End-Servern, bei denen das Stammzertifikat des Serverzertifikats mit einem der vertrauenswürdigen Stammzertifikate in der Liste der HTTP-Einstellung für das Back-End übereinstimmt, das dem Pool zugeordnet ist.
+- Wenn das Zertifikat des Back-End-Servers selbstsigniert ist oder von einer unbekannten Zertifizierungsstelle oder einem unbekannten Vermittler signiert wurde, müssen Sie zum Aktivieren von End-to-End-TLS in Application Gateway v2 ein vertrauenswürdiges Stammzertifikat hochladen. Application Gateway kommuniziert nur mit Back-Ends, bei denen das Stammzertifikat des Serverzertifikats mit einem der vertrauenswürdigen Stammzertifikate in der Liste der HTTP-Einstellung für das Back-End übereinstimmt, das dem Pool zugeordnet ist.
 
 - Zusätzlich zur Übereinstimmung des Stammzertifikats überprüft Application Gateway v2 auch, ob die Einstellung „Host“ in der HTTP-Einstellung des Back-Ends mit dem allgemeinen Namen (Common Name, CN) übereinstimmt, der vom TLS/SSL-Zertifikat des Back-End-Servers angegeben wird. Beim Herstellen einer TLS-Verbindung mit dem Back-End legt Application Gateway v2 die SNI-Erweiterung (Server Name Indication, Servernamensanzeige) auf den Host fest, der in der HTTP-Einstellung des Back-Ends angegeben wurde.
 

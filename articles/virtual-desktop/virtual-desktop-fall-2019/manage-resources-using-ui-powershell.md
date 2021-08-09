@@ -1,23 +1,23 @@
 ---
-title: Bereitstellen eines Verwaltungstools für Windows Virtual Desktop (klassisch) mithilfe des Dienstprinzipals – Azure
-description: Erfahren Sie, wie Sie das Verwaltungstool für Windows Virtual Desktop (klassisch) mithilfe von PowerShell bereitstellen.
+title: Bereitstellen eines Verwaltungstools für Azure Virtual Desktop (klassisch) mithilfe des Dienstprinzipals – Azure
+description: Erfahren Sie, wie Sie das Verwaltungstool für Azure Virtual Desktop (klassisch) mithilfe von PowerShell bereitstellen.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 60eec4580e222123795db9554f56e74cb01c5257
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: fbd12216cbc81df7f4f9e187c8150f69744eb139
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444444"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744519"
 ---
-# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>Bereitstellen eines Windows Virtual Desktop-Verwaltungstools (klassisch) mit PowerShell
+# <a name="deploy-a-azure-virtual-desktop-classic-management-tool-with-powershell"></a>Bereitstellen eines Azure Virtual Desktop-Verwaltungstools (klassisch) mit PowerShell
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager.
 
 In diesem Artikel wird gezeigt, wie das Bereitstellungstool mithilfe von PowerShell bereitgestellt wird.
 
@@ -41,7 +41,7 @@ Bevor Sie das Verwaltungstool bereitstellen, benötigen Sie einen Azure Active D
 - Er muss über die Berechtigung zum Erstellen von Ressourcen in Ihrem Azure-Abonnement verfügen.
 - Er muss über die Berechtigung zum Erstellen einer Azure AD-Anwendung verfügen. Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Benutzer über die erforderlichen Berechtigungen verfügt, indem Sie die Anweisungen unter [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) befolgen.
 
-Nachdem Sie das Verwaltungstool bereitgestellt und konfiguriert haben, sollten Sie einen Benutzer auffordern, die Verwaltungsbenutzeroberfläche aufzurufen, um sicherzustellen, dass alles funktioniert. Der Benutzer, der die Verwaltungsbenutzeroberfläche aufruft, muss über eine Rollenzuweisung verfügen, die es ihm erlaubt, den Windows Virtual Desktop-Mandanten anzuzeigen oder zu bearbeiten.
+Nachdem Sie das Verwaltungstool bereitgestellt und konfiguriert haben, sollten Sie einen Benutzer auffordern, die Verwaltungsbenutzeroberfläche aufzurufen, um sicherzustellen, dass alles funktioniert. Der Benutzer, der die Verwaltungsbenutzeroberfläche aufruft, muss über eine Rollenzuweisung verfügen, die es ihm erlaubt, den Azure Virtual Desktop-Mandanten anzuzeigen oder zu bearbeiten.
 
 ## <a name="set-up-powershell"></a>Einrichten von PowerShell
 
@@ -156,7 +156,7 @@ Sie können das Verwaltungstool jetzt verwenden.
 Nachdem Sie das Verwaltungstool eingerichtet haben, können Sie es jederzeit und überall aufrufen. So rufen Sie das Tool auf:
 
 1. Öffnen Sie die URL der Web-App in einem Webbrowser. Wenn Sie die URL vergessen haben, können Sie sich bei Azure anmelden, den App Dienst suchen, den Sie für das Verwaltungstool bereitgestellt haben, und dann die URL auswählen.
-2. Melden Sie sich mit Ihren Windows Virtual Desktop-Anmeldeinformationen an.
+2. Melden Sie sich mit Ihren Azure Virtual Desktop-Anmeldeinformationen an.
 
    > [!NOTE]
    > Wenn Sie beim Konfigurieren des Verwaltungstools keine Administratoreinwilligung erteilt haben, muss jeder Benutzer, der sich anmeldet, eigens einwilligen, um das Tool zu verwenden.
@@ -169,7 +169,7 @@ Nachdem Sie das Verwaltungstool eingerichtet haben, können Sie es jederzeit und
 
 ## <a name="report-issues"></a>Melden von Problemen
 
-Falls Probleme mit dem Verwaltungstool oder mit anderen Windows Virtual Desktop-Tools auftreten, sollten Sie die Anleitung unter [Azure Resource Manager-Vorlagen für Remotedesktopdienste](https://github.com/Azure/RDS-Templates/blob/master/README.md) befolgen, um diese auf GitHub zu melden.
+Falls Probleme mit dem Verwaltungstool oder mit anderen Azure Virtual Desktop-Tools auftreten, sollten Sie die Anleitung unter [Azure Resource Manager-Vorlagen für Remotedesktopdienste](https://github.com/Azure/RDS-Templates/blob/master/README.md) befolgen, um diese auf GitHub zu melden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

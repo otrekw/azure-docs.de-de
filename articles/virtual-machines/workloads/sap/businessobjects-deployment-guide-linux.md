@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: faaed05a52708ed1c2563e6476a1e86faa02dcf7
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: a97454abdf91ddaaf355283a5bbed99adc184e0d
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946760"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020419"
 ---
-# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Linux in Azure
+# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Linux in Azure
 
 In diesem Artikel wird die Strategie zum Bereitstellen der SAP BusinessObjects BI-Plattform in Azure für Lux beschrieben. In diesem Beispiel werden zwei virtuelle Computer mit SSD Premium Managed Disks als Installationsverzeichnis konfiguriert. Azure Database for MySQL wird für die CMS-Datenbank verwendet, und Azure NetApp Files für File Repository Server wird für beide Server freigegeben. Die standardmäßige Tomcat Java-Webanwendung und die BI-Plattformanwendung werden zusammen auf beiden virtuellen Computern installiert. Für den Lastenausgleich der Benutzeranforderungen wird ein Anwendungsgateway verwendet, das native TLS/SSL-Auslagerungsfunktionen besitzt.
 
@@ -371,7 +371,7 @@ Weitere Informationen finden Sie unter [Privater Link für Azure Database for My
    +----------------------------------------------------------------------------+
    ```
 
-### <a name="install-mysql-c-api-connector-libmysqlclient-on-linux-server"></a>Installieren des MySQL C API-Connectors (libmysqlclient) auf dem Linux-Server
+### <a name="install-mysql-c-api-connector-libmysqlclient-on-a-linux-server"></a>Installieren des MySQL C API-Connectors (libmysqlclient) auf einem Linux-Server
 
 Damit der SAP BOBI-Anwendungsserver auf die Datenbank zugreifen kann, benötigt er einen Datenbankclient bzw. Datenbanktreiber. Für den Zugriff auf CMS- und Überwachungsdatenbanken muss der MySQL C API-Connector für Linux verwendet werden. ODBC-Verbindungen mit der CMS-Datenbank werden nicht unterstützt. Dieser Abschnitt enthält Anweisungen zum Einrichten des MySQL C API-Connectors unter Linux.
 

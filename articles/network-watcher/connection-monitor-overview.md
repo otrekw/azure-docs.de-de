@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 24c181c17e49fe5b7c3001c1cb2839bc957ef463
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: fe259c3858e798f9bcb72600b680f12c19055884
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490487"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470346"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Überwachung der Netzwerkkonnektivität mit dem Verbindungsmonitor
 
@@ -97,7 +97,7 @@ Das Skript konfiguriert nur die lokale Windows-Firewall. Bei Verwendung einer Ne
 
 Für alle Abonnements, die über ein virtuelles Netzwerk verfügen, wird Network Watcher aktiviert. Wenn Sie ein virtuelles Netzwerk in Ihrem Abonnement erstellen, wird Network Watcher automatisch in der Region und für das Abonnement des virtuellen Netzwerks aktiviert. Diese automatische Aktivierung wirkt sich nicht auf Ihre Ressourcen aus, und es fallen auch keine Gebühren an. Stellen Sie sicher, dass Network Watcher für Ihr Abonnement nicht explizit deaktiviert ist. 
 
-Weitere Informationen finden Sie unter [Aktivieren von Network Watcher](./network-watcher-create.md).
+Stellen Sie sicher, dass der Network Watcher [für Ihre Region verfügbar](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher&regions=all) ist. Weitere Informationen finden Sie unter [Aktivieren von Network Watcher](./network-watcher-create.md).
 
 ## <a name="create-a-connection-monitor"></a>Erstellen eines Verbindungsmonitors 
 
@@ -281,7 +281,7 @@ Mit Log Analytics lassen sich benutzerdefinierte Ansichten Ihrer Überwachungsda
 
 #### <a name="metrics-in-azure-monitor"></a>Metriken in Azure Monitor
 
-In Verbindungsmonitoren, die vor dem Verbindungsmonitor erstellt wurden, sind alle vier Metriken verfügbar: ProbesFailedPercent, AverageRoundtripMs, ChecksFailedPercent (Preview) und RoundTripTimeMs (Preview). In Verbindungsmonitoren, die im Verbindungsmonitor erstellt wurden, sind Daten nur für die mit *(Preview)* (Vorschau) gekennzeichneten Metriken verfügbar.
+Bei den Verbindungsmonitoren, die vor der Verbindungsmonitor-Funktionalität erstellt wurden, sind alle vier Metriken verfügbar: „% Fehlerhafte Tests“, „AverageRoundtripMs“, „ChecksFailedPercent“ und „RoundTripTimeMs“. Bei den Verbindungsmonitoren, die während der Verbindungsmonitor-Funktionalität erstellt wurden, sind die Daten nur für die Metriken „ChecksFailedPercent“, „RoundTripTimeMs“ und „Testergebnis“ verfügbar.
 
   :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Screenshot: Metriken im Verbindungsmonitor" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
@@ -289,11 +289,11 @@ Legen Sie bei Verwendung von Metriken den Ressourcentyp auf „Microsoft.Network
 
 | Metrik | `Display name` | Einheit | Aggregationstyp | BESCHREIBUNG | Dimensionen |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent (klassisch) | Fehlerhafte Tests in Prozent (klassisch) | Prozentwert | Average | Prozentsatz fehlerhafter Tests bei der Konnektivitätsüberwachung. | Keine Dimensionen |
-| AverageRoundtripMs (klassisch) | Durchschn. Roundtripzeit (ms) (klassisch) | Millisekunden | Average | Durchschnittliche Netzwerk-Roundtripzeit für die Konnektivitätsüberwachung von Testdatenverkehr, der zwischen Quelle und Ziel gesendet wurde. |             Keine Dimensionen |
-| ChecksFailedPercent | % der Überprüfungen mit Fehlern | Prozentwert | Average | Prozentsatz der Überprüfungen mit Fehlern für einen Test. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
-| RoundTripTimeMs | Roundtripzeit (ms) | Millisekunden | Average | Roundtripzeit für Überprüfungen, die zwischen Quelle und Ziel gesendet wurden. Es wird kein Durchschnittswert gebildet. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
-| TestResult | Testergebnis | Anzahl | Average | Testergebnisse des Verbindungsmonitors | SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
+| ProbesFailedPercent (klassisch) | Fehlerhafte Tests in Prozent (klassisch) | Prozentwert | Average | Prozentsatz fehlerhafter Tests bei der Konnektivitätsüberwachung.<br>Diese Metrik ist nur für den klassischen Verbindungsmonitor verfügbar  | Keine Dimensionen |
+| AverageRoundtripMs (klassisch) | Durchschn. Roundtripzeit (ms) (klassisch) | Millisekunden | Average | Durchschnittliche Netzwerk-Roundtripzeit für die Konnektivitätsüberwachung von Testdatenverkehr, der zwischen Quelle und Ziel gesendet wurde.<br>Diese Metrik ist nur für den klassischen Verbindungsmonitor verfügbar |             Keine Dimensionen |
+| ChecksFailedPercent | % der Überprüfungen mit Fehlern | Prozentwert | Average | Prozentsatz der Überprüfungen mit Fehlern für einen Test. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
+| RoundTripTimeMs | Roundtripzeit (ms) | Millisekunden | Average | Roundtripzeit für Überprüfungen, die zwischen Quelle und Ziel gesendet wurden. Es wird kein Durchschnittswert gebildet. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
+| TestResult | Testergebnis | Anzahl | Average | Testergebnisse des Verbindungsmonitors <br>Die Interpretation von den Ergebniswerten sieht wie folgt aus: <br>0 – Unbestimmt <br>1 – Übergeben <br>2 – Warnung <br>3 – Fehler| SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>Auf Metriken basierende Warnungen für den Verbindungsmonitor
 
@@ -304,8 +304,8 @@ Sie können Metrikwarnungen für Verbindungsmonitore mithilfe der folgenden Meth
 1. Von Azure Monitor aus, um eine Warnung in Azure Monitor zu erstellen: 
     1. Wählen Sie die Verbindungsmonitorressource aus, die Sie im Verbindungsmonitor erstellt haben.
     1. Stellen Sie sicher, dass **Metrik** als Signaltyp für den Verbindungsmonitor angezeigt wird.
-    1. Wählen Sie unter **Bedingung hinzufügen** für **Signalname** die Option **ChecksFailedPercent(Preview)** oder **RoundTripTimeMs(Preview)** aus.
-    1. Wählen Sie für **Signaltyp** die Option **Metriken** aus. Wählen Sie z. B. **ChecksFailedPercent(Preview)** aus.
+    1. Wählen Sie unter **Bedingung hinzufügen** für den **Signalnamen** die Option **ChecksFailedPercent** oder **RoundTripTimeMs** aus.
+    1. Wählen Sie für **Signaltyp** die Option **Metriken** aus. Wählen Sie z. B. **ChecksFailedPercent** aus.
     1. Alle Dimensionen für die Metrik werden aufgelistet. Wählen Sie den Dimensionsnamen und -wert aus. Wählen Sie z. B. **Quelladresse** aus, und geben Sie dann die IP-Adresse einer beliebigen Quelle in Ihrem Verbindungsmonitor ein.
     1. Geben Sie unter **Warnungslogik** die folgenden Details ein:
         * **Bedingungstyp**: **Statisch**
@@ -364,6 +364,21 @@ Bei Netzwerken, deren Quellen sich auf Azure-VMs befinden, können die folgenden
 * Der Datenverkehr wurde aufgrund von Systemrouten oder UDR unterbrochen.
 * BGP ist für die Gatewayverbindung nicht aktiviert.
 * Der DIP-Test ist beim Lastenausgleich nicht verfügbar.
+
+## <a name="faq"></a>Häufig gestellte Fragen
+
+### <a name="are-classic-vms-supported"></a>Werden klassische virtuelle Computer unterstützt?
+Nein, der Verbindungsmonitor unterstützt keine klassischen virtuellen Computer. Es wird empfohlen, IaaS-Ressourcen vom klassischen Schema zu Azure Resource Manager zu migrieren, da klassische Ressourcen als [veraltet](../virtual-machines/classic-vm-deprecation.md) markiert werden. [Lesen Sie diesen Artikel](../virtual-machines/migration-classic-resource-manager-overview.md), um zu erfahren, wie Sie die Migration ausführen.
+
+### <a name="my-topology-is-not-decorated-or-my-hops-have-missing-information"></a>Meine Topologie ist nicht ergänzt, oder es fehlen Informationen für meine Hops?
+Von nicht-Azure zu Azure kann die Topologie nur ergänzt werden, wenn sich die Azure-Zielressource und die Verbindungsmonitorressource in derselben Region befinden 
+
+### <a name="my-connection-monitor-creation-is-failing-with-error-we-dont-allow-creating-different-endpoints-for-the-same-vm"></a>Bei der Erstellung meines Verbindungsmonitors erhalte ich die Fehlermeldung: „Wir lassen das Erstellen verschiedener Endpunkte für denselben virtuellen Computer nicht zu“?
+Derselbe Azure-virtuelle Computer kann nicht mit unterschiedlichen Konfigurationen im gleichen Verbindungsmonitor verwendet werden. Beispielsweise wird die Verwendung desselben virtuellen Computers mit einem Filter und ohne einen Filter im gleichen Verbindungsmonitor nicht unterstützt.
+
+### <a name="the-test-failure-reason-is-nothing-to-display"></a>Der Grund für das Scheitern des Tests lautet „Keine Anzeige auf dem Display“?
+Die auf dem Dashboard des Verbindungsmonitors angezeigten Probleme werden während der Topologieerkennung oder der Hopdurchsuchung gefunden. Es kann Fälle geben, in denen der eingestellte Schwellenwert für % Verlust oder RTT überschritten wird, aber keine Probleme bei den Hops gefunden werden.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
     

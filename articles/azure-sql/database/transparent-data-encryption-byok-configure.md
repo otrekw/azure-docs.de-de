@@ -5,19 +5,19 @@ description: Hier erfahren Sie, wie Sie eine Azure SQL-Datenbank und Azure Syna
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 96b35e65f11e9f0c1dec6b75465454be962dce46
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: df531a38d7a38141ee07a88ddce77a2e85c2cd98
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109735132"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413589"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell und die Azure-Befehlszeilenschnittstelle: Aktivieren von Transparent Data Encryption mithilfe eines vom Kunden verwalteten Azure Key Vault-Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -74,7 +74,7 @@ Verwenden Sie das Cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyv
    Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> `
        -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
    ```
-Um Ihrem Server Berechtigungen für eine Managed HSM-Instanz hinzuzufügen, fügen Sie dem Server die lokale RBAC-Rolle „Kryptografiedienstverschlüsselung für Managed HSM“ hinzu. Dies ermöglicht dem Server, „get“-, „wrap key“- und „unwrap key“-Vorgänge für die Schlüssel in der Managed HSM-Instanz auszuführen.
+Um Ihrem Server Berechtigungen für eine Managed HSM-Instanz hinzuzufügen, fügen Sie dem Server die lokale RBAC-Rolle „Managed HSM Crypto Service Encryption User (Benutzer der Kryptografiedienstverschlüsselung für verwaltete HSMs)“ hinzu. Dies ermöglicht dem Server, „get“-, „wrap key“- und „unwrap key“-Vorgänge für die Schlüssel in der Managed HSM-Instanz auszuführen.
 [Rollenverwaltung für Managed HSM](../../key-vault/managed-hsm/role-management.md)
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Hinzufügen eines Key Vault-Schlüssels zum Server und Festlegen der TDE-Schutzvorrichtung

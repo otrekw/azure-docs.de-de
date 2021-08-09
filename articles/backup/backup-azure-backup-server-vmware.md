@@ -3,12 +3,12 @@ title: Sichern von VMware-VMs mit Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um VMware-VMs zu sichern, die auf einem VMware vCenter-/ESXi-Server ausgeführt werden.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12374393d0f94c567a68f1e28b6479e0747f3d40
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96002952"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084590"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Sichern von VMware-VMs mit Azure Backup Server
 
@@ -308,7 +308,7 @@ Fügen Sie den vCenter-Server zu Azure Backup Server hinzu.
 
 6. Wählen Sie **Hinzufügen** aus, um den VMware-Server zur Liste der Server hinzuzufügen. Wählen Sie **Weiter** aus.
 
-    ![Hinzufügen des VMware-Servers und von Anmeldeinformationen](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
+    ![Hinzufügen des VMware-Servers und der Anmeldeinformationen](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
 7. Wählen Sie auf der Seite **Zusammenfassung** die Option **Hinzufügen** aus, um den VMware-Server zu Azure Backup Server hinzuzufügen. Der neue Server wird sofort hinzugefügt. Auf dem VMware-Server wird kein Agent benötigt.
 
@@ -407,20 +407,20 @@ Bei früheren Versionen von MABS wurden parallele Sicherungen nur für Schutzgru
 
 Sie können die Anzahl der Aufträge ändern, indem Sie wie unten gezeigt den Registrierungsschlüssel verwenden (standardmäßig nicht vorhanden, Sie müssen ihn hinzufügen):
 
-**Schlüsselpfad:** `Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
+**Schlüsselpfad:** `Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMware`<BR>
 **Schlüsseltyp:** DWORD-Wert (32 Bit)
 
 > [!NOTE]
 > Sie können die Anzahl der Aufträge in einen höheren Wert ändern. Wenn Sie die Anzahl der Aufträge auf „1“ festlegen, werden Replikationsaufträge nacheinander ausgeführt. Um die Anzahl auf einen höheren Wert zu erhöhen, müssen Sie die VMware-Leistung berücksichtigen. Berücksichtigen Sie die Anzahl der verwendeten Ressourcen und die zusätzliche erforderliche Verwendung auf dem VMware vSphere-Server, und bestimmen Sie die Anzahl der parallel auszuführenden Deltareplikationsaufträge. Diese Änderung wirkt sich lediglich auf die neu erstellten Schutzgruppen aus. Bei vorhandenen Schutzgruppen müssen Sie der jeweiligen Schutzgruppe vorübergehend einen anderen virtuellen Computer hinzufügen. Dadurch sollte die Konfiguration der Schutzgruppe entsprechend aktualisiert werden. Nach Abschluss des Vorgangs können Sie diesen virtuellen Computer aus der Schutzgruppe entfernen.
 
-## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
+## <a name="vmware-vsphere-67"></a>VMware vSphere 6.7
 
 Für eine Sicherung von vSphere 6.7 gehen Sie wie folgt vor:
 
 - Aktivieren Sie auf dem MABS-Server TLS 1.2.
 
 >[!NOTE]
->Ab VMWare-6.7 ist TLS als Kommunikationsprotokoll aktiviert.
+>Ab VMware-6.7 ist TLS als Kommunikationsprotokoll aktiviert.
 
 - Legen Sie die Registrierungsschlüssel wie folgt fest:
 

@@ -1,18 +1,19 @@
 ---
 title: Entfernen des Zugriffs auf eine Delegierung
 description: Erfahren Sie, wie Sie Zugriff auf Ressourcen entfernen können, die an einen Dienstanbieter für Azure Lighthouse delegiert worden waren.
-ms.date: 02/16/2021
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: c53b678ba6e37ece1bcaf2860abceb9eea980532
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e9456d7b910c71305f321d0a4874aab0f4f368cd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555787"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110700131"
 ---
 # <a name="remove-access-to-a-delegation"></a>Entfernen des Zugriffs auf eine Delegierung
 
-Nachdem das Abonnement oder die Ressourcengruppe eines Kunden an einen Dienstanbieter für [Azure Lighthouse](../overview.md) delegiert wurde, kann die Delegierung bei Bedarf entfernt werden. Nachdem eine Delegierung entfernt wurde, gilt der Zugriff [der delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md), der den Benutzern im Dienstanbietermandanten zuvor gewährt wurde, nicht mehr.
+Nachdem das Abonnement oder die Ressourcengruppe eines Kunden an einen Dienstanbieter für [Azure Lighthouse](../overview.md) delegiert wurde, kann die Delegierung bei Bedarf entfernt werden. Nachdem eine Delegierung entfernt wurde, gilt der Zugriff [der delegierten Azure-Ressourcenverwaltung](../concepts/architecture.md), der den Benutzern im Dienstanbietermandanten zuvor gewährt wurde, nicht mehr.
 
 Das Entfernen einer Delegierung kann durch einem Benutzer entweder im Kundenmandanten oder im Dienstanbietermandanten ausgeführt werden, sofern der Benutzer über die entsprechenden Berechtigungen verfügt.
 
@@ -97,6 +98,6 @@ az managedservices assignment delete --assignment <id or full resourceId>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zur [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md)
+- Erfahren Sie mehr über [Azure Lighthouse-Architektur](../concepts/architecture.md).
 - [Anzeigen und Verwalten von Kunden](view-manage-customers.md), indem sie im Azure-Portal zu **Meine Kunden** navigieren.
 - Erfahren Sie, wie Sie eine [vorherige Delegierung aktualisieren](update-delegation.md).

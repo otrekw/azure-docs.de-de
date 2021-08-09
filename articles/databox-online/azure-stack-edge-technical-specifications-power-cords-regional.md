@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge Pro-Netzkabel, technische Spezifikationen nach Standort | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen zu den technischen Spezifikationen für Ihre Azure Stack Edge Pro-Netzkabel.
+title: Technische Spezifikationen zum Azure Stack Edge Pro-FPGA-Netzkabel nach Standort
+description: Hier erhalten Sie Informationen zu den technischen Spezifikationen für Ihre Azure Stack Edge Pro-FPGA-Netzkabel (Field Programmable Gate Array).
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 18de1f445990f167041c755aa5e7d909819319b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06809cacd3a8176338b2df0882f8f3d31d665c4a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96446465"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460359"
 ---
-# <a name="azure-stack-edge-pro-power-cord-specifications"></a>Spezifikationen für Azure Stack Edge Pro-Netzkabel
+# <a name="azure-stack-edge-pro-fpga-power-cord-specifications"></a>Spezifikationen zum Azure Stack Edge Pro-FPGA-Netzkabel
 
-Ihr Azure Stack Edge Pro-Gerät benötigt ein Netzkabel, das je nach Azure-Region variieren kann.
+Ihr Azure Stack Edge Pro-FPGA-Gerät benötigt ein Netzkabel, das je nach Azure-Region variieren kann.
 
 ## <a name="supported-power-cords"></a>Unterstützte Netzkabel
 

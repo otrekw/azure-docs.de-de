@@ -3,16 +3,20 @@ title: Verwenden von von Azure verwalteten Identitäten zum Erstellen von Umgebu
 description: Erfahren Sie, wie Sie verwaltete Identitäten in Azure verwenden, um Umgebungen in einem Lab in Azure DevTest Labs bereitzustellen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0f3e4b4d7030eb26c25b291e03caaa430d1979c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a8afd74014cb940be17d9a84168e8bfe7daff67
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98185783"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854682"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Verwenden von verwalteten Azure-Identitäten zum Bereitstellen von Umgebungen in einem Lab 
 
-Als Lab-Besitzer können Sie eine verwaltete Identität verwenden, um Umgebungen in einem Lab bereitzustellen. Diese Funktion ist in Szenarien hilfreich, in denen die Umgebung Verweise auf Azure-Ressourcen wie Schlüsseltresore, freigegebene Imagekataloge und Netzwerke enthält oder besitzt, die außerhalb der Ressourcengruppe der Umgebung liegen. Sie ermöglicht die Erstellung von Sandboxumgebungen, die nicht auf die Ressourcengruppe dieser Umgebung beschränkt sind.
+Als Lab-Besitzer können Sie eine verwaltete Identität verwenden, um Umgebungen in einem Lab bereitzustellen. Diese Funktion ist in Szenarien hilfreich, in denen die Umgebung Verweise auf Azure-Ressourcen wie Schlüsseltresore, freigegebene Imagekataloge und Netzwerke enthält oder besitzt, die außerhalb der Ressourcengruppe der Umgebung liegen. Sie ermöglicht die Erstellung von Sandboxumgebungen, die nicht auf die Ressourcengruppe dieser Umgebung beschränkt sind. 
+
+Wenn Sie eine Umgebung erstellen, erstellt das Lab standardmäßig eine systemseitig zugewiesene Identität für den Zugriff auf Azure-Ressourcen und -Dienste im Namen eines Labbenutzers, während die Azure Resource Manager-Vorlage (ARM-Vorlage) bereitgestellt wird. Erfahren Sie mehr darüber, [warum ein Lab eine systemseitig zugewiesene Identität erstellt](configure-lab-identity.md#scenarios-for-using-labs-system-assigned-identity). Für neue und vorhandene Labs wird standardmäßig eine systemseitig zugewiesene Identität erstellt, wenn zum ersten Mal eine Laborumgebung erstellt wird.  
+
+Beachten Sie, dass Sie als Labbesitzer auswählen können, ob Sie der systemseitig zugewiesenen Identitäten des Labs Berechtigungen für den Zugriff auf Azure-Ressourcen außerhalb des Labs erteilen oder Ihre eigene benutzerseitig zugewiesene Identität für das Szenario verwenden. Die systemseitig zugewiesene Identität des Labs ist nur für die Lebensdauer des Labs gültig. Wenn Sie das Lab löschen, wird die systemseitig zugewiesene Identität gelöscht. Wenn Sie Umgebungen in mehreren Labs haben, die eine Identität verwenden müssen, sollten Sie die Verwendung einer benutzerseitig zugewiesenen Identität in Betracht ziehen.  
 
 > [!NOTE]
 > Zurzeit wird eine einzige vom Benutzer zugewiesene Identität pro Lab unterstützt. 
@@ -48,44 +52,30 @@ Wenn Sie die dem Lab zugewiesene vom Benutzer verwaltete Identität ändern möc
 
 1. Notieren Sie sich nach dem Erstellen einer Identität die Ressourcen-ID dieser Identität. Sie sollte in etwa wie das folgende Beispiel aussehen: 
 
-    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-1. Führen Sie eine PUT HTTPS-Methode aus, um dem Lab eine neue `ServiceRunner`-Ressource hinzuzufügen, ähnlich wie im folgenden Beispiel. Die Service Runner-Ressource ist eine Proxyressource zum Verwalten und Steuern verwalteter Identitäten in DevTest Labs. Der Name des Service Runners kann ein beliebiger gültiger Name sein, aber es wird empfohlen, dass Sie den Namen der verwalteten Identitätsressource verwenden. 
+    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/{rg}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}`.
+
+1. Führen Sie eine PUT HTTPS-Methode für die Labressource aus, um eine benutzerseitig zugewiesene Identität hinzuzufügen oder eine systemseitig zugewiesene Identität für das Lab zu aktivieren.
+
+   > [!NOTE]
+   > Unabhängig davon, ob Sie eine benutzerseitig zugewiesene Identität erstellen, erstellt das Lab automatisch eine systemseitig zugewiesene Identität, wenn zum ersten Mal eine Laborumgebung erstellt wird. Wenn jedoch bereits eine benutzerseitig zugewiesene Identität für das Lab konfiguriert ist, verwendet der DevTest Lab-Dienst diese Identität weiterhin, um Labumgebungen bereitzustellen. 
  
     ```json
-    PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Devtestlab/labs/{yourlabname}/serviceRunners/{serviceRunnerName}
+    
+    PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Devtestlab/labs/{labname}
 
     {
         "location": "{location}",
+        "properties": {
+          **lab properties**
+         } 
         "identity":{
-            "type": "userAssigned",
+            "type": "SystemAssigned,UserAssigned",
             "userAssignedIdentities":{
-                "[userAssignedIdentityResourceId]":{}
+                "/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/{rg}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}":{}
             }
-        }
-        "properties":{
-            "identityUsageType":"Environment"
-                     }
-          
+        } 
     }
-    ```
- 
-    Hier sehen Sie ein Beispiel: 
-
-    ```json
-    PUT https://management.azure.com/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/exampleRG/providers/Microsoft.Devtestlab/labs/mylab/serviceRunners/sampleuseridentity
-
-    {
-        "location": "eastus",
-        "identity":{
-            "type": "userAssigned",
-            "userAssignedIdentities":{
-                "/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/exampleRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuseridentity":{}
-            }
-        }
-        "properties":{
-            "identityUsageType":"Environment"
-                     }
-    }
+    
     ```
  
 Sobald die vom Benutzer zugewiesene Identität dem Lab hinzugefügt wurde, wird Sie vom Azure DevTest Labs-Dienst bei der Bereitstellung von Azure Resource Manager-Umgebungen verwendet. Wenn z. B. Ihre Resource Manager-Vorlage auf ein Image aus einem externen freigegebenen Imagekatalog zugreifen muss, stellen Sie sicher, dass die Identität, die Sie dem Lab hinzugefügt haben, über mindestens erforderliche Berechtigungen für die freigegebene Imagekatalogressource verfügt. 

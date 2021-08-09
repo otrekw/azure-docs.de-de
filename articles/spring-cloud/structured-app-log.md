@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 64b84c248a943c8558bf1e5fea646a36046c7f1b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ef51fc0c67c938a2d0933b6032072acc24e42dd3
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740409"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494627"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Strukturiertes Anwendungsprotokoll für Azure Spring Cloud
 
@@ -20,7 +20,10 @@ In diesem Artikel wird erläutert, wie strukturierte Anwendungsprotokolldaten in
 
 ## <a name="log-schema-requirements"></a>Protokollschemaanforderungen
 
-Um die Protokollabfrage zu verbessern, muss ein Anwendungsprotokoll im JSON-Format vorliegen und einem Schema entsprechen. Azure Spring Cloud verwendet dieses Schema, um Ihre Anwendung zu analysieren und in Log Analytics zu streamen. 
+Um die Protokollabfrage zu verbessern, muss ein Anwendungsprotokoll im JSON-Format vorliegen und einem Schema entsprechen. Azure Spring Cloud verwendet dieses Schema, um Ihre Anwendung zu analysieren und in Log Analytics zu streamen.
+
+> [!NOTE]
+> Wenn Sie das JSON-Protokollformat aktivieren, ist es schwierig, die Protokollstreamingausgabe aus der Konsole zu lesen. Um eine von Menschen lesbare Ausgabe zu erhalten, fügen Sie das `--format-json`-Argument an den CLI-Befehl `az spring-cloud app logs` an. Weitere Informationen finden Sie unter [Formatieren strukturierter JSON-Protokolle](./how-to-log-streaming.md#format-json-structured-logs).
 
 **JSON-Schemaanforderungen:**
 

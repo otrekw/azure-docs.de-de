@@ -3,12 +3,12 @@ title: Aktivieren von verwalteten Identitäten auf Ihren Lab-VMs in Azure DevTes
 description: In diesem Artikel wird gezeigt, wie ein Lab-Besitzer benutzerseitig zugewiesene verwaltete Identitäten auf Ihren virtuellen Lab-Computern aktivieren kann.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d2c7b944d37160df241e6ca4407c730593f1b62
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88717630"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854034"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Aktivieren von benutzerseitig zugewiesenen verwalteten Identitäten auf virtuellen Lab-Computern in Azure DevTest Labs
 Als Lab-Besitzer können Sie benutzerseitig zugewiesene verwaltete Identitäten auf Ihren virtuellen Lab-Computern in Azure DevTest Labs aktivieren.
@@ -40,23 +40,22 @@ Um eine benutzerseitig zugewiesene verwaltete Identität für Lab-VMs hinzuzufü
 
 1.  Notieren Sie sich nach dem Erstellen einer Identität die Ressourcen-ID der Identität. Sie sollte in etwa wie das folgende Beispiel aussehen: 
 
-    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-2. Führen Sie eine PUT HTTPS-Methode aus, um dem Lab eine neue **ServiceRunner**-Ressource hinzuzufügen, wie im folgenden Beispiel gezeigt. 
+    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/{rg}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}`.
+    
+2. Führen Sie eine PUT HTTPS-Methode für die Labressource aus, um dem Feld **managementIdentities** mindestens eine vom Benutzer zugewiesene Identität hinzuzufügen.
 
-    Die Service Runner-Ressource ist eine Proxyressource zum Verwalten und Steuern verwalteter Identitäten in DevTest Labs. Der Name des Service Runners kann ein beliebiger gültiger Name sein, aber es wird empfohlen, dass Sie den Namen der verwalteten Identitätsressource verwenden.
 
     ```json
     {
-        "identity": {
-            "type": "userAssigned",
-            "userAssignedIdentities": { 
-                "[userAssignedIdentityResourceId]": {}
-            }
-            },
         "location": "southeastasia",
         "properties": {
-            "identityUsageType": "VirtualMachine"
-        }
+        ...
+            "managementIdentities": {
+               "/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/{rg}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}": {}
+        },
+        ...
+        },
+    ...
     }
     ```
 

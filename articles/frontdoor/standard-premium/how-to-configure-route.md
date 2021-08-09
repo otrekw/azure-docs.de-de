@@ -5,14 +5,14 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 05/17/2021
 ms.author: qixwang
-ms.openlocfilehash: 94c22ffd423c32ba5f489298267464ca36abaecd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b25f56b238c7f0c42a1ba589f7da2d68344c915
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101097757"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464389"
 ---
 # <a name="configure-an-azure-front-door-standardpremium-route"></a>Konfigurieren einer Route für Azure Front Door Standard/Premium
 
@@ -52,7 +52,7 @@ Informationen zum Einrichten einer Ursprungsgruppe finden Sie unter [Erstellen e
 
     :::image type="content" source="../media/how-to-configure-route/add-route-page.png" alt-text="Screenshot der Seite „Route hinzufügen“" lightbox="../media/how-to-configure-route/add-route-page-expanded.png"::: 
 
-    | Einstellung | Wert |
+    | Einstellung | Beschreibung |
     | --- | --- |
     | Name | Geben Sie einen eindeutigen Namen für die neue Route ein. |   
     | Domain| Wählen Sie mindestens eine Domäne aus, die überprüft wurde und keiner anderen Route zugeordnet ist. |
@@ -60,7 +60,7 @@ Informationen zum Einrichten einer Ursprungsgruppe finden Sie unter [Erstellen e
     | Akzeptierte Protokolle | Geben Sie die Protokolle an, die Azure Front Door akzeptieren soll, wenn der Client die Anforderung sendet. |
     | Umleiten | Geben Sie an, ob HTTPS für eine eingehende Anforderung mit HTTP-Anforderung erzwungen wird. |
     | Ursprungsgruppe | Wählen Sie aus, an welche Ursprungsgruppe eine Weiterleitung erfolgen soll, wenn eine Anforderung zurück an Ursprung auftritt. |
-    | Ursprungspfad | Geben Sie den Pfad zu den Ressourcen ein, die Sie zwischenspeichern möchten. Wenn Sie das Zwischenspeichern beliebiger Ressourcen in der Domäne erlauben möchten, lassen Sie diese Einstellung leer. |
+    | Ursprungspfad | Dieser Pfad wird verwendet, um die URL umzuschreiben, die von Azure Front Door beim Erstellen der an den Ursprung weitergeleiteten Anforderung verwendet wird. Dieser Pfad wird standardmäßig nicht angegeben. Daher verwendet Azure Front Door den eingehenden URL-Pfad in der Anforderung zum Ursprung. Sie können auch einen Platzhalterpfad angeben, der alle übereinstimmenden Teile des eingehenden Pfads in den Anforderungspfad des Ursprungs kopiert. </br></br>Ein Muster für den Abgleich: `/foo/*`</br>Der Ursprungspfad: `/fwd/`</br></br>Der Eingehende URL-Pfad: `/foo/a/b/c/`</br>Die URL von Azure Front Door zum Ursprung: `fwd/a/b/c`. |
     | Weiterleitungsprotokoll | Wählen Sie das für die Weiterleitungsanforderung verwendete Protokoll aus. |
     | Caching | Wählen Sie diese Option aus, um das Zwischenspeichern statischer Inhalte mit Azure Front Door zu aktivieren. |
     | Regel | Wählen Sie Regelsätze aus, die auf diese Route angewendet werden. Weitere Informationen zum Konfigurieren von Regeln finden Sie unter [Konfigurieren eines Regelsatzes für Azure Front Door](how-to-configure-rule-set.md). | 

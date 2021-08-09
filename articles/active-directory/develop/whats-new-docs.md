@@ -11,16 +11,38 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 05d8e2e9555dbd24a812d626ce4be8900991230a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7fff1380697f1179207b470e803bf6994e32e1e2
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748689"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110782371"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Dokumentation zur Microsoft Identity Platform: Neues
 
 Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platform. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden.
+
+## <a name="may-2021"></a>Mai 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Anspruchsherausforderungen, Anspruchsanforderungen und Clientfunktionen](claims-challenge.md)
+- [Leitfaden für Entwickler zum Authentifizierungskontext für bedingten Zugriff](developer-guide-conditional-access-authentication-context.md)
+- [Microsoft Identity Platform: Aktualisierungstoken](refresh-tokens.md)
+- [Microsoft Identity Platform und OAuth 2.0-SAML-Bearerassertionsflow](v2-saml-bearer-assertion.md)
+- [Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API über eine React-Single-Page-Webanwendung (SPA) unter Verwendung des Autorisierungscodeflows](tutorial-v2-react.md)
+- [Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API über eine Angular-Single-Page-Webanwendung (SPA) unter Verwendung des Autorisierungscodeflows](tutorial-v2-angular-auth-code.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Leitfaden für Entwickler zum Authentifizierungskontext für bedingten Zugriff](developer-guide-conditional-access-authentication-context.md)
+- [Vorgehensweise: Hinzufügen von App-Rollen zu Ihrer Anwendung und Empfangen der Rollen im Token](howto-add-app-roles-in-azure-ad-apps.md)
+- [Migrieren einer Node.js-Anwendung von ADAL zu MSAL](msal-node-migration.md)
+- [Microsoft Identity Platform – ID-Token](id-tokens.md)
+- [Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App](quickstart-v2-android.md)
+- [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](quickstart-register-app.md)
+- [Schnellstart: Aufrufen einer durch Microsoft Identity Platform geschützten ASP.NET-Web-API](quickstart-v2-dotnet-native-aspnet.md)
+- [Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Android-Anwendung](tutorial-v2-android.md)
 
 ## <a name="april-2021"></a>April 2021
 
@@ -71,24 +93,3 @@ Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platfor
 - [Support- und Hilfeoptionen für Entwickler](developer-support-help-options.md)
 - [Web-App für Benutzeranmeldungen: Codekonfiguration](scenario-web-app-sign-user-app-configuration.md)
 - [Web-App für Benutzeranmeldungen: An- und Abmeldung](scenario-web-app-sign-user-sign-in.md)
-
-## <a name="february-2021"></a>Februar 2021
-
-### <a name="new-articles"></a>Neue Artikel
-
-- [Schnellstart: Abrufen eines Zugriffstokens und Aufrufen der Microsoft Graph-API über eine Electron-Desktop-App](quickstart-v2-nodejs-desktop.md)
-- [Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API in einer Electron-Desktop-App](tutorial-v2-nodejs-desktop.md)
-- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Node.js-Konsolen-App unter Verwendung der App-Identität](quickstart-v2-nodejs-console.md)
-- [Tutorial: Aufrufen der Microsoft Graph-API in einer Node.js-Konsolen-App](tutorial-v2-nodejs-console.md)
-- [Tutorial: Anmelden von Benutzern bei einer Node.js- und Express-Web-App](tutorial-v2-nodejs-webapp-msal.md)
-- [Unterstützen der kennwortlosen Authentifizierung mit FIDO2-Schlüsseln in von Ihnen entwickelten Apps](support-fido2-authentication.md)
-
-### <a name="updated-articles"></a>Aktualisierte Artikel
-
-- [Neuerungen bei der Authentifizierung](reference-breaking-changes.md)
-- [Verwenden von MSAL.NET zur Anmeldung von Benutzern mit Identitäten sozialer Netzwerke](msal-net-aad-b2c-considerations.md)
-- [Microsoft Identity Platform – Codebesipiele (V2.0-Endpunkt)](sample-v2-code.md)
-- [Videos zu Microsoft Identity Platform](identity-videos.md)
-- [Schnellstart: Einrichten eines Mandanten](quickstart-create-new-tenant.md)
-- [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](quickstart-register-app.md)
-- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Java-Konsolen-App anhand der Identität der App](quickstart-v2-java-daemon.md)

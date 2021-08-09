@@ -90,14 +90,20 @@
   items:
     - name: Was ist die Dokumentübersetzung?
       href: document-translation/overview.md
+    - name: Clientbibliotheken und SDKs
+      href: document-translation/client-sdks.md
     - name: Schnellstart
       href: document-translation/get-started-with-document-translation.md
     - name: Anleitungen
       items:
         - name: Erstellen von SAS-Token für die Dokumentübersetzung
           href: document-translation/create-sas-tokens.md
-    - name: Referenz
+        - name: Erstellen und Verwenden einer verwalteten Identität
+          href: document-translation/managed-identity.md
+    - name: Verweis
       items:
+        - name: Referenzhandbuch für die REST-API
+          href: document-translation/reference/rest-api-guide.md
         - name: Abrufen unterstützter Dokumentformate
           href: document-translation/reference/get-supported-document-formats.md
         - name: Abrufen unterstützter Glossarformate

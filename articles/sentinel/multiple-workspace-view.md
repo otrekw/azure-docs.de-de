@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 448998328ff15b74b0aa0b17e2435a7ff55c54a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed1101d75685eb397eb3e45683adb886288ee49b
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83124172"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809002"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>Arbeiten mit Vorfällen in vielen Arbeitsbereichen gleichzeitig 
 
@@ -50,7 +50,7 @@ In der **Ansicht mit mehreren Arbeitsbereichen** ist zurzeit nur der Bildschirm 
 
 - Sie müssen über Lese- und Schreibberechtigungen für alle Arbeitsbereiche verfügen, von denen Sie Vorfälle ausgewählt haben. Wenn Sie für einige Arbeitsbereiche nur über Leseberechtigungen verfügen, werden bei der Auswahl von Vorfällen in diesen Arbeitsbereichen Warnmeldungen angezeigt. Sie können diese oder andere gemeinsam ausgewählte Vorfälle nicht ändern (selbst wenn Sie für die anderen Vorfälle über Berechtigungen verfügen).
 
-- Wenn Sie einen einzelnen Vorfall auswählen und auf **Vollständige Details anzeigen** oder **Untersuchen** klicken, gelangen Sie in den Datenkontext des Arbeitsbereichs dieses speziellen Vorfalls.
+- Wenn Sie einen einzelnen Vorfall auswählen und auf **Vollständige Details anzeigen** oder **Aktionen** > **Untersuchen** klicken, gelangen Sie in den Datenkontext des Arbeitsbereichs dieses speziellen Vorfalls.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie Vorfälle in mehreren Azure Sentinel-Arbeitsbereichen gleichzeitig anzeigen und mit diesen arbeiten. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:

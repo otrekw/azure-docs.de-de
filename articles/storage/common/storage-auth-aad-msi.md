@@ -10,13 +10,13 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 80df7b85ec1ad9e273081f9a6a96b9a9d7ec8cd9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8f99516b0c93dfacfecdfa07f6f72a26effedd44
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791191"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901941"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Autorisieren des Zugriffs auf Blob- und Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -71,7 +71,7 @@ Wenn Sie einen Dienstprinzipal über die Azure-Befehlszeilenschnittstelle erstel
 
 Wenn Sie nicht über ausreichende Berechtigungen zum Zuweisen einer Rolle zum Dienstprinzipal verfügen, müssen Sie möglicherweise den Kontobesitzer oder den Administrator bitten, die Rollenzuweisung vorzunehmen.
 
-Im folgenden Beispiel wird ein neuer Dienstprinzipal über die Azure-Befehlszeilenschnittstelle erstellt. Außerdem wird ihm die Rolle **Storage Blob Data Reader** im Kontobereich zugewiesen.
+Im folgenden Beispiel wird ein neuer Dienstprinzipal über die Azure-Befehlszeilenschnittstelle erstellt und ihm im Kontobereich die Rolle **Mitwirkender an Storage-Blobdaten** zugewiesen.
 
 ```azurecli-interactive
 az ad sp create-for-rbac \
@@ -168,7 +168,7 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwalten von Rechten für den Zugriff auf Speicherdaten mithilfe der Azure RBAC](./storage-auth-aad-rbac-portal.md)
-- [Verwenden von Azure AD mit Speicheranwendungen](storage-auth-aad-app.md)
+- [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../blobs/assign-azure-role-data-access.md)
+- [Verwenden von Azure AD bei Speicheranwendungen](storage-auth-aad-app.md)
 - [Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blobdaten](../blobs/authorize-data-operations-powershell.md)
 - [Tutorial: Zugreifen auf Speicher über App Service mit verwalteten Identitäten](../../app-service/scenario-secure-app-access-storage.md)

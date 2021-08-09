@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85574b7d33af6d9abfe25f5af4d811255f08ce4b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 176c36ee5c3addf655503e3a371767764e0d9968
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452236"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738051"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 

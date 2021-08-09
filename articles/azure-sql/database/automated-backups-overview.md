@@ -5,18 +5,18 @@ description: Azure SQL-Datenbank und Azure SQL Managed Instance erstellen alle p
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: backup-restore
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurepowershell
 ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
-ms.reviewer: mathoma, stevestein, danil
+ms.reviewer: mathoma, danil
 ms.date: 03/10/2021
-ms.openlocfilehash: 5879c9107a0ab5a2ef150d119e8b5ac8e16ac01d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5aa0f079ed22d101e17e55d9880aaab7ae1715ff
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609922"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901365"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatisierte Sicherungen – Azure SQL-Datenbank und SQL Managed Instance
 
@@ -50,7 +50,7 @@ Die Sicherungsspeicherredundanz für eine SQL-Datenbank-Instanz kann entweder be
 > Zonenredundanter Speicher steht zurzeit nur in [bestimmten Regionen](../../storage/common/storage-redundancy.md#zone-redundant-storage) zur Verfügung. 
 
 > [!NOTE]
-> Die konfigurierbare Sicherungsspeicherredundanz für Azure SQL-Datenbank ist zurzeit nur in der Azure-Region „Brasilien, Süden“ als Public Preview und in der Region „Asien, Südosten“ allgemein verfügbar. Für die Hyperscale-Ebene ist dieses Feature noch nicht verfügbar. 
+> Die konfigurierbare Sicherungsspeicherredundanz für Azure SQL-Datenbank ist zurzeit in allen Azure-Regionen als Public Preview und nur in der Region „Asien, Südosten“ allgemein verfügbar. Für die Hyperscale-Ebene ist dieses Feature noch nicht verfügbar. 
 
 ### <a name="backup-usage"></a>Sicherungsverwendung
 
@@ -372,7 +372,7 @@ Weitere Informationen finden Sie unter [REST-API für die Aufbewahrung von Siche
 ## <a name="configure-backup-storage-redundancy"></a>Konfigurieren der Redundanz für Sicherungsspeicher
 
 > [!NOTE]
-> Konfigurierbare Speicherredundanz für Sicherungen steht nur für SQL Managed Instance zur Verfügung und kann nur während des Prozesses zum Erstellen einer verwalteten Instanz angegeben werden. Nachdem die Ressource bereitgestellt wurde, können Sie die Option für die Redundanz für Sicherungsspeicher nicht mehr ändern. Für SQL-Datenbank ist die Public Preview dieses Features aktuell nur in „Brasilien, Süden“ und die allgemein verfügbare Version nur in der Azure-Region „Asien, Südosten“ verfügbar. 
+> Konfigurierbare Speicherredundanz für Sicherungen steht nur für SQL Managed Instance zur Verfügung und kann nur während des Prozesses zum Erstellen einer verwalteten Instanz angegeben werden. Nachdem die Ressource bereitgestellt wurde, können Sie die Option für die Redundanz für Sicherungsspeicher nicht mehr ändern. Für SQL-Datenbank ist die Public Preview dieses Features aktuell in allen Azure-Regionen und die allgemein verfügbare Version in der Azure-Region „Asien, Südosten“ verfügbar. 
 
 Eine Redundanz für Sicherungsspeicher für eine verwaltete Instanz kann nur während der Instanzerstellung festgelegt werden. Für eine SQL-Datenbank-Instanz kann sie beim Erstellen der Datenbank festgelegt oder für eine vorhandene Datenbank aktualisiert werden. Standardmäßig wird georedundanter Speicher verwendet. Informationen zu den Preisunterschieden zwischen lokal redundantem, zonenredundantem und georedundantem Sicherungsspeicher finden Sie auf der [Seite mit der Preisübersicht für verwaltete Instanzen](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
 

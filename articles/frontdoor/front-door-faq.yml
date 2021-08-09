@@ -12,12 +12,12 @@ metadata:
   ms.workload: infrastructure-services
   ms.date: 06/10/2021
   ms.author: duau
-  ms.openlocfilehash: 790f1d8d69fb70556bb083e95e50039e4fbd4c1a
-  ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+  ms.openlocfilehash: 47faea68e2d5556d83d2b65d88e0f22844f24c4f
+  ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/23/2021
-  ms.locfileid: "112553795"
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112007755"
 title: Häufig gestellte Fragen zu Azure Front Door
 summary: >
   In diesem Artikel werden häufige Fragen zu den Features und der Funktionalität von Azure Front Door beantwortet. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
@@ -141,7 +141,7 @@ sections:
       </br>Bei Ihrem eigenen benutzerdefinierten TLS/SSL-Zertifikat wird die automatische Rotation nicht unterstützt. Ähnlich wie bei der erstmaligen Einrichtung für eine bestimmte benutzerdefinierte Domäne müssen Sie Front Door auf die richtige Zertifikatversion in Ihrem Key Vault verweisen und sicherstellen, dass der Dienstprinzipal für Front Door noch Zugriff auf den Key Vault besitzt. Dieser aktualisierte Zertifikatrolloutvorgang von Front Door ist atomisch und verursacht keine Produktionsauswirkungen, sofern sich der Antragstellername oder der alternative Antragstellername (SAN) für das Zertifikat nicht ändert.
   - question: >
       Welche Verschlüsselungssammlungen werden derzeit von Azure Front Door unterstützt?
-    answer: "Bei TLS1.2 werden folgende Verschlüsselungssammlungen unterstützt: \n\n- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\n\n> [!NOTE]  \n> Für Windows 10 und höhere Versionen wird empfohlen, eine oder beide Suites mit ECDHE-Verschlüsselungsverfahren zu aktivieren, um die Sicherheit zu erhöhen. Windows 8.1, 8 und 7 sind nicht mit diesen Suites mit ECDHE-Verschlüsselungsverfahren kompatibel. Die Suites mit DHE-Verschlüsselungsverfahren wurden aus Gründen der Kompatibilität mit diesen Betriebssystemen bereitgestellt.\n\nWenn Sie benutzerdefinierte Domänen mit TLS1.0/1.1 verwenden, werden folgende Verschlüsselungssammlungen unterstützt:\n\n- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\n- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\n- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\n- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\n- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\n- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\n- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\n- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\n- TLS_RSA_WITH_AES_256_GCM_SHA384\n- TLS_RSA_WITH_AES_128_GCM_SHA256\n- TLS_RSA_WITH_AES_256_CBC_SHA256\n- TLS_RSA_WITH_AES_128_CBC_SHA256\n- TLS_RSA_WITH_AES_256_CBC_SHA\n- TLS_RSA_WITH_AES_128_CBC_SHA\n- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\n"
+    answer: "Bei TLS1.2 werden folgende Verschlüsselungssammlungen unterstützt: \n\n- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\n\nWenn Sie benutzerdefinierte Domänen mit TLS1.0/1.1 verwenden, werden folgende Verschlüsselungssammlungen unterstützt:\n\n- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\n- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\n- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\n- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\n- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\n- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\n- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\n- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\n- TLS_RSA_WITH_AES_256_GCM_SHA384\n- TLS_RSA_WITH_AES_128_GCM_SHA256\n- TLS_RSA_WITH_AES_256_CBC_SHA256\n- TLS_RSA_WITH_AES_128_CBC_SHA256\n- TLS_RSA_WITH_AES_256_CBC_SHA\n- TLS_RSA_WITH_AES_128_CBC_SHA\n- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\n"
   - question: >
       Kann ich die TLS-Richtlinie konfigurieren, um die TLS-Protokollversionen zu steuern?
     answer: >

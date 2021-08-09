@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 07/16/2020
+ms.date: 05/14/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 4b3692884da921eeabcafc5a72419278af2d5440
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 8233edd12d4bde5c71d69cfbeab49ebdc8137dbc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888654"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071986"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
@@ -64,6 +64,7 @@ Wenn Sie ein [verwaltetes Azure Machine Learning-__Computeziel__](concept-comput
 > * Wenn eine Compute-Instanz in einem Private Link-Arbeitsbereich bereitgestellt wird, kann nur im virtuellen Netzwerk darauf zugegriffen werden. Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für `<instance-name>.<region>.instances.azureml.ms` mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md).
 > * Das zum Bereitstellen des Computeclusters/der Compute-Instanz verwendete Subnetz darf nicht an einen anderen Dienst (beispielsweise ACI) delegiert werden.
 > * VNET-Dienstendpunktrichtlinien funktionieren für Systemspeicherkonten des Computeclusters/der Compute-Instanz nicht.
+> * Wenn sich Speicher- und Compute-Instanzen in unterschiedlichen Regionen befinden, können zeitweilig Timeouts auftreten.
 
     
 > [!TIP]
@@ -118,7 +119,7 @@ Wenn Sie die Standardausgangsregeln nicht verwenden möchten und den ausgehenden
    - Azure Storage mithilfe der __Dienstkennung__ von __Storage.RegionName__. Dabei ist `{RegionName}` der Name einer Azure-Region.
    - Azure Container Registry mithilfe der __Dienstkennung__ von __AzureContainerRegistry.RegionName__. Dabei ist `{RegionName}` der Name einer Azure-Region.
    - Azure Machine Learning, mit dem __Diensttag__ von __AzureMachineLearning__
-   - Azure Resource Manager mithilfe der __Dienstkennung__ von __AzureResourceManager__
+   - Azure Resource Manager, mit dem __Diensttag__ von __Azure Resource Manager__
    - Azure Active Directory mithilfe der __Dienstkennung__ von __AzureActiveDirectory__
 
 Die NSG-Regelkonfiguration im Azure-Portal wird in der folgenden Abbildung dargestellt:
@@ -159,11 +160,11 @@ Die NSG-Regelkonfiguration im Azure-Portal wird in der folgenden Abbildung darge
 
 Wenn Sie das [erzwungene Tunneling](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) mit Azure Machine Learning Compute verwenden, müssen Sie dem Subnetz mit der Computeressource die Kommunikation mit dem öffentlichen Internet erlauben. Diese Kommunikation wird für die Aufgabenplanung und den Zugriff auf Azure Storage verwendet.
 
-Es gibt zwei Möglichkeiten, dies zu erreichen:
+Es gibt zwei Möglichkeiten, wie Sie diese Kommunikation zulassen können:
 
 * Verwenden Sie [Virtual Network NAT](../virtual-network/nat-overview.md). Ein NAT-Gateway stellt für ein oder mehrere Subnetze in Ihrem virtuellen Netzwerk die ausgehende Internetverbindung bereit. Weitere Informationen hierzu finden Sie unter [Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen](../virtual-network/nat-gateway-resource.md).
 
-* Fügen Sie dem Subnetz mit der Computeressource [Benutzerdefinierte Routen (UDRs)](../virtual-network/virtual-networks-udr-overview.md) hinzu. Richten Sie für jede IP-Adresse eine benutzerdefinierte Route ein, die vom Azure Batch-Dienst in der Region Ihrer Ressourcen verwendet wird. Diese benutzerdefinierten Routen ermöglichen dem Batch-Dienst, für die zeitliche Planung von Tasks mit den Serverknoten zu kommunizieren. Fügen Sie auch die IP-Adresse für Azure Machine Learning Service hinzu, da diese für den Zugriff auf Compute-Instanzen erforderlich ist. Wenn Sie die IP-Adresse für Azure Machine Learning Service hinzufügen, müssen Sie die IP-Adresse für die __primären und sekundären__ Azure-Regionen hinzufügen. Die primäre Region ist diejenige, in der sich Ihr Arbeitsbereich befindet.
+* Fügen Sie dem Subnetz mit der Computeressource [Benutzerdefinierte Routen (UDRs)](../virtual-network/virtual-networks-udr-overview.md) hinzu. Richten Sie für jede IP-Adresse eine benutzerdefinierte Route ein, die vom Azure Batch-Dienst in der Region Ihrer Ressourcen verwendet wird. Diese benutzerdefinierten Routen ermöglichen dem Batch-Dienst, für die zeitliche Planung von Tasks mit den Serverknoten zu kommunizieren. Fügen Sie auch die IP-Adresse für Azure Machine Learning Service hinzu, da die IP-Adresse für den Zugriff auf Compute-Instanzen erforderlich ist. Wenn Sie die IP-Adresse für Azure Machine Learning Service hinzufügen, müssen Sie die IP-Adresse für die __primären und sekundären__ Azure-Regionen hinzufügen. Die primäre Region ist diejenige, in der sich Ihr Arbeitsbereich befindet.
 
     Informationen zum Auffinden der sekundären Region finden Sie im Abschnitt [Sicherstellen von Geschäftskontinuität und Notfallwiederherstellung mit Azure-Regionspaaren](../best-practices-availability-paired-regions.md#azure-regional-pairs). Wenn sich Ihr Azure Machine Learning Service z. B. in „USA, Osten 2“ befindet, ist die sekundäre Region „USA, Mitte“. 
 
@@ -203,20 +204,22 @@ Es gibt zwei Möglichkeiten, dies zu erreichen:
 Gehen Sie zum Erstellen eines Machine Learning Compute-Clusters wie folgt vor:
 
 1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an, und wählen Sie dann Ihr Abonnement und den Arbeitsbereich aus.
+1. Wählen Sie auf der linken Seite __Compute__, in der Mitte __Computecluster__ und dann __+ Neu__ aus.
 
-1. Wählen Sie links __Compute__ aus.
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster.png" alt-text="Screenshot: Erstellen eines Clusters":::
 
-1. Wählen Sie in der Mitte __Trainingscluster__ aus, und wählen Sie dann __+__ aus.
+1. Wählen Sie im Dialogfeld __Computecluster erstellen__ die VM-Größe und -Konfiguration aus, die Sie benötigen, und wählen Sie dann __Weiter__ aus.
 
-1. Erweitern Sie im Dialogfeld __Neuer Trainingscluster__ den Abschnitt __Erweiterte Einstellungen__.
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster-vm.png" alt-text="Screenshot: Festlegen der VM-Konfiguration":::
 
-1. Um diese Computeressource für die Verwendung eines virtuellen Netzwerks zu konfigurieren, führen Sie im Abschnitt __Virtuelles Netzwerk konfigurieren__ die folgenden Schritte aus:
+1. Legen Sie im Abschnitt __Einstellungen konfigurieren__ den __Computenamen__, das __virtuelle Netzwerk__ und das __Subnetz__ fest.
 
-    1. Wählen Sie in der Dropdownliste __Ressourcengruppe__ die Ressourcengruppe aus, die das virtuelle Netzwerk enthält.
-    1. Wählen Sie in der Dropdownliste __Virtuelles Netzwerk__ das virtuelle Netzwerk aus, das das Subnetzwerk enthält.
-    1. Wählen Sie in der Dropdownliste __Subnetz__ das zu verwendende Subnetz aus.
+    > [!TIP]
+    > Wenn Ihr Arbeitsbereich einen privaten Endpunkt verwendet, um eine Verbindung mit dem virtuellen Netzwerk herzustellen, wird das Auswahlfeld __Virtuelles Netzwerk__ abgeblendet angezeigt.
 
-   ![Die virtuellen Netzerkeinstellungen für Machine Learning Compute](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster-config.png" alt-text="Screenshot: Einstellungen des virtuellen Netzwerks":::
+
+1. Wählen Sie __Erstellen__ aus, um den Computecluster zu erstellen.
 
 Ein Machine Learning Compute-Cluster kann auch mithilfe des Azure Machine Learning SDK erstellt werden. Der folgende Code erstellt einen neuen Machine Learning Compute-Cluster im Subnetz `default` eines virtuellen Netzwerks namens `mynetwork`:
 
@@ -260,7 +263,7 @@ Nach Abschluss des Erstellungsprozesses trainieren Sie Ihr Modell, indem Sie den
 
 ### <a name="access-data-in-a-compute-instance-notebook"></a>Zugreifen auf Daten auf einem Compute-Instanz-Notebook
 
-Wenn Sie Notebooks auf einer Azure-Compute-Instanz verwenden, müssen Sie sicherstellen, dass Ihr Notebook auf einer Computeressource hinter dem gleichen virtuellen Netzwerk und Subnetz wie Ihre Daten ausgeführt wird. 
+Wenn Sie Notebooks auf einer Azure Machine Learning-Compute-Instanz verwenden, müssen Sie sicherstellen, dass Ihr Notebook auf einer Computeressource hinter dem gleichen virtuellen Netzwerk und Subnetz wie Ihre Daten ausgeführt wird. 
 
 Sie müssen die Compute-Instanz so konfigurieren, das sie sich während der Erstellung unter **Erweiterte Einstellungen** > **Konfigurieren des virtuellen Netzwerks** in demselben virtuellen Netzwerk befindet. Eine vorhandene Compute-Instanz kann in einem virtuellen Netzwerk nicht hinzugefügt werden.
 

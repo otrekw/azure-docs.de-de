@@ -10,16 +10,16 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: af47182219441a373fd3e05585dbbb9484d06b37
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 38ac40f8d6d56bce4862f2e861a6568b3eefd15a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753026"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087506"
 ---
 # <a name="using-disks-in-azure-resource-manager-templates"></a>Verwenden von Datenträgern in Azure Resource Manager-Vorlagen
 
-In diesem Dokument erhalten Sie Informationen über die Unterschiede zwischen verwalteten und nicht verwalteten Datenträgern bei der Verwendung von Azure Resource Manager-Vorlagen zur Bereitstellung virtueller Computer. In diesem Beispiel werden Sie bei der Aktualisierung vorhandener Vorlagen auf verwaltete Datenträger unterstützt, die vorher nicht verwaltete Datenträger verwendet haben. Zu Referenzzwecken verwenden wir die Vorlage [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) als Leitfaden. Sie können die Vorlage mit [verwalteten Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) und einer vorherigen Version mit [nicht verwalteten Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) anzeigen lassen, wenn Sie sie direkt miteinander vergleichen möchten.
+In diesem Dokument erhalten Sie Informationen über die Unterschiede zwischen verwalteten und nicht verwalteten Datenträgern bei der Verwendung von Azure Resource Manager-Vorlagen zur Bereitstellung virtueller Computer. In diesem Beispiel werden Sie bei der Aktualisierung vorhandener Vorlagen auf verwaltete Datenträger unterstützt, die vorher nicht verwaltete Datenträger verwendet haben. Zu Referenzzwecken verwenden wir die Vorlage [vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows) als Leitfaden. Sie können die Vorlage mit [verwalteten Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json) und einer vorherigen Version mit [nicht verwalteten Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) anzeigen lassen, wenn Sie sie direkt miteinander vergleichen möchten.
 
 ## <a name="unmanaged-disks-template-formatting"></a>Formatieren von Vorlagen mit nicht verwalteten Datenträgern
 
@@ -261,8 +261,8 @@ Lesen Sie bitte die REST-API-Dokumentation zum Erstellen eines verwalteten Daten
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Vollständige Vorlagen, die verwaltete Datenträger verwenden, finden Sie unter den folgenden Links des Repositorys für Azure-Schnellstartvorlagen.
-    * [Windows VM with managed disk (Virtueller Windows-Computer mit verwalteten Datenträgern)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-    * [Linux VM with managed disk (Virtueller Linux-Computer mit verwalteten Datenträgern)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
+    * [Windows VM with managed disk (Virtueller Windows-Computer mit verwalteten Datenträgern)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows)
+    * [Linux VM with managed disk (Virtueller Linux-Computer mit verwalteten Datenträgern)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-linux)
 * Im Dokument [Azure Managed Disks – Übersicht](managed-disks-overview.md) finden Sie weitere Informationen zu verwalteten Datenträgern.
 * Lesen Sie die Referenzdokumentation zu den Vorlagen für VM-Ressourcen. Diese finden Sie im Dokument [Microsoft.Compute/virtualMachines template reference](/azure/templates/microsoft.compute/virtualmachines).
 * Lesen Sie die Referenzdokumentation zu den Vorlagen für Datenträgerressourcen. Diese finden Sie im Dokument [Microsoft.Compute/disks template reference](/azure/templates/microsoft.compute/disks).

@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 407d208ef0385c795d086bb495ed51a020395cd2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: dffe54250bdbe8b060483a846b84b4adae858fb6
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443985"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845491"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- und Edsv4-Serie
 
@@ -46,7 +46,7 @@ Die Edv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platin
 | Standard_E64d_v4 | 64 | 504 | 2400 | 32 | 615.000/3.872 | 8|30.000 |
 
 
-<sup>**</sup> Diese IOPS-Werte können mithilfe von [Gen2-VMs](generation-2.md) garantiert werden.
+<sup>**</sup> Diese IOPS-Werte können mithilfe von [Gen2-VMs](generation-2.md) erzielt werden.
 
 ## <a name="edsv4-series"></a>Edsv4-Serie
 
@@ -65,11 +65,11 @@ Die Edsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Plati
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | <sup>**</sup> Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|
 | Standard_E2ds_v4  | 2 | 16 | 75 | 4 | 19.000/120(50) | 3200/48 | 2|1000 |
-| Standard_E4ds_v4  | 4 | 32 | 150 | 8 | 38.500/242(100) | 6400/96 | 2|2000 |
-| Standard_E8ds_v4 | 8 | 64 | 300 | 16 | 77.000/485(200) | 12800/192 | 4|4000 |
-| Standard_E16ds_v4 | 16 | 128 | 600 | 32 | 154.000/968(400) | 25600/384 | 8|8.000 |
+| Standard_E4ds_v4 <sup>1</sup> | 4 | 32 | 150 | 8 | 38.500/242(100) | 6400/96 | 2|2000 |
+| Standard_E8ds_v4 <sup>1</sup> | 8 | 64 | 300 | 16 | 77.000/485(200) | 12800/192 | 4|4000 |
+| Standard_E16ds_v4 <sup>1</sup> | 16 | 128 | 600 | 32 | 154.000/968(400) | 25600/384 | 8|8.000 |
 | Standard_E20ds_v4 | 20 | 160 | 750 | 32 | 193.000/1.211(500)  | 32000/480  | 8|10000 |
-| Standard_E32ds_v4 | 32 | 256 | 1200 | 32 | 308.000/1.936(800) | 51200/768  | 8|16000 |
+| Standard_E32ds_v4 <sup>1</sup> | 32 | 256 | 1200 | 32 | 308.000/1.936(800) | 51200/768  | 8|16000 |
 | Standard_E48ds_v4 | 48 | 384 | 1800 | 32 | 462.000/2.904(1.200) | 76800/1152 | 8|24.000 |
 | Standard_E64ds_v4 <sup>1</sup> | 64 | 504 | 2400 | 32 | 615.000/3.872(1.600) | 80000/1200 | 8|30.000 |
 | Standard_E80ids_v4 <sup>2</sup> | 80 | 504 | 2400 | 32 | 615.000/3.872(1.600) | 80.000/1.500 | 8|30.000 |
@@ -77,6 +77,8 @@ Die Edsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Plati
 <sup>1</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md).
 
 <sup>2</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
+
+<sup>**</sup> Diese IOPS-Werte können mithilfe von [Gen2-VMs](generation-2.md) erzielt werden.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

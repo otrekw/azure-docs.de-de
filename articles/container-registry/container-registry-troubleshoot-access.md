@@ -3,12 +3,12 @@ title: Beheben von Netzwerkproblemen mit der Registrierung
 description: Enthält eine Beschreibung der Symptome, Ursachen und Lösungen häufiger Probleme, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten.
 ms.topic: article
 ms.date: 03/30/2021
-ms.openlocfilehash: dc2110405713791d11fb438565fc091da9c9dd5c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d9cfa0aa902fca1afd1033d40b33ccdf5baa56d7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780750"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066674"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Beheben von Netzwerkproblemen mit der Registrierung
 
@@ -68,7 +68,7 @@ Verwandte Links:
 * [Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung von einem Standort hinter einer Firewall](container-registry-firewall-access-rules.md)
 * [HTTP/HTTPS-Proxykonfiguration](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
 * [Georeplikation in Azure Container Registry](container-registry-geo-replication.md)
-* [Azure Container Registry-Protokolle für die Diagnoseauswertung und -überwachung](container-registry-diagnostics-audit-logs.md)
+* [Überwachen von Azure Container Registry](monitor-service.md)
 
 ### <a name="configure-public-access-to-registry"></a>Konfigurieren des öffentlichen Zugriffs auf die Registrierung
 
@@ -126,11 +126,11 @@ Verwandte Links:
 
 ## <a name="advanced-troubleshooting"></a>Erweiterte Problembehandlung
 
-Wenn [Sammlung von Ressourcenprotokollen](container-registry-diagnostics-audit-logs.md) in der Registrierung aktiviert ist, überprüfen Sie das Protokoll „ContainterRegistryLoginEvents“. In diesem Protokoll werden Registrierungauthentifizierungsereignisse und der -status gespeichert, einschließlich der eingehenden Identität und IP-Adresse. Fragen Sie das Protokoll nach [Authentifizierungsfehlern für die Registrierung](container-registry-diagnostics-audit-logs.md#registry-authentication-failures) ab. 
+Wenn [Sammlung von Ressourcenprotokollen](monitor-service.md) in der Registrierung aktiviert ist, überprüfen Sie das Protokoll „ContainterRegistryLoginEvents“. In diesem Protokoll werden Registrierungauthentifizierungsereignisse und der -status gespeichert, einschließlich der eingehenden Identität und IP-Adresse. Fragen Sie das Protokoll nach [Authentifizierungsfehlern für die Registrierung](monitor-service.md#registry-authentication-failures) ab. 
 
 Verwandte Links:
 
-* [Protokolle für die Diagnoseauswertung und -überwachung](container-registry-diagnostics-audit-logs.md)
+* [Überwachen von Azure Container Registry](monitor-service.md)
 * [Häufig gestellte Fragen (FAQ) zur Containerregistrierung](container-registry-faq.md)
 * [Azure-Sicherheitsbaseline für Azure Container Registry](security-baseline.md)
 * [Bewährte Methoden für Azure Container Registry](container-registry-best-practices.md)

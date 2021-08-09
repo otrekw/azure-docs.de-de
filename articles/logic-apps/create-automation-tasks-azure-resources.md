@@ -3,24 +3,22 @@ title: Erstellen von Automatisierungsaufgaben zum Verwalten und Überwachen von 
 description: Einrichten automatisierter Aufgaben, mit denen Sie Azure-Ressourcen verwalten und Kosten überwachen können, indem Sie Workflows erstellen, die auf Azure Logic Apps ausgeführt werden.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
-ms.topic: conceptual
-ms.date: 04/05/2021
-ms.openlocfilehash: 0a98f9e4b108d2498fa19bc0b041f9d52272c7d2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: azla
+ms.topic: how-to
+ms.date: 06/09/2021
+ms.openlocfilehash: bd8ac7857d5be31aafd9a1e91cbd276d79823ed2
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774915"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747147"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Verwalten von Azure-Ressourcen und Überwachen von Kosten durch Erstellen von Automatisierungsaufgaben (Vorschau)
 
 > [!IMPORTANT]
-> Diese Funktion befindet sich in der öffentlichen Vorschauphase, wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese Funktion befindet sich in der Vorschau, wird für Produktionsworkloads nicht empfohlen und ist von den Vereinbarungen zum Servicelevel ausgeschlossen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Um Ihnen die Verwaltung von [Azure-Ressourcen](../azure-resource-manager/management/overview.md#terminology) zu erleichtern, können Sie automatisierte Verwaltungsaufgaben für eine bestimmte Ressource oder Ressourcengruppe mithilfe von Vorlagen für Automatisierungsaufgaben erstellen, deren Verfügbarkeit je nach Ressourcentyp variiert. Beispielsweise können Sie für ein [Azure-Speicherkonto](../storage/common/storage-account-overview.md) eine Automatisierungsaufgabe einrichten, die Ihnen die monatlichen Kosten für dieses Speicherkonto sendet. Für einen [virtuellen Azure-Computer](https://azure.microsoft.com/services/virtual-machines/) können Sie eine Automatisierungsaufgabe erstellen, die diesen virtuellen Computer nach einem vordefinierten Zeitplan ein- und ausschaltet.
-
-Hinter den Kulissen ist eine Automatisierungsaufgabe tatsächlich ein Workflow, der auf dem [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-Dienst ausgeführt wird und mit denselben [Preisen](https://azure.microsoft.com/pricing/details/logic-apps/) und demselben [Preismodell](../logic-apps/logic-apps-pricing.md) abgerechnet wird. Nachdem Sie die Aufgabe erstellt haben, können Sie den zugrunde liegenden Workflow anzeigen und bearbeiten, indem Sie die Aufgabe im Logik-App-Designer öffnen. Nachdem eine Aufgabe mindestens eine Ausführung abgeschlossen hat, können Sie den Status, den Verlauf, die Eingaben und die Ausgaben für jede Ausführung überprüfen.
 
 Im Folgenden sehen Sie die aktuell verfügbaren Aufgabenvorlagen in dieser Vorschau:
 
@@ -45,9 +43,22 @@ In diesem Artikel wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 ## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>Wie unterscheiden sich Automatisierungsaufgaben von Azure Automation?
 
-Derzeit können Sie eine Automatisierungsaufgabe nur auf Ressourcenebene erstellen, den Ausführungsverlauf der Aufgabe anzeigen und den der Aufgabe zugrunde liegenden Logik-App-Workflow bearbeiten, was vom [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-Dienst unterstützt wird. Automatisierungsaufgaben sind grundlegender und schlanker als [Azure Automation](../automation/automation-intro.md).
+Automatisierungsaufgaben sind grundlegender und schlanker als [Azure Automation](../automation/automation-intro.md). Derzeit können Sie eine Automatisierungsaufgabe nur auf der Azure-Ressourcenebene erstellen. Eine Automatisierungsaufgabe ist eigentlich eine Logik-App-Ressource, die einen Workflow ausführt und vom [*mehrinstanzenfähigen* Azure Logic Apps-Dienst](../logic-apps/logic-apps-overview.md) unterstützt wird. Nachdem Sie die Automatisierungsaufgabe erstellt haben, können Sie den zugrunde liegenden Workflow anzeigen und bearbeiten, indem Sie die Aufgabe im Workflow-Designer öffnen. Nachdem eine Aufgabe mindestens eine Ausführung abgeschlossen hat, können Sie den Status der Aufgabe, die Workflowausführung, den Verlauf, die Eingaben und die Ausgaben für jede Ausführung überprüfen.
 
 Im Vergleich dazu ist Azure Automation ein cloudbasierter Automatisierungs- und Konfigurationsdienst, der eine einheitliche Verwaltung Ihrer Azure- und Nicht-Azure-Umgebungen unterstützt. Der Dienst umfasst [Prozessautomatisierung für Orchestrierungszwecke](../automation/automation-intro.md#process-automation) durch Verwendung von [Runbooks](../automation/automation-runbook-execution.md), Konfigurationsverwaltung mit [Änderungsnachverfolgung und Bestand](../automation/change-tracking/overview.md), Updateverwaltung, gemeinsam genutzte Funktionen und Features für heterogene Umgebungen. Mit Azure Automation haben Sie die volle Kontrolle über Bereitstellung, Ausführung und Außerbetriebnahme von Workloads und Ressourcen.
+
+<a name="pricing"></a>
+
+## <a name="pricing"></a>Preise
+
+Bei der Erstellung einer Automatisierungsaufgabe fallen nicht automatisch Gebühren an. Unterhalb der Automatisierungsaufgabe befindet sich eine mehrinstanzenfähige Logik-App, d. h. dass das [Modell für nutzungsbasierte Preise](logic-apps-pricing.md) auch für Automatisierungsaufgaben gilt. Die Messung und die Abrechnung basieren auf den Trigger- und Aktionsausführungen des zugrunde liegenden Logik-App-Workflows.
+
+Die Ausführungen werden gemessen und abgerechnet, unabhängig davon, ob der Workflow erfolgreich ausgeführt wird oder ob er überhaupt instanziiert wird. Gehen wir beispielsweise davon aus, dass Ihre Automatisierungsaufgabe einen Abruftrigger verwendet, der regelmäßig ausgehende Aufrufe an einen Endpunkt sendet. Diese ausgehenden Anforderungen werden gemessen und als Ausführung abgerechnet, unabhängig davon, ob der Trigger ausgelöst oder übersprungen wurde. Dies wirkt sich darauf aus, ob eine Workflowinstanz erstellt wird.
+
+Trigger und Aktionen folgen [Verbrauchsplan-Tarifen](https://azure.microsoft.com/pricing/details/logic-apps/). Diese unterscheiden sich auf Grundlage dessen, ob es sich um [„integrierte“](../connectors/built-in.md) oder [„verwaltete“ (Standard oder Enterprise)](../connectors/managed.md) Vorgänge handelt. Trigger und Aktionen führen ebenfalls Speichertransaktionen durch, die auf die [Verbrauchsplan-Datenrate](https://azure.microsoft.com/pricing/details/logic-apps/) zurückgreifen.
+
+> [!TIP]
+> Als monatlichen Bonus enthält der Verbrauchsplan *mehrere Tausend* integrierte Ausführungen, die kostenlos sind. Spezifische Informationen hierzu können Sie den [Verbrauchsplan-Tarifen](https://azure.microsoft.com/pricing/details/logic-apps/) entnehmen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

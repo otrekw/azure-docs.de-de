@@ -3,12 +3,12 @@ title: Fehlerbehebung bei Azure Video Analyzer - Azure
 description: Dieser Artikel beschreibt Schritte zur Fehlerbehebung für den Azure Video Analyzer.
 ms.topic: how-to
 ms.date: 05/04/2021
-ms.openlocfilehash: f43d959d1f289b76d4a0b8071aba49c01abe3481
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cd54386702c24065cccad4f7ede43c313a44886c
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386233"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613662"
 ---
 # <a name="troubleshoot-azure-video-analyzer"></a>Fehlerbehebung beim Azure Video Analyzer
 
@@ -26,6 +26,10 @@ Als Teil Ihrer Video Analyzer-Bereitstellung richten Sie Azure-Ressourcen wie Io
 1. [Anzeigen der Nachrichten, die den IoT Edge-Hub durchlaufen](../../iot-edge/troubleshoot.md#view-the-messages-going-through-the-iot-edge-hub)
 1. [Neustarten von Containern](../../iot-edge/troubleshoot.md#restart-containers)
 1. [Überprüfen der Konfigurationsregeln für Firewall und Port](../../iot-edge/troubleshoot.md#check-your-firewall-and-port-configuration-rules)
+
+### <a name="issues-when-using-arm-template"></a>Probleme bei der Verwendung von ARM-Vorlagen
+
+Wenn bei der Verwendung der ARM-Vorlage (Schaltfläche zum Bereitstellen in Azure) Probleme auftreten, führen Sie die Schritte in dieser [Schnellstartanleitung](get-started-detect-motion-emit-events-portal.md) aus, um die erforderlichen Ressourcen manuell bereitzustellen. 
 
 ### <a name="pre-deployment-issues"></a>Probleme vor der Bereitstellung
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Maps
 description: 'Lernen Sie die zwei Methoden zur Authentifizierung von Anforderungen in Azure Maps kennen: Authentifizierung mit gemeinsam verwendetem Schlüssel und Azure Active Directory (Azure AD)-Authentifizierung.'
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 05/25/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9c973859c8b7a3d04693946f50377837c3538b85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3f594f910a6645a3a1a0cc8e71afcb65cac8735
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101094097"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616358"
 ---
 # <a name="authentication-with-azure-maps"></a>Authentifizierung mit Azure Maps
 
@@ -30,8 +30,8 @@ Azure Maps unterstützt zwei Möglichkeiten für die Authentifizierung von Anfor
 
 Informationen zum Anzeigen der Schlüssel im Azure-Portal finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md#view-authentication-details).
 
-> [!TIP]
-> Aus Sicherheitsgründen wird empfohlen, dass Sie zwischen Ihrem Primär- und Sekundärschlüssel wechseln. Aktualisieren Sie zur Schlüsselrotation Ihre App, um den Sekundärschlüssel zu verwenden. Stellen Sie dann die App bereit, und drücken Sie die Taste für die Aktualisierung neben dem Primärschlüssel, um einen neuen Primärschlüssel zu generieren. Der alte Primärschlüssel wird deaktiviert. Weitere Informationen zur Schlüsselrotation finden Sie unter [Einrichten von Azure Key Vault mit Schlüsselrotation und Überwachung](../key-vault/secrets/tutorial-rotation-dual.md)
+> [!NOTE]
+> Primär- und Sekundärschlüssel sollten als vertrauliche Daten behandelt werden. Der gemeinsam verwendete Schlüssel wird verwendet, um alle Azure Maps-REST-APIs zu authentifizieren.  Benutzer, die einen gemeinsam verwendeten Schlüssel verwenden, sollten den API-Schlüssel wegabstrahieren, entweder über Umgebungsvariablen oder den sicheren Geheimspeicher, wo er zentral verwaltet werden kann.
 
 ## <a name="azure-ad-authentication"></a>Azure AD-Authentifizierung
 
@@ -80,9 +80,9 @@ Weitere Informationen zum Anzeigen Ihrer Client-ID finden Sie unter [Anzeigen vo
 
 ## <a name="authorization-with-role-based-access-control"></a>Autorisierung mit rollenbasierter Zugriffssteuerung
 
-Azure Maps unterstützt den Zugriff auf alle Prinzipaltypen für die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/overview.md), einschließlich einzelner Azure AD-Benutzer, -Gruppen und -Anwendungen, Azure-Ressourcen sowie verwalteter Azure-Identitäten. Prinzipaltypen wird ein Berechtigungssatz gewährt, der auch als Rollendefinition bezeichnet wird. Eine Rollendefinition bietet Berechtigungen für REST-API-Aktionen. Das Anwenden des Zugriffs auf ein oder mehrere Azure Maps-Konten wird als Bereich bezeichnet. Durch das Anwenden eines Prinzipals, einer Rollendefinition und eines Bereichs wird eine Rollenzuweisung erstellt. 
+Azure Maps unterstützt den Zugriff auf alle Prinzipaltypen für die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/overview.md), einschließlich einzelner Azure AD-Benutzer, -Gruppen und -Anwendungen, Azure-Ressourcen sowie verwalteter Azure-Identitäten. Prinzipaltypen wird ein Berechtigungssatz gewährt, der auch als Rollendefinition bezeichnet wird. Eine Rollendefinition bietet Berechtigungen für REST-API-Aktionen. Das Anwenden des Zugriffs auf ein oder mehrere Azure Maps-Konten wird als Bereich bezeichnet. Durch das Anwenden eines Prinzipals, einer Rollendefinition und eines Bereichs wird eine Rollenzuweisung erstellt.
 
-In den nächsten Abschnitten werden die Konzepte und Komponenten der Azure Maps-Integration mit Azure RBAC diskutiert. Im Rahmen des Prozesses zum Einrichten Ihres Azure Maps Kontos wird ein Azure AD-Verzeichnis dem Azure-Abonnement zugeordnet, in dem sich das Azure Maps-Konto befindet. 
+In den nächsten Abschnitten werden die Konzepte und Komponenten der Azure Maps-Integration mit Azure RBAC diskutiert. Im Rahmen des Prozesses zum Einrichten Ihres Azure Maps-Kontos wird ein Azure AD-Verzeichnis dem Azure-Abonnement zugeordnet, in dem sich das Azure Maps-Konto befindet.
 
 Wenn Sie Azure RBAC konfigurieren, wählen Sie einen Sicherheitsprinzipal aus und wenden ihn auf eine Rollenzuweisung an. Informationen zum Hinzufügen von Rollenzuweisungen im Azure-Portal finden Sie unter [Zuweisen von Azure-Rollen](../role-based-access-control/role-assignments-portal.md).
 

@@ -1,34 +1,33 @@
 ---
-title: Einrichten des MSIX-Features zum Anfügen von Apps für Windows Virtual Desktop im Portal – Azure
-description: Einrichten des MSIX-Features zum Anfügen von Apps für Windows Virtual Desktop über das Azure-Portal.
+title: Einrichten des MSIX-Features zum Anfügen von Apps für Azure Virtual Desktop im Portal – Azure
+description: Einrichten des MSIX-Features zum Anfügen von Apps für Azure Virtual Desktop über das Azure-Portal.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: da084bfab39eb0e12d90f25f3658dc4507ca63dc
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 0fe61e5ef36064234b65da4d059f02beed18f9a6
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906654"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745707"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Einrichten des MSIX-Features zum Anfügen von Apps mit dem Azure-Portal
 
-In diesem Artikel wird erläutert, wie Sie das MSIX-Feature zum Anfügen von Apps in einer Windows Virtual Desktop-Umgebung einrichten.
+In diesem Artikel wird erläutert, wie Sie das MSIX-Feature zum Anfügen von Apps in einer Azure Virtual Desktop-Umgebung einrichten.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 Folgendes benötigen Sie, um das MSIX-Feature zum Anfügen von Apps zu konfigurieren:
 
-- Eine funktionierende Windows Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung von Windows Virtual Desktop (klassisch) finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zum Bereitstellen von Windows Virtual Desktop mit Azure Resource Manager-Integration finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
-- Ein Windows Virtual Desktop-Hostpool mit mindestens einem aktiven Sitzungshost.
+- Eine funktionierende Azure Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung von Azure Virtual Desktop (klassisch) finden Sie unter [Erstellen eines Mandanten in Azure Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zum Bereitstellen von Azure Virtual Desktop mit Azure Resource Manager-Integration finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
+- Ein Azure Virtual Desktop-Hostpool mit mindestens einem aktiven Sitzungshost.
 - Das MSIX-Pakettool.
 - Eine MSIX-gepackte Anwendung, die in ein MSIX-Image erweitert wurde, das in eine Dateifreigabe hochgeladen wird.
-- Eine Dateifreigabe in der Windows Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird.
+- Eine Dateifreigabe in der Azure Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird.
 - Die Dateifreigabe, in die Sie das MSIX-Image hochgeladen haben, muss auch für alle virtuellen Computer (VMs) im Hostpool zugänglich sein. Benutzer benötigen Leseberechtigungen, um auf das Image zugreifen zu können.
 - Wenn das Zertifikat nicht öffentlich vertrauenswürdig ist, befolgen Sie die Anweisungen unter [Installieren von Zertifikaten](app-attach.md#install-certificates).
-- Die Azure Government Cloud unterstützt derzeit keine MSIX-App-Anfügung.
 
 ## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>Deaktivieren von automatischen Updates für Anwendungen mit dem MSIX-Feature zum Anfügen von Apps
 
@@ -70,10 +69,7 @@ So fügen Sie das MSIX-Image hinzu
 
 1. Öffnen Sie das Azure-Portal.
 
-2. Geben Sie **Windows Virtual Desktop** in die Suchleiste ein, und wählen Sie dann den Dienstnamen aus.
-
-      > [!div class="mx-imgBorder"]
-      > ![Ein Screenshot eines Benutzers, der „Windows Virtual Desktop“ im Dropdownmenü der Suchleiste im Azure-Portal auswählt. „Windows Virtual Desktop“ ist rot hervorgehoben.](media/find-and-select.png)
+2. Geben Sie **Azure Virtual Desktop** in die Suchleiste ein, und wählen Sie dann den Dienstnamen aus.
 
 3. Wählen Sie den Hostpool aus, in dem Sie die MSIX-Apps ablegen möchten.
 
@@ -101,7 +97,7 @@ So fügen Sie das MSIX-Image hinzu
 
 7.  Wählen Sie für **Status** Ihren bevorzugten Status aus.
     -  Der Status **Aktiv** ermöglicht Benutzern die Interaktion mit dem Paket.
-    -  Der Status **Inaktiv** veranlasst Windows Virtual Desktop, das Paket zu ignorieren und nicht den Benutzern zuzustellen.
+    -  Der Status **Inaktiv** veranlasst Azure Virtual Desktop, das Paket zu ignorieren und nicht den Benutzern zuzustellen.
 
 8. Wenn Sie fertig sind, wählen Sie **Hinzufügen** aus.
 
@@ -113,7 +109,7 @@ Wenn Sie bereits über ein MSIX-Image verfügen, fahren Sie mit [Veröffentliche
 
 So veröffentlichen Sie die Apps
 
-1. Wählen Sie im Windows Virtual Desktop-Ressourcenanbieter die Registerkarte **Anwendungsgruppen** aus.
+1. Wählen Sie im Azure Virtual Desktop-Ressourcenanbieter die Registerkarte **Anwendungsgruppen** aus.
 
 2. Wählen Sie die Anwendungsgruppe aus, in der Sie die Apps veröffentlichen möchten.
 
@@ -167,7 +163,7 @@ Nachdem Sie MSIX-Apps einer App-Gruppe zugewiesen haben, müssen Sie Benutzern d
 
 ## <a name="change-msix-package-state"></a>Ändern des MSIX-Paketstatus
 
-Als nächstes müssen Sie den MSIX-Paketstatus je nach Vorgehensweise mit dem Paket entweder in **Aktiv** oder **Inaktiv** ändern. Aktive Pakete sind Pakete, mit denen Ihre Benutzer interagieren können, sobald sie veröffentlicht sind. Inaktive Pakete werden von Windows Virtual Desktop ignoriert, sodass Ihre Benutzer nicht mit den darin enthaltenen Apps interagieren können.
+Als nächstes müssen Sie den MSIX-Paketstatus je nach Vorgehensweise mit dem Paket entweder in **Aktiv** oder **Inaktiv** ändern. Aktive Pakete sind Pakete, mit denen Ihre Benutzer interagieren können, sobald sie veröffentlicht sind. Inaktive Pakete werden von Azure Virtual Desktop ignoriert, sodass Ihre Benutzer nicht mit den darin enthaltenen Apps interagieren können.
 
 ### <a name="change-state-with-the-applications-list"></a>Ändern des Status mit der Anwendungsliste
 
@@ -219,9 +215,9 @@ So entfernen Sie einzelne MSIX-Apps aus dem Paket
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Stellen Sie unserer Community unter [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Ihre Fragen zu dieser Funktion.
+Stellen Sie unserer Community unter [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Ihre Fragen zu dieser Funktion.
 
-Sie können Ihr Feedback in Bezug auf Windows Virtual Desktop auch im [Windows Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) hochladen.
+Sie können Ihr Feedback bezüglich Azure Virtual Desktop auch im [Azure Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) hochladen.
 
 Folgende Artikel sind eventuell hilfreich:
 

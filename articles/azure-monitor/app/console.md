@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.openlocfilehash: aa39a1eca04621fc4db75f755402d3679403e814
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee78fb4f778ac1ab629a68173249bdcada7b00fa
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96920593"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082592"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights für .NET-Konsolenanwendungen
 
@@ -24,7 +24,7 @@ Sie benötigen ein Abonnement für [Microsoft Azure](https://azure.com). Melden 
 ## <a name="getting-started"></a>Erste Schritte
 
 > [!IMPORTANT]
-> Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=net) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+> [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) sind Instrumentierungsschlüsseln vorzuziehen. Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die Verbindungszeichenfolge identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 
 * Erstellen Sie im [Azure-Portal](https://portal.azure.com)[eine Application Insights-Ressource](./create-new-resource.md). Wählen Sie für den Typ **Allgemein** aus.
 * Erstellen Sie eine Kopie des Instrumentierungsschlüssels. Diesen finden Sie in der Dropdownliste **Essentials** der neuen Ressource, die Sie erstellt haben.

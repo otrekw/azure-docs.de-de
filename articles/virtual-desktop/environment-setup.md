@@ -1,35 +1,35 @@
 ---
-title: 'Windows Virtual Desktop-Umgebung: Azure'
-description: Lernen Sie die grundlegenden Elemente einer Windows Virtual Desktop-Umgebung kennen wie Hostpools und App-Gruppen.
+title: Azure Virtual Desktop-Umgebung – Azure
+description: Lernen Sie die grundlegenden Elemente einer Azure Virtual Desktop-Umgebung kennen, etwa Hostpools und App-Gruppen.
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 2c598be641ee09773e4d56ebc485e6a2fbe49191
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: bc854669c5d724da92c19c19a01f56ebe91f78ee
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446874"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757785"
 ---
-# <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop-Umgebung
+# <a name="azure-virtual-desktop-environment"></a>Azure Virtual Desktop-Umgebung
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/environment-setup-2019.md).
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/environment-setup-2019.md).
 
-Windows Virtual Desktop ist ein Dienst, mit dem Benutzer einfachen und sicheren Zugriff auf ihre virtualisierten Desktops und RemoteApps erhalten. In diesem Thema wird die allgemeine Struktur der Windows Virtual Desktop-Umgebung näher erläutert.
+Azure Virtual Desktop ist ein Dienst, mit dem Benutzer einfachen und sicheren Zugriff auf ihre virtualisierten Desktops und RemoteApps erhalten. In diesem Thema wird die allgemeine Struktur der Azure Virtual Desktop-Umgebung näher erläutert.
 
 ## <a name="host-pools"></a>Hostpools
 
-Ein Hostpool ist eine Sammlung mit virtuellen Azure-Computern, die unter Windows Virtual Desktop als Sitzungshosts registriert werden, wenn Sie den Windows Virtual Desktop-Agent ausführen. Alle virtuellen Computer von Sitzungshosts in einem Hostpool sollten über dasselbe Image erstellt werden, um eine einheitliche Benutzeroberfläche zu erhalten.
+Ein Hostpool ist eine Sammlung mit virtuellen Azure-Computern, die unter Azure Virtual Desktop als Sitzungshosts registriert werden, wenn Sie den Azure Virtual Desktop-Agent ausführen. Alle virtuellen Computer von Sitzungshosts in einem Hostpool sollten über dasselbe Image erstellt werden, um eine einheitliche Benutzeroberfläche zu erhalten.
 
 Bei einem Hostpool kann es sich um einen von zwei Typen handeln:
 
 - Persönlich, wobei jeder Sitzungshost einzelnen Benutzern zugewiesen wird.
 - In einem Pool, wobei Sitzungshosts Verbindungen von jedem Benutzer akzeptieren können, der im Hostpool für eine App-Gruppe autorisiert ist.
 
-Sie können für den Hostpool zusätzliche Eigenschaften festlegen, um Folgendes zu ändern: Verhalten beim Lastenausgleich, Anzahl von Sitzungen, die für einen Sitzungshost jeweils verwendet werden können, und welche Schritte Benutzer für Sitzungshosts im Hostpool ausführen können, während sie an ihren Windows Virtual Desktop-Sitzungen angemeldet sind. Sie steuern die Ressourcen, die für Benutzer veröffentlicht werden, über App-Gruppen.
+Sie können für den Hostpool zusätzliche Eigenschaften festlegen, um Folgendes zu ändern: Verhalten beim Lastenausgleich, Anzahl von Sitzungen, die für einen Sitzungshost jeweils verwendet werden können, und welche Schritte Benutzer für Sitzungshosts im Hostpool ausführen können, während sie an ihren Azure Virtual Desktop-Sitzungen angemeldet sind. Sie steuern die Ressourcen, die für Benutzer veröffentlicht werden, über App-Gruppen.
 
 ## <a name="app-groups"></a>App-Gruppen
 
@@ -47,19 +47,19 @@ Zum Veröffentlichen von Ressourcen für Benutzer müssen Sie sie App-Gruppen zu
 
 ## <a name="workspaces"></a>Arbeitsbereiche
 
-Ein Arbeitsbereich ist eine logische Gruppierung von Anwendungsgruppen in Windows Virtual Desktop. Jede Windows Virtual Desktop-Anwendungsgruppe muss einem Arbeitsbereich zugeordnet sein, damit Benutzer die Remote-Apps und Desktops anzeigen können, die für sie veröffentlicht wurden.
+Ein Arbeitsbereich ist eine logische Gruppierung von Anwendungsgruppen in Azure Virtual Desktop. Jede Azure Virtual Desktop-Anwendungsgruppe muss einem Arbeitsbereich zugeordnet sein, damit Benutzer die Remote-Apps und Desktops anzeigen können, die für sie veröffentlicht wurden.
 
 ## <a name="end-users"></a>Endbenutzer
 
-Nachdem Sie Benutzer ihren App-Gruppen zugewiesen haben, können diese mit beliebigen Windows Virtual Desktop-Clients eine Verbindung mit einer Windows Virtual Desktop-Bereitstellung herstellen.
+Nachdem Sie Benutzer ihren App-Gruppen zugewiesen haben, können diese mit beliebigen Azure Virtual Desktop-Clients eine Verbindung mit einer Azure Virtual Desktop-Bereitstellung herstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich unter [Delegierter Zugriff in Windows Virtual Desktop](delegated-access-virtual-desktop.md) weiter über den delegierten Zugriff und das Zuweisen von Rollen zu Benutzern.
+Informieren Sie sich unter [Delegierter Zugriff in Azure Virtual Desktop](delegated-access-virtual-desktop.md) weiter über den delegierten Zugriff und das Zuweisen von Rollen zu Benutzern.
 
-Informationen zum Einrichten des Windows Virtual Desktop-Hostpools finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](create-host-pools-azure-marketplace.md).
+Informationen zum Einrichten des Azure Virtual Desktop-Hostpools finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](create-host-pools-azure-marketplace.md).
 
-Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop finden Sie in einem der folgenden Artikel:
+Informationen zum Herstellen einer Verbindung mit Azure Virtual Desktop finden Sie in einem der folgenden Artikel:
 
 - [Herstellen einer Verbindung mit Windows 10 oder Windows 7](connect-windows-7-10.md)
 - [Herstellen einer Verbindung mit einem Webbrowser](connect-web.md)

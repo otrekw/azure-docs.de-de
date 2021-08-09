@@ -3,12 +3,12 @@ title: 'Muster für Ereignisreplikationsaufgaben: Azure Event Hubs | Microsoft-D
 description: Dieser Artikel enthält ausführliche Anleitungen zur Implementierung spezifischer Muster für Ereignisreplikationsaufgaben.
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 438964c228f060dede93abf582c9504b698db8b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adaa124470e6b3cc94bab647967f08b63a1c4f49
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934610"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462851"
 ---
 # <a name="event-replication-tasks-patterns"></a>Muster für Ereignisreplikationsaufgaben
 
@@ -78,7 +78,7 @@ In der Zone Ihrer Anwendung erstellen Sie dann einen CNAME-Eintrag, der auf die 
 
 | CNAME-Eintrag                | Alias                    |
 | --------------------------- | ------------------------ |
-| `eventhub.test.example.com` | `test1.test.example.com` |
+| `eventhub.test.example.com` | `eh1.test.example.com`   |
 
 Mit einem DNS-Client, der das Abfragen von CNAME- und SRV-Einträgen explizit zulässt (die integrierten Clients von Java und .NET lassen nur die einfache Auflösung von Namen in IP-Adressen zu), können Sie dann den gewünschten Endpunkt auflösen. Bei [DnsClient.NET](https://dnsclient.michaco.net/) ist die Lookupfunktion beispielsweise wie folgt:
 
@@ -195,7 +195,7 @@ select * into dest2Output from inputSource where Info = 2
 
 ## <a name="log-projection"></a>Protokollprojektion
 
-Das Protokollprojektionsmuster flacht den Ereignisdatenstrom auf eine indizierte Datenbank ab, wobei Ereignisse zu Datensätzen in der Datenbank werden. Normalerweise werden Ereignisse derselben Sammlung oder Tabelle hinzugefügt, und der Event Hub-Partitionsschlüssel wird Teil des Primärschlüssels, um den Datensatz eindeutig zu gestalten.
+Das Protokollprojektionsmuster flacht den Ereignisdatenstrom auf eine indizierte Datenbank ab, wobei Ereignisse zu Datensätzen in der Datenbank werden. In der Regel werden Ereignisse derselben Sammlung oder Tabelle hinzugefügt, und der Event Hub-Partitionsschlüssel wird Teil des Primärschlüssels, um den Datensatz eindeutig zu gestalten.
 
 Die Protokollprojektion kann einen Zeitreihenverlauf Ihrer Ereignisdaten oder eine verdichtete Ansicht generieren, wobei nur das letzte Ereignis für jeden Partitionsschlüssel beibehalten wird. Die Form der Zieldatenbank hängt letztlich von Ihnen und den Anforderungen Ihrer Anwendung ab. Dieses Muster wird auch als „Ereignissourcing“ bezeichnet.
 

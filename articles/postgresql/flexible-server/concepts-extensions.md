@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/22/2021
-ms.openlocfilehash: 9fdc2d2567e6ea24a68398139007be978cb639b5
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 05/25/2021
+ms.openlocfilehash: 59cb8290809df877e6faf374026db5aa3011e81b
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989358"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984192"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL Flexible Server
 
@@ -25,6 +25,56 @@ Bevor Sie PostgreSQL-Erweiterungen verwenden können, müssen diese in Ihrer Dat
 
 Azure Database for PostgreSQL unterstützt einen Teil der wichtigsten Erweiterungen, die unten aufgeführt sind. Sie können diese Informationen auch abrufen, indem Sie `SHOW azure.extensions;` ausführen. Erweiterungen, die in diesem Artikel nicht aufgeführt sind, werden für Azure Database for PostgreSQL Flexible Server nicht unterstützt. Sie können in Azure Database for PostgreSQL keine eigenen Erweiterungen erstellen oder laden.
 
+## <a name="postgres-13-extensions"></a>Postgres 13-Erweiterungen
+
+Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Server mit Postgres-Version 13 verfügbar. 
+
+> [!div class="mx-tableFixed"]
+> | **Erweiterung**| **Erweiterungsversion** | **Beschreibung** |
+> |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 3.1.1           | Wird verwendet, um eine Adresse in dessen zugehörige Elemente zu analysieren. |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 3.1.1           | Adressenstandardisierung: US-Datasetbeispiel|
+> |[amcheck](https://www.postgresql.org/docs/13/amcheck.html)                    | 1.2             | Funktionen zum Überprüfen der Beziehungsintegrität|
+> |[bloom](https://www.postgresql.org/docs/13/bloom.html)                    | 1.0             | Bloom-Zugriffsmethode: Index, der auf einer Signaturdatei basiert|
+> |[btree_gin](https://www.postgresql.org/docs/13/btree-gin.html)                    | 1.3             | Unterstützung für die Indizierung häufiger Datentypen in GIN|
+> |[btree_gist](https://www.postgresql.org/docs/13/btree-gist.html)                   | 1.5             | Unterstützung für die Indizierung häufiger Datentypen in GIST|
+> |[citext](https://www.postgresql.org/docs/13/citext.html)                       | 1.6             | Datentyp für Zeichenfolgen ohne Berücksichtigung der Groß-/Kleinschreibung|
+> |[cube](https://www.postgresql.org/docs/13/cube.html)                         | 1.4             | Datentyp für mehrdimensionale Cubes|
+> |[dblink](https://www.postgresql.org/docs/13/dblink.html)                       | 1.2             | Verbindungsherstellung mit anderen PostgreSQL-Datenbanken aus einer Datenbank|
+> |[dict_int](https://www.postgresql.org/docs/13/dict-int.html)                     | 1.0             | Textsuche-Wörterbuchvorlage für Integerwerte|
+> |[dict_xsyn](https://www.postgresql.org/docs/13/dict-xsyn.html)                     | 1.0             | Wörterbuchvorlage für die Textsuche für die erweiterte Verarbeitung von Synonymen|
+> |[earthdistance](https://www.postgresql.org/docs/13/earthdistance.html)                | 1.1             | Berechnung von Großkreisentfernungen auf der Erdoberfläche|
+> |[fuzzystrmatch](https://www.postgresql.org/docs/13/fuzzystrmatch.html)                | 1.1             | Ermittlung von Ähnlichkeiten und der Entfernung zwischen Zeichenfolgen|
+> |[hstore](https://www.postgresql.org/docs/13/hstore.html)                       | 1.7             | Datentyp zum Speichern von Schlüssel-Wert-Paaren|
+> |[intagg](https://www.postgresql.org/docs/13/intagg.html)                     | 1.1             | Integeraggregator und -enumerator. (Veraltet)|
+> |[intarray](https://www.postgresql.org/docs/13/intarray.html)                     | 1.3             | Funktionen, Operatoren und Indexunterstützung für 1-D-Arrays mit Integerwerten|
+> |[isn](https://www.postgresql.org/docs/13/isn.html)                          | 1.2             | Datentypen für internationale Produktnummerierungsnormen|
+> |[ltree](https://www.postgresql.org/docs/13/ltree.html)                        | 1.2             | Datentyp für hierarchische baumähnliche Strukturen|
+> |[pageinspect](https://www.postgresql.org/docs/13/pageinspect.html)                        | 1.8             | Überprüft den Inhalt von Datenbankseiten im Detail|
+> |[pg_buffercache](https://www.postgresql.org/docs/13/pgbuffercache.html)               | 1.3             | Untersuchung des freigegebenen Puffercaches|
+> |[pg_cron](https://github.com/citusdata/pg_cron)                        | 1.3             | Auftragsplaner für PostgreSQL|
+> |[pg_freespacemap](https://www.postgresql.org/docs/13/pgfreespacemap.html)               | 1.2             | Untersucht Free Space Map (FSM)|
+> |[pg_partman](https://github.com/pgpartman/pg_partman)         | 4.5.0           | Erweiterung für die Verwaltung partitionierter Tabellen nach Zeit oder ID |
+> |[pg_prewarm](https://www.postgresql.org/docs/13/pgprewarm.html)                   | 1.2             | „Vorwärmung“ von Beziehungsdaten|
+> |[pg_stat_statements](https://www.postgresql.org/docs/13/pgstatstatements.html)           | 1.8             | Nachverfolgung von Ausführungsstatistiken aller ausgeführten SQL-Anweisungen|
+> |[pg_trgm](https://www.postgresql.org/docs/13/pgtrgm.html)                      | 1.5             | Messung von Textähnlichkeit und Indexsuche basierend auf Trigrammen|
+> |[pg_visibility](https://www.postgresql.org/docs/13/pgvisibility.html)                      | 1.2             | Überprüft die Informationen zur Zuordnung von Sichtbarkeiten (VM) und Sichtbarkeit auf Seitenebene|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.5             | Überwachungsfunktionen|
+> |[pgcrypto](https://www.postgresql.org/docs/13/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen| 
+> |[pgrowlocks](https://www.postgresql.org/docs/13/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
+> |[pgstattuple](https://www.postgresql.org/docs/13/pgstattuple.html)                  | 1.5             | Anzeige von Statistiken auf Tupelebene|
+> |[plpgsql](https://www.postgresql.org/docs/13/plpgsql.html)                      | 1.0             | PL/pgSQL: Prozedurale Sprache|
+> |[postgis](https://www.postgis.net/)                      | 3.1.1           | PostGIS-Geometrie, -Geografie |
+> |[postgis_raster](https://www.postgis.net/)               | 3.1.1           | PostGIS-Rastertypen und -Funktionen| 
+> |[postgis_sfcgal](https://www.postgis.net/)               | 3.1.1           | PostGIS SFCGAL-Funktionen|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 3.1.1           | PostGIS Tiger: Geocoder und Reverse-Geocoder|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 3.1.1           | PostGIS-Topologie: Räumliche Typen und Funktionen|
+> |[postgres_fdw](https://www.postgresql.org/docs/13/postgres-fdw.html)                 | 1.0             | Fremddaten-Wrapper für PostgreSQL-Remoteserver|
+> |[sslinfo](https://www.postgresql.org/docs/13/sslinfo.html)                    | 1.2             | Informationen zu SSL-Zertifikaten|
+> |[tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html)                    | 1.0             |  TABLESAMPLE-Methode, die die Anzahl von Zeilen als Grenzwert akzeptiert|
+> |[tsm_system_time](https://www.postgresql.org/docs/13/tsm-system-time.html)                    | 1.0             |  TABLESAMPLE-Methode, die die Zeit in Millisekunden als Grenzwert akzeptiert|
+> |[unaccent](https://www.postgresql.org/docs/13/unaccent.html)                     | 1.1             | Wörterbuch für Textsuche mit Entfernung von Akzenten|
+> |[uuid-ossp](https://www.postgresql.org/docs/13/uuid-ossp.html)                    | 1.1             | Generierung von UUIDs (Universally Unique Identifiers)|
 
 ## <a name="postgres-12-extensions"></a>Postgres 12-Erweiterungen
 
@@ -53,14 +103,15 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[pageinspect](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | Überprüft den Inhalt von Datenbankseiten im Detail|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | Untersuchung des freigegebenen Puffercaches|
+> |[pg_cron](https://github.com/citusdata/pg_cron)                        | 1.3             | Auftragsplaner für PostgreSQL|
 > |[pg_freespacemap](https://www.postgresql.org/docs/12/pgfreespacemap.html)               | 1.2             | Untersucht Free Space Map (FSM)|
+> |[pg_partman](https://github.com/pgpartman/pg_partman)         | 4.5.0           | Erweiterung für die Verwaltung partitionierter Tabellen nach Zeit oder ID |
 > |[pg_prewarm](https://www.postgresql.org/docs/12/pgprewarm.html)                   | 1.2             | „Vorwärmung“ von Beziehungsdaten|
 > |[pg_stat_statements](https://www.postgresql.org/docs/12/pgstatstatements.html)           | 1.7             | Nachverfolgung von Ausführungsstatistiken aller ausgeführten SQL-Anweisungen|
 > |[pg_trgm](https://www.postgresql.org/docs/12/pgtrgm.html)                      | 1.4             | Messung von Textähnlichkeit und Indexsuche basierend auf Trigrammen|
 > |[pg_visibility](https://www.postgresql.org/docs/12/pgvisibility.html)                      | 1.2             | Überprüft die Informationen zur Zuordnung von Sichtbarkeiten (VM) und Sichtbarkeit auf Seitenebene|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.4             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
-> |[pglogisch](https://github.com/2ndQuadrant/pglogical)                     | 2.3.2           | PostgreSQL: logische Replikation|
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | Anzeige von Statistiken auf Tupelebene|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL: Prozedurale Sprache|
@@ -103,14 +154,15 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[pageinspect](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | Überprüft den Inhalt von Datenbankseiten im Detail|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | Untersuchung des freigegebenen Puffercaches|
+> |[pg_cron](https://github.com/citusdata/pg_cron)                        | 1.3             | Auftragsplaner für PostgreSQL|
 > |[pg_freespacemap](https://www.postgresql.org/docs/11/pgfreespacemap.html)               | 1.2             | Untersucht Free Space Map (FSM)|
+> |[pg_partman](https://github.com/pgpartman/pg_partman)         | 4.5.0           | Erweiterung für die Verwaltung partitionierter Tabellen nach Zeit oder ID |
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | „Vorwärmung“ von Beziehungsdaten|
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | Nachverfolgung von Ausführungsstatistiken aller ausgeführten SQL-Anweisungen|
 > |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1.4             | Messung von Textähnlichkeit und Indexsuche basierend auf Trigrammen|
 > |[pg_visibility](https://www.postgresql.org/docs/11/pgvisibility.html)                      | 1.2             | Überprüft die Informationen zur Zuordnung von Sichtbarkeiten (VM) und Sichtbarkeit auf Seitenebene|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
-> |[pglogisch](https://github.com/2ndQuadrant/pglogical)                     | 2.3.2           | PostgreSQL: logische Replikation|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | Anzeige von Statistiken auf Tupelebene|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL: Prozedurale Sprache|
@@ -136,7 +188,30 @@ Es wird empfohlen, die Server mit [VNet-Integration](concepts-networking.md) ber
 
 Die pg_prewarm-Erweiterung lädt relationale Daten in den Cache. Durch das Vorwärmen der Caches weisen Ihre Abfragen bei der ersten Ausführung nach einem Neustart bessere Reaktionszeiten auf. Die automatische prewarm-Funktion ist in Azure Database for PostgreSQL Flexible Server aktuell nicht verfügbar.
 
+## <a name="pg_cron"></a>pg_cron
+
+[pg_cron](https://github.com/citusdata/pg_cron/) ist ein einfacher, cron-basierter Auftragsplaner für PostgreSQL, der in der Datenbank als Erweiterung ausgeführt wird. Mithilfe der „pg_cron“-Erweiterung können geplante Wartungstasks in einer PostgreSQL-Datenbank ausgeführt werden. Beispielsweise können Sie eine Tabelle regelmäßig mit „vacuum“ bereinigen oder alte Datenaufträge entfernen.
+
+`pg_cron` kann mehrere Aufträge parallel ausführen, aber jeweils höchstens eine Instanz eines Auftrags. Wenn eine zweite Ausführung gestartet werden soll, bevor die erste Ausführung abgeschlossen wurde, wird die zweite Ausführung in die Warteschlange eingereiht und nach Abschluss der ersten Ausführung gestartet. Dadurch wird sichergestellt, dass Aufträge genau so oft wie geplant und nicht gleichzeitig ausgeführt werden.
+
+Einige Beispiele:
+
+So löschen Sie alte Daten am Samstag um 03:30 Uhr (GMT)
+```
+SELECT cron.schedule('30 3 * * 6', $$DELETE FROM events WHERE event_time < now() - interval '1 week'$$);
+```
+So führen Sie „vacuum“ (zum Bereinigen) täglich um 10:00 Uhr (GMT) aus
+```
+SELECT cron.schedule('0 10 * * *', 'VACUUM');
+```
+
+So heben Sie den Zeitplan für alle Tasks aus „pg_cron“ auf
+```
+SELECT cron.unschedule(jobid) FROM cron.job;
+```
+
 ## <a name="pg_stat_statements"></a>pg_stat_statements
+
 Die [Erweiterung „pg_stat_statements“](https://www.postgresql.org/docs/current/pgstatstatements.html) wird auf jedem flexiblen Server von Azure Database for PostgreSQL vorab geladen, um für Sie eine Möglichkeit zur Nachverfolgung von Ausführungsstatistiken von SQL-Anweisungen zu schaffen.
 Die Einstellung `pg_stat_statements.track`, die steuert, welche Anweisungen von der Erweiterung gezählt werden, ist standardmäßig auf `top` festgelegt, was bedeutet, dass alle Anweisungen, die direkt von Clients ausgestellt werden, nachverfolgt werden. Die beiden anderen Nachverfolgungsebenen sind `none` und `all`. Diese Einstellung kann als Serverparameter konfiguriert werden.
 

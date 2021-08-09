@@ -1,68 +1,64 @@
 ---
-title: Automatisches zentrales Hochskalieren von Durchsatzeinheiten – Azure Event Hubs | Microsoft-Dokumentation
-description: Aktivieren der automatischen Vergrößerung in einem Namespace zur automatischen Erweiterung der Durchsatzeinheiten
+title: Automatisches Hochskalieren von Durchsatzeinheiten in Azure Event Hubs
+description: Aktivieren der automatischen Vergrößerung für einen Namespace zur automatischen Hochskalierung der Durchsatzeinheiten (Standard-Tarif).
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: e4e54282b7f455f661238b0129dd1f8f9c70d9d6
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.date: 05/26/2021
+ms.openlocfilehash: 6f45e5a023110132db9904da7d8b84f4906dd8b7
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738102"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617216"
 ---
-# <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatische Erweiterung der Azure Event Hub-Durchsatzeinheiten
-Azure Event Hubs ist eine extrem skalierbare Datenstreamingplattform. Daher nimmt die Event Hubs-Nutzung häufig zu, nachdem mit der Nutzung des Diensts begonnen wurde. Für solche Nutzung müssen die vordefinierten [Durchsatzeinheiten](event-hubs-scalability.md#throughput-units) zur Skalierung von Event Hubs und zur Verarbeitung größerer Übertragungsraten erweitert werden. Das Feature **Automatische Vergrößerung** von Event Hubs wird automatisch durch Erhöhung der Anzahl von Durchsatzeinheiten zentral hochskaliert, um den Nutzungsanforderungen gerecht zu werden. Zusätzliche Durchsatzeinheiten verhindern Drosselungsszenarien, bei denen Folgendes vorliegt:
+# <a name="automatically-scale-up-azure-event-hubs-throughput-units-standard-tier"></a>Automatisches Hochskalieren von Azure Event Hubs-Durchsatzeinheiten (Standard-Tarif) 
+Azure Event Hubs ist eine extrem skalierbare Datenstreamingplattform. Daher nimmt die Event Hubs-Nutzung häufig zu, nachdem mit der Nutzung des Diensts begonnen wurde. Für solche Nutzung müssen die vordefinierten [Durchsatzeinheiten](event-hubs-scalability.md#throughput-units) (Throughput Units, TUs) zur Skalierung von Event Hubs und zur Verarbeitung größerer Übertragungsraten erweitert werden. Das Feature **Automatische Vergrößerung** von Event Hubs wird automatisch durch Erhöhung der Anzahl von Durchsatzeinheiten zentral hochskaliert, um den Nutzungsanforderungen gerecht zu werden. Durch die Erweiterung von TUs werden Drosselungsszenarien verhindert, bei denen Folgendes vorliegt:
 
-* Die Datenerfassungsrate überschreitet die festgelegten Durchsatzeinheiten.
-* Die Raten für ausgehende Datenanforderungen überschreiten die festgelegten Durchsatzeinheiten.
+* Die Datenerfassungsrate überschreitet die festgelegten TUs 
+* Die Rate für ausgehende Datenanforderungen überschreitet die festgelegten TUs
 
 Der Event Hubs-Dienst erhöht den Durchsatz, wenn die Last den minimalen Schwellenwert überschreitet, ohne dass Anforderungen mit ServerBusy-Fehlern auftreten.
 
-## <a name="how-auto-inflate-works"></a>Funktionsweise der automatischen Vergrößerung
+> [!NOTE]
+> Weitere Informationen zum **Premium**-Tarif finden Sie unter [Event Hubs Premium](event-hubs-premium-overview.md).
 
-Der Datenverkehr von Event Hubs wird von [Durchsatzeinheiten](event-hubs-scalability.md#throughput-units) gesteuert. Eine einzelne Durchsatzeinheit lässt eingehenden Datenverkehr von 1 MB pro Sekunde und die doppelte Menge an ausgehendem Datenverkehr zu. Event Hubs Standard kann mit 1 bis 20 Durchsatzeinheiten konfiguriert werden. Dank der automatischen Vergrößerung können Sie zunächst mit den mindestens erforderlichen Durchsatzeinheiten, die Sie auswählen, beginnen. Je nach der Zunahme des Datenverkehrs passt die Funktion die Durchsatzeinheiten automatisch bis zur maximal erforderlichen Anzahl an. Die automatische Vergrößerung hat folgende Vorteile:
+## <a name="how-auto-inflate-works-in-standard-tier"></a>Funktionsweise der automatischen Vergrößerung im Standard-Tarif
+Event Hubs-Datenverkehr wird von TUs gesteuert (Standard-Tarif). Informationen zu den Grenzwerten wie Ein- und Ausgangsraten pro TU finden Sie unter [Event Hubs-Kontingente und -Grenzwerte](event-hubs-quotas.md). Dank der automatischen Vergrößerung können Sie zunächst mit den mindestens erforderlichen Durchsatzeinheiten beginnen. Je nach der Zunahme des Datenverkehrs passt die Funktion die Durchsatzeinheiten automatisch bis zur maximal erforderlichen Anzahl an. Die automatische Vergrößerung hat folgende Vorteile:
 
 - Effizienter Skalierungsmechanismus, der eine Vergrößerung entsprechend der Zunahme des Datenverkehrs ermöglicht
 - Automatische Skalierung bis zur festgelegten Obergrenze ohne Probleme aufgrund einer Drosselung
 - Mehr Kontrolle über die Skalierung, da Sie bestimmen, wann in welchem Umfang skaliert wird
 
-## <a name="enable-auto-inflate-on-a-namespace"></a>Aktivieren der automatischen Vergrößerung in einem Namespace
+ ## <a name="enable-auto-inflate-on-a-namespace"></a>Aktivieren der automatischen Vergrößerung in einem Namespace
+Sie können automatische Vergrößerung für einen Event Hubs-Namespace im Standard-Tarif aktivieren oder deaktivieren, indem Sie das [Azure-Portal](https://portal.azure.com) oder eine [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventhub/eventhubs-create-namespace-and-enable-inflate) verwenden.
 
-Sie können automatische Vergrößerung in einem Event Hubs-Namespace des Standard-Tarifs mit einer der folgenden Methoden aktivieren oder deaktivieren:
-
-- [Azure-Portal](https://portal.azure.com)
-- Eine [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventhub/eventhubs-create-namespace-and-enable-inflate)
+Für einen Premium-Event Hubs-Namespace ist das Feature automatisch aktiviert. Sie können es nicht deaktivieren. 
 
 > [!NOTE]
 > Event Hubs-Namespaces des Tarifs Basic unterstützen keine automatische Vergrößerung.
 
-### <a name="enable-auto-inflate-through-the-portal"></a>Aktivieren der automatischen Vergrößerung über das Portal
+## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
+Im Azure-Portal können Sie das Feature aktivieren, wenn Sie einen Standard-Event Hubs-Namespace erstellen oder nachdem der Namespace erstellt wurde. Sie können auch TUs für den Namespace festlegen und die maximale Anzahl von TUs angeben. 
 
+Sie können die Funktion für automatische Vergrößerung aktivieren, **wenn Sie einen Event Hubs-Namespace erstellen**. Die folgende Abbildung zeigt, wie Sie das Feature für automatische Vergrößerung für einen Namespace im Standard-Tarif aktivieren, anfängliche TUs konfigurieren und die maximale Anzahl von TUs angeben. 
 
-#### <a name="enable-at-the-time-of-creation"></a>Aktivieren zum Zeitpunkt der Erstellung
-Sie können die Funktion für die automatische Vergrößerung aktivieren, **wenn Sie einen Event Hubs-Namespace erstellen**:
+:::image type="content" source="./media/event-hubs-auto-inflate/event-hubs-auto-inflate.png" alt-text="Screenshot: Aktivieren der automatischen Vergrößerung zum Zeitpunkt der Event Hub-Erstellung für einen Namespace im Standard-Tarif":::
 
-![Aktivieren der automatischen Vergrößerung zum Zeitpunkt der Event Hub-Erstellung](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
+Wenn diese Option aktiviert ist, können Sie mit wenigen Durchsatzeinheiten beginnen und die Anzahl mit zunehmenden Nutzungsanforderungen anpassen. Die Obergrenze für die Vergrößerung hat keine unmittelbaren Auswirkungen auf den Preis. Dieser hängt von der Anzahl von genutzten TUs pro Stunde ab.
 
-Wenn diese Option aktiviert ist, können Sie mit wenigen Durchsatzeinheiten beginnen und die Anzahl mit zunehmenden Nutzungsanforderungen anpassen. Die Obergrenze für die Vergrößerung hat keine direkte Auswirkungen auf den Preis. Dieser hängt von der Anzahl von genutzten Durchsatzeinheiten pro Stunde ab.
+Führen Sie die folgenden Schritte aus, um die Funktion für automatische Vergrößerung zu aktivieren bzw. ihre Einstellungen für eine vorhandene Funktion zu ändern:
 
-#### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Aktivieren der automatischen Vergrößerung für einen vorhandenen Event Hub
-Mithilfe der folgenden Anweisungen können Sie auch die Funktion der automatischen Vergrößerung aktivieren und deren Einstellungen ändern:
-
-1. Wählen Sie auf der Seite **Event Hubs-Namespace** die Option **Deaktiviert** unter **Auto-inflate throughput units** (Durchsatzeinheiten automatisch vergrößern) aus.
-
-    ![Auswählen von Durchsatzeinheiten auf der Seite des Event Hubs-Namespace](./media/event-hubs-auto-inflate/select-throughput-units.png)
+1. Wählen Sie auf der Seite **Event Hubs-Namespace** im linken Menü unter **Einstellungen** die Option **Skalieren** aus.
 2. Aktivieren Sie auf der Seite **Scale Settings** (Skalierungseinstellungen) das Kontrollkästchen **Aktivieren** (sofern die Autoskalierungsfunktion nicht aktiviert war).
 
-    ![Auswählen von „Aktivieren“](./media/event-hubs-auto-inflate/scale-settings.png)
+    :::image type="content" source="./media/event-hubs-auto-inflate/scale-settings.png" alt-text="Screenshot: Aktivieren von automatischer Vergrößerung für einen vorhandenen Standardnamespace":::
 3. Geben Sie die **maximale** Anzahl von Durchsatzeinheiten ein, oder verwenden Sie die Scrollleiste, um den Wert festzulegen.
 4. (optional) Aktualisieren Sie die **minimale** Anzahl von Durchsatzeinheiten am oberen Rand dieser Seite.
-
 
 > [!NOTE]
 > Wenn Sie die Konfiguration zur automatischen Vergrößerung anwenden, um die Durchsatzeinheiten zu erhöhen, sendet der Event Hubs-Dienst Diagnoseprotokolle, die Informationen dazu enthalten, warum und wann der Durchsatz gestiegen ist. Um die Diagnoseprotokollierung für einen Event Hub zu aktivieren, wählen Sie im Azure-Portal auf der „Event Hub“-Seite im linken Menü **Diagnoseeinstellungen** aus. Weitere Informationen finden Sie unter [Einrichten von Diagnoseprotokollen für einen Event Hub in Azure](event-hubs-diagnostic-logs.md).
 
-### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Aktivieren der automatischen Vergrößerung mithilfe einer Azure Resource Manager-Vorlage
+
+## <a name="use-an-azure-resource-manager-template"></a>Verwenden einer Azure Resource Manager-Vorlage
 
 Sie können die automatische Vergrößerung bei der Bereitstellung einer Azure Resource Manager-Vorlage aktivieren. Legen Sie beispielsweise die Eigenschaft `isAutoInflateEnabled` auf **TRUE** und `maximumThroughputUnits` auf 10 fest. Beispiele:
 

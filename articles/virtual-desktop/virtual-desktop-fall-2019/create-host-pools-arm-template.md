@@ -1,26 +1,26 @@
 ---
-title: 'Windows Virtual Desktop-Hostpool (klassisch) in Azure Resource Manager: Azure'
-description: Beschreibt, wie Sie in Windows Virtual Desktop (klassisch) mit einer Azure Resource Manager-Vorlage einen Hostpool erstellen.
+title: 'Azure Virtual Desktop-Hostpool (klassisch) in Azure Resource Manager: Azure'
+description: Beschreibt, wie Sie in Azure Virtual Desktop (klassisch) mit einer Azure Resource Manager-Vorlage einen Hostpool erstellen.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 601512d9a236c1e6f5b09e1a310610597df59c0f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: efc8c93c93325e41c1f8fd9c22baf4c036012ab6
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445175"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749919"
 ---
-# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>Erstellen eines Windows Virtual Desktop-Hostpools (klassisch) mit einer Azure Resource Manager-Vorlage
+# <a name="create-a-host-pool-in-azure-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>Erstellen eines Azure Virtual Desktop-Hostpools (klassisch) mit einer Azure Resource Manager-Vorlage
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager.
 
-Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Windows Virtual Desktop-Mandantenumgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
+Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Azure Virtual Desktop-Mandantenumgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
 
-Befolgen Sie die Anleitung in diesem Abschnitt, um mit einer von Microsoft bereitgestellten Azure Resource Manager-Vorlage einen Hostpool für einen Windows Virtual Desktop-Mandanten zu erstellen. In diesem Artikel wird beschrieben, wie Sie in Windows Virtual Desktop einen Hostpool erstellen, eine Ressourcengruppe mit VMs unter einem Azure-Abonnement erstellen und diese VMs dann in die AD-Domäne einbinden und für Windows Virtual Desktop registrieren.
+Befolgen Sie die Anleitung in diesem Abschnitt, um mit einer von Microsoft bereitgestellten Azure Resource Manager-Vorlage einen Hostpool für einen Azure Virtual Desktop-Mandanten zu erstellen. In diesem Artikel wird beschrieben, wie Sie in Azure Virtual Desktop einen Hostpool erstellen, eine Ressourcengruppe mit VMs unter einem Azure-Abonnement erstellen und diese VMs dann in die AD-Domäne einbinden und für Azure Virtual Desktop registrieren.
 
 ## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Benötigte Komponenten zum Ausführen der Azure Resource Manager-Vorlage
 
@@ -28,9 +28,9 @@ Stellen Sie sicher, dass Sie Folgendes wissen, bevor Sie die Azure Resource Mana
 
 - Wo befindet sich die Quelle des Images, das Sie verwenden möchten? Stammt es aus dem Azure-Katalog, oder handelt es sich um ein benutzerdefiniertes Image?
 - Wo befinden sich Ihre Anmeldeinformationen für den Domänenbeitritt?
-- Wo befinden sich Anmeldeinformationen für Windows Virtual Desktop?
+- Ihre Azure Virtual Desktop-Anmeldeinformationen.
 
-Beim Erstellen eines Windows Virtual Desktop-Hostpools mit der Azure Resource Manager-Vorlage können Sie einen virtuellen Computer über den Azure-Katalog, ein verwaltetes Image oder ein nicht verwaltetes Image erstellen. Weitere Informationen zur Erstellung von VM-Images finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../../virtual-machines/windows/prepare-for-upload-vhd-image.md) bzw. unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../../virtual-machines/windows/capture-image-resource.md).
+Beim Erstellen eines Azure Virtual Desktop-Hostpools mit der Azure Resource Manager-Vorlage können Sie einen virtuellen Computer über den Azure-Katalog, ein verwaltetes Image oder ein nicht verwaltetes Image erstellen. Weitere Informationen zur Erstellung von VM-Images finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../../virtual-machines/windows/prepare-for-upload-vhd-image.md) bzw. unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../../virtual-machines/windows/capture-image-resource.md).
 
 ## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>Ausführen der Azure Resource Manager-Vorlage zum Bereitstellen eines neuen Hostpools
 
@@ -48,15 +48,15 @@ Führen Sie diese Schritte zum Bereitstellen in Azure aus, wenn Sie die Bereitst
 4. Melden Sie sich am Azure-Portal als Benutzer mit den Berechtigungen „Administrator/Mitwirkender“ am Cloud Solution Provider-Abonnement an.
 5. Fügen Sie den Link, den Sie in den Text-Editor kopiert haben, in die Adressleiste ein.
 
-Eine Anleitung dazu, welche Parameter Sie für Ihr Szenario eingeben sollten, finden Sie in der [Infodatei](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md) zu Windows Virtual Desktop. Die Infodatei wird immer mit den neuesten Änderungen aktualisiert.
+Eine Anleitung dazu, welche Parameter Sie für Ihr Szenario eingeben sollten, finden Sie in der [Infodatei](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md) zu Azure Virtual Desktop. Die Infodatei wird immer mit den neuesten Änderungen aktualisiert.
 
 ## <a name="assign-users-to-the-desktop-application-group"></a>Zuweisen von Benutzern zur Desktopanwendungsgruppe
 
 Nachdem der Vorgang für die GitHub-Azure Resource Manager-Vorlage abgeschlossen ist, sollten Sie den Benutzerzugriff zuweisen, bevor Sie mit dem Testen der vollständigen Sitzungsdesktops auf Ihren virtuellen Computern beginnen.
 
-Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](/powershell/windows-virtual-desktop/overview/), um es in Ihrer PowerShell-Sitzung verwenden zu können.
+Zunächst müssen Sie das [PowerShell-Modul für Azure Virtual Desktop](/powershell/windows-virtual-desktop/overview/) herunterladen und importieren, um es in Ihrer PowerShell-Sitzung verwenden zu können.
 
-Öffnen Sie zum Zuweisen von Benutzern zur Desktopanwendungsgruppe ein PowerShell-Fenster, und führen Sie dieses Cmdlet aus, um sich an der Windows Virtual Desktop-Umgebung anzumelden:
+Öffnen Sie zum Zuweisen von Benutzern zur Desktopanwendungsgruppe ein PowerShell-Fenster, und führen Sie dieses Cmdlet aus, um sich an der Azure Virtual Desktop-Umgebung anzumelden:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -70,7 +70,7 @@ Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -Use
 
 Der UPN des Benutzers muss der Identität des Benutzers in Azure Active Directory entsprechen (Beispiel: user1@contoso.com). Wenn Sie mehrere Benutzer hinzufügen möchten, müssen Sie dieses Cmdlet für jeden Benutzer separat ausführen.
 
-Nach Abschluss dieser Schritte können sich Benutzer, die der Desktopanwendungsgruppe hinzugefügt wurden, mit unterstützten Remotedesktopclients bei Windows Virtual Desktop anmelden und eine Ressource für einen Sitzungsdesktop anzeigen.
+Nach Abschluss dieser Schritte können sich Benutzer, die der Desktopanwendungsgruppe hinzugefügt wurden, mit unterstützten Remotedesktopclients bei Azure Virtual Desktop anmelden und eine Ressource für einen Sitzungsdesktop anzeigen.
 
 >[!IMPORTANT]
->Zum Schutz Ihrer Windows Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren virtuellen Computern nicht zu öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](../../security-center/security-center-just-in-time.md).
+>Zum Schutz Ihrer Azure Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren virtuellen Computern nicht zu öffnen. Für Azure Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](../../security-center/security-center-just-in-time.md).

@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 37e6777f206e980e7ea37c00559ad6988c38cc7b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2cd15836e69ca5174822de95e3fced3a9659096f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738987"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971081"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -43,7 +43,7 @@ In der Tabelle werden die VMware-Hypervisor-Anforderungen zusammengefasst.
 
 
 
-### <a name="vm-requirements-agentless"></a>VM-Anforderungen (ohne Agent)
+### <a name="vm-requirements-agentless"></a>VM-Anforderungen (ohne Agent) 
 
 In der Tabelle werden die Migrationsanforderungen ohne Agent für VMware-VMs zusammengefasst.
 
@@ -51,10 +51,10 @@ In der Tabelle werden die Migrationsanforderungen ohne Agent für VMware-VMs zus
 --- | ---
 **Unterstützte Betriebssysteme** | Sie können alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](../virtual-machines/linux/endorsed-distros.md)-Betriebssysteme migrieren, die von Azure unterstützt werden.
 **Windows-VMs in Azure** | Möglicherweise müssen Sie vor der Migration [einige Änderungen](prepare-for-migration.md#verify-required-changes-before-migrating) an VMs vornehmen. 
-**Linux-VMs in Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können.<br/><br/> Bei diesen Linux-Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> – Red Hat Enterprise Linux 7.8, 7.7, 7.6, 7.5, 7.4, 7.0 und 6.x<br/> – Cent OS 7.7, 7.6, 7.5, 7.4 und 6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>– Ubuntu 19.04, 19.10, 14.04LTS, 16.04LTS, 18.04LTS<br/> - Debian 7, 8, 9 <br/> Oracle Linux 7.7, 7.7-CI<br/> Bei anderen Betriebssystemen nehmen Sie die [erforderlichen Änderungen](prepare-for-migration.md#verify-required-changes-before-migrating) manuell vor.
+**Linux-VMs in Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können.<br/><br/> Bei diesen Linux-Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> – Red Hat Enterprise Linux 8, 7.9, 7.8, 7.7, 7.6, 7.5, 7.4, 7.0, 6.x <br/> – Cent OS 8, 7.7, 7.6, 7.5, 7.4, 6.x</br> – SUSE Linux Enterprise Server 11, 12, 15 SP0, 15 SP1 <br/>– Ubuntu 19.04, 19.10, 14.04LTS, 16.04LTS, 18.04LTS<br/> - Debian 7, 8, 9 <br/> Oracle Linux 6, 7.7, 7.7-CI<br/> Bei anderen Betriebssystemen nehmen Sie die [erforderlichen Änderungen](prepare-for-migration.md#verify-required-changes-before-migrating) manuell vor.
 **Linux-Start** | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition („/“) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und nicht auf andere Datenträger erstrecken.
 **UEFI-Start** | Unterstützt. UEFI-basierte VMs werden zu Azure-VMs der 2. Generation migriert. 
-**Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 32 TB für Datenträger
+**Datenträgergröße** | bis zu 2 TB Betriebssystemdatenträger für VMs der Generation 1 und 2; 32 TB für Datenträger.
 **Einschränkungen für Datenträger** |  Bis zu 60 Datenträger pro virtuellem Computer
 **Verschlüsselte Datenträger/Volumes** | Die Migration von VMs mit verschlüsselten Datenträgern/Volumes wird nicht unterstützt.
 **Freigegebener Datenträgercluster** | Wird nicht unterstützt.
@@ -131,7 +131,7 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für virtuelle VMw
 **UEFI-Start** | Unterstützt. UEFI-basierte VMs werden zu Azure-VMs der 2. Generation migriert. 
 **UEFI: Sicherer Start**         | Nicht unterstützt für die Migration.
 **Zieldatenträger** | Virtuelle Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Standard, SSD Premium) in Azure migriert werden.
-**Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 32 TB für Datenträger
+**Datenträgergröße** | bis zu 2 TB Betriebssystemdatenträger für VMs der Generation 1; bis zu 4 TB Betriebssystemdatenträger für VMs der Generation 2; 32 TB für Datenträger.
 **Einschränkungen für Datenträger** |  Bis zu 63 Datenträger pro virtuellem Computer
 **Verschlüsselte Datenträger/Volumes** | Die Migration von VMs mit verschlüsselten Datenträgern/Volumes wird nicht unterstützt.
 **Freigegebener Datenträgercluster** | Wird nicht unterstützt.

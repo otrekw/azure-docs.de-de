@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e00fe3761824462252ce4984beb754385f3eca9
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 245781f22db75d27f335c0a81d0ee9793b076c47
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532142"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713862"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Anzeigen, Hinzufügen und Entfernen von Zuweisungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -36,7 +36,7 @@ Um die Azure AD-Berechtigungsverwaltung zu verwenden und Benutzer zu Zugriffspa
 
 ## <a name="view-who-has-an-assignment"></a>Anzeigen von Benutzern mit Zuweisung
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaketmanager oder Zugriffspaketzuweisungsmanager
+**Erforderliche Rolle:** Unternehmensadministrator, Identity Governance-Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaket-Manager oder Zugriffspaketzuweisungs-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

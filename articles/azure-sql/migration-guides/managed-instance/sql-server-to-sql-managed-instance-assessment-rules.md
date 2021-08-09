@@ -6,16 +6,16 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: MashaMSFT
+author: rajeshsetlem
+ms.author: rsetlem
+ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: fc8959d44fbacd90916a045d23db4bee872c4670
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 489ba57063244d399c9dd0255641568f2db5c6de
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026035"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034566"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>Bewertungsregeln für die Migration von SQL Server zu Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -56,14 +56,13 @@ Weitere Informationen: [Unterschiede bei T-SQL zwischen SQL Server und Azure SQL
 ## <a name="assembly-from-file"></a>Assembly aus Datei<a id="AssemblyFromFile"></a>
 
 **Titel: CREATE ASSEMBLY und ALTER ASSEMBLY mit einem Dateiparameter werden in Azure SQL Managed Instance nicht unterstützt.**    
-**Kategorie**: Warnung   
+**Kategorie**: Problem   
 
 **Beschreibung**   
-Azure SQL Managed Instance kann nicht auf Dateifreigaben oder Windows-Ordner zugreifen. Der Abschnitt „Betroffene Objekte“ enthält Informationen zu den spezifischen Verwendungsmöglichkeiten für BULK INSERT-Anweisungen, für die nicht auf ein Azure-Blob verwiesen wird. Objekte mit „BULK INSERT“, bei denen die Quelle kein Azure-Blobspeicher ist, funktionieren nach der Migration zu Azure SQL Managed Instance nicht mehr.
-
+Azure SQL Managed Instance unterstützt „CREATE ASSEMBLY“ oder „ALTER ASSEMBLY“ nicht mit einem Dateiparameter. Ein binärer Parameter wird unterstützt. Das spezifische Objekt, in dem der Dateiparameter verwendet wird, finden Sie im Abschnitt Betroffene Objekte.
 
 **Empfehlung**   
-Sie müssen BULK INSERT-Anweisungen, für die lokale Dateien oder Dateifreigaben verwendet werden, auf die Verwendung von Dateien aus Azure Blob Storage umstellen, wenn Sie eine Migration zu Azure SQL Managed Instance durchführen. Alternativ können Sie zu SQL Server auf einem virtuellen Azure-Computer migrieren. 
+Überprüfen Sie Objekte mit „CREATE ASSEMBLY“ oder „ALTER ASSEMBLY“ mit einem Dateiparameter. Wenn solche Objekte erforderlich sind, konvertieren Sie den Dateiparameter in einen binären Parameter. Alternativ können Sie zu SQL Server auf einem virtuellen Azure-Computer migrieren. 
 
 Weitere Informationen: [Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance: CLR](../../managed-instance/transact-sql-tsql-differences-sql-server.md#clr)
 
@@ -386,10 +385,8 @@ Weitere Informationen: [Ressourcenlimits für Azure SQL Managed Instance ](../..
 **Beschreibung**   
 Für OPENROWSET werden Massenvorgänge über einen integrierten BULK-Anbieter unterstützt, mit dem Daten aus einer Datei gelesen und als Rowset zurückgegeben werden können. OPENROWSET bei einer Datenquelle, die kein Azure-Blobspeicher ist, wird in Azure SQL Managed Instance nicht unterstützt. 
 
-
-
 **Empfehlung**   
-Die Funktion OPENROWSET kann nur auf SQL Server-Instanzen (entweder verwaltet, lokal oder auf virtuellen Computern) für die Ausführung von Abfragen verwendet werden. Nur die Werte SQLNCLI, SQLNCLI11 und SQLOLEDB werden als Anbieter unterstützt. Daher besteht die empfohlene Aktion darin, die abhängigen Datenbanken für die Remoteserver zu identifizieren, bei denen es sich nicht um SQL-Server handelt, und diese in die zu migrierende Datenbank zu verschieben. Alternativ können Sie zu SQL Server auf dem virtuellen Azure-Computer migrieren.
+Eine Azure SQL Managed Instance kann nicht auf Dateifreigaben und Windows-Ordner zugreifen. Daher müssen die Dateien aus Azure Blob Storage importiert werden: Aus diesem Grund wird für die OPENROWSET-Funktion nur der Blobtyp DATASOURCE unterstützt. Alternativ können Sie zu SQL Server auf einem virtuellen Azure-Computer migrieren.
 
 Weitere Informationen: [Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance: Bulk insert/OPENROWSET](../../managed-instance/transact-sql-tsql-differences-sql-server.md#bulk-insert--openrowset)
 

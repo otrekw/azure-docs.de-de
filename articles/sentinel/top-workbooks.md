@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 03/07/2021
 ms.author: bagol
-ms.openlocfilehash: a37501498a9222025860702a7f29dccc9abfc8f7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b096bcc59465bae0a37013c148880b6beb9eecb0
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102450048"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795652"
 ---
 # <a name="commonly-used-azure-sentinel-workbooks"></a>Häufig verwendete Azure Sentinel-Arbeitsmappen
 
@@ -48,6 +48,6 @@ Greifen Sie in Azure Sentinel auf der linken Seite unter **Bedrohungsmanagement*
 |**Sicherheitswarnungen**     |  Diese Arbeitsmappe stellt ein Dashboard für Sicherheitswarnungen in Ihrer Azure Sentinel-Umgebung bereit. <br><br>Weitere Informationen finden Sie unter [Automatisches Erstellen von Incidents aus Microsoft-Sicherheitswarnungen](create-incidents-from-alerts.md).      |
 |**Effizienz von Sicherheitsvorgängen**     |  Diese Arbeitsmappe ist für SOC-Manager (Security Operations Center) vorgesehen, die damit allgemeine Effizienzmetriken und Measures zur Leistung des Teams anzeigen können. <br><br>Weitere Informationen finden Sie unter [Bessere Verwaltung des SOC mit Incidentmetriken](manage-soc-with-incident-metrics.md).  |
 |**Threat Intelligence**     | Mit dieser Arbeitsmappe gewinnen Sie Erkenntnisse über Bedrohungsindikatoren, einschließlich Typ und Schweregrad von Bedrohungen, Bedrohungsaktivität im Zeitverlauf und Korrelation mit anderen Datenquellen, darunter Office 365 und Firewalls.  <br><br>Weitere Informationen finden Sie unter [Importieren von Threat Intelligence in Azure Sentinel](import-threat-intelligence.md).      |
-|**Arbeitsbereichsüberwachung**     |  Diese Arbeitsmappe stellt einen Bericht über die Arbeitsbereichsüberwachung bereit, mithilfe dessen Sie Abfragen im gesamten Arbeitsbereich verstehen können.   <br><br>Weitere Informationen finden Sie unter Überwachen von [Überwachen von Azure Sentinel-Abfragen und -Aktivitäten](audit-sentinel-data.md).  |
-|     |         |
+|**Zero Trust (TIC 3.0)**     |  Stellt eine automatisierte Visualisierung von Zero Trust-Prinzipien bereit, die im Zusammenhang mit dem [Framework für vertrauenswürdige Internetverbindungen](https://www.cisa.gov/trusted-internet-connections) erläutert werden.   <br><br>Weitere Informationen finden Sie im [Blogbeitrag mit der Ankündigung der Zero Trust TIC 3.0-Arbeitsmappe](https://techcommunity.microsoft.com/t5/public-sector-blog/announcing-the-azure-sentinel-zero-trust-tic3-0-workbook/ba-p/2313761).  |
+
 

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 69af7e2129136128e87b4c9b28806b2f02f09e27
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 0592af3d5f73476b1dd479fde2651be07ba8aa33
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205393"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949796"
 ---
 # <a name="np-series"></a>NP-Serie 
 Die virtuellen Computer der NP-Serie basieren auf [Xilinx U250](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html)-FPGAs zum Beschleunigen von Workloads einschließlich Machine Learning-Rückschluss, Videotranscodierung und Datenbanksuche und Analysen. VMs der NP-Serie werden auch mit Intel Xeon 8171m-CPUs (Skylake) mit einem Turbotakt von 3,2 GHz für alle Kerne betrieben.
@@ -23,7 +23,7 @@ Die virtuellen Computer der NP-Serie basieren auf [Xilinx U250](https://www.xili
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 Unterstützung von VM-Generationen: Generation 1<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt ([in der Vorschauphase](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks))<br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | FPGA | FPGA-Speicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) | 
@@ -39,13 +39,17 @@ Unterstützung von VM-Generationen: Generation 1<br>
 
 ##  <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
+**F:** Wie kann ein Kontingent für NP-VMs angefordert werden?
+
+**A:** Befolgen Sie die Informationen auf der Seite [Erhöhen der Grenzwerte nach VM-Serie](../azure-portal/supportability/per-vm-quota-requests.md). NP-VMs sind in „USA, Osten“, „USA, Westen 2“, „Europa, Westen“ und „Asien, Südosten“ verfügbar.
+
 **F:** Welche Version von Vitis sollte ich verwenden? 
 
-**A:** Xilinx empfiehlt [Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html)
+**A:** Xilinx empfiehlt [Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html). Sie können auch die Optionen für den Development VM Marketplace verwenden (Vitis 2020.2 Development VM für Ubuntu 18.04 und Centos 7.8)
 
 **F:** Muss ich NP VMs verwenden, um meine Lösung zu entwickeln? 
 
-**A:** Nein, Sie können lokal entwickeln und in der Cloud bereitstellen! Stellen Sie sicher, dass Sie für die Bereitstellung auf NP-VMs die [Nachweisdokumentation](https://docs.microsoft.com/azure/virtual-machines/field-programmable-gate-arrays-attestation) befolgen. 
+**A:** Nein, Sie können lokal entwickeln und in der Cloud bereitstellen! Stellen Sie sicher, dass Sie für die Bereitstellung auf NP-VMs die [Nachweisdokumentation](./field-programmable-gate-arrays-attestation.md) befolgen. 
 
 **F:** Welche vom Nachweis zurückgegebene Datei sollte ich beim Programmieren meines FPGA auf einer NP-VM verwenden?
 
@@ -118,11 +122,22 @@ Installieren Sie die folgenden Pakete.
 
 **A:** Dies kann getrost ignoriert werden. 
 
-**F:** Was sind die Unterschiede zwischen OnPrem und NP VMs bezüglich XRT? 
+**F:** Was sind die Unterschiede zwischen OnPrem (lokal) und NP VMs?
 
-**A:** In Azure, unterstützt die XDMA 2,1-Plattform nur Host_Mem (SB) und DDR-Daten Rückhaltungsfunktionen. 
+**A:**  
+<br>
+<b>- In Bezug auf XOCL/XCLMGMT: </b>
+<br>
+Auf Azure-NP-VMs ist nur der Rollenendpunkt (Geräte-ID 5005) vorhanden, der den XOCL-Treiber verwendet.
 
-Aktivieren von Host_Mem (SB) (1 GB RAM): sudo xbutil host_mem--enable--size 1 g 
+Auf OnPrem-FPGA sind sowohl Verwaltungsendpunkt (Geräte-ID 5004) als auch Rollenendpunkt (Geräte-ID 5005) vorhanden, die die XCLMGMT- bzw. XOCL-Treiber verwenden.
+
+<br>
+<b>- In Bezug auf XRT: </b>
+<br>
+Auf Azure-NP-VMs unterstützt die XDMA 2.1-Plattform nur „Host_Mem (SB)“- und DDR-Datenaufbewahrungsfunktionen. 
+<br>
+Aktivieren von Host_Mem (SB) (bis zu 1 GB RAM): sudo xbutil host_mem --enable --size 1 g 
 
 Deaktivieren von Host_Mem(SB): sudo xbutil host_mem --disable 
 
@@ -143,14 +158,7 @@ Deaktivieren von Host_Mem(SB): sudo xbutil host_mem --disable
 
 **A:** Sie müssen die xbutil-Abfrage ausführen und den unteren Teil überprüfen. 
 
-**F:** Wenn ich meine eigene VM erstelle und XRT manuell bereitstelle, welche zusätzlichen Änderungen muss ich dann vornehmen? 
 
-**A:** Fügen Sie in der Datei /opt/xilinx/xrt/setup.sh einen Eintrag für XRT_INI_PATH ein, der auf /opt/xilinx/xrt/xrt.ini hinweist
-
- 
-Der Inhalt von /opt/xilinx/xrt/xrt.ini sollte das folgende enthalten: <br>
-[Ausführungsdauer]<br>
-ert=falsch <br>
 
 ## <a name="other-sizes"></a>Andere Größen
 

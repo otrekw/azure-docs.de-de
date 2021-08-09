@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2daf927ff9e0a99845ec6fb0283b550856ebfc47
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359454"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572402"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurieren einer Verfügbarkeitsgruppe für eine Arbeitsgruppe 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -292,4 +292,11 @@ In diesem letzten Schritt konfigurieren Sie den Lastenausgleich im [Azure-Portal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können auch die [Azure-Befehlszeilenschnittstelle auf der SQL-VM](./availability-group-az-commandline-configure.md) verwenden, um eine Verfügbarkeitsgruppe zu konfigurieren.
+Nachdem die Verfügbarkeitsgruppe bereitgestellt wurde, sollten Sie die [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md) optimieren. 
+
+
+Weitere Informationen finden Sie unter:
+
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
+- [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

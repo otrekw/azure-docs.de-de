@@ -4,35 +4,37 @@ description: Hier erfahren Sie, wie Sie unter Linux eine Azure-Dateifreigabe üb
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/19/2019
+ms.date: 05/05/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4ace5620bf98b06956c294a12b6b08881422e718
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e02d85fe5385b8918fbfdb037382aeeef444267
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952336"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088352"
 ---
 # <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
-[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können mithilfe des [SMB-Kernelclients](https://wiki.samba.org/index.php/LinuxCIFS) in Linux-Distributionen eingebunden werden. Dieser Artikel veranschaulicht zwei Möglichkeiten zum Einbinden einer Azure-Dateifreigabe: bedarfsgesteuert mit dem Befehl `mount` oder beim Start durch Erstellen eines Eintrags in `/etc/fstab`.
+[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können mithilfe des [SMB-Kernelclients](https://wiki.samba.org/index.php/LinuxCIFS) in Linux-Distributionen eingebunden werden.
 
-Es wird empfohlen, SMB 3.0 zu verwenden, um eine Azure-Dateifreigabe in Linux einzubinden. Standardmäßig müssen für Azure Files Daten während der Übertragung verschlüsselt werden. Dies wird nur von SMB 3.0 unterstützt. Azure Files unterstützt auch die Version 2.1 von SMB, mit der allerdings keine Verschlüsselung während der Übertragung möglich ist. Deshalb können Sie aus Sicherheitsgründen mit SMB 2.1 keine Azure-Dateifreigaben aus anderen Regionen oder lokal einbinden. Sofern für Ihre Anwendung nicht unbedingt SMB 2.1 erforderlich ist, gibt es wenige Gründe, die für die Verwendung dieser Version sprechen, da die beliebtesten und neusten Linux-Distributionen SMB 3.0 unterstützen:  
+Es wird empfohlen, zum Einbinden einer Azure-Dateifreigabe unter Linux SMB 3.1.1 zu verwenden. Standardmäßig müssen Daten bei Azure Files während der Übertragung verschlüsselt werden. Dies wird nur von SMB 3.0+ unterstützt. Azure Files unterstützt auch die Version 2.1 von SMB, bei der allerdings keine Verschlüsselung während der Übertragung möglich ist. Deshalb können Sie mit SMB 2.1 aus Sicherheitsgründen keine Azure-Dateifreigaben aus einer anderen Region oder lokal einbinden. Verwenden Sie SMB 3.1.1, sofern Ihre Anwendung nicht ausdrücklich SMB 2.1 erfordert.
 
-| Linux-Verteilung | SMB 2.1 <br>(Einbindungen auf VMs innerhalb derselben Azure-Region) | SMB 3.0 <br>(Einbindungen aus einer lokalen Region und regionsübergreifend) |
-| --- | :---: | :---: |
-| Ubuntu | 14.04+ | 16.04 und höher |
-| Red Hat Enterprise Linux (RHEL) | 7 und höher | 7.5 und höher |
-| CentOS | 7 und höher |  7.5 und höher |
-| Debian | 8 und höher | 10+ |
-| openSUSE | 13.2 und höher | 42.3+ |
-| SUSE Linux Enterprise Server | 12+ | 12 SP2+ |
+| Distribution | SMB 3.1.1 | SMB 3.0 |
+|-|-----------|---------|
+| Linux-Kernelversion | <ul><li>Basic 3.1.1-Unterstützung: 4.17</li><li>Standard-Bereitstellung: 5.0</li><li>AES-128-GCM-Verschlüsselung: 5.3</li></ul> | <ul><li>Basic 3.0-Unterstützung: 3.12</li><li>AES-128-CCM-Verschlüsselung: 4.11</li></ul> |
+| [Ubuntu](https://wiki.ubuntu.com/Releases) | AES-128-GCM-Verschlüsselung: 18.04.5 LTS+ | AES-128-CCM-Verschlüsselung: 16.04.4 LTS+ |
+| [Red Hat Enterprise Linux (RHEL)](https://access.redhat.com/articles/3078) | <ul><li>Basic: 8.0+</li><li>Standard-Bereitstellung: 8.2+</li><li>AES-128-GCM-Verschlüsselung: 8.2+</li></ul> | 7.5 und höher |
+| [Debian](https://www.debian.org/releases/) | Basic: 10+ | AES-128-CCM-Verschlüsselung: 10+ |
+| [SUSE Linux Enterprise Server](https://www.suse.com/support/kb/doc/?id=000019587) | AES-128-GCM-Verschlüsselung: 15 SP2+ | AES-128-CCM-Verschlüsselung: 12 SP2+ |
 
-Wenn Sie eine Linux-Distribution verwenden, die nicht in der obigen Tabelle aufgeführt ist, können Sie anhand Ihrer Linux-Kernelversion überprüfen, ob Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung unterstützt. SMB 3.0 mit Verschlüsselung wurde der Linux-Kernelversion 4.11 hinzugefügt. Über den Befehl `uname` wird die Version des verwendeten Linux-Kernels zurückgegeben:
+Wenn Ihre Linux-Distribution in der vorstehenden Tabelle nicht aufgeführt ist, können Sie die Linux-Kernelversion mit dem Befehl `uname` überprüfen:
 
 ```bash
 uname -r
 ```
+
+> [!Note]  
+> Zur Linux-Kernelversion 3.7 wurde Unterstützung für SMB 2.1 hinzugefügt. Wenn Sie eine Version des Linux-Kernels nach 3.7 verwenden, sollte sie SMB 2.1 unterstützen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 <a id="smb-client-reqs"></a>
@@ -40,26 +42,26 @@ uname -r
 * <a id="install-cifs-utils"></a>**Vergewissern Sie sich, dass das cifs-utils-Paket installiert ist.**  
     Das Paket „cifs-utils“ kann mithilfe des Paket-Managers für die Linux-Distribution Ihrer Wahl installiert werden. 
 
-    Verwenden Sie bei auf **Ubuntu** und **Debian** basierenden Distributionen den Paket-Manager `apt`:
+    Verwenden Sie unter **Ubuntu** und **Debian** den Paket-Manager `apt`:
 
     ```bash
     sudo apt update
     sudo apt install cifs-utils
     ```
 
-    Verwenden Sie unter **Fedora**, **Red Hat Enterprise Linux 8 und höher** sowie **CentOS 8 und höher** den Paket-Manager `dnf`:
+    Verwenden Sie unter **Red Hat Enterprise Linux 8+** den Paket-Manager `dnf`:
 
     ```bash
     sudo dnf install cifs-utils
     ```
 
-    Verwenden Sie unter älteren Versionen von **Red Hat Enterprise Linux** und **CentOS** den Paket-Manager `yum`:
+    Verwenden Sie unter älteren Versionen von **Red Hat Enterprise Linux** den Paket-Manager `yum`:
 
     ```bash
     sudo yum install cifs-utils 
     ```
 
-    Verwenden Sie unter **OpenSUSE** den Paket-Manager `zypper`:
+    Verwenden Sie unter **SUSE Linux Enterprise Server** den Paket-Manager `zypper`:
 
     ```bash
     sudo zypper install cifs-utils
@@ -67,9 +69,10 @@ uname -r
 
     Verwenden Sie bei anderen Distributionen den entsprechenden Paket-Manager, oder [kompilieren Sie den Quellcode](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
 
-* **Die neueste Version der Azure-Befehlszeilenschnittstelle (CLI).** Informationen zum Installieren der Azure CLI finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli) im Abschnitt zu Ihrem Betriebssystem. Wenn Sie lieber mit dem Azure PowerShell-Modul in PowerShell 6 und höher arbeiten möchten, können Sie dies tun, die folgenden Anweisungen beziehen sich jedoch auf die Azure CLI.
+* **Die neueste Version der Azure-Befehlszeilenschnittstelle (CLI).** Informationen zum Installieren der Azure CLI finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli) im Abschnitt zu Ihrem Betriebssystem. Wenn Sie lieber das Azure PowerShell-Modul in PowerShell 6+ und höher verwenden möchten, können Sie dies tun. Allerdings beziehen sich die Anleitungen in diesem Artikel auf die Azure CLI.
 
 * **Prüfen Sie, ob Port 445 geöffnet ist**: SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.  Ersetzen Sie `<your-resource-group>` und `<your-storage-account>`, und führen Sie dann das folgende Skript aus:
+
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -93,158 +96,209 @@ uname -r
 
     Wenn Sie Port 445 nicht in Ihrem Unternehmensnetzwerk öffnen können oder der Internetdienstanbieter dies nicht zulässt, können Sie eine VPN-Verbindung oder ExpressRoute verwenden, um Port 445 zu umgehen. Weitere Informationen finden Sie unter [Überlegungen zum Netzwerk für den direkten Zugriff auf Azure-Dateifreigaben](storage-files-networking-overview.md).
 
-## <a name="mounting-azure-file-share"></a>Einbinden von Azure-Dateifreigaben
-Wenn Sie eine Azure-Dateifreigabe mit Ihrer Linux-Distribution verwenden möchten, müssen Sie ein Verzeichnis erstellen, das als Bereitstellungspunkt für die Azure-Dateifreigabe fungiert. Der Bereitstellungspunkt kann zwar an einem beliebigen Ort auf Ihrem Linux-System erstellt werden, üblicherweise erfolgt die Erstellung jedoch unter „/mount“. Nach dem Bereitstellungspunkt können Sie den Befehl `mount` verwenden, um auf die Azure-Dateifreigabe zuzugreifen.
+## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Bedarfsgesteuertes Einbinden der Azure-Dateifreigabe mit „Einbinden“
+Wenn Sie eine Dateifreigabe unter einem Linux-Betriebssystem einbinden, wird Ihre Remotedateifreigabe in Ihrem lokalen Dateisystem als Ordner dargestellt. Sie können Dateifreigaben an einem beliebigen Ort in Ihrem System einbinden. Im folgenden Beispiel wird die Dateifreigabe unter dem Pfad `/mount` eingebunden. Dies können Sie in Ihren bevorzugten Pfad ändern, indem Sie die Variable `$mntRoot` ändern.
 
-Falls gewünscht, können Sie dieselbe Azure-Dateifreigabe in mehrere Bereitstellungspunkte einbinden.
+Ersetzen Sie `<resource-group-name>`, `<storage-account-name>` und `<file-share-name>` durch die entsprechenden Informationen für Ihre Umgebung:
 
-### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Bedarfsgesteuertes Einbinden der Azure-Dateifreigabe mit `mount`
-1. **Erstellen Sie einen Ordner für den Bereitstellungspunkt**: Ersetzen Sie `<your-resource-group>`, `<your-storage-account>` und `<your-file-share>` durch die entsprechenden Informationen für Ihre Umgebung:
+```bash
+resourceGroupName="<resource-group-name>"
+storageAccountName="<storage-account-name>"
+fileShareName="<file-share-name>"
 
-    ```bash
-    resourceGroupName="<your-resource-group>"
-    storageAccountName="<your-storage-account>"
-    fileShareName="<your-file-share>"
+mntRoot="/mount"
+mntPath="$mntRoot/$storageAccountName/$fileShareName"
 
-    mntPath="/mount/$storageAccountName/$fileShareName"
+sudo mkdir -p $mntPath
+```
 
-    sudo mkdir -p $mntPath
-    ```
+Binden Sie die Dateifreigabe als Nächstes mit dem Befehl `mount` ein. Im folgenden Beispiel wird der Befehl `$smbPath` mit dem vollqualifizierten Domänennamen für den Dateiendpunkt des Speicherkontos aufgefüllt und `$storageAccountKey` mit dem Speicherkontoschlüssel. 
 
-1. **Verwenden Sie den Einbindungsbefehl, um die Azure-Dateifreigabe einzubinden.** Im folgenden Beispiel gilt für die lokalen Berechtigungen für Linux-Dateien und -Ordner der Standardwert 0755. Dadurch erhalten Besitzer Lese-, Schreib- und Ausführungsberechtigungen (basierend auf dem Linux-Besitzer der Datei bzw. des Verzeichnisses), Benutzer in Besitzergruppen erhalten Lese- und Ausführungsberechtigungen und alle anderen Benutzer des Systems erhalten Lese- und Ausführungsberechtigungen. Sie können die Einbindungsoptionen `uid` und `gid` verwenden, um die Benutzer-ID und die Gruppen-ID für die Einbindung festzulegen. Sie können auch `dir_mode` und `file_mode` verwenden, um nach Belieben benutzerdefinierte Berechtigungen festzulegen. Weitere Informationen zum Festlegen von Berechtigungen finden Sie unter [UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) (Numerische UNIX-Notation) auf Wikipedia. 
+# <a name="smb-311"></a>[SMB 3.1.1](#tab/smb311)
+> [!Note]  
+> Ab der Linux-Kernelversion 5.0 ist SMB 3.1.1 das ausgehandelte Standardprotokoll. Wenn Sie eine Version des Linux-Kernels verwenden, die älter als 5.0 ist, geben Sie in der Liste der Bereitstellungsoptionen `vers=3.1.1` an.  
 
-    ```bash
-    # This command assumes you have logged in with az login
-    httpEndpoint=$(az storage account show \
-        --resource-group $resourceGroupName \
-        --name $storageAccountName \
-        --query "primaryEndpoints.file" | tr -d '"')
-    smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
+```bash
+# This command assumes you have logged in with az login
+httpEndpoint=$(az storage account show \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --query "primaryEndpoints.file" | tr -d '"')
+smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
 
-    storageAccountKey=$(az storage account keys list \
-        --resource-group $resourceGroupName \
-        --account-name $storageAccountName \
-        --query "[0].value" | tr -d '"')
+storageAccountKey=$(az storage account keys list \
+    --resource-group $resourceGroupName \
+    --account-name $storageAccountName \
+    --query "[0].value" | tr -d '"')
 
-    sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
-    ```
+sudo mount -t cifs $smbPath $mntPath -o username=$storageAccountName,password=$storageAccountKey,serverino
+```
 
-    > [!Note]  
-    > Über die obigen Einbindungsbefehle erfolgt die Einbindung in SMB 3.0. Wenn Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung nicht unterstützt oder wenn sie nur SMB 2.1 unterstützt, können Sie nur über eine Azure-VM, die sich in derselben Region wie das Speicherkonto befindet, eine Einbindung vornehmen. Wenn Sie Ihre Azure-Dateifreigabe in eine Linux-Distribution einbinden möchten, die SMB 3.0 mit Verschlüsselung nicht unterstützt, müssen Sie die [Verschlüsselung während der Übertragung für das Speicherkonto deaktivieren](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+# <a name="smb-30"></a>[SMB 3.0](#tab/smb30)
+```bash
+# This command assumes you have logged in with az login
+httpEndpoint=$(az storage account show \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --query "primaryEndpoints.file" | tr -d '"')
+smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
 
-Wenn Sie die Azure-Dateifreigabe nicht mehr benötigen, können Sie `sudo umount $mntPath` verwenden, um die Einbindung der Freigabe aufzuheben.
+storageAccountKey=$(az storage account keys list \
+    --resource-group $resourceGroupName \
+    --account-name $storageAccountName \
+    --query "[0].value" | tr -d '"')
 
-### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Erstellen eines permanenten Bereitstellungspunkts für die Azure-Dateifreigabe mit `/etc/fstab`
-1. **Erstellen Sie einen Ordner für den Bereitstellungspunkt**: Ein Ordner für einen Bereitstellungspunkt kann zwar an einem beliebigen Ort im Dateisystem erstellt werden, üblicherweise erfolgt die Erstellung jedoch unter „/mount“. Mit dem folgenden Befehl wird beispielsweise ein neues Verzeichnis erstellt. Ersetzen Sie `<your-resource-group>`,`<your-storage-account>` und `<your-file-share>` durch die entsprechenden Informationen für Ihre Umgebung:
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
 
-    ```bash
-    resourceGroupName="<your-resource-group>"
-    storageAccountName="<your-storage-account>"
-    fileShareName="<your-file-share>"
+# <a name="smb-21"></a>[SMB 2.1](#tab/smb21)
+```bash
+# This command assumes you have logged in with az login
+httpEndpoint=$(az storage account show \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --query "primaryEndpoints.file" | tr -d '"')
+smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
 
-    mntPath="/mount/$storageAccountName/$fileShareName"
+storageAccountKey=$(az storage account keys list \
+    --resource-group $resourceGroupName \
+    --account-name $storageAccountName \
+    --query "[0].value" | tr -d '"')
 
-    sudo mkdir -p $mntPath
-    ```
+sudo mount -t cifs $smbPath $mntPath -o vers=2.1,username=$storageAccountName,password=$storageAccountKey,serverino
+```
 
-1. **Erstellen Sie eine Datei mit Anmeldeinformationen, um den Benutzernamen (den Namen des Speicherkontos) und das Kennwort (den Schlüssel des Speicherkontos) für die Dateifreigabe zu speichern.** 
+---
 
-    ```bash
-    if [ ! -d "/etc/smbcredentials" ]; then
-        sudo mkdir "/etc/smbcredentials"
-    fi
+Zum Festlegen von Berechtigungen können Sie in den Einbindungsoptionen für den Befehl `mount` `uid`/`gid` oder `dir_mode` und `file_mode` verwenden. Weitere Informationen zum Festlegen von Berechtigungen finden Sie unter [UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) (Numerische UNIX-Notation) auf Wikipedia.
 
-    storageAccountKey=$(az storage account keys list \
-        --resource-group $resourceGroupName \
-        --account-name $storageAccountName \
-        --query "[0].value" | tr -d '"')
-    
-    smbCredentialFile="/etc/smbcredentials/$storageAccountName.cred"
-    if [ ! -f $smbCredentialFile ]; then
-        echo "username=$storageAccountName" | sudo tee $smbCredentialFile > /dev/null
-        echo "password=$storageAccountKey" | sudo tee -a $smbCredentialFile > /dev/null
-    else 
-        echo "The credential file $smbCredentialFile already exists, and was not modified."
-    fi
-    ```
+Falls gewünscht, können Sie dieselbe Azure-Dateifreigabe auch in mehrere Bereitstellungspunkte einbinden. Wenn Sie die Azure-Dateifreigabe nicht mehr benötigen, heben Sie deren Einbindung mit `sudo umount $mntPath` auf.
 
-1. **Ändern Sie die Berechtigungen in der Datei mit den Anmeldeinformationen so, dass nur „root“ die Kennwortdatei lesen oder ändern kann.** Da der Speicherkontoschlüssel eigentlich ein Superadministratorkennwort für das Speicherkonto ist, ist es wichtig, die Berechtigungen für die Datei so festzulegen, dass nur „root“ darauf zugreifen kann, damit Benutzer mit geringeren Rechten den Speicherkontoschlüssel nicht abrufen können.   
+## <a name="automatically-mount-file-shares"></a>Automatisches Einbinden von Dateifreigaben
+Wenn Sie eine Dateifreigabe unter einem Linux-Betriebssystem einbinden, wird Ihre Remotedateifreigabe in Ihrem lokalen Dateisystem als Ordner dargestellt. Sie können Dateifreigaben an einem beliebigen Ort in Ihrem System einbinden. Im folgenden Beispiel wird die Dateifreigabe unter dem Pfad `/mount` eingebunden. Dies können Sie in Ihren bevorzugten Pfad ändern, indem Sie die Variable `$mntRoot` ändern.
 
-    ```bash
-    sudo chmod 600 $smbCredentialFile
-    ```
+```bash
+mntRoot="/mount"
+sudo mkdir -p $mntRoot
+```
 
-1. **Fügen Sie mit dem folgenden Befehl die folgende Zeile an `/etc/fstab` an**: Im folgenden Beispiel gilt für die lokalen Berechtigungen für Linux-Dateien und -Ordner der Standardwert 0755. Dadurch erhalten Besitzer Lese-, Schreib- und Ausführungsberechtigungen (basierend auf dem Linux-Besitzer der Datei bzw. des Verzeichnisses), Benutzer in Besitzergruppen erhalten Lese- und Ausführungsberechtigungen und alle anderen Benutzer des Systems erhalten Lese- und Ausführungsberechtigungen. Sie können die Einbindungsoptionen `uid` und `gid` verwenden, um die Benutzer-ID und die Gruppen-ID für die Einbindung festzulegen. Sie können auch `dir_mode` und `file_mode` verwenden, um nach Belieben benutzerdefinierte Berechtigungen festzulegen. Weitere Informationen zum Festlegen von Berechtigungen finden Sie unter [UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) (Numerische UNIX-Notation) auf Wikipedia.
+Verwenden Sie zum Einbinden einer Azure-Dateifreigabe unter Linux den Speicherkontonamen als Benutzernamen der Dateifreigabe und den Speicherkontoschlüssel als Kennwort. Da sich die Anmeldeinformationen für das Speicherkonto im Laufe der Zeit ändern können, sollten Sie sie für das Speicherkonto getrennt von der Bereitstellungskonfiguration speichern. 
 
-    ```bash
-    # This command assumes you have logged in with az login
-    httpEndpoint=$(az storage account show \
-        --resource-group $resourceGroupName \
-        --name $storageAccountName \
-        --query "primaryEndpoints.file" | tr -d '"')
-    smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
+Im folgenden Beispiel wird gezeigt, wie Sie eine Datei zum Speichern der Anmeldeinformationen erstellen können. Ersetzen Sie `<resource-group-name>` und `<storage-account-name>` durch die entsprechenden Angaben für Ihre Umgebung.
 
-    if [ -z "$(grep $smbPath\ $mntPath /etc/fstab)" ]; then
-        echo "$smbPath $mntPath cifs nofail,vers=3.0,credentials=$smbCredentialFile,serverino" | sudo tee -a /etc/fstab > /dev/null
-    else
-        echo "/etc/fstab was not modified to avoid conflicting entries as this Azure file share was already present. You may want to double check /etc/fstab to ensure the configuration is as desired."
-    fi
+```bash
+resourceGroupName="<resource-group-name>"
+storageAccountName="<storage-account-name>"
 
-    sudo mount -a
-    ```
-    
-    > [!Note]  
-    > Über die obigen Einbindungsbefehle erfolgt die Einbindung in SMB 3.0. Wenn Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung nicht unterstützt oder wenn sie nur SMB 2.1 unterstützt, können Sie nur über eine Azure-VM, die sich in derselben Region wie das Speicherkonto befindet, eine Einbindung vornehmen. Wenn Sie Ihre Azure-Dateifreigabe in eine Linux-Distribution einbinden möchten, die SMB 3.0 mit Verschlüsselung nicht unterstützt, müssen Sie die [Verschlüsselung während der Übertragung für das Speicherkonto deaktivieren](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+# Create a folder to store the credentials for this storage account and
+# any other that you might set up.
+credentialRoot="/etc/smbcredentials"
+sudo mkdir -p "/etc/smbcredentials"
 
-### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>Verwenden von autofs zum automatischen Einbinden der Azure-Dateifreigaben
+# Get the storage account key for the indicated storage account.
+# You must be logged in with az login and your user identity must have 
+# permissions to list the storage account keys for this command to work.
+storageAccountKey=$(az storage account keys list \
+    --resource-group $resourceGroupName \
+    --account-name $storageAccountName \
+    --query "[0].value" | tr -d '"')
 
-1. **Stellen Sie sicher, dass das autofs-Paket installiert ist.**  
+# Create the credential file for this individual storage account
+smbCredentialFile="$credentialRoot/$storageAccountName.cred"
+if [ ! -f $smbCredentialFile ]; then
+    echo "username=$storageAccountName" | sudo tee $smbCredentialFile > /dev/null
+    echo "password=$storageAccountKey" | sudo tee -a $smbCredentialFile > /dev/null
+else 
+    echo "The credential file $smbCredentialFile already exists, and was not modified."
+fi
 
-    Das Paket „autofs“ kann mithilfe des Paket-Managers für die Linux-Distribution Ihrer Wahl installiert werden. 
+# Change permissions on the credential file so only root can read or modify the password file.
+sudo chmod 600 $smbCredentialFile
+```
 
-    Verwenden Sie bei auf **Ubuntu** und **Debian** basierenden Distributionen den Paket-Manager `apt`:
-    ```bash
-    sudo apt update
-    sudo apt install autofs
-    ```
-    Verwenden Sie unter **Fedora**, **Red Hat Enterprise Linux 8 und höher** sowie **CentOS 8 und höher** den Paket-Manager `dnf`:
-    ```bash
-    sudo dnf install autofs
-    ```
-    Verwenden Sie unter älteren Versionen von **Red Hat Enterprise Linux** und **CentOS** den Paket-Manager `yum`:
-    ```bash
-    sudo yum install autofs 
-    ```
-    Verwenden Sie unter **OpenSUSE** den Paket-Manager `zypper`:
-    ```bash
-    sudo zypper install autofs
-    ```
-2. **Erstellen Sie einen Bereitstellungspunkt für die Freigabe:**
-   ```bash
-    sudo mkdir /fileshares
-    ```
-3. **Erstellen Sie eine benutzerdefinierte autofs-Konfigurationsdatei:**
-    ```bash
-    sudo vi /etc/auto.fileshares
-    ```
-4. **Fügen Sie die folgenden Einträge zu /etc/auto.fileshares hinzu:**
-   ```bash
-   echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath"" > /etc/auto.fileshares
-   ```
-5. **Fügen Sie den folgenden Eintrag zu /etc/auto.master hinzu:**
-   ```bash
-   /fileshares /etc/auto.fileshares --timeout=60
-   ```
-6. **Starten Sie autofs neu:**
-    ```bash
-    sudo systemctl restart autofs
-    ```
-7.  **Greifen Sie auf den für die Freigabe vorgesehenen Ordner zu:**
-    ```bash
-    cd /fileshares/$filesharename
-    ```
+Zum automatischen Einbinden einer Dateifreigabe haben Sie die Wahl zwischen einem statischen Einbinden über das Hilfsprogramm `/etc/fstab` oder einem dynamischen Einbinden über das Hilfsprogramm `autofs`. 
+
+### <a name="static-mount-with-etcfstab"></a>Statisches Einbinden mit „/etc/fstab“
+Erstellen Sie in der früheren Umgebung unter Ihrem Bereitstellungsordner einen Ordner für Ihr Speicherkonto bzw. Ihre Dateifreigabe. Ersetzen Sie `<file-share-name>` durch den entsprechenden Namen Ihrer Azure-Dateifreigabe.
+
+```bash
+fileShareName="<file-share-name>"
+
+mntPath="$mntRoot/$storageAccountName/$fileShareName"
+sudo mkdir -p $mntPath
+```
+
+Erstellen Sie abschließend einen Datensatz in der Datei `/etc/fstab` für Ihre Azure-Dateifreigabe. Im nachstehenden Befehl werden Linux-Datei- und -Ordnerberechtigungen mit dem Standardwert „0755“ verwendet. Dadurch erhalten Besitzer Lese-, Schreib- und Ausführungsberechtigungen (basierend auf dem Linux-Besitzer der Datei bzw. des Verzeichnisses). Benutzer in Besitzergruppen erhalten Lese- und Ausführungsberechtigungen und alle anderen Benutzer des Systems Lese- und Ausführungsberechtigungen. Möglicherweise möchten Sie für die Einbindung alternative `uid`- und `gid`- oder `dir_mode`- und `file_mode`-Berechtigungen nach Wunsch festlegen. Weitere Informationen zum Festlegen von Berechtigungen finden Sie unter [UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) (Numerische UNIX-Notation) auf Wikipedia.
+
+```bash
+httpEndpoint=$(az storage account show \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --query "primaryEndpoints.file" | tr -d '"')
+smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
+
+if [ -z "$(grep $smbPath\ $mntPath /etc/fstab)" ]; then
+    echo "$smbPath $mntPath cifs nofail,credentials=$smbCredentialFile,serverino" | sudo tee -a /etc/fstab > /dev/null
+else
+    echo "/etc/fstab was not modified to avoid conflicting entries as this Azure file share was already present. You may want to double check /etc/fstab to ensure the configuration is as desired."
+fi
+
+sudo mount -a
+```
+
+> [!Note]  
+> Ab der Linux-Kernelversion 5.0 ist SMB 3.1.1 das ausgehandelte Standardprotokoll. Sie können alternative Protokollversionen mithilfe der Bereitstellungsoption `vers` angeben (Protokollversionen sind `3.1.1`, `3.0` und `2.1`).
+
+### <a name="dynamically-mount-with-autofs"></a>Dynamisches Einbinden mit „autofs“
+Wenn Sie eine Dateifreigabe mit dem Hilfsprogramm `autofs` dynamisch einbinden möchten, installieren Sie sie mithilfe des Paket-Managers in der Linux-Distribution Ihrer Wahl.  
+
+Verwenden Sie bei **Ubuntu**- und **Debian**-Distributionen den Paket-Manager `apt`:
+
+```bash
+sudo apt update
+sudo apt install autofs
+```
+
+Verwenden Sie unter **Red Hat Enterprise Linux 8+** den Paket-Manager `dnf`:
+```bash
+sudo dnf install autofs
+```
+
+Verwenden Sie unter älteren Versionen von **Red Hat Enterprise Linux** den Paket-Manager `yum`:
+
+```bash
+sudo yum install autofs 
+```
+
+Verwenden Sie unter **SUSE Linux Enterprise Server** den Paket-Manager `zypper`:
+```bash
+sudo zypper install autofs
+```
+
+Aktualisieren Sie als Nächstes die Konfigurationsdateien `autofs`. 
+
+```bash
+fileShareName="<file-share-name>"
+
+httpEndpoint=$(az storage account show \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --query "primaryEndpoints.file" | tr -d '"')
+smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
+
+echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath" > /etc/auto.fileshares
+
+echo "/fileshares /etc/auto.fileshares --timeout=60" > /etc/auto.master
+```
+
+Der letzte Schritt ist ein Neustart des Diensts `autofs`.
+
+```bash
+sudo systemctl restart autofs
+```
+
 ## <a name="securing-linux"></a>Sichern von Linux
-Zum Einbinden einer Azure-Dateifreigabe unter Linux muss Port 445 zugänglich sein. Viele Organisationen blockieren Port 445 aufgrund von mit SMB 1 verbundenen Sicherheitsrisiken. SMB 1, auch bekannt als CIFS (Common Internet File System) ist ein Legacydateisystemprotokoll, das in vielen Linux-Distributionen enthalten ist. SMB 1 ist ein veraltetes, ineffizientes und vor allem unsicheres Protokoll. Azure Files unterstützt SMB 1 nicht und ab der Linux-Kernelversion 4.18 ist es möglich, SMB 1 unter Linux zu deaktivieren. Es wird [dringend empfohlen](https://aka.ms/stopusingsmb1), SMB 1 auf Ihren Linux-Clients zu deaktivieren, bevor Sie SMB-Dateifreigaben in der Produktion verwenden.
+Zum Einbinden einer Azure-Dateifreigabe mit SMB muss Port 445 zugänglich sein. Viele Organisationen blockieren Port 445 aufgrund von mit SMB 1 verbundenen Sicherheitsrisiken. SMB 1, auch bekannt als CIFS (Common Internet File System) ist ein Legacydateisystemprotokoll, das in vielen Linux-Distributionen enthalten ist. SMB 1 ist ein veraltetes, ineffizientes und vor allem unsicheres Protokoll. Azure Files unterstützt SMB 1 nicht und ab der Linux-Kernelversion 4.18 ist es möglich, SMB 1 unter Linux zu deaktivieren. Es wird [dringend empfohlen](https://aka.ms/stopusingsmb1), SMB 1 auf Ihren Linux-Clients zu deaktivieren, bevor Sie SMB-Dateifreigaben in der Produktion verwenden.
 
 Ab der Linux-Kernelversion 4.18 stellt das SMB-Kernelmodul (`cifs` genannt, weil es sich um eine Legacyversion handelt) einen neuen Modulparameter (häufig in verschiedenen Dokumentationen als *parm*, hier aber als `disable_legacy_dialects` bezeichnet) zur Verfügung. Obwohl dies mit der Linux-Kernelversion 4.18 eingeführt wurde, haben einige Anbieter diese Änderung auf ältere von ihnen unterstützte Kernelversionen zurückportiert. In der folgenden Tabelle wird die Verfügbarkeit dieses Modulparameters für allgemeine Linux-Distributionen ausführlich erläutert.
 

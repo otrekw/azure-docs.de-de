@@ -1,24 +1,25 @@
 ---
 title: Unterstützte Szenarien für SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
-description: Unterstützte Szenarien und ihre Architekturdetails für SAP HANA in Azure (große Instanzen)
+description: Erfahren Sie mehr über unterstützte Szenarien für SAP HANA in Azure (große Instanzen) und ihre Architekturdetails.
 services: virtual-machines-linux
 documentationcenter: ''
 author: Ajayan1008
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/26/2019
+ms.date: 05/18/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e1868514919cdb40a0ac607b446ab944e8c36da
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7dfe81348b300f6b1b407898684316f668791d32
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738840"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577976"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Unterstützte Szenarien für große HANA-Instanzen
 Dieser Artikel beschreibt die unterstützten Szenarien und Architekturdetails für große HANA-Instanzen (HANA Large Instances, HLI).
@@ -30,19 +31,19 @@ Bevor Sie die HLI-Einheit einrichten, überprüfen Sie den Entwurf zusammen mit 
 ## <a name="terms-and-definitions"></a>Begriffe und Definitionen
 Machen Sie sich mit den Begriffen und Definitionen vertraut, die in diesem Artikel verwendet werden:
 
-- **SID**: Ein Systembezeichner für das HANA-System
-- **HLI**: Große HANA-Instanzen
-- **DR**: Notfallwiederherstellung
-- **Normale DR**: Ein Systemsetup mit einer dedizierten Ressource nur für DR-Zwecke
-- **Mehrzweck-DR**: Ein System am DR-Standort, das für die Verwendung einer nicht produktiven Umgebung neben einer Produktionsinstanz konfiguriert ist, die wiederum für ein DR-Ereignis konfiguriert ist 
-- **Einzelne SID**: Ein System mit einer installierten Instanz
-- **Multi-SID**: Ein System mit mehreren konfigurierten Instanzen, wird auch als MCOS-Umgebung bezeichnet
-- **HSR**: SAP HANA-Systemreplikation
+- **SID**: Ein Systembezeichner für das HANA-System.
+- **HLI**: HANA (große Instanzen).
+- **DR**: Notfallwiederherstellung (Disaster recovery, DR).
+- **Normale DR**: Ein Systemsetup mit einer dedizierten Ressource nur für DR-Zwecke.
+- **Mehrzweck-DR**: Ein System am DR-Standort, das für die Verwendung einer nicht produktiven Umgebung neben einer Produktionsinstanz konfiguriert ist, die wiederum für ein DR-Ereignis konfiguriert ist. 
+- **Einzelne SID**: Ein System mit einer installierten Instanz.
+- **Multi-SID**: Ein System mit mehreren konfigurierten Instanzen, wird auch als MCOS-Umgebung bezeichnet.
+- **HSR**: SAP HANA-Systemreplikation.
 
 ## <a name="overview"></a>Übersicht
 Große HANA-Instanzen unterstützen eine Vielzahl von Architekturen, um Ihnen bei der Erfüllung Ihrer Geschäftsanforderungen zu helfen. In den folgenden Abschnitten werden die Architekturszenarien und die zugehörigen Konfigurationsdetails beschrieben. 
 
-Der abgeleiteten Architekturentwurf ist ausschließlich aus der Infrastrukturperspektive zu verstehen. Hinsichtlich der HANA-Bereitstellung müssen Sie sich mit SAP oder Ihren Implementierungspartnern beraten. Wenn Ihre Szenarien in diesem Artikel nicht aufgeführt sind, wenden Sie sich an das Microsoft-Kontoteam, um die Architektur zu überprüfen und eine Lösung für Sie abzuleiten.
+Die abgeleiteten Architekturentwürfe sind rein infrastrukturbezogen. Wenden Sie sich an SAP oder Ihre Implementierungspartner für die Bereitstellung von HANA. Wenn Ihre Szenarien in diesem Artikel nicht aufgeführt sind, wenden Sie sich an das Microsoft-Kontoteam, um die Architektur zu überprüfen und eine Lösung für Sie abzuleiten.
 
 > [!NOTE]
 > Diese Architekturen sind vollständig mit dem TDI-Entwurf (Tailored Data Integration, angepasste Datenintegration) kompatibel und werden von SAP unterstützt.
@@ -57,7 +58,7 @@ Dieser Artikel beschreibt die Details der beiden Komponenten in jeder unterstüt
 Jeder bereitgestellte Server ist mit Gruppen von Ethernetschnittstellen vorkonfiguriert. Die auf jeder HLI-Einheit konfigurierten Ethernetschnittstellen lassen sich in vier Kategorien unterteilen:
 
 - **A:** Wird für oder durch Clientzugriff verwendet.
-- **B**: Wird für die Kommunikation zwischen Knoten verwendet. Diese Schnittstelle ist auf allen Servern (unabhängig von der angeforderten Topologie) konfiguriert, wird aber nur für Szenarien mit horizontaler Skalierung verwendet.
+- **B**: Wird für die Kommunikation zwischen Knoten verwendet. Diese Schnittstelle ist auf allen Servern konfiguriert (unabhängig von der angeforderten Topologie). Sie wird jedoch nur für Szenarien mit horizontaler Skalierung verwendet.
 - **C**: Wird für die Konnektivität zwischen Knoten und Speicher verwendet.
 - **D**: Wird für die Konnektivität zwischen Knoten und iSCSI-Geräteverbindung für das STONITH-Setup verwendet. Diese Schnittstelle ist nur konfiguriert, wenn ein HSR-Setup angefordert wird.  
 
@@ -74,7 +75,7 @@ Jeder bereitgestellte Server ist mit Gruppen von Ethernetschnittstellen vorkonfi
 
 Sie wählen die Schnittstellen je nach der Topologie aus, die auf der HLI-Einheit konfiguriert ist. Beispielsweise ist die Schnittstelle „B“ für die Kommunikation zwischen Knoten eingerichtet. Dies ist sinnvoll, wenn Sie eine Topologie mit horizontaler Skalierung konfiguriert haben. Diese Schnittstelle wird für Einzelknotenkonfigurationen mit zentraler Skalierung nicht verwendet. Weitere Informationen zur Schnittstellenverwendung erhalten Sie weiter unten in diesem Artikel im jeweiligen von Ihnen benötigten Szenario. 
 
-Bei Bedarf können Sie selbst zusätzliche Netzwerkkarten definieren. Die Konfigurationen vorhandener Netzwerkkarten *können jedoch nicht* geändert werden.
+Bei Bedarf können Sie selbst weitere Netzwerkkarten definieren. Die Konfigurationen vorhandener Netzwerkkarten *können jedoch nicht* geändert werden.
 
 >[!NOTE]
 >Möglicherweise finden Sie noch weitere Schnittstellen, die physische Schnittstellen oder Verbindungen sind. Für Ihren Anwendungsfall sollten Sie nur die oben erwähnten Schnittstellen berücksichtigen. Alle anderen können ignoriert werden.
@@ -91,7 +92,7 @@ Für die HANA-Systemreplikation oder HANA-Bereitstellungen mit horizontaler Skal
 
 - Ethernet „B“ muss für die Kommunikation zwischen den verschiedenen Instanzen ausschließlich im Verzeichnis *etc/hosts* verwaltet werden. Diese IP-Adressen müssen in HANA-Konfigurationen mit horizontaler Skalierung als diejenigen IP-Adressen verwaltet werden, die HANA für die Konfiguration zwischen Knoten verwendet.
 
-- Ethernet „C“ muss eine zugewiesene IP-Adresse haben, die für die Kommunikation mit NFS-Speicher verwendet wird. Dieser IP-Adresstyp darf nicht im Verzeichnis *etc/hosts* verwaltet werden.
+- Ethernet „C“ muss eine zugewiesene IP-Adresse haben, die für die Kommunikation mit NFS-Speicher verwendet wird. Diese Art von Adresse darf nicht im Verzeichnis *etc/hosts* verwaltet werden.
 
 - Ethernet „D“ darf ausschließlich für den Zugriff auf STONITH-Geräte für Pacemaker verwendet werden. Diese Schnittstelle ist erforderlich, wenn Sie die HANA-Systemreplikation konfigurieren und ein automatisches Failover des Betriebssystems mithilfe eines SBD-basierten Geräts erzielen möchten.
 
@@ -793,5 +794,8 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Sie erhalten Informationen zu folgenden Themen:
+
 - [Infrastruktur und Konnektivität](./hana-overview-infrastructure-connectivity.md) für große HANA-Instanzen
 - [Hochverfügbarkeit und Notfallwiederherstellung](./hana-overview-high-availability-disaster-recovery.md) für große HANA-Instanzen

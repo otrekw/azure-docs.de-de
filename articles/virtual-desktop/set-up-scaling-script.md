@@ -1,23 +1,23 @@
 ---
 title: Skalieren von Sitzungshosts mit Azure Automation – Azure
-description: Erfahren Sie, wie Sie mit Azure Automation eine automatische Skalierung von Windows Virtual Desktop-Sitzungshosts durchführen.
+description: So skalieren Sie Azure Virtual Desktop-Sitzungshosts automatisch mit Azure Automation.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 80bcf647ee63242bfe60b63ed400b8d3b3dc1d9e
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b3ac4074dd4c49933924e39e20d7dbf703525324
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445668"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755985"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Skalieren von Sitzungshosts mit Azure Automation
 
-Sie können die Gesamtkosten für die Bereitstellung von Windows Virtual Desktop verringern, indem Sie Ihre virtuellen Computer (VMs) skalieren. Das bedeutet, dass Sie die Sitzungshost-VMs außerhalb der Spitzenzeiten herunterfahren und ihre Zuordnung aufheben und sie dann während der Spitzenzeiten wieder einschalten und erneut zuordnen.
+Sie können die Gesamtkosten für die Bereitstellung von Azure Virtual Desktop verringern, indem Sie Ihre virtuellen Computer (VMs) skalieren. Das bedeutet, dass Sie die Sitzungshost-VMs außerhalb der Spitzenzeiten herunterfahren und ihre Zuordnung aufheben und sie dann während der Spitzenzeiten wieder einschalten und erneut zuordnen.
 
-In diesem Artikel erfahren Sie mehr über das mit dem Azure Automation-Konto und Azure Logic Apps erstellte Skalierungstool, mit dem die VMs der Sitzungshosts in Ihrer Windows Virtual Desktop-Umgebung automatisch skaliert werden. Um zu erfahren, wie Sie das Skalierungstool verwenden, fahren Sie mit dem Abschnitt [Voraussetzungen](#prerequisites) fort.
+In diesem Artikel erfahren Sie mehr über das mit dem Azure Automation-Konto und Azure Logic Apps erstellte Skalierungstool, mit dem die Sitzungshost-VMs in Ihrer Azure Virtual Desktop-Umgebung automatisch skaliert werden können. Um zu erfahren, wie Sie das Skalierungstool verwenden, fahren Sie mit dem Abschnitt [Voraussetzungen](#prerequisites) fort.
 
 ## <a name="how-the-scaling-tool-works"></a>Funktionsweise des Skalierungstools
 
@@ -45,7 +45,7 @@ Wenn Sie den Parameter *LimitSecondsToForceLogOffUser* auf null festlegen, wird 
 
 Der Auftrag berücksichtigt immer auch die Einstellung *MaxSessionLimit* des Hostpools bei der Ermittlung, ob die aktuelle Anzahl der Sitzungen 90 % der maximalen Kapazität überschreitet. In diesem Fall startet der Auftrag weitere Sitzungshost-VMs.
 
-Der Auftrag wird in regelmäßigen Abständen basierend auf einem festgelegten Wiederholungsintervall ausgeführt. Sie können dieses Intervall basierend auf der Größe Ihrer Windows Virtual Desktop-Umgebung ändern. Beachten Sie jedoch, dass das Starten und Herunterfahren von VMs einige Zeit in Anspruch nehmen kann, und planen Sie eine entsprechende Verzögerung ein. Es wird empfohlen, das Wiederholungsintervall auf 15 Minuten festzulegen.
+Der Auftrag wird in regelmäßigen Abständen basierend auf einem festgelegten Wiederholungsintervall ausgeführt. Sie können dieses Intervall basierend auf der Größe Ihrer Azure Virtual Desktop-Umgebung ändern. Beachten Sie jedoch, dass das Starten und Herunterfahren von VMs einige Zeit in Anspruch nehmen kann, und planen Sie eine entsprechende Verzögerung ein. Es wird empfohlen, das Wiederholungsintervall auf 15 Minuten festzulegen.
 
 Für das Tool gelten allerdings folgende Einschränkungen:
 
@@ -63,8 +63,8 @@ Für das Tool gelten allerdings folgende Einschränkungen:
 
 Bevor Sie mit der Einrichtung des Skalierungstools beginnen, sollten Sie Folgendes vorbereiten:
 
-- Einen [Windows Virtual Desktop-Hostpool](create-host-pools-azure-marketplace.md)
-- Sitzungshostpool-VMs, die konfiguriert und für den Windows Virtual Desktop-Dienst registriert sind
+- Ein [Azure Virtual Desktop-Hostpool](create-host-pools-azure-marketplace.md)
+- Sitzungshostpool-VMs, die konfiguriert und für den Azure Virtual Desktop-Dienst registriert sind
 - Einen Benutzer mit dem Zugriff [Mitwirkender](../role-based-access-control/role-assignments-portal.md) für das Azure-Abonnement
 
 Der Computer, den Sie zum Bereitstellen des Tools verwenden, muss Folgendes aufweisen:

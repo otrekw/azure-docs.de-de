@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 904074759d2b8f197a0df0377071e95203fabba9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7825942ce692e83f2305e4c9f9b1a31cdadaea71
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373173"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901605"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Erstellen und Anfügen eines Azure Kubernetes Service-Clusters
 
@@ -44,7 +44,7 @@ Mit Azure Machine Learning kann ein trainiertes Machine Learning-Modell im Azure
 
     Autorisierte IP-Adressbereiche funktionieren nur mit Load Balancer Standard.
 
-- Beim **Anfügen** eines AKS-Clusters muss dieser sich im selben Azure-Abonnement befinden wie Ihr Azure Machine Learning-Arbeitsbereich.
+- > Um einen AKS-Cluster aus einem __anderen Azure-Abonnement__ anfügen zu können, muss Ihnen (Ihrem Azure AD-Konto) die Rolle **Mitwirkender** im AKS-Cluster erteilt werden. Überprüfen Sie Ihren Zugriff im [Azure-Portal](https://ms.portal.azure.com/).
 
 - Wenn Sie einen privaten AKS-Cluster (mit Azure Private Link) verwenden möchten, müssen Sie zuerst den Cluster erstellen und diesen dann **an den Arbeitsbereich anfügen**. Weitere Informationen finden Sie unter [Erstellen eines privaten Azure Kubernetes Service-Clusters](../aks/private-clusters.md).
 

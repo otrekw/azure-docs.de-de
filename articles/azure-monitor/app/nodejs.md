@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie die Leistung überwachen und Probleme 
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9eba74bcf2b4b047b3ed881342db4f7b1011f928
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9709c52bde7ab866ba6b6b5c0526cef7f2ff6d87
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585763"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110079280"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Überwachen Ihrer Node.js-Dienste und -Apps mit Application Insights
 
@@ -42,7 +42,7 @@ Stellen Sie zuerst sicher, dass Sie über ein Azure-Abonnement verfügen, oder [
 Fügen Sie das SDK in Ihre App ein, damit Daten gesammelt werden können.
 
 > [!IMPORTANT]
-> Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=nodejs) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+> [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=nodejs) sind Instrumentierungsschlüsseln vorzuziehen. Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die Verbindungszeichenfolge identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 
 1. Kopieren Sie den Instrumentierungsschlüssel der Ressource (auch *iKey* genannt) aus der neu erstellten Ressource. Der ikey wird von Application Insights verwendet, um Ihrer Azure-Ressource Daten zuzuordnen. Bevor Ihr ikey vom SDK verwendet werden kann, müssen Sie ihn in einer Umgebungsvariablen oder im Code angeben.  
 

@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 341d3c6f0a2d84c2b7b725959db9f7e5dd80d3ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbc47fa19cccb8d5ce6af38fdff3f0e772f5039f
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92542963"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537700"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Flexible Server
 
@@ -35,7 +35,7 @@ Die nachstehende Tabelle veranschaulicht die Features, die Flexible Server biete
 | **Feature** | **Beschreibung** | **Überlegungen** |
 | ---------- | ----------- | ------------ |
 | **Automatische Sicherungen** | Flexible Server führt automatisch tägliche Sicherungen Ihrer Datenbankdateien durch und sichert kontinuierlich Transaktionsprotokolle. Sicherungen können zwischen 7 Tagen und 35 Tagen aufbewahrt werden. Sie können Ihren Datenbankserver zu jedem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums Ihrer Sicherung wiederherstellen. RTO hängt von der Größe der wiederherzustellenden Daten und der Zeit für die Durchführung der Protokollwiederherstellung ab. Der Wert kann zwischen wenigen Minuten und 12 Stunden liegen. Weitere ausführliche Informationen finden Sie unter [Konzepte: Sicherung und Wiederherstellung](./concepts-backup-restore.md). |Sicherungsdaten verbleiben innerhalb der Region. |
-| **Zonenredundante Hochverfügbarkeit** | Flexible Server kann mit zonenredundanter Hochverfügbarkeitskonfiguration bereitgestellt werden, bei der primäre und Standbyserver in zwei verschiedenen Verfügbarkeitszonen innerhalb einer Region bereitgestellt werden. Diese Hochverfügbarkeitskonfiguration schützt Ihre Datenbank vor Fehlern auf Zonenebene und hilft auch bei der Reduzierung der Downtime von Anwendungen während geplanter und ungeplanter Downtimeereignisse. Die Daten vom primären Server werden im synchronen Modus auf das Standbyreplikat repliziert. Im Falle einer Unterbrechung des primären Servers erfolgt automatisch ein Failover für den Server auf das Standbyreplikat. In den meisten Fällen wird eine RTO von 60 s bis 120 s erwartet. Es wird erwartet, dass RPO den Wert 0 (kein Datenverlust) hat. Weitere Informationen finden Sie unter [Konzepte: Hochverfügbarkeit](./concepts-high-availability.md). | Unterstützt auf den Computeebenen „Allgemeiner Zweck“ und „Arbeitsspeicheroptimiert“. Nur verfügbar in Regionen, in denen mehrere Zonen verfügbar sind. |
+| **Zonenredundante Hochverfügbarkeit** | Flexible Server kann mit zonenredundanter Hochverfügbarkeitskonfiguration bereitgestellt werden, bei der primäre und Standbyserver in zwei verschiedenen Verfügbarkeitszonen innerhalb einer Region bereitgestellt werden. Diese Hochverfügbarkeitskonfiguration schützt Ihre Datenbank vor Fehlern auf Zonenebene und hilft auch bei der Reduzierung der Downtime von Anwendungen während geplanter und ungeplanter Downtimeereignisse. Die Daten vom primären Server werden im synchronen Modus auf das Standbyreplikat repliziert. Im Falle einer Unterbrechung des primären Servers erfolgt automatisch ein Failover für den Server auf das Standbyreplikat. In den meisten Fällen wird ein RTO von unter 120 s erwartet. Es wird erwartet, dass RPO den Wert 0 (kein Datenverlust) hat. Weitere Informationen finden Sie unter [Konzepte: Hochverfügbarkeit](./concepts-high-availability.md). | Unterstützt auf den Computeebenen „Allgemeiner Zweck“ und „Arbeitsspeicheroptimiert“. Nur verfügbar in Regionen, in denen mehrere Zonen verfügbar sind. |
 | **Managed Disks Premium** | Datenbankdateien werden in einem sehr langlebigen und zuverlässigen verwalteten Premiumspeicher gespeichert. Dies bietet Datenredundanz mit drei Replikatkopien, die in einer Verfügbarkeitszone mit automatischer Datenwiederherstellung gespeichert sind. Weitere Informationen finden Sie in der [Dokumentation zu verwalteten Datenträgern](../../virtual-machines/managed-disks-overview.md). | In einer Verfügbarkeitszone gespeicherte Daten. |
 | **Zonenredundante Sicherung** | Flexible Server-Sicherungen werden automatisch und sicher in einem zonenredundanten Speicher innerhalb einer Region gespeichert. Während eines Fehlers auf Ebene der Zone, in der Ihr Server bereitgestellt ist, und wenn Ihr Server nicht mit Zonenredundanz konfiguriert ist, können Sie Ihre Datenbank dennoch weiterhin mithilfe des letzten Wiederherstellungspunkts in einer anderen Zone wiederherstellen. Weitere Informationen finden Sie unter [Konzepte: Sicherung und Wiederherstellung](./concepts-backup-restore.md).| Nur gültig in Regionen, in denen mehrere Zonen verfügbar sind.|
 

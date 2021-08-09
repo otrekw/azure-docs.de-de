@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2571706d3b1341d6eb3751e50b699043b376767
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: f35a32370f2c5aba0ea3c3e0ea84b739942ceb30
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320653"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457941"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-End-Integrität und Diagnoseprotokolle für Application Gateway
 
@@ -222,7 +222,7 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
 |sslProtocol| Das verwendete SSL-/TLS-Protokoll (sofern TLS aktiviert ist)|
 |serverRouted| Back-End-Server, an den das Anwendungsgateway die Anforderung weiterleitet|
 |serverStatus| HTTP-Statuscode des Back-End-Servers|
-|serverResponseLatency| Wartezeit für die Antwort vom Back-End-Server|
+|serverResponseLatency| Wartezeit für die Antwort (in **Sekunden**) vom Back-End-Server.|
 |host| Adresse im host-Header der Anforderung Wenn dieses Feld beim erneuten Generieren von Headern neu geschrieben wird, enthält es den aktualisierten Hostnamen.|
 |originalRequestUriWithArgs| Dieses Feld enthält die ursprüngliche Anforderungs-URL. |
 |requestUri| Dieses Feld enthält die URL nach dem Vorgang zur erneuten Generierung in Application Gateway. |
@@ -243,13 +243,13 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
         "httpVersion": "HTTP/1.0",
         "receivedBytes": 65,
         "sentBytes": 553,
-        "timeTaken": 205,
+        "timeTaken": "0.012",
         "sslEnabled": "off",
         "sslCipher": "",
         "sslProtocol": "",
         "serverRouted": "104.41.114.59:80",
         "serverStatus": "200",
-        "serverResponseLatency": "0.023",
+        "serverResponseLatency": "0.012",
         "host": "www.contoso.com",
     }
 }

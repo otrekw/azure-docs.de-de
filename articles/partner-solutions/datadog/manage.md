@@ -3,15 +3,15 @@ title: Verwalten einer Datadog-Ressource – Azure-Partnerlösungen
 description: In diesem Artikel wird die Verwaltung einer Datadog-Ressource im Azure-Portal beschrieben. Hier erfahren Sie, wie Sie das einmalige Anmelden einrichten, eine Confluent-Organisation löschen und Support anfordern.
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 02/19/2021
+ms.date: 05/28/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 04aef540bc134e5ec307be6a232ce47f0923e528
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e964fd436795e19cc77a25efa95de5f6fcac87ca
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046350"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652436"
 ---
 # <a name="manage-the-datadog-resource"></a>Verwalten der Datadog-Ressource
 
@@ -130,6 +130,16 @@ Der Portal ruft die entsprechende Datadog-Anwendung aus Azure Active Directory a
  
 :::image type="content" source="media/manage/reconfigure-single-sign-on.png" alt-text="Neukonfigurieren der Anwendung für einmaliges Anmelden." border="true":::
  
+## <a name="change-plan"></a>Plan ändern
+
+Wenn Sie den Datadog-Abrechnungsplan ändern möchten, navigieren Sie zu **Übersicht**, und wählen Sie **Plan ändern** aus.
+
+:::image type="content" source="media/manage/datadog-select-change-plan.png" alt-text="Auswählen der Option zum Ändern des Datadog-Abrechnungsplans" border="true":::
+
+Im Portal werden alle verfügbaren Datadog-Pläne für Ihren Mandanten abgerufen. Wählen Sie den entsprechenden Plan aus, und klicken Sie auf **Plan ändern**.
+
+:::image type="content" source="media/manage/datadog-change-plan.png" alt-text="Auswählen des zu ändernden Datadog-Abrechnungsplans" border="true":::
+  
 ## <a name="disable-or-enable-integration"></a>Deaktivieren oder Aktivieren der Integration
 
 Sie können das Senden von Protokollen und Metriken von Azure an Datadog beenden. Sonstige Datadog-Dienste, die sich nicht auf die Überwachung von Metriken und Protokollen beziehen, werden weiterhin in Rechnung gestellt.
@@ -151,12 +161,6 @@ Wechseln Sie im linken Bereich zu **Übersicht**, und wählen Sie **Löschen** a
 Wenn einer Datadog-Organisation nur eine Datadog-Ressource zugeordnet ist, werden keine Protokolle und Metriken mehr an Datadog gesendet. Die gesamte Abrechnung für Datadog über Azure Marketplace wird beendet.
 
 Wenn der Datadog-Organisation mehrere Datadog-Ressourcen zugeordnet sind, wird beim Löschen der Datadog-Ressource nur das Senden von Protokollen und Metriken für diese Datadog-Ressource beendet. Da die Datadog-Organisation mit weiteren Azure-Ressourcen verknüpft ist, wird die Abrechnung über Azure Marketplace weitergeführt.
-
-## <a name="getting-support"></a>Anfordern von Support
-
-Wenn Sie sich bezüglich der Azure-Datadog-Integration an den Support wenden möchten, wählen Sie im linken Bereich **Neue Supportanfrage** aus. Wählen Sie den Link zum Datadog-Portal aus.
-
-:::image type="content" source="media/manage/support-request.png" alt-text="Erstellen einer neuen Datadog-Supportanfrage" border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

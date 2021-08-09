@@ -3,12 +3,12 @@ title: Verwenden eines Event Hubs aus der Apache Kafka-App – Azure Event Hubs 
 description: Dieser Artikel enthält Informationen zur Azure Event Hubs-Unterstützung für Apache Kafka.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 2e6e1defffd012e524044bc427788fc8a1bcc53a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fcc81063ece5ced864cdcd44fe301d5c359106e9
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376082"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613696"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Verwenden von Azure Event Hubs aus Apache Kafka-Anwendungen
 Event Hubs bietet einen mit den Apache Kafka®-Producer- und -Consumer-APIs kompatiblen Endpunkt, der von den meisten vorhandenen Apache Kafka-Clientanwendungen als Alternative zum Ausführen Ihres eigenen Apache Kafka-Clusters verwendet werden kann. Event Hubs unterstützt Apache Kafka-Producer- und -Consumer-API-Clients mit Version 1.0 oder höher.
@@ -39,7 +39,7 @@ Während es sich bei [Apache Kafka](https://kafka.apache.org/) um Software hande
 
 Weitere Informationen zur Verwendung von Event Hubs und Namespaces finden Sie unter [Event Hubs-Features](event-hubs-features.md#namespace). Als Clouddienst verwendet Event Hubs eine einzelne stabile virtuelle IP-Adresse als Endpunkt, damit Clients keine Informationen über die Broker oder die Computer in einem Cluster benötigen. Auch wenn Event-Hubs dasselbe Protokoll implementiert, bedeutet dieser Unterschied, dass der gesamte Kafka-Datenverkehr für alle Partitionen vorhersehbar durch diesen einen Endpunkt weitergeleitet wird, anstatt Firewallzugriff für alle Broker eines Clusters zu erfordern.   
 
-Die Skalierung in Event Hubs hängt davon ab, wie viele [Durchsatzeinheiten](event-hubs-scalability.md#throughput-units) oder [Verarbeitungseinheiten](event-hubs-scalability.md#processing-units) Sie erwerben, wobei jede Durchsatzeinheit zu 1 Megabyte pro Sekunde oder 1000 eingehenden Ereignissen pro Sekunde und doppelt so vielen ausgehenden Ereignissen berechtigt. Event Hubs kann die Durchsatzeinheiten oder Verarbeitungseinheiten bei Erreichen der Durchsatzgrenze automatisch hochskalieren, wenn Sie die Funktion [Automatische Vergrößerung](event-hubs-auto-inflate.md) verwenden. Dieses Feature funktioniert auch mit der Apache Kafka-Protokollunterstützung.  
+Die Skalierung in Event Hubs wird durch die Anzahl von [Durchsatzeinheiten (TUs)](event-hubs-scalability.md#throughput-units) oder [Verarbeitungseinheiten](event-hubs-scalability.md#processing-units) gesteuert, die Sie erwerben. Wenn Sie die Funktion [Automatische Vergrößerung](event-hubs-auto-inflate.md) für einen Namespace im Standard-Tarif aktivieren, skaliert Event Hubs TUs automatisch hoch, wenn Sie das Durchsatzlimit erreichen. Dieses Feature funktioniert auch mit der Apache Kafka-Protokollunterstützung. Für einen Namespace im Premium-Tarif können Sie die Anzahl der Verarbeitungseinheiten erhöhen, die dem Namespace zugewiesen sind. 
 
 ### <a name="is-apache-kafka-the-right-solution-for-your-workload"></a>Ist Apache Kafka die richtige Lösung für Ihre Workload?
 

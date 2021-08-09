@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 44fa4fb953399622d75f0239d3e7d626557629f7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0c91f81c1909819f3a5b8d8475ccdd676132dd13
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744693"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477480"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrieren zu Azure-Dateifreigaben
 
@@ -45,7 +45,7 @@ Die Dateigenauigkeit einer Migration kann als die folgenden Fähigkeiten definie
 
 - Speichern aller zutreffenden Dateiinformationen der Quelle
 - Übertragen von Dateien mit dem Migrationstool
-- Speichern von Dateien im Zielspeicher der Migration
+- Speichern von Dateien im Zielspeicher der Migration </br> Schließlich ist das Ziel für Migrationshandbücher auf dieser Seite mindestens eine Azure-Dateifreigabe. Berücksichtigen Sie diese [Liste von Features/Dateigenauigkeit, die von Azure-Dateifreigaben nicht unterstützt werden](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
 
 Um sicherzustellen, dass die Migration reibungslos verläuft, ermitteln Sie [das optimale Kopiertool für Ihre Anforderungen](#migration-toolbox) und passen ein Speicherziel an Ihre Quelle an.
 
@@ -57,7 +57,7 @@ Ein Benutzer, der Active Directory als lokalen Domänencontroller verwendet, kan
 
 Der alternative Datenstrom ist der primäre Aspekt der Dateigenauigkeit, der derzeit nicht für eine Datei in einer Azure-Dateifreigabe gespeichert werden kann. Bei Verwendung der Azure-Dateisynchronisierung bleibt er lokal erhalten.
 
-Erfahren Sie mehr über die [Authentifizierung mit Azure AD](storage-files-identity-auth-active-directory-enable.md) und die [Authentifizierung mit Azure AD DS](storage-files-identity-auth-active-directory-domain-service-enable.md) für Azure-Dateifreigaben.
+Informieren Sie sich genauer über die [lokale Authentifizierung mit Active Directory](storage-files-identity-auth-active-directory-enable.md) und die [Authentifizierung mit Azure AD DS](storage-files-identity-auth-active-directory-domain-service-enable.md) für Azure-Dateifreigaben.
 
 ## <a name="migration-guides"></a>Migrationsleitfäden
 
@@ -85,8 +85,8 @@ Für ein Szenario ohne Link wurde derzeit noch kein Migrationsleitfaden veröffe
 | Windows Server 2012 und früher | <ul><li>Über DataBox und Azure-Dateisynchronisierung zum aktuellen Serverbetriebssystem</li><li>Über den Speichermigrationsdienst auf den zuletzt verwendeten Server mit Azure-Dateisynchronisierung, dann Upload</li></ul> | <ul><li>Über den Speichermigrationsdienst auf den zuletzt verwendeten Server mit Azure-Dateisynchronisierung</li><li>[Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe](storage-files-migration-robocopy.md)</li></ul> |
 | Network Attached Storage (NAS) | <ul><li>[Über Upload von Azure-Dateisynchronisierung](storage-files-migration-nas-hybrid.md)</li><li>[Über DataBox + Azure-Dateisynchronisierung](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[Via DataBox](storage-files-migration-nas-cloud-databox.md)</li><li>[Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe](storage-files-migration-robocopy.md)</li></ul> |
 | Linux/Samba | <ul><li>[Azure-Dateisynchronisierung und RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>[Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe](storage-files-migration-robocopy.md)</li></ul> |
-| Microsoft Azure StorSimple Cloud Appliance 8100 oder StorSimple Cloud Appliance 8600 | <ul><li>[Über den dedizierten Clouddienst für Datenmigration](storage-files-migration-storsimple-8000.md)</li></ul> | <ul><li>[Über den dedizierten Clouddienst für Datenmigration](storage-files-migration-storsimple-8000.md)</li></ul> |
-| StorSimple Cloud Appliance 1200 | <ul><li>[Über Azure-Dateisynchronisierung](storage-files-migration-storsimple-1200.md)</li></ul> | |
+| Microsoft Azure StorSimple-Appliances der Serie 8100 oder 8600 | <ul><li>[Über den dedizierten Clouddienst für Datenmigration](storage-files-migration-storsimple-8000.md)</li></ul> | <ul><li>[Über den dedizierten Clouddienst für Datenmigration](storage-files-migration-storsimple-8000.md)</li></ul> |
+| Virtuelles StorSimple 1200-Gerät | <ul><li>[Über Azure-Dateisynchronisierung](storage-files-migration-storsimple-1200.md)</li></ul> | |
 
 ## <a name="migration-toolbox"></a>Toolbox für die Migration
 
@@ -119,9 +119,9 @@ In der folgenden Tabelle sind Microsoft-Tools und deren aktuelle Eignung für Az
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Unterstützt. Azure-Dateifreigaben können als Netzwerklaufwerke eingebunden werden. | Vollständige Genauigkeit* |
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure-Dateisynchronisierung | Nativ in Azure-Dateifreigaben integriert. | Vollständige Genauigkeit* |
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Speichermigrationsdienst | Indirekt unterstützt. Azure-Dateifreigaben können als Netzwerklaufwerke auf SMS-Zielservern eingebunden werden. | Vollständige Genauigkeit* |
-|![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy </br>Version 10.6 | Unterstützt. | Unterstützt nicht das Kopieren der Quellstamm-ACL; andernfalls vollständige Genauigkeit.* </br>[Informieren Sie sich, wie AzCopy bei Azure-Dateifreigaben verwendet wird.](../common/storage-use-azcopy-files.md) |
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Unterstützt. | DataBox unterstützt Metadaten vollständig. |
-|![Nicht vollständig empfohlen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage-Explorer </br>Version 1.14 | Unterstützt. | Kopiert keine Zugriffssteuerungslisten (ACLs). Unterstützt Zeitstempel.  |
+|![Nicht vollständig empfohlen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| AzCopy </br>Aktuelle Version | Unterstützt, aber nicht vollständig empfohlen. | Unterstützt keine differenziellen Kopien im großen Stil, und einige Dateigenauigkeit könnte verloren gehen. </br>[Informieren Sie sich, wie AzCopy bei Azure-Dateifreigaben verwendet wird.](../common/storage-use-azcopy-files.md) |
+|![Nicht vollständig empfohlen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage-Explorer </br>Aktuelle Version | Unterstützt, aber nicht empfohlen. | Verliert die meiste Dateigenauigkeit, z. B. ACLs. Unterstützt Zeitstempel. |
 |![Nicht empfohlen](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Unterstützt. | Kopiert keine Metadaten. |
 |||||
 

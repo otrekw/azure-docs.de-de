@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von Angebotsdetails für Ihr SaaS-Angebot in Microsoft Partner Center
-description: Erfahren Sie, wie Sie Ihr SaaS-Angebot (Software-as-a-Service) im kommerziellen Microsoft Marketplace konfigurieren.
+title: Konfigurieren von Details zur SaaS-Angebotsliste in Azure Marketplace
+description: Konfigurieren Sie Software-as-a-Service(SaaS)-Angebotsdetails im Azure Marketplace.
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 3a47ba2025bcaba542d2dbec0c89643e0900f233
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e02fccc2747403076d872fad20db0a4e92d10be4
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746147"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616686"
 ---
-# <a name="how-to-configure-your-saas-offer-listing-details"></a>Konfigurieren von Angebotsdetails für Ihr SaaS-Angebot
+# <a name="configure-saas-offer-listing-details"></a>Konfigurieren der SaaS-Angebotsdetails
 
 Die Informationen, die Sie auf der Seite **Angebotsliste** für Ihr SaaS-Angebot (Software-as-a-Service) bereitstellen, werden in den Onlineshops des kommerziellen Microsoft Marketplace angezeigt. Dazu gehören die Beschreibungen Ihres Angebots, Screenshots und Ihre Marketingressourcen.
 
@@ -67,7 +67,7 @@ Sie müssen mindestens ein und höchsten drei Marketingdokumente für Ihr Angebo
 1. Geben Sie im eingeblendeten Feld **Name** einen Namen für dieses Dokument ein. Kunden wird dieser Name auf der Registerkarte „Details“ für Ihr Angebot angezeigt.
 1. Wiederholen Sie diese Schritte, um ein weiteres unterstützendes Dokument hinzuzufügen.
 
-## <a name="add-your-marketplace-media"></a>Hinzufügen von Marketplace-Medien
+## <a name="add-marketplace-media"></a>Hinzufügen von Marketplace-Medien
 
 ### <a name="add-logos"></a>Hinzufügen von Logos
 
@@ -104,5 +104,5 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie Ihr Angebot über Microsoft verkaufen, lesen Sie [Hinzufügen einer Vorschauzielgruppe für Ihr SaaS-Angebot](create-new-saas-offer-preview.md). 
-- Lesen Sie andernfalls [Verkaufen Ihres SaaS-Angebots](create-new-saas-offer-marketing.md).
+- Wenn Sie Ihr Angebot über Microsoft verkaufen, lesen Sie [Hinzufügen einer Vorschauzielgruppe](create-new-saas-offer-preview.md). 
+- Fahren Sie andernfalls mit [Verkaufen eines SaaS-Angebots](create-new-saas-offer-marketing.md) fort.

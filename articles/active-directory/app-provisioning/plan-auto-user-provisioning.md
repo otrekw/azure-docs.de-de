@@ -1,24 +1,24 @@
 ---
 title: Planen einer automatischen Benutzerbereitstellung für Azure Active Directory
-description: Leitfaden für die Planung und Ausführung einer automatischen Benutzerbereitstellung
+description: Leitfaden für die Planung und Ausführung einer automatischen Benutzerbereitstellung in Azure Active Directory
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/31/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: arvindha, celested
-ms.openlocfilehash: f29bf3fc347fa453dd2d7ebd1f10b3f0e07fac10
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.reviewer: arvinh
+ms.openlocfilehash: a8b2378949e0ead4d05651fc28919aceecd4c542
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059291"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785023"
 ---
-# <a name="plan-an-automatic-user-provisioning-deployment"></a>Planen einer automatischen Benutzerbereitstellung
+# <a name="plan-an-automatic-user-provisioning-deployment-in-azure-active-directory"></a>Planen einer automatischen Benutzerbereitstellung in Azure Active Directory
 
 Viele Organisationen nutzen Software-as-a-Service-Anwendungen (SaaS-Anwendungen) wie ServiceNow, Zscaler und Slack, um die Endbenutzerproduktivität zu steigern. In der Vergangenheit haben IT-Mitarbeiter auf manuelle Bereitstellungsmethoden wie das Hochladen von CSV-Dateien oder das Verwenden von benutzerdefinierten Skripts zur sicheren Verwaltung von Benutzeridentitäten in jeder SaaS-Anwendung gesetzt. Diese Prozesse sind jedoch fehleranfällig, unsicher und schwer zu verwalten.
 

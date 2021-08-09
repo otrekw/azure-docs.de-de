@@ -2,14 +2,14 @@
 title: Authentifizieren von Azure Batch-Diensten mit Azure Active Directory
 description: Batch unterstützt Azure AD für die Authentifizierung vom Batch-Dienst aus. Erfahren Sie, wie Sie sich auf eine von zwei Arten authentifizieren.
 ms.topic: how-to
-ms.date: 10/20/2020
-ms.custom: has-adal-ref
-ms.openlocfilehash: 2ceefa538c44208750da8986fcf3d161f0c0865f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/13/2021
+ms.custom: has-adal-ref, subject-rbac-steps
+ms.openlocfilehash: 52e34bb94ab151afcfcdc14d2de55e608d82a139
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180019"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066752"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -114,14 +114,9 @@ Zur Authentifizierung bei einem Dienstprinzipal müssen Sie Ihrer Anwendung Azur
 
 1. Navigieren Sie im Azure-Portal zu dem Batch-Konto, das von Ihrer Anwendung verwendet wird.
 1. Wählen Sie im Abschnitt **Einstellungen** des Batch-Kontos die Option **Zugriffssteuerung (IAM)** aus.
-1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.
-1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
-1. Wählen Sie aus der Dropdownliste **Rolle** entweder die Rolle *Mitwirkender* oder *Leser* für Ihre Anwendung. Weitere Informationen zu diesen Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
-1. Geben Sie im Feld **Auswählen** den Namen Ihrer Anwendung ein. Wählen Sie die Anwendung in der Liste und anschließend die Option **Speichern** aus.
+1. Weisen Sie der Anwendung entweder die Rolle [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor) oder [Leseberechtigter](../role-based-access-control/built-in-roles.md#reader) zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 Ihre Anwendung sollte jetzt in Ihren Einstellungen für die Zugriffssteuerung mit einer zugewiesenen Azure-Rolle angezeigt werden.
-
-![Zuweisen einer Azure-Rolle zu Ihrer Anwendung](./media/batch-aad-auth/app-rbac-role.png)
 
 ### <a name="assign-a-custom-role"></a>Zuweisen einer benutzerdefinierten Rolle
 
@@ -412,4 +407,3 @@ Verwenden Sie die Dienstprinzipal-Anmeldeinformationen, um ein **BatchServiceCli
 - Erfahren Sie mehr über [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md) und [wie Sie eine Azure AD-Anwendung und -Dienstprinzipal erstellen, die auf Ressourcen zugreifen können](../active-directory/develop/howto-create-service-principal-portal.md).
 - Erfahren Sie mehr zum [Authentifizieren von Batchverwaltungslösungen mit Active Directory](batch-aad-auth-management.md).
 - Ein Python-Beispiel zum Erstellen eines Batch-Clients, der mithilfe eines Azure AD-Token authentifiziert wird, finden Sie im Beispiel [Deploying Azure Batch Custom Image with a Python Script](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) (Bereitstellen eines benutzerdefinierten Azure Batch-Images mit einem Python-Skript).
-

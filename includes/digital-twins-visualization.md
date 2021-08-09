@@ -1,32 +1,21 @@
 ---
 author: baanders
-description: 'Includedatei für Azure Digital Twins: Visualisieren mit Azure Digital Twins-Explorer'
+description: 'Includedatei für Azure Digital Twins: Visualisieren mit dem Azure Digital Twins-Explorer'
 ms.service: digital-twins
 ms.topic: include
-ms.date: 7/10/2020
+ms.date: 4/28/2021
 ms.author: baanders
-ms.openlocfilehash: e1b277b9c2b62ea90a51f9489deb276b473348c1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 33e99ae11fe36282283b3f8824595dfc143fe351
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773021"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454607"
 ---
 ## <a name="visualization"></a>Visualisierung
 
-Die primäre Methode für die Interaktion mit ihrer Azure Digital Twins-Instanz sind [APIs und SDKs](../articles/digital-twins/concepts-apis-sdks.md), jedoch kann eine Visualisierung der Zwillinge und Diagramme hilfreich sein, die Sie in Ihrer Instanz erstellen.
+Der **Azure Digital Twins-Explorer** ist ein visuelles Tool zum Untersuchen der Daten in Ihrem Azure Digital Twins-Graphen. Mit dem Explorer können Sie Modelle, Zwillinge und Beziehungen anzeigen, abfragen und bearbeiten.
 
-Der [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) ist eine Beispielanwendung für die Visualisierung von Azure Digital Twins und die Arbeit mit ihnen. Befolgen Sie die im Beispiel bereitgestellten Anweisungen, um den Anwendungscode herunterzuladen und auszuführen. 
+Weitere Informationen zum Azure Digital Twins-Explorer finden Sie unter [Azure Digital Twins-Explorer (Vorschau)](../articles/digital-twins/concepts-azure-digital-twins-explorer.md). Ausführliche Schritte zur Verwendung der einzelnen Features finden Sie unter [Verwenden von Azure Digital Twins-Explorer (Vorschau)](../articles/digital-twins/how-to-use-azure-digital-twins-explorer.md).
 
-Mit diesem Beispiel können Sie eine visuelle Darstellung Ihrer digitalen Zwillinge und des Diagramms anzeigen, das sie erstellen, und zwar neben anderen Erstellungs- und Verwaltungsaktivitäten.
-
-Hier sehen Sie die Beispielvisualisierung:
-
-:::image type="content" source="../articles/digital-twins/media/includes/azure-digital-twins-explorer.png" alt-text="Screenshot der Beispielanwendung für den Azure Digital Twins-Explorer mit einem Diagramm von Knoten, die digitale Zwillinge darstellen" lightbox="../articles/digital-twins/media/includes/azure-digital-twins-explorer.png":::
-
-Sie können das Beispiel auch verwenden, um...
-* Modelle hochzuladen und zu untersuchen
-* Diagramme von Zwillingen hochzuladen und zu bearbeiten
-* das Zwillingediagramm mit einer Reihe von Layouttechniken zu visualisieren
-* Eigenschaften von Zwillingen zu bearbeiten
-* Abfragen der Zwillinge auszuführen
+Die Visualisierung sieht wie folgt aus:

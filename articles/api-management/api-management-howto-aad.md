@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: apimpm
-ms.openlocfilehash: 743a7e7d34457405aa4be42b196dc994506c6587
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 37a0ac51f5cbc7d3eaa98027b5e8568dfcf208ee
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105035800"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747705"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -92,18 +92,21 @@ Nachdem die Änderungen gespeichert wurden, können sich Benutzer der angegebene
 
 Nachdem Sie den Zugriff für Benutzer in einem Azure AD-Mandanten aktiviert haben, können Sie Azure AD-Gruppen in API Management hinzufügen. Als Ergebnis können Sie die Produktsichtbarkeit mithilfe von Azure AD-Gruppen steuern.
 
-Wenn Sie in APIM eine externe Azure AD-Gruppe hinzufügen möchten, müssen Sie zunächst den vorherigen Abschnitt durchlaufen. Darüber hinaus muss der zuvor registrierten Anwendung Zugriff auf die Microsoft Graph-API mit der Berechtigung `Directory.Read.All` gewährt werden, indem Sie diese Schritte ausführen: 
+Wenn Sie in APIM eine externe Azure AD-Gruppe hinzufügen möchten, müssen Sie zunächst den vorherigen Abschnitt durchlaufen. Standardmäßig hat die Anwendung, die Sie registriert haben, Zugriff auf die Microsoft Graph-API mit der erforderlichen delegierten Berechtigung `User.Read`. Sie müssen der Anwendung auch Zugriff auf die Microsoft Graph-API und die Azure Active Directory Graph-API mit der Anwendungsberechtigung `Directory.Read.All` gewähren, indem Sie die folgenden Schritte ausführen: 
 
 1. Wechseln Sie zurück zu Ihrer App-Registrierung, die im vorherigen Abschnitt erstellt wurde.
-2. Wählen Sie **API-Berechtigungen** aus, und klicken Sie dann auf **+Berechtigung hinzufügen**. 
-3. Wählen Sie im Bereich **API-Berechtigungen anfordern**  die Registerkarte **Microsoft-APIs** aus, scrollen Sie nach unten, und wählen Sie dann die Kachel **Azure Active Directory Graph** aus. Wählen Sie **Anwendungsberechtigungen** aus, suchen Sie nach **Verzeichnis**, und wählen Sie dann die Berechtigung **Directory.Read.All** aus. 
-4. Klicken Sie unten im Bereich auf **Berechtigungen hinzufügen** und dann auf **Administratorzustimmung für {Name des Mandanten} erteilen**, damit Sie allen Benutzern in diesem Verzeichnis Zugriff gewähren. 
+2. Wählen Sie **API-Berechtigungen** und anschließend **Berechtigung hinzufügen** aus. 
+3. Wählen Sie im Bereich **API-Berechtigungen anfordern**  die Registerkarte **Microsoft-APIs** und dann die Kachel **Microsoft Graph** aus. Wählen Sie **Anwendungsberechtigungen** aus und suchen Sie nach **Verzeichnis**. Wählen Sie die Berechtigung **Directory.Read.All** und dann unten im Bereich **Berechtigungen hinzufügen** aus.
+4. Wählen Sie **Berechtigung hinzufügen** aus. 
+5. Wählen Sie im Bereich **API-Berechtigungen anfordern**  die Registerkarte **Microsoft-APIs** aus, scrollen Sie nach unten und wählen Sie dann die Kachel **Azure Active Directory Graph** aus. Wählen Sie **Anwendungsberechtigungen** aus und suchen Sie nach **Verzeichnis**. Wählen Sie die Berechtigung **Directory.Read.All** und dann **Berechtigungen hinzufügen** aus. 
+6. Wählen Sie **Administratoeinwilligung für {tenantname} erteilen** aus, damit Sie allen Benutzern in diesem Verzeichnis den Zugriff gewähren. 
 
 Jetzt können Sie externe Azure AD-Gruppen über die Registerkarte **Gruppen** Ihrer API Management-Instanz hinzufügen.
 
 1. Wählen Sie die Registerkarte **Gruppen** .
 2. Klicken Sie auf die Schaltfläche **AAD-Gruppe hinzufügen**.
-    ![Schaltfläche „AAD-Gruppe hinzufügen“](./media/api-management-howto-aad/api-management-with-aad008.png)
+
+   ![Schaltfläche „AAD-Gruppe hinzufügen“](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. Wählen Sie die Gruppe aus, die Sie hinzufügen möchten.
 4. Klicken Sie auf die Schaltfläche **Auswählen**.
 

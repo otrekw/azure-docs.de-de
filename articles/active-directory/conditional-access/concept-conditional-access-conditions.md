@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 05/18/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59664a0b5127e9fde8f2890cd396bec120eff29d
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 1e0aaac1c52a2def624f8bc8736219685458ad42
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330655"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070286"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
@@ -82,7 +82,7 @@ Wenn die Umschaltfläche **Konfigurieren** auf **Ja** festgelegt ist, gilt sie f
       -  Diese Option umfasst Anwendungen wie Office-Desktop- und Telefonanwendungen.
 - Clients mit Legacyauthentifizierung
    - Exchange ActiveSync-Clients
-      - Umfasst die gesamte Verwendung des Exchange ActiveSync (EAS)-Protokolls.
+      - Diese Auswahl umfasst die gesamte Verwendung des Exchange ActiveSync (EAS)-Protokolls.
       - Wenn die Verwendung von Exchange ActiveSync durch eine Richtlinie blockiert wird, erhält der betroffene Benutzer eine einzige Quarantäne-E-Mail. Diese E-Mail enthält Informationen zum Grund für die Blockierung und gegebenenfalls Korrekturanweisungen.
       - Administratoren können die Richtlinie über den bedingten Zugriff der Microsoft Graph-API nur auf unterstützte Plattformen (z. B. iOS, Android und Windows) anwenden.
    - Andere Clients
@@ -157,7 +157,7 @@ Diese Einstellung hat Auswirkungen auf Zugriffsversuche von den folgenden mobile
 | Dynamics CRM-App | Dynamics CRM | Windows 10, Windows 8.1, iOS und Android |
 | E-Mail-/Kalender-/Kontakte-App, Outlook 2016, Outlook 2013 (mit moderner Authentifizierung)| Exchange Online | Windows 10 |
 | MFA- und Standort-Richtlinien für Apps Gerätebasierte Richtlinien werden nicht unterstützt.| Alle Meine Apps-App-Dienste | Android und iOS |
-| Microsoft Teams-Dienste: steuert alle Dienste, die Microsoft-Teams unterstützen, und alle dazugehörigen Client-Apps – Windows Desktop, iOS, Android, WP und Webclient | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android und macOS |
+| Microsoft Teams-Dienste: Diese Client-App steuert alle Dienste, die Microsoft Teams und alle zugehörigen Client-Apps (Windows Desktop, iOS, Android, WP und Webclient) unterstützen | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android und macOS |
 | Office 2016-Apps, Office 2013 (mit moderner Authentifizierung), [OneDrive-Synchronisierungsclient](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1, Windows 7 |
 | Office 2016-Apps, universelle Office-Apps, Office 2013 (mit moderner Authentifizierung), [OneDrive-Synchronisierungsclient](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
 | Office 2016 (nur Word, Excel, PowerPoint und OneNote). | SharePoint | macOS |
@@ -195,6 +195,13 @@ Mit der Bedingung „Gerätezustand“ können in Hybrid-Azure AD eingebundene 
 
 Beispiel: *Alle Benutzer*, die auf die Cloud-App für die *Microsoft Azure-Verwaltung* zugreifen, einschließlich **Alle Gerätezustände**, ausgenommen **Gerät in Hybrid-Azure AD eingebunden** und **Gerät als konform markiert** und für *Zugriffssteuerungen* die Option **Blockieren**. 
    - In diesem Beispiel würde eine Richtlinie erstellt, die nur den Zugriff auf die Microsoft Azure-Verwaltung von Geräten zulässt, die in Hybrid-Azure AD eingebunden oder als konform markiert sind.
+
+> [!IMPORTANT]
+> „Gerätestatus“ und „Filter für Geräte“ können in der Richtlinie für bedingten Zugriff nicht zusammen verwendet werden. „Filter für Geräte“ bietet eine präzisere Zielgruppenadressierung sowie Unterstützung für das Ansteuern von Gerätestatusinformationen über die Eigenschaften `trustType` und `isCompliant`.
+
+## <a name="filters-for-devices-preview"></a>Filter für Geräte (Vorschau)
+
+Es gibt eine neue optionale Bedingung im bedingten Zugriff, welche die Bezeichnung „Filter für Geräte“ hat. Wenn Sie „Filter für Geräte“ als Bedingung konfigurieren, können Organisationen Geräte anhand von Filtern und mithilfe eines Regelausdrucks für Geräteeigenschaften ein- oder ausschließen. Der Regelausdruck für „Filter für Geräte“ kann mithilfe des Regel-Generators oder der Regelsyntax erstellt werden. Diese Funktion ähnelt der Funktion, die für die Regeln für die dynamische Mitgliedschaft in Gruppen verwendet wird. Weitere Informationen finden Sie im Artikel [Bedingter Zugriff: Filter für Geräte (Vorschau)](concept-condition-filters-for-devices.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

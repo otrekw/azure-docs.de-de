@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: db6414ecf4b1b5fcbdf52d59c0c79b72998e610a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c678c36ff653d8975f7a0fe1a82395c3093758f6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375214"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458550"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz
 
@@ -163,8 +163,19 @@ Skriptargumente können im Skript als $1, $2 usw. bezeichnet werden.
 Wenn Ihr Skript für azureuser bestimmt war, z. B. die Installation der Conda-Umgebung oder des Jupyter-Kernels, müssen Sie es wie folgt im *sudo -u azureuser*-Block speichern
 
 ```shell
-sudo -u azureuser -i <<'EOF'
+#!/bin/bash
 
+set -e
+
+# This script installs a pip package in compute instance azureml_py38 environment
+
+sudo -u azureuser -i <<'EOF'
+# PARAMETERS
+PACKAGE=numpy
+ENVIRONMENT=azureml_py38 
+conda activate "$ENVIRONMENT"
+pip install "$PACKAGE"
+conda deactivate
 EOF
 ```
 Beachten Sie, dass *sudo -u azureuser* das aktuelle Arbeitsverzeichnis in */home/azureuser* ändert. Sie können auch nicht auf die Skriptargumente in diesem Block zugreifen.
@@ -208,6 +219,7 @@ Fügen Sie `setupScripts` zu einer Resource Manager-[Vorlage](https://github.co
     }
 }
 ```
+*scriptData* oben gibt den Speicherort des Erstellungsskripts in der Dateifreigabe für Notebooks an, z. B. *Users/admin/testscript.sh*. *scriptArguments* ist optional und gibt die Argumente für das Erstellungsskript an.
 
 Sie können das Skript stattdessen inline für eine Resource Manager-Vorlage bereitstellen.  Der Shellbefehl kann auf alle Abhängigkeiten verweisen, die in die Notebooks-Dateifreigabe hochgeladen wurden.  Wenn Sie eine Inlinezeichenfolge verwenden, ist das Arbeitsverzeichnis für das Skript */mnt/batch/tasks/shared/LS_root/mounts/clusters/**ciname**/code/Users*.
 

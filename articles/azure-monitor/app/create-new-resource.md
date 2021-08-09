@@ -4,12 +4,12 @@ description: Richten Sie manuell die Application Insights-Überwachung für eine
 ms.topic: conceptual
 ms.date: 02/10/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 7e4c4b0ba4dca9b51f120e6092c13195a061aa87
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 37f090f44099dc45d6c258e10b09d164277fcb47
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754531"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077174"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 
@@ -28,7 +28,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen 
 
 ![Klicken Sie links oben auf das Pluszeichen (+). Auswählen von „Entwicklertools“ und „Application Insights“](./media/create-new-resource/new-app-insights.png)
 
-   | Einstellungen        |  Wert           | Beschreibung  |
+   | Einstellungen        |  Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | `Unique value` | Der Name, der die zu überwachende App identifiziert |
    | **Ressourcengruppe**     | `myResourceGroup`      | Der Name der neuen oder vorhandenen Ressourcengruppe, die Application Insights-Daten hosten soll |
@@ -50,7 +50,7 @@ Wenn Ihre App erstellt wurde, wird ein neuer Bereich geöffnet. In diesem Bereic
 Der Instrumentierungsschlüssel identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Sie müssen den Instrumentierungsschlüssel kopieren und Ihrem Anwendungscode hinzufügen.
 
 > [!IMPORTANT]
-> Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=net) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+> [Verbindungszeichenfolgen](./sdk-connection-string.md) sind Instrumentierungsschlüsseln vorzuziehen. Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die Verbindungszeichenfolge identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 
 ## <a name="install-the-sdk-in-your-app"></a>Installieren des SDK in Ihrer App
 

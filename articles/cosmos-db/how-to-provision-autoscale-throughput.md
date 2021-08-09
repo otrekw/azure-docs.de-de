@@ -6,14 +6,14 @@ ms.author: dech
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 05/18/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2f47e86b89244cdc2ac41d72203a51b0d91effdb
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: ce17b54905861759c437c2df735dd5515991b507
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227468"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456615"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Bereitstellen von automatisch skaliertem Durchsatz für eine Datenbank oder einen Container in der SQL-API von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,7 +30,7 @@ Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Bereits
 
 1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie die Registerkarte **Daten-Explorer**.
 
-1. Wählen Sie **Neuer Container** aus. Geben Sie einen Namen für die Datenbank und den Container sowie einen Partitionsschlüssel an. Wählen Sie unter **Durchsatz** die Option **Autoskalierung** aus, und legen Sie den [maximalen Durchsatz (RU/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) fest, auf den die Datenbank oder der Container skalierbar sein soll.
+1. Wählen Sie **Neuer Container** aus. Geben Sie einen Namen für die Datenbank und den Container sowie einen Partitionsschlüssel an. Wählen Sie für den Datenbank- oder Containerdurchsatz die Option **Autoskalierung** aus, und legen Sie den [maximalen Durchsatz (RU/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) fest, auf den die Datenbank oder der Container skalierbar sein soll.
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Erstellen eines Containers und Konfigurieren der Durchsatzbereitstellung mit Autoskalierung":::
 
@@ -39,9 +39,6 @@ Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Bereits
 Wenn Sie die Autoskalierung für eine Datenbank mit gemeinsam genutztem Durchsatz bereitstellen möchten, wählen Sie beim Erstellen einer neuen Datenbank die Option **Provision database throughput** (Datenbankdurchsatz bereitstellen) aus. 
 
 ### <a name="enable-autoscale-on-existing-database-or-container"></a>Aktivieren der Autoskalierung für vorhandene Datenbanken oder Container
-
-> [!IMPORTANT]
-> Im aktuellen Release kann nur über das Azure-Portal zwischen der Durchsatzbereitstellung mit Autoskalierung und der standardmäßigen (manuellen) Durchsatzbereitstellung migriert werden. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder beim [Azure Cosmos DB-Explorer](https://cosmos.azure.com/) an.
 
@@ -54,14 +51,14 @@ Wenn Sie die Autoskalierung für eine Datenbank mit gemeinsam genutztem Durchsat
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Aktivieren der Autoskalierung für einen vorhandenen Container":::
 
 > [!NOTE]
-> Wenn Sie die Autoskalierung für eine vorhandene Datenbank oder für einen vorhandenen Container aktivieren, wird der Startwert für die maximale Anzahl von RU/s durch das System bestimmt (basierend auf den aktuellen Einstellungen für manuell bereitgestellten Durchsatz sowie auf dem Speicher). Nach Abschluss des Vorgangs kann die maximale Anzahl von RU/s bei Bedarf geändert werden. [Weitere Informationen.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
+> Wenn Sie die Autoskalierung für eine vorhandene Datenbank oder für einen vorhandenen Container aktivieren, wird der Startwert für die maximale Anzahl von RU/s durch das System bestimmt (basierend auf den aktuellen Einstellungen für manuell bereitgestellten Durchsatz sowie auf dem Speicher). Nach Abschluss des Vorgangs kann die maximale Anzahl von RU/s bei Bedarf geändert werden. [Weitere Informationen.](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-) 
 
 ## <a name="azure-cosmos-db-net-v3-sdk"></a>Azure Cosmos DB .NET V3 SDK
 
 Verwenden Sie [mindestens die Version 3.9](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) des Azure Cosmos DB .NET SDK für die SQL-API, um Autoskalierungsressourcen zu verwalten. 
 
 > [!IMPORTANT]
-> Sie können das .NET SDK verwenden, um neue Autoskalierungsressourcen zu erstellen. Die Migration zwischen Autoskalierung und (manuellem) Standarddurchsatz wird vom SDK nicht unterstützt. Das Migrationsszenario wird aktuell nur im Azure-Portal unterstützt. 
+> Sie können das .NET SDK verwenden, um neue Autoskalierungsressourcen zu erstellen. Die Migration zwischen Autoskalierung und (manuellem) Standarddurchsatz wird vom SDK nicht unterstützt. Das Migrationsszenario wird aktuell nur im [Azure-Portal](#enable-autoscale-on-existing-database-or-container), in der [CLI](#azure-cli) und in [PowerShell](#azure-powershell) unterstützt.
 
 ### <a name="create-database-with-shared-throughput"></a>Erstellen einer Datenbank mit gemeinsam genutztem Durchsatz
 
@@ -118,8 +115,7 @@ await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThrou
 Sie können die [Version 4.0 oder eine höhere Version](https://mvnrepository.com/artifact/com.azure/azure-cosmos) des Azure Cosmos DB Java SDK für die SQL-API verwenden, um Autoskalierungsressourcen zu verwalten.
 
 > [!IMPORTANT]
-> Sie können das Java SDK verwenden, um neue Autoskalierungsressourcen zu erstellen. Die Migration zwischen Autoskalierung und (manuellem) Standarddurchsatz wird vom SDK nicht unterstützt. Das Migrationsszenario wird aktuell nur im Azure-Portal unterstützt.
-
+> Sie können das Java SDK verwenden, um neue Autoskalierungsressourcen zu erstellen. Die Migration zwischen Autoskalierung und (manuellem) Standarddurchsatz wird vom SDK nicht unterstützt. Das Migrationsszenario wird aktuell nur im [Azure-Portal](#enable-autoscale-on-existing-database-or-container), in der [CLI](#azure-cli) und in [PowerShell](#azure-powershell) unterstützt.
 ### <a name="create-database-with-shared-throughput"></a>Erstellen einer Datenbank mit gemeinsam genutztem Durchsatz
 
 # <a name="async"></a>[Asynchron](#tab/api-async)
@@ -249,18 +245,18 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Azure Resource Manager-Vorlagen können verwendet werden, um für alle Azure Cosmos DB-APIs einen automatischen Skalierungsdurchsatz für Ressourcen auf Datenbank- oder Containerebene bereitzustellen. Weitere Beispiele finden Sie unter [Azure Resource Manager-Vorlagen für Azure Cosmos DB](./templates-samples-sql.md).
+Azure Resource Manager-Vorlagen können verwendet werden, um für alle Azure Cosmos DB-APIs einen automatischen Skalierungsdurchsatz für eine neue Ressource auf Datenbank- oder Containerebene bereitzustellen. Weitere Beispiele finden Sie unter [Azure Resource Manager-Vorlagen für Azure Cosmos DB](./templates-samples-sql.md). Standardmäßig können Azure Resource Manager-Vorlagen nicht für die Migration zwischen einem bereitgestellten und automatisch skaliertem Durchsatz für eine vorhandene Ressource verwendet werden. 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Die Azure CLI kann verwendet werden, um für alle Azure Cosmos DB-APIs einen automatischen Skalierungsdurchsatz für Ressourcen auf Datenbank- oder Containerebene bereitzustellen. Weitere Beispiele finden Sie unter [Azure CLI-Beispiele für Azure Cosmos DB](cli-samples.md)
+Die Azure CLI kann verwendet werden, um für alle Azure Cosmos DB-APIs einen automatischen Skalierungsdurchsatz für eine neue Ressource auf Datenbank- oder Containerebene bereitzustellen oder die Autoskalierung für eine vorhandene Ressource zu aktivieren. Weitere Beispiele finden Sie unter [Azure CLI-Beispiele für Azure Cosmos DB](cli-samples.md)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell kann verwendet werden, um für alle Azure Cosmos DB-APIs einen automatischen Skalierungsdurchsatz für Ressourcen auf Datenbank- oder Containerebene bereitzustellen. Beispiele finden Sie unter [Azure PowerShell-Beispiele für Azure Cosmos DB](powershell-samples.md).
+Azure PowerShell kann verwendet werden, um für alle Azure Cosmos DB-APIs einen automatischen Skalierungsdurchsatz für eine neue Ressource auf Datenbank- oder Containerebene bereitzustellen oder die Autoskalierung für eine vorhandene Ressource zu aktivieren. Beispiele finden Sie unter [Azure PowerShell-Beispiele für Azure Cosmos DB](powershell-samples.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informieren Sie sich über die [Vorteile des bereitgestellten Durchsatzes mit Autoskalierung](provision-throughput-autoscale.md#benefits-of-autoscale).
 * Erfahren Sie, wie Sie sich [zwischen manuellem Durchsatz und automatisch skaliertem Durchsatz entscheiden](how-to-choose-offer.md).
-* Erfahren Sie mehr in den [häufig gestellten Fragen zur Autoskalierung](autoscale-faq.md).
+* Erfahren Sie mehr in den [häufig gestellten Fragen zur Autoskalierung](autoscale-faq.yml).

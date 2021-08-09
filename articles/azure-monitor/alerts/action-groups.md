@@ -3,14 +3,14 @@ title: Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 description: Erfahren Sie, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 05/28/2021
 ms.author: dukek
-ms.openlocfilehash: 1486415c5d225163dd2b2c7e79cd008ad0a76588
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 2f5244fd8ef414a1bed6781c702014e805f47a76
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514868"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060316"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. 
@@ -154,9 +154,13 @@ Beim Einrichten der *E-Mail-ARM-Rolle* müssen Sie sicherstellen, dass die drei 
 2. Die Zuweisung muss auf **Abonnementebene** erfolgen.
 3. Der Benutzer muss eine E-Mail im **AAD-Profil** konfiguriert haben. 
 
+> [!NOTE]
+> Es kann bis zu **24** Stunden dauern, bis ein Kunde Benachrichtigungen empfängt, nachdem er seinem Abonnement eine neue ARM-Rolle hinzugefügt hat.
 
 ### <a name="function"></a>Funktion
 Diese Aktion ruft einen vorhandenen HTTP-Triggerendpunkt in [Azure Functions](../../azure-functions/functions-get-started.md) auf. Ihr Endpunkt muss das HTTP POST-Verb verarbeiten, um eine Anforderung zu verarbeiten.
+
+Beim Definieren der Funktionsaktion werden der httptrigger-Endpunkt und der Zugriffsschlüssel der Funktion in der Aktionsdefinition gespeichert. Beispiel: https://azfunctionurl.azurewebsites.net/api/httptrigger?code=this_is_access_key. Wenn Sie den Zugriffsschlüssel für die Funktion ändern, müssen Sie die Funktionsaktion in der Aktionsgruppe löschen und neu erstellen.
 
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Functions-Aktionen verfügen.
 
@@ -302,12 +306,14 @@ Die Preise für unterstützte Länder/Regionen sind auf der [Seite mit der Preis
 | 351 | Portugal |
 | 1 | Puerto Rico |
 | 40 | Rumänien |
+| 7  | Russland  |
 | 65 | Singapur |
 | 27 | Südafrika |
 | 82 | Südkorea |
 | 34 | Spanien |
 | 41 | Schweiz |
 | 886 | Taiwan |
+| 971 | Vereinigte Arabische Emirate    |
 | 44 | United Kingdom |
 | 1 | USA |
 

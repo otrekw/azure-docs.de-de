@@ -5,13 +5,13 @@ author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
 ms.topic: quickstart
-ms.date: 06/01/2021
-ms.openlocfilehash: a66af648abc0ae48c0a4fcc7eb33ab7c1351c41b
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 06/04/2021
+ms.openlocfilehash: d78b915fc9efffd52f31b75edcb35d91fb529e4a
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371902"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113219787"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Schnellstart: Kopieren von Daten mithilfe des Tools zum Kopieren von Daten
 
@@ -61,9 +61,9 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
     
 ## <a name="start-the-copy-data-tool"></a>Starten des Tools zum Kopieren von Daten
 
-1. Klicken Sie auf der Seite **Erste Schritte** auf die Kachel **Daten kopieren**, um das Tool zum Kopieren von Daten zu starten.
+1. Wählen Sie auf der Homepage von Azure Data Factory die Kachel **Erfassung** aus, um das Tool Daten kopieren zu starten.
 
-   ![Kachel „Daten kopieren“](./media/doc-common-process/get-started-page.png)
+   ![Screenshot der Azure Data Factory-Homepage](./media/doc-common-process/get-started-page.png)
 
 1. Wählen Sie auf der Seite **Eigenschaften** des Tools zum Kopieren von Daten unter **Aufgabentyp** den Typ **Integrierte Kopieraufgabe** aus, und wählen Sie dann **Weiter** aus.
 

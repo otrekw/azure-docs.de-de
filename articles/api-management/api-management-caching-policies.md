@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 03/08/2021
 ms.author: apimpm
-ms.openlocfilehash: 9888627bed0fbf90abc75c81564dacc0d1aac18e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 521c17efceab04d9f3622f7e0872b35d9b630cbd
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103233465"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063278"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -232,7 +232,7 @@ Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benut
 | caching-type | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein       | `prefer-external` |
 | default-value    | Ein Wert, der der Variablen zugewiesen wird, wenn die Cacheschlüsselsuche zu keinem Ergebnis führt. Wenn dieses Attribut nicht angegeben wird, wird `null` zugewiesen.                                                                                                                                                                                                           | Nein       | `null`            |
 | Schlüssel              | In der Suche zu verwendender Cacheschlüsselwert.                                                                                                                                                                                                                                                                                                                       | Ja      | –               |
-| variable-name    | Der Name der [Kontextvariablen](api-management-policy-expressions.md#ContextVariables), der der gesuchte Wert zugewiesen wird, wenn die Suche erfolgreich ist. Wenn die Suche zu keinem Ergebnis führt, wird der Variablen der Wert des `default-value`-Attribut oder `null` zugewiesen, wenn das `default-value`-Attribut ausgelassen wird.                                       | Ja      | –               |
+| variable-name    | Der Name der [Kontextvariablen](api-management-policy-expressions.md#ContextVariables), der der gesuchte Wert zugewiesen wird, wenn die Suche erfolgreich ist. Wenn die Suche keinen Treffer liefert, wird die Variable nicht festgelegt.                                       | Ja      | N/V               |
 
 ### <a name="usage"></a>Verwendung
 Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
@@ -275,7 +275,7 @@ Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benut
 | caching-type | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein       | `prefer-external` |
 | duration         | Der Wert wird für die in Sekunden angegebene Dauer zwischengespeichert.                                                                                                                                                                                                                                                                                 | Ja      | –               |
 | Schlüssel              | Der Cacheschlüssel, unter dem der Wert gespeichert wird.                                                                                                                                                                                                                                                                                                                   | Ja      | –               |
-| value            | Der Wert, der zwischengespeichert werden soll.                                                                                                                                                                                                                                                                                                                                     | Ja      | –               |
+| value            | Der Wert, der zwischengespeichert werden soll.                                                                                                                                                                                                                                                                                                                                     | Ja      | N/V               |
 ### <a name="usage"></a>Verwendung
 Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
@@ -312,7 +312,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-poli
 | Name             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | caching-type | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein       | `prefer-external` |
-| Schlüssel              | Der Schlüssel des zuvor zwischengespeicherten Werts, der aus dem Cache entfernt werden soll.                                                                                                                                                                                                                                                                                        | Ja      | –               |
+| Schlüssel              | Der Schlüssel des zuvor zwischengespeicherten Werts, der aus dem Cache entfernt werden soll.                                                                                                                                                                                                                                                                                        | Ja      | N/V               |
 
 #### <a name="usage"></a>Verwendung
 Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.

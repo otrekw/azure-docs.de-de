@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: e5ea7a1abbbd6ab4be32955179227fbd539cf641
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: ccedab6284fd5dac5a3d9f8d221a22803a3571f8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019617"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666669"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Functions-Ausgabe für Azure Stream Analytics
 
@@ -45,6 +45,11 @@ Der Partitionsschlüssel basiert auf der PARTITION BY-Klausel in der Abfrage. Di
 ## <a name="output-batch-size"></a>Ausgabebatchgröße
 
 Die Standardbatchgröße beträgt 262.144 Bytes (256 KB). Die Standardereignisanzahl pro Batch beträgt 100. Die Batchgröße ist konfigurierbar und kann in den Ausgabeoptionen von Stream Analytics erhöht oder verringert werden.
+
+## <a name="limitation"></a>Einschränkung
+
+Azure Functions-Anforderungen sollten in weniger als 100 Sekunden abgeschlossen werden, da für den HTTP-Client nach 100 Sekunden ein Timeout auftritt. Wenn es mehr als 100 Sekunden dauert, bis Azure Functions einen Datenbatch verarbeitet hat, tritt ein Timeout auf, der eine Wiederholung auslöst. Diese Wiederholung kann zu doppelten Daten führen, da Azure Functions die Daten erneut verarbeitet und potenziell die gleiche Ausgabe erzeugt, da sie möglicherweise in der vorherigen Anforderung teilweise ausgegeben wurde.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -47,6 +47,8 @@ items:
         href: import-concepts.md
       - name: Importbezogenes Schema
         href: import-schema.md
+      - name: Grenzwerte für Geräteupdates
+        href: device-update-limits.md
   - name: Anleitungen
     items:
       - name: Erstellen eines Geräteupdatekontos

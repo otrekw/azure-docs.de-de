@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/23/2020
+ms.date: 05/14/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 610ab82bfc4665fbb30aa3d3bc0448fa9338689c
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 23caf21da3914dfa1af18ab96ec7cfe52e944f1c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107872549"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069755"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Rückschlussumgebung mit virtuellen Netzwerken
 
@@ -61,25 +61,29 @@ Wenn Sie einen AKS-Cluster in einem virtuellen Netzwerk verwenden möchten, müs
 Gehen Sie folgendermaßen vor, um AKS in einem virtuellen Netzwerk zu Ihrem Arbeitsbereich hinzuzufügen:
 
 1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an, und wählen Sie dann Ihr Abonnement und den Arbeitsbereich aus.
+1. Wählen Sie auf der linken Seite __Compute__, in der Mitte __Rückschlusscluster__ und dann __+ Neu__ aus.
 
-1. Wählen Sie links __Compute__ aus.
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-inference.png" alt-text="Screenshot: Dialogfeld „Rückschlusscluster erstellen“":::
 
-1. Wählen Sie in der Mitte __Rückschlusscluster__ aus, und wählen Sie dann __+__ aus.
+1. Wählen Sie im Dialogfeld __Rückschlusscluster erstellen__ die Option __Neu erstellen__ und die VM-Größe aus, die für den Cluster verwendet werden soll. Wählen Sie abschließend __Weiter__ aus.
 
-1. Wählen Sie im Dialogfeld __Neuer Rückschlusscluster__ unter __Netzwerkkonfiguration__ die Option __Erweitert__ aus.
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-inference-vm.png" alt-text="Screenshot: VM-Einstellungen":::
 
-1. Gehen Sie zum Konfigurieren dieser Computeressource für die Verwendung eines virtuellen Netzwerks wie folgt vor:
+1. Geben Sie im Abschnitt __Einstellungen konfigurieren__ einen __Computenamen__ ein, wählen Sie den __Clusterzweck__, die __Anzahl der Knoten__ und dann __Erweitert__ aus, um die Netzwerkeinstellungen anzuzeigen. Legen Sie im Bereich __Virtuelles Netzwerk konfigurieren__ die folgenden Werte fest:
 
-    1. Wählen Sie in der Dropdownliste __Ressourcengruppe__ die Ressourcengruppe aus, die das virtuelle Netzwerk enthält.
-    1. Wählen Sie in der Dropdownliste __Virtuelles Netzwerk__ das virtuelle Netzwerk aus, das das Subnetzwerk enthält.
-    1. Wählen Sie in der Dropdownliste __Subnetz__ das Subnetz aus.
-    1. Geben Sie in das Feld __Kubernetes Service Address Range__ (Kubernetes-Dienstadressbereich) den Kubernetes-Dienstadressbereich ein. Dieser Adressbereich verwendet einen IP-Adressbereich in CIDR-Notation (Classless Inter-Domain Routing), um die für den Cluster verfügbaren IP-Adressen zu definieren. Er darf sich mit keinem IP-Adressbereich eines Subnetzes überschneiden (z. B. 10.0.0.0/16).
-    1. Geben Sie in das Feld __Kubernetes DNS Service IP Address__ (Kubernetes-DNS-Dienst-IP-Adresse) die Kubernetes-DNS-Dienst-IP-Adresse ein. Diese IP-Adresse wird dem Kubernetes-DNS-Dienst zugewiesen. Sie muss innerhalb des Kubernetes-Dienstadressbereichs liegen (z. B. 10.0.0.10).
-    1. Geben Sie in das Feld __Adresse der Docker-Brücke__ die Adresse der Docker-Brücke ein. Diese IP-Adresse wird der Docker-Brücke zugewiesen. Sie darf weder dem IP-Adressbereich eines Subnetzes noch dem Adressbereich des Kubernetes-Diensts angehören (z. B. 172.17.0.1/16).
+    * Legen Sie das zu verwendende __virtuelle Netzwerk__ fest.
 
-   ![Azure Machine Learning: VNET-Einstellungen für Machine Learning Compute](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
+        > [!TIP]
+        > Wenn Ihr Arbeitsbereich einen privaten Endpunkt verwendet, um eine Verbindung mit dem virtuellen Netzwerk herzustellen, wird das Auswahlfeld __Virtuelles Netzwerk__ abgeblendet angezeigt.
 
-1. Wenn Sie ein Modell als Webdienst für AKS bereitstellen, wird ein Bewertungsendpunkt erstellt, um Rückschlussanforderungen zu behandeln. Stellen Sie sicher, dass für die Netzwerksicherheitsgruppe, die das virtuelle Netzwerk steuert, eine eingehende Sicherheitsregel für die IP-Adresse des bewertenden Endpunkts aktiviert hat, wenn Sie ihn von außerhalb des virtuellen Netzwerks aufrufen möchten.
+    * Legen Sie das __Subnetz__ fest, in dem der Cluster erstellt werden soll.
+    * Geben Sie in das Feld für den __Kubernetes Service-Adressbereich__ den Kubernetes Service-Adressbereich ein. Dieser Adressbereich verwendet einen IP-Adressbereich in CIDR-Notation (Classless Inter-Domain Routing), um die für den Cluster verfügbaren IP-Adressen zu definieren. Er darf sich mit keinem IP-Adressbereich eines Subnetzes überschneiden (z. B. 10.0.0.0/16).
+    * Geben Sie in das Feld für __Kubernetes-DNS-Dienst – IP-Adresse__ die IP-Adresse des Kubernetes-DNS-Diensts ein. Diese IP-Adresse wird dem Kubernetes-DNS-Dienst zugewiesen. Sie muss innerhalb des Kubernetes-Dienstadressbereichs liegen (z. B. 10.0.0.10).
+    * Geben Sie in das Feld für die __Adresse der Docker-Brücke__ die Adresse der Docker-Brücke ein. Diese IP-Adresse wird der Docker-Brücke zugewiesen. Sie darf weder dem IP-Adressbereich eines Subnetzes noch dem Adressbereich des Kubernetes-Diensts angehören (z. B. 172.18.0.1/16).
+
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-inference-settings.png" alt-text="Screenshot: Konfigurieren von Netzwerkeinstellungen":::
+
+1. Wenn Sie ein Modell als Webdienst für AKS bereitstellen, wird ein Bewertungsendpunkt erstellt, um Rückschlussanforderungen zu behandeln. Stellen Sie sicher, dass für die Netzwerksicherheitsgruppe (NSG), die das virtuelle Netzwerk steuert, eine eingehende Sicherheitsregel für die IP-Adresse des bewertenden Endpunkts aktiviert hat, wenn Sie ihn von außerhalb des virtuellen Netzwerks aufrufen möchten.
 
     Betrachten Sie den URI der Bewertung des bereitgestellten Diensts, um die IP-Adresse des Bewertungsendpunkts zu finden. Weitere Informationen zum Anzeigen des URIs der Bewertung finden Sie unter [Nutzen eines als Webdienst bereitgestellten Modells](how-to-consume-web-service.md#connection-information).
 
@@ -154,9 +158,6 @@ Es gibt zwei Ansätze, um den Datenverkehr zwischen AKS-Cluster und virtuellem N
 * __Privater AKS-Cluster__: Bei diesem Ansatz wird Azure Private Link zum Schützen der Kommunikation mit dem Cluster für Bereitstellungs- und Verwaltungsvorgänge verwendet.
 * __Interner AKS-Lastenausgleich__: Bei diesem Ansatz wird der Endpunkt für Ihre Bereitstellungen in AKS konfiguriert, um eine private IP-Adresse innerhalb des virtuellen Netzwerks zu verwenden.
 
-> [!WARNING]
-> Der interne Lastenausgleich funktioniert nicht mit einem AKS-Cluster, der Kubenet verwendet. Wenn Sie gleichzeitig einen internen Lastenausgleich und einen privaten AKS-Cluster verwenden möchten, konfigurieren Sie Ihren privaten AKS-Cluster mit Azure Container Networking Interface (CNI). Weitere Informationen finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service](../aks/configure-azure-cni.md).
-
 ### <a name="private-aks-cluster"></a>Privater AKS-Cluster
 
 AKS-Standardcluster weisen standardmäßig eine Steuerungsebene (API-Server) mit öffentlichen IP-Adressen auf. Sie können AKS so konfigurieren, dass eine private Steuerungsebene verwendet wird, indem Sie einen privaten AKS-Cluster erstellen. Weitere Informationen finden Sie unter [Erstellen eines privaten Azure Kubernetes Service-Clusters](../aks/private-clusters.md).
@@ -218,10 +219,18 @@ except:
 az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
-> [!IMPORTANT]
-> Unter Verwendung der CLI können Sie einen AKS-Cluster nur mit einem internen Lastenausgleich erstellen. Es gibt nicht den Befehl „az ml“ zum Aktualisieren eines vorhandenen Clusters für die Verwendung eines internen Lastenausgleichs.
+Um einen vorhandenen AKS-Cluster für die Verwendung eines internen Lastenausgleichs zu aktualisieren, verwenden Sie den folgenden Befehl:
 
-Weitere Informationen finden Sie unter [az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks).
+```azurecli
+az ml computetarget update aks \
+                           -n myaks \
+                           --load-balancer-subnet mysubnet \
+                           --load-balancer-type InternalLoadBalancer \
+                           --workspace-name myworkspace \
+                           -g myresourcegroup
+```
+
+Weitere Informationen finden Sie in der Referenz zu [az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) und [az ml computetarget update aks](/cli/azure/ml/computetarget/update#az_ml_computetarget_update_aks).
 
 ---
 

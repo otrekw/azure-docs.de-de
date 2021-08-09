@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: bc7b1a0742e79c3c84bf533e75467b5def2706b4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1ad358c428f80e2e8bebcecf73cc89ddd5c37bc7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277724"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454413"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Bring Your Own Key (vom Kunden verwaltete Schlüssel) in Media Services
 

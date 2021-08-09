@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 05/20/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d586294f101c271f139867d0046576dc9a32f076
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: f741cb21f427734c49001b9c672ed3e61c43adbc
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107861785"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613229"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion) 
 
@@ -45,7 +45,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, damit die kennwortlose Anme
 
 ## <a name="enable-passwordless-authentication-methods"></a>Aktivieren von Methoden zur kennwortlosen Authentifizierung
 
-Um die kennwortlose Authentifizierung in Azure AD zu verwenden, aktivieren Sie zunächst die kombinierte Registrierung, und aktivieren Sie anschließend die Benutzer für die kennwortlose Methode.
+Um die kennwortlose Authentifizierung in Azure AD zu verwenden, aktivieren Sie zunächst die kombinierte Registrierung und anschließend die Benutzer für die kennwortlose Methode.
 
 ### <a name="enable-the-combined-registration-experience"></a>Aktivieren der kombinierten Registrierung
 
@@ -53,7 +53,7 @@ Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung s
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Aktivieren von Authentifizierungsmethoden für die kennwortlose Anmeldung per Telefon
 
-Mit Azure AD können Sie auswählen, welche Authentifizierungsmethoden während des Anmeldevorgangs verwendet werden können. Benutzer registrieren sich anschließend für die Methoden, die sie verwenden möchten.
+Mit Azure AD können Sie auswählen, welche Authentifizierungsmethoden während des Anmeldevorgangs verwendet werden können. Benutzer registrieren sich anschließend für die Methoden, die sie verwenden möchten. Bei der Authentifizierungsmethode mit **Microsoft Authenticator** sind sowohl die herkömmliche Push-MFA-Methode als auch die kennwortlose Authentifizierungsmethode möglich. 
 
 Führen Sie die folgenden Schritte aus, um die Authentifizierungsmethode für die kennwortlose Anmeldung per Telefon zu aktivieren:
 
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um die Authentifizierungsmethode für di
    1. **Ziel**: „Alle Benutzer“ oder „Benutzer auswählen“
 1. Bei jeder hinzugefügten Gruppe und jedem hinzugefügten Benutzer ist standardmäßig Microsoft Authenticator sowohl im kennwortlosen als auch im Pushbenachrichtigungsmodus („Beliebig“) aktiviert. Um dies zu ändern, führen Sie für jede Zeile folgende Schritte aus:
    1. Navigieren Sie zu **...**  > **Konfigurieren**.
-   1. Wählen Sie als **Authentifizierungsmodus** „Beliebig“, „Kennwortlos“ oder „Push“ aus.
+   1. Wählen Sie für **Authentifizierungsmodus** die Option **Beliebig** oder **Kennwortlos** aus. Wenn Sie **Push** auswählen, wird die Verwendung der Anmeldeinformationen für die kennwortlose Anmeldung per Telefon verhindert. 
 1. Wählen Sie **Speichern** aus, um die neue Richtlinie anzuwenden.
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Benutzerregistrierung und Verwaltung von Microsoft Authenticator

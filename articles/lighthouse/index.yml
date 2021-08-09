@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 01/26/2021
-  ms.openlocfilehash: ad51b354bde216ced0d4e163a0566a0006e1d6a4
-  ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+  ms.date: 07/07/2021
+  ms.openlocfilehash: 788d1bd8438bd3e732e4f48da95abd7d6d891ab1
+  ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/12/2021
-  ms.locfileid: "109785887"
+  ms.lasthandoff: 07/08/2021
+  ms.locfileid: "113492170"
 landingContent:
 - title: Informationen zu Azure Lighthouse
   linkLists:
@@ -35,6 +35,8 @@ landingContent:
     links:
     - text: Onboarding eines Kunden in Azure Lighthouse durchführen
       url: ./how-to/onboard-customer.md
+    - text: Just-In-Time-Rollen (Vorschau)
+      url: ./how-to/create-eligible-authorizations.md
     - text: Kunden anzeigen und verwalten
       url: ./how-to/view-manage-customers.md
     - text: Verknüpfen Ihrer Partner-ID
@@ -67,7 +69,7 @@ landingContent:
     links:
     - text: Dienstanbieter anzeigen und verwalten
       url: ./how-to/view-manage-service-providers.md
-    - text: Anzeigen der Dienstanbieteraktivität
+    - text: Anzeigen von Aktivitäten des verwaltenden Mandanten
       url: ./how-to/view-service-provider-activity.md
 - title: Beispiele und Vorlagen
   linkLists:

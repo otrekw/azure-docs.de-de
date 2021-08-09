@@ -2,32 +2,31 @@
 title: Organisieren von Abonnements in Verwaltungsgruppen und Zuweisen von Rollen zu Benutzern für Azure Security Center
 description: Erfahren Sie, wie Sie Ihre Azure-Abonnements in Verwaltungsgruppen im Azure Security Center organisieren und Benutzern in Ihrer Organisation Rollen zuweisen
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 06/11/2021
+ms.custom: subject-rbac-steps
 ms.author: memildin
-ms.openlocfilehash: 3508d508a19d6ce7fba4f3ef3a4fa545a58a167d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 14cad6e5d95492b889a4e1a09abac9bd3ee8e603
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099385"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887292"
 ---
 # <a name="organize-subscriptions-into-management-groups-and-assign-roles-to-users"></a>Organisieren von Abonnements in Verwaltungsgruppen und Zuweisen von Rollen zu Benutzern
 
-In diesem Artikel wird erläutert, wie Sie den Sicherheitsstatus Ihrer Organisation bedarfsorientiert verwalten, indem Sie Sicherheitsrichtlinien auf alle Azure-Abonnements anwenden, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind.
+Auf dieser Seite wird erläutert, wie Sie den Sicherheitsstatus Ihrer Organisation bedarfsorientiert verwalten, indem Sie Sicherheitsrichtlinien auf alle Azure-Abonnements anwenden, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind.
 
-Eine Azure-Rolle mit ausreichenden Leseberechtigungen muss für die Stammverwaltungsgruppe zugewiesen werden, um Sichtbarkeit für den Sicherheitsstatus aller Abonnements zu erzielen, die unter dem Azure AD-Mandanten registriert sind.
-
+Für eine Sichtbarkeit des Sicherheitsstatus aller Abonnements, die mit einem Azure AD-Mandanten verknüpft sind, benötigen Sie eine Azure-Rolle mit ausreichenden Leseberechtigungen, die in der Stammverwaltungsgruppe zugewiesen wurde.
 
 ## <a name="organize-your-subscriptions-into-management-groups"></a>Organisieren von Abonnements in Verwaltungsgruppen
 
 ### <a name="introduction-to-management-groups"></a>Einführung in Verwaltungsgruppen
 
-Azure-Verwaltungsgruppen ermöglichen Ihnen das effiziente Verwalten der Bereiche Zugriff, Richtlinien und Berichterstellung für Gruppen von Abonnements sowie das effektive Verwalten der gesamten Azure-Umgebung, indem Aktionen für die Stammverwaltungsgruppe durchgeführt werden. Sie können Abonnements in Verwaltungsgruppen organisieren und Ihre Governancerichtlinien auf die Verwaltungsgruppen anwenden. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Richtlinien. 
+Verwenden Sie Verwaltungsgruppen für das effiziente Verwalten der Bereiche Zugriff, Richtlinien und Berichterstellung für **Gruppen von Abonnements** sowie das effektive Verwalten der gesamten Azure-Umgebung, indem Aktionen für die Stammverwaltungsgruppe durchgeführt werden. Sie können Abonnements in Verwaltungsgruppen organisieren und Ihre Governancerichtlinien auf die Verwaltungsgruppen anwenden. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Richtlinien. 
 
 Jeder Azure AD-Mandant wird einer einzelnen Verwaltungsgruppe der obersten Ebene zugewiesen, die als **Stammverwaltungsgruppe** bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Gruppe ermöglicht das Anwenden von globalen Richtlinien und Azure-Rollenzuweisungen auf Verzeichnisebene. 
 
@@ -36,8 +35,7 @@ Die Stammverwaltungsgruppe wird automatisch erstellt, wenn Sie die folgenden Akt
 - Erstellen Sie per API-Aufruf eine Verwaltungsgruppe.
 - Erstellen Sie eine Verwaltungsgruppe mit PowerShell. Eine Anleitung für PowerShell finden Sie unter [Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen](../governance/management-groups/create-management-group-portal.md).
 
-Für das Security Center-Onboarding sind Verwaltungsgruppen zwar nicht erforderlich, aber es wird empfohlen, mindestens eine solche Gruppe zu erstellen, damit die Stammverwaltungsgruppe erstellt wird. Nachdem die Gruppe erstellt wurde, werden alle Abonnements unter Ihrem Azure AD-Mandanten damit verknüpft. 
-
+Für das Security Center-Onboarding sind Verwaltungsgruppen zwar nicht erforderlich, aber es wird empfohlen, mindestens eine Verwaltungsgruppe zu erstellen, damit die Stammverwaltungsgruppe erstellt wird. Nachdem die Gruppe erstellt wurde, werden alle Abonnements unter Ihrem Azure AD-Mandanten damit verknüpft. 
 
 Eine ausführliche Übersicht über Verwaltungsgruppen finden Sie im Artikel [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/overview.md).
 
@@ -60,17 +58,16 @@ Eine ausführliche Übersicht über Verwaltungsgruppen finden Sie im Artikel [Or
 ### <a name="add-subscriptions-to-a-management-group"></a>Hinzufügen von Abonnements zu einer Verwaltungsgruppe
 Sie können Abonnements der von Ihnen erstellten Verwaltungsgruppe hinzufügen.
 
-1. Wählen Sie unter **Verwaltungsgruppen** die Verwaltungsgruppe für Ihr Abonnement aus.
+1. Öffnen Sie im Azure-Portal **Verwaltungsgruppen** und wählen Sie die Verwaltungsgruppe für Ihr Abonnement aus.
 
     :::image type="content" source="./media/security-center-management-groups/management-group-subscriptions.png" alt-text="Auswählen einer Verwaltungsgruppe für das Abonnement":::
 
-1. Wenn die Seite der Gruppe geöffnet wird, klicken Sie auf **Details**.
+1. Wenn die Seite der Gruppe geöffnet wird, wählen Sie **Abonnements** aus.
 
-    :::image type="content" source="./media/security-center-management-groups/management-group-details-page.png" alt-text="Öffnen der Detailseite einer Verwaltungsgruppe":::
-
-1. Klicken Sie auf der Detailseite der Gruppe auf **Abonnement hinzufügen**, wählen Sie Ihre Abonnements aus, und klicken Sie auf **Speichern**. Wiederholen Sie diese Schritte, bis Sie alle betreffenden Abonnements hinzugefügt haben.
+1. Wählen Sie auf der Abonnementseite die Option **Hinzufügen** aus, wählen Sie Ihre Abonnements aus und wählen Sie dann **Speichern** aus. Wiederholen Sie diese Schritte, bis Sie alle betreffenden Abonnements hinzugefügt haben.
 
     :::image type="content" source="./media/security-center-management-groups/management-group-add-subscriptions.png" alt-text="Hinzufügen eines Abonnements zu einer Verwaltungsgruppe":::
+
    > [!IMPORTANT]
    > Verwaltungsgruppen können sowohl Abonnements als auch untergeordnete Verwaltungsgruppen enthalten. Wenn Sie einem Benutzer eine Azure-Rolle für die übergeordnete Verwaltungsgruppe zuweisen, wird der Zugriff von den Abonnements der untergeordneten Verwaltungsgruppe geerbt. Richtlinien, die für die übergeordnete Verwaltungsgruppe festgelegt werden, werden ebenfalls von den untergeordneten Elementen geerbt. 
 
@@ -79,19 +76,30 @@ Sie können Abonnements der von Ihnen erstellten Verwaltungsgruppe hinzufügen.
 ## <a name="assign-azure-roles-to-other-users"></a>Zuweisen von Azure-Rollen zu anderen Benutzern
 
 ### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Weisen Sie Benutzern Azure-Rollen über das Azure-Portal zu: 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
-1. Wählen Sie zum Anzeigen von Verwaltungsgruppen **Alle Dienste** im Azure-Hauptmenü und dann **Verwaltungsgruppen** aus.
-1.  Wählen Sie eine Verwaltungsgruppe aus, und klicken Sie auf **Details**.
 
-    :::image type="content" source="./media/security-center-management-groups/management-group-details.PNG" alt-text="Screenshot der Verwaltungsgruppendetails":::
+1. Verwenden Sie im [Azure-Portal](https://portal.azure.com) das Suchfeld in der oberen Leiste, um **Verwaltungsgruppen** zu suchen und zu öffnen.
 
-1. Klicken Sie auf **Zugriffssteuerung (IAM)** und dann auf **Rollenzuweisungen**.
-1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
-1. Wählen Sie die zuzuweisende Rolle und den Benutzer aus, und klicken Sie dann auf **Speichern**.  
-   
-   ![Screenshot zum Hinzufügen der Rolle „Sicherheitsleseberechtigter“](./media/security-center-management-groups/asc-security-reader.png)
+    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="Zugreifen auf Verwaltungsgruppen":::
+
+    Die Liste Ihrer Verwaltungsgruppen wird angezeigt.
+
+1.  Wählen Sie die entsprechende Verwaltungsgruppe aus.
+
+1. Wählen Sie **Zugriffssteuerung (IAM)** aus, öffnen Sie die Registerkarte **Rollenzuweisungen** und wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus.
+
+    :::image type="content" source="./media/security-center-management-groups/add-user.png" alt-text="Hinzufügen eines Benutzers zu einer Verwaltungsgruppe":::
+
+1. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** die entsprechende Rolle aus.
+
+    :::image type="content" source="./media/security-center-management-groups/add-role-assignment-page.png" alt-text="Seite „Rollenzuweisung hinzufügen“":::
+
+1. Wählen Sie auf der Registerkarte **Mitglieder** die Option **+ Mitglieder auswählen** aus und weisen Sie die Rolle den entsprechenden Mitgliedern zu.
+
+1. Wählen Sie auf der Registerkarte **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, um die Rolle zuzuweisen.
+
 
 ### <a name="assign-azure-roles-to-users-with-powershell"></a>Weisen Sie Benutzern Azure-Rollen mit PowerShell zu: 
+
 1. Installieren Sie [Azure PowerShell](/powershell/azure/install-az-ps).
 2. Führen Sie die folgenden Befehle aus: 
 
@@ -132,6 +140,7 @@ Nachdem den Benutzern die Azure-Rollen zugewiesen wurden, sollte der Mandantenad
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie gelernt, wie Sie Abonnements in Verwaltungsgruppen organisieren und Benutzern Rollen zuweisen. Verwandte Informationen
+
+Auf dieser Seite haben Sie gelernt, wie Sie Abonnements in Verwaltungsgruppen organisieren und Benutzern Rollen zuweisen. Verwandte Informationen
 
 - [Berechtigungen in Azure Security Center](security-center-permissions.md)

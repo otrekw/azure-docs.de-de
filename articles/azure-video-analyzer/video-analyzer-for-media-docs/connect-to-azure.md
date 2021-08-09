@@ -8,16 +8,16 @@ manager: femila
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 28f8bb6a610e13aa0e7cf76adf52f13972215365
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 71035e6d115c64eea7ceb4a4f862d8bd4f4ec874
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386042"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537259"
 ---
 # <a name="create-a-video-analyzer-for-media-account"></a>Erstellen eines Video Analyzer for Media-Kontos
 
-Beim Erstellen eines Kontos für Azure Video Analyzer for Media (früher Video Analyzer) können Sie ein kostenloses Testkonto (für das Sie eine bestimmte Anzahl von kostenlosen Indizierungsminuten erhalten) oder eine kostenpflichtige Option (bei der Sie nicht aufgrund des Kontingents begrenzt sind) wählen. Bei der kostenlosen Testversion stellt Video Analyzer for Media bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Analyzer for Media-Konto, das mit Ihrem Azure-Abonnement verbunden ist. Sie bezahlen pro Minute Indizierungszeit. Weitere Informationen finden Sie unter [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).
+Beim Erstellen eines Kontos für Azure Video Analyzer for Media (früher Video Analyzer) können Sie ein kostenloses Testkonto (für das Sie eine bestimmte Anzahl von kostenlosen Indizierungsminuten erhalten) oder eine kostenpflichtige Option (bei der Sie nicht aufgrund des Kontingents begrenzt sind) wählen. Bei der kostenlosen Testversion stellt der Video Analyzer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Analyzer for Media-Konto, das mit Ihrem Azure-Abonnement verbunden ist. Sie bezahlen pro Minute Indizierungszeit. Weitere Informationen finden Sie unter [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).
 
 In diesem Artikel wird gezeigt, wie Sie ein Video Analyzer for Media-Konto erstellen, das mit einem Azure-Abonnement und einem Azure Media Services-Konto verknüpft ist. Außerdem werden die Schritte zur Verbindungsherstellung mit Azure unter Verwendung des automatischen Flows (Standard) vorgestellt. Darüber hinaus wird gezeigt, wie Sie eine manuelle Verbindung mit Azure herstellen (erweitert).
 
@@ -145,7 +145,7 @@ Klicken Sie auf der [Video Analyzer for Media](https://www.videoindexer.ai/)-Sei
 
 Geben Sie im Dialogfeld die folgenden Informationen ein:
 
-|Einstellung|BESCHREIBUNG|
+|Einstellung|Beschreibung|
 |---|---|
 |Video Analyzer for Media-Kontoregion|Der Name der Region des Video Analyzer for Media-Kontos. Zur Verbesserung der Leistung und Senkung der Kosten wird dringend empfohlen, den Namen der Region anzugeben, in der sich die Azure Media Services-Ressourcen und das Azure Storage-Konto befinden. |
 |Azure AD-Mandant|Der Name des Azure AD-Mandanten, z.B. „contoso.onmicrosoft.com“. Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers. Der Name befindet sich rechts neben **Domäne**.|
@@ -241,6 +241,10 @@ Wenn Sie ein Video Analyzer for Media-Konto löschen möchten, ist dies auf der 
 Klicken Sie auf das Konto und dann auf **Einstellungen** -> **Dieses Konto löschen**. 
 
 Das Konto wird in 90 Tagen dauerhaft gelöscht.
+
+## <a name="firewall"></a>Firewall
+
+Weitere Informationen finden Sie unter [Speicherkonto befindet sich hinter einer Firewall](faq.md#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

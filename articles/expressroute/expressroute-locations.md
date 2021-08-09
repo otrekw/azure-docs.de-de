@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: bc1238f3386ff835b8d21bfe2a360474ec3a5885
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5dbaae5478c0cafbb6a37a6466e15671f26a8d83
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075356"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703745"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-Konnektivitätspartner und Peeringstandorte
 
@@ -81,7 +81,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **du datamena** |Unterstützt |Unterstützt | Dubai2 |
 | **eir** |Unterstützt |Unterstützt |Dublin|
 | **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Unterstützt |Unterstützt |Singapur, Singapur2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Atlanta, Berlin, Bogota, Canberra2, Chicago, Dallas, Dubai2, Dublin, Frankfurt, Frankfurt2, Genf, Hongkong (SAR), London, London2, Los Angeles, Los Angeles2, Melbourne, Miami, Mailand, New York, Osaka, Paris, Rio de Janeiro, Sao Paulo, Seattle, Seoul, Silicon Valley, Singapur, Stockholm, Sydney, Tokyo, Toronto, Washington DC, Zürich |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Atlanta, Berlin, Bogota, Canberra2, Chicago, Dallas, Dubai2, Dublin, Frankfurt, Frankfurt2, Genf, Hongkong (SAR), London, London2, Los Angeles, Los Angeles2, Melbourne, Miami, Mailand, New York, Osaka, Paris, Rio de Janeiro, Sao Paulo, Seattle, Seoul, Silicon Valley, Singapur, Singapur2, Stockholm, Sydney, Tokio, Toronto, Washington DC, Zürich |
 | **Etisalat (VAE)** |Unterstützt |Unterstützt |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Dublin, Frankfurt, London |
 | **[FarEasTone](https://www.fetnet.net/corporate/en/Enterprise.html)** |Unterstützt |Unterstützt |Taipeh|
@@ -133,6 +133,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | Unterstützt |Unterstützt | London2, Washington DC |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Unterstützt |Unterstützt |Chennai, Mumbai2 |
 | **[SingTel](https://www.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |Unterstützt |Unterstützt |Hongkong2, Singapur, Singapur2 |
+| **[SK Telecom](http://b2b.tworld.co.kr/bizts/solution/solutionTemplate.bs?solutionId=0085)** |Unterstützt |Unterstützt |Seoul |
 | **[Softbank](https://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |Unterstützt |Unterstützt |Osaka, Tokio |
 | **[Sohonet](https://www.sohonet.com/fastlane/)** |Unterstützt |Unterstützt |London2 |
 | **[Spark NZ](https://www.sparkdigital.co.nz/solutions/connectivity/cloud-connect/)** |Unterstützt |Unterstützt |Auckland, Sydney |

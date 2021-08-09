@@ -6,14 +6,19 @@ author: harelbr
 ms.author: harelbr
 ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: fa14f0dd40a30a4750d9bb102d8e67608f958135
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0937683eaacefc9fe4bbee21802a0f1657918efd
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734501"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536711"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Änderung an E-Mail-Benachrichtigungen der intelligenten Erkennung
+
+>[!NOTE]
+>Sie können Ihre Application Insight-Ressourcen zu der auf Warnungen basierenden intelligenten Erkennung (Vorschauversion) migrieren. Bei der Migration werden Warnungsregeln für die verschiedenen Module der intelligenten Erkennung erstellt. Nach der Erstellung können Sie diese Regeln wie alle anderen Azure Monitor-Warnungsregeln verwalten und konfigurieren. Sie können auch Aktionsgruppen für diese Regeln konfigurieren, was mehrere Methoden für das Ausführen von Aktionen oder für das Auslösen von Benachrichtigungen bei neuen Erkennungen ermöglicht.
+>
+> Weitere Informationen zum Migrationsprozess und zum Verhalten der intelligenten Erkennung nach der Migration finden Sie unter [Warnungen der intelligenten Erkennung – Migration](../alerts/alerts-smart-detections-migration.md).
 
 Basierend auf Kundenfeedback ändern wir am 1. April 2019 die Standardrollen, die E-Mail-Benachrichtigungen von der intelligenten Erkennung erhalten.
 

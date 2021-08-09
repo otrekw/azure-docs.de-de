@@ -139,8 +139,6 @@
               displayName: 'permissions, authorization'
             - name: Inhaltsvertrauensstellung
               href: container-registry-content-trust.md
-            - name: Imageüberprüfung mit Security Center
-              href: ../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json
         - name: Registrierungen und anderen Azure-Dienste
           expanded: false
           items:
@@ -157,6 +155,13 @@
               href: monitor-service.md
             - name: Überwachen der Konformität mithilfe von Azure Policy
               href: container-registry-azure-policy.md
+            - name: Überprüfen von Containerimages
+              expanded: false
+              items:
+                - name: Überprüfen mit Azure Defender
+                  href: scan-images-defender.md
+                - name: Überprüfen mit GitHub Actions
+                  href: github-action-scan.md
         - name: Problembehandlung
           expanded: false
           items:
