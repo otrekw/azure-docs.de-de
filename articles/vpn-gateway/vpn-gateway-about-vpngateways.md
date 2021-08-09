@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 04/28/2021
+ms.date: 07/08/2021
 ms.author: cherylmc
 ms.custom:
 - contperf-fy21q1
 - e2e-hybrid
-ms.openlocfilehash: bdaa61aa45c357e95e35196a5be7774f0af95ec0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ae7c9ee5357e09dcf7c33cd2ae3111cce15b6641
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202333"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721200"
 ---
 # <a name="what-is-vpn-gateway"></a>Was ist VPN Gateway?
 
@@ -27,7 +27,7 @@ Ein Gateway für virtuelle Netzwerke besteht aus mindestens zwei VMs, die in ein
 
 Wenn Sie ein virtuelles Netzwerkgateway konfigurieren, konfigurieren Sie eine Einstellung, die den Gatewaytyp angibt. Der Gatewaytyp bestimmt, wie das Gateway für virtuelle Netzwerke verwendet wird und welche Aktionen es ausführt. Der Gatewaytyp „VPN“ gibt an, dass es sich beim Typ des erstellten Gateways des virtuellen Netzwerks um ein VPN-Gateway handelt. Dadurch unterscheidet es sich von einem ExpressRoute-Gateway, das einen anderen Gatewaytyp verwendet. Ein virtuelles Netzwerk kann zwei virtuelle Netzwerkgateways besitzen, ein VPN-Gateway und ein ExpressRoute-Gateway. Weitere Informationen finden Sie unter [Gatewaytypen](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
 
-Die Erstellung eines Gateways des virtuellen Netzwerks kann bis zu 45 Minuten dauern. Bei der Erstellung des Gateways des virtuellen Netzwerks werden Gateway-VMs für das Gatewaysubnetz bereitgestellt und mit den von Ihnen angegebenen Einstellungen konfiguriert. Nach der Erstellung eines VPN-Gateways können Sie eine IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem anderen VPN-Gateway (VNet-to-VNet) oder eine standortübergreifende IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem lokalen VPN-Gerät ( Site-to-Site) erstellen. Sie können auch eine Point-to-Site-VPN-Verbindung (VPN über OpenVPN, IKEv2 oder SSTP) erstellen und so von einem Remotestandort aus (beispielsweise in einer Konferenz oder zu Hause) eine Verbindung mit Ihrem virtuellen Netzwerk herstellen.
+Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern. Bei der Erstellung des Gateways des virtuellen Netzwerks werden Gateway-VMs für das Gatewaysubnetz bereitgestellt und mit den von Ihnen angegebenen Einstellungen konfiguriert. Nach der Erstellung eines VPN-Gateways können Sie eine IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem anderen VPN-Gateway (VNet-to-VNet) oder eine standortübergreifende IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem lokalen VPN-Gerät ( Site-to-Site) erstellen. Sie können auch eine Point-to-Site-VPN-Verbindung (VPN über OpenVPN, IKEv2 oder SSTP) erstellen und so von einem Remotestandort aus (beispielsweise in einer Konferenz oder zu Hause) eine Verbindung mit Ihrem virtuellen Netzwerk herstellen.
 
 ## <a name="configuring-a-vpn-gateway"></a><a name="configuring"></a>Konfigurieren von VPN Gateway
 
@@ -82,6 +82,7 @@ Abonnieren Sie den RSS-Feed, und zeigen Sie die neuesten VPN Gateway-Featureupd
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md).
-- Sehen Sie sich die [Abonnements und Diensteinschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) an.
-- Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/fundamentals/networking-overview.md) von Azure.
+- [Tutorial: Erstellen und Verwalten einer VPN Gateway-Instanz](tutorial-create-gateway-portal.md)
+- [Learn-Modul: Verbinden Ihres lokalen Netzwerks mit Azure über VPN Gateway](/learn/modules/connect-on-premises-network-with-vpn-gateway/)
+- [Einschränkungen von Abonnements und Diensten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)
+
