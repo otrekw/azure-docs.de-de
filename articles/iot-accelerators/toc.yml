@@ -9,12 +9,6 @@
     - name: Industrielles IoT
       href: overview-iot-industrial.md
       items:
-        - name: Was ist ein OPC-Zwilling?
-          href: overview-opc-twin.md
-        - name: Was ist ein OPC-Tresor?
-          href: overview-opc-vault.md
-        - name: Was ist OPC Publisher?
-          href: overview-opc-publisher.md
         - name: Was ist die verbundene Factory?
           href: iot-accelerators-connected-factory-features.md
 - name: Schnellstarts
@@ -22,14 +16,6 @@
     - name: Testen einer Lösung für verbundene Factorys
       href: quickstart-connected-factory-deploy.md
   expanded: true
-- name: Konzepte
-  items:
-    - name: Industrielles IoT
-      items:
-        - name: "OPC\_Twin-Architektur"
-          href: overview-opc-twin-architecture.md
-        - name: "OPC\_Vault-Architektur"
-          href: overview-opc-vault-architecture.md
 - name: Anleitungen
   items:
     - name: Industrielles IoT
@@ -42,30 +28,6 @@
               href: iot-accelerators-connected-factory-configure.md
             - name: Anpassen des Solution Accelerators
               href: iot-accelerators-connected-factory-customize.md
-        - name: OPC-Zwilling
-          items:
-            - name: Bereitstellen von Diensten für OPC-Zwillinge
-              href: howto-opc-twin-deploy-existing.md
-            - name: Bereitstellen eines OPC-Zwillingsmoduls in IoT Edge
-              href: howto-opc-twin-deploy-modules.md
-            - name: Ausschließliches Bereitstellen von Abhängigkeiten für OPC-Zwillinge
-              href: howto-opc-twin-deploy-dependencies.md
-        - name: OPC-Tresor
-          items:
-            - name: "Bereitstellen des OPC\_Vault-Diensts"
-              href: howto-opc-vault-deploy.md
-            - name: "Verwalten des OPC\_Vault-Diensts"
-              href: howto-opc-vault-manage.md
-            - name: "Sichere OPC\_UA-Gerätekommunikation mit OPC\_Vault"
-              href: howto-opc-vault-secure.md
-            - name: "Sicheres Betreiben des OPC\_Vault-Diensts"
-              href: howto-opc-vault-secure-ca.md
-        - name: OPC Publisher
-          items:
-            - name: Konfigurieren von OPC Publisher
-              href: howto-opc-publisher-configure.md
-            - name: Ausführen von OPC Publisher
-              href: howto-opc-publisher-run.md
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
@@ -85,7 +47,7 @@
         - name: IoT Solution Accelerators
           href: ./index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights
@@ -108,8 +70,8 @@
     - name: Häufig gestellte Fragen
       items:
         - name: Häufig gestellte Fragen zu Solution Accelerators
-          href: iot-accelerators-faq.md
+          href: iot-accelerators-faq.yml
         - name: 'Verbundene Factory: Häufig gestellte Fragen'
-          href: iot-accelerators-faq-cf.md
+          href: iot-accelerators-faq-cf.yml
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'

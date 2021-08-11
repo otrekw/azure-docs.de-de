@@ -1,18 +1,18 @@
 ---
 title: Einführung in die Gremlin-API von Azure Cosmos DB
 description: Erfahren Sie, wie Sie anhand der Graph-Abfragesprache Gremlin von Apache TinkerPop umfangreiche Diagramme mit niedrigen Latenzen durch Azure Cosmos DB speichern, abfragen und traversieren können.
-author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 03/22/2021
-ms.author: chrande
-ms.openlocfilehash: ffe11fafa6ba217572f9d12d40324a5201b62630
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/26/2021
+author: manishmsfte
+ms.author: mansha
+ms.openlocfilehash: 0454fc76b089a3959d522b812177c6ca3a679deb
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801688"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690514"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Einführung in die Gremlin-API von Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]

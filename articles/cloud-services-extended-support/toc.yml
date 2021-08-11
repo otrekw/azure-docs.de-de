@@ -92,7 +92,7 @@
         - name: Fehler beim Rollenstart
           href: role-startup-failure.md
         - name: Häufig gestellte Fragen
-          href: faq.md
+          href: faq.yml
 - name: Beispiele
   items:
     - name: Beispielvorlagen

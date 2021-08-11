@@ -7,14 +7,14 @@ ms.author: sujie
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 104dfe7b2ce253d7ae42c7484532cfd5b2993aec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd74787c1e9ad158becf54f4b2b00bb71317e81d
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98014610"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221784"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code (Vorschauversion)
+# <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code
 
 In dieser Schnellstartanleitung wird gezeigt, wie Sie mithilfe einer Azure Stream Analytics-Tools-Erweiterung für Visual Studio Code einen Azure Stream Analytics-Auftrag erstellen und ausführen. Der Beispielauftrag liest Streamingdaten von einem Azure IoT Hub-Gerät. Sie legen einen Auftrag fest, der bei Überschreitung von 27 Grad die Durchschnittstemperatur berechnet und die entsprechenden Ausgabeereignisse in eine neue Datei im Blobspeicher schreibt.
 
@@ -168,7 +168,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
 5. Bearbeiten Sie die neu generierte **IoTHub1.json**-Datei mit den folgenden Werten. Behalten Sie die Standardwerte für Felder bei, die hier nicht aufgeführt sind.
 
-   |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
+   |Einstellung|Vorgeschlagener Wert|Beschreibung|
    |-------|---------------|-----------|
    |Name|Eingabe|Geben Sie einen Namen zur Identifizierung der Eingabe des Auftrags ein.|
    |IotHubNamespace|MyASAIoTHub|Wählen Sie den Namen Ihrer IoT Hub-Instanz aus, oder geben Sie ihn ein. IoT Hub-Namen werden automatisch erkannt, wenn sie unter demselben Abonnement erstellt werden.|
@@ -200,7 +200,7 @@ Wählen Sie **Datenvorschau** in der obersten Zeile von **IoTHub1.json** aus. Es
 
 5. Bearbeiten Sie **BlobStorage** mit den folgenden Werten. Behalten Sie die Standardwerte für Felder bei, die hier nicht aufgeführt sind. Das CodeLens-Feature unterstützt Sie beim Auswählen aus einer Dropdownliste oder beim Eingeben einer Zeichenfolge.
 
-   |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
+   |Einstellung|Vorgeschlagener Wert|Beschreibung|
    |-------|---------------|-----------|
    |Name|Output| Geben Sie einen Namen ein, um die Ausgabe des Auftrags kenntlich zu machen.|
    |Speicherkonto|asaquickstartstorage|Wählen Sie den Namen Ihres Speicherkontos aus, oder geben Sie ihn ein. Speicherkontonamen werden automatisch erkannt, wenn sie im gleichen Abonnement erstellt werden.|

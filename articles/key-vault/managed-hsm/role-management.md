@@ -2,18 +2,18 @@
 title: 'Verwaltetes HSM: Rollenverwaltung auf der Datenebene: Azure Key Vault | Microsoft-Dokumentation'
 description: In diesem Artikel erfahren Sie, wie Sie Rollenzuweisungen für Ihr verwaltetes HSM verwalten.
 services: key-vault
-author: amitbapat
+author: mbaldwin
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.author: ambapat
-ms.openlocfilehash: 4d36b2c2178c7205246cd7c59aefedef3358e473
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mbaldwin
+ms.openlocfilehash: 7a4179d35faffbf04a70a63aafead120259802f3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951741"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471261"
 ---
 # <a name="managed-hsm-role-management"></a>Rollenverwaltung für verwaltetes HSM
 
@@ -33,7 +33,7 @@ Eine Liste mit allen integrierten Rollen für verwaltete HSMs sowie mit den zul�
 Für die Verwendung der Azure CLI-Befehle in diesem Artikel benötigen Sie Folgendes:
 
 * Ein Abonnement für Microsoft Azure. Falls Sie über kein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial) registrieren.
-* Azure CLI, Version 2.21.0 oder höher. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
+* Azure-Befehlszeilenschnittstelle ab Version 2.25.0 Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 * Ein verwaltetes HSM in Ihrem Abonnement. Weitere Informationen finden Sie unter [Schnellstart: Bereitstellen und Aktivieren eines verwalteten HSM mithilfe der Azure-Befehlszeilenschnittstelle](quick-create-cli.md). Dort erfahren Sie, wie Sie ein verwaltetes HSM bereitstellen und aktivieren.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]

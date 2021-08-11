@@ -2,14 +2,14 @@
 title: Erste Schritte mit Azure Video Analyzer
 description: In diesem Tutorial wird Schritt für Schritt beschrieben, wie Sie Livevideos mit Azure Video Analyzer in IoT Edge and Azure Custom Vision analysieren.
 ms.topic: tutorial
-ms.date: 04/21/2021
+ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: 3ba8fe19b08a17e2d2e35cfc34cda3a65795dea5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: efb89b8ac28ca2d4ddfb72c75d420ace705d92ba
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110383753"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603400"
 ---
 # <a name="tutorial-analyze-live-video-with-azure-video-analyzer-on-iot-edge-and-azure-custom-vision"></a>Tutorial: Analysieren von Livevideos mit Azure Video Analyzer in IoT Edge und Azure Custom Vision
 
@@ -112,24 +112,16 @@ Nachdem Sie den Vorgang abgeschlossen haben, können Sie das Modell in einen Doc
    2. `docker image ls`
 
       Mit diesem Befehl wird überprüft, ob sich das neue Bild in der lokalen Registrierung befindet.
-   3. `docker run -p 127.0.0.1:80:80 -d cvtruck`
+   
+## <a name="set-up-your-development-environment"></a>Einrichten der Entwicklungsumgebung
 
-      Mit diesem Befehl wird der verfügbar gemachte Docker-Port (80) im Port des lokalen Computers (80) veröffentlicht.
-   4. `docker container ls`
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [setup development environment](./includes/set-up-dev-environment/csharp/csharp-set-up-dev-env.md)]
+::: zone-end
 
-      Mit diesem Befehl werden die Portzuordnungen überprüft, und es wird überprüft, ob der Docker-Container auf Ihrem Computer erfolgreich ausgeführt wird. Die Ausgabe sollte ungefähr wie folgt lauten:
-      
-      ```
-      CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
-      8b7505398367        cvtruck             "/bin/sh -c 'python …"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
-      ```
-   5. `curl -X POST http://127.0.0.1:80/score -F imageData=@<path to any image file that has the toy delivery truck in it>`
-
-      Dieser Befehl testet den Container auf dem lokalen Computer. Wenn das Bild den gleichen Lieferwagen zeigt, mit dem wir das Modell trainiert haben, sollte die Ausgabe etwas wie im folgenden Beispiel sein. Es deutet darauf hin, dass der Lieferwagen mit einer Wahrscheinlichkeit von 90,12 % erkannt wurde.
-
-      ```
-      {"created":"2020-03-20T07:10:47.827673","id":"","iteration":"","predictions":[{"boundingBox":{"height":0.66167289,"left":-0.03923762,"top":0.12781593,"width":0.70003178},"probability":0.90128148,"tagId":0,"tagName":"delivery truck"},{"boundingBox":{"height":0.63733053,"left":0.25220079,"top":0.0876643,"width":0.53331227},"probability":0.59745145,"tagId":0,"tagName":"delivery truck"}],"project":""}
-      ```
+::: zone pivot="programming-language-python"
+[!INCLUDE [setup development environment](./includes/set-up-dev-environment/python/python-set-up-dev-env.md)]
+::: zone-end
 
 ## <a name="examine-the-sample-files"></a>Untersuchen der Beispieldateien
 
@@ -151,7 +143,7 @@ Nachdem Sie den Vorgang abgeschlossen haben, können Sie das Modell in einen Doc
    1. `"topologyName" : "InferencingWithHttpExtension"`
    2. Fügen Sie Folgendes oben zum Parameterarray hinzu: `{"name": "inferencingUrl","value": "http://cv/score"},`
    3. Ändern Sie den Wert von Parameter `rtspUrl` in `"rtsp://rtspsim:554/media/t2.mkv"`.
-4. Stellen Sie unter `livePipelineDelete` sicher, dass `"name": "InferencingWithHttpExtension"` ist.
+4. Stellen Sie unter `pipelineTopologyDelete` sicher, dass `"name": "InferencingWithHttpExtension"` ist.
 5. Klicken Sie mit der rechten Maustaste auf die Datei „src/edge/deployment.customvision.template.json“, und wählen Sie dann **IoT Edge-Bereitstellungsmanifest generieren** aus.
 
    ![Screenshot, der das Generieren des IoT Edge-Bereitstellungsmanifests zeigt.](./media/custom-vision/deployment-template-json.png)
@@ -188,15 +180,11 @@ Nachdem Sie den Vorgang abgeschlossen haben, können Sie das Modell in einen Doc
     - Ein Modul mit dem Namen `rtspsim`, das einen RTSP-Server simuliert, der als Quelle eines Livevideofeeds fungiert.
     - Ein Modul mit dem Namen `cv`. Dies ist das Custom Vision-Erkennungsmodell für Spielzeug-LKW, das Custom Vision auf die Bilder anwendet und mehrere Tagtypen zurückgibt. (Unser Modell wurde nur mit einem Tag trainiert – „delivery truck“).
 
-## <a name="prepare-for-monitoring-events"></a>Vorbereiten der Überwachung von Ereignissen
 
-Klicken Sie mit der rechten Maustaste auf „ava-sample-device“, und wählen Sie die Option **Überwachung des integrierten Ereignisendpunkts starten** aus. Sie müssen diesen Schritt ausführen, um die IoT Hub-Ereignisse im **Ausgabefenster** von Visual Studio Code zu überwachen.
-
-![Screenshot, der „Überwachung des integrierten Ereignisendpunkts starten“ zeigt.](./media/custom-vision/start-monitoring.png)
 
 ## <a name="run-the-sample-program"></a>Ausführen des Beispielprogramms
 
-Wenn Sie die Topologie für dieses Tutorial in einem Browser öffnen, sehen Sie, dass der Wert von `inferencingUrl` auf `http://cv/image` festgelegt wurde. Diese Einstellung bedeutet, dass der Rückschlussserver nach dem Erkennen von Spielzeug-LKW im Livevideo Ergebnisse zurückgibt, falls welche vorhanden sind.
+Wenn Sie die Topologie für dieses Tutorial in einem Browser öffnen, sehen Sie, dass der Wert von `inferencingUrl` auf `http://cv/score` festgelegt wurde. Diese Einstellung bedeutet, dass der Rückschlussserver nach dem Erkennen von Spielzeug-LKW im Livevideo Ergebnisse zurückgibt, falls welche vorhanden sind.
 
 1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder wählen Sie **STRG+UMSCHALT+X** aus), und suchen Sie nach „Azure IoT-Hub“.
 2. Klicken Sie mit der rechten Maustaste, und wählen Sie **Erweiterungseinstellungen** aus.
@@ -205,7 +193,14 @@ Wenn Sie die Topologie für dieses Tutorial in einem Browser öffnen, sehen Sie,
 3. Suchen Sie **Show Verbose Message** (Ausführliche Meldung anzeigen), und aktivieren Sie es.
 
    ![Screenshot von „Ausführliche Meldung anzeigen“.](./media/custom-vision/show-verbose-message.png)
-4. Drücken Sie die **F5**-Taste, um eine Debugsitzung zu starten. Es werden dann Nachrichten im **Terminalfenster** ausgegeben.
+4.  ::: zone pivot="programming-language-csharp"
+    [!INCLUDE [header](includes/common-includes/csharp-run-program.md)]
+    ::: zone-end
+
+    ::: zone pivot="programming-language-python"
+    [!INCLUDE [header](includes/common-includes/python-run-program.md)]
+    ::: zone-end  
+
 5. Der Code von operations.json beginnt mit Aufrufen der direkten Methoden `livePipelineList` und `livePipelineList`. Wenn Sie nach dem Durcharbeiten vorheriger Schnellstartanleitungen eine Ressourcenbereinigung durchgeführt haben, werden bei diesem Prozess leere Listen zurückgegeben, und anschließend wird die Ausführung angehalten. Drücken Sie die **EINGABETASTE**, um den Vorgang fortzusetzen.
 
    Im **Terminalfenster** werden die nächsten Aufrufe direkter Methoden angezeigt:
@@ -223,7 +218,7 @@ Wenn Sie die Topologie für dieses Tutorial in einem Browser öffnen, sehen Sie,
             "parameters": [
               { 
                 "name": "inferencingUrl",
-                "value": "http://cv/image"
+                "value": "http://cv/score"
               },
               {
                 "name": "rtspUrl",

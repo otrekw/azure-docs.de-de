@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 06950bec1cdc7e5abc08f147417df6f1da8c502e
-  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+  ms.openlocfilehash: 5c4b17d0e725200250b6a01212edb374d3e21ff9
+  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/28/2021
-  ms.locfileid: "108133545"
+  ms.lasthandoff: 07/28/2021
+  ms.locfileid: "114731760"
 landingContent:
 - title: Erste Schritte
   linkLists:
@@ -27,7 +27,7 @@ landingContent:
     - text: Senden von Telemetriedaten von einem Gerät an einen Hub mithilfe der CLI
       url: quickstart-send-telemetry-cli.md
     - text: Steuern eines mit Hub-Instanz verbundenen Geräts
-      url: quickstart-control-device-node.md
+      url: quickstart-control-device.md
   - linkListType: get-started
     links:
     - text: Geräteverwaltung
@@ -117,7 +117,7 @@ landingContent:
     - text: Verwenden von IoT-Tools für VS Code
       url: iot-hub-create-use-iot-toolkit.md
     - text: IoT-Explorer
-      url: ../iot-pnp/howto-use-iot-explorer.md
+      url: ../iot-fundamentals/howto-use-iot-explorer.md
 - title: 'IoT Hub: Überwachen und Behandeln von Problemen'
   linkLists:
   - linkListType: how-to-guide

@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie Ihre 
 ms.topic: tutorial
 ms.date: 04/22/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f4b387a673cf49f30d40b44bb8d5e1f4dac51d0c
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 25fdd7306ab36401af7f36dc5b0ee85188a81231
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107895701"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112376232"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Erstellen einer eigenen Notfallwiederherstellung für benutzerdefinierte Themen in Event Grid
 Die Notfallwiederherstellung konzentriert sich auf die Wiederherstellung nach einem schwerwiegenden Ausfall der Anwendungsfunktionalität. In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie Ihre Ereignisarchitektur einrichten, um eine Wiederherstellung durchzuführen, wenn in einer bestimmten Region Fehler des Event Grid-Diensts auftreten.
@@ -84,11 +84,11 @@ Sie sollten nun über Folgendes verfügen:
    * Ein sekundäres Thema in Ihrer sekundären Region
    * Ein sekundäres Ereignisabonnement, das Ihr primäres Thema mit der Ereignisempfänger-Website verbindet
 
-## <a name="implement-client-side-failover&quot;></a>Implementieren des clientseitigen Failovers
+## <a name="implement-client-side-failover"></a>Implementieren des clientseitigen Failovers
 
 Da Sie nun über ein regional redundantes Themen- und Abonnementpaar verfügen, können Sie das clientseitige Failover implementieren. Dazu stehen mehrere Möglichkeiten zur Auswahl, alle Failoverimplementierungen besitzen jedoch die folgende Funktion: Wenn ein Thema nicht mehr fehlerfrei ist, wird Datenverkehr zum anderen Thema umgeleitet.
 
-### <a name=&quot;basic-client-side-implementation&quot;></a>Grundlegende clientseitige Implementierung
+### <a name="basic-client-side-implementation"></a>Grundlegende clientseitige Implementierung
 
 Der folgende Code ist ein einfacher .NET-Herausgeber, der immer zuerst versucht, die Veröffentlichung in Ihrem primären Thema vorzunehmen. Wenn dies nicht möglich ist, erfolgt dann ein Failover zum sekundären Thema. In beiden Fällen wird außerdem mit einem GET-Vorgang für `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` die Integritäts-API des anderen Themas überprüft. Ein fehlerfreies Thema sollte immer mit **200 OK** antworten, wenn ein GET-Vorgang für den Endpunkt **/api/Health** ausgeführt wird.
 
@@ -99,22 +99,21 @@ Der folgende Code ist ein einfacher .NET-Herausgeber, der immer zuerst versucht,
 using System;
 using System.Net.Http;
 using System.Collections.Generic;
-using Microsoft.Azure.EventGrid;
-using Microsoft.Azure.EventGrid.Models;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
+using Azure;
+using Azure.Messaging.EventGrid;
 
 namespace EventGridFailoverPublisher
 {
-    // This captures the &quot;Data&quot; portion of an EventGridEvent on a custom topic
+    // This captures the "Data" portion of an EventGridEvent on a custom topic
     class FailoverEventData
     {
-        [JsonProperty(PropertyName = &quot;teststatus")]
         public string TestStatus { get; set; }
     }
 
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             // TODO: Enter the endpoint each topic. You can find this topic endpoint value
             // in the "Overview" section in the "Event Grid Topics" blade in Azure Portal..
@@ -126,35 +125,33 @@ namespace EventGridFailoverPublisher
             string primaryTopicKey = "<your-primary-topic-key>";
             string secondaryTopicKey = "<your-secondary-topic-key>";
 
-            string primaryTopicHostname = new Uri( primaryTopic).Host;
-            string secondaryTopicHostname = new Uri(secondaryTopic).Host;
+            Uri primaryTopicUri = new Uri(primaryTopic);
+            Uri secondaryTopicUri = new Uri(secondaryTopic);
 
-            Uri primaryTopicHealthProbe = new Uri("https://" + primaryTopicHostname + "/api/health");
-            Uri secondaryTopicHealthProbe = new Uri("https://" + secondaryTopicHostname + "/api/health");
+            Uri primaryTopicHealthProbe = new Uri($"https://{primaryTopicUri.Host}/api/health");
+            Uri secondaryTopicHealthProbe = new Uri($"https://{secondaryTopicUri.Host}/api/health");
 
             var httpClient = new HttpClient();
 
             try
             {
-                TopicCredentials topicCredentials = new TopicCredentials(primaryTopicKey);
-                EventGridClient client = new EventGridClient(topicCredentials);
+                var client = new EventGridPublisherClient(primaryTopicUri, new AzureKeyCredential(primaryTopicKey));
 
-                client.PublishEventsAsync(primaryTopicHostname, GetEventsList()).GetAwaiter().GetResult();
+                await client.SendEventsAsync(GetEventsList());
                 Console.Write("Published events to primary Event Grid topic.");
 
                 HttpResponseMessage health = httpClient.GetAsync(secondaryTopicHealthProbe).Result;
                 Console.Write("\n\nSecondary Topic health " + health);
             }
-            catch (Microsoft.Rest.Azure.CloudException e)
+            catch (RequestFailedException ex)
             {
-                TopicCredentials topicCredentials = new TopicCredentials(secondaryTopicKey);
-                EventGridClient client = new EventGridClient(topicCredentials);
+                var client = new EventGridPublisherClient(secondaryTopicUri, new AzureKeyCredential(secondaryTopicKey));
 
-                client.PublishEventsAsync(secondaryTopicHostname, GetEventsList()).GetAwaiter().GetResult();
-                Console.Write("Published events to secondary Event Grid topic. Reason for primary topic failure:\n\n" + e);
+                await client.SendEventsAsync(GetEventsList());
+                Console.Write("Published events to secondary Event Grid topic. Reason for primary topic failure:\n\n" + ex);
 
-                HttpResponseMessage health = httpClient.GetAsync(primaryTopicHealthProbe).Result;
-                Console.Write("\n\nPrimary Topic health " + health);
+                HttpResponseMessage health = await httpClient.GetAsync(primaryTopicHealthProbe);
+                Console.WriteLine($"Primary Topic health {health}");
             }
 
             Console.ReadLine();
@@ -166,18 +163,14 @@ namespace EventGridFailoverPublisher
 
             for (int i = 0; i < 5; i++)
             {
-                eventsList.Add(new EventGridEvent()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    EventType = "Contoso.Failover.Test",
-                    Data = new FailoverEventData()
+                eventsList.Add(new EventGridEvent(
+                    subject: "test" + i,
+                    eventType: "Contoso.Failover.Test",
+                    dataVersion: "2.0",
+                    data: new FailoverEventData
                     {
                         TestStatus = "success"
-                    },
-                    EventTime = DateTime.Now,
-                    Subject = "test" + i,
-                    DataVersion = "2.0"
-                });
+                    }));
             }
 
             return eventsList;

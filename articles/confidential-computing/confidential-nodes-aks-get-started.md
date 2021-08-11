@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/08/2021
 ms.author: amgowda
 ms.custom: contentperf-fy21q3, devx-track-azurecli
-ms.openlocfilehash: b7dd9685be5e0928743eaf9a541c88de6a49a36c
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 950f6fa47de273534a4636796351dd3640628dda
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891247"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551234"
 ---
 # <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>Schnellstart: Bereitstellen eines AKS-Clusters mit Confidential Computing-Knoten über die Azure CLI
 
@@ -25,8 +25,8 @@ Features von Confidential Computing-Knoten:
 
 - Linux-Workerknoten, die Linux-Container unterstützen
 - Virtueller Computer der 2. Generation mit Ubuntu 18.04-VM-Knoten
-- Intel SGX-fähige CPU zum Ausführen Ihrer Container in einer geschützten Vertraulichkeits-Enclave mithilfe von Encrypted Page Cache Memory (EPC). Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Azure Confidential Computing](./faq.md).
-- Vorinstallierter Intel SGX DCAP-Treiber auf den Confidential Computing-Knoten. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Azure Confidential Computing](./faq.md).
+- Intel SGX-fähige CPU zum Ausführen Ihrer Container in einer geschützten Vertraulichkeits-Enclave mithilfe von Encrypted Page Cache Memory (EPC). Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Azure Confidential Computing](./faq.yml).
+- Vorinstallierter Intel SGX DCAP-Treiber auf den Confidential Computing-Knoten. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Azure Confidential Computing](./faq.yml).
 
 > [!NOTE]
 > Virtuelle DCsv2-Computer nutzen spezielle Hardware, für die höhere Preise gelten und die möglicherweise nicht in allen Regionen verfügbar ist. Weitere Informationen zu verfügbaren SKUs und unterstützten Regionen finden Sie [hier](virtual-machine-solutions.md).

@@ -13,8 +13,12 @@
     - name: Automanage für Windows Server
       href: automanage-windows-server.md
       items:
+        - name: "Automanage für Windows\_Server-Dienste (Vorschauversion)"
+          href: automanage-windows-server-services-overview.md
         - name: Hotpatch für neue virtuelle Computer
           href: automanage-hotpatch.md
+    - name: Automanage für Server mit Arc-Unterstützung
+      href: automanage-arc.md
     - name: Automanage-Konto
       href: automanage-account.md
 - name: Anleitung
@@ -36,6 +40,6 @@
   expanded: true
   items:
     - name: Häufig gestellte Fragen
-      href: faq.md
+      href: faq.yml
     - name: Framework für die Cloudeinführung (Cloud Adoption Framework)
       href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management'

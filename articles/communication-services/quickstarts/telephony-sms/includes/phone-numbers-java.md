@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c312b33a63c179d9af8347e268d400c5e48b3921
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 7c45bc634b725c29e1bf98138f3bc831e85bea55
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430132"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112536162"
 ---
 > [!NOTE]
 > Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/PhoneNumbers).
@@ -32,6 +32,12 @@ Wie Sie sehen, wurde durch die Aufgabe „generate“ ein Verzeichnis erstellt, 
 Öffnen Sie die Datei **pom.xml** in Ihrem Text-Editor. Fügen Sie der Gruppe der Abhängigkeiten das folgende Abhängigkeitselement hinzu:
 
 ```xml
+<dependency>
+    <groupId>com.azure</groupId>
+    <artifactId>azure-communication-common</artifactId>
+    <version>1.0.0</version>
+</dependency>
+
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-phonenumbers</artifactId>

@@ -162,6 +162,6 @@
     - name: Verfügbare Regionen
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all'
     - name: Häufig gestellte Fragen
-      href: faq-edge.md
+      href: faq-edge.yml
     - name: Kontingente und Einschränkungen
       href: quotas-limitations.md

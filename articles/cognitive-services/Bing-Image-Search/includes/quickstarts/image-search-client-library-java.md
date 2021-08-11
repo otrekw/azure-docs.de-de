@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: f155868483a0b00ed5ecb6f02ad3ee5440e6e45a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a07d6c6b397f8461202ffebe081b2fde91b53547
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625521"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113289676"
 ---
 Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit der Bing-Bildersuche-Clientbibliothek aus, die ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache Java-Anwendung sendet eine Bildersuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 
@@ -22,7 +22,7 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen die aktuelle Version des [Java Development Kits (JDK)](/azure/developer/java/fundamentals/java-jdk-long-term-support).
+Sie benötigen die aktuelle Version des [Java Development Kits (JDK)](/azure/developer/java/fundamentals/java-support-on-azure).
 
 Installieren Sie die Abhängigkeit für die Bing-Bildersuche-Clientbibliothek mithilfe von Maven, Gradle oder anderen Systemen zum Verwalten von Abhängigkeiten. Die Maven-POM-Datei erfordert die folgende Deklaration:
 

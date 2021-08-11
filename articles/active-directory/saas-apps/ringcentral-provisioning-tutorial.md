@@ -2,21 +2,21 @@
 title: 'Tutorial: Konfigurieren von RingCentral für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für RingCentral automatisch bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
-ms.author: Zhchia
-ms.openlocfilehash: 1891af9acae2b976a18f68983693a7df559b6476
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: thwimmer
+ms.openlocfilehash: 1dd3f9d7462dc8594cf8b6e37db6df725196b899
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800768"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760071"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von RingCentral für die automatische Benutzerbereitstellung
 

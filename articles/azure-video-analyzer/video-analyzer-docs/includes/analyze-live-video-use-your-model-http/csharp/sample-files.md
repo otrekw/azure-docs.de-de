@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: juliako
-ms.openlocfilehash: 5af5a1a78882566a39f94c3b7d5d098d3ed1034f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 48168a651cb87af56b114821e029e1bba3b3eb4b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371817"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465686"
 ---
 Als Teil der Voraussetzungen haben Sie den Beispielcode in einen Ordner heruntergeladen. Führen Sie die unten angegebenen Schritte aus, um die Beispieldateien zu überprüfen und zu bearbeiten.
 
@@ -27,7 +27,7 @@ Die Bereitstellungsvorlage verweist auf das Bereitstellungsmanifest für das Edg
         * Aufrufen direkter Methoden zur Bereinigung der Ressourcen
 1. Bearbeiten Sie die Datei operations.json:
 
-    * Ändern Sie den Link zur Pipelinetopologie:<br/>`"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/httpExtension/topology.json"`
-    * Bearbeiten Sie unter „livePipelineSet“ den Namen der Pipelinetopologie, sodass er mit dem Wert im vorherigen Link übereinstimmt:<br/>`"pipelineTopologyName" : "InferencingWithHttpExtension"`
-    * Bearbeiten Sie unter „PipelineTopologyDelete“ den Namen:<br/>`"name": "InferencingWithHttpExtension"`
+    * Ändern Sie den Link zur Pipelinetopologie:<br/>`"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/motion-with-httpExtension/topology.json"`
+    * Bearbeiten Sie unter „livePipelineSet“ den Namen der Pipelinetopologie, sodass er mit dem Wert im vorherigen Link übereinstimmt:<br/>`"pipelineTopologyName" : "EVROnMotionPlusHttpExtension"`
+    * Bearbeiten Sie unter „PipelineTopologyDelete“ den Namen:<br/>`"name": "EVROnMotionPlusHttpExtension"`
     

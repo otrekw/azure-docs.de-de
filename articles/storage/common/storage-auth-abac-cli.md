@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: a2cf4c19e21ad13a2a79343713e9a0494eff0704
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b05dbeeb69cee8afd3c237b3fbc2c3e59fef238f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489420"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288053"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-azure-cli-preview"></a>Tutorial: Hinzufügen einer Rollenzuweisungsbedingung zum Einschränken des Zugriffs auf Blobs mithilfe der Azure CLI (Vorschau)
 
@@ -82,8 +82,6 @@ Im Code sieht die Bedingung wie folgt aus:
     ```azurecli
     subscriptionId="<subscriptionId>"
     ```
-
-1. Registrieren Sie Ihr Abonnement für die Verwendung von Blobindextags, sofern Sie diesen Schritt noch nicht ausgeführt haben. Weitere Informationen finden Sie unter [Registrieren Ihres Abonnements (Vorschau)](../blobs/storage-manage-find-blobs.md#register-your-subscription-preview).
 
 ## <a name="step-2-create-a-user"></a>Schritt 2: Erstellen eines Benutzers
 

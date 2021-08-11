@@ -3,21 +3,21 @@ title: 'Schnellstart: Anmelden von Benutzern in JavaScript-Single-Page-Web-Apps 
 titleSuffix: Microsoft identity platform
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie aus einer JavaScript-App eine API aufrufen, für die Zugriffstoken erforderlich sind, die über die Microsoft Identity Platform ausgegeben werden.
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
-ms.author: mtillman
+ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: ae6fdc989f70cee387c818a147e52408650cc783
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c266fe52620cd91f1e09f06d7468181b0d584df3
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075437"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357641"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA
 
@@ -56,7 +56,7 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 > 1. Wählen Sie **Registrieren**. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
 > 1. Für diesen Schnellstart muss der [Flow zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) aktiviert werden. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
 > 1. Wählen Sie **Plattformkonfigurationen** > **Plattform hinzufügen** aus. Wählen Sie **Web** aus.
-> 1. Legen Sie den Wert für **Umleitungs-URI** auf `http://localhost:3000/` fest. 
+> 1. Legen Sie den Wert für **Umleitungs-URI** auf `http://localhost:3000/` fest.
 > 1. Treffen Sie unter **Implizite Genehmigung und Hybridflows** eine Auswahl für **Zugriffstoken** und **ID-Token**.
 > 1. Wählen Sie **Konfigurieren** aus.
 

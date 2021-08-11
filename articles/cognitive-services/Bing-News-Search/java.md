@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-java
-ms.openlocfilehash: f49de67504c3d3fea39d4c12ab4b06790693ad68
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 761bbd26ac20b4fad6f6ccb444504e4f2cfd1bac
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351962"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113285744"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit Java und der REST-API der Bing-News-Suche
 
@@ -33,7 +33,7 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Das [Java Development Kit (JDK) 7 oder 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
+* Das [Java Development Kit (JDK) 7 oder 8](/azure/developer/java/fundamentals/java-support-on-azure).
 * Die [Gson-Bibliothek](https://github.com/google/gson).
 
 
