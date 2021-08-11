@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8726f6211ef792064e9e180a8c2e34383eeb6d53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389109"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441570"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Tutorial: Migrieren einer Web-App aus Bing Karten
 
@@ -33,7 +33,7 @@ Web-Apps, die Bing Karten verwenden, nutzen oftmals das Bing Karten V8 JavaScrip
 
 Wenn Sie eine vorhandene Webanwendung migrieren, überprüfen Sie, ob sie eine Open Source-Kartensteuerelement-Bibliothek wie Cesium, Leaflet oder OpenLayers verwendet. Wenn dies der Fall ist und Sie diese Bibliothek weiterhin verwenden möchten, können Sie sie mit den Kacheldiensten von Azure Maps ([Straßenkacheln](/rest/api/maps/render/getmaptile) \| [Satellitenkacheln](/rest/api/maps/render/getmapimagerytile)) verbinden. Über die Links unten erhalten Sie ausführliche Informationen zur Verwendung von Azure Maps in einigen häufig verwendeten Open Source-Kartensteuerelement-Bibliotheken.
 
-* [Cesium:](https://cesiumjs.org/) ein 3D-Kartensteuerelement für das Web. [Codebeispiele](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [Plug-In-Repository]()
+* [Cesium:](https://www.cesium.com/) ein 3D-Kartensteuerelement für das Web. [Codebeispiele](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [Plug-In-Repository]()
 * [Leaflet:](https://leafletjs.com/) schlankes 2D-Kartensteuerelement für das Web. [Codebeispiele](https://azuremapscodesamples.azurewebsites.net/?search=leaflet) \| [Plug-In-Repository]()
 * [OpenLayers:](https://openlayers.org/) ein 2D-Kartensteuerelement für das Web, das Projektionen unterstützt. [Codebeispiele](https://azuremapscodesamples.azurewebsites.net/?search=openlayers) \| [Plug-In-Repository]()
 
@@ -909,7 +909,7 @@ In Azure Maps werden Daten aus einer Datenquelle hinzugefügt und verwaltet. Ebe
 
 Bei aktiviertem Clustering sendet die Datenquelle gruppierte und nicht gruppierte Datenpunkte zum Rendern an Ebenen. Die Datenquelle kann Hunderttausende von Datenpunkten gruppieren. Ein gruppierter Datenpunkt weist die folgenden Eigenschaften auf:
 
-| Eigenschaftenname               | type    | BESCHREIBUNG                                    |
+| Eigenschaftenname               | type    | Beschreibung                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Gibt an, ob das Feature einen Cluster darstellt.     |
 | `cluster_id`                | Zeichenfolge  | Eine eindeutige ID für den Cluster, die zusammen mit den `DataSource`-Klassen und den `getClusterExpansionZoom`-, `getClusterChildren`- und `getClusterLeaves`-Funktionen verwendet werden kann. |
@@ -1255,7 +1255,7 @@ Sowohl Bing- als auch Azure-Karten unterstützen das Überlagern von georeferenz
 
 **Vorher: Bing Karten**
 
-Beim Erstellen einer Bodenüberlagerung in Bing Karten müssen Sie die URL für das zu überlagernde Bild und einen Begrenzungsrahmen angeben, an den das Bild auf der Karte gebunden wird. In diesem Beispiel wird der Karte ein Kartenbild von [Newark New Jersey von 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) überlagert.
+Beim Erstellen einer Bodenüberlagerung in Bing Karten müssen Sie die URL für das zu überlagernde Bild und einen Begrenzungsrahmen angeben, an den das Bild auf der Karte gebunden wird. In diesem Beispiel wird der Karte ein Kartenbild von Newark New Jersey von 1922 überlagert.
 
 ```html
 <!DOCTYPE html>

@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Ihre erste Ruby-Abfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren des Resource Graph-Gems für Ruby und zum Ausführen Ihrer ersten Abfrage aus.
-ms.date: 05/01/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
-ms.openlocfilehash: 40950a5ca575df67f04830446a547f8d3dd1bd92
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 3c9cfcc71dc3ec3b0ca2d6b3e665e63fd3a57d1c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324129"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459925"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe von Ruby
 

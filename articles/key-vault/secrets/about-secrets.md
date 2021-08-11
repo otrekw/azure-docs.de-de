@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 31ab388d01c9bd589a809bd1c71b455d6d8bf754
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 232a3293d6529955a768ed8d7700289ddbed5177
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984732"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136362"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informationen zu Azure Key Vault-Geheimnissen
 
@@ -24,7 +24,7 @@ Aus Entwicklerperspektive akzeptieren Key Vault-APIs geheime Werte als Zeichenfo
 
 Bei hochvertraulichen Daten sollten zusätzliche Schutzebenen für die Daten eingerichtet werden. Die Verschlüsselung von Daten mithilfe eines separaten Schutzschlüssels vor dem Speichern in Key Vault ist nur ein Beispiel hierfür.  
 
-Key Vault unterstützt auch ein contentType-Feld für Geheimnisse. Clients können den Inhaltstyp eines Geheimnisses als Hilfestellung beim Interpretieren der geheimen Daten beim Abrufen angeben. Dieses Feld darf maximal 255 Zeichen lang sein. Es gibt keine vordefinierten Werte. Die Verwendungsempfehlung dient als Hinweis für das Interpretieren der geheimen Daten. Wenn eine Implementierung z.B. sowohl Kennwörter als auch Zertifikate als Geheimnisse speichert, verwenden Sie dieses Feld zur Unterscheidung. Es gibt keine vordefinierten Werte.  
+Key Vault unterstützt auch ein contentType-Feld für Geheimnisse. Clients können den Inhaltstyp eines Geheimnisses als Hilfestellung beim Interpretieren der geheimen Daten beim Abrufen angeben. Dieses Feld darf maximal 255 Zeichen lang sein. Die Verwendungsempfehlung dient als Hinweis für das Interpretieren der geheimen Daten. Wenn eine Implementierung z.B. sowohl Kennwörter als auch Zertifikate als Geheimnisse speichert, verwenden Sie dieses Feld zur Unterscheidung. Es gibt keine vordefinierten Werte.  
 
 ## <a name="encryption"></a>Verschlüsselung
 

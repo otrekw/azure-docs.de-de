@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/20/2021
+ms.date: 05/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 5237ca5629957f9f0e774aa1ee3f0f78c7a54f73
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 16962c14de7458c69b31d3501d7cd8317ae06f09
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481755"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527338"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-foundu"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit foundU
 
@@ -129,7 +129,7 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 1. Führen Sie auf der **Seite mit den Einstellungen für einmaliges** Anmelden die folgenden Schritte aus:
 
-    ![Screenshot: SSO-Konfiguration von foundU](./media/foundu-tutorial/configuration.png)
+    ![Screenshot: SSO-Konfiguration von foundU](./media/foundu-tutorial/configuration-1.png)
 
     a. Kopieren Sie den Wert für **Identifier (Entity ID)** (Bezeichner (Entitäts-ID)), und fügen Sie diesen Wert im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner** ein.
 

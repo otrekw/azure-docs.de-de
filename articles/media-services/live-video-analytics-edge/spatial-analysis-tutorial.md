@@ -3,12 +3,12 @@ title: 'Analysieren von Livevideos mit maschinellem Sehen für die räumliche An
 description: In diesem Tutorial wird gezeigt, wie Sie Live Video Analytics zusammen mit dem KI-Feature „Maschinelles Sehen“ für die räumliche Analyse aus Azure Cognitive Services verwenden, um einen Livevideofeed von einer (simulierten) IP-Kamera zu analysieren.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 549c1405e7deb3531da65ff4425befa2d29aaeef
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 824ff93e1411563b07bea9f30bbd2cf4ecad457c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373561"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456134"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-and-live-video-analytics-preview"></a>Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse und Live Video Analytics (Vorschau)
 
@@ -63,7 +63,7 @@ Der Knoten „MediaGraphCognitiveServicesVisionExtension“ fungiert als Proxy. 
 
 ## <a name="create-the-computer-vision-resource"></a>Erstellen der Ressource für maschinelles Sehen
 
-Sie müssen im [Azure-Portal](../../iot-edge/how-to-deploy-modules-portal.md) oder über die Azure CLI eine Azure-Ressource vom Typ Maschinelles Sehen erstellen. Sie können die Ressource erstellen, nachdem Ihre Anforderung des Zugriffs auf den Container genehmigt und Ihre Azure-Abonnement-ID registriert wurde. Wechseln Sie zu https://aka.ms/csgate, um Ihren Anwendungsfall und Ihre Azure-Abonnement-ID zu übermitteln.  Sie müssen die Azure-Ressource mit dem Azure-Abonnement erstellen, das im Zugriffsanforderungsformular angegeben wurde.
+Sie müssen im [Azure-Portal](../../iot-edge/how-to-deploy-modules-portal.md) oder über die Azure CLI eine Azure-Ressource vom Typ Maschinelles Sehen erstellen.
 
 ### <a name="gathering-required-parameters"></a>Ermitteln erforderlicher Parameter
 

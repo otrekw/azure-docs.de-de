@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung'
 description: Verwenden Sie Protokollstreaming, Protokollanalyse, Metriken und Ablaufverfolgung, um PetClinic-Beispiel-Apps in Azure Spring Cloud zu überwachen.
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 04/23/2021
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9275eb9d5f3206a5acd41fa970c4acd1f4663a37
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 424954d18fc719748175c2ad9428bb621d577a70
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321571"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114470779"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung
 
@@ -228,7 +228,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 Im Rahmen einer vorherigen Schnellstartanleitung haben Sie auch den Namen der Standardressourcengruppe festgelegt. Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren möchten, löschen Sie diesen Standardwert, indem Sie den folgenden CLI-Befehl ausführen:
 
 ```azurecli
-az configure --defaults group=
+az config set defaults.group=
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

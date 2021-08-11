@@ -2,21 +2,21 @@
 title: 'Tutorial: Konfigurieren von Zoom für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für Zoom automatisch bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/3/2019
-ms.author: Zhchia
-ms.openlocfilehash: c87c3692d7e1106e0952b85791da663e03c6001d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 393b93d3d5e2a8d9088fe8ec759971fd096eb76c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182477"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760494"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zoom für die automatische Benutzerbereitstellung
 

@@ -7,12 +7,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: b25d9846f3bb678c182fa22d824f7b4171d2d803
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: cf08f1baf2a2fb32e22cf07ae27c5122d6459294
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515630"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285344"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Schnellstart: Einrichten von Data Science Virtual Machine für Linux (Ubuntu)
 
@@ -145,6 +145,6 @@ Informieren Sie sich weiter:
 
 * In der exemplarischen Vorgehensweise [Data Science mit einer Linux Data Science Virtual Machine in Azure](linux-dsvm-walkthrough.md) wird veranschaulicht, wie Sie mehrere allgemeine Data Science-Aufgaben mit der hier bereitgestellten Linux-DSVM ausführen. 
 * Entdecken Sie die unterschiedlichen Data Science-Tools der DSVM-Instanz, indem Sie die in diesem Artikel beschriebenen Tools ausprobieren. Sie können auch `dsvm-more-info` in der Shell auf dem virtuellen Computer ausführen, um eine grundlegende Einführung und Hinweise auf weitere Informationen zu den Tools auf der VM zu erhalten.  
-* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](../team-data-science-process/index.yml) systematisch Analyselösungen erstellen.
+* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](/azure/architecture/data-science-process/overview) systematisch Analyselösungen erstellen.
 * Besuchen Sie die [Azure AI Gallery](https://gallery.azure.ai/), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure-KI-Dienste verwendet werden.
 * Gehen Sie anhand der entsprechenden [Referenzdokumentation](./reference-ubuntu-vm.md) für diesen virtuellen Computer vor.

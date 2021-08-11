@@ -2,14 +2,14 @@
 title: 'Erkennen von Bewegung und Aufzeichnen von Videos auf Edgegeräten: Azure'
 description: Verwenden Sie Azure Video Analyzer, um den Livevideofeed einer (simulierten) IP-Kamera zu analysieren. Es wird veranschaulicht, wie Bewegung im Video erkannt wird, damit dann ein MP4-Videoclip im lokalen Dateisystem auf dem Edgegerät aufgezeichnet werden kann. Für die Schnellstartanleitung werden ein virtueller Azure-Computer als IoT Edge-Gerät und ein simulierter Livevideostream verwendet.
 ms.topic: quickstart
-ms.date: 04/01/2021
+ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: 38886673f57c4142dc1fd8cd5bd397a375aca4db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e79a2aa9027309838fd0a0fcc79096e27651e7be
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385849"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601637"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Schnellstart: Erkennen von Bewegung und Aufzeichnen von Videos auf Edgegeräten
 
@@ -68,7 +68,13 @@ Führen Sie die folgenden Schritte aus, um per Video Analyzer die Bewegung eines
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/vscode-common-screenshots/verbose-message.png" alt-text= "Show Verbose Message":::
 
-1. Starten Sie eine Debugsitzung, indem Sie F5 drücken. Im **Terminalfenster** werden einige Meldungen ausgegeben.
+1.  ::: zone pivot="programming-language-csharp"
+    [!INCLUDE [header](includes/common-includes/csharp-run-program.md)]
+    ::: zone-end
+
+    ::: zone pivot="programming-language-python"
+    [!INCLUDE [header](includes/common-includes/python-run-program.md)]
+    ::: zone-end
 1. Mit dem Code in _operations.json_ werden die direkten Methoden `pipelineTopologyList` und `livePipelineList` aufgerufen. Wenn Sie nach dem Durcharbeiten vorheriger Schnellstartanleitungen eine Ressourcenbereinigung durchgeführt haben, werden bei diesem Prozess leere Listen zurückgegeben, und anschließend wird die Ausführung angehalten. Drücken Sie die EINGABETASTE.
 
    ```
@@ -136,7 +142,7 @@ Mit den nächsten Aufrufen wird die Ressourcenbereinigung durchgeführt:
 
 Wenn Sie die Pipelinetopologie ausführen, durchlaufen die Ergebnisse vom Knoten des Bewegungserkennungsprozessors den Knoten der IoT Hub-Senke und werden an den IoT-Hub gesendet. Die im Ausgabefenster von Visual Studio Code angezeigten Nachrichten enthalten jeweils den Abschnitt „body“ und den Abschnitt „applicationProperties“. Weitere Informationen finden Sie unter [Erstellen und Lesen von IoT Hub-Nachrichten](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
-In den folgenden Nachrichten werden vom Video Analyzer-Edgemodul die Anwendungseigenschaften und der Inhalt des Texts definiert.
+In den folgenden Meldungen werden vom Video Analyzer-Edge-Modul die Anwendungseigenschaften und der Inhalt des Texts definiert.
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished-Ereignis
 
@@ -234,4 +240,4 @@ Falls Sie auch die anderen Schnellstartanleitungen durcharbeiten möchten, sollt
 - Zusätzliches für fortgeschrittene Benutzer:
 
   - Verwenden Sie eine [IP-Kamera](https://en.wikipedia.org/wiki/IP_camera) mit RTSP-Unterstützung anstelle des RTSP-Simulators. IP-Kameras, die RTSP unterstützen, finden Sie auf der [Seite mit den ONVIF-konformen Produkten](https://www.onvif.org/conformant-products/). Suchen Sie nach Geräten, die mit den Profilen G, S oder T konform sind.
-  - Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle einer Linux-VM in Azure. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Befolgen Sie die Anleitung unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-install-iot-edge.md?view=iotedge-2020-11&preserve-view=true). Befolgen Sie anschließend die Anleitung unter [Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](../../iot-edge/quickstart-linux.md?view=iotedge-2020-11&preserve-view=true), um das Gerät für Azure IoT Hub zu registrieren.
+  - Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle einer Linux-VM in Azure. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Befolgen Sie die Anleitung unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-install-iot-edge.md?view=iotedge-2020-11&preserve-view=true). Befolgen Sie anschließend die Anleitung unter [Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](../../iot-edge/quickstart-linux.md?view=iotedge-2020-11&preserve-view=true), um das Gerät für Azure IoT Hub zu registrieren.

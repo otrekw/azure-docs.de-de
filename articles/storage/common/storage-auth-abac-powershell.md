@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: 8d634cf7cb5a500e8ff36222419600b6059c9a74
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: d6cb1980c93e5161f02b79b05f1128ba777027c6
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489337"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281951"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-azure-powershell-preview"></a>Tutorial: Hinzufügen einer Rollenzuweisungsbedingung zum Einschränken des Zugriffs auf Blobs mithilfe von Azure PowerShell (Vorschau)
 
@@ -110,8 +110,6 @@ Im Code sieht die Bedingung wie folgt aus:
     $context = Get-AzSubscription -SubscriptionId $subscriptionId
     Set-AzContext $context
     ```
-
-1. Registrieren Sie Ihr Abonnement für die Verwendung von Blobindextags, sofern Sie diesen Schritt noch nicht ausgeführt haben. Weitere Informationen finden Sie unter [Registrieren Ihres Abonnements (Vorschau)](../blobs/storage-manage-find-blobs.md#register-your-subscription-preview).
 
 ## <a name="step-3-create-a-user"></a>Schritt 3: Erstellen eines Benutzers
 

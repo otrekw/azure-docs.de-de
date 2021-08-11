@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 62bcd3703aac251a839928d205e0fd438b48250e
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: b90b19edd1cf7f22f7396476866208e7e3bd2523
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892236"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112574621"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Schnellstart: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes
 
@@ -168,7 +168,7 @@ Weitere Informationen finden Sie unter [Registrieren für Azure NetApp Files](az
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Der folgende Codeausschnitt zeigt, wie Sie ein NetApp-Konto in einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen, indem Sie die Ressource [Microsoft.NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) verwenden. Um den Code auszuführen, laden Sie die [vollständige ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) aus unserem GitHub-Repository herunter.
+Der folgende Codeausschnitt zeigt, wie Sie ein NetApp-Konto in einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen, indem Sie die Ressource [Microsoft.NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) verwenden. Um den Code auszuführen, laden Sie die [vollständige ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.netapp/anf-nfs-volume/azuredeploy.json) aus unserem GitHub-Repository herunter.
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.netapp/anf-nfs-volume/azuredeploy.json" range="177-183":::
 
@@ -242,7 +242,7 @@ Der folgende Codeausschnitt zeigt, wie Sie ein NetApp-Konto in einer Azure Resou
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-Der folgende Codeausschnitt zeigt, wie Sie einen Kapazitätspool in einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen, indem Sie die Ressource [Microsoft.NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) verwenden. Um den Code auszuführen, laden Sie die [vollständige ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) aus unserem GitHub-Repository herunter.
+Der folgende Codeausschnitt zeigt, wie Sie einen Kapazitätspool in einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen, indem Sie die Ressource [Microsoft.NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) verwenden. Um den Code auszuführen, laden Sie die [vollständige ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.netapp/anf-nfs-volume/azuredeploy.json) aus unserem GitHub-Repository herunter.
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.netapp/anf-nfs-volume/azuredeploy.json" range="184-196":::
 
@@ -391,7 +391,7 @@ Der folgende Codeausschnitt zeigt, wie Sie einen Kapazitätspool in einer Azure 
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-Die folgenden Codeausschnitte zeigen, wie Sie ein VNet einrichten und ein Azure NetApp Files-Volume in einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen. Das VNet-Setup verwendet die Ressource [Microsoft.Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks). Die Volumeerstellung verwendet die Ressource [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes). Um den Code auszuführen, laden Sie die [vollständige ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) aus unserem GitHub-Repository herunter.
+Die folgenden Codeausschnitte zeigen, wie Sie ein VNet einrichten und ein Azure NetApp Files-Volume in einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen. Das VNet-Setup verwendet die Ressource [Microsoft.Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks). Die Volumeerstellung verwendet die Ressource [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes). Um den Code auszuführen, laden Sie die [vollständige ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.netapp/anf-nfs-volume/azuredeploy.json) aus unserem GitHub-Repository herunter.
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.netapp/anf-nfs-volume/azuredeploy.json" range="148-176":::
 
@@ -474,3 +474,6 @@ Verwenden Sie das Azure-Portal, die PowerShell oder die Azure CLI, um die Ressou
 
 > [!div class="nextstepaction"]
 > [Erstellen eines NFS-Volumes](azure-netapp-files-create-volumes.md)
+
+> [!div class="nextstepaction"]
+> [Lösungsarchitekturen mit Azure NetApp Files](azure-netapp-files-solution-architectures.md)

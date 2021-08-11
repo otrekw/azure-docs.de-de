@@ -2,18 +2,18 @@
 title: 'Tutorial: Bereitstellen von statisch gerenderten Next.js-Websites in Azure Static Web Apps'
 description: Es wird beschrieben, wie Sie dynamische Next.js-Websites mit Azure Static Web Apps generieren und bereitstellen.
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.author: chnwamba
+ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 940ea0b96d4e369ceb4ba21c0d31fad36501c24f
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: eb4a9c69ed29b1f13ab2769044c0067779a5e195
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814026"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454130"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps"></a>Bereitstellen von statisch gerenderten Next.js-Websites in Azure Static Web Apps
 
@@ -147,16 +147,16 @@ Die folgenden Schritte veranschaulichen, wie Sie die App, die Sie gerade zu GitH
     | _Ressourcengruppe_ | **my-nextjs-group**  |
     | _Name_ | **my-nextjs-app** |
     | _Plantyp_ | **Free** |
-    | _Region für Azure Functions-API und Stagingumgebungen_ | Wählen Sie eine Region aus, die in Ihrer Nähe liegt. |
+    | _Region für Azure Functions-API und Stagingumgebungen_ | Wählen Sie die Region aus, die Ihnen am nächsten ist. |
     | _Quelle_ | **GitHub** |
 
-1. Wählen Sie **Mit GitHub anmelden** aus, und führen Sie die Authentifizierung mit GitHub durch.
+1. Wählen Sie **Mit GitHub anmelden** aus, und authentifizieren Sie sich bei GitHub.
 
 1. Geben Sie die folgenden GitHub-Werte ein.
 
     | Eigenschaft | Wert |
     | --- | --- |
-    | _Organisation_ | Wählen Sie die gewünschte GitHub-Organisation aus. |
+    | _Organisation_ | Wählen Sie Ihre gewünschte GitHub-Organisation aus. |
     | _Repository_ | Wählen Sie **nextjs-starter** aus. |
     | _Branch_ | Wählen Sie **main** aus. |
 
@@ -168,9 +168,9 @@ Die folgenden Schritte veranschaulichen, wie Sie die App, die Sie gerade zu GitH
 
 ### <a name="review-and-create"></a>Überprüfen und Erstellen
 
-1. Klicken Sie auf die Schaltfläche **Überprüfen + Erstellen**, um sicherzustellen, dass alle Details stimmen.
+1. Wählen Sie die Schaltfläche **Überprüfen und erstellen** aus, um sicherzustellen, dass alle Details stimmen.
 
-1. Wählen Sie **Erstellen** aus, um mit der Erstellung der statischen App Service-Web-App zu beginnen und eine GitHub-Aktion für die Bereitstellung anzugeben.
+1. Wählen Sie **Erstellen** aus, um mit der Erstellung der statischen App Service-Web-App zu beginnen und einen GitHub Action-Vorgang für die Bereitstellung anzugeben.
 
 1. Wenn die Bereitstellung abgeschlossen ist, klicken Sie auf **Zu Ressource wechseln**.
 
