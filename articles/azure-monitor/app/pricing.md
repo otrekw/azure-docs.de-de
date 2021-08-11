@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 3/30/2021
+ms.date: 5/05/2021
 ms.reviewer: lagayhar
-ms.openlocfilehash: e048e788e674e90a62b15784c590c07e5d36b816
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 1ed9fc345b1c8afe416b4b98c621fc1c9b48a557
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078399"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795256"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -197,8 +197,11 @@ Das von Ihnen gesendete Datenvolumen kann mithilfe der folgenden Verfahren verwa
  
 * **Tägliche Obergrenze**: Beim Erstellen einer Application Insights-Ressource im Azure-Portal ist die tägliche Obergrenze auf 100 GB pro Tag festgelegt. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource über Visual Studio ist klein (nur 32,3 MB pro Tag). Zur Vereinfachung von Tests ist der Standardwert für die tägliche Obergrenze festgelegt. Es ist vorgesehen, dass der Benutzer vor dem Bereitstellen der App in der Produktion die tägliche Obergrenze erhöht. 
 
-    Die Obergrenze liegt bei 1.000 GB pro Tag, es sei denn, Sie fordern einen höheren Maximalwert für eine Anwendung mit hohem Datenverkehr an.
+    Die Obergrenze in Application Insights liegt bei 1.000 GB pro Tag – es sei denn, Sie fordern einen höheren Maximalwert für eine Anwendung mit hohem Datenverkehr an.
     
+    > [!TIP]
+    > Für eine arbeitsbereichsbasierte Application Insights-Ressource wird empfohlen, anstelle der Application Insights-Obergrenze die [tägliche Obergrenze des Arbeitsbereichs](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume) zur Begrenzung der Erfassung und Kosten heranzuziehen.
+
     E-Mails mit Warnungen zur täglichen Obergrenze werden an Konten gesendet, die Mitglieder der folgenden Rollen für Ihre Application Insights-Ressource sind: „Dienstadministrator“, „Kontoadministrator“, „Co-Administrator“, „Besitzer“.
 
     Überlegen Sie gründlich, wenn Sie die tägliche Obergrenze festlegen. Sie sollten darauf achten, *niemals die tägliche Obergrenze zu erreichen*. Anderenfalls verlieren Sie die Daten des restlichen Tages, und Sie können nicht Ihre Anwendung überwachen. Um die tägliche Obergrenze zu ändern, verwenden Sie die Option **Obergrenze für das tägliche Volumen**. Sie können über den Bereich **Nutzung und geschätzte Kosten** auf diese Option zugreifen. (Dies wird weiter unten in diesem Artikel ausführlicher beschrieben.)
@@ -210,6 +213,9 @@ Das von Ihnen gesendete Datenvolumen kann mithilfe der folgenden Verfahren verwa
 ## <a name="manage-your-maximum-daily-data-volume"></a>Verwalten Ihres maximalen täglichen Datenvolumens
 
 Zur Beschränkung der gesammelten Daten können Sie die Obergrenze für das tägliche Volumen verwenden. Wenn die Obergrenze erreicht ist, gehen sämtliche Telemetriedaten, die von Ihrer Anwendung gesendet wurden, für den restlichen Tag verloren. Von einer Erreichung der täglichen Obergrenze durch Ihre Anwendung wird *abgeraten*. Die Integrität und Leistung Ihrer Anwendung kann nicht nachverfolgt werden, nachdem sie die tägliche Obergrenze erreicht haben.
+
+> [!WARNING]
+> Für eine arbeitsbereichsbasierte Application Insights-Ressource wird empfohlen, die [tägliche Obergrenze des Arbeitsbereichs](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume) zur Begrenzung der Erfassung und Kosten heranzuziehen. Die Obergrenze pro Tag in Application Insights schränkt die Erfassung möglicherweise nicht in allen Fällen in der gewünschten Weise ein. (Wenn Ihre Application Insights-Ressource viele Daten erfasst, muss möglicherweise die tägliche Obergrenze von Application Insights erhöht werden.)
 
 Verwenden Sie anstelle der Obergrenze für das tägliche Volumen die [Stichprobenerstellung](./sampling.md), um das Datenvolumen auf das gewünschte Niveau festzulegen. Verwenden Sie dann als letztes Mittel die tägliche Obergrenze für den Fall, dass Ihre Anwendung unerwartet beginnt, weitaus größere Mengen an Telemetriedaten zu senden.
 

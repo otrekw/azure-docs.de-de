@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: f1e0822e77d8466b1b9796041fbdba53c3f9c91f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f984eaa49539890b8ae4d5132f9a03594e2f19f8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782907"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073790"
 ---
 # <a name="use-planned-maintenance-to-schedule-maintenance-windows-for-your-azure-kubernetes-service-aks-cluster-preview"></a>Verwenden der geplanten Wartung, um Wartungsfenster für AKS-Cluster (Azure Kubernetes Service) zu planen (Vorschau)
 
@@ -210,6 +210,10 @@ Um ein bestimmtes konfiguriertes Wartungsfenster in Ihrem AKS-Cluster zu lösche
 ```azurecli-interactive
 az aks maintenanceconfiguration delete -g MyResourceGroup --cluster-name myAKSCluster --name default
 ```
+
+## <a name="using-planned-maintenance-with-cluster-auto-upgrade"></a>Verwenden der geplanten Wartung mit automatischem Clusterupgrade
+
+Die geplante Wartung erkennt, ob Sie automatisches Clusterupgrade verwenden, und plant Ihre Upgrades während Ihres Wartungsfensters automatisch. Weitere Informationen zum automatischen Clusterupgrade finden Sie unter [Aktualisieren eines Azure Kubernetes Service-Clusters (AKS)][aks-upgrade].
 
 ## <a name="next-steps"></a>Nächste Schritte
 

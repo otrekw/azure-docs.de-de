@@ -1,8 +1,8 @@
 ---
 title: Übersicht über Speicher – Azure Time Series Insights Gen2 | Microsoft-Dokumentation
 description: Hier erfahren Sie mehr über Datenspeicherung in Azure Time Series Insights Gen2.
-author: deepakpalled
-ms.author: dpalled
+author: tedvilutis
+ms.author: tvilutis
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 70a0ecb6e9ff2707401517e185964edf512a94c9
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 9c0bbf9224f8864428d46e38487f614e0c3f61f0
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204259"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715230"
 ---
 # <a name="data-storage"></a>Datenspeicherung
 
@@ -43,7 +43,9 @@ Wenn ein Ereignis erfasst wird, wird es sowohl im warmen Speicher (sofern aktivi
 Azure Time Series Insights Gen2 partitioniert und indiziert Daten, um eine optimale Abfrageleistung zu erzielen. Die Daten können nach der Indizierung sowohl aus dem warmen (sofern aktiviert) als auch aus dem kalten Speicher abgefragt werden. Die Menge an erfassten Daten und die Durchsatzrate pro Partition können sich auf diese Verfügbarkeit auswirken. Machen Sie sich mit den [Durchsatzeinschränkungen](./concepts-streaming-ingress-throughput-limits.md) und [bewährten Methoden](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) für die Ereignisquelle vertraut, um die bestmögliche Leistung zu erzielen. Sie können auch eine [Verzögerungswarnung](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) konfigurieren, damit Sie benachrichtigt werden, wenn in Ihrer Umgebung Probleme beim Verarbeiten von Daten auftreten.
 
 > [!IMPORTANT]
-> Es kann bis zu 60 Sekunden dauern, bis Daten verfügbar werden. Wenn Sie eine erhebliche Latenz von weit über 60 Sekunden feststellen, übermitteln Sie ein Supportticket über das Azure-Portal.
+> Es kann bis zu 60 Sekunden dauern, bis Daten über die [Zeitreihenabfrage-APIs](./concepts-query-overview.md) verfügbar werden. Wenn Sie eine erhebliche Latenz von weit über 60 Sekunden feststellen, übermitteln Sie ein Supportticket über das Azure-Portal.
+> 
+> Es kann bis zu fünf Minuten dauern, bis Daten verfügbar werden, wenn Sie außerhalb von Azure Time Series Insights Gen2 direkt auf die Parquet-Dateien zugreifen. Im Abschnitt zum [Parquet-Dateiformat](#parquet-file-format-and-folder-structure) finden Sie weitere Informationen.
 
 ## <a name="warm-store"></a>Warmer Speicher
 
@@ -96,32 +98,26 @@ Weitere Informationen zum Parquet-Dateityp finden Sie in der [Parquet-Dokumentat
 
 Azure Time Series Insights Gen2 speichert Kopien Ihrer Daten folgendermaßen:
 
-* Die erste, anfängliche Kopie wird anhand des Erfassungszeitpunkts partitioniert und speichert Daten in etwa in der Reihenfolge ihres Eingangs. Diese Daten befinden sich im Ordner `PT=Time`:
+* Der Ordner `PT=Time` wird anhand des Erfassungszeitpunkts partitioniert und speichert Daten in etwa in der Reihenfolge ihres Eingangs. Diese Daten werden aufbewahrt, und Sie können von außerhalb von Azure Time Series Insight Gen2 direkt darauf zugreifen, z. B. über Ihre Spark-Notebooks. Der Zeitstempel `<YYYYMMDDHHMMSSfff>` entspricht dem Erfassungszeitpunkt der Daten. Die Werte `<MinEventTimeStamp>` und `<MaxEventTimeStamp>` entsprechen dem in der Datei enthaltenen Bereich für Ereigniszeitstempel. Der Pfad und der Dateiname sind folgendermaßen formatiert:
 
-  `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+  `V=1/PT=Time/Y=<YYYY>/M=<MM>/<BlobCreationTimestamp>_<MinEventTimestamp>_<MaxEventTimestamp>_<TsiInternalSuffix>.parquet`
 
-* Die zweite, neu partitionierte Kopie wird nach Time Serie-IDs gruppiert und befindet sich im Ordner `PT=TsId`:
-
-  `V=1/PT=TsId/<TSI_INTERNAL_NAME>.parquet`
-
-Der Zeitstempel in den Blobnamen im Ordner `PT=Time` entspricht der Eingangszeit der Daten bei Azure Time Series Insights Gen2 und nicht dem Zeitstempel der Ereignisse.
-
-Daten im Ordner `PT=TsId` werden im Lauf der Zeit für Abfragen optimiert und sind nicht statisch. Während der Neupartitionierung können einige Ereignisse in mehreren Blobs vorhanden sein. Es wird nicht garantiert, dass die Namen der Blobs in diesem Ordner unverändert bleiben.
-
-Wenn Sie über Parquet-Dateien direkt auf Daten zugreifen müssen, verwenden Sie im Allgemeinen den Ordner `PT=Time`.  Zukünftige Funktionen werden einen effizienten Zugriff auf den Ordner `PT=TsId` ermöglichen.
+* Die Ordner `PT=Live` und `PT=Tsid` enthalten eine zweite Kopie Ihrer Daten, die für eine flexible Leistung für Zeitreihenabfragen neu partitioniert wurde. Diese Daten werden im Laufe der Zeit optimiert und sind nicht statisch. Während der Neupartitionierung können einige Ereignisse in mehreren Blobs vorhanden sein, und die Blobnamen können sich ändern.  Diese Ordner werden von Azure Time Series Insights Gen2 verwendet und sollten nicht direkt aufgerufen werden. Verwenden Sie für diesen Zweck nur `PT=Time`.
 
 > [!NOTE]
 >
+> Daten im Ordner `PT=Time`, die vor Juni 2021 erstellt wurden, können ein Dateiformat ohne Ereigniszeitbereiche aufweisen: `V=1/PT=Time/Y=<YYYY>/M=<MM>/<BlobCreationTimestamp>_<TsiInternalSuffix>.parquet`.  Das interne Dateiformat ist identisch, und Dateien mit beiden Benennungsschemas können zusammen verwendet werden. 
+>
 > * `<YYYY>` entspricht einer vierstelligen Jahresdarstellung.
 > * `<MM>` entspricht einer zweistelligen Monatsdarstellung.
-> * `<YYYYMMDDHHMMSSfff>` entspricht einer Zeitstempeldarstellung mit folgendem Format: vierstellige Jahresangabe (`YYYY`), zweistellige Monatsangabe (`MM`), zweistellige Tagesangabe (`DD`), zweistellige Stundenangabe (`HH`), zweistellige Minutenangabe (`MM`), zweistellige Sekundenangabe (`SS`) und dreistellige Millisekundenangabe (`fff`).
+> * Das Format `<YYYYMMDDHHMMSSfff>` entspricht einem Zeitstempel mit vierstelliger Jahresangabe (`YYYY`), zweistelliger Monatsangabe (`MM`), zweistelliger Tagesangabe (`DD`), zweistelliger Stundenangabe (`HH`), zweistelliger Minutenangabe (`MM`), zweistelliger Sekundenangabe (`SS`) und dreistelliger Millisekundenangabe (`fff`).
 
 Azure Time Series Insights Gen2-Ereignisse werden dem Inhalt von Parquet-Dateien folgendermaßen zugeordnet:
 
 * Jedes Ereignis wird einer einzelnen Zeile zugeordnet.
 * Jede Zeile enthält die Spalte **timestamp** mit einem Zeitstempel für das Ereignis. Die timestamp-Eigenschaft ist nie NULL. Ihr Standardwert ist der **Zeitpunkt der Einreihung des Ereignisses in die Warteschlange**, wenn die Zeitstempeleigenschaft in der Ereignisquelle nicht angegeben ist. Der gespeicherte Zeitstempel wird immer in UTC angegeben.
 * Jede Zeile enthält die TSID-Spalte(n) (Time Series-ID), wie beim Erstellen der Azure Time Series Insights Gen2-Umgebung definiert wurde. Der TSID-Eigenschaftsname enthält das Suffix `_string`.
-* Alle anderen als Telemetriedaten gesendeten Eigenschaften werden Spaltennamen zugeordnet, die je nach Eigenschaftstyp auf `_bool` (boolesch), `_datetime` (Zeitstempel), `_long` (long), `_double` (double), `_string` (Zeichenfolge) oder `dynamic` (dynamisch) enden.  Weitere Informationen finden Sie unter [Unterstützte Datentypen](./concepts-supported-data-types.md).
+* Alle anderen als Telemetriedaten gesendeten Eigenschaften werden Spaltennamen zugeordnet, die je nach Eigenschaftstyp auf `_bool` (boolesch), `_datetime` (Zeitstempel), `_long` (long), `_double` (double), `_string` (Zeichenfolge) oder `_dynamic` (dynamisch) enden.  Weitere Informationen finden Sie unter [Unterstützte Datentypen](./concepts-supported-data-types.md).
 * Dieses Zuordnungsschema gilt für die erste Version des Dateiformats, auf die als **V=1** verwiesen und die im Basisordner desselben Namens gespeichert wird. Wenn diese Funktion weiterentwickelt wird, kann sich dieses Zuordnungsschema ändern und der Verweisname erhöht werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

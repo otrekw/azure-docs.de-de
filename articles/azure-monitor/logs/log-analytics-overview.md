@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 860085cc447b241f622c2be89038bca0014a883e
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052295"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110493409"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Übersicht über Log Analytics in Azure Monitor
 Log Analytics ist ein Tool im Azure-Portal, mit dem Protokollabfragen für Daten in Azure Monitor-Protokollen bearbeitet und ausgeführt werden. Sie können eine einfache Abfrage schreiben, die eine Reihe von Datensätzen zurückgibt, und dann Funktionen von Log Analytics zum Sortieren, Filtern und Analysieren verwenden. Sie können auch eine erweiterte Abfrage schreiben, um eine statistische Analyse durchzuführen und die Ergebnisse in einem Diagramm zu visualisieren, und auf diese Weise einen bestimmten Trend erkennen. Unabhängig davon, ob Sie die Ergebnisse Ihrer Abfragen interaktiv verwenden oder mit anderen Azure Monitor-Funktionen wie Protokollabfragewarnungen oder Arbeitsmappen nutzen, ist Log Analytics das Tool, das Sie zum Schreiben und Testen der Abfragen verwenden. 
@@ -26,7 +26,9 @@ Starten Sie Log Analytics im Azure-Portal im **Azure Monitor**-Menü über **Pro
 
 [![Starten von Log Analytics](media/log-analytics-overview/start-log-analytics.png)](media/log-analytics-overview/start-log-analytics.png#lightbox)
 
-Wenn Sie Log Analytics starten, wird als Erstes ein Dialogfeld mit [Beispielabfragen](../logs/example-queries.md) angezeigt. Diese sind nach Lösung kategorisiert, und Sie können nach Abfragen suchen, die Ihren besonderen Anforderungen entsprechen. Vielleicht finden Sie eine Abfrage, die genau Ihren Anforderungen entspricht, oder Sie laden eine Abfrage in den Editor und ändern sie nach Bedarf. Das Durchsuchen von Beispielabfragen bietet eine gute Möglichkeit zu lernen, wie Sie eigene Abfragen schreiben. Wenn Sie jedoch mit einem leeren Skript beginnen und die Abfrage selbst schreiben möchten, können Sie die Beispielabfragen schließen. Klicken Sie einfach am oberen Bildschirmrand auf **Abfragen**, wenn Sie diese wieder anzeigen möchten.
+Wenn Sie Log Analytics starten, wird als Erstes ein Dialogfeld mit [Beispielabfragen](../logs/queries.md) angezeigt. Diese sind nach Lösung kategorisiert, und Sie können nach Abfragen suchen, die Ihren besonderen Anforderungen entsprechen. Vielleicht finden Sie eine Abfrage, die genau Ihren Anforderungen entspricht, oder Sie laden eine Abfrage in den Editor und ändern sie nach Bedarf. Das Durchsuchen von Beispielabfragen bietet eine gute Möglichkeit zu lernen, wie Sie eigene Abfragen schreiben. 
+
+Wenn Sie jedoch mit einem leeren Skript beginnen und die Abfrage selbst schreiben möchten, können Sie die Beispielabfragen schließen. Klicken Sie einfach am oberen Bildschirmrand auf **Abfragen**, wenn Sie diese wieder anzeigen möchten.
 
 ## <a name="log-analytics-interface"></a>Log Analytics-Benutzeroberfläche
 Die folgende Abbildung zeigt die verschiedenen Komponenten von Log Analytics.

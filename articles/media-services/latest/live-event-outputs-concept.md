@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 44ab9e4ff83fec2ddfbd1cb44f503298d12789d1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f1df5c945c5216e82837672ad8aeaa669fc4fb20
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766297"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786444"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Liveereignisse und Liveausgaben in Media Services
 
@@ -47,7 +47,7 @@ Ein [Liveereignis](/rest/api/media/liveevents) kann entweder auf *Passthrough* (
 
 Wenn Sie das Passthrough-**Liveereignis** verwenden, erzeugen Sie mit Ihrem lokalen Liveencoder einen Videostream mit mehreren Bitraten und senden diesen als Beitragsfeed an das Liveereignis (über RTMP oder das Protokoll für fragmentiertes MP4). Das Liveereignis leitet dann die eingehenden Videostreams ohne weitere Verarbeitung weiter. Ein solches Passthrough-Liveereignis ist für lang andauernde Liveereignisse oder lineares Livestreaming rund um die Uhr optimiert. Geben Sie beim Erstellen dieser Art von Liveereignis „None“ an (LiveEventEncodingType.None).
 
-Sie können den Beitragsfeed mit einer Auflösung von bis zu 4K und einer Bildrate von 60 Bildern/Sekunde senden, entweder mit H.264/AVC- oder H.265/HEVC-Videocodecs und AAC-Audiocodec (AAC-LC, HE-AACv1 oder HE-AACv2). Weitere Informationen finden Sie unter [Vergleich von Liveereignistypen](live-event-types-comparison-reference.md).
+Sie können den Beitragsfeed mit einer Auflösung von bis zu 4K und einer Bildrate von 60 Bildern/Sekunde senden, entweder mit H.264/AVC- oder H.265/HEVC-Videocodecs (nur Smooth-Erfassung) und AAC-Audiocodec (AAC-LC, HE-AACv1 oder HE-AACv2). Weitere Informationen finden Sie unter [Vergleich von Liveereignistypen](live-event-types-comparison-reference.md).
 
 > [!NOTE]
 > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings, wenn mehrere Ereignisse über einen längeren Zeitraum gestreamt werden und Sie bereits in lokale Encoder investiert haben. Die Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/media-services/).

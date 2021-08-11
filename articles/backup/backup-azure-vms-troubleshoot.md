@@ -3,13 +3,13 @@ title: Beheben von Sicherungsfehlern mit Azure-VMs
 description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die bei der Sicherung und Wiederherstellung von virtuellen Azure-Computern auftreten.
 ms.reviewer: srinathv
 ms.topic: troubleshooting
-ms.date: 08/30/2019
-ms.openlocfilehash: 83e6af5737d332bdafbae793286d5ebc0bc09bb8
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 06/02/2021
+ms.openlocfilehash: b604b98410d61d61bdb8a24e81872cb2c1caf1b4
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164883"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410301"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -33,6 +33,8 @@ Dieser Abschnitt behandelt Fehler im Sicherungsvorgang für virtuelle Azure-Comp
   * Wenn Azure Backup funktioniert, liegt das Problem wahrscheinlich bei einer anderen Sicherungslösung.
   * Im Folgenden finden Sie ein Beispiel für einen Fehler 517 in der Ereignisanzeige, bei dem Azure Backup einwandfrei funktionierte, aber die „Windows Server-Sicherung“ fehlgeschlagen ist: ![Windows Server-Sicherung fehlgeschlagen](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Wenn Azure Backup fehlschlägt, suchen Sie den entsprechenden Fehlercode im Abschnitt „Häufige Fehler bei der VM-Sicherung“ in diesem Artikel.
+  * Wenn die Option „Azure Backup“ auf einem virtuellen Azure-Computer abgeblendet angezeigt wird, zeigen Sie auf das deaktivierte Menü, um den Grund zu ermitteln. Die Gründe können "Nicht verfügbar mit EphemeralDisk" oder "Nicht verfügbar mit Disk Ultra" lauten.
+   ![Gründe für die Deaktivierung der Option „Azure Backup“](media/backup-azure-vms-troubleshoot/azure-backup-disable-reasons.png)
 
 ## <a name="common-issues"></a>Häufige Probleme
 

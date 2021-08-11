@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.date: 05/25/2021
 tags: connectors
-ms.openlocfilehash: 45c6945818016618252e69554c62391691d2fb6a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 10c946010fa3caba14130c3c7055c711323ad93c
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368854"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110498290"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps
 
@@ -111,7 +111,7 @@ Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger ode
 | `status code` | Integer | Der Statuscode aus der Anforderung |
 |||
 
-| Statuscode | BESCHREIBUNG |
+| Statuscode | Beschreibung |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Zulässig |
@@ -121,6 +121,82 @@ Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger ode
 | 404 | Nicht gefunden |
 | 500 | Interner Serverfehler. Unbekannter Fehler. |
 |||
+
+<a name="single-tenant-authentication"></a>
+
+## <a name="authentication-for-single-tenant-environment"></a>Authentifizierung für eine Umgebung mit nur einem Mandanten
+
+Wenn Sie über eine **Logik-App-Ressource (Standard)** in Azure Logic Apps mit nur einem Mandanten verfügen und einen HTTP-Vorgang mit einem der folgenden Authentifizierungstypen verwenden möchten, stellen Sie sicher, dass Sie die zusätzlichen Einrichtungsschritte für den entsprechenden Authentifizierungstyp ausführen. Andernfalls schlägt der Aufruf fehl.
+
+* [TSL/SSL-Zertifikat](#tsl-ssl-certificate-authentication): Fügen Sie die App-Einstellung `WEBSITE_LOAD_ROOT_CERTIFICATES` hinzu, und geben Sie den Ihren Fingerabdruck für Ihr TSL/SSL-Zertifikat an.
+
+* [Clientzertifikat oder Azure Active Directory Open Authentication (Azure AD OAuth) mit dem Anmeldeinformationstyp „Certificate“](#client-certificate-authentication): Fügen Sie die App-Einstellung `WEBSITE_LOAD_USER_PROFILE` hinzu, und legen Sie den Wert auf `1` fest.
+
+<a name="tsl-ssl-certificate-authentication"></a>
+
+### <a name="tslssl-certificate-authentication"></a>TSL/SSL-Zertifikatauthentifizierung
+
+1. In den App-Einstellungen Ihrer Logic App-Ressource [fügen Sie die App-Einstellung `WEBSITE_LOAD_ROOT_CERTIFICATES` hinzu, oder aktualisieren Sie sie](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings).
+
+1. Geben Sie als Wert für die Einstellung den Fingerabdruck für Ihr TSL/SSL-Zertifikat als vertrauenswürdiges Stammzertifikat an.
+
+   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
+
+Wenn Sie z. B. in Visual Studio Code arbeiten, führen Sie die folgenden Schritte aus:
+
+1. Öffnen Sie die Datei **local.settings.json** des Logic App-Projekts.
+
+1. Fügen Sie im JSON-Objekt `Values` die Einstellung `WEBSITE_LOAD_ROOT_CERTIFICATES` hinzu, oder aktualisieren Sie diese:
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         <...>
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
+         <...>
+      }
+   }
+   ```
+
+Weitere Informationen finden Sie in der folgenden Dokumentation:
+
+* [Bearbeiten von Einstellungen für Hosts und Apps für Logik-Apps in Azure Logic Apps-Instanzen mit einem einzelnen Mandanten](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
+* [Private Clientzertifikate – Azure App Service](../app-service/environment/certificates.md#private-client-certificate)
+
+<a name="client-certificate-authentication"></a>
+
+### <a name="client-certificate-or-azure-ad-oauth-with-certificate-credential-type-authentication"></a>Clientzertifikat oder Azure AD OAuth mit Authentifizierung vom Anmeldeinformationstyp „Zertifikat“
+
+1. In den App-Einstellungen Ihrer Logic App-Ressource [fügen Sie die App-Einstellung `WEBSITE_LOAD_USER_PROFILE` hinzu, oder aktualisieren Sie sie](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings).
+
+1. Geben Sie als Einstellungswert `1` an.
+
+   `"WEBSITE_LOAD_USER_PROFILE": "1"`
+
+Wenn Sie z. B. in Visual Studio Code arbeiten, führen Sie die folgenden Schritte aus:
+
+1. Öffnen Sie die Datei **local.settings.json** des Logic App-Projekts.
+
+1. Fügen Sie im JSON-Objekt `Values` die Einstellung `WEBSITE_LOAD_USER_PROFILE` hinzu, oder aktualisieren Sie diese:
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         <...>
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "WEBSITE_LOAD_USER_PROFILE": "1",
+         <...>
+      }
+   }
+   ```
+
+Weitere Informationen finden Sie in der folgenden Dokumentation:
+
+* [Bearbeiten von Einstellungen für Hosts und Apps für Logik-Apps in Azure Logic Apps-Instanzen mit einem einzelnen Mandanten](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
+* [Private Clientzertifikate – Azure App Service](../app-service/environment/certificates.md#private-client-certificate)
 
 ## <a name="content-with-multipartform-data-type"></a>Inhalt des Typs „multipart/form-data“
 
@@ -193,41 +269,6 @@ Alle HTTP-basierten Aktionen in Azure Logic Apps befolgen erst einmal das [Stand
      ![Einstellung „Asynchrones Muster“](./media/connectors-native-http/asynchronous-pattern-setting.png)
 
 * In der JSON-Definition (JavaScript Object Notation), die der HTTP-Aktion zugrunde liegt, folgt implizit dem Muster für asynchrone Vorgänge.
-
-<a name="tsl-ssl-certificate-authentication"></a>
-
-## <a name="tslssl-certificate-authentication"></a>TSL/SSL-Zertifikatauthentifizierung
-
-Wenn Sie in Azure Logic Apps mit nur einem Mandanten über eine **Logic App-Ressource (Standard)** verfügen und versuchen, einen HTTPS-Endpunkt aus Ihrem Workflow mithilfe des HTTP-Vorgangs und eines TSL/SSL-Zertifikats für die Authentifizierung aufzurufen, schlägt der Aufruf fehl, sofern Sie nicht auch die folgenden Schritte ausführen:
-
-1. In den App-Einstellungen Ihrer Logic App-Ressource müssen Sie die [App-Einstellung `WEBSITE_LOAD_ROOT_CERTIFICATES`hinzufügen oder aktualisieren](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings).
-
-1. Geben Sie als Wert für die Einstellung den Fingerabdruck für Ihr TSL/SSL-Zertifikat als vertrauenswürdiges Stammzertifikat an.
-
-   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
-
-Wenn Sie z. B. in Visual Studio Code arbeiten, führen Sie die folgenden Schritte aus:
-
-1. Öffnen Sie die Datei **local.settings.json** des Logic App-Projekts.
-
-1. Fügen Sie im JSON-Objekt `Values` die Einstellung `WEBSITE_LOAD_ROOT_CERTIFICATES` hinzu, oder aktualisieren Sie diese:
-
-   ```json
-   {
-      "IsEncrypted": false,
-      "Values": {
-         <...>
-         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
-         <...>
-      }
-   }
-   ```
-
-Weitere Informationen finden Sie in der folgenden Dokumentation:
-
-* [Bearbeiten von Einstellungen für Hosts und Apps für Logik-Apps in Azure Logic Apps-Instanzen mit einem einzelnen Mandanten](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
-* [Private Clientzertifikate – Azure App Service](../app-service/environment/certificates.md#private-client-certificate)
 
 <a name="disable-asynchronous-operations"></a>
 

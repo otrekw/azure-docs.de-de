@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Bereitstellung
 description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Abrufen von Informationen zur Bereitstellung verwendet werden können.
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: a9a073284c62efac4e77f8f9b35e8730c350e5f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.openlocfilehash: a51e11a34e9c5dd51b07bfa1f2d64e1b306f5b31
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101722720"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959696"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Bereitstellungsfunktionen für ARM-Vorlagen
 
@@ -20,8 +20,6 @@ Resource Manager stellt die folgenden Funktionen zum Abrufen von Werten im Zusam
 * [variables](#variables)
 
 Informationen zum Abrufen von Werten aus Ressourcen, Ressourcengruppen oder Abonnements finden Sie unter [Ressourcenfunktionen](template-functions-resource.md).
-
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="deployment"></a>deployment
 
@@ -132,9 +130,7 @@ Wenn Sie in einem Azure-Abonnement, einer Verwaltungsgruppe oder einem Mandanten
 
 ### <a name="remarks"></a>Bemerkungen
 
-Sie können „deployment()“ verwenden, um basierend auf dem URI der übergeordneten Vorlage eine Verknüpfung mit einer anderen Vorlage zu erstellen.
-
-# <a name="json"></a>[JSON](#tab/json)
+Sie können `deployment()` verwenden, um basierend auf dem URI der übergeordneten Vorlage eine Verknüpfung mit einer anderen Vorlage zu erstellen.
 
 ```json
 "variables": {
@@ -142,21 +138,11 @@ Sie können „deployment()“ verwenden, um basierend auf dem URI der übergeor
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-var sharedTemplateUrl = uri(deployment().prperties.templateLink.uri, 'shared-resources.json')
-```
-
----
-
 Wenn Sie eine Vorlage aus dem Bereitstellungsverlauf im Portal erneut bereitstellen, wird die Vorlage als lokale Datei bereitgestellt. Die Eigenschaft `templateLink` wird in der Bereitstellungsfunktion nicht zurückgegeben. Falls Ihre Vorlage `templateLink` benötigt, um eine Verknüpfung mit einer anderen Vorlage zu erstellen, führen Sie die erneute Bereitstellung nicht über das Portal durch. Verwenden Sie stattdessen die Befehle, die Sie bei der ursprünglichen Bereitstellung der Vorlage verwendet haben.
 
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) gibt das Bereitstellungsobjekt zurück:
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -171,14 +157,6 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output deploymentOutput object = deployment()
-```
-
----
 
 Im vorherigen Beispiel wird das folgende Objekt zurückgegeben:
 
@@ -253,8 +231,6 @@ Diese Funktion gibt Eigenschaften für die aktuelle Azure-Umgebung zurück. Das 
 
 Die folgende Beispielvorlage gibt das Umgebungsobjekt zurück.
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -268,14 +244,6 @@ Die folgende Beispielvorlage gibt das Umgebungsobjekt zurück.
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output environmentOutput object = environment()
-```
-
----
 
 Im vorherigen Beispiel wird bei Bereitstellung in globalem Azure das folgende Objekt zurückgegeben:
 
@@ -319,9 +287,11 @@ Im vorherigen Beispiel wird bei Bereitstellung in globalem Azure das folgende Ob
 
 Gibt einen Parameterwert zurück. Der spezifizierte Parametername muss im Parameterabschnitt der Vorlage definiert werden.
 
+Verweisen Sie in Bicep mithilfe ihrer symbolischen Namen direkt auf Parameter.
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | parameterName |Ja |Zeichenfolge |Der Name des zurückzugebenden Parameter. |
 
@@ -332,8 +302,6 @@ Der Wert des angegebenen Parameters.
 ### <a name="remarks"></a>Bemerkungen
 
 In der Regel verwenden Sie Parameter zum Festlegen von Ressourcenwerten. Im folgenden Beispiel wird der Name der Website mit dem Parameterwert festgelegt, der während der Bereitstellung übergeben wird.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "parameters": {
@@ -350,24 +318,9 @@ In der Regel verwenden Sie Parameter zum Festlegen von Ressourcenwerten. Im folg
 ]
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param siteName string
-
-resource mySite 'Microsoft.Web/Sites@2016-08-01' = {
-  name: siteName
-  ...
-}
-```
-
----
-
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) zeigt eine vereinfachte Nutzungsweise der Parameterfunktion.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -425,34 +378,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringParameter string = 'option 1'
-param intParameter int = 1
-param objectParameter object = {
-  'one': 'a'
-  'two': 'b'
-}
-param arrayParameter array = [
-  1
-  2
-  3
-]
-param crossParameter string = stringParameter
-
-output stringOutput string = stringParameter
-output intOutput int = intParameter
-output objectOutput object = objectParameter
-output arrayOutput array = arrayParameter
-output crossOutput string = crossParameter
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | stringOutput | String | option 1 |
 | intOutput | Int | 1 |
@@ -460,7 +388,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | option 1 |
 
-Weitere Informationen zur Verwendung von Parametern finden Sie unter [Parameter in ARM-Vorlagen](template-parameters.md).
+Weitere Informationen zur Verwendung von Parametern finden Sie unter [Parameter in ARM-Vorlagen](./parameters.md).
 
 ## <a name="variables"></a>variables
 
@@ -468,9 +396,11 @@ Weitere Informationen zur Verwendung von Parametern finden Sie unter [Parameter 
 
 Gibt den Wert der Variablen zurück. Der angegebene Variablenname muss im Variablenabschnitt der Vorlage definiert werden.
 
+Verweisen Sie in Bicep mithilfe ihrer symbolischen Namen direkt auf Variablen.
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | variableName |Ja |String |Der Name der zurückzugebenden Variable. |
 
@@ -481,8 +411,6 @@ Der Wert der angegebenen Variablen.
 ### <a name="remarks"></a>Bemerkungen
 
 In der Regel verwenden Sie Variablen, um Ihre Vorlage zu vereinfachen, indem Sie komplexe Werte nur einmal erstellen. Das folgende Beispiel erstellt einen eindeutigen Namen für ein Speicherkonto.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "variables": {
@@ -505,28 +433,9 @@ In der Regel verwenden Sie Variablen, um Ihre Vorlage zu vereinfachen, indem Sie
 
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-var storageName = 'storage${uniqueString(resourceGroup().id)}'
-
-resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-  name: storageName
-  ...
-}
-
-resource myVm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
-  ...
-}
-```
-
----
-
 ### <a name="example"></a>Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) gibt unterschiedliche Variablenwerte zurück.
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -564,41 +473,17 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-var var1 = 'myVariable'
-var var2 = [
-  1
-  2
-  3
-  4
-]
-var var3 = var1
-var var4 = {
-  'property1': 'value1'
-  'property2': 'value2'
-}
-
-output exampleOutput1 string = var1
-output exampleOutput2 array = var2
-output exampleOutput3 string = var3
-output exampleOutput4 object = var4
-```
-
----
-
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-Weitere Informationen zur Verwendung von Variablen finden Sie unter [Variablen in einer ARM-Vorlage](template-variables.md).
+Weitere Informationen zur Verwendung von Variablen finden Sie unter [Variablen in einer ARM-Vorlage](./variables.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](./syntax.md).

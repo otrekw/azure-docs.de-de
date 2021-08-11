@@ -8,12 +8,12 @@ ms.subservice: proximity-placement-groups
 ms.topic: conceptual
 ms.date: 3/07/2021
 ms.reviewer: zivr
-ms.openlocfilehash: 1a65a1e4ecd989f3a7c4968c424472c3c6dfe472
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 15da7300018d563ed9919c145ca3e7f08a07f619
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559073"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190643"
 ---
 # <a name="proximity-placement-groups"></a>Näherungsplatzierungsgruppen
 
@@ -23,18 +23,16 @@ Um den Abstand zwischen den VMs so stark wie möglich zu verringern und somit di
 
 Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, mit der ein möglichst geringer Abstand zwischen Azure-Compute-Ressourcen sichergestellt wird. Näherungsplatzierungsgruppen sind für Workloads hilfreich, die eine geringe Latenz erfordern.
 
-
 - Geringe Latenz zwischen eigenständigen VMs.
 - Geringe Latenz zwischen VMs in einer einzelnen Verfügbarkeitsgruppe oder VM-Skalierungsgruppe. 
 - Geringe Latenz zwischen eigenständigen VMs, VMs in mehreren Verfügbarkeitsgruppen oder mehreren Skalierungsgruppen. Sie können mehrere Computeressourcen in einer einzelnen Platzierungsgruppe zusammenfassen, um eine Multi-Tier-Anwendung zusammenzuführen. 
 - Geringe Latenz zwischen mehreren Logikschichten, die unterschiedliche Hardwaretypen verwenden. Beispiel: Sie führen in einer einzelnen Näherungsplatzierungsgruppe das Back-End mithilfe der M-Serie in einer Verfügbarkeitsgruppe und das Front-End in einer Instanz der D-Serie in einer Skalierungsgruppe aus.
 
-
 ![Grafik für Näherungsplatzierungsgruppen](./media/virtual-machines-common-ppg/ppg.png)
 
 ## <a name="using-proximity-placement-groups"></a>Verwenden von Näherungsplatzierungsgruppen 
 
-Eine Näherungsplatzierungsgruppe ist ein neuer Ressourcentyp in Azure. Sie müssen eine erstellen, bevor Sie sie mit anderen Ressourcen verwenden können. Einmal erstellt, kann sie mit virtuellen Computern, Verfügbarkeitsgruppen oder VM-Skalierungsgruppen verwendet werden. Sie geben bei der Erstellung von Computeressourcen, die die Näherungsplatzierungsgruppe-ID bereitstellen, eine Näherungsplatzierungsgruppe an. 
+Eine Näherungsplatzierungsgruppe ist eine Ressource in Azure. Sie müssen eine erstellen, bevor Sie sie mit anderen Ressourcen verwenden können. Einmal erstellt, kann sie mit virtuellen Computern, Verfügbarkeitsgruppen oder VM-Skalierungsgruppen verwendet werden. Sie geben bei der Erstellung von Computeressourcen, die die Näherungsplatzierungsgruppe-ID bereitstellen, eine Näherungsplatzierungsgruppe an. 
 
 Sie können auch eine vorhandene Ressource in eine Näherungsplatzierungsgruppe verschieben. Wenn Sie eine Ressource in eine Näherungsplatzierungsgruppe verschieben, sollten Sie die Ressource zuerst beenden (freigeben), da sie möglicherweise in einem anderen Rechenzentrum in der Region neu bereitgestellt wird, um der Zusammenstellungseinschränkung zu entsprechen. 
 
@@ -57,7 +55,6 @@ Geplante Wartungsereignisse, wie z. B. die Außerbetriebnahme von Hardware in e
 
 Sie können wie folgt vorgehen, um den Ausrichtungsstatus Ihrer Näherungsplatzierungsgruppen zu überprüfen.
 
-
 - Der Zusammenstellungsstatus von Näherungsplatzierungsgruppen kann über das Portal, die Befehlszeilenschnittstelle und PowerShell angezeigt werden.
 
     -   Mit PowerShell kann der Zusammenstellungsstatus durch Ausführen des Cmdlets „Get-AzProximityPlacementGroup“ mit dem optionalen Parameter „-ColocationStatus“ abgerufen werden.
@@ -76,7 +73,6 @@ Sie können wie folgt vorgehen, um den Ausrichtungsstatus Ihrer Näherungsplatzi
 
 - Für Skalierungsgruppen werden Informationen über die Ausrichtung einzelner Instanzen auf der Registerkarte **Instanzen** der Seite **Übersicht** für die Skalierungsgruppe angezeigt. 
 
-
 ### <a name="re-align-resources"></a>Erneutes Ausrichten von Ressourcen 
 
 Wenn eine Näherungsplatzierungsgruppe `Not Aligned` ist, können Sie die betroffenen Ressourcen beenden bzw. ihre Zuordnung aufheben und sie dann neu starten. Wenn sich die VM in einer Verfügbarkeitsgruppe oder Skalierungsgruppe befindet, müssen vor dem Neustart zuerst alle VMs in der Verfügbarkeitsgruppe oder Skalierungsgruppe beendet werden bzw. muss ihre Zuordnung aufgehoben werden.
@@ -92,10 +88,7 @@ Wenn es aufgrund von Einschränkungen der Bereitstellung zu Zuordnungsfehlern ko
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Stellen Sie mithilfe der [Azure-Befehlszeilenschnittstelle](./linux/proximity-placement-groups.md) oder [PowerShell](./windows/proximity-placement-groups.md) eine VM in einer Näherungsplatzierungsgruppe bereit.
-
-Erfahren Sie, wie Sie [die Netzwerklatenz testen](../virtual-network/virtual-network-test-latency.md).
-
-Erfahren Sie, wie Sie [den Netzwerkdurchsatz optimieren](../virtual-network/virtual-network-optimize-network-bandwidth.md).  
-
-Erfahren Sie, wie Sie [Näherungsplatzierungsgruppen mit SAP-Anwendungen verwenden](./workloads/sap/sap-proximity-placement-scenarios.md).
+- Stellen Sie mithilfe der [Azure-Befehlszeilenschnittstelle](./linux/proximity-placement-groups.md) oder [PowerShell](./windows/proximity-placement-groups.md) eine VM in einer Näherungsplatzierungsgruppe bereit.
+- Erfahren Sie, wie Sie [die Netzwerklatenz testen](../virtual-network/virtual-network-test-latency.md).
+- Erfahren Sie, wie Sie [den Netzwerkdurchsatz optimieren](../virtual-network/virtual-network-optimize-network-bandwidth.md).
+- Erfahren Sie, wie Sie [Näherungsplatzierungsgruppen mit SAP-Anwendungen verwenden](./workloads/sap/sap-proximity-placement-scenarios.md).

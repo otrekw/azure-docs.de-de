@@ -6,14 +6,14 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: e28243f5919c355e6ad0d4998ff8388a56e3d0ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a08c9244644228bd6d9154bdc4882fc91334bc62
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607367"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797372"
 ---
-# <a name="stopstart-an-azure-database-for-postgresql---flexible-server-preview"></a>Beenden/Starten einer Azure Database for PostgreSQL: Flexible Server-Instanz (Vorschau)
+# <a name="stopstart-an-azure-database-for-postgresql---flexible-server-preview-using-azure-portal"></a>Beenden/Starten von Azure Database for PostgreSQL – Flexible Server (Vorschau) über das Azure-Portal
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL: Flexible Server befindet sich aktuell in der Vorschau.

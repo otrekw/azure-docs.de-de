@@ -1,60 +1,70 @@
 ---
-title: Erstellen von VM-Images für Ihr Azure Stack Edge Pro-GPU-Gerät
-description: Hier wird beschrieben, wie Sie Linux- oder Windows-VM-Images für die Verwendung mit Ihrem Azure Stack Edge Pro-GPU-Gerät erstellen.
+title: Erstellen benutzerdefinierter VM-Images für Ihr Azure Stack Edge Pro GPU-Gerät
+description: Beschreibt, wie benutzerdefinierte Windows- und Linux-VM-Images für die Bereitstellung virtueller Computer auf Azure Stack Edge Pro GPU-Geräten erstellt werden.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 06/09/2021
 ms.author: alkohli
-ms.openlocfilehash: ee0587063c0fac67068869c58471ada58354fab7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a1f6b51c8ab36d779ad2771c1e12de78673e6fc1
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437671"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902403"
 ---
-# <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Erstellen benutzerdefinierter VM-Images für Ihr Azure Stack Edge Pro-Gerät
+# <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-gpu-device"></a>Erstellen benutzerdefinierter VM-Images für Ihr Azure Stack Edge Pro GPU-Gerät
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Wenn Sie virtuelle Computer auf Ihrem Azure Stack Edge Pro-Gerät bereitstellen möchten, müssen Sie in der Lage sein, benutzerdefinierte VM-Images zu erstellen, mit denen Sie wiederum virtuelle Computer erstellen können. In diesem Artikel werden die Schritte beschrieben, die Sie ausführen müssen, um benutzerdefinierte Linux- oder Windows-VM-Images zu erstellen, mit denen Sie virtuelle Computer auf Ihrem Azure Stack Edge Pro-Gerät bereitstellen können.
+Wenn Sie virtuelle Computer auf Ihrem Azure Stack Edge Pro GPU-Gerät bereitstellen möchten, müssen Sie in der Lage sein, benutzerdefinierte VM-Images zu erstellen, mit denen Sie wiederum virtuelle Computer in Azure erstellen können. In diesem Artikel werden die Schritte zum Erstellen benutzerdefinierter VM-Images in Azure für virtuelle Windows- und Linux-Computer und zum Herunterladen oder Kopieren dieser Images in ein Azure Storage-Konto beschrieben.
 
-## <a name="vm-image-workflow"></a>Workflow für VM-Images
+Für die Vorbereitung eines benutzerdefinierten VM-Images gibt es einen bestimmten Workflow. Für die Imagequelle müssen Sie eine feste VHD von einem virtuellen Gen1-Computer beliebiger Größe verwenden, die von Azure unterstützt wird. Optionen für die VM-Größe finden Sie unter [Unterstützte VM-Größen](azure-stack-edge-gpu-virtual-machine-sizes.md#supported-vm-sizes).
 
-Der Workflow erfordert, dass Sie einen virtuellen Computer in Azure erstellen, den virtuellen Computer anpassen und generalisieren und dann die virtuelle Festplatte (VHD) für diesen virtuellen Computer herunterladen. Diese generalisierte VHD wird in Azure Stack Edge Pro hochgeladen. Es wird ein verwalteter Datenträger auf Grundlage dieser VHD erstellt. Auf Grundlage des verwalteten Datenträgers wird ein Image erstellt. Zum Schluss werden virtuelle Computer auf Grundlage dieses Images erstellt.
+## <a name="prerequisites"></a>Voraussetzungen
 
-Weitere Informationen finden Sie unter [Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-Gerät mithilfe von Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md).
+Erfüllen Sie die folgenden Voraussetzungen, bevor Sie Ihr VM-Image erstellen:
+
+- [Laden Sie AzCopy herunter](/azure/storage/common/storage-use-azcopy-v10#download-azcopy). AzCopy bietet Ihnen eine schnelle Möglichkeit, einen Betriebssystemdatenträger in ein Azure Storage-Konto zu kopieren.
+
+---
+
+## <a name="create-a-custom-vm-image"></a>Erstellen eines benutzerdefinierten VM-Images
+
+Die Schritte zum Vorbereiten eines benutzerdefinierten VM-Images variieren für einen virtuellen Windows- oder Linux-Computer.
 
 
-## <a name="create-a-windows-custom-vm-image"></a>Erstellen eines benutzerdefinierten Windows-VM-Images
+### <a name="windows"></a>[Windows](#tab/windows)
 
 Führen Sie die folgenden Schritte aus, um ein Windows-VM-Image zu erstellen:
 
-1. Erstellen Sie einen virtuellen Windows-Computer. Weitere Informationen finden Sie unter [Tutorial: Erstellen und Verwalten von virtuellen Windows-Computern mit Azure PowerShell](../virtual-machines/windows/tutorial-manage-vm.md).
+1. Erstellen Sie einen virtuellen Windows-Computer in Azure. Entsprechende Portalanleitungen finden Sie unter [Erstellen eines virtuellen Windows-Computers in Azure-Portal](/azure/virtual-machines/windows/quick-create-portal). PowerShell-Anleitungen finden Sie unter [Tutorial: Erstellen und Verwalten von virtuellen Windows-Computern mit Azure PowerShell](../virtual-machines/windows/tutorial-manage-vm.md).
 
-2. Laden Sie einen vorhandenen Betriebssystemdatenträger herunter.
+   Der virtuelle Computer darf nur VM der Generation 1 sein. Der Betriebssystemdatenträger, den Sie zum Erstellen Ihres VM-Images verwenden, muss eine VHD mit fester Größe sein, die allerdings von Azure unterstützt wird. Optionen für die VM-Größe finden Sie unter [Unterstützte VM-Größen](azure-stack-edge-gpu-virtual-machine-sizes.md#supported-vm-sizes).  
 
-    - Führen Sie die Schritte unter [Herunterladen einer Windows-VHD von Azure](../virtual-machines/windows/download-vhd.md) aus.
+2. Generalisieren Sie die VM. Stellen Sie zum Generalisieren des virtuellen Computers [eine Verbindung mit dem virtuellen Computer her](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-windows-vm), öffnen Sie eine Eingabeaufforderung und führen Sie den folgenden `sysprep` Befehl aus:
 
-    - Verwenden Sie den folgenden `sysprep`-Befehl anstelle des vorherigen Verfahrens.
-    
-        `c:\windows\system32\sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm`
-   
-       Sie können auch die Informationen unter [Übersicht über Sysprep (Systemvorbereitung)](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) lesen.
+   ```dos
+   c:\windows\system32\sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm
+   ```
 
-Verwenden Sie diese virtuelle Festplatte, um jetzt einen virtuellen Computer zu erstellen und auf Ihrem Azure Stack Edge Pro-Gerät bereitzustellen.
+   > [!IMPORTANT]
+   > Nachdem der Befehl ausgeführt wurde, wird die VM heruntergefahren. **Starten Sie den virtuellen Computer nicht neu**. Wenn Sie den virtuellen Computer neu starten, wird der Datenträger beschädigt, den Sie gerade vorbereitet haben.
 
-## <a name="create-a-linux-custom-vm-image"></a>Erstellen eines benutzerdefinierten Linux-VM-Images
+
+### <a name="linux"></a>[Linux](#tab/linux)
 
 Führen Sie die folgenden Schritte aus, um ein Linux-VM-Image zu erstellen:
 
-1. Erstellen eines virtuellen Linux-Computers. Weitere Informationen finden Sie unter [Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle](../virtual-machines/linux/tutorial-manage-vm.md).
+1. Erstellen Sie einen virtuellen Linux-Computer in Azure. Entsprechende Portalanleitungen finden Sie unter [Schnellstart: Erstellen eines virtuellen Linux-Computers in Azure-Portal](../virtual-machines/linux/quick-create-portal.md).  PowerShell-Anleitungen finden Sie unter [Schnellstart: Erstellen eines virtuellen Linux-Computers in Azure mit PowerShell](../virtual-machines/linux/quick-create-powershell.md).
+
+   Sie können eine beliebige Gen1-VM mit einer VHD mit fester Größe in Azure Marketplace verwenden, um benutzerdefinierte Linux-Images zu erstellen, mit Ausnahme von RHEL-Images (Red Hat Enterprise Linux), die zusätzliche Schritte erfordern. Eine Liste der Azure Marketplace-Images, die funktionieren könnten, finden Sie unter [Für Azure Stack Hub verfügbare Azure Marketplace-Elemente](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910&preserve-view=true). Eine Anleitung zu RHEL-Images finden Sie weiter unten unter [Verwenden von RHEL-BYOS-Images.](#using-rhel-byos-images) 
 
 1. Heben Sie die Bereitstellung der VM auf. Verwenden Sie den Azure VM-Agent zum Löschen computerspezifischer Dateien und Daten. Verwenden Sie auf dem virtuellen Linux-Quellcomputer den Befehl `waagent` mit dem Parameter `-deprovision+user`. Weitere Informationen finden Sie unter [Verstehen und Verwenden des Azure Linux-Agents](../virtual-machines/extensions/agent-linux.md).
 
-    1. Stellen Sie mit einem SSH-Client eine Verbindung mit Ihrem virtuellen Linux-Computer her.
+    1. [Stellen Sie mit einem SSH-Client eine Verbindung mit Ihrem virtuellen Linux-Computer her](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm).
     2. Geben Sie im SSH-Fenster den folgenden Befehl ein:
        
         ```bash
@@ -67,18 +77,128 @@ Führen Sie die folgenden Schritte aus, um ein Linux-VM-Image zu erstellen:
     4. Geben Sie nach der Ausführung dieses Befehls den Befehl **exit** ein, um den SSH-Client zu schließen.  Der virtuelle Computer wird zu diesem Zeitpunkt immer noch ausgeführt.
 
 
-1. [Laden Sie einen vorhandenen Betriebssystemdatenträger herunter.](../virtual-machines/linux/download-vhd.md)
+### <a name="using-rhel-byos-images"></a>Verwenden von RHEL-BYOS-Images
 
-Verwenden Sie diese virtuelle Festplatte, um jetzt einen virtuellen Computer zu erstellen und auf Ihrem Azure Stack Edge Pro-Gerät bereitzustellen. Sie können die folgenden zwei Azure Marketplace-Images verwenden, um benutzerdefinierte Linux-Images zu erstellen:
+Bei Verwendung von RHEL-Images (Red Hat Enterprise Linux) werden nur die RHEL-BYOS-Images (Bring Your Own Subscription) unterstützt (auch als Red Hat Gold-Images bezeichnet). Diese können zum Erstellen Ihres VM-Images verwendet werden. Die RHEL-Standardimages auf Azure Marketplace mit nutzungsbasierter Bezahlung werden auf Azure Stack Edge nicht unterstützt.
 
-|Name des Elements  |BESCHREIBUNG  |Herausgeber  |
-|---------|---------|---------|
-|[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server ist das weltweit beliebteste Linux für Cloudumgebungen.|Canonical|
-|[Debian 8 „Jessie“](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux ist eine der am häufigsten verwendeten Linux-Distributionen.     |credativ|
+Führen Sie die folgenden Schritte aus, um ein VM-Image mit dem RHEL-BYOS-Image zu erstellen:
 
-Eine vollständige Liste der Azure Marketplace-Images, die funktionieren könnten (derzeit noch nicht getestet), finden Sie unter [Für Azure Stack Hub verfügbare Azure Marketplace-Elemente](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910&preserve-view=true).
+1. Melden Sie sich bei der [Red Hat-Abonnementverwaltung](https://access.redhat.com/management) an. Navigieren Sie in der oberen Menüleiste zum [Cloud Access-Dashboard](https://access.redhat.com/management/cloud).
+1. Aktivieren Sie Ihr Azure-Abonnements. Weitere Informationen finden Sie in den [Ausführlichen Anweisungen](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/getting-started-with-ca_cloud-access). Wenn Sie das Abonnement aktivieren, können Sie auf die Red Hat Gold-Images zugreifen.
 
+1. Akzeptieren Sie die Azure-Nutzungsbedingungen (nur einmal pro Azure-Abonnement, pro Image) und erstellen Sie einen virtuellen Computer. Weitere Informationen finden Sie in den [Anweisungen](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/understanding-gold-images_cloud-access). 
+
+Sie können jetzt den virtuellen Computer verwenden, den Sie bereitgestellt haben, um unter Linux [ein benutzerdefiniertes VM-Image zu erstellen](#create-a-custom-vm-image).
+
+---
+
+## <a name="download-os-disk-to-storage-account"></a>Herunterladen des Betriebssystemdatenträgers in das Speicherkonto
+
+Um Ihr benutzerdefiniertes VM-Image zum Bereitstellen von VMs auf Ihrem Gerät zu verwenden, müssen Sie den Betriebssystemdatenträger in ein Azure Storage-Konto herunterladen. Es wird empfohlen, dasselbe Speicherkonto zu verwenden, das Sie für Ihr Gerät verwendet haben.
+
+Um den Betriebssystemdatenträger für den virtuellen Computer in ein Azure Storage-Konto herunterzuladen, gehen Sie folgendermaßen vor:
+
+1. [Beenden Sie den virtuellen Computer im Portal](/azure/virtual-machines/windows/download-vhd#stop-the-vm). Sie müssen dies tun, um die Zuordnung des Betriebssystemdatenträgers selbst dann wieder freizugeben, wenn Ihr virtueller Windows-Computer heruntergefahren wurde, nachdem Sie `sysprep` ausgeführt haben, um ihn zu generalisieren.
+
+1. [Generieren Sie eine Download-URL für den Betriebssystemdatenträger](/azure/virtual-machines/windows/download-vhd#generate-download-url) und notieren Sie sich die URL. Standardmäßig läuft die URL nach 3.600 Sekunden (1 Stunde) ab. Sie können diese Zeit bei Bedarf erhöhen.
+      
+1. Laden Sie die VHD mit einer der folgenden Methoden in Ihr Azure Storage-Konto herunter:
+   
+   - Methode 1 zur schnellen Übertragung: Verwenden Sie AzCopy, um die VHD in Ihr Azure Storage-Konto zu kopieren. Anweisungen finden Sie weiter unten unter [Verwenden von AzCopy zum Kopieren des VM-Images in das Speicherkonto](#copy-vhd-to-storage-account-using-azcopy). 
+
+   - Methode 2 für einfaches Herunterladen mit 1 Klick: Wählen Sie **VHD-Datei herunterladen** aus, wenn Sie eine Download-URL generieren (in Schritt 3b), um den Datenträger aus dem Portal herunterzuladen. **Wenn Sie diese Methode verwenden, kann das Kopieren des Datenträgers sehr lange dauern, und Sie müssen [die VHD in Ihr Azure Storage-Konto hochladen](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload), um VMs über das Portal erstellen zu können**.
+
+Sie können diese VHD jetzt verwenden, um VMs auf Ihrem Azure Stack Edge Pro GPU-Gerät zu erstellen und bereitzustellen.
+
+## <a name="copy-vhd-to-storage-account-using-azcopy"></a>Kopieren der VHD in das Speicherkonto mit AzCopy
+
+In den folgenden Prozeduren wird beschrieben, wie Sie AzCopy verwenden, um ein benutzerdefiniertes VM-Image in ein Azure Storage-Konto zu kopieren, damit Sie das Image zum Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro GPU-Gerät verwenden können. Es wird empfohlen, dass Sie Ihre benutzerdefinierten VM-Images in demselben Speicherkonto speichern, das Sie für Ihr Azure Stack Edge Pro GPU-Gerät verwenden. 
+
+
+### <a name="create-target-uri-for-a-container"></a>Erstellen eines Ziel-URI für einen Container
+
+AzCopy erfordert einen *Ziel-URI,* der angibt, wohin das neue Image in Ihr Speicherkonto kopiert werden soll. Bevor Sie AzCopy ausführen, generieren Sie eine SAS-URL (Shared Access Signature) für den Blob-Container, in den Sie die Datei kopieren möchten. Um den Ziel-URI zu erstellen, fügen Sie der SAS-URL den Dateinamen hinzu.
+
+Um den Ziel-URI für Ihre vorbereitete VHD zu erstellen, gehen Sie folgendermaßen vor:
+
+1. Führen Sie die folgenden Schritte aus, um eine SAS-URL für einen Container in einem Azure Storage-Konto zu generieren:
+
+   1. Öffnen Sie im Azure-Portal das Speicherkonto, und wählen Sie **Container** aus. Klicken Sie mit der rechten Maustaste auf den Blob-Container, den Sie verwenden möchten, und wählen Sie **SAS generieren** aus.
+
+      ![Screenshot der Option „SAS generieren“ für einen Blob-Container im Azure-Portal](./media/azure-stack-edge-gpu-create-virtual-machine-image/storage-container-generate-sas-option.png)
+
+   1. Wählen Sie auf dem Bildschirm **SAS generieren** die Option **Lesen** und **Schreiben** in **Berechtigungen** aus.  
+
+      ![Screenshot des Bildschirms „SAS generieren“ mit ausgewählten Lese- und Schreibberechtigungen](./media/azure-stack-edge-gpu-create-virtual-machine-image/generate-sas-screen-read-and-write-permissions.png)
+
+   1. Wählen Sie **SAS-Token und URL generieren** und dann **Kopieren** aus, um die **Blob-SAS-URL** zu kopieren.
+
+      ![Screenshot des Bildschirms „SAS generieren“ mit Optionen zum Generieren und Kopieren einer Blob-SAS-URL](./media/azure-stack-edge-gpu-create-virtual-machine-image/generate-sas-screen-copy-blob-sas-url.png)
+
+1. Um den Ziel-URI für den `azcopy` Befehl zu erstellen, fügen Sie der SAS-URL den gewünschten Dateinamen hinzu.
+
+   Eine Blob-SAS-URL weist das folgende Format auf: 
+
+   ![Grafik einer Blob-SAS-URL mit Containerpfad und Ort zum Einfügen des neuen Dateinamens mit Bezeichnung](./media/azure-stack-edge-gpu-create-virtual-machine-image/blob-sas-url-format.png)
+
+   Fügen Sie den Dateinamen im Format `/<filename>.vhd` vor dem Fragezeichen ein, das am Anfang der Abfragezeichenfolge steht. Die Dateinamenerweiterung muss VHD sein. 
+
+   Beispielsweise kopiert die folgende Blob-SAS-URL die Datei **osdisk.vhd** in den Blob-Container **virtualmachines** in **mystorageaccount**.
+
+   ![Grafik eines Blob-SAS-URL-Beispiels für eine VHD mit dem Namen osdisk](./media/azure-stack-edge-gpu-create-virtual-machine-image/target-uri-example-based-on-blob-sas-url.png)
+
+
+### <a name="copy-vhd-to-blob-container"></a>Kopieren einer VHD in einen Blob-Container
+
+Um Ihre VHD mit AzCopy in einen Blob-Container zu kopieren, gehen Sie wie folgt vor:
+
+ 1. [Laden Sie AzCopy herunter](/azure/storage/common/storage-use-azcopy-v10#download-azcopy), wenn Sie dies noch nicht getan haben.
+ 
+ 1. Navigieren Sie in PowerShell zu dem Verzeichnis, in dem Sie die azcopy.exe gespeichert haben und führen Sie den folgenden Befehl aus:
+
+    `.\azcopy copy <source URI> <target URI> --recursive`
+
+    Dabei gilt:
+    * `<source URI>` ist die Download-URL, die Sie zuvor generiert haben.
+    * `<target URI>` gibt an, in welchen Blob-Container das neue Image in Ihrem Azure Storage-Konto kopiert werden soll. Anweisungen finden Sie weiter unten unter [Verwenden von AzCopy zum Kopieren des VM-Images in das Speicherkonto](#copy-vhd-to-storage-account-using-azcopy).
+
+    Der folgende URI kopiert zum Bsp. eine Datei namens **windowsosdisk.vhd** in den Blob-Container für **virtuelle Computer** im Speicherkonto **mystorageaccount**:
+
+    ```azcopy 
+    .\azcopy copy "https://md-h1rvdq3wwtdp.z24.blob.storage.azure.net/gxs3kpbgjhkr/abcd?sv=2018-03-28&sr=b&si=f86003fc-a231-43b0-baf2-61dd51e3a05a&sig=o5Rj%2BNZSook%2FVNMcuCcwEwsr0i7sy%2F7gIDzak6JhlKg%3D" "https://mystorageaccount.blob.core.windows.net/virtualmachines/osdisk.vhd?sp=rw&st=2021-05-21T16:52:24Z&se=2021-05-22T00:52:24Z&spr=https&sv=2020-02-10&sr=c&sig=PV3Q3zpaQ%2FOLidbQJDKlW9nK%2BJ7PkzYv2Eczxko5k%2Bg%3D" --recursive
+    ```
+
+#### <a name="sample-output"></a>Beispielausgabe
+
+Für den obigen AzCopy-Beispielbefehl gibt die folgende Ausgabe an, dass eine Kopie erfolgreich erstellt wurde.
+
+   ```output
+   PS C:\azcopy\azcopy_windows_amd64_10.10.0> .\azcopy copy "https://md-h1rvdq3wwtdp.z24.blob.storage.azure.net/gxs3kpbgjhkr/abcd?sv=2018-03-28&sr=b&si=f86003fc-a231-43b0-baf2-61dd51e3a05a&sig=o5Rj%2BNZSook%2FVNMcuCcwEwsr0i7sy%2F7gIDzak6JhlKg%3D" "https://mystorageaccount.blob.core.windows.net/virtualmachines/osdisk.vhd?sp=rw&st=2021-05-21T16:52:24Z&se=2021-05-22T00:52:24Z&spr=https&sv=2020-02-10&sr=c&sig=PV3Q3zpaQ%2FOLidbQJDKlW9nK%2BJ7PkzYv2Eczxko5k%2Bg%3D" --recursive
+   INFO: Scanning...
+   INFO: Failed to create one or more destination container(s). Your transfers may still succeed if the container already exists.
+   INFO: Any empty folders will not be processed, because source and/or destination doesn't have full folder support
+
+   Job 783f2177-8317-3e4b-7d2f-697a8f1ab63c has started
+   Log file is located at: C:\Users\aseuser\.azcopy\783f2177-8317-3e4b-7d2f-697a8f1ab63c.log
+
+   INFO: Destination could not accommodate the tier P10. Going ahead with the default tier. In case of service to service transfer, consider setting the flag --s2s-preserve-access-tier=false.
+   100.0 %, 0 Done, 0 Failed, 1 Pending, 0 Skipped, 1 Total,
+
+   Job 783f2177-8317-3e4b-7d2f-697a8f1ab63c summary
+   Elapsed Time (Minutes): 1.4671
+   Number of File Transfers: 1
+   Number of Folder Property Transfers: 0
+   Total Number of Transfers: 1
+   Number of Transfers Completed: 1
+   Number of Transfers Failed: 0
+   Number of Transfers Skipped: 0
+   TotalBytesTransferred: 136367309312
+   Final Job Status: Completed
+
+   PS C:\azcopy\azcopy_windows_amd64_10.10.0>
+   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen virtueller Computer auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)
+- [Bereitstellen von VMs auf Ihrem Gerät mit dem Azure-Portal](azure-stack-edge-gpu-deploy-virtual-machine-portal.md)
+- [Bereitstellen von VMs auf Ihrem Gerät über PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)

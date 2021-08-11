@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 541af6d0051d06de5721b22616fbf1e2867b71d6
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 27bb3f163dc8f1a2f50e39ca5bbb5708419cb171
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833362"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073898"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Einrichten von Azure App Service-Zugriffseinschränkungen
 
@@ -200,6 +200,9 @@ Sie können Zugriffseinschränkungen programmgesteuert hinzufügen, indem Sie ei
     --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
   ```
 
+   > [!NOTE]
+   > Das Arbeiten mit Diensttags, HTTP-Headern oder Regeln mit mehreren Quellen in Azure CLI erfordert mindestens Version 2.23.0. Sie können die Version des installierten Moduls wie folgt überprüfen: ```az version```
+
 * Mithilfe von [Azure PowerShell](/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule) Beispiel:
 
 
@@ -208,7 +211,7 @@ Sie können Zugriffseinschränkungen programmgesteuert hinzufügen, indem Sie ei
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
    > [!NOTE]
-   > Das Arbeiten mit Diensttags, HTTP-Headern oder Regeln mit mehreren Quellen erfordert mindestens Version 5.7.0. Sie können die Version des installierten Moduls wie folgt überprüfen: **Get-InstalledModule -Name Az**
+   > Das Arbeiten mit Diensttags, HTTP-Headern oder Regeln mit mehreren Quellen in Azure PowerShell erfordert mindestens Version 5.7.0. Sie können die Version des installierten Moduls wie folgt überprüfen: ```Get-InstalledModule -Name Az```
 
 Sie können Werte auch manuell festlegen, indem Sie wie folgt vorgehen:
 

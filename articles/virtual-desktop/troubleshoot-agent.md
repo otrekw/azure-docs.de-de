@@ -1,21 +1,21 @@
 ---
-title: 'Problembehandlung für den Windows Virtual Desktop-Agent: Azure'
+title: Problembehandlung für den Azure Virtual Desktop-Agent – Azure
 description: Hier finden Sie Informationen dazu, wie Sie häufige Agent- und Konnektivitätsprobleme beheben.
 author: Sefriend
 ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 67bc4218e28e561b618ab092f0b73207438bd2aa
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 1ca3d938851b1aa54e13a29638fa3e4c1f8569d1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633337"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751413"
 ---
-# <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Behandeln häufiger Probleme beim Windows Virtual Desktop-Agent
+# <a name="troubleshoot-common-azure-virtual-desktop-agent-issues"></a>Behandeln häufiger Probleme mit dem Azure Virtual Desktop-Agent
 
-Der Windows Virtual Desktop-Agent kann aufgrund verschiedener Faktoren Verbindungsprobleme verursachen:
+Der Azure Virtual Desktop-Agent kann aufgrund verschiedener Faktoren Verbindungsprobleme verursachen:
    - Ein Fehler im Broker, der dazu führt, dass der Agent den Dienst beendet.
    - Probleme bei Updates.
    - Probleme während der Agent-Installation, wodurch die Verbindung mit dem Sitzungshost unterbrochen wird.
@@ -23,7 +23,7 @@ Der Windows Virtual Desktop-Agent kann aufgrund verschiedener Faktoren Verbindun
 In diesem Artikel werden Lösungen für diese häufigen Szenarien vorgestellt und erläutert, wie Sie Verbindungsprobleme beheben können.
 
 >[!NOTE]
->Zum Beheben von Problemen mit der Sitzungskonnektivität und dem Windows Virtual Desktop-Agent empfiehlt es sich, die Ereignisprotokolle unter **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung** zu untersuchen. Suchen Sie nach Ereignissen mit einer der folgenden Quellen, um Ihr Problem zu identifizieren:
+>Zum Beheben von Problemen mit der Sitzungskonnektivität und dem Azure Virtual Desktop-Agent empfiehlt es sich, die Ereignisprotokolle unter **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung** zu untersuchen. Suchen Sie nach Ereignissen mit einer der folgenden Quellen, um Ihr Problem zu identifizieren:
 >
 >- WVD-Agent
 >- WVD-Agent-Updater
@@ -106,19 +106,19 @@ Um dieses Problem zu lösen, überprüfen Sie, ob BrokerURI und BrokerURIGlobal 
    > ![Screenshot: nicht erfolgreicher Zugriff auf den geladenen globalen Broker-URI](media/unsuccessful-broker-global.png)
 
 8. Wenn das Netzwerk diese URLs blockiert, müssen Sie diese Blockierung für die erforderlichen URLs aufheben. Weitere Informationen finden Sie unter [Liste der erforderlichen URLs](safe-url-list.md).
-9. Wenn Ihr Problem damit nicht gelöst wird, stellen Sie sicher, dass keine Gruppenrichtlinien mit Verschlüsselungsverfahren vorhanden sind, die die Verbindung zwischen Agent und Broker blockieren. Windows Virtual Desktop verwendet dasselbe TLS 1.2-Verschlüsselungsverfahren wie [Azure Front Door](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-). Weitere Informationen finden Sie unter [Verbindungssicherheit](network-connectivity.md#connection-security).
+9. Wenn Ihr Problem damit nicht gelöst wird, stellen Sie sicher, dass keine Gruppenrichtlinien mit Verschlüsselungsverfahren vorhanden sind, die die Verbindung zwischen Agent und Broker blockieren. Azure Virtual Desktop verwendet dasselbe TLS 1.2-Verschlüsselungsverfahren wie [Azure Front Door](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-). Weitere Informationen finden Sie unter [Verbindungssicherheit](network-connectivity.md#connection-security).
 
 ## <a name="error-3703"></a>Fehler: 3703
 
-Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3703 und der Meldung „RD-Gateway-URL ist nicht zugänglich“ in der Beschreibung feststellen, kann der Agent die Gateway-URLs nicht erreichen. Um erfolgreich eine Verbindung mit Ihrem Sitzungshost herzustellen und zuzulassen, dass Netzwerkdatenverkehr zu diesen Endpunkten Einschränkungen umgeht, müssen Sie die Blockierung der URLs in der [Liste der erforderlichen URLs](safe-url-list.md) aufheben. Stellen Sie auch sicher, dass Ihre Firewall- oder Proxyeinstellungen diese URLs nicht blockieren. Damit Windows Virtual Desktop verwendet werden kann, muss die Blockierung dieser URLs aufgehoben werden.
+Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3703 und der Meldung „RD-Gateway-URL ist nicht zugänglich“ in der Beschreibung feststellen, kann der Agent die Gateway-URLs nicht erreichen. Um erfolgreich eine Verbindung mit Ihrem Sitzungshost herzustellen und zuzulassen, dass Netzwerkdatenverkehr zu diesen Endpunkten Einschränkungen umgeht, müssen Sie die Blockierung der URLs in der [Liste der erforderlichen URLs](safe-url-list.md) aufheben. Stellen Sie auch sicher, dass Ihre Firewall- oder Proxyeinstellungen diese URLs nicht blockieren. Damit Azure Virtual Desktop verwendet werden kann, muss die Blockierung dieser URLs aufgehoben werden.
 
 Um dieses Problem zu lösen, vergewissern Sie sich, dass Ihre Firewall- und/oder DNS-Einstellungen diese URLs nicht blockieren:
-1. [Verwenden Sie Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md).
+1. [Verwenden von Azure Firewall zum Schutz von Azure Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md)
 2. Konfigurieren Sie die [DNS-Einstellungen für Azure Firewall](../firewall/dns-settings.md).
 
 ## <a name="error-3019"></a>Fehler: 3019
 
-Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3019 feststellen, bedeutet dies, dass der Agent die WebSocket-Transport-URLs nicht erreichen kann. Um erfolgreich eine Verbindung mit Ihrem Sitzungshost herzustellen und zuzulassen, dass Netzwerkdatenverkehr Einschränkungen umgeht, müssen Sie die Blockierung der URLs in der [Liste der erforderlichen URLs](safe-url-list.md) aufheben. Arbeiten Sie mit dem Azure-Netzwerkteam zusammen, um sicherzustellen, dass Firewall-, Proxy- und DNS-Einstellungen diese URLs nicht blockieren. Sie können auch Ihre Netzwerk-Ablaufverfolgungsprotokolle prüfen, um zu ermitteln, wo der Windows Virtual Desktop-Dienst blockiert wird. Wenn Sie eine Supportanfrage zu diesem Problem eröffnen, fügen Sie die Netzwerk-Ablaufverfolgungsprotokolle unbedingt an die Anfrage an.
+Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3019 feststellen, bedeutet dies, dass der Agent die WebSocket-Transport-URLs nicht erreichen kann. Um erfolgreich eine Verbindung mit Ihrem Sitzungshost herzustellen und zuzulassen, dass Netzwerkdatenverkehr Einschränkungen umgeht, müssen Sie die Blockierung der URLs in der [Liste der erforderlichen URLs](safe-url-list.md) aufheben. Arbeiten Sie mit dem Azure-Netzwerkteam zusammen, um sicherzustellen, dass Firewall-, Proxy- und DNS-Einstellungen diese URLs nicht blockieren. Sie können auch Ihre Netzwerk-Ablaufverfolgungsprotokolle prüfen, um zu ermitteln, wo der Azure Virtual Desktop-Dienst blockiert wird. Wenn Sie eine Supportanfrage zu diesem Problem eröffnen, fügen Sie die Netzwerk-Ablaufverfolgungsprotokolle unbedingt an die Anfrage an.
 
 ## <a name="error-installationhealthcheckfailedexception"></a>Fehler: InstallationHealthCheckFailedException
 
@@ -189,7 +189,7 @@ So deaktivieren Sie eine Richtlinie:
 
 ## <a name="error-stack-listener-isnt-working-on-windows-10-2004-vm"></a>Error: Der Stapellistener funktioniert auf Windows 10-2004-VMs nicht
 
-Führen Sie **qwinsta** an der Eingabeaufforderung aus, und notieren Sie sich die Versionsnummer, die neben **rdp-sxs** angezeigt wird. Wenn neben den Komponenten **rdp-tcp** und **rdp-sxs** nicht **Lauschen** angezeigt wird oder die beiden Komponenten nach der Ausführung von **qwinsta** überhaupt nicht angezeigt werden, liegt ein Stapelfehler vor. Stapelupdates werden zusammen mit Agent-Updates installiert, und wenn bei dieser Installation etwas schiefgeht, funktioniert der Windows Virtual Desktop-Listener nicht.
+Führen Sie **qwinsta** an der Eingabeaufforderung aus, und notieren Sie sich die Versionsnummer, die neben **rdp-sxs** angezeigt wird. Wenn neben den Komponenten **rdp-tcp** und **rdp-sxs** nicht **Lauschen** angezeigt wird oder die beiden Komponenten nach der Ausführung von **qwinsta** überhaupt nicht angezeigt werden, liegt ein Stapelfehler vor. Stapelupdates werden zusammen mit Agent-Updates installiert, und wenn bei dieser Installation etwas schiefgeht, funktioniert der Azure Virtual Desktop-Listener nicht.
 
 So lösen Sie das Problem:
 1. Öffnen Sie den Registrierungs-Editor.
@@ -224,7 +224,7 @@ Um dieses Problem zu beheben, geben Sie durch eine der folgenden Aktionen Speich
 
 ## <a name="error-agent-fails-to-update-with-missingmethodexception"></a>Fehler: Agent kann nicht aktualisiert werden: MissingMethodException
 
-Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3389 und der Meldung „MissingMethodException:Methode nicht gefunden“ in der Beschreibung feststellen, bedeutet dies, dass der Windows Virtual Desktop-Agent nicht erfolgreich aktualisiert wurde und auf eine frühere Version zurückgesetzt wurde. Dies liegt möglicherweise daran, dass die Versionsnummer des derzeit auf Ihrer VM installierte .NET Framework niedriger ist als 4.7.2. Um dieses Problem zu lösen, müssen Sie ein Upgrade von .NET auf Version 4.7.2 oder höher durchführen. Befolgen Sie dazu die Installationsanweisungen in der [.NET Framework-Dokumentation](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2).
+Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3389 und der Meldung „MissingMethodException:Methode nicht gefunden“ in der Beschreibung feststellen, bedeutet dies, dass der Azure Virtual Desktop-Agent nicht erfolgreich aktualisiert wurde und auf eine frühere Version zurückgesetzt wurde. Dies liegt möglicherweise daran, dass die Versionsnummer des derzeit auf Ihrer VM installierte .NET Framework niedriger ist als 4.7.2. Um dieses Problem zu lösen, müssen Sie ein Upgrade von .NET auf Version 4.7.2 oder höher durchführen. Befolgen Sie dazu die Installationsanweisungen in der [.NET Framework-Dokumentation](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2).
 
 
 ## <a name="error-vms-are-stuck-in-unavailable-or-upgrading-state"></a>Error: VMs verbleiben im Zustand „Nicht verfügbar“ oder „Upgrade wird durchgeführt“
@@ -287,7 +287,7 @@ So lösen Sie das Problem:
 
 ## <a name="your-issue-isnt-listed-here-or-wasnt-resolved"></a>Ihr Problem wird hier nicht aufgeführt oder konnte nicht gelöst werden
 
-Wenn Ihr Problem in diesem Artikel nicht erläutert wurde oder die Anweisungen Ihr Problem nicht lösen konnten, empfiehlt es sich, den Windows Virtual Desktop-Agent zu deinstallieren, erneut zu installieren und erneut zu registrieren. In diesem Abschnitt wird erläutert, wie Sie Ihre VM erneut beim Windows Virtual Desktop-Dienst registrieren, indem Sie den sämtliche Komponenten für Agent, Bootloader und Stapel deinstallieren, den Sitzungshost aus dem Hostpool entfernen, einen neuen Registrierungsschlüssel für die VM generieren und Agent und Bootloader erneut installieren. Wenn eines (oder mehrere) der folgenden Szenarien auf Sie zutrifft, führen Sie die folgenden Schritte aus:
+Wenn Ihr Problem in diesem Artikel nicht erläutert wurde oder die Anweisungen Ihr Problem nicht lösen konnten, empfiehlt es sich, den Azure Virtual Desktop-Agent zu deinstallieren, erneut zu installieren und erneut zu registrieren. In diesem Abschnitt wird erläutert, wie Sie Ihre VM erneut beim Azure Virtual Desktop-Dienst registrieren, indem Sie den sämtliche Komponenten für Agent, Bootloader und Stapel deinstallieren, den Sitzungshost aus dem Hostpool entfernen, einen neuen Registrierungsschlüssel für die VM generieren und Agent und Bootloader erneut installieren. Wenn eines (oder mehrere) der folgenden Szenarien auf Sie zutrifft, führen Sie die folgenden Schritte aus:
 - Ihre VM verbleibt im Zustand **Nicht verfügbar** oder **Upgrade wird durchgeführt**.
 - Der Stapellistener funktioniert nicht, und Sie führen Windows 10 in der Version 1809, 1903 oder 1909 aus.
 - Sie erhalten den Fehler **EXPIRED_REGISTRATION_TOKEN**.
@@ -345,7 +345,7 @@ Sie müssen einen neuen Registrierungsschlüssel generieren, mit dem Ihre VM bei
 ### <a name="step-4-reinstall-the-agent-and-boot-loader"></a>Schritt 4: Neuinstallieren von Agent und Bootloader
 
 Wenn Sie die neueste Version von Agent und Bootloader installieren, werden der parallele Stapel und der Geneva-Überwachungs-Agent automatisch ebenfalls installiert. So installieren Sie Agent und Bootloader neu:
-1. Melden Sie sich als Administrator bei der VM an, und verwenden Sie die richtige Version des Agent-Installationsprogramms für Ihre Bereitstellung je nach Windows-Version, die auf Ihrer VM ausgeführt wird. Für VMs unter Windows 10 befolgen Sie die Anweisungen unter [Registrieren der virtuellen Computer](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool), um den **Windows Virtual Desktop-Agent** und den **Bootloader für Windows Virtual Desktop-Agents** herunterzuladen. Für VMs unter Windows 7 führen Sie die Schritte 13–14 in [Registrieren der virtuellen Computer](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine) aus, um den **Windows Virtual Desktop-Agent** und den **Windows Virtual Desktop-Agent-Manager** herunterzuladen.
+1. Melden Sie sich als Administrator bei der VM an, und verwenden Sie die richtige Version des Agent-Installationsprogramms für Ihre Bereitstellung je nach Windows-Version, die auf Ihrer VM ausgeführt wird. Für VMs unter Windows 10 befolgen Sie die Anweisungen unter [Registrieren der virtuellen Computer](create-host-pools-powershell.md#register-the-virtual-machines-to-the-azure-virtual-desktop-host-pool), um den **Azure Virtual Desktop-Agent** und den **Bootloader für Azure Virtual Desktop-Agents** herunterzuladen. Für VMs unter Windows 7 führen Sie die Schritte 13–14 in [Registrieren der virtuellen Computer](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine) aus, um den **Azure Virtual Desktop-Agent** und den **Azure Virtual Desktop-Agent-Manager** herunterzuladen.
 
    > [!div class="mx-imgBorder"]
    > ![Screenshot der Downloadseite für Agent und Bootloader](media/download-agent.png)
@@ -371,15 +371,15 @@ Wenn Sie die neueste Version von Agent und Bootloader installieren, werden der p
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Falls Ihr Problem weiterhin besteht, erstellen Sie eine Supportanfrage, und geben Sie detaillierte Informationen zum Problem sowie zu den Aktionen an, die Sie ausgeführt haben, um das Problem zu lösen. Die folgende Liste enthält weitere Ressourcen, die Sie zur Behandlung von Problemen in Ihrer Windows Virtual Desktop-Bereitstellung verwenden können.
+Falls Ihr Problem weiterhin besteht, erstellen Sie eine Supportanfrage, und geben Sie detaillierte Informationen zum Problem sowie zu den Aktionen an, die Sie ausgeführt haben, um das Problem zu lösen. Die folgende Liste enthält weitere Ressourcen, die Sie zur Behandlung von Problemen in Ihrer Azure Virtual Desktop-Bereitstellung verwenden können.
 
-- Eine Übersicht über die Problembehandlung von Windows Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
-- Informationen zur Problembehandlung beim Erstellen eines Hostpools in einer Windows Virtual Desktop-Umgebung finden Sie unter [Mandanten- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
-- Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Windows Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
-- Informationen zur Behebung von Problemen bei Windows Virtual Desktop-Clientverbindungen finden Sie unter [Windows Virtual Desktop – Clientverbindungen](troubleshoot-service-connection.md).
+- Eine Übersicht über die Problembehandlung von Azure Virtual Desktop und die Eskalationspfade finden Sie unter [Problembehandlung: Übersicht, Feedback und Support](troubleshoot-set-up-overview.md).
+- Informationen zur Problembehandlung beim Erstellen eines Hostpools in einer Azure Virtual Desktop-Umgebung finden Sie unter [Mandanten- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
+- Informationen zur Problembehandlung bei der Konfiguration einer VM in Azure Virtual Desktop finden Sie unter [Konfiguration von Sitzungshost-VMs](troubleshoot-vm-configuration.md).
+- Informationen zur Behebung von Problemen bei Azure Virtual Desktop-Clientverbindungen finden Sie unter [Azure Virtual Desktop – Clientverbindungen](troubleshoot-service-connection.md).
 - Informationen zur Behebung von Problemen bei Remotedesktopclients finden Sie unter [Troubleshooting für den Remotedesktopclient](troubleshoot-client.md).
-- Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop – PowerShell](troubleshoot-powershell.md).
-- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
+- Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Azure Virtual Desktop finden Sie unter [Azure Virtual Desktop – PowerShell](troubleshoot-powershell.md).
+- Weitere Informationen zum Dienst finden Sie unter [Azure Virtual Desktop-Umgebung](environment-setup.md).
 - Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
 - Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
 - Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../azure-resource-manager/templates/deployment-history.md).

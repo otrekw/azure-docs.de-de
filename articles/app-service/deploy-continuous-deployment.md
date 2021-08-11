@@ -6,19 +6,19 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 633d62fc69c516b482d5749a07052337dc71f567
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aa058f0de74941a8ac9fe711c7b6de59240680bb
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789481"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536671"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
 
 Der [Azure App Service](overview.md) ermöglicht die kontinuierliche Bereitstellung von [GitHub](https://help.github.com/articles/create-a-repo)-, [BitBucket](https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html)- und [Azure Repos](/azure/devops/repos/git/creatingrepo)-Repositorys durch Abrufen der neuesten Updates.
 
 > [!NOTE]
-> Die Seite **Development Center (klassisch)** im Azure-Portal, bei der es sich um die alte Bereitstellung handelt, wird im März 2021 eingestellt. Diese Änderung wirkt sich nicht auf vorhandene Bereitstellungseinstellungen in Ihrer APP aus, und Sie können die APP-Bereitstellung weiterhin auf der Seite **Deployment Center** verwalten.
+> Die Seite **Development Center (klassisch)** im Azure-Portal, bei der es sich um eine frühere Version der Bereitstellungserfahrung handelt, wurde im März 2021 als veraltet gekennzeichnet. Diese Änderung wirkt sich nicht auf vorhandene Bereitstellungseinstellungen in Ihrer App aus, und Sie können die App-Bereitstellung weiterhin auf der Seite **Bereitstellungscenter** im Portal verwalten.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -43,7 +43,7 @@ Wählen Sie die Registerkarte aus, die Ihrer Auswahl für die Schritte entsprich
 
 1. Wenn Sie zum ersten Mal von GitHub aus bereitstellen, klicken Sie auf **Autorisieren**, und befolgen Sie die Autorisierungsaufforderungen. Wenn Sie aus dem Repository eines anderen Benutzers bereitstellen möchten, klicken Sie auf **Konto ändern**.
 
-1. Nachdem Sie Ihr Azure-Konto bei GitHub autorisiert haben, wählen Sie die **Organisation**, das **Repository** und den **Branch** aus, für die Sie CI/CD konfigurieren möchten.
+1. Nachdem Sie Ihr Azure-Konto bei GitHub autorisiert haben, wählen Sie die **Organisation**, das **Repository** und den **Branch** aus, für die Sie CI/CD konfigurieren möchten. Wenn Sie eine Organisation oder ein Repository nicht finden, müssen Sie möglicherweise zusätzliche Berechtigungen auf GitHub aktivieren. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Repositorys Ihrer Organisation](https://docs.github.com/organizations/managing-access-to-your-organizations-repositories).
 
 1. Wenn GitHub Actions der ausgewählte Buildanbieter ist, können Sie die gewünschte Workflowdatei über die Dropdownlisten **Laufzeitstapel** und **Version** auswählen. Azure committet diese Workflowdatei in Ihr ausgewähltes GitHub-Repository, um Build- und Bereitstellungsaufgaben zu verarbeiten. Wenn Sie die Datei vor dem Speichern Ihrer Änderungen anzeigen möchten, klicken Sie auf **Dateivorschau anzeigen**.
 

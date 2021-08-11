@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c754c47bda03987c00b763d39c608f9de3d84deb
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358391"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558811"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indizieren großer Datasets in der kognitiven Azure-Suche
 
@@ -98,7 +98,7 @@ Mit [Indexern](search-indexer-overview.md) werden unterstützte Azure-Datenquell
 
 + Mit Schedulern können Sie die Indizierung in regelmäßige Intervalle gliedern, sodass Sie sie im Laufe der Zeit verteilen können.
 + Geplante Indizierung kann am letzten bekannten Haltepunkt fortgesetzt werden. Wenn eine Datenquelle innerhalb eines 24-Stunden-Zeitfensters nicht vollständig durchsucht wird, setzt der Indexer die Indizierung am nächsten Tag fort, unabhängig davon, wo er aufgehört hat.
-+ Partitionieren von Daten in kleinere einzelne Datenquellen ermöglicht die parallele Verarbeitung. Sie können Quelldaten in kleinere Komponenten teilen, z. B. in mehrere Container in Azure Blob Storage, und anschließend mehrere entsprechende [Datenquellenobjekte](/rest/api/searchservice/create-data-source) in der kognitiven Azure-Suche erstellen, die parallel indiziert werden können.
++ Partitionieren von Daten in kleinere einzelne Datenquellen ermöglicht die parallele Verarbeitung. Sie können Quelldaten in kleinere Komponenten teilen, z. B. in mehrere Container in Azure Blob Storage, und anschließend mehrere entsprechende [Datenquellenobjekte](/rest/api/searchservice/create-data-source) in Azure Cognitive Search erstellen, die parallel indiziert werden können.
 
 > [!NOTE]
 > Indexer sind datenquellenspezifisch, also eignet sich ein Indexeransatz nur für ausgewählte Datenquellen in Azure: [SQL-Datenbank](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blobspeicher](search-howto-indexing-azure-blob-storage.md), [Tabellenspeicher](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
@@ -144,7 +144,7 @@ Für Indexer basiert die Verarbeitung der Kapazität grob auf einem Indexersubsy
 
 2. Sie können so viele Indexer parallel ausführen, wie Sucheinheiten für Ihren Dienst vorhanden sind. Erhöhen Sie unter **Einstellungen** > **Skala** die [Anzahl der Replikate](search-capacity-planning.md) oder Partitionen für die Parallelverarbeitung um ein zusätzliches Replikat oder eine zusätzliche Partition für jede Indexerworkload. Geben Sie eine ausreichende Zahl für bestehende Abfragevolumen an. Es sollten keine Abfrageworkloads für die Indizierung geopfert werden.
 
-3. Teilen Sie Daten auf mehrere Container auf, und zwar auf einer Ebene, die von den Indexern der kognitiven Azure-Suche erreicht werden kann. Also z.B. auf mehrere Tabellen in Azure SQL-Datenbank, auf mehrere Container im Azure Blob-Speicher oder auf mehrere Sammlungen. Definieren Sie ein Datenquellobjekt pro Tabelle oder Container.
+3. Teilen Sie Daten auf mehrere Container auf, und zwar auf einer Ebene, die von den Indexern der kognitiven Azure-Suche erreicht werden kann. Also z. B. auf mehrere Tabellen in Azure SQL-Datenbank, auf mehrere Container in Azure Blob Storage oder auf mehrere Sammlungen. Definieren Sie ein Datenquellobjekt pro Tabelle oder Container.
 
 4. Erstellen Sie mehrere Indexer, und planen Sie eine parallele Ausführung:
 

@@ -3,12 +3,12 @@ title: Beschreibung von Azure Service Fabric-Apps und -Diensten
 description: Beschreibt, wie Manifeste zum Definieren von Service Fabric-Anwendungen und -Diensten verwendet werden.
 ms.topic: conceptual
 ms.date: 8/12/2019
-ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22a04f94dfcd1ee4592e281ebd75efb0a8d0133a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86248219"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476542"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-Anwendungs- und -Dienstmanifeste
 In diesem Artikel wird beschrieben, wie Service Fabric-Anwendungen und -Dienste mit den Dateien „ApplicationManifest.xml“ und „ServiceManifest.xml“ definiert und mit Versionsangaben versehen werden.  Ausführlichere Beispiele finden Sie unter [Beispiele für Anwendungs- und Dienstmanifeste](service-fabric-manifest-examples.md).  Eine Dokumentation des XML-Schemas für diese Manifestdateien finden Sie unter [ServiceFabricServiceModel.xsd – Schemadokumentation](service-fabric-service-model-schema.md).
@@ -182,6 +182,7 @@ For more information about other features supported by application manifests, re
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Packen einer Anwendung](service-fabric-package-apps.md) und Vorbereiten der Anwendung für die Bereitstellung.
+- [Verwenden von „StartupServices.xml“ in einer Anwendung](service-fabric-startupservices-model.md).
 - [Bereitstellen und Entfernen von Anwendungen](service-fabric-deploy-remove-applications.md)
 - [Konfigurieren von Parametern und Umgebungsvariablen für verschiedene Anwendungsinstanzen](service-fabric-manage-multiple-environment-app-configuration.md)
 - [Konfigurieren von Sicherheitsrichtlinien für Ihre Anwendung](service-fabric-application-runas-security.md)

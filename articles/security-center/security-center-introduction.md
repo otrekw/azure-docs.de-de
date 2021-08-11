@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: fb505c42cda53db549cd5187972ad6fabfdf7ca4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b700cd6a9b17abcd86cfb31b1d2c65fefe226d79
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137091"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237404"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
 
@@ -76,13 +76,13 @@ Mit Security Center werden ständig neue Ressourcen erkannt, die für Ihre Workl
 
 Damit Sie besser nachvollziehen können, wie wichtig die einzelnen Empfehlungen für den gesamten Sicherheitsstatus sind, werden die Empfehlungen von Security Center in Sicherheitskontrollelemente gruppiert, und jedem Sicherheitskontrollelement wird eine **Sicherheitsbewertung** hinzugefügt. Dies ist ein entscheidender Faktor beim **Priorisieren Ihrer Sicherheitsmaßnahmen**.
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Sicherheitsbewertung von Security Center":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Security Center: Sicherheitsbewertung":::
 
 ### <a name="network-map"></a>Netzwerkübersicht
 
 Eines der leistungsfähigsten Tools, das von Security Center für die ständige Überwachung des Sicherheitsstatus Ihres Netzwerks bereitgestellt wird, ist die **Netzwerkübersicht**. In der Übersicht können Sie die Topologie Ihrer Workloads anzeigen, um zu ermitteln, ob jeder Knoten richtig konfiguriert ist. Sie sehen, wie Ihre Knoten miteinander verbunden sind, und können unerwünschte Verbindungen blockieren, die einem Angreifer unter Umständen die Bewegung durch Ihr Netzwerk erleichtern könnten.
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center – Netzwerkübersicht":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center: Netzwerkübersicht":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>Optimieren und Verbessern der Sicherheit durch die Konfiguration von empfohlenen Kontrollen

@@ -7,12 +7,13 @@ ms.topic: troubleshooting
 ms.date: 4/20/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 386a95b46bd4787ea9ad2925ea1d2b2a0627a05e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 633926710e4f6b92e2cd19aaf852135c07929966
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796074"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677128"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -36,7 +37,7 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 
 Überprüfen Sie „installer.log“, um die Ursache des Installationsfehlers zu bestimmen.
 
-<a id="agent-installation-gpo"></a> **Fehler bei der Agent-Installation: Speichersynchronisierungs-Agent Setup-Assistant aufgrund eines Fehlers vorzeitig beendet**
+<a id="agent-installation-gpo"></a>**Fehler bei der Agent-Installation: Setup-Assistent für Speichersynchronisierungs-Agent aufgrund eines Fehlers vorzeitig beendet**
 
 Im Agent-Installationsprotokoll wird der folgende Fehler protokolliert:
 
@@ -46,9 +47,9 @@ CAQuietExec64:  + FullyQualifiedErrorId : UnauthorizedAccess
 CAQuietExec64:  Error 0x80070001: Command line returned an error.
 ```
 
-Dieses Problem tritt auf, wenn die [PowerShell-Ausführungsrichtlinie](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) mithilfe einer Gruppenrichtlinie konfiguriert wurde und die Richtlinieneinstellung „Nur signierte Skripts zulassen“ gilt. Alle Skripts, die in der Azure-Dateisynchronisierung enthalten sind, werden signiert. Die Agent-Installation der Azure-Dateisynchronisierung schlägt fehl, weil das Installationsprogramm die Skriptausführung mithilfe der Richtlinieneinstellung „Ausführung umgehen“ vorschlägt.
+Dieses Problem tritt auf, wenn die [PowerShell-Ausführungsrichtlinie](/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) mithilfe einer Gruppenrichtlinie konfiguriert wurde und die Richtlinieneinstellung „Nur signierte Skripts zulassen“ lautet. Alle im Azure-Dateisynchronisierungs-Agent enthaltenen Skripts sind signiert. Die Agent-Installation der Azure-Dateisynchronisierung wird mit einem Fehler abgebrochen, weil das Installationsprogramm die Skriptausführung mit der Ausführungsrichtlinieneinstellung „Umgehen“ durchführt.
 
-Um dieses Problem zu beheben, deaktivieren Sie vorübergehend die Gruppenrichtlinieneinstellung [Skriptausführung aktivieren](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) auf dem Server. Nach Abschluss der Agent-Installation kann die Gruppenrichtlinieneinstellung erneut aktiviert werden.
+Deaktivieren Sie zum Beheben dieses Problems vorübergehend die Gruppenrichtlinieneinstellung [Skriptausführung aktivieren](/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) auf dem Server. Nach Abschluss der Agent-Installation kann die Gruppenrichtlinieneinstellung erneut aktiviert werden.
 
 <a id="agent-installation-on-DC"></a>**Bei der Agent-Installation tritt ein Fehler auf dem Active Directory-Domänencontroller auf.**  
 Wenn Sie versuchen, den Synchronisierungs-Agent auf einem Active Directory-Domänencontroller zu installieren, bei dem sich der Besitzer der PDC-Rolle unter Windows Server 2008 R2 oder einer älteren Version des Betriebssystems befindet, tritt bei der Installation des Synchronisierungs-Agents möglicherweise ein Fehler auf.
@@ -358,6 +359,7 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 | 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | Die Datei oder das Verzeichnis wurde übersprungen, wird aber in der nächsten Synchronisierungssitzung synchronisiert. Wenn dieser Fehler beim Herunterladen des Elements gemeldet wird, ist höchstwahrscheinlich der Datei- oder Verzeichnisname ungültig. | Es ist keine Aktion erforderlich, wenn dieser Fehler beim Hochladen der Datei gemeldet wird. Wird der Fehler beim Herunterladen der Datei gemeldet, benennen Sie die betreffende Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](?tabs=portal1%252cazure-portal#handling-unsupported-characters). |
 | 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | Die Erstellung einer Datei oder eines Verzeichnisses kann nicht synchronisiert werden, da das Element bereits im Ziel vorhanden ist und die Synchronisierung die Änderung nicht erkennt. | Keine weiteren Maßnahmen erforderlich. Die Synchronisierung protokolliert diesen Fehler nicht mehr, sobald die Änderungserkennung auf dem Ziel ausgeführt wird und die Synchronisierung dieses neue Element erkennt. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Die Datei kann nicht synchronisiert werden, da das Limit für die Azure-Dateifreigabe erreicht ist. | Um dieses Problem zu beheben, lesen Sie den Abschnitt [Sie haben das Speicherlimit für die Azure-Dateifreigabe erreicht](?tabs=portal1%252cazure-portal#-2134351810) in diesem Leitfaden zur Problembehandlung. |
+| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Die Datei ist durch eine nicht unterstützte Lösung (z.B. NTFS EFS) verschlüsselt. | Entschlüsseln Sie die Datei, und verwenden Sie eine unterstützte Verschlüsselungslösung. Eine Liste der unterstützten Lösungen finden Sie im Abschnitt [Verschlüsselung](file-sync-planning.md#encryption) im Planungshandbuch. |
 | 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Die Datei befindet sich in einem schreibgeschützten DFS-R-Replikationsordner. | Die Datei befindet sich in einem schreibgeschützten DFS-R-Replikationsordner. Die Azure-Dateisynchronisierung unterstützt keine Serverendpunkte in schreibgeschützten DFS-R-Replikationsordnern. Weitere Informationen finden Sie im [Planungshandbuch](file-sync-planning.md#distributed-file-system-dfs). |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Die Datei weist einen ausstehenden Löschzustand auf. | Keine weiteren Maßnahmen erforderlich. Die Datei wird gelöscht, sobald alle offenen Dateihandles geschlossen sind. |
 | 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | Die Datei kann nicht synchronisiert werden, weil die Einstellungen für Firewall und virtuelles Netzwerk im Speicherkonto aktiviert sind und der Server keinen Zugriff auf das Speicherkonto hat. | Fügen Sie die Server-IP-Adresse oder das virtuelle Netzwerk hinzu, indem Sie die im Abschnitt [Konfigurieren der Einstellung für Firewall und virtuelles Netzwerk](file-sync-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings) des Bereitstellungsleitfadens angegebenen Schritte ausführen. |
@@ -377,13 +379,13 @@ Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchroni
 
 | Zeichensatz | Zeichenanzahl |
 |---------------|-----------------|
-| 0x00000000 - 0x0000001F (Steuerzeichen) | 32 |
+| 0x00000000–0x0000001F (Steuerzeichen) | 32 |
 | 0x0000FDD0 - 0x0000FDDD (arabische Darstellungsformen - a) | 14 |
-| <ul><li>0x00000022 (Anführungszeichen)</li><li>0x0000002A (Sternchen)</li><li>0x0000002F (Schrägstrich)</li><li>0x0000003A (Doppelpunkt)</li><li>0x0000003C (kleiner als)</li><li>0x0000003E (größer als)</li><li>0x0000003F (Fragezeichen)</li><li>0x0000005C (Backslash)</li><li>0x0000007C (Pipe oder senkrechter Strich)</li></ul> | 9 |
-| <ul><li>0x0004FFFE–0x0004FFFF = 2 (Nicht-Zeichen)</li><li>0x0008FFFE–0x0008FFFF = 2 (Nicht-Zeichen)</li><li>0x000CFFFE–0x000CFFFF = 2 (Nicht-Zeichen)</li><li>0x0010FFFE - 0x0010FFFF = 2 (Nicht-Zeichen)</li></ul> | 8 |
+| <ul><li>0x00000022 (Anführungszeichen)</li><li>0x0000002A (Sternchen)</li><li>0x0000002F (Schrägstrich)</li><li>0x0000003A (Doppelpunkt)</li><li>0x0000003C (Kleiner-als-Zeichen)</li><li>0x0000003E (Größer-als-Zeichen)</li><li>0x0000003F (Fragezeichen)</li><li>0x0000005C (umgekehrter Schrägstrich)</li><li>0x0000007C (Pipezeichen oder senkrechter Strich)</li></ul> | 9 |
+| <ul><li>0x0004FFFE–0x0004FFFF = 2 (Nicht-Zeichen)</li><li>0x0008FFFE–0x0008FFFF = 2 (Nicht-Zeichen)</li><li>0x000CFFFE–0x000CFFFF = 2 (Nicht-Zeichen)</li><li>0x0010FFFE– 0x0010FFFF = 2 (Nicht-Zeichen)</li></ul> | 8 |
 | <ul><li>0x0000009D (Operating System Command, OSC)</li><li>0x00000090 (Device Control String, DCS)</li><li>0x0000008F (Single Shift Three, SS3)</li><li>0x00000081 (High Octet Preset)</li><li>0x0000007F (Delete, DEL)</li><li>0x0000008D (Reverse Line Feed, RI)</li></ul> | 6 |
-| 0x0000FFF0, 0x0000FFFD, 0x0000FFFE, 0x0000FFFF (Spezialzeichen) | 4 |
-| Dateien oder Verzeichnisse, die mit einem Punkt enden | 1 |
+| 0x0000FFF0, 0x0000FFFD, 0x0000FFFE, 0x0000FFFF (Sonderzeichen) | 4 |
+| Dateien oder Verzeichnisse, die auf einen Punkt enden | 1 |
 
 ### <a name="common-sync-errors"></a>Allgemeine Synchronisierungsfehler
 <a id="-2147023673"></a>**Die Synchronisierungssitzung wurde abgebrochen.**  

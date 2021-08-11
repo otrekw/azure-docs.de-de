@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 05/26/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 4fe60a119626dca51f5dd4f38a81f6a2ef99c83c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6051e659502a9dbccf653a2b5009affe343b9df4
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743721"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539187"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>Zeichenfolgenfunktionen (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,9 +22,9 @@ Mit Zeichenfolgenfunktionen können Sie Vorgänge für Zeichenfolgen in Azure Co
 
 ## <a name="functions"></a>Functions
 
-Die folgenden Skalarfunktionen führen einen Vorgang für einen Zeichenfolgen-Eingabewert durch und geben eine Zeichenfolge, einen numerischen Wert oder einen booleschen Wert zurück:
-  
-| Systemfunktion                                 | Indexnutzung        | Indexnutzung in Abfragen mit [skalaren Aggregatfunktionen](index-overview.md#index-utilization-for-scalar-aggregate-functions) | Bemerkungen                                                      |
+Die folgenden Skalarfunktionen führen einen Vorgang für einen Zeichenfolgen-Eingabewert durch und geben eine Zeichenfolge, einen numerischen Wert oder einen booleschen Wert zurück: In der Spalte für die **Indexverwendung** wird ggf. davon ausgegangen, dass Sie die Zeichenfolgensystemfunktion mit einem anderen Wert mit einem Gleichheitsfilter vergleichen.
+
+| Systemfunktion                                 | Indexnutzung        | [Indexnutzung in Abfragen mit skalaren Aggregatfunktionen](index-overview.md#index-utilization-for-scalar-aggregate-functions) | Bemerkungen                                                      |
 | ----------------------------------------------- | ------------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
 | [CONCAT](sql-query-concat.md)                   | Vollständige Überprüfung          | Vollständige Überprüfung                                              |                                                              |
 | [CONTAINS](sql-query-contains.md)               | Vollständige Indexüberprüfung    | Vollständige Überprüfung                                              |                                                              |

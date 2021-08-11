@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4c23859a44f45fc294631dd33da0ab9cad1dd61
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92152134"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191242"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
@@ -194,11 +194,11 @@ Wenn Sie Nachrichten vor dem Senden von Telemetriedaten filtern möchten, könne
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beschränkungen bei den Ereignissen „Gerät verbunden“ und „Gerät getrennt“
 
-Damit Geräteverbindungsstatus-Ereignisse empfangen werden, muss ein Gerät einen D2C-Vorgang zum Senden von Telemetrie oder einen C2D-Vorgang zum Empfangen von Nachrichten bei IoT Hub ausführen. Beachten Sie jedoch: Wenn ein Gerät für die Verbindung mit IoT Hub das AMQP-Protokoll verwendet, empfiehlt sich der C2D-Vorgang zum Empfangen einer Nachricht. Andernfalls werden die Benachrichtigungen zum Verbindungszustand möglicherweise um einige Minuten verzögert. Wenn Ihr Gerät das MQTT-Protokoll verwendet, hält IoT Hub den C2D-Link geöffnet. Bei AMQP können Sie den C2D-Link öffnen, indem Sie die Receive Async-API für das IoT Hub-C#-SDK oder den [Geräteclient für AMQP](iot-hub-amqp-support.md#device-client) aufrufen.
+Zum Empfang von Ereignissen beim Geräteverbindungsstatus muss ein Gerät entweder die *Gerät-zu-Cloud-Sendetelemetrie* oder einen *Cloud-zu-Gerät-Empfangsnachrichtenvorgang* mit IoT Hub aufrufen. Wenn aber ein Gerät für die Verbindung mit IoT Hub das AMQP-Protokoll verwendet, empfehlen wir, dass das Gerät den *Cloud-zu-Gerät-Vorgang zum Empfangen einer Nachricht* aufruft. Andernfalls werden die Benachrichtigungen zum Verbindungszustand möglicherweise um einige Minuten verzögert. Wenn Ihr Gerät eine Verbindung mit dem MQTT-Protokoll herstellt, bleibt die Cloud-zu-Gerät-Verbindung in IoT Hub geöffnet. Zum Öffnen des Cloud-zu-Gerät-Links für AMQP rufen Sie die [Receive Async API](/rest/api/iothub/device/receivedeviceboundnotification) (Asynchrone API zum Empfangen) auf.
 
-Der D2C-Link ist offen, wenn Sie Telemetriedaten senden. 
+Die Gerät-zu-Cloud-Verbindung bleibt geöffnet, solange das Gerät Telemetriedaten sendet.
 
-Wenn die Geräteverbindung instabil ist und das Gerät häufig verbunden und getrennt wird, wird nicht jeder einzelne Verbindungsstatus gesendet. Stattdessen wird der aktuelle Verbindungsstatus als regelmäßig abgerufene Momentaufnahme veröffentlicht, bis die Verbindung wieder instabil wird. Wenn dasselbe Verbindungszustandsereignis mit unterschiedlichen Folgenummern oder unterschiedliche Verbindungszustandsereignissen empfangen werden, bedeutet dies, dass sich der Geräteverbindungsstatus geändert hat.
+Wenn die Geräteverbindung flackert, d. h., wenn das Gerät eine Verbindung häufig herstellt und trennt, sendet IoT Hub nicht jeden einzelnen Verbindungsstatus, sondern veröffentlicht den aktuellen Verbindungsstatus, der bei einer regelmäßigen Momentaufnahme von 60 Sekunden erfasst wurde, bis das Flackern beendet wird. Wenn dasselbe Verbindungszustandsereignis mit unterschiedlichen Folgenummern oder unterschiedliche Verbindungszustandsereignissen empfangen werden, bedeutet dies, dass sich der Geräteverbindungsstatus geändert hat.
 
 ## <a name="tips-for-consuming-events"></a>Tipps zum Nutzen von Ereignissen
 

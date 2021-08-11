@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 05/13/2021
 ms.author: radeltch
-ms.openlocfilehash: aa2006ecfad91e21ac13a1e63be23302b2a70399
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: c762f0e04a7079fff72962cafe44b06acfcf0eaf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551032"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100034"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -442,8 +442,8 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    >Sie können die Erweiterung überprüfen, indem Sie „SUSEConnect ---list-extensions“ ausführen.  
    >So erzielen Sie schnellere Failoverzeiten mit dem Azure-Fence-Agent
    > - Auf SLES 12 SP4 oder SLES 12 SP5 installieren Sie die Version **4.6.2** oder höher des Pakets „python-azure-mgmt-compute“.  
-   > - Auf SLES 15 installieren Sie die Version **4.6.2** oder höher des Pakets „python **3**-azure-mgmt-compute“. 
-
+   > - Auf SLES 15.X installieren Sie die Version **4.6.2** des Pakets „python **3**-azure-mgmt-compute“, aber keine höhere Version. Vermeiden Sie Version 17.0.0-6.7.1 des Pakets „python **3**-azure-mgmt-compute“, da sie Änderungen enthält, die mit dem Azure Fence-Agent nicht kompatibel sind.    
+     
 1. **[A]** Richten Sie die Hostnamensauflösung ein.
 
    Sie können entweder einen DNS-Server verwenden oder „/etc/hosts“ auf allen Knoten ändern. In diesem Beispiel wird die Verwendung der /etc/hosts-Datei veranschaulicht.
@@ -660,7 +660,7 @@ sudo crm configure property stonith-timeout=900
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker-Konfiguration für geplante Azure-Ereignisse
 
-Azure verfügt über [geplante Ereignisse](../../linux/scheduled-events.md). Geplante Ereignisse werden per Metadatendienst bereitgestellt und sorgen dafür, dass für die Anwendung ausreichend Zeit für die Vorbereitung auf Ereignisse wie das Herunterfahren von VMs, das erneute Bereitstellen von VMs usw. vorhanden ist. Mit dem Ressourcen-Agent **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** wird eine Überwachung auf geplante Azure-Ereignisse durchgeführt. Wenn Ereignisse erkannt werden, versucht der Agent, alle Ressourcen auf der betroffenen VM zu beenden und auf einen anderen Knoten im Cluster zu verschieben. Hierfür müssen zusätzliche Pacemaker-Ressourcen konfiguriert werden. 
+Azure verfügt über [geplante Ereignisse](../../linux/scheduled-events.md). Geplante Ereignisse werden per Metadatendienst bereitgestellt und sorgen dafür, dass für die Anwendung ausreichend Zeit für die Vorbereitung auf Ereignisse wie das Herunterfahren von VMs, das erneute Bereitstellen von VMs usw. vorhanden ist. Mit dem Ressourcen-Agent **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** wird eine Überwachung auf geplante Azure-Ereignisse durchgeführt. Wenn Ereignisse erkannt werden und der Ressourcen-Agent feststellt, dass ein anderer Clusterknoten verfügbar ist, versetzt der azure-events-Agent den Zielclusterknoten in den Standbymodus, um den Cluster zu zwingen, Ressourcen von der VM mit anstehenden [geplanten Azure-Ereignissen](../../linux/scheduled-events.md) weg zu migrieren. Hierfür müssen zusätzliche Pacemaker-Ressourcen konfiguriert werden. 
 
 1. **[A]** stellen Sie sicher, dass das Paket für den **azure-events**-Agent bereits installiert und auf dem neuesten Stand ist. 
 

@@ -5,12 +5,12 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83633b6f107aee995c19e1cda94f4f93a96e84e2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 587dddfde930bb64aa21f2e24c26d815e60ab9b0
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076778"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791688"
 ---
 # <a name="troubleshoot-common-issues-with-startstop-vms-preview"></a>Behandeln allgemeiner Probleme bei „VMs starten/beenden (Vorschau)“
 
@@ -32,7 +32,7 @@ Abhängig davon, welche Logik-Apps Sie für die Unterstützung Ihres Starten/Bee
 
 Sie können die Details zu den Vorgängen überprüfen, die auf den virtuellen Computern ausgeführt werden, die in die Tabelle **requestsstoretable** in dem Azure-Speicherkonto geschrieben werden, das für „VMs starten/beenden v2 (Vorschau)“ verwendet wurde. Führen Sie die folgenden Schritte aus, um diese Datensätze anzuzeigen.
 
-1. Navigieren Sie im Azure-Portal zu dem Speicherkonto, und wählen Sie in dem Konto im linken Bereich „**Storage-Explorer (Vorschau)“ aus.
+1. Navigieren Sie im Azure-Portal zum Speicherkonto, und wählen Sie unter dem Konto im linken Bereich **Storage-Explorer (Vorschau)** aus.
 1. Wählen Sie **TABELLEN** aus, und wählen Sie dann **requeststoretable** aus.
 1. Jede Zeile in der Tabelle stellt die Starten/Beenden-Aktion dar, die auf einem virtuellen Azure-Computer ausgeführt wurde, basierend auf dem im Logik-App-Szenario definierten Zielbereich. Sie können die Ergebnisse nach jeder der Datensatzeigenschaften (z. B. TIMESTAMP, ACTION oder TARGETTOPLEVELRESOURCENAME) filtern.
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51536db7fe0bc1ae723327f17b2b5e8303c07e83
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 602f766429045d91748c0f0873744fe1d35b621d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315883"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467011"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generieren eines selbstsignierten Azure Application Gateway-Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle
 
@@ -50,20 +50,21 @@ Erstellen Sie Ihr Stammzertifikat der Zertifizierungsstelle mit OpenSSL.
 
 ### <a name="create-the-root-key"></a>Erstellen des Stammschlüssels
 
-1. Melden Sie sich bei dem Computer an, auf dem OpenSSL installiert ist, und führen Sie den folgenden Befehl aus. Dadurch wird ein kennwortgeschützter Schlüssel erstellt.
+1. Melden Sie sich bei dem Computer an, auf dem OpenSSL installiert ist, und führen Sie den folgenden Befehl aus. Dadurch wird ein verschlüsselter Schlüssel erstellt.
 
    ```
    openssl ecparam -out contoso.key -name prime256v1 -genkey
    ```
-1. Geben Sie an der Eingabeaufforderung ein sicheres Kennwort ein. Beispielsweise mindestens neun Zeichen mit Großbuchstaben, Kleinbuchstaben, Zahlen und Symbolen.
-
+   
 ### <a name="create-a-root-certificate-and-self-sign-it"></a>Erstellen eines Stammzertifikats und Selbstsignieren dieses Zertifikats
 
 1. Verwenden Sie die folgenden Befehle, um die Zertifikatsignieranforderung und das Zertifikat zu generieren.
 
    ```
    openssl req -new -sha256 -key contoso.key -out contoso.csr
-
+   ```
+   
+   ```
    openssl x509 -req -sha256 -days 365 -in contoso.csr -signkey contoso.key -out contoso.crt
    ```
    Mit den vorherigen Befehlen wird das Stammzertifikat erstellt. Sie verwenden dieses Zertifikat, um Ihr Serverzertifikat zu signieren.

@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/30/2021
+ms.openlocfilehash: 348cd594ae515503c870c1b96eb64aa7117ea26b
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98935146"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786752"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Blobspeicher- und Azure Data Lake Gen2-Ausgabe von Azure Stream Analytics
 
@@ -58,7 +58,12 @@ Verwenden Sie für Partitionsschlüssel die Token {date} und {time} aus Ihren Er
 
 ## <a name="output-batch-size"></a>Ausgabebatchgröße
 
-Die maximale Nachrichtengröße finden Sie unter [Grenzwerte für Azure Storage](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). Die maximale Blobblockgröße beträgt 4 MB und die maximale Anzahl von Blobblöcken 50.000. |
+Die maximale Nachrichtengröße finden Sie unter [Grenzwerte für Azure Storage](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). Die maximale Blobblockgröße beträgt 4 MB und die maximale Anzahl von Blobblöcken 50.000.
+
+## <a name="limitations"></a>Einschränkungen
+
+* Wenn "/" im Pfadmuster verwendet wird (z.B. /folder2/folder3), werden leere Ordner erstellt, und sie sind im Storage-Explorer nicht sichtbar.
+* Stream Analytics fügt an dieselbe Datei an, wenn keine neue Blobdatei benötigt wird. Beachten Sie, dass dies dazu führen kann, dass zusätzliche Trigger generiert werden, wenn Azure-Dienste wie Event Grid so konfiguriert sind, dass sie bei der Aktualisierung der Blobdatei ausgelöst werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

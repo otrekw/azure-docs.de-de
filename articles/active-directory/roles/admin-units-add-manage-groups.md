@@ -9,29 +9,37 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 03/10/2021
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ad8cce8375ecd670a481541a091e36aacb41240
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: fa9a7b08f792c36ecf0f65e37f2f9e9c551bca8c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505291"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088136"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Hinzufügen und Verwalten von Gruppen in einer Verwaltungseinheit in Azure Active Directory
 
 In Azure Active Directory (Azure AD) können Sie einer Verwaltungseinheit Gruppen hinzufügen, um eine präzisere Steuerung der Verwaltungsbereiche zu erzielen.
 
-Informationen zur Vorbereitung auf den Einsatz von PowerShell und Microsoft Graph für die Verwaltung von Verwaltungseinheiten finden Sie unter [Erste Schritte](admin-units-manage.md#get-started).
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Azure AD Premium P1- oder P2-Lizenz für jeden Administrator der Verwaltungseinheit
+- Azure AD Free-Lizenzen für Mitglieder von Verwaltungseinheiten
+- „Administrator für privilegierte Rollen“ oder „Globaler Administrator“
+- AzureAD-Modul bei Verwendung von PowerShell
+- Administratorzustimmung bei Verwendung von Graph-Tester für die Microsoft Graph-API
+
+Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
 
 ## <a name="add-groups-to-an-administrative-unit"></a>Zuweisen von Gruppen zu einer Verwaltungseinheit
 
 Sie können Gruppen einer Verwaltungseinheit hinzufügen, indem Sie das Azure-Portal, PowerShell oder Microsoft Graph verwenden.
 
-### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+### <a name="azure-portal"></a>Azure-Portal
 
 Sie können Gruppen einer Verwaltungseinheit nur einzeln zuweisen. Eine Option zum Zuweisen von Gruppen per Massenvorgang ist nicht vorhanden. Es gibt zwei Möglichkeiten, wie Sie im Azure-Portal eine Gruppe einer Verwaltungseinheit zuweisen können:
 
@@ -60,7 +68,7 @@ Sie können Gruppen einer Verwaltungseinheit nur einzeln zuweisen. Eine Option z
 
   1. Wählen Sie mindestens eine Gruppe aus, die der Verwaltungseinheit zugewiesen werden soll, und wählen Sie dann die Schaltfläche **Auswählen** aus.
 
-### <a name="use-powershell"></a>Verwenden von PowerShell
+### <a name="powershell"></a>PowerShell
 
 Verwenden Sie im folgenden Beispiel das Cmdlet `Add-AzureADMSAdministrativeUnitMember`, um die Gruppe der Verwaltungseinheit hinzuzufügen. Die Objekt-ID der Verwaltungseinheit und die Objekt-ID der hinzuzufügenden Gruppe werden als Argumente verwendet. Ändern Sie den hervorgehobenen Abschnitt so, wie dies für Ihre jeweilige Umgebung erforderlich ist.
 
@@ -71,7 +79,7 @@ $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
 Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.Id -RefObjectId $GroupObj.ObjectId
 ```
 
-### <a name="use-microsoft-graph"></a>Verwenden von Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 Führen Sie die folgenden Befehle aus:
 
@@ -99,7 +107,7 @@ Beispiel
 
 ## <a name="view-a-list-of-groups-in-an-administrative-unit"></a>Anzeigen einer Liste mit Gruppen in einer Verwaltungseinheit
 
-### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+### <a name="azure-portal"></a>Azure-Portal
 
 1. Navigieren Sie im Azure-Portal zu **Azure AD**.
 
@@ -109,7 +117,7 @@ Beispiel
 
    ![Screenshot: Bereich „Gruppen“ mit einer Liste der Gruppen in einer Verwaltungseinheit](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
-### <a name="use-powershell"></a>Verwenden von PowerShell
+### <a name="powershell"></a>PowerShell
 
 Führen Sie den folgenden Befehl aus, um eine Liste mit allen Mitgliedern der Verwaltungseinheit anzuzeigen: 
 
@@ -130,7 +138,7 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 }
 ```
 
-### <a name="use-microsoft-graph"></a>Verwenden von Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 Führen Sie den folgenden Befehl aus:
 
@@ -148,7 +156,7 @@ Text
 
 ## <a name="view-a-list-of-administrative-units-for-a-group"></a>Anzeigen einer Liste mit Verwaltungseinheiten für eine Gruppe
 
-### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+### <a name="azure-portal"></a>Azure-Portal
 
 1. Navigieren Sie im Azure-Portal zu **Azure AD**.
 
@@ -160,7 +168,7 @@ Text
 
    ![Screenshot: Bereich „Verwaltungseinheiten“ mit einer Liste mit Verwaltungseinheiten, denen eine Gruppe zugewiesen ist](./media/admin-units-add-manage-groups/list-group-au.png)
 
-### <a name="use-powershell"></a>Verwenden von PowerShell
+### <a name="powershell"></a>PowerShell
 
 Führen Sie den folgenden Befehl aus:
 
@@ -168,7 +176,7 @@ Führen Sie den folgenden Befehl aus:
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
 ```
 
-### <a name="use-microsoft-graph"></a>Verwenden von Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 Führen Sie den folgenden Befehl aus:
 
@@ -178,7 +186,7 @@ https://graph.microsoft.com/v1.0/groups/{group-id}/memberOf/$/Microsoft.Graph.Ad
 
 ## <a name="remove-a-group-from-an-administrative-unit"></a>Entfernen einer Gruppe aus einer Verwaltungseinheit
 
-### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+### <a name="azure-portal"></a>Azure-Portal
 
 Im Azure-Portal gibt es zwei Möglichkeiten, wie Sie eine Gruppe aus einer Verwaltungseinheit entfernen können:
 
@@ -200,7 +208,7 @@ Im Azure-Portal gibt es zwei Möglichkeiten, wie Sie eine Gruppe aus einer Verwa
 
     ![Screenshot: Bereich „Gruppen“ mit einer Liste der Gruppen in einer Verwaltungseinheit](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
-### <a name="use-powershell"></a>Verwenden von PowerShell
+### <a name="powershell"></a>PowerShell
 
 Führen Sie den folgenden Befehl aus:
 
@@ -208,7 +216,7 @@ Führen Sie den folgenden Befehl aus:
 Remove-AzureADMSAdministrativeUnitMember -ObjectId $adminUnitId -MemberId $memberGroupObjId
 ```
 
-### <a name="use-microsoft-graph"></a>Verwenden von Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 Führen Sie den folgenden Befehl aus:
 

@@ -11,16 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 112ad0714c84cd3be08788b3277f52372f6d0373
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c3d80a97b7be3127caaa4ce86dac8435dec1666
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98938476"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438448"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Übersicht über die kombinierte Registrierung von Sicherheitsinformationen in Azure Active Directory
 
-Vor der kombinierten Registrierung registrierten Benutzer Authentifizierungsmethoden für Azure AD Multi-Factor Authentication (MFA) und die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) getrennt voneinander. Benutzer waren verwirrt, dass ähnliche Methoden für Multi-Factor Authentication und für SSPR verwendet wurden, sie sich jedoch für beide Funktionen registrieren mussten. Mit der kombinierten Registrierung können sich Benutzer jetzt einmalig registrieren und die Vorteile von mehrstufiger Authentifizierung und SSPR nutzen.
+Vor der kombinierten Registrierung registrierten Benutzer Authentifizierungsmethoden für Azure AD Multi-Factor Authentication (MFA) und die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) getrennt voneinander. Benutzer waren verwirrt, dass ähnliche Methoden für Multi-Factor Authentication und für SSPR verwendet wurden, sie sich jedoch für beide Funktionen registrieren mussten. Mit der kombinierten Registrierung können sich Benutzer jetzt einmalig registrieren und die Vorteile von mehrstufiger Authentifizierung und SSPR nutzen. Sehen Sie sich dieses Video zum [Aktivieren und Konfigurieren von SSPR in Azure AD](https://www.youtube.com/watch?v=rA8TvhNcCvQ) an.
 
 > [!NOTE]
 > Ab dem 15. August 2020 werden alle neuen Azure AD-Mandanten automatisch für die kombinierte Registrierung aktiviert. 

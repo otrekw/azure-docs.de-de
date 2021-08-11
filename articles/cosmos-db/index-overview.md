@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 05/04/2021
 ms.author: tisande
-ms.openlocfilehash: fec7ed32b236dd0a5f9c0663209b5c2f44e05b29
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 00b119d993b549340467bf3892f3ffc5cf7b76dd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166719"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755421"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -202,7 +202,7 @@ In der folgenden Tabelle sind die verschiedenen Verwendungsmöglichkeiten von In
 | Genauer Indexscan | Binärsuche indizierter Werte und Laden nur übereinstimmender Elemente aus dem Transaktionsdatenspeicher | Bereichsvergleiche (>, <, <=, oder >=), StartsWith | Vergleichbar mit Indexsuche, erhöht sich leicht basierend auf der Kardinalität indizierter Eigenschaften | Erhöht sich basierend auf der Anzahl von Elementen in Abfrageergebnissen |
 | Erweiterter Indexscan | Optimierte Suche (jedoch weniger effizient als Binärsuche) indizierter Werte und Laden nur übereinstimmender Elemente aus dem Transaktionsdatenspeicher | StartsWith (ohne Berücksichtigung der Groß-/Kleinschreibung), StringEquals (ohne Berücksichtigung der Groß-/Kleinschreibung) | Erhöht sich leicht basierend auf der Kardinalität indizierter Eigenschaften | Erhöht sich basierend auf der Anzahl von Elementen in Abfrageergebnissen |
 | Vollständiger Indexscan    | Lesen eines eindeutigen Satzes indizierter Werte und Laden nur übereinstimmender Elemente aus dem Transaktionsdatenspeicher                                              | Contains, EndsWith, RegexMatch, LIKE                                    | Erhöht sich linear basierend auf der Kardinalität indizierter Eigenschaften | Erhöht sich basierend auf der Anzahl von Elementen in Abfrageergebnissen |
-| Vollständige Überprüfung          | Laden aller Elemente                                               | Upper, Lower                                    | –                                                          | Erhöht sich basierend auf der Anzahl von Elementen im Container |
+| Vollständige Überprüfung          | Laden aller Elemente aus dem Transaktionsdatenspeicher                                          | Upper, Lower                                    | –                                                          | Erhöht sich basierend auf der Anzahl von Elementen im Container |
 
 Beim Schreiben von Abfragen sollten Sie ein Filterprädikat verwenden, das den Index so effizient wie möglich nutzt. Wenn z. B. `StartsWith` oder `Contains` für Ihren Anwendungsfall geeignet ist, sollten Sie `StartsWith` wählen, da hiermit statt eines vollständigen Indexscans ein präziser Indexscan durchgeführt wird.
 
@@ -249,10 +249,10 @@ Azure Cosmos DB verwendet einen invertierten Index. Der Index ordnet jeden JSON
 | /locations/0/country    | Deutschland | 1          |
 | /locations/0/country    | Irland | 2          |
 | /locations/0/city       | Berlin  | 1          |
-| /locations/0/city       | Dublin  | 1          |
+| /locations/0/city       | Dublin  | 2          |
 | /locations/1/country    | Frankreich  | 1          |
 | /locations/1/city       | Paris   | 1          |
-| /headquarters/country   | Belgien | 2          |
+| /headquarters/country   | Belgien | 1,2        |
 | /headquarters/employees | 200     | 2          |
 | /headquarters/employees | 250     | 1          |
 
@@ -299,7 +299,7 @@ Betrachten Sie die folgende Abfrage:
 ```sql
 SELECT *
 FROM company
-WHERE StartsWith(company.headquarters.country, "United", true)
+WHERE STARTSWITH(company.headquarters.country, "United", true)
 ```
 
 Das Abfrageprädikat (Filtern nach Elementen mit Hauptsitz in einem Land, das mit „United“ unter Beachtung der Groß-/Kleinschreibung beginnt) kann mit einem erweiterten Indexscan des Pfads `headquarters/country` ausgewertet werden. Vorgänge, die einen erweiterten Indexscan durchführen, verfügen über Optimierungen, mit denen vermieden werden kann, dass jede Indexseite überprüft werden muss, doch sind sie etwas teurer als die Binärsuche bei einem präzisen Indexscan.
@@ -313,12 +313,12 @@ Betrachten Sie die folgende Abfrage:
 ```sql
 SELECT *
 FROM company
-WHERE Contains(company.headquarters.country, "United")
+WHERE CONTAINS(company.headquarters.country, "United")
 ```
 
 Das Abfrageprädikat (Filtern nach Elementen mit Hauptsitz in einem Land, das „United“ enthält) kann mit einem Indexscan des Pfads `headquarters/country` ausgewertet werden. Im Gegensatz zu einem präzisen Indexscan wird bei einem vollständigen Indexscan immer der eindeutige Satz möglicher Werte überprüft, um die Indexseiten zu ermitteln, die Ergebnisse enthalten. In diesem Fall wird `Contains` für den Index ausgeführt. Der Zeitaufwand und die RU-Gebühr für Indexscans steigen mit zunehmender Kardinalität des Pfads. Anders ausgedrückt: Je mehr mögliche eindeutige Werte von der Abfrage-Engine überprüft werden müssen, desto höher sind Latenz und RU-Gebühr für einen vollständigen Indexscan.  
 
-Sehen Sie sich beispielsweise die beiden Eigenschaften „town“ und „country“ an. Die Kardinalität von „town“ ist 5.000, die Kardinalität von „country“ ist 200. Nachfolgend sehen Sie zwei Beispielabfragen, die jeweils eine Systemfunktion [CONTAINS](sql-query-contains.md) aufweisen, durch die ein Indexscan für die Eigenschaft `town` durchgeführt wird. Die erste Abfrage verbraucht mehr RUs als die zweite Abfrage, da die Kardinalität von „town“ höher als die von „country“ ist.
+Sehen Sie sich beispielsweise die beiden Eigenschaften „town“ und „country“ an. Die Kardinalität von „town“ ist 5.000, die Kardinalität von „country“ ist 200. Hier sehen Sie zwei Beispielabfragen, die jeweils eine Systemfunktion [Contains](sql-query-contains.md) aufweisen, durch die ein Indexscan für die Eigenschaft `town` vollständig durchgeführt wird. Die erste Abfrage verbraucht mehr RUs als die zweite Abfrage, da die Kardinalität von „town“ höher als die von „country“ ist.
 
 ```sql
     SELECT *
@@ -363,7 +363,7 @@ Betrachten Sie beispielsweise die folgende Abfrage:
 ```sql
 SELECT *
 FROM company
-WHERE Contains(company.headquarters.country, "United")
+WHERE CONTAINS(company.headquarters.country, "United")
 ```
 
 Die Systemfunktion `Contains` gibt möglicherweise einige falsch positive Übereinstimmungen zurück, sodass die Abfrage-Engine überprüfen muss, ob jedes geladene Element dem Filterausdruck entspricht. In diesem Beispiel muss die Abfrage-Engine möglicherweise nur einige zusätzliche Elemente laden, sodass die Auswirkungen auf die Indexauslastung und die RU-Gebühr minimal sind.
@@ -373,7 +373,7 @@ Abfragen mit Aggregatfunktionen müssen jedoch ausschließlich auf dem Index bas
 ```sql
 SELECT COUNT(1)
 FROM company
-WHERE Contains(company.headquarters.country, "United")
+WHERE CONTAINS(company.headquarters.country, "United")
 ```
 
 Wie im ersten Beispiel gibt die Systemfunktion `Contains` möglicherweise einige falsch positive Übereinstimmungen zurück. Im Gegensatz zur `SELECT *`-Abfrage kann die `Count`-Abfrage jedoch nicht den Filterausdruck für die geladenen Elemente auswerten, um alle Indexergebnisse zu überprüfen. Die `Count`-Abfrage muss ausschließlich auf dem Index basieren. Wenn also die Möglichkeit besteht, dass ein Filterausdruck falsch positive Übereinstimmungen zurückgibt, greift die Abfrage-Engine auf eine vollständige Überprüfung zurück.

@@ -1,21 +1,22 @@
 ---
-title: Häufig gestellte Fragen zu Windows Virtual Desktop – Azure
-description: Häufig gestellte Fragen und Best Practices für Windows Virtual Desktop.
+title: FAQ zu Azure Virtual Desktop – Azure
+description: Häufig gestellte Fragen und Best Practices für Azure Virtual Desktop
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 1f5e4cb0d2db30c6b07370be137506f3fe26837f
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 604f7ac3d06ceb9ea981deb6aba4e9f208f06e20
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505296"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757713"
 ---
-# <a name="windows-virtual-desktop-faq"></a>Häufig gestellte Fragen zu Windows Virtual Desktop
+# <a name="azure-virtual-desktop-faq"></a>FAQ zu Azure Virtual Desktop
 
-In diesem Artikel werden häufig gestellte Fragen zu Windows Virtual Desktop beantwortet und Best Practices erläutert.
+In diesem Artikel werden häufig gestellte Fragen zu Azure Virtual Desktop beantwortet und Best Practices erläutert.
 
 ## <a name="what-are-the-minimum-admin-permissions-i-need-to-manage-objects"></a>Welche Administratorberechtigungen benötige ich mindestens, um Objekte zu verwalten?
 
@@ -40,7 +41,7 @@ Um die Berechtigung eines Administrators auf die Verwaltung von Benutzersitzunge
 }
 ```
 
-## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Unterstützt Windows Virtual Desktop das Aufteilen von Azure Active Directory-Modellen?
+## <a name="does-azure-virtual-desktop-support-split-azure-active-directory-models"></a>Unterstützt Azure Virtual Desktop das Aufteilen von Azure Active Directory-Modellen?
 
 Wenn ein Benutzer einer App-Gruppe zugewiesen ist, führt der Dienst eine einfache Azure-Rollenzuweisung durch. Folglich müssen sich die Azure AD-Instanz des Benutzers und die Azure AD-Instanz der App-Gruppe am selben Standort befinden. Alle Dienstobjekte, wie z. B. Hostpools, App-Gruppen und Arbeitsbereiche, müssen sich ebenfalls in derselben Azure AD-Instanz befinden wie der Benutzer.
 
@@ -84,23 +85,23 @@ Get-AzWvdHostPool -Name demohp -ResourceGroupName 0414rg |fl CustomRdpProperty
 CustomRdpProperty : audiocapturemode:i:0;audiomode:i:0;drivestoredirect:s:;redirectclipboard:i:1;redirectcomports:i:0;redirectprinters:i:1;redirectsmartcards:i:1;screen modeid:i:2;
 ```
 
-## <a name="does-windows-virtual-desktop-support-guest-users"></a>Unterstützt Windows Virtual Desktop Gastbenutzer?
+## <a name="does-azure-virtual-desktop-support-guest-users"></a>Unterstützt Azure Virtual Desktop Gastbenutzer?
 
-Windows Virtual Desktop unterstützt keine Azure AD-Gastbenutzerkonten. Ein Beispiel: Einige Gastbenutzer verfügen über Pro-Benutzer-Lizenzen für Microsoft 365 E3, Pro-Benutzer-Lizenzen für Windows E3 oder WIN VDA-Lizenzen in ihrem eigenen Unternehmen, sind aber Gastbenutzer in der Azure AD-Instanz eines anderen Unternehmens. In diesem Fall verwaltet das andere Unternehmen die Benutzerobjekte der Gastbenutzer sowohl in Azure AD als auch in Active Directory wie lokale Konten.
+Azure Virtual Desktop unterstützt keine Azure AD-Gastbenutzerkonten. Ein Beispiel: Einige Gastbenutzer verfügen über Pro-Benutzer-Lizenzen für Microsoft 365 E3, Pro-Benutzer-Lizenzen für Windows E3 oder WIN VDA-Lizenzen in ihrem eigenen Unternehmen, sind aber Gastbenutzer in der Azure AD-Instanz eines anderen Unternehmens. In diesem Fall verwaltet das andere Unternehmen die Benutzerobjekte der Gastbenutzer sowohl in Azure AD als auch in Active Directory wie lokale Konten.
 
-Sie können nicht Ihre eigenen Lizenzen zugunsten einer dritten Partei verwenden. Windows Virtual Desktop bietet derzeit keine Unterstützung für MSA (Microsoft-Konto).
+Sie können nicht Ihre eigenen Lizenzen zugunsten einer dritten Partei verwenden. Azure Virtual Desktop bietet derzeit keine Unterstützung für MSA (Microsoft-Konto).
 
 ## <a name="why-dont-i-see-the-client-ip-address-in-the-wvdconnections-table"></a>Warum wird mir die Client-IP-Adresse in der WVDConnections-Tabelle nicht angezeigt?
 
 Wir verfügen derzeit über keine zuverlässige Möglichkeit, die IP-Adressen von Webclients zu erfassen, daher ist dieser Wert in der Tabelle nicht enthalten.
 
-## <a name="how-does-windows-virtual-desktop-handle-backups"></a>Wie verarbeitet Windows Virtual Desktop Sicherungen?
+## <a name="how-does-azure-virtual-desktop-handle-backups"></a>Wie verarbeitet Azure Virtual Desktop Sicherungen?
 
 In Azure gibt es mehrere Optionen, Sicherungen auszuführen. Sie können Azure Backup, Site Recovery und Momentaufnahmen verwenden.
 
-## <a name="does-windows-virtual-desktop-support-third-party-collaboration-apps"></a>Unterstützt Windows Virtual Desktop Drittanbieter-Apps für die Zusammenarbeit?
+## <a name="does-azure-virtual-desktop-support-third-party-collaboration-apps"></a>Unterstützt Azure Virtual Desktop Drittanbieter-Apps für die Zusammenarbeit?
 
-Windows Virtual Desktop ist derzeit für Teams optimiert. Microsoft unterstützt derzeit keine Drittanbieter-Apps für die Zusammenarbeit wie z. B. Zoom. Drittanbieterorganisationen sind dafür verantwortlich, ihren Kunden Richtlinien zu Kompatibilität bereitzustellen. Auch Skype for Business wird von Windows Virtual Desktop nicht unterstützt.
+Azure Virtual Desktop ist derzeit für Teams optimiert. Microsoft unterstützt derzeit keine Drittanbieter-Apps für die Zusammenarbeit wie z. B. Zoom. Drittanbieterorganisationen sind dafür verantwortlich, ihren Kunden Richtlinien zu Kompatibilität bereitzustellen. Auch Skype for Business wird von Azure Virtual Desktop nicht unterstützt.
 
 ## <a name="can-i-change-from-pooled-to-personal-host-pools"></a>Kann ich den Typ des Hostpools von „In Pool“ zu „Persönlich“ ändern?
 
@@ -129,21 +130,21 @@ Die folgenden Faktoren können sich auf das Skalierungslimit für Hostpools ausw
 
 - Der VM-Präfixname umfasst zusammen mit der VM-Nummer weniger als 15 Zeichen. Weitere Informationen finden Sie unter [Benennungsregeln und -einschränkungen für Azure-Ressourcen](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute).
 
-## <a name="can-i-manage-windows-virtual-desktop-environments-with-azure-lighthouse"></a>Kann ich Windows Virtual Desktop-Umgebungen mit Azure Lighthouse verwalten?
+## <a name="can-i-manage-azure-virtual-desktop-environments-with-azure-lighthouse"></a>Kann ich Azure Virtual Desktop-Umgebungen mit Azure Lighthouse verwalten?
 
-Azure Lighthouse bietet keine vollständige Unterstützung für die Verwaltung von Windows Virtual Desktop-Umgebungen. Da Lighthouse derzeit keine Benutzerverwaltung über mehrere Azure AD-Mandanten hinweg unterstützt, müssen sich Lighthouse-Kunden weiterhin bei der Azure AD-Instanz anmelden, die sie zum Verwalten von Benutzern verwenden.
+Azure Lighthouse bietet keine vollständige Unterstützung für die Verwaltung von Azure Virtual Desktop-Umgebungen. Da Lighthouse derzeit keine Benutzerverwaltung über mehrere Azure AD-Mandanten hinweg unterstützt, müssen sich Lighthouse-Kunden weiterhin bei der Azure AD-Instanz anmelden, die sie zum Verwalten von Benutzern verwenden.
 
-Es ist auch nicht möglich, CSP-Sandboxabonnements mit dem Windows Virtual Desktop-Dienst zu verwenden. Weitere Informationen finden Sie unter [Integration Sandbox-Konto](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
+Es ist auch nicht möglich, CSP-Sandboxabonnements mit dem Azure Virtual Desktop-Dienst zu verwenden. Weitere Informationen finden Sie unter [Integration Sandbox-Konto](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
 
 Wenn Sie den Ressourcenanbieter mit dem CSP-Besitzerkonto aktiviert haben, kann dieser durch die CSP-Kundenkonten nicht geändert werden.
 
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Wie oft sollte ich meine VMs aktivieren, um Registrierungsprobleme zu vermeiden?
 
-Nachdem Sie einen virtuellen Computer in einem Hostpool Windows Virtual Desktop-Diensts registriert haben, aktualisiert der Agent das Token der VM regelmäßig, wenn der virtuelle Computer aktiv ist. Das Zertifikat für das Registrierungstoken ist 90 Tage lang gültig. Aufgrund dieses Grenzwerts von 90 Tagen wird empfohlen, dass virtuelle Computer alle 90 Tage für 20 Minuten online geschaltet werden, damit der Computer seine Token aktualisieren und den Agent sowie parallele Stapelkomponenten aktualisieren kann. Wenn Sie Ihre VM innerhalb dieses Zeitraums aktivieren, wird verhindert, dass das Registrierungstoken abläuft oder ungültig wird. Wenn Sie Ihre VM nach mehr als 90 Tagen gestartet haben und Registrierungsprobleme auftreten, befolgen Sie die Anweisungen im [Leitfaden zur Problembehandlung für den Windows Virtual Desktop-Agent](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved), um die VM aus dem Hostpool zu entfernen, den Agent neu zu installieren und ihn erneut beim Pool zu registrieren.
+Nachdem Sie einen virtuellen Computer in einem Azure Virtual Desktop-Hostpool registriert haben, aktualisiert der Agent das Token der VM regelmäßig dann, wenn der virtuelle Computer aktiv ist. Das Zertifikat für das Registrierungstoken ist 90 Tage lang gültig. Aufgrund dieses Grenzwerts von 90 Tagen wird empfohlen, dass virtuelle Computer alle 90 Tage für 20 Minuten online geschaltet werden, damit der Computer seine Token aktualisieren und den Agent sowie parallele Stapelkomponenten aktualisieren kann. Wenn Sie Ihre VM innerhalb dieses Zeitraums aktivieren, wird verhindert, dass das Registrierungstoken abläuft oder ungültig wird. Wenn Sie Ihre VM nach mehr als 90 Tagen gestartet haben und Registrierungsprobleme auftreten, befolgen Sie die Anweisungen im [Leitfaden zur Problembehandlung für den Azure Virtual Desktop-Agent](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved), um die VM aus dem Hostpool zu entfernen, den Agent neu zu installieren und ihn erneut beim Pool zu registrieren.
 
 ## <a name="can-i-set-availability-options-when-creating-host-pools"></a>Kann ich beim Erstellen von Hostpools Verfügbarkeitsoptionen festlegen?
 
-Ja. Beim Erstellen einer VM können Sie bei Windows Virtual Desktop-Hostpools entweder eine Verfügbarkeitsgruppe oder Verfügbarkeitszonen auswählen. Diese Verfügbarkeitsoptionen sind identisch mit den von Azure Compute verwendeten. Wenn Sie eine Zone für die in einem Hostpool erstellte VM auswählen, gilt die Einstellung automatisch für alle VMs, die Sie in dieser Zone erstellen. Wenn Sie Ihre Hostpool-VMs lieber auf mehrere Zonen verteilen möchten, müssen Sie die Anweisungen unter [Hinzufügen von virtuellen Computern mit dem Azure-Portal](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal) befolgen, um manuell eine neue Zone für jede neu erstellte VM auszuwählen.
+Ja. Beim Erstellen einer VM können Sie bei Azure Virtual Desktop-Hostpools entweder eine Verfügbarkeitsgruppe oder Verfügbarkeitszonen auswählen. Diese Verfügbarkeitsoptionen sind identisch mit den von Azure Compute verwendeten. Wenn Sie eine Zone für die in einem Hostpool erstellte VM auswählen, gilt die Einstellung automatisch für alle VMs, die Sie in dieser Zone erstellen. Wenn Sie Ihre Hostpool-VMs lieber auf mehrere Zonen verteilen möchten, müssen Sie die Anweisungen unter [Hinzufügen von virtuellen Computern mit dem Azure-Portal](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal) befolgen, um manuell eine neue Zone für jede neu erstellte VM auszuwählen.
 
 ## <a name="which-availability-option-is-best-for-me"></a>Welche Verfügbarkeitsoption eignet sich am besten für mich?
 
@@ -152,10 +153,10 @@ Welche Verfügbarkeitsoption Sie für Ihre VMs verwenden sollten, hängt vom Spe
 | Verfügbarkeitsoption | Imagespeicherort | Optionsfeld „Verwalteten Datenträger verwenden“ |
 |---|---|---|
 | Keine | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |
-| Keine | Blob-Speicher | Aktiviert mit „Nein“ als Standardeinstellung |
+| Keine | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |
 | Verfügbarkeitszone | Katalog (Blobspeicheroption deaktiviert) | Deaktiviert mit „Ja“ als Standardeinstellung |
 | Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |
-| Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Blob-Speicher | Aktiviert mit „Nein“ als Standardeinstellung |
+| Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |
 | Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Blobspeicher (Katalogoption deaktiviert) | Deaktiviert mit „Nein“ als Standardeinstellung |
 | Verfügbarkeitsgruppe (von Benutzer neu erstellt) | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |
-| Verfügbarkeitsgruppe (von Benutzer neu erstellt) | Blob-Speicher | Aktiviert mit „Nein“ als Standardeinstellung |
+| Verfügbarkeitsgruppe (von Benutzer neu erstellt) | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |

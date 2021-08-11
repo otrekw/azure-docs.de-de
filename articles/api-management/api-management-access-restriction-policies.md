@@ -4,17 +4,16 @@ description: Erfahren Sie mehr über die Richtlinien für die Zugriffsbeschränk
 services: api-management
 documentationcenter: ''
 author: vladvino
-ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.topic: article
-ms.date: 02/26/2021
+ms.date: 06/02/2021
 ms.author: apimpm
-ms.openlocfilehash: 882d96271b6976db1ffc0dde181d5699c5cc27de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55e87d6f0e2708e94beb1e2f9391bfa7aff44ceb
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688245"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111814078"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 
@@ -29,6 +28,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 -   [Set usage quota by subscription (Nutzungskontingent nach Abonnement festlegen)](#SetUsageQuota) – ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Abonnements.
 -   [Set usage quota by key (Nutzungskontingent nach Schlüssel festlegen)](#SetUsageQuotaByKey) – Ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Schlüssels.
 -   [JWT überprüfen](#ValidateJWT) – Erzwingt das Vorhandensein und die Gültigkeit eines JWT, das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.
+-  [Überprüfen des Clientzertifikats](#validate-client-certificate): Erzwingt, dass ein Zertifikat, das einer API Management-Instanz von einem Client präsentiert wird, mit den angegebenen Validierungsregeln und Ansprüchen übereinstimmt.
 
 > [!TIP]
 > Sie können Richtlinien für die Zugriffsbeschränkung in verschiedenen Bereichen zu unterschiedlichen Zwecken verwenden. Beispielsweise können Sie die gesamte API mit AAD-Authentifizierung sichern, indem Sie die `validate-jwt`-Richtlinie auf API-Ebene anwenden, oder Sie können sie auf der Ebene der API-Vorgänge anwenden und `claims` für eine präzisere Steuerung verwenden.
@@ -56,14 +56,14 @@ Verwenden Sie die `check-header`-Richtlinie, um zu erzwingen, dass eine Anforder
 
 ### <a name="elements"></a>Elemente
 
-| Name         | BESCHREIBUNG                                                                                                                                   | Erforderlich |
+| Name         | Beschreibung                                                                                                                                   | Erforderlich |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | check-header | Stammelement                                                                                                                                 | Ja      |
 | value        | Zulässiger HTTP-Headerwert. Wenn mehrere Wertelemente angegeben sind, wird die Überprüfung als erfolgreich gewertet, wenn für einen beliebigen dieser Werte eine Übereinstimmung vorhanden ist. | Nein       |
 
 ### <a name="attributes"></a>Attributes
 
-| Name                       | BESCHREIBUNG                                                                                                                                                            | Erforderlich | Standard |
+| Name                       | Beschreibung                                                                                                                                                            | Erforderlich | Standard |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | failed-check-error-message | Die Fehlermeldung, die im HTTP-Antworttext zurückgegeben wird, wenn der Header nicht vorhanden ist oder einen ungültigen Wert aufweist. In dieser Meldung müssen alle Sonderzeichen ordnungsgemäß mit Escapezeichen versehen sein. | Ja      | –     |
 | failed-check-httpcode      | Der HTTP-Statuscode, der zurückgeben werden wird, wenn der Header nicht vorhanden ist oder einen ungültigen Wert aufweist.                                                                                        | Ja      | –     |
@@ -126,7 +126,7 @@ Im folgenden Beispiel beträgt das Ratenlimit pro Abonnement 20 Aufrufe pro 90�
 
 ### <a name="elements"></a>Elemente
 
-| Name       | BESCHREIBUNG                                                                                                                                                                                                                                                                                              | Erforderlich |
+| Name       | Beschreibung                                                                                                                                                                                                                                                                                              | Erforderlich |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | rate-limit | Stammelement                                                                                                                                                                                                                                                                                            | Ja      |
 | api        | Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufratenbegrenzungen werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.                    | Nein       |
@@ -134,11 +134,11 @@ Im folgenden Beispiel beträgt das Ratenlimit pro Abonnement 20 Aufrufe pro 90�
 
 ### <a name="attributes"></a>Attributes
 
-| Name           | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
+| Name           | Beschreibung                                                                                           | Erforderlich | Standard |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | Der Name der API, auf die die Ratenbegrenzung angewendet werden soll.                                                | Ja      | –     |
 | calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in `renewal-period` angegebenen Zeitraums zulässig sind | Ja      | –     |
-| renewal-period | Die Länge des gleitenden Fensters in Sekunden, in der die Anzahl zulässiger Anforderungen den in `calls` angegebenen Wert nicht überschreiten darf                                              | Ja      | –     |
+| renewal-period | Die Länge des gleitenden Fensters in Sekunden, in der die Anzahl zulässiger Anforderungen den in `calls` angegebenen Wert nicht überschreiten darf.                                              | Ja      | –     |
 | retry-after-header-name    | Der Name eines Antwortheaders, dessen Wert das empfohlene Wiederholungsintervall in Sekunden ist, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
 | retry-after-variable-name    | Der Name einer Richtlinienausdrucksvariablen, die das empfohlene Wiederholungsintervall in Sekunden speichert, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
 | remaining-calls-header-name    | Der Name einer Antwortheaders, dessen Wert nach jeder Richtlinienausführung die Anzahl der verbleibenden Aufrufe ist, die für den Zeitraum zulässig sind, der in `renewal-period` angegeben ist. |  Nein | –  |
@@ -203,18 +203,18 @@ Im folgenden Beispiel wird die Ratenbegrenzung von 10 Aufrufen pro 60 Sekunden
 
 ### <a name="elements"></a>Elemente
 
-| Name              | BESCHREIBUNG   | Erforderlich |
+| Name              | Beschreibung   | Erforderlich |
 | ----------------- | ------------- | -------- |
 | rate-limit-by-key | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| Name                | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
+| Name                | Beschreibung                                                                                           | Erforderlich | Standard |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | –     |
 | counter-key         | Der Schlüssel, der für die Ratenbegrenzungsrichtlinie verwendet werden soll.                                                             | Ja      | –     |
 | increment-condition | Der boolesche Ausdruck, der angibt, ob die Anforderung für die Rate gezählt werden soll (`true`).        | Nein       | –     |
-| renewal-period      | Die Länge des gleitenden Fensters in Sekunden, in der die Anzahl zulässiger Anforderungen den in `calls` angegebenen Wert nicht überschreiten darf                                           | Ja      | –     |
+| renewal-period      | Die Länge des gleitenden Fensters in Sekunden, in der die Anzahl zulässiger Anforderungen den in `calls` angegebenen Wert nicht überschreiten darf.                                           | Ja      | –     |
 | retry-after-header-name    | Der Name eines Antwortheaders, dessen Wert das empfohlene Wiederholungsintervall in Sekunden ist, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
 | retry-after-variable-name    | Der Name einer Richtlinienausdrucksvariablen, die das empfohlene Wiederholungsintervall in Sekunden speichert, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
 | remaining-calls-header-name    | Der Name einer Antwortheaders, dessen Wert nach jeder Richtlinienausführung die Anzahl der verbleibenden Aufrufe ist, die für den Zeitraum zulässig sind, der in `renewal-period` angegeben ist. |  Nein | –  |
@@ -255,7 +255,7 @@ Im folgenden Beispiel lässt die Richtlinie nur Anfragen zu, die entweder von de
 
 ### <a name="elements"></a>Elemente
 
-| Name                                      | BESCHREIBUNG                                         | Erforderlich                                                       |
+| Name                                      | Beschreibung                                         | Erforderlich                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | ip-filter                                 | Stammelement                                       | Ja                                                            |
 | address                                   | Gibt eine einzelne IP-Adresse an, nach der gefiltert werden soll.   | Mindestens ein `address`- oder `address-range`-Element ist erforderlich. |
@@ -263,7 +263,7 @@ Im folgenden Beispiel lässt die Richtlinie nur Anfragen zu, die entweder von de
 
 ### <a name="attributes"></a>Attributes
 
-| Name                                      | BESCHREIBUNG                                                                                 | Erforderlich                                           | Standard |
+| Name                                      | Beschreibung                                                                                 | Erforderlich                                           | Standard |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | address-range from="Adresse" to="Adresse" | Ein IP-Adressbereich, für den diese Richtlinie gelten soll.                                        | Erforderlich, wenn das `address-range`-Element verwendet wird. | N/V     |
 | ip-filter action="allow &#124; forbid"    | Gibt an, ob Aufrufe für die angegebenen IP-Adressen oder -Adressbereiche erlaubt oder blockiert werden sollen. | Ja                                                | –     |
@@ -313,7 +313,7 @@ Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gült
 
 ### <a name="elements"></a>Elemente
 
-| Name      | BESCHREIBUNG                                                                                                                                                                                                                                                                                  | Erforderlich |
+| Name      | Beschreibung                                                                                                                                                                                                                                                                                  | Erforderlich |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | Stammelement                                                                                                                                                                                                                                                                                | Ja      |
 | api       | Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufkontingente werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.                    | Nein       |
@@ -321,7 +321,7 @@ Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gült
 
 ### <a name="attributes"></a>Attributes
 
-| Name           | BESCHREIBUNG                                                                                               | Erforderlich                                                         | Standard |
+| Name           | Beschreibung                                                                                               | Erforderlich                                                         | Standard |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | Der Name der API oder des Vorgangs, für die bzw. den das Kontingent gilt.                                             | Ja                                                              | N/V     |
 | bandwidth      | Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
@@ -378,13 +378,13 @@ Im folgenden Beispiel wird das Kontingent anhand der IP-Adresse des Aufrufers be
 
 ### <a name="elements"></a>Elemente
 
-| Name  | BESCHREIBUNG   | Erforderlich |
+| Name  | Beschreibung   | Erforderlich |
 | ----- | ------------- | -------- |
 | quota | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| Name                | BESCHREIBUNG                                                                                               | Erforderlich                                                         | Standard |
+| Name                | Beschreibung                                                                                               | Erforderlich                                                         | Standard |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | bandwidth           | Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
 | calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.     | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
@@ -548,7 +548,7 @@ Dieses Beispiel zeigt die Verwendung der Richtlinie [JWT überprüfen](api-manag
 
 ### <a name="elements"></a>Elemente
 
-| Element             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                           | Erforderlich |
+| Element             | Beschreibung                                                                                                                                                                                                                                                                                                                                           | Erforderlich |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | validate-jwt        | Stammelement                                                                                                                                                                                                                                                                                                                                         | Ja      |
 | audiences           | Enthält eine Liste der zulässigen audience-Ansprüche, die im Token vorhanden sein können. Wenn mehrere audience-Werte vorhanden sind, wird jeder Wert ausprobiert, bis entweder alle verbraucht sind (in diesem Fall gibt es einen Überprüfungsfehler) oder ein Wert erfolgreich ist. Mindestens ein audience-Wert muss angegeben werden.                                                                     | Nein       |
@@ -560,7 +560,7 @@ Dieses Beispiel zeigt die Verwendung der Richtlinie [JWT überprüfen](api-manag
 
 ### <a name="attributes"></a>Attributes
 
-| Name                            | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich                                                                         | Standard                                                                           |
+| Name                            | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich                                                                         | Standard                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | clock-skew                      | Zeitspanne. Verwenden Sie diese Option, um die maximal erwartete Zeitdifferenz zwischen den Systemuhren des Tokenausstellers und der API Management-Instanz anzugeben.                                                                                                                                                                                                                                                                                                               | Nein                                                                               | 0 Sekunden                                                                         |
 | failed-validation-error-message | Die Fehlermeldung, die im HTTP-Antworttext zurückgegeben werden soll, wenn das JWT die Überprüfung nicht besteht. In dieser Meldung müssen alle Sonderzeichen ordnungsgemäß mit Escapezeichen versehen sein.                                                                                                                                                                                                                                                                                                 | Nein                                                                               | Die Standardfehlermeldung hängt vom Überprüfungsproblem ab, z.B. „JWT nicht vorhanden“. |
@@ -576,6 +576,95 @@ Dieses Beispiel zeigt die Verwendung der Richtlinie [JWT überprüfen](api-manag
 | Trennzeichen                       | Zeichenfolge. Gibt ein Trennzeichen (z.B. „,“) zum Extrahieren eines Satzes von Werten aus einem mehrwertigen Anspruch an.                                                                                                                                                                                                                                                                                                                                          | Nein                                                                               | –                                                                               |
 | url                             | URL des Open ID-Konfigurationsendpunkts, von dem die Open ID-Konfigurationsmetadaten abgerufen werden können. Die Antwort sollte den Spezifikationen entsprechen, wie sie unter URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata` definiert sind. Verwenden Sie für Azure Active Directory diese URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`. Verwenden Sie dabei den Namen Ihres Verzeichnismandanten, z.B. `contoso.onmicrosoft.com`. | Ja                                                                              | –                                                                               |
 | output-token-variable-name      | Eine Zeichenfolge. Der Name der Kontextvariablen, die den Tokenwert bei erfolgreicher Überprüfung als ein Objekt des Typs [`Jwt`](api-management-policy-expressions.md) empfängt                                                                                                                                                                                                                                                                                     | Nein                                                                               | –                                                                               |
+
+### <a name="usage"></a>Verwendung
+
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
+
+-   **Richtlinienabschnitte**: inbound
+-   **Richtlinienbereiche:** alle Bereiche
+
+
+## <a name="validate-client-certificate"></a>Überprüfen von Clientzertifikaten
+
+Verwenden Sie die `validate-client-certificate`-Richtlinie, um zu erzwingen, dass ein einer API Management-Instanz von einem Client präsentiertes Zertifikat mit den angegebenen Validierungsregeln und Ansprüchen wie Antragsteller oder Aussteller für eine oder mehrere Zertifikatidentitäten übereinstimmt.
+
+Um als gültig angesehen zu werden, muss ein Clientzertifikat mit allen Validierungsregeln übereinstimmen, die von den Attributen im Element der obersten Ebene definiert sind, sowie mit allen definierten Ansprüchen für mindestens eine der definierten Identitäten. 
+
+Verwenden Sie diese Richtlinie, um eingehende Zertifikateigenschaften anhand der gewünschten Eigenschaften zu überprüfen. Verwenden Sie diese Richtlinie außerdem, um die Standardüberprüfung von Clientzertifikaten in folgenden Fällen außer Kraft zu setzen:
+
+* Wenn Sie benutzerdefinierte Zertifizierungsstellenzertifikate hochgeladen haben, um Clientanforderungen an das verwaltete Gateway zu überprüfen.
+* Wenn Sie benutzerdefinierte Zertifizierungsstellen zum Überprüfen von Clientanforderungen an ein selbstverwaltetes Gateway konfiguriert haben.
+
+Weitere Informationen zu benutzerdefinierten Zertifizierungsstellenzertifikaten und Zertifizierungsstellen finden Sie unter [Hinzufügen eines benutzerdefinierten Zertifizierungsstellenzertifikats in Azure API Management](api-management-howto-ca-certificates.md). 
+
+### <a name="policy-statement"></a>Richtlinienanweisung
+
+```xml
+<validate-client-certificate> 
+    validate-revocation="true|false" 
+    validate-trust="true|false" 
+    validate-not-before="true|false" 
+    validate-not-after="true|false" 
+    ignore-error="true|false"> 
+    <identities> 
+        <identity  
+            thumbprint="certificate thumbprint"  
+            serial-number="certificate serial number" 
+            common-name="certificate common name"  
+            subject="certificate subject string"  
+            dns-name="certificate DNS name" 
+            issuer="certificate issuer" 
+            issuer-thumbprint="certificate issuer thumbprint"  
+            issuer-certificate-id="certificate identifier" /> 
+    </identities> 
+</validate-client-certificate> 
+```
+
+### <a name="example"></a>Beispiel
+
+Im folgenden Beispiel wird ein Clientzertifikat überprüft, um die Standardüberprüfungsregeln der Richtlinie abzugleichen, und es wird überprüft, ob der Antragsteller und der Aussteller den angegebenen Werten entsprechen.
+
+```xml
+<validate-client-certificate> 
+    validate-revocation="true" 
+    validate-trust="true" 
+    validate-not-before="true" 
+    validate-not-after="true" 
+    ignore-error="false"
+    <identities> 
+        <identity 
+            subject="C=US, ST=Illinois, L=Chicago, O=Contoso Corp., CN=*.contoso.com"
+            issuer="C=BE, O=FabrikamSign nv-sa, OU=Root CA, CN=FabrikamSign Root CA" />
+    </identities> 
+</validate-client-certificate> 
+```
+
+### <a name="elements"></a>Elemente
+
+| Element             | Beschreibung                                  | Erforderlich |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| validate-client-certificate        | Stammelement      | Ja      |
+|   Identitäten      |  Enthält eine Liste von Identitäten mit definierten Ansprüchen für das Clientzertifikat.       |    Nein        |
+
+### <a name="attributes"></a>Attributes
+
+| Name                            | Beschreibung      | Erforderlich |  Standard    |
+| ------------------------------- |   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| validate-revocation  | Boolesch. Gibt an, ob das Zertifikat anhand der Onlinesperrliste überprüft wird.  | Nein   | True  |
+| validate-trust | Boolesch. Gibt an, ob die Validierung fehlschlagen soll, falls die Kette nicht erfolgreich zu einer vertrauenswürdigen Zertifizierungsstelle konstruiert werden kann. | Nein | True |
+| validate-not-before | Boolesch. Überprüft den Wert anhand der aktuellen Zeit. | Nein | True | 
+| validate-not-after  | Boolesch. Überprüft den Wert anhand der aktuellen Zeit. | Nein | True| 
+| ignore-error  | Boolesch. Gibt an, ob die Richtlinie mit dem nächsten Handler fortfahren oder bei einer fehlgeschlagenen Überprüfung zu „Bei Fehler“ (on-error) springen soll. | Nr. | Falsch |  
+| Identität | Eine Zeichenfolge. Kombination aus Zertifikatanspruchswerten, durch die das Zertifikat gültig wird. | ja | – | 
+| thumbprint | Zertifikatfingerabdruck. | Nein | – |
+| serial-number | Seriennummer des Zertifikats. | Nein | – |
+| common-name | Allgemeiner Name des Zertifikats (Teil der Antragstellerzeichenfolge). | Nein | – |
+| subject | Antragstellerzeichenfolge. Muss das Format des Distinguished Name einhalten. | Nein | – |
+| dns-name | Wert des „dnsName“-Eintrags innerhalb des Anspruchs „Alternativer Antragstellername“ (Subject Alternative Name). | Nein | – | 
+| Issuer (Aussteller) | Aussteller. Muss das Format des Distinguished Name einhalten. | Nein | – | 
+| issuer-thumbprint | Fingerabdruck des Ausstellers. | Nein | – | 
+| issuer-certificate-id | Bezeichner der vorhandenen Zertifikatentität, die den öffentlichen Schlüssel des Ausstellers darstellt. | Nein | – | 
 
 ### <a name="usage"></a>Verwendung
 

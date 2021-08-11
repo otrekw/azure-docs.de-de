@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 77d51b2c839a64567838fa4d6308d203a6bb8b82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32391dc2106f0ebab73faaa857a1b53392f0416d
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501140"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903255"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (Python)
 
@@ -32,6 +32,8 @@ Am Ende dieses Tutorials führen Sie die folgende Python-Konsolen-App aus:
 
 * **FileUpload.py**, die eine Datei mit dem Python-Geräte-SDK in den Speicher hochlädt.
 
+Eine erweiterte Version der Dateiupload-Anwendung steht unter [https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/upload_to_blob.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/upload_to_blob.py) auf GitHub bereit. Um diese Version auszuführen, müssen Sie X.509-Zertifikate, -Schlüssel und -Passphrasen verstehen. Da dies nicht unbedingt erforderlich ist, um eine Datei hochzuladen, wird X.509 im nachstehend vorgestellten Code nicht verwendet.
+
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
@@ -40,7 +42,11 @@ Am Ende dieses Tutorials führen Sie die folgende Python-Konsolen-App aus:
 
 [!INCLUDE [iot-hub-include-python-v2-async-installation-notes](../../includes/iot-hub-include-python-v2-async-installation-notes.md)]
 
-* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit einem IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 

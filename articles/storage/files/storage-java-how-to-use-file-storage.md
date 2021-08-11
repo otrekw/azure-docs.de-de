@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie Java-Anwendungen und -Dienste entwickeln
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 05/26/2021
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2fd9ac25d08cf4439278565f90258a230eeedb50
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 76bbc39cc1bb53d51c35b4afde13de15842801e2
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627760"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576005"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Entwickeln für Azure Files mit Java
 
@@ -40,7 +40,7 @@ Um die Azure Files-APIs zu verwenden, fügen Sie folgenden Code am Anfang der Ja
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ImportStatements":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 ```java
 // Include the following imports to use Azure Files APIs v11
@@ -60,7 +60,7 @@ Ersetzen Sie *\<storage_account_name\>* und *\<storage_account_key\>* durch die 
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ConnectionString":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 Ersetzen Sie *your_storage_account_name* und *your_storage_account_key* durch die tatsächlichen Werte für Ihr Speicherkonto.
 
@@ -82,7 +82,7 @@ Um auf Azure Files zuzugreifen, erstellen Sie ein [ShareClient](/java/api/com.az
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createClient":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 Um auf Ihr Speicherkonto zuzugreifen, müssen Sie das **CloudStorageAccount**-Objekt verwenden und die Verbindungszeichenfolge an die zugehörige **parse**-Methode übergeben.
 
@@ -109,7 +109,7 @@ Die [ShareClient.create](/java/api/com.azure.storage.file.share.shareclient.crea
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createFileShare":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 Um Zugriff auf eine Freigabe und ihren Inhalt zu erhalten, erstellen Sie einen Azure Files-Client.
 
@@ -147,7 +147,7 @@ Sie löschen eine Freigabe, indem Sie die [ShareClient.delete](/java/api/com.azu
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFileShare":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 Sie löschen eine Freigabe, indem Sie die **deleteIfExists**-Methode für ein **CloudFileShare**-Objekt aufrufen.
 
@@ -183,7 +183,7 @@ Der folgende Code erstellt ein Verzeichnis durch Aufrufen von [ShareDirectoryCli
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createDirectory":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 Mit dem folgenden Code wird ein Unterverzeichnis mit dem Namen **sampledir** im Stammverzeichnis erstellt.
 
@@ -213,7 +213,7 @@ Die [ShareDirectoryClient.delete](/java/api/com.azure.storage.file.share.sharedi
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteDirectory":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 ```java
 // Get a reference to the root directory for the share.
@@ -238,7 +238,7 @@ Sie rufen eine Liste von Dateien und Verzeichnissen ab, indem Sie [ShareDirector
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_enumerateFilesAndDirs":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 Sie rufen eine Liste von Dateien und Verzeichnissen ab, indem Sie **listFilesAndDirectories** in einem **CloudFileDirectory**-Verweis aufrufen. Die Methode gibt eine Liste von **ListFileItem**-Objekten zurück, die Sie durchlaufen können. Mit dem folgenden Code werden Dateien und Verzeichnisse im Stammverzeichnis aufgelistet.
 
@@ -263,7 +263,7 @@ Mit dem folgenden Code wird eine lokale Datei in Azure Files hochgeladen, indem 
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_uploadFile":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 Sie rufen einen Verweis auf das Verzeichnis für den Upload der Datei ab, indem Sie die **getRootDirectoryReference**-Methode für das share-Objekt aufrufen.
 
@@ -294,7 +294,7 @@ Im folgenden Beispiel wird die angegebene Datei in das lokale Verzeichnis herunt
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_downloadFile":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 Im folgenden Beispiel wird die Datei „SampleFile.txt“ heruntergeladen und ihr Inhalt angezeigt.
 
@@ -324,7 +324,7 @@ Der folgende Code löscht die angegebene Datei. Zunächst wird im Beispiel ein [
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFile":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 Mit dem folgenden Code wird die Datei "SampleFile.txt" gelöscht, die im Verzeichnis **sampledir** gespeichert ist.
 

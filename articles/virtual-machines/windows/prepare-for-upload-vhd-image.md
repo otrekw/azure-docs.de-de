@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 573f97c7f592186173b13ea592d151ee291b8249
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 8315c2fa094f1d12a788d42a336cb01feb58c6c9
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967964"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110450274"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 
@@ -223,19 +223,19 @@ Stellen Sie sicher, dass die folgenden Einstellungen ordnungsgemäß für Remote
 
    ```powershell
    Enable-PSRemoting -Force
-   Set-NetFirewallRule -DisplayName 'Windows Remote Management (HTTP-In)' -Enabled True
+   Set-NetFirewallRule -Name WINRM-HTTP-In-TCP, WINRM-HTTP-In-TCP-PUBLIC -Enabled True
    ```
 
 1. Aktivieren Sie die folgenden Firewallregeln, um RDP-Datenverkehr zuzulassen:
 
    ```powershell
-   Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
+   Set-NetFirewallRule -Group '@FirewallAPI.dll,-28752' -Enabled True
    ```
 
 1. Aktivieren Sie die Regel für die Datei- und Druckerfreigabe, damit die VM auf Ping-Anforderungen innerhalb des virtuellen Netzwerks antworten kann:
 
    ```powershell
-   Set-NetFirewallRule -DisplayName 'File and Printer Sharing (Echo Request - ICMPv4-In)' -Enabled True
+   Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True
    ```
 
 1. Erstellen Sie eine Regel für das Azure-Plattformnetzwerk:
@@ -314,10 +314,23 @@ Stellen Sie sicher, dass die VM fehlerfrei und sicher ist und dass per RDP darau
 
    Wenn das Repository beschädigt ist, informieren Sie sich in [WMI: Repository beschädigt oder nicht](https://techcommunity.microsoft.com/t5/ask-the-performance-team/wmi-repository-corruption-or-not/ba-p/375484).
 
-1. Stellen Sie sicher, dass keine andere Anwendung Port 3389 verwendet. Dieser Port wird für den RDP-Dienst in Azure verwendet. Um festzustellen, welche Ports auf dem virtuellen Computer verwendet werden, führen Sie `netstat.exe -anob` aus:
+1. Stellen Sie sicher, dass keine anderen Anwendungen als TermService Port 3389 verwenden. Dieser Port wird für den RDP-Dienst in Azure verwendet. Um festzustellen, welche Ports auf dem virtuellen Computer verwendet werden, führen Sie `netstat.exe -anob` aus:
 
    ```powershell
    netstat.exe -anob
+   ```
+   
+   Im Folgenden finden Sie ein Beispiel.
+
+   ```powershell
+   netstat.exe -anob | findstr 3389
+   TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       4056
+   TCP    [::]:3389              [::]:0                 LISTENING       4056
+   UDP    0.0.0.0:3389           *:*                                    4056
+   UDP    [::]:3389              *:*                                    4056
+
+   tasklist /svc | findstr 4056
+   svchost.exe                   4056 TermService
    ```
 
 1. So laden Sie eine Windows-VHD hoch, die ein Domänencontroller ist
@@ -462,6 +475,14 @@ Verwenden Sie eine der Methoden in diesem Abschnitt, um Ihren virtuellen Datentr
 1. Ändern Sie die Größe des virtuellen Datenträgers gemäß den Azure-Anforderungen:
 
    1. Datenträger in Azure benötigen eine virtuelle Größe, die auf 1 MiB ausgerichtet ist. Wenn die Größe Ihrer VHD ein Bruchteil von 1 MiB ist, muss die Größe des Datenträgers in ein Vielfaches von 1 MiB geändert werden. Bei Datenträgern mit einem MiB-Bruchteil treten Fehler auf, wenn Images auf der Grundlage der hochgeladenen VHD erstellt werden. Verwenden Sie zur Überprüfung der Größe das PowerShell-Cmdlet [Get-VHD](/powershell/module/hyper-v/get-vhd), und sehen Sie sich den Wert für „Size“ an. Der Wert muss in Azure ein Vielfaches von 1 MiB sein. Sehen Sie sich außerdem den Wert für „FileSize“ an. Dieser Wert muss der Summe aus dem Wert für „Size“ und 512 Bytes für die VHD-Fußzeile entsprechen.
+   
+      ```powershell
+      $vhd = Get-VHD -Path C:\test\MyNewVM.vhd
+      $vhd.Size % 1MB
+      0
+      $vhd.FileSize - $vhd.Size
+      512
+      ```
    
    1. Die maximal zulässige Größe für die Betriebssystem-VHD eines virtuellen Computers der Generation 1 beträgt 2.048 GiB (2 TiB). 
    1. Die maximale Größe eines Datenträgers beträgt 32.767 GiB (32 TiB).

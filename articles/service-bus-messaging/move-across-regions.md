@@ -2,14 +2,14 @@
 title: Verschieben eines Service Bus-Namespace in eine andere Region | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie einen Azure Service Bus-Namespace aus der aktuellen Region in eine andere verschieben.
 ms.topic: how-to
-ms.date: 06/23/2020
+ms.date: 06/08/2021
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 573ea96437cf6cb76854ffa417fd3ad3fb86138b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a752e845cf4b819e327bc922fc13199b79ab8d3
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88860427"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111811440"
 ---
 # <a name="move-an-azure-service-bus-namespace-to-another-region"></a>Verschieben eines Azure Service Bus-Namespace in eine andere Region
 Es gibt verschiedene Szenarien, in denen Sie Ihren vorhandenen Azure Service Bus-Namespace aus einer Region in eine andere verschieben möchten. Beispielsweise könnte es sein, dass Sie für Testzwecke einen Namespace mit derselben Konfiguration erstellen möchten. Möglicherweise möchten Sie im Rahmen der [Planung der Notfallwiederherstellung](service-bus-geo-dr.md) auch einen sekundären Namespace in einer anderen Region einrichten.
@@ -30,7 +30,7 @@ Exportieren Sie zunächst eine Resource Manager-Vorlage. Diese Vorlage enthält 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Alle Ressourcen** und dann Ihren Service Bus-Namespace aus.
-3. Wählen Sie **Einstellungen** > **Vorlage exportieren** aus.
+3. Wählen Sie auf der Seite **Service Bus Namespace** im linken Menü unter **Automatisierung** **Vorlage exportieren** aus. 
 4. Wählen Sie **Herunterladen** auf der Seite **Vorlage exportieren** aus.
 
     :::image type="content" source="./media/move-across-regions/download-template.png" alt-text="Herunterladen einer Resource Manager-Vorlage":::

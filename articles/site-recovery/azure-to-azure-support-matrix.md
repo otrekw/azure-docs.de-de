@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für die Azure-VM-Notfallwiederherstellung mit Azur
 description: Fasst die Unterstützung für die Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Region mit Azure Site Recovery zusammen.
 ms.topic: article
 ms.date: 11/29/2020
-ms.openlocfilehash: 92def8f964ec15033816cddfaa41f7e0d82ac595
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: a6b8177ea0abc3a2406937373fc6569b42ffd053
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108174558"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960965"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -52,7 +52,7 @@ Azure Government    | „US GOV Virginia“; „US GOV Iowa“; „US GOV Arizon
 Deutschland    | „Deutschland, Mitte“; „Deutschland, Nordosten“
 China | China, Osten; China, Norden; China, Norden 2; China, Osten 2
 Brasilien | Brasilien Süd
-Eingeschränkte Regionen, die für eine Notfallwiederherstellung innerhalb des Landes reserviert sind |„Schweiz, Westen“, reserviert für „Schweiz, Norden“, „Frankreich, Süden“, reserviert für „Frankreich, Mitte“, „VAE, Mitte“, eingeschränkt für Kunden in den „VAE, Norden“, „Norwegen, Westen“ für Kunden im Osten, „JIO Indien, Mitte“ für „JIO Indien, Westen“, „Brasilien, Südosten“ für „Brasilien, Süden“
+Eingeschränkte Regionen, die für eine Notfallwiederherstellung innerhalb des Landes reserviert sind |„Schweiz, Westen“, reserviert für „Schweiz, Norden“; „Frankreich, Süden“, reserviert für „Frankreich, Mitte“; „VAE, Mitte“, eingeschränkt für Kunden in den „VAE, Norden“; „Norwegen, Westen“ für Kunden in „Norwegen, Osten“; „JIO Indien, Mitte“ für Kunden in „JIO Indien, Westen“; „Brasilien, Südosten“ für Kunden in „Brasilien, Süden“; „Südafrika, Westen“ für Kunden in „Südafrika, Norden“; „Deutschland, Norden“ für Kunden in „Deutschland, Westen-Mitte“.
 
 Die Replikation und Wiederherstellung von VMs zwischen zwei Regionen in verschiedenen Kontinenten ist auf die folgenden Regionspaare beschränkt:
 
@@ -266,9 +266,11 @@ Redundanz | LRS und GRS werden unterstützt.<br/><br/> ZRS wird nicht unterstüt
 Kalter und heißer Speicher | Nicht unterstützt | VM-Datenträger werden für kalten und heißen Speicher nicht unterstützt
 Speicherplätze | Unterstützt |
 NVMe-Speicherschnittstelle | Nicht unterstützt
+Verschlüsselung auf dem Host | Unterstützt | [Klicken Sie hier](../virtual-machines/disks-enable-host-based-encryption-portal.md), um mithilfe von Verschlüsselung auf dem Host eine VM mit End-to-End-Verschlüsselung zu erstellen.
 Verschlüsselung ruhender Daten (SSE) | Unterstützt | SSE ist die Standardeinstellung für Speicherkonten.
 Verschlüsselung ruhender Daten (CMK) | Unterstützt | Software- und HSM-Schlüssel werden für verwaltete Datenträger unterstützt.
 Doppelte Verschlüsselung im Ruhezustand | Unterstützt | Erfahren Sie mehr über unterstützte Regionen für [Windows](../virtual-machines/disk-encryption.md) und [Linux](../virtual-machines/disk-encryption.md).
+FIPS-Verschlüsselung | Nicht unterstützt
 Azure Disk Encryption (ADE) für Windows | Unterstützt für virtuelle Computer mit verwalteten Datenträgern. | Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt. <br/><br/> Durch HSM geschützte Schlüssel werden nicht unterstützt. <br/><br/> Die Verschlüsselung einzelner Volumes auf einem einzelnen Datenträger wird nicht unterstützt. |
 Azure Disk Encryption (ADE) für Linux | Unterstützt für virtuelle Computer mit verwalteten Datenträgern. | Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt. <br/><br/> Durch HSM geschützte Schlüssel werden nicht unterstützt. <br/><br/> Die Verschlüsselung einzelner Volumes auf einem einzelnen Datenträger wird nicht unterstützt. <br><br> Bekanntes Problem beim Aktivieren der Replikation. [Weitere Informationen.](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 SAS-Schlüsselrotation | Nicht unterstützt | Wenn der SAS-Schlüssel für Speicherkonten gedreht wird, muss der Kunde die Replikation deaktivieren und erneut aktivieren. |

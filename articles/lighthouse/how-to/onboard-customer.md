@@ -1,14 +1,15 @@
 ---
 title: Onboarding eines Kunden in Azure Lighthouse durchführen
-description: Erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Ihr eigener Mandant über die delegierte Azure-Ressourcenverwaltung auf dessen Ressourcen zugreifen und sie verwalten kann.
+description: Hier erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Benutzer in Ihrem Mandanten auf dessen Ressourcen zugreifen und sie verwalten können.
 ms.date: 05/25/2021
 ms.topic: how-to
-ms.openlocfilehash: 7b64a189fdf6b33fada1750b667260989d2827e8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: de0520f7ed8be24ac19b4738828890877456f734
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376219"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078957"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding eines Kunden in Azure Lighthouse durchführen
 
