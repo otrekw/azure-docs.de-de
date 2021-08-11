@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 6b52ca3f7fda8ee696311a2aeea1ccf9767cda35
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 7c0d4123de361fe8285213ff6f28e2cffe5e5724
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557610"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466355"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sailpoint-identitynow"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SailPoint IdentityNow
 
@@ -31,7 +31,7 @@ In diesem Tutorial erfahren Sie, wie Sie SailPoint IdentityNow in Azure Active D
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein aktives SailPoint IdentityNow-Abonnement.  Wenn Sie nicht über IdentityNow verfügen, wenden Sie sich an das [SailPoint IdentityNow-Supportteam](mailto:support@sailpoint.com).
+* Ein aktives SailPoint IdentityNow-Abonnement. Wenn Sie nicht über IdentityNow verfügen, wenden Sie sich an das [SailPoint IdentityNow-Supportteam](mailto:support@sailpoint.com).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 

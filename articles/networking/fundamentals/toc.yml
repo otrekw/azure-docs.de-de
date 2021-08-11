@@ -12,6 +12,10 @@
   items:
     - name: Einschränken des Netzwerkzugriffs
       href: ../../virtual-network/tutorial-restrict-network-access-to-resources.md?toc=/azure/networking/fundamentals/toc.json
+- name: Beispiele
+  items:
+    - name: Azure Resource Graph-Abfragen
+      href: ./resource-graph-samples.md
 - name: Konzepte
   expanded: true
   items:
@@ -56,7 +60,7 @@
         - name: 'Erweitern der lokalen Umgebung auf Azure: Private Verbindung'
           href: ../../expressroute/expressroute-connect-azure-to-public-cloud.md?toc=/azure/networking/fundamentals/toc.json
         - name: Ausschließlich ausgehende Internetkonnektivität
-          href: ../../virtual-network/nat-overview.md?toc=/azure/networking/fundamentals/toc.json
+          href: ../../virtual-network/nat-gateway/nat-overview.md?toc=%2fazure%2fnetworking%2ffundamentals%2ftoc.json
     - name: Netzwerksicherheit
       items:
         - name: Netzwerksicherheitsgruppen
@@ -101,7 +105,7 @@
         - name: Optimieren der Routingkosten
           href: ../../virtual-network/routing-preference-portal.md?toc=/azure/networking/fundamentals/toc.json
         - name: Erstellen eines NAT-Gateways für ausgehende Verbindungen
-          href: ../../virtual-network/tutorial-create-nat-gateway-portal.md?toc=/azure/networking/fundamentals/toc.json
+          href: ../../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md?toc=%2fazure%2fnetworking%2ffundamentals%2ftoc.json
         - name: "Erstellen einer Azure\_DNS-Zone und eines Azure\_DNS-Eintrags"
           href: ../../dns/dns-getstarted-portal.md?toc=/azure/networking/fundamentals/toc.json
         - name: Weiterleiten von Datenverkehr mithilfe von Routingtabellen

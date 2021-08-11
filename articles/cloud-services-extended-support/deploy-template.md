@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 7c013cbaf8a64d12b132e3dd4c599920bd3f6a2a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 10ebb60caed4bb42bb8e8d8351b465d692eaaf0a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736108"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445091"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von ARM-Vorlagen
 
@@ -456,6 +456,6 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-- Sehen Sie sich die [häufig gestellten Fragen](faq.md) zu Cloud Services (erweiterter Support) an.
+- Sehen Sie sich die [häufig gestellten Fragen](faq.yml) zu Cloud Services (erweiterter Support) an.
 - Stellen Sie einen Clouddienst (erweiterter Support) über das [Azure-Portal](deploy-portal.md), per [PowerShell](deploy-powershell.md), per [Vorlage](deploy-template.md) oder mithilfe von [Visual Studio](deploy-visual-studio.md) bereit.
 - Besuchen Sie das [Beispielrepository zu Cloud Services (erweiterter Support)](https://github.com/Azure-Samples/cloud-services-extended-support).

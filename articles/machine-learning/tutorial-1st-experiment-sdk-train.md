@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
 ms.custom: devx-track-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q
-ms.openlocfilehash: 616723e66dceeb3c0de21b36e3af3039dafbe63e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: c96936635898f9173b7eb8e60502ea059420cf0b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028269"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758854"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-2-of-3"></a>Tutorial: Trainieren Ihres ersten Machine Learning-Modells (Teil 2 von 3)
 
@@ -135,10 +135,6 @@ Der Trainingscode stammt aus [diesem Einführungsbeispiel](https://pytorch.org/t
 1. Sie verfügen jetzt über die folgende Ordnerstruktur:
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-train/directory-structure.png" alt-text="Verzeichnisstruktur mit „train.py“ im Unterverzeichnis „src“":::
-    
-
-> [!div class="nextstepaction"]
-> [Ich habe die Trainingsskripts erstellt.](?success=create-scripts#test-local) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQN?issue=create-scripts)
 
 
 ## <a name="test-locally"></a><a name="test-local"></a> Lokales Testen
@@ -148,9 +144,6 @@ Wählen Sie die Option **Save and run script in terminal** (Skript speichern und
 Klicken Sie nach Abschluss des Skripts oberhalb der Dateiordner auf **Aktualisieren**. Der neue Datenordner mit dem Namen **get-started/data** wird angezeigt. Erweitern Sie diesen Ordner, um die heruntergeladenen Daten anzuzeigen.  
 
 :::image type="content" source="media/tutorial-1st-experiment-hello-world/directory-with-data.png" alt-text="Screenshot: Neu erstellter Datenordner durch lokale Ausführung der Datei":::
-
-> [!div class="nextstepaction"]
-> [Ich habe den Code lokal ausgeführt.](?success=test-local#create-local) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQN?issue=test-local)
 
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> Erstellen des Steuerungsskripts
@@ -205,10 +198,6 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-> [!div class="nextstepaction"]
-> [Ich habe das Steuerungsskript erstellt.](?success=control-script#submit) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQN?issue=control-script)
-
-
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Senden der Ausführung an Azure Machine Learning
 
 Wählen Sie **Save and run script in terminal** (Skript speichern und im Terminal ausführen) aus, um das Skript *run-pytorch.py* auszuführen.
@@ -245,11 +234,6 @@ Finished Training
 > Wenn ein Fehler vom Typ `Your total snapshot size exceeds the limit` (Gesamtgröße der Momentaufnahme überschreitet den Grenzwert) angezeigt wird, befindet sich der Ordner **data** unter dem Wert `source_directory`, der in `ScriptRunConfig` verwendet wird.
 >
 > Wählen Sie am Ende des Ordners die Auslassungszeichen ( **...** ) und dann die Option **Verschieben** aus, um **data** in den Ordner **get-started** zu verschieben.  
-
-
-
-> [!div class="nextstepaction"]
-> [Ich habe die Ausführung übermittelt.](?success=test-w-environment#log) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQN?issue=test-w-environment)
 
 ## <a name="log-training-metrics"></a><a name="log"></a> Protokollieren von Trainingsmetriken
 
@@ -334,10 +318,6 @@ Vorteile der Metriken in Azure Machine Learning:
 - Sie verfügen über eine Benutzeroberfläche zur Visualisierung der Trainingsleistung in Studio.
 - Sie sind skalierbar konzipiert, sodass Sie auch bei Hunderten von Experimenten von diesen Vorteilen profitieren.
 
-> [!div class="nextstepaction"]
-> [Ich habe „train.py“ geändert. ](?success=modify-train#log) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQN?issue=modify-train)
-
-
 ### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> Senden der Ausführung an Azure Machine Learning
 
 Wählen Sie die Registerkarte für das Skript *run-pytorch.py* und dann die Option **Save and run script in terminal** (Skript speichern und im Terminal ausführen) aus, um das Skript *run-pytorch.py* erneut auszuführen. 
@@ -345,9 +325,6 @@ Wählen Sie die Registerkarte für das Skript *run-pytorch.py* und dann die Opti
 Bei diesem Zugriff auf Studio öffnen Sie die Registerkarte **Metriken**, auf der nun Liveupdates zum Modelltrainingsverlust angezeigt werden. Es kann ein bis zwei Minuten dauern, bis das Training beginnt.  
 
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Diagramm: Trainingsverlust auf der Registerkarte „Metriken“":::
-
-> [!div class="nextstepaction"]
-> [Ich habe die Ausführung erneut übermittelt.](?success=resubmit-with-logging#next-steps) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

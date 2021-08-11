@@ -6,17 +6,17 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: a958e42f3afab3dccd2a989c9d824a37ed9d9a6c
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: fdc8c60f2c2cae7368a2e35317de2cfb8274a060
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536809"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414951"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-preview---overview"></a>Event Grid auf Kubernetes mit Azure Arc (Vorschau) - Übersicht
 Dieser Artikel vermittelt einen Überblick über Event Grid auf Kubernetes, Anwendungsfälle für dessen Einsatz, verfügbare Funktionen und wie es sich von Azure Event Grid unterscheidet.
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="what-is-event-grid"></a>Was ist Event Grid?
 Event Grid ist ein Event-Broker, der zur Integration von Arbeitslasten verwendet wird, die Event-gesteuerte Architekturen nutzen. Eine Event-gesteuerte Architektur verwendet Events, um das Auftreten von Systemzustandsänderungen zu übermitteln, und ist ein gängiger Integrationsansatz in entkoppelten Architekturen, wie z. B. solche, die Microservices verwenden. Event Grid bietet ein Pub-Sub-, das auch als Push-Push-Kommunikationsmodell beschrieben wird, bei dem Abonnenten Events gesendet (gepusht) werden und diese Abonnenten nicht unbedingt wissen, welcher Publisher die Events sendet. Dieses Modell steht im Gegensatz zu klassischen Push-Pull-Modellen, wie sie z. B. von Azure Service Bus oder Azure Event Hubs verwendet werden, bei denen Clients Nachrichten von Message Brokern beziehen und infolgedessen eine stärkere Kopplung zwischen Message-Brokern und konsumierenden Clients besteht.

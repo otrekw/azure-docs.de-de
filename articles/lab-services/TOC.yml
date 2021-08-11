@@ -52,8 +52,10 @@
               href: class-type-database-management.md
             - name: Deep Learning mit Verarbeitung natürlicher Sprache
               href: class-type-deep-learning-natural-language-processing.md
-            - name: „Ethisches“ Hacken
+            - name: Ethisches Hacken mit Hyper-V
               href: class-type-ethical-hacking.md
+            - name: Ethisches Hacken mit VirtualBox
+              href: class-type-ethical-hacking-virtualbox.md
             - name: MATLAB
               href: class-type-matlab.md
             - name: Netzwerk mit GNS3
@@ -193,7 +195,7 @@
     - name: PowerShell-Modul „Az.LabServices“ (Vorschauversion)
       href: reference-powershell-module.md
     - name: Azure CLI
-      href: /cli/azure/hack
+      href: 'https://github.com/Azure/azure-cli-extensions/tree/main/src/hack'
 - name: Ressourcen
   items:
     - name: Blog zu Azure Lab Services
@@ -205,4 +207,4 @@
     - name: Tech Community-Forum
       href: 'https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices'
     - name: Häufig gestellte Fragen
-      href: classroom-labs-faq.md
+      href: classroom-labs-faq.yml

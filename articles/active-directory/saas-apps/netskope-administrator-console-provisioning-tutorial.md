@@ -2,21 +2,21 @@
 title: 'Tutorial: Konfigurieren von Netskope User Authentication für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Netskope User Authentication konfigurieren.
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.author: Zhchia
-ms.openlocfilehash: 46766a7439185714648572f3f1b9d51ef96abba6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 25f665c0750650c395713e1c7f1a8ad3240b7615
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94357469"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769167"
 ---
 # <a name="tutorial-configure-netskope-user-authentication-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Netskope User Authentication für die automatische Benutzerbereitstellung
 

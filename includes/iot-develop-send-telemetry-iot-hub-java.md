@@ -1,19 +1,23 @@
 ---
 title: Datei einfügen
-description: include file
+description: Datei einfügen
 author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 05/05/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 9baef8226ed44e7b11ce8108bacd2b686bee2d9d
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 1922efb97feda19154bd965f6d383daba4830338
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112040557"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712855"
 ---
+[![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
+
+In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Sie verwenden die Azure CLI, um einen Azure IoT-Hub und ein Gerät zu erstellen. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit dem Hub zu verbinden und Telemetriedaten zu senden.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 - [Git](https://git-scm.com/downloads).
@@ -55,7 +59,7 @@ In diesem Abschnitt verwenden Sie das Java SDK zum Senden von Nachrichten vom si
 ### <a name="build-the-sample"></a>Erstellen des Beispiels
 1. Klonen Sie in Ihrer Konsole das Azure IoT-Java-Geräte-SDK auf Ihren lokalen Computer:
     ```console
-    git clone https://github.com/Azure/azure-iot-sdk-c.git
+    git clone https://github.com/Azure/azure-iot-sdk-java.git
     ```
 1. Navigieren Sie zum Stammordner des SDK, und führen Sie den folgenden Befehl aus, um das SDK zu erstellen und die Beispiele zu aktualisieren.
     ```console
@@ -79,7 +83,7 @@ In diesem Abschnitt verwenden Sie das Java SDK zum Senden von Nachrichten vom si
     mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.TemperatureController"
     ```
     > [!NOTE]
-    > In diesem Codebeispiel wird Azure IoT Plug & Play verwendet. Dadurch wird die Integration intelligenter Geräte in Ihre Lösungen ohne manuelle Konfiguration ermöglicht.  In den meisten Beispielen in dieser Dokumentation wird standardmäßig IoT Plug & Play verwendet. Weitere Informationen zu den Vorteilen und Einsatzmöglichkeiten von IoT Plug & Play finden Sie unter [Was ist IoT Plug & Play?](../articles/iot-pnp/overview-iot-plug-and-play.md).
+    > In diesem Codebeispiel wird Azure IoT Plug & Play verwendet. Dadurch wird die Integration intelligenter Geräte in Ihre Lösungen ohne manuelle Konfiguration ermöglicht.  In den meisten Beispielen in dieser Dokumentation wird standardmäßig IoT Plug & Play verwendet. Weitere Informationen zu den Vorteilen und Einsatzmöglichkeiten von IoT Plug & Play finden Sie unter [Was ist IoT Plug & Play?](../articles/iot-develop/overview-iot-plug-and-play.md).
 
     Nachdem Ihr simuliertes Gerät eine Verbindung mit Ihrem IoT-Hub hergestellt hat, stellt es eine Verbindung mit der Geräteinstanz her, die Sie in der Anwendung erstellt haben, und beginnt mit dem Senden von Telemetriedaten. Nach einigen anfänglichen Bereitstellungsdetails beginnt die Konsole mit der Ausgabe der Telemetriedaten für den Temperaturregler.
     

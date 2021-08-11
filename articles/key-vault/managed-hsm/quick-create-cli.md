@@ -2,19 +2,19 @@
 title: 'Schnellstart: Bereitstellen und Aktivieren eines verwalteten Azure-HSM'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein verwaltetes HSM mithilfe der Azure-Befehlszeilenschnittstelle bereitstellen und aktivieren.
 services: key-vault
-author: amitbapat
+author: mbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: quickstart
 ms.date: 06/21/2021
-ms.author: ambapat
-ms.openlocfilehash: cbde53687c08208dc8fed3b69a6a98ed732cf57c
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.author: mbaldwin
+ms.openlocfilehash: be8c28f736e58ebcbe95d4b8a4042b79fa1cf9f7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112380372"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443589"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Schnellstart: Bereitstellen und Aktivieren eines verwalteten HSM mithilfe der Azure-Befehlszeilenschnittstelle
 

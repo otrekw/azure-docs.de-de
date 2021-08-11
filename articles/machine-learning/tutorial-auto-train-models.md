@@ -10,13 +10,13 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 06/11/2021
-ms.custom: devx-track-python, automl
-ms.openlocfilehash: 243dd16cc70a77a0d1da0adf190dc92d83ad1ab4
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.custom: devx-track-python, automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 6a909d5742a582776f1467f5053b217876885bf7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033435"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112462773"
 ---
 # <a name="tutorial-train-a-regression-model-with-automl-and-python"></a>Tutorial: Trainieren eines Regressionsmodells mit AutoML und Python
 
@@ -41,7 +41,7 @@ Probieren Sie für AutoML ohne Code die folgenden Tutorials aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) aus.
 
 * Arbeiten Sie [Schnellstart: Erste Schritte mit Azure Machine Learning](quickstart-create-resources.md) durch, falls Sie nicht bereits über einen Azure Machine Learning-Arbeitsbereich oder eine Compute-Instanz verfügen.
 * Nach Abschluss der Schnellstartanleitung:

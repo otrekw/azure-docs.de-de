@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/16/2021
-ms.openlocfilehash: 392b1a1650ab40951704d003f2a5e5337cf3c0f5
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.date: 06/04/2021
+ms.openlocfilehash: 0f295a2c628a7ca931287463a75ad441bc40ee24
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566703"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113214951"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Datenintegration mit Azure Data Factory und Azure Data Share
 
@@ -60,7 +60,7 @@ Unter den verknüpften Azure Data Factory-Diensten definieren Sie die Informatio
     ![Portal 3](media/lab-data-flow-data-share/portal3.png)
 1. Sie werden auf die Startseite der ADF-Benutzeroberfläche umgeleitet. Diese Seite enthält Schnellstartanleitungen, Lehrvideos und Links zu Tutorials, damit Sie auf Informationen zu den Data Factory-Konzepten zugreifen können. Klicken Sie links in der Seitenleiste auf das Stiftsymbol, um mit der Erstellung zu beginnen.
 
-    ![Portal: Konfigurieren](media/lab-data-flow-data-share/configure1.png)
+    ![Portal: Konfigurieren](./media/doc-common-process/get-started-page-author-button.png)
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Erstellen eines verknüpften Azure SQL-Datenbank-Diensts
 

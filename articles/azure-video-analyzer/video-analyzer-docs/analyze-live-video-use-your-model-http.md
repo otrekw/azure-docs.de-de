@@ -3,14 +3,14 @@ title: 'Analysieren von Livevideos mit Ihrem eigenen Modell: HTTP'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Livevideos mit Ihrem eigenen Modell (HTTP) per Video Analyzer analysieren.
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 04/01/2021
+ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: 1b83fd1e58d719054e2788f641d37b6340bdc0ff
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a587191a0e5fd80174b3d288d1a9a1d8fd1d2e82
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371818"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605227"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---http"></a>Schnellstart: Analysieren von Livevideos mit einem eigenen Modell - HTTP
 
@@ -73,7 +73,13 @@ Beim Einrichten der Azure-Ressourcen wird ein kurzes Video von Verkehr auf einer
 
 ## <a name="run-the-sample-program"></a>Ausführen des Beispielprogramms
 
-1. Drücken Sie die F5-Taste, um eine Debugsitzung zu starten. Es werden dann Nachrichten im Terminalfenster ausgegeben.
+1. ::: zone pivot="programming-language-csharp"
+    [!INCLUDE [header](includes/common-includes/csharp-run-program.md)]
+    ::: zone-end
+
+    ::: zone pivot="programming-language-python"
+    [!INCLUDE [header](includes/common-includes/python-run-program.md)]
+    ::: zone-end
 1. Der Code von operations.json beginnt mit Aufrufen der direkten Methoden `pipelineTopologyList` und `livePipelineList`. Wenn Sie nach dem Durcharbeiten vorheriger Schnellstartanleitungen eine Ressourcenbereinigung durchgeführt haben, werden bei diesem Prozess leere Listen zurückgegeben, und anschließend wird die Ausführung angehalten. Drücken Sie die EINGABETASTE, um den Vorgang fortzusetzen.
 
    ```

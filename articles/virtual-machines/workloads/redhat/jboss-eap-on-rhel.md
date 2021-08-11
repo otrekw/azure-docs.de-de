@@ -11,12 +11,12 @@ ms.subservice: redhat
 ms.custom:
 - mode-api
 ms.collection: linux
-ms.openlocfilehash: 18cf093adad858f50b2b1fa1c97e38821bd1c949
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 34d0fdb605e81606960e56a3a15f9f41ee078898
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538684"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112467417"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Bereitstellen von Java-Unternehmensanwendungen in Azure mit JBoss EAP unter Red Hat Enterprise Linux
 
@@ -163,7 +163,7 @@ Für die Verwendung von BYOS für das RHEL-Betriebssystem müssen Sie über ein 
 
    1. Aktivieren Sie neue Produkte für Cloud Access unter Microsoft Azure.
     
-   1. Aktivieren Sie Red Hat Gold Images für Ihr Azure-Abonnement. Weitere Informationen finden Sie unter [Red Hat Gold-Images unter Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access).
+   1. Aktivieren Sie Red Hat Gold Images für Ihr Azure-Abonnement. Weitere Informationen finden Sie unter [Red Hat Gold-Images unter Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/understanding-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access#proc_using-gold-images-azure_cloud-access).
 
    1. Warten Sie ab, bis die Red Hat Gold Images in Ihrem Azure-Abonnement verfügbar sind. Diese Images sind normalerweise innerhalb von drei Stunden nach der Übermittlung der Daten verfügbar.
     

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd71944d0c29b9e796c4e5508f6b5116df99ec2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2d7c0c7c5a0fe5ff3100e754c99b476676cab222
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092816"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733374"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Übersicht über die rollenbasierte Zugriffssteuerung in Azure Active Directory
 
@@ -81,7 +81,7 @@ Ein Bereich ist die Beschränkung zulässiger Aktionen auf eine bestimmte Azure 
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 
-Die Nutzung integrierter Rollen in Azure AD ist kostenlos, während für benutzerdefinierte Rollen eine Azure AD Premium P1-Lizenz erforderlich ist. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich der allgemein verfügbaren Features der Editionen Free und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
+Die Nutzung integrierter Rollen in Azure AD ist kostenlos, während für benutzerdefinierte Rollen eine Azure AD Premium P1-Lizenz erforderlich ist. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich der allgemein verfügbaren Features der Editionen Free und Premium](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

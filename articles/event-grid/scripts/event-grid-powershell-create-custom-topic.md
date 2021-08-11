@@ -3,20 +3,17 @@ title: Azure PowerShell-Skriptbeispiel – Erstellen eines benutzerdefinierten T
 description: In diesem Artikel wird anhand eines Azure PowerShell-Beispielskripts das Erstellen eines benutzerdefinierten Event Grid-Themas veranschaulicht.
 services: event-grid
 documentationcenter: na
-author: spelluru
-ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2020
-ms.author: tomfitz
-ms.openlocfilehash: 915b8e13adaa440063f5db62b72fa39e1035d576
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.openlocfilehash: c95f4dc48f1b6da72cad0418468ef06929ac6866
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87460778"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467308"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>Erstellen eines benutzerdefinierten Event Grid-Themas mit PowerShell
 

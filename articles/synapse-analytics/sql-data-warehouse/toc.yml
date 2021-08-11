@@ -38,6 +38,8 @@
         - name: ARM-Vorlage
           displayName: Resource Manager
           href: quickstart-arm-template.md
+        - name: Partnerlösungen
+          href: sql-data-warehouse-partner-browse-partners.md
     - name: Laden der Daten
       items:
         - name: COPY-Anweisung

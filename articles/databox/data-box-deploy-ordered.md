@@ -6,15 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 06/10/2021
+ms.date: 07/22/2021
 ms.author: alkohli
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d5c9874324a11f9416806c22a3153c1ee4e8d442
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: dc06c5646f85fda4b4100805be4a9566d0917e2a
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111981949"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652990"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Tutorial: Bestellen von Azure Data Box
 
@@ -28,6 +28,9 @@ In diesem Tutorial wird beschrieben, wie Sie eine Azure Data Box bestellen könn
 > * Bestellen einer Data Box
 > * Nachverfolgen der Bestellung
 > * Stornieren der Bestellung
+
+> [!NOTE]
+> Antworten auf häufig gestellte Fragen zu Data Box-Bestellungen und -Lieferungen finden Sie unter [Häufig gestellte Fragen zu Data Box](data-box-faq.yml).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -6,7 +6,7 @@
       href: overview.md
     - name: Was ist Enterprise State Roaming?
       href: enterprise-state-roaming-overview.md
-- name: Tutorials
+- name: Lernprogramme
   expanded: false
   items:
     - name: Konfigurieren der Azure AD-Hybrideinbindung für verwaltete Domänen
@@ -90,7 +90,7 @@
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
       href: /answers/topics/azure-active-directory.html
     - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+      href: 'https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing'
     - name: Dienstupdates
       href: ../fundamentals/whats-new.md
     - name: Stack Overflow

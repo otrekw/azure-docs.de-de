@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/26/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c0a232dc0541ea8626cdb40a9b3497a686a5ee11
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 475d7d25bf0d4a373fd2cb630ee7f2a643581b04
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074512"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090671"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -313,13 +313,13 @@ Speichern Sie Ihre Einstellungen, indem Sie auf **PUT** klicken.
 
 Ihre Apps sind nun konfiguriert. Das Front-End kann jetzt mit einem geeigneten Zugriffstoken auf das Back-End zugreifen.
 
-Informationen dazu, wie Sie das Zugriffstoken für andere Anbieter konfigurieren, finden Sie unter [Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
+Informationen dazu, wie Sie das Zugriffstoken für andere Anbieter konfigurieren, finden Sie unter [Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service](configure-authentication-oauth-tokens.md#refresh-auth-tokens).
 
 ## <a name="call-api-securely-from-server-code"></a>Sicheres Aufrufen der API aus Servercode
 
 In diesem Schritt passen Sie den zuvor geänderten Servercode so an, dass authentifizierte Aufrufe der Back-End-API durchgeführt werden können.
 
-Ihre Front-End-App verfügt jetzt über die erforderliche Berechtigung und fügt den Anmeldeparametern die Client-ID des Back-Ends hinzu. So kann ein Zugriffstoken für die Authentifizierung bei der Back-End-App abgerufen werden. App Service stellt dieses Token für Ihren Servercode bereit, indem in jede authentifizierte Anforderung ein `X-MS-TOKEN-AAD-ACCESS-TOKEN`-Header eingefügt wird (siehe [Retrieve tokens in app code](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) (Abrufen von Token im App-Code)).
+Ihre Front-End-App verfügt jetzt über die erforderliche Berechtigung und fügt den Anmeldeparametern die Client-ID des Back-Ends hinzu. So kann ein Zugriffstoken für die Authentifizierung bei der Back-End-App abgerufen werden. App Service stellt dieses Token für Ihren Servercode bereit, indem in jede authentifizierte Anforderung ein `X-MS-TOKEN-AAD-ACCESS-TOKEN`-Header eingefügt wird (siehe [Retrieve tokens in app code](configure-authentication-oauth-tokens.md#retrieve-tokens-in-app-code) (Abrufen von Token im App-Code)).
 
 > [!NOTE]
 > Diese Header werden für alle unterstützten Sprachen eingefügt. Sie greifen darauf zu, indem Sie jeweils das Standardmuster für eine Sprache verwenden.
@@ -357,7 +357,7 @@ Glückwunsch! Ihr Servercode greift jetzt im Namen des authentifizierten Benutze
 
 In diesem Schritt legen Sie fest, dass die Angular.js-App des Front-Ends auf die Back-End-API verweist. Auf diese Weise erfahren Sie, wie Sie das Zugriffstoken abrufen und damit API-Aufrufe für die Back-End-App durchführen.
 
-Der Servercode hat Zugriff auf die Anforderungsheader, aber der Clientcode kann auf `GET /.auth/me` zugreifen, um die gleichen Zugriffstoken abzurufen (siehe [Retrieve tokens in app code](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) (Abrufen von Token im App-Code)).
+Der Servercode hat Zugriff auf die Anforderungsheader, aber der Clientcode kann auf `GET /.auth/me` zugreifen, um die gleichen Zugriffstoken abzurufen (siehe [Retrieve tokens in app code](configure-authentication-oauth-tokens.md#retrieve-tokens-in-app-code) (Abrufen von Token im App-Code)).
 
 > [!TIP]
 > In diesem Abschnitt werden die HTTP-Standardmethoden verwendet, um sichere HTTP-Aufrufe zu demonstrieren. Sie können aber die [Microsoft-Authentifizierungsbibliothek für JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js) verwenden, um das Angular.js-Anwendungsmuster zu vereinfachen.
@@ -437,7 +437,7 @@ Glückwunsch! Ihr Clientcode greift jetzt im Namen des authentifizierten Benutze
 
 ## <a name="when-access-tokens-expire"></a>Ablauf von Zugriffstoken
 
-Das Zugriffstoken läuft nach einiger Zeit ab. Informationen dazu, wie Sie Zugriffstoken aktualisieren, ohne dass sich Benutzer erneut bei Ihrer App authentifizieren müssen, finden Sie unter [Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
+Das Zugriffstoken läuft nach einiger Zeit ab. Informationen dazu, wie Sie Zugriffstoken aktualisieren, ohne dass sich Benutzer erneut bei Ihrer App authentifizieren müssen, finden Sie unter [Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service](configure-authentication-oauth-tokens.md#refresh-auth-tokens).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

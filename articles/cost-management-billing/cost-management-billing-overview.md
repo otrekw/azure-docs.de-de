@@ -4,17 +4,17 @@ description: Mit den Features „Azure Cost Management + Abrechnung“ können S
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2021
+ms.date: 07/13/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9fe658a1755ce3731f220ec656845da1f861fa9b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8eb040183f1a207410c5e093009878845a61f261
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050533"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768476"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Was ist „Azure Cost Management + Abrechnung“?
 
@@ -75,10 +75,6 @@ Empfehlungen zeigen Möglichkeiten der Optimierung und Steigerung der Effizienz 
 
 Wenn Sie Kostenverwaltungsdaten mithilfe externer Systeme abrufen und prüfen, können Sie die Daten auf einfache Weise aus Azure exportieren. Sie können einen täglichen geplanten Export im CSV-Format einrichten und die Datendateien im Azure-Speicher speichern. Anschließend können Sie aus Ihrem externen System auf die Daten zugreifen.
 
-### <a name="cloudyn-deprecation"></a>Einstellung von Cloudyn
-
-Cloudyn ist ein Azure-Dienst in Verbindung mit Cost Management, der Ende 2020 eingestellt wird. Vorhandene Cloudyn-Funktionen werden nach Möglichkeit direkt in das Azure-Portal integriert. Zurzeit werden keine neuen Kunden integriert, der Support für das Produkt bleibt jedoch erhalten, bis es vollständig eingestellt wurde.
- 
 ### <a name="additional-azure-tools"></a>Zusätzliche Azure-Tools
 
 Azure bietet weitere Tools, die in der Featuregruppe „Azure Cost Management + Abrechnung“ nicht enthalten sind. Sie spielen dennoch eine wichtige Rolle im Kostenverwaltungsprozess. Weitere Informationen zu diesen Tools finden Sie unter den folgenden Links.

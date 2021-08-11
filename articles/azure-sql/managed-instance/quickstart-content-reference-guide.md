@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto, mathoma
 ms.date: 07/11/2019
-ms.openlocfilehash: d36a4ed5937f6478b7b58c49c1393b6169778af5
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 5093dc4b3e401c90e06234b33cdd996ff4a9d781
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691502"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689698"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Erste Schritte mit der verwalteten Azure SQL-Instanz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -74,7 +74,7 @@ Um jedoch Ihre Produktionsdatenbank oder sogar Entwicklungs-/Testdatenbanken zu 
 - Leistungstests: Sie sollten die Baselineleistungsmetriken auf Ihrer SQL Server-Quellinstanz messen und mit den Leistungsmetriken auf der verwalteten SQL-Zielinstanz vergleichen, zu der Sie die Datenbank migriert haben. Erfahren Sie mehr über die [bewährten Methoden für den Leistungsvergleich](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
 - Onlinemigration: Bei Verwendung der in diesem Artikel beschriebenen nativen `RESTORE`-Funktion müssen Sie jedoch warten, bis die Datenbanken wiederhergestellt wurden (und in Azure Blob Storage kopiert wurden, sofern sie dort noch nicht gespeichert sind). Dies führt insbesondere bei größeren Datenbanken zu einer Downtime Ihrer Anwendung. Verwenden Sie für Ihre Produktionsdatenbank [Data Migration Service (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%2fazure%2fsql-database%2ftoc.json), um die Datenbank mit minimaler Downtime zu migrieren. DMS pusht die in Ihrer Quelldatenbank vorgenommenen Änderungen inkrementell in die Datenbank der verwalteten SQL-Instanz, die wiederhergestellt wird, und minimiert so die Downtime. Dadurch können Sie Ihre Anwendung schnell und mit minimaler Downtime von der Quell- auf die Zieldatenbank umstellen.
 
-Erfahren Sie mehr über den [empfohlenen Migrationsprozess](migrate-to-instance-from-sql-server.md).
+Erfahren Sie mehr über den [empfohlenen Migrationsprozess](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

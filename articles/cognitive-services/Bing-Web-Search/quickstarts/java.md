@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: a7b85b63804d8276ad0a36caaea4602797bb93cc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0eba0e81899baef684c79bf6b866ea70ad7b4611
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350567"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288741"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Schnellstart: Verwenden von Java zum Suchen im Internet mit der Bing-Websuche-REST-API, einer Komponente von Azure Cognitive Services
 
@@ -31,7 +31,7 @@ In dieser Schnellstartanleitung verwenden Sie eine Java-Anwendung, um die Bing-W
 
 Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellstartanleitung benötigen:
 
-* [JDK 7 oder 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [JDK 7 oder 8](/azure/developer/java/fundamentals/java-support-on-azure)
 * [Gson-Bibliothek](https://github.com/google/gson)
 * Abonnementschlüssel
 

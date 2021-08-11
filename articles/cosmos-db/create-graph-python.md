@@ -1,20 +1,20 @@
 ---
 title: 'Schnellstart: Gremlin-API mit Python: Azure Cosmos DB'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Gremlin-API von Azure Cosmos DB eine Konsolenanwendung mit dem Azure-Portal und Python erstellen.
-author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 03/29/2021
-ms.author: chrande
+author: manishmsfte
+ms.author: mansha
 ms.custom: devx-track-python
-ms.openlocfilehash: 479b65deec8ef7a7c313be2844495e4ed29d4d7d
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 08c8025bbb98fc9061df8ff4bc5c8abbc8fdd0eb
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "113225496"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355049"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Schnellstart: Erstellen einer Graphdatenbank in Azure Cosmos DB mit Python und dem Azure-Portal
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
