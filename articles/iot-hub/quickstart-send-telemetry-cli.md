@@ -11,16 +11,14 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 843db24707b8c826fe48e9d50aa7ec5bc135399f
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 27fde7dab5c5f16f941fd223e1e08a58948133ea
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107863603"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731888"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Durchführen der Überwachung per Azure CLI
-
-[!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
 IoT Hub ist ein Azure-Dienst, mit dem Sie umfangreiche Telemetriedaten von Ihren Geräten in der Cloud erfassen können, um sie zu speichern oder zu verarbeiten. In dieser Schnellstartanleitung verwenden Sie die Azure CLI, um eine IoT Hub-Instanz und ein simuliertes Gerät zu erstellen, Gerätetelemetriedaten an den Hub zu senden und eine C2D-Nachricht (Cloud-zu-Gerät) zu senden. Außerdem nutzen Sie das Azure-Portal, um Gerätemetriken zu visualisieren. Dies ist ein grundlegender Workflow für Entwickler, die die CLI verwenden, um mit einer IoT Hub-Anwendung zu interagieren.
 
@@ -200,5 +198,7 @@ In dieser Schnellstartanleitung haben Sie die Azure CLI verwendet, um einen IoT-
 
 Für Geräteentwickler schlagen wir als Nächstes das Durcharbeiten der Schnellstartanleitung zu den Telemetriedaten vor, in der das Azure IoT-Geräte-SDK für C verwendet wird. Optional können Sie auch einen der verfügbaren Schnellstartartikel zur Azure IoT Hub-Telemetrie für Ihre bevorzugte Sprache bzw. ein bestimmtes SDK lesen.
 
+Um zu erfahren, wie Sie das simulierte Gerät über eine Back-End-Anwendung steuern, fahren Sie mit der nächsten Schnellstartanleitung fort.
+
 > [!div class="nextstepaction"]
-> [Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub (C)](quickstart-send-telemetry-c.md)
+> [Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts](quickstart-control-device.md)

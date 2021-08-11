@@ -11,12 +11,12 @@ ms.date: 05/14/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-may-2021
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: b30dbd58e0a9c440f51386052529850d9ce9adc4
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 7696a7e1d62aae556d93fa5bccc23376d1ba9a25
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111894072"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461927"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -61,7 +61,7 @@ Extrahieren von Text, Tabellen, Auswahlmarkierungen und der Struktur aus einem D
 
     :::image type="content" source="../media/label-tool/layout-2.jpg" alt-text="Verbindungseinstellungen für das Layouttool der Formularerkennung":::.
 
-5. Wählen Sie die Quell-URL aus, fügen Sie die folgende URL des Beispieldokuments https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/layout-page-001.jpg ein, und klicken Sie auf die Schaltfläche „Abrufen“.
+5. Wählen Sie die Quell-URL aus, fügen Sie die folgende URL des Beispieldokuments `https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/layout-page-001.jpg` ein, und klicken Sie auf die Schaltfläche „Abrufen“.
 
 1. Klicken Sie auf „Layout ausführen“. Das Tool für die Beschriftung von Beispielen der Formularerkennung ruft die Analyze Layout-API auf und analysiert das Dokument.
 
@@ -88,7 +88,7 @@ Extrahieren Sie Text, Tabellen und Schlüssel-Wert-Paare aus Rechnungen, Verkauf
 4. Wählen Sie aus den folgenden Optionen die Datei aus, die Sie analysieren möchten:
 
     * Eine URL für ein Bild einer Rechnung. Für diese Schnellstartanleitung können Sie ein [Dokument einer Beispielrechnung](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf) verwenden.
-    * Eine URL für ein Bild eines Verkaufsbelegs. Für diese Schnellstartanleitung können Sie ein [Dokument einer Beispiel-ID](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-us-driver-license-wa.jpg) verwenden.
+    * Eine URL für ein Bild eines Verkaufsbelegs. Für diese Schnellstartanleitung können Sie ein [Dokument einer Beispiel-ID](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg) verwenden.
     * Eine URL für ein Bild eines Verkaufsbelegs. Für diesen Schnellstart können Sie ein [Bild eines Beispielbelegs](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) verwenden.
     * Eine URL für ein Bild einer Visitenkarte. Für diesen Schnellstart können Sie ein [Bild einer Beispielvisitenkarte](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg) verwenden.
 

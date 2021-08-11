@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: bd8f2e5b825f88d1b0e04ed231b85296ac47e998
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4403a45e4bb4383977b68725518317cdf8acbdbc
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676049"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112467399"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat-Workloads in Azure
 
@@ -36,7 +36,7 @@ Die Verwendung von Images mit nutzungsbasierter Bezahlung empfiehlt sich, wenn S
 ### <a name="red-hat-gold-images"></a>Red Hat Gold-Images
 
 Azure bietet auch Red Hat Gold-Images (`rhel-byos`). Diese Images eignen sich für Kunden, die bereits über Red Hat-Abonnements verfügen und diese in Azure verwenden möchten. Ihre vorhandenen Red Hat-Abonnements müssen für Red Hat Cloud Access aktiviert werden, um sie in Azure nutzen zu können. Der Zugriff auf diese Images wird automatisch gewährt, wenn Ihre Red Hat-Abonnements für Cloud Access aktiviert sind und die Qualifizierungsanforderungen erfüllen. Mit diesen Images können Kunden eine doppelte Abrechnung vermeiden, wie sie bei der Verwendung von Images mit nutzungsbasierter Bezahlung auftreten kann.
-* Informationen zum Aktivieren von Red Hat-Abonnements für Cloud Access mit Azure finden Sie [hier](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access).
+* Informationen zum Aktivieren von Red Hat-Abonnements für Cloud Access mit Azure finden Sie [hier](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/red-hat-cloud-access-program-overview_cloud-access#ref_ca-unit-conversion_cloud-access).
 * Wie Sie Red Hat Gold-Images über das Azure-Portal, mithilfe der Azure-Befehlszeilenschnittstelle oder per PowerShell-Cmdlet finden, erfahren Sie [hier](./byos.md).
 
 > [!NOTE]

@@ -8,14 +8,14 @@ ms.author: delegenz
 ms.devlang: javascript
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/11/2021
+ms.date: 07/08/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: f3ca078bd712d711f4c8883360eb121287662a16
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 8b4de14a55c46b9be66e54d96d9285b336cdc638
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018349"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551576"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search mit dem JavaScript-SDK
 > [!div class="op_single_selector"]
@@ -109,7 +109,7 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erford
       "author": "Your Name",
       "license": "MIT",
       "dependencies": {
-        "@azure/search-documents": "^11.0.3",
+        "@azure/search-documents": "^11.2.0",
         "dotenv": "^8.2.0"
       }
     }
@@ -198,7 +198,7 @@ Fügen Sie der Datei **hotels_quickstart_index.json** folgenden Code hinzu, oder
             "filterable": false,
             "sortable": false,
             "facetable": false,
-            "analyzer": "en.lucene"
+            "analyzerName": "en.lucene"
         },
         {
             "name": "Description_fr",
@@ -207,7 +207,7 @@ Fügen Sie der Datei **hotels_quickstart_index.json** folgenden Code hinzu, oder
             "filterable": false,
             "sortable": false,
             "facetable": false,
-            "analyzer": "fr.lucene"
+            "analyzerName": "fr.lucene"
         },
         {
             "name": "Category",

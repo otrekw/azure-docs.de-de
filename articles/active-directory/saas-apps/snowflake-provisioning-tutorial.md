@@ -2,21 +2,21 @@
 title: 'Tutorial: Konfigurieren von Snowflake für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Snowflake konfigurieren.
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 06f11763498e3e8393d688a71e1c37b466be3f6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: c7eced7fb6c073eece1edbee93da0d9f33e3ed27
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539534"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690290"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Snowflake für die automatische Benutzerbereitstellung
 
@@ -44,8 +44,8 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
 1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](../app-provisioning/user-provisioning.md).
-2. Bestimmen Sie, wer [in den Bereitstellungsbereich](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) einbezogen werden soll.
-3. Legen Sie fest, welche Daten [zwischen Azure AD und Snowflake zugeordnet werden sollen](../app-provisioning/customize-application-attributes.md). 
+1. Bestimmen Sie, wer [in den Bereitstellungsbereich](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) einbezogen werden soll.
+1. Legen Sie fest, welche Daten [zwischen Azure AD und Snowflake zugeordnet werden sollen](../app-provisioning/customize-application-attributes.md). 
 
 ## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Snowflake für die Unterstützung der Bereitstellung mit Azure AD
 
@@ -53,15 +53,27 @@ Bevor Sie Snowflake für die automatische Benutzerbereitstellung mit Azure AD k
 
 1. Melden Sie sich bei Ihrer Snowflake-Administratorkonsole an. Geben Sie die folgende Abfrage in das hervorgehobene Arbeitsblatt ein, und wählen Sie dann **Run** (Ausführen) aus.
 
-    ![Screenshot: Snowflake-Verwaltungskonsole mit der Abfrage und der Schaltfläche „Run“ (Ausführen)](media/Snowflake-provisioning-tutorial/image00.png)
+   ![Screenshot: Snowflake-Verwaltungskonsole mit der Abfrage und der Schaltfläche „Run“ (Ausführen)](media/Snowflake-provisioning-tutorial/image00.png)
+    
+   ```
+   use role accountadmin;
+   
+   create or replace role aad_provisioner;
+   grant create user on account to aad_provisioner;
+   grant create role on account to aad_provisioner;
+   grant role aad_provisioner to role accountadmin;
+   create or replace security integration aad_provisioning type=scim scim_client=azure run_as_role='AAD_PROVISIONER';
+   
+   select SYSTEM$GENERATE_SCIM_ACCESS_TOKEN('AAD_PROVISIONING');
+   ```
 
-2.  Für Ihren Snowflake-Mandanten wird ein SCIM-Zugriffstoken generiert. Wählen Sie zum Abrufen des Tokens den Link aus, der im folgenden Screenshot hervorgehoben ist:
+1.  Für Ihren Snowflake-Mandanten wird ein SCIM-Zugriffstoken generiert. Wählen Sie zum Abrufen des Tokens den Link aus, der im folgenden Screenshot hervorgehoben ist:
 
-    ![Screenshot: Arbeitsblatt auf der Benutzeroberfläche von Snowflake mit hervorgehobenem SCIM-Zugriffstoken](media/Snowflake-provisioning-tutorial/image01.png)
+   ![Screenshot: Arbeitsblatt auf der Benutzeroberfläche von Snowflake mit hervorgehobenem SCIM-Zugriffstoken](media/Snowflake-provisioning-tutorial/image01.png)
 
-3. Kopieren Sie den generierten Tokenwert, und wählen Sie **Done** (Fertig) aus. Dieser Wert wird im Azure-Portal auf der Registerkarte **Bereitstellung** für Ihre Snowflake-Anwendung in das Feld **Geheimes Token** eingegeben.
+1. Kopieren Sie den generierten Tokenwert, und wählen Sie **Done** (Fertig) aus. Dieser Wert wird im Azure-Portal auf der Registerkarte **Bereitstellung** für Ihre Snowflake-Anwendung in das Feld **Geheimes Token** eingegeben.
 
-    ![Screenshot: Abschnitt „Details“, in dem das Token in das Textfeld kopiert wird und die Option „Done“ (Fertig) hervorgehoben ist](media/Snowflake-provisioning-tutorial/image02.png)
+   ![Screenshot: Abschnitt „Details“, in dem das Token in das Textfeld kopiert wird und die Option „Done“ (Fertig) hervorgehoben ist](media/Snowflake-provisioning-tutorial/image02.png)
 
 ## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Snowflake aus dem Azure AD-Anwendungskatalog
 

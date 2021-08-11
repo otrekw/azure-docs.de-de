@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 910e19137873ed5c34584b3293ebd4248c5fe2f8
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 4923ba6ead6b13f6b919c72304d4f389bac41386
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831904"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287814"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Java-Funktion über die Befehlszeile in Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "107831904"
 
 Verwenden Sie Befehlszeilentools zum Erstellen einer Java-Funktion, die auf HTTP-Anforderungen reagiert. Testen Sie den Code lokal, und stellen Sie ihn anschließend in der serverlosen Umgebung von Azure Functions bereit.
 
-Im Rahmen dieser Schnellstartanleitung fallen ggf. geringfügige Kosten im Centbereich in Ihrem <abbr title="Das Profil mit Abrechnungsinformationen für die Azure-Nutzung.">Azure-Konto</abbr>.
+Im Rahmen dieser Schnellstartanleitung fallen ggf. geringfügige Kosten im Centbereich in Ihrem <abbr title="Das Profil, mit dem Abrechnungsinformationen zur Azure-Nutzung verwaltet werden.">Azure-Konto</abbr>.
 
 Sollte Maven nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials mit [Gradle](./functions-create-first-java-gradle.md), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) und [Visual Studio Code](create-first-function-vs-code-java.md) für Java-Entwickler zur Verfügung.
 
@@ -40,13 +40,13 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) ab Version 2.4
 
-+ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8 oder 11. Die Umgebungsvariable `JAVA_HOME` muss auf den Installationsspeicherort der richtigen Version des JDK festgelegt sein.
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure), Version 8 oder 11. Die Umgebungsvariable `JAVA_HOME` muss auf den Installationsspeicherort der richtigen Version des JDK festgelegt sein.
 
 + [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 
 ### <a name="prerequisite-check"></a>Prüfen der Voraussetzungen
 
-+ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um sich zu vergewissern, dass von <abbr title="Die Befehlszeilentools für die Arbeit mit Azure Functions auf dem lokalen Computer.">Azure Functions Core Tools</abbr> die Version 3.x installiert ist.
++ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um sich zu vergewissern, dass von <abbr title="Die Befehlszeilentools für die Arbeit mit Azure Functions auf dem lokalen Computer.">Azure Functions Core Tools</abbr> Version 3.x installiert ist.
 
 + Führen Sie `az --version` aus, um zu überprüfen, ob die Version 2.4 oder höher der Azure CLI verwendet wird.
 
@@ -230,7 +230,7 @@ Wenn Sie eine Funktions-App für Linux anstatt für Windows erstellen möchten, 
 
 ## <a name="5-invoke-the-function-on-azure"></a>5. Aufrufen der Funktion in Azure
 
-Da für Ihre Funktion ein HTTP-Trigger verwendet wird, **führen Sie den Aufruf durch, indem Sie im Browser eine HTTP-Anforderung an die entsprechende URL senden** oder ein Tool wie <abbr title="Ein Befehlszeilentool zum Erstellen von HTTP-Anforderungen an eine URL. Siehe https://curl.se/">cURL</abbr>.
+Da für Ihre Funktion ein HTTP-Trigger verwendet wird, **führen Sie den Aufruf durch, indem Sie im Browser eine HTTP-Anforderung an die entsprechende URL senden** oder ein Tool wie <abbr title="Ein Befehlszeilentool zum Erstellen von HTTP-Anforderungen an eine URL. Siehe https://curl.se/">curl</abbr>.
 
 # <a name="browser"></a>[Browser](#tab/browser)
 

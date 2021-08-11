@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: cef39b940f0d61fc60ea10156acfd781289157de
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 7e65e9c34ed114f846021d1c5c417825d4859ac3
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591970"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913435"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Tutorial: Extrahieren von Bilddetails mit der Bing-Bildersuche-API und C#
 
@@ -119,4 +119,4 @@ Wenn es identifizierbare Personen oder Orte im Bild gibt, wird diese Anforderung
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Referenz zur Bing-Bildersuche-API](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Referenz zur Bing-Bildersuche-API](/rest/api/cognitiveservices/bing-images-api-v7-reference)

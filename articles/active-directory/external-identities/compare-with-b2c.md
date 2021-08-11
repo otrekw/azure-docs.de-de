@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 07/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64fd91d3f033c0a04c4936f11d096aa640942a1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 56fd9449e3954f7fe7cf3ab43a62df05869e2112
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743883"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729594"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Worum handelt es sich bei „Externe Identitäten“ in Azure Active Directory?
 
@@ -44,7 +44,7 @@ Die folgende Tabelle enthält einen detaillierten Vergleich der Szenarien, die m
 | **Einmaliges Anmelden (Single Sign-On, SSO)**      | Einmaliges Anmelden (Single Sign-On, SSO) bei allen mit Azure AD verbundenen Apps wird unterstützt. Beispielsweise können Sie den Zugriff auf Microsoft 365 oder lokale Apps und auf andere SaaS-Apps wie z. B. Salesforce oder Workday bereitstellen.    | Einmaliges Anmelden bei Kunden-Apps innerhalb der Azure AD B2C-Mandanten wird unterstützt. Einmaliges Anmelden bei Microsoft 365 oder anderen SaaS-Apps von Microsoft wird nicht unterstützt.    |
 | **Sicherheitsrichtlinie und Compliance**        | Wird von der Hostorganisation/einladenden Organisation verwaltet (beispielsweise mit [Richtlinien für den bedingten Zugriff](conditional-access.md)). | Wird von der Organisation über bedingten Zugriff und Identity Protection verwaltet.        |
 | **Branding**  | Das Branding der Hostorganisation/einladenden Organisation wird verwendet.    | Vollständig anpassbares Branding pro Anwendung oder Organisation.   |
-| **Abrechnungsmodell** | [Preise für Azure Active Directory External Identities](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/) auf der Grundlage monatlich aktiver Benutzer (Monthly Active Users, MAU). <br>(Siehe auch: [Abrechnungsmodell für externe Identitäten in Azure AD](external-identities-pricing.md)) | [Preise für Azure Active Directory External Identities](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/) auf der Grundlage monatlich aktiver Benutzer (Monthly Active Users, MAU). <br>(Siehe auch: [Abrechnungsmodell für Azure Active Directory B2C](../../active-directory-b2c/billing.md)) |
+| **Abrechnungsmodell** | [Preise für Azure Active Directory External Identities](https://azure.microsoft.com/pricing/details/active-directory/external-identities/) auf der Grundlage monatlich aktiver Benutzer (Monthly Active Users, MAU). <br>(Siehe auch: [Abrechnungsmodell für externe Identitäten in Azure AD](external-identities-pricing.md)) | [Preise für Azure Active Directory External Identities](https://azure.microsoft.com/pricing/details/active-directory/external-identities/) auf der Grundlage monatlich aktiver Benutzer (Monthly Active Users, MAU). <br>(Siehe auch: [Abrechnungsmodell für Azure Active Directory B2C](../../active-directory-b2c/billing.md)) |
 | **Weitere Informationen** | [Blogbeitrag](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [Dokumentation](what-is-b2b.md)                   | [Produktseite](https://azure.microsoft.com/services/active-directory-b2c/), [Dokumentation](../../active-directory-b2c/index.yml)       |
 
 Sichern und verwalten Sie Kunden und Partner über die Grenzen Ihrer Organisation hinaus mit Externe Azure AD-Identitäten.

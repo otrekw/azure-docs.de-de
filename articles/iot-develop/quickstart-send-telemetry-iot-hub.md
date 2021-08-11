@@ -8,18 +8,16 @@ ms.topic: quickstart
 ms.date: 05/04/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: dc59905351da364ed23b5cbc59b972feb0497a9e
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 04d7883088a4f8f9c12e384b3dcc3b4c0dfa6edf
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112294929"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730800"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an Azure IoT Hub
 
 **Gilt für**: [Entwickler von Geräteanwendungen](about-iot-develop.md#device-application-development)
-
-In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Sie verwenden die Azure CLI, um einen Azure IoT-Hub und ein Gerät zu erstellen. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit dem Hub zu verbinden und Telemetriedaten zu senden.
 
 :::zone pivot="programming-language-ansi-c"
 
@@ -88,7 +86,7 @@ In dieser Schnellstartanleitung haben Sie einen grundlegenden Workflow für Azur
 Sehen Sie sich anschließend die folgenden Artikel an, um mehr über das Erstellen von Gerätelösungen mit Azure IoT zu erfahren: 
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Python)](../iot-hub/quickstart-control-device-dotnet.md)
+> [Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Python)](../iot-hub/quickstart-control-device.md)
 > [!div class="nextstepaction"]
 > [Senden von Telemetriedaten an IoT Central](quickstart-send-telemetry-central.md)
 > [!div class="nextstepaction"]

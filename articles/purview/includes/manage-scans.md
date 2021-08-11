@@ -5,12 +5,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 1/20/2021
-ms.openlocfilehash: ac83f455d2af82c3f6970077fccb17f07e53cccc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 876e30eec31918489b174aaf4eec77508b2c5a71
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98900954"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112361752"
 ---
 ## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
 
@@ -19,11 +19,11 @@ ms.locfileid: "98900954"
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Navigieren Sie zu **Quellen**.
+1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die von Ihnen registrierte Datenquelle aus.
 
-1. Wählen Sie **+ New scan** (+ Neue Überprüfung) aus.
+1. Wählen Sie **Neue Überprüfung** aus.
 
 1. Wählen Sie die Anmeldeinformationen für die Verbindungsherstellung mit Ihrer Datenquelle aus. 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2021
 ms.author: jeedes
-ms.openlocfilehash: ffdd6c30e279cc5df7f97e5ab5bb77a87c18dd8b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6038db88610e1fde8d95c2c31a9bcfa2c5ad5ac2
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480497"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111904245"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-managed-user"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit GitHub Enterprise Managed User
 
@@ -117,7 +117,7 @@ In diesem Abschnitt verwenden Sie die oben von AAD bereitgestellten Informatione
 1. Besuchen Sie https://github.com.
 1. Klicken Sie in der oberen rechten Ecke auf „Anmelden“.
 1. Geben Sie die Anmeldeinformationen für das erste Administratorbenutzerkonto ein. Das Anmeldehandle sollte folgendes Format haben: `<your enterprise short code>_admin`
-1. Navigieren Sie zu https://github.com/enterprises/ `<your enterprise name>`. Diese Informationen sollten von Ihrem Solution Engineering-Kontakt bereitgestellt werden.
+1. Navigieren Sie zu `https://github.com/enterprises/` `<your enterprise name>`. Diese Informationen sollten von Ihrem Solution Engineering-Kontakt bereitgestellt werden.
 1. Wählen Sie im Navigationsmenü auf der linken Seite **Einstellungen** und dann **Sicherheit** aus.
 1. Aktivieren Sie das Kontrollkästchen **SAML-Authentifizierung aktivieren**.
 1. Geben Sie die Anmelde-URL ein. Diese URL ist die Anmelde-URL, die Sie oben aus AAD kopiert haben.

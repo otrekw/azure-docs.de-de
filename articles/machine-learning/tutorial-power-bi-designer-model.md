@@ -11,12 +11,12 @@ author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
 ms.custom: designer
-ms.openlocfilehash: 995979c7fe100637aa8e241489805fb09d6723f7
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 9390fc53f4d10ad770313f1f1459f02fc7e7a998
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814787"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459440"
 ---
 # <a name="tutorial-power-bi-integration---drag-and-drop-to-create-the-predictive-model-part-1-of-2"></a>Tutorial: Power BI-Integration: Erstellen des Vorhersagemodells mithilfe von Drag & Drop (Teil 1 von 2)
 
@@ -36,12 +36,12 @@ Es gibt drei Möglichkeiten, wie Sie das zu verwendende Modell in Power BI erste
 
 Stattdessen können Sie aber auch eine der anderen Optionen nutzen:
 
-* [Option A: Trainieren und Bereitstellen von Modellen – Verwenden von Jupyter Notebooks](tutorial-power-bi-custom-model.md). Bei dieser codebasierten Erstellung werden in Azure Machine Learning Studio gehostete Jupyter Notebooks verwendet.
+* [Option A: Trainieren und Bereitstellen von Modellen – Verwenden von Notebooks (Code)](tutorial-power-bi-custom-model.md). Bei dieser codebasierten Erstellung werden in Azure Machine Learning Studio gehostete Jupyter Notebooks verwendet.
 * [Option C: Trainieren und Bereitstellen von Modellen mit automatisiertem maschinellen Lernen](tutorial-power-bi-automated-model.md). Bei dieser Erstellung ohne Code werden die Datenaufbereitung und das Modelltraining vollständig automatisiert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Falls Sie noch nicht über ein Abonnement verfügen, können Sie eine [kostenlose Testversion](https://aka.ms/AMLFree) nutzen. 
+- Ein Azure-Abonnement. Falls Sie noch nicht über ein Abonnement verfügen, können Sie eine [kostenlose Testversion](https://azure.microsoft.com/free/) nutzen. 
 - Ein Azure Machine Learning-Arbeitsbereich. Falls Sie noch nicht über einen Arbeitsbereich verfügen, helfen Ihnen die Informationen unter [Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen](./how-to-manage-workspace.md#create-a-workspace) weiter.
 - Kenntnisse von Machine Learning-Workflows auf Einstiegsniveau.
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/14/2020
+ms.date: 07/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c0ef6157ebf70c896fbac5ff692246e4fad2c14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9064af6138a3dc02947b9d1de2c935afc0ad99a3
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937203"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113304154"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Tutorial: Übertragen von Daten mit Azure Data Box Gateway
 
@@ -151,4 +151,4 @@ In diesem Tutorial haben Sie sich mit den folgenden Themen zu Data Box Gateway b
 Im nächsten Tutorial erfahren Sie, wie Sie Ihr Data Box Gateway verwalten.
 
 > [!div class="nextstepaction"]
-> [Verwenden der lokalen Webbenutzeroberfläche zum Verwalten eines Data Box Gateway](https://aka.ms/dbg-docs)
+> [Verwenden der lokalen Webbenutzeroberfläche zum Verwalten eines Data Box Gateway](data-box-gateway-manage-access-power-connectivity-mode.md)

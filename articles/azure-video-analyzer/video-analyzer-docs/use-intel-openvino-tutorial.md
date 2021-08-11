@@ -3,14 +3,14 @@ title: Analysieren von Livevideos mit der KI-Erweiterung für OpenVINO™ Model 
 description: In diesem Tutorial wird ein von Intel bereitgestellter KI-Modellserver mit vorab trainierten Modellen verwendet, um den Livevideofeed einer (simulierten) IP-Kamera zu analysieren.
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 05/18/2021
+ms.date: 06/01/2021
 titleSuffix: Azure
-ms.openlocfilehash: d9c7beeb75d8a8785f58b1d0b9b3a93dfc6e53f1
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a36de6ac835b3ed9f4188b6f8d2bf3b5178be087
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384083"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604704"
 ---
 # <a name="tutorial-analyze-live-video-using-openvino-model-server--ai-extension-from-intel"></a>Tutorial: Analysieren von Livevideos mit der KI-Erweiterung für OpenVINO™ Model Server von Intel 
 
@@ -18,8 +18,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie die [KI-Erweiterung für OpenVI
 
 In diesem Tutorial werden ein virtueller Azure-Computer als IoT Edge-Gerät und ein simulierter Livevideostream verwendet. Die Grundlage hierfür ist in C# geschriebener Beispielcode.
 
-> [!NOTE]
-> Für dieses Tutorial muss ein x86-64-Computer als Edgegerät verwendet werden.
+[!INCLUDE [use-x86-64](./includes/common-includes/use-x86-64.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -95,7 +94,7 @@ Als Teil der Voraussetzungen haben Sie den Beispielcode in einen Ordner herunter
 
         `"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/httpExtensionOpenVINO/topology.json"`
 
-    * Bearbeiten Sie unter `livePipelineSet` den Namen der Livepipeline-Topologie, damit er mit dem Wert im vorherigen Link übereinstimmt:
+    * Bearbeiten Sie unter `livePipelineSet` den Namen der Livepipelinetopologie, sodass er mit dem Wert im vorherigen Link übereinstimmt:
 
       `"topologyName" : "InferencingWithOpenVINO"`
 

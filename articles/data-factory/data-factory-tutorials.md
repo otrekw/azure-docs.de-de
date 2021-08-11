@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 03/16/2021
-ms.openlocfilehash: 8fccd508d5d6dbe380b21a85faa3889e99b9942f
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 8ad3cabbc97d869fa5e8a9e8ad7f5b0b5888949e
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579530"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112542272"
 ---
 # <a name="azure-data-factory-tutorials"></a>Azure Data Factory-Tutorials
 
@@ -62,6 +62,8 @@ Nachfolgend finden Sie eine Liste der Tutorials, in denen eine Reihe von Data F
 [Sicheres Transformieren von Daten mithilfe von Zuordnungsdatenflüssen](tutorial-data-flow-private.md)
 
 [Best Practices für das Schreiben in Dateien in Data Lake mit Datenflüssen](tutorial-data-flow-write-to-lake.md)
+
+[Dynamisches Festlegen von Spaltennamen](data-flow-tutorials.md)
 
 ## <a name="external-data-services"></a>Externe Datendienste
 

@@ -26,6 +26,14 @@ groups:
     title: Flask
   - id: python-framework-django
     title: Django
+- id: postgres-server-options
+  title: PostgreSQL-Server
+  prompt: Auswählen einer PostgreSQL-SKU
+  pivots:
+  - id: postgres-single-server
+    title: Einzelner Server
+  - id: postgres-flexible-server
+    title: Flexible Server (Vorschau)
 - id: programming-languages-set-one
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -872,6 +880,14 @@ groups:
     title: JavaScript
   - id: programming-language-csharp
     title: C#
+- id: acs-csharp-java
+  title: Java- und C#-Pivots
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-csharp
+    title: C#
 - id: acs-plat-azp-azcli-net-ps
   title: JS- und C#-Pivotierung
   prompt: Auswählen einer Programmiersprache
@@ -1200,6 +1216,18 @@ groups:
     title: Python
   - id: programming-language-java
     title: Java
+- id: iot-hub-set1
+  title: Programmiersprachen
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
 - id: facility-ontology-schema
   title: 'Creator: Facility Ontology'
   prompt: Auswählen einer Facility Ontology-Version
@@ -1245,9 +1273,9 @@ groups:
   - id: identity-mi-methods-sub-powershell
     title: PowerShell
 metadata:
-  ms.openlocfilehash: 0a7eb15f89dccdc97443a2c14107aa7bdb6fdba4
-  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+  ms.openlocfilehash: 1e0342c1c36d88218ca7ad9daccb7a9e1ea7e9fa
+  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111902229"
+  ms.lasthandoff: 07/28/2021
+  ms.locfileid: "114730990"

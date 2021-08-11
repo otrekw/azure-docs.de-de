@@ -12,18 +12,18 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 96a9f7c50f3e30d86497c7a612ddda248db3f703
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: beab67a209c177c91a1c4fcfa44934234b6dbc06
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865691"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294812"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Tutorial: Einrichten und Verwenden von Metriken und Protokollen mit einem IoT-Hub
 
 Mithilfe von Azure Monitor können Sie Metriken und Protokolle für Ihren IoT-Hub erfassen, mit denen Sie den Betrieb Ihrer Lösung überwachen und auftretende Probleme beheben können. In diesem Artikel erfahren Sie, wie Diagramme basierend auf Metriken erstellt werden, wie Warnungen erstellt werden, die für Metriken ausgelöst werden, wie Sie IoT-Hub-Vorgänge und Fehler an Azure Monitor-Protokolle senden und wie Sie die Protokolle auf Fehler überprüfen.
 
-In diesem Tutorial wird das Azure-Beispiel aus [Schnellstart: Senden von .NET-Telemetriedaten](quickstart-send-telemetry-dotnet.md) verwendet, um Nachrichten an den IoT-Hub zu senden. Sie können immer ein Gerät oder ein anderes Beispiel zum Senden von Nachrichten verwenden, aber Sie müssen möglicherweise einige Schritte entsprechend ändern.
+In diesem Tutorial wird das Azure-Beispiel aus [Schnellstart: Senden von .NET-Telemetriedaten](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp) verwendet, um Nachrichten an den IoT-Hub zu senden. Sie können immer ein Gerät oder ein anderes Beispiel zum Senden von Nachrichten verwenden, aber Sie müssen möglicherweise einige Schritte entsprechend ändern.
 
 Eine gewisse Vertrautheit mit den Konzepten von Azure Monitor kann hilfreich sein, bevor Sie mit diesem Tutorial beginnen. Weitere Informationen finden Sie unter [Überwachen von IoT Hub](monitor-iot-hub.md). Weitere Informationen zu den vom IoT-Hub ausgegebenen Metriken und Ressourcenprotokollen finden Sie unter [Referenz: Überwachen von Daten](monitor-iot-hub-reference.md).
 

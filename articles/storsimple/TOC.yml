@@ -192,7 +192,7 @@
                   href: storsimple-8000-manage-volumes-u2.md
                   items:
                     - name: 'Häufig gestellte Fragen: Lokale Volumes'
-                      href: storsimple-8000-local-volume-faq.md
+                      href: storsimple-8000-local-volume-faq.yml
                 - name: Rollenbasierte Zugriffssteuerung in Azure
                   href: storsimple-8000-role-based-access-control.md
                 - name: Verwalten von ACRs

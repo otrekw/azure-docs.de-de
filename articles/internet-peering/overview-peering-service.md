@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
-ms.openlocfilehash: 717a8c87c6a1c22d3f75cd4e3054bfdf0c4b5f9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42e9df30731e40b44142bbacac8bbc7d10588345
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95023444"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687945"
 ---
 # <a name="internet-peering-vs-peering-service"></a>Internetpeering und Peering Service
 
@@ -49,7 +49,7 @@ In der obigen Abbildung ist jede Zweigstelle eines globalen Unternehmens über d
 * Der Partner kann sein bereits vorhandenes Peering zur Unterstützung von Peering Service verwenden, sofern es die Anforderung erfüllt.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
-Häufig gestellte Fragen finden Sie unter [Peering Service: Häufig gestellte Fragen](service-faqs.md).
+Häufig gestellte Fragen finden Sie unter [Peering Service: Häufig gestellte Fragen](service-faqs.yml).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

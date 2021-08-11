@@ -1,19 +1,20 @@
 ---
 title: Einladen von Benutzern zu Azure Video Analyzer for Media (vormals Video Analyzer for Media) – Azure
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: In diesem Artikel erfahren Sie, wie Sie Benutzer zu Azure Video Analyzer for Media (vormals Video Analyzer for Media) einladen.
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: quickstart
+ms.subservice: azure-video-analyzer-media
 ms.date: 02/03/2021
 ms.author: juliako
-ms.openlocfilehash: 9f10decf9ae90d91f57eda2da84be8910d7b9fc7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b724ebdc929c654c5a31db2c797901147be3e29a
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385561"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119584"
 ---
 # <a name="quickstart-invite-users-to-video-analyzer-for-media"></a>Schnellstart: Einladen von Benutzern zu Azure Video Analyzer for Media
 

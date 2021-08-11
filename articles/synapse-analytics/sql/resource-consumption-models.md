@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 253f0a3b8ae6e730b308a55224e15ff31779e43b
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: e31fd58887dfa179bc01f89ec7e56dc93fa3b6b8
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669682"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540256"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL-Ressourcennutzung
 
@@ -142,7 +142,7 @@ Zum Ändern der DWUs verwenden Sie das PowerShell-Cmdlet [Set-AzSqlDatabase](/po
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Weitere Informationen finden Sie unter [PowerShell-Cmdlets für Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere Informationen finden Sie unter [PowerShell-Cmdlets für Azure Synapse Analytics](/powershell/module/az.synapse).
 
 #### <a name="t-sql"></a>T-SQL
 
@@ -174,7 +174,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-Weitere REST-API-Beispiele finden Sie unter [REST-APIs für Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere REST-API-Beispiele finden Sie unter [REST-APIs für Azure Synapse Analytics](/rest/api/synapse/?view=azps-6.1.0&preserve-view=true).
 
 ### <a name="check-status-of-dwu-changes"></a>Überprüfen des Status von DWU-Änderungen
 

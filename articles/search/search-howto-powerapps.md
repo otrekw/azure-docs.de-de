@@ -2,19 +2,17 @@
 title: 'Tutorial: Abfragen in Power Apps'
 titleSuffix: Azure Cognitive Search
 description: Detaillierte Anleitung zum Erstellen einer Power App, die eine Verbindung mit einem Azure Cognitive Search-Index herstellt, Abfragen sendet und Ergebnisse rendert.
-author: luiscabrer
-manager: eladz
-ms.author: luisca
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
-ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: e8c16f02cf6b77fa54d2a19abac48e9914aa99bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9bf5ec0f1cac61a65ef0a24ae3f7825c2a950c2
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008564"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729548"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Tutorial: Abfragen eines Cognitive Search-Index über Power Apps
 
@@ -254,7 +252,7 @@ In diesem Schritt erstellen Sie eine Power App mit einem Suchfeld, einer Suchsc
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Für weiterhin aktive Ressourcen können Kosten anfallen. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 
@@ -265,4 +263,4 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 Power Apps ermöglicht die schnelle Anwendungsentwicklung von benutzerdefinierten Apps. Nun wissen Sie, wie Sie eine Verbindung mit einem Suchindex herstellen. Als Nächstes können Sie sich darüber informieren, wie Sie eine umfassende Visualisierungsoberfläche in einer benutzerdefinierten Power App erstellen.
 
 > [!div class="nextstepaction"]
-> [Lernkatalog für Power Apps](/powerapps/learning-catalog/get-started)
+> [Lernkatalog für Power Apps](/powerapps/learning-catalog/bdm#get-started)

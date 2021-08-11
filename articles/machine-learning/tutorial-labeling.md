@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 53521233e4e0b130eb6416f230aba5d01d974b03
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2dcd31493bf8ebc7c5096bfe7fda3e2b3f1641be
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141737"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459548"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung 
 
@@ -30,14 +30,14 @@ In diesem Tutorial verwenden Sie Bilder von Katzen und Hunden.  Da jedes Bild en
 > [!div class="checklist"]
 >
 > * Erstellen eines Azure-Speicherkontos und Hochladen von Bildern in das Konto
-> * Erstellen eines Azure Machine Learning-Arbeitsbereichs
+> * Erstellen Sie einen Azure Machine Learning-Arbeitsbereich.
 > * Erstellen eines mehrklassigen Bildbeschriftungsprojekts
 > * Beschriften Ihrer Daten.  Dieser Vorgang kann von Ihnen oder Ihren Beschriftungserstellern durchgeführt werden.
 > * Abschließen des Projekts durch Prüfen und Exportieren der Daten
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
@@ -65,7 +65,7 @@ Azure Machine Learning-Datenspeicher werden zum Speichern von Verbindungsinforma
 
 1. Füllen Sie das Formular mit den folgenden Einstellungen aus:
 
-    Feld|BESCHREIBUNG 
+    Feld|Beschreibung 
     ---|---
     Datenspeichername | Benennen Sie den Datenspeicher.  Hier verwenden wir **labeling_tutorial**.
     Datenspeichertyp | Wählen Sie den Speichertyp aus.  Hier verwenden wir **Azure Blob Storage**, den bevorzugten Speicher für Bilder.
@@ -90,7 +90,7 @@ Da Sie nun Zugriff auf die Daten haben, die Sie beschriften lassen möchten, ers
 
 1. Verwenden Sie die folgende Eingabe für das Formular **Projektdetails**:
 
-    Feld|BESCHREIBUNG 
+    Feld|Beschreibung 
     ---|---
     Projektname | Geben Sie dem Projekt einen Namen.  Hier verwenden wir **tutorial-cats-n-dogs**.
     Beschriftungsaufgabentyp | Wählen Sie **Bildklassifizierung mit mehreren Klassen** aus.  

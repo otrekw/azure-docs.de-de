@@ -917,7 +917,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern
+    - name: "Häufig gestellte Fragen zu verwalteten Service\_Fabric-Clustern"
       href: faq-managed-cluster.yml
     - name: Häufig gestellte Fragen
       href: service-fabric-common-questions.md
