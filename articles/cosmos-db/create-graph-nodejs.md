@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer Azure Cosmos DB-Node.js-Anwendung mit der Gremlin-API
 description: Hier finden Sie ein Node.js-Codebeispiel, das Sie zum Verbinden mit Azure Cosmos DB und Senden entsprechender Abfragen verwenden können.
-author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
-ms.author: chrande
+author: manishmsfte
+ms.author: mansha
 ms.custom: devx-track-js
-ms.openlocfilehash: 91285ac491e352b1e67a97a056c361dd75acfda8
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 87c976cb75a66b6fc343fe5e676c0bc72b0a396c
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "113223470"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355031"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Schnellstart: Erstellen einer Node.js-Anwendung mithilfe eines Gremlin-API-Kontos für Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]

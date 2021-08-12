@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/22/2021
 ms.author: jukullam
 ms.custom: github-actions-azure
-ms.openlocfilehash: 5f27a0cbfedd9b5021be2aa54ab5fb021b48d0b2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f8048dab26451fea85b52caa3ffdc27d7e0a677a
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103206"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894144"
 ---
 # <a name="tutorial-use-github-actions-to-deploy-to-app-service-for-containers-and-connect-to-a-database"></a>Tutorial: Verwenden von GitHub Actions zum Bereitstellen in App Service für Container und Herstellen einer Datenbankverbindung
 
-Dieses Tutorial führt Sie durch die Einrichtung eines GitHub Actions-Workflows zum Bereitstellen einer containerisierten ASP.NET Core-Anwendung mit einem [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md)-Back-End. Nach Abschluss verfügen Sie über eine ASP.NET-App, die in Azure ausgeführt wird und mit SQL-Datenbank verbunden ist. Zunächst erstellen Sie Azure-Ressourcen mit einem auf einer [ARM-Vorlage](/azure/azure-resource-manager/templates/overview) beruhenden GitHub Actions-Workflow.
+Dieses Tutorial führt Sie durch die Einrichtung eines GitHub Actions-Workflows zum Bereitstellen einer containerisierten ASP.NET Core-Anwendung mit einem [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md)-Back-End. Nach Abschluss verfügen Sie über eine ASP.NET-App, die in Azure ausgeführt wird und mit SQL-Datenbank verbunden ist. Zunächst erstellen Sie Azure-Ressourcen mit einem auf einer [ARM-Vorlage](../azure-resource-manager/templates/overview.md) beruhenden GitHub Actions-Workflow.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -85,7 +85,7 @@ Erstellen Sie in Ihrem Repository ein neues Geheimnis für `SQL_SERVER_ADMIN_PAS
 
 ## <a name="create-azure-resources"></a>Erstellen von Azure-Ressourcen
 
-Der Workflow zum Erstellen von Azure-Ressourcen führt eine [ARM-Vorlage](/azure/azure-resource-manager/templates/overview) aus, um Ressourcen in Azure bereitzustellen. Der Workflow:
+Der Workflow zum Erstellen von Azure-Ressourcen führt eine [ARM-Vorlage](../azure-resource-manager/templates/overview.md) aus, um Ressourcen in Azure bereitzustellen. Der Workflow:
 
 - Checkt den Quellcode mithilfe der [Check-Out-Aktion](https://github.com/marketplace/actions/checkout) aus.
 - Meldet sich mit der [Azure-Anmeldeaktion](https://github.com/marketplace/actions/azure-login) bei Azure an und sammelt Umgebungs- und Azure-Ressourceninformationen.
@@ -119,7 +119,7 @@ So führen Sie den Workflow zum Erstellen von Azure-Ressourcen aus:
 
 ## <a name="build-push-and-deploy-your-image"></a>Erstellen, Pushen und Bereitstellen Ihres Images
 
-Der Erstellungs-, Push- und Bereitstellungsworkflow erstellt einen Container mit den neuesten App-Änderungen, pusht den Container in die [Azure Container Registry](/azure/container-registry/) und aktualisiert den Stagingslot der Webanwendung, sodass er auf den aktuellsten per Push bereitgestellten Container verweist. Der Workflow containerisiert einen Erstellungs- und Bereitstellungsauftrag:
+Der Erstellungs-, Push- und Bereitstellungsworkflow erstellt einen Container mit den neuesten App-Änderungen, pusht den Container in die [Azure Container Registry](../container-registry/index.yml) und aktualisiert den Stagingslot der Webanwendung, sodass er auf den aktuellsten per Push bereitgestellten Container verweist. Der Workflow containerisiert einen Erstellungs- und Bereitstellungsauftrag:
 
 - Der Erstellungsauftrag checkt den Quellcode mit der [Check-Out-Aktion](https://github.com/marketplace/actions/checkout) aus. Anschließend verwendet der Auftrag die [Docker-Anmeldeaktion](https://github.com/marketplace/actions/docker-login) und ein benutzerdefiniertes Skript, um sich bei der Azure Container Registry zu authentifizieren, ein Containerimage zu erstellen und es in der Azure Container Registry bereitzustellen.
 - Der Bereitstellungsauftrag meldet sich bei Azure mithilfe der [Azure-Anmeldeaktion](https://github.com/marketplace/actions/azure-login) an und sammelt Umgebungs- und Azure-Ressourceninformationen. Anschließend aktualisiert der Auftrag die Web App-Einstellungen mithilfe der [Aktion „Azure App Service-Einstellungen“](https://github.com/marketplace/actions/azure-app-service-settings) und führt die Bereitstellung in einem App Service-Stagingslot mithilfe der [Aktion „Azure Web Deploy“](https://github.com/marketplace/actions/azure-webapp) aus. Schließlich führt der Auftrag ein benutzerdefiniertes Skript aus, um die SQL-Datenbank zu aktualisieren, und vertauscht den Stagingslot mit dem Produktionsslot.

@@ -14,10 +14,10 @@ audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
 ms.openlocfilehash: b33565f319de77385c966f742fa52391f4869eed
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77211277"
 ---
 # <a name="quickstart-set-up-your-azure-kinect-dk"></a>Schnellstart: Einrichten Ihres Azure Kinect DK-Geräts
@@ -79,14 +79,14 @@ Damit ist die Einrichtung Ihres Azure Kinect DK-Geräts abgeschlossen. Sie kö
 
 Lesen Sie bei Problemen den Artikel [Bekannte Probleme und Problembehandlung für Azure Kinect](troubleshooting.md).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 - [Hardwarespezifikationen für Azure Kinect DK](hardware-specification.md)
-- [Aktualisieren der Azure Kinect DK-Firmware](update-device-firmware.md)
+- [Aktualisieren der Gerätefirmware](update-device-firmware.md)
 - [Azure Kinect Viewer](azure-kinect-viewer.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Azure Kinect DK fertig eingerichtet und einsatzbereit ist, können Sie mit dem folgenden Artikel fortfahren:
 > [!div class="nextstepaction"]
-> [Schnellstart: Erfassen von Sensordatenströmen in einer Datei](record-sensor-streams-file.md)
+> [Erfassen von Sensordatenströmen in einer Datei](record-sensor-streams-file.md)

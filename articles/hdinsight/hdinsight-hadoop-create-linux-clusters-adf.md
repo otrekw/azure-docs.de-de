@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: seoapr2020, devx-track-azurepowershell
 ms.date: 04/24/2020
-ms.openlocfilehash: 3cf8b53cdabbd9360c3e57e5e633327dd4e8a4ad
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: f652c83a6f218fae34ae75cbc70c12a3c85e5da9
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698497"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282599"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Tutorial: Erstellen bedarfsgesteuerter Apache Hadoop-Cluster in HDInsight mit Azure Data Factory
 
-[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
+[!INCLUDE [selector](includes/hdinsight-create-linux-cluster-selector.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie mit Azure Data Factory bedarfsgesteuert einen [Apache Hadoop](../hdinsight/hdinsight-overview.md#cluster-types-in-hdinsight)-Cluster in Azure HDInsight erstellen. Sie können dann Datenpipelines in Azure Data Factory verwenden, um Hive-Aufträge ausführen und den Cluster zu löschen. In diesem Tutorial erfahren Sie, wie Sie einen `operationalize`-Vorgang für die Ausführung eines Big Data-Auftrags ausführen, bei dem die Clustererstellung, Auftragsausführung und Clusterlöschung nach einem Zeitplan erfolgen.
 

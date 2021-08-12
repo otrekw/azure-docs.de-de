@@ -9,12 +9,12 @@ ms.author: joseys
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e7a114c5ce31ff4df96648ba2545c2222ba4893d
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 303e6363d7a7abbf933e4a49428158118712aa3e
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111607"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707605"
 ---
 # <a name="record-and-download-calls-with-event-grid"></a>Aufzeichnen und Herunterladen von Anrufen mit Event Grid
 
@@ -71,7 +71,7 @@ Anschließend abonnieren Sie diesen Webhook für das `recording`-Ereignis:
 2. Wählen Sie wie nachfolgend gezeigt `Event Subscription` aus:
 ![Screenshot: Event Grid-Benutzeroberfläche](./media/call-recording/image1-event-grid.png)
 3. Konfigurieren Sie das Ereignisabonnement, und wählen Sie `Call Recording File Status Update` als `Event Type` aus. Wählen Sie `Webhook` als `Endpoint type` aus.
-![Erstellen eines Ereignisabonnements](./media/call-recording/image2-create-subscription.png)
+![Erstellen eines Ereignisabonnements](./media/call-recording/image2-create-event-subscription.png)
 4. Geben Sie unter `Subscriber Endpoint` die URL Ihres Webhooks ein.
 ![Abonnieren des Ereignisses](./media/call-recording/image3-subscribe-to-event.png)
 
