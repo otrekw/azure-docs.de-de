@@ -29,7 +29,7 @@
   items:
     - name: Funktionsverkettung
       href: durable-functions-sequence.md
-    - name: Auffächern nach innen/außen
+    - name: Auffächern nach außen/innen
       href: durable-functions-cloud-backup.md
     - name: 'Monitore (C#, JavaScript)'
       href: durable-functions-monitor.md

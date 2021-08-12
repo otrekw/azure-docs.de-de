@@ -1,0 +1,32 @@
+- name: Dokumentation zum Netzwerkfunktionsmanager
+  href: index.yml
+- name: Überblick
+  expanded: true
+  items:
+    - name: Informationen zum Netzwerkfunktionsmanager
+      href: overview.md
+- name: Tutorials
+  expanded: true
+  items:
+    - name: Erstellen einer Geräteressource
+      href: create-device.md
+    - name: Bereitstellen von Netzwerkfunktionen
+      href: deploy-functions.md
+- name: Konzepte
+  expanded: true
+  items:
+    - name: Partner
+      href: partners.md
+    - name: Häufig gestellte Fragen
+      href: faq.md
+- name: Ressourcen
+  expanded: true
+  items:
+    - name: Produktseite für den Netzwerkfunktionsmanager
+      href: 'https://go.microsoft.com/fwlink/?linkid=2166098'
+    - name: Dokumentation zu privatem MEC in Azure
+      href: ../private-multi-access-edge-compute-mec/index.yml
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'

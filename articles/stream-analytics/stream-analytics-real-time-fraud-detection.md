@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: contperf-fy21q2
 ms.date: 12/17/2020
-ms.openlocfilehash: 1e26159c07ca551a78ee2f83a0ca64779c60f7b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb13fa39452cac26fac2476b6f102248478b18a5
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018869"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689751"
 ---
 # <a name="tutorial-analyze-fraudulent-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Tutorial: Analysieren von betrügerischen Anrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard
 
@@ -133,7 +133,7 @@ Nachdem Sie nun über einen Datenstrom mit Anrufereignissen verfügen, können S
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), um einen Stream Analytics-Auftrag zu erstellen.
 
-2. Wählen Sie **Ressource erstellen** aus, und suchen Sie nach **Stream Analytics-Auftrag**. Wählen Sie die Kachel **Stream Analytics-Auftrag** und dann *Erstellen** aus.
+2. Wählen Sie **Ressource erstellen** aus, und suchen Sie nach **Stream Analytics-Auftrag**. Wählen Sie die Kachel **Stream Analytics-Auftrag** und dann **Erstellen** aus.
 
 3. Fügen Sie die folgenden Werte in das Formular **Neuer Stream Analytics-Auftrag** ein:
 

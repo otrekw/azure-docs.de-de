@@ -44,7 +44,7 @@
     - name: Genehmigen
       items:
         - name: Azure AD-Rollen
-          href: pim-how-to-activate-role.md
+          href: azure-ad-pim-approval-workflow.md
         - name: Azure-Rollen
           href: pim-resource-roles-approval-workflow.md
         - name: Gruppen mit privilegiertem Zugriff

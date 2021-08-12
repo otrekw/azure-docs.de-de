@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
 ms.custom: devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: ccc28c5a20fd31d3200f6473210150587fd5b4ad
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 40fdfcec5e74c7b86807f5cd1577d12ed4904632
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028629"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765748"
 ---
 # <a name="tutorial-get-started-with-a-python-script-in-azure-machine-learning-part-1-of-3"></a>Tutorial: Erste Schritte mit einem Python-Skript in Azure Machine Learning (Teil 1 von 3)
 
@@ -77,9 +77,6 @@ Wählen Sie **Skript speichern und im Terminal ausführen** aus, um das Skript a
 :::image type="content" source="media/tutorial-1st-experiment-hello-world/save-run-in-terminal.png" alt-text="Screenshot: Speichern und Ausführen eines Skripts im Terminaltool auf der Symbolleiste":::
 
 Die Ausgabe des Skripts wird im Terminalfenster angezeigt, das geöffnet wird. Schließen Sie die Registerkarte, und wählen Sie **Beenden** aus, um die Sitzung zu schließen.
-
-> [!div class="nextstepaction"]
-> [Ich habe das Skript lokal ausgeführt.](?success=run-local#control-script) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C2NTH7?issue=run-local)
 
 ## <a name="create-a-control-script"></a><a name="control-script"></a> Erstellen eines Steuerungsskripts
 
@@ -149,8 +146,6 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
    :::column-end:::
 :::row-end:::
 
-> [!div class="nextstepaction"]
-> [Ich habe das Steuerungsskript erstellt.](?success=create-control-script#submit) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C2NTH7?issue=create-control-script)
 
 ## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> Übermitteln und Ausführen Ihres Codes in der Cloud
 
@@ -161,8 +156,6 @@ Im Terminal werden Sie möglicherweise aufgefordert, sich anzumelden, um sich zu
 > [!TIP]
 > Wenn Sie gerade die Erstellung des Computeclusters abgeschlossen haben, sehen Sie möglicherweise die Fehlermeldung „UserError: Erforderliches Docker-Image nicht gefunden...“ Warten Sie etwa 5 Minuten, und versuchen Sie es dann erneut.  Der Computecluster benötigt möglicherweise mehr Zeit, bevor er zum Einrichten von Knoten bereit ist.
 
-> [!div class="nextstepaction"]
-> [Ich habe Code in der Cloud übermittelt.](?success=submit-to-cloud#monitor) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)
 
 ## <a name="monitor-your-code-in-the-cloud-in-the-studio"></a><a name="monitor"></a>Überwachen Ihres Codes in der Cloud in Studio
 
@@ -204,8 +197,6 @@ In Zeile 8 sehen Sie die Ausgabe „Hallo Welt!“ .
 
 Die Datei `70_driver_log.txt` enthält die Standardausgabe einer Ausführung. Diese Datei kann nützlich sein, wenn Sie Remoteausführungen in der Cloud debuggen.
 
-> [!div class="nextstepaction"]
-> [Ich habe das Protokoll in Studio angezeigt.](?success=monitor-in-studio#next-steps) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

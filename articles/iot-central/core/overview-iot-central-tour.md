@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: bf60f512416007137e71119fa7474b1393099ebf
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: cffd8e0347f501e82ca6e62d5c120b232869cbc0
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718879"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653319"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Kennenlernen der Benutzeroberfläche von Azure IoT Central
 
@@ -22,7 +22,7 @@ In diesem Artikel wird die Benutzeroberfläche von Azure IoT Central vorgestellt
 
 ## <a name="iot-central-homepage"></a>IoT Central-Startseite
 
-Auf der [IoT Central-Startseite](https://aka.ms/iotcentral-get-started) finden Sie weitere Informationen zu den aktuellen News und Features von IoT Central, zum Erstellen neuer Anwendungen und zum Anzeigen und Starten Ihrer vorhandenen Anwendung.
+Auf der [IoT Central-Startseite](https://apps.azureiotcentral.com/) finden Sie weitere Informationen zu den aktuellen News und Features von IoT Central, zum Erstellen neuer Anwendungen und zum Anzeigen und Starten Ihrer vorhandenen Anwendung.
 
 :::image type="content" source="media/overview-iot-central-tour/iot-central-homepage.png" alt-text="IoT Central-Startseite":::
 
@@ -36,7 +36,7 @@ Weitere Informationen finden Sie in der Schnellstartanleitung [Erstellen einer A
 
 ### <a name="launch-your-application"></a>Starten Ihrer Anwendung
 
-Sie starten Ihre IoT Central-Anwendung, indem Sie zu der URL navigieren, die Sie während der App-Erstellung ausgewählt haben. Darüber hinaus können Sie im [App-Manager von IoT Central](https://aka.ms/iotcentral-apps) eine Liste mit allen Anwendungen anzeigen, auf die Sie Zugriff haben.
+Sie starten Ihre IoT Central-Anwendung, indem Sie zu der URL navigieren, die Sie während der App-Erstellung ausgewählt haben. Darüber hinaus können Sie im [App-Manager von IoT Central](https://apps.azureiotcentral.com/myapps) eine Liste mit allen Anwendungen anzeigen, auf die Sie Zugriff haben.
 
 :::image type="content" source="media/overview-iot-central-tour/app-manager.png" alt-text="App-Manager von IoT Central":::
 
@@ -84,7 +84,7 @@ Das obere Menü wird auf jeder Seite angezeigt:
 
 * Wenn Sie nach Geräten suchen möchten, geben Sie einen Wert für die **Suche** ein.
 * Wählen Sie zum Ändern der Sprache der Benutzeroberfläche oder des Designs das Symbol **Einstellungen** aus. Informieren Sie sich über das [Verwalten Ihrer Anwendungseinstellungen](howto-manage-preferences.md).
-* Wenn Sie Hilfe oder Unterstützung benötigen, klicken Sie auf das Dropdownmenü **Hilfe**, um eine Liste mit Ressourcen anzuzeigen. Sie können [Informationen zu Ihrer Anwendung](./howto-get-app-info.md) über den Link **Informationen zu Ihrer App** abrufen. Bei einer Anwendung im Tarif „Free“ beinhalten die Supportressourcen Zugriff auf den [Livechat](howto-show-hide-chat.md).
+* Wenn Sie Hilfe oder Unterstützung benötigen, klicken Sie auf das Dropdownmenü **Hilfe**, um eine Liste mit Ressourcen anzuzeigen. Sie können [Informationen zu Ihrer Anwendung](howto-faq.yml#how-do-i-get-information-about-my-application-) über den Link **Informationen zu Ihrer App** abrufen. Bei einer Anwendung im Tarif „Free“ beinhalten die Supportressourcen Zugriff auf den [Livechat](howto-show-hide-chat.md).
 * Wählen Sie das Symbol **Konto** aus, um sich von der Anwendung abzumelden.
 
 Sie können zwischen einem hellen und einem dunklen Benutzeroberflächendesign wählen:
@@ -98,9 +98,9 @@ Sie können zwischen einem hellen und einem dunklen Benutzeroberflächendesign w
 
 :::image type="content" source="Media/overview-iot-central-tour/dashboard.png" alt-text="Screenshot: IoT Central-Dashboard":::
 
-* Nach der Anmeldung bei Ihrer IoT Central-Anwendung wird als Erstes die Seite **Dashboard** angezeigt. Sie können mehrere Anwendungsdashboards erstellen und anpassen. Informieren Sie sich über das [Hinzufügen von Kacheln zu Ihrem Dashboard](howto-add-tiles-to-your-dashboard.md).
+* Nach der Anmeldung bei Ihrer IoT Central-Anwendung wird als Erstes die Seite **Dashboard** angezeigt. Sie können mehrere Anwendungsdashboards erstellen und anpassen. Informieren Sie sich über das [Hinzufügen von Kacheln zu Ihrem Dashboard](howto-manage-dashboards.md).
 
-* Persönliche Dashboards können auch erstellt werden, um die für Sie wichtigen Aspekte zu überwachen. Weitere Informationen finden Sie in der Anleitung zum [Erstellen und Verwalten mehrerer Dashboards](howto-create-personal-dashboards.md).
+* Persönliche Dashboards können auch erstellt werden, um die für Sie wichtigen Aspekte zu überwachen. Weitere Informationen finden Sie in der Anleitung zum [Erstellen und Verwalten mehrerer Dashboards](howto-manage-dashboards.md).
 
 ### <a name="devices"></a>Geräte
 
@@ -110,8 +110,6 @@ Auf dieser Seite werden die Geräte in Ihrer IoT Central-Anwendung gruppiert na
 
 * Eine Gerätevorlage definiert einen Gerätetyp, der eine Verbindung mit Ihrer Anwendung herstellen kann.
 * Bei einem Gerät handelt es sich um ein echtes oder simuliertes Gerät in Ihrer Anwendung.
-
-Weitere Informationen finden Sie in der Schnellstartanleitung [Überwachen Ihrer Geräte](./quick-monitor-devices.md). 
 
 ### <a name="device-groups"></a>Gerätegruppen
 
@@ -134,7 +132,7 @@ Analysen bieten umfassende Analysefunktionen, mit denen Sie historische Trends a
 
 :::image type="content" source="Media/overview-iot-central-tour/jobs.png" alt-text="Seite „Aufträge“":::
 
-Auf dieser Seite können Sie Aufträge anzeigen und erstellen, die für Massenvorgänge für die Geräteverwaltung auf Ihren Geräten verwendet werden können. Sie können Geräteeigenschaften und Einstellungen aktualisieren und Befehle für Gerätegruppen ausführen. Weitere Informationen finden Sie im Artikel [Ausführen eines Auftrags](howto-run-a-job.md).
+Auf dieser Seite können Sie Aufträge anzeigen und erstellen, die für Massenvorgänge für die Geräteverwaltung auf Ihren Geräten verwendet werden können. Sie können Geräteeigenschaften und Einstellungen aktualisieren und Befehle für Gerätegruppen ausführen. Weitere Informationen finden Sie im Artikel [Ausführen eines Auftrags](howto-manage-devices-in-bulk.md).
 
 ### <a name="device-templates"></a>Gerätevorlagen
 

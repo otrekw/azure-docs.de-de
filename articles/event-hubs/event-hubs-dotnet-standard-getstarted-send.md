@@ -4,12 +4,12 @@ description: Dieser Artikel enthält eine exemplarische Vorgehensweise zum Erste
 ms.topic: quickstart
 ms.date: 06/10/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6f28e46aff12b5730a1cc73f56fe9bd31805923
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 948bacd1506bc65c97c84ea5fa9d3f5b4ad95503
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004371"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730259"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Senden oder Empfangen von Ereignissen an und von Azure Event Hubs: .NET (Azure.Messaging.EventHubs) 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der .NET-Bibliothek **Azure.Messaging.EventHubs** Ereignisse an einen Event Hub senden bzw. von dort empfangen. 
@@ -96,7 +96,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine .NET Core-Anwendung zum Senden vo
             // Create a batch of events 
             using EventDataBatch eventBatch = await producerClient.CreateBatchAsync();
 
-            for (int i = 1; i <= 3; i++)
+            for (int i = 1; i <= numOfEvents; i++)
             {
                 if (! eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes($"Event {i}"))))
                 {
@@ -109,7 +109,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine .NET Core-Anwendung zum Senden vo
             {
                 // Use the producer client to send the batch of events to the event hub
                 await producerClient.SendAsync(eventBatch);
-                Console.WriteLine("A batch of 3 events has been published.");
+                Console.WriteLine($"A batch of {numEvents} events has been published.");
             }
             finally
             {

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 556bab6d1302aebbc6a6d8c338a42d7bd78e1275
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 5debf0fdd82132ece890f29967e345ab5b134635
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113106883"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297582"
 ---
 # <a name="about-azure-cache-for-redis"></a>Informationen zu Azure Cache for Redis
 
@@ -74,9 +74,9 @@ Unter [Azure Cache for Redis – Preise](https://azure.microsoft.com/pricing/de
 Berücksichtigen Sie bei der Tarifwahl für Azure Cache for Redis Folgendes:
 
 * **Arbeitsspeicher**: Die Tarife „Basic“ und „Standard“ bieten zwischen 250 MB und 53 GB. Der Premium-Tarif bietet zwischen 6 GB und 1,2 TB. Die Enterprise-Tarife bieten zwischen 12 GB und 14 TB.  Wenn Sie einen Cache im Premium-Tarif erstellen möchten, der größer als 120 GB ist, können Sie das Redis-OSS-Clustering verwenden. Weitere Informationen finden Sie unter [Azure Cache for Redis – Preise](https://azure.microsoft.com/pricing/details/cache/). Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-clustering.md).
-* **Leistung**: Caches im Premium- oder Enterprise-Tarif werden auf Hardware mit schnelleren Prozessoren bereitgestellt, die im Vergleich zum Basic- oder Standard-Tarif eine bessere Leistung bieten. Caches im Premium-Tarif erreichen einen höheren Durchsatz und geringere Wartezeiten. Weitere Informationen finden Sie unter [Azure Cache for Redis – Leistung](/azure/azure-cache-for-redis/cache-planning-faq#azure-cache-for-redis-performance).
+* **Leistung**: Caches im Premium- oder Enterprise-Tarif werden auf Hardware mit schnelleren Prozessoren bereitgestellt, die im Vergleich zum Basic- oder Standard-Tarif eine bessere Leistung bieten. Caches im Premium-Tarif erreichen einen höheren Durchsatz und geringere Wartezeiten. Weitere Informationen finden Sie unter [Azure Cache for Redis – Leistung](./cache-planning-faq.yml#azure-cache-for-redis-performance).
 * **Dedizierter Kern für Redis-Server**: Mit Ausnahme von „C0“ werden von allen Caches dedizierte VM-Kerne ausgeführt. Von Redis wird entwurfsbedingt nur ein einzelner Thread für die Befehlsverarbeitung verwendet. Von Azure Cache for Redis werden andere Kerne für die E/A-Verarbeitung genutzt. Die Nutzung zusätzlicher Kerne trägt zur Verbesserung der Durchsatzleistung bei, auch wenn sich dadurch ggf. keine lineare Skalierung ergibt. Darüber hinaus verfügen größere virtuelle Computer in der Regel über höhere Bandbreitengrenzwerte als kleinere. Dadurch lässt sich eine Sättigung des Netzwerks vermeiden, die Timeouts in Ihrer Anwendung zur Folge hat.
-* **Netzwerkleistung**: Für Workloads, die einen hohen Durchsatz erfordern, steht im Premium- oder Enterprise-Tarif eine höhere Bandbreite zur Verfügung als im Basic- oder Standard-Tarif. Zudem haben die größeren Caches aufgrund des zugrunde liegenden virtuellen Computers, der den Cache hostet, bei jedem Tarif eine höhere Bandbreite. Weitere Informationen finden Sie unter [Azure Cache for Redis – Leistung](/azure/azure-cache-for-redis/cache-planning-faq#azure-cache-for-redis-performance).
+* **Netzwerkleistung**: Für Workloads, die einen hohen Durchsatz erfordern, steht im Premium- oder Enterprise-Tarif eine höhere Bandbreite zur Verfügung als im Basic- oder Standard-Tarif. Zudem haben die größeren Caches aufgrund des zugrunde liegenden virtuellen Computers, der den Cache hostet, bei jedem Tarif eine höhere Bandbreite. Weitere Informationen finden Sie unter [Azure Cache for Redis – Leistung](./cache-planning-faq.yml#azure-cache-for-redis-performance).
 * **Maximale Anzahl von Clientverbindungen:** Der Premium- und der Enterprise-Tarif bieten die maximale Anzahl von Clients, die eine Verbindung mit Redis herstellen können, mit einer größeren Anzahl an Verbindungen für größere Caches. Durch das Clustering wird die Gesamtmenge der Netzwerkbandbreite erhöht, die für einen gruppierten Cache verfügbar ist.
 * **Hochverfügbarkeit**: Azure Cache for Redis verfügt über mehrere Optionen für [Hochverfügbarkeit](cache-high-availability.md). Dadurch wird garantiert, dass ein Standard-, Premium- oder Enterprise-Cache gemäß unserer [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) verfügbar ist. Die SLA deckt nur die Konnektivität zu den Cacheendpunkten ab. Sie bezieht sich nicht auf den Schutz vor Datenverlusten. Es empfiehlt sich, das Datenpersistenzfeature von Redis im Premium- und Enterprise-Tarif zu verwenden, um den Schutz vor Datenverlusten zu erhöhen.
 * **Datenpersistenz**: Im Premium- und im Enterprise-Tarif können die Cachedaten in einem Azure Storage-Konto bzw. auf einem verwalteten Datenträger gespeichert werden. Probleme mit der zugrunde liegenden Infrastruktur können zu potenziellen Datenverlusten führen. Es empfiehlt sich, das Datenpersistenzfeature von Redis in diesen Tarifen zu verwenden, um den Schutz vor Datenverlusten zu erhöhen. Azure Cache for Redis bietet sowohl RDB- als auch AOF-Optionen (Vorschauversion). Datenpersistenz kann über das Azure-Portal und die CLI aktiviert werden. Informationen zum Premium-Tarif finden Sie unter [Konfigurieren von Datenpersistenz für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-persistence.md).

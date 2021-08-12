@@ -17,12 +17,12 @@ ms.date: 09/30/2020
 ms.author: markvi
 ms.reviewer: sarbar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9a51c10a4f390e5627bccf35ab5dc74689e9c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b67e8f7ae06f9cb3becb849df41210cb6e7791d0
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91566821"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113731718"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Was sind Azure Active Directory-Berichte?
 
@@ -87,7 +87,7 @@ Der [Bericht „Überwachungsprotokolle“](concept-audit-logs.md) enthält Date
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Welche Azure AD-Lizenz benötigen Sie, um auf den Bericht „Überwachungsprotokolle“ zuzugreifen?  
 
-Der Bericht „Überwachungsprotokolle“ ist für Features verfügbar, für die Sie über Lizenzen verfügen. Wenn Sie im Besitz einer Lizenz für ein bestimmtes Feature sind, haben Sie auch Zugriff auf die dazugehörigen Informationen zum Überwachungsprotokoll. Einen detaillierten Vergleich der Funktionen bei den [verschiedenen Lizenztypen](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses) finden Sie auf der Seite [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/). Weitere Informationen finden Sie unter [Azure Active Directory-Features und -Funktionen](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad).
+Der Bericht „Überwachungsprotokolle“ ist für Features verfügbar, für die Sie über Lizenzen verfügen. Wenn Sie im Besitz einer Lizenz für ein bestimmtes Feature sind, haben Sie auch Zugriff auf die dazugehörigen Informationen zum Überwachungsprotokoll. Einen detaillierten Vergleich der Funktionen bei den [verschiedenen Lizenztypen](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses) finden Sie auf der Seite [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing). Weitere Informationen finden Sie unter [Azure Active Directory-Features und -Funktionen](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad).
 
 ### <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten
 

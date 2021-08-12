@@ -110,7 +110,7 @@ items:
           - name: IoT Solution Accelerators
             href: ../iot-accelerators/index.yml
           - name: "IoT\_Plug\_&\_Play"
-            href: ../iot-pnp/index.yml
+            href: ../iot-develop/index.yml
           - name: Azure Maps
             href: ../azure-maps/index.yml
           - name: Time Series Insights

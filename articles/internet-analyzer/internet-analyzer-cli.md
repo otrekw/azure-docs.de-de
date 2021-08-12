@@ -2,17 +2,17 @@
 title: Erstellen eines Internet Analyzer-Tests über die Befehlszeilenschnittstelle | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure CLI Ihren ersten Internet Analyzer-Test erstellen.
 services: internet-analyzer
-author: diego-perez-botero
+author: KumudD
 ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
-ms.author: mebeatty
-ms.openlocfilehash: 4e200440bd37d3593d5fc096b3dd79eff25dc1d8
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.author: kumud
+ms.openlocfilehash: 245a791ffb99c5ba3e4ff7829bd507e8cc2bcdf8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877225"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455121"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Erstellen eines Internet Analyzer-Tests mithilfe der Befehlszeilenschnittstelle (Vorschau)
 

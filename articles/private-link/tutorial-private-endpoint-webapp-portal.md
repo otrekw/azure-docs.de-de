@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/19/2020
-ms.openlocfilehash: 502c48a92f5b41c4434d03139335a0ce05fa451f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67c4b96ebb9e578e6a617b37e5a05084e72c4f56
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896972"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "114285070"
 ---
 # <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>Tutorial: Herstellen einer Verbindung mit einer Web-App mithilfe eines privaten Azure-Endpunkts
 
@@ -135,6 +135,8 @@ In diesem Abschnitt erstellen Sie einen virtuellen Computer zum Testen des priva
 5. Klicken Sie auf **Überprüfen + erstellen**. 
   
 6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-web-app"></a>Erstellen einer Web-App
 

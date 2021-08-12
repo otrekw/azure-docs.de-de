@@ -6,20 +6,18 @@ ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: eb0f596a2da9b501f57ca1b2795bffa338e3234c
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: f394448f0b488f468ce09c13d036585db032bda9
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560803"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112535919"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe des Calling SDK von Azure Communication Services für JavaScript beginnen.
 
-> [!NOTE]
-> In diesem Dokument wird die Version 1.1.0-beta.1 des Calling SDK verwendet.
+## <a name="sample-code"></a>Beispielcode
 
-> [!NOTE]
-> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling).
+Sie können die Beispiel-App von [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling) herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,7 +25,6 @@ In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe des Calling SD
 - [Node.js](https://nodejs.org/), Active LTS- und Maintenance LTS-Versionen (8.11.1 und 10.14.1 empfohlen)
 - Eine aktive Communication Services-Ressource. [Erstellen Sie eine Communication Services-Ressource](../../../create-communication-resource.md).
 - Ein Benutzerzugriffstoken, um den Anruf-Client zu instanziieren. Erfahren Sie mehr über das [Erstellen und Verwalten von Benutzerzugriffstoken](../../../access-tokens.md).
-
 
 [!INCLUDE [Calling with JavaScript](./get-started-javascript-setup.md)]
 
@@ -98,10 +95,11 @@ Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigst
 | CallAgent                        | CallAgent dient zum Starten und Verwalten von Anrufen.                                                                                            |
 | AzureCommunicationTokenCredential | Die AzureCommunicationTokenCredential-Klasse implementiert die CommunicationTokenCredential-Schnittstelle, die zum Instanziieren von CallAgent verwendet wird. |
 
-
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-Sie müssen ein für Ihre Ressource gültiges Benutzerzugriffstoken in das Textfeld eingeben und auf „Senden“ klicken. Wenn Sie noch über kein Token verfügen, finden Sie in der Dokumentation zu [Benutzerzugriffstoken](../../../access-tokens.md) weitere Informationen. Initialisieren Sie mithilfe von `CallClient` eine `CallAgent`-Instanz mit einem `CommunicationTokenCredential`-Objekt, das es uns ermöglicht, Anrufe zu tätigen und zu empfangen. Fügen Sie den folgenden Code zu **client.js** hinzu.
+Sie müssen ein für Ihre Ressource gültiges Benutzerzugriffstoken in das Textfeld eingeben und auf „Senden“ klicken. Wenn Sie noch über kein Token verfügen, finden Sie in der Dokumentation zu [Benutzerzugriffstoken](../../../access-tokens.md) weitere Informationen. Initialisieren Sie mithilfe von `CallClient` eine `CallAgent`-Instanz mit einem `CommunicationTokenCredential`-Objekt, das es uns ermöglicht, Anrufe zu tätigen und zu empfangen. 
+
+Fügen Sie den folgenden Code zu **client.js** hinzu.
 
 ```javascript
 submitToken.addEventListener("click", async () => {
@@ -167,7 +165,3 @@ Navigieren Sie in Ihrem Browser zu http://localhost:8080/. Daraufhin sollte Folg
 :::image type="content" source="../../media/javascript/calling-javascript-app-2.png" alt-text="Screenshot der fertigen JavaScript-Anwendung":::
 
 Sie können einen ausgehenden VoIP-Anruf tätigen, indem Sie ein gültiges Benutzerzugriffstoken und eine Benutzer-ID in die entsprechenden Textfelder eingeben und auf die Schaltfläche **Start Call** (Anruf beginnen) klicken. Wenn Sie `8:echo123` anrufen, werden Sie mit einem Echobot verbunden. Dies eignet sich hervorragend für die ersten Schritte und zum Überprüfen, ob Ihre Audiogeräte funktionieren.
-
-## <a name="sample-code"></a>Beispielcode
-
-Sie können die Beispiel-App von [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling) herunterladen.

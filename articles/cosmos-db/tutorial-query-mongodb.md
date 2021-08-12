@@ -1,19 +1,19 @@
 ---
 title: Abfragen von Daten mit der API für MongoDB von Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie mithilfe von MongoDB-Shellbefehlen Daten aus der MongoDB-API von Azure Cosmos DB abfragen.
-author: markjbrown
-ms.author: mjbrown
+author: gahl-levy
+ms.author: gahllevy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f93ec39e7a2e3b5829c0d6205404c6c5c4af6189
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e3604447a5909e7812f5a6acd64468cb0846d12
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93074317"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113354226"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Abfragen von Daten mit der API für MongoDB von Azure Cosmos DB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f913b33d0bea425a24d2fd336c9d065978606e82
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 08545e4db44c9901ef1059c2115f6677e93ab729
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869255"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436008"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET
 
@@ -108,7 +108,6 @@ Verwenden Sie die folgenden .NET-Klassen zur Interaktion mit folgenden Ressource
 * [BlobServiceClient:](/dotnet/api/azure.storage.blobs.blobserviceclient) Die `BlobServiceClient`-Klasse ermöglicht Ihnen, Azure Storage-Ressourcen und Blobcontainer zu bearbeiten.
 * [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): Die `BlobContainerClient`-Klasse ermöglicht Ihnen, Azure Storage-Container und deren Blobs zu bearbeiten.
 * [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): Die `BlobClient`-Klasse ermöglicht Ihnen, Azure Storage-Blobs zu bearbeiten.
-* [BlobDownloadInfo:](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo) Die `BlobDownloadInfo`-Klasse stellt die Eigenschaften und den Inhalt dar, die beim Herunterladen eines Blobs zurückgegeben werden.
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -148,7 +147,7 @@ Der folgende Codeausschnitt führt folgende Aktionen durch:
 
 1. Erstellen einer Textdatei im lokalen Verzeichnis *data*
 1. Abrufen eines Verweises auf ein [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)-Objekt durch Aufrufen der [GetBlobClient](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobclient)-Methode für den Container aus dem Abschnitt [Erstellen eines Containers](#create-a-container)
-1. Hochladen der lokalen Textdatei in das Blob durch Aufrufen der [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_IO_Stream_System_Boolean_System_Threading_CancellationToken_)-Methode. Mit dieser Methode wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, sofern es bereits vorhanden ist.
+1. Hochladen der lokalen Textdatei in das Blob durch Aufrufen der [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_String_System_Boolean_System_Threading_CancellationToken_)-Methode. Mit dieser Methode wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, sofern es bereits vorhanden ist.
 
 Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
@@ -164,7 +163,7 @@ Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
 ### <a name="download-blobs"></a>Herunterladen von Blobs
 
-Laden Sie das zuvor erstellte Blob herunter, indem Sie die [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync)-Methode aufrufen. Im Beispielcode wird das Suffix „DOWNLOADED“ an den Dateinamen angefügt, damit beide Dateien im lokalen Dateisystem angezeigt werden können.
+Laden Sie das zuvor erstellte Blob herunter, indem Sie die [DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync)-Methode aufrufen. Im Beispielcode wird das Suffix „DOWNLOADED“ an den Dateinamen angefügt, damit beide Dateien im lokalen Dateisystem angezeigt werden können.
 
 Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 

@@ -1,21 +1,21 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: azure-communication-services
 author: ddematheu2
 manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 84bb00b6ef5d0bf68a55b7eba70ccb8eb697a571
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 287c7c2cdc709f4026ddd4dfa744119568b7950c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313586"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201146"
 ---
 Das **Hero-Beispiel für Gruppenanrufe für iOS** von Azure Communication Services veranschaulicht, wie das Calling iOS SDK von Communication Services verwendet werden kann, um eine Benutzeroberfläche für Gruppenanrufe mit Sprach- und Videofunktion zu erstellen. In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie Sie das Beispiel einrichten und ausführen. Es ist auch eine Übersicht über das Beispiel vorhanden, um Informationen zum Kontext bereitzustellen.
 
@@ -52,7 +52,7 @@ Unten sind weitere Informationen zu den Voraussetzungen und Schritten zum Einric
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Details finden Sie unter [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Einen Mac mit [Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532) zusammen mit einem gültigen in Ihrer Keychain installierten Entwicklerzertifikat.
-- Eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure Communication Services-Ressource](../../quickstarts/create-communication-resource.md).
+- Eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](../../quickstarts/create-communication-resource.md).
 - Eine Azure-Funktion, die den [Authentifizierungsendpunkt](../../tutorials/trusted-service-tutorial.md) zum Abrufen von Zugriffstoken ausführt.
 
 ## <a name="running-sample-locally"></a>Lokales Ausführen des Beispiels
