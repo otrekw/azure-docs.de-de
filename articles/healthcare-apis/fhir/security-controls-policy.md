@@ -1,19 +1,19 @@
 ---
 title: Azure Policy Kontrollen zur Einhaltung gesetzlicher Bestimmungen für Azure API for FHIR
 description: Listet Azure Policy Kontrollen zur Einhaltung gesetzlicher Bestimmungen auf, die für Azure API for FHIR. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: matjazl
 ms.author: chrupa
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 83a92ec2962152461a7b9d606bfac23a1d9b6349
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
-ms.translationtype: MT
+ms.openlocfilehash: bfd27dc6dbe3e0f98bdc3679753756515efcf264
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112299013"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403081"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-api-for-fhir"></a>Azure Policy Kontrollen zur Einhaltung gesetzlicher Bestimmungen für Azure API for FHIR
 

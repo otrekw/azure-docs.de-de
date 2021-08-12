@@ -4,13 +4,13 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 04/12/2021
-ms.openlocfilehash: 85be4100d62971ef7f69840ae3e9b117fbc3c047
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/03/2021
+ms.openlocfilehash: cbbecb49acf556dc7a8ce6285d4b1b3581c39b3d
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305224"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412898"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -62,7 +62,10 @@ Wenn Sie der Meinung sind, dass Ihre Metrikwarnung fälschlicherweise ausgelöst
     - Die ausgewählte **Aggregation** im Metrikdiagramm entspricht dem **Aggregationstyp** in Ihrer Warnungsregel.
     - Die ausgewählte **Zeitgranularität** entspricht dem Wert der **Aggregationsgranularität (Zeitraum)** in Ihrer Warnungsregel (nicht auf „Automatisch“ festgelegt).
 
-5. Gehen Sie wie folgt vor, wenn neue Warnungen ausgelöst werden, während bereits ausgelöste Warnungen zur Überwachung der gleichen Kriterien vorhanden (und noch nicht behoben) sind: Überprüfen Sie, ob die *autoMitigate*-Eigenschaft für die Warnungsregel auf **false** festgelegt wurde. Diese Eigenschaft kann nur per REST/PowerShell/CLI konfiguriert werden. Überprüfen Sie daher das zum Bereitstellen der Warnungsregel verwendete Skript. In diesem Fall gilt Folgendes: Ausgelöste Warnungen werden von der Warnungsregel nicht automatisch behoben, und eine ausgelöste Warnung muss vor dem erneuten Auslösen nicht unbedingt behoben werden.
+5. Wenn die Warnung ausgelöst wurde, während bereits ausgelöste Warnungen vorhanden waren, die dieselben Kriterien überwachen (und nicht aufgelöst wurden), prüfen Sie, ob die Warnungsregel so konfiguriert wurde, dass Warnungen nicht automatisch aufgelöst werden. Durch eine solche Konfiguration wird die Warnungsregel zustandslos. Das bedeutet, dass die Warnungsregel ausgelöste Warnungen nicht automatisch auflöst und eine ausgelöste Warnung nicht aufgelöst werden muss, bevor sie erneut in derselben Zeitreihe ausgelöst wird.
+    Sie können auf eine der folgenden Arten überprüfen, ob die Warnungsregel so konfiguriert ist, dass Warnungen nicht automatisch aufgelöst werden:
+    - Bearbeiten Sie die Warnungsregel im Azure-Portal, und überprüfen Sie, ob das Kontrollkästchen „Warnungen automatisch auflösen“ deaktiviert ist (verfügbar im Abschnitt „Details zur Warnungsregel“).
+    - Überprüfen Sie das Skript, das zum Bereitstellen der Warnungsregel verwendet wird, oder rufen Sie die Warnungsregeldefinition ab, und überprüfen Sie, ob die Eigenschaft *autoMitigate* auf **false** festgelegt ist.
 
 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Metrik für Warnung kann nicht gefunden werden – Metriken für virtuelle Gastcomputer
@@ -107,7 +110,9 @@ Wenn eine Azure-Ressource gelöscht wird, werden die zugehörigen Metrikwarnungs
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>Metrikwarnungen immer anzeigen, wenn meine Bedingung erfüllt wird
 
-Metrikwarnungen sind in der Standardeinstellung zustandsbehaftet. Daher werden keine zusätzlichen Warnungen ausgelöst, wenn für eine angegebene Zeitreihe bereits eine Warnung ausgelöst wurde. Wenn Sie eine bestimmte Metrikwarnungsregel als zustandslos konfigurieren und bei jeder Auswertung, bei der die Warnungsbedingung erfüllt ist, eine Warnung erhalten möchten, erstellen Sie die Warnungsregel programmgesteuert (also beispielsweise per [Resource Manager](./alerts-metric-create-templates.md), [PowerShell](/powershell/module/az.monitor/), [REST](/rest/api/monitor/metricalerts/createorupdate), [CLI](/cli/azure/monitor/metrics/alert)), und legen Sie die Eigenschaft *autoMitigate* auf FALSE fest.
+Metrikwarnungen sind in der Standardeinstellung zustandsbehaftet. Daher werden keine zusätzlichen Warnungen ausgelöst, wenn für eine angegebene Zeitreihe bereits eine Warnung ausgelöst wurde. Wenn Sie eine bestimmte Metrikwarnungsregel zustandslos machen und bei jeder Auswertung, bei der die Warnungsbedingung erfüllt ist, benachrichtigt werden möchten, führen Sie einen der folgenden Schritte aus:
+- Wenn Sie die Warnungsregel programmgesteuert erstellen (z. B. über [Resource Manager](./alerts-metric-create-templates.md), [PowerShell](/powershell/module/az.monitor/), [REST](/rest/api/monitor/metricalerts/createorupdate), [CLI](/cli/azure/monitor/metrics/alert)), legen Sie die Eigenschaft *autoMitigate* auf „False“ fest.
+- Wenn Sie die Warnungsregel über das Azure-Portal erstellen, deaktivieren Sie die Option „Warnungen automatisch auflösen“ (verfügbar im Abschnitt „Details zur Warnungsregel“).
 
 > [!NOTE] 
 > Durch die Konfiguration einer Metrikwarnungsregel als zustandslos wird verhindert, dass ausgelöste Warnungen gelöst werden. Daher verbleiben die ausgelösten Warnungen, selbst wenn die Bedingung nicht mehr erfüllt ist, bis zum Ablauf der Beibehaltungsdauer von 30 Tagen im ausgelösten Zustand.
@@ -175,7 +180,7 @@ Führen Sie die folgenden Schritte durch, um den derzeitigen Verbrauch durch Met
 
 - PowerShell: [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - REST-API: [Auflisten nach Abonnement](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI: [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
+- Azure CLI: [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Verwalten von Warnungsregeln mithilfe von Resource Manager-Vorlagen, der REST-API, PowerShell oder der Azure CLI
 
@@ -239,6 +244,7 @@ Beachten Sie die folgenden Einschränkungen für Namen von Metrikwarnungsregeln:
 - Namen von Metrikwarnungsregeln müssen innerhalb einer Ressourcengruppe eindeutig sein
 - Namen von Metrikwarnungsregeln dürfen die folgenden Zeichen nicht enthalten: * # & + : < > ? @ % { } \ / 
 - Namen von Metrikwarnungsregeln dürfen nicht mit einem Leerzeichen oder einem Punkt enden.
+- Der kombinierte Name der Ressourcengruppe und der Warnungsregel darf 252 Zeichen nicht überschreiten.
 
 > [!NOTE] 
 > Wenn der Name der Warnungsregel nicht alphabetische oder nicht numerische Zeichen enthält (also beispielsweise Leerzeichen, Satzzeichen oder Symbole), werden diese Zeichen beim Abrufen durch bestimmte Clients möglicherweise URL-codiert.

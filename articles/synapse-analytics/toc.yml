@@ -11,7 +11,7 @@ items:
       - name: Begriff
         href: overview-terminology.md
       - name: Häufig gestellte Fragen
-        href: overview-faq.md
+        href: overview-faq.yml
   - name: Schnellstarts
     expanded: true
     items:
@@ -214,8 +214,6 @@ items:
           - name: Dedizierter SQL-Pool
             href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             displayname: overview
-          - name: Aufbau
-            href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           - name: Featureübersicht
             href: sql/overview-features.md
           - name: Modelle zum Ressourcenverbrauch
@@ -1012,9 +1010,9 @@ items:
                 href: ../data-factory/control-flow-execute-data-flow-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Synapse-Notebook-Aktivität
                 href: synapse-notebook-activity.md
-              - name: "Synapse\_SQL-Aktivität „Gespeicherte Prozedur“"
+              - name: "Aktivität für die gespeicherte Prozedur eines Synapse\_SQL-Pools"
                 href: ./data-integration/sql-pool-stored-procedure-activity.md
-              - name: Azure-Funktionsaktivität
+              - name: Aktivität „Azure Function“
                 href: ../data-factory/control-flow-azure-function-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Benutzerdefinierte Aktivität
                 href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1038,11 +1036,11 @@ items:
                 href: ../data-factory/transform-data-using-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: HDInsight-Streamingaktivität
                 href: ../data-factory/transform-data-using-hadoop-streaming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Machine Learning-Pipelineausführungsaktivität
+              - name: "Execute\_Pipeline-Aktivität für Machine Learning"
                 href: ../data-factory/transform-data-machine-learning-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Batchausführungsaktivität für Machine Learning Studio (Classic)
+              - name: "Batch\_Execution-Aktivität für Machine Learning Studio (klassisch)"
                 href: ../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (Classic)
+              - name: "Update\_Resource-Aktivität für Machine Learning Studio (klassisch)"
                 href: ../data-factory/update-machine-learning-models.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Aktivität „Gespeicherte Prozedur“
                 href: ../data-factory/transform-data-using-stored-procedure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1050,27 +1048,27 @@ items:
                 href: ../data-factory/compute-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           - name: Ablaufsteuerung
             items:
-              - name: Aktivität „Variable anfügen“
+              - name: "Append\_Variable-Aktivität"
                 href: ../data-factory/control-flow-append-variable-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Aktivität „Pipeline ausführen“
+              - name: "Execute\_Pipeline-Aktivität"
                 href: ../data-factory/control-flow-execute-pipeline-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Filteraktivität
                 href: ../data-factory/control-flow-filter-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Aktivität „For Each“
+              - name: "For\_Each-Aktivität"
                 href: ../data-factory/control-flow-for-each-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Aktivität „Metadaten abrufen“
+              - name: "Get\_Metadata-Aktivität"
                 href: ../data-factory/control-flow-get-metadata-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Aktivität „Falls-Bedingung“
+              - name: If Condition-Aktivität
                 href: ../data-factory/control-flow-if-condition-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Lookup-Aktivität
                 href: ../data-factory/control-flow-lookup-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Aktivität „Variable festlegen“
+              - name: "Set\_Variable-Aktivität"
                 href: ../data-factory/control-flow-set-variable-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Aktivität „Bis“
+              - name: Until-Aktivität
                 href: ../data-factory/control-flow-until-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Aktivität „Prüfung“
                 href: ../data-factory/control-flow-validation-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Aktivität „Warten“
+              - name: Warteaktivität
                 href: ../data-factory/control-flow-wait-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Webaktivität
                 href: ../data-factory/control-flow-web-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1168,6 +1166,8 @@ items:
         items:
           - name: Was ist maschinelles Lernen in Azure Synapse?
             href: machine-learning/what-is-machine-learning.md
+          - name: Cognitive Services in Azure Synapse Analytics
+            href: machine-learning/overview-cognitive-services.md
       - name: Schnellstarts
         items:
           - name: Verwenden eines Beispielnotebooks aus dem Katalog

@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.subservice: hadr
-ms.custom: na
+ms.custom: na, devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 9a6b2673694d7290d964302de2a91795c3d9bd3c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4ca8e2285cafee5cabfe884f5214ffacaec95721
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769595"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569163"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Erstellen einer FCI mit „Direkte Speicherplätze“ (SQL-Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -87,37 +87,6 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
 
 Weitere Informationen zu den nächsten Schritten finden Sie in den Anweisungen im Abschnitt „Schritt 3: Konfigurieren von Direkte Speicherplätze“ von [Hyperkonvergente Lösung mit Direkte Speicherplätze in Windows Server 2016](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct).
 
-
-## <a name="validate-the-cluster"></a>Überprüfen des Clusters
-
-Führen Sie die Validierung für den Cluster auf der Benutzeroberfläche oder mit PowerShell durch.
-
-Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem der beiden virtuellen Computer folgendermaßen vor:
-
-1. Wählen Sie unter **Server-Manager** die Option **Tools** aus, und wählen Sie dann **Failovercluster-Manager** aus.
-1. Wählen Sie unter **Failovercluster-Manager** die Option **Aktion** aus, und wählen Sie dann **Konfiguration überprüfen** aus.
-1. Wählen Sie **Weiter** aus.
-1. Geben Sie unter **Server oder Cluster auswählen** die Namen der beiden virtuellen Computer ein.
-1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. 
-1. Wählen Sie **Weiter** aus.
-1. Wählen Sie unter **Testauswahl** alle Tests aus, ausgenommen **Speicher** (siehe folgende Abbildung):
-
-   ![Auswählen von Tests zur Überprüfung des Clusters](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
-
-1. Wählen Sie **Weiter** aus.
-1. Wählen Sie unter **Bestätigung** die Option **Weiter** aus.
-
-    Der **Konfigurationsüberprüfungs-Assistent** führt die Validierungstests aus.
-
-Führen Sie zum Validieren des Clusters mit PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus:
-
-   ```powershell
-   Test-Cluster –Node ("<node1>&quot;,&quot;<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
-   ```
-
-Erstellen Sie nach dem Validieren des Clusters den Failovercluster.
-
-
 ## <a name="create-failover-cluster"></a>Erstellen des Failoverclusters
 
 Für das Erstellen des Failoverclusters benötigen Sie Folgendes:
@@ -150,7 +119,37 @@ Weitere Informationen finden Sie unter [Failovercluster: Cluster Network Object]
 
 ## <a name="configure-quorum"></a>Konfigurieren des Quorums
 
-Konfigurieren Sie die Quorumlösung, die Ihren Geschäftsanforderungen am besten entspricht. Sie können einen [Datenträgerzeugen](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum), einen [Cloudzeugen](/windows-server/failover-clustering/deploy-cloud-witness) oder einen [Dateifreigabezeugen](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum) konfigurieren. Weitere Informationen finden Sie unter [Quorum mit SQL Server-VMs](hadr-cluster-best-practices.md#quorum). 
+Obwohl der Datenträgerzeuge die resilienteste Option für das Quorum ist, wird er für Failoverclusterinstanzen, die mit direkten Speicherplätzen konfiguriert sind, nicht unterstützt. Daher ist der Cloudzeuge die empfohlene Quorumlösung für eine derartige Clusterkonfiguration für SQL Server auf Azure-VMs. Konfigurieren Sie andernfalls einen Dateifreigabezeugen. 
+
+Wenn Sie im Cluster über eine gerade Anzahl von Stimmen verfügen, konfigurieren Sie die [Quorumlösung](hadr-cluster-quorum-configure-how-to.md), die Ihren Geschäftsanforderungen am besten entspricht. Weitere Informationen finden Sie unter [Quorum mit SQL Server-VMs](hadr-windows-server-failover-cluster-overview.md#quorum). 
+
+## <a name="validate-the-cluster"></a>Überprüfen des Clusters
+
+Führen Sie die Validierung für den Cluster auf der Benutzeroberfläche oder mit PowerShell durch.
+
+Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem der beiden virtuellen Computer folgendermaßen vor:
+
+1. Wählen Sie unter **Server-Manager** die Option **Tools** aus, und wählen Sie dann **Failovercluster-Manager** aus.
+1. Wählen Sie unter **Failovercluster-Manager** die Option **Aktion** aus, und wählen Sie dann **Konfiguration überprüfen** aus.
+1. Wählen Sie **Weiter** aus.
+1. Geben Sie unter **Server oder Cluster auswählen** die Namen der beiden virtuellen Computer ein.
+1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. 
+1. Wählen Sie **Weiter** aus.
+1. Wählen Sie unter **Testauswahl** alle Tests aus, ausgenommen **Speicher** (siehe folgende Abbildung):
+
+   ![Auswählen von Tests zur Überprüfung des Clusters](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
+
+1. Wählen Sie **Weiter** aus.
+1. Wählen Sie unter **Bestätigung** die Option **Weiter** aus.
+
+    Der **Konfigurationsüberprüfungs-Assistent** führt die Validierungstests aus.
+
+Führen Sie zum Validieren des Clusters mit PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus:
+
+   ```powershell
+   Test-Cluster –Node ("<node1>&quot;,&quot;<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
+   ```
+
 
 ## <a name="add-storage"></a>Hinzufügen von Speicher
 
@@ -237,15 +236,14 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurieren von Konnektivität 
 
-Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 CU2 (oder höher) und Windows Server 2016 (oder höher) stattdessen das Feature für [verteilte Netzwerknamen](failover-cluster-instance-distributed-network-name-dnn-configure.md) verwenden. 
-
-Weitere Informationen zu den Optionen für Clusterkonnektivität finden Sie unter [Weiterleiten von HADR-Verbindungen an SQL Server auf Azure-VMs](hadr-cluster-best-practices.md#connectivity). 
+Sie können einen VNet-Namen oder einen Namen für ein verteiltes Netzwerk für eine Failoverclusterinstanz konfigurieren. Machen Sie sich mit den [Unterschieden zwischen den beiden Optionen](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn) vertraut und stellen Sie dann entweder einen [Namen eines verteilten Netzwerks](failover-cluster-instance-distributed-network-name-dnn-configure.md) oder einen [Namen eines virtuellen Netzwerks](failover-cluster-instance-vnn-azure-load-balancer-configure.md) für Ihre Failoverclusterinstanz bereit.  
 
 ## <a name="limitations"></a>Einschränkungen
 
 - Virtuelle Azure-Computer unterstützen Microsoft Distributed Transaction Coordinator (MSDTC) auf Windows Server 2019 mit Speicher auf CSVs und einen [Standardlastenausgleich](../../../load-balancer/load-balancer-overview.md).
 - Datenträger, die als NTFS-formatierte Datenträger angefügt wurden, können nur dann mit „Direkte Speicherplätze“ verwendet werden, wenn die Option für die Datenträgerberechtigung beim Hinzufügen von Speicher zum Cluster deaktiviert ist oder wird. 
 - Nur die Registrierung mit der SQL-IaaS-Agent-Erweiterung im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) wird unterstützt.
+- Failoverclusterinstanzen, die direkte Speicherplätze als freigegebenen Speicher verwenden, unterstützen die Verwendung eines Datenträgerzeugen für das Quorum des Clusters nicht. Verwenden Sie stattdessen einen Cloudzeugen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -253,8 +251,9 @@ Wenn dies noch nicht geschehen ist, konfigurieren Sie die Konnektivität mit Ihr
 
 Wenn „Direkte Speicherplätze“ nicht die richtige FCI-Speicherlösung für Sie ist, können Sie Ihre FCI stattdessen mithilfe von [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) oder [Premium-Dateifreigaben](failover-cluster-instance-premium-file-share-manually-configure.md) erstellen. 
 
-Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md) und unter [Bewährte Methoden für die Clusterkonfiguration](hadr-cluster-best-practices.md). 
+Weitere Informationen finden Sie unter:
 
-Weitere Informationen finden Sie unter 
-- [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Failoverclusterinstanzen mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md)
+- [Übersicht über Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)

@@ -6,15 +6,15 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
+author: cawrites
+ms.author: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: 6aa6537cefb110662f9fbc535832d8c9423a6f68
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ec117b8f341546deb48510d9b27a43b731d03742
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136587"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970699"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>Migrationsleitfaden: MySQL zu Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Führen Sie die folgenden Schritte aus, um eine Bewertung zu erstellen:
 1. Öffnen Sie [SSMA für MySQL](https://www.microsoft.com/download/details.aspx?id=54257). 
 1. Wählen Sie **Datei** und dann **Neues Projekt** aus. 
 1. Geben Sie im Bereich **Neues Projekt** einen Namen und einen Speicherort für das Projekt ein, und wählen Sie dann in der Dropdown Liste **Migrieren zu** die Option **Azure SQL-Datenbank** aus. 
-1. Wählen Sie **OK** aus.
+1. Klicken Sie auf **OK**.
 
    ![Screenshot des Bereichs „Neues Projekt“ zur Eingabe des Namens, des Speicherorts und des Ziels für das Migrationsprojekt](./media/mysql-to-sql-database-guide/new-project.png)
 
@@ -151,7 +151,7 @@ Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
 1. **Führen Sie die Validierungstests aus**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 
-1. **Führen Sie Leistungstests aus**: Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
+1. **Ausführen von Leistungstests:** Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
 
 ### <a name="optimize"></a>Optimieren
 
@@ -166,6 +166,7 @@ Weitere Unterstützung bei der Durchführung dieses Migrationsszenarios finden S
 | Titel | BESCHREIBUNG |
 | --- | --- |
 | [Data Workload Assessment Model and Tool (Datenarbeitsauslastungs-Bewertungsmodell und -tool)](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Stellt für bestimmte Workloads Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch einen automatisierten und einheitlichen Entscheidungsprozess für die Zielplattform dabei helfen, Bewertungen von umfangreichen Datenbeständen zu beschleunigen. |
+|[MySQL zu SQL DB – Hilfsprogramm „Database Compare“](https://www.microsoft.com/download/details.aspx?id=103016)|Beim Hilfsprogramm „Database Compare“ handelt es sich um eine Windows-Konsolenanwendung, mit der Sie überprüfen können, ob die Daten sowohl auf der Quell- als auch auf der Zielplattform identisch sind. Sie können das Tool verwenden, um Daten auf Zeilen- oder Spaltenebene in allen ausgewählten Tabellen, Zeilen und Spalten effizient zu vergleichen.|
 
 Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
 

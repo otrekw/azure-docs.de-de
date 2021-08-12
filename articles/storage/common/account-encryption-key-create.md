@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 06/09/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4c86811ee72d2713fced6320a17d1ccde1866d99
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: cf646fe61e3fa00407cf2ff3f47f872167c00aa9
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769947"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903896"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel für Tabellen und Warteschlangen unterstützt
 
@@ -28,10 +28,23 @@ In diesem Artikel wird beschrieben, wie Sie ein Speicherkonto erstellen, das ein
 
 Zum Zeitpunkt der Erstellung des Speicherkontos müssen Sie ein neues Speicherkonto konfigurieren, um den Kontoverschlüsselungsschlüssel für Warteschlangen und Tabellen verwenden zu können. Der Gültigkeitsbereich des Verschlüsselungsschlüssels kann nicht mehr geändert werden, nachdem das Konto erstellt wurde.
 
-Das Speicherkonto muss vom Typ „Allgemein v2 (GPv2)“ sein. Sie können das Speicherkonto erstellen und für die Verwendung des Kontoverschlüsselungsschlüssels konfigurieren, indem Sie entweder Azure CLI oder eine Azure Resource Manager-Vorlage verwenden.
+Das Speicherkonto muss vom Typ „Allgemein v2 (GPv2)“ sein. Sie können das Speicherkonto erstellen und für die Verwendung des Kontoverschlüsselungsschlüssels konfigurieren, indem Sie das Azure-Portal, PowerShell, die Azure CLI oder eine Azure Resource Manager-Vorlage verwenden.
+
+Weitere Informationen zum Erstellen eines Speicherkontos finden Sie unter [Speicherkonto erstellen](storage-account-create.md).
 
 > [!NOTE]
 > Nur Queue Storage und Table Storage können optional so konfiguriert werden, dass Daten beim Erstellen des Speicherkontos mit dem Kontoverschlüsselungsschlüssel verschlüsselt werden. Blob Storage und Azure Files verwenden immer den Kontoverschlüsselungsschlüssel zum Verschlüsseln von Daten.
+
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Speicherkonto zu erstellen, das auf dem Kontoverschlüsselungsschlüssel basiert:
+
+1. Wählen Sie im Menü des linken Portals **Speicherkonten** aus, um eine Liste Ihrer Speicherkonten anzuzeigen.
+1. Klicken Sie auf der Seite **Speicherkonten** auf **Neu**.
+1. Füllen Sie die Felder auf der Registerkarte **Grundlagen** aus.
+1. Navigieren Sie auf der Registerkarte „Erweitert“ zum Abschnitt **Tabellen und Warteschlangen**, und wählen Sie **Unterstützung für kundenseitig verwaltete Schlüssel aktivieren** aus.
+
+    :::image type="content" source="media/account-encryption-key-create/enable-cmk-tables-queues.png" alt-text="Screenshot: Aktivieren von kundenseitig verwalteten Schlüsseln für Warteschlangen und Tabellen beim Erstellen eines neuen Kontos":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -115,15 +128,25 @@ Mit dem folgenden JSON-Beispiel wird ein Speicherkonto vom Typ „Universell v2
 
 ---
 
-Nachdem Sie ein Konto erstellt haben, dass den Kontoverschlüsselungsschlüssel verwendet, können Sie kundenseitig verwaltete Schlüssel konfigurieren, die in Azure Key Vault oder in Key Vault Managed Hardware Security Model (HSM) (Vorschau) gespeichert werden. Informationen zum Speichern von kundenseitig verwalteten Schlüsseln in einem Schlüsseltresor finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](customer-managed-keys-configure-key-vault.md). Informationen zum Speichern von kundenseitig verwalteten Schlüsseln in einem verwalteten HSM finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind](customer-managed-keys-configure-key-vault-hsm.md).
+Nachdem Sie ein Konto erstellt haben, das den Kontoverschlüsselungsschlüssel verwendet, können Sie kundenseitig verwaltete Schlüssel konfigurieren, die in Azure Key Vault oder in Key Vault Managed Hardware Security Model (HSM) gespeichert werden. Informationen zum Speichern von kundenseitig verwalteten Schlüsseln in einem Schlüsseltresor finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](customer-managed-keys-configure-key-vault.md). Informationen zum Speichern von kundenseitig verwalteten Schlüsseln in einem verwalteten HSM finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind](customer-managed-keys-configure-key-vault-hsm.md).
 
 ## <a name="verify-the-account-encryption-key"></a>Überprüfen des Kontoverschlüsselungsschlüssels
 
-Wenn Sie überprüfen möchten, ob ein Dienst in einem Speicherkonto den Kontoverschlüsselungsschlüssel verwendet, rufen Sie den Azure CLI-Befehl „[az storage account](/cli/azure/storage/account#az_storage_account_show)“ auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Suchen Sie in der Eigenschaft „Encryption“ bei jedem Dienst nach dem Feld `keyType`, und überprüfen Sie, ob dessen Wert auf `Account` festgelegt ist.
+Nachdem Sie das Konto erstellt haben, können Sie mithilfe des Azure-Portals, von PowerShell oder der Azure CLI überprüfen, ob das Speicherkonto einen dem Konto zugeordneten Verschlüsselungsschlüssel verwendet.
+
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+Um im Azure-Portal zu überprüfen, ob ein Dienst in einem Speicherkonto einen dem Konto zugeordneten Verschlüsselungsschlüssel verwendet, führen Sie die folgenden Schritte aus:
+
+1. Navigieren Sie im Azure-Portal zu Ihrem neuen Speicherkonto.
+1. Wählen Sie im Abschnitt **Sicherheit + Netzwerkbetrieb** die Option **Verschlüsselung** aus.
+1. Wenn das Speicherkonto für die Verwendung des Kontoverschlüsselungsschlüssels erstellt wurde, sehen Sie auf der Registerkarte **Verschlüsselung**, dass kundenseitig verwaltete Schlüssel für alle vier Azure Storage-Dienste aktiviert werden können: Blob, File, Table und Queue.
+
+    :::image type="content" source="media/account-encryption-key-create/verify-cmk-tables-queues.png" alt-text="Screenshot: Überprüfen, ob das Speicherkonto den Kontoverschlüsselungsschlüssel verwendet":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Wenn Sie überprüfen möchten, ob ein Dienst in einem Speicherkonto den Kontoverschlüsselungsschlüssel verwendet, rufen Sie den Befehl [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Überprüfen Sie, ob das Feld `KeyType` der einzelnen Dienste innerhalb der Eigenschaft `Encryption` auf `Account` festgelegt ist.
+Wenn Sie mit PowerShell überprüfen möchten, ob ein Dienst in einem Speicherkonto den Kontoverschlüsselungsschlüssel verwendet, rufen Sie den Befehl [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Überprüfen Sie, ob das Feld `KeyType` der einzelnen Dienste innerhalb der Eigenschaft `Encryption` auf `Account` festgelegt ist.
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -134,7 +157,7 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Wenn Sie überprüfen möchten, ob ein Dienst in einem Speicherkonto den Kontoverschlüsselungsschlüssel verwendet, rufen Sie den Befehl [az storage account show](/cli/azure/storage/account#az_storage_account_show) auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Suchen Sie in der Eigenschaft „Encryption“ bei jedem Dienst nach dem Feld `keyType`, und überprüfen Sie, ob dessen Wert auf `Account` festgelegt ist.
+Wenn Sie mit der Azure CLI überprüfen möchten, ob ein Dienst in einem Speicherkonto den Kontoverschlüsselungsschlüssel verwendet, rufen Sie den Befehl [az storage account show](/cli/azure/storage/account#az_storage_account_show) auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Suchen Sie in der Eigenschaft „Encryption“ bei jedem Dienst nach dem Feld `keyType`, und überprüfen Sie, ob dessen Wert auf `Account` festgelegt ist.
 
 ```azurecli
 az storage account show /
@@ -148,6 +171,8 @@ az storage account show /
 
 ---
 
+Nachdem Sie sichergestellt haben, dass das Speicherkonto einen dem Konto zugeordneten Verschlüsselungsschlüssel verwendet, können Sie kundenseitig verwaltete Schlüssel für das Konto aktivieren. Alle vier Azure Storage-Dienste (Blob, File, Table und Queue) verwenden dann den kundenseitig verwalteten Schlüssel für die Verschlüsselung.
+
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
 Für ein Speicherkonto, das erstellt wird, um einen Verschlüsselungsschlüssel zu verwenden, der dem Konto zugeordnet ist, werden die Tabellenspeicherkapazität und Transaktionen mit einer anderen Rate in Rechnung gestellt als bei einem Konto, das den dienstbezogenen Standardschlüssel verwendet. Weitere Informationen finden Sie unter [Preise für Azure Table Storage](https://azure.microsoft.com/pricing/details/storage/tables/).
@@ -156,4 +181,5 @@ Für ein Speicherkonto, das erstellt wird, um einen Verschlüsselungsschlüssel 
 
 - [Azure Storage encryption for data at rest (Azure Storage-Verschlüsselung für ruhende Daten)](storage-service-encryption.md)
 - [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](customer-managed-keys-overview.md)
-- [What is Azure Key Vault? (Was ist Azure Key Vault?)](../../key-vault/general/overview.md)
+- [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](customer-managed-keys-configure-key-vault.md)
+- [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind](customer-managed-keys-configure-key-vault-hsm.md)

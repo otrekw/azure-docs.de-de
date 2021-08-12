@@ -6,12 +6,12 @@ ms.author: philmea
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 2e8a503731cc8e3774b898241140ef1bfaa72619
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: cdf20d65347792af4136ea407dd58e563354301d
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591203"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729222"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Übersicht über Azure IoT-Geräte-SDKs
 
@@ -125,7 +125,7 @@ Azure IoT bietet auch Dienst-SDKs für die Erstellung lösungsseitiger Anwendun
 
 Mit den IoT Hub-Dienst-SDKs können Sie Anwendungen erstellen, die problemlos mit Ihrer IoT Hub-Instanz interagieren können, um Geräte und die Sicherheit zu verwalten. Diese SDKs können unter anderem zum Senden von Cloud-zu-Gerät-Nachrichten, zum Aufrufen direkter Methoden auf Ihren Geräten sowie zum Aktualisieren von Geräteeigenschaften verwendet werden.
 
-[**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/) | [**Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Python)**](../iot-hub/quickstart-control-device-python.md)
+[**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/) | [**Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Python)**](../iot-hub/quickstart-control-device.md)
 
 **IoT Hub Service SDK für C#:** [GitHub-Repository](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) | [Paket](https://www.nuget.org/packages/Microsoft.Azure.Devices/) | [Beispiele](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service/samples) | [Referenzdokumentation](/dotnet/api/microsoft.azure.devices)
 

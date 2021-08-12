@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: disks
 ms.collection: linux
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 05/12/2021
 ms.author: cynthn
-ms.openlocfilehash: adf6198cf12011c77fcf3f93d4b595ea433ddefd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb207b5ece190a4398c7b9ef15472db409ac4d71
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580384"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087794"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
 
@@ -71,7 +71,7 @@ sdb     1:0:1:0      14G
 sdc     3:0:0:0      50G
 ```
 
-Hier ist `sdc` der gewünschte Datenträger, da seine Größe 50G beträgt. Wenn Sie aufgrund der Größe allein nicht sicher sind, welcher Datenträger der richtige ist, können Sie im Portal zur Seite für den virtuellen Computer navigieren, **Datenträger** auswählen und die LUN-Nummer für den Datenträger unter **Datenträger** überprüfen. 
+Hier ist `sdc` der gewünschte Datenträger, da seine Größe 50G beträgt. Wenn Sie mehrere Datenträger hinzufügen und nur basierend auf der Größe nicht sicher sind, um welchen Datenträger es sich handelt, können Sie im Portal zur VM-Seite navigieren, dort auf **Datenträger** klicken und die LUN für den Datenträger unter **Datenträger** überprüfen. Vergleichen Sie die LUN aus dem Portal mit der letzten Nummer des **HTCL**-Teils der Ausgabe, bei dem es sich um die LUN handelt.
 
 
 ### <a name="format-the-disk"></a>Formatieren des Datenträgers
@@ -151,16 +151,18 @@ In diesem Beispiel wird der Nano-Editor verwendet. Daher verwenden Sie nach dem 
 > Die serielle Konsole für Azure-VMs kann für den Konsolenzugriff auf Ihren virtuellen Computer verwendet werden, wenn die Änderung von „fstab“ zu einem Systemstartfehler geführt hat. Weitere Informationen finden Sie in der Dokumentation [Serielle Konsole für virtuelle Computer für Linux](/troubleshoot/azure/virtual-machines/serial-console-linux).
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP-Unterstützung für Linux in Azure
+
 Einige Linux-Kernels unterstützen TRIM/UNMAP-Vorgänge, um ungenutzte Blöcke auf dem Datenträger zu verwerfen. Dies ist in erster Linie für Standardspeicher nützlich, um Azure darüber zu informieren, dass gelöschte Seiten nicht mehr gültig sind und verworfen werden können. Dies kann auch Kosten sparen, wenn Sie große Dateien erstellen und sie dann löschen.
 
 Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer zu aktivieren. Den empfohlenen Ansatz finden Sie wie üblich in Ihrer Distribution:
 
-* Verwenden Sie die Bereitstellungsoption `discard` in */etc/fstab*, z.B.:
+- Verwenden Sie die Bereitstellungsoption `discard` in */etc/fstab*, z.B.:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,discard   1   2
     ```
-* In einigen Fällen kann sich die Option `discard` möglicherweise auf die Leistung auswirken. Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder ihn „crontab“ hinzufügen, um eine regelmäßige Ausführung zu erzielen:
+
+- In einigen Fällen kann sich die Option `discard` möglicherweise auf die Leistung auswirken. Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder ihn „crontab“ hinzufügen, um eine regelmäßige Ausführung zu erzielen:
 
     **Ubuntu**
 

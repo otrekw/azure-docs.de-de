@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: ca4fe1410c18357a1fab10cc9c971cf3a81542fd
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: f696a6b071d353c98e87387d5640e35ff579460e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963256"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477808"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Abfragebeschleunigung – SQL-Sprachreferenz
 
@@ -38,6 +38,11 @@ Im folgenden Beispiel gibt die Anweisung für jede Zeile, für die der WHERE-Aus
 ```sql
 SELECT expression [, expression …] FROM table [WHERE expression] [LIMIT limit]
 ```
+
+Sie können eine oder mehrere bestimmte Spalten als Teil des SELECT-Ausdrucks angeben (z. B. `SELECT Title, Author, ISBN`). 
+
+> [!NOTE]
+> Maximal können Sie im SELECT-Ausdruck 49 bestimmte Spalten verwenden. Wenn Ihre SELECT-Anweisung mehr als 49 Spalten zurückgeben muss, verwenden Sie für den SELECT-Ausdruck ein Platzhalterzeichen (`*`) (Beispiel: `SELECT *`). 
 
 Im folgenden Beispiel wird eine aggregierte Berechnung (z. B. der Durchschnittswert einer bestimmten Spalte) für jede Zeile zurückgegeben, für die *expression* „true“ zurückgibt. 
 
@@ -235,12 +240,12 @@ Eine SELECT-Anweisung kann entweder einen oder mehrere Projektionsausdrücke ode
 
 |Ausdruck|BESCHREIBUNG|
 |--|--|
-|[COUNT(\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |Gibt die Anzahl der Datensätze zurück, die mit dem Prädikatausdruck übereinstimmen.|
-|[COUNT(Ausdruck)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |Gibt die Anzahl der Datensätze zurück, für die der Ausdruck ungleich NULL ist.|
-|[AVERAGE(Ausdruck)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql)    |Gibt den Durchschnitt der Werte des Ausdrucks zurück, die ungleich NULL sind.|
-|[MIN(Ausdruck)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql)    |Gibt den kleinsten Wert des Ausdrucks zurück, der ungleich NULL ist.|
-|[MAX(Ausdruck](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql)    |Gibt den größten Wert des Ausdrucks zurück, der ungleich NULL ist.|
-|[SUM(Ausdruck)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql)    |Gibt die Summe aller Werte des Ausdrucks zurück, die ungleich NULL sind.|
+|[COUNT(\*)](/sql/t-sql/functions/count-transact-sql)    |Gibt die Anzahl der Datensätze zurück, die mit dem Prädikatausdruck übereinstimmen.|
+|[COUNT(Ausdruck)](/sql/t-sql/functions/count-transact-sql)    |Gibt die Anzahl der Datensätze zurück, für die der Ausdruck ungleich NULL ist.|
+|[AVERAGE(Ausdruck)](/sql/t-sql/functions/avg-transact-sql)    |Gibt den Durchschnitt der Werte des Ausdrucks zurück, die ungleich NULL sind.|
+|[MIN(Ausdruck)](/sql/t-sql/functions/min-transact-sql)    |Gibt den kleinsten Wert des Ausdrucks zurück, der ungleich NULL ist.|
+|[MAX(Ausdruck](/sql/t-sql/functions/max-transact-sql)    |Gibt den größten Wert des Ausdrucks zurück, der ungleich NULL ist.|
+|[SUM(Ausdruck)](/sql/t-sql/functions/sum-transact-sql)    |Gibt die Summe aller Werte des Ausdrucks zurück, die ungleich NULL sind.|
 
 ### <a name="missing"></a>MISSING
 

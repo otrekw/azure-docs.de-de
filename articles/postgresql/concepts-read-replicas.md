@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: 62ef47e7d8f98241009c1c1f3d8c111113be432c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/29/2021
+ms.openlocfilehash: 635a90b70c044e1f8c49518c42b49c521dbb317e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99220767"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110781886"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Lesereplikate in Azure Database for PostgreSQL – Einzelserver
 
@@ -34,7 +34,10 @@ Das Feature ist für Szenarien vorgesehen, in denen die Verzögerung akzeptabel 
 > [!NOTE]
 > Bei den meisten Workloads bieten Lesereplikate Updates vom primären Server nahezu in Echtzeit. Bei persistenten, sehr schreibintensiven primären Workloads kann die Verzögerung der Replikation jedoch immer weiter anwachsen, bis der Stand des primären Servers möglicherweise gar nicht mehr erreicht werden kann. Damit kann auch die Speicherauslastung auf dem primären Server ansteigen, da die WAL-Dateien erst gelöscht werden, wenn sie im Replikat empfangen wurden. Wenn diese Situation andauert, können Sie das Replikat durch das Löschen und erneute Erstellen des Lesereplikats nach Abschluss der schreibintensiven Workloads wieder in einen Zustand mit akzeptabler Verzögerung versetzen.
 > Asynchrone Lesereplikate eignen sich nicht für solche schreibintensiven Workloads. Wenn Sie Lesereplikate für Ihre Anwendung auswerten, überwachen Sie die Verzögerung im Replikat über einen vollständigen Workloadzyklus der App. Bewerten Sie dann anhand der Zeiten mit und ohne Spitzenwerte die mögliche Verzögerung und die erwartete RTO/RPO zu den einzelnen Zeitpunkten im Workloadzyklus.
-> 
+
+> [!NOTE]
+> Automatische Sicherungen werden für Replikatserver ausgeführt, die mit einer Speicherkonfiguration von bis zu 4 TB konfiguriert sind.
+
 ## <a name="cross-region-replication"></a>Regionsübergreifende Replikation
 Sie können über Ihren primären Server ein Lesereplikat in einer anderen Region erstellen. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
 

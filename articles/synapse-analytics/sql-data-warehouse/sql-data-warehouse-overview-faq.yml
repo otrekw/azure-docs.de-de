@@ -1,0 +1,113 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zum dedizierten SQL-Pool (früher SQL DW)
+  description: Dieser Artikel enthält häufig gestellte Fragen von Kunden und Entwicklern zum dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics.
+  services: synapse-analytics
+  author: mlee3gsd
+  manager: craigg
+  ms.service: synapse-analytics
+  ms.topic: conceptual
+  ms.subservice: sql-dw
+  ms.date: 11/04/2019
+  ms.author: martinle
+  ms.reviewer: igorstan
+  ms.openlocfilehash: 1038f368dba1beae7efa5982021f49976f4053f1
+  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/17/2021
+  ms.locfileid: "112306006"
+title: Häufig gestellte Fragen zum dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics
+summary: ''
+sections:
+- name: Allgemein
+  questions:
+  - question: >
+      Was ist Azure Synapse?
+    answer: >
+      Azure Synapse ist ein Analysedienst, der Data Warehousing mit Big Data-Analysen vereint. Azure Synapse vereint diese beiden Ansätze in einer vereinheitlichten Oberfläche für die Erfassung, Aufbereitung, Verwaltung und Verarbeitung von Daten für BI- und ML-Anforderungen (maschinelles Lernen). Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
+  - question: >
+      Was ist mit Azure SQL Data Warehouse geschehen?
+    answer: >
+      Bei Azure Synapse handelt es sich um ein weiterentwickeltes Azure SQL Data Warehouse. Wir haben dasselbe branchenführende Data Warehouse auf ein ganz neues Leistungs-und Funktionsniveau gebracht. Sie können Ihre vorhandenen Data Warehouse Workloads in einer Produktionsumgebung mit einem dedizierten SQL-Pool (früher SQL DW) in Azure Synapse weiterhin ausführen. Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
+  - question: >
+      Was ist ein dedizierter SQL-Pool (früher SQL DW) in Azure Synapse Analytics?
+    answer: >
+      Ein dedizierter SQL-Pool (früher SQL DW) bezieht sich auf die Data Warehousing-Features für Unternehmen, die in Azure Synapse allgemein zur Verfügung stehen. Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
+  - question: >
+      Wie beginne ich mit der Nutzung von Azure Synapse?
+    answer: >
+      Sie können mit einem [kostenlosen Azure-Konto](https://azure.microsoft.com/free/sql-data-warehouse/) beginnen oder [den Vertrieb kontaktieren, um weitere Informationen zu erhalten](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html).
+  - question: >
+      Was bietet Azure Synapse für die Datensicherheit?
+    answer: >
+      Azure Synapse bietet verschiedene Lösungen für den Schutz von Daten, z.B. transparente Datenverschlüsselung (Transparent Data Encryption, TDE) und Überwachung. Weitere Informationen finden Sie unter [Sicherheit](sql-data-warehouse-overview-manage-security.md).
+  - question: >
+      Wo finde ich Informationen dazu, welche rechtlichen oder geschäftsspezifischen Standards Azure Synapse erfüllt?
+    answer: >
+      Auf der Seite [Microsoft-Compliance](https://www.microsoft.com/trustcenter/compliance/complianceofferings) finden Sie verschiedene nach Produkt sortierte Compliance-Angebote (beispielsweise für SOC und ISO). Wählen Sie zunächst einen Compliancetitel aus. Erweitern Sie anschließend rechts auf der Seite im Abschnitt mit den konformen Microsoft-Clouddiensten den Knoten „Azure“, um die richtlinienkonformen Azure Synapse-Dienste anzuzeigen.
+  - question: >
+      Kann ich eine Verbindung mit Power BI herstellen?
+    answer: >
+      Ja. Power BI unterstützt zwar direkte Abfragen mit Azure Synapse, ist für eine große Anzahl von Benutzern oder eine große Menge von Echtzeitdaten aber nicht vorgesehen. Um die Leistung von Power BI weiter zu steigern, wird die Nutzung von Power BI zusätzlich zu Azure Analysis Services oder Analysis Service IaaS empfohlen.
+  - question: >
+      Was sind die Kapazitätsgrenzen bei einem dedizierten SQL-Pool (früher SQL DW)?
+    answer: >
+      Informationen finden Sie auf der Seite mit den [Kapazitätsgrenzen](sql-data-warehouse-service-capacity-limits.md).
+  - question: >
+      Warum erfordert Skalieren/Anhalten/Fortsetzen so viel Zeit?
+    answer: >
+      Die Dauer der Computeverwaltungsvorgänge wird durch verschiedene Faktoren beeinflusst. Ein zeitintensiver Vorgang ist beispielsweise das Transaktionsrollback. Wenn Skalierung oder Anhalten initiiert wird, werden alle eingehenden Sitzungen blockiert, und Abfragen werden ausgeglichen. Damit das System stabil bleibt, muss ein Rollback von Transaktionen erfolgen, bevor ein Vorgang beginnen kann. Je größer die Anzahl der Transaktionen und je größer ihre Protokollgröße, desto länger wird der Vorgang angehalten, um einen stabilen Zustand des Systems wiederherzustellen.
+- name: Unterstützung für Benutzer
+  questions:
+  - question: >
+      Ich habe einen Funktionswunsch. Wie kann ich diesen übermitteln?
+    answer: >
+      Wenn Sie einen Funktionswunsch haben, können Sie ihn über die Seite [UserVoice](https://feedback.azure.com/forums/307516-sql-data-warehouse) einsenden.
+  - question: >
+      Wo finde ich Informationen zu x?
+    answer: >
+      Wenn Sie Hilfe bei der Entwicklung mit Azure Synapse benötigen, können Sie auf unserer Seite [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw) Fragen stellen.
+  - question: >
+      Wie übermittle ich ein Supportticket?
+    answer: >
+      [Supporttickets](sql-data-warehouse-get-started-create-support-ticket.md) können über das Azure-Portal erstellt werden.
+- name: Unterstützung von SQL-Sprache/-Features
+  questions:
+  - question: >
+      Welche Datentypen werden unterstützt?
+    answer: >
+      Lesen Sie dazu [Datentypen](sql-data-warehouse-tables-data-types.md).
+  - question: >
+      Welche Tabellenfunktionen werden unterstützt?
+    answer: >
+      Zahlreiche Funktionen werden unterstützt. Nicht unterstützte Funktionen finden Sie unter [Nicht unterstützte Tabellenfunktionen](sql-data-warehouse-tables-data-types.md).
+- name: Tools und Verwaltung
+  questions:
+  - question: >
+      Unterstützt der dedizierte SQL-Pool (früher SQL DW) REST-APIs?
+    answer: >
+      Ja. Die meisten REST-Funktionen, die bei SQL-Datenbank verwendet werden können, stehen auch beim dedizierten SQL-Pool (früher SQL DW) zur Verfügung. API-Informationen finden Sie auf den REST-Dokumentationsseiten oder in den entsprechenden [Datenbanken](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+- name: Laden
+  questions:
+  - question: >
+      Welche Clienttreiber werden unterstützt?
+    answer: >
+      Informationen zur Treiberunterstützung beim dedizierten SQL-Pool (früher SQL DW) finden Sie auf der Seite [Verbindungszeichenfolgen](sql-data-warehouse-connection-strings.md).
+  - question: >
+      Welche Dateiformate werden von PolyBase unterstützt?
+    answer: >
+      Orc, RC, Parquet und flacher, durch Trennzeichen getrennter Text
+  - question: >
+      Mit welchen Datenquellen kann ich mithilfe von PolyBase eine Verbindung herstellen?
+    answer: >
+      [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) und [Azure Storage Blobs](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+  - question: >
+      Ist ein Berechnungs-Pushdown möglich, wenn ich eine Verbindung mit Azure Storage Blobs oder ADLS herstelle?
+    answer: >
+      Nein. PolyBase interagiert nur mit den Speicherkomponenten.
+  - question: >
+      Kann ich eine Verbindung mit HDI herstellen?
+    answer: >
+      HDI kann entweder ADLS oder WASB als HDFS-Ebene verwenden. Wenn Sie eine der beiden Komponenten als HDFS-Ebene verwenden, können Sie diese Daten in einen dedizierten SQL-Pool (früher SQL DW) laden. Sie können jedoch keine Pushdown-Berechnung für die HDI-Instanz ausführen.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nWeitere Informationen zum dedizierten SQL-Pool (früher SQL DW) in Azure Synapse finden Sie auf unserer Seite [Übersicht](sql-data-warehouse-overview-what-is.md).\n"

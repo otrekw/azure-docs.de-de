@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 5f1421da10c4748dd78e4c6790568285fa646979
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d2e0dcb7d973a4e4b2b6f4438aab5f08187ae44b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047110"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953105"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor-Protokolle für Dienstanbieter
 
@@ -35,11 +35,11 @@ Bei dieser Architektur wird ein Arbeitsbereich in dem Mandanten des Kunden berei
 Es gibt zwei Möglichkeiten, wie Administratoren des Dienstanbieters Zugriff auf einen Log Analytics-Arbeitsbereich in einem Kundenmandanten erhalten:
 
 - Ein Kunde kann einzelne Benutzer des Dienstanbieters als [Azure Active Directory-Gastbenutzer (B2B)](../../active-directory/external-identities/what-is-b2b.md) hinzufügen. Die Administratoren des Dienstanbieters müssen sich im Azure-Portal im Verzeichnis jedes Kunden anmelden, um Zugriff auf diese Arbeitsbereiche zu erhalten. Dies macht es auch erforderlich, dass die Kunden den Zugriff für jeden Administrator des Dienstanbieters verwalten.
-- Für eine größere Skalierbarkeit und Flexibilität können Dienstanbieter die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) von [Azure Lighthouse](../../lighthouse/overview.md) verwenden, um auf den Mandanten des Kunden zuzugreifen. Bei dieser Methode sind die Administratoren des Dienstanbieters in einer Azure AD-Benutzergruppe im Mandanten des Dienstanbieters enthalten. Diese Gruppe erhält während des Onboardingprozesses für jeden Kunden Zugriff. Die Administratoren können dann über ihren Mandanten des Dienstanbieters auf die Arbeitsbereiche jedes Kunden zugreifen, statt sich jeweils beim Mandanten der einzelnen Kunden anmelden zu müssen. Wenn Sie auf diese Weise auf die Ressourcen der Log Analytics-Arbeitsbereiche Ihrer Kunden zugreifen, verringert sich der Arbeitsaufwand auf Kundenseite, und die Daten mehrerer Kunden, die über den gleichen Dienstanbieter verwaltet werden, lassen sich über Tools wie z. B. [Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md) einfacher erfassen und analysieren. Weitere Informationen finden Sie unter [Überwachen von Kundenressourcen in großem Umfang](../../lighthouse/how-to/monitor-at-scale.md).
+- Für eine größere Skalierbarkeit und Flexibilität können Dienstanbieter [Azure Lighthouse](../../lighthouse/overview.md) verwenden, um auf den Mandanten des Kunden zuzugreifen. Bei dieser Methode sind die Administratoren des Dienstanbieters in einer Azure AD-Benutzergruppe im Mandanten des Dienstanbieters enthalten. Diese Gruppe erhält während des Onboardingprozesses für jeden Kunden Zugriff. Die Administratoren können dann über ihren Mandanten des Dienstanbieters auf die Arbeitsbereiche jedes Kunden zugreifen, statt sich jeweils beim Mandanten der einzelnen Kunden anmelden zu müssen. Wenn Sie auf diese Weise auf die Ressourcen der Log Analytics-Arbeitsbereiche Ihrer Kunden zugreifen, verringert sich der Arbeitsaufwand auf Kundenseite, und die Daten mehrerer Kunden, die über den gleichen Dienstanbieter verwaltet werden, lassen sich über Tools wie z. B. [Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md) einfacher erfassen und analysieren. Weitere Informationen finden Sie unter [Überwachen von Kundenressourcen in großem Umfang](../../lighthouse/how-to/monitor-at-scale.md).
 
 Die verteilte Architektur bietet folgende Vorteile:
 
-* Der Kunde kann spezifische Berechtigungsebenen über die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) überprüfen oder den Zugriff auf die Protokolle über seine [rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) verwalten.
+* Der Kunde kann spezifische Berechtigungsebenen über die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/architecture.md) überprüfen oder den Zugriff auf die Protokolle über seine [rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) verwalten.
 * Protokolle können von Ressourcen jeder Art erfasst werden, nicht nur von agentbasierten VM-Daten. Beispielsweise Azure-Überwachungsprotokolle.
 * Jeder Kunde kann andere Einstellungen für seinen Arbeitsbereich verwenden, etwa hinsichtlich Vermerkdauer und Datenbegrenzung.
 * Isolation zwischen Kunden im Hinblick auf behördliche Bestimmungen und Compliance.
@@ -88,4 +88,4 @@ Es bestehen zwei Optionen zum Implementieren von Protokollen an einem zentralen 
 
 * Generieren Sie Zusammenfassungsberichte mit [Power BI](../visualize/powerbi.md).
 
-* Führen Sie das Onboarding von Kunden für die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) durch.
+* Führen Sie das Onboarding von Kunden für die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/architecture.md) durch.

@@ -8,25 +8,29 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67e77c2dd08386279beeb06ff9081fa2669afa73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2913665d2cc834bd3b88f23ce81b46ca7a7dfbbe
+ms.sourcegitcommit: 5c136a01bddfccb2cc9f7e7e7741e2cf2651ddbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102487833"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111352748"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Zuweisen von benutzerdefinierten Administratorrollen mithilfe von Microsoft Graph-API in Azure Active Directory 
 
 Mithilfe von Microsoft Graph-API können Sie automatisieren, wie Benutzerkonten Rollen zugewiesen werden sollen. In diesem Artikel werden POST-, GET- und DELETE-Vorgänge für Rollenzuweisungen (roleAssignments) behandelt.
 
-## <a name="required-permissions"></a>Erforderliche Berechtigungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie über ein Konto eines globalen Administrators oder Administrators für privilegierte Rollen eine Verbindung mit Ihrer Azure AD-Organisation her, um Rollen zuzuweisen oder zu entfernen.
+- Eine Lizenz vom Typ Azure AD Premium P1 oder P2
+- „Administrator für privilegierte Rollen“ oder „Globaler Administrator“
+- Administratorzustimmung bei Verwendung von Graph-Tester für die Microsoft Graph-API
+
+Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
 
 ## <a name="post-operations-on-roleassignment"></a>POST-Vorgänge für RoleAssignment
 
@@ -305,5 +309,5 @@ Es wird verhindert, dass Benutzer die eigene Rolle als globaler Administrator l�
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Im [Forum für Azure AD-Administratorrollen](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) können Sie sich gerne mit uns in Verbindung setzen.
-* Weitere Informationen zu Rollen und zur Zuweisung von Administratorrollen finden Sie unter [Zuweisen von Administratorrollen](permissions-reference.md).
+* Weitere Informationen zu Rollenberechtigungen finden Sie unter [Integrierte Rollen in Azure AD](permissions-reference.md).
 * Informationen zu Standardbenutzerberechtigungen finden Sie unter [Vergleich von Standardbenutzerberechtigungen für Gäste und Mitglieder](../fundamentals/users-default-permissions.md).

@@ -9,14 +9,14 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 01/15/2020
+  ms.date: 06/29/2021
   ms.custom: e2e-hybrid
-  ms.openlocfilehash: 8a5db17d58a96f3669d824d78ba11061cf758e75
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 8f6766607d498e86ed12b67d8b118e67e6f69800
+  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110080594"
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113431904"
 landingContent:
 - title: Über Virtual WAN
   linkLists:
@@ -32,6 +32,10 @@ landingContent:
       url: virtual-wan-locations-partners.md
     - text: Häufig gestellte Fragen
       url: virtual-wan-faq.md
+  - linkListType: learn
+    links:
+    - text: Einführung in Azure Virtual WAN
+      url: /learn/modules/introduction-azure-virtual-wan/
   - linkListType: video
     links:
     - text: Remotebenutzerkonnektivität mit Azure Virtual WAN
@@ -96,13 +100,11 @@ landingContent:
       url: how-to-virtual-hub-routing.md
 - title: Überwachung
   linkLists:
-  - linkListType: concept
-    links:
-    - text: Überwachen mithilfe von Azure Monitor Insights
-      url: azure-monitor-insights.md
   - linkListType: how-to-guide
     links:
-    - text: Konfigurieren von Azure Monitor-Protokollen und -Metriken
+    - text: Überwachen von Virtual WAN mit Azure Monitor
+      url: monitor-virtual-wan.md
+    - text: Überwachen mithilfe von Azure Monitor Insights
       url: azure-monitor-insights.md
 - title: Verweis
   linkLists:

@@ -6,18 +6,20 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: rongzhang
-ms.openlocfilehash: d8ec04227316088983977f5b487abfa81fb5c525
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01b932cf33883f186f9f4ff69bc78869cdb4cb18
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101652401"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516576"
 ---
 # <a name="azure-api-management-diagnostics-overview"></a>Übersicht über Azure API Management Diagnostics
 
 Wenn Sie eine API in Azure API Management erstellen und verwalten, sollten Sie auf mögliche Probleme vorbereitet sein, vom Fehler „404: Nicht gefunden“ bis zum Fehler „Ungültiges Gateway – 502“. API Management Diagnostics ist eine intelligente und interaktive Komponente, mit der Sie Probleme bei der in APIM (API Management) veröffentlichten API beheben können, ohne dass eine Konfiguration erforderlich ist. Wenn bei den veröffentlichten APIs Probleme auftreten, zeigt API Management Diagnostics den Fehler auf und führt Sie zu den richtigen Informationen, damit Sie das Problem schnell lösen können.
 
 Diese Komponente ist besonders hilfreich, wenn innerhalb der letzten 24 Stunden Probleme bei der API aufgetreten sind, jedoch stehen Ihnen alle Diagnosediagramme jederzeit für die Analyse zur Verfügung.
+
+[!NOTE] Das Diagnostizieren und Lösen von Problemen wird für Verbrauchsebenen derzeit nicht unterstützt.
 
 ## <a name="open-api-management-diagnostics"></a>Öffnen von API Management Diagnostics
 

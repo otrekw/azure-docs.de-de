@@ -6,18 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/08/2021
+ms.date: 07/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 75e5737f8ad7b0f40e8480c17e150669220007ff
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: cafea36f45dcc063fadc1562428735ee0ac9fe20
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753685"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652818"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Verwenden des selbst verwalteten Versands für Azure Data Box im Azure-Portal
 
 In diesem Artikel werden die Aufgaben beim selbst verwalteten Versand (Bestellung, Abholung und Abgabe) eines Azure Data Box-Geräts beschrieben. Sie können das Data Box-Gerät über das Azure-Portal verwalten.
+
+> [!NOTE]
+> Antworten auf häufig gestellte Fragen zu Data Box-Bestellungen und -Lieferungen finden Sie unter [Häufig gestellte Fragen zu Data Box](data-box-faq.yml).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -68,8 +71,8 @@ Beim Aufgeben einer Data Box-Bestellung können Sie die Option für selbst verwa
    - Order name
    - Company name
    - Company legal name (if different) 
-   - Tax ID 
-   - Address 
+   - CNPJ (Business Tax ID, format: 00.000.000/0000-00) or CPF (Individual Tax ID, format: 000.000.000-00)
+   - Address
    - Country 
    - Phone number 
    - Contact name of the person who will pick up the Data Box Disk (A government-issued photo ID will be required to validate the contact’s identity upon arrival.)   
@@ -87,11 +90,11 @@ Beim Aufgeben einer Data Box-Bestellung können Sie die Option für selbst verwa
 
    Die Person, die das Gerät abholt, muss Folgendes mitbringen:
 
-   * Eine Kopie der E-Mail-Bestätigung für den Besuch des Rechenzentrums von Microsoft Operations
+   * Eine Kopie der E-Mail-Bestätigung für den Besuch des Rechenzentrums von Microsoft Operations.
 
    * Den Autorisierungscode. Die Referenznummer ist für eine Abholung oder Abgabe eindeutig und wird im Rechenzentrum überprüft.
 
-   * Einen amtlichen Lichtbildausweis. Die ID wird im Rechenzentrum überprüft. Der Name und die Details der Person, die das Gerät abholt, müssen beim Planen der Abholung angegeben werden.
+   * Einen amtlichen Lichtbildausweis. Die ID wird im Rechenzentrum überprüft, und der Name und die Details der Person, die das Gerät abholt, müssen beim Planen der Abholung angegeben werden.
 
    > [!NOTE]
    > Wenn ein geplanter Termin verpasst wird, müssen Sie einen neuen Termin vereinbaren.

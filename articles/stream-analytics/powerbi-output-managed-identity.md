@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: enkrumah
 ms.author: ebnkruma
 ms.topic: how-to
-ms.date: 3/10/2020
-ms.openlocfilehash: 7c1ddbbbd8198cf769e89cfa824de370184a992c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/30/2021
+ms.openlocfilehash: f0dfc7c77ce0eeedc6a85760627988e3eddc838e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589683"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784917"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI
 
@@ -209,6 +209,13 @@ Anforderungstext
     "principalType": "App"
 }
 ```
+
+### <a name="use-a-service-principal-to-grant-permission-for-an-asa-jobs-managed-identity"></a>Verwenden eines Dienstprinzipals zum Gewähren der Berechtigung für die verwaltete Identität eines ASA-Auftrags
+
+Bei automatisierten Bereitstellungen ist die Verwendung einer interaktiven Anmeldung, um einem ASA-Auftrag Zugriff auf einen Power BI-Arbeitsbereich zu gewähren, nicht möglich. Hierzu können Sie einen Dienstprinzipal verwenden, die Berechtigung für die verwaltete Identität eines ASA-Auftrags zu gewähren. Dies ist mithilfe von PowerShell möglich:
+
+Connect-PowerBIServiceAccount -ServicePrincipal -TenantId "<tenant-id>" -CertificateThumbprint "<thumbprint>" -ApplicationId "<app-id>" Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+
 
 ## <a name="remove-managed-identity"></a>Entfernen der verwalteten Identität
 

@@ -1,18 +1,18 @@
 ---
 title: 'Vorgehensweise: Starten Ihrer Spring Cloud-Anwendung aus dem Quellcode'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre Azure Spring Cloud-Anwendung direkt aus dem Quellcode starten.
-author: MikeDodaro
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/03/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 85df46ef761b51c1aac298b3e4616dede051a2a4
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: aca3e1231e2883bb077cb9fb8c2c353b607aa37e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119799"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114473574"
 ---
 # <a name="how-to-launch-your-spring-cloud-application-from-source-code"></a>Starten Ihrer Spring Cloud-Anwendung aus dem Quellcode
 

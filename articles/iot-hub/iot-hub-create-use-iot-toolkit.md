@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 668087ae596688e86b7b84a16bc5c0fd0f9fcef6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8d6bebffc46b0b158aeb975ae1e32a863b956d2
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75912243"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109655850"
 ---
 # <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Erstellen einer IoT Hub-Instanz mithilfe der Azure IoT-Tools für Visual Studio Code
 
@@ -28,17 +28,65 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-- [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) für Visual Studio Code.
+- [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) für Visual Studio Code
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
+
+## <a name="create-an-iot-hub-and-device-in-an-iot-project"></a>Erstellen einer IoT Hub-Instanz und eines Geräts in einem IoT-Projekt
+
+Die folgenden Schritte zeigen, wie Sie eine IoT Hub-Instanz erstellen und ein Gerät beim Hub in einem IoT-Projekt in Visual Studio Code registrieren.
+
+Anstatt Azure IoT Hub und das Gerät über das Azure-Portal bereitzustellen, können Sie dies auch in Visual Studio Code erledigen, ohne die Entwicklungsumgebung verlassen zu müssen. Führen Sie dazu die in diesem Abschnitt beschriebenen Schritte aus.
+
+1. Klicken Sie im neu geöffneten Projektfenster auf `F1`, um die Befehlspalette zu öffnen, geben Sie **Azure IoT Workbench: Provision Azure Services...** (Azure IoT Workbench: Azure-Dienste bereitstellen) ein, und wählen Sie den Eintrag aus. Befolgen Sie die Anleitung, um die Bereitstellung Ihrer Azure IoT Hub-Instanz abzuschließen und das IoT Hub-Gerät zu erstellen.
+
+    ![Bereitstellungsbefehl](media/iot-hub-create-use-iot-toolkit/provision.png)
+
+    > [!NOTE]
+    > Wenn Sie sich nicht bei Azure angemeldet sind. Befolgen Sie die Popupbenachrichtigung zur Anmeldung.
+
+1. Wählen Sie das Abonnement aus, das Sie verwenden möchten.
+
+    ![Abonnement auswählen](media/iot-hub-create-use-iot-toolkit/select-subscription.png)
+
+1. Wählen Sie dann eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue [Ressourcengruppe](../azure-resource-manager/management/overview.md#terminology).
+
+    ![Ressourcengruppe auswählen](media/iot-hub-create-use-iot-toolkit/select-resource-group.png)
+
+1. Folgen Sie in der von Ihnen angegebenen Ressourcengruppe den Eingabeaufforderungen, um eine vorhandene IoT Hub-Instanz auszuwählen oder eine neue Azure IoT Hub-Instanz zu erstellen.
+
+    ![IoT Hub-Schritte auswählen](media/iot-hub-create-use-iot-toolkit/iot-hub-provision.png)
+
+    ![IoT Hub auswählen](media/iot-hub-create-use-iot-toolkit/select-iot-hub.png)
+
+    ![Ausgewählter IoT Hub](media/iot-hub-create-use-iot-toolkit/iot-hub-selected.png)
+
+1. Im Ausgabefenster wird der bereitgestellte Azure IoT Hub angezeigt.
+
+    ![Bereitgestellter IoT Hub](media/iot-hub-create-use-iot-toolkit/iot-hub-provisioned.png)
+
+1. Wählen Sie ein IoT Hub-Gerät in der von Ihnen bereitgestellten Azure IoT Hub-Instanz aus, oder erstellen Sie ein neues.
+
+    ![IoT-Geräteschritte auswählen](media/iot-hub-create-use-iot-toolkit/iot-device-provision.png)
+
+    ![Bereitgestelltes IoT-Gerät auswählen](media/iot-hub-create-use-iot-toolkit/select-iot-device.png)
+
+1. Jetzt haben Sie Azure IoT Hub bereitgestellt und das Gerät darin erstellt. Außerdem wird die Geräteverbindungszeichenfolge in Visual Studio Code gespeichert.
+
+    ![Bereitstellung abgeschlossen](media/iot-hub-create-use-iot-toolkit/provision-done.png)
+
+
+
+## <a name="create-an-iot-hub-without-an-iot-project"></a>Erstellen einer IoT Hub-Instanz ohne IoT-Projekt
+
+In den folgenden Schritten wird gezeigt, wie Sie eine IoT Hub-Instanz ohne IoT-Projekt in Visual Studio Code erstellen.
 
 1. Öffnen Sie in Visual Studio Code die **Explorer**-Ansicht.
 
-2. Erweitern Sie im unteren Bereich des Explorers den Abschnitt **Azure IoT Hub Devices** (Azure IoT Hub-Geräte). 
+2. Erweitern Sie im unteren Bereich des Explorers den Abschnitt **Azure IoT Hub**. 
 
    ![Erweitern von „Azure IoT Hub Devices“ (Azure IoT Hub-Geräte)](./media/iot-hub-create-use-iot-toolkit/azure-iot-hub-devices.png)
 
-3. Klicken Sie auf **...** in der Überschrift des Abschnitts **Azure IoT Hub Devices** (Azure IoT Hub-Geräte). Wenn die Ellipse nicht angezeigt wird, zeigen Sie auf den Header. 
+3. Klicken Sie auf **...** in der Kopfzeile des Abschnitts **Azure IoT Hub**. Wenn die Ellipse nicht angezeigt wird, zeigen Sie auf den Header. 
 
 4. Klicken Sie auf **IoT Hub erstellen**.
 

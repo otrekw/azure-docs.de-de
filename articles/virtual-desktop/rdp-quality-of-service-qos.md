@@ -1,27 +1,27 @@
 ---
-title: Implementieren von Quality of Service (QoS) für Windows Virtual Desktop (Vorschau)
+title: Implementieren von Quality of Service (QoS) für Azure Virtual Desktop (Vorschau)
 titleSuffix: Azure
-description: Einrichten von QoS (Vorschau) für Windows Virtual Desktop.
+description: Einrichten von QoS (Vorschau) für Azure Virtual Desktop
 author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: b61faf74d96e2571e91f7bf9d10eac88cdbf8345
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c90811009a38db0874589dc828059277b9ae285c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94639099"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753034"
 ---
-# <a name="implement-quality-of-service-qos-for-windows-virtual-desktop-preview"></a>Implementieren von Quality of Service (QoS) für Windows Virtual Desktop (Vorschau)
+# <a name="implement-quality-of-service-qos-for-azure-virtual-desktop-preview"></a>Implementieren von Quality of Service (QoS) für Azure Virtual Desktop (Vorschau)
 
 > [!IMPORTANT]
-> Die Unterstützung der QoS-Richtlinie (Quality of Service) für Windows Virtual Desktop ist zurzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und nicht für Produktionsworkloads empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Die Unterstützung der QoS-Richtlinie (Quality of Service) für Azure Virtual Desktop ist zurzeit als öffentliche Vorschauversion verfügbar.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [RDP Shortpath](./shortpath.md) stellt einen direkten UDP-basierten Transport zwischen Remotedesktopclient und dem Sitzungshost bereit. RDP Shortpath ermöglicht die Konfiguration von QoS-Richtlinien (Quality of Service) für die RDP-Daten.
-QoS in Windows Virtual Desktop ermöglicht RDP-Datenverkehr in Echtzeit, der für Netzwerkverzögerungen empfindlich ist, sich vor dem Datenverkehr „vorzudrängeln“, der weniger empfindlich ist. Ein Beispiel für einen derartigen weniger empfindlichen Datenverkehr wäre das Herunterladen einer neuen App, wo eine zusätzliche Sekunde kein Thema ist. QoS verwendet Windows-Gruppenrichtlinienobjekte, um alle Pakete in Echtzeitdatenströmen zu identifizieren und zu markieren, und hilft Ihrem Netzwerk, RDP-Datenverkehr einen dedizierten Anteil an Bandbreite zur Verfügung zu stellen.
+QoS in Azure Virtual Desktop ermöglicht Echtzeit-RDP-Datenverkehr, der Netzwerkverzögerungen erkennt und sich so vor anderem Datenverkehr „vordrängeln“ kann, der weniger wichtig ist. Ein Beispiel für einen derartigen weniger empfindlichen Datenverkehr wäre das Herunterladen einer neuen App, wo eine zusätzliche Sekunde kein Thema ist. QoS verwendet Windows-Gruppenrichtlinienobjekte, um alle Pakete in Echtzeitdatenströmen zu identifizieren und zu markieren, und hilft Ihrem Netzwerk, RDP-Datenverkehr einen dedizierten Anteil an Bandbreite zur Verfügung zu stellen.
 
 Wenn Sie eine große Gruppe von Benutzern unterstützen, die eines der in diesem Artikel beschriebenen Probleme haben, müssen Sie wahrscheinlich QoS implementieren. Ein kleines Unternehmen mit wenigen Benutzern benötigt QoS möglicherweise nicht, aber es sollte auch dort hilfreich sein.
 
@@ -62,7 +62,7 @@ Beachten Sie beim Vorbereiten der QoS-Implementierung die folgenden Richtlinien:
 
 Wenn Sie eine QoS-Implementierung in Erwägung ziehen, sollten Sie die Bandbreitenanforderungen und andere [Netzwerkanforderungen](/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context) bereits festgelegt haben.
   
-Überlastung des Datenverkehrs über ein Netzwerk wirkt sich maßgeblich auf die Medienqualität aus. Ein Bandbreitenmangel führt zu Leistungseinbußen und einer schlechten Benutzererfahrung. Wenn die Übernahme und Nutzung von Windows Virtual Desktop zunimmt, verwenden Sie [Log Analytics](./diagnostics-log-analytics.md), um Probleme zu identifizieren und dann mithilfe von QoS und selektiven Bandbreitenergänzungen Anpassungen vorzunehmen.
+Überlastung des Datenverkehrs über ein Netzwerk wirkt sich maßgeblich auf die Medienqualität aus. Ein Bandbreitenmangel führt zu Leistungseinbußen und einer schlechten Benutzererfahrung. Bei zunehmender Nutzung von Azure Virtual Desktop verwenden Sie [Log Analytics](./diagnostics-log-analytics.md), um Probleme zu identifizieren und dann mithilfe von QoS und selektiven Bandbreitenerhöhungen Anpassungen vorzunehmen.
 
 ### <a name="vpn-considerations"></a>Überlegungen zu VPN
 
@@ -131,5 +131,5 @@ New-NetQosPolicy -Name "RDP Shortpath" -AppPathNameMatchCondition "svchost.exe" 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu den Bandbreitenanforderungen für Windows Virtual Desktop finden Sie unter [RDP-Bandbreitenanforderungen (Remotedesktopprotokoll)](rdp-bandwidth.md).
-* Weitere Informationen zur Netzwerkkonnektivität von Windows Virtual Desktop finden Sie unter [Grundlegendes zur Windows Virtual Desktop-Netzwerkkonnektivität](network-connectivity.md).
+* Informationen zu den Bandbreitenanforderungen für Azure Virtual Desktop finden Sie unter [Grundlegendes zu Bandbreitenanforderungen für das Remotedesktopprotokoll (RDP) in Azure Virtual Desktop](rdp-bandwidth.md).
+* Weitere Informationen zur Netzwerkkonnektivität von Azure Virtual Desktop finden Sie unter [Grundlegendes zur Azure Virtual Desktop-Netzwerkkonnektivität](network-connectivity.md).

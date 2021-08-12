@@ -1,0 +1,147 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure IoT Central – häufig gestellte Fragen | Microsoft-Dokumentation
+  description: Häufig gestellte Fragen (FAQ) zu Azure IoT Central und die zugehörigen Antworten
+  author: dominicbetts
+  ms.author: dobett
+  ms.date: 12/20/2020
+  ms.topic: how-to
+  ms.service: iot-central
+  services: iot-central
+  ms.openlocfilehash: 0d18679d8821a003d18c127af69487e97f68cfcf
+  ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 07/14/2021
+  ms.locfileid: "113798979"
+title: Häufig gestellte Fragen zu IoT Central
+summary: ''
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Wie kann ich Informationen zu meiner Anwendung erhalten?
+    answer: "Relevante Informationen:\n\n- Informationen für eine Kontaktaufnahme mit dem Support.\n- Das Azure-Abonnement, das Ihre Anwendung verwendet, um Abrechnungsinformationen im Azure-Portal zu finden.\n- Die ID der Anwendung, wenn Sie die REST-API verwenden.\n- Die Version der Anwendung zum Ausführen von Aufgaben wie dem Hinzufügen eines Connectors.\n\nSo rufen Sie Informationen zur IoT Central-Anwendung ab\n\n1. Klicken Sie im oberen Menü auf den Link **Hilfe**.\n\n1. Wählen Sie **Informationen zu Ihrer App** aus.\n\n1. Auf der Seite **Informationen zu Ihrer App** werden Informationen über Ihre Anwendung angezeigt:  \n\n    :::image type=\"content\" source=\"media/howto-faq/about-your-app2.png\" alt-text=\"Screenshot zu „Informationen zu Ihrer App“\":::\n\n    Mit der Schaltfläche **Info kopieren** kopieren Sie die Informationen in die Zwischenablage.\n"
+  - question: >
+      Wie viele IoT Central-Anwendungen kann ich unter meinem Abonnement bereitstellen?
+    answer: >
+      Für jedes Azure-Abonnement gelten Standardkontingente, die den Umfang Ihrer IoT-Lösung beeinträchtigen könnten. Derzeit ist die Anzahl der Anwendungen, die Sie in einem Abonnement bereitstellen können, in IoT Central auf 10 begrenzt. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/).
+  - question: >
+      Wie kann ich ein Gerät aus IoT Hub in IoT Central übertragen?
+    answer: >
+      Für ein Gerät kann eine direkte Verbindung mit einem IoT-Hub hergestellt werden, indem eine Verbindungszeichenfolge oder der Dienst für die Gerätebereitstellung ([Device Provisioning Service (DPS)](../../iot-dps/about-iot-dps.md)) verwendet wird. Bei IoT Central wird immer der DPS verwendet.
+
+
+      Aktualisieren Sie das Gerät mit den folgenden Angaben, wenn es mit IoT Hub verbunden war und nun mit IoT Central verbunden werden soll:
+
+
+      - Die Bereichs-ID der IoT Central-Anwendung
+
+      - Schlüssel, der vom SAS-Gruppenschlüssel oder X.509-Zertifikat der Anwendung abgeleitet wurde
+
+
+      Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](concepts-get-connected.md).
+
+
+      Für die Interaktion mit IoT Central muss eine Gerätevorlage vorhanden sein, die für die Modellierung der Gerätefunktionen verwendet werden kann. Weitere Informationen finden Sie unter [Was sind Gerätevorlagen?](concepts-device-templates.md).
+  - question: >
+      Wie überprüfe ich Probleme mit Anmeldeinformationen, wenn ein Gerät keine Verbindung mit meiner IoT Central-Anwendung herstellen kann?
+    answer: >
+      Das Thema [Behandeln von Problemen, durch die Daten von Ihren Geräten nicht in Azure IoT Central angezeigt werden](troubleshoot-connection.md) enthält Schritte zur Diagnose von Verbindungsproblemen bei Geräten.
+  - question: >
+      Wie beantrage ich ein Ticket beim Kundensupport?
+    answer: >
+      Wenn Sie Hilfe benötigen, können Sie ein [Azure-Supportticket](https://portal.azure.com/#create/Microsoft.Support) erstellen.
+
+
+      Weitere Informationen auch zu anderen Supportoptionen finden Sie unter [Support- und Hilfeoptionen für Azure IoT](../../iot-fundamentals/iot-support-help.md).
+  - question: >
+      Wie entsperre ich ein Gerät?
+    answer: >
+      Wenn ein Gerät blockiert wird, kann es keine Daten an Ihre IoT Central-Anwendung senden. Blockierte Geräte weisen auf der Seite **Geräte** in Ihrer Anwendung den Status **Blockiert** auf. Ein Operator muss das Gerät entsperren, damit es wieder Daten senden kann:
+
+
+      :::image type="content" source="media/howto-faq/blocked.png" alt-text="Screenshot eines blockierten Geräts":::
+
+
+      Wenn ein Operator die Blockierung eines Geräts aufhebt, wird der Status auf den vorherigen Wert (**Registriert** oder **Bereitgestellt**) zurückgesetzt.
+  - question: >
+      Wie kann ich die Umstellung vom Tarif „Free“ auf „Standard“ durchführen?
+    answer: >
+      - Anwendungen, die den kostenlosen Tarif nutzen, sind sieben Tage lang kostenlos und laufen dann ab. Zur Vermeidung von Datenverlusten können Sie sie jederzeit auf einen Standardtarif umstellen, bevor sie ablaufen.
+
+      - Anwendungen, die einen Standardtarif nutzen, werden pro Gerät abgerechnet. Dabei sind die ersten beiden Geräte pro Anwendung kostenlos.
+
+
+      Weitere Informationen zu den Preisen finden Sie unter [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/).
+
+
+      Im Preisabschnitt können Sie Ihre Anwendung vom Tarif „Free“ auf den Tarif „Standard“ umstellen.
+
+
+      Um diesen Self-Service-Prozess durchzuführen, gehen Sie folgendermaßen vor:
+
+
+      1. Wechseln Sie zur Seite **Preise** im Abschnitt **Verwaltung**.
+
+
+      1. Wählen Sie den **Plan** aus.
+
+          :::image type="content" source="media/howto-faq/free-trial-billing.png" alt-text="Status der Testversion":::
+
+      1. Wählen Sie die entsprechende Azure Active Directory-Instanz und dann das Azure-Abonnement aus, das für Ihre Anwendung mit kostenpflichtigem Tarif verwendet werden soll.
+
+
+      1. Nach dem Auswählen von **Speichern** wird Ihre Anwendung auf einen kostenpflichtigen Tarif umgestellt, und Ihnen werden die Kosten in Rechnung gestellt.
+
+
+      > [!Note]
+
+      > Standardmäßig werden Sie auf den Tarif *Standard 2* umgestellt.
+  - question: >
+      Wie kann ich den Tarif für meine Anwendung ändern?
+    answer: >
+      Anwendungen, die einen Standardtarif nutzen, werden pro Gerät abgerechnet. Dabei sind die ersten beiden Geräte pro Anwendung kostenlos.
+
+
+      Im Preisabschnitt können Sie jederzeit ein Upgrade oder Downgrade Ihres Azure IoT-Tarifs durchführen.
+
+
+      1. Wechseln Sie zur Seite **Preise** im Abschnitt **Verwaltung**.
+
+          :::image type="content" source="media/howto-faq/pricing.png" alt-text="Upgrade des Tarifs":::
+
+      1. Wählen Sie für das Upgrade oder Downgrade den **Tarif** und dann **Speichern** aus.
+  - question: >
+      Wie genehmige ich ein Gerät?
+    answer: >
+      Wenn auf der Seite **Geräte** der Gerätestatus **Warten auf Genehmigung** angezeigt wird, ist die Option **Automatisch genehmigen** deaktiviert:
+
+
+      :::image type="content" source="media/howto-faq/auto-approve.png" alt-text="Screenshot einer Anwendung mit deaktivierter Option „Automatisch genehmigen“":::
+
+
+      Ein Operator muss ein Gerät explizit genehmigen, bevor es mit dem Senden von Daten beginnt. Geräte, die auf der Seite **Geräte** nicht manuell registriert wurden, aber eine Verbindung mit gültigen Anmeldeinformationen hergestellt haben, weisen den Gerätestatus **Warten auf Genehmigung** auf. Diese Geräte können auf der Seite **Geräte** mithilfe der Schaltfläche **Genehmigen** von Operatoren genehmigt werden:
+
+
+      :::image type="content" source="media/howto-faq/approve-device.png" alt-text="Screenshot der Genehmigung eines Geräts":::
+  - question: >
+      Wie ordne ich einem Gerät eine Gerätevorlage zu?
+    answer: "Wenn der Gerätestatus **Nicht zugeordnet** lautet, ist den Geräten, die eine Verbindung mit IoT Central herstellen, keine Gerätevorlage zugeordnet. Diese Situation ist in den folgenden Szenarien typisch:\n\n- Eine Gruppe von Geräten wurde auf der Seite **Geräte** mithilfe der Option **Importieren** hinzugefügt, ohne die Gerätevorlage anzugeben.\n- Ein Geräte wurde auf der Seite **Geräte** manuell hinzugefügt, ohne die Gerätevorlage anzugeben. Das Gerät stellte dann eine Verbindung mit gültigen Anmeldeinformationen her.  \n\nDer Operator kann auf der Seite **Geräte** mithilfe der Schaltfläche **Migrieren** einem Gerät eine Gerätevorlage zuordnen. Weitere Informationen finden Sie unter [Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung > Migrieren von Geräten zu einer Vorlage](howto-manage-devices-individually.md).\n"
+  - question: >
+      Wo kann ich mehr über IoT Hub erfahren?
+    answer: >
+      Azure IoT Central verwendet Azure IoT Hub als Cloudgateway, das Gerätekonnektivität ermöglicht. IoT Hub ermöglicht Folgendes:
+
+
+      - Datenerfassung im großen Maßstab in der Cloud
+
+      - Geräteverwaltung
+
+      - Sichere Gerätekonnektivität
+
+
+      Weitere Informationen zu IoT Hub finden Sie unter [Dokumentation zu IoT Hub](../../iot-hub/index.yml).
+  - question: >
+      Wo kann ich mehr über den Device Provisioning Service (DPS) erfahren?
+    answer: Azure IoT Central verwendet DPS, um Geräten das Herstellen einer Verbindung mit Ihrer Anwendung zu ermöglichen. Weitere Informationen zur Rolle von DPS beim Verbinden von Geräten mit IoT Central finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](concepts-get-connected.md). Weitere Informationen zu DPS finden Sie unter [Bereitstellen von Geräten mit dem Azure IoT Hub Device Provisioning Service](../../iot-dps/about-iot-dps.md).

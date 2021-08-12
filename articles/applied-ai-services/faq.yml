@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.service: applied-ai-services
   ms.date: 05/28/2021
-  ms.openlocfilehash: e424501e4b5ce6f6731f093394a6536c332b3cbc
-  ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+  ms.openlocfilehash: fbb8d236f106e318ef0689d787e5f8401f8f6808
+  ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/02/2021
-  ms.locfileid: "111907323"
+  ms.lasthandoff: 07/02/2021
+  ms.locfileid: "113231048"
 title: Häufig gestellte Fragen zu Azure Applied AI Services
 summary: >
   Hier finden Sie Antworten auf häufig gestellte Fragen zur Verwendung von Azure Applied AI Services.
@@ -28,7 +28,7 @@ sections:
 
       - [Verschlüsselung für ruhende Daten der Formularerkennung](../cognitive-services/form-recognizer/encrypt-data-at-rest.md)
 
-      - [Verschlüsselung für ruhende Daten des Metrics Advisor-Diensts](../cognitive-services/metrics-advisor/encryption.md#customer-managed-keys-with-azure-key-vault)
+      - [Verschlüsselung für ruhende Daten des Metrics Advisor-Diensts](../cognitive-services/metrics-advisor/encryption.md)
 
       - [Video Analyzer Verschlüsselung ruhender Daten](../azure-video-analyzer/video-analyzer-docs/customer-managed-keys.md)
 additionalContent: >-

@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cdf4277c1177f0a963e7b7bb05813d47d2c1f57
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670699"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814332"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Verwenden des erweiterten Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Apache Spark-Anwendungen
 
@@ -44,7 +44,7 @@ Der Apache Spark-Verlaufsserver ist die Webbenutzeroberfläche für abgeschlosse
 
 ### <a name="open-the-spark-history-server-web-ui-from-data-node&quot;></a>Öffnen der Webbenutzeroberfläche des Spark-Verlaufsservers vom Datenknoten aus
 
-1. Wählen Sie in Ihrem Azure Synapse Studio-Notebook **Spark-Verlaufsserver** in der Ausgabezelle der Auftragsausführung oder im Statusbereich am unteren Rand des Notebook-Dokuments aus. Wählen Sie **Sitzungsdetails** aus.
+1. Wählen Sie in Ihrem Synapse Studio-Notebook **Spark-Verlaufsserver** in der Ausgabezelle der Auftragsausführung oder im Statusbereich am unteren Rand des Notebook-Dokuments aus. Wählen Sie **Sitzungsdetails** aus.
 
    ![Starten des Spark-Verlaufsservers 1](./media/apache-spark-history-server/launch-history-server2.png &quot;Starten des Spark-Verlaufsservers")
 

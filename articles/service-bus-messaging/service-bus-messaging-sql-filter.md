@@ -2,13 +2,13 @@
 title: SQL-Filtersyntax für Azure Service Bus-Abonnementregeln | Microsoft-Dokumentation
 description: Dieser Artikel enthält Details zur SQL-Filtersyntax. SQL-Filter unterstützen eine Teilmenge des SQL-92-Standards.
 ms.topic: article
-ms.date: 11/24/2020
-ms.openlocfilehash: 022f6cb1d698a10dc216db8d41c172691f7535ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/30/2021
+ms.openlocfilehash: 6b8190cf2a57b47fdce416fbe087fa8fa0485bda
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652940"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743235"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>SQL-Filtersyntax für Abonnementregeln
 
@@ -50,7 +50,10 @@ Service Bus Premium unterstützt auch die [JMS-SQL-Nachrichtenselektorsyntax](ht
   
 ## <a name="arguments"></a>Argumente  
   
--   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` und `user`. Der Wert `sys` gibt den Systembereich an, in dem `<property_name>` ein öffentlicher Eigenschafgenname der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. `user` gibt den Benutzerbereich an, in dem `<property_name>` ein Schlüssel des Wörterbuchs der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
+-   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` und `user`. 
+    - Der Wert `sys` gibt den Systembereich an, wobei es sich bei `<property_name>` um eine der Eigenschaften der Service Bus-Nachricht handelt, wie unter [Nachrichten, Nutzlasten und Serialisierung](service-bus-messages-payloads.md) beschrieben.
+    - Der Wert `user` gibt den Benutzerbereich an, wobei es sich bei `<property_name>` um einen Schlüssel der benutzerdefinierten Eigenschaften handelt, die Sie beim Senden der Nachricht an die Service Bus-Instanz festlegen können.
+    - Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
   
 ## <a name="remarks"></a>Bemerkungen
 
@@ -199,13 +202,13 @@ Die Funktion `property(name)` gibt den Wert der Eigenschaft zurück, auf die von
   
 ## <a name="considerations"></a>Überlegungen
   
-Beachten Sie die folgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)-Semantik:  
+Beachten Sie die folgende SQL-Filtersemantik:  
   
 -   Bei Eigenschaftennamen wird nicht zwischen Groß- und Kleinschreibung unterschieden.  
   
 -   Operatoren folgen, wann immer möglich, der C#-impliziten Konvertierungssemantik.  
   
--   Systemeigenschaften sind öffentliche Eigenschaften, die in [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)-Instanzen bereitgestellt werden.  
+-   Systemeigenschaften sind beliebige Eigenschaften der Service Bus-Nachricht, wie unter [Nachrichten, Nutzlasten und Serialisierung](service-bus-messages-payloads.md) beschrieben.
   
     Berücksichtigen Sie die folgende `IS [NOT] NULL`-Semantik:  
   
@@ -213,7 +216,7 @@ Beachten Sie die folgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging
   
 ### <a name="property-evaluation-semantics"></a>Semantik der Eigenschaftsauswertung  
   
-- Ein Versuch, eine nicht existierende Systemeigenschaft auszuwerten, löst eine [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception)-Ausnahme aus.  
+- Ein Versuch, eine nicht existierende Systemeigenschaft auszuwerten, löst eine `FilterException`-Ausnahme aus.  
   
 - Eine Eigenschaft, die nicht vorhanden ist, wird intern als **unknown** ausgewertet.  
   

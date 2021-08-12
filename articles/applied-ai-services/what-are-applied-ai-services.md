@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 05/04/2021
 ms.author: jeffme
-ms.openlocfilehash: b4c22f8b6825b2955ba7c50e2ef1ff5f3ee00464
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b4ec1ea076994622e4e687c3f6f4a4f3826ad385
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958179"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220449"
 ---
 # <a name="what-are-azure-applied-ai-services"></a>Was sind Azure Applied AI Services?
 
@@ -33,7 +33,7 @@ Weitere Informationen zur [Azure-Formularerkennung](../cognitive-services/form-r
 
 Schutz des Unternehmenswachstums durch die Möglichkeit, basierend auf Informationen aus Metriken von Unternehmen, Diensten und physischen Ressourcen, die richtige Entscheidung zu treffen.  Azure Metrics Advisor verwendet KI, um Datenüberwachung und Anomalieerkennung in Zeitreihendaten durchzuführen. Der Dienst automatisiert die Anwendung von Modellen auf Ihre Daten und bietet eine Reihe von APIs sowie einen webbasierten Arbeitsbereich für die Datenerfassung, Anomalieerkennung und Diagnose, die ganz ohne Maschinen-Lernkenntnisse verwendet werden können. Basierend auf diesem Dienst können Entwickler AIOps, Predictive Maintenance und Anwendungen zur Geschäftsüberwachung erstellen.  Azure Metrics Advisor wird mithilfe von Anomalieerkennung aus Azure Cognitive Services erstellt.
 
-[Weitere Informationen zu Azure Metrics Advisor](../cognitive-services/metrics-advisor/index.yml)
+[Weitere Informationen zu Azure Metrics Advisor](./metrics-advisor/index.yml)
 
 ## <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
