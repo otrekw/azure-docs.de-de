@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/05/2021
+ms.date: 05/14/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1c23f5ee8472b889929c513199a46022b6eaa3c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6e43e94b3d813df96befdc9bc2bf802a3da93bd5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776670"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083816"
 ---
 # <a name="how-to-download-logs-in-azure-active-directory"></a>Vorgehensweise: Herunterladen von Protokollen in Azure Active Directory
 
@@ -58,6 +58,8 @@ In diesem Artikel wird erläutert, wie Sie Aktivitätsprotokolle in Azure AD her
 ## <a name="what-license-do-you-need"></a>Welche Lizenz benötigen Sie?
 
 Die Option zum Herunterladen der Daten eines Aktivitätsprotokolls ist in allen Editionen von Azure AD verfügbar.
+
+Sie können Aktivitätsprotokolle auch mit Microsoft Graph herunterladen. Das grammatische Herunterladen von Protokollen erfordert jedoch eine Premium-Lizenz.
 
 
 ## <a name="who-can-do-it"></a>Wer kann es durchführen?

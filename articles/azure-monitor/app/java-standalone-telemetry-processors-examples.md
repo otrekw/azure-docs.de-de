@@ -6,17 +6,17 @@ ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 0978bd669855d264ed6dfa5eeddc45ad499aa2a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d704ed2213a77873780a005823f25541e6563d0
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734586"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895344"
 ---
 # <a name="telemetry-processor-examples---azure-monitor-application-insights-for-java"></a>Beispiele für Telemetrieprozessoren: Azure Monitor Application Insights für Java
 
 Dieser Artikel stellt Beispiele für Telemetrieprozessoren in Application Insights für Java bereit. Hier finden Sie Beispiele für Einschluss- und Ausschlusskonfigurationen. Sie finden auch Beispiele für attribute-Prozessoren und span-Prozessoren.
-## <a name="include-and-exclude-samples"></a>Beispiele für Ein- und Ausschlüsse
+## <a name="include-and-exclude-span-samples"></a>Beispiele für das Ein- und Ausschließen von span-Elementen
 
 In diesem Abschnitt erfahren Sie, wie Sie span-Elemente einschließen und ausschließen. Sie erfahren auch, wie Sie mehrere span-Elemente ausschließen und eine selektive Verarbeitung anwenden.
 ### <a name="include-spans"></a>Einschließen von span-Elementen
@@ -104,7 +104,7 @@ Dieses span-Element stimmt nicht mit den exclude-Eigenschaften überein, und die
 Dieser Abschnitt veranschaulicht, wie Sie span-Elemente für einen attribute-Prozessor ausschließen. span-Elemente, die mit den Eigenschaften übereinstimmen. werden vom Prozessor nicht verarbeitet.
 
 Um eine Übereinstimmung zu erzielen, müssen die folgenden Bedingungen erfüllt sein:
-* Im span-Element muss ein Attribut vorhanden sein (z. B. `env` oder `dev`).
+* Im span-Element muss ein Attribut vorhanden sein (z. B. `env` mit dem Wert `dev`).
 * Das span-Element muss über ein Attribut mit dem Schlüssel `test_request` verfügen.
 
 Die folgenden span-Elemente stimmen mit den exclude-Eigenschaften überein, und die Prozessoraktionen werden nicht angewendet:
@@ -202,11 +202,12 @@ Diese span-Elemente stimmen nicht mit den include-Eigenschaften überein, und di
   }
 }
 ```
+
 ## <a name="attribute-processor-samples"></a>Beispiele für attribute-Prozessoren
 
 ### <a name="insert"></a>Einfügen
 
-Das folgende Beispiel fügt das neue Attribut `{"attribute1": "attributeValue1"}` in span-Elemente ein, in denen der Schlüssel `attribute1` nicht vorhanden ist.
+Das folgende Beispiel fügt das neue Attribut `{"attribute1": "attributeValue1"}` in span-Elemente und Protokolle ein, in denen der Schlüssel `attribute1` nicht vorhanden ist.
 
 ```json
 {
@@ -230,7 +231,7 @@ Das folgende Beispiel fügt das neue Attribut `{"attribute1": "attributeValue1"}
 
 ### <a name="insert-from-another-key"></a>Einfügen von einem anderen Schlüssel
 
-Das folgende Beispiel verwendet den Wert aus dem Attribut `anotherkey`, um das neue Attribut `{"newKey": "<value from attribute anotherkey>"}` in span-Elemente einzufügen, in denen der Schlüssel `newKey` nicht vorhanden ist. Wenn das Attribut `anotherkey` nicht vorhanden ist, wird kein neues Attribut in die span-Elemente eingefügt.
+Das folgende Beispiel verwendet den Wert aus dem Attribut `anotherkey`, um das neue Attribut `{"newKey": "<value from attribute anotherkey>"}` in span-Elemente und Protokolle einzufügen, in denen der Schlüssel `newKey` nicht vorhanden ist. Wenn das Attribut `anotherkey` nicht vorhanden ist, wird kein neues Attribut in die span-Elemente eingefügt.
 
 ```json
 {
@@ -254,7 +255,7 @@ Das folgende Beispiel verwendet den Wert aus dem Attribut `anotherkey`, um das n
 
 ### <a name="update"></a>Aktualisieren
 
-Das folgende Beispiel aktualisiert das Attribut zu `{"db.secret": "redacted"}`. Das Attribut `boo` wird unter Verwendung des Werts aus dem Attribut `foo` aktualisiert. span-Elemente, die das Attribut `boo` nicht enthalten, werden nicht geändert.
+Das folgende Beispiel aktualisiert das Attribut zu `{"db.secret": "redacted"}`. Das Attribut `boo` wird unter Verwendung des Werts aus dem Attribut `foo` aktualisiert. Span-Elemente, die das Attribut `boo` nicht enthalten, werden nicht geändert.
 
 ```json
 {
@@ -477,6 +478,66 @@ Das folgende Beispiel zeigt, wie der Name eines span-Elements zu `{operation_web
             ]
           }
         }
+      }
+    ]
+  }
+}
+```
+
+
+## <a name="log-processor-samples"></a>Beispiele für Protokollprozessoren
+
+### <a name="extract-attributes-from-a-log-message-body"></a>Extrahieren von Attributen aus dem Nachrichtentext von Protokollen
+
+Angenommen, der eingegebene Protokollnachrichtentext lautet `Starting PetClinicApplication on WorkLaptop with PID 27984 (C:\randompath\target\classes started by userx in C:\randompath)`. Mit folgendem Beispiel wird der Nachrichtentext `Starting PetClinicApplication on WorkLaptop with PID {PIDVALUE} (C:\randompath\target\classes started by userx in C:\randompath)` ausgegeben. Dem Protokoll wird das neue Attribut `PIDVALUE=27984` hinzugefügt.
+
+```json
+{
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
+  "preview": {
+    "processors": [
+      {
+        "type": "log",
+        "body": {
+          "toAttributes": {
+            "rules": [
+              "^Starting PetClinicApplication on WorkLaptop with PID (?<PIDVALUE>\\d+) .*"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+### <a name="masking-sensitive-data-in-log-message"></a>Maskieren vertraulicher Daten in Protokollmeldungen
+
+Im folgenden Beispiel wird gezeigt, wie vertrauliche Daten in einem Protokollnachrichtentext mithilfe eines Protokollprozessors und eines Attributprozessors maskiert werden.
+Angenommen, der eingegebene Protokollnachrichtentext lautet `User account with userId 123456xx failed to login`. Der Protokollprozessor ändert den ausgegebenen Nachrichtentext zu `User account with userId {redactedUserId} failed to login`, und der Attributprozessor löscht das neue Attribut `redactedUserId`, das im vorherigen Schritt hinzugefügt wurde.
+```json
+{
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
+  "preview": {
+    "processors": [
+      {
+        "type": "log",
+        "body": {
+          "toAttributes": {
+            "rules": [
+              "^User account with userId (?<redactedUserId>\\d+) .*"
+            ]
+          }
+        }
+      },
+      {
+        "type": "attribute",
+        "actions": [
+          {
+            "key": "redactedUserId",
+            "action": "delete"
+          }
+        ]
       }
     ]
   }

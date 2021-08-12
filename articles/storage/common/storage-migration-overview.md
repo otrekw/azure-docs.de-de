@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 3e9baedafb436bc92f734bf39519918686cec58d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2e54eb0ea8166b32dd4bcc794bfcf401d9196884
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124471"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469243"
 ---
 # <a name="azure-storage-migration-overview"></a>Übersicht über die Azure Storage-Migration
 
@@ -37,7 +37,9 @@ Die Migration unstrukturierter Daten umfasst folgende Szenarien:
 
 Eine vollständige Migration besteht aus verschiedenen Phasen: Ermittlung, Bewertung und Migration.
 
-![Diagramm mit den Ermittlungs-, Bewertungs-und Migrationsphasen der Migration](./media/storage-migration-overview/migration-phases.png)
+| Ermittlung | Bewertung | Migration |
+| --------- | ---------- | --------- |
+| – Ermitteln der zu migrierenden Quellen | – Bewerten des anwendbaren Zieldiensts <br> – Technische Aspekte und Kostenaspekte | – Erste Migrationsphase <br> – Neusynchronisierung <br> – Endgültiger Wechsel |
 
 #### <a name="discovery-phase"></a>Ermittlungsphase
 

@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 04/28/2021
-ms.openlocfilehash: f37ef6f968542c1f8fc1ef2f328cd2a78c024852
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 813a49cbb2937da19dd0b71029cc172f632e7dab
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278140"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403767"
 ---
 Wenn Sie für *eingeschränkte Geräte* entwickeln, können Sie IoT Plug & Play zusammen mit Folgendem verwenden:
 
@@ -24,7 +24,7 @@ Viele der folgenden Beispiele erfordern ein bestimmtes Hardwaregerät, und die V
 
 ## <a name="use-the-sdk-for-embedded-c"></a>Verwenden des SDK for Embedded C
 
-Das SDK for Embedded C bietet eine schlanke Lösung zum Verbinden von eingeschränkten Geräten mit Azure IoT-Diensten, einschließlich der Verwendung der [IoT Plug & Play-Konventionen](../articles/iot-pnp/concepts-convention.md). Die folgenden Links führen zu Beispielen für MPU-basierte Geräte und für Schulungs- und Debugzwecke.
+Das SDK for Embedded C bietet eine schlanke Lösung zum Verbinden von eingeschränkten Geräten mit Azure IoT-Diensten, einschließlich der Verwendung der [IoT Plug & Play-Konventionen](../articles/iot-develop/concepts-convention.md). Die folgenden Links führen zu Beispielen für MPU-basierte Geräte und für Schulungs- und Debugzwecke.
 
 ### <a name="use-an-mcu-based-device"></a>Verwenden eines MPU-basierten Geräts
 

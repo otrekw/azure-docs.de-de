@@ -1,0 +1,56 @@
+### YamlMime:FAQ
+metadata:
+  title: Labs in Azure Lab Services – Häufig gestellte Fragen | Microsoft-Dokumentation
+  description: Dieser Artikel bietet Antworten auf häufig gestellte Fragen (FAQ) zu Labs in Azure Lab Services.
+  ms.topic: article
+  ms.date: 06/26/2020
+  ms.openlocfilehash: d246b686febbf4fe3d5a0c1101bf3676e1afd494
+  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/17/2021
+  ms.locfileid: "112305994"
+title: 'Labs in Azure Lab Services: Häufig gestellte Fragen (FAQ)'
+summary: Hier erhalten Sie Antworten auf einige der am häufigsten gestellten Fragen zu Labs in Azure Lab Services.
+sections:
+- name: Kontingente
+  questions:
+  - question: "Gilt das Kontingent pro Benutzer oder pro Woche oder für die gesamte Dauer des Labs? \n"
+    answer: >
+      Das Kontingent, das Sie für ein Lab festlegen, gilt für jeden Kursteilnehmer für die gesamte Dauer des Labs. Und die [geplante Ausführungszeit von virtuellen Computern](how-to-create-schedules.md) wird nicht mit dem Kontingent eines Benutzers verrechnet. Das Kontingent dient für die Zeiten außerhalb der Stunden im Zeitplan, die ein Kursteilnehmer mit VMs verbringt.  Weitere Informationen zu Kontingenten finden Sie unter [Festlegen von Kontingenten für Benutzer](how-to-configure-student-usage.md#set-quotas-for-users).
+  - question: "Wenn ein Lehrer/Dozent einen virtuellen Kursteilnehmercomputer einschaltet, wirkt sich dies auf das Kursteilnehmerkontingent aus? \n"
+    answer: "Nein. Tut es nicht. Wenn der Lehrer/Dozent den virtuellen Kursteilnehmercomputer einschaltet, wirkt sich dies nicht auf das dem Kursteilnehmer zugeteilte Kontingent aus. \n"
+- name: Zeitpläne
+  questions:
+  - question: "Werden alle VMs im Lab automatisch gestartet, wenn ein Zeitplan festgelegt wird? \n"
+    answer: "Nein. Nicht alle VMs. Nur die VMs, die Benutzern nach einem Zeitplan zugewiesen sind. Die VMs, die keinem Benutzer zugewiesen sind, werden nicht automatisch gestartet. Dies ist beabsichtigt. \n"
+- name: Labkonten
+  questions:
+  - question: "Warum kann ich wegen der Nichtverfügbarkeit des Adressbereichs kein Lab erstellen? \n"
+    answer: "Labs können Lab-VMs in einem IP-Adressbereich erstellen, den Sie beim Erstellen Ihres Labkontos im Azure-Portal angeben. Wenn ein Adressbereich angegeben ist, werden jedem Lab, das danach erstellt wird, 512 IP-Adressen für Lab-VMs zugewiesen. Der Adressbereich für das Labkonto muss groß genug sein, um alle Labs aufnehmen zu können, die Sie unter dem Labkonto erstellen möchten. \n\nWenn Sie beispielsweise den Block „/19 - 10.0.0.0/19“ verwenden, umfasst dieser Adressbereich 8192 IP-Adressen und 16 Labs (8192:512 = 16 Labs). In diesem Fall schlägt die Erstellung des 17. Labs fehl.\n"
+  - question: >
+      Welche Portbereiche sollte ich in der Firewalleinstellung meiner Organisation öffnen, um über RDP/SSH eine Verbindung mit virtuellen Labcomputern herzustellen?
+    answer: "Die Ports lauten: 49152–65535. Labs befinden sich hinter einem Lastenausgleichsmodul. Jedes Lab verfügt über eine einzige öffentliche IP-Adresse, und jeder virtuelle Computer im Lab verfügt über einen eindeutigen Port. \n\nSie können die private IP-Adresse jedes virtuellen Computers auf der Registerkarte **Virtueller Computerpool** der Startseite für das jeweilige Lab im Azure-Portal anzeigen. Wenn Sie ein Lab erneut veröffentlichen, ändert sich die öffentliche IP-Adresse des Labs nicht, aber die private IP-Adresse und die Portnummer aller einzelnen virtuellen Computer im Lab können sich ändern. Weitere Informationen finden Sie im folgenden Artikel: [Firewalleinstellungen für Azure Lab Services](how-to-configure-firewall-settings.md).\n"
+  - question: >
+      Welchen öffentlichen IP-Adressbereich sollte ich in der Firewalleinstellung meiner Organisation öffnen, um über RDP/SSH eine Verbindung mit virtuellen Labcomputern herzustellen?
+    answer: >
+      Weitere Informationen finden Sie unter [Azure-IP-Adressbereiche und Diensttags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Dort finden Sie den öffentlichen IP-Adressbereich für Rechenzentren in Azure. Sie können die IP-Adressen für die Regionen öffnen, in denen sich die Labkonten befinden.
+- name: VM-Images
+  questions:
+  - question: >
+      Warum kann ich als Lab-Ersteller bei der Erstellung eines neuen Labs keine zusätzlichen Imageoptionen in der Dropdownliste mit den virtuellen Computerimages aktivieren?
+    answer: >
+      Wenn ein Administrator Sie einem Labkonto als Lab-Ersteller hinzufügt, erhalten Sie die Berechtigungen zum Erstellen von Labs. Sie verfügen jedoch nicht über die Berechtigungen zum Bearbeiten jeglicher Einstellungen innerhalb des Labkontos, einschließlich der Liste der aktivierten Images virtueller Computer. Um zusätzliche Images zu aktivieren, wenden Sie sich an Ihren Labkontoadministrator, damit dieser dies für Sie erledigt, oder bitten Sie den Administrator, Sie mit der Rolle „Mitwirkender“ zum Labkonto hinzuzufügen. Die Rolle „Mitwirkender“ erteilt Ihnen die Berechtigungen zum Bearbeiten der Liste der Images für virtuelle Computer im Labkonto.
+  - question: >
+      Kann ich zusätzliche Datenträger an einen virtuellen Computer anfügen?
+    answer: "Nein. Es ist nicht möglich, zusätzliche Datenträger an einen virtuellen Computer in einem Classroom-Lab anzufügen. \n"
+- name: Benutzer
+  questions:
+  - question: >
+      Wie viele Benutzer können sich in einem Classroom-Lab befinden?
+    answer: "Sie können einem Classroom-Lab bis zu 400 Benutzer hinzufügen.\n\n## <a name=\"blog-post\"></a>Blogbeitrag\n\nAbonnieren Sie den [Azure Lab Services-Blog](https://aka.ms/azlabs-blog).\n\n## <a name=\"update-notifications\"></a>Updatebenachrichtigungen\n\nAbonnieren Sie [Lab Services-Updates](https://azure.microsoft.com/updates/?product=lab-services), um über neue Features in Labs Services auf dem Laufenden zu bleiben.          \n"
+- name: Allgemein
+  questions:
+  - question: >
+      Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
+    answer: "Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, damit wir Ihnen helfen können, eine Antwort zu finden.\n\n- Veröffentlichen Sie eine Frage am Ende dieses Artikels zu häufig gestellten Fragen. \n- Um eine größere Zielgruppe zu erreichen, veröffentlichen Sie eine Frage im [Tech Community-Forum zu Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices). \n- Um Funktionsanforderungen einzureichen, übermitteln Sie Ihre Anfragen und Ideen an die [UserVoice-Plattform für Azure Lab Services](https://feedback.azure.com/forums/320373-lab-services?category_id=352774)."

@@ -1,0 +1,162 @@
+### YamlMime:FAQ
+metadata:
+  title: FAQ zum Azure Import/Export-Dienst | Microsoft-Dokumentation
+  description: Lesen Sie Antworten auf häufig gestellte Fragen zum Azure Import/Export-Dienst.
+  author: alkohli
+  services: storage
+  ms.service: storage
+  ms.topic: conceptual
+  ms.date: 01/14/2021
+  ms.author: alkohli
+  ms.subservice: common
+  ms.openlocfilehash: 51af880897564851750dccd756601d86a1dab889
+  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/30/2021
+  ms.locfileid: "113094833"
+title: 'Azure Import/Export-Dienst: Häufig gestellte Fragen'
+summary: >
+  Es folgen Fragen, die Sie möglicherweise stellen, wenn Sie Ihren Azure Import/Export-Dienst zum Übertragen von Daten in Azure Storage verwenden, und die zugehörigen Antworten.
+sections:
+- name: Info zum Azure Import/Export-Dienst
+  questions:
+  - question: >
+      Kann ich den Azure Import/Export-Dienst verwenden, um in Azure File Storage zu kopieren?
+    answer: >
+      Ja. Der Azure Import/Export-Dienst unterstützt den Import in Azure File Storage. Derzeit wird der Export von Azure-Dateien nicht unterstützt.
+  - question: >
+      Ist der Azure Import/Export-Dienst für CSP-Abonnements verfügbar?
+    answer: >
+      Ja. Der Azure Import/Export-Dienst unterstützt Cloud Solution Provider-Abonnements (CSP).
+  - question: >
+      Kann ich den Azure Import/Export-Dienst zum Kopieren von PST-Postfächern und SharePoint-Daten in Microsoft 365 verwenden?
+    answer: >
+      Ja. Weitere Informationen finden Sie unter [Übersicht über das Importieren von PST-Dateien Ihrer Organisation](/microsoft-365/compliance/importing-pst-files-to-office-365).
+  - question: >
+      Kann ich den Azure Import/Export-Dienst zum Offlinekopieren meiner Sicherungen in den Azure Backup-Dienst verwenden?
+    answer: >
+      Ja. Weitere Informationen finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](../backup/backup-azure-backup-import-export.md).
+  - question: >
+      Kann ich bei Microsoft Laufwerke für Import-/Exportaufträge kaufen?
+    answer: >
+      Nein. Sie müssen sowohl für den Import als auch Export Ihre eigenen Laufwerke einsenden.
+- name: Vorbereiten der Datenträger für den Import/Export
+  questions:
+  - question: >
+      Kann ich für einen Importauftrag den Schritt der Laufwerkvorbereitung überspringen? Kann ich ein Laufwerk ohne Kopieren vorbereiten?
+    answer: >
+      Nein. Alle zum Importieren von Daten verwendeten Festplatten müssen mit dem Azure WAImportExport-Tool vorbereitet werden. Verwenden Sie das Tool auch, um Daten auf das Laufwerk zu kopieren.
+  - question: >
+      Muss ich den Datenträger beim Erstellen eines Exportauftrags vorbereiten?
+    answer: >
+      Nein. Einige Vorabüberprüfungen sollten Sie durchführen. Überprüfen Sie die Anzahl der erforderlichen Datenträger mithilfe des PreviewExport-Befehls aus dem WAImportExport-Tool. Weitere Informationen finden Sie unter [Vorschau der Laufwerknutzung für einen Exportauftrag](/previous-versions/azure/storage/common/storage-import-export-tool-previewing-drive-usage-export-v1). Sie können mit dem Befehl basierend auf der Größe der Laufwerke, die Sie verwenden möchten, eine Vorschau der Festplattenverwendung für ausgewählte Blobs anzeigen. Überprüfen Sie außerdem, ob Sie Lese-/Schreibzugriff auf die Festplatte haben, die für den Exportauftrag versendet werden soll.
+- name: Import-/Exportaufträge
+  questions:
+  - question: >
+      Kann ich meinen Auftrag stornieren?
+    answer: >
+      Ja. Sie können einen Auftrag stornieren, solange dieser den Status **Wird erstellt** oder **Wird versendet** hat. Nach diesen Phasen kann der Auftrag nicht abgebrochen werden und wird bis zur letzten Phase fortgesetzt.
+  - question: >
+      Wie lange kann ich den Status abgeschlossener Aufträge im Azure-Portal anzeigen?
+    answer: >
+      Den Status abgeschlossener Aufträge können Sie bis zu 90 Tage lang anzeigen. Abgeschlossene Aufträge werden nach 90 Tagen gelöscht.
+  - question: >
+      Was soll ich tun, wenn ich mehr als 10 Laufwerke importieren oder exportieren möchte?
+    answer: >
+      Jeder Import- oder Exportauftrag kann auf maximal 10 Laufwerke verweisen. Um mehr als zehn Laufwerke zu verschicken, sollten Sie mehrere Aufträge erstellen. Laufwerke, die demselben Auftrag zugeordnet sind, müssen zusammen in einem Paket verschickt werden.
+
+      Weitere Informationen und Anleitungen für den Fall, dass die Datenkapazität mehrere Datenträgerimportaufträge umfasst, erhalten Sie vom Microsoft-Support.
+  - question: >
+      Für das hochgeladenen Blob wird der Status „Eine Lease ist abgelaufen“ angezeigt. Wie sollte ich vorgehen?
+    answer: >
+      Sie können das Feld „Eine Lease ist abgelaufen“ ignorieren. Der Import/Export beansprucht das Blob während des Uploads für sich, damit kein anderer Prozess das Blob parallel updaten kann. Der Status „Eine Lease ist abgelaufen“ bedeutet, dass der Import/Export-Prozess nun nichts mehr hochlädt und Ihnen das Blob zur Verfügung steht.
+- name: Datenträgerversand
+  questions:
+  - question: >
+      Wie viele HDDs kann eine Lieferung maximal enthalten?
+    answer: >
+      Es gibt keine Beschränkung für die Anzahl der HDDs in einer Lieferung. Wenn die Datenträger zu mehreren Aufträgen gehören, sollten Sie auf Folgendes achten:
+
+
+      - Bezeichnen Sie die Datenträger mit entsprechenden Auftragsnamen.
+
+      - Aktualisieren Sie die Aufträge mit einer Nachverfolgungsnummer und dem Suffix „-1“, „-2“ usw.
+  - question: >
+      Sollte mein Paket noch andere Dinge als die Festplatte enthalten?
+    answer: >
+      Senden Sie nur die Festplatten im Versandpaket. Legen Sie keine Gegenstände wie z. B. Strom- oder USB-Kabel bei.
+  - question: >
+      Muss ich meine Festplatten mit FedEx oder DHL schicken?
+    answer: >
+      Sie können Festplatten mit allen gängigen Kurierdiensten wie FedEx, DHL, UPS oder US Postal Service an das Azure-Rechenzentrum schicken. Allerdings müssen Sie für die Rücksendung der Laufwerke vom Rechenzentrum an Sie Folgendes angeben:
+
+
+      - Eine FedEx-Kontonummer in den USA und Europa, oder
+
+      - eine DHL-Kontonummer in den Regionen Asien und Australien.
+
+
+      > [!NOTE]
+
+      > Die Rechenzentren in Indien verlangen im Briefkopf eine Zustellaufforderung zur Rücksendung der Laufwerke. Um den gewünschten Zutrittsausweis zu arrangieren, müssen Sie auch die Abholung bei Ihrem gewählten Spediteur buchen und die Details mit dem Rechenzentrum klären.
+  - question: >
+      Gelten für den internationalen Versand und die Rückgabe meines Datenträgers bestimmte Einschränkungen?
+    answer: >
+      Beachten Sie, dass die physischen Medien beim Versand unter Umständen Ländergrenzen überqueren. Sie müssen sicherstellen, dass Ihre physischen Medien und Daten gemäß geltender Gesetze importiert bzw. exportiert werden. Prüfen Sie vor dem Versand der physischen Medien mit Ihren Rechtsberatern, ob Medien und Daten laut Gesetz an das entsprechende Rechenzentrum verschickt werden dürfen. So stellen Sie sicher, dass Ihre Daten zeitnah bei Microsoft eintreffen.
+
+
+      Nach Abschluss des Uploads kann die Rückgabe von Datenträgern an internationale Adressen mehr Zeit als die üblichen 2-3 Tage für lokalen Versand beanspruchen. In der Phase, die im Azure-Portal als „Wird verpackt“ bezeichnet wird, stellt das Data Box-Team sicher, dass die entsprechende Dokumentation bereitgestellt wird, damit der Versand den verschiedenen internationalen Anforderungen für Import und Export entspricht.
+  - question: >
+      Gelten besondere Anforderungen an die Zustellung meiner Datenträger an ein Rechenzentrum?
+    answer: >
+      Die Anforderungen hängen von den jeweiligen für das Azure-Rechenzentrum geltenden Einschränkungen ab.
+
+
+      - Es gibt einige wenige Standorte, z. B. Australien, Deutschland und Vereinigtes Königreich, Süden, bei denen aus Sicherheitsgründen eine Eingangs-ID-Nummer des Microsoft-Rechenzentrums auf dem Paket vermerkt sein muss. Bevor Sie Ihre Laufwerke oder Datenträger an das Rechenzentrum senden, wenden Sie sich an Azure DataBox Operations (adbops@microsoft.com), um diese Nummer zu erhalten. Ohne diese Nummer wird die Annahme des Pakets verweigert.
+
+      - Die Rechenzentren in Indien benötigen die persönlichen Daten des Fahrers, wozu der Personalausweis oder die ID-Nachweisnummer (z. B. PAN, AADHAR, DL), der Name, der Kontakt und das Autokennzeichen gehören, um einen Zutrittsausweis zu erhalten. Um Verzögerungen bei der Zustellung zu vermeiden, informieren Sie Ihren Spediteur über diese Anforderungen.
+  - question: >
+      Beim Erstellen des Auftrags habe ich festgestellt, dass die Versandadresse ein Standort ist, der sich von meinem Speicherkontostandort unterscheidet. Wie sollte ich vorgehen?
+    answer: >
+      Einige Speicherkontostandorte sind alternativen Standorten für den Versand zugeordnet. Versandstandorte, die bisher verfügbar waren, können vorübergehend auch anderen Standorten zugeordnet werden. Überprüfen Sie immer die Versandadresse, die bei der Erstellung des Auftrags angegeben wurde, bevor Sie die Festplatten verschicken.
+  - question: >
+      Beim Versand der Festplatte fragt der Kurierdienst nach der Anschrift und der Telefonnummer des Rechenzentrums. Was muss ich hier angeben?
+    answer: >
+      Die Telefonnummer und die Adresse des Rechenzentrums werden beim Erstellen des Auftrags angegeben.
+- name: Sonstiges
+  questions:
+  - question: >
+      Was geschieht, wenn ich aus Versehen eine HDD verschicke, die den unterstützten Anforderungen nicht entspricht?
+    answer: >
+      Das Azure-Datacenter schickt das Laufwerk, das den unterstützten Anforderungen nicht entspricht, an Sie zurück. Wenn nur einige der Laufwerke in dem Paket die Anforderungen erfüllen, werden diese Laufwerke verarbeitet, und die Laufwerke, die die Anforderungen nicht erfüllen, werden an Sie zurückgeschickt.
+  - question: >
+      Werden die Festplatten vom Dienst formatiert, bevor sie zurückgeschickt werden?
+    answer: >
+      Nein. Alle Festplatten werden mit BitLocker verschlüsselt.
+  - question: >
+      Wie kann ich auf Daten zugreifen, die von diesem Dienst importiert werden?
+    answer: "Greifen Sie über das Azure-Portal oder [Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) auf die Daten unter Ihrem Azure-Speicherkonto zu.  \n"
+  - question: >
+      Wie sehen meine Daten nach Abschluss des Imports im Speicherkonto aus? Wird meine Verzeichnishierarchie beibehalten?
+    answer: >
+      Beim Vorbereiten einer Festplatte für einen Importauftrag wird das Ziel mit dem Feld „DstBlobPathOrPrefix“ in der Dataset-CSV-Datei angegeben. Dies ist der Zielcontainer im Speicherkonto, in den Daten von der Festplatte kopiert werden. In diesem Zielcontainer werden virtuelle Verzeichnisse für Ordner von der Festplatte und Blobs für Dateien erstellt.
+  - question: >
+      Wenn eine Festplatte Dateien enthält, die in meinem Speicherkonto bereits vorhanden sind, werden die entsprechenden Blobs oder Dateien dann vom Dienst überschrieben?
+    answer: >
+      Das ist unterschiedlich. Beim Vorbereiten der Festplatte können Sie angeben, ob die Zieldateien überschrieben oder ignoriert werden sollen. Hierfür verwenden Sie das Feld „Disposition:<rename|no-overwrite|overwrite>“ (umbenennen, nicht überschreiben, überschreiben) in der Dataset-CSV-Datei. In der Standardeinstellung benennt der Dienst die neuen Dateien um, anstatt vorhandene Blobs oder Dateien zu überschreiben.
+  - question: >
+      Ist das WAImportExport-Tool mit dem 32-Bit-Windows-Betriebssystem kompatibel?
+    answer: >
+      Nein. Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Eine vollständige Liste der unterstützten Betriebssysteme finden Sie unter [Unterstützte Betriebssysteme](./storage-import-export-requirements.md).
+  - question: >
+      Welche maximale Blockblob- und Seitenblobgröße wird von Azure Import/Export unterstützt?
+    answer: >
+      - Die maximale Blockblobgröße beträgt ungefähr 4,768 TB oder 5.000.000 MB.
+
+      - Die maximale Seitenblobgröße ist 8 TB.
+  - question: >
+      Unterstützt Azure Import/Export die AES-256-Verschlüsselung?
+    answer: >
+      Ja. Der Azure Import/Export-Dienst verwendet die AES-256-BitLocker-Verschlüsselung.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n* [Was ist Azure Import/Export?](storage-import-export-service.md)"

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-js
-ms.openlocfilehash: cb9e68efd27deb3bf66d3c286c0cd7a128d8bf59
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2e3af0068902735c4114893d859c04f6ca9f1829
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430580"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112914299"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Tutorial: Erstellen einer Single-Page-Web-App
 
@@ -431,4 +431,4 @@ Lassen Sie das Fenster während der Nutzung der Tutorial-App geöffnet. Wenn Sie
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Referenz zur Bing News-Suche-API](//docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)
+> [Referenz zur Bing News-Suche-API](/rest/api/cognitiveservices/bing-news-api-v7-reference)

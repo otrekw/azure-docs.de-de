@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 2d3c7026fd221b1a17b8efe56b03b2a26358c7ab
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 09fa626e77e20feff55f7b17807754ac1d2b873f
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364384"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111568844"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java-BulkExecutor-Bibliothek: Informationen zum Download
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -49,6 +49,26 @@ ms.locfileid: "107364384"
 |**Unterstützte Mindestlaufzeit**|[Java Development Kit (JDK) 7+](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>Versionshinweise
+### <a name="2123"></a><a name="2.12.3"></a>2.12.3
+
+* Korrektur der Wiederholungsrichtlinie, wenn `GoneException` von `IllegalStateException` umschlossen ist: Diese Änderung ist erforderlich, um sicherzustellen, dass der Gatewaycache auf 410 aktualisiert wird, damit der Spark-Connector (für Spark 2.4) eine benutzerdefinierte Wiederholungsrichtlinie verwenden kann, damit Abfragen während der Partitionsteilung erfolgreich sind.
+
+### <a name="2122"></a><a name="2.12.2"></a>2.12.2
+
+* Es wurde ein Problem behoben, das dazu führt, dass Dokumente bei vorübergehenden Fehlern nicht immer importiert werden.
+
+### <a name="2121"></a><a name="2.12.1"></a>2.12.1
+
+* Upgrade zur Verwendung der neuesten Version des Cosmos Core SDK.
+
+### <a name="2120"></a><a name="2.12.0"></a>2.12.0
+
+* Verbesserte Verarbeitung des RU-Budgets, das über den Spark-Connector für den Massenvorgang bereitgestellt wird. Ein erster einmaliger Massenimport wird vom Spark-Connector mit baseBatchSize durchgeführt, und der RU-Verbrauch für den obigen Batchimport wird erfasst.
+  Ein miniBatchSizeAdjustmentFactor wird basierend auf dem obigen RU-Verbrauch berechnet, und die Minibatchgröße wird entsprechend angepasst. Basierend auf der verstrichenen Zeit und der verbrauchten RU für jeden Batchimport wird eine Ruhezeit berechnet, um den RU-Verbrauch pro Sekunde zu begrenzen, und wird verwendet, um den Thread vor dem nächsten Batchimport anzuhalten.
+
+### <a name="2110"></a><a name="2.11.0"></a>2.11.0
+
+* Korrektur eines Fehlers, der Massenaktualisierungen verhindert, wenn ein geschachtelter Partitionsschlüssel verwendet wird
 
 ### <a name="2100"></a><a name="2.10.0"></a>2.10.0
 

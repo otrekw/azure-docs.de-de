@@ -11,12 +11,12 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: f7c5dbaf30965fdd5f438f0351cfa2cd60e05b70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 607f7921b62540d26b1354c21f3352f5b5b943f4
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92746565"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112376646"
 ---
 # <a name="secure-access-to-application-data"></a>Sicheres Zugreifen auf Anwendungsdaten
 
@@ -39,7 +39,19 @@ Damit Sie dieses Tutorial abschließen können, müssen Sie das vorherige Storag
 
 In diesem Teil der Tutorialreihe werden SAS-Token für den Zugriff auf die Miniaturbilder verwendet. In diesem Schritt legen Sie den öffentlichen Zugriff auf den Container *thumbnails* auf `off` fest.
 
-```bash
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+blobStorageAccountKey=(Get-AzStorageAccountKey -ResourceGroupName myResourceGroup -AccountName $blobStorageAccount).Key1
+
+Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName $blobStorageAccount -KeyName $blobStorageAccountKey -AllowBlobPublicAccess $false
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
@@ -52,18 +64,7 @@ az storage container set-permission \
     --public-access off
 ```
 
-```powershell
-$blobStorageAccount="<blob_storage_account>"
-
-blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
-    --account-name $blobStorageAccount --query [0].value --output tsv) 
-
-az storage container set-permission `
-    --account-name $blobStorageAccount `
-    --account-key $blobStorageAccountKey `
-    --name thumbnails `
-    --public-access off
-```
+---
 
 ## <a name="configure-sas-tokens-for-thumbnails"></a>Konfigurieren von SAS-Token für Miniaturbilder
 
@@ -73,7 +74,7 @@ In diesem Beispiel wird der Branch `sasTokens` im Quellcoderepository verwendet,
 
 Im folgenden Befehl ist `<web-app>` der Name Ihrer Web-App.
 
-```bash
+```azurecli
 az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
 
 az webapp deployment source config --name <web_app> \

@@ -1,18 +1,18 @@
 ---
 title: Unterstützung und Kompatibilität von Gremlin in Azure Cosmos DB mit TinkerPop-Features
 description: Informieren Sie sich über die Sprache Gremlin von Apache TinkerPop. Erfahren Sie, welche Features und Schritte in Azure Cosmos DB verfügbar sind und welche Kompatibilitätsunterschiede zur TinkerPop-Graph-Engine bestehen.
-author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 11/11/2020
-ms.author: sngun
-ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/06/2021
+author: manishmsfte
+ms.author: mansha
+ms.openlocfilehash: a2e868fa6054681f37d699bdc469db9ded0b8ee9
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97630750"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356363"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Unterstützung und Kompatibilität von Gremlin-Diagrammen in Azure Cosmos DB mit TinkerPop-Features
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -102,6 +102,12 @@ Im Anschluss werden die Eigenschaften beschrieben, die im JSON-Format für Verti
 | `_partition` | Der Partitionsschlüssel des Vertex. Wird für [Graphpartitionierung](graph-partitioning.md) verwendet. |
 | `outE` | Diese Eigenschaft enthält eine Liste von externen Edges aus einem Vertex. Die Speicherung von Informationen zur Nähe zum Vertex ermöglicht die schnelle Ausführung von Traversierungen. Edges werden basierend auf deren Bezeichnungen gruppiert. |
 
+Jede Eigenschaft kann mehrere Werte in einem Array speichern.
+
+| Eigenschaft | Beschreibung |
+| --- | --- |
+| `value` | Wert der Eigenschaft |
+
 Zudem enthalten Edges folgende Informationen, die die Navigation in anderen Teilen des Diagramms unterstützen können.
 
 | Eigenschaft | Beschreibung |
@@ -109,13 +115,7 @@ Zudem enthalten Edges folgende Informationen, die die Navigation in anderen Teil
 | `id` | Die ID für den Edge. Muss eindeutig sein (in Kombination mit dem Wert von `_partition`, falls zutreffend). |
 | `label` | Die Bezeichnung des Edge. Diese Eigenschaft ist optional, und dient zur Beschreibung des Beziehungstyps. |
 | `inV` | Diese Eigenschaft enthält eine Liste von In-Vertices für einen Edge. Die Speicherung von Informationen über die Nähe zum Vertex mit dem Edge ermöglicht die schnelle Ausführung von Traversierungen. Vertices werden basierend auf ihren Bezeichnungen gruppiert. |
-| `properties` | Sammlung von benutzerdefinierten Eigenschaften in Verbindung mit dem Edge. Jede Eigenschaft kann mehrere Werte enthalten. |
-
-Jede Eigenschaft kann mehrere Werte in einem Array speichern. 
-
-| Eigenschaft | Beschreibung |
-| --- | --- |
-| `value` | Wert der Eigenschaft
+| `properties` | Sammlung von benutzerdefinierten Eigenschaften in Verbindung mit dem Edge. |
 
 ## <a name="gremlin-steps"></a>Gremlin-Schritte
 

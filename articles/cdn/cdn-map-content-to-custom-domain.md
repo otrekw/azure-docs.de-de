@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/12/2021
 ms.author: yuajia
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 3b64efab10a9d52209f04dfd43a43654eb55467a
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: ee721a56da41c4a5ff9184c6bc716784f858507d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706934"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112467633"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zu Ihrem Endpunkt
 
@@ -23,7 +23,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie einem Azure CDN-Endpunkt (Conte
 
 Der Endpunktname in Ihrem CDN-Profil ist eine Unterdomäne von „azureedge.net“. Bei der Inhaltsbereitstellung ist die CDN-Profildomäne standardmäßig in der URL enthalten.
 
-Beispiel: **https://contoso.azureedge.net/photo.png**
+Beispiel: `https://contoso.azureedge.net/photo.png`.
 
 Azure CDN bietet die Option, eine benutzerdefinierte Domäne einem CDN-Endpunkt zuzuordnen. Durch diese Option wird Inhalt mit einer benutzerdefinierten Domäne in Ihrer URL (anstelle des standardmäßigen Endpunktnamens) bereitgestellt.
 

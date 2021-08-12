@@ -3,13 +3,13 @@ title: Erstellen eines Dashboards im Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Dashboards im Azure-Portal erstellt und angepasst werden.
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
-ms.date: 05/06/2021
-ms.openlocfilehash: 668aead7b448cd462fab80003e498e956a6484d2
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.date: 05/12/2021
+ms.openlocfilehash: 0de3e30d2a27d131c13b2df94b1462b6e89b48e3
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108794893"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846181"
 ---
 # <a name="create-a-dashboard-in-the-azure-portal"></a>Erstellen eines Dashboards im Azure-Portal
 
@@ -88,6 +88,14 @@ Viele Ressourcenseiten enthalten ein Reißzweckensymbol oben auf der Seite, was 
 Wenn Sie dieses Symbol auswählen, können Sie die Kachel an ein vorhandenes privates oder freigegebenes Dashboard anheften. Sie können auch ein neues Dashboard erstellen, das diesen Reißzwecken enthält, indem Sie **Neu erstellen** auswählen.
 
 :::image type="content" source="media/azure-portal-dashboards/dashboard-pin-pane.png" alt-text="Screenshot: an Dashboard-Optionen anheften.":::
+
+### <a name="copy-a-tile-to-a-new-dashboard"></a>Kopieren einer Kachel in ein neues Dashboard
+
+Wenn Sie eine Kachel in einem anderen Dashboard wiederverwenden möchten, können Sie sie von einem Dashboard in ein anderes kopieren. Wählen Sie dazu das Kontextmenü in der oberen rechten Ecke und dann **Kopieren** aus.
+
+:::image type="content" source="media/azure-portal-dashboards/copy-dashboard.png" alt-text="Screenshot des Kopierens einer Kachel im Azure-Portal.":::
+
+Anschließend können Sie dann auswählen, ob Sie die Kachel in ein vorhandenes privates oder freigegebenes Dashboard kopieren oder eine Kopie der Kachel innerhalb des Dashboards erstellen möchten, in dem Sie bereits arbeiten. Sie können auch ein neues Dashboard erstellen, das eine Kopie dieser Kachel enthält, indem Sie **Neu erstellen** auswählen.
 
 ### <a name="resize-or-rearrange-tiles"></a>Ändern der Größe oder Neuanordnung von Kacheln
 

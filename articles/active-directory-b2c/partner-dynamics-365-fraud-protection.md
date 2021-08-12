@@ -8,23 +8,23 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 5/12/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: ef1067504a0dd45add4b178446716864e60c802f
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 219cb793da7835922ad707d0ad1ee7e122990ba8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175530"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962179"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Microsoft Dynamics 365 Fraud Protection mit Azure Active Directory B2C
 
-In diesem Beispieltutorial finden Sie eine Anleitung zum Integrieren von [Microsoft Dynamics 365 Fraud Protection](/dynamics365/fraud-protection/overview) (DFP) in Azure Active Directory (AD) B2C.
+In diesem Beispieltutorial lernen Sie, [Microsoft Dynamics 365 Fraud Protection](/dynamics365/fraud-protection/overview) (DFP) in Azure Active Directory (AD) B2C zu integrieren.
 
-Microsoft DFP bietet Kunden die Möglichkeit der Risikobewertung von Versuchen, neue Konten zu erstellen und sich beim Ökosystem des Kunden anzumelden, wenn diese betrügerisch sind. Microsoft DFP-Bewertung kann vom Kunden verwendet werden, um verdächtige Versuche, neue gefälschte Konten zu erstellen oder vorhandene Konten zu kompromittieren, zu blockieren oder abzuwehren. Der Kontoschutz umfasst einen durch künstliche Intelligenz unterstützten Gerätefingerabdruck, APIs für die Risikobewertung in Echtzeit, Regeln und Listen zur Optimierung der Risikostrategie gemäß den Geschäftsanforderungen des Kunden sowie eine Scorecard zum Überwachen der Effektivität des Betrugsschutzes und der entsprechenden Trends im Ökosystem des Kunden.
+Microsoft DFP ermöglicht Organisationen, das Risiko von Versuchen, betrügerische Konten und Anmeldungen zu erstellen, zu bewerten. Mit der DFP-Bewertung von Microsoft können Kunden verdächtige Versuche, neue gefälschte Konten zu erstellen oder vorhandene Konten zu kompromittieren, blockieren oder abwehren.
 
-In diesem Beispiel integrieren wir die Kontoschutzfunktionen von Microsoft DFP in einen Azure AD B2C-Benutzerflow. Der Dienst erstellt extern Fingerabdrücke von jedem Anmelde- oder Registrierungsversuch und überwacht alle früheren oder aktuellen verdächtigen Verhaltensweisen. Azure AD B2C ruft einen Entscheidungsendpunkt von Microsoft DFP auf, der ein Ergebnis zurückgibt, das auf allen früheren und aktuellen Verhaltensweisen des identifizierten Benutzers sowie auf den im Microsoft DFP-Dienst angegebenen benutzerdefinierten Regeln basiert. Azure AD B2C trifft basierend auf diesem Ergebnis eine Genehmigungsentscheidung und übergibt diese an Microsoft DFP.
+Dieses Beispiel veranschaulicht, wie Sie die API-Endpunkte für Microsoft DFP-Gerätefingerabdruck, Kontoerstellung und Anmeldungsbewertung in eine benutzerdefinierte Azure AD B2C-Richtlinie integrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,17 +40,13 @@ Zunächst benötigen Sie Folgendes:
 
 Die Microsoft DFP-Integration umfasst die folgenden Komponenten:
 
-- **Azure AD B2C-Mandant**: Authentifiziert den Benutzer und fungiert als Client von Microsoft DFP. Hostet ein Fingerabdruckskript, das Identifikations- und Diagnosedaten jedes Benutzers sammelt, der eine Zielrichtlinie ausführt. Später werden Anmelde- oder Registrierungsversuche blockiert oder abgewehrt, wenn Microsoft DFP sie als verdächtig einstuft.
+- **Azure AD B2C-Mandant**: Authentifiziert den Benutzer und fungiert als Client von Microsoft DFP. Hostet ein Fingerabdruckskript, das Identifikations- und Diagnosedaten jedes Benutzers sammelt, der eine Zielrichtlinie ausführt. Später werden Anmelde- oder Registrierungsversuche auf dem von Microsoft DFP zurückgegebenen Regelauswertungsergebnis basierend blockiert oder abgewehrt.
 
-- **Benutzerdefinierter App-Dienst**: Eine Webanwendung, die zwei Zwecken dient.
-
-  - Stellt HTML-Seiten bereit, die als Benutzeroberfläche von Identity Experience Framework verwendet werden. Ist für das Einbetten des Microsoft Dynamics 365-Fingerabdruckskripts verantwortlich.
-
-  - Ein API-Controller mit RESTful-Endpunkten, der Microsoft DFP mit Azure AD B2C verbindet. Übernimmt die Datenverarbeitung und Struktur und erfüllt die Sicherheitsanforderungen von beiden.
+- **Benutzerdefinierte Benutzeroberflächenvorlagen**: Werden verwendet, um den HTML-Inhalt der von Azure AD B2C gerenderten Seiten anzupassen. Diese Seiten enthalten den JavaScript-Codeausschnitt, der für den Microsoft DFP-Fingerabdruck erforderlich ist.
 
 - **Microsoft DFP-Fingerabdruckdienst**: Dynamisch eingebettetes Skript, das Gerätetelemetriedaten und selbstbestätigte Benutzerdetails protokolliert, um einen eindeutig identifizierbaren Fingerabdruck des Benutzers zu erstellen, der später im Entscheidungsprozess verwendet werden kann.
 
-- **Microsoft DFP-API-Endpunkte**: Stellt das Entscheidungsergebnis bereit und akzeptiert einen endgültigen Status, der den von der Clientanwendung ausgeführten Vorgang widerspiegelt. Azure AD B2C kommuniziert aufgrund variierender Sicherheits- und API-Nutzdatenanforderungen nicht direkt mit den Endpunkten, sondern verwendet stattdessen den App-Dienst als Zwischeninstanz.
+- **Microsoft DFP-API-Endpunkte**: Stellt das Entscheidungsergebnis bereit und akzeptiert einen endgültigen Status, der den von der Clientanwendung ausgeführten Vorgang widerspiegelt. Azure AD B2C kommuniziert über REST-API-Connectors direkt mit den Microsoft DFP-Endpunkten. Die API-Authentifizierung erfolgt über eine client_credentials-Gewährung für den Azure AD-Mandanten, in dem Microsoft DFP lizenziert und installiert ist, um ein Bearertoken abzurufen.
 
 Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 
@@ -59,11 +55,9 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 |Schritt | BESCHREIBUNG |
 |:-----| :-----------|
 | 1. | Der Benutzer gelangt auf eine Anmeldeseite. Der Benutzer wählt die Registrierung zum Erstellen eines neuen Kontos aus und gibt Informationen auf der Seite ein. Azure AD B2C erfasst die Benutzerattribute.
-| 2. | Azure AD B2C ruft die API der mittleren Ebene auf und übergibt die Benutzerattribute.
-| 3. | Die API der mittleren Ebene erfasst die Benutzerattribute und wandelt sie in ein Format um, das von der Microsoft DFP-API verarbeitet werden kann. Danach werden die Daten an die Microsoft DFP-API gesendet.
-| 4. | Nachdem die Microsoft DFP-API die Informationen verwendet und verarbeitet hat, wird das Ergebnis an die API der mittleren Ebene zurückgegeben.
-| 5. | Die API der mittleren Ebene verarbeitet die Informationen und sendet relevante Informationen an Azure AD B2C zurück.
-| 6. | Azure AD B2C empfängt die Informationen von der API der mittleren Ebene. Bei einer Fehlerantwort wird dem Benutzer eine Fehlermeldung angezeigt. Bei einer Erfolgsantwort wird der Benutzer authentifiziert und in das Verzeichnis geschrieben.
+| 2. | Azure AD B2C ruft die Microsoft DFP-API auf und übergibt die Benutzerattribute.
+| 3. | Nachdem die Microsoft DFP-API die Informationen verwendet und verarbeitet hat, wird das Ergebnis an Azure AD B2C zurückgegeben.
+| 4. | Azure AD B2C empfängt die Informationen wieder von der Microsoft DFP-API. Bei einer Fehlerantwort wird dem Benutzer eine Fehlermeldung angezeigt. Bei einer Erfolgsantwort wird der Benutzer authentifiziert und in das Verzeichnis geschrieben.
 
 ## <a name="set-up-the-solution"></a>Einrichten der Lösung
 
@@ -74,79 +68,77 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 
 [Richten Sie Ihren Azure AD-Mandanten](/dynamics365/fraud-protection/integrate-real-time-api) für die Verwendung von Microsoft DFP ein.
 
-## <a name="deploy-to-the-web-application"></a>Bereitstellen für die Webanwendung
+## <a name="set-up-your-custom-domain"></a>Einrichten Ihrer benutzerdefinierten Domäne
 
-### <a name="implement-microsoft-dfp-service-fingerprinting"></a>Implementieren des Microsoft DFP-Fingerabdruckdiensts
+In einer Produktionsumgebung müssen Sie eine [benutzerdefinierte Domäne für Azure AD B2C](./custom-domain.md?pivots=b2c-custom-policy) und für den [Microsoft DFP-Fingerabdruckdienst](/dynamics365/fraud-protection/device-fingerprinting#set-up-dns) verwenden. Die Domäne für beide Dienste sollte sich in derselben DNS-Stammzone befinden, um zu verhindern, dass Browserdatenschutz-Einstellungen domänenübergreifende Cookies blockieren. Dies ist in einer Nicht-Produktionsumgebung nicht erforderlich.
 
-Der [Microsoft DFP-Gerätefingerabdruck](/dynamics365/fraud-protection/device-fingerprinting) ist eine Voraussetzung für den Microsoft DFP-Kontoschutz.
+Dies ist ein Beispiel:
 
->[!NOTE]
->Zusätzlich zur Verwendung der Seiten der Azure AD B2C-Benutzeroberfläche können Benutzer den Fingerabdruckdienst auch innerhalb des App-Codes implementieren, um eine umfassendere Geräteprofilerstellung zu ermöglichen. Die Implementierung des Fingerabdruckdiensts im App-Code ist nicht Bestandteil dieses Beispiels.
+| Umgebung | Dienst | Domain |
+|:------------|:---------------|:---------------|
+| Entwicklung | Azure AD B2C | contoso-dev.b2clogin.com |
+| Entwicklung | Microsoft DFP-Fingerabdruck | fpt.dfp.microsoft-int.com |
+| UAT | Azure AD B2C | contoso-uat.b2clogin.com |
+| UAT | Microsoft DFP-Fingerabdruck | fpt.dfp.microsoft.com |
+| Bereitstellung | Azure AD B2C | login.contoso.com |
+| Bereitstellung | Microsoft DFP-Fingerabdruck | fpt.login.contoso.com |
 
-### <a name="deploy-the-azure-ad-b2c-api-code"></a>Bereitstellen des Azure AD B2C-API-Codes
+## <a name="deploy-the-ui-templates"></a>Bereitstellen der Benutzeroberflächenvorlagen
 
-Stellen Sie den [bereitgestellten API-Code](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API) für einen Azure-Dienst bereit. Der Code kann [mithilfe von Visual Studio veröffentlicht](/visualstudio/deployment/quickstart-deploy-to-azure) werden.
+1. Stellen Sie die verfügbaren [Azure AD B2C-Benutzeroberflächenvorlagen](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/ui-templates) für einen öffentlichen Internethostingdienst wie Azure Blob Storage bereit.
 
-Richten Sie CORS ein, und fügen Sie den **zulässigen Ursprung** `https://{your_tenant_name}.b2clogin.com` hinzu.
+2. Ersetzen Sie den Wert `https://<YOUR-UI-BASE-URL>/` durch die Stamm-URL für Ihren Bereitstellungsspeicherort.
 
->[!NOTE]
->Sie benötigen die URL des bereitgestellten Diensts später, um Azure AD mit den erforderlichen Einstellungen zu konfigurieren.
+  >[!NOTE]
+  >Sie benötigen später die Basis-URL, um die Azure AD B2C-Richtlinien zu konfigurieren.
 
-Weitere Informationen finden Sie in der [App Service-Dokumentation](../app-service/app-service-web-tutorial-rest-api.md).
+3. Ersetzen Sie in der `ui-templates/js/dfp.js`-Datei `<YOUR-DFP-INSTANCE-ID>` durch Ihre Microsoft DFP-Instanz-ID.
 
-### <a name="add-context-dependent-configuration-settings"></a>Hinzufügen kontextabhängiger Konfigurationseinstellungen
+4. Stellen Sie sicher, dass CORS für Ihren Azure AD B2C-Domänennamen `https://{your_tenant_name}.b2clogin.com` oder `your custom domain` aktiviert ist.
 
-Konfigurieren Sie die Anwendungseinstellungen in [Azure App Service](../app-service/configure-common.md#configure-app-settings). Auf diese Weise können Einstellungen sicher konfiguriert werden, ohne sie in ein Repository einchecken zu müssen. Für die REST-API müssen die folgenden Einstellungen angegeben werden:
-
-| Anwendungseinstellungen | `Source` | Notizen |
-| :-------- | :------------| :-----------|
-| FraudProtectionSettings:InstanceId | Microsoft DFP-Konfiguration |     |
-| FraudProtectionSettings:DeviceFingerprintingCustomerId | Ihre Kunden-ID für den Microsoft-Gerätefingerabdruck |     |
-| FraudProtectionSettings:ApiBaseUrl |  Ihre Basis-URL aus dem Microsoft DFP-Portal   | Entfernen Sie „-int“, um stattdessen die Produktions-API aufzurufen.|
-| FraudProtectionSettings:TokenProviderConfig:Resource | Ihre Basis-URL: `https://api.dfp.dynamics-int.com`     | Entfernen Sie „-int“, um stattdessen die Produktions-API aufzurufen.|
-| FraudProtectionSettings:TokenProviderConfig:ClientId |Die Azure AD-Client-App-ID des Fraud Protection-Händlers      |       |
-| FraudProtectionSettings:TokenProviderConfig:Authority | https://login.microsoftonline.com/<directory_ID> | Die Azure AD-Mandantenautorität des Fraud Protection-Händlers |
-| FraudProtectionSettings:TokenProviderConfig:CertificateThumbprint* | Der Fingerabdruck des Zertifikats, das für die Authentifizierung bei der Azure AD-Client-App des Händlers verwendet werden soll |
-| FraudProtectionSettings:TokenProviderConfig:ClientSecret* | Das Geheimnis für die Azure AD-Client-App des Händlers | Es wird empfohlen, einen Geheimnis-Manager zu verwenden. |
-
-*Legen Sie nur einen der beiden gekennzeichneten Parameter fest, je nachdem, ob Sie sich mit einem Zertifikat oder einem Geheimnis wie einem Kennwort authentifizieren.
+Weitere Informationen finden Sie unter [Anpassen der Benutzeroberfläche mit HTML-Vorlagen in Azure Active Directory B2C](./customize-ui-with-html.md?pivots=b2c-custom-policy).
 
 ## <a name="azure-ad-b2c-configuration"></a>Azure AD B2C-Konfiguration
 
+### <a name="add-policy-keys-for-your-microsoft-dfp-client-app-id-and-secret"></a>Hinzufügen von Richtlinienschlüsseln für Ihre Microsoft DFP-Client-App-ID und das Geheimnis
+
+1. Erstellen Sie im Azure AD-Mandanten, in dem Microsoft DFP eingerichtet ist, eine [Azure AD-Anwendung, und erteilen Sie die Administratoreinwilligung](/dynamics365/fraud-protection/integrate-real-time-api#create-azure-active-directory-applications).
+2. Erstellen Sie einen Geheimniswert für diese Anwendungsregistrierung, und notieren Sie sich die Client-ID und den geheimen Clientschlüsselwert der Anwendung.
+3. Speichern Sie die Werte für Client-ID und geheimen Clientschlüssel als [Richtlinienschlüssel in Ihrem Azure AD B2C-Mandanten](./policy-keys-overview.md).
+
+ >[!NOTE]
+ >Sie benötigen später die Richtlinienschlüssel, um Ihre Azure AD B2C-Richtlinien zu konfigurieren.
+
 ### <a name="replace-the-configuration-values"></a>Ersetzen der Konfigurationswerte
 
-Suchen Sie in den bereitgestellten [benutzerdefinierten Richtlinien](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies) die folgenden Platzhalter, und ersetzen Sie diese durch die entsprechenden Werte aus Ihrer Instanz.
+Suchen Sie in den bereitgestellten [benutzerdefinierten Richtlinien](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/policies) die folgenden Platzhalter, und ersetzen Sie diese durch die entsprechenden Werte aus Ihrer Instanz.
 
 | Platzhalter | Ersetzen durch | Notizen |
 | :-------- | :------------| :-----------|
-|{your_tenant_name} | Kurzname Ihres Mandanten |  „yourtenant“ aus yourtenant.onmicrosoft.com   |
-|{your_tenantId} | Mandanten-ID Ihres Azure AD B2C-Mandanten |  01234567-89ab-cdef-0123-456789abcdef   |
-|  {your_tenant_IdentityExperienceFramework_appid}    |   App-ID der IdentityExperienceFramework-App, die in Ihrem Azure AD B2C-Mandanten konfiguriert ist    |  01234567-89ab-cdef-0123-456789abcdef   |
-|  {your_tenant_ ProxyIdentityExperienceFramework _appid}     |  App-ID der ProxyIdentityExperienceFramework-App, die in Ihrem Azure AD B2C-Mandanten konfiguriert ist      |   01234567-89ab-cdef-0123-456789abcdef     |
-|  {your_tenant_extensions_appid}   |  App-ID der Speicheranwendung Ihres Mandanten   |  01234567-89ab-cdef-0123-456789abcdef  |
-|   {your_tenant_extensions_app_objectid}  | Objekt-ID der Speicheranwendung Ihres Mandanten    | 01234567-89ab-cdef-0123-456789abcdef   |
-|   {your_app_insights_instrumentation_key}  |   Instrumentierungsschlüssel Ihrer App Insights-Instanz*  |   01234567-89ab-cdef-0123-456789abcdef |
-|  {your_ui_base_url}   | Endpunkt in Ihrem App-Dienst, von dem aus Ihre UI-Dateien bedient werden    | `https://yourapp.azurewebsites.net/B2CUI/GetUIPage`   |
-|   {your_app_service_url}  | URL Ihres App-Diensts    |  `https://yourapp.azurewebsites.net`  |
-|   {your-facebook-app-id}  |  App-ID der Facebook-App, die Sie für den Verbund mit Azure AD B2C konfiguriert haben   | 000000000000000   |
-|  {your-facebook-app-secret}   |  Name des Richtlinienschlüssels, unter dem Sie das Geheimnis der Facebook-App gespeichert haben   | B2C_1A_FacebookAppSecret   |
+|{Settings:Production} | Gibt an, ob die Richtlinien im Produktionsmodus bereitgestellt werden sollen. | `true` oder `false`  |
+|{Settings:Tenant} | Kurzname Ihres Mandanten |  `your-tenant`: aus Ihr-Mandant.onmicrosoft.com  |
+| {Settings:DeploymentMode}    |  Zu verwendender Application Insights-Bereitstellungsmodus   |  `Production` oder `Development`  |
+|  {Settings:DeveloperMode}    | Gibt an, ob die Richtlinien im Application Insights-Entwicklermodus bereitgestellt werden sollen.      |   `true` oder `false`    |
+|  {Settings:AppInsightsInstrumentationKey}  |  Instrumentierungsschlüssel Ihrer App Insights-Instanz*   |  `01234567-89ab-cdef-0123-456789abcdef` |
+|  {Settings:IdentityExperienceFrameworkAppId}  | App-ID der IdentityExperienceFramework-App, die in Ihrem Azure AD B2C-Mandanten konfiguriert ist  | `01234567-89ab-cdef-0123-456789abcdef`|
+|  {Settings:ProxyIdentityExperienceFrameworkAppId}  |   App-ID der ProxyIdentityExperienceFramework-App, die in Ihrem Azure AD B2C-Mandanten konfiguriert ist |   `01234567-89ab-cdef-0123-456789abcdef`|
+| {Settings:FacebookClientId}  | App-ID der Facebook-App, die Sie für den Verbund mit B2C konfiguriert haben    | `000000000000000`   |
+|   {Settings:FacebookClientSecretKeyContainer}  | Name des Richtlinienschlüssels, unter dem Sie das Geheimnis der Facebook-App gespeichert haben    |  `B2C_1A_FacebookAppSecret` |
+|   {Settings:ContentDefinitionBaseUri} |  Endpunkt, in dem Sie die UI-Dateien bereitgestellt haben   | `https://<my-storage-account>.blob.core.windows.net/<my-storage-container>`   |
+|  {Settings:DfpApiBaseUrl}   |  Der Basispfad für Ihre DFP-API-Instanz im DFP-Portal   | `https://tenantname-01234567-89ab-cdef-0123-456789abcdef.api.dfp.dynamics.com/v1.0/`   |
+| {Settings:DfpApiAuthScope} | Der client_credentials-Bereich für den DFP-API-Dienst | `https://api.dfp.dynamics-int.com/.default or https://api.dfp.dynamics.com/.default` |
+| {Settings:DfpTenantId} | Die ID des Azure AD-Mandanten (nicht B2C), in dem DFP lizenziert und installiert ist | `01234567-89ab-cdef-0123-456789abcdef` oder `consoto.onmicrosoft.com` |
+| {Settings:DfpAppClientIdKeyContainer} | Name des Richtlinienschlüssels, in dem Sie die DFP-Client-ID speichern | `B2C_1A_DFPClientId` |
+| {Settings:DfpAppClientSecretKeyContainer} | Name des Richtlinienschlüssels, in dem Sie den geheimen DFP-Clientschlüssel speichern | `B2C_1A_DFPClientSecret` |
 
-\* App Insights kann sich in einem anderen Mandanten befinden. Dieser Schritt ist optional. Entfernen Sie ggf. die entsprechenden TechnicalProfiles und OrchestrationSteps.
-
-### <a name="call-microsoft-dfp-label-api"></a>Aufrufen der Microsoft DFP-Label-API
-
-Kunden müssen [die Label-API implementieren](/dynamics365/fraud-protection/integrate-ap-api). Weitere Informationen finden Sie unter [Microsoft DFP-API](https://apidocs.microsoft.com/services/dynamics365fraudprotection#/AccountProtection/v1.0).
-
-`URI: < API Endpoint >/v1.0/label/account/create/<userId>`
-
-Der Wert der Benutzer-ID (userId) muss mit dem entsprechenden Wert in der Azure AD B2C-Konfiguration (ObjectID) übereinstimmen.
+*Application Insights kann in jedem Azure AD-Mandanten/-Abonnement eingerichtet werden. Dieser Wert ist optional, wird jedoch [zur Unterstützung beim Debuggen empfohlen](./troubleshoot-with-application-insights.md).
 
 >[!NOTE]
 >Fügen Sie der Seite für die Attributsammlung eine Einwilligungsbenachrichtigung hinzu. Informieren Sie darüber, dass die Telemetrie- und Benutzeridentitätsinformationen der Benutzer zu Kontoschutzzwecken aufgezeichnet werden.
 
 ## <a name="configure-the-azure-ad-b2c-policy"></a>Konfigurieren der Azure AD B2C-Richtlinie
 
-1. Wechseln Sie im Richtlinienordner zur [Azure AD B2C-Richtlinie](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies).
+1. Wechseln Sie im Richtlinienordner zur [Azure AD B2C-Richtlinie](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/policies).
 
 2. Folgen Sie den Anweisungen in diesem [Dokument](./tutorial-create-user-flows.md?pivots=b2c-custom-policy?tabs=applications#custom-policy-starter-pack), um das [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) herunterzuladen.
 

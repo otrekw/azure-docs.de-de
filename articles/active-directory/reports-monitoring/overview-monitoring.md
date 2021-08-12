@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 763e628183e5f6ad7b7bdbb8ee7ce6db572f44ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e9787b18932b83526dd410aec8024066d312978
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577776"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729505"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Was ist die Azure Active Directory-Überwachung?
 
@@ -44,7 +44,7 @@ Derzeit können die Protokolle an folgende Ziele weitergeleitet werden:
 
 Sie benötigen eine Azure AD-Premium-Lizenz, um auf die Azure AD-Anmeldeprotokolle zuzugreifen.
 
-Ausführliche Informationen zu Features und Lizenzen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+Ausführliche Informationen zu Features und Lizenzen finden Sie unter [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 Zur Bereitstellung der Azure AD-Überwachung und -Berichterstellung ist ein globaler Administrator oder ein Sicherheitsadministrator für den Azure AD-Mandanten erforderlich.
 

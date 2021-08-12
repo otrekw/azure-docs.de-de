@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Gremlin-API mit PHP: Azure Cosmos DB'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Gremlin-API von Azure Cosmos DB eine Konsolenanwendung mit dem Azure-Portal und PHP erstellen.
-author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
-ms.author: chrande
-ms.openlocfilehash: c7691f45c73e0e50a7c8b65997032330f9176743
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+author: manishmsfte
+ms.author: mansha
+ms.openlocfilehash: 5f07d289875af85ea915f3ca2603e5b5aa05a4ad
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "113223930"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355143"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Schnellstart: Erstellen einer Graphdatenbank in Azure Cosmos DB mit PHP und dem Azure-Portal
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]

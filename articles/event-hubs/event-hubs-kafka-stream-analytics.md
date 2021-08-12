@@ -3,12 +3,12 @@ title: 'Azure Event Hubs: Verarbeiten von Apache Kafka-Ereignissen'
 description: 'Tutorial: Dieser Artikel zeigt, wie Kafka-Ereignisse verarbeitet werden, die mithilfe von Azure Stream Analytics über Event Hubs erfasst werden.'
 ms.topic: tutorial
 ms.date: 05/10/2021
-ms.openlocfilehash: 449301effbbb8fb92a873bd90d95da4653bfd8a2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0a14a4f8a4e82faebe232ac072ebe61e2db427b7
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373596"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286371"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Tutorial: Verarbeiten von Apache Kafka für Event Hubs-Ereignisse mithilfe von Stream Analytics 
 Dieser Artikel zeigt, wie Daten an Event Hubs gestreamt und mit Azure Stream Analytics verarbeitet werden können. Die folgenden Schritte werden behandelt: 
@@ -25,7 +25,7 @@ Sie müssen Ihre Protokollclients nicht ändern oder eigene Cluster betreiben, w
 Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-* [Java Development Kit (JDK) 1.7 oder höher](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Java Development Kit (JDK) 1.7 oder höher](/azure/developer/java/fundamentals/java-support-on-azure)
 * Ein binäres Maven-Archiv ([Download](https://maven.apache.org/download.cgi)/[Installationsanleitung](https://maven.apache.org/install.html))
 * [Git-Client](https://www.git-scm.com/)
 * Ein **Azure Storage-Konto** Wenn keine öffentliche IP-Adresse vorhanden ist, [erstellen Sie jetzt eine](../storage/common/storage-account-create.md), ehe Sie fortfahren. Der Stream Analytics-Auftrag in dieser exemplarischen Vorgehensweise speichert die Ausgabedaten in Azure Blob Storage. 

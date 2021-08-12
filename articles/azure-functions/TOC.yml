@@ -399,17 +399,17 @@
         - name: Analysieren von Telemetriedaten
           href: analyze-telemetry-data.md
           displayName: 'App Insights, Application Insights, Kusto'
+        - name: Überwachen von Metriken
+          href: monitor-metrics.md
         - name: Streamingprotokolle
           href: streaming-logs.md
           displayName: monitoring
         - name: Diagnoseprotokolle
           href: functions-monitor-log-analytics.md
           displayName: 'Azure Monitor, Kusto, Log Analytics, metrics'
-    - name: Sicher
+    - name: Authenticate
       items:
-        - name: Hinzufügen eines SSL-Zertifikats
-          href: ../app-service/configure-ssl-certificate.md?toc=%2fazure%2fazure-functions%2ftoc.json
-        - name: Authentifizieren von Benutzern
+        - name: Konfigurieren von Authentifizierungsanbietern
           items:
             - name: Authentifizierung über Azure AD
               href: ../app-service/configure-authentication-provider-aad.md?toc=%2fazure%2fazure-functions%2ftoc.json
@@ -423,8 +423,20 @@
               href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Authentifizieren mithilfe der Anmeldung mit Apple (Vorschau)
               href: ../app-service/configure-authentication-provider-apple.md?toc=%2fazure%2fazure-functions%2ftoc.json
-        - name: Erweiterte Authentifizierung
-          href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Anpassen von An- und Abmeldungen
+          href: ../app-service/configure-authentication-customize-sign-in-out.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Zugreifen auf Benutzeridentitäten
+          href: ../app-service/configure-authentication-user-identities.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Verwenden von Token
+          href: ../app-service/configure-authentication-oauth-tokens.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Verwalten von API-Versionen
+          href: ../app-service/configure-authentication-api-version.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Dateibasierte Konfiguration
+          href: ../app-service/configure-authentication-file-based.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Sicher
+      items:
+        - name: Hinzufügen eines SSL-Zertifikats
+          href: ../app-service/configure-ssl-certificate.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Beschränken von IP-Adressen
           href: ../app-service/app-service-ip-restrictions.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Verwenden einer verwalteten Identität
@@ -449,7 +461,7 @@
               href: functions-add-output-binding-storage-queue-vs.md
         - name: Starten/Beenden von virtuellen Computern
           items:
-            - name: Übersicht
+            - name: Überblick
               href: start-stop-vms/overview.md
             - name: Bereitstellen und konfigurieren
               href: start-stop-vms/deploy.md
@@ -674,7 +686,7 @@
     - name: Referenz zu host.json 1.x
       href: functions-host-json-v1.md
     - name: Häufig gestellte Fragen zu Netzwerken
-      href: functions-networking-faq.md
+      href: functions-networking-faq.yml
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
@@ -685,6 +697,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Preise
       href: pricing.md
+    - name: Sprachunterstützungsrichtlinie
+      href: language-support-policy.md
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Informationen zum Kontingent

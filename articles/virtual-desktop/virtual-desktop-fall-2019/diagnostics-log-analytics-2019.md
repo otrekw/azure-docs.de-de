@@ -1,30 +1,30 @@
 ---
-title: 'Windows Virtual Desktop-Diagnose (klassisch): Protokollanalyse – Azure'
-description: Hier erfahren Sie, wie Sie die Protokollanalyse mit der Windows Virtual Desktop-Diagnosefunktion (klassisch) verwenden.
+title: 'Azure Virtual Desktop-Diagnose (klassisch): Protokollanalyse – Azure'
+description: Hier erfahren Sie, wie Sie die Protokollanalyse mit der Azure Virtual Desktop-Diagnosefunktion (klassisch) verwenden.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 9cfa50e13756692295c84b02d02dd71228b16eb9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 5c1bdadf92d72ebec7ffa122b3c49c5878e2d2b8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444999"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745167"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Verwenden von Log Analytics für das Diagnosefeature in Windows Virtual Desktop (klassisch)
+# <a name="use-log-analytics-for-the-diagnostics-feature-in-azure-virtual-desktop-classic"></a>Verwenden von Log Analytics für das Diagnosefeature in Azure Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../diagnostics-log-analytics.md) weiter.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../diagnostics-log-analytics.md) weiter.
 
-Windows Virtual Desktop verfügt über eine Diagnosefunktion, mit der der Administrator Probleme über eine zentrale Benutzeroberfläche identifizieren kann. Diese Funktion protokolliert Diagnoseinformationen, wenn jemand mit Windows Virtual Desktop-Rolle den Dienst verwendet. Neben Mandanten- und Benutzerinformationen enthält jedes Protokoll Informationen darüber, welche Windows Virtual Desktop-Rolle an der Aktivität beteiligt war und welche Fehlermeldungen ggf. während der Sitzung angezeigt wurden. Die Diagnosefunktion erstellt Aktivitätsprotokolle für Benutzer- und Administratoraktionen. Jedes Aktivitätsprotokoll lässt sich einer von drei Hauptkategorien zuordnen:
+Azure Virtual Desktop verfügt über eine Diagnosefunktion, mit der der Administrator Probleme über eine zentrale Benutzeroberfläche identifizieren kann. Diese Funktion protokolliert Diagnoseinformationen, wenn jemand mit Azure Virtual Desktop-Rolle den Dienst verwendet. Neben Mandanten- und Benutzerinformationen enthält jedes Protokoll Informationen darüber, welche Azure Virtual Desktop-Rolle an der Aktivität beteiligt war und welche Fehlermeldungen ggf. während der Sitzung angezeigt wurden. Die Diagnosefunktion erstellt Aktivitätsprotokolle für Benutzer- und Administratoraktionen. Jedes Aktivitätsprotokoll lässt sich einer von drei Hauptkategorien zuordnen:
 
 - Feedabonnementaktivitäten: Ein Benutzer versucht, über Microsoft-Remotedesktopanwendungen eine Verbindung mit seinem Feed herzustellen.
 - Verbindungsaktivitäten: Ein Benutzer versucht, über Microsoft-Remotedesktopanwendungen eine Verbindung mit einem Desktop oder einer RemoteApp-Instanz herzustellen.
 - Verwaltungsaktivitäten: Ein Administrator führt Verwaltungsvorgänge für das System durch, indem er beispielsweise Hostpools erstellt, App-Gruppen Benutzer zuweist oder Rollenzuweisungen erstellt.
 
-Verbindungen, die Windows Virtual Desktop nicht erreichen, werden nicht in den Diagnoseergebnissen angezeigt, da der Diagnoserollendienst selbst Teil von Windows Virtual Desktop ist. Windows Virtual Desktop-Verbindungsprobleme können auftreten, wenn beim Benutzer Probleme mit der Netzwerkkonnektivität auftreten.
+Verbindungen, die Azure Virtual Desktop nicht erreichen, werden nicht in den Diagnoseergebnissen angezeigt, da der Diagnoserollendienst selbst Teil von Azure Virtual Desktop ist. Azure Virtual Desktop-Verbindungsprobleme können auftreten, wenn beim Benutzer Probleme mit der Netzwerkkonnektivität auftreten.
 
 ## <a name="why-you-should-use-log-analytics"></a>Gründe für die Verwendung von Log Analytics
 
@@ -43,9 +43,9 @@ Diese Informationen werden später bei der Einrichtung benötigt.
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>Pushen von Diagnosedaten an Ihren Arbeitsbereich
 
-Diagnosedaten können von Ihrem Windows Virtual Desktop-Mandanten an die Log Analytics-Instanz für Ihren Arbeitsbereich gepusht werden. Diese Funktion kann direkt bei der Erstellung Ihres Mandanten eingerichtet werden, indem Sie Ihren Arbeitsbereich mit Ihrem Mandanten verknüpfen. Sie kann aber auch später mit einem bereits vorhandenen Mandanten eingerichtet werden.
+Diagnosedaten können von Ihrem Azure Virtual Desktop-Mandanten an die Log Analytics-Instanz für Ihren Arbeitsbereich gepusht werden. Diese Funktion kann direkt bei der Erstellung Ihres Mandanten eingerichtet werden, indem Sie Ihren Arbeitsbereich mit Ihrem Mandanten verknüpfen. Sie kann aber auch später mit einem bereits vorhandenen Mandanten eingerichtet werden.
 
-Wenn Sie Ihren Mandanten im Zuge der Einrichtung Ihres neuen Mandanten mit Ihrem Log Analytics-Arbeitsbereich verknüpfen möchten, führen Sie das folgende Cmdlet aus, um sich mit Ihrem TenantCreator-Benutzerkonto bei Windows Virtual Desktop anzumelden:
+Wenn Sie Ihren Mandanten im Zuge der Einrichtung Ihres neuen Mandanten mit Ihrem Log Analytics-Arbeitsbereich verknüpfen möchten, führen Sie das folgende Cmdlet aus, um sich mit Ihrem TenantCreator-Benutzerkonto bei Azure Virtual Desktop anzumelden:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com

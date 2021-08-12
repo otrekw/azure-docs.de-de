@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f5682302ea0fa83c04a8560ba3f0f98ea075e072
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: ba85f51e821faf1c4704d7295dd6ddfcb977c3c9
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565541"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539050"
 ---
 # <a name="connect-to-synapse-sql"></a>Herstellen einer Verbindung mit Synapse SQL
 Stellen Sie eine Verbindung mit der Synapse SQL-Funktion in Azure Synapse Analytics her.
@@ -94,4 +94,4 @@ Bei der Verbindungs- und Objekterstellung werden von Synapse SQL einige Einstel
 Für die Ausführung von Abfragen eines **serverlosen SQL-Pools** werden [Azure Data Studio](get-started-azure-data-studio.md) und Azure Synapse Studio empfohlen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Herstellen einer Verbindung und zum Durchführen von Abfragen mit Visual Studio finden Sie unter [Abfragen von Azure SQL Data Warehouse (Visual Studio)](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Weitere Informationen zu Authentifizierungsoptionen finden Sie unter [Authentifizieren bei Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Informationen zum Herstellen einer Verbindung und zum Durchführen von Abfragen mit Visual Studio finden Sie unter [Abfragen von Azure SQL Data Warehouse (Visual Studio)](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Weitere Informationen zu Authentifizierungsoptionen finden Sie unter [Authentifizieren bei Azure Synapse Analytics](sql-authentication.md?tabs=provisioned).
