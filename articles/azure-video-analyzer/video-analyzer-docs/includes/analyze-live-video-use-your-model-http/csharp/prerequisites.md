@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: juliako
-ms.openlocfilehash: abd3705bb8d847786502c380f88ed7f8c8dd82f5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f77651e8e8cb10ba22eba3ed0f5e643a2eebd217
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371807"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113735083"
 ---
 * Ein Azure-Konto das ein aktives Abonnement beinhaltet. Sie können ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keins besitzen.
 
@@ -18,8 +18,7 @@ ms.locfileid: "110371807"
 * [Visual Studio Code](https://code.visualstudio.com/) mit den folgenden Erweiterungen:
     * [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-    > [!TIP]
-    > Bei der Installation von Azure IoT Tools werden Sie unter Umständen aufgefordert, Docker zu installieren. Sie können diese Aufforderung ignorieren.    
+    [!INCLUDE [install-docker-prompt](../../common-includes/install-docker-prompt.md)]   
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 * Lesen Sie die Informationen unter [Schnellstart: Erkennen von Bewegung und Ausgeben von Ereignissen](../../../detect-motion-emit-events-quickstart.md).

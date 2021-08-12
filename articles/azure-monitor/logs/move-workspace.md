@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3628669890d23dd504e7900afa8910a5586db938
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 96d9e64a7b3443b4c2e835bfe824bd7d9197cb1c
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322219"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752155"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe
 
@@ -44,7 +44,7 @@ Die Quell- und Zielabonnements des Arbeitsbereichs müssen in demselben Azure Ac
 > - Haben Sie den Arbeitsbereich bereits verschoben, deaktivieren Sie alle aktiven Regeln unter **Analytics**, und aktivieren Sie sie nach fünf Minuten wieder. Dieser Vorgang sollte in den meisten Fällen eine effektive Lösung sein. Für die Iteration wird er jedoch nicht unterstützt und auf eigenes Risiko ausgeführt.
 > 
 > **Neuerstellen von Warnungen**
-> - Alle Warnungen müssen nach einem Verschieben neu erstellt werden, da die Berechtigungen auf der Azure-Ressourcen-ID des Arbeitsbereichs basieren, die sich bei der Verschiebung des Arbeitsbereichs ändert.
+> - Alle Warnungen müssen nach dem Verschieben eines Arbeitsbereichs oder einem Umbenennungsvorgang neu erstellt werden, da die Berechtigungen auf der Azure-Ressourcen-ID des Arbeitsbereichs basieren, die sich bei der Verschiebung des Arbeitsbereichs oder der Umbenennung einer Ressource ändert.
 >
 > **Aktualisieren von Ressourcenpfaden**
 > - Nach dem Verschieben eines Arbeitsbereichs müssen alle Azure- oder externen Ressourcen, die auf den Arbeitsbereich verweisen, überprüft und aktualisiert werden, damit sie auf den neuen Ressourcenzielpfad verweisen.

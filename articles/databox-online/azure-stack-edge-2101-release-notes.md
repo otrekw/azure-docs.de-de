@@ -1,6 +1,6 @@
 ---
-title: Versionshinweise zu Azure Stack Edge Pro mit FPGA 2101 | Microsoft-Dokumentation
-description: In diesem Artikel werden schwerwiegende ungelöste Probleme und Lösungen für das Release 2101 von Azure Stack Edge beschrieben.
+title: Versionshinweise zu Azure Stack Edge Pro FPGA 2101 | Microsoft-Dokumentation
+description: In diesem Artikel werden schwerwiegende ungelöste Probleme und Lösungen für das Release Azure Stack Edge Pro FPGA 2101 beschrieben.
 services: databox
 author: v-dalc
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 5c95da8d6ee88786ff983b4963c1cb96394886cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c8882706bdbb6719dbc2550df350096a4970fd8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727548"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461220"
 ---
 # <a name="azure-stack-edge-pro-with-fpga-2101-release-notes"></a>Versionshinweise zu Azure Stack Edge Pro mit FPGA 2101
 
-In den folgenden Versionshinweisen werden schwerwiegende ungelöste und behobene Probleme für das Release 2101 von Azure Stack Edge Pro mit integriertem Field Programmable Gate Array (FPGA) beschrieben.
+In den folgenden Versionshinweisen werden die schwerwiegenden ungelösten und die behobenen Probleme für das Release 2101 von Azure Stack Edge Pro FPGA mit integriertem Field Programmable Gate Array (FPGA) beschrieben.
 
 Die Anmerkungen zu dieser Version werden fortlaufend aktualisiert. Wenn schwerwiegende Probleme festgestellt werden, die eine Problemumgehung erfordern, werden sie hinzugefügt. Lesen Sie vor der Bereitstellung Ihres Azure Stack Edge-Geräts die Informationen in den Versionshinweisen sorgfältig durch.  
 

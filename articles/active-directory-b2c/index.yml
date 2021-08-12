@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   ms.date: 01/28/2020
-  ms.openlocfilehash: 024c9b54fbbf0a14f8d8ca15862c102d1936bdaa
-  ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+  ms.openlocfilehash: 268d211e2b37b510ceb2d89f4aba62628643ecbb
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/28/2021
-  ms.locfileid: "110613350"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114445331"
 landingContent:
 - title: Azure AD B2C
   linkLists:
@@ -68,11 +68,11 @@ landingContent:
     - text: 'Schnellstart: Web-App'
       url: quickstart-web-app-dotnet.md
     - text: Native/mobile App
-      url: code-samples.md#mobile-and-desktop-apps
+      url: integrate-with-app-code-samples.md#mobile-and-desktop-apps
     - text: Einzelseiten-App
-      url: code-samples.md#single-page-apps
+      url: integrate-with-app-code-samples.md#single-page-apps
     - text: Web-App
-      url: code-samples.md#web-apps-and-apis
+      url: integrate-with-app-code-samples.md#web-apps-and-apis
 - title: 'Autorisierung: Aufrufen und Schützen Ihrer APIs'
   linkLists:
   - linkListType: how-to-guide
@@ -82,7 +82,7 @@ landingContent:
     - text: Registrieren und Schützen Ihrer API
       url: tutorial-web-api-dotnet.md
     - text: 'Beispiele: Web-Apps und -APIs'
-      url: code-samples.md#web-apps-and-apis
+      url: integrate-with-app-code-samples.md#web-apps-and-apis
     - text: Integrieren mit API-Gateway
       url: secure-api-management.md?tabs=app-reg-ga
 - title: Sicherheit, Datenschutz und Compliance

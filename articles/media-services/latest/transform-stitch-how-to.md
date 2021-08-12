@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 562398b17ec5adaaa590b36c1e30e9818592a485
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: fcf3ef3c122639ee0d2c9fa2664fe1b165195a8f
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684809"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110493715"
 ---
 # <a name="how-to-stitch-two-or-more-video-files-with-net"></a>Vorgehensweise zum Zusammenfügen von zwei oder mehr Videodateien mit .NET
 
@@ -30,4 +30,8 @@ Das folgende Beispiel veranschaulicht, wie Sie eine Voreinstellung generieren, u
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Klonen Sie die [Media Services .NET-Beispiele](https://github.com/Azure-Samples/media-services-v3-dotnet/), oder laden Sie sie herunter.  Der Code, auf den unten verwiesen wird, befindet sich im Ordner [EncodingWithMESCustomStitchTwoAssets](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/VideoEncoding/Encoding_StitchTwoAssets/Program.cs).
+Klonen Sie die [Media Services .NET-Beispiele](https://github.com/Azure-Samples/media-services-v3-dotnet/), oder laden Sie sie herunter. 
+
+## <a name="example"></a>Beispiel
+
+Suchen Sie den Code, der zeigt, wie Videodateien im [Ordner EncodingWithMESCustomStitchTwoAssets](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/VideoEncoding/Encoding_StitchTwoAssets/Program.cs) zusammengefügt werden.

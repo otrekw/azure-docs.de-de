@@ -4,23 +4,23 @@ titleSuffix: Azure Storage
 description: Sie erhalten bietet einen Überblick über die zu berücksichtigenden Faktoren und die auszuführenden Schritte, um Azure als Speicherziel und Wiederherstellungsstandort für Veeam Backup and Recovery zu verwenden
 author: karauten
 ms.author: karauten
-ms.date: 03/15/2021
+ms.date: 05/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 0b8bc0defd3314fcff691a049323201732644ff3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 334ae28c160a01032d5403e06f40846e8b9d9ed5
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589904"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839183"
 ---
 # <a name="backup-to-azure-with-veeam"></a>Sicherung in Azure mit Veeam
 
 Dieser Artikel unterstützt Sie bei der Integration einer Veeam-Infrastruktur in Azure Blob Storage. Er enthält Informationen zu Voraussetzungen, Überlegungen sowie Anleitungen zu Implementierung und Betrieb. In diesem Artikel geht es um die Nutzung von Azure als Offsitesicherungsziel und als Wiederherstellungsstandort bei einem Notfall, durch den ein normaler Betrieb an Ihrem primären Standort nicht möglich ist.
 
 > [!NOTE]
-> Veeam bietet außerdem eine Lösung für schnellere Wiederherstellung (RTO), Veeam-Replikation. Mit dieser Lösung können Sie einen virtuellen Standbycomputer bereitstellen, mit dem das System in einer Azure-Produktionsumgebung im Notfall schneller wieder hergestellt werden kann. Veeam verfügt auch über dedizierte Tools zum Sichern von Azure- und Office 365-Ressourcen. Diese Funktionen werden im vorliegenden Dokument nicht behandelt.
+> Veeam bietet auch eine Lösung mit einer niedrigeren RTO (Recovery Time Objective) namens „Veeam Backup & Replication“, die Azure VMware Solution-Workloads unterstützt. Mit dieser Lösung können Sie einen virtuellen Standbycomputer bereitstellen, mit dem das System in einer Azure-Produktionsumgebung im Notfall schneller wieder hergestellt werden kann. Veeam bietet auch eine direkte Wiederherstellung in Microsoft Azure und andere dedizierte Tools zum Sichern von Azure- und Office 365-Ressourcen. Diese Funktionen werden im vorliegenden Dokument nicht behandelt.
 
 ## <a name="reference-architecture"></a>Referenzarchitektur
 
@@ -39,7 +39,10 @@ Ihre vorhandene Veeam-Bereitstellung lässt sich problemlos in Azure integrieren
 | Azure Blob | v10a | v10a | – | 10a<sup>*</sup> |
 | Azure Files | v10a | v10a | – | 10a<sup>*</sup> |
 
-<sup>*</sup>Veeam Backup and Replication unterstützen die REST-API nur für Azure Data Box. Daher wird Azure Data Box Disk nicht unterstützt.
+Auch in älteren Produktversionen bietet Veeam eine Unterstützung der oben erwähnten Azure-Features, für eine optimale Nutzung wird jedoch dringend die aktuelle Version empfohlen.
+
+<sup>*</sup>Veeam Backup and Replication unterstützen die REST-API nur für Azure Data Box. Daher wird Azure Data Box Disk nicht unterstützt. Weitere Informationen zur Unterstützung von Data Box finden Sie [hier](https://helpcenter.veeam.com/docs/backup/hyperv/osr_adding_data_box.html?ver=110).
+
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -96,15 +99,15 @@ Wenn Sie Azure als Sicherungsziel verwenden, nutzen Sie [Azure Blob Storage](../
 |**Effektive Anzahl von Kopien**     | 3         | 3         | 6         | 6 |
 |**Anzahl von Verfügbarkeitszonen**     | 1         | 3         | 2         | 4 |
 |**Anzahl von Regionen**     | 1         | 1         | 2         | 2 |
-|**Manuelles Failover zu sekundärer Region**     | –         | –         | Ja         | Ja |
+|**Manuelles Failover zu sekundärer Region**     | –         | N/V         | Ja         | Ja |
 
-**Blob-Speicherebenen**:
+**Blob-Speicherebenen:**
 
 |  | Heiße Zugriffsebene   |Kalte Zugriffsebene   | Archivzugriffsebene |
 | ----------- | ----------- | -----------  | -----------  |
 | **Verfügbarkeit** | 99,9 %         | 99 %         | Offline      |
 | **Nutzungsgebühren** | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Geringere Speicherkosten, höhere Zugriffs- und Transaktionskosten | Niedrigste Speicherkosten, höchste Zugriffs- und Transaktionskosten |
-| **Mindestzeitraum für Datenaufbewahrung erforderlich** | Nicht verfügbar | 30 Tage | 180 Tage |
+| **Mindestzeitraum für Datenaufbewahrung erforderlich** | Nicht verfügbar | 30 Tage | 180 Tage |
 | **Latenz (Zeit bis zum ersten Byte)** | Millisekunden | Millisekunden | Stunden |
 
 #### <a name="sample-backup-to-azure-cost-model"></a>Beispielkostenmodell für die Sicherung in Azure
@@ -114,17 +117,17 @@ Nutzungsbasierte Bezahlung kann für Kunden, die noch nicht mit der Cloud vertra
 |Kostenfaktor  |Monatliche Kosten  |
 |---------|---------|
 |100 TB Sicherungsdaten auf der kalten Speicherebene     |USD 1556,48         |
-|2 TB neu geschriebene Daten pro Tag × 30 Tage     |USD 72 für Transaktionen          |
-|Geschätzter monatlicher Gesamtbetrag     |USD 1628,48         |
+|2 TB neu geschriebene Daten pro Tag × 30 Tage     |42 USD für Transaktionen          |
+|Geschätzter monatlicher Gesamtbetrag     |1\.598,48 USD         |
 |---------|---------|
 |Einmalige Wiederherstellung von 5 TB am lokalen Standort über das öffentliche Internet   | USD 527,26         |
 
 > [!Note]
-> Diese Schätzung wurde über den Azure-Preisrechner anhand der nutzungsbasierter Bezahlung in der Region „USA, Osten“ generiert und basiert auf dem Veeam-Standardwert von 256-K-Blöcken für Übertragungen im WAN. Dieses Beispiel ist auf Ihre Anforderungen möglicherweise nicht anwendbar.
+> Diese Schätzung wurde mit dem Azure-Preisrechner unter Verwendung der nutzungsbasierten Bezahlung in der Region „USA, Osten“ generiert und basiert auf dem Veeam-Standard von 512 KB großen Blöcken für Übertragungen in WANs. Dieses Beispiel ist auf Ihre Anforderungen möglicherweise nicht anwendbar.
 
 ## <a name="implementation-guidance"></a>Implementierungsleitfaden
 
-Dieser Abschnitt bietet eine kurze Übersicht über das Hinzufügen von Azure Storage zu einer lokalen Veeam-Bereitstellung. Ausführliche Anleitungen und Planungsüberlegungen finden Sie im [Leitfaden zur Veeam Cloud Connect-Sicherung](https://helpcenter.veeam.com/docs/backup/cloud/cloud_backup.html?ver=100).
+Dieser Abschnitt bietet eine kurze Übersicht über das Hinzufügen von Azure Storage zu einer lokalen Veeam-Bereitstellung. Für ausführliche Anleitungen und Planungsüberlegungen empfiehlt es sich, den folgenden Veeam-Leitfaden für die [Kapazitätsebene](https://helpcenter.veeam.com/docs/backup/vsphere/capacity_tier.html?ver=110) anzusehen.
 
 1. Öffnen Sie das Azure-Portal und suchen Sie nach **Speicherkonten**. Sie können auch auf das Standard-Dienstsymbol klicken.
 
@@ -136,11 +139,9 @@ Dieser Abschnitt bietet eine kurze Übersicht über das Hinzufügen von Azure St
 
     ![Zeigt die Speicherkontoeinstellungen im Azure-Portal](../media/account-create-1.png)
 
-3. Behalten Sie die standardmäßigen Netzwerkoptionen zunächst bei, und fahren Sie mit **Datenschutz** fort. Hier können Sie die Option „Vorläufiges Löschen“ aktivieren, die Ihnen ermöglicht, eine versehentlich gelöschte Sicherungsdatei innerhalb des definierten Aufbewahrungszeitraums wiederherzustellen. Diese Option bietet Schutz vor versehentlichen oder böswilligen Löschvorgängen.
+3. Behalten Sie vorerst die standardmäßig eingestellten Netzwerk- und Datenschutzoptionen bei. Aktivieren Sie das vorläufige Löschen **nicht** für Speicherkonten, in denen Veeam-Kapazitätsebenen gespeichert sind.
 
-    ![Zeigt die Datenschutzeinstellungen im Portal an.](../media/account-create-2.png)
-
-4. Wir empfehlen, die Standardeinstellungen aus dem Bildschirm **Erweitert** für Sicherungen in Azure zu übernehmen.
+ 4. Wir empfehlen, die Standardeinstellungen aus dem Bildschirm **Erweitert** für Sicherungen in Azure zu übernehmen.
 
     ![Zeigt die Registerkarte „Erweiterte Einstellungen“ im Portal an.](../media/account-create-3.png)
 

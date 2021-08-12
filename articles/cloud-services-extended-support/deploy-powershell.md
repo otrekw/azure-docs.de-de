@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 43f4c1f3da21ab65c27b74359fcc577a99220b6a
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b61d7adf1b03b1ce44125bc485eb0b2d6221f8f2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129691"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460867"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von Azure PowerShell
 
@@ -172,6 +172,6 @@ Wenn Sie eine statische IP-Adresse verwenden, muss darauf in der Dienstkonfigura
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte 
-- Sehen Sie sich die [häufig gestellten Fragen](faq.md) zu Cloud Services (erweiterter Support) an.
+- Sehen Sie sich die [häufig gestellten Fragen](faq.yml) zu Cloud Services (erweiterter Support) an.
 - Stellen Sie einen Clouddienst (erweiterter Support) über das [Azure-Portal](deploy-portal.md), per [PowerShell](deploy-powershell.md), per [Vorlage](deploy-template.md) oder mithilfe von [Visual Studio](deploy-visual-studio.md) bereit.
 - Besuchen Sie das [Beispielrepository zu Cloud Services (erweiterter Support)](https://github.com/Azure-Samples/cloud-services-extended-support).

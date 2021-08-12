@@ -3,14 +3,14 @@ title: Analysieren von Livevideos mit Ihrem eigenen gRPC-Modell
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Livevideos mit Ihrem eigenen gRPC-Modell per Video Analyzer analysieren.
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 04/21/2021
+ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: a9b086f4b2d856e3e534ac2603f61dfbfef31db0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cb901ca96cde0d0a113b07429338464e24720650
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371811"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601685"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---grpc"></a>Schnellstart: Analysieren von Livevideos mit Ihrem eigenen Modell – gRPC
 
@@ -76,7 +76,13 @@ In dieser Schnellstartanleitung verwenden Sie Video Analyzer, um Objekte wie Fah
 
 ## <a name="run-the-sample-program"></a>Ausführen des Beispielprogramms
 
-1. Drücken Sie die F5-Taste, um eine Debugsitzung zu starten. Es werden dann Nachrichten im Terminalfenster ausgegeben.
+1. ::: zone pivot="programming-language-csharp"
+    [!INCLUDE [header](includes/common-includes/csharp-run-program.md)]
+    ::: zone-end
+
+    ::: zone pivot="programming-language-python"
+    [!INCLUDE [header](includes/common-includes/python-run-program.md)]
+    ::: zone-end
 1. Der Code in **operations.json** beginnt mit dem Aufruf der direkten Methoden „pipelineTopologyList“ und „livePipelineList“. Wenn Sie nach dem Durcharbeiten vorheriger Schnellstartanleitungen eine Ressourcenbereinigung durchgeführt haben, werden bei diesem Prozess leere Listen zurückgegeben, und anschließend wird die Ausführung angehalten. Drücken Sie die EINGABETASTE, um den Vorgang fortzusetzen.
 
    ```

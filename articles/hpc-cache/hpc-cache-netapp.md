@@ -4,14 +4,14 @@ description: Verwenden von Azure HPC Cache zum Verbessern des Zugriffs auf mit A
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/26/2021
+ms.date: 05/05/2021
 ms.author: v-erkel
-ms.openlocfilehash: 1358f3cfebcd5cdc6d9e402e9c487f80f1aa8bcd
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 8dca61a9debad2c743c66b15d6f721edc7538178
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322022"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737292"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Verwenden von Azure HPC Cache mit Azure NetApp Files
 
@@ -50,7 +50,7 @@ Verwenden Sie beim Erstellen eines Azure NetApp Files-Systems zur Verwendung mit
 
 Die Mindestgröße, die mit der Netzmaske „/28“ angegeben wird, stellt 16 IP-Adressen bereit. In der Praxis verwendet Azure NetApp Files nur drei dieser verfügbaren IP-Adressen für den Volumezugriff. Das bedeutet, dass Sie in Ihrer Azure HPC Cache-Instanz nur drei Speicherziele erstellen müssen, um alle Volumes abzudecken.
 
-Wenn das delegierte Subnetz zu groß ist, besteht die Möglichkeit, dass die Azure NetApp Files-Volumes mehr IP-Adressen verwenden, als eine einzelne Azure HPC Cache-Instanz verarbeiten kann. Ein einzelner Cache verfügt über ein Limit von zehn Speicherzielen für die meisten Cachedurchsatzgrößen oder 20 Speicherziele für die größten Konfigurationen.
+Wenn das delegierte Subnetz zu groß ist, besteht die Möglichkeit, dass die Azure NetApp Files-Volumes mehr IP-Adressen verwenden, als eine einzelne Azure HPC Cache-Instanz verarbeiten kann. Ein einzelner Cache verfügt über ein [Limit von zehn Speicherzielen](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets) für die meisten Kombinationen aus Durchsatz und Speichergröße. Für die größten Konfigurationen liegt das Limit bei 20 Speicherzielen.
 
 Das Schnellstartbeispiel in der Azure NetApp Files-Dokumentation verwendet 10.7.0.0/16 als delegiertes Subnetz. Dieses Subnetz ist zu groß.
 

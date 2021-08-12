@@ -10,12 +10,12 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 6dc99d58f15653e9d3f991622de3bb3388690459
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 4d760f5017c20ac88d3329bb79937c971d4fba75
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814804"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459422"
 ---
 # <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-automated-machine-learning-part-1-of-2"></a>Tutorial: Power BI-Integration: Erstellen des Vorhersagemodells mithilfe von automatischem Machine Learning (Teil 1 von 2)
 
@@ -39,7 +39,7 @@ Stattdessen können Sie aber auch eine der anderen Optionen nutzen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Falls Sie noch nicht über ein Abonnement verfügen, können Sie eine [kostenlose Testversion](https://aka.ms/AMLFree) nutzen. 
+- Ein Azure-Abonnement. Falls Sie noch nicht über ein Abonnement verfügen, können Sie eine [kostenlose Testversion](https://azure.microsoft.com/free/) nutzen. 
 - Ein Azure Machine Learning-Arbeitsbereich. Falls Sie noch nicht über einen Arbeitsbereich verfügen, helfen Ihnen die Informationen unter [Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen](./how-to-manage-workspace.md#create-a-workspace) weiter.
 
 ## <a name="create-a-compute-cluster"></a>Erstellen eines Computeclusters

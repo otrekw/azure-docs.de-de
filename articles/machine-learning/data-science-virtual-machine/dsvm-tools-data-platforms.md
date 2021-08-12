@@ -5,16 +5,16 @@ description: Erfahren Sie mehr über die unterstützten Datenplattformen und Too
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
 ms.service: data-science-vm
-author: lobrien
-ms.author: laobri
+author: timoklimmer
+ms.author: tklimmer
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: 927e945a0d045abcd1caa2951dbd484224b2f425
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/29/2021
+ms.openlocfilehash: 8e8920d2a2ebbf326c9d5d0aba100ad5352ca6c4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519540"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071198"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Unterstützte Datenplattformen für Data Science Virtual Machine
 
@@ -27,16 +27,21 @@ Folgende Datenplattformen werden von der DSVM unterstützt.
 | Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Eine lokale Instanz einer relationalen Datenbank      |
-| Unterstützte DSVM-Editionen      | Windows 2016: SQL Server 2017, Windows 2019: SQL Server 2019      |
+| Unterstützte DSVM-Editionen      | Windows 2019, Ubuntu 18.04 (SQL Server 2019)   |
 | Typische Verwendung      | <ul><li>Schnelle lokale Entwicklung mit einem kleineren Dataset</li><li>Ausführen von R (datenbankintern)</li></ul> |
 | Links zu Beispielen      | <ul><li>In die SQL-Datenbank wird ein kleiner Teil des New York City-Datasets geladen:<br/>  `nyctaxi`</li><li>Ein Jupyter-Beispiel zur Veranschaulichung von Microsoft Machine Learning Server und datenbankinternen Analysen finden Sie hier:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
-| Verwandte Tools auf der DSVM       | <ul><li>SQL Server Management Studio</li><li>ODBC/JDBC-Treiber</li><li>pyodbc, RODBC</li><li>Apache Drill</li></ul> |
+| Verwandte Tools auf der DSVM       | <ul><li>SQL Server Management Studio</li><li>ODBC/JDBC-Treiber</li><li>pyodbc, RODBC</li></ul> |
 
 > [!NOTE]
 > Die Developer-Edition von SQL Server kann nur für Entwicklungs- und Testzwecke verwendet werden. Für die Verwendung in einer Produktionsumgebung benötigen Sie eine Lizenz oder einen der virtuellen SQL Server-Computer.
 
+> [!NOTE]
+> Der Support für Machine Learning Server (eigenständig) endet am 1. Juli 2021. Sie wird nach dem 30. Juni aus den DSVM-Images entfernt. Vorhandene Bereitstellungen haben weiterhin Zugriff auf die Software, aber aufgrund des erreichten Enddatums für den Support wird sie nach dem 1. Juli 2021 nicht mehr unterstützt.
 
-### <a name="setup"></a>Einrichten
+
+### <a name="windows"></a>Windows
+
+#### <a name="setup"></a>Einrichten
 
 Der Datenbankserver ist bereits vorkonfiguriert, und für die Windows-Dienste für SQL Server (etwa `SQL Server (MSSQLSERVER)`) ist automatische Ausführung festgelegt. Der einzige manuelle Schritt besteht darin, datenbankinterne Analysen mithilfe von Microsoft Machine Learning Server zu aktivieren. Sie können die Analyse aktivieren, indem Sie den folgenden Befehl als einmalige Aktion in SQL Server Management Studio (SSMS) ausführen. Führen Sie diesen Befehl aus, nachdem Sie sich als Computeradministrator angemeldet haben, öffnen Sie eine neue Abfrage in SSMS, und stellen Sie sicher, dass die ausgewählte Datenbank `master` ist:
 
@@ -48,15 +53,21 @@ CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS
 
 Zum Ausführen von SQL Server Management Studio können Sie in der Programmliste oder über die Windows-Suche nach „SQL Server Management Studio“ suchen und das Programm ausführen. Wenn Sie zum Eingeben von Anmeldeinformationen aufgefordert werden, wählen Sie **Windows-Authentifizierung** aus, und verwenden Sie den Computernamen oder ```localhost``` im Feld **SQL Server-Name**.
 
-### <a name="how-to-use-and-run-it"></a>Verwenden und Ausführen
+#### <a name="how-to-use-and-run-it"></a>Verwenden und Ausführen
 
 Standardmäßig wird der Datenbankserver mit der Datenbankstandardinstanz automatisch ausgeführt. Mithilfe von Tools wie SQL Server Management Studio können Sie lokal über den virtuellen Computer auf die SQL Server-Datenbank zugreifen. Die Konten lokaler Administratoren verfügen über Administratorzugriff auf die Datenbank.
 
 Die DSVM verfügt außerdem über ODBC- und JDBC-Treiber für die Kommunikation mit SQL Server, Azure SQL-Datenbanken und Azure Synapse Analytics über Anwendungen, die in mehreren Sprachen (beispielsweise Python, R oder Machine Learning Server) geschrieben wurden.
 
-### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Konfiguration und Installation auf der DSVM 
+#### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Konfiguration und Installation auf der DSVM 
 
  SQL Server wird wie gewohnt installiert. Das Programm befindet sich unter `C:\Program Files\Microsoft SQL Server`. Die datenbankinterne Machine Learning Server-Instanz finden Sie unter `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`. Die DSVM verfügt auch über eine separate eigenständige Machine Learning Server-Instanz. Diese ist unter `C:\Program Files\Microsoft\R Server\R_SERVER` installiert. Diese beiden Machine Learning Server-Instanzen verwenden keine Bibliotheken gemeinsam.
+
+
+### <a name="ubuntu"></a>Ubuntu
+
+Um die SQL Server Developer Edition auf einer Ubuntu-DSVM zu verwenden, müssen Sie sie zuerst installieren. Unter [Schnellstart: Installieren von SQL Server und Erstellen einer Datenbank unter Ubuntu](/sql/linux/quickstart-install-connect-ubuntu) erhalten Sie Informationen zur Vorgehensweise.
+
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (eigenständige Instanz)

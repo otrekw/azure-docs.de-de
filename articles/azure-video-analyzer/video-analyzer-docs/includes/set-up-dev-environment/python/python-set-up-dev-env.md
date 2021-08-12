@@ -4,12 +4,12 @@ ms.topic: include
 ms.service: azure-video-analyzer
 ms.date: 05/03/2021
 ms.author: juliako
-ms.openlocfilehash: 8e9992c6005c0bd3ba86bae005a1252a753e0c99
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0847bff1925e465c076048db924ee80f5d976b0c
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371837"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113559574"
 ---
 ### <a name="get-the-sample-code"></a>Beispielcode herunterladen
 
@@ -17,6 +17,7 @@ ms.locfileid: "110371837"
 1. Starten Sie Visual Studio Code, und öffnen Sie den Ordner, in den das Repository heruntergeladen wurde.
 1. Navigieren Sie in Visual Studio Code zum Ordner „src/cloud-to-device-console-app“, und erstellen Sie eine Datei namens **appsettings.json**. Diese Datei enthält die Einstellungen, die zum Ausführen des Programms erforderlich sind.
 1. Navigieren Sie im Speicherkonto, das Sie im obigen Setupschritt erstellt haben, zur Dateifreigabe, und suchen Sie unter der Dateifreigabe „deployment-output“ nach der Datei **appsettings.json**. Klicken Sie auf die Datei und dann auf die Schaltfläche „Herunterladen“. Der Inhalt sollte auf einer neuen Browserregisterkarte geöffnet werden und etwa wie folgt aussehen:
+
    ```json
    {
      "IoThubConnectionString": "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",
@@ -24,9 +25,11 @@ ms.locfileid: "110371837"
      "moduleId": "avaedge"
    }
    ```
+
    Die IoT Hub-Verbindungszeichenfolge ermöglicht die Verwendung von Visual Studio Code, um Befehle über Azure IoT Hub an die Edge-Module zu senden. Kopieren Sie den obigen JSON-Code in die Datei **src/cloud-to-device-console-app/appsettings.json**.
 1. Navigieren Sie als Nächstes zum Ordner „src/edge“, und erstellen Sie eine Datei vom Typ **.env**. Diese Datei enthält Eigenschaften, die Visual Studio Code zum Bereitstellen von Modulen auf einem Edgegerät verwendet.
 1. Navigieren Sie im Speicherkonto, das Sie im obigen Setupschritt erstellt haben, zur Dateifreigabe, und suchen Sie unter der Dateifreigabe „deployment-output“ nach der Datei **env.txt**. Klicken Sie auf die Datei und dann auf die Schaltfläche „Herunterladen“. Der Inhalt sollte auf einer neuen Browserregisterkarte geöffnet werden und etwa wie folgt aussehen:
+
    ```
         SUBSCRIPTION_ID="<Subscription ID>"
         RESOURCE_GROUP="<Resource Group>"
@@ -37,6 +40,7 @@ ms.locfileid: "110371837"
         CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"
         CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry password>"
    ```
+
    Kopieren Sie den JSON-Code aus der Datei **env.txt** in die Datei **src/edge/.env**.
 
 ### <a name="connect-to-the-iot-hub"></a>Herstellen der Verbindung mit dem IoT Hub
@@ -45,14 +49,8 @@ ms.locfileid: "110371837"
 
     <!-- commenting out the image for now ![Set IoT Hub connection string]()./media/quickstarts/set-iotconnection-string.png-->
 
-    > [!NOTE]
-    > Unter Umständen werden Sie aufgefordert, für die IoT Hub-Instanz die Informationen zum integrierten Endpunkt anzugeben. Sie erhalten diese Informationen, indem Sie im Azure-Portal zu Ihrer IoT Hub-Instanz navigieren und im linken Navigationsbereich nach der Option **Integrierte Endpunkte** suchen. Klicken Sie darauf, und suchen Sie im Abschnitt **Event Hub-kompatibler Endpunkt** nach dem **Event Hub-kompatiblen Endpunkt**. Kopieren und verwenden Sie den im Feld enthaltenen Text. Der Endpunkt sieht in etwa wie folgt aus: <br/>
-
-    ```
-    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-    ```
-
-1.  Aktualisieren Sie nach ungefähr 30 Sekunden Azure IoT Hub im unteren linken Bereich. Es sollte das Edgegerät `avasample-iot-edge-device` angezeigt werden, auf dem die folgenden Module bereitgestellt sind:
+    [!INCLUDE [provide-builtin-endpoint](../../common-includes/provide-builtin-endpoint.md)]
+1. Aktualisieren Sie nach ungefähr 30 Sekunden Azure IoT Hub im unteren linken Bereich. Es sollte das Edgegerät `avasample-iot-edge-device` angezeigt werden, auf dem die folgenden Module bereitgestellt sind:
     - Edge-Hub (Modulname **edgeHub**)
     - Edge-Agent (Modulname **edgeAgent**)
     - Video Analyzer (Modulname **avaedge**)
@@ -62,13 +60,8 @@ ms.locfileid: "110371837"
 
 Wenn Sie diese Schnellstartanleitung oder dieses Tutorial verwenden, werden Ereignisse an IoT Hub gesendet. Führen Sie zum Anzeigen dieser Ereignisse die folgenden Schritte aus:
 
-1.  Öffnen Sie in Visual Studio Code den Explorer-Bereich, und suchen Sie links unten nach **Azure IoT Hub**.
-1.  Erweitern Sie den Knoten **Geräte**.
-1.  Klicken Sie mit der rechten Maustaste auf `avasample-iot-edge-device`, und wählen Sie die Option **Überwachung des integrierten Ereignisendpunkts starten** aus.
+1. Öffnen Sie in Visual Studio Code den Explorer-Bereich, und suchen Sie links unten nach **Azure IoT Hub**.
+1. Erweitern Sie den Knoten **Geräte**.
+1. Klicken Sie mit der rechten Maustaste auf `avasample-iot-edge-device`, und wählen Sie die Option **Überwachung des integrierten Ereignisendpunkts starten** aus.
 
-    > [!NOTE]
-    > Unter Umständen werden Sie aufgefordert, für die IoT Hub-Instanz die Informationen zum integrierten Endpunkt anzugeben. Sie erhalten diese Informationen, indem Sie im Azure-Portal zu Ihrer IoT Hub-Instanz navigieren und im linken Navigationsbereich nach der Option **Integrierte Endpunkte** suchen. Klicken Sie darauf, und suchen Sie im Abschnitt **Event Hub-kompatibler Endpunkt** nach dem **Event Hub-kompatiblen Endpunkt**. Kopieren und verwenden Sie den im Feld enthaltenen Text. Der Endpunkt sieht in etwa wie folgt aus:
-
-    ```
-    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-    ```
+    [!INCLUDE [provide-builtin-endpoint](../../common-includes/provide-builtin-endpoint.md)]

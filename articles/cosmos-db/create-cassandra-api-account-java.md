@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Erstellen einer Java-App zum Erstellen eines Cassandra-API-Kontos in Azure Cosmos DB'
 description: Dieses Tutorial zeigt, wie Sie ein Cassandra-API-Konto erstellen, eine Datenbank (auch als „Keyspace“ bezeichnet) hinzufügen und mithilfe einer Java-App eine Tabelle zu diesem Konto hinzufügen.
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: ca1fdbd9aa2c98358489d91fe0839c98adec293b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b17734e83a6a096aedfdfa6aa1485cbddc6642f0
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212704"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355124"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Tutorial: Erstellen eines Cassandra-API-Kontos in Azure Cosmos DB durch die Verwendung einer Java-Anwendung zum Speichern von Schlüssel/Wert-Daten
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -41,23 +41,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. 
-
-2. Wählen Sie **Ressourcen erstellen** > **Datenbanken** > **Azure Cosmos DB** aus. 
-
-3. Geben Sie im Bereich **Neues Konto** die Einstellungen für das neue Azure Cosmos-Konto ein. 
-
-   |Einstellung   |Vorgeschlagener Wert  |Beschreibung  |
-   |---------|---------|---------|
-   |id   |   Geben Sie einen eindeutigen Namen ein.    | Geben Sie einen eindeutigen Namen ein, der das Azure Cosmos-Konto identifiziert. <br/><br/>Da cassandra.cosmosdb.azure.com an die ID angefügt wird, die Sie bereitstellen, um Ihren Kontaktpunkt zu erstellen, sollten Sie eine eindeutige, aber identifizierbare ID verwenden.         |
-   |API    |  Cassandra   |  Die API bestimmt den Typ des zu erstellenden Kontos. <br/> Wählen Sie **Cassandra** aus, da Sie in diesem Artikel eine Datenbank mit breiten Spalten erstellen werden, die mit der CQL-Syntax (Cassandra Query Language) abgefragt werden kann.  |
-   |Subscription    |  Ihr Abonnement        |  Wählen Sie das Azure-Abonnement, das Sie für dieses Azure Cosmos-Konto verwenden möchten, aus.        |
-   |Ressourcengruppe   | Geben Sie einen Namen ein.    |  Wählen Sie **Neu erstellen** aus, und geben Sie dann einen neuen Ressourcengruppennamen für Ihr Konto ein. Der Einfachheit halber können Sie denselben Namen wie bei Ihrer ID verwenden.    |
-   |Standort    |  Wählen Sie die Region aus, die Ihren Benutzern am nächsten liegt.    |  Wählen Sie den geografischen Standort aus, an dem Ihr Azure Cosmos-Konto gehostet werden soll. Verwenden Sie einen Standort, der Ihren Benutzern am nächsten liegt, um ihnen einen schnellen Zugriff auf die Daten zu gewähren.    |
-
-   :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="Erstellen eines Kontos mit dem Portal":::
-
-4. Klicken Sie auf **Erstellen**. <br/>Die Kontoerstellung dauert einige Minuten. Nachdem die Ressource erstellt wurde, können Sie auf der rechten Seite des Portals die Benachrichtigung **Bereitstellung erfolgreich** sehen.
+[!INCLUDE [cosmos-db-create-dbaccount-cassandra](includes/cosmos-db-create-dbaccount-cassandra.md)]
 
 ## <a name="get-the-connection-details-of-your-account"></a>Abrufen der Verbindungsdetails zu Ihrem Konto  
 

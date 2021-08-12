@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6b51d32b691919e0f0947d3ddb58d184424b9ad
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690803"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534408"
 ---
 # <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -36,7 +36,7 @@ Zu den vertraulichsten Daten gehören Geschäfts-, Finanz-, Gesundheits- und per
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Was ist die Datenermittlung und -klassifizierung?
 
-Mit der Datenermittlung und -klassifizierung werden eine Reihe grundlegender Dienste und neuer Funktionen in Azure eingeführt. Dies ist ein neues Paradigma für den Schutz von Informationen für SQL-Datenbank, verwaltete Azure SQL-Instanzen und Azure Synapse, das den Schutz der eigentlichen Daten und nicht nur der Datenbank zum Ziel hat. Dieses Paradigma umfasst Folgendes:
+Die Datenermittlung und -klassifizierung ist ein neues Paradigma für den Schutz von Informationen für SQL-Datenbank, SQL Managed Instance und Azure Synapse, das den Schutz der eigentlichen Daten und nicht nur der Datenbank zum Ziel hat. Derzeit werden die folgenden Funktionen unterstützt:
 
 - **Ermittlung und Empfehlungen:** Das Klassifizierungsmodul scannt Ihre Datenbank und identifiziert Spalten, die unter Umständen vertrauliche Daten enthalten. Es bietet dann eine einfache Möglichkeit, die Ergebnisse zu überprüfen und die empfohlenen Klassifizierungen über das Azure-Portal anzuwenden.
 
@@ -60,7 +60,7 @@ Die Klassifizierung umfasst zwei Metadatenattribute:
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>Definieren und Anpassen der Klassifizierungstaxonomie
 
-Datenermittlung und -klassifizierung verfügt über einen integrierten Satz von Vertraulichkeitsbezeichnungen und einen integrierten Satz von Informationstypen und Ermittlungslogik. Sie können diese Taxonomie nun anpassen und eine spezielle Gruppe und Rangfolge von Klassifizierungskonstrukten für Ihre Umgebung definieren.
+Datenermittlung und -klassifizierung verfügt über einen integrierten Satz von Vertraulichkeitsbezeichnungen und einen integrierten Satz von Informationstypen und Ermittlungslogik. Sie können diese Taxonomie anpassen und eine spezielle Gruppe und Rangfolge von Klassifizierungskonstrukten für Ihre Umgebung definieren.
 
 Die Definition und Anpassung Ihrer Klassifizierungstaxonomie erfolgt an zentraler Stelle für die ganze Azure-Organisation. Diese Stelle befindet sich im [Azure Security Center](../../security-center/security-center-introduction.md) und ist Bestandteil Ihrer Sicherheitsrichtlinie. Nur Benutzer mit Administratorrechten für die Stammverwaltungsgruppe der Organisation können diese Aufgabe ausführen.
 

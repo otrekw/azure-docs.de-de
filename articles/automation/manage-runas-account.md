@@ -3,19 +3,25 @@ title: Verwalten eines ausführenden Azure Automation-Kontos
 description: In diesem Artikel wird beschrieben, wie Sie mit PowerShell oder über das Azure-Portal ein ausführendes Azure Automation-Konto verwalten.
 services: automation
 ms.subservice: ''
-ms.date: 04/29/2021
+ms.date: 05/17/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ba7ae8218b730408361b6787517b72f2fb5c33b
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: d2d615df07e89e1fc2d4e63066d320002718d200
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278630"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059678"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Verwalten eines ausführenden Azure Automation-Kontos
 
-Ausführende Konten in Azure Automation ermöglichen die Authentifizierung für die Verwaltung von Ressourcen mit dem Azure Resource Manager- oder dem klassischen Azure-Bereitstellungsmodell mithilfe von Automation-Runbooks und anderen Automation-Features. Dieser Artikel enthält eine Anleitung zur Verwaltung eines ausführenden oder klassischen ausführenden Kontos.
+Ausführende Konten in Azure Automation ermöglichen die Authentifizierung für die Verwaltung von Ressourcen mit dem Azure Resource Manager- oder dem klassischen Azure-Bereitstellungsmodell mithilfe von Automation-Runbooks und anderen Automation-Features. 
+
+In diesem Artikel werden unter anderem folgende Aspekte der Verwaltung von ausführenden Konten oder klassischen ausführenden Konten behandelt:
+
+   * Erneuern eines selbstsignierten Zertifikats
+   * Erneuern eines Zertifikats von der Zertifizierungsstelle eines Unternehmens oder Drittanbieters
+   * Verwalten von Berechtigungen für das ausführende Konto
 
 Weitere Informationen zur Azure Automation-Kontoauthentifizierung sowie zu Szenarien der Prozessautomatisierung finden Sie unter [Übersicht über die Automation-Kontoauthentifizierung](automation-security-overview.md).
 
@@ -29,7 +35,7 @@ Beim Erneuern des selbstsignierten Zertifikats wird das aktuell gültige Zertifi
 >Wenn Sie der Meinung sind, dass das ausführende Konto kompromittiert wurde, können Sie das selbstsignierte Zertifikat löschen und neu erstellen.
 
 >[!NOTE]
->Wenn Sie Ihr ausführendes Konto für die Verwendung eines Zertifikats konfiguriert haben, das von Ihrer Unternehmenszertifizierungsstelle oder der Zertifizierungsstelle eines Drittanbieters ausgestellt wurde, und Sie die Option zum Erneuern eines selbstsignierten Zertifikats verwenden, wird das Unternehmenszertifikat durch ein selbstsigniertes Zertifikat ersetzt.
+>Wenn Sie Ihr ausführendes Konto für die Verwendung eines Zertifikats konfiguriert haben, das von der ZS Ihres Unternehmens oder eines Drittanbieters ausgestellt wurde, und Sie die Option zum Erneuern eines selbstsignierten Zertifikats verwenden, wird das Unternehmenszertifikat durch ein selbstsigniertes Zertifikat ersetzt. Unter [Erneuern eines Unternehmens- oder Drittanbieterzertifikats](#renew-an-enterprise-or-third-party-certificate) erfahren Sie, wie Sie Ihr Zertifikat in einem solchen Fall erneuern können.
 
 Verwenden Sie die folgenden Schritte, um das selbstsignierte Zertifikat zu erstellen.
 
@@ -46,6 +52,31 @@ Verwenden Sie die folgenden Schritte, um das selbstsignierte Zertifikat zu erste
     :::image type="content" source="media/manage-runas-account/automation-account-renew-runas-certificate.png" alt-text="Erneuern des Zertifikats für das ausführende Konto.":::
 
 1. Während das Zertifikat erneuert wird, können Sie den Status im Menü unter **Benachrichtigungen** verfolgen.
+
+## <a name="renew-an-enterprise-or-third-party-certificate"></a>Erneuern eines Unternehmens- oder Drittanbieterzertifikats
+
+Für jedes Zertifikat gilt ein vordefiniertes Ablaufdatum. Wenn Sie dem ausführenden Konto ein Zertifikat zugewiesen haben, das von einer Zertifizierungsstelle (ZS) ausgestellt wurde, müssen Sie andere Schritte anwenden, um das ausführende Konto mit dem neuen Zertifikat zu konfigurieren, bevor dieses abläuft. Sie können es vor dem Ablaufdatum jederzeit erneuern.
+
+1. Importieren Sie das erneuerte Zertifikat, und befolgen Sie die Schritte unter [Erstellen eines neuen Zertifikats](./shared-resources/certificates.md#create-a-new-certificate). Für die Automatisierung muss das Zertifikat die folgende Konfiguration aufweisen:
+
+   * Geben Sie den Anbieter **Microsoft Enhanced RSA und AES Cryptographic Provider** an.
+   * Als exportierbar markiert
+   * Konfiguriert für die Verwendung des SHA256-Algorithmus
+   * Gespeichert im `*.pfx`- oder `*.cer`-Format. 
+
+   Notieren oder kopieren Sie den Wert des **Zertifikatfingerabdrucks**, nachdem Sie das Zertifikat importiert haben. Dieser Wert wird verwendet, um die Eigenschaften der Verbindung des ausführenden Kontos mit dem neuen Zertifikat zu aktualisieren. 
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+
+1. Suchen Sie nach **Automation-Konten**, und wählen Sie diese Option aus.
+
+1. Wählen Sie auf der Seite „Automation-Konten“ in der entsprechenden Liste Ihr Automation-Konto aus.
+
+1. Wählen Sie im linken Bereich die Option **Verbindungen** aus.
+
+1. Wählen Sie auf der Seite **Verbindungen** die Option **AzureRunAsConnection** aus, und aktualisieren Sie den **Zertifikatfingerabdruck** mit dem neuen Wert.
+
+1. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
 ## <a name="grant-run-as-account-permissions-in-other-subscriptions"></a>Erteilen von Berechtigungen für das ausführende Konto in anderen Abonnements
 

@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 408e972eb5950baa75fa1bdf33fb2cd507154bcb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 44ef48fe75d7070d3f471b06d548c06dc5d972b6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612839"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479785"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen. In diesem Artikel werden die veröffentlichten Versionen und Features beschrieben.  
@@ -31,6 +31,12 @@ Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßi
 >
 
 Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-Installation integriert. Weitere Informationen zum Releaseverlauf von Azure AD Connect finden Sie [hier](./reference-connect-version-history.md). Featurefeedback können Sie über den [Benutzerfeedbackkanal für Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) abgeben.
+
+## <a name="may-2021"></a>Mai 2021
+**Agent-Aktualisierung**
+- Der Azure AD Connect Health-Agent für die AD FS (Version 3.1.99.0)
+  - Korrektur für einen niedrigen eindeutigen Benutzeranzahlwert in dem AD FS-Anwendungsaktivitätsbericht
+  - Korrektur für Anmeldungen mit leerer oder Standard GUID-Korrelations-ID
 
 ## <a name="march-2021"></a>März 2021
 **Agent-Aktualisierung**

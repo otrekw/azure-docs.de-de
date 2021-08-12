@@ -1,18 +1,18 @@
 ---
 title: Aktivieren und Verwenden von Azure Bastion-Ressourcenprotokollen
-description: In diesem Artikel erfahren Sie, wie Sie Azure Bastion-Diagnoseprotokolle aktivieren und verwenden.
+description: Erfahren Sie, wie Sie Azure Bastion-Diagnoseprotokolle aktivieren und verwenden.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58ad863c1133ee7be984fe723b567ce43a8ef6ad
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91445392"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534821"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>Aktivieren und Verwenden von Bastion-Ressourcenprotokollen
 

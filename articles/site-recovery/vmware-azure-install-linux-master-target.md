@@ -1,19 +1,19 @@
 ---
 title: Installieren eines Masterzielservers für ein Linux-VM-Failback mit Azure Site Recovery
 description: Hier erfahren Sie, wie Sie einen Linux-Masterzielserver für ein Failback an einem lokalen Standort während der Notfallwiederherstellung virtueller VMware-Computer in Azure mithilfe von Azure Site Recovery einrichten.
-author: mayurigupta13
 services: site-recovery
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.author: mayg
-ms.openlocfilehash: 1404b2dd035b7fd4b06c5f959fd9ba45f6be9c75
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: b8264221db1fcfee8d47ac0d8f159d6b7a6140fe
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164973"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577085"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Installieren eines Linux-Masterzielservers für Failbacks
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -335,7 +335,16 @@ Installieren Sie VMware-Tools oder open-vm-tools auf dem Masterziel, damit es di
 
 ### <a name="upgrade-the-master-target-server"></a>Aktualisieren des Masterzielservers
 
-Führen Sie das Installationsprogramm aus. Es erkennt automatisch, dass der Agent auf dem Masterzielserver installiert ist. Wählen Sie zum Aktualisieren **Y** aus.  Nachdem das Setup abgeschlossen wurde, überprüfen Sie die Version des installierten Masterziels mithilfe des folgenden Befehls:
+Wenn Sie das Installationsprogramm ausführen, wird automatisch erkannt, ob der Agent auf dem Masterziel installiert ist. Führen Sie die folgenden Schritte aus, um das Upgrade abzuschließen:
+1. Kopieren Sie die Datei „tar.gz“ vom Konfigurationsserver auf das Linux-Masterziel.
+2. Führen Sie diesen Befehl aus, um die ausgeführte Version zu überprüfen: cat /usr/local/.vx_version.
+3. Extrahieren Sie die TAR-Datei: tar -xvf latestlinuxmobsvc.tar.gz.
+4. Erteilen Sie die Berechtigungen zum Ausführen von Änderungen: chmod 755 ./install.
+5. Führen Sie das Upgradeskript aus: sudo ./install.
+6. Das Installationsprogramm sollte erkennen, dass der Agent auf dem Masterziel installiert ist. Wählen Sie zum Aktualisieren **Y** aus.
+7. Überprüfen Sie, ob die neue Version des Agent ausgeführt wird: cat /usr/local/.vx_version.
+
+Nachdem das Setup abgeschlossen wurde, überprüfen Sie die Version des installierten Masterziels mithilfe des folgenden Befehls:
 
 `cat /usr/local/.vx_version`
 

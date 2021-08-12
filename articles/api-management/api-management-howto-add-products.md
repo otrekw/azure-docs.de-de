@@ -6,12 +6,12 @@ ms.service: api-management
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: d0420b92fc94e0a1a9c8a4057f419a57a9909223
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c0d24c667d2c7c46f65d8c6f3bf6e6e3b52fd00
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545155"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669647"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>Tutorial: Erstellen und Veröffentlichen eines Produkts  
 
@@ -163,7 +163,7 @@ az apim product api delete --resource-group apim-hello-word-resource-group \
 ---
 
 > [!TIP]
-> Sie können ein Benutzerabonnement für ein Produkt unter Verwendung benutzerdefinierter Abonnementschlüssel über die [REST-API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) oder einen PowerShell-Befehl erstellen oder aktualisieren.
+> Sie können ein Benutzerabonnement für ein Produkt unter Verwendung benutzerdefinierter Abonnementschlüssel über die [REST-API](/rest/api/apimanagement/2020-12-01/subscription/create-or-update) oder einen PowerShell-Befehl erstellen oder aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -123,14 +123,16 @@
           items:
             - name: Installieren von IoT Edge für Linux
               href: how-to-install-iot-edge.md
-            - name: Ausführen von IoT Edge für Linux unter Windows
+            - name: "Installieren von IoT\_Edge für Linux unter Windows"
               href: how-to-install-iot-edge-on-windows.md
-        - name: Aktualisieren der Runtime
+        - name: Aktualisieren von IoT Edge
           href: how-to-update-iot-edge.md
         - name: Verwalten von Gerätezertifikaten
           href: how-to-manage-device-certificates.md
         - name: Konfigurieren der geschachtelten Virtualisierung für virtuelle Windows-Computer
           href: nested-virtualization.md
+        - name: Konfigurieren der GPU-Beschleunigung für Linux unter Windows
+          href: gpu-acceleration.md
     - name: Alternative Geräteszenarien
       items:
         - name: Ausführen von IoT Edge mit Windows-Containern
@@ -145,6 +147,8 @@
           items:
             - name: Linux
               href: how-to-auto-provision-simulated-device-linux.md
+            - name: Linux-Container unter Windows
+              href: how-to-auto-provision-tpm-linux-on-windows.md
             - name: Windows
               href: how-to-auto-provision-simulated-device-windows.md
         - name: X.509-Zertifikatnachweis
@@ -288,7 +292,7 @@
         - name: IoT Solution Accelerators
           href: ../iot-accelerators/index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

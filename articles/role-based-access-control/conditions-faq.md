@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.subservice: conditions
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/06/2021
+ms.date: 05/13/2021
 ms.author: rolyon
-ms.openlocfilehash: 93eb1afb061182105766ce4d7c864601883ec0cc
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: df1b585fb0f84dafe26c954386f487e3ceff2bc7
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489841"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847326"
 ---
 # <a name="faq-for-azure-role-assignment-conditions-preview"></a>FAQ Bedingungen für Azure-Rollenzuweisungsbedingungen (Vorschau)
 
@@ -38,9 +38,9 @@ Wenn Sie drei oder mehr Ausdrücke für eine zielorientierte Aktion hinzufügen,
   
 Die Azure-Portal ermöglicht es Ihnen nicht, eine Bedingung im Verwaltungsgruppenbereich zu bearbeiten oder anzeigen. Die Spalte **Bedingung** wird für den Verwaltungsgruppenbereich nicht angezeigt. Mit Azure PowerShell und Azure CLI können Sie Bedingungen im Verwaltungsgruppenbereich hinzufügen.
 
-**Werden Bedingungen über Azure AD Privileged Identity Management (PIM) für Azure-Ressourcen in der Vorschau unterstützt?**
+**Werden Bedingungen über Privileged Identity Management (PIM) für Azure-Ressourcen in der Vorschau unterstützt?**
 
-Nein.
+Ja. Weitere Informationen finden Sie unter [Zuweisen von Azure-Ressourcenrollen in Privileged Identity Management](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
 
 **Werden Bedingungen für klassische Administratoren unterstützt?**
 

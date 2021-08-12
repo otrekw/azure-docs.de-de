@@ -11,15 +11,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/30/2019
+ms.date: 5/19/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b84c38b28b51f867160272883465242fc81ff2bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9cde3940f09d3612ebe6411804fe4780e5bcfc18
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588057"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469196"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte
 
@@ -36,13 +36,13 @@ Möchten Sie:
 
 - Müssen Sie die Auswirkungen der Richtlinien für bedingten Zugriff im Mandanten verstehen?
 
-- Möchten Sie Anmeldeprotokollabfragen, die Arbeitsmappenberichte zur Anzahl der Benutzer, denen der Zugriff gewährt oder verweigert wurde, sowie zur Anzahl der Benutzer, die beim Zugriff auf Ressourcen die Richtlinien für bedingten Zugriff umgangen haben, überprüfen können?
+- Möchten Sie Abfragen des Anmeldeprotokolls mit einer Arbeitsmappe überprüfen können, die angibt, wie vielen Benutzern der Zugriff gewährt oder verweigert wurde und wie viele Benutzer beim Zugriff auf Ressourcen die Richtlinien für bedingten Zugriff umgangen haben?
 
-- Möchten Sie mehr über die Arbeitsmappendetails pro Bedingung wissen, sodass die Auswirkung einer Richtlinie pro Bedingung kontextualisiert werden kann, einschließlich Geräteplattform, Gerätestatus, Client-App, Anmelderisiko, Standort und Anwendung?
+- Sind Sie daran interessiert, ein tieferes Verständnis für bedingten Zugriff zu entwickeln, mit einer Arbeitsmappe mit Details pro Bedingung, sodass die Auswirkungen einer Richtlinie pro Bedingung kontextualisiert werden können, einschließlich Geräteplattform, Gerätezustand, Client-App, Anmeldungsrisiko, Standort und Anwendung?
 
-- Gewinnen Sie tiefere Einblicke in Anmeldeprotokollabfragen, die Arbeitsmappenberichte zur Anzahl der Benutzer, denen der Zugriff gewährt oder verweigert wurde, sowie zur Anzahl der Benutzer, die beim Zugriff auf Ressourcen die Richtlinien für bedingten Zugriff umgangen haben.
+- Möchten Sie für mehr als ein Jahr historischer Anwendungsrollen und [Zugriffspaket-Zuordnungsaktivitäten](../governance/entitlement-management-logs-and-reporting.md) archivieren und berichten?
 
-- Damit Sie diese Fragen beantworten können, stellt Azure Active Directory Arbeitsmappen für die Überwachung bereit. [Azure Monitor-Arbeitsmappen](../../azure-monitor/visualize/workbooks-overview.md) kombinieren Text, Analyseabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten.
+Damit Sie diese Fragen beantworten können, stellt Azure Active Directory Arbeitsmappen für die Überwachung bereit. [Azure Monitor-Arbeitsmappen](../../azure-monitor/visualize/workbooks-overview.md) kombinieren Text, Analyseabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten.
 
 
 
@@ -298,4 +298,5 @@ Damit Sie Probleme mit Anmeldungen beheben können, bietet Azure Monitor Ihnen e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](../../azure-monitor/visualize/workbooks-overview.md).
+* [Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](../../azure-monitor/visualize/workbooks-overview.md).
+* [Erstellen von benutzerdefinierten Azure Monitor-Abfragen mit Azure PowerShell](../governance/entitlement-management-logs-and-reporting.md).

@@ -6,12 +6,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 98f53ec1b6506a6d47146377e837576254f445e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3097023c4b9d19379f44529615a10c100e794700
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601065"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838673"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-solution"></a>Verbinden von Azure mit ITSM-Tools mithilfe der IT-Service-Management-Lösung
 
@@ -88,7 +88,7 @@ Die wiederverwendbaren Aktionsgruppen bieten Ihnen die Möglichkeit, modular Akt
 > [!NOTE]
 > Nachdem Sie die ITSM-Verbindung hergestellt haben, müssen Sie 30 Minuten warten, bis der Synchronisierungsvorgang abgeschlossen ist.
 
-## <a name="define-a-template"></a>Definieren einer Vorlage
+### <a name="define-a-template"></a>Definieren einer Vorlage
 
 Für bestimmte Arbeitselementtypen können Sie im ITSM-Tool Vorlagen definieren. Mithilfe von Vorlagen können Sie Felder definieren, die automatisch entsprechend den festgelegten Werten für eine Aktionsgruppe aufgefüllt werden. Sie können definieren, welche Vorlage als Teil der Aktionsgruppendefinition verwendet werden soll. Informationen zum Erstellen von Vorlagen finden Sie in der ServiceNow-Dokumentation – (hier)[https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/form-administration/task/t_CreateATemplateUsingTheTmplForm.html ].
 
@@ -114,9 +114,7 @@ So erstellen Sie eine Aktionsgruppe
 
 7. Wählen Sie einen Typ für das **Arbeitselement** aus.
 
-8. Wenn Sie vordefinierte Felder mit festen Werten ausfüllen möchten, wählen Sie **Benutzerdefinierte Vorlage verwenden** aus. Wählen Sie andernfalls in der Liste **Vorlagen** eine vorhandene [Vorlage](#define-a-template) aus, und geben Sie die festen Werte in den Vorlagenfeldern ein.
-
-9. Im letzten Abschnitt der Schnittstelle zum Erstellen der ITSM-Aktionsgruppe können Sie angeben, wie viele Arbeitselemente für die einzelnen Warnungen erstellt werden sollen.
+8. Im letzten Abschnitt der Schnittstelle zum Erstellen der ITSM-Aktionsgruppe können Sie angeben, wie viele Arbeitselemente für die einzelnen Warnungen erstellt werden sollen.
 
    > [!NOTE]
    > Dieser Abschnitt ist nur für Protokollsuchwarnungen relevant. Für alle anderen Warnungstypen erstellen Sie pro Warnung ein Arbeitselement.
@@ -143,6 +141,10 @@ So erstellen Sie eine Aktionsgruppe
      * Bei Auswahl von **Einzelne Arbeitselemente für jeden Protokolleintrag erstellen (Das Feld für das Konfigurationselement ist nicht ausgefüllt. Dies kann zu einer Menge an Arbeitselementen führen.)** wird ein Arbeitselement pro Zeile in den Suchergebnissen der Abfrage der Protokollsuchwarnungen erstellt. Die Beschreibungseigenschaft in den Nutzdaten des Arbeitselements enthält die Zeile aus den Suchergebnissen.
       
      * Wenn Sie das Kontrollkästchen **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** aktivieren, wird für jedes Konfigurationselement in jeder Warnung ein neues Arbeitselement erstellt. Jedes Konfigurationselement kann mehr als ein Arbeitselement im ITSM-System aufweisen. Diese Option entspricht dem Aktivieren des Kontrollkästchens, das angezeigt wird, nachdem Sie **Incident** als Arbeitselementtyp ausgewählt haben.
+9. Als Teil der Aktionsdefinition können Sie vordefinierte Felder definieren, die konstante Werte als Teil der Nutzlast enthalten. Je nach Arbeitselementtyp gibt es drei Optionen, die als Teil der Nutzlast verwendet werden können:
+    * **Keine**: Es wird eine reguläre Nutzlast für ServiceNow ohne zusätzliche vordefinierte Felder und Werte verwendet.
+    * **Standardfelder verwenden**: Es wird eine Gruppe von Feldern und Werten verwendet, die automatisch als Teil der Nutzlast an ServiceNow gesendet werden. Diese Felder sind nicht flexibel, und die Werte sind in ServiceNow-Listen definiert.
+    * **Gespeicherte Vorlagen aus ServiceNow verwenden**: Es wird eine vordefinierte Gruppe von Feldern und Werten verwendet, die als Teil einer Vorlagendefinition in ServiceNow definiert wurden. Wenn Sie die Vorlage bereits in ServiceNow definiert haben, können Sie sie über die Liste **Vorlagen** verwenden. Andernfalls können Sie die Vorlage in ServiceNow definieren. Ausführliche Informationen dazu finden Sie [hier](#define-a-template).
 
 10. Klicken Sie auf **OK**.
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 798db8e438a78fb818bd0af18f84c87c1f9ceb84
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 78c46d85b0fc2e8064fc2ecb60269c1a455ff4de
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105104627"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110487287"
 ---
 Eines der zentralen Features des Speech-Diensts ist die Fähigkeit, menschliche Sprache zu erkennen und in andere Sprachen zu übersetzen. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Sprachübersetzungen durchzuführen. In diesem Schnellstart werden folgende Themen behandelt:
 
@@ -116,7 +116,7 @@ Von der Eigenschaft [`SpeechRecognitionLanguage`][recognitionlang] wird eine Zei
 
 ## <a name="add-translation-language"></a>Hinzufügen der Übersetzungssprache
 
-Eine weitere häufige Aufgabe bei der Sprachübersetzung ist die Angabe von Zielübersetzungssprachen, wobei mindestens eine erforderlich ist, jedoch mehrere unterstützt werden. Im folgenden Codeausschnitt sind sowohl Französisch als auch Deutsch als Zielübersetzungssprachen angegeben.
+Eine weitere häufige Aufgabe bei der Sprachübersetzung ist die Angabe von Zielübersetzungssprachen, wobei mindestens eine erforderlich ist, aber die Verwendung mehrerer unterstützt wird. Im folgenden Codeausschnitt sind sowohl Französisch als auch Deutsch als Zielübersetzungssprachen angegeben.
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -334,6 +334,119 @@ static async Task TranslateSpeechAsync()
 ```
 
 Weitere Informationen zur Sprachsynthese finden Sie unter [Grundlegendes zur Sprachsynthese](../../../get-started-text-to-speech.md).
+
+## <a name="multi-lingual-translation-with-language-identification"></a>Mehrsprachige Übersetzung mit Sprachidentifikation
+
+In vielen Szenarios wissen Sie möglicherweise nicht, welche Eingabesprachen angegeben werden sollen. Mithilfe der Sprachidentifikation können Sie bis zu zehn mögliche Eingabesprachen angeben und automatisch in Ihre Zielsprachen übersetzen. 
+
+Im folgenden Beispiel wird die kontinuierliche Übersetzung aus einer Audiodatei verwendet, und die Eingabesprache wird automatisch erkannt, auch wenn sich die gesprochene Sprache ändert. Wenn Sie das Beispiel ausführen, werden `en-US` und `zh-CN` automatisch erkannt, da sie in der `AutoDetectSourceLanguageConfig` definiert sind. Anschließend wird die Sprache wie in den Aufrufen von `AddTargetLanguage()` angegeben in `de` und `fr` übersetzt.
+
+> [!IMPORTANT]
+> Diese Funktion steht derzeit als **Vorschau** zur Verfügung.
+
+```csharp
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+
+public static async Task MultiLingualTranslation()
+{
+    var region = "<paste-your-region>";
+    // currently the v2 endpoint is required for this design pattern
+    var endpointString = $"wss://{region}.stt.speech.microsoft.com/speech/universal/v2";
+    var endpointUrl = new Uri(endpointString);
+    
+    var config = SpeechConfig.FromEndpoint(endpointUrl, "<paste-your-subscription-key>");
+
+    // Source lang is required, but is currently NoOp 
+    string fromLanguage = "en-US";
+    config.SpeechRecognitionLanguage = fromLanguage;
+
+    config.AddTargetLanguage("de");
+    config.AddTargetLanguage("fr");
+
+    config.SetProperty(PropertyId.SpeechServiceConnection_ContinuousLanguageIdPriority, "Latency");
+    var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromLanguages(new string[] { "en-US", "zh-CN" });
+
+    var stopTranslation = new TaskCompletionSource<int>();
+    using (var audioInput = AudioConfig.FromWavFileInput(@"path-to-your-audio-file.wav"))
+    {
+        using (var recognizer = new TranslationRecognizer(config, autoDetectSourceLanguageConfig, audioInput))
+        {
+            recognizer.Recognizing += (s, e) =>
+            {
+                var lidResult = e.Result.Properties.GetProperty(PropertyId.SpeechServiceConnection_AutoDetectSourceLanguageResult);
+
+                Console.WriteLine($"RECOGNIZING in '{lidResult}': Text={e.Result.Text}");
+                foreach (var element in e.Result.Translations)
+                {
+                    Console.WriteLine($"    TRANSLATING into '{element.Key}': {element.Value}");
+                }
+            };
+
+            recognizer.Recognized += (s, e) => {
+                if (e.Result.Reason == ResultReason.TranslatedSpeech)
+                {
+                    var lidResult = e.Result.Properties.GetProperty(PropertyId.SpeechServiceConnection_AutoDetectSourceLanguageResult);
+
+                    Console.WriteLine($"RECOGNIZED in '{lidResult}': Text={e.Result.Text}");
+                    foreach (var element in e.Result.Translations)
+                    {
+                        Console.WriteLine($"    TRANSLATED into '{element.Key}': {element.Value}");
+                    }
+                }
+                else if (e.Result.Reason == ResultReason.RecognizedSpeech)
+                {
+                    Console.WriteLine($"RECOGNIZED: Text={e.Result.Text}");
+                    Console.WriteLine($"    Speech not translated.");
+                }
+                else if (e.Result.Reason == ResultReason.NoMatch)
+                {
+                    Console.WriteLine($"NOMATCH: Speech could not be recognized.");
+                }
+            };
+
+            recognizer.Canceled += (s, e) =>
+            {
+                Console.WriteLine($"CANCELED: Reason={e.Reason}");
+
+                if (e.Reason == CancellationReason.Error)
+                {
+                    Console.WriteLine($"CANCELED: ErrorCode={e.ErrorCode}");
+                    Console.WriteLine($"CANCELED: ErrorDetails={e.ErrorDetails}");
+                    Console.WriteLine($"CANCELED: Did you update the subscription info?");
+                }
+
+                stopTranslation.TrySetResult(0);
+            };
+
+            recognizer.SpeechStartDetected += (s, e) => {
+                Console.WriteLine("\nSpeech start detected event.");
+            };
+
+            recognizer.SpeechEndDetected += (s, e) => {
+                Console.WriteLine("\nSpeech end detected event.");
+            };
+
+            recognizer.SessionStarted += (s, e) => {
+                Console.WriteLine("\nSession started event.");
+            };
+
+            recognizer.SessionStopped += (s, e) => {
+                Console.WriteLine("\nSession stopped event.");
+                Console.WriteLine($"\nStop translation.");
+                stopTranslation.TrySetResult(0);
+            };
+
+            // Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.
+            Console.WriteLine("Start translation...");
+            await recognizer.StartContinuousRecognitionAsync().ConfigureAwait(false);
+
+            Task.WaitAny(new[] { stopTranslation.Task });
+            await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
+        }
+    }
+}
+```
 
 [config]: /dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig
 [audioconfig]: /dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig

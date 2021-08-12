@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 54ee903b490e10f7ea4ca3bca91f742b5811404d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3420acbccf8066b6a40669103f253a4fc6f06fa
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563301"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595295"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Was ist ein Content Delivery Network in Azure?
 Ein Content Delivery Network (CDN) ist ein verteiltes Netzwerk mit Servern, über die Webinhalte auf effiziente Weise für Benutzer bereitgestellt werden können. In CDN-Instanzen werden zwischengespeicherte Inhalte auf Edgeservern an POP-Standorten (Point of Presence) gespeichert, die sich in der Nähe der Endbenutzer befinden, um die Wartezeit zu verringern. 
@@ -69,7 +69,7 @@ Azure CDN bietet folgende Schlüsselfeatures:
 - [Unterstützung benutzerdefinierter HTTPS-Domänen](cdn-custom-ssl.md)
 - [Azure-Diagnoseprotokolle](cdn-azure-diagnostic-logs.md)
 - [Dateikomprimierung](cdn-improve-performance.md)
-- [Geofilterung](cdn-restrict-access-by-country.md)
+- [Geofilterung](cdn-restrict-access-by-country-region.md)
 
 Eine vollständige Liste mit den Features, die von den einzelnen Azure CDN-Produkten unterstützt werden, finden Sie unter [Azure CDN-Produktfeatures](cdn-features.md).
 

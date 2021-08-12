@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: fd0e6f893d152259c46ff06e9ec20af54395c5e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fb4025d10990c0f499a16bbb6bc308eb74c00cf
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95994382"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655168"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Entfernen der Verwendung von TLS 1.0 und 1.1 mit Azure Cache for Redis
 
@@ -19,14 +19,14 @@ Es zeichnet sich ein branchenweiter Trend zur ausschließlichen Verwendung von T
 
 Im Rahmen dieser Anstrengung nehmen wir die folgenden Änderungen an Azure Cache for Redis vor:
 
-* **Phase 1:** Wir konfigurieren die standardmäßige TLS-Mindestversion für neu erstellte Cache-Instanzen mit 1.2 (zuvor TLS 1.0). Vorhandene Cache-Instanzen werden zu diesem Zeitpunkt nicht aktualisiert. Sie können weiterhin das Azure-Portal oder andere Verwaltungs-APIs nutzen, um bei Bedarf für Abwärtskompatibilität [die TLS-Mindestversion](cache-configure.md#access-ports) in 1.0 oder 1.1 zu ändern.
+* **Phase 1:** Wir konfigurieren die standardmäßige TLS-Mindestversion für neu erstellte Cache-Instanzen mit 1.2 (zuvor TLS 1.0). Vorhandene Cache-Instanzen werden zu diesem Zeitpunkt nicht aktualisiert. Sie können weiterhin das Azure-Portal oder andere Verwaltungs-APIs nutzen, um zum Zweck der Abwärtskompatibilität [die TLS-Mindestversion](cache-configure.md#access-ports) auf 1.0 oder 1.1 zu ändern.
 * **Phase 2:** Wir stellen die Unterstützung der TLS-Versionen 1.1 und 1.0 ein. Nach dieser Änderung muss Ihre Anwendung für die Kommunikation mit dem Cache TLS 1.2 oder höher verwenden. Es wird vorausgesetzt, dass der Dienst Azure Cache for Redis verfügbar ist, während wir ihn zur Unterstützung von TLS 1.2 oder höher migrieren.
 
   > [!NOTE]
   > Phase 2 ist vorläufig so geplant, dass sie nicht vor dem 31. Dezember 2020 beginnt. Wir empfehlen Ihnen jedoch dringend, jetzt mit der Planung für diese Änderung zu beginnen und Clients zur Unterstützung von TLS 1.2 oder höher proaktiv zu aktualisieren. 
   >
 
-Als Teil dieser Änderung entfernen wir auch die Unterstützung für ältere Verschlüsselungssammlungen, die nicht sicher sind. Unsere unterstützten Sammlungen mit Verschlüsselungsverfahren werden auf folgende beschränkt, wenn der Cache mit der mindestens mit TLS 1.2 konfiguriert ist:
+Als Teil dieser Änderung entfernen wir auch die Unterstützung für ältere Verschlüsselungssammlungen, die nicht sicher sind. Die unterstützten Verschlüsselungsverfahren sind auf folgende beschränkt, wenn der Cache mit TLS 1.2 oder höher konfiguriert ist:
 
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
@@ -48,7 +48,7 @@ Die Daten, zu denen diese Änderungen wirksam werden sind:
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Überprüfen, ob Ihre Anwendung bereits konform ist
 
-Am einfachsten lässt sich herausfinden, ob die Anwendung mit TLS 1.2 kompatibel ist, indem Sie den Wert **TLS-Mindestversion** für einen in der Anwendung verwendeten Test- oder Stagingcache auf „TLS 1.2“ festlegen und dann Tests durchführen. Die Einstellung **TLS-Mindestversion** befindet sich unter [Erweiterte Einstellungen](cache-configure.md#advanced-settings) für Ihre Cache-Instanz im Azure-Portal.  Wenn die Anwendung nach dieser Änderung weiterhin erwartungsgemäß ausgeführt wird, ist sie wahrscheinlich konform. Möglicherweise müssen Sie die in der Anwendung verwendete Redis-Clientbibliothek so konfigurieren, dass TLS 1.2 aktiviert wird, um eine Verbindung mit Azure Cache for Redis herzustellen.
+Sie können herausfinden, ob Ihre Anwendung mit TLS 1.2 funktioniert, indem Sie den Wert **TLS-Mindestversion** in einem Test- oder Stagingcache auf TLS 1.2 festlegen und anschließend Tests ausführen. Die Einstellung **TLS-Mindestversion** befindet sich unter [Erweiterte Einstellungen](cache-configure.md#advanced-settings) für Ihre Cache-Instanz im Azure-Portal.  Wenn die Anwendung nach dieser Änderung weiterhin erwartungsgemäß ausgeführt wird, ist sie wahrscheinlich konform. Möglicherweise müssen Sie die in der Anwendung verwendete Redis-Clientbibliothek so konfigurieren, dass TLS 1.2 aktiviert wird, um eine Verbindung mit Azure Cache for Redis herzustellen.
 
 ## <a name="configure-your-application-to-use-tls-12"></a>Konfigurieren Ihrer Anwendung für die Verwendung von TLS 1.2
 
@@ -56,16 +56,16 @@ In den meisten Anwendungen werden Redis-Clientbibliotheken für die Kommunikatio
 
 ### <a name="net-framework"></a>.NET Framework
 
-Bei Redis .NET-Clients wird standardmäßig die früheste TLS-Version in .NET Framework 4.5.2 oder früher und die neueste TLS-Version in .NET Framework 4.6 oder höher verwendet. Wenn Sie eine ältere Version von .NET Framework verwenden, können Sie TLS 1.2 manuell aktivieren:
+Bei Redis .NET-Clients wird standardmäßig die früheste TLS-Version in .NET Framework 4.5.2 oder früher und die neueste TLS-Version in .NET Framework 4.6 oder höher verwendet. Wenn Sie eine ältere Version von .NET Framework verwenden, aktivieren Sie TLS 1.2 manuell:
 
 * **StackExchange.Redis:** Legen Sie `ssl=true` und `sslprotocols=tls12` in der Verbindungszeichenfolge fest.
 * **ServiceStack.Redis:** Befolgen Sie die Anweisungen für [ServiceStack.Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support). Dazu ist mindestens ServiceStack.Redis v5.6 erforderlich.
 
 ### <a name="net-core"></a>.NET Core
 
-Redis .NET Core-Clients verwenden standardmäßig die TLS-Standardversion des Betriebssystems, die natürlich vom Betriebssystem abhängig ist. 
+Redis .NET Core-Clients verwenden standardmäßig die TLS-Standardversion des Betriebssystems, die vom Betriebssystem abhängig ist. 
 
-Je nach verwendeter Betriebssystemversion und den angewandten Patches kann die TLS-Standardversion variieren. Diesbezügliche Informationen für Windows finden Sie in [diesem](/dotnet/framework/network-programming/tls#support-for-tls-12) Artikel. 
+Je nach verwendeter Betriebssystemversion und den angewandten Patches kann die TLS-Standardversion variieren. Weitere Informationen finden Sie [hier](/dotnet/framework/network-programming/#support-for-tls-12).
 
 Wenn Sie ein altes Betriebssystem verwenden oder nur sichergehen möchten, wird empfohlen, die bevorzugte TLS-Version manuell über den Client zu konfigurieren.
 
@@ -90,7 +90,7 @@ shardInfo.setPassword("cachePassword");
 Jedis jedis = new Jedis(shardInfo);
 ```
 
-Die Lettuce- und Redisson-Clients unterstützen die Angabe der TLS-Version noch nicht, sodass sie fehlschlagen, wenn der Cache nur TLS 1.2-Verbindungen akzeptiert. Korrekturen für diese Clients werden überprüft. Sehen Sie also für diese Pakete nach, ob eine aktualisierte Version mit dieser Unterstützung vorhanden ist.
+Die Lettuce- und Redisson-Clients unterstützen noch nicht das Festlegen der TLS-Version. Es erfolgt ein Abbruch, wenn der Cache nur TLS 1.2-Verbindungen akzeptiert. Korrekturen für diese Clients werden überprüft. Sehen Sie also für diese Pakete nach, ob eine aktualisierte Version mit dieser Unterstützung vorhanden ist.
 
 In Java 8 wird standardmäßig TLS 1.2 verwendet und sollte in den meisten Fällen keine Updates Ihrer Clientkonfiguration erfordern. Um sicherzugehen, testen Sie Ihre Anwendung.
 

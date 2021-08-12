@@ -3,13 +3,13 @@ title: 'Erste Schritte mit Azure Video Analyzer: Azure'
 description: In dieser Schnellstartanleitung werden die ersten Schritte mit Azure Video Analyzer erläutert. Dabei werden ein virtueller Azure-Computer als IoT Edge-Gerät und ein simulierter Livevideostream verwendet.
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 04/21/2021
-ms.openlocfilehash: 3606442101c8e20173ed3cd18c583fce02a45da1
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 335890f4bb939123290e5dfe9cccbf9f9aef1242
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385709"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605174"
 ---
 # <a name="quickstart-get-started-with-azure-video-analyzer"></a>Schnellstart: Erste Schritte mit Azure Video Analyzer
 
@@ -24,14 +24,12 @@ Nach dem Ausführen der Setupschritte können Sie den simulierten Livevideostrea
 
 * Ein Azure-Konto mit einem aktiven Abonnement. Sie können ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keins besitzen.
 
-    > [!NOTE]    
-    > Sie benötigen ein Azure-Abonnement, in dem Sie sowohl auf die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) als auch auf die Rolle [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) zugreifen können. Wenn Sie nicht über die richtigen Berechtigungen verfügen, wenden Sie sich an Ihren Kontoadministrator, damit er Ihnen diese Berechtigungen erteilt.  
+    [!INCLUDE [azure-subscription-permissions](./includes/common-includes/azure-subscription-permissions.md)]
 * [Visual Studio Code](https://code.visualstudio.com/) mit den folgenden Erweiterungen:
 
     * [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-> [!TIP] 
-> Bei der Installation der Azure IoT Tools-Erweiterung werden Sie unter Umständen aufgefordert, Docker zu installieren. Sie können diese Aufforderung ignorieren.
+[!INCLUDE [install-docker-prompt](./includes/common-includes/install-docker-prompt.md)]
 
 ## <a name="set-up-azure-resources"></a>Einrichten von Azure-Ressourcen
 
@@ -40,7 +38,7 @@ Nach dem Ausführen der Setupschritte können Sie den simulierten Livevideostrea
 Der Bereitstellungsprozess dauert ungefähr **20 Minuten**. Nach Abschluss haben Sie bestimmte Azure-Ressourcen im Azure-Abonnement bereitgestellt. Hierzu zählen unter anderem:
 1. **Video Analyzer-Konto:** Dieser [Clouddienst](overview.md) wird zum Registrieren des Video Analyzer-Edgemoduls und zur Wiedergabe aufgezeichneter Videos und Videoanalysen verwendet.
 1. **Speicherkonto:** Zum Speichern aufgezeichneter Videos und Videoanalysen.
-1. **Verwaltete Identität:** Dies ist die vom Benutzer zugewiesene [verwaltete Identität]../../active-directory/managed-identities-azure-resources/overview.md), die verwendet wird, um den Zugriff auf das oben genannte Speicherkonto zu verwalten.
+1. **Verwaltete Identität**: Dies ist die benutzerseitig zugewiesene [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md), die zum Verwalten des Zugriffs auf das obige Speicherkonto verwendet wird.
 1. **Virtueller Computer:** Ein virtueller Computer, der als Ihr simuliertes Edgegerät dient.
 1. **IoT Hub**: Dient als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung, IoT Edge-Modulen und den verwalteten Geräten.
 
@@ -89,11 +87,7 @@ Wenn Sie diese Schnellstartanleitung verwenden, werden Ereignisse an den IoT Hub
 1. Erweitern Sie den Knoten **Geräte**.
 1. Klicken Sie mit der rechten Maustaste auf `avasample-iot-edge-device`, und wählen Sie die Option **Überwachung des integrierten Ereignisendpunkts starten** aus.
 
-    > [!NOTE]
-    > Unter Umständen werden Sie aufgefordert, für die IoT Hub-Instanz die Informationen zum integrierten Endpunkt anzugeben. Sie erhalten diese Informationen, indem Sie im Azure-Portal zu Ihrer IoT Hub-Instanz navigieren und im linken Navigationsbereich nach der Option **Integrierte Endpunkte** suchen. Klicken Sie darauf, und suchen Sie im Abschnitt **Event Hub-kompatibler Endpunkt** nach dem **Event Hub-kompatiblen Endpunkt**. Kopieren und verwenden Sie den im Feld enthaltenen Text. Der Endpunkt sieht in etwa wie folgt aus:  
-        ```
-        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-        ```
+    [!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
 
 ## <a name="use-direct-method-calls"></a>Verwenden von Aufrufen direkter Methoden
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: eaf8d8f741c120297e6ae57e8ddb8b62f7c7f534
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 56c1142ace0591543127289ff6228df05420f1f3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105104102"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110486505"
 ---
 Eines der zentralen Features des Speech-Diensts ist die Fähigkeit, menschliche Sprache zu erkennen und in andere Sprachen zu übersetzen. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Sprachübersetzungen durchzuführen. In diesem Schnellstart werden folgende Themen behandelt:
 
@@ -330,6 +330,106 @@ void translateSpeech() {
 ```
 
 Weitere Informationen zur Sprachsynthese finden Sie unter [Grundlegendes zur Sprachsynthese](../../../get-started-text-to-speech.md).
+
+## <a name="multi-lingual-translation-with-language-identification"></a>Mehrsprachige Übersetzung mit Sprachidentifikation
+
+In vielen Szenarios wissen Sie möglicherweise nicht, welche Eingabesprachen angegeben werden sollen. Mithilfe der Sprachidentifikation können Sie bis zu zehn mögliche Eingabesprachen angeben und automatisch in Ihre Zielsprachen übersetzen. 
+
+Im folgenden Beispiel wird die kontinuierliche Übersetzung aus einer Audiodatei verwendet, und die Eingabesprache wird automatisch erkannt, auch wenn sich die gesprochene Sprache ändert. Wenn Sie das Beispiel ausführen, werden `en-US` und `zh-CN` automatisch erkannt, da sie in der `AutoDetectSourceLanguageConfig` definiert sind. Anschließend wird die Sprache in `de` und `fr` übersetzt, wie in den Aufrufen an `AddTargetLanguage()` angegeben.
+
+> [!IMPORTANT]
+> Diese Funktion steht derzeit als **Vorschau** zur Verfügung.
+
+```cpp
+using namespace std;
+using namespace Microsoft::CognitiveServices::Speech;
+using namespace Microsoft::CognitiveServices::Speech::Audio;
+
+void MultiLingualTranslation()
+{
+    auto region = "<paste-your-region>";
+    // currently the v2 endpoint is required for this design pattern
+    auto endpointString = std::format("wss://{}.stt.speech.microsoft.com/speech/universal/v2", region);
+    auto config = SpeechConfig::FromEndpoint(endpointString, "<paste-your-subscription-key>");
+
+    config->SetProperty(PropertyId::SpeechServiceConnection_ContinuousLanguageIdPriority, "Latency");
+    auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "zh-CN" });
+
+    promise<void> recognitionEnd;
+    // Source lang is required, but is currently NoOp 
+    auto fromLanguage = "en-US";
+    config->SetSpeechRecognitionLanguage(fromLanguage);
+    config->AddTargetLanguage("de");
+    config->AddTargetLanguage("fr");
+
+    auto audioInput = AudioConfig::FromWavFileInput("path-to-your-audio-file.wav");
+    auto recognizer = TranslationRecognizer::FromConfig(config, autoDetectSourceLanguageConfig, audioInput);
+
+    recognizer->Recognizing.Connect([](const TranslationRecognitionEventArgs& e)
+        {
+            std::string lidResult = e.Result->Properties.GetProperty(PropertyId::SpeechServiceConnection_AutoDetectSourceLanguageResult);
+
+            cout << "Recognizing in Language = "<< lidResult << ":" << e.Result->Text << std::endl;
+            for (const auto& it : e.Result->Translations)
+            {
+                cout << "  Translated into '" << it.first.c_str() << "': " << it.second.c_str() << std::endl;
+            }
+        });
+
+    recognizer->Recognized.Connect([](const TranslationRecognitionEventArgs& e)
+        {
+            if (e.Result->Reason == ResultReason::TranslatedSpeech)
+            {
+                std::string lidResult = e.Result->Properties.GetProperty(PropertyId::SpeechServiceConnection_AutoDetectSourceLanguageResult);
+                cout << "RECOGNIZED in Language = " << lidResult << ": Text=" << e.Result->Text << std::endl;
+            }
+            else if (e.Result->Reason == ResultReason::RecognizedSpeech)
+            {
+                cout << "RECOGNIZED: Text=" << e.Result->Text << " (text could not be translated)" << std::endl;
+            }
+            else if (e.Result->Reason == ResultReason::NoMatch)
+            {
+                cout << "NOMATCH: Speech could not be recognized." << std::endl;
+            }
+
+            for (const auto& it : e.Result->Translations)
+            {
+                cout << "  Translated into '" << it.first.c_str() << "': " << it.second.c_str() << std::endl;
+            }
+        });
+
+    recognizer->Canceled.Connect([&recognitionEnd](const TranslationRecognitionCanceledEventArgs& e)
+        {
+            cout << "CANCELED: Reason=" << (int)e.Reason << std::endl;
+            if (e.Reason == CancellationReason::Error)
+            {
+                cout << "CANCELED: ErrorCode=" << (int)e.ErrorCode << std::endl;
+                cout << "CANCELED: ErrorDetails=" << e.ErrorDetails << std::endl;
+                cout << "CANCELED: Did you update the subscription info?" << std::endl;
+
+                recognitionEnd.set_value();
+            }
+        });
+
+    recognizer->Synthesizing.Connect([](const TranslationSynthesisEventArgs& e)
+        {
+            auto size = e.Result->Audio.size();
+            cout << "Translation synthesis result: size of audio data: " << size
+                << (size == 0 ? "(END)" : "");
+        });
+
+    recognizer->SessionStopped.Connect([&recognitionEnd](const SessionEventArgs& e)
+        {
+            cout << "Session stopped.";
+            recognitionEnd.set_value();
+        });
+
+    // Starts continuos recognition. Use StopContinuousRecognitionAsync() to stop recognition.
+    recognizer->StartContinuousRecognitionAsync().get();
+    recognitionEnd.get_future().get();
+    recognizer->StopContinuousRecognitionAsync().get();
+}
+```
 
 [config]: /cpp/cognitive-services/speech/translation-speechtranslationconfig
 [audioconfig]: /cpp/cognitive-services/speech/audio-audioconfig

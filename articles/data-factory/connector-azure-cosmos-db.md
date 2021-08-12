@@ -6,13 +6,13 @@ author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: a7676dfe6feedc5bb34ab6c96b4c3a03e4feb56c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 05/18/2021
+ms.openlocfilehash: 36fae5b71e9aa5c2c6c252ad1aa306bb64d9aecb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483117"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480078"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Cosmos DB (SQL-API) mithilfe von Azure Data Factory
 
@@ -39,7 +39,7 @@ Dieser Connector für Azure Cosmos DB (SQL API) wird für die folgenden Aktivit�
 
 Im Rahmen der Kopieraktivität unterstützt dieser Azure Cosmos DB (SQL-API)-Connector folgende Aktivitäten:
 
-- Kopieren von Daten in die oder aus der [SQL-API](../cosmos-db/introduction.md) von Azure Cosmos DB.
+- Das Kopieren von Daten aus und in die Azure Cosmos DB [SQL-API](../cosmos-db/introduction.md) mithilfe von Schlüssel-, Dienstprinzipal- oder verwalteten Identitäten für die Azure-Ressourcenauthentifizierungen.
 - Schreiben in Azure Cosmos DB als **insert** oder **upsert**.
 - Importieren und Exportieren von JSON-Dokumenten in ihrem jeweiligen Zustand oder Kopieren von Daten aus einem tabellarischen Dataset oder in ein tabellarisches Dataset. Die Beispiele zeigen eine SQL-Datenbank und eine CSV-Datei. Informationen zum Kopieren von Dokumenten in ihrem jeweiligen Zustand in bzw. aus JSON-Dateien oder in eine andere bzw. aus einer anderen Azure Cosmos DB-Sammlung finden Sie unter [Importieren und Exportieren von JSON-Dokumenten](#import-and-export-json-documents).
 
@@ -56,9 +56,15 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die Sie zum Definie
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
-Folgende Eigenschaften werden für den verknüpften Azure Cosmos DB-Dienst (SQL-API) unterstützt:
+Der Azure Cosmos DB (SQL API) Connector unterstützt die folgenden Authentifizierungstypen. Weitere Informationen finden Sie in den entsprechenden Abschnitten:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+- [Schlüsselauthentifizierung](#key-authentication)
+- [Dienstprinzipalauthentifizierung (Vorschau)](#service-principal-authentication)
+- [Verwaltete Identitäten für die Authentifizierung von Azure-Ressourcen (Preview)](#managed-identity)
+
+### <a name="key-authentication"></a>Schlüsselauthentifizierung
+
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **CosmosDb** festgelegt werden. | Ja |
 | connectionString |Geben Sie die zum Herstellen einer Verbinden mit der Azure Cosmos DB-Datenbank erforderlichen Informationen an.<br />**Hinweis**: Sie müssen Datenbankinformationen in der Verbindungszeichenfolge angeben, wie in den folgenden Beispielen gezeigt. <br/> Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
@@ -108,13 +114,140 @@ Folgende Eigenschaften werden für den verknüpften Azure Cosmos DB-Dienst (SQL-
 }
 ```
 
+### <a name="service-principal-authentication-preview"></a><a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung (Vorschau)
+
+>[!NOTE]
+>Derzeit wird die Dienstprinzipalauthentifizierung im Datenfluss nicht unterstützt.
+
+Zum Verwenden der Dienstprinzipalauthentifizierung führen Sie die folgenden Schritte aus.
+
+1. Registrieren Sie eine Anwendungsentität in Azure Active Directory (Azure AD), indem Sie die Schritte unter [Registrieren der Anwendung bei einem Azure AD-Mandanten](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant) befolgen. Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts verwenden:
+
+    - Anwendungs-ID
+    - Anwendungsschlüssel
+    - Mandanten-ID
+
+2. Erteilen Sie dem Dienstprinzipal geeignete Berechtigungen. Beispiele zur Funktionsweise von Berechtigungen in der Cosmos DB finden Sie unter den [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../cosmos-db/how-to-setup-rbac.md). Genauer gesagt, erstellen Sie eine Rollendefinition, und weisen die Rolle über die Dienstprinzipalobjekt-ID dem Dienstprinzipal zu. 
+
+Diese Eigenschaften werden im verknüpften Dienst unterstützt:
+
+| Eigenschaft | Beschreibung | Erforderlich |
+|:--- |:--- |:--- |
+| Typ | Die type-Eigenschaft muss auf **CosmosDb** festgelegt werden. |Yes |
+| accountEndpoint | Geben Sie die Kontoendpunkt-URL für die Azure Cosmos DB an. | Ja |
+| database | Geben Sie den Namen der Datenbank an. | Ja |
+| servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
+| servicePrincipalCredentialType | Die Art von Anmeldeinformationen, die für die Authentifizierung beim Dienstprinzipal verwendet werden. Gültige Werte sind **ServicePrincipalKey** und **ServicePrincipalCert**. | Ja |
+| servicePrincipalCredential | Die Anmeldeinformationen für den Dienstprinzipal. <br/> Wenn Sie **ServicePrincipalKey** als Anmeldeinformationstyp verwenden, geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). <br/> Wenn Sie **ServicePrincipalCert** als Anmeldeinformationen verwenden,verweisen Sie auf ein Zertifikat in Azure Key Vault. | Ja |
+| tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja |
+| azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre Azure Active Directory-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung der Data Factory verwendet. | Nein |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn kein Wert angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
+
+**Beispiel: Verwenden der Dienstprinzipal-Schlüsselauthentifizierung**
+
+Sie können den Dienstprinzipalschlüssel auch in Azure Key Vault speichern.
+
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "accountEndpoint": "<account endpoint>",
+            "database": "<database name>",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalKey",
+            "servicePrincipalCredential": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Beispiel: Verwenden der Dienstprinzipal-Zertifikatauthentifizierung**
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "accountEndpoint": "<account endpoint>",
+            "database": "<database name>", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalCert",
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="managed-identities-for-azure-resources-authentication-preview"></a><a name="managed-identity"></a>Verwaltete Identitäten für die Azure-Ressourcenauthentifizierung (Vorschau)
+
+>[!NOTE]
+>Derzeit wird die verwaltete Identitätsauthentifizierung im Datenfluss nicht unterstützt.
+
+Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Sie können diese verwaltete Identität für die Cosmos DB-Authentifizierung ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals verwenden. Sie erlaubt dieser bestimmten Factory den Zugriff und das Kopieren von Daten in oder aus Ihrer Microsoft Azure Cosmos DB.
+
+Um verwaltete Identitäten für die Azure-Ressourcenauthentifizierung zu verwenden, gehen Sie folgendermaßen vor.
+
+1. [Rufen Sie die Informationen zur verwalteten Data Factory-Identität ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert von **Objekt-ID der verwalteten Identität** kopieren, der zusammen mit Ihrer Factory generiert wurde.
+
+2. Erteilen Sie der verwalteten Entität geeignete Berechtigungen. Beispiele zur Funktionsweise von Berechtigungen in der Cosmos DB finden Sie unter den [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../cosmos-db/how-to-setup-rbac.md). Genauer gesagt, erstellen Sie eine Rollendefinition, und weisen die Rolle der verwalteten Identität zu.
+
+Diese Eigenschaften werden im verknüpften Dienst unterstützt:
+
+| Eigenschaft | Beschreibung | Erforderlich |
+|:--- |:--- |:--- |
+| Typ | Die type-Eigenschaft muss auf **CosmosDb** festgelegt werden. |Yes |
+| accountEndpoint | Geben Sie die Kontoendpunkt-URL für die Azure Cosmos DB an. | Ja |
+| database | Geben Sie den Namen der Datenbank an. | Ja |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn kein Wert angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
+
+**Beispiel:**
+
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "accountEndpoint": "<account endpoint>",
+            "database": "<database name>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [Datasets und verknüpfte Dienste](concepts-datasets-linked-services.md).
 
 Folgende Eigenschaften werden für das Azure Cosmos DB (SQL-API)-Dataset unterstützt: 
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft **type** des Datasets muss auf **CosmosDbSqlApiCollection** festgelegt werden. |Ja |
 | collectionName |Der Name der Azure Cosmos DB-Dokumentsammlung. |Ja |
@@ -150,7 +283,7 @@ Legen Sie zum Kopieren von Daten aus Azure Cosmos DB (SQL-API) den **Quelltyp** 
 
 Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft **type** der Quelle für die Kopieraktivität muss auf **CosmosDbSqlApiSource** festgelegt werden. |Ja |
 | Abfrage |Geben Sie die Azure Cosmos DB-Abfrage an, um Daten zu lesen.<br/><br/>Beispiel:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nein <br/><br/>Falls nicht angegeben, wird die folgende SQL-Anweisung ausgeführt: `select <columns defined in structure> from mycollection` |
@@ -203,7 +336,7 @@ Legen Sie zum Kopieren von Daten in Azure Cosmos DB (SQL-API) den **Senkentyp** 
 
 Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft **type** der Senke für die Kopieraktivität muss auf **CosmosDbSqlApiSink** festgelegt werden. |Ja |
 | writeBehavior |Beschreibt, wie Daten in Azure Cosmos DB geschrieben werden. Zulässige Werte: **insert** und **upsert**.<br/><br/>Das Verhalten von **upsert** besteht darin, das Dokument zu ersetzen, wenn ein Dokument mit der gleichen ID bereits vorhanden ist. Andernfalls wird das Dokument eingefügt.<br /><br />**Hinweis**: Data Factory generiert automatisch eine ID für ein Dokument, wenn eine ID weder im Originaldokument noch durch Spaltenzuordnung angegeben wird. Dies bedeutet, dass Sie sicherstellen müssen, dass Ihr Dokument eine ID besitzt, damit **upsert** wie erwartet funktioniert. |Nein<br />(der Standardwert ist **insert**) |

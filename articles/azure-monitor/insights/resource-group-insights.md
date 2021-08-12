@@ -1,19 +1,19 @@
 ---
-title: Einblicke in Azure Monitor-Ressourcengruppen | Microsoft-Dokumentation
-description: Erfahren Sie mit Azure Monitor mehr über die Integrität und Leistung Ihrer verteilten Anwendungen und Dienste auf Ressourcengruppenebene.
+title: Azure Monitor Resource Group Insights | Microsoft-Dokumentation
+description: Erfahren Sie mit dem Resource Group Insights-Feature von Azure Monitor mehr über die Integrität und Leistung Ihrer verteilten Anwendungen und Dienste auf Ressourcengruppenebene.
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bfe197befc781548dc41ff389f2d9558af7a8aae
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 466d63f8615d8115c7dcbfacdca2d004cf19621e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567401"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073808"
 ---
-# <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Überwachen von Ressourcengruppen mit Azure Monitor (Vorschauversion)
+# <a name="monitor-azure-monitor-resource-group-insights-preview"></a>Überwachen von Azure Monitor Resource Group Insights (Vorschau)
 
 Moderne Anwendungen sind oft komplex und weit verteilt, wobei viele einzelne Teile zusammenarbeiten, um einen Dienst bereitzustellen. Angesichts dieser Komplexität bietet Azure Monitor Überwachungseinblicke für Ressourcengruppen. Dies erleichtert die Selektierung und Diagnose von Problemen Ihrer individuellen Ressourcen und bietet gleichzeitig einen Kontext für die Integrität und Leistung der Ressourcengruppe (und Ihrer Anwendung) als Ganzes.
 
@@ -43,7 +43,7 @@ Standardmäßig sind die Ressourcen nach App-Ebene und Ressourcentyp gruppiert. 
 
 Die Seite mit den Einblicken in die Ressourcengruppe bietet mehrere Tools zur Diagnose von Problemen.
 
-   | Tool | Beschreibung |
+   | Tool | BESCHREIBUNG |
    | ---------------- |:-----|
    | [**Warnungen**](../alerts/alerts-overview.md)      |  Dient zum Anzeigen, Erstellen und Verwalten von Warnungen. |
    | [**Metriken**](../data-platform.md) | Dient zum Visualisieren und Untersuchen Ihrer auf Metriken basierenden Daten.    |
@@ -108,10 +108,10 @@ In diesem Fall wird Ihnen bei Auswahl von „Bearbeiten“ angezeigt, dass diese
 
 ### <a name="enabling-access-to-alerts"></a>Aktivieren des Zugriffs auf Warnungen
 
-Damit in Azure Monitor für Ressourcengruppen Warnungen angezeigt werden, muss ein Benutzer, der für dieses Abonnement über die Rolle „Besitzer“ oder „Mitwirkender“ verfügt, Azure Monitor für Ressourcengruppen für eine beliebige Ressourcengruppe des Abonnements öffnen. Dadurch können alle Benutzer, die über Lesezugriff verfügen, in Azure Monitor für Ressourcengruppen Warnungen für alle Ressourcengruppen des Abonnements anzeigen. Falls Sie über eine Rolle vom Typ „Besitzer“ oder „Mitwirkender“ verfügen, aktualisieren Sie diese Seite in einigen Minuten.
+Damit Warnungen in Resource Group Insights angezeigt werden, muss ein Benutzer, der für dieses Abonnement über die Rolle „Besitzer“ oder „Mitwirkender“ verfügt, Resource Group Insights für eine beliebige Ressourcengruppe im Abonnement öffnen. Dadurch können alle Benutzer, die über Lesezugriff verfügen, Warnungen für alle Ressourcengruppen im Abonnement in Resource Group Insights anzeigen. Falls Sie über eine Rolle vom Typ „Besitzer“ oder „Mitwirkender“ verfügen, aktualisieren Sie diese Seite in einigen Minuten.
 
-Azure Monitor für Ressourcengruppen nutzt das Warnungsverwaltungssystem von Azure Monitor, um den Warnungsstatus abzurufen. Die Warnungsverwaltung ist standardmäßig nicht für alle Ressourcengruppen und Abonnements konfiguriert und kann nur von einem Benutzer mit einer Rolle vom Typ „Besitzer“ oder „Mitwirkender“ aktiviert werden. Die Aktivierung kann auf zwei Arten durchgeführt werden:
-* Öffnen von Azure Monitor für Ressourcengruppen für eine beliebige Ressourcengruppe des Abonnements
+Resource Group Insights nutzt das Warnungsverwaltungssystem von Azure Monitor, um den Warnungsstatus abzurufen. Die Warnungsverwaltung ist standardmäßig nicht für alle Ressourcengruppen und Abonnements konfiguriert und kann nur von einem Benutzer mit einer Rolle vom Typ „Besitzer“ oder „Mitwirkender“ aktiviert werden. Die Aktivierung kann auf zwei Arten durchgeführt werden:
+* Öffnen von Resource Group Insights für eine beliebige Ressourcengruppe im Abonnement
 * Navigieren zum Abonnement, Klicken auf **Ressourcenanbieter** und Klicken auf die Option zum **Registrieren für „Alerts.Management**“
 
 ## <a name="next-steps"></a>Nächste Schritte

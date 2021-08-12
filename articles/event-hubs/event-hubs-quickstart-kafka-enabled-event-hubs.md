@@ -3,12 +3,12 @@ title: 'Schnellstart: Datenstreaming mit Azure Event Hubs mithilfe des Kafka-Pro
 description: 'Schnellstart: Dieser Artikel enthält Informationen zum Streamen in Azure Event Hubs mit dem Kafka-Protokoll und APIs.'
 ms.topic: quickstart
 ms.date: 05/10/2021
-ms.openlocfilehash: 601f9293c99ab68e10b39e33d036961900835db5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b88515ee0d1bc46eb41585d05f61a2a246cfab44
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379061"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288390"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Schnellstart: Datenstreaming mit Event Hubs mithilfe des Kafka-Protokolls
 In dieser Schnellstartanleitung erfahren Sie, wie Daten an Event Hubs gestreamt werden, ohne dass Sie Protokollclients ändern oder eigene Cluster betreiben müssen. Sie lernen, wie Sie über Ihre Producer und Consumer mit Event Hubs kommunizieren – mit nur einer Konfigurationsänderung in Ihren Anwendungen. 
@@ -22,7 +22,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 * Lesen Sie den Artikel [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md).
 * Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-* [Java Development Kit (JDK) 1.7 oder höher](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Java Development Kit (JDK) 1.7 oder höher](/azure/developer/java/fundamentals/java-support-on-azure)
 * Ein binäres Maven-Archiv ([Download](https://maven.apache.org/download.cgi)/[Installationsanleitung](https://maven.apache.org/install.html))
 * [Git-Client](https://www.git-scm.com/)
 

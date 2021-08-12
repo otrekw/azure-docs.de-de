@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6c761edec571f404a538025c868750bc5712eced
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 356c4b1049f6c9558954de457c7e79abbd87d7b8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796127"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475377"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure-Dateisynchronisierung – Überlegungen zum Netzwerkbetrieb
 Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstellen:
@@ -23,6 +23,9 @@ Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstel
 In diesem Artikel wird beschrieben, wie Sie das Netzwerk konfigurieren, wenn Ihr Anwendungsfall eine Nutzung der Azure-Dateisynchronisierung zum lokalen Zwischenspeichern von Dateien statt des direkten Einbindens der Azure-Dateifreigabe über SMB erfordert. Weitere Informationen zu Überlegungen zum Netzwerkbetrieb für eine Azure Files-Bereitstellung finden Sie unter [Azure Files – Überlegungen zum Netzwerkbetrieb](../files/storage-files-networking-overview.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json).
 
 Die Netzwerkkonfiguration für die Azure-Dateisynchronisierung umfasst zwei verschiedene Azure-Objekte: einen Speichersynchronisierungsdienst und ein Azure-Speicherkonto. Ein Speicherkonto ist ein Verwaltungskonstrukt, das einen gemeinsam genutzten Pool mit Speicherplatz darstellt, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können. Ein Speichersynchronisierungsdienst ist ein Verwaltungskonstrukt für registrierte Server. Hierbei handelt es sich um Windows-Dateiserver mit einer etablierten Vertrauensstellung mit der Azure-Dateisynchronisierung und mit Synchronisierungsgruppen, mit denen die Topologie der Synchronisierungsbeziehung definiert wird. 
+
+> [!Important]  
+> Die Azure-Dateisynchronisierung unterstützt kein Internetrouting. Die Standardoption für das Netzwerkrouting (Microsoft-Routing) wird von der Azure-Dateisynchronisierung unterstützt.
 
 ## <a name="connecting-windows-file-server-to-azure-with-azure-file-sync"></a>Herstellen einer Verbindung zwischen Windows-Dateiserver und Azure mit Azure-Dateisynchronisierung 
 Zum Einrichten und Verwenden von Azure Files und Azure-Dateisynchronisierung mit einem lokalen Windows-Dateiserver sind außer einer grundlegenden Internetverbindung keine speziellen Netzwerkfunktionen für Azure erforderlich. Zum Bereitstellen der Azure-Dateisynchronisierung installieren Sie den Azure-Dateisynchronisierung-Agent auf dem Windows-Dateiserver, den Sie mit Azure synchronisieren möchten. Der Azure-Dateisynchronisierung-Agent erreicht die Synchronisierung mit einer Azure-Dateifreigabe über zwei Kanäle:

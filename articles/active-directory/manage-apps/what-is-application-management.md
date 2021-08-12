@@ -2,25 +2,25 @@
 title: Was ist die Anwendungsverwaltung in Azure Active Directory?
 description: Eine Übersicht über die Verwendung von Azure Active Directory (AD) als Identitäts- und Zugriffsverwaltungssystem (Identity and Access Management, IAM) für Ihre cloudbasierten und lokalen Anwendungen.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 01/22/2021
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: ''
-ms.openlocfilehash: 31bfbe1405e1180f8909333da8947d72d68dd7db
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e483efc2beae5ddf76c135aaa785b32732aa2f62
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079353"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566406"
 ---
 # <a name="what-is-application-management"></a>Worum handelt es sich bei der Anwendungsverwaltung?
 
-Azure AD ist ein Identitäts- und Zugriffsverwaltungsystem (Identity and Access Management, IAM). Es stellt einen zentralen Ort zum Speichern von Informationen zu digitalen Identitäten bereit. Sie können Ihre Softwareanwendungen so konfigurieren, dass sie Azure AD als Speicherort für die Benutzerinformationen verwenden. 
+Azure AD ist ein Identitäts- und Zugriffsverwaltungsystem (Identity and Access Management, IAM). Es stellt einen zentralen Ort zum Speichern von Informationen zu digitalen Identitäten bereit. Sie können Ihre Softwareanwendungen so konfigurieren, dass sie Azure AD als Speicherort für die Benutzerinformationen verwenden.
 
 Azure AD muss für die Integration mit einer Anwendung konfiguriert werden. Anders ausgedrückt: Azure AD muss wissen, von welchen Apps es für Identitäten verwendet wird. Dass Azure AD stets über diese Apps informiert ist und weiß, wie sie zu behandeln sind, wird als Anwendungsverwaltung bezeichnet.
 
@@ -29,6 +29,7 @@ Sie verwalten Anwendungen im Azure Active Directory-Portal unter „Verwalten“
 ![Option „Unternehmensanwendungen“ im Azure AD-Portal im Abschnitt „Verwalten“.](media/what-is-application-management/enterprise-applications-in-nav.png)
 
 ## <a name="what-is-an-identity-and-access-management-iam-system"></a>Was ist ein Identitäts- und Zugriffsverwaltungsystem (IAM-System)?
+
 Bei einer Anwendung handelt es sich um eine Software, die für bestimmte Zwecke verwendet wird. Die meisten Apps setzen voraus, dass sich Benutzer anmelden.
 
 Ein zentrales Identitätssystem stellt einen zentralen Ort zum Speichern von Benutzerinformationen bereit, die dann von allen Anwendungen verwendet werden können. Diese Systeme werden als IAM-Systeme (Identitäts- und Zugriffsverwaltungssysteme) bezeichnet. Azure Active Directory ist das IAM-System für die Microsoft-Cloud.
@@ -45,18 +46,18 @@ Organisationen besitzen häufig Hunderte von Anwendungen, die für die Arbeit ih
 
 ## <a name="how-does-azure-ad-work-with-apps"></a>Wie funktioniert Azure AD mit Apps?
 
-Azure AD befindet sich in der Mitte und bietet Identitätsverwaltung für cloudbasierte und lokale Apps. 
+Azure AD befindet sich in der Mitte und bietet Identitätsverwaltung für cloudbasierte und lokale Apps.
 
 ![Diagramm: Apps im Verbund über Azure AD](media/what-is-application-management/app-management-overview.png)
 
 >[!TIP]
->Reduzieren Sie Verwaltungskosten, indem Sie die [Benutzerbereitstellung automatisieren](../app-provisioning/user-provisioning.md), damit Benutzer automatisch zu Azure AD hinzugefügt werden, wenn Sie sie dem Personalsystem Ihres Unternehmens hinzufügen. 
+>Reduzieren Sie Verwaltungskosten, indem Sie die [Benutzerbereitstellung automatisieren](../app-provisioning/user-provisioning.md), damit Benutzer automatisch zu Azure AD hinzugefügt werden, wenn Sie sie dem Personalsystem Ihres Unternehmens hinzufügen.
 
 ## <a name="what-types-of-applications-can-i-integrate-with-azure-ad"></a>Welche Typen von Anwendungen kann ich in Azure AD integrieren?
 
-Sie können Azure AD als Identitätssystem für nahezu jede App verwenden. Zahlreiche Apps sind bereits vorkonfiguriert und können mit minimalem Aufwand eingerichtet werden. Diese vorkonfigurierten Apps werden im [Azure AD-App-Katalog](/azure/active-directory/saas-apps/) veröffentlicht. 
+Sie können Azure AD als Identitätssystem für nahezu jede App verwenden. Zahlreiche Apps sind bereits vorkonfiguriert und können mit minimalem Aufwand eingerichtet werden. Diese vorkonfigurierten Apps werden im [Azure AD-App-Katalog](/azure/active-directory/saas-apps/) veröffentlicht.
 
-Sie können die meisten Apps manuell für einmaliges Anmelden konfigurieren, wenn sie sich nicht bereits im Katalog befinden. Azure AD bietet mehrere Optionen für einmaliges Anmelden. Zu den beliebtesten zählen SAML-basiertes SSO und OIDC-basiertes SSO. Weitere Informationen zur Integration von Apps zum Aktivieren von SSO finden Sie unter [Optionen für einmaliges Anmelden in Azure AD](sso-options.md). 
+Sie können die meisten Apps manuell für einmaliges Anmelden konfigurieren, wenn sie sich nicht bereits im Katalog befinden. Azure AD bietet mehrere Optionen für einmaliges Anmelden. Zu den beliebtesten zählen SAML-basiertes SSO und OIDC-basiertes SSO. Weitere Informationen zur Integration von Apps zum Aktivieren von SSO finden Sie unter [Optionen für einmaliges Anmelden in Azure AD](sso-options.md).
 
 Verwendet Ihre Organisation lokale Apps? Sie können sie mithilfe des App-Proxys integrieren. Weitere Informationen finden Sie unter [Remotezugriff auf lokale Anwendungen über den Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md).
 
@@ -65,7 +66,7 @@ Verwendet Ihre Organisation lokale Apps? Sie können sie mithilfe des App-Proxys
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>Risikomanagement durch Richtlinien für bedingten Zugriff
 
-In Kombination mit einmaligem Anmelden (Single Sign-On, SSO) mit Azure AD bietet [bedingter Zugriff](../conditional-access/concept-conditional-access-cloud-apps.md) ein hohes Maß an Sicherheit für den Zugriff auf Anwendungen. Richtlinien für bedingten Zugriff ermöglichen eine differenzierte Steuerung der Apps basierend auf den von Ihnen festgelegten Bedingungen. 
+In Kombination mit einmaligem Anmelden (Single Sign-On, SSO) mit Azure AD bietet [bedingter Zugriff](../conditional-access/concept-conditional-access-cloud-apps.md) ein hohes Maß an Sicherheit für den Zugriff auf Anwendungen. Richtlinien für bedingten Zugriff ermöglichen eine differenzierte Steuerung der Apps basierend auf den von Ihnen festgelegten Bedingungen.
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Produktivitätssteigerung durch einmaliges Anmelden
 

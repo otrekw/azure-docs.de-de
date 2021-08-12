@@ -4,12 +4,12 @@ description: Knotentypen, Dauerhaftigkeit, Zuverlässigkeit und andere Faktoren 
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 9268dfef15d8302eb31cc1b649c7fd713aab6721
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0b04bc99abc2f9864ed22078f809702390d9f547
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732583"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695447"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 
@@ -53,9 +53,9 @@ Die Anzahl der ursprünglichen Knoten hängt vom Zweck des Clusters und den dara
 
 * ***Erstreckt sich Ihr Cluster über Verfügbarkeitszonen?***
 
-    Service Fabric unterstützt Cluster, die sich über [Verfügbarkeitszonen](../availability-zones/az-overview.md) erstrecken, indem Knotentypen bereitgestellt werden, die an bestimmte Zonen angeheftet sind. So wird die Hochverfügbarkeit Ihrer Anwendungen sichergestellt. Für Verfügbarkeitszonen müssen Sie die Knotentypen anders planen, und es gelten höhere Mindestanforderungen. Weitere Informationen finden Sie unter [Empfohlene Topologie für den primären Knotentyp von Azure Service Fabric-Clustern, die sich über Verfügbarkeitszonen erstrecken](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
+    Service Fabric unterstützt Cluster, die sich über [Verfügbarkeitszonen](../availability-zones/az-overview.md) erstrecken, indem Knotentypen bereitgestellt werden, die an bestimmte Zonen angeheftet sind. So wird die Hochverfügbarkeit Ihrer Anwendungen sichergestellt. Für Verfügbarkeitszonen müssen Sie die Knotentypen anders planen, und es gelten höhere Mindestanforderungen. Weitere Informationen finden Sie unter [Die empfohlene Topologie für das Verteilen eines primären Knotentyps über Verfügbarkeitszonen](service-fabric-cross-availability-zones.md#recommended-topology-for-spanning-a-primary-node-type-across-availability-zones).
 
-Wenn Sie die Anzahl und die Eigenschaften von Knotentypen für die Erstellung Ihres Clusters bestimmen, müssen Sie bedenken, dass Sie auch nach der Bereitstellung Ihres Clusters jederzeit nicht primäre Knotentypen hinzufügen, bearbeiten oder entfernen können. [Primäre Knotentypen](service-fabric-scale-up-primary-node-type.md) können zudem in ausgeführten Clustern bearbeitet werden. Einige Vorgänge in Produktionsumgebungen müssen jedoch sorgfältig geplant und durchgeführt werden.
+Wenn Sie die Anzahl und die Eigenschaften von Knotentypen für die Erstellung Ihres Clusters bestimmen, müssen Sie bedenken, dass Sie auch nach der Bereitstellung Ihres Clusters jederzeit nicht primäre Knotentypen hinzufügen, bearbeiten oder entfernen können. [Primäre Knotentypen können auch in ausgeführten Clustern hoch- oder herunterskaliert werden.](service-fabric-scale-up-primary-node-type.md) Dazu müssen Sie jedoch einen neuen Knotentyp erstellen, die Workload dorthin verschieben und dann den ursprünglichen primären Knotentyp entfernen.
 
 Ein weiterer zu berücksichtigender Aspekt für Ihre Knotentypeigenschaften ist der Dauerhaftigkeitsgrad, der über die Berechtigungen der VMs eines Knotentyps in der Azure-Infrastruktur entscheidet. Verwenden Sie die VM-Größen, die Sie für Ihre Cluster auswählen, und die Anzahl der Instanzen, die Sie einzelnen Knotentypen zuweisen, um den geeigneten Dauerhaftigkeitsgrad für die jeweiligen Knotentypen festzulegen. Dies wird im Folgenden erläutert.
 

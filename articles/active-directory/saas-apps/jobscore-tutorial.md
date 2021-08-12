@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 275f87163e75c3ded7260229d40a61185877a7d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 932e4db2c7a91c1c6ec6133068741f07d3652c35
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459409"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscore"></a>Tutorial: Azure Active Directory-Integration mit JobScore
 
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     ![SSO-Informationen zur Domäne und zu den URLs für JobScore](common/sp-signonurl.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://hire.jobscore.com/auth/adfs/<company name>`
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://hire.jobscore.com/auth/adfs/<company id>`
 
     > [!NOTE]
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den JobScore-Client](mailto:support@jobscore.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.

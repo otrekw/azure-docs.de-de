@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 09d62ea5f2db77c14e8faff44de7fb3ce759c6fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5cb1ec88c96a3e73352e71e81ea3489b5f0918de
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709734"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578999"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Für GPU optimierte VM-Größen
 
@@ -21,7 +21,7 @@ GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einze
 
 - Die Größen der [NCv3-](ncv3-series.md) und [NC T4_v3-Reihe](nct4-v3-series.md) sind für computeintensive GPU-beschleunigte Anwendungen optimiert. Einige Beispiele sind CUDA- und OpenCL-basierte Anwendungen und Simulationen, KI und Deep Learning. Die NC T4 v3-Reihe ist speziell auf Rückschlussworkloads mit der Tesla T4-GPU von NVIDIA und dem AMD EPYC2 Rome-Prozessor ausgelegt. Die NCv3-Reihe ist außerdem für Hochleistungscomputing- und entsprechende KI-Workloads konzipiert, die mit der Tesla V100-GPU von NVIDIA ausgestattet sind.
 
-- Der Fokus der Größe der [NDv2-Reihe](ndv2-series.md) liegt auf dem Hochskalieren und Herunterskalieren von Deep-Learning-Trainingsanwendungen. Für die NDv2-Reihe wird der Nvidia Volta V100- und der Intel Xeon Platinum 8168-Prozessor (Skylake) verwendet.
+- Der Fokus der Größe der [ND A100 v4-Reihe](nda100-v4-series.md) liegt auf dem Hochskalieren und Aufskalieren von Deep Learning- Trainingsanwendungen und beschleunigten HPC-Anwendungen. Die ND A100 v4-Serie verwendet acht NVIDIA A100 TensorCore-GPUs, die jeweils mit einer 200 Gigabit Mellanox InfiniBand-HDR-Verbindung und 40 GB GPU-Arbeitsspeicher verfügbar sind.
 
 - Die Größen der [NV-Serie](nv-series.md) und der [NVv3-Serie](nvv3-series.md) sind für Remotevisualisierung, Streaming, Spiele, Codierung und VDI-Szenarien mit Frameworks wie OpenGL und DirectX konzipiert und optimiert. Diese VMs werden von der NVIDIA Tesla M60-GPU unterstützt.
 

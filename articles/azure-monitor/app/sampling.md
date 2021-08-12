@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ba7892c8afbe8e557c7dcf9aa3bd663f53a5728f
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 27aff24abddbca3317e252a76ac11c062f57213a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834748"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071594"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -325,9 +325,9 @@ Standardmäßig ist im Java-Agent und im Java SDK keine Stichprobenerstellung a
 }
 ```
 
-#### <a name="configuring-java-sdk"></a>Konfigurieren des Java SDK
+#### <a name="configuring-java-2x-sdk"></a>Konfigurieren des Java 2.x SDK
 
-1. Laden Sie Ihre Webanwendung mit dem aktuellen [Application Insights Java SDK](./java-get-started.md) herunter, und konfigurieren Sie sie.
+1. Laden Sie Ihre Webanwendung mit dem aktuellen [Application Insights Java SDK](./java-2x-get-started.md) herunter, und konfigurieren Sie sie.
 
 2. **Aktivieren Sie das Modul für die Stichprobenerstellung mit festem Prozentsatz** durch Hinzufügen des folgenden Codeausschnitts zur Datei `ApplicationInsights.xml`:
 

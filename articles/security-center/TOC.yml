@@ -68,6 +68,10 @@
       href: tutorial-security-policy.md
     - name: Untersuchen der Integrität Ihrer Ressourcen
       href: investigate-resource-health.md
+- name: Beispiele
+  items:
+    - name: Azure Resource Graph-Abfragen
+      href: ./resource-graph-samples.md
 - name: Konzepte
   items:
     - name: Konzepte von Cloud Security Posture Management
@@ -174,8 +178,11 @@
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc, Azure Defender'
         - name: Übersicht über Azure Defender für relationale Open-Source-Datenbanken
-          displayName: 'PG, PostgreSQL, MySQL, MariaDB'
+          displayName: 'PG, PostgreSQL, MySQL, MariaDB, Azure Defender, OS RDBs, OSRDB'
           href: defender-for-databases-introduction.md
+        - name: Aktivieren von Defender für Betriebssystem-RDBs und Reagieren auf Warnungen
+          displayName: 'PG, PostgreSQL, MySQL, MariaDB, open-source relational databases, Azure Defender, OS RDBs, OSRDB'
+          href: defender-for-databases-usage.md
         - name: Überprüfen der SQL-Ressourcen auf Sicherheitsrisiken
           href: defender-for-sql-on-machines-vulnerability-assessment.md
           displayName: 'hybrid, arc, Azure Defender, VA, registry, vulnerabilities'

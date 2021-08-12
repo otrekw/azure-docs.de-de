@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 99a36eec959fc3f0c669f50b77d7707011e8dac0
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 797b7e376774f0295fa0d7e158cd9ea3df68d25d
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165099"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575971"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -286,7 +286,7 @@ Die Klasse definiert die folgenden Konstanten:
 - ``ForceLogin``: Hiermit kann der Anwendungsentwickler angeben, dass der Dienst den Benutzer zur Eingabe von Anmeldeinformationen auffordert, selbst wenn eine solche Benutzerabfrage nicht erforderlich ist. Diese Option kann nützlich sein, um dem Benutzer das erneute Anmelden zu ermöglichen, wenn das Abrufen eines Tokens fehlschlägt. In diesem Fall sendet MSAL `prompt=login` an den Identitätsanbieter. Diese Option wird gelegentlich in sicherheitsorientierten Anwendungen verwendet, wenn die Governance des Unternehmens vorschreibt, dass sich Benutzer beim Zugriff auf bestimmte Teile einer Anwendung stets erneut anmelden müssen.
 - ``Create`` löst eine Anmeldeumgebung aus, die durch Senden von `prompt=create` an den Identitätsanbieter für External Identities verwendet wird. Diese Eingabeaufforderung sollte nicht für Azure AD B2C-Apps gesendet werden. Weitere Informationen finden Sie unter [Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App](../external-identities/self-service-sign-up-user-flow.md).
 - ``Never`` (nur für .NET 4.5 und WinRT) fragt den Benutzer nicht ab, sondern versucht stattdessen, das in der ausgeblendeten eingebetteten Webansicht gespeicherte Cookie zu verwenden. Weitere Informationen finden Sie unter „Webansichten“ in MSAL.NET. Die Verwendung dieser Option schlägt möglicherweise fehl. In diesem Fall löst `AcquireTokenInteractive` eine Ausnahme aus mit der Meldung, dass eine Interaktion auf der Benutzeroberfläche erforderlich ist. Sie müssen einen anderen `Prompt`-Parameter verwenden.
-- ``NoPrompt`` sendet keine Eingabeaufforderung an den Identitätsanbieter. Diese Option empfiehlt sich nur für Azure Active Directory (Azure AD) B2C-Richtlinien für die Profilbearbeitung. Weitere Informationen finden Sie unter [Spezifische Informationen zu Azure AD B2C](https://aka.ms/msal-net-b2c-specificities).
+- ``NoPrompt`` sendet keine Aufforderung an den Identitätsanbieter. Dieser entscheidet daher, dem Benutzer die beste Anmeldeerfahrung bereitzustellen (einmaliges Anmelden oder Kontoauswahl). Diese Option empfiehlt sich nur für Richtlinien zur Bearbeitung von Azure Active Directory (Azure AD) B2C-Profilen. Weitere Informationen finden Sie unter [Spezifische Informationen zu Azure AD B2C](https://aka.ms/msal-net-b2c-specificities).
 
 #### <a name="withuseembeddedwebview"></a>WithUseEmbeddedWebView
 
@@ -513,7 +513,7 @@ pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
 
 # <a name="python"></a>[Python](#tab/python)
 
-MSAL Python stellt keine direkte interaktive Methode zum Abrufen von Token bereit. Stattdessen muss die Anwendung in ihrer Implementierung des Benutzerinteraktionsflows eine Autorisierungsanforderung senden, um einen Autorisierungscode zu erhalten. Dieser Code kann dann zum Abrufen des Tokens an die `acquire_token_by_authorization_code`-Methode übergeben werden.
+Die MSAL für Python ab Version 1.7 bietet eine interaktive Methode zum Abrufen von Token.
 
 ```python
 result = None
@@ -524,8 +524,7 @@ if accounts:
     result = app.acquire_token_silent(config["scope"], account=accounts[0])
 
 if not result:
-    result = app.acquire_token_by_authorization_code(
-         request.args['code'],
+    result = app.acquire_token_interactive(  # It automatically provides PKCE protection
          scopes=config["scope"])
 ```
 
@@ -538,7 +537,6 @@ Wenn Sie einen Domänenbenutzer in einer Domäne oder einen in Azure AD eingebun
 ### <a name="constraints"></a>Einschränkungen
 
 - Die integrierte Windows-Authentifizierung kann nur für Benutzer des Typs *Federated+* verwendet werden, d. h. für Benutzer, die in Azure Active Directory erstellt und von Azure AD unterstützt werden. Direkt in Azure AD erstellte Benutzer ohne Azure Active Directory-Unterstützung (d. h. *verwaltete* Benutzer) können diesen Authentifizierungsflow nicht verwenden. Diese Einschränkung wirkt sich nicht auf den Flow mit Benutzername und Kennwort aus.
-- IWA ist für Apps bestimmt, die für die .NET Framework-, .NET Core- und die UWP-Plattform (Universal Windows Platform) geschrieben wurden.
 - Die [mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)](../authentication/concept-mfa-howitworks.md) wird von der IWA nicht umgangen. Wenn MFA konfiguriert ist, kann IWA fehlschlagen, wenn eine MFA-Abfrage erforderlich ist, da bei MFA eine Benutzerinteraktion benötigt wird.
 
     IWA ist nicht interaktiv, die mehrstufige Authentifizierung erfordert jedoch eine Benutzerinteraktion. Wann der Identitätsanbieter eine mehrstufige Authentifizierung anfordert, wird nicht von Ihnen gesteuert, sondern vom Mandantenadministrator. Nach unserer Erfahrung ist die mehrstufige Authentifizierung erforderlich, wenn Sie sich aus einem anderen Land/einer anderen Region anmelden, nicht über ein VPN mit einem Unternehmensnetzwerk verbunden sind und gelegentlich sogar dann, wenn eine VPN-Verbindung besteht. Erwarten Sie keinen deterministischen Satz von Regeln. Azure AD greift auf KI zurück, um kontinuierlich zu lernen, wann MFA erforderlich ist. Greifen Sie beim Fehlschlagen von IWA auf eine Eingabeaufforderung für Benutzer wie die interaktive Authentifizierung oder den Gerätecodeflow zurück.

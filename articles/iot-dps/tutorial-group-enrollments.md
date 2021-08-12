@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 4cfbfe3e3e3ba620d8292767012c9bb866d8a878
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 302d7edff9f4ed815dd4e0fd09675ae59777e27a
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94968093"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288570"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Tutorial: Erstellen und Bereitstellen eines simulierten X.509-Geräts per Java-Gerät und Dienst-SDK sowie Gruppenregistrierungen für IoT Hub Device Provisioning Service
 
@@ -25,7 +25,7 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Vergewissern Sie sich, dass das [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) auf Ihrem Computer installiert ist.
+1. Vergewissern Sie sich, dass das [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-support-on-azure) auf Ihrem Computer installiert ist.
 
 1. Laden Sie [Maven](https://maven.apache.org/install.html) herunter, und installieren Sie es.
 

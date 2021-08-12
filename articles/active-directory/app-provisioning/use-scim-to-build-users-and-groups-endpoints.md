@@ -1,24 +1,24 @@
 ---
 title: Erstellen eines SCIM-Endpunkts für die Benutzerbereitstellung in Apps aus Azure Active Directory
-description: Erfahren Sie, wie Sie einen SCIM-Endpunkt entwickeln, Ihre SCIM-API in Azure AD integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Cloudanwendungen mit Azure Active Directory beginnen.
+description: Hier erfahren Sie, wie Sie einen SCIM-Endpunkt entwickeln, Ihre SCIM-API mit Azure Active Directory integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Cloudanwendungen beginnen.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac876ff4370c20ca0b4db59575a3d8ab49b7b0a3
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101689333"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784843"
 ---
-# <a name="tutorial-develop-a-sample-scim-endpoint"></a>Tutorial: Entwickeln eines SCIM-Beispielendpunkts
+# <a name="tutorial-develop-a-sample-scim-endpoint-in-azure-active-directory"></a>Tutorial: Entwickeln eines SCIM-Beispielendpunkts in Azure Active Directory
 
 Niemand möchte einen neuen Endpunkt von Grund auf neu erstellen. Daher haben wir [Referenzcode](https://aka.ms/scimreferencecode) erstellt, der Sie bei den ersten Schritten mit [System for Cross-domain Identity Management (SCIM)](https://aka.ms/scimoverview) unterstützen soll. Sie können den SCIM-Endpunkt ohne Code in nur fünf Minuten einrichten und ausführen.
 

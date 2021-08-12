@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 6b861baea93c2c57b8f66ebac928a7e4fd3adfa8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cbfbc0f020504b17d9c2cbe3ca7d3f807ec28cd
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95487809"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403624"
 ---
 IoT Plug & Play vereinfacht IoT, indem es Ihnen die Interaktion mit dem Modell eines Geräts – ohne Kenntnisse der zugrunde liegenden Geräteimplementierung – ermöglicht. In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Python eine Verbindung mit einem IoT Plug & Play-Gerät herstellen, das mit Ihrer Lösung verbunden ist, und wie Sie dieses Gerät steuern.
 
@@ -72,11 +72,11 @@ In dieser Schnellstartanleitung verwenden Sie eine IoT-Beispiellösung in Python
 1. Öffnen Sie die Datei *registry_manager_pnp_sample.py*, und sehen Sie sich den Code an. In diesem Beispiel wird veranschaulicht, wie Sie die **IoTHubRegistryManager**-Klasse zum Interagieren mit Ihrem IoT Plug & Play-Gerät verwenden.
 
 > [!NOTE]
-> In diesen Dienstbeispielen wird die **IoTHubRegistryManager**-Klasse aus dem **IoT Hub-Dienstclient** verwendet. Weitere Informationen zu den APIs, einschließlich der Digital Twins-API, finden Sie im [Leitfaden für Dienstentwickler](../articles/iot-pnp/concepts-developer-guide-service.md).
+> In diesen Dienstbeispielen wird die **IoTHubRegistryManager**-Klasse aus dem **IoT Hub-Dienstclient** verwendet. Weitere Informationen zu den APIs, einschließlich der Digital Twins-API, finden Sie im [Leitfaden für Dienstentwickler](../articles/iot-develop/concepts-developer-guide-service.md).
 
 ### <a name="get-the-device-twin"></a>Abrufen des Gerätezwillings
 
-In [Einrichten Ihrer Umgebung für die IoT Plug & Play-Schnellstarts und -Tutorials](../articles/iot-pnp/set-up-environment.md) haben Sie zwei Umgebungsvariablen erstellt, um das Beispiel so zu konfigurieren, dass eine Verbindung mit Ihrem IoT-Hub und -Gerät hergestellt wird:
+In [Einrichten Ihrer Umgebung für die IoT Plug & Play-Schnellstarts und -Tutorials](../articles/iot-develop/set-up-environment.md) haben Sie zwei Umgebungsvariablen erstellt, um das Beispiel so zu konfigurieren, dass eine Verbindung mit Ihrem IoT-Hub und -Gerät hergestellt wird:
 
 * **IOTHUB_CONNECTION_STRING**: die IoT-Hub-Verbindungszeichenfolge, die Sie sich zuvor notiert haben.
 * **IOTHUB_DEVICE_ID**: `"my-pnp-device"`.
