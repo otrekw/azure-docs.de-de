@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/04/2021
-ms.openlocfilehash: cf8f9a8e912c0f75abd4466b9efe532b2dbf622a
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 9a509d878729648ee2768d536d9cca586604662e
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903028"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122015"
 ---
 # <a name="quickstart-connect-a-renesas-starter-kit-for-rx65n-2mb-to-iot-central"></a>Schnellstart: Verbinden eines Renesas Starter Kit+ für RX65N-2MB mit IoT Central
 
@@ -48,7 +48,7 @@ Zum Einrichten Ihrer Entwicklungsumgebung klonen Sie zuerst ein GitHub-Repositor
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>Klonen des Repositorys für den Schnellstart
 
-Klonen Sie das folgende Repository, um den gesamten Beispielgerätecode, die Setupskripts und die Offlineversionen der Dokumentation herunterzuladen. Wenn Sie dieses Repository bereits bei einem anderen Schnellstart geklont haben, müssen Sie diesen Schritt nicht erneut ausführen.
+Klonen Sie das folgende Repository, um den gesamten Beispielgerätecode, die Setupskripts und die Offlineversionen der Dokumentation herunterzuladen. Wenn Sie dieses Repository bereits im Rahmen einer anderen Schnellstartanleitung geklont haben, müssen Sie diesen Schritt nicht erneut ausführen.
 
 Führen Sie den folgenden Befehl aus, um das Repository zu klonen:
 
@@ -58,7 +58,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>Installieren der Tools
 
-Das geklonte Repository enthält ein Setupskript, mit dem die erforderlichen Tools installiert und konfiguriert werden. Wenn Sie diese Tools in einem anderen eingebetteten Geräteschnellstart installiert haben, müssen Sie diesen Schritt nicht erneut ausführen.
+Das geklonte Repository enthält ein Setupskript, mit dem die erforderlichen Tools installiert und konfiguriert werden. Wenn Sie diese Tools im Rahmen einer anderen Schnellstartanleitung für ein eingebettetes Gerät installiert haben, müssen Sie diesen Schritt nicht erneut ausführen.
 
 > [!NOTE]
 > Mit dem Setupskript werden die folgenden Tools installiert:
@@ -76,7 +76,7 @@ So installieren Sie die Tools
 
     *%USERPROFILE%\AppData\Roaming\GCC for Renesas RX 8.3.0.202004-GNURX-ELF\rx-elf\rx-elf\bin*
 
-1. Öffnen Sie nach der Installation ein neues Konsolenfenster, um die vom Setupskript vorgenommenen Konfigurationsänderungen zu überprüfen. Verwenden Sie diese Konsole zur Ausführung der restlichen Programmieraufgaben im Schnellstart. Sie können die Windows-Eingabeaufforderung, PowerShell oder Git Bash für Windows verwenden.
+1. Öffnen Sie nach der Installation ein neues Konsolenfenster, um die vom Setupskript vorgenommenen Konfigurationsänderungen zu überprüfen. Verwenden Sie diese Konsole für die Ausführung der restlichen Programmieraufgaben in der Schnellstartanleitung. Sie können die Windows-Eingabeaufforderung, PowerShell oder Git Bash für Windows verwenden.
 1. Führen Sie die folgenden Befehle aus, um zu bestätigen, dass CMake, Version 3.14 oder höher, installiert und der RX-Compilerpfad ordnungsgemäß eingerichtet wurde.
 
     ```shell
@@ -167,7 +167,7 @@ Zum Verbinden des Renesas RX65N mit Azure ändern Sie eine Konfigurationsdatei f
 
 Sie können die **Termite**-App verwenden, um die Kommunikation zu überwachen und sich zu vergewissern, dass Ihr Gerät richtig eingerichtet wurde.
 > [!TIP]
-> Wenn beim Initialisieren oder Verbinden Ihres Geräts nach dem Einspielen per Flashvorgang Probleme auftreten, lesen Sie [Problembehandlung](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md).
+> Wenn beim Initialisieren oder Verbinden Ihres Geräts nach dem Einspielen per Flashvorgang Probleme auftreten, lesen Sie [Problembehandlung](troubleshoot-embedded-device-quickstarts.md).
 
 1. Starten Sie **Termite**.
 1. Wählen Sie **Settings** aus.
@@ -263,7 +263,7 @@ Wählen Sie auf der Geräteseite die Registerkarte **Info** aus.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Wenn beim Erstellen des Gerätecodes, beim Einspielen per Flashvorgang auf dem Gerät oder beim Herstellen einer Verbindung Probleme auftreten, lesen Sie [Problembehandlung](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md).
+Wenn beim Erstellen des Gerätecodes, beim Einspielen per Flashvorgang auf dem Gerät oder beim Herstellen einer Verbindung Probleme auftreten, lesen Sie [Problembehandlung](troubleshoot-embedded-device-quickstarts.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

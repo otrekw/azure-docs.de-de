@@ -1,20 +1,20 @@
 ---
 title: Tutorial zum Einrichten der globalen Verteilung mit der Azure Cosmos DB-API für MongoDB
 description: Es wird beschrieben, wie Sie die globale Verteilung mit der Azure Cosmos DB-API für MongoDB einrichten.
-author: markjbrown
-ms.author: mjbrown
+author: gahl-levy
+ms.author: gahllevy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 89826eab7b1686ae695a2716a03b2f5d03da277f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a68557e02444a7524ee69fc95e9ca66b2aabf7a9
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93099250"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113354275"
 ---
 # <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Einrichten einer global verteilten Datenbank mit der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,7 +27,7 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 > * Konfigurieren der globalen Verteilung mit dem Azure-Portal
 > * Konfigurieren der globalen Verteilung mit der [Azure Cosmos DB-API für MongoDB](mongodb-introduction.md)
 
-[!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
+[!INCLUDE [cosmos-db-tutorial-global-distribution-portal](includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 ## <a name="verifying-your-regional-setup"></a>Überprüfen der regionalen Einrichtung 
 Eine einfache Möglichkeit zur Überprüfung Ihrer globalen Konfiguration mit der Cosmos DB-API für MongoDB besteht darin, den Befehl *isMaster()* in der Mongo Shell auszuführen.

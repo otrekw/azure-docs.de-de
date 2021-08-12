@@ -6,20 +6,20 @@ author: peiliu
 manager: vravikumar
 services: azure-communication-services
 ms.author: peiliu
-ms.date: 06/01/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 8c9468510e68f29816e52e74cb9a311e3834f107
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: cddff62f911339e7b2ddb76535acda09e1793137
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593100"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292403"
 ---
 # <a name="quickstart-using-azure-opentelemetry-exporter-to-export-sdk-telemetry-data-to-application-insights"></a>Schnellstart: Verwenden von Azure OpenTelemetry Exporter zum Exportieren von SDK-Telemetriedaten in Application Insights
 
-Der Azure OpenTelemetry Exporter ist ein SDK innerhalb von [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/). Damit können Sie Ablaufverfolgungsdaten mithilfe von OpenTelemetry exportieren und die Daten an [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) senden. OpenTelemetry bietet eine standardisierte Möglichkeit für Anwendungen und Frameworks, Telemetrieinformationen zu sammeln.
+Der Azure OpenTelemetry Exporter ist ein SDK innerhalb von [Azure Monitor](../../azure-monitor/index.yml). Damit können Sie Ablaufverfolgungsdaten mithilfe von OpenTelemetry exportieren und die Daten an [Application Insights](../../azure-monitor/app/app-insights-overview.md) senden. OpenTelemetry bietet eine standardisierte Möglichkeit für Anwendungen und Frameworks, Telemetrieinformationen zu sammeln.
 
 Azure Application Insights ist ein Feature von Azure Monitor, das zum Überwachen von Liveanwendungen verwendet wird. Es zeigt Telemetriedaten zu Ihrer Anwendung in einer Microsoft Azure-Ressource an. Der Telemetriemodell ist standardisiert, damit eine plattform- und sprachunabhängige Überwachung erstellt werden kann.
 
@@ -71,4 +71,4 @@ In diesem Schnellstart haben Sie Folgendes gelernt:
 
 Das könnte Sie auch interessieren:
 
-- [Weitere Informationen zum Analysieren von Daten in Application Insights](https://docs.microsoft.com/powerapps/maker/canvas-apps/application-insights)
+- [Weitere Informationen zum Analysieren von Daten in Application Insights](/powerapps/maker/canvas-apps/application-insights)

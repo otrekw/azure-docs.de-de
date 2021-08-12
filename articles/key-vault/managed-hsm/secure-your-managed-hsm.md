@@ -2,19 +2,19 @@
 title: 'Schützen des Zugriffs auf ein verwaltetes HSM: Verwaltetes HSM von Azure Key Vault'
 description: Hier erfahren Sie, wie Sie den Zugriff auf ein verwaltetes HSM mithilfe von Azure RBAC und lokaler RBAC für verwaltete HSMs schützen.
 services: key-vault
-author: amitbapat
+author: mbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.author: ambapat
-ms.openlocfilehash: 07602bfefbbd38538973c799e2306d21b7a840f1
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: mbaldwin
+ms.openlocfilehash: d374df5e0e072fbcc64ddc5e376fb558b3b4fb86
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411987"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440275"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Schützen des Zugriffs auf Ihre verwalteten HSMs
 
@@ -27,7 +27,7 @@ In diesem Tutorial erfahren Sie anhand eines einfachen Beispiels, wie Sie Aufgab
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 * Ein Abonnement für Microsoft Azure. Falls Sie über kein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial) registrieren.
-* Azure-Befehlszeilenschnittstelle ab Version 2.12.0. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
+* Azure-Befehlszeilenschnittstelle ab Version 2.25.0 Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 * Ein verwaltetes HSM in Ihrem Abonnement. Weitere Informationen finden Sie unter [Schnellstart: Bereitstellen und Aktivieren eines verwalteten HSM mithilfe der Azure-Befehlszeilenschnittstelle](quick-create-cli.md). Dort erfahren Sie, wie Sie ein verwaltetes HSM bereitstellen und aktivieren.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
