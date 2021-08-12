@@ -1,20 +1,20 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Image Builder
 description: Hier sind Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy aufgelistet, die für Azure Image Builder verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
-author: cynthn
-ms.author: cynthn
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 387057a1b63e645b34f7d8414d2a435400a4ce1e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: aad83ce5a729c89d32de17cec2532e13d279e1a4
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032740"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114402143"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-image-builder"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Image Builder
 

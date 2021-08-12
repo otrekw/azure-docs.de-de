@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/10/2021
+ms.date: 07/14/2021
 ms.author: duau
-ms.openlocfilehash: 7f2a5faebb56cfb12a62a8bdae4e6b7e56e88b57
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 97a96d439773d7332fda3fe545d950dfe0077ad1
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004707"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765425"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne
 
@@ -181,7 +181,7 @@ webmaster@&lt;Ihr-Domänenname.com&gt;
 hostmaster@&lt;Ihr-Domänenname.com&gt;  
 postmaster@&lt;Ihr-Domänenname.com&gt;  
 
-Sie sollten ähnlich wie im folgenden Beispiel nach wenigen Minuten eine E-Mail-Nachricht erhalten, in der Sie aufgefordert werden, die Anforderung zu genehmigen. Wenn Sie einen Spamfilter verwenden, fügen Sie admin@digicert.com der Zulassungsliste hinzu. Sollten Sie nach 24 Stunden noch keine E-Mail erhalten haben, setzen Sie sich mit dem Microsoft-Support in Verbindung.
+Sie sollten ähnlich wie im folgenden Beispiel nach wenigen Minuten eine E-Mail-Nachricht erhalten, in der Sie aufgefordert werden, die Anforderung zu genehmigen. Wenn Sie einen Spamfilter verwenden, fügen Sie no-reply@digitalcertvalidation.com der Zulassungsliste hinzu. Sollten Sie nach 24 Stunden noch keine E-Mail erhalten haben, setzen Sie sich mit dem Microsoft-Support in Verbindung.
 
 Wenn Sie den Genehmigungslink auswählen, werden Sie zu einem Onlineformular für die Genehmigung weitergeleitet. Befolgen Sie die Anweisungen im Formular. Sie haben zwei Möglichkeiten zur Genehmigung:
 

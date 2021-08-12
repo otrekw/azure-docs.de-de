@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: c4126a99b38021ea7399bb486b8942423f0a809c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 62015554f7e8e17e1443cc85812b3f37ee64f0a4
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067112"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551702"
 ---
 # <a name="register-and-scan-sap-ecc-source"></a>Registrieren und Überprüfen einer SAP ECC-Quelle
 
@@ -105,6 +105,8 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
     e.  **JCo-Bibliothekspfad**: der Verzeichnispfad, in dem sich die JCo-Bibliotheken befinden
 
     f.  **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden SAP ECC-Quelle.
+    > [!Note] 
+    > Faustregel: 1 GB Arbeitsspeicher pro 1000 Tabellen.
 
     :::image type="content" source="media/register-scan-sapecc-source/scan-sapecc.png" alt-text="SAP ECC überprüfen" border="true":::
 

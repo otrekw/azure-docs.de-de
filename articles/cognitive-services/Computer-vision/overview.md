@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 03/29/2021
+ms.date: 06/21/2021
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: maschinelles Sehen, Anwendungen für maschinelles Sehen, Dienst für maschinelles Sehen
-ms.openlocfilehash: 875ef961148668a83e94c116622b5e461d2413fa
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: c78f12d484cb1c0e4cda80867af67bc8af7f6c55
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286133"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460241"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -30,7 +30,7 @@ ms.locfileid: "106286133"
 
 | Dienst|BESCHREIBUNG|
 |---|---|
-|[Optische Zeichenerkennung (OCR)](overview-ocr.md)|Der Optische Zeichenerkennungs-Dienst (OCR) extrahiert Text aus Bildern. Sie können die neue Lese-API verwenden, um gedruckten und handschriftlichen Text aus Bildern und Dokumenten zu extrahieren. Hierbei werden auf Deep Learning basierende Modelle verwendet, und es wird Text auf vielen verschiedenen Oberflächen und Hintergründen verarbeitet. Beispiele hierfür sind Geschäftsdokumente, Rechnungen, Belege, Poster, Visitenkarten, Briefe und Whiteboards. Die OCR-APIs unterstützen das Extrahieren von gedrucktem Text in [mehreren Sprachen](./language-support.md). Befolgen Sie unseren [OCR Schnellstart](quickstarts-sdk/client-library.md), um zu beginnen.|
+| [Optische Zeichenerkennung (OCR)](overview-ocr.md)|Der Optische Zeichenerkennungs-Dienst (OCR) extrahiert Text aus Bildern. Sie können die neue Lese-API verwenden, um gedruckten und handschriftlichen Text aus Bildern und Dokumenten zu extrahieren. Hierbei werden auf Deep Learning basierende Modelle verwendet, und es wird Text auf vielen verschiedenen Oberflächen und Hintergründen verarbeitet. Beispiele hierfür sind Geschäftsdokumente, Rechnungen, Belege, Poster, Visitenkarten, Briefe und Whiteboards. Die OCR-APIs unterstützen das Extrahieren von gedrucktem Text in [mehreren Sprachen](./language-support.md). Befolgen Sie unseren [OCR Schnellstart](quickstarts-sdk/client-library.md), um zu beginnen.|
 |[Bildanalyse](overview-image-analysis.md)| Der Abbild Analysedienst extrahiert viele visuelle Features aus Bildern, wie z. b. Objekte, Gesichter, nicht jugendfreie Inhalte und automatisch generierte Textbeschreibungen. Befolgen Sie den [Schnellstart für die Bildanalyse](quickstarts-sdk/image-analysis-client-library.md), um zu beginnen.|
 | [Räumliche Analyse](intro-to-spatial-analysis-public-preview.md)| Der Dienst für räumliche Analysen analysiert das vorhanden sein und Verschieben von Personen in einem Videofeed und erzeugt Ereignisse, auf die andere Systeme reagieren können. Installieren Sie den [Container für räumliche Analysen](spatial-analysis-container.md), um zu beginnen.|
 

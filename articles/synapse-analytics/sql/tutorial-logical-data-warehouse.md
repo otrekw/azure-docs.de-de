@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/28/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: b38b5303f21cb31115a2279648c8d631e31aa8bf
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f0f2e63a32c30c807f865a46154123643809de74
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459312"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442843"
 ---
 # <a name="tutorial-create-logical-data-warehouse-with-serverless-sql-pool"></a>Tutorial: Erstellen eines logischen Data Warehouse mit serverlosem SQL-Pool
 
@@ -41,7 +41,7 @@ Als Erstes müssen Sie die Datenquelle konfigurieren und das Dateiformat remote 
 
 Datenquellen stellen Verbindungszeichenfolgeninformationen dar, die beschreiben, wo Ihre Daten platziert werden und wie Sie sich bei Ihrer Datenquelle authentifizieren.
 
-Das folgende Beispiel zeigt eine Datenquellendefinition mit Verweis auf das öffentliche [ECDC-COVID 19-Dataset aus Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/):
+Das folgende Beispiel zeigt eine Datenquellendefinition mit Verweis auf das öffentliche [ECDC-COVID 19-Dataset aus Azure Open Datasets](/azure/open-datasets/dataset-ecdc-covid-cases):
 
 ```sql
 CREATE EXTERNAL DATA SOURCE ecdc_cases WITH (
@@ -246,4 +246,3 @@ Diese rollenbasierte Sicherheitszugriffssteuerung kann die Verwaltung Ihrer Sich
 
 - Im Tutorial [Verwenden eines serverlosen SQL-Pools mit Power BI Desktop und Erstellen eines Berichts](tutorial-connect-power-bi-desktop.md) erfahren Sie, wie Sie einen serverlosen SQL-Pool mit Power BI Desktop verbinden und Berichte erstellen.
 - Informationen dazu, wie externe Tabellen in einem serverlosen SQL-Pool verwendet werden, finden Sie unter [Verwenden externer Tabellen mit Synapse SQL](develop-tables-external-tables.md?tabs=sql-pool).
-

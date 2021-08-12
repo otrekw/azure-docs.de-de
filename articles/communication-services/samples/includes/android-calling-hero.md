@@ -1,21 +1,21 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: azure-communication-services
 author: ddematheu2
 manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 9/1/2020
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 2a573a4df8abcdc2b32204faadbaa0df8c3dac15
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: cc6264e00cb627815f4008f147266357c625b72a
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313520"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201396"
 ---
 Das **Hero-Beispiel für Gruppenanrufe für Android** von Azure Communication Services veranschaulicht, wie das Calling Android SDK von Communication Services verwendet werden kann, um eine Benutzeroberfläche für Gruppenanrufe mit Sprach- und Videofunktion zu erstellen. In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie Sie das Beispiel einrichten und ausführen. Es ist auch eine Übersicht über das Beispiel vorhanden, um Informationen zum Kontext bereitzustellen.
 
@@ -52,7 +52,7 @@ Unten sind weitere Informationen zu den Voraussetzungen und Schritten zum Einric
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Details finden Sie unter [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Android Studio](https://developer.android.com/studio) wird auf Ihrem Computer ausgeführt
-- Eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure Communication Services-Ressource](../../quickstarts/create-communication-resource.md).
+- Eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](../../quickstarts/create-communication-resource.md).
 - Eine Azure-Funktion, die den [Authentifizierungsendpunkt](../../tutorials/trusted-service-tutorial.md) zum Abrufen von Zugriffstoken ausführt.
 
 ## <a name="running-sample-locally"></a>Lokales Ausführen des Beispiels

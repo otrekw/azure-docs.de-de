@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von Cofense Recipient Sync für die automatische
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für Cofense Recipient Sync automatisch bereitstellen und die Bereitstellung aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 84fe20ef-0de0-4f7c-9b42-6385f3d834db
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
-ms.author: Zhchia
-ms.openlocfilehash: 70766fd93f0a70ecf6b5ee54dbdba3571f783878
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: a2e3ebb1c1062e989e159a69bd08042c269d91f2
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646043"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764079"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cofense Recipient Sync für die automatische Benutzerbereitstellung
 
@@ -107,7 +107,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit Cofense Recipient Sync synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Cofense Recipient Sync für Aktualisierungsvorgänge verwendet.  Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|Unterstützung für das Filtern|
+   |Attribut|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |externalId|String|&check;|
    |userName|String|

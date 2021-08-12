@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: a4512a8f75d59f617058a50846d7578a90b9d062
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ccc36bb9f940fd018fe6d96b5338a7178657aa2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675822"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469379"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Tutorial: Erstellen einer Apache Spark-Anwendung mit IntelliJ mithilfe eines Synapse-Arbeitsbereichs
 
@@ -40,7 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 - Die folgende Voraussetzung gilt nur für Windows-Benutzer:
 
   Beim Ausführen der lokalen Spark Scala-Anwendung auf einem Windows-Computer wird unter Umständen eine Ausnahme wie unter [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) beschrieben ausgelöst. Diese Ausnahme tritt auf, weil die Datei „WinUtils.exe“ in Windows fehlt.
-  Zur Behebung dieses Fehlers müssen Sie [die ausführbare WinUtils-Datei herunterladen](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) und an einem Speicherort wie **C:\WinUtils\bin** speichern. Fügen Sie anschließend die Umgebungsvariable **HADOOP_HOME** hinzu, und legen Sie den Wert der Variable auf **C:\WinUtils** fest.
+  Zur Behebung dieses Fehlers müssen Sie [die ausführbare WinUtils-Datei herunterladen](https://github.com/steveloughran/winutils/releases/download/tag_2017-08-29-hadoop-2.8.1-native/hadoop-2.8.1.zip) und an einem Speicherort wie **C:\WinUtils\bin** speichern. Fügen Sie anschließend die Umgebungsvariable **HADOOP_HOME** hinzu, und legen Sie den Wert der Variable auf **C:\WinUtils** fest.
 
 ## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>Erstellen einer Spark Scala-Anwendung für einen Spark-Pool
 

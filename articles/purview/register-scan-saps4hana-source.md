@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: a061f3afbfb3a114ec22bcfba123aa326b6ac3fd
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a0e6a02aed59cbe968abb0df5c3fb612c8f2d3b0
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067094"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551684"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source"></a>Registrieren und Überprüfen einer SAP S/4HANA-Quelle
 
@@ -103,6 +103,8 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
     e.  **JCo-Bibliothekspfad**: Geben Sie den Pfad zu dem Ordner an, in dem sich die JCo-Bibliotheken befinden.
 
     f.  **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden SAP S/4HANA-Quelle.
+    > [!Note] 
+    > Faustregel: 1 GB Arbeitsspeicher pro 1000 Tabellen.
 
     :::image type="content" source="media/register-scan-saps4hana-source/scan-saps-4-hana.png" alt-text="SAP S/4HANA überprüfen" border="true":::
 

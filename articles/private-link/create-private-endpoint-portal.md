@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02d9ca3ba6a16e06c4357a46a050f8803147aaaf
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96018068"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "114292884"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal
 
@@ -127,6 +127,8 @@ In diesem Abschnitt erstellen Sie einen virtuellen Computer zum Testen des priva
 5. Klicken Sie auf **Überprüfen + erstellen**. 
   
 6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-a-private-endpoint"></a>Erstellen eines privaten Endpunkts
 

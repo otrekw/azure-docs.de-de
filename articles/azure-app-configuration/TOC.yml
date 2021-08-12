@@ -58,7 +58,9 @@
       items:
         - name: .NET Core
           href: enable-dynamic-configuration-dotnet-core-push-refresh.md
-    - name: Key Vault-Verweise
+        - name: Java Spring
+          href: enable-dynamic-configuration-java-spring-push-refresh.md
+    - name: Verwenden von Key Vault-Verweisen
       items:
         - name: Verwenden von Key Vault-Verweisen
           items:
@@ -152,6 +154,8 @@
       href: howto-backup-config-store.md
     - name: Verwenden verwalteter Identitäten für den Zugriff auf App Configuration
       href: howto-integrate-azure-managed-service-identity.md
+    - name: "Aktualisieren auf die neue Spring\_Boot-Bibliothek"
+      href: howto-convert-to-the-new-spring-boot.md
 - name: Verweis
   items:
     - name: Clientbibliotheken

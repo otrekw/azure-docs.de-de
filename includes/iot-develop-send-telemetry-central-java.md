@@ -1,19 +1,23 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: d9f4c0458cb0765706b110996e7c7df391ed2bf2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f01d02fb2d11f6d2ec7e068d8f8aea5191734371
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061143"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712936"
 ---
+[![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
+
+In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 - Einen Entwicklungscomputer mit Java SE Development Kit 8 oder höher. Sie können das Java 8 JDK (LTS) für mehrere Plattformen unter [Herunterladen von Zulu-Builds von OpenJDK](https://www.azul.com/downloads/zulu-community/) herunterladen. Wählen Sie im Installationsprogramm die Option **Zu PATH hinzufügen** aus.
 - [Apache Maven 3](https://maven.apache.org/download.cgi) Nachdem Sie den Download in einen lokalen Ordner extrahiert haben, fügen Sie der Windows-Variablen „PATH“ den vollständigen Pfad zum Maven-Ordner */bin* hinzu.
