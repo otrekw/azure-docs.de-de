@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 3/30/2021
+ms.date: 6/4/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: eb75450527fc31d6ea4a9f9d60d676718ad79bda
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 8efc5f44c1383ebcde397b810ba69c547afd692f
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167582"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555448"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung
 
@@ -35,21 +35,23 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 
-### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>Behebung von Programmfehlern: Azure AD kodiert den Statusparameter nicht mehr zweimal in der URL.
+### <a name="the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt"></a>Der UX-Gerätecodeflow enthält jetzt eine Eingabeaufforderung zur App-Bestätigung
 
-**Gültig ab**: Mai 2021
+**Gültig ab**: Juni 2021.
 
-**Betroffene Endpunkte:** v1.0 und v2.0 
+**Betroffene Endpunkte:** v2.0 und v1.0
 
-**Betroffenes Protokoll**: alle Flows, die den `/authorize` Endpunkt aufrufen (impliziter Fluss-und Autorisierungs-Code-Fluss)
+**Betroffenes Protokoll:** Der [Gerätecodeflow](v2-oauth2-device-code.md)
 
-Ein Fehler wurde in der Azure AD Autorisierungs-Antwort gefunden und behoben. Während der `/authorize` Authentifizierung wird der- `state` Parameter aus der Anforderung in die Antwort eingeschlossen, um den App-Status beizubehalten und CSRF-Angriffe zu verhindern. Azure AD falsche URL-Codierung für den `state` Parameter vor dem Einfügen in die Antwort, in der er nochmal codiert wurde.  Dies würde dazu führen, dass Anwendungen die Antwort von Azure AD fälschlicherweise ablehnen. 
+Zur Verbesserung der Sicherheit wurde der Gerätecodeflow aktualisiert und um eine zusätzliche Eingabeaufforderung ergänzt, mit der überprüft wird, ob sich der Benutzer bei der erwarteten App anmeldet. Diese Erweiterung soll Phishingangriffe verhindern.
 
-Azure AD wird diesen Parameter nicht mehr doppelt codieren, sodass Apps das Ergebnis ordnungsgemäß analysieren können. Diese Änderung wird für alle Anwendungen vorgenommen. 
+Die angezeigte Eingabeaufforderung sieht wie die folgende aus:
+
+:::image type="content" source="media/breaking-changes/device-code-flow-prompt.png" alt-text="Neue Eingabeaufforderung mit dem Text „Versuchen Sie, sich bei der Azure CLI anzumelden?“":::
 
 ### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>Bedingter Zugriff wird nur für explizit angeforderte Bereiche ausgelöst.
 
-**Gültigkeitsdatum** : Mai 2021, mit einem schrittweisen Rollout ab April. 
+**Gültig ab**: August 2021, wobei ab April ein schrittweises Rollout erfolgt. 
 
 **Betroffene Endpunkte**: v2.0
 
@@ -71,8 +73,19 @@ Wenn die App dann `scope=files.readwrite` anfordert, wird der bedingte Zugriff a
 
 Wenn die App dann eine letzte Anforderung für einen der drei Bereiche (z. B. `scope=tasks.read`) ausführt, ist für Azure AD erkennbar, dass der Benutzer bereits die für `files.readwrite` erforderlichen Richtlinien für bedingten Zugriff erfüllt hat, und es wird erneut ein Token ausgestellt, das alle drei Bereiche enthält. 
 
-
 ## <a name="may-2020"></a>Mai 2020
+
+### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>Behebung von Programmfehlern: Azure AD kodiert den Statusparameter in der URL nicht mehr zweimal
+
+**Gültig ab**: Mai 2021
+
+**Betroffene Endpunkte:** v1.0 und v2.0
+
+**Betroffenes Protokoll**: alle Flows, die den `/authorize` Endpunkt aufrufen (impliziter Fluss-und Autorisierungs-Code-Fluss)
+
+Ein Fehler wurde in der Azure AD Autorisierungs-Antwort gefunden und behoben. Während der `/authorize` Authentifizierung wird der- `state` Parameter aus der Anforderung in die Antwort eingeschlossen, um den App-Status beizubehalten und CSRF-Angriffe zu verhindern. Azure AD falsche URL-Codierung für den `state` Parameter vor dem Einfügen in die Antwort, in der er nochmal codiert wurde.  Dies würde dazu führen, dass Anwendungen die Antwort von Azure AD fälschlicherweise ablehnen. 
+
+Azure AD wird diesen Parameter nicht mehr doppelt codieren, sodass Apps das Ergebnis ordnungsgemäß analysieren können. Diese Änderung wird für alle Anwendungen vorgenommen. 
 
 ### <a name="azure-government-endpoints-are-changing"></a>Azure Government-Endpunkte werden geändert
 

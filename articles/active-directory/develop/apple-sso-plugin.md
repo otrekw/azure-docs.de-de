@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 69df3dc8ef9f2ab4519f5bcb8947da221908f5a7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: eb9a6e1f3044492b09dac3fb3168a9bd26aeff0f
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126739"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494610"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO-Plug-In für Apple-Geräte (Vorschau)
 
@@ -75,7 +75,7 @@ Die Profileinstellungen, mit denen das SSO-Plug-In aktiviert wird, werden automa
 
 ### <a name="manual-configuration-for-other-mdm-services"></a>Manuelle Konfiguration für andere MDM-Dienste
 
-Wenn Sie nicht mit Intune für MDM arbeiten, konfigurieren Sie das Microsoft Enterprise SSO-Plug-In für Apple-Geräte mit den folgenden Parametern.
+Wenn Sie nicht mit Intune für MDM arbeiten, können Sie eine erweiterbare Nutzlast für SSO-Profile für Apple-Geräte konfigurieren. Verwenden Sie die folgenden Parameter, um das Microsoft Enterprise SSO-Plug-In und dessen Konfigurationsoptionen zu konfigurieren.
 
 iOS-Einstellungen:
 

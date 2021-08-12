@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 7e85df8ae67624a253a9fb617629d7355109c210
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c61f378dd9121c727fc245d177e11921a8a8e26
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019600"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094382"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure Synapse Analytics-Ausgabe für Azure Stream Analytics
 
@@ -21,7 +21,8 @@ Bei Azure Stream Analytics-Aufträgen kann die Ausgabe in eine dedizierte SQL-Po
 
 Die dedizierte SQL-Pooltabelle muss vorhanden sein, bevor Sie sie Ihrem Stream Analytics-Auftrag als Ausgabe hinzufügen können. Das Schema der Tabelle muss den Feldern und deren Typen in der Ausgabe Ihres Auftrags entsprechen. 
 
-Wenn Sie Azure Synapse als Ausgabe verwenden möchten, müssen Sie sicherstellen, dass Sie das Speicherkonto konfiguriert haben. Navigieren Sie zu den Speicherkontoeinstellungen, um das Speicherkonto zu konfigurieren. Es sind nur die Speicherkontotypen zulässig, die Tabellen unterstützen: „Allgemein V2“ und „Allgemein V1“. Wählen Sie nur den Standard-Tarif aus. Der Premium-Tarif wird nicht unterstützt.
+> [!NOTE] 
+> Um Azure Synapse Analytics als Ausgabe zu verwenden, stellen Sie sicher, dass das Speicherkonto auf Auftragsebene und nicht auf Ausgabeebene konfiguriert ist. Um die Speicherkontoeinstellungen zu ändern, wechseln Sie im Menü **Konfigurieren** des Stream Analytics-Auftrags zu **Speicherkontoeinstellungen**. Verwenden Sie nur Speicherkontotypen, die Tabellen unterstützen: Universell V2 und Universell V1. Wählen Sie nur den Standard-Tarif aus. Der Premium-Tarif wird in diesem Szenario nicht unterstützt.
 
 ## <a name="output-configuration"></a>Ausgabekonfiguration
 

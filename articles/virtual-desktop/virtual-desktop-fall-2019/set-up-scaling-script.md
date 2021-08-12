@@ -1,26 +1,27 @@
 ---
-title: Skalieren von Sitzungshosts, Azure Automation, Windows Virtual Desktop (klassisch) – Azure
-description: In diesem Artikel erfahren Sie, wie Windows Virtual Desktop-Sitzungshosts (klassisch) mit Azure Automation automatisch skaliert werden.
+title: Skalieren von Sitzungshosts, Azure Automation, Azure Virtual Desktop (klassisch) – Azure
+description: In diesem Artikel erfahren Sie, wie Azure Virtual Desktop-Sitzungshosts (klassisch) mit Azure Automation automatisch skaliert werden.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 907871a85680202a4a8b5f73b4454a9b2f2fe103
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 781ac1e84fb742908ca020806b04135f35b3a65d
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444308"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751827"
 ---
-# <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Skalieren von Windows Virtual Desktop-Sitzungshosts (klassisch) mit Azure Automation
+# <a name="scale-azure-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Skalieren von Azure Virtual Desktop-Sitzungshosts (klassisch) mit Azure Automation
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager.
 
-Sie können die Gesamtkosten für die Bereitstellung von Windows Virtual Desktop verringern, indem Sie Ihre virtuellen Computer (VMs) skalieren. Das bedeutet, dass Sie die Sitzungshost-VMs außerhalb der Spitzenzeiten herunterfahren und ihre Zuordnung aufheben und sie dann während der Spitzenzeiten wieder einschalten und erneut zuordnen.
+Sie können die Gesamtkosten für die Bereitstellung von Azure Virtual Desktop verringern, indem Sie Ihre virtuellen Computer (VMs) skalieren. Das bedeutet, dass Sie die Sitzungshost-VMs außerhalb der Spitzenzeiten herunterfahren und ihre Zuordnung aufheben und sie dann während der Spitzenzeiten wieder einschalten und erneut zuordnen.
 
-In diesem Artikel erfahren Sie mehr über das mit dem Azure Automation-Konto und Azure Logic Apps erstellte Skalierungstool, mit dem die VMs der Sitzungshosts in Ihrer Windows Virtual Desktop-Umgebung automatisch skaliert werden. Um zu erfahren, wie Sie das Skalierungstool verwenden, fahren Sie mit dem Abschnitt [Voraussetzungen](#prerequisites) fort.
+In diesem Artikel erfahren Sie mehr über das mit dem Azure Automation-Konto und Azure Logic Apps erstellte Skalierungstool, mit dem die Sitzungshost-VMs in Ihrer Azure Virtual Desktop-Umgebung automatisch skaliert werden können. Um zu erfahren, wie Sie das Skalierungstool verwenden, fahren Sie mit dem Abschnitt [Voraussetzungen](#prerequisites) fort.
 
 ## <a name="how-the-scaling-tool-works"></a>Funktionsweise des Skalierungstools
 
@@ -48,7 +49,7 @@ Wenn Sie den Parameter *LimitSecondsToForceLogOffUser* auf null festlegen, wird 
 
 Der Auftrag berücksichtigt immer auch die Einstellung *MaxSessionLimit* des Hostpools bei der Ermittlung, ob die aktuelle Anzahl der Sitzungen 90 % der maximalen Kapazität überschreitet. In diesem Fall startet der Auftrag weitere Sitzungshost-VMs.
 
-Der Auftrag wird in regelmäßigen Abständen basierend auf einem festgelegten Wiederholungsintervall ausgeführt. Sie können dieses Intervall basierend auf der Größe Ihrer Windows Virtual Desktop-Umgebung ändern. Beachten Sie jedoch, dass das Starten und Herunterfahren von VMs einige Zeit in Anspruch nehmen kann, und planen Sie eine entsprechende Verzögerung ein. Es wird empfohlen, das Wiederholungsintervall auf 15 Minuten festzulegen.
+Der Auftrag wird in regelmäßigen Abständen basierend auf einem festgelegten Wiederholungsintervall ausgeführt. Sie können dieses Intervall basierend auf der Größe Ihrer Azure Virtual Desktop-Umgebung ändern. Beachten Sie jedoch, dass das Starten und Herunterfahren von VMs einige Zeit in Anspruch nehmen kann, und planen Sie eine entsprechende Verzögerung ein. Es wird empfohlen, das Wiederholungsintervall auf 15 Minuten festzulegen.
 
 Für das Tool gelten allerdings folgende Einschränkungen:
 
@@ -63,8 +64,8 @@ Für das Tool gelten allerdings folgende Einschränkungen:
 
 Bevor Sie mit der Einrichtung des Skalierungstools beginnen, sollten Sie Folgendes vorbereiten:
 
-- Einen [Windows Virtual Desktop-Mandanten und -Hostpool](create-host-pools-arm-template.md)
-- Sitzungshostpool-VMs, die konfiguriert und für den Windows Virtual Desktop-Dienst registriert sind
+- Einen [Azure Virtual Desktop-Mandanten und -Hostpool](create-host-pools-arm-template.md)
+- Sitzungshostpool-VMs, die konfiguriert und für den Azure Virtual Desktop-Dienst registriert sind
 - Einen Benutzer mit dem Zugriff [Mitwirkender](../../role-based-access-control/role-assignments-portal.md) für das Azure-Abonnement
 
 Der Computer, den Sie zum Bereitstellen des Tools verwenden, muss Folgendes aufweisen:
@@ -148,13 +149,13 @@ So erstellen Sie ein ausführendes Konto in Ihrem Azure Automation-Konto
 
 5. Warten Sie einige Minuten, bis Azure das ausführende Konto erstellt hat. Sie können den Erstellungsprozess im Menü unter den Benachrichtigungen nachverfolgen.
 
-6. Zum Abschluss erstellt der Prozess die Ressource **AzureRunAsConnection** im angegebenen Azure Automation-Konto. Wählen Sie **Ausführendes Azure-Konto** aus. Die Verbindungsressource enthält die Anwendungs-ID, die Mandanten-ID, die Abonnement-ID und den Zertifikatfingerabdruck. Kopieren Sie die Anwendungs-ID, da Sie diese später verwenden. Diese Informationen finden Sie auch auf der Seite **Verbindungen**. Klicken Sie links im Fenster im Abschnitt **Freigegebene Ressourcen** auf die Option **Verbindungen** und dann auf das Verbindungsobjekt namens **AzureRunAsConnection**, um zu dieser Seite zu wechseln.
+6. Zum Abschluss erstellt der Prozess die Ressource **AzureRunAsConnection** im angegebenen Azure Automation-Konto. Wählen Sie **Ausführendes Azure-Konto** aus. Die Verbindungsressource enthält die Anwendungs-ID, die Mandanten-ID, die Abonnement-ID und den Zertifikatfingerabdruck. Kopieren Sie die Anwendungs-ID, da Sie diese später verwenden. Diese Informationen finden Sie auch auf der Seite **Verbindungen**. Um zu dieser Seite zu wechseln, wählen Sie im Bereich links im Fenster im Abschnitt **Freigegebene Ressourcen** die Option **Verbindungen** aus, und klicken Sie dann auf das Verbindungsobjekt mit dem Namen **AzureRunAsConnection**.
 
-### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Erstellen einer Rollenzuweisung in Windows Virtual Desktop
+### <a name="create-a-role-assignment-in-azure-virtual-desktop"></a>Erstellen einer Rollenzuweisung in Azure Virtual Desktop
 
-Als Nächstes müssen Sie eine Rollenzuweisung erstellen, damit **AzureRunAsConnection** mit Windows Virtual Desktop interagieren kann. Achten Sie darauf, dass Sie PowerShell verwenden und sich mit einem Konto anmelden, das über Berechtigungen zum Erstellen von Rollenzuweisungen verfügt.
+Als Nächstes müssen Sie eine Rollenzuweisung erstellen, damit **AzureRunAsConnection** mit Azure Virtual Desktop interagieren kann. Achten Sie darauf, dass Sie PowerShell verwenden und sich mit einem Konto anmelden, das über Berechtigungen zum Erstellen von Rollenzuweisungen verfügt.
 
-Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul](/powershell/windows-virtual-desktop/overview/) herunterladen und importieren, um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie die folgenden PowerShell-Cmdlets aus, um eine Verbindung mit Windows Virtual Desktop herzustellen und Ihre Mandanten anzuzeigen:
+Zunächst müssen Sie das [PowerShell-Modul für Azure Virtual Desktop](/powershell/windows-virtual-desktop/overview/) herunterladen und importieren, um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie die folgenden PowerShell-Cmdlets aus, um eine Verbindung mit Azure Virtual Desktop herzustellen und Ihre Mandanten anzuzeigen.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -165,7 +166,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Get-RdsTenant
 ```
 
-Wenn Sie den Mandanten mit den zu skalierenden Hostpools gefunden haben, befolgen Sie die Anleitung unter [Erstellen eines ausführenden Azure Automation-Kontos](#create-an-azure-automation-run-as-account), um die Anwendungs-ID von **AzureRunAsConnection** abzurufen. Erstellen Sie zudem mithilfe des Namens Ihres Windows Virtual Desktop-Mandanten aus dem vorherigen Cmdlet wie folgt die Rollenzuweisung:
+Wenn Sie den Mandanten mit den zu skalierenden Hostpools gefunden haben, befolgen Sie die Anleitung unter [Erstellen eines ausführenden Azure Automation-Kontos](#create-an-azure-automation-run-as-account), um die Anwendungs-ID von **AzureRunAsConnection** abzurufen. Erstellen Sie zudem mithilfe des Namens Ihres Azure Virtual Desktop-Mandanten aus dem vorherigen Cmdlet wie folgt die Rollenzuweisung:
 
 ```powershell
 New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId "<applicationid>" -TenantName "<tenantname>"
@@ -193,7 +194,7 @@ Abschließend müssen Sie die Azure-Logik-App erstellen und einen Ausführungsze
     Invoke-WebRequest -Uri $Uri -OutFile ".\CreateOrUpdateAzLogicApp.ps1"
     ```
 
-4. Führen Sie das folgende Cmdlet aus, um sich bei Windows Virtual Desktop mit einem Konto anzumelden, das über die Berechtigungen „RDS-Besitzer“ oder „RDS-Mitwirkender“ verfügt.
+4. Führen Sie das folgende Cmdlet aus, um sich bei Azure Virtual Desktop mit einem Konto anzumelden, das über die Berechtigungen „RDS-Besitzer“ oder „RDS-Mitwirkender“ verfügt.
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -202,7 +203,7 @@ Abschließend müssen Sie die Azure-Logik-App erstellen und einen Ausführungsze
     # Set-RdsContext -TenantGroupName "<Tenant_Group_Name>"
     ```
 
-5. Führen Sie das folgende PowerShell-Skript aus, um die Azure-Logik-App und den Ausführungsplaner für Ihren Hostpool zu erstellen.
+5. Führen Sie das folgende PowerShell-Skript aus, um die Azure-Logik-App und den Ausführungszeitplan für Ihren Hostpool zu erstellen:
 
     >[!NOTE]
     >Sie müssen dieses Skript für jeden Hostpool ausführen, den Sie automatisch skalieren möchten, Sie benötigen jedoch nur ein Azure Automation-Konto.

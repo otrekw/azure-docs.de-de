@@ -6,14 +6,14 @@ author: duongau
 ms.service: frontdoor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/18/2021
+ms.date: 06/10/2021
 ms.author: amsriva
-ms.openlocfilehash: 5b14ac194d3cf08a11edc47a84825f447be79e34
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 0e8c597037ac769c293a2f04cb2e300658db93b4
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109516594"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005229"
 ---
 # <a name="configure-https-on-a-front-door-standardpremium-sku-preview-custom-domain-using-the-azure-portal"></a>Konfigurieren von HTTPS für eine benutzerdefinierte Front Door Standard/Premium-SKU (Vorschau) über das Azure-Portal
 
@@ -49,11 +49,11 @@ Azure Front Door Standard/Premium unterstützt sowohl von Azure verwaltete Zerti
 
 1. Überprüfen Sie die benutzerdefinierte Domäne, und ordnen Sie sie einem Endpunkt zu, indem Sie die Schritte unter „Aktivieren der [benutzerdefinierten Domäne](how-to-add-custom-domain.md)“ befolgen.
 
-1. Nachdem die benutzerdefinierte Domäne erfolgreich dem Endpunkt zugeordnet wurde, wird ein verwaltetes Azure-Zertifikat für Front Door bereitgestellt. Es kann einige Minuten dauern, bis dieser Vorgang abgeschlossen ist.
+1. Nachdem die benutzerdefinierte Domäne erfolgreich dem Endpunkt zugeordnet wurde, wird ein verwaltetes Azure-Zertifikat für Front Door bereitgestellt. Dieser Vorgang kann von einigen Minuten bis zu einer Stunde dauern.
 
 ## <a name="using-your-own-certificate"></a>Verwenden eines eigenen Zertifikats
 
-Sie können auch Ihr eigenes TLS-Zertifikat verwenden. Dieses Zertifikat muss in einen Azure Key Vault importiert werden, bevor Sie es mit Azure Front Door Standard/Premium verwenden können. Weitere Informationen finden Sie unter [Importieren eines Zertifikats](../../key-vault/certificates/tutorial-import-certificate.md) in Azure Key Vault. 
+Sie können auch Ihr eigenes TLS-Zertifikat verwenden.  Wenn Sie Ihr TLS/SSL-Zertifikat erstellen, müssen Sie eine vollständige Zertifikatkette mit einer zulässigen Zertifizierungsstelle erstellen, die in der [Microsoft-Liste der vertrauenswürdigen Zertifizierungsstellen](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) enthalten ist. Bei Verwendung einer unzulässigen Zertifizierungsstelle wird Ihre Anforderung abgelehnt.  Das Zertifikat muss über eine vollständige Zertifikatkette mit Blatt- und Zwischenzertifikaten verfügen, und die Stammzertifizierungsstelle muss in der [Microsoft-Liste der vertrauenswürdigen Zertifizierungsstellen](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) enthalten sein. Wenn ein Zertifikat ohne vollständige Kette präsentiert wird, funktionieren die in diesem Zertifikat enthaltenen Anforderungen nicht wie erwartet. Dieses Zertifikat muss in einen Azure Key Vault importiert werden, bevor Sie es mit Azure Front Door Standard/Premium verwenden können. Weitere Informationen finden Sie unter [Importieren eines Zertifikats](../../key-vault/certificates/tutorial-import-certificate.md) in Azure Key Vault.
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Vorbereiten Ihres Azure Key Vault-Kontos und Ihres Zertifikats
  
@@ -65,7 +65,7 @@ Sie können auch Ihr eigenes TLS-Zertifikat verwenden. Dieses Zertifikat muss in
 1. Falls Sie bereits über ein Zertifikat verfügen, können Sie es direkt in Ihr Azure Key Vault-Konto hochladen. Andernfalls können Sie ein neues Zertifikat direkt über Azure Key Vault von einer der Partnerzertifizierungsstellen erstellen, in die Azure Key Vault integriert wird. Laden Sie Ihr Zertifikat nicht als **Geheimnis**, sondern als Objekt vom Typ **Zertifikat** hoch.
 
     > [!NOTE]
-    > Bei eigenen TLS-/SSL-Zertifikaten werden von Front Door keine Zertifikate mit EC-Kryptographiealgorithmen unterstützt.
+    > Bei eigenen TLS-/SSL-Zertifikaten werden von Front Door keine Zertifikate mit EC-Kryptographiealgorithmen unterstützt. Das Zertifikat muss über eine vollständige Zertifikatkette mit Blatt- und Zwischenzertifikaten verfügen, und die Stammzertifizierungsstelle muss in der [Microsoft-Liste der vertrauenswürdigen Zertifizierungsstellen](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) enthalten sein. 
 
 #### <a name="register-azure-front-door"></a>Registrieren von Azure Front Door
 

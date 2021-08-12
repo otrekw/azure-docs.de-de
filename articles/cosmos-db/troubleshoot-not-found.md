@@ -4,16 +4,16 @@ description: Erfahren Sie mehr über die Diagnose und Behebung der Ausnahme „N
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 07/13/2020
+ms.date: 05/26/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 22cce2c620d23ab477de5d92bb8c6d4f5ef5a493
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b9a78c1adeb5aa833c7c60be1dc4e553ae7d5393
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425123"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538843"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Diagnose und Troubleshooting für die Ausnahme „Nicht gefunden“ in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,6 +37,12 @@ Es sind mehrere SDK-Clientinstanzen vorhanden, und der Lesevorgang ist vor dem S
 #### <a name="solution"></a>Lösung:
 1. Die standardmäßig für Azure Cosmos DB festgelegte Kontokonsistenz ist die Sitzungskonsistenz. Wenn ein Element erstellt oder aktualisiert wird, wird bei der Antwort ein Sitzungstoken zurückgegeben, das zwischen den SDK-Instanzen weitergegeben werden kann. Damit wird sichergestellt, dass bei der Leseanforderung aus einem Replikat mit dieser Änderung gelesen wird.
 1. Ändern Sie die [Konsistenzebene](./consistency-levels.md) in eine [höhere Ebene](./consistency-levels.md).
+
+### <a name="reading-throughput-for-a-container-or-database-resource"></a>Lesen des Durchsatzes für einen Container oder eine Datenbankressource
+Bei der Verwendung von PowerShell oder der Azure CLI erhalten Sie die Fehlermeldung *Nicht gefunden*.
+
+#### <a name="solution"></a>Projektmappe:
+Der Durchsatz kann auf Datenbankebene, Containerebene oder beidem bereitgestellt werden. Versuchen Sie bei der Anzeige des Fehlers *Nicht gefunden*, den Durchsatz der übergeordneten Datenbankressource oder der untergeordneten Containerressource zu lesen.
 
 ### <a name="invalid-partition-key-and-id-combination"></a>Ungültige Kombination aus Partitionsschlüssel und ID
 Die Kombination aus Partitionsschlüssel und ID ist ungültig.

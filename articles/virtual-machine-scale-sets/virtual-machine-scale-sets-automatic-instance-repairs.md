@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: instance-protection
 ms.date: 02/28/2020
 ms.reviewer: jushiman
-ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: e1505a1a901472f0ce1a93ae71ba8ea0364b7b8d
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: af63d27f60c3e3fa8f6aa95cd30d1f93114d4078
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754153"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031167"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische Instanzreparaturen für Azure-VM-Skalierungsgruppen
 
@@ -38,7 +38,7 @@ Für Instanzen, die als „Fehlerhaft“ markiert sind, werden automatische Repa
 
 **Maximum number of instances in the scale set** (Maximale Anzahl von Instanzen in der Skalierungsgruppe)
 
-Dieses Feature ist derzeit nur für Skalierungsgruppen mit maximal 500 Instanzen verfügbar. Die Skalierungsgruppe kann entweder als einzelne Platzierungsgruppe oder als mehrfache Platzierungsgruppe bereitgestellt werden. Die Anzahl der Instanzen kann jedoch nicht über 200 liegen, wenn automatische Instanzreparaturen für die Skalierungsgruppe aktiviert sind.
+Dieses Feature ist derzeit nur für Skalierungsgruppen mit maximal 500 Instanzen verfügbar. Die Skalierungsgruppe kann entweder als einzelne oder mehrfache Platzierungsgruppe bereitgestellt werden. Die Anzahl der Instanzen darf jedoch 500 nicht überschreiten, wenn automatische Instanzreparaturen für die Skalierungsgruppe aktiviert sind.
 
 **API-Version**
 

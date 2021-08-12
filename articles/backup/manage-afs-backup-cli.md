@@ -2,13 +2,13 @@
 title: Verwalten der Sicherungen von Azure-Dateifreigaben mit der Azure-Befehlszeilenschnittstelle
 description: Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle Azure-Dateifreigaben, die durch Azure Backup gesichert wurden, verwalten und überwachen.
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: e389f5cde12734ef4bf0be4ecfba69ba33f5e030
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/10/2021
+ms.openlocfilehash: 9ddee7e0e7595d4606d077f33362344fe582d9a8
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773601"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902967"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Verwalten der Sicherungen von Azure-Dateifreigaben mit der Azure-Befehlszeilenschnittstelle
 
@@ -88,6 +88,98 @@ az backup job list --resource-group azurefiles --vault-name azurefilesvault
     "type": "Microsoft.RecoveryServices/vaults/backupJobs"
   }
 ]
+```
+## <a name="create-policy"></a>Erstellen von Richtlinien
+
+Eine Sicherungsrichtlinie können Sie mit dem Befehl [az backup policy create](/cli/azure/backup/policy?view=azure-cli-latest&preserve-view=true#az_backup_policy_create) mit den folgenden Parametern erstellen:
+
+- --backup-management-type: Azure Storage
+- --workload-type: AzureFileShare
+- --name: Name der Richtlinie
+- --policy: JSON-Datei mit den entsprechenden Details zu Zeitplan und Aufbewahrung
+- --resource-group: Ressourcengruppe des Tresors
+- --vault-name: Name des Tresors
+
+**Beispiel**
+
+```azurecli-interactive
+az backup policy create --resource-group azurefiles --vault-name azurefilesvault --name schedule20 --backup-management-type AzureStorage --policy samplepolicy.json --workload-type AzureFileShare
+
+```
+
+**Beispiel-JSON (samplepolicy.json)**
+
+```json
+{
+  "eTag": null,
+  "id": "/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupPolicies/schedule20",
+  "location": null,
+  "name": "schedule20",
+  "properties": {
+    "backupManagementType": "AzureStorage",
+    "protectedItemsCount": 0,
+    "retentionPolicy": {
+      "dailySchedule": {
+        "retentionDuration": {
+          "count": 30,
+          "durationType": "Days"
+        },
+        "retentionTimes": [
+          "2020-01-05T08:00:00+00:00"
+        ]
+      },
+      "monthlySchedule": null,
+      "retentionPolicyType": "LongTermRetentionPolicy",
+      "weeklySchedule": null,
+      "yearlySchedule": null
+    },
+    "schedulePolicy": {
+      "schedulePolicyType": "SimpleSchedulePolicy",
+      "scheduleRunDays": null,
+      "scheduleRunFrequency": "Daily",
+      "scheduleRunTimes": [
+        "2020-01-05T08:00:00+00:00"
+      ],
+      "scheduleWeeklyFrequency": 0
+    },
+    "timeZone": "UTC",
+    "workLoadType": “AzureFileShare”
+  },
+  "resourceGroup": "azurefiles",
+  "tags": null,
+  "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
+}
+```
+
+Nach dem Erstellen der Richtlinie wird in der Ausgabe des Befehls die JSON-Richtlinie angezeigt, die Sie beim Ausführen des Befehls als Parameter übergeben haben.
+
+Sie können die Richtlinienabschnitte für Zeitplan und Aufbewahrung nach Bedarf ändern.
+
+**Beispiel**
+
+Wenn Sie die Sicherung des ersten Sonntags jedes Monats zwei Monate lang beibehalten möchten, aktualisieren Sie den monatlichen Zeitplan wie folgt:
+
+```json
+"monthlySchedule": {
+        "retentionDuration": {
+          "count": 2,
+          "durationType": "Months"
+        },
+        "retentionScheduleDaily": null,
+        "retentionScheduleFormatType": "Weekly",
+        "retentionScheduleWeekly": {
+          "daysOfTheWeek": [
+            "Sunday"
+          ],
+          "weeksOfTheMonth": [
+            "First"
+          ]
+        },
+        "retentionTimes": [
+          "2020-01-05T08:00:00+00:00"
+        ]
+      }
+
 ```
 
 ## <a name="modify-policy"></a>Ändern der Richtlinie

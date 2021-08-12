@@ -1,18 +1,18 @@
 ---
-title: Überwachen und Verwalten von Azure Bastion-Sitzungen | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie eine laufende Sitzung auswählen und die Trennung erzwingen oder die Sitzung löschen.
+title: Überwachen und Verwalten von Azure Bastion-Sitzungen
+description: Hier erfahren Sie, wie Sie eine laufende Sitzung auswählen und deren Trennung erzwingen oder die Sitzung löschen.
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 05/21/2020
-ms.author: charwen
-ms.openlocfilehash: beb4f8fc5b9e22bc3e2bdd4732c8321dfcd70780
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: cherylmc
+ms.openlocfilehash: 6b0df7ae98c3718ddfadf9e13354b4f961585c98
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90980730"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110540434"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Überwachen und Verwalten von Azure Bastion-Sitzungen
 

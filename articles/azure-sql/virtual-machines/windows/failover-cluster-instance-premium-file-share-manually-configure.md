@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.subservice: hadr
-ms.custom: na
+ms.custom: na, devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: ddd25c605ef159bddfb8a9c7cb4d02ac7094c511
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 7ca6fdf685da74b8b0e10875a2bd16d66a7b4c60
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482193"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020300"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Erstellen einer FCI mit einer Premium-Dateifreigabe (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,10 @@ In diesem Artikel wird erläutert, wie Sie auf virtuellen Azure-Computern eine S
 
 Premium-Dateifreigaben sind SSD-gestützte (Storage Spaces Direct) Dateifreigaben mit durchgängig niedriger Latenz, die für die Verwendung mit Failoverclusterinstanzen für SQL Server 2012 oder höher unter Windows Server 2012 oder höher vollständig unterstützt werden. Premium-Dateifreigaben bieten Ihnen mehr Flexibilität, sodass Sie ohne Ausfallzeiten die Größe der Dateifreigabe ändern und diese skalieren können.
 
-Weitere Informationen finden Sie in der Übersicht über [FCI mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md) und über [Best Practices bei Clustern](hadr-cluster-best-practices.md). 
+Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md) und über [Bewährte Methoden für Cluster](hadr-cluster-best-practices.md). 
+
+> [!NOTE]
+> Sie können Ihre Failoverclusterinstanzlösung jetzt mithilfe von Azure Migrate per Lift-und-Shift-Verfahren zu SQL Server auf Azure-VMs verschieben. Weitere Informationen finden Sie unter [Migrieren einer Failoverclusterinstanz](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,24 +46,21 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
 ## <a name="mount-premium-file-share"></a>Einbinden der Premium-Dateifreigabe
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wechseln Sie dann zu Ihrem Speicherkonto.
-1. Navigieren Sie unter **Dateidienst** zu **Dateifreigaben**, und wählen Sie die Premium-Dateifreigabe aus, die Sie als SQL-Speicher verwenden möchten.
+1. Navigieren Sie unter **Datenspeicher** zu **Dateifreigaben**, und wählen Sie die Premium-Dateifreigabe aus, die Sie als SQL-Speicher verwenden möchten.
 1. Klicken Sie auf **Verbinden**, um die Verbindungszeichenfolge für Ihre Dateifreigabe anzuzeigen.
-1. Wählen Sie in der Dropdownliste den gewünschten Laufwerkbuchstaben aus, und kopieren Sie dann beide Codeblöcke in Editor.
+1. Wählen Sie in der Dropdownliste den Laufwerkbuchstaben aus, den Sie verwenden möchten, wählen Sie **Speicherkontoschlüssel** als Authentifizierungsmethode aus, und kopieren Sie dann den Codeblock in einen Text-Editor, z. B. Editor.
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/premium-file-storage-commands.png" alt-text="Kopieren beider PowerShell-Befehle aus dem Portal zum Herstellen der Verbindung mit der Dateifreigabe":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/premium-file-storage-commands.png" alt-text="Kopieren des PowerShell-Befehls aus dem Portal zum Herstellen der Verbindung mit der Dateifreigabe":::
 
 1. Stellen Sie eine RDP-Verbindung (Remotedesktopprotokoll) mit der SQL Server-VM her. Nutzen Sie dazu das Konto, das Ihre SQL Server-FCI als Dienstkonto verwenden soll.
 1. Öffnen Sie eine administrative PowerShell-Befehlskonsole.
-1. Führen Sie die Befehle aus, die Sie zuvor beim Arbeiten im Portal gespeichert haben.
-1. Navigieren Sie über den Datei-Explorer oder das Dialogfeld **Ausführen** (WINDOWS+R) zur Freigabe. Verwenden Sie den Netzwerkpfad `\\storageaccountname.file.core.windows.net\filesharename`. Zum Beispiel, `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
-
+1. Führen Sie den Befehl aus, den Sie zuvor aus dem Dateifreigabeportal in den Text-Editor kopiert haben.
+1. Navigieren Sie über den Datei-Explorer oder das Dialogfeld **Ausführen** (WINDOWS+R auf der Tastatur) zur Freigabe. Verwenden Sie den Netzwerkpfad `\\storageaccountname.file.core.windows.net\filesharename`. Zum Beispiel, `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
 1. Erstellen Sie in der neu verbundenen Dateifreigabe mindestens einen Ordner, in dem Sie Ihre SQL-Datendateien ablegen können.
 1. Wiederholen Sie diese Schritte auf jeder SQL Server-VM, die zum Cluster gehört.
 
   > [!IMPORTANT]
   > - Erwägen Sie den Einsatz einer gesonderten Dateifreigabe für Sicherungsdateien, um die IOPS- (Input/Output Operations Per Second, Ein-/Ausgabevorgänge pro Sekunde) und Größenkapazität dieser Freigabe für Daten- und Protokolldateien zu reservieren. Sie können für Sicherungsdateien eine Dateifreigaben des Typs Standard oder Premium verwenden.
-  > - Wenn Sie unter Windows 2012 R2 oder früher arbeiten, führen Sie die gleichen Schritte aus, um die Dateifreigabe einzubinden, die Sie als Dateifreigabezeugen verwenden. 
-  > 
 
 
 ## <a name="add-windows-cluster-feature"></a>Feature zum Hinzufügen von Windows-Clustern
@@ -83,34 +83,6 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-## <a name="validate-cluster"></a>Validieren des Clusters
-
-Führen Sie die Validierung für den Cluster auf der Benutzeroberfläche oder mit PowerShell durch.
-
-Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem der beiden virtuellen Computer folgendermaßen vor:
-
-1. Wählen Sie unter **Server-Manager** die Option **Tools** aus, und wählen Sie dann **Failovercluster-Manager** aus.
-1. Wählen Sie unter **Failovercluster-Manager** die Option **Aktion** aus, und wählen Sie dann **Konfiguration überprüfen** aus.
-1. Wählen Sie **Weiter** aus.
-1. Geben Sie unter **Server oder Cluster auswählen** die Namen der beiden virtuellen Computer ein.
-1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. 
-1. Wählen Sie **Weiter** aus.
-1. Wählen Sie unter **Testauswahl** alle Tests aus, ausgenommen **Speicher** und **Direkte Speicherplätze**, wie hier gezeigt:
-
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Auswählen von Tests zur Überprüfung des Clusters":::
-
-1. Wählen Sie **Weiter** aus.
-1. Wählen Sie unter **Bestätigung** die Option **Weiter** aus.
-
-Der **Konfigurationsüberprüfungs-Assistent** führt die Validierungstests aus.
-
-Führen Sie zum Validieren des Clusters mit PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus:
-
-   ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
-   ```
-
-Erstellen Sie nach dem Validieren des Clusters den Failovercluster.
 
 
 ## <a name="create-failover-cluster"></a>Erstellen des Failoverclusters
@@ -142,10 +114,39 @@ Weitere Informationen finden Sie unter [Failovercluster: Cluster Network Object]
 
 ---
 
-
 ## <a name="configure-quorum"></a>Konfigurieren des Quorums
 
-Konfigurieren Sie die Quorumlösung, die Ihren Geschäftsanforderungen am besten entspricht. Sie können einen [Datenträgerzeugen](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum), einen [Cloudzeugen](/windows-server/failover-clustering/deploy-cloud-witness) oder einen [Dateifreigabezeugen](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum) konfigurieren. Weitere Informationen finden Sie unter [Quorum mit SQL Server-VMs](hadr-cluster-best-practices.md#quorum). 
+Obwohl der Datenträgerzeuge die resilienteste Quorumoption ist, erfordert er einen freigegebenen Azure-Datenträger, der für die Konfiguration mit Premium-Dateifreigaben einige Einschränkungen für die Failoverclusterinstanz erzwingt. Daher ist der Cloudzeuge die empfohlene Quorumlösung für eine derartige Clusterkonfiguration für SQL Server auf Azure-VMs. Konfigurieren Sie andernfalls einen Dateifreigabenzeugen. 
+
+Wenn Sie im Cluster über eine gerade Anzahl von Stimmen verfügen, konfigurieren Sie die [Quorumlösung](hadr-cluster-quorum-configure-how-to.md), die Ihren Geschäftsanforderungen am besten entspricht. Weitere Informationen finden Sie unter [Quorum mit SQL Server-VMs](hadr-windows-server-failover-cluster-overview.md#quorum). 
+
+## <a name="validate-cluster"></a>Validieren des Clusters
+
+Führen Sie die Validierung für den Cluster auf der Benutzeroberfläche oder mit PowerShell durch.
+
+Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem der beiden virtuellen Computer folgendermaßen vor:
+
+1. Wählen Sie unter **Server-Manager** die Option **Tools** aus, und wählen Sie dann **Failovercluster-Manager** aus.
+1. Wählen Sie unter **Failovercluster-Manager** die Option **Aktion** aus, und wählen Sie dann **Konfiguration überprüfen** aus.
+1. Wählen Sie **Weiter** aus.
+1. Geben Sie unter **Server oder Cluster auswählen** die Namen der beiden virtuellen Computer ein.
+1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. 
+1. Wählen Sie **Weiter** aus.
+1. Wählen Sie unter **Testauswahl** alle Tests aus, ausgenommen **Speicher** und **Direkte Speicherplätze**, wie hier gezeigt:
+
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Auswählen von Tests zur Überprüfung des Clusters":::
+
+1. Wählen Sie **Weiter** aus.
+1. Wählen Sie unter **Bestätigung** die Option **Weiter** aus.
+
+Der **Konfigurationsüberprüfungs-Assistent** führt die Validierungstests aus.
+
+Führen Sie zum Validieren des Clusters mit PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus:
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   ```
+
 
 
 ## <a name="test-cluster-failover"></a>Testen des Failovers des Clusters
@@ -205,9 +206,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurieren von Konnektivität 
 
-Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 CU2 (oder höher) und Windows Server 2016 (oder höher) stattdessen das Feature für [verteilte Netzwerknamen](failover-cluster-instance-distributed-network-name-dnn-configure.md) verwenden. 
-
-Weitere Informationen zu den Optionen für Clusterkonnektivität finden Sie unter [Weiterleiten von HADR-Verbindungen an SQL Server auf Azure-VMs](hadr-cluster-best-practices.md#connectivity). 
+Sie können einen VNet-Namen oder einen Namen für ein verteiltes Netzwerk für eine Failoverclusterinstanz konfigurieren. Machen Sie sich mit den [Unterschieden zwischen den beiden Optionen](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn) vertraut, und stellen Sie dann entweder einen [Namen eines verteilten Netzwerks](failover-cluster-instance-distributed-network-name-dnn-configure.md) oder einen [Namen eines virtuellen Netzwerks](failover-cluster-instance-vnn-azure-load-balancer-configure.md) für Ihre Failoverclusterinstanz bereit.
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -223,8 +222,10 @@ Wenn dies noch nicht geschehen ist, konfigurieren Sie die Konnektivität mit Ihr
 
 Wenn Premium-Dateifreigaben nicht die richtige FCI-Speicherlösung für Sie sind, können Sie Ihre FCI mithilfe von [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) oder von [Direkte Speicherplätze](failover-cluster-instance-storage-spaces-direct-manually-configure.md) erstellen. 
 
-Weitere Informationen finden Sie in der Übersicht über [FCI mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md) und über [Best Practices zur Clusterkonfiguration](hadr-cluster-best-practices.md). 
+Weitere Informationen finden Sie unter:
 
-Weitere Informationen finden Sie unter 
-- [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Failoverclusterinstanzen mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md)
+- [Übersicht über Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)
+

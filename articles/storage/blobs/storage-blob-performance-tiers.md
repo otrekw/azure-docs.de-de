@@ -1,19 +1,19 @@
 ---
 title: Leistungsstufen für Blockblobspeicher – Azure Storage
 description: Hierin wird der Unterschied zwischen den Premium- und Standard-Leistungsstufen für Azure-Blockblobspeicher erläutert.
-author: twooley
-ms.author: twooley
-ms.date: 11/12/2019
+author: normesta
+ms.author: normesta
+ms.date: 05/17/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 93e6fcc11703fc24d97bc19ab9cc0d2129ff666f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: faf26ce78e0d6137c93e150d31bd49b9e72b6b8b
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143321"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655100"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Leistungsstufen für Blockblobspeicher
 
@@ -26,14 +26,14 @@ Azure-Blockblobspeicher bietet zwei verschiedene Leistungsstufen:
 
 Die folgenden Überlegungen gelten für die unterschiedlichen Leistungsstufen:
 
-| Bereich |Standardleistung  |Premium-Leistung  |
-|---------|---------|---------|
-|Regionale Verfügbarkeit     |   Alle Regionen      | In [ausgewählten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
-|Unterstützte [Speicherkontotypen](../common/storage-account-overview.md#types-of-storage-accounts)     |     Universell v2, BlobStorage, Universell v1    |    BlockBlobStorage     |
-|Unterstützt [Blockblobs mit hohem Durchsatz](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)     |    Ja, bei PutBlock- oder PutBlob-Größen von mehr als 4 MiB     |    Ja, bei PutBlock- oder PutBlob-Größen von mehr als 256 KiB    |
-|Redundanz     |     Weitere Informationen finden Sie unter [Speicherkontentypen](../common/storage-account-overview.md#types-of-storage-accounts).   |  Unterstützt derzeit nur lokal redundanten Speicher (Locally Redundant Storage, LRS) und zonenredundanten Speicher (Zone Redudant Storage, ZRS).<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
+| Bereich | Standardleistung | Premium-Leistung |
+|--|--|--|
+| Regionale Verfügbarkeit | Alle Regionen | In [ausgewählten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=storage) |
+| Unterstützte [Speicherkontotypen](../common/storage-account-overview.md#types-of-storage-accounts) | Universell V2, Universell V1, Legacyblob | Premium, Blockblob |
+| Unterstützt [Blockblobs mit hohem Durchsatz](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) | Ja, bei PutBlock- oder PutBlob-Größen von mehr als 4 MiB | Ja, bei PutBlock- oder PutBlob-Größen von mehr als 256 KiB |
+| Redundanz | Weitere Informationen finden Sie unter [Speicherkontentypen](../common/storage-account-overview.md#types-of-storage-accounts). | Unterstützt derzeit nur lokal redundanten Speicher (Locally Redundant Storage, LRS) und zonenredundanten Speicher (Zone Redudant Storage, ZRS).<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div> |
 
-<div id="zone-redundant-storage"><sup>1</sup>Zonenredundanter Speicher (ZRS) ist in ausgewählten Regionen für Blockblob-Speicherkonten mit Premium-Leistung verfügbar.</div>
+<div id="zone-redundant-storage"><sup>1</sup>Zonenredundanter Speicher (ZRS) steht in ausgewählten Regionen für Premium-Blockblobspeicherkonten zur Verfügung.</div>
 
 Bezüglich der Kosten bietet die Premium-Leistung optimierte Preise für Anwendungen mit hohen Transaktionsraten, um die [Gesamtspeicherkosten für diese Workloads zu senken](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/).
 
@@ -63,7 +63,7 @@ Die Standardleistung unterstützt verschiedene [Zugriffsebenen](storage-blob-sto
 
 ## <a name="migrate-from-standard-to-premium"></a>Migrieren von Standard zu Premium
 
-Sie können kein vorhandenes Speicherkonto mit Standard-Leistung in ein Blockblob-Speicherkonto mit Premium-Leistung konvertieren. Um zu einem Speicherkonto mit Premium-Leistung zu migrieren, müssen Sie ein Blockblob-Speicherkonto erstellen und die Daten zum neuen Konto migrieren. Weitere Informationen finden Sie unter [Erstellen eines Blockblob-Speicherkontos](../common/storage-account-create.md).
+Sie können kein vorhandenes Speicherkonto mit Standard-Leistung in ein Blockblob-Speicherkonto mit Premium-Leistung konvertieren. Zum Migrieren zu einem Speicherkonto mit Premium-Leistung müssen Sie ein Premium-Blockblobkonto erstellen und die Daten zum neuen Konto migrieren. Weitere Informationen finden Sie unter [Erstellen eines Blockblob-Speicherkontos](../common/storage-account-create.md).
 
 Zum Kopieren von Blobs zwischen Speicherkonten können Sie die neueste Version des Befehlszeilenprogramms [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) verwenden. Für die Datenverschiebung und Transformation sind auch andere Tools, wie Azure Data Factory, verfügbar.
 

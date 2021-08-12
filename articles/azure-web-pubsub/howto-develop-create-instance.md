@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 03/17/2021
-ms.openlocfilehash: 0ed91129f2093018ff34a2b3eef505eded9483cf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f3ed823d989abcb32ad7680e902fc5d52200e726
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060704"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951046"
 ---
 # <a name="how-to-create-azure-web-pubsub-instance"></a>Erstellen einer Azure Web PubSub-Instanz
 
@@ -19,13 +19,15 @@ Um eine Anwendung mit dem Azure Web PubSub-Dienst zu erstellen, müssen Sie die 
 
 ## <a name="create-azure-web-pubsub-instance-with-azure-portal"></a>Erstellen einer Azure Web PubSub-Instanz mit Azure-Portal 
 
-Das [Azure-Portal](https://docs.microsoft.com/azure/azure-portal/) ist eine webbasierte, zentrale Konsole, die eine Alternative zu Befehlszeilentools darstellt. Sie können Ihr Azure-Abonnement mit dem Azure-Portal verwalten. Erstellen, Verwalten und Überwachen aller Komponenten – von einfachen Web-Apps bis hin zu komplexen Cloudbereitstellungen. Sie können auch eine Azure Web PubSub-Dienstinstanz mit Azure-Portal erstellen.
+Das [Azure-Portal](../azure-portal/index.yml) ist eine webbasierte, zentrale Konsole, die eine Alternative zu Befehlszeilentools darstellt. Sie können Ihr Azure-Abonnement mit dem Azure-Portal verwalten. Erstellen, Verwalten und Überwachen aller Komponenten – von einfachen Web-Apps bis hin zu komplexen Cloudbereitstellungen. Sie können auch eine Azure Web PubSub-Dienstinstanz mit Azure-Portal erstellen.
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche „Neu“. Geben Sie im Bildschirm „Neu“ den Begriff *Web PubSub* in das Suchfeld ein, und drücken Sie die EINGABETASTE.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche „Neu“. Geben Sie im Bildschirm „Neu“ den Begriff *Web PubSub* in das Suchfeld ein, und drücken Sie die EINGABETASTE. (Sie können Azure Web PubSub auch in der Kategorie `Web` durchsuchen.)
 
-1. Wählen Sie in den Suchergebnissen **Web PubSub** und dann **Erstellen** aus.
+:::image type="content" source="media/create-instance-portal/search-web-pubsub-in-portal.png" alt-text="Screenshot: Durchsuchen von Azure Web PubSub im Portal.":::
 
-1. Geben Sie folgende Einstellungen ein.
+2. Wählen Sie in den Suchergebnissen **Web PubSub** und dann **Erstellen** aus.
+
+3. Geben Sie folgende Einstellungen ein.
 
     | Einstellung      | BESCHREIBUNG                                        |
     | ------------ | -------------------------------------------------- |
@@ -36,10 +38,10 @@ Das [Azure-Portal](https://docs.microsoft.com/azure/azure-portal/) ist eine webb
     | **Preisstufe** | Erfahren Sie mehr über die Tarife die [Preisebenen des Azure Web PubSub-Dienstes](https://azure.microsoft.com/pricing/details/web-pubsub/). |
     | **Einheitenanzahl** |  Die Einheitenanzahl gibt an, wie viele Verbindungen Ihre Instanz des Web PubSub-Dienstes akzeptieren kann. Jede Einheit unterstützt höchstens 1.000 gleichzeitige Verbindungen. Dies kann nur im Tarif „Standard“ konfiguriert werden. |
 
-1. Wählen Sie **Erstellen** aus, um mit der Bereitstellung der Instanz des Web PubSub-Dienstes zu beginnen.
+:::image type="content" source="media/howto-develop-create-instance/create-web-pubsub-instance-in-portal.png" alt-text="Screenshot: Erstellen der Azure Web PubSub-Instanz im Portal.":::
+
+4. Wählen Sie **Erstellen** aus, um mit der Bereitstellung der Instanz des Web PubSub-Dienstes zu beginnen.
 
 ## <a name="create-azure-web-pubsub-instance-with-azure-cli"></a>Erstellen einer Azure Web PubSub-Instanz mit Azure CLI
 
-Die [Azure-Befehlszeilenschnittstelle (Azure CLI)](https://docs.microsoft.com/cli/azure) setzt sich aus Befehlen zum Erstellen und Verwalten von Azure-Ressourcen zusammen. Die Azure CLI ist in allen Azure-Diensten verfügbar und soll die schnelle Verwendung von Azure ermöglichen. Der Fokus liegt dabei auf der Automatisierung. Sie können auch eine Azure Web PubSub-Dienstinstanz mit Azure CLI nach GA erstellen.
-
-
+Die [Azure-Befehlszeilenschnittstelle (Azure CLI)](/cli/azure) setzt sich aus Befehlen zum Erstellen und Verwalten von Azure-Ressourcen zusammen. Die Azure CLI ist in allen Azure-Diensten verfügbar und soll die schnelle Verwendung von Azure ermöglichen. Der Fokus liegt dabei auf der Automatisierung. Sie können auch eine Azure Web PubSub-Dienstinstanz mit Azure CLI nach GA erstellen.

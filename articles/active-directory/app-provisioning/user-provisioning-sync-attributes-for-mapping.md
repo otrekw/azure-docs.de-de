@@ -3,21 +3,22 @@ title: Synchronisieren von Attributen mit Azure AD zu Zuordnungszwecken
 description: Verwenden Sie beim Konfigurieren der Benutzerbereitstellungen in Azure AD und SaaS-Apps (Software-as-a-Service) die Verzeichniserweiterungsfunktion, um Quellattribute hinzuzufügen, die nicht standardmäßig synchronisiert sind.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 03/31/2021
 ms.author: kenwith
-ms.openlocfilehash: f7a2429161cebe867d844b4ca7aa08ec3613edcd
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.reviewer: arvinh
+ms.openlocfilehash: 2cc6c3ec2b58a64491b0741658db325e808f0fa5
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388209"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784645"
 ---
-# <a name="syncing-extension-attributes-for-app-provisioning"></a>Synchronisieren von Erweiterungsattributen zur Bereitstellung der App
+# <a name="syncing-extension-attributes-for-azure-active-directory-application-provisioning"></a>Synchronisieren von Erweiterungsattributen für die Azure Active Directory-Anwendungsbereitstellung
 
 Azure Active Directory (Azure AD) muss bei der Bereitstellung eines Benutzerkontos aus Azure AD in eine SaaS-App alle erforderlichen Daten (Attribute) zum[ Erstellen eines Benutzerprofils enthalten](../saas-apps/tutorial-list.md). Beim Anpassen von Attributzuordnungen für die Benutzerbereitstellung wird das Attribut, das Sie zuordnen möchten, möglicherweise nicht in der **Quellattribut**-Liste angezeigt. In diesem Artikel wird gezeigt, wie Sie das fehlende Attribut hinzufügen.
 

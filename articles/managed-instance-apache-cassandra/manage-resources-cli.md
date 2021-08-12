@@ -6,12 +6,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: thvankra
-ms.openlocfilehash: ea28bf21424f0624b4f1bb5856a17672c1c7b106
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: ee35faf70066ece0f1c799b7d04317a8cd28729d
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875447"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517206"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Verwalten von Azure SQL Managed Instance für Apache Cassandra-Ressourcen mithilfe der Azure CLI (Vorschau)
 
@@ -132,8 +132,10 @@ In den folgenden Abschnitten wird die Verwaltung von Azure SQL Managed Instance 
 * [Erstellen eines Rechenzentrums](#create-datacenter)
 * [Löschen eines Rechenzentrums](#delete-datacenter)
 * [Abrufen von Details zu Rechenzentren](#get-datacenter-details)
-* [Aktualisieren oder Skalieren eines Rechenzentrums](#update-datacenter)
 * [Abrufen von Rechenzentren in einem Cluster](#get-datacenters-cluster)
+* [Aktualisieren oder Skalieren eines Rechenzentrums](#update-datacenter)
+* [Aktualisieren der Cassandra-Konfiguration](#update-yaml)
+
 
 ### <a name="create-a-datacenter"></a><a id="create-datacenter"></a>Erstellen eines Rechenzentrums
 
@@ -194,13 +196,50 @@ resourceGroupName='MyResourceGroup'
 clusterName='cassandra-hybrid-cluster'
 dataCenterName='dc1'
 dataCenterLocation='eastus'
-delegatedSubnetId= '/subscriptions/<Subscription_ID>/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/dc1-subnet'
 
 az managed-cassandra datacenter update \
     --resource-group $resourceGroupName \
     --cluster-name $clusterName \
     --data-center-name $dataCenterName \
     --node-count 13 
+```
+
+### <a name="update-cassandra-configuration"></a><a id="update-yaml"></a>Aktualisieren der Cassandra-Konfiguration
+
+Ändern Sie die Cassandra-Konfiguration in einem Rechenzentrum mithilfe des Befehls [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_update). Sie müssen eine Base64-Codierung für das YAML-Fragment mithilfe eines [Onlinetools](https://www.base64encode.org/) durchführen. Die folgenden YAML-Einstellungen werden unterstützt:
+
+- column_index_size_in_kb
+- compaction_throughput_mb_per_sec
+- read_request_timeout_in_ms
+- range_request_timeout_in_ms
+- aggregated_request_timeout_in_ms
+- write_request_timeout_in_ms
+- internode_compression
+- batchlog_replay_throttle_in_kb
+
+Sehen Sie sich als Beispiel das folgende YAML-Fragment an:
+
+```yaml
+column_index_size_in_kb: 16
+read_request_timeout_in_ms: 10000
+```
+
+Wenn die YAML-Datei codiert wird, wird sie in `Y29sdW1uX2luZGV4X3NpemVfaW5fa2I6IDE2CnJlYWRfcmVxdWVzdF90aW1lb3V0X2luX21zOiAxMDAwMA==` konvertiert. 
+
+Siehe unten:
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+clusterName='cassandra-hybrid-cluster'
+dataCenterName='dc1'
+dataCenterLocation='eastus'
+yamlFragment='Y29sdW1uX2luZGV4X3NpemVfaW5fa2I6IDE2CnJlYWRfcmVxdWVzdF90aW1lb3V0X2luX21zOiAxMDAwMA=='
+
+az managed-cassandra datacenter update \
+    --resource-group $resourceGroupName \
+    --cluster-name $clusterName \
+    --data-center-name $dataCenterName \
+    --base64-encoded-cassandra-yaml-fragment $yamlFragment
 ```
 
 ### <a name="get-the-datacenters-in-a-cluster"></a><a id="get-datacenters-cluster"></a>Abrufen der Rechenzentren in einem Cluster

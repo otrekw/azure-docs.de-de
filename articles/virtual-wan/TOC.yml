@@ -75,10 +75,6 @@
           href: scenario-route-between-vnets-firewall.md
         - name: Application Gateway und Back-End-Pools
           href: scenario-secured-hub-app-gateway.md
-    - name: Überwachung
-      items:
-        - name: Informationen zu Azure Monitor Insights für Virtual WAN
-          href: azure-monitor-insights.md
     - name: Site-to-Site
       items:
         - name: Informationen zu S2S IPsec-Richtlinien
@@ -185,10 +181,12 @@
           href: howto-private-link.md
         - name: 'Verwalten des Zugriffs auf Ressourcen: Spoke-VNET (P2S)'
           href: manage-secure-access-resources-spoke-p2s.md
-    - name: Überwachung
+    - name: Systemüberwachung
       items:
-        - name: Protokolle und Metriken
-          href: logs-metrics.md
+        - name: "Überwachen von Virtual\_WAN"
+          href: monitor-virtual-wan.md
+        - name: Azure Monitor-Erkenntnisse für Virtual WAN
+          href: azure-monitor-insights.md
 - name: Verweis
   items:
     - name: Azure PowerShell

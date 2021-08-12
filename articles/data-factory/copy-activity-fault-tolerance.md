@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 0fe1470661c006399ea176af1112d271524b2a1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb3a7b66d27fcf7669d3d2f863f104a46387e90f
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390962"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902481"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fehlertoleranz der Kopieraktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -246,7 +246,7 @@ In der vorstehenden Beispielprotokolldatei können Sie sehen, dass eine einzige 
 
 ## <a name="copying-tabular-data-legacy"></a>Kopieren von Tabellendaten (Legacy):
 
-Im Folgenden wird die Legacy-Methode zum Aktivieren der Fehlertoleranz gezeigt, wenn nur Tabellendaten kopiert werden. Wenn Sie eine neue Pipeline oder Aktivität erstellen, wird empfohlen, stattdessen von [hier](#copying-tabular-data) aus zu beginnen.
+Die folgende Vorgehensweise stellt die Legacy-Methode zum Aktivieren der Fehlertoleranz dar, wenn nur Tabellendaten kopiert werden. Wenn Sie eine neue Pipeline oder Aktivität erstellen, wird empfohlen, stattdessen von [hier](#copying-tabular-data) aus zu beginnen.
 
 ### <a name="configuration"></a>Konfiguration
 Das folgende Beispiel zeigt eine JSON-Definition, mit der das Überspringen der inkompatiblen Zeilen in der Kopieraktivität konfiguriert wird:
