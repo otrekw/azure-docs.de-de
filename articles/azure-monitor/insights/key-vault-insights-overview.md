@@ -1,30 +1,30 @@
 ---
-title: Überwachen von Key Vault mit Azure Monitor für Key Vault | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zu Azure Monitor für Key Vault-Instanzen.
+title: Überwachen von Schlüsseltresoren mit Key Vault Insights | Microsoft-Dokumentation
+description: In diesem Artikel wird Key Vault Insights beschrieben.
 services: azure-monitor
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 91aed191e3bb165d6690759426a596df39f8c10f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 953d6300b8ac19ddfcfe3b37a1cfde50480e19a4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582298"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095120"
 ---
-# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault
-Azure Monitor für Key Vault ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt.
-In diesem Artikel erfahren Sie, wie Sie das Onboarding von Azure Monitor für Key Vault durchführen und die Umgebung anpassen.
+# <a name="monitoring-your-key-vault-service-with-key-vault-insights"></a>Überwachen Ihres Schlüsseltresordiensts mit Key Vault Insights
+Key Vault Insights ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt.
+In diesem Artikel erfahren Sie, wie Sie das Onboarding von Key Vault Insights durchführen und die Umgebung anpassen.
 
-## <a name="introduction-to-azure-monitor-for-key-vault"></a>Einführung in Azure Monitor für Key Vault
+## <a name="introduction-to-key-vault-insights"></a>Einführung in Key Vault Insights
 
 Bevor Sie sich mit der Umgebung befassen, sollten Sie sich mit der Darstellung und Visualisierung von Informationen vertraut machen.
 -    **Perspektive im gewünschten Umfang** mit einer Momentaufnahme der Leistung auf der Grundlage der Anforderungen, einer Aufschlüsselung von Fehlern sowie einer Übersicht über die Vorgänge und die Wartezeit.
 -   **Drilldownanalyse** für einen bestimmten Schlüsseltresor, um eine ausführliche Analyse zu ermöglichen.
 -    **Anpassbarkeit**. Dadurch können Sie ändern, welche Metriken angezeigt werden, auf Ihre Grenzwerte abgestimmte Schwellenwerte festlegen und Ihre eigene Arbeitsmappe speichern. Diagramme in der Arbeitsmappe können an Azure-Dashboards angeheftet werden.
 
-Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um eine globale Überwachungslösung bereitzustellen. Die metrikbasierten Überwachungsdaten stehen allen Benutzern zur Verfügung. Für die Einbeziehung protokollbasierter Visualisierungen müssen die Benutzer jedoch unter Umständen die [Protokollierung ihrer Azure Key Vault-Instanz aktivieren](../../key-vault/general/logging.md).
+Key Vault Insights kombiniert Protokolle und Metriken, um eine globale Überwachungslösung bereitzustellen. Die metrikbasierten Überwachungsdaten stehen allen Benutzern zur Verfügung. Für die Einbeziehung protokollbasierter Visualisierungen müssen die Benutzer jedoch unter Umständen die [Protokollierung ihrer Azure Key Vault-Instanz aktivieren](../../key-vault/general/logging.md).
 
 ## <a name="view-from-azure-monitor"></a>Anzeigen in Azure Monitor
 
@@ -64,7 +64,7 @@ Informationen zum besseren Verständnis der einzelnen Statuscodes finden Sie in 
 
 ## <a name="view-from-a-key-vault-resource"></a>Anzeigen über eine Key Vault-Ressource
 
-Sie können direkt von einem Schlüsseltresor aus auf Azure Monitor für Key Vault zugreifen:
+Zum direkten Zugreifen auf Key Vault Insights aus einem Schlüsseltresor führen Sie die folgenden Schritte aus:
 
 1. Wählen Sie im Azure-Portal die Option „Schlüsseltresore“ aus.
 
@@ -105,7 +105,7 @@ Die Ergebnisse der Übersichts- oder Fehlerarbeitsmappe für mehrere Abonnements
 
 ![Screenshot: Ausgewähltes Stecknadelsymbol](./media/key-vaults-insights-overview/pin.png)
 
-## <a name="customize-azure-monitor-for-key-vault"></a>Anpassen von Azure Monitor für Key Vault
+## <a name="customize-key-vault-insights"></a>Anpassen von Key Vault Insights
 
 In diesem Abschnitt werden gängige Szenarien für die Bearbeitung der Arbeitsmappe erläutert, um sie zur Unterstützung Ihrer Datenanalyseanforderungen anzupassen:
 *  Festlegen des Bereichs der Arbeitsmappe, sodass immer ein bestimmtes Abonnement oder mindestens ein bestimmter Schlüsseltresor ausgewählt ist
@@ -135,11 +135,11 @@ Sie können den Bereich der Übersichts- oder Fehlerarbeitsmappe für mehrere Ab
 
 Allgemeine Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](troubleshoot-workbooks.md).
 
-Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger bekannter Probleme, die bei der Verwendung von Azure Monitor für Key Vault auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
+Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger häufiger Probleme, die bei der Verwendung von Key Vault Insights auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
 
 ### <a name="resolving-performance-issues-or-failures"></a>Beheben von Leistungsproblemen oder Fehlern
 
-Informationen zur Behandlung schlüsseltresorbezogener Probleme, die Sie mit Azure Monitor für Key Vault identifizieren, finden Sie in der [Dokumentation zu Azure Key Vault](../../key-vault/index.yml).
+Informationen zur Behandlung schlüsseltresorbezogener Probleme, die Sie mit Key Vault Insights ermitteln, finden Sie in der [Dokumentation zu Azure Key Vault](../../key-vault/index.yml).
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Warum werden nur 200 Schlüsseltresore angezeigt?
 

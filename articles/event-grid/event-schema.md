@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid-Ereignisschema
-description: Beschreibt die Eigenschaften und das Schema für alle Ereignisse. Ereignisse bestehen aus einer Gruppe von fünf erforderlichen Zeichenfolgeneigenschaften und einem erforderlichen Datenobjekt.
+description: Beschreibt die Eigenschaften und das Schema für alle Ereignisse. Ereignisse bestehen aus einer Gruppe von vier erforderlichen Zeichenfolgeneigenschaften.
 ms.topic: reference
 ms.date: 07/07/2020
-ms.openlocfilehash: 5ff7b41a45cf467074e18a50be398b2a3c9866a4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6354401902a841322e58dc7989f10279efee6c2c
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732158"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854916"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-Ereignisschema
 
-Dieser Artikel beschreibt die Eigenschaften und das Schema für alle Ereignisse. Ereignisse bestehen aus einer Gruppe von fünf erforderlichen Zeichenfolgeneigenschaften und einem erforderlichen Datenobjekt. Die Eigenschaften gelten für alle Ereignisse von jedem Herausgeber. Das Datenobjekt weist Eigenschaften auf, die für die einzelnen Herausgeber spezifisch sind. Bei Systemthemen sind diese Eigenschaften spezifisch für den Ressourcenanbieter, z.B. Azure Storage oder Azure Event Hubs.
+Dieser Artikel beschreibt die Eigenschaften und das Schema für alle Ereignisse. Ereignisse bestehen aus einer Gruppe von vier erforderlichen Zeichenfolgeneigenschaften. Die Eigenschaften gelten für alle Ereignisse von jedem Herausgeber. Das Datenobjekt weist Eigenschaften auf, die für die einzelnen Herausgeber spezifisch sind. Bei Systemthemen sind diese Eigenschaften spezifisch für den Ressourcenanbieter, z.B. Azure Storage oder Azure Event Hubs.
 
 Ereignisquellen senden Ereignisse an Azure Event Grid in einem Array, das mehrere Ereignisobjekte aufweisen kann. Beim Veröffentlichen von Ereignissen in einem Ereignisrasterthema kann das Array eine Gesamtgröße von bis zu 1 MB aufweisen. Jedes Ereignis im Array ist auf 1 MB beschränkt. Wenn ein Ereignis oder das Array das zulässige Größenlimit überschreitet, erhalten Sie die Antwort **413 Nutzlast zu groß**. Vorgänge werden jedoch in Schritten von 64 KB in Rechnung gestellt. Daher fallen für Ereignisse über 64 KB Betriebsgebühren wie für mehrere Ereignisse an. Beispielsweise würde ein Ereignis mit einer Größe von 130 KB Vorgangsgebühren verursachen, als würde es sich um drei separate Ereignisse handeln.
 
@@ -75,7 +75,7 @@ Das für ein Azure Blob Storage-Ereignis veröffentlichte Schema sieht beispiels
 
 Alle Ereignisse weisen die gleichen Daten auf oberster Ebene auf:
 
-| Eigenschaft | type | Erforderlich | BESCHREIBUNG |
+| Eigenschaft | Typ | Erforderlich | Beschreibung |
 | -------- | ---- | -------- | ----------- |
 | topic | Zeichenfolge | Nein, aber muss bei einer Angabe genau mit der Azure Resource Manager-ID des Event Grid-Themas übereinstimmen. Bei nicht eingeschlossener Eigenschaft gilt die Angabe von Event Grid für das Ereignis. | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | Zeichenfolge | Ja | Vom Herausgeber definierter Pfad zum Ereignisbetreff |

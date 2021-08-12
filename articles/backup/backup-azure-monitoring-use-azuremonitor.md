@@ -4,12 +4,12 @@ description: Überwachen von Azure Backup-Workloads und Erstellen von benutzerde
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1800771bfff0afbcec8440383536734246ea8f5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e1466d3f7f8130cfe8b12ad23f2bf1f9dd61b54
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580735"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565516"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -156,10 +156,13 @@ Die Diagnosedaten aus dem Tresor werden mit einer gewissen Verzögerung in den L
 
 - Lösungsübergreifend werden die im Sicherungsdienst integrierten Warnungen sofort nach ihrer Erstellung gepusht. Daher werden sie normalerweise nach 20 bis 30 Minuten im Log Analytics-Arbeitsbereich angezeigt.
 - Lösungsübergreifend werden bedarfsgesteuerte Sicherungsaufträge und Wiederherstellungsaufträge gepusht, sobald sie *abgeschlossen sind*.
-- Die geplanten Sicherungsaufträge aus allen Lösungen (außer SQL-Sicherung) werden gepusht, sobald sie  *abgeschlossen* sind.
-- Da Protokollsicherungen alle 15 Minuten auftreten können, werden für SQL-Sicherungen Informationen für alle abgeschlossenen geplanten Sicherungsaufträge (einschließlich Protokolle) als Batch gesammelt und alle 6 Stunden gepusht.
+- Die geplanten Sicherungsaufträge aus allen Lösungen (außer SQL- und SAP HANA-Sicherung) werden gepusht, sobald sie *abgeschlossen* sind.
+- Da Protokollsicherungen alle 15 Minuten auftreten können, werden für SQL- und SAP HANA-Sicherungen Informationen für alle abgeschlossenen geplanten Sicherungsaufträge (einschließlich Protokolle) als Batch gesammelt und alle 6 Stunden gepusht.
 - Alle anderen Informationen wie Sicherungselemente, Richtlinien, Wiederherstellungspunkte, Speicher usw. werden lösungsübergreifend *mindestens einmal täglich* gepusht.
 - Eine Änderung der Sicherungskonfiguration (wie einer Änderung der Richtlinie oder Bearbeitungsrichtlinie) löst einen Push aller zugehörigen Sicherungsinformationen aus.
+
+> [!NOTE]
+> Die gleiche Verzögerung gilt für andere Ziele für Diagnosedaten, z. B. Speicherkonten und Event Hubs.
 
 ## <a name="using-the-recovery-services-vaults-activity-logs"></a>Verwenden der Aktivitätsprotokolle des Recovery Services-Tresors
 

@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer Graphdatenbank mit Java in Azure Cosmos DB
 description: Hier finden Sie ein Java-Codebeispiel, das Sie zum Herstellen einer Verbindung mit und zum Abfragen von Diagrammdaten in Azure Cosmos DB mit Gremlin verwenden können.
-author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
-ms.author: chrande
+author: manishmsfte
+ms.author: mansha
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 2fe051342877ea8b35248cbf7ddea0512a9bb99d
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 45781a407a6e79071e6b33f6db9d0c9357de3339
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "113225568"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355169"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Schnellstart: Erstellen einer Graphdatenbank mit dem Java SDK und der Azure Cosmos DB-Gremlin-API
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]

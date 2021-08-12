@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie den Aufruf von GetMetric() effektiv zum Erfas
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 22baa1ae9554601a72ffdb848b87d99281067967
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 8efea750ea60c8bb699dac4ffc9aba56241726e1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384288"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070082"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Benutzerdefinierte Sammlung von Metriken in .NET und .NET Core
 
@@ -32,7 +32,7 @@ Eine Drosselung ist insofern besonders problematisch, weil eine Drosselung ebens
 Zusammenfassend ist `GetMetric()` der empfohlene Ansatz, da dabei eine Vorabaggregation erfolgt, die Werte aus allen Aufrufen von Track() kumuliert und einmal pro Minute eine Zusammenfassung/Aggregation sendet. Dies kann den Kosten- und Leistungsaufwand erheblich reduzieren, da weniger Datenpunkte gesendet, aber dennoch alle relevanten Informationen erfasst werden.
 
 > [!NOTE]
-> Nur die .NET und .NET-Core SDKs bieten die GetMetric()-Methode. Wenn Sie mit Java arbeiten, können Sie [Micrometer-Metriken](./micrometer-java.md) oder `TrackMetric()` verwenden. Bei JavaScript und Node.js können Sie weiterhin `TrackMetric()` einsetzen. Beachten Sie jedoch die im vorherigen Abschnitt dargelegten Nachteile. Für Python können Sie [OpenCensus.stats](./opencensus-python.md#metrics) verwenden, um benutzerdefinierte Metriken zu senden. Die Metrikimplementierung unterscheidet sich aber.
+> Nur die .NET und .NET-Core SDKs bieten die GetMetric()-Methode. Wenn Sie Java verwenden, finden Sie weitere Informationen unter [Senden benutzerdefinierter Metriken mithilfe von Micrometer](./java-in-process-agent.md#send-custom-metrics-using-micrometer). Bei JavaScript und Node.js können Sie weiterhin `TrackMetric()` einsetzen. Beachten Sie jedoch die im vorherigen Abschnitt dargelegten Nachteile. Für Python können Sie [OpenCensus.stats](./opencensus-python.md#metrics) verwenden, um benutzerdefinierte Metriken zu senden. Die Metrikimplementierung unterscheidet sich aber.
 
 ## <a name="getting-started-with-getmetric"></a>Erste Schritte mit GetMetric
 

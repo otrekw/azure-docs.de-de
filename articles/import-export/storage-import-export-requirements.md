@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/28/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 0997c74b8b99638771152620743f23e0816e178e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e766b2aba1aef47b16b4351c7852bb2f457475fa
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756753"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887598"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systemanforderungen für Azure Import/Export
 
@@ -46,7 +46,7 @@ Der Azure Import-/Export-Dienst unterstützt die folgenden Typen von Speicherkon
 - Speicherkonten vom Typ Allgemein v1 (sowohl klassische als auch Azure Resource Manager-Bereitstellungen)
 
 > [!IMPORTANT]
-> Die Unterstützung für das NFS 3.0-Protokoll (Network File System) in Azure Blog Storage wird mit Azure Import/Export nicht unterstützt.
+> Die Unterstützung für das NFS 3.0-Protokoll (Network File System) in Azure Blob Storage wird mit Azure Import/Export nicht unterstützt.
 
 Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonten – Übersicht](../storage/common/storage-account-overview.md).
 
@@ -62,7 +62,7 @@ Die folgende Liste von Speichertypen wird vom Azure Import/Export-Dienst unterst
 
 |Auftrag  |Speicherdienst |Unterstützt  |Nicht unterstützt  |
 |---------|---------|---------|---------|
-|Importieren     |  Azure Blob Storage <br><br> Azure-Dateispeicher       | Blockblobs und Seitenblobs werden unterstützt. <br><br> Files wird unterstützt.          |
+|Importieren     |  Azure Blob Storage <br><br> Azure Files-Speicher       | Blockblobs und Seitenblobs werden unterstützt. <br><br> Files wird unterstützt.          |
 |Exportieren     |   Azure Blob Storage       | Blockblobs, Seitenblobs und Anfügeblobs werden unterstützt.         | Azure Files wird nicht unterstützt.<br>Export aus der Archivebene wird nicht unterstützt|
 
 

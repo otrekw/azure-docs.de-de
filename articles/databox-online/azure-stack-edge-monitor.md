@@ -1,6 +1,6 @@
 ---
-title: Überwachen des Azure Stack Edge Pro-Geräts | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie über das Azure-Portal und die lokale Webbenutzeroberfläche Ihr Azure Stack Edge Pro-Gerät überwachen.
+title: Überwachen des Azure Stack Edge-Geräts | Microsoft-Dokumentation
+description: Beschrieben wird, wie Sie über das Azure-Portal und die lokale Webbenutzeroberfläche Ihr Azure Stack Edge-Gerät überwachen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: aae64cad3603725a4062d5afb42df974bbf8ac40
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 13a11bb23479653ccc88b6e1a2312ff8e6f33609
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438784"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099656"
 ---
-# <a name="monitor-your-azure-stack-edge-pro"></a>Überwachen Ihres Azure Stack Edge Pro-Geräts
+# <a name="monitor-your-azure-stack-edge"></a>Überwachen Ihres Azure Stack Edge 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-mini-r-and-fpga-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-sku.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Ihr Azure Stack Edge Pro-Gerät überwachen. Zum Überwachen Ihres Geräts können Sie das Azure-Portal oder die lokale Webbenutzeroberfläche verwenden. Verwenden Sie das Azure-Portal, um Geräteereignisse anzuzeigen, Warnungen zu konfigurieren und zu verwalten und Metriken anzuzeigen. Verwenden Sie die lokale Webbenutzeroberfläche auf Ihrem physischen Gerät, um den Hardwarestatus der verschiedenen Gerätekomponenten anzuzeigen.
+In diesem Artikel wird beschrieben, wie Sie Ihr Azure Stack Edge-Gerät überwachen. Zum Überwachen Ihres Geräts können Sie das Azure-Portal oder die lokale Webbenutzeroberfläche verwenden. Verwenden Sie das Azure-Portal, um Geräteereignisse anzuzeigen, Warnungen zu konfigurieren und zu verwalten und Metriken anzuzeigen. Verwenden Sie die lokale Webbenutzeroberfläche auf Ihrem physischen Gerät, um den Hardwarestatus der verschiedenen Gerätekomponenten anzuzeigen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

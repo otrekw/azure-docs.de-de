@@ -1,21 +1,21 @@
 ---
-title: 'Exemplarische Vorgehensweise zu Azure Advisor für Windows Virtual Desktop: Azure'
-description: Vorgehensweise beim Auflösen von Azure Advisor-Empfehlungen für Windows Virtual Desktop.
+title: 'Exemplarische Vorgehensweise zu Azure Advisor für Azure Virtual Desktop: Azure'
+description: Vorgehensweise beim Auflösen von Azure Advisor-Empfehlungen für Azure Virtual Desktop.
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 666f882dec6c00b9fe5421485afded1fbd57d961
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b8bc514f495a46e76ad882720c918824aab0aaac
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448303"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745479"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Auflösen von Azure Advisor-Empfehlungen
 
-In diesem Artikel wird beschrieben, wie Sie Empfehlungen auflösen können, die in Azure Advisor für Windows Virtual Desktop angezeigt werden.
+In diesem Artikel wird beschrieben, wie Sie Empfehlungen auflösen können, die in Azure Advisor für Azure Virtual Desktop angezeigt werden.
 
 ## <a name="no-validation-environment-enabled"></a>„Keine Überprüfungsumgebung aktiviert“
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie Empfehlungen auflösen können, die 
 
 Diese Empfehlung wird unter „Optimaler Betrieb“ angezeigt. Die Empfehlung sollte auch eine Warnmeldung wie die folgende anzeigen:
 
-„In diesem Abonnement ist keine Überprüfungsumgebung aktiviert. Beim Erstellen Ihrer Hostpools haben Sie auf der Registerkarte „Eigenschaften“ unter „Überprüfungsumgebung“ die Option **Nein** ausgewählt. Um die Geschäftskontinuität durch Windows Virtual Desktop-Dienstbereitstellungen zu gewährleisten, stellen Sie sicher, dass Sie über mindestens einen Hostpool mit einer Überprüfungsumgebung verfügen, in der Sie auf potenzielle Probleme testen können.
+„In diesem Abonnement ist keine Überprüfungsumgebung aktiviert. Beim Erstellen Ihrer Hostpools haben Sie auf der Registerkarte „Eigenschaften“ unter „Überprüfungsumgebung“ die Option **Nein** ausgewählt. Um die Geschäftskontinuität durch Azure Virtual Desktop-Dienstbereitstellungen zu gewährleisten, stellen Sie sicher, dass Sie über mindestens einen Hostpool mit einer Überprüfungsumgebung verfügen, in der Sie auf potenzielle Probleme testen können.
 
 Sie können durch Aktivieren einer Überprüfungsumgebung in einem Ihrer Hostpools bewirken, dass diese Warnmeldung nicht mehr angezeigt wird.
 
@@ -75,4 +75,4 @@ Um diese Empfehlung aufzulösen, stellen Sie sicher, dass Sie die Blockierung al
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie nach ausführlicheren Anleitungen zur Lösung häufiger Probleme suchen, sehen Sie sich [Übersicht zu Problembehandlung, Feedback und Support für Windows Virtual Desktop](troubleshoot-set-up-overview.md) an.
+Wenn Sie nach ausführlicheren Anleitungen zur Lösung häufiger Probleme suchen, sehen Sie sich [Problembehandlung: Übersicht, Feedback und Support für Azure Virtual Desktop](troubleshoot-set-up-overview.md) an.

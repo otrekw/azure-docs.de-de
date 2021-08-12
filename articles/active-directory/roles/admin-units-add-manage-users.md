@@ -9,33 +9,41 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 101f1452f547f195288e2d22bc516880100c7735
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: ba7c3459d5df540304b0595ac6aacf039c558d6c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107496825"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094652"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Hinzufügen und Verwalten von Benutzern in einer Verwaltungseinheit in Azure Active Directory
 
 In Azure Active Directory (Azure AD) können Sie Benutzer einer Verwaltungseinheit hinzufügen, um eine präzisere Steuerung der Verwaltungsbereiche zu erzielen.
 
-Informationen zur Vorbereitung auf den Einsatz von PowerShell und Microsoft Graph für die Verwaltung von Verwaltungseinheiten finden Sie unter [Erste Schritte](admin-units-manage.md#get-started).
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Azure AD Premium P1- oder P2-Lizenz für jeden Administrator der Verwaltungseinheit
+- Azure AD Free-Lizenzen für Mitglieder von Verwaltungseinheiten
+- „Administrator für privilegierte Rollen“ oder „Globaler Administrator“
+- AzureAD-Modul bei Verwendung von PowerShell
+- Administratorzustimmung bei Verwendung von Graph-Tester für die Microsoft Graph-API
+
+Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
 
 ## <a name="add-users-to-an-administrative-unit"></a>Hinzufügen von Benutzern zu einer Verwaltungseinheit
 
-### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+### <a name="azure-portal"></a>Azure-Portal
 
 Sie können Benutzer Verwaltungseinheiten einzeln oder per Massenvorgang zuweisen.
 
 - Zuweisen einzelner Benutzer aus einem Benutzerprofil:
 
-   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) mit Berechtigungen „Administrator für privilegierte Rollen“ an.
+   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) an.
 
    1. Wählen Sie **Benutzer** und dann zum Öffnen des Benutzerprofils den Benutzer aus, der einer Verwaltungseinheit zugewiesen werden soll.
    
@@ -47,7 +55,7 @@ Sie können Benutzer Verwaltungseinheiten einzeln oder per Massenvorgang zuweise
 
 - Zuweisen einzelner Benutzer aus einer Verwaltungseinheit:
 
-   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) mit Berechtigungen „Administrator für privilegierte Rollen“ an.
+   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) an.
    1. Wählen Sie **Verwaltungseinheiten** und dann die Verwaltungseinheit aus, für die der Benutzer zugewiesen werden sollen.
    1. Wählen Sie **Alle Benutzer**, **Mitglied hinzufügen** und dann im Bereich **Mitglied hinzufügen** einen oder mehrere Benutzer aus, die Sie der Verwaltungseinheit zuweisen möchten.
 
@@ -55,7 +63,7 @@ Sie können Benutzer Verwaltungseinheiten einzeln oder per Massenvorgang zuweise
 
 - Zuweisen von Benutzern per Massenvorgang:
 
-   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) mit Berechtigungen „Administrator für privilegierte Rollen“ an.
+   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) an.
 
    1. Wählen Sie **Verwaltungseinheiten** aus.
 
@@ -65,7 +73,7 @@ Sie können Benutzer Verwaltungseinheiten einzeln oder per Massenvorgang zuweise
 
       ![Screenshot: Bereich „Benutzer“ zum Zuweisen von Benutzern zu einer Verwaltungseinheit per Massenvorgang](./media/admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 
-### <a name="use-powershell"></a>Verwenden von PowerShell
+### <a name="powershell"></a>PowerShell
 
 Verwenden Sie in PowerShell das Cmdlet `Add-AzureADAdministrativeUnitMember` aus dem folgenden Beispiel, um den Benutzer der Verwaltungseinheit hinzuzufügen. Die Objekt-ID der Verwaltungseinheit, der Sie den Benutzer hinzufügen möchten, und die Objekt-ID des hinzuzufügenden Benutzers werden als Argumente verwendet. Ändern Sie den hervorgehobenen Abschnitt so, wie dies für Ihre jeweilige Umgebung erforderlich ist.
 
@@ -76,7 +84,7 @@ Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.Id -RefObjectId $userObj
 ```
 
 
-### <a name="use-microsoft-graph"></a>Verwenden von Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 Ersetzen Sie den Platzhalter durch Testinformationen, und führen Sie den folgenden Befehl aus:
 
@@ -104,7 +112,7 @@ Beispiel
 
 ## <a name="view-a-list-of-administrative-units-for-a-user"></a>Anzeigen einer Liste mit Verwaltungseinheiten für einen Benutzer
 
-### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+### <a name="azure-portal"></a>Azure-Portal
 
 Im Azure-Portal können Sie das Profil eines Benutzers öffnen, indem Sie wie folgt vorgehen:
 
@@ -116,7 +124,7 @@ Im Azure-Portal können Sie das Profil eines Benutzers öffnen, indem Sie wie fo
 
    ![Screenshot: Verwaltungseinheiten, denen ein Benutzer zugewiesen wurde](./media/admin-units-add-manage-users/list-user-admin-units.png)
 
-### <a name="use-powershell"></a>Verwenden von PowerShell
+### <a name="powershell"></a>PowerShell
 
 Führen Sie den folgenden Befehl aus:
 
@@ -127,7 +135,7 @@ Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember 
 > [!NOTE]
 > Standardmäßig werden mit `Get-AzureADAdministrativeUnitMember` nur 100 Mitglieder einer Verwaltungseinheit zurückgegeben. Sie können `"-All $true"` hinzufügen, wenn Sie weitere Mitglieder abrufen möchten.
 
-### <a name="use-microsoft-graph"></a>Verwenden von Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 Ersetzen Sie den Platzhalter durch Testinformationen, und führen Sie den folgenden Befehl aus:
 
@@ -137,7 +145,7 @@ https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.Admi
 
 ## <a name="remove-a-single-user-from-an-administrative-unit"></a>Entfernen eines einzelnen Benutzers aus einer Verwaltungseinheit
 
-### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+### <a name="azure-portal"></a>Azure-Portal
 
 Es gibt zwei Möglichkeiten, einen Benutzer aus einer Verwaltungseinheit zu entfernen: 
 
@@ -153,7 +161,7 @@ Es gibt zwei Möglichkeiten, einen Benutzer aus einer Verwaltungseinheit zu entf
   
      ![Screenshot: Entfernen eines Benutzers auf der Ebene der Verwaltungseinheit](./media/admin-units-add-manage-users/admin-units-remove-user.png)
 
-### <a name="use-powershell"></a>Verwenden von PowerShell
+### <a name="powershell"></a>PowerShell
 
 Führen Sie den folgenden Befehl aus:
 
@@ -161,7 +169,7 @@ Führen Sie den folgenden Befehl aus:
 Remove-AzureADMSAdministrativeUnitMember -Id $adminUnitId -MemberId $memberUserObjId
 ```
 
-### <a name="use-microsoft-graph"></a>Verwenden von Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 Ersetzen Sie die Platzhalter durch Testinformationen, und führen Sie den folgenden Befehl aus:
 

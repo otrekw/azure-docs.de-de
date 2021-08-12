@@ -11,18 +11,24 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32ad7199360ca0acc8674f7a4e34bd206f8b335f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0698d07268c416b0a10055ec5480971fc10c142c
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648764"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854376"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Versionsverlauf des Azure AD-Kennwortschutz-Agents
 
+## <a name="121760"></a>1.2.176.0
+
+Releasedatum: 4. Juni 2021
+
+* Kleinere Fehlerbehebungen bei Problemen, die die erfolgreiche Ausführung von Proxy- und DC-Agents in bestimmten Umgebungen verhinderten.
+
 ## <a name="121720"></a>1.2.172.0
 
-Veröffentlichungsdatum: 22. Februar 2021
+Releasedatum: 22. Februar 2021
 
 Vor fast zwei Jahren wurden die GA-Versionen der lokalen Azure AD-Kennwortschutz-Agents veröffentlicht. Jetzt ist ein neues Update verfügbar. Weitere Informationen finden Sie unten in den Änderungsbeschreibungen. Wir danken allen, die uns Feedback zum Produkt gegeben haben. 
 
@@ -41,7 +47,7 @@ Die Ausführung älterer und neuerer Versionen der DC-Agent-und Proxysoftware in
 
 ## <a name="121250"></a>1.2.125.0
 
-Veröffentlichungsdatum: 22. März 2019
+Releasedatum: 2. März 2019
 
 * Beheben von kleineren Tippfehlern in Ereignisprotokollmeldungen
 * Aktualisieren des Endbenutzer-Lizenzvertrags auf die endgültige Version der allgemeinen Verfügbarkeit
@@ -51,7 +57,7 @@ Veröffentlichungsdatum: 22. März 2019
 
 ## <a name="121160"></a>1.2.116.0
 
-Veröffentlichungsdatum: 13.3.2019
+Releasedatum: 3. März 2019
 
 * Mit den Cmdlets „Get-AzureADPasswordProtectionProxy“ und „Get-AzureADPasswordProtectionDCAgent“ werden nun die Softwareversion und der aktuelle Azure-Mandant angezeigt. Dabei gelten folgende Einschränkungen:
   * Die Daten zur Softwareversion und zum Azure-Mandanten sind nur für DC-Agents und Proxys verfügbar, die mit Version 1.2.116.0 oder höher ausgeführt werden.
@@ -69,7 +75,7 @@ Veröffentlichungsdatum: 13.3.2019
 
 ## <a name="12650"></a>1.2.65.0
 
-Veröffentlichungsdatum: 1. Februar 2019
+Releasedatum: 1. Februar 2019
 
 Änderungen:
 
@@ -107,7 +113,7 @@ Veröffentlichungsdatum: 1. Februar 2019
 
 ## <a name="12250"></a>1.2.25.0
 
-Veröffentlichungsdatum: 1. November 2018
+Releasedatum: 1. November 2018
 
 Fehlerbehebungen:
 
@@ -125,7 +131,7 @@ Fehlerbehebungen:
 
 ## <a name="12100"></a>1.2.10.0
 
-Veröffentlichungsdatum: 17. August 2018
+Releasedatum: 17. August 2018
 
 Fehlerbehebungen:
 
@@ -149,7 +155,7 @@ Fehlerbehebungen:
 
 ## <a name="11103"></a>1.1.10.3
 
-Veröffentlichungsdatum: 15. Juni 2018
+Releasedatum: 15. Juni 2018
 
 Erste öffentliche Vorschauversion
 

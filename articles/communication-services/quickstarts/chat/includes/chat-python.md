@@ -6,21 +6,19 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 4f0eb345a51091ca354887fd3a798ae6e6da3ec7
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: e0c2deba9bdd69c6a4c9c9c5f0974a181c6c2472
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430735"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113113354"
 ---
-[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
-
-> [!NOTE]
-> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/add-chat).
+## <a name="sample-code"></a>Beispielcode
+Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/add-chat).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:

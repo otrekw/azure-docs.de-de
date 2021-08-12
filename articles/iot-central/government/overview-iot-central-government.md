@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a903622f698107f7f1a593946f083fca1573d53e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8957db7112363e4245e6610890ed6e4644c4a9dd
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99834339"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586471"
 ---
 # <a name="what-are-the-iot-central-government-solutions"></a>Welche IoT Central-Lösungen für Behörden gibt es?
 
@@ -27,7 +27,7 @@ Die App zur Überwachung der Wasserqualität ist eine IoT Central-App-Vorlage, 
 ![App-Vorlage zur Überwachung der Wasserqualität](./media/overview-iotcentral-government/waterqualitymonitoring-dashboard-full.png)
 
 Die App-Vorlage umfasst Folgendes:
-* Beispieldashboards für Bediener
+* Beispieldashboards
 * Beispielvorlagen für Geräte zur Überwachung der Wasserqualität
 * Simulierte Geräte zur Überwachung der Wasserqualität
 * Vorkonfigurierten Regeln und Aufträgen
@@ -45,7 +45,7 @@ Die App zur Überwachung des Wasserverbrauchs ist eine IoT Central-App-Vorlage,
   ![App-Vorlage zur Überwachung des Wasserverbrauchs](./media/overview-iotcentral-government/waterconsumptionmonitoring-dashboardfull.png)
 
 Die App-Vorlage zur Überwachung des Wasserverbrauchs umfasst folgende vorkonfigurierte Komponenten:
-* Beispieldashboards für Bediener
+* Beispieldashboards
 * Beispielvorlagen für Geräte zur Überwachung der Wasserqualität
 * Simulierte Geräte zur Überwachung der Wasserqualität
 * Vorkonfigurierten Regeln und Aufträgen
@@ -61,7 +61,7 @@ Die App für die vernetzte Abfallwirtschaft ist eine IoT Central-App-Vorlage, d
 
 
 Die App-Vorlage für eine vernetzte Abfallwirtschaft umfasst folgende vorkonfigurierte Komponenten:
-* Beispieldashboards für Bediener
+* Beispieldashboards
 * Beispielvorlagen für Geräte für vernetzte Abfallbehälter
 * Simulierte Geräte für vernetzte Abfallbehälter
 * Vorkonfigurierten Regeln und Aufträgen

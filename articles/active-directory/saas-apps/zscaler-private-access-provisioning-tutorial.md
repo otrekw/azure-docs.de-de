@@ -2,21 +2,21 @@
 title: 'Tutorial: Konfigurieren von Zscaler Private Access (ZPA) für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Zscaler Private Access (ZPA) konfigurieren.
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2019
-ms.author: Zhchia
-ms.openlocfilehash: 14708ddcc5c0e06ee58f5e9db5945c4e9f1a1d08
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: d4e430136b7fbbffc6c29ae25f3520ecdbbdfc9f
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937143"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760526"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler Private Access (ZPA) für die automatische Benutzerbereitstellung
 

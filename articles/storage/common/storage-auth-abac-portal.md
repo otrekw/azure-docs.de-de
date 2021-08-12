@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: ce0fab219f49427892f5ffe47c595edb26fea010
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 3e5e46e15a7885eb5e3f4828cb8298355a116fd8
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796010"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300487"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-the-azure-portal-preview"></a>Tutorial: Hinzufügen einer Rollenzuweisungsbedingung zum Einschränken des Zugriffs auf Blobs über das Azure-Portal (Vorschau)
 
@@ -71,8 +71,6 @@ Im Code sieht die Bedingung wie folgt aus:
 1. Erstellen Sie einen Benutzer, oder suchen Sie nach einem bereits vorhandenen Benutzer. In diesem Tutorial wird Chandra als Beispiel verwendet.
 
 ## <a name="step-2-set-up-storage"></a>Schritt 2: Einrichten des Speichers
-
-1. Registrieren Sie Ihr Abonnement für die Verwendung von Blobindextags, sofern Sie diesen Schritt noch nicht ausgeführt haben. Weitere Informationen finden Sie unter [Registrieren Ihres Abonnements (Vorschau)](../blobs/storage-manage-find-blobs.md#register-your-subscription-preview).
 
 1. Erstellen Sie ein Speicherkonto, das mit dem Blobindextag-Feature kompatibel ist. Das Feature befindet sich derzeit in der Public Preview-Phase. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit und Unterstützung von Speicherkonten](../blobs/storage-manage-find-blobs.md#regional-availability-and-storage-account-support).
 
@@ -157,8 +155,8 @@ Im Code sieht die Bedingung wie folgt aus:
 
     | Einstellung | Wert |
     | --- | --- |
-    | Attributquelle | Resource |
-    | attribute | Blobindextags [Werte in Schlüssel] |
+    | Attributquelle | Ressource |
+    | Attribut | Blobindextags [Werte in Schlüssel] |
     | Key | Project |
     | Betreiber | StringEqualsIgnoreCase |
     | Wert | Cascade |

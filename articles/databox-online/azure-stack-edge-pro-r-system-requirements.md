@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: ef81494b6c93f2941cc41b367e566332d6bc7cc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6710d8c30d394a3fde3a999b735739307e0dfbb1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831336"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099459"
 ---
 # <a name="azure-stack-edge-pro-r-system-requirements"></a>Systemanforderungen für Azure Stack Edge Pro R
 
@@ -110,6 +110,7 @@ Es wird empfohlen, Ihre Firewallregeln für den ausgehenden Datenverkehr basiere
 | https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft-Containerregistrierung (erforderlich)               |
 | https://\*.azure-devices.us              | IoT Hub-Zugriff (erforderlich)           |
 | https://\*.azurecr.us                    | Persönliche Containerregistrierungen und Containerregistrierungen von Drittanbietern (optional) | 
+| https://\*.docker.com              | StorageClass (erforderlich)                             |
 
 ## <a name="internet-bandwidth"></a>Internetbandbreite
 

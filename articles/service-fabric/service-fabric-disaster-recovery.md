@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8d99b4d1fbf227d850de387b7ca24dcd3fd40646
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f10ce3203eb63f7622f41e6838289129026ca73
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791154"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698275"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Notfallwiederherstellung in Azure Service Fabric
 Zur Gewährleistung von hoher Verfügbarkeit muss unter anderem sichergestellt werden, dass Dienste verschiedenste Arten von Ausfällen überstehen können. Dies ist besonders wichtig bei Ausfällen, die überraschend auftreten oder sich Ihrer Kontrolle entziehen. 
@@ -186,14 +186,15 @@ In seltenen Fällen kann es vorkommen, dass ein physisches Rechenzentrum aufgrun
 
 Für in Azure ausgeführte Cluster können Sie aktuelle Informationen zu Ausfällen auf der [Azure-Statusseite][azure-status-dashboard] nachlesen. Im äußerst unwahrscheinlichen Fall der vollständigen oder teilweisen Zerstörung eines physischen Rechenzentrums könnten sämtliche dort gehosteten Service Fabric-Cluster sowie die darin enthaltenen Dienste verloren gehen. Dieser Verlust schließt sämtliche Zustandsinformationen ein, die nicht außerhalb des Rechenzentrums oder der Region gesichert wurden.
 
-Dem dauerhaften Ausfall eines einzelnen Rechenzentrums oder einer einzelnen Region kann mit zwei unterschiedlichen Strategien begegnet werden: 
+Dem dauerhaften Ausfall eines einzelnen Rechenzentrums oder einer einzelnen Region kann mit vielen unterschiedlichen Strategien begegnet werden: 
 
 - Betreiben Sie separate Service Fabric-Cluster in mehreren Regionen, und nutzen Sie einen Failover- und Failbackmechanismus zwischen diesen Umgebungen. Dieses Modell mit mehreren Clustern (aktiv/aktiv oder aktiv/passiv) ist mit zusätzlichem Verwaltungsaufwand verbunden und erfordert zusätzlichen Vorgangscode. Darüber hinaus müssen bei diesem Modell Sicherungen der Dienste in einem Rechenzentrum oder in einer Region koordiniert werden, damit sie bei einem Ausfall in anderen Rechenzentren oder Regionen verfügbar sind. 
-- Betreiben Sie einen einzelnen Service Fabric-Cluster, der sich über mehrere Datencenter oder Regionen erstreckt. Für diese Strategie müssen mindestens drei Rechenzentren oder Regionen konfiguriert werden. Empfohlen werden fünf Regionen oder Datencenter. 
+- Betreiben Sie einen einzelnen Service Fabric-Cluster, der sich über mehrere Rechenzentren erstreckt. Für diese Strategie müssen mindestens drei Rechenzentren konfiguriert werden. Weitere Informationen finden Sie unter [Bereitstellen eines Service Fabric-Clusters über Verfügbarkeitszonen hinweg](service-fabric-cross-availability-zones.md).
   
-  Dieses Modell setzt eine komplexere Clustertopologie voraus. Es hat jedoch den Vorteil, dass der Ausfall eines Rechenzentrums oder einer Region keinen Notfall mehr darstellt, sondern nur noch einen normalen Ausfall. Diese Ausfälle können von den Mechanismen bewältigt werden, die für Cluster innerhalb einer einzelnen Region zum Einsatz kommen. Dank Fehlerdomänen, Upgradedomänen und Platzierungsregeln von Service Fabric werden Arbeitslasten so verteilt, dass sie normale Ausfälle tolerieren. 
+  Für dieses Modell sind zusätzliche Einrichtungsschritte erforderlich. Es hat jedoch den Vorteil, dass der Ausfall eines Rechenzentrums keinen Notfall mehr darstellt, sondern nur noch einen normalen Ausfall. Diese Ausfälle können von den Mechanismen bewältigt werden, die für Cluster innerhalb einer einzelnen Region zum Einsatz kommen. Dank Fehlerdomänen, Upgradedomänen und Platzierungsregeln von Service Fabric werden Arbeitslasten so verteilt, dass sie normale Ausfälle tolerieren.
   
   Weitere Informationen zu hilfreichen Richtlinien für den Betrieb von Diensten in dieser Art von Cluster finden Sie unter [Platzierungsrichtlinien für Service Fabric-Dienste](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md).
+- Betreiben Sie einen einzelnen eigenständigen Service Fabric-Cluster, der sich über mehrere Regionen erstreckt. Die empfohlene Anzahl von Regionen ist drei. Weitere Informationen zum eigenständigen Service Fabric-Setup finden Sie unter [Erstellen eines eigenständigen Clusters](service-fabric-cluster-creation-for-windows-server.md).
 
 ### <a name="random-failures-that-lead-to-cluster-failures"></a>Clusterausfälle aufgrund von zufälligen Ausfällen
 Bei Service Fabric kommt das *Seedknoten*-Konzept zur Anwendung. Hierbei handelt es sich um Knoten zur Aufrechterhaltung der Verfügbarkeit des zugrunde liegenden Clusters. 

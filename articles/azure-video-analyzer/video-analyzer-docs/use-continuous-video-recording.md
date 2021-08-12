@@ -2,13 +2,13 @@
 title: 'Tutorial: Fortlaufende Videoaufzeichnung und -wiedergabe – Azure Video Analyzer'
 description: In diesem Tutorial wird beschrieben, wie Sie Azure Video Analyzer zum fortlaufenden Aufzeichnen von Videos in der Cloud und Wiedergeben dieser Aufzeichnungen verwenden.
 ms.topic: tutorial
-ms.date: 04/01/2021
-ms.openlocfilehash: d62b9f413f0613d8152d3b0106fd398f89d3b95c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 2f3fc2421a2341974aa7ea7bdafeaf0123ea983e
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384110"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602931"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>Tutorial: Fortlaufende Videoaufzeichnung und -wiedergabe
 
@@ -93,7 +93,7 @@ Navigieren Sie in Visual Studio Code zum Ordner „src/cloud-to-device-console-a
 1. Vergewissern Sie sich anschließend unter den Knoten **livePipelineSet** und **pipelineTopologyDelete**, dass der Wert von **topologyName** dem Wert der Eigenschaft **name** in der obigen Pipelinetopologie entspricht:
 
     `"topologyName" : "CVRToVideoSink"`  
-1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-video-sink/topology.json) in einem Browser, und sehen Sie sich die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-cvr-video` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera auf einer Videoressource mit einem eindeutigen Namen erfolgt.
+1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-video-sink/topology.json) in einem Browser, und sehen Sie sich die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-cvr-video` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera über eine Videoressource mit einem eindeutigen Namen erfolgt.
 1. Starten Sie eine Debugsitzung, indem Sie F5 drücken. Daraufhin werden im **Terminalfenster** einige Nachrichten ausgegeben.
 1. Von der Datei operations.json werden zuerst `pipelineTopologyList` und `livePipelineList` aufgerufen. Falls Sie nach Abschluss vorheriger Schnellstartanleitungen oder Tutorials eine Ressourcenbereinigung durchgeführt haben, gibt diese Aktion leere Listen zurück, und die Ausführung wird angehalten, bis Sie die **EINGABETASTE** drücken, wie hier zu sehen:
 
@@ -282,12 +282,11 @@ Sie können die von der Livepipeline erstellte Video Analyzer-Videoressource unt
 1. Wählen Sie das Video aus.
 1. Die Seite mit den Videodetails wird geöffnet, und die Wiedergabe sollte automatisch gestartet werden.
 
-> [!NOTE]
-> Da es sich bei der Quelle des Videos um einen Container zum Simulieren eines Kamerafeeds handelt, beziehen sich die Zeitstempel im Video auf den Zeitpunkt, zu dem Sie die Livepipeline aktiviert bzw. deaktiviert haben.
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie die anderen Tutorials ausprobieren möchten, behalten Sie die erstellten Ressourcen. Wechseln Sie andernfalls zum Azure-Portal, navigieren Sie zu Ihren Ressourcengruppen, wählen Sie die Ressourcengruppe aus, unter der Sie dieses Tutorial durchgeführt haben, und löschen Sie die Ressourcengruppe.
+[!INCLUDE [prerequisites](./includes/common-includes/clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

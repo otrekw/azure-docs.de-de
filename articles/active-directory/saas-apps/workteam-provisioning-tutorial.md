@@ -2,21 +2,21 @@
 title: 'Tutorial: Konfigurieren von Workteam für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Workteam konfigurieren.
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/17/2019
-ms.author: Zhchia
-ms.openlocfilehash: f465438a6be80a1b487a4df7d3ee8bd38be9c102
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 6020f209e9fa4b59824b268417bc7122ce7691ed
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94354205"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760776"
 ---
 # <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workteam für die automatische Benutzerbereitstellung
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/08/2021
+ms.date: 05/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbb3bc0e34ad596c39aebb49124bb72d0b3efe6f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 6298c8483c44472fe6f52f3e48b5c529c2d978a5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103908"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457491"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies"></a>Beheben von Problemen mit benutzerdefinierten Richtlinien in Azure AD B2C
 
@@ -48,7 +48,7 @@ Sie können die Korrelations-ID in Ihre Azure AD B2C-Token einbeziehen. Gehen 
 1. Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>.
 1. Suchen Sie nach dem Element [BuildingBlocks](buildingblocks.md). Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
 1. Suchen Sie nach dem Element [ClaimsSchema](claimsschema.md). Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
-1. Fügen Sie dem Element **ClaimsSchema-** Element den Anspruch „Ort“ hinzu.  
+1. Fügen Sie den Korrelations-ID-Anspruch dem **ClaimsSchema**-Element hinzu.  
 
     ```xml
     <!-- 
@@ -63,7 +63,7 @@ Sie können die Korrelations-ID in Ihre Azure AD B2C-Token einbeziehen. Gehen 
     </BuildingBlocks>-->
     ```
 
-1. Öffnen Sie die Datei der vertrauenden Seite Ihrer Richtlinie. Beispielsweise die Datei <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em>. Der Ausgabeanspruch wird nach einer erfolgreichen User Journey in das Token eingefügt und an die Anwendung gesendet. Bearbeiten Sie im Abschnitt für die vertrauende Seite das Element „Technisches Profil“, und fügen Sie den Ort als Ausgabeanspruch hinzu.
+1. Öffnen Sie die Datei der vertrauenden Seite Ihrer Richtlinie. Beispielsweise die Datei <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em>. Der Ausgabeanspruch wird nach einer erfolgreichen User Journey in das Token eingefügt und an die Anwendung gesendet. Ändern Sie das Element „Technisches Profil“ im Abschnitt „vertrauende Seite“, um `correlationId` als eine Ausgabeanspruch hinzuzufügen.
  
     ```xml
     <RelyingParty>

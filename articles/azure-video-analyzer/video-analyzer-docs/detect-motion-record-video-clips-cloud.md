@@ -2,13 +2,13 @@
 title: Erkennen von Bewegung, Aufzeichnen von Video in Azure Video Analyzer
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Edgemodul von Azure Video Analyzer verwenden, um Bewegungen in einem Livevideostream zu erkennen und Videos im Video Analyzer-Konto aufzuzeichnen.
 ms.topic: quickstart
-ms.date: 04/03/2021
-ms.openlocfilehash: 9643ed3a7bbcc23757110033be1dbc3780ddafb5
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.date: 06/01/2021
+ms.openlocfilehash: 7772a32a529eeba36378e9ffb7568912ae66c7a2
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565930"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601485"
 ---
 # <a name="quickstart-detect-motion-record-video-to-video-analyzer"></a>Schnellstart: Erkennen von Bewegung, Aufzeichnen von Video in Video Analyzer
 
@@ -18,8 +18,7 @@ In diesem Artikel werden die Schritte zur Verwendung des Azure Video Analyzer-Ed
 
 * Ein Azure-Konto das ein aktives Abonnement beinhaltet. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keines besitzen.
 
-    > [!NOTE]    
-    > Sie benötigen ein Azure-Abonnement, in dem Sie sowohl auf die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) als auch auf die Rolle [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) zugreifen können. Wenn Sie nicht über die richtigen Berechtigungen verfügen, wenden Sie sich an Ihren Kontoadministrator, damit er Ihnen diese Berechtigungen erteilt.
+    [!INCLUDE [azure-subscription-permissions](./includes/common-includes/azure-subscription-permissions.md)]
 * [Visual Studio Code](https://code.visualstudio.com/) mit den folgenden Erweiterungen:
     * [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
@@ -94,11 +93,7 @@ Wenn Sie diese Schnellstartanleitung verwenden, werden Ereignisse an den IoT Hub
 1. Erweitern Sie den Knoten **Geräte**.
 1. Klicken Sie mit der rechten Maustaste auf `avasample-iot-edge-device`, und wählen Sie die Option **Überwachung des integrierten Ereignisendpunkts starten** aus.
 
-    > [!NOTE]
-    > Unter Umständen werden Sie aufgefordert, für die IoT Hub-Instanz die Informationen zum integrierten Endpunkt anzugeben. Sie erhalten diese Informationen, indem Sie im Azure-Portal zu Ihrer IoT Hub-Instanz navigieren und im linken Navigationsbereich nach der Option **Integrierte Endpunkte** suchen. Klicken Sie darauf, und suchen Sie im Abschnitt **Event Hub-kompatibler Endpunkt** nach dem **Event Hub-kompatiblen Endpunkt**. Kopieren und verwenden Sie den im Feld enthaltenen Text. Der Endpunkt sieht in etwa wie folgt aus:  
-        ```
-        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-        ```
+    [!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
 
 ## <a name="use-direct-method-calls-to-analyze-live-video"></a>Verwenden direkter Methodenaufrufe zum Analysieren von Livevideos
 
@@ -1000,9 +995,7 @@ Sie können die von der Livepipeline erstellte Video Analyzer-Videoressource unt
     <!--TODO: add image -- ![Video playback]() TODO: new screenshot is needed here -->
 
 
-> [!NOTE]
-> Da es sich bei der Quelle des Videos um einen Container zum Simulieren eines Kamerafeeds handelt, beziehen sich die Zeitstempel im Video auf den Zeitpunkt, zu dem Sie die Livepipeline aktiviert bzw. deaktiviert haben.
-    
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]    
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

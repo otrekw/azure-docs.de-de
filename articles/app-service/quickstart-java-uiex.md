@@ -11,12 +11,12 @@ ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 64e4c05e9439c164329dede5d714bec160bc5ae2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 79cf3c2764035ef2e8c4418d172ba991a72bf3ff
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102050374"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113285906"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Schnellstart: Erstellen einer Java-App in Azure App Service
 
@@ -32,7 +32,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + Die [Azure CLI](/cli/azure/install-azure-cli)
 
-+ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8 oder 11.
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure), Version 8 oder 11.
 
 + [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 
@@ -225,7 +225,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 Sie können bei Bedarf die Konfigurationen für App Service direkt in der Datei `pom.xml` ändern. Im Folgenden sind einige gängige Konfigurationen aufgeführt:
 
-Eigenschaft | Erforderlich | BESCHREIBUNG | Version
+Eigenschaft | Erforderlich | Beschreibung | Version
 ---|---|---|---
 `<schemaVersion>` | false | Gibt die Version des Konfigurationsschemas an. Folgende Werte werden unterstützt: `v1` und `v2`. | 1.5.2
 `<subscriptionId>` | false | Geben Sie die Abonnement-ID an. | 0.1.0+

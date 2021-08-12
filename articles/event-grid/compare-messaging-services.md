@@ -2,13 +2,13 @@
 title: 'Auswahl von Azure-Messagingdiensten: Event Grid, Event Hubs und Service Bus'
 description: 'Enthält eine Beschreibung der drei Azure-Messagingdienste: Azure Event Grid, Event Hubs und Service Bus. Hier erfahren Sie, welcher Dienst für welche Szenarien zu empfehlen ist.'
 ms.topic: overview
-ms.date: 07/01/2021
-ms.openlocfilehash: f4980ca3c3741645af03874c5d75d9ef8da6084b
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.date: 07/22/2021
+ms.openlocfilehash: 91f0eb53421cf61275a09582621dc1b5bbb8d2d1
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113218707"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442698"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Auswahl von Azure-Messagingdiensten: Event Grid, Event Hubs und Service Bus
 

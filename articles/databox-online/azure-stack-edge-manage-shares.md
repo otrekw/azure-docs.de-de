@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Edge Pro-FPGA-Freigabeverwaltung | Microsoft-Dokumentation
+title: Azure Stack Edge Pro FPGA-Freigabeverwaltung
 description: Hier wird beschrieben, wie Sie im Azure-Portal Freigaben für Ihr Azure Stack Edge Pro-FPGA-Gerät verwalten.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03099ad5282f526b83bdb8ee187ef8fd6238e21e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97898234"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460716"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>Verwalten von Freigaben für Ihr Azure Stack Edge Pro-FPGA-Gerät im Azure-Portal 
 
@@ -21,7 +21,7 @@ In diesem Artikel wird beschrieben, wie Sie Freigaben für Ihr Azure Stack Edge 
 
 ## <a name="about-shares"></a>Informationen zu Freigaben
 
-Wenn Sie Daten an Azure übertragen möchten, müssen Sie Freigaben für Ihr Azure Stack Edge Pro-FPGA-Gerät erstellen. Bei den Freigaben, die Sie auf dem Azure Stack Edge Pro-Gerät hinzufügen, kann es sich um lokale Freigaben oder Freigaben handeln, die Daten per Pushvorgang in die Cloud übertragen.
+Wenn Sie Daten an Azure übertragen möchten, müssen Sie Freigaben für Ihr Azure Stack Edge Pro-FPGA-Gerät erstellen. Die Freigaben, die Sie auf dem Azure Stack Edge Pro FPGA-Gerät hinzufügen, können lokale Freigaben sein oder Freigaben, die Daten in die Cloud pushen.
 
  - **Lokale Freigaben**: Verwenden Sie diese Freigaben, wenn die Daten lokal auf dem Gerät verarbeitet werden sollen.
  - **Freigaben**: Verwenden Sie diese Freigaben, wenn die Gerätedaten automatisch in Ihr Speicherkonto in der Cloud gepusht werden sollen. Alle Cloudfunktionen, z. B. **Aktualisieren** und **Speicherkontoschlüssel synchronisieren**, werden auf die Freigaben angewendet.
@@ -54,7 +54,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu erstellen:
 5. Wählen Sie in der Dropdownliste **Speicherdienst** die Option „Blockblob“, „Seitenblob“ oder „Dateien“ aus. Der ausgewählte Diensttyp hängt von dem Format ab, in dem die Daten in Azure gespeichert werden sollen. In diesem Fall sollen die Daten beispielsweise als Blockblobs in Azure gespeichert werden. Daher wählen wir **Blockblob** aus. Wenn Sie **Seitenblob** auswählen, müssen Sie sicherstellen, dass Ihre Daten ganzzahlige Vielfache von 512 Byte sind. Verwenden Sie **Seitenblobs** für VHDs oder VHDX, die immer an 512 Byte ausgerichtet sind.
 
    > [!IMPORTANT]
-   > Stellen Sie sicher, dass für das von Ihnen verwendete Azure Storage-Konto keine Unveränderlichkeitsrichtlinien festgelegt sind, wenn Sie es mit einem Azure Stack Edge Pro- oder Data Box Gateway-Gerät verwenden. Weitere Informationen finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](../storage/blobs/storage-blob-immutability-policies-manage.md).
+   > Stellen Sie sicher, dass für das von Ihnen genutzte Azure Storage-Konto keine Unveränderlichkeitsrichtlinien festgelegt sind, falls Sie es mit einem Azure Stack Edge- oder Data Box Gateway-Gerät verwenden. Weitere Informationen finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](../storage/blobs/storage-blob-immutability-policies-manage.md).
 
 6. Dieser Schritt hängt davon ab, ob Sie eine SMB- oder NFS-Freigabe erstellen.
    - **Wenn Sie eine SMB-Freigabe erstellen:** Wählen Sie im Feld **Lokaler Benutzer (alle Berechtigungen)** die Option **Neu erstellen** oder **Vorhandene verwenden** aus. Wenn Sie einen neuen lokalen Benutzer erstellen, füllen Sie die Felder **Benutzername** und **Kennwort** aus, und bestätigen Sie anschließend das Kennwort. Dadurch werden die Berechtigungen dem lokalen Benutzer zugewiesen. Nachdem Sie hier die Berechtigungen zugewiesen haben, können Sie den Datei-Explorer verwenden, um diese Berechtigungen zu ändern.
@@ -100,7 +100,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu erstellen:
 
 ## <a name="mount-a-share"></a>Einbinden einer Dateifreigabe
 
-Wenn Sie eine Freigabe erstellt haben, bevor Sie Compute für Ihr Azure Stack Edge Pro-Gerät konfiguriert haben, müssen Sie die Freigabe einbinden. Gehen Sie wie folgt vor, um eine Freigabe einzubinden.
+Wenn Sie eine Freigabe erstellt haben, bevor Sie Compute für Ihr Azure Stack Edge-Gerät konfiguriert haben, müssen Sie sie einbinden. Gehen Sie wie folgt vor, um eine Freigabe einzubinden.
 
 1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Cloudspeichergateway > Freigaben**. Wählen Sie in der Liste mit den Freigaben die Freigabe aus, die Sie einbinden möchten. Für die ausgewählte Freigabe wird in der Spalte **Für Compute verwendet** der Status **Deaktiviert** angezeigt.
 

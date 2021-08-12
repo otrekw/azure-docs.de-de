@@ -14,12 +14,12 @@ ms.custom:
 - contentperf:fy21q3
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 95247a1485bac7282ffe95ddcc2ddd37883738dd
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8e491e6fc8d0eb93a3d9696f68f045191c2da20b
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783818"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400901"
 ---
 # <a name="what-is-azure-iot-hub"></a>Was ist Azure IoT Hub
 
@@ -106,7 +106,7 @@ IoT Hub und die Geräte-SDKs unterstützen die folgenden Protokolle zum Verbinde
 * MQTT
 * MQTT über WebSockets
 
-IoT Hub und die Geräte-SDKs unterstützen die [Azure IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)-Konventionen zum Verbinden von Geräten. IoT Plug & Play-Geräte nutzen ein Gerätemodell, um ihre Funktionen für IoT Plug & Play-fähige Anwendungen verfügbar zu machen. Das Gerätemodell ermöglicht es Lösungsentwicklern, intelligente Geräte ohne manuelle Konfiguration in ihre Lösungen zu integrieren.
+IoT Hub und die Geräte-SDKs unterstützen die [Azure IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md)-Konventionen zum Verbinden von Geräten. IoT Plug & Play-Geräte nutzen ein Gerätemodell, um ihre Funktionen für IoT Plug & Play-fähige Anwendungen verfügbar zu machen. Das Gerätemodell ermöglicht es Lösungsentwicklern, intelligente Geräte ohne manuelle Konfiguration in ihre Lösungen zu integrieren.
 
 Falls Ihre Lösung die Gerätebibliotheken nicht nutzen kann, können die Geräte die Protokolle MQTT v3.1.1, HTTPS 1.1 oder AMQP 1.0 verwenden, um nativ eine Verbindung mit Ihrem Hub herzustellen.
 
@@ -134,7 +134,7 @@ Während der Public Preview-Phase ist IoT Hub in Azure Stack Hub kostenlos. We
 
 Um eine umfassende IoT-Lösung zu testen, lesen Sie die Schnellstartanleitungen zu IoT Hub:
 
-* [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-node.md)
+* [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)
 
 Weitere Informationen zu den Möglichkeiten, wie Sie IoT-Lösungen mit Azure IoT erstellen und bereitstellen können, finden Sie unter:
 

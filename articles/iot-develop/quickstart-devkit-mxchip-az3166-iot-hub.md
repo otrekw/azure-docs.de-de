@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/09/2021
-ms.openlocfilehash: a14f00585eede96814627c941050c3179436ab06
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 21e7e54e346d24758711990bfa5f71d387ba4956
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059722"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403914"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-hub"></a>Schnellstart: Verbinden eines MXCHIP AZ3166-DevKit mit IoT Hub
 
@@ -23,7 +23,7 @@ ms.locfileid: "112059722"
 
 In diesem Schnellstart verwenden Sie Azure RTOS, um ein MXCHIP AZ3166-IoT-DevKit (nachfolgend als „MXCHIP-DevKit“ bezeichnet) mit Azure IoT zu verbinden. 
 
-Sie verwenden auch IoT Explorer und IoT Plug & Play, um das MXCHIP-DevKit zu verwalten. IoT Plug & Play stellt ein offenes Gerätemodell bereit, mit dem Anwendungen die Funktionen eines Geräts programmgesteuert abfragen und damit interagieren können. Ein Gerät verwendet dieses Modell, um seine Funktionen an eine IoT Plug & Play-fähige Anwendung zu übertragen. Mithilfe dieses Modells können Sie die Aufgaben zum Hinzufügen, Konfigurieren und Verwalten von Geräten optimieren und verbessern. Weitere Informationen finden Sie in der [Dokumentation zu IoT Plug & Play](/azure/iot-pnp).
+Sie verwenden auch IoT Explorer und IoT Plug & Play, um das MXCHIP-DevKit zu verwalten. IoT Plug & Play stellt ein offenes Gerätemodell bereit, mit dem Anwendungen die Funktionen eines Geräts programmgesteuert abfragen und damit interagieren können. Ein Gerät verwendet dieses Modell, um seine Funktionen an eine IoT Plug & Play-fähige Anwendung zu übertragen. Mithilfe dieses Modells können Sie die Aufgaben zum Hinzufügen, Konfigurieren und Verwalten von Geräten optimieren und verbessern. Weitere Informationen finden Sie in der [Dokumentation zu IoT Plug & Play](../iot-develop/index.yml).
 
 Sie führen die folgenden Aufgaben aus:
 
@@ -38,13 +38,13 @@ Sie führen die folgenden Aufgaben aus:
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 * [Git](https://git-scm.com/downloads) zum Klonen des Repositorys
 * Azure-Befehlszeilenschnittstelle. In dieser Schnellstartanleitung gibt es zwei Möglichkeiten zum Ausführen von Azure CLI-Befehlen:
-    * Verwenden Sie Azure Cloud Shell. Dabei handelt es sich um eine interaktive Shell, mit der CLI-Befehle im Browser ausgeführt werden. Diese Option wird empfohlen, da Sie nichts installieren müssen. Wenn Sie Cloud Shell zum ersten Mal verwenden, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Führen Sie in der [Cloud Shell-Schnellstartanleitung](/azure/cloud-shell/quickstart) die Schritte zum **Starten von Cloud Shell** und **Auswählen der Bash-Umgebung** aus.
-    * Führen Sie optional die Azure CLI auf dem lokalen Computer aus. Wenn Azure CLI bereits installiert wurde, führen Sie `az upgrade` aus, um die CLI und Erweiterungen auf die aktuelle Version zu aktualisieren. Informationen zur Installation von Azure CLI finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
+    * Verwenden Sie Azure Cloud Shell. Dabei handelt es sich um eine interaktive Shell, mit der CLI-Befehle im Browser ausgeführt werden. Diese Option wird empfohlen, da Sie nichts installieren müssen. Wenn Sie Cloud Shell zum ersten Mal verwenden, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Führen Sie in der [Cloud Shell-Schnellstartanleitung](../cloud-shell/quickstart.md) die Schritte zum **Starten von Cloud Shell** und **Auswählen der Bash-Umgebung** aus.
+    * Führen Sie optional die Azure CLI auf dem lokalen Computer aus. Wenn die Azure CLI bereits installiert ist, führen Sie `az upgrade` aus, um die CLI und die Erweiterungen auf die aktuelle Version zu aktualisieren. Informationen zur Installation von Azure CLI finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
 * [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases): Plattformübergreifendes Hilfsprogramm zum Überwachen und Verwalten von Azure IoT 
 * Hardware
 
-    * [MXCHIP AZ3166-IoT-DevKit](https://aka.ms/iot-devkit) (MXCHIP-DevKit)
+    * [MXCHIP AZ3166-IoT-DevKit](https://www.seeedstudio.com/AZ3166-IOT-Developer-Kit.html) (MXCHIP-DevKit)
     * WLAN, 2,4 GHz
     * Kabel: USB 2.0 A-Stecker zu Micro-USB-Stecker
 
@@ -54,7 +54,7 @@ Zum Einrichten Ihrer Entwicklungsumgebung klonen Sie zuerst ein GitHub-Repositor
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>Klonen des Repositorys für den Schnellstart
 
-Klonen Sie das folgende Repository, um den gesamten Beispielgerätecode, die Setupskripts und die Offlineversionen der Dokumentation herunterzuladen. Wenn Sie dieses Repository bereits bei einem anderen Schnellstart geklont haben, müssen Sie diesen Schritt nicht erneut ausführen.
+Klonen Sie das folgende Repository, um den gesamten Beispielgerätecode, die Setupskripts und die Offlineversionen der Dokumentation herunterzuladen. Wenn Sie dieses Repository bereits im Rahmen einer anderen Schnellstartanleitung geklont haben, müssen Sie diesen Schritt nicht erneut ausführen.
 
 Führen Sie den folgenden Befehl aus, um das Repository zu klonen:
 
@@ -64,7 +64,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>Installieren der Tools
 
-Das geklonte Repository enthält ein Setupskript, mit dem die erforderlichen Tools installiert und konfiguriert werden. Wenn Sie diese Tools in einem anderen eingebetteten Geräteschnellstart installiert haben, müssen Sie diesen Schritt nicht erneut ausführen.
+Das geklonte Repository enthält ein Setupskript, mit dem die erforderlichen Tools installiert und konfiguriert werden. Wenn Sie diese Tools im Rahmen einer anderen Schnellstartanleitung für ein eingebettetes Gerät installiert haben, müssen Sie diesen Schritt nicht erneut ausführen.
 
 > [!NOTE]
 > Mit dem Setupskript werden die folgenden Tools installiert:
@@ -78,7 +78,7 @@ So installieren Sie die Tools
 
     *getting-started\tools\get-toolchain.bat*
 
-1. Öffnen Sie nach der Installation ein neues Konsolenfenster, um die vom Setupskript vorgenommenen Konfigurationsänderungen zu überprüfen. Verwenden Sie diese Konsole zur Ausführung der restlichen Programmieraufgaben im Schnellstart. Sie können die Windows-Eingabeaufforderung, PowerShell oder Git Bash für Windows verwenden.
+1. Öffnen Sie nach der Installation ein neues Konsolenfenster, um die vom Setupskript vorgenommenen Konfigurationsänderungen zu überprüfen. Verwenden Sie diese Konsole für die Ausführung der restlichen Programmieraufgaben in der Schnellstartanleitung. Sie können die Windows-Eingabeaufforderung, PowerShell oder Git Bash für Windows verwenden.
 1. Führen Sie den folgenden Code aus, um zu überprüfen, ob Version 3.14 (oder höher) von CMake installiert ist.
 
     ```shell
@@ -243,7 +243,7 @@ Sie können die **Termite**-App verwenden, um die Kommunikation zu überwachen u
 
 1. Starten Sie **Termite**.
     > [!TIP]
-    > Falls Sie für Termite keine Verbindung mit Ihrem DevKit herstellen können, sollten Sie den [ST-LINK-Treiber](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip) installieren und es anschließend erneut versuchen. Weitere Schritte finden Sie auf der Seite zur [Problembehandlung](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md).
+    > Falls Sie für Termite keine Verbindung mit Ihrem DevKit herstellen können, sollten Sie den [ST-LINK-Treiber](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip) installieren und es anschließend erneut versuchen. Weitere Schritte finden Sie auf der Seite zur [Problembehandlung](troubleshoot-embedded-device-quickstarts.md).
 1. Wählen Sie **Settings** aus.
 1. Überprüfen Sie im Dialogfeld **Serial port settings** (Einstellungen für den seriellen Anschluss) die folgenden Einstellungen, und ändern Sie sie bei Bedarf:
     * **Baud rate** (Baudrate): 115.200
@@ -426,7 +426,7 @@ So verwenden Sie Azure CLI zum Aufrufen einer Methode:
 
 ## <a name="troubleshoot-and-debug"></a>Problembehandlung und Debuggen
 
-Wenn beim Erstellen des Gerätecodes, beim Einspielen per Flashvorgang auf dem Gerät oder beim Herstellen einer Verbindung Probleme auftreten, lesen Sie [Problembehandlung](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md).
+Wenn beim Erstellen des Gerätecodes, beim Einspielen per Flashvorgang auf dem Gerät oder beim Herstellen einer Verbindung Probleme auftreten, helfen Ihnen die Informationen zur [Problembehandlung](troubleshoot-embedded-device-quickstarts.md) weiter.
 
 Informationen zum Debuggen der Anwendung finden Sie unter [Debuggen mit Visual Studio Code](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md).
 
@@ -466,4 +466,3 @@ Lesen Sie als Nächstes die folgenden Artikel, um mehr darüber zu erfahren, wie
 
 > [!IMPORTANT]
 > Mit Azure RTOS werden für OEMs Komponenten bereitgestellt, mit denen diese die Kommunikation schützen, Code erstellen und die Datenisolation sicherstellen können, indem sie die zugrunde liegenden MCU/MPU-Mechanismen für den Hardwareschutz verwenden. Letztendlich ist aber jeder OEM selbst dafür verantwortlich sicherzustellen, dass sein Gerät die sich ständig weiter entwickelnden Sicherheitsanforderungen erfüllt.
-

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: d20ade0fdf6262c08a4ae961d17b1ec8a9ba39f2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 68dc83e9954875b5f9b5adab37d7ddd212534eaa
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065802"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359783"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>Tutorial: Übertragen von Daten an Speicherkonten mit einem Azure Stack Edge Pro-Gerät mit GPU 
 
@@ -95,7 +95,7 @@ myasetiered1       myasetiered1      DBELocal StandardLRS Storage            11/
 
 Führen Sie das folgende Cmdlet aus, um den Zugriffsschlüssel abzurufen:
 
-`Get-AzureRmStorageAccountAccessKey`
+`Get-AzureRmStorageAccountKey`
 
 Nachfolgend sehen Sie eine Beispielausgabe:
 
@@ -136,7 +136,7 @@ Die einzelnen Schritte werden in den folgenden Abschnitten beschrieben.
 
 Der Zugriff auf Blob Storage über HTTPS erfordert ein SSL-Zertifikat für das Gerät. Sie laden außerdem dieses Zertifikat als *PFX*-Datei mit einem angefügten privaten Schlüssel auf Ihr Azure Stack Edge Pro-Gerät hoch. Weitere Informationen zum Erstellen (nur für Test- und Entwicklungszwecke) und Hochladen dieser Zertifikate auf Ihr Azure Stack Edge Pro-Gerät finden Sie unter:
 
-- [Erstellen des Blob-Endpunktzertifikats](azure-stack-edge-gpu-manage-certificates.md#create-certificates-optional)
+- [Erstellen des Blob-Endpunktzertifikats](azure-stack-edge-gpu-create-certificates-powershell.md#create-certificates)
 - [Hochladen des Blob-Endpunktzertifikats](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)
 - [Importieren von Zertifikaten auf den Client, der auf das Gerät zugreift](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)
 
