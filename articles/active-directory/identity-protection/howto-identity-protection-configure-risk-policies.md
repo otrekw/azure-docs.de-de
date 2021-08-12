@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 05/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 366d68be1a7f115980973015e363da6095876754
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e565fc2f5b28606ade64027e7d8191ebbcd39b09
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95997629"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614828"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien
 
@@ -29,50 +29,78 @@ Wie im vorherigen Artikel [Identity Protection-Richtlinien](concept-identity-pro
 
 Beide Richtlinien dienen dazu, die Reaktion auf Risikoerkennungen in Ihrer Umgebung zu automatisieren und Benutzern die Eigenwartung erkannter Risiken zu ermöglichen. 
 
-> [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
-
-## <a name="prerequisites"></a>Voraussetzungen 
-
-Wenn Ihre Organisation den Benutzern bei Erkennung von Risiken die Möglichkeit geben möchte, selbst Maßnahmen zu ergreifen, müssen die Benutzer sowohl für die Self-Service-Kennwortzurücksetzung als auch für Azure AD Multi-Factor Authentication registriert sein. Für eine optimale Erfahrung wird empfohlen [die Umgebung zur kombinierten Registrierung von Sicherheitsinformationen zu aktivieren](../authentication/howto-registration-mfa-sspr-combined.md). Wenn Sie Benutzern eine Eigenwartung erlauben, erreichen diese schneller wieder einen produktiven Zustand, ohne dass ein Eingriff durch einen Administrator erforderlich ist. Administratoren können diese Ereignisse weiterhin sehen und im Anschluss untersuchen. 
-
 ## <a name="choosing-acceptable-risk-levels"></a>Auswählen akzeptabler Risikostufen
 
 Organisationen müssen entscheiden, welche Stufe von Risiken sie zu akzeptieren bereit sind, und dabei zwischen Benutzererfahrung und Sicherheitsstatus abzuwägen. 
 
-Die Empfehlung von Microsoft lautet, den Schwellenwert für die Benutzerrisikorichtlinie auf **Hoch** und für die Anmelderisikorichtlinie auf **Mittel und höher** festzulegen.
+Die Empfehlung von Microsoft lautet, den Schwellenwert für die Benutzerrisikorichtlinie auf **Hoch** und für die Anmelderisikorichtlinie auf **Mittel und höher** festzulegen sowie Selbstwartungsoptionen zuzulassen. Die Entscheidung, den Zugriff zu blockieren, anstatt Selbstwartungsoptionen wie Kennwortänderung und mehrstufige Authentifizierung zuzulassen, wirkt sich auf Ihre Benutzer und Administratoren aus. Wägen Sie diese Auswahl bei der Konfiguration Ihrer Richtlinien ab.
 
-Wenn Sie den Schwellenwert **Hoch** auswählen, wird die Richtlinie weniger häufig ausgelöst, und die Auswirkungen für Benutzer verringern sich. Hierbei sind aber Risikoerkennungen der Stufen **Niedrig** und **Mittel** aus der Richtlinie ausgeschlossen. Für einen Angreifer wird das Ausnutzen einer gefährdeten Identität so ggf. nicht blockiert. Wenn Sie für den Schwellenwert **Niedrig** auswählen, erhöht sich die Anzahl der Unterbrechungen für die Benutzer, aber der Sicherheitsstatus wird erhöht.
-
-## <a name="exclusions"></a>Ausschlüsse
-
-Alle Richtlinien ermöglichen das Ausschließen von Benutzern, wie z.B. [Benutzer- oder Administratorkonten für den Notfallzugriff](../roles/security-emergency-access.md). Organisationen können feststellen, dass sie andere Konten basierend auf der Art und Weise, wie die Konten verwendet werden, aus bestimmten Richtlinien ausschließen müssen. Alle Ausschlüsse sollten regelmäßig überprüft werden, um festzustellen, ob Sie weiterhin angewendet werden sollen.
+Wenn Sie den Schwellenwert **Hoch** auswählen, wird die Richtlinie weniger häufig ausgelöst, und die Auswirkungen für Benutzer verringern sich. Hierbei sind aber Risikoerkennungen der Stufen **Niedrig** und **Mittel** aus der Richtlinie ausgeschlossen. Für einen Angreifer wird das Ausnutzen einer gefährdeten Identität so ggf. nicht blockiert. Die Auswahl eines **niedrigen** Schwellenwerts führt zu mehr Unterbrechungen für die Benutzer.
 
 Konfigurierte vertrauenswürdige [Netzwerkadressen](../conditional-access/location-condition.md) werden von Identity Protection bei einigen Risikoerkennungen verwendet, um falsch positive Ergebnisse zu reduzieren.
 
+### <a name="risk-remediation"></a>Risikowartung
+
+Organisationen können den Zugriff blockieren, wenn ein Risiko erkannt wird. Das Blockieren hindert berechtigte Benutzer manchmal daran, das zu tun, was sie tun müssen. Eine bessere Lösung besteht darin, Selbstwartung mithilfe von Azure AD Multi-Factor Authentication (MFA) und Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) zuzulassen. 
+
+- Wenn eine Benutzerrisikorichtlinie ausgelöst wird: 
+   - Administratoren können eine sichere Kennwortzurücksetzung verlangen, die Azure AD MFA erforderlich macht, bevor der Benutzer ein neues Kennwort mit SSPR erstellt, um das Benutzerrisiko zurückzusetzen. 
+- Wenn eine Anmelderisiko-Richtlinie ausgelöst wird: 
+   - Azure AD MFA kann ausgelöst werden, sodass Benutzer mithilfe einer ihrer registrierten Authentifizierungsmethoden ihre Identität nachweisen können, wodurch das Anmelderisiko zurückgesetzt wird. 
+
+> [!WARNING]
+> Benutzer müssen sich für Azure AD MFA und SSPR registrieren, bevor sie mit einer wartungsbedürftigen Situation konfrontiert werden. Nicht registrierte Benutzer werden blockiert und erfordern einen Administratoreingriff.
+> 
+> Die Kennwortänderung (die Änderung eines bekannten Kennworts in ein neues) außerhalb des Wartungsflows für riskante Benutzerrichtlinien erfüllt nicht die Anforderung der sicheren Kennwortzurücksetzung.
+
+## <a name="exclusions"></a>Ausschlüsse
+
+Richtlinien ermöglichen das Ausschließen von Benutzern, wie [Benutzer- oder Administratorkonten für den Notfallzugriff](../roles/security-emergency-access.md). Organisationen müssen unter Umständen andere Konten basierend auf der Art und Weise, wie die Konten verwendet werden, aus bestimmten Richtlinien ausschließen. Ausschlüsse sollten regelmäßig überprüft werden, um festzustellen, ob sie weiterhin angewendet werden sollen.
+
 ## <a name="enable-policies"></a>Aktivieren von Richtlinien
 
-Führen Sie die folgenden Schritte aus, um die Richtlinien zum Benutzerrisiko und zum Anmelderisiko zu aktivieren.
+Es gibt zwei Orte, an denen diese Richtlinien konfiguriert werden können: bedingter Zugriff und Identity Protection. Die Konfiguration mithilfe von Richtlinien für bedingten Zugriff ist die bevorzugte Methode, da sie mehr Kontext bietet, wie: 
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Identity Protection** > **Übersicht**.
-1. Wählen Sie **Benutzerrisiko-Richtlinie** aus.
-   1. Unter **Zuweisungen**
-      1. **Benutzer**: Wählen Sie **Alle Benutzer** oder **Einzelne Benutzer und Gruppen auswählen** aus, wenn Sie den Rollout einschränken.
-         1. Optional können Sie Benutzer aus der Richtlinie ausschließen.
-      1. **Bedingungen** - **Benutzerrisiko**: Die Empfehlung von Microsoft lautet, diese Option auf **Hoch** festzulegen.
-   1. Unter **Steuerelemente**
-      1. **Zugriff**: Die Empfehlung von Microsoft lautet, den **Zugriff zuzulassen** und eine **Kennwortänderung anzufordern**.
-   1. **Richtlinie erzwingen** - **Ein**
-   1. **Speichern**: Diese Aktion kehrt zur Seite **Übersicht** zurück.
-1. Wählen Sie **Anmelderisiko-Richtlinie** aus.
-   1. Unter **Zuweisungen**
-      1. **Benutzer**: Wählen Sie **Alle Benutzer** oder **Einzelne Benutzer und Gruppen auswählen** aus, wenn Sie den Rollout einschränken.
-         1. Optional können Sie Benutzer aus der Richtlinie ausschließen.
-      1. **Bedingungen** - **Anmelderisiko**: Die Empfehlung von Microsoft lautet, diese Option auf **Mittel und höher** festzulegen.
-   1. Unter **Steuerelemente**
-      1. **Zugriff**: Die Empfehlung von Microsoft lautet, den **Zugriff zuzulassen** und eine **mehrstufige Authentifizierung anzufordern**.
-   1. **Richtlinie erzwingen** - **Ein**
-   1. **Speichern**
+   - Erweiterte Diagnosedaten
+   - Integration des Modus „Nur melden“
+   - Graph-API-Unterstützung
+   - Verwendung von mehr Attributen für bedingten Zugriff in der Richtlinie
+
+> [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
+
+### <a name="user-risk-with-conditional-access"></a>Benutzerrisiko bei bedingtem Zugriff
+
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+1. Wählen Sie **Neue Richtlinie**.
+1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
+1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.
+   1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
+   1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
+   1. Wählen Sie **Fertig** aus.
+1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Alle Cloud-Apps** aus.
+1. Legen Sie unter **Bedingungen** > **Benutzerrisiko** die Option **Konfigurieren** auf **Ja** fest. Wählen Sie unter **Hiermit konfigurieren Sie die Benutzerrisikostufen, die für die Erzwingung der Richtlinie erforderlich sind** die Option **Hoch** und dann **Fertig** aus.
+1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die Option **Zugriff erteilen**, dann **Kennwortänderung erforderlich** und anschließend **Auswählen** aus.
+1. Bestätigen Sie die Einstellungen, und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
+
+### <a name="sign-in-risk-with-conditional-access"></a>Anmelderisiko bei bedingtem Zugriff
+
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+1. Wählen Sie **Neue Richtlinie**.
+1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
+1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.
+   1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
+   1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
+   1. Wählen Sie **Fertig** aus.
+1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Alle Cloud-Apps** aus.
+1. Legen Sie unter **Bedingungen** > **Anmelderisiko** die Option **Konfigurieren** auf **Ja** fest. Wählen Sie unter **Anmelderisikostufe auswählen, auf die diese Richtlinie angewendet werden soll** 
+   1. entweder **Hoch** oder **Mittel** aus.
+   1. Wählen Sie **Fertig** aus.
+1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
+1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

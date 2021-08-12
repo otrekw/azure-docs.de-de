@@ -11,16 +11,16 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f90edd5729ff5229be09bc3798082c33bdeead2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2595acf25b63f89f6e0e29e996548b58767e9fde
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632100"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786151"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>Browserunterstützung der kennwortlosen FIDO2-Authentifizierung
 
-Azure Active Directory ermöglicht die Verwendung von [FIDO2-Sicherheitsschlüsseln](./concept-authentication-passwordless.md#fido2-security-keys) als kennwortloses Gerät. Die Verfügbarkeit der FIDO2-Authentifizierung für Microsoft-Konten wurde [2018 angekündigt](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910). Wie in der Ankündigung erläutert, müssen bestimmte optionale Features und Erweiterungen der FIDO2 CTAP-Spezifikation implementiert werden, um die sichere Authentifizierung mit Microsoft- und Azure Active Directory-Konten zu unterstützen. Im folgenden Diagramm wird gezeigt, welche Kombinationen aus Browsern und Betriebssystemen die kennwortlose Authentifizierung mithilfe von FIDO2-Authentifizierungsschlüsseln mit Azure Active Directory unterstützen.
+Azure Active Directory ermöglicht die Verwendung von [FIDO2-Sicherheitsschlüsseln](./concept-authentication-passwordless.md#fido2-security-keys) als kennwortloses Gerät. Die Verfügbarkeit der FIDO2-Authentifizierung für Microsoft-Konten wurde [2018 bekannt gegeben](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910) und im März 2021 [allgemein verfügbar](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/passwordless-authentication-is-now-generally-available/ba-p/1994700) gemacht. Im folgenden Diagramm wird gezeigt, welche Kombinationen aus Browsern und Betriebssystemen die kennwortlose Authentifizierung mithilfe von FIDO2-Authentifizierungsschlüsseln mit Azure Active Directory unterstützen.
 
 ## <a name="supported-browsers"></a>Unterstützte Browser
 
@@ -59,7 +59,7 @@ Nachfolgend sind die Mindestanforderungen für die Browserversion aufgeführt.
 <sup>1</sup>Alle Versionen der neuen Microsoft Edge-Unterstützung Fido2 auf Chromium-Basis. Unterstützung für Microsoft Edge-Legacy wurde in 1903 hinzugefügt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln (Vorschauversion)](./howto-authentication-passwordless-security-key.md)
+[Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln](./howto-authentication-passwordless-security-key.md)
 
 <!--Image references-->
 [y]: ./media/fido2-compatibility/yes.png

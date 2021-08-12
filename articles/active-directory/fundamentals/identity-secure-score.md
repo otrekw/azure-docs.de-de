@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 06/02/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23832d9f1205105f1f9711cdf3260b74ee4a9bb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d5c1a1493a7ea2aac0945dae14fc4c547ad86c9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952260"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409917"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Was ist der Identity Secure Score in Azure Active Directory?
 
@@ -57,6 +57,11 @@ Azure führt alle 48 Stunden eine Untersuchung Ihrer Sicherheitskonfiguration du
 Jede Empfehlung wird basierend auf Ihrer Azure AD-Konfiguration bewertet. Wenn Sie Drittanbieterprodukte verwenden, um eine Empfehlung gemäß den bewährten Methoden umzusetzen, können Sie die entsprechende Konfiguration in den Einstellungen einer Verbesserungsaktion angeben. Sie können auch festlegen, dass Empfehlungen ignoriert werden sollen, wenn sie nicht auf Ihre Umgebung anwendbar sind. Eine ignorierte Empfehlung wird bei der Berechnung Ihrer Bewertung nicht berücksichtigt.
 
 ![Aktion ignorieren oder als durch Drittanbieter abgedeckt markieren](./media/identity-secure-score/identity-secure-score-ignore-or-third-party-reccomendations.png)
+
+- **Zur Berücksichtigung** – Sie erkennen, dass die Verbesserungsaktion erforderlich ist, und planen, sie zu einem zukünftigen Zeitpunkt durchzuführen. Dieser Zustand gilt auch für Aktionen, die als teilweise, aber nicht vollständig abgeschlossen erkannt werden.
+- **Geplant** – Es gibt konkrete Pläne zum Abschließen der Verbesserungsaktion.
+- **Akzeptiertes Risiko** – Sicherheit und Benutzerfreundlichkeit müssen sich die Waage halten und nicht jede Empfehlung funktioniert für Ihre Umgebung. In diesem Fall können Sie das (Rest-)Risiko akzeptieren und die Verbesserungsaktion nicht umsetzen. Sie erhalten keine Punkte, aber die Aktion wird nicht mehr in der Liste der Verbesserungsaktionen angezeigt. Sie können diese Aktion im Verlauf anzeigen oder jederzeit rückgängig machen.
+- **Lösung durch Drittanbieter** und **Lösung durch alternative Maßnahme:** Die Verbesserungsaktion wurde bereits von einer Drittanbieteranwendung oder -software oder einem internen Tool behandelt. Sie erhalten die Punkte, die die Aktion wert ist, sodass Ihre Bewertung Ihren allgemeinen Sicherheitsstatus besser widerspiegelt. Wenn der Drittanbieter oder Ihr internes Tool das Problem nicht mehr abdeckt, können Sie einen anderen Status auswählen. Beachten Sie, dass Microsoft keinen Einblick in die Vollständigkeit der Implementierung hat, wenn die Verbesserungsaktion eine dieser Statuskennzeichnungen trägt.
 
 ## <a name="how-does-it-help-me"></a>Wie kann mir der Secure Score helfen?
 

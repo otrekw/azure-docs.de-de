@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bf5c4c39ea8f5705cc9788fdcf2cddd01dcb4087
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7d637a98a0f250936fa8c9024ae1302d3aaa536
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034706"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572371"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>Konfigurieren eines DNN-Listeners für eine Verfügbarkeitsgruppe
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,6 +51,7 @@ Bevor Sie die in diesem Artikel aufgeführten Schritte ausführen, sollten Sie �
 - Sie sollten Ihre [AlwaysOn-Verfügbarkeitsgruppe](availability-group-overview.md) konfiguriert haben. 
 - Sie müssen die neueste Version von [PowerShell](/powershell/azure/install-az-ps) installiert haben. 
 - Identifiziert den eindeutigen Port, der für den DNN-Listener verwendet werden soll. Der für einen DNN-Listener verwendete Port muss in allen Replikaten der Verfügbarkeitsgruppe oder der Failoverclusterinstanz eindeutig sein.  Keine andere Verbindung kann denselben Port gemeinsam nutzen.
+- Der Client, der eine Verbindung mit dem DNN-Listener herstellt, muss den Parameter `MultiSubnetFailover=True` in der Verbindungszeichenfolge unterstützen. 
 
 
 
@@ -182,4 +183,12 @@ DNN-Listener dienen zum Listen an allen IP-Adressen, aber an einem bestimmten, e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu SQL Server-HADR-Features in Azure finden Sie unter [Verfügbarkeitsgruppen](availability-group-overview.md) und [Failoverclusterinstanz](failover-cluster-instance-overview.md). Sie können sich auch mit den [bewährten Methoden](hadr-cluster-best-practices.md) zum Konfigurieren Ihrer Umgebung für Hochverfügbarkeit und Notfallwiederherstellung vertraut machen. 
+Nachdem die Verfügbarkeitsgruppe bereitgestellt wurde, sollten Sie die [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md) optimieren. 
+
+
+Weitere Informationen finden Sie unter:
+
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
+- [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+

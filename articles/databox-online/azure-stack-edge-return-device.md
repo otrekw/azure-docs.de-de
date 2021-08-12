@@ -1,6 +1,6 @@
 ---
-title: Zurückgeben Ihres Azure Stack Edge Pro-Geräts | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Daten löschen und Ihr Azure Stack Edge Pro-Gerät zurückgeben und dann die dem Gerät zugeordnete Ressource löschen.
+title: Rückgabe des Azure Stack Edge-Geräts
+description: Erfahren Sie, wie Sie die Daten löschen und Ihr Azure Stack Edge-Gerät zurückgeben und dann die dem Gerät zugeordnete Ressource löschen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: cb11d7d3b2da9ab793cb18814e4021ea7afeb806
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab087747bbc6ee9edcb072223c2edf3465ba4cba
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443589"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460546"
 ---
-# <a name="return-your-azure-stack-edge-pro-device"></a>Zurückgeben Ihres Azure Stack Edge Pro-Geräts
+# <a name="return-your-azure-stack-edge-device"></a>Zurückgeben Ihres Azure Stack Edge-Geräts
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Daten löschen und dann Ihr Azure Stack Edge Pro-Gerät zurückgeben. Nachdem Sie das Gerät zurückgegeben haben, können Sie auch die mit dem Gerät verknüpfte Ressource löschen.
+In diesem Artikel wird beschrieben, wie Sie die Daten löschen und Ihr Azure Stack Edge-Gerät zurückgeben. Nachdem Sie das Gerät zurückgegeben haben, können Sie auch die mit dem Gerät verknüpfte Ressource löschen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -50,7 +50,7 @@ Sie können Ihr Gerät über die lokale Webbenutzeroberfläche oder über PowerS
 
 Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge Pro-/Data Box Gateway-Ressource. Wählen Sie in der **Übersicht** über die Befehlsleiste im rechten Bereich die Option **Gerät zurückgeben** aus. 
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-/Data Box Gateway-Ressource. Wählen Sie in der **Übersicht** über die Befehlsleiste im rechten Bereich die Option **Gerät zurückgeben** aus. 
 
     ![Zurückgeben des Geräts 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -81,11 +81,11 @@ Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
 
     ![Zurückgeben des Geräts 4](media/azure-stack-edge-return-device/return-device-4.png) 
 
-6. Nach der Erfassung der Angaben für die Geräterückgabe können Sie das Azure Stack Edge Pro-Betriebsteam per E-Mail benachrichtigen. Sie können Ihre E-Mail-Anwendung verwenden, sofern diese installiert und konfiguriert ist. Sie können die Daten auch kopieren, um eine E-Mail zu erstellen und zu senden.
+6. Nach der Erfassung der Angaben für die Geräterückgabe können Sie das Azure Stack Edge-Betriebsteam per E-Mail benachrichtigen. Sie können Ihre E-Mail-Anwendung verwenden, sofern diese installiert und konfiguriert ist. Sie können die Daten auch kopieren, um eine E-Mail zu erstellen und zu senden.
 
     ![Zurückgeben des Geräts 5](media/azure-stack-edge-return-device/return-device-5.png) 
 
-7. Nachdem das Azure Stack Edge Pro-Betriebsteam die E-Mail erhalten hat, sendet es Ihnen ein Etikett für die Rücksendung. Nach Erhalt dieses Etiketts können Sie die Geräteabholung mit dem Versandunternehmen planen. 
+7. Nachdem das Azure Stack Edge-Betriebsteam die E-Mail erhalten hat, sendet es Ihnen ein Etikett für die Rücksendung. Nach Erhalt dieses Etiketts können Sie die Geräteabholung mit dem Versandunternehmen planen. 
 
 ## <a name="schedule-a-pickup"></a>Planen der Abholung
 
@@ -102,20 +102,20 @@ Führen Sie die folgenden Schritte aus, um eine Abholung zu planen:
     2. Geben Sie bei dem Telefonat die Nachverfolgungsnummer für die Rücksendung an, die Sie auf dem gedruckten Etikett finden.
     3. Wenn Sie keine Nachverfolgungsnummer angeben, fordert UPS eine Zusatzgebühr, die Sie bei der Abholung entrichten müssen.
 
-    Wenn Sie keine Abholung planen möchten, können Sie das Azure Stack Edge Pro-Gerät auch an der nächstgelegenen Versandstelle abgeben.
+    Wenn Sie keine Abholung planen können oder möchten, können Sie das Azure Stack Edge-Gerät auch an der nächstgelegenen Versandstelle abgeben.
 
 ## <a name="delete-the-resource"></a>Löschen der Ressource
 
 Nachdem das Gerät im Azure-Rechenzentrum eingegangen ist, wird das Gerät auf Beschädigungen oder Anzeichen von Manipulation untersucht.
 
-- Wenn das Gerät intakt und in gutem Zustand eintrifft, endet die Abrechnung für diese Ressource. Das Azure Stack Edge Pro-Betriebsteam setzt sich mit Ihnen in Verbindung, um die Rückgabe des Geräts zu bestätigen. Anschließend können Sie die Ressource löschen, die im Azure-Portal mit dem Gerät verknüpft ist.
+- Wenn das Gerät intakt und in gutem Zustand eintrifft, endet die Abrechnung für diese Ressource. Das Azure Stack Edge-Betriebsteam setzt sich mit Ihnen in Verbindung, um die Rückgabe des Geräts zu bestätigen. Anschließend können Sie die Ressource löschen, die im Azure-Portal mit dem Gerät verknüpft ist.
 - Wenn das Gerät erheblich beschädigt eintrifft, fallen möglicherweise Geldbußen an. Weitere Informationen finden Sie unter [häufig gestellten Fragen zu verloren gegangenen oder beschädigten Geräten](https://azure.microsoft.com/pricing/details/databox/edge/) und [Produktbestimmungen](https://www.microsoft.com/licensing/product-licensing/products).  
 
 
 Sie können das Gerät im Azure-Portal löschen:
 
 - Nachdem Sie eine Bestellung aufgegeben haben und bevor das Gerät von Microsoft vorbereitet wird.
-- Nachdem Sie ein Gerät an Microsoft zurückgegeben haben und das Azure Stack Edge Pro-Betriebsteam Ihnen die Rückgabe des Geräts telefonisch bestätigt hat. Das Betriebsteam meldet sich erst, wenn das zurückgegebene Gerät die physische Überprüfung im Azure-Rechenzentrum bestanden hat.
+- Nachdem Sie ein Gerät an Microsoft zurückgegeben haben und das Azure Stack Edge-Betriebsteam Ihnen die Rückgabe des Geräts telefonisch bestätigt hat. Das Betriebsteam meldet sich erst, wenn das zurückgegebene Gerät die physische Überprüfung im Azure-Rechenzentrum bestanden hat.
 
 Wenn Sie das Gerät mit einem anderen Abonnement oder Standort aktiviert haben, verschiebt Microsoft Ihre Bestellung innerhalb eines Geschäftstags an das neue Abonnement oder den neuen Standort. Nach dem Verschieben der Bestellung können Sie diese Ressource löschen.
 
@@ -135,4 +135,4 @@ Sie werden nach erfolgreichem Löschen von Gerät und zugeordneter Ressource ben
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie [ein Azure Stack Edge Pro-Ersatzgerät erhalten](azure-stack-edge-replace-device.md).
+- Erfahren Sie, wie Sie [ein Azure Stack Edge-Ersatzgerät erhalten](azure-stack-edge-replace-device.md).

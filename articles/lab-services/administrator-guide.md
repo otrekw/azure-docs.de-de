@@ -3,12 +3,12 @@ title: Azure Lab Services – Administratorhandbuch | Microsoft-Dokumentation
 description: Dieses Handbuch hilft Administratoren, die Lab-Konten mit Azure Lab Services erstellen und verwalten.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: b5dff57eb663324679941a043ebaa97f39c6aa20
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0dd7cb9f23d820cc8a4001d430e8ef446ecc5460
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770711"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958835"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Administratorhandbuch
 IT-Administratoren, die die Cloudressourcen einer Universität verwalten, sind in der Regel auch dafür verantwortlich, das Lab-Konto für diese Universität einzurichten. Nachdem sie ein Lab-Konto eingerichtet haben, erstellen Administratoren oder Dozenten Labs, die im Lab-Konto enthalten sind. Dieser Artikel bietet eine allgemeine Übersicht über die beteiligten Azure-Ressourcen und die Anleitungen zu deren Erstellung.
@@ -89,23 +89,23 @@ Standardmäßig verfügt jedes Lab über ein eigenes virtuelles Netzwerk.  Wenn 
 
 ## <a name="shared-image-gallery"></a>Shared Image Gallery
 
-Eine Shared Image Gallery einem Lab-Konto angefügt und dient als zentrales Repository zum Speichern von Images. Ein Image wird im Katalog gespeichert, wenn sich ein Dozent entschließt, es von der Vorlagen-VM eines Labs aus zu exportieren. Jedes Mal, wenn der Dozent Änderungen an der Vorlagen-VM vornimmt und sie exportiert, werden neue Versionen des Images gespeichert, während die vorherigen Versionen erhalten bleiben.
+Eine Shared Image Gallery einem Lab-Konto angefügt und dient als zentrales Repository zum Speichern von Images. Ein Image wird im Katalog gespeichert, wenn sich ein Dozent entschließt, es von der Vorlagen-VM eines Labs aus zu exportieren. Jedes Mal, wenn ein Dozent Änderungen an der Vorlagen-VM vornimmt und diese exportiert, werden neue Imagedefinitionen und/oder Versionen im Katalog erstellt.  
 
-Kursleiter können eine Imageversion aus der Shared Image Gallery veröffentlichen, wenn sie ein neues Lab erstellen. Zwar speichert der Katalog mehrere Versionen eines Images, Dozenten können während der Erstellung eines Labs jedoch nur die letzte Version auswählen.
+Kursleiter können eine Imageversion aus der Shared Image Gallery veröffentlichen, wenn sie ein neues Lab erstellen. Zwar speichert der Katalog mehrere Versionen eines Images, Dozenten können während der Erstellung eines Labs jedoch nur die aktuellste Version auswählen.  Die aktuellste Version wird basierend auf dem höchsten Wert von MajorVersion, MinorVersion und Patch ausgewählt.  Weitere Informationen zur Versionsverwaltung finden Sie unter [Informationen](../virtual-machines/shared-image-galleries.md#image-versions).
 
-Die Shared Image Gallery ist eine optionale Ressource, die Sie möglicherweise nicht sofort benötigen, wenn Sie mit nur wenigen Labs beginnen. Die Verwendung der Shared Image Gallery bietet jedoch viele Vorteile, die hilfreich sind, wenn Sie auf zusätzliche Labs erweitern:
+Der Shared Image Gallery-Dienst ist eine optionale Ressource, die Sie möglicherweise nicht sofort benötigen, wenn Sie mit nur wenigen Labs beginnen. Die Verwendung von Shared Image Gallery bietet jedoch viele Vorteile, die hilfreich sind, wenn Sie auf zusätzliche Labs hochskalieren:
 
 - **Sie können Versionen eines Vorlagen-VM-Images speichern und verwalten**
 
-    Dies ist hilfreich, um ein benutzerdefiniertes Image zu erstellen oder Änderungen (Software, Konfiguration usw.) an einem Image aus dem öffentlichen Azure Marketplace-Katalog vorzunehmen.  Beispielsweise ist es für Dozenten üblich, dass für sie unterschiedliche Software oder Tools installiert werden müssen. Statt von Studenten zu fordern, dass sie diese Voraussetzungen selbst installieren, können verschiedene Versionen des Vorlagen-VM-Images in eine Shared Image Gallery exportiert werden. Diese Imageversionen können Sie dann verwenden, wenn Sie neue Labs erstellen.
+    Dies ist hilfreich, um ein benutzerdefiniertes Image zu erstellen oder Änderungen (Software, Konfiguration usw.) an einem Image aus dem Azure Marketplace-Katalog vorzunehmen.  Beispielsweise ist es für Dozenten üblich, dass für sie unterschiedliche Software oder Tools installiert werden müssen. Statt von Studenten zu fordern, dass sie diese Voraussetzungen selbst installieren, können verschiedene Versionen des Vorlagen-VM-Images in eine Shared Image Gallery exportiert werden. Diese Imageversionen können Sie dann verwenden, wenn Sie neue Labs erstellen.
 
 - **Sie können Vorlagen-VM-Images Labs übergreifend freigeben und wiederverwenden**
 
     Sie können ein Image speichern und wiederverwenden, sodass Sie es nicht jedes Mal neu konfigurieren müssen, wenn Sie ein neues Lab erstellen. Wenn z. B. für mehrere Kurse dasselbe Image verwendet werden muss, können Sie dieses Image ein Mal erstellen und in die Shared Image Gallery exportieren, damit es von Labs gemeinsam verwendet werden kann.
 
-- **Die Bildverfügbarkeit wird durch die automatische Replikation sichergestellt**
+- **Sie können eigene benutzerdefinierte Images aus anderen Umgebungen außerhalb von Labs hochladen.**
 
-    Wenn Sie ein Image aus einem Lab in der Shared Image Gallery speichern, wird es automatisch in andere [Regionen innerhalb desselben geografischen Raums](https://azure.microsoft.com/global-infrastructure/regions/) repliziert. Wenn es in einer Region zu einem Ausfall kommt, ist das Veröffentlichen des Image in Ihrem Lab davon nicht betroffen, weil ein Imagereplikat aus einer anderen Region verwendet werden kann.  Das Veröffentlichen von VMs aus mehreren Replikaten kann auch die Leistung verbessern.
+    Sie können [benutzerdefinierte Images aus andere Umgebungen außerhalb des Kontexts von Labs hochladen](how-to-attach-detach-shared-image-gallery.md).  Beispielsweise können Sie Images aus Ihrer eigenen physischen Lab-Umgebung oder von einer Azure-VM in Shared Image Gallery hochladen.  Sobald ein Image in den Katalog importiert wurde, können Sie die Images zum Erstellen von Labs verwenden.
 
 Um freigegebene Images logisch zu gruppieren, können Sie eine der folgenden Aktionen ausführen:
 
@@ -137,7 +137,7 @@ Die Region gibt das Rechenzentrum an, in dem Informationen über die Ressourceng
 
 Der Speicherort des Lab-Kontos zeigt die Region an, in der die Ressource vorhanden ist.  
 
-### <a name="lab"></a>Labor
+### <a name="lab"></a>Labor    
 
 Der Speicherort, an dem ein Lab vorhanden ist, hängt von folgenden Faktoren ab:
 
@@ -163,18 +163,21 @@ Eine allgemeine Regel ist, für eine Ressource eine Region festzulegen, die ihre
 
 ## <a name="vm-sizing"></a>Festlegen der VM-Größe
 
-Wenn Administratoren oder Ersteller von Labs ein Lab erstellen, können sie basierend auf den Anforderungen für Ihren Kurs unter verschiedenen VM-Größen auswählen. Denken Sie daran, dass die Computegrößen, die verfügbar sind, von der Region abhängen, in der sich Ihr Lab-Konto befindet.
+Wenn Administratoren oder Ersteller von Labs ein Lab erstellen, können sie basierend auf den Anforderungen für Ihren Kurs unter verschiedenen VM-Größen auswählen. Denken Sie daran, dass die Größenverfügbarkeit von der Region abhängt, in der sich Ihr Lab-Konto befindet.
 
-| Size | Spezifikationen | Reihen | Vorgeschlagene Verwendung |
+Beachten Sie in der folgenden Tabelle, dass mehrere VM-Größen mehreren VM-Serien zugeordnet sind.  Abhängig von der Kapazitätsverfügbarkeit kann Lab Services eine der VM-Serien verwenden, die für eine VM-Größe aufgeführt werden.  Beispielsweise wird die VM-Größe *Klein* der VM-Serie [Standard_A2_v2](../virtual-machines/av2-series.md) oder [Standard_A2](../virtual-machines/sizes-previous-gen.md#a-series) zugeordnet.  Wenn Sie *Klein* als VM-Größe für Ihr Lab auswählen, versucht Lab Services zunächst, die Serie *Standard_A2_v2* zu verwenden.  Wenn jedoch nicht genügend Kapazität verfügbar ist, verwendet Lab Services stattdessen die Serie *Standard_A2*.  Die Preise richten sich nach der VM-Größe und sind unabhängig davon identisch, welche VM-Serie Lab Services für diese spezifische Größe verwendet. Weitere Informationen zu den Preisen für die einzelnen VM-Größen finden Sie im [Lab Services-Preisleitfaden](https://azure.microsoft.com/pricing/details/lab-services/).
+
+
+| Size | Mindestspezifikationen | Reihen | Vorgeschlagene Verwendung |
 | ---- | ----- | ------ | ------------- |
-| Klein| <ul><li>2&nbsp;Kerne</li><li>3,5 Gigabyte (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Am besten geeignet für die Befehlszeile, das Öffnen von Webbrowsern, Webserver mit geringem Datenverkehr und kleine bis mittelgroße Datenbanken. |
-| Medium | <ul><li>4&nbsp;Kerne</li><li>7&nbsp;GB&nbsp;RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Am besten geeignet für relationale Datenbanken, speicherinternes Zwischenspeichern und Analysen. |
-| Mittel (geschachtelte Virtualisierung) | <ul><li>4&nbsp;Kerne</li><li>16&nbsp;GB&nbsp;RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | Am besten geeignet für relationale Datenbanken, speicherinternes Zwischenspeichern und Analysen.
-| Groß | <ul><li>8&nbsp;Kerne</li><li>16&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | Eignet sich am besten für Anwendungen, die schnellere CPUs, eine höhere lokale Datenträgerleistung, große Datenbanken und Caches erfordern.  Sie unterstützt auch die geschachtelte Virtualisierung. |
-| Groß (geschachtelte Virtualisierung) | <ul><li>8&nbsp;Kerne</li><li>32&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | Eignet sich am besten für Anwendungen, die schnellere CPUs, eine höhere lokale Datenträgerleistung, große Datenbanken und Caches erfordern. |
+| Klein| <ul><li>2&nbsp;Kerne</li><li>3,5 Gigabyte (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md), [Standard_A2](../virtual-machines/sizes-previous-gen.md#a-series) | Am besten geeignet für die Befehlszeile, das Öffnen von Webbrowsern, Webserver mit geringem Datenverkehr und kleine bis mittelgroße Datenbanken. |
+| Medium | <ul><li>4&nbsp;Kerne</li><li>7&nbsp;GB&nbsp;RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md), [Standard_A3](../virtual-machines/sizes-previous-gen.md#a-series) | Am besten geeignet für relationale Datenbanken, speicherinternes Zwischenspeichern und Analysen. |
+| Mittel (geschachtelte Virtualisierung) | <ul><li>4&nbsp;Kerne</li><li>16&nbsp;GB&nbsp;RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md#dsv3-series) | Am besten geeignet für relationale Datenbanken, speicherinternes Zwischenspeichern und Analysen.  Sie unterstützt auch die geschachtelte Virtualisierung.
+| Groß | <ul><li>8&nbsp;Kerne</li><li>16&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md), [Standard_A7](../virtual-machines/sizes-previous-gen.md#a-series) | Eignet sich am besten für Anwendungen, die schnellere CPUs, eine höhere lokale Datenträgerleistung, große Datenbanken und Caches erfordern. |
+| Groß (geschachtelte Virtualisierung) | <ul><li>8&nbsp;Kerne</li><li>32&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md#dsv3-series) | Eignet sich am besten für Anwendungen, die schnellere CPUs, eine höhere lokale Datenträgerleistung, große Datenbanken und Caches erfordern.  Sie unterstützt auch die geschachtelte Virtualisierung. |
 | Kleine GPU (Visualisierung) | <ul><li>6&nbsp;Kerne</li><li>56&nbsp;GB&nbsp;RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | Eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. |
-| Kleine GPU (Compute) | <ul><li>6&nbsp;Kerne</li><li>56&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |Eignet sich am besten für rechenintensive Anwendungen wie KI und Deep Learning. |
-| Mittlere GPU (Visualisierung) | <ul><li>12&nbsp;Kerne</li><li>112&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. |
+| Kleine GPU (Compute) | <ul><li>6&nbsp;Kerne</li><li>56&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md), [Standard_NC6s_v3](../virtual-machines/ncv3-series.md) |Eignet sich am besten für rechenintensive Anwendungen wie KI und Deep Learning. |
+| Mittlere GPU (Visualisierung) | <ul><li>12&nbsp;Kerne</li><li>112&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md), [Standard_NV12s_v3](../virtual-machines/nvv3-series.md), [Standard_NV12s_v2](../virtual-machines/sizes-previous-gen.md#nvv2-series)  | Eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. |
 
 ## <a name="manage-identity"></a>Verwalten der Identität
 
@@ -232,6 +235,16 @@ Wir empfehlen stattdessen den zweiten Ansatz, d. h. das Installieren von Drittan
 
 Wenn Ihre Schule inhaltsfiltern muss, kontaktieren Sie uns über die [Foren der Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices), um weitere Informationen zu erhalten.
 
+## <a name="endpoint-management"></a>Endpunktverwaltung
+
+Viele Endpunktverwaltungstools wie [Microsoft Endpoint Manager](https://techcommunity.microsoft.com/t5/azure-lab-services/configuration-manager-azure-lab-services/ba-p/1754407) erfordern, dass Windows-VMs über eindeutige Computersicherheits-IDs (SIDs) verfügen.  Die Verwendung von SysPrep zum Erstellen eines *generalisierten* Images stellt in der Regel sicher, dass auf jedem Windows-Computer eine neue, eindeutige Computer-SID generiert wird, wenn die VM aus dem Image gestartet wird.
+
+Selbst wenn Sie mit Lab Services ein *generalisiertes* Image zum Erstellen eines Labs verwenden, verfügen die Vorlagen-VM und die Kursteilnehmer-VMs über dieselbe Computer-SID.  Die VMs verfügen über die gleiche SID, da sich das Image der Vorlagen-VM in einem *spezialisierten* Zustand befindet, wenn es veröffentlicht wird, um die Kursteilnehmer-VMs zu erstellen.
+
+Beispielsweise sind die Azure Marketplace-Images generalisiert.  Wenn Sie ein Lab aus dem Win 10 Marketplace-Image erstellen und die Vorlagen-VM veröffentlichen, verfügen alle Kursteilnehmer-VMs in einem Lab über die gleiche Computer-SID wie die Vorlagen-VM.  Die Computer-SIDs können mithilfe eines Tools wie [PsGetSid](/sysinternals/downloads/psgetsid) überprüft werden.
+
+Wenn Sie ein Endpunktverwaltungstool oder ähnliche Software verwenden möchten, wird empfohlen, dieses mit Lab-VMs zu testen, um sicherzustellen, dass es ordnungsgemäß funktioniert, wenn die Computer-SIDs identisch sind.  
+
 ## <a name="pricing"></a>Preise
 
 ### <a name="azure-lab-services"></a>Azure Lab Services
@@ -246,7 +259,7 @@ Das Erstellen einer Shared Image Gallery und das Anfügen des Katalogs an Ihr La
 
 #### <a name="storage-charges"></a>Speichergebühren
 
-Um Imageversionen zu speichern, verwendet eine Shared Image Gallery standardmäßig verwaltete HDD-Datenträger (Festplattenlaufwerke). Die Größe des verwendeten, verwalteten HDD-Datenträgers hängt von der Größe der Imageversion ab, die gespeichert wird. Informationen zu den Preisen finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
+Um Imageversionen zu speichern, verwendet eine Shared Image Gallery standardmäßig verwaltete HDD-Standarddatenträger (Festplattenlaufwerke).  Es wird empfohlen, verwaltete HDD-Datenträger zu verwenden, wenn Sie Shared Image Gallery mit Lab Services verwenden.  Die Größe des verwendeten, verwalteten HDD-Datenträgers hängt von der Größe der Imageversion ab, die gespeichert wird.  Lab Services unterstützt Image- und Datenträgergrößen von bis zu 128 GB.  Informationen zu den Preisen finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 #### <a name="replication-and-network-egress-charges"></a>Kosten für Replikation und ausgehende Netzwerkdaten
 

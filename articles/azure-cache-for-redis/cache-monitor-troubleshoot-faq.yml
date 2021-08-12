@@ -1,0 +1,59 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zur Überwachung und Problembehandlung von Azure Cache for Redis
+  description: Hier erhalten Sie Antworten auf häufig gestellte Fragen, die Ihnen bei der Überwachung und Problembehandlung von Azure Cache for Redis helfen.
+  author: yegu-ms
+  ms.author: yegu
+  ms.service: cache
+  ms.topic: conceptual
+  ms.date: 08/06/2020
+  ms.openlocfilehash: d762625dc83a4ca77089c5929859f61e1f89c31a
+  ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 07/01/2021
+  ms.locfileid: "113137361"
+title: Häufig gestellte Fragen zur Überwachung und Problembehandlung von Azure Cache for Redis
+summary: Dieser Artikel bietet Antworten auf häufig gestellte Fragen rundum die Überwachung und Problembehandlung von Azure Cache for Redis.
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Wie überwache ich die Integrität und Leistung meines Caches?
+    answer: >
+      Microsoft Azure Cache for Redis-Instanzen können im [Azure-Portal](https://portal.azure.com)überwacht werden. Sie können Metriken anzeigen, Metrikdiagramme an das Startmenü anheften, Daten- und Zeitbereiche für Überwachungsdiagramme anpassen, Metriken aus Diagrammen hinzufügen und entfernen sowie Warnungen festlegen, die ausgelöst werden, wenn bestimmte Bedingungen erfüllt sind. Weitere Informationen finden Sie unter [Überwachen von Azure Cache for Redis](cache-how-to-monitor.md).
+
+
+      Das **Ressourcenmenü** von Azure Cache for Redis enthält auch mehrere Tools zur Überwachung und Problembehandlung für Ihre Caches.
+
+
+      * **Diagnose und Problembehandlung** bietet Informationen zu häufigen Problemen sowie Strategien zu deren Behebung.
+
+      * **Ressourcenintegrität** dienen zum Überwachen Ihrer Ressource und informieren Sie darüber, ob sie wie erwartet ausgeführt wird. Weitere Informationen zum Azure Resource Health-Dienst finden Sie in der [Übersicht über Azure Resource Health](../service-health/resource-health-overview.md).
+
+      * **Neue Supportanfrage** bietet Optionen, um eine Supportanfrage für Ihren Cache zu öffnen.
+
+
+      Mit diesen Tools können Sie die Integrität Ihrer Azure Cache for Redis-Instanzen überwachen. Darüber hinaus können Sie mit den Tools auch Ihre Cacheanwendungen verwalten. Weitere Informationen finden Sie im Abschnitt „Einstellungen zu Support und Problembehandlung“ des Artikels [Gewusst wie: Konfigurieren von Azure Cache for Redis](cache-configure.md).
+  - question: >
+      Warum kommt es zu Timeouts?
+    answer: >
+      Timeouts treten auf dem Client auf, der mit Redis kommuniziert. Wenn ein Befehl an den Redis-Server gesendet wird, wird er in die Warteschlange eingereiht. Der Redis-Server führt den Befehl dann aus, wenn er an der Reihe ist. Während dieses Vorgangs kann für den Client aber ein Timeout auftreten. Wenn dies der Fall ist, wird auf der aufrufenden Seite eine Ausnahme ausgelöst. Weitere Informationen zur Behandlung von Timeoutproblemen finden Sie unter [Behandeln von clientseitigen Problemen](cache-troubleshoot-client.md) und [StackExchange.Redis-Timeoutausnahmen](cache-troubleshoot-timeouts.md#stackexchangeredis-timeout-exceptions).
+  - question: >
+      Warum wurde mein Client vom Cache getrennt?
+    answer: >
+      Nachfolgend werden einige Gründe dafür aufgeführt, warum ein Cache getrennt wird.
+
+
+      * Gründe auf Clientseite
+        * Die Clientanwendung wurde neu bereitgestellt.
+        * Von der Clientanwendung wurde ein Skalierungsvorgang durchgeführt.
+          * Von Cloud Services oder Web-Apps wird während der automatischen Skalierung ggf. eine Trennung der Cacheverbindung durchgeführt.
+        * Die Netzwerkschicht auf Clientseite wurde geändert.
+        * Vorübergehende Fehler auf dem Client oder in den Netzwerkknoten zwischen Client und Server.
+        * Die Bandbreitenschwellenwerte wurden erreicht.
+        * Die Ausführung CPU-bezogener Vorgänge hat zu viel Zeit in Anspruch genommen.
+      * Gründe auf Serverseite
+        * Beim Standard-Cacheangebot wurde vom Azure Cache for Redis-Dienst ein Failover vom primären Knoten auf den Replikatknoten gestartet.
+        * Von Azure wurde die Instanz gepatcht, auf der der Cache während eines Updates des Redis-Servers oder allgemeiner VM-Wartungsarbeiten bereitgestellt wurde.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n   Weitere Informationen zur Überwachung und Problembehandlung Ihrer Azure Cache for Redis-Instanzen finden Sie unter [Überwachen von Azure Cache for Redis](cache-how-to-monitor.md) und in den verschiedenen Handbüchern zur Problembehandlung.\n        \n   Erfahren Sie mehr über weitere [häufig gestellte Fragen zu Azure Cache for Redis](cache-faq.yml)."

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 7094bf07453c06831fecfa2056480bf498b26a72
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 16b6675a7b9796405376540b87efbaaa2a991890
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041619"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081116"
 ---
 # <a name="troubleshoot-problems-in-it-service-management-connector"></a>Behandeln von Problemen im ITSM-Connector
 
@@ -99,7 +99,10 @@ In den folgenden Abschnitten werden allgemeine Symptome, mögliche Ursachen und 
 
 **Ursache:** Für dieses Symptom kann es eine Reihe von Gründen geben:
 
-* Vorlagen werden nicht als Teil der Aktionsdefinition angezeigt.
+* Vorlagen werden nicht als Teil des Dropdownmenüs für Aktionsdefinitionen angezeigt, und eine Fehlermeldung wird eingeblendet: „Die Vorlagenkonfiguration kann nicht abgerufen werden. Weitere Informationen finden Sie in den Connectorprotokollen.“
+* Werte werden nicht in den Dropdownlisten der Standardfelder als Teil der Aktionsdefinition angezeigt, und eine Fehlermeldung wird eingeblendet: „Für die folgenden Felder wurden keine Werte gefunden: <field names>.“
 * Incidents/Ereignisse werden nicht in ServiceNow erstellt.
 
-**Lösung:** [Synchronisieren Sie den Connector](itsmc-resync-servicenow.md).
+**Lösung**: 
+* [Synchronisieren Sie den Connector](itsmc-resync-servicenow.md).
+* Überprüfen Sie auf dem [Dashboard](itsmc-dashboard.md) die Fehler im Abschnitt für den Connectorstatus. Überprüfen Sie anschließend die [allgemeinen Fehler und deren Lösungen](itsmc-dashboard-errors.md).

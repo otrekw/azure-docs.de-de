@@ -2,13 +2,13 @@
 title: DevTest Labs-Konzepte | Microsoft Docs
 description: Lernen Sie die grundlegenden Konzepte von DevTest Labs kennen, und erfahren Sie, wie Sie virtuelle Azure-Computer damit einfach erstellen, verwalten und überwachen können.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: b184f835ee99d47ddb843e5b02136299c26bfcdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.openlocfilehash: e505ecb8ce4dc070b4ed79cd55514c4ef8ba0ead
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92327857"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954107"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-Konzepte
 ## <a name="overview"></a>Übersicht
@@ -28,7 +28,7 @@ Ein anforderbarer virtueller Azure-Computer ist ein virtueller Computer, der fü
 Ein anforderbarer virtueller Computer wird anfänglich keinem bestimmten Benutzer zugewiesen, er wird jedoch in der Liste jedes Benutzers unter „Claimable virtual machines“ (Anforderbare virtuelle Computer) angezeigt. Nachdem ein virtueller Computer von einem Benutzer angefordert wurde, wird er in dessen Bereich „My virtual machines“ (Meine virtuellen Computer) verschoben und kann von keinem anderen Benutzer mehr angefordert werden.
 
 ## <a name="environment"></a>Environment
-In DevTest Labs bezieht sich eine Umgebung auf eine Sammlung von Azure-Ressourcen in einem Lab. In [diesem Blogeintrag](./devtest-lab-faq.md#blog-post) erfahren Sie, wie Sie auf der Grundlage von Azure Resource Manager-Vorlagen Umgebungen mit mehreren virtuellen Computern erstellen.
+In DevTest Labs bezieht sich eine Umgebung auf eine Sammlung von Azure-Ressourcen in einem Lab. In [diesem Artikel](./devtest-lab-create-environment-from-arm.md) erfahren Sie, wie Sie auf der Grundlage von Azure Resource Manager-Vorlagen Umgebungen mit mehreren VMs erstellen.
 
 ## <a name="base-images"></a>Basisimages
 Basisimages sind ein VM-Images, in denen alle Tools und Einstellungen vorinstalliert und so konfiguriert sind, dass Sie schnell einen virtuellen Computer erstellen können. Sie können einen virtuellen Computer bereitstellen, indem Sie eine vorhandene Basis auswählen ein Artefakt hinzufügen, um Ihren Test-Agent zu installieren. Anschließend können Sie dann die bereitgestellte VM als Basis speichern, die dann verwendet werden kann, ohne den Test-Agent bei jeder Bereitstellung der VM erneut installieren zu müssen.
@@ -74,7 +74,7 @@ Da Bereiche hierarchisch sind, gelten die Berechtigungen, die einem Benutzer fü
 ## <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 Alle in diesem Artikel erörterten Konzepte können mithilfe von Azure Resource Manager-Vorlagen konfiguriert werden. Dies ermöglicht Ihnen das Definieren der Infrastruktur/Konfiguration Ihrer Azure-Lösung und deren wiederholte und konsistente Bereitstellung.
 
-In [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md#template-format) werden die Struktur einer Azure Resource Manager-Vorlage und die verfügbaren Eigenschaften in den verschiedenen Abschnitten einer Vorlage beschrieben.
+In [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md#template-format) werden die Struktur einer Azure Resource Manager-Vorlage und die verfügbaren Eigenschaften in den verschiedenen Abschnitten einer Vorlage beschrieben.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

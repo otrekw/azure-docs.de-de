@@ -10,12 +10,12 @@ metadata:
   author: Ajayan1008
   ms.author: v-hborys
   ms.date: 04/14/2021
-  ms.openlocfilehash: 4074e3002913bd3ea114611daf08f635deb6ec99
-  ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+  ms.openlocfilehash: 5304146a0cf427003e971f794f7a68690c524085
+  ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/07/2021
-  ms.locfileid: "109518358"
+  ms.lasthandoff: 07/02/2021
+  ms.locfileid: "113225424"
 landingContent:
 - title: Informationen zur BareMetal-Infrastruktur
   linkLists:
@@ -111,7 +111,7 @@ landingContent:
       url: ../virtual-machines/workloads/sap/hana-example-installation.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
   - linkListType: reference
     links:
-    - text: Optionen und Überlegungen
+    - text: Hochverfügbarkeit und Notfallwiederherstellung
       url: ../virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
     - text: Sichern und Wiederherstellen
       url: ../virtual-machines/workloads/sap/hana-backup-restore.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
@@ -123,6 +123,14 @@ landingContent:
       url: ../virtual-machines/workloads/sap/troubleshooting-monitoring.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
     - text: Überwachung und Problembehandlung auf HANA-Seite
       url: ../virtual-machines/workloads/sap/hana-monitor-troubleshoot.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: Übersicht über Azure Monitor für SAP-Lösungen
+      url: ../virtual-machines/workloads/sap/azure-monitor-overview.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: Anbieter von Azure Monitor für SAP-Lösungen
+      url: ../virtual-machines/workloads/sap/azure-monitor-providers.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: 'Bereitstellen von Azure Monitor für SAP-Lösungen: Azure-Portal'
+      url: ../virtual-machines/workloads/sap/azure-monitor-sap-quickstart.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: 'Bereitstellen von Azure Monitor für SAP-Lösungen: Azure PowerShell'
+      url: ../virtual-machines/workloads/sap/azure-monitor-sap-quickstart-powershell.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
   - linkListType: how-to-guide
     links:
     - text: HA-Einrichtung mit STONITH
