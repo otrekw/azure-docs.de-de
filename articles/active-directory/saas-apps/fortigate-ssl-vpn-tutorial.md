@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/26/2020
+ms.date: 06/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 9852752799fd010ebb069637f55008d9c4f68bf8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9663ee95b8ae9b109016e409855ef171c368793
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732101"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690868"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit FortiGate SSL VPN
 
@@ -76,7 +76,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal
 
 1. Geben Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die folgenden Werte ein:
 
-    a. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://<FQDN>/remote/login`.
+    a. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://<FQDN>/remote/saml/login`.
 
     b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://<FQDN>/remote/saml/metadata`.
 
@@ -203,6 +203,7 @@ Für diese Schritte benötigen Sie die zuvor notierten Werte:
    ```console
     config user saml
     edit azure
+    set cert <FortiGate VPN Server Certificate Name>
     set entity-id <Entity ID>
     set single-sign-on-url <Reply URL>
     set single-logout-url <Logout URL>

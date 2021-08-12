@@ -10,18 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13b1e22f1e1e5f51d524e80d0bf102b744fbec3d
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006386"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684593"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Verbinden eines RuuviTag-Sensors mit Ihrer Azure IoT Central-Anwendung
 
-*Dieser Artikel richtet sich an Lösungsentwickler.*
-
-In diesem Artikel wird beschrieben, wie Sie als Lösungsentwickler einen RuuviTag-Sensor mit Ihrer Microsoft Azure IoT Central-Anwendung verbinden können.
+In diesem Artikel wird beschrieben, wie Sie einen RuuviTag-Sensor mit Ihrer Microsoft Azure IoT Central-Anwendung verbinden können.
 
 Was ist RuuviTag?
 
@@ -35,9 +33,12 @@ Befolgen Sie [diese Anweisungen](./howto-connect-rigado-cascade-500.md), um ein 
 
 Zum Verbinden von RuuviTag-Sensoren benötigen Sie folgende Ressourcen:
 
-* Einen RuuviTag-Sensor. Weitere Informationen finden Sie unter [RuuviTag](https://ruuvi.com/).
-* Ein Rigado Cascade 500-Gerät oder ein anderes BLE-Gateway. Weitere Informationen finden Sie unter [Rigado](https://www.rigado.com/).
-* Eine Azure IoT Central-Anwendung. Weitere Informationen finden Sie unter [Erstellen einer neuen Anwendung](./quick-deploy-iot-central.md).
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+- Einen RuuviTag-Sensor. Weitere Informationen finden Sie unter [RuuviTag](https://ruuvi.com/).
+
+- Ein Rigado Cascade 500-Gerät oder ein anderes BLE-Gateway. Weitere Informationen finden Sie unter [Rigado](https://www.rigado.com/).
+
 
 ## <a name="add-a-ruuvitag-device-template"></a>Hinzufügen einer RuuviTag-Gerätevorlage
 
@@ -76,7 +77,7 @@ So erstellen Sie ein simuliertes RuuviTag-Gerät
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie ein Geräteentwickler sind, werden einige der folgenden nächsten Schritte empfohlen:
+Als Nächstes werden folgende Schritte vorgeschlagen:
 
 - Informieren Sie sich zu [Gerätekonnektivität in Azure IoT Central](./concepts-get-connected.md).
 - Informieren Sie sich über [Überwachen der Gerätekonnektivität per Azure CLI](./howto-monitor-devices-azure-cli.md).

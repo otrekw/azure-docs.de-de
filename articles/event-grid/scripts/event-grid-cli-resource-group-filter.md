@@ -3,14 +3,14 @@ title: 'Azure CLI: Abonnieren einer Ressourcengruppe und Filtern nach Ressource'
 description: In diesem Artikel werden anhand eines Beispielskripts für die Azure-Befehlszeilenschnittstelle das Abonnieren von Event Grid-Ereignissen für eine Ressource und das Filtern nach einer Ressource veranschaulicht.
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 07/08/2020
+ms.date: 07/22/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2662795e5ebc43e37eab7cab3dfc03582f072f8b
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: c9e44744f8f356a4e4c2d68f8ea20121407218eb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107871416"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463776"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-azure-cli"></a>Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource mit der Azure CLI
 

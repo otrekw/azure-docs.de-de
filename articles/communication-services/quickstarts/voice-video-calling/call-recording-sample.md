@@ -10,14 +10,17 @@ ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-csharp-java
-ms.openlocfilehash: f4dfd0701c2eeeaa5ba3b2be20b9448ca2093601
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 87a658c077a93d852e2a1e03faedf1fa5064e3dc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111822"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114473125"
 ---
 # <a name="call-recording-api-quickstart"></a>Schnellstart: Anrufaufzeichnungs-API
+
+[!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
+
 In diesem Schnellstart erfahren Sie, wie Sie Sprach- und Videoanrufe aufzeichnen. Dabei wird davon ausgegangen, dass Sie bereits das [Anrufclient-SDK](get-started-with-video-calling.md) für die Einrichtung von Anruffunktionen für Endbenutzern verwendet haben. Mithilfe der **Anfrufserver-APIs und -SDKs** können Sie Aufzeichnungen aktivieren und verwalten. 
 
 ::: zone pivot="programming-language-csharp"

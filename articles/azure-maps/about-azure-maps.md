@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 9b93ac2973fdf45c5ec395cf30490a820848bad9
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 970223c0514651ddcdf373aa6638abf17b06d01c
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027165"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669104"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -77,7 +77,7 @@ Weitere Informationen zu diesem Dienst finden Sie in der [Dokumentation zu Mobil
 
 ### <a name="render-service"></a>Renderingdienst
 
-Mit dem [Renderingdienst V2 (Vorschauversion)](/rest/api/maps/renderv2) wird eine neue Version der [Get Map Tile V2-API](/rest/api/maps/renderv2/getmaptilepreview) eingeführt. Mit der Get Map Tile V2-API können Kunden nun Azure Maps-Straßenkacheln, Wetterkacheln oder die mit Azure Maps Creator erstellten Kartenkacheln anfordern. Die Verwendung der neuen Get Map Tile V2-API wird empfohlen.  
+Mit dem [Renderingdienst V2 (Vorschauversion)](/rest/api/maps/renderv2) wird eine neue Version der [Get Map Tile V2-API](/rest/api/maps/render-v2/get-map-tile) eingeführt. Mit der Get Map Tile V2-API können Kunden nun Azure Maps-Straßenkacheln, Wetterkacheln oder die mit Azure Maps Creator erstellten Kartenkacheln anfordern. Die Verwendung der neuen Get Map Tile V2-API wird empfohlen.  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Beispiel für eine Karte vom Renderingdienst V2":::
 
@@ -175,7 +175,7 @@ Wetterinfodienste bieten APIs, mit denen Entwickler Wetterinformationen für ein
 
 Entwickler können die [Get Weather along Route-API](/rest/api/maps/weather/getweatheralongroute) verwenden, um Wetterinformationen auf einer bestimmten Route abzurufen. Außerdem unterstützt der Dienst die Generierung von Wetterbenachrichtigungen für Wegpunkte, die von Wetterrisiken betroffenen sind, z. B. Überflutung oder starker Regen.
 
-Mit der [Get Map Tile V2-API](/rest/api/maps/renderv2/getmaptilepreview) können Sie frühere, aktuelle und zukünftige Radar- und Satellitenkacheln anfordern.
+Mit der [Get Map Tile V2-API](/rest/api/maps/render-v2/get-map-tile) können Sie frühere, aktuelle und zukünftige Radar- und Satellitenkacheln anfordern.
 
 ![Beispiel für Karte Echtzeit-Wetterradarkacheln](media/about-azure-maps/intro_weather.png)
 

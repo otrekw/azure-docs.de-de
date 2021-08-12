@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 06/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 442894da23111877f4dd4f67363add0c8e52a4c9
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 921afd13b016e7b03db309623429ee6381058ead
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028977"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525370"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem GitHub-Konto mithilfe von Azure Active Directory B2C
 
@@ -28,7 +28,8 @@ ms.locfileid: "107028977"
 
 ::: zone pivot="b2c-custom-policy"
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+> [!IMPORTANT]
+> GitHub hat eine Änderung angekündigt, die sich ab Mai 2021 auf Ihren benutzerdefinierten Richtlinienverbund in Azure AD B2C auswirkt. Fügen Sie wegen dieser Änderung Ihrem technischen GitHub-Profil `<Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>`-Metadaten hinzu. Weitere Informationen finden Sie unter [API-Authentifizierung über Abfrageparameter als veraltet eingestuft](https://developer.github.com/changes/2020-02-10-deprecating-auth-through-query-param/).
 
 ::: zone-end
 
@@ -121,6 +122,7 @@ Sie können ein GitHub-Konto als Anspruchsanbieter definieren, indem Sie es in d
             <Item Key="HttpBinding">GET</Item>
             <Item Key="scope">read:user user:email</Item>
             <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>  
             <Item Key="UserAgentForClaimsExchange">CPIM-Basic/{tenant}/{policy}</Item>
             <!-- Update the Client ID below to the Application ID -->
             <Item Key="client_id">Your GitHub application ID</Item>

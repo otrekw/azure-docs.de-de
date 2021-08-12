@@ -4,12 +4,12 @@ description: Bring Your Own Key(BYOK) zum Verschlüsseln von AKS-Datenträgern f
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: c5c555d7eb5142f5f41f65b24f754c65450a2713
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6007294476321e1155219aae0664732ee4f921e0
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776189"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476244"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Bring Your Own Key (BYOK) mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -17,7 +17,7 @@ Azure Storage verschlüsselt alle Daten in einem ruhenden Speicherkonto. Standar
 
 ## <a name="limitations"></a>Einschränkungen
 * Die Unterstützung der Datenträgerverschlüsselung ist auf AKS-Cluster mit Version 1.17 und höher von Kubernetes beschränkt.
-* Die Verschlüsselung von Datenträgern für das Betriebssystem und für Daten mit kundenseitig verwalteten Schlüsseln kann nur beim Erstellen eines AKS-Clusters aktiviert werden.
+* Die Verschlüsselung von Betriebssystemdatenträgern mit kundenseitig verwalteten Schlüsseln kann nur beim Erstellen eines AKS-Clusters aktiviert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Sie müssen vorläufiges Löschen und den Schutz vor endgültigem Löschen für *Azure Key Vault* aktivieren, wenn Sie Key Vault zum Verschlüsseln von verwalteten Datenträgern verwenden.

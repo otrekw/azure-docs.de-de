@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von Coda für die automatische Benutzerbereitste
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für Coda automatisch bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 4d6f06dd-a798-4c22-b84f-8a11f1b8592a
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.author: Zhchia
-ms.openlocfilehash: 8df1588a78829252d55f82349d6889c754c989e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: ac4b11edb1ccb15f0cdacd6d326c6044184d686d
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673225"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764177"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Coda für die automatische Benutzerbereitstellung
 
