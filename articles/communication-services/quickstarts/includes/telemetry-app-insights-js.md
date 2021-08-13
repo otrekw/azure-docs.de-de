@@ -6,23 +6,23 @@ author: orwatson
 manager: vravikumar
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 06/01/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: orwatson
-ms.openlocfilehash: f044b23d26bee71fc3f6a28f96a42c42a01f4d02
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 8ad763ed5f0213569682599aaa0fc3cba4651939
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593104"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292417"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/): Active LTS- und Maintenance LTS-Versionen.
 - Eine aktive Communication Services-Ressource und eine Verbindungszeichenfolge. [Erstellen Sie eine Communication Services-Ressource](../create-communication-resource.md).
-- Erstellen Sie im Azure-Portal eine [Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+- Erstellen Sie im Azure-Portal eine [Application Insights-Ressource](../../../azure-monitor/app/create-new-resource.md).
 
 ## <a name="setting-up"></a>Einrichten
 

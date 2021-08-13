@@ -2,21 +2,21 @@
 title: 'Tutorial: Konfigurieren von myPolicies für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in myPolicies konfigurieren.
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 221f63ab9a7eb3f71a4c730a11565dda64c9edc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: d8d0bc83ec763d9c32ff9d90419a7b163b261144
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96353583"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762152"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von myPolicies für die automatische Benutzerbereitstellung
 
@@ -32,7 +32,7 @@ In diesem Tutorial werden die Schritte erläutert, die in myPolicies und Azure A
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * Einen Azure AD-Mandanten.
-* Einen [myPolicies-Mandanten](https://mypolicies.com/index.html#section10)
+* Einen [myPolicies-Mandanten](https://mypolicies.com/)
 * Ein Benutzerkonto in myPolicies mit Administratorberechtigungen
 
 ## <a name="assigning-users-to-mypolicies"></a>Zuweisen von Benutzern zu myPolicies

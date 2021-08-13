@@ -13,6 +13,10 @@
         - name: ARM-Vorlage
           displayName: Resource Manager
           href: alerts-activity-log-service-notifications-arm.md
+- name: Beispiele
+  items:
+    - name: Azure Resource Graph-Abfragen
+      href: ./resource-graph-samples.md
 - name: Konzepte
   items:
     - name: Azure-Statusseite

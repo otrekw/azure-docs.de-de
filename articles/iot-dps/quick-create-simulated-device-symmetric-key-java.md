@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: a32811b439a569a8f8f82fcc046e0f4b89e47a38
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2441b64d730064c0678eb9fc85945d956448248
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966699"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288669"
 ---
 # <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>Schnellstart: Bereitstellen eines simulierten Geräts in IoT Hub mit symmetrischen Schlüsseln
 
@@ -34,7 +34,7 @@ In diesem Artikel wird von der Nutzung einer Windows-Arbeitsstation ausgegangen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Vergewissern Sie sich, dass das [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) (oder höher) auf Ihrem Computer installiert ist.
+* Vergewissern Sie sich, dass das [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-support-on-azure) (oder höher) auf Ihrem Computer installiert ist.
 
 * Laden Sie [Maven](https://maven.apache.org/install.html) herunter, und installieren Sie es.
 

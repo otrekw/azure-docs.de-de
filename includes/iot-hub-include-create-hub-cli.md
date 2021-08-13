@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: 45a9a0821dec98637ade4940bee915483d5e9aa1
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 324e1d3c9d86f8c17581665507ebe52b946bd006
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112039782"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114408305"
 ---
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 In diesem Abschnitt verwenden Sie die Azure CLI zum Erstellen eines IoT-Hubs und einer Ressourcengruppe.  Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Ein IoT-Hub fungiert als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung und den Geräten.
@@ -22,7 +22,7 @@ So erstellen Sie einen IoT-Hub und eine Ressourcengruppe:
     - Wählen Sie bei Verwendung von Cloud Shell die Schaltfläche **Ausprobieren** in den CLI-Befehlen aus, um Cloud Shell in einem geteilten Browserfenster zu starten. Alternativ können Sie [Cloud Shell](https://shell.azure.com/bash) auch in einem separaten Browsertab öffnen.
     - Gehen Sie wie folgt vor, wenn Sie die Azure CLI lokal verwenden: Starten Sie Ihre CLI-Konsolen-App, und melden Sie sich bei der Azure CLI an.
 
-1. Führen Sie [az extension add](/cli/azure/extension?view=azure-cli-latest#az_extension_add) aus, um die Erweiterung *azure-iot* zu installieren bzw. auf die aktuelle Version zu aktualisieren.
+1. Führen Sie [az extension add](/cli/azure/extension#az_extension_add) aus, um die Erweiterung *azure-iot* zu installieren bzw. auf die aktuelle Version zu aktualisieren.
 
     ```azurecli-interactive
     az extension add --upgrade --name azure-iot
@@ -44,7 +44,7 @@ So erstellen Sie einen IoT-Hub und eine Ressourcengruppe:
     az iot hub create --resource-group MyResourceGroup --name {YourIoTHubName}
     ```
     > [!TIP]
-    > Nach dem Erstellen eines IoT Hubs können Sie im restlichen Teil dieser Schnellstartanleitung weiterhin CLI-Befehle verwenden, um mit dem Hub zu interagieren. Optional können Sie den Azure IoT-Explorer statt der CLI-Befehle verwenden. IoT Explorer ist eine GUI-Anwendung, mit der Sie eine Verbindung mit einer vorhandenen IoT Hub sowie Geräte hinzufügen, verwalten und überwachen können. Weitere Informationen finden Sie unter [Installieren und Verwenden des Azure IoT-Explorers](../articles/iot-pnp/howto-use-iot-explorer.md).
+    > Nach dem Erstellen eines IoT Hubs können Sie im restlichen Teil dieser Schnellstartanleitung weiterhin CLI-Befehle verwenden, um mit dem Hub zu interagieren. Optional können Sie den Azure IoT-Explorer statt der CLI-Befehle verwenden. IoT Explorer ist eine GUI-Anwendung, mit der Sie eine Verbindung mit einer vorhandenen IoT Hub sowie Geräte hinzufügen, verwalten und überwachen können. Weitere Informationen finden Sie unter [Installieren und Verwenden des Azure IoT-Explorers](../articles/iot-fundamentals/howto-use-iot-explorer.md).
 
 ## <a name="create-a-simulated-device"></a>Erstellen Sie ein simuliertes Gerät.
 In diesem Abschnitt erstellen Sie ein simuliertes IoT-Gerät, das mit Ihrem IoT-Hub verbunden ist. 

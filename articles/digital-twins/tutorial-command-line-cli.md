@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: eb1549b94ac2b1e1d1b37183e12d063a0f84f73c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 93dbdb8384a37e2f104f1ab99caf1ab6d8464c06
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792998"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461904"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Tutorial: Erstellen eines Azure Digital Twins-Graphen unter Verwendung der Azure CLI
 
@@ -52,7 +52,7 @@ Verwenden Sie die oben bereitgestellten Navigationslinks, und kopieren Sie die D
 
 Für die Arbeit mit Azure Digital Twins in diesem Artikel müssen Sie zuerst **eine Azure Digital Twins-Instanz einrichten** und die für die Nutzung erforderlichen Berechtigungen gewähren. Wenn Sie zuvor bereits eine Azure Digital Twins-Instanz eingerichtet haben, können Sie diese nutzen.
 
-Führen Sie andernfalls die Schritte unter [Anleitung: Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-cli.md) aus. Die Anleitung enthält auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
+Befolgen Sie andernfalls die Anleitung unter [Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-cli.md). Die Anleitung enthält auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
 
 Nachdem Sie Ihre Azure Digital Twins-Instanz eingerichtet haben, notieren Sie sich die folgenden Werte, die Sie benötigen, um später eine Verbindung mit der Instanz herzustellen:
 * Den **_Hostnamen_** der Instanz
@@ -320,4 +320,4 @@ In diesem Tutorial haben Sie die ersten Schritte mit Azure Digital Twins durchge
 
 Im nächsten Tutorial wird eine Kombination aus Azure Digital Twins und anderen Azure-Diensten in einem datengesteuerten End-to-End-Szenario verwendet:
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer End-to-End-Lösung](tutorial-end-to-end.md)
+> [Verbinden einer End-to-End-Lösung](tutorial-end-to-end.md)

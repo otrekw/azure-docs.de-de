@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Java-Funktion erstellen und dann das lok
 ms.topic: quickstart
 ms.date: 11/03/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 6c84bf4ebc73857fa0280ffbcbf46b68c2da630f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27268e53f86dd5cc25baac11a11f903f0d4c47eb
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031717"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287743"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>Schnellstart: Erstellen einer Java-Funktion in Azure mit Visual Studio Code
 
@@ -17,7 +17,7 @@ ms.locfileid: "102031717"
 
 Verwenden Sie Visual Studio Code zum Erstellen einer Java-Funktion, die auf HTTP-Anforderungen reagiert. Testen Sie den Code lokal, und stellen Sie ihn anschließend in der serverlosen Umgebung von Azure Functions bereit.
 
-Im Rahmen dieser Schnellstartanleitung fallen ggf. geringfügige Kosten im Centbereich in Ihrem <abbr title="Das Profil mit Abrechnungsinformationen für die Azure-Nutzung.">Azure-Konto</abbr>.
+Im Rahmen dieser Schnellstartanleitung fallen ggf. geringfügige Kosten im Centbereich in Ihrem <abbr title="Das Profil, mit dem Abrechnungsinformationen zur Azure-Nutzung verwaltet werden.">Azure-Konto</abbr>.
 
 Sollte Visual Studio Code nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials mit [Maven](create-first-function-cli-java.md), [Gradle](./functions-create-first-java-gradle.md) und [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) für Java-Entwickler zur Verfügung.
 
@@ -27,7 +27,7 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 
 + Ein Azure-Konto mit einem aktiven <abbr title="Die grundlegende Organisationsstruktur, in der Sie Ressourcen in Azure verwalten. Diese wird in der Regel einer Einzelperson oder Abteilung innerhalb einer Organisation zugeordnet.">Abonnement</abbr>. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8 oder 11.
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure), Version 8 oder 11.
 
 + [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 

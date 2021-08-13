@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: alkemper
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 7c5534ab836968bc4e72a54db1ddb9667d366558
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 956aa33f8152c8e07ebc8d04a91242eba88362cf
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768847"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441442"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Tutorial: Verwenden von Key Vault-Verweisen in einer Java Spring-App
 
@@ -152,16 +152,14 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
     export AZURE_TENANT_ID ='tenantId'
     ```
 
-
 > [!NOTE]
 > Diese Key Vault-Anmeldeinformationen werden nur innerhalb Ihrer Anwendung verwendet.  Ihre Anwendung authentifiziert sich mit diesen Anmeldeinformationen direkt (ohne Beteiligung des App Configuration-Diensts) bei Key Vault.  Key Vault sorgt für die Authentifizierung Ihrer Anwendung und Ihres App Configuration-Diensts, ohne Schlüssel weiterzugeben oder offenzulegen.
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Aktualisieren des Codes für die Verwendung eines Key Vault-Verweises
 
-1. Erstellen Sie eine Umgebungsvariable namens **APP_CONFIGURATION_ENDPOINT**. Legen Sie ihren Wert auf den Endpunkt Ihres App Configuration-Speichers fest. Den Endpunkt finden Sie im Azure-Portal auf dem Blatt **Zugriffsschlüssel**. Starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird. 
+1. Erstellen Sie eine Umgebungsvariable namens **APP_CONFIGURATION_ENDPOINT**. Legen Sie ihren Wert auf den Endpunkt Ihres App Configuration-Speichers fest. Den Endpunkt finden Sie im Azure-Portal auf dem Blatt **Zugriffsschlüssel**. Starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird.
 
-
-1. Öffnen Sie die Datei *bootstrap.properties* im Ordner *Ressourcen*. Aktualisieren Sie diese Datei, sodass der Wert **APP_CONFIGURATION_ENDPOINT** verwendet wird. Entfernen Sie alle Verweise auf eine Verbindungszeichenfolge in dieser Datei. 
+1. Öffnen Sie die Datei *bootstrap.properties* im Ordner *Ressourcen*. Aktualisieren Sie diese Datei, sodass der Wert **APP_CONFIGURATION_ENDPOINT** verwendet wird. Entfernen Sie alle Verweise auf eine Verbindungszeichenfolge in dieser Datei.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
@@ -197,8 +195,8 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 
     import com.azure.core.credential.TokenCredential;
     import com.azure.identity.EnvironmentCredentialBuilder;
-    import com.microsoft.azure.spring.cloud.config.AppConfigurationCredentialProvider;
-    import com.microsoft.azure.spring.cloud.config.KeyVaultCredentialProvider;
+    import com.azure.spring.cloud.config.AppConfigurationCredentialProvider;
+    import com.azure.spring.cloud.config.KeyVaultCredentialProvider;
 
     public class AzureCredentials implements AppConfigurationCredentialProvider, KeyVaultCredentialProvider{
 

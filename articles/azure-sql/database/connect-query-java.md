@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 06/26/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: badf6b8887c356c2a7fc7308f6aa15f551e4bb67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a24d07e2ccf97727ff0eb7c703aa0a82ee33c4c
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95972673"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287219"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>Verwenden von Java und JDBC mit Azure SQL-Datenbank
 
@@ -27,7 +27,7 @@ JDBC ist die Standard-Java-API, um eine Verbindung mit herkömmlichen relational
 
 - Ein Azure-Konto. Falls Sie noch kein Konto haben, können Sie eine [kostenlose Testversion](https://azure.microsoft.com/free/) verwenden.
 - [Azure Cloud Shell](../../cloud-shell/quickstart.md) oder [Azure CLI](/cli/azure/install-azure-cli). Wir empfehlen Azure Cloud Shell, damit Sie automatisch angemeldet werden und Zugriff auf alle erforderlichen Tools erhalten.
-- Ein unterstütztes [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8 (in Azure Cloud Shell enthalten).
+- Ein unterstütztes [Java Development Kit](/azure/developer/java/fundamentals/java-support-on-azure), Version 8 (in Azure Cloud Shell enthalten).
 - Das [Apache Maven](https://maven.apache.org/)-Buildtool
 
 ## <a name="prepare-the-working-environment"></a>Vorbereiten der Arbeitsumgebung

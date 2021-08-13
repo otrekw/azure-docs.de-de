@@ -1,19 +1,23 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 05/06/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: b82976a3b40a4c927d095c40fe6652613e66274f
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 9ba8a90dcd2043fc0f54278a3f1b807add819c66
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716180"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712992"
 ---
+[![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp/pnp_temperature_controller)
+
+In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 - Dieser Schnellstart kann unter Linux oder Windows ausgeführt werden. In den Shellbefehlen wird das Linux-Standardpfadtrennzeichen `/` verwendet. Ersetzen Sie bei Verwendung von Windows diese Trennzeichen durch das Windows-Pfadtrennzeichen `\`.
 

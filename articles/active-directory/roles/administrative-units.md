@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7071d180efe9f7da088f30106c879fd10ed9051
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f0cdaefcc92a1a690ae3e3e222053976c3aa3178
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087110"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730800"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Verwaltungseinheiten in Azure Active Directory
 
@@ -40,7 +40,7 @@ Ein zentraler Administrator könnte folgende Aktionen ausführen:
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 
-Bei der Verwendung von Verwaltungseinheiten ist für jeden Administrator einer Verwaltungseinheit eine Azure AD Premium P1-Lizenz erforderlich, und alle Mitglieder der Verwaltungseinheit benötigen Azure AD Free-Lizenzen. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich der allgemein verfügbaren Features der Editionen Free und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
+Bei der Verwendung von Verwaltungseinheiten ist für jeden Administrator einer Verwaltungseinheit eine Azure AD Premium P1-Lizenz erforderlich, und alle Mitglieder der Verwaltungseinheit benötigen Azure AD Free-Lizenzen. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich der allgemein verfügbaren Features der Editionen Free und Premium](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 ## <a name="manage-administrative-units"></a>Verwalten von Verwaltungseinheiten
 

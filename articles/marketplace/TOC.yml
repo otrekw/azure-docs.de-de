@@ -86,7 +86,7 @@
         - name: Registrierung für den Prepaidtarif für den Azure-Verbrauch
           href: azure-consumption-commitment-enrollment.md
         - name: Bevorzugte Lösungen
-          href: /marketplace/appsource-overview#microsoft-preferred-solutions
+          href: preferred-solution.md
         - name: Integrierte Lösungen
           href: integrated-solutions-for-publishers.md
     - name: Aktivieren von Marketplace-Prämien
@@ -311,13 +311,15 @@
                   href: iot-edge-plan-technical-configuration.md
     - name: Angebote für verwaltete Dienste
       items:
-        - name: Planen eines Angebots für einen verwalteten Dienst
+        - name: Planen des Angebots
           href: plan-managed-service-offer.md
-        - name: Erstellen eines Angebots für einen verwalteten Dienst
+        - name: Erstellen des Angebots
           href: create-managed-service-offer.md
-        - name: Konfigurieren einer Auflistung für einen verwalteten Dienst
+        - name: Eigenschaften
+          href: create-managed-service-offer-properties.md
+        - name: Angebotsliste
           href: create-managed-service-offer-listing.md
-        - name: Hinzufügen einer Vorschauzielgruppe
+        - name: Vorschauzielgruppe
           href: create-managed-service-offer-preview.md
         - name: Pläne erstellen
           href: create-managed-service-offer-plans.md

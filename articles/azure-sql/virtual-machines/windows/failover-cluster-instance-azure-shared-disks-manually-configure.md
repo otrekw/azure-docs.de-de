@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.subservice: hadr
+ms.custom: na, devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 7742b39fae9390a5baa7f58dbb25eeff45384dc2
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 49a369c439465a7a93cba1aea983d23a54da206e
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769541"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569499"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Erstellen einer FCI mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +29,7 @@ In diesem Artikel wird erläutert, wie Sie auf virtuellen Azure-Computern (Azure
 Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md) und über [Bewährte Methoden für Cluster](hadr-cluster-best-practices.md). 
 
 > [!NOTE]
-> Sie können Ihre Failoverclusterinstanzlösung jetzt mithilfe von Azure Migrate per Lift-und-Shift-Verfahren zu SQL Server auf Azure-VMs verschieben. Weitere Informationen finden Sie unter [Migrieren einer Failoverclusterinstanz](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md). 
+> Sie können Ihre Failoverclusterinstanzlösung jetzt mithilfe von Azure Migrate per Lift-und-Shift-Verfahren zu SQL Server auf Azure-VMs verschieben. Weitere Informationen finden Sie unter [Migrieren einer Failoverclusterinstanz](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
@@ -140,7 +141,9 @@ Weitere Informationen finden Sie unter [Failovercluster: Cluster Network Object]
 
 ## <a name="configure-quorum"></a>Konfigurieren des Quorums
 
-Konfigurieren Sie die Quorumlösung, die Ihren Geschäftsanforderungen am besten entspricht. Sie können einen [Datenträgerzeugen](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum), einen [Cloudzeugen](/windows-server/failover-clustering/deploy-cloud-witness) oder einen [Dateifreigabezeugen](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum) konfigurieren. Weitere Informationen finden Sie unter [Quorum mit SQL Server-VMs](hadr-cluster-best-practices.md#quorum). 
+Da der Datenträgerzeuge die resilienteste Quorumoption ist und die FCI-Lösung freigegebene Azure-Datenträger verwendet, wird empfohlen, einen Datenträgerzeugen als Quorumlösung zu konfigurieren. 
+
+Wenn Sie im Cluster über eine gerade Anzahl von Stimmen verfügen, konfigurieren Sie die [Quorumlösung](hadr-cluster-quorum-configure-how-to.md), die Ihren Geschäftsanforderungen am besten entspricht. Weitere Informationen finden Sie unter [Quorum mit SQL Server-VMs](hadr-windows-server-failover-cluster-overview.md#quorum). 
 
 ## <a name="validate-cluster"></a>Validieren des Clusters
 Führen Sie die Validierung für den Cluster auf der Benutzeroberfläche oder mit PowerShell durch.
@@ -208,9 +211,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurieren von Konnektivität 
 
-Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 CU2 (oder höher) und Windows Server 2016 (oder höher) stattdessen das Feature für [verteilte Netzwerknamen](failover-cluster-instance-distributed-network-name-dnn-configure.md) verwenden.  
-
-Weitere Informationen zu den Optionen für Clusterkonnektivität finden Sie unter [Weiterleiten von HADR-Verbindungen an SQL Server auf Azure-VMs](hadr-cluster-best-practices.md#connectivity). 
+Sie können einen VNet-Namen oder einen Namen für ein verteiltes Netzwerk für eine Failoverclusterinstanz konfigurieren. Machen Sie sich mit den [Unterschieden zwischen den beiden Optionen](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn) vertraut, und stellen Sie dann entweder einen [Namen eines verteilten Netzwerks](failover-cluster-instance-distributed-network-name-dnn-configure.md) oder einen [Namen eines virtuellen Netzwerks](failover-cluster-instance-vnn-azure-load-balancer-configure.md) für Ihre Failoverclusterinstanz bereit.  
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -224,6 +225,10 @@ Wenn freigegebene Azure-Datenträger nicht die richtige FCI-Speicherlösung für
 
 Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md) und unter [Bewährte Methoden für die Clusterkonfiguration](hadr-cluster-best-practices.md).
 
-Weitere Informationen finden Sie unter 
-- [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+
+Weitere Informationen finden Sie unter:
+
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Failoverclusterinstanzen mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md)
+- [AlwaysOn-Failoverclusterinstanzen (SQL Server)](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)
