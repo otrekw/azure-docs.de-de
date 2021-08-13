@@ -9,19 +9,19 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3abdd44f0684282e92da147dff996ff54f0ef23f
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 3972b82c3477e6ac75574ce9110ad90435bbf8a3
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565473"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112538879"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>Herstellen einer Verbindung mit Synapse SQL mithilfe von sqlcmd
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
-> * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+> * [Visual Studio](../sql/get-started-visual-studio.md)
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
@@ -72,7 +72,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 ```
 
 > [!NOTE]
-> Sie müssen [Azure Active Directory-Authentifizierung aktivieren](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , um die Authentifizierung mithilfe von Active Directory zu ermöglichen.
+> Sie müssen [Azure Active Directory-Authentifizierung aktivieren](../sql/active-directory-authentication.md) , um die Authentifizierung mithilfe von Active Directory zu ermöglichen.
 
 ## <a name="2-query"></a>2. Abfrage
 

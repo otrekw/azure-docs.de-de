@@ -3,12 +3,12 @@ title: 'Schnellstart: Verwenden von cURL und REST zum Verwalten der Wissensdaten
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie Ihre Wissensdatenbank mit den REST-APIs erstellen, veröffentlichen und abfragen.
 ms.date: 1/22/2021
 ms.topic: quickstart
-ms.openlocfilehash: 45af4dbe28720a614cc64cb7567ec8f96f3f40cb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0467004b8188f0187fa4e565e3637f5e765a510d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110487028"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111993285"
 ---
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -17,7 +17,7 @@ ms.locfileid: "110487028"
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 * Aktuelle Version von [cURL](https://curl.haxx.se/). In den Schnellstartanleitungen werden mehrere Befehlszeilenschalter verwendet, die in der [cURL-Dokumentation](https://curl.haxx.se/docs/manpage.html) angegeben sind.
-* Sie benötigen eine [QnA Maker-Ressource](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure?tabs=v1#create-a-new-qna-maker-service), um den Schlüssel und Ressourcennamen verwenden zu können. Sie haben den **Namen** der Ressource während der Ressourcenerstellung eingegeben. Der Schlüssel wurde anschließend für Sie erstellt. Der Ressourcenname wird als Unterdomäne für Ihren Endpunkt verwendet. Wählen Sie für Ihre Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und den Ressourcennamen abzurufen. Der Ressourcenname ist die erste Unterdomäne der Endpunkt-URL:
+* Sie benötigen eine [QnA Maker-Ressource](../how-to/set-up-qnamaker-service-azure.md?tabs=v1#create-a-new-qna-maker-service), um den Schlüssel und Ressourcennamen verwenden zu können. Sie haben den **Namen** der Ressource während der Ressourcenerstellung eingegeben. Der Schlüssel wurde anschließend für Sie erstellt. Der Ressourcenname wird als Unterdomäne für Ihren Endpunkt verwendet. Wählen Sie für Ihre Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und den Ressourcennamen abzurufen. Der Ressourcenname ist die erste Unterdomäne der Endpunkt-URL:
 
     `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
@@ -27,7 +27,7 @@ ms.locfileid: "110487028"
 # <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
 
 * Aktuelle Version von [cURL](https://curl.haxx.se/). In den Schnellstartanleitungen werden mehrere Befehlszeilenschalter verwendet, die in der [cURL-Dokumentation](https://curl.haxx.se/docs/manpage.html) angegeben sind.
-* Benutzerdefinierte Fragen und Antworten erfordern eine [Textanalyse-Ressource](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure?tabs=v2#create-a-new-qna-maker-service) mit aktiviertem Feature für benutzerdefinierte Fragen und Antworten, um einen API-Schlüssel und Endpunkt zu generieren. Der **Name**, den Sie beim Erstellen Ihrer Ressource gewählt haben, wird als Unterdomäne für Ihren Endpunkt verwendet. Wählen Sie für Ihre Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und Ressourcennamen abzurufen. Der Ressourcenname ist die erste Unterdomäne der Endpunkt-URL:
+* Benutzerdefinierte Fragen und Antworten erfordern eine [Textanalyse-Ressource](../how-to/set-up-qnamaker-service-azure.md?tabs=v2#create-a-new-qna-maker-service) mit aktiviertem Feature für benutzerdefinierte Fragen und Antworten, um einen API-Schlüssel und Endpunkt zu generieren. Der **Name**, den Sie beim Erstellen Ihrer Ressource gewählt haben, wird als Unterdomäne für Ihren Endpunkt verwendet. Wählen Sie für Ihre Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und Ressourcennamen abzurufen. Der Ressourcenname ist die erste Unterdomäne der Endpunkt-URL:
 
     `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.2`
 

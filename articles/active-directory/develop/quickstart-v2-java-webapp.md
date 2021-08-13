@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: a7337175241834cef862b4af07c7bcf7c8b845d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ba0052aec7e0938443560f5f0868431907c1b27
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103769"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580852"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Java-Web-App
 
@@ -163,10 +163,7 @@ Wählen Sie zum Ausführen der Webanwendung aus einer IDE den Befehl „run“ a
 
 Wenn Sie das Webbeispiel in Tomcat bereitstellen möchten, müssen Sie einige Änderungen am Quellcode vornehmen.
 
-1. Öffnen Sie *ms-identity-java-webapp/pom.xml*.
-    - Fügen Sie `<packaging>war</packaging>` unter `<name>msal-web-sample</name>` hinzu.
-
-2. Öffnen Sie *ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication*.
+1. Öffnen Sie *ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication*.
 
     - Löschen Sie den gesamten Quellcode, und ersetzen Sie ihn durch den folgenden Code:
 
@@ -192,7 +189,7 @@ Wenn Sie das Webbeispiel in Tomcat bereitstellen möchten, müssen Sie einige Ä
        }
       ```
 
-3.   Der HTTP-Standardport von Tomcat ist 8080. Sie benötigen aber eine HTTPS-Verbindung über Port 8443. Konfigurieren Sie diese Einstellung wie folgt:
+2.   Der HTTP-Standardport von Tomcat ist 8080. Sie benötigen aber eine HTTPS-Verbindung über Port 8443. Konfigurieren Sie diese Einstellung wie folgt:
         - Navigieren Sie zu *tomcat/conf/server.xml*.
         - Suchen Sie nach dem Tag `<connector>`, und ersetzen Sie den vorhandenen Connector durch diesen Connector:
 
@@ -205,13 +202,13 @@ Wenn Sie das Webbeispiel in Tomcat bereitstellen möchten, müssen Sie einige Ä
                    clientAuth="false" sslProtocol="TLS"/>
           ```
 
-4. Öffnen Sie ein Eingabeaufforderungsfenster. Navigieren Sie zum Stammordner dieses Beispiels (in dem sich die Datei „pom.xml“ befindet), und führen Sie `mvn package` aus, um das Projekt zu erstellen.
+3. Öffnen Sie ein Eingabeaufforderungsfenster. Navigieren Sie zum Stammordner dieses Beispiels (in dem sich die Datei „pom.xml“ befindet), und führen Sie `mvn package` aus, um das Projekt zu erstellen.
     - Mit diesem Befehl wird die Datei *msal-web-sample-0.1.0.war* im Verzeichnis */targets* erstellt.
     - Benennen Sie diese Datei in *msal4jsample.war* um.
     - Stellen Sie diese WAR-Datei mit Tomcat oder einer beliebigen anderen J2EE-Containerlösung bereit.
         - Um die Bereitstellung vorzunehmen, kopieren Sie die Datei „msal4jsample.war“ in das Verzeichnis */webapps/* Ihrer Tomcat-Installation und starten dann den Tomcat-Server.
 
-5. Navigieren Sie nach dem Bereitstellen der Datei in einem Browser zu https://localhost:8443/msal4jsample.
+4. Navigieren Sie nach dem Bereitstellen der Datei in einem Browser zu https://localhost:8443/msal4jsample.
 
 
 > [!IMPORTANT]

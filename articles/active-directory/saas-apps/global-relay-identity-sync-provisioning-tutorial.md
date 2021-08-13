@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von Global Relay Identity Sync für die automati
 description: Hier erfahren Sie, wie Sie Benutzerkonten aus Azure AD in Global Relay Identity Sync automatisch bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 0c4a3bf0-d0a6-4eab-909b-6cf9f9234e4c
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/22/2020
-ms.author: Zhchia
-ms.openlocfilehash: d003a512ebde626b8726dfccc58110e53f1cd467
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: f8aec55ac9c17880956b571b6d9d354d6578e467
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180913"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767776"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Global Relay Identity Sync für die automatische Benutzerbereitstellung
 

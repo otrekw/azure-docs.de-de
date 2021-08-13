@@ -40,7 +40,7 @@ productDirectory:
     - title: Azure Metrics Advisor
       imageSrc: ./media/metrics-advisor.svg
       summary: Proaktives Überwachen von Metriken und Diagnostizieren von Problemen
-      url: ../cognitive-services/metrics-advisor/index.yml
+      url: ./metrics-advisor/index.yml
     - title: Azure Video Analyzer
       imageSrc: ./media/video-analytics.svg
       summary: Extrahieren verwertbarer Erkenntnisse aus Ihren Videos
@@ -66,7 +66,7 @@ additionalContent:
             - text: Azure-Formularerkennung
               url: ../cognitive-services/form-recognizer/quickstarts/get-started-with-form-recognizer.md
             - text: Azure Metrics Advisor
-              url: ../cognitive-services/metrics-advisor/quickstarts/web-portal.md
+              url: ./metrics-advisor/quickstarts/web-portal.md
             - text: Plastischer Reader in Azure
               url: ../cognitive-services/immersive-reader/quickstarts/client-libraries.md
             - text: Azure Cognitive Search
