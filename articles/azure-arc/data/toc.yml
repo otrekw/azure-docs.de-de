@@ -1,8 +1,8 @@
-- name: "Dokumentation zu Azure\_Arc-fähigen Datendiensten"
+- name: "Dokumentation zu Datendiensten mit Azure\_Arc-Unterstützung"
   href: index.yml
 - name: Übersicht
   items:
-    - name: "Was sind Azure\_Arc-fähige Datendienste?"
+    - name: "Was sind Datendienste mit Azure\_Arc-Unterstützung?"
       href: overview.md
     - name: Versionshinweise
       href: release-notes.md
@@ -10,8 +10,8 @@
       href: privacy-data-collection-and-reporting.md
 - name: Schnellstarts
   items:
-    - name: Erstellen eines Datencontrollers
-      href: create-data-controller.md
+    - name: "Planen der Bereitstellung von Datendiensten mit Azure\_Arc-Unterstützung"
+      href: plan-azure-arc-data-services.md
 - name: Konzepte
   items:
     - name: Konnektivitätsmodi und -anforderungen
@@ -26,43 +26,31 @@
       items:
         - name: Installieren der Clienttools
           href: install-client-tools.md
-        - name: Azure Data CLI (azdata)
-          items:
-            - name: Installieren
-              href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: macOS
-              href: /sql/azdata/install/deploy-install-azdata-macos?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Windows
-              href: /sql/azdata/install/deploy-install-azdata-installer?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux mit apt
-              href: /sql/azdata/install/deploy-install-azdata-linux-package?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux mit yum
-              href: /sql/azdata/install/deploy-install-azdata-yum?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux mit zypper
-              href: /sql/azdata/install/deploy-install-azdata-zypper?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux mit pip
-              href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: Installieren der arcdata-Erweiterung (Azure CLI)
+          href: install-arcdata-extension.md
+    - name: Erstellen eines benutzerdefinierten Konfigurationsprofils
+      href: create-custom-configuration-template.md
     - name: Erstellen eines Datencontrollers
       items:
         - name: Indirekter Konnektivitätsmodus
           items:
             - name: Azure Data Studio
-              href: create-data-controller-azure-data-studio.md
-            - name: Portal
-              href: create-data-controller-resource-in-azure-portal.md
-            - name: Azure Data CLI (azdata)
-              href: create-data-controller-using-azdata.md
+              href: create-data-controller-indirect-azure-data-studio.md
+            - name: Azure-Portal
+              href: create-data-controller-indirect-azure-portal.md
+            - name: azdata CLI
+              href: create-data-controller-indirect-cli.md
             - name: Kubernetes-Tools
               href: create-data-controller-using-kubernetes-native-tools.md
-            - name: Anwenden einer Sicherheitskontexteinschränkung (OpenShift)
-              href: how-to-apply-security-context-constraint.md
         - name: Direkter Konnektivitätsmodus
           items:
             - name: Voraussetzungen
-              href: deploy-data-controller-direct-mode-prerequisites.md
-            - name: Bereitstellen
-              href: deploy-data-controller-direct-mode.md
-    - name: "Allgemeine Erfahrungen mit Azure\_Arc-fähigen Datendiensten"
+              href: create-data-controller-direct-prerequisites.md
+            - name: Azure-Portal
+              href: create-data-controller-direct-azure-portal.md
+            - name: az CLI
+              href: create-data-controller-direct-cli.md
+    - name: "Allgemeine Erfahrungen mit Datendiensten mit Azure\_Arc-Unterstützung"
       items:
         - name: Überwachen mit Dashboards (Azure Data Studio)
           href: azure-data-studio-dashboards.md
@@ -100,11 +88,11 @@
           href: troubleshoot-guide.md
         - name: Abrufen von Protokollen
           href: troubleshooting-get-logs.md
-- name: "Azure\_Arc-fähiges PostgreSQL Hyperscale (Vorschauversion)"
+- name: PostgreSQL Hyperscale mit Azure Arc-Unterstützung (Vorschauversion)
   items:
     - name: Übersicht
       items:
-        - name: "Was ist Azure\_Arc-fähiges PostgreSQL Hyperscale?"
+        - name: "Was ist PostgreSQL Hyperscale mit Azure\_Arc-Unterstützung?"
           href: what-is-azure-arc-enabled-postgres-hyperscale.md
         - name: Einschränkungen
           href: limitations-postgresql-hyperscale.md
@@ -130,6 +118,24 @@
           href: postgresql-hyperscale-server-group-placement-on-kubernetes-cluster-nodes.md
     - name: Vorgehensweise
       items:
+        - name: Installieren von Tools
+          items:
+            - name: Azure Data CLI (azdata)
+              items: null
+            - name: Installieren
+              href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: macOS
+              href: /sql/azdata/install/deploy-install-azdata-macos?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Windows
+              href: /sql/azdata/install/deploy-install-azdata-installer?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux mit apt
+              href: /sql/azdata/install/deploy-install-azdata-linux-package?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux mit yum
+              href: /sql/azdata/install/deploy-install-azdata-yum?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux mit zypper
+              href: /sql/azdata/install/deploy-install-azdata-zypper?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+            - name: Linux mit pip
+              href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
         - name: Verwalten
           items:
             - name: Sichern und Wiederherstellen
@@ -166,11 +172,11 @@
               href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
         - name: Problembehandlung
           href: troubleshoot-postgresql-hyperscale-server-group.md
-- name: "Azure\_Arc-fähige SQL\_Managed\_Instance-Instanz (Vorschauversion)"
+- name: SQL Managed Instance mit Azure Arc-Unterstützung (Vorschauversion)
   items:
     - name: Übersicht
       items:
-        - name: "Was ist eine Azure\_Arc-fähige SQL\_Managed\_Instance-Instanz?"
+        - name: "Was ist eine SQL\_Managed\_Instance mit Azure\_Arc-Unterstützung?"
           href: managed-instance-overview.md
         - name: Features
           href: managed-instance-features.md
@@ -194,6 +200,8 @@
               href: monitoring-log-analytics-azure-portal-managed-instance.md
             - name: Hochverfügbarkeit
               href: managed-instance-high-availability.md
+            - name: Point-in-Time-Wiederherstellung
+              href: point-in-time-restore.md
             - name: Löschen
               href: delete-managed-instance.md
         - name: Migrieren
@@ -212,20 +220,6 @@
           href: /sql/azdata/reference/reference-azdata-notebook?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
         - name: postgres
           href: /sql/azdata/reference/reference-azdata-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: sql
-          href: /sql/azdata/reference/reference-azdata-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: azdata-arc
-          href: /sql/azdata/reference/reference-azdata-arc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-dc
-          href: /sql/azdata/reference/reference-azdata-arc-dc?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-dc-config
-          href: /sql/azdata/reference/reference-azdata-arc-dc-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-dc-debug
-          href: /sql/azdata/reference/reference-azdata-arc-dc-debug?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-dc-endpoint
-          href: /sql/azdata/reference/reference-azdata-arc-dc-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-dc-status
-          href: /sql/azdata/reference/reference-azdata-arc-dc-status?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
         - name: arc-postgres
           href: /sql/azdata/reference/reference-azdata-arc-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
         - name: arc-postgres-backup
@@ -242,15 +236,9 @@
           href: /sql/azdata/reference/reference-azdata-arc-resource?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
         - name: arc-resource-kind
           href: /sql/azdata/reference/reference-azdata-arc-resource-kind?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-sql
-          href: /sql/azdata/reference/reference-azdata-arc-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-sql-endpoint
-          href: /sql/azdata/reference/reference-azdata-arc-sql-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-sql-mi
-          href: /sql/azdata/reference/reference-azdata-arc-sql-mi?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-sql-mi-config
-          href: /sql/azdata/reference/reference-azdata-arc-sql-mi-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
 - name: Ressourcen
   items:
+    - name: Planen für die Bereitstellung
+      href: plan-azure-arc-data-services.md
     - name: Einstieg in Azure Arc
       href: 'https://azurearcjumpstart.io'

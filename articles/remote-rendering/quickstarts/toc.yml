@@ -8,7 +8,9 @@
       href: deploy-to-desktop.md
 - name: Systemeigenes C++
   items:
-    - name: Bereitstellen des nativen C++-Beispiels für HoloLens
+    - name: Bereitstellen des OpenXR-basierten nativen C++-Beispiels für HoloLens
+      href: native-cpp/hololens/deploy-native-cpp-openxr-tutorial.md
+    - name: Bereitstellen des WMR-basierten nativen C++-Beispiels für HoloLens
       href: native-cpp/hololens/deploy-native-cpp-tutorial.md
 - name: Konvertieren eines Modells für das Rendering
   href: convert-model.md

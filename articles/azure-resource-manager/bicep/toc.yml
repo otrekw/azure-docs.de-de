@@ -32,6 +32,7 @@
           items:
             - name: Ressourcendeklaration
               href: resource-declaration.md
+              displayName: existing
             - name: Bedingte Bereitstellung
               href: conditional-resource-deployment.md
               displayName: runtime
@@ -55,7 +56,7 @@
         - name: Schleifen
           items:
             - name: Ressourcen
-              displayName: 'iteration,copy,multiple,batches,child'
+              displayName: 'iteration,copy,multiple,batches,child,condition,filter'
               href: loop-resources.md
             - name: Eigenschaften
               displayName: 'iteration,copy,multiple'
@@ -159,6 +160,8 @@
           href: operators-logical.md
         - name: Numerische Operatoren
           href: operators-numeric.md
+        - name: Zugriffsoperatoren
+          href: operators-access.md
     - name: Bicep-Befehlszeilenschnittstelle
       href: bicep-cli.md
       displayName: 'build,decompile,install,list-versions,list versions,upgrade,version'

@@ -8,6 +8,10 @@
       href: core/overview-iot-central-tour.md
     - name: Neueste Updates
       items:
+        - name: 'Juni 2021: neue und aktualisierte Features'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-june-2021/'
+        - name: "Mai\_2021: neue und aktualisierte Features"
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-may-2021/'
         - name: "April\_2021: neue und aktualisierte Features"
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-april-2021/'
         - name: "März\_2021: neue und aktualisierte Features"
@@ -45,12 +49,10 @@
   items:
     - name: 1. Erstellen einer neuen Anwendung
       href: core/quick-deploy-iot-central.md
-    - name: 2. Hinzufügen eines simulierten Geräts
-      href: core/quick-create-simulated-device.md
-    - name: 3. Konfigurieren von Regeln und Aktionen
+    - name: 2. Konfigurieren von Regeln und Aktionen
       href: core/quick-configure-rules.md
-    - name: 4. Überwachen Ihrer Geräte
-      href: core/quick-monitor-devices.md
+    - name: 3. Exportieren von Daten
+      href: core/quick-export-data.md
 - name: Tutorials
   items:
     - name: Entwickeln und Verbinden von Geräten
@@ -60,7 +62,7 @@
         - name: Erstellen einer Gatewaygerätevorlage
           href: core/tutorial-define-gateway-device-type.md
         - name: Verbinden mit einem IoT Edge-Gerät
-          href: core/tutorial-add-edge-as-leaf-device.md
+          href: /learn/modules/connect-iot-edge-device-to-iot-central
     - name: Erstellen von integrierten Lösungen
       items:
         - name: Erstellen einer Gerätegruppe
@@ -197,10 +199,10 @@
       href: core/concepts-best-practices.md
 - name: Anleitungen
   items:
+    - name: Erstellen einer Anwendung
+      href: core/howto-create-iot-central-application.md
     - name: Entwickeln und Verbinden von Geräten
       items:
-        - name: Erstellen einer Anwendung
-          href: core/howto-create-iot-central-application.md
         - name: Einrichten einer Gerätevorlage
           href: core/howto-set-up-template.md
         - name: Bearbeiten einer Gerätevorlage
@@ -216,21 +218,19 @@
         - name: "Verbinden von Geräten über ein transparentes IoT\_Edge-Gateway"
           href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: Vorbereiten und Verbinden eines Azure Sphere DevKit
-          href: core/howto-connect-sphere.md
+          href: /azure-sphere/app-development/setup-iot-central
         - name: Vorbereiten und Verbinden eines RuuviTag-Geräts
           href: core/howto-connect-ruuvi.md
         - name: "Vorbereiten und Verbinden einer Rigado Cascade\_500-Einheit"
           href: core/howto-connect-rigado-cascade-500.md
     - name: Erstellen von integrierten Lösungen
       items:
-        - name: Hinzufügen von Kacheln zu Ihrem Dashboard
-          href: core/howto-add-tiles-to-your-dashboard.md
+        - name: Erstellen von Dashboards
+          href: core/howto-manage-dashboards.md
+        - name: Verwenden von Standortdaten
+          href: core/howto-use-location-data.md
         - name: Konfigurieren von Regeln
           href: core/howto-configure-rules.md
-        - name: Erstellen von Webhooks für Regeln
-          href: core/howto-create-webhooks.md
-        - name: Verbinden von Azure Monitor-Aktionsgruppen für Regeln
-          href: core/howto-use-action-groups.md
         - name: Analysieren von Gerätedaten
           href: core/howto-create-analytics.md
         - name: Exportieren von Daten in Cloudziele
@@ -249,8 +249,6 @@
           href: core/howto-connect-powerbi.md
         - name: Herstellen einer Verbindung mit anderen IoT-Clouds
           href: core/howto-build-iotc-device-bridge.md
-        - name: "Verbinden Ihrer Anwendung mit Dynamics\_365 Field Services"
-          href: government/how-to-configure-connected-field-services.md
     - name: Verwenden der REST-API
       items:
         - name: Authentifizieren und Autorisieren von REST-API-Aufrufen
@@ -259,60 +257,42 @@
           href: core/howto-manage-users-roles-with-rest-api.md
         - name: Steuern von Geräten
           href: core/howto-control-devices-with-rest-api.md
+        - name: Aufträge verwalten
+          href: core/howto-manage-jobs-with-rest-api.md
     - name: Verwalten von Geräten
       items:
-        - name: Hinzufügen und Entfernen von Geräten
-          href: core/howto-manage-devices.md
-        - name: Ausführen eines Auftrags
-          href: core/howto-run-a-job.md
-        - name: Verschieben von Geräten aus IoT Hub
-          href: core/how-to-move-device-to-iot.md
+        - name: Verwalten einzelner Geräte
+          href: core/howto-manage-devices-individually.md
+        - name: Verwalten von Geräten per Massenvorgang
+          href: core/howto-manage-devices-in-bulk.md
     - name: Verwalten Ihrer Lösung
       items:
         - name: Ändern der Anwendungseinstellungen
           href: core/howto-administer.md
         - name: Verwalten von Benutzern und Rollen
           href: core/howto-manage-users-roles.md
-        - name: Verwalten Ihrer Rechnung
-          href: core/howto-view-bill.md
         - name: Anpassen der Anwendungsbenutzeroberfläche
           href: core/howto-customize-ui.md
-        - name: Exportieren Ihrer Anwendung
-          href: core/howto-use-app-templates.md
         - name: Migrieren der V2-Anwendung zur V3-Anwendung
           href: core/howto-migrate.md
-        - name: Überwachen der Anwendungsintegrität
-          href: core/howto-monitor-application-health.md
-        - name: Über Ihre Anwendung
-          href: core/howto-get-app-info.md
         - name: Konfigurieren und Verwenden von Dateiuploads
           href: core/howto-configure-file-uploads.md
-        - name: Rollen von X.509-Zertifikaten
-          href: core/how-to-roll-x509-certificates.md
-        - name: Verwalten über das Azure-Portal
+        - name: Verwalten und Überwachen im Azure-Portal
           href: core/howto-manage-iot-central-from-portal.md
-        - name: Verwalten über die Azure-Befehlszeilenschnittstelle
+        - name: Verwalten über die Befehlszeile
           href: core/howto-manage-iot-central-from-cli.md
-        - name: Verwalten über Azure PowerShell
-          href: core/howto-manage-iot-central-from-powershell.md
-        - name: Programmgesteuertes Verwalten
-          href: core/howto-manage-iot-central-programmatically.md
         - name: Verwalten über das CSP-Portal
           href: core/howto-create-and-manage-applications-csp.md
-    - name: Personalisieren Ihrer Lösung
-      items:
-        - name: Erstellen eines persönlichen Dashboards
-          href: core/howto-create-personal-dashboards.md
-        - name: Verwalten Ihrer persönlichen Einstellungen
-          href: core/howto-manage-preferences.md
-        - name: Ein-/Ausschalten des Livechats
-          href: core/howto-show-hide-chat.md
     - name: Problembehandlung
       items:
         - name: Geräteverbindungen
           href: core/troubleshoot-connection.md
     - name: Häufig gestellte Fragen
-      href: core/howto-faq.md
+      href: core/howto-faq.yml
+    - name: Verwalten Ihrer persönlichen Einstellungen
+      href: core/howto-manage-preferences.md
+    - name: Ein-/Ausschalten des Livechats
+      href: core/howto-show-hide-chat.md
 - name: Verweis
   items:
     - name: Azure CLI
@@ -338,7 +318,7 @@
         - name: IoT Solution Accelerators
           href: ../iot-accelerators/index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

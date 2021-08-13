@@ -698,6 +698,10 @@
               href: how-to-define-unique-keys.md
             - name: Ausführen von transaktionalen Batchvorgängen
               href: transactional-batch.md
+        - name: Empfehlungen
+          items:
+            - name: .NET
+              href: best-practice-dotnet.md
         - name: Leistung
           items:
             - name: Abfrage
@@ -741,6 +745,14 @@
               href: migrate-dotnet-v3.md
             - name: Migrieren zum .NET V2 SDK
               href: migrate-dotnet-v2.md
+        - name: Connectors
+          items:
+            - name: Kafka Connect
+              href: kafka-connector.md
+            - name: 'Kafka Connect: Quelle'
+              href: kafka-connector-source.md
+            - name: 'Kafka Connect: Senke'
+              href: kafka-connector-sink.md
         - name: Problembehandlung
           items:
             - name: Häufige Fehler
@@ -769,6 +781,8 @@
                   href: troubleshoot-dot-net-sdk-request-header-too-large.md
                 - name: Problembehandlung bei einem Anforderungstimeout
                   href: troubleshoot-dot-net-sdk-request-timeout.md
+                - name: Problembehandlung bei langsamen Anforderungen
+                  href: troubleshoot-dot-net-sdk-slow-request.md
                 - name: Problembehandlung bei einem Fehler vom Typ „Nicht verfügbar“
                   href: troubleshoot-service-unavailable.md
             - name: .Java
@@ -861,6 +875,10 @@
               href: certificate-based-authentication.md
             - name: Verwenden von Always Encrypted
               href: how-to-always-encrypted.md
+        - name: Clientseitige Entwicklung
+          items:
+            - name: Sitzungszustand und Cacheanbieter
+              href: session-state-and-caching-provider.md
         - name: Integrieren in andere Azure-Dienste
           items:
             - name: 'Änderungsfeed: E-Commerce-Lösung'
@@ -915,7 +933,7 @@
               href: sql-api-sdk-java-spring-v2.md
             - name: Spring Data-Connector v3
               href: sql-api-sdk-java-spring-v3.md
-            - name: "Spark\_3-OLTP-Connector (Vorschau)"
+            - name: "Spark\_3-OLTP-Connector"
               href: sql-api-sdk-java-spark-v3.md
             - name: "Spark\_2-OLTP-Connector"
               href: sql-api-sdk-java-spark.md
@@ -930,7 +948,7 @@
         - name: REST (Datenebene)
           href: /rest/api/cosmos-db/
         - name: REST (Verwaltungsebene)
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/sql-resources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager-Vorlage
@@ -1011,9 +1029,11 @@
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-cassandra.md
         - name: Speichern und Verwalten von Spring-Daten
-          href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: configure-spring-data-apache-cassandra-with-cosmos-db.md
         - name: Häufig auftretende Probleme und Problembehandlung
           href: cassandra-troubleshoot.md
+        - name: Überwachen mit Diagnoseprotokollen
+          href: queries-cassandra.md
         - name: Cassandra und Spark
           items:
             - name: Einführung
@@ -1048,7 +1068,7 @@
     - name: Verweis
       items:
         - name: REST-Ressourcenanbieter
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/cassandraresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/cassandra-resources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager-Vorlage
@@ -1125,6 +1145,8 @@
               href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Database Migration Service (offline)
               href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: Azure Databricks und Spark (offline)
+              href: mongodb-migrate-databricks.md
             - name: Leitfaden zur Migrationsnachbereitung
               href: mongodb-post-migration.md
         - name: "Upgrade auf API-Version\_4.0 oder 3.6"
@@ -1153,6 +1175,8 @@
         - name: Schätzen von RU/s mit dem Kapazitätsplaner
           displayName: 'request units, RUs, RU, capacity'
           href: mongodb/estimate-ru-capacity-planner.md
+        - name: Optimieren der Schreibleistung
+          href: mongodb/optimize-write-performance.md
         - name: 'Erstellen eines Containers: MongoDB-API'
           href: how-to-create-container-mongodb.md
         - name: 'Bereitstellen von Durchsatz: MongoDB-API'
@@ -1161,6 +1185,8 @@
         - name: Ermitteln der Gebühr für Anforderungseinheiten
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-mongodb.md
+        - name: Überwachen mit Diagnoseprotokollen
+          href: queries-mongo.md
         - name: Problembehandlung der Abfrageleistung
           href: mongodb-troubleshoot-query.md
         - name: Häufig auftretende Probleme und Problembehandlung
@@ -1182,7 +1208,7 @@
     - name: Verweis
       items:
         - name: REST-Ressourcenanbieter
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/mongodbresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/mongo-db-resources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager-Vorlage
@@ -1250,6 +1276,8 @@
           href: how-to-access-system-properties-gremlin.md
         - name: Visualisieren von Diagrammdaten
           href: graph-visualization.md
+        - name: Überwachen mit Diagnoseprotokollen
+          href: queries-gremlin.md
         - name: Speichern und Verwalten von Spring-Daten
           href: /azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Verwalten mithilfe von Resource Manager-Vorlagen
@@ -1266,7 +1294,7 @@
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: REST-Ressourcenanbieter
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/gremlinresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/gremlin-resources
         - name: Resource Manager-Vorlage
           href: /azure/templates/microsoft.documentdb/allversions
         - name: Azure CLI
@@ -1330,8 +1358,6 @@
         - name: Ermitteln der Gebühr für Anforderungseinheiten
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-table.md
-        - name: Handbuch für den Tabellenspeicherentwurf
-          href: table-storage-design-guide.md
         - name: Verwalten mithilfe von Resource Manager-Vorlagen
           href: templates-samples-table.md
           displayName: ARM
@@ -1357,6 +1383,10 @@
           href: /rest/api/storageservices/table-service-rest-api
         - name: Azure CLI
           href: /cli/azure/azure-cli-reference-for-cosmos-db
+- name: Beispiele
+  items:
+    - name: Azure Resource Graph-Abfragen
+      href: ./resource-graph-samples.md
 - name: Anleitungen
   items:
     - name: Free-Tarif
@@ -1480,6 +1510,8 @@
               href: cosmosdb-monitor-resource-logs.md
             - name: Behandeln von Problemen mithilfe einfacher Abfragen
               href: cosmosdb-monitor-logs-basic-queries.md
+            - name: Behandeln von Problemen mithilfe erweiterter Abfragen
+              href: cosmos-db-advanced-queries.md
             - name: Überprüfung von Protokollen der Steuerungsebene
               href: audit-control-plane-logs.md
         - name: Konfigurieren von Warnungen

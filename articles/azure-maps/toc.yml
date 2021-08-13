@@ -102,7 +102,7 @@
     - name: Konzepte von Wetterdiensten
       href: weather-services-concepts.md
     - name: Häufig gestellte Fragen zu Wetterdiensten
-      href: weather-services-faq.md
+      href: weather-services-faq.yml
 - name: Anleitungen
   items:
     - name: Verwalten von Azure Maps-Konten
@@ -202,6 +202,8 @@
               href: map-add-drawing-toolbar.md
             - name: Abrufen von Formdaten
               href: map-get-shape-data.md
+            - name: Hinzufügen eines Rasters zum Andocken
+              href: map-add-snap-grid.md
             - name: Reagieren auf Zeichnungsereignisse
               href: drawing-tools-events.md
             - name: Interaktionstypen und Tastenkombinationen
@@ -274,6 +276,8 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Anzeigen von Datenverkehrsdaten
           href: how-to-show-traffic-android.md
+        - name: Clusterpunktdaten
+          href: clustering-point-data-android-sdk.md
         - name: Verwenden von datengesteuerten Ausdrücken
           href: data-driven-style-expressions-android-sdk.md
         - name: Reagieren auf Ereignisse
@@ -296,6 +300,8 @@
           href: power-bi-visual-show-real-time-traffic.md
         - name: Verwalten des Zugriffs
           href: power-bi-visual-manage-access.md
+        - name: Verwenden von Azure Maps in Power Apps
+          href: /powerapps/maker/canvas-apps/geospatial-component-map
     - name: Bereitstellen von Datenfeedback
       href: how-to-use-feedback-tool.md
 - name: Verweis
@@ -393,7 +399,7 @@
         - name: IoT Solution Accelerators
           href: ../iot-accelerators/index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ./index.yml
         - name: Time Series Insights

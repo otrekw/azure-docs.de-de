@@ -190,7 +190,7 @@
           items:
             - name: Vom Kunden verwaltete Schlüssel
               href: search-security-manage-encryption-keys.md
-            - name: Verschlüsselungsinformationen
+            - name: Ermitteln verschlüsselter Objekte
               href: search-security-get-encryption-keys.md
         - name: Sicherheit bei eingehendem Datenverkehr
           items:

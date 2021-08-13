@@ -313,7 +313,7 @@
           href: template-expressions.md
         - name: Parameter
           href: parameters.md
-        - name: Variables
+        - name: Variablen
           href: variables.md
         - name: Benutzerdefinierte Funktionen
           href: user-defined-functions.md
@@ -411,10 +411,14 @@
       items:
         - name: Testtoolkit
           href: test-toolkit.md
-        - name: Testfälle
-          href: test-cases.md
+        - name: Testfälle für Vorlagen
+          href: template-test-cases.md
+        - name: Testfälle für Parameterdateien
+          href: parameter-file-test-cases.md
         - name: CreateUiDefinition-Testfälle
           href: createuidefinition-test-cases.md
+        - name: Testfälle für alle Dateien
+          href: all-files-test-cases.md
     - name: Vorlagenspezifikationen
       items:
         - name: Erstellen und Bereitstellen von Vorlagenspezifikationen

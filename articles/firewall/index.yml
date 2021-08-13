@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Firewall
-summary: Erfahren Sie, wie Sie Azure Firewall bereitstellen, einen cloudbasierten Netzwerksicherheitsdienst.
+summary: 'Erfahren Sie, wie Sie Azure Firewall bereitstellen, einen cloudbasierten Netzwerksicherheitsdienst.'
 metadata:
   title: Dokumentation zu Azure Firewall
-  description: Erfahren Sie, wie Sie Azure Firewall bereitstellen, einen cloudbasierten Netzwerksicherheitsdienst.
+  description: 'Erfahren Sie, wie Sie Azure Firewall bereitstellen, einen cloudbasierten Netzwerksicherheitsdienst.'
   services: firewall
   ms.service: firewall
   ms.topic: landing-page
@@ -11,70 +11,64 @@ metadata:
   ms.author: victorh
   ms.date: 05/03/2021
   ms.custom: e2e-hybrid
-  ms.openlocfilehash: cec6930c8ef68717cfa0685a0b3b4bb585229864
-  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 07/07/2021
-  ms.locfileid: "113438600"
 landingContent:
-- title: Informationen zu Azure Firewall
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Was ist Azure Firewall?
-      url: overview.md
-  - linkListType: concept
-    links:
-    - text: Logik für die Azure Firewall-Regelverarbeitung
-      url: rule-processing.md
-    - text: Häufig gestellte Fragen
-      url: firewall-faq.yml
-  - linkListType: learn
-    links:
-    - text: Einführung in Azure Firewall
-      url: /learn/modules/introduction-azure-firewall/
-  - linkListType: whats-new
-    links:
-    - text: Neues
-      url: https://azure.microsoft.com/updates/?category=networking&query=Firewall
-- title: Informationen zur Azure Firewall Premium-Vorschau
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Features der Azure Firewall Premium-Vorschau
-      url: premium-features.md
-  - linkListType: concept
-    links:
-    - text: Zertifikate der Vorschauversion von Azure Firewall Premium
-      url: premium-certificates.md
-  - linkListType: how-to-guide
-    links:
-    - text: Bereitstellen und Konfigurieren der Vorschauversion von Azure Firewall Premium
-      url: premium-deploy.md
-- title: Bereitstellen einer Azure Firewall-Instanz
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Bereitstellen über das Azure-Portal
-      url: tutorial-firewall-deploy-portal-policy.md
-    - text: Bereitstellen in einem Hybridnetzwerk
-      url: tutorial-hybrid-portal-policy.md
-    - text: Filtern von eingehendem Datenverkehr
-      url: tutorial-firewall-dnat-policy.md
-- title: Integrieren mit Load Balancer
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Integrieren von Azure Firewall mit Azure Load Balancer Standard
-      url: integrate-lb.md
-- title: Überwachen von Azure Firewall
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Azure Firewall-Protokolle und -Metriken
-      url: logs-and-metrics.md
-  - linkListType: tutorial
-    links:
-    - text: Überwachen von Azure Firewall-Protokollen und -Metriken
-      url: tutorial-diagnostics.md
+  - title: Informationen zu Azure Firewall
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Was ist Azure Firewall?
+            url: overview.md
+      - linkListType: concept
+        links:
+          - text: Logik für die Azure Firewall-Regelverarbeitung
+            url: rule-processing.md
+          - text: Häufig gestellte Fragen
+            url: firewall-faq.yml
+      - linkListType: learn
+        links:
+          - text: Einführung in Azure Firewall
+            url: /learn/modules/introduction-azure-firewall/
+      - linkListType: whats-new
+        links:
+          - text: Neuigkeiten
+            url: 'https://azure.microsoft.com/updates/?category=networking&query=Firewall'
+  - title: Informationen zu Azure Firewall Premium
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Azure Firewall Premium-Features
+            url: premium-features.md
+      - linkListType: concept
+        links:
+          - text: Azure Firewall Premium-Zertifikate
+            url: premium-certificates.md
+      - linkListType: how-to-guide
+        links:
+          - text: Bereitstellen und Konfigurieren von Azure Firewall Premium
+            url: premium-deploy.md
+  - title: "Bereitstellen einer Azure\_Firewall-Instanz"
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: Bereitstellen über das Azure-Portal
+            url: tutorial-firewall-deploy-portal-policy.md
+          - text: Bereitstellen in einem Hybridnetzwerk
+            url: tutorial-hybrid-portal-policy.md
+          - text: Filtern von eingehendem Datenverkehr
+            url: tutorial-firewall-dnat-policy.md
+  - title: Integrieren mit Load Balancer
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Integrieren von Azure Firewall mit Azure Load Balancer Standard
+            url: integrate-lb.md
+  - title: "Überwachen von Azure\_Firewall"
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: "Azure\_Firewall-Protokolle und -Metriken"
+            url: logs-and-metrics.md
+      - linkListType: tutorial
+        links:
+          - text: "Überwachen von Azure\_Firewall-Protokollen und -Metriken"
+            url: tutorial-diagnostics.md

@@ -59,7 +59,9 @@
           href: /security/benchmark/azure/baselines/private-link-security-baseline?toc=/azure/private-link/toc.json
 - name: Vorgehensweise
   items:
-    - name: Deaktivieren von Netzwerkrichtlinien für einen privaten Endpunkt
+    - name: Exportieren von DNS-Einträgen für private Endpunkte
+      href: private-endpoint-export-dns.md
+    - name: Deaktivieren von Netzwerkrichtlinien für private Endpunkte
       href: disable-private-endpoint-network-policy.md
     - name: Deaktivieren von Netzwerkrichtlinien für einen Private Link-Dienst
       href: disable-private-link-service-network-policy.md

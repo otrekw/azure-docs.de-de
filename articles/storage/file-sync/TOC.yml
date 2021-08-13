@@ -25,7 +25,7 @@
           href: file-sync-choose-cloud-tiering-policies.md
         - name: Überwachen von Cloudtiering
           href: file-sync-monitor-cloud-tiering.md
-    - name: Skalierbarkeits- und Leistungsziele
+    - name: Skalierungs- und Leistungsziele
       href: ../files/storage-files-scale-targets.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
     - name: Verhindern einer versehentlichen Datenlöschung
       href: ../files/storage-files-prevent-file-share-deletion.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
@@ -70,17 +70,17 @@
         - name: Registrieren eines Servers bei der Azure-Dateisynchronisierung
           href: file-sync-server-registration.md
         - name: Hinzufügen eines Azure-Dateisynchronisierungsserver-Endpunkts
-          href: file-sync-server-endpoint.md
+          href: file-sync-server-endpoint-create.md
         - name: Verwalten des Speichers in unabhängigen Azure-Clouds
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
-        - name: Initiieren eines Kontofailovers
-          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
         - name: Verwalten mehrstufiger Dateien
           href: file-sync-how-to-manage-tiered-files.md
         - name: 'Verschieben von Ressourcen in andere Ressourcengruppen, Abonnements und AAD-Mandanten'
           href: file-sync-resource-move.md
-        - name: Aufheben der Bereitstellung des Serverendpunkts für die Azure-Dateisynchronisierung
-          href: file-sync-deprovision-server-endpoint.md
+        - name: Löschen eines Azure-Dateisynchronisierungsserver-Endpunkts
+          href: file-sync-server-endpoint-delete.md
+        - name: Initiieren eines Kontofailovers
+          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
         - name: Ändern der Topologie der Azure-Dateisynchronisierung
           href: file-sync-modify-sync-topology.md
     - name: Schutz von Daten
@@ -140,11 +140,11 @@
     - name: Migrieren
       items:
         - name: Migrieren zu Azure-Dateifreigaben
-          href: ../files/storage-files-migration-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+          href: ../files/storage-files-migration-overview.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
         - name: Verwenden einer Hybridbereitstellung als Ziel
           items:
             - name: Migrieren von Massendaten zur Azure-Dateisynchronisierung mit Azure Data Box
-              href: file-sync-offline-data-transfer.md
+              href: ../files/storage-files-migration-server-hybrid-databox.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
             - name: Migrieren von Linux zu einem Hybriddateiserver mit der Azure-Dateisynchronisierung
               href: ../files/storage-files-migration-linux-hybrid.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
             - name: Migrieren von einem lokalen NAS zu einem Hybriddateiserver mit der Azure-Dateisynchronisierung
@@ -158,7 +158,7 @@
             - name: Migrationshandbuch zu StorSimple 1200
               href: ../files/storage-files-migration-storsimple-1200.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
     - name: Aktivieren großer Dateifreigaben
-      href: ../files/storage-files-how-to-create-large-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+      href: ../files/storage-how-to-create-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
     - name: Sicher
       items:
         - name: Verwalten von Verschlüsselungsschlüsseln für das Speicherkonto
@@ -194,7 +194,7 @@
         - name: Problembehandlung für Azure-Dateisynchronisierung
           href: file-sync-troubleshoot.md
         - name: Problembehandlung beim Löschen von Azure-Dateifreigaben
-          href: ../files/storage-troubleshoot-cannot-delete-files-azure-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+          href: ../files/storage-troubleshoot-windows-file-connection-problems.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json#unable-to-modify-moverename-or-delete-a-file-or-directory
         - name: Problembehandlung beim Sichern von Dateifreigaben
           href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
 - name: Verweis

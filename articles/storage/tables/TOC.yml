@@ -41,10 +41,28 @@
     - name: PowerShell
       href: ./table-storage-how-to-use-powershell.md
       maintainContext: true
+    - name: Azure Resource Graph-Abfragen
+      href: ../common/resource-graph-samples.md
+      maintainContext: true
 - name: Konzepte
   items:
     - name: Speicherkonten
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Authorization
+      href: ../common/authorize-data-access.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+      items:
+        - name: Authentifizieren und Autorisieren mit Azure AD
+          href: authorize-access-azure-active-directory.md
+        - name: Autorisieren mit einem gemeinsam verwendeten Schlüssel
+          items:
+            - name: Verwalten und Anzeigen von Kontoschlüsseln
+              href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Konfigurieren von Verbindungszeichenfolgen
+              href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Verwenden der Azure Storage-REST-API
+              href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Autorisieren mit SAS
+          href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Sicherheit
       items:
         - name: "Azure\_Storage-Verschlüsselung ruhender Daten"
@@ -93,19 +111,21 @@
       href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Abrufen von Kontokonfigurationseigenschaften
       href: ../common/storage-account-get-info.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Verwenden des Speicheremulators
+    - name: Verwenden des Speicheremulators (veraltet)
       href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
+    - name: Autorisieren des Zugriffs auf Tabellendaten
+      items:
+        - name: Verwalten von Zugriffsrechten mit Azure RBAC
+          href: assign-azure-role-data-access.md
+        - name: Verwalten und Anzeigen von Kontoschlüsseln
+          href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Konfigurieren von Verbindungszeichenfolgen
+          href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Verwenden der Azure Storage-REST-API
+          href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Schützen von Tabellendaten
       items:
-        - name: Autorisieren des Zugriffs auf Tabellendaten
-          items:
-            - name: Verwalten und Anzeigen von Kontoschlüsseln
-              href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-            - name: Konfigurieren von Verbindungszeichenfolgen
-              href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-            - name: Verwenden der Azure Storage-REST-API
-              href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: Verwalten der Azure Storage-Verschlüsselung
           items:
             - name: 'Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel unterstützt'

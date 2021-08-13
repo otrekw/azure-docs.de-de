@@ -63,7 +63,7 @@
                   href: ../../api-management/api-management-howto-migrate.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure App Service
                   href: ../../app-service/manage-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-                - name: Azure-Automatisierung
+                - name: Azure Automation
                   href: ../../automation/automation-managing-data.md?toc=/azure/azure-resource-manager/management/toc.json#geo-replication-in-azure-automation
                 - name: Azure Batch
                   href: ../../batch/account-move.md?toc=/azure/azure-resource-manager/management/toc.json
@@ -111,10 +111,12 @@
           href: /azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json
         - name: Verwenden von Tags
           href: tag-resources.md
-        - name: 'Richtlinien: Compliance'
+        - name: 'Azure Policy-Definitionen: Compliance'
           href: tag-policies.md
         - name: Unterstützte Ressourcentypen
           href: tag-support.md
+        - name: Azure Resource Graph-Abfragen
+          href: ./resource-graph-samples.md
     - name: Verwalten von Ressourcengruppen
       items:
         - name: Azure-Portal

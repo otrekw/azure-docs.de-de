@@ -101,6 +101,9 @@ conceptualContent:
         - itemType: how-to-guide
           text: Erkennen von Sprachabsichten mit LUIS und C#
           url: how-to-recognize-intents-from-speech-csharp.md
+        - itemType: how-to-guide
+          text: 'Erkennen von Sprachabsichten mit einfachem Musterabgleich, C++'
+          url: how-to-use-simple-language-pattern-matching.md
         - itemType: reference
           text: LUIS-Portal (Language Understanding)
           url: 'https://www.luis.ai'

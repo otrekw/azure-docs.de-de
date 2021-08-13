@@ -6,7 +6,7 @@ items:
     items:
       - name: Was ist Azure Communication Services?
         href: overview.md
-      - name: Support- und Hilfeoptionen
+      - name: Hilfe und Supportoptionen
         href: support.md
   - name: Schnellstarts
     expanded: true
@@ -17,10 +17,12 @@ items:
         items:
           - name: Erstellen und Verwalten von Zugriffstoken
             href: quickstarts/access-tokens.md
-          - name: Verwenden verwalteter Identitäten
-            href: quickstarts/managed-identity.md
-          - name: Einrichten von verwalteten Identitäten über die CLI
-        href: quickstarts/managed-identity-from-cli.md
+          - name: Authentifizierung über Azure AD
+            href: quickstarts/identity/service-principal.md
+          - name: Authentifizieren mit Azure AD (Azure CLI)
+            href: quickstarts/identity/service-principal-from-cli.md
+          - name: Schnellerstellung von Identitäten für Tests
+            href: quickstarts/identity/quick-create-identity.md
       - name: Chat
         items:
           - name: Hinzufügen von Chatfunktionen zu Ihrer App
@@ -29,7 +31,7 @@ items:
             href: quickstarts/chat/meeting-interop.md
       - name: Telefonie und SMS
         items:
-          - name: Erhalten einer Telefonnummer
+          - name: Abrufen und Verwalten von Telefonnummern
             href: quickstarts/telephony-sms/get-phone-number.md
           - name: Portieren einer Telefonnummer in Azure
             href: quickstarts/telephony-sms/port-phone-number.md
@@ -51,7 +53,7 @@ items:
             href: quickstarts/voice-video-calling/calling-client-samples.md
           - name: Teilnehmen an einer Teams-Besprechung über Ihre Telefonieclient-App
             href: quickstarts/voice-video-calling/get-started-teams-interop.md
-          - name: Verknüpfen eines Diensts mit einem Anruf
+          - name: Verwenden der APIs für die Anrufautomatisierung
             href: quickstarts/voice-video-calling/call-automation-api-sample.md
           - name: Aufzeichnen von Anrufen
             href: quickstarts/voice-video-calling/call-recording-sample.md
@@ -76,7 +78,7 @@ items:
         href: tutorials/building-app-start.md
       - name: Signieren einer HTTP-Anforderung mit einer HMAC-Signatur mithilfe von C#
         href: tutorials/hmac-header-tutorial.md
-      - name: Signieren und Senden von Anforderungen an die SMS-API von ACS mit Postman
+      - name: Signieren und Senden von Anforderungen an die SMS-API mit Postman
         href: tutorials/postman-tutorial.md
   - name: Konzepte
     expanded: false
@@ -160,7 +162,7 @@ items:
         href: concepts/troubleshooting-info.md
   - name: Proben
     items:
-      - name: Überblick
+      - name: Übersicht
         href: samples/overview.md
       - name: Hero-Beispiel für Gruppenanrufe
         href: samples/calling-hero-sample.md

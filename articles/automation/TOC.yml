@@ -68,10 +68,14 @@
           href: quickstart-create-automation-account-template.md
         - name: Verwaltete Identität
           items:
-            - name: Aktivieren einer verwalteten Identität
+            - name: Verwenden einer systemseitig zugewiesenen verwalteten Identität
               href: enable-managed-identity-for-automation.md
-            - name: Deaktivieren von verwalteten Identitäten
+            - name: Verwenden einer benutzerseitig zugewiesenen verwalteten Identität
+              href: add-user-assigned-identity.md
+            - name: Deaktivieren einer systemseitig zugewiesenen verwalteten Identität
               href: disable-managed-identity-for-automation.md
+            - name: Entfernen einer benutzerseitig zugewiesenen verwalteten Identität
+              href: remove-user-assigned-identity.md
             - name: Behandeln von Problemen mit verwalteten Identitäten
               href: troubleshoot/managed-identity.md
         - name: Ausführendes Konto

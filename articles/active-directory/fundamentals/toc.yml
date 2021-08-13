@@ -27,6 +27,22 @@
       items:
         - name: Sicherheitsbaseline
           href: /security/benchmark/azure/baselines/aad-security-baseline?toc=/azure/active-directory/fundamentals/toc.json
+        - name: Leitfaden zu Sicherheitsvorgängen
+          items:
+            - name: Übersicht über Sicherheitsvorgänge
+              href: security-operations-introduction.md
+            - name: Sicherheitsvorgänge für Benutzerkonten
+              href: security-operations-user-accounts.md
+            - name: Sicherheitsvorgänge für privilegierte Konten
+              href: security-operations-privileged-accounts.md
+            - name: Sicherheitsvorgänge für PIM
+              href: security-operations-privileged-identity-management.md
+            - name: Sicherheitsvorgänge für Anwendungen
+              href: security-operations-applications.md
+            - name: Sicherheitsvorgänge für Geräte
+              href: security-operations-devices.md
+            - name: Sicherheitsvorgänge für die Infrastruktur
+              href: security-operations-infrastructure.md
         - name: "Schützen von Microsoft\_365 vor lokalen Angriffen"
           href: protect-m365-from-on-premises-attacks.md
         - name: Sichere externe Zusammenarbeit
@@ -179,6 +195,8 @@
           href: active-directory-deployment-checklist-p2.md
         - name: Azure Active Directory-Bereitstellungspläne
           href: active-directory-deployment-plans.md
+        - name: Azure Active Directory B2C-Bereitstellungspläne
+          href: azure-active-directory-b2c-deployment-plans.md
     - name: Datenspeicher
       items:
         - name: Identitätsdatenspeicher für Europa
@@ -255,5 +273,3 @@
   items:
     - name: Erhalten von Support für Azure Active Directory
       href: active-directory-troubleshooting-support-howto.md
-    - name: Häufig gestellte Fragen zu Azure Active Directory
-      href: active-directory-faq.yml

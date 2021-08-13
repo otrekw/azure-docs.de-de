@@ -57,6 +57,8 @@
       href: point-to-site-about.md
     - name: Informationen zu Point-to-Site-VPN-Routing
       href: vpn-gateway-about-point-to-site-routing.md
+    - name: "Informationen zu NAT und VPN\_Gateway"
+      href: nat-overview.md
     - name: Informationen zu zonenredundanten Gateways für Verfügbarkeitszonen
       href: about-zone-redundant-vnet-gateways.md
     - name: Sicherheit
@@ -225,6 +227,8 @@
               href: vpn-gateway-about-forced-tunneling.md
         - name: Konfigurieren des Gatewaytransits für VNet-Peering
           href: vpn-gateway-peering-gateway-transit.md
+    - name: "Konfigurieren der NAT für VPN\_Gateway"
+      href: nat-howto.md
     - name: Ändern des Gateways für ein lokales Netzwerk
       items:
         - name: Azure-Portal
@@ -241,30 +245,30 @@
           href: vpn-gateway-download-vpndevicescript.md
         - name: 'Beispiel: Cisco ASA-Gerät (IKEv2/kein BGP)'
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
-    - name: Überwachung und Warnungen
-      items:
-        - name: Anzeigen von VPN Gateway-Metriken
-          href: vpn-gateway-howto-view-virtual-network-gateway-metrics.md
-        - name: Einrichten von Warnungen auf der Grundlage von Metriken
-          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
-        - name: Einrichten von Warnungen auf der Grundlage von Ressourcenprotokollen
-          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
-    - name: Konfigurieren von Paketerfassungen
-      href: packet-capture.md
-    - name: Zonenredundante Gateways
-      items:
-        - name: Erstellen eines zonenredundanten Gateways
-          href: create-zone-redundant-vnet-gateway.md
     - name: Konfigurieren von IPsec-/IKE-Richtlinien für Verbindungen
       items:
         - name: Azure-Portal
           href: ipsec-ike-policy-howto.md
         - name: PowerShell
           href: vpn-gateway-ipsecikepolicy-rm-powershell.md
-    - name: Konfigurieren von Aktiv/Aktiv-Verbindungen
+    - name: Konfigurieren von Aktiv/Aktiv-Gateways
       items:
+        - name: Azure-Portal
+          href: active-active-portal.md
         - name: PowerShell
           href: vpn-gateway-activeactive-rm-powershell.md
+    - name: Konfigurieren von zonenredundanten Gateways
+      href: create-zone-redundant-vnet-gateway.md
+    - name: Konfigurieren von Paketerfassungen
+      href: packet-capture.md
+    - name: Systemüberwachung
+      items:
+        - name: "Überwachen von VPN\_Gateway"
+          href: monitor-vpn-gateway.md
+        - name: Einrichten von Warnungen auf der Grundlage von Metriken
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
+        - name: Einrichten von Warnungen auf der Grundlage von Ressourcenprotokollen
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Problembehandlung
       href: vpn-gateway-troubleshoot.md
       items:

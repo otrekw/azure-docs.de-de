@@ -6,6 +6,8 @@
   items:
     - name: Einführung in Data Factory
       href: introduction.md
+    - name: Neues in Azure Data Factory
+      href: whats-new.md
     - name: Vergleichen der aktuellen Version mit Version 1
       href: compare-versions.md
       displayName: timeout
@@ -113,6 +115,8 @@
           items:
             - name: "Bewährte Methoden für das Platzieren von Daten im Lake mit ADLS\_Gen2"
               href: tutorial-data-flow-write-to-lake.md
+            - name: Dynamisches Festlegen von Spaltennamen
+              href: tutorial-data-flow-dynamic-columns.md
             - name: Transformieren von Daten im Lake mit Delta Lake
               href: tutorial-data-flow-delta-lake.md
             - name: Transformieren von Daten mit Zuordnungsdatenflüssen
@@ -476,6 +480,8 @@
           href: delete-activity.md
         - name: Tool zum Kopieren von Daten
           href: copy-data-tool.md
+        - name: Metadatengesteuertes Kopieren von Daten
+          href: copy-data-tool-metadata-driven.md
         - name: Unterstützung für Format und Komprimierung
           href: supported-file-formats-and-compression-codecs.md
           displayName: zip
@@ -755,7 +761,7 @@
           href: configure-azure-ssis-integration-runtime-performance.md
         - name: Konfigurieren der Notfallwiederherstellung für die Azure-SSIS-IR
           href: configure-bcdr-azure-ssis-integration-runtime.md
-        - name: Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Datenbank
+        - name: Automatisches Bereinigen der SSISDB-Protokolle
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
         - name: "Verwenden einer verwalteten Azure\_SQL-Instanz mit Azure-SSIS\_IR"
           href: how-to-use-sql-managed-instance-with-ir.md
@@ -881,7 +887,7 @@
           href: ssis-integration-runtime-management-troubleshoot.md
           displayName: timeout
         - name: Paketausführung in Azure-SSIS IR
-          href: ssis-integration-runtime-ssis-activity-faq.md
+          href: ssis-integration-runtime-ssis-activity-faq.yml
           displayName: 'retry, timeout'
         - name: Diagnose der Konnektivität in Azure-SSIS IR
           href: ssis-integration-runtime-diagnose-connectivity-faq.md
@@ -927,3 +933,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Supportoptionen
       href: 'https://azure.microsoft.com/support/options/'
+    - name: Grenzwerte
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits

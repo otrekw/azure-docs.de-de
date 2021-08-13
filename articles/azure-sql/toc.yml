@@ -744,6 +744,8 @@
           href: database/arm-templates-content-guide.md?tabs=single-database
         - name: Codebeispiele
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
+        - name: Azure Resource Graph-Abfragen
+          href: database/resource-graph-samples.md
 - name: SQL Managed Instance (SQL MI)
   items:
     - name: Dokumentation
@@ -1067,8 +1069,8 @@
               href: managed-instance/management-endpoint-verify-built-in-firewall.md
         - name: Migrieren
           items:
-            - name: Migrieren zu SQL Managed Instance
-              href: managed-instance/migrate-to-instance-from-sql-server.md
+            - name: Leitfaden zum Migrieren von SQL Server zu Azure SQL Managed Instance
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: Migrieren einer Datenbank mithilfe des Protokollwiedergabediensts
               href: managed-instance/log-replay-service-migrate.md
             - name: Migrieren eines TDE-Zertifikats
@@ -1185,12 +1187,12 @@
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Migrieren von Speicher zu Azure
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: Installieren der Erweiterung für den SQL-IaaS-Agent
+                - name: Erweiterung für den SQL-IaaS-Agent
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
                     - name: Automatische Registrierung
                       href: virtual-machines/windows/sql-agent-extension-automatic-registration-all-vms.md
-                    - name: Einzelne VM
+                    - name: Registrieren eines einzelnen virtuellen Computers
                       href: virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md
                     - name: Durchführen der Massenregistrierung für mehrere VMs
                       href: virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md

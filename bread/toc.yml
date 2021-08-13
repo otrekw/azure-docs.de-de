@@ -140,10 +140,10 @@
       tocHref: /azure/azure-arc/
       topicHref: /azure/azure-arc/
       items:
-        - name: Kubernetes mit Arc-Aktivierung
+        - name: Kubernetes mit Arc-Unterstützung
           tocHref: /azure/azure-arc/kubernetes/
           topicHref: /azure/azure-arc/kubernetes/
-        - name: Server mit Arc-Aktivierung
+        - name: Server mit Arc-Unterstützung
           tocHref: /azure/azure-arc/servers/
           topicHref: /azure/azure-arc/servers/
     - name: Automation
@@ -193,9 +193,6 @@
     - name: Azure Remote Rendering
       tocHref: /azure/remote-rendering/
       topicHref: /azure/remote-rendering/
-    - name: Verständnis von Azure-Objekten
-      tocHref: /azure/object-understanding/
-      topicHref: /azure/object-understanding/
     - name: Containerregistrierung
       tocHref: /azure/container-registry/
       topicHref: /azure/container-registry/
@@ -240,6 +237,9 @@
         - name: Azure Percept
           tocHref: /azure/azure-percept/
           topicHref: /azure/azure-percept/
+        - name: Geräteentwicklung
+          tocHref: /azure/iot-develop/
+          topicHref: /azure/iot-develop/
         - name: "Device Update für IoT\_Hub"
           tocHref: /azure/iot-hub-device-update/
           topicHref: /azure/iot-hub-device-update/
@@ -252,9 +252,6 @@
         - name: IoT Edge
           tocHref: /azure/iot-edge/
           topicHref: /azure/iot-edge/
-        - name: "IoT\_Plug\_&\_Play"
-          tocHref: /azure/iot-pnp/
-          topicHref: /azure/iot-pnp/
         - name: Azure Digital Twins
           tocHref: /azure/digital-twins/
           topicHref: /azure/digital-twins/

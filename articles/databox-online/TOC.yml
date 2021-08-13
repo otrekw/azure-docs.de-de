@@ -218,6 +218,8 @@
                   href: azure-stack-edge-gpu-deploy-arc-data-controller.md
         - name: Konfigurieren von Azure Resource Manager (Vorschau)
           items:
+            - name: "Was ist die lokale Azure\_Resource\_Manager-Instanz?"
+              href: azure-stack-edge-gpu-local-resource-manager-overview.md
             - name: Herstellen einer Verbindung über Azure PowerShell
               href: azure-stack-edge-gpu-connect-resource-manager.md
             - name: Festlegen des Azure Resource Manager-Kennworts
@@ -280,20 +282,30 @@
                   items:
                     - name: Verbinden mit der VM-Konsole
                       href: azure-stack-edge-gpu-connect-virtual-machine-console.md
+                    - name: Sammeln von VM-Gastprotokollen
+                      href: azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md
                     - name: VM-Imageupload
                       href: azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md
                     - name: VM-Bereitstellung
                       href: azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md
                     - name: Probleme mit einer GPU-Erweiterung
                       href: azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md
-        - name: Verwalten von Zertifikaten
+        - name: Informationen zu Zertifikaten
           items:
-            - name: Anforderungen
+            - name: Was sind Zertifikate?
+              href: azure-stack-edge-gpu-certificates-overview.md
+            - name: Anzeigen der Anforderungen
               href: azure-stack-edge-gpu-certificate-requirements.md
-            - name: Bring Your Own
+            - name: Erstellen von Zertifikaten
+              items:
+                - name: Über Azure PowerShell
+                  href: azure-stack-edge-gpu-create-certificates-powershell.md
+                - name: Über das Azure Stack Readiness Checker-Tool
+                  href: azure-stack-edge-gpu-create-certificates-tool.md
+            - name: Vorbereiten des Hochladens von Zertifikaten auf ein Gerät
+              href: azure-stack-edge-gpu-prepare-certificates-device-upload.md
+            - name: 'Hochladen, Importieren, Anzeigen des Ablaufs'
               href: azure-stack-edge-gpu-manage-certificates.md
-            - name: Erstellen über das Azure Stack Readiness Checker-Tool
-              href: azure-stack-edge-gpu-create-certificates-tool.md
             - name: Beheben von Zertifikatfehlern
               href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: Verwalten von Edgecomputing
@@ -360,7 +372,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Freigegebene Versionshinweise
       items:
-        - name: '2105: Aktuell'
+        - name: '2106: Aktuell'
+          href: azure-stack-edge-gpu-2106-release-notes.md
+        - name: 2105
           href: azure-stack-edge-gpu-2105-release-notes.md
         - name: 2103
           href: azure-stack-edge-gpu-2103-release-notes.md

@@ -4,39 +4,17 @@
   items:
     - name: Was ist Azure IoT Hub?
       href: about-iot-hub.md
+    - name: IoT-Konzepte
+      href: iot-concepts.md
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Senden von Telemetriedaten
-      items:
-        - name: Erste Schritte
-          href: quickstart-send-telemetry-cli.md
-        - name: C
-          href: quickstart-send-telemetry-c.md
-        - name: Node.js
-          href: quickstart-send-telemetry-node.md
-        - name: .NET
-          href: quickstart-send-telemetry-dotnet.md
-        - name: Java
-          href: quickstart-send-telemetry-java.md
-        - name: Python
-          href: quickstart-send-telemetry-python.md
-        - name: Android
-          href: quickstart-send-telemetry-android.md
-        - name: iOS
-          href: quickstart-send-telemetry-ios.md
+    - name: Schnellstart mit CLI ohne Code
+      href: quickstart-send-telemetry-cli.md
+    - name: Senden von Telemetriedaten per SDK
+      href: ../iot-develop/quickstart-send-telemetry-iot-hub.md?toc=/azure/iot-hub/toc.json&bc=/azure/iot-hub/breadcrumb/toc.json
     - name: Steuern eines Geräts
-      items:
-        - name: Node.js
-          href: quickstart-control-device-node.md
-        - name: .NET
-          href: quickstart-control-device-dotnet.md
-        - name: Java
-          href: quickstart-control-device-java.md
-        - name: Python
-          href: quickstart-control-device-python.md
-        - name: Android
-          href: quickstart-control-device-android.md
+      href: quickstart-control-device.md
     - name: Automatisches Weiterleiten von Nachrichten mithilfe einer ARM-Vorlage
       displayName: Resource Manager
       href: horizontal-arm-route-messages.md
@@ -68,6 +46,8 @@
       href: tutorial-firmware-update.md
     - name: Testen der Gerätekonnektivität
       href: tutorial-connectivity.md
+    - name: Datenvisualisierung in Power BI
+      href: iot-hub-live-data-visualization-in-power-bi.md
     - name: Verwenden von X.509-Zertifikaten
       items:
         - name: Einführung
@@ -86,8 +66,6 @@
           href: tutorial-x509-test-certificate.md
 - name: Konzepte
   items:
-    - name: Unterstützung für verwaltete Identitäten
-      href: iot-hub-managed-identity.md
     - name: TLS-Unterstützung
       href: iot-hub-tls-support.md
     - name: VNET-Unterstützung
@@ -173,8 +151,6 @@
           items:
             - name: SDK-Übersicht
               href: iot-hub-devguide-sdks.md
-            - name: SDK-Plattformunterstützung
-              href: iot-hub-device-sdk-platform-support.md
             - name: Entwickeln ohne SDK
               href: iot-hub-devguide-no-sdk.md
             - name: Verwalten von Konnektivität und zuverlässigem Messaging
@@ -223,8 +199,6 @@
               items:
                 - name: Verwenden von IoTHubClient
                   href: iot-hub-device-sdk-c-iothubclient.md
-                - name: Verwenden des Serialisierungsprogramms
-                  href: iot-hub-device-sdk-c-serializer.md
             - name: Ressourceninformationen zu Azure IoT C SDK
               href: 'https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md'
             - name: Entwickeln für eingeschränkte Geräte
@@ -233,6 +207,8 @@
               href: iot-hub-how-to-develop-for-mobile-devices.md
             - name: Entwickeln für die Android Things-Plattform
               href: iot-hub-how-to-android-things.md
+        - name: Steuern eines Geräts in Android
+          href: quickstart-control-device-android.md
         - name: Abfragen von Avro-Daten aus einer Hubroute
           href: iot-hub-query-avro-data.md
         - name: Senden von C2D-Nachrichten.
@@ -318,6 +294,8 @@
               href: iot-hub-rm-template-powershell.md
             - name: Verwenden einer Vorlage aus .NET
               href: iot-hub-rm-template.md
+        - name: Konfigurieren von verwalteten Identitäten
+          href: iot-hub-managed-identity.md
         - name: Konfigurieren des Dateiuploads
           items:
             - name: Verwenden des Azure-Portals
@@ -373,26 +351,12 @@
               href: iot-hub-raspberry-pi-kit-node-get-started.md
             - name: Raspberry Pi mit C
               href: iot-hub-raspberry-pi-kit-c-get-started.md
-            - name: MXChip IoT DevKit mit Arduino
-              href: iot-hub-arduino-iot-devkit-az3166-get-started.md
-        - name: Verwenden des MXChip IoT DevKit
-          items:
-            - name: Übersetzen von Sprachnachrichten mit Azure Cognitive Services
-              href: iot-hub-arduino-iot-devkit-az3166-translator.md
-            - name: Abrufen einer Twitter-Meldung mit Azure Functions
-              href: iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md
-            - name: Senden von Nachrichten an einen MQTT-Server mit Eclipse Paho-APIs
-              href: iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md
-            - name: Überwachen des magnetischen Sensors und Senden von E-Mail-Benachrichtigungen mit Azure Functions
-              href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
     - name: Erweiterte IoT-Szenarien
       items:
         - name: Verwalten von Cloud-zu-Gerät-Nachrichten mit Azure IoT-Tools für VS Code
           href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
         - name: Verwalten von Cloud-zu-Gerät-Nachrichten mit dem Cloud-Explorer für Visual Studio
           href: iot-hub-visual-studio-cloud-device-messaging.md
-        - name: Datenvisualisierung in Power BI
-          href: iot-hub-live-data-visualization-in-power-bi.md
         - name: Datenvisualisierung in einer Web-App
           href: iot-hub-live-data-visualization-in-web-apps.md
         - name: Wettervorhersage mit Azure Machine Learning
@@ -513,7 +477,7 @@
         - name: IoT Edge
           href: ../iot-edge/index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: IoT Solution Accelerators
           href: ../iot-accelerators/index.yml
         - name: Azure Maps

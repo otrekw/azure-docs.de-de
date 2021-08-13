@@ -4,6 +4,8 @@
   items:
     - name: Was sind Kostenverwaltung und Abrechnung?
       href: cost-management-billing-overview.md
+    - name: Neuigkeiten
+      href: 'https://azure.microsoft.com/blog/tag/cost-management/'
 - name: Schnellstarts
   items:
     - name: Beginn der Kostenanalyse
@@ -112,6 +114,8 @@
           href: understand/mca-understand-your-invoice.md
         - name: 'Microsoft-Kundenvereinbarung: Preisblattbedingungen'
           href: manage/mca-understand-pricesheet.md
+        - name: Häufig gestellte Fragen zur Microsoft-Kundenvereinbarung
+          href: understand/mca-faq.md
         - name: "Microsoft\_Partner-Vereinbarung: Rechnungsbedingungen"
           href: understand/mpa-invoice-terms.md
         - name: Änderungen an Ihrem aktualisierten Abrechnungskonto mit nutzungsbasierter Zahlung
@@ -454,20 +458,3 @@
           href: manage/review-enterprise-billing.md
         - name: Überprüfen der Abonnementnutzung
           href: manage/review-subscription-billing.md
-- name: Cloudyn
-  items:
-    - name: Übersicht
-    - name: Schnellstarts
-    - name: Tutorials
-    - name: Konzepte
-    - name: Anleitungen
-    - name: Ressourcen
-      items:
-        - name: Azure-Roadmap
-          href: 'https://azure.microsoft.com/roadmap/'
-        - name: Cloudyn-Preise
-          href: 'https://azure.microsoft.com/pricing/details/cost-management'
-        - name: Regionale Verfügbarkeit von Cloudyn
-          href: 'https://azure.microsoft.com/regions/services/'
-        - name: Kontaktieren des Cloudyn-Supports
-          href: ./costs/open-support-request.md

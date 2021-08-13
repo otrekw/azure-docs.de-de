@@ -1,4 +1,4 @@
-- name: Zugreifen auf Windows Virtual Desktop
+- name: Zugreifen auf Azure Virtual Desktop
   href: index.yml
 - name: Vorgehensweise
   items:

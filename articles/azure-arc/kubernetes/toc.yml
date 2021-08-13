@@ -1,8 +1,8 @@
-- name: Kubernetes mit Azure Arc-Aktivierung
+- name: Azure Arc-fähiges Kubernetes
   href: index.yml
 - name: Übersicht
   items:
-    - name: Informationen zu Kubernetes mit Azure Arc-Aktivierung
+    - name: Informationen zu Kubernetes mit Azure Arc-Unterstützung
       href: overview.md
     - name: Azure Arc-Validierungsprogramm
       href: validation-program.md
@@ -16,6 +16,10 @@
       href: tutorial-use-gitops-connected-cluster.md
     - name: Implementieren von CI/CD mit GitOps
       href: tutorial-gitops-ci-cd.md
+- name: Beispiele
+  items:
+    - name: Azure Resource Graph-Abfragen
+      href: ./resource-graph-samples.md
 - name: Konzepte
   items:
     - name: Agent-Architektur

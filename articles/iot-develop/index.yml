@@ -3,55 +3,63 @@ title: Dokumentation zur IoT-Geräteentwicklung
 summary: Erkunden Sie die Azure IoT-Dokumentation zum Entwickeln von mit der Cloud verbundenen eingebetteten Geräten und Geräteanwendungen.
 metadata:
   title: IoT-Geräteentwicklung
-  description: Hier erfahren Sie, wie Sie Azure IoT zum Entwickeln von mit der Cloud verbundenen eingebetteten Geräten und Geräteanwendungen verwenden können.
+  description: 'Hier erfahren Sie, wie Sie Azure IoT zum Entwickeln von mit der Cloud verbundenen eingebetteten Geräten und Geräteanwendungen verwenden können.'
   services: iot-develop
   ms.service: iot-develop
   ms.topic: landing-page
   author: timlt
   ms.author: timlt
-  ms.date: 01/11/2021
-  ms.openlocfilehash: ba80c9c40beed46222d72903983d74ee9500b3a2
-  ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111888750"
+  ms.date: 07/15/2021
 landingContent:
-- title: Informationen zur IoT-Geräteentwicklung
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Was ist die Azure IoT-Geräteentwicklung?
-      url: about-iot-develop.md
-    - text: Überprüfen von IoT-Gerätetypen
-      url: concepts-iot-device-types.md
-    - text: Welches SDK sollte ich verwenden?
-      url: about-iot-sdks.md
-- title: Erste Schritte bei der Entwicklung von Geräteanwendungen
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Senden von Gerätetelemetrie an IoT Central
-      url: quickstart-send-telemetry-central.md
-    - text: Senden von Gerätetelemetrie an IoT Hub
-      url: quickstart-send-telemetry-iot-hub.md
-- title: Erste Schritte bei der Entwicklung eingebetteter Geräte
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Verbinden eines MXCHIP AZ3166 mit Azure IoT
-      url: quickstart-devkit-mxchip-az3166.md
-    - text: Verbinden eines MXCHIP AZ3166 mit Azure IoT Hub
-      url: quickstart-devkit-mxchip-az3166-iot-hub.md
-    - text: Verbinden eines Microchip ATSAME54-XPro mit Azure IoT
-      url: quickstart-devkit-microchip-atsame54-xpro.md
-    - text: Verbinden eines NXP MIMXRT1050-EVKB mit Azure IoT
-      url: quickstart-devkit-nxp-mimxrt1050-evkb.md
-    - text: Verbinden eines NXP MIMXRT1060-EVK mit Azure IoT
-      url: quickstart-devkit-nxp-mimxrt1060-evk.md
-    - text: Verbinden eines Renesas RX65N-2MB mit Azure IoT
-      url: quickstart-devkit-renesas-rx65n-2mb.md
-    - text: Verbinden eines Renesas RX65N Cloud Kit mit Azure IoT
-      url: quickstart-devkit-renesas-rx65n-cloud-kit.md
-    - text: Verbinden eines ST Microelectronics B-L475E/L4S5I-IOT01A mit Azure IoT
-      url: quickstart-devkit-stm-b-l475e.md
+  - title: Informationen zur IoT-Geräteentwicklung
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Was ist die Azure IoT-Geräteentwicklung?
+            url: about-iot-develop.md
+          - text: Überprüfen von IoT-Gerätetypen
+            url: concepts-iot-device-types.md
+          - text: "Was ist IoT\_Plug\_&\_Play?"
+            url: overview-iot-plug-and-play.md
+  - title: Erste Schritte bei der Entwicklung von Geräteanwendungen
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: "Senden von Gerätetelemetrie an IoT\_Central"
+            url: quickstart-send-telemetry-central.md
+          - text: "Senden von Gerätetelemetrie an IoT\_Hub"
+            url: quickstart-send-telemetry-iot-hub.md
+  - title: Erste Schritte bei der Entwicklung eingebetteter Geräte
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: "Verbinden eines MXCHIP\_AZ3166 mit Azure IoT"
+            url: quickstart-devkit-mxchip-az3166.md
+          - text: "Verbinden eines MXCHIP\_AZ3166 mit Azure IoT Hub"
+            url: quickstart-devkit-mxchip-az3166-iot-hub.md
+          - text: "Verbinden eines Microchip\_ATSAME54-XPro mit Azure IoT"
+            url: quickstart-devkit-microchip-atsame54-xpro.md
+          - text: "Herstellen einer Verbindung zwischen STMicroelectronics B-L475E/L4S5I-IOT01A und Azure\_IoT"
+            url: quickstart-devkit-stm-b-l475e.md
+  - title: Erstellen von Gerätelösungen
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: "Verbinden eines Beispielgeräts mit IoT\_Hub"
+            url: tutorial-connect-device.md
+          - text: Sicheres Verknüpfen von IoT-Geräten mit der Cloud
+            url: /learn/paths/securely-connect-iot-devices/?wt.mc_id=iothub_connect_docs_tutorials
+  - title: Framework für die Geräteentwicklung
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Übersicht über Gerätetypen
+            url: concepts-iot-device-types.md
+          - text: Entwicklerhandbuch
+            url: concepts-developer-guide-device.md
+          - text: Leitfaden zur Modellierung
+            url: concepts-modeling-guide.md
+          - text: IoT Plug & Play-Konventionen
+            url: concepts-convention.md
+          - text: "IoT Plug\_&\_Play-Brücke"
+            url: concepts-iot-pnp-bridge.md

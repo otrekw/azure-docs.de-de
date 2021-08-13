@@ -6,8 +6,14 @@
       href: overview.md
     - name: Neuigkeiten
       href: whats-new.md
+    - name: Neues für Azure Monitor
+      href: whats-new-azure-monitor.md
     - name: Dokumentation zu Azure Virtual Desktop (klassisch)
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
+- name: Schnellstarts
+  items:
+    - name: Erste Schritte mit Azure Virtual Desktop
+      href: getting-started-feature.md
 - name: Tutorials
   items:
     - name: 1. Erstellen eines Hostpools mit dem Azure-Portal
@@ -25,19 +31,19 @@
     - name: Herstellen einer Verbindung mit Azure Virtual Desktop-Ressourcen
       items:
         - name: Herstellen einer Verbindung mit dem Windows-Desktopclient
-          href: connect-windows-7-10.md
+          href: ./user-documentation/connect-windows-7-10.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Herstellen einer Verbindung mit dem Webclient
-          href: connect-web.md
+          href: ./user-documentation/connect-web.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Herstellen einer Verbindung mit dem Android-Client
-          href: connect-android.md
+          href: ./user-documentation/connect-android.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Herstellen einer Verbindung mit dem macOS-Client
-          href: connect-macos.md
+          href: ./user-documentation/connect-macos.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Herstellen einer Verbindung mit dem iOS-Client
-          href: connect-ios.md
+          href: ./user-documentation/connect-ios.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: "Herstellen einer Verbindung mit dem Microsoft\_Store-Client"
-          href: connect-microsoft-store.md
+          href: ./user-documentation/connect-microsoft-store.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Herstellen einer Verbindung mit Thin Clients
-          href: linux-overview.md
+          href: ./user-documentation/linux-overview.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: Konfigurieren von Geräteumleitungen
       href: configure-device-redirections.md
     - name: Einrichten des PowerShell-Moduls
@@ -46,6 +52,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: "Bereitstellen eines in Azure\_AD eingebundenen Sitzungshosts"
+          href: deploy-azure-ad-joined-vm.md
         - name: "Bereitstellen eines virtuellen Windows\_7-Computers"
           href: deploy-windows-7-virtual-machine.md
         - name: Bereitstellen eines GPU-basierten Sitzungshosts
@@ -138,6 +146,8 @@
       href: drain-mode.md
 - name: Konzepte
   items:
+    - name: Verwaltungsempfehlungen
+      href: management.md
     - name: Integrierte Rollen
       href: rbac.md
     - name: Authentifizierung
@@ -171,7 +181,7 @@
     - name: Speicheroptionen für FSLogix-Profilcontainer
       href: store-fslogix-profile.md
     - name: Häufig gestellte Fragen zu Azure Virtual Desktop
-      href: faq.md
+      href: faq.yml
     - name: "Häufig gestellte Fragen zu Windows\_10 Enterprise mit mehreren Sitzungen"
       href: windows-10-multisession-faq.yml
     - name: MSIX-Feature zum Anfügen von Apps
@@ -181,7 +191,7 @@
         - name: Glossar
           href: app-attach-glossary.md
         - name: Häufig gestellte Fragen
-          href: app-attach-faq.md
+          href: app-attach-faq.yml
     - name: Azure Monitor-Glossar
       href: azure-monitor-glossary.md
     - name: Datenspeicherorte
@@ -200,24 +210,26 @@
       href: troubleshoot-set-up-issues.md
     - name: Konfiguration des virtuellen Sitzungshostcomputers
       href: troubleshoot-vm-configuration.md
-    - name: Verbindungen des Remotedesktopdiensts
-      href: troubleshoot-service-connection.md
+    - name: Verwaltungsprobleme
+      href: troubleshoot-management-issues.md
+    - name: Azure Virtual Desktop PowerShell
+      href: troubleshoot-powershell.md
     - name: Azure Virtual Desktop-Agent
       href: troubleshoot-agent.md
+    - name: Verbindungen des Remotedesktopdiensts
+      href: troubleshoot-service-connection.md
     - name: Probleme des Remotedesktopclients
       href: troubleshoot-client.md
-    - name: 'Azure Virtual Desktop: PowerShell'
-      href: troubleshoot-powershell.md
     - name: Diagnostizieren von Problemen mit der Grafikleistung
       href: remotefx-graphics-performance-counters.md
+    - name: Verbindungen mit in Azure AD eingebundenen virtuellen Computern
+      href: troubleshoot-azure-ad-connections.md
     - name: Azure Monitor
       href: troubleshoot-azure-monitor.md
 - name: Verweis
   items:
     - name: Bewährte Sicherheitsmethoden
       href: security-guide.md
-    - name: Linux-Unterstützung
-      href: linux-overview.md
     - name: Azure CLI
       href: /cli/azure/desktopvirtualization
     - name: Azure-Monitor-Kosten abschätzen

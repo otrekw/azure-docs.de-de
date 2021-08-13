@@ -1,4 +1,4 @@
-- name: Dokumentation zur Azure-Datenbank für MySQL
+- name: Dokumentation zu Azure Database for MySQL
   href: index.yml
 - name: Übersicht
   expanded: true
@@ -7,6 +7,10 @@
       href: overview.md
     - name: Welche MySQL-Option sollte ich auswählen?
       href: select-right-deployment-type.md
+    - name: Neues in Single Server
+      href: single-server-whats-new.md
+    - name: Neues im flexiblen Server
+      href: flexible-server/whats-new.md
     - name: Richtlinie zur Versionsunterstützung
       href: concepts-version-policy.md
       displayName: version policy
@@ -21,8 +25,6 @@
           href: single-server-overview.md
         - name: Unterstützte Versionen
           href: concepts-supported-versions.md
-        - name: Neues in Single Server
-          href: single-server-whats-new.md
         - name: Tarife
           items:
             - name: Tarife
@@ -144,10 +146,8 @@
               items:
                 - name: Konfigurieren von SSL
                   href: concepts-ssl-connection-security.md
-            - name: Advanced Threat Protection
-              items:
-                - name: Bedrohungsschutz mit Azure Defender
-                  href: ../security-center/defender-for-databases-introduction.md
+            - name: Bedrohungsschutz mit Azure Defender
+              href: ../security-center/defender-for-databases-usage.md?toc=/azure/mysql/toc.json&bc=/azure/mysql/breadcrumb/toc.json
             - name: Verschlüsselung ruhender Daten
               items:
                 - name: Datenverschlüsselung
@@ -424,6 +424,8 @@
               href: flexible-server/connect-java.md
             - name: .NET
               href: flexible-server/connect-csharp.md
+            - name: Herstellen einer Verbindung mit dem Server im VNet
+              href: flexible-server/quickstart-create-connect-server-vnet.md
         - name: Herstellen einer Verbindung per TLS/SSL
           href: flexible-server/how-to-connect-tls-ssl.md
         - name: Konfigurieren von Serverparametern
@@ -583,6 +585,9 @@
     - name: Migrieren von Daten mit „mysqldump“ oder „phpmyadmin“
       href: concepts-migrate-dump-restore.md
       displayName: 'migrate, mysqldump'
+    - name: Migrieren großer Datenbanken zu Azure Database for MySQL mit „mydumper“/„myloader“
+      href: concepts-migrate-mydumper-myloader.md
+      displayName: 'migrate, mydumper/myloader'
     - name: Migrieren von Daten mit dbforge Studio for MySQL
       href: concepts-migrate-dbforge-studio-for-mysql.md
       displayName: 'migrate, dbforge'
@@ -592,6 +597,9 @@
     - name: "Migrieren von RDS\_MySQL-Daten mit MySQL Workbench"
       href: how-to-migrate-rds-mysql-workbench.md
       displayName: 'import , migrate, export'
+    - name: "Migrieren von Azure\_DB for MySQL (Einzelserver) zu Azure\_DB for MySQL (flexibler Server)"
+      href: howto-migrate-single-flexible-minimum-downtime.md
+      displayName: 'migrate, Single to Flexible'
     - name: Migration zu Azure Database for PostgreSQL (Einzelserver) mit minimaler Ausfallzeit
       href: howto-migrate-online.md
       displayName: 'migrate, dms, database migration service'

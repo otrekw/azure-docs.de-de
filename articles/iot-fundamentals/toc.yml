@@ -16,6 +16,8 @@
   items:
     - name: Verwenden der Smartphone-Geräte-App
       href: iot-phone-app-how-to.md
+    - name: Verwenden von IoT Explorer
+      href: howto-use-iot-explorer.md
 - name: Sicherheit
   items:
     - name: Empfehlungen
@@ -43,7 +45,7 @@
         - name: IoT Solution Accelerators
           href: ../iot-accelerators/index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

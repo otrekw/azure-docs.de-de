@@ -4,11 +4,15 @@
   items:
     - name: Informationen zu Azure Arc
       href: overview.md
-- name: Server mit Arc-Unterstützung
+- name: Beispiele
+  items:
+    - name: Azure Resource Graph-Abfragen
+      href: ./resource-graph-samples.md
+- name: Server mit Arc-Unterstützung >
   href: ./servers/overview.md
-- name: Kubernetes mit Arc-Unterstützung
+- name: Kubernetes mit Arc-Unterstützung >
   href: ./kubernetes/overview.md
-- name: "Arc-fähige Datendienste (Vorschauversion)\_>"
+- name: "Datendienste mit Arc-Unterstützung (Vorschauversion)\_>"
   href: ./data/overview.md
-- name: "Arc-fähige SQL-Server-Instanz (Vorschauversion)\_>"
+- name: "SQL\_Server auf Servern mit Azure\_Arc-Unterstützung (Vorschauversion)\_>"
   href: 'https://docs.microsoft.com/sql/sql-server/azure-arc/overview'

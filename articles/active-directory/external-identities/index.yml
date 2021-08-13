@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentation zu externen Identitäten
-summary: Externe Identitäten bieten verschiedene Funktionen, mit denen Organisationen externe Benutzer (u. a. Kunden und Partner) schützen und verwalten können. Externe Identitäten bauen auf der B2B-Zusammenarbeit auf und bieten weitere Möglichkeiten zur Interaktion und Verbindungsherstellung mit Benutzern außerhalb Ihrer Organisation.
+summary: "Externe Identitäten bieten verschiedene Funktionen, mit denen Organisationen externe Benutzer (u.\_a. Kunden und Partner) schützen und verwalten können. Externe Identitäten bauen auf der B2B-Zusammenarbeit auf und bieten weitere Möglichkeiten zur Interaktion und Verbindungsherstellung mit Benutzern außerhalb Ihrer Organisation."
 metadata:
   title: Dokumentation zu externen Identitäten
-  description: Externe Identitäten bieten verschiedene Funktionen, mit denen Organisationen externe Benutzer (u. a. Kunden und Partner) schützen und verwalten können. Externe Identitäten bauen auf der B2B-Zusammenarbeit auf und bieten weitere Möglichkeiten zur Interaktion und Verbindungsherstellung mit Benutzern außerhalb Ihrer Organisation.
+  description: "Externe Identitäten bieten verschiedene Funktionen, mit denen Organisationen externe Benutzer (u.\_a. Kunden und Partner) schützen und verwalten können. Externe Identitäten bauen auf der B2B-Zusammenarbeit auf und bieten weitere Möglichkeiten zur Interaktion und Verbindungsherstellung mit Benutzern außerhalb Ihrer Organisation."
   ms.service: active-directory
   ms.subservice: B2B
   ms.workload: identity
@@ -12,76 +12,70 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 0ff35d207fe9ba95352798ca8138a75619b9f852
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108764331"
 landingContent:
-- title: Informationen zu externen Identitäten
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Vergleichen von Lösungen für externe Identitäten
-      url: compare-with-b2c.md
-    - text: Was ist die Azure AD B2B-Zusammenarbeit?
-      url: what-is-b2b.md
-    - text: Was ist eine Azure AD B2C-Identität (Business-to-Consumer)?
-      url: ../../active-directory-b2c/overview.md
-- title: Zusammenarbeiten mit Benutzern außerhalb Ihrer Organisation (B2B-Zusammenarbeit)
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Grundlegendes zu B2B-Gastbenutzern
-      url: user-properties.md
-    - text: Annehmen einer Einladung durch einen B2B-Gast
-      url: redemption-experience.md
-  - linkListType: how-to-guide
-    links:
-    - text: Konfigurieren der Einstellungen für externe Zusammenarbeit
-      url: delegate-invitations.md
-    - text: Einrichten eines SAML-/WS-Fed-IdP-Verbunds (Vorschau)
-      url: direct-federation.md
-    - text: Einrichten von Einmalpasscodes (Vorschau)
-      url: one-time-passcode.md
-    - text: Hinzufügen und Einladen von Gastbenutzern
-      url: add-users-administrator.md
-    - text: Verlassen einer Organisation als Gastbenutzer
-      url: leave-the-organization.md
-- title: Skalieren von Apps für Consumer und Kunden (Azure AD B2C)
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Informationen zu Azure AD B2C
-      url: ../../active-directory-b2c/overview.md
-    - text: Technische Übersicht und Funktionsübersicht
-      url: ../../active-directory-b2c/technical-overview.md
-    - text: Gesamte Azure AD B2C-Dokumentation
-      url: ../../active-directory-b2c/index.yml
-  - linkListType: concept
-    links:
-    - text: Azure AD B2C-Benutzerflows
-      url: ../../active-directory-b2c/user-flow-overview.md
-    - text: Benutzerdefinierte Azure AD B2C-Richtlinien
-      url: ../../active-directory-b2c/custom-policy-overview.md
-  - linkListType: tutorial
-    links:
-    - text: Erstellen von Benutzerflows in Azure AD B2C
-      url: ../../active-directory-b2c/tutorial-create-user-flows.md
-- title: Self-Service-Registrierungsflows für B2B-Gastbenutzer
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Was ist die Self-Service-Registrierung?
-      url: self-service-sign-up-overview.md
-  - linkListType: sample
-    links:
-    - text: Codebeispiele für API-Connectors für Benutzerflows
-      url: code-samples-self-service-sign-up.md
-  - linkListType: how-to-guide
-    links:
-    - text: Hinzufügen eines Benutzerflows für die Self-Service-Registrierung
-      url: self-service-sign-up-user-flow.md
-    - text: Definieren benutzerdefinierter Attribute für Benutzerflows
-      url: user-flow-add-custom-attributes.md
+  - title: Informationen zu externen Identitäten
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Vergleichen von Lösungen für externe Identitäten
+            url: compare-with-b2c.md
+          - text: Was ist die Azure AD B2B-Zusammenarbeit?
+            url: what-is-b2b.md
+          - text: Was ist eine Azure AD B2C-Identität (Business-to-Consumer)?
+            url: ../../active-directory-b2c/overview.md
+  - title: Zusammenarbeiten mit Benutzern außerhalb Ihrer Organisation (B2B-Zusammenarbeit)
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Grundlegendes zu B2B-Gastbenutzern
+            url: user-properties.md
+          - text: Annehmen einer Einladung durch einen B2B-Gast
+            url: redemption-experience.md
+      - linkListType: how-to-guide
+        links:
+          - text: Konfigurieren der Einstellungen für externe Zusammenarbeit
+            url: delegate-invitations.md
+          - text: Einrichten eines SAML-/WS-Fed-IdP-Verbunds (Vorschau)
+            url: direct-federation.md
+          - text: Einrichten von Einmalpasscodes
+            url: one-time-passcode.md
+          - text: Hinzufügen und Einladen von Gastbenutzern
+            url: add-users-administrator.md
+          - text: Verlassen einer Organisation als Gastbenutzer
+            url: leave-the-organization.md
+  - title: Skalieren von Apps für Consumer und Kunden (Azure AD B2C)
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Informationen zu Azure AD B2C
+            url: ../../active-directory-b2c/overview.md
+          - text: Technische Übersicht und Funktionsübersicht
+            url: ../../active-directory-b2c/technical-overview.md
+          - text: Gesamte Azure AD B2C-Dokumentation
+            url: ../../active-directory-b2c/index.yml
+      - linkListType: concept
+        links:
+          - text: Azure AD B2C-Benutzerflows
+            url: ../../active-directory-b2c/user-flow-overview.md
+          - text: Benutzerdefinierte Azure AD B2C-Richtlinien
+            url: ../../active-directory-b2c/custom-policy-overview.md
+      - linkListType: tutorial
+        links:
+          - text: Erstellen von Benutzerflows in Azure AD B2C
+            url: ../../active-directory-b2c/tutorial-create-user-flows.md
+  - title: Self-Service-Registrierungsflows für B2B-Gastbenutzer
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Was ist die Self-Service-Registrierung?
+            url: self-service-sign-up-overview.md
+      - linkListType: sample
+        links:
+          - text: Codebeispiele für API-Connectors für Benutzerflows
+            url: code-samples-self-service-sign-up.md
+      - linkListType: how-to-guide
+        links:
+          - text: Hinzufügen eines Benutzerflows für die Self-Service-Registrierung
+            url: self-service-sign-up-user-flow.md
+          - text: Definieren benutzerdefinierter Attribute für Benutzerflows
+            url: user-flow-add-custom-attributes.md

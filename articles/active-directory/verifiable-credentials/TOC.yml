@@ -24,6 +24,14 @@
 - name: Anleitungen
   expanded: true
   items:
+    - name: Planen und Entwerfen
+      items:
+        - name: Übersicht über die Architekturplanung
+          href: introduction-to-verifiable-credentials-architecture.md
+        - name: Planen Ihrer Ausstellungslösung
+          href: plan-issuance-solution.md
+        - name: Planen Ihrer Überprüfungslösung
+          href: plan-verification-solution.md
     - name: Vorgehensweise beim Anpassen Ihrer Anmeldeinformationen
       href: credential-design.md
     - name: Verwalten des Nachweiswiderrufs

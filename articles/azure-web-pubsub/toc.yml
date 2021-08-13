@@ -7,7 +7,7 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Ausprobieren der Livedemo
+    - name: Ausprobieren der Chatroom-Livedemo
       href: quickstart-live-demo.md
     - name: Beginnen Sie mit einer einfachen serverlosen Chatroomanwendung.
       href: quickstart-serverless.md
@@ -28,6 +28,12 @@
       items:
         - name: Schützen des Zugriffsschlüssels
           href: howto-secure-rotate-access-key.md
+        - name: Verwenden von privaten Azure-Endpunkten
+          href: howto-secure-private-endpoints.md
+        - name: Verwalten der Netzwerkzugriffssteuerung
+          href: howto-secure-network-access-control.md
+        - name: Schützen von ausgehendem Datenverkehr über freigegebene private Endpunkte
+          href: howto-secure-shared-private-endpoints.md
     - name: Problembehandlung
       items:
         - name: Erfassen einer Netzwerkablaufverfolgung

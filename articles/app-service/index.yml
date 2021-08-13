@@ -1,206 +1,202 @@
 ### YamlMime:Landing
 title: App Service-Dokumentation
-summary: Azure App Service ermöglicht das Erstellen und Hosten von Web-Apps, mobilen Back-Ends und RESTful-APIs in der Programmiersprache Ihrer Wahl, ohne eine Infrastruktur verwalten zu müssen. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes beliebiges Git-Repository. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure App Service verwenden.
+summary: 'Azure App Service ermöglicht das Erstellen und Hosten von Web-Apps, mobilen Back-Ends und RESTful-APIs in der Programmiersprache Ihrer Wahl, ohne eine Infrastruktur verwalten zu müssen. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes beliebiges Git-Repository. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure App Service verwenden.'
 metadata:
   title: Azure App Service-Dokumentation
-  description: Hosten von Websites, Web-Apps, RESTful-APIs und mobilen Back-Ends in Azure App Service. Hier finden Sie Schnellstarts, Tutorials und Beispiele, die Ihnen bei der erfolgreichen Ausführung von App Service helfen.
+  description: 'Hosten von Websites, Web-Apps, RESTful-APIs und mobilen Back-Ends in Azure App Service. Hier finden Sie Schnellstarts, Tutorials und Beispiele, die Ihnen bei der erfolgreichen Ausführung von App Service helfen.'
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: 9ed958c7656d6101824a14ed8e39f41df2ce63e5
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110375231"
 landingContent:
-- title: Informationen zu App Service
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Was ist App Service?
-      url: overview.md
-    - text: App Service-Umgebungen
-      url: environment/intro.md
-    - text: Vergleich von Hostingoptionen
-      url: /azure/architecture/guide/technology-choices/compute-decision-tree
-  - linkListType: whats-new
-    links:
-    - text: Dienstupdates
-      url: https://azure.microsoft.com/updates/?product=app-service
-- title: Erste Schritte
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Erste ASP.NET-Web-App
-      url: quickstart-dotnetcore.md
-    - text: Erste Node.js-App
-      url: quickstart-nodejs.md
-    - text: Erste PHP-App
-      url: quickstart-php.md
-    - text: Erste Java-App
-      url: quickstart-java.md
-    - text: Erste Python Flask-App (nur Linux)
-      url: quickstart-python.md
-    - text: Erste Ruby-App (nur Linux)
-      url: quickstart-ruby.md
-- title: Häufige Aufgaben
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Zuordnen einer benutzerdefinierten Domäne zu Ihrer App
-      url: app-service-web-tutorial-custom-domain.md
-    - text: Schützen einer benutzerdefinierten Domäne mit einer SSL-Bindung
-      url: configure-ssl-bindings.md
-    - text: Ausführen der App in bereitgestellten Umgebungen
-      url: deploy-staging-slots.md
-    - text: Sicheres Zugreifen auf Speicher und Microsoft Graph
-      url: scenario-secure-app-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: Herstellen einer Verbindung mit einem Linux-Container über SSH
-      url: configure-linux-open-ssh-session.md
-    - text: Migrieren einer aktiven Domain zu App Service
-      url: manage-custom-dns-migrate-domain.md
-- title: Ausführen von benutzerdefinierten Containern
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Ausführen eines benutzerdefinierten Containers
-      url: quickstart-custom-container.md
-  - linkListType: tutorial
-    links:
-    - text: Ausführen einer Docker Compose-App (nur Linux)
-      url: tutorial-multi-container-app.md
-    - text: Migrieren von benutzerdefinierter Software zu Azure in einem Container
-      url: tutorial-custom-container.md
-  - linkListType: how-to-guide
-    links:
-    - text: CI/CD in einem benutzerdefinierten Container
-      url: deploy-ci-cd-custom-container.md
-    - text: Herstellen einer Verbindung zwischen einem Container und Storage-Dateien
-      url: configure-connect-to-azure-storage.md
-    - text: Bereitstellen mit GitHub-Aktionen
-      url: deploy-container-github-action.md
-- title: CRUD-App mit Datenbank
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: ASP.NET-App mit SQL-Datenbank
-      url: app-service-web-tutorial-dotnet-sqldatabase.md
-    - text: ASP.NET Core-App mit SQL-Datenbank
-      url: tutorial-dotnetcore-sqldb-app.md
-    - text: PHP-App (Laravel) mit Azure MySQL
-      url: tutorial-php-mysql-app.md
-    - text: Node.js-App (MEAN.js) mit MongoDB
-      url: tutorial-nodejs-mongodb-app.md
-    - text: Java-App (Spring Boot) mit Cosmos DB
-      url: tutorial-java-spring-cosmosdb.md
-    - text: Python-App (Django) mit PostgreSQL
-      url: tutorial-python-postgresql-app.md
-    - text: Ruby-App (Rails) mit PostgreSQL
-      url: tutorial-ruby-postgres-app.md
-- title: Verwalten und Integrieren
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Verwalten von App Service-Plänen
-      url: overview-hosting-plans.md
-  - linkListType: tutorial
-    links:
-    - text: Sichern des Zugriffs auf Ressourcen mit verwalteten Identitäten
-      url: app-service-web-tutorial-connect-msi.md
-    - text: Authentifizieren von Benutzern
-      url: tutorial-auth-aad.md
-    - text: Hosten einer RESTful-API mit CORS
-      url: app-service-web-tutorial-rest-api.md
-    - text: Hinzufügen eines CDN zur Anwendung
-      url: ../cdn/cdn-add-to-web-app.md
-  - linkListType: how-to-guide
-    links:
-    - text: Integrieren in eine Virtual Network-Instanz
-      url: web-sites-integrate-with-vnet.md
-    - text: Erstellen von Hybridverbindungen mit lokalen Anwendungen
-      url: app-service-hybrid-connections.md
-    - text: Vornehmen eines Lastenausgleichs mit Traffic Manager
-      url: configure-domain-traffic-manager.md
-    - text: Sichern Ihrer App in Storage-Blobs
-      url: manage-backup.md
-- title: Hochladen von Code oder Inhalt
-  linkLists:
-  - linkListType: deploy
-    links:
-    - text: Hochladen von Inhalt mit FTP
-      url: deploy-ftp.md
-    - text: Hochladen von Inhalt als ZIP-Pakete
-      url: deploy-zip.md
-    - text: Git-Push von lokalem Computer
-      url: deploy-local-git.md
-    - text: Synchronisieren von Inhalt mit OneDrive oder Dropbox
-      url: deploy-content-sync.md
-    - text: CI/CD mit GitHub, BitBucket usw.
-      url: deploy-continuous-deployment.md
-    - text: Ausführen über ein Paket
-      url: deploy-run-package.md
-- title: Überwachen Ihrer App
-  linkLists:
-  - linkListType: whats-new
-    links:
-    - text: App Service-Integration in Azure Monitor (Vorschau)
-      url: https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html
-    - text: Protokolltypen für die Azure Monitor-Integration (Vorschau)
-      url: https://azure.github.io/AppService/2020/06/25/New-Logs-Available-for-Azure-Monitor-Integration.html
-  - linkListType: tutorial
-    links:
-    - text: Behandeln von Fehlern bei Azure Monitor (Vorschau)
-      url: tutorial-troubleshoot-monitor.md
-  - linkListType: how-to-guide
-    links:
-    - text: Aktivieren von Diagnoseprotokollen
-      url: troubleshoot-diagnostic-logs.md
-    - text: Abrufen von Ressourcenereignissen
-      url: get-resource-events.md
-    - text: Integritätsprüfung
-      url: monitor-instances-health-check.md
-  - linkListType: reference
-    links:
-    - text: Kontingente und Warnungen
-      url: web-sites-monitor.md
-- title: Weitere Ressourcen
-  linkLists:
-  - linkListType: video
-    links:
-    - text: Videobibliothek zu App Service
-      url: https://azure.microsoft.com/resources/videos/index/?services=app-service
-    - text: Pluralsight-Videotraining
-      url: https://www.pluralsight.com/search?q=azure%20app%20service
-  - linkListType: sample
-    links:
-    - text: Azure CLI-Beispiele
-      url: samples-cli.md
-    - text: Azure PowerShell-Beispiele
-      url: samples-powershell.md
-  - linkListType: reference
-    links:
-    - text: Azure CLI
-      url: /cli/azure/appservice
-    - text: Azure PowerShell
-      url: /powershell/module/az.websites/#app_service
-    - text: REST-API
-      url: /rest/api/appservice/
-    - text: Ressourcen-Manager
-      url: /azure/templates/microsoft.web/allversions
-- title: App Service in Azure Arc (Vorschau)
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: App Service, Funktionen und Logic Apps in Azure Arc (Vorschau)
-      url: overview-arc-integration.md
-  - linkListType: tutorial
-    links:
-    - text: Einrichten eines Kubernetes-Clusters mit Azure Arc-Unterstützung zum Ausführen von App Service, Funktionen und Logic Apps (Vorschau)
-      url: manage-create-arc-environment.md
-  - linkListType: quickstart
-    links:
-    - text: Erstellen einer App Service-App in Azure Arc (Vorschau)
-      url: quickstart-arc.md
+  - title: Informationen zu App Service
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Was ist App Service?
+            url: overview.md
+          - text: Was ist ein App Service-Plan?
+            url: overview-hosting-plans.md
+          - text: App Service-Umgebungen
+            url: environment/intro.md
+          - text: Vergleichen von Azure-Hostingoptionen für Web-Apps
+            url: /azure/architecture/guide/technology-choices/compute-decision-tree
+      - linkListType: whats-new
+        links:
+          - text: Dienstupdates
+            url: 'https://azure.microsoft.com/updates/?product=app-service'
+  - title: Erste Schritte
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Erste ASP.NET-Web-App
+            url: quickstart-dotnetcore.md
+          - text: Erste Node.js-App
+            url: quickstart-nodejs.md
+          - text: Erste PHP-App
+            url: quickstart-php.md
+          - text: Erste Java-App
+            url: quickstart-java.md
+          - text: Erste Python Flask-App (nur Linux)
+            url: quickstart-python.md
+          - text: Erste Ruby-App (nur Linux)
+            url: quickstart-ruby.md
+  - title: Häufige Aufgaben
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: Zuordnen einer benutzerdefinierten Domäne zu Ihrer App
+            url: app-service-web-tutorial-custom-domain.md
+          - text: Schützen einer benutzerdefinierten Domäne mit einer TLS/SSL-Bindung
+            url: configure-ssl-bindings.md
+          - text: Ausführen der App in bereitgestellten Umgebungen
+            url: deploy-staging-slots.md
+          - text: Sicheres Zugreifen auf Speicher und Microsoft Graph
+            url: scenario-secure-app-overview.md
+      - linkListType: how-to-guide
+        links:
+          - text: Herstellen einer Verbindung mit einem Linux-Container über SSH
+            url: configure-linux-open-ssh-session.md
+          - text: Migrieren einer aktiven Domain zu App Service
+            url: manage-custom-dns-migrate-domain.md
+  - title: Ausführen von benutzerdefinierten Containern
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Ausführen eines benutzerdefinierten Containers
+            url: quickstart-custom-container.md
+      - linkListType: tutorial
+        links:
+          - text: Ausführen einer Docker Compose-App (nur Linux)
+            url: tutorial-multi-container-app.md
+          - text: Migrieren von benutzerdefinierter Software zu Azure in einem Container
+            url: tutorial-custom-container.md
+      - linkListType: how-to-guide
+        links:
+          - text: CI/CD in einem benutzerdefinierten Container
+            url: deploy-ci-cd-custom-container.md
+          - text: Herstellen einer Verbindung zwischen einem Container und Storage-Dateien
+            url: configure-connect-to-azure-storage.md
+          - text: Bereitstellen mit GitHub-Aktionen
+            url: deploy-container-github-action.md
+  - title: CRUD-App mit Datenbank
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: ASP.NET-App mit SQL-Datenbank
+            url: app-service-web-tutorial-dotnet-sqldatabase.md
+          - text: ASP.NET Core-App mit SQL-Datenbank
+            url: tutorial-dotnetcore-sqldb-app.md
+          - text: PHP-App (Laravel) mit Azure MySQL
+            url: tutorial-php-mysql-app.md
+          - text: Node.js-App (MEAN.js) mit MongoDB
+            url: tutorial-nodejs-mongodb-app.md
+          - text: Java-App (Spring Boot) mit Cosmos DB
+            url: tutorial-java-spring-cosmosdb.md
+          - text: Python-App (Django) mit PostgreSQL
+            url: tutorial-python-postgresql-app.md
+          - text: Ruby-App (Rails) mit PostgreSQL
+            url: tutorial-ruby-postgres-app.md
+  - title: Verwalten und Integrieren
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Verwalten von App Service-Plänen
+            url: app-service-plan-manage.md
+      - linkListType: tutorial
+        links:
+          - text: Sichern des Zugriffs auf Ressourcen mit verwalteten Identitäten
+            url: app-service-web-tutorial-connect-msi.md
+          - text: Authentifizieren von Benutzern
+            url: tutorial-auth-aad.md
+          - text: Hosten einer RESTful-API mit CORS
+            url: app-service-web-tutorial-rest-api.md
+          - text: Hinzufügen eines CDN zur Anwendung
+            url: ../cdn/cdn-add-to-web-app.md
+      - linkListType: how-to-guide
+        links:
+          - text: Integrieren in eine Virtual Network-Instanz
+            url: web-sites-integrate-with-vnet.md
+          - text: Erstellen von Hybridverbindungen mit lokalen Anwendungen
+            url: app-service-hybrid-connections.md
+          - text: Vornehmen eines Lastenausgleichs mit Traffic Manager
+            url: configure-domain-traffic-manager.md
+          - text: Sichern Ihrer App in Storage-Blobs
+            url: manage-backup.md
+  - title: Hochladen von Code oder Inhalt
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Hochladen von Inhalt mit FTP
+            url: deploy-ftp.md
+          - text: Hochladen von Inhalt als ZIP-Pakete
+            url: deploy-zip.md
+          - text: Git-Push von lokalem Computer
+            url: deploy-local-git.md
+          - text: Synchronisieren von Inhalt mit OneDrive oder Dropbox
+            url: deploy-content-sync.md
+          - text: 'CI/CD mit GitHub, BitBucket usw.'
+            url: deploy-continuous-deployment.md
+          - text: Ausführen über ein Paket
+            url: deploy-run-package.md
+  - title: Überwachen Ihrer App
+    linkLists:
+      - linkListType: whats-new
+        links:
+          - text: App Service-Integration in Azure Monitor (Vorschau)
+            url: 'https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html'
+          - text: Protokolltypen für die Azure Monitor-Integration (Vorschau)
+            url: 'https://azure.github.io/AppService/2020/06/25/New-Logs-Available-for-Azure-Monitor-Integration.html'
+      - linkListType: tutorial
+        links:
+          - text: Behandeln von Fehlern bei Azure Monitor (Vorschau)
+            url: tutorial-troubleshoot-monitor.md
+      - linkListType: how-to-guide
+        links:
+          - text: Aktivieren von Diagnoseprotokollen
+            url: troubleshoot-diagnostic-logs.md
+          - text: Abrufen von Ressourcenereignissen
+            url: get-resource-events.md
+          - text: Integritätsprüfung
+            url: monitor-instances-health-check.md
+      - linkListType: reference
+        links:
+          - text: Kontingente und Warnungen
+            url: web-sites-monitor.md
+  - title: Weitere Ressourcen
+    linkLists:
+      - linkListType: video
+        links:
+          - text: Videobibliothek zu App Service
+            url: 'https://azure.microsoft.com/resources/videos/index/?services=app-service'
+          - text: Pluralsight-Videotraining
+            url: 'https://www.pluralsight.com/search?q=azure%20app%20service'
+      - linkListType: sample
+        links:
+          - text: Azure CLI-Beispiele
+            url: samples-cli.md
+          - text: Azure PowerShell-Beispiele
+            url: samples-powershell.md
+      - linkListType: reference
+        links:
+          - text: Azure CLI
+            url: /cli/azure/appservice
+          - text: Azure PowerShell
+            url: /powershell/module/az.websites/#app_service
+          - text: REST-API
+            url: /rest/api/appservice/
+          - text: Ressourcen-Manager
+            url: /azure/templates/microsoft.web/allversions
+  - title: App Service in Azure Arc (Vorschau)
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: 'App Service, Funktionen und Logic Apps in Azure Arc (Vorschau)'
+            url: overview-arc-integration.md
+      - linkListType: quickstart
+        links:
+          - text: "Erstellen einer App\_Service-App in Azure Arc (Vorschau)"
+            url: quickstart-arc.md
+      - linkListType: tutorial
+        links:
+          - text: "Einrichten eines Kubernetes-Clusters mit Azure\_Arc-Unterstützung zum Ausführen von App Service, Funktionen und Logic Apps (Vorschau)"
+            url: manage-create-arc-environment.md

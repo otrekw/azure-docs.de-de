@@ -6,9 +6,9 @@
       tocHref: /azure/iot-fundamentals/
       topicHref: /azure/iot-fundamentals/index
       items:
-        - name: IoT-Geräteentwicklung
+        - name: Geräteentwicklung
           tocHref: /azure/iot-develop/
-          topicHref: /azure/iot-develop/index/
-        - name: IoT-Geräteentwicklung
+          topicHref: /azure/iot-develop/index
+        - name: Geräteentwicklung
           tocHref: /azure/iot-fundamentals/
           topicHref: /azure/iot-develop/index

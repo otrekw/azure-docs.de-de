@@ -393,6 +393,9 @@
             - name: Bedarfsorientiertes Bereitstellen
               displayname: Deploy Azure Monitor agent at scale
               href: deploy-scale.md#azure-monitor-agent
+            - name: Migrieren von Legacy-Agents
+              displayname: Migrate to Azure Monitor agent
+              href: agents/azure-monitor-agent-migration.md
             - name: Häufig gestellte Fragen
               displayname: Azure Monitor agent FAQ
               href: /azure/azure-monitor/faq#azure-monitor-agent
@@ -754,7 +757,7 @@
                           href: app/java-standalone-sampling-overrides.md
                         - name: Telemetrieprozessoren
                           items:
-                            - name: Überblick
+                            - name: Übersicht
                               href: app/java-standalone-telemetry-processors.md
                             - name: Beispiele
                               href: app/java-standalone-telemetry-processors-examples.md
@@ -804,9 +807,11 @@
           items:
             - name: Übersicht
               href: app/availability-overview.md
-            - name: URL-Tests
+            - name: URL ping tests (URL-Pingtests)
               displayname: 'ping, ping tests, availability, GSM, up/down'
               href: app/monitor-web-app-availability.md
+            - name: Standardtests
+              href: app/availability-standard-tests.md
             - name: Mehrstufige Tests
               displayname: 'availability, GSM, visual studio web test, web test'
               href: app/availability-multistep.md
@@ -1159,7 +1164,7 @@
           href: insights/redis-cache-insights-overview.md
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
-        - name: Azure Data Explorer (Vorschau)
+        - name: Azure-Daten-Explorer
           href: insights/data-explorer.md
         - name: Log Analytics-Arbeitsbereich
           href: logs/log-analytics-workspace-insights-overview.md
@@ -1181,7 +1186,7 @@
               href: insights/sql-insights-troubleshoot.md
         - name: Storage
           displayname: 'storage, monitor, insights, storage accounts, azure storage'
-          href: insights/storage-insights-overview.md
+          href: ../storage/common/storage-insights-overview.md?toc=/azure/azure-monitor/toc.json
         - name: Ressourcengruppen
           href: insights/resource-group-insights.md
         - name: Problembehandlung für Erkenntnisse
@@ -1220,7 +1225,7 @@
                         - name: ExpressRoute
                           href: insights/network-performance-monitor-expressroute.md
                         - name: Preise
-                          href: insights/network-performance-monitor-pricing-faq.md
+                          href: insights/network-performance-monitor-pricing-faq.yml
                         - name: Häufig gestellte Fragen
                           href: insights/network-performance-monitor-faq.yml
                 - name: Office 365
@@ -1489,13 +1494,11 @@
               href: visualize/view-designer-filters.md
 - name: Ressourcen
   items:
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure-Updates
+      href: 'https://azure.microsoft.com/en-us/updates/?category=management-tools'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
-    - name: Neuigkeiten
-      href: 'https://azure.microsoft.com/updates/?product=monitor'

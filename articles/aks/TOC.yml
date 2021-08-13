@@ -26,6 +26,8 @@
       items:
         - name: Entwickeln mit Helm
           href: quickstart-helm.md
+    - name: Abonnieren von AKS-Ereignissen mit Event Grid (Vorschau)
+      href: quickstart-event-grid.md
 - name: Tutorials
   items:
     - name: '1: Vorbereiten der Anwendung für AKS'

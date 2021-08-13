@@ -106,6 +106,8 @@
           href: howto-private-endpoints.md
         - name: Verwalten der Netzwerkzugriffssteuerung
           href: howto-network-access-control.md
+        - name: Schützen von ausgehendem Datenverkehr über freigegebene private Endpunkte
+          href: howto-shared-private-endpoints.md
         - name: Verwenden der verwalteten Identität
           href: howto-use-managed-identity.md
     - name: Integrieren
@@ -126,6 +128,8 @@
           href: signalr-howto-troubleshoot-guide.md
         - name: Methoden zur Problembehandlung
           href: signalr-howto-troubleshoot-method.md
+        - name: Problembehandlung mit dem Tool für die Liveablaufverfolgung
+          href: signalr-howto-troubleshoot-live-trace.md
 - name: References
   items:
     - name: Azure CLI
@@ -152,7 +156,7 @@
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=signalr-service'
     - name: Häufig gestellte Fragen
-      href: signalr-resource-faq.md
+      href: signalr-resource-faq.yml
     - name: SignalR Service-Einschränkungen auf Abonnementebene
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits
     - name: Preise

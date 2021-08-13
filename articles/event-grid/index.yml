@@ -1,103 +1,115 @@
 ### YamlMime:Landing
 title: 'Azure Event Grid: Dokumentation'
-summary: Es wird beschrieben, wie Sie mit Azure Event Grid nahezu in Echtzeit auf wichtige Ereignisse in Azure-Diensten und anderen Diensten reagieren.
+summary: 'Es wird beschrieben, wie Sie mit Azure Event Grid nahezu in Echtzeit auf wichtige Ereignisse in Azure-Diensten und anderen Diensten reagieren.'
 metadata:
   title: 'Azure Event Grid: Dokumentation'
-  description: Es wird beschrieben, wie Sie mit Azure Event Grid nahezu in Echtzeit auf wichtige Ereignisse in Azure-Diensten und anderen Diensten reagieren.
+  description: 'Es wird beschrieben, wie Sie mit Azure Event Grid nahezu in Echtzeit auf wichtige Ereignisse in Azure-Diensten und anderen Diensten reagieren.'
   services: event-grid
   ms.service: event-grid
-  ms.subservice: 
+  ms.subservice: null
   ms.topic: landing-page
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 09/06/2019
-  ms.openlocfilehash: 7410753ed4ddd0ef2b53a73c41e0f46b32080d49
-  ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104598472"
+  ms.date: 07/22/2021
 landingContent:
-- title: Informationen zu Azure Event Grid
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Was ist Event Grid?
-      url: overview.md
-  - linkListType: concept
-    links:
-    - text: Event Grid-Konzepte
-      url: concepts.md
-    - text: Ereignisquellen
-      url: overview.md#event-sources
-    - text: Ereignishandler
-      url: event-handlers.md
-    - text: Ereignisfilter
-      url: event-filtering.md
-- title: Szenarien
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt
-      url: blob-event-quickstart-portal.md
-    - text: Azure Functions als Ereignishandler
-      url: custom-event-to-function.md
-    - text: Warteschlangenspeicher als Ereignishandler
-      url: custom-event-to-queue-storage.md
-    - text: Event Hubs als Ereignishandler
-      url: custom-event-to-eventhub.md
-    - text: Weiterleiten von benutzerdefinierten Ereignissen an einen Webendpunkt
-      url: custom-event-quickstart-portal.md
-    - text: Senden von Ereignissen aus einer privaten Containerregistrierung
-      url: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
-  - linkListType: tutorial
-    links:
-    - text: Senden einer E-Mail bei VM-Änderungen
-      url: monitor-virtual-machine-changes-event-grid-logic-app.md
-    - text: Ändern der Größe von hochgeladenen Bildern
-      url: resize-images-on-storage-blob-upload-event.md
-    - text: Auslösen des Automation-Runbooks
-      url: ensure-tags-exists-on-new-virtual-machines.md
-    - text: Senden einer E-Mail nach dem Hinzufügen eines IoT Hub-Geräts
-      url: publish-iot-hub-events-to-logic-apps.md
-    - text: Reagieren auf Service Bus-Ereignisse
-      url: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - text: Streamen von Daten aus Event Hubs
-      url: event-grid-event-hubs-integration.md
-    - text: Weiterleiten von Media Services-Ereignissen
-      url: ..//media-services/latest/monitoring/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - text: Weiterleiten an Hybrid Connections
-      url: custom-event-to-hybrid-connection.md
-- title: Erweiterte Konzepte
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Sicherheit und Authentifizierung
-      url: security-authentication.md
-    - text: Übermittlung und Wiederholung
-      url: delivery-and-retry.md
-    - text: Ereignisdomänen
-      url: event-domains.md
-    - text: Notfallwiederherstellung mit Georeplikation
-      url: geo-disaster-recovery.md
-  - linkListType: architecture
-    links:
-    - text: Referenzarchitektur für Warteschlangen und Ereignisse
-      url: /azure/architecture/reference-architectures/enterprise-integration/queues-events
-- title: Anpassungen
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Weiterleiten von benutzerdefinierten Ereignissen an einen Webendpunkt
-      url: custom-event-quickstart-portal.md
-  - linkListType: how-to-guide
-    links:
-    - text: Erstellen eines benutzerdefinierten Themas
-      url: scripts/event-grid-cli-create-custom-topic.md
-    - text: Abonnieren eines benutzerdefinierten Themas
-      url: scripts/event-grid-cli-subscribe-custom-topic.md
-    - text: Posten eines Beitrags in einem benutzerdefinierten Thema
-      url: post-to-custom-topic.md
-    - text: Zuordnen benutzerdefinierter Felder zum Event Grid-Schema
-      url: input-mappings.md
+  - title: Informationen zu Azure Event Grid
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Was ist Event Grid?
+            url: overview.md
+      - linkListType: concept
+        links:
+          - text: Event Grid-Konzepte
+            url: concepts.md
+          - text: Ereignisquellen
+            url: overview.md#event-sources
+          - text: Ereignishandler
+            url: event-handlers.md
+          - text: Ereignisfilter
+            url: event-filtering.md
+  - title: Erweiterte Konzepte
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Sicherheit und Authentifizierung
+            url: security-authentication.md
+          - text: Übermittlung und Wiederholung
+            url: delivery-and-retry.md
+          - text: Ereignisdomänen
+            url: event-domains.md
+          - text: Notfallwiederherstellung mit Georeplikation
+            url: geo-disaster-recovery.md
+      - linkListType: architecture
+        links:
+          - text: Referenzarchitektur für Warteschlangen und Ereignisse
+            url: /azure/architecture/reference-architectures/enterprise-integration/queues-events
+  - title: Anpassungen
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Weiterleiten von benutzerdefinierten Ereignissen an einen Webendpunkt
+            url: custom-event-quickstart-portal.md
+      - linkListType: how-to-guide
+        links:
+          - text: Erstellen eines benutzerdefinierten Themas
+            url: scripts/event-grid-cli-create-custom-topic.md
+          - text: Abonnieren eines benutzerdefinierten Themas
+            url: scripts/event-grid-cli-subscribe-custom-topic.md
+          - text: Posten eines Beitrags in einem benutzerdefinierten Thema
+            url: post-to-custom-topic.md
+          - text: Zuordnen benutzerdefinierter Felder zum Event Grid-Schema
+            url: input-mappings.md
+  - title: Event Grid in Kubernetes
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Was ist Event Grid in Kubernetes?
+            url: ./kubernetes/overview.md
+          - text: Funktionen
+            url: ./kubernetes/features.md
+          - text: Konzepte
+            url: ./kubernetes/concepts.md
+      - linkListType: quickstart
+        links:
+          - text: Weiterleiten von Cloudereignissen an Webhooks
+            url: ./kubernetes/create-topic-subscription.md
+      - linkListType: how-to-guide
+        links:
+          - text: Installieren der Event Grid-Erweiterung
+            url: ./kubernetes/install-k8s-extension.md
+  - title: Szenarien
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt
+            url: blob-event-quickstart-portal.md
+          - text: Azure Functions als Ereignishandler
+            url: custom-event-to-function.md
+          - text: Warteschlangenspeicher als Ereignishandler
+            url: custom-event-to-queue-storage.md
+          - text: Event Hubs als Ereignishandler
+            url: custom-event-to-eventhub.md
+          - text: Weiterleiten von benutzerdefinierten Ereignissen an einen Webendpunkt
+            url: custom-event-quickstart-portal.md
+          - text: Senden von Ereignissen aus einer privaten Containerregistrierung
+            url: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
+      - linkListType: tutorial
+        links:
+          - text: Senden einer E-Mail bei VM-Änderungen
+            url: monitor-virtual-machine-changes-event-grid-logic-app.md
+          - text: Ändern der Größe von hochgeladenen Bildern
+            url: resize-images-on-storage-blob-upload-event.md
+          - text: Auslösen des Automation-Runbooks
+            url: ensure-tags-exists-on-new-virtual-machines.md
+          - text: Senden einer E-Mail nach dem Hinzufügen eines IoT Hub-Geräts
+            url: publish-iot-hub-events-to-logic-apps.md
+          - text: Reagieren auf Service Bus-Ereignisse
+            url: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+          - text: Streamen von Daten aus Event Hubs
+            url: event-grid-event-hubs-integration.md
+          - text: Weiterleiten von Media Services-Ereignissen
+            url: ..//media-services/latest/monitoring/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
+          - text: Weiterleiten an Hybrid Connections
+            url: custom-event-to-hybrid-connection.md

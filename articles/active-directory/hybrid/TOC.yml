@@ -30,6 +30,8 @@
       items:
         - name: Worum handelt es sich bei Azure AD Connect und Connect Health?
           href: whatis-azure-ad-connect.md
+        - name: Was ist Azure AD Connect V2.0?
+          href: whatis-azure-ad-connect-v2.md
         - name: Auswählen der richtigen Authentifizierung
           href: ./choose-ad-authn.md
         - name: Identitätssynchronisierung und Resilienz bei doppelten Attributen
@@ -152,10 +154,8 @@
           href: reference-connect-instances.md
         - name: Migration
           items:
-            - name: Migrieren vom Verbund zu PHS
-              href: plan-migrate-adfs-password-hash-sync.md
-            - name: Migrieren vom Verbund zu PTA
-              href: plan-migrate-adfs-pass-through-authentication.md
+            - name: Migrieren vom Verbund zur Cloudauthentifizierung
+              href: migrate-from-federation-to-cloud-authentication.md
             - name: Verschieben von Gruppen aus einer Gesamtstruktur in eine andere
               href: how-to-connect-migrate-groups.md
             - name: Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts
@@ -217,7 +217,7 @@
         - name: Erste Schritte mit der Passthrough-Authentifizierung
           href: how-to-connect-pta-quick-start.md
         - name: 'Passthrough-Authentifizierung: häufig gestellte Fragen'
-          href: how-to-connect-pta-faq.md
+          href: how-to-connect-pta-faq.yml
         - name: Deaktivieren von PTA bei Verwendung von „Nicht konfigurieren“ für Azure AD Connect
           href: how-to-connect-pta-disable-do-not-configure.md
     - name: Verwalten von Verbunddiensten
@@ -244,12 +244,14 @@
           href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
         - name: "Notfallrotation von AD\_FS-Zertifikaten"
           href: how-to-connect-emergency-ad-fs-certificate-rotation.md
+        - name: Überwachen von Änderungen an der Verbundkonfiguration
+          href: how-to-connect-monitor-federation-changes.md
     - name: Verwalten des einmaligen Anmeldens
       items:
         - name: Erste Schritte beim einmaligen Anmelden
           href: how-to-connect-sso-quick-start.md
         - name: 'Einmaliges Anmelden: häufig gestellte Fragen'
-          href: how-to-connect-sso-faq.md
+          href: how-to-connect-sso-faq.yml
     - name: Verwalten von Azure AD Connect Health
       items:
         - name: Azure AD Connect Health-Vorgänge
@@ -357,9 +359,9 @@
     - name: Konten und Berechtigungen
       href: reference-connect-accounts-permissions.md
     - name: Häufig gestellte Fragen zu Azure AD Connect
-      href: reference-connect-faq.md
+      href: reference-connect-faq.yml
     - name: Azure AD Connect Health – FAQ
-      href: reference-connect-health-faq.md
+      href: reference-connect-health-faq.yml
     - name: Überlegungen zur Hybrididentität für Azure Government
       href: reference-connect-government-cloud.md
     - name: 'Azure AD Connect: Datenschutz'
@@ -378,6 +380,8 @@
       href: how-to-connect-fed-compatibility.md
     - name: Erzwingen von TLS 1.2
       href: reference-connect-tls-enforcement.md
+    - name: Referenz zu ADSync
+      href: reference-connect-adsync.md
     - name: Referenz zu ADSyncConfig
       href: reference-connect-adsyncconfig.md
     - name: Referenz zu ADSyncTools
@@ -386,7 +390,5 @@
       href: reference-connect-adconnectivitytools.md
     - name: msExchUserHoldPolicies und cloudMSExchUserHoldPolicies
       href: reference-connect-msexchuserholdpolicies.md
-    - name: "Grundlegendes zum Verschwinden eines Azure AD Connect\_1.4.xx.x-Geräts"
-      href: reference-connect-device-disappearance.md
     - name: Archiv des Azure AD Connect-Versionsverlaufs
       href: reference-connect-version-history-archive.md

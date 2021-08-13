@@ -1,0 +1,38 @@
+### YamlMime:Landing
+title: Remote-App-Streaming mit Azure Virtual Desktop
+summary: Mit dem Remote-App-Streaming in Azure Virtual Desktop können Sie Apps für Benutzer innerhalb und außerhalb Ihrer Organisation bereitstellen. Weitere Informationen finden Sie in diesen Tutorials und Leitfäden.
+metadata:
+  title: Remote-App-Streaming mit Azure Virtual Desktop
+  description: 'Hier erfahren Sie, wie sie mit dem Remote-App-Streaming in Azure Virtual Desktop Apps für Benutzer innerhalb und außerhalb Ihrer Organisation bereitstellen.'
+  ms.service: virtual-desktop
+  services: virtual-desktop
+  ms.topic: landing-page
+  manager: femila
+  author: Heidilohr
+  ms.author: helohr
+  ms.date: 07/14/2021
+landingContent:
+  - title: Remote-App-Streaming mit Azure Virtual Desktop
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: 'Was ist Azure Virtual Desktop, und wie kann ich damit Apps an meine Benutzer streamen?'
+            url: overview.md
+  - title: Erste Schritte mit Azure Virtual Desktop
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: 1. Erstellen eines Hostpools mit dem Azure-Portal
+            url: ../create-host-pools-azure-marketplace.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+          - text: 2. Verwalten von App-Gruppen
+            url: ../manage-app-groups.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+          - text: 3. Erstellen eines Hostpools zum Überprüfen von Dienstupdates
+            url: ../create-validation-host-pool.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+          - text: 4. Einrichten von Dienstwarnungen
+            url: ../set-up-service-alerts.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+  - title: Weitere Informationen zu Azure Virtual Desktop
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: 'Die Hauptdokumentation zu Azure Virtual Desktop, in der Sie ausführlichere Informationen zum Dienst finden'
+            url: ../overview.md
