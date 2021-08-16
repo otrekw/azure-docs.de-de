@@ -1,34 +1,34 @@
 ---
-title: Synapse Studio-Notebooks
-description: In diesem Artikel erfahren Sie, wie Sie Azure Synapse Studio-Notebooks erstellen und entwickeln, um Datenvorbereitung und -visualisierung durchzuführen.
+title: Verwendung von Synapse-Notebooks
+description: In diesem Artikel erfahren Sie, wie Sie Synapse-Notebooks erstellen und entwickeln, um Datenvorbereitung und -visualisierung durchzuführen.
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 10/19/2020
+ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 203ac7252f06b342e7f553bb1900cdf9ac959e0a
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: a66b036bde5f25873e9d4a371faf249deadd69dc
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891379"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736896"
 ---
-# <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse Studio-Notebooks in Azure Synapse Analytics
+# <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse-Notebooks in Azure Synapse Analytics
 
-Ein Synapse Studio-Notebook ist eine Weboberfläche, mit der Sie Dateien erstellen können, die Livecode, Visualisierungen und beschreibenden Text enthalten. Notebooks sind ein guter Ausgangspunkt, um Ideen zu überprüfen und schnelle Experimente zu verwenden, um Erkenntnisse aus Ihren Daten zu gewinnen. Notebooks werden auch häufig bei der Datenvorbereitung, Datenvisualisierung, Machine Learning und andere Big Data-Szenarien verwendet.
+Ein Synapse-Notebook ist eine Weboberfläche zum Erstellen von Dateien, die Live-Code, Visualisierungen und beschreibenden Text enthalten. Notebooks sind ein guter Ausgangspunkt, um Ideen zu überprüfen und schnelle Experimente zu verwenden, um Erkenntnisse aus Ihren Daten zu gewinnen. Notebooks werden auch häufig bei der Datenvorbereitung, Datenvisualisierung, Machine Learning und andere Big Data-Szenarien verwendet.
 
-Mit einem Azure Synapse Studio-Notebook können Sie:
+Mit einem Synapse-Notebook können Sie:
 
 * Ohne Einrichtungsaufwand sofort loslegen.
 * Daten mit integrierten Sicherheitsfeatures auf Unternehmensniveau schützen.
 * Daten in Rohformaten (CSV, TXT, JSON usw.), verarbeiteten Dateiformaten (Parquet, Delta Lake, ORC usw.) und tabellarischen SQL-Datendateien gegen Spark und SQL analysieren.
 * Produktiv sein mit erweiterten Funktionen zur Dokumenterstellung und integrierter Datenvisualisierung.
 
-In diesem Artikel wird beschrieben, wie Sie Notebooks in Azure Synapse Studio verwenden.
+In diesem Artikel wird beschrieben, wie Notebooks in Synapse Studio verwendet werden.
 
 ## <a name="preview-of-the-new-notebook-experience"></a>Vorschau auf die neue Notebookumgebung
 Das Synapse-Team brachte die neue Notebookkomponente in Synapse Studio ein, um den Kunden von Microsoft eine einheitliche Notebookumgebung zu bieten und die Erkennbarkeit, Produktivität, Freigabe und Zusammenarbeit zu maximieren. Die neue Notebookumgebung ist für die Vorschau bereit. Aktivieren Sie die Schaltfläche für **Previewfunktionen** in der Symbolleiste des Notebooks. Die nachfolgende Tabelle zeigt einen Featurevergleich zwischen dem vorhandenen Notebook (dem so genannten „klassischen Notebook“) und dem neuen Notebook der Vorschau.  
@@ -48,13 +48,13 @@ Das Synapse-Team brachte die neue Notebookkomponente in Synapse Studio ein, um d
 
 ## <a name="create-a-notebook"></a>Erstellen eines Notebooks
 
-Ein Notebook kann auf zwei Arten erstellt werden. Sie können ein neues Notebook erstellen oder ein vorhandenes Notebook aus dem **Objekt-Explorer** in einen Azure Synapse-Arbeitsbereich importieren. Azure Synapse Studio-Notebooks können Jupyter Notebook IPYNB-Standarddateien erkennen.
+Ein Notebook kann auf zwei Arten erstellt werden. Sie können ein neues Notebook erstellen oder ein vorhandenes Notebook aus dem **Objekt-Explorer** in einen Synapse-Arbeitsbereich importieren. Synapse-Notebooks erkennen Standard Jupyter Notebook IPYNB-Dateien.
 
 ![Erstellen und Importieren von Notebooks](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook-2.png)
 
 ## <a name="develop-notebooks"></a>Entwickeln von Notebooks
 
-Notebooks bestehen aus Zellen, bei denen es sich um einzelne Codeblöcke oder Text handelt, die unabhängig oder als Gruppe ausgeführt werden können.
+Notebooks bestehen aus Zellen, bei denen es sich um einzelne Code- oder Textblöcke handelt, die unabhängig oder als Gruppe ausgeführt werden können.
 
 ### <a name="add-a-cell"></a>Hinzufügen einer Zelle
 
@@ -87,7 +87,7 @@ Es gibt mehrere Möglichkeiten, um Ihrem Notebook eine neue Zelle hinzuzufügen.
 
 ### <a name="set-a-primary-language"></a>Festlegen einer primären Sprache
 
-Azure Synapse Studio-Notebooks unterstützen vier Apache Spark-Sprachen:
+Synapse-Notebooks unterstützen vier Apache Spark-Sprachen:
 
 * PySpark (Python)
 * Spark (Scala)
@@ -115,7 +115,7 @@ Die folgende Abbildung zeigt ein Beispiel dafür, wie Sie eine PySpark-Abfrage m
 
 ### <a name="use-temp-tables-to-reference-data-across-languages&quot;></a>Verwenden von temporären Tabellen zum Verweisen auf Daten in verschiedenen Sprachen
 
-Sie können nicht direkt auf Daten oder Variablen in verschiedenen Sprachen einem Synapse Studio-Notebook verweisen. In Spark kann auf eine temporäre Tabelle in verschiedenen Sprachen verwiesen werden. Im Folgenden finden Sie ein Beispiel, wie Sie einen `Scala`-Datenrahmen in `PySpark` und `SparkSQL` mittels einer temporären Spark-Tabelle als Problemumgehung lesen können.
+Sie können in einem Synapse-Notebook nicht direkt auf Daten oder Variablen in verschiedenen Sprachen verweisen. In Spark kann auf eine temporäre Tabelle in verschiedenen Sprachen verwiesen werden. Im Folgenden finden Sie ein Beispiel, wie Sie einen `Scala`-Datenrahmen in `PySpark` und `SparkSQL` mittels einer temporären Spark-Tabelle als Problemumgehung lesen können.
 
 1. Lesen Sie in Zelle 1 einen Datenrahmen von einem SQL-Poolconnector mithilfe von Scala, und erstellen Sie eine temporäre Tabelle.
 
@@ -141,7 +141,7 @@ Sie können nicht direkt auf Daten oder Variablen in verschiedenen Sprachen eine
 
 ### <a name="ide-style-intellisense"></a>IDE-artiges IntelliSense
 
-Azure Synapse Studio-Notebooks sind in den Monaco-Editor integriert, um den Zellen-Editor mit IDE-artigem IntelliSense auszustatten. Syntaxhervorhebung, Fehlermarkierungen und automatische Codevervollständigungen helfen Ihnen dabei, Code zu schreiben und Probleme schneller zu erkennen.
+Synapse-Notebooks sind in den Monaco-Editor integriert, um den Zellen-Editor mit IDE-style IntelliSense auszustatten. Syntaxhervorhebung, Fehlermarkierungen und automatische Codevervollständigungen helfen Ihnen dabei, Code zu schreiben und Probleme schneller zu erkennen.
 
 Die IntelliSense-Funktionen befinden sich in unterschiedlichen Stadien der Entwicklung für verschiedene Sprachen. In der folgenden Tabelle können Sie sehen, was unterstützt wird.
 
@@ -156,7 +156,7 @@ Die IntelliSense-Funktionen befinden sich in unterschiedlichen Stadien der Entwi
 
 ### <a name="code-snippets"></a>Codeausschnitte
 
-Azure Synapse Studio-Notebooks stellen Codeausschnitte bereit, die die Eingabe häufig verwendeter Codemuster erleichtern, z. B. das Konfigurieren Ihrer Spark-Sitzung, das Lesen von Daten als Spark DataFrame oder das Zeichnen von Diagrammen mit matplotlib usw.
+Synapse-Notebooks stellen Codeausschnitte bereit, die die Eingabe häufig verwendeter Codemuster erleichtern, wie z. B. das Konfigurieren Ihrer Spark-Sitzung, das Lesen von Daten als Spark DataFrame oder das Zeichnen von Diagrammen mit matplotlib usw.
 
 Codeausschnitte werden in [IntelliSense](#ide-style-intellisense) gemeinsam mit anderen Vorschlägen angezeigt. Der Inhalt der Codeausschnitte richtet sich nach der Codezellensprache. Sie können die verfügbaren Ausschnitte anzeigen, indem Sie **Snippet** oder beliebige Schlüsselwörter eingeben, die im Titel für den Ausschnitt im Codezellen-Editor angezeigt werden. Wenn Sie beispielsweise **read** eingeben, wird eine Liste der Codeausschnitte zum Lesen von Daten aus verschiedenen Datenquellen angezeigt.
 
@@ -271,7 +271,8 @@ Wird nicht unterstützt.
 
 Das Feld „Gliederung (Inhaltsverzeichnis)“ stellt den ersten Markdownheader einer beliebigen Markdownzelle in einem Randleistenfenster für die schnelle Navigation dar. Die Gliederungsrandleiste ist in der Größe veränderbar und reduzierbar, um den Bildschirm optimal anzupassen. Sie können die Schaltfläche **Gliederung** auf der Notebook-Befehlsleiste auswählen, um die Randleiste zu öffnen oder auszublenden.
 
-<a name="azure-notebook-outline"></a>![azure-notebook-outline](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+![azure-notebook-outline](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+
 ---
 
 
@@ -372,7 +373,7 @@ Unterhalb der Zelle wird ein schrittweiser Zellenausführungsstatus angezeigt, d
 
 ### <a name="spark-progress-indicator"></a>Spark-Statusanzeige
 
-Ein Azure Synapse Studio-Notebook ist vollständig Spark-basiert. Codezellen werden im serverlosen Apache Spark-Pool remote ausgeführt. Eine Spark-Auftragsstatusanzeige wird mit einem Statusbalken in Echtzeit angezeigt, um Ihnen den Status der Auftragsausführung zu verdeutlichen.
+Ein Synapse-Notebook basiert ausschließlich auf Spark. Codezellen werden im serverlosen Apache Spark-Pool remote ausgeführt. Eine Spark-Auftragsstatusanzeige wird mit einem Statusbalken in Echtzeit angezeigt, um Ihnen den Status der Auftragsausführung zu verdeutlichen.
 Anhand der Anzahl der Aufgaben pro Auftrag oder Phase können Sie die parallele Ebene Ihres Spark-Auftrags identifizieren. Sie können außerdem die Spark-Benutzeroberfläche eines spezifischen Auftrags (oder einer Phase) erweitern, indem Sie den Link im Auftragsnamen (oder Phasennamen) auswählen.
 
 
@@ -476,7 +477,7 @@ In den Notebook-Eigenschaften können Sie konfigurieren, ob die Zellenausgabe be
    ![Notebook-Eigenschaften](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>Magic-Befehle
-Sie können vertraute Jupyter-Magic-Befehle in Azure Synapse Studio-Notebooks verwenden. In der folgenden Liste finden Sie die derzeit verfügbaren Magic-Befehle. [Teilen Sie uns Ihre Anwendungsfälle auf GitHub mit](https://github.com/MicrosoftDocs/azure-docs/issues/new), damit wir weitere Magic-Befehle erstellen können, um Ihre Anforderungen zu erfüllen.
+Sie können bekannte Jupyter-Magic-Befehle in Synapse-Notebooks verwenden. In der folgenden Liste finden Sie die derzeit verfügbaren Magic-Befehle. [Teilen Sie uns Ihre Anwendungsfälle auf GitHub mit](https://github.com/MicrosoftDocs/azure-docs/issues/new), damit wir weitere Magic-Befehle erstellen können, um Ihre Anforderungen zu erfüllen.
 
 > [!NOTE]
 > Nur die folgenden Magic-Befehle werden in einer Synapse-Pipeline unterstützt: %%pyspark, %%spark, %%csharp, %%sql. 
@@ -528,7 +529,7 @@ Azure Data Factory sucht nach der Parameterzelle und behandelt diese Zelle als S
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>Zuweisen von Parameterwerten über eine Pipeline
 
-Sobald Sie ein Notebook mit Parametern erstellt haben, können Sie dieses über eine Pipeline mit der Azure Synapse Analytics-Aktivität ausführen. Nachdem Sie die Aktivität zu Ihrem Pipelinecanvas hinzugefügt haben, können Sie die Parameterwerte auf der Registerkarte **Einstellungen** im Abschnitt **Basisparameter** festlegen. 
+Sobald Sie ein Notebook mit Parametern erstellt haben, können Sie dieses über eine Pipeline mit der Synapse Analytics-Aktivität ausführen. Nachdem Sie die Aktivität zu Ihrem Pipelinecanvas hinzugefügt haben, können Sie die Parameterwerte auf der Registerkarte **Einstellungen** im Abschnitt **Basisparameter** festlegen. 
 
 ![Zuweisen eines Parameters](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
@@ -538,7 +539,7 @@ Beim Zuweisen von Parameterwerten können Sie die [Pipelineausdruckssprache](../
 
 ## <a name="shortcut-keys"></a>Tastenkombinationen
 
-Ähnlich wie Jupyter-Notebooks verfügen Azure Synapse Studio-Notebooks über eine modale Benutzeroberfläche. Mit der Tastatur werden unterschiedliche Aktionen ausgeführt, je nachdem, in welchem Modus sich die Notebook-Zelle befindet. Synapse Studio-Notebooks unterstützen die folgenden zwei Modi für eine bestimmte Codezelle: Befehlsmodus und Bearbeitungsmodus.
+Ähnlich wie Jupyter-Notebooks verfügen Synapse-Notebooks über eine modale Benutzeroberfläche. Mit der Tastatur werden unterschiedliche Aktionen ausgeführt, je nachdem, in welchem Modus sich die Notebook-Zelle befindet. Synapse-Notebooks unterstützen die folgenden zwei Modi für eine bestimmte Codezelle: Befehlsmodus und Bearbeitungsmodus.
 
 1. Eine Zelle befindet sich im Befehlsmodus, wenn Sie kein Textcursor zur Eingabe auffordert. Wenn sich eine Zelle im Befehlsmodus befindet, können Sie das Notebook als Ganzes bearbeiten, aber keine Eingaben in einzelne Zellen vornehmen. Sie wechseln in den Befehlsmodus, indem Sie `ESC` drücken oder mit der Maus außerhalb des Editor-Bereichs einer Zelle klicken.
 
@@ -552,9 +553,9 @@ Beim Zuweisen von Parameterwerten können Sie die [Pipelineausdruckssprache](../
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
-Mithilfe der folgenden Tastenkombinationen können Sie in Azure Synapse-Notebooks leichter navigieren und Code ausführen.
+Mithilfe der folgenden Tastenkombinationen können Sie in Synapse-Notebooks einfacher navigieren und Code ausführen.
 
-| Aktion |Tastenkombinationen für Synapse Studio-Notebooks  |
+| Action |Tastenkombinationen für Synapse-Notebooks  |
 |--|--|
 |Aktuelle Zelle ausführen und die darunter auswählen | UMSCHALT+EINGABE |
 |Aktuelle Zelle ausführen und darunter einfügen | ALT+EINGABE |
@@ -571,7 +572,7 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Synapse-Notebook
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
-| Aktion |Tastenkombinationen für Synapse Studio-Notebooks  |
+| Aktion |Tastenkombinationen für Synapse-Notebooks  |
 |--|--|
 |Aktuelle Zelle ausführen und die darunter auswählen | UMSCHALT+EINGABE |
 |Aktuelle Zelle ausführen und darunter einfügen | ALT+EINGABE |
@@ -590,9 +591,9 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Synapse-Notebook
 ### <a name="shortcut-keys-under-edit-mode"></a>Tastenkombinationen im Bearbeitungsmodus
 
 
-Mithilfe der folgenden Tastenkombinationen können Sie in Azure Synapse-Notebooks leichter navigieren und Code ausführen, während sie sich im Bearbeitungsmodus befinden.
+Mithilfe der folgenden Tastenkombinationen können Sie in Synapse-Notebooks leichter navigieren und Code ausführen, während sie sich im Bearbeitungsmodus befinden.
 
-| Aktion |Tastenkombinationen für Synapse Studio-Notebooks  |
+| Action |Tastenkombinationen für Synapse-Notebooks  |
 |--|--|
 |Cursor nach oben verschieben | Nach oben |
 |Cursor nach unten verschieben|Nach unten|

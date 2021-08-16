@@ -408,8 +408,6 @@
           href: how-to-train-cli.md
         - name: Trainieren mit der REST-API
           href: how-to-train-with-rest.md
-        - name: Trainieren mit der Benutzeroberfläche für die Auftragserstellung
-          href: how-to-train-with-ui.md
         - name: Trainieren mit dem Python SDK
           items:
             - name: Konfigurieren und Übermitteln einer Trainingsausführung
@@ -587,6 +585,9 @@
               href: how-to-enable-app-insights.md
         - name: Hochleistungsbereitstellung mit Triton
           href: how-to-deploy-with-triton.md
+        - name: Fortlaufendes Bereitstellen von Modellen
+          displayName: ci cd azure devops models
+          href: how-to-deploy-continuously-deploy.md
         - name: Bereitstellen eines Diensts für verschlüsselte Rückschlüsse
           displayName: 'homomorhic,encryption,deployment'
           href: how-to-homomorphic-encryption-seal.md

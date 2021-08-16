@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 637f09c5ee52928631b965dfa6caea9368b44991
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 908d9492a6eb699c999fe93b92697dc511dca082
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550758"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189293"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -33,7 +33,10 @@ Die vollständige Liste der Application Insights-Features, die für Ihre Funkti
 
 ## <a name="application-insights-integration"></a>Application Insights-Integration
 
-In der Regel erstellen Sie eine Application Insights-Instanz, wenn Sie Ihre Funktions-App erstellen. In diesem Fall ist der für die Integration erforderliche Instrumentierungsschlüssel bereits als Anwendungseinstellung mit dem Namen *APPINSIGHTS_INSTRUMENTATIONKEY* festgelegt. Wenn aus irgendeinem Grund für Ihre Funktions-App kein Instrumentierungsschlüssel festgelegt ist, müssen Sie die [Application Insights-Integration aktivieren](configure-monitoring.md#enable-application-insights-integration).  
+In der Regel erstellen Sie eine Application Insights-Instanz, wenn Sie Ihre Funktions-App erstellen. In diesem Fall ist der für die Integration erforderliche Instrumentierungsschlüssel bereits als Anwendungseinstellung mit dem Namen `APPINSIGHTS_INSTRUMENTATIONKEY` festgelegt. Wenn aus irgendeinem Grund für Ihre Funktions-App kein Instrumentierungsschlüssel festgelegt ist, müssen Sie die [Application Insights-Integration aktivieren](configure-monitoring.md#enable-application-insights-integration).  
+
+> [!IMPORTANT]
+> Sovereign Clouds wie Azure Government erfordern die Verwendung der Application Insights-Verbindungszeichenfolge (`APPLICATIONINSIGHTS_CONNECTION_STRING`) anstelle des Instrumentierungsschlüssels. Weitere Informationen finden Sie in der [Referenz zu APPLICATIONINSIGHTS_CONNECTION_STRING](functions-app-settings.md#applicationinsights_connection_string).
 
 ## <a name="collecting-telemetry-data"></a>Sammeln von Telemetriedaten
 

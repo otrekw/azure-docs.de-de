@@ -179,6 +179,8 @@
               href: storage-files-migration-nas-cloud-databox.md
         - name: Verwenden einer Hybridbereitstellung als Ziel
           items:
+            - name: Migrieren von Massendaten zur Azure-Dateisynchronisierung mit Azure Data Box
+              href: ../file-sync/file-sync-offline-data-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: Migrieren von Linux zu einem Hybriddateiserver mit der Azure-Dateisynchronisierung
               href: storage-files-migration-linux-hybrid.md
             - name: Migrieren von einem lokalen NAS zu einem Hybriddateiserver mit der Azure-Dateisynchronisierung

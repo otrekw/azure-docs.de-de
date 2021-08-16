@@ -10,12 +10,12 @@ ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7e951de46b5220e5c2edde2fcd84673c9a16cebc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bdd0c8a3ddacd3a99627bfc29c41e61a165350c6
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477704"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812366"
 ---
 # <a name="manage-and-restore-soft-deleted-blobs"></a>Verwalten und Wiederherstellen vorläufig gelöschter Blobs
 
@@ -78,7 +78,7 @@ Der Aufruf von **Undelete Blob** für einen Blob, der nicht gelöscht wurde, hat
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverDeletedBlobs":::
 
-Wenn Sie eine spezifische Version wiederherstellen möchten, rufen Sie den Vorgang **Undelete Blob** zunächst für das Basisblob oder die Basisversion auf und kopieren die gewünschte Version über das Basisblob. Das folgende Beispiel stellt ein Blockblob in der zuletzt gespeicherten Version wieder her:
+Wenn Sie eine spezifische Momentaufnahme wiederherstellen möchten, rufen Sie den Vorgang **Undelete Blob** zunächst für das Basisblob auf, und kopieren Sie die gewünschte Momentaufnahme über das Basisblob. Im folgenden Beispiel wird die zuletzt generierte Momentaufnahme eines Blockblobs wiederhergestellt:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobSnapshot":::
 
@@ -96,7 +96,7 @@ foreach (CloudBlob blob in container.ListBlobs(useFlatBlobListing: true, blobLis
 }
 ```
 
-Wenn Sie eine spezifische Momentaufnahme wiederherstellen möchten, rufen Sie den Vorgang **Undelete Blob** zunächst für das Basisblob auf und kopieren die gewünschte Momentaufnahme über das Basisblob. Im folgenden Beispiel wird die zuletzt generierte Momentaufnahme eines Blockblobs wiederhergestellt:
+Wenn Sie eine spezifische Momentaufnahme wiederherstellen möchten, rufen Sie den Vorgang **Undelete Blob** zunächst für das Basisblob auf, und kopieren Sie die gewünschte Momentaufnahme über das Basisblob. Im folgenden Beispiel wird die zuletzt generierte Momentaufnahme eines Blockblobs wiederhergestellt:
 
 ```csharp
 // Restore the block blob.
@@ -130,6 +130,6 @@ Nicht zutreffend Die Blobversionsverwaltung wird nur in den Azure Storage-Client
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Vorläufiges Löschen für Blobspeicher](./soft-delete-blob-overview.md)
+- [Vorläufiges Löschen für Blobspeicher](soft-delete-blob-overview.md)
 - [Aktivieren von „Vorläufiges Löschen“ für Blobs](soft-delete-blob-enable.md)
 - [Blobversionsverwaltung](versioning-overview.md)

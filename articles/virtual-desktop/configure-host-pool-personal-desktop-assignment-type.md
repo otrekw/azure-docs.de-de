@@ -1,35 +1,36 @@
 ---
-title: Windows Virtual Desktop – Zuweisungstyp für persönliche Desktops – Azure
-description: Konfigurieren der automatischen oder direkten Zuweisung für einen Windows Virtual Desktop-Hostpool mit persönlichen Desktops.
+title: Azure Virtual Desktop – Zuweisungstyp für persönliche Desktops – Azure
+description: So konfigurieren Sie die automatische oder direkte Zuweisung für einen Azure Virtual Desktop-Hostpool mit persönlichen Desktops.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 11fbbe4d816c9f50afc879d74991976a467a9013
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 39e4b23b4f007c790dcfe495661628a53a9293d8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448133"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111743889"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurieren des Zuweisungstyps für den Hostpool mit persönlichen Desktops
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/configure-host-pool-personal-desktop-assignment-type-2019.md).
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/configure-host-pool-personal-desktop-assignment-type-2019.md).
 
-Sie können den Zuweisungstyp Ihres Hostpools mit persönlichen Desktops konfigurieren, um Ihre Windows Virtual Desktop-Umgebung besser an Ihre Bedürfnisse anzupassen. In diesem Thema erfahren Sie, wie Sie die automatische oder direkte Zuweisung für Ihre Benutzer konfigurieren.
+Sie können den Zuweisungstyp Ihres Hostpools mit persönlichen Desktops konfigurieren, um Ihre Azure Virtual Desktop-Umgebung besser an Ihre Bedürfnisse anzupassen. In diesem Thema erfahren Sie, wie Sie die automatische oder direkte Zuweisung für Ihre Benutzer konfigurieren.
 
 >[!NOTE]
 > Die Anweisungen in diesem Artikel gelten nur für Hostpools mit persönlichen Desktops, nicht für gepoolte Hostpools, da Benutzer in gepoolten Hostpools keinen bestimmten Sitzungshosts zugewiesen sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie das Windows Virtual Desktop PowerShell-Modul bereits heruntergeladen und installiert haben. Wenn dies nicht der Fall ist, befolgen Sie die Anweisungen unter [Einrichten des PowerShell-Moduls](powershell-module.md).
+In diesem Artikel wird davon ausgegangen, dass Sie das Azure Virtual Desktop PowerShell-Modul bereits heruntergeladen und installiert haben. Wenn dies nicht der Fall ist, befolgen Sie die Anweisungen unter [Einrichten des PowerShell-Moduls](powershell-module.md).
 
 ## <a name="configure-automatic-assignment"></a>Konfigurieren der automatischen Zuweisung
 
-Die automatische Zuweisung ist der Standardzuweisungstyp für neue Hostpools mit persönlichen Desktops, die in Ihrer Windows Virtual Desktop-Umgebung erstellt werden. Für das automatische Zuweisen von Benutzern ist kein bestimmter Sitzungshost erforderlich.
+Die automatische Zuweisung ist der Standardzuweisungstyp für neue Hostpools mit persönlichen Desktops, die in Ihrer Azure Virtual Desktop-Umgebung erstellt werden. Für das automatische Zuweisen von Benutzern ist kein bestimmter Sitzungshost erforderlich.
 
 Um Benutzer automatisch zuzuweisen, weisen Sie sie zunächst dem Hostpool mit persönlichen Desktops zu, damit sie den Desktop in ihrem Feed sehen können. Wenn ein zugewiesener Benutzer den Desktop in seinem Feed startet, beansprucht er einen verfügbaren Sitzungshost, wenn er nicht bereits eine Verbindung mit dem Hostpool hergestellt hat, wodurch der Zuweisungsvorgang abgeschlossen wird.
 
@@ -70,9 +71,9 @@ Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -Re
 So weisen Sie im Azure-Portal einen Benutzer einem Sitzungshost direkt zu
 
 1. Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
-2. Geben Sie **Windows Virtual Desktop** in die Suchleiste ein.
-3. Wählen Sie unter **Dienste** die Option **Windows Virtual Desktop** aus.
-4. Klicken Sie auf der Seite „Windows Virtual Desktop“ im Menü auf der linken Seite des Fensters auf **Hostpools**.
+2. Geben Sie **Azure Virtual Desktop** in die Suchleiste ein.
+3. Wählen Sie unter **Dienste** die Option **Azure Virtual Desktop** aus.
+4. Klicken Sie auf der Seite „Azure Virtual Desktop“ im Menü auf der linken Seite des Fensters auf **Hostpools**.
 5. Klicken Sie auf den Namen des Hostpools, den Sie aktualisieren möchten.
 6. Navigieren Sie als Nächstes zum Menü auf der linken Seite des Fensters, und klicken Sie auf **Anwendungsgruppen**.
 7. Klicken Sie auf den Namen der Desktop-App-Gruppe, die Sie bearbeiten möchten, und dann im Menü auf der linken Seite des Fensters auf **Zuweisungen**.
@@ -84,7 +85,7 @@ So weisen Sie im Azure-Portal einen Benutzer einem Sitzungshost direkt zu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie den persönlichen Desktopzuweisungstyp konfiguriert haben, können Sie sich an einem Windows Virtual Desktop-Client anmelden, um ihn als Teil einer Benutzersitzung zu testen. In den nächsten zwei Vorgehensweisen erfahren Sie, wie Sie mit dem ausgewählten Client eine Verbindung zu einer Sitzung herstellen:
+Nachdem Sie den persönlichen Desktopzuweisungstyp konfiguriert haben, können Sie sich an einem Azure Virtual Desktop-Client anmelden, um ihn als Teil einer Benutzersitzung zu testen. In den nächsten zwei Vorgehensweisen erfahren Sie, wie Sie mit dem ausgewählten Client eine Verbindung zu einer Sitzung herstellen:
 
 - [Herstellen einer Verbindung mit dem Windows-Desktopclient](connect-windows-7-10.md)
 - [Herstellen einer Verbindung mit dem Webclient](connect-web.md)

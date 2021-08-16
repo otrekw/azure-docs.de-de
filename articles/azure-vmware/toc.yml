@@ -24,7 +24,7 @@
       href: tutorial-configure-networking.md
     - name: Erstellen einer privaten Cloud
       href: tutorial-create-private-cloud.md
-    - name: Erstellen eines Netzwerksegments
+    - name: Erstellen eines NSX-T-Netzwerksegments
       href: tutorial-nsx-t-network-segment.md
     - name: Löschen einer privaten Cloud
       href: tutorial-delete-private-cloud.md
@@ -62,14 +62,12 @@
       href: reserved-instance.md
     - name: Konfigurieren der Netzwerkeinstellungen
       items:
-        - name: Konfigurieren des DHCP-Servers oder -Relays
+        - name: Konfigurieren von DHCP
           href: configure-dhcp-azure-vmware-solution.md
-        - name: Konfigurieren von DHCP in Netzwerken mit L2-Stretching
+        - name: "Konfigurieren von DHCP in VMware\_HCX-Netzwerken mit L2-Stretching"
           href: configure-l2-stretched-vmware-hcx-networks.md
-        - name: Konfigurieren der DNS-Weiterleitung
-          href: configure-dns-azure-vmware-solution.md
-        - name: Konfigurieren der Portspiegelung
-          href: configure-port-mirroring-azure-vmware-solution.md
+        - name: Konfigurieren von NSX-Komponenten mithilfe von Azure
+          href: configure-nsx-network-components-azure-portal.md
         - name: "Konfigurieren des GitHub\_Enterprise-Servers"
           href: ./configure-github-enterprise-server.md
         - name: Ermöglichen von öffentlichem Internetzugriff
@@ -102,8 +100,6 @@
           href: deploy-traffic-manager-balance-workloads.md
         - name: Konfigurieren von Warnungen und Verwenden von Metriken
           href: configure-alerts-for-azure-vmware-solution.md
-        - name: Anfügen von Datenträgerpools an Azure VMware Solution-Hosts
-          href: attach-disk-pools-to-azure-vmware-solution-hosts.md
         - name: Sichern mit Azure Backup Server
           items:
             - name: Einrichten von Backup Server
@@ -134,12 +130,8 @@
           href: azure-vmware-solution-horizon.md
         - name: Bereitstellen virtueller Computer aus der Inhaltsbibliothek
           href: deploy-vm-content-library.md
-        - name: Notfallwiederherstellung
-          items:
-            - name: Bereitstellen der Notfallwiederherstellung mithilfe von VMware SRM
-              href: disaster-recovery-using-vmware-site-recovery-manager.md
-            - name: Bereitstellen der Notfallwiederherstellung mithilfe von VMware HCX
-              href: deploy-disaster-recovery-using-vmware-hcx.md
+        - name: Bereitstellen der Notfallwiederherstellung mithilfe von VMware HCX
+          href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: "Upgraden der VMware\_HCX-Appliance"
           href: 'https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html'
     - name: VMware-Ökosystem
@@ -157,13 +149,13 @@
     - name: Problembehandlung
       items:
         - name: Öffnen einer Supportanfrage für Bereitstellungsfehler
-          href: fix-deployment-failures.md
+          href: fix-deployment-provisioning-failures.md
         - name: "VMware-Tools: VIX-Fehlercode\_21009"
           href: 'https://kb.vmware.com/s/article/2129927'
     - name: Häufig gestellte Fragen
       items:
         - name: Allgemein
-          href: /azure/azure-vmware/faq
+          href: ./faq.yml
         - name: Kundenkommunikation
           href: /azure/azure-vmware/faq#customer-communication
         - name: Konfiguration und Setup

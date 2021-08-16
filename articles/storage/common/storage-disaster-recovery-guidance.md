@@ -6,16 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 06/09/2021
 ms.author: tamram
-ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 11d9b38d71d428a3c6c829b508318389338f5a15
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2fdbdcfd847c33bc6d948d12b14f468233b4cf19
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800345"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901491"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Notfallwiederherstellung und Speicherkontofailover
 
@@ -23,7 +22,7 @@ Microsoft möcht sicherstellen, dass Azure-Dienste immer verfügbar sind. Es kan
 
 Azure Storage unterstützt Kontofailover für georedundante Speicherkonten. Mit Kontofailover können Sie den Failoverprozess für Ihr Speicherkonto einleiten, wenn der primäre Endpunkt nicht mehr verfügbar ist. Bei einem Failover wird der sekundäre Endpunkt so aktualisiert, dass er zum primären Endpunkt für das Speicherkonto wird. Nach Abschluss des Failovers können Clients in den neuen primären Endpunkt schreiben.
 
-Kontofailover ist für die Kontotypen „Universell V1“, „Universell V2“ und Blobspeicher mit Azure Resource Manager-Bereitstellungen verfügbar. Kontofailover wird für alle öffentlichen Regionen unterstützt, ist jedoch zurzeit in unabhängigen oder nationalen Clouds nicht verfügbar. Ein Kontofailover wird derzeit für Speicherkonten nicht unterstützt, bei denen ein hierarchischer Namespace aktiviert ist.
+Kontofailover ist für die Kontotypen „Universell V1“, „Universell V2“ und Blobspeicher mit Azure Resource Manager-Bereitstellungen verfügbar. Ein Kontofailover wird derzeit für Speicherkonten nicht unterstützt, bei denen ein hierarchischer Namespace aktiviert ist.
 
 Dieser Artikel beschreibt die Konzepte und Prozesse, die mit einem Kontofailover verbunden sind, und erläutert, wie Sie Ihr Speicherkonto auf die Wiederherstellung mit dem geringstmöglichen Einfluss auf den Kunden vorbereiten können. Weitere Informationen zum Initiieren eines Kontofailovers im Azure-Portal oder mit PowerShell finden Sie unter [Initiieren eines Kontofailovers](storage-initiate-account-failover.md).
 
@@ -89,7 +88,7 @@ Der Schreibzugriff für georedundante Konten wird wiederhergestellt, sobald der 
 > [!IMPORTANT]
 > Nach Abschluss des Failover ist das Speicherkonto so konfiguriert, dass es im neuen primären Endpunkt lokal redundant ist. Um die Replikation zum neuen sekundären Endpunkt fortzusetzen, konfigurieren Sie das Konto erneut für Georedundanz.
 >
-> Beachten Sie, dass die Umstellung eines LRS-Kontos auf Verwendung von Georedundanz mit Kosten verbunden ist. Diese Kosten gelten für die Aktualisierung des Speicherkonto in der neuen primären Region nach einem Failover.  
+> Beachten Sie, dass die Konvertierung eines lokal redundanten Speicherkontos zur Nutzung von Georedundanz sowohl mit Kosten als auch Zeit verbunden ist. Weitere Informationen finden Sie unter [Wichtige Auswirkungen eines Kontofailoovers](storage-initiate-account-failover.md#important-implications-of-account-failover).
 
 ### <a name="anticipate-data-loss"></a>Vorhersehen von Datenverlust
 
@@ -158,7 +157,7 @@ Beachten Sie, dass alle auf einem temporären Datenträger gespeicherten Daten v
 Die folgenden Funktionen und Dienste werden für Kontofailover nicht unterstützt:
 
 - Das Speicherkontofailover wird von der Azure-Dateisynchronisierung nicht unterstützt. Für Speicherkonten, die Azure-Dateifreigaben enthalten, die als Cloud-Endpunkte in der Azure-Dateisynchronisierung verwendet werden, sollte kein Failover durchgeführt werden. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen.
-- ADLS Gen2-Speicherkonten (Konten mit aktiviertem hierarchischen Namespace) werden derzeit nicht unterstützt.
+- Speicherkonten mit aktiviertem hierarchischem Namespace (z. B. für Data Lake Storage Gen2) werden zurzeit nicht unterstützt.
 - Für ein Speicherkonto mit Premium-Blockblobs kann kein Failover durchgeführt werden. Speicherkonten, die Premium-Blockblobs unterstützen, unterstützen derzeit keine Georedundanz.
 - Für ein Speicherkonto mit Containern mit aktivierter [WORM-Unveränderlichkeitsrichtlinie](../blobs/storage-blob-immutable-storage.md) kann kein Failover durchgeführt werden. Entsperrte/gesperrte Richtlinien für die zeitbasierte Aufbewahrung oder die gesetzliche Aufbewahrungspflicht verhindern ein Failover zur Einhaltung der Richtlinien.
 

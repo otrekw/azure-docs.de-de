@@ -195,7 +195,7 @@
     - name: PowerShell-Modul „Az.LabServices“ (Vorschauversion)
       href: reference-powershell-module.md
     - name: Azure CLI
-      href: 'https://github.com/Azure/azure-cli-extensions/tree/main/src/hack'
+      href: /cli/azure/hack
 - name: Ressourcen
   items:
     - name: Blog zu Azure Lab Services

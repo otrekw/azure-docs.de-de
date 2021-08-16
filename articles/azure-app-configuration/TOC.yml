@@ -17,7 +17,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: .NET Framework
+        - name: ".NET\_Framework"
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
@@ -58,9 +58,7 @@
       items:
         - name: .NET Core
           href: enable-dynamic-configuration-dotnet-core-push-refresh.md
-        - name: Java Spring
-          href: enable-dynamic-configuration-java-spring-push-refresh.md
-    - name: Verwenden von Key Vault-Verweisen
+    - name: Key Vault-Verweise
       items:
         - name: Verwenden von Key Vault-Verweisen
           items:

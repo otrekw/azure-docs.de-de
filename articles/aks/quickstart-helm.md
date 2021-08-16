@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: e293d0c58f265b25f3df0a218f84888467468f59
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 248b91be60f4da3ce7dd10212a9db69377651ccb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767491"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071540"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Schnellstart: Entwickeln unter Azure Kubernetes Service (AKS) mit Helm
 
@@ -88,7 +88,7 @@ Verwenden Sie zum lokalen Verbinden eines Kubernetes-Clusters den Kubernetes-Bef
 
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 
-In diesem Schnellstart wird [eine Node.js-Beispielanwendung aus dem Azure Dev Spaces-Beispielrepository][example-nodejs] verwendet. Klonen Sie die Anwendung von GitHub, und navigieren Sie zum Verzeichnis `dev-spaces/samples/nodejs/getting-started/webfrontend`.
+In diesem Schnellstart wird [eine Node.js-Beispielanwendung][example-nodejs] verwendet. Klonen Sie die Anwendung von GitHub, und navigieren Sie zum Verzeichnis `dev-spaces/samples/nodejs/getting-started/webfrontend`.
 
 ```console
 git clone https://github.com/Azure/dev-spaces

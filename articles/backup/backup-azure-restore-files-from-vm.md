@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: c2af279ec7e846316a94e58977e7079305ab9b03
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 76d81aa92643002bc5cd2b8859941af8e7440c87
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579370"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421866"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -143,9 +143,14 @@ Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, 
 
 > [!NOTE]
 >
-> Im Namen der Skriptdatei, die Sie in Schritt 1 [weiter oben](#step-1-generate-and-download-script-to-browse-and-recover-files) heruntergeladen haben, ist der **geo-name** enthalten. Verwenden Sie diesen **geo-name** zum Ausfüllen der URL. Der Name des heruntergeladenen Skripts beginnt mit: \'VMname\'\_\'geoname\'_\'GUID\'.<br><br>
-> Ein Beispiel: Wenn der Name der Skriptdatei *ContosoVM_wcus_12345678* lautet, ist **wcus** der *geo-name*, und die URL wäre:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
+> Falls der gesicherte virtuelle Computer ein Windows-Computer ist, wird der geo-name im generierten Kennwort angegeben.<br><br>
+> Wenn z. B. das generierte Kennwort *ContosoVM_wcus_GUID* lautet, lautet der geo-name „wcus“ und die URL wäre: <https://pod01-rec2.wcus.backup.windowsazure.com><br><br>
 >
+>
+> Falls der gesicherte virtuelle Computer ein Linux-Computer ist, ist der **geo-name** im Namen der Skriptdatei enthalten, die Sie in Schritt 1 [weiter oben](#step-1-generate-and-download-script-to-browse-and-recover-files) heruntergeladen haben. Verwenden Sie diesen **geo-name** zum Ausfüllen der URL. Der Name des heruntergeladenen Skripts beginnt mit: \'VMname\'\_\'geoname\'_\'GUID\'.<br><br>
+> Ein Beispiel: Wenn der Name der Skriptdatei *ContosoVM_wcus_12345678* lautet, ist *wcus* der **geo-name** und die URL wäre: <https://pod01-rec2.wcus.backup.windowsazure.com><br><br>
+>
+
 
 Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederherstellungspunkt die Komponenten „open-iscsi“ und „lshw“. Wenn die Komponenten auf dem Computer, auf dem das Skript ausgeführt wird, nicht vorhanden sind, wird um die Erlaubnis zum Installieren der Komponenten gebeten. Geben Sie die Zustimmung zur Installation der erforderlichen Komponenten.
 

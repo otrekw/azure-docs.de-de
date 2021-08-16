@@ -22,8 +22,6 @@
           href: quickstarts/get-started-unity-hololens.md
         - name: HoloLens mit MRTK
           href: quickstarts/get-started-unity-hololens-mrtk.md
-        - name: Ausführliche exemplarische Vorgehensweise zu MRTK
-          href: quickstarts/in-depth-mrtk-walkthrough.md
         - name: "Upgraden auf Unity\_2020"
           href: quickstarts/upgrade-unity-quickstart-to-2020.md
         - name: Starten einer neuen Unity HoloLens-App

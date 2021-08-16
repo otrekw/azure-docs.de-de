@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/03/2021
+ms.date: 06/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 47947945759faee9f38393f06f7ec9396d9c715b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 17be85bd21a61ced7772786bb1fdaad1c947e4d1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749103"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962293"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Verwalten Ihres Azure Active Directory B2C-Mandanten
 
@@ -29,11 +29,13 @@ Azure AD B2C basiert auf der Azure AD-Plattform. Die folgenden Azure AD-Features
 
 |Funktion  |Azure AD  | Azure AD B2C |
 |---------|---------|---------|
-| [Gruppen](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) | Gruppen können zum Verwalten von Administrator- und Benutzerkonten verwendet werden.| Gruppen können zum Verwalten von Administratorkonten verwendet werden. [Consumer-Konten](user-overview.md#consumer-user) unterstützen keine Gruppen. |
+| [Gruppen](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) | Gruppen können zum Verwalten von Administrator- und Benutzerkonten verwendet werden.| Gruppen können zum Verwalten von Administratorkonten verwendet werden. [Consumerkonten](user-overview.md#consumer-user) dürfen keiner Gruppe angehören. |
 | [Einladen von External Identities-Gästen](../active-directory//external-identities/add-users-administrator.md)| Sie können Gastbenutzer einladen und External Identities-Features wie Verbinden und Anmelden mit Facebook- und Google-Konten konfigurieren. | Sie können nur ein Microsoft-Konto oder einen Azure AD Benutzer als Gast zu Ihrem Azure AD-Mandanten einladen, um auf Anwendungen zuzugreifen oder Mandanten zu verwalten. Für [Consumer-Konten](user-overview.md#consumer-user) verwenden Sie Azure AD B2C Benutzerflows und benutzerdefinierte Richtlinien, um Benutzer zu verwalten und sich bei externen Identitätsanbietern wie Google oder Facebook zu registrieren oder anzumelden. |
 | [Rollen und Administratoren](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)| Wird für Administrator- und Benutzerkonten vollständig unterstützt. | Rollen werden für [Consumer-Konten](user-overview.md#consumer-user)nicht unterstützt. Consumer-Konten haben keinen Zugriff auf Azure-Ressourcen.|
-| [Benutzerdefinierte Domänennamen](../active-directory/roles/permissions-reference.md#) |  Sie können Azure AD benutzerdefinierte Domänen nur für Administratorkonten verwenden. | [Consumer-Konten](user-overview.md#consumer-user) können sich mit einem Benutzernamen, einer Telefonnummer oder einer beliebigen E-Mail-Adresse anmelden. Sie können [benutzerdefinierte Domänen](custom-domain.md) in Ihren Umleitungs-URLs verwenden.|
-| [Bedingter Zugriff](../active-directory/roles/permissions-reference.md#) | Wird für Administrator- und Benutzerkonten vollständig unterstützt. | Eine Teilmenge der Azure AD-Features für den bedingten Zugriff wird mit [Consumer-Konten](user-overview.md#consumer-user) unterstützt. In diesem Artikel erfahren Sie, wie Sie Azure AD B2C [benutzerdefinierte Domäne](conditional-access-user-flow.md) konfigurieren.|
+| [Benutzerdefinierte Domänennamen](../active-directory/fundamentals/add-custom-domain.md) |  Sie können Azure AD benutzerdefinierte Domänen nur für Administratorkonten verwenden. | [Consumer-Konten](user-overview.md#consumer-user) können sich mit einem Benutzernamen, einer Telefonnummer oder einer beliebigen E-Mail-Adresse anmelden. Sie können [benutzerdefinierte Domänen](custom-domain.md) in Ihren Umleitungs-URLs verwenden.|
+| [Bedingter Zugriff](../active-directory/conditional-access/overview.md) | Wird für Administrator- und Benutzerkonten vollständig unterstützt. | Eine Teilmenge der Azure AD-Features für den bedingten Zugriff wird für [Consumerkonten](user-overview.md#consumer-user) unterstützt. Erfahren Sie, wie Sie den [bedingten Zugriff](conditional-access-user-flow.md) in Azure AD B2C konfigurieren.|
+| [Premium P1](https://azure.microsoft.com/pricing/details/active-directory) | Vollständig unterstützt für Azure AD Premium P1-Features. Beispiele: [Kennwortschutz](../active-directory/authentication/concept-password-ban-bad.md), [Hybrididentitäten](../active-directory/hybrid/whatis-hybrid-identity.md), [Bedingter Zugriff](../active-directory/roles/permissions-reference.md#), [Dynamische Gruppen](../active-directory/enterprise-users/groups-create-rule.md) usw. | Eine Teilmenge der Azure AD-Features für den bedingten Zugriff wird für [Consumerkonten](user-overview.md#consumer-user) unterstützt. Erfahren Sie, wie Sie den [bedingten Zugriff](conditional-access-user-flow.md) in Azure AD B2C konfigurieren.|
+| [Premium P2](https://azure.microsoft.com/pricing/details/active-directory.md) | Vollständig unterstützt für Azure AD Premium P2-Features. Beispiele: [Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) und [Identity Governance](../active-directory/governance/identity-governance-overview.md).  | Eine Teilmenge der Azure AD Identity Protection-Features wird für [Consumerkonten](user-overview.md#consumer-user) unterstützt. Erfahren Sie, wie Sie [Risiken mit Identity Protection untersuchen](identity-protection-investigate-risk.md) und den [bedingten Zugriff](conditional-access-user-flow.md) in Azure AD B2C konfigurieren. |
 
 ## <a name="other-azure-resources-in-your-tenant"></a>Andere Azure-Ressourcen in Ihrem Mandanten
 
@@ -179,7 +181,27 @@ Es wird empfohlen, alle Administratorkonten mit mehrstufiger Authentifizierung (
 
 Sie können die [Azure AD Sicherheitsstandards](../active-directory/fundamentals/concept-fundamentals-security-defaults.md) aktivieren, um zu erzwingen, dass alle Administratorkonten MFA verwenden.
 
+## <a name="get-your-tenant-name"></a>Abrufen des Mandantennamens
 
+Führen Sie die folgenden Schritte aus, um den Namen Ihres Azure AD B2C-Mandanten abzurufen:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Kopieren Sie in der **Übersicht** den **Domänennamen**.
+
+![Screenshot: Abrufen des Azure AD B2C-Mandantennamens](./media/tenant-management/get-azure-ad-b2c-tenant-name.png)  
+
+## <a name="get-your-tenant-id"></a>Abrufen Ihrer Mandanten-ID
+
+Führen Sie die folgenden Schritte aus, um Ihre Azure AD B2C-Mandanten-ID abzurufen:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie es aus.
+1. Kopieren Sie in der **Übersicht** die **Mandanten-ID**.
+
+![Screenshot: Abrufen der Azure AD B2C-Mandanten-ID](./media/tenant-management/get-azure-ad-b2c-tenant-id.png)  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

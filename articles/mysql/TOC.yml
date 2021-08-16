@@ -424,8 +424,6 @@
               href: flexible-server/connect-java.md
             - name: .NET
               href: flexible-server/connect-csharp.md
-            - name: Herstellen einer Verbindung mit dem Server im VNet
-              href: flexible-server/quickstart-create-connect-server-vnet.md
         - name: Herstellen einer Verbindung per TLS/SSL
           href: flexible-server/how-to-connect-tls-ssl.md
         - name: Konfigurieren von Serverparametern

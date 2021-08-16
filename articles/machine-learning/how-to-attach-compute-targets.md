@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 00fbf0fe3340dc0c14f8cd55098c1e20990a3207
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9388a6e01885e4a3a0c5aa95c254910c96a4e36a
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368022"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902355"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Einrichten von Computezielen für das Training und die Bereitstellung von Modellen
 
@@ -26,11 +26,13 @@ In diesem Artikel erfahren Sie, wie Sie Ihren Arbeitsbereich für die Verwendung
 
 * Ihr lokaler Computer
 * Virtuelle Remotecomputer
+* Apache Spark-Pools (powered by Azure Synapse Analytics)
 * Azure HDInsight
 * Azure Batch
 * Azure Databricks
 * Azure Data Lake Analytics
 * Azure Container Instances
+
 
 Informationen zur Verwendung von Computezielen, die von Azure Machine Learning verwaltet werden, finden Sie unter den folgenden Links:
 
@@ -128,6 +130,10 @@ Azure Machine Learning unterstützt auch das Anfügen einer Azure-VM. Die VM mus
 >
 > Azure Machine Learning löscht die VM nicht für Sie. Sie müssen die VM manuell löschen, indem Sie das Azure-Portal, die CLI oder das SDK für die Azure-VM verwenden.
 
+## <a name="apache-spark-pools"></a><a id="synapse"></a>Apache Spark-Pools
+
+Die Integration von Azure Synapse Analytics in Azure Machine Learning (Vorschau) ermöglicht Ihnen das Anfügen eines von Azure Synapse unterstützten Apache Spark-Pools für die interaktive Datenuntersuchung und -aufbereitung. Diese Integration bietet Ihnen eine dedizierte Computing-Ressource für Data Wrangling im großen Stil. Weitere Informationen finden Sie unter [Anfügen von Apache Spark-Pools (powered by Azure Synapse Analytics)](how-to-link-synapse-ml-workspaces.md#attach-synapse-spark-pool-as-a-compute).
+
 ## <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
 Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattform stellt Apache Spark bereit, das zum Training Ihres Modells verwendet werden kann.
@@ -221,11 +227,14 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 > [!WARNING]
 > Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für den gleichen Azure Batch in Ihrem Arbeitsbereich. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
 
-### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
+## <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
 Azure Databricks ist eine Apache Spark-basierte Umgebung in der Azure-Cloud. Sie kann mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
 
-> [!WICHTIG} Azure Machine Learning kann kein Azure Databricks Computeziel erstellen. Stattdessen müssen Sie einen Azure Databricks Arbeitsbereich erstellen und ihn dann Ihren Azure Machine Learning Arbeitsbereich hinzufügen. Informationen zum Erstellen einer Arbeitsbereichsressource finden Sie im Dokument [Ausführen eines Spark-Auftrags in Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
+> [!IMPORTANT]
+> Azure Machine Learning kann kein Azure Databricks-Computeziel erstellen. Stattdessen müssen Sie einen Azure Databricks-Arbeitsbereich erstellen und ihn dann Ihren Azure Machine Learning-Arbeitsbereich anfügen. Informationen zum Erstellen einer Arbeitsbereichsressource finden Sie im Dokument [Ausführen eines Spark-Auftrags in Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
+> 
+> Um einen Azure Databricks-Arbeitsbereich aus einem __anderen Azure-Abonnement__ anfügen zu können, muss Ihnen (Ihrem Azure AD-Konto) die Rolle **Mitwirkender** für den Azure Databricks-Arbeitsbereich erteilt werden. Überprüfen Sie Ihren Zugriff im [Azure-Portal](https://ms.portal.azure.com/).
 
 Geben Sie zum Anfügen von Azure Databricks als Computeziel die folgenden Informationen an:
 
@@ -233,7 +242,7 @@ Geben Sie zum Anfügen von Azure Databricks als Computeziel die folgenden Inform
 * __Name des Databricks-Arbeitsbereichs__: Der Name des Azure Databricks-Arbeitsbereichs.
 * __Databricks-Zugriffstoken__: Das zur Authentifizierung bei Azure Databricks verwendete Zugriffstoken. Informationen zum Generieren eines Zugriffstokens finden Sie im Dokument [Authentifizierung](/azure/databricks/dev-tools/api/latest/authentication).
 
-Der folgende Code veranschaulicht, wie Sie Azure Databricks als Computeziel mit dem Azure Machine Learning SDK anfügen (__der Databricks-Arbeitsbereich muss im gleichen Abonnement wie der AML-Arbeitsbereich vorhanden sein__):
+Der folgende Code veranschaulicht, wie Azure Databricks mit dem Azure Machine Learning-SDK als Computeziel angefügt wird:
 
 ```python
 import os
@@ -277,7 +286,7 @@ Ein ausführlicheres Beispiel finden Sie in einem [Beispiel-Notebook](https://ak
 > [!WARNING]
 > Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für den gleichen Azure Databricks in Ihrem Arbeitsbereich. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
 
-### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
+## <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics ist eine umfangreiche Datenanalyseplattform in der Azure-Cloud. Sie kann mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
 

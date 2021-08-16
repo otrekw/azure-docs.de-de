@@ -2,13 +2,13 @@
 title: 'Azure Monitor-Ressourcenprotokolle: unterstützte Dienste und Kategorien'
 description: 'Referenz zu Azure Monitor: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.'
 ms.topic: reference
-ms.date: 03/30/2021
-ms.openlocfilehash: b9bac212a8be040349a8d78c64d7beab291e1f9e
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.date: 05/26/2021
+ms.openlocfilehash: b45e478b11290002cb2445b1a57662bacba407dd
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016019"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534425"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Unterstützte Kategorien für Azure-Ressourcenprotokolle
 
@@ -76,6 +76,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
+|Audit|Audit|Ja|
 |HttpRequest|HTTP-Anforderungen|Ja|
 
 
@@ -202,6 +203,13 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |ChatOperational|Protokolle zum Chatbetrieb|Nein|
 |SMSOperational|Protokolle zum SMS-Betrieb|Nein|
 |Verwendung|Verwendungsdatensätze|Nein|
+
+
+## <a name="microsoftconnectedvehicleplatformaccounts"></a>Microsoft.ConnectedVehicle/platformAccounts
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Protokolle|MCVP-Protokolle|Ja|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
@@ -451,6 +459,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |EventRoutesOperation|EventRoutesOperation|Nein|
 |ModelsOperation|ModelsOperation|Nein|
 |QueryOperation|QueryOperation|Nein|
+|ResourceProviderOperation|ResourceProviderOperation|Ja|
 
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
@@ -465,6 +474,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |PartitionKeyRUConsumption|PartitionKeyRUConsumption|Nein|
 |PartitionKeyStatistics|PartitionKeyStatistics|Nein|
 |QueryRuntimeStatistics|QueryRuntimeStatistics|Nein|
+|TableApiRequests|TableApiRequests|Ja|
 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
@@ -616,7 +626,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |KeyDeliveryRequests|Schlüsselübermittlungsanforderungen|Nein|
 
 
-## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
+## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationgateways
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
@@ -654,6 +664,14 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |---|---|---|
 |FrontdoorAccessLog|Frontdoor-Zugriffsprotokoll|Nein|
 |FrontdoorWebApplicationFirewallLog|Frontdoor-Web Application Firewall-Protokoll|Nein|
+
+
+## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|LoadBalancerAlertEvent|Load Balancer-Warnereignisse|Nein|
+|LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|Nein|
 
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft.Network/networksecuritygroups
@@ -921,6 +939,19 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |BigDataPoolAppsEnded|Big Data-Pool, beendete Anwendungen|Nein|
 
 
+## <a name="microsoftsynapseworkspaceskustopools"></a>Microsoft.Synapse/workspaces/kustoPools
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Befehl|Befehl|Ja|
+|FailedIngestion|Fehlgeschlagene Erfassungsvorgänge|Ja|
+|IngestionBatching|Batchverarbeitung der Datenerfassung|Ja|
+|Abfrage|Abfrage|Ja|
+|SucceededIngestion|Erfolgreiche Erfassungsvorgänge|Ja|
+|TableDetails|Tabellendetails|Ja|
+|TableUsageStatistics|Tabellenverwendungsstatistik|Ja|
+
+
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
 
 |Category|Anzeigename der Kategorie|Exportkosten|
@@ -956,7 +987,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |AppServiceEnvironmentPlatformLogs|Plattformprotokolle der App Service-Umgebung|Nein|
 
 
-## <a name="microsoftwebsites"></a>microsoft.web/sites
+## <a name="microsoftwebsites"></a>Microsoft.Web/sites
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|

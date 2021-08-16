@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 05/02/2021
+ms.date: 06/14/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 49cd718bc0beb5128980e5e25a01cef94e966221
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f7bdadaf8570fe06d7573ff622ed921137229ae1
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754017"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061558"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ Sie können die SQL-Datenbanküberwachung für folgende Zwecke verwenden:
 - **Analysieren** von Berichten. Sie können nach verdächtigen Ereignissen, ungewöhnliche Aktivitäten und Trends suchen.
 
 > [!IMPORTANT]
-> Die Überwachung für Azure SQL-Datenbank und Azure Synapse ist für Verfügbarkeit und Leistung optimiert. Bei sehr hoher Aktivität oder hoher Netzwerkauslastung erlauben Azure SQL-Datenbank und Azure Synapse das Fortsetzen von Vorgängen und zeichnen einige überwachte Ereignisse möglicherweise nicht auf.
+> Die Überwachung für Azure SQL-Datenbank, Azure Synapse und Azure SQL Managed Instance ist für Verfügbarkeit und Leistung optimiert. Bei sehr hoher Aktivität oder hoher Netzwerkauslastung erlauben Azure SQL-Datenbank, Azure Synapse und Azure SQL Managed Instance das Fortsetzen von Vorgängen, sodass einige überwachte Ereignisse möglicherweise nicht aufgezeichnet werden.
 
 ### <a name="auditing-limitations"></a>Einschränkungen der Überwachung
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfb38f9fcdba6898b690d0af68b715fea07e80bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac603cef478b821d1fea72fce22004fc72860914
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743104"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744465"
 ---
 # <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Aktivieren und Verwenden von Azure AD Multi-Factor Authentication bei älteren Anwendungen mithilfe von App-Kennwörtern
 
@@ -81,7 +81,7 @@ In diesem Szenario verwenden Sie die folgenden Anmeldeinformationen:
 
 ## <a name="allow-users-to-create-app-passwords"></a>Zulassen der Erstellung von App-Kennwörtern durch Benutzer
 
-Standardmäßig können Benutzer keine App-Kennwörter erstellen. Die App-Kennwortfunktion muss aktiviert werden, bevor Benutzer sie verwenden können. Führen Sie die folgenden Schritte aus, um Benutzern die Erstellung von App-Kennwörtern zu ermöglichen:
+Standardmäßig können Benutzer keine App-Kennwörter erstellen. Die App-Kennwortfunktion muss aktiviert werden, bevor Benutzer sie verwenden können. Um Benutzern die Erstellung von App-Kennwörtern zu ermöglichen, **muss ein Administrator** die folgenden Schritte ausführen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie nach **Azure Active Directory**, wählen Sie diese Option aus, und wählen Sie dann **Benutzer** aus.
@@ -101,7 +101,9 @@ Standardmäßig können Benutzer keine App-Kennwörter erstellen. Die App-Kennwo
 
 Wenn Benutzer ihre anfängliche Registrierung für Azure AD Multi-Factor Authentication abgeschlossen haben, können sie am Ende des Registrierungsvorgangs App-Kennwörter erstellen.
 
-Benutzer können auch App-Kennwörter nach der Registrierung erstellen. Weitere Informationen und detaillierte Schritte für Ihre Benutzer finden Sie unter [Welchen Zweck erfüllen App-Kennwörter bei Azure AD Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+Benutzer können auch App-Kennwörter nach der Registrierung erstellen. Weitere Informationen und ausführliche Schritte für Ihre Benutzer finden Sie in den folgenden Ressourcen:
+* [Welchen Zweck erfüllen App-Kennwörter bei Azure AD Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+* [Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“](https://docs.microsoft.com/azure/active-directory/user-help/security-info-app-passwords)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

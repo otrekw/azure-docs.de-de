@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 58cbc56932e8730e25287e298679995169ed734e
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: fbd4c595fd2e54f7f1a01595e4e359adc04b0ac1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804068"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970109"
 ---
 # <a name="device-update-agent-provisioning"></a>Bereitstellen des Geräte-Update-Agents
 
@@ -22,6 +22,7 @@ Der Modul-Agent für Geräte-Updates kann zusammen mit anderen Systemprozessen u
 
 In IoT Hub können unter jeder Geräteidentität bis zu 50 Modulidentitäten erstellt werden. Jede Modulidentität generiert implizit einen Modulzwilling. Auf der Geräteseite können Sie mithilfe der IoT Hub-Geräte-SDKs Module erstellen, die jeweils eine unabhängige Verbindung mit IoT Hub herstellen. Modulidentität und Modulzwilling bieten die gleichen Funktionen wie Geräteidentität und Gerätezwilling, aber mit einer höheren Granularität. [Erfahren Sie mehr über Modulidentitäten in Azure IoT Hub](../iot-hub/iot-hub-devguide-module-twins.md)
 
+Wenn Sie von einem Agent auf Geräteebene migrieren, um den Agent als Modulidentität auf dem Gerät hinzuzufügen, entfernen Sie den älteren Agent, der über den Gerätezwilling kommuniziert hat. Wenn Sie den Geräteupdate-Agent als Modulidentität bereitstellen, erfolgt die gesamte Kommunikation zwischen dem Gerät und dem Geräteupdatedienst über den Modulzwilling. Denken Sie also daran: Der Modulzwilling des Geräts muss beim Erstellen von [Gruppen](device-update-groups.md) markiert werden und die gesamte [Kommunikation](device-update-plug-and-play.md) über den Modulzwilling erfolgen.
 
 ## <a name="support-for-device-update"></a>Unterstützung für Geräteobjekte
 
@@ -82,7 +83,7 @@ Befolgen Sie diese Anweisungen, um den Geräte-Update-Agent auf [IOT Edge aktivi
 1. Befolgen Sie die Anleitung unter [Installieren oder Deinstallieren von Azure IoT Edge für Linux](../iot-edge/how-to-install-iot-edge.md?preserve-view=true&view=iotedge-2020-11).
 
 1. Installieren Sie den Device Update-Agent für Imageupdates.
-    - Beispielimages werden in [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) bereitgestellt, die Datei vom Typ „swUpdate“ ist das Basisimage, das Sie auf eine Raspberry Pi B3+-Platine einspielen können, und die GZ-Datei ist das Update, das Sie über Device Update for IoT Hub importieren. Sehen Sie sich ein [Beispiel für das Einspielen des Images auf Ihrem IoT Hub-Gerät](/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image) an.  
+    - Beispielimages werden in [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) bereitgestellt, die Datei vom Typ „swUpdate“ ist das Basisimage, das Sie auf eine Raspberry Pi B3+-Platine einspielen können, und die GZ-Datei ist das Update, das Sie über Device Update for IoT Hub importieren. Sehen Sie sich ein [Beispiel für das Einspielen des Images auf Ihrem IoT Hub-Gerät](./device-update-raspberry-pi.md#flash-sd-card-with-image) an.  
 
 1. Installieren Sie den Device Update-Agent für Paketupdates.  
     - Für die aktuellen Agent-Versionen von packages.miscrosoft.com: Aktualisieren Sie Paketlisten auf Ihrem Gerät, und installieren Sie das Device Update-Agent-Paket und seine Abhängigkeiten mit:   
@@ -94,7 +95,7 @@ Befolgen Sie diese Anweisungen, um den Geräte-Update-Agent auf [IOT Edge aktivi
         sudo apt-get install deviceupdate-agent deliveryoptimization-plugin-apt
         ```
     
-    - Für zukünftige Release Candidate-Versionen von [Artifacts](https://github.com/Azure/iot-hub-device-update/releases): Laden Sie die DEP-Datei auf den Computer herunter, auf dem Sie den Device Update-Agent installieren möchten, und dann:
+    - Für alle Release Candidate-Agent-Versionen (‚rc‘) von [Artifacts](https://github.com/Azure/iot-hub-device-update/releases): Laden Sie die DEP-Datei auf den Computer herunter, auf dem Sie den Device Update-Agent installieren möchten, und dann:
         ```shell
         sudo apt-get install -y ./"<PATH TO FILE>"/"<.DEP FILE NAME>"
         ```
@@ -108,7 +109,7 @@ Befolgen Sie diese Anweisungen, um den Geräte-Update-Agent auf IOT Edge aktivie
 1. Installieren Sie den IOT Identitätsdienst, und fügen Sie dem IOT-Gerät die neueste Version hinzu. 
     1. Melden Sie sich auf dem Computer oder dem IOT-Gerät an.
     1. Öffnen Sie ein Terminalfenster.
-    1.  Installieren Sie mit dem folgenden Befehl den neuesten [IOT-Identitätsdienst](https://github.com/Azure/iot-identity-service/blob/main/docs/packaging.md#installing-and-configuring-the-package) auf Ihrem IOT-Gerät:
+    1.  Installieren Sie mit dem folgenden Befehl den neuesten [IOT-Identitätsdienst](https://github.com/Azure/iot-identity-service/blob/main/docs-dev/packaging.md#installing-and-configuring-the-package) auf Ihrem IOT-Gerät:
     
         ```shell
         sudo apt-get install aziot-identity-service
@@ -147,7 +148,7 @@ Befolgen Sie diese Anweisungen, um den Geräte-Update-Agent auf IOT Edge aktivie
     sudo aziotctl config apply
     ```
     
-1.  Installieren Sie schließlich den Device Update-Agent. Beispielimages werden in [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) bereitgestellt, die Datei vom Typ „swUpdate“ ist das Basisimage, das Sie auf eine Raspberry Pi B3+-Platine einspielen können, und die GZ-Datei ist das Update, das Sie über Device Update for IoT Hub importieren. Sehen Sie sich ein [Beispiel für das Einspielen des Images auf Ihrem IoT Hub-Gerät](/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image) an.
+1.  Installieren Sie schließlich den Device Update-Agent. Beispielimages werden in [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) bereitgestellt, die Datei vom Typ „swUpdate“ ist das Basisimage, das Sie auf eine Raspberry Pi B3+-Platine einspielen können, und die GZ-Datei ist das Update, das Sie über Device Update for IoT Hub importieren. Sehen Sie sich ein [Beispiel für das Einspielen des Images auf Ihrem IoT Hub-Gerät](./device-update-raspberry-pi.md#flash-sd-card-with-image) an.
 
 1.  Nun können Sie den Device Update-Agent auf dem IoT-Gerät starten. 
 
@@ -156,7 +157,7 @@ Befolgen Sie diese Anweisungen, um den Geräte-Update-Agent auf IOT Edge aktivie
 Der Agent für die Geräteaktualisierung kann auch ohne den IOT-Identitätsdienst zum Testen oder für eingeschränkte Geräte konfiguriert werden. Führen Sie die folgenden Schritte aus, um den Geräte-Update-Agent mithilfe einer Verbindungszeichenfolge (vom Modul oder Gerät) bereitzustellen.
 
 
-1.  Beispielimages werden in [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) bereitgestellt, die Datei vom Typ „swUpdate“ ist das Basisimage, das Sie auf eine Raspberry Pi B3+-Platine einspielen können, und die GZ-Datei ist das Update, das Sie über Device Update for IoT Hub importieren. Sehen Sie sich ein [Beispiel für das Einspielen des Images auf Ihrem IoT Hub-Gerät](/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image) an.
+1.  Beispielimages werden in [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) bereitgestellt, die Datei vom Typ „swUpdate“ ist das Basisimage, das Sie auf eine Raspberry Pi B3+-Platine einspielen können, und die GZ-Datei ist das Update, das Sie über Device Update for IoT Hub importieren. Sehen Sie sich ein [Beispiel für das Einspielen des Images auf Ihrem IoT Hub-Gerät](./device-update-raspberry-pi.md#flash-sd-card-with-image) an.
 
 1.  Melden Sie sich auf dem Computer oder IOT Edge Gerät/IOT-Gerät an.
     

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 4e88ad58c7baba1c66c30df3f4effdbf11371c18
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2703e5f92ad0756ece8088c4948170ea13fa0e06
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045330"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683441"
 ---
 # <a name="how-to-connect-devices-through-an-iot-edge-transparent-gateway"></a>Verbinden von Geräten über ein transparentes IoT Edge-Gateway
 
@@ -25,11 +25,11 @@ In diesem Artikel werden virtuelle Computer zum Hosten des untergeordneten Gerä
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Schritte in diesem Tutorial benötigen Sie ein aktives Azure-Abonnement.
+Zur Durchführung der in diesem Artikel aufgeführten Schritte ist Folgendes erforderlich:
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Führen Sie die Schritte der Schnellstartanleitung [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md) aus, um mit der Vorlage **Benutzerdefinierte App > Benutzerdefinierte Anwendung** eine IoT Central-Anwendung zu erstellen.
+- Eine [IoT Central-Anwendung](howto-create-iot-central-application.md), die mit der Vorlage **Benutzerdefinierte Anwendung** erstellt wurde. Weitere Informationen finden Sie unter [Erstellen einer IoT Central-Anwendung](howto-create-iot-central-application.md).
 
 Laden Sie die folgenden Dateien auf Ihren Computer herunter, um die Schritte in diesem Artikel ausführen zu können:
 

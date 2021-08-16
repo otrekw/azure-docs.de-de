@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 5e500eca601d21f106dbe31236e9b5c2aa76b0d2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2483a207344894489992f38d08b37126d7eded22
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801926"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652236"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Vertrauenswürdiger Start für Azure-VMs (Vorschau)
 
@@ -38,13 +38,17 @@ Azure bietet den vertrauenswürdigen Start als nahtlose Möglichkeit zur Verbess
 
 ## <a name="public-preview-limitations"></a>Einschränkungen der öffentlichen Vorschauversion
 
-**Größenunterstützung:** alle VM-Größen der [Generation 2](generation-2.md), mit folgenden Ausnahmen:
-
-- Lsv2-Reihe 
-- M-Serie 
-- Mv2-Serie 
-- NDv4-Serie 
-- NVv4-Serie
+**Unterstützte Größen:**
+- B-Serie
+- Dav4-, Dasv4-Serie
+- DCsv2-Serie
+- Dv4-, Dsv4-, Dsv3-, Dsv2-Serie
+- Ddv4-, Ddsv4-Serie
+- Fsv2-Serie
+- Eav4-, Easv4-Serie
+- Ev4-, Esv4-, Esv3-Serie
+- Edv4-, Edsv4-Serie
+- Lsv2-Reihe
 
 **Betriebssystemunterstützung:**
 - Red Hat Enterprise Linux 8.3
@@ -58,8 +62,11 @@ Azure bietet den vertrauenswürdigen Start als nahtlose Möglichkeit zur Verbess
 - Windows 10 Enterprise (mehrere Sitzungen)
 
 **Regionen**: 
+- USA (Mitte)
+- USA (Ost) 2
 - USA Süd Mitte
 - Nordeuropa
+- Europa, Westen
 
 **Preise:** keine zusätzlichen Kosten zu den bestehenden VM-Preisen.
 

@@ -17,7 +17,7 @@
 - name: Red Hat Enterprise Java in Azure
   items:
     - name: JBoss EAP in Azure
-      href: /azure/developer/java/ee/jboss-on-azure
+      href: 'https://docs.microsoft.com/azure/developer/java/ee/jboss-on-azure'
     - name: JBoss EAP und RHEL auf virtuellen Computern
       href: jboss-eap-on-rhel.md
     - name: JBoss EAP-Marketplace-Image
@@ -27,6 +27,6 @@
     - name: Migrieren von JBoss EAP zu virtuellen Azure-Computern
       href: jboss-eap-on-azure-migration.md
     - name: Migrieren von JBoss EAP zu App Service
-      href: ./overview.md
+      href: 'https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview'
     - name: WildFly und CentOS auf VMs
       href: wildfly-on-centos.md

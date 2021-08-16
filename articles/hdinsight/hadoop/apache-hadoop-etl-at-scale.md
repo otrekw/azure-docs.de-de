@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: f11b31ba698c193029834caada2e5c4cf3ef2902
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1621acb66e62b03418b59f184ba4e7fa031a164
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866640"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472108"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
@@ -63,7 +63,7 @@ Blobs können auf mehrere Server verteilt werden, um den Zugriff auf diese horiz
 
 Azure Storage verfügt über eine WebHDFS-API-Ebene für den Blobspeicher. Alle HDInsight-Dienste können auf Dateien in Azure Blob Storage zugreifen, um Daten zu bereinigen und zu verarbeiten. Dies ist vergleichbar mit der Verwendung von HDFS-Dateien (Hadoop Distributed File System) durch diese Dienste.
 
-Daten werden in der Regel mithilfe von PowerShell, dem Azure Storage SDK oder mit AZCopy in Azure Storage erfasst.
+Daten werden in der Regel mithilfe von PowerShell, dem Azure Storage SDK oder mit AzCopy in Azure Storage erfasst.
 
 ### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 

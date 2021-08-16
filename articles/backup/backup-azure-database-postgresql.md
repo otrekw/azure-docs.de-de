@@ -4,12 +4,12 @@ description: Weitere Informationen zur Azure Database for PostgreSQL-Sicherung m
 ms.topic: conceptual
 ms.date: 04/12/2021
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 8c2cf8c6bd8c483fced37bbafbacb5b00a4bfd94
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 4f8e44bbaba87581b3c988602a436ed18b1a1a20
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065227"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061766"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 
@@ -214,7 +214,7 @@ Führen Sie diese Schrittanleitung aus, um eine Wiederherstellung auszulösen:
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>Erforderliche Berechtigungen zum Konfigurieren der Sicherung und Wiederherstellung
 
-Azure Backup hält strikte Sicherheitsrichtlinien ein. Obwohl es sich um einen nativen Azure-Dienst handelt, werden Berechtigungen für die Ressource nicht als vorhanden angenommen, sondern müssen vom Benutzer explizit erteilt werden.  Ebenso werden keine Anmeldeinformationen für die Verbindung mit der Datenbank gespeichert. Dies ist für den Schutz Ihrer Daten unerlässlich. Stattdessen wird die Azure Active Directory-Authentifizierung verwendet.
+Azure Backup hält strikte Sicherheitsrichtlinien ein. Obwohl es sich um einen nativen Azure-Dienst handelt, werden Berechtigungen für die Ressource nicht angenommen. Sie müssen explizit vom Benutzer erteilt werden.  Ebenso werden keine Anmeldeinformationen für die Verbindung mit der Datenbank gespeichert. Dies ist für den Schutz Ihrer Daten unerlässlich. Stattdessen wird die Azure Active Directory-Authentifizierung verwendet.
 
 [Laden Sie dieses Dokument herunter](https://download.microsoft.com/download/7/4/d/74d689aa-909d-4d3e-9b18-f8e465a7ebf5/OSSbkpprep_automated.docx), um ein automatisiertes Skript und entsprechende Anweisungen zu erhalten. Es erteilt einem Azure PostgreSQL-Server ausreichende Berechtigungen für die Sicherung und Wiederherstellung.
 

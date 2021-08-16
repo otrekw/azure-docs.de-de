@@ -2,22 +2,22 @@
 title: Konfigurieren der Art der Endbenutzereinwilligung für Anwendungen in Azure AD
 description: Erfahren Sie, wie Sie verwalten können, wie und wann Benutzer Anwendungen zustimmen können, die Zugriff auf die Daten Ihrer Organisation haben.
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/01/2020
-ms.author: iangithinji
+ms.date: 06/01/2021
+ms.author: mtillman
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 95a651f6201c9f60500c9191821edb7eb76b8535
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 59a7799ce7c0c1fd8261324351f425e76e3b4d44
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374436"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075968"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können
 
@@ -101,7 +101,7 @@ Set-AzureADMSAuthorizationPolicy `
 
 ## <a name="risk-based-step-up-consent"></a>Risikobasierte hochgestufte Einwilligung
 
-Die risikobasierte hochgestufte Einwilligung trägt zur Reduzierung der Benutzergefährdung durch böswillige Apps bei, die [unrechtmäßige Einwilligungsanforderungen](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) ausgeben. Wenn Microsoft eine risikobehaftete Anforderung der Endbenutzereinwilligung erkennt, wird die Anforderung stattdessen auf Administratoreinwilligung „hochgestuft“. Diese Funktion ist standardmäßig aktiviert, führt jedoch nur zu einer Änderung des Verhaltens, wenn die Endbenutzereinwilligung aktiviert ist.
+Die risikobasierte hochgestufte Einwilligung trägt zur Reduzierung der Benutzergefährdung durch böswillige Apps bei, die [unrechtmäßige Einwilligungsanforderungen](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) ausgeben. Beispielsweise werden Anforderungen zur Einwilligung für neu registrierte Apps mit mehreren Mandanten, die nicht von einem [verifizierten Herausgeber](../develop/publisher-verification-overview.md) stammen und Nichtstandardberechtigungen erfordern, als riskant eingestuft. Wenn Microsoft eine risikobehaftete Anforderung der Endbenutzereinwilligung erkennt, wird die Anforderung stattdessen auf Administratoreinwilligung „hochgestuft“. Diese Funktion ist standardmäßig aktiviert, führt jedoch nur zu einer Änderung des Verhaltens, wenn die Endbenutzereinwilligung aktiviert ist.
 
 Wird eine risikobehaftete Einwilligungsanforderung erkannt, wird in der Einwilligungsaufforderung eine Meldung angezeigt, die besagt, dass eine Administratorgenehmigung erforderlich ist. Wenn der [Workflow zum Anfordern der Administratoreinwilligung](configure-admin-consent-workflow.md) aktiviert ist, kann der Benutzer die Anforderung zur weiteren Überprüfung direkt von der Einwilligungsaufforderung an einen Administrator senden. Ist diese Funktion nicht aktiviert, wird die folgende Meldung angezeigt:
 
@@ -145,7 +145,7 @@ Mit dem Modul „Azure AD PowerShell Preview“ ([AzureADPreview](/powershell/mo
 
 1. Grundlegendes zum Einstellungswert:
 
-    | Einstellung       | type         | BESCHREIBUNG  |
+    | Einstellung       | Typ         | BESCHREIBUNG  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Boolean |  Flag, das angibt, ob die Benutzereinwilligung beim Erkennen einer risikobehafteten Anforderung blockiert wird. |
 

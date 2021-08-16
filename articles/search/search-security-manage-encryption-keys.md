@@ -7,14 +7,14 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/02/2020
-ms.custom: references_regions
-ms.openlocfilehash: 9679157e7871b043711fff688a8cbb69cf9bb4d8
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 05/28/2021
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 3e45a2ff5db3a3ebbc0f9e2c5d9c66af43915463
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813612"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786837"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung in Azure Cognitive Search
 
@@ -31,15 +31,18 @@ Die Schlüssel müssen sich nicht alle im selben Schlüsseltresor befinden. Ein 
 
 ## <a name="double-encryption"></a>Doppelte Verschlüsselung
 
-Für Dienste, die nach dem 1. August 2020 und in bestimmten Regionen erstellt werden, umfasst die Verschlüsselung mit kundenseitig verwalteten Schlüsseln auch temporäre Datenträger, sodass eine [vollständige Mehrfachverschlüsselung](search-security-overview.md#double-encryption) erreicht wird. Dies ist derzeit in den folgenden Regionen verfügbar: 
+Die Mehrfachverschlüsselung ist eine Erweiterung von kundenseitig verwalteten Schlüsseln (CMK). Es handelt sich dabei um eine umfangreiche zweifache Verschlüsselung (einmal durch CMK und einmal durch dienstseitig verwaltete Schlüssel), die sowohl eine langfristige Speicherung auf einem Datenträger als auch eine kurzfristige Speicherung auf temporären Datenträgern umfasst. Es ist keine Konfiguration erforderlich. Wenn Sie CMK auf Objekte anwenden, wird die Mehrfachverschlüsselung automatisch aufgerufen.
 
-+ USA, Westen 2
-+ East US
-+ USA Süd Mitte
-+ US Government, Virginia
-+ US Gov Arizona
+Obwohl die Mehrfachverschlüsselung in allen Regionen verfügbar ist, wurde die Unterstützung in zwei Phasen eingeführt. Der erste Rollout erfolgte im August 2020 und umfasste die fünf unten aufgeführten Regionen. Beim zweiten Rollout im Mai 2021 wurde die Mehrfachverschlüsselung auf alle verbleibenden Regionen erweitert. Wenn Sie CMK für einen älteren Dienst verwenden und eine Mehrfachverschlüsselung wünschen, müssen Sie einen neuen Suchdienst in Ihrer bevorzugten Region erstellen.
 
-Wenn Sie eine andere Region oder einen Dienst verwenden, der vor dem 1. August erstellt wurde, ist die Verschlüsselung mit verwalteten Schlüsseln auf Datenträger für Ihre Daten beschränkt und umfasst nicht die vom Dienst verwendeten temporären Datenträger.
+| Region | Diensterstellungsdatum |
+|--------|-----------------------|
+| USA, Westen 2 | Nach dem 1. August 2020 |
+| East US | Nach dem 1. August 2020 |
+| USA Süd Mitte  | Nach dem 1. August 2020 |
+| US Government, Virginia  | Nach dem 1. August 2020 |
+| US Gov Arizona  | Nach dem 1. August 2020 |
+| [Alle anderen unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=search#select-product) | Nach dem 13. Mai 2021 |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

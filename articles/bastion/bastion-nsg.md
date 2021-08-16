@@ -1,18 +1,18 @@
 ---
 title: Arbeiten mit virtuellen Computern und Netzwerksicherheitsgruppen in Azure Bastion
-description: Sie können Netzwerksicherheitsgruppen mit Azure Bastion verwenden. Hier erfahren Sie mehr über die Subnetze, die für diese Konfiguration erforderlich sind.
+description: Erfahren Sie mehr über die Verwendung von Netzwerksicherheitsgruppen mit Azure Bastion.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: b6a0dee4c3fef1be4f4b9f910b4c6256b4924a2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84f32755a4838fbcb29b3d85d8308b5288d746ea
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101700217"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537903"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Verwenden von NSG-Zugriff und Azure Bastion
 

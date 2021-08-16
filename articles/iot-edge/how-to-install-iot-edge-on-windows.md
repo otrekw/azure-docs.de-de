@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 2799e25dbd84ff07b375c6fa1b103789aae82b49
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c44f3cb4ee8d25a0197888b498f07b40ed2072c6
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538421"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790197"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät (Vorschau)
 
@@ -45,7 +45,7 @@ In diesem Artikel werden die Schritte zum Einrichten von IoT Edge auf einem Wind
   * Mindestens erforderlicher freier Arbeitsspeicher: 1 GB
   * Mindestens erforderlicher freier Speicherplatz: 10 GB
   * Wenn Sie eine neue Bereitstellung mit Windows 10 erstellen, stellen Sie sicher, dass Sie Hyper-V aktivieren. Weitere Informationen finden Sie unter [Installieren von Hyper-V auf Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
-  * Wenn Sie eine neue Bereitstellung mithilfe von Windows Server erstellen, müssen Sie sicherstellen, dass Sie die Hyper-V-Rolle installieren. Weitere Informationen finden Sie unter [Installieren der Hyper-V-Rolle auf Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+  * Wenn Sie eine neue Bereitstellung mithilfe von Windows Server erstellen, müssen Sie sicherstellen, dass Sie die Hyper-V-Rolle installieren und einen Netzwerkswitch besitzen. Weitere Informationen finden Sie unter [Geschachtelte Virtualisierung für Azure IoT Edge für Linux unter Windows](nested-virtualization.md).
   * Wenn Sie eine neue Bereitstellung mit einem virtuellen Computer erstellen, stellen Sie sicher, dass Sie die verschachtelte Virtualisierung (Nested Virtualization) ordnungsgemäß konfigurieren. Weitere Informationen finden Sie im Leitfaden für die [Verschachtelte Virtualisierung (Nested Virtualization)](nested-virtualization.md).
 
 * Zugriff auf Windows Admin Center mit installierter Azure IoT Edge-Erweiterung für Windows Admin Center:
@@ -177,7 +177,7 @@ Installieren Sie IoT Edge für Linux unter Windows auf dem Zielgerät, sofern di
    ```
 
    > [!NOTE]
-   > Sie können diesen Befehl ohne Parameter ausführen oder die Bereitstellung optional mit Parametern anpassen. Weitere Informationen zu den Bedeutungen der einzelnen Parameter und Standardwerte finden Sie in der [Skriptreferenz zu IoT Edge für Linux in Windows PowerShell](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow).
+   > Sie können diesen Befehl ohne Parameter ausführen oder die Bereitstellung optional mit Parametern anpassen. Weitere Informationen zu den Bedeutungen der einzelnen Parameter und Standardwerte finden Sie in der [Skriptreferenz zu IoT Edge für Linux in Windows PowerShell](reference-iot-edge-for-linux-on-windows-functions.md#deploy-eflow).
 
 1. Geben Sie „Y“ ein, um den Lizenzbedingungen zuzustimmen.
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 366692113872856852fd933ca32ab51ca608de14
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a12f3ca25df2d4473361e0a1ef596384813dc6a8
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291278"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854736"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis
 
@@ -94,7 +94,7 @@ Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 
 - [Bash in der Azure Cloud Shell](../cloud-shell/overview.md) oder [Azure-Befehlszeilenschnittstelle](/cli/azure)
 - Kontoadministrator des Abonnements, das Sie im Quellverzeichnis übertragen möchten
-- Rolle [Besitzer](built-in-roles.md#owner) im Zielverzeichnis
+- Ein Benutzerkonto sowohl im Quell- als auch im Zielverzeichnis für den Benutzer, der die Verzeichnisänderung vornimmt
 
 ## <a name="step-1-prepare-for-the-transfer"></a>Schritt 1: Vorbereiten der Übertragung
 
@@ -252,7 +252,7 @@ Wenn Sie einen Schlüsseltresor erstellen, wird er automatisch an die standardm�
 1. Verwenden Sie [az account show](/cli/azure/account#az_account_show), um Ihre Abonnement-ID abzurufen.
 
     ```azurecli
-    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
+    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"//')
     ```
 
 1. Verwenden Sie die Erweiterung [az graph-](/cli/azure/graph), um andere Azure-Ressourcen mit bekannten Abhängigkeiten vom Azure AD-Verzeichnis aufzulisten.

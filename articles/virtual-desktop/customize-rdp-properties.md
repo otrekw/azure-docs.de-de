@@ -1,24 +1,25 @@
 ---
 title: Anpassen von RDP-Eigenschaften mit PowerShell (Azure)
-description: Vorgehensweise zum Anpassen von RDP-Eigenschaften für Windows Virtual Desktop mit PowerShell-Cmdlets
+description: Vorgehensweise zum Anpassen von RDP-Eigenschaften für Azure Virtual Desktop mit PowerShell-Cmdlets
 author: Heidilohr
 ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 06409903e77923176ac5fab4dd27bf918ea0d9d9
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 545d748d521d623bdbaa21ccafd8c52c6508bf03
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331800"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750261"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Anpassen der RDP-Eigenschaften (Remotedesktopprotokoll) für einen Hostpool
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md).
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md).
 
-Durch Anpassen von RDP-Eigenschaften (Remotedesktopprotokoll) eines Hostpools, z.B. Unterstützung mehrerer Monitore und Audioumleitung, können Sie für Benutzer eine optimale Bedienumgebung bereitstellen, die deren Anforderungen entspricht. Sie können RDP-Eigenschaften in Windows Virtual Desktop anpassen, indem Sie entweder das Azure-Portal oder den Parameter *-CustomRdpProperty* im Cmdlet **Update-AzWvdHostPool** verwenden.
+Durch Anpassen von RDP-Eigenschaften (Remotedesktopprotokoll) eines Hostpools, z.B. Unterstützung mehrerer Monitore und Audioumleitung, können Sie für Benutzer eine optimale Bedienumgebung bereitstellen, die deren Anforderungen entspricht. Sie können RDP-Eigenschaften in Azure Virtual Desktop anpassen, indem Sie entweder das Azure-Portal oder den Parameter *-CustomRdpProperty* im Cmdlet **Update-AzWvdHostPool** verwenden.
 
 Eine vollständige Liste der unterstützten Eigenschaften samt deren Standardwerten finden Sie unter [Unterstützte RDP-Dateieinstellungen](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext).
 
@@ -39,16 +40,16 @@ RDP-Dateien haben standardmäßig die folgenden Eigenschaften:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie beginnen, befolgen Sie die Anweisungen unter [Einrichten des Windows Virtual Desktop PowerShell-Moduls](powershell-module.md), um Ihr PowerShell-Modul einzurichten und sich bei Azure anzumelden.
+Bevor Sie beginnen, befolgen Sie die Anweisungen unter [Einrichten des Azure Virtual Desktop PowerShell-Moduls](powershell-module.md), um Ihr PowerShell-Modul einzurichten und sich bei Azure anzumelden.
 
 ## <a name="configure-rdp-properties-in-the-azure-portal"></a>Konfigurieren von RDP-Eigenschaften im Azure-Portal
 
 So konfigurieren Sie RDP-Eigenschaften im Azure-Portal:
 
 1. Melden Sie sich unter <https://portal.azure.com> bei Azure an.
-2. Geben Sie **windows virtual desktop** in die Suchleiste ein.
-3. Wählen Sie unter „Dienste“ die Option **Windows Virtual Desktop** aus.
-4. Wählen Sie auf der Seite „Windows Virtual Desktop“ im Menü auf der linken Seite **Hostpools** aus.
+2. Geben Sie **Azure Virtual Desktop** in die Suchleiste ein.
+3. Wählen Sie unter „Dienste“ die Option **Azure Virtual Desktop** aus.
+4. Wählen Sie auf der Seite „Azure Virtual Desktop“ im Menü auf der linken Seite **Hostpools** aus.
 5. Wählen Sie **den Namen des Hostpools** aus, den Sie aktualisieren möchten.
 6. Wählen Sie im Menü auf der linken Seite des Bildschirms **RDP-Eigenschaften** aus.
 7. Legen Sie die gewünschte Eigenschaft fest.
@@ -129,7 +130,7 @@ CustomRdpProperty : <CustomRDPpropertystring>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie die RDP-Eigenschaften eines bestimmten Hostpools angepasst haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um die Einstellungen als Teil einer Benutzersitzung zu testen. In den nächsten Vorgehensweisen erfahren Sie, wie Sie mit dem Client Ihrer Wahl eine Verbindung mit einer Sitzung herstellen:
+Nachdem Sie die RDP-Eigenschaften eines bestimmten Hostpools angepasst haben, können Sie sich bei einem Azure Virtual Desktop-Client anmelden, um die Einstellungen als Teil einer Benutzersitzung zu testen. In den nächsten Vorgehensweisen erfahren Sie, wie Sie mit dem Client Ihrer Wahl eine Verbindung mit einer Sitzung herstellen:
 
 - [Herstellen einer Verbindung mit dem Windows-Desktopclient](connect-windows-7-10.md)
 - [Herstellen einer Verbindung mit dem Webclient](connect-web.md)

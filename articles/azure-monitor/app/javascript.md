@@ -4,23 +4,23 @@ description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdate
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 04cda044b002e226c49f8647d4705d7c0f2a514e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 61b7aa455cf9b782ca10d749344c26f5d15caa40
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565264"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072512"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
 Informieren Sie sich über die Leistung und Nutzung Ihrer Webseite oder App. Wenn Sie [Application Insights](app-insights-overview.md) Ihrem Seitenskript hinzufügen, erhalten Sie Zeitangaben zu Seitenladevorgängen und AJAX-Aufrufen, Anzahl und Details von Browserausnahmen und AJAX-Fehlern sowie die Anzahl von Benutzern und Sitzungen. Diese Informationen können jeweils nach Seite, Clientbetriebssystem und Browserversion, geografischer Position und anderen Dimensionen segmentiert werden. Sie können Warnungen für die Fehleranzahl oder das langsame Laden von Seiten festlegen. Und indem Sie Ablaufverfolgungsaufrufe in JavaScript-Code einfügen, können Sie nachverfolgen, wie die verschiedenen Funktionen Ihre Webseitenanwendung genutzt werden.
 
-Application Insights kann mit allen Webseiten verwendet werden. Hierfür müssen Sie lediglich einen kurzen JavaScript-Codeabschnitt hinzufügen. Wenn Ihr Webdienst [Java](java-get-started.md) oder [ASP.NET](asp-net.md) ist, können Sie die serverseitigen SDKs zusammen mit dem clientseitigen JavaScript SDK verwenden, um die Leistung Ihrer App vollständig zu verstehen.
+Application Insights kann mit allen Webseiten verwendet werden. Hierfür müssen Sie lediglich einen kurzen JavaScript-Codeabschnitt hinzufügen. Wenn Ihr Webdienst [Java](java-in-process-agent.md) oder [ASP.NET](asp-net.md) ist, können Sie die serverseitigen SDKs zusammen mit dem clientseitigen JavaScript SDK verwenden, um die Leistung Ihrer App vollständig zu verstehen.
 
 ## <a name="adding-the-javascript-sdk"></a>Hinzufügen des JavaScript SDK
 
 > [!IMPORTANT]
-> Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=js) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+> [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=js) sind Instrumentierungsschlüsseln vorzuziehen. Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die Verbindungszeichenfolge identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 
 1. Zuerst benötigen Sie eine Application Insights-Ressource. Wenn Sie noch keine Ressource und keinen Instrumentierungsschlüssel haben, folgen Sie den Anweisungen unter [Erstellen einer neuen Ressource](create-new-resource.md).
 2. Kopieren Sie den _Instrumentierungsschlüssel_ (auch „iKey“ genannt) oder die [Verbindungszeichenfolge](#connection-string-setup) der Ressource, an die Ihre JavaScript-Telemetriedaten (aus Schritt 1) gesendet werden sollen. Sie fügen sie der Einstellung `instrumentationKey` oder `connectionString` des Application Insights JavaScript SDK hinzu.
@@ -108,7 +108,7 @@ Jede Konfigurationsoption ist im Codeausschnitt oben in einer eigenen Zeile aufg
 
 Folgende Konfigurationsoptionen stehen zur Verfügung:
  
-| Name | type | BESCHREIBUNG
+| Name | Typ | BESCHREIBUNG
 |------|------|----------------
 | src | Zeichenfolge **[erforderlich]** | Die vollständige URL, von der das SDK geladen werden soll. Dieser Wert wird für das Attribut „src“ eines dynamisch hinzugefügten &lt;script /&gt;-Tags verwendet. Sie können die öffentliche CDN-Adresse oder eine privat gehostete nehmen.
 | name | Zeichenfolge *[optional]* | Der globale Name des initialisierten SDK. Der Standardwert ist `appInsights`. ```window.appInsights``` ist daher ein Verweis auf die initialisierte Instanz. Hinweis: Wenn Sie einen Namenswert angeben oder es scheint, als sei eine frühere Instanz (über den globalen Namen „appInsightsSDK“) zugewiesen, wird dieser Namenswert ebenfalls im globalen Namespace als ```window.appInsightsSDK=<name value>``` definiert. Dies wird durch den Initialisierungscode des SDK erzwungen, um sicherzustellen, dass die richtigen Methoden für das Ausschnittsgerüst und den Proxy initialisiert und aktualisiert werden.

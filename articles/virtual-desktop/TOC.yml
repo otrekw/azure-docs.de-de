@@ -10,10 +10,6 @@
       href: whats-new-azure-monitor.md
     - name: Dokumentation zu Azure Virtual Desktop (klassisch)
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
-- name: Schnellstarts
-  items:
-    - name: Erste Schritte mit Azure Virtual Desktop
-      href: getting-started-feature.md
 - name: Tutorials
   items:
     - name: 1. Erstellen eines Hostpools mit dem Azure-Portal
@@ -52,8 +48,6 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
-        - name: "Bereitstellen eines in Azure\_AD eingebundenen Sitzungshosts"
-          href: deploy-azure-ad-joined-vm.md
         - name: "Bereitstellen eines virtuellen Windows\_7-Computers"
           href: deploy-windows-7-virtual-machine.md
         - name: Bereitstellen eines GPU-basierten Sitzungshosts
@@ -181,7 +175,7 @@
     - name: Speicheroptionen für FSLogix-Profilcontainer
       href: store-fslogix-profile.md
     - name: Häufig gestellte Fragen zu Azure Virtual Desktop
-      href: faq.yml
+      href: faq.md
     - name: "Häufig gestellte Fragen zu Windows\_10 Enterprise mit mehreren Sitzungen"
       href: windows-10-multisession-faq.yml
     - name: MSIX-Feature zum Anfügen von Apps
@@ -191,7 +185,7 @@
         - name: Glossar
           href: app-attach-glossary.md
         - name: Häufig gestellte Fragen
-          href: app-attach-faq.yml
+          href: app-attach-faq.md
     - name: Azure Monitor-Glossar
       href: azure-monitor-glossary.md
     - name: Datenspeicherorte
@@ -210,22 +204,20 @@
       href: troubleshoot-set-up-issues.md
     - name: Konfiguration des virtuellen Sitzungshostcomputers
       href: troubleshoot-vm-configuration.md
-    - name: Verwaltungsprobleme
-      href: troubleshoot-management-issues.md
-    - name: Azure Virtual Desktop PowerShell
-      href: troubleshoot-powershell.md
-    - name: Azure Virtual Desktop-Agent
-      href: troubleshoot-agent.md
     - name: Verbindungen des Remotedesktopdiensts
       href: troubleshoot-service-connection.md
+    - name: Azure Virtual Desktop-Agent
+      href: troubleshoot-agent.md
     - name: Probleme des Remotedesktopclients
       href: troubleshoot-client.md
+    - name: 'Azure Virtual Desktop: PowerShell'
+      href: troubleshoot-powershell.md
     - name: Diagnostizieren von Problemen mit der Grafikleistung
       href: remotefx-graphics-performance-counters.md
-    - name: Verbindungen mit in Azure AD eingebundenen virtuellen Computern
-      href: troubleshoot-azure-ad-connections.md
     - name: Azure Monitor
       href: troubleshoot-azure-monitor.md
+    - name: Verwaltungsprobleme
+      href: troubleshoot-management-issues.md
 - name: Verweis
   items:
     - name: Bewährte Sicherheitsmethoden

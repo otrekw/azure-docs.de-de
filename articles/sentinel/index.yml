@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Sentinel
-summary: 'In diesem Artikel werden Anwendungsfälle für die ersten Schritte mit Azure Sentinel vorgestellt. Erkennen und stoppen Sie Bedrohungen, bevor sie Schaden anrichten – mit einer SIEM-Lösung, die für die moderne Welt neu erfunden wurde. Mit Azure Sentinel können Sie Ihr gesamtes Unternehmen sozusagen aus der Vogelperspektive beobachten.'
+summary: In diesem Artikel werden Anwendungsfälle für die ersten Schritte mit Azure Sentinel vorgestellt. Erkennen und stoppen Sie Bedrohungen, bevor sie Schaden anrichten – mit einer SIEM-Lösung, die für die moderne Welt neu erfunden wurde. Mit Azure Sentinel können Sie Ihr gesamtes Unternehmen sozusagen aus der Vogelperspektive beobachten.
 metadata:
   title: Dokumentation zu Azure Sentinel
-  description: "In diesem Artikel werden Anwendungsfälle und Szenarien für die ersten Schritte mit Azure Sentinel vorgestellt. Erkennen und stoppen Sie Bedrohungen, bevor sie Schaden anrichten – mit einer SIEM-Lösung, die für die moderne Welt neu erfunden wurde. Mit Azure Sentinel können Sie Ihr gesamtes Unternehmen sozusagen aus der Vogelperspektive beobachten. Erforderliche Anzahl; in den Suchergebnissen angezeigte Artikelbeschreibung < 160\_Zeichen"
+  description: In diesem Artikel werden Anwendungsfälle und Szenarien für die ersten Schritte mit Azure Sentinel vorgestellt. Erkennen und stoppen Sie Bedrohungen, bevor sie Schaden anrichten – mit einer SIEM-Lösung, die für die moderne Welt neu erfunden wurde. Mit Azure Sentinel können Sie Ihr gesamtes Unternehmen sozusagen aus der Vogelperspektive beobachten. Erforderliche Anzahl; in den Suchergebnissen angezeigte Artikelbeschreibung < 160 Zeichen
   services: sentinel
   ms.service: sentinel
   ms.subservice: azure-sentinel
@@ -12,146 +12,152 @@ metadata:
   author: yelevin
   ms.author: yelevin
   ms.date: 06/25/2020
+  ms.openlocfilehash: 53ebfd52d2e55aa8f30f7638cd9998e83c257439
+  ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/16/2021
+  ms.locfileid: "112199428"
 landingContent:
-  - title: Informationen zu Azure Sentinel
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Was ist Azure Sentinel?
-            url: overview.md
-          - text: Nützliche Ressourcen
-            url: resources.md
-      - linkListType: whats-new
-        links:
-          - text: Neuerungen in Azure Sentinel
-            url: whats-new.md
-  - title: Erste Schritte
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: Ausführen des Onboardings für Azure Sentinel
-            url: quickstart-onboard.md
-      - linkListType: how-to-guide
-        links:
-          - text: Verbinden von Daten mit Azure Sentinel
-            url: connect-data-sources.md
-      - linkListType: tutorial
-        links:
-          - text: Untersuchen von Vorfällen
-            url: tutorial-investigate-cases.md
-      - linkListType: learn
-        links:
-          - text: Erstellen von KQL-Abfragen für Azure Sentinel
-            url: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
-  - title: Sammeln von Daten
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Normalisieren und Analysieren von Daten
-            url: normalization.md
-      - linkListType: how-to-guide
-        links:
-          - text: "Herstellen einer Verbindung für Microsoft\_365 Defender"
-            url: connect-microsoft-365-defender.md
-          - text: Erstellen eines benutzerdefinierten Connectors
-            url: create-custom-connector.md
-          - text: Überwachen der Connectorintegrität
-            url: monitor-data-connector-health.md
-          - text: Integrieren von Azure Data Explorer
-            url: store-logs-in-azure-data-explorer.md
-      - linkListType: reference
-        links:
-          - text: Referenz zum Datenquellenschema
-            url: data-source-schema-reference.md
-          - text: CEF-Protokollfeldzuordnung
-            url: cef-name-mapping.md
-          - text: Schema zur Netzwerknormalisierung
-            url: normalization-schema.md
-  - title: Bedrohungsanalyse
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Grundlegendes zu Threat Intelligence in Azure Sentinel
-            url: understand-threat-intelligence.md
-          - text: "Threat\_Intelligence-Integrationen"
-            url: threat-intelligence-integration.md
-      - linkListType: how-to-guide
-        links:
-          - text: "Verbinden von Threat\_Intelligence-Plattformen mit Azure Sentinel"
-            url: connect-threat-intelligence-tip.md
-          - text: Verbinden von Azure Sentinel mit STIX/TAXII-Feeds
-            url: connect-threat-intelligence-taxii.md
-          - text: Verwenden von Bedrohungsindikatoren
-            url: work-with-threat-indicators.md
-  - title: Bedrohungserkennung
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: User and Entity Behavior Analytics (UEBA)
-            url: identify-threats-with-entity-behavior-analytics.md
-          - text: SOC-ML-Anomalien
-            url: soc-ml-anomalies.md
-      - linkListType: tutorial
-        links:
-          - text: Erkennen von Bedrohungen mithilfe integrierter Analysen
-            url: tutorial-detect-threats-built-in.md
-          - text: Erstellen von benutzerdefinierten Erkennungsregeln
-            url: tutorial-detect-threats-custom.md
-      - linkListType: reference
-        links:
-          - text: Entitätenverweis
-            url: entities-reference.md
-          - text: UEBA-Anreicherungen
-            url: ueba-enrichments.md
-  - title: Bedrohungssuche
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Suchen nach Bedrohungen
-            url: hunting.md
-      - linkListType: how-to-guide
-        links:
-          - text: "Suchen mit Jupyter\_Notebook-Instanzen"
-            url: notebooks.md
-          - text: Suchen mit Lesezeichen
-            url: bookmarks.md
-          - text: Suchen mit Livestream
-            url: livestream.md
-  - title: Untersuchen
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: Überwachen Ihrer Daten
-            url: tutorial-monitor-your-data.md
-      - linkListType: how-to-guide
-        links:
-          - text: Untersuchen mit UEBA
-            url: investigate-with-ueba.md
-      - linkListType: reference
-        links:
-          - text: Häufig verwendete Azure Sentinel-Arbeitsmappen
-            url: top-workbooks.md
-  - title: Reagieren
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: Automatische Reaktion auf Bedrohungen
-            url: tutorial-respond-threats-playbook.md
-          - text: Aufspüren von Sicherheitsrisiken mit Jupyter Notebooks
-            url: notebooks.md
-      - linkListType: concept
-        links:
-          - text: Automatisierungsregeln
-            url: automate-incident-handling-with-automation-rules.md
-          - text: Playbooks
-            url: automate-responses-with-playbooks.md
-  - title: Verwenden mehrerer Mandanten
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Verwalten mehrerer Mandanten
-            url: multiple-tenants-service-providers.md
-          - text: Arbeiten mit Vorfällen in mehreren Arbeitsbereichen
-            url: multiple-workspace-view.md
-          - text: Verwalten Ihres geistigen Eigentums
-            url: mssp-protect-intellectual-property.md
+- title: Informationen zu Azure Sentinel
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Sentinel?
+      url: overview.md
+    - text: Nützliche Ressourcen
+      url: resources.md
+  - linkListType: whats-new
+    links:
+    - text: Neuerungen in Azure Sentinel
+      url: whats-new.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Ausführen des Onboardings für Azure Sentinel
+      url: quickstart-onboard.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verbinden von Daten mit Azure Sentinel
+      url: connect-data-sources.md
+  - linkListType: tutorial
+    links:
+    - text: Untersuchen von Vorfällen
+      url: tutorial-investigate-cases.md
+  - linkListType: learn
+    links:
+    - text: Erstellen von KQL-Abfragen für Azure Sentinel
+      url: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
+- title: Sammeln von Daten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Normalisieren und Analysieren von Daten
+      url: normalization.md
+  - linkListType: how-to-guide
+    links:
+    - text: Herstellen einer Verbindung für Microsoft 365 Defender
+      url: connect-microsoft-365-defender.md
+    - text: Erstellen eines benutzerdefinierten Connectors
+      url: create-custom-connector.md
+    - text: Herstellen einer Verbindung mit Threat Intelligence
+      url: connect-threat-intelligence.md
+    - text: Überwachen der Connectorintegrität
+      url: monitor-data-connector-health.md
+    - text: Integrieren von Azure Data Explorer
+      url: store-logs-in-azure-data-explorer.md
+  - linkListType: reference
+    links:
+    - text: Referenz zum Datenquellenschema
+      url: data-source-schema-reference.md
+    - text: CEF-Protokollfeldzuordnung
+      url: cef-name-mapping.md
+    - text: Schema zur Netzwerknormalisierung
+      url: normalization-schema.md
+- title: Bedrohungsanalyse
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Importieren von Threat Intelligence in Azure Sentinel
+      url: import-threat-intelligence.md
+    - text: Threat Intelligence-Integrationen
+      url: threat-intelligence-integration.md
+  - linkListType: tutorial
+    links:
+    - text: Erkennen von Bedrohungen mithilfe integrierter Analysen
+      url: tutorial-detect-threats-built-in.md
+    - text: Erstellen von benutzerdefinierten Erkennungsregeln
+      url: tutorial-detect-threats-custom.md
+  - linkListType: how-to-guide
+    links:
+    - text: Herstellen einer Verbindung mit Threat Intelligence
+      url: connect-threat-intelligence.md
+  - linkListType: reference
+    links:
+    - text: Entitätenverweis
+      url: entities-reference.md
+- title: Bedrohungserkennung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: User and Entity Behavior Analytics (UEBA)
+      url: identify-threats-with-entity-behavior-analytics.md
+    - text: SOC-ML-Anomalien
+      url: soc-ml-anomalies.md
+  - linkListType: reference
+    links:
+    - text: UEBA-Anreicherungen
+      url: ueba-enrichments.md
+- title: Bedrohungssuche
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Suchen nach Bedrohungen
+      url: hunting.md
+  - linkListType: how-to-guide
+    links:
+    - text: Suchen mit Jupyter Notebook-Instanzen
+      url: notebooks.md
+    - text: Suchen mit Lesezeichen
+      url: bookmarks.md
+    - text: Suchen mit Livestream
+      url: livestream.md
+- title: Untersuchen
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Überwachen Ihrer Daten
+      url: tutorial-monitor-your-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Untersuchen mit UEBA
+      url: investigate-with-ueba.md
+  - linkListType: reference
+    links:
+    - text: Häufig verwendete Azure Sentinel-Arbeitsmappen
+      url: top-workbooks.md
+- title: Reagieren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Automatische Reaktion auf Bedrohungen
+      url: tutorial-respond-threats-playbook.md
+    - text: Aufspüren von Sicherheitsrisiken mit Jupyter Notebooks
+      url: notebooks.md
+  - linkListType: concept
+    links:
+    - text: Automatisierungsregeln
+      url: automate-incident-handling-with-automation-rules.md
+    - text: Playbooks
+      url: automate-responses-with-playbooks.md
+- title: Verwenden mehrerer Mandanten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten mehrerer Mandanten
+      url: multiple-tenants-service-providers.md
+    - text: Arbeiten mit Vorfällen in mehreren Arbeitsbereichen
+      url: multiple-workspace-view.md
+    - text: Verwalten Ihres geistigen Eigentums
+      url: mssp-protect-intellectual-property.md

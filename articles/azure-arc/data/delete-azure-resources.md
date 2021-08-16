@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: ce46b7afe7344fabde03805dc2a0977411be5811
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: bde1b1f84847c3ebf05f14312b89ae8227908948
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107716077"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411177"
 ---
 # <a name="delete-resources-from-azure"></a>Löschen von Azure-Ressourcen
 
@@ -22,6 +22,18 @@ In diesem Artikel wird beschrieben, wie Sie Ressourcen in Azure löschen.
 
 > [!WARNING]
 > Wenn Sie Ressourcen wie in diesem Artikel beschrieben löschen, können diese Aktionen nicht rückgängig gemacht werden.
+
+## <a name="before"></a>Vorher
+
+Bevor Sie eine Ressource wie eine verwaltete SQL-Instanz von Azure Arc oder einen Azure Arc-Datencontroller löschen, müssen Sie die Nutzungsinformationen exportieren und in Azure hochladen, um eine genaue Abrechnungsberechnung zu erhalten. Befolgen Sie dazu die Anweisungen unter [Hochladen von Abrechnungsdaten in Azure](view-billing-data-in-azure.md#upload-billing-data-to-azure).
+
+## <a name="direct-connectivity-mode"></a>Direkter Konnektivitätsmodus
+
+Wenn ein Cluster im direkten Konnektivitätsmodus mit Azure verbunden ist, verwenden Sie das Azure-Portal, um die Ressourcen zu verwalten. Verwenden Sie das Portal für alle CRUD-Vorgänge (Create, Read, Update, & Delete) für die Gruppen Datencontroller, verwaltete Instanz und PostgreSQL.
+
+Siehe [Verwalten von Azure-Ressourcen über das Azure-Portal](../../azure-resource-manager/management/manage-resources-portal.md).
+
+## <a name="indirect-connectivity-mode"></a>Indirekter Konnektivitätsmodus
 
 Im indirekten Verbindungsmodus wird eine Instanz durch das Löschen in Kubernetes nicht aus Azure entfernt. Umgekehrt wird eine Instanz nicht durch das Löschen in Azure aus Kubernetes entfernt. Beim indirekten Verbindungsmodus ist das Löschen einer Ressource ein zweistufiger Prozess, der in Zukunft verbessert wird. Kubernetes ist dann die allgemeingültige Datenquelle, und das Portal wird auf der Grundlage dieser Daten aktualisiert.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 6ff87d046c60f588e133010895ec3e7ce08cb71f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2b920b7a5794e1ee56b8ccc2c1d3aef45a1b5fe2
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740561"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483819"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung für Azure NetApp Files
 
@@ -29,7 +29,7 @@ Azure NetApp Files unterstützt die Verschlüsselung des NFS-Clients in Kerberos
 
 Für die Verschlüsselung des NFSv4.1-Clients gelten die folgenden Anforderungen: 
 
-* Verbindung mit Active Directory Domain Services (AD DS) zur Vereinfachung der Kerberos-Ticketausstellung 
+* Verbindung mit Active Directory Domain Services (AD DS) oder Azure Active Directory Domain Services (AADDS) zur Vereinfachung der Kerberos-Ticketausstellung 
 * Erstellung von DNS-A/PTR-Einträgen für die IP-Adressen des Clients sowie des NFS-Servers in Azure NetApp Files
 * Linux-Client  
     Dieser Artikel enthält Anleitungen für RHEL- und Ubuntu-Clients.  Für andere Clients gelten ähnliche Konfigurationsschritte. 

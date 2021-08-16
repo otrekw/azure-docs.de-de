@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 1cb5f2f9ac941001efb18301f4a54bd0092920ba
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d061eed42280fffa1ff7f53e43adb7b85a94ae0d
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172739"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813215"
 ---
-# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Überprüfen von Pull Requests in Präproduktionsumgebungen in Azure Static Web Apps (Vorschau)
+# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps"></a>Überprüfen von Pull Requests in Präproduktionsumgebungen in Azure Static Web Apps
 
 In diesem Artikel wird veranschaulicht, wie Sie Präproduktionsumgebungen zum Überprüfen der Änderungen von Anwendungen verwenden, die mit [Azure Static Web Apps](overview.md) bereitgestellt werden.
 
@@ -33,7 +33,7 @@ Die Verwendung von Präproduktionsumgebungen hat viele Vorteile. Beispielsweise 
 - Durchführen von Integritätsprüfungen vor der Bereitstellung in der Produktion
 
 > [!NOTE]
-> Während der Vorschauphase sind [maximal drei Stagingumgebungen](quotas.md) zulässig.
+> Es sind [maximal drei Stagingumgebungen](quotas.md) gleichzeitig zulässig.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

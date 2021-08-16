@@ -3,12 +3,12 @@ title: Ereignisdomänen in Azure Event Grid
 description: Dieser Artikel beschreibt, wie Sie Ereignisdomänen verwenden, um den Fluss benutzerdefinierter Ereignisse für Ihre verschiedenen Geschäftsorganisationen, Kunden oder Anwendungen zu verwalten.
 ms.topic: conceptual
 ms.date: 04/13/2021
-ms.openlocfilehash: 32c06ac55f667ec9807c7952127c2cf0f0384024
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 78a785d3f1ee0431b11e8c14c3e48f4a156b5fd4
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374708"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537783"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Grundlegendes zu Ereignisdomänen für die Verwaltung von Event Grid-Themen
 
@@ -45,7 +45,7 @@ Weitere Informationen zu diesen Rollen finden Sie unter [Integrierte Rollen für
 Das Abonnieren von Ereignissen zu einem Thema innerhalb einer Ereignisdomäne ist identisch mit dem [Erstellen eines Ereignisabonnements für ein benutzerdefiniertes Thema](./custom-event-quickstart.md) oder dem Abonnieren eines Ereignisses von einem Azure-Dienst.
 
 > [!IMPORTANT]
-> Das Domänenthema wird in Event Grid als **automatisch verwaltete** Ressource betrachtet. Sie können ein Ereignisabonnement im Domänenthemabereich erstellen, ohne das Domänenthema zu erstellen. In diesem Fall erstellt Event Grid automatisch das Domänenthema in Ihrem Namen. Natürlich können Sie das Domänenthema auch manuell erstellen. Dieses Verhalten ermöglicht es Ihnen, sich um eine Ressource weniger zu kümmern, wenn Sie mit einer großen Anzahl von Domänenthemen arbeiten. Wenn das letzte Abonnement eines Domänenthemas gelöscht wird, wird das Domänenthema auch gelöscht, und zwar unabhängig davon, ob das Domänenthema manuell oder automatisch erstellt wurde. 
+> Das Domänenthema wird in Event Grid als **automatisch verwaltete** Ressource betrachtet. Sie können ein Ereignisabonnement im [Domänenbereich](#domain-scope-subscriptions) erstellen, ohne das Domänenthema zu erstellen. In diesem Fall erstellt Event Grid automatisch das Domänenthema in Ihrem Namen. Natürlich können Sie das Domänenthema auch manuell erstellen. Dieses Verhalten ermöglicht es Ihnen, sich um eine Ressource weniger zu kümmern, wenn Sie mit einer großen Anzahl von Domänenthemen arbeiten. Wenn das letzte Abonnement eines Domänenthemas gelöscht wird, wird das Domänenthema auch gelöscht, und zwar unabhängig davon, ob das Domänenthema manuell oder automatisch erstellt wurde. 
 
 ### <a name="domain-scope-subscriptions"></a>Domänenbereichabonnements
 

@@ -1,24 +1,24 @@
 ---
-title: Überspringen des Löschvorgangs für Benutzer außerhalb des Gültigkeitsbereichs
-description: Erfahren Sie, wie Sie das Standardverhalten beim Aufheben der Bereitstellung von Benutzern außerhalb des gültigen Bereichs außer Kraft setzen.
+title: Überspringen des Löschvorgangs für Benutzer außerhalb des Gültigkeitsbereichs bei der Azure Active Directory-Anwendungsbereitstellung
+description: Hier erfahren Sie, wie Sie in Azure Active Directory das Standardverhalten beim Aufheben der Bereitstellung von Benutzern außerhalb des Gültigkeitsbereichs außer Kraft setzen.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: celested
-ms.openlocfilehash: a6cbabe35b223020528d1cf48aa9e0ef9b9f7c05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: 37196dafd094f997bc5fe2ea165cefb9099562a0
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256118"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784879"
 ---
-# <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs
+# <a name="skip-deletion-of-user-accounts-that-go-out-of-scope-in-azure-active-directory"></a>Überspringen des Löschvorgangs von Benutzerkonten außerhalb des Gültigkeitsbereichs in Azure Active Directory
 
 Standardmäßig werden Benutzer, die sich außerhalb des gültigen Bereichs befinden, vom Azure AD-Bereitstellungsmodul vorläufig gelöscht oder deaktiviert. In bestimmten Szenarien (z. B. bei der eingehenden Benutzerbereitstellung von Workday in AD) ist dieses Verhalten jedoch möglicherweise nicht das erwartete Verhalten, sodass Sie dieses Standardverhalten außer Kraft setzen möchten.  
 

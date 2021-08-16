@@ -7,32 +7,32 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/12/2021
-ms.openlocfilehash: 9bb62544887e0bc0269b98cd98fbf97fc477352f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/27/2021
+ms.openlocfilehash: d0390bd70080ea0174a81cce9538396321dec658
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722428"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539355"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Zurückgeben einer semantischen Antwort in Azure Cognitive Search
 
 > [!IMPORTANT]
-> Semantische Suche ist nur über die Vorschau REST-API in der öffentlichen Vorschau verfügbar. Previewfunktionen werden im Ist-Zustand gemäß den [ergänzenden Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) angeboten, und es ist nicht garantiert, dass dieselbe Implementierung bei allgemeiner Verfügbarkeit verwendet wird. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
+> Die semantische Suche befindet sich in der öffentlichen Vorschau und unterliegt den [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sie ist über das Azure-Portal, die Vorschau-REST-API und Beta-SDKs verfügbar. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
 
-Beim Formulieren einer [Semantikabfrage](semantic-how-to-query-request.md) können Sie optional Inhalte aus den am besten passenden Dokumenten extrahieren, die die Abfrage direkt „beantworten“. Das Abfrageergebnis kann aus einer oder mehreren Antworten bestehen, die Sie dann auf einer Suchseite rendern können, um die Benutzeroberfläche Ihrer App zu verbessern.
+Beim Aufrufen von [semantischen Rangfolgen und Beschriftungen](semantic-how-to-query-request.md) können Sie optional Inhalte aus den am besten passenden Dokumenten extrahieren, die die Abfrage direkt „beantworten“. Das Abfrageergebnis kann aus einer oder mehreren Antworten bestehen, die Sie dann auf einer Suchseite rendern können, um die Benutzeroberfläche Ihrer App zu verbessern.
 
 In diesem Artikel erfahren Sie, wie Sie eine semantische Antwort anfordern und das Abfrageergebnis entpacken sowie welche Inhaltsmerkmale am ehesten zu qualitativ hochwertigen Antworten führen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Alle für [Semantikabfragen](semantic-how-to-query-request.md) geltenden Voraussetzungen gelten auch für Antworten, einschließlich der Dienstebene und der Region.
+Alle für [Semantikabfragen](semantic-how-to-query-request.md#prerequisites) geltenden Voraussetzungen gelten auch für Antworten, einschließlich der [Dienstebene und der Region](semantic-search-overview.md#availability-and-pricing).
 
-+ Die Abfragelogik muss die Semantikabfrage-Parameter sowie den Parameter „Antworten“ enthalten. Die erforderlichen Parameter werden in diesem Artikel erläutert.
++ Die Abfragelogik muss die Semantikabfrageparameter „queryType=semantic“ sowie den Parameter „anwers“ enthalten. Die erforderlichen Parameter werden in diesem Artikel erläutert.
 
-+ Vom Benutzer eingegebene Abfragezeichenfolgen müssen sprachlich so formuliert sein, dass sie die Merkmale einer Frage aufweisen (was, wo, wann, wie).
++ Vom Benutzer eingegebene Abfragezeichenfolgen müssen wie eine Frage formuliert werden (was, wo, wann, wie).
 
-+ Die Dokumente für die Suche müssen Text mit den Merkmalen einer Antwort enthalten, der in einem der unter „searchFields“ aufgeführten Felder stehen muss. Wenn z. B. eine Abfrage „Was ist eine Hash-Tabelle“ ist und keines der searchFields Passagen enthält, die „Eine Hash-Tabelle ist ...“ enthalten, ist es unwahrscheinlich, dass eine Antwort zurückgegeben wird.
++ Die Dokumente für die Suche im Index müssen Text mit den Merkmalen einer Antwort enthalten, der in einem der unter searchFields aufgeführten Felder stehen muss. Wenn z. B. eine Abfrage „Was ist eine Hash-Tabelle“ lautet und keines der searchFields Passagen enthält, die „Eine Hash-Tabelle ist ...“ enthalten, ist es unwahrscheinlich, dass eine Antwort zurückgegeben wird.
 
 ## <a name="what-is-a-semantic-answer"></a>Was ist eine semantische Antwort?
 
@@ -44,7 +44,7 @@ Antworten werden als unabhängige Objekte der obersten Ebene in den Nutzdaten f�
 
 <a name="query-params"></a>
 
-## <a name="how-to-request-semantic-answers-in-a-query"></a>Anfordern von semantischen Antworten in einer Abfrage
+## <a name="how-to-specify-answers-in-a-query-request"></a>Angeben von „Antworten“ in einer Abfrageanforderung
 
 Damit eine semantische Antwort zurückgegeben wird, muss die Abfrage den semantischen Parameter „queryType“, „queryLanguage“, „searchFields“ und „Antworten“ enthalten. Mit der Angabe des Parameters „answers“ wird nicht garantiert, dass Sie eine Antwort erhalten. Die Anforderung muss diesen Parameter jedoch enthalten, damit die Antwortverarbeitung überhaupt aufgerufen wird.
 
@@ -61,11 +61,15 @@ Der Parameter „searchFields“ ist wichtig, damit in Bezug auf Inhalt und Reih
 }
 ```
 
-+ Abfragezeichenfolgen dürfen nicht NULL sein und sollten als Fragen formuliert werden. In dieser Vorschau müssen die Werte für „queryType“ und „queryLanguage“ genau wie im Beispiel festgelegt werden.
++ Abfragezeichenfolgen dürfen nicht NULL sein und sollten als Fragen formuliert werden.
 
-+ Der Parameter „searchFields“ bestimmt, welche Zeichenfolgen-Felder Token für das Extraktionsmodell bereitstellen. Die gleichen Felder, die Beschriftungen liefern, liefern auch Antworten. Eine genaue Anleitung zum Festlegen dieses Felds, sodass es für Beschriftungen und Antworten funktioniert, finden Sie unter [Festlegen von searchFields](semantic-how-to-query-request.md#searchfields). 
++ „queryType“ muss auf „semantic“ festgelegt werden.
 
-+ Die grundlegende Struktur für den Parameter „Antworten“ ist `"answers": "extractive"`, wobei standardmäßig eine Antwort zurückgegeben wird. Sie können die Anzahl der Antworten erhöhen, indem Sie wie im obigen Beispiel gezeigt eine Anzahl hinzufügen, maximal fünf.  Ob Sie mehr als eine Antwort benötigen, hängt von der Benutzeroberfläche Ihrer App ab sowie davon, wie die Ergebnisse gerendert werden sollen.
++ „queryLanguage“ muss einer der Werte in der Liste der [unterstützten Sprachen (REST-API)](/rest/api/searchservice/preview-api/search-documents#queryLanguage) sein.
+
++ „searchFields“ bestimmt, welche Zeichenfolgenfelder Token für das Extraktionsmodell bereitstellen. Die gleichen Felder, die Beschriftungen liefern, liefern auch Antworten. Eine genaue Anleitung zum Festlegen dieses Felds, sodass es für Beschriftungen und Antworten funktioniert, finden Sie unter [Festlegen von searchFields](semantic-how-to-query-request.md#searchfields). 
+
++ Die grundlegende Struktur für den Parameter „Antworten“ ist `"answers": "extractive"`, wobei standardmäßig eine Antwort zurückgegeben wird. Sie können die Anzahl der Antworten erhöhen, indem Sie wie im obigen Beispiel gezeigt eine Anzahl (`count`) von maximal fünf hinzufügen.  Ob Sie mehr als eine Antwort benötigen, hängt von der Benutzeroberfläche Ihrer App ab sowie davon, wie die Ergebnisse gerendert werden sollen.
 
 ## <a name="deconstruct-an-answer-from-the-response"></a>Dekonstruieren einer Antwort aus dem Abfrageergebnis
 
@@ -108,7 +112,10 @@ Bei der Abfrage „how do clouds form“ (Wie entstehen Wolken?) wird im Abfrage
                 "North America",
                 "Vancouver"
             ]
+    ]
         }
+}
+
 ```
 
 ## <a name="tips-for-producing-high-quality-answers"></a>Tipps für qualitativ hochwertige Antworten

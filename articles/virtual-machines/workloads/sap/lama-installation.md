@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 4772fdae06f23430d829fa411068b7af7a85b3dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 9eca2fe92109bcd91fe5943e53d1e18734401984
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668706"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111814357"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
 
@@ -91,34 +92,19 @@ Der Azure-Connector kann einen Dienstprinzipal für die Autorisierung bei Micros
 1. Notieren Sie sich den Wert. Er dient als Kennwort für den Dienstprinzipal.
 1. Notieren Sie sich die Anwendungs-ID. Sie dient als Benutzername für den Dienstprinzipal.
 
-Der Dienstprinzipal hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen. Sie müssen dem Dienstprinzipal Zugriffsberechtigungen dafür gewähren.
+Der Dienstprinzipal hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen.
+Weisen Sie dem Dienstprinzipal auf Ressourcengruppenebene die Rolle „Mitwirkender“ für alle Ressourcengruppen zu, die SAP-Systeme enthalten, die von SAP LaMa verwaltet werden sollen.
 
-1. Besuchen Sie https://portal.azure.com.
-1. Öffnen Sie das Blatt „Ressourcengruppen“.
-1. Wählen Sie die Ressourcengruppe aus, die Sie verwenden möchten.
-1. Klicken Sie auf „Zugriffssteuerung (IAM)“.
-1. Klicken Sie auf „Rollenzuweisung hinzufügen“.
-1. Wählen Sie die Rolle „Mitwirkender“ aus.
-1. Geben Sie den Namen der Anwendung ein, die Sie zuvor erstellt haben.
-1. Klicken Sie auf Speichern.
-1. Wiederholen Sie die Schritte 3 bis 8 für alle Ressourcengruppen, die Sie in SAP LaMa verwenden möchten.
+Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="use-a-managed-identity-to-get-access-to-the-azure-api"></a><a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>Verwenden einer verwalteten Identität zum Erhalten von Zugriff auf die Azure-API
 
 Um eine verwaltete Identität verwenden zu können, muss Ihre SAP LaMa-Instanz auf einer Azure-VM ausgeführt werden, die über eine vom System oder Benutzer zugewiesene Identität verfügt. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../active-directory/managed-identities-azure-resources/overview.md) und [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md).
 
-Die verwaltete Identität hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen. Sie müssen ihr Berechtigungen für den Zugriff darauf erteilen.
+Die verwaltete Identität hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen.
+Weisen Sie der VM-Identität auf Ressourcengruppenebene die Rolle „Mitwirkender“ für alle Ressourcengruppen zu, die von SAP LaMa zu verwaltende SAP-Systeme enthalten.
 
-1. Besuchen Sie https://portal.azure.com.
-1. Öffnen Sie das Blatt „Ressourcengruppen“.
-1. Wählen Sie die Ressourcengruppe aus, die Sie verwenden möchten.
-1. Klicken Sie auf „Zugriffssteuerung (IAM)“.
-1. Klicken Sie auf „Hinzufügen“ > „Rollenzuweisung hinzufügen“.
-1. Wählen Sie die Rolle „Mitwirkender“ aus.
-1. Wählen Sie für „Zugriff zuweisen zu“ die Option „Virtueller Computer“ aus.
-1. Wählen Sie den virtuellen Computer aus, auf dem Ihre SAP LaMa-Instanz ausgeführt wird.
-1. Klicken Sie auf Speichern.
-1. Wiederholen Sie die Schritte für alle Ressourcengruppen, die Sie in SAP LaMa verwenden möchten.
+Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../../role-based-access-control/role-assignments-portal.md).
 
 Wählen Sie in Ihrer Azure-Connectorkonfiguration für SAP LaMa die Option „Verwaltete Identität verwenden“ aus, um die Verwendung der verwalteten Identität zu aktivieren. Wenn Sie eine vom System zugewiesene Identität verwenden möchten, muss das Feld „Benutzername“ leer bleiben. Wenn Sie eine von einem Benutzer zugewiesene Identität verwenden möchten, geben Sie die ID der vom Benutzer zugewiesenen Identität im Feld „Benutzername“ ein.
 

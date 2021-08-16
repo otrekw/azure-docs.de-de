@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2910ea3f896ba3920126737965ca9c9dbabcfeb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2862919f89f6b14d4b3d3287e1b967bba8ccefe9
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709103"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670616"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service mit Traffic Manager-Integration
 
@@ -77,7 +77,7 @@ Speichern Sie die Änderungen, sobald Sie die DNS-Datensätze bei Ihrem Domänen
 
 Da Traffic Manager nur die Zuordnung benutzerdefinierter Domänen mit CNAME-Einträgen unterstützt und da die DNS-Standards keine CNAME-Einträge für die Zuordnung von Stammdomänen unterstützen (z. B. **contoso.com**), unterstützt Traffic Manager keine Zuordnung zu Stammdomänen. Um dieses Problem zu umgehen, verwenden Sie eine URL-Umleitung auf App-Ebene. In ASP.NET Core können Sie beispielsweise die [URL-Umschreibung](/aspnet/core/fundamentals/url-rewriting) verwenden. Verwenden Sie dann Traffic Manager, um einen Lastausgleich für die Unterdomäne (**www.contoso.com**) vorzunehmen. Ein anderer Ansatz besteht darin, [einen Aliaseintrag für den Domänennamen-Apex zu erstellen, um auf ein Azure Traffic Manager-Profil zu verweisen](../dns/tutorial-alias-tm.md). Ein Beispiel wäre etwa „contoso.com“. Statt einen Umleitungsdienst zu verwenden, können Sie Azure DNS so konfigurieren, dass direkt von Ihrer Zone aus auf ein Traffic Manager-Profil verwiesen wird. 
 
-In Hochverfügbarkeitsszenarien können Sie eine DNS-Einrichtung mit Lastenausgleich ohne Traffic Manager implementieren, indem Sie mehrere *A-Einträge* erstellen, die von der Stammdomäne auf die IP-Adresse der einzelnen App-Kopien verweisen. Dann [ordnen Sie dieselbe Stammdomäne allen App-Kopien zu](app-service-web-tutorial-custom-domain.md#map-an-a-record). Da derselbe Domänenname nicht zwei verschiedenen Apps in derselben Region zugeordnet werden kann, funktioniert diese Einrichtung nur, wenn sich die App-Kopien in unterschiedlichen Regionen befinden.
+In Hochverfügbarkeitsszenarien können Sie eine DNS-Einrichtung mit Lastenausgleich ohne Traffic Manager implementieren, indem Sie mehrere *A-Einträge* erstellen, die von der Stammdomäne auf die IP-Adresse der einzelnen App-Kopien verweisen. Dann [ordnen Sie dieselbe Stammdomäne allen App-Kopien zu](app-service-web-tutorial-custom-domain.md#4-create-the-dns-records). Da derselbe Domänenname nicht zwei verschiedenen Apps in derselben Region zugeordnet werden kann, funktioniert diese Einrichtung nur, wenn sich die App-Kopien in unterschiedlichen Regionen befinden.
 
 ## <a name="enable-custom-domain"></a>Aktivieren einer benutzerdefinierten Domäne
 Nachdem die Datensätze für Ihren Domänennamen weitergegeben wurden, verwenden Sie den Browser, um zu überprüfen, ob Ihr benutzerdefinierter Domänenname zu Ihrer App Service-App aufgelöst wird.
@@ -87,7 +87,7 @@ Nachdem die Datensätze für Ihren Domänennamen weitergegeben wurden, verwenden
 > 
 > 
 
-1. Sobald die Domänenauflösung erfolgreich ist, kehren Sie zur Seite Ihrer App im [Azure-Portal](https://portal.azure.com) zurück.
+1. Kehren Sie nach einer erfolgreichen Domänenauflösung zur Seite Ihrer App im [Azure-Portal](https://portal.azure.com) zurück.
 2. Wählen Sie im linken Navigationsbereich **Benutzerdefinierte Domänen** > **Hostnamen hinzufügen** aus.
 4. Geben Sie den benutzerdefinierten Domänennamen ein, den Sie zuvor zugeordnet haben, und wählen Sie **Überprüfen** aus.
 5. Stellen Sie sicher, dass der **Typ des Hostnamenseintrags** auf **CNAME (www\.beispiel.com oder eine beliebige Unterdomäne)** festgelegt ist.

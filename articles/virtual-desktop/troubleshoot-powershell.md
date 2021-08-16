@@ -1,32 +1,33 @@
 ---
-title: 'Windows Virtual Desktop: PowerShell – Azure'
-description: Informationen zum Behandeln von Problemen mit PowerShell, wenn Sie eine Windows Virtual Desktop-Umgebung einrichten.
+title: Azure Virtual Desktop PowerShell – Azure
+description: Informationen zum Behandeln von Problemen mit PowerShell beim Einrichten einer Azure Virtual Desktop-Umgebung.
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 868aacc986e66d4f7513851855b69ed84c4a3e88
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f92dd750a7238b0784fa12d00606a5b84e7d56c0
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445464"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755283"
 ---
-# <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop: PowerShell
+# <a name="azure-virtual-desktop-powershell"></a>Azure Virtual Desktop PowerShell
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Windows Virtual Desktop mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Windows Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md).
+>Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md).
 
-Verwenden Sie diesen Artikel, um Fehler und Probleme bei der Verwendung von PowerShell mit Windows Virtual Desktop zu beheben. Weitere Informationen zu Remote Desktop Services PowerShell finden Sie unter [Windows Virtual Desktop: PowerShell](/powershell/windows-virtual-desktop/overview).
+Verwenden Sie diesen Artikel, um Fehler und Probleme bei der Verwendung von PowerShell mit Azure Virtual Desktop zu beheben. Weitere Informationen zu Remote Desktop Services PowerShell finden Sie unter [Azure Virtual Desktop PowerShell](/powershell/windows-virtual-desktop/overview).
 
 ## <a name="provide-feedback"></a>Feedback geben
 
-In der [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) können Sie sich mit dem Produktteam und aktiven Communitymitgliedern über den Windows Virtual Desktop-Dienst austauschen.
+In der [Azure Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) können Sie sich mit dem Produktteam und aktiven Communitymitgliedern über den Azure Virtual Desktop-Dienst austauschen.
 
-## <a name="powershell-commands-used-during-windows-virtual-desktop-setup"></a>Während der Installation von Windows Virtual Desktop verwendete PowerShell-Befehle
+## <a name="powershell-commands-used-during-azure-virtual-desktop-setup"></a>Während der Installation von Azure Virtual Desktop verwendete PowerShell-Befehle
 
-Dieser Abschnitt listet PowerShell-Befehle auf, die typischerweise beim Einrichten von Windows Virtual Desktop verwendet werden, und bietet Lösungen für Probleme, die bei der Verwendung dieser Befehle auftreten können.
+Dieser Abschnitt listet PowerShell-Befehle auf, die typischerweise beim Einrichten von Azure Virtual Desktop verwendet werden, und bietet Lösungen für Probleme, die bei der Verwendung dieser Befehle auftreten können.
 
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Error: New-AzRoleAssignment: Die angegebenen Informationen stimmen mit keiner AD-Objekt-ID überein.
 
@@ -34,13 +35,13 @@ Dieser Abschnitt listet PowerShell-Befehle auf, die typischerweise beim Einricht
 New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
-**Ursache:** Der durch den Parameter *-SignInName* angegebene Benutzer kann nicht im Azure Active Directory gefunden werden, das an die Windows Virtual Desktop-Umgebung gebunden ist.
+**Ursache:** Der durch den Parameter *-SignInName* angegebene Benutzer kann nicht im Azure Active Directory gefunden werden, das der Azure Virtual Desktop-Umgebung zugeordnet ist.
 
 **Behebung:** Stellen Sie Folgendes sicher.
 
 - Der Benutzer muss mit Azure Active Directory synchronisiert werden.
 - Der Benutzer ist nicht mit B2C (Business-to-Consumer) oder B2B (Business-to-Business) Commerce verknüpft.
-- Die Windows Virtual Desktop-Umgebung ist an das richtige Azure Active Directory gebunden.
+- Die Azure Virtual Desktop-Umgebung ist an dem richtigen Azure Active Directory zugeordnet.
 
 ### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>Error: New-AzRoleAssignment: „Der Client mit der Objekt-ID hat keine Berechtigung zum Ausführen der Aktion über Bereich (Code: AuthorizationFailed)“
 
@@ -58,7 +59,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'.
 ```
 
-Ursache: Windows Virtual Desktop unterstützt die Auswahl des Speicherorts von Hostpools, Anwendungsgruppen und Arbeitsbereichen, um Dienstmetadaten an bestimmten Orten zu speichern. Ihre Optionen sind darauf beschränkt, wo diese Funktion verfügbar ist. Dieser Fehler bedeutet, dass das Feature nicht an dem von Ihnen ausgewählten Speicherort verfügbar ist.
+Ursache: Azure Virtual Desktop unterstützt die Auswahl des Speicherorts von Hostpools, Anwendungsgruppen und Arbeitsbereichen, um Dienstmetadaten an bestimmten Orten zu speichern. Ihre Optionen sind darauf beschränkt, wo diese Funktion verfügbar ist. Dieser Fehler bedeutet, dass das Feature nicht an dem von Ihnen ausgewählten Speicherort verfügbar ist.
 
 Behebung: In der Fehlermeldung wird eine Liste der unterstützten Regionen veröffentlicht. Verwenden Sie stattdessen eine der unterstützten Regionen.
 
@@ -74,11 +75,11 @@ New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e4
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die Problembehandlung von Windows Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
-- Informationen zur Problembehandlung beim Einrichten einer Windows Virtual Desktop-Umgebung und von Hostpools finden Sie unter [Umgebungs- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
-- Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Windows Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
-- Informationen zur Behebung von Problemen bei Windows Virtual Desktop-Clientverbindungen finden Sie unter [Windows Virtual Desktop – Clientverbindungen](troubleshoot-service-connection.md).
+- Eine Übersicht über die Problembehandlung von Azure Virtual Desktop und die Eskalationspfade finden Sie unter [Problembehandlung: Übersicht, Feedback und Support](troubleshoot-set-up-overview.md).
+- Informationen zur Problembehandlung beim Einrichten einer Azure Virtual Desktop-Umgebung und von Hostpools finden Sie unter [Umgebungs- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
+- Informationen zur Problembehandlung bei der Konfiguration einer VM in Azure Virtual Desktop finden Sie unter [Konfiguration von Sitzungshost-VMs](troubleshoot-vm-configuration.md).
+- Informationen zur Behebung von Problemen bei Azure Virtual Desktop-Clientverbindungen finden Sie unter [Azure Virtual Desktop – Clientverbindungen](troubleshoot-service-connection.md).
 - Informationen zur Behebung von Problemen bei Remotedesktop-Clients finden Sie unter [Problembehandlung für den Remotedesktop-Client](troubleshoot-client.md).
-- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
+- Weitere Informationen zum Dienst finden Sie unter [Azure Virtual Desktop-Umgebung](environment-setup.md).
 - Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
 - Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../azure-resource-manager/templates/deployment-history.md).

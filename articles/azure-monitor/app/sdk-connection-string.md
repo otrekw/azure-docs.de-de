@@ -7,12 +7,12 @@ ms.author: tilee
 ms.date: 01/17/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: df87b060423aeff9fa5f83f21634395fe30e0bbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af29de06c4b0f82d6c951d54935a93e77e723177
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102486283"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191352"
 ---
 # <a name="connection-strings"></a>Verbindungszeichenfolgen
 
@@ -25,6 +25,8 @@ Die Schlüssel-Wert-Paare stellen eine einfache Möglichkeit dar, mit der Benutz
 > [!IMPORTANT]
 > Es wird nicht empfohlen, sowohl die Verbindungszeichenfolge als auch den Instrumentierungsschlüssel festzulegen. Wenn ein Benutzer beide festgelegt hat, hat die zuletzt festgelegte Einstellung Vorrang. 
 
+> [!TIP]
+> Es wird empfohlen, eher Verbindungszeichenfolgen als Instrumentierungsschlüssel zu verwenden.
 
 ## <a name="scenario-overview"></a>Übersicht über das Szenario 
 
@@ -83,7 +85,7 @@ Im Folgenden finden Sie eine Liste gültiger Suffixe.
 - applicationinsights.us
 
 
-Weitere Informationen: https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
+Weitere Informationen finden Sie unter [Regionen, für die Endpunktänderungen erforderlich sind](./custom-endpoints.md#regions-that-require-endpoint-modification).
 
 
 ##### <a name="valid-prefixes"></a>Gültige Präfixe
@@ -295,7 +297,7 @@ Beginnen mit der Entwicklungszeitmethode mit:
 
 * [ASP.NET](./asp-net.md)
 * [ASP.NET Core](./asp-net-core.md)
-* [Java](./java-get-started.md)
+* [Java](./java-in-process-agent.md)
 * [Node.js](./nodejs.md)
 * [Python](./opencensus-python.md)
 

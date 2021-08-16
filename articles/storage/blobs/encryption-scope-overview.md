@@ -4,17 +4,17 @@ description: Verschlüsselungsbereiche ermöglichen Ihnen die Verwaltung der Ver
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 05/10/2021
+ms.date: 06/01/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a583af2811facf1cf8037fa0dd3fb9982fba60c4
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: d089ef587e209810fe0400871aba9a55cb9c0ed3
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685673"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372655"
 ---
 # <a name="encryption-scopes-for-blob-storage"></a>Verschlüsselungsbereiche für Blobspeicher
 
@@ -36,13 +36,15 @@ Beim Erstellen eines Verschlüsselungsbereichs geben Sie an, ob der Bereich durc
 
 Wenn Sie einen Verschlüsselungsbereich mit einem kundenseitig verwalteten Schlüssel definieren, können Sie entscheiden, ob Sie die Schlüsselversion entweder automatisch oder manuell aktualisieren möchten. Wenn Sie die Schlüsselversion automatisch aktualisieren, prüft Azure Storage den Schlüsseltresor oder das verwaltete HSM täglich auf eine neue Version des kundenseitig verwalteten Schlüssels, und der Schlüssel wird automatisch auf die neueste Version aktualisiert. Weitere Informationen zum Aktualisieren der Schlüsselversion für einen kundenseitig verwalteten Schlüssel finden Sie unter [Aktualisieren der Schlüsselversion](../common/customer-managed-keys-overview.md#update-the-key-version).
 
+Azure Policy bietet eine integrierte Richtlinie, die es erfordert, dass Verschlüsselungsbereiche kundenseitig verwaltete Schlüssel verwenden. Weitere Informationen finden Sie in [Integrierte Azure Policy-Richtliniendefinitionen](../../governance/policy/samples/built-in-policies.md#storage) im Abschnitt **Speicher**.
+
 Ein Speicherkonto kann bis zu 10 000 Verschlüsselungsbereiche aufweisen, die mit kundenseitig verwalteten Schlüsseln geschützt sind, für die die Schlüsselversion automatisch aktualisiert wird. Wenn Ihr Speicherkonto bereits über 10 000 Verschlüsselungsbereiche verfügt, die mit kundenseitig verwalteten Schlüsseln geschützt sind, die automatisch aktualisiert werden, muss die Schlüsselversion für alle zusätzlichen Verschlüsselungsbereiche, die mit kundenseitig verwalteten Schlüsseln geschützt sind, manuell aktualisiert werden.  
 
 ### <a name="infrastructure-encryption"></a>Infrastrukturverschlüsselung
 
 Infrastrukturverschlüsselung in Azure Storage ermöglicht die doppelte Verschlüsselung von Daten. Wenn Infrastrukturverschlüsselung aktiviert ist, werden Daten zwei Mal verschlüsselt: ein Mal auf Dienstebene und ein Mal auf Infrastrukturebene. Dabei werden zwei unterschiedliche Verschlüsselungsalgorithmen und zwei verschiedene Schlüssel verwendet.
 
-Infrastrukturverschlüsselung wird sowohl für einen Verschlüsselungsbereich als auch auf der Ebene des Speicherkontos unterstützt. Wenn Infrastrukturverschlüsselung für ein Konto aktiviert ist, verwendet jeder für dieses Konto erstellte Verschlüsselungsbereich automatisch Infrastrukturverschlüsselung. Wenn Infrastrukturverschlüsselung nicht auf Kontoebene aktiviert ist, haben Sie die Möglichkeit, sie zum Zeitpunkt der Erstellung des Bereichs für einen Verschlüsselungsbereich zu aktivieren. Die Infrastrukturverschlüsselungseinstellung für einen Verschlüsselungsbereich kann nach der Erstellung des Bereichs nicht mehr geändert werden.
+Infrastrukturverschlüsselung wird sowohl für einen Verschlüsselungsbereich als auch auf der Ebene des Speicherkontos unterstützt. Wenn Infrastrukturverschlüsselung für ein Konto aktiviert ist, verwendet jeder für dieses Konto erstellte Verschlüsselungsbereich automatisch Infrastrukturverschlüsselung. Wenn die Infrastrukturverschlüsselung auf Kontoebene nicht aktiviert ist, haben Sie die Möglichkeit, sie zum Erstellungszeitpunkt des entsprechenden Verschlüsselungsbereichs zu aktivieren. Die Infrastrukturverschlüsselungseinstellung für einen Verschlüsselungsbereich kann nach der Erstellung des Bereichs nicht mehr geändert werden.
 
 Weitere Informationen zu Infrastrukturverschlüsselung finden Sie unter [Aktivieren von Infrastrukturverschlüsselung für die doppelte Verschlüsselung von Daten](../common/infrastructure-encryption-enable.md).
 
@@ -79,6 +81,8 @@ Beachten Sie, dass kundenseitig verwaltete Schlüssel gegen vorläufiges und end
 
 > [!IMPORTANT]
 > Das Löschen eines Verschlüsselungsbereichs ist nicht möglich.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

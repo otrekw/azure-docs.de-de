@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Ihre Microsoft 365-Benutzerressourcen mit de
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -12,19 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/11/2019
+ms.date: 06/09/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5c528b61f4d590c0402ac7c89d97f545911d883
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 82ac5d6b6c3424be4e3f012a04c5fc1b149f58d0
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627940"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891894"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Microsoft 365-Ressourcen
 In diesem Thema wird ausführlich erläutert, wie Sie das Attribut für den bevorzugten Datenspeicherort in der Azure Active Directory Connect-Synchronisierung (Azure AD) konfigurieren. Wenn jemand Multi-Geo-Funktionen in Microsoft 365 verwendet, legen Sie mit diesem Attribut den geografischen Standort der Microsoft 365-Daten des Benutzers fest. (Die Benennungen *Region* und *geografischer Raum* werden synonym verwendet.)
+
+## <a name="supported-multi-geo-locations"></a>Unterstützte Multi-Geo-Standorte
+Eine Liste aller geografischen Standorte, die von Azure AD Connect unterstützt werden, finden Sie unter [Microsoft 365 Verfügbarkeit in mehreren geografischen Regionen](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-multi-geo?view=o365-worldwide#microsoft-365-multi-geo-availability).
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>Aktivieren der Synchronisierung des bevorzugten Datenspeicherorts
 Standardmäßig befinden sich die Microsoft 365-Ressourcen für Ihre Benutzer im selben geografischen Raum wie Ihr Azure AD-Mandant. Wenn sich Ihr Mandant z.B. in Nordamerika befindet, befinden sich die Exchange-Postfächer der Benutzer ebenfalls in Nordamerika. Für ein multinationales Unternehmen ist dies möglicherweise nicht optimal.
@@ -34,31 +37,10 @@ Durch Festlegen des **preferredDataLocation**-Attributs können Sie den geografi
 > [!IMPORTANT]
 > Die Multi-Geo-Funktion steht zurzeit für Kunden mit einem aktiven Konzernvertrag (Enterprise Agreement) und mindestens 250 Abonnements für Microsoft 365-Dienste zur Verfügung. Ausführliche Informationen erhalten Sie von Ihrem Microsoft-Vertreter.
 >
->
+> Eine Liste aller geografischen Standorte, die von Azure AD Connect unterstützt werden, finden Sie unter [Microsoft 365 Verfügbarkeit in mehreren geografischen Regionen](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-multi-geo?view=o365-worldwide#microsoft-365-multi-geo-availability).
 
-Eine Liste mit allen geografischen Regionen für Microsoft 365 finden Sie auf der Seite [An welchem Ort befinden sich Ihre Daten?](/microsoft-365/enterprise/o365-data-locations).
 
-Folgende geografische Regionen stehen in Microsoft 365 für die Multi-Geo-Funktion zur Verfügung:
 
-| Geografische Region | preferredDataLocation-Wert |
-| --- | --- |
-| Asien-Pazifik | APC |
-| Australien | AUS |
-| Canada | CAN |
-| Europäische Union | EUR |
-| Frankreich | FRA |
-| Indien | IND |
-| Japan | JPN |
-| Korea | KOR |
-| Südafrika | ZAF |
-| Schweiz | CHE |
-| Vereinigte Arabische Emirate | ARE |
-| United Kingdom | GBR |
-| USA | NAM |
-
-* Wenn ein geografischer Raum nicht in dieser Tabelle aufgeführt wird (z.B. Südamerika), kann er nicht für Multi-Geo Capabilities verwendet werden.
-
-* Nicht alle Microsoft 365-Workloads unterstützen die Festlegung der geografischen Region eines Benutzers.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect-Unterstützung für die Synchronisierung
 

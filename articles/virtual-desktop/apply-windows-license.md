@@ -1,25 +1,26 @@
 ---
 title: Anwenden einer Windows-Lizenz auf virtuelle Sitzungshostcomputer – Azure
-description: Hier wird beschrieben, wie die Windows-Lizenz für virtuelle Windows Virtual Desktop-Computer angewendet wird.
+description: Hier wird beschrieben, wie die Windows-Lizenz für virtuelle Azure Virtual Desktop-Computer angewendet wird.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: fa3c9f82e99536b07a27656e0143d6b2fcc89a44
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: eaf8bd06493fb105207024b3b78c584ad58d4149
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833866"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745401"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Anwenden einer Windows-Lizenz auf virtuelle Sitzungshostcomputer
 
-Kunden, die ordnungsgemäß für das Ausführen von Windows Virtual Desktop-Workloads lizenziert sind, können eine Windows-Lizenz auf Ihre virtuellen Sitzungshostcomputer anwenden und diese ausführen, ohne für eine weitere Lizenz zu bezahlen. Weitere Informationen finden Sie unter [Windows Virtual Desktop – Preise](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+Kunden, die ordnungsgemäß für das Ausführen von Azure Virtual Desktop-Workloads lizenziert sind, können eine Windows-Lizenz auf Ihre virtuellen Sitzungshostcomputer anwenden und diese ausführen, ohne für eine weitere Lizenz zu bezahlen. Weitere Informationen finden Sie unter [Azure Virtual Desktop – Preise](https://azure.microsoft.com/pricing/details/virtual-desktop/).
 
-## <a name="ways-to-use-your-windows-virtual-desktop-license"></a>Möglichkeiten zum Verwenden Ihrer Windows Virtual Desktop-Lizenz
-Die Windows Virtual Desktop-Lizenzierung gestattet es Ihnen, eine Lizenz auf jeden virtuellen Windows- oder Windows Server-Computer anzuwenden, der als Sitzungshost in einem Hostpool registriert ist und Benutzerverbindungen empfängt. Diese Lizenz gilt nicht für virtuelle Computer, die als Dateifreigabeserver, Domänencontroller usw. ausgeführt werden.
+## <a name="ways-to-use-your-azure-virtual-desktop-license"></a>Möglichkeiten zum Verwenden Ihrer Azure Virtual Desktop-Lizenz
+Die Azure Virtual Desktop-Lizenzierung gestattet es Ihnen, eine Lizenz auf jeden virtuellen Windows- oder Windows Server-Computer anzuwenden, der als Sitzungshost in einem Hostpool registriert ist und Benutzerverbindungen empfängt. Diese Lizenz gilt nicht für virtuelle Computer, die als Dateifreigabeserver, Domänencontroller usw. ausgeführt werden.
 
-Es gibt einige Möglichkeiten, die Windows Virtual Desktop-Lizenz zu verwenden:
+Es gibt einige Möglichkeiten, die Azure Virtual Desktop-Lizenz zu verwenden:
 - Sie können das [Azure Marketplace-Angebot](./create-host-pools-azure-marketplace.md) verwenden, um einen Hostpool und dessen virtuelle Sitzungshostcomputer zu erstellen. Virtuellen Computern, die auf diese Weise erstellt werden, wird die Lizenz automatisch zugewiesen.
 - Sie können die [Azure Resource Manager-GitHub-Vorlage](./virtual-desktop-fall-2019/create-host-pools-arm-template.md) verwenden, um einen Hostpool und dessen virtuelle Sitzungshostcomputer zu erstellen. Virtuellen Computern, die auf diese Weise erstellt werden, wird die Lizenz automatisch zugewiesen.
 - Sie können eine Lizenz auf einen vorhandenen virtuellen Sitzungshostcomputer anwenden. Führen Sie dazu zunächst die Schritte aus, die in [Erstellen eines Hostpools mit PowerShell](./create-host-pools-powershell.md) aufgeführt sind, um eine Hostpool und zugehörige virtuelle Computer zu erstellen, und kehren Sie dann zu diesem Artikel zurück, um zu erfahren, wie Sie die Lizenz anwenden.
@@ -64,4 +65,4 @@ $vms | Where-Object {$_.LicenseType -like "Windows_Client"} | Select-Object Reso
 
 ## <a name="requirements-for-deploying-windows-server-remote-desktop-services"></a>Anforderungen für die Bereitstellung von Windows Server Remote Desktop Services
 
-Wenn Sie Windows Server 2019, 2016 oder 2012 R2 als Windows Virtual Desktop-Hosts in Ihrer Bereitstellung einsetzen, muss ein Remote-Desktop-Dienste-Lizenzserver von diesen virtuellen Computern aus erreichbar sein. Der Remote-Desktop-Dienste-Lizenzserver kann sich lokal oder in Azure befinden. Weitere Informationen finden Sie unter [Aktivieren des Remote-Desktop-Dienste-Lizenzservers](/windows-server/remote/remote-desktop-services/rds-activate-license-server).
+Wenn Sie Windows Server 2019, 2016 oder 2012 R2 als Azure Virtual Desktop-Hosts in Ihrer Bereitstellung einsetzen, muss ein Remote-Desktop-Dienste-Lizenzserver von diesen virtuellen Computern aus erreichbar sein. Der Remote-Desktop-Dienste-Lizenzserver kann sich lokal oder in Azure befinden. Weitere Informationen finden Sie unter [Aktivieren des Remote-Desktop-Dienste-Lizenzservers](/windows-server/remote/remote-desktop-services/rds-activate-license-server).

@@ -3,14 +3,14 @@ title: 'Azure Automation: Übersicht über Änderungsnachverfolgung und Bestand'
 description: In diesem Artikel wird das Feature „Änderungsnachverfolgung und Bestand“ beschrieben, mit dem Sie Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung erkennen können.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/22/2021
+ms.date: 05/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed29def305bfa33a0a947a331775de89275e5f7f
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 062e4cdeae9560bc5be58d8245390d4a538f5722
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220865"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783907"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Übersicht über Änderungsnachverfolgung und Bestand
 
@@ -41,7 +41,7 @@ Computer, die mit dem Log Analytics-Arbeitsbereich verbunden sind, verwenden den
 > [!NOTE]
 > Die Funktion „Änderungsnachverfolgung und Bestand“ setzt voraus, dass ein Log Analytics-Arbeitsbereich mit Ihrem Automation-Konto verknüpft wird. Eine aktuelle Liste der unterstützten Regionen finden Sie unter [Arbeitsbereichzuordnungen in Azure](../how-to/region-mappings.md). Die Regionszuordnungen haben keine Auswirkung auf die Möglichkeit, virtuelle Computer in einer anderen Region als der Ihres Automation-Kontos zu verwalten.
 
-Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure Lighthouse](../../lighthouse/overview.md) integriert. Mit Azure Lighthouse können Sie umfangreiche Vorgänge mehrere Azure Active Directory-Mandanten (Azure AD) übergreifend gleichzeitig durchzuführen, sodass Sie Verwaltungsaufgaben wie Änderungsnachverfolgung und Bestand für die Mandanten, für die Sie verantwortlich sind, effizienter bewältigen können. Änderungsnachverfolgung und Bestand können Computer in mehreren Abonnements im selben Mandanten oder Mandanten übergreifend mit der [Delegierten Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) verwalten.
+Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure Lighthouse](../../lighthouse/overview.md) integriert. Mit Azure Lighthouse können Sie umfangreiche Vorgänge mehrere Azure Active Directory-Mandanten (Azure AD) übergreifend gleichzeitig durchzuführen, sodass Sie Verwaltungsaufgaben wie Änderungsnachverfolgung und Bestand für die Mandanten, für die Sie verantwortlich sind, effizienter bewältigen können. Änderungsnachverfolgung und Bestand können Computer in mehreren Abonnements im selben Mandanten oder Mandanten übergreifend mit der [Delegierten Azure-Ressourcenverwaltung](../../lighthouse/concepts/architecture.md) verwalten.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
@@ -52,11 +52,16 @@ Für Änderungsnachverfolgung und Bestand werden die folgenden Einschränkungen 
 - Verschiedene Installationsmethoden
 - Unter Windows gespeicherte ***EXE**-Dateien
 - Die Spalte **Maximale Dateigröße** und ihre Werte werden in der aktuellen Implementierung nicht genutzt.
+- Bei der Nachverfolgung von Dateiänderungen ist die Dateigröße auf maximal 5 MB beschränkt. 
 - Wenn Sie versuchen, anhand eines 30-minütigen Sammlungszyklus mehr als 2.500 Dateien zu erfassen, wird das Feature „Änderungsnachverfolgung und Bestand“ unter Umständen beeinträchtigt.
 - Bei einem hohen Netzwerkdatenverkehr-Aufkommen kann es bis zu sechs Stunden dauern, bis Änderungsdatensätze angezeigt werden.
 - Wenn Sie eine Konfiguration ändern, während ein Computer oder Server heruntergefahren ist, werden ggf. Änderungen bereitgestellt, die zur vorherigen Konfiguration gehören.
 - Erfassung von Hotfix-Updates für Computer mit Windows Server 2016 Core RS3.
 - Für Linux-Daemons wird möglicherweise ein geänderter Zustand angezeigt, obwohl keine Änderung aufgetreten ist. Dieses Problem wird durch die Art des Schreibens von `SvcRunLevels`-Daten in der Azure Monitor-Tabelle [ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange) verursacht.
+
+## <a name="limits"></a>Grenzwerte
+
+Grenzwerte, die für Änderungsnachverfolgung und Bestand gelten, finden Sie unter [Grenzwerte für den Azure Automation-Dienst](../../azure-resource-manager/management/azure-subscription-service-limits.md#change-tracking-and-inventory).
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 

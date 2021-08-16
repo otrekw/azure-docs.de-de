@@ -8,8 +8,6 @@
       href: core/overview-iot-central-tour.md
     - name: Neueste Updates
       items:
-        - name: 'Juni 2021: neue und aktualisierte Features'
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-june-2021/'
         - name: "Mai\_2021: neue und aktualisierte Features"
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-may-2021/'
         - name: "April\_2021: neue und aktualisierte Features"
@@ -249,6 +247,8 @@
           href: core/howto-connect-powerbi.md
         - name: Herstellen einer Verbindung mit anderen IoT-Clouds
           href: core/howto-build-iotc-device-bridge.md
+        - name: "Verbinden Ihrer Anwendung mit Dynamics\_365 Field Services"
+          href: government/how-to-configure-connected-field-services.md
     - name: Verwenden der REST-API
       items:
         - name: Authentifizieren und Autorisieren von REST-API-Aufrufen
@@ -288,7 +288,7 @@
         - name: Geräteverbindungen
           href: core/troubleshoot-connection.md
     - name: Häufig gestellte Fragen
-      href: core/howto-faq.yml
+      href: core/howto-faq.md
     - name: Verwalten Ihrer persönlichen Einstellungen
       href: core/howto-manage-preferences.md
     - name: Ein-/Ausschalten des Livechats
@@ -318,7 +318,7 @@
         - name: IoT Solution Accelerators
           href: ../iot-accelerators/index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-develop/index.yml
+          href: ../iot-pnp/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/30/2020
   ms.reviewer: jushiman
   ms.custom: mimckitt
-  ms.openlocfilehash: 38037844a12f268d6942e9e78b821f2ec7ba040e
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: 2888e704cf124cf37a4ed93dba9a804c1a4da483
+  ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114456303"
+  ms.lasthandoff: 06/14/2021
+  ms.locfileid: "112082221"
 title: Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 summary: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppen in Azure.
 sections:
@@ -31,8 +31,6 @@ sections:
 
 
       * Azure-Dateien (SMB-freigegebene Laufwerke)
-
-      * Freigegebene Azure-Datenträger
 
       * Betriebssystemlaufwerk
 
@@ -406,7 +404,7 @@ sections:
   - question: >
       Können verwaltete Identitäten für Azure-Ressourcen zusammen mit einer VM-Skalierungsgruppe verwendet werden?
     answer: >
-      Ja. Einige MSI-Beispielvorlagen [finden](../active-directory/managed-identities-azure-resources/overview.md) Sie in den Azure-Schnellstartvorlagen für [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-msi) und [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-msi).
+      Ja. Einige MSI-Beispielvorlagen [finden](../active-directory/managed-identities-azure-resources/overview.md) Sie in den Azure-Schnellstartvorlagen für [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) und [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi).
 - name: Wird gelöscht
   questions:
   - question: >
@@ -496,6 +494,19 @@ sections:
       Meine VM-Skalierungsgruppenerweiterung versucht, etwas installieren, das einen Neustart erfordert.
     answer: >
       Wenn Ihre VM-Skalierungsgruppenerweiterung versucht, etwas installieren, das einen Neustart erfordert, können Sie die Erweiterung „Azure Automation Desired State Configuration (Automation DSC)“ verwenden. Bei Verwendung des Betriebssystems Windows Server 2012 R2 führt Azure das WMF 5.0-Setup (Windows Management Framework) aus, startet neu und setzt dann die Konfiguration fort.
+  - question: >
+      Wie aktiviere ich Antischadsoftware in meiner VM-Skalierungsgruppe?
+    answer: >
+      Antischadsoftware können Sie in Ihrer VM-Skalierungsgruppe mithilfe des folgenden PowerShell-Beispiels aktiveren:
+
+
+      ```powershell
+
+      $rgname = 'autolap'
+
+      $vmssname = 'autolapbr'
+
+      $location = 'eastus'
   - question: >
       Wie führe ich ein benutzerdefiniertes Skript aus, das in einem privaten Speicherkonto gehostet wird?
     answer: >

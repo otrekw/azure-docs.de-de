@@ -3,14 +3,14 @@ title: Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster
 description: Erfahren Sie, wie Sie ein virtuelles Azure-Netzwerk erstellen, um HDInsight mit anderen Cloudressourcen oder Ressourcen in Ihrem Rechenzentrum zu verbinden.
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive, devx-track-azurecli
-ms.date: 04/16/2020
-ms.openlocfilehash: 43d57eac94cabb5c648183911e0c0bf72889946d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: hdinsightactive, devx-track-azurecli, devx-track-azurepowershell
+ms.date: 05/12/2021
+ms.openlocfilehash: 28d2cc40d1272fdf29b6df3f08469418ecbc36da
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946069"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559392"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster
 
@@ -38,7 +38,7 @@ Die Beispiele in diesem Abschnitt veranschaulichen, wie Sie Netzwerksicherheitsg
 
 Mit der folgenden Resource Manager-Vorlage wird ein virtuelles Netzwerk erstellt, mit dem eingehender Datenverkehr eingeschränkt wird, während Datenverkehr von den IP-Adressen zugelassen wird, die für HDInsight benötigt werden. Mit dieser Vorlage wird auch ein HDInsight-Cluster im virtuellen Netzwerk erstellt.
 
-* [Deploy a secured Azure Virtual Network and an HDInsight Hadoop cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/) (Bereitstellen eines geschützten Azure Virtual Network und eines HDInsight Hadoop-Clusters)
+* [Deploy a secured Azure Virtual Network and an HDInsight Hadoop cluster](https://azure.microsoft.com/resources/templates/hdinsight-secure-vnet/) (Bereitstellen eines geschützten Azure Virtual Network und eines HDInsight Hadoop-Clusters)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -366,6 +366,60 @@ Für dieses Beispiel werden die folgenden Annahmen getroffen:
 4. Starten Sie Bind neu, um die Konfiguration zu verwenden. Beispiel: `sudo service bind9 restart` auf beiden DNS-Servern.
 
 Nach Ausführung dieser Schritte können Sie mit den Ressourcen im virtuellen Netzwerk eine Verbindung herstellen, indem Sie vollqualifizierte Domänennamen (FQDNs) verwenden. Sie können HDInsight jetzt im virtuellen Netzwerk installieren.
+
+## <a name="test-your-settings-before-deploying-an-hdinsight-cluster"></a>Testen der Einstellungen vor der Bereitstellung eines HDInsight-Clusters
+
+Vor der Clusterbereitstellung können Sie die Richtigkeit vieler Netzwerkkonfigurationseinstellungen überprüfen, indem Sie das [networkValidator-Tool](https://github.com/Azure-Samples/hdinsight-diagnostic-scripts/blob/main/HDInsightNetworkValidator) auf einem virtuellen Computer im gleichen VNet und Subnetz wie der geplante Cluster ausführen.
+
+**So stellen Sie einen virtuellen Computer zum Ausführen des networkValidator.sh-Skripts bereit**
+
+1. Öffnen Sie die [Ubuntu Server 18.04 LTS-Seite im Azure-Portal](https://portal.azure.com/?feature.customportal=false#create/Canonical.UbuntuServer1804LTS-ARM), und klicken Sie auf **Erstellen**.
+
+1. Wählen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** Ihr Abonnement aus. Wählen Sie dann eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue.
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/project-details.png" alt-text="Screenshot: Abschnitt „Projektdetails“, der zeigt, wo Sie das Azure-Abonnement und die Ressourcengruppe für den virtuellen Computer auswählen.":::
+
+1. Geben Sie unter **Instanzdetails** einen eindeutigen **Namen für den virtuellen Computer** ein, wählen Sie die gleiche **Region** wie Ihr VNet aus, wählen Sie *Keine Infrastrukturredundanz erforderlich* für **Verfügbarkeitsoptionen** aus, wählen Sie *Ubuntu 18.04 LTS* für Ihr **Image** aus, lassen Sie **Azure Spot-Instanz** leer, und wählen Sie Standard_B1s (oder höher ) für **Größe** aus.
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/instance-details.png" alt-text="Screenshot: Abschnitt „Instanzdetails“, in dem Sie einen Namen für den virtuellen Computer angeben und Region, Image und Größe für ihn auswählen.":::
+
+1. Wählen Sie unter **Administratorkonto** die Option **Kennwort** aus, und geben Sie einen Benutzernamen und ein Kennwort für das Administratorkonto ein. 
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/administrator-account.png" alt-text="Screenshot: Abschnitt „Administratorkonto“, in dem Sie einen Authentifizierungstyp auswählen und die Administratoranmeldeinformationen angeben.":::
+
+1. Wählen Sie unter **Regeln für eingehende Ports** > **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** und dann in der Dropdownliste **SSH (22)** aus. Klicken Sie dann auf **Weiter: Datenträger >** .
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/inbound-port-rules.png" alt-text="Screenshot: Abschnitt „Regeln für eingehende Ports“, in dem Sie festlegen, an welchen Ports eingehende Verbindungen zulässig sind.":::
+
+1. Wählen Sie unter **Datenträgeroptionen** die Option *SSD Standard für den Betriebssystemdatenträgertyp* aus, und klicken Sie dann auf **Weiter: Netzwerk >** .
+
+1. Wählen Sie auf der Seite **Netzwerk** unter **Netzwerkschnittstelle** das **virtuelle Netzwerk** und das **Subnetz** aus, in dem Sie den HDInsight-Cluster hinzufügen möchten, und wählen Sie dann unten auf der Seite die Schaltfläche **Überprüfen + erstellen** aus.
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/vnet.png" alt-text="Screenshot des Abschnitts „Netzwerkschnittstelle“, in dem Sie das VNet und das Subnetz auswählen, in dem der virtuelle Computer hinzugefügt werden soll.":::
+
+1. Auf der Seite zum **Erstellen eines virtuellen Computers** werden die Details des virtuellen Computers angezeigt, den Sie erstellen möchten. Klicken Sie auf **Erstellen**, wenn Sie so weit sind.
+
+1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
+
+1. Wählen Sie auf der Seite für Ihren neuen virtuellen Computer (VM) die öffentliche IP-Adresse aus, und kopieren Sie sie in die Zwischenablage.
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/ip-address.png" alt-text="Screenshot, der zeigt, wie die IP-Adresse für den virtuellen Computer kopiert wird.":::
+
+**Ausführen des /networkValidator.sh-Skripts**
+
+1. Stellen Sie eine SSH-Verbindung zum neuen virtuellen Computer her.
+1. Kopieren Sie mit dem folgenden Befehl alle Dateien aus [github](https://github.com/Azure-Samples/hdinsight-diagnostic-scripts/tree/main/HDInsightNetworkValidator) auf den virtuellen Computer:
+
+    `wget -i https://raw.githubusercontent.com/Azure-Samples/hdinsight-diagnostic-scripts/main/HDInsightNetworkValidator/all.txt`
+
+1. Öffnen Sie die params.txt-Datei in einem Text-Editor, und fügen Sie Werte zu allen Variablen hinzu. Verwenden Sie eine leere Zeichenfolge („“), wenn Sie die zugehörige Validierung weglassen möchten.
+1. Führen Sie `sudo chmod +x ./setup.sh` aus, um setup.sh ausführbar zu machen, und führen Sie die Datei mit `sudo ./setup.sh` aus, um „pip“ für Python 2.x und die erforderlichen Python 2.x-Module zu installieren.
+1. Führen Sie das Hauptskript mit `sudo python2 ./networkValidator.py` aus.
+1. Nachdem das Skript abgeschlossen wird, wird im Zusammenfassungsabschnitt angezeigt, ob die Überprüfungen erfolgreich waren und Sie den Cluster erstellen können oder ob Probleme aufgetreten sind. In letzteren Fall müssen Sie die Fehlerausgabe überprüfen und den Fehler anhand der zugehörigen Dokumentation zu beheben.
+
+    Nachdem Sie versucht haben, die Fehler zu beheben, können Sie das Skript erneut ausführen, um den Fortschritt zu überprüfen.
+1. Nachdem die Überprüfungen durchgeführt wurden und in der Zusammenfassung angezeigt wird, dass diese erfolgreich waren und Sie den HDInsight-Cluster in diesem VNet/Subnetz erstellen können, können Sie den Cluster erstellen. 
+1. Löschen Sie den neuen virtuellen Computer, wenn Sie das Validierungsskript erfolgreich ausgeführt haben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

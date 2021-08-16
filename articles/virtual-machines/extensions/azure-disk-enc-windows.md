@@ -8,18 +8,18 @@ author: ejarvi
 ms.author: ejarvi
 ms.collection: windows
 ms.date: 03/19/2020
-ms.openlocfilehash: 10268f8041f21f74e8ebcfaee41d207a53618260
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62ad5ca5d3b150aef5a83eaa4d5231e7bb5a6a62
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566242"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100178"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption für Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
 ## <a name="overview"></a>Übersicht
 
-Azure Disk Encryption nutzt BitLocker, um auf virtuellen Azure-Computern unter Windows eine vollständige Datenträgerverschlüsselung bereitzustellen.  Diese Lösung ist in Azure Key Vault integriert, um die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement zu verwalten. 
+Azure Disk Encryption nutzt BitLocker, um auf virtuellen Azure-Computern unter Windows eine vollständige Datenträgerverschlüsselung bereitzustellen.  Diese Lösung ist in Azure Key Vault integriert, um die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement zu verwalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +33,7 @@ Eine vollständige Liste mit den Voraussetzungen finden Sie unter [Azure Disk En
 
 Es gibt zwei Versionen des Erweiterungsschemas für Azure Disk Encryption (ADE):
 - v2.2: Ein neueres empfohlenes Schema, das keine AAD-Eigenschaften (Azure Active Directory) verwendet.
-- v1.1: Ein älteres Schema, für das AAD-Eigenschaften (Azure Active Directory) erforderlich sind. 
+- v1.1: Ein älteres Schema, für das AAD-Eigenschaften (Azure Active Directory) erforderlich sind.
 
 Zum Auswählen eines Zielschemas muss die Eigenschaft `typeHandlerVersion` auf die gewünschte Schemaversion festgelegt werden.
 
@@ -67,7 +67,7 @@ Das v2.2-Schema wird für alle neuen virtuellen Computer empfohlen und erfordert
 ```
 
 
-### <a name="schema-v11-with-aad"></a>Schema v1.1: mit AAD 
+### <a name="schema-v11-with-aad"></a>Schema v1.1: mit AAD
 
 Das 1.1-Schema erfordert `aadClientID` und entweder `aadClientSecret` oder `AADClientCertificate` und wird für neue virtuelle Computer nicht empfohlen.
 
@@ -82,7 +82,7 @@ Verwenden von `aadClientSecret`:
   "properties": {
     "protectedSettings": {
       "AADClientSecret": "[aadClientSecret]"
-    },    
+    },
     "publisher": "Microsoft.Azure.Security",
     "type": "AzureDiskEncryption",
     "typeHandlerVersion": "1.1",
@@ -112,7 +112,7 @@ Verwenden von `AADClientCertificate`:
   "properties": {
     "protectedSettings": {
       "AADClientCertificate": "[aadClientCertificate]"
-    },    
+    },
     "publisher": "Microsoft.Azure.Security",
     "type": "AzureDiskEncryption",
     "typeHandlerVersion": "1.1",
@@ -140,10 +140,10 @@ Verwenden von `AADClientCertificate`:
 | publisher | Microsoft.Azure.Security | Zeichenfolge |
 | type | AzureDiskEncryption | Zeichenfolge |
 | typeHandlerVersion | 2.2, 1.1 | Zeichenfolge |
-| (1.1-Schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (1.1-Schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid |
 | (1.1-Schema) AADClientSecret | password | Zeichenfolge |
 | (1.1-Schema) AADClientCertificate | thumbprint | Zeichenfolge |
-| EncryptionOperation | EnableEncryption | Zeichenfolge | 
+| EncryptionOperation | EnableEncryption | Zeichenfolge |
 | (optional – Standard-RSA-OAEP) KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | Zeichenfolge |
 | KeyVaultURL | url | Zeichenfolge |
 | KeyVaultResourceId | url | Zeichenfolge |
@@ -154,12 +154,12 @@ Verwenden von `AADClientCertificate`:
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
-Ein Beispiel für eine auf der Schemaversion 2.2 basierende Vorlagenbereitstellung finden Sie in der Azure-Schnellstartvorlage [201-encrypt-running-windows-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad).
+Ein Beispiel für eine auf der Schemaversion 2.2 basierende Vorlagenbereitstellung finden Sie in der Azure-Schnellstartvorlage [encrypt-running-windows-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm-without-aad).
 
 Ein Beispiel für eine auf der Schemaversion 1.1 basierende Vorlagenbereitstellung finden Sie in der Azure-Schnellstartvorlage [201-encrypt-running-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm).
 
 >[!NOTE]
-> Wenn der Parameter `VolumeType` auf „All“ festgelegt ist, werden Datenträger nur dann verschlüsselt, wenn sie ordnungsgemäß formatiert sind. 
+> Wenn der Parameter `VolumeType` auf „All“ festgelegt ist, werden Datenträger nur dann verschlüsselt, wenn sie ordnungsgemäß formatiert sind.
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 
@@ -169,7 +169,7 @@ Informationen zur Problembehandlung finden Sie unter [Leitfaden zur Azure Disk E
 
 ### <a name="support"></a>Support
 
-Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/community/) mit Azure-Experten in Verbindung setzen. 
+Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/community/) mit Azure-Experten in Verbindung setzen.
 
 Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Navigieren Sie zum [Azure-Support](https://azure.microsoft.com/support/options/), und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
 

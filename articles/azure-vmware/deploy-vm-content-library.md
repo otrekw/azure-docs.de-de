@@ -3,12 +3,12 @@ title: Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMwa
 description: Erstellen Sie eine Inhaltsbibliothek zum Bereitstellen einer VM in einer privaten Azure VMware Solution-Cloud.
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: f8a45ce301d250aa30ec08617e0ae11bcbfbafaf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5ebd60b3c2fc8350478125e756413d0ba750a0ed
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110086876"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756831"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution
 
@@ -18,7 +18,7 @@ In diesem Artikel werden die Schritte zum Erstellen einer Inhaltsbibliothek erl�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial sind ein logisches NSX-T-Segment (logischer Switch) und ein verwalteter DHCP-Dienst erforderlich.  Weitere Informationen dazu finden Sie im Artikel [Verwalten von DHCP in Azure VMware Solution](configure-dhcp-azure-vmware-solution.md).
+Für dieses Tutorial sind ein logisches NSX-T-Segment (logischer Switch) und ein verwalteter DHCP-Dienst erforderlich.  Weitere Informationen finden Sie im Artikel [Konfigurieren von DHCP für Azure VMware Solution](configure-dhcp-azure-vmware-solution.md).  
 
 ## <a name="create-a-content-library"></a>Erstellen einer Inhaltsbibliothek
 
@@ -95,7 +95,7 @@ Nachdem Sie die Inhaltsbibliothek erstellt haben, können Sie ein ISO-Image hinz
 Nachdem Sie sich mit dem Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
 
 - [So migrieren Sie VM-Workloads in Ihre Private Cloud](tutorial-deploy-vmware-hcx.md)
-- [Überwachen und Verwalten von Azure VMware Solution-VMs](lifecycle-management-of-azure-vmware-solution-vms.md)
+- [Integrieren von nativen Azure-Diensten in Azure VMware Solution](integrate-azure-native-services.md)
 
 <!-- LINKS - external-->
 

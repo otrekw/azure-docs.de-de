@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Virtual Desktop
-summary: 'Stellen Sie eine virtuelle Desktopumgebung und Remote-Apps für beliebige Geräte bereit. Kombinieren Sie Microsoft 365 und Azure, um Benutzern die einmalige Windows 10-Multisessionumgebung zu bieten – mit außergewöhnlicher Skalierung und reduzierten IT-Kosten.'
+summary: Stellen Sie eine virtuelle Desktopumgebung und Remote-Apps für beliebige Geräte bereit. Kombinieren Sie Microsoft 365 und Azure, um Benutzern die einmalige Windows 10-Multisessionumgebung zu bieten – mit außergewöhnlicher Skalierung und reduzierten IT-Kosten.
 metadata:
   title: Dokumentation zu Azure Virtual Desktop
-  description: "Azure Virtual Desktop für Azure ist eine in der Cloud virtualisierte Windows\_10\_Enterprise-Mehrbenutzerumgebung."
+  description: Azure Virtual Desktop für Azure ist eine in der Cloud virtualisierte Windows 10 Enterprise-Mehrbenutzerumgebung.
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
@@ -11,60 +11,60 @@ metadata:
   author: Heidilohr
   ms.author: helohr
   ms.date: 03/06/2020
+  ms.openlocfilehash: 98e0983c84e543dd67301f057cb3f50e8f66d441
+  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113033351"
 landingContent:
-  - title: Informationen zu Azure Virtual Desktop
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Was ist Azure Virtual Desktop?
-            url: overview.md
-  - title: Erste Schritte mit Azure Virtual Desktop
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: Erstellen eines Hostpools mit Azure Marketplace
-            url: create-host-pools-azure-marketplace.md
-          - text: Verwalten von App-Gruppen für Azure Virtual Desktop
-            url: manage-app-groups.md
-          - text: Erstellen eines Hostpools zum Überprüfen von Dienstupdates
-            url: create-validation-host-pool.md
-          - text: Einrichten von Dienstwarnungen
-            url: set-up-service-alerts.md
-  - title: Erste Schritte mit Azure Virtual Desktop (klassisch)
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: Erstellen eines Mandanten in Azure Virtual Desktop
-            url: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
-          - text: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
-            url: ./virtual-desktop-fall-2019/create-service-principal-role-powershell.md
-          - text: Erstellen eines Hostpools mit Azure Marketplace
-            url: ./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md
-          - text: Verwalten von App-Gruppen für Azure Virtual Desktop
-            url: ./virtual-desktop-fall-2019/manage-app-groups-2019.md
-          - text: Erstellen eines Hostpools zum Überprüfen von Dienstupdates
-            url: ./virtual-desktop-fall-2019/create-validation-host-pool-2019.md
-          - text: Einrichten von Dienstwarnungen
-            url: ./virtual-desktop-fall-2019/set-up-service-alerts-2019.md
-  - title: Azure Virtual Desktop für Benutzer
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Herstellen einer Verbindung mit Windows Desktop
-            url: ./user-documentation/connect-windows-7-10.md
-          - text: Herstellen einer Verbindung mit dem Webclient
-            url: ./user-documentation/connect-web.md
-          - text: Herstellen einer Verbindung mit Android
-            url: ./user-documentation/connect-android.md
-          - text: Herstellen einer Verbindung mit macOS
-            url: ./user-documentation/connect-macos.md
-          - text: Herstellen einer Verbindung mit iOS
-            url: ./user-documentation/connect-ios.md
-          - text: Herstellen einer Verbindung mit Linux oder Thin Clients
-            url: ./user-documentation/linux-overview.md
-  - title: Remote-App-Streaming mit Azure Virtual Desktop
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Streamen von Apps an Ihre Kunden
-            url: ./remote-app-streaming/overview.md
+- title: Informationen zu Azure Virtual Desktop
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Virtual Desktop?
+      url: overview.md
+- title: Erste Schritte mit Azure Virtual Desktop
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erstellen eines Hostpools mit Azure Marketplace
+      url: create-host-pools-azure-marketplace.md
+    - text: Verwalten von App-Gruppen für Azure Virtual Desktop
+      url: manage-app-groups.md
+    - text: Erstellen eines Hostpools zum Überprüfen von Dienstupdates
+      url: create-validation-host-pool.md
+    - text: Einrichten von Dienstwarnungen
+      url: set-up-service-alerts.md
+- title: Erste Schritte mit Azure Virtual Desktop (klassisch)
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erstellen eines Mandanten in Azure Virtual Desktop
+      url: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
+    - text: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
+      url: ./virtual-desktop-fall-2019/create-service-principal-role-powershell.md
+    - text: Erstellen eines Hostpools mit Azure Marketplace
+      url: ./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md
+    - text: Verwalten von App-Gruppen für Azure Virtual Desktop
+      url: ./virtual-desktop-fall-2019/manage-app-groups-2019.md
+    - text: Erstellen eines Hostpools zum Überprüfen von Dienstupdates
+      url: ./virtual-desktop-fall-2019/create-validation-host-pool-2019.md
+    - text: Einrichten von Dienstwarnungen
+      url: ./virtual-desktop-fall-2019/set-up-service-alerts-2019.md
+- title: Azure Virtual Desktop für Benutzer
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Herstellen einer Verbindung mit Windows Desktop
+      url: ./user-documentation/connect-windows-7-10.md
+    - text: Herstellen einer Verbindung mit dem Webclient
+      url: ./user-documentation/connect-web.md
+    - text: Herstellen einer Verbindung mit Android
+      url: ./user-documentation/connect-android.md
+    - text: Herstellen einer Verbindung mit macOS
+      url: ./user-documentation/connect-macos.md
+    - text: Herstellen einer Verbindung mit iOS
+      url: ./user-documentation/connect-ios.md
+    - text: Herstellen einer Verbindung mit Linux oder Thin Clients
+      url: ./user-documentation/linux-overview.md

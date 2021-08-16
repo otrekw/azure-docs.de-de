@@ -1,5 +1,5 @@
 ---
-title: Cloud Solution Provider – kommerzieller Microsoft-Marketplace
+title: Cloud Solution Provider – kommerzieller Microsoft-Marketplace (Azure)
 description: Erfahren Sie, wie Sie Ihre Angebote über den Partnerkanal Microsoft Cloud Solution Provider-Programm (CSP) im kommerziellen Marketplace verkaufen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: c906d37a01f0fca2d4114e8ba07078fc46eec88b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64ad2c4311ade34314edde6e841e747745378e8c
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93131172"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109716256"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider-Programm
 
@@ -34,7 +34,7 @@ Die folgenden Angebote können abonniert werden, um von Partnern im CSP-Programm
 
 ## <a name="how-to-configure-an-offer"></a>Konfigurieren ein Angebots
 
-Konfigurieren Sie die Abonnementeinstellung für das CSP-Programm, wenn Sie das Angebot in Partner Center erstellen. [Erfahren Sie mehr über den Wechsel der Umgebung für Herausgeber](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
+Konfigurieren Sie die Abonnementeinstellung für das CSP-Programm, wenn Sie das Angebot in Partner Center erstellen.
 
 ### <a name="partner-center-opt-in"></a>Partner Center-Abonnement
 
