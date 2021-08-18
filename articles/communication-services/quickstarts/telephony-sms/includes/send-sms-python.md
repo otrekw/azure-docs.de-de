@@ -6,16 +6,16 @@ author: lakshmans
 manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/11/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: 86f26e7fbe96284dee5eb606ede22ae63701f309
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 9e44cc1f631a56d1948c744a1ecb912208bad11e
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111429573"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659613"
 ---
 Steigen Sie ein in Azure Communication Services, indem Sie das Python-SDK für SMS von Communication Services nutzen, um SMS-Nachrichten zu senden.
 
@@ -84,8 +84,7 @@ Instanziieren Sie einen SMS-Client (**SmsClient**) mit Ihrer Verbindungszeichenf
 # Create the SmsClient object which will be used to send SMS messages
 sms_client = SmsClient.from_connection_string(<connection_string>)
 ```
-Der Einfachheit halber verwenden wir in dieser Schnellstartanleitung Verbindungszeichenfolgen, aber für Produktionsumgebungen empfehlen wir, [verwaltete Identitäten](../../../quickstarts/managed-identity.md) zu verwenden, da sie sicherer sind und bedarfsorientiert verwaltet werden können.
-
+Der Einfachheit halber verwenden wir in dieser Schnellstartanleitung Verbindungszeichenfolgen, aber in Produktionsumgebungen sollten [Dienstprinzipale](../../../quickstarts/identity/service-principal.md) verwendet werden.
 
 ## <a name="send-a-11-sms-message"></a>Senden einer SMS: 1:1
 
