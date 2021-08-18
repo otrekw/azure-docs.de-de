@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: storage
 author: twooley
 ms.service: storage
 ms.topic: include
-ms.date: 11/23/2019
+ms.date: 07/23/2021
 ms.author: twooley
 ms.custom: include file
-ms.openlocfilehash: 9e6b2dfaaccfc7d305f672a9b7d74daf3a6227b7
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 463d251cc46e0a5735b1b5146bac30b3bc506f46
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109805210"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674369"
 ---
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Kopieren Ihrer Anmeldeinformationen aus dem Azure-Portal
 
@@ -21,8 +21,12 @@ Wenn die Beispielanwendung eine Anforderung an Azure Storage sendet, muss diese 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie nach Ihrem Speicherkonto.
-3. Wählen Sie im Abschnitt **Sicherheit + Netzwerkbetrieb** der Speicherkontoübersicht die Option **Zugriffsschlüssel** aus. Hier können Sie Ihre Kontozugriffsschlüssel und die vollständige Verbindungszeichenfolge für jeden Schlüssel anzeigen.
-4. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge**, und wählen Sie dann die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zu kopieren. Der Wert der Verbindungszeichenfolge wird in einem späteren Schritt einer Umgebungsvariablen hinzugefügt.
+3. Wählen Sie im Speicherkonto-Menübereich unter **Sicherheit + Netzwerkbetrieb** die Option **Zugriffsschlüssel** aus. Hier können Sie die Kontozugriffsschlüssel und die vollständige Verbindungszeichenfolge für jeden Schlüssel anzeigen.
+
+    ![Screenshot, der zeigt, wo sich die Zugriffsschlüsseleinstellungen im Azure-Portal befinden.](./media/storage-access-keys-portal/portal-access-key-settings.png)
+ 
+1. Wählen Sie im Bereich **Zugriffsschlüssel** die Option **Schlüssel anzeigen** aus.
+1. Suchen Sie im Abschnitt **key1** nach dem Wert **Verbindungszeichenfolge**. Wählen Sie das Symbol **In Zwischenablage kopieren** zum Kopieren der Verbindungszeichenfolge aus. Der Wert der Verbindungszeichenfolge wird in einem späteren Abschnitt einer Umgebungsvariablen hinzugefügt.
 
     ![Screenshot: Kopieren einer Verbindungszeichenfolge aus dem Azure-Portal](./media/storage-copy-connection-string-portal/portal-connection-string.png)
 
