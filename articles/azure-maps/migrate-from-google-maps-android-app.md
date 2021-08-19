@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 3d160649008199233fa0b676d938470569a27853
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 95f24173f584cd6ac6e97ccae053706ff5b8f2cf
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101493"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091463"
 ---
 # <a name="tutorial-migrate-an-android-app-from-google-maps"></a>Tutorial: Migrieren von Android-Apps aus Google Maps
 
@@ -258,7 +258,7 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
     3. Aktualisieren Sie Ihren Abhängigkeitsblock. Fügen Sie eine neue Implementierungsabhängigkeitszeile für das aktuelle Azure Maps Android SDK hinzu:
 
         ```gradel
-        implementation "com.microsoft.azure.maps:mapcontrol:0.7"
+        implementation "com.azure.android:azure-maps-control:1.0.0"
         ```
 
         > [!Note]
@@ -277,7 +277,7 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
         android:layout_height="match_parent"
         >
 
-        <com.microsoft.azure.maps.mapcontrol.MapControl
+        <com.azure.android.maps.control.MapControl
             android:id="@+id/mapcontrol"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -312,11 +312,11 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
     package com.example.myapplication;
     
     import androidx.appcompat.app.AppCompatActivity;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-    import com.microsoft.azure.maps.mapcontrol.options.MapStyle;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
+    import com.azure.android.maps.control.AzureMaps;
+    import com.azure.android.maps.control.MapControl;
+    import com.azure.android.maps.control.layer.SymbolLayer;
+    import com.azure.android.maps.control.options.MapStyle;
+    import com.azure.android.maps.control.source.DataSource;
     
     public class MainActivity extends AppCompatActivity {
     
@@ -418,10 +418,10 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
 
     import androidx.appcompat.app.AppCompatActivity
     import android.os.Bundle
-    import com.microsoft.azure.maps.mapcontrol.AzureMap
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps
-    import com.microsoft.azure.maps.mapcontrol.MapControl
-    import com.microsoft.azure.maps.mapcontrol.events.OnReady
+    import com.azure.android.maps.control.AzureMap
+    import com.azure.android.maps.control.AzureMaps
+    import com.azure.android.maps.control.MapControl
+    import com.azure.android.maps.control.events.OnReady
     
     class MainActivity : AppCompatActivity() {
     
@@ -542,16 +542,16 @@ Dies ist ein Beispiel für Google Maps mit der Spracheinstellung „fr“.
 
 ![Lokalisierung in Google Maps](media/migrate-google-maps-android-app/google-maps-localization.png)
 
-### <a name="after-azure-maps"></a>Nachher: Azure Maps
+### <a name="after-azure-maps&quot;></a>Nachher: Azure Maps
 
 Azure Maps bietet drei verschiedene Möglichkeiten, um die Sprache und die regionale Ansicht der Karte festzulegen. Die erste Option besteht darin, die Informationen zur Sprache und zur regionalen Ansicht an die Klasse `AzureMaps` zu übergeben. Bei dieser Option werden die statischen Methoden `setLanguage` und `setView` global verwendet. Das bedeutet, dass die Standardsprache und die regionale Ansicht für alle in Ihrer App geladenen Azure Maps-Steuerelemente festgelegt werden. In diesem Beispiel wird mithilfe des Sprachcodes „fr-FR“ Französisch festgelegt.
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
 static {
     //Set your Azure Maps Key.
-    AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+    AzureMaps.setSubscriptionKey(&quot;<Your Azure Maps Key>");
 
     //Set the language to be used by Azure Maps.
     AzureMaps.setLanguage("fr-FR");
@@ -585,12 +585,12 @@ companion object {
 Die zweite Option besteht darin, die Sprach- und Ansichtsinformationen an den XML-Code des Kartensteuerelements zu übergeben.
 
 ```xml
-<com.microsoft.azure.maps.mapcontrol.MapControl
+<com.azure.android.maps.control.MapControl
     android:id="@+id/myMap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:mapcontrol_language="fr-FR"
-    app:mapcontrol_view="Auto"
+    app:azure_maps_language="fr-FR"
+    app:azure_maps_view="Auto"
     />
 ```
 
@@ -675,14 +675,14 @@ Wie bereits erwähnt, muss die in Google Maps verwendete Zoomstufe um den Wert 
 Die ursprüngliche Kartenansicht kann in XML-Attributen auf dem Kartensteuerelement festgelegt werden.
 
 ```xml
-<com.microsoft.azure.maps.mapcontrol.MapControl
+<com.azure.android.maps.control.MapControl
     android:id="@+id/myMap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:mapcontrol_cameraLat="35.0272"
-    app:mapcontrol_cameraLng="-111.0225"
-    app:mapcontrol_zoom="14"
-    app:mapcontrol_style="satellite"
+    app:azure_maps_cameraLat="35.0272"
+    app:azure_maps_cameraLng="-111.0225"
+    app:azure_maps_zoom="14"
+    app:azure_maps_style="satellite"
     />
 ```
 
@@ -1216,12 +1216,12 @@ public override fun onMapReady(googleMap: GoogleMap) {
 
 ![Google Maps-Kachelebene](media/migrate-google-maps-android-app/google-maps-tile-layer.png)
 
-### <a name="after-azure-maps"></a>Nachher: Azure Maps
+### <a name="after-azure-maps&quot;></a>Nachher: Azure Maps
 
 Eine Kachelebene kann der Karte auf ähnliche Weise hinzugefügt werden wie andere Ebenen. Eine formatierte URL, die x, y und Zoomplatzhalter bzw. `{x}`, `{y}`, `{z}` aufweist, wird dazu verwendet, die Ebene anzuweisen, an welcher Position sie auf die Kacheln zugreifen soll. Kachelebenen in Azure Maps unterstützen außerdem die Platzhalter `{quadkey}`, `{bbox-epsg-3857}` und `{subdomain}`. Die Kachelebene wird halbtransparent angezeigt, wenn der Wert 0,8 für die Deckkraft verwendet wird. Deckkraft und Transparenz ähneln sich zwar, verwenden aber umgekehrte Werte. Wenn Sie die Werte zwischen den beiden Optionen konvertieren möchten, subtrahieren Sie sie von der Zahl 1.
 
 > [!TIP]
-> In Azure Maps können Ebenen praktischerweise unter anderen Ebenen gerendert werden. Das gilt auch für Basiskartenebenen. Es ist auch häufig wünschenswert, Kachelebenen unterhalb der Kartenbezeichnungen zu rendern, damit sie leicht zu lesen sind. Die Methode `map.layers.add` nimmt einen zweiten Parameter an, bei dem es sich um die ID der Ebene handelt, unter der die neue Ebene eingefügt werden soll. Mithilfe des folgenden Codes können Sie eine Kachelebene unterhalb der Kartenbezeichnungen einfügen: `map.layers.add(myTileLayer, "labels");`
+> In Azure Maps können Ebenen praktischerweise unter anderen Ebenen gerendert werden. Das gilt auch für Basiskartenebenen. Es ist auch häufig wünschenswert, Kachelebenen unterhalb der Kartenbezeichnungen zu rendern, damit sie leicht zu lesen sind. Die Methode `map.layers.add` nimmt einen zweiten Parameter an, bei dem es sich um die ID der Ebene handelt, unter der die neue Ebene eingefügt werden soll. Mithilfe des folgenden Codes können Sie eine Kachelebene unterhalb der Kartenbezeichnungen einfügen: `map.layers.add(myTileLayer, &quot;labels");`
 
 ::: zone pivot="programming-language-java-android"
 
@@ -1326,7 +1326,7 @@ Es muss keine Bereinigung von Ressourcen durchgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr zum Migrieren von Azure Maps:
+Weitere Informationen zum Android SDK für Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Migrieren einer Android-App](migrate-from-google-maps-android-app.md)
+> [Erste Schritte mit dem Android SDK für Azure Maps](how-to-use-android-map-control-library.md)

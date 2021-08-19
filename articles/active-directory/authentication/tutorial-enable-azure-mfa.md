@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 06/29/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2e8bf2ccbf7a53563013c7ba653a6f6e8905337
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a91010f100aa0a464ec61f763b38150ebb4efcf4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97881309"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090347"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure AD Multi-Factor Authentication
 
@@ -41,7 +41,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
 * Einen funktionierenden Azure AD-Mandanten mit mindestens einer aktivierten Azure AD Premium P1- oder -Testlizenz.
     * Erstellen Sie ggf. [ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*.
+* Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*. Einige MFA-Einstellungen können auch von einem Authentifizierungsrichtlinienadministrator verwaltet werden. Weitere Informationen finden Sie unter [Authentifizierungsrichtlinienadministrator](../roles/permissions-reference.md#authentication-policy-administrator).
 * Ein Benutzer ohne Administratorrechte mit einem Ihnen bekannten Kennwort, wie z. B. *testuser*. Das Konto wird in diesem Tutorial verwendet, um Azure AD Multi-Factor Authentication als Endbenutzer zu testen.
     * Wenn Sie einen Benutzer erstellen müssen, finden Sie weitere Informationen unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](../fundamentals/add-users-azure-active-directory.md) weiter.
 * Eine Gruppe, der der Benutzer ohne Administratorrechte angehört (beispielsweise *MFA-Test-Group*). In diesem Tutorial wird Azure AD Multi-Factor Authentication für diese Gruppe aktiviert.

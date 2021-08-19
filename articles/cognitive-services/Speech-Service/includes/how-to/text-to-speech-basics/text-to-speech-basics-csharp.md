@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e75a141dd8dd09423f4e99a9f4860e7e5022a15f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: ae5c25eec6440a02d173c2f0dcc51a750d128796
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108941"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280017"
 ---
 In dieser Schnellstartanleitung werden gängige Entwurfsmuster für die Sprachsynthese per Speech SDK vermittelt. Hierzu werden zunächst eine grundlegende Konfiguration und eine einfache Synthese durchgeführt, gefolgt von komplexeren Beispielen für die Entwicklung benutzerdefinierter Anwendungen:
 
@@ -52,19 +52,19 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 ## <a name="create-a-speech-configuration"></a>Erstellen einer Sprachkonfiguration
 
-Um den Speech-Dienst über das Speech SDK aufrufen zu können, muss eine Sprachkonfiguration ([`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)) erstellt werden. Diese Klasse enthält Informationen zu Ihrem Abonnement. Hierzu zählen etwa Ihr Schlüssel und die zugeordnete Region, der Endpunkt, der Host oder das Autorisierungstoken.
+Um den Speech-Dienst über das Speech SDK aufrufen zu können, muss eine Sprachkonfiguration ([`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)) erstellt werden. Diese Klasse enthält Informationen zu Ihrem Abonnement. Hierzu zählen etwa Ihr Schlüssel für die Spracheingabe und der zugeordnete Standort bzw. die zugeordnete Region, der Endpunkt, der Host oder das Autorisierungstoken.
 
 > [!NOTE]
 > Eine Konfiguration ist immer erforderlich. Dabei spielt es keine Rolle, ob Sie eine Spracherkennung, eine Sprachsynthese, eine Übersetzung oder eine Absichtserkennung durchführen möchten.
 
 Eine Sprachkonfiguration ([`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)) kann auf unterschiedliche Weise initialisiert werden:
 
-* Mit einem Abonnement: Übergeben Sie einen Schlüssel und die zugeordnete Region.
+* Mit einem Abonnement: Übergeben Sie einen Schlüssel und den zugeordneten Standort bzw. die zugeordnete Region.
 * Mit einem Endpunkt: Übergeben Sie einen Endpunkt für den Speech-Dienst. Ein Schlüssel oder Autorisierungstoken ist optional.
 * Mit einem Host: Übergeben Sie eine Hostadresse. Ein Schlüssel oder Autorisierungstoken ist optional.
-* Mit einem Autorisierungstoken: Übergeben Sie ein Autorisierungstoken und die zugeordnete Region.
+* Mit einem Autorisierungstoken: Übergeben Sie ein Autorisierungstoken und den zugeordneten Standort bzw. die zugeordnete Region.
 
-In diesem Beispiel erstellen Sie das Objekt [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) mit einem Abonnementschlüssel und einer Region. Diese Anmeldeinformationen können Sie mithilfe der Schritte unter [Kostenloses Testen des Speech-Diensts](../../../overview.md#try-the-speech-service-for-free) abrufen. Sie können für den restlichen Teil dieses Artikels auch einfache Codebausteine erstellen, an denen Sie dann jeweils die entsprechenden Anpassungen vornehmen.
+In diesem Beispiel erstellen Sie ein [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)-Objekt mit einem Schlüssel für die Spracheingabe und einem Standort bzw. einer Region. Diese Anmeldeinformationen können Sie mithilfe der Schritte unter [Kostenloses Testen des Speech-Diensts](../../../overview.md#try-the-speech-service-for-free) abrufen. Sie können für den restlichen Teil dieses Artikels auch einfache Codebausteine erstellen, an denen Sie dann jeweils die entsprechenden Anpassungen vornehmen.
 
 ```csharp
 public class Program
@@ -76,7 +76,7 @@ public class Program
 
     static async Task SynthesizeAudioAsync()
     {
-        var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+        var config = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     }
 }
 ```
@@ -90,7 +90,7 @@ Erstellen Sie zunächst ein `AudioConfig`-Element, um die Ausgabe mit der Funkti
 ```csharp
 static async Task SynthesizeAudioAsync()
 {
-    var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    var config = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     using var audioConfig = AudioConfig.FromWavFileOutput("path/to/write/file.wav");
 }
 ```
@@ -100,7 +100,7 @@ Instanziieren Sie als Nächstes mit einer weiteren `using`-Anweisung ein `Speech
 ```csharp
 static async Task SynthesizeAudioAsync()
 {
-    var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    var config = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     using var audioConfig = AudioConfig.FromWavFileOutput("path/to/write/file.wav");
     using var synthesizer = new SpeechSynthesizer(config, audioConfig);
     await synthesizer.SpeakTextAsync("A simple test to write to a file.");
@@ -116,7 +116,7 @@ In bestimmten Fällen kann es ratsam sein, synthetisierte Sprache direkt an eine
 ```csharp
 static async Task SynthesizeAudioAsync()
 {
-    var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    var config = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     using var synthesizer = new SpeechSynthesizer(config);
     await synthesizer.SpeakTextAsync("Synthesizing directly to speaker output.");
 }
@@ -140,7 +140,7 @@ Dieses Mal speichern Sie das Ergebnis in einer Variablen des Typs [`SpeechSynthe
 ```csharp
 static async Task SynthesizeAudioAsync()
 {
-    var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    var config = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     using var synthesizer = new SpeechSynthesizer(config, null);
 
     var result = await synthesizer.SpeakTextAsync("Getting the response as an in-memory stream.");
@@ -167,7 +167,7 @@ In diesem Beispiel geben Sie das High-Fidelity-RIFF-Format `Riff24Khz16BitMonoPc
 ```csharp
 static async Task SynthesizeAudioAsync()
 {
-    var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    var config = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
 
     using var synthesizer = new SpeechSynthesizer(config, null);
@@ -203,7 +203,7 @@ Als Nächstes müssen Sie die Anforderung der Sprachsynthese so ändern, dass da
 ```csharp
 public static async Task SynthesizeAudioAsync()
 {
-    var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    var config = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     using var synthesizer = new SpeechSynthesizer(config, null);
 
     var ssml = File.ReadAllText("./ssml.xml");
@@ -222,5 +222,5 @@ public static async Task SynthesizeAudioAsync()
 Die Sprache kann eine gute Möglichkeit zum Steuern der Animation von Gesichtsausdrücken sein.
 Häufig werden die Schlüssel in der beobachteten Sprache mithilfe von [visemes](../../../how-to-speech-synthesis-viseme.md) dargestellt, wie z. b. die Position der Lippen, der Kiefer und die Zunge, wenn ein bestimmtes Phoneme erzeugt wird.
 Sie können das Ereignis „viseme“ in der Sprach-SDK abonnieren.
-Anschließend können Sie das Gesicht eines Zeichens bei der Wiedergabe von viseme-Ereignissen auf das Zeichen eines Zeichens animieren.
-Erfahren Sie [ wie Sie viseme-Ereignisse bekommen](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).
+Anschließend können Sie das Gesicht eines Zeichens bei der Wiedergabe von sprach Audioereignissen auf das Zeichen eines Zeichens animieren.
+Erfahren Sie [wie Sie viseme-Ereignisse bekommen](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)

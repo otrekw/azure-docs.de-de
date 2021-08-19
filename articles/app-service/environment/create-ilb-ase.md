@@ -7,14 +7,17 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: be936bf8799d3e16679cf337e2425543163fe8f3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 331a91f645c64f0b70ff6c4de922b455eb344ce2
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110063296"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433254"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Erstellen und Verwenden einer App Service-Umgebung für internen Lastenausgleich 
+> [!NOTE]
+> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird
+> 
 
 Die Azure App Service-Umgebung ist eine Bereitstellung von Azure App Service in einem Subnetz in einem virtuellen Azure-Netzwerk (VNET). Eine App Service-Umgebung (App Service Environment, ASE) kann auf zwei Arten bereitgestellt werden: 
 
@@ -40,7 +43,7 @@ Mit einer ILB-ASE können Sie z.B. folgende Aktionen durchführen:
 
 Es gibt einige Dinge, die Sie mit einer ILB-ASE nicht machen können:
 
--   IP-basiertes SSL verwenden
+-   IP-basierte TLS/SSL-Bindung verwenden.
 -   Bestimmten Apps IP-Adressen zuweisen
 -   Ein Zertifikat mit einer App über das Azure-Portal kaufen und verwenden. Sie können Zertifikate direkt von einer Zertifizierungsstelle beziehen und mit Ihren Apps verwenden. Über das Azure-Portal können diese nicht bezogen werden.
 
@@ -119,7 +122,7 @@ So konfigurieren Sie DNS in privaten Azure DNS-Zonen
 
 Die DNS-Einstellungen für Ihr ASE-Standarddomänensuffix schränken Ihre Apps nicht dahingehend ein, dass sie nur über diese Namen zugänglich sind. Sie können einen benutzerdefinierten Domänennamen ohne jegliche Validierung für Ihre Apps in einer ILB-ASE festlegen. Wenn Sie dann eine Zone namens contoso.net erstellen möchten, können Sie dies tun und die Zone auf die ILB-IP-Adresse verweisen lassen. Der benutzerdefinierte Domänenname funktioniert für App-Anforderungen, aber nicht für die SCM-Site. Die SCM-Site ist nur unter „&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net“ verfügbar.
 
-Die Zone namens .&lt;asename&gt;.appserviceenvironment.net ist global eindeutig. Vor Mai 2019 konnten Kunden das Domänensuffix der ILB-ASE angeben. Wenn Sie .contoso.com als Domänensuffix verwenden wollten, konnten Sie dies tun, wobei dies dann die SCM-Site einschloss. Dieses Modell bot Herausforderungen, einschließlich: Verwalten des SSL-Standardzertifikats, fehlendes einmaliges Anmelden (Single Sign-On) bei der SCM-Site und die Anforderung, ein Platzhalterzertifikat zu verwenden. Der Upgradeprozess für das ILB-ASE-Standardzertifikat war außerdem führte außerdem zu Unterbrechungen und Neustarts von Anwendungen. Um diese Probleme zu beheben, wurde das ILB-ASE-Verhalten dahingehend geändert, dass ein Domänensuffix, das auf dem Namen der ASE basiert, zusammen mit einem Suffix, das Microsoft gehört, verwendet wird. Die Änderung des ILB-ASE-Verhaltens wirkt sich nur auf ILB-ASEs aus, die nach Mai 2019 erstellt wurden. Davor vorhandene ILB-ASEs müssen weiterhin das Standardzertifikat der ASE und seine DNS-Konfiguration verwalten.
+Die Zone namens .&lt;asename&gt;.appserviceenvironment.net ist global eindeutig. Vor Mai 2019 konnten Kunden das Domänensuffix der ILB-ASE angeben. Wenn Sie .contoso.com als Domänensuffix verwenden wollten, konnten Sie dies tun, wobei dies dann die SCM-Site einschloss. Dieses Modell ging mit Herausforderungen einher. Dazu zählten u. a. das Verwalten des TLS/SSL-Standardzertifikats, fehlendes einmaliges Anmelden (Single Sign-On) bei der SCM-Site und die Anforderung, ein Platzhalterzertifikat zu verwenden. Der Upgradeprozess für das ILB-ASE-Standardzertifikat war außerdem führte außerdem zu Unterbrechungen und Neustarts von Anwendungen. Um diese Probleme zu beheben, wurde das ILB-ASE-Verhalten dahingehend geändert, dass ein Domänensuffix, das auf dem Namen der ASE basiert, zusammen mit einem Suffix, das Microsoft gehört, verwendet wird. Die Änderung des ILB-ASE-Verhaltens wirkt sich nur auf ILB-ASEs aus, die nach Mai 2019 erstellt wurden. Davor vorhandene ILB-ASEs müssen weiterhin das Standardzertifikat der ASE und seine DNS-Konfiguration verwalten.
 
 ## <a name="publish-with-an-ilb-ase"></a>Veröffentlichen mit einer ILB-ASE
 

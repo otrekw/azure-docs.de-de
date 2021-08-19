@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: 689a9f38199184d56c9442aabae01ba7c60e4842
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 2c274ffa263ac2313171ac7adc08f2ea2120c57c
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951811"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234661"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Tutorial: Erstellen eines cachefremden Leaderboards in ASP.NET
 
@@ -725,7 +725,7 @@ Wählen Sie einige der Aktionen aus, und experimentieren Sie mit dem Abrufen der
 Wenn Sie die Beispielanwendung des Tutorials nicht mehr benötigen, können Sie die Azure-Ressourcen löschen, um Kosten und Ressourcen zu sparen. Alle Ihre Ressourcen sollten in derselben Ressourcengruppe enthalten sein. Sie können sie zusammen in einem Vorgang löschen, indem Sie die Ressourcengruppe löschen. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *TestResources* verwendet.
 
 > [!IMPORTANT]
-> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen.
+> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen auf der linken Seite einzeln löschen.
 >
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
