@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/29/2020
+ms.date: 06/25/2021
 ms.author: jeedes
-ms.openlocfilehash: f756e738989775bf9c06b44a03f002c14f42e3ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85c59b42532b56d2f61cbd3a7f7e2f9e7aeb557a
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182327"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988115"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Sonarqube
 
@@ -42,7 +42,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
-## <a name="adding-sonarqube-from-the-gallery"></a>Hinzufügen von Sonarqube aus dem Katalog
+## <a name="add-sonarqube-from-the-gallery"></a>Hinzufügen von Sonarqube aus dem Katalog
 
 Zum Konfigurieren der Integration von Sonarqube in Azure AD müssen Sie Sonarqube aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -72,13 +72,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SonarQube** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL ein:
+    a. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://servicessonar.<YOUR_ORGANIZATION>.com`
+
+    b. Geben Sie im Textfeld **Anmelde-URL** eine der folgenden URLs ein:
 
     * **Für die Produktionsumgebung:**
 
@@ -87,6 +89,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     * **Für die Entwicklungsumgebung:**
 
         `https://servicescode-dev.westus.cloudapp.azure.com`
+
+    > [!NOTE]
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Antwort-URL. Dies wird später in diesem Tutorial erläutert.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -118,7 +123,6 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
-
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-sonarqube-sso"></a>Konfigurieren des einmaligen Anmeldens für Sonarqube
@@ -131,12 +135,14 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     1. IdP-Entitäts-ID
     2. Anmelde-URL
     3. X.509-Zertifikat 
+
 1. Speichern Sie alle Details.
-    ![SAML-Plug-In: IDP](./media/sonarqube-tutorial/sso-idp-metadata.png)
+
+    ![SAML-Plug-In: IDP](./media/sonarqube-tutorial/metadata.png)
 
 1. Führen Sie auf der Seite **SAML** die folgenden Schritte aus:
 
-    ![Sonarqube-Konfiguration](./media/sonarqube-tutorial/config01.png)
+    ![Sonarqube-Konfiguration](./media/sonarqube-tutorial/configuration.png)
 
     a. Legen Sie die Option **Enabled** (Aktiviert) auf **yes** (ja) fest.
 
@@ -166,11 +172,11 @@ In diesem Abschnitt erstellen Sie in Sonarqube einen Benutzer namens B. Simon. 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für SonarQube weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für SonarQube weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-2. Rufen Sie direkt die SonarQube-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die SonarQube-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „SonarQube“ klicken, werden Sie zur Anmelde-URL für SonarQube umgeleitet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „SonarQube“ klicken, werden Sie zur Anmelde-URL für SonarQube umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
