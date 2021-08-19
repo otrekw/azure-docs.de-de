@@ -3,17 +3,17 @@ title: Verbinden Ihrer Nicht-Azure-Computer mit Azure Security Center
 description: Erfahren Sie, wie Sie Ihre Nicht-Azure-Computer mit Security Center verbinden.
 author: memildin
 ms.author: memildin
-ms.date: 11/16/2020
+ms.date: 07/12/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 8ca3f7c9104fa655536762ac38f50c78cb96ad3a
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 3bda35f3973a5125a3e780448b651425bc054cce
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237931"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113641447"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Verbinden Ihrer Nicht-Azure-Computer mit Security Center
 
@@ -30,11 +30,17 @@ Beide Methoden werden auf dieser Seite beschrieben.
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Hinzufügen eines Azure-fremden Computers mit Azure Arc
 
-Die Verwendung von Servern mit Azure Arc-Unterstützung ist die bevorzugte Methode zum Hinzufügen Ihrer Azure-fremden Computer zu Azure Security Center.
+Die bevorzugte Methode zum Hinzufügen Ihrer Azure-fremden Computer zu Azure Security Center ist die Verwendung von [Servern mit Azure Arc-Unterstützung](../azure-arc/servers/overview.md).
 
-Ein Computer mit Servern mit Azure Arc-Unterstützung wird zu einer Azure-Ressource und wird in Security Center wie Ihre anderen Azure-Ressourcen mit Empfehlungen angezeigt.
+Ein Computer mit Servern mit Azure Arc-Unterstützung wird zu einer Azure-Ressource und – wenn Sie den Log Analytics-Agent darauf installiert haben – in Security Center wie Ihre anderen Azure-Ressourcen mit Empfehlungen angezeigt.
 
-Außerdem bieten Server mit Azure Arc-Unterstützung erweiterte Funktionen, wie z. B. die Möglichkeit, Gastkonfigurationsrichtlinien auf dem Computer zu aktivieren, den Log Analytics-Agent als Erweiterung bereitzustellen, die Bereitstellung mit anderen Azure-Diensten zu vereinfachen usw. Einen Überblick über die Vorteile finden Sie unter [Unterstützte Szenarien](../azure-arc/servers/overview.md#supported-scenarios).
+Außerdem bieten Server mit Azure Arc-Unterstützung erweiterte Funktionen, wie z. B. die Möglichkeit, Gastkonfigurationsrichtlinien auf dem Computer zu aktivieren, die Bereitstellung mit anderen Azure-Diensten zu vereinfachen usw. Einen Überblick über die Vorteile finden Sie unter [Unterstützte Szenarien](../azure-arc/servers/overview.md#supported-scenarios).
+
+> [!NOTE]
+> Die Tools zur automatischen Bereitstellung von Security Center, mit denen der Log Analytics-Agent bereitgestellt werden kann, bieten keine Unterstützung für Computer mit Azure Arc. Wenn Sie Ihre Computer mit Azure Arc verbunden haben, befolgen Sie die entsprechende Security Center-Empfehlung für die Agent-Bereitstellung, und profitieren Sie von den umfassenden Schutzfunktionen, die Security Center bietet:
+>
+> - [Der Log Analytics-Agent sollte auf Ihren Azure Arc-Computern unter Linux installiert sein](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/720a3e77-0b9a-4fa9-98b6-ddf0fd7e32c1)
+> - [Der Log Analytics-Agent sollte auf Ihren Azure Arc-Computern unter Windows installiert sein](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/27ac71b1-75c5-41c2-adc2-858f5db45b08)
 
 Erfahren Sie mehr über [Server mit Azure Arc-Unterstützung](../azure-arc/servers/overview.md).
 
@@ -44,7 +50,7 @@ Erfahren Sie mehr über [Server mit Azure Arc-Unterstützung](../azure-arc/serve
 - Informationen zum Herstellen einer Verbindung zwischen mehreren Computern und Servern mit Arc-Unterstützung im großen Stil finden Sie unter [Verbinden von Hybridcomputern mit Azure im großen Stil](../azure-arc/servers/onboard-service-principal.md).
 
 > [!TIP]
-> Wenn Sie unter AWS ausgeführte Computer integrieren, verarbeitet der Security Center-Connector für AWS die Azure Arc-Bereitstellung transparent für Sie. Weitere Informationen finden Sie unter [Verbinden Ihrer AWS-Konten mit Azure Security Center](quickstart-onboard-aws.md).
+> Wenn Sie unter Amazon Web Services (AWS) ausgeführte Computer integrieren, verarbeitet der Security Center-Connector für AWS die Azure Arc-Bereitstellung transparent für Sie. Weitere Informationen finden Sie unter [Verbinden Ihrer AWS-Konten mit Azure Security Center](quickstart-onboard-aws.md).
 
 ::: zone-end
 

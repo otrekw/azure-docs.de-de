@@ -4,53 +4,78 @@ description: Dieser Artikel beschreibt, wie Sie ein Event Grid-Thema auf einem K
 author: jfggdl
 ms.subservice: kubernetes
 ms.author: jafernan
-ms.date: 05/25/2021
+ms.date: 06/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: d29583cecb1498c10320a844923067a48693480a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 5060d8e3022d98c31d11ea570555b7c5bba3d062
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030303"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415640"
 ---
 # <a name="route-cloud-events-to-webhooks-with-azure-event-grid-on-kubernetes"></a>Weiterleiten von Cloudereignissen an Webhooks mit Azure Event Grid auf Kubernetes
 In diesem Schnellstart erstellen Sie ein Thema im Event Grid auf Kubernetes, ein Abonnement für das Thema und senden dann ein Beispielereignis an das Thema, um das Szenario zu testen. 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 1. [Verbinden Sie Ihren Kubernetes-Cluster mit Azure Arc](../../azure-arc/kubernetes/quickstart-connect-cluster.md).
 1. [Installieren der Azure Event-Grid-Erweiterung auf dem Kubernetes-Cluster](install-k8s-extension.md). Diese Erweiterung stellt Event Grid in einem Kubernetes-Cluster bereit. 
-1. [Erstellen eines benutzerdefinierten Speicherorts](../../azure-arc/kubernetes/custom-locations.md). Ein benutzerdefinierter Speicherort stellt einen Namespace im Cluster dar und ist die Stelle, an der Themen und Ereignisabonnements bereitgestellt werden.
+
+
+## <a name="create-a-custom-location"></a>Erstellen eines benutzerdefinierten Standorts
+Als Azure-Standorterweiterung können Sie mit einem benutzerdefinierten Standort Ihren Kubernetes-Cluster mit Azure Arc-Unterstützung als Zielstandort für die Bereitstellung von Ressourcen wie Event Grid-Themen verwenden. Ein benutzerdefinierter Speicherort stellt einen Namespace im Cluster dar und ist die Stelle, an der Themen und Ereignisabonnements bereitgestellt werden. In diesem Abschnitt erstellen Sie einen benutzerdefinierten Standort. 
+
+1. Deklarieren Sie die folgenden Variablen für die Namenswerte des Azure Arc-Clusters, der Ressourcengruppe und des benutzerdefinierten Standorts. Kopieren Sie diese Anweisungen in einen Editor, ersetzen Sie die Werte, kopieren Sie die Inhalte, und fügen Sie diese in das Bash-Fenster ein.  
+
+    ```azurecli-interactive
+    resourcegroupname="<AZURE RESOURCE GROUP NAME>"
+    arcclustername="<AZURE ARC CLUSTER NAME>"
+    customlocationname="<CUSTOM LOCATION NAME>"
+    ```
+1. Rufen Sie die Ressourcen-ID des mit Azure Arc verbundenen Clusters ab. Aktualisieren Sie die Werte für den Azure Arc-Clusternamen und Ressourcengruppenparameter, bevor Sie den Befehl ausführen. 
+
+    ```azurecli-interactive
+    hostresourceid=$(az connectedk8s show -n $arcclustername -g $resourcegroupname --query id -o tsv)    
+    ```
+1. Rufen Sie die Event Grid-Erweiterungsressourcen-ID ab. In diesem Schritt wird davon ausgegangen, dass Sie der Event Grid-Erweiterung den Namen **eventgrid-ext** zugewiesen haben. Aktualisieren Sie die Namen des Azure Arc-Clusters und der Ressourcengruppen, bevor Sie den Befehl ausführen. 
+
+    ```azurecli-interactive
+    clusterextensionid=$(az k8s-extension show --name eventgrid-ext --cluster-type connectedClusters -c $arcclustername -g $resourcegroupname  --query id -o tsv)    
+    ```
+1. Erstellen Sie einen benutzerdefinierten Standort mit den beiden oben genannten Werten. Aktualisieren Sie die Namen des benutzerdefinierten Standorts und der Ressourcengruppen, bevor Sie den Befehl ausführen. 
+
+    ```azurecli-interactive
+    az customlocation create -n $customlocationname -g $resourcegroupname --namespace arc --host-resource-id $hostresourceid --cluster-extension-ids $clusterextensionid    
+    ```
+1. Rufen Sie die Ressourcen-ID des benutzerdefinierten Standorts ab. Aktualisieren Sie den Namen des benutzerdefinierten Standorts, bevor Sie den Befehl ausführen. 
+
+    ```azurecli-interactive
+    customlocationid=$(az customlocation show -n $customlocationname -g $resourcegroupname --query id -o tsv)    
+    ```
+
+    Weitere Informationen zum Erstellen von benutzerdefinierten Standorten finden Sie unter [Erstellen und Verwalten von benutzerdefinierten Standorten in Kubernetes-Clustern mit Azure Arc-Unterstützung](../../azure-arc/kubernetes/custom-locations.md). 
 
 ## <a name="create-a-topic"></a>Erstellen eines Themas
+In diesem Abschnitt erstellen Sie ein Thema am benutzerdefinierten Standort, den Sie im vorherigen Schritt erstellt haben. Aktualisieren Sie die Namen der Ressourcengruppen und Event Grid-Themen, bevor Sie den Befehl ausführen. Aktualisieren Sie den Standort, wenn Sie einen anderen Standort als „USA, Osten“ verwenden. 
 
-### <a name="azure-cli"></a>Azure CLI
-Führen Sie den folgenden Azure CLI-Befehl aus, um ein Thema zu erstellen:
+1. Deklarieren Sie eine Variable für den Namen des Themas. 
 
-```azurecli-interactive
-az eventgrid topic create --name <EVENT GRID TOPIC NAME> \
-                        --resource-group <RESOURCE GROUP NAME> \
-                        --location <REGION> \
-                        --kind azurearc \
-                        --extended-location-name /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.ExtendedLocation/customLocations/<CUSTOM LOCATION NAME> \
-                        --extended-location-type customlocation \
-                        --input-schema CloudEventSchemaV1_0
-```
-Geben Sie Werte für die Platzhalter an, bevor Sie den Befehl ausführen:
-- Name der Azure-Ressourcengruppe, in der das Event Grid-Thema erstellt werden soll. 
-- Namen des Themas. 
-- Region des Themas.
-- Geben Sie in der Ressourcen-ID des benutzerdefinierten Speicherorts die folgenden Werte an:
-    - ID des Azure-Abonnements, in dem der benutzerdefinierte Speicherort vorhanden ist.
-    - Der Name der Ressourcengruppe, die den benutzerdefinierten Speicherort enthält.
-    - Namen des benutzerdefinierten Standorts
+    ```azurecli-interactive
+    topicname="<TOPIC NAME>"
+    ```
+4. Führen Sie den folgenden Befehl aus, um das Thema zu erstellen. 
 
-Weitere Informationen zum CL-Befehl finden Sie unter [`az eventgrid topic create`](/cli/azure/eventgrid/topic#az_eventgrid_topic_create).
+    ```azurecli-interactive
+    az eventgrid topic create -g $resourcegroupname --name $topicname --kind azurearc --extended-location-name $customlocationid --extended-location-type customlocation --input-schema CloudEventSchemaV1_0 --location $region    
+    ```
+
+    Weitere Informationen zum CL-Befehl finden Sie unter [`az eventgrid topic create`](/cli/azure/eventgrid/topic#az_eventgrid_topic_create).
 
 ## <a name="create-a-message-endpoint"></a>Erstellen eines Nachrichtenendpunkts
+
 Erstellen Sie zunächst einen Endpunkt für die Ereignisnachricht, bevor Sie ein Abonnement für das benutzerdefinierte Thema erstellen. Der Endpunkt führt in der Regel Aktionen auf der Grundlage der Ereignisdaten aus. Der Einfachheit halber stellen Sie in dieser Schnellstartanleitung eine [vorgefertigte Web-App](https://github.com/Azure-Samples/azure-event-grid-viewer) bereit, die die Ereignisnachrichten anzeigt. Die bereitgestellte Lösung umfasst einen App Service-Plan, eine App Service-Web-App und Quellcode von GitHub.
 
 1. Wählen Sie auf der Artikelseite **Deploy to Azure** (In Azure bereitstellen) aus, um die Lösung für Ihr Abonnement bereitzustellen. Geben Sie im Azure-Portal Werte für die Parameter an.
@@ -66,38 +91,26 @@ Erstellen Sie zunächst einen Endpunkt für die Ereignisnachricht, bevor Sie ein
 ## <a name="create-a-subscription"></a>Erstellen eines Abonnements
 Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröffentlicht werden. Zum Empfang von Ereignissen müssen Sie ein Event Grid-Abonnement für das gewünschte Thema erstellen. Ein Event-Abonnement definiert das Ziel, an das diese Ereignisse gesendet werden. Informationen zu allen unterstützten Zielen oder Handlern finden Sie unter [Ereignishandler](event-handlers.md).
 
-
-### <a name="azure-cli"></a>Azure CLI
-Um ein Ereignisabonnement mit einem WebHook (HTTPS-Endpunkt) zu erstellen, führen Sie den folgenden Azure CLI-Befehl aus:
+Geben Sie zum Erstellen eines Ereignisabonnements mit einem Webhook-Ziel (HTTPS-Endpunkt) einen Namen für das Ereignisabonnement ein, aktualisieren Sie den Namen der Website, und führen Sie den folgenden Befehl aus.
 
 ```azurecli-interactive
-az eventgrid event-subscription create --name <EVENT SUBSCRIPTION NAME> \
-                                    --source-resource-id /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<TOPIC'S RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<TOPIC NAme> \
-                                    --endpoint https://<SITE NAME>.azurewebsites.net/api/updates
+topicid=$(az eventgrid topic show --name $topicname --resource-group $resourcegroupname --query id -o tsv)
+az eventgrid event-subscription create --name <EVENT SUBSCRIPTION NAME> --source-resource-id $topicid --endpoint https://<SITE NAME>.azurewebsites.net/api/updates
 ```
 
-Geben Sie Werte für die Platzhalter an, bevor Sie den Befehl ausführen:
-- Name des Ereignisabonnements. 
 
-- Geben Sie in der **Ressourcen-ID des Themas** die folgenden Werte an:
-    - ID des Azure-Abonnements, in dem das Abonnement erstellt werden soll. 
-    - Name der Ressourcengruppe, die das Thema enthält.
-    - Name des Themas. 
-- Geben Sie für den Endpunkt den Namen der Event Grid Viewer-Website an.
-    
 Weitere Informationen zum CL-Befehl finden Sie unter [`az eventgrid event-subscription create`](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create).
-
 
 ## <a name="send-events-to-the-topic"></a>Ereignisse an das Thema senden
 1. Führen Sie den folgenden Befehl aus, um den **Endpunkt** für das Thema abzurufen: Aktualisieren Sie nach dem Kopieren und Einfügen des Befehls den Namen des Themas (**topic name**) und den Namen der Ressourcengruppe (**resource group name**), bevor Sie den Befehl ausführen. Sie veröffentlichen Beispielereignisse in diesem Themenendpunkt. 
 
     ```azurecli
-    az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv
+    az eventgrid topic show --name $topicname -g $resourcegroupname --query "endpoint" --output tsv
     ```
 2. Führen Sie den folgenden Befehl aus, um den **Schlüssel** für das benutzerdefinierte Thema abzurufen: Aktualisieren Sie nach dem Kopieren und Einfügen des Befehls den Namen des Themas (**topic name**) und den Namen der Ressourcengruppe (**resource group name**), bevor Sie den Befehl ausführen. Das ist der Primärschlüssel des Themas. Um diesen Schlüssel aus dem Azure-Portal abzurufen, wechseln Sie zur Registerkarte **Zugriffsschlüssel** der Seite **Event Grid-Thema**. Um ein Ereignis in einem benutzerdefinierten Thema bereitstellen zu können, benötigen Sie den Zugriffsschlüssel. 
 
     ```azurecli
-    az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv
+    az eventgrid topic key list --name $topicname -g $resourcegroupname --query "key1" --output tsv
     ```
 1. Führen Sie den folgenden **Curl**-Befehl aus, um das Ereignis zu posten. Geben Sie die Endpunkt-URL und den Schlüssel aus Schritt 1 und 2 an, bevor Sie den Befehl ausführen. 
 
@@ -125,24 +138,15 @@ Weitere Informationen zum CL-Befehl finden Sie unter [`az eventgrid event-subscr
     
         ```yml
         apiVersion: v1
-        dnsPolicy: ClusterFirstWithHostNet
-        hostNetwork: true
         kind: Pod
-        metadata: 
-          name: test-pod
-        spec: 
-          containers: 
-            - 
-              name: nginx
-          emptyDir: {}
-          image: nginx
-          volumeMounts: 
-            - 
-              mountPath: /usr/share/nginx/html
-              name: shared-data
-          volumes: 
-            - 
-              name: shared-data  
+        metadata:
+            name: test-pod2
+        spec:
+            containers:
+              - name: nginx
+                image: nginx
+            hostNetwork: true
+            dnsPolicy: ClusterFirstWithHostNet       
         ```
     1. Erstellen Sie den Pod.
         ```bash

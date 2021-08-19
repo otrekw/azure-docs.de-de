@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 55cd7c86ae4f0110618745459cea48abe5e144d0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 75b818382102642ecc8380b257c9c31382b8283d
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084572"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588415"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen IoT-Gatewaygerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -30,8 +30,14 @@ Neben der Kommunikation von nachgeschalteten Geräten mit Ihrer IoT Central-Anw
 * Reagieren auf die Aktualisierung einer schreibbaren Eigenschaft durch einen Bediener. Ein Bediener kann beispielsweise das Sendeintervall für Telemetriedaten ändern.
 * Reagieren auf Befehle (beispielsweise Neustarten des Geräts)
 
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
+
 > [!div class="checklist"]
-> Erstellen von Vorlagen für nachgeschaltete Geräte Erstellen einer Gatewaygerätevorlage Veröffentlichen der Gerätevorlage Erstellen der simulierten Geräte
+>
+> * Erstellen von Vorlagen für nachgeschaltete Geräte
+> * Erstellen einer Gatewaygerätevorlage
+> * Veröffentlichen der Gerätevorlage
+> * Erstellen der simulierten Geräte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -92,7 +98,6 @@ So fügen Sie Ihrer Anwendung eine neue Gatewaygerätevorlage hinzu:
 
 1. Wählen Sie **Speichern** aus.
 
-
 ### <a name="add-relationships"></a>Hinzufügen von Beziehungen
 
 Als Nächstes fügen Sie den Vorlagen für die nachgeschalteten Geräte Beziehungen hinzu:
@@ -129,7 +134,7 @@ So fügen Sie der Vorlage **Smart Building gateway device** Cloudeigenschaften h
 Als Ersteller können Sie die Anwendung so anpassen, dass relevante Informationen zum Umgebungssensorgerät einem Bediener angezeigt werden. Ihre Anpassungen ermöglichen dem Bediener die Verwaltung des mit der Anwendung verbundenen Umgebungssensors. Sie können zwei Arten von Ansichten erstellen, die von einem Bediener zum Interagieren mit Geräten verwendet werden:
 
 * Formulare zum Anzeigen und Bearbeiten von Geräte- und Cloudeigenschaften
-* Dashboards zum Visualisieren von Geräten
+* Ansichten zum Visualisieren von Geräten.
 
 So generieren Sie die Standardansichten für die Vorlage **Smart Building gateway device**:
 
@@ -207,6 +212,33 @@ Beide simulierten nachgeschalteten Geräte sind nun mit Ihrem simulierten Gatewa
 
 ![Ansicht „Nachgeschaltete Geräte“](./media/tutorial-define-gateway-device-type/downstream-device-view.png)
 
+## <a name="connect-real-downstream-devices"></a>Verbinden von realen nachgeschalteten Geräten
+
+Anhand des Beispielcodes im Tutorial [Erstellen und Verbinden einer Clientanwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md) sehen Sie, wie Sie die Modell-ID aus der Gerätevorlage in die vom Gerät gesendeten Bereitstellungsnutzdaten einfügen. Über die Modell-ID kann IoT Central dem Gerät die richtige Gerätevorlage zuordnen. Beispiel:
+
+```python
+async def provision_device(provisioning_host, id_scope, registration_id, symmetric_key, model_id):
+  provisioning_device_client = ProvisioningDeviceClient.create_from_symmetric_key(
+    provisioning_host=provisioning_host,
+    registration_id=registration_id,
+    id_scope=id_scope,
+    symmetric_key=symmetric_key,
+  )
+
+  provisioning_device_client.provisioning_payload = {"modelId": model_id}
+  return await provisioning_device_client.register()
+```
+
+Wenn Sie eine Verbindung mit einem nachgeschalteten Gerät herstellen, können Sie die Bereitstellungsnutzdaten so ändern, dass sie die ID des Gatewaygeräts enthalten. Über die Modell-ID kann IoT Central dem Gerät die richtige Vorlage des nachgeschalteten Geräts zuordnen. Mit der Gateway-ID kann IoT Central die Beziehung zwischen dem nachgeschalteten Gerät und dem Gateway einrichten. In diesem Fall sehen die vom Gerät gesendeten Bereitstellungsnutzdaten wie der folgende JSON-Code aus:
+
+```json
+{
+  "modelId": "dtmi:rigado:S1Sensor;2",
+  "iotcGateway":{
+    "iotcGatewayId": "gateway-device-001"
+  }
+}
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

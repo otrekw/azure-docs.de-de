@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 06a42629df1f22eeb7a90ef5ce4da2ef53162391
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 970329753d6dd6c6175c26da4288c304e27e3982
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123157"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237622"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Tutorial: Verbessern der Einhaltung gesetzlicher Vorschriften
 
@@ -51,17 +51,17 @@ Verwenden Sie das Dashboard zur Einhaltung gesetzlicher Bestimmungen, um sich au
 
     Im oberen Bildschirmbereich befindet sich ein Dashboard mit einer Übersicht über Ihren Konformitätsstatus mit den unterstützten Bestimmungen. Es sind Ihr Gesamtstatus der Konformität und die Anzahl von bestandenen und nicht bestandenen Bewertungen der einzelnen Standards angegeben.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Dashboard für die Einhaltung gesetzlicher Bestimmungen" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Dashboard für die Einhaltung gesetzlicher Bestimmungen." lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 1. Wählen Sie eine Registerkarte für einen Konformitätsstandard aus, der für Sie relevant ist (1). Sie sehen, auf welche Abonnements der Standard angewendet wird (2), und die Liste mit allen Kontrollen für den Standard (3) wird angezeigt. Sie können für eine Kontrolle jeweils die Details zu den bestandenen und nicht bestandenen Bewertungen (4) sowie die Anzahl betroffener Ressourcen (5) anzeigen. Einige Kontrollen sind abgeblendet. Diesen Kontrollen sind keine Security Center-Bewertungen zugeordnet. Überprüfen Sie deren Anforderungen, und bewerten Sie sie in Ihrer Umgebung. Einige sind möglicherweise prozessbezogen und nicht technischer Art.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="Erkunden der Compliancedetails für einen bestimmten Standard":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="Erkunden der Compliancedetails für einen bestimmten Standard.":::
 
 1. Wählen Sie **Bericht herunterladen** aus, um einen PDF-Bericht mit einer Zusammenfassung Ihres aktuellen Compliancestatus für einen bestimmten Standard zu generieren.
 
     Der Bericht enthält eine allgemeine Zusammenfassung des Konformitätsstatus für den ausgewählten Standard auf der Grundlage von Security Center-Bewertungsdaten. Der Bericht ist nach den Kontrollen dieses bestimmten Standards strukturiert. Der Bericht kann an Stakeholder weitergegeben und als Nachweis bei internen und externen Prüfungen genutzt werden.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="Herunterladen des Berichts zur Compliance":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="Herunterladen des Berichts zur Compliance.":::
 
 ## <a name="improve-your-compliance-posture"></a>Verbessern Ihres Konformitätsstatus
 
@@ -71,11 +71,11 @@ Verbessern Sie mit den Informationen im Dashboard für die Einhaltung gesetzlich
 
 1.  Wählen Sie eine bestimmte Ressource aus, um weitere Details anzuzeigen und die Ursache der Empfehlung für diese Ressource zu beheben. <br>Wählen Sie unter dem Standard **Azure CIS 1.1.0** beispielsweise die Empfehlung **Datenträgerverschlüsselung sollte auf virtuelle Computer angewendet werden** aus.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="Auswahl einer Empfehlung aus einem Standard führt direkt zur Seite mit den Details der Empfehlung":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="Auswahl einer Empfehlung aus einem Standard führt direkt zur Seite mit den Details der Empfehlung.":::
 
 1. Wenn Sie in diesem Beispiel auf der Seite mit den Empfehlungsdetails die Option **Aktion ausführen** auswählen, gelangen Sie zu den Azure Virtual Machine-Seiten im Azure-Portal. Hier können Sie die Verschlüsselung auf der Registerkarte **Sicherheit** aktivieren:
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="Schaltfläche „Aktion ausführen“ auf der Seite mit den Details zur Empfehlung führt zu den Lösungsoptionen":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="Schaltfläche „Aktion ausführen“ auf der Seite mit den Details zur Empfehlung führt zu den Lösungsoptionen.":::
 
     Weitere Informationen zur Anwendung der Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 
@@ -93,15 +93,15 @@ Verwenden Sie die Daten des fortlaufenden Exports an eine Azure Event Hub-Instan
 
 - Exportieren Sie alle Daten, die für die Einhaltung der gesetzlichen Vorgaben relevant sind, als **kontinuierlichen Datenstrom**:
 
-    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-stream.png" alt-text="Fortlaufender Export von Daten zur Einhaltung gesetzlicher Bestimmungen" lightbox="media/security-center-compliance-dashboard/export-compliance-data-stream.png":::
+    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-stream.png" alt-text="Fortlaufender Export von Daten zur Einhaltung gesetzlicher Bestimmungen." lightbox="media/security-center-compliance-dashboard/export-compliance-data-stream.png":::
 
 - Exportieren Sie **wöchentliche Momentaufnahmen** Ihrer Daten zur Einhaltung gesetzlicher Bestimmungen:
 
-    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png" alt-text="Fortlaufender Export einer wöchentlichen Momentaufnahme mit Daten zur Einhaltung gesetzlicher Bestimmungen" lightbox="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png":::
+    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png" alt-text="Fortlaufender Export einer wöchentlichen Momentaufnahme mit Daten zur Einhaltung gesetzlicher Bestimmungen." lightbox="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png":::
 
 Sie können auch direkt aus dem Dashboard für die Einhaltung gesetzlicher Bestimmungen einen **PDF-/CSV-Bericht** mit Ihren Konformitätsdaten exportieren:
 
-:::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-report.png" alt-text="Exportieren Ihrer Daten für die Einhaltung gesetzlicher Bestimmungen als PDF- oder CSV-Bericht" lightbox="media/security-center-compliance-dashboard/export-compliance-data-report.png":::
+:::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-report.png" alt-text="Exportieren Ihrer Daten für die Einhaltung gesetzlicher Bestimmungen als PDF- oder CSV-Bericht." lightbox="media/security-center-compliance-dashboard/export-compliance-data-report.png":::
 
 Weitere Informationen finden Sie unter [Fortlaufendes Exportieren von Security Center-Daten](continuous-export.md).
 
@@ -168,7 +168,7 @@ Um das Dashboard für die Einhaltung gesetzlicher Bestimmungen verwenden zu kön
 ### <a name="how-can-i-view-a-report-of-passing-and-failing-controls-per-standard-in-my-dashboard"></a>Wie kann ich einen nach Standard aufgeschlüsselten Bericht über bestandene und nicht bestandene Kontrollen auf meinem Dashboard anzeigen?
 Auf dem Hauptdashboard können Sie einen Bericht über bestandene und nicht bestandene Kontrollen für (1) die Top 4 der niedrigsten Konformitätsstandards auf dem Dashboard erstellen. Wenn Sie den Status aller bestandenen/nicht bestandenen Kontrollen anzeigen möchten, wählen Sie (2) **Alle *x* anzeigen** aus, wobei „x“ die Anzahl der nachverfolgten Standards ist. Auf einer Kontextebene wird der Konformitätsstatus für jeden nachverfolgten Standard angezeigt.
 
-:::image type="content" source="media/security-center-compliance-dashboard/summaries-of-compliance-standards.png" alt-text="Zusammenfassungsabschnitt des Dashboards für die Einhaltung gesetzlicher Bestimmungen":::
+:::image type="content" source="media/security-center-compliance-dashboard/summaries-of-compliance-standards.png" alt-text="Zusammenfassungsabschnitt des Dashboards für die Einhaltung gesetzlicher Bestimmungen.":::
 
 
 ### <a name="how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf"></a>Wie kann ich einen Bericht mit Konformitätsdaten in einem PDF-fremden Format herunterladen?
