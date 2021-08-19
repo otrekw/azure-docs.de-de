@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 07/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 38259febaed159217379ba131fb2bffb808e65e7
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 3c3b2bc20481da45bd9345f7668382521642a074
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838145"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221280"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Pro mit GPU
 
@@ -67,12 +67,13 @@ Führen Sie diese Schritte aus, um das Netzwerk für Ihr Gerät zu konfigurieren
 
     Beachten Sie Folgendes, wenn Sie Netzwerkeinstellungen konfigurieren:
 
-   * Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. IP-Adresse, Subnetz, Gateway und DNS werden automatisch zugewiesen.
-   * Wenn DHCP nicht aktiviert ist, können Sie bei Bedarf statische IP-Adressen zuweisen.
-   * Sie können die Netzwerkschnittstelle als IPv4 konfigurieren.
-   * Für die 25-GBit/s-Schnittstellen können Sie den RDMA-Modus (Remote Direct Access Memory) auf iWarp oder RoCE (RDMA over Converged Ethernet) festlegen. Wenn niedrige Latenz die Hauptanforderung ist und Skalierbarkeit keine Rolle spielt, wählen Sie RoCE. Wenn Latenz eine Hauptanforderung ist, aber auch Benutzerfreundlichkeit und Skalierbarkeit hohe Priorität haben, ist iWARP die beste Wahl.
-   * Der NIC-Teamvorgang (Network Interface Card, Netzwerkadapter) oder Linkaggregation wird bei Azure Stack Edge nicht unterstützt. 
-   * Die Seriennummer eines beliebigen Ports entspricht der Seriennummer des Knotens.
+    * Stellen Sie sicher, dass Port 5 und Port 6 für Bereitstellungen des Netzwerkfunktions-Managers verbunden sind. Weitere Informationen finden Sie unter [Tutorial: Bereitstellen von Netzwerkfunktionen in Azure Stack Edge (Vorschau)](../network-function-manager/deploy-functions.md).
+    * Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. IP-Adresse, Subnetz, Gateway und DNS werden automatisch zugewiesen.
+    * Wenn DHCP nicht aktiviert ist, können Sie bei Bedarf statische IP-Adressen zuweisen.
+    * Sie können die Netzwerkschnittstelle als IPv4 konfigurieren.
+    * Für die 25-GBit/s-Schnittstellen können Sie den RDMA-Modus (Remote Direct Access Memory) auf iWarp oder RoCE (RDMA over Converged Ethernet) festlegen. Wenn niedrige Latenz die Hauptanforderung ist und Skalierbarkeit keine Rolle spielt, wählen Sie RoCE. Wenn Latenz eine Hauptanforderung ist, aber auch Benutzerfreundlichkeit und Skalierbarkeit hohe Priorität haben, ist iWARP die beste Wahl.
+    * Der NIC-Teamvorgang (Network Interface Card, Netzwerkadapter) oder Linkaggregation wird bei Azure Stack Edge nicht unterstützt. 
+    * Die Seriennummer eines beliebigen Ports entspricht der Seriennummer des Knotens.
 
     Sobald das Gerätenetz konfiguriert ist, wird die Seite wie unten dargestellt aktualisiert.
 
@@ -110,7 +111,7 @@ Befolgen Sie diese Schritte, um Compute zu aktivieren und das Computenetzwerk zu
 1. Weisen Sie **externe Dienst-IP-Adressen für Kubernetes** zu. Dies sind auch die IP-Adressen für den Lastenausgleich. Diese zusammenhängenden IP-Adressen sind für Dienste, die Sie außerhalb des Kubernetes-Clusters verfügbar machen möchten. Sie legen den statischen IP-Adressenbereich abhängig von der Anzahl der verfügbar gemachten Dienste fest. 
     
     > [!IMPORTANT]
-    > Es wird dringend empfohlen, mindestens eine IP-Adresse für den Azure Stack Edge Pro-Hubdienst anzugeben, um auf Computemodule zugreifen zu können. Sie können dann optional zusätzliche IP-Adressen für andere Dienste/IoT Edge-Module (eine pro Dienst/Modul) angeben, auf die von außerhalb des Clusters zugegriffen werden muss. Die IP-Adressen des Diensts können später aktualisiert werden. 
+    > Es wird ausdrücklich empfohlen, mindestens eine IP-Adresse für den Azure Stack Edge Hub-Dienst anzugeben, um auf Computemodule zugreifen zu können. Sie können dann optional zusätzliche IP-Adressen für andere Dienste/IoT Edge-Module (eine pro Dienst/Modul) angeben, auf die von außerhalb des Clusters zugegriffen werden muss. Die IP-Adressen des Diensts können später aktualisiert werden. 
     
 1. Wählen Sie **Übernehmen**.
 
