@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 07/06/2021
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Textübersetzung, Übersetzerdienst, Text übersetzen, Text transkribieren, Sprachenerkennung
-ms.openlocfilehash: 6d10b954bbb5663d5e63f4b38fc49d8a3953f10a
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 10e879df320d527ab6c853a03e9eb49d1b4d50de
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537557"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355884"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Schnellstart: Erste Schritte mit der Textübersetzung
 
@@ -33,8 +33,11 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie den Textübersetzungsdiens
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services/)
 * Sobald Sie über ein Azure-Abonnement verfügen, erstellen Sie eine [Textübersetzungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten. Wählen Sie nach Abschluss der Bereitstellung **Zu Ressource wechseln** aus.
-  * Sie benötigen den Schlüssel und Endpunkt der Ressource, um Ihre Anwendung mit dem Textübersetzungsdienst zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
-  * Sie können den kostenlosen Tarif (F0) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
+  * Sie benötigen den Schlüssel und Endpunkt der Ressource, um Ihre Anwendung mit dem Textübersetzungsdienst zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt. Diese Werte sind im Azure-Portal auf der Seite **Schlüssel und Endpunkt** aufgeführt:
+
+    :::image type="content" source="media/keys-and-endpoint-portal.png" alt-text="Screenshot: Seite mit Schlüsseln und Endpunkt im Azure-Portal.":::
+
+* Sie können den kostenlosen Tarif (F0) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
 
 ## <a name="platform-setup"></a>Plattformeinrichtung
 
@@ -2820,9 +2823,19 @@ Nach einem erfolgreichen Aufruf sollten Sie die folgende Antwort sehen. Weitere 
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
+### <a name="common-http-status-codes"></a>Allgemeine HTTP-Statuscodes
+
+| HTTP-Statuscode | BESCHREIBUNG | Mögliche Ursache |
+|------------------|-------------|-----------------|
+| 200 | OK | Die Anforderung wurde erfolgreich gesendet. |
+| 400 | Ungültige Anforderung | Ein erforderlicher Parameter fehlt, ist leer oder Null. Oder der an einen erforderlichen oder optionalen Parameter übergebene Wert ist ungültig. Ein häufiges Problem sind zu lange Kopfzeilen. |
+| 401 | Nicht autorisiert | Die Anforderung ist nicht autorisiert. Stellen Sie sicher, dass Ihr Abonnementschlüssel oder -token gültig ist und sich in der richtigen Region befindet. *Siehe auch* [Authentifizierung](reference/v3-0-reference.md#authentication).|
+| 429 | Zu viele Anforderungen | Sie haben das Kontingent oder die Rate der Anforderungen überschritten, das bzw. die für Ihr Abonnement zulässig ist. |
+| 502 | Ungültiges Gateway    | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
+
 ### <a name="java-users"></a>Java-Benutzer
 
-Wenn Verbindungsprobleme auftreten, ist möglicherweise das SSL-Zertifikat abgelaufen. Installieren Sie zum Beheben dieses Problems [DigiCertGlobalRootG2.crt](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) im privaten Speicher. 
+Wenn Verbindungsprobleme auftreten, ist möglicherweise das SSL-Zertifikat abgelaufen. Installieren Sie zum Beheben dieses Problems [DigiCertGlobalRootG2.crt](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) im privaten Speicher.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

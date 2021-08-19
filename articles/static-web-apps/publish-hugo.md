@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/11/2021
 ms.author: aapowell
-ms.openlocfilehash: 5257d57221e946ac63559b324e7032e1ba78041e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cc117859c911d9b2c1df6c03fc6cd9738e5de1ec
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069650"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988317"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps"></a>Tutorial: Veröffentlichen einer Hugo-Website in Azure Static Web Apps
 
@@ -56,7 +56,13 @@ Erstellen Sie mithilfe der Hugo-Befehlszeilenschnittstelle (Command Line Interfa
 1. Initialisieren Sie ein Git-Repository.
 
    ```bash
-    git init
+   git init
+   ```
+
+1. Stellen Sie sicher, dass der Name Ihres Branches `main` lautet.
+
+   ```bash
+   git branch -M main
    ```
 
 1. Fügen Sie als Nächstes der Website ein Design hinzu, indem Sie ein Design als Git-Submodul installieren und es dann in der Hugo-Konfigurationsdatei angeben.
@@ -156,7 +162,7 @@ jobs:
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
