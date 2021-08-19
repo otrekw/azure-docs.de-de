@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: b30fee5d269a633173b8524ed6c902517063b2a2
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: d4139ddc0d0befce228e18a65ecfb83065c740dc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985992"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443157"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Schnellstart: Ausführen des Onboardings für Azure Sentinel
 
@@ -26,7 +26,7 @@ Wenn Sie Azure Sentinel integrieren wollen, müssen Sie Azure Sentinel zuerst ak
 Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von professionell erstellten Arbeitsmappen zur Anzeige der Erkenntnisse, die Sie aus Ihren Daten gewinnen, zur Auswahl. Diese Arbeitsmappen können einfach an Ihre Anforderungen angepasst werden.
 
 >[!IMPORTANT] 
-> Informationen zu den Gebühren im Zusammenhang mit Azure Sentinel finden Sie unter [Azure Sentinel – Preise](https://azure.microsoft.com/pricing/details/azure-sentinel/).
+> Informationen zu den Gebühren im Zusammenhang mit Azure Sentinel finden Sie unter [Azure Sentinel – Preise](https://azure.microsoft.com/pricing/details/azure-sentinel/) und [Azure Sentinel – Kosten und Abrechnung](azure-sentinel-billing.md).
 
 ## <a name="global-prerequisites"></a>Globale Voraussetzungen
 
@@ -47,13 +47,20 @@ Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von profes
 
     | Geografisches Gebiet/Region des Arbeitsbereichs | Geografisches Gebiet/Region für von Azure Sentinel generierte Daten |
     | --- | --- |
-    | USA<br>Indien<br>Brasilien<br>Afrika<br>Korea<br>Vereinigte Arabische Emirate | USA |
-    | Europa<br>Frankreich<br>Schweiz | Europa |
+    | USA<br>Indien<br>Afrika | USA |
+    | Europa<br>Frankreich | Europa |
     | Australien | Australien |
     | United Kingdom | United Kingdom |
     | Canada | Canada |
     | Japan | Japan |
     | Asien, Südosten (Singapur) | Asien, Südosten (Singapur)* |
+    | Brasilien | Brasilien |
+    | Norwegen | Norwegen |
+    | Südafrika | Südafrika |
+    | Korea | Korea |
+    | Deutschland | Deutschland |
+    | Vereinigte Arabische Emirate | Vereinigte Arabische Emirate |
+    | Schweiz | Schweiz |
     |
     
     \* Für Asien, Südosten steht keine gekoppelte Region zur Verfügung.
@@ -103,7 +110,17 @@ Wenn Sie beispielsweise die Datenquelle **Azure Active Directory** auswählen, m
 Sobald Ihre Datenquellen verbunden wurden, beginnt das Streaming Ihrer Daten zu Azure Sentinel. Sie können dann mit der Arbeit mit Ihren Daten loslegen. Sie können die Protokolle in den [integrierten Arbeitsmappen](quickstart-get-visibility.md) anzeigen und mit der Erstellung von Abfragen in Log Analytics beginnen, um [die Daten zu untersuchen](tutorial-investigate-cases.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument haben Sie Informationen zum Onboarding und zur Verbindungsherstellung zwischen Datenquellen und Azure Sentinel erhalten. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
-- Streamen Sie Daten aus [CEF-Appliances (Common Event Format)](connect-common-event-format.md) an Azure Sentinel.
+
+Weitere Informationen finden Sie unter
+
+- **Alternative Bereitstellungsoptionen**:
+
+    - [Bereitstellen von Azure Sentinel über die API](/rest/api/securityinsights/)
+    - [Bereitstellen von Azure Sentinel über PowerShell](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0)
+    - [Bereitstellen von Azure Sentinel über eine ARM-Vorlage](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-all-in-one-accelerator/ba-p/1807933)
+
+- **Erste Schritte**:
+    - [Erste Schritte mit Azure Sentinel](quickstart-get-visibility.md)
+    - [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md)
+    - [Verbinden der externen Lösung mithilfe von Common Event Format](connect-common-event-format.md)
+

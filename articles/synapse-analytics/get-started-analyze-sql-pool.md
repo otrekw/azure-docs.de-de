@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 0def1f957842417c3936e3f1c7bb5bc023109818
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 56115e977603e1f2148f84569373dcf4d351e0c4
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536335"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113038208"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analysieren von Daten mit dedizierten SQL-Pools
 
@@ -94,7 +94,7 @@ Ein dedizierter SQL-Pool nutzt abrechenbare Ressourcen, solange er aktiv ist. Si
     )
     ```
 1. Klicken Sie auf die Schaltfläche „Ausführen“, um das Skript auszuführen.
-1. Dieses Skript wird weniger als 60 Sekunden abgeschlossen. Es lädt zwei Millionen Zeilen NYC Taxi-Daten in eine Tabelle mit dem Namen **dbo.Trip**.
+1. Dieses Skript wird weniger als 60 Sekunden abgeschlossen. Es lädt zwei Millionen Zeilen NYC Taxi-Daten in eine Tabelle mit dem Namen **dbo.NYCTaxiTripSmall**.
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Untersuchen der NYC Taxi-Daten im dedizierten SQL-Pool
 
