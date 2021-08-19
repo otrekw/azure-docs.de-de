@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: af0d01a20728d2332d4a8d71819f73baf68a65a4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 5875416b129305f95d0337278caf0af3bab2d488
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95998384"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221560"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Tutorial: Schritt-für-Schritt-Anleitung zum Erstellen einer neuen Android-App mit Azure Spatial Anchors
 
@@ -123,15 +123,27 @@ Führen Sie für Ihre App eine [erneute Bereitstellung](#trying-it-out) auf Ihre
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>Anfügen eines lokalen Azure-Raumankers
 
-Ergänzen Sie `Gradle Scripts\build.gradle (Module: app)` um den folgenden Eintrag. Mit diesem Code wird sichergestellt, dass Ihre App auf die Version 2.2.0 von Azure Spatial Anchors ausgerichtet ist. Es sollte aber auch funktionieren, wenn Sie auf eine der neueren Versionen von Azure Spatial Anchors verweisen. Die Versionshinweise finden Sie [hier](https://github.com/Azure/azure-spatial-anchors-samples/releases).
+Ergänzen Sie `Gradle Scripts\build.gradle (Module: app)` um den folgenden Eintrag. Dieser Beispielcodeausschnitt gilt für die SDK-Version 2.10.0 von Azure Spatial Anchors. Beachten Sie, dass die SDK-Version 2.7.0 die aktuell unterstützte Mindestversion ist. Der Verweis auf neuere Versionen von Azure Spatial Anchors sollte ebenfalls funktionieren. Es wird empfohlen, die neueste Version des Azure Spatial Anchors SDK zu verwenden. Die SDK-Versionshinweise finden Sie [hier](https://github.com/Azure/azure-spatial-anchors-samples/releases).
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.10.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.10.0]"
     ...
 }
+```
+
+Wenn Sie Azure Spatial Anchors SDK 2.10.0 oder höher als Ziel verwenden, fügen Sie den folgenden Eintrag in den Repositoryabschnitt der Datei „build.gradle“ Ihres Projekts ein. Dies umfasst die URL zum Maven-Paketfeed, der Android-Pakete für Azure Spatial Anchors für SDK 2.10.0 oder höher hostet: 
+```
+repositories {
+    ...
+    maven {
+        url 'https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Maven-packages/maven/v1'
+    }
+    ...
+}
+
 ```
 
 Klicken Sie mit der rechten Maustaste auf `app\java\<PackageName>`->**New**->**Java Class** (Neu > Java-Klasse). Legen Sie **Name** auf _MyFirstApp_ und **Superclass** (Übergeordnete Klasse) auf _android.app.Application_ fest. Lassen Sie die anderen Optionen unverändert. Klicken Sie auf **OK**. Eine Datei mit dem Namen `MyFirstApp.java` wird erstellt. Fügen Sie ihr den folgenden Import hinzu:
