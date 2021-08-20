@@ -9,12 +9,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/15/2021
 ms.author: apimpm
-ms.openlocfilehash: e4f9f3822b58886f7d453d52402b078d8401133f
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 6ef07743b7def1c49744185f153d13bb24719652
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738880"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667913"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>Migrieren zum neuen Entwicklerportal
 
@@ -53,7 +53,7 @@ Beachten Sie beim Migrieren aus dem veralteten Portal die folgenden Änderungen:
 - Wenn Sie die E-Mail-Standardbenachrichtigungsvorlagen so geändert haben, dass sie eine explizit definierte, veraltete Portal-URL enthalten, ändern Sie diese so, dass sie entweder den Portal-URL-Parameter verwenden oder auf die neue Portal-URL verweisen. Wenn die Vorlagen stattdessen den integrierten Portal-URL-Parameter verwenden, sind keine Änderungen erforderlich.
 - *Issues* und *Anwendungen* werden im neuen Entwicklerportal nicht unterstützt.
 - Direkte Integration mit Facebook, Microsoft, Twitter und Google als Identitätsanbieter wird im neuen Entwicklerportal nicht unterstützt. Sie können eine Integration mit diesen Anbietern über Azure AD B2C vornehmen.
-- Wenn Sie Delegierung verwenden, ändern Sie die Rückgabe-URL in Ihren Anwendungen, und verwenden Sie den [*Freigegebenes Zugriffstoken abrufen*-API-Endpunkt](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken) anstelle des Endpunkts *SSO-URL generieren*.
+- Wenn Sie Delegierung verwenden, ändern Sie die Rückgabe-URL in Ihren Anwendungen, und verwenden Sie den [*Freigegebenes Zugriffstoken abrufen*-API-Endpunkt](/rest/api/apimanagement/2020-12-01/user/get-shared-access-token) anstelle des Endpunkts *SSO-URL generieren*.
 - Wenn Sie Azure AD als Identitätsanbieter verwenden:
 
     - Ändern Sie die Rückgabe-URL in Ihrer Anwendung so, dass sie auf die Domäne des neuen Entwicklerportals verweist.

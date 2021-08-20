@@ -2,21 +2,21 @@
 title: Verhindern der automatischen Anmeldebeschleunigung in Azure AD mit der Richtlinie zur Startbereichsermittlung
 description: Es wird beschrieben, wie Sie die automatische Anmeldebeschleunigung über Domänenhinweise an einen Verbundidentitätsanbieter verhindern.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: 3f5dbff31bedce2473e3849b4e12161e93f33c8a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c85c4028c1931c1e5eee061b9be7b2ebffc5b951
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076868"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566919"
 ---
 # <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>Deaktivieren der automatischen Anmeldebeschleunigung an einen Verbundidentitätsanbieter während der Benutzeranmeldung per Richtlinie zur Startbereichsermittlung (Home Realm Discovery, HRD)
 

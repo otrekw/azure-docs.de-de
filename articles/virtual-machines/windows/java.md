@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: ea9d5d92d45db50470276929b6e7b4200bb427d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f1523c58a8ca26bbab516383d59e7e8dd009466
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557521"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288301"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Erstellen und Verwalten von virtuellen Windows-Computern in Azure mithilfe von Java
 
@@ -33,7 +33,7 @@ Die Ausführung dieser Schritte dauert etwa 20 Minuten.
 
 ## <a name="create-a-maven-project"></a>Erstellen eines Maven-Projekts
 
-1. Installieren Sie [Java](/azure/developer/java/fundamentals/java-jdk-long-term-support), falls Sie dies noch nicht getan haben.
+1. Installieren Sie [Java](/azure/developer/java/fundamentals/java-support-on-azure), falls Sie dies noch nicht getan haben.
 2. Installieren Sie [Maven](https://maven.apache.org/download.cgi).
 3. Erstellen Sie einen neuen Ordner und das Projekt:
     

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/07/2021
-ms.openlocfilehash: 8b87cfc8276d13ccc7e12a4901489ea0b1e770a5
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 08/03/2021
+ms.openlocfilehash: 22a0fb4d06194138d5169df5005d5a23b3580569
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012505"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345966"
 ---
 # <a name="pick-initial-size-for-hyperscale-citus-server-group"></a>Auswählen der Anfangsgröße für eine Hyperscale (Citus)-Servergruppe
 
@@ -36,11 +36,6 @@ Virtuelle Kerne insgesamt: Wenn Arbeitsdaten in den RAM passen, können Sie von 
 Worker-RAM: Der beste Fall wäre die Bereitstellung von so viel Speicher, dass der Großteil des Arbeitssatzes in den Speicher passt. Die Art der Abfragen, die Ihre Anwendung verwendet, wirkt sich auf die Arbeitsspeicheranforderungen aus. Sie können EXPLAIN ANALYZE für eine Abfrage ausführen, um zu ermitteln, wie viel Arbeitsspeicher diese Abfrage benötigt. Denken Sie daran, dass virtuelle Kerne und RAM zusammen skaliert werden, wie im Artikel [Konfigurationsoptionen für Hyperscale (Citus)](concepts-hyperscale-configuration-options.md) beschrieben.
 
 ## <a name="choosing-a-hyperscale-citus-tier"></a>Auswählen eines Tarifs für Hyperscale (Citus)
-
-> [!IMPORTANT]
-> Der Basic-Tarif von Hyperscale (Citus) ist zurzeit als Vorschauversion verfügbar.  Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
->
-> Eine vollständige Liste der anderen neuen Features finden Sie unter [Previewfunktionen für Hyperscale (Citus)](hyperscale-preview-features.md).
 
 In den obigen Abschnitten wird erläutert, wie viele virtuelle Kerne und wie viel RAM für jeden Anwendungsfall benötigt wird. Sie können diese Anforderungen erfüllen, indem Sie zwischen zwei Hyperscale (Citus)-Tarifen wählen: dem Basic- und dem Standard-Tarif.
 

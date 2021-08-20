@@ -5,14 +5,14 @@ author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 06/22/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 11c0a621375cfa57c8b25f0bdd5ed4651dffa853
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f634cb35590a428613858a88a71db1d0792ceb06
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949421"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112967500"
 ---
 # <a name="tutorial-create-your-project"></a>Tutorial: Erstellen Ihres Projekts
 
@@ -26,7 +26,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Angeben von grundlegenden Gerätedetails Ihres Projekts
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
 
 - Gültiges [Azure Active Directory-Konto](../active-directory/fundamentals/active-directory-whatis.md) (Geschäfts-, Schul- oder Unikonto)
 - Verifiziertes MPN-Konto (Microsoft Partner Network). Falls Sie kein MPN-Konto haben, müssen Sie zunächst dem [Partnernetzwerk beitreten](https://partner.microsoft.com/). 
@@ -65,6 +64,10 @@ Als Nächstes geben Sie grundlegende Informationen zum Gerät an. Sie können di
     | Gerätetyp            | Spezifikation für fertiges Produkt oder implementierungsfertiges Entwicklungskit.     Weitere Informationen zur Terminologie finden Sie im [Glossar zur Zertifizierung](./resources-glossary.md).                                                                     |
     | Geräteklasse           | „Gateway“, „Sensor“ oder „Sonstiges“.  Weitere Informationen zur Terminologie finden Sie im [Glossar zur Zertifizierung](./resources-glossary.md).                                                                    |
     | URL des Gerätequellcodes | Erforderlich, wenn Sie die Zertifizierung für ein implementierungsfertiges Entwicklungskit durchführen (ansonsten optional). Die URL muss auf einen GitHub-Speicherort für Ihren Gerätecode verweisen. |
+
+    > [!Note]
+    > Wenn Sie einen Microsoft-Dienst (z. B. Azure Sphere) vertreiben, müssen Sie sicherstellen, dass Ihr Gerätename den [Brandingrichtlinien](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks) von Microsoft entspricht.
+
 1. Wählen Sie die Schaltfläche `Next` (Weiter) aus, um mit der Registerkarte `Certifications` (Zertifizierungen) fortzufahren.
 
     ![Abbildung: Formular „Neues Projekt erstellen“, Registerkarte „Zertifizierungen“](./media/images/create-new-project-certificationswindow.png)

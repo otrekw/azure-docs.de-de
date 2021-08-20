@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4f48ccaab8ba084a3944ba2d5fdd7188efa56555
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 42ca1bf538ff7a8a7479f8db041d35d4ea68692e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556836"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346220"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap für Azure Security Center-Bereitschaft
 Dieses Dokument enthält eine Roadmap für die Bereitschaft, die Ihnen als Hilfe bei den ersten Schritten mit Azure Security Center dient.
@@ -109,8 +109,3 @@ Artikel
 * [PaaS-Empfehlungen](../security/fundamentals/paas-deployments.md)
 * [Compliance](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
 * [Log Analytics-Kunden können jetzt ihre Hybrid Cloud-Workloads mit Azure Security Center schützen](/archive/blogs/msoms/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads)
-
-## <a name="community-resources"></a>Communityressourcen
-
-* [Security Center UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [Q&A-Seite für Security Center](/answers/topics/azure-security-center.html)

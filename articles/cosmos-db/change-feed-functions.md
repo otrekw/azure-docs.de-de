@@ -1,19 +1,19 @@
 ---
 title: Verwenden des Azure Cosmos DB-Änderungsfeeds in Azure Functions
 description: Verwenden Sie Azure Functions, um eine Verbindung mit dem Azure Cosmos DB-Änderungsfeed herzustellen. Später können Sie reaktive Azure-Funktionen erstellen, die bei jedem neuen Ereignis ausgelöst werden.
-author: markjbrown
-ms.author: mjbrown
+author: timsander1
+ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7f4903cf29f15132db91e47d78efe5a556efd937
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a751313d5c7f43401a9c031bf502a9a5d7f79612
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93340242"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355302"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Serverlose, ereignisbasierte Architekturen mit Azure Cosmos DB und Azure Functions
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

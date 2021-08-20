@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 1efd91d92bac1bc1f39d82aaa0cc71daa0275f8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c9fe214cd9527a5e49ff2717222355e9dd8319f
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570536"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356493"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>Verbinden Ihrer Salesforce Service Cloud mit Azure Sentinel
 
 > [!IMPORTANT]
 > Der Salesforce Service Cloud-Connector befindet sich derzeit in der **Vorschauphase**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 In diesem Artikel wird erläutert, wie Sie Ihre Salesforce Service Cloud-Lösung mit Azure Sentinel verbinden. Mit dem Salesforce Service Cloud-Datenconnector lassen sich Ihre Salesforce-Daten problemlos mit Azure Sentinel verbinden, sodass Sie diese dann in Arbeitsmappen anzeigen und als Vorlage für benutzerdefinierte Warnungen sowie zur Verbesserung der Untersuchung von Problemen verwenden können. Die Integration von Salesforce Service Cloud und Azure Sentinel stützt sich auf die REST-API.
 
@@ -65,6 +67,6 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
 
 In diesem Dokument haben Sie erfahren, wie Sie Salesforce Service Cloud mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](monitor-your-data.md), um Ihre Daten zu überwachen.

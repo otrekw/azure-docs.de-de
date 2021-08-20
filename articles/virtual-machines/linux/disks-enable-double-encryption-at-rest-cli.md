@@ -2,18 +2,18 @@
 title: Aktivieren der doppelten Verschlüsselung für ruhende Daten – Azure CLI – verwaltete Datenträger
 description: Hier erfahren Sie, wie Sie die doppelte Verschlüsselung für ruhende Daten auf Ihren verwalteten Datenträgern mithilfe der Azure CLI aktivieren.
 author: roygara
-ms.date: 08/24/2020
+ms.date: 06/29/2021
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 266ba4a6fbe0607fd09f86f5cd01addfa60252aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd7f0e0a56fd27053830fac9144359d1850ba0d4
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558320"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358262"
 ---
 # <a name="use-the-azure-cli-to-enable-double-encryption-at-rest-for-managed-disks"></a>Verwenden der Azure CLI zum Aktivieren der doppelten Verschlüsselung von ruhenden Daten auf verwalteten Datenträgern
 
@@ -67,7 +67,7 @@ Installieren Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie diese Ressourcen erstellt und konfiguriert haben, können Sie sie zum Schützen Ihrer verwalteten Datenträger verwenden. Unter den folgenden Links finden Sie Beispielskripts mit jeweils einem entsprechenden Szenario, die Sie zum Schützen Ihrer verwalteten Datenträger verwenden können.
+Nachdem Sie diese Ressourcen erstellt und konfiguriert haben, können Sie diese zum Sichern Ihrer verwalteten Datenträger verwenden. Unter den folgenden Links finden Sie Beispielskripts mit jeweils einem entsprechenden Szenario, die Sie zum Schützen Ihrer verwalteten Datenträger verwenden können.
 
 - [Beispiele für Azure Resource Manager-Vorlagen](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)
 - [Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung – Beispiele](disks-enable-customer-managed-keys-cli.md#examples)

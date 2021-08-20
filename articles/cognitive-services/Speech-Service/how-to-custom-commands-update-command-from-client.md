@@ -3,19 +3,19 @@ title: Aktualisieren eines Befehls aus einer Client-App
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie einen Befehl aus einer Client-App heraus aktualisieren.
 services: cognitive-services
-author: nitinme
+author: laujan
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: nitinme
-ms.openlocfilehash: 08c674a7a7ec060a4273836064cb1c21e979e725
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: lajanuar
+ms.openlocfilehash: 1f8607ec7094ecafe69f60e8f8972e04ec813adb
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97560286"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356195"
 ---
 # <a name="update-a-command-from-a-client-app"></a>Aktualisieren eines Befehls aus einer Client-App
 
@@ -68,7 +68,7 @@ Sie können dieses Szenario im Portal „Benutzerdefinierte Befehle“ testen:
 1. Öffnen Sie die Seitenleiste, und wählen Sie **Aktivitäts-Editor** aus.
 1. Geben Sie das im vorigen Abschnitt angegebene `RemoteCommand`-Ereignis ein, und senden Sie es.
     > [!div class="mx-imgBorder"]
-    > ![Screenshot, der das Ereignis für einen Remotebefehl zeigt.](media/custom-commands/send-remote-command-activity.png)
+    > ![Screenshot, der das Ereignis für einen Remotebefehl zeigt.](media/custom-commands/send-remote-command-activity-no-mic.png)
 
 Beachten Sie, wie der Wert für den Parameter `"OnOff"` mithilfe einer Aktivität des Clients anstelle von Sprache oder Text auf `"on"` festgelegt wurde.
 
@@ -140,7 +140,7 @@ Um dieses Szenario zu testen, erstellen wir einen neuen Befehl in der aktuellen 
     }
     ```
 1. Senden Sie den Text `get device info`.
-   ![Screenshot, der eine Aktivität für das Senden von Clientkontext zeigt.](media/custom-commands/send-client-context-activity.png)
+   ![Screenshot, der eine Aktivität für das Senden von Clientkontext zeigt.](media/custom-commands/send-client-context-activity-no-mic.png)
 
 Beachten Sie einige Punkte:
 - Sie müssen diese Aktivität nur einmal senden (idealerweise gleich nach dem Herstellen einer Verbindung).

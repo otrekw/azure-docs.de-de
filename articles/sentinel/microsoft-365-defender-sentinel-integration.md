@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 13fb05fe04988320c46755b38bfc952b7265d30d
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 86a998e304755085a9ae1e15e011df3b242c4df8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059902"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345908"
 ---
 # <a name="microsoft-365-defender-integration-with-azure-sentinel"></a>Microsoft 365 Defender-Integration in Azure Sentinel
 
@@ -107,4 +107,4 @@ Mit dem Microsoft 365 Defender-Connector können Sie auch **erweiterte Huntinge
 In diesem Dokument haben Sie erfahren, wie Sie von der Verwendung von Microsoft 365 Defender zusammen mit Azure Sentinel profitieren können, indem Sie den Microsoft 365 Defender-Connector verwenden.
 
 - Rufen Sie Anweisungen zum [Aktivieren des Microsoft 365 Defender-Connectors](connect-microsoft-365-defender.md) ab.
-- Erstellen Sie [benutzerdefinierte Warnungen](tutorial-detect-threats-custom.md), und [untersuchen Sie Vorfälle](tutorial-investigate-cases.md).
+- Erstellen Sie [benutzerdefinierte Warnungen](detect-threats-custom.md), und [untersuchen Sie Vorfälle](investigate-cases.md).

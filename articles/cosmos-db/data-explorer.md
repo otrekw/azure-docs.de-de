@@ -1,17 +1,17 @@
 ---
 title: Verwalten von Daten mithilfe von Azure Cosmos DB-Explorer
 description: Azure Cosmos DB-Explorer ist eine eigenständige webbasierte Schnittstelle, die Ihnen ermöglicht, in Azure Cosmos DB gespeicherte Daten anzuzeigen und zu verwalten.
-author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.author: dech
-ms.openlocfilehash: d4baa92fe4aa2ed402c394198684c4deec2bf9f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: esarroyo
+author: StefArroyo
+ms.openlocfilehash: de078a4bc6ff9f149bffaab8fbe0d13f591d3daa
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96348601"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113354815"
 ---
 # <a name="work-with-data-using-azure-cosmos-db-explorer"></a>Arbeiten mit Daten unter Verwendung von Azure Cosmos DB-Explorer 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

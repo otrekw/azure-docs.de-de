@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 6fcb8b3688ea5d2a8866093fd46efb8236db3558
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 004fff41e30ca9c60d51847035e30262e359270e
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982050"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031119"
 ---
 # <a name="connect-with-the-windows-desktop-classic-client"></a>Herstellen einer Verbindung mit dem Windows-Desktopclient (klassisch)
 
 > Gilt für: Windows 7, Windows 10 und Windows 10 IoT Enterprise
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../connect-windows-7-10.md) weiter.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../user-documentation/connect-windows-7-10.md) weiter.
 
 Mit dem Windows Desktop-Client können Sie auf Geräten mit Windows 7, Windows 10 und Windows 10 IoT Enterprise auf Azure Virtual Desktop-Ressourcen zugreifen. Der Client unterstützt weder Windows 8 noch Windows 8.1.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 66f3cc71c27ff80991f3cded1957f90e622f447f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9972a7bcff534f49f0c656dd1a9c3f66389c44b5
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745671"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708794"
 ---
 # <a name="msix-app-attach-glossary"></a>Glossar des MSIX-Features zum Anfügen von Apps
 
@@ -133,4 +133,4 @@ In der folgenden Tabelle finden Sie einen Leistungsvergleich zwischen VHD und Ci
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen über das MSIX-Feature zum Anfügen von Apps finden Sie in unserer [Übersicht](what-is-app-attach.md) und in den [Häufig gestellten Fragen](app-attach-faq.md). Oder legen Sie direkt mit dem [Einrichten des MSIX-Features zum Anfügen von Apps](app-attach.md) los.
+Weitere Informationen über das MSIX-Feature zum Anfügen von Apps finden Sie in unserer [Übersicht](what-is-app-attach.md) und in den [Häufig gestellten Fragen](app-attach-faq.yml). Oder legen Sie direkt mit dem [Einrichten des MSIX-Features zum Anfügen von Apps](app-attach.md) los.

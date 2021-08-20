@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bf80f24aca889a57896bcb0768d4727cae9440a
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94873266"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110221"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installationsübersicht: Azure AD Connect und Azure AD Connect Health
 
@@ -155,7 +155,7 @@ Der Einstieg in Azure AD Connect Health ist einfach:
 Das Azure AD Connect Health-Portal zeigt Warnungen, Leistungsüberwachungsdaten und Nutzungsanalysen an. Über die URL https://aka.ms/aadconnecthealth gelangen Sie zum Hauptblatt von Azure AD Connect Health. Sie können es sich wie ein Fenster vorstellen. Auf dem Hauptblatt werden die Option **Schnellstart**, die Dienste von Azure AD Connect Health und weitere Konfigurationsoptionen angezeigt. Im folgenden Screenshot sehen Sie diese Elemente und darunter finden Sie ihre Beschreibung. Nachdem Sie die Agents bereitgestellt haben, wird der Integritätsdienst für die Dienste automatisch identifiziert, die von Azure AD Connect Health überwacht werden.
 
 > [!NOTE]
-> Informationen zur Lizenzierung finden Sie unter [Häufig gestellte Fragen zu Azure AD Connect Health](reference-connect-health-faq.md) sowie auf der [Seite zur Preisgestaltung von Azure AD](https://aka.ms/aadpricing).
+> Informationen zur Lizenzierung finden Sie unter [Häufig gestellte Fragen zu Azure AD Connect Health](reference-connect-health-faq.yml) sowie auf der [Seite zur Preisgestaltung von Azure AD](https://aka.ms/aadpricing).
     
 ![Azure AD Connect Health-Portal](./media/whatis-hybrid-identity-health/portalsidebar.png)
 

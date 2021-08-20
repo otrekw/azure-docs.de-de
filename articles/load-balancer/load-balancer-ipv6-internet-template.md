@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f0c4f7f70dc186c29ffa5d90c6a7ea2f245f431
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90562518"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298077"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bereitstellen einer Load Balancer-Lösung mit Internetzugriff über IPv6 mithilfe einer Vorlage
 
@@ -50,7 +50,7 @@ In diesem Szenario erstellen Sie die folgenden Azure-Ressourcen:
 
 ## <a name="deploying-the-template-using-the-azure-portal"></a>Bereitstellen der Vorlage mit dem Azure-Portal
 
-In diesem Artikel wird eine Vorlage verwendet, die im Katalog mit [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) veröffentlicht wurde. Sie können die Vorlage aus dem Katalog herunterladen oder die Bereitstellung in Azure direkt über den Katalog ausführen. In diesem Artikel wird davon ausgegangen, dass Sie die Vorlage auf den lokalen Computer heruntergeladen haben.
+In diesem Artikel wird eine Vorlage verwendet, die im Katalog mit [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/load-balancer-ipv6-create/) veröffentlicht wurde. Sie können die Vorlage aus dem Katalog herunterladen oder die Bereitstellung in Azure direkt über den Katalog ausführen. In diesem Artikel wird davon ausgegangen, dass Sie die Vorlage auf den lokalen Computer heruntergeladen haben.
 
 1. Öffnen Sie das Azure-Portal, und melden Sie sich mit einem Konto an, das über Berechtigungen zum Erstellen von virtuellen Computern und Netzwerkressourcen in einem Azure-Abonnement verfügt. Wenn Sie keine vorhandenen Ressourcen verwenden, benötigt das Konto darüber hinaus die Berechtigung zum Erstellen einer Ressourcengruppe und eines Speicherkontos.
 2. Klicken Sie im Menü auf „+Neu“, und geben Sie „Vorlage“ in das Suchfeld ein. Wählen Sie in den Suchergebnissen „Vorlagenbereitstellung“ aus.

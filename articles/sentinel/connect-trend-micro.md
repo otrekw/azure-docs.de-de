@@ -14,16 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 105948a5dca5e15643aa09fd265726ed5752029e
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77588024"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351059"
 ---
 # <a name="connect-trend-micro-deep-security"></a>Verbinden von Trend Micro Deep Security
 
 Der Trend Micro Deep Security-Datenconnector ermöglicht es Ihnen, Ihre Trend Micro Deep Security-Protokolle auf einfache Weise mit Azure Sentinel zu verbinden, um Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und die Untersuchung von Daten zu verbessern. Dadurch erhalten Sie einen besseren Einblick in das Netzwerk und die Systeme Ihrer Organisation und bessere Möglichkeiten für Sicherheitsvorgänge.
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -40,8 +42,6 @@ Der Trend Micro Deep Security-Datenconnector ermöglicht es Ihnen, Ihre Trend Mi
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde erläutert, wie Sie Trend Micro Deep Security mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
-
-
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](monitor-your-data.md), um Ihre Daten zu überwachen.

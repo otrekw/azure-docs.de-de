@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3474d14b84e41fdf808b5a5b5c612b3a872f2c6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5e35f88ef38367a9c25da6a77b556f4009880af0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753501"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355412"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts
 
@@ -87,7 +87,7 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 
 - Wenn Sie zum ersten Mal eine Sicherheitsgruppe für den gestaffelten Rollout hinzufügen, besteht eine Einschränkung auf 200 Benutzer, um ein UX-Timeout zu vermeiden. Nachdem Sie die Gruppe hinzugefügt haben, können Sie ihr nach Bedarf weitere Benutzer hinzufügen.
 
-- Wenn Benutzer sich im gestaffelten Rollout befinden und EnforceCloudPasswordPolicyForPasswordSyncedUsers aktiviert ist, ist die Kennwortablaufrichtlinie auf 90 Tage festgelegt und kann nicht angepasst werden. 
+- Während für Benutzer ein gestaffelter Rollout ausgeführt wird, ist die Kennwortablaufrichtlinie auf 90 Tage festgelegt, wobei keine Möglichkeit zur Anpassung besteht. 
 
 - Windows 10 Hybrid Join oder Azure AD Join – Abrufen eines primären Aktualisierungstokens für Windows 10-Versionen vor 1903. Dieses Szenario greift auf den WS-Trust-Endpunkt des Verbundservers zurück, auch wenn sich der anmeldende Benutzer im Bereich des gestaffelten Rollouts befindet.
 
@@ -98,7 +98,7 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 - Wenn Sie über eine Windows Hello for Business-Hybridzertifikat-Vertrauensstellung mit Zertifikaten verfügen, die entweder über Ihren Verbundserver, der als Registrierungszertifizierungsstelle agiert oder über Smartcardbenutzer ausgestellt werden, wird kein gestaffelter Rollout unterstützt. 
 
   >[!NOTE]
-  >Die endgültige Umstellung von Verbundauthentifizierung auf Cloudauthentifizierung muss weiterhin mithilfe von Azure AD Connect oder PowerShell erfolgen. Bei einem gestaffelten Rollout werden Domänen nicht von Verbunddomänen auf verwaltete Domänen umgestellt.  Weitere Informationen zur Domänenumstellung finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) und [Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso).
+  >Die endgültige Umstellung von Verbundauthentifizierung auf Cloudauthentifizierung muss weiterhin mithilfe von Azure AD Connect oder PowerShell erfolgen. Bei einem gestaffelten Rollout werden Domänen nicht von Verbunddomänen auf verwaltete Domänen umgestellt.  Weitere Informationen zur Domänenumstellung finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](./migrate-from-federation-to-cloud-authentication.md) und [Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory](./migrate-from-federation-to-cloud-authentication.md).
   
 ## <a name="get-started-with-staged-rollout"></a>Erste Schritte mit gestaffeltem Rollout
 
@@ -266,7 +266,6 @@ A: Ja. Informationen zum Verwenden von PowerShell zum Ausführen eines gestaffel
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Azure AD 2.0 Vorschau](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
-- [Ändern der Anmeldemethode in die Kennworthashsynchronisierung](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
-- [Ändern der Anmeldemethode in die Passthrough-Authentifizierung](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+- [Ändern der Anmeldemethode in die Kennworthashsynchronisierung](./migrate-from-federation-to-cloud-authentication.md)
+- [Ändern der Anmeldemethode in die Passthrough-Authentifizierung](./migrate-from-federation-to-cloud-authentication.md)
 - [Interaktiver Leitfaden für den gestaffelten Rollout](https://mslearn.cloudguides.com/en-us/guides/Test%20migration%20to%20cloud%20authentication%20using%20staged%20rollout%20in%20Azure%20AD)
-

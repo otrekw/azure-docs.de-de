@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5eb0c7d72896cc9a27907743b1b9c3d5a40614dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a247c3b3f1aeae79fcf6a4369b9ae69e693b6024
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592859"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350555"
 ---
 # <a name="query-update-management-logs"></a>Abfragen von Protokollen der Updateverwaltung
 
@@ -195,7 +195,7 @@ Auf einem Windows-Computer können Sie die folgenden Informationen überprüfen,
 
 1. Öffnen Sie das Windows-Ereignisprotokoll. Navigieren Sie zu **Anwendungs- und Dienstprotokolle\Operations Manager**, und suchen Sie nach der Ereignis-ID 3000 und der Ereignis-ID 5002 aus der Quelle **Service Connector**. Mit diesen Ereignissen wird angegeben, dass für den Computer die Registrierung beim Log Analytics-Arbeitsbereich und die Konfiguration ausgeführt wurden.
 
-Falls der Agent nicht mit Azure Monitor-Protokollen kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, vergewissern Sie sich, dass die Firewall bzw. der Proxyserver ordnungsgemäß konfiguriert sind. Weitere Informationen zur Überprüfung der Firewall- oder Proxyserverkonfiguration finden Sie unter [Netzwerkkonfiguration für den Windows-Agent](../../azure-monitor/agents/agent-windows.md) bzw. unter [Netzwerkkonfiguration für den Linux-Agent](../../azure-monitor/vm/quick-collect-linux-computer.md).
+Falls der Agent nicht mit Azure Monitor-Protokollen kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, vergewissern Sie sich, dass die Firewall bzw. der Proxyserver ordnungsgemäß konfiguriert sind. Weitere Informationen zur Überprüfung der Firewall- oder Proxyserverkonfiguration finden Sie unter [Netzwerkkonfiguration für den Windows-Agent](../../azure-monitor/agents/agent-windows.md) bzw. unter [Netzwerkkonfiguration für den Linux-Agent](../../azure-monitor/vm/monitor-virtual-machine.md).
 
 > [!NOTE]
 > Wenn Ihre Linux-Systeme für die Kommunikation mit einem Proxy oder Log Analytics-Gateway konfiguriert sind und Sie die Updateverwaltung aktivieren, aktualisieren Sie die Berechtigungen für `proxy.conf`, um der Gruppe „omiuser“ Leseberechtigungen für die Datei zu erteilen. Führen Sie dazu die folgenden Befehle aus:

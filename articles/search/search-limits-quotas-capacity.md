@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 21c5fd8832805c5e733f19d5fbf71a4e5512478e
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 9034d493e0ab10d8c548170cac99238d5edc4e22
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540522"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003870"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
@@ -103,7 +103,7 @@ Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und
 
 ## <a name="shared-private-link-resource-limits"></a>Beschränkungen für freigegebene Private Link-Ressourcen
 
-Indexer haben [über private Endpunkte](search-indexer-howto-access-private.md), die über die [API für freigegebene Private Link-Ressourcen](/rest/api/searchmanagement/sharedprivatelinkresources) verwaltet werden, Zugriff auf Azure-Ressourcen. In diesem Abschnitt werden die Grenzwerte für diese Funktion beschrieben.
+Indexer haben [über private Endpunkte](search-indexer-howto-access-private.md), die über die [API für freigegebene Private Link-Ressourcen](/rest/api/searchmanagement/2020-08-01/shared-private-link-resources) verwaltet werden, Zugriff auf Azure-Ressourcen. In diesem Abschnitt werden die Grenzwerte für diese Funktion beschrieben.
 
 | Resource | Kostenlos | Basic | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Funktion zur automatischen Reparatur vo
 services: container-service
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 95783000739fd42e39ef1bbce88c3b8e62d4a8dc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6ca726445e7593898609c39e0a503405852098fc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073196"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355911"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Automatisches Reparieren von AKS-Knoten (Azure Kubernetes Service)
 
@@ -40,7 +40,6 @@ Wenn von AKS ein fehlerhafter Knoten identifiziert wird und dieser Knoten zehn M
 
 1. Neustarten des Knotens
 1. Durchführen eines Reimagings, falls der Neustart nicht erfolgreich war
-1. Erstellen eines neuen Knotens, und Durchführen eines Reimagings, falls das Reimaging nicht erfolgreich war
 
 Sollte die automatische Reparatur nicht erfolgreich sein, werden von AKS-Technikern alternative Abhilfemaßnahmen geprüft. 
 

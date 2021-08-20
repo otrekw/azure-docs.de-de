@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 6ded5d4ed8c2a55939bba908a05adbd2dea2ccbf
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 235dc8fa484212a8322b24d32f7516af5441978a
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714774"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652922"
 ---
 # <a name="set-up-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung
 
@@ -55,7 +55,7 @@ In diesem Artikel wird das Einrichten der agentbasierten Abhängigkeitsanalyse i
     ![Hinzufügen eines neuen Arbeitsbereichs](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 > [!Note]
-> [Erfahren Sie](https://docs.microsoft.com/azure/azure-monitor/logs/private-link-security), wie Sie den OMS-Arbeitsbereich für Verbindungen über private Endpunkt konfigurieren.  
+> [Erfahren Sie](../azure-monitor/logs/private-link-security.md), wie Sie den OMS-Arbeitsbereich für Verbindungen über private Endpunkt konfigurieren.  
 
 ## <a name="download-and-install-the-vm-agents"></a>Herunterladen und Installieren der VM-Agents
 
@@ -86,7 +86,7 @@ Gehen Sie wie folgt vor, um den Agent auf einem Windows-Server zu installieren:
 4. Wählen Sie unter **Agent-Setupoptionen** die Optionen **Azure Log Analytics** > **Weiter**.
 5. Klicken Sie auf **Hinzufügen**, um einen neuen Log Analytics-Arbeitsbereich hinzuzufügen. Fügen Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel ein, die bzw. den Sie im Portal kopiert haben. Klicken Sie auf **Weiter**.
 
-Sie können den Agent über die Befehlszeile oder mithilfe einer automatisierten Methode wie Configuration Manager oder [Intigua](https://www.intigua.com/intigua-for-azure-migration) installieren.
+Sie können den Agent über die Befehlszeile oder mithilfe einer automatisierten Methode wie Configuration Manager oder Intigua installieren.
 - [Weitere Informationen](../azure-monitor/agents/log-analytics-agent.md#installation-options) zur Verwendung dieser Methoden zum Installieren des MMA-Agent.
 - Der MMA-Agent kann auch mit diesem [Skript](https://github.com/brianbar-MSFT/Install-MMA) installiert werden.
 - [Erfahren Sie mehr](../azure-monitor/agents/agents-overview.md#supported-operating-systems) über die durch den MMA unterstützten Windows-Betriebssysteme.

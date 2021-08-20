@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 4/05/2021
 ms.author: azhussai
-ms.openlocfilehash: c0a99d2c2885de59ccc903b9f505b8049d922b43
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: c8bcaa692fe33229ef7d71f717879f39ffa88279
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205195"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355638"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal"></a>Erneutes Generieren einer URL mit Azure Application Gateway - Azure-Portal
 
@@ -97,7 +97,7 @@ Wenn die Anforderungs-URL */article* enthält, werden im folgenden Beispiel die 
 
    e. Geben Sie als **URL-Abfragezeichenfolgenwert** den neuen Wert der URL-Abfragezeichenfolge ein. In diesem Beispiel verwenden wir **id={var_uri_path_1}&title={var_uri_path_2}** .
     
-    `{var_uri_path_1}` und `{var_uri_path_1}` werden zum Abrufen der substring-Funktionen verwendet, die während der Auswertung der Bedingung in diesem Ausdruck aufgezeichnet wurden: `.*article/(.*)/(.*)`.
+    `{var_uri_path_1}` und `{var_uri_path_2}` werden zum Abrufen der substring-Funktionen verwendet, die während der Auswertung der Bedingung in diesem Ausdruck aufgezeichnet wurden: `.*article/(.*)/(.*)`.
     
    f. Klicken Sie auf **OK**.
 

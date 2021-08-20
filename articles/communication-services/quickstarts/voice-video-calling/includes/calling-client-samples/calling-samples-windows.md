@@ -3,15 +3,15 @@ title: Schnellstart – Hinzufügen von Telefonie zu einer Windows-App mithilfe 
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Calling SDK von Azure Communication Services für Windows verwenden.
 author: tophpalmer
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 16e7562fb37ebcf0044f9ba07e4d9f53acf2d35e
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: dc5905ab50932f156e17831356c0998ffd001285
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560497"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201013"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Anruf mithilfe des Calling SDK von Azure Communication Services für Windows einleiten.
 
@@ -158,14 +158,14 @@ Der folgende Code sollte nach der Behandlung der Ausnahme aus dem vorherigen Sch
 
 ```csharp
 client.CreateCallAgent(creds, callAgentOptions).Completed +=
-(IAsyncOperation<CallAgent> asyncInfo, AsyncStatus asyncStatus) =>
+async (IAsyncOperation<CallAgent> asyncInfo, AsyncStatus asyncStatus) =>
 {
     agent_ = asyncInfo.GetResults();
 
-    string[] calling = { "<CALLEE>" };
+    CommunicationUserIdentifier target = new CommunicationUserIdentifier("<CALLEE>");
 
-    StartCallOptions startCallOptions = new StartCallOptions(); ;
-    call_ = agent_.Call(calling, startCallOptions);
+    StartCallOptions startCallOptions = new StartCallOptions();
+    call_ = await agent_.StartCallAsync(new List<ICommunicationIdentifier>() { target }, startCallOptions);
 };
 ```
 
@@ -180,8 +180,8 @@ Eine Instanz von `HangupOptions` sollte auch verwendet werden, um zu informieren
 Der folgende Code sollte in `HangupHandler` hinzugefügt werden.
 
 ```csharp
-HangupOptions hangupOptions = new HangupOptions();
-call_.HangupAsync(hangupOptions).Completed +=
+HangUpOptions hangupOptions = new HangUpOptions();
+call_.HangUpAsync(hangupOptions).Completed +=
 (IAsyncAction asyncInfo, AsyncStatus asyncStatus) =>
 {
 };

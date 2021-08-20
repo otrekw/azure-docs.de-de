@@ -10,12 +10,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28df246f608369b3bafa9492ddaa4f0a6e5b042d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9556e805b666359546d766c4f761467a0987a540
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061784"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114451014"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Partner für die Azure Synapse Analytics-Datenverwaltung
 
@@ -28,7 +28,7 @@ In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die Tools u
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Der Datenkatalog von Alation ermöglicht es Analysten, ihre Produktivität erheblich zu verbessern, die Genauigkeit zu steigern und sichere datengestützte Entscheidungen zu treffen. Mit dem Datenkatalog von Alation kann jede Person in Ihrer Organisation Daten finden, verstehen und bearbeiten. |[Produktseite](https://www.alation.com/product/data-catalog/)<br> |
 | ![BI Builders (Xpert BI)](./media/sql-data-warehouse-partner-data-integration/bibuilders-logo.png) |**BI Builders (Xpert BI)**<br> Xpert BI bietet einen intuitiven und durchsuchbaren Katalog, mit dem Branchenbenutzer Daten und Berichte finden, verstehen und darauf vertrauen können. Die Lösung deckt die gesamte Datenplattform einschließlich Azure Synapse Analytics, ADLS Gen 2, Azure SQL-Datenbank, Analysis Services und Power BI sowie End-to-End-Datenflüsse und -Datenverschiebungen ab. Data Stewards können Beschreibungen aktualisieren und Daten markieren, um die gesetzlichen Anforderungen einzuhalten. Xpert BI kann über APIs in andere Kataloge wie Azure Purview integriert werden. Herkömmliche Datenkataloge werden durch eine Geschäftskundenperspektive ergänzt. |[Produktseite](https://www.bi-builders.com/adding-automation-and-governance-to-azure-analytics/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/bi-builders-as.xpert-bi-vm)<br>|
 | ![Coffing Data Warehousing](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing Data Warehousing**<br>Coffing Data Warehousing bietet das Tool Nexus Chameleon, das 10 Jahre Entwicklung in Abfragesystemen aufweisen kann. Nexus ist in Azure Synapse Analytics als Abfragetool für den dedizierten SQL-Pool verfügbar. Mithilfe von Nexus können Sie Abfragen auf internen und Cloudcomputern durchführen und Daten aus verschiedenen Plattformen zusammenführen. Point-Click-Report! |[Produktseite](https://coffingdw.com/software/nexus/)<br> |
-| ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Mit den Tools von Inbrein MicroERD können Sie ein präzises Datenmodell erstellen, die Datenredundanz verringern, die Produktivität steigern und Standards einhalten. Über die Benutzeroberfläche, die basierend auf umfassenden Nutzungserlebnissen entwickelt wurde, können Modellierer einfach und komfortabel mit DB-Modellen arbeiten. Über schnelle funktionale Verbesserungen und Updates können Sie fortlaufend von neuen und verbesserten MicroERD-Funktionen profitieren. |[Produktseite](http://microerd.com/)<br> |
+| ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Mit den Tools von Inbrein MicroERD können Sie ein präzises Datenmodell erstellen, die Datenredundanz verringern, die Produktivität steigern und Standards einhalten. Über die Benutzeroberfläche, die basierend auf umfassenden Nutzungserlebnissen entwickelt wurde, können Modellierer einfach und komfortabel mit DB-Modellen arbeiten. Über schnelle funktionale Verbesserungen und Updates können Sie fortlaufend von neuen und verbesserten MicroERD-Funktionen profitieren. |Produktseite<br> |
 | ![Infolibrarian](./media/sql-data-warehouse-partner-data-management/infolibrarian-logo.png) |**Infolibrarian (Metadatenverwaltungsserver)**<br>InfoLibrarian katalogisiert, speichert und verwaltet Metadaten, sodass Sie die häufigsten Problemfälle der Datenverwaltung beheben können. Infolibrarian bietet Lösungen für Metadatenverwaltung, Data Governance und Asset Management zur Verwaltung und Veröffentlichung von Metadaten aus verschiedenen Tools und Technologien. |[Produktseite](http://www.infolibcorp.com/metadata-management/software-tools)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/infolibrarian.infolibrarian-metadata-management-server)<br> |
 | ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |**Kyligence**<br>Kyligence wurde von den Machern von Apache Kylin gegründet und hat sich zum Ziel gesetzt, die Produktivität seiner Kunden durch die Automatisierung der Datenverwaltung, -ermittlung, -interaktion und der Generierung von Erkenntnissen zu beschleunigen – und zwar vollkommen barrierefrei. Kyligence Cloud ermöglicht die Clusterbereitstellung, verbessert den Datenzugriff und beschleunigt die Datenanalyse erheblich. Durch die um KI erweiterte Big Data-Analyseverwaltungsplattform von Kyligence wird die häufig anspruchsvolle Aufgabe, Data Lakes auf Unternehmensniveau zu entwickeln, schnell und einfach.|[Produktseite](https://kyligence.io/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence)<br> |
 | ![Redpoint Global](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**RedPoint Data Management**<br>Mit RedPoint Data Management können Marketingfachleute sämtliche Daten für die kanalübergreifende Kundenbindung heranziehen und strukturierte sowie unstrukturierte Daten verwalten. Mit RedPoint können Sie den Wert Ihrer strukturierten oder unstrukturierten Daten maximieren, um die individualisierten und kontextbezogenen Interaktionen bereitstellen zu können, die für die Bindung der heute auf allen Kanälen aktiven Kunden erforderlich sind. Die Drag & Drop-Benutzeroberfläche macht das Entwerfen und Ausführen der Datenverwaltungsprozesse sehr leicht. |[Produktseite](https://www.redpointglobal.com/customer-data-management)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
@@ -39,8 +39,3 @@ In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die Tools u
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu anderen Partnern finden Sie unter [Business Intelligence-Partner](sql-data-warehouse-partner-business-intelligence.md), [Partner für die Datenintegration](sql-data-warehouse-partner-data-integration.md) und [Partner für maschinelles Lernen und KI](sql-data-warehouse-partner-machine-learning-ai.md).
-
-
-
-
-

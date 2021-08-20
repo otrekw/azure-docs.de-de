@@ -9,17 +9,19 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
-ms.openlocfilehash: c554f3582e67622a5a1739c9e410328c902d491b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd1ec5d11083c21511b39ba08fa2bfcf159bfc54
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655900"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340235"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>Verbinden von Daten aus Azure Web Application Firewall (WAF)
 
 Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannte Sicherheitslücken ausnutzen. Azure Web Application Firewall (WAF) schützt Ihre Webanwendungen zentralisiert vor gängigen Exploits und Bedrohungen wie der Einschleusung von Code und Cross-Site Scripting. Azure WAF kann im [Azure Application Gateway](../web-application-firewall/ag/ag-overview.md)-Dienst, dem [Azure Front Door](../web-application-firewall/afds/afds-overview.md)-Dienst und über eine [Azure Content Delivery Network (CDN)-](../web-application-firewall/cdn/cdn-overview.md)-WAF-Richtlinie bereitgestellt werden (letztere ist zurzeit als öffentliche Vorschau verfügbar).
 Sie können Azure WAF-Protokolle mit Azure Sentinel verbinden, was es Ihnen ermöglicht, Protokolldaten in Arbeitsmappen anzuzeigen, sie zum Erstellen benutzerdefinierter Warnungen zu verwenden und sie zur Verbesserung Ihrer Untersuchung zu integrieren.
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -66,5 +68,5 @@ Sie können Azure WAF-Protokolle mit Azure Sentinel verbinden, was es Ihnen erm
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie Azure WAF-Protokolle mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 01/05/2021
+ms.date: 07/16/2021
 ms.author: alkohli
-ms.openlocfilehash: 97d8da86565db73aa9a3866f39f793aaf0905470
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 820daf5400d60df85973d45840bd7a4a1c553198
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97900160"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463919"
 ---
 # <a name="azure-data-box-limits"></a>Für Azure Data Box geltende Einschränkungen
 
@@ -51,7 +51,7 @@ Folgende Data Box-Einschränkungen gelten für einen Exportauftrag:
 - Wenn Tags in Eingabedateien doppelt vorliegen oder auf dieselben Daten verweisen, werden die Dateien beim Data Box-Export möglicherweise übersprungen oder überschrieben. Die im Azure-Portal angezeigte Dateianzahl und Datenmenge unterscheiden sich möglicherweise von der tatsächlichen Größe der auf dem Gerät vorhandenen Daten. 
 - Data Box exportiert Daten über SMB auf ein Windows-basiertes System und ist durch die SMB-Limits für Dateien und Ordner eingeschränkt. Dateien und Ordner mit nicht unterstützten Namen werden nicht exportiert.
 - Es gibt eine 1:1-Zuordnung zwischen Präfix und Container.
-- Die maximale Größe des Dateinamens beträgt 1024 Zeichen. Dateinamen, die diese Länge überschreiten, werden nicht exportiert.
+- Die maximale Größe des Dateinamens beträgt 1024 Zeichen. Dateinamen, die diese Länge überschreiten, werden nicht exportiert. 
 - Doppelte Präfixe in der bei Auftragserstellung hochgeladenen *xml*-Datei werden exportiert. Doppelte Präfixe werden nicht ignoriert.
 - Bei Seitenblobs und Containernamen wird die Groß-/Kleinschreibung beachtet. Wenn die Groß-/Kleinschreibung nicht übereinstimmt, werden das Blob und/oder der Container nicht gefunden.
  

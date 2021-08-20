@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/22/2021
+ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: abe9d9cd46c7d4cbcb383ee9a37fc84cd64fcea8
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 5d6e5f608a79765a0bf6ac46cb8e36e6ba1ed1f3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107895990"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356569"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows"></a>Richten Sie die Telefonregistrierung und -anmeldung für Benutzerströme ein
 
@@ -70,7 +70,7 @@ Das folgende Beispiel zeigt, wie Sie die telefonische Registrierung zu einem neu
 3. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 4. Wählen Sie unter **Richtlinien** die Option **Benutzerflows** und dann **Neuer Benutzerflow** aus.
 
-    ![Seite „Benutzerflows“ im Portal mit hervorgehobener Schaltfläche „Neuer Benutzerflow“](./media/phone-authentication-user-flows/signup-signin-user-flow.png)
+    ![Seite „Benutzerflows“ im Portal mit hervorgehobener Schaltfläche „Neuer Benutzerflow“](./media/phone-authentication-user-flows/sign-up-sign-in-user-flow.png)
 
 5. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Registrierung und Anmeldung** aus.
 

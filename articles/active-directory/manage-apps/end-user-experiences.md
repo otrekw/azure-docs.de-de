@@ -2,21 +2,21 @@
 title: Endbenutzerumgebungen für Anwendungen – Azure Active Directory
 description: Azure Active Directory (Azure AD) bietet mehrere anpassbare Möglichkeiten, um Anwendungen für Endbenutzer in Ihrer Organisation bereitzustellen.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: mtillman
-ms.reviewer: arvindh
-ms.openlocfilehash: 9280cf669bb766ea82f2e668a56d2b3f743315fb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: lenalepa
+ms.openlocfilehash: 5cf4fe927d7079d866e90a789bb210730a6c4867
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081405"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346634"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Endbenutzerumgebungen für Anwendungen in Azure Active Directory
 
@@ -31,9 +31,9 @@ Welche Methode(n) Sie zur Bereitstellung in Ihrer Organisation wählen, liegt in
 
 ## <a name="azure-ad-my-apps"></a>„Meine Apps“ in Azure AD
 
-„Meine Apps“ unter https://myapps.microsoft.com ist ein webbasiertes Portal, über das ein Endbenutzer mit einem Organisationskonto in Azure Active Directory Anwendungen anzeigen und starten kann, für die ihm der Azure AD-Administrator Zugriff gewährt hat. Als Endbenutzer mit [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) können Sie auch die Funktionen zur Self-Service-Gruppenverwaltung über „Meine Apps“ nutzen.
+„Meine Apps“ unter <https://myapps.microsoft.com> ist ein webbasiertes Portal, über das ein Endbenutzer mit einem Organisationskonto in Azure Active Directory Anwendungen anzeigen und starten kann, für die ihm der Azure AD-Administrator Zugriff gewährt hat. Als Endbenutzer mit [Azure Active Directory Premium](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) können Sie auch die Funktionen zur Self-Service-Gruppenverwaltung über „Meine Apps“ nutzen.
 
-Standardmäßig werden alle Anwendungen auf einer einzelnen Seite aufgelistet. Sie können jedoch mithilfe von Auflistungen verwandte Anwendungen gruppieren und sie auf einer separaten Registerkarte präsentieren, damit sie leichter zu finden sind. So können Sie mit Auflistungen beispielsweise logische Gruppierungen von Anwendungen für bestimmte Positionen, Aufgaben, Projekte usw. erstellen. Informationen dazu finden Sie unter [Erstellen von Sammlungen im Portal „Meine Apps“](access-panel-collections.md). 
+Standardmäßig werden alle Anwendungen auf einer einzelnen Seite aufgelistet. Sie können jedoch mithilfe von Auflistungen verwandte Anwendungen gruppieren und sie auf einer separaten Registerkarte präsentieren, damit sie leichter zu finden sind. So können Sie mit Auflistungen beispielsweise logische Gruppierungen von Anwendungen für bestimmte Positionen, Aufgaben, Projekte usw. erstellen. Informationen dazu finden Sie unter [Erstellen von Sammlungen im Portal „Meine Apps“](access-panel-collections.md).
 
 „Meine Apps“ ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure- oder Microsoft 365-Abonnement verfügen.
 

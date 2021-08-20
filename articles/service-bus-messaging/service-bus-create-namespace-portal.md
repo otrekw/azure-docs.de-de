@@ -3,18 +3,18 @@ title: 'Vorgehensweise: Erstellen eines Service Bus-Namespaces im Azure-Portal'
 description: Dieser Artikel enthält Anweisungen zum Erstellen eines Azure Service Bus-Namespaces im Azure-Portal.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: c0844ca144b4303631a0015c06a9b37f3538875b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86c3c72f6fdd86bcc4c574f1dda3635b8bad9066
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498811"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416945"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Erstellen eines Service Bus-Namespace mithilfe des Azure-Portals
 
 Ein Namespace ist ein Bereichscontainer für alle Messagingkomponenten. Ein einzelner Namespace kann mehrere Warteschlangen und Themen enthalten, und Namespaces fungieren häufig als Anwendungscontainer. Dieser Artikel enthält Anweisungen zum Erstellen eines Namespace im Azure-Portal. 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+[!INCLUDE [service-bus-create-namespace-portal](./includes/service-bus-create-namespace-portal.md)]
 
 Glückwunsch! Sie haben nun einen Service Bus Messaging-Namespace erstellt.
 

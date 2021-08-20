@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 31b3c0a1894280e90f696f6c107b67a3af7b1880
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b4e306a39261da6c1422ba81ccb164e3903fbcd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605347"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354852"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokolle in Azure Database for PostgreSQL – Einzelserver
 
@@ -46,6 +46,8 @@ Sie können den Aufbewahrungszeitraum für diesen kurzfristigen Protokollspeiche
 Wenn Sie für Protokolle und Protokollanalysen eine Langzeitaufbewahrung wünschen, können Sie die LOG-Dateien herunterladen und an einen Speicherort eines Drittanbieterdiensts verschieben. Sie können die Dateien mit dem [Azure-Portal](howto-configure-server-logs-in-portal.md) oder der [Azure CLI](howto-configure-server-logs-using-cli.md) herunterladen. Alternativ können Sie die Azure Monitor-Diagnoseeinstellungen konfigurieren, damit Ihre Protokolle (im JSON-Format) automatisch an Orten abgelegt werden, die für eine längerfristige Speicherung bestimmt sind. Weitere Informationen zu dieser Option finden Sie im Abschnitt unten. 
 
 Sie können die Erstellung von LOG-Dateien beenden, indem Sie den Parameter `logging_collector` auf „Aus“ festlegen. Wir empfehlen Ihnen das Deaktivieren der Erstellung von LOG-Dateien, wenn Sie die Azure Monitor-Diagnoseeinstellungen verwenden. Mit dieser Konfiguration werden die Leistungseinbußen aufgrund der zusätzlichen Protokollierung verringert.
+> [!NOTE]
+> Starten Sie den Server neu, um diese Änderung zu übernehmen.
 
 ## <a name="resource-logs"></a>Ressourcenprotokolle
 

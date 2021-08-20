@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 02/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 29a1251ed390ec3aefbb45a02a3c4284ca1848b8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1ec2b7c3c9f4aaccd168031b718bbb5b50394506
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142457"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346478"
 ---
 # <a name="troubleshoot-smb-or-dual-protocol-volumes"></a>Problembehandlung für SMB-Volumes und Volumes mit dualem Protokoll
 
@@ -32,7 +32,7 @@ In diesem Artikel werden Lösungen für Fehlerbedingungen beschrieben, die beim 
 | LDAP über TLS ist aktiviert, und beim Erstellen eines Volumes mit dualem Protokoll tritt der Fehler `This Active Directory has no Server root CA Certificate` auf.    |     Wenn dieser Fehler beim Erstellen eines Volumes mit dualem Protokoll auftritt, stellen Sie sicher, dass das Zertifikat der Stammzertifizierungsstelle in Ihr NetApp-Konto hochgeladen wird.    |
 | Beim Erstellen eines Volumes mit dualem Protokoll tritt der Fehler `Failed to validate LDAP configuration, try again after correcting LDAP configuration` auf.    |  Der Zeigereintrag (PTR) des AD-Hostcomputers ist möglicherweise auf dem DNS-Server nicht vorhanden. Sie müssen eine Reverse-Lookupzone auf dem DNS-Server erstellen und dann einen PTR-Eintrag des AD-Hostcomputers in dieser Reverse-Lookupzone hinzufügen. <br> Nehmen wir beispielsweise an, dass die IP-Adresse des AD-Computers `10.x.x.x`, der Hostname des AD-Computers (wie mit dem Befehl `hostname` gefunden) `AD1` und der Domänenname `contoso.com` ist.  Der PTR-Eintrag, der der Reverse-Lookupzone hinzugefügt wurde, sollte `10.x.x.x` -> `contoso.com` sein.   |
 | Beim Erstellen eines Volumes mit dualem Protokoll tritt der Fehler `Failed to create the Active Directory machine account \\\"TESTAD-C8DD\\\". Reason: Kerberos Error: Pre-authentication information was invalid Details: Error: Machine account creation procedure failed\\n [ 434] Loaded the preliminary configuration.\\n [ 537] Successfully connected to ip 10.x.x.x, port 88 using TCP\\n**[ 950] FAILURE` auf. |     Dieser Fehler weist darauf hin, dass das AD-Kennwort falsch ist, wenn Active Directory mit dem NetApp-Konto verknüpft wird. Aktualisieren Sie die AD-Verbindung mit dem richtigen Kennwort, und versuchen Sie es erneut. |
-| Beim Erstellen eines Volumes mit dualem Protokoll tritt der Fehler `Could not query DNS server. Verify that the network configuration is correct and that DNS servers are available` auf. |   Dieser Fehler weist darauf hin, dass das DNS nicht erreichbar ist. Der Grund hierfür könnte sein, dass die DNS-IP-Adresse falsch ist oder ein Netzwerkproblem vorliegt. Überprüfen Sie die in der AD-Verbindung eingegebene DNS-IP-Adresse, und vergewissern Sie sich, dass sie richtig ist. <br> Stellen Sie außerdem sicher, dass sich AD und Volume in derselben Region und im gleichen VNET befinden. Wenn sie sich in verschiedenen VNETs befinden, stellen Sie sicher, dass das VNET-Peering zwischen den beiden VNETs eingerichtet ist.|
+| Beim Erstellen eines Volumes mit dualem Protokoll tritt der Fehler `Could not query DNS server. Verify that the network configuration is correct and that DNS servers are available` auf. |   Dieser Fehler weist darauf hin, dass das DNS nicht erreichbar ist. Der Grund hierfür könnte sein, dass die DNS-IP-Adresse falsch ist oder ein Netzwerkproblem vorliegt. Überprüfen Sie die in der AD-Verbindung eingegebene DNS-IP-Adresse, und vergewissern Sie sich, dass sie richtig ist. <br> Stellen Sie außerdem sicher, dass sich AD und Volume in derselben Region und im gleichen VNET befinden. Wenn sie sich in verschiedenen VNETs befinden, stellen Sie sicher, dass das VNET-Peering zwischen den beiden VNETs eingerichtet ist. <br> Ausführliche Informationen dazu finden Sie unter [Richtlinien für die Azure NetApp Files-Netzwerkplanung](azure-netapp-files-network-topologies.md#azure-native-environments). |
 | „Berechtigung verweigert“-Fehler beim Einbinden eines Volumes mit dualem Protokoll. | Ein Volume mit dualem Protokoll unterstützt das NFS- und das SMB-Protokoll.  Wenn Sie versuchen, auf das eingebundene Volume auf dem UNIX-System zuzugreifen, versucht das System, den verwendeten UNIX-Benutzer einem Windows-Benutzer zuzuordnen. Wenn keine Zuordnung gefunden wird, tritt der Fehler „Berechtigung verweigert“ auf. <br> Dies trifft auch zu, wenn Sie den Root-Benutzer für den Zugriff verwenden. <br> Um den Fehler „Berechtigung verweigert“ zu vermeiden, sollten Sie sicherstellen, dass Windows Active Directory `pcuser` enthält, bevor Sie auf den Bereitstellungspunkt zugreifen. Wenn Sie `pcuser` hinzufügen, nachdem der Fehler „Berechtigung verweigert“ aufgetreten ist, müssen Sie 24 Stunden warten, bis der Cacheeintrag gelöscht wurde, bevor Sie erneut versuchen, auf das Volume zuzugreifen. |
 
 ## <a name="common-errors-for-smb-and-dual-protocol-volumes"></a>Häufige Fehler bei SMB-Volumes und Volumes mit dualem Protokoll

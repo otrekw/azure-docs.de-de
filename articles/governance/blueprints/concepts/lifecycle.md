@@ -1,14 +1,14 @@
 ---
 title: Grundlegendes zum Lebenszyklus einer Blaupause
 description: Erfahren Sie mehr über den Lebenszyklus einer Blaupausendefinition und die Details zu den einzelnen Phasen, einschließlich dem Aktualisieren und Entfernen von Blaupausenzuweisungen.
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 38deda756a718200334a5e79350ee3b5309ed850
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ffb91fe6d821c73d0d8392c3d3ee08b48dd65bb2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761533"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356631"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Grundlegendes zum Lebenszyklus von Azure Blueprints
 

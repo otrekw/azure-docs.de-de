@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/30/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 944eff6e76f4e5759f70105fe9d09aa61093917f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 046911fef537f91e1b1d6c5f6c1ca351d2cc171f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028297"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "121802067"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Einrichten von Registrierung und Anmeldung mit SAML-Identitätsanbieter und Azure Active Directory B2C
 
@@ -56,7 +56,8 @@ Für dieses Szenario sind die folgenden Komponenten erforderlich:
 * Ein SAML-**Identitätsanbieter** mit der Möglichkeit, SAML-Anforderungen von Azure AD B2C zu empfangen, zu decodieren und darauf zu antworten.
 * Öffentlich verfügbarer SAML-**Metadatenendpunkt** für Ihren Identitätsanbieter.
 * Ein [Azure AD B2C-Mandant](tutorial-create-tenant.md).
- 
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
 
 ## <a name="create-a-policy-key"></a>Erstellen eines Richtlinienschlüssels
 

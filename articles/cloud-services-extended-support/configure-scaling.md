@@ -9,12 +9,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: dab3411319f40a111144a3e1c1f02f1b67d011b0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ef8bf7192814ee791066bbbfd080d0d5cf9d6943
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935650"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460900"
 ---
 # <a name="configure-scaling-options-with-azure-cloud-services-extended-support"></a>Konfigurieren der Skalierungsoptionen für Azure Cloud Services (erweiterter Support) 
 
@@ -64,5 +64,5 @@ Beachten Sie beim Konfigurieren der Skalierung Ihrer Cloud Service-Bereitstellun
 
 ## <a name="next-steps"></a>Nächste Schritte 
 - Überprüfen Sie die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Cloud Services (erweiterter Support).
-- Sehen Sie sich die [häufig gestellten Fragen](faq.md) zu Cloud Services (erweiterter Support) an.
+- Sehen Sie sich die [häufig gestellten Fragen](faq.yml) zu Cloud Services (erweiterter Support) an.
 - Stellen Sie eine Cloud Service-Instanz (erweiterter Support) über das [Azure-Portal](deploy-portal.md), mit [PowerShell](deploy-powershell.md), einer [Vorlage](deploy-template.md) oder [Visual Studio](deploy-visual-studio.md) bereit.

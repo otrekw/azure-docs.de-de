@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: 23fc6f6f6a62230e2cfc710c1c738eb42d6cc115
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 46b29bb6a7294d0f6741be4cac7028fe7e42ec95
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527536"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113430267"
 ---
 # <a name="create-a-virtual-machine-using-an-approved-base"></a>Erstellen eines virtuellen Computers mit einer genehmigten Basis
 
@@ -78,5 +78,5 @@ In der folgenden Dokumentation erfahren Sie, wie Sie eine Verbindung mit einer [
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Empfohlener nächster Schritt: [Testen Sie das VM-Image](azure-vm-image-test.md), um sicherzustellen, dass es die Veröffentlichungsanforderungen von Azure Marketplace erfüllt. Dies ist optional.
-- Wenn Sie Ihr VM-Image nicht testen möchten, melden Sie sich bei [Partner Center](https://partner.microsoft.com/) an, um Ihr Image zu veröffentlichen.
-- Wenn beim Erstellen der neuen Azure-basierten VHD Probleme auftreten, informieren Sie sich in den [FAQ zu VMs für Azure Marketplace](azure-vm-create-faq.md).
+- Wenn Sie Ihr VM-Image nicht testen möchten, melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165935) an, um Ihr Image zu veröffentlichen.
+- Wenn beim Erstellen der neuen Azure-basierten VHD Probleme auftreten, informieren Sie sich in den [FAQ zu VMs für Azure Marketplace](azure-vm-create-faq.yml).

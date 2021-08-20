@@ -2,19 +2,18 @@
 title: Erste Schritte mit der Azure IoT Hub-Geräteverwaltung (Node) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe der IoT Hub-Geräteverwaltung den Neustart eines Remotegeräts initiieren. Sie verwenden das Azure IoT SDK für Node.js, um eine simulierte Geräte-App mit einer direkten Methode und eine Dienst-App zu implementieren, die die direkte Methode aufruft.
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8d551de4e467d602c40fc40889bfc36e5cf69a1d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: da842509c7adbf1cc576c42d229e3934bb74251d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075599"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346384"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Erste Schritte mit der Geräteverwaltung (Node.js)
 

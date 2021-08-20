@@ -2,18 +2,17 @@
 title: Verwenden der Azure IoT Solutions-Website – Azure | Microsoft-Dokumentation
 description: Beschreibt, wie Sie die azureiotsolutions.com-Website verwenden können, um Ihren Solution Accelerator bereitzustellen.
 author: dominicbetts
-manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: e3c9296a909ba23ee8a3475149911af629a01b1a
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 3251adb72adfb53209878fcfc1450518b9bc9f37
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167463"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346935"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Verwenden der azureiotsolutions.com-Website zum Bereitstellen Ihres Solution Accelerators
 

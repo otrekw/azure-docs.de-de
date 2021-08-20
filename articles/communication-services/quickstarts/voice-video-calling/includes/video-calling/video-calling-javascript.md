@@ -4,19 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 2bbff7c68b76b82bb834528124271eff69b8ad87
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: e8a00161e9619a27b371ed80a61d7b3ea5d3e9c6
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111896520"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112535630"
 ---
 Steigen Sie in Azure Communication Services ein, indem Sie das Communication Services-SDK „Calling“ nutzen, um Ihrer App 1:1-Videoanrufe hinzuzufügen. Hier erfahren Sie, wie Sie einen Videoanruf mithilfe des Calling SDK von Azure Communication Services für JavaScript beginnen und beantworten.
 
+## <a name="sample-code"></a>Beispielcode
 
-> [!NOTE]
-> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling).
-
+Wenn Sie direkt zum Ende springen möchten, können Sie diese Schnellstartanleitung als Beispiel auf [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Rufen Sie ein Azure-Konto mit einem aktiven Abonnement ab. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -135,7 +134,11 @@ Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigst
 
 ## <a name="authenticate-the-client-and-access-devicemanager"></a>Authentifizieren des Clients und Zugreifen auf DeviceManager
 
-Sie müssen <[USER_ACCESS_TOKEN](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/access-tokens-quickstart)> durch ein gültiges Benutzerzugriffstoken für Ihre Ressource ersetzen. Wenn Sie noch über kein Token verfügen, finden Sie unter Benutzerzugriffstoken weitere Informationen. Initialisieren Sie mithilfe von `CallClient` eine `CallAgent`-Instanz mit einem `CommunicationUserCredential`-Objekt, das es uns ermöglicht, Anrufe zu tätigen und zu empfangen. Um auf `DeviceManager` zugreifen zu können, muss zunächst eine callAgent-Instanz erstellt werden. Anschließend können Sie die `getDeviceManager`-Methode für die `CallClient`-Instanz ausführen, um `DeviceManager` abzurufen.
+Sie müssen <**USER_ACCESS_TOKEN**> durch ein gültiges Benutzerzugriffstoken für Ihre Ressource ersetzen. Wenn Sie noch über kein Token verfügen, finden Sie in der Dokumentation zu [Benutzerzugriffstoken](../../../access-tokens.md) weitere Informationen. 
+
+Initialisieren Sie mithilfe von `CallClient` eine `CallAgent`-Instanz mit einem `CommunicationUserCredential`-Objekt, das es uns ermöglicht, Anrufe zu tätigen und zu empfangen. 
+
+Um auf `DeviceManager` zugreifen zu können, muss zunächst eine callAgent-Instanz erstellt werden. Anschließend können Sie die `getDeviceManager`-Methode für die `CallClient`-Instanz ausführen, um `DeviceManager` abzurufen.
 
 Fügen Sie den folgenden Code zu `client.js` hinzu:
 
@@ -294,7 +297,7 @@ hangUpButton.addEventListener("click", async () => {
 
 ## <a name="start-and-end-video-during-the-call"></a>Starten und Beenden des Videos während des Anrufs
 Sie können das Video während des aktuellen Anrufs beenden, indem Sie der Schaltfläche „Video beenden“ einen Ereignislistener hinzufügen, um den Renderer von `localVideoStream` zu verwerfen. 
- ```JavaScript       
+ ```JavaScript
 stopVideoButton.addEventListener("click", async () => {
     await call.stopVideo(localVideoStream);
     rendererLocal.dispose();
@@ -321,7 +324,4 @@ Navigieren Sie in Ihrem Browser zu http://localhost:8080/. Daraufhin sollte Folg
 
 :::image type="content" source="../../media/javascript/1-on-1-video-calling.png" alt-text="1:1-Videoanruf":::
 
-Sie können einen ausgehenden 1:1-Videoanruf tätigen, indem Sie eine Benutzer-ID im Textfeld eingeben und auf die Schaltfläche „Start Call“ (Anruf beginnen) klicken. 
-
-## <a name="sample-code"></a>Beispielcode
-Sie können die Beispiel-App von [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) herunterladen.
+Sie können einen ausgehenden 1:1-Videoanruf tätigen, indem Sie eine Benutzer-ID im Textfeld eingeben und auf die Schaltfläche „Start Call“ (Anruf beginnen) klicken.

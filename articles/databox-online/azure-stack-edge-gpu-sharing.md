@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 07/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ff1c7b79a49b0b659056c89af3c61f28b72ebc50
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b1fd1d77a8b2e6f7da3a88bc4d7f57336d18237c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645233"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346516"
 ---
 # <a name="gpu-sharing-on-your-azure-stack-edge-pro-gpu-device"></a>GPU-Freigabe auf Ihrem Azure Stack Edge Pro-Gerät mit GPU
 
@@ -26,7 +26,7 @@ Für viele ML- und andere Computeworkloads wird keine dedizierte GPU benötigt. 
 
 ## <a name="using-gpu-with-vms"></a>Verwenden von GPUs mit VMs
 
-Auf Ihrem Azure Stack Edge Pro-Gerät kann eine GPU nicht freigegeben werden, wenn VM-Workloads bereitgestellt werden. Eine GPU kann lediglich einer VM zugeordnet werden. Das bedeutet, dass auf einem Gerät mit einer GPU nur eine GPU-VM und auf einem Gerät mit zwei GPUs zwei GPU-VMs vorhanden sein können. Bei Verwendung von GPU-VMs auf einem Gerät, auf dem Kubernetes für Containerworkloads konfiguriert ist, müssen weitere Faktoren berücksichtigt werden. Weitere Informationen finden Sie unter [GPU-VMs und Kubernetes](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#gpu-vms-and-kubernetes).
+Auf Ihrem Azure Stack Edge Pro-Gerät kann eine GPU nicht freigegeben werden, wenn VM-Workloads bereitgestellt werden. Eine GPU kann lediglich einer VM zugeordnet werden. Das bedeutet, dass auf einem Gerät mit einer GPU nur eine GPU-VM und auf einem Gerät mit zwei GPUs zwei GPU-VMs vorhanden sein können. Bei Verwendung von GPU-VMs auf einem Gerät, auf dem Kubernetes für Containerworkloads konfiguriert ist, müssen weitere Faktoren berücksichtigt werden. Weitere Informationen finden Sie unter [GPU-VMs und Kubernetes](azure-stack-edge-gpu-overview-gpu-virtual-machines.md#gpu-vms-and-kubernetes).
 
 
 ## <a name="using-gpu-with-containers"></a>Verwenden von GPUs mit Containern

@@ -3,12 +3,12 @@ title: Exportieren aus Application Insights nach SQL | Microsoft-Dokumentation
 description: Exportiere Sie Application Insights-Daten kontinuierlich in SQL mit Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 7627ae6dabb75782549ed17fc6e590b7bc7da77d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4629a99aba45df1ae834ec8236131dd8214b13b5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092744"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767192"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Exemplarische Vorgehensweise: Exportieren aus Application Insights in SQL mit Stream Analytics
 In diesem Artikel wird veranschaulicht, wie Sie Telemetriedaten aus [Azure Application Insights][start] mithilfe von [fortlaufendem Export][export] und [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) in Azure SQL-Datenbank verschieben. 
@@ -20,6 +20,9 @@ Beim fortlaufenden Export werden die Telemetriedaten im JSON-Format in Azure Sto
 Zu Beginn gehen wir davon aus, dass Sie bereits über die App verfügen, die Sie überwachen möchten.
 
 In diesem Beispiel verwenden wir die Seitenzugriffsdaten. Dasselbe Muster kann jedoch problemlos auf andere Datentypen, wie z. B. benutzerdefinierte Ereignisse und Ausnahmen, übertragen werden. 
+
+> [!IMPORTANT]
+> Der fortlaufende Export ist veraltet und wird nur für klassische Application Insights-Ressourcen unterstützt. [Migrieren Sie zu einer arbeitsbereichsbasierten Application Insights-Ressource](convert-classic-resource.md), um [Diagnoseeinstellungen](export-telemetry.md#diagnostic-settings-based-export) zum Exportieren von Telemetriedaten zu verwenden.
 
 ## <a name="add-application-insights-to-your-application"></a>Hinzufügen von Application Insights zu Ihrer Anwendung
 Erste Schritte:

@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 98e0137c8e48696737cd5d8d1fd4d3de925b9f7f
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: dbc82b67206f6453101b0d6f419718b928506f79
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579791"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003852"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Cognitive Search im Azure-Portal
 
@@ -73,7 +73,7 @@ Cognitive Search nutzt andere Azure-Dienste zur detaillierteren Überwachung und
 
 Wenn Sie die Übersichtsseite des Suchdiensts öffnen, bestimmen die Ihrem Konto zugewiesenen Berechtigungen, welche Seiten ihnen zur Verfügung stehen. Die Übersichtsseite am Anfang des Artikels zeigt die Portalseiten an, die einem Administrator oder Mitwirkenden angezeigt werden.
 
-In einer Azure-Ressource werden Administratorrechte über Rollenzuweisungen gewährt. Im Kontext von Azure Cognitive Search bestimmen die [Rollenzuweisungen](search-security-rbac.md), wer Replikate und Partitionen zuweisen oder API-Schlüssel verwalten kann, unabhängig davon, ob Sie das Portal, [PowerShell](search-manage-powershell.md), die [Azure CLI](search-manage-azure-cli.md) oder die [Verwaltungs-REST-APIs](/rest/api/searchmanagement/search-howto-management-rest-api) verwenden:
+In einer Azure-Ressource werden Administratorrechte über Rollenzuweisungen gewährt. Im Kontext von Azure Cognitive Search bestimmen die [Rollenzuweisungen](search-security-rbac.md), wer Replikate und Partitionen zuweisen oder API-Schlüssel verwalten kann, unabhängig davon, ob Sie das Portal, [PowerShell](search-manage-powershell.md), die [Azure CLI](search-manage-azure-cli.md) oder die [Verwaltungs-REST-APIs](/rest/api/searchmanagement) verwenden:
 
 > [!TIP]
 > Die Bereitstellung oder Außerbetriebnahme des eigentlichen Diensts kann von einem Administrator oder Co-Administrator des Azure-Abonnements durchgeführt werden. Mithilfe von Azure-weit gültigen Mechanismen können Sie ein Abonnement oder eine Ressource sperren, um die versehentliche oder nicht autorisierte Löschung Ihres Suchdiensts durch Benutzer mit Administratorrechten zu verhindern. Weitere Informationen finden Sie unter [Sperren von Ressourcen zum Verhindern unerwarteter Löschungen](../azure-resource-manager/management/lock-resources.md).

@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Stack Edge Pro R – Übersicht | Microsoft-Dokumentation
-description: Informationen zu Azure Stack Edge Pro R-Geräten, einer Speicherlösung für militärische Anwendungen, die ein physisches Gerät für die netzwerkbasierte Übertragung in Azure verwendet.
+description: Informationen zu Azure Stack Edge Pro R-Geräten, einer Speicherlösung, die ein physisches Gerät für die netzwerkbasierte Übertragung in Azure verwendet, und die auch in rauen Umgebungen bereitgestellt werden kann.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 04/19/2021
 ms.author: alkohli
-ms.openlocfilehash: b07fe5ad07cca8c8e151e8232e3ab165dc476be2
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: becd3c0994007b06c74b1bfbd2c88660464d6622
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732672"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112575512"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Was ist Azure Stack Edge Pro R?
 

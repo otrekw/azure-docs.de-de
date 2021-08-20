@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: eea3f691bc6d91948dc73b4a02c89abfac12d384
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 0008c6034eba2de58684276cb5f12c6b2398cac1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498885"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355017"
 ---
 # <a name="troubleshoot-ldap-volume-issues"></a>Behandeln von Problemen mit LDAP-Volumes
 
@@ -38,4 +38,4 @@ In diesem Artikel werden Lösungen für Fehlerbedingungen beschrieben, die beim 
 
 * [Konfigurieren von ADDS LDAP mit erweiterten Gruppen für Zugriff auf NFS-Volumes](configure-ldap-extended-groups.md)
 * [Erstellen eines NFS-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md)
-* [Erstellen eines Volumes mit dualem Protokoll (NFSv3 und SMB) für Azure NetApp Files](create-volumes-dual-protocol.md)
+* [Erstellen eines Volumes mit dualem Protokoll für Azure NetApp Files](create-volumes-dual-protocol.md)

@@ -2,13 +2,13 @@
 title: 'Azure Event Grid: Partnerereignisse'
 description: Mit Azure Event Grid können Sie Ereignisse von SaaS- und PaaS-Drittanbieterpartnern direkt an Azure-Dienste senden.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/15/2021
+ms.openlocfilehash: 5a215d8d007f411066d25d8751299ae6a73038dc
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94506145"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350744"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Partnerereignisse in Azure Event Grid (Vorschau)
 Mit dem Feature **Partnerereignisse** kann ein SaaS-Drittanbieter Ereignisse über seine Dienste veröffentlichen, damit Kunden diese Ereignisse abonnieren können. Dieses Feature bietet Erstanbieterfunktionen für Ereignisquellen von Drittanbietern, indem ein [Thementyp](concepts.md#topics) zur Verfügung gestellt wird: ein **Partnerthema**. Abonnenten erstellen Abonnements dieses Themas, um Ereignisse zu nutzen. Außerdem bietet dieses Feature ein klares Modell für Veröffentlichungen/Abonnements, indem es die Belange und den Besitz von Ressourcen trennt, die von Ereignisherausgebern und -abonnenten verwendet werden.
@@ -48,12 +48,10 @@ Das Feature „Partnerereignisse“ kommt für Sie in Frage, wenn Sie eine oder 
 ## <a name="available-third-party-event-publishers"></a>Verfügbare Ereignisherausgeber von Drittanbietern
 Ein Ereignisherausgeber von Drittanbietern muss einen [Onboardingprozess durchlaufen](partner-onboarding-overview.md), ehe ein Abonnent mit der Nutzung seiner Ereignisse beginnen kann. 
 
-Wenn Sie Abonnent sind und möchten, dass ein Drittanbieter seine Ereignisse über Event Grid verfügbar macht, 
 
 ### <a name="auth0"></a>Auth0
 **Auth0** ist der erste verfügbare Partnerherausgeber. Sie können ein [Auth0-Partnerthema](auth0-overview.md) erstellen, um Ihre Auth0- und Azure-Konten zu verbinden. Diese Integration ermöglicht Ihnen, in Echtzeit auf Auth0-Ereignisse zu reagieren, diese zu protokollieren und zu überwachen. Weitere Informationen finden Sie unter [Integrieren von Azure Event Grid und Auth0](auth0-how-to.md).
 
-Wenn Sie möchten, dass ein Drittanbieterdienst seine Ereignisse über Event Grid verfügbar macht, übermitteln Sie den Vorschlag im [User Voice-Portal](https://feedback.azure.com/forums/909934-azure-event-grid).
  
 ## <a name="resources-managed-by-event-publishers"></a>Von Ereignisherausgebern verwaltete Ressourcen
 Die folgenden Ressourcen werden von Ereignisherausgebern erstellt und verwaltet:

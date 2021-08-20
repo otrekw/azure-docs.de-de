@@ -4,17 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 7589190f29e7d85bfb49a868dde9b261882d28b0
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: a85246e9c60af6363ddd59066f55941da04cfe1c
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593555"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112536060"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Anruf mithilfe des Calling SDK von Azure Communication Services für Windows einleiten.
 
-> [!NOTE]
-> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/VoiceCalling).
+## <a name="sample-code"></a>Beispielcode
+
+Sie können die Beispiel-App von [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/VoiceCalling) herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -123,7 +124,11 @@ Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigst
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-Initialisieren Sie eine `CallAgent`-Instanz mit einem Benutzerzugriffstoken, das es uns ermöglicht, Anrufe zu tätigen und zu empfangen. Fügen Sie der Funktion `InitCallAgent` den folgenden Code hinzu: 
+Initialisieren Sie eine `CallAgent`-Instanz mit einem Benutzerzugriffstoken, das es uns ermöglicht, Anrufe zu tätigen und zu empfangen. 
+
+Ersetzen Sie im folgenden Code `<USER_ACCESS_TOKEN>` durch ein Benutzerzugriffstoken. Wenn Sie noch über kein Token verfügen, finden Sie unter [Benutzerzugriffstoken](../../../access-tokens.md) weitere Informationen.
+
+Fügen Sie der Funktion `InitCallAgent` den folgenden Code hinzu: 
 
 ```C#
 CommunicationTokenCredential token_credential = new CommunicationTokenCredential("<USER_ACCESS_TOKEN>");
@@ -167,7 +172,3 @@ Sie können den Build in Visual Studio erstellen und den Code ausführen. Beacht
 Sie können einen ausgehenden Anruf tätigen, indem Sie eine Benutzer-ID im Textfeld eingeben und auf die Schaltfläche `Start Call` klicken. Wenn Sie `8:echo123` anrufen, werden Sie mit einem Echobot verbunden. Dies eignet sich hervorragend für die ersten Schritte und zum Überprüfen, ob Ihre Audiogeräte funktionieren.
 
 :::image type="content" source="../../media/windows/run-the-app.png" alt-text="Screenshot: Ausführen der Schnellstart-App":::
-
-## <a name="sample-code"></a>Beispielcode
-
-Sie können die Beispiel-App von [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/VoiceCalling) herunterladen.

@@ -7,12 +7,12 @@ ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d182d88d62183e7848ad6fed00b1f3eb93d3239e
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5a8227b862328f1d1f7f282b7d89febaa0a66040
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317665"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350275"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)
 
@@ -36,7 +36,7 @@ Azure SQL-Analyse ist eine reine Cloudüberwachungslösung, die das Streaming vo
 | [Diagnoseeinstellungen](../essentials/diagnostic-settings.md) | **Ja** | Azure-Metrik- und Protokolldaten werden direkt von Azure an Azure Monitor-Protokolle gesendet. |
 | [Azure-Speicherkonto](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Nein | Azure Monitor liest keine Daten aus einem Speicherkonto. |
 | [Windows-Agents](../agents/agent-windows.md) | Nein | Von Azure SQL-Analyse werden keine direkten Windows-Agents verwendet. |
-| [Linux-Agents](../vm/quick-collect-linux-computer.md) | Nein | Von Azure SQL-Analyse werden keine direkten Linux-Agents verwendet. |
+| [Linux-Agents](../vm/monitor-virtual-machine.md) | Nein | Von Azure SQL-Analyse werden keine direkten Linux-Agents verwendet. |
 | [System Center Operations Manager-Verwaltungsgruppe](../agents/om-agents.md) | Nein | Von Azure SQL-Analyse wird keine direkte Verbindung vom Operations Manager-Agent zu Azure Monitor verwendet. |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL-Analyse – Optionen
@@ -300,4 +300,3 @@ Obwohl Azure SQL-Analyse kostenlos verwendet werden kann, fallen für die Nutzun
 - Verwenden Sie [Protokollabfragen](../logs/log-query-overview.md) in Azure Monitor, um detaillierte Azure SQL-Daten anzuzeigen.
 - [Erstellen eigener Dashboards](../visualize/tutorial-logs-dashboards.md), die Azure SQL-Daten anzeigen
 - [Erstellen von Warnungen](../alerts/alerts-overview.md), wenn bestimmte Azure SQL-Ereignisse auftreten
-

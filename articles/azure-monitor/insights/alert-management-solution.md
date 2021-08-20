@@ -5,24 +5,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: 6f3761b1c933d113bf65c70370c29bcfa7950eea
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b9bd43591c64d1b83ba8bf8f5400c0273141d735
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728653"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350523"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Warnungsverwaltungslösung in Azure Log Analytics
 
 ![Symbol „Alert Management“](media/alert-management-solution/icon.png)
 
-Die Alert Management-Lösung unterstützt Sie beim Analysieren aller Warnungen in Ihrem Log Analytics-Repository.  Diese Warnungen können aus einer Vielzahl von Quellen stammen, einschließlich der [von Log Analytics erstellten](../alerts/alerts-overview.md) oder [aus Nagios oder Zabbix importierten](../vm/quick-collect-linux-computer.md). Die Lösung importiert auch Warnungen aus beliebigen [verbundenen System Center Operations Manager-Verwaltungsgruppen](../agents/om-agents.md).
+Die Alert Management-Lösung unterstützt Sie beim Analysieren aller Warnungen in Ihrem Log Analytics-Repository.  Diese Warnungen können aus einer Vielzahl von Quellen stammen, einschließlich der [von Log Analytics erstellten](../alerts/alerts-overview.md) oder [aus Nagios oder Zabbix importierten](../vm/monitor-virtual-machine.md). Die Lösung importiert auch Warnungen aus beliebigen [verbundenen System Center Operations Manager-Verwaltungsgruppen](../agents/om-agents.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Die Lösung funktioniert mit allen Einträgen im Log Analytics-Repository mit dem Typ **Warnung**, sodass Sie die jeweilige erforderliche Konfiguration ausführen müssen, um diese Datensätze zu sammeln.
 
 - Für Log Analytics-Warnungen müssen Sie [Warnungsregeln erstellen](../alerts/alerts-overview.md), um Warnungsdatensätze direkt im Repository zu erstellen.
-- Für Warnungen von Nagios und Zabbix müssen Sie [diese Server konfigurieren](../vm/quick-collect-linux-computer.md), sodass sie Warnungen an Log Analytics senden.
+- Für Warnungen von Nagios und Zabbix müssen Sie [diese Server konfigurieren](../vm/monitor-virtual-machine.md), sodass sie Warnungen an Log Analytics senden.
 - Für System Center Operations Manager-Warnungen müssen Sie [Ihre Operations Manager-Verwaltungsgruppe mit Ihrem Log Analytics-Arbeitsbereich verbinden](../agents/om-agents.md).  Alle in System Center Operations Manager erstellten Warnungen werden in Log Analytics importiert.  
 
 ## <a name="configuration"></a>Konfiguration
@@ -42,7 +42,7 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 | Verbundene Quelle | Support | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | [Windows-Agents](../agents/agent-windows.md) | Nein |Direkte Windows-Agents generieren keine Warnungen.  Log Analytics-Warnungen können aus Ereignissen und Leistungsdaten erstellt werden, die von Windows-Agents gesammelt wurden. |
-| [Linux-Agents](../vm/quick-collect-linux-computer.md) | Nein |Direkte Linux-Agents generieren keine Warnungen.  Log Analytics-Warnungen können aus Ereignissen und Leistungsdaten erstellt werden, die von Linux-Agents gesammelt wurden.  Nagios- und Zabbix-Warnungen werden von Servern gesammelt, die den Linux-Agent erfordern. |
+| [Linux-Agents](../vm/monitor-virtual-machine.md) | Nein |Direkte Linux-Agents generieren keine Warnungen.  Log Analytics-Warnungen können aus Ereignissen und Leistungsdaten erstellt werden, die von Linux-Agents gesammelt wurden.  Nagios- und Zabbix-Warnungen werden von Servern gesammelt, die den Linux-Agent erfordern. |
 | [System Center Operations Manager-Verwaltungsgruppe](../agents/om-agents.md) |Ja |Warnungen, die auf Operations Manager-Agents generiert werden, werden an die Verwaltungsgruppe übermittelt und dann an Log Analytics weitergeleitet.<br><br>Es ist keine direkte Verbindung von Operations Manager-Agents mit Log Analytics erforderlich. Warnungsdaten werden von der Verwaltungsgruppe an das Log Analytics-Repository weitergeleitet. |
 
 

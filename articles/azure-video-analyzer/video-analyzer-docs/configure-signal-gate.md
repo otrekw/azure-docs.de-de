@@ -2,13 +2,13 @@
 title: Konfigurieren eines Signaltors für die ereignisbasierte Videoaufzeichnung - Azure
 description: In diesem Artikel wird erläutert, wie Sie ein Signaltor in einer Pipeline konfigurieren.
 ms.topic: how-to
-ms.date: 4/12/2021
-ms.openlocfilehash: e03524e7e12a0081172918159e9f2d2ed2e4a7d6
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 06/01/2021
+ms.openlocfilehash: c0b38005010d2718235700f0ed13575e15119103
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413427"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604078"
 ---
 # <a name="configuring-a-signal-gate-for-event-based-video-recording"></a>Konfigurieren eines Signaltors für ereignisbasierte Videoaufzeichnungen
 
@@ -155,7 +155,40 @@ Beispieldiagramm:
 > [!IMPORTANT]
 > In den obigen Diagrammen wird davon ausgegangen, dass jedes Ereignis sowohl in physischer als auch in Medienzeit im selben Moment eintrifft. Anders gesagt: Es wird angenommen, dass kein Ereignis zu spät eintrifft.
 
+### <a name="naming-video-or-files"></a>Benennen von Videos oder Dateien
+
+Pipelines ermöglichen die Aufzeichnung von Videos in der Cloud oder als MP4-Dateien auf dem Edge-Gerät. Diese können durch [fortlaufende Videoaufzeichnung](use-continuous-video-recording.md) oder [ereignisbasierte Videoaufzeichnung](record-event-based-live-video.md) generiert werden.
+
+Die empfohlene Namensstruktur für die Aufzeichnung in der Cloud besteht im Benennen der Videoressource als „<anytext>-${System.TopologyName}-${System.PipelineName}“. Eine festgelegte Live-Pipeline kann nur eine Verbindung mit einer RTSP-fähigen IP-Kamera herstellen, und Sie sollten die Eingabe dieser Kamera in einer Videoressource aufzeichnen. Sie können z. B. `VideoName` in den Videosenken wie nachfolgend beschrieben, einstellen:
+
+```
+"VideoName": "sampleVideo-${System.TopologyName}-${System.PipelineName}"
+```
+Beachten Sie, dass das Ersetzungsmuster durch das `$`-Zeichen gefolgt von geschweiften Klammern **${Variablenname}** definiert wird.
+
+Für die Aufzeichnung von MP4-Dateien auf dem Edge-gerät mit ereignisbasierter Aufzeichnung können Sie Folgendes verwenden:
+
+```
+"fileNamePattern": "sampleFilesFromEVR-${System.TopologyName}-${System.PipelineName}-${fileSinkOutputName}-${System.Runtime.DateTime}"
+```
+
+> [!Note]
+> Im Beispiel oben ist die Variable **fileSinkOutputName** der Name einer Beispielvariable, den Sie bei der Erstellung einer Live-Pipeline definieren. Dies ist **keine** Systemvariable. Beachten Sie, dass durch die Verwendung von **DateTime** ein einzigartiger MP4-Dateiname für jedes Ereignis sichergestellt wird.
+
+#### <a name="system-variables"></a>Systemvariablen
+
+Folgende systemseitig definierte Variablen können Sie u. a. verwenden:
+
+| Systemvariable        | Beschreibung                                                  | Beispiel              |
+| :--------------------- | :----------------------------------------------------------- | :------------------- |
+| System.Runtime.DateTime        | UTC-Datum/-Uhrzeit im dateikonformen ISO8601-Format (Basisdarstellung YYYYMMDDThhmmss). | 20200222T173200Z     |
+| System.Runtime.PreciseDateTime | UTC-Datum/-Uhrzeit im dateikonformen ISO8601-Format mit Millisekunden (Basisdarstellung YYYYMMDDThhmmss.sss). | 20200222T173200.123Z |
+| System.TopologyName    | Vom Benutzer angegebener Name der ausgeführten Pipeline-Topologie.          | IngestAndRecord      |
+| System.PipelineName    | Vom Benutzer angegebener Name der ausgeführten Live-Pipeline.          | camera001            |
+
+> [!Tip]
+> System.Runtime.PreciseDateTime und System.Runtime.DateTime können beim Benennen von Videos in der Cloud nicht verwendet werden.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Arbeiten Sie das [Tutorial zur ereignisbasierten Videoaufzeichnung](record-event-based-live-video.md) durch. Bearbeiten Sie zunächst die Datei [topology.json](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-video-sink/topology.json). Ändern Sie die Parameter für den signalgateProcessor-Knoten, und gehen Sie dann den Rest des Tutorials durch. Sehen Sie sich die Videoaufzeichnungen an, um die Auswirkungen der verschiedenen Parameter zu analysieren.
-

@@ -6,12 +6,12 @@ author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 933280b5d3b81098f18f22a72bd2c7f942869e6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e45a9cfe8a372247c7ac3550c65a5a30e3fd7cb6
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578317"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122340564"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Korrelieren von Application Insights-Daten mit benutzerdefinierten Datenquellen
 
@@ -31,7 +31,7 @@ Da Application Insights auf der leistungsstarken Azure Monitor-Protokollplattfor
 
 In diesem Abschnitt wird beschrieben, wie Ihre Daten in Azure Monitor-Protokolle gelangen.
 
-Falls noch nicht geschehen, sollten Sie einen neuen Log Analytics-Arbeitsbereich bereitstellen, indem Sie [diese Anleitung](../vm/quick-collect-azurevm.md) befolgen und den Schritt zum „Erstellen eines Arbeitsbereichs“ ausführen.
+Falls noch nicht geschehen, sollten Sie einen neuen Log Analytics-Arbeitsbereich bereitstellen, indem Sie [diese Anleitung](../vm/monitor-virtual-machine.md) befolgen und den Schritt zum „Erstellen eines Arbeitsbereichs“ ausführen.
 
 Gehen Sie wie unten angegeben vor, um mit dem Senden von Daten an Azure Monitor zu beginnen. Sie haben mehrere Optionen:
 

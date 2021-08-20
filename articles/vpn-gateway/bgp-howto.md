@@ -6,14 +6,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 07/26/2021
 ms.author: yushwang
-ms.openlocfilehash: df42925b50cba4d32ea554ae54dbcb09a5e04377
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 5748b68940027269acaafe27148f0c4819cefc0a
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205951"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720328"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Konfigurieren von BGP für Azure-VPN-Gateways
 
@@ -90,7 +90,7 @@ In diesem Schritt erstellen Sie ein VPN-Gateway mit den zugehörigen BGP-Paramet
    > * Wenn APIPA-Adressen auf Azure-VPN-Gateways verwendet werden, initiieren die Gateways keine BGP-Peeringsitzungen mit APIPA-Quell-IP-Adressen. Das lokale VPN-Gerät muss BGP-Peeringverbindungen initiieren.
    >
 
-1. Wählen Sie zum Ausführen der Validierung **Bewerten + erstellen** aus. Wählen Sie nach Abschluss der Validierung **Erstellen** aus, um das VPN-Gateway bereitzustellen. Die gesamte Erstellung und Bereitstellung eines Gateways kann bis zu 45 Minuten dauern. Der Bereitstellungsstatus wird auf der Übersichtsseite für Ihr Gateway angezeigt.
+1. Wählen Sie zum Ausführen der Validierung **Bewerten + erstellen** aus. Wählen Sie nach Abschluss der Validierung **Erstellen** aus, um das VPN-Gateway bereitzustellen. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern. Der Bereitstellungsstatus wird auf der Übersichtsseite für Ihr Gateway angezeigt.
 
 ### <a name="3-obtain-the-azure-bgp-peer-ip-addresses"></a>3. Abrufen der Azure-BGP-Peer-IP-Adressen
 

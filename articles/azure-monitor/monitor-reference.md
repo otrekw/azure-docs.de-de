@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 3fa167233c5afe7b50b2794f6c0fff5458e9acf7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b04cacb1d2767e152e62bc3fd5902798204f3f60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089054"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346415"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -29,7 +29,7 @@ Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte A
 | [Cosmos DB-Erkenntnisse](insights/cosmosdb-insights-overview.md) | Bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen auf einer vereinheitlichten interaktiven Oberfläche. |
 | [Netzwerkerkenntnisse (Vorschau)](insights/network-insights-overview.md) | Bietet einen umfassenden Überblick über Integrität und Metriken Ihrer gesamten Netzwerkressource. Die erweiterte Suchfunktion unterstützt Sie beim Identifizieren von Ressourcenabhängigkeiten und ermöglicht Szenarien wie das Identifizieren von Ressourcen, die Ihre Website gehostet werden, indem einfach nach dem Namen Ihrer Website gesucht wird. |
 [Resource Group Insights (Vorschau)](insights/resource-group-insights.md) |  Selektieren und Diagnostizieren von Problemen Ihrer individuellen Ressourcen und Bereitstellen eines Kontexts für die Integrität und Leistung der Ressourcengruppe als Ganzes. |
-| [Storage Insights](insights/storage-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. |
+| [Storage Insights](../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | Ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. |
 | [VM Insights](vm/vminsights-overview.md) | Überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. |
 | [Key Vault Insights (Vorschau)](./insights/key-vault-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Latenz im Zusammenhang mit Key Vault bereitgestellt. |
 | [Erkenntnisse zu Azure Cache for Redis (Vorschau)](insights/redis-cache-insights-overview.md) |  Bietet eine einheitliche, interaktive Ansicht der Leistung, Fehler, Kapazität und Betriebsintegrität insgesamt. |
@@ -154,7 +154,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |SQL-Datenbank | Ja | Ja | Nein |  |
 |SQL Server Stretch Database | Ja | Ja | Nein |  |
 |Stapel | Nein | Nein | Nein |  |
-|Storage | Ja | Nein | [Ja](insights/storage-insights-overview.md) |  |
+|Storage | Ja | Nein | [Ja](../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) |  |
 |Storage Cache | Nein | Nein | Nein |  |
 |Speichersynchronisierungsdienste | Nein | Nein | Nein |  |
 |Stream Analytics | Ja | Ja | Nein |  |
@@ -243,4 +243,3 @@ Mithilfe der in der folgenden Tabelle aufgeführten Methoden kann Azure Monitor 
 - Arbeiten Sie ein [Tutorial zum Überwachen einer Azure-Ressource](essentials/tutorial-resource-logs.md) durch.
 - Arbeiten Sie ein [Tutorial zum Schreiben einer Protokollabfrage für die Analyse von Daten in Azure Monitor-Protokollen](essentials/tutorial-resource-logs.md) durch.
 - Arbeiten Sie ein [Tutorial zum Erstellen eines Metrikdiagramms für die Analyse von Daten in Azure Monitor-Metriken](essentials/tutorial-metrics-explorer.md) durch.
-

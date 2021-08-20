@@ -2,14 +2,14 @@
 title: Dienstkontingente und Limits
 description: Erfahren Sie mehr über Azure Batch-Standardkontingente, Limits und Einschränkungen sowie die Anforderung von Kontingentsteigerungen.
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 07/20/2021
 ms.custom: seodec18
-ms.openlocfilehash: 6e17a90cc573205bcb964a0428e0b7320323b8a6
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ad5701c65f9f2068a1a68084b755f8d0a013b8c8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553548"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465572"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -63,7 +63,7 @@ Diese zusätzlichen Beschränkungen werden vom Batch-Dienst festgelegt. Im Gegen
 | **Ressource** | **Maximales Limit** |
 | --- | --- |
 | [Gleichzeitige Aufgaben](batch-parallel-node-tasks.md) pro Computeknoten | 4 x Anzahl der Kerne des Knotens |
-| [Anwendungen](batch-application-packages.md) pro Batch-Konto | 20 |
+| [Anwendungen](batch-application-packages.md) pro Batch-Konto | 200 |
 | Anwendungspakete pro Anwendung. | 40 |
 | Anwendungspakete pro Pool | 10 |
 | Maximale Lebensdauer von Tasks | 180 Tage<sup>1</sup> |

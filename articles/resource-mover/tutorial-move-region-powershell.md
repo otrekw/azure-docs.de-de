@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/21/2021
 ms.author: raynew
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3489d7359b7557f0a2305a30ff3d28f05863504d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 865b4e7f93d70b9ba77e773dd3a599e8eed01376
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702257"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466922"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>Verschieben von Ressourcen zwischen Regionen mithilfe von PowerShell
 
@@ -49,7 +49,7 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
 
 Die meisten Vorgänge zum Verschieben von Ressourcen sind sowohl mit dem Azure-Portal als auch mit PowerShell gleich. Es gibt jedoch ein paar Ausnahmen.
 
-**Vorgang** | **PowerShell** | **Portal**
+**Vorgang** | **Portal** | **PowerShell**
 --- | --- | ---
 **Erstellen einer Verschiebungssammlung** | Eine Verschiebungssammlung (eine Liste aller zu verschiebenden Ressourcen) wird automatisch erstellt. Erforderliche Identitätsberechtigungen werden im Back-End durch das Portal zugewiesen. | Mithilfe von PowerShell-Cmdlets müssen folgende Schritte ausgeführt werden:<br/><br/> - Erstellen einer Ressourcengruppe für die Verschiebungssammlung und Angeben des Standorts<br/><br/> - Zuweisen einer verwalteten Identität zur Sammlung<br/><br/> - Hinzufügen von Ressourcen zur Sammlung
 **Entfernen einer Verschiebungssammlung** | Eine Verschiebungssammlung kann nicht direkt im Portal entfernt werden. | Verschiebungssammlungen werden mithilfe eines PowerShell-Cmdlets entfernt.

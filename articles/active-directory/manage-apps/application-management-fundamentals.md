@@ -2,9 +2,8 @@
 title: 'Anwendungsverwaltung: Bewährte Methoden und Empfehlungen | Microsoft-Dokumentation'
 description: Hier finden Sie bewährte Methoden und Empfehlungen für das Verwalten von Anwendungen in Azure Active Directory. Erfahren Sie mehr über die automatische Bereitstellung und Veröffentlichung von lokalen Apps mit dem Anwendungsproxy.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
@@ -12,39 +11,42 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2019
 ms.subservice: app-mgmt
-ms.author: mtillman
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 526c3ead0509b6e69eab23a7f2b3771ffe40bd29
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: napuri
+ms.openlocfilehash: f05668e8614178dcc1071d6c1a8b0ea7ca7b2d1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077390"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346649"
 ---
 # <a name="application-management-best-practices"></a>Bewährte Methoden für die Anwendungsverwaltung
 
 Dieser Artikel enthält Empfehlungen und bewährte Methoden für das Verwalten von Anwendungen in Azure Active Directory (Azure AD), die Verwendung der automatischen Bereitstellung und das Veröffentlichen von lokalen Apps mit dem Anwendungsproxy.
 
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>Empfehlungen für Cloud-Apps und einmaliges Anmelden
+
 | Empfehlung | Kommentare |
 | --- | --- |
-| Durchsuchen des Azure AD-Anwendungskatalogs nach Apps  | Azure AD enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen mit Enterprise Single Sign-On (Einmaliges Anmelden für Unternehmen (SSO)). App-spezifische Einrichtungsanleitungen finden Sie in der [Liste der Tutorials für SaaS-Anwendungen](../saas-apps/tutorial-list.md).  | 
-| Verwenden von SAML-basiertem Verbund-SSO  | Verwenden Sie SAML-basiertes Verbund-SSO mit Azure AD anstelle von kennwortbasiertem SSO und ADFS, wenn eine Anwendung dies unterstützt.  | 
-| Verwenden von SHA-256 für die Zertifikatsignatur  | Azure AD verwendet standardmäßig den Algorithmus SHA-256 zum Signieren der SAML-Antwort. Verwenden Sie SHA-256, sofern die Anwendung nicht SHA-1 erfordert. (Weitere Informationen finden Sie unter [Optionen für die Zertifikatsignatur](certificate-signing-options.md) und [Problem bei der Anwendungsanmeldung](application-sign-in-problem-application-error.md).)  | 
-| Erfordern der Benutzerzuweisung  | Standardmäßig können Benutzer auf Ihre Unternehmensanwendungen zugreifen, ohne diesen zugewiesen zu sein. Falls die Anwendung jedoch Rollen verfügbar macht oder Sie möchten, dass die Anwendung unter „Meine Apps“ für einen Benutzer angezeigt wird, müssen Sie Benutzerzuweisungen erforderlich machen.  | 
+| Durchsuchen des Azure AD-Anwendungskatalogs nach Apps  | Azure AD enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen mit Enterprise Single Sign-On (Einmaliges Anmelden für Unternehmen (SSO)). App-spezifische Einrichtungsanleitungen finden Sie in der [Liste der Tutorials für SaaS-Anwendungen](../saas-apps/tutorial-list.md).  |
+| Verwenden von SAML-basiertem Verbund-SSO  | Verwenden Sie SAML-basiertes Verbund-SSO mit Azure AD anstelle von kennwortbasiertem SSO und ADFS, wenn eine Anwendung dies unterstützt.  |
+| Verwenden von SHA-256 für die Zertifikatsignatur  | Azure AD verwendet standardmäßig den Algorithmus SHA-256 zum Signieren der SAML-Antwort. Verwenden Sie SHA-256, sofern die Anwendung nicht SHA-1 erfordert. (Weitere Informationen finden Sie unter [Optionen für die Zertifikatsignatur](certificate-signing-options.md) und [Problem bei der Anwendungsanmeldung](application-sign-in-problem-application-error.md).)  |
+| Erfordern der Benutzerzuweisung  | Standardmäßig können Benutzer auf Ihre Unternehmensanwendungen zugreifen, ohne diesen zugewiesen zu sein. Falls die Anwendung jedoch Rollen verfügbar macht oder Sie möchten, dass die Anwendung unter „Meine Apps“ für einen Benutzer angezeigt wird, müssen Sie Benutzerzuweisungen erforderlich machen.  |
 | Bereitstellen von „Meine Apps“ für Ihre Benutzer | [Meine Apps](end-user-experiences.md) unter `https://myapps.microsoft.com` ist ein webbasiertes Portal, das Benutzern einen einzigen Einstiegspunkt für die ihnen zugewiesenen cloudbasierten Anwendungen bietet. Wenn zusätzliche Funktionen wie Gruppenverwaltung und Self-Service-Kennwortzurücksetzung hinzugefügt werden, können Benutzer diese in „Meine Apps“ finden. Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“](my-apps-deployment-plan.md).
-| Verwenden der Gruppenzuweisung  | Wenn die Option in Ihrem Abonnement enthalten ist, weisen Sie einer Anwendung Gruppen zu, damit Sie die laufende Zugriffsverwaltung an den Gruppenbesitzer delegieren können.  | 
+| Verwenden der Gruppenzuweisung  | Wenn die Option in Ihrem Abonnement enthalten ist, weisen Sie einer Anwendung Gruppen zu, damit Sie die laufende Zugriffsverwaltung an den Gruppenbesitzer delegieren können.  |
 | Einrichten eines Prozesses für das Verwalten von Zertifikaten | Die maximale Lebensdauer eines Signaturzertifikats beträgt drei Jahre. Um Ausfälle aufgrund eines ablaufenden Zertifikats zu verhindern oder zu minimieren, verwenden Sie Rollen und E-Mail-Verteilerlisten, damit sichergestellt werden kann, dass zertifikatbezogene Änderungsbenachrichtigungen genau überwacht werden. |
 
 ## <a name="provisioning-recommendations"></a>Bereitstellungsempfehlungen
+
 | Empfehlung | Kommentare |
 | --- | --- |
 | Verwenden von Tutorials zum Einrichten der Bereitstellung mit Cloud-Apps | In der [Liste der Tutorials für SaaS-Anwendungen](../saas-apps/tutorial-list.md) finden Sie eine Schritt-für-Schritt-Anleitung zum Konfigurieren der Bereitstellung für die Katalog-App, die Sie hinzufügen möchten. |
 | Verwenden von Bereitstellungsprotokollen (Vorschau) zum Überwachen des Status | Die [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) bieten Details zu allen vom Bereitstellungsdienst ausgeführten Aktionen, einschließlich des Status der Bereitstellung für einzelne Benutzer. |
 | Zuweisen einer Verteilergruppe zur Bereitstellungsbenachrichtigungs-E-Mail | Weisen Sie der Einstellung für Benachrichtigungs-E-Mails eine Verteilergruppe zu, um die Sichtbarkeit der vom Bereitstellungsdienst gesendeten kritischen Warnungen zu erhöhen. |
 
-
 ## <a name="application-proxy-recommendations"></a>Empfehlungen für den Anwendungsproxy
+
 | Empfehlung | Kommentare |
 | --- | --- |
 | Verwenden des Anwendungsproxys für den Remotezugriff auf interne Ressourcen | Die Verwendung des Anwendungsproxys wird empfohlen, um Remotebenutzern Zugriff auf interne Ressourcen zu gewähren, wodurch die Notwendigkeit eines virtuellen privaten Netzwerks oder Reverseproxys entfällt. Er ist nicht für den Zugriff auf Ressourcen innerhalb des Unternehmensnetzwerks vorgesehen, weil dadurch Latenz auftreten könnte.

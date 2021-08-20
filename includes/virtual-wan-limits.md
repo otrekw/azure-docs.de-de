@@ -8,16 +8,15 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8671c9d8551d148df84e05e2d7d8ebc4cbdf9aca
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: c0af087c68056b1719355956c30b5e2c7f971531
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110631310"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113094602"
 ---
 | Resource |  Begrenzung |
 | --- | --- |
-| Virtuelle WAN-Hubs pro virtuellem WAN |Azure-Regionen |
 | VPN-Verbindungen (Zweigstelle) pro Hub | 1\.000 |
 | Aggregierter Durchsatz pro Site-to-Site-VPN-Gateway (Virtual WAN) | 20GBit/s |
 | Durchsatz pro virtueller WAN-VPN-Verbindung (2 Tunnel) | 2 Gbit/s mit 1 Gbit/s-IPSec-Tunnel |

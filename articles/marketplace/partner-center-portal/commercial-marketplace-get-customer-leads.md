@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 05/20/2021
-ms.openlocfilehash: bfb900dd2be2d83c46663b21773bb14585129be9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e255c88d76d0f9a4a6c1256f36386beedee04683
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110453089"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113601362"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Kundenleads aus Ihrem Angebot im kommerziellen Marketplace
 
@@ -98,4 +98,4 @@ Nach der technischen Einrichtung sollten Sie diese Leads in Ihre aktuelle Vertri
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Häufig gestellte Fragen und Problembehandlung bei der Leadverwaltung](../lead-management-faq.md)
+- [Häufig gestellte Fragen und Problembehandlung bei der Leadverwaltung](../lead-management-faq.yml)

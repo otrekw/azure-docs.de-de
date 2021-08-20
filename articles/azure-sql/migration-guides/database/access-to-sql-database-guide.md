@@ -10,16 +10,16 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 03/19/2021
-ms.openlocfilehash: 37266c7a7692c59efdded9ba3fabe71458a5f674
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8363fb2dbd80f55cdae4c064177bed63ed988559
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110788620"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345930"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Migrationsleitfaden: Zugreifen auf Azure SQL-Datenbank
 
-In diesem Leitfaden erfahren Sie, wie Sie Ihre Microsoft Access-Datenbank mithilfe von [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant für Access (SSMA für Access) zu einer Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey).
+In diesem Leitfaden erfahren Sie, wie Sie Ihre Microsoft Access-Datenbank mithilfe von [SQL Server Migration](https://azure.microsoft.com/migration/sql-server/) Assistant für Access (SSMA für Access) zu einer Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey).
 
 Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](/data-migration). 
 
@@ -170,7 +170,7 @@ Weitere Unterstützung bei der Durchführung dieses Migrationsszenarios finden S
 
 | Titel | BESCHREIBUNG |
 | --- | --- |
-| [Data Workload Assessment Model and Tool (Datenarbeitsauslastungs-Bewertungsmodell und -tool)](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Stellt für bestimmte Workloads Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch einen automatisierten und einheitlichen Entscheidungsprozess für die Zielplattform dabei helfen, Bewertungen von umfangreichen Datenbeständen zu beschleunigen. |
+| [Data Workload Assessment Model and Tool (Datenarbeitsauslastungs-Bewertungsmodell und -tool)](https://www.microsoft.com/download/details.aspx?id=103130) | Stellt für bestimmte Workloads Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch einen automatisierten und einheitlichen Entscheidungsprozess für die Zielplattform dabei helfen, Bewertungen von umfangreichen Datenbeständen zu beschleunigen. |
 
 Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 2e54eb0ea8166b32dd4bcc794bfcf401d9196884
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1d0459e8ac0002f69ac0e4d33a921bd64fc385d5
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469243"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350259"
 ---
 # <a name="azure-storage-migration-overview"></a>Übersicht über die Azure Storage-Migration
 
@@ -125,4 +125,4 @@ Informationen zu den zu migrierenden Workloads und deren Übernahme finden Sie i
 - [Migrieren zu Azure File Shares](../files/storage-files-migration-overview.md)
 - [Migrieren zu Data Lake Storage mit WANdisco LiveData Platform für Azure](../blobs/migrate-gen2-wandisco-live-data-platform.md)
 - [Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy](./storage-use-azcopy-v10.md)
-- [Migrieren von großen Datasätzen zu Azure Blob Storage mit AzReplicate](https://github.com/Azure/AzReplicate/tree/master/)
+- [Migrieren von großen Datasätzen zu Azure Blob Storage mit AzReplicate](/samples/azure/azreplicate/azreplicate/)

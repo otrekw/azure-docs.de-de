@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions , devx-track-azurepowershell
-ms.openlocfilehash: 2b698ffaddb4bc818eaabda34022ab58ff05fe5f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9fb994968835d6fb609c079f008f87d4b37ef85b
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786349"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004878"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Verschieben von Analysis Services in eine andere Region
 
@@ -40,7 +40,7 @@ Bevor Sie einen Server in eine andere Region verschieben, sollten Sie einen deta
 > Clientanwendungen und -verbindungszeichenfolgen stellen anhand des vollständigen Servernamens (ein URI, der die Region des Servers enthält) eine Verbindung mit Analysis Services her. Beispiel: `asazure://westcentralus.asazure.windows.net/advworks01`. Wenn Sie einen Server in eine andere Region verschieben, erstellen Sie dadurch eine neue Serverressource in einer anderen Region, deren Servernamen-URI eine andere Region enthält. In Skripts verwendete Clientanwendungen und -verbindungszeichenfolgen müssen anhand des neuen Servernamen-URI eine Verbindung mit dem neuen Server herstellen. Durch die Verwendung eines [Servernamenalias](analysis-services-server-alias.md) kann die Anzahl von Stellen verringert werden, an denen der Servernamen-URI geändert werden muss, der Alias muss jedoch vor dem Verschieben in eine andere Region implementiert werden.
 
 > [!IMPORTANT]
-> Azure-Regionen verwenden unterschiedliche IP-Adressbereiche. Wenn für die Region, in der sich Ihr Server und/oder Ihr Speicherkonto befinden, Firewallausnahmen konfiguriert sind, müssen Sie möglicherweise einen anderen IP-Adressbereich konfigurieren. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Netzwerkkonnektivität von Analysis Services](analysis-services-network-faq.md).
+> Azure-Regionen verwenden unterschiedliche IP-Adressbereiche. Wenn für die Region, in der sich Ihr Server und/oder Ihr Speicherkonto befinden, Firewallausnahmen konfiguriert sind, müssen Sie möglicherweise einen anderen IP-Adressbereich konfigurieren. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Netzwerkkonnektivität von Analysis Services](analysis-services-network-faq.yml).
 
 > [!NOTE]
 > In diesem Artikel wird beschrieben, wie Sie auf einem Zielserver eine Datenbanksicherung aus einem Speichercontainer in der Region des Quellservers wiederherstellen. In einigen Fällen kann die Leistung beim Wiederherstellen von Sicherungen aus einer anderen Region schlecht sein, insbesondere bei großen Datenbanken. Migrieren Sie zu einem neuen Speichercontainer in der Region des Zielservers, oder erstellen Sie dort einen neuen Speichercontainer, um bei der Datenbankwiederherstellung die bestmögliche Leistung zu erzielen. Kopieren Sie die ABF-Sicherungsdateien aus dem Speichercontainer in der Quellregion in den Speichercontainer in der Zielregion, bevor Sie die Datenbank auf dem Zielserver wiederherstellen. In manchen Fällen (insbesondere bei sehr großen Datenbanken) können das Erstellen eines Skripts für eine Datenbank vom Quellserver, das Neuerstellen und anschließende Verarbeiten auf dem Zielserver zum Laden von Datenbankdaten kostengünstiger sein als die Sicherung/Wiederherstellung.

@@ -7,12 +7,12 @@ ms.service: cloud-services-extended-support
 ms.topic: troubleshooting
 ms.date: 4/28/2021
 ms.custom: support-help-page
-ms.openlocfilehash: 7e918b02304058e043dcd0507a33fa8ba172b9bc
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 836811e721a586ca9dcc25d16f27d7393ff8f82b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969484"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463068"
 ---
 # <a name="support-and-troubleshooting-for-azure-cloud-services-extended-support"></a>Support und Problembehandlung für Azure Cloud Services (erweiterter Support)
 
@@ -23,7 +23,7 @@ Hier finden Sie Vorschläge dazu, wo Sie Hilfe bei der Entwicklung Ihrer Azure C
     <img alt='Self help content' src='./media/logos/doc-logo.png'>
 </div>
 
-Informationen zu häufigen Problemen und Problemumgehungen finden Sie unter [Problembehandlung für Azure Cloud Services (erweiterter Support) bei Fehlern beim Rollenstart](role-startup-failure.md) und [häufig gestellte Fragen](faq.md).
+Informationen zu häufigen Problemen und Problemumgehungen finden Sie unter [Problembehandlung für Azure Cloud Services (erweiterter Support) bei Fehlern beim Rollenstart](role-startup-failure.md) und [häufig gestellte Fragen](faq.yml).
 
 
 

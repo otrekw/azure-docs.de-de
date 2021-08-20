@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 937048ce14b9b05b55cd8d76e7a8c1fd67c63e4d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cb68621017649c87849294be67bc2e12d96214e8
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933707"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732241"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2
 
@@ -25,7 +25,7 @@ Azure Data Lake Storage Gen2 ermöglicht POSIX-Zugriffssteuerungen für Azure Ac
 
 ### <a name="use-security-groups-versus-individual-users"></a>Vergleich der Verwendung von Sicherheitsgruppen und einzelnen Benutzern
 
-Bei der Arbeit mit großen Datenmengen in Data Lake Storage Gen2 wird meist ein Dienstprinzipal eingesetzt, damit Dienste wie Azure HDInsight die Daten nutzen können. Es kann aber auch Fälle geben, in denen einzelne Benutzer ebenfalls Zugriff auf die Daten benötigen. Erwägen Sie in allen Fällen die Nutzung von Azure Active Directory-[Sicherheitsgruppen](../common/storage-auth-aad.md), anstatt einzelne Benutzer Verzeichnissen und Dateien zuzuweisen.
+Bei der Arbeit mit großen Datenmengen in Data Lake Storage Gen2 wird meist ein Dienstprinzipal eingesetzt, damit Dienste wie Azure HDInsight die Daten nutzen können. Es kann aber auch Fälle geben, in denen einzelne Benutzer ebenfalls Zugriff auf die Daten benötigen. Erwägen Sie in allen Fällen die Nutzung von Azure Active Directory-[Sicherheitsgruppen](../common/authorize-data-access.md), anstatt einzelne Benutzer Verzeichnissen und Dateien zuzuweisen.
 
 Nachdem einer Sicherheitsgruppe Berechtigungen zugewiesen wurden, sind für das Hinzufügen oder Entfernen von Benutzern der Gruppe keine Aktualisierungen für Data Lake Storage Gen2 erforderlich. Dies hilft auch sicherzustellen, dass Sie die maximale Anzahl von Zugriffssteuerungseinträgen pro Zugriffssteuerungsliste (ACL) nicht überschreiten. Derzeit ist dieser Wert 32 (einschließlich der vier ACLs im POSIX-Format, die jeder Datei und jedem Verzeichnis stets zugeordnet sind: der zuständige Benutzer, die zuständige Gruppe, die Maske und andere). Jedes Verzeichnis kann zwei Arten von ACL aufweisen, die Zugriffs-ACL und die Standard-ACL, was insgesamt 64 Zugriffssteuerungseinträgen entspricht. Weitere Informationen zu diesen ACLs finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 

@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: 33752c1ebb83c5d63e8e1cb396c52f01f07046cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a12d49a8057dfe059cecf6fd7896fd0a1567647
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102244831"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114405073"
 ---
 Die folgenden Ressourcen stehen ebenfalls zur Verfügung:
 
@@ -19,7 +19,7 @@ Die folgenden Ressourcen stehen ebenfalls zur Verfügung:
 
 ## <a name="iot-hub-service-client-examples"></a>Beispiele für den IoT Hub-Dienstclient
 
-In diesem Abschnitt werden die Java-Beispiele für die Verwendung des IoT Hub-Dienstclients und der Klassen **DeviceTwin** und **DeviceMethod** aus dem Namespace **com.microsoft.azure.sdk.iot.service.devicetwin** veranschaulicht. Die **DeviceTwin**-Klasse dient dazu, mithilfe von Gerätezwillingen mit dem Gerätestatus zu interagieren. Sie können die **DeviceTwin**-Klasse außerdem verwenden, um in Ihrer IoT Hub-Instanz [Geräteregistrierungen abzufragen](../articles/iot-hub/iot-hub-devguide-query-language.md). Mit der **DeviceMethod**-Klasse rufen Sie Befehle auf dem Gerät auf. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden. In den Codeausschnitten enthält die `deviceId`-Variable die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
+In diesem Abschnitt werden die Java-Beispiele für die Verwendung des IoT Hub-Dienstclients und der Klassen **DeviceTwin** und **DeviceMethod** aus dem Namespace **com.microsoft.azure.sdk.iot.service.devicetwin** veranschaulicht. Die **DeviceTwin**-Klasse dient dazu, mithilfe von Gerätezwillingen mit dem Gerätestatus zu interagieren. Sie können die **DeviceTwin**-Klasse außerdem verwenden, um in Ihrer IoT Hub-Instanz [Geräteregistrierungen abzufragen](../articles/iot-hub/iot-hub-devguide-query-language.md). Mit der **DeviceMethod**-Klasse rufen Sie Befehle auf dem Gerät auf. Das [DTDL](../articles/iot-develop/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden. In den Codeausschnitten enthält die `deviceId`-Variable die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
 
 ### <a name="get-the-device-twin-and-model-id"></a>Abrufen von Gerätezwilling und Modell-ID
 
@@ -115,7 +115,7 @@ System.out.println("Method result status is: " + result.getStatus());
 
 ## <a name="iot-hub-digital-twin-examples"></a>Beispiele für digitale IoT Hub-Zwillinge
 
-Sie verwenden die Klasse **DigitalTwinAsyncClient** im Namespace **com.microsoft.azure.sdk.iot.service.digitaltwin**, um mithilfe digitaler Zwillinge mit dem Gerätestatus zu interagieren. In den folgenden Beispielen werden darüber hinaus die Klassen **UpdateOperationUtility** und **BasicDigitalTwin** aus demselben Namespace verwendet. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden.
+Sie verwenden die Klasse **DigitalTwinAsyncClient** im Namespace **com.microsoft.azure.sdk.iot.service.digitaltwin**, um mithilfe digitaler Zwillinge mit dem Gerätestatus zu interagieren. In den folgenden Beispielen werden darüber hinaus die Klassen **UpdateOperationUtility** und **BasicDigitalTwin** aus demselben Namespace verwendet. Das [DTDL](../articles/iot-develop/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden.
 
 Die `digitalTwinid`-Variable enthält die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
 
@@ -304,7 +304,7 @@ private static String prettyString(String str)
 
 IoT Plug & Play-Geräte senden die im DTDL-Modell definierten Telemetriedaten an IoT Hub. Standardmäßig leitet der IoT Hub die Telemetriedaten an einen Event Hubs-Endpunkt weiter, wo Sie sie nutzen können. Weitere Informationen finden Sie unter [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte](../articles/iot-hub/iot-hub-devguide-messages-d2c.md).
 
-Im folgenden Codeausschnitt können Sie sehen, wie die Telemetriedaten vom Event Hubs-Standardendpunkt gelesen werden. Der Code in diesem Codeausschnitt stammt aus dem IoT Hub-Schnellstart [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten mit einer Back-End-Anwendung](../articles/iot-hub/quickstart-send-telemetry-java.md):
+Im folgenden Codeausschnitt können Sie sehen, wie die Telemetriedaten vom Event Hubs-Standardendpunkt gelesen werden. Der Code in diesem Codeausschnitt stammt aus dem IoT Hub-Schnellstart [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten mit einer Back-End-Anwendung](../articles/iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-java):
 
 ```java
 import com.azure.messaging.eventhubs.EventHubClientBuilder;

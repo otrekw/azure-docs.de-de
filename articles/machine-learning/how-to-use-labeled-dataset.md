@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: 7fc4a36cc8fedaa5de704f668f8b15aecac98cd7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e46d088180666523c27d86a98d740fa49f5214f2
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140513"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460484"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Erstellen und Untersuchen eines Azure Machine Learning-Datasets mit Bezeichnungen
 
@@ -26,7 +26,7 @@ Azure Machine Learning-Datasets mit Bezeichnungen sind ein spezieller Typ von Da
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen, bevor Sie beginnen.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro), oder greifen Sie auf [Azure Machine Learning-Studio](https://ml.azure.com/) zu.
     * Installieren des Pakets [azure-contrib-dataset](/python/api/azureml-contrib-dataset/)
 * Ein Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).

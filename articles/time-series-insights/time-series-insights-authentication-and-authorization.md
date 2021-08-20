@@ -10,13 +10,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
-ms.custom: seodec18, has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 68b7300219953b0f80bd40522c3f4ec961ec5262
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: bc479521d99111dd8cdfd36de981b83717068ed0
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613542"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419457"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
@@ -150,7 +150,7 @@ Erforderliche Anforderungsheader werden nachfolgend beschrieben.
 
 | Erforderlicher Anforderungsheader | BESCHREIBUNG |
 | --- | --- |
-| Authorization | Für die Authentifizierung bei Azure Time Series Insights muss im [Autorisierungsheader](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) ein gültiges OAuth 2.0-Bearertoken übergeben werden. |
+| Authorization | Für die Authentifizierung bei Azure Time Series Insights muss im [Autorisierungsheader](/rest/api/apimanagement/2020-12-01/authorization-server/create-or-update) ein gültiges OAuth 2.0-Bearertoken übergeben werden. |
 
 > [!TIP]
 > Weitere Informationen zur programmgesteuerten Authentifizierung mit den APIs von Azure Time Series Insights unter Verwendung des [JavaScript Client SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) zusammen mit Diagrammen und Grafiken finden Sie in der gehosteten [Beispielvisualisierung des Azure Time Series Insights-Client-SDK](https://tsiclientsample.azurewebsites.net/).

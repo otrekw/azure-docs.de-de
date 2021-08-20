@@ -2,18 +2,18 @@
 title: 'Azure Relay Hybrid Connections: HTTP-Anforderungen in Node'
 description: Schreiben einer Node.js-Konsolenanwendung für HTTP-Anforderungen von Azure Relay Hybrid Connections in Node
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 06/23/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 249b4fa231cd54a1a8054b32985ed0e48fcc16f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bead32c9f32c09bfdcabe8fb5692734a556c7436
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91263758"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667489"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Erste Schritte mit HTTP-Anforderungen von Relay Hybrid Connections in Node
 
-[!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
+[!INCLUDE [relay-selector-hybrid-connections](./includes/relay-selector-hybrid-connections.md)]
 
 In dieser Schnellstartanleitung erstellen Sie Sender- und Empfängeranwendungen in Node.js, die mithilfe von HTTP Nachrichten senden und empfangen. Die Anwendungen verwenden das Hybrid Connections-Feature von Azure Relay. Allgemeine Informationen zu Azure Relay finden Sie unter [Was ist Azure Relay?](relay-what-is-it.md). 
 
@@ -30,21 +30,21 @@ Diese Schnellstartanleitung umfasst folgende Schritte:
 - ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 ## <a name="create-a-namespace-using-the-azure-portal"></a>Erstellen eines Namespace mithilfe des Azure-Portals
-[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
+[!INCLUDE [relay-create-namespace-portal](./includes/relay-create-namespace-portal.md)]
 
 ## <a name="create-a-hybrid-connection-using-the-azure-portal"></a>Erstellen einer Hybridverbindung mit dem Azure-Portal
-[!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
+[!INCLUDE [relay-create-hybrid-connection-portal](./includes/relay-create-hybrid-connection-portal.md)]
 
 ## <a name="create-a-server-application-listener"></a>Erstellen einer Serveranwendung (Listener)
 Schreiben Sie eine Node.js-Konsolenanwendung, um auf Nachrichten des Relays zu lauschen und sie zu empfangen.
 
-[!INCLUDE [relay-hybrid-connections-node-get-started-server](../../includes/relay-hybrid-connections-http-requests-node-get-started-server.md)]
+[!INCLUDE [relay-hybrid-connections-node-get-started-server](./includes/relay-hybrid-connections-http-requests-node-get-started-server.md)]
 
 ## <a name="create-a-client-application-sender"></a>Erstellen einer Clientanwendung (Absender)
 
 Sie können einen beliebigen HTTP-Client verwenden oder eine Node.js-Konsolenanwendung schreiben, um Nachrichten an das Relay zu senden.
 
-[!INCLUDE [relay-hybrid-connections-node-get-started-client](../../includes/relay-hybrid-connections-http-requests-node-get-started-client.md)]
+[!INCLUDE [relay-hybrid-connections-node-get-started-client](./includes/relay-hybrid-connections-http-requests-node-get-started-client.md)]
 
 ## <a name="run-the-applications"></a>Ausführen der Anwendungen
 

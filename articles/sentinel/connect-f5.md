@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 81a0f0e01827c48518f2eb1fba062e9e6536d9df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 632b55b699df409049f77abecfca4c3cf75d3e73
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655696"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343303"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>Verbinden des F5-ASM mit Azure Sentinel
 
 In diesem Artikel wird beschrieben, wie Sie mit dem ASM-Datenconnector von F5 problemlos F5-ASM-Protokolle in Azure Sentinel abrufen. Dies ermöglicht es Ihnen, F5-ASM-Daten in Arbeitsmappen anzuzeigen, sie zum Erstellen benutzerdefinierter Warnungen zu verwenden und zur Verbesserung der Untersuchung zu integrieren. Mit den Daten des F5-ASM in Azure Sentinel erhalten Sie mehr Einblicke in die Webanwendungssicherheit Ihrer Organisation und können die Sicherheitsfunktionen verbessern. 
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="configure-your-f5-asm-to-send-cef-messages"></a>Konfigurieren des F5-ASM zum Senden von CEF-Nachrichten
 
@@ -42,6 +44,6 @@ In diesem Artikel wird beschrieben, wie Sie mit dem ASM-Datenconnector von F5 pr
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde beschrieben, wie Sie den F5-ASM mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./tutorial-detect-threats-built-in.md).
-- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](monitor-your-data.md), um Ihre Daten zu überwachen.

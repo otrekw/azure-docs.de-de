@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 75a2762a0937efbceaa168f8a2d6409e2e3a7ae4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aed9a608dd8a958a298b3a7f502dac6d587b2a2e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94967226"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466746"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
@@ -39,9 +39,9 @@ Weitere Informationen finden Sie unter [Verwalten von Geräteregistrierungen](ho
 
 Löschvorgänge für Registrierungen und Registrierungsdatensätze können auch mithilfe von REST-APIs ausgeführt werden:
 
-* Um Registrierungsinformationen für ein einzelnes Gerät zu löschen, können Sie [Geräteregistrierung > Löschen](/rest/api/iot-dps/deleteindividualenrollment/deleteindividualenrollment) verwenden.
-* Um Registrierungsinformationen für eine Gruppe von Geräten zu löschen, können Sie [Geräteregistrierungsgruppe > Löschen](/rest/api/iot-dps/deleteenrollmentgroup/deleteenrollmentgroup) verwenden.
-* Um Informationen zu bereitgestellten Geräten zu löschen, können Sie [Registrierungsstatus > Registrierungsstatus löschen](/rest/api/iot-dps/deletedeviceregistrationstate/deletedeviceregistrationstate) verwenden.
+* Um Registrierungsinformationen für ein einzelnes Gerät zu löschen, können Sie [Geräteregistrierung > Löschen](/rest/api/iot-dps/service/individual-enrollment/delete) verwenden.
+* Um Registrierungsinformationen für eine Gruppe von Geräten zu löschen, können Sie [Geräteregistrierungsgruppe > Löschen](/rest/api/iot-dps/service/enrollment-group/delete) verwenden.
+* Um Informationen zu bereitgestellten Geräten zu löschen, können Sie [Registrierungsstatus > Registrierungsstatus löschen](/rest/api/iot-dps/service/device-registration-state/delete) verwenden.
 
 ## <a name="exporting-customer-data"></a>Exportieren von Kundendaten
 
@@ -53,9 +53,9 @@ Weitere Informationen zur Verwaltung von Registrierungen finden Sie unter [Verwa
 
 Exportvorgänge für Registrierungen und Registrierungsdatensätze können auch mithilfe von REST-APIs ausgeführt werden:
 
-* Um Registrierungsinformationen für ein einzelnes Gerät zu exportieren, können Sie [Geräteregistrierung > Abrufen](/rest/api/iot-dps/getindividualenrollment/getindividualenrollment) verwenden.
-* Um Registrierungsinformationen für eine Gruppe von Geräten zu exportieren, können Sie [Geräteregistrierungsgruppe > Abrufen](/rest/api/iot-dps/getenrollmentgroup/getenrollmentgroup) verwenden.
-* Um Informationen zu bereits bereitgestellten Geräten zu exportieren, können Sie [Registrierungsstatus > Registrierungsstatus abrufen](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate) verwenden.
+* Um Registrierungsinformationen für ein einzelnes Gerät zu exportieren, können Sie [Geräteregistrierung > Abrufen](/rest/api/iot-dps/service/individual-enrollment/get) verwenden.
+* Um Registrierungsinformationen für eine Gruppe von Geräten zu exportieren, können Sie [Geräteregistrierungsgruppe > Abrufen](/rest/api/iot-dps/service/enrollment-group/get) verwenden.
+* Um Informationen zu bereits bereitgestellten Geräten zu exportieren, können Sie [Registrierungsstatus > Registrierungsstatus abrufen](/rest/api/iot-dps/service/device-registration-state/get) verwenden.
 
 > [!NOTE]
 > Wenn Sie Microsoft Enterprise Services verwenden, generiert Microsoft einige Informationen, die als vom System generierte Protokolle bezeichnet werden. Auf einige vom System generierte Device Provisioning Service-Protokolle können Mandantenadministratoren nicht zugreifen bzw. können einige dieser Protokolle nicht von Mandantenadministratoren exportiert werden. Diese Protokolle stellen faktische Aktionen dar, die innerhalb der Dienst- und Diagnosedaten einzelner Geräte ausgeführt werden.

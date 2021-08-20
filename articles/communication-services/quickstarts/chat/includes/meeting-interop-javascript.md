@@ -2,20 +2,20 @@
 title: 'Schnellstart: Beitreten zu einer Teams-Besprechung'
 author: askaur
 ms.author: askaur
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 2fb04acd75d607772b6582882b98f9ed222f070c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 04ee9f19f23d16af9070d3366981b0690ba9ef27
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430018"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113113118"
 ---
 In dieser Schnellstartanleitung wird beschrieben, wie Sie während einer Teams-Besprechung chatten, indem Sie das Chat SDK für JavaScript von Azure Communication Services verwenden.
 
-> [!NOTE]
-> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-chat-to-teams-meeting).
+## <a name="sample-code"></a>Beispielcode
+Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-chat-to-teams-meeting).
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
@@ -325,6 +325,12 @@ sendMessageButton.addEventListener("click", async () =>
     });
 ```
 
+Die Anzeigenamen der Chatthread-Teilnehmer werden nicht vom Teams-Client festgelegt. Beim Ereignis `participantsAdded` und beim Ereignis `participantsRemoved` werden die Namen in der API für die Auflistung von Teilnehmern als NULL zurückgegeben. Die Anzeigenamen der Chatteilnehmer können aus dem `remoteParticipants`-Feld des `call`-Objekts abgerufen werden. Wenn Sie eine Benachrichtigung über eine Listenänderung erhalten, können Sie den folgenden Code verwenden, um den Namen des Benutzers abzurufen, der hinzugefügt oder entfernt wurde:
+
+```
+var displayName = call.remoteParticipants.find(p => p.identifier.communicationUserId == '<REMOTE_USER_ID>').displayName;
+```
+
 ## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>Abrufen eines Teams-Besprechungschatthreads für einen Communication Services-Benutzer
 
 Der Link und der Chat für die Teams-Besprechung können über Graph-APIs abgerufen werden, wie in der [Graph-Dokumentation](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) ausführlich erläutert. Das Communication Services-SDK für Telefonie akzeptiert einen vollständigen Teams-Besprechungslink. Dieser Link wird als Teil der `onlineMeeting`-Ressource zurückgegeben, auf die unter der [Eigenschaft `joinWebUrl`](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) zugegriffen werden kann. Mit den [Graph-APIs](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) können Sie auch die `threadId` abrufen. Die Antwort enthält ein `chatInfo`-Objekt, das die `threadID` enthält. 
@@ -348,4 +354,4 @@ Navigieren Sie in Ihrem Browser zu http://localhost:8080/. Daraufhin sollte Folg
 Fügen Sie den Teams-Besprechungslink und die Thread-ID in die Textfelder ein. Klicken Sie auf *An Teams-Besprechung teilnehmen*, um an der Teams-Besprechung teilzunehmen. Nachdem der Communication Services-Benutzer zur Besprechung zugelassen wurde, können Sie über Ihre Communication Services-Anwendung chatten. Navigieren Sie zu dem Feld unten auf der Seite, um mit dem Chatten zu beginnen.
 
 > [!NOTE] 
-> Derzeit werden für Interoperabilitätsszenarios mit Teams nur das Senden, Empfangen und Bearbeiten von Nachrichten unterstützt. Andere Features wie das Eingeben von Indikatoren oder das Hinzufügen oder Entfernen anderer Benutzer aus der Teams-Besprechung durch Communication Services-Benutzer werden noch nicht unterstützt.
+> Derzeit werden für Interoperabilitätsszenarios mit Teams nur das Senden, Empfangen und Bearbeiten von Nachrichten sowie das Senden von Eingabebenachrichtigungen unterstützt. Andere Features wie Lesebestätigungen oder das Hinzufügen oder Entfernen anderer Benutzer aus der Teams-Besprechung durch Communication Services-Benutzer werden noch nicht unterstützt.

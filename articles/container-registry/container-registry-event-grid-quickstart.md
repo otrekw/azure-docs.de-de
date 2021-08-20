@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Event Gri
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 43dea2640c9c9445ea464205f6c586bc1e486206
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f355bb6db09d8e97d0678644ba94831fd4ca5253
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784023"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983822"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Schnellstart: Senden von Ereignissen aus der privaten Containerregistrierung an Event Grid
 
@@ -142,6 +142,8 @@ Da die Beispiel-App ausgeführt wird und Sie die Registrierung in Event Grid abo
 ### <a name="build-and-push-image"></a>Erstellen und Übermitteln des Images mithilfe von Push
 
 Führen Sie den unten genannten Azure CLI-Befehl aus, um ein Containerimage mithilfe der Inhalte eines GitHub-Repositorys zu erstellen. Standardmäßig pusht ACR Tasks automatisch das erfolgreich erstellte Image in Ihre Registrierung, die dann das `ImagePushed`-Ereignis generiert.
+
+[!INCLUDE [pull-image-dockerfile-include](../../includes/pull-image-dockerfile-include.md)]
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git#main

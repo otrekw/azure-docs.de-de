@@ -2,22 +2,22 @@
 title: Verwalten von Benutzer- und Administratorberechtigungen – Azure Active Directory | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Berechtigungen für Ihre Anwendung in Azure AD überprüfen und verwalten. Dazu zählt beispielsweise auch das Widerrufen aller Berechtigungen, die einer Anwendung erteilt wurden.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 7/10/2020
-ms.author: mtillman
-ms.reviewer: luleonpla
+ms.author: davidmu
+ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa8611fb932fadcdf8cd7c8a361fb840babf16b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 7585ad6816a8d9fd0a331ae9fcb1e1cea81ddbac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075878"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346912"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Maßnahmen bei verdächtigen Anwendungen oder Anwendungen mit zu vielen Berechtigungen in Azure Active Directory
 
@@ -72,10 +72,10 @@ Optional können Sie die Anwendung deaktivieren, um den Zugriff von Benutzern au
 Wir empfehlen, den Zugriff auf die Anwendung durch Aktivieren der Einstellung **Benutzerzuweisung** einzuschränken. Überprüfen Sie dann die Berechtigungen, die Benutzer und Administratoren der Anwendung erteilt haben.
 
 1. Melden Sie sich globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
-3. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** aus.
-5. Wählen Sie die Anwendung aus, für die ein eingeschränkter Zugriff eingerichtet werden sollen.
-6. Wählen Sie **Eigenschaften** aus, und legen Sie **Benutzerzuweisung erforderlich** auf **Ja** fest.
-7. Wählen Sie **Berechtigungen** aus, und überprüfen Sie die per Administrator- und Benutzereinwilligung erteilten Berechtigungen.
+2. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** aus.
+3. Wählen Sie die Anwendung aus, für die ein eingeschränkter Zugriff eingerichtet werden sollen.
+4. Wählen Sie **Eigenschaften** aus, und legen Sie **Benutzerzuweisung erforderlich** auf **Ja** fest.
+5. Wählen Sie **Berechtigungen** aus, und überprüfen Sie die per Administrator- und Benutzereinwilligung erteilten Berechtigungen.
 
 Optional können Sie mithilfe von PowerShell folgende Aktionen ausführen:
 

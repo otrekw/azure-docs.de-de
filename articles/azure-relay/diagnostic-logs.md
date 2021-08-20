@@ -2,13 +2,13 @@
 title: Diagnoseprotokolle für Hybrid Connections
 description: Dieser Artikel enthält eine Übersicht über alle verfügbaren Aktivitäts- und Diagnoseprotokolle für Azure Relay.
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: 7ca6dc95567a4867d3c58e0efad0fc74289e586c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 06/23/2021
+ms.openlocfilehash: cfcbdacb7b4266601f4669a20013bb6a5a5331a6
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079096"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666267"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Aktivieren von Diagnoseprotokollen für Azure Relay Hybrid Connections
 Wenn Sie Azure Relay Hybrid Connections verwenden, möchten Sie möglicherweise überwachen, wie und wann Ihre Listener und Absender geöffnet und geschlossen werden und wie Hybrid Connections erstellt und Nachrichten gesendet werden. Dieser Artikel enthält eine Übersicht über die verfügbaren Aktivitäts- und Diagnoseprotokolle, die vom Azure Relay-Dienst bereitgestellt werden. 

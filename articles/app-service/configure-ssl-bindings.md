@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 0759a3fce2d056bbe5d9234e25b45525874faf4e
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c67dfe6295a62a464d1a7a5eeb7a9ba7afd88ced
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670562"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113128766"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service
 
@@ -129,7 +129,7 @@ Ihre IP-Adresse für eingehenden Datenverkehr kann sich ändern, wenn Sie eine B
 
 Standardmäßig können Benutzer weiterhin mit HTTP auf Ihre App zugreifen. Sie können alle HTTP-Anforderungen an den HTTPS-Port umleiten.
 
-Wählen Sie im linken Navigationsbereich der App-Seite **SSL-Einstellungen** aus. Wählen Sie anschließend für **Nur HTTPS** die Option **Ein**.
+Wählen Sie im linken Navigationsbereich der App-Seite **TLS/SSL-Einstellungen** aus. Wählen Sie anschließend für **Nur HTTPS** die Option **Ein**.
 
 ![Erzwingen von HTTPS](./media/configure-ssl-bindings/enforce-https.png)
 
@@ -143,7 +143,7 @@ Wenn der Vorgang abgeschlossen ist, navigieren Sie zu einer beliebigen HTTP-URL,
 
 Ihre App lässt standardmäßig [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2 zu. Diese TLS-Version wird von Branchenstandards wie [PCI-DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) empfohlen. Andere TLS-Versionen können wie folgt erzwungen werden:
 
-Wählen Sie im linken Navigationsbereich der App-Seite **SSL-Einstellungen** aus. Wählen Sie dann unter **TLS-Version** die gewünschte TLS-Mindestversion aus. Diese Einstellung steuert nur eingehende Aufrufe. 
+Wählen Sie im linken Navigationsbereich der App-Seite **TLS/SSL-Einstellungen** aus. Wählen Sie dann unter **TLS-Version** die gewünschte TLS-Mindestversion aus. Diese Einstellung steuert nur eingehende Aufrufe. 
 
 ![Erzwingen von TLS 1.1 oder 1.2](./media/configure-ssl-bindings/enforce-tls1-2.png)
 
@@ -168,4 +168,4 @@ In sprachspezifischen Konfigurationsleitfäden (etwa unter [Konfigurieren einer 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
 * [Verwenden eines TLS-/SSL-Zertifikats in Ihrem Code in Azure App Service](configure-ssl-certificate-in-code.md)
-* [Häufig gestellte Fragen: App Service-Zertifikate](./faq-configuration-and-management.md)
+* [Häufig gestellte Fragen: App Service-Zertifikate](./faq-configuration-and-management.yml)

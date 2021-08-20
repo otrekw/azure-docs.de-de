@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09853e6dd96f41f966ff4344f886f1e6323b6c2c
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92789674"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733644"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Verwenden des Azure Storage-Ressourcenanbieters für den Zugriff auf Verwaltungsressourcen
 
@@ -28,7 +28,7 @@ Microsoft stellt zwei REST-APIs für das Arbeiten mit Azure Storage-Ressourcen b
 
 Für eine Anforderung, die Blobdaten liest oder schreibt, sind andere Berechtigungen erforderlich als für eine Anforderung, die einen Verwaltungsvorgang ausführt. Azure RBAC ermöglicht eine differenzierte Steuerung der Berechtigungen für beide Arten von Ressourcen. Wenn Sie einem Sicherheitsprinzipal eine Azure-Rolle zuweisen, stellen Sie sicher, dass Sie genau wissen, welche Berechtigungen diesem Prinzipal erteilt werden. Eine ausführliche Referenz mit Beschreibungen der Aktionen, die den einzelnen integrierten Azure-Rollen zugeordnet sind, finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 
-Azure Storage unterstützt die Verwendung von Azure AD zum Autorisieren von Anforderungen an Blob Storage und Queue Storage. Informationen zu Azure-Rollen für Datenvorgänge in Blobs und Warteschlangen finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Active Directory](storage-auth-aad.md).
+Azure Storage unterstützt die Verwendung von Azure AD zum Autorisieren von Anforderungen an Blob Storage und Queue Storage. Informationen zu Azure-Rollen für Datenvorgänge in Blobs und Warteschlangen finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Active Directory](authorize-data-access.md).
 
 ## <a name="assign-management-permissions-with-azure-role-based-access-control-azure-rbac"></a>Zuweisen von Verwaltungsberechtigungen mit der rollenbasierten Zugriffskontrolle von Azure (Azure RBAC)
 

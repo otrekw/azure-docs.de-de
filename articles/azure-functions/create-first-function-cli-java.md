@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: 69c4129feacf36b6b98cdcd7c2f4f5f36d7839b2
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 8f52ba7008b2a7b3f7734f652c92014e110e3df4
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831922"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287796"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Java-Funktion über die Befehlszeile in Azure
 
@@ -24,10 +24,12 @@ ms.locfileid: "107831922"
 
 In diesem Artikel verwenden Sie Befehlszeilentools zum Erstellen einer Java-Funktion, die auf HTTP-Anforderungen reagiert. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt.
 
-Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
+Sollte Maven nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials für Java-Entwickler zur Verfügung:
++ [Gradle](./functions-create-first-java-gradle.md)
++ [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions)
++ [Visual Studio Code](create-first-function-vs-code-java.md)
 
-> [!NOTE]
-> Sollte Maven nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials mit [Gradle](./functions-create-first-java-gradle.md), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) und [Visual Studio Code](create-first-function-vs-code-java.md) für Java-Entwickler zur Verfügung.
+Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
 ## <a name="configure-your-local-environment"></a>Konfigurieren Ihrer lokalen Umgebung
 
@@ -39,7 +41,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) ab Version 2.4
 
-+ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8 oder 11. Die Umgebungsvariable `JAVA_HOME` muss auf den Installationsspeicherort der richtigen Version des JDK festgelegt sein.     
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure), Version 8 oder 11. Die Umgebungsvariable `JAVA_HOME` muss auf den Installationsspeicherort der richtigen Version des JDK festgelegt sein.     
 
 + [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 

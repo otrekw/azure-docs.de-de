@@ -1,20 +1,20 @@
 ---
 title: Modulidentität und Modulzwilling von Azure IoT Hub (Python)
 description: Hier erfahren Sie, wie Sie mit IoT-SDKs für Python eine Modulidentität erstellen und den Modulzwilling aktualisieren.
-author: chrissie926
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.author: menchi
+ms.author: robinsh
 ms.custom: devx-track-python
-ms.openlocfilehash: 665281adc892e6b3655c0b1d0533cb3148e62940
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce8dec215591b469c5593923eb9d5b211ee8ac29
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92139398"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114726839"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (Python)
 

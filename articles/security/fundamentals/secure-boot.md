@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: feb28b1d448d0146046ed789d1389a3a42f344de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: e14bd525f2f81cfdf0a61f29df919f5579f0be17
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94557379"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893940"
 ---
 # <a name="secure-boot"></a>Sicherer Start
 
@@ -56,6 +56,7 @@ Die Überprüfung, ob db- und dbx-Digests korrekt sind, gewährleistet Folgendes
 Weitere Informationen zu unseren Anstrengungen, die Integrität und Sicherheit von Plattformen zu erhöhen, finden Sie unter:
 
 - [Firmwaresicherheit](firmware.md)
+- [Codeintegrität auf der Azure-Plattform](code-integrity.md)
 - [Gemessener Start- und Hostnachweis](measured-boot-host-attestation.md)
 - [Project Cerberus](project-cerberus.md)
 - [Verschlüsselung ruhender Daten](encryption-atrest.md)

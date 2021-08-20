@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: fdc299ef1945e3ee0810f1c314fc07edfb4f4873
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a93795301eed232fad38e95c55e47ecf63496d75
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313299"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465657"
 ---
 # <a name="microsoftsolutionsarmapicontrol-ui-element"></a>Benutzeroberflächenelement „Microsoft.Solutions.ArmApiControl“
 
@@ -51,7 +51,7 @@ Die Ausgabe des Steuerelements wird dem Benutzer nicht angezeigt. Stattdessen wi
   Beispielsweise ein ARM-Aufruf für den Ressourcenanbieter `Microsoft.Network/expressRouteCircuits`:
 
   ```json
-  "path": "<subid>/resourceGroup/<resourceGroupName>/providers/Microsoft.Network/expressRouteCircuits/<routecircuitName>/?api-version=2020-05-01"
+  "path": "subscriptions/<subid>/resourceGroup/<resourceGroupName>/providers/Microsoft.Network/expressRouteCircuits/<routecircuitName>/?api-version=2020-05-01"
   ```
 
 - Die `request.body`-Eigenschaft ist optional. Verwenden Sie ihn, um einen JSON-Text anzugeben, der mit der Anforderung gesendet wird. Der Text kann statischer Inhalt sein, oder er kann dynamisch erstellt werden, indem auf Ausgabewerte anderer Steuerelemente verwiesen wird.

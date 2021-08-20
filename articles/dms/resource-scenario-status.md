@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 5d5706738a0d85beed839d324ae3da055cafe39a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a57f13b9dc54c69e079e652be94f4b08b716a079
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747519"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112523058"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden
 
@@ -53,11 +53,16 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | **Virtueller Azure SQL-Computer** | SQL Server | ✔ | Allgemein verfügbar |
 |   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | Allgemein verfügbar |
-| **Azure-Datenbank für MySQL** | MySQL | ✔ |   |
-|   | RDS MySQL | X |   |
+| **Azure DB for MySQL – Single Server** | MySQL | ✔ | Allgemein verfügbar  |
+|   | RDS MySQL | ✔ | Allgemein verfügbar  |
+|   | Azure DB for MySQL* | ✔ | Allgemein verfügbar  |
+| **Azure DB for MySQL – Flexible Server** | MySQL | ✔ | Allgemein verfügbar  |
+|   | RDS MySQL | ✔ | Allgemein verfügbar  |
+|   | Azure DB for MySQL* | ✔ | Allgemein verfügbar  |
 | **Azure DB for PostgreSQL – Einzelserver** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
-|  | Oracle | X |   |
+| **Azure DB for PostgreSQL – Flexible Server** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
 | **Azure DB for PostgreSQL – Hyperscale (Citus)** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
 
@@ -76,15 +81,19 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | **Virtueller Azure SQL-Computer** | SQL Server | X |   |
 |   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | Allgemein verfügbar |
-| **Azure-Datenbank für MySQL** | MySQL | ✔ | Allgemein verfügbar |
-|   | RDS MySQL | ✔ | Allgemein verfügbar |
+| **Azure-Datenbank für MySQL** | MySQL | X |  |
+|   | RDS MySQL | X |  |
 | **Azure DB for PostgreSQL – Einzelserver** | PostgreSQL | ✔ | Allgemein verfügbar |
-|   | Azure DB for PostgreSQL – Einzelserver | ✔ | Allgemein verfügbar |
+|   | Azure DB for PostgreSQL – Einzelserver* | ✔ | Allgemein verfügbar |
 |   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
-|   | Oracle | X |   |
+| **Azure DB for PostgreSQL – Flexible Server** | PostgreSQL | ✔ | Allgemein verfügbar |
+|   | Azure DB for PostgreSQL – Einzelserver* | ✔ | Allgemein verfügbar |
+|   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
 | **Azure DB for PostgreSQL – Hyperscale (Citus)** | PostgreSQL | ✔ | Allgemein verfügbar |
 |   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
 
+> [!NOTE]
+> Wenn sich Ihre Quelldatenbank bereits in Azure PaaS befindet (z. B. Azure DB for MySQL oder Azure DB for PostgreSQL), wählen Sie beim Erstellen Ihrer Migrationsaktivität die entsprechende Engine aus. Wenn Sie z. B. von Azure DB for MySQL – Single Server zu Azure DB for MySQL – Flexible Server migrieren, wählen Sie bei der Szenarioerstellung mySQL als Quell-Engine aus. Wenn Sie von Azure DB for PostgreSQL – Single Server zu Azure DB for PostgreSQL – Flexible Server migrieren, wählen Sie während der Szenarioerstellung PostgreSQL als Quell-Engine aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

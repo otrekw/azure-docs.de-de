@@ -3,12 +3,12 @@ title: 'Verwenden von Akka Streams für Apache Kafka: Azure Event Hubs | Microso
 description: Dieser Artikel enthält Informationen dazu, wie Sie Akka Streams mit einem Azure Event Hub verbinden können.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 92ab927189329493696c70b61ffc7f11cad22a66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 500a287fcf481a8ef81ce1bb22df503e8757201d
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92369572"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286446"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Verwenden von Akka Streams mit Event Hubs für Apache Kafka
 
@@ -30,7 +30,7 @@ Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Vor
 
 * Lesen Sie den Artikel [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-* [Java Development Kit (JDK) 1.8 oder höher](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Java Development Kit (JDK) 1.8 oder höher](/azure/developer/java/fundamentals/java-support-on-azure)
     * Führen Sie unter Ubuntu `apt-get install default-jdk` aus, um das JDK zu installieren.
     * Achten Sie darauf, dass die Umgebungsvariable „JAVA_HOME“ auf den Ordner verweist, in dem das JDK installiert ist.
 * Führen Sie den [Download](https://maven.apache.org/download.cgi) und die [Installation](https://maven.apache.org/install.html) eines binären Maven-Archivs durch.

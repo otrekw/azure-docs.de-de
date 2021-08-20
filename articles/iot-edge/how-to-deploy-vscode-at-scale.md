@@ -3,18 +3,17 @@ title: Bedarfsabhängiges Bereitstellen von Modulen mithilfe von Visual Studio C
 description: Verwenden Sie die IoT-Erweiterung für Visual Studio Code zum Erstellen automatischer Bereitstellungen für Gruppen von IoT Edge-Geräten.
 keywords: ''
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a20992ef26b74bcc37a7403e4ee77cacc0f8f66e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5eecd68a53607b9b3fc7fc24fc9aee78063fdfe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200288"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338852"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Bedarfsabhängiges Bereitstellen von IoT Edge-Modulen mithilfe Visual Studio Code
 

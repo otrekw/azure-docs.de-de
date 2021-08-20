@@ -1,0 +1,213 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zu Open-Source-Technologien
+  description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Open-Source-Technologien in Azure App Service.
+  author: genlin
+  manager: dcscontentpm
+  tags: top-support-issue
+  ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
+  ms.topic: article
+  ms.date: 10/31/2018
+  ms.author: genli
+  ms.custom: seodec18, devx-track-python
+  ms.openlocfilehash: 82beedd254f3b22debc3dc16b60d0fd535b5b3f1
+  ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 07/01/2021
+  ms.locfileid: "113129262"
+title: Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
+summary: >
+  In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Problemen mit Open-Source-Technologien bei [Azure App Service-Web-Apps](https://azure.microsoft.com/services/app-service/web/).
+
+
+  [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Wie aktiviere ich die PHP-Protokollierung, um PHP-Probleme zu beheben?
+    answer: >
+      So aktivieren Sie die PHP-Protokollierung
+
+
+      1. Melden Sie sich bei Ihrer **Kudu-Website** (`https://*yourwebsitename*.scm.azurewebsites.net`) an.
+
+      2. Wählen Sie im obersten Menü **Debug Console** > **CMD** aus.
+
+      3. Wählen Sie den Ordner **Site** aus.
+
+      4. Wählen Sie den Ordner **wwwroot** aus.
+
+      5. Klicken Sie auf das Symbol **+** , und wählen Sie **New File** (Neue Datei) aus.
+
+      6. Legen Sie den Dateinamen auf **.user.ini** fest.
+
+      7. Aktivieren Sie das Stiftsymbol neben **.user.ini**.
+
+      8. Fügen Sie der Datei diesen Code hinzu: `log_errors=on`
+
+      9. Wählen Sie **Speichern** aus.
+
+      10. Aktivieren Sie das Stiftsymbol neben **wp-config.php**.
+
+      11. Ändern Sie den Text in den folgenden Code:
+          ```php
+          //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
+          //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
+          ```
+      12. Starten Sie im Azure-Portal im Menü „Web-App“ Ihre Web-App neu.
+
+
+      Weitere Informationen finden Sie unter [Aktivieren von WordPress-Fehlerprotokollen](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2).
+  - question: >
+      Wie protokolliere ich Python-Anwendungsfehler in Apps, die in App Service gehostet werden?
+    answer: >
+      [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
+  - question: >
+      Wie ändere ich die Version der Node.js-Anwendung, die in App Service gehostet wird?
+    answer: "Um die Version der Node.js-Anwendung zu ändern, können Sie eine der folgenden Optionen wählen:\n\n* Öffnen Sie im Azure-Portal **App-Einstellungen**.\n  1. Navigieren Sie im Azure-Portal zu Ihrer Web-App.\n  2. Klicken Sie auf dem Blatt **Einstellungen** auf **Anwendungseinstellungen**.\n  3. In **App-Einstellungen** können Sie WEBSITE_NODE_DEFAULT_VERSION als Schlüssel und die gewünschte Version von Node.js als Wert hinzufügen.\n  4. Wechseln Sie zu Ihrer **Kudu-Konsole** (`https://*yourwebsitename*.scm.azurewebsites.net`).\n  5. Um die Node.js-Version zu überprüfen, geben Sie den folgenden Befehl ein:  \n     ```\n     node -v\n     ```\n* Bearbeiten Sie die Datei „iisnode.yml“. Durch Ändern der Node.js-Version in der Datei „iisnode.yml“ wird nur die Laufzeitumgebung festgelegt, die iisnode verwendet. Kudu CMD u.a. nutzen weiter die Node.js-Version, die **App-Einstellungen** im Azure-Portal festgelegt ist.\n\n  Um „iisnode.yml“ manuell festzulegen, erstellen Sie die Datei „iisnode.yml“ im Stammordner der App. Fügen Sie der Datei die folgende Zeile hinzu:\n  ```yml\n  nodeProcessCommandLine: \"D:\\Program Files (x86)\\nodejs\\5.9.1\\node.exe\"\n  ```\n   \n* Legen Sie die Datei „iisnode.yml“ mithilfe der Datei „package.json“ während der Bereitstellung der Quellcodeverwaltung fest.\n  Der Azure-Quellcodeverwaltungsprozess umfasst die folgenden Schritte:\n  1. Das Verschieben von Inhalt in die Azure-Web-App.\n  2. Das Erstellen eines Standardbereitstellungsskripts, wenn keines vorhanden ist (deploy.cmd, Bereitstellungsdateien), im Stammordner der Web-App.\n  3. Das Ausführen eines Bereitstellungsskripts, in dem die Datei „iisnode.yml“ erstellt wird, wenn Sie die Node.js-Version in der Datei „package.json“ unter „engines“ angeben: `\"engines\": {\"node\": \"5.9.1\",\"npm\": \"3.7.3\"}`\n  4. Die Datei „iisnode.yml“ enthält die folgende Codezeile:\n      ```yml\n      nodeProcessCommandLine: \"D:\\Program Files (x86)\\nodejs\\5.9.1\\node.exe\"\n      ```\n"
+  - question: >
+      Mir wird die Meldung „Fehler beim Herstellen einer Datenbankverbindung“ in meiner WordPress-App angezeigt, die in App Service gehostet wird. Wie kann ich das Problem beheben?
+    answer: >
+      Wenn Ihnen dieser Fehler in der Azure-WordPress-App angezeigt wird, führen Sie zum Aktivieren von „php_errors.log“ und „debug.log“ die Schritte unter [Aktivieren von WordPress-Fehlerprotokollen](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2) aus.
+
+
+      Wenn die Protokolle aktiviert sind, reproduzieren Sie den Fehler, und überprüfen Sie die Protokolle, um zu prüfen, ob Verbindungen knapp werden:
+
+      ```
+
+      [09-Oct-2015 00:03:13 UTC] PHP Warning: mysqli_real_connect(): (HY000/1226): User ‘abcdefghijk79' has exceeded the ‘max_user_connections’ resource (current value: 4) in D:\home\site\wwwroot\wp-includes\wp-db.php on line 1454
+
+      ```
+
+
+      Wenn Sie diesen Fehler in Ihren Dateien „debug.log“ oder „php_errors.log“ sehen, hat Ihre App die Anzahl der Verbindungen überschritten. Wenn das Hosten in ClearDB erfolgt, überprüfen Sie die Anzahl der Verbindungen, die in Ihrem [Serviceplan](https://www.cleardb.com/pricing.view) verfügbar sind.
+  - question: >
+      Wie debugge ich eine Node.js-app, die in App Service gehostet wird?
+    answer: >
+      1.  Wechseln Sie zu Ihrer **Kudu-Konsole** (`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`).
+
+      2.  Wechseln Sie zu Ihrem Ordner mit den Anwendungsprotokollen (D:\home\LogFiles\Application).
+
+      3.  Überprüfen Sie den Inhalt der Datei „logging_errors.txt“.
+  - question: >
+      Wie installiere ich native Python-Module in einer App Service-Web-App oder -API-App?
+    answer: >
+      Einige Pakete lassen sich ggf. nicht mithilfe von pip in Azure installieren. Das Paket ist möglicherweise nicht im Python Package Index verfügbar, oder ggf. ist ein Compiler erforderlich (auf dem Computer, auf dem die Web-App in App Service ausgeführt wird, ist kein Compiler verfügbar). Informationen zum Installieren nativer Module in App Service-Web-Apps und -API-Apps finden Sie unter [Installieren von Python-Modulen in App Service](/archive/blogs/azureossds/install-native-python-modules-on-azure-web-apps-api-apps).
+  - question: >
+      Wie stelle ich eine Django-App in App Service mithilfe von Git und der neuen Version von Python bereit?
+    answer: >
+      Informationen zum Installieren von Django finden Sie unter [Bereitstellen einer Django-App in App Service](/archive/blogs/azureossds/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python).
+  - question: >
+      Wo befinden sich die Tomcat-Protokolldateien?
+    answer: >
+      Für Azure Marketplace und benutzerdefinierte Bereitstellungen:
+
+
+      * Speicherort des Ordners: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
+
+      * Dateien von Interesse:
+          * catalina.*JJJJ-MM-TT*.log
+          * host-manager.*JJJJ-MM-TT*.log
+          * localhost.*JJJJ-MM-TT*.log
+          * manager.*JJJJ-MM-TT*.log
+          * site_access_log.*JJJJ-MM-TT*.log
+
+
+      Für Bereitstellungen über das Portal unter **Anwendungseinstellungen**:
+
+
+      * Speicherort des Ordners: D:\home\LogFiles
+
+      * Dateien von Interesse:
+          * catalina.*JJJJ-MM-TT*.log
+          * host-manager.*JJJJ-MM-TT*.log
+          * localhost.*JJJJ-MM-TT*.log
+          * manager.*JJJJ-MM-TT*.log
+          * site_access_log.*JJJJ-MM-TT*.log
+  - question: >
+      Wie behebe ich JDBC-Treiberverbindungsfehler?
+    answer: >
+      In Ihren Tomcat-Protokollen wird ggf. die folgende Meldung angezeigt:
+
+
+      ```
+
+      The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak,the JDBC Driver has been forcibly unregistered
+
+      ```
+
+
+      So beheben Sie den Fehler
+
+
+      1. Entfernen Sie die Datei „sqljdbc*.jar-“ aus Ihrem Ordner „app/lib“.
+
+      2. Bei Verwendung des benutzerdefinierten Tomcat- oder Azure Marketplace Tomcat-Webservers kopieren Sie diese JAR-Datei in den Tomcat-Ordner „lib“.
+
+      3. Wenn Sie Java im Azure-Portal aktivieren (wählen Sie **Java 1.8** > **Tomcat-Server** aus), kopieren Sie die JAR-Datei „sqljdbc\*“ in den Ordner, der parallel zu Ihrer App vorhanden ist. Fügen Sie dann die folgende Klassenpfadeinstellung der Datei „web.config“ hinzu:
+
+          ```xml
+          <httpPlatform>
+          <environmentVariables>
+          <environmentVariablename ="JAVA_OPTS" value=" -Djava.net.preferIPv4Stack=true
+          -Xms128M -classpath %CLASSPATH%;[Path to the sqljdbc*.jarfile]" />
+          </environmentVariables>
+          </httpPlatform>
+          ```
+  - question: >
+      Warum erhalte ich Fehlermeldungen beim Versuch, Liveprotokolldateien zu kopieren?
+    answer: "Wenn Sie versuchen, Liveprotokolldateien für eine Java-App (z.B. Tomcat) zu kopieren, kann dieser FTP-Fehler angezeigt werden:\n\n```\nError transferring file [filename] Copying files from remote side failed.\n    \nThe process cannot access the file because it is being used by another process.\n```\n\nDie Fehlermeldung kann je nach FTP-Client variieren.\n\nAlle Java-Apps haben dieses Sperrproblem. Nur Kudu unterstützt das Herunterladen dieser Datei, während die App ausgeführt wird.\n\nDas Beenden der App ermöglicht FTP-Zugriff auf diese Dateien.\n\nEine weitere Möglichkeit besteht darin, einen WebJob zu schreiben, der gemäß einem Zeitplan ausgeführt wird und diese Dateien in ein anderes Verzeichnis kopiert. Ein Beispielprojekt finden Sie im Projekt [CopyLogsJob](https://github.com/kamilsykora/CopyLogsJob).\n"
+  - question: >
+      Wo finde ich die Protokolldateien für Jetty?
+    answer: >
+      Für Marketplace- und benutzerdefinierte Bereitstellungen befindet sich die Protokolldatei im Ordner „D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs“. Beachten Sie, dass der Speicherort des Ordners von der verwendeten Version von Jetty abhängt. Der hier angegebene Pfad gilt z.B. für Jetty 9.1.2. Suchen Sie nach „jetty_ *YYYY_MM_DD*.stderrout.log“.
+
+
+      Für Bereitstellungen über „App-Einstellungen“ im Portal befindet sich die Protokolldatei in „D:\home\LogFiles“. Suchen Sie nach „jetty_ *YYYY_MM_DD*.stderrout.log“.
+  - question: >
+      Kann ich E-Mail aus meiner Azure-Web-App senden?
+    answer: >
+      App Service bietet keine integrierte E-Mail-Funktion. Einige guten Alternativen für das Senden von E-Mail aus Ihrer App finden Sie in dieser [Diskussion auf Stack Overflow](https://stackoverflow.com/questions/17666161/sending-email-from-azure).
+  - question: >
+      Warum leitet mich meine WordPress-Website zu einer anderen URL um?
+    answer: >
+      Wenn Sie vor Kurzem zu Azure migriert sind, leitet WordPress Sie zur alten Domänen-URL um. Dies wird durch eine Einstellung in der MySQL-Datenbank verursacht.
+
+
+      WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit deren Hilfe Sie die Umleitungs-URL direkt in der Datenbank aktualisieren können. Weitere Informationen zur Verwendung von WordPress Buddy+ finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
+
+
+      Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, siehe [WordPress: Redirecting to wrong URL](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url) (WordPress: Umleitung zur falschen URL).
+  - question: >
+      Wie ändere ich mein WordPress-Anmeldungskennwort?
+    answer: >
+      Wenn Sie Ihr WordPress-Anmeldungskennwort vergessen haben, können es mit WordPress Buddy+ aktualisieren. Um Ihr Kennwort zurückzusetzen, installieren Sie die Erweiterung für Azure-Websites WordPress Buddy+, und führen Sie die Schritte unter [WordPress tools and MySQL migration with WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+) aus.
+  - question: >
+      Ich kann mich nicht bei WordPress anmelden. Wie löse ich dieses Problem?
+    answer: >
+      Wenn Sie sich nach einer vor Kurzem erfolgten Installation eines Plug-Ins aus WordPress ausgesperrt haben, verfügen Sie möglicherweise über ein fehlerhaftes Plug-In. WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit der Sie WordPress-Plug-Ins deaktivieren können. Weitere Informationen finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
+  - question: >
+      Wie migriere ich meine WordPress-Datenbank?
+    answer: >
+      Sie haben mehrere Optionen zum Migrieren der MySQL-Datenbank, die mit Ihrer WordPress-Website verbunden ist:
+
+
+      * Entwickler: Verwenden Sie die [Eingabeaufforderung oder PHPMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service).
+
+      * Andere Benutzer: Verwenden Sie [WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows).
+  - question: >
+      Wie kann ich WordPress sicherer machen?
+    answer: >
+      Informationen zu bewährten Sicherheitsmethoden für WordPress finden Sie unter [Best practices for WordPress security in Azure](/archive/blogs/azureossds/best-practices-for-wordpress-security-on-azure) (Bewährte Methoden für die WordPress-Sicherheit in Azure).
+  - question: >
+      Ich versuche, PHPMyAdmin zu verwenden, und erhalte die Fehlermeldung „Zugriff verweigert“. Wie löse ich dieses Problem?
+    answer: >
+      Dieses Problem kann auftreten, wenn die MySQL-In-App-Funktion noch nicht in dieser App Service-Instanz ausgeführt wird. Um das Problem zu beheben, versuchen Sie, auf Ihre Website zuzugreifen. Dadurch werden die erforderlichen Prozesse einschließlich des MySQL-In-App-Prozesses gestartet. Um zu prüfen, ob der MySQL-In-App-Prozess ausgeführt wird, vergewissern Sie sich im Prozess-Explorer, dass „mysqld.exe“ in den Prozessen aufgeführt ist.
+
+
+      Nachdem Sie sichergestellt haben, dass der MySQL-In-App-Prozess ausgeführt wird, versuchen Sie, PHPMyAdmin zu verwenden.
+  - question: >
+      Ich erhalte die HTTP-Fehlermeldung 403, wenn ich versuche, meine MySQL-In-App-Datenbank mithilfe von PHPMyadmin zu importieren oder zu exportieren. Wie löse ich dieses Problem?
+    answer: Wenn Sie eine ältere Version von Chrome verwenden, ist möglicherweise ein bekannter Fehler aufgetreten. Um das Problem zu beheben, aktualisieren Sie auf eine neuere Version von Chrome. Oder verwenden Sie einen anderen Browser wie Internet Explorer oder Microsoft Edge, in dem das Problem nicht auftritt.
