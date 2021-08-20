@@ -6,15 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 04/05/2021
+ms.date: 07/06/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 7331f9a894d36ee15702a8fe53804efd53049762
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 82e5b16ef4f7892a52ea0ec3d332104cbf99bb68
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284118"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765490"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Verwalten von Azure Enterprise Agreement-Rollen
 
@@ -208,10 +208,10 @@ Die folgende Tabelle zeigt die Beziehungen zwischen den Enterprise Agreement-Adm
 |Enterprise Agreement-Administratorrolle|Richtlinie zum Anzeigen von Gebühren für die Rolle|Azure-Rolle|Preisansicht|
 |---|---|---|---|
 |Kontobesitzer ODER Abteilungsadministrator|✔ Aktiviert|Besitzer|EA-Preise der Organisation|
-|Kontobesitzer ODER Abteilungsadministrator|✘ Deaktiviert|Besitzer|Einzelhandelspreise|
+|Kontobesitzer ODER Abteilungsadministrator|✘ Deaktiviert|Besitzer|Keine Preise|
 |Kontobesitzer ODER Abteilungsadministrator|✔ Aktiviert |none|Keine Preise|
 |Kontobesitzer ODER Abteilungsadministrator|✘ Deaktiviert |none|Keine Preise|
-|Keine|Nicht verfügbar |Besitzer|Einzelhandelspreise|
+|Keine|Nicht verfügbar |Besitzer|Keine Preise|
 
 Sie legen die Enterprise-Administratorrolle und die Richtlinien zum Anzeigen von Gebühren im Enterprise-Portal fest. Die Azure-Rolle kann im Azure-Portal aktualisiert werden. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 

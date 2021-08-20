@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 05/05/2021
-ms.openlocfilehash: 1cdc286376d53bcf6491cd6d29f74a62df8b68fb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ba8904713f9623cf80f259ad096a4dbfaddad393
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967669"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112552908"
 ---
 # <a name="failover-for-business-continuity-and-disaster-recovery"></a>Failover für Business Continuity & Disaster Recovery
 
@@ -150,7 +150,8 @@ Ausführungen in Azure Machine Learning werden durch eine Ausführungsspezifikat
       > Pipelines, die im Studio-Designer erstellt wurden, können derzeit nicht als Code exportiert werden.
 
 * Verwalten Sie Konfigurationen als Code.
-    * Vermeiden Sie hartcodierte Verweise auf den Arbeitsbereich. Konfigurieren Sie stattdessen mithilfe einer [Konfigurationsdatei](how-to-configure-environment.md#workspace) einen Verweis auf die Arbeitsbereichsinstanz, und verwenden Sie [Workspace.from_config()](/python/api/azureml-core/azureml.core.workspace.workspace#remarks), um den Arbeitsbereich zu initialisieren. Verwenden Sie zum Automatisieren des Prozesses den Befehl [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext_azure_cli_ml_az_ml_folder_attach) der [Azure CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
+
+    * Vermeiden Sie hartcodierte Verweise auf den Arbeitsbereich. Konfigurieren Sie stattdessen mithilfe einer [Konfigurationsdatei](how-to-configure-environment.md#workspace) einen Verweis auf die Arbeitsbereichsinstanz, und verwenden Sie [Workspace.from_config()](/python/api/azureml-core/azureml.core.workspace.workspace#remarks), um den Arbeitsbereich zu initialisieren. Verwenden Sie zum Automatisieren des Prozesses den Befehl [az ml folder attach](/cli/azure/ml(v1)/folder#ext_azure_cli_ml_az_ml_folder_attach) der [Azure CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
     * Verwenden Sie Hilfsprogramme für die Ausführungsübermittlung, z. B. [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) und [Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)).
     * Verwenden Sie [Environments.save_to_directory()](/python/api/azureml-core/azureml.core.environment(class)#save-to-directory-path--overwrite-false-), um die Umgebungsdefinitionen zu speichern.
     * Verwenden Sie ein Dockerfile, wenn Sie benutzerdefinierte Docker-Images verwenden.
@@ -180,11 +181,10 @@ Die folgenden Artefakte können mithilfe der [Azure CLI-Erweiterung für Azure M
 | ----- | ----- | ----- |
 | Modelle | [az ml model download --model-id {ID} --target-dir {PATH}](/cli/azure/ext/azure-cli-ml/ml/model#ext_azure_cli_ml_az_ml_model_download) | [az ml model register –name {NAME} --path {PATH}](/cli/azure/ext/azure-cli-ml/ml/model) |
 | Umgebungen | [az ml environment download -n {NAME} -d {PATH}](/cli/azure/ext/azure-cli-ml/ml/environment#ext_azure_cli_ml_az_ml_environment_download) | [az ml environment register -d {PATH}](/cli/azure/ext/azure-cli-ml/ml/environment#ext_azure_cli_ml_az_ml_environment_register) |
-| Azure Machine Learning-Pipelines (codegeneriert) | [az ml pipeline get --path {PATH}](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext_azure_cli_ml_az_ml_pipeline_get) | [az ml pipeline create --name {NAME} -y {PATH}](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext_azure_cli_ml_az_ml_pipeline_create)
+| Azure Machine Learning-Pipelines (codegeneriert) | [az ml pipeline get --path {PATH}](/cli/azure/ml(v1)/pipeline#ext_azure_cli_ml_az_ml_pipeline_get) | [az ml pipeline create --name {NAME} -y {PATH}](/cli/azure/ml(v1)/pipeline#ext_azure_cli_ml_az_ml_pipeline_create)
 
 > [!TIP]
-> * __Registrierte Datasets__ können nicht heruntergeladen oder verschoben werden. Dies schließt von Azure Machine Learning generierte Datasets ein, z. B. Zwischen-Pipelinedatasets. Datasets, die auf einen freigegebenen Dateispeicherort verweisen, auf den beide Arbeitsbereiche zugreifen können, oder bei dem der zugrunde liegende Datenspeicher repliziert wird, können jedoch in beiden Arbeitsbereichen registriert werden. Verwenden Sie [az ml dataset register](/cli/azure/ext/azure-cli-ml/ml/dataset#ext_azure_cli_ml_az_ml_dataset_register), um ein Dataset zu registrieren.
->
+> * __Registrierte Datasets__ können nicht heruntergeladen oder verschoben werden. Dies schließt von Azure Machine Learning generierte Datasets ein, z. B. Zwischen-Pipelinedatasets. Datasets, die auf einen freigegebenen Dateispeicherort verweisen, auf den beide Arbeitsbereiche zugreifen können, oder bei dem der zugrunde liegende Datenspeicher repliziert wird, können jedoch in beiden Arbeitsbereichen registriert werden. Verwenden Sie [az ml dataset register](/cli/azure/ml(v1)/dataset#ext_azure_cli_ml_az_ml_dataset_register), um ein Dataset zu registrieren.
 > * __Ausführungsausgaben__ werden im Standardspeicherkonto gespeichert, das einem Arbeitsbereich zugeordnet ist. Während bei einem Dienstausfall möglicherweise nicht mehr über die Studio-Benutzeroberfläche auf Ausführungsausgaben zugegriffen werden kann, können Sie direkt über das Speicherkonto auf die Daten zugreifen. Weitere Informationen zum Arbeiten mit in Blobs gespeicherten Daten finden Sie unter [Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle](../storage/blobs/storage-quickstart-blobs-cli.md).
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: dukek
-ms.openlocfilehash: 2f5244fd8ef414a1bed6781c702014e805f47a76
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 26f6b62ece1fcde8ca69ffbb804d9ab24b3c1ac3
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060316"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112455732"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. 
@@ -160,7 +160,7 @@ Beim Einrichten der *E-Mail-ARM-Rolle* müssen Sie sicherstellen, dass die drei 
 ### <a name="function"></a>Funktion
 Diese Aktion ruft einen vorhandenen HTTP-Triggerendpunkt in [Azure Functions](../../azure-functions/functions-get-started.md) auf. Ihr Endpunkt muss das HTTP POST-Verb verarbeiten, um eine Anforderung zu verarbeiten.
 
-Beim Definieren der Funktionsaktion werden der httptrigger-Endpunkt und der Zugriffsschlüssel der Funktion in der Aktionsdefinition gespeichert. Beispiel: https://azfunctionurl.azurewebsites.net/api/httptrigger?code=this_is_access_key. Wenn Sie den Zugriffsschlüssel für die Funktion ändern, müssen Sie die Funktionsaktion in der Aktionsgruppe löschen und neu erstellen.
+Beim Definieren der Funktionsaktion werden der httptrigger-Endpunkt und der Zugriffsschlüssel der Funktion in der Aktionsdefinition gespeichert. Beispiel: `https://azfunctionurl.azurewebsites.net/api/httptrigger?code=this_is_access_key`. Wenn Sie den Zugriffsschlüssel für die Funktion ändern, müssen Sie die Funktionsaktion in der Aktionsgruppe löschen und neu erstellen.
 
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Functions-Aktionen verfügen.
 

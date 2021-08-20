@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: fb9b2a13f277c326cdda722398a915941b8c52b3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: faeaf58537da4a40716f0c2e76b205980b727bf9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740967"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459104"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Behandeln von Problemen, warum Daten von Ihren Geräten nicht in Azure IoT Central angezeigt werden
 
@@ -52,7 +52,7 @@ Verwenden Sie die folgenden Befehle, um sich in dem Abonnement anzumelden, in de
 
 ```azurecli
 az login
-az set account --subscription <your-subscription-id>
+az account set --subscription <your-subscription-id>
 ```
 
 Verwenden Sie den folgenden Befehl, um die vom Gerät gesendeten Telemetriedaten zu überwachen:
@@ -216,7 +216,7 @@ Wenn Sie die Verwendung einer grafischen Benutzeroberfläche (GUI) vorziehen, ve
 
 Wenn Sie das Problem erkannt haben, müssen Sie möglicherweise die Gerätefirmware aktualisieren oder eine neue Gerätevorlage erstellen, die bisher nicht modellierte Daten modelliert.
 
-Wenn Sie sich dafür entschieden haben, eine neue Vorlage zu erstellen, die die Daten ordnungsgemäß modelliert, migrieren Sie Geräte von Ihrer alten Vorlage zu der neuen Vorlage. Weitere Informationen finden Sie unter [Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung](howto-manage-devices.md).
+Wenn Sie sich dafür entschieden haben, eine neue Vorlage zu erstellen, die die Daten ordnungsgemäß modelliert, migrieren Sie Geräte von Ihrer alten Vorlage zu der neuen Vorlage. Weitere Informationen finden Sie unter [Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung](howto-manage-devices-individually.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

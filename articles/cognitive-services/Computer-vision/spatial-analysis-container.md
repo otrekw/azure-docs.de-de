@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 15ef67fb452b4302cc848b88b3dab89d46fb8793
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ebe95bbd0b00ace152587604fb9f7543b24188e2
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746463"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429810"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installieren und Ausführen des Containers für räumliche Analyse (Vorschau)
 
@@ -24,6 +24,7 @@ Mit dem Container für räumliche Analyse können Sie in Echtzeit gestreamte Vid
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services)
+* [!INCLUDE [contributor-requirement](../includes/quickstarts/contributor-requirement.md)]
 * Wenn Sie über Ihr Azure-Abonnement verfügen, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank">erstellen Sie im Azure-Portal eine Ressource für maschinelles Sehen </a> für den Tarif Standard S1, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und den Endpunkt der Ressource, die Sie erstellen, um den Container für räumliche Analyse auszuführen. Sie benötigen Ihren Schlüssel und den Endpunkt zu einem späteren Zeitpunkt des Prozesses.
 
@@ -316,7 +317,10 @@ Ein virtueller Azure-Computer mit einer GPU kann auch verwendet werden, um eine 
 
 Öffnen Sie den [Assistenten zum Erstellen eines virtuellen Computers](https://ms.portal.azure.com/#create/Microsoft.VirtualMachine) im Azure-Portal.
 
-Geben Sie Ihrer VM einen Namen, und wählen Sie die Region „(USA) USA, Westen 2“ aus. Stellen Sie sicher, dass Sie für „Verfügbarkeitsoptionen“ die Option „Keine Infrastrukturredundanz erforderlich.“ festlegen. Die folgende Abbildung zeigt die vollständige Konfiguration. Der nächste Schritt hilft Ihnen dabei, die richtige VM-Größe zu finden. 
+Geben Sie Ihrer VM einen Namen, und wählen Sie die Region „(USA) USA, Westen 2“ aus. 
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass Sie für „Verfügbarkeitsoptionen“ die Option „Keine Infrastrukturredundanz erforderlich.“ festlegen. Die folgende Abbildung zeigt die vollständige Konfiguration. Der nächste Schritt hilft Ihnen dabei, die richtige VM-Größe zu finden. 
 
 :::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.jpg" alt-text="Konfigurationsdetails für den virtuellen Computer" lightbox="media/spatial-analysis/virtual-machine-instance-details.jpg":::
 
