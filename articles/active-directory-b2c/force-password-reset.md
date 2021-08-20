@@ -12,12 +12,12 @@ ms.date: 06/10/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0944dfd177ba82680b315913046ce8a4103f1156
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a8fc74a298450ad2581a8a147eaff9f996dca8dc
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960603"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112198798"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Einrichten eines Flows zum Erzwingen der Kennwortzurücksetzung in Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Wenn ein Administrator das Kennwort eines Benutzers über das Azure-Portal zurü
 
 ![Flow zum Erzwingen der Kennwortzurücksetzung](./media/force-password-reset/force-password-reset-flow.png)
 
-Der Flow für die Kennwortzurücksetzung wird für lokale Konten in Azure AD B2C verwendet, bei denen für die Anmeldung eine [E-Mail-Adresse](identity-provider-local.md#email-sign-in) oder ein [Benutzername](identity-provider-local.md#username-sign-in) und ein Kennwort verwendet werden.
+Der Flow für die Kennwortzurücksetzung wird für lokale Konten in Azure AD B2C verwendet, bei denen für die Anmeldung eine [E-Mail-Adresse](sign-in-options.md#email-sign-in) oder ein [Benutzername](sign-in-options.md#username-sign-in) und ein Kennwort verwendet werden.
 
 ::: zone pivot="b2c-user-flow"
 

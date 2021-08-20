@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 03/17/2021
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b11a76be94fc52285482e13dadbc8c7c92af1374
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d37cabb8b74fea3a72ddafdf3322d20379f8d29
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608822"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349907"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Best Practices für dedizierte SQL-Pools in Azure Synapse Analytics
 
@@ -27,7 +27,7 @@ Einen Leitfaden zum Laden von dedizierten SQL-Pools finden Sie unter [Bewährte 
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Reduzieren von Kosten durch das Pausieren und Skalieren
 
-Weitere Informationen zur Kostensenkung durch Anhalten und Skalieren finden Sie im Artikel [Verwalten von Computeressourcen](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere Informationen zur Kostensenkung durch Anhalten und Skalieren finden Sie im Artikel [Verwalten von Computeressourcen](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?context=/azure/synapse-analytics/context/context).
 
 ## <a name="maintain-statistics"></a>Verwalten von Statistiken
 
@@ -63,13 +63,13 @@ PolyBase-Ladevorgänge können per CTAS oder INSERT INTO ausgeführt werden. CTA
 
 Wenn Sie bei der Verwendung von Gzip-Textdateien den Durchsatz maximieren möchten, teilen Sie sie in 60 oder mehr Dateien auf, um die Parallelität Ihres Ladevorgangs zu maximieren. Erwägen Sie das gleichzeitige Laden von Daten, um einen besseren Gesamtdurchsatz zu erzielen. Zusätzliche Informationen zu den für diesen Abschnitt relevanten Themen sind in den folgenden Artikeln enthalten:
 
-- [Laden von Daten](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Laden von Daten](../sql-data-warehouse/design-elt-data-loading.md?context=/azure/synapse-analytics/context/context)
 - [Anleitung für die Verwendung von PolyBase](data-loading-best-practices.md)
 - [Lademuster und -strategien für dedizierte SQL-Pools](/archive/blogs/sqlcat/azure-sql-data-warehouse-loading-patterns-and-strategies)
-- [Laden von Daten mit Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Verschieben von Daten mit Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Laden von Daten mit Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?context=/azure/synapse-analytics/context/context)
+- [Verschieben von Daten mit Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md?context=/azure/synapse-analytics/context/context)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)
-- [Create table as select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Create table as select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context)
 
 ## <a name="load-then-query-external-tables"></a>Laden und Abfragen von externen Tabellen
 
@@ -91,7 +91,7 @@ Wenn Sie z. B. eine Tabelle mit Bestellungen verwenden, die nach „order_id“
 Über die unten angegebenen Artikellinks erhalten Sie weitere Details zur Leistungsverbesserung durch Auswahl einer Verteilungsspalte. Außerdem finden Sie Informationen zum Definieren einer verteilten Tabelle in der WITH-Klausel ihrer CREATE TABLE-Anweisung:
 
 - [Tabellenübersicht](develop-tables-overview.md)
-- [Verteilen von Tabellen in SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Verteilen von Tabellen in SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context)
 - [Auswählen von Tabellenverteilungen](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)
 - [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)
 - [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)
@@ -104,7 +104,7 @@ Die Verwendung von zu vielen Partitionen kann die Effektivität von gruppierten 
 
 Eine zu erwägende Option ist die Verwendung einer Granularität, die niedriger ist als die, die Sie mit SQL Server implementiert haben. Versuchen Sie es z. B. anstelle von täglichen Partitionen mit wöchentlichen oder monatlichen Partitionen.
 
-Weitere Informationen zur Partitionierung finden Sie im Artikel [Tabellenpartitionierung](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere Informationen zur Partitionierung finden Sie im Artikel [Tabellenpartitionierung](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context).
 
 ## <a name="minimize-transaction-sizes"></a>Verringern von Transaktionsgrößen
 
@@ -119,10 +119,10 @@ Erwägen Sie bei nicht partitionierten Tabellen die Verwendung eines CTAS-Vorgan
 
 Weitere Informationen zum Inhalt dieses Abschnitts finden Sie in den folgenden Artikeln:
 
-- [Create table as select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Create table as select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context)
 - [Grundlegendes zu Transaktionen](develop-transactions.md)
-- [Optimieren von Transaktionen](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Tabellenpartitionierung](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Optimieren von Transaktionen](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?context=/azure/synapse-analytics/context/context)
+- [Tabellenpartitionierung](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context)
 - [TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
@@ -148,7 +148,7 @@ Weitere Anleitungen finden Sie in den Artikeln [Temporäre Tabellen](/sql/t-sql/
 
 Gruppierte Columnstore-Indizes sind eine der effizientesten Möglichkeiten zum Speichern Ihrer Daten in einem dedizierten SQL-Pool.  Tabellen werden in einem dedizierten SQL-Pool standardmäßig als gruppierter Columnstore erstellt.  Die Verwendung einer guten Segmentqualität ist wichtig, um für Abfragen in Columnstore-Tabellen die beste Leistung zu erzielen.  Wenn Zeilen bei hohem Arbeitsspeicherdruck in Columnstore-Tabellen geschrieben werden, kann die Qualität von Columnstore-Segmenten leiden.  
 
-Die Segmentqualität kann anhand der Anzahl von Zeilen in einer komprimierten Zeilengruppe gemessen werden. Eine ausführliche Anleitung zur Erkennung und Verbesserung der Segmentqualität für gruppierte Columnstore-Tabellen finden Sie im Artikel [Tabellenindizes](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) unter [Ursachen für eine schlechte Qualität des Columnstore-Index](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#causes-of-poor-columnstore-index-quality).  
+Die Segmentqualität kann anhand der Anzahl von Zeilen in einer komprimierten Zeilengruppe gemessen werden. Eine ausführliche Anleitung zur Erkennung und Verbesserung der Segmentqualität für gruppierte Columnstore-Tabellen finden Sie im Artikel [Tabellenindizes](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context) unter [Ursachen für eine schlechte Qualität des Columnstore-Index](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context#causes-of-poor-columnstore-index-quality).  
 
 Weil qualitativ hochwertige Columnstore-Segmente wichtig sind, ist es eine gute Idee, Benutzer-IDs, die zur mittleren oder großen Ressourcenklasse gehören, zum Laden von Daten zu verwenden. Wenn Sie [Data Warehouse-Einheiten](resource-consumption-models.md) auf niedrigerer Ebene verwenden, sollten Sie dem ladenden Benutzer eine größere Ressourcenklasse zuweisen.
 
@@ -162,7 +162,7 @@ Wenn Sie Ihre Daten partitionieren, muss jede Partition eine Million Zeilen aufw
 Wenn Ihre Tabelle nicht 6 Milliarden Zeilen aufweist, haben Sie zwei Hauptoptionen. Reduzieren Sie entweder die Anzahl der Partitionen, oder verwenden Sie stattdessen eine Heaptabelle.  Außerdem kann sich folgendes Experiment lohnen: Ermitteln Sie, ob eine bessere Leistung erzielt werden kann, indem eine Heaptabelle mit sekundären Indizes anstelle einer Columnstore-Tabelle verwendet wird.
 
 Beim Abfragen einer Columnstore-Tabelle werden die Abfragen schneller ausgeführt, wenn Sie nur die benötigten Spalten auswählen.  Weitere Informationen zu Tabellen- und Columnstore-Indizes finden Sie in den folgenden Artikeln:
-- [Ursachen für eine schlechte Qualität des Columnstore-Index](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Ursachen für eine schlechte Qualität des Columnstore-Index](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context)
 - [Columnstore-Indizes: Übersicht](/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true)
 - [Neuerstellen von Columnstore-Indizes](../sql-data-warehouse/sql-data-warehouse-tables-index.md?view=azure-sqldw-latest&preserve-view=true#rebuilding-indexes-to-improve-segment-quality) 
 - [Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index](../sql-data-warehouse/performance-tuning-ordered-cci.md)
@@ -173,7 +173,7 @@ SQL-Pools nutzen Ressourcengruppen zum Zuordnen von Arbeitsspeicher zu Abfragen.
 
 Bestimmte Abfragen, z.B. große Verknüpfungen oder Ladevorgänge für gruppierte Columnstore-Tabellen, profitieren von größeren Arbeitsspeicherzuordnungen.  Für einige Abfragen, z. B. reine Scans, ergibt sich kein Vorteil. Die Verwendung größerer Ressourcenklassen wirkt sich auf die Parallelität aus. Sie sollten also diese Fakten im Hinterkopf behalten, bevor Sie alle Ihre Benutzer in eine große Ressourcenklasse verschieben.
 
-Weitere Informationen zu Ressourcenklassen finden Sie im Artikel [Ressourcenklassen für die Workloadverwaltung](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere Informationen zu Ressourcenklassen finden Sie im Artikel [Ressourcenklassen für die Workloadverwaltung](../sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context).
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>Verwenden einer kleineren Ressourcenklasse zur Steigerung der Parallelität
 
@@ -185,7 +185,7 @@ Weitere Informationen finden Sie in den Artikeln [Ressourcenklassen für die Wor
 
 Dedizierte SQL-Pools verfügen über mehrere DMVs, mit denen die Abfrageausführung überwacht werden kann.  Unten im Artikel zur Überwachung werden Sie Schritt für Schritt durch das Anzeigen einer ausgeführten Abfrage geführt.  Die Verwendung der Option LABEL für Abfragen kann hilfreich sein, um Abfragen für diese DMVs schnell finden zu können. Weitere ausführliche Informationen finden Sie in den Artikeln, die in der nachfolgenden Liste aufgeführt sind:
 
-- [Überwachen Ihrer Workload mit dynamischen Verwaltungssichten](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Überwachen Ihrer Workload mit dynamischen Verwaltungssichten](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context)
 
 - [LABEL](develop-label.md)
 - [OPTION](/sql/t-sql/queries/option-clause-transact-sql?view=azure-sqldw-latest&preserve-view=true)
@@ -199,7 +199,7 @@ Dedizierte SQL-Pools verfügen über mehrere DMVs, mit denen die Abfrageausführ
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu allgemeinen Problemen und entsprechende Lösungen finden Sie im Artikel [Problembehandlung](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Informationen zu allgemeinen Problemen und entsprechende Lösungen finden Sie im Artikel [Problembehandlung](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?context=/azure/synapse-analytics/context/context).
 
 Wenn Sie Informationen benötigen, die in diesem Artikel nicht enthalten sind, können Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Synapse](/answers/topics/azure-synapse-analytics.html) Fragen an andere Benutzer und die Produktgruppe „Azure Synapse Analytics“ stellen.  
 

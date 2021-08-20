@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f346995e47c0156f546722031ebaa8734239549c
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: e5cc7974038ed69c745a958c682967d26545d5bc
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536706"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113109573"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Event Grid-Bindungen für Azure Functions
 
@@ -36,11 +36,11 @@ Der Code in dieser Referenz nutzt standardmäßig .NET Core-Syntax, die in Funct
 
 Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechende Paket verweisen. Das NuGet-Paket wird für .NET-Klassenbibliotheken verwendet, während das Erweiterungspaket für alle anderen Anwendungstypen verwendet wird.
 
-| Sprache                                        | Hinzufügen nach...                                   | Bemerkungen 
-|-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | Installieren von Version 2.x des [NuGet-Paket] | |
-| C#-Skript, Java, JavaScript, Python, PowerShell | Registrieren des [Erweiterungspaket]          | Die [Erweiterung für Azure-Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) wird zur Verwendung mit Visual Studio Code empfohlen. |
-| C#-Skript (nur online im Azure-Portal)         | Hinzufügen einer Bindung                            | Informationen zum Aktualisieren vorhandener Bindungserweiterungen, ohne Ihre Funktions-App erneut veröffentlichen zu müssen, finden Sie unter [Aktualisieren Ihrer Erweiterungen]. |
+| Sprache | Hinzufügen nach... | Bemerkungen |
+|---|---|---|
+| C# | Installieren von Version 2.x des [NuGet-Paket] | |
+| C#-Skript, Java, JavaScript, Python, PowerShell | Registrieren des [Erweiterungspaket] | Die [Erweiterung für Azure-Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) wird zur Verwendung mit Visual Studio Code empfohlen. |
+| C#-Skript (nur online im Azure-Portal) | Hinzufügen einer Bindung | Informationen zum Aktualisieren vorhandener Bindungserweiterungen, ohne Ihre Funktions-App erneut veröffentlichen zu müssen, finden Sie unter [Aktualisieren Ihrer Erweiterungen]. |
 
 [core tools]: ./functions-run-local.md
 [Erweiterungspaket]: ./functions-bindings-register.md#extension-bundles

@@ -1,26 +1,20 @@
 ---
-title: 'Neuigkeiten Versionshinweise: Azure Event Grid'
+title: Neuigkeiten Azure Event Grid
 description: Hier finden Sie Informationen zu den Neuerungen in Azure Event Grid, z. B. aktuelle Versionshinweise, bekannte Probleme, Fehlerbehebungen, veraltete Funktionen und anstehende Änderungen.
 ms.topic: overview
-ms.date: 07/23/2020
-ms.openlocfilehash: f135b25f28002c037dd24fa0cb3bb7476a06309f
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.date: 04/27/2021
+ms.openlocfilehash: a8c39338b43dfb1ddde173c3560faeb977b0148f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389586"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466664"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Welche Neuerungen gibt es in Azure Event Grid?
 
 >Lassen Sie sich über Updates auf dieser Seite benachrichtigen, indem Sie die URL `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Event+Grid%22&locale=en-us` kopieren und in Ihren ![RSS-Symbol](./media/whats-new/feed-icon-16x16.png)-Feedreader einfügen.
 
-Es werden fortlaufend Verbesserungen an Azure Event Grid vorgenommen. Damit Sie bezüglich der neuesten Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu Folgendem:
-
-- Neueste Versionen
-- Bekannte Probleme
-- Behebung von Programmfehlern
-- Veraltete Funktionen
-- Pläne für Änderungen
+Es werden fortlaufend Verbesserungen an Azure Event Grid vorgenommen. Dieser Artikel bietet Informationen zu den Funktionen, die bei neuen Releases hinzugefügt oder aktualisiert werden, damit Sie auf dem neuesten Stand der aktuellen Entwicklungen bleiben. 
 
 ## <a name="610-preview-2020-10"></a>6.1.0-preview (2020-10)
 - [Verwaltete Identitäten für Systemthemen](enable-identity-system-topics.md)
@@ -35,7 +29,7 @@ Es werden fortlaufend Verbesserungen an Azure Event Grid vorgenommen. Damit Sie 
         - StringNotEndsWith
         - NumberInRange
         - NumberNotInRange
-        - IsNull
+        - IsNullOrUndefined
         - IsNotNull
 - [Zulassen von Transformationen von Event Grid-Schemas in CloudEvents 1.0-Schemas für benutzerdefinierte Themen und Domänen](cloudevents-schema.md#configure-event-grid-for-cloudevents)
         

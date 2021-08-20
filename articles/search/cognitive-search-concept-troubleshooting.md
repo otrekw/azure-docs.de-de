@@ -2,18 +2,17 @@
 title: Tipps zum Entwerfen von KI-Anreicherungen
 titleSuffix: Azure Cognitive Search
 description: Tipps und Problembehandlung für die Einrichtung von KI-Anreicherungspipelines in der kognitiven Azure-Suche.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: d372c4bff4977ed310d2e84aa255679a9c5ed928
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 254c56d2557692afb4ef9f384612006324268edf
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756453"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731786"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: b4b38112e32a55739ea14d5ff06e327819171557
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90d2a146665fc34fe4bd287b2753e99a770d13b1
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98014551"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113285888"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Durchführen der Erkennung von Netzwerkangriffen mit Network Watcher und Open Source-Tools
 
@@ -80,7 +80,7 @@ Die von Suricata generierten Protokolle enthalten zwar wertvolle Informationen z
 
 #### <a name="install-elasticsearch"></a>Installieren von Elasticsearch
 
-1. Elastic Stack ab Version 5.0 erfordert Java 8. Führen Sie den Befehl `java -version` aus, um Ihre Version zu überprüfen. Wenn Java nicht installiert ist, lesen Sie die Dokumentation zu den [von Azure unterstützten JDKs](/azure/developer/java/fundamentals/java-jdk-long-term-support).
+1. Elastic Stack ab Version 5.0 erfordert Java 8. Führen Sie den Befehl `java -version` aus, um Ihre Version zu überprüfen. Wenn Java nicht installiert ist, lesen Sie die Dokumentation zu den [von Azure unterstützten JDKs](/azure/developer/java/fundamentals/java-support-on-azure).
 
 1. Laden Sie das richtige Binärpaket für Ihr System herunter:
 

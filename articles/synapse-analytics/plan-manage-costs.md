@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: overview
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 7a5b9efce1c24aecb54d3f473b7227357c8fb99f
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 1527888458a494e0b2d7177246c991228440d255
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890184"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340351"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Planen und Verwalten der Kosten für Azure Synapse Analytics
 
@@ -126,7 +126,7 @@ Weitere Informationen zu den Kosten für den serverlosen SQL-Pool finden Sie unt
 
 ### <a name="dedicated-sql-pool"></a>Dedizierter SQL-Pool
 
-Sie können die Kosten für einen dedizierten SQL-Pool steuern, indem Sie die Ressource pausieren, wenn sie nicht verwendet wird. Wenn Sie die Datenbank z.B. nachts oder am Wochenende nicht verwenden, können Sie sie während dieser Zeiträume anhalten und während des Tages wieder fortsetzen. Weitere Informationen finden Sie unter [Anhalten und Fortsetzen von Computeressourcen im dedizierten Synapse-SQL-Pool über das Azure-Portal](./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Sie können die Kosten für einen dedizierten SQL-Pool steuern, indem Sie die Ressource pausieren, wenn sie nicht verwendet wird. Wenn Sie die Datenbank z.B. nachts oder am Wochenende nicht verwenden, können Sie sie während dieser Zeiträume anhalten und während des Tages wieder fortsetzen. Weitere Informationen finden Sie unter [Anhalten und Fortsetzen von Computeressourcen im dedizierten Synapse-SQL-Pool über das Azure-Portal](./sql-data-warehouse/pause-and-resume-compute-portal.md?context=/azure/synapse-analytics/context/context).
 
 ### <a name="serverless-apache-spark-pool"></a>Serverloser Apache Spark-Pool
 

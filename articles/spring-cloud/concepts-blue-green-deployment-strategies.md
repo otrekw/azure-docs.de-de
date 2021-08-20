@@ -1,28 +1,28 @@
 ---
 title: Strategien für Blau-Grün-Bereitstellungen in Azure Spring Cloud
 description: In diesem Thema werden zwei Ansätze für Blau-Grün-Bereitstellungen in Azure Spring Cloud erläutert.
-author: yevster
+author: karlerickson
 ms.author: yebronsh
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 04/02/2021
+ms.date: 05/12/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: ca385c2be61e359cc93e40cc42718096606583cf
-ms.sourcegitcommit: 14cd60fe58964acd4bccb6053f36e60d5848edc0
+ms.openlocfilehash: bce33a40933e5c40b5eab0948880d44f4b23edcd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795473"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354990"
 ---
 # <a name="blue-green-deployment-strategies-in-azure-spring-cloud"></a>Strategien für Blau-Grün-Bereitstellungen in Azure Spring Cloud
 
 In diesem Artikel wird die Unterstützung für Blau-Grün-Bereitstellungen in Azure Spring Cloud beschrieben.
 
-Azure Spring Cloud (Standard-Tarif und höher) erlaubt zwei Bereitstellungen für jede App, von denen nur eine Produktionsdatenverkehr empfängt. Dieses Muster wird häufig als Blau-Grün-Bereitstellung bezeichnet. Die Unterstützung von Azure Spring Cloud für Blau-Grün-Bereitstellungen, zusammen mit einer [CD](/azure/devops/learn/what-is-continuous-delivery)-Pipeline (Continuous Delivery) und rigorosen automatisierten Tests, ermöglicht das agile Bereitstellen von Anwendungen mit hohem Vertrauen.
+Azure Spring Cloud (Standard-Tarif und höher) erlaubt zwei Bereitstellungen für jede App, von denen nur eine Produktionsdatenverkehr empfängt. Dieses Muster wird häufig als Blau-Grün-Bereitstellung bezeichnet. Die Unterstützung von Azure Spring Cloud für Blau-Grün-Bereitstellungen, zusammen mit einer [CD](/devops/deliver/what-is-continuous-delivery)-Pipeline (Continuous Delivery) und rigorosen automatisierten Tests, ermöglicht das agile Bereitstellen von Anwendungen mit hohem Vertrauen.
 
 ## <a name="alternating-deployments"></a>Abwechseln der Bereitstellungen
 
-Die einfachste Möglichkeit, eine Blau-Grün-Bereitstellung mit Azure Spring Cloud zu implementieren, besteht darin, zwei feste Bereitstellungen zu erstellen und immer die Bereitstellung bereitzustellen, die keinen Produktionsdatenverkehr empfängt. Mit dem Azure Spring Cloud-Task für Azure Pipelines können Sie die Bereitstellung auf diese Weise ausführen, indem Sie nur das `UseStagingDeployment`-Flag auf `true` festlegen.
+Die einfachste Möglichkeit, eine Blau-Grün-Bereitstellung mit Azure Spring Cloud zu implementieren, besteht darin, zwei feste Bereitstellungen zu erstellen und immer die Bereitstellung bereitzustellen, die keinen Produktionsdatenverkehr empfängt. Mit dem [Azure Spring Cloud-Task für Azure Pipelines](/azure/devops/pipelines/tasks/deploy/azure-spring-cloud) können Sie die Bereitstellung auf diese Weise ausführen, indem Sie nur das `UseStagingDeployment`-Flag auf `true` festlegen.
 
 So funktioniert der Ansatz für das Abwechseln der Bereitstellungen in der Praxis:
 
@@ -98,3 +98,7 @@ Es gibt jedoch auch Nachteile, wie im folgenden Abschnitt beschrieben.
 Zwischen dem Start einer Bereitstellung und dem Löschen der Stagingbereitstellung schlagen alle weiteren Versuche, die Bereitstellungspipeline auszuführen, fehl. Die Pipeline versucht, eine neue Bereitstellung zu erstellen. Dies führt zu einem Fehler, da pro Azure Spring Cloud-Anwendung nur zwei Bereitstellungen zulässig sind.
 
 Daher muss die Bereitstellungsorchestrierung entweder über die Möglichkeit verfügen, einen fehlgeschlagenen Bereitstellungsprozess zu einem späteren Zeitpunkt zu wiederholen, oder sie muss sicherstellen, dass die Bereitstellungsabläufe für jede Version in der Warteschlange bleiben, bis der Ablauf für alle vorherigen Versionen abgeschlossen ist.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Automatisieren von Anwendungsbereitstellungen für Azure Spring Cloud](./how-to-cicd.md)

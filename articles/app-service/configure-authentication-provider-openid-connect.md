@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen OpenID Connect-Anbieter als Identitäts
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: e8112f2dc20175e81cfa8388440b2d9aef6a419c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: befedca9fa872575d990ceea786a09d60a5773ca
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90983875"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092928"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App für die Anmeldung über einen OpenID Connect-Anbieter (Vorschau)
 
@@ -48,7 +48,7 @@ Wenn Sie kein Konfigurationsmetadatendokument verwenden können, müssen Sie die
 ## <a name="add-provider-information-to-your-application"></a><a name="configure"> </a>Hinzufügen von Anbieterinformationen zu Ihrer Anwendung
 
 > [!NOTE]
-> Die erforderliche Konfiguration ist in einem neuen API-Format verfügbar, das derzeit nur durch eine [dateibasierte Konfiguration (Vorschau)](.\app-service-authentication-how-to.md#config-file)unterstützt wird. Führen Sie die unten aufgeführten Schritte mithilfe einer solchen Datei aus.
+> Die erforderliche Konfiguration ist in einem neuen API-Format verfügbar, das derzeit nur durch eine [dateibasierte Konfiguration (Vorschau)](configure-authentication-file-based.md)unterstützt wird. Führen Sie die unten aufgeführten Schritte mithilfe einer solchen Datei aus.
 
 Dieser Abschnitt führt Sie durch die Aktualisierung der Konfiguration für Ihren neuen IdP. Im Folgenden ist eine Beispielkonfiguration aufgeführt.
 

@@ -3,12 +3,12 @@ title: Übersicht über AMQP 1.0 in Azure Service Bus
 description: Erfahren Sie, wie Azure Service Bus das offene Standardprotokoll AMQP (Advance Message Queueing Protocol) unterstützt.
 ms.topic: article
 ms.date: 04/08/2021
-ms.openlocfilehash: 006511789bfa93f8e7d578ed21a73a2563fb4c6b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0e976f0cba4a599b64fde57f3a271a1565f93417
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304414"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416903"
 ---
 # <a name="advanced-message-queueing-protocol-amqp-10-support-in-service-bus"></a>Unterstützung von Advanced Message Queueing Protocol (AMQP) 1.0 in Service Bus
 Der Azure Service Bus-Clouddienst verwendet [AMQP 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) als Hauptkommunikationsmittel. In den letzten zehn Jahren hat Microsoft mit Partnern aus der Branche, sowohl Kunden als auch Lieferanten konkurrierender Nachrichtenbroker, AMQP entwickelt, wobei neue Erweiterungen im [OASIS AMQP Technical Committee](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) entwickelt wurden. AMQP 1.0 ist ein ISO- und IEC-Standard ([ISO 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -70,7 +70,7 @@ Alle unterstützten Service Bus-Clientbibliotheken, die über das Azure SDK ver
 - [Azure Service Bus-Module für JavaScript und TypeScript](/javascript/api/overview/azure/service-bus?preserve-view=true)
 - [Azure Service Bus-Bibliotheken für Python](/python/api/overview/azure/servicebus?preserve-view=true)
 
-[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
+[!INCLUDE [service-bus-websockets-options](./includes/service-bus-websockets-options.md)]
 
 Außerdem können Sie Service Bus von einem beliebigen AMQP 1.0-kompatiblen Protokollstapel aus verwenden:
 

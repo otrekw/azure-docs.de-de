@@ -2,14 +2,14 @@
 title: Richtlinien für unzustellbare Nachrichten und Wiederholungen – Azure Event Grid
 description: Hier erfahren Sie, wie Sie Ereignisübermittlungsoptionen für Event Grid anpassen. Legen Sie ein Ziel für unzustellbare Nachrichten fest, und geben Sie an, wie lange die Übermittlung wiederholt wird.
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/27/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: db5f9dbd6738b2d9e7861f463d02a87d948c6afb
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 48fa27a1fe69481dda294f32bfc88af0e1718f25
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698432"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731957"
 ---
 # <a name="set-dead-letter-location-and-retry-policy"></a>Festlegen eines Speicherorts und einer Wiederholungsrichtlinie für unzustellbare Nachrichten
 
@@ -73,7 +73,7 @@ Um unzustellbare Nachrichten zu deaktivieren, führen Sie den Befehl zum Erstell
 
 Bei der Erstellung eines Event Grid-Abonnements können Sie festlegen, wie lange Event Grid versuchen soll, das Ereignis zu übermitteln. Standardmäßig versucht es Event Grid für 24 Stunden (1.440 Minuten) oder 30-mal. Diese Werte können Sie für Ihr Event Grid-Abonnement festlegen. Der Wert für die Ereignisgültigkeitsdauer muss eine ganze Zahl zwischen 1 und 1440 sein. Der Wert für die maximalen Versuche muss ein Integer zwischen 1 und 30 sein.
 
-Sie können den [Wiederholungszeitplan](delivery-and-retry.md#retry-schedule-and-duration) nicht konfigurieren.
+Sie können den [Wiederholungszeitplan](delivery-and-retry.md#retry-schedule) nicht konfigurieren.
 
 ### <a name="azure-cli"></a>Azure CLI
 

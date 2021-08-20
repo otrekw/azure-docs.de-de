@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/25/2021
-ms.openlocfilehash: 1df93a987348ed54303f2d9118337dbc710bc3bc
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 03ae1ed134f6d25128d9846c5e5c9949a96f36fa
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001417"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679688"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Ausnahmen und Fehlercodes für den Designer
 
@@ -1092,9 +1092,9 @@ Die Fehlermeldung von Hive wird normalerweise im Fehlerprotokoll gemeldet, sodas
 
 In den folgenden Artikeln finden Sie Hilfe bei Hive-Abfragen für maschinelles Lernen:
 
-+ [Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage](../team-data-science-process/move-hive-tables.md)
-+ [Durchsuchen von Daten in Tabellen mithilfe von Hive-Abfragen](../team-data-science-process/explore-data-hive-tables.md)
-+ [Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen](../team-data-science-process/create-features-hive.md)
++ [Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage](/azure/architecture/data-science-process/move-hive-tables)
++ [Durchsuchen von Daten in Tabellen mithilfe von Hive-Abfragen](/azure/architecture/data-science-process/explore-data-hive-tables)
++ [Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen](/azure/architecture/data-science-process/create-features-hive)
 + [Cheat Sheet für Hive für SQL-Benutzer (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   

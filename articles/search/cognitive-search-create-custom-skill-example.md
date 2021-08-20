@@ -2,19 +2,18 @@
 title: Beispiel für benutzerdefinierte Qualifikationen mit der Bing-Entitätssuche-API
 titleSuffix: Azure Cognitive Search
 description: Hier erfahren Sie, wie Sie den Bing-Entitätssuche-Dienst in einer benutzerdefinierten Qualifikation verwenden, die einer Indizierungspipeline mit KI-Anreicherung in der kognitiven Azure-Suche zugeordnet ist.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b962282ee4e488d026b6475c63fc32e6a77cee74
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 88ea321087cc8745184249d323895a356cd9dbbc
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591528"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729429"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API
 
@@ -312,7 +311,7 @@ namespace SampleSkills
 
 Wichtig: Geben Sie in der Konstanten `key`*Ihren* eigenen Schlüsselwert ein (auf der Grundlage des Schlüssels, den Sie bei der Anmeldung für die Bing-Entitätssuche-API erhalten haben).
 
-Der Einfachheit halber ist der gesamte erforderliche Code in diesem Beispiel in einer einzelnen Datei enthalten. Eine strukturiertere Version der gleichen Qualifikation finden Sie im Repository [azure-search-power-skills](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch).
+Der Einfachheit halber ist der gesamte erforderliche Code in diesem Beispiel in einer einzelnen Datei enthalten. Eine strukturiertere Version der gleichen Qualifikation finden Sie im Repository [azure-search-power-skills](https://github.com/Azure-Samples/azure-search-power-skills/tree/main/Text/BingEntitySearch).
 
 Sie können die Datei natürlich von `Function1.cs` in `BingEntitySearch.cs` umbenennen.
 

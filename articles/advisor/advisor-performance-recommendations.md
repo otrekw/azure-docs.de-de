@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 69fd86226375073c71903af5704ef3a635eeaffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2813699e082afbc263775821839ed6946e26c1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579922"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345892"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -173,7 +173,7 @@ Wir haben festgestellt, dass sich Ihre virtuellen Computer nicht in der Region b
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>Upgrade auf die neueste Version des SDK des plastischen Readers
 Wir haben unter diesem Abonnement Ressourcen mit veralteten Versionen des SDK des plastischen Readers identifiziert. Die Verwendung der neuesten Version des SDK des plastischen Readers bietet Ihnen aktualisierte Sicherheit, Leistung und einen erweiterten Satz von Features, mit denen Sie Ihre Integrationsmöglichkeiten anpassen und verbessern können.
-Weitere Informationen zum [Immersive Reader SDK](../cognitive-services/immersive-reader/index.yml)
+Weitere Informationen zum [Immersive Reader SDK](../applied-ai-services/immersive-reader/index.yml)
 
 ## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>Verbessern der VM-Leistung durch Ändern des maximalen Sitzungslimits
 

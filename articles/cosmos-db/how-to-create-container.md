@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6aa233e82ca272b9b5b9e4a9bee4ef2b57f2de77
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e9fc377acf528d564411a5c65c5fce9d6282118a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069999"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355963"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Erstellen eines Containers in Azure Cosmos DB mithilfe der SQL-API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In diesem Artikel werden die verschiedenen Möglichkeiten beim Erstellen eines Containers in Azure Cosmos DB mithilfe der SQL-API erläutert. Es wird gezeigt, wie Sie einen Container über das Azure-Portal, die Azure CLI, PowerShell oder unterstützte SDKs erstellen. In diesem Artikel erfahren Sie, wie Sie einen Container erstellen, den Partitionsschlüssel angeben und den Durchsatz bereitstellen.
 
-In diesem Artikel werden die verschiedenen Möglichkeiten beim Erstellen eines Containers in Azure Cosmos DB mithilfe der SQL-API erläutert. Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Erstellen des Containers in den Artikeln zur [API für MongoDB](how-to-create-container-mongodb.md), [Cassandra-API](how-to-create-container-cassandra.md), [Gremlin-API](how-to-create-container-gremlin.md) und [Tabellen-API](how-to-create-container-table.md).
+In diesem Artikel werden die verschiedenen Möglichkeiten beim Erstellen eines Containers in Azure Cosmos DB mithilfe der SQL-API erläutert. Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Erstellen des Containers in den Artikeln zur [API für MongoDB](how-to-create-container-mongodb.md), [Cassandra-API](cassandra/how-to-create-container-cassandra.md), [Gremlin-API](how-to-create-container-gremlin.md) und [Tabellen-API](table/how-to-create-container.md).
 
 > [!NOTE]
 > Stellen Sie beim Erstellen von Containern sicher, dass Sie nicht zwei Container mit demselben Namen, aber unterschiedlicher Groß-/Kleinschreibung erstellen. Der Grund dafür ist, dass bei einigen Teilen der Azure-Plattform die Groß-/Kleinschreibung nicht beachtet wird, und dies kann zu Verwechslungen/Kollisionen von Telemetriedaten und Aktionen für Container mit solchen Namen führen.

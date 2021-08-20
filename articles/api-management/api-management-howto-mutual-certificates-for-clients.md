@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/01/2021
 ms.author: apimpm
-ms.openlocfilehash: d000b9db658c76b5d7cdb586599f04d9078dde5d
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 6faa78dc75b67afd4c310a94ce4a81129e09cb26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111812155"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346908"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Sichern von APIs über eine Clientzertifikatauthentifizierung in API Management
 
@@ -49,7 +49,7 @@ Weitere Informationen finden Sie unter [API Management-Richtlinien für die Zugr
 Sie können auch Richtlinienausdrücke mit der [`context`-Variable](api-management-policy-expressions.md#ContextVariables) erstellen, um Clientzertifikate zu überprüfen. Die Beispiele in den folgenden Abschnitten zeigen Ausdrücke, die die Eigenschaft `context.Request.Certificate` sowie weitere `context`-Eigenschaften verwenden.
 
 > [!IMPORTANT]
-> Ab Mai 2021 fordert die `context.Request.Certificate`-Eigenschaft nur dann das Zertifikat an, wenn die [`hostnameConfiguration`](/rest/api/apimanagement/2019-12-01/apimanagementservice/createorupdate#hostnameconfiguration) der API Management-Instanz die `negotiateClientCertificate`-Eigenschaft auf TRUE festlegt. Standardmäßig ist `negotiateClientCertificate` auf FALSE festgelegt.
+> Ab Mai 2021 fordert die `context.Request.Certificate`-Eigenschaft nur dann das Zertifikat an, wenn die [`hostnameConfiguration`](/rest/api/apimanagement/2020-12-01/api-management-service/create-or-update#hostnameconfiguration) der API Management-Instanz die `negotiateClientCertificate`-Eigenschaft auf TRUE festlegt. Standardmäßig ist `negotiateClientCertificate` auf FALSE festgelegt.
 
 ### <a name="checking-the-issuer-and-subject"></a>Prüfen des Ausstellers und des Antragstellers
 

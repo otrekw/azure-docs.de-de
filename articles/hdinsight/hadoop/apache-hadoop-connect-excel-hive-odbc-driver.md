@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: c7125e25c9716a9934c97f9f8f85666d264d5f89
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 10bc1d2841e7858697a60dfbd1d093f403617a59
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866946"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300064"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Verbinden von Excel mit Apache Hadoop in Azure HDInsight mithilfe des Microsoft Hive ODBC-Treibers
 
-[!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
+[!INCLUDE [ODBC-JDBC-selector](../includes/hdinsight-selector-odbc-jdbc.md)]
 
 Die Big Data-Lösung von Microsoft integriert BI-Komponenten (Business Intelligence) von Microsoft in Apache Hadoop-Cluster, die in HDInsight bereitgestellt wurden. Ein Beispiel hierfür ist die Möglichkeit, Excel mit dem Hive-Data Warehouse eines Hadoop-Clusters zu verbinden. Stellen Sie die Verbindung unter Verwendung des Microsoft Hive ODBC-Treibers (Open Database Connectivity) her.
 

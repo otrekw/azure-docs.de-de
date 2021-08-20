@@ -1,27 +1,27 @@
 ---
 title: Übertragen einer Nutzlast zwischen Gerät und Device Provisioning-Dienst von Azure
 description: In diesem Dokument wird beschrieben, wie Sie eine Nutzlast zwischen Gerät und Device Provisioning-Dienst (Device Provisioning Service, DPS) übertragen.
-author: menchi
-ms.author: menchi
+author: wesmc7777
+ms.author: wesmc
 ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: a3ee7f3fca3fff1cd401f26489b01fb9cc4e09c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff8157a938c3b754a35c5a588ac5590be2432971
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99259518"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355516"
 ---
 # <a name="how-to-transfer-payloads-between-devices-and-dps"></a>Übertragen von Nutzlasten zwischen Geräten und DPS
 Mitunter benötigt DPS weitere Daten von Geräten, um sie ordnungsgemäß im richtigen IoT Hub bereitzustellen, und diese Daten müssen vom Gerät bereitgestellt werden. Ebenso kann DPS Daten an das Gerät zurückgeben, um clientseitige Logik zu ermöglichen. 
 
 ## <a name="when-to-use-it"></a>Einsatzgebiete
-Diese Funktion kann als Ergänzung der [benutzerdefinierten Zuordnung](./how-to-use-custom-allocation-policies.md) verwendet werden. Beispiel: Sie möchten Ihre Geräte anhand des Gerätemodells ohne menschliche Eingriffe zuordnen. In diesem Fall verwenden Sie die [benutzerdefinierte Zuordnung](./how-to-use-custom-allocation-policies.md). Sie können das Gerät in diesem Fall für die Meldung der Modellinformationen im Rahmen des [Registrierungsgeräteaufrufs](/rest/api/iot-dps/runtimeregistration/registerdevice) konfigurieren. DPS übergibt die Nutzlast des Geräts an den benutzerdefinierten Zuweisungswebhook. Dann kann Ihre Funktion entscheiden, auf welchen IoT Hub dieses Gerät geht, wenn es Gerätemodellinformationen empfängt. Wenn der Webhook einige Daten an das Gerät zurückgeben möchte, werden die Daten auf ähnliche Weise als Zeichenfolge in der Antwort des Webhooks übergeben.  
+Diese Funktion kann als Ergänzung der [benutzerdefinierten Zuordnung](./how-to-use-custom-allocation-policies.md) verwendet werden. Beispiel: Sie möchten Ihre Geräte anhand des Gerätemodells ohne menschliche Eingriffe zuordnen. In diesem Fall verwenden Sie die [benutzerdefinierte Zuordnung](./how-to-use-custom-allocation-policies.md). Sie können das Gerät in diesem Fall für die Meldung der Modellinformationen im Rahmen des [Registrierungsgeräteaufrufs](/rest/api/iot-dps/device/runtime-registration/register-device) konfigurieren. DPS übergibt die Nutzlast des Geräts an den benutzerdefinierten Zuweisungswebhook. Dann kann Ihre Funktion entscheiden, auf welchen IoT Hub dieses Gerät geht, wenn es Gerätemodellinformationen empfängt. Wenn der Webhook einige Daten an das Gerät zurückgeben möchte, werden die Daten auf ähnliche Weise als Zeichenfolge in der Antwort des Webhooks übergeben.  
 
 ## <a name="device-sends-data-payload-to-dps"></a>Gerät sendet Datennutzlast an DPS
-Wenn Ihr Gerät einen [Registrierungsgeräteaufruf](/rest/api/iot-dps/runtimeregistration/registerdevice) an DPS sendet, kann dieser Aufruf erweitert werden, um andere Felder im Textkörper zu verwenden. Der Textkörper sieht wie folgt aus: 
+Wenn Ihr Gerät einen [Registrierungsgeräteaufruf](/rest/api/iot-dps/device/runtime-registration/register-device) an DPS sendet, kann dieser Aufruf erweitert werden, um andere Felder im Textkörper zu verwenden. Der Textkörper sieht wie folgt aus: 
    ```
    { 
        “registrationId”: “mydevice”, 

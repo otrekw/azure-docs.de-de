@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 077782099d6d61982052dc1690d545e58e928d8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9898bc94aa79b374174f80592dc250e660f7f8c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93310688"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355269"
 ---
 # <a name="temporary-tables-in-dedicated-sql-pool"></a>Temporäre Tabellen im dedizierten SQL-Pool
 
@@ -30,8 +30,6 @@ Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem 
 Temporäre Tabellen sind nur für die Sitzung sichtbar, in der sie erstellt wurden, und sie werden automatisch verworfen, wenn die Sitzung abgemeldet wird.  
 
 Temporäre Tabellen verfügen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher.
-
-Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. In einem dedizierten SQL-Pool befinden sich temporäre Tabellen auf Sitzungsebene.  Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden. Daher werden sie automatisch gelöscht, wenn diese Sitzung abgemeldet wird. 
 
 ## <a name="temporary-tables-in-dedicated-sql-pool"></a>Temporäre Tabellen im dedizierten SQL-Pool
 

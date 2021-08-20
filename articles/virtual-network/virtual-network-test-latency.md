@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 7dc8aac730fdf46cab47a3297b8c001cb0b8e314
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd316ce7a868f639cdfd80293d5d6189e2942f6f
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99226404"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988173"
 ---
 # <a name="test-vm-network-latency"></a>Testen der VM-Netzwerklatenz
 
@@ -71,7 +71,7 @@ Beachten Sie beim Analysieren der Testergebnisse die folgenden Empfehlungen:
 
 ### <a name="get-latteexe-onto-the-vms"></a>Laden von „latte.exe“ auf die VMs
 
-Laden Sie die [neueste Version von „latte.exe“](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) herunter.
+Laden Sie die [neueste Version von „latte.exe“](https://github.com/microsoft/latte/releases/download/v0/latte.exe) herunter.
 
 Erwägen Sie, „latte.exe“ in einem separaten Ordner abzulegen, z. B. *c:\tools*.
 

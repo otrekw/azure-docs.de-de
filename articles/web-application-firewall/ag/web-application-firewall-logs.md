@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: af7b46d0942b5d1bec1cbe77ec02eec7080597ba
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5cf40434740b1cc531ecf7959058e5c7260364ca
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676958"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458983"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Ressourcenprotokolle für Azure Web Application Firewall
 
@@ -301,7 +301,7 @@ Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON
 
 #### <a name="analyzing-access-logs-through-goaccess"></a>Analysieren der Zugriffsprotokolle mit GoAccess
 
-Wir haben eine Resource Manager-Vorlage veröffentlicht, die die beliebte [GoAccess](https://goaccess.io/)-Protokollanalyse für Application Gateway-Zugriffsprotokolle installiert und ausführt. GoAccess stellt wertvolle HTTP-Datenverkehrsstatistiken bereit, z.B. eindeutige Besucher, angeforderte Dateien, Hosts, Betriebssysteme, Browser, HTTP-Statuscodes und vieles mehr. Weitere Informationen finden Sie in der [Infodatei im Resource Manager-Vorlagenordner auf GitHub](https://aka.ms/appgwgoaccessreadme).
+Wir haben eine Resource Manager-Vorlage veröffentlicht, die die beliebte [GoAccess](https://goaccess.io/)-Protokollanalyse für Application Gateway-Zugriffsprotokolle installiert und ausführt. GoAccess stellt wertvolle HTTP-Datenverkehrsstatistiken bereit, z.B. eindeutige Besucher, angeforderte Dateien, Hosts, Betriebssysteme, Browser, HTTP-Statuscodes und vieles mehr. Weitere Informationen finden Sie in der [Infodatei im Resource Manager-Vorlagenordner auf GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/application-gateway-logviewer-goaccess).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

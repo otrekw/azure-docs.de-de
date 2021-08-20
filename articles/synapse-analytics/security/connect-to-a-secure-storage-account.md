@@ -1,19 +1,19 @@
 ---
 title: Herstellen einer Verbindung mit einem sicheren Speicherkonto über Ihren Azure Synapse-Arbeitsbereich
 description: In diesem Artikel erfahren Sie, wie Sie eine Verbindung mit einem sicheren Speicherkonto über Ihren Azure Synapse-Arbeitsbereich herstellen.
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 02/10/2021
-ms.author: ronytho
+ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5d43d6f56b48a34fa34baf727508ad8f1c151aa7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11127453c67a41dd4b5f8677d02a10f749f516f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674315"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347018"
 ---
 # <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>Herstellen einer Verbindung mit einem sicheren Azure-Speicherkonto über Ihren Synapse-Arbeitsbereich
 

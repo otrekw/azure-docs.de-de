@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b00561875d7c8c08061c9fcbe46a88815ef2f32c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 245979140b2d5214dcbb9ba8456cc90d8b8fd864
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784641"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669332"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps-Community: Open-Source-Projekte
 
@@ -59,7 +59,7 @@ Im Folgenden finden Sie eine Liste von Open-Source-Projekten, mit denen die Funk
 |-|-|
 | [Azure Maps-Codebeispiele](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Hier finden Sie eine Sammlung von Codebeispielen, wie Azure Maps im Rahmen von webbasierten Apps verwendet werden kann. |
 | [Azure Maps-Codebeispiele mit der Azure Government-Cloud](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Hier finden Sie eine Sammlung von Codebeispielen, wie Azure Maps im Rahmen der Azure Government-Cloud verwendet werden kann. |
-| [Beispiele für Azure Maps und Microsoft Azure Active Directory](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Hier finden Sie eine Sammlung von Beispielen für die Verwendung von Azure Active Directory mit Azure Maps. | 
+| [Beispiele für Azure Maps und Microsoft Azure Active Directory](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Hier finden Sie eine Sammlung von Beispielen für die Verwendung von Azure Active Directory mit Azure Maps. |
 | [LiveMaps](https://github.com/Azure-Samples/LiveMaps) | Beispielanwendung, mit der IoT-Daten von Gebäudeplänen unter Verwendung von Azure Maps Creator auf Azure Maps im Livemodus visualisiert werden können |
 | [Azure Maps-Beispiele für Jupyter Notebooks](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Hier finden Sie eine Sammlung von Python-Beispielen, für die die REST-Dienste von Azure Maps verwendet werden. |
 | [.NET-Remotesteuerung für Azure Maps für UWP-IoT-Geräte](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | Dies ist eine Beispielanwendung, die zeigt, wie Sie eine ferngesteuerte Karte mithilfe von Azure Maps und IoT Hub-Diensten erstellen. |
@@ -70,9 +70,9 @@ Im Folgenden finden Sie eine Liste von Open-Source-Projekten, mit denen die Funk
 
 | Projektname | BESCHREIBUNG |
 |-|-|
-| [Azure Maps-Cesium-Plug-In](https://github.com/azure-samples/azure-maps-cesium) | Ein [Cesium JS](https://cesium.com/cesiumjs/)-Plug-In, das die Integration von Azure Maps-Diensten wie [Kachelebenen](/rest/api/maps/renderv2/getmaptilepreview) und [Geocodierungsdienste](/rest/api/maps/search) vereinfacht. |
-| [Azure Maps-Leaflet-Plug-In](https://github.com/azure-samples/azure-maps-leaflet) | Ein [Leaflet](https://leafletjs.com/)-JavaScript-Plug-In, das die Überlagerung von Kachelebenen aus [Azure Maps-Kacheldiensten](/rest/api/maps/renderv2/getmaptilepreview) erleichtert. |
- | [Azure Maps-OpenLayers-Plug-In](https://github.com/azure-samples/azure-maps-openlayers) | Ein [OpenLayers](https://www.openlayers.org/)-JavaScript-Plug-In, das die Überlagerung von Kachelebenen aus [Azure Maps-Kacheldiensten](/rest/api/maps/renderv2/getmaptilepreview) erleichtert. |
+| [Azure Maps-Cesium-Plug-In](https://github.com/azure-samples/azure-maps-cesium) | Ein [Cesium JS](https://cesium.com/cesiumjs/)-Plug-In, das die Integration von Azure Maps-Diensten wie [Kachelebenen](/rest/api/maps/render-v2/get-map-tile) und [Geocodierungsdienste](/rest/api/maps/search) vereinfacht. |
+| [Azure Maps-Leaflet-Plug-In](https://github.com/azure-samples/azure-maps-leaflet) | Ein [Leaflet](https://leafletjs.com/)-JavaScript-Plug-In, das die Überlagerung von Kachelebenen aus [Azure Maps-Kacheldiensten](/rest/api/maps/render-v2/get-map-tile) erleichtert. |
+ | [Azure Maps-OpenLayers-Plug-In](https://github.com/azure-samples/azure-maps-openlayers) | Ein [OpenLayers](https://www.openlayers.org/)-JavaScript-Plug-In, das die Überlagerung von Kachelebenen aus [Azure Maps-Kacheldiensten](/rest/api/maps/render-v2/get-map-tile) erleichtert. |
 
 **Tools und Ressourcen**
 

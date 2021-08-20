@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 0d85cf6ae501a7d50f20e48543e361149f4b57d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7481e22b9d03d7f49f4ee383bb52c4772631c16
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580542"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342711"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure-Sicherheitsprotokollierung und -Überwachung
 
@@ -51,7 +51,7 @@ Die folgende Tabelle enthält die wichtigsten Protokolltypen, die in Azure verf�
 |[Aktivitätsprotokolle](../../azure-monitor/essentials/platform-logs-overview.md)|Ereignisse der Steuerungsebene für Azure Resource Manager-Ressourcen|    Bieten Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden.|    REST-API und [Azure Monitor](../../azure-monitor/essentials/platform-logs-overview.md)|
 |[Azure-Ressourcenprotokolle](../../azure-monitor/essentials/platform-logs-overview.md)|Häufige Daten zum Betrieb der Azure Resource Manager-Ressourcen im Abonnement| Bieten einen Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.| Azure Monitor|
 |[Azure Active Directory-Berichterstellung](../../active-directory/reports-monitoring/overview-reports.md)|Protokolle und Berichte | Enthält Informationen über Aktivitäten zur Benutzeranmeldung und Systemaktivitäten zur Benutzer- und Gruppenverwaltung.|[Graph-API](../../active-directory/develop/microsoft-graph-intro.md)|
-|[Virtuelle Computer und Clouddienste](../../azure-monitor/vm/quick-collect-azurevm.md)|Windows-Ereignisprotokolldienst und Linux-Syslog| Erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und überträgt die Daten in ein Speicherkonto Ihrer Wahl.|   Windows mit [WAD](../../azure-monitor/agents/diagnostics-extension-overview.md) (Microsoft Azure-Diagnosespeicher) und Linux in Azure Monitor|
+|[Virtuelle Computer und Clouddienste](../../azure-monitor/vm/monitor-virtual-machine.md)|Windows-Ereignisprotokolldienst und Linux-Syslog|   Erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und überträgt die Daten in ein Speicherkonto Ihrer Wahl.|   Windows mit [WAD](../../azure-monitor/agents/diagnostics-extension-overview.md) (Microsoft Azure-Diagnosespeicher) und Linux in Azure Monitor|
 |[Azure-Speicheranalyse](/rest/api/storageservices/fileservices/storage-analytics)|Speicherprotokollierung, stellt Metrikdaten für ein Speicherkonto bereit|Bietet einen Einblick in Nachverfolgungsanforderungen und ermöglicht die Analyse von Verwendungstrends sowie die Diagnose von Problemen mit dem Speicherkonto.| REST-API oder [Clientbibliothek](/dotnet/api/overview/azure/storage)|
 |[NSG-Flussprotokolle (Netzwerksicherheitsgruppe)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)|JSON-Format, zeigt eingehende und ausgehende Datenflüsse auf Regelbasis|Zeigt Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe an.|[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md)|
 |[Application Insight](../../azure-monitor/app/app-insights-overview.md)|Protokolle, Ausnahmen und benutzerdefinierte Diagnosen|  Bietet einen für Webentwickler konzipierten Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen.| REST-API, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|

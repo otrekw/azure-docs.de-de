@@ -6,13 +6,13 @@ ms.date: 10/16/2020
 author: gitralf
 ms.author: ralfwi
 ms.service: germany
-ms.custom: bfmigrate
-ms.openlocfilehash: 8d856ef2301917e229a3d40ebb63b10ac90a07c6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: bfmigrate, devx-track-azurepowershell
+ms.openlocfilehash: ce152dc6948e7d77ace2defede7f1cb0c0b744a8
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96006533"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695747"
 ---
 # <a name="migrate-storage-resources-to-global-azure"></a>Migrieren von Speicherressourcen zu Azure weltweit
 
@@ -145,13 +145,13 @@ Als Erstes installieren Sie den [Azure Storage-Explorer](https://azure.microsoft
 
 Sie können den Storage-Explorer verwenden, um Tabellen vom Azure Storage-Quellkonto zu kopieren. 
 
-Verbinden Sie den Storage-Explorer mit Ihren Quelltabellenressourcen in Microsoft Azure Deutschland. Sie können sich [anmelden, um auf Ressourcen in Ihrem Abonnement zuzugreifen](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) oder [bestimmte Storage-Ressourcen anfügen](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#attach-a-specific-resource). 
+Verbinden Sie den Storage-Explorer mit Ihren Quelltabellenressourcen in Microsoft Azure Deutschland. Sie können sich [anmelden, um auf Ressourcen in Ihrem Abonnement zuzugreifen](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) oder [bestimmte Storage-Ressourcen anfügen](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#attach-to-an-individual-resource). 
 
 ### <a name="connect-to-target"></a>Mit Ziel verbinden
 
 Sie können den Storage-Explorer verwenden, um Tabellen in das Azure Storage-Zielkonto einzufügen.
 
-Verbinden Sie den Storage-Explorer mit Ihrem Microsoft Azure-Abonnement oder Ihrer Azure Storage-Instanz. Sie können sich [anmelden, um auf Ressourcen in Ihrem Abonnement zuzugreifen](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) oder [bestimmte Storage-Ressourcen anfügen](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#attach-a-specific-resource). 
+Verbinden Sie den Storage-Explorer mit Ihrem Microsoft Azure-Abonnement oder Ihrer Azure Storage-Instanz. Sie können sich [anmelden, um auf Ressourcen in Ihrem Abonnement zuzugreifen](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) oder [bestimmte Storage-Ressourcen anfügen](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#attach-to-an-individual-resource). 
 
 
 ### <a name="migrate-tables"></a>Migrieren von Tabellen

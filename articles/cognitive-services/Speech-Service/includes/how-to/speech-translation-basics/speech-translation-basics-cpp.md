@@ -1,15 +1,15 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
-ms.author: trbye
-ms.openlocfilehash: 56c1142ace0591543127289ff6228df05420f1f3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: lajanuar
+ms.openlocfilehash: 2957cb43963746eb9fe3051634d31a18c201c831
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110486505"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356213"
 ---
 Eines der zentralen Features des Speech-Diensts ist die Fähigkeit, menschliche Sprache zu erkennen und in andere Sprachen zu übersetzen. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Sprachübersetzungen durchzuführen. In diesem Schnellstart werden folgende Themen behandelt:
 
@@ -335,7 +335,7 @@ Weitere Informationen zur Sprachsynthese finden Sie unter [Grundlegendes zur Spr
 
 In vielen Szenarios wissen Sie möglicherweise nicht, welche Eingabesprachen angegeben werden sollen. Mithilfe der Sprachidentifikation können Sie bis zu zehn mögliche Eingabesprachen angeben und automatisch in Ihre Zielsprachen übersetzen. 
 
-Im folgenden Beispiel wird die kontinuierliche Übersetzung aus einer Audiodatei verwendet, und die Eingabesprache wird automatisch erkannt, auch wenn sich die gesprochene Sprache ändert. Wenn Sie das Beispiel ausführen, werden `en-US` und `zh-CN` automatisch erkannt, da sie in der `AutoDetectSourceLanguageConfig` definiert sind. Anschließend wird die Sprache in `de` und `fr` übersetzt, wie in den Aufrufen an `AddTargetLanguage()` angegeben.
+Im folgenden Beispiel wird die kontinuierliche Übersetzung aus einer Audiodatei verwendet, und die Eingabesprache wird automatisch erkannt, auch wenn sich die gesprochene Sprache ändert. Wenn Sie das Beispiel ausführen, werden `en-US` und `zh-CN` automatisch erkannt, da sie in der `AutoDetectSourceLanguageConfig` definiert sind. Anschließend wird die Sprache wie in den Aufrufen von `AddTargetLanguage()` angegeben in `de` und `fr` übersetzt.
 
 > [!IMPORTANT]
 > Diese Funktion steht derzeit als **Vorschau** zur Verfügung.

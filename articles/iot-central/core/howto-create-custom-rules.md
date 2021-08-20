@@ -1,20 +1,19 @@
 ---
 title: Erweitern von Azure IoT Central mit benutzerdefinierten Regeln und Benachrichtigungen | Microsoft-Dokumentation
 description: Als Lösungsentwickler möchten Sie eine IoT Central-Anwendung konfigurieren, die E-Mail-Benachrichtigungen sendet, wenn ein Gerät keine Telemetriedaten mehr übermittelt. Bei dieser Lösung werden Azure Stream Analytics, Azure Functions und SendGrid verwendet.
-author: philmea
-ms.author: philmea
+author: dominicbetts
+ms.author: dobett
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
-manager: philmea
-ms.openlocfilehash: 2eb776add1e4a53edc6f4f57983074af31d8f52d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 3d528ba1bf1e7ba0c13d5bcf8abb140365cbe7d6
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750039"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349943"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Regeln mithilfe von Stream Analytics, Azure Functions und SendGrid
 

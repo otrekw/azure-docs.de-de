@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 45433268a61772f499b5d2672a8b81044c1e3414
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 669b03d0d1d6f5f328cc4af368a756d0bbdab787
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764457"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727830"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-active-directory-application-proxy"></a>Aktivieren des Remotezugriffs auf SharePoint mit dem Azure Active Directory-Anwendungsproxy
 
@@ -26,7 +26,7 @@ In dieser Schritt-für-Schritt-Anleitung wird beschrieben, wie Sie eine lokale S
 
 Um die Konfiguration vornehmen zu können, benötigen Sie die folgenden Ressourcen:
 - Eine SharePoint 2013-Farm (oder neuer).
-- Einen Azure AD-Mandanten mit einem Plan, der den Anwendungsproxy enthält. Weitere Informationen zu Azure AD-Tarifen und Preisen finden Sie [hier](https://azure.microsoft.com/pricing/details/active-directory/).
+- Einen Azure AD-Mandanten mit einem Plan, der den Anwendungsproxy enthält. Weitere Informationen zu Azure AD-Tarifen und Preisen finden Sie [hier](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 - Eine [benutzerdefinierte überprüfte Domäne](../fundamentals/add-custom-domain.md) im Azure AD-Mandanten.
 - Eine mit Azure AD Connect synchronisierte lokale Active Directory-Instanz, über die sich Benutzer [bei Azure anmelden](../hybrid/plan-connect-user-signin.md) können.
 - Einen Anwendungsproxyconnector, der auf einem Computer in der Unternehmensdomäne installiert ist und ausgeführt wird.

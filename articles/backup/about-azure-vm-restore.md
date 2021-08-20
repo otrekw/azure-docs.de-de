@@ -3,12 +3,12 @@ title: Informationen zur Wiederherstellung virtueller Azure-Computer
 description: Erfahren Sie, wie virtuelle Azure-Computer mit dem Dienst „Azure Backup“ wiederhergestellt werden.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: d298b56ca5588e6d950684f234cb1c4396864a9e
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: a01b3f06f34ac184913227d025f854589ce698aa
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061486"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114295875"
 ---
 # <a name="about-azure-vm-restore"></a>Informationen zur Wiederherstellung von Azure-VMs
 
@@ -45,11 +45,11 @@ In diesem Artikel wird beschrieben, wie virtuelle Azure-Computer (VMs) mit dem D
 | [Wiederherstellen zum Erstellen eines neuen virtuellen Computers](./backup-azure-arm-restore-vms.md) | Stellt die gesamte VM am ursprünglichen Speicherort (wenn die Quell-VM noch vorhanden ist) oder am alternativen Speicherort wieder her | <li> Wenn die Quell-VM verloren gegangen oder beschädigt ist, können Sie die gesamte VM wiederherstellen.  <li> Sie können eine Kopie der VM erstellen.  <li> Sie können für Überwachungs- oder Compliancezwecke eine Wiederherstellungsübung ausführen.  <li> Diese Option funktioniert nicht für Azure-VMs, die anhand von Marketplace-Images erstellt wurden (d. h. wenn diese nicht verfügbar sind, weil die Lizenz abgelaufen ist). |
 | [Wiederherstellen von Datenträgern der VM](./backup-azure-arm-restore-vms.md#restore-disks) | An die VM angefügte Datenträger wiederherstellen                             |  Alle Datenträger: Mit dieser Option wird die Vorlage erstellt und der Datenträger wiederhergestellt. Sie können diese Vorlage mit speziellen Konfigurationen (z. B. Verfügbarkeitsgruppen) Ihren Anforderungen entsprechend bearbeiten und dann sowohl die Vorlage als auch den Datenträger verwenden, um die VM neu zu erstellen. |
 | [Wiederherstellen bestimmter Dateien in der VM](./backup-azure-restore-files-from-vm.md) | Wiederherstellungspunkt wählen, System durchsuchen, Dateien auswählen und unter dem gleichen (oder einem kompatiblen) Betriebssystem wie dem der gesicherten VM wiederherstellen |  Wenn Sie wissen, welche spezifischen Dateien wiederhergestellt werden müssen, sollten Sie diese Option wählen, anstatt die gesamte VM wiederherzustellen. |
-| [Wiederherstellen einer verschlüsselten VM](./backup-azure-vms-encryption.md) | Im Portal die Datenträger wiederherstellen und dann mit PowerShell die VM erstellen | <li> [Verschlüsselte VM mit Azure Active Directory](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [Verschlüsselte VM ohne Azure AD](../virtual-machines/windows/disk-encryption-windows.md) <li> [Verschlüsselte VM *mit Azure AD* nach der Migration zur Variante *ohne Azure AD*](/azure/virtual-machines/windows/disk-encryption-faq#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
+| [Wiederherstellen einer verschlüsselten VM](./backup-azure-vms-encryption.md) | Im Portal die Datenträger wiederherstellen und dann mit PowerShell die VM erstellen | <li> [Verschlüsselte VM mit Azure Active Directory](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [Verschlüsselte VM ohne Azure AD](../virtual-machines/windows/disk-encryption-windows.md) <li> [Verschlüsselte VM *mit Azure AD* nach der Migration zur Variante *ohne Azure AD*](../virtual-machines/windows/disk-encryption-faq.yml#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app-) |
 | [Regionsübergreifende Wiederherstellung](./backup-azure-arm-restore-vms.md#cross-region-restore) | Eine neue VM erstellen oder Datenträger in einer sekundären Region wiederherstellen (mit Azure gekoppelte Region) | <li> **Vollständiger Ausfall**:  Beim Feature der regionsübergreifenden Wiederherstellung gibt es keine Wartezeit für die Wiederherstellung von Daten in der sekundären Region. Sie können Wiederherstellungen in der sekundären Region einleiten, noch bevor Azure einen Ausfall bekannt gibt. <li> **Teilausfall**: Ausfallzeiten können in bestimmten Speicherclustern auftreten, in denen Azure Backup Ihre gesicherten Daten speichert oder sogar im Netzwerk, wobei Azure Backup und Speichercluster, die Ihren gesicherten Daten zugeordnet sind, miteinander verbunden werden. Bei der regionsübergreifenden Wiederherstellung können Sie eine Wiederherstellung in der sekundären Region durchführen, indem Sie ein Replikat der gesicherten Daten in der sekundären Region verwenden. <li> **Kein Ausfall**: Sie können mit den Daten in der sekundären Region zu Überprüfungs- oder Compliancezwecken Übungen für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity Disaster Recovery, BCDR) durchführen. Dadurch können Sie für Übungen zur Sicherstellung von Geschäftskontinuität und Notfallwiederherstellung eine Wiederherstellung der gesicherten Daten in der sekundären Region durchführen, selbst wenn in der primären Region kein vollständiger oder Teilausfall vorliegt.  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Häufig gestellte Fragen zur VM-Wiederherstellung](/azure/backup/backup-azure-vm-backup-faq.yml#restore)
+- [Häufig gestellte Fragen zur VM-Wiederherstellung](/azure/backup/backup-azure-vm-backup-faq#restore)
 - [Unterstützte Wiederherstellungsmethoden](./backup-support-matrix-iaas.md#supported-restore-methods)
 - [Problembehandlung bei der Wiederherstellung](./backup-azure-vms-troubleshoot.md#restore)

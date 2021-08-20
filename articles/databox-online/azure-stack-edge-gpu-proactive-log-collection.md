@@ -6,22 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: bdd44bf81e34b60ee648b71c6dc3bde5a96d3deb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ef54d3a252baa8d84588481b2a73d1b365bb8c13
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443011"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721401"
 ---
 # <a name="proactive-log-collection-on-your-azure-stack-edge-device"></a>Proaktive Protokollsammlung auf Azure Stack Edge-Geräten
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Die proaktive Protokollsammlung erfasst Indikatoren zur Systemintegrität auf Ihrem Azure Stack Edge-Gerät, um bei Geräteproblemen effiziente Maßnahmen zur Problembehandlung einleiten zu können. Die proaktive Protokollsammlung ist standardmäßig aktiviert. In diesem Artikel wird beschrieben, was protokolliert wird, wie die Daten von Microsoft verarbeitet werden und wie die proaktive Protokollsammlung deaktiviert oder aktiviert wird. 
-
-Die Informationen in diesem Artikel beziehen sich auf Geräte vom Typ „Azure Stack Edge Pro – GPU“, „Azure Stack Edge Pro R“ und „Azure Stack Edge Mini R“.
+Die proaktive Protokollsammlung erfasst Indikatoren zur Systemintegrität auf Ihrem Azure Stack Edge-Gerät, um bei Geräteproblemen effiziente Maßnahmen zur Problembehandlung einleiten zu können. Die proaktive Protokollsammlung ist standardmäßig aktiviert. In diesem Artikel wird beschrieben, was protokolliert wird, wie die Daten von Microsoft verarbeitet werden und wie die proaktive Protokollsammlung deaktiviert oder aktiviert wird.
 
 ## <a name="about-proactive-log-collection"></a>Informationen zur proaktiven Protokollsammlung
 

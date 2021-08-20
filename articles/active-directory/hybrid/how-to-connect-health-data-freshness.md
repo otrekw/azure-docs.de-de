@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00518eb91e57efaacb7abc63b6ad4531619be2ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4bd83071e725d68a424642f68680748247a26706
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98012868"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110077"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Warnung „Die Daten des Integritätsdiensts sind nicht aktuell“
 
@@ -71,4 +71,4 @@ Dieser Abschnitt enthält die erforderlichen Schritte zum Diagnostizieren des Pr
 Sollte bei einem der obigen Schritte ein Problem festgestellt werden, beheben Sie es, und warten Sie, bis die Warnung aufgelöst wird. Der Hintergrundprozess für Warnungen wird alle zwei Stunden ausgeführt. Es kann also bis zu zwei Stunden dauern, bis die Warnung aufgelöst wurde. 
 
 * [Azure AD Connect Health-Datenaufbewahrungsrichtlinie](reference-connect-health-user-privacy.md#data-retention-policy)
-* [Azure AD Connect Health – FAQ](reference-connect-health-faq.md)
+* [Azure AD Connect Health – FAQ](reference-connect-health-faq.yml)

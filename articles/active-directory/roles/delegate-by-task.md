@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9869a90c0159a7f60929c1ff9b0cf3319d60d5b
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: a65ce79252c25d187ed61de3b637182deaf225db
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111439024"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136344"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -55,6 +55,7 @@ In diesem Artikel finden Sie die erforderlichen Informationen, um Administratorr
 > | Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Registrierung |Administrator für Benutzerflows mit externer ID |  |
 > | Erstellen, Lesen, Aktualisieren und Löschen von Benutzerattributen | Administrator für Benutzerflowattribute mit externer ID |  |
 > | Erstellen, Lesen, Aktualisieren und Löschen von Benutzern | Benutzeradministrator |  |
+> | Konfigurieren der Einstellungen für externe B2B-Zusammenarbeit | Globaler Administrator |  |
 > | Lesen aller Konfigurationen | Globaler Leser |  |
 > | Lesen von B2C-Überwachungsprotokollen | Globaler Leser (siehe [Dokumentation](../../active-directory-b2c/faq.yml)) |  |
 
@@ -165,8 +166,8 @@ In diesem Artikel finden Sie die erforderlichen Informationen, um Administratorr
 > [!div class="mx-tableFixed"]
 > | Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen |
 > | ---- | --------------------- | ---------------- |
-> | Hinzufügen von Ressourcen zu einem Katalog | Benutzeradministrator | Mit der Berechtigungsverwaltung können Sie diese Aufgabe an den Katalogbesitzer delegieren ([siehe Dokumentation](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)). |
-> | Hinzufügen von SharePoint Online-Websites zum Katalog | Globaler Administrator |  |
+> | Hinzufügen von Ressourcen zu einem Katalog | Identity Governance-Administrator | Mit der Berechtigungsverwaltung können Sie diese Aufgabe an den Katalogbesitzer delegieren ([siehe Dokumentation](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)). |
+> | Hinzufügen von SharePoint Online-Websites zum Katalog | SharePoint-Administrator |  |
 
 ## <a name="groups"></a>Gruppen
 
@@ -225,7 +226,7 @@ In diesem Artikel finden Sie die erforderlichen Informationen, um Administratorr
 > [!div class="mx-tableFixed"]
 > | Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen |
 > | ---- | --------------------- | ---------------- |
-> | Lesen von Anmeldeprotokollen | Meldet Reader | Sicherheitsleseberechtigter<br/>Sicherheitsadministrator |
+> | Lesen von Anmeldeprotokollen | Meldet Reader | Sicherheitsleseberechtigter<br/>Sicherheitsadministrator<br/> Globaler Leser |
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 

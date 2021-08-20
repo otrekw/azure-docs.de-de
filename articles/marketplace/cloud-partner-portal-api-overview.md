@@ -7,12 +7,12 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 57d3d1c6bb14db3eb2ca499069934a628d2f7fea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5813b08a14a95a8b7bbb51b3d6593fe374a83ba6
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92425780"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282041"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Cloud-Partnerportal-API-Referenz
 
@@ -36,7 +36,7 @@ Bevor Sie die APIs verwenden, sollten Sie sich Folgendes ansehen:
 | **API** | **Beschreibung der Änderung** | **Auswirkung** |
 | ------- | ---------------------- | ---------- |
 | POST Publish, GoLive, Cancel | Bei migrierten Angeboten weist der Antwortheader ein anderes Format auf. Er funktioniert jedoch weiterhin auf dieselbe Weise und gibt einen relativen Pfad zum Abrufen des Vorgangsstatus an. | Beim Senden einer der entsprechenden POST-Anforderungen für ein Angebot weist der Adressheader je nach Migrationsstatus des Angebots eines der beiden folgenden Formate auf:<ul><li>Nicht migrierte Angebote<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Migrierte Angebote<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
-| GET-Vorgang | Bei Angebotstypen, die zuvor das Feld „Benachrichtigungs-E-Mail“ in der Antwort unterstützten, wird dieses Feld entfernt und für migrierte Angebote nicht mehr zurückgegeben. | Bei migrierten Angeboten werden keine Benachrichtigungen mehr an die Liste der in den Anforderungen angegebenen E-Mail-Adressen gesendet. Stattdessen wird der API-Dienst an den Benachrichtigungs-E-Mail-Prozess in Partner Center angepasst, um E-Mails zu senden. Insbesondere werden Benachrichtigungen an die E-Mail-Adresse gesendet, die in Partner Center in Ihren Kontoeinstellungen im Abschnitt der Kontaktinformationen des Verkäufers festgelegt wurde, um Sie über den Fortschritt des Vorgangs zu benachrichtigen.<br><br>Überprüfen Sie die in Partner Center in den [Kontoeinstellungen](https://partner.microsoft.com/dashboard/account/management) im Abschnitt der Kontaktinformationen des Verkäufers festgelegte E-Mail-Adresse, um sicherzustellen, dass die richtige E-Mail-Adresse für Benachrichtigungen angegeben ist.  |
+| GET-Vorgang | Bei Angebotstypen, die zuvor das Feld „Benachrichtigungs-E-Mail“ in der Antwort unterstützten, wird dieses Feld entfernt und für migrierte Angebote nicht mehr zurückgegeben. | Bei migrierten Angeboten werden keine Benachrichtigungen mehr an die Liste der in den Anforderungen angegebenen E-Mail-Adressen gesendet. Stattdessen wird der API-Dienst an den Benachrichtigungs-E-Mail-Prozess in Partner Center angepasst, um E-Mails zu senden. Insbesondere werden Benachrichtigungen an die E-Mail-Adresse gesendet, die in Partner Center in Ihren Kontoeinstellungen im Abschnitt der Kontaktinformationen des Verkäufers festgelegt wurde, um Sie über den Fortschritt des Vorgangs zu benachrichtigen.<br><br>Überprüfen Sie die in Partner Center in den [Kontoeinstellungen](https://go.microsoft.com/fwlink/?linkid=2165291) im Abschnitt der Kontaktinformationen des Verkäufers festgelegte E-Mail-Adresse, um sicherzustellen, dass die richtige E-Mail-Adresse für Benachrichtigungen angegeben ist. |
 
 ## <a name="common-tasks"></a>Häufige Aufgaben
 

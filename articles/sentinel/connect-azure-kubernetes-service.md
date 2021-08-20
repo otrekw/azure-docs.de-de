@@ -8,12 +8,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 04/22/2021
 ms.author: yelevin
-ms.openlocfilehash: f1ef860f1b84de84c42996a7523af8ce174d5981
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 96068491bd4be59c34d62375db30edad504823a9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890796"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339079"
 ---
 # <a name="connect-azure-kubernetes-service-diagnostics-logs"></a>Herstellen einer Verbindung von Azure Kubernetes Service-Diagnoseprotokollen
 
@@ -21,7 +21,9 @@ Azure Kubernetes Service (AKS) ist ein vollständig verwalteter Open-Source-Cont
 
 Mit diesem Connector können Sie Azure Kubernetes Service-Diagnoseprotokolle (AKS) in Azure Sentinel streamen, sodass Sie die Aktivitäten in allen Instanzen kontinuierlich überwachen können. 
 
-Erfahren Sie mehr über die [Überwachung von Azure Kubernetes Service](../azure-monitor/containers/container-insights-overview.md) und über [AKS-Diagnosetelemetrie](../aks/view-control-plane-logs.md).
+Erfahren Sie mehr über die [Überwachung von Azure Kubernetes Service](../azure-monitor/containers/container-insights-overview.md) und über [AKS-Diagnosetelemetrie](../aks/monitor-aks-reference.md#resource-logs).
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,7 +51,7 @@ Dieser Connector verwendet Azure Policy, um eine einzelne Konfiguration zum Azur
 
     1. Lassen Sie auf der Registerkarte **Parameter** die Felder **Auswirkung** und **Einstellungsname** unverändert. Wählen Sie in der Dropdownliste **Log Analytics-Arbeitsbereich** Ihren Azure Sentinel-Arbeitsbereich aus. Die übrigen Dropdownfelder stellen die verfügbaren Diagnoseprotokolltypen dar. Behalten Sie für alle Protokolltypen, die erfasst werden sollen, die Markierung „True“ bei.
 
-    1. Die Richtlinie wird auf in Zukunft hinzugefügte Ressourcen angewendet. Wählen Sie zum Anwenden der Richtlinie auf Ihre vorhandenen Ressourcen die Registerkarte **Korrektur** aus, und aktivieren Sie das Kontrollkästchen **Korrekturtask erstellen**.
+    1. Die Richtlinie wird auf Ressourcen angewendet, die in Zukunft hinzugefügt werden. Wählen Sie zum Anwenden der Richtlinie auf Ihre vorhandenen Ressourcen die Registerkarte **Wartung** aus, und aktivieren Sie das Kontrollkästchen **Wartungstask erstellen**.
 
     1. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**. Damit ist die Richtlinie dem ausgewählten Bereich zugewiesen.
 
@@ -61,5 +63,5 @@ Dieser Connector verwendet Azure Policy, um eine einzelne Konfiguration zum Azur
 
 In diesem Dokument haben Sie erfahren, wie Sie mithilfe von Azure Policy eine Verbindung von Azure Kubernetes Service mit Azure Sentinel herstellen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).
