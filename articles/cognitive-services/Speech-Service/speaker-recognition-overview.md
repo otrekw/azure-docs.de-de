@@ -3,21 +3,21 @@ title: 'Übersicht über die Sprechererkennung: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Die Sprechererkennung bietet Algorithmen, mit denen Sprecher anhand ihrer individuellen Stimmmerkmale mithilfe von Sprachbiometrie überprüft und identifiziert werden. Die Sprechererkennung wird verwendet, um herauszufinden, wer spricht. Dieser Artikel bietet einen Überblick über die Vorteile und Funktionen des Sprechererkennungsdiensts.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Sprechererkennung, Sprachbiometrie
-ms.openlocfilehash: d07a9960c8a586fa137b4b717afbf91740c265d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7a47ec86ec7e59cdc78e997f30bd7d0749e4a86
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95015323"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340530"
 ---
 # <a name="what-is-speaker-recognition-preview"></a>Was ist Sprechererkennung (Vorschau)?
 

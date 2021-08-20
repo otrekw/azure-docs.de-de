@@ -10,15 +10,15 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab85dbc95a8f7432afba3eaa082f6490d1ba8dba
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "72248608"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113552458"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Kontaktaufnahme mit dem Microsoft Genomics-Support
-Diese Übersicht beschreibt, wie Sie sich mit einer Supportanfrage an Microsoft Genomics wenden. Das kann hilfreich sein, wenn Sie Ihr Problem nicht mithilfe des [Leitfadens zur Problembehandlung](troubleshooting-guide-genomics.md) oder der [FAQ](frequently-asked-questions-genomics.md) beheben können. 
+Diese Übersicht beschreibt, wie Sie sich mit einer Supportanfrage an Microsoft Genomics wenden. Das kann hilfreich sein, wenn Sie Ihr Problem nicht mithilfe des [Leitfadens zur Problembehandlung](troubleshooting-guide-genomics.md) oder der [FAQ](frequently-asked-questions-genomics.yml) beheben können. 
 
 
 ## <a name="file-a-support-ticket-through-the-azure-portal"></a>Senden eines Supporttickets über das Azure-Portal
@@ -46,4 +46,4 @@ Fügen Sie zuletzt Ihre Kontaktinformationen hinzu, und wählen Sie unten im Bil
 ![Supportanfrage: Kontakt](./media/file-support-ticket/support-request-contact.png "Supportanfrage: Kontakt")
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie Sie eine Supportanfrage senden. Sie können häufig auftretende Probleme auch mithilfe der [FAQ](frequently-asked-questions-genomics.md) und des [Leitfadens zur Problembehandlung](troubleshooting-guide-genomics.md) beheben. 
+In diesem Artikel haben Sie erfahren, wie Sie eine Supportanfrage senden. Sie können häufig auftretende Probleme auch mithilfe der [FAQ](frequently-asked-questions-genomics.yml) und des [Leitfadens zur Problembehandlung](troubleshooting-guide-genomics.md) beheben. 

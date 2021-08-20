@@ -7,18 +7,14 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: 6b535ecb80fae9f55eb6ab11751c26e0c6d0e9e5
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 3fd74e0fddedba5f69176c83aea5a5522bc54c2a
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713718"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113757999"
 ---
 # <a name="use-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Verwenden der Azure IoT Central-Geräte-Bridge, um andere IoT-Clouds mit IoT Central zu verbinden
-
-*Dieser Artikel gilt für Administratoren.*
-
-## <a name="azure-iot-central-device-bridge"></a>Azure IoT Central-Geräte-Bridge
 
 Die IoT Central-Geräte-Bridge ist eine Open-Source-Lösung, die dazu dient, andere IoT-Clouds mit Ihrer IoT Central-Anwendung zu verbinden. Beispiele für andere IoT-Clouds wären etwa [Sigfox](https://www.sigfox.com/), [Particle Device Cloud](https://www.particle.io/) und [The Things Network](https://www.thethingsnetwork.org/). Die Geräte-Bridge leitet Daten von Geräten, die mit anderen IoT-Clouds verbunden sind, an Ihre IoT Central-Anwendung weiter. Von der Geräte-Bridge werden nur Daten an IoT Central weitergeleitet. Es werden jedoch keine Befehle oder Eigenschaftenupdates von IoT Central an die Geräte zurückgesendet.
 
@@ -28,15 +24,13 @@ Von der Geräte-Bridge-Lösung werden mehrere Azure-Ressourcen in Ihrem Azure-Ab
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die in dieser Anleitung aufgeführten Schritte ausführen zu können, benötigen Sie ein aktives Azure-Abonnement.
+Zum Ausführen der Schritte in dieser Anleitung ist Folgendes erforderlich:
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-Führen Sie die Schritte der Schnellstartanleitung [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md) aus, um mit der Vorlage **Benutzerdefinierte App > Benutzerdefinierte Anwendung** eine IoT Central-Anwendung zu erstellen.
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 ## <a name="overview"></a>Übersicht
 
-Die IoT Central-Geräte-Bridge ist eine Open-Source-Lösung in GitHub. Sie verwendet eine benutzerdefinierte Azure Resource Manager-Vorlage, um mehrere Ressourcen in Ihrem Azure-Abonnement bereitzustellen. Dazu zählt auch eine Azure-Funktions-App.
+Die IoT Central-Geräte-Bridge ist eine Open-Source-Lösung in GitHub. Sie verwendet eine benutzerdefinierte Azure Resource Manager-Vorlage, um mehrere Ressourcen in Ihrem Azure-Abonnement bereitzustellen. Dazu zählt auch eine Funktions-App in Azure Functions.
 
 Die Funktions-App ist die Kernkomponente der Geräte-Bridge. Sie empfängt HTTP POST-Anforderungen von anderen IoT-Plattformen über einen einfachen Webhook. Das [Repository für die Azure IoT Central-Geräte-Bridge](https://github.com/Azure/iotc-device-bridge) enthält Beispiele, die die Verbindungsherstellung mit Sigfox-, Particle- und The Things Network-Clouds veranschaulichen. Diese Lösung kann erweitert werden, um eine Verbindung mit Ihrer benutzerdefinierten IoT-Cloud herzustellen – vorausgesetzt, Ihre Plattform kann HTTP POST-Anforderungen an Ihre Funktions-App senden.
 
@@ -62,7 +56,7 @@ So stellen Sie die Geräte-Bridge in Ihrem Abonnement bereit:
 
 Nach Abschluss der Bereitstellung müssen die von der Funktion benötigten NPM-Pakete installiert werden:
 
-1. Öffnen Sie im Azure-Portal die in Ihrem Abonnement bereitgestellte Funktions-App. Navigieren Sie zu **Entwicklungstools > Konsole**. Führen Sie in der Konsole die folgenden Befehle aus, um die Pakete zu installieren:
+1. Öffnen Sie im Azure-Portal die in Ihrem Abonnement bereitgestellte Funktions-App. Wechseln Sie dann zu **Entwicklungstools** > **Konsole**. Führen Sie in der Konsole die folgenden Befehle aus, um die Pakete zu installieren:
 
     ```bash
     cd IoTCIntegration
@@ -97,13 +91,13 @@ Jeder Schlüssel im Objekt `measurements` muss mit dem Namen eines Telemetrietyp
 
 Sie können ein Feld vom Typ `timestamp` in den Text einschließen, um das UTC-Datum und die UTC-Uhrzeit der Nachricht anzugeben. Für dieses Feld muss das ISO 8601-Format verwendet werden. Beispiel: `2020-06-08T20:16:54.602Z`. Wenn Sie keinen Zeitstempel einschließen, werden das aktuelle Datum und die aktuelle Uhrzeit verwendet.
 
-Sie können ein Feld vom Typ `modelId` in den Text einschließen. Mithilfe dieses Felds kann das Gerät während der Bereitstellung einer Gerätevorlage zugeordnet werden. Diese Funktion wird nur von [V3-Anwendungen](howto-get-app-info.md) unterstützt.
+Sie können ein Feld vom Typ `modelId` in den Text einschließen. Mithilfe dieses Felds kann das Gerät während der Bereitstellung einer Gerätevorlage zugeordnet werden. Diese Funktion wird nur von [V3-Anwendungen](howto-faq.yml#how-do-i-get-information-about-my-application-) unterstützt.
 
 Die Geräte-ID (`deviceId`) muss alphanumerisch sein und darf nur Kleinbuchstaben und ggf. Bindestriche enthalten.
 
-Wenn Sie das Feld `modelId` nicht einschließen oder die Modell-ID von IoT Central nicht erkannt wird, wird im Falle einer Nachricht mit einer unbekannten Geräte-ID (`deviceId`) in IoT Central ein neues _nicht zugeordnetes Gerät_ erstellt. Ein Operator kann das Gerät manuell zur richtigen Gerätevorlage migrieren. Weitere Informationen finden Sie unter [Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung > Migrieren von Geräten zu einer Vorlage](howto-manage-devices.md).
+Wenn Sie das Feld `modelId` nicht einschließen oder die Modell-ID von IoT Central nicht erkannt wird, wird im Falle einer Nachricht mit einer unbekannten Geräte-ID (`deviceId`) in IoT Central ein neues _nicht zugeordnetes Gerät_ erstellt. Ein Operator kann das Gerät manuell zur richtigen Gerätevorlage migrieren. Weitere Informationen finden Sie unter [Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung > Migrieren von Geräten zu einer Vorlage](howto-manage-devices-individually.md).
 
-In [V2-Anwendungen](howto-get-app-info.md) wird das neue Gerät im Geräte-Explorer auf der Seite **Nicht zugeordnete Geräte** angezeigt. Wählen Sie **Zuordnen** und anschließend eine Gerätevorlage aus, um eingehende Telemetriedaten vom Gerät zu empfangen.
+In [V2-Anwendungen](howto-faq.yml#how-do-i-get-information-about-my-application-) wird das neue Gerät im Geräte-Explorer auf der Seite **Nicht zugeordnete Geräte** angezeigt. Wählen Sie **Zuordnen** und anschließend eine Gerätevorlage aus, um eingehende Telemetriedaten vom Gerät zu empfangen.
 
 > [!NOTE]
 > Solange das Gerät keiner Vorlage zugeordnet ist, wird bei allen HTTP-Aufrufen für die Funktion der Fehlerstatus 403 zurückgegeben.
@@ -121,7 +115,7 @@ Durch die Resource Manager-Vorlage werden in Ihrem Azure-Abonnement folgende Re
 
 Der Schlüsseltresor dient zum Speichern des SAS-Gruppenschlüssels für Ihre IoT Central-Anwendung.
 
-Die Funktions-App wird auf der Grundlage eines [Verbrauchsplan](https://azure.microsoft.com/pricing/details/functions/) ausgeführt. Diese Option bietet zwar keine dedizierten Computeressourcen, ermöglicht es der Geräte-Bridge jedoch, Hunderte von Gerätenachrichten pro Minute zu bewältigen, was für kleinere Gerätebestände sowie für Geräte geeignet ist, von denen seltener Nachrichten gesendet werden. Wenn für Ihre Anwendung sehr viele Gerätenachrichten gestreamt werden müssen, ersetzen Sie den Verbrauchsplan durch einen dedizierten [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/windows/). Dieser Plan bietet dedizierte Computeressourcen, die schnellere Serverantwortzeiten ermöglichen. Mit einem standardmäßigen App Service-Plans wurde für die Azure-Funktion in diesem Repository eine maximale Leistung von rund 1.500 Gerätenachrichten pro Minute ermittelt. Weitere Informationen finden Sie unter [Azure Functions-Hostingoptionen](../../azure-functions/functions-scale.md).
+Die Funktions-App wird auf der Grundlage eines [Verbrauchsplan](https://azure.microsoft.com/pricing/details/functions/) ausgeführt. Diese Option bietet zwar keine dedizierten Computeressourcen, ermöglicht es der Geräte-Bridge jedoch, Hunderte von Gerätenachrichten pro Minute zu bewältigen, was für kleinere Gerätebestände sowie für Geräte geeignet ist, von denen seltener Nachrichten gesendet werden. Wenn für Ihre Anwendung sehr viele Gerätenachrichten gestreamt werden müssen, ersetzen Sie den Verbrauchsplan durch einen dedizierten [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/windows/). Dieser Plan bietet dedizierte Computeressourcen, die schnellere Serverantwortzeiten ermöglichen. Mit einem App Service-Standardplan wurde für die Azure-Funktion in diesem Repository eine maximale Leistung von rund 1.500 Gerätenachrichten pro Minute ermittelt. Weitere Informationen finden Sie unter [Azure Functions-Hostingoptionen](../../azure-functions/functions-scale.md).
 
 Wenn Sie anstelle eines Verbrauchsplans einen dedizierten App Service-Plan verwenden möchten, müssen Sie die benutzerdefinierte Vorlage vor der Bereitstellung bearbeiten. Wählen Sie **Vorlage bearbeiten** aus.
 
@@ -185,16 +179,16 @@ Wenn Sie ein Particle-Gerät über die Geräte-Bridge mit IoT Central verbinden
     "deviceId": "{{{PARTICLE_DEVICE_ID}}}"
   },
   "measurements": {
-    "{{{PARTICLE_EVENT_NAME}}}": {{{PARTICLE_EVENT_VALUE}}}
+    "{{{PARTICLE_EVENT_NAME}}}": "{{{PARTICLE_EVENT_VALUE}}}"
   }
 }
 ```
 
-Fügen Sie die **Funktions-URL** aus Ihrer Azure-Funktions-App ein. Daraufhin werden Particle-Geräte als nicht zugeordnete Geräte in IoT Central angezeigt. Weitere Informationen finden Sie im [Blogbeitrag zum Integrieren Particle-basierter Projekte in Azure IoT Central](https://blog.particle.io/2019/09/26/integrate-particle-with-azure-iot-central/).
+Fügen Sie die **Funktions-URL** aus Ihrer Funktions-App ein. Daraufhin werden Particle-Geräte als nicht zugeordnete Geräte in IoT Central angezeigt. Weitere Informationen finden Sie im [Blogbeitrag zum Integrieren Particle-basierter Projekte in Azure IoT Central](https://blog.particle.io/2019/09/26/integrate-particle-with-azure-iot-central/).
 
 ### <a name="example-2-connecting-sigfox-devices-through-the-device-bridge"></a>Beispiel 2: Verbinden von Sigfox-Geräten über die Geräte-Bridge
 
-Bei einigen Plattformen ist es möglicherweise nicht möglich, das Format von Gerätenachrichten anzugeben, die über einen Webhook gesendet werden. Für solche Systeme müssen die Nutzdaten der Nachricht vor der Verarbeitung durch die Geräte-Bridge in das erwartete Textformat konvertiert werden. Die Konvertierung kann in der gleichen Azure-Funktion durchgeführt werden, von der auch die Geräte-Bridge ausgeführt wird.
+Bei einigen Plattformen ist es möglicherweise nicht möglich, das Format von Gerätenachrichten anzugeben, die über einen Webhook gesendet werden. Für solche Systeme müssen die Nutzdaten der Nachricht vor der Verarbeitung durch die Geräte-Bridge in das erwartete Textformat konvertiert werden. Die Konvertierung kann in der gleichen Funktion durchgeführt werden, von der auch die Geräte-Bridge ausgeführt wird.
 
 In diesem Abschnitt wird gezeigt, wie Sie die Nutzdaten einer Sigfox-Webhookintegration in das von der Geräte-Bridge erwartete Textformat konvertieren. Gerätedaten werden von der Sigfox-Cloud in einem hexadezimalen Zeichenfolgenformat übertragen. Der Einfachheit halber enthält die Geräte-Bridge eine Konvertierungsfunktion für dieses Format, die eine Teilmenge der möglichen Feldtypen in Sigfox-Gerätenutzdaten akzeptiert: `int` und `uint` mit 8, 16, 32 oder 64 Bits, `float` mit 32 oder 64 Bits sowie Little-Endian und Big-Endian. Für die Verarbeitung von Nachrichten einer Sigfox-Webhookintegration muss die Datei _IoTCIntegration/index.js_ in der Funktions-App wie im Anschluss beschrieben geändert werden.
 
@@ -224,7 +218,7 @@ context.res = {
 So verbinden Sie The Things Network-Geräte mit IoT Central:
 
 * Fügen Sie Ihrer Anwendung in The Things Network eine neue HTTP-Integration hinzu: **Application > Integrations > add integration > HTTP Integration** („Anwendung“ > „Integrationen“ > „Integration hinzufügen“ > „HTTP-Integration“).
-* Achten Sie darauf, dass Ihre Anwendung eine Decoderfunktion enthält, durch die die Nutzdaten Ihrer Gerätenachrichten vor dem Senden an die Azure-Funktion automatisch in JSON konvertiert werden: **Application > Payload Functions > decoder** („Anwendung“ > „Nutzdatenfunktionen“ > „Decoder“).
+* Achten Sie darauf, dass Ihre Anwendung eine Decoderfunktion enthält, durch die die Nutzdaten Ihrer Gerätenachrichten vor dem Senden an die Funktion automatisch in JSON konvertiert werden: **Application > Payload Functions > decoder** („Anwendung“ > „Nutzdatenfunktionen“ > „Decoder“).
 
 Im folgenden Beispiel wird eine JavaScript-Decoderfunktion verwendet, mit der gängige numerische Typen aus Binärdaten decodiert werden können:
 
@@ -271,7 +265,7 @@ function Decoder(bytes, port) {
 }
 ```
 
-Fügen Sie nach dem Definieren der Integration vor dem Aufruf von `handleMessage` in Zeile 21 der Datei *IoTCIntegration/index.js* Ihrer Azure-Funktions-App den folgenden Code hinzu. Durch diesen Code wird der Text Ihrer HTTP-Integration in das erwartete Format konvertiert.
+Fügen Sie nach dem Definieren der Integration vor dem Aufruf von `handleMessage` in Zeile 21 der Datei *IoTCIntegration/index.js* Ihrer Funktions-App den folgenden Code hinzu. Durch diesen Code wird der Text Ihrer HTTP-Integration in das erwartete Format konvertiert.
 
 ```javascript
 device: {
@@ -289,4 +283,4 @@ Von der Geräte-Bridge werden nur Nachrichten an IoT Central weitergeleitet. Es
 Nachdem Sie sich hier mit der Bereitstellung der IoT Central-Geräte-Bridge vertraut gemacht haben, können Sie mit dem folgenden Schritt fortfahren:
 
 > [!div class="nextstepaction"]
-> [Verwalten von Geräten](howto-manage-devices.md)
+> [Verwalten von Geräten](howto-manage-devices-individually.md)

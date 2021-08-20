@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: dech
 ms.custom: references_regions
-ms.openlocfilehash: 02e8ad5f2b5326f947ba0bca6456ce9d9d3c27d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1309ac31c8669ad678b96a4d99d32daf8f89815
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101692775"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234223"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Aktivieren von Notebooks für Azure Cosmos DB-Konten (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,7 +38,7 @@ Ab dem 10. Februar 2021 sind für neue Azure Cosmos-Konten, die in einer der [
 
 1. Wählen Sie **Zu Ressource wechseln** aus, um zur Seite des Azure Cosmos DB-Kontos zu wechseln.
 
-   :::image type="content" source="../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png" alt-text="Seite des Azure Cosmos DB-Kontos":::
+   :::image type="content" source="includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png" alt-text="Seite des Azure Cosmos DB-Kontos":::
 
 1. Navigieren Sie zum Bereich **Daten-Explorer**. Der Notebooks-Arbeitsbereich sollte jetzt angezeigt werden.
 

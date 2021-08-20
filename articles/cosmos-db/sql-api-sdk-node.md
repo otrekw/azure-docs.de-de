@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: a3e21abe2f4ed24726256689af16b48ed6721ce8
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 9166b2fae5943f1ab264d0c69ad91c630337e1cb
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366146"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340417"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js-SDK für SQL-API: Versionshinweise und Ressourcen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "107366146"
 |Herunterladen des SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |API-Dokumentation  |  [Referenzdokumentation zum JavaScript SDK](/javascript/api/%40azure/cosmos/)
 |SDK-Installationsanweisungen  |  [Installationsanweisungen](https://github.com/Azure/azure-sdk-for-js)
-|Mitwirkung am SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
+|Mitwirkung am SDK | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/main)
 | Beispiele | [Node.js-Codebeispiele](sql-api-nodejs-samples.md)
 | Tutorial mit ersten Schritten | [Erste Schritte mit dem JavaScript SDK](sql-api-nodejs-get-started.md)
 | Tutorial zu Web-Apps | [Erstellen einer Node.js-Webanwendung mithilfe von Azure Cosmos DB](sql-api-nodejs-application.md)
@@ -474,7 +474,7 @@ Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher b
 | [1.0.0](#1.0.0) |8\. April 2015 |30. August 2020 |
 
 ## <a name="faq"></a>Häufig gestellte Fragen
-[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu Cosmos DB finden Sie auf der Seite zum Dienst [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

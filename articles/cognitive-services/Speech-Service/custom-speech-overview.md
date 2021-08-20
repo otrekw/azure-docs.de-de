@@ -3,20 +3,20 @@ title: 'Übersicht über Custom Speech: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Bei Custom Speech handelt es sich um eine Reihe von Onlinetools, mit denen Sie die Genauigkeit der Spracherkennung von Microsoft für Ihre Anwendungen, Tools und Produkte bewerten und verbessern können.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: trbye
-ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: 2eaf5a6a01b8ed0cb2a82f13c2d4d33ce88d5938
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.custom: contperf-fy21q2, references_regions
+ms.openlocfilehash: 588afaaa95ef871de11583e65d2a9ab831d28fa6
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100413"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340520"
 ---
 # <a name="what-is-custom-speech"></a>Was ist Custom Speech?
 
@@ -26,7 +26,7 @@ Custom Speech ermöglicht Ihnen das Bewerten und Verbessern der Genauigkeit der 
 
 Bevor Sie Custom Speech verwenden können, benötigen Sie ein Azure-Konto und ein Abonnement für Speech-Dienste. Nachdem Sie ein Konto eingerichtet haben, können Sie Daten vorbereiten, Modelle trainieren und testen, die Erkennungsqualität überprüfen, die Genauigkeit bewerten und das benutzerdefinierte Spracherkennungsmodell schließlich bereitstellen und verwenden.
 
-Die folgende Abbildung zeigt die Teile, aus denen sich der [Custom Speech-Bereich in Speech Studio](https://aka.ms/customspeech) zusammensetzt. Verwenden Sie die unten angegebenen Links, um mehr über die einzelnen Schritte zu erfahren.
+Die folgende Abbildung zeigt die Teile, aus denen sich der [Custom Speech-Bereich in Speech Studio](https://aka.ms/speechstudio/customspeech) zusammensetzt. Verwenden Sie die unten angegebenen Links, um mehr über die einzelnen Schritte zu erfahren.
 
 ![Abbildung der Komponenten, aus denen sich der Custom Speech-Bereich in Speech Studio zusammensetzt](./media/custom-speech/custom-speech-overview.png)
 
@@ -43,9 +43,6 @@ Die folgende Abbildung zeigt die Teile, aus denen sich der [Custom Speech-Bereic
 ## <a name="set-up-your-azure-account"></a>Einrichten Ihres Azure-Kontos
 
 Sie benötigen ein Azure-Konto und ein Abonnement für die Speech-Dienste, um [Speech Studio](https://speech.microsoft.com/customspeech) zum Erstellen eines benutzerdefinierten Modells verwenden zu können. Falls nicht, können Sie [den Speech-Dienst kostenlos testen](overview.md#try-the-speech-service-for-free).
-
-> [!NOTE]
-> Stellen Sie sicher, dass Sie ein Standard-Abonnement (S0) erstellen. Free-Abonnements (F0) werden nicht unterstützt.
 
 Wenn Sie ein benutzerdefiniertes Modell mit **Audiodaten** trainieren möchten, wählen Sie eine der folgenden Regionen aus, in der dedizierte Hardware für das Training verfügbar ist. Dies reduziert die für das Training eines Modells erforderliche Zeit und ermöglicht es Ihnen, mehr Audiodaten für das Training zu verwenden. In diesen Regionen verwendet der Speech-Dienst bis zu 20 Stunden Audiodaten für das Training. In anderen Regionen werden nur bis zu 8 Stunden verwendet.
 

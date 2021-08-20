@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: ac9f81fbde33bdd10bc8374a566a4f2ba83fc253
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63a902d57c8a3ec5d9876e0682674cdbea70a4cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669029"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339064"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Welche Lösungen zum Ausführen von Oracle WebLogic Server in Azure Kubernetes Service gibt es?
 
@@ -30,7 +30,7 @@ WebLogic Server ist von Oracle und Microsoft für die reibungslose Ausführung m
 WebLogic Server-Cluster können über den WebLogic Kubernetes Operator (im Folgenden einfach „Operator“ genannt) vollständig für Kubernetes ausgeführt werden. Der Operator folgt dem Standardmuster des Kubernetes-Operators. Er vereinfacht die Verwaltung und den Betrieb von WebLogic-Domänen und Bereitstellungen auf Kubernetes, indem er ansonsten manuelle Aufgaben automatisiert und zusätzliche Features zur Zuverlässigkeit des Betriebs hinzufügt. Der Operator unterstützt Oracle WebLogic Server 12c, Oracle Fusion Middleware Infrastructure 12c und höher. Wir haben die offiziellen Docker-Images für WebLogic Server 12.2.1.3 und 12.2.1.4 mit dem Operator getestet. Weitere Informationen zum Operator finden Sie in der [offiziellen Dokumentation von Oracle](https://oracle.github.io/weblogic-kubernetes-operator/).
 
 ## <a name="guidance-scripts-and-samples-for-wls-on-aks"></a>Leitfäden, Skripts und Beispiele für WLS in AKS
-Über die Zertifizierung von WebLogic Server in AKS hinaus stellen Oracle und Microsoft gemeinsam detaillierte Leitfäden, Skripts und Beispiele für die Ausführung von WebLogic Server in AKS zur Verfügung. Der Leitfaden ist in den Beispielabschnitt von Azure Kubernetes Service in der [Operator-Dokumentation](https://oracle.github.io/weblogic-kubernetes-operator/samples/simple/azure-kubernetes-service/) integriert. Der Leitfaden ist darauf ausgerichtet, die Produktion von WebLogic Server in AKS-Bereitstellungen so einfach wie möglich zu gestalten. Der Leitfaden verwendet offizielle WebLogic Server Docker-Images, die von Oracle bereitgestellt werden. Das Failover wird über Azure Files erreicht, auf das über Kubernetes-Ansprüche auf persistente Volumes zugegriffen wird. Azure Load Balancer-Instanzen werden unterstützt, wenn sie mithilfe eines Kubernetes-Diensts vom Typ „LoadBalancer“ bereitgestellt werden. Die Azure Container Registry (ACR) wird für das Bereitstellen von WLS-Domänen in benutzerdefinierten Docker-Images unterstützt. Die Anleitung gestattet ein hohes Maß an Konfiguration und Anpassung.
+Über die Zertifizierung von WebLogic Server in AKS hinaus stellen Oracle und Microsoft gemeinsam detaillierte Leitfäden, Skripts und Beispiele für die Ausführung von WebLogic Server in AKS zur Verfügung. Der Leitfaden ist in den Beispielabschnitt von Azure Kubernetes Service in der [Operator-Dokumentation](https://oracle.github.io/weblogic-kubernetes-operator/) integriert. Der Leitfaden ist darauf ausgerichtet, die Produktion von WebLogic Server in AKS-Bereitstellungen so einfach wie möglich zu gestalten. Der Leitfaden verwendet offizielle WebLogic Server Docker-Images, die von Oracle bereitgestellt werden. Das Failover wird über Azure Files erreicht, auf das über Kubernetes-Ansprüche auf persistente Volumes zugegriffen wird. Azure Load Balancer-Instanzen werden unterstützt, wenn sie mithilfe eines Kubernetes-Diensts vom Typ „LoadBalancer“ bereitgestellt werden. Die Azure Container Registry (ACR) wird für das Bereitstellen von WLS-Domänen in benutzerdefinierten Docker-Images unterstützt. Die Anleitung gestattet ein hohes Maß an Konfiguration und Anpassung.
 
 :::image type="content" source="media/oracle-weblogic/wls-on-aks.gif" alt-text="Sie können die Beispielskripts zur Bereitstellung von WebLogic Server in AKS verwenden.":::
 
@@ -55,7 +55,7 @@ Neben dem, was die Lösungen bieten, haben Kunden die Flexibilität, ihre Bereit
 Untersuchen Sie die Ausführung von Oracle WebLogic Server für Azure Kubernetes Service.
 
 > [!div class="nextstepaction"]
-> [Leitfäden, Skripts und Beispiele zum Ausführen von WLS in AKS](https://oracle.github.io/weblogic-kubernetes-operator/samples/simple/azure-kubernetes-service/)
+> [Leitfäden, Skripts und Beispiele zum Ausführen von WLS in AKS](https://oracle.github.io/weblogic-kubernetes-operator/)
 
 > [!div class="nextstepaction"]
 > [WebLogic Kubernetes Operator](https://oracle.github.io/weblogic-kubernetes-operator/)

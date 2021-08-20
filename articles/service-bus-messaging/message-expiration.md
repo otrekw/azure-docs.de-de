@@ -2,13 +2,13 @@
 title: 'Azure Service Bus: Ablauf von Nachrichten'
 description: In diesem Artikel werden der Ablauf und die Gültigkeitsdauer von Azure Service Bus-Nachrichten behandelt. Nach einer solchen Frist wird die Nachricht nicht mehr zugestellt.
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: d41cb7a5e04753989c0e65e8afb8d74a11cd1af2
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.date: 07/09/2021
+ms.openlocfilehash: ac37096b411df0fa1a52286f82ce421dff459239
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614879"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585463"
 ---
 # <a name="message-expiration-time-to-live"></a>Nachrichtenablauf (Gültigkeitsdauer)
 Die Nutzlast in einer Nachricht oder die in einer Nachricht an einen Empfänger übermittelten Befehle/Anforderungen unterliegen fast immer einer Form von Ablauffrist auf Anwendungsebene. Nach Ablauf einer solchen Frist wird der Inhalt nicht mehr zugestellt oder der gewünschte Vorgang nicht mehr ausgeführt.
@@ -27,9 +27,9 @@ Eine extrem niedrige Gültigkeitsdauer (TTL) im Bereich von Millisekunden oder S
 Alle Nachrichten, die in eine Warteschlange oder an ein Thema gesendet werden, unterliegen einer Standardablaufzeit, die auf Entitätsebene festgelegt wird. Sie kann auch im Portal während der Erstellung festgelegt und später angepasst werden. Die Standardablaufzeit wird für alle an die Entität gesendeten Nachrichten verwendet, bei denen time-to-live nicht explizit festgelegt ist. Die Standardablaufzeit dient auch als Obergrenze für den time-to-live-Wert. Nachrichten, die eine längere time-to-live-Ablaufzeit als der Standardwert haben, werden automatisch an den time-to-live-Standardnachrichtenwert angepasst, bevor sie in die Warteschlange eingereiht werden.
 
 > [!NOTE]
-> Der Standardwert für die Gültigkeitsdauer (Time-To-Live, TTL) für eine im Broker gespeicherte Nachricht ist der größte mögliche Wert für eine ganze 64-Bit-Zahl mit Vorzeichen, wenn nichts anderes angegeben ist.
->
-> Für Messagingentitäten (Warteschlangen und Themen) ist die Standardablaufzeit ebenfalls der größte mögliche Wert für eine ganze 64-Bit-Zahl mit Vorzeichen bei den Service Bus-Dienstebenen „Standard“ und „Premium“. Im Tarif **Basic** beträgt die Standardablaufzeit **14 Tage** (dies ist auch der Höchstwert).
+> - Der Standardwert für die Gültigkeitsdauer (Time-To-Live, TTL) für eine im Broker gespeicherte Nachricht ist der größte mögliche Wert für eine ganze 64-Bit-Zahl mit Vorzeichen, wenn nichts anderes angegeben ist.
+> - Für Messagingentitäten (Warteschlangen und Themen) ist die Standardablaufzeit ebenfalls der größte mögliche Wert für eine ganze 64-Bit-Zahl mit Vorzeichen bei den Service Bus-Dienstebenen „Standard“ und „Premium“. Im Tarif **Basic** beträgt die Standardablaufzeit **14 Tage** (dies ist auch der Höchstwert).
+> - Wenn das Thema einen kleineren TTL-Wert als das Abonnement angibt, wird der TTL-Wert des Themas angewendet.
 
 Abgelaufene Nachrichten können optional in eine [Warteschlange für unzustellbare Nachrichten](service-bus-dead-letter-queues.md) verschoben werden. Sie können diese Einstellung programmgesteuert oder mithilfe des Azure-Portals konfigurieren. Wenn die Option deaktiviert bleibt, werden abgelaufene Nachrichten verworfen. Abgelaufene Nachrichten, die in die Warteschlange für unzustellbare Nachrichten verschoben werden, können durch die Auswertung der [dead-letter reason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq)-Eigenschaft, die der Broker in den Benutzereigenschaften speichert, von anderen unzustellbaren Nachrichten unterschieden werden. 
 

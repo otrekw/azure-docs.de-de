@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: d4500229800fa5d1743779b29927637777647e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f50fecfb2675e870025d9e188d5303aacf77f7a2
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550656"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295721"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Erstellen einer Integrationsdienstumgebung (Integration Service Environment, ISE) mithilfe der Logic Apps-REST-API
 
@@ -22,7 +22,7 @@ In diesem Artikel wird gezeigt, wie Sie mithilfe der Logic Apps-REST-API generel
 Weitere Informationen zu anderen Möglichkeiten zum Erstellen einer ISE finden Sie in den folgenden Artikeln:
 
 * [Erstellen einer ISE mithilfe des Azure-Portals](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
-* [Erstellen einer ISE mithilfe der Azure Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
+* [Erstellen einer ISE mithilfe der Azure Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/integration-service-environment)
 * [Erstellen einer ISE, die die Verwendung von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Daten unterstützt](customer-managed-keys-integration-service-environment.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -195,6 +195,8 @@ Häufig verwenden Sie eine ISE, um eine Verbindung mit benutzerdefinierten Diens
 Bevor Sie Ihre ISE mit einem benutzerdefinierten vertrauenswürdigen Stammzertifikat aktualisieren, überprüfen Sie diese Aspekte:
 
 * Stellen Sie sicher, dass Sie das Stammzertifikat *und* alle Zwischenzertifikate hochladen. Es gilt eine maximale Anzahl von 20 Zertifikaten.
+
+* Der Name des Betreffs im Zertifikat muss mit dem Hostnamen für den Zielendpunkt übereinstimmen, den Sie über Azure Logic Apps aufrufen möchten. 
 
 * Das Hochladen von Stammzertifikaten ist ein Ersetzungsvorgang, bei dem der aktuelle Upload vorherige Uploads überschreibt. Wenn Sie beispielsweise eine Anforderung senden, die ein Zertifikat hochlädt, und dann eine weitere Anforderung senden, um ein anderes Zertifikat hochzuladen, verwendet Ihre ISE nur das zweite Zertifikat. Wenn Sie beide Zertifikate verwenden müssen, fügen Sie diese derselben Anforderung hinzu.  
 

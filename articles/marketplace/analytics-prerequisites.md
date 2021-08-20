@@ -4,15 +4,16 @@ description: Informieren Sie sich über die Anforderungen, die Sie erfüllen mü
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: b61608c0cb53ab808c5d3d789ec5ddc318c6923d
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: a3c27a8e91ef1f202fbc757eb1a21eeddfc1d3d8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106801"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340157"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>Voraussetzungen für den programmgesteuerten Zugriff auf Analysedaten
 
@@ -30,7 +31,7 @@ Für den programmgesteuerten Zugriff auf Analysedaten für den kommerziellen Mar
 
 Die Azure AD-Anwendung, die Sie im Azure-Portal erstellt haben, muss mit Ihrem Partner Center-Konto verknüpft werden. Die Schritte lauten wie folgt:
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) an.
 1. Wählen Sie in der rechten oberen Ecke das Zahnradsymbol und dann **Kontoeinstellungen** aus.
 1. Wählen Sie im Menü **Kontoeinstellungen** die Option **Benutzerverwaltung** aus.
 1. Wählen Sie **Azure AD-Anwendungen** und dann **+ Azure AD-Anwendung erstellen** aus.

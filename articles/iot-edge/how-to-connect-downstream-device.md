@@ -2,7 +2,6 @@
 title: Verbinden nachgeschalteter Geräte – Azure IoT Edge | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie nachgeschaltete oder Blattgeräte für eine Verbindung mit Azure IoT Edge-Gatewaygeräten konfigurieren.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 10/15/2020
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 4cb31017d87c235f4a26d6f86080c20b0c3b2a8a
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 92e1a38e962c80de53971523320cd168cfc66d06
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905286"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339725"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 

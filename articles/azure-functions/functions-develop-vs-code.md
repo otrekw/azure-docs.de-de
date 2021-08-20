@@ -3,13 +3,13 @@ title: Entwickeln von Azure Functions mithilfe von Visual Studio Code
 description: In diesem Artikel erhalten Sie Informationen über das Entwickeln und Testen von Azure Functions mithilfe der Azure Functions-Erweiterung für Visual Studio Code.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 08/21/2019
-ms.openlocfilehash: c2869b2b30722495523a9f0dfb2d70a17a205854
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.date: 02/21/2021
+ms.openlocfilehash: d7ed95080763d32f8a940066c2c6c5d80c25b0dc
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107871271"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340402"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -69,7 +69,7 @@ Diese Voraussetzungen sind nur erforderlich, wenn Sie Ihre [Funktionen lokal aus
 
 + [Debugger für Java-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)
 
-+ [Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) empfohlen. Informationen zu anderen unterstützten Versionen finden Sie unter [Java-Versionen](functions-reference-java.md#java-versions).
++ [Java 8](/azure/developer/java/fundamentals/java-support-on-azure) empfohlen. Informationen zu anderen unterstützten Versionen finden Sie unter [Java-Versionen](functions-reference-java.md#java-versions).
 
 + [Maven 3 oder höher](https://maven.apache.org/)
 
@@ -129,7 +129,7 @@ Die Projektvorlage erstellt ein Projekt in Ihrer gewählten Sprache und installi
 
 * **host.json**: Ermöglicht das Konfigurieren des Functions-Hosts. Diese Einstellungen gelten, wenn Sie Funktionen lokal ausführen und sie in Azure ausführen. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json.md).
 
-* **local.settings.json**: Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden nur beim lokalen Ausführen von Funktionen verwendet. Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](#local-settings-file).
+* **local.settings.json**: Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden nur beim lokalen Ausführen von Funktionen verwendet. Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](#local-settings).
 
     >[!IMPORTANT]
     >Da die Datei „local.settings.json“ Geheimnisse enthalten kann, müssen Sie sie aus der Quellcodeverwaltung Ihres Projekts ausschließen.
@@ -383,7 +383,7 @@ Beim Ausführen der Funktionen in Azure verwendet die Erweiterung Ihr Azure-Kont
 
 ### <a name="run-functions-locally"></a>Lokales Ausführen von Funktionen
 
-Die lokale-Runtime ist die gleiche Runtime, die Ihre Funktions-App in Azure hostet. Lokale Einstellungen werden aus der [local.settings.json-Datei](#local-settings-file) gelesen. Um Ihr Functions-Projekt lokal ausführen zu können, müssen einige [zusätzliche Anforderungen](#run-local-requirements) erfüllt sein.
+Die lokale-Runtime ist die gleiche Runtime, die Ihre Funktions-App in Azure hostet. Lokale Einstellungen werden aus der [local.settings.json-Datei](#local-settings) gelesen. Um Ihr Functions-Projekt lokal ausführen zu können, müssen einige [zusätzliche Anforderungen](#run-local-requirements) erfüllt sein.
 
 #### <a name="configure-the-project-to-run-locally"></a>Konfigurieren des Projekts für die lokale Ausführung
 
@@ -399,7 +399,7 @@ So legen Sie die Speicherkonto-Verbindungszeichenfolge fest:
 
 3. Wiederholen Sie den vorherigen Schritt zum Hinzufügen von eindeutigen Schlüsseln zum **Values**-Array für alle anderen Verbindungen, die von Ihren Funktionen benötigt werden.
 
-Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](#local-settings-file).
+Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](#local-settings).
 
 #### <a name="debug-functions-locally"></a><a name="debugging-functions-locally"></a>Lokales Debuggen von Funktionen  
 
@@ -503,7 +503,7 @@ Die Azure Functions-Erweiterung bietet eine nützliche grafische Benutzeroberfl�
 | **Mit GitHub-Repository verbinden** | Verbindet Ihre Funktions-App mit einem GitHub-Repository. |
 | **Kopieren der Funktions-URL** | Ruft die Remote-URL einer über HTTP ausgelösten Funktion ab, die in Azure ausgeführt wird. Weitere Informationen finden Sie unter [Abrufen der URL der bereitgestellten Funktion](#get-the-url-of-the-deployed-function). |
 | **Funktions-App in Azure erstellen** | Erstellt eine neue Funktions-App in Ihrem Abonnement in Azure. Weitere Informationen finden Sie im Abschnitt zum [Veröffentlichen in einer neuen Funktions-App in Azure](#publish-to-azure).        |
-| **Einstellungen entschlüsseln** | Entschlüsselt [lokale Einstellungen](#local-settings-file), die mithilfe von **Azure Functions: Einstellungen verschlüsseln** verschlüsselt wurden.  |
+| **Einstellungen entschlüsseln** | Entschlüsselt [lokale Einstellungen](#local-settings), die mithilfe von **Azure Functions: Einstellungen verschlüsseln** verschlüsselt wurden.  |
 | **Funktions-App löschen** | Entfernt eine Funktions-App aus Ihrem Abonnement in Azure. Wenn keine anderen Apps im App Service-Plan vorhanden sind, wird Ihnen die Option eingeräumt, diesen ebenfalls zu löschen. Andere Ressourcen, etwa Speicherkonten und Ressourcengruppen, werden nicht gelöscht. Um alle Ressourcen zu entfernen, sollten Sie stattdessen [die Ressourcengruppe löschen](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources). Ihr lokales Projekt ist nicht betroffen. |
 |**Funktion löschen**  | Entfernt eine vorhandene Funktion aus einer Funktions-App in Azure. Da sich diese Löschung nicht auf Ihr lokales Projekt auswirkt, ziehen Sie in Erwägung, stattdessen die Funktion lokal zu entfernen und dann [das Projekt neu zu veröffentlichen](#republish-project-files). |
 | **Proxy löschen** | Entfernt einen Azure Functions-Proxy aus Ihrer Funktions-App in Azure. Weitere Informationen über Proxys finden Sie unter [Arbeiten mit Azure Functions-Proxys](functions-proxies.md). |
@@ -511,7 +511,7 @@ Die Azure Functions-Erweiterung bietet eine nützliche grafische Benutzeroberfl�
 | **Vom Repository trennen**  | Entfernt die Verbindung für [Continuous Deployment](functions-continuous-deployment.md) zwischen einer Funktions-App in Azure und einem Repository für die Quellcodeverwaltung. |
 | **Remoteeinstellungen herunterladen** | Lädt Einstellungen aus der gewählten Funktions-App in Azure in Ihre local.settings.json-Datei herunter. Wenn die lokale Datei verschlüsselt ist, wird sie entschlüsselt, aktualisiert und erneut verschlüsselt. Wenn Einstellungen vorhanden sind, bei denen die Werte an den beiden Speicherorten einen Konflikt verursachen, werden Sie aufgefordert, die Vorgehensweise auszuwählen. Achten Sie darauf, Änderungen an Ihrer Datei „local.settings.json“ zu speichern, bevor Sie diesen Befehl ausführen. |
 | **Einstellungen bearbeiten** | Ändert den Wert einer vorhandenen Funktions-App in Azure. Dieser Befehl wirkt sich nicht auf Einstellungen in Ihrer Datei „local.settings.json“ aus.  |
-| **Einstellungen verschlüsseln** | Verschlüsselt einzelne Elemente im `Values`-Array in den [lokalen Einstellungen](#local-settings-file). In dieser Datei wird außerdem `IsEncrypted` auf `true` festgelegt. Damit wird angegeben, dass die lokale Runtime Einstellungen entschlüsselt, bevor sie verwendet werden. Verschlüsseln Sie lokale Einstellungen, um die Gefahr des Verlusts von wertvollen Informationen zu verringern. In Azure werden Anwendungseinstellungen immer verschlüsselt gespeichert. |
+| **Einstellungen verschlüsseln** | Verschlüsselt einzelne Elemente im `Values`-Array in den [lokalen Einstellungen](#local-settings). In dieser Datei wird außerdem `IsEncrypted` auf `true` festgelegt. Damit wird angegeben, dass die lokale Runtime Einstellungen entschlüsselt, bevor sie verwendet werden. Verschlüsseln Sie lokale Einstellungen, um die Gefahr des Verlusts von wertvollen Informationen zu verringern. In Azure werden Anwendungseinstellungen immer verschlüsselt gespeichert. |
 | **Funktion jetzt ausführen** | Startet eine Funktion mithilfe der Admin-APIs manuell. Dieser Befehl dient zum Testen – sowohl lokal während des Debuggens und für Funktionen, die in Azure ausgeführt werden. Wenn eine Funktion in Azure ausgelöst wird, ruft die Erweiterung zunächst automatisch einen Administratorschlüssel ab, mit dem die Remoteadmin-APIs aufgerufen werden, die Funktionen in Azure starten. Der Meldungstext, der an die API gesendet wird, ist vom Typ des Auslösers abhängig. Für Zeitgebertrigger müssen Sie keine Daten übergeben. |
 | **Projekt für die Verwendung mit VS Code initialisieren** | Fügt einem vorhandenen Functions-Projekt die erforderlichen Visual Studio Code-Projektdateien hinzu. Verwenden Sie diesen Befehl, um mit einem Projekt zu arbeiten, das Sie mithilfe von Core Tools erstellt haben. |
 | **Azure Functions Core Tools installieren oder aktualisieren** | Installiert oder aktualisiert die [Azure Functions Core Tools], die für die lokale Ausführung von Funktionen verwendet werden. |

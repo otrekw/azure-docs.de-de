@@ -12,12 +12,12 @@ metadata:
   manager: daveba
   ms.reviewer: na
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 2c43149c2a15c7ea35c87aca8188a01e6350df77
-  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.openlocfilehash: 8fa75d1baae917e7e60ca99f4d5c3cc33ff85f0a
+  ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "111907207"
+  ms.lasthandoff: 06/16/2021
+  ms.locfileid: "112200748"
 title: Roaming von Einstellungen und Daten – Häufig gestellte Fragen
 summary: Dieser Artikel enthält Antworten auf Fragen zur Synchronisierung von Einstellungen und App-Daten, die von IT-Administratoren häufig gestellt werden.
 sections:
@@ -149,7 +149,7 @@ sections:
   - question: >
       Was geschieht, wenn meine Organisation Roaming verwendet und anschließend ein Abonnement erwirbt, das Azure Rights Management enthält?
     answer: >
-      Falls Ihre Organisation das Roaming unter Windows 10 bereits über das kostenlose, eingeschränkte Azure Rights Management-Abonnement nutzt, hat der Erwerb eines [kostenpflichtigen Abonnements](https://azure.microsoft.com/pricing/details/information-protection/), das den Azure Rights Management-Schutzdienst enthält, keinerlei Auswirkungen auf die Funktionen des Roamingfeatures, und Ihr IT-Administrator muss keine Änderungen an der Konfiguration vornehmen.
+      Falls Ihre Organisation das Roaming unter Windows 10 bereits über das kostenlose, eingeschränkte Azure Rights Management-Abonnement nutzt, hat der Erwerb eines [kostenpflichtigen Abonnements](https://azure.microsoft.com/services/information-protection/), das den Azure Rights Management-Schutzdienst enthält, keinerlei Auswirkungen auf die Funktionen des Roamingfeatures, und Ihr IT-Administrator muss keine Änderungen an der Konfiguration vornehmen.
   - question: >
       Bekannte Probleme
     answer: "In der Dokumentation im Abschnitt [Problembehandlung](enterprise-state-roaming-troubleshooting.md) finden Sie eine Liste der bekannten Probleme. \n"

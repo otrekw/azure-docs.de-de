@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2021
 ms.custom: seodec18
-ms.openlocfilehash: 91ba1280262a7d13afa71d5dc0e2b7eb0e545ecc
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 59226a105df2a05e693c7d83f2488a43143914b6
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110787712"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122340551"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 
@@ -70,7 +70,7 @@ Beachten Sie, dass jeder Datensatz im Blob die Spalte **client_id** enthält, di
 
 4. Wenn ein Eingabestream aus Datensätzen mit einer Kardinalität des Partitionsschlüssels unter 8.000 besteht, werden die Datensätze an vorhandene Blobs angefügt und neue Blobs nur bei Bedarf erstellt. Wenn die Kardinalität über 8.000 liegt, gibt es keine Garantie dafür, dass Daten in vorhandene Blobs geschrieben und neue Blobs nicht für eine beliebige Anzahl von Datensätzen mit dem gleichen Partitionsschlüssel erstellt werden.
 
-5. Wenn die Blobausgabe [als unveränderlich konfiguriert](../storage/blobs/storage-blob-immutable-storage.md) ist, erstellt Stream Analytics bei jedem Senden von Daten ein neues Blob.
+5. Wenn die Blobausgabe [als unveränderlich konfiguriert](../storage/blobs/immutable-storage-overview.md) ist, erstellt Stream Analytics bei jedem Senden von Daten ein neues Blob.
 
 ## <a name="custom-datetime-path-patterns"></a>Benutzerdefinierte DateTime-Pfadmuster
 

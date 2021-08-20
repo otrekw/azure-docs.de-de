@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 8b2acc37efb497748abe5f63bd58e96b16171b21
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 68742801234696f104de85832353b98ef33b1b2d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538394"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454400"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>Behandeln von Problemen mit einer lokalen Modellimplementierung
 
@@ -24,7 +24,7 @@ Versuchen Sie es bei der Problembehandlung im Zusammenhang mit der Bereitstellun
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein **Azure-Abonnement**. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+* Ein **Azure-Abonnement**. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) aus.
 * Option A (**empfohlen**): lokales Debuggen in der Azure Machine Learning Compute-Instanz
    * Ein Azure Machine Learning-Arbeitsbereich mit einer ausgeführten [Compute-Instanz](how-to-deploy-local-container-notebook-vm.md)
 * Option B: lokales Debuggen auf Ihrer Computeressource

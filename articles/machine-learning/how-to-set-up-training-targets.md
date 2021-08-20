@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 09/28/2020
+ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 1b4394c7338aabb63654a1462a97518aaff9ada3
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 875407e07af1059c98a2adb6bb0f7b075d78fe02
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408513"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112462721"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurieren und Übermitteln von Trainingsausführungen
 
@@ -28,7 +28,7 @@ Sie müssen lediglich die Umgebung für jedes einzelne Computeziel in einer **Sk
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 * Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/install) (mindestens 1.13.0)
 * Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md), `ws`
 * Ein Computeziel, `my_compute_target`  [Erstellen eines Computeziels](how-to-create-attach-compute-studio.md) 
@@ -77,7 +77,9 @@ Wählen Sie das Computeziel aus, auf dem das Trainingsskript ausgeführt werden 
 Im Beispielcode in diesem Artikel wird davon ausgegangen, dass Sie bereits ein `my_compute_target`-Computeziel im Abschnitt „Voraussetzungen“ erstellt haben.
 
 >[!Note]
->Azure Databricks wird nicht als Computeziel für das Modelltraining unterstützt. Sie können Azure Databricks für Datenvorbereitungs- und Bereitstellungsaufgaben verwenden. 
+>Azure Databricks wird nicht als Computeziel für das Modelltraining unterstützt. Sie können Azure Databricks für Datenvorbereitungs- und Bereitstellungsaufgaben verwenden.
+
+[!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
 ## <a name="create-an-environment"></a>Erstellen einer Umgebung
 Azure Machine Learning-[Umgebungen](concept-environments.md) sind eine Kapselung der Umgebung, in der Ihr Training für das maschinelle Lernen stattfindet. Sie geben die Python-Pakete, ein Docker-Image, Umgebungsvariablen und Softwareeinstellungen für die Trainings- und Bewertungsskripts an. Sie geben auch Laufzeiten an (Python, Spark oder Docker).

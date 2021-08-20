@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: b860510610330d6c5d60f41dccc9e82bc77685f5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e24ba72960c40031dd49189f151fd3f35190e116
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969433"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463619"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps-Methoden für LUIS
 
@@ -183,7 +183,7 @@ Eine LUIS-App im LUDown-Format ist für Menschen lesbar. Damit unterstützt sie 
 
 ## <a name="versioning"></a>Versionsverwaltung
 
-Eine Anwendung besteht aus mehreren Komponenten. Dies kann z. B. ein Bot sein, der in [Azure Bot Service](/azure/bot-service/bot-service-overview-introduction), [QnA Maker](https://www.qnamaker.ai/), [Azure Speech Service](../speech-service/overview.md) usw. ausgeführt wird. Um das Ziel von lose gekoppelten Anwendungen zu erreichen, verwenden Sie eine [Versionskontrolle](/azure/devops/learn/git/what-is-version-control), damit jede Komponente einer Anwendung unabhängig versioniert wird. Auf diese Weise können Entwickler Breaking Changes oder Updates erkennen, indem sie einfach die Versionsnummer überprüfen. Es ist einfacher, die LUIS-App unabhängig von anderen Komponenten zu versionieren, wenn Sie sie in einem eigenen Repository verwalten.
+Eine Anwendung besteht aus mehreren Komponenten. Dies kann z. B. ein Bot sein, der in [Azure Bot Service](/azure/bot-service/bot-service-overview-introduction), [QnA Maker](https://www.qnamaker.ai/), [Azure Speech Service](../speech-service/overview.md) usw. ausgeführt wird. Um das Ziel von lose gekoppelten Anwendungen zu erreichen, verwenden Sie eine [Versionskontrolle](/devops/develop/git/what-is-version-control), damit jede Komponente einer Anwendung unabhängig versioniert wird. Auf diese Weise können Entwickler Breaking Changes oder Updates erkennen, indem sie einfach die Versionsnummer überprüfen. Es ist einfacher, die LUIS-App unabhängig von anderen Komponenten zu versionieren, wenn Sie sie in einem eigenen Repository verwalten.
 
 Auf die LUIS-App im Mainbranch sollte ein Versionsverwaltungsschema angewendet werden. Wenn Sie Updates an der `.lu`-Datei für eine LUIS-App im Mainbranch zusammenführen, importieren Sie dann diese aktualisierte Quelle in eine neue Version der LUIS-App für den Mainbranch.
 

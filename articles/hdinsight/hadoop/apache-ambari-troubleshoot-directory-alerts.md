@@ -4,12 +4,12 @@ description: Erörterung und Analyse möglicher Ursachen und Lösungen für Apac
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 47d1f9797a44d7dc918677c21ffc7a124808525d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e5e74c49b7654c2ade20e78f7098192649f9385
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943291"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300127"
 ---
 # <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>Szenario: Apache Ambari-Verzeichniswarnungen in Azure HDInsight
 
@@ -51,4 +51,4 @@ Erstellen Sie die fehlenden Verzeichnisse manuell auf den betroffenen Workerknot
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -4,12 +4,12 @@ description: Lernen Sie die Ressourcen kennen, die beim Erstellen eines HDInsigh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 43640a9de91b6b44a236090ff029a49313ee0247
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 511f1b1bba227e58303a47994d7a6f7bd8b14604
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871672"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290987"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Virtuelle Netzwerkarchitektur mit Azure HDInsight
 
@@ -24,7 +24,6 @@ In Azure HDInsight-Clustern gibt es unterschiedliche Typen virtueller Computer b
 | Hauptknoten |  Bei allen Clustertypen, mit Ausnahme von Apache Storm, hosten die Hauptknoten die Prozesse, welche die Ausführung der verteilten Anwendung verwalten. Der Hauptknoten ist auch der Knoten, zu dem Sie eine SSH-Verbindung herstellen und mit dem Sie Anwendungen ausführen können, die dann für die Ausführung mit den Clusterressourcen koordiniert werden. Die Anzahl der Hauptknoten ist bei allen Clustertypen auf zwei (2) festgelegt. |
 | ZooKeeper-Knoten | Zookeeper koordiniert Aufgaben zwischen den Knoten, welche die Datenverarbeitung ausführen. Er nimmt auch die Auswahl des führenden Hauptknotens vor, und verfolgt, welcher Hauptknoten einen bestimmten Master-Dienst ausführt. Die Anzahl der ZooKeeper-Knoten ist auf drei festgelegt. |
 | Workerknoten | Dies sind die Knoten, welche die Datenverarbeitungsfunktionen unterstützen. Workerknoten können dem Cluster hinzugefügt oder aus dem Cluster entfernt werden, um die Computingleistung zu skalieren und die Kosten zu verwalten. |
-| R Server-Edgeknoten | Der R Server-Edgeknoten ist der Knoten, zu dem Sie eine SSH-Verbindung herstellen und mit dem Sie Anwendungen ausführen können, die dann für die Ausführung mit den Clusterressourcen koordiniert werden. Ein Edgeknoten ist nicht an der Datenanalyse innerhalb des Clusters beteiligt. Dieser Knoten hostet außerdem den R Studio-Server, sodass Sie zum Ausführen von R-Anwendungen einen Browser verwenden können. |
 | Regionsknoten | Beim HBase-Clustertyp führt der Regionsknoten (auch als Datenknoten bezeichnet) den Regionsserver aus. Regionsserver stellen einen Teil der von HBase verwalteten Daten bereit und verwalten diese. Regionsknoten können dem Cluster hinzugefügt oder aus dem Cluster entfernt werden, um die Computingleistung zu skalieren und die Kosten zu verwalten.|
 | Nimbusknoten | Beim Storm-Clustertyp stellt der Nimbusknoten eine dem Hauptknoten vergleichbare Funktionalität bereit. Der Nimbusknoten weist anderen Knoten im Cluster Aufgaben über den Zookeeper-Knoten zu, der die Ausführung der Storm-Topologien koordiniert. |
 | Supervisorknoten | Beim Storm-Clustertyp führt der Supervisorknoten die vom Nimbus-Knoten bereitgestellten Anweisungen aus, um die Verarbeitung vorzunehmen. |

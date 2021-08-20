@@ -8,12 +8,12 @@ ms.date: 4/8/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 8b8205681da7ea24fdafcef337ad903fff06c589
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e403ed4778e87e42ad4abb2e6d45923e420ca0c4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474627"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438631"
 ---
 # <a name="event-notifications"></a>Ereignisbenachrichtigungen
 
@@ -157,7 +157,7 @@ Innerhalb der Nachricht enthält das Feld `data` die Daten des betreffenden digi
 
 Bei Erstellungsereignissen spiegelt die `data`-Payload den Zustand des Zwillings nach der Erstellung der Ressource wider, sodass sie wie ein `GET`-Aufruf alle vom System generierten Elemente enthalten sollte.
 
-Hier folgt ein Beispiel der Daten für ein [IoT Plug and Play (PnP)](../iot-pnp/overview-iot-plug-and-play.md)-Gerät mit Komponenten und ohne Eigenschaften der obersten Ebene. Eigenschaften, die für Geräte nicht sinnvoll sind (z. B. gemeldete Eigenschaften), sollten weggelassen werden. Dies sind die Informationen, die im Feld `data` der Benachrichtigungsmeldung zum Lebenszyklus angezeigt werden.
+Hier folgt ein Beispiel der Daten für ein [IoT Plug and Play (PnP)](../iot-develop/overview-iot-plug-and-play.md)-Gerät mit Komponenten und ohne Eigenschaften der obersten Ebene. Eigenschaften, die für Geräte nicht sinnvoll sind (z. B. gemeldete Eigenschaften), sollten weggelassen werden. Dies sind die Informationen, die im Feld `data` der Benachrichtigungsmeldung zum Lebenszyklus angezeigt werden.
 
 ```json
 {
@@ -312,4 +312,4 @@ Hier ist ein Beispiel für eine Telemetrienachricht:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Hier erfahren Sie mehr über das Bereitstellen von Ereignissen an verschiedene Ziele mithilfe von Endpunkten und Routen:
-* [Konzepte: Ereignisrouten](concepts-route-events.md)
+* [Ereignisrouten](concepts-route-events.md)

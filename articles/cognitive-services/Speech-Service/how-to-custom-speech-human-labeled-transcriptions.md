@@ -3,19 +3,19 @@ title: Richtlinien für menschenmarkierte Transkriptionen – Spracherkennungsdi
 titleSuffix: Azure Cognitive Services
 description: Um die Genauigkeit der Spracherkennung zu verbessern, z. B. wenn Wörter gelöscht oder falsch ersetzt werden, können Sie menschenmarkierte Transkriptionen zusammen mit Ihren Audiodaten verwenden. Menschenmarkierte Transkriptionen sind wortwörtliche Transkriptionen einer Audiodatei.
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: erhopf
-ms.openlocfilehash: af6ced49071b7fbae983508e68964aa064ef38e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: lajanuar
+ms.openlocfilehash: 2983f34f4dfd80ed34f3aed95870369d4c97f7a3
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101700030"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340494"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Erstellen von menschenmarkierten Transkriptionen
 

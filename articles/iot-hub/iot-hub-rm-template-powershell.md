@@ -2,19 +2,18 @@
 title: Erstellen einer Azure IoT Hub-Instanz mithilfe einer Vorlage (PowerShell) | Microsoft Docs
 description: Erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage in Azure PowerShell eine IoT Hub-Instanz erstellen.
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ac3a75b2e00e0e769f758cf82eec7cfc6e5ec4c2
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: c2119cbc3d520b1fcf7c5efd094fd26ddb3d1c19
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031473"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339719"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (PowerShell)
 

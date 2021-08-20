@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/27/2021
 ms.author: apimpm
-ms.openlocfilehash: 22d2960801cac2222f868c384a55b4bf436bc75b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47c687a85249b21e25dc282b47fb76fed0158a91
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492602"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551306"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-Authentifizierungsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -152,13 +152,13 @@ Sowohl eine systemseitig zugewiesene Identität als auch eine der benutzerseitig
 ```
 
 ```xml
-<authentication-managed-identity resource="api://Client_id_of_Backend"/> <!--Your own Azure AD Application-->
+<authentication-managed-identity resource="Client_id_of_Backend"/> <!--Your own Azure AD Application-->
 ```
 
 #### <a name="use-managed-identity-and-set-header-manually"></a>Verwenden der verwalteten Identität und manuelles Festlegen des Headers
 
 ```xml
-<authentication-managed-identity resource="api://Client_id_of_Backend"
+<authentication-managed-identity resource="Client_id_of_Backend"
    output-token-variable-name="msi-access-token" ignore-error="false" /> <!--Your own Azure AD Application-->
 <set-header name="Authorization" exists-action="override">
    <value>@("Bearer " + (string)context.Variables["msi-access-token"])</value>

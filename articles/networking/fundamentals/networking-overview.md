@@ -10,18 +10,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/07/2021
 ms.author: kumud
-ms.openlocfilehash: 34e31bacbb276feb5b11d1b955096877376e989b
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 072c26444c3a3fe84cfc9a0690571a524f7db6dc
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107702"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436044"
 ---
 # <a name="azure-networking-services-overview"></a>Übersicht über Azure-Netzwerkdienste
 
 Die Azure-Netzwerkdienste bieten eine Vielzahl von Netzwerkfunktionen, die einzeln oder zusammen verwendet werden können. Klicken Sie auf eine der folgenden Schlüsselfunktionen, um weitere Informationen zu erhalten:
 - [**Konnektivitätsdienste:**](#connect) Vernetzen Sie Azure-Ressourcen und lokale Ressourcen mithilfe einer Kombination folgender Netzwerkdienste in Azure: Virtual Network (VNET), Virtual WAN, ExpressRoute, VPN Gateway, Virtual Network NAT Gateway, Azure DNS, Peering Service und Azure Bastion.
-- [**Anwendungsschutzdienste:** ](#protect): Diese Dienste schützen Ihrer Anwendungen mithilfe einer Kombination folgender Netzwerkdienste in Azure: Load Balancer, Private Link, DDoS Protection, Firewall, Netzwerksicherheitsgruppen, Web Application Firewall und Virtual Network-Endpunkte.
+- [**Anwendungsschutzdienste:**](#protect): Diese Dienste schützen Ihrer Anwendungen mithilfe einer Kombination folgender Netzwerkdienste in Azure: Load Balancer, Private Link, DDoS Protection, Firewall, Netzwerksicherheitsgruppen, Web Application Firewall und Virtual Network-Endpunkte.
 - [**Dienste zur Anwendungsbereitstellung**](#deliver): Stellen Sie Anwendungen im Azure-Netzwerk mithilfe einer Kombination aus folgenden Netzwerkdiensten in Azure bereit: Content Delivery Network (CDN), Azure Front Door Service, Traffic Manager, Application Gateway, Internet Analyzer und Load Balancer.
 - [**Netzwerküberwachung**](#monitor): Überwachen Sie Ihre Netzwerkressourcen mithilfe einer Kombination folgender Netzwerkdienste in Azure: Network Watcher, ExpressRoute-Monitor, Azure Monitor oder Terminalzugangspunkte für virtuelle Netzwerke.
 
@@ -67,7 +67,7 @@ Azure Bastion ist ein neuer vollständig verwalteter PaaS-Dienst, den Sie in Ihr
 :::image type="content" source="./media/networking-overview/architecture.png" alt-text="Azure Bastion-Architektur":::
 
 ### <a name="virtual-network-nat-gateway"></a><a name="nat"></a>Virtual Network NAT Gateway
-Virtual Network NAT (Network Address Translation, Netzwerkadressenübersetzung) vereinfacht für virtuelle Netzwerke die Einrichtung von ausschließlich ausgehenden Internetverbindungen. Bei der Konfiguration in einem Subnetz werden für die gesamte Konnektivität in ausgehender Richtung die von Ihnen angegebenen statischen öffentlichen IP-Adressen verwendet. Die ausgehende Konnektivität ist möglich, ohne dass ein Lastenausgleich oder öffentliche IP-Adressen direkt virtuellen Computern zugeordnet werden. Weitere Informationen finden Sie unter [Was ist Virtual Network NAT?](../../virtual-network/nat-overview.md).
+Virtual Network NAT (Network Address Translation, Netzwerkadressenübersetzung) vereinfacht für virtuelle Netzwerke die Einrichtung von ausschließlich ausgehenden Internetverbindungen. Bei der Konfiguration in einem Subnetz werden für die gesamte Konnektivität in ausgehender Richtung die von Ihnen angegebenen statischen öffentlichen IP-Adressen verwendet. Die ausgehende Konnektivität ist möglich, ohne dass ein Lastenausgleich oder öffentliche IP-Adressen direkt virtuellen Computern zugeordnet werden. Weitere Informationen finden Sie unter [Was ist Virtual Network NAT?](../../virtual-network/nat-gateway/nat-overview.md).
 
 :::image type="content" source="./media/networking-overview/flow-map.png" alt-text="Virtual Network NAT Gateway":::
 

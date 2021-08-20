@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: fcc7ac002c9d1024abc17dc26ba0b231213ceb53
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cf1361a531511daf7f249f4e7c7d2acf9207c457
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385450"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339874"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>Bearbeiten von Einstellungen für Hosts und Apps für Logik-Apps in Azure Logic Apps-Instanzen mit einem einzelnen Mandanten
 
@@ -45,9 +45,9 @@ Weitere Informationen zur Einrichtung Ihrer Logik-Apps für die Bereitstellung f
 
 In Visual Studio Code enthält die Datei **local.settings.json** auf der Stammebene Ihres Logik-App-Projekts globale Konfigurationsoptionen, die bei der Ausführung in Ihrer lokalen Entwicklungsumgebung für *alle Workflows* in dieser Logik-App gelten. Wenn Ihre Workflows lokal ausgeführt werden, erfolgt der Zugriff auf diese Einstellungen als lokale Umgebungsvariablen, deren Werte sich zwischen den verschiedenen Umgebungen, in denen Sie Ihre Workflows ausführen, oft ändern können. Lesen Sie den Abschnitt [Verwalten von App-Einstellungen (local.settings.json)](#manage-app-settings), um zu erfahren, wie Sie diese Einstellungen anzeigen und verwalten.
 
-App-Einstellungen in Azure Logic Apps funktionieren ähnlich wie App-Einstellungen in Azure Functions oder Azure-Web-Apps. Wenn Sie diese anderen Dienste bereits verwendet haben, sind Sie möglicherweise mit den App-Einstellungen vertraut. Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](../azure-functions/functions-app-settings.md) und [Arbeiten mit Azure Functions Core Tools – Datei für lokale Einstellungen](../azure-functions/functions-run-local.md#local-settings-file).
+App-Einstellungen in Azure Logic Apps funktionieren ähnlich wie App-Einstellungen in Azure Functions oder Azure-Web-Apps. Wenn Sie diese anderen Dienste bereits verwendet haben, sind Sie möglicherweise mit den App-Einstellungen vertraut. Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](../azure-functions/functions-app-settings.md) und [Arbeiten mit Azure Functions Core Tools – Datei für lokale Einstellungen](../azure-functions/functions-develop-local.md#local-settings-file).
 
-| Einstellung | Standardwert | Beschreibung |
+| Einstellung | Standardwert | BESCHREIBUNG |
 |---------|---------------|-------------|
 | `AzureWebJobsStorage` | Keine | Hiermit wird die Verbindungszeichenfolge für ein Azure-Speicherkonto festgelegt. |
 | `Workflows.<workflowName>.FlowState` | Keine | Hiermit wird der Status für <*Workflowname*> festgelegt. |

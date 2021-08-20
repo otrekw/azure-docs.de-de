@@ -1,27 +1,24 @@
 ---
 title: Migrieren zu Azure Cloud Services (erweiterter Support) mit PowerShell
 description: 'Vorgehensweise: Migrieren von Azure Cloud Services (klassisch) zu Azure Cloud Services (erweiterter Support) mit PowerShell'
-author: tanmaygore
 ms.service: cloud-services-extended-support
 ms.subservice: classic-to-arm-migration
 ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
-ms.author: tagore
+author: hirenshah1
+ms.author: hirshah
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d813cc32d3b635e6da767e3f04386c0e35ea503c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f7626b2af5f5d8c12a29602e62b38ebef2abfd48
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949374"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434280"
 ---
 # <a name="migrate-to-azure-cloud-services-extended-support-using-powershell"></a>Migrieren zu Azure Cloud Services (erweiterter Support) mit PowerShell
 
 In den folgenden Schritten wird gezeigt, wie Sie mit Azure PowerShell-Befehlen von [Cloud Services (klassisch)](../cloud-services/cloud-services-choose-me.md) zu [Cloud Services (erweiterter Support)](overview.md) migrieren.
-
-> [!IMPORTANT]
-> Die Migration von Cloud Services (klassisch) zu Cloud Services (erweiterter Support) mithilfe des Migrationstools befindet sich derzeit in der öffentlichen Vorschau. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="1-plan-for-migration"></a>1) Planen der Migration
 Die Planung ist der wichtigste Schritt für eine erfolgreiche Migration. Lesen Sie die [Übersicht zu Cloud Services (erweiterte Unterstützung)](overview.md) und den Artikel [Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager](../virtual-machines/migration-classic-resource-manager-plan.md), bevor Sie mit den Migrationsschritten beginnen. 
@@ -206,4 +203,5 @@ Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie den Abschnitt [Änderungen nach der Migration](in-place-migration-overview.md#post-migration-changes), um Änderungen in Bereitstellungsdateien, die Automatisierung und andere Attribute der neuen Cloud Services-Bereitstellung (erweiterter Support) anzuzeigen.
+
+Lesen Sie den Abschnitt [Änderungen nach der Migration](post-migration-changes.md), um Änderungen in Bereitstellungsdateien, die Automatisierung und andere Attribute der neuen Cloud Services-Bereitstellung (erweiterter Support) anzuzeigen.

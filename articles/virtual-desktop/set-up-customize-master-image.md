@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 576a791ee8c252a8bc1fa73cd98174e6958cf606
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 8e893a95337801db4ee35cfdc00e2d97f8d12db6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751431"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285851"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
@@ -188,7 +188,7 @@ Stellen Sie nach dem Vorbereiten des Images für den Upload sicher, dass die VM 
 
 Dieser Abschnitt gilt nur, wenn das Masterimage lokal erstellt wurde.
 
-In der folgenden Anleitung wird beschrieben, wie Sie Ihr Masterimage in ein Azure-Speicherkonto hochladen. Falls Sie nicht bereits über ein Azure-Speicherkonto verfügen, können Sie die Anleitung in [diesem Artikel](/azure/developer/javascript/tutorial-vscode-static-website-node-03) verwenden, um ein Konto zu erstellen.
+In der folgenden Anleitung wird beschrieben, wie Sie Ihr Masterimage in ein Azure-Speicherkonto hochladen. Falls Sie nicht bereits über ein Azure-Speicherkonto verfügen, können Sie die Anleitung in [diesem Artikel](../storage/common/storage-account-create.md) verwenden, um ein Konto zu erstellen.
 
 1. Konvertieren Sie das VM-Image (VHD) in „Fixed“ (Fest), falls dies noch nicht geschehen ist. Wenn Sie das Image nicht in „Fixed“ (Fest) konvertieren, ist die Imageerstellung nicht erfolgreich.
 

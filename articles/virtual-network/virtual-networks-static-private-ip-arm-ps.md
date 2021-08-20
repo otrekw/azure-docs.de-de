@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71d8c9b30923f6b3fd79a42542cac43cbfa09964
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6b6361aa197076db3e36a36d5b770ccc2d6e0e4f
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110678628"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431940"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse mithilfe von PowerShell
 
-Sie können einen virtuellen Computer (VM) mit einer statischen privaten IP-Adresse erstellen. Weisen Sie eine statische private IP-Adresse anstelle einer dynamischen Adresse zu, wenn Sie auswählen möchten, welche Adresse aus einem Subnetz einem virtuellen Computer zugewiesen wird. Erfahren Sie mehr über [statische private IP-Adressen](./public-ip-addresses.md#allocation-method). Um eine dynamische private IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit öffentlichen IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md).
+Sie können einen virtuellen Computer (VM) mit einer statischen privaten IP-Adresse erstellen. Weisen Sie eine statische private IP-Adresse anstelle einer dynamischen Adresse zu, wenn Sie auswählen möchten, welche Adresse aus einem Subnetz einem virtuellen Computer zugewiesen wird. Erfahren Sie mehr über [statische private IP-Adressen](./public-ip-addresses.md#ip-address-assignment). Um eine dynamische private IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit öffentlichen IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

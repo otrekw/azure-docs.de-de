@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 4bc30fbf342a9bc85b52c9f88ce7ca1df3c36e23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28bd7af9722bd76d6580257ffaf0446c79522502
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595505"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461547"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – Übersicht
 
@@ -177,15 +177,15 @@ Mit dem DevOps-Konzept können Teams schneller und kostengünstiger Lösungen en
 
 Cloudplattformen wie Microsoft Azure haben dazu geführt, dass herkömmliche Engpässe entfernt wurden und die Infrastruktur allgemein verfügbar ist. Die Software ist in jedem Unternehmen ein bedeutendes Unterscheidungsmerkmal und ein wichtiger Faktor in Bezug auf das Geschäftsergebnis. Organisationen, Entwickler und IT-Experten können bzw. sollten die DevOps-Bewegung nicht mehr ignorieren.
 
-Erfahrene DevOps-Praktiker nutzen beispielsweise die folgenden Vorgehensweisen. Bei diesen Vorgehensweisen legen [Personen](/azure/devops/learn/what-is-devops-culture) Strategien anhand des Geschäftsszenarios fest. Tools können zur Automatisierung der unterschiedlichen Vorgehensweisen beitragen.
+Erfahrene DevOps-Praktiker nutzen beispielsweise die folgenden Vorgehensweisen. Bei diesen Vorgehensweisen legen [Personen](/devops/what-is-devops) Strategien anhand des Geschäftsszenarios fest. Tools können zur Automatisierung der unterschiedlichen Vorgehensweisen beitragen.
 
 - Verfahren für [Planung und Projektmanagement auf „agile“ Weise](https://www.visualstudio.com/learn/what-is-agile/) werden genutzt, um Arbeit in Form von „Sprints“ zu planen und zu isolieren, die Teamkapazität zu verwalten und Teams bei der schnellen Anpassung an sich ändernde Geschäftsanforderungen zu unterstützen.
-- Mit der [Versionskontrolle (normalerweise per Git)](/azure/devops/learn/git/what-is-git) können Teams, die sich an beliebigen Orten weltweit befinden, Quellen gemeinsam verwenden und Tools für die Softwareentwicklung integrieren, um die Releasepipeline zu automatisieren.
-- [Continuous Integration](/azure/devops/learn/what-is-continuous-integration) unterstützt das laufende Zusammenführen und Testen von Code, sodass Fehler zu einem frühen Zeitpunkt erkannt werden können.  Weitere Vorteile sind, dass weniger Zeit für die Behebung von Zusammenführungsproblemen aufgewendet werden muss und Entwicklungsteams schnell Feedback erhalten.
-- [Continuous Delivery](/azure/devops/learn/what-is-continuous-delivery) (fortlaufende Bereitstellung) von Softwarelösungen in Produktions- und Testumgebungen ermöglicht Organisationen eine schnelle Behebung von Fehlern und Reaktion auf sich ständig ändernde Geschäftsanforderungen.
-- Die [Überwachung](/azure/devops/learn/what-is-monitoring) von ausgeführten Anwendungen, einschließlich der Anwendungsintegrität und der Anwendungsnutzung durch Kunden in Produktionsumgebungen, unterstützt Unternehmen dabei, Hypothesen aufzustellen und Strategien schnell zu validieren oder zu widerlegen.  In verschiedenen Protokollierungsformaten werden umfassende Daten erfasst und gespeichert.
-- [Infrastruktur als Code (IaC)](/azure/devops/learn/what-is-infrastructure-as-code) ist eine Methode, die die Automatisierung und Überprüfung der Erstellung und Beendigung von Netzwerken und virtuellen Computern ermöglicht, um die Bereitstellung von sicheren und stabilen Anwendungsplattformen zu unterstützen.
-- Die [Microservices](/azure/devops/learn/what-are-microservices)-Architektur wird genutzt, um Geschäftsanwendungsfälle in Form von kleinen wiederverwendbaren Diensten zu isolieren.  Diese Architektur ermöglicht Skalierbarkeit und Effizienz.
+- Mit der [Versionskontrolle (normalerweise per Git)](/devops/develop/git/what-is-git) können Teams, die sich an beliebigen Orten weltweit befinden, Quellen gemeinsam verwenden und Tools für die Softwareentwicklung integrieren, um die Releasepipeline zu automatisieren.
+- [Continuous Integration](/devops/develop/what-is-continuous-integration) unterstützt das laufende Zusammenführen und Testen von Code, sodass Fehler zu einem frühen Zeitpunkt erkannt werden können.  Weitere Vorteile sind, dass weniger Zeit für die Behebung von Zusammenführungsproblemen aufgewendet werden muss und Entwicklungsteams schnell Feedback erhalten.
+- [Continuous Delivery](/devops/deliver/what-is-continuous-delivery) (fortlaufende Bereitstellung) von Softwarelösungen in Produktions- und Testumgebungen ermöglicht Organisationen eine schnelle Behebung von Fehlern und Reaktion auf sich ständig ändernde Geschäftsanforderungen.
+- Die [Überwachung](/devops/operate/what-is-monitoring) von ausgeführten Anwendungen, einschließlich der Anwendungsintegrität und der Anwendungsnutzung durch Kunden in Produktionsumgebungen, unterstützt Unternehmen dabei, Hypothesen aufzustellen und Strategien schnell zu validieren oder zu widerlegen.  In verschiedenen Protokollierungsformaten werden umfassende Daten erfasst und gespeichert.
+- [Infrastruktur als Code (IaC)](/devops/deliver/what-is-infrastructure-as-code) ist eine Methode, die die Automatisierung und Überprüfung der Erstellung und Beendigung von Netzwerken und virtuellen Computern ermöglicht, um die Bereitstellung von sicheren und stabilen Anwendungsplattformen zu unterstützen.
+- Die [Microservices](/devops/deliver/what-are-microservices)-Architektur wird genutzt, um Geschäftsanwendungsfälle in Form von kleinen wiederverwendbaren Diensten zu isolieren.  Diese Architektur ermöglicht Skalierbarkeit und Effizienz.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

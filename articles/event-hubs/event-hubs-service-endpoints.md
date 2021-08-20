@@ -3,12 +3,12 @@ title: 'Virtual Network-Dienstendpunkte: Azure Event Hubs | Microsoft-Dokumentat
 description: In diesem Artikel werden Informationen zum Hinzufügen eines Microsoft.EventHub-Dienstendpunkts zu einem virtuellen Netzwerk beschrieben.
 ms.topic: article
 ms.date: 05/10/2021
-ms.openlocfilehash: bc13878be3b596d514ad2ed8ad024064df6e6fb4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 33ae280b49b4f2afca39e8de8954f836737c9d7c
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375335"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416216"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Zulassen des Zugriffs auf Azure Event Hubs-Namespaces aus bestimmten virtuellen Netzwerken 
 
@@ -78,7 +78,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen VNET-Dienst
     > [!NOTE]
     > Informationen, wie Sie den Zugriff auf bestimmte IP-Adressen oder -Adressbereiche beschränken, finden Sie unter [Zulassen des Zugriffs von bestimmten IP-Adressen oder -Adressbereichen](event-hubs-ip-filtering.md).
 
-[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+[!INCLUDE [event-hubs-trusted-services](./includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Verwenden von Resource Manager-Vorlagen
 Die folgende Resource Manager-Beispielvorlage fügt einem vorhandenen Event Hubs-Namespace eine VNET-Regel hinzu. Die Netzwerkregel gibt die ID eines Subnetzes in einem virtuellen Netzwerk an. 

@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e8ea30ddfcaeff1a177a14a0b1d911d14b76b4
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 3ba2e88a20106b9344a6d7942d4bc7149a346b7c
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526086"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733140"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal
 
@@ -35,7 +35,7 @@ Für den Azure AD-Dienst sind mehrere Lizenzpläne verfügbar, einschließlich d
 
 - Azure AD Premium P2
 
-Unter [Welche Lizenz benötige ich?](https://azure.microsoft.com/pricing/details/active-directory/) finden Sie spezifische Informationen zu jedem Lizenzplan sowie die zugehörigen Lizenzdetails. Informationen zum Registrieren für Azure AD Premium-Lizenzpläne finden Sie [hier](./active-directory-get-started-premium.md).
+Unter [Welche Lizenz benötige ich?](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) finden Sie spezifische Informationen zu jedem Lizenzplan sowie die zugehörigen Lizenzdetails. Informationen zum Registrieren für Azure AD Premium-Lizenzpläne finden Sie [hier](./active-directory-get-started-premium.md).
 
 Nicht alle Microsoft-Dienste sind an allen Standorten verfügbar. Bevor einer Gruppe eine Lizenz zugewiesen werden kann, müssen Sie den **Nutzungsspeicherort** für alle Mitglieder angeben. Sie können diesen Wert im Bereich **Azure Active Directory &gt; Benutzer &gt; Profil &gt; Einstellungen** in Azure AD festlegen. Jeder Benutzer, dessen Verwendungsstandort nicht angegeben ist, erbt den Standort der Azure AD-Organisation.
 

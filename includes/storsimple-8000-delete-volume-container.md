@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 07/16/2021
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 386a39d76bf47da45f07054124886e174104849e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e505158c80c0b9a831af17ca2f2d6062dc56f6a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545291"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449862"
 ---
 Zum Löschen eines Volumecontainers müssen Sie
  - die Volumes im Volumecontainer löschen. Wenn dem Volumecontainer Volumes zugeordnet sind, schalten Sie diese zuerst offline. Führen Sie die unter [Offlineschalten von Volumes](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)genannten Schritte aus. Wenn die Volumes offline sind, können Sie sie löschen. 
@@ -33,7 +33,7 @@ Wenn dem Volumecontainer keine Volumes, Sicherungsrichtlinien und Cloudmomentauf
 
 3. Wenn einem Volumecontainer keine Volumes, Sicherungsrichtlinien und Cloudmomentaufnahmen zugeordnet sind, kann er gelöscht werden. Wenn Sie zur Bestätigung aufgefordert werden, überprüfen Sie das Kontrollkästchen mit den Informationen zu den Auswirkungen der Volumecontainer-Löschung und aktivieren es. Klicken Sie dann auf **Löschen**, um den Volumecontainer zu löschen.
 
-    ![Löschvorgang bestätigen](./media/storsimple-8000-delete-volume-container/delete-volume-container-02.png)
+    ![Löschvorgang bestätigen](./media/storsimple-8000-delete-volume-container/delete-volume-container-02.png)<!--Added missing border.-->
 
 Die Liste der Volumecontainer wird dem gelöschten Volumecontainer entsprechend aktualisiert.
 

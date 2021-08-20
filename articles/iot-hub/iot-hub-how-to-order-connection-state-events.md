@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: 00765a51ad07cd53fde403ed1cfabb73c5692026
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 5035515c843db2ce7feb06090029c7e5995769cc
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076867"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287968"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB
 
@@ -28,7 +28,7 @@ Die Sequenznummer ist eine Zeichenfolgendarstellung einer Hexadezimalzahl. Sie k
 
 * Eine Sammlung in der Datenbank. Eine exemplarische Vorgehensweise finden Sie unter [Hinzufügen einer Sammlung](../cosmos-db/create-sql-api-java.md#add-a-container). Wenn Sie Ihre Sammlung erstellen, verwenden Sie `/id` als Partitionsschlüssel.
 
-* Eine IoT Hub-Instanz in Azure. Wenn Sie noch keinen erstellt haben, finden Sie unter [Erste Schritte mit IoT Hub](./quickstart-send-telemetry-dotnet.md) eine exemplarische Vorgehensweise.
+* Eine IoT Hub-Instanz in Azure. Wenn Sie noch keinen erstellt haben, finden Sie unter [Erste Schritte mit IoT Hub](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp) eine exemplarische Vorgehensweise.
 
 ## <a name="create-a-stored-procedure"></a>Erstellen einer gespeicherten Prozedur
 

@@ -16,12 +16,12 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1a3b0dda56f0039d61f8ef4ff1dd27dd09ec8b71
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: cd1d81362534f4de7357ebbbc6877aa7c3f72f2e
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666119"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434748"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Automatisiertes Patchen für SQL Server auf Azure-VMs (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -89,9 +89,7 @@ Weitere Informationen finden Sie unter [Bereitstellen eines virtuelle SQL Server
 
 ### <a name="existing-vms"></a>Vorhandene virtuelle Computer
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
-Für vorhandene virtuelle SQL Server-Computer öffnen Sie die Ressource [Virtueller SQL-Computer](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) und wählen dann **Patchen** unter **Einstellungen** aus. 
+Für vorhandene virtuelle SQL Server-Computer öffnen Sie die Ressource [Virtueller SQL-Computer](manage-sql-vm-portal.md#access-the-resource) und wählen dann **Patchen** unter **Einstellungen** aus. 
 
 ![Automatisiertes Patchen für SQL für vorhandene virtuelle Computer](./media/automated-patching/azure-sql-rm-patching-existing-vms.png)
 

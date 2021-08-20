@@ -3,12 +3,12 @@ title: Übersicht über Event Hubs Premium (Vorschauversion)
 description: Dieser Artikel bietet eine Übersicht über Azure Event Hubs Premium, das mehrinstanzenfähige Bereitstellungen von Event Hubs für anspruchsvolle Streaminganforderungen bietet.
 ms.topic: article
 ms.date: 5/25/2021
-ms.openlocfilehash: 7ae58a46484f6f83fdd737ac32e559a5dd90c627
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: d60469937324226b8d928fb257d83966c52dce7e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409953"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415012"
 ---
 # <a name="overview-of-event-hubs-premium-preview"></a>Übersicht über Event Hubs Premium (Vorschauversion)
 
@@ -67,7 +67,7 @@ Der Premium-Tarif bietet alle Funktionen des Standardtarifs, jedoch mit besserer
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
-[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-premium-faq.md)]
+[!INCLUDE [event-hubs-dedicated-clusters-faq](./includes/event-hubs-premium-faq.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

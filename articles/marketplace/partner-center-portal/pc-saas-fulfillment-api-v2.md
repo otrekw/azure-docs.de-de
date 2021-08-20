@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: b2c1840acae64940561133a90cb1450c4af80a19
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 0a5ad3a5fb542476eb4cdeb1ffe67907a7209d0c
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952761"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232555"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-Fulfillment-APIs (Version 2) im kommerziellen Marketplace
 
@@ -249,7 +249,7 @@ Code: 403 – Unzulässig. Das Autorisierungstoken ist ungültig, abgelaufen ode
 
 Dieser Fehler ist häufig ein Symptom dafür, dass die [SaaS-Registrierung](pc-saas-registration.md) nicht ordnungsgemäß ausgeführt wird.
 
-Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://partner.microsoft.com/support/v2/?stage=1).
+Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 #### <a name="activate-a-subscription"></a>Aktivieren eines Abonnements
 
@@ -302,7 +302,7 @@ Dieser Fehler ist häufig ein Symptom dafür, dass die [SaaS-Registrierung](pc-s
 
 Code: 404 – Nicht gefunden. Das SaaS-Abonnement weist den Status *Gekündigt* auf.
 
-Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://partner.microsoft.com/support/v2/?stage=1).
+Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 #### <a name="get-list-of-all-subscriptions"></a>Abrufen einer Liste aller Abonnements
 
@@ -411,7 +411,7 @@ Code: 403 – Unzulässig. Das Autorisierungstoken ist nicht verfügbar, ungült
 
 Dieser Fehler ist häufig ein Symptom dafür, dass die [SaaS-Registrierung](pc-saas-registration.md) nicht ordnungsgemäß ausgeführt wird. 
 
-Code: 500 – Interner Serverfehler. Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://partner.microsoft.com/support/v2/?stage=1).
+Code: 500 – Interner Serverfehler. Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 #### <a name="get-subscription"></a>Abrufen eines Abonnements
 
@@ -481,7 +481,7 @@ Dieser Fehler ist häufig ein Symptom dafür, dass die [SaaS-Registrierung](pc-s
 
 Code: 404 – Nicht gefunden.  Das SaaS-Abonnement mit der angegebenen `subscriptionId` wurde nicht gefunden.
 
-Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://partner.microsoft.com/support/v2/?stage=1).
+Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 #### <a name="list-available-plans"></a>Auflisten verfügbarer Pläne
 
@@ -536,7 +536,7 @@ Code: 403 – Unzulässig. Das Autorisierungstoken ist ungültig, abgelaufen ode
 
 Dieser Fehler ist häufig ein Symptom dafür, dass die [SaaS-Registrierung](pc-saas-registration.md) nicht ordnungsgemäß ausgeführt wird. 
 
-Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://partner.microsoft.com/support/v2/?stage=1).
+Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 #### <a name="change-the-plan-on-the-subscription"></a>Ändern des Plans für das Abonnement
 
@@ -595,7 +595,7 @@ Dieser Fehler ist häufig ein Symptom dafür, dass die [SaaS-Registrierung](pc-s
 
 Code: 404 – Nicht gefunden.  Das SaaS-Abonnement mit `subscriptionId` wurde nicht gefunden.
 
-Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://partner.microsoft.com/support/v2/?stage=1).
+Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 >[!NOTE]
 >Es kann jeweils nur der Plan oder die Menge von Arbeitsplätzen geändert werden, nicht beides gleichzeitig.
@@ -661,7 +661,7 @@ Dieser Fehler ist häufig ein Symptom dafür, dass die [SaaS-Registrierung](pc-s
 
 Code: 404 – Nicht gefunden.  Das SaaS-Abonnement mit `subscriptionId` wurde nicht gefunden.
 
-Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://partner.microsoft.com/support/v2/?stage=1).
+Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 >[!Note]
 >Es kann jeweils nur ein Plan oder eine Menge geändert werden, nicht beides gleichzeitig.
@@ -720,7 +720,7 @@ Dieser Fehler ist häufig ein Symptom dafür, dass die [SaaS-Registrierung](pc-s
 
 Code: 404 – Nicht gefunden.  Das SaaS-Abonnement mit `subscriptionId` wurde nicht gefunden.
 
-Code: 500 – Interner Serverfehler. Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://partner.microsoft.com/support/v2/?stage=1).
+Code: 500 – Interner Serverfehler. Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 ### <a name="operations-apis"></a>Vorgangs-APIs
 
@@ -783,7 +783,7 @@ Dieser Fehler ist häufig ein Symptom dafür, dass die [SaaS-Registrierung](pc-s
 
 Code: 404 – Nicht gefunden.  Das SaaS-Abonnement mit `subscriptionId` wurde nicht gefunden.
 
-Code: 500 – Interner Serverfehler. Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://partner.microsoft.com/support/v2/?stage=1).
+Code: 500 – Interner Serverfehler. Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 #### <a name="get-operation-status"></a>Abrufen des Vorgangsstatus
 
@@ -843,7 +843,7 @@ Code: 404 – Nicht gefunden.
 * Abonnement mit `subscriptionId` wurde nicht gefunden.
 * Vorgang mit `operationId` wurde nicht gefunden.
 
-Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://partner.microsoft.com/support/v2/?stage=1).
+Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 #### <a name="update-the-status-of-an-operation"></a>Aktualisieren des Status eines Vorgangs
 
@@ -895,7 +895,7 @@ Code: 404 – Nicht gefunden.
 
 Code: 409 – Konflikt.  Es wurde z. B. bereits eine neuere Transaktion abgeschlossen.
 
-Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://partner.microsoft.com/support/v2/?stage=1).
+Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der Fehler weiterhin auftritt, wenden Sie sich an den [Microsoft-Support](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 ## <a name="implementing-a-webhook-on-the-saas-service"></a>Implementieren eines Webhooks für den SaaS-Dienst
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 921a2c6425010dbf98c170d8435267e440883aa5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: eeaccd4fa186d4a415e1d573ffa933c7a5f44375
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075140"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298329"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Anleitung zum Bereitstellen von Web-Apps mit Azure Resource Manager-Vorlagen
 
@@ -129,7 +129,7 @@ Wählen Sie in Ihrer Key Vault-Instanz die Optionen **Zertifikate** und **Generi
 
 Geben Sie in Ihrer Vorlage den Namen des Zertifikats für `keyVaultSecretName` an.
 
-Eine Beispielvorlage finden Sie unter [Deploy a Web App certificate from Key Vault secret and use it for creating SSL binding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault) (Bereitstellen eines Web-App-Zertifikats über das Key Vault-Geheimnis und Verwenden zum Erstellen der SSL-Bindung).
+Eine Beispielvorlage finden Sie unter [Deploy a Web App certificate from Key Vault secret and use it for creating SSL binding](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-certificate-from-key-vault) (Bereitstellen eines Web-App-Zertifikats über das Key Vault-Geheimnis und Verwenden zum Erstellen der SSL-Bindung).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: Kapazitätsgrenzen in Azure Lab Services
 description: Erfahren Sie mehr über Kapazitätsgrenzen (Grenzwerte für virtuelle Computer) in Azure Lab Services.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 9866628cd11ec8df67e6fe16ae8806f0f30ae9a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 344ca5950e38d3c4850accdbfb5062a011059919
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94491017"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294506"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>Kapazitätsgrenzen in Azure Lab Services
 Azure Lab Services weist standardmäßige Kapazitätsgrenzen für Azure-Abonnements auf, um Kontingenteinschränkungen von Azure Compute zu entsprechen und Betrugsrisiken zu minimieren. Alle Azure-Abonnements verfügen über eine anfängliche Kapazitätsgrenze, die je nach Abonnementtyp, Anzahl der standardmäßigen Computekerne und in Azure Lab Services verfügbaren GPU-Kerne variieren kann. Diese schränkt die Anzahl der virtuellen Computer ein, die Sie in Ihren Labs erstellen können, bevor Sie eine Erhöhung des Grenzwerts anfordern müssen.  
@@ -51,4 +51,4 @@ Nachdem Sie die Supportanfrage eingereicht haben, wird sie von uns geprüft. Bei
 ## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie den folgenden Artikel:
 - [Administratorhandbuch: VM-Größe](administrator-guide.md#vm-sizing).
-- [Häufig gestellte Fragen zu Event Hubs](classroom-labs-faq.md)
+- [Häufig gestellte Fragen zu Event Hubs](classroom-labs-faq.yml)

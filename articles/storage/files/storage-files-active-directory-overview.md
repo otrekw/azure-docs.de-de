@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 8887243f953a7bb000033a2e56b4655b93cd7ca8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 84934668c36d518e65c8997f72309a5ca3eb8fbe
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519791"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112118494"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Übersicht über die Optionen der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -20,6 +20,13 @@ ms.locfileid: "102519791"
 Informationen dazu, wie Sie die Authentifizierung mit lokalen Active Directory Domain Services für Azure-Dateifreigaben aktivieren, finden Sie unter [Aktivieren der Authentifizierung mit lokalen Active Directory Domain Services über SMB für Azure-Dateifreigaben](storage-files-identity-auth-active-directory-enable.md).
 
 Informationen zum Aktivieren der Azure AD DS-Authentifizierung für Azure-Dateifreigaben finden Sie unter [Aktivieren der Azure Active Directory Domain Services-Authentifizierung in Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md).
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="glossary"></a>Glossar 
 Sie sollten die folgenden Begriffe im Zusammenhang mit der Azure AD Domain Services-Authentifizierung über SMB für Azure-Dateifreigaben kennen:

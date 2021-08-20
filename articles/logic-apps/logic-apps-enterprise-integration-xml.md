@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2017
-ms.openlocfilehash: 3cb3472572abbd891f8d36ea036b371c1224f38c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4e8f8c080d73ca77a69820ffe6af9d46d6f44af
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74792152"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112293993"
 ---
 # <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-Nachrichten und Flatfiles in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -33,7 +33,7 @@ Das Enterprise Integration Pack enthält beispielsweise diese Funktionen:
 
 ## <a name="sample"></a>Beispiel
 
-[Stellen Sie eine voll funktionsfähige Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (GitHub-Beispiel) mit den XML-Features von Azure Logic Apps bereit.
+[Stellen Sie eine voll funktionsfähige Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/logic-app-veter-pipeline) (GitHub-Beispiel) mit den XML-Features von Azure Logic Apps bereit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

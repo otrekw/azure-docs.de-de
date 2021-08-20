@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: dc8ca48d11f31f69ca9db5dce53cce4d9d6e8f25
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5c8ef9fae7e0fa26de6a0d568e88a80a9a8cf989
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772331"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459144"
 ---
 # <a name="iot-central-solution-builder-guide"></a>Leitfaden für IoT Central-Lösungsentwickler
 
@@ -30,17 +30,16 @@ Ein Lösungsentwickler führt folgende Aufgaben aus:
 Eine IoT Central Anwendung kann ein oder mehrere Dashboard(s) enthalten, über die Bediener die Anwendung anzuzeigen und mit ihr interagieren können. Als Lösungsentwickler können Sie das Standarddashboard anpassen und spezialisierte Dashboards erstellen:
 
 - Wenn Sie einige Beispiele für benutzerdefinierte Vorlagen anzeigen möchten, lesen Sie [Branchenorientierte Vorlagen](concepts-app-templates.md#industry-focused-templates).
-- Weitere Informationen zu Dashboards finden Sie unter [Erstellen und Verwalten mehrerer Dashboards](howto-create-personal-dashboards.md) und [Konfigurieren des Anwendungsdashboards](howto-add-tiles-to-your-dashboard.md).
+- Weitere Informationen zu Dashboards finden Sie unter [Erstellen und Verwalten mehrerer Dashboards](howto-manage-dashboards.md) und [Konfigurieren des Anwendungsdashboards](howto-manage-dashboards.md).
 
-Wenn ein Gerät eine Verbindung mit einer IoT Central-Instanz herstellt, wird es einer Gerätevorlage für den Gerätetyp zugeordnet. Eine Gerätevorlage enthält anpassbare Ansichten, mit deren Hilfe ein Bediener einzelne Geräte verwaltet. Als Lösungsentwickler können Sie die verfügbaren Ansichten für einen Gerätetyp erstellen und anpassen. Weitere Informationen finden Sie unter [Hinzufügen von Ansichten](howto-set-up-template.md#add-views).
+Wenn ein Gerät eine Verbindung mit einer IoT Central-Instanz herstellt, wird es einer Gerätevorlage für den Gerätetyp zugeordnet. Eine Gerätevorlage enthält anpassbare Ansichten, mit deren Hilfe ein Bediener einzelne Geräte verwaltet. Als Lösungsentwickler können Sie die verfügbaren Ansichten für einen Gerätetyp erstellen und anpassen. Weitere Informationen finden Sie unter [Hinzufügen von Ansichten](howto-set-up-template.md#views).
 
 ## <a name="use-built-in-rules-and-analytics"></a>Verwenden integrierter Regeln und Analysen
 
 Ein Lösungsentwickler kann einer IoT Central-Anwendung Regeln hinzufügen, die anpassbare Aktionen ausführen. Regeln werten Bedingungen auf der Grundlage von Daten aus einem Gerät aus, um zu bestimmen, wann eine Aktion ausgeführt werden soll. Weitere Informationen zu Regeln finden Sie unter:
 
 - [Tutorial: Erstellen einer Regel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung](tutorial-create-telemetry-rules.md)
-- [Erstellen von Webhookaktionen für Regeln in Azure IoT Central](howto-create-webhooks.md)
-- [Gruppieren mehrerer Aktionen für die Ausführung über eine oder mehrere Regeln](howto-use-action-groups.md)
+- [Konfigurieren von Regeln](howto-configure-rules.md)
 
 IoT Central enthält integrierte Analysefunktionen, mit deren Hilfe ein Bediener die von den verbundenen Geräten übertragenen Daten analysieren kann. Weitere Informationen finden Sie unter [Analysieren von Gerätedaten mithilfe von Analytics](howto-create-analytics.md).
 

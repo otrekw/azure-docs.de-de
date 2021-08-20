@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 07/13/2021
 ms.author: justinha
 author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 699ff88e4181dada5eacaa3f13469722cdf7ceaa
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a46b368954102dff2a09635114b5ef9a6a23b710
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530443"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687926"
 ---
 # <a name="authentication-methods-activity"></a>Aktivität für Authentifizierungsmethoden 
 
@@ -40,7 +40,7 @@ Die folgenden Rollen verfügen über die erforderlichen Berechtigungen:
 - Sicherheitsadministrator
 - Globaler Administrator
 
- Für den Zugriff auf den Verbrauch und die Erkenntnisse ist eine Azure AD Premium P1- oder P2-Lizenz erforderlich. Informationen zur Lizenzierung für Azure AD Multi-Factor Authentication und Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) finden Sie auf der [Website mit Preisen für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
+ Für den Zugriff auf den Verbrauch und die Erkenntnisse ist eine Azure AD Premium P1- oder P2-Lizenz erforderlich. Informationen zur Lizenzierung für Azure AD Multi-Factor Authentication und Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) finden Sie auf der [Website mit Preisen für Azure Active Directory](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 ## <a name="how-it-works"></a>Funktionsweise
 

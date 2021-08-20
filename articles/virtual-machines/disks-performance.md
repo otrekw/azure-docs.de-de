@@ -1,18 +1,18 @@
 ---
 title: Leistung von virtuellen Computern und Datenträgern
 description: Erfahren Sie mehr darüber, wie VMs und die angefügten Datenträger im Hinblick auf die Leistung zusammenarbeiten.
-author: albecker1
-ms.author: albecker
-ms.date: 10/12/2020
+author: roygara
+ms.author: rogarana
+ms.date: 06/29/2021
 ms.topic: conceptual
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: d3a89e7733cc033792056b8de5232232b8327025
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64b535c717d446957e06464a7b3393565a4e250e
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580372"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113362303"
 ---
 # <a name="virtual-machine-and-disk-performance"></a>Leistung von virtuellen Computern und Datenträgern
 [!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance.md)]

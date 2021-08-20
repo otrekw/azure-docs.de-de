@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 1c4a32e79f54bd2626f2eb4f3a3cc97266d3bab0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 95ff033ab83fee6e9dacbf15b12db33f8b36c3c0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958483"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338938"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>Verwalten des Zugriffs auf Azure Sentinel-Daten nach Ressource
 
@@ -65,7 +65,7 @@ Die folgende Liste enthält Beschreibungen von Szenarien, in denen andere Datenz
 
 |Szenario  |Lösung  |
 |---------|---------|
-|**Ein SOC-Team in einem Tochterunternehmen benötigt eine vollständige Azure Sentinel-Umgebung**.     |  Verwenden Sie in diesem Fall eine Architektur mit mehreren Arbeitsbereichen, damit Sie Ihre Datenberechtigungen trennen können. <br><br>Weitere Informationen finden Sie unter <br>- [Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten](extend-sentinel-across-workspaces-tenants.md)<br>    - [Arbeiten mit Vorfällen in vielen Arbeitsbereichen gleichzeitig](multiple-workspace-view.md)          |
+|**Ein SOC-Team in einem Tochterunternehmen benötigt eine vollständige Azure Sentinel-Umgebung**.     |  Verwenden Sie in diesem Fall eine Architektur mit mehreren Arbeitsbereichen, damit Sie Ihre Datenberechtigungen trennen können. <br><br>Weitere Informationen finden Sie unter: <br>- [Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten](extend-sentinel-across-workspaces-tenants.md)<br>    - [Arbeiten mit Vorfällen in vielen Arbeitsbereichen gleichzeitig](multiple-workspace-view.md)          |
 |**Sie möchten Zugriff auf eine bestimmte Art von Ereignis gewähren**.     |  Gewähren Sie für einen Windows-Administrator den Zugriff auf Windows-Sicherheitsereignisse auf allen Systemen. <br><br>Verwenden Sie in solchen Fällen [RBAC auf Tabellenebene](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043), um die Berechtigungen für die einzelnen Tabellen festzulegen.       |
 | **Der Zugriff auf eine Ebene mit höherer Granularität soll eingeschränkt werden (entweder nicht basierend auf der Ressource oder nur auf einen Teil der Felder eines Ereignisses).**   |   Es kann beispielsweise sein, dass Sie den Zugriff auf Office 365-Protokolle auf ein Tochterunternehmen eines Benutzers beschränken möchten. <br><br>Gewähren Sie in diesem Fall Zugriff auf die Daten, indem Sie die integrierte Integration mit [Power BI-Dashboards und -Berichten](../azure-monitor/visualize/powerbi.md) verwenden.      |
 | | |
@@ -149,6 +149,7 @@ Der folgende Code enthält ein Beispiel für eine Logstash-Konfigurationsdatei:
 Bei Verwendung der [Log Analytics-Datensammler-API](../azure-monitor/logs/data-collector-api.md) können Sie für die Zuweisung zu Ereignissen eine Ressourcen-ID nutzen, indem Sie den HTTP-Anforderungsheader [*x-ms-AzureResourceId*](../azure-monitor/logs/data-collector-api.md#request-headers) verwenden.
 
 Wenn Sie die rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext nutzen und die per API erfassten Ereignisse für bestimmte Benutzer verfügbar sein sollen, verwenden Sie die Ressourcen-ID der Ressourcengruppe, die Sie [für Ihre Benutzer erstellt](#explicitly-configure-resource-context-rbac) haben.
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

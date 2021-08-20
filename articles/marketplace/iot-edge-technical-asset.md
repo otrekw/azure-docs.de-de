@@ -7,12 +7,12 @@ ms.topic: how-to
 author: aarathin
 ms.author: aarathin
 ms.date: 05/21/2021
-ms.openlocfilehash: 4804d1b315ce70a3ee145616f9fecbc1edc5e293
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 8ab847eee55eb9f2fc4d0d4ee7de1fa9eef3bcf0
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540567"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294299"
 ---
 # <a name="prepare-iot-edge-module-technical-assets"></a>Vorbereiten der technischen Ressourcen für das IoT Edge-Modul
 
@@ -66,11 +66,11 @@ Kopieren Sie diesen HTML-Text, oder verwenden Sie die entsprechenden Rich-Text-F
 
 ### <a name="configuration"></a>Konfiguration
 
-Ihr Modul muss zudem auch Standardkonfigurationseinstellungen enthalten, um die Bereitstellung auf einem IoT Edge-Gerät so weit wie möglich zu vereinfachen. Diese Informationen können auf der Seite **Technische Konfiguration** für den Plan in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace) bereitgestellt werden. Darüber hinaus kann der Container das SDK für IoT Edge-Module enthalten, um die Kommunikation mit edgeHub und IoT Hub zu ermöglichen.
+Ihr Modul muss zudem auch Standardkonfigurationseinstellungen enthalten, um die Bereitstellung auf einem IoT Edge-Gerät so weit wie möglich zu vereinfachen. Diese Informationen können auf der Seite **Technische Konfiguration** für den Plan in [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) bereitgestellt werden. Darüber hinaus kann der Container das SDK für IoT Edge-Module enthalten, um die Kommunikation mit edgeHub und IoT Hub zu ermöglichen.
 
 #### <a name="default-configuration"></a>Standardkonfiguration
 
-IoT Edge-Module müssen mit den Standardeinstellungen starten können, die auf der Seite **Technische Konfiguration** für den Plan in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace) angegeben sind. Die folgenden Standardeinstellungen sind verfügbar:
+IoT Edge-Module müssen mit den Standardeinstellungen starten können, die auf der Seite **Technische Konfiguration** für den Plan in [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) angegeben sind. Die folgenden Standardeinstellungen sind verfügbar:
 
 - **Standardrouten**
 - **Gewünschte Standardeigenschaften für Modulzwilling**
@@ -85,7 +85,7 @@ ServerIPAddress = <MY_SERVER_IP_ADDRESS>
 
 #### <a name="configuration-documentation"></a>Konfigurationsdokumentation
 
-Alle Konfigurationseinstellungen eines IoT Edge-Moduls müssen eindeutig dokumentiert werden. So müssen Sie beispielsweise die Verwendung der Routen, gewünschte Eigenschaften von Gerätezwillingen, Umgebungsvariablen, „createOptions“ usw. dokumentieren. Sie müssen entweder einen Link zur Dokumentation angeben oder die Dokumentation in Ihre Angebots- bzw. Planbeschreibung aufnehmen. Sie können diese Informationen auf der Seite **Angebotsliste** und der Seite **Planlisting** in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace) bereitstellen.
+Alle Konfigurationseinstellungen eines IoT Edge-Moduls müssen eindeutig dokumentiert werden. So müssen Sie beispielsweise die Verwendung der Routen, gewünschte Eigenschaften von Gerätezwillingen, Umgebungsvariablen, „createOptions“ usw. dokumentieren. Sie müssen entweder einen Link zur Dokumentation angeben oder die Dokumentation in Ihre Angebots- bzw. Planbeschreibung aufnehmen. Sie können diese Informationen auf der Seite **Angebotsliste** und der Seite **Planlisting** in [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) bereitstellen.
 
 #### <a name="tags-and-versioning"></a>Tags und Versionsverwaltung
 
@@ -133,7 +133,7 @@ Partner werden benachrichtigt, sobald eine wichtige Änderung vorgenommen wird, 
 - IoT Edge-Laufzeit
 - Richtlinien für die IoT Edge-Modulzertifizierung
 
-Partner müssen ihre Angebote aktualisieren und neu zertifizieren, indem Sie sie in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace) erneut veröffentlichen.
+Partner müssen ihre Angebote aktualisieren und neu zertifizieren, indem Sie sie in [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) erneut veröffentlichen.
 
 Ihr Angebot wird auch dann neu zertifiziert, wenn Sie es aktualisieren, indem Sie beispielsweise neue Imagetags hinzufügen.
 

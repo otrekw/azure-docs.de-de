@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a59d2e1931b07e035d85632cf84803989de14871
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e0f20b558e94010c948201b886fe376050cf3694
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320725"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122340579"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-Connector-Verwaltungslösung (Veraltet)
 
@@ -45,7 +45,7 @@ Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten fü
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
 | [Windows-Agents](./../agents/agent-windows.md) | Nein | Die Lösung erfasst keine Informationen von Windows-Agents. |
-| [Linux-Agents](../vm/quick-collect-linux-computer.md) | Nein | Die Lösung erfasst keine Informationen von Linux-Agents. |
+| [Linux-Agents](../vm/monitor-virtual-machine.md) | Nein | Die Lösung erfasst keine Informationen von Linux-Agents. |
 | [SCOM-Verwaltungsgruppe](../agents/om-agents.md) | Nein | Die Lösung erfasst keine Informationen von Agents in einer verbundenen SCOM-Verwaltungsgruppe. |
 | [Azure-Speicherkonto](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Nein | Die Lösung sammelt keine Informationen von Azure Storage. |
 

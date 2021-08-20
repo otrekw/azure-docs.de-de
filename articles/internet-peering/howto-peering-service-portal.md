@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.author: derekol
-ms.openlocfilehash: a52e6038b622c004dc0d133394cd4f53600b2935
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29bf044648c2df44863b308105a762b086bbf6dd
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84700041"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113688233"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-the-azure-portal"></a>Aktivieren von Azure Peering Service für Direct Peering über das Azure-Portal
 
@@ -48,4 +48,4 @@ Informationen zum Ändern von Verbindungseinstellungen finden Sie im Abschnitt �
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-Häufig gestellte Fragen finden Sie unter [Peering Service: Häufig gestellte Fragen](service-faqs.md).
+Häufig gestellte Fragen finden Sie unter [Peering Service: Häufig gestellte Fragen](service-faqs.yml).

@@ -4,24 +4,21 @@ description: Vorgehensweise beim Migrieren von Cloud Services (erweiterter Suppo
 ms.topic: how-to
 ms.service: cloud-services-extended-support
 ms.subservice: classic-to-arm-migration
-author: tanmaygore
-ms.author: tagore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: b1a3d6f1c30cf6c52dde3f70f222d9cbb0fce556
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b900b691ee02f438b4e222cdd69ac64e46f15d38
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293168"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431535"
 ---
 # <a name="migrate-to-cloud-services-extended-support-using-the-azure-portal"></a>Migrieren von Cloud Services (erweiterter Support) über das Azure-Portal
 
 In diesem Artikel erfahren Sie, wie Sie das Azure-Portal für die Migration von [Cloud Services (klassisch)](../cloud-services/cloud-services-choose-me.md) zu [Cloud Services (erweiterter Support)](overview.md)verwenden.
-
-> [!IMPORTANT]
-> Die Migration von Cloud Services (klassisch) zu Cloud Services (erweiterter Support) mithilfe des Migrationstools befindet sich derzeit in der öffentlichen Vorschau. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Vorbereitung
 
@@ -66,7 +63,7 @@ Sollten Sie keinen Co-Administrator hinzufügen können, lassen Sie sich von ein
 
     Wenn die Vorbereitung erfolgreich ist, ist die Migration bereit für den Commit.
     
-    :::image type="content" source="media/in-place-migration-portal-4.png" alt-text="Abbildung: Erfolgreiche Überprüfung im Azure-Portal.":::
+    :::image type="content" source="media/in-place-migration-portal-4.png" alt-text="Abbildung: Erfolgreiche Überprüfung im Azure-Portal."::: 
 
     Wenn die Vorbereitung fehlschlägt, überprüfen Sie den Fehler, beheben Sie alle Probleme, und wiederholen Sie die Vorbereitung. 
 
@@ -94,4 +91,5 @@ Sollten Sie keinen Co-Administrator hinzufügen können, lassen Sie sich von ein
     Geben Sie "Ja" ein, um die Migration auszuführen und den Vorgang zu bestätigen. Die Migration ist nun abgeschlossen. Die migrierten Cloud Services (erweiterter Support) werden für alle Vorgänge entsperrt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie den Abschnitt [Änderungen nach der Migration](in-place-migration-overview.md#post-migration-changes), um Änderungen in Bereitstellungsdateien, die Automatisierung und andere Attribute der neuen Cloud Services-Bereitstellung (erweiterter Support) anzuzeigen.
+
+Lesen Sie den Abschnitt [Änderungen nach der Migration](post-migration-changes.md), um Änderungen in Bereitstellungsdateien, die Automatisierung und andere Attribute der neuen Cloud Services-Bereitstellung (erweiterter Support) anzuzeigen.

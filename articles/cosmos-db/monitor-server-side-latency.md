@@ -3,15 +3,15 @@ title: Überwachen der serverseitigen Latenz bei Vorgängen in Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie die serverseitige Latenz bei Vorgängen im Azure Cosmos DB-Konto oder einem Container überwachen. Besitzer eines Azure Cosmos DB-Kontos können die serverseitigen Latenzprobleme bei Ihren Azure Cosmos-Konten verstehen.
 ms.service: cosmos-db
 ms.topic: how-to
-author: kanshiG
-ms.author: govindk
+ms.author: esarroyo
+author: StefArroyo
 ms.date: 04/07/2020
-ms.openlocfilehash: af58b0810ef45a9fff766b73188f66555ba6bc6c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 883552a556ce0cde191cb3dfeccca0ac09c96a10
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470986"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359621"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Überwachen der serverseitigen Latenz bei Vorgängen in einem Azure Cosmos DB-Container oder -Konto
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

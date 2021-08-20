@@ -6,13 +6,13 @@ ms.date: 10/16/2020
 author: gitralf
 ms.author: ralfwi
 ms.service: germany
-ms.custom: bfdocs
-ms.openlocfilehash: f9cadc3acc1908edc5371b2ad2c7559fd0542be5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: bfdocs, devx-track-azurepowershell
+ms.openlocfilehash: 3f5caa51b992d348fa077a0dbb96e210aa18f4de
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96023815"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695765"
 ---
 # <a name="connect-to-azure-germany-by-using-powershell"></a>Herstellen einer Verbindung mit Azure Deutschland über PowerShell
 

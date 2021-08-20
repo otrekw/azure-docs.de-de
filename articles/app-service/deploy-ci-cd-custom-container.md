@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 26515528a809b36be8d13d19f7baf99b5b2f897f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5c8ccbb385a72a34107f0ad3f10066c641d7fb46
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110783301"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112296261"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Continuous Deployment mit benutzerdefinierten Containern in Azure App Service
 
@@ -264,6 +264,6 @@ az acr webhook create --name <webhook-name> --registry <registry-name> --resourc
 * [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
 * [Erstellen einer .NET Core-Web-App in App Service unter Linux](quickstart-dotnetcore.md)
 * [Schnellstart: Ausführen eines benutzerdefinierten Containers in App Service](quickstart-custom-container.md)
-* [App Service unter Linux – häufig gestellte Fragen](faq-app-service-linux.md)
+* [App Service unter Linux – häufig gestellte Fragen](faq-app-service-linux.yml)
 * [Konfigurieren eines benutzerdefinierten Containers](configure-custom-container.md)
 * [Aktionsworkflows für das Bereitstellen in Azure](https://github.com/Azure/actions-workflow-samples)

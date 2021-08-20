@@ -4,12 +4,12 @@ description: Problembehandlung, wenn das Hinzufügen von Knoten zum Apache Hadoo
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/31/2019
-ms.openlocfilehash: b11d1edef2f3a6fa0fb39c76d1f25ec05ff15d07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6eba18156828892c70136474df5a937ef43f9a3
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944324"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299733"
 ---
 # <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>Szenario: Dem Azure HDInsight-Cluster können keine Knoten hinzugefügt werden.
 
@@ -35,4 +35,4 @@ Berechnen Sie mithilfe des Features [Clustergröße](../hdinsight-scaling-best-p
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

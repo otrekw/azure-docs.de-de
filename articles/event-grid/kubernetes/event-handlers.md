@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 838084204ed2c1979f618bb2bfe644d1f88cd51e
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: b0306002ea8a77e82e0247353489761a24654e0e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536497"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417359"
 ---
 # <a name="event-handlers-destinations-in-event-grid-on-kubernetes"></a>Ereignishandler und Ziele in Event Grid in Kubernetes
 Ein Ereignishandler ist ein beliebiges System, das einen Endpunkt verfügbar macht und das Ziel für Ereignisse ist, die von Event Grid gesendet werden. Ein Ereignishandler, der ein Ereignis empfängt, reagiert darauf und verwendet die Ereignisnutzdaten, um Logik auszuführen, was zum Auftreten neuer Ereignisse führen kann.
@@ -20,7 +20,7 @@ Die Methode zum Konfigurieren Event Grid zum Senden von Ereignissen an ein Ziel 
 
 Im Allgemeinen kann Event Grid in Kubernetes Ereignisse über **Webhooks** an beliebige Ziele senden. Webhooks sind HTTP(s)-Endpunkte, die von einem Dienst oder einer Workload verfügbar gemacht werden, auf den bzw. die Event Grid Zugriff besitzt. Der Webhook kann eine Workload sein, die im gleichen Cluster, im gleichen Netzwerkbereich, in der Cloud, lokal oder an einem beliebigen Ort gehostet wird, den Event Grid erreichen kann. 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 Über Webhooks unterstützt Event Grid die folgenden Ziele, die **auf einem Kubernetes-Cluster gehostet werden**:
 

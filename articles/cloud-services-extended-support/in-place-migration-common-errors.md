@@ -4,17 +4,17 @@ description: Übersicht über häufige Fehler bei der Migration von Cloud Servic
 ms.topic: how-to
 ms.service: cloud-services-extended-support
 ms.subservice: classic-to-arm-migration
-author: tanmaygore
-ms.author: tagore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 2e56e3d6b5f29996d8fe9606ac9a1b3778201803
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: cdfb7dd5d09d6925de23be70df18037165776a18
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288722"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340264"
 ---
 # <a name="common-errors-and-known-issues-when-migration-to-azure-cloud-services-extended-support"></a>Häufige Fehler und bekannte Probleme bei der Migration zu Azure Cloud Services (erweiterter Support)
 
@@ -48,7 +48,7 @@ Häufige Fehler bei der Migration und Gegenmaßnahmen.
 | Migration der Bereitstellung „Bereitstellung“ im Cloud Service „Cloud Service“ wird nicht unterstützt, da Sie sich in der Region „Regionsname“ befindet. Zulässige Regionen: [Liste der verfügbaren Regionen]. | Die Region wird für die Migration noch nicht unterstützt. | 
 | Die Bereitstellung „Bereitstellungsname“ im Cloud Service „Cloud Service-Name“ kann nicht migriert werden, weil dem/den Rollennamen der Rolle(n) keine Subnetze zugeordnet sind. Ordnen Sie alle Rollen einem Subnetz zu und wiederholen Sie dann die Migration des Cloud Services. | Aktualisieren Sie die Bereitstellung des Cloud Services (klassisch), indem Sie ihn vor der Migration in einem Subnetz platzieren. |  
 | Die Bereitstellung „Bereitstellungsname“ im Cloud Service „Cloud Service-Name“ kann nicht migriert werden, da für die Bereitstellung mindestens eine Funktion erforderlich ist, die in Azure Resource Manager nicht für das Abonnement registriert ist. Registrieren Sie alle erforderlichen Funktionen, um diese Bereitstellung zu migrieren. Fehlende Funktion(en): [Liste der fehlenden Funktionen]. | Kontaktieren Sie den Support, um die Feature-Flags zu registrieren. | 
-| Die Bereitstellung kann nicht migriert werden, weil zwei Slots des Cloud Services der Bereitstellung belegt sind. Die Migration von Cloud Services wird nur für Bereitstellungen unterstützt, bei denen es sich um die einzige Bereitstellung in Ihrem Cloud Service handelt. Löschen Sie die andere Bereitstellung im Cloud Service, um mit der Migration dieser Bereitstellung fortzufahren. | Weitere Informationen finden Sie in der Liste der [nicht unterstützten Szenarien](in-place-migration-overview.md#unsupported-configurations--migration-scenarios). | 
+| Die Bereitstellung kann nicht migriert werden, weil zwei Slots des Cloud Services der Bereitstellung belegt sind. Die Migration von Cloud Services wird nur für Bereitstellungen unterstützt, bei denen es sich um die einzige Bereitstellung in Ihrem Cloud Service handelt. Löschen Sie die andere Bereitstellung im Cloud Service, um mit der Migration dieser Bereitstellung fortzufahren. | Weitere Informationen finden Sie in der Liste der [nicht unterstützten Szenarien](in-place-migration-technical-details.md#unsupported-configurations--migration-scenarios). | 
 | Bereitstellung „Bereitstellungsname“ im HostedService „Cloud Service-Name“ befindet sich im Zwischenzustand: State. Migration ist nicht zulässig. | Die Bereitstellung wird entweder erstellt, gelöscht oder aktualisiert. Warten Sie, bis der Vorgang abgeschlossen wurde, und wiederholen Sie den Vorgang. | 
 | Die Bereitstellung „Bereitstellungsname“ im gehosteten Dienst „Cloud Service-Name“ verfügt über reservierte IP(s), aber keinen reservierten IP-Namen. Um dieses Problem zu beheben, aktualisieren Sie den reservierten IP-Namen oder wenden Sie sich an das Service Desk von Microsoft Azure. | Aktualisieren Sie die Cloud Service-Bereitstellung. | 
 | Die Bereitstellung „Bereitstellungsname“ im gehosteten Dienst „Cloud Service-Name“ verfügt über Namen reservierter IP(s), aber keinen Endpunkt der reservierten IP. Fügen Sie der reservierten IP mindestens einen Endpunkt hinzu, um dieses Problem zu beheben. | Fügen Sie den Endpunkt der reservierten IP hinzu. | 

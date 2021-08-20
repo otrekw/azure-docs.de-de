@@ -9,12 +9,12 @@ author: timoklimmer
 ms.author: tklimmer
 ms.topic: conceptual
 ms.date: 05/12/2021
-ms.openlocfilehash: 5ce6b2d80341a9c6ebb8afcbbe8f7072b54ca93c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d907be8262fdc403f1e7b550d57c1aeaf77491fa
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087902"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369054"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Beispiele in Azure Data Science Virtual Machine-Instanzen
 
@@ -29,7 +29,6 @@ Um diese Beispiele ausführen zu können, müssen Sie eine [Ubuntu-Data Science 
 ## <a name="available-samples"></a>Verfügbare Beispiele
 | Beispielkategorie | BESCHREIBUNG | Standorte |
 | ------------- | ------------- | ------------- |
-| R-Sprache  | In Beispielen werden Szenarien veranschaulicht, etwa wie Verbindungen mit Azure-basierten Clouddatenspeichern hergestellt und wie Open Source-R und Microsoft Machine Learning Server verglichen werden. Anhand dieser Beisiel wird auch erläutert, wie Modelle in Microsoft Machine Learning Server und SQL Server operationalisiert werden. <br/> [R (Programmiersprache)](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python (Programmiersprache)  | In Beispielen werden Szenarien erläutert, etwa wie Verbindungen mit Azure-basierten Clouddatenspeichern hergestellt werden und wie mit Azure Machine Learning gearbeitet wird.  <br/> [Python (Programmiersprache)](#python-language) | <br/>`~notebooks` <br/><br/>|
 | Julia (Programmiersprache)  | Bietet eine ausführliche Beschreibung zu Plotten und Deep Learning in Julia. Außerdem wird erläutert, wie C und Python aus Julia aufgerufen werden. <br/> [Julia (Programmiersprache)](#julia-language) |<br/> Windows:<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux:<br/> `~notebooks/julia`<br/><br/> |
 | Azure Machine Learning  | Veranschaulicht, wie Machine Learning-Modelle und Deep Learning-Modelle mit Machine Learning erstellt werden. Stellen Sie die Modelle an beliebigen Speicherorten bereit. Verwenden Sie automatisiertes maschinelles Lernen und intelligente Optimierung von Hyperparametern. Nutzen Sie darüber hinaus Modellverwaltung und verteiltes Training. <br/> [Machine Learning](#azure-machine-learning) | <br/>`~notebooks/AzureML`<br/> <br/>|

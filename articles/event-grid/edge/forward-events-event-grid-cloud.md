@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 5a35cfb293ca7cda0a9a1d24f4faf88ef0ed733d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d1732e6f997af622bd7435b6b2f1a3033bc05a79
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378316"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112412739"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Tutorial: Weiterleiten von Ereignissen an die Event Grid-Cloud
 
@@ -30,7 +30,7 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 * Ein **Azure-Abonnement**: Falls Sie noch kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free). 
 * **Azure IoT Hub- und IoT Edge-Gerät**: Befolgen Sie die Schritte im Schnellstart für [Linux](../../iot-edge/quickstart-linux.md)- oder [Windows-Geräte](../../iot-edge/quickstart.md), sofern nicht bereits geschehen.
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-deploy-iot-edge.md)] 
 ## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Erstellen eines Event Grid-Themas und -Abonnements in der Cloud
 
 Erstellen Sie ein Event Grid-Thema und -Abonnement in der Cloud, indem Sie [dieses Tutorial](../custom-event-quickstart-portal.md) absolvieren. Notieren Sie sich `topicURL`, `sasKey` und `topicName` des neu erstellten Themas, das Sie später in diesem Tutorial verwenden werden.
@@ -82,7 +82,7 @@ Wenn Sie z. B. ein Thema namens `testegcloudtopic` in der Region „USA, Westen�
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>Erstellen eines Event Grid-Abonnements auf dem Edge
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Erstellen Sie eine Datei „subscription3.json“ mit dem folgenden Inhalt. Ausführliche Informationen zur Nutzlast finden Sie in unserer [API-Dokumentation](api.md).
 

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2437c5b3272163b3931d7417c84e761c591aec85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e112d9b6cc55a898c77026c1982e2a7c19b6840c
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90088815"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113731758"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>Anonymer Zugriff auf öffentliche Container und Blobs mit .NET
 
@@ -109,4 +109,4 @@ public static void DownloadBlobAnonymously()
 
 - [Konfigurieren des anonymen, öffentlichen Lesezugriffs auf Container und Blobs](anonymous-read-access-configure.md)
 - [Verhindern von anonymem, öffentlichen Lesezugriff auf Container und Blobs](anonymous-read-access-prevent.md)
-- [Autorisierung des Zugriffs auf Azure Storage](../common/storage-auth.md)
+- [Autorisierung des Zugriffs auf Azure Storage](../common/authorize-data-access.md)

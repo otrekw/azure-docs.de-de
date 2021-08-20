@@ -1,21 +1,21 @@
 ---
 title: Überwachen von Time Series Insights | Microsoft-Dokumentation
 description: Überwachen Sie mit Time Series Insights Verfügbarkeit, Leistung und Betrieb.
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
-ms.custom: lyrana
-ms.openlocfilehash: 15054cd508ce7a6de51fea86ca02302fba258757
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: caf47ca56114ce559288ea1d115b2c09b9959324
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504922"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369362"
 ---
 # <a name="monitoring-time-series-insights"></a>Überwachung mithilfe von Time Series Insights
 

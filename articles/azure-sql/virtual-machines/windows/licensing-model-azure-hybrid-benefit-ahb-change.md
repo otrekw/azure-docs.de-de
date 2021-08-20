@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8eca44fa7e5a23b38c8cfa7368aace1ea0a942eb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6d840893de2c516137e54d015123fa9249b93d54
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080055"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434622"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,11 +61,9 @@ Das Ändern des Lizenzierungsmodells Ihrer SQL Server-VM stellt die folgenden An
 
 # <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
 Sie können das Lizenzierungsmodell direkt über das Portal ändern: 
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und starten Sie die Ressource [Virtueller SQL-Computer](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) für Ihre SQL Server-VM. 
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und starten Sie die Ressource [Virtueller SQL-Computer](manage-sql-vm-portal.md#access-the-resource) für Ihre SQL Server-VM. 
 1. Wählen Sie **Konfigurieren** unter **Einstellungen** aus. 
 1. Wählen Sie **Azure-Hybridvorteil** aus, und aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass Sie über eine SQL Server-Lizenz mit Software Assurance verfügen. 
 1. Wählen Sie **Übernehmen** am unteren Rand der Seite **Konfigurieren** aus. 

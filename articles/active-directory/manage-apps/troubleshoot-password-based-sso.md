@@ -1,33 +1,36 @@
 ---
 title: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden bei Azure Active Directory
 description: Hier erfahren Sie, wie Sie Probleme mit einer Azure AD-App beheben, die für kennwortbasiertes einmaliges Anmelden konfiguriert wurde.
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mtillman
-ms.reviewer: asteen
-ms.openlocfilehash: e587bfc3dfbd859be9ecea24b398c005f883dc10
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: 32b099b72a55e768087f6123e684f0107e1e1e57
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080577"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339698"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden in Azure AD
 
 Wenn Sie kennwortbasiertes einmaliges Anmelden (Single Sign-on, SSO) in „Meine Apps“ verwenden möchten, muss die Browsererweiterung installiert sein. Die Erweiterung wird automatisch heruntergeladen, wenn Sie eine App auswählen, die für kennwortbasiertes SSO konfiguriert ist. Informationen zur Verwendung von „Meine Apps“ aus der Sicht eines Endbenutzers finden Sie unter [Hilfe zum Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="my-apps-browser-extension-not-installed"></a>Browsererweiterung für „Meine Apps“ nicht installiert
-Vergewissern Sie sich, dass die Browsererweiterung installiert wurde. Weitere Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“ in Azure Active Directory](my-apps-deployment-plan.md). 
+
+Vergewissern Sie sich, dass die Browsererweiterung installiert wurde. Weitere Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“ in Azure Active Directory](my-apps-deployment-plan.md).
 
 ## <a name="single-sign-on-not-configured"></a>Einmaliges Anmelden nicht konfiguriert
+
 Vergewissern Sie sich, dass das kennwortbasierte einmalige Anmelden konfiguriert wurde. Weitere Informationen finden Sie unter [Konfigurieren von kennwortbasiertem einmaligem Anmelden](configure-password-single-sign-on-non-gallery-applications.md).
 
 ## <a name="users-not-assigned"></a>Benutzer nicht zugewiesen
+
 Vergewissern Sie sich, dass der Benutzer der App zugewiesen wurde. Weitere Informationen finden Sie unter [Zuweisen eines Benutzers oder einer Gruppe zu einer App](assign-user-or-group-access-portal.md).
 
 ## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Die Anmeldeinformationen wurden angegeben, werden aber von der Erweiterung nicht gesendet
@@ -44,15 +47,15 @@ Probieren Sie es zunächst mit den folgenden Schritten, um dieses Problem zu beh
 
 - Der Benutzer soll unter Verwendung der für ihn gespeicherten Anmeldeinformationen zunächst versuchen, **sich direkt bei der Anwendungswebsite anzumelden**.
 
-  * Wenn die Anmeldung funktioniert, soll der Benutzer auf der **Anwendungskachel** im Abschnitt **Apps** von [Meine Apps](https://myapps.microsoft.com/) auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt funktioniert haben.
+  - Wenn die Anmeldung funktioniert, soll der Benutzer auf der **Anwendungskachel** im Abschnitt **Apps** von [Meine Apps](https://myapps.microsoft.com/) auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt funktioniert haben.
 
-  * Wenn Sie oder ein anderer Administrator die Anmeldeinformationen für diesen Benutzer zugewiesen werden, suchen Sie die Anwendungszuordnung des Benutzers oder der Gruppe, indem Sie zur Registerkarte **Users & Groups** der Anwendung navigieren, die Zuordnung auswählen und dann auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken.
+  - Wenn Sie oder ein anderer Administrator die Anmeldeinformationen für diesen Benutzer zugewiesen werden, suchen Sie die Anwendungszuordnung des Benutzers oder der Gruppe, indem Sie zur Registerkarte **Users & Groups** der Anwendung navigieren, die Zuordnung auswählen und dann auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken.
 
 - Wenn sich der Benutzer seine eigenen Anmeldeinformationen zugewiesen hat, soll er **sich vergewissern, dass sein Kennwort in der Anwendung nicht abgelaufen ist**. Sollte dies der Fall sein, soll der Benutzer **das abgelaufene Kennwort aktualisieren**, indem er sich direkt bei der Anwendung anmeldet.
 
-  * Nach Aktualisierung des Kennworts in der Anwendung bitten Sie den Benutzer, auf der **Anwendungskachel** im Abschnitt **Apps** von [Meine Apps](https://myapps.microsoft.com/) auf die Schaltfläche **Anmeldeinformationen aktualisieren** zu klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt bekanntermaßen funktioniert haben.
+  - Nach Aktualisierung des Kennworts in der Anwendung bitten Sie den Benutzer, auf der **Anwendungskachel** im Abschnitt **Apps** von [Meine Apps](https://myapps.microsoft.com/) auf die Schaltfläche **Anmeldeinformationen aktualisieren** zu klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt bekanntermaßen funktioniert haben.
 
-  * Wenn Sie oder ein anderer Administrator die Anmeldeinformationen für diesen Benutzer zugewiesen werden, suchen Sie die Anwendungszuordnung des Benutzers oder der Gruppe, indem Sie zur Registerkarte **Users & Groups** der Anwendung navigieren, die Zuordnung auswählen und dann auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken.
+  - Wenn Sie oder ein anderer Administrator die Anmeldeinformationen für diesen Benutzer zugewiesen werden, suchen Sie die Anwendungszuordnung des Benutzers oder der Gruppe, indem Sie zur Registerkarte **Users & Groups** der Anwendung navigieren, die Zuordnung auswählen und dann auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken.
 
 - Vergewissern Sie sich, dass die Browsererweiterung für „Meine Apps“ ausgeführt wird und im Browser Ihres Benutzers aktiviert wurde.
 
@@ -60,7 +63,7 @@ Probieren Sie es zunächst mit den folgenden Schritten, um dieses Problem zu beh
 
 Sollten die obigen Vorschläge nicht funktionieren, wurde unter Umständen auf Anwendungsseite eine Änderung vorgenommen, durch die die Anwendungsintegration in Azure AD vorübergehend unterbrochen wurde. Dies kann beispielsweise vorkommen, wenn der Hersteller der Anwendung ein Skript auf seiner Seite einfügt, das ein anderes Verhalten für die manuelle bzw. automatische Eingabe aufweist, wodurch die automatische Integration (z.B. unsere) unterbrochen wird. In vielen Fällen kann Microsoft jedoch mit dem Anwendungshersteller zusammenarbeiten, um diese Probleme schnell zu beheben.
 
-Microsoft verfügt zwar über Technologie, mit der automatisch erkannt werden kann, wenn es für Anwendungsintegrationen zu Fehlern kommt. Unter Umständen ist es aber nicht möglich, die Probleme sofort zu finden, oder die Lösung des Problems dauert einige Zeit. Wenn eine Integration nicht richtig funktioniert, können Sie eine Supportanfrage öffnen, damit das Problem so schnell wie möglich behoben werden kann. 
+Microsoft verfügt zwar über Technologie, mit der automatisch erkannt werden kann, wenn es für Anwendungsintegrationen zu Fehlern kommt. Unter Umständen ist es aber nicht möglich, die Probleme sofort zu finden, oder die Lösung des Problems dauert einige Zeit. Wenn eine Integration nicht richtig funktioniert, können Sie eine Supportanfrage öffnen, damit das Problem so schnell wie möglich behoben werden kann.
 
 Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](../develop/v2-howto-app-gallery-listing.md).
 
@@ -68,7 +71,7 @@ Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verw
 
 Wenn die Anmeldeseite der Anwendung erheblich geändert wurde, kann dies in einigen Fällen zur Unterbrechung unserer Integration führen. Dies kann beispielsweise vorkommen, wenn ein Anwendungshersteller ein Anmeldefeld, ein Captcha oder Multi-Factor Authentication hinzufügt. In vielen Fällen kann Microsoft jedoch mit dem Anwendungshersteller zusammenarbeiten, um diese Probleme schnell zu beheben.
 
-Microsoft verfügt zwar über Technologie, mit der automatisch erkannt werden kann, wenn es für Anwendungsintegrationen zu Fehlern kommt. Unter Umständen ist es aber nicht möglich, die Probleme sofort zu finden, oder die Lösung des Problems dauert einige Zeit. Wenn eine Integration nicht richtig funktioniert, können Sie eine Supportanfrage öffnen, damit das Problem so schnell wie möglich behoben werden kann. 
+Microsoft verfügt zwar über Technologie, mit der automatisch erkannt werden kann, wenn es für Anwendungsintegrationen zu Fehlern kommt. Unter Umständen ist es aber nicht möglich, die Probleme sofort zu finden, oder die Lösung des Problems dauert einige Zeit. Wenn eine Integration nicht richtig funktioniert, können Sie eine Supportanfrage öffnen, damit das Problem so schnell wie möglich behoben werden kann.
 
 Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](../develop/v2-howto-app-gallery-listing.md).
 
@@ -87,6 +90,7 @@ Allgemein gilt: Falls die automatische Erfassung von Anmeldefeldern nicht funkti
 ### <a name="automatically-capture-sign-in-fields-for-an-app"></a>Automatische Erfassung von Anmeldefeldern für eine App
 
 Führen Sie die folgenden Schritte aus, um das kennwortbasierte SSO mit der automatischen Erfassung von Anmeldefeldern zu konfigurieren:
+
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/). Melden Sie sich als Globaler Administrator oder Co-Administrator an.
 2. Klicken Sie im Navigationsbereich auf der linken Seite auf **Alle Dienste** um die Azure AD-Erweiterung zu öffnen.
 3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und klicken Sie auf **Azure Active Directory**.
@@ -106,12 +110,13 @@ Führen Sie die folgenden Schritte aus, um das kennwortbasierte SSO mit der auto
 Wenn Sie Anmeldefelder manuell erfassen möchten, muss die Browsererweiterung für „Meine Apps“ installiert sein. Darüber hinaus kann Ihr Browser nicht im *inPrivate*-, *Inkognito*- oder *privaten* Modus ausgeführt werden.
 
 Führen Sie die folgenden Schritte aus, um das kennwortbasierte SSO für eine App unter Verwendung der manuellen Erfassung von Anmeldefeldern zu konfigurieren:
+
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/). Melden Sie sich als Globaler Administrator oder Co-Administrator an.
 2. Klicken Sie im Navigationsbereich auf der linken Seite auf **Alle Dienste** um die Azure AD-Erweiterung zu öffnen.
 3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und klicken Sie auf **Azure Active Directory**.
 4. Klicken Sie im Azure AD-Navigationsbereich auf **Unternehmensanwendungen**.
 5. Klicken Sie auf **Alle Anwendungen**, um eine Liste mit Ihren Apps anzuzeigen.
-   > [!NOTE] 
+   > [!NOTE]
    > Wenn Ihre App nicht angezeigt wird, verwenden Sie das **Filter**-Steuerelement über der Liste **Alle Anwendungen**. Legen Sie für die Option **Anzeigen** „Alle Anwendungen“ fest.
 6. Wählen Sie die App aus, die Sie für SSO konfigurieren möchten.
 7. Warten Sie, bis die App geladen ist, und klicken Sie anschließend im Navigationsbereich auf der linken Seite auf **Einmaliges Anmelden**.
@@ -119,10 +124,9 @@ Führen Sie die folgenden Schritte aus, um das kennwortbasierte SSO für eine Ap
 9. Geben Sie die **Anmelde-URL** ein. Dabei handelt es sich um die Seite, auf der die Benutzer ihren Benutzernamen und ihr Kennwort für die Anmeldung eingeben. *Stellen Sie sicher, dass die Anmeldefelder auf der Seite für die URL, die Sie bereitstellen, angezeigt werden*.
 10. Wählen Sie ***&lt;appname&gt;*-Einstellungen für einmaliges Anmelden über ein Kennwort konfigurieren** aus.
 11. Wählen Sie **Anmeldefelder manuell erkennen** aus.
-14. Klicken Sie auf **OK**.
-15. Wählen Sie **Speichern** aus.
-16. Folgen Sie den Anleitungen zur Verwendung von „Meine Apps“.
-
+12. Klicken Sie auf **OK**.
+13. Wählen Sie **Speichern** aus.
+14. Folgen Sie den Anleitungen zur Verwendung von „Meine Apps“.
 
 ## <a name="troubleshoot-problems"></a>Behandeln von Problemen
 
@@ -139,12 +143,14 @@ Wenn der Fehler weiterhin auftritt, öffnen Sie eine Supportanfrage. Fügen Sie 
 ### <a name="i-cant-manually-detect-sign-in-fields-for-my-app"></a>Die Anmeldefelder für meine App werden nicht manuell erkannt
 
 Möglicherweise beobachten Sie das folgende Verhalten, wenn die manuelle Erkennung nicht funktioniert:
+
 - Die manuelle Erfassung schien zu funktionieren, aber die erfassten Felder waren nicht korrekt.
 - Während der Ausführung der Erfassung werden nicht die richtigen Felder hervorgehoben.
 - Die Erfassung leitet Sie wie erwartet auf die Anmeldeseite der App, doch dann geschieht nichts.
 - Die manuelle Erfassung scheint zu funktionieren, aber es erfolgt keine einmalige Anmeldung, wenn Benutzer über „Meine Apps“ zur App navigieren.
 
 Wenn bei Ihnen eines dieser Probleme auftritt, gehen Sie folgendermaßen vor:
+
 - Stellen Sie sicher, dass Sie die neueste Version der Browsererweiterung für „Meine Apps“ *installiert und aktiviert* haben.
 - Vergewissern Sie sich, dass der Browser während der Erfassung nicht im *Inkognito*-, im *InPrivate*- oder im *privaten* Modus ausgeführt wird. Die Erweiterung für „Meine Apps“ wird in diesen Modi nicht unterstützt.
 - Stellen Sie sicher, dass sich Ihre Benutzer nicht über „Meine Apps“ bei der App anzumelden versuchen, während sie sich im Modus *Inkognito*, *InPrivate* oder *Privat* befinden.
@@ -155,28 +161,31 @@ Wenn bei Ihnen eines dieser Probleme auftritt, gehen Sie folgendermaßen vor:
 
 Kennwortbasierte SSO-Apps sind auf 48 Benutzer beschränkt. Daher gilt pro App eine Beschränkung auf 48 Schlüssel für Benutzername-Kennwort-Paare.
 Wenn Sie zusätzliche Benutzer hinzufügen möchten, haben Sie folgende Möglichkeiten:
--   Hinzufügen einer zusätzlichen Instanz der App
--   Entfernen von Benutzern, die die App nicht mehr verwenden
 
-## <a name="request-support"></a>Anfordern von Support 
+- Hinzufügen einer zusätzlichen Instanz der App
+- Entfernen von Benutzern, die die App nicht mehr verwenden
+
+## <a name="request-support"></a>Anfordern von Support
+
 Wenn Sie beim Einrichten von SSO und Zuweisen von Benutzern eine Fehlermeldung erhalten, öffnen Sie ein Supportticket. Fügen Sie so viele der folgenden Informationen wie möglich hinzu:
 
--   Fehlerkorrelations-ID
--   UPN (E-Mail-Adresse des Benutzers)
--   Mandanten-ID
--   Browsertyp
--   Zeitzone und Zeitpunkt/Zeitraum des Fehlers
--   Fiddler-Ablaufverfolgungen
+- Fehlerkorrelations-ID
+- UPN (E-Mail-Adresse des Benutzers)
+- Mandanten-ID
+- Browsertyp
+- Zeitzone und Zeitpunkt/Zeitraum des Fehlers
+- Fiddler-Ablaufverfolgungen
 
 ### <a name="view-portal-notification-details"></a>Anzeigen der Protalbenachrichtigungsdetails
 
 Gehen Sie folgendermaßen vor, um die Protalbenachrichtigungsdetails anzuzeigen:
+
 1. Wählen Sie im Azure-Portal in der rechten oberen Ecke das Symbol **Benachrichtigungen** (Glockensymbol) aus.
 2. Wählen Sie eine Benachrichtigung mit dem Status *Fehler* aus. (Diese sind mit einem roten „!“ versehen.)
    > [!NOTE]
    > Sie können keine Benachrichtigungen mit dem Status *Erfolgreich* oder *In Bearbeitung* auswählen.
 3. Der Bereich **Benachrichtigungsdetails** wird geöffnet. Lesen Sie die Informationen zu diesem Problem.
-5. Wenn Sie weitere Unterstützung benötigen, teilen Sie die Informationen einem Supporttechniker oder der Produktgruppe mit. Wählen Sie das Symbol **Kopieren** rechts neben dem Feld **Fehler kopieren** aus, um die Details der Benachrichtigung zu kopieren, die Sie weiterleiten möchten.
+4. Wenn Sie weitere Unterstützung benötigen, teilen Sie die Informationen einem Supporttechniker oder der Produktgruppe mit. Wählen Sie das Symbol **Kopieren** rechts neben dem Feld **Fehler kopieren** aus, um die Details der Benachrichtigung zu kopieren, die Sie weiterleiten möchten.
 
 ### <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>Senden von Benachrichtigungsdetails an einen Supporttechniker, um Hilfe zu erhalten
 
@@ -244,7 +253,7 @@ In den folgenden Informationen wird erläutert, was die einzelnen Elemente der B
 
     Beispiel: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-* [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md)
-* [Planen einer Bereitstellung von „Meine Apps“](my-apps-deployment-plan.md)
+
+- [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md)
+- [Planen einer Bereitstellung von „Meine Apps“](my-apps-deployment-plan.md)

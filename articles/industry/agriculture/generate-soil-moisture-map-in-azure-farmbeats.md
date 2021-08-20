@@ -5,12 +5,12 @@ author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
-ms.openlocfilehash: 4b796af22604a2f09482bcb9a321159ebaafea11
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d318f7aad20f4bdf8ccb8db53c20c2426216b4dd
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756771"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422496"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Generieren eines Wärmebilds zur Bodenfeuchtigkeit
 
@@ -36,7 +36,7 @@ Ein landwirtschaftlicher Betrieb ist der geografische Bereich, für den Sie ein 
 
 ## <a name="deploy-sensors"></a>Bereitstellen von Sensoren
 
-Sie sollten Bodenfeuchtigkeitssensoren physisch auf der Fläche des landwirtschaftlichen Betriebs bereitstellen. Bodenfeuchtigkeitssensoren erhalten Sie bei unseren autorisierten Partnerunternehmen: [Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/) und [Teralytic](https://teralytic.com/). Wenden Sie sich wegen der physischen Bereitstellung auf der Fläche Ihres landwirtschaftlichen Betriebs an Ihren Sensoranbieter.
+Sie sollten Bodenfeuchtigkeitssensoren physisch auf der Fläche des landwirtschaftlichen Betriebs bereitstellen. Bodenfeuchtigkeitssensoren erhalten Sie bei unseren autorisierten Partnerunternehmen: [Davis Instruments](https://www.davisinstruments.com/products/enviromonitor-gateway-us-lte) und [Teralytic](https://teralytic.com/). Wenden Sie sich wegen der physischen Bereitstellung auf der Fläche Ihres landwirtschaftlichen Betriebs an Ihren Sensoranbieter.
 
 ## <a name="get-soil-moisture-sensor-data-from-partner"></a>Abrufen der Sensordaten zur Bodenfeuchtigkeit vom Partner
 

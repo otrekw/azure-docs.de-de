@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine Übersicht über die Verwaltung einer Az
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b98a1dccb20849ef299b0fff2fce2a70eb1e6314
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 69f05fab624fd4ad1eb2257adb200bd39bb04bd1
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677386"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114295248"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric: Anwendungsressourcenmodell
 
@@ -55,7 +55,7 @@ Nach dem Erstellen des Speicherkontos müssen Sie einen Blobcontainer erstellen,
 Ressourcen in Ihrem Cluster können geschützt werden, indem die öffentliche Zugriffsebene auf **privat** festgelegt wird. Sie können auf verschiedene Arten Zugriff gewähren:
 
 * Autorisieren des Zugriffs auf Blobs und Warteschlangen mit [Azure Active Directory](../storage/common/storage-auth-aad-app.md)
-* Gewähren von Zugriff auf Azure-Blobdaten und -Warteschlangendaten mithilfe von [Azure RBAC im Azure-Portal](../storage/common/storage-auth-aad-rbac-portal.md)
+* Gewähren von Zugriff auf Azure-Blobdaten und -Warteschlangendaten mithilfe von [Azure RBAC im Azure-Portal](../storage/blobs/assign-azure-role-data-access.md)
 * Delegieren des Zugriffs mithilfe einer [Shared Access Signature](/rest/api/storageservices/delegate-access-with-shared-access-signature)
 
 Das Beispiel im folgenden Screenshot verwendet den anonymen Lesezugriff für Blobs.
@@ -92,7 +92,7 @@ Die Beispielanwendung enthält [Azure Resource Manager-Vorlagen](https://github.
 >
 
 
-| Parameter              | Beschreibung                                 | Beispiel                                                      | Kommentare                                                     |
+| Parameter              | BESCHREIBUNG                                 | Beispiel                                                      | Kommentare                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Der Name des Clusters, in dem die Bereitstellung erfolgt | sf-cluster123                                                |                                                              |
 | application            | Der Name der Anwendung.                 | Voting                                                       |

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 15d62f40b50617fd1f6e543cb404a0d38361d3bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf0de37d2736f84505708b26d4cab9274b3621e0
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94836494"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730782"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung
 
@@ -80,7 +80,7 @@ Informationen zu Entscheidungsfragen:
 5. Azure AD Identity Protection benötigt für die Bereitstellung des Berichts *Benutzer mit kompromittierten Anmeldeinformationen* die Kennworthashsynchronisierung, unabhängig davon, welche Anmeldemethode Sie auswählen. Organisationen können ein Failover zur Kennworthashsynchronisierung ausführen, wenn bei der primären Anmeldemethode ein Fehler auftritt und diese vor dem Fehlerereignis konfiguriert wurde.
 
 > [!NOTE]
-> Azure AD Identity Protection erfordert Lizenzen von [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/).
+> Azure AD Identity Protection erfordert Lizenzen von [Azure AD Premium P2](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 ## <a name="detailed-considerations"></a>Ausführliche Überlegungen
 
@@ -95,7 +95,7 @@ Informationen zu Entscheidungsfragen:
     Organisationen, die eine mehrstufige Authentifizierung mit Kennworthashsynchronisierung erfordern, müssen Azure AD Multi-Factor Authentication oder [benutzerdefinierte Steuerelemente für den bedingten Zugriff](../../active-directory/conditional-access/controls.md#custom-controls-preview) verwenden. Es ist für diese Organisationen nicht möglich, Verfahren zur mehrstufigen Authentifizierung basierend auf einem Verbund zu nutzen, die von Drittanbietern oder lokal angeboten werden.
 
 > [!NOTE]
-> Für den bedingten Azure AD-Zugriff werden Lizenzen vom Typ [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) benötigt.
+> Für den bedingten Azure AD-Zugriff werden Lizenzen vom Typ [Azure AD Premium P1](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) benötigt.
 
 * **Geschäftskontinuität**: Die Verwendung der Kennworthashsynchronisierung mit Cloudauthentifizierung ist als Clouddienst, der auf alle Microsoft-Datencenter skaliert wird, hoch verfügbar. Stellen Sie einen zweiten Azure AD Connect-Server im Stagingmodus für eine Standbykonfiguration bereit, um sicherzustellen, dass die Kennworthashsynchronisierung nicht längere Zeit ausfällt.
 
@@ -114,7 +114,7 @@ Informationen zu den Bereitstellungsschritten finden Sie unter [Implementieren d
 
 * **Benutzererfahrung**: Stellen Sie das nahtlose einmalige Anmelden mit Passthrough-Authentifizierung bereit, um die Anmeldeerfahrung für Benutzer zu verbessern. Beim nahtlosen einmaligen Anmelden werden nach der Anmeldung eines Benutzers keine unnötigen Aufforderungen angezeigt.
 
-* **Erweiterte Szenarien**: Bei der Passthrough-Authentifizierung wird die lokale Kontorichtlinie zum Zeitpunkt der Anmeldung erzwungen. Beispielsweise wird der Zugriff verweigert, wenn ein Konto eines lokalen Benutzers den Status „Deaktiviert“, „Gesperrt“ oder [Kennwort abgelaufen](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) hat oder wenn der Zugriffsversuch außerhalb der für den Benutzer zulässigen Anmeldestunden liegt.
+* **Erweiterte Szenarien**: Bei der Passthrough-Authentifizierung wird die lokale Kontorichtlinie zum Zeitpunkt der Anmeldung erzwungen. Beispielsweise wird der Zugriff verweigert, wenn ein Konto eines lokalen Benutzers den Status „Deaktiviert“, „Gesperrt“ oder [Kennwort abgelaufen](../../active-directory/hybrid/how-to-connect-pta-faq.yml#what-happens-if-my-user-s-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication-) hat oder wenn der Zugriffsversuch außerhalb der für den Benutzer zulässigen Anmeldestunden liegt.
 
     Organisationen, die eine mehrstufige Authentifizierung mit Passthrough-Authentifizierung benötigen, müssen Azure AD Multi-Factor Authentication (MFA) oder [benutzerdefinierte Steuerelemente für den bedingten Zugriff](../../active-directory/conditional-access/controls.md#custom-controls-preview) verwenden. Es ist für diese Organisationen nicht möglich, ein Verfahren zur mehrstufigen Authentifizierung basierend auf einem Verbund zu nutzen, das von Drittanbietern oder lokal angeboten wird. Für die erweiterten Features muss die Kennworthashsynchronisierung unabhängig davon bereitgestellt werden, ob Sie die Passthrough-Authentifizierung wählen. Ein Beispiel hierfür ist der Bericht zu kompromittierten Anmeldeinformationen von Identity Protection.
 
@@ -124,7 +124,7 @@ Informationen zu den Bereitstellungsschritten finden Sie unter [Implementieren d
 
 * **Überlegungen**: Sie können die Kennworthashsynchronisierung als sekundäre Authentifizierungsmethode für die Passthrough-Authentifizierung verwenden, wenn die Agents die Anmeldeinformationen eines Benutzers aufgrund eines signifikanten lokalen Ausfalls nicht überprüfen können. Das Failover zur Kennworthashsynchronisierung erfolgt nicht automatisch, und Sie müssen Azure AD Connect verwenden, um die Anmeldemethode manuell zu wechseln.
 
-    Mehr zu weiteren Überlegungen zur Passthrough-Authentifizierung, z.B. der Unterstützung alternativer IDs, erfahren Sie in den [häufig gestellten Fragen](../../active-directory/hybrid/how-to-connect-pta-faq.md).
+    Mehr zu weiteren Überlegungen zur Passthrough-Authentifizierung, z.B. der Unterstützung alternativer IDs, erfahren Sie in den [häufig gestellten Fragen](../../active-directory/hybrid/how-to-connect-pta-faq.yml).
 
 Weitere Informationen zu den Bereitstellungsschritten finden Sie unter [Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung](../../active-directory/hybrid/how-to-connect-pta.md).
 
@@ -180,7 +180,7 @@ Im folgenden Diagramm sind die allgemeinen Architekturkomponenten dargestellt, d
 |Ist ein TLS/SSL-Zertifikat erforderlich?|Nein|Nein|Ja|
 |Gibt es eine Systemüberwachungslösung?|Nicht erforderlich|Agent-Status, bereitgestellt von [Azure Active Directory Admin Center](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |Erhalten Benutzer einmaliges Anmelden für Cloudressourcen über Geräte, die in die Domäne eingebunden sind und zum Unternehmensnetzwerk gehören?|Ja, mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)|Ja, mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)|Ja|
-|Welche Anmeldetypen werden unterstützt?|Benutzerprinzipalname + Kennwort<br><br>Integrierte Windows-Authentifizierung mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternative Anmelde-ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|Benutzerprinzipalname + Kennwort<br><br>Integrierte Windows-Authentifizierung mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternative Anmelde-ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|Benutzerprinzipalname + Kennwort<br><br>sAMAccountName + Kennwort<br><br>Integrierte Windows-Authentifizierung<br><br>[Zertifikat- und Smartcard-Authentifizierung](/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternative Anmelde-ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|Welche Anmeldetypen werden unterstützt?|Benutzerprinzipalname + Kennwort<br><br>Integrierte Windows-Authentifizierung mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternative Anmelde-ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|Benutzerprinzipalname + Kennwort<br><br>Integrierte Windows-Authentifizierung mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternative Anmelde-ID](../../active-directory/hybrid/how-to-connect-pta-faq.yml)|Benutzerprinzipalname + Kennwort<br><br>sAMAccountName + Kennwort<br><br>Integrierte Windows-Authentifizierung<br><br>[Zertifikat- und Smartcard-Authentifizierung](/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternative Anmelde-ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Wird Windows Hello for Business unterstützt?|[Modell der schlüsselbasierten Vertrauensstellung](/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Modell der schlüsselbasierten Vertrauensstellung](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Erfordert eine Windows Server 2016-Domänenfunktionsebene*|[Modell der schlüsselbasierten Vertrauensstellung](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Modell der Zertifikatvertrauensstellung](/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Welche Optionen gibt es für die mehrstufige Authentifizierung?|[Azure AD MFA](/azure/multi-factor-authentication/)<br><br>[Benutzerdefinierte Steuerelemente mit bedingtem Zugriff*](../../active-directory/conditional-access/controls.md)|[Azure AD MFA](/azure/multi-factor-authentication/)<br><br>[Benutzerdefinierte Steuerelemente mit bedingtem Zugriff*](../../active-directory/conditional-access/controls.md)|[Azure AD MFA](/azure/multi-factor-authentication/)<br><br>[Azure MFA-Server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[MFA über Drittanbieter](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Benutzerdefinierte Steuerelemente mit bedingtem Zugriff*](../../active-directory/conditional-access/controls.md)|
 |Welche Benutzerkontenstatus werden unterstützt?|Deaktivierte Konten<br>(bis zu 30 Minuten Verzögerung)|Deaktivierte Konten<br><br>Konto gesperrt<br><br>Konto abgelaufen<br><br>Kennwort abgelaufen<br><br>Anmeldestunden|Deaktivierte Konten<br><br>Konto gesperrt<br><br>Konto abgelaufen<br><br>Kennwort abgelaufen<br><br>Anmeldestunden|

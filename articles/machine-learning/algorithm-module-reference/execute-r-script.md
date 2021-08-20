@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
-ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f47833ab0fa36e4f58063640d60e188d850ea73f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98119010"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339825"
 ---
 # <a name="execute-r-script-module"></a>Execute R Script-Module
 
@@ -50,7 +50,7 @@ Um zusätzliche R-Pakete zu installieren, verwenden Sie die `install.packages()`
 
 > [!NOTE]
 > Es wird **NICHT** empfohlen, das R-Paket aus dem Skriptpaket zu installieren. Installieren Sie Pakete besser direkt im Skript-Editor.
-> Geben Sie das CRAN-Repository an, wenn Sie Pakete installieren, z. B. `install.packages("zoo",repos = "http://cran.us.r-project.org")`.
+> Geben Sie das CRAN-Repository an, wenn Sie Pakete installieren, z. B. `install.packages("zoo",repos = "https://cloud.r-project.org")`.
 
 > [!WARNING]
 > Das Excute R Script-Modul unterstützt nicht die Installation von Paketen, die eine native Kompilierung erfordern, z. B. das `qdap`-Paket, das JAVA erfordert und das `drc`-Paket, das C++ erfordert. Dies liegt daran, dass dieses Modul in einer vorinstallierten Umgebung ohne Administratorrechte ausgeführt wird.
@@ -74,7 +74,7 @@ Dieses Beispiel zeigt die Installation von Zoo:
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
   
-  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")
+  if(!require(zoo)) install.packages("zoo",repos = "https://cloud.r-project.org")
   library(zoo)
   # Return datasets as a Named List
   return(list(dataset1=dataframe1, dataset2=dataframe2))
@@ -99,32 +99,6 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-## <a name="uploading-files"></a>Hochladen von Dateien
-„Execute R Script“ (R-Skript ausführen) unterstützt das Hochladen von Dateien mit dem R-SDK für Azure Machine Learning.
-
-Das folgende Beispiel zeigt, wie eine Imagedatei im Modul „Execute R Script“ hochgeladen wird:
-```R
-azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
-
-  # Generate a jpeg graph
-  img_file_name <- "rect.jpg"
-  jpeg(file=img_file_name)
-  example(rect)
-  dev.off()
-
-  upload_files_to_run(names = list(file.path("graphic", img_file_name)), paths=list(img_file_name))
-
-
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
-
-Nachdem die Pipelineausführung abgeschlossen ist, können Sie eine Vorschau des Images im rechten Bereich des Moduls anzeigen.
-
-> [!div class="mx-imgBorder"]
-> ![Vorschau für hochgeladenes Image](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>Konfigurieren von Execute R Script
 
@@ -147,7 +121,7 @@ Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konv
 1. Geben oder fügen Sie in das Textfeld **R script** (R-Skript) ein gültiges R-Skript ein.
 
     > [!NOTE]
-    > Gehen Sie beim Schreiben Ihres Skripts mit Bedacht vor. Stellen Sie sicher, dass keine Syntaxfehler vorhanden sind, z. B. Verwendung von nicht deklarierten Variablen oder nicht importierten Modulen oder Funktionen. Achten Sie besonders auf die Liste der vorinstallierten Pakete am Ende dieses Artikels. Um nicht aufgelistete Pakete zu verwenden, installieren Sie sie in Ihrem Skript. z. B. `install.packages("zoo&quot;,repos = &quot;http://cran.us.r-project.org")`.
+    > Gehen Sie beim Schreiben Ihres Skripts mit Bedacht vor. Stellen Sie sicher, dass keine Syntaxfehler vorhanden sind, z. B. Verwendung von nicht deklarierten Variablen oder nicht importierten Modulen oder Funktionen. Achten Sie besonders auf die Liste der vorinstallierten Pakete am Ende dieses Artikels. Um nicht aufgelistete Pakete zu verwenden, installieren Sie sie in Ihrem Skript. z. B. `install.packages("zoo",repos = "https://cloud.r-project.org")`.
     
     Um Ihnen den Einstieg zu erleichtern, ist das Textfeld **R Script** mit Beispielcode vorab ausgefüllt, den Sie bearbeiten oder ersetzen können.
     

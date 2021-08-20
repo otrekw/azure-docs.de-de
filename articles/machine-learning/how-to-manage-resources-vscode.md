@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: 4ebdb5d092a64213727bd35d923c335c8e82210b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8175fa121828b9c50911fee8bb811115a630e919
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479900"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460538"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Verwalten von Azure Machine Learning-Ressourcen mit der VS Code-Erweiterung (Vorschau)
 
@@ -25,7 +25,7 @@ Hier erfahren Sie, wie Sie Azure Machine Learning-Ressourcen mit der VS Code-Erw
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure-Abonnement. Wenn Sie keins besitzen, können Sie sich für die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) registrieren.
+- Azure-Abonnement. Wenn Sie keins besitzen, können Sie sich für die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) registrieren.
 - Visual Studio Code. Sollte diese Komponente noch nicht vorhanden sein, [installieren Sie sie](https://code.visualstudio.com/docs/setup/setup-overview).
 - Azure Machine Learning-Erweiterung. Befolgen Sie die [Anleitung zur Installation der Azure Machine Learning-Erweiterung für VS Code](how-to-setup-vs-code.md), um die Erweiterung einzurichten.
 

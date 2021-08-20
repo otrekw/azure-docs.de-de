@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 6aab2d1d681cbfd55cc275b1f647562d54a08f0c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: aebcf680fec069fdb28114ef8a1a0f6fd8547e63
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791329"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458576"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Erstellen von NSG-Flussprotokollen aus einer Azure Resource Manager-Vorlage
 
@@ -32,7 +32,7 @@ ms.locfileid: "110791329"
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) ist die native und leistungsfähige Azure-Methode zum Verwalten Ihrer [Infrastruktur als Code](/azure/devops/learn/what-is-infrastructure-as-code).
+[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) ist die native und leistungsfähige Azure-Methode zum Verwalten Ihrer [Infrastruktur als Code](/devops/deliver/what-is-infrastructure-as-code).
 
 In diesem Artikel wird gezeigt, wie Sie [NSG-Flussprotokolle](./network-watcher-nsg-flow-logging-overview.md) programmgesteuert mithilfe einer Azure Resource Manager-Vorlage und Azure PowerShell aktivieren. Zunächst stellen wir eine Übersicht über die Eigenschaften des NSG-Flussprotokollobjekts bereit, gefolgt von einigen Beispielvorlagen. Anschließend stellen wir die Vorlage mithilfe einer lokalen PowerShell-Instanz bereit.
 

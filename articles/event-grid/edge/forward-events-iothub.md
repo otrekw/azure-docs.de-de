@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 9dd47981ba3067fefefb7a2360894a1f57ff7a64
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 30fa58a79068a1dc367f4ac330efd01685a4401c
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368039"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415586"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Tutorial: Weiterleiten von Ereignissen an IoTHub
 
@@ -33,7 +33,7 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 * Ein **Azure-Abonnement**: Falls Sie noch kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free). 
 * **Azure IoT Hub- und IoT Edge-Gerät**: Befolgen Sie die Schritte im Schnellstart für [Linux](../../iot-edge/quickstart-linux.md)- oder [Windows-Geräte](../../iot-edge/quickstart.md), sofern nicht bereits geschehen.
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-deploy-iot-edge.md)]
 
 ## <a name="create-topic"></a>Thema erstellen
 
@@ -81,7 +81,7 @@ Als Herausgeber eines Ereignisses müssen Sie ein Event Grid-Thema erstellen. Da
 
 Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröffentlicht werden. Zum Empfangen von Ereignissen müssen sie ein Event Grid-Abonnement für das gewünschte Thema erstellen.
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Erstellen Sie die Datei „subscription4.json“ mit dem unten stehenden Inhalt. Ausführliche Informationen zur Nutzlast finden Sie in unserer [API-Dokumentation](api.md).
 

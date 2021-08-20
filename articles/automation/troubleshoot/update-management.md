@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f773bdedcbcb014e15436732e489f9b15900f58
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cc65a1c0cd72d9da9208e7377eaef7a887119f43
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951782"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339248"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
@@ -193,7 +193,7 @@ Dieses Problem kann durch lokale Konfigurationsprobleme oder eine falsch konfigu
    | summarize by Computer, Solutions
    ```
 
-    Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten [den Agent neu installieren](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows).
+    Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten [den Agent neu installieren](../../azure-monitor/agents/agent-windows.md).
 
     Wenn Ihr Computer in den Abfrageergebnissen aufgeführt ist, überprüfen Sie, ob unter der **Lösungen**-Eigenschaft **Updates** aufgeführt ist. Damit können Sie sich vergewissern, dass er bei der Updateverwaltung registriert ist. Wenn dies nicht zutrifft, suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../update-management/scope-configuration.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. Informationen zum Ändern der Bereichskonfiguration für den Zielcomputer finden Sie unter [Aktivieren von Computern im Arbeitsbereich](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 
@@ -342,7 +342,7 @@ Computer werden in Ergebnissen einer Azure Resource Graph-Abfrage aufgeführt, s
 
    - Über Ihr [Automation-Konto](../update-management/enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer, einschließlich Server mit Arc-Unterstützung
 
-   - Verwenden des [Runbooks](../update-management/enable-from-runbook.md) **Enable-AutomationSolution** zum Automatisieren des Onboardings von Azure-VMs
+   - Verwenden des [Runbooks](../update-management/enable-from-runbook.md) **Enable-AutomationSolution** zum Automatisieren des Onboardings von Azure-VMs.
 
    - Für eine [ausgewählte Azure-VM](../update-management/enable-from-vm.md) über die Seite **Virtuelle Computer** im Azure-Portal. Dieses Szenario steht für virtuelle Computer unter Linux oder Windows zur Verfügung.
 

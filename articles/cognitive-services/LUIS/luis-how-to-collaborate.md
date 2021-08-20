@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2021
-ms.openlocfilehash: 044c690688bfc83ce1b4ebc13008ad9a2f37034a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 5a320d6368d4fdecaf4001fc9255c4c0ff3b276c
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026883"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285588"
 ---
 # <a name="add-contributors-to-your-app"></a>Hinzufügen von Mitwirkenden zu Ihrer App
 
@@ -26,7 +26,7 @@ Ein App-Besitzer kann Mitwirkende zu Apps hinzufügen. Diese Mitwirkenden könne
 
 Sie haben migriert, wenn Ihre LUIS-Erstellungsumgebung im LUIS-Portal auf der Seite **Verwalten -> Azure-Ressourcen** an eine Erstellungsressource gebunden ist.
 
-Suchen Sie im Azure-Portal nach Ihrer Language Understanding-Erstellungsressource (LUIS-Ressource). Sie hat den Typ `LUIS.Authoring`. Fügen Sie auf der Seite **Zugriffssteuerung (IAM)** der Ressource die Rolle **Mitwirkender** für den Benutzer hinzu, den Sie beitragen möchten. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](/azure/role-based-access-control/role-assignments-portal).
+Suchen Sie im Azure-Portal nach Ihrer Language Understanding-Erstellungsressource (LUIS-Ressource). Sie hat den Typ `LUIS.Authoring`. Fügen Sie auf der Seite **Zugriffssteuerung (IAM)** der Ressource die Rolle **Mitwirkender** für den Benutzer hinzu, den Sie beitragen möchten. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="view-the-app-as-a-contributor"></a>Anzeigen der App als Mitwirkender
 

@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 04/28/2021
-ms.openlocfilehash: 66630d10c5b79927c8388138c3ab639134909d26
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: e9c804868c64d84b8cbe98093f75c4a45d568ec3
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888534"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458756"
 ---
 # <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure Cache for Redis-Ressource mithilfe einer ARM-Vorlage
 
@@ -43,10 +43,10 @@ Die folgenden Ressourcen sind in der Vorlage definiert:
 Resource Manager-Vorlagen für den neuen [Tarif „Premium“](cache-overview.md#service-tiers) sind ebenfalls verfügbar.
 
 * [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Clustering](https://azure.microsoft.com/resources/templates/redis-premium-cluster-diagnostics/)
-* [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Datenpersistenz](https://azure.microsoft.com/resources/templates/redis-premium-persistence/)
+* [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Datenpersistenz](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [Erstellen eines in einem virtuellen Netzwerk bereitgestellten Premium Redis Caches](https://azure.microsoft.com/resources/templates/redis-premium-vnet/)
 
-Die neuesten Vorlagen finden Sie in [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) unter _Azure Cache for Redis_.
+Die neuesten Vorlagen finden Sie in [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) unter _Azure Cache for Redis_.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 

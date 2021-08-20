@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/01/2020
+ms.date: 06/03/2021
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8a82f4130d69e722a91799563c4289b6e82cd7f
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92372428"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232591"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>„Ermittlung und Erkenntnisse (Vorschau)“ für Azure AD-Rollen (früher Sicherheits-Assistent)
 
@@ -68,4 +68,3 @@ Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ei
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Zuweisen von Azure AD-Rollen in PIM](pim-how-to-add-role-to-user.md)
-- [Anderen Administratoren Zugriff für die Verwaltung von Privileged Identity Management gewähren](pim-how-to-give-access-to-pim.md).

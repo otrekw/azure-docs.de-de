@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: f2f99ad89b1fd0c62b329d314e897ee95fc3520b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 07055d8a8cb3d4957a3dcb934f951afc943773fc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539744"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340315"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Dokumentationressourcen für die KI-Anreicherung in Azure Cognitive Search
 
@@ -44,7 +44,7 @@ Im Folgenden finden Sie eine konsolidierte Liste der Dokumentation für die KI-A
 + [Erstellen eines Wissensspeichers mithilfe von REST und Postman](knowledge-store-create-rest.md)
 + [Anzeigen eines Wissensspeichers mit Storage-Explorer](knowledge-store-view-storage-explorer.md)
 + [Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI](knowledge-store-connect-power-bi.md)
-+ [Wissensspeicherprojektionen: Strukturieren und Exportieren von Anreicherungen](knowledge-store-projections-examples.md)
++ [Definieren von Projektionen in einem Wissensspeicher](knowledge-store-projections-examples.md)
 
 ## <a name="custom-skills-advanced"></a>Benutzerdefinierte Qualifikationen (erweitert)
 

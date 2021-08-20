@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: bec37c72d8db3e0891cb2cd375084465950ea5f5
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 54ef14a3851d656d81d9b0ec194f6b8127eba5b3
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541947"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114402756"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>Anforderungen für IoT Plug & Play-Zertifizierungen
 
@@ -25,7 +25,7 @@ IoT Plug & Play (Vorschauversion) ermöglicht es Lösungsentwicklern, intellig
 Dies sind die Versprechen der IoT Plug & Play-Zertifizierung:
 
 1.  Definierte Gerätemodelle und Schnittstellen sind mit der [Digital Twin Definition Language](https://github.com/Azure/opendigitaltwins-dtdl) kompatibel  
-1.  Einfache Integration mit Azure IoT-basierten Lösungen mithilfe der [Digital Twin-APIs](../iot-pnp/concepts-digital-twin.md): Azure IoT Hub und Azure IoT Central
+1.  Einfache Integration mit Azure IoT-basierten Lösungen mithilfe der [Digital Twin-APIs](../iot-develop/concepts-digital-twin.md): Azure IoT Hub und Azure IoT Central
 1.  Validierte Produktwahrheit auf zertifizierten Geräten
 1.  Erfüllt alle Anforderungen von [Azure Certified Device](./program-requirements-azure-certified-device.md)
 
@@ -52,7 +52,7 @@ Dies sind die Versprechen der IoT Plug & Play-Zertifizierung:
 | **Betriebssystem**                  | Agnostisch                                                     |
 | **Überprüfungstyp**     | Automatisiert                                                    |
 | **Überprüfung**          | Der [Portalworkflow](https://certify.azure.com) überprüft: **1.** Ankündigung der Modell-ID und Sicherstellung, dass das Gerät entweder mit dem MQTT oder dem MQTT-über-WebSockets-Protokoll verbunden ist **2.** Die Modelle sind mit der DTDL v2 kompatibel **3.** Telemetrie, Eigenschaften und Befehle sind ordnungsgemäß implementiert und interagieren zwischen dem digitalen IoT Hub-Zwilling und dem Gerätezwilling auf dem Gerät |
-| **Ressourcen**           | [Updates zur Aktualisierung der öffentlichen Vorschau](../iot-pnp/overview-iot-plug-and-play.md) |
+| **Ressourcen**           | [Updates zur Aktualisierung der öffentlichen Vorschau](../iot-develop/overview-iot-plug-and-play.md) |
 
 **[Erforderlich] Die Gerätemodelle sind im öffentlichen Modellrepository veröffentlicht**
 
@@ -63,7 +63,7 @@ Dies sind die Versprechen der IoT Plug & Play-Zertifizierung:
 | **Betriebssystem**                  | Agnostisch                                                     |
 | **Überprüfungstyp**     | Automatisiert                                                    |
 | **Überprüfung**          | Alle Gerätemodelle müssen im öffentlichen Repository veröffentlicht sein. Die Gerätemodelle werden anhand der im öffentlichen Repository verfügbaren Modelle aufgelöst **1.** Der Benutzer muss die Modelle vor dem Einreichen zur Zertifizierung manuell im öffentlichen Repository veröffentlichen. **2.** Beachten Sie, dass nach der Veröffentlichung der Modelle keine Veränderungen mehr möglich sind. Wir empfehlen dringend, erst dann zu veröffentlichen, wenn die Modelle und der eingebettete Gerätecode endgültig sind.*1  *1 Der Benutzer muss sich an den Microsoft-Support wenden, um einmal im Modellrepository veröffentlichte Modelle zu widerrufen **3.** Der [Portalworkflow](https://certify.azure.com) überprüft, ob die Modelle im öffentlichen Repository vorhanden sind, wenn das Gerät mit dem Zertifizierungsdienst verbunden wird. |
-| **Ressourcen**           | [Modellrepository](../iot-pnp/overview-iot-plug-and-play.md) |
+| **Ressourcen**           | [Modellrepository](../iot-develop/overview-iot-plug-and-play.md) |
 
 **[Erforderlich] Physische Geräteüberprüfung mithilfe von GSG**
 
@@ -86,7 +86,7 @@ Dies sind die Versprechen der IoT Plug & Play-Zertifizierung:
 | **Betriebssystem**                  | Agnostisch                                                     |
 | **Überprüfungstyp**     | Automatisiert                                                    |
 | **Überprüfung**          | Der [Portalworkflow](https://certify.azure.com) überprüft, ob die Geräteinformatinsschnittstelle vom Gerätecode implementiert wird **1.** Überprüft, ob die Werte vom Gerätecode an IoT Hub ausgegeben werden **2.** Überprüft, ob die Schnittstelle im DCM implementiert ist (diese Implementierung wird in DTDL v2 geändert) **3.** Überprüft, ob die Eigenschaften schreibgeschützt sind (nur Lesezugriff zulassen) **4.** Überprüft, ob der Schematyp Zeichenfolge und/oder long und nicht NULL ist |
-| **Ressourcen**           | [Von Microsoft definierte Schnittstelle](../iot-pnp/overview-iot-plug-and-play.md) |
+| **Ressourcen**           | [Von Microsoft definierte Schnittstelle](../iot-develop/overview-iot-plug-and-play.md) |
 | **Für Azure empfohlen**  | Nicht zutreffend                                                          |
 
 **[Falls implementiert] Cloud zu Gerät: Der Zweck des Tests besteht darin, sicherzustellen, dass Nachrichten von der Cloud an Geräte gesendet werden können**

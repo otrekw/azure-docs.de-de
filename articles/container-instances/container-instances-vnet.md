@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Containergruppe in einem neuen oder vorh
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 44be66957aa745179ffe4cd00db75f1d47237dfc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f107b5b04726047bea4d7c05a6c031d921f26547
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771045"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300163"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
@@ -77,7 +77,7 @@ az container show --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv
 ```
 
-Die Ausgabe zeigt die IP-Adresse der Containergruppe im privaten Subnetz an. Beispiel:
+Die Ausgabe zeigt die IP-Adresse der Containergruppe im privaten Subnetz an. Zum Beispiel:
 
 ```console
 10.0.0.4
@@ -115,7 +115,7 @@ Die Protokollausgabe sollte zeigen, dass `wget` eine Verbindung herstellen und d
 
 ### <a name="example---yaml"></a>Beispiel – YAML
 
-Sie können auch mithilfe einer YAML-Datei, einer [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+Sie können auch mithilfe einer YAML-Datei, einer [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet
 ) oder einer anderen programmgesteuerten Methode wie dem Python-SKD eine Containergruppe in einem vorhandenen virtuellen Netzwerk bereitstellen. 
 
 Wenn Sie z. B. eine YAML-Datei verwenden, können Sie sie in einem virtuellen Netzwerk mit einem Subnetz bereitstellen, das an Azure Container Instances delegiert ist. Geben Sie die folgenden Eigenschaften an:
@@ -224,7 +224,7 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Bereitstellen eines neuen virtuellen Netzwerks, eines Subnetzes, eines Netzwerkprofils und einer Containergruppe mithilfe einer Resource Manager-Vorlage finden Sie unter [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+Informationen zum Bereitstellen eines neuen virtuellen Netzwerks, eines Subnetzes, eines Netzwerkprofils und einer Containergruppe mithilfe einer Resource Manager-Vorlage finden Sie unter [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet
 ) (Erstellen einer Azure-Containergruppe mit einem virtuellen Netzwerk).
 
 <!-- IMAGES -->

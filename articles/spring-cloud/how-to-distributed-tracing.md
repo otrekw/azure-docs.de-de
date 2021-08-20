@@ -1,19 +1,19 @@
 ---
 title: Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud
 description: Hier erfahren Sie, wie Sie die verteilte Ablaufverfolgung von Spring Cloud über Azure Application Insights verwenden.
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/06/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 48f80d82c003677f2cacfdef2a57ae1aaa68d59d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8eaac1c68c9cff329fcc7b2c408063f01762169b
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135111"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340424"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud
 
@@ -92,7 +92,7 @@ Beispielsweise enthält *appsettings.json* die folgenden Eigenschaften:
   }
 ```
 
-Weitere Informationen zur verteilten Ablaufnerfolgung in .NET Core-Steeltoe-Apps finden Sie unter [Verteilte Ablaufverfolgung](https://steeltoe.io/docs/3/tracing/distributed-tracing) in der Steeltoe-Dokumentation.
+Weitere Informationen zur verteilten Ablaufnerfolgung in .NET Core-Steeltoe-Apps finden Sie unter [Verteilte Ablaufverfolgung](https://docs.steeltoe.io/api/v3/tracing/) in der Steeltoe-Dokumentation.
 ::: zone-end
 ::: zone pivot="programming-language-java"
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
@@ -170,7 +170,6 @@ Um diese Prozeduren zu befolgen, benötigen Sie einen Azure Spring Cloud-Dienst,
            </dependency>
       </dependencies>
       ```
-
 
 1. Erstellen Sie den Azure Spring Cloud-Dienst, und stellen Sie ihn erneut bereit, damit diese Änderungen übernommen werden.
 

@@ -11,12 +11,12 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 01/21/2020
-ms.openlocfilehash: 81c93d33b752a3620163169d0f2b8f900a5b9052
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 58716b6a1d25c52447fc1bf277986787db08ca1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885144"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339224"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Verwenden von differenziellem Datenschutz in Azure Machine Learning (Vorschau)
 
@@ -27,7 +27,7 @@ Der differenzielle Datenschutz ist die Premiumdefinition des Datenschutzes. Syst
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+- Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-smartnoise-python-libraries"></a>Installieren der SmartNoise-Python-Bibliotheken
@@ -56,6 +56,8 @@ Wenn die Importe erfolgreich durchgeführt wurden, sind die Bibliotheken install
 Sie können die SmartNoise-Pakete auch mit Docker verwenden.
 
 Pullen Sie das `opendp/smartnoise`-Image, um die Bibliotheken innerhalb eines Docker-Containers zu verwenden, der Spark-, Jupyter- und Beispielcode enthält.
+
+[!INCLUDE [pull-image-include](../../includes/pull-image-include.md)]
 
 ```sh
 docker pull opendp/smartnoise:privacy

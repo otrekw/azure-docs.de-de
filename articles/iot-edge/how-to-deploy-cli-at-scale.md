@@ -3,19 +3,18 @@ title: 'Bereitstellen von bedarfsgerechten Modulen mithilfe der Azure CLI: Azure
 description: Verwenden der IoT-Erweiterung für Azure CLI zum Erstellen automatischer Bereitstellungen für Gruppen von IoT Edge-Geräten
 keywords: ''
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: c502a9c02160c5a92d78ccdbb0532e6f173122da
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4e7302cda688d92e19d147f0bfa1a482823b2623
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479507"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340244"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe der Azure CLI
 
@@ -135,7 +134,7 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Manifest einer mehrstufigen B
         "properties.desired.modules.SimulatedTemperatureSensor": {
           "settings": {
             "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
-              "createOptions": ""
+              "createOptions": "{}"
           },
           "type": "docker",
           "status": "running",

@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: how-to
 ms.date: 04/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 9b406e489fb83083d47f01e1483160181601d518
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 5e87051bb27e097f507435582cc919f05fd78aeb
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107558768"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403057"
 ---
 # <a name="troubleshoot-your-iot-plug-and-play-certification-project"></a>Behandeln von Problemen im Zusammenhang mit Ihrem IoT Plug & Play-Zertifizierungsprojekt
 
@@ -42,7 +42,7 @@ Wenn Sie beim Testen ein Ergebnis vom Typ `Passed with warnings` erhalten, wurde
 
 ## <a name="when-you-need-help-with-the-model-repository"></a>Vorgehensweise, wenn Sie Hilfe mit dem Modellrepository benötigen
 
-Informationen zu IoT Plug & Play-Problemen im Zusammenhang mit dem Modellrepository finden Sie in unserer [Dokumentation zum Gerätemodellrepository](https://docs.microsoft.com/azure/iot-pnp/concepts-model-repository).
+Informationen zu IoT Plug & Play-Problemen im Zusammenhang mit dem Modellrepository finden Sie in unserer [Dokumentation zum Gerätemodellrepository](../iot-develop/concepts-model-repository.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

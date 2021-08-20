@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d97ab241120ddc4c8e7434591b866312ea7708ae
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: fa9f9ec8d7a8f60d6c72cb6c4f669ef511cc0068
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890112"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112456872"
 ---
 # <a name="test-your-custom-commands-application"></a>Testen Ihrer Anwendung f체r benutzerdefinierte Befehle
 
@@ -27,7 +27,7 @@ In diesem Artikel lernen Sie verschiedene Ans채tze zum Testen einer Anwendung f�
 Das Testen im Portal ist der einfachste und schnellste Weg, um zu 체berpr체fen, ob Ihre Anwendung f체r benutzerdefinierte Befehle wie erwartet funktioniert. Nachdem die App erfolgreich trainiert wurde, klicken Sie auf die Schaltfl채che `Test`, um mit dem Testen zu beginnen.
 
 > [!div class="mx-imgBorder"]
-> ![Testen im Portal](media/custom-commands/create-basic-test-chat.png)
+> ![Testen im Portal](media/custom-commands/create-basic-test-chat-no-mic.png)
 
 ## <a name="test-with-windows-voice-assistant-client"></a>Testen mit dem Windows-Sprachassistent-Client
 

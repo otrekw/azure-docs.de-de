@@ -3,13 +3,14 @@ title: 'Gewusst wie: Erstellen einer Azure-Supportanfrage'
 description: Kunden, die Unterstützung benötigen, können das Azure-Portal verwenden, um Self-Service-Lösungen zu finden und Supportanfragen zu erstellen und zu verwalten.
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
-ms.date: 03/16/2021
-ms.openlocfilehash: 395fc0d5905389ffb8f68d8bbc4c6f8b3a871d36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: support-help-page
+ms.date: 05/25/2021
+ms.openlocfilehash: 4e3f54712830406f04f6c0eec5097d693723db1c
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774869"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458771"
 ---
 # <a name="create-an-azure-support-request"></a>Erstellen einer Azure-Supportanfrage
 
@@ -84,7 +85,7 @@ Als Nächstes sammeln wir zusätzliche Details über das Problem. Wenn Sie in di
 
 1. Nachdem wir alle Informationen zum Problem erhalten haben, können Sie auswählen, wie Sie Support erhalten möchten. Wählen Sie im Abschnitt **Supportmethode** der Registerkarte **Details** den Schweregrad der Auswirkungen aus. Der maximale Schweregrad richtet sich nach Ihrem [Supportplan](https://azure.microsoft.com/support/plans).
 
-    Standardmäßig ist die Option **Diagnoseinformationen teilen** ausgewählt. Dadurch kann Azure [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) zu Ihren Azure-Ressourcen sammeln. In einigen Fällen gibt es eine zweite Frage, die nicht standardmäßig ausgewählt ist, etwa das Anfordern des Zugriffs auf den Arbeitsspeicher eines virtuellen Computers.
+    Standardmäßig ist die Option **Diagnoseinformationen teilen** ausgewählt. Dadurch kann Azure [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) zu Ihren Azure-Ressourcen sammeln. Sie können diese Option deaktivieren, wenn Sie lieber keine Diagnoseinformationen teilen möchten. In einigen Fällen gibt es eine zweite Frage, die nicht standardmäßig ausgewählt ist, etwa das Anfordern des Zugriffs auf den Arbeitsspeicher eines virtuellen Computers.
 
 1. Geben Sie Ihre bevorzugte Kontaktmethode an, einen guten Zeitpunkt für die Kontaktaufnahme mit Ihnen sowie Ihre Supportsprache.
 

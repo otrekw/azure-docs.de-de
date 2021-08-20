@@ -4,15 +4,15 @@ description: Grundlegende Funktionen und Vergleich zwischen Tools für die Migra
 author: dukicn
 ms.author: nikoduki
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 08/04/2021
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: a1772179313a2465200fc1d6a2cccef836067dde
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 63796f3e569849227dd4fa9c2396f3b052540586
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146597"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122340550"
 ---
 # <a name="comparison-matrix"></a>Vergleichsmatrix
 
@@ -149,4 +149,4 @@ In der folgenden Vergleichsmatrix sind die grundlegenden Funktionen der untersch
 - [Migrieren zu Azure-Dateifreigaben](../../../files/storage-files-migration-overview.md)
 - [Migrieren zu Data Lake Storage mit WANdisco LiveData Platform für Azure](../../../blobs/migrate-gen2-wandisco-live-data-platform.md)
 - [Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy](../../../common/storage-use-azcopy-v10.md)
-- [Migrieren von großen Datasets zu Azure Blob Storage mit AzReplicate (Beispielanwendung)](https://github.com/Azure/AzReplicate/tree/master/)
+- [Migrieren von großen Datasets zu Azure Blob Storage mit AzReplicate (Beispielanwendung)](/samples/azure/azreplicate/azreplicate/)

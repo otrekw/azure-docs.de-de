@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: f716245d93727a0447bd1c67924ce7577c70b503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c11e6804b507fcaa838a83cf9eba102cbca381f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201300"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339119"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-sql-api"></a>Ermitteln der Gebühr für Anforderungseinheiten für Vorgänge, die in der Azure Cosmos DB-SQL-API ausgeführt werden
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ Azure Cosmos DB unterstützt viele APIs wie z.B. SQL, MongoDB, Cassandra, Gremli
 
 Die Kosten sämtlicher Datenbankvorgänge werden von Azure Cosmos DB normalisiert und in Anforderungseinheiten (Request Units, RUs) ausgedrückt. Die Anforderungsgebühr entspricht den insgesamt für Ihre Datenbankvorgänge genutzten Anforderungseinheiten. Sie können sich Anforderungseinheiten als Währung zur Abstrahierung der Systemressourcen wie CPU, IOPS und Arbeitsspeicher vorstellen, die zum Ausführen der von Azure Cosmos DB unterstützten Datenbankvorgänge erforderlich sind. Unabhängig davon, welche API Sie für die Interaktion mit Ihrem Azure Cosmos-Container verwenden, werden die Kosten immer in RUs gemessen. Unabhängig davon, ob es sich bei dem Datenbankvorgang um einen Schreib-, Lese- oder Abfragevorgang handelt, werden die Kosten immer in RUs gemessen. Weitere Informationen finden Sie im Artikel [Aspekte zu Anforderungseinheiten](request-units.md).
 
-In diesem Artikel werden verschiedene Methoden beschrieben, mit denen Sie den Verbrauch von [Anforderungseinheiten](request-units.md) (Request Units, RUs) für einen beliebigen Vorgang ermitteln können, der für einen Container in der Azure Cosmos DB-SQL-API ausgeführt wurde. Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Ermitteln der RU/s-Gebühr in den Artikeln zur [API für MongoDB](find-request-unit-charge-mongodb.md), [Cassandra-API](find-request-unit-charge-cassandra.md), [Gremlin-API](find-request-unit-charge-gremlin.md) und [Tabellen-API](find-request-unit-charge-table.md).
+In diesem Artikel werden verschiedene Methoden beschrieben, mit denen Sie den Verbrauch von [Anforderungseinheiten](request-units.md) (Request Units, RUs) für einen beliebigen Vorgang ermitteln können, der für einen Container in der Azure Cosmos DB-SQL-API ausgeführt wurde. Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Ermitteln der RU/s-Gebühr in den Artikeln zur [API für MongoDB](mongodb/find-request-unit-charge-mongodb.md), [Cassandra-API](cassandra/find-request-unit-charge-cassandra.md), [Gremlin-API](find-request-unit-charge-gremlin.md) und [Tabellen-API](table/find-request-unit-charge.md).
 
 Aktuell können Sie diesen Verbrauch nur über das Azure-Portal oder mithilfe eines der SDKs anhand der von Azure Cosmos DB zurückgegebenen Antwort ermitteln. Wenn Sie die SQL-API verwenden, bestehen mehrere Optionen zum Ermitteln des RU-Verbrauchs für einen Vorgang in einem Azure Cosmos-Container.
 

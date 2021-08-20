@@ -3,12 +3,12 @@ title: Verwenden von Search in Azure Application Insights | Microsoft-Dokumentat
 description: Durchsuchen und filtern Sie unformatierte Telemetriedaten, die von Ihrer Web-App gesendet werden.
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: e9da2acea857f2b295fd2333988507babd967c88
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 020e602ec52c40c66439df09275f7d4936a57229
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059390"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112293075"
 ---
 # <a name="using-search-in-application-insights"></a>Verwenden von Search in Application Insights
 
@@ -148,4 +148,4 @@ POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrac
 * [Stellen von komplexeren Abfragen mit Analytics](../logs/log-analytics-tutorial.md)
 * [Senden von Protokollen und benutzerdefinierter Telemetrie an Application Insights](./asp-net-trace-logs.md)
 * [Einrichten von Tests der Verfügbarkeit und Reaktionsfähigkeit](./monitor-web-app-availability.md)
-* [Problembehandlung](../faq.md)
+* [Problembehandlung](../faq.yml)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89f4172b08d56a0ec139f18519a3a9bcd081e08b
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "68965289"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113688521"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische Spezifikationen und Kompatibilität des StorSimple-Geräts
 
@@ -83,7 +83,7 @@ Sowohl das StorSimple 8100 als auch das StorSimple 8600 verfügen über eine Kom
 | Insgesamt nutzbare Kapazität* |~ 15 TB |~38 TB |
 | Maximale Kapazität der Lösung (einschließlich Cloud) |200 TB |500 TB |
 
-<sup>* </sup>- *Die nutzbare Gesamtkapazität beinhaltet die Kapazität, die für Daten, Metadaten und Puffer verfügbar ist. Sie können lokale Volumes von bis zu 8,5 TB auf dem 8100-Gerät und von bis zu 22,5 TB auf dem größeren 8600-Gerät bereitstellen. Weitere Informationen finden Sie unter [Lokale StorSimple-Volumes](storsimple-8000-local-volume-faq.md).*
+<sup>* </sup>- *Die nutzbare Gesamtkapazität beinhaltet die Kapazität, die für Daten, Metadaten und Puffer verfügbar ist. Sie können lokale Volumes von bis zu 8,5 TB auf dem 8100-Gerät und von bis zu 22,5 TB auf dem größeren 8600-Gerät bereitstellen. Weitere Informationen finden Sie unter [Lokale StorSimple-Volumes](storsimple-8000-local-volume-faq.yml).*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>Gehäuseabmessungen und Gewicht
 

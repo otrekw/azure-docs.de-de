@@ -8,12 +8,12 @@ ms.date: 06/01/2021
 ms.author: aahi
 author: aahill
 ms.manager: nitinme
-ms.openlocfilehash: 550af8bda0768738dc2162a0dc0bf767d1c54741
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 7079c1ee309db9563142c54eea88ccd4ba6f6e28
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110783028"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463637"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Continuous Integration- und Continuous Delivery-Workflows für LUIS DevOps
 
@@ -30,9 +30,9 @@ Konfigurieren Sie in Ihrem Quellcodeverwaltungssystem (SCM) automatisierte Build
 
 Im **CI/CD-Workflow** werden zwei komplementäre Entwicklungsprozesse vereinigt:
 
-* [Continuous Integration](/azure/devops/learn/what-is-continuous-integration) (CI) ist das Entwicklungsverfahren, bei dem Code in einem freigegebenen Repository regelmäßig committet wird und daraufhin ein automatisierter Build erfolgt. In Kombination mit einem automatisierten [Testansatz](luis-concept-devops-testing.md) kann durch die Continuous Integration für jede Aktualisierung sichergestellt werden, dass die LUDown-Quelle immer noch gültig ist und in eine LUIS-App importiert werden kann; außerdem wird eine Gruppe von Tests übergeben, in denen überprüft wird, ob die trainierte App die erforderlichen Intents und Entitäten für die Lösung erkennen kann.
+* [Continuous Integration](/devops/develop/what-is-continuous-integration) (CI) ist das Entwicklungsverfahren, bei dem Code in einem freigegebenen Repository regelmäßig committet wird und daraufhin ein automatisierter Build erfolgt. In Kombination mit einem automatisierten [Testansatz](luis-concept-devops-testing.md) kann durch die Continuous Integration für jede Aktualisierung sichergestellt werden, dass die LUDown-Quelle immer noch gültig ist und in eine LUIS-App importiert werden kann; außerdem wird eine Gruppe von Tests übergeben, in denen überprüft wird, ob die trainierte App die erforderlichen Intents und Entitäten für die Lösung erkennen kann.
 
-* [Continuous Delivery](/azure/devops/learn/what-is-continuous-delivery) (CD) führt das Konzept der Continuous Integration weiter: Die Anwendung wird automatisch in einer Umgebung bereitgestellt, in der Sie umfassendere Tests durchführen können. Anhand von CD werden wir frühzeitig und schnellstmöglich auf unvorhergesehene Probleme aufmerksam gemacht, die im Zusammenhang mit den Änderungen entstehen können. Außerdem werden wir über Lücken in unserer Testabdeckung benachrichtigt.
+* [Continuous Delivery](/devops/deliver/what-is-continuous-delivery) (CD) führt das Konzept der Continuous Integration weiter: Die Anwendung wird automatisch in einer Umgebung bereitgestellt, in der Sie umfassendere Tests durchführen können. Anhand von CD werden wir frühzeitig und schnellstmöglich auf unvorhergesehene Probleme aufmerksam gemacht, die im Zusammenhang mit den Änderungen entstehen können. Außerdem werden wir über Lücken in unserer Testabdeckung benachrichtigt.
 
 Continuous Integration und Continuous Delivery sollen sicherstellen, dass der „Mainbranch zu jedem Zeitpunkt bereitstellbar ist“. Für eine LUIS-App bedeutet dies, dass bei Bedarf eine beliebige Version aus der Mainbranch-LUIS-App in die Produktionsumgebung überführt werden kann.
 

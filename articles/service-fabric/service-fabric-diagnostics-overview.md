@@ -3,12 +3,12 @@ title: Übersicht über Azure Service Fabric-Überwachung und -Diagnose
 description: Erfahren Sie mehr über die Überwachung und Diagnose für Cluster, Anwendungen und Dienste von Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.openlocfilehash: 71ec86f26de1e94b4e17e0990d2eafd1fff954e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d3a7060b7a12cb9a57a78c1bbb3fc0b58656ef6d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627743"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112455156"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Überwachung und Diagnose für Azure Service Fabric
 
@@ -52,7 +52,7 @@ Benutzer können sogar die Integrität für Entitäten überschreiben. Wenn für
 
 
 ### <a name="watchdogs"></a>Watchdogs
-Ein Watchdog ist im Allgemeinen ein separater Dienst, der die Integrität und die Auslastung von Diensten überwachen, Endpunkte pingen und Meldungen zur Integrität aller im Cluster enthaltenen Elemente zurückgeben kann. So können Fehler verhindert werden, die nicht erkannt werden, wenn nur ein einzelner Dienst betrachtet wird. Watchdogs sind auch ein guter Platz zum Hosten von Code, der Aktionen zur Problembehebung ohne Benutzeraktion ausführt (z.B. Bereinigen von Protokolldateien im Speicher in bestimmten Zeitintervallen). Ein Beispiel für eine Watchdog-Dienstimplementierung finden Sie [hier](https://github.com/Azure-Samples/service-fabric-watchdog-service).
+Ein Watchdog ist im Allgemeinen ein separater Dienst, der die Integrität und Last dienstübergreifend überwacht, Pings an Endpunkte sendet und unerwartete Integritätsereignisse im Cluster meldet. So können Fehler verhindert werden, die anhand der Leistung eines einzelnen Diensts allein nicht erkannt werden können. Watchdogs sind auch ein guter Ort zum Hosten von Code, mit dem Maßnahmen zur Problembehandlung durchgeführt werden, ohne dass eine Benutzeraktion erforderlich ist (z. B. Bereinigen von Protokolldateien im Speicher nach bestimmten Zeitintervallen). Informieren Sie sich über das [FabricObserver](https://github.com/Azure-Samples/service-fabric-watchdog-service)-Projekt, wenn Sie einen vollständig implementierten Open-Source-Dienst für den SF-Watchdog benötigen, der ein benutzerfreundliches Watchdogerweiterungsmodell umfasst und sowohl in Windows- als auch in Linux-Clustern ausgeführt wird. Bei FabricObserver handelt es sich um produktionsbereite Software. Wir empfehlen, FabricObserver in Ihren Test- und Produktionsclustern bereitzustellen und zu erweitern, um Ihre Anforderungen entweder mithilfe des Plug-In-Modells oder durch Forken der Software und Schreiben Ihres eigenen integrierten Beobachters zu erfüllen. Ersteres (Plug-Ins) stellt den empfohlenen Ansatz dar.
 
 ## <a name="infrastructure-performance-monitoring"></a>Überwachung der Infrastruktur (Leistung)
 Nachdem Sie nun mit den Diagnosen auf Anwendungs- und Plattformebene vertraut sind, stellt sich die Frage, wie Sie feststellen können, ob die Hardware wie erwartet funktioniert. Die Überwachung der zugrunde liegenden Infrastruktur ist wichtig, um einen Eindruck vom Zustand des Clusters und der Ressourcenverwendung zu erhalten. Die Messung der Systemleistung hängt je nach Workloads von zahlreichen (teilweise subjektiven) Faktoren ab. Solche Faktoren werden in der Regel mithilfe von Leistungsindikatoren gemessen. Diese Leistungsindikatoren können aus verschiedensten Quellen stammen – etwa vom Betriebssystem, aus .NET Framework oder von der Service Fabric-Plattform selbst. Sie können unter anderem zur Beantwortung folgender Fragen hilfreich sein:

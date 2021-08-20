@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Azure HDInsight-Cluster in einem virtu
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: fe3b9617db20f445d4139c006c283bbfe537d544
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 4c5e30bfd7afd8a7cd8974544324f6e610736846
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616477"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438474"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Schützen und Isolieren von Azure HDInsight-Clustern mit Private Link (Vorschauversion)
 
@@ -53,7 +53,7 @@ Für Private Link (standardmäßig deaktiviert) benötigen Sie umfassende Netzwe
 
 Wenn `privateLink` auf *Enabled* (Aktiviert) festgelegt ist, werden interne [Standard-Lastenausgleichsmodule](../load-balancer/load-balancer-overview.md) erstellt, und für jedes dieser Module wird ein Azure Private Link-Dienst bereitgestellt. Der Private Link-Dienst ermöglicht Ihnen den Zugriff auf den HDInsight-Cluster von privaten Endpunkten.
 
-Von Standard-Lastenausgleichsmodulen wird die [öffentliche Netzwerkadressenübersetzung in ausgehender Richtung](../load-balancer/load-balancer-outbound-connections.md) nicht wie bei Basic-Lastenausgleichsmodulen automatisch bereitgestellt. Sie müssen Ihre eigene NAT-Lösung, z. B. [Virtual Network NAT](../virtual-network/nat-overview.md) oder eine [Firewall](./hdinsight-restrict-outbound-traffic.md), für ausgehende Abhängigkeiten bereitstellen. Ihr HDInsight-Cluster benötigt weiterhin Zugriff auf seine ausgehenden Abhängigkeiten. Falls diese ausgehenden Abhängigkeiten nicht zulässig sind, tritt bei der Clustererstellung unter Umständen ein Fehler auf.
+Von Standard-Lastenausgleichsmodulen wird die [öffentliche Netzwerkadressenübersetzung in ausgehender Richtung](../load-balancer/load-balancer-outbound-connections.md) nicht wie bei Basic-Lastenausgleichsmodulen automatisch bereitgestellt. Sie müssen Ihre eigene NAT-Lösung, z. B. [Virtual Network NAT](../virtual-network/nat-gateway/nat-overview.md) oder eine [Firewall](./hdinsight-restrict-outbound-traffic.md), für ausgehende Abhängigkeiten bereitstellen. Ihr HDInsight-Cluster benötigt weiterhin Zugriff auf seine ausgehenden Abhängigkeiten. Falls diese ausgehenden Abhängigkeiten nicht zulässig sind, tritt bei der Clustererstellung unter Umständen ein Fehler auf.
 
 ### <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
 

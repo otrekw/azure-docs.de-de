@@ -4,12 +4,12 @@ description: Bewertung verschiedene Gründe für Apache Ambari-Heartbeatprobleme
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
-ms.openlocfilehash: 5eebde42098d74f533565d274b693c4a06f2f60d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 348a4d801590ba8f0e10f3c7f72ce6ead0a16022
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946736"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300039"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Apache Ambari-Heartbeatprobleme in Azure HDInsight
 
@@ -99,4 +99,4 @@ Die OMS-Protokolle führen zu einer hohen CPU-Auslastung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

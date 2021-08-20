@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a62afbcd120a7404b1677a8c8adb62723a119d5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d92f00281a06357f2135fe148f923b0671e10304
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070262"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203456"
 ---
 # <a name="building-a-conditional-access-policy"></a>Erstellen einer Richtlinie für bedingten Zugriff
 
@@ -77,9 +77,9 @@ Standortdaten werden von IP-Geolocation-Daten bereitgestellt. Administratoren k�
 
 #### <a name="client-apps"></a>Client-Apps
 
-Standardmäßig gelten Richtlinien für bedingten Zugriff für Browser-Apps, mobile Apps und Desktopclients, die die moderne Authentifizierung unterstützen. 
+Alle neu erstellten Richtlinien für bedingten Zugriff gelten standardmäßig für alle Client-App-Typen, auch wenn die Client-Apps-Bedingung nicht konfiguriert ist.
 
-Durch diese Zuweisungsbedingung können Richtlinien für bedingten Zugriff auf bestimmte Clientanwendungen abzielen, die keine moderne Authentifizierung verwenden. Zu diesen Anwendungen gehören Exchange ActiveSync-Clients, ältere Office-Anwendungen, die keine moderne Authentifizierung verwenden, sowie E-Mail-Protokolle wie IMAP, MAPI, POP und SMTP.
+Das Verhalten der Client-Apps-Bedingung wurde im August 2020 aktualisiert. Vorhandene Richtlinien für bedingten Zugriff bleiben unverändert erhalten. Wenn Sie jedoch auf eine vorhandene Richtlinie klicken, sehen Sie, dass die Umschaltfläche „Konfigurieren“ nicht vorhanden ist und die Client-Apps, für die die Richtlinie gilt, ausgewählt sind.
 
 #### <a name="device-state"></a>Gerätestatus
 
