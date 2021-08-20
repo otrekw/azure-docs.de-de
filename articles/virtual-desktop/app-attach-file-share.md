@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 80de8767d96cacc5fdec95f26efec88c55e2ceb3
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e0ba3363b6004afb8e42f420fae681b2827106fb
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745689"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707089"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach"></a>Einrichten einer Dateifreigabe für das MSIX-Feature zum Anfügen von Apps
 
@@ -107,4 +107,4 @@ Hier finden Sie einige weitere Ressourcen, die Ihnen möglicherweise nutzen:
 - Stellen Sie unserer Community unter [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Ihre Fragen zu dieser Funktion.
 - Sie können Ihr Feedback bezüglich Azure Virtual Desktop auch im [Azure Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) hochladen.
 - [Glossar des MSIX-Features zum Anfügen von Apps](app-attach-glossary.md)
-- [Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps](app-attach-faq.md)
+- [Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps](app-attach-faq.yml)

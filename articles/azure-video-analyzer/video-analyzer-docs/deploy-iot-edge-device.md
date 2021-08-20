@@ -2,13 +2,13 @@
 title: 'Bereitstellen von Azure Video Analyzer auf einem IoT Edge-Gerät: Azure'
 description: In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Azure Video Analyzer auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen.
 ms.topic: how-to
-ms.date: 04/07/2021
-ms.openlocfilehash: f81d441b0070777837cc938721705335734fa3a3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: cf73e5d44e9c4c04a7c2f018e403da18e18ff17d
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385910"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603904"
 ---
 # <a name="deploy-azure-video-analyzer-to-an-iot-edge-device"></a>Bereitstellen von Azure Video Analyzer auf einem IoT Edge-Gerät
 

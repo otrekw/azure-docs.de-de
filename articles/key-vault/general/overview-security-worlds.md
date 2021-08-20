@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 07/03/2017
-ms.openlocfilehash: 0d82a3cb4c08d47b6827072378b9827037d32412
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0753108df52f0dcaea1d6c79eab266eeb000889a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751812"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347181"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Sicherheitsumgebungen und geografische Grenzen von Azure Key Vault
 
-Azure-Produkte sind in einer Reihe von [Azure-Geografien](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)verfügbar, wobei jede Azure-Geografie mindestens eine Region enthält. Die Geografie Europa enthält z. B. zwei Regionen : „Europa, Norden“ und „Europa, Westen“, während die einzige Region in der Geografie „Brasilien“ „Brasilien, Süden“ ist.
+Azure-Produkte sind in einer Reihe von [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/)verfügbar, wobei jede Azure-Geografie mindestens eine Region enthält. Die Geografie Europa enthält z. B. zwei Regionen : „Europa, Norden“ und „Europa, Westen“, während die einzige Region in der Geografie „Brasilien“ „Brasilien, Süden“ ist.
 
 Azure Key Vault ist ein mehrinstanzenfähiger Dienst, der einen Pool von Hardwaresicherheitsmodulen (Hardware Security Modules, HSMs) verwendet. Alle HSMs in einer Geografie haben dieselbe kryptografische Grenze, die auch als „Sicherheitsumgebung“ bezeichnet wird. Jede Geografie entspricht einer einzelnen Sicherheitsumgebung und umgekehrt.
 

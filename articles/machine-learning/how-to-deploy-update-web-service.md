@@ -10,12 +10,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: 5a586d29fd25ee7332f11737345aef8209de8824
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 1bb38c45203b0356444d0eb115a8c75e0f1c465d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889338"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356666"
 ---
 # <a name="update-a-deployed-web-service"></a>Aktualisieren eines bereitgestellten Webdiensts
 
@@ -86,14 +86,14 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 >
 > Um den Dienst so zu aktualisieren, dass für ihn ein neues Eingabeskript oder eine neue Umgebung verwendet wird, erstellen Sie eine [Rückschlusskonfigurationsdatei](./reference-azure-machine-learning-cli.md#inference-configuration-schema), und geben Sie diese mit dem `ic`-Parameter an.
 
-Weitere Informationen finden Sie in der Dokumentation zu [az ml service update](/cli/azure/ml/service#az_ml_service_update).
+Weitere Informationen finden Sie in der Dokumentation zu [az ml service update](/cli/azure/ml(v1)/service?view=azure-cli-latest#az_ml_v1__service_update).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Problembehandlung bei einer fehlerhaften Bereitstellung](how-to-troubleshoot-deployment.md)
 * [Bereitstellen für Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Erstellen von Clientanwendungen zum Nutzen von Webdiensten](how-to-consume-web-service.md)
-* [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md)
+* [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](./how-to-deploy-custom-container.md)
 * [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](how-to-secure-web-service.md)
 * [Überwachen Ihrer Azure Machine Learning-Modelle mit Application Insights](how-to-enable-app-insights.md)
 * [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md)

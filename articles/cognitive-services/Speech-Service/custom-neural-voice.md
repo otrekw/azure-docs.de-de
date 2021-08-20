@@ -3,19 +3,19 @@ title: 'Übersicht über benutzerdefinierte neuronale Stimme: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Die benutzerdefinierte neuronale Stimme ist ein Sprachsynthesefeature, mit dem Sie eine einzigartige, benutzerdefinierte synthetische Stimme für Ihre Anwendungen erstellen können, indem Sie Ihre eigenen Audiodaten als Beispiel bereitstellen.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/18/2021
-ms.author: trbye
-ms.openlocfilehash: e61de187f9d3933a67ab4f4287b5e85d5a215404
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: lajanuar
+ms.openlocfilehash: cd0dbb217d095568af0075ca4904d7a1751f5a89
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411105"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350171"
 ---
 # <a name="what-is-custom-neural-voice"></a>Worum handelt es sich bei „Benutzerdefinierte neuronale Stimme“?
 

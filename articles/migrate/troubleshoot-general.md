@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 00802f53f973ad9b5a80b265006943121a0fa763
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcd031a76e911f6368206d75736e934f79135b77
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96753398"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113225676"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problembehandlung für Azure Migrate
 
@@ -24,7 +24,7 @@ Informationen hierzu finden Sie im [Leitfaden zur Problembehandlung für Azure M
 
 ## <a name="i-cant-get-the-appliance-working"></a>Die Appliance funktioniert nicht
 
-Lesen Sie [Antworten für häufige Probleme](troubleshoot-appliance-discovery.md) bei der Appliancebereitstellung.
+Lesen Sie [Antworten für häufige Probleme](troubleshoot-appliance.md) bei der Appliancebereitstellung.
 
 ## <a name="machines-arent-discovered"></a>Computer werden nicht ermittelt
 
@@ -32,7 +32,7 @@ Sehen Sie sich [häufige Probleme bei der Ermittlung](common-questions-discovery
 
 ## <a name="app-discovery-isnt-working"></a>Die App-Ermittlung funktioniert nicht
 
-Die Ermittlung von auf lokalen Computern ausgeführten Apps, Rollen und Features wird derzeit nur für VMware-VMs unterstützt. [Sehen Sie sich häufige Fehler](troubleshoot-appliance-discovery.md#common-app-discovery-errors) bei der App-Ermittlung an.
+Die Ermittlung von auf lokalen Computern ausgeführten Apps, Rollen und Features wird derzeit nur für VMware-VMs unterstützt. [Sehen Sie sich häufige Fehler](troubleshoot-discovery.md#common-software-inventory-errors) bei der App-Ermittlung an.
 
 ## <a name="assessment-isnt-working"></a>Die Bewertung funktioniert nicht
 

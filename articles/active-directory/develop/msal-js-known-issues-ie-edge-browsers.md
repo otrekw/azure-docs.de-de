@@ -3,22 +3,22 @@ title: Probleme in Internet Explorer und Microsoft Edge (MSAL.js ) | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über bekannte Probleme, die bei Verwendung der Microsoft Authentication Library für JavaScript (MSAL.js) in Verbindung mit den Browsern Internet Explorer und Microsoft Edge auftreten können.
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 05/18/2020
-ms.author: mtillman
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9323558aec1cb330cc5253f8d380706854aaeae9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 91ef36a5dbbfb7e0edb7fe1d75d77d2f2dc4870b
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077228"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357605"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Bekannte Probleme in den Browsern Internet Explorer und Microsoft Edge (MSAL.js)
 
@@ -36,7 +36,7 @@ Die meisten Probleme haben folgende Ursache. Der Sitzungsspeicher und lokale Spe
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- **Ein bei der Anmeldung für die Authentifizierung verwendetes Popupfenster wird nicht geschlossen oder bleibt hängen**: Wenn sich ein Benutzer in Microsoft Edge oder IE (InPrivate) über ein Popupfenster authentifiziert, wird das Popupfenster nach der Eingabe der Anmeldeinformationen und der Anmeldung nicht geschlossen, wenn sich die Navigation über mehrere Domänen in unterschiedlichen Sicherheitszonen erstreckt. Dies liegt daran, dass MSAL.js das Handle für das Popupfenster verliert.  
+- **Ein bei der Anmeldung für die Authentifizierung verwendetes Popupfenster wird nicht geschlossen oder bleibt hängen**: Wenn sich ein Benutzer in Microsoft Edge oder IE (InPrivate) über ein Popupfenster authentifiziert, wird das Popupfenster nach der Eingabe der Anmeldeinformationen und der Anmeldung nicht geschlossen, wenn sich die Navigation über mehrere Domänen in unterschiedlichen Sicherheitszonen erstreckt. Dies liegt daran, dass MSAL.js das Handle für das Popupfenster verliert.
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Aktualisieren: Fix in MSAL.js 0.2.3 verfügbar
 In [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) wurden Fixes für die Umleitungsschleife bei der Authentifizierung veröffentlicht. Aktivieren Sie das Flag `storeAuthStateInCookie` in der Konfiguration von MSAL.js, um diesen Fix zu nutzen. Dieses Flag ist standardmäßig auf „false“ festgelegt.
@@ -49,7 +49,7 @@ Wenn das Flag `storeAuthStateInCookie` aktiviert ist, nutzt MSAL.js die Browserc
 Nutzen Sie die unten beschriebenen Problemumgehungen.
 
 #### <a name="other-workarounds"></a>Weitere Problemumgehungen
-Vergewissern Sie sich, dass das Problem nur in der spezifischen Version des Microsoft Edge-Browsers auftritt und dass die anderen Browser einwandfrei funktionieren, bevor Sie diese Problemumgehungen anwenden.  
+Vergewissern Sie sich, dass das Problem nur in der spezifischen Version des Microsoft Edge-Browsers auftritt und dass die anderen Browser einwandfrei funktionieren, bevor Sie diese Problemumgehungen anwenden.
 1. Um diese Probleme zu umgehen, stellen Sie als ersten Schritt sicher, dass die Anwendungsdomäne und alle anderen an der Umleitung des Authentifizierungsflows beteiligten Websites in den Sicherheitseinstellungen des Browsers als vertrauenswürdige Sites hinzugefügt wurden, sodass sie derselben Sicherheitszone angehören.
 Gehen Sie dazu folgendermaßen vor:
     - Öffnen Sie **Internet Explorer**, und klicken Sie in der oberen rechten Ecke auf **Einstellungen** (Zahnradsymbol).

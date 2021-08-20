@@ -2,13 +2,13 @@
 title: 'Ereignisbasierte Videoaufzeichnung mit Azure Video Analyzer: Azure'
 description: Die ereignisbasierte Videoaufzeichnung (EVR) mit Azure Video Analyzer bezieht sich auf die Aufzeichnung von Videos ausgelöst durch ein Ereignis. Das betreffende Ereignis kann durch die Verarbeitung des Videosignals selbst (z. B. bei Erkennung einer Bewegung) oder von einer unabhängigen Quelle stammen (z. B. bei Signalisierung eines Türsensors, dass die Tür geöffnet wurde). In diesem Artikel werden einige Anwendungsfälle der ereignisbasierten Videoaufzeichnung beschrieben.
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: de6581b60d0cee4c1ac34ffbd60ee22509807e8b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 2386e45c3d2cde881436e86eb267365355d652ba
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385818"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601389"
 ---
 # <a name="event-based-video-recording"></a>Ereignisbasierte Videoaufzeichnung  
 
@@ -43,7 +43,7 @@ Ereignisse vom Knoten für die Bewegungserkennung triggern auch den Knoten des S
 
 ### <a name="video-recording-based-on-events-from-other-sources"></a>Videoaufzeichnung auf der Grundlage von Ereignissen aus anderen Quellen  
 
-In diesem Anwendungsfall können Signale von einem anderen IoT-Sensor verwendet werden, um die Aufzeichnung von Videos auszulösen. Die folgende Abbildung zeigt eine grafische Darstellung einer Pipeline für diesen Anwendungsfall. Die JSON-Darstellung der Pipelinetopologie einer solchen Pipeline finden Sie [hier](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-files/topology.json).
+In diesem Anwendungsfall können Signale von einem anderen IoT-Sensor verwendet werden, um die Aufzeichnung von Videos auszulösen. Die folgende Abbildung zeigt eine grafische Darstellung einer Pipeline für diesen Anwendungsfall. Die JSON-Darstellung der Pipelinetopologie einer solchen Pipeline finden Sie [hier](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-file-sink/topology.json).
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/event-based-video-recording/other-sources.png" alt-text="Ereignisbasierte Aufzeichnung von Livevideos bei Signalisierung von einer externen Quelle.":::

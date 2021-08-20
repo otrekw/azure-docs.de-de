@@ -3,12 +3,12 @@ title: Kopieren von Anwendungen und Daten auf Poolknoten
 description: Erfahren Sie, wie Sie Anwendungen und Daten auf Poolknoten kopieren.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 0109171fd78dc11058daa30bf4604bebc1eeb857
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d53a285319e46f9311684b0ad66c1a278750f8b9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101703646"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349784"
 ---
 # <a name="copy-applications-and-data-to-pool-nodes"></a>Kopieren von Anwendungen und Daten auf Poolknoten
 
@@ -33,6 +33,10 @@ Wenn jeder Auftrag, der auf dem Pool ausgeführt wird, eine Anwendung (.exe) aus
 Für Anwendungen oder Daten, die auf jedem Knoten im Pool installiert werden müssen, ziehen Sie die Verwendung von [Anwendungspaketen](batch-application-packages.md) in Betracht. Mit einem Anwendungspaket ist kein Installationsbefehl verknüpft, Sie können jedoch einen Starttask verwenden, um einen beliebigen Installationsbefehl auszuführen. Wenn Ihre Anwendung keine Installation erfordert oder eine große Anzahl von Dateien umfasst, können Sie diese Methode verwenden.
 
 Anwendungspakete eignen sich gut, wenn Sie über eine große Anzahl von Dateien verfügen, da sie viele Dateiverweise in einer geringen Nutzlast kombinieren. Wenn Sie versuchen, mehr als 100 separate Ressourcendateien in einen Task aufzunehmen, können im Batch-Dienst für einen einzelnen Task interne Systemeinschränkungen auftreten. Anwendungspakete sind auch dann nützlich, wenn Sie über viele verschiedene Versionen derselben Anwendung verfügen und zwischen ihnen auswählen müssen.
+
+## <a name="extensions"></a>Erweiterungen
+
+[Erweiterungen](create-pool-extensions.md) sind kleine Anwendungen, die Konfiguration und Setup nach der Bereitstellung auf Azure Batch-Computeknoten erleichtern. Wenn Sie einen Pool erstellen, können Sie eine unterstützte Erweiterung auswählen und auf den Computeknoten installieren, wenn diese bereitgestellt werden. Danach kann die Erweiterung ihre vorgesehene Aufgabe erfüllen.
 
 ## <a name="job-preparation-task-resource-files"></a>Ressourcendateien für den Auftragsvorbereitungstask
 

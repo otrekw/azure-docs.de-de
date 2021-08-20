@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 82482b260233994672e603c16fe8cf919c92337f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95b9a28dd0d62df12b8a3ea4f9334f2edbdabdc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98201024"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355876"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Überwachen der Azure Database for MySQL-Leistung mit dem Abfragespeicher
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 **Anwendungsbereich:** Azure Database for MySQL 5.7, 8.0
 
@@ -171,7 +173,7 @@ Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Z
 
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 
-- Wenn für einen MySQL-Server der Parameter `default_transaction_read_only` aktiviert ist, kann der Abfragespeicher keine Daten erfassen.
+- Wenn für einen MySQL-Server der Parameter `read_only` aktiviert ist, kann der Abfragespeicher keine Daten erfassen.
 - Die Funktion des Abfragespeichers kann durch lange Unicodeabfragen (\>= 6.000 Bytes) unterbrochen werden.
 - Der Aufbewahrungszeitraum für Wartestatistiken beträgt 24 Stunden.
 - Für Wartestatistiken werden Stichproben verwendet, um einen Teil der Ereignisse zu erfassen. Die Häufigkeit kann mit dem Parameter `query_store_wait_sampling_frequency` geändert werden.

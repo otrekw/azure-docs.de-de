@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 05/25/2021
-ms.openlocfilehash: fa62dc3470ef4d4ab79045379a8b76b057b44628
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 645fce68e408b65299090e4661b36690f7ca140c
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379215"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690494"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Bereitstellen eines selbstgehosteten Gateways für Kubernetes
 
@@ -68,13 +68,13 @@ In diesem Artikel werden die Schritte für die Bereitstellung der selbstgehostet
 ### <a name="access-token"></a>Zugriffstoken
 Ohne ein gültiges Zugriffstoken kann ein selbstgehostetes Gateway nicht am Endpunkt des zugeordneten API Management-Diensts auf Konfigurationsdaten zugreifen und diese herunterzuladen. Das Zugriffstoken ist maximal 30 Tage gültig. Es muss neu generiert und der Cluster entweder manuell oder mittels Automatisierung mit einem neuen Token konfiguriert werden, bevor es abläuft.
 
-Wenn Sie die Tokenaktualisierung automatisieren, generieren Sie über diesen [Vorgang](/rest/api/apimanagement/2019-12-01/gateway/generatetoken) der Verwaltungs-API ein neues Token. Informationen zur Verwaltung von Kubernetes-Geheimnissen finden Sie auf der [Kubernetes-Website](https://kubernetes.io/docs/concepts/configuration/secret).
+Wenn Sie die Tokenaktualisierung automatisieren, generieren Sie über diesen [Vorgang](/rest/api/apimanagement/2020-12-01/gateway/generate-token) der Verwaltungs-API ein neues Token. Informationen zur Verwaltung von Kubernetes-Geheimnissen finden Sie auf der [Kubernetes-Website](https://kubernetes.io/docs/concepts/configuration/secret).
 
 ### <a name="namespace"></a>Namespace
 Kubernetes-[Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) helfen bei der Aufteilung eines einzelnen Clusters unter mehreren Teams, Projekten oder Anwendungen. Namespaces stellen einen Bereich für Ressourcen und Namen bereit. Sie können einem Ressourcenkontingent und Zugriffssteuerungsrichtlinien zugeordnet werden.
 
 Der Azure-Portal bietet Befehle zum Erstellen von selbstgehosteten Gatewayressourcen im **Standard**-Namespace. Dieser Namespace wird automatisch erstellt, ist in jedem Cluster vorhanden und kann nicht gelöscht werden.
-Erwägen Sie das[Erstellen und Bereitstellen](https://kubernetesbyexample.com/ns/) eines selbstgehosteten Gateways in einem separaten Namespace in der Produktion.
+Erwägen Sie das[Erstellen und Bereitstellen](https://www.kubernetesbyexample.com/) eines selbstgehosteten Gateways in einem separaten Namespace in der Produktion.
 
 ### <a name="number-of-replicas"></a>Anzahl von Replikaten
 Die Mindestanzahl der für die Produktion geeigneten Replikate ist zwei.

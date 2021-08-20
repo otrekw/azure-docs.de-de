@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: fe80a71125d43220e408eab7b07aeedcafa0a526
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32494c60e3189c9369bafe37289d01e248e4a678
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102473821"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122264631"
 ---
 ### <a name="functions-2x-and-higher"></a>Functions 2.x und höher
 
@@ -40,7 +40,7 @@ ms.locfileid: "102473821"
 |initialOffsetOptions/type<sup>1</sup>|fromStart|Der Punkt innerhalb des Ereignisdatenstroms, von dem aus die Verarbeitung gestartet wird, wenn im Speicher kein Prüfpunkt vorhanden ist. Die verfügbaren Optionen sind `fromStart`, `fromEnd` und `fromEnqueuedTime`. Mit `fromEnd` werden neue Ereignisse verarbeitet, die nach dem Start der Ausführung der Funktions-App in die Warteschlange eingereiht wurden. Gilt für alle Partitionen.  Weitere Informationen finden Sie in der [EventProcessorOptions-Dokumentation](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider).|
 |initialOffsetOptions/enqueuedTimeUtc<sup>1</sup>|–| Gibt für das Ereignis des Datenstroms den Zeitpunkt der Einreihung in die Warteschlange an, ab dem mit der Verarbeitung begonnen werden soll. Wenn `initialOffsetOptions/type` als `fromEnqueuedTime` konfiguriert wird, ist diese Einstellung obligatorisch. Es werden Zeitangaben in allen Formaten unterstützt, die von [DateTime.Parse()](/dotnet/standard/base-types/parsing-datetime) unterstützt werden, z. B. `2020-10-26T20:31Z`. Der Eindeutigkeit halber sollten Sie auch eine Zeitzone angeben. Wenn keine Zeitzone angegeben wird, wird von Functions die lokale Zeitzone des Computers übernommen, auf dem die Funktions-App ausgeführt wird. Bei der Ausführung in Azure ist dies „UTC“. Weitere Informationen finden Sie in der [EventProcessorOptions-Dokumentation](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider).|
 
-<sup>1</sup> `intitialOffsetOptions` wird ab [EventHubs v4.2.0](https://github.com/Azure/azure-functions-eventhubs-extension/releases/tag/v4.2.0) unterstützt.
+<sup>1</sup> `initialOffsetOptions` wird ab [EventHubs v4.2.0](https://github.com/Azure/azure-functions-eventhubs-extension/releases/tag/v4.2.0) unterstützt.
 
 > [!NOTE]
 > Eine Referenz für „host.json“ in Azure Functions 2x und höheren Versionen finden Sie in der [host.json-Referenz für Azure Functions 2.x oder höher](../articles/azure-functions/functions-host-json.md).

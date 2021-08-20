@@ -7,16 +7,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
-ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44752024c8bd2ddbceed1495067260bce3ce0037
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98249770"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088384"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Behandeln von Problemen mit der Replikationswartezeit in Azure Database for MySQL
 
-[!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 Mithilfe des [Lesereplikat](concepts-read-replicas.md)-Features können Sie Daten von einem Azure Database for MySQL-Server auf einem schreibgeschützten Replikatserver replizieren. Sie können Workloads aufskalieren, indem Sie Lese- und Berichterstellungsabfragen von der Anwendung an Replikatserver weiterleiten. Dadurch werden die Belastung des primären Servers verringert. Zudem werden Gesamtleistung und Wartezeit der Anwendung bei deren Skalierung verbessert.
 

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 0e954b06afb9e1db09aefc77d9c9b85204f6fe28
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: a33b7fb26b06b9a89b7e4f16699441fd9a5bbd0b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110615231"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355453"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -229,7 +229,7 @@ Cosmos DB unterstützt das Abfragen von Elementen mithilfe von [SQL](./sql-query
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB-API-spezifische Grenzwerte
 
-Cosmos DB unterstützt MongoDB Wire Protocol für Anwendungen, die für MongoDB geschrieben wurden. Sie finden die unterstützten Befehle und Protokollversionen unter [Azure Cosmos DB-API für MongoDB: unterstützte Features und Syntax](mongodb-feature-support.md).
+Cosmos DB unterstützt MongoDB Wire Protocol für Anwendungen, die für MongoDB geschrieben wurden. Sie finden die unterstützten Befehle und Protokollversionen unter [Azure Cosmos DB-API für MongoDB: unterstützte Features und Syntax](mongodb/feature-support-32.md).
 
 Die folgende Tabelle enthält die spezifischen Grenzwerte für die Unterstützung von MongoDB-Features. Andere bereits für die SQL-API bzw. SQL-Core-API erwähnte Diensteinschränkungen gelten auch für die MongoDB-API.
 
@@ -280,10 +280,10 @@ Erfahren Sie mehr über die grundlegenden Konzepte von Cosmos DB: [globale Verte
 Erste Schritte mit Azure Cosmos DB mit einem unserer Schnellstarts:
 
 * [Erste Schritte mit der SQL-API von Azure Cosmos DB](create-sql-api-dotnet.md)
-* [Erste Schritte mit der Azure Cosmos DB-API für MongoDB](create-mongodb-nodejs.md)
-* [Erste Schritte mit der Cassandra-API von Azure Cosmos DB](create-cassandra-dotnet.md)
+* [Erste Schritte mit der Azure Cosmos DB-API für MongoDB](mongodb/create-mongodb-nodejs.md)
+* [Erste Schritte mit der Cassandra-API von Azure Cosmos DB](cassandra/manage-data-dotnet.md)
 * [Erste Schritte mit der Gremlin-API von Azure Cosmos DB](create-graph-dotnet.md)
-* [Erste Schritte mit der Tabellen-API von Azure Cosmos DB](create-table-dotnet.md)
+* [Erste Schritte mit der Tabellen-API von Azure Cosmos DB](table/create-table-dotnet.md)
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/)

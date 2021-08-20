@@ -10,12 +10,12 @@ ms.date: 05/11/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 39b1ebb4ca0a7daf5654c306382effa44d90c798
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 9e1ef9880086818a7111b79f1db06abd4b647a60
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109845760"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419504"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektreplikation für Blockblobs
 
@@ -43,7 +43,7 @@ Die Objektreplikation erfordert, dass außerdem die folgenden Azure Storage-Funk
 
 Durch das Aktivieren des Änderungsfeeds und der Blobversionsverwaltung können zusätzliche Kosten entstehen. Weitere Informationen finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-Die Objektreplikation wird nur für Speicherkonten vom Typ „Universell V2“ unterstützt. Sowohl das Quell- als auch das Zielkonto müssen vom Typ „Universell V2“ sein. 
+Die Objektreplikation wird nur für Speicherkonten vom Typ „Universell V2“ unterstützt. Sowohl das Quell- als auch das Zielkonto müssen vom Typ „Universell V2“ sein.
 
 ## <a name="how-object-replication-works"></a>Funktionsweise der Objektreplikation
 
@@ -68,7 +68,7 @@ Die Objektreplikation wird unterstützt, wenn sich das Quell- und das Zielkonto 
 
 ### <a name="immutable-blobs"></a>Unveränderliche Blobs
 
-Die Objektreplikation unterstützt keine unveränderlichen Blobs. Wenn für einen Quell- oder Zielcontainer eine zeitbasierte Aufbewahrungsrichtlinie oder eine gesetzliche Aufbewahrungspflicht gilt, schlägt die Objektreplikation fehl. Weitere Informationen zu unveränderlichen Blobs finden Sie unter [Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md).
+Die Objektreplikation unterstützt keine unveränderlichen Blobs. Wenn für einen Quell- oder Zielcontainer eine zeitbasierte Aufbewahrungsrichtlinie oder eine gesetzliche Aufbewahrungspflicht gilt, schlägt die Objektreplikation fehl. Weitere Informationen zu unveränderlichen Blobs finden Sie unter [Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](immutable-storage-overview.md).
 
 ## <a name="object-replication-policies-and-rules"></a>Objektreplikationsrichtlinien und -regeln
 

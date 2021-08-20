@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: bc854669c5d724da92c19c19a01f56ebe91f78ee
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b6162657520f91168f46c43c1d6d7f5cbfbe6d38
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757785"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031733"
 ---
 # <a name="azure-virtual-desktop-environment"></a>Azure Virtual Desktop-Umgebung
 
@@ -61,8 +61,8 @@ Informationen zum Einrichten des Azure Virtual Desktop-Hostpools finden Sie unte
 
 Informationen zum Herstellen einer Verbindung mit Azure Virtual Desktop finden Sie in einem der folgenden Artikel:
 
-- [Herstellen einer Verbindung mit Windows 10 oder Windows 7](connect-windows-7-10.md)
-- [Herstellen einer Verbindung mit einem Webbrowser](connect-web.md)
-- [Herstellen einer Verbindung mit dem Android-Client](connect-android.md)
-- [Herstellen einer Verbindung mit dem macOS-Client](connect-macos.md)
-- [Herstellen einer Verbindung mit dem iOS-Client](connect-ios.md)
+- [Herstellen einer Verbindung mit Windows 10 oder Windows 7](./user-documentation/connect-windows-7-10.md)
+- [Herstellen einer Verbindung mit einem Webbrowser](./user-documentation/connect-web.md)
+- [Herstellen einer Verbindung mit dem Android-Client](./user-documentation/connect-android.md)
+- [Herstellen einer Verbindung mit dem macOS-Client](./user-documentation/connect-macos.md)
+- [Herstellen einer Verbindung mit dem iOS-Client](./user-documentation/connect-ios.md)

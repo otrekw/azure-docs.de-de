@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 247ae926dde9b07b1d627621c456333282f00a42
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 755d6ff3e4b7e82390f6bc2c961883de976f5459
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060046"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346437"
 ---
 # <a name="map-data-fields-to-entities-in-azure-sentinel"></a>Zuordnen von Datenfeldern zu Entitäten in Azure Sentinel 
 
@@ -33,7 +33,7 @@ ms.locfileid: "112060046"
 
 ## <a name="introduction"></a>Einführung
 
-Die Entitätszuordnung ist ein wesentlicher Bestandteil der Konfiguration von [Analyseregeln mit geplanter Abfrage](tutorial-detect-threats-custom.md). Dadurch wird die Ausgabe der Regeln (Warnungen und Vorfälle) um wesentliche Informationen erweitert, die als Bausteine für alle nachfolgenden Untersuchungsprozesse und Korrekturmaßnahmen dienen.
+Die Entitätszuordnung ist ein wesentlicher Bestandteil der Konfiguration von [Analyseregeln mit geplanter Abfrage](detect-threats-custom.md). Dadurch wird die Ausgabe der Regeln (Warnungen und Vorfälle) um wesentliche Informationen erweitert, die als Bausteine für alle nachfolgenden Untersuchungsprozesse und Korrekturmaßnahmen dienen.
 
 Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Analyseregeln. Es wird hier separat beschrieben, um das Szenario für das Hinzufügen oder Ändern von Entitätszuordnungen in einer vorhandenen Analyseregel zu erläutern.
 
@@ -81,5 +81,5 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Dokument wurde beschrieben, wie Sie Datenfelder Entitäten in Azure Sentinel-Analyseregeln zuordnen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md) können Sie sich ein Gesamtbild machen.
+- Unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md) können Sie sich ein Gesamtbild machen.
 - Erfahren Sie mehr über [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md).

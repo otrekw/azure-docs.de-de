@@ -10,12 +10,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: cawrites
 ms.date: 09/27/2019
-ms.openlocfilehash: a36fd722f38ec2253ada7e2f759597ea0df080a3
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 27431b24b0f6507ac7031deae6573a8b111e0f76
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110787369"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913664"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Der Import/Export-Dienst von Azure SQL-Datenbank und Managed Instance benötigt viel Zeit, um eine Datenbank zu importieren oder zu exportieren.
 
@@ -33,8 +33,6 @@ Bei den Import- und Exportvorgängen handelt es sich nicht um eine herkömmliche
 
 Der Import-/Exportdienst von Azure SQL-Datenbank stellt für die Verarbeitung von Import- und Exportvorgängen eine begrenzte Anzahl von Compute-VMs (virtual machines, virtuelle Computer) pro Region bereit. Die Compute-VMs werden pro Region gehostet, um regionsübergreifende Bandbreitenverzögerungen und -gebühren bei Import- oder Exportvorgängen zu vermeiden. Eine zu hohe Anzahl gleichzeitiger Anforderungen in einer Region kann zu erheblichen Verzögerungen bei der Vorgangsverarbeitung führen. Die für die Anforderungsausführung benötigte Zeit kann wenige Sekunden, aber auch mehrere Stunden betragen.
 
-> [!NOTE]
-> Wenn eine Anforderung nicht innerhalb von vier Tagen verarbeitet wird, bricht der Dienst die Anforderung automatisch ab.
 
 ## <a name="recommended-solutions"></a>Empfohlene Lösungen
 

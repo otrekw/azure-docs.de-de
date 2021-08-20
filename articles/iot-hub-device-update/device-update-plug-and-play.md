@@ -6,26 +6,26 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 819e3574a2341d2a9f946e7fa7e008c798bd099f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0431f28a23b9fcae8e34e7c163e9628d3d503255
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756429"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396984"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>Device Update for IoT Hub und IoT Plug & Play
 
-Device Update for IoT Hub verwendet [IoT Plug & Play](../iot-pnp/index.yml) zum Erkennen und Verwalten von Geräten, die OTA-Updates (Over-the-Air) empfangen können. Der Device Update-Dienst sendet Eigenschaften und Nachrichten an Geräte und empfängt diese von Geräten, die PnP-Schnittstellen verwenden. Device Update for IoT Hub erfordert, dass IoT-Geräte die folgenden Schnittstellen und die model-id wie unten beschrieben implementieren.
+Device Update for IoT Hub verwendet [IoT Plug & Play](../iot-develop/index.yml) zum Erkennen und Verwalten von Geräten, die OTA-Updates (Over-the-Air) empfangen können. Der Device Update-Dienst sendet Eigenschaften und Nachrichten an Geräte und empfängt diese von Geräten, die PnP-Schnittstellen verwenden. Device Update for IoT Hub erfordert, dass IoT-Geräte die folgenden Schnittstellen und die model-id wie unten beschrieben implementieren.
 
 Konzepte: 
-* Grundlegendes zum [IoT Plug & Play-Geräteclient.](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device?pivots=programming-language-csharp#implement-telemetry,-properties,-and-commands) 
+* Grundlegendes zum [IoT Plug & Play-Geräteclient.](../iot-develop/concepts-developer-guide-device.md?pivots=programming-language-csharp) 
 * Erfahren Sie, wie der [Geräteupdate-Agent implementiert wird.](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)
 
 ## <a name="adu-core-interface"></a>ADU Core-Schnittstelle
 
 Die Schnittstelle „ADUCoreInterface“ wird verwendet, um Updateaktionen und Metadaten an Geräte zu senden und den Updatestatus von Geräten zu empfangen. Die Schnittstelle „ADU Core“ ist in zwei Objekteigenschaften aufgeteilt.
 
-Der erwartete Komponentenname im Modell ist **azureDeviceUpdateAgent**, wenn diese Schnittstelle implementiert wird. Weitere Informationen zu [Azure IoT PnP-Komponenten](../iot-pnp/concepts-modeling-guide.md)
+Der erwartete Komponentenname im Modell ist **azureDeviceUpdateAgent**, wenn diese Schnittstelle implementiert wird. Weitere Informationen zu [Azure IoT PnP-Komponenten](../iot-develop/concepts-modeling-guide.md)
 
 ### <a name="agent-metadata"></a>Agent-Metadaten
 
@@ -56,8 +56,8 @@ Es handelt sich um den Satz der Eigenschaften, die den Hersteller und das Modell
 
 |Name|Schema|Direction|BESCHREIBUNG|
 |----|------|---------|-----------|
-|Hersteller|Zeichenfolge|Gerät an Cloud|Der Gerätehersteller, der über `deviceProperties` gemeldet wird. Diese Eigenschaft wird aus einem von zwei Speicherorten gelesen. Die Schnittstelle AzureDeviceUpdateCore versucht zunächst, den Wert aduc_manufacturer aus der [Konfigurationsdatei](device-update-configuration-file.md) zu lesen.  Wenn der Wert in der Konfigurationsdatei keine Daten enthält, wird standardmäßig die Kompilierzeitdefinition für ADUC_DEVICEPROPERTIES_MANUFACTURER gemeldet. Diese Eigenschaft wird nur zur Startzeit gemeldet.|
-|model|Zeichenfolge|Gerät an Cloud|Das Gerätemodell des Geräts, das über gemeldet wird `deviceProperties`. Diese Eigenschaft wird aus einem von zwei Speicherorten gelesen. Die Schnittstelle AzureDeviceUpdateCore versucht zunächst, den Wert aduc_model aus der [Konfigurationsdatei](device-update-configuration-file.md) zu lesen.  Wenn der Wert in der Konfigurationsdatei keine Daten enthält, wird standardmäßig die Kompilierzeitdefinition für ADUC_DEVICEPROPERTIES_MODEL gemeldet. Diese Eigenschaft wird nur zur Startzeit gemeldet.|
+|Hersteller|Zeichenfolge|Gerät an Cloud|Der Gerätehersteller, der über `deviceProperties` gemeldet wird. Diese Eigenschaft wird aus einem von zwei Speicherorten gelesen. Die Schnittstelle AzureDeviceUpdateCore versucht zunächst, den Wert aduc_manufacturer aus der [Konfigurationsdatei](device-update-configuration-file.md) zu lesen.  Wenn der Wert in der Konfigurationsdatei keine Daten enthält, wird standardmäßig die Kompilierzeitdefinition für ADUC_DEVICEPROPERTIES_MANUFACTURER gemeldet. Diese Eigenschaft wird nur zur Startzeit gemeldet. Standardwert „Contoso“|
+|model|Zeichenfolge|Gerät an Cloud|Das Gerätemodell des Geräts, das über gemeldet wird `deviceProperties`. Diese Eigenschaft wird aus einem von zwei Speicherorten gelesen. Die Schnittstelle AzureDeviceUpdateCore versucht zunächst, den Wert aduc_model aus der [Konfigurationsdatei](device-update-configuration-file.md) zu lesen.  Wenn der Wert in der Konfigurationsdatei keine Daten enthält, wird standardmäßig die Kompilierzeitdefinition für ADUC_DEVICEPROPERTIES_MODEL gemeldet. Diese Eigenschaft wird nur zur Startzeit gemeldet. Standardwert „Video“|
 |aduVer|Zeichenfolge|Gerät an Cloud|Version des Device Update-Agents, der auf dem Gerät ausgeführt wird. Dieser Wert wird nur dann aus dem Build gelesen, wenn während der Kompilierungszeit ENABLE_ADU_TELEMETRY_REPORTING auf 1 (TRUE) festgelegt ist. Kunden können sich entscheiden, die Versionsberichterstellung zu deaktivieren, indem Sie den Wert auf 0 (FALSE) festlegen. [Anpassen der Eigenschaften des Device Update-Agents](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md).|
 |doVer|Zeichenfolge|Gerät an Cloud|Version des Übermittlungsoptimierungs-Agents, der auf dem Gerät ausgeführt wird. Der Wert wird nur dann aus dem Build gelesen, wenn während der Kompilierungszeit ENABLE_ADU_TELEMETRY_REPORTING auf 1 (TRUE) festgelegt ist. Kunden können sich entscheiden, die Versionsberichterstellung zu deaktivieren, indem Sie den Wert auf 0 (FALSE) festlegen. [Anpassen von Eigenschaften des Übermittlungsoptimierungs-Agents](https://github.com/microsoft/do-client/blob/main/README.md#building-do-client-components).|
 
@@ -80,7 +80,7 @@ Beispiel für IoT Hub-Gerätezwilling
                             }
 ```
 
-Hinweis: Das Gerät oder Modul muss die {"__t": "c"} Markierung hinzufügen, um anzuzeigen, dass sich das Element auf eine Komponente bezieht, erfahren Sie mehr [hier](https://docs.microsoft.com/azure/iot-pnp/concepts-convention#sample-multiple-components-writable-property).
+Hinweis: Das Gerät oder Modul muss die {"__t": "c"} Markierung hinzufügen, um anzuzeigen, dass sich das Element auf eine Komponente bezieht, erfahren Sie mehr [hier](../iot-develop/concepts-convention.md#sample-multiple-components-writable-property).
 
 ### <a name="service-metadata"></a>Dienstmetadaten
 
@@ -106,9 +106,9 @@ Dienstmetadaten enthalten Felder, die von den Device Update-Diensten zum Kommuni
 
 ## <a name="device-information-interface"></a>Geräteinformationsschnittstelle
 
-Die Geräteinformationsschnittstelle ist ein Konzept, das in der [IoT Plug & Play-Architektur](../iot-pnp/overview-iot-plug-and-play.md) verwendet wird. Sie enthält Gerät-zu-Cloud-Eigenschaften, die Informationen zur Hardware und zum Betriebssystem des Geräts bereitstellen. Device Update for IoT Hub verwendet die Eigenschaften DeviceInformation.manufacturer und DeviceInformation.model für Telemetriedaten und Diagnosen verwendet. Weitere Informationen zur Geräteinformationsschnittstelle finden Sie in diesem [Beispiel](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json).
+Die Geräteinformationsschnittstelle ist ein Konzept, das in der [IoT Plug & Play-Architektur](../iot-develop/overview-iot-plug-and-play.md) verwendet wird. Sie enthält Gerät-zu-Cloud-Eigenschaften, die Informationen zur Hardware und zum Betriebssystem des Geräts bereitstellen. Device Update for IoT Hub verwendet die Eigenschaften DeviceInformation.manufacturer und DeviceInformation.model für Telemetriedaten und Diagnosen verwendet. Weitere Informationen zur Geräteinformationsschnittstelle finden Sie in diesem [Beispiel](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json).
 
-Der erwartete Komponentenname im Modell ist **deviceInformation**, wenn diese Schnittstelle implementiert wird. [Weitere Informationen zu Azure IoT PnP-Komponenten](../iot-pnp/concepts-modeling-guide.md)
+Der erwartete Komponentenname im Modell ist **deviceInformation**, wenn diese Schnittstelle implementiert wird. [Weitere Informationen zu Azure IoT PnP-Komponenten](../iot-develop/concepts-modeling-guide.md)
 
 |Name|type|Schema|Direction|BESCHREIBUNG|Beispiel|
 |----|----|------|---------|-----------|-----------|
@@ -123,6 +123,6 @@ Der erwartete Komponentenname im Modell ist **deviceInformation**, wenn diese Sc
 
 ## <a name="model-id"></a>Modell-ID 
 
-Die Modell-ID gibt an, wie intelligente Geräte ihre Funktionen für Azure IoT-Anwendungen mit IoT Plug & Play ankündigen. Weitere Informationen zum Erstellen von intelligenten Geräten zum Ankündigen ihrer Funktionen für Azure IoT-Anwendungen finden Sie im [Entwicklerleitfaden für IoT Plug & Play-Geräte](../iot-pnp/concepts-developer-guide-device.md).
+Die Modell-ID gibt an, wie intelligente Geräte ihre Funktionen für Azure IoT-Anwendungen mit IoT Plug & Play ankündigen. Weitere Informationen zum Erstellen von intelligenten Geräten zum Ankündigen ihrer Funktionen für Azure IoT-Anwendungen finden Sie im [Entwicklerleitfaden für IoT Plug & Play-Geräte](../iot-develop/concepts-developer-guide-device.md).
 
-Für Device Update for IoT Hub muss das intelligente IoT Plug & Play-Gerät im Rahmen der Geräteverbindung eine Modell-ID mit dem Wert **dtmi:AzureDeviceUpdate;1** ankündigen. [Weitere Informationen zum Ankündigen einer Modell-ID](../iot-pnp/concepts-developer-guide-device.md#model-id-announcement).
+Für Device Update for IoT Hub muss das intelligente IoT Plug & Play-Gerät im Rahmen der Geräteverbindung eine Modell-ID mit dem Wert **dtmi:AzureDeviceUpdate;1** ankündigen. [Weitere Informationen zum Ankündigen einer Modell-ID](../iot-develop/concepts-developer-guide-device.md#model-id-announcement).

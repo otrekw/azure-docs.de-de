@@ -4,18 +4,20 @@ description: Informationen zum Sichern und Wiederherstellen eines Servers in Azu
 author: savjani
 ms.author: pariks
 ms.service: mysql
-ms.devlang: azurepowershel
+ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 43ce39a1fc05c8ffedd1ae8404cc20c1a498a73f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c5ebcb4d5807c93349f0e748bf3723899ea2a36
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94539015"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345853"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Sichern und Wiederherstellen eines Azure Database for MySQL-Servers mithilfe von PowerShell
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL-Server werden regelmäßig gesichert, um Wiederherstellungsfeatures zu aktivieren. Mithilfe dieses Features können Sie für den Server und alle dazugehörigen Datenbanken einen Zustand zu einem früheren Zeitpunkt auf einem neuen Server wiederherstellen.
 

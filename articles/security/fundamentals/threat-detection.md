@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 81b2227ac519de4d03bb63907d14c23b9c34dc64
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 19944b336a9140a7133b2f96d7821c56a59abe7e
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101034"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112676850"
 ---
 # <a name="azure-threat-protection"></a>Azure-Bedrohungsschutz
 
@@ -287,7 +287,7 @@ Die Konfiguration einer WAF auf Ihrem Anwendungsgateway bietet die folgenden Vor
 
 Die Anomalieerkennungs-API ist eine API, die hilfreich zum Erkennen von vielen verschiedenen anomalen Mustern in Ihren Zeitreihendaten ist. Die API weist jedem Datenpunkt in der Zeitreihe einen Anomaliewert zu, der zum Generieren von Warnungen, zum Durchführen der Überwachung per Dashboard oder zum Verbinden mit Ihren Ticketausstellungssystemen verwendet werden kann.
 
-Die [API zur Anomalieerkennung](../../machine-learning/team-data-science-process/apps-anomaly-detection-api.md) kann die folgenden Arten von Anomalien in Zeitreihendaten erkennen:
+Die [API zur Anomalieerkennung](/azure/architecture/data-science-process/apps-anomaly-detection-api) kann die folgenden Arten von Anomalien in Zeitreihendaten erkennen:
 
 -   **Spitzen und Abfälle:** Beim Überwachen der Anzahl von fehlerhaften Anmeldeversuchen bei einem Dienst oder der Anzahl von Auscheckvorgängen einer E-Commerce-Website können ungewöhnliche Spitzen oder Abfälle auf Sicherheitsangriffe oder Dienstunterbrechungen hinweisen.
 

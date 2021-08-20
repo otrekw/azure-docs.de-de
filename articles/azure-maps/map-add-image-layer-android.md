@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: e1d99297c0357039606149bdf7e5a526258fc7c5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4c11a1275b94eebba33819ae6c9ffeb313a3ce0b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054110"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463102"
 ---
 # <a name="add-an-image-layer-to-a-map-android-sdk"></a>Hinzufügen einer Bildebene zu einer Karte (Android SDK)
 
@@ -30,7 +30,7 @@ In diesem Artikel erfahren Sie, wie Sie einen festen Satz an Koordinaten mit ein
 
 ## <a name="add-an-image-layer"></a>Hinzufügen einer Bildebene
 
-Der folgende Code legt ein Bild einer [Karte von Newark, New Jersey, von 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) über die Karte. Dieses Bild wird dem Ordner `drawable` des Projekts hinzugefügt. Eine Bildebene wird erstellt, indem das Bild und die Koordinaten für die vier Ecken im Format `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` festgelegt werden. Häufig ist das Hinzufügen von Bildebenen unterhalb der `label`-Ebene wünschenswert.
+Der folgende Code legt ein Bild einer Karte von Newark, New Jersey, von 1922 über die Karte. Dieses Bild wird dem Ordner `drawable` des Projekts hinzugefügt. Eine Bildebene wird erstellt, indem das Bild und die Koordinaten für die vier Ecken im Format `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` festgelegt werden. Häufig ist das Hinzufügen von Bildebenen unterhalb der `label`-Ebene wünschenswert.
 
 ::: zone pivot="programming-language-java-android"
 

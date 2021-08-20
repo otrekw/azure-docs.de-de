@@ -6,12 +6,12 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 814c703a2db23088fc959501d3f0266ff19b6f49
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e4dbdbb2f46546391b6e749a94bfa655bb9de45e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386270"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417341"
 ---
 # <a name="event-grid-on-kubernetes---event-filtering-for-subscriptions"></a>Event Grid in Kubernetes – Ereignisfilterung für Abonnements
 In Event Grid in Kubernetes können Filter für eine beliebige Eigenschaft in den JSON-Nutzdaten angegeben werden. Diese Filter werden als Gruppe von AND-Bedingungen erstellt, wobei jede äußere Bedingung über optionale innere OR-Bedingungen verfügt. Für jede AND-Bedingung geben Sie die folgenden Werte an:
@@ -20,7 +20,7 @@ In Event Grid in Kubernetes können Filter für eine beliebige Eigenschaft in de
 - Key: Der JSON-Pfad zur Eigenschaft, auf die der Filter angewendet werden soll.
 - Value: Referenzwert, für den der Filter ausgeführt wird (oder) Values: Gruppe von Referenzwerten, für die der Filter ausgeführt wird.
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 

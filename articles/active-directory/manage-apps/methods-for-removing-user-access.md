@@ -2,20 +2,21 @@
 title: Entfernen des Zugriffs eines Benutzers auf eine Anwendung in Azure Active Directory
 description: Hier wird erläutert, wie Sie den Zugriff eines Benutzers auf eine Anwendung in Azure Active Directory entfernen
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/02/2020
-ms.author: mtillman
-ms.openlocfilehash: bc6dc9120b0c1f31e3c8c92343513306b1760db1
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: phsignor
+ms.openlocfilehash: 7466cfda1f4a38ea1559d68f8b1fe4779efe97d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078598"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346958"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Aufheben des Zugriffs eines Benutzers auf eine Anwendung
 
@@ -39,16 +40,15 @@ Die Deaktivierung der Benutzerzustimmung für das gesamte Verzeichnis führt daz
 
 Befolgen Sie die nachstehenden Anweisungen, um **alle zukünftigen Vorgänge der Benutzerzustimmung in Ihrem gesamten Verzeichnis zu deaktivieren**:
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**. 
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**.
 
-3.  Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**.
+3. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**.
 
-5.  Klicken Sie auf **Benutzereinstellungen**.
+4. Klicken Sie auf **Benutzereinstellungen**.
 
-6.  Legen Sie die Umschaltfläche **Benutzer können Apps Zugriff auf Unternehmensdaten in ihrem Namen gestatten** auf **Nein** fest, und klicken Sie auf die Schaltfläche „Speichern“.
-
+5. Legen Sie die Umschaltfläche **Benutzer können Apps Zugriff auf Unternehmensdaten in ihrem Namen gestatten** auf **Nein** fest, und klicken Sie auf die Schaltfläche „Speichern“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,17 +2,18 @@
 title: Ermitteln und Erkunden von Daten in ADF mithilfe von Purview
 description: Hier erfahren Sie, wie Sie Daten in Azure Data Factory mithilfe von Purview ermitteln und erkunden können.
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 author: linda33wj
 ms.author: jingwang
 ms.custom: seo-lt-2019
-ms.date: 01/15/2021
-ms.openlocfilehash: f37d2461a0e9c2db0cb3c7aa911dfb0ff5e049af
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 08/10/2021
+ms.openlocfilehash: 145f7c50d6fdd2fef5e1f31e029c06434fa2e8e5
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486483"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356443"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>Ermitteln und Erkunden von Daten in ADF mithilfe von Purview
 
@@ -26,6 +27,7 @@ Sie können in ADF die folgenden Aufgaben ausführen:
 - Verbinden dieser Daten mit Ihrer Data Factory mit verknüpften Diensten oder Datasets 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
+
 - [Azure Purview-Konto](../purview/create-catalog-portal.md) 
 - [Data Factory](./quickstart-create-data-factory-portal.md) 
 - [Verbinden eines Azure Purview-Kontos in Data Factory](./connect-data-factory-to-azure-purview.md) 
@@ -47,5 +49,8 @@ Sie können einen verknüpften Dienst, ein Dataset oder einen Datenfluss für di
 
 ##  <a name="nextsteps"></a>Nächste Schritte 
 
-- [Registrieren und Überprüfen von Azure Data Factory-Ressourcen in Azure Purview](../purview/register-scan-azure-synapse-analytics.md)
-- [Suchen im Azure Purview Data Catalog](../purview/how-to-search-catalog.md)
+[Tutorial: Pushen von Data Factory-Herkunftsdaten an Azure Purview](turorial-push-lineage-to-purview.md)
+
+[Verbinden eines Azure Purview-Kontos in Data Factory](connect-data-factory-to-azure-purview.md) 
+
+[Suchen im Azure Purview Data Catalog](../purview/how-to-search-catalog.md)

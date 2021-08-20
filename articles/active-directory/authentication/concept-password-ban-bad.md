@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 07/13/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1910a9c62b1d1ab6de130ace3d759243d9ff36d6
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652019"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687855"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Ausschließen von ungeeigneten Kennwörtern mit dem Azure Active Directory-Kennwortschutz
 
@@ -220,7 +220,7 @@ Wenn ein Benutzer versucht, ein Kennwort auf einen Wert zurückzusetzen, der ges
 > [!NOTE]
 > Lokale AD DS-Benutzer, die nicht mit Azure AD synchronisiert werden, profitieren basierend auf der vorhandenen Lizenzierung für synchronisierte Benutzer ebenfalls vom Azure AD-Kennwortschutz.
 
-Weitere Informationen zur Lizenzierung einschließlich der Kosten finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+Weitere Informationen zur Lizenzierung einschließlich der Kosten finden Sie unter [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

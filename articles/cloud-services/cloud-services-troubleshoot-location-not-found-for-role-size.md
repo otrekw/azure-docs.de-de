@@ -2,18 +2,18 @@
 title: Problembehandlung von LocationNotFoundForRoleSize beim Bereitstellen eines Clouddiensts (klassisch) in Azure | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie eine LocationNotFoundForRoleSize-Ausnahme bei der Bereitstellung eines Clouddiensts (klassisch) in Azure auflösen.
 services: cloud-services
-author: mamccrea
-ms.author: mamccrea
+author: hirenshah1
+ms.author: hirshah
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7938dcb3e66bc618832171668e392e4fff0cf5a9
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 971fffc02241a841ebbb1bc0855e8484579252e4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706174"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090113"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Problembehandlung von LocationNotFoundForRoleSize beim Bereitstellen eines Clouddiensts (klassisch) in Azure
 

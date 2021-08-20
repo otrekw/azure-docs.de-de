@@ -10,12 +10,12 @@ ms.service: security
 ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
-ms.openlocfilehash: ee4e8f3abad2a4da924e42f81004c86691a1bc8a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 6f99ce0f0229de5423a6dde4472b5b11b992f7e8
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792509"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422712"
 ---
 # <a name="design-secure-applications-on-azure"></a>Entwerfen von sicheren Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwerfen. Es werden Trainingsressourcen zusammen mit Sicherheitsfragen und -konzepten behandelt, die Sie in der Anforderungen- und in der Entwurfsphase von Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -86,7 +86,7 @@ Die OWASP Top 10 befassen sich mit den wesentlichen Sicherheitsrisiken für Weba
 Fundiertes Wissen zu diesen Sicherheitsrisiken ermöglicht es Ihnen, Anforderungs- und Entwurfsscheidungen zu treffen, mit denen diese Risiken in Ihrer Anwendung minimiert werden.
 
 Es ist wichtig, dass Sie sich Gedanken über Sicherheitskontrollen machen, um Sicherheitsverletzungen zu verhindern.
-Sie müssen aber auch annehmen, dass [Sicherheitsverletzungen](/azure/devops/learn/devops-at-microsoft/security-in-devops) auftreten. Das Annehmen einer Sicherheitsverletzung führt dazu, dass einige wichtige Fragen zur Sicherheit im Voraus beantwortet werden, sodass sie nicht in einem Notfall beantwortet werden müssen:
+Sie müssen aber auch annehmen, dass [Sicherheitsverletzungen](/devops/operate/security-in-devops) auftreten. Das Annehmen einer Sicherheitsverletzung führt dazu, dass einige wichtige Fragen zur Sicherheit im Voraus beantwortet werden, sodass sie nicht in einem Notfall beantwortet werden müssen:
 
   - Wie erkenne ich einen Angriff?
 

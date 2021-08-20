@@ -11,12 +11,12 @@ ms.collection: windows
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: 6dc2fb12ebd166f62f04a1ecb9833edaad18f539
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 9749cb2e01950c05daf88bae831500c27033d31d
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789609"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112279755"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>VM-Momentaufnahmenerweiterung unter Windows für Azure Backup
 
@@ -75,7 +75,7 @@ Der folgende JSON-Code zeigt das Schema für die VM-Momentaufnahmenerweiterung. 
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
-Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Allerdings sollte eine VM-Momentaufnahmenerweiterung vorzugsweise durch Aktivieren der Sicherung auf dem virtuellen Computer zu einem virtuellen Computer hinzugefügt werden. Dies kann durch eine Resource Manager-Vorlage erreicht werden.  Eine Resource Manager-Beispielvorlage zur Durchführung einer Sicherung auf einem virtuellen Computer finden Sie im [Azure-Schnellstartkatalog](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/).
+Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Allerdings sollte eine VM-Momentaufnahmenerweiterung vorzugsweise durch Aktivieren der Sicherung auf dem virtuellen Computer zu einem virtuellen Computer hinzugefügt werden. Dies kann durch eine Resource Manager-Vorlage erreicht werden.  Eine Resource Manager-Beispielvorlage zur Durchführung einer Sicherung auf einem virtuellen Computer finden Sie im [Azure-Schnellstartkatalog](https://azure.microsoft.com/resources/templates/recovery-services-backup-vms/).
 
 
 ## <a name="azure-cli-deployment"></a>Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle

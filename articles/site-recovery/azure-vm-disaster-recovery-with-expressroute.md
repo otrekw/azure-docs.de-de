@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 07/25/2021
 ms.author: mayg
-ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c6e5bfb3e014540f4b23438cfe4869ace1f1345
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88654377"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339864"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrieren von ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -166,7 +166,7 @@ Diese Konfiguration hilft Ihnen beim Schutz vor Ausfällen der primären Express
 
 In dieser Konfiguration gibt es nur eine ExpressRoute-Leitung. Obwohl die Leitung eine redundante Verbindung besitzt, für den Fall, dass eine ausfällt, bietet eine einzelne Routingleitung keine Resilienz, wenn Ihre Peeringregion ausfällt. Beachten Sie dabei Folgendes:
 
-- Sie können virtuelle Azure-Computer in eine beliebige Azure-Region innerhalb [desselben geografischen Standorts](azure-to-azure-support-matrix.md#region-support) replizieren. Wenn sich die Azure-Zielregion nicht innerhalb desselben Standorts wie die Quelle befindet, müssen Sie ExpressRoute Premium aktivieren, wenn Sie eine einzelne ExpressRoute-Leitung verwenden. Erfahren Sie mehr über [ExpressRoute-Standorte](../expressroute/expressroute-locations.md) und [ExpressRoute – Preise](https://azure.microsoft.com/pricing/details/expressroute/).
+- Wenn sich die Azure-Zielregion nicht innerhalb desselben Standorts wie die Quelle befindet, müssen Sie ExpressRoute Premium aktivieren, wenn Sie eine einzelne ExpressRoute-Leitung verwenden. Erfahren Sie mehr über [ExpressRoute-Standorte](../expressroute/expressroute-locations.md) und [ExpressRoute – Preise](https://azure.microsoft.com/pricing/details/expressroute/).
 - Sie können Quell- und Ziel-vNets nicht gleichzeitig mit der Leitung verbinden, wenn in der Zielregion derselbe IP-Adressraum verwendet wird. Szenario:    
     -  Trennen Sie die Verbindung mit der Quelle, und stellen Sie dann die Verbindung mit dem Ziel her. Diese Verbindungsänderung kann als Teil eines Site Recovery-Wiederherstellungsplans geskriptet werden. Beachten Sie dabei Folgendes:
         - Wenn bei einem regionalen Ausfall kein Zugriff auf die primäre Region möglich ist, kann der Trennvorgang fehlschlagen. Dies könnte sich auf die Herstellung einer Verbindung mit der Zielregion auswirken.

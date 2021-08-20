@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/18/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: ce17b54905861759c437c2df735dd5515991b507
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 95f201a7809184b511c3187cf3fcf5fadd233168
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456615"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346001"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Bereitstellen von automatisch skaliertem Durchsatz für eine Datenbank oder einen Container in der SQL-API von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In diesem Artikel erfahren Sie, wie Sie automatisch skalierten Durchsatz für eine Datenbank oder einen Container (Sammlung, Diagramm oder Tabelle) in der SQL-API von Azure Cosmos DB bereitstellen. Sie können die Autoskalierung für einen einzelnen Container aktivieren oder automatisch skalierten Durchsatz für eine Datenbank bereitstellen, sodass er für alle in der Datenbank enthaltenen Container zur Verfügung steht.
 
-Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Bereitstellen des Durchsatzes in den Artikeln zur [API für MongoDB](how-to-provision-throughput-mongodb.md), [Cassandra-API](how-to-provision-throughput-cassandra.md) und [Gremlin-API](how-to-provision-throughput-gremlin.md).
+Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Bereitstellen des Durchsatzes in den Artikeln zur [API für MongoDB](mongodb/how-to-provision-throughput-mongodb.md), [Cassandra-API](cassandra/how-to-provision-throughput-cassandra.md) und [Gremlin-API](how-to-provision-throughput-gremlin.md).
 
 ## <a name="azure-portal"></a>Azure-Portal
 

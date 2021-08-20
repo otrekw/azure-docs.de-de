@@ -3,21 +3,21 @@ title: Verschieben einer Single-Page-App in die Produktion
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine Single-Page-Webanwendung (Übergang in die Produktion) erstellen.
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: mtillman
+ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 48f9b90ef72d79510747cba82a59386d4f3a4372
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 4f4821dc48650c14b6d9736a7238dc44c500c259
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075167"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357551"
 ---
 # <a name="single-page-application-move-to-production"></a>Single-Page-Webanwendung: Überführen in die Produktion
 
@@ -27,7 +27,7 @@ Nachdem Sie nun wissen, wie Sie ein Token zum Aufrufen von Web-APIs abrufen, sol
 
 ## <a name="deploy-your-app"></a>Bereitstellen Ihrer App
 
-Sehen Sie sich ein [Beispiel für eine Bereitstellung](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter3) an, um zu erfahren, wie Sie Ihre SPA- und Web-API-Projekte mit Azure Storage bzw. Azure App Services bereitstellen. 
+Sehen Sie sich ein [Beispiel für eine Bereitstellung](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter3) an, um zu erfahren, wie Sie Ihre SPA- und Web-API-Projekte mit Azure Storage bzw. Azure App Services bereitstellen.
 
 ## <a name="code-samples"></a>Codebeispiele
 

@@ -1,17 +1,17 @@
 ---
 title: Verwenden der clientseitigen Verschlüsselung mit Always Encrypted für Azure Cosmos DB
 description: Erfahren Sie, wie Sie die clientseitigen Verschlüsselung mit Always Encrypted für Azure Cosmos DB verwenden
-author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: thweiss
-ms.openlocfilehash: d8aaa34fe2e81515866c047c6a171b1bdb58ff3f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+author: ThomasWeiss
+ms.openlocfilehash: 9135e35e74eda1387dc6dee5ba0875c4152439b0
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385698"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356382"
 ---
 # <a name="use-client-side-encryption-with-always-encrypted-for-azure-cosmos-db-preview"></a>Verwenden der clientseitigen Verschlüsselung mit Always Encrypted für Azure Cosmos DB (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -80,6 +80,8 @@ Der Azure Cosmos DB Dienst erkennt nie den Nur-Text von Eigenschaften, die mit A
 - Bei der **deterministischen Verschlüsselung** wird immer derselbe verschlüsselte Wert für einen gegebenen Nur-Textwert und eine gegebene Verschlüsselungskonfiguration generiert. Mithilfe der deterministischen Verschlüsselung können Abfragen Gleichheitsfilter für verschlüsselte Eigenschaften ausgeführt werden. Es kann Angreifern jedoch ermöglichen, Informationen zu verschlüsselten Werten zu erraten, indem sie die Muster in der verschlüsselten Eigenschaft untersuchen. Dies gilt besonders, wenn es sich um einen kleinen Satz möglicher verschlüsselter Werte handelt, beispielsweise WAHR/FALSCH, oder die Regionen „Nord“/ „Süd“/ „Ost“/ „West“.
 
 - **Zufälligen Verschlüsselung**: Es wird eine Methode verwendet, die Daten in einer weniger vorhersagbaren Weise verschlüsselt. Die zufällige Verschlüsselung ist sicherer, verhindert jedoch, dass Abfragen auf verschlüsselte Eigenschaften gefiltert werden können.
+
+Weitere Informationen zur deterministischen und zufälligen Verschlüsselung in Always Encrypted finden Sie unter [Generieren des Initialisierungsvektors (IV)](/sql/relational-databases/security/encryption/always-encrypted-cryptography#step-1-generating-the-initialization-vector-iv).
 
 ## <a name="setup-azure-key-vault"></a>Einrichten von Azure Key Vault
 

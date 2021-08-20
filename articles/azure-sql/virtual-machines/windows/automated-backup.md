@@ -15,12 +15,12 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 557d43829d8e235611d1e75cddd8f941e43433ee
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a93214a8577dc298551e4e819282a58f10a72f38
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666181"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347163"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatisierte Sicherung v2 für virtuelle Azure-Computer (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -128,9 +128,7 @@ Wählen Sie auf der Registerkarte **SQL Server-Einstellungen** unter **Automatis
 
 ## <a name="configure-existing-vms"></a>Konfigurieren vorhandener VMs
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
-Für vorhandene virtuelle SQL Server-Computer navigieren Sie zur Ressource [Virtuelle SQL-Computer](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) und klicken dann auf **Sicherungen**, um Ihre automatisierten Sicherungen zu konfigurieren.
+Für vorhandene virtuelle SQL Server-Computer navigieren Sie zur Ressource [Virtuelle SQL-Computer](manage-sql-vm-portal.md#access-the-resource) und klicken dann auf **Sicherungen**, um Ihre automatisierten Sicherungen zu konfigurieren.
 
 ![Automatisierte SQL-Sicherung für vorhandene virtuelle Computer](./media/automated-backup/sql-server-configuration.png)
 
@@ -317,7 +315,7 @@ Zum einen können Sie den Status durch Aufruf von [msdb.managed_backup.sp_get_ba
 Eine andere Option besteht darin, das integrierte Datenbank-E-Mail-Feature für Benachrichtigungen zu verwenden.
 
 1. Rufen Sie die gespeicherte Prozedur [msdb.managed_backup.sp_set_parameter](/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) auf, um dem Parameter **SSMBackup2WANotificationEmailIds** eine E-Mail-Adresse zuzuweisen. 
-1. Aktivieren Sie [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md), um die E-Mails von der Azure-VM zu senden.
+1. Aktivieren Sie [SendGrid](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-twilio-sendgrid-accountcreate-a-twilio-sendgrid-account), um die E-Mails von der Azure-VM zu senden.
 1. Verwenden Sie den SMTP-Server und den Benutzernamen, um das Datenbank-E-Mail-Feature zu konfigurieren. Sie können das Datenbank-E-Mail-Feature in SQL Server Management Studio oder mithilfe von Transact-SQL-Befehlen konfigurieren. Weitere Informationen finden Sie unter [Datenbank-E-Mail](/sql/relational-databases/database-mail/database-mail).
 1. [Konfigurieren Sie den SQL Server-Agent für die Verwendung von Datenbank-E-Mail](/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail).
 1. Stellen Sie sicher, dass der SMTP-Port sowohl in der lokalen VM-Firewall als auch in der Netzwerksicherheitsgruppe für die VM zugelassen ist.

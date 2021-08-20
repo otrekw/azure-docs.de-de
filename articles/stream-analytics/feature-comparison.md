@@ -6,12 +6,12 @@ ms.author: raan
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 037bd8bc823cd8c77241d0ca25174e29d25149b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cb51198fec12590b497f94b23fce8b32b67bb8c
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020535"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396813"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Vergleich der Features von Azure Stream Analytics
 
@@ -37,13 +37,13 @@ Mit Azure Stream Analytics können Sie mit [Azure-Portal](stream-analytics-quick
 |Auflisten von Aufträgen und Anzeigen von Auftragsentitäten     |Ja         |Ja        |Ja         |
 |Exportieren eines Auftrags in ein lokales Projekt     |Nein         |Ja         |Ja         |
 |Senden, Starten und Beenden von Aufträgen     |Ja         |Ja         |Ja         |
-|Anzeigen von Auftragsmetriken und Diagramm     |Ja         |Ja         |Im Portal öffnen         |
-|Anzeigen von Auftragslaufzeitfehlern     |Ja         |Ja         |Nein         |
-|Ressourcenprotokolle     |Ja         |Nein         |Nein         |
-|Benutzerdefinierte Nachrichteneigenschaften     |Ja         |Ja         |Nein       |
-|Benutzerdefinierte C#-Codefunktion und Deserialisierer|Schreibgeschützter Modus|Ja|Nein|
+|Anzeigen von Auftragsmetriken und Diagramm     |Ja         |Ja         |Ja         |
+|Anzeigen von Auftragslaufzeitfehlern     |Ja         |Ja         |Ja         |
+|Ressourcenprotokolle     |Ja         |Nein         |Ja         |
+|Benutzerdefinierte Nachrichteneigenschaften     |Ja         |Ja         |Ja       |
+|Benutzerdefinierte C#-Codefunktion und Deserialisierer|Schreibgeschützter Modus|Ja|Ja|
 |JavaScript-UDF und -UDA     |Ja         |Ja         |Nur Windows         |
-|Machine Learning Service     |Ja        |Ja         |Nein         |
+|Machine Learning Service     |Ja        |Ja         |Ja         |
 |Azure Machine Learning Studio (klassisch)|Ja, aber die Abfrage kann nicht getestet werden        |Ja |Nein         |
 |Kompatibilitätsgrad     |1.0</br>1.1</br>1.2 (Standard)         |1.0</br>1.1</br>1.2 (Standard)           |1.0</br>1.1</br>1.2 (Standard)           |
 |Integrierte Anomalieerkennungsfunktionen auf ML-Basis     |Ja         |Ja         |Ja         |

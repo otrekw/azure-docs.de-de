@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 1f0085695d810a2e6c30da410ca4d11fe4d5f490
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 170d6078863feb76582974e4b1581ea60edca7c2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556008"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343566"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Beispiel: Erstellen eines benutzerdefinierten Skills der Formularerkennung
 
@@ -26,7 +26,7 @@ In diesem Beispiel für ein Azure Cognitive Search-Skillset lernen Sie, wie Sie 
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 
-[!INCLUDE [create resource](../cognitive-services/form-recognizer/includes/create-resource.md)]
+[!INCLUDE [create resource](../applied-ai-services/form-recognizer/includes/create-resource.md)]
 
 ## <a name="train-your-model"></a>Trainieren Ihres Modells
 
@@ -34,7 +34,7 @@ Sie müssen ein Formularerkennungsmodell mit Ihren Eingabeformularen trainieren,
 
 ## <a name="set-up-the-custom-skill"></a>Einrichten des benutzerdefinierten Skills
 
-In diesem Tutorial wird das Projekt [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) im GitHub-Repository [Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) verwendet. Klonen Sie dieses Repository auf Ihrem lokalen Computer, und navigieren Sie zu **Vision/AnalyzeForm/** , um auf das Projekt zuzugreifen. Öffnen Sie dann _AnalyzeForm.csproj_ in Visual Studio. Dieses Projekt erstellt eine Azure Functions-Ressource, die die [Schnittstelle für benutzerdefinierte Skills](cognitive-search-custom-skill-interface.md) erfüllt und für die Azure Cognitive Search-Anreicherung verwendet werden kann. Es nimmt als Eingabe Formulardokumente entgegen und gibt die angegebenen Schlüssel-Wert-Paare (als Text) aus.
+In diesem Tutorial wird das Projekt [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/main/Vision/AnalyzeForm) im GitHub-Repository [Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) verwendet. Klonen Sie dieses Repository auf Ihrem lokalen Computer, und navigieren Sie zu **Vision/AnalyzeForm/** , um auf das Projekt zuzugreifen. Öffnen Sie dann _AnalyzeForm.csproj_ in Visual Studio. Dieses Projekt erstellt eine Azure Functions-Ressource, die die [Schnittstelle für benutzerdefinierte Skills](cognitive-search-custom-skill-interface.md) erfüllt und für die Azure Cognitive Search-Anreicherung verwendet werden kann. Es nimmt als Eingabe Formulardokumente entgegen und gibt die angegebenen Schlüssel-Wert-Paare (als Text) aus.
 
 Fügen Sie als Erstes Umgebungsvariablen auf Projektebene hinzu. Suchen Sie im linken Bereich das Projekt **AnalyzeForm**, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Eigenschaften** aus. Klicken Sie im Fenster **Eigenschaften** auf die Registerkarte **Debuggen**, und suchen Sie nach dem Feld **Umgebungsvariablen**. Klicken Sie auf **Hinzufügen**, um die folgenden Variablen hinzuzufügen:
 * `FORMS_RECOGNIZER_ENDPOINT_URL` mit Ihrer Endpunkt-URL als Wert.

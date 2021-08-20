@@ -2,13 +2,13 @@
 title: Auth0-Partnerthemen mit Azure Event Grid
 description: Senden Sie Ereignisse mithilfe von Azure Event Grid von Auth0 an Azure-Dienste.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 340403111c094540ba7e66faf71ebf3cfe24fe7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.openlocfilehash: 0837bee13a1da3bcab7875aa43aa7b9972ccfd17
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93101288"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466797"
 ---
 # <a name="auth0-partner-topics"></a>Auth0-Partnerthemen
 ![Auth0-Logo](./media/auth0-overview/auth0-logo.png)

@@ -4,12 +4,12 @@ description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Bereitste
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: c6eaac209234f7352395502c6761312cf258108f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3ae515f2addf21f8183aed83ab26922e77f981
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713914"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355250"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Anzeigen von Bereitstellungen (Vorschau) in Echtzeit
 
@@ -64,4 +64,4 @@ Sie können außerdem nach dem Namespace oder nach Ereignissen auf Clusterebene 
 
 - Weitere Informationen zur Verwendung von Azure Monitor und zum Überwachen anderer Aspekte Ihres AKS-Clusters finden Sie unter [Anzeigen der Azure Kubernetes Service-Integrität](container-insights-analyze.md).
 
-- Unter [Beispielabfragen für die Protokollsuche](container-insights-log-search.md#search-logs-to-analyze-data) finden Sie vordefinierte Abfragen und Beispiele zum Erstellen von Warnungen und Visualisierungen. Darüber hinaus können Sie eine weitergehende Analyse des Clusters durchführen.
+- Unter [Beispielabfragen für die Protokollsuche](container-insights-log-query.md) finden Sie vordefinierte Abfragen und Beispiele zum Erstellen von Warnungen und Visualisierungen. Darüber hinaus können Sie eine weitergehende Analyse des Clusters durchführen.

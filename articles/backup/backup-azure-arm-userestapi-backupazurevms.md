@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungsvorgänge von Azu
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57187a9f7ecf3e1d00fa395d25d98fd03f5d2698
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92171453"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461021"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -23,7 +23,7 @@ Angenommen, Sie möchten den virtuellen Computer „testVM“ unter der Ressourc
 
 ### <a name="discover-unprotected-azure-vms"></a>Ermitteln nicht geschützter virtueller Azure-Computer
 
-Zunächst muss der Tresor den virtuellen Azure-Computer ermitteln können. Dies wird über den [„refresh“-Vorgang](/rest/api/backup/protectioncontainers/refresh) ausgelöst. Es handelt sich um einen asynchronen *POST*-Vorgang, mit dem sichergestellt wird, dass der Tresor die neueste Liste aller nicht geschützten virtuellen Computer im aktuellen Abonnement abruft und „zwischenspeichert“. Wenn der virtuelle Computer „zwischengespeichert“ wurde, kann in Recovery Services auf ihn zugegriffen werden, um ihn zu schützen.
+Zunächst muss der Tresor den virtuellen Azure-Computer ermitteln können. Dies wird über den [„refresh“-Vorgang](/rest/api/backup/protection-containers/refresh) ausgelöst. Es handelt sich um einen asynchronen *POST*-Vorgang, mit dem sichergestellt wird, dass der Tresor die neueste Liste aller nicht geschützten virtuellen Computer im aktuellen Abonnement abruft und „zwischenspeichert“. Wenn der virtuelle Computer „zwischengespeichert“ wurde, kann in Recovery Services auf ihn zugegriffen werden, um ihn zu schützen.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
@@ -92,7 +92,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>Auswählen des entsprechenden virtuellen Azure-Computers
 
- Sie können überprüfen, ob die „Zwischenspeicherung“ erfolgt ist, indem Sie [alle schützbaren Elemente](/rest/api/backup/backupprotectableitems/list) unter dem Abonnement auflisten und den gewünschten virtuellen Computer in der Antwort suchen. [Die Antwort dieses Vorgangs](#example-responses-to-get-operation) enthält auch Informationen dazu, wie Recovery Services einen virtuellen Computer identifiziert.  Wenn Sie mit dem Muster vertraut sind, können Sie diesen Schritt überspringen und direkt mit dem [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) fortfahren.
+ Sie können überprüfen, ob die „Zwischenspeicherung“ erfolgt ist, indem Sie [alle schützbaren Elemente](/rest/api/backup/backup-protectable-items/list) unter dem Abonnement auflisten und den gewünschten virtuellen Computer in der Antwort suchen. [Die Antwort dieses Vorgangs](#example-responses-to-get-operation) enthält auch Informationen dazu, wie Recovery Services einen virtuellen Computer identifiziert.  Wenn Sie mit dem Muster vertraut sind, können Sie diesen Schritt überspringen und direkt mit dem [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) fortfahren.
 
 Dieser Vorgang ist ein *GET*-Vorgang.
 
@@ -106,7 +106,7 @@ Der *GET*-URI enthält alle erforderlichen Parameter. Es ist kein zusätzlicher 
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
+|200 – OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backup-protectable-items/list#workloadprotectableitemresourcelist)        |       OK |
 
 #### <a name="example-responses-to-get-operation"></a>Beispielantworten auf den GET-Vorgang
 
@@ -162,7 +162,7 @@ Im Beispiel ergeben die Werte oben Folgendes:
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Aktivieren des Schutzes für den virtuellen Azure-Computer
 
-Nachdem der entsprechende virtuelle Computer zwischengespeichert und ermittelt wurde, wählen Sie die Richtlinie zum Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](/rest/api/backup/backuppolicies/list). Wählen Sie dann die [entsprechende Richtlinie](/rest/api/backup/protectionpolicies/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](backup-azure-arm-userestapi-createorupdatepolicy.md). Im Beispiel unten ist „DefaultPolicy“ ausgewählt.
+Nachdem der entsprechende virtuelle Computer zwischengespeichert und ermittelt wurde, wählen Sie die Richtlinie zum Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](/rest/api/backup/backup-policies/list). Wählen Sie dann die [entsprechende Richtlinie](/rest/api/backup/protection-policies/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](backup-azure-arm-userestapi-createorupdatepolicy.md). Im Beispiel unten ist „DefaultPolicy“ ausgewählt.
 
 Beim Aktivieren des Schutzes handelt es sich um einen asynchronen *PUT*-Vorgang, mit dem ein „geschütztes Element“ erstellt wird.
 
@@ -184,7 +184,7 @@ Zum Erstellen eines geschützten Elements werden die folgenden Komponenten des A
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem-Ressourceneigenschaften         |
 
-Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Erstellen eines geschützten Elements](/rest/api/backup/protecteditems/createorupdate#request-body).
+Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Erstellen eines geschützten Elements](/rest/api/backup/protected-items/create-or-update#request-body).
 
 ##### <a name="example-request-body"></a>Beispiel für Anforderungstext
 
@@ -210,7 +210,7 @@ Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
+|200 – OK     |    [ProtectedItemResource](/rest/api/backup/protected-item-operation-results/get#protecteditemresource)     |  OK       |
 |202 – Akzeptiert     |         |     Zulässig    |
 
 ##### <a name="example-responses-to-create-protected-item-operation"></a>Beispielantworten auf den Vorgang zum Erstellen eines geschützten Elements
@@ -437,7 +437,7 @@ Wenn der virtuelle Azure-Computer bereits gesichert wurde, können Sie die Liste
 > [!IMPORTANT]
 > Der obige Anforderungstext ist immer die endgültige Kopie der aus- oder einzuschließenden Datenträger für Daten. Dadurch wird die vorherige Konfiguration nicht *erweitert*. Beispiel: Wenn Sie den Schutz zunächst als „Datenträger 1 ausschließen“ aktualisieren und dann mit „Datenträger 2 ausschließen“ wiederholen, wird in den nachfolgenden Sicherungen *nur Datenträger 2 ausgeschlossen*, und Datenträger 1 wird eingeschlossen. Es ist immer die letzte Liste, die in den nachfolgenden Sicherungen ein-/ausgeschlossen wird.
 
-Wenn Sie die aktuelle Liste der aus- oder eingeschlossenen Datenträger abrufen möchten, erhalten Sie die Informationen zu den geschützten Objekten wie [hier](/rest/api/backup/protecteditems/get) erwähnt. Die Antwort liefert die Liste der Datenträger-LUNs und gibt an, ob sie ein- oder ausgeschlossen werden.
+Wenn Sie die aktuelle Liste der aus- oder eingeschlossenen Datenträger abrufen möchten, erhalten Sie die Informationen zu den geschützten Objekten wie [hier](/rest/api/backup/protected-items/get) erwähnt. Die Antwort liefert die Liste der Datenträger-LUNs und gibt an, ob sie ein- oder ausgeschlossen werden.
 
 ### <a name="stop-protection-but-retain-existing-data"></a>Beenden des Schutzes, jedoch Beibehalten vorhandener Daten
 
@@ -457,7 +457,7 @@ Die Antwort erfolgt im gleichen Format wie beim [Auslösen einer bedarfsgesteuer
 
 ### <a name="stop-protection-and-delete-data"></a>Beenden des Schutzes und Löschen der Daten
 
-Um den Schutz für einen geschützten virtuellen Computer zu entfernen und auch die Sicherungsdaten zu löschen, führen Sie wie [hier](/rest/api/backup/protecteditems/delete) beschrieben einen Löschvorgang durch.
+Um den Schutz für einen geschützten virtuellen Computer zu entfernen und auch die Sicherungsdaten zu löschen, führen Sie wie [hier](/rest/api/backup/protected-items/delete) beschrieben einen Löschvorgang durch.
 
 Das Beenden des Schutzes und das Löschen der Daten ist ein *DELETE*-Vorgang.
 

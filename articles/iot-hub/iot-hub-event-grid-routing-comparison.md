@@ -2,19 +2,18 @@
 title: Vergleich von Event Grid und Weiterleitung für IoT Hub | Microsoft-Dokumentation
 description: IoT Hub bietet einen eigenen Nachrichtenweiterleitungsdienst, ist aber auch für die Ereignisveröffentlichung mit Event Grid integriert. Hier werden die beiden Features verglichen.
 author: kgremban
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5d2b0e096c1432b8130ca43a91d277aec93d630f
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 5a5a1ac59a3399fff09db8e7d7fe8739476ca8d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191270"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346774"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Vergleichen von Nachrichtenweiterleitung und Event Grid für IoT Hub
 

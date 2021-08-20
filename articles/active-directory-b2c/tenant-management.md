@@ -12,12 +12,12 @@ ms.date: 06/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 17be85bd21a61ced7772786bb1fdaad1c947e4d1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8aeb818104e1424d96374bf535d4c02a870f4705
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962293"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453878"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Verwalten Ihres Azure Active Directory B2C-Mandanten
 
@@ -35,7 +35,7 @@ Azure AD B2C basiert auf der Azure AD-Plattform. Die folgenden Azure AD-Features
 | [Benutzerdefinierte Domänennamen](../active-directory/fundamentals/add-custom-domain.md) |  Sie können Azure AD benutzerdefinierte Domänen nur für Administratorkonten verwenden. | [Consumer-Konten](user-overview.md#consumer-user) können sich mit einem Benutzernamen, einer Telefonnummer oder einer beliebigen E-Mail-Adresse anmelden. Sie können [benutzerdefinierte Domänen](custom-domain.md) in Ihren Umleitungs-URLs verwenden.|
 | [Bedingter Zugriff](../active-directory/conditional-access/overview.md) | Wird für Administrator- und Benutzerkonten vollständig unterstützt. | Eine Teilmenge der Azure AD-Features für den bedingten Zugriff wird für [Consumerkonten](user-overview.md#consumer-user) unterstützt. Erfahren Sie, wie Sie den [bedingten Zugriff](conditional-access-user-flow.md) in Azure AD B2C konfigurieren.|
 | [Premium P1](https://azure.microsoft.com/pricing/details/active-directory) | Vollständig unterstützt für Azure AD Premium P1-Features. Beispiele: [Kennwortschutz](../active-directory/authentication/concept-password-ban-bad.md), [Hybrididentitäten](../active-directory/hybrid/whatis-hybrid-identity.md), [Bedingter Zugriff](../active-directory/roles/permissions-reference.md#), [Dynamische Gruppen](../active-directory/enterprise-users/groups-create-rule.md) usw. | Eine Teilmenge der Azure AD-Features für den bedingten Zugriff wird für [Consumerkonten](user-overview.md#consumer-user) unterstützt. Erfahren Sie, wie Sie den [bedingten Zugriff](conditional-access-user-flow.md) in Azure AD B2C konfigurieren.|
-| [Premium P2](https://azure.microsoft.com/pricing/details/active-directory.md) | Vollständig unterstützt für Azure AD Premium P2-Features. Beispiele: [Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) und [Identity Governance](../active-directory/governance/identity-governance-overview.md).  | Eine Teilmenge der Azure AD Identity Protection-Features wird für [Consumerkonten](user-overview.md#consumer-user) unterstützt. Erfahren Sie, wie Sie [Risiken mit Identity Protection untersuchen](identity-protection-investigate-risk.md) und den [bedingten Zugriff](conditional-access-user-flow.md) in Azure AD B2C konfigurieren. |
+| [Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) | Vollständig unterstützt für Azure AD Premium P2-Features. Beispiele: [Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) und [Identity Governance](../active-directory/governance/identity-governance-overview.md).  | Eine Teilmenge der Azure AD Identity Protection-Features wird für [Consumerkonten](user-overview.md#consumer-user) unterstützt. Erfahren Sie, wie Sie [Risiken mit Identity Protection untersuchen](identity-protection-investigate-risk.md) und den [bedingten Zugriff](conditional-access-user-flow.md) in Azure AD B2C konfigurieren. |
 
 ## <a name="other-azure-resources-in-your-tenant"></a>Andere Azure-Ressourcen in Ihrem Mandanten
 
@@ -206,4 +206,3 @@ Führen Sie die folgenden Schritte aus, um Ihre Azure AD B2C-Mandanten-ID abzu
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen eines Azure Active Directory B2C-Mandanten im Azure-Portal](tutorial-create-tenant.md)
-

@@ -3,12 +3,12 @@ title: Ausführen von Schnelltasks mit einer Vorlage
 description: Einstellen einer ACR-Taskausführung in die Warteschlange, um ein Image mithilfe einer Azure Resource Manager-Vorlage zu erstellen
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: af7bebc311f81bb489fcc8be419f167ff6f9460a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c79eec16798b1e1c9933ab50fb443b4427075149
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781233"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981075"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Ausführen von ACR Tasks mithilfe von Resource Manager-Vorlagen
 
@@ -49,6 +49,8 @@ Geben Sie in diesem Beispiel Werte für die folgenden Vorlagenparameter an:
 ### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 Stellen Sie die Vorlage mit dem Befehl [az deployment group create][az-deployment-group-create] bereit. In diesem Beispiel wird das Image *helloworld-node:testrun* erstellt und in eine Registrierung mit dem Namen *mycontainerregistry* gepusht.
+
+[!INCLUDE [pull-image-dockerfile-include](../../includes/pull-image-dockerfile-include.md)]
 
 ```azurecli
 az deployment group create \

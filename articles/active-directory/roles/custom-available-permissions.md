@@ -13,16 +13,20 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258dcb7c66b043828e55d6c0dbfe101c0992f8c6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 996a3f5f48685630a6946a5708c26cfecaf3b0a0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092888"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354845"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Berechtigungen für Anwendungsregistrierung für benutzerdefinierte Rollen in Azure Active Directory
 
 Dieser Artikel enthält die derzeit verfügbaren Anwendungsregistrierungsberechtigungen für benutzerdefinierte Rollendefinitionen in Azure Active Directory (Azure AD).
+
+## <a name="license-requirements"></a>Lizenzanforderungen
+
+[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="permissions-for-managing-single-tenant-applications"></a>Berechtigungen zum Verwalten von Anwendungen mit einem Mandanten
 
@@ -32,7 +36,7 @@ Verwenden Sie zum Gewähren des Zugriffs nur zum Verwalten von Anwendungen mit e
 
 Eine Erläuterung der allgemeinen Begriffe „Untertyp“, „Berechtigung“ und „Eigenschaftensatz“ finden Sie in der [Übersicht über benutzerdefinierte Rollen](custom-overview.md). Die folgenden Informationen gelten speziell für Anwendungsregistrierungen.
 
-### <a name="create-and-delete"></a>Erstellen und Löschen
+## <a name="create-and-delete"></a>Erstellen und Löschen
 
 Für die Erstellung von Anwendungsregistrierungen stehen zwei Berechtigungen zur Verfügung, die jeweils ein anderes Verhalten aufweisen:
 
@@ -65,7 +69,7 @@ Erteilt die Möglichkeit zum Löschen von Anwendungsregistrierungen mit Beschrä
 > [!NOTE]
 > Beim Zuweisen einer Rolle, die Berechtigungen zum Erstellen enthält, muss die Rollenzuweisung im Verzeichnisbereich vorgenommen werden. Eine Berechtigung zum Erstellen, die in einem Ressourcenbereich zugewiesen wird, erteilt nicht die Möglichkeit zum Erstellen von Anwendungsregistrierungen.
 
-### <a name="read"></a>Lesen
+## <a name="read"></a>Lesen
 
 Alle Mitgliedsbenutzer in der Organisation können standardmäßig App-Registrierungsinformationen lesen. Gastbenutzer und Anwendungsdienstprinzipale können dies dagegen nicht. Wenn Sie einem Gastbenutzer oder einer Anwendung eine Rolle zuweisen möchten, müssen Sie die entsprechenden Leseberechtigungen einfügen.
 
@@ -91,7 +95,7 @@ Gewährt Zugriff zum Lesen von Standardeigenschaften für die Anwendungsregistri
 
 Erteilt die gleichen Berechtigungen wie microsoft.directory/applications/standard/read, jedoch nur für Einzelmandantenanwendungen.
 
-### <a name="update"></a>Aktualisieren
+## <a name="update"></a>Aktualisieren
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>microsoft.directory/applications/allProperties/update
 
@@ -162,10 +166,6 @@ Berechtigungen zum Aktualisieren der Eigenschaften der delegierten Berechtigunge
 #### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>microsoft.directory/applications.myOrganization/permissions/update
 
 Erteilt die gleichen Berechtigungen wie microsoft.directory/applications/permissions/update, jedoch nur für Einzelmandantenanwendungen.
-
-## <a name="license-requirements"></a>Lizenzanforderungen
-
-[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,22 +2,22 @@
 title: Konfiguration des einmaligen Anmeldens (SSO) mit einem Klick für Ihre Azure Marketplace-Anwendung | Microsoft-Dokumentation
 description: Schritte für die 1-Klick-Konfiguration von SSO für Ihre Anwendung aus dem Azure Marketplace.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
-ms.assetid: e0416991-4b5d-4b18-89bb-91b6070ed3ba
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.author: mtillman
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 766c1446a2fad9cff1103a726043d6c61d503020
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: ergreenl
+ms.openlocfilehash: bec4df252a98fc105f0eec1480452021fefb0031
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077012"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355215"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>1-Klick-App-Konfiguration für einmaliges Anmelden
 
@@ -80,5 +80,5 @@ Das Feature „1-Klick-SSO“ wurde entwickelt, um einmaliges Anmelden für Azur
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Was ist die Browsererweiterung zur sicheren Anmeldung bei „Meine Apps“?](../user-help/my-apps-portal-end-user-access.md)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md)
+- [Was ist die Browsererweiterung zur sicheren Anmeldung bei „Meine Apps“?](../user-help/my-apps-portal-end-user-access.md)

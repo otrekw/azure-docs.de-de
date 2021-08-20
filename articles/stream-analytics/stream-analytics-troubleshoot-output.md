@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 02a3a7ad73bf0434a215c5ab7a6e89c299e9518b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28d66477c31db9ee274fb1e8aaa1690365a4fa72
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019855"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112912787"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problembehandlung von Azure Stream Analytics-Ausgaben
 
@@ -74,7 +74,7 @@ Wenn Sie eine Azure SQL-Datenbank-Instanz als Ausgabe für einen Stream Analytic
 
 Wenn Sie Einschränkungen für eindeutige Schlüssel in der SQL-Tabelle einrichten, entfernt Azure Stream Analytics doppelte Datensätze. Es teilt die Daten in Batches auf und fügt diese rekursiv ein, bis ein einziger doppelter Datensatz gefunden wird. Beim Aufteilen und Einfügen werden die Duplikate einzeln ignoriert. Bei einem Streamingauftrag mit vielen doppelten Zeilen ist dieses Verfahren ineffizient und zeitaufwendig. Wenn Sie im Aktivitätsprotokoll mehrere Warnmeldungen zu Schlüsselverstößen in der letzten Stunde finden, ist es wahrscheinlich, dass Ihre SQL-Ausgabe den gesamten Auftrag verlangsamt.
 
-Um dieses Problem zu beheben, [konfigurieren Sie den Index]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql), der die Schlüsselverstöße verursacht, indem Sie die Option IGNORE_DUP_KEY aktivieren. Diese Option ermöglicht es SQL, doppelte Werte bei Masseneinfügungen zu ignorieren. Azure SQL-Datenbank gibt lediglich eine Warnmeldung anstelle eines Fehlers aus. Dies führt dazu, dass Azure Stream Analytics keine Fehler aufgrund von Primärschlüsselverletzungen mehr erzeugt.
+Um dieses Problem zu beheben, [konfigurieren Sie den Index](/sql/t-sql/statements/create-index-transact-sql), der die Schlüsselverstöße verursacht, indem Sie die Option IGNORE_DUP_KEY aktivieren. Diese Option ermöglicht es SQL, doppelte Werte bei Masseneinfügungen zu ignorieren. Azure SQL-Datenbank gibt lediglich eine Warnmeldung anstelle eines Fehlers aus. Dies führt dazu, dass Azure Stream Analytics keine Fehler aufgrund von Primärschlüsselverletzungen mehr erzeugt.
 
 Beachten Sie die folgenden Beobachtungen, wenn Sie IGNORE_DUP_KEY für mehrere Typen von Indizes konfigurieren:
 

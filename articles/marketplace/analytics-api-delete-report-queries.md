@@ -4,15 +4,16 @@ description: Verwenden Sie diese API, um benutzerdefinierte Abfragen für Analys
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 4fc3479f1e35970a97684396a7a2e0c0c2582128
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 927534b11bc00b3ec21db2ab5efef2eb09104976
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583657"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355894"
 ---
 # <a name="delete-report-queries-api"></a>API zum Löschen von Berichtsabfragen
 

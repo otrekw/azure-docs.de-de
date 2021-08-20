@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25426605b0fe5ced21d373f255e3872d2d0d280e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 47278f47d3f66e79ed980d752fb7a383bd995c07
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079137"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113087340"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Storage mithilfe von SAS-Anmeldeinformationen
 
@@ -71,7 +71,7 @@ Später werden wir eine Datei in das neue Speicherkonto hoch- und daraus herunte
 
 ## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>Gewähren des Zugriffs für die systemseitig zugewiesene verwaltete Identität Ihres virtuellen Computers zur Verwendung einer Speicher-SAS
 
-Azure Storage unterstützt die Azure AD-Authentifizierung nicht nativ.  Sie können jedoch die systemseitig zugewiesene verwaltete Identität des virtuellen Computers zum Abrufen einer Speicher-SAS von Resource Manager verwenden und mithilfe dieser SAS auf den Speicher zugreifen.  In diesem Schritt gewähren Sie der systemseitig zugewiesenen verwalteten Identität Ihres virtuellen Computers Zugriff auf die SAS des Speicherkontos. Gewähren Sie Zugriff, indem Sie der verwalteten Identität im Bereich der Ressourcengruppe, die Ihr Speicherkonto enthält, die Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor) zuweisen.
+Azure Storage bietet eine native Unterstützung der Azure AD-Authentifizierung. Dadurch können Sie die systemseitig zugewiesene verwaltete Identität des virtuellen Computers zum Abrufen einer Speicher-SAS von Resource Manager verwenden und mithilfe dieser SAS auf den Speicher zugreifen.  In diesem Schritt gewähren Sie der systemseitig zugewiesenen verwalteten Identität Ihres virtuellen Computers Zugriff auf die SAS des Speicherkontos. Gewähren Sie Zugriff, indem Sie der verwalteten Identität im Bereich der Ressourcengruppe, die Ihr Speicherkonto enthält, die Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor) zuweisen.
  
 Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 

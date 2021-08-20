@@ -10,18 +10,18 @@ ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00b81e57a656afbfce13027a8855104faf889146
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96023822"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551738"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
 Hier finden Sie Tipps zur Problembehandlung für einige der häufigsten Probleme, die bei der Verwendung des Microsoft Genomics-Diensts (MSGEN) auftreten können.
 
- Häufig gestellte Fragen (FAQ), die nicht im Zusammenhang mit der Problembehandlung stehen, finden Sie unter [Häufig gestellte Fragen](frequently-asked-questions-genomics.md).
+ Häufig gestellte Fragen (FAQ), die nicht im Zusammenhang mit der Problembehandlung stehen, finden Sie unter [Häufig gestellte Fragen](frequently-asked-questions-genomics.yml).
 ## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>Schritt 1: Suchen nach Fehlercodes, die dem Workflow zugeordnet sind
 
 Gehen Sie folgendermaßen vor, um die Fehlermeldungen im Zusammenhang mit dem Workflow zu ermitteln:
@@ -142,4 +142,4 @@ Wenn bei der Auftragsausführung weiterhin Fehler auftreten oder wenn Sie weiter
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie häufige Probleme mit dem Microsoft Genomics-Dienst behandeln und lösen. Weitere Informationen und allgemeinere häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen](frequently-asked-questions-genomics.md). 
+In diesem Artikel haben Sie erfahren, wie Sie häufige Probleme mit dem Microsoft Genomics-Dienst behandeln und lösen. Weitere Informationen und allgemeinere häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen](frequently-asked-questions-genomics.yml). 

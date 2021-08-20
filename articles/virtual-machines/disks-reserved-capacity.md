@@ -3,16 +3,16 @@ title: Optimieren der Kosten für Azure Disk Storage mit Reservierungen
 description: Hier finden Sie Informationen zum Erwerben von Azure Disk Storage-Reservierungen, um Kosten für verwaltete SSD Premium-Datenträger zu sparen.
 author: roygara
 ms.author: rogarana
-ms.date: 01/30/2020
+ms.date: 06/29/2021
 ms.topic: how-to
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: db6575894904e6ced2d4be48fec5961f5b8b8a54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60ccfe222b06e9c250eab3b8fa568cc4e5a925b2
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98602629"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356179"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Senken der Kosten durch Azure-Datenträgerreservierung
 

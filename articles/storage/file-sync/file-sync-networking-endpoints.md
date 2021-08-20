@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b89e0f8209c0165b71eef3d143ea1a84ea8bf64e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 798d0aaa6f4423679576c37a0af7bf64de37a313
+ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795991"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112428807"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurieren von Netzwerkendpunkten für die Azure-Dateisynchronisierung
 Azure Files und die Azure-Dateisynchronisierung verfügen über zwei Arten von Endpunkten für den Zugriff auf Azure-Dateifreigaben: 
@@ -283,6 +283,10 @@ switch($azureEnvironment) {
 
     "AzureUSGovernment" {
         $storageSyncSuffix = "afs.azure.us"
+    }    
+
+   "AzureChinaCloud" {
+        $storageSyncSuffix = "afs.azure.cn"
     }
     
     default {

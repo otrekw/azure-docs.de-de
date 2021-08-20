@@ -2,22 +2,22 @@
 title: Konfigurieren der Art der Endbenutzereinwilligung für Anwendungen in Azure AD
 description: Erfahren Sie, wie Sie verwalten können, wie und wann Benutzer Anwendungen zustimmen können, die Zugriff auf die Daten Ihrer Organisation haben.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 59a7799ce7c0c1fd8261324351f425e76e3b4d44
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: ecf463ed332299f20ef1d34f0c3158db31f52e8d
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075968"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113568044"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können
 
@@ -145,7 +145,7 @@ Mit dem Modul „Azure AD PowerShell Preview“ ([AzureADPreview](/powershell/mo
 
 1. Grundlegendes zum Einstellungswert:
 
-    | Einstellung       | Typ         | BESCHREIBUNG  |
+    | Einstellung       | type         | BESCHREIBUNG  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Boolean |  Flag, das angibt, ob die Benutzereinwilligung beim Erkennen einer risikobehafteten Anforderung blockiert wird. |
 
@@ -185,4 +185,5 @@ Weitere Informationen:
 * [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/v2-permissions-and-consent.md)
 
 So erhalten Sie Hilfe oder finden Antworten auf Ihre Fragen:
+
 * [Azure AD bei Microsoft Q&A](/answers/topics/azure-active-directory.html)

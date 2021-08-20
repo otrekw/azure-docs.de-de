@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: fd6fb0cebe33d8511185c396c95faa8927941e6e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5108949527f0f63cd6aa7048eccf83c95927c8bd
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103972"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113516379"
 ---
 # <a name="edit-an-existing-device-template"></a>Bearbeiten einer vorhandenen Gerätevorlage
 
@@ -116,6 +116,6 @@ Es lassen sich mehrere Versionen der Gerätevorlage erstellen. Im Laufe der Zeit
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie Operator oder Lösungsentwickler sind, wird als nächster Schritt vorgeschlagen, zu lernen, [wie Sie Ihre Geräte verwalten können](./howto-manage-devices.md).
+Wenn Sie Operator oder Lösungsentwickler sind, wird als nächster Schritt vorgeschlagen, zu lernen, [wie Sie Ihre Geräte verwalten können](./howto-manage-devices-individually.md).
 
 Wenn Sie ein Geräteentwickler sind, sollten Sie sich als Nächstes über [Azure IoT Edge-Geräte und Azure IoT Central](./concepts-iot-edge.md) informieren.

@@ -5,16 +5,16 @@ ms.topic: article
 ms.service: cloud-services
 ms.subservice: deployment-files
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
-ms.reviewer: mimckitt
+author: hirenshah1
+ms.author: hirshah
+ms.reviewer: mimtckit
 ms.custom: ''
-ms.openlocfilehash: dd46a37ada1fb96797faee6c8491359561e065d7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dfa38c706dc9e847665a8791bae1e898e1eb26b3
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934154"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088226"
 ---
 # <a name="azure-cloud-services-classic-config-role-schema"></a>Rollenschema der Azure Cloud Services-Konfiguration (klassisch)
 
@@ -51,7 +51,7 @@ In der folgenden Tabelle sind die Attribute des `Role`-Elements beschrieben.
 
 Die folgende Tabelle beschreibt die untergeordneten Elemente des `Role`-Elements.
 
-| Element | Beschreibung |
+| Element | BESCHREIBUNG |
 | ------- | ----------- |
 | Instanzen | Erforderlich. Gibt die Anzahl von Instanzen an, die für die Rolle bereitgestellt werden sollen. Die Anzahl von Instanzen wird durch ein Integer für das `count`-Attribut definiert.|
 | Einstellung   | Optional. Gibt einen Einstellungsnamen und -Wert in einer Auflistung von Einstellungen für eine Rolle an. Der Name der Einstellung wird durch eine Zeichenfolge für das `name`-Attribut und der Wert der Einstellung durch eine Zeichenfolge für das `value`-Attribut definiert.|

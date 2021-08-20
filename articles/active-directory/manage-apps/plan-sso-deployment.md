@@ -2,23 +2,23 @@
 title: Planen einer Azure Active Directory-Bereitstellung für einmaliges Anmelden
 description: Leitfaden zum Planen, Bereitstellen und Verwalten von SSO in Ihrer Organisation.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/10/2020
-ms.author: mtillman
-ms.reviewer: jeedes
+ms.author: davidmu
+ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ef1daed862a67c5219d7ec243985340a8a20ea01
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: eacb1d03ce4d7148543948f4bf107d8a99181a0e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076958"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346957"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planen einer Bereitstellung für einmaliges Anmelden
 
@@ -26,7 +26,7 @@ Einmaliges Anmelden (Single Sign-On, SSO) bedeutet, auf alle Anwendungen und Res
 
 ## <a name="benefits-of-sso"></a>Vorteile von SSO
 
-Mit einmaligem Anmelden (Single Sign-On, SSO) ist für Sicherheit und Komfort gesorgt, wenn sich Benutzer in Azure Active Directory (Azure AD) bei Anwendungen anmelden. 
+Mit einmaligem Anmelden (Single Sign-On, SSO) ist für Sicherheit und Komfort gesorgt, wenn sich Benutzer in Azure Active Directory (Azure AD) bei Anwendungen anmelden.
 
 Viele Organisationen nutzen SaaS-Anwendungen (Software-as-a-Service), z. B. Microsoft 365, Box und Salesforce, um die Endbenutzerproduktivität zu steigern. In der Vergangenheit musste das IT-Personal Benutzerkonten in jeder SaaS-Anwendung individuell erstellen und aktualisieren, und Benutzer mussten sich für jede SaaS-Anwendung ein Kennwort merken.
 
@@ -34,13 +34,13 @@ Azure Marketplace verfügt über mehr als 3.000 Anwendungen mit vorintegrierten 
 
 ## <a name="licensing"></a>Lizenzierung
 
-- **Azure AD-Lizenzierung**: SSO für vorintegrierte SaaS-Anwendungen ist kostenlos. Die Anzahl der Objekte in Ihrem Verzeichnis und die Funktionen, die Sie bereitstellen möchten, können jedoch zusätzliche Lizenzen erfordern. Eine vollständige Liste der Lizenzanforderungen finden Sie unter [Azure Active Directory-Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+- **Azure AD-Lizenzierung**: SSO für vorintegrierte SaaS-Anwendungen ist kostenlos. Die Anzahl der Objekte in Ihrem Verzeichnis und die Funktionen, die Sie bereitstellen möchten, können jedoch zusätzliche Lizenzen erfordern. Eine vollständige Liste der Lizenzanforderungen finden Sie unter [Azure Active Directory-Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 - **Anwendungslizenzierung**: Sie benötigen die entsprechenden Lizenzen für Ihre SaaS-Anwendungen, um Ihre Geschäftsanforderungen zu erfüllen. Arbeiten Sie mit dem Besitzer der Anwendung zusammen, um festzustellen, ob die der Anwendung zugeordneten Benutzer über die entsprechenden Lizenzen für ihre Rollen innerhalb der Anwendung verfügen. Wenn Azure AD die automatische Bereitstellung auf der Grundlage von Rollen verwaltet, müssen die in Azure AD zugewiesenen Rollen mit der Anzahl der Lizenzen in der Anwendung übereinstimmen. Eine nicht ausreichende Anzahl von Lizenzen, die sich im Besitz der Anwendung befinden, kann zu Fehlern bei der Bereitstellung/Aktualisierung eines Benutzers führen.
 
 ## <a name="plan-your-sso-team"></a>Planen des SSO-Teams
 
 - **Binden Sie die richtigen Beteiligten ein**: Wenn Technologieprojekte scheitern, liegt dies in der Regel an unterschiedlichen Erwartungen hinsichtlich Auswirkungen, Ergebnissen und Verantwortlichkeiten. Um diese Fallstricke zu vermeiden, stellen Sie sicher, dass Sie die [richtigen Beteiligten hinzuziehen](../fundamentals/active-directory-deployment-plans.md) und dass die Beteiligten ihre Rollen verstehen.
-- **Planen der Kommunikation**: Kommunikation ist entscheidend für den Erfolg jedes neuen Diensts. Kommunizieren Sie proaktiv mit Ihren Benutzern darüber, wie sich die Nutzung ändern wird, wann sie sich ändert und wie Sie Unterstützung erhalten, wenn sie auf Probleme stoßen. Überprüfen Sie die Optionen dafür, [wie Endbenutzer auf ihre SSO-fähigen Anwendungen zugreifen](end-user-experiences.md), und gestalten Sie Ihre Kommunikation entsprechend Ihrer Auswahl. 
+- **Planen der Kommunikation**: Kommunikation ist entscheidend für den Erfolg jedes neuen Diensts. Kommunizieren Sie proaktiv mit Ihren Benutzern darüber, wie sich die Nutzung ändern wird, wann sie sich ändert und wie Sie Unterstützung erhalten, wenn sie auf Probleme stoßen. Überprüfen Sie die Optionen dafür, [wie Endbenutzer auf ihre SSO-fähigen Anwendungen zugreifen](end-user-experiences.md), und gestalten Sie Ihre Kommunikation entsprechend Ihrer Auswahl.
 
 ## <a name="plan-your-sso-protocol"></a>Planen des SSO-Protokolls
 
@@ -87,10 +87,10 @@ Aus Sicht der Anmeldung unterscheiden sich Anwendungen mit gemeinsam genutzten K
 
 1. Arbeiten Sie mit Geschäftsbenutzern der Anwendung zusammen, um die folgenden Punkte zu dokumentieren:
    1. Gruppe von Benutzern in der Organisation, die die Anwendung verwenden werden.
-   1. Vorhandene Anmeldeinformationen in der Anwendung, die mit der Gruppe von Benutzern verknüpft sind. 
+   1. Vorhandene Anmeldeinformationen in der Anwendung, die mit der Gruppe von Benutzern verknüpft sind.
 1. Erstellen Sie für jede Kombination aus Benutzergruppe und Anmeldeinformationen basierend auf Ihren Anforderungen eine Sicherheitsgruppe in der Cloud oder lokal.
-1. Setzen Sie die gemeinsam genutzten Anmeldeinformationen zurück. Sobald die App in Azure AD bereitgestellt wird, benötigen Einzelpersonen das Kennwort für das gemeinsam genutzte Konto nicht. Da Azure AD das Kennwort speichert, sollten Sie es sehr lang und komplex gestalten. 
-1. Konfigurieren Sie automatischen Rollover des Kennworts, wenn die Anwendung dies unterstützt. Auf diese Weise kennt nicht einmal der Administrator, der die Ersteinrichtung durchgeführt hat, das Kennwort für das gemeinsam genutzte Konto. 
+1. Setzen Sie die gemeinsam genutzten Anmeldeinformationen zurück. Sobald die App in Azure AD bereitgestellt wird, benötigen Einzelpersonen das Kennwort für das gemeinsam genutzte Konto nicht. Da Azure AD das Kennwort speichert, sollten Sie es sehr lang und komplex gestalten.
+1. Konfigurieren Sie automatischen Rollover des Kennworts, wenn die Anwendung dies unterstützt. Auf diese Weise kennt nicht einmal der Administrator, der die Ersteinrichtung durchgeführt hat, das Kennwort für das gemeinsam genutzte Konto.
 
 ## <a name="plan-your-authentication-method"></a>Planen der Authentifizierungsmethode
 
@@ -98,9 +98,9 @@ Die Wahl der richtigen Authentifizierungsmethode ist daher eine wichtige erste E
 
 Bei der Auswahl einer Authentifizierungsmethode müssen Sie die Zeit, die vorhandene Infrastruktur, die Komplexität und die Implementierungskosten für die gewählte Lösung berücksichtigen. Diese Faktoren sind für jede Organisation unterschiedlich und können sich im Laufe der Zeit ändern. Sie sollten die Methode auswählen, die Ihrem bestimmten Szenario am ehesten entspricht. Weitere Informationen finden Sie unter [Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](../hybrid/choose-ad-authn.md).
 
-## <a name="plan-your-security-and-governance"></a>Planen von Sicherheit und Governance 
+## <a name="plan-your-security-and-governance"></a>Planen von Sicherheit und Governance
 
-Identität ist der neue primäre Dreh- und Angelpunkt für Sicherheitsmaßnahmen und -investitionen, da die Netzwerkperimeter durch die Explosion von BYOD-Geräten und Cloudanwendungen immer durchlässiger und weniger effektiv geworden sind. 
+Identität ist der neue primäre Dreh- und Angelpunkt für Sicherheitsmaßnahmen und -investitionen, da die Netzwerkperimeter durch die Explosion von BYOD-Geräten und Cloudanwendungen immer durchlässiger und weniger effektiv geworden sind.
 
 ### <a name="plan-access-reviews"></a>Planen von Zugriffsüberprüfungen
 
@@ -116,7 +116,7 @@ Einige der wichtigsten Themen, die bei der Einrichtung von Zugriffsüberprüfung
 
 ### <a name="plan-auditing"></a>Planen der Überwachung
 
-Azure AD stellt [Berichte mit technischen und geschäftlichen Einblicken](../reports-monitoring/overview-reports.md) zur Verfügung. 
+Azure AD stellt [Berichte mit technischen und geschäftlichen Einblicken](../reports-monitoring/overview-reports.md) zur Verfügung.
 
 Es stehen sowohl Sicherheits- als auch Aktivitätsberichte zur Verfügung. Sicherheitsberichte zeigen Benutzer, die als riskant gekennzeichnet sind, und risikobehaftete Anmeldungen. Aktivitätsberichte helfen Ihnen, das Verhalten von Benutzern in Ihrem Unternehmen zu verstehen, indem sie die Anmeldeaktivitäten detailliert beschreiben und Überwachungspfade für alle Anmeldungen bereitstellen. Mit Berichten können Sie Risiken verwalten, die Produktivität steigern und die Einhaltung von Vorschriften überwachen.
 
@@ -167,9 +167,9 @@ Es ist eine vorkonfigurierte Sammlung von Attributen und Attributzuordnungen zwi
 
 ### <a name="certificate-requirements"></a>Zertifikatanforderungen
 
-Das Zertifikat für die Anwendung muss aktuell sein, andernfalls besteht die Gefahr, dass Benutzer nicht auf die Anwendung zugreifen können. Die meisten SaaS-Anwendungszertifikate sind 36 Monate lang gültig. Sie ändern diese Zertifikatgültigkeit auf dem Anwendungsblatt. Achten Sie darauf, den Ablauf zu dokumentieren, und planen Sie, wie Sie die Zertifikatverlängerung verwalten. 
+Das Zertifikat für die Anwendung muss aktuell sein, andernfalls besteht die Gefahr, dass Benutzer nicht auf die Anwendung zugreifen können. Die meisten SaaS-Anwendungszertifikate sind 36 Monate lang gültig. Sie ändern diese Zertifikatgültigkeit auf dem Anwendungsblatt. Achten Sie darauf, den Ablauf zu dokumentieren, und planen Sie, wie Sie die Zertifikatverlängerung verwalten.
 
-Es gibt zwei Möglichkeiten zum Verwalten Ihrer Zertifikate. 
+Es gibt zwei Möglichkeiten zum Verwalten Ihrer Zertifikate.
 
 - **Automatischer Zertifikatrollover**: Microsoft unterstützt [Signaturschlüsselrollover in Azure AD](../develop/active-directory-signing-key-rollover.md). Dies ist zwar unsere bevorzugte Methode zur Verwaltung von Zertifikaten, aber nicht alle ISVs unterstützen dieses Szenario.
 
@@ -184,7 +184,7 @@ Verwenden Sie die folgenden Phasen, um Ihre Lösung zu planen und in Ihrem Unter
 - **Identifizieren von Testbenutzern**
 
    Wenden Sie sich an den Besitzer der App, und bitten Sie ihn, mindestens drei Testbenutzer in der Anwendung zu erstellen. Stellen Sie sicher, dass die Informationen, die Sie als primären Bezeichner verwenden werden, richtig mit Daten aufgefüllt sind und einem Attribut entsprechen, das in Azure AD verfügbar ist. In den meisten Fällen wird dies „NameID“ für SAML-basierte Anwendungen zugeordnet. Für JWT-Token wird der „preferred_username“ verwendet.
-   
+
    Erstellen Sie den Benutzer in Azure AD entweder manuell als cloudbasierten Benutzer, oder synchronisieren Sie den Benutzer aus dem lokalen Standort mit der Azure AD Connect-Synchronisierungsengine. Stellen Sie sicher, dass die Informationen mit den Ansprüchen übereinstimmen, die an die Anwendung gesendet werden.
 
 - **Konfigurieren von SSO**
@@ -259,7 +259,7 @@ Nachdem Sie die Tests anhand Ihrer Testfälle abgeschlossen haben, ist es an der
 
 Die Verfügbarkeit von Authentifizierungsmethoden innerhalb der Anwendung bestimmt Ihre beste Strategie. Stellen Sie immer sicher, dass Sie eine detaillierte Dokumentation für App-Besitzer haben, wie Sie genau zum ursprünglichen Konfigurationszustand der Anmeldekonfiguration zurückkehren können, falls Ihre Bereitstellung Probleme aufweist.
 
-- **Wenn Ihre App mehrere Identitätsanbieter unterstützt**, z.B. LDAP, AD FS und Ping, löschen Sie die vorhandene SSO-Konfiguration während des Rollouts nicht. Deaktivieren Sie sie stattdessen während der Migration für den Fall, dass Sie später zu ihr zurückkehren müssen. 
+- **Wenn Ihre App mehrere Identitätsanbieter unterstützt**, z.B. LDAP, AD FS und Ping, löschen Sie die vorhandene SSO-Konfiguration während des Rollouts nicht. Deaktivieren Sie sie stattdessen während der Migration für den Fall, dass Sie später zu ihr zurückkehren müssen.
 
 - **Wenn Ihre Anwendung nicht mehrere IDPs unterstützt**, Benutzern aber die Anmeldung über formularbasierte Authentifizierung (Benutzername/Kennwort) ermöglicht, stellen Sie sicher, dass Benutzer auf diesen Ansatz zurückgreifen können, falls der Rollout der neuen SSO-Konfiguration fehlschlägt.
 
@@ -293,10 +293,9 @@ Die folgenden Links stellen Problembehandlungsszenarien dar. Möglicherweise mö
 
 #### <a name="sso-issues-for-applications"></a>SSO-Probleme bei Anwendungen
 
-- [Problem bei Kennwort-SSO für Anwendungen](./troubleshoot-password-based-sso.md) 
+- [Problem bei Kennwort-SSO für Anwendungen](./troubleshoot-password-based-sso.md)
 
-- [Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)   
-
+- [Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

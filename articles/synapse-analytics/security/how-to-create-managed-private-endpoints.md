@@ -1,19 +1,19 @@
 ---
 title: Erstellen eines verwalteten privaten Endpunkts zum Verbinden mit Ihren Datenquellenergebnissen
 description: In diesem Artikel erfahren Sie, wie Sie einen verwalteten privaten Endpunkt zu Ihren Datenquellen aus einem Azure Synapse-Arbeitsbereich erstellen.
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 04/15/2020
-ms.author: ronytho
+ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: e0309b4c96b2ae25eb568e390717ba76cfd84fa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ca00f185c3bfc0a10a949953dfa0e2b1e7a09a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96461309"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355418"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source"></a>Erstellen eines verwalteten privaten Endpunkts zu Ihrer Datenquelle
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/06/2020
-ms.openlocfilehash: 59f81103e72be6c0f1b629981fdb53c8467000a9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c19c25e43fc8f7905d7cee9f344999a26f28bc17
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037420"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350279"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Containerüberwachungslösung in Azure Monitor
 
@@ -95,7 +95,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 
 2. Installieren und verwenden Sie Docker mit einem Log Analytics-Agent. Basierend auf Ihrem Betriebssystem und Docker-Orchestrator können Sie die folgenden Methoden verwenden, um den Agent zu konfigurieren.
    - Für eigenständige Hosts:
-     - Unter unterstützten Linux-Betriebssystemen installieren Sie zunächst Docker und führen es aus. Anschließend installieren und konfigurieren Sie den [Log Analytics-Agent für Linux](../vm/quick-collect-linux-computer.md).  
+     - Unter unterstützten Linux-Betriebssystemen installieren Sie zunächst Docker und führen es aus. Anschließend installieren und konfigurieren Sie den [Log Analytics-Agent für Linux](../vm/monitor-virtual-machine.md).  
      - Unter CoreOS kann der Log Analytics-Agent für Linux nicht ausgeführt werden. Stattdessen führen Sie eine Containerversion des Log Analytics-Agents für Linux aus. Informieren Sie sich über Linux-Containerhosts mit CoreOS oder Azure Government-Linux-Containerhosts mit CoreOS, wenn Sie in Azure Government Cloud mit Containern arbeiten.
      - Installieren Sie unter Windows Server 2016 und Windows 10 die Docker-Engine und den Client, und stellen Sie dann eine Verbindung mit einem Agent her, um Informationen zu sammeln und sie an Azure Monitor zu senden. Wenn Sie über eine Windows-Umgebung verfügen, lesen Sie [Installieren und Konfigurieren von Windows-Containerhosts](#install-and-configure-windows-container-hosts).
    - Für Docker-Orchestrierung mit mehreren Hosts:
@@ -111,7 +111,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 Weitere Informationen zum Installieren und Konfigurieren von Docker-Engines auf Windows-Computern finden Sie im Artikel [Docker-Engine unter Windows](/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 
 > [!IMPORTANT]
-> Docker muss ausgeführt werden, **bevor** Sie den [Log Analytics-Agent für Linux](../vm/quick-collect-linux-computer.md) auf Ihren Containerhosts installieren. Wenn Sie den Agent bereits vor der Installation von Docker installiert haben, müssen Sie den Log Analytics-Agent für Linux erneut installieren. Weitere Informationen zu Docker finden Sie auf der [Docker-Website](https://www.docker.com).
+> Docker muss ausgeführt werden, **bevor** Sie den [Log Analytics-Agent für Linux](../vm/monitor-virtual-machine.md) auf Ihren Containerhosts installieren. Wenn Sie den Agent bereits vor der Installation von Docker installiert haben, müssen Sie den Log Analytics-Agent für Linux erneut installieren. Weitere Informationen zu Docker finden Sie auf der [Docker-Website](https://www.docker.com).
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Installieren und Konfigurieren von Linux-Containerhosts
 
@@ -139,7 +139,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **Wechseln von der Verwendung eines installierten Linux-Agents zu einem in einem Container enthaltenen**
 
-Wenn Sie zuvor den direkt installierten Agent verwendet haben und stattdessen einen Agent verwenden möchten, der in einem Container ausgeführt wird, müssen Sie zunächst den Log Analytics-Agent für Linux entfernen. Informationen zum erfolgreichen Deinstallieren des Agents finden Sie unter [Deinstallieren des Log Analytics-Agents für Linux](../vm/quick-collect-linux-computer.md).  
+Wenn Sie zuvor den direkt installierten Agent verwendet haben und stattdessen einen Agent verwenden möchten, der in einem Container ausgeführt wird, müssen Sie zunächst den Log Analytics-Agent für Linux entfernen. Informationen zum erfolgreichen Deinstallieren des Agents finden Sie unter [Deinstallieren des Log Analytics-Agents für Linux](../vm/monitor-virtual-machine.md).  
 
 #### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>Konfigurieren eines Log Analytics-Agents für Docker Swarm
 
@@ -184,8 +184,8 @@ Verwenden Sie für Docker Swarm die folgenden Informationen, um die Geheimnisinf
 
 Es gibt drei Möglichkeiten, wie Sie in Red Hat OpenShift den Log Analytics-Agent hinzufügen können, um mit dem Sammeln von Daten für die Containerüberwachung zu beginnen.
 
-* [Installieren des Log Analytics-Agents für Linux](../vm/quick-collect-linux-computer.md) direkt auf jedem OpenShift-Knoten  
-* [Aktivieren der Log Analytics-VM-Erweiterung](../vm/quick-collect-azurevm.md) auf jedem OpenShift-Knoten in Azure  
+* [Installieren des Log Analytics-Agents für Linux](../vm/monitor-virtual-machine.md) direkt auf jedem OpenShift-Knoten  
+* [Aktivieren der Log Analytics-VM-Erweiterung](../vm/monitor-virtual-machine.md) auf jedem OpenShift-Knoten in Azure  
 * Installieren des Log Analytics-Agents als OpenShift-Daemongruppe  
 
 In diesem Abschnitt werden die Schritte beschrieben, die zum Installieren des Log Analytics-Agents als OpenShift-Daemongruppe erforderlich sind.  
@@ -508,9 +508,9 @@ Weitere Informationen zur Docker-Daemon-Konfiguration mit Windows-Containern fin
 
 #### <a name="install-windows-agents"></a>Installieren des Windows-Agents
 
-Um die Überwachung von Windows- und Hyper-V-Containern zu aktivieren, installieren Sie den Microsoft Monitoring Agent (MMA) auf Windows-Computern, bei denen es sich um Containerhosts handelt. Informationen zu Windows-Computern in Ihrer lokalen Umgebung finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../agents/agent-windows.md). Verbinden Sie virtuelle Computer in Azure unter Verwendung der [VM-Erweiterung](../vm/quick-collect-azurevm.md) mit Azure Monitor.
+Um die Überwachung von Windows- und Hyper-V-Containern zu aktivieren, installieren Sie den Microsoft Monitoring Agent (MMA) auf Windows-Computern, bei denen es sich um Containerhosts handelt. Informationen zu Windows-Computern in Ihrer lokalen Umgebung finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../agents/agent-windows.md). Verbinden Sie virtuelle Computer in Azure unter Verwendung der [VM-Erweiterung](../vm/monitor-virtual-machine.md) mit Azure Monitor.
 
-Sie können Windows-Container überwachen, die unter Service Fabric ausgeführt werden. Allerdings werden derzeit nur [unter Azure ausgeführte virtuelle Computer](../vm/quick-collect-azurevm.md) und [Windows-Computer, die in Ihrer lokalen Umgebung ausgeführt werden](../agents/agent-windows.md), für Service Fabric unterstützt.
+Sie können Windows-Container überwachen, die unter Service Fabric ausgeführt werden. Allerdings werden derzeit nur [unter Azure ausgeführte virtuelle Computer](../vm/monitor-virtual-machine.md) und [Windows-Computer, die in Ihrer lokalen Umgebung ausgeführt werden](../agents/agent-windows.md), für Service Fabric unterstützt.
 
 Sie können überprüfen, ob die Containerüberwachungslösung für Windows korrekt festgelegt ist. Um zu überprüfen, ob das Management Pack ordnungsgemäß heruntergeladen wurde, suchen Sie nach *ContainerManagement.xxx*. Die Dateien sollten sich im Verzeichnis „C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs“ befinden.
 
@@ -526,9 +526,9 @@ Die Containerüberwachungslösung sammelt verschiedene Leistungsmetriken und Pro
 
 Alle drei Minuten werden von den folgenden Agent-Typen Daten gesammelt.
 
-- [Log Analytics-Agent für Linux](../vm/quick-collect-linux-computer.md)
+- [Log Analytics-Agent für Linux](../vm/monitor-virtual-machine.md)
 - [Windows-Agent](../agents/agent-windows.md)
-- [Log Analytics-VM-Erweiterung](../vm/quick-collect-azurevm.md)
+- [Log Analytics-VM-Erweiterung](../vm/monitor-virtual-machine.md)
 
 ### <a name="container-records"></a>Containerdatensätze
 
@@ -639,4 +639,3 @@ Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern S
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Fragen Sie Protokolle ab](../logs/log-query-overview.md), um detaillierte Containerdatensätze anzuzeigen.
-

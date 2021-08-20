@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: yelevin
-ms.openlocfilehash: a0056391dddec25511deb7033d37f59db3d835c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b023745d8882d639cf9a39fd483dd7b82d1a782d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98567825"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346285"
 ---
 # <a name="connect-your-thycotic-secret-server-to-azure-sentinel"></a>Verbinden Ihres Thycotic Secret Server mit Azure Sentinel
 
 > [!IMPORTANT]
 > Der Thycotic Secret Server-Connector befindet sich derzeit in der **VORSCHAUVERSION**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 In diesem Artikel wird erläutert, wie Sie Ihre Thycotic Secret Server-Appliance mit Azure Sentinel verbinden. Mit dem Thycotic Secret Server-Datenconnector lassen sich Ihre Thycotic Secret Server-Protokolle problemlos mit Azure Sentinel verbinden, sodass Sie die Daten dann in Arbeitsmappen anzeigen, als Vorlage für benutzerdefinierte Warnungen und zur Verbesserung der Untersuchung von Problemen verwenden können. Bei der Integration von Thycotic Secret Server und Azure Sentinel wird der CEF-Datenconnector verwendet, um Secret Server-Syslog-Nachrichten ordnungsgemäß zu analysieren und anzuzeigen.
 
@@ -51,7 +53,7 @@ Um die Protokolle Ihres Thycotic Secret Server in Azure Sentinel zu erfassen, ko
 
     1. Unter **1. Konfiguration des Linux-Syslog-Agents**: Führen Sie diesen Schritt aus, wenn Sie noch keinen Protokollweiterleitungsserver ausführen oder einen anderen benötigen. Detaillierte Anleitungen und Erläuterungen finden Sie unter [SCHRITT 1: Bereitstellen des Protokollweiterleitungsservers](connect-cef-agent.md) in der Azure Sentinel-Dokumentation.
 
-    1. Wählen Sie unter **2. Weiterleiten von CEF-Protokollen (Common Event Format) an den Syslog-Agent**: Befolgen Sie die Anweisungen von Thycotic zum [Konfigurieren des Secret Server](https://thy.center/ss/link/syslog). Diese Konfiguration sollte die folgenden Elemente enthalten:
+    1. Wählen Sie unter **2. Weiterleiten von CEF-Protokollen (Common Event Format) an den Syslog-Agent**: Befolgen Sie die Anweisungen von Thycotic zum [Konfigurieren des Secret Server](https://docs.thycotic.com/ssi/1.0.0/splunk/splunk-on-prem/config/syslog-events.md). Diese Konfiguration sollte die folgenden Elemente enthalten:
         - Protokollziel: Hostname und/oder IP-Adresse Ihres Protokollweiterleitungsservers.
         - Protokoll und Port: **TCP 514** (falls etwas anderes empfohlen wird, stellen Sie sicher, dass Sie die entsprechende Änderung parallel im syslog-Daemon und auf Ihrem Protokollweiterleitungsserver vornehmen).
         - Protokollformat: CEF.
@@ -78,6 +80,6 @@ Einige hilfreiche Arbeitsmappenbeispiele und Beispielabfragen finden Sie auf der
 
 In diesem Dokument haben Sie erfahren, wie Sie Thycotic Secret Server mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](monitor-your-data.md), um Ihre Daten zu überwachen.

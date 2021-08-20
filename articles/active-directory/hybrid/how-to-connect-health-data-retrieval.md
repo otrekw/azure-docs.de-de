@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d147d2c094923e971e52e1dbfe3f7a19776d38c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 435cc73d9c2a91a9c72bf07258a15dced581d580
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89463247"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110059"
 ---
 # <a name="azure-ad-connect-health-instructions-for-data-retrieval"></a>Azure AD Connect Health-Anweisungen für den Datenabruf
 
@@ -57,5 +57,5 @@ Führen Sie die folgenden Schritte aus, um Konten abzurufen, die mit ungültigen
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Installieren des Azure AD Connect Health-Agents](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health-Vorgänge](how-to-connect-health-operations.md)
-* [Azure AD Connect Health – FAQ](reference-connect-health-faq.md)
+* [Azure AD Connect Health – FAQ](reference-connect-health-faq.yml)
 * [Azure AD Connect Health: Versionsverlauf](reference-connect-health-version-history.md)

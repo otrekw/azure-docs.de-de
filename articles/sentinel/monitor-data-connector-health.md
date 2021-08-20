@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2020
 ms.author: yelevin
-ms.openlocfilehash: 7d52b76601a617f62ae5b10fa38841ef2608bf49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b8507f29d157cd715d6423c773b01a561a5e181
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94656989"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355429"
 ---
 # <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>Überwachen der Integrität ihrer Datenconnectors mit dieser Azure Sentinel-Arbeitsmappe
 
@@ -66,4 +66,4 @@ Diese Arbeitsmappe enthält drei Registerkartenabschnitte:
     :::image type="content" source="media/monitor-data-connector-health/data-health-workbook-3.png" alt-text="Seite „Informationen zum Agent“ der Arbeitsmappe zur Überwachung der Integrität von Datenconnectors" lightbox="media/monitor-data-connector-health/data-health-workbook-3.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informieren Sie sich, wie Sie [Ihre Daten in Azure Sentinel integrieren](quickstart-onboard.md), [Datenquellen verbinden](connect-data-sources.md) und [Einblicke in Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
+Informieren Sie sich, wie Sie [Ihre Daten in Azure Sentinel integrieren](quickstart-onboard.md), [Datenquellen verbinden](connect-data-sources.md) und [Einblicke in Daten und potenzielle Bedrohungen erhalten](get-visibility.md).

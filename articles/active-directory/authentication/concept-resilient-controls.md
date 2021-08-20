@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/08/2020
+ms.date: 07/13/2021
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db90d49034fb61c26bf4528045d2b3f54d7a30fc
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fe5f9987cb99aa90d1452b4f442e326d4e95bcee
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963843"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687801"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -72,7 +72,7 @@ Integrieren Sie die folgenden Zugriffssteuerungen in Ihre vorhandenen Richtlinie
 5. Wenn Sie den VPN-Zugriff mit der NPS-Erweiterung für Azure AD MFA schützen, sollten Sie für Ihre VPN-Lösung den Verbund als [SAML-App](../manage-apps/view-applications-portal.md) in Betracht ziehen und die App-Kategorie gemäß den folgenden Empfehlungen ermitteln. 
 
 >[!NOTE]
-> Risikobasierte Richtlinien erfordern [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/)-Lizenzen.
+> Risikobasierte Richtlinien erfordern [Azure AD Premium P2](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)-Lizenzen.
 
 Das folgende Beispiel beschreibt die Richtlinien, die Sie erstellen müssen, um eine robuste Zugriffssteuerung für den Zugriff von Benutzern auf ihre Apps und Ressourcen bereitzustellen. In diesem Beispiel benötigen Sie eine Sicherheitsgruppe **AppUsers** mit den Zielbenutzern, die Zugriff auf eine Gruppe mit dem Namen **CoreAdmins**, die die Core-Administratoren enthält, und eine Gruppe namens  **EmergencyAccess** mit den Notfallzugriffs-Konten erhalten sollen.
 Dieser Beispielrichtliniensatz gewährt ausgewählten Benutzern in **AppUsers** Zugriff auf ausgewählte Apps, wenn sie die Verbindung von einem vertrauenswürdigen Gerät aus herstellen ODER eine strenge Authentifizierung wie MFA durchlaufen. Er schließt Notfallzugriffs-Konten und Core-Administratoren aus.

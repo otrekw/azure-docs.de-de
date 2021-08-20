@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4550be7ae8c543eea1bdfa085db6f23fe668a121
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b423e763492a0c244982422122705039cd9de80
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025695"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302318"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-Trigger in Azure Functions
 
@@ -375,7 +375,7 @@ module.exports = function(context, req) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [PowerShell-Funktion](functions-reference-node.md). Die Funktion sucht in der Abfragezeichenfolge oder im Text der HTTP-Anforderung nach einem `name`-Parameter.
+Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [PowerShell-Funktion](functions-reference-powershell.md). Die Funktion sucht in der Abfragezeichenfolge oder im Text der HTTP-Anforderung nach einem `name`-Parameter.
 
 ```json
 {
@@ -755,7 +755,7 @@ Sie können programmgesteuert auf die `invoke_URL_template` zugreifen, indem Sie
 
 ## <a name="working-with-client-identities"></a>Arbeiten mit Clientidentitäten
 
-Wenn Ihre Funktions-App [App Service-Authentifizierung/-Autorisierung](../app-service/overview-authentication-authorization.md) verwendet, können Sie Informationen über authentifizierte Clients aus Ihrem Code anzeigen. Diese Informationen sind als [von der Plattform eingefügter Anforderungsheader](../app-service/app-service-authentication-how-to.md#access-user-claims) verfügbar.
+Wenn Ihre Funktions-App [App Service-Authentifizierung/-Autorisierung](../app-service/overview-authentication-authorization.md) verwendet, können Sie Informationen über authentifizierte Clients aus Ihrem Code anzeigen. Diese Informationen sind als [von der Plattform eingefügter Anforderungsheader](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code) verfügbar.
 
 Sie können diese Informationen auch aus Datenbindungen auslesen. Diese Funktion ist nur für die Functions-Runtime 2.x und höher verfügbar. Sie ist derzeit auch nur für .NET-Sprachen verfügbar.
 
@@ -827,19 +827,19 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="java"></a>[Java](#tab/java)
 
-Der authentifizierte Benutzer ist über [HTTP-Header](../app-service/app-service-authentication-how-to.md#access-user-claims) verfügbar.
+Der authentifizierte Benutzer ist über [HTTP-Header](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code) verfügbar.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Der authentifizierte Benutzer ist über [HTTP-Header](../app-service/app-service-authentication-how-to.md#access-user-claims) verfügbar.
+Der authentifizierte Benutzer ist über [HTTP-Header](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code) verfügbar.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Der authentifizierte Benutzer ist über [HTTP-Header](../app-service/app-service-authentication-how-to.md#access-user-claims) verfügbar.
+Der authentifizierte Benutzer ist über [HTTP-Header](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code) verfügbar.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Der authentifizierte Benutzer ist über [HTTP-Header](../app-service/app-service-authentication-how-to.md#access-user-claims) verfügbar.
+Der authentifizierte Benutzer ist über [HTTP-Header](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code) verfügbar.
 
 
 ---
@@ -924,7 +924,7 @@ In C#-fremden Funktionen wird bei Anforderungen, die mit dem Inhaltstyp `image/j
 
 Die Länge der HTTP-Anforderung ist auf 100 MB (104.857.600 Bytes) und die URL-Länge auf 4 KB (4.096 Bytes) beschränkt. Diese Grenzwerte werden durch das `httpRuntime`-Element der Datei [Web.config](https://github.com/Azure/azure-functions-host/blob/v3.x/src/WebJobs.Script.WebHost/web.config) der Runtime angegeben.
 
-Wenn eine Funktion, die den HTTP-Trigger verwendet, nicht innerhalb von etwa 230 Sekunden abgeschlossen ist, tritt bei [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) ein Timeout auf, und es wird ein HTTP 502-Fehler zurückgegeben. Die Funktion wird weiterhin ausgeführt, kann aber keine HTTP-Antwort zurückgeben. Bei Funktionen mit langer Ausführungsdauer empfiehlt es sich, asynchrone Muster zu befolgen und einen Speicherort zurückzugeben, von dem aus Sie den Status der Anforderung pingen können. Informationen dazu, wie lang eine Funktion ausgeführt werden kann, finden Sie unter [Skalierung und Hosting – Verbrauchsplan](functions-scale.md#timeout).
+Wenn eine Funktion, die den HTTP-Trigger verwendet, nicht innerhalb von etwa 230 Sekunden abgeschlossen ist, tritt bei [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.yml#why-does-my-request-time-out-after-230-seconds-) ein Timeout auf, und es wird ein HTTP 502-Fehler zurückgegeben. Die Funktion wird weiterhin ausgeführt, kann aber keine HTTP-Antwort zurückgeben. Bei Funktionen mit langer Ausführungsdauer empfiehlt es sich, asynchrone Muster zu befolgen und einen Speicherort zurückzugeben, von dem aus Sie den Status der Anforderung pingen können. Informationen dazu, wie lang eine Funktion ausgeführt werden kann, finden Sie unter [Skalierung und Hosting – Verbrauchsplan](functions-scale.md#timeout).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

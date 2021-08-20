@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 04/05/2021
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 472700f50175c115305bad332efa6b0e77fb74ce
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: f38172e82b61ce07863614857ab7ef096683f34a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315289"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346120"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>Aktivieren der Gastintegrität in VM Insights (Vorschau)
 Mit dem Feature „Gastintegrität“ von VM Insights können Sie Informationen zur Integrität einer VM anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie dieses Feature in Ihrem Abonnement aktivieren und die Gastüberwachung für die einzelnen virtuellen Computer aktivieren.
@@ -38,6 +38,8 @@ Der virtuelle Computer muss sich in einer der folgenden Regionen befinden:
 - Australien, Mitte
 - Australien (Osten)
 - Australien, Südosten
+- Brasilien Süd
+- Brasilien, Südosten
 - Kanada, Mitte
 - Indien, Mitte
 - USA (Mitte)
@@ -48,13 +50,17 @@ Der virtuelle Computer muss sich in einer der folgenden Regionen befinden:
 - Frankreich, Mitte
 - Deutschland, Westen-Mitte
 - Japan, Osten
+- Japan, Westen
 - Korea, Mitte
 - USA Nord Mitte
 - Nordeuropa
+- Norwegen, Osten
 - USA Süd Mitte
 - Südafrika, Norden
 - Asien, Südosten
 - Schweiz, Norden
+- Schweiz, Westen
+- Vereinigte Arabische Emirate, Norden
 - UK, Süden
 - UK, Westen
 - USA, Westen-Mitte
@@ -355,13 +361,13 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
         "publisher": "Microsoft.Azure.Monitor", 
         "type": "AzureMonitorWindowsAgent", 
         "typeHandlerVersion": "1.0", 
-        "autoUpgradeMinorVersion": false 
+        "autoUpgradeMinorVersion": true 
       },
       "linux": {
         "publisher": "Microsoft.Azure.Monitor", 
         "type": "AzureMonitorLinuxAgent", 
-        "typeHandlerVersion": "1.5", 
-        "autoUpgradeMinorVersion": false 
+        "typeHandlerVersion": "1.0", 
+        "autoUpgradeMinorVersion": true 
       }
     }
   },

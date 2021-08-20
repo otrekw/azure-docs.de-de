@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eabb6e657db7ea39bf0fb746bb596f496bc5efaf
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e24ea1fa02a70e63c8eaab21acff1d1c7b625e9a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958311"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354950"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
 
@@ -117,7 +117,7 @@ Die einfachste und empfohlene Methode zum Aktivieren von Cloudauthentifizierung 
 
 Sie sollten jedoch sowohl bei PHS als auch bei PTA nicht vergessen, das [nahtlose einmalige Anmelden](./how-to-connect-sso.md) zu aktivieren, damit Benutzer auf Cloud-Apps zugreifen können, ohne ständig ihren Benutzernamen und ihr Kennwort in der App eingeben zu müssen, wenn sie Geräte mit Windows 7 oder 8 in Ihrem Unternehmensnetzwerk verwenden. Ohne einmaliges Anmelden müssen sich die Benutzer anwendungsspezifische Kennwörter merken und sich für jede Anwendung anmelden. Ebenso müssen IT-Mitarbeiter Benutzerkonten für jede Anwendung (z. B. Microsoft 365, Box und Salesforce) erstellen und aktualisieren. Benutzer müssen sich ihre Kennwörter merken und außerdem Zeit für die Anmeldung bei jeder Anwendung aufbringen. Ein standardisiertes Verfahren für das einmalige Anmelden im gesamten Unternehmen ist nicht nur für eine optimale Benutzererfahrung wichtig, sondern auch für das Verringern von Risiken, das Erstellen von Berichten und die Governance.
 
-Falls Organisationen bereits AD FS oder einen anderen lokalen Authentifizierungsanbieter nutzen, können sie durch einen Umstieg auf Azure AD als Identitätsanbieter die Komplexität verringern und die Verfügbarkeit steigern. Sofern nicht spezifische Anwendungsfälle die Verwendung eines Verbunds erforderlich machen, wird das Migrieren von der Verbundauthentifizierung zu PHS und nahtlosem einmaligem Anmelden oder PTA und nahtlosem einmaligem Anmelden empfohlen. Sie profitieren damit von einem geringeren lokalen Aufwand und mehr Flexibilität, die die Cloud durch verbesserte Benutzerfunktionen bietet. Weitere Informationen finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](./plan-migrate-adfs-password-hash-sync.md).
+Falls Organisationen bereits AD FS oder einen anderen lokalen Authentifizierungsanbieter nutzen, können sie durch einen Umstieg auf Azure AD als Identitätsanbieter die Komplexität verringern und die Verfügbarkeit steigern. Sofern nicht spezifische Anwendungsfälle die Verwendung eines Verbunds erforderlich machen, wird das Migrieren von der Verbundauthentifizierung zu PHS und nahtlosem einmaligem Anmelden oder PTA und nahtlosem einmaligem Anmelden empfohlen. Sie profitieren damit von einem geringeren lokalen Aufwand und mehr Flexibilität, die die Cloud durch verbesserte Benutzerfunktionen bietet. Weitere Informationen finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](./migrate-from-federation-to-cloud-authentication.md).
 
 ### <a name="enable-automatic-deprovisioning-of-accounts"></a>Aktivieren der automatischen Bereitstellung von Konten
 

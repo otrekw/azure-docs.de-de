@@ -3,21 +3,21 @@ title: Übersicht zur Sprachübersetzung – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Mit der Sprachübersetzung können Sie Ihren Anwendungen, Tools und Geräten End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden. Dieser Artikel bietet einen Überblick über die Vorteile und Funktionen des Sprachübersetzungsdiensts.
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: erhopf
+ms.author: lajanuar
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Sprachübersetzung
-ms.openlocfilehash: 99541d7fe9eaa867860af93bc1423d476ce8bf4a
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 75dc95239533df96c2864d0cb08b06ebfac389e5
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449935"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350239"
 ---
 # <a name="what-is-speech-translation"></a>Was ist Sprachübersetzung?
 

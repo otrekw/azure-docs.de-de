@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: e82e74f4cd325444221bbd2e1c060b7cd2f5c6c7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 49a337d106bab7f33c8f51149c2151c21d78f40b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036729"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356252"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Sammeln von Syslog-Datenquellen mit dem Log Analytics-Agent
 Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux. Anwendungen senden Nachrichten, die auf dem lokalen Computer gespeichert oder an einen Syslog-Sammler übermittelt werden können. Wenn der Log Analytics-Agent für Linux installiert ist, konfiguriert er den lokalen Syslog-Daemon zum Weiterleiten von Nachrichten an den Agent. Der Agent sendet die Nachricht dann an Azure Monitor, wo ein entsprechender Datensatz erstellt wird.  
@@ -56,7 +56,7 @@ Sie können eine neue Einrichtung hinzufügen, indem Sie auf **Einrichtung hinzu
 Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben. Wenn Sie Syslog manuell auf jedem Linux-Agent ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Computer anwenden*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurieren von Syslog auf dem Linux-Agent
-Wenn der [Log Analytics-Agent auf einem Linux-Client installiert ist](../vm/quick-collect-linux-computer.md), installiert er eine standardmäßige Syslog-Konfigurationsdatei, die Einrichtung und Schweregrad der gesammelten Nachrichten definiert. Sie können diese Datei ändern, um die Konfiguration zu ändern. Die Konfigurationsdatei unterscheidet sich je nach dem Syslog-Daemon, den der Client installiert hat.
+Wenn der [Log Analytics-Agent auf einem Linux-Client installiert ist](../vm/monitor-virtual-machine.md), installiert er eine standardmäßige Syslog-Konfigurationsdatei, die Einrichtung und Schweregrad der gesammelten Nachrichten definiert. Sie können diese Datei ändern, um die Konfiguration zu ändern. Die Konfigurationsdatei unterscheidet sich je nach dem Syslog-Daemon, den der Client installiert hat.
 
 > [!NOTE]
 > Wenn Sie die syslog-Konfiguration bearbeiten, müssen Sie den syslog-Daemon neu starten, damit die Änderungen wirksam werden.
@@ -231,4 +231,4 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die Sy
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollabfragen](../logs/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
 * Verwenden Sie [benutzerdefinierte Felder](../logs/custom-fields.md) , um Daten aus Syslog-Datensätzen in einzelnen Feldern zu analysieren.
-* [Konfigurieren Sie Linux-Agents](../vm/quick-collect-linux-computer.md) zum Sammeln anderer Datentypen.
+* [Konfigurieren Sie Linux-Agents](../vm/monitor-virtual-machine.md) zum Sammeln anderer Datentypen.

@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5f981e40d82a1f5b4d775832752d4b169ab73db0
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6dcd14f12b557ef63337890b10e69d6cdf92498a
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750027"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031173"
 ---
 # <a name="connect-to-azure-virtual-desktop-classic-with-the-ios-client"></a>Herstellen einer Verbindung mit Azure Virtual Desktop (klassisch) mithilfe des iOS-Clients
 
 > Gilt für: iOS 13.0 oder höher. Kompatibel mit iPhone, iPad und iPod Touch.
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../connect-ios.md) weiter.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../user-documentation/connect-ios.md) weiter.
 
 Mit unserem herunterladbaren Client können Sie über Ihr iOS-Gerät auf Azure Virtual Desktop-Ressourcen zugreifen. In dieser Anleitung erfahren Sie, wie Sie den iOS-Client einrichten.
 
@@ -45,7 +45,7 @@ Abonnieren Sie einen Feed wie folgt:
 
 Danach sollten die Remoteressourcen im Connection Center angezeigt werden.
 
-Nachdem du einen Feed abonniert hast, wird der Inhalt dieses Feeds automatisch regelmäßig aktualisiert. Ressourcen können basierend auf Änderungen durch Ihren Administrator hinzugefügt, geändert oder entfernt werden.
+Sobald Sie einen Feed abonniert haben, wird der Inhalt des Feeds in regelmäßigen Abständen automatisch aktualisiert. Ressourcen können basierend auf Änderungen durch Ihren Administrator hinzugefügt, geändert oder entfernt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

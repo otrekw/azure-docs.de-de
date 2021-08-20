@@ -3,22 +3,22 @@ title: Einmaliges Anmelden (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie etwas über das Erstellen von Umgebungen mit einmaligem Anmelden mithilfe der Microsoft-Authentifizierungsbibliothek für JavaScript (MSAL.js).
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: mtillman
+ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 86df7b35987fcc0081aca4e7e33f4da72f08e452
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: 6ff627b09c6bc1d1b88a106c18fa4bdf9d241120
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077138"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418516"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Einmaliges Anmelden mit MSAL.js
 
@@ -47,7 +47,7 @@ const myMSALObj = new UserAgentApplication(config);
 
 ## <a name="sso-between-apps"></a>Einmaliges Anmelden zwischen Apps
 
-Beim Authentifizieren eines Benutzers wird in der Azure AD-Domäne im Browser ein Sitzungscookie festgelegt. MSAL.js benötigt dieses Sitzungscookie, um einmaliges Anmelden für den Benutzer zwischen verschiedenen Anwendungen bereitzustellen. Außerdem speichert MSAL.js die ID- und Zugriffstoken des Benutzers im Browserspeicher in den einzelnen Anwendungsdomänen zwischen. Daher weicht das SSO-Verhalten in verschiedenen Situationen ab:  
+Beim Authentifizieren eines Benutzers wird in der Azure AD-Domäne im Browser ein Sitzungscookie festgelegt. MSAL.js benötigt dieses Sitzungscookie, um einmaliges Anmelden für den Benutzer zwischen verschiedenen Anwendungen bereitzustellen. Außerdem speichert MSAL.js die ID- und Zugriffstoken des Benutzers im Browserspeicher in den einzelnen Anwendungsdomänen zwischen. Daher weicht das SSO-Verhalten in verschiedenen Situationen ab:
 
 ### <a name="applications-on-the-same-domain"></a>Anwendungen in derselben Domäne
 
@@ -76,7 +76,7 @@ var request = {
 userAgentApplication.acquireTokenSilent(request).then(function(response) {
         const token = response.accessToken
     }
-).catch(function (error) {  
+).catch(function (error) {
         //handle error
 });
 ```
@@ -132,14 +132,14 @@ var request = {
 userAgentApplication.acquireTokenSilent(request).then(function(response) {
         const token = response.accessToken
     }
-).catch(function (error) {  
+).catch(function (error) {
         //handle error
 });
 ```
 
 ## <a name="sso-in-adaljs-to-msaljs-update"></a>Einmaliges Anmelden in ADAL.js mit Update auf MSAL.js
 
-MSAL.js bietet Featureparität mit ADAL.js für Azure AD-Authentifizierungsszenarien. Um die Migration von ADAL.js zu MSAL.js zu vereinfachen und zu vermeiden, dass Ihre Benutzer zur erneuten Anmeldung aufgefordert werden, liest die Bibliothek das ID-Token für die Sitzung des Benutzers im Cache von ADAL.js und meldet den Benutzer nahtlos in MSAL.js an.  
+MSAL.js bietet Featureparität mit ADAL.js für Azure AD-Authentifizierungsszenarien. Um die Migration von ADAL.js zu MSAL.js zu vereinfachen und zu vermeiden, dass Ihre Benutzer zur erneuten Anmeldung aufgefordert werden, liest die Bibliothek das ID-Token für die Sitzung des Benutzers im Cache von ADAL.js und meldet den Benutzer nahtlos in MSAL.js an.
 
 Um das Verhalten des einmaligen Anmeldens (SSO) bei einer Aktualisierung von ADAL.js nutzen zu können, müssen Sie sicherstellen, dass die Bibliotheken zum Zwischenspeichern von Token `localStorage` verwenden. Legen Sie bei der Initialisierung `cacheLocation` in den Konfigurationen von MSAL.js und ADAL.js wie folgt auf `localStorage` fest:
 

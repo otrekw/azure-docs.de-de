@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/3/2020
+ms.date: 06/23/2021
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: cfbcc8523ff1d5858317a3654b58ec7b2d23607a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q4, aaddev
+ms.openlocfilehash: ed3495bb7267c54f9b95f7fc3465d76ddde2faaa
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99582025"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581887"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
@@ -28,7 +28,7 @@ Eine Form von Anmeldeinformationen, die eine Anwendung zur Authentifizierung ver
 
 ## <a name="assertion-format"></a>Assertionformat
 
-Für die Berechnung der Assertion können Sie eine der zahlreichen JWT-Bibliotheken in der Sprache Ihrer Wahl nutzen. [MSAL unterstützt dies mithilfe von `.WithCertificate()`](msal-net-client-assertions.md). Die Informationen sind im [Header](#header), den [Ansprüchen](#claims-payload) und der [Signatur](#signature) des Tokens enthalten.
+Für die Berechnung der Assertion können Sie eine der zahlreichen JWT-Bibliotheken in der Sprache Ihrer Wahl nutzen. [MSAL unterstützt dies mithilfe von `.WithCertificate()`](msal-net-client-assertions.md). Die Informationen sind im Header, den Ansprüchen und der Signatur des Tokens enthalten.
 
 ### <a name="header"></a>Header
 

@@ -3,12 +3,12 @@ title: Bereitstellen eines verwalteten Service Fabric-Clusters mit zustandslosen
 description: Erfahren Sie, wie Sie zustandslose Knotentypen in Azure Service Fabric-Clustern erstellen und bereitstellen.
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: a1ea4a9d37ce26ac90c2cbae0420e4dbf8797ee2
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 2e7ebd2ec3098cc90c8fb044472c348c68aed689
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109689283"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033711"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-with-stateless-node-types"></a>Bereitstellen eines verwalteten Service Fabric-Clusters mit zustandslosen Knotentypen
 
@@ -63,4 +63,4 @@ Für alle Migrationsszenarien muss ein neuer, zustandsloser Knotentyp hinzugefü
 Weitere Informationen zu verwalteten Service Fabric-Clustern finden Sie in den folgenden Artikeln:
 
 > [!div class="nextstepaction"]
-> [Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern](./faq-managed-cluster.md)
+> [Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern](./faq-managed-cluster.yml)

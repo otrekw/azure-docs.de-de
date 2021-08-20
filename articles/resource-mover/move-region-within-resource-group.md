@@ -7,20 +7,16 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8eb4dc8ee58d9ced141c7c4e4404596ace727f0c
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97797273"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459132"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Regionsübergreifendes Verschieben von Ressourcen (aus Ressourcengruppe)
 
 In diesem Artikel erfahren Sie, wie Sie Ressourcen in einer bestimmten Ressourcengruppe in eine andere Azure-Region verschieben. In der Ressourcengruppe wählen Sie die Ressourcen aus, die Sie verschieben möchten. Anschließend verschieben Sie sie mithilfe von [Azure Resource Mover](overview.md).
-
-> [!IMPORTANT]
-> Azure Resource Mover ist derzeit als öffentliche Vorschauversion verfügbar.
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -119,7 +115,7 @@ Gehen Sie zur Vorbereitung wie folgt vor:
 
 1. Wählen Sie unter **Across regions** (Regionsübergreifend) die Quellressourcengruppe und anschließend **Vorbereiten** aus.
 2. Wählen Sie unter **Prepare resources** (Ressourcen vorbereiten) die Option **Prepare** (Vorbereiten) aus.
-1. 
+
     ![Schaltfläche zum Vorbereiten der Quellressourcengruppe](./media/move-region-within-resource-group/prepare-source-resource-group.png)
 
     Beim Vorbereitungsprozess generiert Resource Mover Azure Resource Manager-Vorlagen (ARM) mithilfe der Ressourcengruppeneinstellungen. Die Ressourcen innerhalb der Ressourcengruppe sind nicht betroffen.
@@ -137,7 +133,7 @@ Initiieren Sie die Verschiebung wie folgt:
 2. Wählen Sie unter **Ressourcen verschieben** die Option **Initiate Move** (Verschiebung initiieren) aus. Die Ressourcengruppe wechselt in den Status *Initiate move in progress* (Verschiebung wird initiiert).
 3. Nachdem die Verschiebung initiiert wurde, wird die Zielressourcengruppe basierend auf der generierten ARM-Vorlage erstellt. Die Quellressourcengruppe wechselt in den Status *Commit move pending* (Committen der Verschiebung ausstehend).
 
-![Status „Verschiebung committen“](./media/move-region-availability-zone/commit-move-pending.png)
+    ![Status „Verschiebung committen“](./media/move-region-availability-zone/commit-move-pending.png)
 
 So committen Sie die Verschiebung und schließen sie ab:
 

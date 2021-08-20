@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: f0c24940e606020dc45e5a000cfcb030fd806d4b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 67a564b813014ffc25049f0694ef05977d65efe6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047484"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463051"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Hinzufügen einer Bildebene zu einer Karte
 
@@ -38,7 +38,7 @@ Die Bildebene unterstützt folgende Bildformate:
 
 ## <a name="add-an-image-layer"></a>Hinzufügen einer Bildebene
 
-Der folgende Code legt ein Bild einer [Karte von Newark, New Jersey, von 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) über die Karte. Ein [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)-Element wird erstellt, indem eine URL zu einem Bild und Koordinaten für die vier Ecken im Format `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` übergeben werden.
+Der folgende Code legt ein Bild einer Karte von Newark, New Jersey, von 1922 über die Karte. Ein [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)-Element wird erstellt, indem eine URL zu einem Bild und Koordinaten für die vier Ecken im Format `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` übergeben werden.
 
 ```javascript
 //Create an image layer and add it to the map.

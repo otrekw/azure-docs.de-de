@@ -2,18 +2,17 @@
 title: Automatische Bereitstellung für Gerätegruppen – Azure IoT Edge | Microsoft-Dokumentation
 description: Verwenden Sie automatische Bereitstellungen in Azure IoT Edge, um Gerätegruppen basierend auf freigegebenen Tags zu verwalten.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3989ec4ca2b5c9d7385841604678791b20c1d102
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0461fffa62f46491d5bbb3c2c9f66670b3bd9cba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489981"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355149"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf
 

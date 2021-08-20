@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: troubleshooting
 ms.date: 05/10/2021
 ms.author: alkohli
-ms.openlocfilehash: bd54b662e48ef6f66ea2bfef10863e2d7627289f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c1d1fd5a15d889ead669a5c7c880ed59f5a66ba8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966435"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340254"
 ---
 # <a name="review-copy-errors-in-uploads-from-azure-data-box-and-azure-data-box-heavy-devices"></a>Überprüfen von Kopierfehlern bei Uploads von Azure Data Box- und Azure Data Box Heavy-Geräten
 
@@ -110,7 +110,7 @@ Andere REST-API-Fehler können während des Datenuploads auftreten. Weitere Info
 
 **Fehlerbeschreibung:** Wenn ein Blobspeichercontainer als WORM (Write Once, Read Many) konfiguriert ist, können Blobs, die bereits im Container gespeichert sind, nicht hochgeladen werden.
 
-**Weiteres Vorgehen:** Sie können diesen Fehler im aktuellen Upload nicht beheben. Der Upload wurde mit Fehlern abgeschlossen. Bevor Sie eine Netzwerkübertragung durchführen oder einen neuen Importauftrag starten, stellen Sie sicher, dass die aufgelisteten Blobs nicht Teil eines unveränderlichen Speichercontainers sind. Weitere Informationen finden Sie unter [Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](../storage/blobs/storage-blob-immutable-storage.md).
+**Weiteres Vorgehen:** Sie können diesen Fehler im aktuellen Upload nicht beheben. Der Upload wurde mit Fehlern abgeschlossen. Bevor Sie eine Netzwerkübertragung durchführen oder einen neuen Importauftrag starten, stellen Sie sicher, dass die aufgelisteten Blobs nicht Teil eines unveränderlichen Speichercontainers sind. Weitere Informationen finden Sie unter [Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](../storage/blobs/immutable-storage-overview.md).
 
 
 ### <a name="the-total-provisioned-capacity-of-the-shares-cannot-exceed-the-account-maximum-size-limit"></a>Die insgesamt bereitgestellte Kapazität der Freigaben darf die maximal zulässige Größe des Kontos nicht überschreiten

@@ -2,13 +2,13 @@
 title: Erstellen eines Relay-Namespaces mithilfe des Azure-Portals | Microsoft Docs
 description: Dieser Artikel enthält eine exemplarische Vorgehensweise zum Erstellen eines Relay-Namespace mit dem Azure-Portal.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 758e63c933b864ac5a77889f4addac4a468baafd
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/23/2021
+ms.openlocfilehash: d275f760a72e0469a22e7b1861e49751a9b8350a
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304527"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666284"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Erstellen eines Relay-Namespaces mithilfe des Azure-Portals
 
@@ -19,7 +19,7 @@ Ein Namespace ist ein Bereichscontainer für alle Azure Relay-Komponenten. Ein e
 
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Erstellen eines Namespace im Azure-Portal
 
-[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
+[!INCLUDE [relay-create-namespace-portal](./includes/relay-create-namespace-portal.md)]
 
 Glückwunsch! Sie haben einen Relay-Namespace erstellt.
 

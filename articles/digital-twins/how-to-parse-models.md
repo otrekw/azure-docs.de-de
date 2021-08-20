@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie die Parserbibliothek zum Analysieren von DTDL-Modellen verwenden können.
 author: baanders
 ms.author: baanders
-ms.date: 4/10/2020
+ms.date: 8/13/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 12916b06dd965d7eed717df2fe71f935b8319bc4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 52cec60dc771232fcb808184373b82f790f8a759
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772709"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122350968"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Analysieren und Validieren von Modellen mit der DTDL-Parserbibliothek
 
@@ -70,7 +70,7 @@ Der Parser bietet die folgenden Funktionen:
 * Bestimmen, ob ein Modell aus einem anderen Modell zugewiesen werden kann
 
 > [!NOTE]
-> [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)-Geräte (PnP) arbeiten mit einer geringfügig anderen Syntaxvariante, um ihre Funktionalität zu beschreiben. Diese Syntaxvariante ist eine semantisch kompatible Teilmenge der Sprache DTDL, die in Azure Digital Twins verwendet wird. Wenn Sie die Parserbibliothek nutzen, müssen Sie nicht wissen, welche Syntaxvariante zur Erstellung der DTDL für Ihren Digital Twin verwendet wurde. Der Parser gibt für die PnP- und Azure Digital Twins-Syntax standardmäßig stets dasselbe Modell zurück.
+> [IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md)-Geräte (PnP) arbeiten mit einer geringfügig anderen Syntaxvariante, um ihre Funktionalität zu beschreiben. Diese Syntaxvariante ist eine semantisch kompatible Teilmenge der Sprache DTDL, die in Azure Digital Twins verwendet wird. Wenn Sie die Parserbibliothek nutzen, müssen Sie nicht wissen, welche Syntaxvariante zur Erstellung der DTDL für Ihren Digital Twin verwendet wurde. Der Parser gibt für die PnP- und Azure Digital Twins-Syntax standardmäßig stets dasselbe Modell zurück.
 
 ### <a name="code-with-the-parser-library"></a>Codieren mit der Parserbibliothek
 
@@ -87,4 +87,4 @@ Der folgende Code zeigt ein Beispiel für die Verwendung der Parserbibliothek, u
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Sie mit dem Schreiben Ihrer Modelle fertig sind, erfahren Sie, wie Sie sie mit den DigitalTwinsModels-APIs hochladen (und andere Verwaltungsvorgänge durchführen):
-* [Vorgehensweise: Verwalten von DTDL-Modellen](how-to-manage-model.md)
+* [Verwalten von DTDL-Modellen](how-to-manage-model.md)

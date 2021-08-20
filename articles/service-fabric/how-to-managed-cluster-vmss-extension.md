@@ -3,12 +3,12 @@ title: Hinzufügen einer VM-Skalierungsgruppenerweiterung zu einem verwalteten S
 description: Im Folgenden wird beschrieben, wie Sie eine VM-Skalierungsgruppenerweiterung einem verwalteten Service Fabric-Clusterknotentyp hinzufügen.
 ms.topic: article
 ms.date: 5/10/2021
-ms.openlocfilehash: 9aaddd912407849133a115116dd769d2090767dd
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 0c0aac8d7804caeb6c08657b1ed36c45958a0ea5
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683405"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033693"
 ---
 # <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type"></a>Hinzufügen einer VM-Skalierungsgruppenerweiterung zu einem verwalteten Service Fabric-Clusterknotentyp
 
@@ -58,4 +58,4 @@ Weitere Informationen zum Konfigurieren von verwalteten Service Fabric-Clusterkn
 Weitere Informationen zu verwalteten Service Fabric-Clustern finden Sie in den folgenden Artikeln:
 
 > [!div class="nextstepaction"]
-> [Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern](./faq-managed-cluster.md)
+> [Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern](./faq-managed-cluster.yml)

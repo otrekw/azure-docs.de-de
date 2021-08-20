@@ -15,20 +15,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: e912cabd27bac52792ffb2d71027170f4e53f310
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 839d235412b70669dd3cb9b9942509ef9af7b3c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784519"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349308"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Bring Your Own Machine Learning (ML) in Azure Sentinel
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Machine Learning (ML) ist eine der wichtigsten Grundlagen von Azure Sentinel und eines der wichtigsten Attribute, die es von anderen abhebt. Azure Sentinel bietet ML in verschiedenen Erfahrungen: integriert in die [Fusion](fusion.md)-Korrelations-Engine und in Jupyter-Notebooks sowie die neu verfügbare Build-Your-Own ML-Plattform (BYO-ML). 
 
 ML-Erkennungsmodelle können sich an einzelne Umgebungen und Änderungen im Benutzerverhalten anpassen, um [falsch positive Ergebnisse](false-positives.md) zu verringern und Bedrohungen zu identifizieren, die mit einem herkömmlichen Ansatz nicht gefunden würden. Viele Sicherheitsorganisationen verstehen den Wert von ML für die Sicherheit, obgleich nicht viele von Ihnen über den Luxus von Fachleuten verfügen, die Fachkenntnisse sowohl im Bereich Sicherheit als auch des ML besitzen. Wir haben das hier vorgestellte Framework für Sicherheitsorganisationen und Fachkräfte entwickelt, damit sie gemeinsam mit uns auf ihrer ML Journey wachsen können. Organisationen, die keine Erfahrung mit ML haben oder nicht das erforderliche Fachwissen besitzen, können einen erheblichen Schutzwert aus den integrierten ML-Funktionen von Azure Sentinel ziehen.
 
 :::image type="content" source="./media/bring-your-own-ml/machine-learning-framework.png" alt-text="Machine Learning-Framework":::
+
 
 ## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>Was ist die Bring Your Own Machine Learning-Plattform (BYO-ML)?
 
@@ -163,7 +166,7 @@ Um sich Ihre bewerteten Ergebnisse zusammen mit den zugehörigen Protokolldetail
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>Erstellen benutzerdefinierter Analyseregeln mit ML-Ergebnissen
 
-Nachdem Sie bestätigt haben, dass sich die ML-Ergebnisse in der Tabelle „Benutzerdefinierte Protokolle“ befinden und Sie mit der Genauigkeit der Bewertungen zufrieden sind, können Sie auf Grundlage der Ergebnisse eine Erkennung erstellen. Wechseln Sie im Azure Sentinel-Portal zu **Analysen**, und [erstellen Sie eine neue Erkennungsregel](tutorial-detect-threats-custom.md). Im Folgenden finden Sie ein Beispiel für die Abfrage, die zum Erstellen der Erkennung verwendet wird.
+Nachdem Sie bestätigt haben, dass sich die ML-Ergebnisse in der Tabelle „Benutzerdefinierte Protokolle“ befinden und Sie mit der Genauigkeit der Bewertungen zufrieden sind, können Sie auf Grundlage der Ergebnisse eine Erkennung erstellen. Wechseln Sie im Azure Sentinel-Portal zu **Analysen**, und [erstellen Sie eine neue Erkennungsregel](detect-threats-custom.md). Im Folgenden finden Sie ein Beispiel für die Abfrage, die zum Erstellen der Erkennung verwendet wird.
 
 :::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="Erstellen einer benutzerdefinierten Analyseregel für B Y O M L-Erkennungen":::
 

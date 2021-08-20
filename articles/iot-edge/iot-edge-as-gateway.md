@@ -2,7 +2,6 @@
 title: Gateways für nachgeschaltete Geräte – Azure IoT Edge | Microsoft-Dokumentation
 description: Verwenden Sie Azure IoT Edge zum Erstellen eines transparenten oder nicht transparenten Gateway-Geräts oder eines Proxygatewaygeräts, das Daten von mehreren nachgeschalteten Geräten in die Cloud sendet oder lokal verarbeitet.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/23/2021
 ms.topic: conceptual
@@ -11,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: aa8b7372af91fc7cb194dfc3a6212cb4ce1fa0a2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 85d93c46ca9ef397b9e2ae95cfc042e50ee10bd1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027345"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339835"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Verwendung eines IoT Edge-Geräts als Gateway
 

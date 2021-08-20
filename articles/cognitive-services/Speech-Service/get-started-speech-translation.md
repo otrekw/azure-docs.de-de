@@ -3,22 +3,22 @@ title: Schnellstart zur Sprachübersetzung – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie das Speech SDK zum Übersetzen von Sprache verwenden. Dieser Schnellstart enthält Informationen zur Objektkonstruktion, zu unterstützten Audioeingabeformaten und zu Konfigurationsoptionen für die Sprachübersetzung.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-two-with-js-spx
 keywords: Sprachübersetzung
-ms.openlocfilehash: d5da242a72a3b152924363190a2161ebc101da4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05a71ed2a72c6df673b530468551ea03fcce63bf
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91819457"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356214"
 ---
 # <a name="get-started-with-speech-translation"></a>Erste Schritte mit der Sprachübersetzung
 

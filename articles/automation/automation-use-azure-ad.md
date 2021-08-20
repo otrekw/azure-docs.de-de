@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 34033589a297b1a3a2abb97d346f1da478f950e6
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 3150b20e8ddd5fa49f1cc9486d29dd633e443239
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830284"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454868"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Authentifizieren bei Azure mithilfe von Azure AD
 
@@ -51,7 +51,7 @@ Vor dem Installieren der Azure AD-Module auf Ihrem Computer:
 
 1. Stellen Sie sicher, dass die Microsoft .NET Framework 3.5.x-Funktion auf Ihrem Computer aktiviert ist. Es ist wahrscheinlich, dass auf Ihrem Computer eine neuere Version installiert ist, aber die Abwärtskompatibilität mit älteren Versionen des .NET Frameworks kann aktiviert oder deaktiviert werden. 
 
-2. Installieren Sie die 64-Bit-Version des [Microsoft Online Services-Anmelde-Assistenten](https://www.microsoft.com/Download/details.aspx?id=28177).
+2. Installieren Sie die 64-Bit-Version des [Microsoft Online Services-Anmelde-Assistenten](/microsoft-365/enterprise/connect-to-microsoft-365-powershell?view=o365-worldwide#step-1-install-the-required-software-1).
 
 3. Führen Sie Windows PowerShell als Administrator aus, um eine Windows PowerShell-Eingabeaufforderung mit erhöhten Rechten zu erstellen.
 

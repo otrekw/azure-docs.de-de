@@ -6,15 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: d01febec3972dcc26c6e9b5aa8d0c4cca5f32d0a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e4945f6013c05135ea906fb813017ca152aa9d62
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606078"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088330"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>Verwenden von EXPLAIN zum Analysieren der Abfrageleistung in Azure Database for MySQL
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 **EXPLAIN** ist ein praktisches Tool zum Optimieren von Abfragen. Mit einer EXPLAIN-Anweisung können Sie Informationen zur Ausführung von SQL-Anweisungen abrufen. Die folgende Ausgabe zeigt ein Beispiel für die Ausführung einer EXPLAIN-Anweisung.
 
@@ -56,10 +57,11 @@ possible_keys: id
 ```
 
 Aus der neuen EXPLAIN-Anweisung geht hervor, dass MySQL jetzt einen Index verwendet, um die Anzahl von Zeilen auf 1 zu begrenzen, wodurch sich wiederum die Suchzeit erheblich verkürzt.
- 
+
 ## <a name="covering-index"></a>Abdeckender Index
+
 Ein abdeckender Index besteht aus allen Spalten einer Abfrage im Index, sodass das Abrufen von Werten aus Datentabellen reduziert wird. Hier sehen Sie eine Abbildung in der folgenden **GROUP BY**-Anweisung.
- 
+
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -78,10 +80,10 @@ possible_keys: NULL
 ```
 
 Wie aus der Ausgabe hervorgeht, verwendet MySQL keine Indizes, weil keine richtigen Indizes verfügbar sind. Außerdem wird *Using temporary; Using filesort* angezeigt, was bedeutet, dass MySQL eine temporäre Tabelle erstellt, um die **GROUP BY**-Klausel zu erfüllen.
- 
+
 Das Erstellen eines Index für Spalte **c2** allein macht keinen Unterschied, und MySQL muss trotzdem eine temporäre Tabelle erstellen:
 
-```sql 
+```sql
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -122,6 +124,7 @@ possible_keys: covered
 Wie aus der obigen EXPLAIN-Anweisung hervorgeht, verwendet MySQL jetzt den Index mit vollständiger Abdeckung, und das Erstellen einer temporären Tabelle wird vermieden. 
 
 ## <a name="combined-index"></a>Kombinierter Index
+
 Ein kombinierter Index besteht aus Werten aus mehreren Spalten und kann als Array von Zeilen betrachtet werden, die durch Verketten der Werte der indizierten Spalten sortiert werden.  Diese Methode kann in einer **GROUP BY**-Anweisung nützlich sein.
 
 ```sql
@@ -143,7 +146,7 @@ possible_keys: NULL
 
 MySQL führt eine *Dateisortierung* aus. Dieser Vorgang ist ziemlich langsam, insbesondere, wenn viele Zeilen sortiert werden müssen. Zur Optimierung dieser Abfrage kann ein kombinierter Index für beide Spalten erstellt werden, die sortiert werden.
 
-```sql 
+```sql
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
 *************************** 1. row ***************************
@@ -162,11 +165,11 @@ possible_keys: NULL
 ```
 
 Aus der EXPLAIN-Anweisung geht jetzt hervor, dass MySQL einen kombinierten Index verwenden kann, um eine zusätzliche Sortierung zu vermeiden, weil der Index bereits sortiert ist.
- 
+
 ## <a name="conclusion"></a>Zusammenfassung
- 
+
 Durch die Verwendung von EXPLAIN und verschiedener Typen von Indizes kann die Leistung erheblich gesteigert werden. Wenn Sie über einen Index für die Tabelle verfügen, bedeutet das nicht zwangsläufig, dass MySQL in der Lage ist, ihn für Ihre Abfragen zu verwenden. Überprüfen Sie Ihre Annahmen immer mit EXPLAIN, und optimieren Sie Ihre Abfragen mithilfe von Indizes.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Um Antworten anderer Benutzer auf häufige Fragen zu erhalten oder eine neue Frage/Antwort zu veröffentlichen, besuchen Sie [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

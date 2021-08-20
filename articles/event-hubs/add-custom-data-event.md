@@ -3,12 +3,12 @@ title: Hinzufügen von benutzerdefinierten Daten zu Ereignissen in Azure Event H
 description: In diesem Artikel erfahren Sie, wie Sie benutzerdefinierte Daten zu Ereignissen in Azure Event Hubs hinzufügen.
 ms.topic: how-to
 ms.date: 03/19/2021
-ms.openlocfilehash: 3362b6ac4b0d624969aa3ba36d2ebc83b8777cf5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e3f94228c6f2fbe5d533635a01062c701aa9664
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104893398"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297530"
 ---
 # <a name="add-custom-data-to-events-in-azure-event-hubs"></a>Hinzufügen von benutzerdefinierten Daten zu Ereignissen in Azure Event Hubs
 Da ein Ereignis hauptsächlich aus einer undurchsichtigen Menge von Bytes besteht, ist es für Consumer dieser Ereignisse unter Umständen schwierig fundierte Entscheidungen hinsichtlich ihrer Verarbeitung zu treffen. Damit Ereignisherausgeber Consumern einen besseren Kontext bieten können, können Ereignisse auch benutzerdefinierte Metadaten in Form von mehreren Schlüssel-Wert-Paaren enthalten. Ein typisches Szenario für die Einbindung von Metadaten ist das Bereitstellen eines Hinweises zu dem in einem Ereignis enthaltenen Datentyp, sodass Consumer das Format erkennen und entsprechend deserialisieren können.
@@ -62,4 +62,4 @@ let eventData = { body: "First event", properties: { "event-type": "com.microsof
 Weitere Informationen finden Sie in den folgenden Schnellstartanleitungen und Beispielen. 
 
 - Schnellstartanleitungen: [.NET](event-hubs-dotnet-standard-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [JavaScript](event-hubs-node-get-started-send.md)
-- Beispiele bei GitHub: [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples), [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples), [Python](https://github.com/Azure/azure-sdk-for-python/blob/azure-eventhub_5.3.1/sdk/eventhub/azure-eventhub/samples), [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript), [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/typescript)
+- Beispiele bei GitHub: [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples), [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples), [Python](https://github.com/Azure/azure-sdk-for-python/blob/azure-eventhub_5.3.1/sdk/eventhub/azure-eventhub/samples), [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/javascript), [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/typescript)

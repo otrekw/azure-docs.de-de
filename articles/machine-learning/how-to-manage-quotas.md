@@ -8,26 +8,25 @@ ms.subservice: core
 ms.reviewer: jmartens
 author: SimranArora904
 ms.author: siarora
-ms.date: 05/25/2021
+ms.date: 06/14/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: b9890ad85bea81b918a9b625a2cd62adb11a5820
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 66fe4d7e5b145b5f32fc0a881c4a9270872d9cac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368871"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355509"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 
 In Azure werden Grenzwerte und Kontingente verwendet, um Budgetüberschreitungen aufgrund von Betrug zu vermeiden und Azure-Kapazitätseinschränkungen durchzusetzen. Berücksichtigen Sie diese Grenzwerte bei der Skalierung für Produktionsworkloads. In diesem Artikel lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> + Standardgrenzwerte für Azure-Ressourcen in Bezug auf [Azure Machine Learning](overview-what-is-azure-ml.md)
+> + Standardgrenzwerte für Azure-Ressourcen in Bezug auf [Azure Machine Learning](overview-what-is-azure-machine-learning.md)
 > + Erstellen von Kontingenten auf Arbeitsbereichsebene
 > + Anzeigen Ihrer Kontingente und Grenzwerte
 > + Anfordern von Kontingenterhöhungen
-> + Privater Endpunkt und DNS-Kontingente
 
 Neben dem Verwalten von Kontingenten können Sie sich darüber informieren, wie Sie die [Kosten für Azure Machine Learning planen und verwalten](concept-plan-manage-cost.md) oder mehr über die [Diensteinschränkungen in Azure Machine Learning](resource-limits-quotas-capacity.md) erfahren.
 
@@ -199,35 +198,8 @@ Wählen Sie beim Anfordern einer Kontingenterhöhung den gewünschten Dienst aus
 > [!NOTE]
 > Bei [Abonnements mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) sind Grenzwert- oder Kontingenterhöhungen nicht möglich. Wenn Sie über ein Abonnement mit einer kostenlosen Testversion verfügen, können Sie ein Upgrade auf ein Abonnement mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) durchführen. Weitere Informationen finden Sie unter [Upgrade einer kostenlosen Azure-Testversion auf nutzungsbasierte Bezahlung](../cost-management-billing/manage/upgrade-azure-subscription.md) und [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq).
 
-## <a name="private-endpoint-and-private-dns-quota-increases"></a>Erhöhung des Kontingents für private Endpunkte und privates DNS
-
-Es gelten Grenzwerte in Bezug auf die Anzahl von privaten Endpunkten und privaten DNS-Zonen, die Sie unter einem Abonnement erstellen können.
-
-Azure Machine Learning erstellt Ressourcen in Ihrem (Kunden-) Abonnement, aber gibt es auch einige Szenarien, in denen Ressourcen in einem Microsoft-eigenen Abonnement erstellt werden.
-
- In den folgenden Szenarien müssen Sie unter Umständen eine Kontingentzuteilung im Microsoft-eigenen Abonnement anfordern:
-
-* Arbeitsbereich mit Azure Private Link-Aktivierung und einem kundenseitig verwalteten Schlüssel (CMK)
-* Anfügen eines Azure Kubernetes Service-Clusters mit aktiviertem Private Link an Ihren Arbeitsbereich
-
-Verwenden Sie die folgenden Schritte, um eine Zuteilung für diese Szenarien anzufordern:
-
-1. [Erstellen Sie eine Azure-Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request), und wählen Sie im Abschnitt __Grundlagen__ die folgenden Optionen aus:
-
-    | Feld | Auswahl |
-    | ----- | ----- |
-    | Typ des Problems | **Technisch** |
-    | Dienst | **Eigene Dienste**. Wählen Sie anschließend in der Dropdownliste den Eintrag __Machine Learning__ aus. |
-    | Problemtyp | **Konfiguration und Sicherheit von Arbeitsbereichen** |
-    | Problemuntertyp | **Zuteilungsanforderung für private Endpunkte und private DNS-Zonen** |
-
-2. Verwenden Sie im Abschnitt __Details__ das Feld __Beschreibung__, um die Azure-Region und das gewünschte Szenario anzugeben. Wenn Sie Kontingenterhöhungen für mehrere Abonnements anfordern müssen, geben Sie in diesem Feld die Abonnement-IDs an.
-
-3. Wählen Sie __Erstellen__ aus, um die Anforderung zu erstellen.
-
-:::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="Screenshot: Anfordern einer Kontingenterhöhung für private Endpunkte und privates DNS":::
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 + [Planen und Verwalten von Kosten für Azure Machine Learning](concept-plan-manage-cost.md)
 + [Diensteinschränkungen in Azure Machine Learning](resource-limits-quotas-capacity.md)
++ [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](how-to-troubleshoot-managed-online-endpoints.md)

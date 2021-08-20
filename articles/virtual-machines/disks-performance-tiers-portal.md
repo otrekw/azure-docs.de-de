@@ -2,18 +2,18 @@
 title: Ändern der Leistung von verwalteten Azure-Datenträgern über das Azure-Portal
 description: Erfahren Sie, wie Sie über das Azure-Portal Leistungsstufen für neue und vorhandene verwaltete Datenträger ändern.
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a82865930a5ed770b742c3d5e8906d4e69be3f64
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 37069bb17e0ce6a104ae3c1b79714da160737fe8
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110079406"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356273"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>Ändern Ihrer Leistungsstufe über das Azure-Portal
 
