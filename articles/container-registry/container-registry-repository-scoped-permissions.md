@@ -3,12 +3,12 @@ title: Berechtigungen für Repositorys in Azure Container Registry
 description: Erstellen eines Tokens mit Berechtigungen, die für bestimmte Repositorys in einer Premium-Registrierung gelten, um Images zu pullen oder zu pushen bzw. andere Aktionen auszuführen
 ms.topic: article
 ms.date: 02/04/2021
-ms.openlocfilehash: 8cdcd3e09603f24c37ad7323a273ca97f76fcd0c
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 796d98173a5ec850af2f8dbec3e8bfd1db902ca0
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930495"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220432"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Erstellen eines Token mit repositorybezogenen Berechtigungen
 
@@ -28,7 +28,7 @@ Diese Funktion ist auf der Dienstebene **Premium** der Containerregistrierung ve
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
 * Zurzeit können Sie einer Azure Active Directory-Identität (z. B. einem Dienstprinzipal oder einer verwalteten Identität) keine repositorybezogenen Berechtigungen zuweisen.
-* Sie können keine Bereichszuordnung in einer Registrierung erstellen, die für [anonymen Pull-Zugriff](container-registry-faq.md#how-do-i-enable-anonymous-pull-access) aktiviert ist.
+* Sie können keine Bereichszuordnung in einer Registrierung erstellen, die für [anonymen Pull-Zugriff](container-registry-faq.yml#how-do-i-enable-anonymous-pull-access-) aktiviert ist.
 
 ## <a name="concepts"></a>Konzepte
 

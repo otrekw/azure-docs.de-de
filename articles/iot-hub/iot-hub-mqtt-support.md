@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: c003b172322892e18fdc7a0e618f00eb526a10a8
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ab706018e7c38e43ae75d5af49c3bd6c0a78d783
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892974"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403483"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -111,7 +111,7 @@ Im [IoT MQTT-Beispielrepository](https://github.com/Azure-Samples/IoTMQTTSample)
 
 In diesen Beispielen dient die Eclipse Mosquitto-Bibliothek zum Senden von Nachrichten an den im IoT Hub implementierten MQTT-Broker.
 
-Informationen zum Anpassen der Beispiele für die Verwendung der [Azure IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)-Konventionen finden Sie im [Tutorial: Entwickeln eines IoT Plug & Play-Geräteclients mithilfe von MQTT](../iot-pnp/tutorial-use-mqtt.md).
+Informationen zum Anpassen der Beispiele für die Verwendung der [Azure IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md)-Konventionen finden Sie im [Tutorial: Entwickeln eines IoT Plug & Play-Geräteclients mithilfe von MQTT](../iot-develop/tutorial-use-mqtt.md).
 
 Dieses Repository enthält Folgendes:
 
@@ -123,7 +123,7 @@ Dieses Repository enthält Folgendes:
 
 * DeviceTwinMQTTWin32: Enthält Code zum Abfragen und Abonnieren der Gerätezwillingsereignisse eines Geräts im Azure IoT Hub auf einem Windows-Computer.
 
-* PnPMQTTWin32: Enthält Code zum Senden einer Telemetrienachricht mit IoT Plug & Play-Gerätefunktionen an einen Azure IoT-Hub, der auf einem Windows-Computer erstellt und ausgeführt wird. Weitere Informationen finden Sie unter [Was ist IoT Plug & Play?](../iot-pnp/overview-iot-plug-and-play.md).
+* PnPMQTTWin32: Enthält Code zum Senden einer Telemetrienachricht mit IoT Plug & Play-Gerätefunktionen an einen Azure IoT-Hub, der auf einem Windows-Computer erstellt und ausgeführt wird. Weitere Informationen finden Sie unter [Was ist IoT Plug & Play?](../iot-develop/overview-iot-plug-and-play.md).
 
 **Für Linux:**
 
@@ -357,7 +357,7 @@ Der Text der Antwort enthält den Abschnitt mit den Eigenschaften des Gerätezwi
 
 Die möglichen Statuscodes lauten:
 
-|Status | Beschreibung |
+|Status | BESCHREIBUNG |
 | ----- | ----------- |
 | 200 | Erfolg |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung](iot-hub-devguide-quotas-throttling.md) |
@@ -388,7 +388,7 @@ Der Nachrichtentext der Anforderung enthält ein JSON-Dokument mit neuen Werten 
 
 Die möglichen Statuscodes lauten:
 
-|Status | Beschreibung |
+|Status | BESCHREIBUNG |
 | ----- | ----------- |
 | 204 | Erfolg (kein Inhalt) |
 | 400 | Ungültige Anforderung; falsch formatierter JSON-Code |

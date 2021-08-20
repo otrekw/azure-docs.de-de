@@ -4,12 +4,12 @@ description: Schreiben Sie Telemetrieprozessoren und Telemetrieinitialisierer f√
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cb9159b98b219c6fb04beb7bbbaade64fc72a30b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fac7a4f02a67def7f5089e3e793e61c510ad074
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98927748"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289367"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Filtern und Vorverarbeiten von Telemetriedaten im Application Insights-SDK
 
@@ -553,5 +553,5 @@ Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisie
 ## <a name="next-steps"></a><a name="next"></a>N√§chste Schritte
 * [Durchsuchen von Ereignissen und Protokollen](./diagnostic-search.md)
 * [Stichprobenentnahme](./sampling.md)
-* [Problembehandlung](../faq.md)
+* [Problembehandlung](../faq.yml)
 

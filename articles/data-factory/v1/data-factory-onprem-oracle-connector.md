@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a590082acee1a3382ef51ce2361eb2c9b5fb2636
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 087afa7425d1244c38514c5388e242281bdab3dc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741543"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339541"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
 
@@ -94,7 +94,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 
 In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verknüpften Oracle-Dienst spezifisch sind:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | type |Die Eigenschaft **type** muss auf **OnPremisesOracle** festgelegt sein. |Ja |
 | driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus einer bzw. in eine Oracle-Datenbank verwendet wird. Zulässige Werte sind **Microsoft** und **ODP** (Standardwert). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein |
@@ -122,7 +122,7 @@ In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verk
 
 **Beispiel: Verwendung des ODP-Treibers**
 
-Weitere Informationen zu zulässigen Formaten finden Sie unter [Oracle-Datenanbieter für .NET ODP](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
+Weitere Informationen zu zulässigen Formaten finden Sie unter [Oracle-Datenanbieter für .NET ODP](https://www.oracle.com/in/database/technologies/appdev/dotnet/odp.html).
 
 ```json
 {
@@ -145,7 +145,7 @@ Die Abschnitte einer JSON-Datasetdatei (z.B. „structure“, „availability“
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset vom Typ **OracleTable** weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Der Name der Tabelle in der Oracle-Datenbank, auf die der verknüpfte Dienst verweist. |Nein (wenn **oracleReaderQuery** oder **OracleSource** angegeben ist) |
 

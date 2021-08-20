@@ -11,12 +11,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 04/22/2021
-ms.openlocfilehash: f9c52307e4d743e32f8771998e2dfaacc6643a35
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c047d89b554bed61f0015235a52927ffda7d1ec7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739005"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446578"
 ---
 # <a name="deploy-a-model-locally"></a>Lokales Bereitstellen eines Modells
 
@@ -27,6 +27,8 @@ Erfahren Sie, wie Sie mit Azure Machine Learning ein Modell als Webdienst auf Ih
 
 > [!TIP]
 > Bei der Bereitstellung eines Modells aus einer Jupyter Notebook-Instanz auf einer Compute-Instanz in einem Webdienst auf der gleichen VM handelt es sich um eine _lokale Bereitstellung_. In diesem Fall ist der „lokale“ Computer die Compute-Instanz. Weitere Informationen zu Bereitstellungen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -94,7 +96,7 @@ print("prediction:", resp.text)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md)
+* [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](./how-to-deploy-custom-container.md)
 * [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)
 * [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](how-to-secure-web-service.md)
 * [Consume a ML Model deployed as a web service (Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells)](how-to-consume-web-service.md).

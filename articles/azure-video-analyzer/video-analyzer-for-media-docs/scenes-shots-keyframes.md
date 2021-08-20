@@ -1,19 +1,20 @@
 ---
 title: Szenen, Aufnahmen und Keyframes in Azure Video Analyzer for Media (früher Video Indexer)
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: Dieses Thema bietet eine Übersicht über die Szenen, Aufnahmen und Keyframes in Azure Video Analyzer for Media (früher Video Indexer).
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: a3408ea644e5a2ac8ccc9bde808c232a705fd57e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 80494f98d789e5d04454065ff5cbf8ba97fd62f1
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385630"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119203"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Szenen, Aufnahmen und Keyframes
 

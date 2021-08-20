@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Ga
 ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b28d7f0ccd2f4b8cca7bdb5015dce6e8ee8f2f17
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 89f4e64f6448f93a4b746ae4301450707f832cde
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762981"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287009"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Erstellen von Richtlinien für Gastkonfigurationen für Linux
 
@@ -17,7 +17,7 @@ Lesen Sie vor dem Erstellen benutzerdefinierter Richtlinien die allgemeinen Info
 
 Informationen zum Erstellen von Richtlinien für Gastkonfigurationen für Windows finden Sie auf der Seite [Erstellen von Richtlinien für Gastkonfigurationen für Windows](./guest-configuration-create.md).
 
-Beim Überwachen von Linux verwendet die Gastkonfiguration [Chef InSpec](https://www.inspec.io/). Das InSpec-Profil definiert den Zustand, in dem sich der Computer befinden soll. Wenn bei der Auswertung der Konfiguration ein Fehler auftritt, wird die Richtlinienauswirkung **auditIfNotExists** ausgelöst, und der Computer wird als **nicht konform** eingestuft.
+Beim Überwachen von Linux verwendet die Gastkonfiguration [Chef InSpec](https://community.chef.io/tools/chef-inspec). Das InSpec-Profil definiert den Zustand, in dem sich der Computer befinden soll. Wenn bei der Auswertung der Konfiguration ein Fehler auftritt, wird die Richtlinienauswirkung **auditIfNotExists** ausgelöst, und der Computer wird als **nicht konform** eingestuft.
 
 Die [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) kann nur zur Überwachung von Einstellungen in Computern verwendet werden. Die Wiederherstellung von Einstellungen in Computern ist noch nicht verfügbar.
 
@@ -94,7 +94,7 @@ Zum Erstellen des Pakets können PowerShell-Cmdlets verwendet werden. Es ist kei
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Benutzerdefinierte Konfiguration für Gastkonfigurationen unter Linux
 
-Für die Gastkonfiguration unter Linux wird die Ressource `ChefInSpecResource` verwendet, um die Engine mit dem Namen des [InSpec-Profils](https://www.inspec.io/docs/reference/profiles/) anzugeben. **Name** ist die einzige erforderliche Ressourceneigenschaft. Erstellen Sie eine YAML-Datei und eine Ruby-Skriptdatei wie nachfolgend beschrieben.
+Für die Gastkonfiguration unter Linux wird die Ressource `ChefInSpecResource` verwendet, um die Engine mit dem Namen des [InSpec-Profils](https://docs.chef.io/inspec/profiles/) anzugeben. **Name** ist die einzige erforderliche Ressourceneigenschaft. Erstellen Sie eine YAML-Datei und eine Ruby-Skriptdatei wie nachfolgend beschrieben.
 
 Erstellen Sie zuerst die YAML-Datei, die von InSpec verwendet wird. Die Datei enthält grundlegende Informationen zur Umgebung. Nachfolgend sehen Sie ein Beispiel:
 
@@ -401,7 +401,7 @@ Parameter des Cmdlets `Protect-GuestConfigurationPackage`:
 
 Eine gute Referenz zur Erstellung von GPG-Schlüsseln für die Nutzung mit Linux-Computern ist der Artikel [Generating a new GPG key](https://help.github.com/en/articles/generating-a-new-gpg-key) (Generieren eines neuen GPG-Schlüssels) auf GitHub.
 
-Vom GuestConfiguration-Agent wird erwartet, dass der öffentliche Schlüssel des Zertifikats auf Linux-Computern im Pfad `/usr/local/share/ca-certificates/extra` vorhanden ist. Damit auf dem Knoten signierter Inhalt überprüft werden kann, müssen Sie den öffentlichen Schlüssel des Zertifikats auf dem Computer installieren, bevor Sie die benutzerdefinierte Richtlinie anwenden. Dieser Prozess kann mit einem beliebigen Verfahren auf der VM oder mit Azure Policy durchgeführt werden. Eine Beispielvorlage finden Sie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
+Vom GuestConfiguration-Agent wird erwartet, dass der öffentliche Schlüssel des Zertifikats auf Linux-Computern im Pfad `/usr/local/share/ca-certificates/extra` vorhanden ist. Damit auf dem Knoten signierter Inhalt überprüft werden kann, müssen Sie den öffentlichen Schlüssel des Zertifikats auf dem Computer installieren, bevor Sie die benutzerdefinierte Richtlinie anwenden. Dieser Prozess kann mit einem beliebigen Verfahren auf der VM oder mit Azure Policy durchgeführt werden. Eine Beispielvorlage finden Sie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-push-certificate-windows).
 In der Key Vault-Zugriffsrichtlinie muss es für den Computeressourcenanbieter zulässig sein, bei Bereitstellungen auf Zertifikate zuzugreifen. Informationen zu den ausführlichen Schritten finden Sie unter [Einrichten des Schlüsseltresors für virtuelle Computer in Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
 Fügen Sie nach dem Veröffentlichen Ihres Inhalts ein Tag mit dem Namen `GuestConfigPolicyCertificateValidation` und dem Wert `enabled` an alle virtuellen Computer an, für die das Codesignieren erforderlich ist. Informationen darüber, wie Tags mithilfe von Azure Policy im großen Stil bereitgestellt werden können, finden Sie in den [Tagbeispielen](../samples/built-in-policies.md#tags). Wenn dieses Tag vorhanden ist, ermöglicht die Richtliniendefinition, die mit dem Cmdlet `New-GuestConfigurationPolicy` generiert wurde, die Anforderung über die Gastkonfigurationserweiterung.

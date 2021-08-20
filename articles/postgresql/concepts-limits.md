@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7cee2be3c1d7a97b87560873d6cef07ec361ee99
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d9d817077b1bdfb0bd53ec18f25def1c9615d2fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605177"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339526"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Beschränkungen in Azure Database for PostgreSQL – Einzelserver
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Tarife](concepts-pricing-tiers.md).
@@ -65,7 +65,7 @@ Eine PostgreSQL-Verbindung, selbst im Leerlauf, kann ungefähr 10 MB Arbeitsspe
 - Die Wiederherstellung eines gelöschten Servers wird nicht unterstützt.
 
 ### <a name="utf-8-characters-on-windows"></a>UTF-8-Zeichen in Windows
-- In einigen Szenarien werden UTF-8-Zeichen nicht vollständig in Open Source PostgreSQL unter Windows unterstützt, was Azure Database for PostgreSQL beeinträchtigt. Weitere Informationen finden Sie in dem Thread zu [Fehler #15476 im PostgreSQL-Archiv](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html).
+- In einigen Szenarien werden UTF-8-Zeichen nicht vollständig in Open Source PostgreSQL unter Windows unterstützt, was Azure Database for PostgreSQL beeinträchtigt. Weitere Informationen finden Sie in dem Thread zu [Fehler #15476 im PostgreSQL-Archiv](https://www.postgresql.org/message-id/2101.1541220270%40sss.pgh.pa.us).
 
 ### <a name="gss-error"></a>GSS-Fehler
 Falls ein Fehler zu **GSS** angezeigt wird, verwenden Sie wahrscheinlich eine neuere Client-/Treiberversion, die von Azure Postgres Single Server noch nicht vollständig unterstützt wird. Dieser Fehler wirkt sich auf die [JDBC-Treiberversionen 42.2.15 und 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868) aus.

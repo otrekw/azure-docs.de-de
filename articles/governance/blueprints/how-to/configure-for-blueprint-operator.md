@@ -1,14 +1,14 @@
 ---
 title: Einrichten Ihrer Umgebung für einen Blaupausenoperator
 description: Erfahren Sie, wie Sie Ihre Azure-Umgebung für die Verwendung der integrierten Azure-Rolle „Blaupausenoperator“ konfigurieren.
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: beea51f6d4b320895b235a0362f323a09c2460e3
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 5c2da686a2a145c42e53260e96b95b2ae14c4770
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323265"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343627"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Konfigurieren Ihrer Umgebung für einen Blaupausenoperator
 

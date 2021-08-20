@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 author: kcheeeung
 ms.author: kecheung
 ms.date: 05/21/2021
-ms.openlocfilehash: f6e2deac6c5f5807618225f4afc208e091e7e004
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: d4fb0c4a197f28321e4328d17f00173f45b28d1b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578687"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290735"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Szenario: Apache Hive-Protokolle belegen den gesamten Speicherplatz auf den Hauptknoten in Azure HDInsight
 
@@ -81,4 +81,4 @@ Das automatische Löschen von Hive-Protokollen ist in den erweiterten hive-log4j
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

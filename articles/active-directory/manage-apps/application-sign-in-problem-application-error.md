@@ -2,22 +2,22 @@
 title: Anzeige einer Fehlermeldung auf der App-Seite nach der Anmeldung | Microsoft-Dokumentation
 description: Beheben von Problemen mit der Azure AD-Anmeldung, wenn die App eine Fehlermeldung zurückgibt
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mtillman
-ms.reviewer: asteen
+ms.author: davidmu
+ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ca0589da8cfa03553916755c4eb56ab74324501
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 1c1910eb106e7a3e405f58ba672c38fa108544d2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081747"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339640"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>App-Seite, auf der eine Fehlermeldung angezeigt wird, nachdem sich ein Benutzer angemeldet hat
 
@@ -25,11 +25,11 @@ Im folgenden Szenario wird ein Benutzer durch Azure Active Directory (Azure AD) 
 
 Für diese Situation gibt es mehrere mögliche Gründe. Wenn aus der Fehlermeldung nicht deutlich hervorgeht, welche Antwortinformationen fehlen, können Sie Folgendes versuchen:
 
--   Wenn es sich bei der App um den Azure AD-Katalog handelt, müssen Sie alle Schritte im Artikel [How to debug SAML-based single sign-on to applications in Azure AD (Debuggen des SAML-basierten einmaligen Anmeldens in Azure AD)](./debug-saml-sso-issues.md) ausführen.
+- Wenn es sich bei der App um den Azure AD-Katalog handelt, müssen Sie alle Schritte im Artikel [How to debug SAML-based single sign-on to applications in Azure AD (Debuggen des SAML-basierten einmaligen Anmeldens in Azure AD)](./debug-saml-sso-issues.md) ausführen.
 
--   Verwenden Sie ein Tool wie [Fiddler](https://www.telerik.com/fiddler), um die SAML-Anforderung, die SAML-Antwort und das SAML-Token zu erfassen.
+- Verwenden Sie ein Tool wie [Fiddler](https://www.telerik.com/fiddler), um die SAML-Anforderung, die SAML-Antwort und das SAML-Token zu erfassen.
 
--   Senden Sie die SAML-Antwort dem App-Verkäufer, und erkundigen Sie sich bei ihm, welche Informationen fehlen.
+- Senden Sie die SAML-Antwort dem App-Verkäufer, und erkundigen Sie sich bei ihm, welche Informationen fehlen.
 
 ## <a name="attributes-are-missing-from-the-saml-response"></a>In der SAML-Antwort fehlen Attribute
 
@@ -58,7 +58,7 @@ Führen Sie die folgenden Schritte aus, um der Azure AD-Konfiguration ein Attrib
 
    1. Klicken Sie auf **Attribut hinzufügen**. Geben Sie unter **Name** einen Namen ein, und wählen Sie aus der Dropdownliste den **Wert** aus.
 
-   1.  Wählen Sie **Speichern** aus. Das neue Attribut wird in der Tabelle angezeigt.
+   1. Wählen Sie **Speichern** aus. Das neue Attribut wird in der Tabelle angezeigt.
 
 9. Speichern Sie die Konfiguration.
 
@@ -124,9 +124,9 @@ Führen Sie folgende Schritte durch, um einzustellen, welche Teile des SAML-Toke
 
 9. Wählen Sie aus den folgenden Optionen die **Signaturoption** aus, die von der App erwartet wird:
 
-   * **SAML-Antwort signieren**
-   * **SAML-Antwort und -Assertion signieren**
-   * **SAML-Assertion signieren**
+   - **SAML-Antwort signieren**
+   - **SAML-Antwort und -Assertion signieren**
+   - **SAML-Assertion signieren**
 
    Wenn sich der Benutzer das nächste Mal bei der App anmeldet, signiert Azure AD den ausgewählten Teil der SAML-Antwort.
 
@@ -160,4 +160,5 @@ Um den Signaturalgorithmus zu ändern, führen Sie die folgenden Schritte aus:
    Wenn sich der Benutzer das nächste Mal bei der App anmeldet, signiert Azure AD das SAML-Token mithilfe des SHA-1-Algorithmus.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [How to debug SAML-based single sign-on to applications in Azure AD (Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure AD)](./debug-saml-sso-issues.md)

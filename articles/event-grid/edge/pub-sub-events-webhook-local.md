@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 4080fc274f03cbc4e5ba48b3c3e2ac5699886c96
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d965d5a65fa6f5015b1e39b22238f3aa6fd1d7b7
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377207"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112413532"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Tutorial: Veröffentlichen und Abonnieren von Ereignissen lokal
 
@@ -58,7 +58,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
    * **Image-URI**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Optionen für Containererstellung**:
 
-   [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
+   [!INCLUDE [event-grid-edge-module-version-update](../includes/event-grid-edge-module-version-update.md)]
 
     ```json
         {
@@ -160,7 +160,7 @@ Als Herausgeber eines Ereignisses müssen Sie ein Event Grid-Thema erstellen. In
 
 Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröffentlicht werden. Zum Empfang von Ereignissen müssen Sie ein Event Grid-Abonnement für das gewünschte Thema erstellen.
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Erstellen Sie eine Datei „subscription.json“ mit dem folgenden Inhalt. Ausführliche Informationen zur Nutzlast finden Sie in unserer [API-Dokumentation](api.md).
 

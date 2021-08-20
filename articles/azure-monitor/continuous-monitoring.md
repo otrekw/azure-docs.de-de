@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 2fe9d7e4da8950cee2dcb2fbcfb26355ace7285d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6c181b456dd4fe5ea49a3888dce7efbc22981167
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044016"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289227"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Kontinuierliche Überwachung mit Azure Monitor
 
@@ -26,8 +26,8 @@ Um die Transparenz in Ihrer gesamten Umgebung sicherzustellen, müssen Sie die �
 
 - [Azure DevOps Projects](../devops-project/overview.md) bietet eine vereinfachte Umgebung mit Ihrem vorhandenen Code und dem Git-Repository, oder wählen Sie eine der Beispielanwendungen aus, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen.
 - Die [kontinuierliche Überwachung in Ihrer DevOps-Releasepipeline](./app/continuous-monitoring.md) ermöglicht es Ihnen, Ihre Bereitstellung auf der Grundlage von Überwachungsdaten zu steuern oder zurückzusetzen.
-- Der [Statusmonitor](./app/monitor-performance-live-website-now.md) ermöglicht es Ihnen, eine .NET-Live-App unter Windows mit Azure Application Insights zu instrumentieren, ohne Ihren Code ändern oder neu bereitstellen zu müssen.
-- Wenn Sie Zugriff auf den Code für Ihre Anwendung haben, aktivieren Sie die vollständige Überwachung mit [Application Insights](./app/app-insights-overview.md), indem Sie das Azure Monitor Application Insights SDK für [.NET](./app/asp-net.md), [.NET Core](./app/asp-net-core.md), [Java](./app/java-get-started.md), [Node.js](./app/nodejs-quick-start.md) oder [andere Programmiersprachen](./app/platforms.md) installieren. Auf diese Weise können Sie benutzerdefinierte Ereignisse, Metriken oder Seitenansichten festlegen, die für Ihre Anwendung und Ihr Unternehmen relevant sind.
+- Der [Statusmonitor](./app/status-monitor-v2-overview.md) ermöglicht es Ihnen, eine .NET-Live-App unter Windows mit Azure Application Insights zu instrumentieren, ohne Ihren Code ändern oder neu bereitstellen zu müssen.
+- Wenn Sie Zugriff auf den Code für Ihre Anwendung haben, aktivieren Sie die vollständige Überwachung mit [Application Insights](./app/app-insights-overview.md), indem Sie das Azure Monitor Application Insights SDK für [.NET](./app/asp-net.md), [.NET Core](./app/asp-net-core.md), [Java](./app/java-in-process-agent.md), [Node.js](./app/nodejs-quick-start.md) oder [andere Programmiersprachen](./app/platforms.md) installieren. Auf diese Weise können Sie benutzerdefinierte Ereignisse, Metriken oder Seitenansichten festlegen, die für Ihre Anwendung und Ihr Unternehmen relevant sind.
 
 
 
@@ -36,7 +36,7 @@ Anwendungen sind nur so zuverlässig wie ihre zugrunde liegende Infrastruktur. D
 
 - Sie erhalten automatisch [Plattformmetriken, Aktivitäts- und Diagnoseprotokolle](agents/data-sources.md) von den meisten Ihrer Azure-Ressourcen ohne Konfiguration.
 - Mit [VM Insights](vm/vminsights-overview.md) können Sie eine intensivere Überwachung für VMs aktivieren.
--  Aktivieren Sie eine intensivere Überwachung für AKS-Cluster mit [Azure Monitor für Container](containers/container-insights-overview.md).
+-  Mit [Container Insights](containers/container-insights-overview.md) können Sie eine intensivere Überwachung für AKS-Cluster aktivieren.
 - Fügen Sie [Überwachungslösungen](./monitor-reference.md) für verschiedene Anwendungen und Dienste in Ihrer Umgebung hinzu.
 
 
@@ -49,7 +49,7 @@ Anwendungen sind nur so zuverlässig wie ihre zugrunde liegende Infrastruktur. D
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Kombinieren von Ressourcen in Azure-Ressourcengruppen
 Eine typische Anwendung in Azure umfasst heute mehrere Ressourcen wie VMs und App Services oder Microservices, die in Cloud Services, AKS-Clustern oder Service Fabric gehostet werden. Diese Anwendungen nutzen häufig Abhängigkeiten wie Event Hubs, Storage, SQL und Service Bus.
 
-- Kombinieren Sie Ressourcen in Azure-Ressourcengruppen, um eine vollständige Sichtbarkeit über Ihre gesamten Ressourcen zu erhalten, aus denen sich Ihre verschiedenen Anwendungen zusammensetzen. [Azure Monitor für Ressourcengruppen](./insights/resource-group-insights.md) bietet eine einfache Möglichkeit, die Integrität und Leistung Ihrer gesamten systemübergreifenden Anwendung zu verfolgen und ermöglicht es, für Untersuchungen oder Debugging einen Drilldown in die entsprechenden Komponenten auszuführen.
+- Kombinieren Sie Ressourcen in Azure-Ressourcengruppen, um eine vollständige Sichtbarkeit über Ihre gesamten Ressourcen zu erhalten, aus denen sich Ihre verschiedenen Anwendungen zusammensetzen. [Resource Group Insights](./insights/resource-group-insights.md) bietet eine einfache Möglichkeit, die Integrität und Leistung Ihrer gesamten systemübergreifenden Anwendung zu verfolgen und ermöglicht es, für Untersuchungen oder Debugging einen Drilldown in die entsprechenden Komponenten auszuführen.
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>Sicherstellen der Qualität durch Continuous Deployment
 Mit Continuous Integration/Continuous Deployment können Sie Codeänderungen automatisch in Ihre Anwendung auf Basis der Ergebnisse automatisierter Tests integrieren und bereitstellen. Es optimiert den Bereitstellungsprozess und sichert die Qualität aller Änderungen, bevor sie in die Produktionsumgebung übernommen werden.

@@ -7,13 +7,12 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: 689c1fc223a7853ad63c5187eccd503767cdb897
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 02c3dde025ccd8bb02b3ba5535a21cacfa8e6dbe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760803"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339355"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Anpassen der Azure IoT Central-Benutzeroberfläche
 
@@ -76,4 +75,4 @@ Sie können auch neue Einträge zum Hilfemenü hinzufügen und Standardeinträge
 Nachdem Sie erfahren haben, wie Sie die Benutzeroberfläche in Ihrer IoT Central-Anwendung anpassen können, sind hier einige empfohlene nächste Schritte:
 
 - [Verwalten Ihrer Anwendung](./howto-administer.md)
-- [Hinzufügen von Kacheln zu Ihrem Dashboard](howto-add-tiles-to-your-dashboard.md)
+- [Hinzufügen von Kacheln zu Ihrem Dashboard](howto-manage-dashboards.md)

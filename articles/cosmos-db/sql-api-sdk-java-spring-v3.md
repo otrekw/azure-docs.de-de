@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 009d40d0120aa21a38f218087e803dd94bbfb9c2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1ac0d0af57cdafae611107361ccce9eced62c239
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075032"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339367"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Spring Data Azure Cosmos DB v3 für die Core (SQL)-API: Versionshinweise und Ressourcen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -82,7 +82,7 @@ Sie können Spring Data Azure Cosmos DB in Ihren [Azure Spring Cloud](https://a
 | Inhalt | Link |
 |---|---|
 |**SDK-Download**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-cosmos) |
-|**API-Dokumentation** | [Java-API-Referenzdokumentation](/java/api/com.azure.spring.data.cosmos) |
+|**API-Dokumentation** | [Java-API-Referenzdokumentation](/java/api/overview/azure/spring-data-cosmos-readme?view=azure-java-stable&preserve-view=true) |
 |**Am SDK mitwirken** | [Azure SDK für das zentrale Java-Repository auf GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos) | 
 |**Erste Schritte** | [Schnellstart: Erstellen einer Spring Data Azure Cosmos DB v3-App zum Verwalten von Azure Cosmos DB-SQL-API-Daten](./create-sql-api-spring-data.md) <br> [GitHub-Repository mit Schnellstartcode](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) | 
 |**Einfache Codebeispiele** | [Azure Cosmos DB SQL-API: Spring Data Azure Cosmos DB v3-Beispiele](sql-api-spring-data-sdk-samples.md) <br> [GitHub-Repository mit Beispielcode](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples)|
@@ -102,7 +102,7 @@ Sie können Spring Data Azure Cosmos DB in Ihren [Azure Spring Cloud](https://a
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

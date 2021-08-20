@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: 422ba2ecaed8803a49c0a82b85d821d3f55c9bbd
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 63da1c8f36f9e2db9593256a071d71ac70ea18bd
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071982"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380030"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy
 Während einige Features von Azure Monitor einmalig oder nur für eine begrenzte Zahl von Malen konfiguriert werden, muss dies bei anderen für jede Ressource wiederholt werden, die Sie überwachen möchten. In diesem Artikel werden Methoden beschrieben, wie Sie Azure Monitor mit Azure Policy bedarfsorientiert implementieren, um sicherzustellen, dass die Überwachung für alle Ihre Azure-Ressourcen konsistent und genau konfiguriert ist.
@@ -42,7 +42,7 @@ Führen Sie die folgenden Schritte aus, um die in Bezug auf die Überwachung int
 
   ![Screenshot der Seite „Definitionen“ von Azure Policy im Azure-Portal mit einer Liste von Richtliniendefinitionen für die Kategorie „Überwachung“ und den Typ „Integriert“](media/deploy-scale/builtin-policies.png)
 
-## <a name="azure-monitor-agent-preview"></a>Azure Monitor-Agent (Vorschau)
+## <a name="azure-monitor-agent"></a>Azure Monitor-Agent
 Der [Azure Monitor-Agent](agents/azure-monitor-agent-overview.md) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer und übermittelt sie an Azure Monitor. Er nutzt [Datensammlungsregeln](agents/data-collection-rule-overview.md), um Daten für die Erfassung von den einzelnen Agents zu konfigurieren, die die Verwaltbarkeit von Sammlungseinstellungen im großen Stil und gleichzeitig eindeutige Bereichskonfigurationen für Teilmengen von Computern ermöglichen.  
 Verwenden Sie die unten angegebenen Richtlinien und Richtlinieninitiativen, um den Agent bei jeder Erstellung eines virtuellen Computers automatisch zu installieren und einer Datensammlungsregel zuzuordnen.
 

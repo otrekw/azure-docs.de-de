@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/24/2021
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86a055bade77f92912134a295f7576e545fe7124
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d6e4926d9bad317027d1b290e0365c667b867df6
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467147"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729648"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Abrechnungsmodell für externe Identitäten in Azure AD
 
 Die Preise für externe Identitäten in Azure Active Directory (Azure AD) basieren auf den monatlich aktiven Benutzern (MAU). Dies ist die Anzahl eindeutiger Benutzer mit Authentifizierungsaktivität innerhalb eines Kalendermonats. Dieses Abrechnungsmodell gilt sowohl für die Azure AD-Kollaboration von Gastbenutzern (B2B) als auch für [Azure AD B2C-Mandanten](../../active-directory-b2c/billing.md). Die MAU-Abrechnung hilft Ihnen, Ihre Kosten zu senken, da sie einen kostenlosen Tarif und einen flexiblen, vorhersehbaren Preis bietet. In diesem Artikel erhalten Sie Informationen zur MAU-Abrechnung und zum Verknüpfen Ihrer Azure AD-Mandanten mit einem Abonnement.
 
 > [!IMPORTANT]
-> Dieser Artikel enthält keine Preisinformationen. Die aktuellen Informationen zur Verbrauchsabrechnung und zu den Preisen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+> Dieser Artikel enthält keine Preisinformationen. Die aktuellen Informationen zur Verbrauchsabrechnung und zu den Preisen finden Sie unter [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 ## <a name="what-do-i-need-to-do"></a>Wie muss ich vorgehen?
 
@@ -39,7 +39,7 @@ Um die MAU-Abrechnung zu nutzen, muss Ihr Azure AD-Mandanten mit einem Azure-Ab
 
 In Ihrem Azure AD-Mandanten wird der Verbrauch für die Kollaboration mit Gastbenutzern basierend auf der Anzahl eindeutiger Gastbenutzer mit Authentifizierungsaktivitäten innerhalb eines Kalendermonats abgerechnet. Dieses Modell ersetzt das Abrechnungsmodell im Verhältnis 1:5, das bis zu fünf Gastbenutzer pro Azure AD Premium-Lizenz in Ihrem Mandanten zuließ. Wenn Ihr Mandant mit einem Abonnement verknüpft ist und Sie Features externer Identitäten für die Zusammenarbeit mit Gastbenutzern verwenden, erfolgt Ihre Abrechnung automatisch nach dem MAU-basierten Abrechnungsmodell.
 
-Der Tarif für Ihre Gastbenutzer basiert auf dem höchsten Tarif, der Ihrem Azure AD-Mandanten zugewiesen ist. Weitere Informationen finden Sie unter [Externe Azure Active Directory-Identitäten – Preise](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/).
+Der Tarif für Ihre Gastbenutzer basiert auf dem höchsten Tarif, der Ihrem Azure AD-Mandanten zugewiesen ist. Weitere Informationen finden Sie unter [Externe Azure Active Directory-Identitäten – Preise](https://azure.microsoft.com/pricing/details/active-directory/external-identities/).
 
 ## <a name="link-your-azure-ad-tenant-to-a-subscription"></a>Verknüpfen Ihres Azure AD-Mandanten mit einem Abonnement
 
@@ -74,4 +74,4 @@ Nachdem Sie diese Schritte ausgeführt haben, erfolgt die Abrechnung für Ihr Az
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die aktuellsten Preisinformationen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+Die aktuellsten Preisinformationen finden Sie unter [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).

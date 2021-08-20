@@ -2,17 +2,17 @@
 title: Erstellen eines benutzerdefinierten Endpunkts | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten Endpunkt für die Messung mit Ihrer Internet Analyzer-Ressource konfigurieren.
 services: internet-analyzer
-author: mattcalder
+author: KumudD
 ms.service: internet-analyzer
 ms.topic: how-to
 ms.date: 10/16/2019
-ms.author: mebeatty
-ms.openlocfilehash: 6ca71bce726f16eeacc96e10eb654bb3e21c5924
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: kumud
+ms.openlocfilehash: caf4f93dc1a9341a4dca3b7df110f263eb47fd16
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84744084"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455104"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>Messen von benutzerdefinierten Endpunkten für die Evaluierung in Internet Analyzer-Tests 
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e680ba10c507ef83591b56652ee8e95c4d665dda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2eb87704d8cb967bb58a0fd1302b6f0f8225af72
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96492062"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117641"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Behandeln von Azure Files-Problemen unter Linux (SMB)
 
@@ -23,29 +23,26 @@ Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie
 > [!IMPORTANT]
 > Der Inhalt dieses Artikels gilt nur für SMB-Freigaben. Weitere Informationen zu NFS-Freigaben finden Sie unter [Behandeln von Problemen mit Azure NFS-Dateifreigaben](storage-troubleshooting-files-nfs.md).
 
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Verbindungsherstellung mit oder Einbindung von Azure-Dateifreigabe nicht möglich
 
 ### <a name="cause"></a>Ursache
 
 Häufige Ursachen für dieses Problem:
 
-- Sie verwenden einen Client mit nicht kompatibler Linux-Distribution. Verwenden Sie möglichst die folgenden Linux-Distributionen, um eine Verbindung mit einer Azure-Dateifreigabe herzustellen:
-
-|   | SMB 2.1 <br>(Einbindungen auf virtuellen Computern innerhalb der gleichen Azure-Region) | SMB 3.0 <br>(Einbindungen aus einer lokalen Region und regionsübergreifend) |
-| --- | :---: | :---: |
-| **Ubuntu Server** | 14.04+ | 16.04 und höher |
-| **RHEL** | 7 und höher | 7.5 und höher |
-| **CentOS** | 7 und höher |  7.5 und höher |
-| **Debian** | 8 und höher |   |
-| **openSUSE** | 13.2 und höher | 42.3+ |
-| **SUSE Linux Enterprise Server** | 12 | 12 SP3 und höher |
-
-- Auf dem Client sind keine CIFS-Hilfsprogramme (cifs-utils) installiert.
-- Die mindestens erforderliche SMB-/CIFS-Version 2.1 ist auf dem Client nicht installiert.
-- Der Client unterstützt die SMB 3.0-Verschlüsselung nicht. Die oben aufgeführte Tabelle enthält eine Liste der Linux-Distributionen, die die lokale und regionsübergreifende Bereitstellung unter Verwendung der Verschlüsselung unterstützen. Bei anderen Distributionen wird mindestens die Kernel-Version 4.11 vorausgesetzt.
+- Sie verwenden eine Linux-Distribution mit einem veralteten SMB-Client. Weitere Informationen zu häufigen Linux-Distributionen in Azure mit kompatiblen Clients finden Sie unter [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md).
+- Auf dem Client sind keine SMB-Hilfsprogramme (cifs-utils) installiert.
+- Die SMB-Mindestversion, 2.1, steht auf dem Client nicht zur Verfügung.
+- Die SMB 3.x-Verschlüsselung wird auf dem Client nicht unterstützt. Die oben aufgeführte Tabelle enthält eine Liste der Linux-Distributionen, die die lokale und regionsübergreifende Bereitstellung unter Verwendung der Verschlüsselung unterstützen. Bei anderen Distributionen wird mindestens die Kernel-Version 4.11 vorausgesetzt.
 - Sie versuchen, über den TCP-Port 445 eine Verbindung mit einem Speicherkonto herstellen. Dies wird nicht unterstützt.
 - Sie versuchen, auf einem virtuellen Computer eine Verbindung mit der Azure-Dateifreigabe herzustellen, und der virtuelle Computer befindet sich nicht in der gleichen Region wie das Speicherkonto.
-- Ist für das Speicherkonto die Einstellung [Sichere Übertragung erforderlich]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) aktiviert, lässt Azure Files nur Verbindungen über SMB 3.0 mit Verschlüsselung zu.
+- Wenn beim Speicherkonto die Einstellung [Sichere Übertragung erforderlich](../common/storage-require-secure-transfer.md) aktiviert wurde, lässt Azure Files nur Verbindungen über SMB 3.x mit Verschlüsselung zu.
 
 ### <a name="solution"></a>Lösung
 
@@ -121,17 +118,17 @@ Verwenden Sie das PowerShell-Cmdlet [Close-AzStorageFileHandle](/powershell/modu
     - Anschließend können Sie Dateien kopieren, ohne Schreibvorgänge parallel zu erweitern: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>„Bereitstellungsfehler (115): Vorgang wird ausgeführt“, beim Bereitstellen von Azure Files mit SMB 3.0
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-3x"></a>„Bereitstellungsfehler (115): Vorgang wird ausgeführt“ beim Bereitstellen von Azure Files über SMB 3.x
 
 ### <a name="cause"></a>Ursache
 
-Einige Linux-Distributionen unterstützen die Verschlüsselungsfeatures in SMB 3.0 noch nicht. Aufgrund eines fehlenden Features erhalten Benutzer möglicherweise eine Fehlermeldung vom Typ 115, wenn sie versuchen, Azure Files mithilfe von SMB 3.0 einzubinden. SMB 3.0 mit vollständiger Verschlüsselung wird erst ab Ubuntu 16.04 unterstützt.
+Einige Linux-Distributionen unterstützen noch nicht die Verschlüsselungsfeatures in SMB 3.x. Aufgrund eines fehlenden Features erhalten Benutzer möglicherweise eine Fehlermeldung vom Typ „115“, wenn sie versuchen, Azure Files über SMB 3.x einzubinden. SMB 3.x mit vollständiger Verschlüsselung wird erst ab Ubuntu 16.04 unterstützt.
 
 ### <a name="solution"></a>Lösung
 
-Das Verschlüsselungsfeature für SMB 3.0 für Linux wurde im Kernel 4.11 eingeführt. Dieses Feature ermöglicht die Einbindung einer Azure-Dateifreigabe aus der lokalen Umgebung oder aus einer anderen Azure-Region. Einige Linux-Distributionen verfügen möglicherweise über zurückportierte Änderungen vom 4.11-Kernel zu älteren Versionen des Linux-Kernels, die von ihnen verwaltet werden. Um festzustellen, ob Ihre Linux-Version SMB 3.0 mit Verschlüsselung unterstützt, sehen Sie unter [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md) nach. 
+Das Verschlüsselungsfeature für SMB 3.x für Linux wurde im Kernel 4.11 eingeführt. Dieses Feature ermöglicht die Einbindung einer Azure-Dateifreigabe aus der lokalen Umgebung oder aus einer anderen Azure-Region. Einige Linux-Distributionen verfügen möglicherweise über zurückportierte Änderungen vom 4.11-Kernel zu älteren Versionen des Linux-Kernels, die von ihnen verwaltet werden. Wenn Sie feststellen möchten, ob Ihre Linux-Version SMB 3.x mit Verschlüsselung unterstützt, sehen Sie unter [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md) nach. 
 
-Falls Ihr Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure Files mithilfe von SMB 2.1 von einem virtuellen Azure-Linux-Computer aus ein, der sich im gleichen Datencenter befindet wie die Dateifreigabe. Vergewissern Sie sich, dass die Einstellung [Sichere Übertragung erforderlich]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für das Speicherkonto deaktiviert ist. 
+Falls Ihr Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure Files mithilfe von SMB 2.1 von einem virtuellen Azure-Linux-Computer aus ein, der sich im gleichen Datencenter befindet wie die Dateifreigabe. Vergewissern Sie sich, dass die Einstellung [Sichere Übertragung erforderlich](../common/storage-require-secure-transfer.md) für das Speicherkonto deaktiviert ist. 
 
 <a id="noaaccessfailureportal"></a>
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Fehler „Kein Zugriff“ beim Versuch, auf eine Azure-Dateifreigabe zuzugreifen oder sie zu löschen  
@@ -291,7 +288,7 @@ Sie können dieses Problem umgehen, indem Sie eine ständige Bereitstellung fest
 
 Wenn Sie nicht auf die neuesten Kernelversionen upgraden können, können Sie dieses Problem umgehen, indem Sie eine Datei in der Azure-Dateifreigabe speichern und mindestens alle 30 Sekunden in diese Datei schreiben. Dabei muss es sich um einen Schreibvorgang handeln, wie z.B. die Umschreibung des Erstellungs- oder Änderungsdatums in der Datei. Andernfalls erhalten Sie möglicherweise zwischengespeicherte Ergebnisse, und Ihr Vorgang kann die Verbindungswiederherstellung möglicherweise nicht auslösen.
 
-## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>„CIFS VFS: error -22 on ioctl to get interface list“ (Fehler -22 bei IOCTL zum Abrufen der Schnittstellenliste) beim Einbinden einer Azure-Dateifreigabe mithilfe von SMB 3.0
+## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-3x"></a>„CIFS VFS: error -22 on ioctl to get interface list“ (Fehler -22 bei IOCTL zum Abrufen der Schnittstellenliste) beim Einbinden einer Azure-Dateifreigabe über SMB 3.x
 
 ### <a name="cause"></a>Ursache
 Dieser Fehler wird protokolliert, weil Azure Files [SMB Multichannel derzeit nicht unterstützt](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).

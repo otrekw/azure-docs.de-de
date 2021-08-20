@@ -2,17 +2,18 @@
 title: Ausführen von SSIS-Paketen mit den SSDT
 description: Erfahren Sie, wie Sie über SSDT SSIS-Pakete in Azure ausführen.
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019
 ms.date: 09/06/2020
-ms.openlocfilehash: f11a3845e8644f3f60425538b2ef32cff668d88d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fef9e8ea1b70dcab9c60d7d01b11e51653ea94a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384927"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339363"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>Ausführen von SSIS-Paketen in Azure über SSDT
 

@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 3f3e945a00ec7bba75deebb56118d45aa7ff571d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 985f1d4edacd81b7567124845836c3d93f976bb2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100530721"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340200"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Aktivieren von User and Entity Behavior Analytics (UEBA) in Azure Sentinel 
 
 > [!IMPORTANT]
 >
-> - Die Features „UEBA“ und „Entitätsseiten“ sind nun in **_allen_** Azure Sentinel-Geografien **allgemein verfügbar**.
+> Die Features „UEBA“ und „Entitätsseiten“ sind nun in **_allen_** Azure Sentinel-Geografien **allgemein verfügbar**. 
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -64,5 +66,5 @@ So aktivieren oder deaktivieren Sie dieses Feature (diese Voraussetzungen müsse
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie die User and Entity Behavior Analytics (UEBA) in Azure Sentinel aktivieren und konfigurieren. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).

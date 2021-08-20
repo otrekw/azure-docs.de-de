@@ -8,12 +8,12 @@ author: sabbour
 ms.author: asabbour
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: eda45b1a1a011a646915cf45e45218ae168a2af6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ada319684325b462729a44490207ad8e3c9d1cb9
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213078"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112371551"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Konfigurieren der Azure Active Directory-Authentifizierung für einen Azure Red Hat OpenShift 4-Cluster (Portal)
 
@@ -68,7 +68,7 @@ Navigieren Sie zu **Tokenkonfiguration (Vorschau)** , und klicken Sie auf **Opti
 
 Anwendungen, die für einen Azure AD-Mandanten (Azure Active Directory) registriert sind, sind standardmäßig für alle Benutzer des Mandanten verfügbar, deren Authentifizierung erfolgreich war. Azure AD ermöglicht Mandantenadministratoren und Entwicklern die Beschränkung einer App auf eine bestimmte Gruppe von Benutzern oder Sicherheitsgruppen im Mandanten.
 
-Befolgen Sie die Anweisungen in der Azure Active Directory-Dokumentation, um der [App Benutzer und Gruppen zuzuweisen](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration).
+Befolgen Sie die Anweisungen in der Azure Active Directory-Dokumentation, um der [App Benutzer und Gruppen zuzuweisen](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md).
 
 ## <a name="configure-openshift-openid-authentication"></a>Konfigurieren der OpenID-Authentifizierung für OpenShift
 

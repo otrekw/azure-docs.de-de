@@ -2,18 +2,17 @@
 title: Automatisches Bereitstellen von Windows-Geräten mit DPS – Azure IoT Edge | Microsoft-Dokumentation
 description: Verwenden eines simulierten Geräts auf Ihrem Windows-Computer zum Testen der automatischen Gerätebereitstellung für Azure IoT Edge mithilfe des Device Provisioning-Diensts
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 82bd027773a5759caee19228f56ba4b3dfe8c2cf
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8f406c975d9bc69264f2fcffa476a8f53f2f8551
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482006"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338949"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Erstellen und Bereitstellen eines simulierten IoT Edge-Geräts mit einem virtuellen TPM unter Windows
 

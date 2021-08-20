@@ -3,12 +3,12 @@ title: Integrieren von Azure NetApp Files mit Azure VMware Solution
 description: Verwenden Sie Azure NetApp Files mit Azure VMware Solution-VMs, um Daten zwischen lokalen Servern, Azure VMware Solution-VMs und Cloudinfrastrukturen zu migrieren und zu synchronisieren.
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 3383ee2afe271fbf50def125bd1fd4366b8b6165
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 4c07765bd54e59109f15f8a0cdfd067f48dd14b4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755715"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443779"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-vmware-solution"></a>Integrieren von Azure NetApp Files mit Azure VMware Solution
 
@@ -27,7 +27,7 @@ Dienste, mit denen Azure NetApp Files verwendet wird:
 
 Das Diagramm zeigt eine Verbindung über Azure ExpressRoute mit einer privaten Azure VMware Solution-Cloud. Die Azure VMware Solution-Umgebung greift auf die Azure NetApp Files-Freigabe zu, die auf Azure VMware Solution-VMs bereitgestellt ist.
 
-![Diagramm: NetApp Files für Azure VMware Solution-Architektur](media/net-app-files/net-app-files-topology.png)
+:::image type="content" source="media/netapp-files/netapp-files-topology.png" alt-text="Diagramm: NetApp Files für Azure VMware Solution-Architektur" border="false":::
 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
@@ -60,13 +60,13 @@ Sie überprüfen die in Azure erstellte vorkonfigurierte Azure NetApp Files-Inst
 
 1. Wählen Sie im Azure-Portal unter **Speicher** die Option **Azure NetApp Files** aus. Eine Liste der konfigurierten Azure NetApp Files-Konten wird angezeigt. 
 
-   :::image type="content" source="media/net-app-files/azure-net-app-files-list.png" alt-text="Screenshot: Liste mit vorkonfigurierten Azure NetApp Files-Instanzen"::: 
+   :::image type="content" source="media/netapp-files/azure-netapp-files-list.png" alt-text="Screenshot: Liste mit vorkonfigurierten Azure NetApp Files-Instanzen"::: 
 
 2. Wählen Sie ein konfiguriertes NetApp Files-Konto aus, um die zugehörigen Einstellungen anzuzeigen. Wählen Sie beispielsweise **Contoso-anf2** aus. 
 
 3. Wählen Sie **Kapazitätspools** aus, um den konfigurierten Pool zu überprüfen. 
 
-   :::image type="content" source="media/net-app-files/net-app-settings.png" alt-text="Screenshot: Optionen zum Anzeigen von Kapazitätspools und Volumes eines konfigurierten NetApp Files-Kontos":::
+   :::image type="content" source="media/netapp-files/netapp-settings.png" alt-text="Screenshot: Optionen zum Anzeigen von Kapazitätspools und Volumes eines konfigurierten NetApp Files-Kontos":::
 
    Die Seite „Kapazitätspools“ wird geöffnet, und die Kapazität und der Servicelevel werden angezeigt. In diesem Beispiel wurde der Speicherpool mit einer Kapazität von 4 TiB und dem Servicelevel „Premium“ konfiguriert.
 
@@ -74,11 +74,11 @@ Sie überprüfen die in Azure erstellte vorkonfigurierte Azure NetApp Files-Inst
 
 5. Wählen Sie ein Volume aus, um dessen Konfiguration anzuzeigen.  
 
-   :::image type="content" source="media/net-app-files/azure-net-app-volumes.png" alt-text="Screenshot: Im Kapazitätspool erstellte Volumes":::
+   :::image type="content" source="media/netapp-files/azure-netapp-volumes.png" alt-text="Screenshot: Im Kapazitätspool erstellte Volumes":::
 
    Ein Fenster wird geöffnet, in dem die Konfigurationsdetails des Volumes angezeigt werden.
 
-   :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="Screenshot: Konfigurationsdetails eines Volumes":::
+   :::image type="content" source="media/netapp-files/configuration-of-volume.png" alt-text="Screenshot: Konfigurationsdetails eines Volumes":::
 
    Sie können erkennen, dass das Volume ANFVOLUME eine Größe von 200 GiB hat und sich im Kapazitätspool ANFPOOL1 befindet. Es wird als NFS-Dateifreigabe über 10.22.3.4:/ANFVOLUME exportiert. Eine private IP-Adresse aus dem virtuellen Azure-Netzwerk (VNET) wurde für Azure NetApp Files und den NFS-Pfad für die Bereitstellung der VM erstellt.
 

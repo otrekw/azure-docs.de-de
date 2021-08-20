@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/08/2020
-ms.openlocfilehash: a7a7bbb8b911f86b81cdeafe3fe57e1fdf820681
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 3582bb71c51923ee64d5ea24c329da475dfdd9a2
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228281"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293925"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportieren und Löschen Ihrer Kundendaten aus LUIS in Cognitive Services
 
@@ -30,7 +30,7 @@ Kundeninhalte werden verschlüsselt im regionalen Microsoft Azure-Speicher gespe
 - Inhalte zum Benutzerkonto, die bei der Registrierung erfasst wurden
 - Trainingsdaten, die zum Erstellen der Modelle erforderlich sind
 - Protokollierte Benutzerabfragen, die für das [aktive Lernen](luis-concept-review-endpoint-utterances.md) verwendet werden, um das Modell verbessern zu können
-  - Benutzer können die Abfrageprotokollierung deaktivieren, indem sie `&log=false` an die Anforderungen anfügen. Weitere Informationen finden Sie [hier](troubleshooting.md#how-can-i-disable-the-logging-of-utterances).
+  - Benutzer können die Abfrageprotokollierung deaktivieren, indem sie `&log=false` an die Anforderungen anfügen. Weitere Informationen finden Sie [hier](./troubleshooting.yml#how-can-i-disable-the-logging-of-utterances-).
 
 ## <a name="deleting-customer-data"></a>Löschen von Kundendaten
 LUIS-Benutzer haben die vollständige Kontrolle und können sämtliche Benutzerinhalte entweder über das LUIS-Webportal oder die LUIS-Erstellungs-APIs (auch als programmgesteuerte LUIS-APIs bezeichnet) löschen. In der folgenden Tabelle werden Links zu Hilfen für beide Möglichkeiten angezeigt.

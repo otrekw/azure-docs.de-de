@@ -4,12 +4,12 @@ description: 'Fehler beim Apache Sqoop-Import-/Exportbefehl mit der Fehlermeldun
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/01/2021
-ms.openlocfilehash: 79aae099e30bae7d5201fae3384f7b89b6c30bcf
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 2eba44d735b1b8ea9a88164ede0ca4860efcce8a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387165"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112283931"
 ---
 # <a name="scenario-sqoop-importexport-command-fails-for-usernames-greater-than-20-characters-in-azure-hdinsight-esp-clusters"></a>Szenario: Beim Sqoop-Import-/Exportbefehl tritt bei Benutzernamen mit mehr als 20 Zeichen in Azure HDInsight-ESP-Clustern ein Fehler auf.
 
@@ -40,4 +40,4 @@ Verwenden Sie einen Benutzernamen mit höchstens 20 Zeichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](includes/hdinsight-troubleshooting-next-steps.md)]

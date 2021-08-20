@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/21/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 051dc952381800667fc3b36cdcf32f2aa2f6844c
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 97c3013586e9671d7d9cce55c5e6253cb8a368f4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416636"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733875"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Welche Ports muss ich in der Firewall öffnen? 
 Sie können die folgenden Protokolle mit Azure Event Hubs verwenden, um Ereignisse zu senden und zu empfangen:
@@ -75,7 +75,7 @@ Wenn Sie **Zonenredundanz** für Ihren Namespace verwenden, müssen Sie einige z
 ### <a name="what-client-ips-are-sending-events-to-or-receiving-events-from-my-namespace"></a>Welche Client-IP-Adressen senden Ereignisse an meinen Namespace oder empfangen Ereignisse daraus?
 Aktivieren Sie zunächst die [IP-Filterung](../event-hubs-ip-filtering.md) für den Namespace. 
 
-Aktivieren Sie dann Diagnoseprotokolle für [Event Hubs-Verbindungsereignisse für virtuelle Netzwerke](../event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema), indem Sie den Anweisungen unter [Aktivieren von Diagnoseprotokollen](../event-hubs-diagnostic-logs.md#enable-diagnostic-logs) folgen. Es wird die IP-Adresse angezeigt, für die die Verbindung verweigert wird.
+Aktivieren Sie dann Diagnoseprotokolle für [Event Hubs-Verbindungsereignisse für virtuelle Netzwerke](../monitor-event-hubs-reference.md#event-hubs-virtual-network-connection-event-schema), indem Sie den Anweisungen unter [Aktivieren von Diagnoseprotokollen](../../azure-monitor/essentials/diagnostic-settings.md) folgen. Es wird die IP-Adresse angezeigt, für die die Verbindung verweigert wird.
 
 ```json
 {

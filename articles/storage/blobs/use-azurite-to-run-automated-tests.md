@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: ikivanc
-ms.openlocfilehash: c4e8a11e0c46cb9a138a1a66060d9fdcc72c192e
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 7ad2fb4a808f2fef794a904287c25bd0643a085f
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111119"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378599"
 ---
 # <a name="run-automated-tests-by-using-azurite"></a>Ausführen automatisierter Tests mithilfe von Azurite
 
@@ -61,7 +61,7 @@ Erfahren Sie, wie Sie mithilfe von Azurite automatisierte Tests für private End
    python -m venv .venv
    ```
 
-1. Erstellen Sie einen Container, und initialisieren Sie Umgebungsvariablen. Verwenden Sie eine [Pytest](https://docs.pytest.org/) [conftest.py](https://docs.pytest.org/en/2.1.0/plugins.html)-Datei, um Tests zu generieren. Hier ein Beispiel für eine conftest.py-Datei:
+1. Erstellen Sie einen Container, und initialisieren Sie Umgebungsvariablen. Verwenden Sie eine [Pytest](https://docs.pytest.org/) [conftest.py](https://docs.pytest.org/en/latest/how-to/writing_plugins.html#conftest-py-plugins)-Datei, um Tests zu generieren. Hier ein Beispiel für eine conftest.py-Datei:
 
    ```python
    from azure.storage.blob import BlobServiceClient

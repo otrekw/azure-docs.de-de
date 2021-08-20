@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 6a98571f513e25d801acd4f4a9c2901dcd56fabc
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 236fcdb27bccf56cfe9bf92784f74cfa7ac3057b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869219"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285443"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
 
@@ -97,7 +97,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 Mitglieder der Community können Verwaltungslösungen für Azure-Schnellstartvorlagen senden. Sie können diese Lösungen entweder direkt installieren oder Vorlagen für eine spätere Installation herunterladen.
 
 1. Führen Sie den unter [Log Analytics-Arbeitsbereich und Automation-Konto](#log-analytics-workspace-and-automation-account) beschriebenen Prozess aus, um einen Arbeitsbereich und ein Konto zu verknüpfen.
-2. Gehen Sie zu [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
+2. Gehen Sie zu [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
 3. Suchen Sie nach einer Lösung, an der Sie interessiert sind.
 4. Wählen Sie die Lösung aus den Ergebnissen aus, um ihre Details anzuzeigen.
 5. Klicken Sie auf die Schaltfläche **Bereitstellen in Azure**.

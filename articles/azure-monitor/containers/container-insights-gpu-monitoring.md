@@ -3,12 +3,12 @@ title: Konfigurieren der GPU-Überwachung mit Container Insights | Microsoft-Dok
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung von Kubernetes-Clustern mit GPU-fähigen Knoten von NVIDIA und AMD mit Container Insights konfigurieren können.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 2958b000ac0dabcd7fddf75a58f553b705a95e9a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f18628b2814305d8629d3216bb0a0d1bab092fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731866"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339428"
 ---
 # <a name="configure-gpu-monitoring-with-container-insights"></a>Konfigurieren der GPU-Überwachung mit Container Insights
 
@@ -39,7 +39,7 @@ Container Insights beginnt automatisch mit der Überwachung der GPU-Nutzung auf 
 
 ## <a name="gpu-performance-charts"></a>GPU-Leistungsdiagramme 
 
-Container Insights enthält vorkonfigurierte Diagramme für die Metriken, die weiter oben in der Tabelle als GPU-Arbeitsmappe für jeden Cluster aufgeführt sind. Unter [Berichte in Azure Monitor für Container](../insights/container-insights-reports.md) finden Sie eine Beschreibung der für Container Insights verfügbaren Arbeitsmappen.
+Container Insights enthält vorkonfigurierte Diagramme für die Metriken, die weiter oben in der Tabelle als GPU-Arbeitsmappe für jeden Cluster aufgeführt sind. Unter [Berichte in Azure Monitor für Container](container-insights-reports.md) finden Sie eine Beschreibung der für Container Insights verfügbaren Arbeitsmappen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

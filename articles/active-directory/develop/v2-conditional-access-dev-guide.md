@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 9e74f35a99bb57fff6d7134fb1fb4b596306a21b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 0492055262ccd627d2e3400f78e5c26db0b2acb2
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072421"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730044"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
@@ -36,7 +36,7 @@ Für Entwickler, die Apps für Azure AD erstellen, wird in diesem Artikel verans
 Dabei werden Kenntnisse über [einzel](quickstart-register-app.md)- und [mehrinstanzenfähige](howto-convert-app-to-be-multi-tenant.md) Apps sowie über [allgemeine Authentifizierungsmuster](./authentication-vs-authorization.md) vorausgesetzt.
 
 > [!NOTE]
-> Für die Verwendung dieses Features ist eine Azure AD Premium P1-Lizenz erforderlich. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
+> Für die Verwendung dieses Features ist eine Azure AD Premium P1-Lizenz erforderlich. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 > Kunden mit [Microsoft 365 Business-Lizenzen](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) haben auch Zugriff auf Funktionen für bedingten Zugriff.
 
 ## <a name="how-does-conditional-access-impact-an-app"></a>Welche Auswirkungen hat der bedingte Zugriff auf eine App?

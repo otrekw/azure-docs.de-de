@@ -5,12 +5,12 @@ keywords: Hochverfügbarkeit, Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 74f8bdd26e000b89bfae84102077c241f85abf7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3cbae5df6e9a4e5ff17bf1245fcaf190efbbf84
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933323"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112371516"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Geschäftskontinuität in Azure HDInsight
 
@@ -81,7 +81,7 @@ Für eine Beeinträchtigung der Geschäftsfunktionalität muss nicht unbedingt e
 
 ### <a name="hdinsight-metastore"></a>HDInsight-Metastore
 
-HDInsight verwendet [Azure SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) als Metastore, der eine SLA mit einer Verfügbarkeit von 99,99 % bietet. Drei Replikate der Daten werden in einem Rechenzentrum mit synchroner Replikation beständig gespeichert. Bei Verlust eines Replikats wird nahtlos ein neues Replikat bereitgestellt. [Aktive Georeplikation](../azure-sql/database/active-geo-replication-overview.md) wird standardmäßig mit maximal vier Rechenzentren unterstützt. Bei einem Failover (manuell oder durch das Rechenzentrum) erhält das erste Replikat in der Hierarchie automatisch Lese- und Schreibfunktionen. Weitere Informationen finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md).
+HDInsight verwendet [Azure SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/azure-sql-database/v1_4/) als Metastore, der eine SLA mit einer Verfügbarkeit von 99,99 % bietet. Drei Replikate der Daten werden in einem Rechenzentrum mit synchroner Replikation beständig gespeichert. Bei Verlust eines Replikats wird nahtlos ein neues Replikat bereitgestellt. [Aktive Georeplikation](../azure-sql/database/active-geo-replication-overview.md) wird standardmäßig mit maximal vier Rechenzentren unterstützt. Bei einem Failover (manuell oder durch das Rechenzentrum) erhält das erste Replikat in der Hierarchie automatisch Lese- und Schreibfunktionen. Weitere Informationen finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md).
 
 ### <a name="hdinsight-storage"></a>HDInsight Storage
 

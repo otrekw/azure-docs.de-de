@@ -6,21 +6,16 @@ author: Heidilohr
 manager: lizross
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 05/28/2021
+ms.date: 06/30/2021
 ms.author: helohr
-ms.openlocfilehash: c85186d8338918dbcf2af56abd959f5cbff6ad56
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3c6e61754d9332cbdfbea6b971363c1b0d6cb4fe
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967286"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289420"
 ---
 # <a name="configure-ad-fs-single-sign-on-for-azure-virtual-desktop"></a>Konfigurieren des einmaligen Anmeldens mit AD FS für Azure Virtual Desktop
-
-> [!IMPORTANT]
-> Das einmalige Anmelden mit AD FS ist aktuell als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Dieser Artikel führt Sie durch die Konfiguration des einmaligen Anmeldens (SSO) mit AD FS (Active Directory-Verbunddienst) für Azure Virtual Desktop.
 
@@ -29,15 +24,12 @@ Dieser Artikel führt Sie durch die Konfiguration des einmaligen Anmeldens (SSO)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
-> [!IMPORTANT]
-> In der öffentlichen Vorschauversion müssen Sie Ihren Hostpool so konfigurieren, dass er sich in der [Validierungsumgebung](create-validation-host-pool.md) befindet.
-
 Bevor Sie das einmalige Anmelden mit AD FS konfigurieren können, muss in Ihrer Umgebung das folgende Setup ausgeführt werden:
 
 * Sie müssen die Rolle **Active Directory-Zertifikatdienste (CA)** bereitstellen. Alle Server, auf denen die Rolle ausgeführt wird, müssen in die Domäne eingebunden und als [Unternehmenszertifizierungsstellen](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731183%28v%3dws.10%29) konfiguriert sein. Darüber hinaus müssen auf ihnen die neuesten Windows-Updates installiert sein.
 * Sie müssen die Rolle **Active Directory-Verbunddienste (AD FS)** bereitstellen. Alle Server, auf denen diese Rolle ausgeführt wird, müssen in die Domäne eingebunden sein. Darüber hinaus müssen auf ihnen die neuesten Windows-Updates installiert sein und Windows Server 2016 oder höher ausgeführt werden. Informationen über die ersten Schritte beim Einrichten dieser Rolle finden Sie in unserem [Verbundtutorial](../active-directory/hybrid/tutorial-federation.md).
 * Es wird empfohlen, die Rolle **Web-Anwendungsproxy** einzurichten, um die Verbindung Ihrer Umgebung mit den AD FS-Servern zu schützen. Auf allen Servern, auf denen diese Rolle ausgeführt wird, müssen die neuesten Windows-Updates installiert sein und Windows Server 2016 oder höher ausgeführt werden. Informationen über die ersten Schritte beim Einrichten dieser Rolle finden Sie in diesem [Web-Anwendungsproxy-Leitfaden](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383662(v=ws.11)).
-* Sie müssen **Azure AD Connect** bereitstellen, um Benutzer mit Azure AD synchronisieren zu können. Azure AD Connect muss im [Verbundmodus](../active-directory/connect/active-directory-aadconnect-get-started-custom.md) konfiguriert werden.
+* Sie müssen **Azure AD Connect** bereitstellen, um Benutzer mit Azure AD synchronisieren zu können. Azure AD Connect muss im [Verbundmodus](../active-directory/hybrid/how-to-connect-install-custom.md) konfiguriert werden.
 * [Richten Sie Ihre PowerShell-Umgebung](powershell-module.md) für Azure Virtual Desktop auf dem AD FS-Server ein.
 * Wenn Sie Windows 10 20H1 oder 20H2 verwenden, um eine Verbindung mit Azure Virtual Desktop herzustellen, müssen Sie das **kumulative Update 2021-04 für Windows 10 (KB5001330)** oder höher installieren, damit das einmalige Anmelden ordnungsgemäß funktioniert.
 
@@ -48,8 +40,8 @@ Bevor Sie das einmalige Anmelden mit AD FS konfigurieren können, muss in Ihrer
 
 Die folgenden Azure Virtual Desktop-Clients unterstützen dieses Feature:
 
-* [Windows Desktop-Client](connect-windows-7-10.md)
-* [Webclient](connect-web.md)
+* [Windows Desktop-Client](./user-documentation/connect-windows-7-10.md)
+* [Webclient](./user-documentation/connect-web.md)
 
 ## <a name="configure-the-certificate-authority-to-issue-certificates"></a>Konfigurieren der Zertifizierungsstelle für das Ausstellen von Zertifikaten
 
@@ -232,9 +224,6 @@ Dieses Skript verfügt nur über einen erforderlichen Parameter: *ADFSAuthority*
 
 ## <a name="configure-your-azure-virtual-desktop-host-pool"></a>Konfigurieren Ihres Azure Virtual Desktop-Hostpools
 
-> [!IMPORTANT]
-> In der öffentlichen Vorschauversion müssen Sie Ihren Hostpool so konfigurieren, dass er sich in der [Validierungsumgebung](create-validation-host-pool.md) befindet.
-
 Es ist an der Zeit, die AD FS-SSO-Parameter auf Ihrem Azure Virtual Desktop-Hostpool zu konfigurieren. Hierzu müssen Sie Ihre [PowerShell-Umgebung für Azure Virtual Desktop einrichten](powershell-module.md), sofern dies noch nicht erfolgt ist, und eine Verbindung mit Ihrem Konto herstellen.
 
 Aktualisieren Sie anschließend die SSO-Informationen für Ihren Hostpool, indem Sie eines der folgenden beiden Cmdlets im selben PowerShell-Fenster auf der AD FS-VM ausführen:
@@ -291,5 +280,5 @@ UnConfigureWVDSSO.ps1 -WvdWebAppAppIDUri "<WVD Web App URI>" -WvdClientAppApplic
 
 Nachdem Sie SSO konfiguriert haben, können Sie sich an einem unterstützten Azure Virtual Desktop-Client anmelden, um ihn als Teil einer Benutzersitzung zu testen. Weitere Informationen darüber, wie Sie mit Ihren neuen Anmeldeinformationen eine Verbindung mit einer Sitzung herstellen können, finden Sie in den folgenden Artikeln:
 
-* [Herstellen einer Verbindung mit dem Windows-Desktopclient](connect-windows-7-10.md)
-* [Herstellen einer Verbindung mit dem Webclient](connect-web.md)
+* [Herstellen einer Verbindung mit dem Windows-Desktopclient](./user-documentation/connect-windows-7-10.md)
+* [Herstellen einer Verbindung mit dem Webclient](./user-documentation/connect-web.md)

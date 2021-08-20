@@ -3,12 +3,12 @@ title: Angeben einer Ressourcengruppe für virtuelle Computer in Azure DevTest L
 description: Erfahren Sie, wie Sie eine Ressourcengruppe für virtuelle Computer in einem Lab in Azure DevTest Labs angeben.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c6f576a20fc8fada9dd515e8ba2a266761a3e586
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 8b7b331f505864edb5fd2b2cca2f56d9d6349db3
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377487"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282743"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Angeben einer Ressourcengruppe für virtuelle Labcomputer in Azure DevTest Labs
 
@@ -112,4 +112,4 @@ Verwenden dieser API:
 Weitere Informationen finden Sie in folgenden Artikeln: 
 
 - [Festlegen von Richtlinien für ein Lab](devtest-lab-set-lab-policy.md)
-- [Häufig gestellte Fragen](devtest-lab-faq.md)
+- [Häufig gestellte Fragen](devtest-lab-faq.yml)

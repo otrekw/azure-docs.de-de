@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c6ec162ceb51c3bf19be42219b054d8371ff221
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a796aff2c0882bd07b12a2f6fa6c0ab3eb793834
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247351"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340023"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung für die Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 
@@ -256,7 +256,7 @@ Führen Sie folgende Schritte durch, um festzustellen, warum keine Kennwörter s
 3. Wenn die Funktion nicht in Azure AD aktiviert ist oder der Synchronisierungskanalstatus nicht aktiviert ist, führen Sie den Assistenten zum Installieren von Connect aus. Wählen Sie **Synchronisierungsoptionen anpassen** aus, und deaktivieren Sie die Kennwortsynchronisierung. Durch diese Änderung wird das Feature vorübergehend deaktiviert. Führen Sie anschließend den Assistenten erneut aus, und aktivieren Sie die Kennwortsynchronisierung wieder. Führen Sie das Skript noch einmal aus, um sicherzustellen, dass die Konfiguration korrekt ist.
 
 4. Suchen Sie im Ereignisprotokoll nach Fehlern. Suchen Sie nach den folgenden Ereignissen, die auf ein Problem hinweisen würden:
-    * Quelle: „Verzeichnissynchronisierung“ ID: 0, 611, 652, 655 Wenn diese Ereignisse angezeigt werden, liegt ein Konnektivitätsproblem vor. Die Ereignisprotokollmeldung enthält Gesamtstrukturinformationen, die ein Problem aufweisen. Weitere Informationen finden Sie unter [Konnektivitätsproblem](#connectivity problem).
+    * Quelle: „Verzeichnissynchronisierung“ ID: 0, 611, 652, 655 Wenn diese Ereignisse angezeigt werden, liegt ein Konnektivitätsproblem vor. Die Ereignisprotokollmeldung enthält Gesamtstrukturinformationen, die ein Problem aufweisen.
 
 5. Wenn kein Takt angezeigt wird oder nichts funktioniert hat, führen Sie das Skript unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](#trigger-a-full-sync-of-all-passwords) aus. Führen Sie das Skript nur einmal aus.
 

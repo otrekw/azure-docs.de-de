@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e1621acb66e62b03418b59f184ba4e7fa031a164
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0dc5960b3aa24b220f23f5bd56650c48ca4ccde9
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472108"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112370507"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
@@ -129,7 +129,7 @@ Sqoop verwendet MapReduce zum Importieren und Exportieren der Daten, um Parallel
 
 Apache Flume ist ein verteilter, zuverlässiger und verfügbarer Dienst für das effiziente Sammeln, Aggregieren und Verschieben großer Mengen von Protokolldaten. Seine flexible Architektur basiert auf Streamingdatenflüssen. Flume ist robust und fehlertolerant mit einstellbaren Zuverlässigkeitsmechanismen. Es verfügt über viele Failover- und Wiederherstellungsmechanismen. Flume verwendet ein einfaches, erweiterbares Datenmodell, das analytische Onlineanwendungen zulässt.
 
-Apache Flume kann nicht mit Azure HDInsight verwendet werden. Aber eine lokale Hadoop-Installation kann Flume verwenden, um Daten an Azure Blob Storage oder Azure Data Lake Storage zu senden. Weitere Informationen finden Sie unter [Verwenden von Apache Flume mit HDInsight](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Apache Flume kann nicht mit Azure HDInsight verwendet werden. Aber eine lokale Hadoop-Installation kann Flume verwenden, um Daten an Azure Blob Storage oder Azure Data Lake Storage zu senden. Weitere Informationen finden Sie unter [Verwenden von Apache Flume mit HDInsight](/archive/blogs/bigdatasupport/using-apache-flume-with-hdinsight).
 
 ## <a name="transform"></a>Transformieren
 

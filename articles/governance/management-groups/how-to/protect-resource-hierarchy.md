@@ -1,14 +1,14 @@
 ---
 title: Schützen der Ressourcenhierarchie – Azure Governance
 description: Erfahren Sie, wie Sie Ihre Ressourcenhierarchie mit Hierarchieeinstellungen schützen, unter anderem durch Festlegen der Standardverwaltungsgruppe.
-ms.date: 04/09/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c87603510d036efded1331a5c08a7aae17326d09
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4315160030657b5aca0b293677ec0ec44d19adab
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765159"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343591"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Schützen der Ressourcenhierarchie
 
@@ -55,7 +55,7 @@ Zum Konfigurieren dieser Einstellung mit der REST-API wird der Endpunkt mit den 
 - REST-API-URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-02-01
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-05-01
   ```
 
 - Anforderungstext
@@ -96,7 +96,7 @@ Zum Konfigurieren dieser Einstellung mit der REST-API wird der Endpunkt mit den 
 - REST-API-URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-02-01
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-05-01
   ```
 
 - Anforderungstext
@@ -128,7 +128,7 @@ $body = '{
 
 $token = (Get-AzAccessToken).Token
 $headers = @{"Authorization"= "Bearer $token"; "Content-Type"= "application/json"}
-$uri = "https://management.azure.com/providers/Microsoft.Management/managementGroups/$root_management_group_id/settings/default?api-version=2020-02-01"
+$uri = "https://management.azure.com/providers/Microsoft.Management/managementGroups/$root_management_group_id/settings/default?api-version=2020-05-01"
 
 Invoke-RestMethod -Method PUT -Uri $uri -Headers $headers -Body $body
 ```

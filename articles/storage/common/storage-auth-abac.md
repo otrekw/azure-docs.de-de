@@ -10,12 +10,12 @@ ms.date: 05/06/2021
 ms.author: santoshc
 ms.reviewer: jiacfan
 ms.subservice: common
-ms.openlocfilehash: 8e424bd03e69affebac6f9bb614d2449e6ec45c0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 355eaa0c7e907dea1e1fe88e0640d3b09463fa09
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070820"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729018"
 ---
 # <a name="authorize-access-to-blobs-using-azure-role-assignment-conditions-preview"></a>Autorisieren des Zugriffs auf Blobs mithilfe von Bedingungen für die Azure-Rollenzuweisung (Vorschau)
 
@@ -28,7 +28,7 @@ Die attributbasierte Zugriffssteuerung (Attribute-Based Access Control, ABAC) is
 
 ## <a name="overview-of-conditions-in-azure-storage"></a>Übersicht über Bedingungen in Azure Storage
 
-Azure Storage ermöglicht die [Verwendung von Azure Active Directory](storage-auth-aad.md) (Azure AD) zum Autorisieren von Anforderungen an Blob- und Warteschlangenspeicher. Azure AD autorisiert Zugriffsrechte auf gesicherte Ressourcen mithilfe von Azure RBAC. Azure Storage definiert eine Reihe von in Azure [integrierten Rollen](../../role-based-access-control/built-in-roles.md#storage) mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- oder Warteschlangendaten. Sie können auch benutzerdefinierte Rollen mit einem ausgewählten Berechtigungssatz definieren. Azure Storage unterstützt Rollenzuweisungen für Speicherkonten oder Blobcontainer.
+Azure Storage ermöglicht die [Verwendung von Azure Active Directory](authorize-data-access.md) (Azure AD) zum Autorisieren von Anforderungen an Blob- und Warteschlangenspeicher. Azure AD autorisiert Zugriffsrechte auf gesicherte Ressourcen mithilfe von Azure RBAC. Azure Storage definiert eine Reihe von in Azure [integrierten Rollen](../../role-based-access-control/built-in-roles.md#storage) mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- oder Warteschlangendaten. Sie können auch benutzerdefinierte Rollen mit einem ausgewählten Berechtigungssatz definieren. Azure Storage unterstützt Rollenzuweisungen für Speicherkonten oder Blobcontainer.
 
 In einigen Fällen müssen Sie jedoch möglicherweise einen feineren Zugriff auf Speicherressourcen aktivieren oder die Hunderte von Rollenzuweisungen für eine Speicherressource vereinfachen. Sie können [Bedingungen für Rollenzuweisungen](../../role-based-access-control/conditions-overview.md) für [DataActions](../../role-based-access-control/role-definitions.md#dataactions) konfigurieren, um diese Ziele zu erreichen. Sie können Bedingungen bei einer [benutzerdefinierten Rolle](../../role-based-access-control/custom-roles.md) verwenden oder integrierte Rollen auswählen. Beachten Sie, dass Bedingungen für [Verwaltungsaktionen](../../role-based-access-control/role-definitions.md#actions) über den [Speicherressourcenanbieter](/rest/api/storagerp) nicht unterstützt werden.
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/07/2021
+ms.date: 07/13/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fb2f36e1b51ed5fbb7c3f2c002760d07f3723645
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 12b909b467b7f53d568e80f60c8b30f701820216
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590451"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728514"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 
@@ -75,7 +75,7 @@ Diese Funktion der vom Personalwesen (HR) gesteuerten IT-Bereitstellung bietet e
 
 ### <a name="licensing"></a>Lizenzierung
 
-Um die HR-Cloud-App für die Integration der Azure AD-Benutzerbereitstellung zu konfigurieren, benötigen Sie eine gültige [Azure AD Premium-Lizenz](https://azure.microsoft.com/pricing/details/active-directory/) und eine Lizenz für die HR-Cloud-App (z. B. Workday oder SuccessFactors).
+Um die HR-Cloud-App für die Integration der Azure AD-Benutzerbereitstellung zu konfigurieren, benötigen Sie eine gültige [Azure AD Premium-Lizenz](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) und eine Lizenz für die HR-Cloud-App (z. B. Workday oder SuccessFactors).
 
 Sie benötigen zudem eine gültige Abonnementlizenz für Azure AD Premium P1 oder höher für jeden Benutzer, der aus der HR-Cloud-App bezogen und in einer Azure Active Directory- oder Azure AD-Instanz bereitgestellt wird. Eine nicht ausreichende Anzahl von Lizenzen in der HR-Cloud-App kann zu Fehlern bei der Benutzerbereitstellung führen.
 

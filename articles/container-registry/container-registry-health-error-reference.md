@@ -3,12 +3,12 @@ title: Fehlerreferenz für Registrierungsintegritätsprüfung
 description: Fehlercodes und mögliche Lösungen für Probleme, die beim Ausführen des Diagnosebefehls az acr check-health in Azure Container Registry gefunden wurden.
 ms.topic: article
 ms.date: 01/25/2021
-ms.openlocfilehash: 12cdd1e75a51097bab3830cdd0e6567e53f91dce
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: f4672d114c963717eb77725f0a159b8a21525f9a
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537417"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220397"
 ---
 # <a name="health-check-error-reference"></a>Fehlerreferenz für die Integritätsprüfung
 
@@ -114,7 +114,7 @@ Dieser Fehler bedeutet, dass die CLI nicht mit der aktuell installierten Version
 
 Optionen zum Überprüfen der Integrität einer Registrierung finden Sie unter [Überprüfen der Integrität einer Azure-Containerregistrierung](container-registry-check-health.md).
 
-Häufig gestellte Fragen zu Azure Container Registry und andere bekannte Probleme finden Sie unter [FAQ](container-registry-faq.md).
+Häufig gestellte Fragen zu Azure Container Registry und andere bekannte Probleme finden Sie unter [FAQ](container-registry-faq.yml).
 
 
 

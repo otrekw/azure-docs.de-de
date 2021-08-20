@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: d3a4a8bb54c5bafa9eb50ed4441cd6eebe2acc6c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: d7d33fe4bc94de3d1fdca3d2b2e99d0663e39c97
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079911"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289853"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>Speicher: Bewährte Methoden zur Leistung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -87,7 +87,7 @@ Viele virtuelle Azure-Computer enthalten einen weiteren Datenträgertyp, der als
 
 Das temporäre Speicherlaufwerk wird in Remotespeicher nicht persistent gespeichert und sollte daher keine Benutzerdatenbankdateien, Transaktionsprotokolldateien oder anderen Daten speichern, die beibehalten werden müssen. 
 
-Legen Sie tempdb auf dem lokalen temporären SSD-Laufwerk `D:\` für SQL Server-Workloads ab, es sei denn, die Verwendung des lokalen Cache ist ein Problem. Wenn Sie einen virtuellen Computer verwenden, der [keinen temporären Datenträger](../../../virtual-machines/azure-vms-no-temp-disk.md) aufweist, wird empfohlen, tempdb auf einem eigenen isolierten Datenträger oder in einem Speicherpool zu platzieren, wobei die Zwischenspeicherung auf „Schreibgeschützt“ festgelegt ist. Weitere Informationen finden Sie unter [Richtlinien zum Zwischenspeichern von tempdb-Daten](performance-guidelines-best-practices-storage.md#data-file-caching-policies).
+Legen Sie tempdb auf dem lokalen temporären SSD-Laufwerk `D:\` für SQL Server-Workloads ab, es sei denn, die Verwendung des lokalen Cache ist ein Problem. Wenn Sie einen virtuellen Computer verwenden, der [keinen temporären Datenträger](../../../virtual-machines/azure-vms-no-temp-disk.yml) aufweist, wird empfohlen, tempdb auf einem eigenen isolierten Datenträger oder in einem Speicherpool zu platzieren, wobei die Zwischenspeicherung auf „Schreibgeschützt“ festgelegt ist. Weitere Informationen finden Sie unter [Richtlinien zum Zwischenspeichern von tempdb-Daten](performance-guidelines-best-practices-storage.md#data-file-caching-policies).
 
 ### <a name="data-disks"></a>Datenträger
 

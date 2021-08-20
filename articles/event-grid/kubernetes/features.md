@@ -6,19 +6,19 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: af18458e0370846a6c34a1728dfd7c98ca1276a5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2eea263517d718effc03382e3d8209a9a11f17e7
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386274"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415856"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-features"></a>Features von Event Grid in Kubernetes mit Azure Arc
 Event Grid in Kubernetes bietet eine Vielzahl von Features, mit denen Sie Ihre Kubernetes-Workloads integrieren und Hybridarchitekturen umsetzen können. Die Anwendung nutzt dieselbe [REST-API](/rest/api/eventgrid/version2020-10-15-preview/topics) (ab Version 2020-10-15-preview), die [Event Grid CLI](/cli/azure/eventgrid), die Benutzeroberfläche des Azure-Portals, [Verwaltungs-SDKs](../sdk-overview.md#management-sdks) und [SDKs der Datenebene](../sdk-overview.md#data-plane-sdks) mit Azure Event Grid, der anderen Edition desselben Diensts. Wenn Sie bereit sind, Ereignisse zu veröffentlichen, können Sie die [SDK-Beispiele der Datenebene in verschiedenen Sprachen](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/) verwenden, die für beide Editionen von Event Grid funktionieren.
 
 Obwohl Event Grid in Kubernetes und Azure Event Grid viele Funktionen gemeinsam sind und das Ziel darin besteht, die gleiche Benutzererfahrung zu bieten, gibt es einige Unterschiede angesichts der einzigartigen Anforderungen, die die beiden Editionen zu erfüllen versuchen, und des Stadiums, in dem sie sich in ihrem Softwarelebenszyklus befinden. Der einzige Typ von Thema, der in Event Grid für Kubernetes verfügbar ist, sind beispielsweise Event Grid-Themen, die manchmal auch als benutzerdefinierte Themen bezeichnet werden. Andere Thementypen (siehe unten) sind entweder nicht anwendbar, oder es ist noch keine Unterstützung für sie verfügbar. Die Hauptunterschiede zwischen den beiden Editionen von Event Grid werden in der folgenden Tabelle dargestellt.
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 ## <a name="event-grid-on-kubernetes-vs-event-grid-on-azure"></a>Event Grid in Kubernetes im Vergleich zu Event Grid in Azure

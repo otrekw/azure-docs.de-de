@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: yelevin
-ms.openlocfilehash: d5140bcd85606213f00185d4ba1f50dbe70dba63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c4482f788014aec45f7c2e2ca9c4820bd80bb33
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655493"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339446"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-office-365"></a>Verbinden von Benachrichtigungen aus Microsoft Defender für Office 365 
 
@@ -31,6 +31,8 @@ ms.locfileid: "94655493"
 >
 > - Die Erfassung von Microsoft Defender für Office 365-Benachrichtigungen befindet sich derzeit in der öffentlichen Vorschauphase (Public Preview). Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 [Microsoft Defender für Office 365](/office365/servicedescriptions/office-365-advanced-threat-protection-service-description) schützt Ihre Organisation vor Zero-Day-Angriffen und anderen modernen Bedrohungen durch unbekannte Schadsoftware in E-Mails, schädlichen URL-Links und Tools für die Zusammenarbeit. Indem Sie Microsoft Defender für Office 365-Benachrichtigungen in Azure Sentinel erfassen, können Sie Informationen zu Bedrohungen in Verbindung mit E-Mails, Dateifreigabe und URLs für Ihre Sicherheitsvorgänge nutzen. Auf diese Weise können Sie Sicherheitsereignisse dann in Ihrer gesamten Organisation umfassender analysieren und Playbooks für effektive und sofortige Reaktionen entwickeln.
 
 Mit dem Connector werden die folgenden Benachrichtigungen importiert:
@@ -76,5 +78,5 @@ Wenn Microsoft Defender für Office 365 bereitgestellt wurde und Richtlinien ko
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Dokument wurde beschrieben, wie Sie Microsoft Defender für Office 365 mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./tutorial-detect-threats-built-in.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./detect-threats-built-in.md).

@@ -2,13 +2,13 @@
 title: Vergleich von Azure Storage-Warteschlangen und Service Bus-Warteschlangen
 description: Analysiert die Unterschiede und Gemeinsamkeiten zwischen den beiden zurzeit von Azure angebotenen Warteschlangentypen.
 ms.topic: article
-ms.date: 04/12/2021
-ms.openlocfilehash: a63ed276981a692b96b7e7369093af221b3d3a5f
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.date: 06/15/2021
+ms.openlocfilehash: a93123ded873a5020e440c606fcd4f8278baa4aa
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190132"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112120170"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
 In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen untersucht, die in Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Anhand dieser Informationen können Sie eine fundierte Entscheidung darüber treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
@@ -203,9 +203,6 @@ Die folgenden Artikel enthalten weitere Anleitungen und Informationen zur Verwen
 * [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 * [Verwenden des Warteschlangenspeicherdiensts](../storage/queues/storage-dotnet-how-to-use-queues.md)
 * [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](service-bus-performance-improvements.md)
-* [Introducing Queues and Topics in Azure Service Bus (Einführung in Warteschlangen und Themen in Azure Service Bus) (Blogbeitrag)](https://www.serverless360.com/blog/azure-service-bus-queues-vs-topics)
-* [The Developer's Guide to Service Bus (Entwicklerhandbuch für Service Bus)](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)
-* [Using the Queuing Service in Azure (Verwenden des Warteschlangendiensts in Azure)](https://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
 
 [Azure portal]: https://portal.azure.com
 

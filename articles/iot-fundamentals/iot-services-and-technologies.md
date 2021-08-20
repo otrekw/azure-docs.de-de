@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 311f8164803dd12664aa193f08c8a1095ee07e31
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: ae4ab2161c4616f58a05e07f0ca273d08435b0bf
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168704"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403465"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>Welche Azure-Technologien und -Dienste können Sie zum Erstellen von IoT-Lösungen verwenden?
 
@@ -54,7 +54,7 @@ Verwenden Sie eine bzw. einen der folgenden Azure IoT-Technologien und -Dienste 
 
 Entwickeln Sie Ihre IoT-Geräte mit einem der [Azure IoT-Starter Kits](https://devicecatalog.azure.com/kits), oder wählen Sie im [Azure Certified for IoT-Gerätekatalog](https://devicecatalog.azure.com) ein Gerät aus, das Sie verwenden möchten. Implementieren Sie den eingebetteten Code mithilfe der Open-Source-[Geräte-SDKs](../iot-hub/iot-hub-devguide-sdks.md). Die Geräte-SDKs unterstützen mehrere Betriebssysteme wie z. B. Linux, Windows und Echtzeitbetriebssysteme. Es gibt SDKs für mehrere Programmiersprachen wie z. B. [C](https://github.com/Azure/azure-iot-sdk-c), [Node.js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.NET](https://github.com/Azure/azure-iot-sdk-csharp) und [Python](https://github.com/Azure/azure-iot-sdk-python).
 
-Sie können die Art, wie Sie den eingebetteten Code für Ihre Geräte erstellen, mithilfe des Diensts [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) weiter vereinfachen. Mit IoT Plug & Play können Lösungsentwickler Geräte in ihre Lösungen integrieren, ohne eingebetteten Code schreiben zu müssen. Das Herzstück von IoT Plug & Play ist ein _Gerätefunktionsmodell_-Schema, das Gerätefunktionen beschreibt. Verwenden Sie das Gerätefunktionsmodell, um den eingebetteten Gerätecode zu generieren und eine cloudbasierte Lösung wie z. B. eine IoT Central-Anwendung zu konfigurieren.
+Sie können die Art, wie Sie den eingebetteten Code für Ihre Geräte erstellen, mithilfe des Diensts [IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md) weiter vereinfachen. Mit IoT Plug & Play können Lösungsentwickler Geräte in ihre Lösungen integrieren, ohne eingebetteten Code schreiben zu müssen. Das Herzstück von IoT Plug & Play ist ein _Gerätefunktionsmodell_-Schema, das Gerätefunktionen beschreibt. Verwenden Sie das Gerätefunktionsmodell, um den eingebetteten Gerätecode zu generieren und eine cloudbasierte Lösung wie z. B. eine IoT Central-Anwendung zu konfigurieren.
 
 Mit [Azure IoT Edge](../iot-edge/about-iot-edge.md) können Sie Teile ihrer IoT-Arbeitsauslastung von Ihren Azure-Clouddiensten auf Ihre Geräte auslagern. IoT Edge kann die Latenz in Ihrer Lösung verringern sowie die Datenmenge, die Ihre Geräte mit der Cloud austauschen, und Offlineszenarien aktivieren. Sie können IoT Edge-Geräte über IoT Central und einige Solution Accelerators verwalten.
 

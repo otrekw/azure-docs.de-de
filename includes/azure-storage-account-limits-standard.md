@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: storage
 author: tamram
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b5124a9bfcc0d98f32ae42457c79e9f74308a1e8
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 82bf11c530dd9d040fc0f82be570774d543b1987
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108212009"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446175"
 ---
 In der folgenden Tabelle werden die für Azure GPv1, GPv2, Blobspeicher und Blockblob-Speicherkonten geltenden Standardgrenzwerte beschrieben. Der Grenzwert für *eingehend* bezieht sich auf alle Daten, die an ein Speicherkonto gesendet werden. Der Grenzwert für *ausgehend* bezieht sich auf alle Daten, die von einem Speicherkonto empfangen werden.
 
@@ -31,10 +31,8 @@ In der folgenden Tabelle werden die für Azure GPv1, GPv2, Blobspeicher und Bloc
 | Maximaler Ausgang für universelle v2-Speicherkonten und Blobspeicherkonten (alle Regionen) | 50 GBit/s |
 | Maximaler Ausgang für universelle v1-Speicherkonten (US-Regionen) | 20 GBit/s bei aktiviertem RA-GRS/GRS, 30 GBit/s für LRS/ZRS<sup>2</sup> |
 | Maximaler Ausgang für universelle v1-Speicherkonten (US-fremde Regionen) | 10 GBit/s bei aktiviertem RA-GRS/GRS, 15 GBit/s für LRS/ZRS<sup>2</sup> |
-| Maximale Anzahl von Regeln für IP-Adressen pro Speicherkonto | 200 |
 | Maximale Anzahl von VNET-Regeln pro Speicherkonto | 200 |
-| Maximale Anzahl von Regeln für Ressourceninstanzen pro Speicherkonto | 200 |
-| Maximale Anzahl privater Endpunkte pro Speicherkonto | 200 |
+| Maximale Anzahl von Regeln für IP-Adressen pro Speicherkonto | 200 |
 
 <sup>1</sup> Azure Storage Standard-Konten unterstützen höhere Grenzwerte für Kapazität und Eingang auf Anforderung. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/), um eine Erhöhung der Kontogrenzwerte anzufordern.
 
@@ -44,3 +42,4 @@ In der folgenden Tabelle werden die für Azure GPv1, GPv2, Blobspeicher und Bloc
 > Microsoft empfiehlt, für die meisten Szenarien Speicherkonten vom Typ „Allgemein v2“ zu verwenden. Sie können ganz einfach ein Upgrade von einem Konto vom Typ „Allgemein v1“ oder einem Blob Storage-Konto auf ein Konto vom Typ „Allgemein v2“ durchführen. Dabei treten keine Ausfallzeiten auf, und Sie müssen keine Daten kopieren. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](../articles/storage/common/storage-account-upgrade.md).
 
 Alle Speicherkonten werden unabhängig von ihrem Erstellungszeitpunkt in einer flachen Netzwerktopologie ausgeführt. Weitere Informationen zur flachen Netzwerkarchitektur von Azure Storage sowie zur Skalierbarkeit finden Sie unter [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets) (Hochverfügbarer Cloud-Speicherdienst mit starker Konsistenz).
+

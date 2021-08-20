@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/21/2021
+ms.date: 08/04/2021
 ms.author: phjensen
-ms.openlocfilehash: 86a670602f448f59decbc64d8a12278697c43596
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: eb41e1ebda2e5a14bc2987dded8948221ee93452
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929847"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339189"
 ---
 # <a name="test-azure-application-consistent-snapshot-tool"></a>Testen des Tools für konsistente Momentaufnahmen in Azure-Anwendungen
 
@@ -80,16 +80,6 @@ PASSED: Task#2/2 Storage test successful for Volume
 PASSED: Task#1/2 Storage test successful for Volume
 END   : Storage tests complete
 END   : Test process complete for 'storage'
-```
-
-> [!NOTE]
-> Bei Azure (große Instanz) werden die Speichergenerierung und die HLI-SKU durch den Befehl `azacsnap -c test --test storage` extrapoliert.  Basierend auf diesen Informationen wird dann ein Leitfaden zum Konfigurieren von „Start“-Momentaufnahmen bereitgestellt (in der Ausgabe die mit `Action:` beginnende Zeile).
-
-```output
-SID1   : Generation 4
-Storage: ams07-a700s-saphan-1-01v250-client25-nprod
-HLI SKU: S96
-Action : Configure the 'boot' snapshots on ALL the servers.
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.openlocfilehash: 3fa8b81a1dbd13c8570783b354696c8af81e7e7f
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 3c55bdb003f16539061bcbeae0f8cf7ed5cc660d
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186610"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728280"
 ---
 # <a name="integrate-with-azure-active-directory-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integrieren in den Azure Active Directory-Anwendungsproxy auf einem NDES-Server (Network Device Enrollment Service, Registrierungsdienst für Netzwerke)
 
@@ -25,7 +25,7 @@ Wenn Sie noch nicht mit dem Azure AD-Anwendungsproxy vertraut sind und mehr dar�
 
 Der Azure Active Directory-Anwendungsproxy basiert auf Azure. Dadurch erhalten Sie eine enorme Menge an Netzwerkbandbreite und Serverinfrastruktur für einen besseren Schutz vor verteilten DDoS-Angriffen (Denial-of-Service) sowie eine hervorragende Verfügbarkeit. Darüber hinaus ist es nicht erforderlich, externe Firewallports für Ihr lokales Netzwerk zu öffnen, und es ist kein DMZ-Server erforderlich. Es handelt sich ausschließlich um eingehenden Datenverkehr. Eine umfassende Liste der ausgehenden Ports finden Sie unter [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
-> Der Azure AD-Anwendungsproxy ist ein Feature, das nur verfügbar ist, wenn Sie die Premium- oder Basic-Edition von Azure Active Directory verwenden. Weitere Informationen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/). 
+> Der Azure AD-Anwendungsproxy ist ein Feature, das nur verfügbar ist, wenn Sie die Premium- oder Basic-Edition von Azure Active Directory verwenden. Weitere Informationen finden Sie unter [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing). 
 > Wenn Sie über EMS-Lizenzen (Enterprise Mobility Suite) verfügen, können Sie diese Lösung verwenden.
 > Der Azure AD-Anwendungsproxy-Collector wird nur unter Windows Server 2012 R2 oder höher installiert. Dies ist auch eine Anforderung des NDES-Servers.
 

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c6611b7437bdaf873caaaf4722e30fb644b5f13
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 40be574b048575a1cf056fcdcd97bc09d4f21098
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110617241"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729612"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Bedingter Zugriff für Benutzer von B2B-Zusammenarbeit
 
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Organisationen Richtlinien für bedingte
 
 Im folgenden Diagramm ist der Ablauf dargestellt: ![Abbildung: Authentifizierungsablauf für B2B-Gastbenutzer aus einem externen Verzeichnis](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-| Schritt | Beschreibung |
+| Schritt | BESCHREIBUNG |
 |--------------|-----------------------|
 | 1. | Der B2B-Gastbenutzer fordert Zugriff auf eine Ressource an. Die Ressource leitet den Benutzer an ihren Ressourcenmandanten (vertrauenswürdiger IdP) weiter.|
 | 2. | Der Ressourcenmandant identifiziert den Benutzer als „Extern“ und leitet ihn an den IdP des B2B-Gastbenutzers um. Der Benutzer führt die primäre Authentifizierung über den IdP durch.
@@ -39,7 +39,7 @@ Im folgenden Diagramm ist der Ablauf dargestellt: ![Abbildung: Authentifizierung
 
 Im folgenden Diagramm ist der Ablauf dargestellt: ![Abbildung: Authentifizierungsablauf für B2B-Gastbenutzer mit Einmalkennung](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
 
-| Schritt | Beschreibung |
+| Schritt | BESCHREIBUNG |
 |--------------|-----------------------|
 | 1. |Der Benutzer fordert den Zugriff auf eine Ressource auf einem anderen Mandanten an. Die Ressource leitet den Benutzer an ihren Ressourcenmandanten (vertrauenswürdiger IdP) weiter.|
 | 2. | Der Ressourcenmandant identifiziert den Benutzer als [externen Benutzer mit Einmalkennung](./one-time-passcode.md) und sendet eine E-Mail mit der Einmalkennung an den Benutzer.|
@@ -115,14 +115,14 @@ Es gibt verschiedene Faktoren, die ZS-Richtlinien für B2B-Gastbenutzer beeinflu
 
 ### <a name="device-based-conditional-access"></a>Gerätebasierter bedingter Zugriff
 
-Für die ZS gibt es eine Option, mit der erzwungen werden kann, dass das [Gerät des Benutzers als konform markiert oder in Azure AD Hybrid eingebunden ist](../conditional-access/concept-conditional-access-conditions.md#device-state-preview). B2B-Gastbenutzer können nur dann Konformität erzielen, wenn ihr Gerät vom Ressourcenmandanten verwaltet werden kann. Geräte können nicht von mehr als einer Organisation gleichzeitig verwaltet werden. B2B-Gastbenutzer können die Anforderungen für die Einbindung in Azure AD Hybrid nicht erfüllen, weil sie nicht über ein lokales AD-Konto verfügen. Nur wenn es sich beim Gerät des Gastbenutzers um ein nicht verwaltetes Gerät handelt, kann dieser es beim Ressourcenmandanten registrieren und dann die Konformität dafür herstellen. Anschließend kann der Benutzer die Anforderungen des Gewährungssteuerelements erfüllen.
+Für die ZS gibt es eine Option, mit der erzwungen werden kann, dass das [Gerät des Benutzers als konform markiert oder in Azure AD Hybrid eingebunden ist](../conditional-access/concept-conditional-access-conditions.md#device-state-preview). B2B-Gastbenutzer können nur dann Konformität erzielen, wenn ihr Gerät vom Ressourcenmandanten verwaltet werden kann. Geräte können nicht von mehr als einer Organisation gleichzeitig verwaltet werden. B2B-Gastbenutzer können die Anforderungen für die Einbindung in Azure AD Hybrid nicht erfüllen, weil sie nicht über ein lokales AD-Konto verfügen. 
 
 >[!Note]
 >Wir empfehlen Ihnen, für externe Benutzer die Verwendung eines verwalteten Geräts zu erzwingen.
 
 ### <a name="mobile-application-management-policies"></a>Verwaltungsrichtlinien für mobile Anwendungen
 
-Für die Nutzung der ZS-Gewährungssteuerelemente, z. B. **Vorschreiben der Verwendung genehmigter Client-Apps** und **App-Schutzrichtlinie erforderlich**, muss das Gerät beim Mandanten registriert sein. Diese Steuerelemente können nur auf [iOS- und Android-Geräte](../conditional-access/concept-conditional-access-conditions.md#device-platforms) angewendet werden. Das Anwenden dieser Steuerelemente auf B2B-Gastbenutzer ist aber nicht möglich, wenn das Gerät des Benutzers bereits von einer anderen Organisation verwaltet wird. Ein mobiles Gerät kann nicht gleichzeitig bei mehr als einem Mandanten registriert sein. Wenn das mobile Gerät von einer anderen Organisation verwaltet wird, wird der Benutzer blockiert. Nur wenn das Gerät des Gastbenutzers nicht verwaltet wird, kann dieser das Gerät beim Ressourcenmandanten registrieren. Anschließend kann der Benutzer die Anforderungen des Gewährungssteuerelements erfüllen.  
+Für die Nutzung der ZS-Gewährungssteuerelemente, z. B. **Vorschreiben der Verwendung genehmigter Client-Apps** und **App-Schutzrichtlinie erforderlich**, muss das Gerät beim Mandanten registriert sein. Diese Steuerelemente können nur auf [iOS- und Android-Geräte](../conditional-access/concept-conditional-access-conditions.md#device-platforms) angewendet werden. Das Anwenden dieser Steuerelemente auf B2B-Gastbenutzer ist aber nicht möglich, wenn das Gerät des Benutzers bereits von einer anderen Organisation verwaltet wird. Ein mobiles Gerät kann nicht gleichzeitig bei mehr als einem Mandanten registriert sein. Wenn das mobile Gerät von einer anderen Organisation verwaltet wird, wird der Benutzer blockiert. 
 
 >[!NOTE]
 >Es ist nicht zu empfehlen, für externe Benutzer eine App-Schutzrichtlinie zu erzwingen.
@@ -153,5 +153,5 @@ Weitere Informationen finden Sie in den folgenden Artikeln zur Azure AD B2B-Zusa
 
 - [Was ist die Azure AD B2B-Zusammenarbeit?](./what-is-b2b.md)
 - [Identity Protection und B2B-Benutzer](../identity-protection/concept-identity-protection-b2b.md)
-- [Preise für externe Identitäten](https://azure.microsoft.com/pricing/details/active-directory/)
+- [Preise für externe Identitäten](https://azure.microsoft.com/pricing/details/active-directory/external-identities/)
 - [Häufig gestellte Fragen (FAQs)](./faq.yml)

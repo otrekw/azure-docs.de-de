@@ -4,12 +4,12 @@ description: Problembehandlung von Azure HDInsight. In der Dokumentation wird Sc
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: e36388fb49ebbcdeee8c5ed046faaf756c65bd60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd5082440cdfc5cf3a8407ff7473164a29c64b5d
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871893"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112370093"
 ---
 # <a name="troubleshoot-azure-hdinsight"></a>Problembehandlung von Azure HDInsight
 
@@ -26,11 +26,11 @@ ms.locfileid: "104871893"
 
 | Informationen über | Lesen Sie diese Artikel |
 | --- | --- |
-| HDInsight unter Linux und Optimierung | - [Informationen zur Verwendung von HDInsight unter Linux](hdinsight-hadoop-linux-information.md)<br>- [Behandlung von Apache Hadoop-Arbeitsspeicher- und Leistungsproblemen](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Apache Hive-Abfrageleistung](https://web.archive.org/web/20190217214250/https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
+| HDInsight unter Linux und Optimierung | - [Informationen zur Verwendung von HDInsight unter Linux](hdinsight-hadoop-linux-information.md)<br>- [Behandlung von Apache Hadoop-Arbeitsspeicher- und Leistungsproblemen](hdinsight-hadoop-stack-trace-error-messages.md) |
 | Protokolle und Speicherabbilder | - [Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle unter Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [Aktivieren von Heapdumps für Apache Hadoop-Dienste unter Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)|
 | Errors | - [Verstehen und Beheben von WebHCat-Fehlern](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [Apache Hive-Einstellungen zum Beheben von OutofMemory-Fehlern](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | Tools | - [Optimieren von Apache Hive-Abfragen](hdinsight-hadoop-optimize-hive-query.md)<br>- [HDInsight Tool für IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)<br>- [HDInsight Tool für Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [HDInsight Tool für VSCode](hdinsight-for-vscode.md)<br>- [HDInsight Tool für Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](includes/hdinsight-troubleshooting-next-steps.md)]

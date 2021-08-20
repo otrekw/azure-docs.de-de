@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 7a9eb992ff0cb98fdae2920da2beeda0bbd8941b
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: ff7c2b6ced87c8254283923a9163e51f06ae6ef6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877532"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114298172"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Verwenden verwalteter Identitäten für den Zugriff auf App Configuration
 
@@ -23,10 +23,8 @@ Azure App Configuration und die zugehörigen .NET Core-, .NET Framework- und Jav
 
 In diesem Artikel wird veranschaulicht, wie Sie die verwaltete Identität für den Zugriff auf App Configuration nutzen können. Dies baut auf der Web-App auf, die in den Schnellstartanleitungen vorgestellt wurde. Bevor Sie fortfahren, [erstellen Sie eine ASP.NET Core-App mit App Configuration](./quickstart-aspnet-core-app.md).
 
-> [!NOTE]
-> In diesem Artikel wird Azure App Service als Beispiel verwendet. Das Konzept gilt aber ebenso für alle anderen Azure-Dienste, die verwaltete Identitäten unterstützen, z. B. [Azure Kubernetes Service](../aks/use-azure-ad-pod-identity.md), [Azure Virtual Machine](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) und [Azure Container Instances](../container-instances/container-instances-managed-identity.md). Wenn Ihre Workload in einem dieser Dienste gehostet wird, können Sie auch die Unterstützung dieses Diensts für verwaltete Identitäten nutzen.
-
-In diesem Artikel wird außerdem gezeigt, wie Sie die verwaltete Identität in Verbindung mit den Key Vault-Verweisen von App Configuration verwenden können. Mit einer einzelnen verwalteten Identität können Sie nahtlos aus Key Vault auf beide Geheimnisse und aus App Configuration auf Konfigurationswertezugreifen. Wenn Sie diese Funktion erkunden möchten, stellen Sie zuerst [Verwenden von Key Vault-Verweisen mit ASP.NET Core](./use-key-vault-references-dotnet-core.md) fertig.
+> [!IMPORTANT]
+> Eine verwaltete Identität kann nicht zum Authentifizieren lokal ausgeführter Anwendungen verwendet werden. Ihre Anwendung muss in einem Azure-Dienst bereitgestellt werden, der verwaltete Identitäten unterstützt. In diesem Artikel wird Azure App Service als Beispiel verwendet. Das Konzept gilt aber ebenso für alle anderen Azure-Dienste, die verwaltete Identitäten unterstützen, z. B. [Azure Kubernetes Service](../aks/use-azure-ad-pod-identity.md), [Azure Virtual Machine](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) und [Azure Container Instances](../container-instances/container-instances-managed-identity.md). Wenn Ihre Workload in einem dieser Dienste gehostet wird, können Sie auch die Unterstützung dieses Diensts für verwaltete Identitäten nutzen.
 
 Für die Ausführung der Schritte dieses Tutorials können Sie einen beliebigen Code-Editor verwenden. [Visual Studio Code](https://code.visualstudio.com/) ist eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
 
@@ -35,7 +33,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > [!div class="checklist"]
 > * Gewähren des Zugriffs auf App Configuration für eine verwaltete Identität.
 > * Konfigurieren Ihrer App für die Verwendung einer verwalteten Identität bei der Verbindungsherstellung mit App Configuration.
-> * Konfigurieren Sie optional Ihre App für die Verwendung einer verwalteten Identität, wenn Sie eine Verbindung mit Key Vault über einen Key Vault-Verweis von App Configuration herstellen.
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,7 +48,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine Anwendung und aktivieren dann das Feature.
 
-1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) wie gewohnt eine App Services-Instanz. Wechseln Sie im Portal zu dieser App.
+1. Greifen Sie im [Azure-Portal](https://portal.azure.com) auf Ihre App Services-Ressource zu. Wenn Sie über keine vorhandene App Services-Ressource verfügen, mit der Sie arbeiten können, erstellen Sie eine. 
 
 1. Scrollen Sie im linken Bereich nach unten zur Gruppe **Einstellungen**, und wählen Sie **Identität**.
 
@@ -76,7 +74,6 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
 
     ![Hinzufügen einer verwalteten Identität](./media/add-managed-identity.png)
 
-1. Optional: Wenn Sie auch Zugriff auf Key Vault gewähren möchten, befolgen Sie die Anweisungen unter [Zuweisen einer Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md).
 
 ## <a name="use-a-managed-identity"></a>Verwenden einer verwalteten Identität
 
@@ -107,6 +104,36 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
     > [!IMPORTANT]
     > `CreateHostBuilder` ersetzt `CreateWebHostBuilder` in .NET Core 3.0.  Wählen Sie auf der Grundlage ihrer Umgebung die richtige Syntax aus.
 
+    ### <a name="net-core-5x"></a>[.NET Core 5.x](#tab/core5x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+                })
+                .UseStartup<Startup>());
+    ```
+
+    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+                })
+                .UseStartup<Startup>());
+    ```
+
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
@@ -121,170 +148,25 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
                .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-    ```csharp
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    var settings = config.Build();
-                    config.AddAzureAppConfiguration(options =>
-                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                });
-            })
-            .UseStartup<Startup>());
-    ```
     ---
 
     > [!NOTE]
     > Wenn Sie eine **benutzerseitig zugewiesene verwaltete Identität** verwenden möchten, achten Sie darauf, dass Sie beim Erstellen von [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) die clientId angeben.
-    >```
+    >```csharp
     >config.AddAzureAppConfiguration(options =>
-    >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
+    >       {
+    >           options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential("<your_clientId>"))
+    >        });
     >```
-    >Wie in den [Häufig gestellten Fragen zu verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request) erläutert, gibt es eine Standardmethode, um aufzulösen, welche verwaltete Identität verwendet wird. In diesem Fall erzwingt die Azure-Identitätsbibliothek, dass Sie die gewünschte Identität angeben, um in Zukunft mögliche Laufzeitprobleme zu vermeiden (z. B. wenn eine neue benutzerseitig zugewiesene verwaltete Identität hinzugefügt wird, oder wenn die systemseitig zugewiesene verwaltete Identität aktiviert ist). Daher müssen Sie die clientId auch dann angeben, wenn nur eine benutzerseitig zugewiesene verwaltete Identität definiert ist und keine systemseitig zugewiesene verwaltete Identität vorhanden ist.
+    >Wie in den [Häufig gestellten Fragen zu verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/known-issues.md) erläutert, gibt es eine Standardmethode, um aufzulösen, welche verwaltete Identität verwendet wird. In diesem Fall erzwingt die Azure-Identitätsbibliothek, dass Sie die gewünschte Identität angeben, um in Zukunft mögliche Laufzeitprobleme zu vermeiden (z. B. wenn eine neue benutzerseitig zugewiesene verwaltete Identität hinzugefügt wird, oder wenn die systemseitig zugewiesene verwaltete Identität aktiviert ist). Daher müssen Sie die clientId auch dann angeben, wenn nur eine benutzerseitig zugewiesene verwaltete Identität definiert ist und keine systemseitig zugewiesene verwaltete Identität vorhanden ist.
+ 
+    
 
+## <a name="deploy-your-application"></a>Bereitstellen der Anwendung
 
-1. Um sowohl App Configuration-Werte als auch Key Vault-Verweise zu verwenden, aktualisieren Sie *Program.cs*, wie unten gezeigt. Mit diesem Code wird `SetCredential` als Teil von `ConfigureKeyVault` aufgerufen, um dem Konfigurationsanbieter mitzuteilen, welche Anmeldeinformationen für die Authentifizierung bei Key Vault verwendet werden sollen.
+Die Verwendung verwalteter Identitäten erfordert, dass Sie Ihre App in einem Azure-Dienst bereitstellen. Verwaltete Identitäten können nicht für die Authentifizierung lokal ausgeführter Apps verwendet werden. Um die .NET Core-App bereitzustellen, die Sie im Schnellstart [Erstellen einer ASP.NET Core-App mit App Configuration](./quickstart-aspnet-core-app.md) erstellt und zur Verwendung verwalteter Identitäten geändert haben, befolgen Sie die Anleitung unter [Veröffentlichen Ihrer Web-App](../app-service/quickstart-dotnetcore.md?pivots=development-environment-vs&tabs=netcore31#publish-your-web-app).
 
-    ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
-
-    ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-               .ConfigureAppConfiguration((hostingContext, config) =>
-               {
-                   var settings = config.Build();
-                   var credentials = new ManagedIdentityCredential();
-
-                   config.AddAzureAppConfiguration(options =>
-                   {
-                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                              .ConfigureKeyVault(kv =>
-                              {
-                                 kv.SetCredential(credentials);
-                              });
-                   });
-               })
-               .UseStartup<Startup>();
-    ```
-
-    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-    ```csharp
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    var settings = config.Build();
-                    var credentials = new ManagedIdentityCredential();
-
-                    config.AddAzureAppConfiguration(options =>
-                    {
-                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                               .ConfigureKeyVault(kv =>
-                               {
-                                   kv.SetCredential(credentials);
-                               });
-                    });
-                });
-            })
-            .UseStartup<Startup>());
-    ```
-    ---
-
-    Sie können jetzt auf Key Vault-Verweise zugreifen wie auf jeden anderen App Configuration-Schlüssel. Der Konfigurationsanbieter verwendet die `ManagedIdentityCredential` für die Authentifizierung bei Key Vault und ruft den Wert ab.
-
-    > [!NOTE]
-    > Die `ManagedIdentityCredential` funktionieren nur in Azure-Umgebungen von Diensten, die die Authentifizierung mit verwalteten Identitäten unterstützen. Sie funktionieren nicht in lokalen Umgebungen. Verwenden Sie [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential), damit der Code sowohl in lokalen als auch in Azure-Umgebungen funktioniert, da sie einen Fallback auf Authentifizierungsoptionen (einschließlich der verwalteten Identität) ermöglichen.
-    > 
-    > Falls Sie eine **benutzerseitig zugewiesene verwaltete Identität** mit den bei der Bereitstellung in Azure verwendeten `DefaultAzureCredential` verwenden möchten, [geben Sie die clientId](/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential) an.
-
-[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
-
-## <a name="deploy-from-local-git"></a>Bereitstellen über lokales Git
-
-Die einfachste Möglichkeit zum Aktivieren einer lokalen Git-Bereitstellung für Ihre App mit dem Kudu-Buildserver ist die Verwendung von [Azure Cloud Shell](https://shell.azure.com).
-
-### <a name="configure-a-deployment-user"></a>Konfigurieren eines Bereitstellungsbenutzers
-
-[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
-
-### <a name="enable-local-git-with-kudu"></a>Aktivieren von lokalem Git mit Kudu
-Wenn Sie über kein lokales Git-Repository für Ihre App verfügen, müssen Sie eins initialisieren. Um ein lokales Git-Repository zu initialisieren, führen Sie die folgenden Befehle aus dem Projektverzeichnis Ihrer App aus:
-
-```cmd
-git init
-git add .
-git commit -m "Initial version"
-```
-
-Zum Aktivieren einer lokalen Git-Bereitstellung für Ihre App mit dem Kudu-Buildserver führen Sie [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/#az_webapp_deployment_source_config_local_git) in Cloud Shell aus.
-
-```azurecli-interactive
-az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
-```
-
-Die Ausgabe dieses Befehls sieht ungefähr wie folgt aus:
-
-```json
-{
-  "url": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git"
-}
-```
-
-### <a name="deploy-your-project"></a>Bereitstellen des Projekts
-
-Fügen Sie Ihrem lokalen Git-Repository im _lokalen Terminalfenster_ ein Azure-Remoterepository hinzu. Ersetzen Sie _\<url>_ durch die URL des Git-Remoterepositorys, das Sie durch [Aktivieren von lokalem Git mit Kudu](#enable-local-git-with-kudu) erhalten haben.
-
-```bash
-git remote add azure <url>
-```
-
-Führen Sie einen Pushvorgang zum Azure-Remotespeicherort durch, um Ihre App mit dem folgenden Befehl bereitzustellen. Geben Sie bei Aufforderung zur Eingabe eines Kennworts das Kennwort ein, das Sie in [Konfigurieren eines Bereitstellungsbenutzers](#configure-a-deployment-user) erstellt haben. Verwenden Sie nicht das Kennwort, mit dem Sie sich beim Azure-Portal anmelden.
-
-```bash
-git push azure main
-```
-
-Die Ausgabe enthält u. U. laufzeitspezifische Automatisierungen wie MSBuild für ASP.NET, `npm install` für Node.js und `pip install` für Python.
-
-### <a name="browse-to-the-azure-web-app"></a>Navigieren Sie zur Azure-Web-App.
-
-Navigieren Sie in einem Browser zu Ihrer Web-App, um sicherzustellen, dass der Inhalt bereitgestellt wird.
-
-```bash
-http://<app_name>.azurewebsites.net
-```
-
-## <a name="use-managed-identity-in-other-languages"></a>Verwenden einer verwalteten Identität in anderen Sprachen
-
-App Configuration-Anbieter für .NET Framework und Java Spring verfügen auch über integrierte Unterstützung für verwaltete Identitäten. Sie können beim Konfigurieren eines dieser Anbieter den URL-Endpunkt Ihres Speichers verwenden anstelle seiner vollständigen Verbindungszeichenfolge.
-
-Beispielsweise können Sie die in der Schnellstartanleitung erstellte .NET Framework-Konsolen-App aktualisieren, um die folgenden Einstellungen in der Datei *App.config* anzugeben:
-
-```xml
-    <configSections>
-        <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
-    </configSections>
-
-    <configBuilders>
-        <builders>
-            <add name="MyConfigStore" mode="Greedy" endpoint="${Endpoint}" type="Microsoft.Configuration.ConfigurationBuilders.AzureAppConfigurationBuilder, Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration" />
-            <add name="Environment" mode="Greedy" type="Microsoft.Configuration.ConfigurationBuilders.EnvironmentConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Environment" />
-        </builders>
-    </configBuilders>
-
-    <appSettings configBuilders="Environment,MyConfigStore">
-        <add key="AppName" value="Console App Demo" />
-        <add key="Endpoint" value ="Set via an environment variable - for example, dev, test, staging, or production endpoint." />
-    </appSettings>
-```
+Neben App Service unterstützen viele andere Azure-Dienste verwaltete Identitäten. Weitere Informationen finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

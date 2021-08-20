@@ -4,12 +4,12 @@ description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 26d1bf74656c63f4957df1129746a3f8fd33c554
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 69dc12c0a74855535e173868951c15a3acfcfd75
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959107"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371517"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -32,6 +32,7 @@ Die folgenden Regionen und maximalen Ressourcen sind für Containergruppen mit L
 | Region | Maximale CPU-Auslastung | Maximaler Speicher (GB) | VNET: max. CPU | VNET: max. Arbeitsspeicher (GB) | Speicher (GB) | GPU: SKUs (Vorschau) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
 | Australien (Osten) | 4 | 16 | 4 | 16 | 50 | – |
+| Australien, Südosten | 4 | 14 | – | – | 50 | – |
 | Brasilien, Süden | 4 | 16 | 2 | 8 | 50 | – |
 | Kanada, Mitte | 4 | 16 | 4 | 16 | 50 | – |
 | Kanada, Osten | 4 | 16 | 4 | 16 | 50 | – |
@@ -47,12 +48,13 @@ Die folgenden Regionen und maximalen Ressourcen sind für Containergruppen mit L
 | Korea, Mitte | 4 | 16 | – | – | 50 | – |
 | USA Nord Mitte | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
 | Europa, Norden | 4 | 16 | 4 | 16 | 50 | K80 |
+| Norwegen, Osten | 4 | 16 | – | – | 50 | – |
 | USA Süd Mitte | 4 | 16 | 4 | 16 | 50 | V100 |
 | Asien, Südosten | 4 | 16 | 4 | 16 | 50 | P100, V100 |
 | Indien (Süden) | 4 | 16 | – | – | 50 | K80 |
 | Schweiz, Norden | 4 | 16 | – | – | 50 | – |
 | UK, Süden | 4 | 16 | 4 | 16 | 50 | – |
-| UK, Westen | 4 | 16 | 4 | 16 | 50 | – |
+| UK, Westen | 4 | 16 | – | – | 50 | – |
 | Vereinigte Arabische Emirate, Norden | 4 | 16 | – | – | 50 | – |
 | USA, Westen-Mitte| 4 | 16 | 4 | 16 | 50 | – |
 | Europa, Westen | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
@@ -75,7 +77,7 @@ Für eine Containergruppe, die mit [GPU-Ressourcen](container-instances-gpu.md) 
 
 ## <a name="windows-container-groups"></a>Windows-Containergruppen
 
-Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit [unterstützten und Vorschau-](container-instances-faq.md#what-windows-base-os-images-are-supported)Windows Server-Containern zur Verfügung.
+Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit [unterstützten und Vorschau-](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported)Windows Server-Containern zur Verfügung.
 
 > [!IMPORTANT]
 > Zurzeit werden Bereitstellungen mit Windows-Containergruppen in einer Azure Virtual Network-Bereitstellung nicht unterstützt.

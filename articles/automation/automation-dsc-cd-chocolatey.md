@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 717561614a3e42995bbce6746839fd9b7cbca37e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 34006afd79ef2c1bb8a1f552a7f8f9905b95d72f
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834856"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075545"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Einrichten von Continuous Deployment mit Chocolatey
 
@@ -81,7 +81,7 @@ Sie können Ihr Automation-Konto in einer der folgenden Regionen (auch als Stand
 
 ## <a name="step-2-make-vm-extension-tweaks-to-the-resource-manager-template"></a>Schritt 2: Optimieren der VM-Erweiterung für die Resource Manager-Vorlage
 
-Details zur VM-Registrierung (mit der PowerShell DSC-VM-Erweiterung) finden Sie in dieser [Azure-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver).
+Details zur VM-Registrierung (mit der PowerShell DSC-VM-Erweiterung) finden Sie in dieser [Azure-Schnellstartvorlage](https://azure.microsoft.com/blog/automating-vm-configuration-using-powershell-dsc-extension/).
 In diesem Schritt wird Ihr neuer virtueller Computer beim Pullserver in der Liste der Zustandskonfigurationsknoten registriert. Ein Teil dieser Registrierung ist das Angeben der Knotenkonfiguration, die auf den Knoten angewendet wird. Diese Knotenkonfiguration muss auf dem Pullserver noch nicht vorhanden sein. Es ist also in Ordnung, dass dies in Schritt 4 zum ersten Mal durchgeführt wird. Hier in Schritt 2 müssen Sie sich aber für den Namen des Knotens und den Namen der Konfiguration entschieden haben. In diesem Anwendungsbeispiel lautet der Knoten „isvbox“, und die Konfiguration lautet „ISVBoxConfig“. Der Name für die Knotenkonfiguration (zum Angeben in „DeploymentTemplate.json“) lautet also „ISVBoxConfig.isvbox“.
 
 ## <a name="step-3-add-required-dsc-resources-to-the-pull-server"></a>Schritt 3: Hinzufügen von erforderlichen DSC-Ressourcen auf dem Pullserver

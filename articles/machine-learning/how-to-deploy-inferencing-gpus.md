@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: how-to
 ms.custom: devx-track-python, deploy
-ms.openlocfilehash: 4d461bf0558f59c903b0327cf26d4cdf854cd172
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 58518d921ac728901258e5335d045dfd4262dd0e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889644"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446595"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Bereitstellen eines Deep Learning-Modells für das Ziehen von Rückschlüssen mit einer GPU
 
@@ -24,6 +24,8 @@ ms.locfileid: "107889644"
 Dieser Artikel zeigt Ihnen, wie Sie Azure Machine Learning verwenden können, um ein GPU-fähiges Modell als Webservice bereitzustellen. Die Informationen in diesem Artikel basieren auf der Bereitstellung eines Modells in Azure Kubernetes Service (AKS). Der AKS-Cluster stellt eine GPU-Ressource bereit, die vom Modell für das Ziehen von Rückschlüssen verwendet wird.
 
 Das Ziehen von Rückschlüssen oder Modellbewertung ist die Phase, in der das bereitgestellte Modell verwendet wird, um Vorhersagen zu treffen. Die Verwendung von GPUs anstelle von CPUs bietet Leistungsvorteile bei hochparallelisierbaren Berechnungen.
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 > [!IMPORTANT]
 > Für Webdienstbereitstellungen wird GPU-Rückschluss nur in Azure Kubernetes Service unterstützt. Für den Rückschluss mithilfe einer __Machine Learning-Pipeline__ werden GPUs nur in Azure Machine Learning Compute unterstützt. Weitere Informationen zur Verwendung von ML-Pipelines finden Sie im [Tutorial: Erstellen einer Azure Machine Learning-Pipeline für die Batchbewertung](tutorial-pipeline-batch-scoring-classification.md). 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 56af49b6fa862c93822293056752182b534ac442
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: beef6768f9b2fb05efb77c16c32b0acbe46d1e85
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942271"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339326"
 ---
 # <a name="analyze-data-with-apache-spark"></a>Analysieren von Daten mit Apache Spark
 
 In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Open Datasets und Apache Spark eine explorative Datenanalyse durchführen. Anschließend können Sie die Ergebnisse in Azure Synapse Analytics in einem Synapse Studio-Notebook visualisieren.
 
-In diesem Tutorial wird das Dataset [New York City (NYC) Taxi](https://azure.microsoft.com/en-us/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) analysiert. Die Daten sind über Azure Open Datasets verfügbar. Diese Teilmenge des Datasets enthält Informationen zu Taxifahrten von Yellow Cabs: Informationen zu den einzelnen Fahrten, Start- und Endzeiten, Abfahrtsorte und Ziele, die Kosten sowie weitere interessante Attribute.
+In diesem Tutorial wird das Dataset [New York City (NYC) Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) analysiert. Die Daten sind über Azure Open Datasets verfügbar. Diese Teilmenge des Datasets enthält Informationen zu Taxifahrten von Yellow Cabs: Informationen zu den einzelnen Fahrten, Start- und Endzeiten, Abfahrtsorte und Ziele, die Kosten sowie weitere interessante Attribute.
   
 ## <a name="before-you-begin"></a>Voraussetzungen
 Erstellen Sie einen Apache Spark-Pool, indem Sie das Tutorial [Erstellen eines Apache Spark-Pools](../articles/../quickstart-create-apache-spark-pool-studio.md) absolvieren. 

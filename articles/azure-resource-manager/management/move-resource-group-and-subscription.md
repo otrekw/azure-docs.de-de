@@ -4,12 +4,12 @@ description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Re
 ms.topic: conceptual
 ms.date: 06/03/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: fdda54f31fe4a85a5ac62d8ce60fffd03c5a785d
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: ec23b4306f088328bfb72f3cf9071a70f8eb2307
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526638"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586777"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -234,7 +234,7 @@ Um Ressourcen in ein neues Abonnement zu verschieben, geben Sie den Parameter`--
 
 ### <a name="validate"></a>Überprüfen
 
-Der [Vorgang zum Überprüfen der Verschiebung](/rest/api/resources/resources/moveresources) ermöglicht Ihnen, Ihr Verschiebungsszenario zu testen, ohne tatsächlich Ressourcen zu verschieben. Verwenden Sie diesen Vorgang, um zu überprüfen, ob die Verschiebung erfolgreich sein wird. Die Überprüfung wird automatisch aufgerufen, wenn Sie eine Verschiebeanforderung senden. Verwenden Sie diesen Vorgang nur, wenn Sie die Ergebnisse vorab bestimmen müssen. Um diesen Vorgang ausführen zu können, benötigen Sie Folgendes:
+Der [Vorgang zum Überprüfen der Verschiebung](/rest/api/resources/resources/validate-move-resources) ermöglicht Ihnen, Ihr Verschiebungsszenario zu testen, ohne tatsächlich Ressourcen zu verschieben. Verwenden Sie diesen Vorgang, um zu überprüfen, ob die Verschiebung erfolgreich sein wird. Die Überprüfung wird automatisch aufgerufen, wenn Sie eine Verschiebeanforderung senden. Verwenden Sie diesen Vorgang nur, wenn Sie die Ergebnisse vorab bestimmen müssen. Um diesen Vorgang ausführen zu können, benötigen Sie Folgendes:
 
 * Name der Quellressourcengruppe
 * Ressourcen-ID der Zielressourcengruppe

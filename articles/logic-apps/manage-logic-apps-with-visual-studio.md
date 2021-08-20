@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 04/23/2021
-ms.openlocfilehash: 443dd0a1172c98b67282b50659ffeb3611470413
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 14b3487a158062e3186b485a8bcbd4584a0f09d2
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163767"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113665347"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -158,7 +158,7 @@ Wenn Ihre Logik-App in Visual Studio als JSON-Datei in einem [Azure Resource Gro
 Um den Standorttyp oder den Standort für Ihre Logik-App zu ändern, müssen Sie die Workflowdefinitionsdatei (JSON) Ihrer Logik-App aus dem Projektmappen-Explorer öffnen, indem Sie den Logik-App-Designer verwenden. Sie können diese Eigenschaften nicht über den Cloud-Explorer ändern.
 
 > [!IMPORTANT]
-> Die Änderung des Standorttyps von **Region** in [**Integrationsdienstumgebung**](connect-virtual-network-vnet-isolated-environment-overview.md) wirkt sich auf das [Preismodell](logic-apps-pricing.md#fixed-pricing) Ihrer Logik-App aus, das für Abrechnung, [Limits](logic-apps-limits-and-config.md#integration-account-limits), [Integrationskontounterstützung](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus) usw. herangezogen wird. Stellen Sie vor der Auswahl eines anderen Standorttyps sicher, dass Sie die Auswirkungen auf Ihre Logik-App verstehen.
+> Die Änderung des Standorttyps von **Region** in [**Integrationsdienstumgebung**](connect-virtual-network-vnet-isolated-environment-overview.md) wirkt sich auf das [Preismodell](logic-apps-pricing.md#ise-pricing) Ihrer Logik-App aus, das für Abrechnung, [Limits](logic-apps-limits-and-config.md#integration-account-limits), [Integrationskontounterstützung](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus) usw. herangezogen wird. Stellen Sie vor der Auswahl eines anderen Standorttyps sicher, dass Sie die Auswirkungen auf Ihre Logik-App verstehen.
 
 1. Öffnen Sie in Visual Studio das Azure Resource Group-Projekt, das Ihre Logik-App enthält.
 
@@ -289,7 +289,7 @@ Das Löschen einer Logik-App wirkt sich wie folgt auf Workflowinstanzen aus:
 
 * Der Logic Apps-Dienst erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
 
-* Wenn Sie einen Workflow löschen und dann denselben Workflow neu erstellen, hat der neu erstellte Workflow nicht die gleichen Metadaten wie der gelöschte Workflow. Sie müssen jeden Workflow, der den gelöschten Workflow aufgerufen hat, neu speichern. Auf diese Weise ruft der Aufrufer die richtigen Informationen für den neu erstellten Workflow ab. Andernfalls schlagen Aufrufe des neu erstellten Workflows mit einem `Unauthorized` Fehler fehl. Dieses Verhalten gilt auch für Workflows, die Artefakte in Integrationskonten und Workflows verwenden, welche Azure-Funktionen aufrufen.
+* Wenn Sie einen Workflow löschen und dann denselben Workflow neu erstellen, hat der neu erstellte Workflow nicht die gleichen Metadaten wie der gelöschte Workflow. Sie müssen jeden Workflow, der den gelöschten Workflow aufgerufen hat, neu speichern. Auf diese Weise ruft der Aufrufer die richtigen Informationen für den neu erstellten Workflow ab. Andernfalls schlagen Aufrufe des neu erstellten Workflows mit einem `Unauthorized`-Fehler fehl. Dieses Verhalten gilt auch für Workflows, die Artefakte in Integrationskonten und Workflows verwenden, welche Azure-Funktionen aufrufen.
 
 Um Ihre Logik-App aus dem Azure-Portal zu löschen, öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Löschen** aus.
 

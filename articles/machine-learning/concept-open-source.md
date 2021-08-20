@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 01/14/2020
-ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ec9aaf2222924718ad21cf0654d138be22c2d19
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98223073"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293389"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Open-Source-Integration in Azure Machine Learning-Projekte
 
@@ -89,7 +89,7 @@ Weitere Informationen zu ONNX und wie Sie ONNX-Modelle verwenden können, finden
 
 ### <a name="package-and-deploy-models-as-containers"></a>Verpacken und Bereitstellen von Modellen als Container
 
-Containertechnologien wie Docker sind eine Möglichkeit, Modelle als Webdienste bereitzustellen. Container bieten eine plattform- und ressourcenunabhängige Möglichkeit, reproduzierbare Softwareumgebungen zu erstellen und zu orchestrieren. Mit diesen Kerntechnologien können Sie [vorkonfigurierte Umgebungen](./how-to-use-environments.md), [vorkonfigurierte Containerimages](./how-to-deploy-custom-docker-image.md) oder benutzerdefinierte Umgebungen verwenden, um Ihre Machine Learning-Modelle bereitzustellen, z. B. [Kubernetes-Cluster](./how-to-deploy-azure-kubernetes-service.md?tabs=python). Bei GPU-intensiven Workflows können Sie Tools wie NVIDIA Triton Inference Server verwenden, um Vorhersagen [mithilfe von GPUs](how-to-deploy-with-triton.md?tabs=python) zu treffen.
+Containertechnologien wie Docker sind eine Möglichkeit, Modelle als Webdienste bereitzustellen. Container bieten eine plattform- und ressourcenunabhängige Möglichkeit, reproduzierbare Softwareumgebungen zu erstellen und zu orchestrieren. Mit diesen Kerntechnologien können Sie [vorkonfigurierte Umgebungen](./how-to-use-environments.md), [vorkonfigurierte Containerimages](./how-to-deploy-custom-container.md) oder benutzerdefinierte Umgebungen verwenden, um Ihre Machine Learning-Modelle bereitzustellen, z. B. [Kubernetes-Cluster](./how-to-deploy-azure-kubernetes-service.md?tabs=python). Bei GPU-intensiven Workflows können Sie Tools wie NVIDIA Triton Inference Server verwenden, um Vorhersagen [mithilfe von GPUs](how-to-deploy-with-triton.md?tabs=python) zu treffen.
 
 ### <a name="secure-deployments-with-homomorphic-encryption"></a>Sichere Bereitstellungen mit homomorpher Verschlüsselung
 
@@ -101,4 +101,4 @@ Machine Learning Operations (MLOps), gemeinhin als DevOps für maschinelles Lern
 
 Mithilfe von DevOps-Methoden wie Continuous Integration (CI) und Continuous Deployment (CD) können Sie den gesamten Lebenszyklus des maschinellen Lernens automatisieren und Governancedaten dazu erfassen. Sie können Ihre [CI/CD-Pipeline für maschinelles Lernen in GitHub-Aktionen](./how-to-github-actions-machine-learning.md) definieren, um Trainings- und Bereitstellungsaufgaben für Azure Machine Learning auszuführen. 
 
-Die Erfassung von Softwareabhängigkeiten, Metriken, Metadaten, Daten und Versionsverwaltung für Modelle sind ein wichtiger Teil des MLOps-Prozesses, um transparente, reproduzierbare und überwachbare Pipelines zu erstellen. Für diese Aufgabe können Sie [MLFlow in Azure Machine Learning verwenden](how-to-use-mlflow.md), ebenso wie beim [Training von Machine Learning-Modellen in Azure Databricks](./how-to-use-mlflow-azure-databricks.md). Sie können auch [MLflow-Modelle als Azure-Webdienst bereitstellen](how-to-deploy-mlflow-models.md). 
+Die Erfassung von Softwareabhängigkeiten, Metriken, Metadaten, Daten und Versionsverwaltung für Modelle sind ein wichtiger Teil des MLOps-Prozesses, um transparente, reproduzierbare und überwachbare Pipelines zu erstellen. Für diese Aufgabe können Sie [MLFlow in Azure Machine Learning verwenden](how-to-use-mlflow.md), ebenso wie beim [Training von Machine Learning-Modellen in Azure Databricks](./how-to-use-mlflow-azure-databricks.md). Sie können auch [MLflow-Modelle als Azure-Webdienst bereitstellen](how-to-deploy-mlflow-models.md).

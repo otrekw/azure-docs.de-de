@@ -4,12 +4,12 @@ description: Problembehandlung bei voll ausgelastetem CPU auf Regionsserver im A
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/01/2019
-ms.openlocfilehash: 7d0cf139f06bb296b486d2932d95b53fc1167a5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58eea6b5318b2d7cc71c30b1db7119442ca6a9fc
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937024"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291329"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>Szenario: Voll ausgelastete CPU auf Regionsserver im Apache HBase-Cluster in Azure HDInsight
 
@@ -49,4 +49,4 @@ ps -aux | grep regionserver, and verify the version like '''/usr/lib/jvm/java-8-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

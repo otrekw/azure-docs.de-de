@@ -12,16 +12,16 @@ ms.reviewer: larryfr
 ms.date: 01/26/2021
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 2874878c8b03b6cf63c2a5214a0de68000d51569
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 401b565d69797bc4880729dd5f5c4af3e0012f6f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885630"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339530"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Datenerfassung mit Azure Data Factory
 
-In diesem Artikel erfahren Sie, welche Optionen für das Erstellen einer Datenerfassungspipeline mit [Azure Data Factory](../data-factory/introduction.md) verfügbar sind. Diese Azure Data Factory-Pipeline wird für die Erfassung von Daten zur Verwendung mit [Azure Machine Learning](overview-what-is-azure-ml.md) verwendet. Mit Data Factory können Sie auf einfache Weise Daten extrahieren, transformieren und laden (ETL). Nachdem die Daten transformiert und in den Speicher geladen wurden, können sie zum Trainieren Ihrer Machine Learning-Modelle in Azure Machine Learning verwendet werden.
+In diesem Artikel erfahren Sie, welche Optionen für das Erstellen einer Datenerfassungspipeline mit [Azure Data Factory](../data-factory/introduction.md) verfügbar sind. Diese Azure Data Factory-Pipeline wird für die Erfassung von Daten zur Verwendung mit [Azure Machine Learning](overview-what-is-azure-machine-learning.md) verwendet. Mit Data Factory können Sie auf einfache Weise Daten extrahieren, transformieren und laden (ETL). Nachdem die Daten transformiert und in den Speicher geladen wurden, können sie zum Trainieren Ihrer Machine Learning-Modelle in Azure Machine Learning verwendet werden.
 
 Die einfache Datentransformation kann mit nativen Data Factory-Aktivitäten und -Verfahren, z. B. [Datenfluss](../data-factory/control-flow-execute-data-flow-activity.md), durchgeführt werden. Bei komplizierteren Szenarien können die Daten mit etwas benutzerdefiniertem Code verarbeitet werden. Beispiel: Python- oder R-Code.
 

@@ -1,20 +1,21 @@
 ---
 title: Erstellen einer Windows-VM mit Azure Image Builder unter Verwendung von PowerShell
 description: Erstellen Sie eine Windows-VM mit dem PowerShell-Modul von Azure Image Builder.
-author: cynthn
-ms.author: cynthn
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ea4ff3b163070fef64d9edcb6e249d450058a84
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: bae85c009bb382ee79526fb547af5e475a7ed785
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031131"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594839"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Erstellen einer Windows-VM mit Azure Image Builder unter Verwendung von PowerShell
 

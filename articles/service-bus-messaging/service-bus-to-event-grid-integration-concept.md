@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 658107bb74396891c8e6e05a9e8074a9416a5f6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 999bfb9278f3c355e2b431c0fe3ca13648aa42c9
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100369661"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112412996"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Übersicht über die Integration von Azure Service Bus in Event Grid
 Service Bus kann nun Ereignisse an Event Grid ausgeben, wenn Nachrichten in einer Warteschlange oder in einem Abonnement vorliegen und keine Empfänger vorhanden sind. Sie können Event Grid-Abonnements für Ihre Service Bus-Namespaces erstellen, auf diese Ereignisse lauschen und als Reaktion auf die Ereignisse einen Empfänger starten. Mit diesem Feature können Sie Service Bus in reaktiven Programmiermodellen verwenden. Die zentrale Bedeutung dieses Features besteht in einem Szenario, in dem Service Bus-Warteschlangen oder Abonnements mit einer geringen Anzahl von Nachrichten keinen Empfänger benötigen, der kontinuierlich Nachrichten abfragt. 
@@ -25,7 +25,7 @@ Um das Feature aktivieren zu können, benötigen Sie Folgendes:
 
 ![19][]
 
-[!INCLUDE [event-grid-service-bus.md](../../includes/event-grid-service-bus.md)]
+[!INCLUDE [event-grid-service-bus.md](./includes/event-grid-service-bus.md)]
 
 ## <a name="event-grid-subscriptions-for-service-bus-namespaces"></a>Event Grid-Abonnements für Service Bus-Namespaces
 Event Grid-Abonnements für Service Bus-Namespaces können auf drei Arten erstellt werden:

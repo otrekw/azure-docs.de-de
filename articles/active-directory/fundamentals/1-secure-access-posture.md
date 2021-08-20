@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37c27e84f15a01a2d8832baae137518685de59a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fb5d74f0c912db098b5e309793963d5f07fbd58
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725440"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730350"
 ---
 # <a name="determine-your-security-posture-for-external-access"></a>Ermitteln des Sicherheitsstatus für externen Zugriff 
 
@@ -67,7 +67,7 @@ Die Ziele von IT-gesteuertem und delegiertem Zugriff unterscheiden sich.
 
 Je nachdem, wofür Sie sich in Ihrer Organisation und für Ihre Szenarios entscheiden, müssen die folgenden Voraussetzungen erfüllt sein: 
 
-* **Steuerung des Zugriffs auf Anwendungen, Daten und Inhalte**. Dies kann je nach Ihrer Version von [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) und [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans) auf verschiedene Arten erreicht werden. 
+* **Steuerung des Zugriffs auf Anwendungen, Daten und Inhalte**. Dies kann je nach Ihrer Version von [Azure AD](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) und [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans) auf verschiedene Arten erreicht werden. 
 
 * **Verkleinerung der Angriffsfläche**. [Privileged Identity Management](../privileged-identity-management/pim-configure.md), [Verhinderung von Datenverlust (Data Loss Prevention, DLP)](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) und [Verschlüsselungsfunktionen](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) sorgen für eine kleinere Angriffsfläche.
 

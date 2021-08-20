@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: c9ee7e475957ca41c9094cab3b149f53e48a3764
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 84b27bc4ae30e28a1d97fb8e9931602a1eb14504
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900903"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444784"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>Erweiterungen für Cloud Services (erweiterter Support)
 
@@ -23,7 +23,7 @@ Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungst
 
 Die Key Vault-VM-Erweiterung ermöglicht die automatische Aktualisierung von Zertifikaten, die in einem Azure Key Vault gespeichert sind. Hierbei überwacht die Erweiterung eine Liste mit beobachteten Zertifikaten, die in Schlüsseltresoren gespeichert sind. Erkennt sie eine Änderung, werden die entsprechenden Zertifikate abgerufen und installiert. Sie ermöglicht auch das regions- bzw. abonnementübergreifende Verweisen auf Zertifikate für den Clouddienst (erweiterter Support).
 
-Weitere Informationen finden Sie unter [Konfigurieren der Schlüsseltresorerweiterung für den Clouddienst (erweiterter Support)](https://docs.microsoft.com/azure/cloud-services-extended-support/enable-key-vault-virtual-machine).
+Weitere Informationen finden Sie unter [Konfigurieren der Schlüsseltresorerweiterung für den Clouddienst (erweiterter Support)](./enable-key-vault-virtual-machine.md).
 
 ## <a name="remote-desktop-extension"></a>Remotedesktoperweiterung
 
@@ -54,5 +54,5 @@ Weitere Informationen zu Azure Antimalware finden Sie [hier](../security/fundame
 
 ## <a name="next-steps"></a>Nächste Schritte 
 - Überprüfen Sie die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Cloud Services (erweiterter Support).
-- Sehen Sie sich die [häufig gestellten Fragen](faq.md) zu Cloud Services (erweiterter Support) an.
+- Sehen Sie sich die [häufig gestellten Fragen](faq.yml) zu Cloud Services (erweiterter Support) an.
 - Stellen Sie eine Cloud Service-Instanz (erweiterter Support) über das [Azure-Portal](deploy-portal.md), mit [PowerShell](deploy-powershell.md), einer [Vorlage](deploy-template.md) oder [Visual Studio](deploy-visual-studio.md) bereit.

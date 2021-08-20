@@ -2,21 +2,21 @@
 title: Optionen für einmaliges Anmelden in Azure AD
 description: Hier erfahren Sie mehr über die verfügbaren Optionen für einmaliges Anmelden (Single Sign-On, SSO) in Azure Active Directory.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: mtillman
-ms.reviewer: arvindh, japere
-ms.openlocfilehash: 965c3898a0175bbf448d8c59b9f7853c8aeb37bd
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: 99d478738c8fc7a2e67bb0585b997afe4b42ecb2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082287"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339626"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Optionen für einmaliges Anmelden in Azure AD
 
@@ -32,7 +32,7 @@ Weitere Informationen zum einmaligen Anmelden finden Sie unter [Worum handelt es
 
 Es gibt mehrere Möglichkeiten, eine Anwendung für einmaliges Anmelden zu konfigurieren. Die Auswahl einer Methode für einmaliges Anmelden hängt davon ab, wie die Anwendung für die Authentifizierung konfiguriert ist.
 
-- Cloudanwendungen können für einmaliges Anmelden die Methoden „OpenID Connect“, „OAuth“, „SAML“, „Kennwort“, „Verknüpft“ oder „Deaktiviert“ verwenden. 
+- Cloudanwendungen können für einmaliges Anmelden die Methoden „OpenID Connect“, „OAuth“, „SAML“, „Kennwort“, „Verknüpft“ oder „Deaktiviert“ verwenden.
 - Lokale Anwendungen können für einmaliges Anmelden die Methoden „Kennwort“, „Integrierte Windows-Authentifizierung“, „Header“, „Verknüpft“ oder „Deaktiviert“ verwenden. Die lokalen Optionen funktionieren, wenn die Anwendungen für den Anwendungsproxy konfiguriert wurden.
 
 Dieses Flussdiagramm erleichtert Ihnen die Entscheidung, welche Methode des einmaligen Anmeldens für Ihre Situation am besten geeignet ist.
@@ -132,6 +132,7 @@ Wenn der Endbenutzer die Anmeldeinformationen verwaltet, gilt Folgendes:
 - Administratoren können weiterhin neue Anmeldeinformationen für die Anwendung festlegen.
 
 ## <a name="linked-sign-on"></a>Verknüpfte Anmeldung
+
 Über das verknüpfte einmalige Anmelden kann Azure AD einmaliges Anmelden bei einer Anwendung, die bereits in einem anderen Dienst für einmaliges Anmelden konfiguriert ist, bereitstellen. Die verknüpfte Anwendung kann Endbenutzern im Office 365-Portal oder im Azure AD-MyApps-Portal angezeigt werden. Beispielsweise kann ein Benutzer eine Anwendung, die für einmaliges Anmelden in Active Directory-Verbunddienste 2.0 (AD FS) konfiguriert ist, über das Office 365-Portal starten. Für verknüpfte Anwendungen, die über das Office 365-Portal oder das Azure AD-MyApps-Portal gestartet werden, steht außerdem eine zusätzliche Berichterstellung zur Verfügung. Informationen zum Konfigurieren einer Anwendung für die Anmeldung über Link finden Sie unter [Konfigurieren der Anmeldung über Link](configure-linked-sign-on.md).
 
 ### <a name="linked-sign-on-for-application-migration"></a>Verknüpftes Anmelden für die Migration von Anwendungen
@@ -141,7 +142,7 @@ Das verknüpfte Anmelden sorgt während der Migration von Anwendungen über eine
 Nachdem ein Benutzer sich mit einer verknüpften Anwendung authentifiziert hat, muss ein Kontodatensatz erstellt werden, bevor der Endbenutzer Zugriff durch das einmalige Anmelden erhält. Die Bereitstellung dieses Kontodatensatzes kann automatisch oder manuell durch einen Administrator erfolgen.
 
 >[!NOTE]
->Sie können keine Richtlinien für bedingten Zugriff oder mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) auf eine verknüpfte Anwendung anwenden. Der Grund dafür ist, dass eine verknüpfte Anwendung keine Funktionen für einmaliges Anmelden über Azure AD bereitstellt. Wenn Sie eine verknüpfte Anwendung konfigurieren, fügen Sie einfach einen Link hinzu, der im App-Startfeld oder im Portal „Meine Apps“ angezeigt wird. 
+>Sie können keine Richtlinien für bedingten Zugriff oder mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) auf eine verknüpfte Anwendung anwenden. Der Grund dafür ist, dass eine verknüpfte Anwendung keine Funktionen für einmaliges Anmelden über Azure AD bereitstellt. Wenn Sie eine verknüpfte Anwendung konfigurieren, fügen Sie einfach einen Link hinzu, der im App-Startfeld oder im Portal „Meine Apps“ angezeigt wird.
 
 ## <a name="disabled-sso"></a>Deaktiviertes einmaliges Anmelden
 
@@ -164,6 +165,7 @@ Wählen Sie den Modus für einmaliges Anmelden für die integrierte Windows-Auth
 Informationen zum Konfigurieren einer lokalen App für IWA finden Sie unter [Eingeschränkte Kerberos-Delegierung für einmaliges Anmelden bei Ihren Anwendungen mit dem Anwendungsproxy](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md).
 
 ### <a name="how-single-sign-on-with-kcd-works"></a>So funktioniert das einmalige Anmelden mit KCD
+
 Dieses Diagramm erläutert die Vorgänge, die bei einem Zugriff eines Benutzers auf eine lokale Anwendung, die IWA verwendet, ablaufen.
 
 ![Flussdiagramm für die Microsoft Azure AD-Authentifizierung](../app-proxy/media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
@@ -185,8 +187,8 @@ Wählen Sie headerbasiertes einmaliges Anmelden aus, wenn ein Anwendungsproxy f�
 
 Weitere Informationen zur headerbasierten Authentifizierung finden Sie unter [Headerbasiertes einmaliges Anmelden für lokale Apps mit Azure AD-App-Proxy (Vorschau)](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-* [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md)
-* [Planen einer Bereitstellung für einmaliges Anmelden](plan-sso-deployment.md)
-* [Einmaliges Anmelden mit lokalen Apps](../app-proxy/application-proxy-config-sso-how-to.md)
+
+- [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md)
+- [Planen einer Bereitstellung für einmaliges Anmelden](plan-sso-deployment.md)
+- [Einmaliges Anmelden mit lokalen Apps](../app-proxy/application-proxy-config-sso-how-to.md)

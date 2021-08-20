@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: a2916f28be0b45eec6e9c1a85c0b8db3fb611381
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b7e7907a5d54b531f353c791abd1fa478149f3c
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417857"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297295"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mit PowerShell
 
@@ -142,4 +142,4 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie in [Verwenden von Lastenausgleichsdiensten in Azure](../traffic-manager/traffic-manager-load-balancing-azure.md), wie Sie Lastenausgleichsdienste in Azure kombinieren.
-- Erfahren Sie in [Azure Monitor-Protokolle für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md), wie Sie in Azure verschiedene Protokolltypen verwenden, um den Load Balancer zu verwalten und eventuelle Fehler zu beheben.
+- Erfahren Sie in [Azure Monitor-Protokolle für den Azure Load Balancer](./monitor-load-balancer.md), wie Sie in Azure verschiedene Protokolltypen verwenden, um den Load Balancer zu verwalten und eventuelle Fehler zu beheben.

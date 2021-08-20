@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfdocs
-ms.openlocfilehash: 00ec3208cce1ceeb367d0c5497250c9ac143e832
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1bf7bc84eed4303140753d9bcde85b3a68585155
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018602"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131540"
 ---
 # <a name="deploy-an-azure-app-service-app-by-using-visual-studio-2015"></a>Bereitstellen einer Azure App Service-App mit Visual Studio 2015
 
@@ -25,7 +25,7 @@ Dieser Artikel beschreibt, wie Azure App Service-Apps (API-Apps, Web-Apps, mobil
 * Konfigurieren Sie Visual Studio anhand [dieser Anweisungen](./germany-get-started-connect-with-vs.md) für das Herstellen einer Verbindung mit einem Azure Deutschland-Konto. 
 
 ## <a name="open-an-app-project-in-visual-studio"></a>Öffnen des App-Projekts in Visual Studio
-Öffnen Sie eine vorhandene App-Projektmappe oder ein Projekt in Visual Studio, oder [erstellen Sie ein Projekt](../app-service/quickstart-dotnet-framework.md#create-and-publish-the-web-app). Führen Sie die App dann in Visual Studio aus, um sicherzustellen, dass sie lokal funktioniert.
+Öffnen Sie eine vorhandene App-Projektmappe oder ein Projekt in Visual Studio, oder [erstellen Sie ein Projekt](../app-service/quickstart-dotnetcore.md?tabs=netframework48#create-an-aspnet-web-app). Führen Sie die App dann in Visual Studio aus, um sicherzustellen, dass sie lokal funktioniert.
 
 ## <a name="deploy-to-azure-germany"></a>Bereitstellen in Azure Deutschland
 Nachdem Sie Visual Studio für das Herstellen der Verbindung mit Ihrem Azure Deutschland-Konto konfiguriert haben (was Sie bereits als Voraussetzung erledigt haben), können Sie zum Bereitstellen einer App Service-App genau so vorgehen, wie es in den entsprechenden [Anweisungen für die globale Azure-Umgebung](../app-service/quickstart-dotnetcore.md) beschrieben ist.

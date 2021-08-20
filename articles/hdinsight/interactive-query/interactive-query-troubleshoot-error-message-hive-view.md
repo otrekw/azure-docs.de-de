@@ -4,12 +4,12 @@ description: Bei der Abfrage tritt in der Apache Hive-Ansicht ein Fehler auf. Es
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
-ms.openlocfilehash: c60e06e8f37e7aed0d0a0df661690a2b1f32dbd5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f80a966b3d326d367d376354bc83f7d1d935812
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98931006"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290848"
 ---
 # <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>Szenario: Abfragefehlermeldung wird in Apache Hive-Ansicht in Azure HDInsight nicht angezeigt
 
@@ -33,4 +33,4 @@ Manchmal ist die Fehlermeldung eines Abfragefehlers ggf. zu groß, um auf der Ha
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: cbd12481312d310add15bf3d41e21e9c416f1c39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0a9aecec9e11a41b22b3f1639f653c14a6e7fce
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94491074"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285083"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Verwenden von Marketo zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -67,7 +67,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihr Marketo-CRM-System einrichten, u
 
 Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für Ihr Angebot im Veröffentlichungsportal zu konfigurieren. 
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) an.
 
 1. Wählen Sie Ihr Angebot aus, und wechseln Sie zur Registerkarte **Angebotseinrichtung**.
 

@@ -4,12 +4,12 @@ description: Problembehandlung bei einer Apache Ambari-Benutzeroberfläche, wenn
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/02/2019
-ms.openlocfilehash: 0d3a393dc1cbd51b83edc0b6989bb5e7a5670a29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8cd9c4e00eb3dc454098dbd127622342bc690f7
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943261"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291455"
 ---
 # <a name="scenario-apache-ambari-ui-shows-down-hosts-and-services-in-azure-hdinsight"></a>Szenario: Die Apache Ambari-Benutzeroberfläche zeigt ausgefallene Hosts und Dienste in Azure HDInsight an
 
@@ -36,4 +36,4 @@ Normalerweise wird dieses Problem durch einen Neustart des aktiven Hauptknotens 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -1,17 +1,17 @@
 ---
 title: Häufig gestellte Fragen zur Azure Migrate-Appliance
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Migrate-Appliance.
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 059a1888b529487f2b0d17509370897222a20d83
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a814cce09a134f007fbd136b8c142a60fb099a1b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563020"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339346"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate-Appliance: Häufig gestellte Fragen
 
@@ -50,7 +50,6 @@ Die Appliance kann eine Verbindung über das Internet oder mithilfe von Azure Ex
 - Vergewissern Sie sich, dass die Appliance eine Verbindung mit diesen [Azure-URLs](./migrate-appliance.md#url-access) herstellen kann. 
 - Sie können ExpressRoute mit Microsoft-Peering verwenden. Öffentliches Peering ist veraltet und steht für neue ExpressRoute-Leitungen nicht mehr zur Verfügung.
 - Das rein private Peering wird nicht unterstützt.
-
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Wirkt sich die Applianceanalyse auf die Leistung aus?
 
@@ -142,7 +141,7 @@ Nein. Um Server in einer VMware-Umgebung zu ermitteln, müssen Sie über vCenter
 
 ## <a name="how-do-i-update-the-appliance"></a>Wie aktualisiere ich die Appliance?
 
-Standardmäßig werden die Appliance und die zugehörigen installierten Agents automatisch aktualisiert. Die Appliance prüft alle 24 Stunden, ob Updates verfügbar sind. Fehlerhafte Updates werden wiederholt. 
+Standardmäßig werden die Appliance und die zugehörigen installierten Agents automatisch aktualisiert. Die Appliance prüft alle 24 Stunden, ob Updates verfügbar sind. Fehlerhafte Updates werden wiederholt.
 
 Nur die Appliance und die Appliance-Agents werden durch diese automatischen Updates aktualisiert. Das Betriebssystem wird durch automatische Azure Migrate-Updates nicht aktualisiert. Verwenden Sie Windows-Updates, um das Betriebssystem auf dem neuesten Stand zu halten.
 
@@ -155,13 +154,14 @@ Ja. Navigieren Sie im Portal zur Seite **Agent-Integrität** für das Azure Migr
 Ja, wir unterstützen jetzt mehrere Serveranmeldeinformationen, um Softwareinventur (Ermittlung installierter Anwendungen), Abhängigkeitsanalyse ohne Agent und Ermittlung von SQL Server-Instanzen und -Datenbanken durchzuführen. [Weitere Informationen](tutorial-discover-vmware.md#provide-server-credentials) zum Bereitstellen von Anmeldeinformationen finden Sie im Konfigurations-Manager für Appliances.
 
 ## <a name="what-type-of-server-credentials-can-i-add-on-the-vmware-appliance"></a>Welche Art von Serveranmeldeinformationen kann ich auf der VMware-Appliance hinzufügen?
+
 Sie können Anmeldeinformationen für die Authentifizierung für eine Domäne, Windows (ohne Domäne), Linux (ohne Domäne) oder SQL Server im Konfigurations-Manager für Appliances angeben. [Erfahren Sie mehr](add-server-credentials.md) zur Bereitstellung von Anmeldeinformationen und zu deren Handhabung.
 
 ## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>Welche Art von SQL Server-Verbindungseigenschaften wird von Azure Migrate für die SQL-Ermittlung unterstützt?
+
 Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen (durch auf TRUE festgelegte Eigenschaft „Verbindung verschlüsseln“). Diese Verbindungen sind mit (auf TRUE festgelegter Option) [TrustServerCertificate](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) verschlüsselt. Die Transportschicht verwendet SSL, um den Kanal zu verschlüsseln und die Zertifikatskette zum Überprüfen der Vertrauenswürdigkeit zu umgehen. Der Server der Appliance muss so eingerichtet sein, dass er die [Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
 Wenn auf dem Server kein Zertifikat bereitgestellt wurde, erstellt SQL Server beim Starten ein selbst signiertes Zertifikat zum Verschlüsseln von Anmeldepaketen. [Weitere Informationen](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

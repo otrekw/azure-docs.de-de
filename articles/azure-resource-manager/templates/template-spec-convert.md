@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 324fcb85bfe1be87dc10736c8b5c233432e07146
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ad0391b91def898d252c429040380eab40522cd8
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026269"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378464"
 ---
 # <a name="convert-template-gallery-in-portal-to-template-specs"></a>Konvertieren des Vorlagenkatalogs im Portal in Vorlagenspezifikationen
 
@@ -22,7 +22,7 @@ Um festzustellen, ob Sie Vorlagen konvertieren müssen, sehen Sie sich den [Vorl
 
 Um das Konvertieren von Vorlagen im Vorlagenkatalog zu vereinfachen, verwenden Sie ein PowerShell-Skript aus dem Repository mit Azure-Schnellstartvorlagen. Wenn Sie das Skript ausführen, können Sie entweder eine neue Vorlagenspezifikation für jede Vorlage erstellen oder eine Vorlage herunterladen, mit der die Vorlagenspezifikation erstellt wird. Das Skript löscht die Vorlage nicht aus dem Vorlagenkatalog.
 
-1. Kopieren Sie das [Migrationsskript](https://github.com/Azure/azure-quickstart-templates/blob/master/201-templatespec-migrate-create/Migrate-GalleryItems.ps1). Speichern Sie eine lokale Kopie mit dem Namen *Migrate-GalleryItems.ps1*.
+1. Kopieren Sie das [Migrationsskript](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.resources/templatespec-migrate-create/Migrate-GalleryItems.ps1). Speichern Sie eine lokale Kopie mit dem Namen *Migrate-GalleryItems.ps1*.
 1. Um neue Vorlagenspezifikationen zu erstellen, geben Sie Werte für die Parameter `-ResourceGroupName` und `-Location` an.
 
    Legen Sie `ItemsToExport` auf `MyGalleryItems` fest, um Ihre Vorlagen zu exportieren. Legen Sie diese Option auf `AllGalleryItems` fest, um alle Vorlagen zu exportieren, auf die Sie Zugriff haben.
@@ -43,7 +43,7 @@ Um das Konvertieren von Vorlagen im Vorlagenkatalog zu vereinfachen, verwenden S
 
    Informationen zum Bereitstellen der Vorlage, mit der die Vorlagenspezifikation erstellt wird, finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Vorlagenspezifikationen](quickstart-create-template-specs.md).
 
-Weitere Informationen zum Skript und den zugehörigen Parametern finden Sie unter [Create TemplateSpecs from Template Gallery Templates](https://github.com/Azure/azure-quickstart-templates/tree/master/201-templatespec-migrate-create) (Erstellen von Vorlagenspezifikationen aus Vorlagen aus dem Vorlagenkatalog).
+Weitere Informationen zum Skript und den zugehörigen Parametern finden Sie unter [Create TemplateSpecs from Template Gallery Templates](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.resources/templatespec-migrate-create) (Erstellen von Vorlagenspezifikationen aus Vorlagen aus dem Vorlagenkatalog).
 
 ## <a name="manually-convert-through-portal"></a>Manuelles Konvertieren über das Portal
 

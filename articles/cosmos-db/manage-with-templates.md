@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: 28bb55b24cdc758906ab9aff5746e4c5d4c7bfc3
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 1aa0140a29864f08e40e3d1058d86597be5d99a5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059704"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340083"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die Core-API (SQL) von Azure Cosmos DB mit Azure Resource Manager-Vorlagen
 
@@ -20,7 +20,7 @@ ms.locfileid: "112059704"
 
 In diesem Artikel erfahren Sie, wie Sie Ihre Azure Cosmos DB-Konten, -Datenbanken und -Container mithilfe von Azure Resource Manager-Vorlagen bereitstellen und verwalten.
 
-Dieser Artikel enthält nur Azure Resource Manager-Vorlagenbeispiele für Core-API-Konten (SQL). Es gibt jedoch auch Vorlagenbeispiele für [Cassandra-](templates-samples-cassandra.md)-, [Gremlin](templates-samples-gremlin.md)-, [MongoDB](templates-samples-mongodb.md)- und [Table](templates-samples-table.md)-APIs.
+Dieser Artikel enthält nur Azure Resource Manager-Vorlagenbeispiele für Core-API-Konten (SQL). Es gibt jedoch auch Vorlagenbeispiele für [Cassandra-](cassandra/templates-samples.md)-, [Gremlin](templates-samples-gremlin.md)-, [MongoDB](mongodb/resource-manager-template-samples.md)- und [Table](table/resource-manager-templates.md)-APIs.
 
 > [!IMPORTANT]
 >
@@ -78,9 +78,9 @@ Mit dieser Vorlage werden ein Azure Cosmos-Konto, eine Datenbank und ein Contain
 
 Mit dieser Vorlage wird ein SQL Cosmos-Konto erstellt, eine nativ gepflegte Rollendefinition und eine nativ gepflegte Rollenzuweisung für eine AAD-Identität. Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-rbac%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.documentdb%2Fcosmosdb-sql-rbac%2Fazuredeploy.json)
 
-:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-rbac/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.documentdb/cosmosdb-sql-rbac/azuredeploy.json":::
 
 <a id="free-tier"></a>
 

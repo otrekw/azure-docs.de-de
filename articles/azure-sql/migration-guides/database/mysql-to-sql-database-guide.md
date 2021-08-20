@@ -9,17 +9,17 @@ ms.topic: how-to
 author: cawrites
 ms.author: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: ec117b8f341546deb48510d9b27a43b731d03742
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3b9f286796a832d075977cda2eda54f990bbb3c1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970699"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339897"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>Migrationsleitfaden: MySQL zu Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-In diesem Leitfaden erfahren Sie, wie Sie Ihre MySQL-Datenbank mithilfe von [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant für MySQL (SSMA für MySQL) zu einer Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey). 
+In diesem Leitfaden erfahren Sie, wie Sie Ihre MySQL-Datenbank mithilfe von [SQL Server Migration](https://azure.microsoft.com/migration/sql-server/) Assistant für MySQL (SSMA für MySQL) zu einer Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey). 
 
 Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](/data-migration). 
 
@@ -165,7 +165,7 @@ Weitere Unterstützung bei der Durchführung dieses Migrationsszenarios finden S
 
 | Titel | BESCHREIBUNG |
 | --- | --- |
-| [Data Workload Assessment Model and Tool (Datenarbeitsauslastungs-Bewertungsmodell und -tool)](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Stellt für bestimmte Workloads Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch einen automatisierten und einheitlichen Entscheidungsprozess für die Zielplattform dabei helfen, Bewertungen von umfangreichen Datenbeständen zu beschleunigen. |
+| [Data Workload Assessment Model and Tool (Datenarbeitsauslastungs-Bewertungsmodell und -tool)](https://www.microsoft.com/download/details.aspx?id=103130) | Stellt für bestimmte Workloads Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch einen automatisierten und einheitlichen Entscheidungsprozess für die Zielplattform dabei helfen, Bewertungen von umfangreichen Datenbeständen zu beschleunigen. |
 |[MySQL zu SQL DB – Hilfsprogramm „Database Compare“](https://www.microsoft.com/download/details.aspx?id=103016)|Beim Hilfsprogramm „Database Compare“ handelt es sich um eine Windows-Konsolenanwendung, mit der Sie überprüfen können, ob die Daten sowohl auf der Quell- als auch auf der Zielplattform identisch sind. Sie können das Tool verwenden, um Daten auf Zeilen- oder Spaltenebene in allen ausgewählten Tabellen, Zeilen und Spalten effizient zu vergleichen.|
 
 Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.

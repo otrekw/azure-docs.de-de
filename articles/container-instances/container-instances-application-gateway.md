@@ -3,12 +3,12 @@ title: Statische IP-Adresse für eine Containergruppe
 description: Erstellen einer Containergruppe in einem virtuellen Netzwerk und Verwenden eines Azure-Anwendungsgateways, um eine statische Front-End-IP-Adresse für eine Container-Web-App verfügbar zu machen
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: c0401c0b6ec4aae124ee1954762d22c16cacb994
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 46b04534a6beae5a2e102aa0167815da44ae21ed
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084221"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219260"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Verfügbarmachen einer statischen IP-Adresse für eine Containergruppe
 
@@ -31,7 +31,7 @@ In der Regel verfügen Sie bereits über ein virtuelles Azure-Netzwerk. Wenn die
 
 Erstellen Sie ggf. eine Azure-Ressourcengruppe. Beispiel:
 
-```azureci
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 

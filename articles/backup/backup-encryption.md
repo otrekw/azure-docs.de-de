@@ -4,12 +4,12 @@ description: Hier erfahren Sie mehr darüber, wie Verschlüsselungsfeatures in A
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: 812ec5f885fad128444de1f8a07d9d6fa58cd6cb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 7870a84d374bce90a9d41896a7c8704b42629d38
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968667"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291370"
 ---
 # <a name="encryption-in-azure-backup"></a>Verschlüsselung in Azure Backup
 
@@ -29,4 +29,4 @@ Azure Backup umfasst Verschlüsselung auf zwei Ebenen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Azure Storage encryption for data at rest (Azure Storage-Verschlüsselung für ruhende Daten)](../storage/common/storage-service-encryption.md)
-- Wenn Sie Fragen zum Thema Verschlüsselung haben, sehen Sie sich die [häufig gestellten Fragen zu Azure Backup](/azure/backup/backup-azure-backup-faq.yml#encryption) an.
+- Wenn Sie Fragen zum Thema Verschlüsselung haben, sehen Sie sich die [häufig gestellten Fragen zu Azure Backup](/azure/backup/backup-azure-backup-faq#encryption) an.

@@ -1,19 +1,20 @@
 ---
 title: 'Häufig gestellte Fragen zum Azure Video Analyzer for Media (früher Video Indexer): Azure'
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Azure Video Analyzer for Media (früher Video Indexer).
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 05/25/2021
 ms.author: juliako
-ms.openlocfilehash: 1c4b96bf7874c5ade93601f7ff40238ef04cb7ee
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 00551d5587bc5bf8afad1b2bd481ebc637bc6dce
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966667"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119625"
 ---
 # <a name="video-analyzer-for-media-frequently-asked-questions"></a>Video Analyzer for Media: Häufig gestellte Fragen
 

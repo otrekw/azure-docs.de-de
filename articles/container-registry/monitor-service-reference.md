@@ -7,12 +7,12 @@ ms.topic: reference
 ms.custom: subject-monitoring
 ms.service: container-registry
 ms.date: 03/19/2021
-ms.openlocfilehash: 86c8047727711655a262425032b7a9fe3daa6dc1
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 99b9206e305e57898a2eb4bc6d0de7dd6fe94473
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059974"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290415"
 ---
 # <a name="monitoring-azure-container-registry-data-reference"></a>Referenz zur Überwachung von Azure Container Registry-Daten
 
@@ -105,4 +105,4 @@ Die folgenden Schemas werden von den Ressourcenprotokollen in Azure Container Re
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Unter [Überwachen von Azure Container Registry](monitor-service.md) finden Sie eine Beschreibung der Überwachung einer Azure Container Registry-Instanz.
-- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](/azure/azure-monitor/overview).
+- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/overview.md).

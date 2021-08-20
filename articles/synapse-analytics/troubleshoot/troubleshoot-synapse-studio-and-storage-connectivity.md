@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 27a6fcde84f248fa69dd39091a16ac8edf64ddf0
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 011d3092160b21f45f664f2c67245bcc51da5e6b
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143231"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297775"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Behandeln von Problemen bei der Konnektivität zwischen Azure Synapse Analytics Studio und Speicher
 
@@ -31,7 +31,7 @@ Im verknüpften Speicherknoten:
 Im Speichercontainerknoten:  
 ![Speicherkonnektivitätsproblem 1a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1a.png)
 
-**LÖSUNG**: Informationen, wie Sie Ihr Konto der erforderlichen Rolle zuweisen, finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../../storage/common/storage-auth-aad-rbac-portal.md).
+**LÖSUNG**: Informationen, wie Sie Ihr Konto der erforderlichen Rolle zuweisen, finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../../storage/blobs/assign-azure-role-data-access.md).
 
 
 ## <a name="case-2-failed-to-send-the-request-to-storage-server"></a>Fall 2: Fehler beim Senden der Anforderung an den Speicherserver

@@ -3,16 +3,18 @@ title: Verringern der Wartezeit bei Verwendung des Diensts „Gesichtserkennung�
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie die Wartezeit bei Verwendung des Diensts „Gesichtserkennung“ verringern.
 services: cognitive-services
-manager: chrhoder
+author: PatrickFarley
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
-ms.openlocfilehash: a306883573387a2a5c20a53c7015c6dbd3eddf65
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.author: pafarley
+ms.openlocfilehash: f4d3e61fdfc629a0d9051a066fd861d3e8013e25
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107878666"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339944"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Vorgehensweise: Verringern der Wartezeit bei Verwendung des Diensts „Gesichtserkennung“
 
@@ -96,4 +98,4 @@ In diesem Artikel haben Sie erfahren, wie Sie die Wartezeit bei Verwendung des D
 ## <a name="related-topics"></a>Verwandte Themen
 
 - [Referenzdokumentation (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [Referenzdokumentation (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)
+- [Referenzdokumentation (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/face-readme)

@@ -10,12 +10,12 @@ author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: 489ba57063244d399c9dd0255641568f2db5c6de
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: abe88555bc7d545e62faa4c22a5e3f02e5eef630
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034566"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339894"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>Bewertungsregeln für die Migration von SQL Server zu Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ Weitere Informationen: [Unterschiede bei T-SQL zwischen SQL Server und Azure SQL
 ## <a name="clr-security"></a>CLR-Sicherheit<a id="ClrStrictSecurity"></a>
 
 **Titel: Als SAFE oder EXTERNAL_ACCESS markierte CLR-Assemblys werden als UNSAFE eingestuft.**    
-**Kategorie**: Problem   
+**Kategorie**: Warnung   
 
 **Beschreibung**   
 In Azure SQL Managed Instance wird der strenge CLR-Sicherheitsmodus erzwungen. Dieser Modus ist standardmäßig aktiviert und umfasst Breaking Changes für Datenbanken mit benutzerdefinierten CLR-Assemblys, die entweder als SAFE oder EXTERNAL_ACCESS markiert sind.
@@ -202,7 +202,7 @@ Das Feature „Filestream“, mit dem Sie unstrukturierte Daten (z. B. Textdoku
 **Empfehlung**   
 Laden Sie die unstrukturierten Dateien in Azure-Blobspeicher hoch, und speichern Sie die Metadaten zu diesen Dateien (Name, Typ, URL-Speicherort, Speicherschlüssel usw.) in Azure SQL Managed Instance. Sie müssen für Ihre Anwendung ggf. einen Reengineering-Vorgang durchführen, um das Streamen von Blobs für Azure SQL Managed Instance zu ermöglichen. Alternativ können Sie zu SQL Server auf einem virtuellen Azure-Computer migrieren.
 
-Weitere Informationen: [Streamen von Blobs für SQL Azure: Blog](https://azure.microsoft.com/en-in/blog/streaming-blobs-to-and-from-sql-azure/)
+Weitere Informationen: [Streamen von Blobs für SQL Azure: Blog](https://azure.microsoft.com/blog/streaming-blobs-to-and-from-sql-azure/)
 
 ## <a name="heterogeneous-ms-dtc"></a>Heterogener MS DTC<a id="MIHeterogeneousMSDTCTransactSQL"></a>
 
@@ -451,19 +451,6 @@ Schreiben Sie die Anweisung um, indem Sie die aktuelle RAISERROR-Syntax verwende
 
 Weitere Informationen: [Nicht mehr unterstützte Datenbank-Engine-Funktionalität in SQL Server](/previous-versions/sql/2014/database-engine/discontinued-database-engine-functionality-in-sql-server-2016#Denali)
 
-## <a name="service-broker"></a>Service Broker<a id="ServiceBrokerWithNonLocalAddress"></a>
-
-**Titel: Service Broker-Feature wird in Azure SQL Managed Instance teilweise unterstützt.**    
-**Kategorie**: Problem   
-
-**Beschreibung**   
-SQL Server Service Broker verfügt über native Unterstützung für Messaging- und Warteschlangenanwendungen in der SQL Server-Datenbank-Engine. Für diese Datenbank ist das instanzübergreifende Service Broker-Feature aktiviert, das in Azure SQL Managed Instance nicht unterstützt wird. 
-
-
-**Empfehlung**   
-Für Azure SQL Managed Instance wird das instanzübergreifende Service Broker-Feature (also ohne lokale Adresse) nicht unterstützt. Sie müssen Service Broker mit dem folgenden Befehl deaktivieren, bevor Sie diese Datenbank zu Azure migrieren: `ALTER DATABASE [database_name] SET DISABLE_BROKER`. Darüber hinaus können Sie auch den Service Broker-Endpunkt entfernen oder beenden, um zu verhindern, dass Nachrichten auf der SQL-Instanz ankommen. Nachdem die Datenbank zu Azure migriert wurde, können Sie sich die Azure Service Bus-Funktionalität ansehen, um anstelle von Service Broker ein generisches cloudbasiertes Messagingsystem zu implementieren. Alternativ können Sie zu SQL Server auf einem virtuellen Azure-Computer migrieren. 
-
-Weitere Informationen: [Service Broker-Abweichungen in Azure SQL Managed Instance ](../../managed-instance/transact-sql-tsql-differences-sql-server.md#service-broker)
 
 ## <a name="sql-mail"></a>SQL Mail<a id="SqlMail"></a>
 

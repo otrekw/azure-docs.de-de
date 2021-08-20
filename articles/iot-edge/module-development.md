@@ -2,18 +2,17 @@
 title: Entwickeln von Modulen für Azure IoT Edge | Microsoft-Dokumentation
 description: Entwickeln von benutzerdefinierten Modellen für Azure IoT Edge zur Kommunikation mit Runtime und IoT Hub
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6274d0f0265220877938775ab6efd72ff22b84e4
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: fafb9475d308863113fa943d4e52cf3c1b5652cd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031123"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339168"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Entwickeln eigener IoT Edge-Module
 

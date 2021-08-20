@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 006abf62c605c2ca34fd1adeadee8e29ae0fb8fb
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 1a5e665636e725252b18c2086471b272f40466cd
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588308"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291840"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>Beheben von Fehlern bei der Bibliotheksinstallation 
 Wenn Sie Code eines Drittanbieters oder lokal erstellten Code für Ihre Anwendungen verfügbar machen möchten, können Sie in einem Ihrer serverlosen Apache Spark-Pools eine Bibliothek installieren. Die in der Datei „requirements.txt“ aufgeführten Pakete werden zum Zeitpunkt des Poolstarts von PyPi heruntergeladen. Diese Anforderungsdatei wird jedes Mal verwendet, wenn eine Spark-Instanz aus diesem Spark-Pool erstellt wird. Nachdem eine Bibliothek für einen Spark-Pool installiert wurde, ist sie in allen Sitzungen verfügbar, die denselben Pool verwenden. 
@@ -67,7 +67,7 @@ df = spark.createDataFrame(data=data2,schema=schema)
 df.write.csv("abfss://<<ENTER NAME OF FILE SYSTEM>>@<<ENTER NAME OF PRIMARY STORAGE ACCOUNT>>.dfs.core.windows.net/validate_permissions.csv")
 
 ```
-Wenn Sie einen Fehler erhalten, fehlen Ihnen wahrscheinlich die erforderlichen Berechtigungen. Informationen dazu, wie Sie die erforderlichen Berechtigungen erhalten, finden Sie in diesem Dokument: [Zuweisen der Berechtigungen „Mitwirkender an Storage-Blobdaten“ oder „Besitzer von Speicherblobdaten“](../../storage/common/storage-auth-aad-rbac-portal.md#assign-an-azure-built-in-role).
+Wenn Sie einen Fehler erhalten, fehlen Ihnen wahrscheinlich die erforderlichen Berechtigungen. Informationen dazu, wie Sie die erforderlichen Berechtigungen erhalten, finden Sie in diesem Dokument: [Zuweisen der Berechtigungen „Mitwirkender an Storage-Blobdaten“ oder „Besitzer von Speicherblobdaten“](../../storage/blobs/assign-azure-role-data-access.md).
 
 Wenn Sie eine Pipeline ausführen, muss die Arbeitsbereichs-MSI auch über eine der Berechtigungen „Besitzer von Speicherblobdaten“ oder „Mitwirkender an Storage-Blobdaten“ verfügen. Informationen dazu, wie Sie Ihrer Arbeitsbereichsidentität diese Berechtigung zuweisen, finden Sie unter: [Erteilen von Berechtigungen für die verwaltete Identität eines Arbeitsbereichs](../security/how-to-grant-workspace-managed-identity-permissions.md).
 

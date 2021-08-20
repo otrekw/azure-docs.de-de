@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9adb0f453aebb47c939b1ab0ead601b05145f217
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88949173"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346031"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection – Glossar
 
@@ -89,7 +89,7 @@ Die Erkennung von Anomalien und Bewertung des Risikos eines Ereignisses, z. B. 
 ### <a name="remediated-risk-detection"></a>Bereinigt (Risikoerkennung)
 Ein Risikoerkennungsstatus, der in Identity Protection automatisch festgelegt wird und angibt, dass die Risikoerkennung mit der standardmäßigen Korrekturaktion für diese Art von Risikoerkennung bereinigt wurde. Beim Zurücksetzen des Benutzerkennworts werden beispielsweise viele Risikoerkennungen, die auf eine Kompromittierung des vorherigen Kennworts hinweisen, automatisch bereinigt.
 
-### <a name="remediation"></a>Wiederherstellung
+### <a name="remediation"></a>Behebung
 Eine Aktion zum Schützen einer Identität oder eines Geräts, die bzw. das zuvor wahrscheinlich oder mit Sicherheit kompromittiert war. Bei einer Korrekturaktion wird die Identität bzw. das Gerät wieder in einen sicheren Zustand versetzt, und vorherige Risikoerkennungen, die der Identität oder dem Gerät zugeordnet sind, werden gelöst.
 
 ### <a name="resolved-risk-detection"></a>Gelöst (Risikoerkennung)
@@ -140,7 +140,7 @@ Diese Risikoerkennung wird ausgelöst, wenn sich ein Benutzer erfolgreich von ei
 ### <a name="sign-in-risk"></a>Anmelderisiko
 Siehe „Risikostufe (Anmeldung)“.
 
-### <a name="sign-in-risk-policy"></a>Richtlinie zum Anmelderisiko
+### <a name="sign-in-risk-policy"></a>Anmelderisiko-Richtlinie
 Eine bedingte Zugriffsrichtlinie, mit der das Risiko für eine bestimmte Anmeldung ausgewertet wird und Lösungen basierend auf vordefinierten Bedingungen und Regeln angewendet werden.
 
 ### <a name="user-compromise-risk"></a>Risiko einer Benutzerkompromittierung
@@ -149,7 +149,7 @@ Siehe „Risikostufe (Benutzerkompromittierung)“.
 ### <a name="user-risk"></a>Benutzerrisiko
 Siehe „Risikostufe (Benutzerkompromittierung)“.
 
-### <a name="user-risk-policy"></a>Richtlinie zum Benutzerrisiko
+### <a name="user-risk-policy"></a>Benutzerrisiko-Richtlinie
 Eine bedingte Zugriffsrichtlinie, mit der die Anmeldung berücksichtigt wird und Lösungen basierend auf vordefinierten Bedingungen und Regeln angewendet werden.
 
 ### <a name="users-flagged-for-risk"></a>Benutzer mit Risikokennzeichnung

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 06/18/2021
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 052dfc651ac590fd1acefa0a92dc3ef4f25daaea
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 9fb6f18d57fa375a15a4e5f7a0fc19889e5cdb1b
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365211"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378356"
 ---
 # <a name="azure-cosmos-db-net-sdk-v2-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK v2 für SQL-API: Download und Versionshinweise
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,8 +48,6 @@ ms.locfileid: "107365211"
 |**Web-App-Tutorial**|[Entwicklung von Webanwendungen mit Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Aktuelles unterstütztes Framework**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
-## <a name="release-notes"></a>Versionshinweise
-
 > [!NOTE]
 > Wenn Sie .NET Framework verwenden, sehen Sie sich die neueste Version 3.x des [.NET SDK](sql-api-sdk-dotnet-standard.md) an, das .NET Standard als Ziel verwendet.
 
@@ -59,7 +57,7 @@ Die 2.x.x-Version umfasst die folgenden .NET SDK-Unterversionen:
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Weitere Informationen
 

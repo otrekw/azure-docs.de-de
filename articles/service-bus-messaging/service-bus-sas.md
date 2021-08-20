@@ -4,12 +4,12 @@ description: Übersicht über Service Bus-Zugriffssteuerung mithilfe von Shared 
 ms.topic: article
 ms.date: 04/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 622a1dd877be98053fdb9b21bfbb40a81c749f02
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5659e159604c80ffe19cbc4b57dea5d99c1acb98
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760623"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112379814"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus-Zugriffssteuerung mit Shared Access Signatures
 
@@ -68,7 +68,7 @@ Mit den folgenden Empfehlungen für die Verwendung von Shared Access Signatures 
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Konfiguration für SAS-Authentifizierung (Shared Access Signature)
 
-Sie können die SAS-Autorisierungsrichtlinie für Service Bus-Namespaces, -Warteschlangen oder -Themen konfigurieren. Die Konfiguration für ein Service Bus-Abonnement wird zurzeit nicht unterstützt, Sie können die Regeln, die für einen Namespace oder ein Thema konfiguriert wurden, allerdings verwenden, um den Zugriff auf Abonnements zu sichern. Ein funktionierendes Beispiel, das dieses Verfahren veranschaulicht, finden Sie unter [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) (Verwenden der SAS-Authentifizierung mit Service Bus-Abonnements).
+Sie können die SAS-Autorisierungsrichtlinie für Service Bus-Namespaces, -Warteschlangen oder -Themen konfigurieren. Die Konfiguration für ein Service Bus-Abonnement wird zurzeit nicht unterstützt, Sie können die Regeln, die für einen Namespace oder ein Thema konfiguriert wurden, allerdings verwenden, um den Zugriff auf Abonnements zu sichern. 
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 

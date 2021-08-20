@@ -1,27 +1,23 @@
 ---
-title: Abfragen von Daten in Azure Monitor mit Azure Data Explorer (Vorschau)
+title: Abfragen von Daten in Azure Monitor mit Azure Data Explorer
 description: Verwenden Sie Azure Data Explorer, um produktübergreifende Abfragen zwischen Azure Data Explorer, Log Analytics-Arbeitsbereichen und klassischen Application Insights-Anwendungen in Azure Monitor auszuführen.
 author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 65dba60a798b1157a44a7a198b8eba7de1e8fe81
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9faa9ff9c0635c84ebc5c56a343db0426873f945
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031258"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339501"
 ---
-# <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Abfragen von Daten in Azure Monitor mit Azure Data Explorer (Vorschau)
+# <a name="query-data-in-azure-monitor-using-azure-data-explorer"></a>Abfragen von Daten in Azure Monitor mit Azure Data Explorer
 
 Azure Data Explorer unterstützt dienstübergreifende Abfragen zwischen Azure Data Explorer, [Application Insights (AI)](../app/app-insights-overview.md) und [Log Analytics (LA)](./data-platform-logs.md). Anschließend können Sie den Log Analytics/Application Insights-Arbeitsbereich mithilfe von Azure Data Explorer-Tools abfragen und in einer dienstübergreifenden Abfrage darauf verweisen. In diesem Artikel wird gezeigt, wie Sie eine dienstübergreifende Abfrage erstellen und den Log Analytics/Application Insights-Arbeitsbereich zur Azure Data Explorer-Webbenutzeroberfläche hinzufügen.
 
 Ablauf dienstübergreifender Abfragen mit Azure Data Explorer: :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure Data Explorer-Proxyflow":::
-
-> [!NOTE]
-> * Die Funktion zum Abfragen von Azure Monitor-Daten in Azure Data Explorer, entweder direkt über Azure Data Explorer-Clienttools oder indirekt durch Ausführen einer Abfrage in einem Azure Data Explorer-Cluster, befindet sich im Vorschaumodus.
->* Wenden Sie sich bei Fragen an das [Team für dienstübergreifende Abfragen](mailto:adxproxy@microsoft.com).
 
 ## <a name="add-a-log-analyticsapplication-insights-workspace-to-azure-data-explorer-client-tools"></a>Hinzufügen eines Log Analytics/Application Insights-Arbeitsbereichs zu Azure Data Explorer-Clienttools
 
@@ -89,7 +85,8 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-cross-query-proxy.png" alt-text="Dienstübergreifende Abfrage über Azure Data Explorer":::
 
-Wenn Sie anstelle von „union“ den [`join`-Operator](/azure/data-explorer/kusto/query/joinoperator) verwenden, ist möglicherweise ein [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) erforderlich, um die Abfrage für einen nativen Azure Data Explorer-Cluster auszuführen.
+>[!TIP]
+>* Wenn Sie anstelle von „union“ den [`join`-Operator](/azure/data-explorer/kusto/query/joinoperator) verwenden, ist möglicherweise ein [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) erforderlich, um die Abfrage für einen nativen Azure Data Explorer-Cluster auszuführen.
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Verknüpfen von Daten eines Azure Data Explorer-Clusters in einem Mandanten mit einer Azure Monitor-Ressource in einem anderen Mandanten
 

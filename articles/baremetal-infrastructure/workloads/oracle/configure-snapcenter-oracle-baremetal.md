@@ -2,14 +2,14 @@
 title: Konfigurieren von SnapCenter für Oracle in der BareMetal-Infrastruktur
 description: Erfahren Sie, wie Sie SnapCenter für Oracle in der BareMetal-Infrastruktur konfigurieren können.
 ms.topic: how-to
-ms.subservice: workloads
+ms.subservice: baremetal-oracle
 ms.date: 05/05/2021
-ms.openlocfilehash: f12ae9eae62ecb47cafe5d555b5173a75c66200b
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: cd3163b90d65f3e33fa56a190ed854069afd6703
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109520537"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579206"
 ---
 # <a name="configure-snapcenter-for-oracle-on-baremetal-infrastructure"></a>Konfigurieren von SnapCenter für Oracle in der BareMetal-Infrastruktur
 

@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 02/05/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: 642b874f5e0cf501acb1627e4388a7e4c456ef29
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 9a766e3ff67a1ea76c396c304ead55ce0578739f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888726"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458777"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer
 
@@ -30,6 +30,8 @@ In dieser Anleitung erfahren Sie, wie Sie die folgenden Aufgaben ausführen:
 > * Verwalten von Endpunktversionen
 
 Informationen zum Einrichten von Batchbewertungsdiensten mit dem SDK finden Sie in der begleitenden [Anleitung](./tutorial-pipeline-batch-scoring-classification.md).
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

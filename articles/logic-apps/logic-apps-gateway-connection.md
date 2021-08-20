@@ -3,15 +3,15 @@ title: Zugriff auf lokale Datenquellen
 description: Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps durch Erstellen einer Datengatewayressource in Azure
 services: logic-apps
 ms.suite: integration
-ms.reviewer: arthii, logicappspm
+ms.reviewer: arthii, azla
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: 490750fecf1634f8d0bbcd92bd71cdf3cb531c71
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.date: 07/14/2021
+ms.openlocfilehash: 4f49e0fbbfa4c2a98b86c96dc3b0e650d6ff6bc9
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888588"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204824"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
@@ -35,18 +35,20 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
 
 In Azure Logic Apps unterstützt das lokale Datengateway [lokale Connectors](../connectors/managed.md#on-premises-connectors) für die folgenden Datenquellen:
 
-* BizTalk Server 2016
-* Dateisystem
-* IBM DB2  
-* IBM Informix
-* IBM MQ
-* MySQL
-* Oracle-Datenbank
-* PostgreSQL
-* SAP
-* SharePoint Server
-* SQL Server
-* Teradata
+* [Apache Impala](/connectors/impala)
+* [BizTalk Server](/connectors/biztalk)
+* [Dateisystem](/connectors/filesystem)
+* [HTTP mit Azure AD](/connectors/webcontents)
+* [IBM DB2](/connectors/db2)
+* [IBM Informix](/connectors/informix)
+* [IBM MQ](/connectors/mq)
+* [MySQL](/connectors/mysql)
+* [Oracle-Datenbank](/connectors/oracle)
+* [PostgreSQL](/connectors/postgresql)
+* [SAP](/connectors/sap)
+* [SharePoint Server](/connectors/sharepointonline)
+* [SQL Server](/connectors/sql)
+* [Teradata](/connectors/teradata)
 
 Sie können auch [benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md) erstellen, die mithilfe von REST oder SOAP über HTTP oder HTTPS eine Verbindung mit Datenquellen herstellen. Obwohl das Gateway selbst keine zusätzlichen Kosten verursacht, gilt das [Logic Apps-Preismodell](../logic-apps/logic-apps-pricing.md) für diese Connectors und andere Vorgänge in Azure Logic Apps.
 

@@ -1,20 +1,21 @@
 ---
 title: Nachverfolgen von beobachteten Personen in einem Video
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: Dieses Thema bietet eine Übersicht über die Verfolgung beobachteter Personen in einem Videokonzept.
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.service: azure-video-analyzer
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 04/30/2021
 ms.author: juliako
-ms.openlocfilehash: c1e4ca3dc15bb7d390d8525d1819fe9efa3e4ba8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 469073650bbcf00ba2634ac5be68c10bf7ac49ee
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385978"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115406"
 ---
 # <a name="trace-observed-people-in-a-video"></a>Nachverfolgen von beobachteten Personen in einem Video
 
@@ -94,4 +95,4 @@ Es ist wichtig, die Einschränkungen bei der Nachverfolgung beobachteter Persone
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Überprüfen der [Übersicht](video-indexer-overview.md)
+[Übersicht](video-indexer-overview.md)

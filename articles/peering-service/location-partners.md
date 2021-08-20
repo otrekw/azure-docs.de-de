@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: cd57825172f69811dfa63e1d1dea048bbf1d5c82
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 79d9d15ff2707dfac7e206cf5a289d7eac00ffb4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626196"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447564"
 ---
 # <a name="peering-service-partners"></a>Peering Service-Partner
 
@@ -34,7 +34,7 @@ Die Tabelle in diesem Artikel enthält Informationen zu den Peering Service-Konn
 | [BBIX](https://www.bbix.net/en/service/) |Japan |
 | [CCL](https://concepts.co.nz/news/general-news/) |Ozeanien |
 | [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|Europa, Asien|
-| [DE-CIX](https://www.de-cix.net/microsoft)|Europa, Nordamerika |
+| [DE-CIX](https://www.de-cix.net/)|Europa, Nordamerika |
 | [IIJ](https://www.iij.ad.jp/en/) | Japan |
 | [Intercloud](https://intercloud.com/microsoft-saas-applications/)|Europa  |
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |Ozeanien  |
@@ -54,7 +54,7 @@ Die Tabelle in diesem Artikel enthält Informationen zu den Peering Service-Konn
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu Peering Service finden Sie unter [Übersicht über Peering Service](about.md).
-- Informationen zu häufig gestellten Fragen zu Peering Service finden Sie unter [Peering Service – häufig gestellte Fragen (FAQ)](faq.md).
+- Informationen zu häufig gestellten Fragen zu Peering Service finden Sie unter [Peering Service – häufig gestellte Fragen (FAQ)](faq.yml).
 - Weitere Informationen zum Onboarding von Partnern und zur Peering Service-Konfiguration finden Sie unter [Peering Service-Konfiguration](connection.md).
 - Informationen zur Peering Service-Verbindung finden Sie unter [Peering Service-Verbindung](connection.md).
 - Informationen zur Peering Service-Verbindungstelemetrie finden Sie unter [Peering Service-Verbindungstelemetrie](connection-telemetry.md).
