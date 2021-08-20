@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 07/26/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 653159c2e40d3375a422f0da14274f57130de1fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13d427ea5cc73f9cbd4176332c351453891b2e7a
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93359679"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707561"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Resource Manager
 
@@ -36,7 +36,7 @@ In dieser Schnellstartanleitung wird gezeigt, wie Sie eine systemseitig zugewies
 
 - Kenntnisse im Bereich verwaltete Identitäten. Wenn Sie mit der Funktion für verwaltete Identitäten für Azure-Ressourcen nicht vertraut sind, finden Sie hier eine [Übersicht](overview.md). 
 - Ein Azure-Konto – [Registrieren Sie sich für ein kostenloses Azure-Konto](https://azure.microsoft.com/free/).
-- Außerdem benötigen Sie einen virtuellen Linux-Computer, auf dem vom System zugewiesene verwaltete Identitäten aktiviert sind.
+- Außerdem benötigen Sie einen virtuellen Linux-Computer, auf dem vom System zugewiesene verwaltete Identitäten aktiviert sind. Wenn Sie über eine VM verfügen, aber [vom System zugewiesene verwaltete Identitäten](qs-configure-portal-windows-vm.md) aktivieren müssen, können Sie dies im Abschnitt „Identität“ in den Eigenschaften der VM vornehmen. 
   - Wenn Sie einen virtuellen Computer für dieses Tutorial erstellen müssen, können Sie den Artikel [Erstellen eines virtuellen Linux-Computers mit dem Azure-Portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine) durcharbeiten.
 
 ## <a name="grant-access"></a>Gewähren von Zugriff

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 07/07/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 78e2b01da1b47a51309a9e26500514aea396190b
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 79f001ef1483ccdc8b9a4f2e2bfde9ca87db705f
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783007"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113507070"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -151,15 +151,14 @@ Für SCIM-Anwendungen muss der Attributname dem Muster im folgenden Beispiel fol
 
 Diese Anweisungen gelten nur für SCIM-konforme Anwendungen. Anwendungen wie ServiceNow und Salesforce sind nicht per SCIM mit Azure AD integriert. Aus diesem Grund benötigen sie nicht diesen spezifischen Namespace, wenn ein benutzerdefiniertes Attribut hinzugefügt wird.
 
-Benutzerdefinierte Attribute können keine referenziellen Attribute, komplexe Attribute oder Attribute mit mehreren Werten sein. Benutzerdefinierte Erweiterungsattribute, die komplex sind oder mehrere Werten beinhalten, werden derzeit nur für Anwendungen im Katalog unterstützt.  
+Benutzerdefinierte Attribute können keine referenziellen Attribute, komplexe Attribute oder Attribute mit mehreren Werten sein. Benutzerdefinierte Erweiterungsattribute, die komplex sind oder mehrere Werten beinhalten, werden derzeit nur für Anwendungen im Katalog unterstützt. Der benutzerdefinierte Erweiterungsschemaheader wird im folgenden Beispiel weggelassen, da er nicht in Anforderungen vom SCIM-Client in Azure AD gesendet wird. Dieses Problem wird in Zukunft behoben, und der Header wird in der Anforderung gesendet.  
  
 **Beispieldarstellung eines Benutzers mit einem Erweiterungsattribut:**
 
 ```json
    {
      "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"],
      "userName":"bjensen",
      "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",

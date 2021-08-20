@@ -6,13 +6,13 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 4bfbd83f3f3910e1231bcce4043d9b59ccc512db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/05/2021
+ms.openlocfilehash: 2b9f37d6f45591a43849c8d61787513702982e5b
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606649"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436412"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Kopieren von Daten aus einer SQL Server-Datenbank nach Azure Blob Storage
 
@@ -130,15 +130,16 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-B
 
 1. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt:
 
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
-1. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Data Factory-Benutzeroberfläche auf einer separaten Registerkarte zu starten.
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite für Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“":::
+
+1. Klicken Sie auf der Kachel **Open Azure Data Factory Studio** auf **Öffnen**, um die Data Factory-Benutzeroberfläche in einer separaten Registerkarte zu starten.
 
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 
-1. Wählen Sie auf der Seite **Erste Schritte** die Option **Pipeline erstellen** aus. Eine Pipeline wird automatisch für Sie erstellt. Die Pipeline wird in der Strukturansicht angezeigt, und der dazugehörige Editor wird geöffnet.
+1. Klicken Sie auf der Startseite von Azure Data Factory auf **Orchestrieren**. Eine Pipeline wird automatisch für Sie erstellt. Die Pipeline wird in der Strukturansicht angezeigt, und der dazugehörige Editor wird geöffnet.
 
-   ![Seite „Erste Schritte“](./media/doc-common-process/get-started-page.png)
+   ![Screenshot der Azure Data Factory-Homepage](./media/doc-common-process/get-started-page.png)
 
 1. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **SQLServerToBlobPipeline** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 

@@ -9,107 +9,80 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 05/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 9643d0e63e85a9b500021a415e3cdaf3edc756c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bb28f9cc8a5e08c335c655f581453255463175b
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97608730"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Tutorial: Azure Active Directory-Integration mit Kantega SSO for JIRA
 
-In diesem Tutorial erfahren Sie, wie Sie Kantega SSO for JIRA in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Kantega SSO for JIRA in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Kantega SSO for JIRA in Azure Active Directory (Azure AD) integrieren. Die Integration von Kantega SSO for JIRA in Azure AD ermöglicht Ihnen Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Kantega SSO for JIRA hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Kantega SSO for JIRA anzumelden (einmaliges Anmelden, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* In Azure AD kontrollieren, wer Zugriff auf Kantega SSO for JIRA hat.
+* Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Kantega SSO for JIRA anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit Kantega SSO for JIRA konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
-* Kantega SSO for JIRA-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
+
+* Ein Kantega SSO for JIRA-Abonnement, das für das einmaliges Anmelden aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Kantega SSO for JIRA unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
+* Das Kantega SSO for JIRA unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-kantega-sso-for-jira-from-the-gallery"></a>Hinzufügen von Kantega SSO for JIRA aus dem Katalog
+## <a name="add-kantega-sso-for-jira-from-the-gallery"></a>Eine Anleitung zum Hinzufügen von Kantega SSO for JIRA aus dem Katalog
 
 Zum Konfigurieren der Integration von Kantega SSO for JIRA in Azure AD müssen Sie Kantega SSO for JIRA aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Kantega SSO for JIRA aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus dem Katalog hinzufügen** den Suchbegriff **Kantega SSO for JIRA** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Kantega SSO for JIRA** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+## <a name="configure-and-test-azure-ad-sso-for-kantega-sso-for-jira"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Kantega SSO for JIRA
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Kantega SSO for JIRA mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Kantega SSO for JIRA eingerichtet werden.
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Kantega SSO for JIRA die folgenden Schritte aus:
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Kantega SSO for JIRA](#configure-kantega-sso-for-jira-sso)** , um die Einstellungen für das einmalige Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines Kantega SSO for JIRA-Testbenutzers](#create-kantega-sso-for-jira-test-user)** , um eine Entsprechung von B. Simon in Kantega SSO for JIRA zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-4. Geben Sie im Suchfeld den Namen **Kantega SSO for JIRA** ein, wählen Sie im Ergebnisbereich den Eintrag **Kantega SSO for JIRA** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Kantega SSO for JIRA** zum Abschnitt **Verwalten** und wählen Sie **einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-    ![Kantega SSO for JIRA in der Ergebnisliste](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Kantega SSO for JIRA basierend auf einer Testbenutzerin mit dem Namen **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Kantega SSO for JIRA eingerichtet werden.
-
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Kantega SSO for JIRA müssen Sie die folgenden Bausteine ausführen:
-
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Kantega SSO for JIRA](#configure-kantega-sso-for-jira-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Kantega SSO for JIRA-Testbenutzers](#create-kantega-sso-for-jira-test-user)** , um eine Entsprechung von Britta Simon in Kantega SSO for JIRA zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
-
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Kantega SSO for JIRA die folgenden Schritte aus:
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Kantega SSO for JIRA** die Option **Einmaliges Anmelden** aus.
-
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
-
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
-
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![Screenshot: „Grundlegende SAML-Konfiguration“ mit den hervorgehobenen Textfeldern „Bezeichner“ und „Antwort-URL“ und der ausgewählten Schaltfläche „Speichern“](common/idp-intiated.png)
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<UNIQUE_ID>/login`
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
-
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<UNIQUE_ID>/login`
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Kantega SSO for JIRA](common/metadata-upload-additional-signon.png)
-
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<UNIQUE_ID>/login`
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Diese Werte werden während der Konfiguration des JIRA-Plug-Ins empfangen, die später im Tutorial beschrieben wird.
@@ -122,51 +95,69 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Kantega 
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    a. Anmelde-URL
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-    b. Azure AD-Bezeichner
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-    c. Abmelde-URL
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
-### <a name="configure-kantega-sso-for-jira-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Kantega SSO for JIRA
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
+Ermöglichen Sie B. Simon in diesem Abschnitt die Verwendung des einmaligen Anmeldens von Azure, indem Sie den Zugriff auf Kantega SSO for JIRA gewähren.
+
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Kantega SSO for JIRA** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+## <a name="configure-kantega-sso-for-jira-sso"></a>Eine Anleitung zum Konfigurieren des einmaligen Anmeldens für Kantega SSO for JIRA
 
 1. Melden Sie sich in einem anderen Webbrowserfenster an Ihrem lokalen JIRA-Server als Administrator an.
 
-1. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
+1. Fahren Sie über das Zahnrad, und klicken Sie dann auf die **Add-Ons**.
 
-    ![Screenshot, in dem das Zahnradsymbol ausgewählt und im Dropdownmenü die Option „Add-Ons“ hervorgehoben ist](./media/kantegassoforjira-tutorial/addon1.png)
+    ![Screenshot, in dem das Zahnradsymbol ausgewählt und im Dropdownmenü die Option „Add-Ons“ hervorgehoben ist](./media/kantegassoforjira-tutorial/settings.png)
 
 1. Klicken Sie im Registerkartenabschnitt „Add-Ons“ auf **Nach neuen Add-Ons suchen**. Suchen Sie nach **Kantega SSO for JIRA (SAML & Kerberos)** , und klicken Sie auf die Schaltfläche **Installieren**, um das neue SAML-Plug-In zu installieren.
 
-    ![Screenshot: Abschnitt „Find new Add-ons“ (Nach neuen Add-Ons suchen) mit der Eingabe „Kantega SSO for JIRA (SAML & Kerberos)“ im Suchfeld und der ausgewählten Schaltfläche „Install“ (Installieren)](./media/kantegassoforjira-tutorial/addon2.png)
+    ![Screenshot: Abschnitt „Find new Add-ons“ (Nach neuen Add-Ons suchen) mit der Eingabe „Kantega SSO for JIRA (SAML & Kerberos)“ im Suchfeld und der ausgewählten Schaltfläche „Install“ (Installieren)](./media/kantegassoforjira-tutorial/install-tab.png)
 
 1. Die Installation des Plug-Ins wird gestartet.
 
-    ![Screenshot: Dialogfeld „Installing“ (Wird installiert...) des Plug-Ins](./media/kantegassoforjira-tutorial/addon3.png)
+    ![Screenshot: Dialogfeld „Installing“ (Wird installiert...) des Plug-Ins](./media/kantegassoforjira-tutorial/installation.png)
 
 1. Gehen Sie nach Abschluss der Installation wie folgt vor: Klicken Sie auf **Schließen**.
 
-    ![Screenshot: Dialogfeld „Installed and ready to go!“ (Installiert und einsatzbereit!) mit der ausgewählten Aktion „Close“ (Schließen)](./media/kantegassoforjira-tutorial/addon33.png)
+    ![Screenshot: Dialogfeld „Installed and ready to go!“ (Installiert und einsatzbereit!) mit der ausgewählten Aktion „Close“ (Schließen)](./media/kantegassoforjira-tutorial/close-tab.png)
 
 1.  Klicken Sie auf **Manage**.
 
-    ![Screenshot: App-Seite „Kantega SSO“ mit der ausgewählten Schaltfläche „Manage“ (Verwalten)](./media/kantegassoforjira-tutorial/addon34.png)
+    ![Screenshot: App-Seite „Kantega SSO“ mit der ausgewählten Schaltfläche „Manage“ (Verwalten)](./media/kantegassoforjira-tutorial/manage-tab.png)
     
 1. Das neue Plug-In wird unter **INTEGRATIONEN** aufgeführt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Screenshot, auf dem die Option „INTEGRATIONS“ (INTEGRATIONEN) im Navigationsmenü auf der linken Seite hervorgehoben und die Schaltfläche „Configure“ (Konfigurieren) im Abschnitt „Manage add-ons“ (Add-Ons verwalten) ausgewählt ist](./media/kantegassoforjira-tutorial/addon35.png)
+    ![Screenshot, auf dem die Option „INTEGRATIONS“ (INTEGRATIONEN) im Navigationsmenü auf der linken Seite hervorgehoben und die Schaltfläche „Configure“ (Konfigurieren) im Abschnitt „Manage add-ons“ (Add-Ons verwalten) ausgewählt ist](./media/kantegassoforjira-tutorial/integration.png)
 
 1. Im Abschnitt **SAML**: Wählen Sie in der Dropdownliste **Identitätsanbieter hinzufügen** die Option **Azure Active Directory (Azure AD)**.
 
-    ![Screenshot: Dropdownmenü „Add identity provider“ (Identitätsanbieter hinzufügen) mit der ausgewählten Option „Azure Active Directory (Azure AD)“](./media/kantegassoforjira-tutorial/addon4.png)
+    ![Screenshot: Dropdownmenü „Add identity provider“ (Identitätsanbieter hinzufügen) mit der ausgewählten Option „Azure Active Directory (Azure AD)“](./media/kantegassoforjira-tutorial/identity-provider.png)
 
 1. Wählen Sie als Abonnementebene die Option **Basic**.
 
-    ![Screenshot: Abschnitt „Preparing Azure AD“ (Azure AD wird vorbereitet...) mit Auswahl der Option „Basic“](./media/kantegassoforjira-tutorial/addon5.png)
+    ![Screenshot: Abschnitt „Preparing Azure AD“ (Azure AD wird vorbereitet...) mit Auswahl der Option „Basic“](./media/kantegassoforjira-tutorial/basic-tab.png)
 
 1. Führen Sie im Abschnitt **App-Eigenschaften** die folgenden Schritte aus: 
 
-    ![Screenshot: Abschnitt „App properties“ (App-Eigenschaften) mit dem hervorgehobenen Textfeld „App ID URL“ (App-ID-URL), der hervorgehobenen Schaltfläche zum Kopieren und der ausgewählten Schaltfläche „Next“ (Weiter)](./media/kantegassoforjira-tutorial/addon6.png)
+    ![Screenshot: Abschnitt „App properties“ (App-Eigenschaften) mit dem hervorgehobenen Textfeld „App ID URL“ (App-ID-URL), der hervorgehobenen Schaltfläche zum Kopieren und der ausgewählten Schaltfläche „Next“ (Weiter)](./media/kantegassoforjira-tutorial/properties.png)
 
     1. Kopieren Sie den Wert für den **App-ID-URI**, und verwenden Sie ihn als **Bezeichner, Antwort-URL und Anmelde-URL** im Abschnitt **Grundlegende SAML-Konfiguration** des Azure-Portals.
 
@@ -174,7 +165,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Kantega 
 
 1. Führen Sie im Abschnitt **Metadata import** (Metadatenimport) die folgenden Schritte aus: 
 
-    ![Screenshot: Abschnitt „Metadata import“ (Metadatenimport) mit Auswahl der Option „Metadata file on my computer“ (Metadatendatei auf meinem Computer)](./media/kantegassoforjira-tutorial/addon7.png)
+    ![Screenshot: Abschnitt „Metadata import“ (Metadatenimport) mit Auswahl der Option „Metadata file on my computer“ (Metadatendatei auf meinem Computer)](./media/kantegassoforjira-tutorial/metadata.png)
 
     1. Wählen Sie **Metadata file on my computer** (Metadatendatei auf meinem Computer), und laden Sie die Metadatendatei hoch, die Sie aus dem Azure-Portal heruntergeladen haben.
 
@@ -182,7 +173,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Kantega 
 
 1. Führen Sie im Abschnitt **Name and SSO location** (Name und SSO-Standort) die folgenden Schritte aus:
 
-    ![Screenshot: „Name and SSO location“ (Name und SSO-Standort) mit hervorgehobenem Textfeld „Identity provider name“ (Name des Identitätsanbieters) und Auswahl der Schaltfläche „Next“ (Weiter)](./media/kantegassoforjira-tutorial/addon8.png)
+    ![Screenshot: „Name and SSO location“ (Name und SSO-Standort) mit hervorgehobenem Textfeld „Identity provider name“ (Name des Identitätsanbieters) und Auswahl der Schaltfläche „Next“ (Weiter)](./media/kantegassoforjira-tutorial/location.png)
 
     1. Fügen Sie im Textfeld **Name des Identitätsanbieters** den Namen des Identitätsanbieters hinzu (z.B. Azure AD).
 
@@ -190,11 +181,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Kantega 
 
 1. Überprüfen Sie das Signaturzertifikat, und klicken Sie auf **Weiter**.
 
-    ![Screenshot: Abschnitt „Signature verification“ (Signaturüberprüfung) mit hervorgehobener Schaltfläche „Next“ (Weiter)](./media/kantegassoforjira-tutorial/addon9.png)
+    ![Screenshot: Abschnitt „Signature verification“ (Signaturüberprüfung) mit hervorgehobener Schaltfläche „Next“ (Weiter)](./media/kantegassoforjira-tutorial/certificate.png)
 
 1. Führen Sie im Abschnitt **JIRA user accounts** (JIRA-Benutzerkonten) die folgenden Schritte aus:
 
-    ![Screenshot: „JIRA user accounts“ (JIRA-Benutzerkonten) mit hervorgehobener Option „Create users in JIRA's Internal Directory if needed“ (Benutzer im internen JIRA-Verzeichnis erstellen, falls erforderlich) und ausgewählter Schaltfläche „Next“ (Weiter)](./media/kantegassoforjira-tutorial/addon10.png)
+    ![Screenshot: „JIRA user accounts“ (JIRA-Benutzerkonten) mit hervorgehobener Option „Create users in JIRA's Internal Directory if needed“ (Benutzer im internen JIRA-Verzeichnis erstellen, falls erforderlich) und ausgewählter Schaltfläche „Next“ (Weiter)](./media/kantegassoforjira-tutorial/accounts.png)
 
     1. Wählen Sie **Create users in JIRA's internal Directory if needed** (Benutzer im internen JIRA-Verzeichnis erstellen, falls erforderlich), und geben Sie den entsprechenden Namen der Gruppe für Benutzer ein (können mehrere durch Kommas getrennte Gruppen sein).
 
@@ -202,67 +193,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Kantega 
 
 1. Klicken Sie auf **Fertig stellen**.
 
-    ![Screenshot: Abschnitt „Summary“ (Zusammenfassung) mit ausgewählter Schaltfläche „Finish“ (Fertig stellen)](./media/kantegassoforjira-tutorial/addon11.png)
+    ![Screenshot: Abschnitt „Summary“ (Zusammenfassung) mit ausgewählter Schaltfläche „Finish“ (Fertig stellen)](./media/kantegassoforjira-tutorial/finish-tab.png)
 
 1. Führen Sie im Abschnitt **Known domains for Azure AD** (Bekannte Domänen für Azure AD) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforjira-tutorial/addon12.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforjira-tutorial/save-tab.png)
 
     1. Wählen Sie im linken Bereich der Seite die Option **Known domains** (Bekannte Domänen).
 
     2. Geben Sie den Domänennamen im Textfeld **Known domains** (Bekannte Domänen) ein.
 
     3. Klicken Sie auf **Speichern**.
-
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
-
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    1. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-
-    1. Geben Sie im Feld **Benutzername** den Namen `brittasimon@yourcompanydomain.extension` ein. Zum Beispiel, BrittaSimon@contoso.com
-
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
-
-    1. Klicken Sie auf **Erstellen**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Kantega SSO for JIRA gewähren.
-
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Kantega SSO for JIRA**.
-
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
-2. Wählen Sie in der Anwendungsliste **Kantega SSO for JIRA** aus.
-
-    ![Kantega SSO for JIRA-Link in der Anwendungsliste](common/all-applications.png)
-
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
-
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
-
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
-
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="create-kantega-sso-for-jira-test-user"></a>Erstellen eines Kantega SSO for JIRA-Testbenutzers
 
@@ -274,15 +215,15 @@ Damit sich Azure AD-Benutzer bei JIRA anmelden können, müssen sie in JIRA bere
 
 1. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf **Benutzerverwaltung**.
 
-    ![Screenshot, in dem das Zahnradsymbol ausgewählt und im Dropdownmenü die Option „User management“ (Benutzerverwaltung) hervorgehoben ist](./media/kantegassoforjira-tutorial/user1.png) 
+    ![Screenshot, in dem das Zahnradsymbol ausgewählt und im Dropdownmenü die Option „User management“ (Benutzerverwaltung) hervorgehoben ist](./media/kantegassoforjira-tutorial/user.png) 
 
 1. Klicken Sie im Registerkartenabschnitt **Benutzerverwaltung** auf **Benutzer erstellen**.
 
-    ![Screenshot: Abschnitt „User management“ (Benutzerverwaltung), in dem die Schaltfläche „Create user“ (Benutzer erstellen) ausgewählt ist](./media/kantegassoforjira-tutorial/user2.png) 
+    ![Screenshot: Abschnitt „User management“ (Benutzerverwaltung), in dem die Schaltfläche „Create user“ (Benutzer erstellen) ausgewählt ist](./media/kantegassoforjira-tutorial/create-user.png) 
 
 1. Führen Sie auf der Dialogfeldseite **Neuen Benutzer erstellen** die folgenden Schritte durch:
 
-    ![Mitarbeiter hinzufügen](./media/kantegassoforjira-tutorial/user3.png) 
+    ![Mitarbeiter hinzufügen](./media/kantegassoforjira-tutorial/new-user.png) 
 
     1. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers, z.B. Brittasimon@contoso.com, ein.
 
@@ -294,16 +235,22 @@ Damit sich Azure AD-Benutzer bei JIRA anmelden können, müssen sie in JIRA bere
 
     5. Klicken Sie auf **Benutzer erstellen**.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Kantega SSO for JIRA“ klicken, sollten Sie automatisch bei Ihrer Kantega SSO for JIRA-Anwendung angemeldet werden, für die Sie SSO eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Kantega SSO for JIRA weitergeleitet, wo Sie den Anmeldeablauf initiieren können.  
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Navigieren Sie direkt zur Anmelde-URL für Kantega SSO for JIRA, und initiieren Sie den Anmeldeablauf.
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP-initiiert:
 
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Daraufhin sollten Sie automatisch bei der Kantega SSO for JIRA -Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. 
+
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Kantega SSO for JIRA“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeablaufs zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Kantega SSO for JIRA-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von Kantega SSO for JIRA können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

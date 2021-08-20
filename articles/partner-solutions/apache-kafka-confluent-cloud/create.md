@@ -1,19 +1,19 @@
 ---
-title: 'Erstellen von Apache Kafka in Confluent Cloud: Azure-Partnerlösungen'
+title: Erstellen von Apache Kafka in der Confluent Cloud über das Azure-Portal – Eine Azure-Partnerlösungen
 description: In diesem Artikel wird beschrieben, wie Sie das Azure-Portal verwenden, um eine Instanz von Apache Kafka in Confluent Cloud zu erstellen.
 ms.service: partner-services
 ms.topic: quickstart
-ms.date: 01/15/2021
+ms.date: 06/07/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: f4c6dacf63b1be44e826fe6841c87ccec4bf9b1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d2326d330dca9111a68edcc81c8c45f7525c1b0
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98253661"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112521036"
 ---
-# <a name="quickstart-get-started-with-apache-kafka-for-confluent-cloud"></a>Schnellstart: Erste Schritte mit Apache Kafka in Confluent Cloud
+# <a name="quickstart-get-started-with-apache-kafka-for-confluent-cloud---azure-portal"></a>Schnellstart: Erste Schritte mit Apache Kafka in der Confluent Cloud – Azure-Portal
 
 In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Instanz von Apache Kafka in Confluent Cloud zu erstellen.
 
@@ -65,7 +65,7 @@ Nachdem Sie das Angebot für Apache Kafka in Confluent Cloud ausgewählt haben, 
 
     :::image type="content" source="media/setup-basics.png" alt-text="Formular zum Einrichten der Confluent Cloud-Ressource":::
 
-    | Eigenschaft | BESCHREIBUNG |
+    | Eigenschaft | Beschreibung |
     | ---- | ---- |
     | **Abonnement** | Wählen Sie im Dropdownmenü das Azure-Abonnement für die Bereitstellung aus. Sie müssen über den Zugriffstyp _Besitzer_ oder _Mitwirkender_ verfügen. |
     | **Ressourcengruppe** | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md). |

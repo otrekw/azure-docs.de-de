@@ -8,12 +8,12 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 5c3ae5c7b1c45d170548f6fa00481094117e1737
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: acae0362d664567bb15b964f396f0c300135ed1c
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937361"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114726752"
 ---
 # <a name="what-is-azure-front-door-standardpremium-preview"></a>Was ist Azure Front Door Standard/Premium (Vorschau)?
 
@@ -28,7 +28,7 @@ Mit Azure-Front-Door-Standard/Premium können Sie Ihre globalen Consumer-und Unt
 
 Azure Front Door Standard/Premium arbeitet in Schicht 7 (HTTP/HTTPS-Schicht) unter Verwendung des Anycast-Protokolls mit Split TCP sowie dem globalen Netzwerk von Microsoft zur Verbesserung der globalen Konnektivität. Basierend auf Ihrer Routingmethode können Sie sicherstellen, dass Azure Front Door Ihre Clientanforderungen an den schnellsten und am besten verfügbaren Anwendungsursprung weiterleitet. Ein Anwendungsursprung ist ein Dienst mit Internetzugriff, der innerhalb oder außerhalb von Azure gehostet wird. Front Door Standard/Premium bietet eine Reihe von Datenverkehrsrouting-Methoden und Ursprungsüberwachungsoptionen, die verschiedene Anwendungsanforderungen und automatische Failoverszenarien erfüllen. Ähnlich wie Traffic Manager zeichnet sich Front Door durch eine geringe Fehleranfälligkeit aus, selbst wenn es zum Ausfall einer ganzen Azure-Region kommt.
 
-Azure Front Door schützt Ihre Anwendung auch an den Rändern mit integriertem Web Application Firewall-Schutz, Bot-Schutz und integriertem DDoS-Schutz auf Schicht 3 und 4. Außerdem werden Ihre privaten Back-Ends mit dem Private Link-Dienst gesichert. Azure-Front-Door bietet Ihnen die Best-in-Practice-Sicherheit von Microsoft auf globaler Ebene.  
+Azure Front Door schützt Ihre Anwendung auch an den Rändern mit dem integriertem Web Application Firewall-Schutz, Bot-Schutz und integriertem verteilten Denial-of-Service-Schutz (DDoS) auf Schicht 3 und 4. Außerdem werden Ihre privaten Back-Ends mit dem Private Link-Dienst gesichert. Azure-Front-Door bietet Ihnen die Best-in-Practice-Sicherheit von Microsoft auf globaler Ebene.  
 
 >[!NOTE]
 > Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit.

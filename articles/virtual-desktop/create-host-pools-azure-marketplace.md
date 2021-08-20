@@ -1,29 +1,36 @@
 ---
 title: 'Azure Virtual Desktop-Hostpool im Azure-Portal: Azure'
-description: Hier erfahren Sie, wie Sie einen Azure Virtual Desktop-Hostpool im Azure-Portal erstellen.
+description: Erfahren Sie, wie Sie einen Azure Virtual Desktop-Hostpool über das Azure-Portal erstellen.
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
-ms.date: 03/10/2021
+ms.date: 07/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 96e5fbf825c0550001ae9b0a38517e753b3a8d0f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 34faa055eb14841d1b35d81e62c74fef92c80bac
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756255"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707070"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
 
 >[!IMPORTANT]
 >Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md). Objekte, die Sie mit Azure Virtual Desktop (klassisch) erstellen, können nicht mit dem Azure-Portal verwaltet werden.
 
-Ein Hostpool ist eine Sammlung identischer VMs innerhalb von Azure Virtual Desktop-Umgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
+Ein Hostpool ist eine Sammlung identischer VMs, auch als „Sitzungshosts“ bezeichnet, innerhalb von Azure Virtual Desktop-Umgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können. Weitere Informationen zur Bereitstellungsarchitektur finden Sie unter [Azure Virtual Desktop-Umgebung](environment-setup.md). Wenn Sie ein App-Entwickler sind, der das Remote-App-Streaming für Azure Virtual Desktop verwendet, können Ihre Kunden oder Benutzer Ihre Apps wie lokale Apps auf einem physischen Gerät verwenden. Weitere Informationen zur Verwendung von Azure Virtual Desktop als App-Entwickler finden Sie in unserer Dokumentation zum [Streaming von Azure Virtual Desktop-Remote-Apps](./remote-app-streaming/custom-apps.md).
 
-In diesem Artikel wird der Einrichtungsprozess zum Erstellen eines Hostpools für eine Azure Virtual Desktop-Umgebung über das Azure-Portal detailliert beschrieben. Bei dieser Methode verwenden Sie eine browserbasierte Benutzeroberfläche, um einen Hostpool in Azure Virtual Desktop zu erstellen, eine Ressourcengruppe mit VMs unter einem Azure-Abonnement zu erstellen und diese VMs dann in die Azure Active Directory-Domäne (AD) einzubinden und bei Azure Virtual Desktop zu registrieren.
+>[!NOTE]
+>Wenn Sie ein App-Entwickler sind, der das Remote-App-Streaming für Azure Virtual Desktop verwendet und sich die Benutzer Ihrer App in derselben Organisation wie Ihre Bereitstellung befinden, können Sie Ihren vorhandenen Azure-Mandanten verwenden, um Ihren Hostpool zu erstellen. Falls sich Ihre Benutzer außerhalb Ihrer Organisation befinden, müssen Sie aus Sicherheitsgründen separate Azure-Mandanten mit mindestens einem Hostpool für jede Organisation erstellen. Weitere Informationen zu den empfohlenen Vorgehensweisen, um die Sicherheit Ihrer Bereitstellung zu gewährleisten, finden Sie in den [Architekturempfehlungen](./remote-app-streaming/architecture-recs.md).
+
+In diesem Artikel wird der Einrichtungsprozess zum Erstellen eines Hostpools für eine Azure Virtual Desktop-Umgebung über das Azure-Portal detailliert beschrieben. Bei dieser Methode verwenden Sie eine browserbasierte Benutzeroberfläche, um einen Hostpool in Azure Virtual Desktop zu erstellen, eine Ressourcengruppe mit VMs in einem Azure-Abonnement zu erstellen und diese VMs dann entweder in die Active Directory-Domäne (AD) oder den Azure AD-Mandanten (Azure Active Directory) einzubinden und bei Azure Virtual Desktop zu registrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+Die Anforderungen unterscheiden sich je nachdem, ob Sie ein IT-Experte sind, der eine Bereitstellung für Ihre Organisation einrichtet, oder ein App-Entwickler, der Anwendungen für Kunden betreut.
+
+### <a name="requirements-for-it-professionals"></a>Anforderungen für IT-Experten
 
 Zum Erstellen eines Hostpools müssen Sie die folgenden Parameter eingeben:
 
@@ -37,11 +44,21 @@ Außerdem müssen Sie Folgendes wissen:
 - Wo befindet sich die Quelle des Images, das Sie verwenden möchten? Stammt es aus dem Azure-Katalog, oder handelt es sich um ein benutzerdefiniertes Image?
 - Wo befinden sich Ihre Anmeldeinformationen für den Domänenbeitritt?
 
-Stellen Sie außerdem sicher, dass Sie den Ressourcenanbieter „Microsoft.DesktopVirtualization“ registriert haben. Gehen Sie wie folgt vor, falls Sie dies noch nicht getan haben: Navigieren Sie zu **Abonnements**, und wählen Sie den Namen Ihres Abonnements und dann **Ressourcenanbieter** aus. Suchen Sie nach DesktopVirtualization, und wählen Sie „Microsoft.DesktopVirtualization“ und dann „Registrieren“ aus.
+### <a name="requirements-for-app-developers"></a>Anforderungen für App-Entwickler
 
-Beim Erstellen eines Azure Virtual Desktop-Hostpools mit der Azure Resource Manager-Vorlage können Sie einen virtuellen Computer über den Azure-Katalog, ein verwaltetes Image oder ein nicht verwaltetes Image erstellen. Weitere Informationen zur Erstellung von VM-Images finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) bzw. unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).
+Wenn Sie ein App-Entwickler sind, der das Remote-App-Streaming für Azure Virtual Desktop verwendet, um Apps für Kunden bereitzustellen, benötigen Sie Folgendes:
 
-Wenn Sie noch kein Azure-Abonnement haben, müssen Sie [ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie diese Anweisungen ausführen.
+- Wenn Sie planen, die App Ihrer Organisation Endbenutzern zur Verfügung zu stellen, müssen Sie sicherstellen, dass die App einsatzbereit ist. Weitere Informationen finden Sie unter [Hosten benutzerdefinierter Apps mit Azure Virtual Desktop](./remote-app-streaming/custom-apps.md).
+- Wenn die vorhandenen Imageauswahlmöglichkeiten im Azure-Katalog Ihre Anforderungen nicht erfüllen, müssen Sie auch Ihr eigenes benutzerdefiniertes Image für Ihre Sitzungshost-VMs erstellen. Weitere Informationen zur Erstellung von VM-Images finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) bzw. unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).
+- Wo befinden sich Ihre Anmeldeinformationen für den Domänenbeitritt? Wenn Sie noch nicht über ein Identitätsverwaltungssystem verfügen, das mit Azure Virtual Desktop kompatibel ist, müssen Sie die Identitätsverwaltung für Ihren Hostpool einrichten.
+
+### <a name="final-requirements"></a>Abschließende Anforderungen
+
+Stellen Sie abschließend sicher, dass Sie den Ressourcenanbieter „Microsoft.DesktopVirtualization“ registriert haben. Gehen Sie wie folgt vor, falls Sie dies noch nicht getan haben: Navigieren Sie zu **Abonnements**, und wählen Sie den Namen Ihres Abonnements und dann **Ressourcenanbieter** aus. Suchen Sie nach **DesktopVirtualization**, und wählen Sie **Microsoft.DesktopVirtualization** und dann **Registrieren** aus.
+
+Wenn Sie als IT-Experte ein Netzwerk einrichten und im Rahmen dessen einen Azure Virtual Desktop-Hostpool mit der Azure Resource Manager-Vorlage erstellen, können Sie eine VM über den Azure-Katalog, ein verwaltetes Image oder ein nicht verwaltetes Image erstellen. Weitere Informationen zur Erstellung von VM-Images finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) bzw. unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md). (Wenn Sie App-Entwickler sind, müssen Sie sich über diesen Teil keine Gedanken machen.)
+
+Schließlich müssen Sie, wenn Sie noch kein Azure-Abonnement haben, [ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie die folgenden Anweisungen ausführen können.
 
 ## <a name="begin-the-host-pool-setup-process"></a>Erste Schritte des Einrichtungsprozesses für den Hostpool
 
@@ -51,6 +68,8 @@ Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte a
    
    >[!NOTE]
    > Wenn Sie sich beim US Gov-Portal anmelden, wechseln Sie stattdessen zu [https://portal.azure.us/](https://portal.azure.us/).
+   > 
+   >Wenn Sie auf das Portal für „Azure China“ zugreifen, wechseln Sie zu [https://portal.azure.cn/](https://portal.azure.cn/).
 
 2. Geben Sie **Azure Virtual Desktop** in die Suchleiste ein, und wählen Sie dann unter „Dienste“ den Eintrag **Azure Virtual Desktop** aus.
 
@@ -82,7 +101,7 @@ Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte a
 9.  Geben Sie bei Auswahl von **In Pool** die folgenden Informationen ein:
 
      - Geben Sie für **Maximale Anzahl von Sitzungen** die Höchstanzahl von Benutzern ein, für die ein Lastenausgleich auf einem einzelnen Sitzungshost durchgeführt werden soll.
-     - Wählen Sie für **Lastenausgleichsalgorithmus** je nach Nutzungsmuster „Breitenorientierter Lastenausgleich“ oder „Tiefenorientierter Lastenausgleich“ aus.
+     - Wählen Sie für **Lastenausgleichsalgorithmus** je nach Nutzungsmuster „Breitenorientierter Lastenausgleich“ oder „Tiefenorientierter Lastenausgleich“ aus. Weitere Informationen zu den einzelnen Optionen finden Sie unter [Lastenausgleichsmethoden für Hostpools](host-pool-load-balancing.md).
 
        > [!div class="mx-imgBorder"]
        > ![Screenshot des Dropdownmenüs „Zuweisungstyp“ mit ausgewählter Option „In Pool“. Der Benutzer zeigt mit dem Cursor auf die Option „Breitenorientierter Lastenausgleich“ im Dropdownmenü „Lastenausgleichsalgorithmus“.](media/pooled-assignment-type.png)
@@ -103,12 +122,12 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
 2. Geben Sie anschließend ein **Namenspräfix** für die Benennung der VMs an, die beim Einrichtungsprozess erstellt werden. Das Suffix ist `-` mit Zahlen ab 0.
 
-3. Wählen Sie den **VM-Standort** aus, in dem Sie die virtuellen Computer erstellen möchten. Sie können die für den Hostpool ausgewählte Region oder eine andere Region verwenden.
+3. Wählen Sie den **VM-Standort** aus, in dem Sie die virtuellen Computer erstellen möchten. Sie können die für den Hostpool ausgewählte Region oder eine andere Region verwenden. Beachten Sie, dass die VM-Preise je nach Region variieren und sich die VM-Standorte nach Möglichkeit in der Nähe Ihrer Benutzer befinden sollten, um die Leistung zu maximieren. Weitere Informationen finden Sie unter [Datenstandorte für Azure Virtual Desktop](data-locations.md).
    
-4. Wählen Sie als Nächstes die Verfügbarkeitsoption aus, die Ihren Anforderungen am ehesten entspricht. Weitere Informationen dazu, welche Option für Sie geeignet ist, finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](../virtual-machines/availability.md) und in den [häufig gestellten Fragen](faq.md#which-availability-option-is-best-for-me).
+4. Wählen Sie als Nächstes die Verfügbarkeitsoption aus, die Ihren Anforderungen am ehesten entspricht. Weitere Informationen dazu, welche Option für Sie geeignet ist, finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](../virtual-machines/availability.md) und in den [häufig gestellten Fragen](/azure/virtual-desktop/faq#which-availability-option-is-best-for-me).
    
    > [!div class="mx-imgBorder"]
-   > [Screenshot: Dropdownmenü für Verfügbarkeitszonen. Die Option „Verfügbarkeitszone“ ist hervorgehoben.](media/availability-zone.png)
+   > ![Screenshot: Dropdownmenü für Verfügbarkeitszonen. Die Option „Verfügbarkeitszone“ ist hervorgehoben.](media/availability-zone.png)
 
 5. Wählen Sie nun das Image aus, das zum Erstellen der VM verwendet werden muss. Sie können **Katalog** oder **Speicherblob** auswählen.
 
@@ -123,7 +142,7 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
       Falls das gewünschte Image nicht angezeigt wird, wählen Sie **Alle Images anzeigen** aus. Sie können dann ein anderes Image in Ihrem Katalog oder ein von Microsoft und anderen Herausgebern bereitgestelltes Image auswählen. Wählen Sie unbedingt eines der [unterstützten Betriebssystemimages](overview.md#supported-virtual-machine-os-images) aus.
 
       > [!div class="mx-imgBorder"]
-      > ![Screenshot des Marketplace mit einer Liste von Images von Microsoft.](media/marketplace-images.png)
+      > ![Screenshot des Azure-Portals mit einer Liste von Images von Microsoft](media/marketplace-images.png)
 
       Sie können auch zu **Meine Elemente** wechseln und ein benutzerdefiniertes Image auswählen, das Sie bereits hochgeladen haben.
 
@@ -132,9 +151,9 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
     - Bei Auswahl von **Speicherblob** können Sie Ihren eigenen Imagebuild über Hyper-V oder auf einer Azure-VM nutzen. Sie müssen lediglich im Speicherblob den Speicherort des Images als URI eingeben.
    
-   Der Speicherort des Images ist unabhängig von der Verfügbarkeitsoption. Die Zonenresilienz des Images bestimmt jedoch, ob das Image mit einer Verfügbarkeitszone verwendet werden kann. Wenn Sie beim Erstellen des Images eine Verfügbarkeitszone auswählen, stellen Sie sicher, dass Sie ein Image aus dem Katalog mit aktivierter Zonenresilienz verwenden. Weitere Informationen dazu, welche Zonenresilienzoption Sie verwenden sollten, finden Sie in den [häufig gestellten Fragen](faq.md#which-availability-option-is-best-for-me).
+   Der Speicherort des Images ist unabhängig von der Verfügbarkeitsoption. Die Zonenresilienz des Images bestimmt jedoch, ob das Image mit einer Verfügbarkeitszone verwendet werden kann. Wenn Sie beim Erstellen des Images eine Verfügbarkeitszone auswählen, stellen Sie sicher, dass Sie ein Image aus dem Katalog mit aktivierter Zonenresilienz verwenden. Weitere Informationen dazu, welche Zonenresilienzoption Sie verwenden sollten, finden Sie in den [häufig gestellten Fragen](/azure/virtual-desktop/faq#which-availability-option-is-best-for-me).
 
-6. Wählen Sie anschließend die **VM-Größe** aus. Sie können entweder die Standardgröße übernehmen oder **Größe ändern** auswählen, um die Größe zu ändern. Wenn Sie auf **Größe ändern** klicken, wählen Sie im angezeigten Fenster die passende VM-Größe für Ihre Workload aus.
+6. Wählen Sie anschließend die **VM-Größe** aus. Sie können entweder die Standardgröße übernehmen oder **Größe ändern** auswählen, um die Größe zu ändern. Wenn Sie auf **Größe ändern** klicken, wählen Sie im angezeigten Fenster die passende VM-Größe für Ihre Workload aus. Weitere Informationen und Empfehlungen zu VM-Größen finden Sie unter [Richtlinien für VM-Größen](/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context).
 
 7. Geben Sie unter **Anzahl von VMs** die Anzahl von virtuellen Computern an, die Sie für Ihren Hostpool erstellen möchten.
 
@@ -157,11 +176,17 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
     Wählen Sie bei Auswahl von **Erweitert** eine vorhandene Netzwerksicherheitsgruppe aus, die Sie bereits konfiguriert haben.
 
-11. Wählen Sie anschließend aus, ob die VMs einer bestimmten Domäne und Organisationseinheit beitreten sollen. Geben Sie bei Auswahl von **Ja** die jeweilige Domäne an. Sie können optional eine spezifische Organisationseinheit hinzufügen, in der die virtuellen Computer enthalten sein sollen. Wenn Sie **Nein** auswählen, werden die virtuellen Computer mit der Domäne verknüpft, die dem Suffix des **UPN für AD-Domänenbeitritt** entspricht.
+11. Wählen Sie anschließend aus, ob die VMs in **Active Directory** oder **Azure Active Directory** (Vorschau) eingebunden werden sollen.
 
-    - Stellen Sie beim Angeben einer Organisationseinheit sicher, dass Sie den vollständigen Pfad (Distinguished Name) ohne Anführungszeichen verwenden.
+    - Geben Sie für Active Directory ein Konto für den Beitritt zur Domäne an, und wählen Sie aus, ob die Einbindung in einer bestimmten Domäne und Organisationseinheit erfolgen soll.
 
-12. Geben Sie unter „Domänenadministratorkonto“ die Anmeldeinformationen für den Active Directory-Domänenadministrator des virtuellen Netzwerks an, das Sie ausgewählt haben. Für dieses Konto kann die mehrstufige Authentifizierung(MFA) nicht aktiviert werden. Bei der Einbindung in eine Azure Active Directory Domain Services-Domäne (Azure AD DS) muss das Konto Teil der Gruppe „Azure AD DC-Administratoren“ sein, und das Kontokennwort muss in Azure AD DS gültig sein.
+        - Geben Sie beim UPN für den AD-Domänenbeitritt die Anmeldeinformationen für den Active Directory-Domänenadministrator des ausgewählten virtuellen Netzwerks an. Für das verwendete Konto darf die mehrstufige Authentifizierung (Multifactor Authentication, MFA) nicht aktiviert sein. Bei der Einbindung in eine Azure Active Directory Domain Services-Domäne (Azure AD DS) muss das verwendete Konto Teil der Gruppe „Azure AD DC-Administratoren“ sein, und das Kontokennwort muss in Azure AD DS gültig sein.
+
+        - Um eine Domäne anzugeben, wählen Sie **Ja** aus, und geben Sie dann den Namen der Domäne für den Beitritt ein. Bei Bedarf können Sie auch eine bestimmte Organisationseinheit hinzufügen, in der sich die VMs befinden sollen. Dazu geben Sie den vollständigen Pfad (Distinguished Name) ohne Anführungszeichen ein. Wenn Sie keine Domäne angeben möchten, wählen Sie **Nein** aus. Die VMs treten automatisch der Domäne bei, die dem Suffix des **UPN für den AD-Domänenbeitritt** entspricht.
+  
+    - Für Azure Active Directory können Sie **VM bei Intune registrieren** auswählen, um die VM nach der Bereitstellung automatisch für die Verwaltung verfügbar zu machen.
+
+12. Geben Sie unter **VM-Administratorkonto** die Anmeldeinformationen des lokalen Administratorkontos ein, das beim Erstellen der VM hinzugefügt werden soll. Sie können dieses Konto zu Verwaltungszwecken sowohl für in AD als auch für in Azure AD eingebundene VMs verwenden.
 
 13. Klicken Sie auf **Weiter: Arbeitsbereich >** .
 
@@ -170,6 +195,9 @@ Damit sind Sie bereit für die nächste Phase der Einrichtung Ihres Hostpools: R
 ## <a name="workspace-information"></a>Informationen zum Arbeitsbereich
 
 Beim Einrichtungsprozess für den Hostpool wird standardmäßig eine Desktopanwendungsgruppe erstellt. Damit der Hostpool wie beabsichtigt funktioniert, müssen Sie diese App-Gruppe für Benutzer oder Benutzergruppen veröffentlichen und die App-Gruppe in einem Arbeitsbereich registrieren.
+
+>[!NOTE]
+>Wenn Sie ein App-Entwickler sind und die Apps Ihrer Organisation veröffentlichen möchten, können Sie MSIX-Apps dynamisch an Benutzersitzungen anfügen oder Ihre App-Pakete einem benutzerdefinierten VM-Image hinzufügen. Weitere Informationen finden Sie unter „Verwenden Ihrer benutzerdefinierten App mit Azure Virtual Desktop“.
 
 So registrieren Sie die Desktop-App-Gruppe in einem Arbeitsbereich:
 
@@ -195,7 +223,7 @@ So registrieren Sie die Desktop-App-Gruppe in einem Arbeitsbereich:
      - Ein Arbeitsbereich (sofern Sie keinen vorhandenen Arbeitsbereich verwenden).
      - Wenn Sie sich für die Registrierung der Desktop-App-Gruppe entschieden haben, wird die Registrierung durchgeführt.
      - VMs (sofern Sie sich für deren Erstellung entschieden haben), die der Domäne hinzugefügt und beim neuen Hostpool registriert werden.
-     - Ein Downloadlink für eine Azure-Ressourcenverwaltungsvorlage, die auf Ihrer Konfiguration basiert.
+     - Ein Downloadlink für eine Azure Resource Manager-Vorlage, die auf Ihrer Konfiguration basiert.
 
 Danach sind Sie fertig!
 

@@ -1,15 +1,15 @@
 ---
 title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen mit Event Grid und der Azure CLI'
 description: 'Schnellstart: Verwenden von Azure Event Grid und der Azure CLI, um ein benutzerdefiniertes Thema zu veröffentlichen und Ereignisse für dieses Thema zu abonnieren. Die Ereignisse werden von einer Webanwendung verarbeitet.'
-ms.date: 04/22/2021
+ms.date: 07/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2790cead3455a24a3ec75c677138e6e3eeb4efa2
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 0217887821d6fe905db92bfdd5e999d46f77839d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897935"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457538"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an einen Webendpunkt mit Azure CLI und Event Grid
 
@@ -43,7 +43,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Erstellen eines benutzerdefinierten Themas
 
-Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse. Im folgenden Beispiel wird das benutzerdefinierte Thema in Ihrer Ressourcengruppe erstellt. Ersetzen Sie `<your-topic-name>` durch einen eindeutigen Namen für Ihr Thema. Der Name des benutzerdefinierten Themas muss eindeutig sein, da er Teil des DNS-Eintrags ist. Außerdem muss er zwischen 3 und 50 Zeichen lang sein und darf nur die folgenden Zeichen enthalten: a - z, A - Z, 0 - 9 und „-“.
+Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse. Im folgenden Beispiel wird das benutzerdefinierte Thema in Ihrer Ressourcengruppe mithilfe von Bash in der Azure Cloud Shell erstellt. Ersetzen Sie `<your-topic-name>` durch einen eindeutigen Namen für Ihr Thema. Der Name des benutzerdefinierten Themas muss eindeutig sein, da er Teil des DNS-Eintrags ist. Außerdem muss er zwischen 3 und 50 Zeichen lang sein und darf nur die folgenden Zeichen enthalten: a - z, A - Z, 0 - 9 und „-“.
 
 ```azurecli-interactive
 topicname=<your-topic-name>

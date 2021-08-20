@@ -5,14 +5,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/04/2021
 ms.author: trbye
-ms.openlocfilehash: 4ac14a82fa5698faf6f79c97cd1cdd729f1966a8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2ffcb79bb2bb192566e7f6b7e0f933cacce84a77
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769439"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593205"
 ---
-Um die Schnellstartanleitung zur Absichtserkennung durchzuführen, müssen Sie über das LUIS-Vorschauportal ein LUIS-Konto und ein Projekt erstellen. Für diese Schnellstartanleitung benötigen Sie nur ein LUIS-Abonnement. Ein Abonnement der Speech-Dienste ist *nicht* erforderlich.
+Um die Schnellstartanleitung zur Absichtserkennung durchzuführen, müssen Sie über das LUIS-Vorschauportal ein LUIS-Konto und ein Projekt erstellen. Für diesen Schnellstart benötigen Sie ein LUIS-Abonnement [in einer Region, in der die Absichtserkennung verfügbar ist](/azure/cognitive-services/speech-service/regions#intent-recognition). Ein Abonnement der Speech-Dienste ist *nicht* erforderlich.
 
 Zuerst müssen Sie über das LUIS-Vorschauportal ein LUIS-Konto und eine App erstellen. Die erstellte LUIS-App verwendet eine vordefinierte Domäne für die Gebäudeautomatisierung, die Absichten, Entitäten und Beispieläußerungen bereitstellt. Am Ende dieser Schnellstartanleitung verfügen Sie über einen LUIS-Endpunkt in der Cloud, den Sie über das Speech SDK aufrufen können. 
 

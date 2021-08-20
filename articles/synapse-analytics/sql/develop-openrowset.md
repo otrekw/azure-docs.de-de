@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a39b963fa88866e02e9813c68d1b6504d3e98c7
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c8a93ce59927144ce02edb8c1193406a29b18530
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956525"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913777"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -189,7 +189,10 @@ ROWTERMINATOR ='row_terminator'`
 
 Dient zum Angeben des zu verwendenden Zeilenabschlusszeichens. Wenn kein Zeilenabschlusszeichen angegeben wird, wird eines der Standardabschlusszeichen verwendet. Standardabschlusszeichen für „PARSER_VERSION = '1.0'“ sind „\r\n“, „\n“ und „\r“. Standardabschlusszeichen für „PARSER_VERSION = '2.0'“ sind „\r\n“ und „\n“.
 
-ESCAPECHAR = 'char'
+> [!NOTE]
+> Wenn Sie PARSER_VERSION='1.0' verwenden und \n (Zeilenvorschub) als Zeilenabschlusszeichen angeben, wird dieses Zeichen automatisch mit dem Präfix \r (Wagenrücklauf) versehen, was zum Zeilenabschlusszeichen \r\n führt.
+
+ESCAPE_CHAR = 'char'
 
 Dient zum Angeben des Zeichens in der Datei, das als Escapezeichen für sich selbst und für alle Trennzeichenwerte in der Datei fungiert. Wenn auf das Escapezeichen ein Wert folgt, bei dem es sich nicht um das Escapezeichen selbst oder um einen der Trennzeichenwerte handelt, wird das Escapezeichen beim Lesen des Werts gelöscht. 
 
@@ -221,6 +224,8 @@ Die CSV-Parserversion 1.0 ist die funktionsreiche Standardversion. Version 2.0 
 Einzelheiten zu CSV-Parserversion 1.0:
 
 - Die folgenden Optionen werden nicht unterstützt: HEADER_ROW.
+- Die Standardabschlusszeichen lauten \r\n, \n und \r. 
+- Wenn Sie \n (Zeilenvorschub) als Zeilenabschlusszeichen angeben, wird dieses Zeichen automatisch mit dem Präfix \r (Wagenrücklauf) versehen, was zum Zeilenabschlusszeichen \r\n führt.
 
 Einzelheiten zu CSV-Parserversion 2.0:
 
@@ -233,6 +238,7 @@ Einzelheiten zu CSV-Parserversion 2.0:
 - Unterstütztes Format für DATE-Datentyp: JJJJ-MM-TT
 - Unterstütztes Format für TIME-Datentyp: HH:MM:SS[.Sekundenbruchteile]
 - Unterstütztes Format für DATETIME2-Datentyp: YYYY-MM-DD HH:MM:SS[.Sekundenbruchteile]
+- Die Standardabschlusszeichen lauten \r\n und \n.
 
 HEADER_ROW = { TRUE | FALSE }
 

@@ -1,16 +1,19 @@
 ---
 title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
-ms.date: 05/01/2021
+ms.date: 06/21/2021
 ms.topic: overview
-ms.openlocfilehash: 00fd2732f1a1176bd231675361e65ad451fd6de9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 445ecce12c9900dbae2eb4d7a3c1278c979d6cd9
+ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761289"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112427865"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
+
+> [!IMPORTANT]
+> Die Azure Blueprints befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
 Genau wie eine Blaupause, die einem Ingenieur oder Architekten die Skizzierung der Entwurfsparameter für ein Projekt ermöglicht, ermöglicht es Azure Blueprints Cloudarchitekten und zentralen IT-Gruppen, eine wiederholbare Gruppe von Azure-Ressourcen zu definieren, mit der die Standards, Muster und Anforderungen einer Organisation implementiert und erzwungen werden. Mit Azure Blueprints können Entwicklungsteams schnell neue Umgebungen bereitstellen und einrichten und dabei darauf vertrauen, dass sie die Konformitätsanforderungen der Organisation erfüllen und über eine Reihe integrierter Komponenten (z. B. Netzwerk) zur Beschleunigung der Entwicklung und Bereitstellung verfügen.
 

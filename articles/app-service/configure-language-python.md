@@ -5,18 +5,18 @@ ms.topic: quickstart
 ms.date: 06/11/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: db1650c61ae9e70955fd945527ff049e2663a174
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 333f9572e9bf5a24e7c9ac230b10f74adf5be7de
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018061"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963796"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App für Azure App Service
 
 In diesem Artikel wird beschrieben, wie Python-Apps mit [Azure App Service](overview.md) ausgeführt werden und wie Sie vorhandene Apps zu Azure migrieren und das Verhalten von App Service bei Bedarf anpassen können. Python-Apps müssen mit allen erforderlichen [pip](https://pypi.org/project/pip/)-Modulen bereitgestellt werden.
 
-Die App Service-Bereitstellungs-Engine aktiviert automatisch eine virtuelle Umgebung und führt `pip install -r requirements.txt` für Sie aus, wenn Sie ein [Git-Repository](deploy-local-git.md) oder ein [ZIP-Paket](deploy-zip.md) bereitstellen.
+Die App Service-Bereitstellungs-Engine aktiviert automatisch eine virtuelle Umgebung und führt `pip install -r requirements.txt` für Sie aus, wenn Sie ein [Git-Repository](deploy-local-git.md) oder ein [ZIP-Paket](deploy-zip.md) [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereitstellen.
 
 Dieser Leitfaden enthält wichtige Konzepte und Anleitungen für Python-Entwickler, die in App Service einen integrierten Linux-Container verwenden. Falls Sie Azure App Service noch nicht verwendet haben, ist es ratsam, zunächst die [Python-Schnellstartanleitung](quickstart-python.md) und das [Tutorial „Python mit PostgreSQL“](tutorial-python-postgresql-app.md) durchzuarbeiten.
 
@@ -65,7 +65,7 @@ Sie können auch eine nicht unterstützte Version von Python ausführen, indem S
 
 ## <a name="customize-build-automation"></a>Anpassen der Buildautomatisierung
 
-Mit dem Buildsystem von App Service (Bezeichnung: Oryx) werden die folgenden Schritte ausgeführt, wenn Sie Ihre App per Git oder mit ZIP-Paketen bereitstellen:
+Mit dem Buildsystem von App Service (Bezeichnung: Oryx) werden die folgenden Schritte ausgeführt, wenn die Einstellung `SCM_DO_BUILD_DURING_DEPLOYMENT` beim Bereitstellen Ihrer App auf `1` gesetzt ist:
 
 1. Führen Sie ein benutzerdefiniertes Präbuildskript aus, sofern dies über die Einstellung `PRE_BUILD_COMMAND` angegeben ist. (Vom Skript können selbst auch andere Python- und Node.js-Skripts, pip- und npm-Befehle und Node-basierte Tools wie yarn, z. B. `yarn install` und `yarn build`, ausgeführt werden.)
 
@@ -326,7 +326,7 @@ db_server = os.environ['DATABASE_SERVER']
 
 ## <a name="detect-https-session"></a>Erkennen einer HTTPS-Sitzung
 
-In App Service erfolgt die [SSL-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
+In App Service erfolgt die [TLS/SSL-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
 
 ```python
 if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto'] == 'https':
@@ -440,4 +440,4 @@ Tritt dieser Fehler im Zusammenhang mit dem Beispiel unter [Tutorial: Bereitstel
 > [Tutorial: Bereitstellen aus privatem Containerrepository](tutorial-custom-container.md?pivots=container-linux)
 
 > [!div class="nextstepaction"]
-> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.md)
+> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.yml)

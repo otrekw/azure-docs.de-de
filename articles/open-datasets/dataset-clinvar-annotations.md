@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 384eb565882cf5f62cec1c6d38769647a82ec712
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: e5bad3f24d5692bbebb668e29b5ea229294b46f9
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038869"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982742"
 ---
 # <a name="clinvar-annotations"></a>ClinVar Annotations
 
@@ -36,9 +36,9 @@ Dieses Dataset wird in den Azure-Regionen „USA, Westen 2“ und „USA, Westen
 
 ## <a name="data-access"></a>Datenzugriff
 
-USA, Westen 2: https://datasetclinvar.blob.core.windows.net/dataset
+USA, Westen 2: „https://datasetclinvar.blob.core.windows.net/dataset“
 
-USA, Westen-Mitte: https://datasetclinvar-secondary.blob.core.windows.net/dataset
+USA, Westen-Mitte: „https://datasetclinvar-secondary.blob.core.windows.net/dataset“
 
 [SAS Token](../storage/common/storage-sas-overview.md): sv=2019-02-02&se=2050-01-01T08%3A00%3A00Z&si=prod&sr=c&sig=qFPPwPba1RmBvaffkzkLuzabYU5dZstSTgMwxuLNME8%3D
 

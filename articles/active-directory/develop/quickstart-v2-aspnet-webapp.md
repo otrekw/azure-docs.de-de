@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App | Azure'
+title: 'Schnellstart: ASP.NET-Web-App, die Benutzer anmeldet'
 titleSuffix: Microsoft identity platform
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Microsoft-Anmeldung mithilfe von OpenID Connect in einer ASP.NET-Web-App implementieren.
+description: Laden Sie ein Codebeispiel herunter, das zeigt, wie sich eine ASP.NET Web-App die Azure AD-Benutzern anmelden kann, und führen Sie es aus.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 87948ed04f7b50820d94993d4c4fbcf2dfd94b31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08c53f816b151026c03068451aa440f12a2cbc15
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578684"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112677802"
 ---
-# <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen der Microsoft Identity Platform-Anmeldung zu einer ASP.NET-Web-App
+# <a name="quickstart-aspnet-web-app-that-signs-in-azure-ad-users"></a>Schnellstart: ASP.NET-Web-App, die Azure AD-Benutzer anmeldet
 
-In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine ASP.NET-Web-App Benutzer aus einer beliebigen Azure AD-Organisation (Azure Active Directory) anmelden kann. 
+In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine ASP.NET-Web-App Benutzer aus Azure AD-Konten (Azure Active Directory) anmelden kann.
 
 > [!div renderon="docs"]
 > Das folgende Diagramm zeigt die Funktionsweise der Beispiel-App:

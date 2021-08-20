@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 57390f57366959cecc82782254099532d832d303
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 058a60758e20a36d3490e40ea96a35c21b3db563
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558636"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237224"
 ---
 # <a name="planning-and-operations-guide"></a>Leitfaden zu Planung und Betrieb
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, die mit Azure Security Center arbeiten möchte.
@@ -38,7 +38,7 @@ Im nächsten Abschnitt erfahren Sie, wie Sie jeden dieser Aspekte bei Ihrer Plan
 ## <a name="security-roles-and-access-controls"></a>Sicherheitsrollen und Zugriffsteuerungen
 Je nach Größe und Struktur Ihrer Organisation wird Azure Security Center unter Umständen von mehreren Einzelpersonen und Teams zur Durchführung unterschiedlicher sicherheitsbezogener Aufgaben verwenden. Das folgende Diagramm zeigt ein Beispiel für fiktive Personae und deren jeweilige Rollen und Sicherheitsaufgaben:
 
-![Rollen](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
+![Rollen.](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
 Security Center ermöglicht es den Personen, diese unterschiedlichen Aufgaben auszuführen. Beispiel:
 
@@ -170,7 +170,7 @@ Nach Konfiguration und Anwendung der Security Center-Empfehlungen müssen Sie si
 
 Die Security Center-Übersicht bietet einen einheitlichen Überblick über die Sicherheit Ihrer Azure-Ressourcen sowie der Azure-fremden Ressourcen, mit denen Sie ggf. eine Verbindung hergestellt haben. Das folgende Beispiel zeigt eine Umgebung mit zahlreichen zu behandelnden Problemen:
 
-![Dashboard](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig11.png)
+![Dashboard an.](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig11.png)
 
 > [!NOTE]
 > Der Normalbetrieb wird durch Security Center nicht beeinträchtigt. Die Lösung überwacht passiv Ihre Bereitstellungen und liefert Empfehlungen auf der Grundlage der aktivierten Sicherheitsrichtlinien.
@@ -199,7 +199,7 @@ Security Center erkennt Bedrohungen, wenn diese entstehen, und macht Sie darauf 
 
 Dieser Artikel soll Ihnen zwar nicht als Hilfe beim Erstellen eines eigenen Reaktionsplans für Sicherheitsvorfälle dienen, aber wir verwenden Microsoft Azure Security Response im Cloudlebenszyklus als Grundlage für die Phasen der Reaktionen auf Vorfälle. Die Phasen sind in der folgenden Abbildung dargestellt:
 
-![Phasen der Reaktion auf Vorfälle im Cloudlebenszyklus](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
+![Die Phasen der Reaktion auf Vorfälle im Cloudlebenszyklus.](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
 > [!NOTE]
 > Zu diesem Zweck können Sie den [Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) des NIST (National Institute of Standards and Technology) verwenden.
@@ -215,7 +215,7 @@ Die in jeder Sicherheitswarnung enthaltenen Informationen ermöglichen es, die A
 
 Das folgende Beispiel zeigt eine verdächtige RDP-Aktivität:
 
-![Verdächtige Aktivitäten](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
+![Verdächtige Aktivität.](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
 Diese Seite enthält Details zur Angriffszeit, den Hostnamen der Quelle, den virtuellen Zielcomputer sowie empfohlene Schritte. In bestimmten Fällen sind die Quellinformationen des Angriffs möglicherweise leer. Weitere Informationen hierzu finden Sie unter [Fehlende Quellinformationen in Azure Security Center-Warnungen](/archive/blogs/azuresecurity/missing-source-information-in-azure-security-center-alerts) .
 

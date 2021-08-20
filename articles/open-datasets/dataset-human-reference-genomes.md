@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 2e8afede19a948af1863b6b24f277ab934861f22
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 1e1b1fa785d4ab91329216983c5b694cc484860a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038827"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297722"
 ---
 # <a name="human-reference-genomes"></a>Menschliche Referenzgenome
 
@@ -46,11 +46,11 @@ Dieses Dataset wird in den Azure-Regionen „USA, Westen 2“ und „USA, Westen
 
 ## <a name="data-access"></a>Datenzugriff
 
-USA, Westen 2: https://datasetreferencegenomes.blob.core.windows.net/dataset
+USA, Westen 2: ‚ https://datasetreferencegenomes.blob.core.windows.net/dataset ‘
 
-USA, Westen-Mitte: https://datasetreferencegenomes-secondary.blob.core.windows.net/dataset
+USA, Westen-Mitte: ‚ https://datasetreferencegenomes-secondary.blob.core.windows.net/dataset ‘
 
-[SAS Token](/azure/storage/common/storage-sas-overview): sv=2019-02-02&se=2050-01-01T08%3A00%3A00Z&si=prod&sr=c&sig=JtQoPFqiC24GiEB7v9zHLi4RrA2Kd1r%2F3iFt2l9%2FlV8%3D
+[SAS Token](../storage/common/storage-sas-overview.md): sv=2019-02-02&se=2050-01-01T08%3A00%3A00Z&si=prod&sr=c&sig=JtQoPFqiC24GiEB7v9zHLi4RrA2Kd1r%2F3iFt2l9%2FlV8%3D
 
 ## <a name="use-terms"></a>Nutzungsbedingungen
 
@@ -75,7 +75,7 @@ Wenn Sie Fragen oder Feedback zu diesem Dataset haben, wenden Sie sich an das [G
 
 [Hier](https://azure.microsoft.com/services/open-datasets/catalog/) finden Sie eine Reihe von öffentlichen Genomikdaten, die in Azure Open Dataset hochgeladen wurden. Es wurde ein Blob-Dienst erstellt, der mit Open Dataset verknüpft ist. Beispiele zur Vorgehensweise beim Aufrufen von Daten aus Azure Open Datasets für das Dataset `Reference Genomes` finden Sie unten.
 
-Benutzer können mit diesem Notebook den folgenden Pfad aufrufen und herunterladen: https://datasetreferencegenomes.blob.core.windows.net/dataset/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.39_GRCh38.p13/GCF_000001405.39_GRCh38.p13_assembly_structure/genomic_regions_definitions.txt.
+Die Benutzer können mit diesem Notebook den folgenden Pfad aufrufen und herunterladen: ‚ https://datasetreferencegenomes.blob.core.windows.net/dataset/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.39_GRCh38.p13/GCF_000001405.39_GRCh38.p13_assembly_structure/genomic_regions_definitions.txt ‘
 
 **Wichtiger Hinweis:** Zum Anzeigen der Daten mit dem Azure ML SDK müssen sich Benutzer über die Azure CLI bei ihrem Azure-Konto anmelden. Zum Herunterladen der Daten sind jedoch keine Aktionen erforderlich.
 

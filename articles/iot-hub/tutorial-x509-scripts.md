@@ -6,18 +6,18 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 02/26/2021
+ms.date: 06/26/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: ff4b63f49a87dd9ca6b0ef458bdcf1c285a34a18
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 8170b6529ca38c54d3030514a79948678861f3bd
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378209"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113214904"
 ---
 # <a name="tutorial-using-microsoft-supplied-scripts-to-create-test-certificates"></a>Tutorial: Verwenden von Microsoft-Skripts zum Erstellen von Testzertifikaten
 
@@ -61,13 +61,15 @@ Fügen Sie nach dem Ausführen des Skripts das neue Zertifizierungsstellenzertif
 
 1. Geben Sie einen Anzeigenamen für das Zertifizierungsstellenzertifikat ein.
 
+1. Zum Überspringen des Besitznachweises aktivieren Sie das Kontrollkästchen neben **Set certificate status to verified on upload** (Zertifikatstatus beim Hochladen auf „überprüft“ festlegen).
+
 1. Laden Sie das Zertifizierungsstellenzertifikat hoch.
 
 1. Wählen Sie **Speichern** aus.
 
-### <a name="step-3---prove-possession"></a>Schritt 3: Nachweisen des Besitzes
+### <a name="optional-step-3---prove-possession"></a>(Optional) Schritt 3: Nachweisen des Besitzes
 
-Nach dem Hochladen Ihres Zertifizierungsstellenzertifikats in Ihre IoT Hub-Instanz müssen Sie nachweisen, dass Sie tatsächlich der Besitzer sind:
+Wenn Sie sich nicht dafür entscheiden, das Zertifikat während des Uploads automatisch zu überprüfen, weisen Sie den Besitz manuell nach:
 
 1. Wählen Sie das neue Zertifizierungsstellenzertifikat aus.
 

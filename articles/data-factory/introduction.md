@@ -5,13 +5,13 @@ author: dcstwh
 ms.author: weetok
 ms.service: data-factory
 ms.topic: overview
-ms.date: 09/30/2019
-ms.openlocfilehash: f5259294734b3b0c33835759beadb2ad4e1089a9
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/08/2021
+ms.openlocfilehash: 0a11f8954637fe93aa8d0dc5ee8266347d822ded
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744717"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362467"
 ---
 # <a name="what-is-azure-data-factory"></a>Was ist Azure Data Factory?
 
@@ -37,11 +37,11 @@ Außerdem können Sie Ihre transformierten Daten in Datenspeichern, z. B. Azure
 
 Data Factory enthält eine Reihe von verbundenen Systemen, die eine umfassende End-to-End-Plattform für Datentechniker bilden.
 
-Dieser visuelle Leitfaden enthält eine allgemeine Übersicht über die Architektur von Data Factory:
+Dieser visuelle Leitfaden enthält eine umfassende Übersicht über die Architektur von Data Factory:
 
 :::image type="content" source="media\introduction\data-factory-visual-guide-small.png" alt-text="Detaillierter visueller Leitfaden zur gesamten Systemarchitektur von Azure Data Factory, dargestellt in einem Bild mit hoher Auflösung." lightbox="media\introduction\data-factory-visual-guide.png":::
 
-Klicken Sie zum Anzeigen weiterer Details auf das vorherige Bild, um es zu vergrößern, oder navigieren Sie zum [Bild mit hoher Auflösung](/azure/data-factory/media/introduction/data-factory-visual-guide.png#lightbox). 
+Klicken Sie zum Anzeigen weiterer Details auf das vorherige Bild, um es zu vergrößern, oder navigieren Sie zum [Bild mit hoher Auflösung](/azure/data-factory/media/introduction/data-factory-visual-guide.png). 
 
 ### <a name="connect-and-collect"></a>Herstellen einer Verbindung und Sammeln von Daten
 
@@ -96,6 +96,9 @@ Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsi
 - Sie stellen einen **Datenspeicher** dar, der beispielsweise eine SQL Server-Datenbank, eine Oracle-Datenbank, eine Dateifreigabe oder ein Azure Blob Storage-Konto enthalten kann (aber nicht darauf beschränkt ist). Eine Liste mit unterstützten Datenspeichern finden Sie im [Artikel zur Kopieraktivität](copy-activity-overview.md).
 
 - Sie stellen eine **Computeressource** dar, die die Ausführung einer Aktivität hosten kann. So wird beispielsweise die HDInsightHive-Aktivität in einem HDInsight-Hadoop-Cluster ausgeführt. Eine Liste mit Transformationsaktivitäten und unterstützten Compute-Umgebungen finden Sie im [Artikel zur Datentransformation](transform-data.md).
+
+### <a name="integration-runtime"></a>Integration Runtime
+In Data Factory wird mit einer Aktivität eine durchzuführende Aktion definiert. Mit einem verknüpften Dienst wird ein Zieldatenspeicher oder ein Computedienst definiert. Eine Integrationslaufzeit stellt die Brücke zwischen der Aktivität und verknüpften Diensten dar.  Sie wird vom verknüpften Dienst oder der Aktivität referenziert und stellt die Computeumgebung bereit, in der die Aktivität entweder ausgeführt wird oder aus der sie verteilt wird. Auf diese Weise kann die Aktivität in der Region durchgeführt werden, die dem Zieldatenspeicher bzw. dem Computedienst am nächsten liegt, und es kann die höchste Leistung erzielt werden, während gleichzeitig die Anforderungen an die Sicherheit und Konformität erfüllt werden.
 
 ### <a name="triggers"></a>Trigger
 Trigger stellen die Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Es gibt verschiedene Arten von Triggern für unterschiedliche Arten von Ereignissen.

@@ -4,12 +4,12 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
-ms.openlocfilehash: 79e2ca71d6b8178be63c3429edba89cf3bb523e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 929bcb52f724162454fc7c65939a4cec2ffd7ca6
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96029987"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112254998"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -23,7 +23,7 @@ Ihr Abonnement muss eine Azure-Containerregistrierung enthalten, um dieses Tutor
 
 ### <a name="create-a-github-personal-access-token"></a>Erstellen eines persönlichen GitHub-Zugriffstokens
 
-Um nach einem Commit in einem Git-Repository einen Task auslösen zu können, benötigt ACR Tasks ein persönliches Zugriffstoken (Personal Access Token, PAT) für den Zugriff auf das Repository. Besitzen Sie noch kein PAT, führen Sie die folgenden Schritte aus, um eins in GitHub zu erstellen:
+Wenn Sie nach einem Commit in einem Git-Repository einen Task auslösen möchten, benötigt ACR Tasks ein [persönliches Zugriffstoken](../articles/container-registry/container-registry-tasks-overview.md#personal-access-token) (Personal Access Token, PAT) für den Zugriff auf das Repository. Besitzen Sie noch kein PAT, führen Sie die folgenden Schritte aus, um eins in GitHub zu erstellen:
 
 1. Navigieren Sie zur PAT-Erstellungsseite von GitHub (https://github.com/settings/tokens/new).
 1. Geben Sie eine kurze **Beschreibung** für das Token ein (beispielsweise „ACR Tasks-Demo“).

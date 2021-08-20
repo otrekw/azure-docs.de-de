@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: d35a97b0008a7ce3069185dd557a60221776b0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0f4f2ff4fdd2d33e1ac1b56b02fb185203aee39
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595466"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122350952"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Sammeln von Daten aus Linux-basierten Quellen mithilfe von Syslog
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Sie können Ereignisse von Linux-basierten Computern oder Appliances, die Syslog unterstützen, in Azure Sentinel streamen, indem Sie den Log Analytics-Agent für Linux (ehemals OMS-Agent) verwenden. Sie können dies für jeden Computer durchführen, auf dem Sie den Log Analytics-Agent direkt auf dem Computer installieren können. Der native Syslog-Daemon des Computers sammelt lokale Ereignisse der angegebenen Typen und leitet diese lokal an den Agent weiter, der sie wiederum in Ihren Log Analytics-Arbeitsbereich streamt.
 
@@ -131,7 +133,8 @@ Diese Erkennung erfordert eine bestimmte Konfiguration des Syslog-Datenconnector
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie gelernt, wie Sie lokale Syslog-Appliances mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](monitor-your-data.md), um Ihre Daten zu überwachen.
 
+{"mode":"full","isActive":false}

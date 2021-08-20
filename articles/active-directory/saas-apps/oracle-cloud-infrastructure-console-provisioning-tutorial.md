@@ -2,21 +2,21 @@
 title: 'Tutorial: Konfigurieren der Oracle Cloud Infrastructure-Konsole für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für die Oracle Cloud Infrastructure-Konsole automatisch bereitstellen und die Bereitstellung aufheben.
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/16/2021
-ms.author: Zhchia
-ms.openlocfilehash: 84024ad57af3ca650c69bfda0eda672aee313793
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.author: thwimmer
+ms.openlocfilehash: 748e32a929e9681bb75a8d627eb9de11807c7c41
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814656"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114709958"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der Oracle Cloud Infrastructure-Konsole für die automatische Benutzerbereitstellung
 > [!NOTE]
@@ -71,7 +71,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
     ![Oracle-Tokengenerierung](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/general-information.png)
 
-6. Codieren Sie mit Base64 die Client-ID und den geheimen Clientschlüssel im Format **Client-ID:geheimer Clientschlüssel**, um ein geheimes Token zu generieren. Speichern Sie das geheime Token. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Oracle Cloud Infrastructure-Konsolenanwendung in das Feld **Geheimes Token** eingegeben.
+6. Codieren Sie die Client-ID und den geheimen Clientschlüssel im Format **Client-ID:geheimer Clientschlüssel** mit Base64, um ein geheimes Token zu generieren. Hinweis: Beim Generieren dieses Werts müssen Zeilenumbrüche deaktiviert sein (base64 -w 0). Speichern Sie das geheime Token. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Oracle Cloud Infrastructure-Konsolenanwendung in das Feld **Geheimes Token** eingegeben.
 
 ## <a name="step-3-add-oracle-cloud-infrastructure-console-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen der Oracle Cloud Infrastructure-Konsole aus dem Azure AD-Anwendungskatalog
 
@@ -122,7 +122,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit der Oracle Cloud Infrastructure-Konsole synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in der Oracle Cloud Infrastructure-Konsole für Aktualisierungsvorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Oracle Cloud Infrastructure-Konsolen-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    |attribute|type|
+    |Attribut|type|
     |---|---|
     |displayName|String|
     |userName|String|
@@ -151,7 +151,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit der Oracle Cloud Infrastructure-Konsole synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in der Oracle Cloud Infrastructure-Konsole für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    | attribute | type |
+    | Attribut | type |
     |--|--|
     | displayName | String |
     | externalId | String |

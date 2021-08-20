@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 07/26/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ddc50ab8c72017160a7032e35a69eedf85ebac95
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 11cb3ada0449559eda080cad3e9c528d60a02660
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784807"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707913"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint-in-azure-active-directory"></a>Tutorial: Entwickeln eines SCIM-Endpunkts und Planen seiner Bereitstellung in Azure Active Directory
 
@@ -192,8 +192,6 @@ Im Rahmen der [SCIM 2.0-Protokollspezifikation](http://www.simplecloud.info/#Sp
 |Ändern von Benutzern oder Gruppen mit PATCH-Anforderungen|[Abschnitt 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2). Durch die Unterstützung wird sichergestellt, dass Gruppen und Benutzer auf leistungsstarke Weise bereitgestellt werden.|
 |Abrufen einer bekannten Ressource für einen zuvor erstellten Benutzer oder eine zuvor erstellte Gruppe|[Abschnitt 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1)|
 |Abfragen von Benutzern oder Gruppen|[Abschnitt 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Standardmäßig werden Benutzer anhand ihrer `id` abgerufen und nach `username` und `externalId` abgefragt. Gruppen werden nach `displayName` abgefragt.|
-|Abfragen eines Benutzers nach ID und Vorgesetztem|Abschnitt 3.4.2|
-|Abfragen von Gruppen nach ID und Mitglied|Abschnitt 3.4.2|
 |Filter [excludedAttributes=members](#get-group) beim Abfragen der Gruppenressource|Abschnitt 3.4.2.5|
 |Akzeptieren eines einzelnen Bearertokens für die Authentifizierung und Autorisierung von AAD gegenüber Ihrer Anwendung||
 |Vorläufiges Löschen eines Benutzers (`active=false`) und Wiederherstellen des Benutzers (`active=true`)|Das Benutzerobjekt sollte unabhängig vom Aktivitätsstatus des Benutzers in einer Anforderung zurückgegeben werden. Der Benutzer sollte nur dann nicht zurückgegeben werden, wenn er endgültig aus der Anwendung gelöscht wurde.|
@@ -201,22 +199,37 @@ Im Rahmen der [SCIM 2.0-Protokollspezifikation](http://www.simplecloud.info/#Sp
 
 Verwenden Sie bei der Implementierung eines SCIM-Endpunkts die allgemeinen Richtlinien, um die Kompatibilität mit AAD zu gewährleisten:
 
+##### <a name="general"></a>Allgemeines: 
 * `id` ist eine erforderliche Eigenschaft für alle Ressourcen. Für jede Antwort, die eine Ressource zurückgibt, muss sichergestellt werden, dass jede Ressource diese Eigenschaft aufweist. Eine Ausnahme ist `ListResponse` mit 0 (null) Elementen.
-* Eine Antwort auf eine Abfrage-/Filteranforderung muss immer eine `ListResponse` sein.
-* Gruppen sind optional, werden jedoch nur unterstützt, wenn die SCIM-Implementierung Anforderungen vom Typ **PATCH** unterstützt.
+* Die gesendeten Werte sollten im gleichen Format gespeichert werden in dem sie gesendet wurden. Ungültige Werte sollten mit einer aussagekräftigen Fehlermeldung zurückgewiesen werden. Zwischen den von Azure AD gesendeten Daten und den in der SCIM-Anwendung gespeicherten Daten sollten keine Datenumwandlungen stattfinden. (Beispielsweise sollte eine als 55555555555 gesendete Telefonnummer nicht in dem Format +5 (555) 555-5555 gespeichert/zurückgegeben werden)
 * Die Antwort von **PATCH** muss nicht die gesamte Ressource enthalten.
-* Von Microsoft AAD werden nur die folgenden Operatoren verwendet: `eq`, `and`
 * Unterscheiden Sie bei Strukturelementen in SCIM nicht zwischen Groß- und Kleinschreibung, insbesondere bei Vorgangswerten (`op`) für **PATCH** (gemäß Definition im [Abschnitt 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2)). Von AAD werden die Werte von `op` als **Add** (Hinzufügen), **Replace** (Ersetzen) und **Remove** (Entfernen) ausgegeben.
 * Von Microsoft AAD werden Anforderungen zum Abrufen eines zufälligen Benutzers und einer zufälligen Gruppe gesendet, um sicherzustellen, dass der Endpunkt und die Anmeldeinformationen gültig sind. Dies wird auch im Rahmen des Flows **Verbindung testen** im [Azure-Portal](https://portal.azure.com) durchgeführt. 
-* Das Attribut, nach dem die Ressourcen abgefragt werden können, muss als entsprechendes Attribut für die Anwendung im [Azure-Portal](https://portal.azure.com) festgelegt werden. Weitere Informationen finden Sie unter [Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md).
-* Das Attribut „entitlements“ wird nicht unterstützt.
 * HTTPS-Unterstützung auf Ihrem SCIM-Endpunkt
-* [Schema Ermittlung](#schema-discovery)
-  * Die Schema Ermittlung wird derzeit in der benutzerdefinierten Anwendung nicht unterstützt, wird jedoch in bestimmten Katalog Anwendungen verwendet. In Zukunft wird die Schemaermittlung als einzige Methode verwendet, um einem vorhandenen Connector zusätzliche Attribute hinzuzufügen. 
-  * Wenn kein Wert vorhanden ist, senden Sie keine NULL-Werte.
-  * Eigenschaftswerte sollten Kamel Schreibweise sein (z. b. "Read Write").
-  * Muss eine Listen Antwort zurückgeben.
-  * Die Anforderung vom Typ „/schemas“ wird jedes Mal vom Azure AD-SCIM-Client gesendet, wenn ein Benutzer die Bereitstellungskonfiguration im Azure-Portal speichert oder wenn ein Benutzer auf die Seite „Bereitstellung bearbeiten“ im Azure-Portal gelangt. Alle zusätzlichen ermittelten Attribute werden Kunden in den Attributzuordnungen unter der Zielattributliste angezeigt. Die Schemaermittlung führt nur dazu, dass zusätzliche Zielattribute hinzugefügt werden. Sie führt nicht dazu, dass Attribute entfernt werden. 
+* Benutzerdefinierte komplexe und mehrwertige Attribute werden unterstützt, aber AAD verfügt nicht über viele komplexe Datenstrukturen, aus denen in diesen Fällen Daten gezogen werden können. Komplexe Attribute vom Typ „Einfacher gekoppelter Name/Wert“ können problemlos zugeordnet werden, aber das Übergeben von Daten an komplexe Attribute mit mindestens drei Unterattributen wird derzeit nicht gut unterstützt.
+
+##### <a name="retrieving-resources"></a>Das Abrufen von Ressourcen:
+* Eine Antwort auf eine Abfrage-/Filteranforderung muss immer eine `ListResponse` sein.
+* Von Microsoft AAD werden nur die folgenden Operatoren verwendet: `eq`, `and`
+* Das Attribut, nach dem die Ressourcen abgefragt werden können, muss als entsprechendes Attribut für die Anwendung im [Azure-Portal](https://portal.azure.com) festgelegt werden. Weitere Informationen finden Sie unter [Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md).
+
+##### <a name="users"></a>/Benutzer:
+* Das Attribut „entitlements“ wird nicht unterstützt.
+* Alle Attribute, die für die Eindeutigkeit des Benutzers berücksichtigt werden, müssen als Teil einer gefilterten Abfrage verwendet werden können. (Wenn z. B. Benutzereindeutigkeit für den userName und emails[type eq „work“] evaluiert wird, muss ein ABRUFEN mit einem Filter an den /Benutzer Abfragen für den _userName eq „user@contoso.com“_ und die _E-Mails[type eq „work“] eq „user@contoso.com“_ erlauben.
+
+##### <a name="groups"></a>/Gruppen:
+* Gruppen sind optional, werden jedoch nur unterstützt, wenn die SCIM-Implementierung Anforderungen vom Typ **PATCH** unterstützt.
+* Der Wert „displayName“ für Gruppen muss eindeutig sein, um den Abgleich zwischen Azure Active Directory und der SCIM-Anwendung zu erstellen. Das ist keine Voraussetzung für das SCIM-Protokoll, sondern eine Voraussetzung für die Integration eines SCIM-Diensts in Azure Active Directory.
+
+##### <a name="schemas-schema-discovery"></a>/Schemas (Schema-Ermittlung):
+
+* [Ein Beispiel für eine Anforderung/Antwort](#schema-discovery)
+* Die Schema Ermittlung wird derzeit in der benutzerdefinierten nicht katalogisierten SCIM-Anwendung nicht unterstützt, aber sie wird in bestimmten Anwendungen des Katalogs verwendet. In Zukunft wird die Schema-Ermittlung als einzige Methode verwendet, um zusätzliche Attribute zum Schema einer SCIM-Anwendung im Katalog hinzuzufügen. 
+* Wenn kein Wert vorhanden ist, senden Sie keine NULL-Werte.
+* Eigenschaftswerte sollten Kamel Schreibweise sein (z. b. "Read Write").
+* Muss eine Listen Antwort zurückgeben.
+* Die Anforderung vom Typ „/schemas“ wird jedes Mal vom Azure AD-SCIM-Client gesendet, wenn ein Benutzer die Bereitstellungskonfiguration im Azure-Portal speichert oder wenn ein Benutzer auf die Seite „Bereitstellung bearbeiten“ im Azure-Portal gelangt. Alle zusätzlichen ermittelten Attribute werden Kunden in den Attributzuordnungen unter der Zielattributliste angezeigt. Die Schemaermittlung führt nur dazu, dass zusätzliche Zielattribute hinzugefügt werden. Sie führt nicht dazu, dass Attribute entfernt werden. 
+
   
 ### <a name="user-provisioning-and-deprovisioning"></a>Benutzerbereitstellung und Aufheben der Bereitstellung
 
@@ -888,6 +901,8 @@ TLS 1.2-Verschlüsselungssammlungen (Minimum):
 ### <a name="ip-ranges"></a>IP-Bereiche
 Der Azure AD-Bereitstellungsdienst wird zurzeit unter den IP-Bereichen für AzureActiveDirectory betrieben, die [hier](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) aufgelistet sind. Sie können die unter dem Tag AzureActiveDirectory aufgeführten IP-Adressbereiche hinzufügen, um den Datenverkehr vom Azure AD-Bereitstellungsdienst in Ihre Anwendung zuzulassen. Beachten Sie, dass Sie die IP-Adressbereichsliste sorgfältig auf berechnete Adressen überprüfen müssen. Eine Adresse wie 40.126.25.32 könnte in der IP-Adressbereichsliste als 40.126.0.0/18 dargestellt werden. Sie können die IP-Adressbereichsliste mithilfe der folgenden [API](/rest/api/virtualnetwork/servicetags/list) auch programmgesteuert abrufen.
 
+Azure AD unterstützt auch eine Agent-basierte Lösung, um eine Konnektivität mit Anwendungen in privaten Netzwerken bereitzustellen (lokal, in Azure gehostet, in AWS gehostet usw.). Kunden können einen einfachen Agent bereitstellen, der die Konnektivität mit Azure AD bietet, ohne eingehende Ports auf einem Server in ihrem privaten Netzwerk zu öffnen. [Hier](/app-provisioning/on-premises-scim-provisioning)erhalten Sie weitere Informationen.
+
 ## <a name="build-a-scim-endpoint"></a>Erstellen eines SCIM-Endpunkts
 
 Nachdem Sie das Schema entworfen und die Azure AD-SCIM-Implementierung verstanden haben, können Sie mit der Entwicklung Ihres SCIM-Endpunkts beginnen. Anstatt bei Null anzufangen und die Implementierung komplett selbst zu erstellen, können Sie auf eine Reihe von Open-Source-SCIM-Bibliotheken zurückgreifen, die von der SCIM-Community veröffentlicht werden.
@@ -1339,7 +1354,7 @@ Die SCIM-Spezifikation definiert kein SCIM-spezifisches Schema für die Authenti
 
 |Autorisierungsmethode|Vorteile|Nachteile|Support|
 |--|--|--|--|
-|Benutzername und Kennwort (von Azure AD nicht empfohlen oder unterstützt)|Einfache Implementierung|Unsicher – [Ihr KeNNwort ist unwichtig](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Unterstützt von Fall zu Fall für Katalog-Apps. Nicht unterstützt für Nicht-Katalog-Apps.|
+|Benutzername und Kennwort (von Azure AD nicht empfohlen oder unterstützt)|Einfache Implementierung|Unsicher – [Ihr KeNNwort ist unwichtig](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Diese Unterstützung gibt es nicht für neue katalogisierte oder nicht katalogisierte Apps.|
 |Langlebiges Bearertoken|Bei langlebigen Token muss kein Benutzer anwesend sein. Admins können sie beim Einrichten der Bereitstellung leicht verwenden.|Langlebige Token können nur schwer mit einem Administrator geteilt werden, ohne unsichere Methoden wie E-Mail zu verwenden. |Unterstützt für Katalog- und Nicht-Katalog-Apps. |
 |OAuth-Autorisierungscodegenehmigung|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben.  Bei der ersten Autorisierung muss ein echter Benutzer anwesend sein, was einen gewissen Grad an Verantwortlichkeit bedeutet. |Ein Benutzer muss anwesend sein. Wenn der Benutzer das Unternehmen verlässt, wird das Token ungültig, und die Autorisierung muss erneut erfolgen.|Wird nur für Katalog-Apps unterstützt. Sie können über die Benutzeroberfläche jedoch ein Zugriffstoken als geheimes Token für kurzfristige Testzwecke bereitstellen. An der Unterstützung für die Autorisierung über OAuth-Code für nicht im Katalog enthaltene Anwendungen wird noch gearbeitet – zusätzlich zur Unterstützung für konfigurierbare Authentifizierungs-/Token-URLs in der Katalog-App.|
 |Genehmigung von OAuth-Clientanmeldeinformationen|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben. Sowohl die Autorisierungscodegenehmigung als auch die Genehmigung von Clientanmeldeinformationen gehören zum gleichen Typ Zugriffstoken. Ein Wechsel zwischen diesen beiden Methoden ist daher für die API transparent.  Die Bereitstellung kann vollständig automatisiert werden. Neue Token können ohne Benutzerinteraktion und im Hintergrund angefordert werden. ||Nicht unterstützt für Katalog- und Nicht-Katalog-Apps. Diese Unterstützung befindet sich in unserem Backlog.|

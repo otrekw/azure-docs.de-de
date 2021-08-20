@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c087533958665eb71e046d3bab1f03265adbd3ba
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 011461b1ecba9c5ce8cf636980a97d26f2228a98
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111853566"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113128838"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
@@ -341,6 +341,9 @@ Wenn der Vorgang zur erneuten Schlüsselerstellung abgeschlossen ist, klicken Si
 
 ### <a name="renew-certificate"></a>Verlängern des Zertifikats
 
+> [!NOTE]
+> Der Verlängerungsprozess erfordert, dass [der bekannte Dienstprinzipal für App Service über die erforderlichen Berechtigungen für Ihren Schlüsseltresor verfügt](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault). Diese Berechtigung wird für Sie konfiguriert, wenn Sie eine App Service Certificate-Instanz über das Portal importieren. Sie sollte nicht aus Ihrem Schlüsseltresor entfernt werden.
+
 Um zu einem beliebigen Zeitpunkt die automatische Verlängerung Ihres Zertifikats zu aktivieren, wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann im linken Navigationsbereich auf **Einstellungen für die automatische Verlängerung**. Standardmäßig haben App Service-Zertifikate eine Gültigkeitsdauer von einem Jahr.
 
 Klicken Sie nacheinander auf **Ein** und **Speichern**. Zertifikate können 30 Tage vor Ablauf automatisch verlängert werden, wenn Sie die automatische Verlängerung aktiviert haben.
@@ -389,11 +392,11 @@ Suchen Sie die Sperre für Ihr Zertifikat mit dem Sperrentyp **Löschen**. Wähl
 
 Nun können Sie das App Service-Zertifikat löschen. Wählen Sie im linken Navigationsbereich **Übersicht** > **Löschen** aus. Geben Sie im Bestätigungsdialogfeld den Zertifikatnamen ein, und wählen Sie **OK** aus.
 
-## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
+## <a name="automate-with-scripts&quot;></a>Automatisieren mit Skripts
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name=&quot;azure-cli&quot;></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 &quot;Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
@@ -405,4 +408,4 @@ Nun können Sie das App Service-Zertifikat löschen. Wählen Sie im linken Navig
 * [Erzwingen von HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Erzwingen von TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [Verwenden eines TLS-/SSL-Zertifikats in Ihrem Code in Azure App Service](configure-ssl-certificate-in-code.md)
-* [Häufig gestellte Fragen: App Service-Zertifikate](./faq-configuration-and-management.md)
+* [Häufig gestellte Fragen: App Service-Zertifikate](./faq-configuration-and-management.yml)

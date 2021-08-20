@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 7a706eb120f45fcd08febd0bda9aaaa54a82135a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1f8e47235cff2e23e45dcba535caf92ca6da0e4
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98728169"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112199572"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bic-cloud-design"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BIC Cloud Design
 
@@ -42,7 +42,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * BIC Cloud Design unterstützt **SP-initiiertes** einmaliges Anmelden.
 
-## <a name="adding-bic-cloud-design-from-the-gallery"></a>Hinzufügen von BIC Cloud Design aus dem Katalog
+## <a name="add-bic-cloud-design-from-the-gallery"></a>Hinzufügen von BIC Cloud Design aus dem Katalog
 
 Zum Konfigurieren der Integration von Azure AD in BIC Cloud Design müssen Sie BIC Cloud Design aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -53,7 +53,6 @@ Zum Konfigurieren der Integration von Azure AD in BIC Cloud Design müssen Si
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **BIC Cloud Design** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **BIC Cloud Design** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-bic-cloud-design"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für BIC Cloud Design
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit BIC Cloud Design mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in BIC Cloud Design eingerichtet werden.
@@ -61,10 +60,10 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit BIC Cloud
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit BIC Cloud Design die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für BIC Cloud Design](#configure-bic-cloud-design-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    * **[Erstellen eines BIC Cloud Design-Testbenutzers](#create-bic-cloud-design-test-user)** , um eine Entsprechung von B. Simon in BIC Cloud Design zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+    1. **[Erstellen eines BIC Cloud Design-Testbenutzers](#create-bic-cloud-design-test-user)** , um eine Entsprechung von B. Simon in BIC Cloud Design zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -89,17 +88,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     c. Nach dem erfolgreichen Upload der Metadatendatei wird der Wert **Bezeichner** automatisch im Abschnitt „Grundlegende SAML-Konfiguration“ eingefügt.
 
-    ![SSO-Informationen zur Domäne und zu den URLs für BIC Cloud Design](common/sp-identifier.png)
-
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
 
-    ```https
-    https://<customer-specific-name/tenant>.biccloud.com
-    https://<customer-specific-name/tenant>.biccloud.de
-    ```
-
+    | Anmelde-URL |
+    |-----|
+    | `https://<CUSTOMER_SPECIFIC_NAME/TENANT>.biccloud.com` |
+    | `https://<CUSTOMER_SPECIFIC_NAME/TENANT>.biccloud.de` |
+    
     > [!Note]
-    > Falls der Wert **Bezeichner** nicht automatisch aufgefüllt wird, geben Sie den erforderlichen Wert manuell ein. Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Diesen Wert erhalten Sie vom [Supportteam für den BIC Cloud Design-Client](mailto:bicsupport@gbtec.de). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Falls der Wert **Bezeichner** nicht automatisch aufgefüllt wird, geben Sie den erforderlichen Wert entsprechend Ihren Anforderungen manuell ein. Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Diesen Wert erhalten Sie vom [Supportteam für den BIC Cloud Design-Client](mailto:bicsupport@gbtec.de). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Ihre BIC Cloud Design-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
@@ -160,7 +157,6 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 * Rufen Sie direkt die BIC Cloud Design-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
 * Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „BIC Cloud Design“ klicken, werden Sie zur Anmelde-URL für BIC Cloud Design weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

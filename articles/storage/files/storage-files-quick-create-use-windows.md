@@ -1,24 +1,31 @@
 ---
-title: Erstellen und Verwenden einer Azure Files-Freigabe auf Windows-VMs
-description: Erstellen und verwenden Sie eine Azure Files-Freigabe im Azure-Portal. Stellen Sie eine Verbindung mit einem virtuellen Windows-Computer und eine Verbindung mit der Files-Freigabe her, und laden Sie eine Datei in die Files-Freigabe hoch.
+title: Erstellen und Verwenden einer Azure-Dateifreigabe auf Windows-VMs
+description: Erstellen und verwenden Sie eine Azure-Dateifreigabe im Azure-Portal. Stellen Sie eine Verbindung mit einem virtuellen Windows-Computer und eine Verbindung mit der Files-Freigabe her, und laden Sie eine Datei in die Files-Freigabe hoch.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/15/2021
+ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5a3c664f6c6c0532ef915357cfbcbc8228202502
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 3cb97d40008a103d9de6d76018f7881764813e3c
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718243"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727184"
 ---
-# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Schnellstart: Erstellen und Verwalten einer Azure Files-Freigabe mit virtuellen Windows-Computern
+# <a name="quickstart-create-and-manage-azure-file-shares-with-windows-virtual-machines"></a>Schnellstart: Erstellen und Verwalten einer Azure-Dateifreigabe mit Windows-VMs
 
 Der Artikel zeigt die grundlegenden Schritte zur Erstellung und Verwendung einer Azure Files-Freigabe. Der Schwerpunkt dieser Schnellstartanleitung liegt auf der schnellen Einrichtung einer Azure Files-Freigabe, damit Sie sich mit der Funktionsweise des Diensts vertraut machen können. Sollten Sie eine ausführlichere Anleitung für die Erstellung und Verwendung von Azure-Dateifreigaben in Ihrer Umgebung benötigen, finden Sie diese unter [Verwenden einer Azure-Dateifreigabe mit Windows](storage-how-to-use-files-windows.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -63,13 +70,14 @@ Sie haben nun ein Azure-Speicherkonto und eine Dateifreigabe mit einer einzelnen
 ### <a name="deploy-a-vm"></a>Bereitstellen einer VM
 
 1. Erweitern Sie als Nächstes das Menü auf der linken Seite des Portals, und wählen Sie im Azure-Portal oben links die Option **Ressource erstellen**.
-1. Suchen Sie im Suchfeld oberhalb der Liste mit den **Azure Marketplace**-Ressourcen nach **Windows Server 2016 Datacenter**, und wählen Sie den Eintrag aus.
+1. Wählen Sie unter **Beliebte Dienste** die Option **Virtueller Computer** aus.
 1. Wählen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** die Ressourcengruppe aus, die Sie für diese Schnellstartanleitung erstellt haben.
 
    ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer auf dem Portalblatt](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
 
 1. Geben Sie dem virtuellen Computer unter **Instanzendetails** den Namen *qsVM*.
-1. Übernehmen Sie die Standardeinstellungen für **Region**, **Verfügbarkeitsoptionen**, **Image** und **Größe**.
+1. Wählen Sie als **Image** die Option **Windows Server 2016 Datacenter – Gen2** aus.
+1. Übernehmen Sie die Standardeinstellungen für **Region**, **Verfügbarkeitsoptionen** und **Größe**.
 1. Fügen Sie unter **Administratorkonto** einen **Benutzernamen** hinzu, und geben Sie ein **Kennwort** für den virtuellen Computer ein.
 1. Wählen Sie unter **Regeln für eingehende Ports** die Option **Ausgewählte Ports zulassen** aus, und wählen Sie dann **RDP (3389)** und **HTTP** aus der Dropdownliste aus.
 1. Klicken Sie auf **Überprüfen + erstellen**.

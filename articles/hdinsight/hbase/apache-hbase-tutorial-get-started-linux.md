@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 89988579c847250938db71844b1bbafa4965e7df
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: fa1ac05766a95754631c5a6c78f80b9abdc4e3a7
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004563"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112573668"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Tutorial: Verwenden von Apache HBase in Azure HDInsight
 
@@ -209,7 +209,7 @@ Sie können Daten in HBase-Tabellen mithilfe von [Apache Hive](https://hive.apac
 Die Hive-Abfrage für den Zugriff auf HBase-Daten muss nicht aus dem HBase-Cluster ausgeführt werden. Alle Cluster, die über Hive verfügen (einschließlich Spark, Hadoop, HBase oder Interactive Query), können zum Abfragen von HBase-Daten verwendet werden, sofern die folgenden Schritte ausgeführt wurden:
 
 1. Beide Cluster müssen an dasselbe virtuelle Netzwerk und Subnetz angefügt werden.
-2. Kopieren Sie `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` von den Hauptknoten des HBase-Clusters auf die Hauptknoten des Hive-Clusters.
+2. Kopieren Sie `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` von den Hauptknoten des HBase-Clusters auf die Haupt- und Workerknoten des Hive-Clusters.
 
 ### <a name="secure-clusters"></a>Sichere Cluster
 
@@ -217,7 +217,7 @@ HBase-Daten können auch über Hive abgefragt werden, indem HBase mit aktivierte
 
 1. Bei Verwendung eines Musters mit mehreren Clustern muss für beide Cluster ESP aktiviert sein. 
 2. Stellen Sie sicher, dass dem Benutzer `hive` Berechtigungen zum Zugreifen auf die HBase-Daten über das Apache Ranger-Plug-In von HBase gewährt werden, um für Hive das Abfragen der HBase-Daten zu ermöglichen.
-3. Bei Verwendung von separaten ESP-fähigen Clustern muss der Inhalt von `/etc/hosts` von den Hauptknoten des HBase-Clusters an den Ordner `/etc/hosts` der Hauptknoten des Hive-Clusters angefügt werden. 
+3. Bei Verwendung von separaten ESP-fähigen Clustern muss der Inhalt von `/etc/hosts` von den Hauptknoten des HBase-Clusters an die Datei `/etc/hosts` der Haupt- und Workerknoten des Hive-Clusters angefügt werden. 
 > [!NOTE]
 > Nachdem beide Cluster skaliert wurden, muss `/etc/hosts` erneut angefügt werden.
 

@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/11/2018
-ms.openlocfilehash: a1e30bb59d81e949720560f2ce5da796a2c7fbe2
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 06/07/2021
+ms.openlocfilehash: 3891cf49f536cea11049e4bcea05f90eb7892ac2
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905340"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113216997"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Verzweigen und Verketten von Aktivitäten in einer Azure Data Factory-Pipeline mithilfe des Azure-Portals
 
@@ -166,9 +166,9 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
 - Herstellen einer Verbindung zwischen Aktivitäten (bei Erfolg und Fehler)
 - Verwenden der Ausgabe aus einer Aktivität als eine Eingabe für die nachfolgende Aktivität.
 
-1. Klicken Sie auf der Seite **Erste Schritte** der Data Factory-Benutzeroberfläche auf die Kachel **Pipeline erstellen**.  
+1. Klicken Sie auf der Startseite der Data Factory Benutzeroberfläche auf die Kachel **Orchestrieren**.  
 
-   ![Seite für die ersten Schritte](./media/tutorial-control-flow-portal/get-started-page.png)
+   ![Ein Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
 3. Wechseln Sie im Eigenschaftenfenster für die Pipeline zur Registerkarte **Parameter**, und fügen Sie mithilfe der Schaltfläche **Neu** die drei folgenden Zeichenfolgenparameter hinzu: „sourceBlobContainer“, „sinkBlobContainer“ und „receiver“.
 
     - **sourceBlobContainer:** Parameter in der Pipeline, der vom Quell-Blobdataset verarbeitet wird.

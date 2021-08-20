@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/05/2021
 ms.author: jeedes
-ms.openlocfilehash: a7536cd637339cd7a73541ddee89e8d2e11df3e6
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: b73c760185e8b5d97ab03fbbee75fd399e0b0c16
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889118"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466517"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-documo"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Documo
 
@@ -78,11 +78,12 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Im Abschnitt **Grundlegende SAML-Konfiguration** muss der Benutzer keine Schritte ausführen, weil die App bereits in Azure integriert ist.
+1. Im Abschnitt **Grundlegende SAML-Konfiguration** muss der Benutzer keine Schritte ausführen, weil die App bereits in Azure integriert ist. Wenn Ihr Documo-Konto über eine benutzerdefinierte Domäne verfügt, müssen Sie auch über eine benutzerdefinierte API-Domäne verfügen, damit SSO funktioniert. Ersetzen Sie die Standardwerte durch Ihre benutzerdefinierte API-Domäne, z. B. `https://mycustomapidomain.com` und `https://mycustomapidomain.com/assert`.
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://app.documo.com/sso`.
+    Geben Sie im Textfeld **Anmelde-URL** die URL ein: .  
+    `https://app.documo.com/sso`
 
 1. Klicken Sie auf **Speichern**.
 
@@ -142,7 +143,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     d. Geben Sie den Wert in das Textfeld **Field Name in SAML Token containing Identity email** (Feldname im SAML-Token mit der Identitäts-E-Mail) ein.
 
-    e. Öffnen Sie die heruntergeladene **Verbundmetadaten-XML** aus dem Azure-Portal im Editor, kopieren Sie ihren Inhalt, und fügen Sie ihn in das Textfeld **Signer Certificate** (Signaturgeberzertifikat) ein.
+    e. Öffnen Sie das aus dem Azure-Portal heruntergeladene **Verbundmetadaten-XML** in Notepad. Suchen Sie das `<X509Certificate>`-Tag, und fügen Sie den Inhalt in das Textfeld **Signaturgeberzertifikat** ein.
 
     f. Klicken Sie auf **Submit**(Senden).
 

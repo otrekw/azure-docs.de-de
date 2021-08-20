@@ -6,13 +6,13 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 01/04/2018
-ms.openlocfilehash: 4c8ae67720cf6ac9d577286898b95cdd10f38152
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: 90166f1a6716d9ed6b30ca002836d03d26c1ee3b
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377957"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215899"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory mithilfe des Azure-Portals
 
@@ -99,9 +99,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
    
     ![Data Factory-Startseite](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
 10. Klicken Sie auf **Erstellen und überwachen**, um die Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
-11. Wechseln Sie im linken Bereich der Seite **Erste Schritte** zur Registerkarte **Bearbeiten**, wie in der folgenden Abbildung gezeigt: 
+11. Wechseln Sie, wie in der folgenden Abbildung gezeigt, am linken Rand der Homepage zur Registerkarte **Verwalten**: 
 
-    ![Registerkarte „Bearbeiten“](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
+    ![Screenshot mit der Registerkarte „Verwalten“](media/doc-common-process/get-started-page-manage-button.png)
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Erstellen einer selbstgehosteten Integration Runtime
 Da sich der Hadoop-Cluster in einem virtuellen Netzwerk befindet, müssen Sie in diesem virtuellen Netzwerk eine selbstgehostete Integration Runtime (IR) installieren. In diesem Abschnitt erstellen Sie einen neuen virtuellen Computer, binden ihn in das gleiche virtuelle Netzwerk ein und installieren eine selbstgehostete IR auf dem Computer. Mit der selbstgehosteten IR kann der Data Factory-Dienst innerhalb eines virtuellen Netzwerks Verarbeitungsanforderungen an einen Computedienst wie HDInsight verteilen. Außerdem können Sie Daten aus Datenspeichern in einem virtuellen Netzwerk nach Azure verschieben (und umgekehrt). Eine selbstgehostete IR wird verwendet, wenn sich der Datenspeicher oder die Computeressource ebenfalls in einer lokalen Umgebung befindet. 

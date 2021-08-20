@@ -7,36 +7,34 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/26/2021
+ms.date: 07/21/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: b08fe34e7ac5eede8d1435e3de3817224fafdbc6
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 803916184fb79c1db249b195dde0ed0b95c5c547
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560167"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459641"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Was ist Azure Cognitive Search?
 
-Azure Cognitive Search ([früher „Azure Search“](whats-new.md#new-service-name)) ist ein Cloudsuchdienst, der Entwicklern eine Architektur, APIs und Tools zum Erstellen umfangreicher Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. 
+Azure Cognitive Search ([früher „Azure Search“](whats-new.md#new-service-name)) ist ein Cloudsuchdienst, der Entwicklern die Infrastruktur, APIs und Tools zum Erstellen umfangreicher Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet.
 
-Search dient als wichtige Grundlage für jede App, mit der Inhalte für Benutzer angezeigt werden. Häufige Szenarien sind Katalog- oder Dokumentsuche, Suche auf E-Commerce-Websites oder Knowledge Mining für Data Science.
+Search dient als wichtige Grundlage für jede App, mit der Textinhalte für Benutzer angezeigt werden. Häufige Szenarien sind die Katalog- oder Dokumentsuche, die Suche nach Einzelhandelsprodukten oder das Knowledge Mining bei Data Science.
 
 Zum Erstellen eines Suchdiensts werden folgende Funktionen verwendet:
 
-+ Suchmaschine für die Volltextsuche
-+ Permanenter Speicher für benutzereigene Inhalte in einem Suchindex
-+ Umfangreiche Indizierung mit Textanalyse und optionaler [KI-Anreicherung](cognitive-search-concept-intro.md) für die Extraktion und Transformation von Inhalten
++ Eine Suchmaschine für die Volltextsuche mit Speicher für benutzereigene Inhalte in einem Suchindex
++ Umfangreiche Indizierung mit Textanalyse und [optionaler KI-Anreicherung](cognitive-search-concept-intro.md) für die erweiterte Extraktion und Transformation von Inhalten
 + Umfassende Abfragefunktionen mit einfacher Syntax, vollständiger Lucene-Syntax und Eingabevorschlägen
 + Programmierbarkeit über REST-APIs und Clientbibliotheken in Azure SDKs für .NET, Python, Java und JavaScript
 + Azure-Integration auf Datenebene, Machine Learning-Ebene und KI (Cognitive Services)
-+ Innovative Priorisierungsalgorithmen durch [semantische Suche (Vorschau)](semantic-search-overview.md)
 
 Aus architektonischer Sicht befindet sich ein Suchdienst zwischen den externen Datenspeichern, die Ihre nicht indizierten Daten enthalten, und Ihrer Client-App, die Abfrageanforderungen an einen Suchindex sendet und die Antwort verarbeitet.
 
 ![Architektur von Azure Cognitive Search](media/search-what-is-azure-search/azure-search-diagram.svg "Architektur von Azure Cognitive Search")
 
-Extern kann eine Suche in andere Azure-Dienste integriert werden. Dies geschieht in Form von *Indexern*, die das Erfassen/Abrufen von Daten aus Azure-Datenquellen automatisieren, und *Skillsets*, mit denen nutzbare KI-Daten aus Cognitive Services (z. B. Bild- und Textanalyse) oder benutzerdefinierte KI-Daten einbezogen werden, die Sie in Azure Machine Learning erstellen oder in Azure Functions einbinden.
+Cognitive Search kann mit anderen Azure-Diensten integriert werden. Dies erfolgt über *Indexer*, die das Erfassen/Abrufen von Daten aus Azure-Datenquellen automatisieren, und *Skillsets*, mit denen nutzbare KI-Daten aus Cognitive Services (z. B. Bild- und Textanalyse) oder benutzerdefinierte KI-Daten, die Sie in Azure Machine Learning erstellen oder in Azure Functions einbinden, einbezogen werden.
 
 ## <a name="inside-a-search-service"></a>In einem Suchdienst
 
@@ -56,7 +54,7 @@ Die Funktionalität wird über eine einfache [REST-API](/rest/api/searchservice/
 
 Azure Cognitive Search eignet sich sehr gut für die folgenden Anwendungsszenarien:
 
-+ Konsolidierung heterogener Inhalte in einem privaten, benutzerdefinierten Suchindex.
++ Konsolidierung heterogener Inhalte in einem privaten, benutzerdefinierten Suchindex. Auslagern von Indizierungs- und Abfrageworkloads in einen dedizierten Suchdienst
 
 + Einfache Implementierung von suchbezogenen Features: Relevanzoptimierung, Facettennavigation, Filter (z. B. geografisch-räumliche Suche), Synonymzuordnung und AutoVervollständigen.
 
@@ -108,6 +106,6 @@ Unter unseren Kunden zählen diejenigen mit Onlinekatalogen, Branchenprogrammen 
 
 ## <a name="watch-this-video"></a>Video ansehen
 
-In diesem 15-minütigen Video stellt Programm-Manager Luis Cabrera Azure Cognitive Search vor.
+In diesem 15-minütigen Video werden die wichtigsten Funktionen von Azure Cognitive Search erläutert.
 
 >[!VIDEO https://www.youtube.com/embed/kOJU0YZodVk?version=3]

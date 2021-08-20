@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Splunk Enterprise und Splunk Cloud | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Splunk Enterprise und Splunk Cloud konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit Azure AD SSO for Splunk Enterprise und Splunk Cloud | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Azure AD SSO for Splunk Enterprise and Splunk Cloud konfigurieren.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 07/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 81107b3655ae86d51e36445ce46661d553ab3b5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc1d0ec9b5aa74493a0ee43d94303b0a02278198
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649851"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466070"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Tutorial: Azure Active Directory-Integration mit Splunk Enterprise und Splunk Cloud
+# <a name="tutorial-azure-active-directory-integration-with-azure-ad-sso-for-splunk-enterprise-and-splunk-cloud"></a>Tutorial: Azure Active Directory-Integration mit Azure AD SSO for Splunk Enterprise und Splunk Cloud
 
-In diesem Tutorial erfahren Sie, wie Sie Splunk Enterprise and Splunk Cloud in Azure Active Directory (Azure AD) integrieren. Die Integration von Splunk Enterprise and Splunk Cloud in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Azure AD SSO for Splunk Enterprise and Splunk Cloud in Azure Active Directory (Azure AD) integrieren. Die Integration von Azure AD SSO for Splunk Enterprise and Splunk Cloud in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Splunk Enterprise and Splunk Cloud hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Splunk Enterprise and Splunk Cloud anzumelden.
+* Sie können in Azure AD steuern, wer Zugriff auf Azure AD SSO for Splunk Enterprise and Splunk Cloud hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Azure AD SSO for Splunk Enterprise and Splunk Cloud anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -31,47 +31,48 @@ In diesem Tutorial erfahren Sie, wie Sie Splunk Enterprise and Splunk Cloud in A
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Splunk Enterprise and Splunk Cloud-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Ein Azure AD SSO for Splunk Enterprise and Splunk Cloud-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Splunk Enterprise und Splunk Cloud unterstützt **SP**-initiiertes einmaliges Anmelden
+* Azure AD SSO for Splunk Enterprise and Splunk Cloud unterstützt **SP-initiiertes** einmaliges Anmelden.
 
-## <a name="add-splunk-enterprise-and-splunk-cloud-from-the-gallery"></a>Hinzufügen von Splunk Enterprise und Splunk Cloud aus dem Katalog
+## <a name="add-azure-ad-sso-for-splunk-enterprise-and-splunk-cloud-from-the-gallery"></a>Hinzufügen von Azure AD SSO for Splunk Enterprise and Splunk Cloud aus dem Katalog
 
-Zum Konfigurieren der Integration von Splunk Enterprise und Splunk Cloud in Azure AD müssen Sie Splunk Enterprise und Splunk Cloud aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Azure AD SSO for Splunk Enterprise and Splunk Cloud in Azure AD müssen Sie Azure AD SSO for Splunk Enterprise and Splunk Cloud aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Splunk Enterprise and Splunk Cloud** in das Suchfeld ein.
-1. Wählen Sie im Ergebnisbereich **Splunk Enterprise and Splunk Cloud** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Azure AD SSO for Splunk Enterprise and Splunk Cloud** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Azure AD SSO for Splunk Enterprise and Splunk Cloud** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-sso-for-splunk-enterprise-and-splunk-cloud"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Splunk Enterprise and Splunk Cloud
+## <a name="configure-and-test-azure-ad-sso-for-azure-ad-sso-for-splunk-enterprise-and-splunk-cloud"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Azure AD SSO for Splunk Enterprise and Splunk Cloud
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Splunk Enterprise and Splunk Cloud mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Splunk Enterprise and Splunk Cloud eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Azure AD SSO for Splunk Enterprise and Splunk Cloud mithilfe eines Testbenutzers namens **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Azure AD SSO for Splunk Enterprise and Splunk Cloud eingerichtet werden.
 
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Splunk Enterprise and Splunk Cloud zu konfigurieren und zu testen:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Azure AD SSO for Splunk Enterprise and Splunk Cloud die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Splunk Enterprise and Splunk Cloud](#configure-splunk-enterprise-and-splunk-cloud-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Testbenutzers für Splunk Enterprise and Splunk Cloud](#create-splunk-enterprise-and-splunk-cloud-test-user)** , um eine Entsprechung von B. Simon in Splunk Enterprise and Splunk Cloud zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Konfigurieren des einmaligen Anmeldens für Azure AD SSO for Splunk Enterprise and Splunk Cloud](#configure-azure-ad-sso-for-splunk-enterprise-and-splunk-cloud-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Azure AD SSO for Splunk Enterprise and Splunk Cloud-Testbenutzers](#create-azure-ad-sso-for-splunk-enterprise-and-splunk-cloud-test-user)** , um in Azure AD SSO for Splunk Enterprise and Splunk Cloud eine Entsprechung von B. Simon zu erhalten, die mit der Benutzerdarstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Splunk Enterprise and Splunk Cloud** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Azure AD SSO for Splunk Enterprise and Splunk Cloud** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<splunkserverUrl>/app/launcher/home`
@@ -81,7 +82,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<splunkserver>/saml/acs`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an den [Support von Splunk Enterprise und Splunk Cloud](https://www.splunk.com/en_us/about-splunk/contact-us.html), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Diese Werte erhalten Sie vom [Supportteam von Azure AD SSO for Splunk Enterprise and Splunk Cloud](https://www.splunk.com/en_us/about-splunk/contact-us.html). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -101,34 +102,34 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Splunk Enterprise and Splunk Cloud gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf Azure AD SSO for Splunk Enterprise and Splunk Cloud gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-1. Wählen Sie in der Anwendungsliste die Option **Splunk Enterprise und Splunk Cloud** aus.
+1. Wählen Sie in der Anwendungsliste **Azure AD SSO for Splunk Enterprise and Splunk Cloud** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-splunk-enterprise-and-splunk-cloud-sso"></a>Konfigurieren des einmaligen Anmeldens für Splunk Enterprise and Splunk Cloud
+## <a name="configure-azure-ad-sso-for-splunk-enterprise-and-splunk-cloud-sso"></a>Konfigurieren des einmaligen Anmeldens für Azure AD SSO for Splunk Enterprise and Splunk Cloud
 
-  Um einmaliges Anmelden bei **Splunk Enterprise und Splunk Cloud** zu konfigurieren, müssen Sie die heruntergeladene **Datei mit den XML-Verbundmetadaten** und ordnungsgemäß kopierte URLs aus dem Azure-Portal an den [Support von Splunk Enterprise und Splunk Cloud](https://www.splunk.com/en_us/about-splunk/contact-us.html) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+  Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Azure AD SSO for Splunk Enterprise and Splunk Cloud** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Azure AD SSO for Splunk Enterprise and Splunk Cloud](https://www.splunk.com/en_us/about-splunk/contact-us.html) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>Erstellen eines Testbenutzers für Splunk Enterprise und Splunk Cloud
+### <a name="create-azure-ad-sso-for-splunk-enterprise-and-splunk-cloud-test-user"></a>Erstellen eines Azure AD für Splunk Enterprise and Splunk Cloud-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Splunk Enterprise und Splunk Cloud einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem [Support von Splunk Enterprise und Splunk Cloud](https://www.splunk.com/en_us/about-splunk/contact-us.html) zusammen, um die Benutzer zur Plattform von Splunk Enterprise und Splunk Cloud hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Azure AD SSO for Splunk Enterprise and Splunk Cloud einen Benutzer namens „Britta Simon“. Arbeiten Sie mit dem [Support von Azure AD SSO for Splunk Enterprise and Splunk Cloud](https://www.splunk.com/en_us/about-splunk/contact-us.html) zusammen, um der Plattform von Azure AD SSO for Splunk Enterprise and Splunk Cloud Benutzer hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Splunk Enterprise and Splunk Cloud weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Azure AD SSO for Splunk Enterprise and Splunk Cloud weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-* Rufen Sie direkt die Anmelde-URL für Splunk Enterprise and Splunk Cloud auf, und initiieren Sie den Anmeldeflow.
+* Navigieren Sie direkt zur Anmelde-URL von Azure AD SSO for Splunk Enterprise and Splunk Cloud, und initiieren Sie dort den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Splunk Enterprise and Splunk Cloud“ klicken, werden Sie zur Anmelde-URL für Splunk Enterprise and Splunk Cloud weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Azure AD SSO for Splunk Enterprise and Splunk Cloud“ klicken, werden Sie zur Anmelde-URL für Azure AD SSO for Splunk Enterprise and Splunk Cloud weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Splunk Enterprise and Splunk Cloud können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Azure AD SSO for Splunk Enterprise and Splunk Cloud können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

@@ -8,16 +8,16 @@ ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: danimir
-ms.author: danil
+author: misliplavo
+ms.author: mlazic
 ms.reviewer: mathoma
 ms.date: 12/14/2018
-ms.openlocfilehash: 492f7b505d87c56a8ec41d6ee7c31a12795b1ca7
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 31cdd093db7f687ecf1e35e655cff469a03a8fec
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692880"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690377"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Schnellstart: Wiederherstellen einer Datenbank in Azure SQL Managed Instance mit SSMS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,8 +27,8 @@ In dieser Schnellstartanleitung verwenden Sie SQL Server Management Studio (SSMS
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> Weitere Informationen zur Migration unter Verwendung von Azure Database Migration Service finden Sie unter [Tutorial: Migrieren von SQL Server zu SQL Managed Instance mithilfe von DMS (offline)](../../dms/tutorial-sql-server-to-managed-instance.md).
-> Weitere Informationen zu verschiedenen Migrationsmethoden finden Sie unter [Migration von SQL Server zu einer verwalteten Azure SQL-Instanz](migrate-to-instance-from-sql-server.md).
+> Weitere Informationen zur Migration unter Verwendung des Azure Database Migration Services finden Sie unter [Tutorial: Migrieren eines SQL Servers zu einer verwalteten Azure Instanz mithilfe des Database Migration Services](../../dms/tutorial-sql-server-to-managed-instance.md).
+> Weitere Informationen zu den verschiedenen Migrationsmethoden finden Sie in dem Leitfaden [Microsoft SQL Server zur Azure SQL Managed Instance](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

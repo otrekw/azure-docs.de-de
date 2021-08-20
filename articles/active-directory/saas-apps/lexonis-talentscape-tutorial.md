@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/10/2021
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: f321b18e498cf0b1f12c921feed8e0d95c410874
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11c681989d84063816decd6de0c08086327dae24
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953424"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112553781"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lexonis-talentscape"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Lexonis TalentScape
 
@@ -33,14 +33,17 @@ Für die ersten Schritte benötigen Sie Folgendes:
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Lexonis TalentScape-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
+
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Lexonis TalentScape unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
-* Lexonis TalentScape unterstützt die **Just-In-Time**-Benutzerbereitstellung.
+* Lexonis TalentScape unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
-## <a name="adding-lexonis-talentscape-from-the-gallery"></a>Hinzufügen von Lexonis TalentScape aus dem Katalog
+## <a name="add-lexonis-talentscape-from-the-gallery"></a>Hinzufügen von Lexonis TalentScape aus dem Katalog
 
 Zum Konfigurieren der Integration von Lexonis TalentScape in Azure AD müssen Sie Lexonis TalentScape aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -50,7 +53,6 @@ Zum Konfigurieren der Integration von Lexonis TalentScape in Azure AD müssen 
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Lexonis TalentScape** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Lexonis TalentScape** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-lexonis-talentscape"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Lexonis TalentScape
 
@@ -75,7 +77,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<CUSTOMER_NAME>.lexonis.com/`
 
@@ -105,6 +107,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
@@ -149,7 +152,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 #### <a name="idp-initiated"></a>IDP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Lexonis TalentScape-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Lexonis TalentScape-Instanz angemeldet werden, für die Sie das einmaliges Anmelden eingerichtet haben. 
 
 Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Lexonis TalentScape“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Lexonis TalentScape-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 

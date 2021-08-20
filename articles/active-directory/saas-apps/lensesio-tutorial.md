@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/02/2020
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 181d58baf128c4848a538e776aea0e43213994dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f65a690378723fe8ee214333d3bfee0b18ce0cd0
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92458607"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112553655"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit dem Lenses.io-DataOps-Portal
 
@@ -26,8 +26,6 @@ In diesem Tutorial erfahren Sie, wie Sie das [Lenses.io](https://lenses.io/)-Dat
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Lenses anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) mit Azure AD finden Sie unter [Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?](../manage-apps/what-is-single-sign-on.md).
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ersten Schritte benötigen Sie Folgendes:
@@ -36,19 +34,20 @@ Für die ersten Schritte benötigen Sie Folgendes:
 * Eine Instanz eines Lenses-Portals. Sie können zwischen verschiedenen [Bereitstellungsoptionen](https://lenses.io/product/deployment/) wählen.
 * Eine Lenses.io-[Lizenz](https://lenses.io/product/pricing/), die einmaliges Anmelden (Single Sign-On, SSO) unterstützt
 
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
+
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Lenses.io unterstützt vom Dienstanbieter (Service Provider, SP) initiiertes einmaliges Anmelden.
 
-* Nach dem Konfigurieren von Lenses.io können Sie die Sitzungssteuerung erzwingen. Die Sitzungssteuerung schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
-
 ## <a name="add-lensesio-from-the-gallery"></a>Hinzufügen von Lenses.io aus dem Katalog
 
 Fügen Sie zum Konfigurieren der Integration von Lenses.io in Azure AD Ihrer Liste der verwalteten SaaS-Apps Lenses.io aus dem Katalog hinzu.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Bereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 1. Wählen Sie **Neue Anwendung** aus.
@@ -72,22 +71,22 @@ Führen Sie die folgenden Schritte aus:
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Lenses.io** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Lenses.io** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Bearbeitungs-/Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
 
    ![Screenshot: Symbol zum Bearbeiten der grundlegenden SAML-Konfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** Werte in die folgenden Texteingabefelder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. **Anmelde-URL**: Geben Sie eine URL mit folgendem Muster ein: `https://<CUSTOMER_LENSES_BASE_URL>`. z. B. `https://lenses.my.company.com`.
+    a. **Bezeichner (Entitäts-ID)** : Geben Sie eine URL mit folgendem Muster ein: `https://<CUSTOMER_LENSES_BASE_URL>`. z. B. `https://lenses.my.company.com`.
 
-    b. **Bezeichner (Entitäts-ID)** : Geben Sie eine URL mit folgendem Muster ein: `https://<CUSTOMER_LENSES_BASE_URL>`. z. B. `https://lenses.my.company.com`.
+    b. **Antwort-URL**: Geben Sie eine URL mit folgendem Muster ein: `https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`. z. B. `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`.
 
-    c. **Antwort-URL**: Geben Sie eine URL mit folgendem Muster ein: `https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`. z. B. `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`.
+    c. **Anmelde-URL**: Geben Sie eine URL mit folgendem Muster ein: `https://<CUSTOMER_LENSES_BASE_URL>`. z. B. `https://lenses.my.company.com`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie sie durch die tatsächlichen Werte für die Anmelde-URL, die Antwort-URL und den Bezeichner der Basis-URL Ihrer Lenses-Portalinstanz. Weitere Informationen finden Sie in der [Lenses.io-Dokumentation zu SSO](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0).
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie sie durch die tatsächlichen Werte für den Bezeichner, die Antwort-URL, die Anmelde-URL und die Basis-URL Ihrer Lenses-Portalinstanz. Weitere Informationen finden Sie in der [Lenses.io-Dokumentation zu SSO](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0).
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** zum Abschnitt **SAML-Signaturzertifikat**. Navigieren Sie zu **Verbundmetadaten-XML**, wählen Sie die Option **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -137,13 +136,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste die Anwendung **Lenses.io** aus.
 1. Wählen Sie auf der Übersichtsseite der App im Abschnitt **Verwalten** die Option **Benutzer und Gruppen** aus.
-
-   ![Screenshot: Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-1. Wählen Sie **Benutzer hinzufügen** aus.
-
-   ![Screenshot: Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
+1. Klicken Sie auf **Benutzer hinzufügen**.
 1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ die Option **B.Simon** aus. Klicken Sie unten auf der Seite auf die Schaltfläche **Auswählen**.
 1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Klicken Sie unten auf der Seite auf die Schaltfläche **Auswählen**.
@@ -162,22 +155,14 @@ Weitere Informationen finden Sie im Abschnitt zum Thema [Azure: Lenses-Gruppenzu
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich die Kachel „Lenses.io“ auswählen, sollten Sie automatisch bei Ihrem Lenses.io-Portal angemeldet werden. Weitere Informationen finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Lenses.io weitergeleitet, wo Sie den Anmeldeablauf initiieren können. 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Rufen Sie direkt die Anmelde-URL für Lenses.io auf, und initiieren Sie den Anmeldeablauf.
 
-- [Einrichten von SSO in Ihrer Lenses.io-Instanz](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „Lenses.io“ klicken, werden Sie zur Anmelde-URL für Lenses.io weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure AD](./tutorial-list.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure AD?](../manage-apps/what-is-single-sign-on.md)
-
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
-
-- [Lenses.io mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)
+Nach dem Konfigurieren von Lenses.io können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

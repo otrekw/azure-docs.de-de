@@ -2,14 +2,14 @@
 author: yulin-li
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/17/2021
+ms.date: 07/02/2021
 ms.author: yulili
-ms.openlocfilehash: 759fca1d323c72fe5e336a3211a9fb68fc1804b9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 54647867ab0a0d2c1333f80121aeab49a2efc959
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085486"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113279884"
 ---
 In dieser Schnellstartanleitung werden gängige Entwurfsmuster für die Sprachsynthese per Speech SDK vermittelt.
 
@@ -29,7 +29,7 @@ Zuallererst muss das [Speech SDK für Go](../../../quickstarts/setup-platform.m
 ## <a name="text-to-speech-to-speaker"></a>Text-zu-Sprache über Lautsprecher
 
 Verwenden Sie das folgende Codebeispiel, um die Sprachsynthese über Ihr standardmäßiges Audioausgabegerät durchzuführen.
-Ersetzen Sie die Variablen `subscription` und `region` durch Ihr Abonnement und Ihren Regionsschlüssel.
+Ersetzen Sie die Variablen `subscription` und `region` durch Ihren Schlüssel für die Spracheingabe und durch Ihren Standort/Ihre Region.
 Wenn Sie das Skript ausführen, wird Ihr Eingabetext über den Standardlautsprecher gesprochen.
 
 ```go
@@ -68,8 +68,8 @@ func cancelledHandler(event speech.SpeechSynthesisEventArgs) {
 }
 
 func main() {
-    subscription :=  "YOUR_SUBSCRIPTION_KEY"
-    region := "YOUR_SUBSCRIPTIONKEY_REGION"
+    subscription := "<paste-your-speech-key-here>"
+    region := "<paste-your-speech-location/region-here>"
 
     audioConfig, err := audio.NewAudioConfigFromDefaultSpeakerOutput()
     if err != nil {
@@ -167,7 +167,7 @@ Hierbei speichern Sie das Ergebnis nun in einer Variablen vom Typ [`SpeechSynthe
 Die Eigenschaft `AudioData` gibt ein `[]byte`-Element der Ausgabedaten zurück. Sie können dieses `[]byte`-Element manuell nutzen oder die [`AudioDataStream`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go/speech#AudioDataStream)-Klasse verwenden, um den speicherinternen Stream zu verwalten.
 In diesem Beispiel verwenden Sie die statische Funktion `NewAudioDataStreamFromSpeechSynthesisResult()`, um einen Datenstrom aus dem Ergebnis abzurufen.
 
-Ersetzen Sie die Variablen `subscription` und `region` durch Ihr Abonnement und Ihren Regionsschlüssel.
+Ersetzen Sie die Variablen `subscription` und `region` durch Ihren Schlüssel für die Spracheingabe und durch Ihren Standort/Ihre Region.
 
 ```go
 package main
@@ -184,8 +184,8 @@ import (
 )
 
 func main(subscription string, region string) {
-    subscription :=  "YOUR_SUBSCRIPTION_KEY"
-    region := "YOUR_SUBSCRIPTIONKEY_REGION"
+    subscription := "<paste-your-speech-key-here>"
+    region := "<paste-your-speech-location/region-here>"
 
     config, err := speech.NewSpeechConfigFromSubscription(subscription, region)
     if err != nil {
@@ -296,5 +296,5 @@ Die Anforderung bleibt größtenteils unverändert, aber Sie verwenden nun `Spea
 Die Sprache kann eine gute Möglichkeit zum Steuern der Animation von Gesichtsausdrücken sein.
 Häufig werden die Schlüssel in der beobachteten Sprache mithilfe von [visemes](../../../how-to-speech-synthesis-viseme.md) dargestellt, wie z. b. die Position der Lippen, der Kiefer und die Zunge, wenn ein bestimmtes Phoneme erzeugt wird.
 Sie können das Ereignis „viseme“ in der Sprach-SDK abonnieren.
-Anschließend können Sie das Gesicht eines Zeichens bei der Wiedergabe von viseme-Ereignissen auf das Zeichen eines Zeichens animieren.
-Erfahren Sie [, wie Sie viseme-Ereignisse bekommen](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)
+Anschließend können Sie das Gesicht eines Zeichens bei der Wiedergabe von sprach Audioereignissen auf das Zeichen eines Zeichens animieren.
+Erfahren Sie [wie Sie viseme-Ereignisse bekommen](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)

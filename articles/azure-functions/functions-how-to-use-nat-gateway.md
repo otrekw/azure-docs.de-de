@@ -4,16 +4,16 @@ description: In diesem ausführlichen Tutorial erfahren Sie Schritt für Schritt
 ms.topic: tutorial
 ms.author: kyburns
 ms.date: 2/26/2021
-ms.openlocfilehash: 5bb491e367ed813f09197a193745c231261c88c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b91ccd725fbd6ae1e3a974ecb70b4c01201adb4
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104658156"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432264"
 ---
 # <a name="tutorial-control-azure-functions-outbound-ip-with-an-azure-virtual-network-nat-gateway"></a>Tutorial: Steuern der ausgehenden IP-Adresse von Azure Functions mithilfe eines Azure Virtual Network NAT-Gateways
 
-Virtual Network NAT (Network Address Translation, Netzwerkadressenübersetzung) vereinfacht die Einrichtung von ausschließlich ausgehender Internetkonnektivität für virtuelle Netzwerke. Bei der Konfiguration in einem Subnetz werden für die gesamte Konnektivität in ausgehender Richtung die von Ihnen angegebenen statischen öffentlichen IP-Adressen verwendet. Eine NAT kann bei Azure Functions oder Web-Apps hilfreich sein, die auf einen Drittanbieterdienst angewiesen sind, von dem als Sicherheitsmaßnahme eine Positivliste mit IP-Adressen verwendet wird. Weitere Informationen finden Sie unter [Was ist Virtual Network NAT?](../virtual-network/nat-overview.md).
+Virtual Network NAT (Network Address Translation, Netzwerkadressenübersetzung) vereinfacht die Einrichtung von ausschließlich ausgehender Internetkonnektivität für virtuelle Netzwerke. Bei der Konfiguration in einem Subnetz werden für die gesamte Konnektivität in ausgehender Richtung die von Ihnen angegebenen statischen öffentlichen IP-Adressen verwendet. Eine NAT kann bei Azure Functions oder Web-Apps hilfreich sein, die auf einen Drittanbieterdienst angewiesen sind, von dem als Sicherheitsmaßnahme eine Positivliste mit IP-Adressen verwendet wird. Weitere Informationen finden Sie unter [Was ist Virtual Network NAT?](../virtual-network/nat-gateway/nat-overview.md).
 
 In diesem Tutorial erfahren Sie, wie Sie virtuelle Virtual Network NAT verwenden, um ausgehenden Datenverkehr einer über HTTP ausgelösten Funktion weiterzuleiten. Diese Funktion ermöglicht die Überprüfung der eigenen ausgehenden IP-Adresse. Dieses Tutorial umfasst Folgendes:
 
@@ -66,6 +66,8 @@ Wenn Sie bereits das Tutorial [Integrieren von Azure Functions in ein virtuelles
 Erstellen Sie als Nächstes eine Funktions-App im [Premium-Tarif](functions-premium-plan.md). Dieser Plan ermöglicht eine Skalierung ohne Server und unterstützt gleichzeitig die Integration in ein virtuelles Netzwerk.
 
 ## <a name="create-a-function-app-in-a-premium-plan"></a>Erstellen einer Funktions-App in einem Premium-Tarif
+
+In diesem Tutorial erfahren Sie, wie Sie Ihre Funktions-App in einem [Premium-Plan](functions-premium-plan.md)erstellen. Die gleiche Funktionalität ist auch verfügbar, wenn ein [Dedizierter (App Service)-Plan](dedicated-plan.md) verwendet wird.
 
 > [!NOTE]  
 > Wählen Sie .NET als Runtimestapel und Windows als Betriebssystem aus, um in diesem Tutorial optimale Ergebnisse zu erzielen. Erstellen Sie Ihre Funktions-App außerdem in der gleichen Region wie Ihr virtuelles Netzwerk.
@@ -187,7 +189,7 @@ Erstellen Sie als Nächstes das NAT-Gateway. Im [vorherigen Tutorial für virtue
     | **Ressourcengruppe** | „myResourceGroup“ (oder der Name, den Sie Ihrer Ressourcengruppe zugewiesen haben) |
     | **Name des NAT-Gateways** | myNatGateway |
     | **Region** | „USA, Osten“ (oder der Standort, den Sie Ihren anderen Ressourcen zugewiesen haben) |
-    | **Verfügbarkeitszone** | Keiner |
+    | **Verfügbarkeitszone** | Keine |
 
 1. Wählen Sie **Weiter: Ausgehende IP-Adresse** aus. Wählen Sie im Feld **Öffentliche IP-Adressen** die zuvor erstellte öffentliche IP-Adresse aus. Lassen Sie **Präfixe für öffentliche IP-Adressen** leer.
 

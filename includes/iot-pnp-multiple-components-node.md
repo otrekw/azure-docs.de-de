@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 862416573ef8899418e7e48630eca6d757b9f485
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 7050d7b074dd5c88fa3b00f9ce8a37ec7501179d
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110487289"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400128"
 ---
 In diesem Tutorial erfahren Sie, wie Sie eine IoT Plug & Play-Beispielgeräteanwendung mit Komponenten erstellen, mit Ihrem IoT-Hub verbinden und die an den Hub gesendeten Informationen mithilfe des Tools Azure IoT-Explorer anzeigen. Die Beispielanwendung wurde für Node.js geschrieben und ist im Azure IoT Hub-Geräte-SDK für Node.js enthalten. Ein Lösungsentwickler kann mithilfe von Azure IoT-Explorer mehr über die Funktionen eines IoT Plug & Play-Geräts erfahren, ohne Gerätecode anzeigen zu müssen.
 
@@ -36,7 +36,7 @@ node --version
 
 ## <a name="download-the-code"></a>Laden Sie den Code herunter.
 
-Wenn Sie [Schnellstart: Verbinden einer unter Windows ausgeführten IoT Plug & Play-Beispielgeräteanwendung mit IoT Hub (Node.js)](../articles/iot-pnp/quickstart-connect-device.md) abgeschlossen haben, wurde das Repository bereits geklont.
+Wenn Sie das Tutorial [Verbinden einer unter Windows ausgeführten IoT Plug & Play-Beispielgeräteanwendung mit IoT Hub (Node)](../articles/iot-develop/tutorial-connect-device.md) abgeschlossen haben, wurde das Repository bereits geklont.
 
 Öffnen Sie eine Eingabeaufforderung in einem Verzeichnis Ihrer Wahl. Führen Sie den folgenden Befehl aus, um das GitHub-Repository [Microsoft Azure IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node) an diesem Speicherort zu klonen:
 
@@ -62,7 +62,7 @@ Navigieren Sie zum Ordner *azure-iot-sdk-node\device\samples\pnp*.
 
 Der Ordner *azure-iot-sdk-node\device\samples\pnp* enthält den Beispielcode für den IoT Plug & Play-Temperaturregler.
 
-Der Code in der Datei *pnpTemperatureController.js* dient zum Implementieren eines IoT Plug & Play-Temperaturreglers. Das in diesem Beispiel implementierte Modell umfasst [mehrere Komponenten](../articles/iot-pnp/concepts-modeling-guide.md). In der [DTDL-Modelldatei (Digital Twins Definition Language) für das Temperaturgerät](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) werden die vom Gerät implementierten Telemetriedaten, Eigenschaften und Befehle definiert.
+Der Code in der Datei *pnpTemperatureController.js* dient zum Implementieren eines IoT Plug & Play-Temperaturreglers. Das in diesem Beispiel implementierte Modell umfasst [mehrere Komponenten](../articles/iot-develop/concepts-modeling-guide.md). In der [DTDL-Modelldatei (Digital Twins Definition Language) für das Temperaturgerät](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) werden die vom Gerät implementierten Telemetriedaten, Eigenschaften und Befehle definiert.
 
 Öffnen Sie die Datei *pnpTemperatureController.js* in einem Code-Editor Ihrer Wahl. Mithilfe des Beispielcodes wird Folgendes gezeigt:
 

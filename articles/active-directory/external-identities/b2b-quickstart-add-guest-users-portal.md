@@ -6,7 +6,7 @@ author: msmimart
 ms.author: mimart
 manager: celestedg
 ms.reviewer: mal
-ms.date: 08/05/2020
+ms.date: 06/18/2020
 ms.topic: quickstart
 ms.service: active-directory
 ms.subservice: B2B
@@ -15,12 +15,12 @@ ms.custom:
 - seo-update-azuread-jan
 - mode-portal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7326a35d07715eae75f70f2f33763f82946c589c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 242f5a721959246b8d0159598cc86ab3b5194641
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529855"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422604"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Schnellstart: Hinzufügen von Gastbenutzern zu Ihrem Verzeichnis im Azure-Portal
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie Folgendes:
 
- - Eine Rolle, mit der Sie Benutzer in Ihrem Mandantenverzeichnis erstellen können, z.B. die globale Administratorrolle oder eine Verzeichnisrolle für eingeschränkte Administratoren
+ - Eine Rolle, mit der Sie Benutzer in Ihrem Mandantenverzeichnis erstellen können, z. B. die globale Administratorrolle oder eine Verzeichnisrolle für eingeschränkte Administratoren, wie ein Gasteinladender oder ein Benutzeradministrator.
  - Ein gültiges E-Mail-Konto, das Sie Ihrem Mandantenverzeichnis hinzufügen können und mit dem Sie die Testeinladungs-E-Mail erhalten
 
 ## <a name="add-a-new-guest-user-in-azure-ad"></a>Hinzufügen eines neuen Gastbenutzers in Azure AD

@@ -1,16 +1,16 @@
 ---
 title: 'Schnellstart: Ihre erste PowerShell-Abfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren des Resource Graph-Moduls für Azure PowerShell und zum Ausführen Ihrer ersten Abfrage aus.
-ms.date: 05/11/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom:
 - mode-api
-ms.openlocfilehash: dd620ec63547b0b9fdba41da3cd2dcf6daa9dea0
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 20b595a52b238d701b8ec54bdec99d07e7f57fcb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750913"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463431"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mit Azure PowerShell
 
@@ -47,7 +47,7 @@ Das Resource Graph-Modul für PowerShell ist **Az.ResourceGraph**.
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Vergewissern Sie sich, dass das Modul importiert wurde und mindestens Version `0.10.0` aufweist:
+1. Vergewissern Sie sich, dass das Modul importiert wurde und mindestens Version `0.11.0` aufweist:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -56,7 +56,7 @@ Das Resource Graph-Modul für PowerShell ist **Az.ResourceGraph**.
 
 ## <a name="run-your-first-resource-graph-query"></a>Ausführen Ihrer ersten Resource Graph-Abfrage
 
-Nachdem das Azure PowerShell-Modul der gewünschten Umgebung hinzugefügt wurde, können Sie eine einfache Resource Graph-Abfrage ausprobieren. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit dem **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück.
+Nachdem das Azure PowerShell-Modul Ihrer gewünschten Umgebung hinzugefügt wurde, können Sie eine einfache mandantenbasierte Resource Graph-Abfrage ausprobieren. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit dem **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück. Verwenden Sie für eine Abfrage nach [Verwaltungsgruppe](../management-groups/overview.md) oder Abonnement die Parameter `-ManagementGroup` oder `-Subscription`.
 
 1. Führen Sie Ihre erste Azure Resource Graph-Abfrage mit dem `Search-AzGraph`-Cmdlet aus:
 
@@ -64,7 +64,7 @@ Nachdem das Azure PowerShell-Modul der gewünschten Umgebung hinzugefügt wurde,
    # Login first with Connect-AzAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   (Search-AzGraph -Query 'Resources | project name, type | limit 5').Data
+   Search-AzGraph -Query 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -74,7 +74,7 @@ Nachdem das Azure PowerShell-Modul der gewünschten Umgebung hinzugefügt wurde,
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
-   (Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc').Data
+   Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
@@ -84,7 +84,7 @@ Nachdem das Azure PowerShell-Modul der gewünschten Umgebung hinzugefügt wurde,
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   (Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5').Data
+   Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
    ```
 
 Wenn die letzte Abfrage mehrmals ausgeführt wird und in Ihrer Umgebung keine Änderungen vorgenommenen werden, sind die zurückgegebenen Ergebnisse konsistent und nach der Eigenschaft **Name** sortiert, aber immer noch auf die ersten fünf Ergebnisse begrenzt.

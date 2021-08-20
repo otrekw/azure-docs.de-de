@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 3bc89555f3526048f2e4876724503d0137f21fbf
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3a6a00fd13165deb1a0ec10d3c6d24fed5a5c278
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964375"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114709914"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Einrichten Ihres Azure Percept DK und Bereitstellen Ihres ersten KI-Modells
 
@@ -49,14 +49,14 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
 1. Wählen Sie Ihr Abonnement in der Liste aus. Sollte Ihr Abonnement nicht angezeigt werden, vergewissern Sie sich, dass Sie mit dem richtigen Azure-Konto angemeldet sind. Wenn Sie ein neues Abonnement erstellen möchten, befolgen Sie [diese Schritte](../cost-management-billing/manage/create-subscription.md).
 
 1. Wählen Sie im Menü „Abonnement“ die Option **Zugriffssteuerung (IAM)** aus.
-1. Klicken Sie auf **View my access** (Meinen Zugriff anzeigen).
+1. Klicken Sie auf **View my access**.
 1. Überprüfen Sie die Rolle:
     - Wenn Ihre Rolle **Leser** lautet oder eine Meldung mit dem Hinweis angezeigt wird, dass Sie nicht zum Anzeigen von Rollen berechtigt sind, muss die Rolle Ihres Kontos erhöht werden. Verwenden Sie hierzu den in Ihrer Organisation vorgesehenen Prozess.
     - Wenn Ihre Rolle **Besitzer** oder **Mitwirkender** lautet, kann Ihr Konto mit Azure Percept verwendet werden, und Sie können mit der Einrichtungserfahrung fortfahren.
 
 ## <a name="launch-the-azure-percept-dk-setup-experience"></a>Starten der Azure Percept DK-Einrichtungserfahrung
 
-1. Verbinden Sie Ihren Hostcomputer direkt mit dem WLAN-Zugriffspunkt des Development Kits. Öffnen Sie dazu genau wie bei anderen WLAN-Verbindungen die Netzwerk- und Interneteinstellungen auf Ihrem Computer, klicken Sie auf das folgende Netzwerk, und geben Sie das Netzwerkkennwort ein, wenn Sie dazu aufgefordert werden:
+1. Verbinden Sie Ihren Hostcomputer direkt mit dem WLAN-Zugriffspunkt des Development Kits. Öffnen Sie dazu genau wie bei anderen WLAN-Verbindungen die Netzwerk- und Interneteinstellungen auf Ihrem Computer, wählen Sie das folgende Netzwerk aus, und geben Sie das Netzwerkkennwort ein, wenn Sie dazu aufgefordert werden:
 
     - **Netzwerkname:** Der Name des WLAN-Zugriffspunkts lautet abhängig von der Betriebssystemversion Ihres Development Kits entweder **scz-xxxx** oder **apd-xxxx** (wobei „xxxx“ für die letzten vier Ziffern der MAC-Adresse des Dev Kits steht).
     - **Kennwort:** Das Kennwort finden Sie auf der Begrüßungskarte, die im Lieferumfang des Development Kits enthalten war.
@@ -81,6 +81,9 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
 
 1. Wählen Sie in der Liste mit den verfügbaren Netzwerken Ihr WLAN aus, und klicken Sie auf **Verbinden**. Geben Sie Ihr Netzwerkkennwort ein, wenn Sie dazu aufgefordert werden.
 
+    > [!NOTE]
+    > **Mac-Benutzer**: Wenn Sie die Einrichtungserfahrung auf einem Mac durchlaufen, wird sie zunächst in einem Fenster anstelle eines Webbrowsers geöffnet. Das Fenster wird nicht beibehalten, wenn die Verbindung vom Zugriffspunkt des Geräts zum WLAN wechselt. Öffnen Sie einen Webbrowser, und wechseln Sie zu https://10.1.1.1, damit Sie die Einrichtungserfahrung abschließen können.
+
 1. Wenn das Development Kit erfolgreich mit Ihrem Netzwerk verbunden wurde, wird auf der Seite die IPv4-Adresse angezeigt, die Ihrem Development Kit zugewiesen ist. **Notieren Sie sich die auf der Seite angezeigte IPv4-Adresse.** Die IP-Adresse wird benötigt, wenn Sie eine SSH-Verbindung mit Ihrem Development Kit herstellen möchten, um Probleme zu behandeln oder Geräteupdates durchzuführen.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-04-success-wi-fi.png" alt-text="Kopieren der IP-Adresse.":::
@@ -102,6 +105,9 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
 1. Klicken Sie auf **Kopieren**, um Ihren Gerätecode zu kopieren. Klicken Sie anschließend auf **Bei Azure anmelden**.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-08-copy-code.png" alt-text="Kopieren des Gerätecodes.":::
+
+    > [!NOTE]
+    > Wenn Sie bei dem Versuch, den Gerätecode zu empfangen, diese Fehlermeldung erhalten: *Gerätecode kann nicht empfangen werden. Stellen Sie sicher, dass das Gerät mit dem Internet verbunden ist*. Die häufigste Ursache ist Ihr Netzwerk vor Ort.  Schließen Sie ein Ethernet-Kabel an das Development Kit an, oder stellen Sie eine Verbindung mit einem anderen Wi-Fi Netzwerk her, und versuchen Sie es erneut.  Weniger häufige Ursachen können sein, dass Datum/Uhrzeit des Hostcomputers deaktiviert sind. 
 
 1. Daraufhin wird eine neue Browserregisterkarte mit einem Fenster für die **Codeeingabe** geöffnet. Fügen Sie den Code in das Fenster ein, und klicken Sie auf **Weiter**. Lassen Sie die Registerkarte **Willkommen** mit der Einrichtungserfahrung GEÖFFNET.
 
@@ -135,7 +141,7 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
     > [!NOTE]
     > Wenn Sie für Ihre Edge-KI-Anwendungen einen höheren [Nachrichtendurchsatz](../iot-hub/iot-hub-scaling.md#message-throughput) benötigen, können Sie Ihre IoT Hub-Instanz im Azure-Portal jederzeit [auf einen höheren Standard-Tarif upgraden](../iot-hub/iot-hub-upgrade.md). In den Tarifen B und F wird Azure Percept NICHT unterstützt.
 
-1. Die IoT Hub-Bereitstellung kann mehrere Minuten dauern. Klicken Sie nach Abschluss der Bereitstellung auf **Registrieren**.
+1. Die IoT Hub-Bereitstellung kann mehrere Minuten dauern. Wenn die Bereitstellung abgeschlossen ist, klicken Sie auf **Registrieren**.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-16-iot-hub-success.png" alt-text="IoT Hub erfolgreich bereitgestellt.":::
 
@@ -160,7 +166,7 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
 
 ## <a name="view-your-dev-kit-video-stream-and-deploy-a-sample-model"></a>Anzeigen des Videostreams Ihres Development Kits und Bereitstellen eines Beispielmodells
 
-1. Auf der [Übersichtsseite von Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) stehen viele verschiedene Workflows für Einsteiger und erfahrene Entwickler von Edge-KI-Lösungen zur Verfügung. Klicken Sie zunächst im Menü auf der linken Seite auf **Geräte**.
+1. Auf der [Übersichtsseite von Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) stehen viele verschiedene Workflows für Einsteiger und erfahrene Entwickler von Edge-KI-Lösungen zur Verfügung. Klicken Sie zunächst im linken Menü auf **Geräte**.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-01-get-device-list.png" alt-text="Anzeigen Ihrer Geräteliste.":::
 
@@ -168,9 +174,9 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-02-select-device.png" alt-text="Wählen Sie Ihr Gerät aus.":::
 
-1. Klicken Sie auf **View your device stream** (Gerätedatenstrom anzeigen). Falls Sie den Videostream Ihres Geräts zum ersten Mal anzeigen, werden Sie rechts oben in einer Benachrichtigung darauf hingewiesen, dass ein neues Modell bereitgestellt wird. Dies kann einige Minuten dauern.
+1. Klicken Sie auf **View your device stream**. Falls Sie den Videostream Ihres Geräts zum ersten Mal anzeigen, werden Sie rechts oben in einer Benachrichtigung darauf hingewiesen, dass ein neues Modell bereitgestellt wird. Dies kann einige Minuten dauern.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-03-1-start-video-stream.png" alt-text="Anzeigen Ihres Videostreams.":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/view-stream.png" alt-text="Anzeigen Ihres Videostreams.":::
 
     Nach Abschluss der Modellbereitstellung erhalten Sie eine weitere Benachrichtigung mit dem Link **Stream anzeigen**. Klicken Sie auf den Link, um den Videostream Ihrer Azure Percept Vision-Kamera in einem neuen Browserfenster anzuzeigen. Das Development Kit verfügt über ein im Voraus geladenes KI-Modell zur automatischen Erkennung zahlreicher gängiger Objekte.
 
@@ -178,13 +184,13 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
 
 1. Azure Percept Studio verfügt auch über eine Reihe von KI-Beispielmodellen. Kehren Sie zum Bereitstellen eines Beispielmodells für das Development Kit zur Seite Ihres Geräts zurück, und klicken Sie auf **Beispielmodell bereitstellen**.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-04-explore-prebuilt.png" alt-text="Erkunden vorgefertigter Modelle.":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/deploy-sample-model.png" alt-text="Erkunden vorgefertigter Modelle.":::
 
 1. Wählen Sie in der Bibliothek ein Beispielmodell aus, und klicken Sie auf **Auf Gerät bereitstellen**.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-2-select-journey.png" alt-text="Objekterkennung in Aktion sehen.":::
 
-1. Nach erfolgreicher Modellbereitstellung wird rechts oben auf dem Bildschirm eine Benachrichtigung mit dem Link **Stream anzeigen** angezeigt. Klicken Sie auf den Link in der Benachrichtigung, oder kehren Sie zur Geräteseite zurück, und klicken Sie auf **Gerätestream anzeigen**, um Modellrückschlüsse in Aktion zu erleben. Alle zuvor auf dem Development Kit ausgeführten Modelle werden nun durch das neue Modell ersetzt.
+1. Nach erfolgreicher Modellbereitstellung wird rechts oben auf dem Bildschirm eine Benachrichtigung mit dem Link **Stream anzeigen** angezeigt. Klicken Sie auf den Link in der Benachrichtigung, oder kehren Sie zur Geräteseite zurück, und wählen Sie **View your device stream** aus, um Modellrückschlüsse in Aktion zu erleben. Alle zuvor auf dem Development Kit ausgeführten Modelle werden nun durch das neue Modell ersetzt.
 
 ## <a name="video-walkthrough"></a>Exemplarische Vorgehensweise per Video
 

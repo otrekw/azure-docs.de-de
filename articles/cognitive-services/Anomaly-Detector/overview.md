@@ -12,14 +12,14 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: Anomalieerkennung, maschinelles Lernen, Algorithmen
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 52ed294146edbd70f21af4f706ad68f3aa6662dc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 30764913ae92670a9034f709f9bb3f50a309374f
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076814"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296881"
 ---
-# <a name="what-is-the-anomaly-detector-api"></a>Worum handelt es sich bei der Anomalieerkennungs-API?
+# <a name="what-is-the-anomaly-detector-univariate-api"></a>Worum handelt es sich bei der univariaten Anomalieerkennungs-API?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
@@ -99,7 +99,6 @@ Es ist keine Kundenkonfiguration erforderlich, um Zonenresilienz zu ermöglichen
 ## <a name="join-the-anomaly-detector-community"></a>Beitreten zur Anomalieerkennungs-Community
 
 * Beitreten zur [Ratgebergruppe für die Anomalieerkennung auf Microsoft Teams](https://aka.ms/AdAdvisorsJoin)
-* Siehe [Benutzergenerierte Inhalte](user-generated-content.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

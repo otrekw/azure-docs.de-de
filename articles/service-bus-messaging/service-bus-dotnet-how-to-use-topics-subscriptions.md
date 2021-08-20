@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 06/29/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 13fee0b418a295fb47c5eb44f12190c7655b5934
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: b101603577324200c348a7522596b44db8049a05
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113092715"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457841"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-its-subscriptions-net"></a>Senden von Nachrichten an ein Azure Service Bus-Thema und Empfangen von Nachrichten von Abonnements (.NET)
 In diesem Schnellstart erfahren Sie, wie mithilfe der .NET-Bibliothek [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) Nachrichten an ein Service Bus-Thema gesendet und von einem Abonnement dieses Themas empfangen werden.
@@ -55,10 +55,10 @@ In diesem Abschnitt erfahren Sie, wie Sie eine .NET Core-Konsolenanwendung zum S
 
 1. Ersetzen Sie den Code in **Program.cs** durch den folgenden Code. Im Folgenden sind die wichtigsten Schritte aus dem Code aufgeführt.  
     1. Erstellen eines [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient)-Objekts unter Verwendung der Verbindungszeichenfolge für den Namespace 
-    1. Aufrufen der [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender)-Methode für das `ServiceBusClient`-Objekt, um ein [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender)-Objekt für das angegebene Service Bus-Thema zu erstellen     
-    1. Erstellen eines [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch)-Objekts mithilfe von [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync)
-    1. Hinzufügen von Nachrichten zum Batch mithilfe von [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage). 
-    1. Senden des Nachrichtenbatches an das Service Bus-Thema mithilfe der Methode [ServiceBusSender.SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync)
+    1. Aufrufen der `CreateSender`-Methode für das `ServiceBusClient`-Objekt, um ein [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender)-Objekt für das angegebene Service Bus-Thema zu erstellen     
+    1. Erstellen eines `ServiceBusMessageBatch`-Objekts über die `ServiceBusSender.CreateMessageBatchAsync`-Methode
+    1. Hinzufügen von Nachrichten zum Batch mithilfe der `ServiceBusMessageBatch.TryAddMessage`-Methode 
+    1. Senden des Nachrichtenbatches an das Service Bus-Thema mithilfe der Methode `ServiceBusSender.SendMessagesAsync`
     
         Weitere Informationen finden Sie in den Codekommentaren.
         ```csharp
@@ -172,10 +172,10 @@ In diesem Abschnitt erstellen Sie eine .NET Core-Konsolenanwendung für den Empf
 1. Ersetzen Sie den Code in **Program.cs** durch den folgenden Code. Im Folgenden sind die wichtigsten Schritte aus dem Code aufgeführt.
     Hier sind die wesentlichen Schritte aus dem Code aufgeführt:
     1. Erstellen eines [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient)-Objekts unter Verwendung der Verbindungszeichenfolge für den Namespace 
-    1. Aufrufen der [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor)-Methode für das `ServiceBusClient`-Objekt zum Erstellen eines [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)-Objekts für die angegebene Service Bus-Warteschlange 
-    1. Angeben von Handlern für die Ereignisse [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) und [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) des `ServiceBusProcessor`-Objekts 
-    1. Starten der Verarbeitung von Nachrichten durch Aufrufen von [StartProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync) für das `ServiceBusProcessor`-Objekt 
-    1. Aufrufen von [StopProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.stopprocessingasync) für das `ServiceBusProcessor`-Objekt, wenn der Benutzer eine Taste zum Beenden der Verarbeitung drückt 
+    1. Aufrufen der `CreateProcessor`-Methode für das `ServiceBusClient`-Objekt zum Erstellen eines [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)-Objekts für die angegebene Service Bus-Warteschlange 
+    1. Angeben von Handlern für die Ereignisse `ProcessMessageAsync` und `ProcessErrorAsync` des `ServiceBusProcessor`-Objekts 
+    1. Starten der Verarbeitung von Nachrichten durch Aufrufen von `StartProcessingAsync` für das `ServiceBusProcessor`-Objekt 
+    1. Aufrufen von `StopProcessingAsync` für das `ServiceBusProcessor`-Objekt, wenn der Benutzer eine Taste zum Beenden der Verarbeitung drückt 
 
         Weitere Informationen finden Sie in den Codekommentaren.
 

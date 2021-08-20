@@ -2,21 +2,21 @@
 title: Verschieben der Anwendungsauthentifizierung von AD FS in Azure Active Directory
 description: Hier erfahren Sie, wie Sie Azure Active Directory verwenden, um Active Directory-Verbunddienste (AD FS) zu ersetzen und Benutzern SSO (einmaliges Anmelden) für alle ihre Anwendungen bereitstellen.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
-ms.author: mtillman
-ms.reviewer: baselden
-ms.openlocfilehash: 616550188687823438187e1e09c90d5d3c6c6835
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: alamaral
+ms.openlocfilehash: 6633d7a6ed7def1a2c3ee7f0262c16b106275bfa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078813"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355643"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory
 
@@ -46,7 +46,7 @@ Das Migrieren Ihrer gesamten Anwendungsauthentifizierung zu Azure AD ist optimal
 
 Ihre Anwendungen können moderne oder ältere Protokolle für die Authentifizierung verwenden. Wenn Sie die Migration zu Azure AD planen, empfiehlt es sich, zunächst die Apps zu migrieren, die moderne Authentifizierungsprotokolle (SAML und Open ID Connect) verwenden. Diese Apps können für die Authentifizierung mit Azure AD entweder über einen integrierten Connector aus dem App-Katalog oder durch Registrieren der Anwendung in Azure AD neu konfiguriert werden. Apps, die ältere Protokolle verwenden, können mit Anwendungsproxys integriert werden.
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
 * [Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy](../app-proxy/what-is-application-proxy.md)
 * [Worum handelt es sich bei der Anwendungsverwaltung?](what-is-application-management.md)
@@ -135,7 +135,7 @@ Sowohl AD FS als auch Azure AD stellen Tokenverschlüsselung bereit, also die M�
 Weitere Informationen über die SAML-Tokenverschlüsselung in Azure AD und deren Konfiguration finden Sie unter [Konfigurieren der Azure AD-SAML-Tokenverschlüsselung](howto-saml-token-encryption.md).  
 
 > [!NOTE]
-> Die Tokenverschlüsselung ist ein Premium-Feature von Azure Active Directory (Azure AD). Weitere Informationen zu verfügbaren Editionen, Features und Preisen von Azure AD finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+> Die Tokenverschlüsselung ist ein Premium-Feature von Azure Active Directory (Azure AD). Weitere Informationen zu verfügbaren Editionen, Features und Preisen von Azure AD finden Sie unter [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 ### <a name="apps-and-configurations-that-can-be-moved-today"></a>Apps und Konfigurationen, die heute verschoben werden können
 
@@ -154,8 +154,8 @@ Folgendes erfordert zusätzliche Konfigurationsschritte für die Migration zu Az
 * Apps mit mehreren SAML-Endpunkten: Sie konfigurieren diese in Azure AD mithilfe von PowerShell oder der Schnittstelle des Azure-Portals.
 * Webdiensteverbund-Apps, z.B. SharePoint-Apps, für die Token der Version SAML 1.1 benötigt werden. Diese können Sie mit PowerShell manuell konfigurieren. Sie können auch eine vorintegrierte generische Vorlage für SharePoint- und SAML 1.1-Anwendungen aus dem Katalog hinzufügen. Wir unterstützen das SAML 2.0-Protokoll.
 * Komplexe Transformationsregeln für die Ausstellung von Ansprüchen: Informationen zu unterstützten Anspruchszuordnungen finden Sie in den folgenden Artikeln:
-   *  [Zuordnen von Benutzeransprüchen in Azure Active Directory](../develop/active-directory-claims-mapping.md)
-   * [Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](../develop/active-directory-saml-claims-customization.md)
+  * [Zuordnen von Benutzeransprüchen in Azure Active Directory](../develop/active-directory-claims-mapping.md)
+  * [Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](../develop/active-directory-saml-claims-customization.md)
 
 ### <a name="apps-and-configurations-not-supported-in-azure-ad-today"></a>Apps und Konfigurationen, die in Azure AD derzeit nicht unterstützt werden
 
@@ -308,7 +308,7 @@ Angeben von MFA-Regeln für einen Benutzer oder eine Gruppe in Azure AD:
 
     ‎![Screenshot des Bereichs „Gewähren“, in dem Sie Zugriff gewähren](media/migrate-adfs-apps-to-azure/mfa-users-groups.png)
 
- #### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>Beispiel 2: Erzwingen der MFA für nicht registrierte Geräte
+#### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>Beispiel 2: Erzwingen der MFA für nicht registrierte Geräte
 
 Angeben der MFA-Regeln für nicht registrierte Geräte in Azure AD:
 

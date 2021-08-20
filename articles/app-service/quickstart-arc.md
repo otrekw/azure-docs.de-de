@@ -2,13 +2,13 @@
 title: 'Schnellstart: Erstellen einer Web-App in Azure Arc'
 description: Erste Schritte mit App Service in Azure Arc zum Bereitstellen Ihrer ersten Web-App.
 ms.topic: quickstart
-ms.date: 05/11/2021
-ms.openlocfilehash: b57c5e80ecef87901221c3ead49419f3cce89302
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/02/2021
+ms.openlocfilehash: 4002ef3d66eaae05881da0dd8d95cc82ffeb916d
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385722"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112377006"
 ---
 # <a name="create-an-app-service-app-on-azure-arc-preview"></a>Erstellen einer App Service-App in Azure Arc (Vorschau)
 
@@ -28,36 +28,35 @@ Führen Sie den folgenden Befehl aus.
 az group create --name myResourceGroup --location eastus 
 ```
 
-<!-- ## 2. Create an App Service plan
-
-Run the following command and replace `<environment-name>` with the name of the App Service Kubernetes environment (see [Prerequisites](#prerequisites)).
-
-```azurecli-interactive
-az appservice plan create --resource-group myResourceGroup --name myAppServicePlan --custom-location <environment-name> --kube-sku K1
-``` 
-
-Currently does not work
-
--->
-
 ## <a name="2-get-the-custom-location"></a>2. Abrufen des benutzerdefinierten Speicherorts
 
 [!INCLUDE [app-service-arc-get-custom-location](../../includes/app-service-arc-get-custom-location.md)]
 
 
-## <a name="3-create-an-app"></a>3. Erstellen einer App
+## <a name="3-create-an-app-service-plan"></a>3. Erstellen eines App Service-Plans
+
+Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei `$customLocationId` aus dem vorherigen Schritt.
+
+```azurecli-interactive
+az appservice plan create -g myResourceGroup -n myPlan \
+    --custom-location $customLocationId \
+    --per-site-scaling --is-linux --sku K1
+``` 
+
+## <a name="4-create-an-app"></a>4. Erstellen einer App
 
 Im folgenden Beispiel wird eine Node.js-App erstellt. Ersetzen Sie `<app-name>` durch einen Namen, der in Ihrem Cluster eindeutig ist (gültige Zeichen: `a-z`, `0-9` und `-`). Führen Sie [`az webapp list-runtimes --linux`](/cli/azure/webapp) aus, um alle unterstützten Laufzeiten anzuzeigen.
 
 ```azurecli-interactive
  az webapp create \
+    --plan myPlan \
     --resource-group myResourceGroup \
     --name <app-name> \
     --custom-location $customLocationId \
     --runtime 'NODE|12-lts'
 ```
 
-## <a name="4-deploy-some-code"></a>4. Bereitstellen von Code
+## <a name="5-deploy-some-code"></a>5. Bereitstellen von Code
 
 > [!NOTE]
 > `az webapp up` wird während der öffentlichen Vorschauphase nicht unterstützt.
@@ -71,12 +70,12 @@ zip -r package.zip .
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app-name> --src package.zip
 ```
 
-## <a name="5-get-diagnostic-logs-using-log-analytics"></a>5. Abrufen von Diagnoseprotokollen mit Log Analytics
+## <a name="6-get-diagnostic-logs-using-log-analytics"></a>6. Abrufen von Diagnoseprotokollen mit Log Analytics
 
 > [!NOTE]
 > Um Log Analytics zu verwenden, sollten Sie es zuvor bei der [Installation der App Service-Erweiterung](manage-create-arc-environment.md#install-the-app-service-extension) aktiviert haben. Wenn Sie die Erweiterung ohne Log Analytics installiert haben, überspringen Sie diesen Schritt.
 
-Navigieren Sie zu dem [Log Analytics-Arbeitsbereich, der mit Ihrer App Service-Erweiterung konfiguriert ist](manage-create-arc-environment.md#install-the-app-service-extension), und klicken Sie dann im linken Navigationsbereich auf „Protokolle“. Führen Sie die folgende Beispielabfrage aus, um Protokolle der letzten 72 Stunden anzuzeigen. Ersetzen Sie `<app-name>` durch den Namen Ihrer Web-App. 
+Navigieren Sie zu dem [Log Analytics-Arbeitsbereich, der mit Ihrer App Service-Erweiterung konfiguriert ist](manage-create-arc-environment.md#install-the-app-service-extension), und klicken Sie dann im linken Navigationsbereich auf „Protokolle“. Führen Sie die folgende Beispielabfrage aus, um Protokolle der letzten 72 Stunden anzuzeigen. Ersetzen Sie `<app-name>` durch den Namen Ihrer Web-App. Wenn beim Ausführen einer Abfrage ein Fehler auftritt, versuchen Sie es nach 10 bis 15 Minuten erneut (es kann zu eine Verzögerung kommen, bis Log Analytics beginnt Protokolle von Ihrer Anwendung zu empfangen). 
 
 ```kusto
 let StartTime = ago(72h);
@@ -99,7 +98,8 @@ Um eine benutzerdefinierte Container-App zu erstellen, führen Sie [az webapp cr
 Versuchen Sie zum Beispiel:
 
 ```azurecli-interactive
-az webapp create 
+az webapp create \
+    --plan myPlan \
     --resource-group myResourceGroup \
     --name <app-name> \
     --custom-location $customLocationId \

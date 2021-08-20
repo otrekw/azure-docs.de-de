@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/14/2020
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 20f49c174dde90bc7f1a9b34f3dea3132e9b177e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de00b869aef2d1429740d75829da9a5c3e79de15
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644694"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465941"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Tutorial: Integrieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Splan Visitor
 
@@ -33,11 +33,14 @@ Zunächst benötigen Sie Folgendes:
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Ein Splan Visitor-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
+
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-Splan Visitor unterstützt IdP-initiiertes einmaliges Anmelden.
+* Splan Visitor unterstützt IdP-initiiertes einmaliges Anmelden.
 
 ## <a name="add-splan-visitor-from-the-gallery"></a>Hinzufügen von Splan Visitor aus dem Katalog
 
@@ -69,7 +72,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Splan Visitor** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das **Bearbeitungs-/Stiftsymbol** für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden mit SAML einrichten** das **Stiftsymbol** für die **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
 
    ![Screenshot: Hervorgehobenes Bearbeitungs-/Stiftsymbol für die grundlegende SAML-Konfiguration](common/edit-urls.png)
 

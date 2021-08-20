@@ -1,23 +1,25 @@
 ---
-title: 'Schnellstart: Einrichten des OIDC-basierten einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung auf Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)'
+title: 'Schnellstart: Einrichten des OIDC-basierten einmaligen Anmeldens für eine Anwendung'
+titleSuffix: Azure AD
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie OIDC-basiertes einmaliges Anmelden (Single Sign-On, SSO) für eine Anwendung auf Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) einrichten.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/01/2020
-ms.author: mtillman
-ms.openlocfilehash: 853ae1bf9bb230a28ad4e1e8509ddbeeb9dc34d8
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2020
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: 0e1c253211cfef2d9bf55b4d0a615ccb9563036b
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077499"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669437"
 ---
-# <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Einrichten des OIDC-basierten einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung auf Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)
+# <a name="quickstart-set-up-oidc-based-single-sign-on-for-an-application"></a>Schnellstart: Einrichten des OIDC-basierten einmaligen Anmeldens für eine Anwendung
 
 Beginnen Sie mit vereinfachten Benutzeranmeldungen, indem Sie einmaliges Anmelden (Single Sign-On, SSO) für eine Anwendung einrichten, die Sie Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) hinzugefügt haben. Nachdem Sie SSO eingerichtet haben, können sich Ihre Benutzer mit ihren Azure AD-Anmeldeinformationen bei einer Anwendung anmelden. SSO ist in der kostenlosen Edition von Azure AD enthalten.
 
@@ -40,16 +42,15 @@ Sie benötigen Folgendes, um SSO für eine Anwendung einzurichten, die Sie Ihrem
 
 ## <a name="enable-single-sign-on-for-an-app"></a>Aktivieren des einmaligen Anmeldens für eine App
 
-Beim Hinzufügen einer App, bei der der OIDC-Standard für einmaliges Anmelden (SSO) genutzt wird, verfügen Sie über eine Setupschaltfläche. Wenn Sie die Schaltfläche auswählen, gelangen Sie zur Anwendungswebsite und können den Registrierungsvorgang für die App durchführen. Der Vorgang zum Hinzufügen einer App wurde in der Schnellstartanleitung „Hinzufügen einer App“ dieser Reihe bereits beschrieben. Wenn Sie eine Anwendung konfigurieren, die bereits hinzugefügt wurde, lesen Sie die erste Schnellstartanleitung. Darin wird Schritt für Schritt beschrieben, wie Sie die Anwendungen anzeigen können, die sich bereits auf Ihrem Mandanten befinden. 
+Beim Hinzufügen einer App, bei der der OIDC-Standard für einmaliges Anmelden (SSO) genutzt wird, verfügen Sie über eine Setupschaltfläche. Wenn Sie die Schaltfläche auswählen, gelangen Sie zur Anwendungswebsite und können den Registrierungsvorgang für die App durchführen. Der Vorgang zum Hinzufügen einer App wurde in der Schnellstartanleitung „Hinzufügen einer App“ dieser Reihe bereits beschrieben. Wenn Sie eine Anwendung konfigurieren, die bereits hinzugefügt wurde, lesen Sie die erste Schnellstartanleitung. Darin wird Schritt für Schritt beschrieben, wie Sie die Anwendungen anzeigen können, die sich bereits auf Ihrem Mandanten befinden.
 
 Richten Sie einmaliges Anmelden wie folgt für eine Anwendung ein:
 
-1. In einer der vorherigen Schnellstartanleitungen dieser Reihe wurde beschrieben, wie Sie eine App hinzufügen, bei der Ihr Azure AD-Mandant für die Identitätsverwaltung verwendet wird. Wenn der App-Entwickler den OIDC-Standard zum Implementieren des einmaligen Anmeldens verwendet hat, ist beim Hinzufügen der App eine Schaltfläche für die Registrierung vorhanden. 
+1. In einer der vorherigen Schnellstartanleitungen dieser Reihe wurde beschrieben, wie Sie eine App hinzufügen, bei der Ihr Azure AD-Mandant für die Identitätsverwaltung verwendet wird. Wenn der App-Entwickler den OIDC-Standard zum Implementieren des einmaligen Anmeldens verwendet hat, ist beim Hinzufügen der App eine Schaltfläche für die Registrierung vorhanden.
 
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png" alt-text="Screenshot: Option für einmaliges Anmelden und Schaltfläche für die Registrierung" lightbox="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png":::
 
-
-2. Wenn Sie **Registrieren** auswählen, wird die Anmeldeseite für App-Entwickler angezeigt. Melden Sie sich mit Ihren Azure Active Directory-Anmeldeinformationen an. 
+2. Wenn Sie **Registrieren** auswählen, wird die Anmeldeseite für App-Entwickler angezeigt. Melden Sie sich mit Ihren Azure Active Directory-Anmeldeinformationen an.
 
    > [!IMPORTANT]
     > Falls Sie bereits über ein Abonnement für die Anwendung verfügen, wird eine Überprüfung der Benutzerdetails und Mandanten- bzw. Verzeichnisinformationen durchgeführt. Falls der Benutzer von der Anwendung nicht verifiziert werden kann, werden Sie auf die Registrierungsseite für den Anwendungsdienst oder die Fehlerseite umgeleitet.
@@ -59,7 +60,6 @@ Richten Sie einmaliges Anmelden wie folgt für eine Anwendung ein:
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Screenshot: Einwilligungsbildschirm für eine App" lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
 4. Die Anwendung wird Ihrem Mandanten hinzugefügt, und die Startseite der Anwendung wird angezeigt.
-
 
 > [!TIP]
 > Sie können die App-Verwaltung mithilfe der Graph-API automatisieren. Informationen hierzu finden Sie unter [Automatisieren einer SAML-basierten SSO-App-Konfiguration mit Microsoft Graph-API](/graph/application-saml-sso-configure-api).

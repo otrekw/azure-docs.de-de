@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 63740e6d3f6df757cc7cc8847ed10a03b8831fd5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: dfb71802b0aa0fae1bb853823b054ae49d700edf
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060182"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438276"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Tutorial: Entwickeln von IoT Edge-Modulen mit Linux-Containern
 
@@ -157,13 +157,16 @@ Nehmen Sie sich nach dem Laden Ihrer neuen Projektmappe im Visual Studio Code-Fe
 Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistrierung und gibt sie an die IoT Edge-Runtime weiter. Die Runtime benötigt diese Anmeldeinformationen, um Ihre Containerimages per Pullvorgang auf das IoT Edge-Gerät zu übertragen.
 
 >[!NOTE]
->Wenn Sie im Schritt [**Erstellen einer Projektvorlage**](#create-a-project-template) den Wert **localhost:5000** nicht durch den Wert des Anmeldeservers aus Ihrer Azure-Containerregistrierung ersetzt haben, fehlen die Datei vom Typ **.env** und der Abschnitt „registryCredentials“ des Bereitstellungsmanifests. 
+>Wenn Sie im Schritt [**Erstellen einer Projektvorlage**](#create-a-project-template) den Wert **localhost:5000** nicht durch den Wert des Anmeldeservers aus Ihrer Azure-Containerregistrierung ersetzt haben, fehlen die Datei vom Typ **.env** und der Abschnitt „registryCredentials“ des Bereitstellungsmanifests.
 
 Die IoT Edge-Erweiterung versucht, Ihre Anmeldeinformationen für die Containerregistrierung per Pullvorgang aus Azure abzurufen und in die Umgebungsdatei einzufügen. Überprüfen Sie, ob Ihre Anmeldeinformationen bereits enthalten sind. Fügen Sie sie jetzt hinzu, wenn dies nicht der Fall ist:
 
 1. Öffnen Sie in Ihrer Modulprojektmappe die **.env**-Datei.
 2. Fügen Sie die Werte für **Benutzername** und **Kennwort** hinzu, die Sie aus der Azure-Containerregistrierung kopiert haben.
 3. Speichern Sie die Änderungen an der ENV-Datei.
+
+>[!NOTE]
+>In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen eine Authentifizierungsoption mit den geringsten Rechten wie Dienstprinzipale auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Azure Container Registry](production-checklist.md#manage-access-to-your-container-registry).
 
 ### <a name="select-your-target-architecture"></a>Auswählen Ihrer Zielarchitektur
 

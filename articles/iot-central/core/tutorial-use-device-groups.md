@@ -7,12 +7,12 @@ ms.date: 11/16/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ce02c86fff5ccece1528e0d08413acb5c0a7f9c6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: da7c1c0268f04b183ba48491bd5f0d0b01e15b41
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743379"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224107"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Tutorial: Verwenden von Gerätegruppen zum Analysieren von Gerätetelemetriedaten
 
@@ -28,12 +28,50 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Erstellen Sie zunächst mithilfe der Schnellstartanleitungen [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md) und [Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung](./quick-create-simulated-device.md) die Gerätevorlage **Sensor Controller** (Sensorcontroller), um sie hier verwenden zu können.
+Zum Durchführen der Schritte in diesem Tutorial benötigen Sie Folgendes:
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+## <a name="add-and-customize-a-device-template"></a>Hinzufügen und Anpassen einer Gerätevorlage
+
+Fügen Sie eine Gerätevorlage aus dem Gerätekatalog hinzu. In diesem Tutorial wird die Gerätevorlage **ESP32-Azure IoT Kit** verwendet:
+
+1. Wählen Sie zum Hinzufügen einer neuen Gerätevorlage auf der Seite **Gerätevorlagen** die Option **+ Neu** aus.
+
+1. Scrollen Sie auf der Seite **Typ auswählen** nach unten, bis im Abschnitt **Vorkonfigurierte Gerätevorlage verwenden** die Kachel **ESP32-Azure IoT-Kit** angezeigt wird.
+
+1. Wählen Sie die Kachel **ESP32-Azure IoT-Kit** und dann die folgende Option aus: **Next: Review** (Weiter: Überprüfen).
+
+1. Wählen Sie auf der Seite **Überprüfen** die Option **Erstellen** aus.
+
+Der Name der Vorlage, die Sie erstellt haben, lautet **Sensor Controller**. Das Modell enthält Komponenten, z. B. **Sensor Controller**, **SensorTemp** und **Schnittstelle „Geräteinformationen“** . Mit Komponenten werden die Funktionen eines ESP32-Geräts definiert. Zu den Funktionen gehören die Bereiche Telemetrie, Eigenschaften und Befehle.
+
+Fügen Sie der Gerätevorlage **Sensor Controller** zwei Cloudeigenschaften hinzu:
+
+1. Wählen Sie **Cloudeigenschaften** und dann **+ Cloudeigenschaft hinzufügen** aus. Verwenden Sie die Informationen in der folgenden Tabelle, um Ihrer Gerätevorlage zwei Cloudeigenschaften hinzuzufügen:
+
+    | Anzeigename      | Semantischer Typ | Schema |
+    | ----------------- | ------------- | ------ |
+    | Datum der letzten Wartung | Keine          | Date   |
+    | Customer Name     | Keine          | String |
+
+1. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.
+
+Fügen Sie der Gerätevorlage ein neues Formular hinzu, um das Gerät zu verwalten:
+
+1. Wählen Sie den Knoten **Ansichten** und anschließend die Kachel **Geräte- und Clouddaten bearbeiten** aus, um eine neue Ansicht hinzuzufügen.
+
+1. Ändern Sie den Formularnamen in **Manage device**.
+
+1. Wählen Sie die Cloudeigenschaften **Kundenname** und **Datum der letzten Wartung** sowie die Eigenschaft **Zieltemperatur** aus. Wählen Sie anschließend **Abschnitt hinzufügen** aus.
+
+1. Wählen Sie **Speichern** aus, um Ihr neues Formular zu speichern.
+
+Veröffentlichen Sie die Gerätevorlage jetzt.
 
 ## <a name="create-simulated-devices"></a>Erstellen von simulierten Geräten
 
 Fügen Sie vor dem Erstellen einer Gerätegruppe mindestens fünf simulierte Geräte auf der Grundlage der Gerätevorlage **Sensor Controller** hinzu, um sie in diesem Tutorial zu verwenden:
-
 
 :::image type="content" source="media/tutorial-use-device-groups/simulated-devices.png" alt-text="Screenshot: Fünf simulierte Geräte vom Typ „Sensor Controller“":::
 
@@ -73,13 +111,17 @@ So analysieren Sie die Telemetriedaten für eine Gerätegruppe:
 
     :::image type="content" source="media/tutorial-use-device-groups/create-analysis.png" alt-text="Screenshot: Für die Analyse ausgewählte Telemetrietypen":::
 
-    Verwenden Sie die Zahnradsymbole neben den Telemetrietypen, um einen Aggregationstyp auszuwählen. Der Standardwert ist **Durchschnitt**. Verwenden Sie **Gruppieren nach**, um die Darstellung der Aggregatdaten zu ändern. Sollten Sie z. B. nach „Geräte-ID“ aufteilen, wird für jedes Gerät ein Plot angezeigt, wenn Sie **Analysieren** auswählen.
+    Verwenden Sie das Symbol mit Auslassungspunkten (…) neben den Telemetrietypen, um einen Aggregationstyp auszuwählen. Der Standardwert ist **Durchschnitt**. Verwenden Sie **Gruppieren nach**, um die Darstellung der Aggregatdaten zu ändern. Sollten Sie z. B. nach „Geräte-ID“ aufteilen, wird für jedes Gerät ein Plot angezeigt, wenn Sie **Analysieren** auswählen.
 
 1. Wählen Sie **Analysieren** aus, um die durchschnittlichen Telemetriewerte anzuzeigen:
 
     :::image type="content" source="media/tutorial-use-device-groups/view-analysis.png" alt-text="Screenshot: Durchschnittswerte für alle Contoso-Geräte":::
 
-    Sie können die Ansicht anpassen, den angezeigten Zeitraum ändern und die Daten exportieren.
+    Sie können die Ansicht anpassen, den angezeigten Zeitraum ändern und die Daten als CSV-Datei exportieren oder als Tabelle anzeigen.
+
+    :::image type="content" source="media/tutorial-use-device-groups/export-data.png" alt-text="Screenshot: Exportieren der Daten von den Contoso-Geräten":::
+
+Weitere Informationen finden Sie unter [Analysieren von Gerätedaten mithilfe von Analytics](howto-create-analytics.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

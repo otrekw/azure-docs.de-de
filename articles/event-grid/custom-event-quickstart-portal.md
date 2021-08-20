@@ -1,18 +1,25 @@
 ---
-title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen an einen Webendpunkt – Event Grid, Azure-Portal'
+title: Senden von benutzerdefinierten Ereignissen an einen Webendpunkt – Event Grid, Azure-Portal
 description: 'Schnellstart: Verwenden Sie Azure Event Grid und das Azure-Portal, um ein benutzerdefiniertes Thema zu veröffentlichen und Ereignisse für dieses Thema zu abonnieren. Die Ereignisse werden von einer Webanwendung verarbeitet.'
-ms.date: 04/22/2021
+ms.date: 07/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 91ac5cfd65910a6297f78f34943331d5b911559b
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: a2d259707e6bfbcc5216b345107507413da71523
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107895737"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232446"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an einen Webendpunkt mit dem Azure Portal und Event Grid
+# <a name="route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Weiterleiten benutzerdefinierter Ereignisse an einen Webendpunkt mit dem Azure Portal und Event Grid
+Event Grid ist ein vollständig verwalteter Dienst, mit dem Sie Ereignisse problemlos über viele verschiedene Azure-Dienste und -Anwendungen hinweg verwalten können. Er vereinfacht das Erstellen ereignisgesteuerter und serverloser Anwendungen. Eine Übersicht über den Dienst finden Sie unter [Übersicht über Event Grid](overview.md).
 
-Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel erstellen Sie über das Azure-Portal ein benutzerdefiniertes Thema, abonnieren dieses benutzerdefinierte Thema und lösen das Ereignis zum Anzeigen des Ergebnisses aus. Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. Der Einfachheit halber senden Sie die Ereignisse in diesem Artikel allerdings an eine Web-App, die die Nachrichten sammelt und anzeigt.
+In diesem Artikel wird das Azure-Portal für die folgenden Aufgaben verwendet: 
+
+1. Das Erstellen eines benutzerdefinierten Themas.
+1. Das Abonnieren eines benutzerdefinierten Themas.
+1. Das Auslösen eines Ereignisses.
+1. Das Anzeigen des Ergebnisses. Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. Der Einfachheit halber senden Sie die Ereignisse in diesem Artikel allerdings an eine Web-App, die die Nachrichten sammelt und anzeigt.
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
@@ -20,7 +27,6 @@ Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel erstel
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
 ## <a name="create-a-custom-topic"></a>Erstellen eines benutzerdefinierten Themas
-
 Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
@@ -28,8 +34,6 @@ Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid-Themen suchen und auswählen":::
 3. Wählen Sie auf der Symbolleiste der Seite **Event Grid-Themen** die Option **+ Hinzufügen** aus. 
-
-    :::image type="content" source="./media/custom-event-quickstart-portal/add-event-grid-topic-button.png" alt-text="Schaltfläche zum Hinzufügen von Event Grid-Themen":::
 4. Gehen Sie auf der Seite **Thema erstellen** wie folgt vor:
     1. Wählen Sie Ihr Azure- **Abonnement** aus.
     2. Wählen Sie eine bereits vorhandene Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie unter **Name** einen Namen für die **Ressourcengruppe** ein.
@@ -41,14 +45,9 @@ Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die 
     6. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** der Seite **Thema erstellen** den Befehl **Erstellen** aus. 
     
         :::image type="content" source="./media/custom-event-quickstart-portal/review-create-page.png" alt-text="Einstellungen überprüfen und erstellen":::
-5. Geben Sie nach erfolgreicher Bereitstellung noch mal in die Suchleiste **Event Grid-Themen** ein, und wählen Sie wie vorher **Event Grid-Themen** aus der Dropdownliste aus. 
-6. Wählen Sie das von Ihnen erstellte Thema aus der Liste aus. 
+5. Nachdem die Bereitstellung erfolgreich durchgeführt wurde, wählen Sie **Zu Ressource wechseln** aus, um zu der Seite **Event Grid-Systemthema** für Ihr Thema zu navigieren. Lassen Sie diese Seite geöffnet. Sie wird im weiteren Verlauf der Schnellstartanleitung benötigt. 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Ihr Thema aus der Liste auswählen":::
-
-7. Daraufhin wird die Seite **Event Grid-Thema** für Ihr Thema angezeigt. Lassen Sie diese Seite geöffnet. Sie wird im weiteren Verlauf der Schnellstartanleitung benötigt. 
-
-    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="Startseite des Event Grid-Themas":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="Screenshot: Startseite des Event Grid-Themas":::
 
 ## <a name="create-a-message-endpoint"></a>Erstellen eines Nachrichtenendpunkts
 Erstellen Sie zunächst einen Endpunkt für die Ereignisnachricht, bevor Sie ein Abonnement für das benutzerdefinierte Thema erstellen. Der Endpunkt führt in der Regel Aktionen auf der Grundlage der Ereignisdaten aus. Der Einfachheit halber stellen Sie in dieser Schnellstartanleitung eine [vorgefertigte Web-App](https://github.com/Azure-Samples/azure-event-grid-viewer) bereit, die die Ereignisnachrichten anzeigt. Die bereitgestellte Lösung umfasst einen App Service-Plan, eine App Service-Web-App und Quellcode von GitHub.
@@ -56,12 +55,27 @@ Erstellen Sie zunächst einen Endpunkt für die Ereignisnachricht, bevor Sie ein
 1. Wählen Sie auf der Artikelseite **Deploy to Azure** (In Azure bereitstellen) aus, um die Lösung für Ihr Abonnement bereitzustellen. Geben Sie im Azure-Portal Werte für die Parameter an.
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
-1. Die Bereitstellung kann einige Minuten dauern. Nach erfolgreichem Abschluss der Bereitstellung können Sie Ihre Web-App anzeigen und sich vergewissern, dass sie ausgeführt wird. Navigieren Sie hierzu in einem Webbrowser zu `https://<your-site-name>.azurewebsites.net`.
+2. Gehen Sie auf der Seite **Benutzerdefinierte Bereitstellung** wie folgt vor: 
+    1. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe aus, die Sie beim Erstellen des Speicherkontos erstellt haben. Dadurch muss zur Bereinigung nach Abschluss des Tutorials einfach nur die Ressourcengruppe gelöscht werden.  
+    2. Geben Sie unter **Websitename** einen Namen für die Web-App ein.
+    3. Geben Sie unter **Name des Hostingplans** einen Namen für den App Service-Plan zum Hosten der Web-App ein.
+    5. Klicken Sie auf **Überprüfen + erstellen**. 
 
-    Wenn die Bereitstellung fehlschlägt, überprüfen Sie die Fehlermeldung. Möglicherweise ist der Name der Website bereits vergeben. Stellen Sie die Vorlage noch mal bereit, und wählen Sie einen anderen Namen für die Site aus. 
-1. Die Website wird angezeigt, aber es wurden noch keine Ereignisse bereitgestellt.
+        :::image type="content" source="./media/blob-event-quickstart-portal/template-deploy-parameters.png" alt-text="Screenshot der Seite „Benutzerdefinierte Bereitstellung“":::
+1. Wählen Sie auf der Seite **Überprüfen + erstellen** die Option **Erstellen** aus. 
+1. Die Bereitstellung kann einige Minuten dauern. Wählen Sie im Portal die Option „Warnungen“ (Glockensymbol) und anschließend **Zu Ressourcengruppe wechseln** aus. 
 
-   ![Anzeigen der neuen Website](./media/custom-event-quickstart-portal/view-site.png)
+    ![Warnung: Navigieren zur Ressourcengruppe](./media/blob-event-quickstart-portal/navigate-resource-group.png)
+4. Wählen Sie auf der Seite **Ressourcengruppe** in der Ressourcenliste die von Ihnen erstellte Web-App aus. In dieser Liste werden auch der App Service-Plan und das Speicherkonto angezeigt. 
+
+    ![Auswählen der Website](./media/blob-event-quickstart-portal/resource-group-resources.png)
+5. Wählen Sie auf der Seite **App Service** für Ihre Web-App die URL aus, um zur entsprechenden Website zu navigieren. Die URL muss folgendes Format haben: `https://<your-site-name>.azurewebsites.net`.
+    
+    ![Navigieren zur Website](./media/blob-event-quickstart-portal/web-site.png)
+
+6. Vergewissern Sie sich, dass die Website angezeigt wird, aber noch keine Ereignisse bereitgestellt wurden.
+
+   ![Anzeigen der neuen Website](./media/blob-event-quickstart-portal/view-site.png)
 
 ## <a name="subscribe-to-custom-topic"></a>Abonnieren eines benutzerdefinierten Themas
 
@@ -104,7 +118,7 @@ Im ersten Beispiel wird die Azure-Befehlszeilenschnittstelle verwendet. Es ruft 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. Führen Sie den folgenden Befehl aus, um den **Schlüssel** für das benutzerdefinierte Thema abzurufen: Aktualisieren Sie nach dem Kopieren und Einfügen des Befehls den Namen des Themas (**topic name**) und den Namen der Ressourcengruppe (**resource group name**), bevor Sie den Befehl ausführen. Das ist der Primärschlüssel des Event Grid-Themas. Um diesen Schlüssel aus dem Azure-Portal abzurufen, wechseln Sie zur Registerkarte **Zugriffsschlüssel** der Seite **Event Grid-Thema**. Um ein Ereignis in einem benutzerdefinierten Thema bereitstellen zu können, benötigen Sie den Zugriffsschlüssel. 
+2. Führen Sie den folgenden Befehl aus, um den **Schlüssel** für das benutzerdefinierte Thema abzurufen: Aktualisieren Sie nach dem Kopieren und Einfügen des Befehls den Namen des Themas (**topic name**) und den Namen der Ressourcengruppe (**resource group name**), bevor Sie den Befehl ausführen. Das ist der primäre Schlüssel des Event Grid-Themas. Um diesen Schlüssel aus dem Azure-Portal abzurufen, wechseln Sie zur Registerkarte **Zugriffsschlüssel** der Seite **Event Grid-Thema**. Um ein Ereignis in einem benutzerdefinierten Thema bereitstellen zu können, benötigen Sie den Zugriffsschlüssel. 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)

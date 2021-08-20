@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/22/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 7622b3bb50139ddfdce53bb7e765db5aac90eff3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 79f0f24d1328181557b2fec1e867c36ebcde57f0
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766059"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453572"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-cloud"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Saba Cloud
 
@@ -51,7 +51,6 @@ Zum Konfigurieren der Integration von Saba Cloud in Azure AD müssen Sie Saba 
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Saba Cloud** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Saba Cloud** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-saba-cloud"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Saba Cloud
 
@@ -135,7 +134,16 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-saba-cloud-sso"></a>Konfigurieren des einmaligen Anmeldens für Saba Cloud
 
-1. Melden Sie sich bei der Saba Cloud-Unternehmenswebsite als Administrator an.
+1. Wenn Sie die Konfiguration in Saba Cloud automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
+
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Saba Cloud einrichten**, um zur Anwendung „Saba Cloud“ weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Saba Cloud anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 9.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+1. Wenn Sie Saba Cloud manuell einrichten möchten, melden Sie sich in einem anderen Webbrowserfenster als Administrator bei der Saba Cloud-Unternehmenswebsite an.
+
 1. Klicken Sie auf das **Menüsymbol** und anschließend auf **Admin** (Administrator), und wählen Sie die Registerkarte **System Admin** (Systemadministrator) aus.
 
     ![Screenshot: System Admin (Systemadministrator)](./media/saba-cloud-tutorial/system.png)

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: dadf457c2fc3f617e2473a853e802fe863709ac5
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: f673c506411898788b35886dea741604e885e7a3
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072287"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461673"
 ---
 # <a name="register-and-scan-oracle-source"></a>Oracle-Quelle registrieren und überprüfen
 
@@ -61,6 +61,7 @@ Die Oracle-Quelle unterstützt die **vollständige Überprüfung**, um Metadaten
         grant select on dba\_arguments to \[Benutzer\];\
         grant select on dba\_sequences to \[Benutzer\];\
         grant select on dba\_dependencies to \[Benutzer\];\
+        grant select on dba\_type\_attrs to \[user\];\
         grant select on V\_\$INSTANCE to \[Benutzer\];\
         grant select on v\_\$database to \[Benutzer\];
     

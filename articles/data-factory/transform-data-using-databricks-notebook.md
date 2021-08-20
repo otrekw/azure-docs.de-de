@@ -6,13 +6,13 @@ ms.topic: tutorial
 ms.author: abnarain
 author: nabhishek
 ms.custom: seo-lt-2019
-ms.date: 03/12/2018
-ms.openlocfilehash: 20253954035798187f28c18c8207c114d27bc9c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: e9b4d075832fde6aec81a7f8440756b4d6f32834
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374081"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215989"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Ausführen eines Databricks-Notebooks mit der Databricks-Notebook-Aktivität in Azure Data Factory
 
@@ -82,9 +82,9 @@ In diesem Abschnitt erstellen Sie einen verknüpften Databricks-Dienst. Dieser v
 
 ### <a name="create-an-azure-databricks-linked-service"></a>Erstellen eines verknüpften Azure Databricks-Diensts
 
-1.  Wechseln Sie auf der Seite **Erste Schritte** im linken Bereich zur Registerkarte **Bearbeiten**.
+1.  Wechseln Sie auf der Startseite im linken Bereich zur Registerkarte **Verwalten**.
 
-    ![Bearbeiten des neuen verknüpften Diensts](media/transform-data-using-databricks-notebook/get-started-page.png)
+    ![Bearbeiten des neuen verknüpften Diensts](media/doc-common-process/get-started-page-manage-button.png)
 
 1.  Wählen Sie unten im Fenster die Option **Verbindungen** und dann **+ Neu**.
     
@@ -159,7 +159,7 @@ In diesem Abschnitt erstellen Sie einen verknüpften Databricks-Dienst. Dieser v
            ```
            # Creating widgets for leveraging parameters, and printing the parameters
 
-           dbutils.widgets.text("input&quot;, &quot;&quot;,&quot;")
+           dbutils.widgets.text("input", "","")
            y = dbutils.widgets.get("input")
            print ("Param -\'input':")
            print (y)

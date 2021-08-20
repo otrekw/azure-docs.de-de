@@ -1,21 +1,21 @@
 ---
 title: Einführung in Azure Files | Microsoft-Dokumentation
-description: Übersicht über Azure Files – ein Dienst zum Erstellen und Verwenden von Netzwerkdateifreigaben in der Cloud mit dem SMP-Protokoll nach Branchenstandard.
+description: Übersicht über Azure Files – ein Dienst zum Erstellen und Verwenden von Netzwerkdateifreigaben in der Cloud mit dem SMP- oder NFS-Protokollen
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 09/15/2020
+ms.date: 07/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a4be45c27c63b54cdcb4b53dd0d98f65ed3d9fcb
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: c47d68dbaef7cbd154a0ac9af7ad582c1e94b640
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112117050"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114673953"
 ---
 # <a name="what-is-azure-files"></a>Was ist Azure Files?
-Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) zugegriffen werden kann. Azure-Dateifreigaben können gleichzeitig über die Cloud oder durch lokale Bereitstellungen eingebunden werden. Der Zugriff auf SMB-Dateifreigaben in Azure Files kann von Windows-, Linux- und macOS-Clients aus erfolgen. Der Zugriff auf NFS-Dateifreigaben in Azure Files kann von Linux- oder macOS-Clients aus erfolgen. Außerdem können SMB-Dateifreigaben in Azure Files auf Windows-Servern mit der Azure-Dateisynchronisierung zwischengespeichert werden, um einen schnellen Zugriff in der Nähe des Datennutzungsorts zu gewährleisten.
+Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) zugegriffen werden kann. Azure Files-Dateifreigaben können gleichzeitig über die Cloud oder durch lokale Bereitstellungen eingebunden werden. Der Zugriff auf SMB-Dateifreigaben in Azure kann von Windows-, Linux- und macOS-Clients aus erfolgen. Der Zugriff auf NFS-Freigaben in Azure Files kann von Linux- oder macOS-Clients aus erfolgen. Außerdem können SMB-Dateifreigaben in Azure auf Windows-Servern mit der [Azure-Dateisynchronisierung](../file-sync/file-sync-introduction.md) zwischengespeichert werden, um einen schnellen Zugriff in der Nähe des Datennutzungsorts zu gewährleisten.
 
 Im Folgenden sind Videos zu häufigen Anwendungsfällen von Azure Files aufgeführt:
 * [Replace your file server with a serverless Azure File Share](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4) (Ersetzen Ihres Dateiservers durch eine serverlose Azure-Dateifreigabe)
@@ -25,7 +25,7 @@ Im Folgenden sind Videos zu häufigen Anwendungsfällen von Azure Files aufgefü
 Verwendungsmöglichkeiten für Azure-Dateifreigaben:
 
 * **Ersetzen oder Erweitern von lokalen Dateiservern**:  
-    Azure Files kann herkömmliche lokale Dateiserver oder NAS-Geräte vollständig ersetzen bzw. erweitern. Gängige Betriebssysteme wie Windows, macOS und Linux können Azure-Dateifreigaben auf der ganzen Welt direkt einbinden. SMB-Dateifreigaben in Azure Files können auch per Azure-Dateisynchronisierung auf Windows-Servern repliziert werden (entweder lokal oder in der Cloud), um für die Daten am Ort ihrer Verwendung eine hohe Leistung und eine verteilte Zwischenspeicherung zu erzielen. Mit dem aktuellen Release der [Azure Files AD-Authentifizierung](storage-files-active-directory-overview.md) können SMB-Dateifreigaben in Azur Files weiterhin mit der lokal gehosteten AD-Instanz für die Zugriffssteuerung verwendet werden. 
+    Azure Files kann herkömmliche lokale Dateiserver oder NAS-Geräte vollständig ersetzen bzw. erweitern. Gängige Betriebssysteme wie Windows, macOS und Linux können Azure-Dateifreigaben auf der ganzen Welt direkt einbinden. SMB-Dateifreigaben in Azure können auch per Azure-Dateisynchronisierung auf Windows-Servern repliziert werden (entweder lokal oder in der Cloud), um für die Daten am Ort ihrer Verwendung eine hohe Leistung und eine verteilte Zwischenspeicherung zu erzielen. Mit dem aktuellen Release der [Azure Files AD-Authentifizierung](storage-files-active-directory-overview.md) können SMB-Dateifreigaben in Azure weiterhin mit der lokal gehosteten AD-Instanz für die Zugriffssteuerung verwendet werden. 
 
 * **Lift &amp; Shift-Anwendungen:**  
     Azure Files vereinfacht Lift & Shift-Vorgänge in die Cloud für Anwendungen, bei denen erwartet wird, dass auf einer Dateifreigabe Dateianwendungs- oder Benutzerdaten gespeichert werden. Azure Files ermöglicht nicht nur das klassische Lift & Shift-Szenario, bei dem sowohl die Anwendung als auch die dazugehörigen Daten nach Azure verschoben werden, sondern auch das Lift & Shift-Hybridszenario, bei dem die Anwendungsdaten nach Azure Files verschoben werden und die Anwendung weiter lokal ausgeführt wird. 

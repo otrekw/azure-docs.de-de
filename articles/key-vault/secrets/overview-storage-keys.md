@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 573e4c9d8db3f07f223826ab648f2ef57e1d9c58
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5a73b98f31fb7c2f8979f977138ca7f836fe5a34
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766315"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221802"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und der Azure-Befehlszeilenschnittstelle
 > [!IMPORTANT]
@@ -66,7 +66,7 @@ az login
 Verwenden Sie den Befehl [az role assignment create](/cli/azure/role/assignment) der Azure-Befehlszeilenschnittstelle, um Key Vault Zugriff auf Ihr Speicherkonto zu gewähren. Stellen Sie dem Befehl die folgenden Parameterwerte zur Verfügung:
 
 - `--role`: Übergeben Sie die Azure-Rolle „Dienstrolle 'Speicherkonto-Schlüsseloperator'“. Diese Rolle beschränkt den Zugriffsbereich auf Ihr Speicherkonto. Für ein klassisches Speicherkonto übergeben Sie stattdessen die Rolle „Klassische Dienstrolle 'Speicherkonto-Schlüsseloperator'“.
-- `--assignee`: Übergeben Sie den Wert „https://vault.azure.net“, bei dem es sich um die URL für die Key Vault-Instanz in der öffentlichen Azure-Cloud handelt. (Für die Azure Government-Cloud verwenden Sie stattdessen „--asingee-object-id“. Weitere Informationen finden Sie unter [Dienstprinzipal-Anwendungs-ID](#service-principal-application-id).)
+- `--assignee`: Übergeben Sie den Wert „https://vault.azure.net“, bei dem es sich um die URL für die Key Vault-Instanz in der öffentlichen Azure-Cloud handelt. (Für die Azure Government-Cloud verwenden Sie stattdessen „--assignee-object-id“. Weitere Informationen finden Sie unter [Dienstprinzipal-Anwendungs-ID](#service-principal-application-id).)
 - `--scope`: Übergeben Sie Ihre Ressourcen-ID des Speicherkonto, die in der Form `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` vorliegt. Um Ihre Abonnement-ID zu finden, verwenden Sie den Befehl [az account list](/cli/azure/account?#az_account_list) der Azure-Befehlszeilenschnittstelle. Verwenden Sie den Befehl [az storage account list](/cli/azure/storage/account?#az_storage_account_list) der Azure-Befehlszeilenschnittstelle, um Ihren Namen und die Ressourcengruppe für das Speicherkonto zu finden.
 
 ```azurecli-interactive

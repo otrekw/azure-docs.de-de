@@ -6,16 +6,16 @@ author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: c0b90279b4c3c65fdc96867f5d9fff9648320294
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 62efd6215dfb83eade0e4ee4e9cfa230d1dd7971
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111429763"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659519"
 ---
 > [!NOTE]
 > Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/access-token-quickstart).
@@ -111,7 +111,7 @@ CommunicationIdentityClient communicationIdentityClient = new CommunicationIdent
     .buildClient();
 ```
 
-Wenn Sie die verwaltete Identität eingerichtet haben, finden Sie unter [Verwenden verwalteter Identitäten](../managed-identity.md) weitere Informationen zum Authentifizierungsvorgang mit der verwalteten Identität.
+Wenn Sie eine Azure Active Directory(AD)-Anwendung eingerichtet haben, finden Sie weitere Informationen unter [Verwenden von Dienstprinzipals](../identity/service-principal.md). Sie können sich auch bei AD authentifizieren.
 ```java
 String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
 TokenCredential credential = new DefaultAzureCredentialBuilder().build();

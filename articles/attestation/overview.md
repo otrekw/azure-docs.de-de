@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 020ba74948a062d23d61272ee912eb3364180f1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe025fad4955095ef16b546b7d326d80b4aea15c
+ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102617997"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112427575"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
@@ -34,6 +34,11 @@ Azure Attestation bietet umfassende Nachweisdienste für mehrere Umgebungen und 
 SGX bietet Isolation für Hardware, die auf bestimmten Intel CPUs-Modellen unterstützt wird. SGX ermöglicht das Ausführen von Code in bereinigten Depots, die als SGX-Enclaves bezeichnet werden. Zugriffs- und Speicherberechtigungen werden dann von der Hardware verwaltet, um eine minimale Angriffsfläche mit entsprechender Isolation zu gewährleisten.
 
 Clientanwendungen können so entworfen werden, dass sie die Vorteile von SGX-Enclaves nutzen, indem sicherheitsrelevante Aufgaben in diese Enclaves delegiert werden. Solche Anwendungen können Azure Attestation nutzen, um routinemäßig eine Vertrauensstellung in der Enclave herzustellen und auf sensible Daten zuzugreifen.
+
+Intel® Xeon® Scalable Processors unterstützen nur [ECDSA-basierte Nachweislösungen](https://software.intel.com/content/www/us/en/develop/topics/software-guard-extensions/attestation-services.html#Elliptic%20Curve%20Digital%20Signature%20Algorithm%20(ECDSA)%20Attestation) für den Remotenachweis von SGX-Enklaven. Mithilfe des ECDSA-basierten Nachweismodells unterstützt Azure Attestation die Überprüfung von Intel® Xeon® E3-Prozessoren und auf Intel® Xeon® Scalable Processors basierenden Serverplattformen. 
+
+> [!NOTE]
+> Zum Nachweis von auf Intel® Xeon® Scalable Processors basierenden Serverplattformen mithilfe von Azure Attestation wird von Benutzern erwartet, dass sie [Azure DCAP-Version 1.10.0](https://github.com/microsoft/Azure-DCAP-Client) oder höher installieren.
 
 ### <a name="open-enclave"></a>Open Enclave
 [Open Enclave](https://openenclave.io/sdk/) (OE) ist eine Sammlung von Bibliotheken, die auf das Erstellen einer einzelnen vereinheitlichten Enclave-Abstraktion abzielen, damit Entwickler TEE-basierte Anwendungen erstellen können. Sie bietet ein universelles, sicheres App-Modell, das Plattformbesonderheiten minimiert. Für Microsoft ist sie eine Grundlage hin zur Demokratisierung hardwarebasierter Enclavetechnologien wie SGX und zur Steigerung der Akzeptanz in Azure.
@@ -66,7 +71,7 @@ Azure Attestation-Kunden haben angefordert, dass Microsoft keine vertraute Compu
 Azure Attestation ist die bevorzugte Wahl für den Nachweis von TEEs, da es die folgenden Vorteile bietet: 
 
 - Einheitliches Framework für den Nachweis mehrerer Umgebungen (beispielsweise TPMs, SGC-Enclaves und VBS-Enclaves) 
-- Mehrinstanzenfähiger Dienst, der die Konfiguration von benutzerdefinierten Nachweisanbietern und Richtlinien ermöglicht, um die Tokengenerierung einzuschränken
+- Ermöglicht die Erstellung von benutzerdefinierten Nachweisanbietern und die Konfiguration von Richtlinien, um die Generierung von Token einzuschränken
 - Verfügt über regionale gemeinsam genutzte Anbieter, die ohne Konfiguration von Benutzern Nachweise durchführen können
 - Schützt die Daten während der Verwendung mit der Implementierung in einer SGX-Enclave
 - Hochverfügbarer Dienst 

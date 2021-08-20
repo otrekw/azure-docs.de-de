@@ -1,11 +1,10 @@
 ---
 title: Hardwarespezifikationen für Azure Kinect DK
 description: Hier finden Sie Informationen zu den Komponenten, Spezifikationen und Funktionen von Azure Kinect DK.
-author: tesych
-ms.author: tesych
-ms.reviewer: jarrettr
+author: qm13
+ms.author: quentinm
 ms.prod: kinect-dk
-ms.date: 02/14/2020
+ms.date: 03/18/2021
 ms.topic: article
 keywords: Azure, Kinect, Spezifikationen, Hardware, DK, Funktionen, Tiefe, Farbe, RGB, IMU, Mikrofon, Array, Tiefe
 ms.custom:
@@ -14,12 +13,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: e0d42a3ce1dd9deb5e73500371c367134ca852e1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: b5ec67537fe0bd8732b4068c0ed52861ed8f2c1a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619959"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "116985848"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Hardwarespezifikationen für Azure Kinect DK
 
@@ -42,16 +41,18 @@ In diesem Artikel werden folgende Abkürzungen verwendet:
 
 Das Azure Kinect-Gerät hat folgende Abmessungen und folgendes Gewicht:
 
-- **Dimensions** (Dimensionen): 103 × 39 × 126 mm
-- **Gewichtung:** 440 g
+- **Abmessungen:** 103 × 39 × 126 mm
+- **Gewicht:** 440 g
 
 ![Azure Kinect DK: Abmessungen](./media/resources/hardware-specs-media/dimensions.png)
+
+Eine STEP-Datei für das Azure Kinect-Gerät finden Sie [hier](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/assets). 
 
 ## <a name="operating-environment"></a>Betriebsumgebung
 
 Azure Kinect DK ist für Entwickler und gewerbliche Unternehmen mit folgenden Umgebungsbedingungen konzipiert:
 
-- **Temperature**: 10–25 °C
+- **Temperatur:** 10–25 <sup>0</sup>C
 - **Luftfeuchtigkeit:** 8–90 % relative Luftfeuchtigkeit (nicht kondensierend)
 
 > [!NOTE]
@@ -61,7 +62,7 @@ Weitere Sicherheitsinformationen für das Produkt finden Sie [hier](https://supp
 
 ## <a name="depth-camera-supported-operating-modes"></a>Unterstützte Betriebsmodi der Tiefenkamera
 
-Azure Kinect DK verfügt über eine von Microsoft entwickelte integrierte 1-Megapixel-Tiefenkamera, die auf dem Laufzeitverfahren (Time Of Flight, TOF) basiert und den [auf der ISSCC 2018 vorgestellten Bildsensor](https://docs.microsoft.com/windows/mixed-reality/ISSCC-2018) verwendet. Die Tiefenkamera unterstützt folgende Modi:
+Azure Kinect DK verfügt über eine von Microsoft entwickelte integrierte 1-Megapixel-Tiefenkamera, die auf dem Laufzeitverfahren (Time Of Flight, TOF) basiert und den [auf der ISSCC 2018 vorgestellten Bildsensor](/windows/mixed-reality/ISSCC-2018) verwendet. Die Tiefenkamera unterstützt folgende Modi:
 
  | Mode            | Lösung | FoI       | FPS                | Betriebsbereich* | Belichtungszeit |
 |-----------------|------------|-----------|--------------------|------------------|---------------|
@@ -80,13 +81,13 @@ Azure Kinect DK verfügt über einen Rolling-Shutter-CMOS-Sensor vom Typ OV12A
 |             RGB-Kameraauflösung (H × V)  |          Seitenverhältnis  |          Formatoptionen   |          Bildfrequenzen (BpS)  |          Nominales FOV (H × V) (nachbearbeitet)  |
 |------------------------------------------|------------------------|---------------------------|-----------------------------|---------------------------------------------|
 |       3\.840 × 2.160                          |          16:9          |          MJPEG            |          0, 5, 15, 30       |          90° × 59°                              |
-|       2\.560 × 1.440                          |          16:9          |          MJPEG            |          0, 5, 15, 30       |          90° × 59°                              |
+|       2560x1440                          |          16:9          |          MJPEG            |          0, 5, 15, 30       |          90° × 59°                              |
 |       1\.920 × 1.080                          |          16:9          |          MJPEG            |          0, 5, 15, 30       |          90° × 59°                              |
 |       1\.280 × 720                           |          16:9          |          MJPEG/YUY2/NV12  |          0, 5, 15, 30       |          90° × 59°                              |
 |       4\.096 × 3.072                          |          4:3           |          MJPEG             |          0, 5, 15           |          90° × 74,3°                            |
-|       2\.048 × 1.536                          |          4:3           |          MJPEG             |          0, 5, 15, 30       |          90° × 74,3°                            |
+|       2048x1536                          |          4:3           |          MJPEG             |          0, 5, 15, 30       |          90° × 74,3°                            |
 
-Die RGB-Kamera ist mit der USB-Videoklasse kompatibel und kann ohne das Sensor-SDK verwendet werden. Farbraum der RGB-Kamera: BT.601, gesamtes Spektrum [0..255]. 
+Die RGB-Kamera ist mit der USB-Videoklasse kompatibel und kann ohne das Sensor-SDK verwendet werden. Farbraum der RGB-Kamera: BT.601, gesamtes Spektrum [0–255]. Die MJPEG-[Farbunterabtastung](https://en.wikipedia.org/wiki/Chroma_subsampling) ist 4:2:2.
 
 > [!NOTE]
 > Das Sensor-SDK kann Farbbilder im BGRA-Pixelformat bereitstellen. Dieser Modus wird nicht nativ vom Gerät unterstützt und führt zu einer höheren CPU-Auslastung. Für die Konvertierung der vom Gerät übermittelten MJPEG-Bilder wird die Host-CPU verwendet.
@@ -102,7 +103,7 @@ Im Anschluss finden Sie die zulässigen manuellen Belichtungswerte für die RGB-
 |  –9|    1\.953|   2500|   2500 |
 |  -8|    3906|  10000|   8\.330 |
 |  -7|    7813|  20000|  16.670 |
-|  -6|   15625|  30.000|  33.330 |
+|  –6|   15625|  30.000|  33.330 |
 |  -5|   31.250|  40.000|  41.670 |
 |  –4|   62.500|  50000|  50000 |
 |  -3|  125.000|  60000|  66.670 |
@@ -113,7 +114,7 @@ Im Anschluss finden Sie die zulässigen manuellen Belichtungswerte für die RGB-
 
 ## <a name="depth-sensor-raw-timing"></a>Rohzeiten für den Tiefensensor
 
-Tiefenmodus | IR <br>Impulse | Impuls <br>Breite  | Idle <br>zeiträume| Leerlaufzeit | Belichtungs- <br> Time
+Tiefenmodus | IR <br>Impulse | Puls <br>Breite  | Idle <br>Punkte| Leerlaufzeit | Belichtung <br> Time
 -|-|-|-|-|-
 NFOV unklassifiziert <br>  NFOV 2 × 2 klassifiziert <br> WFOV 2 × 2 klassifiziert | 9 | 125 us | 8 | 1\.450 us | 12,8 ms 
 WFOV unklassifiziert                                            | 9 | 125 us | 8 | 2\.390 us | 20,3 ms
@@ -136,7 +137,7 @@ In dieser Abbildung ist das Sichtfeld der Kamera in der Frontansicht aus einer E
 
 Bei der eingebetteten inertialen Messeinheit (IME) handelt es sich um eine Einheit vom Typ LSM6DSMUS, die sowohl mit einem Beschleunigungsmesser als auch mit einem Gyroskop ausgestattet ist. Beschleunigungsmesser und Gyroskop werden simultan mit einer Frequenz von 1,6 kHz abgetastet. Die Abtastwerte werden mit einer Frequenz von 208 Hz an den Host gemeldet.
 
-## <a name="microphone-array"></a>Mikrofonarray
+## <a name="microphone-array"></a>Mikrofon-Array
 
 Azure Kinect DK verfügt über ein hochwertiges eingebettetes Array mit sieben kreisförmig angeordneten Mikrofonen, das als USB-Standardaudiogerät der Klasse 2.0 erkannt wird. Auf alle sieben Kanäle kann zugegriffen werden. Leistungsspezifikationen:
 
@@ -150,9 +151,9 @@ Azure Kinect DK verfügt über ein hochwertiges eingebettetes Array mit sieben 
 
 Azure Kinect DK ist ein USB 3.0-Verbundgerät und macht folgende Hardwareendpunkte für das Betriebssystem verfügbar:
 
-Die Herstellerkennung lautet „0x045E“ (Microsoft). Die Produkt-IDs finden Sie in der folgenden Tabelle:
+Die Anbieter-ID ist 0x045E (Microsoft). Die folgende Tabelle zeigt die Produkt-IDs:
 
-|    USB-Schnittstelle        |    PNP-IP    |     Notizen            |
+|    USB-Schnittstelle        |    PNP-IP    |     Hinweise            |
 |-------------------------|--------------|----------------------|
 |    USB 3.1-Hub (1. Generation)    |    0x097A    |    Haupthub    |
 |    USB 2.0-Hub         |    0x097B    |    HS-USB          |
@@ -177,7 +178,7 @@ Die Status-LED auf der Rückseite des Geräts gibt Aufschluss über den Zustand 
 
 Das Gerät kann auf zwei Arten mit Strom versorgt werden:
 
-1. Über das mitgelieferte Netzteil. Die Datenverbindung wird in diesem Fall über ein separates USB-Kabel (Typ C auf Typ A) hergestellt.
+1. Über das mitgelieferte Netzteil. Der Netzanschluss hat einen Außendurchmesser von 4,5 mm, einen Innendurchmesser von 3,0 mm und einen Pindurchmesser von 0,6 mm.
 2. Über ein Typ-C-auf-Typ-C-Kabel (Stromversorgung und Daten).
 
 Ein Typ-C-auf-Typ-C-Kabel ist im Lieferumfang von Azure Kinect DK nicht enthalten.
@@ -217,7 +218,7 @@ In dieser Abbildung sind folgende Komponenten hervorgehoben:
 1. Netzkabel (mit der Stromquelle verbunden)
 1. USB-C-Datenkabel (mit dem PC verbunden)
 
-Stellen Sie sicher, dass die Kabel wie in der Abbildung angeschlossen sind. Informieren Sie sich anschließend anhand der folgenden Tabelle über die Bedeutung der verschiedenen Zustände der Betriebsanzeige:
+Stellen Sie sicher, dass die Kabel wie in der Abbildung angeschlossen sind. Informieren Sie sich anschließend anhand der folgenden Tabelle über die Bedeutung der verschiedenen Zustände der Betriebsanzeige.
 
 |LED-Status |Bedeutung |Empfohlene Aktion |
 | ---| --- | --- |

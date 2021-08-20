@@ -4,14 +4,14 @@ description: Erstellen Sie eine Data Factory-Instanz mit einer Pipeline, die Dat
 author: jianleishen
 ms.service: data-factory
 ms.topic: quickstart
-ms.date: 12/14/2020
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 888350dacd2437f585c6571b991ae06eed2d32ab
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 9d8bf0d62518c94458a5b989c040f8eaefea11cd
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482163"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436998"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Schnellstart: Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche 
 
@@ -65,9 +65,9 @@ Dieses Video enthält Informationen zur Data Factory-Benutzeroberfläche:
 
 1. Wählen Sie **Überprüfen und erstellen** und nach erfolgreicher Prüfung **Erstellen** aus. Wählen Sie nach der Erstellung **Zu Ressource wechseln** aus, um zur Seite **Data Factory** zu navigieren. 
 
-1. Wählen Sie die Kachel **Erstellen und überwachen** aus, um die Anwendung für die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte des Browsers zu starten.
+1. Wählen Sie auf der Kachel **Open Azure Data Factory Studio** die Option **Öffnen** um die Anwendung des Data Factory Benutzerinterface (UI) in einer separaten Browserregistrierkarte zu starten.
    
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite für die Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“.":::
    
    > [!NOTE]
    > Falls der Webbrowser bei „Autorisierung läuft“ hängt, sollten Sie das Kontrollkästchen **Cookies und Websitedaten von Drittanbietern blockieren** deaktivieren. Alternativ können Sie die Aktivierung beibehalten, eine Ausnahme für **login.microsoftonline.com** erstellen und dann erneut versuchen, die App zu öffnen.

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/29/2020
+ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: b774f50f6f136d9e7c71b5fe6fbffb725a9240a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e192249aeb5bb85d02a616950fe74b0cd239f22
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522222"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602853"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-orgvitality-sso"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit OrgVitality SSO
 
@@ -37,9 +37,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* OrgVitality SSO unterstützt **IDP**-initiiertes einmaliges Anmelden.
+* OrgVitality SSO unterstützt **IDP-initiiertes** einmaliges Anmelden.
 
-## <a name="adding-orgvitality-sso-from-the-gallery"></a>Hinzufügen von OrgVitality SSO aus dem Katalog
+## <a name="add-orgvitality-sso-from-the-gallery"></a>Hinzufügen von OrgVitality SSO aus dem Katalog
 
 Zum Konfigurieren der Integration von OrgVitality SSO in Azure AD müssen Sie OrgVitality SSO aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
@@ -50,7 +50,6 @@ Zum Konfigurieren der Integration von OrgVitality SSO in Azure AD müssen Sie O
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **OrgVitality SSO** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich  **OrgVitality SSO** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-orgvitality-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für OrgVitality SSO
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit OrgVitality SSO mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in OrgVitality SSO eingerichtet werden.
@@ -60,7 +59,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für OrgVitality SSO](#configure-orgvitality-sso-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+1. **[Konfigurieren des einmaligen Anmeldens für OrgVitality SSO](#configure-orgvitality-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
     1. **[Erstellen eines OrgVitality SSO-Testbenutzers](#create-orgvitality-sso-test-user)** , um eine Entsprechung von B. Simon in OrgVitality SSO zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
@@ -70,11 +69,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **OrgVitality SSO** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://rpt.orgvitality.com/<COMPANY_NAME>/`
 
@@ -94,6 +93,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Kopieren Sie im Abschnitt **OrgVitality SSO einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
@@ -118,7 +118,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-orgvitality-sso-sso"></a>Konfigurieren des einmaligen Anmeldens für OrgVitality SSO
+## <a name="configure-orgvitality-sso"></a>Konfigurieren des einmaligen Anmeldens für OrgVitality SSO
 
 Zum Konfigurieren des einmaligen Anmeldens aufseiten von **OrgVitality SSO** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von OrgVitality SSO](https://orgvitality.com/contact-us/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -130,10 +130,10 @@ In diesem Abschnitt erstellen Sie in OrgVitality SSO einen Benutzer mit dem Name
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-1. Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Atlassian Cloud-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
+* Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der OrgVitality SSO-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-1. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „OrgVitality SSO“ klicken, sollten Sie automatisch bei der Instanz von OrgVitality SSO angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie im Bereich „Meine Apps“ auf die Kachel „OrgVitality SSO“ klicken, sollten Sie automatisch bei der Instanz von OrgVitality SSO angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren des einmaligen Anmeldens von OrgVitality SSO können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren des einmaligen Anmeldens von OrgVitality SSO können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

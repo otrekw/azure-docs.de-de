@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 4418d7866f2476d528290f99d396dcf52c47c3ec
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 52f948526b1575f43d722c856251eed83b2e66ef
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038929"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982769"
 ---
 # <a name="1000-genomes"></a>1000 Genomes
 
@@ -42,9 +42,9 @@ Dieses Dataset wird in den Azure-Regionen „USA, Westen 2“ und „USA, Westen
 
 ## <a name="data-access"></a>Datenzugriff
 
-USA, Westen 2: https://dataset1000genomes.blob.core.windows.net/dataset
+USA, Westen 2: „https://dataset1000genomes.blob.core.windows.net/dataset“
 
-USA, Westen-Mitte: https://dataset1000genomes-secondary.blob.core.windows.net/dataset
+SA, Westen-Mitte: „https://dataset1000genomes-secondary.blob.core.windows.net/dataset“
 
 [SAS-Token](../storage/common/storage-sas-overview.md): sv=2019-10-10&si=prod&sr=c&sig=9nzcxaQn0NprMPlSh4RhFQHcXedLQIcFgbERiooHEqM%3D
 

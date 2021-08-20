@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: dda4fc6a80bbe07977f8d2a5ffcbea895a4e1fe6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 219ff986e88bca31912cfe8be72e9dba179b9236
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771837"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289565"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Tutorial: Erstellen eines Azure Red Hat OpenShift 4-Clusters
 
@@ -26,6 +26,15 @@ In diesem Tutorial (Teil 1 von 3) bereiten Sie Ihre Umgebung auf die Erstellung 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.6.0 ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 Für Azure Red Hat OpenShift sind mindestens 40 Kerne erforderlich, um einen OpenShift-Cluster zu erstellen und auszuführen. Das standardmäßige Azure-Ressourcenkontingent für ein neues Azure-Abonnement erfüllt diese Anforderung nicht. Weitere Informationen zum Anfordern einer Erhöhung des Ressourcenlimits finden Sie unter [Standardkontingent: Erhöhen der Grenzwerte nach VM-Serie](../azure-portal/supportability/per-vm-quota-requests.md) beschrieben.
+
+* So überprüfen Sie z. B. das aktuelle Abonnementkontingent der kleinsten unterstützten VM-Familien-SKU „Standard DSv3“:
+
+    ```azurecli-interactive
+    LOCATION=eastus
+    az vm list-usage -l $LOCATION \
+    --query "[?contains(name.value, 'standardDSv3Family')]" \
+    -o table
+    ```
 
 Das ARO-Pullgeheimnis ändert nicht die Kosten der RH OpenShift-Lizenz für ARO.
 

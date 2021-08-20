@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: e58473f5c3bc4bc6314fb0dc5c532e24daa225d6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 81c11665db1ee1f7c73e8abee95f01b8ea62d2fe
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065700"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113504889"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro-Geräten mit GPU 
 
@@ -154,11 +154,11 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die
 
     ![Ressource erstellen 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
 
-    Sie werden auch darüber informiert, dass während der Ressourcenerstellung eine verwaltete Dienstidentität (Managed Service Identity, MSI) aktiviert wird, mit der Sie sich bei Clouddiensten authentifizieren können. Diese Identität bleibt so lange bestehen, wie die Ressource vorhanden ist.
+    Sie werden auch darüber informiert, dass während der Ressourcenerstellung eine verwaltete Identität aktiviert wird, mit der Sie sich bei Clouddiensten authentifizieren können. Diese Identität bleibt so lange bestehen, wie die Ressource vorhanden ist.
 
 11. Klicken Sie auf **Erstellen**.
 
-    Die Erstellung der Ressource dauert einige Minuten. Außerdem wird eine MSI-Datei erstellt, die die Kommunikation des Azure Stack Edge-Geräts mit dem Ressourcenanbieter in Azure ermöglicht.
+    Die Erstellung der Ressource dauert einige Minuten. Außerdem wird eine verwaltete Identität erstellt, die die Kommunikation des Azure Stack Edge-Geräts mit dem Ressourcenanbieter in Azure ermöglicht.
 
     Nachdem die Ressource erfolgreich erstellt und bereitgestellt wurde, erhalten Sie eine Benachrichtigung. Wählen Sie **Zu Ressource wechseln** aus.
 

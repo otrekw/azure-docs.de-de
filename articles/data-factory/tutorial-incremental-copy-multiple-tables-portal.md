@@ -6,13 +6,13 @@ author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 1fad6274b1dbbc4bf255caabd79352b3c836e352
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/05/2021
+ms.openlocfilehash: b003a6efba93e35d39601a33449cadb212f17c28
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606690"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436442"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus mehreren Tabellen in SQL Server in eine Datenbank in Azure SQL-Datenbank über das Azure-Portal
 
@@ -253,13 +253,14 @@ END
 8. Klicken Sie auf **Erstellen**.      
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
    
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
-10. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite für die Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“.":::
+
+10. Wählen Sie auf der Kachel **Open Azure Data Factory Studio** die Option **Öffnen** um das Data Factory Benutzerinterface (UI) in einem separaten Tab zu starten.
 
 ## <a name="create-self-hosted-integration-runtime"></a>Erstellen der selbstgehosteten Integration Runtime
 Wenn Sie Daten aus einem Datenspeicher in einem privaten Netzwerk (lokal) in einen Azure-Datenspeicher verschieben, installieren Sie eine selbstgehostete Integration Runtime (IR) in Ihrer lokalen Umgebung. Mit der selbstgehosteten IR werden Daten zwischen Ihrem privaten Netzwerk und Azure verschoben. 
 
-1. Wählen Sie in der Azure Data Factory-Benutzeroberfläche auf der Seite **Erste Schritte** im Bereich ganz links die Registerkarte [Verwalten](./author-management-hub.md) aus.
+1. Wählen Sie auf der Homepage der Azure Data Factory-Benutzeroberfläche im Bereich ganz links die [Registerkarte Verwalten](./author-management-hub.md) aus.
 
    ![Schaltfläche „Verwalten“ auf der Startseite](media/doc-common-process/get-started-page-manage-button.png)
 

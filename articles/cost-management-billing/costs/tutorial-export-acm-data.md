@@ -3,18 +3,18 @@ title: 'Tutorial: Erstellen und Verwalten von exportierten Daten aus Azure Cost 
 description: Dieser Artikel erläutert, wie Sie aus Azure Cost Management exportierte Daten erstellen und verwalten können, um sie in externen Systemen zu verwenden.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/06/2021
+ms.date: 07/26/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9f9afe0b7c27fb2199f9bdcd1fa5edbe4da01602
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 592ef54b359c84309da350bf53da6bb0a4152374
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517638"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708637"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -247,7 +247,7 @@ Bei jedem Export wird eine neue Datei erstellt, sodass ältere Exporte nicht üb
 
 #### <a name="create-an-export-for-multiple-subscriptions"></a>Erstellen eines Exports für mehrere Abonnements
 
-Wenn Sie über ein Enterprise Agreement verfügen, können Sie eine Verwaltungsgruppe verwenden, um die Abonnementkosteninformationen in einem einzelnen Container zu aggregieren. Anschließend können Sie Kostenverwaltungsdaten für die Verwaltungsgruppe exportieren.
+Wenn Sie über ein Enterprise Agreement verfügen, können Sie eine Verwaltungsgruppe verwenden, um die Abonnementkosteninformationen in einem einzelnen Container zu aggregieren. Anschließend können Sie Kostenverwaltungsdaten für die Verwaltungsgruppe exportieren. Die Exporte der Verwaltungsgruppen unterstützen nur die tatsächlichen Kosten.
 
 Exporte für Verwaltungsgruppen anderer Abonnementtypen werden nicht unterstützt.
 

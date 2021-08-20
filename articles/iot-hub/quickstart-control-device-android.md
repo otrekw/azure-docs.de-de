@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Steuern eines Geräts über Azure IoT Hub (Android) | Microsoft-Dokumentation'
+title: Steuern eines Geräts über Azure IoT Hub (Android) | Microsoft-Dokumentation
 description: In dieser Schnellstartanleitung führen Sie zwei Java-Beispielanwendungen aus. Eine dieser Anwendungen ist eine Dienstanwendung, die mit Ihrem Hub verbundene Geräte remote steuern kann. Die andere Anwendung wird auf einem physischen oder einem simulierten Gerät ausgeführt, das mit Ihrem Hub verbunden ist und remote gesteuert werden kann.
 author: wesmc7777
 manager: philmea
@@ -14,16 +14,14 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 5946220a688206a35d0d68cd4efd4c356d27d7ee
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 9225c53d4271622b0276dadb1d0a526199602d62
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868536"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727937"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Schnellstart: Steuern eines mit einem IoT-Hub verbundenen Geräts (Android)
-
-[!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
+# <a name="control-a-device-connected-to-an-iot-hub-android"></a>Steuern eines mit einem IoT-Hub verbundenen Geräts (Android)
 
 In dieser Schnellstartanleitung verwenden Sie eine direkte Methode, um ein simuliertes Gerät zu steuern, das mit Azure IoT Hub verbunden ist. IoT Hub ist ein Azure-Dienst, mit dem Sie Ihre IoT-Geräte über die Cloud verwalten und große Mengen von Gerätetelemetriedaten zum Speichern oder Verarbeiten in der Cloud erfassen können. Sie können direkte Methoden verwenden, um das Verhalten eines mit Ihrer IoT Hub-Instanz verbundenen Geräts zu ändern. In dieser Schnellstartanleitung werden zwei Anwendungen verwendet: eine simulierte Geräteanwendung, die auf direkte Methoden reagiert, die von einer Back-End-Dienstanwendung aufgerufen werden, und eine Dienstanwendung, die die direkte Methode auf dem Android-Gerät aufruft.
 
@@ -47,13 +45,13 @@ In dieser Schnellstartanleitung verwenden Sie eine direkte Methode, um ein simul
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
-Wenn Sie das vorherige Tutorial [Schnellstart: Senden von IoT-Telemetriedaten von einem Android-Gerät](quickstart-send-telemetry-android.md) abgeschlossen haben, können Sie diesen Schritt überspringen und den bereits erstellten IoT-Hub verwenden.
+Wenn Sie das vorherige Tutorial [Schnellstart: Senden von IoT-Telemetriedaten von einem Android-Gerät](../iot-develop/quickstart-send-telemetry-iot-hub.md) abgeschlossen haben, können Sie diesen Schritt überspringen und den bereits erstellten IoT-Hub verwenden.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Registrieren eines Geräts
 
-Wenn Sie das vorherige Tutorial [Schnellstart: Senden von IoT-Telemetriedaten von einem Android-Gerät](quickstart-send-telemetry-android.md) abgeschlossen haben, können Sie diesen Schritt überspringen und das in der vorherigen Schnellstartanleitung registrierte Gerät verwenden.
+Wenn Sie das vorherige Tutorial [Schnellstart: Senden von IoT-Telemetriedaten von einem Android-Gerät](../iot-develop/quickstart-send-telemetry-iot-hub.md) abgeschlossen haben, können Sie diesen Schritt überspringen und das in der vorherigen Schnellstartanleitung registrierte Gerät verwenden.
 
 Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung herstellen zu können. In dieser Schnellstartanleitung verwenden Sie Azure Cloud Shell, um ein simuliertes Gerät zu registrieren.
 

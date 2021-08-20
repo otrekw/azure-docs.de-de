@@ -6,13 +6,13 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 310182a3b46f0682efe420387bba0da311707e8a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/05/2021
+ms.openlocfilehash: a7730a12f6e017c23e5007b030cb4b6b05be4761
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606598"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436267"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage über das Azure-Portal
 
@@ -170,15 +170,16 @@ END
 8. Klicken Sie auf **Erstellen**.      
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
 
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
-10. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite für die Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“.":::
+
+10. Wählen Sie auf der Kachel **Open Azure Data Factory Studio** die Option **Öffnen** um das Data Factory Benutzerinterface (UI) in einem separaten Tab zu starten.
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, einer Kopieraktivität und einer StoredProcedure-Aktivität, die in einer Pipeline verkettet sind.
 
-1. Klicken Sie auf der Seite **Erste Schritte** der Data Factory-Benutzeroberfläche auf die Kachel **Pipeline erstellen**.
+1. Klicken Sie auf der Startseite der Data Factory Benutzeroberfläche auf die Kachel **Orchestrieren.**
 
-   ![Seite „Erste Schritte“ der Data Factory-Benutzeroberfläche](./media/doc-common-process/get-started-page.png)    
+   ![Ein Screenshot, die Homepage der Azure Data Factory-Benutzeroberfläche zeigt.](./media/doc-common-process/get-started-page.png)    
 3. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **IncrementalCopyPipeline** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 
 4. Wir fügen die erste Lookup-Aktivität hinzu, um den alten Grenzwert abzurufen. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie die **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers. Ändern Sie den Namen der Aktivität in **LookupOldWaterMarkActivity**.

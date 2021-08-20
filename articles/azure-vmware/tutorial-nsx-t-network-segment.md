@@ -1,41 +1,64 @@
 ---
-title: 'Tutorial: Hinzufügen eines NSX-T-Netzwerksegments in Azure VMware Solution'
-description: Hier erfahren Sie, wie Sie ein NSX-T-Netzwerksegment für die Verwendung für virtuelle Computer in vCenter erstellen.
+title: 'Tutorial: Hinzufügen eines Netzwerksegments in Azure VMware Solution'
+description: Hier erfahren Sie, wie Sie ein Netzwerksegment für die Verwendung für VMs in vCenter hinzufügen.
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: 70a0602b037aaebd4b9776c3a8dafafcb173fa23
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: contperf-fy22q1
+ms.date: 07/16/2021
+ms.openlocfilehash: 04681c5d55536e3ee1cc0b12d2ebc94f19b3873f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064454"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464429"
 ---
 # <a name="tutorial-add-a-network-segment-in-azure-vmware-solution"></a>Tutorial: Hinzufügen eines Netzwerksegments in Azure VMware Solution 
 
-Die in vCenter erstellten virtuellen Computer (VMs) werden in den unter NSX-T erstellten Netzwerksegmenten platziert und sind in vCenter sichtbar.
+Nach der Bereitstellung von Azure VMware Solution können Sie ein NSX-T-Netzwerksegment entweder über NSX-T Manager oder das Azure-Portal konfigurieren.  Nach der Konfiguration werden die Segmente in Azure VMware Solution, NSX-T Manger und vCenter angezeigt.  NSX-T wird vorab mit einem NSX-T Tier-0-Gateway im **Aktiv/Aktiv-Modus** und einem NSX-T Tier-1-Standardgateway im **aktiven Standbymodus** bereitgestellt.  Mit diesen Gateways können Sie eine Verbindung der Segmente herstellen (logische Switches) und Ost-West- und Nord-Süd-Konnektivität bereitstellen. 
 
-In diesem Tutorial lernen Sie Folgendes:
+>[!TIP]
+>Im Azure-Portal wird eine vereinfachte Ansicht von NSX-T-Vorgängen angezeigt, die ein VMware-Administrator regelmäßig benötigt und die für Benutzer bestimmt ist, die mit NSX-T Manager nicht vertraut sind. 
+
+
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
-> * Navigieren in NSX-T Manager zum Hinzufügen von Netzwerksegmenten
-> * Hinzufügen eines neuen Netzwerksegments
-> * Beobachten des neuen Netzwerksegments in vCenter
+> * Hinzufügen von Netzwerksegmenten mithilfe von NSX-T Manager oder des Azure-Portals
+> * Überprüfen des neuen Netzwerksegments 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Eine private Azure VMware Solution-Cloud mit Zugriff auf die vCenter- und NSX-T Manager-Verwaltungsschnittstellen Weitere Informationen finden Sie im Tutorial zum [Konfigurieren des Netzwerks](tutorial-configure-networking.md).
 
-## <a name="add-a-network-segment"></a>Hinzufügen eines Netzwerksegments
+## <a name="use-nsx-t-manager-to-add-network-segment"></a>Verwenden von NSX-T Manager zum Hinzufügen eines Netzwerksegments 
+
+Die in vCenter erstellten virtuellen Computer (VMs) werden in den unter NSX-T erstellten Netzwerksegmenten platziert und sind in vCenter sichtbar.
 
 [!INCLUDE [add-network-segment-steps](includes/add-network-segment-steps.md)]
 
+## <a name="use-azure-portal-to-add-an-nsx-t-segment"></a>Verwenden des Azure-Portals zum Hinzufügen eines NSX-T-Segments
+
+[!INCLUDE [create-nsxt-segment-azure-portal-steps](includes/create-nsxt-segment-azure-portal-steps.md)]
+
+
+## <a name="verify-the-new-network-segment"></a>Überprüfen des neuen Netzwerksegments
+
+Überprüfen Sie, ob das neue Netzwerksegment vorhanden ist. In diesem Beispiel ist **ls01** das neue Netzwerksegment.
+
+1. Wählen Sie in NSX-T Manager die Optionen **Networking** > **Segments** (Netzwerk > Segmente) aus. 
+
+    :::image type="content" source="media/nsxt/nsxt-new-segment-overview-2.png" alt-text="Screenshot: Bestätigung und Status des neuen Netzwerksegments in NSX-T":::
+
+1. Klicken Sie in vCenter auf **Networking** > **SDDC-Datacenter** (Netzwerk > SDDC-Datacenter).
+
+    :::image type="content" source="media/nsxt/vcenter-with-ls01-2.png" alt-text="Screenshot: Bestätigung des neuen Netzwerksegments in vCenter":::
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie ein NSX-T-Netzwerksegment erstellt, das für virtuelle Computer in vCenter verwendet wird. 
+In diesem Tutorial haben Sie ein NSX-T-Netzwerksegment erstellt, das für VMs in vCenter verwendet wird. 
 
-Sie können nun Folgendes: 
+Sie können nun: 
 
-- [Erstellen und Verwalten von DHCP für Azure VMware Solution](configure-dhcp-azure-vmware-solution.md)
+- [Konfigurieren und Verwalten von DHCP in Azure VMware Solution](configure-dhcp-azure-vmware-solution.md)
 - [Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution](deploy-vm-content-library.md) 
 - [Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud](tutorial-expressroute-global-reach-private-cloud.md)
 

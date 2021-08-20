@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/14/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 09c46efab8eea797b10b2724c3c19c7b1b34c87f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 907b627a260bf552555dca63936af6495fb987c6
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467663"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453752"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logmein"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit LogMeIn
 
@@ -50,7 +50,6 @@ Zum Konfigurieren der Integration von LogMeIn in Azure AD müssen Sie LogMeIn ü
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **LogMeIn** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **LogMeIn** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-logmein"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für LogMeIn
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit LogMeIn mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in LogMeIn eingerichtet werden.
@@ -70,7 +69,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **LogMeIn** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -91,7 +90,6 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 6. Kopieren Sie im Abschnitt **LogMeIn einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -119,7 +117,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-logmein-sso"></a>Konfigurieren des einmaligen Anmeldens für LogMeIn
 
-1. Melden Sie sich in einem anderen Browserfenster bei Ihrer LogMeIn-Website als Administrator an.
+1. Wenn Sie die Konfiguration in LogMeIn automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
+
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **LogMeIn einrichten**, um zur Anwendung LogMeIn weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei LogMeIn anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 5.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+1. Wenn Sie LogMeIn manuell einrichten möchten, melden Sie sich in einem anderen Webbrowserfenster als Administrator bei der LogMeIn-Unternehmenswebsite an.
 
 1. Navigieren Sie zur Registerkarte **Identity Provider** (Identitätsanbieter), und fügen Sie im Textfeld **Metadata url** (Metadaten-URL) die **Verbundmetadaten-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 

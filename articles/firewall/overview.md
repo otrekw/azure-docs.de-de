@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 04/20/2021
+ms.date: 07/15/2021
 ms.author: victorh
-ms.openlocfilehash: 077de420397f3b8feab60a9f555fc26e66a5b5ff
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 0b5812b5a562b20d1e0224a038e3572767130333
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539771"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441217"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -27,14 +27,14 @@ Sie können Richtlinien zur Anwendungs- und Netzwerkkonnektivität übergreifend
 
 Informationen zu Features von Azure Firewall finden Sie unter [Azure Firewall-Features](features.md).
 
-## <a name="azure-firewall-premium-preview"></a>Vorschauversion von Azure Firewall Premium
+## <a name="azure-firewall-premium"></a>Azure Firewall Premium
 
-Die Vorschauversion von Azure Firewall Premium ist eine Firewall der nächsten Generation mit Funktionen, die für streng vertrauliche und regulierte Umgebungen erforderlich sind. Zu diesen Funktionen gehören TLS-Inspektion, IDPS, URL-Filterung und Webkategorien.
+Die Azure Firewall Premium ist eine Firewall der nächsten Generation mit Funktionen, die für streng vertrauliche und regulierte Umgebungen erforderlich sind. Zu diesen Funktionen gehören TLS-Inspektion, IDPS, URL-Filterung und Webkategorien.
 
-Weitere Informationen zu den Features der Vorschauversion von Azure Firewall Premium finden Sie unter [Features der Azure Firewall Premium-Vorschau](premium-features.md).
+Weitere Informationen zu den Funktionen der Azure Firewall Premium finden Sie unter [Funktionen der Azure Firewall Premium](premium-features.md).
 
 
-Unter [Vorschauversion von Azure Firewall Premium im Azure-Portal](premium-portal.md) erfahren Sie, wie Sie die Vorschauversion von Azure Firewall Premium über das Azure-Portal konfigurieren.
+Unter [Azure Firewall Premium im Azure-Portal](premium-portal.md) erfahren Sie, wie Sie die Azure Firewall Premium über das Azure-Portal konfigurieren.
 
 
 ## <a name="pricing-and-sla"></a>Preise und SLA
@@ -79,10 +79,13 @@ Azure Firewall weist die folgenden bekannten Probleme auf:
 |IPv6 wird derzeit nicht unterstützt|Wenn Sie einer Regel eine IPv6-Adresse hinzufügen, tritt ein Firewallfehler auf.|Verwenden Sie nur IPv4-Adressen. Die IPv6-Unterstützung wird geprüft.|
 |Das Aktualisieren mehrerer IP-Gruppen schlägt mit einem Konfliktfehler fehl.|Wenn Sie zwei oder mehr IP-Gruppen aktualisieren, die an dieselbe Firewall angefügt sind, wechselt eine der Ressourcen in den Fehlerzustand.|Dies ist ein bekanntes Problem/eine bekannte Einschränkung. <br><br>Wenn Sie eine IP-Gruppe aktualisieren, wird für alle Firewalls, an die die IP-Gruppe angefügt ist, ein Update ausgelöst. Wenn ein Update zu einer zweiten IP-Gruppe gestartet wird, während sich die Firewall noch im Status *Aktualisieren* befindet, schlägt die Aktualisierung der IP-Gruppe fehl.<br><br>Um den Fehler zu vermeiden, müssen IP-Gruppe n, die an dieselbe Firewall angefügt sind, nacheinander aktualisiert werden. Lassen Sie zwischen den Updates genügend Zeit, damit die Firewall den Status *Aktualisieren* beenden kann.|
 |Das Entfernen von RuleCollectionGroup-Elementen mit ARM-Vorlagen wird nicht unterstützt.|Das Entfernen eines RuleCollectionGroup-Elements mit ARM-Vorlagen wird nicht unterstützt und führt zu einem Fehler.|Dies ist kein unterstützter Vorgang.|
-
+|Wenn die DNAT-Regel *allen* (*) Datenverkehr zulässt, erfolgt auch eine Quellnetzwerk-Adressübersetzung (Source Network Address Translation, SNAT).|Wenn eine DNAT-Regel *alle* (*) Quell-IP-Adressen zulässt, stimmt eine implizite Netzwerkregel mit dem VNet-VNet-Datenverkehr überein, sodass immer eine SNAT erfolgt.|Dies ist eine aktuelle Beschränkung.|
+|Das Hinzufügen einer DNAT-Regel zu einem geschützten virtuellen Hub mit einem Sicherheitsanbieter wird nicht unterstützt.|Dies führt zu einer asynchronen Route für den an den Sicherheitsanbieter zurückgegebenen DNAT-Datenverkehr.|Wird nicht unterstützt.|
+| Fehler, die beim Erstellen von mehr als 2.000 Regelsammlungen auftreten können. | Die maximale Anzahl der Regelsammlungen für die NAT, Anwendungen oder dem Netzwerk beträgt 2000 (Resource Manager-Begrenzung). | Dies ist eine aktuelle Beschränkung. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Schnellstart: Erstellen einer Azure Firewall-Instanz und einer Firewallrichtlinie: ARM-Vorlage](../firewall-manager/quick-firewall-policy.md)
 - [Schnellstart: Bereitstellen von Azure Firewall mit Verfügbarkeitszonen – ARM-Vorlage](deploy-template.md)
 - [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal](tutorial-firewall-deploy-portal.md)
+- [Learn-Modul: Einführung in die Azure Firewall](/learn/modules/introduction-azure-firewall/)

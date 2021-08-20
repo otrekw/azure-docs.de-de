@@ -2,13 +2,13 @@
 title: Nachverfolgen von Objekten in einem Livevideo mit Azure Video Analyzer
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie das Azure Video Analyzer-Edgemodul verwenden, um Objekte in einem Livevideofeed einer (simulierten) IP-Kamera nachzuverfolgen. Es wird gezeigt, wie Sie ein Modell für maschinelles Sehen anwenden, um Objekte in einer Teilmenge der Frames im Livevideofeed zu erkennen. Anschließend können Sie einen Knoten für die Objektnachverfolgung verwenden, um diese Objekte in den anderen Frames zu verfolgen.
 ms.topic: quickstart
-ms.date: 05/01/2021
-ms.openlocfilehash: 76723d1fb5dfff47e4ad436e1e4bd18fafa7c102
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 211b51660be74d2b2b3b024ead72c93b3a0d8449
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386057"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603909"
 ---
 # <a name="quickstart-track-objects-in-a-live-video"></a>Schnellstart: Nachverfolgen von Objekten in einem Livevideo
 
@@ -105,7 +105,7 @@ Navigieren Sie in Visual Studio Code zum Ordner „src/cloud-to-device-console-a
    }
 ```
 
-Hier wird `skipSamplesWithoutAnnotation` auf `false` festgelegt, da der Erweiterungsknoten alle Frames an den Downstream-Objektnachverfolgungsknoten übergeben muss – unabhängig davon, ob sie über Rückschlussergebnisse verfügen. Mit der Objektnachverfolgung können Objekte über ca. 15 Frames hinweg verfolgt werden. Wenn das Livevideo eine Bildfrequenz von 30 Frames/Sek. hat, sollten mindestens zwei Frames pro Sekunde zur Rückschlussermittlung an den HTTP-Server gesendet werden. Daher wird `maximumSamplesPerSecond` auf „2“ festgelegt.
+Hier wird `skipSamplesWithoutAnnotation` auf `false` festgelegt, da der Erweiterungsknoten alle Frames an den Downstream-Objektnachverfolgungsknoten übergeben muss – unabhängig davon, ob sie über Rückschlussergebnisse verfügen. Mit der Objektnachverfolgung können Objekte über ca. 15 Frames hinweg verfolgt werden. Wenn das Live-Video eine Bildfrequenz von 30 Frames pro Sekunde hat, sollten mindestens zwei Frames pro Sekunde zur Rückschlussermittlung an den HTTP-Server gesendet werden. Ihr KI-Modell verfügt über einen maximalen FPS-Wert für die Verarbeitung. Dies ist der höchste Wert auf den `maximumSamplesPerSecond` festgelegt werden sollte.
     
 ## <a name="run-the-sample-program"></a>Ausführen des Beispielprogramms
 

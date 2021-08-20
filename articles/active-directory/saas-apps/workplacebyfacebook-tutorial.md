@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 3f66da38d3303b47c2a9b6cefeee19af6bf64ec1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ec27f6605d2f6f63f0493bb08a27a5b3af85832
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725506"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workplace by Facebook
 
@@ -42,8 +42,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Workplace by Facebook unterstützt **SP**-initiiertes einmaliges Anmelden.
-* Workplace by Facebook unterstützt die **Just-in-Time-Bereitstellung**.
-* Workplace by Facebook unterstützt die **[automatische Benutzerbereitstellung](workplacebyfacebook-provisioning-tutorial.md)**.
+* Workplace by Facebook unterstützt **Just-in-Time-Bereitstellung**.
+* Workplace by Facebook unterstützt **[automatische Benutzerbereitstellung](workplacebyfacebook-provisioning-tutorial.md)** .
 * Mobile Workplace by Facebook-Anwendungen können nun mit Azure AD konfiguriert werden, um SSO zu ermöglichen. In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 
@@ -139,19 +139,21 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     > [!NOTE]
     > Im Rahmen des SAML-Authentifizierungsprozesses werden von Workplace ggf. Abfragezeichenfolgen mit einer Größe von bis zu 2,5 KB genutzt, um Parameter an Azure AD zu übergeben.
 
-1. Navigieren Sie im linken Navigationsbereich zur Registerkarte **Security** > **Authentication** (Sicherheit > Authentifizierung).
+1. Navigieren Sie zu **Admin Panel** > **Security** > Registerkarte **Authentication**.
 
-    ![Administratorbereich](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
+    ![Administratorbereich](./media/workplacebyfacebook-tutorial/security.png)
 
     a. Aktivieren Sie die Option **Single-sign on (SSO)** (Einmaliges Anmelden (SSO)).
+
+    b. Wählen Sie **SSO** als Standard für neue Benutzer aus.
     
-    b. Klicken Sie auf **+Add new SSO Provider** (+Neuen SSO-Anbieter hinzufügen).
+    c. Klicken Sie auf **+Add new SSO Provider** (+Neuen SSO-Anbieter hinzufügen).
     > [!NOTE]
     > Aktivieren Sie außerdem das Kontrollkästchen für das Kennwort. Administratoren benötigen diese Anmeldeoption möglicherweise während der Ausführung des Zertifikatrollovers, um zu verhindern, dass sie ausgesperrt werden.
 
-1. Wählen Sie unter **Authentication** (Authentifizierung) die Registerkarte **Single-Sign On (SSO)** (Einmaliges Anmelden (SSO)) aus, und führen Sie die folgenden Schritte aus:
+1. Führen Sie im Popupfenster **Single Sign-On (SSO) Setup** die folgenden Schritte aus:
 
-    ![Registerkarte „Authentication“ (Authentifizierung)](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
+    ![Registerkarte „Authentication“ (Authentifizierung)](./media/workplacebyfacebook-tutorial/single-sign-on-setup.png)
 
     a. Geben Sie unter **Name of the SSO Provider** (Name des SSO-Anbieters) den Namen der SSO-Instanz ein, etwa „Azureadsso“.
 
@@ -159,7 +161,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     c. Fügen Sie in das Textfeld **SAML Issuer URL** (SAML-Aussteller-URL) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    d. Öffnen Sie im Editor das **Base64-codierte Zertifikat**, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **SAML-Zertifikat** ein.
+    d. Öffnen Sie das aus dem Azure-Portal heruntergeladene **Zertifikat (Base64)** im Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **SAML-Zertifikat** ein.
 
     e. Kopieren Sie die **Zielgruppen-URL** für Ihre Instanz, und fügen Sie sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner (Entitäts-ID)** ein.
 

@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie über das Azure-Portal schnell einen Kubernetes-Cluster erstellen, eine Anwendung bereitstellen und die Leistung in Azure Kubernetes Service (AKS) überwachen können.
 services: container-service
 ms.topic: quickstart
-ms.date: 03/15/2021
+ms.date: 07/01/2021
 ms.custom: mvc, seo-javascript-october2019, contperf-fy21q3
-ms.openlocfilehash: 28ba2ffd2007aeb45081cf66b05395a2b8456bf7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4c695b3214cebb601e53810ea8d6f3402bcf2e94
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779703"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463125"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal
 
@@ -41,13 +41,17 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
         * Wählen Sie ein Azure-**Abonnement** aus.
         * Wählen Sie eine Azure-**Ressourcengruppe** wie z. B. *myResourceGroup* aus, oder erstellen Sie eine solche.
     - **Clusterdetails**: 
+        * Stellen Sie sicher, dass die **voreinstellte Konfiguration** auf *Standard ($$)* festgelegt ist. Weitere Informationen zu Voreinstellungskonfigurationen finden Sie unter [Voreingestellte Clusterkonfigurationen im Azure-Portal][preset-config].
         * Geben Sie unter **Kubernetes cluster name** (Name des Kubernetes-Clusters) einen Namen ein, etwa *myAKSCluster*. 
         * Wählen Sie eine **Region** und eine **Kubernetes-Version** für den AKS-Cluster aus.
     - **Primärer Knotenpool**: 
-        * Wählen Sie eine VM-**Knotengröße** für die AKS-Knoten aus. Die VM-Größe kann *nicht* geändert werden, sobald ein AKS-Cluster bereitgestellt wurde.
-        * Wählen Sie die Anzahl von Knoten für die Bereitstellung im Cluster aus. Legen Sie für diese Schnellstartanleitung für **Anzahl von Knoten** die Option *1* fest. Die Knotenanzahl *kann* nach der Clusterbereitstellung angepasst werden.
+        * Behalten Sie die Auswahl der Standardwerte bei.
     
     ![Erstellen eines AKS-Clusters – Angeben grundlegender Informationen](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
+
+    > [!NOTE]
+    > Sie können die voreingestellte Konfiguration beim Erstellen des Clusters ändern, indem Sie *Alle voreingestellten Konfigurationen anzeigen* und dann eine andere Option auswählen.
+    > ![Erstellen eines AKS-Clusters – Voreinstellungsoptionen im Portal](media/kubernetes-walkthrough-portal/cluster-preset-options.png)
 
 4. Klicken Sie auf **Weiter: Knotenpools**, wenn Sie fertig sind.
 
@@ -103,8 +107,9 @@ Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeil
     Die Ausgabe zeigt den in den vorherigen Schritten erstellten einzelnen Knoten. Stellen Sie sicher, dass der Knotenstatus *Bereit* lautet:
 
     ```output
-    NAME                       STATUS    ROLES     AGE       VERSION
-    aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
+    NAME                                STATUS   ROLES   AGE   VERSION
+    aks-agentpool-12345678-vmss000000   Ready    agent   23m   v1.19.11
+    aks-agentpool-12345678-vmss000001   Ready    agent   24m   v1.19.11
     ```
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
@@ -273,7 +278,7 @@ Die Container `azure-vote-back` und `azure-vote-front` werden wie im folgenden B
 
 ![Anzeigen der Integrität der ausgeführten Container in AKS](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-Wenn Sie Protokolle für den Pod `azure-vote-front` anzeigen möchten, wählen Sie im Dropdown der Containerliste die Option **Containerprotokolle anzeigen** aus. Diese Protokolle enthalten die Datenströme *stdout* und *stderr* aus dem Container.
+Um Protokolle für den Pod `azure-vote-front` anzuzeigen, wählen Sie oben im Bereich *azure-vote-front | Übersicht* auf der rechten Seite die Option **In Log Analytics anzeigen** aus. Diese Protokolle enthalten die Datenströme *stdout* und *stderr* aus dem Container.
 
 ![Anzeigen der Containerprotokolle in AKS](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
@@ -318,4 +323,5 @@ Fahren Sie mit dem Tutorial zu Kubernetes-Clustern fort, um anhand eines vollst�
 [aks-network]: ./concepts-network.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
+[preset-config]: ./quotas-skus-regions.md#cluster-configuration-presets-in-the-azure-portal
 [sp-delete]: kubernetes-service-principal.md#additional-considerations

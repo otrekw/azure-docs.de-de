@@ -1,14 +1,14 @@
 ---
 title: Beispiele erweiterter Abfragen
 description: Verwenden Sie Azure Resource Graph, um einige erweiterte Abfragen auszuführen, z. B. mit Verwendung von Spalten, zum Auflisten sämtlicher verwendeter Tags und zum Abgleichen von Ressourcen mit regulären Ausdrücken.
-ms.date: 03/23/2021
+ms.date: 07/07/2021
 ms.topic: sample
-ms.openlocfilehash: ef26a12b2b9d8b0d2bfe473ca91c12985185ade8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6e63715f51e256759da30fac1e40c29edfe2e218
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751551"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113485921"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Erweiterte Beispiele für Resource Graph-Abfragen
 
@@ -28,10 +28,8 @@ Wir behandeln die folgenden erweiterten Abfragen:
 - [Auflisten aller Erweiterungen, die auf einem virtuellen Computer installiert sind](#join-vmextension)
 - [Suchen von Speicherkonten mit einem bestimmten Tag in der Ressourcengruppe](#join-findstoragetag)
 - [Vereinen von Ergebnissen aus zwei Abfragen in einem einzigen Ergebnis](#unionresults)
+- [Abrufen von virtuellen Netzwerken und Subnetzen von Netzwerkschnittstellen](#parse-subnets)
 - [Zusammenfassen virtueller Computer anhand der erweiterten Eigenschaft für Energiezustände](#vm-powerstate)
-- [Anzahl der nicht konformen Gastkonfigurationszuweisungen](#count-gcnoncompliant)
-- [Abfragen von Details aus dem Bericht zur Gastkonfigurationszuweisung](#query-gcreports)
-- [Ermitteln aller Gründe dafür, warum ein Computer nicht konform für Gastkonfigurationszuweisungen ist](#query-gcmachinedetails)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
 
@@ -528,6 +526,43 @@ Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/sub
 
 ---
 
+## <a name="get-virtual-networks-and-subnets-of-network-interfaces"></a><a name="parse-subnets"></a>Abrufen von virtuellen Netzwerken und Subnetzen von Netzwerkschnittstellen
+
+Verwenden Sie einen regulären `parse`-Ausdruck, um die Namen des virtuellen Netzwerks und des Subnetzes aus der Ressourcen-ID-Eigenschaft zu erhalten. Während `parse` das Abrufen von Daten aus einem komplexen Feld ermöglicht, ist es besser, direkt auf die vorhandenen Eigenschaften zuzugreifen, anstatt `parse` zu verwenden.
+
+```kusto
+Resources
+| where type =~ 'microsoft.network/networkinterfaces'
+| project id, ipConfigurations = properties.ipConfigurations
+| mvexpand ipConfigurations
+| project id, subnetId = tostring(ipConfigurations.properties.subnet.id)
+| parse kind=regex subnetId with '/virtualNetworks/' virtualNetwork '/subnets/' subnet 
+| project id, virtualNetwork, subnet
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "Resources | where type =~ 'microsoft.network/networkinterfaces' | project id, ipConfigurations = properties.ipConfigurations | mvexpand ipConfigurations | project id, subnetId = tostring(ipConfigurations.properties.subnet.id) | parse kind=regex subnetId with '/virtualNetworks/' virtualNetwork '/subnets/' subnet | project id, virtualNetwork, subnet"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networkinterfaces' | project id, ipConfigurations = properties.ipConfigurations | mvexpand ipConfigurations | project id, subnetId = tostring(ipConfigurations.properties.subnet.id) | parse kind=regex subnetId with '/virtualNetworks/' virtualNetwork '/subnets/' subnet | project id, virtualNetwork, subnet"
+```
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+:::image type="icon" source="../media/resource-graph-small.png":::Probieren Sie im Azure Resource Graph-Explorer die folgende Abfrage aus:
+
+- Azure-Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0A%7C%20where%20type%20%3D~%20%27microsoft.network%2Fnetworkinterfaces%27%0A%7C%20project%20id%2C%20ipConfigurations%20%3D%20properties.ipConfigurations%0A%7C%20mvexpand%20ipConfigurations%0A%7C%20project%20id%2C%20subnetId%20%3D%20tostring%28ipConfigurations.properties.subnet.id%29%0A%7C%20parse%20kind%3Dregex%20subnetId%20with%20%27%2FvirtualNetworks%2F%27%20virtualNetwork%20%27%2Fsubnets%2F%27%20subnet%20%0A%7C%20project%20id%2C%20virtualNetwork%2C%20subnet" target="_blank">portal.azure.com</a>
+- Azure Government-Portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0A%7C%20where%20type%20%3D~%20%27microsoft.network%2Fnetworkinterfaces%27%0A%7C%20project%20id%2C%20ipConfigurations%20%3D%20properties.ipConfigurations%0A%7C%20mvexpand%20ipConfigurations%0A%7C%20project%20id%2C%20subnetId%20%3D%20tostring%28ipConfigurations.properties.subnet.id%29%0A%7C%20parse%20kind%3Dregex%20subnetId%20with%20%27%2FvirtualNetworks%2F%27%20virtualNetwork%20%27%2Fsubnets%2F%27%20subnet%20%0A%7C%20project%20id%2C%20virtualNetwork%2C%20subnet" target="_blank">portal.azure.us</a>
+- Azure China 21Vianet-Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0A%7C%20where%20type%20%3D~%20%27microsoft.network%2Fnetworkinterfaces%27%0A%7C%20project%20id%2C%20ipConfigurations%20%3D%20properties.ipConfigurations%0A%7C%20mvexpand%20ipConfigurations%0A%7C%20project%20id%2C%20subnetId%20%3D%20tostring%28ipConfigurations.properties.subnet.id%29%0A%7C%20parse%20kind%3Dregex%20subnetId%20with%20%27%2FvirtualNetworks%2F%27%20virtualNetwork%20%27%2Fsubnets%2F%27%20subnet%20%0A%7C%20project%20id%2C%20virtualNetwork%2C%20subnet" target="_blank">portal.azure.cn</a>
+
+
+---
+
 ## <a name="summarize-virtual-machine-by-the-power-states-extended-property"></a><a name="vm-powerstate"></a>Zusammenfassen virtueller Computer anhand der erweiterten Eigenschaft für Energiezustände
 
 Diese Abfrage verwendet die [erweiterten Eigenschaften](../concepts/query-language.md#extended-properties) auf virtuellen Computern, um sie nach Energiezuständen zusammenzufassen.
@@ -559,125 +594,6 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 - Azure China 21Vianet-Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.cn</a>
 
 ---
-
-## <a name="count-of-non-compliant-guest-configuration-assignments"></a><a name="count-gcnoncompliant"></a>Anzahl der nicht konformen Gastkonfigurationszuweisungen
-
-Zeigt die Anzahl der nicht kompatiblen Computer pro [Gastkonfigurationszuweisungs-Grund](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration).
-Die Ergebnisse werden aus Leistungsgründen auf die ersten 100 beschränkt.
-
-```kusto
-GuestConfigurationResources
-| extend vmid = split(properties.targetResourceId,'/')
-| where properties.complianceStatus == 'NonCompliant'
-| mvexpand properties.latestAssignmentReport.resources
-| mvexpand properties_latestAssignmentReport_resources.reasons
-| project machine = tostring(vmid[(-1)]),
-    type = tostring(vmid[(-3)]),
-    name,
-    status = tostring(properties.complianceStatus),
-    resource = tostring(properties_latestAssignmentReport_resources.resourceId),
-    phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase)
-| summarize count() by resource, name
-| order by count_
-| limit 100
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-```azurecli-interactive
-az graph query -q "GuestConfigurationResources | extend vmid = split(properties.targetResourceId,'/') | where properties.complianceStatus == 'NonCompliant' | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | project machine = tostring(vmid[(-1)]), type = tostring(vmid[(-3)]), name, status = tostring(properties.complianceStatus), resource = tostring(properties_latestAssignmentReport_resources.resourceId), phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase) | summarize count() by resource, name | order by count_ | limit 100"
-```
-
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-```azurepowershell-interactive
-Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(properties.targetResourceId,'/') | where properties.complianceStatus == 'NonCompliant' | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | project machine = tostring(vmid[(-1)]), type = tostring(vmid[(-3)]), name, status = tostring(properties.complianceStatus), resource = tostring(properties_latestAssignmentReport_resources.resourceId), phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase) | summarize count() by resource, name | order by count_ | limit 100"
-```
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-
-:::image type="icon" source="../media/resource-graph-small.png":::Probieren Sie im Azure Resource Graph-Explorer die folgende Abfrage aus:
-
-- Azure-Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/GuestConfigurationResources%20%7C%20extend%20vmid%20%3D%20split(properties.targetResourceId%2C%22%2F%22)%20%7C%20where%20properties.complianceStatus%20%3D%3D%20'NonCompliant'%20%7C%20mvexpand%20properties.latestAssignmentReport.resources%20%7C%20mvexpand%20properties_latestAssignmentReport_resources.reasons%20%7C%20project%20machine%20%3D%20tostring(vmid%5B(-1)%5D)%2C%20type%20%3D%20tostring(vmid%5B(-3)%5D)%2C%20name%2C%20status%20%3D%20tostring(properties.complianceStatus)%2C%20resource%20%3D%20tostring(properties_latestAssignmentReport_resources.resourceId)%2C%20phrase%20%3D%20tostring(properties_latestAssignmentReport_resources_reasons.phrase)%20%7C%20summarize%20count()%20by%20resource%2C%20name%20%7C%20order%20by%20count_%20%7C%20limit%20100" target="_blank">portal.azure.com</a>
-
----
-
-## <a name="query-details-of-guest-configuration-assignment-reports"></a><a name="query-gcreports"></a>Abfragen von Details aus dem Bericht zur Gastkonfigurationszuweisung
-
-Zeigt den Bericht aus den Details für den [Gastkonfigurationszuweisungs-Grund](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) an. Im folgenden Beispiel gibt die Abfrage nur Ergebnisse zurück, bei denen der Name der Gastzuweisung `installed_application_linux` lautet und die Ausgabe die Zeichenfolge `Python` enthält, um alle Linux-Computer aufzulisten, auf denen ein Paket mit dem Namen **Python** installiert ist. Entfernen Sie die zweite `where`-Klausel, um die Konformität aller Computer für eine bestimmte Zuweisung abzufragen.
-
-```kusto
-GuestConfigurationResources
-| extend vmid = split(properties.targetResourceId,'/')
-| mvexpand properties.latestAssignmentReport.resources
-| mvexpand properties_latestAssignmentReport_resources.reasons
-| where name in ('installed_application_linux')
-| where properties_latestAssignmentReport_resources_reasons.phrase contains 'Python'
-| project machine = tostring(vmid[(-1)]),
-    type = tostring(vmid[(-3)]),
-    name,
-    status = tostring(properties.complianceStatus),
-    resource = tostring(properties_latestAssignmentReport_resources.resourceId),
-    phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase)
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-```azurecli-interactive
-az graph query -q "GuestConfigurationResources | extend vmid = split(properties.targetResourceId,'/') | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | where name in ('installed_application_linux') | where properties_latestAssignmentReport_resources_reasons.phrase contains 'Python' | project machine = tostring(vmid[(-1)]), type = tostring(vmid[(-3)]), name, status = tostring(properties.complianceStatus), resource = tostring(properties_latestAssignmentReport_resources.resourceId), phrase = tostring (properties_latestAssignmentReport_resources_reasons.phrase)"
-```
-
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-```azurepowershell-interactive
-Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(properties.targetResourceId,'/') | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | where name in ('installed_application_linux') | where properties_latestAssignmentReport_resources_reasons.phrase contains 'Python' | project machine = tostring(vmid[(-1)]), type = tostring(vmid[(-3)]), name, status = tostring(properties.complianceStatus), resource = tostring(properties_latestAssignmentReport_resources.resourceId), phrase = tostring (properties_latestAssignmentReport_resources_reasons.phrase)"
-```
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-
-:::image type="icon" source="../media/resource-graph-small.png":::Probieren Sie im Azure Resource Graph-Explorer die folgende Abfrage aus:
-
-- Azure-Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/GuestConfigurationResources%20%7C%20extend%20vmid%20%3D%20split(properties.targetResourceId%2C'%2F')%20%7C%20mvexpand%20properties.latestAssignmentReport.resources%20%7C%20mvexpand%20properties_latestAssignmentReport_resources.reasons%20%7C%20where%20name%20in%20('installed_application_linux')%20%7C%20where%20properties_latestAssignmentReport_resources_reasons.phrase%20contains%20'Python'%20%7C%20project%20machine%20%3D%20tostring(vmid%5B(-1)%5D)%2C%20type%20%3D%20tostring(vmid%5B(-3)%5D)%2C%20name%2C%20status%20%3D%20tostring(properties.complianceStatus)%2C%20resource%20%3D%20tostring(properties_latestAssignmentReport_resources.resourceId)%2C%20phrase%20%3D%20tostring%20(properties_latestAssignmentReport_resources_reasons.phrase)" target="_blank">portal.azure.com</a>
-
----
-
-## <a name="find-all-reasons-a-machine-is-non-compliant-for-guest-configuration-assignments"></a><a name="query-gcmachinedetails">Ermitteln aller Gründe dafür, warum ein Computer nicht konform für Gastkonfigurationszuweisungen ist</a>
-
-Zeigt alle [Gastkonfigurationszuweisungs-Gründe](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) für einen bestimmten Computer an. Entfernen Sie die erste `where`-Klausel, um auch Überwachungen mit konformen Computern einzubeziehen.
-
-```kusto
-GuestConfigurationResources
-| where properties.complianceStatus == 'NonCompliant'
-| extend vmid = split(properties.targetResourceId,'/')
-| mvexpand properties.latestAssignmentReport.resources
-| mvexpand properties_latestAssignmentReport_resources.reasons
-| extend machine = tostring(vmid[(-1)])
-| where machine == 'MACHINENAME'
-| project phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase),
-    resource = tostring(properties_latestAssignmentReport_resources.resourceId),
-    name,
-    machine,
-    resourceGroup,
-    subscriptionId
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-```azurecli-interactive
-az graph query -q "GuestConfigurationResources | where properties.complianceStatus == 'NonCompliant' | extend vmid = split(properties.targetResourceId,'/') | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | extend machine = tostring(vmid[(-1)]) | where machine == 'MACHINENAME' | project phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase), resource = tostring(properties_latestAssignmentReport_resources.resourceId), name, machine, resourceGroup, subscriptionId"
-```
-
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-```azurepowershell-interactive
-Search-AzGraph -Query "GuestConfigurationResources | where properties.complianceStatus == 'NonCompliant' | extend vmid = split(properties.targetResourceId,'/') | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | extend machine = tostring(vmid[(-1)]) | where machine == 'MACHINENAME' | project phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase), resource = tostring(properties_latestAssignmentReport_resources.resourceId), name, machine, resourceGroup, subscriptionId"
-```
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-
-:::image type="icon" source="../media/resource-graph-small.png":::Probieren Sie im Azure Resource Graph-Explorer die folgende Abfrage aus:
-
-- Azure-Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/GuestConfigurationResources%20%7C%20where%20properties.complianceStatus%20%3D%3D%20'NonCompliant'%20%7C%20extend%20vmid%20%3D%20split(properties.targetResourceId%2C'%2F')%20%7C%20mvexpand%20properties.latestAssignmentReport.resources%20%7C%20mvexpand%20properties_latestAssignmentReport_resources.reasons%20%7C%20extend%20machine%20%3D%20tostring(vmid%5B(-1)%5D)%20%7C%20where%20machine%20%3D%3D%20'MACHINENAME'%20%7C%20project%20phrase%20%3D%20tostring(properties_latestAssignmentReport_resources_reasons.phrase)%2C%20resource%20%3D%20tostring(properties_latestAssignmentReport_resources.resourceId)%2C%20name%2C%20machine%2C%20resourceGroup%2C%20subscriptionId" target="_blank">portal.azure.com</a>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

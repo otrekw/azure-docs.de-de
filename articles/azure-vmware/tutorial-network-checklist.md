@@ -2,13 +2,13 @@
 title: 'Tutorial: Checkliste für die Netzwerkplanung'
 description: Hier erfahren Sie mehr über die Netzwerkanforderungen für Netzwerkkonnektivität und -ports in Azure VMware Solution.
 ms.topic: tutorial
-ms.date: 06/08/2021
-ms.openlocfilehash: 5719ec1a2495c6a225c35ec46cdf19506a10ba6f
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 07/01/2021
+ms.openlocfilehash: 42400011d1dab9b1e5d869a5d96255cf67ea632c
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017269"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113640567"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Checkliste für die Netzwerkplanung für Azure VMware Solution 
 
@@ -26,7 +26,7 @@ In diesem Tutorial erhalten Sie Informationen zu Folgendem:
 Stellen Sie sicher, dass alle Gateways mit dem Dienst des ExpressRoute-Anbieters eine ASN (Autonomous System Number, autonome Systemnummer) mit 4 Bytes unterstützen. Azure VMware Solution verwendet öffentliche ASNs mit 4 Bytes zum Ankündigen von Routen.
 
 ## <a name="virtual-network-and-expressroute-circuit-considerations"></a>Überlegungen zum virtuellen Netzwerk und zur ExpressRoute-Leitung
-Wenn Sie eine Verbindung virtueller Netzwerke in Ihrem Abonnement erstellen, wird die ExpressRoute-Leitung über Peering hergestellt. Sie verwendet einen Autorisierungsschlüssel und eine Peering-ID, die Sie im Azure-Portal anfordern. Das Peering ist eine private 1:1-Verbindung zwischen Ihrer privaten Cloud und dem virtuellen Netzwerk.
+Wenn Sie eine Verbindung virtueller Netzwerke in Ihrem Abonnement erstellen, wird die ExpressRoute-Verbindung über Peering hergestellt. Sie verwendet einen Autorisierungsschlüssel und eine Peering-ID, die Sie im Azure-Portal anfordern. Das Peering ist eine private 1:1-Verbindung zwischen Ihrer privaten Cloud und dem virtuellen Netzwerk.
 
 > [!NOTE] 
 > Die ExpressRoute-Leitung ist nicht Teil einer privaten Cloudbereitstellung. Die Erläuterung der lokalen ExpressRoute-Leitung geht über den Rahmen dieses Dokuments hinaus. Wenn Sie eine lokale Verbindung mit Ihrer privaten Cloud benötigen, können Sie eine Ihrer vorhandenen ExpressRoute-Leitungen verwenden oder eine im Azure-Portal erwerben.
@@ -34,6 +34,9 @@ Wenn Sie eine Verbindung virtueller Netzwerke in Ihrem Abonnement erstellen, wir
 Wenn Sie eine private Cloud bereitstellen, erhalten Sie IP-Adressen für vCenter und NSX-T Manager. Um auf diese Verwaltungsschnittstellen zuzugreifen, müssen Sie weitere Ressourcen im virtuellen Netzwerk Ihres Abonnements erstellen. Die Schritte zum Erstellen dieser Ressourcen und zum Einrichten des [privaten Peerings mit ExpressRoute](tutorial-expressroute-global-reach-private-cloud.md) sind in den Tutorials beschrieben.
 
 Das logische Netzwerk der privaten Cloud wird mit vorab bereitgestelltem NSX-T bereitgestellt. Ein Tier-0-Gateway und ein Tier-1-Gateway werden ebenfalls vorab für Sie bereitgestellt. Sie können ein Segment erstellen und an das vorhandene Tier-1-Gateway anfügen oder ein neues Tier-1-Gateway definieren und das Segment daran anfügen. Die logischen NSX-T-Netzwerkkomponenten unterstützen eine Ost-West-Konnektivität zwischen Workloads und eine Nord-Süd-Konnektivität mit dem Internet und Azure-Diensten.
+
+>[!IMPORTANT]
+>[!INCLUDE [disk-pool-planning-note](includes/disk-pool-planning-note.md)] 
 
 ## <a name="routing-and-subnet-considerations"></a>Überlegungen zu Routing und Subnetz
 Die private Azure VMware Solution-Cloud wird über eine Azure ExpressRoute-Verbindung mit Ihrem virtuellen Azure-Netzwerk verbunden. Über diese Verbindung mit hoher Bandbreite und geringer Wartezeit können Sie von Ihrer privaten Cloudumgebung aus auf Dienste zugreifen, die in Ihrem Azure-Abonnement ausgeführt werden. Das Routing ist BGP-basiert (Border Gateway Protocol), das automatisch erfolgt und standardmäßig für jede Bereitstellung einer privaten Cloud aktiviert wird. 

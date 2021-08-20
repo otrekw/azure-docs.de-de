@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 06/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 8c1c0131a2771c843cbd636c4a80a8cb7e4d6c08
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65c743f57b715b2be89e6c5d627571b9597b8c83
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649389"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112552980"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibmid"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit IBMid
 
@@ -40,7 +40,10 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * IBMid unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 * IBMid unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-## <a name="adding-ibmid-from-the-gallery"></a>Hinzufügen von IBMid über den Katalog
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+
+## <a name="add-ibmid-from-the-gallery"></a>Hinzufügen von IBMid über den Katalog
 
 Zum Konfigurieren der Integration von IBMid in Azure AD müssen Sie IBMid aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
@@ -50,7 +53,6 @@ Zum Konfigurieren der Integration von IBMid in Azure AD müssen Sie IBMid aus d
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **IBMid** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **IBMid** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-ibmid"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für IBMid
 
@@ -75,30 +77,31 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
     a. Geben Sie im Textfeld **Bezeichner** eine der folgenden URLs ein:
 
     | Bezeichner |
     | ---------- |
-    | `https://idaas.iam.ibm.com/idaas/mtfim/sps/idaas/saml20` |
+    | Produktion: |
     | `https://ibmlogin.ice.ibmcloud.com/saml/sps/saml20sp/saml20` |
+    | Vor der Produktion: |
     | `https://prepiam.ice.ibmcloud.com/saml/sps/saml20sp/saml20` |
     |
 
-    a. Geben Sie im Textfeld **Antwort-URL** eine der folgenden URLs ein:
+    b. Geben Sie im Textfeld **Antwort-URL** eine der folgenden URLs ein:
 
     | Antwort-URL |
     | ---------- |
-    | `https://idaas.iam.ibm.com/idaas/mtfim/sps/idaas/saml20/login` |
+    | Produktion: |
     | `https://login.ibm.com/saml/sps/saml20sp/saml20/login` |
+    | Vor der Produktion: |
     | `https://prepiam.ice.ibmcloud.com/saml/sps/saml20sp/saml20/login` |
     |
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://myibm.ibm.com/`.
-
 
 1. Klicken Sie auf **Speichern**.
 

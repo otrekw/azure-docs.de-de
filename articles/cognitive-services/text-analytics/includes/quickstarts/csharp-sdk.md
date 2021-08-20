@@ -6,21 +6,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 06/11/2021
+ms.date: 07/15/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 31a7eccb1f4b0c26640af1321b9779014f663fb4
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 8ccfcf4dbf2b93d4cf4bddc27575269cc1f36fc4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112084062"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593344"
 ---
 <a name="HOLTop"></a>
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
-[v3.1-Referenzdokumentation](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview) | [v3.1-Bibliotheksquellcode](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1-Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.7) | [v3.1-Beispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3.1-Referenzdokumentation](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview) | [v3.1-Bibliotheksquellcode](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1-Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0) | [v3.1-Beispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
@@ -43,9 +43,9 @@ ms.locfileid: "112084062"
 
 Erstellen Sie über die Visual Studio-IDE eine neue .NET Core-Konsolenanwendung. Dadurch wird ein Projekt vom Typ „Hallo Welt“ mit einer einzelnen C#-Quelldatei (*program.cs*) erstellt.
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
-Installieren Sie die Clientbibliothek, indem Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe klicken und **NuGet-Pakete verwalten** auswählen. Wählen Sie im daraufhin geöffneten Paket-Manager die Option **Durchsuchen** aus, und suchen Sie nach `Azure.AI.TextAnalytics`. Aktivieren Sie das Kontrollkästchen **include prerelase** (Vorabversionen einbeziehen), wählen Sie die Version `5.1.0-beta.7` aus, und **installieren** Sie. Sie können auch die [Paket-Manager-Konsole](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package) verwenden.
+Installieren Sie die Clientbibliothek, indem Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe klicken und **NuGet-Pakete verwalten** auswählen. Wählen Sie im daraufhin geöffneten Paket-Manager die Option **Durchsuchen** aus, und suchen Sie nach `Azure.AI.TextAnalytics`. Wählen Sie die Version `5.1.0` und anschließend **Installieren** aus. Sie können auch die [Paket-Manager-Konsole](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package) verwenden.
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
@@ -57,7 +57,7 @@ Installieren Sie die Clientbibliothek, indem Sie im **Projektmappen-Explorer** m
 
 ---
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Öffnen Sie die Datei *program.cs*, und fügen Sie die folgenden `using`-Anweisungen hinzu:
 
@@ -154,7 +154,7 @@ Wenn Sie Version `3.x` des Diensts verwenden, können Sie eine optionale `TextA
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Stellen Sie sicher, dass mit Ihrer zuvor erstellten Main-Methode ein neues Clientobjekt mit Ihrem Endpunkt und Ihren Anmeldeinformationen erstellt wird.
 
@@ -174,7 +174,7 @@ var client = new TextAnalyticsClient(endpoint, credentials);
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Erstellen Sie eine neue Funktion namens `SentimentAnalysisExample()`, die den zuvor erstellten Client verwendet, und rufen Sie die zugehörige Funktion `AnalyzeSentiment()` auf. Das zurückgegebene Objekt vom Typ `Response<DocumentSentiment>` enthält die Stimmungsbezeichnung und den Stimmungswert des gesamten Eingabedokuments sowie eine Standpunktanalyse für jeden Satz (sofern erfolgreich). Im Falle eines Fehlers wird ein Fehler vom Typ `RequestFailedException` ausgelöst.
 
@@ -344,7 +344,7 @@ Document sentiment: Positive
 
 ## <a name="language-detection"></a>Spracherkennung
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 
 Erstellen Sie eine neue Funktion namens `LanguageDetectionExample()`, die den zuvor erstellten Client verwendet, und rufen Sie die zugehörige Funktion `DetectLanguage()` auf. Das zurückgegebene Objekt vom Typ `Response<DetectedLanguage>` enthält die erkannte Sprache sowie den zugehörigen Namen und ISO-6391-Code. Im Falle eines Fehlers wird ein Fehler vom Typ `RequestFailedException` ausgelöst.
@@ -397,7 +397,7 @@ Language:
 
 ## <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (NER)
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 
 Erstellen Sie eine neue Funktion namens `EntityRecognitionExample()`, die den zuvor erstellten Client verwendet, rufen Sie die zugehörige Funktion `RecognizeEntities()` auf, und durchlaufen Sie die Ergebnisse. Das zurückgegebene `Response<CategorizedEntityCollection>`-Objekt enthält die Sammlung der erkannten `CategorizedEntity`-Entitäten. Im Falle eines Fehlers wird ein Fehler vom Typ `RequestFailedException` ausgelöst.
@@ -429,7 +429,7 @@ Named Entities:
                 Score: 0.80,    Length: 9,      Offset: 34
 ```
 
-### <a name="personally-identifiable-information-recognition"></a>Erkennung von personenbezogenen Informationen
+## <a name="personally-identifiable-information-pii-recognition"></a>Erkennung von personenbezogenen Informationen (PII)
 
 Erstellen Sie eine neue Funktion namens `RecognizePIIExample()`, die den zuvor erstellten Client verwendet, rufen Sie die zugehörige Funktion `RecognizePiiEntities()` auf, und durchlaufen Sie die Ergebnisse. Die zurückgegebene `PiiEntityCollection` stellt die Liste der erkannten PII-Entitäten dar. Im Falle eines Fehlers wird ein Fehler vom Typ `RequestFailedException` ausgelöst.
 
@@ -500,7 +500,7 @@ Named Entities:
 
 ## <a name="entity-linking"></a>Entitätsverknüpfung
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Erstellen Sie eine neue Funktion namens `EntityLinkingExample()`, die den zuvor erstellten Client verwendet, rufen Sie die zugehörige Funktion `RecognizeLinkedEntities()` auf, und durchlaufen Sie die Ergebnisse. Das zurückgegebene `Response<LinkedEntityCollection>`-Objekt enthält die Sammlung der erkannten `LinkedEntity`-Entitäten. Im Falle eines Fehlers wird ein Fehler vom Typ `RequestFailedException` ausgelöst. Da verknüpfte Entitäten eindeutig identifiziert werden, werden Vorkommen der gleichen Entität unter einem Objekt vom Typ `LinkedEntity` als Liste von Objekten des Typs `LinkedEntityMatch` gruppiert.
 
@@ -658,7 +658,7 @@ Linked Entities:
 
 ## <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Erstellen Sie eine neue Funktion namens `KeyPhraseExtractionExample()`, die den zuvor erstellten Client verwendet, und rufen Sie die zugehörige Funktion `ExtractKeyPhrases()` auf. Das zurückgegebene Objekt vom Typ `<Response<KeyPhraseCollection>` enthält die Liste erkannter Schlüsselbegriffe. Im Falle eines Fehlers wird ein Fehler vom Typ `RequestFailedException` ausgelöst.
 
@@ -714,64 +714,71 @@ Key phrases:
 
 ---
 
-## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Asynchrones Verwenden der API mit dem Analyze-Vorgang
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+## <a name="extract-health-entities"></a>Extrahieren von Integritätsentitäten
 
-Mithilfe des Analysevorgangs können Sie asynchrone Batchanforderungen für Folgendes ausführen: NER, Schlüsselbegriffserkennung, Stimmungsanalyse und Erkennung personenbezogener Informationen. Nachfolgend sehen Sie ein einfaches Beispiel für einen Vorgang. Ein komplexeres Beispiel können Sie auf [GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeActions.md) finden.
+[!INCLUDE [health operation pricing](../health-operation-pricing-caution.md)]
 
-[!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
+Sie können Textanalyse verwenden, um eine asynchrone Anforderung zum Extrahieren von Integritätsentitäten aus Text auszuführen. Nachfolgend sehen Sie ein einfaches Beispiel für diesen Vorgang. Ein komplexeres Beispiel können Sie auf [GitHub](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample7_AnalyzeHealthcareEntities.md) finden.
 
-Erstellen Sie eine neue Funktion namens `AnalyzeOperationExample()`, die den zuvor erstellten Client verwendet, und rufen Sie die zugehörige Funktion `StartAnalyzeBatchActionsAsync()` auf. Das zurückgegebene `AnalyzeBatchActionsOperation`Objekt enthält das `Operation`Schnittstellenobjekt. Da es sich um einen zeitintensiven Vorgang handelt, muss `await` in der `operation.WaitForCompletionAsync()`-Methode für den Wert aktualisiert werden. Sobald `WaitForCompletionAsync()` ausgeführt wurde, sollte die Sammlung in `operation.Value` aktualisiert werden. Im Falle eines Fehlers wird ein Fehler vom Typ `RequestFailedException` ausgelöst.
-
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 ```csharp
-static async Task AnalyzeOperationExample(TextAnalyticsClient client)
+static async Task healthExample(TextAnalyticsClient client)
 {
-    string inputText = "Microsoft was founded by Bill Gates and Paul Allen.";
+    string document = "Prescribed 100mg ibuprofen, taken twice daily.";
 
-    var batchDocuments = new List<string> { inputText };
-
-
-    TextAnalyticsActions actions = new TextAnalyticsActions()
+    List<string> batchInput = new List<string>()
     {
-        RecognizeEntitiesOptions = new List<RecognizeEntitiesOptions>() { new RecognizeEntitiesOptions() },
-        DisplayName = "Analyze Operation Quick Start Example"
+        document
     };
+    AnalyzeHealthcareEntitiesOperation healthOperation = await client.StartAnalyzeHealthcareEntitiesAsync(batchInput);
+    await healthOperation.WaitForCompletionAsync();
 
-    AnalyzeBatchActionsOperation operation = await client.StartAnalyzeBatchActionsAsync(batchDocuments, actions);
-
-    await operation.WaitForCompletionAsync();
-
-    Console.WriteLine($"Status: {operation.Status}");
-    Console.WriteLine($"Created On: {operation.CreatedOn}");
-    Console.WriteLine($"Expires On: {operation.ExpiresOn}");
-    Console.WriteLine($"Last modified: {operation.LastModified}");
-    if (!string.IsNullOrEmpty(operation.DisplayName))
-        Console.WriteLine($"Display name: {operation.DisplayName}");
-    Console.WriteLine($"Total actions: {operation.TotalActions}");
-    Console.WriteLine($"  Succeeded actions: {operation.ActionsSucceeded}");
-    Console.WriteLine($"  Failed actions: {operation.ActionsFailed}");
-    Console.WriteLine($"  In progress actions: {operation.ActionsInProgress}");
-
-    await foreach (AnalyzeBatchActionsResult documentsInPage in operation.Value)
+    await foreach (AnalyzeHealthcareEntitiesResultCollection documentsInPage in healthOperation.Value)
     {
-        RecognizeEntitiesResultCollection entitiesResult = documentsInPage.RecognizeEntitiesActionsResults.FirstOrDefault().Result;
+        Console.WriteLine($"Results of Azure Text Analytics \"Healthcare Async\" Model, version: \"{documentsInPage.ModelVersion}\"");
+        Console.WriteLine("");
 
-        Console.WriteLine("Recognized Entities");
-
-        foreach (RecognizeEntitiesResult result in entitiesResult)
+        foreach (AnalyzeHealthcareEntitiesResult entitiesInDoc in documentsInPage)
         {
-            Console.WriteLine($"  Recognized the following {result.Entities.Count} entities:");
-
-            foreach (CategorizedEntity entity in result.Entities)
+            if (!entitiesInDoc.HasError)
             {
-                Console.WriteLine($"  Entity: {entity.Text}");
-                Console.WriteLine($"  Category: {entity.Category}");
-                Console.WriteLine($"  Offset: {entity.Offset}");
-                Console.WriteLine($"  Length: {entity.Length}");
-                Console.WriteLine($"  ConfidenceScore: {entity.ConfidenceScore}");
-                Console.WriteLine($"  SubCategory: {entity.SubCategory}");
+                foreach (var entity in entitiesInDoc.Entities)
+                {
+                    // view recognized healthcare entities
+                    Console.WriteLine($"  Entity: {entity.Text}");
+                    Console.WriteLine($"  Category: {entity.Category}");
+                    Console.WriteLine($"  Offset: {entity.Offset}");
+                    Console.WriteLine($"  Length: {entity.Length}");
+                    Console.WriteLine($"  NormalizedText: {entity.NormalizedText}");
+                }
+                Console.WriteLine($"  Found {entitiesInDoc.EntityRelations.Count} relations in the current document:");
+                Console.WriteLine("");
+
+                // view recognized healthcare relations
+                foreach (HealthcareEntityRelation relations in entitiesInDoc.EntityRelations)
+                {
+                    Console.WriteLine($"    Relation: {relations.RelationType}");
+                    Console.WriteLine($"    For this relation there are {relations.Roles.Count} roles");
+
+                    // view relation roles
+                    foreach (HealthcareEntityRelationRole role in relations.Roles)
+                    {
+                        Console.WriteLine($"      Role Name: {role.Name}");
+
+                        Console.WriteLine($"      Associated Entity Text: {role.Entity.Text}");
+                        Console.WriteLine($"      Associated Entity Category: {role.Entity.Category}");
+                        Console.WriteLine("");
+                    }
+                    Console.WriteLine("");
+                }
+            }
+            else
+            {
+                Console.WriteLine("  Error!");
+                Console.WriteLine($"  Document error code: {entitiesInDoc.Error.ErrorCode}.");
+                Console.WriteLine($"  Message: {entitiesInDoc.Error.Message}");
             }
             Console.WriteLine("");
         }
@@ -779,11 +786,153 @@ static async Task AnalyzeOperationExample(TextAnalyticsClient client)
 }
 ```
 
-Nachdem Sie das Beispiel zu Ihrer Anwendung hinzugefügt haben, können Sie es mithilfe von `await` in der Methode `main()` aufrufen.
+```console
+Results of Azure Text Analytics "Healthcare Async" Model, version: "2021-05-15"
+
+  Entity: 100mg
+  Category: Dosage
+  Offset: 11
+  Length: 5
+  NormalizedText:
+  Entity: ibuprofen
+  Category: MedicationName
+  Offset: 17
+  Length: 9
+  NormalizedText: ibuprofen
+  Entity: twice daily
+  Category: Frequency
+  Offset: 34
+  Length: 11
+  NormalizedText:
+  Found 2 relations in the current document:
+
+    Relation: DosageOfMedication
+    For this relation there are 2 roles
+      Role Name: Dosage
+      Associated Entity Text: 100mg
+      Associated Entity Category: Dosage
+
+      Role Name: Medication
+      Associated Entity Text: ibuprofen
+      Associated Entity Category: MedicationName
+
+
+    Relation: FrequencyOfMedication
+    For this relation there are 2 roles
+      Role Name: Medication
+      Associated Entity Text: ibuprofen
+      Associated Entity Category: MedicationName
+
+      Role Name: Frequency
+      Associated Entity Text: twice daily
+      Associated Entity Category: Frequency
+```
+
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+Dieses Feature ist in Version 3.0 nicht verfügbar.
+
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Asynchrones Verwenden der API mit dem Analyze-Vorgang
+
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
+
+Mithilfe des Analysevorgangs können Sie asynchrone Batchanforderungen für Folgendes ausführen: NER, Schlüsselbegriffserkennung, Stimmungsanalyse und Erkennung personenbezogener Informationen. Nachfolgend sehen Sie ein einfaches Beispiel für einen Vorgang. Ein komplexeres Beispiel können Sie auf [GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeActions.md) finden.
+
+[!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
+
+Fügen Sie Ihrer C#-Datei die folgende Verwendungsanweisungen hinzu.
 
 ```csharp
-await AnalyzeOperationExample(client).ConfigureAwait(false);
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 ```
+
+Erstellen Sie eine neue Funktion namens `AnalyzeOperationExample()`, die den zuvor erstellten Client verwendet, und rufen Sie die zugehörige Funktion `StartAnalyzeBatchActionsAsync()` auf. Der zurückgegebene Vorgang enthält ein `AnalyzeBatchActionsResult`-Objekt. Da es sich um einen zeitintensiven Vorgang handelt, muss `await` in der `operation.WaitForCompletionAsync()`-Methode für den Wert aktualisiert werden. Sobald `WaitForCompletionAsync()` ausgeführt wurde, sollte die Sammlung in `operation.Value` aktualisiert sein. Im Falle eines Fehlers wird ein Fehler vom Typ `RequestFailedException` ausgelöst.
+
+
+```csharp
+static async Task AnalyzeOperationExample(TextAnalyticsClient client)
+    {
+        string inputText = "Microsoft was founded by Bill Gates and Paul Allen.";
+
+        var batchDocuments = new List<string> { inputText };
+
+
+        TextAnalyticsActions actions = new TextAnalyticsActions()
+        {
+            RecognizeEntitiesActions = new List<RecognizeEntitiesAction>() { new RecognizeEntitiesAction() },
+            ExtractKeyPhrasesActions = new List<ExtractKeyPhrasesAction>() { new ExtractKeyPhrasesAction() },
+            DisplayName = "Analyze Operation Quick Start Example"
+        };
+
+        AnalyzeActionsOperation operation = await client.StartAnalyzeActionsAsync(batchDocuments, actions);
+
+        await operation.WaitForCompletionAsync();
+
+        Console.WriteLine($"Status: {operation.Status}");
+        Console.WriteLine($"Created On: {operation.CreatedOn}");
+        Console.WriteLine($"Expires On: {operation.ExpiresOn}");
+        Console.WriteLine($"Last modified: {operation.LastModified}");
+        if (!string.IsNullOrEmpty(operation.DisplayName))
+            Console.WriteLine($"Display name: {operation.DisplayName}");
+        //Console.WriteLine($"Total actions: {operation.TotalActions}");
+        Console.WriteLine($"  Succeeded actions: {operation.ActionsSucceeded}");
+        Console.WriteLine($"  Failed actions: {operation.ActionsFailed}");
+        Console.WriteLine($"  In progress actions: {operation.ActionsInProgress}");
+
+        await foreach (AnalyzeActionsResult documentsInPage in operation.Value)
+        {
+            RecognizeEntitiesResultCollection entitiesResult = documentsInPage.RecognizeEntitiesResults.FirstOrDefault().DocumentsResults;
+            ExtractKeyPhrasesResultCollection keyPhrasesResults = documentsInPage.ExtractKeyPhrasesResults.FirstOrDefault().DocumentsResults;
+
+            Console.WriteLine("Recognized Entities");
+
+            foreach (RecognizeEntitiesResult result in entitiesResult)
+            {
+                Console.WriteLine($"  Recognized the following {result.Entities.Count} entities:");
+
+                foreach (CategorizedEntity entity in result.Entities)
+                {
+                    Console.WriteLine($"  Entity: {entity.Text}");
+                    Console.WriteLine($"  Category: {entity.Category}");
+                    Console.WriteLine($"  Offset: {entity.Offset}");
+                    Console.WriteLine($"  Length: {entity.Length}");
+                    Console.WriteLine($"  ConfidenceScore: {entity.ConfidenceScore}");
+                    Console.WriteLine($"  SubCategory: {entity.SubCategory}");
+                }
+                Console.WriteLine("");
+            }
+
+            Console.WriteLine("Key Phrases");
+            
+            foreach (ExtractKeyPhrasesResult documentResults in keyPhrasesResults)
+            {
+                Console.WriteLine($"  Recognized the following {documentResults.KeyPhrases.Count} Keyphrases:");
+
+                foreach (string keyphrase in documentResults.KeyPhrases)
+                {
+                    Console.WriteLine($"  {keyphrase}");
+                }
+                Console.WriteLine("");
+            }
+            
+        }
+    }
+```
+
+Nachdem Sie das Beispiel zu Ihrer Anwendung hinzugefügt haben, können Sie es mithilfe von `await` in der Methode `main()` aufrufen. Da der Analysevorgang asynchron ist, müssen Sie Ihre `Main()` Methode auf den Typ `async Task` aktualisieren.
+
+```csharp
+static async Task Main(string[] args)
+{
+    var client = new TextAnalyticsClient(endpoint, credentials);
+    await AnalyzeOperationExample(client).ConfigureAwait(false);
+}
+```
+
 ### <a name="output"></a>Ausgabe
 
 ```console

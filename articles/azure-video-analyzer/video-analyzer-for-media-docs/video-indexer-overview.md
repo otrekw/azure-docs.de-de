@@ -1,19 +1,20 @@
 ---
 title: Was ist Azure Video Analyzer for Media (ehemals Video Indexer)?
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: Dieser Artikel bietet eine Übersicht über den Dienst Azure Video Analyzer for Media (ehemals Video Indexer).
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
-ms.topic: article
-ms.date: 02/05/2021
+ms.topic: overview
+ms.subservice: azure-video-analyzer-media
+ms.date: 07/15/2021
 ms.author: juliako
-ms.openlocfilehash: acaed6bedcbfeb4ccafd61f0a907f1ccfb7e8bcb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 79c6dc98bd214594b938cf74ce9176a64867fe3e
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386166"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711842"
 ---
 # <a name="what-is-video-analyzer-for-media"></a>Was ist Video Analyzer for Media?
 
@@ -69,7 +70,7 @@ In der folgenden Liste sind die Erkenntnisse aufgeführt, die Sie aus Ihren Vide
 * **Durchlaufender Abspann**: Identifiziert den Anfang und das Ende des durchlaufenden Abspanns am Ende von Fernsehsendungen und Filmen.
 * **Erkennung animierter Figuren** (Vorschauversion): Bestimmung, Gruppierung und Erkennung von Figuren in animierten Inhalten mittels Integration von [Cognitive Services Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Weitere Informationen finden Sie unter [Erkennung animierter Figuren](animated-characters-recognition.md).
 * **Erkennung von redaktionellen Aufnahmetypen**: Tagging (Kategorisierung) von Aufnahmen auf der Grundlage ihres Typs (etwa Totale, Halbtotale, Nahaufnahme, extreme Nahaufnahme, zwei Personen, mehrere Personen, Außenaufnahme, Innenaufnahme usw.). Weitere Informationen finden Sie unter [Erkennung von redaktionellen Aufnahmetypen](scenes-shots-keyframes.md#editorial-shot-type-detection).
-* **Verfolgung von beobachteten Personen**: erkennt beobachtete Personen in Videos und stellt Informationen wie die Position der Person im Videoframe (mit Begrenzungsrahmen) und den genauen Zeitstempel (Start, Ende) bereit, sodass verlässlich festgestellt werden kann, wann eine Person erscheint. Weitere Informationen finden Sie im Artikel zum [Verfolgen beobachteter Personen in einem Video](observed-people-tracing.md).
+* **Verfolgung von beobachteten Personen:** erkennt beobachtete Personen in Videos und stellt Informationen wie die Position der Person im Videoframe (mit Begrenzungsrahmen) und den genauen Zeitstempel (Start, Ende) bereit, sodass verlässlich festgestellt werden kann, wann eine Person erscheint. Weitere Informationen finden Sie im Artikel zum [Verfolgen beobachteter Personen in einem Video](observed-people-tracing.md).
 
 ### <a name="audio-insights"></a>Erkenntnisse aus Audioaufnahmen
 

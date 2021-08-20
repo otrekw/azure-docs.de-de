@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: de48f906f4dc86bf6297cfb3b76f406df49feec3
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 1c6f676ba6f4c689a34baf2119a4179e3a5200ad
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363851"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113038262"
 ---
 # <a name="analyze-with-apache-spark"></a>Analysieren mit Apache Spark
 
@@ -75,7 +75,7 @@ Daten sind über den Datenrahmen mit dem Namen **df** verfügbar. Laden Sie sie 
    ```
 
 1. Führen Sie die Zelle aus, um die NYC Taxi-Daten anzuzeigen, die Sie in die Spark-Datenbank **nyctaxi** geladen haben.
-1. Erstellen Sie eine neue Codezelle, und geben Sie den folgenden Code ein: Diese Daten werden analysiert, und die Ergebnisse werden in einer Tabelle mit dem Namen **nyctaxi.passengercountstats** gespeichert.
+1. Erstellen Sie eine neue Codezelle, und geben Sie den folgenden Code ein: Diese Daten werden analysiert, und die Ergebnisse werden in einer Tabelle namens **nyctaxi.passengercountstats** gespeichert.
 
    ```py
    %%pyspark

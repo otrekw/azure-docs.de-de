@@ -6,13 +6,13 @@ ms.author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: fe4841307ba94a7c3f8ac1d2aa13b43c07df4456
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 07/08/2021
+ms.openlocfilehash: 55ddb188abfd43dbb782beef5f99d4058004922f
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488445"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113515466"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe des Tools zum Kopieren von Daten
 
@@ -107,39 +107,37 @@ Bereiten Sie Ihre Blob Storage-Instanz und Ihre SQL-Datenbank wie folgt für da
 
 1. Nach Abschluss der Erstellung wird die Startseite von **Data Factory** angezeigt.
 
-   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Homepage für Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“.":::
 
-1. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
+1. Zum Starten des Azure Data Factory-Benutzers wählen Sie auf der Kachel **Open Azure Data Factory Studio** die Option **Öffnen** aus.
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Erstellen einer Pipeline mithilfe des Tools zum Kopieren von Daten
 
-1. Klicken Sie auf der Seite **Erste Schritte** auf die Kachel **Daten kopieren**, um das Tool zum Kopieren von Daten zu starten.
+1. Wählen Sie auf der Homepage von Azure Data Factory die Kachel **Erfassung** aus, um das Tool „Daten kopieren“ zu starten.
 
-   ![Kachel für das Tool zum Kopieren von Daten](./media/doc-common-process/get-started-page.png)
+   ![Screenshot der Azure Data Factory-Homepage](./media/doc-common-process/get-started-page.png)
 
-1. Geben Sie auf der Seite **Eigenschaften** unter **Taskname** den Namen **CopyFromBlobToSqlPipeline** ein. Wählen Sie **Weiter** aus. Über die Data Factory-Benutzeroberfläche wird eine Pipeline mit dem angegebenen Tasknamen erstellt.
+1. Wählen Sie auf der Seite **Eigenschaften** des Tools zum Kopieren von Daten unter **Aufgabentyp** den Typ **Integrierte Kopieraufgabe** aus, und wählen Sie dann **Weiter** aus.
 
-   ![Erstellen einer Pipeline](./media/tutorial-copy-data-tool/create-pipeline.png)
-
+     ![Screenshot der Eigenschaftenseite](./media/tutorial-copy-data-tool/copy-data-tool-properties-page.png)
+    
 1. Führen Sie auf der Seite **Quelldatenspeicher** die folgenden Schritte aus:
 
    a. Wählen Sie **+ Neue Verbindung erstellen** aus, um eine Verbindung hinzuzufügen.
 
    b. Wählen Sie im Katalog **Azure Blob Storage** aus, und klicken Sie dann auf **Fortsetzen**.
 
-   c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) Ihr Azure-Abonnement und anschließend in der Liste **Speicherkontoname** Ihr Speicherkonto aus. Testen Sie die Verbindung, und wählen Sie **Fertig stellen** aus.
+   c. Wählen Sie auf der Seite **Neue Verbindung (Azure Blob Storage)** in der Liste **Azure-Abonnement** Ihr Azure-Abonnement und in der Liste **Speicherkontoname** Ihr Speicherkonto aus. Testen Sie die Verbindung, und wählen Sie **Fertig stellen** aus.
 
-   d. Wählen Sie den neu erstellten verknüpften Dienst als Quelle und dann **Weiter** aus.
+   d. Wählen Sie m Block **Verbindung** den neu erstellten verknüpften Dienst als Quelle aus.
 
-   ![Auswählen des verknüpften Quelldiensts](./media/tutorial-copy-data-tool/select-source-linked-service.png)
+   e. Wählen Sie im Abschnitt **Datei oder Ordner** die Option **Durchsuchen** aus, um zum Ordner **adfv2tutorial** zu navigieren, wählen Sie die Datei **inputEmp.txt** aus, und klicken Sie dann auf **OK**.
 
-1. Führen Sie auf der Seite **Choose the input file or folder** (Eingabedatei oder -ordner auswählen) die folgenden Schritte aus:
+   f. Wählen Sie **Weiter** aus, um mit dem nächsten Schritt fortzufahren.
 
-   a. Wählen Sie **Durchsuchen** aus, um zum Ordner **adfv2tutorial/input** zu navigieren, und wählen Sie die Datei **inputEmp.txt** und dann **Auswählen** aus.
+   :::image type="content" source="./media/tutorial-copy-data-tool/source-data-store.png" alt-text="Konfigurieren Sie die Quelle.":::
 
-   b. Wählen Sie **Weiter** aus, um mit dem nächsten Schritt fortzufahren.
-
-1. Aktivieren Sie auf der Seite **File format settings** (Dateiformateinstellungen) das Kontrollkästchen *Erste Zeile als Header verwenden*. Wie Sie sehen, erkennt das Tool die Spalten- und Zeilentrennzeichen automatisch. Wählen Sie **Weiter** aus. Auf dieser Seite können Sie außerdem eine Vorschau der Daten und das Schema der Eingabedaten anzeigen.
+1. Aktivieren Sie auf der Seite **File format settings** (Dateiformateinstellungen) das Kontrollkästchen *Erste Zeile als Header verwenden*. Beachten Sie, dass das Tool die Spalten- und Zeilentrennzeichen automatisch erkennt, und Sie eine Vorschau der Daten und das Schema der Eingabedaten anzeigen können, indem Sie auf dieser Seite die Schaltfläche **Datenvorschau** auswählen. Wählen Sie **Weiter** aus. 
 
    ![Dateiformateinstellungen](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 
@@ -149,19 +147,21 @@ Bereiten Sie Ihre Blob Storage-Instanz und Ihre SQL-Datenbank wie folgt für da
 
    b. Wählen Sie im Katalog **Azure SQL-Datenbank** und dann **Weiter** aus.
 
-   c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) in der Dropdownliste Ihren Server- und Datenbanknamen aus, und geben Sie den Benutzernamen und das Kennwort an. Wählen Sie anschließend **Erstellen** aus.
+   c. Wählen Sie auf der Seite **Neue Verbindung (Azure SQL-Datenbank)** in der Dropdownliste Ihr Azure-Abonnement, den Servernamen und den Datenbanknamen aus. Wählen Sie dann unter **SQL Authentifizierungstyp** die Option **SQL-Authentifizierung** aus, und geben Sie den Benutzernamen und das Kennwort an. Testen Sie die Verbindung, und wählen Sie **Erstellen** aus.
 
-      ![Konfigurieren von Azure SQL-Datenbank](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
+   ![Konfigurieren von Azure SQL-Datenbank](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
    d. Wählen Sie den neu erstellten verknüpften Dienst als Senke und anschließend **Weiter** aus.
 
-1. Wählen Sie auf der Seite **Tabellenmapping** die Tabelle **[dbo].[emp]** aus, und klicken Sie dann auf **Weiter**.
+1. Klicken Sie auf der Seite **Zieldatenspeicher** auf **Vorhandene Tabelle verwenden**, und wählen Sie die Tabelle **dbo.emp** aus. Wählen Sie **Weiter** aus.
 
 1. Auf der Seite **Spaltenzuordnung** sehen Sie, dass die zweite und dritte Spalte in der Eingabedatei den Spalten **FirstName** und **LastName** der Tabelle **emp** zugeordnet werden. Passen Sie die Zuordnung an, um sicherzustellen, dass sie keine Fehler enthält, und wählen Sie anschließend **Weiter** aus.
 
    ![Seite „Spaltenzuordnung“](./media/tutorial-copy-data-tool/column-mapping.png)
 
-1. Klicken Sie auf der Seite **Einstellungen** auf **Weiter**.
+1. Geben Sie auf der Seite **Einstellungen** unter **Taskname** den Namen **CopyFromBlobToSqlPipeline** ein, und klicken Sie dann auf **Weiter**.
+
+   :::image type="content" source="./media/tutorial-copy-data-tool/settings.png" alt-text="Konfigurieren Sie die Einstellungen.":::
 
 1. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie anschließend auf **Weiter**.
 
@@ -169,11 +169,11 @@ Bereiten Sie Ihre Blob Storage-Instanz und Ihre SQL-Datenbank wie folgt für da
 
    ![Überwachen der Pipeline](./media/tutorial-copy-data-tool/monitor-pipeline.png)
 
-1. Wählen Sie auf der Seite „Pipelineausführungen“ die Option **Aktualisieren** aus, um die Liste zu aktualisieren. Wählen Sie den Link unter **PIPELINENAME** aus, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen. 
+1. Wählen Sie auf der Seite „Pipelineausführungen“ die Option **Aktualisieren** aus, um die Liste zu aktualisieren. Wählen Sie den Link unter **Pipelinename** aus, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen. 
 
    ![Ausführen der Pipeline](./media/tutorial-copy-data-tool/pipeline-run.png)
 
-1. Wählen Sie auf der Seite „Aktivitätsausführungen“ unter der Spalte **AKTIVITÄTSNAME** den Link **Details** (Brillensymbol) aus, um weitere Details zum Kopiervorgang anzuzeigen. Wählen Sie im Breadcrumb-Menü den Link **Alle Pipelineausführungen** aus, um zur Ansicht „Pipelineausführungen“ zurückzukehren. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**.
+1. Wählen Sie auf der Seite „Aktivitätsausführungen“ unter der Spalte **Aktivitätsname** den Link **Details** (Brillensymbol) aus, um weitere Details zum Kopiervorgang anzuzeigen. Wählen Sie im Breadcrumb-Menü den Link **Alle Pipelineausführungen** aus, um zur Ansicht „Pipelineausführungen“ zurückzukehren. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**.
 
    ![Überwachung der Aktivitätsausführungen](./media/tutorial-copy-data-tool/activity-monitoring.png)
 

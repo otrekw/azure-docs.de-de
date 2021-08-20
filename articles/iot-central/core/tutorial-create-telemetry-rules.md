@@ -7,12 +7,12 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0d59f50d6fa4f21676cef01ffe0dde8ed1fa4441
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ce10143be81da9ad797ba0ccd68837b647aeb7a7
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768767"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301970"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tutorial: Erstellen einer Regel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
 
@@ -31,11 +31,50 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Erstellen Sie zunächst anhand der Schnellstarts [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md) und [Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung](./quick-create-simulated-device.md) die Gerätevorlage **Sensor Controller**, um sie hier verwenden zu können.
+Zum Durchführen der Schritte in diesem Tutorial benötigen Sie Folgendes:
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+## <a name="add-and-customize-a-device-template"></a>Hinzufügen und Anpassen einer Gerätevorlage
+
+Hinzufügen einer Gerätevorlage aus dem Gerätekatalog. In diesem Tutorial wird die Gerätevorlage **ESP32-Azure IoT Kit** verwendet:
+
+1. Wählen Sie zum Hinzufügen einer neuen Gerätevorlage auf der Seite **Gerätevorlagen** die Option **+ Neu** aus.
+
+1. Scrollen Sie auf der Seite **Typ auswählen** nach unten, bis im Abschnitt **Vorkonfigurierte Gerätevorlage verwenden** die Kachel **ESP32-Azure IoT-Kit** angezeigt wird.
+
+1. Wählen Sie die Kachel **ESP32-Azure IoT-Kit** und dann die folgende Option aus: **Next: Review** (Weiter: Überprüfen).
+
+1. Wählen Sie auf der Seite **Überprüfen** die Option **Erstellen** aus.
+
+Der Name der Vorlage, die Sie erstellt haben, lautet **Sensor Controller**. Das Modell enthält Komponenten, z. B. **Sensor Controller**, **SensorTemp** und **Schnittstelle „Geräteinformationen“** . Mit Komponenten werden die Funktionen eines ESP32-Geräts definiert. Zu den Funktionen gehören die Bereiche Telemetrie, Eigenschaften und Befehle.
+
+Fügen Sie der Gerätevorlage **Sensor Controller** zwei Cloudeigenschaften hinzu:
+
+1. Wählen Sie **Cloudeigenschaften** und dann **+ Cloudeigenschaft hinzufügen** aus. Verwenden Sie die Informationen in der folgenden Tabelle, um Ihrer Gerätevorlage zwei Cloudeigenschaften hinzuzufügen:
+
+    | Anzeigename      | Semantischer Typ | Schema |
+    | ----------------- | ------------- | ------ |
+    | Datum der letzten Wartung | Keine          | Date   |
+    | Customer Name     | Keine          | String |
+
+1. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.
+
+Fügen Sie der Gerätevorlage ein neues Formular hinzu, um das Gerät zu verwalten:
+
+1. Wählen Sie den Knoten **Ansichten** und anschließend die Kachel **Geräte- und Clouddaten bearbeiten** aus, um eine neue Ansicht hinzuzufügen.
+
+1. Ändern Sie den Formularnamen in **Manage device**.
+
+1. Wählen Sie die Cloudeigenschaften **Kundenname** und **Datum der letzten Wartung** sowie die Eigenschaft **Zieltemperatur** aus. Wählen Sie anschließend **Abschnitt hinzufügen** aus.
+
+1. Wählen Sie **Speichern** aus, um Ihr neues Formular zu speichern.
+
+Veröffentlichen der Gerätevorlage jetzt.
 
 ## <a name="create-a-rule"></a>Erstellen einer Regel
 
-Um eine Telemetrieregel zu erstellen, muss für die Gerätevorlage mindestens ein Telemetriewert definiert sein. In diesem Tutorial wird ein simuliertes Gerät **Sensor Controller** verwendet, das Telemetriedaten zur Temperatur und Luftfeuchtigkeit sendet. Die Schritte zum Hinzufügen dieser Gerätevorlage sowie zum Erstellen eines simulierten Geräts wurden im Rahmen der Schnellstartanleitung [Schnellstart: Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung (Previewfunktionen)](./quick-create-simulated-device.md) ausgeführt. Die Regel überwacht die vom Gerät gemeldete Temperatur und sendet eine E-Mail, sobald die Temperatur 70 Grad übersteigt.
+Um eine Telemetrieregel zu erstellen, muss für die Gerätevorlage mindestens ein Telemetriewert definiert sein. In diesem Tutorial wird ein simuliertes Gerät **Sensor Controller** verwendet, das Telemetriedaten zur Temperatur und Luftfeuchtigkeit sendet. Die Regel überwacht die vom Gerät gemeldete Temperatur und sendet eine E-Mail, sobald die Temperatur 70 Grad übersteigt.
 
 > [!NOTE]
 > Pro Anwendung gilt ein Grenzwert von 50 Regeln.
@@ -120,4 +159,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Nachdem Sie nun eine schwellenwertbasierte Regel definiert haben, können Sie sich als Nächstes mit Folgendem befassen:
 
 > [!div class="nextstepaction"]
-> [Erstellen von Webhooks für Regeln](./howto-create-webhooks.md)
+> [Konfigurieren von Regeln](howto-configure-rules.md)

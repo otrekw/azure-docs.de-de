@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd215f0c10f8aebd2a7494ecb5894484ce7bedb9
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: e0558be2ea1defb2a09e6461ba838e328cb293d6
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714042"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201714"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Was ist Azure AD Identity Governance?
 
@@ -108,7 +108,7 @@ Für die Ausführung administrativer Aufgaben in Identity Governance gilt die Ve
 
 | Funktion | Am wenigsten privilegierte Rolle |
 | ------- | --------------------- |
-| Berechtigungsverwaltung | Benutzeradministrator (mit Ausnahme des Hinzufügens von SharePoint Online-Websites zu Katalogen, wofür die Rolle „Globaler Administrator“ erforderlich ist) |
+| Berechtigungsverwaltung | Identity Governance-Administrator |
 | Zugriffsüberprüfungen | Benutzeradministrator (mit Ausnahme von Zugriffsüberprüfungen für Azure- oder Azure AD-Rollen, wofür ein Administrator für privilegierte Rollen erforderlich ist) |
 |Privileged Identity Management | Administrator für privilegierte Rollen |
 | Nutzungsbedingungen | Sicherheitsadministrator oder Administrator für bedingten Zugriff |

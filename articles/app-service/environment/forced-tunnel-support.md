@@ -7,14 +7,17 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d05b4f8e69023e1ecec7002f394141fff008f0d
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97510497"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432966"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling
+> [!NOTE]
+> In diesem Artikel geht es um die App Service-Umgebung v2, die mit isolierten App Service-Plänen verwendet wird
+> 
 
 Die App Service-Umgebung (ASE) ist eine Bereitstellung von Azure App Service im Azure Virtual Network des Kunden. Viele Kunden konfigurieren ihre virtuellen Azure-Netzwerke als Erweiterungen ihrer lokalen Netzwerke mit VPNs oder Azure ExpressRoute-Verbindungen. Bei der Tunnelerzwingung leiten Sie für das Internet bestimmten Datenverkehr stattdessen an Ihr VPN oder ein virtuelles Gerät um. Virtuelle Geräte werden häufig zur Überprüfung und Überwachung von ausgehendem Netzwerkdatenverkehr verwendet. 
 

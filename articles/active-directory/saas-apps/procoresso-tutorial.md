@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/11/2021
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 9200c669df4e9ca756a037f7dd05823e9caf21df
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 56918491f2fad1357f565ed5c07942d0c65c4114
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062674"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112552423"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Tutorial: Azure Active Directory-Integration mit Procore SSO
 
@@ -32,6 +32,9 @@ Um die Azure AD-Integration mit Procore SSO konfigurieren zu können, benötigen
 
 * Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
 * Procore SSO-Abonnement mit SSO-Unterstützung
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -139,7 +142,7 @@ Führen Sie die folgenden Schritte aus, um einen Procore-Testbenutzer aufseiten 
 
     ![Screenshot: Unternehmenswebsite von Procore mit Auswahl von „Directory“ (Verzeichnis) in der Toolbox](./media/procoresso-tutorial/directory.png)
 
-3. Klicken Sie auf die Option **Add a Person**, um das Formular zu öffnen, und geben Sie die folgenden Optionen ein:
+3. Klicken Sie auf die Option **Add a Person**, um das Formular zu öffnen, und geben Sie die folgenden Optionen ein.
 
     ![Screenshot: Hinzufügen einer Person zu Boylan Construction und Eingabe von Benutzerinformationen](./media/procoresso-tutorial/user.png)
 

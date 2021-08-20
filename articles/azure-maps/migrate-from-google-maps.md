@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6241f6156b01c3c90f00578ae5416e4e77270930
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2263b27cd2f505bc76f02f24e17d54ec5f6475b2
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386797"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112578845"
 ---
 # <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>Tutorial: Migrieren von Google Maps zu Azure Maps
 
@@ -34,7 +34,7 @@ Dieser Artikel bietet Einblicke in die Migration von Web- und Mobilanwendungen s
 
 ## <a name="azure-maps-platform-overview"></a>Übersicht über die Azure Maps-Plattform
 
-Azure Maps bietet leistungsstarke Geofunktionen für Entwickler aus allen Branchen. Die Funktionen werden mit regelmäßig aktualisierten Kartendaten kombiniert, um geografischen Kontext für webbasierte und mobile Anwendungen bereitzustellen. Azure Maps verfügt über verschiedene, mit der Azure One-API konforme REST-APIs. Die Rest-APIs bieten Kartenrendering, Suche, Routenplanung, Verkehrsinfo, Zeitzonen, Geolocation, Geofencing, Kartendaten, Wetter, Mobilität und räumliche Operationen. Für Operationen stehen Web- und Android-SDKs zur Verfügung, um eine einfache, flexible und portable Entwicklung für verschiedene Plattformen zu ermöglichen.
+Azure Maps bietet leistungsstarke Geofunktionen für Entwickler aus allen Branchen. Die Funktionen werden mit regelmäßig aktualisierten Kartendaten kombiniert, um geografischen Kontext für webbasierte und mobile Anwendungen bereitzustellen. Azure Maps verfügt über verschiedene, mit der Azure One-API konforme REST-APIs. Die Rest-APIs bieten Kartenrendering, Suche, Routenplanung, Verkehrsinfo, Zeitzonen, Geolocation, Geofencing, Kartendaten, Wetter und Räumliche Operationen. Für Operationen stehen Web- und Android-SDKs zur Verfügung, um eine einfache, flexible und portable Entwicklung für verschiedene Plattformen zu ermöglichen.
 
 ## <a name="high-level-platform-comparison"></a>Allgemeiner Plattformvergleich
 

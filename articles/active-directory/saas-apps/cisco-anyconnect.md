@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: a89ab7f2304fa51d3e8c7a968d445c9b40a457a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36740e7b135309524b70a74e0f92ceb7e2ac1238
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92456087"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461801"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cisco AnyConnect
 
@@ -73,14 +73,16 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die Werte für die folgenden Felder ein:
+1. Geben Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die Werte für die folgenden Felder ein: (Beachten Sie die Groß- und Kleinschreibung der Werte):
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `< YOUR CISCO ANYCONNECT VPN VALUE >`
+   1. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:  
+      `https://*.YourCiscoServer.com/saml/sp/metadata/TGTGroup`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `< YOUR CISCO ANYCONNECT VPN VALUE >`
+   1. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:  
+      `https://YOUR_CISCO_ANYCONNECT_FQDN/+CSCOE+/saml/sp/acs?tgname=TGTGroup`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den Cisco AnyConnect-Client](https://www.cisco.com/c/en/us/support/index.html). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Wenden Sie sich an den Cisco TAC-Support, um weitere Informationen zu diesen Werten zu erfragen. Aktualisieren Sie diese Werte mit dem von Cisco TAC bereitgestellten tatsächlichen Bezeichner und der Antwort-URL. Nehmen Sie Kontakt zum [Supportteam für den Cisco AnyConnect-Client](https://www.cisco.com/c/en/us/support/index.html) auf, um diese Werte zu beziehen. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um die Zertifikatdatei herunterzuladen, und speichern Sie es auf Ihrem Computer.
 

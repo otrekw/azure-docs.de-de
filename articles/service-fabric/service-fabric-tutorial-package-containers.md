@@ -4,12 +4,12 @@ description: In diesem Tutorial wird beschrieben, wie Sie die Definition einer A
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 995291a783d14a6d2db8ed8319c720f55c009d91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 611409b7588f231bb09c3fe57ef4fc29199e0367
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92738857"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112202488"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Tutorial: Packen und Bereitstellen von Containern als Service Fabric-Anwendung mithilfe von Yeoman
 
@@ -83,7 +83,7 @@ Führen Sie zum Hinzufügen eines weiteren Containerdiensts zu einer Anwendung, 
 1. Wechseln Sie um eine Ebene in das Verzeichnis **TestContainer** (Beispiel: *./TestContainer*).
 2. Ausführen von `yo azuresfcontainer:AddService`
 3. Benennen Sie den Dienst „azurevoteback“.
-4. Geben Sie den Containerimagepfad für Redis an: alpine:redis.
+4. Geben Sie den Containerimagepfad für Redis an: 'redis:alpine'.
 5. Drücken Sie die EINGABETASTE, um den Abschnitt „Commands“ leer zu lassen.
 6. Geben Sie als Instanzanzahl „1“ an.
 
@@ -91,7 +91,7 @@ Alle Einträge für das Hinzufügen des verwendeten Diensts werden angezeigt:
 
 ```bash
 ? Name of the application service: azurevoteback
-? Input the Image Name: alpine:redis
+? Input the Image Name: redis:alpine
 ? Commands:
 ? Number of instances of guest container application: 1
    create TestContainer/azurevotebackPkg/ServiceManifest.xml
@@ -270,7 +270,7 @@ Verwenden Sie das im Verzeichnis **TestContainer** bereitgestellte Installations
 ./install.sh
 ```
 
-Navigieren Sie in einem Browser zu Service Fabric Explorer (http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer). Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie einen Eintrag für Ihren Anwendungstyp und einen weiteren für die Instanz.
+Navigieren Sie in einem Browser zu Service Fabric Explorer (https:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer). Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie einen Eintrag für Ihren Anwendungstyp und einen weiteren für die Instanz.
 
 ![Service Fabric Explorer][sfx]
 
@@ -375,7 +375,6 @@ Verwenden Sie das Deinstallationsskript aus der Vorlage, um die Anwendungsinstan
    <CodePackage Name="code" Version="1.0.0">
       <EntryPoint>
          <ContainerHost>
-            <ImageName>alpine:redis</ImageName>
             <Commands></Commands>
          </ContainerHost>
       </EntryPoint>

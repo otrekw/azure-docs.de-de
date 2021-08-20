@@ -3,7 +3,7 @@ title: 'Tutorial: Bereitstellen einer Python-Django-App mit Postgres'
 description: Hier erfahren Sie, wie Sie eine Python-Web-App mit einer PostgreSQL-Datenbank erstellen und in Azure bereitstellen. In diesem Tutorial wird das Django-Framework verwendet, und die App wird in Azure App Service für Linux gehostet.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 07/02/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,16 +11,19 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 97b24403d5472d2f9ae701a043d4cccbb2bf03cb
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+zone_pivot_groups: postgres-server-options
+ms.openlocfilehash: a5e57cf8ac41c6452116d4a88a5892d1779e6519
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110617534"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439104"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service
 
-In diesem Tutorial erfahren Sie, wie Sie eine datengesteuerte Python-[Django](https://www.djangoproject.com/)-Web-App in [Azure App Service](overview.md) bereitstellen und mit einer Azure Database for Postgres-Datenbank verbinden. Von App Service wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt.
+::: zone pivot="postgres-single-server"
+
+In diesem Tutorial erfahren Sie, wie Sie eine datengesteuerte Python-[Django](https://www.djangoproject.com/)-Web-App in [Azure App Service](overview.md) bereitstellen und mit einer Azure Database for Postgres-Datenbank verbinden. Sie können PostgresSQL Flexible Server (Vorschau) auch ausprobieren, indem Sie die oben genannte Option auswählen. Flexible Server bietet einen einfacheren Bereitstellungsmechanismus und niedrigere laufende Kosten.
 
 In diesem Tutorial wird die Azure CLI verwendet, um folgende Aufgaben auszuführen:
 
@@ -32,8 +35,27 @@ In diesem Tutorial wird die Azure CLI verwendet, um folgende Aufgaben auszufüh
 > * Anzeigen von Diagnoseprotokollen
 > * Verwalten der Web-App im Azure-Portal
 
-Sie können auch die [auf dem Azure-Portal basierende Version dieses Tutorials](/azure/developer/python/tutorial-python-postgresql-app-portal) verwenden.
+Sie können auch die [auf dem Azure-Portal basierende Version dieses Tutorials](/azure/developer/python/tutorial-python-postgresql-app-portal?pivots=postgres-single-server) verwenden.
 
+:::zone-end
+
+::: zone pivot="postgres-flexible-server"
+
+In diesem Tutorial wird veranschaulicht, wie Sie eine datengesteuerte Python-Web-App ([Django](https://www.djangoproject.com/)) für [Azure App Service](overview.md) bereitstellen und mit einer [Datenbankinstanz von Azure Database for PostgreSQL – Flexibler Server (Vorschau)](../postgresql/flexible-server/index.yml) verbinden. Wenn Sie PostgreSQL Flexible Server (Vorschau) nicht verwenden können, wählen Sie oben die Option „Einzelserver“ aus. 
+
+In diesem Tutorial wird die Azure CLI verwendet, um folgende Aufgaben auszuführen:
+
+> [!div class="checklist"]
+> * Einrichten der anfänglichen Umgebung mit Python und der Azure CLI
+> * Erstellen einer Datenbank mit Azure Database for PostgreSQL – Flexibler Server
+> * Bereitstellen von Code für Azure App Service und Herstellen einer Verbindung mit PostgreSQL – Flexibler Server
+> * Aktualisieren Ihres Codes und erneutes Bereitstellen
+> * Anzeigen von Diagnoseprotokollen
+> * Verwalten der Web-App im Azure-Portal
+
+Sie können auch die [auf dem Azure-Portal basierende Version dieses Tutorials](/azure/developer/python/tutorial-python-postgresql-app-portal?pivots=postgres-flexible-server) verwenden.
+
+:::zone-end
 
 ## <a name="1-set-up-your-initial-environment"></a>1. Einrichten der anfänglichen Umgebung
 
@@ -99,9 +121,25 @@ Navigieren Sie anschließend in diesen Ordner:
 cd djangoapp
 ```
 
+::: zone pivot="postgres-flexible-server"
+
+Verwenden Sie für Flexibler Server (Vorschau) den Branch „flexible-server“ des Beispiels, der einige erforderliche Änderungen enthält, z. B. die Art und Weise, wie die URL des Datenbankservers festgelegt wird, und mit dem `'OPTIONS': {'sslmode': 'require'}` der Django-Datenbankkonfiguration gemäß den Anforderungen von Azure PostgreSQL – Flexibler Server hinzugefügt wird.
+
+```terminal
+git checkout flexible-server
+```
+
+::: zone-end
+
 # <a name="download"></a>[Download](#tab/download)
 
-Besuchen Sie [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp), wählen Sie **Code** aus, und wählen Sie anschließend die Option **Download ZIP** (ZIP herunterladen) aus. 
+Besuchen Sie [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp).
+
+::: zone pivot="postgres-flexible-server"
+Wählen Sie für Flexibler Server (Vorschau) das Branchsteuerelement mit der Bezeichnung „master“ aus, und wählen Sie stattdessen den Branch „flexible-server“ aus.
+::: zone-end
+
+Wählen Sie **Clone** (Klonen) und anschließend die Option **Download ZIP** (ZIP herunterladen) aus. 
 
 Entpacken Sie die ZIP-Datei in einem Ordner namens *djangoapp*. 
 
@@ -122,6 +160,7 @@ Treten Probleme auf? [Informieren Sie uns darüber.](https://aka.ms/DjangoCLITut
 
 ## <a name="3-create-postgres-database-in-azure"></a>3. Erstellen einer Postgres-Datenbankinstanz in Azure
 
+::: zone pivot="postgres-single-server"
 <!-- > [!NOTE]
 > Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. -->
 
@@ -136,7 +175,7 @@ Wird der Befehl `az` nicht erkannt, vergewissern Sie sich, dass die Azure CLI w
 Erstellen Sie anschließend mithilfe des Befehls [`az postgres up`](/cli/azure/postgres#az_postgres_up) die Postgres-Datenbank in Azure:
 
 ```azurecli
-az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
+az postgres up --resource-group DjangoPostgres-tutorial-rg --location centralus --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
 - **Ersetzen** Sie *\<postgres-server-name>* durch einen **innerhalb von Azure eindeutigen** Namen. (Der Serverendpunkt ist `https://<postgres-server-name>.postgres.database.azure.com`.) Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einem anderen eindeutigen Wert.
@@ -162,6 +201,45 @@ Nach Abschluss der Befehlsausführung wird ein JSON-Objekt mit verschiedenen Ver
 > [!TIP]
 > `-l <location-name>`: Kann auf eine beliebige [Azure-Region](https://azure.microsoft.com/global-infrastructure/regions/) festgelegt werden. Sie können die Regionen, die für Ihr Abonnement verfügbar sind, mit dem [`az account list-locations`](/cli/azure/account#az_account_list_locations)-Befehl abrufen. Legen Sie bei Produktions-Apps für Ihre Datenbank und Ihre App den gleichen Standort fest.
 
+::: zone-end
+
+::: zone pivot="postgres-flexible-server"
+
+1. Aktivieren Sie das Zwischenspeichern von Parametern mit der Azure-Befehlszeilenschnittstelle, damit Sie diese Parameter nicht bei jedem Befehl angeben müssen. (Zwischengespeicherte Werte werden im Ordner *.azure* gespeichert.)
+
+    ```azurecli
+    az config param-persist on 
+    ```
+
+1. Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/management/overview.md#terminology). (Sie können den Namen bei Bedarf ändern.) Der Ressourcengruppenname wird zwischengespeichert und automatisch auf nachfolgende Befehle angewandt.
+
+    ```azurecli
+    az group create --name Python-Django-PGFlex-rg --location centralus
+    ```
+
+1. Erstellen Sie den Datenbankserver (der Vorgang dauert einige Minuten):
+
+    ```azurecli
+    az postgres flexible-server create --sku-name Standard_B1ms --public-access all
+    ```
+    
+    Wird der Befehl `az` nicht erkannt, vergewissern Sie sich, dass die Azure CLI wie unter [Einrichten der anfänglichen Umgebung](#1-set-up-your-initial-environment) beschrieben installiert wurde.
+    
+    Der Befehl [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create) führt die folgenden Aktionen aus, die einige Minuten in Anspruch nehmen:
+    
+    - Erstellen Sie eine Standardressourcengruppe, wenn noch kein zwischengespeicherter Name vorhanden ist.
+    - Erstellen Sie eine Instanz von PostgreSQL – Flexibler Server:
+        - Standardmäßig verwendet der Befehl einen generierten Namen wie `server383813186`. Sie können mit dem Parameter `--name` einen eigenen Namen angeben. Der Name muss in ganz Azure eindeutig sein.
+        - Der Befehl verwendet den kostengünstigsten Tarif `Standard_B1ms`. Lassen Sie das Argument `--sku-name` aus, um den Standardtarif `Standard_D2s_v3` zu verwenden.
+        - Der Befehl verwendet die Ressourcengruppe und den Speicherort, die im vorherigen Befehl `az group create` zwischengespeichert wurden. In diesem Beispiel handelt es sich dabei um die Ressourcengruppe `Python-Django-PGFlex-rg` in der Region `centralus`.
+    - Erstellen Sie ein Administratorkonto mit einem Benutzernamen und einem Kennwort. Sie können diese Werte direkt in den Parametern `--admin-user` und `--admin-password` angeben.
+    - Erstellen Sie eine Datenbank mit der Standardbezeichnung `flexibleserverdb`. Mit dem Parameter `--database-name` können Sie einen eigenen Datenbanknamen angeben.
+    - Aktivieren Sie den vollständigen öffentlichen Zugriff, den Sie mithilfe des Parameters `--public-access` steuern können.
+    
+1. Kopieren Sie nach Abschluss des Befehls die **JSON-Ausgabe des Befehls in eine Datei**, da Sie die Werte aus der Ausgabe, insbesondere Host, Benutzername und Kennwort sowie den Datenbanknamen, später in diesem Tutorial benötigen.
+
+::: zone-end
+
 Treten Probleme auf? [Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
 ## <a name="4-deploy-the-code-to-azure-app-service"></a>4. Bereitstellen des Codes in Azure App Service
@@ -170,12 +248,14 @@ In diesem Abschnitt erstellen Sie einen App-Host in der App Service-App, verbin
 
 ### <a name="41-create-the-app-service-app"></a>4.1 Erstellen der App Service-App
 
+::: zone pivot="postgres-single-server"
+
 Vergewissern Sie sich im Terminal, dass Sie sich im Repositoryordner *djangoapp* befinden, der den App-Code enthält.
 
 Erstellen Sie mithilfe des Befehls [`az webapp up`](/cli/azure/webapp#az_webapp_up) eine App Service-App (den Hostprozess):
 
 ```azurecli
-az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --plan DjangoPostgres-tutorial-plan --sku B1 --name <app-name>
+az webapp up --resource-group DjangoPostgres-tutorial-rg --location centralus --plan DjangoPostgres-tutorial-plan --sku B1 --name <app-name>
 ```
 <!-- without --sku creates PremiumV2 plan -->
 
@@ -193,6 +273,36 @@ Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dau
 - Hochladen des Repositorys per ZIP-Bereitstellung mit aktivierter Buildautomatisierung
 - Zwischenspeichern allgemeiner Parameter wie dem Namen der Ressourcengruppe und dem App Service-Plan in der Datei *.azure/config*. Daher müssen bei späteren Befehlen nicht noch mal die gleichen Parameter angegeben werden. Wenn Sie die App also beispielsweise erneut bereitstellen möchten, nachdem Sie Änderungen vorgenommen haben, können Sie `az webapp up` einfach ohne Parameter erneut ausführen. Bei Befehlen von CLI-Erweiterungen (beispielsweise `az postgres up`) wird der Cache dagegen aktuell nicht genutzt. Daher müssen hier die Ressourcengruppe und der Standort mit der anfänglichen Verwendung von `az webapp up` angegeben werden.
 
+::: zone-end
+
+::: zone pivot="postgres-flexible-server"
+
+1. Vergewissern Sie sich im Terminal, dass Sie sich im Repositoryordner *djangoapp* befinden, der den App-Code enthält.
+
+1. Wechseln Sie zum Branch `flexible-server` der Beispiel-App. Dieser Branch enthält eine spezifische Konfiguration, die für PostgreSQL – Flexibler Server erforderlich ist:
+
+    ```cmd
+    git checkout flexible-server
+    ```
+
+1. Führen Sie den folgenden Befehl [`az webapp up`](/cli/azure/webapp#az_webapp_up) aus, um den App Service-Host für die App zu erstellen:
+
+    ```azurecli
+    az webapp up --name <app-name> --sku B1 
+    ```
+    <!-- without --sku creates PremiumV2 plan -->
+        
+    Dieser Befehl führt die folgenden Aktionen aus, die einige Minuten dauern können. Dabei werden die Ressourcengruppe und der Standort `az group create` (in diesem Beispiel die Gruppe `Python-Django-PGFlex-rg` in der Region `centralus`) verwendet, die im vorherigen Befehl zwischengespeichert wurden.
+    
+    <!-- - Create the resource group if it doesn't exist. `--resource-group` is optional. -->
+    <!-- No it doesn't. az webapp up doesn't respect --resource-group -->
+    - Erstellen Sie den [App Service-Plan](overview-hosting-plans.md) im Basic-Tarif (B1). Sie können `--sku` auslassen, um die Standardwerte zu verwenden.
+    - Erstellen Sie die App Service-App.
+    - Aktivieren Sie die Standardprotokollierung für die App.
+    - Hochladen des Repositorys per ZIP-Bereitstellung mit aktivierter Buildautomatisierung
+
+::: zone-end
+
 Nach erfolgreicher Bereitstellung wird eine JSON-Ausgabe wie im folgenden Beispiel generiert:
 
 ![Beispielausgabe des Befehls „az webapp up“](./media/tutorial-python-postgresql-app/az-webapp-up-output.png)
@@ -207,13 +317,29 @@ Vom App-Code werden Datenbankinformationen in vier Umgebungsvariablen namens `DB
 
 Mithilfe des folgenden Befehls [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) werden App-Einstellungen erstellt, um Umgebungsvariablen in App Service festzulegen:
 
+::: zone pivot="postgres-single-server"
+
 ```azurecli
-az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
+az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBUSER="<username>" DBPASS="<password>" DBNAME="pollsdb" 
 ```
 
 - Ersetzen Sie *\<postgres-server-name>* durch den Namen, den Sie zuvor mit dem Befehl `az postgres up` verwendet haben. Der Code in *azuresite/production.py* hängt automatisch `.postgres.database.azure.com` an, um die vollständige Postgres-Server-URL zu erstellen.
 - Ersetzen Sie *\<username>* und *\<password>* durch die Administratoranmeldeinformationen, die Sie mit dem Befehl `az postgres up` weiter oben verwendet haben, oder durch die Anmeldeinformationen, die von `az postgres up` für Sie generiert wurden. Der Code in *azuresite/production.py* erstellt automatisch den vollständigen Postgres-Benutzernamen aus `DBUSER` und `DBHOST`. Lassen Sie daher den Teil `@server` weg. (Wie bereits erwähnt, sollten Sie das Zeichen `$` in keinem der Werte verwenden, da es eine besondere Bedeutung für Linux-Umgebungsvariablen hat.)
 - Die Namen für Ressourcengruppe und App werden aus den zwischengespeicherten Werten in der Datei *.azure/config* abgerufen.
+
+::: zone-end
+
+::: zone pivot="postgres-flexible-server"
+
+```azurecli
+az webapp config appsettings set --settings DBHOST="<host>" DBUSER="<username>" DBPASS="<password>" DBNAME="flexibleserverdb" 
+```
+
+Ersetzen Sie die Werte für Host, Benutzername und Kennwort durch die Werte aus der Ausgabe des zuvor verwendeten Befehls `az postgres flexible-server create`. Der Host sollte eine URL wie `server383813186.postgres.database.azure.com` sein.
+
+Ersetzen Sie außerdem `flexibleserverdb` durch den Datenbanknamen, wenn Sie ihn mit dem Befehl `az postgres flexible-server create` geändert haben.
+
+::: zone-end
 
 In Ihrem Python-Code wird auf diese Einstellungen in Form von Umgebungsvariablen mit Anweisungen wie `os.environ.get('DBHOST')`zugegriffen. Weitere Informationen finden Sie unter [Zugreifen auf Umgebungsvariablen](configure-language-python.md#access-environment-variables).
 
@@ -223,15 +349,11 @@ Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](co
 
 Durch Django-Datenbankmigrationen wird sichergestellt, dass das Schema in der PostgreSQL-Datenbank in Azure mit den Angaben im Code übereinstimmt.
 
-1. Öffnen Sie eine SSH-Sitzung **im Browser**, indem Sie zu folgender URL navigieren und sich mit den Anmeldeinformationen Ihres Azure-Kontos anmelden (nicht mit den Anmeldeinformationen des Datenbankservers).
+1. Führen `az webpp ssh` Sie aus, um eine SSH-Sitzung für die Web-App im Browser zu öffnen:
 
+    ```azurecli
+    az webapp ssh
     ```
-    https://<app-name>.scm.azurewebsites.net/webssh/host
-    ```
-
-    Ersetzen Sie `<app-name>` durch den Namen, den Sie zuvor in dem Befehl `az webapp up` verwendet haben.
-
-    Sie können alternativ mit dem Befehl [`az webapp ssh`](/cli/azure/webapp#az_webapp_ssh) eine Verbindung mit einer SSH-Sitzung herstellen. Unter Windows ist für diesen Befehl die Azure CLI 2.18.0 oder höher erforderlich.
 
     Können Sie keine Verbindung mit der SSH-Sitzung herstellen, konnte die App selbst nicht gestartet werden. Ausführliche Informationen finden Sie in den [Diagnoseprotokollen](#6-stream-diagnostic-logs). Wenn Sie beispielsweise nicht die erforderlichen App-Einstellungen im vorherigen Abschnitt erstellt haben, ist in den Protokollen `KeyError: 'DBNAME'`angegeben.
 
@@ -255,15 +377,19 @@ Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](co
     
 ### <a name="44-create-a-poll-question-in-the-app"></a>4.4 Erstellen einer Frage für die Umfrage in der App
 
-1. Öffnen Sie in einen Browser die URL `http://<app-name>.azurewebsites.net`. In der App sollten „Polls app“ (Umfrage-App) und „No polls are available“ (Keine Umfragen verfügbar) angezeigt werden, da die Datenbank noch keine spezifischen Umfragen enthält.
+1. Öffnen Sie die Website der App. In der App sollten „Polls app“ (Umfrage-App) und „No polls are available“ (Keine Umfragen verfügbar) angezeigt werden, da die Datenbank noch keine spezifischen Umfragen enthält.
+
+    ```azurecli
+    az webapp browse
+    ```
 
     Wird „Anwendungsfehler“ angezeigt, haben Sie wahrscheinlich entweder die erforderlichen Einstellungen im vorherigen Schritt ([Konfigurieren der Umgebungsvariablen für die Datenbankverbindung](#42-configure-environment-variables-to-connect-the-database)) nicht erstellt, oder diese Werte enthalten Fehler. Führen Sie den Befehl `az webapp config appsettings list` aus, um die Einstellungen zu überprüfen. Sie können auch die [Diagnoseprotokolle überprüfen](#6-stream-diagnostic-logs), um bestimmte Fehler beim App-Start anzuzeigen. Wenn Sie beispielsweise die Einstellungen nicht erstellt haben, wird in den Protokollen der Fehler `KeyError: 'DBNAME'` angezeigt.
 
     Nachdem Sie die Einstellungen zum Beheben von Fehlern aktualisiert haben, räumen Sie eine Minute für den Neustart der App ein, und aktualisieren Sie dann den Browser.
 
-1. Navigieren Sie zu `http://<app-name>.azurewebsites.net/admin`. Melden Sie sich unter Verwendung der Superuser-Anmeldeinformationen für Django aus dem vorherigen Abschnitt (`root` und `Pollsdb1`) an. Wählen Sie unter **Polls** (Umfragen) neben **Questions** (Fragen) die Option **Add** (Hinzufügen) aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten.
+1. Browsen Sie zur Administratorseite der Web-App, indem Sie an die URL `/admin` anfügen, z. B. `http://<app-name>.azurewebsites.net/admin`. Melden Sie sich unter Verwendung der Superuser-Anmeldeinformationen für Django aus dem vorherigen Abschnitt (`root` und `Pollsdb1`) an. Wählen Sie unter **Polls** (Umfragen) neben **Questions** (Fragen) die Option **Add** (Hinzufügen) aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten.
 
-1. Navigieren Sie wieder zu `http://<app-name>.azurewebsites.net`, und vergewissern Sie sich, dass die Fragen nun angezeigt werden. Beantworten Sie Fragen nach Belieben, um Daten in der Datenbank zu generieren.
+1. Navigieren Sie wieder zur Hauptwebsite (`http://<app-name>.azurewebsites.net`), und vergewissern Sie sich, dass die Fragen nun angezeigt werden. Beantworten Sie Fragen nach Belieben, um Daten in der Datenbank zu generieren.
 
 **Glückwunsch!** Sie führen eine Python-Django-Web-App in Azure App Service für Linux mit einer aktiven Postgres-Datenbank aus.
 
@@ -399,7 +525,7 @@ Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](co
 
 ### <a name="55-review-app-in-production"></a>5.5 Überprüfen der App in der Produktion
 
-Navigieren Sie zu `http://<app-name>.azurewebsites.net`, und testen Sie die App erneut in der Produktion. (Da Sie lediglich die Länge eines Datenbankfelds geändert haben, macht sich die Änderung nur bemerkbar, wenn Sie versuchen, bei der Frageerstellung eine längere Antwort einzugeben.)
+Browsen Sie wieder zur App (indem Sie `az webapp browse` verwenden oder zu `http://<app-name>.azurewebsites.net` navigieren), und testen Sie die App erneut in der Produktion. (Da Sie lediglich die Länge eines Datenbankfelds geändert haben, macht sich die Änderung nur bemerkbar, wenn Sie versuchen, bei der Frageerstellung eine längere Antwort einzugeben.)
 
 Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](configure-language-python.md#troubleshooting), andernfalls [informieren Sie uns darüber](https://aka.ms/DjangoCLITutorialHelp).
 
@@ -445,10 +571,10 @@ Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](co
 Wenn Sie die App behalten oder mit den zusätzlichen Tutorials fortfahren möchten, gehen Sie direkt zu [Nächste Schritte](#next-steps). Andernfalls können Sie die für dieses Tutorial erstellte Ressourcengruppe löschen, um laufende Gebühren zu vermeiden:
 
 ```azurecli
-az group delete --no-wait
+az group delete --name Python-Django-PGFlex-rg --no-wait
 ```
 
-Bei diesem Befehl wird der zwischengespeicherte Ressourcengruppenname aus der Datei *.azure/config* verwendet. Wenn Sie die Ressourcengruppe löschen, wird auch die Zuordnung aller darin enthaltenen Ressourcen aufgehoben, und die Ressourcen werden gelöscht.
+Wenn Sie die Ressourcengruppe löschen, wird auch die Zuordnung aller darin enthaltenen Ressourcen aufgehoben, und die Ressourcen werden gelöscht. Stellen Sie sicher, dass Sie die Ressourcen in der Gruppe nicht mehr benötigen, bevor Sie den Befehl ausführen.
 
 Das Löschen aller Ressourcen kann einige Zeit dauern. Das Argument `--no-wait` ermöglicht, dass der Befehl sofort zurückgegeben wird.
 

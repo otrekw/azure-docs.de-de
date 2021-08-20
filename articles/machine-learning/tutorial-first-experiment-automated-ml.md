@@ -9,28 +9,28 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 06/11/2021
-ms.custom: automl
-ms.openlocfilehash: e088184cadea64b769faf75c6455b720f45d91cc
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 07/01/2021
+ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 69cbb3923f3a29085b0999bdce44efe99245b3eb
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028719"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113491369"
 ---
 # <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>Tutorial: Trainieren eines Klassifizierungsmodells mit AutoML ohne Schreiben von Code in Azure Machine Learning Studio
 
 Erfahren Sie, wie Sie ein Klassifizierungsmodell mit AutoML ohne Schreiben von Code trainieren, indem Sie in Azure Machine Learning Studio automatisierte maschinelles Lernen verwenden. Dieses Klassifizierungsmodell sagt vorher, ob ein Kunde Festgeld bei einer Bank anlegt.
 
-Mit automatisiertem maschinellen Lernen können Sie zeitintensive Aufgaben automatisieren. Beim automatisierten maschinellen Lernen werden viele Kombinationen von Algorithmen und Hyperparametern schnell durchlaufen, um basierend auf einer von Ihnen ausgewählten Erfolgsmetrik das beste Modell zu ermitteln.
+Sie können zeitintensive Aufgaben mit dem Azure Machine Learning automatisieren. Beim automatisierten maschinellen Lernen werden viele Kombinationen von Algorithmen und Hyperparametern schnell durchlaufen, um basierend auf einer von Ihnen ausgewählten Erfolgsmetrik das beste Modell zu ermitteln.
 
 In diesem Tutorial schreiben Sie keinen Code. Sie verwenden die Studio-Benutzeroberfläche für das Trainieren.  Dabei lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen Sie einen Azure Machine Learning-Arbeitsbereich.
 > * Ausführen eines automatisierten Machine Learning-Experiments
-> * Anzeigen von Details zum Experiment
-> * Bereitstellen des Modells.
+> * Untersuchen Sie die Modelldetails.
+> * Stellen Sie das empfohlene Model bereit.
 
 Probieren Sie auch automatisiertes maschinelles Lernen für diese anderen Modelltypen aus:
 
@@ -39,7 +39,7 @@ Probieren Sie auch automatisiertes maschinelles Lernen für diese anderen Modell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.
 
 * Laden Sie die Datendatei [**bankmarketing_train.csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) herunter. In der Spalte **y** ist angegeben, ob ein Kunde Festgeld angelegt hat. Sie wird später als Zielspalte für Vorhersagen in diesem Tutorial festgelegt. 
 
@@ -92,7 +92,7 @@ Laden Sie vor dem Konfigurieren Ihres Experiments Ihre Datendatei in Form eines 
 
     1. Wählen Sie unten links **Weiter** aus, um das Dataset in den Standardcontainer hochzuladen, der bei der Erstellung Ihres Arbeitsbereichs automatisch eingerichtet wurde.  
     
-       Wenn der Upload abgeschlossen ist, wird das Formular „Einstellungen und Vorschau“ basierend auf dem Dateityp vorab aufgefüllt. 
+       Sobald das Hochladen abgeschlossen ist, wird das Formular **Einstellungen und Vorschau** basierend auf dem Dateityp vorab aufgefüllt. 
        
     1. Überprüfen Sie, ob das Formular **Einstellungen und Vorschau** wie folgt ausgefüllt ist, und klicken Sie auf **Weiter**.
         
@@ -142,7 +142,7 @@ Nach dem Laden und Konfigurieren Ihrer Daten können Sie Ihr Experiment einricht
             ----|---|---
             Computename |  Ein eindeutiger Name, der Ihren Computekontext identifiziert. | automl-compute
             Min/Max nodes (Min./Max. Knoten)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben.|Min. Knoten: 1<br>Max. Knoten: 6
-            Leerlauf in Sekunden vor dem Herunterskalieren | Leerlaufzeit vor dem automatischen Herunterskalieren des Clusters auf die minimale Knotenanzahl|120 (Standardwert)
+            Leerlauf in Sekunden vor dem Herunterskalieren | Leerlaufzeit vor dem automatischen Herunterskalieren des Clusters auf die minimale Knotenanzahl|1800 (Standard)
             Erweiterte Einstellungen | Einstellungen zum Konfigurieren und Autorisieren eines virtuellen Netzwerks für Ihr Experiment| Keine               
 
         1. Wählen Sie **Erstellen** aus, um Ihr Computeziel zu erstellen. 
@@ -155,7 +155,7 @@ Nach dem Laden und Konfigurieren Ihrer Daten können Sie Ihr Experiment einricht
 
     1. Wählen Sie **Weiter** aus.
 
-1. Schließen Sie im Formular **Aufgabentyp und -einstellungen** die Einrichtung Ihres Experiments mit automatisiertem maschinellem Lernen ab, indem Sie den ML-Aufgabentyp und die Konfigurationseinstellungen angeben.
+1. Vervollständigen Sie die Einrichtung für Ihr automatisiertes Azure Machine Learning-Experiment in dem Formular **Aufgaben und Einstellungen auswählen**. Geben Sie dazu den Aufgabentyp und die Konfigurationseinstellungen für maschinelles Lernen an.
     
     1.  Wählen Sie als ML-Aufgabentyp **Klassifizierung** aus.
 

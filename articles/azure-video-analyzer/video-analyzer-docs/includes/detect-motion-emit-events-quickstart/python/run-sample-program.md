@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 05/05/2021
 ms.author: faneerde
-ms.openlocfilehash: b66de47b5429f869b798092475ce93e1c1f740a2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9544a69da1c8ba0e3c2fd248a0bbbc7cbc13206f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110487419"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593517"
 ---
 Führen Sie diese Schritte aus, um den Beispielcode auszuführen:
 
@@ -28,14 +28,16 @@ Führen Sie diese Schritte aus, um den Beispielcode auszuführen:
 1. Vergewissern Sie sich auf dem Knoten `pipelineTopologySet`, dass der folgende Wert angezeigt wird:
 
    ```
-   "topologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/motion-detection/topology.json"
+   "pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/motion-detection/topology.json"
    ```
 
 1. Vergewissern Sie sich unter den Knoten `livePipelineSet` und `livePipelineDelete`, dass der Wert für **topologyName** dem Wert der Eigenschaft **name** in der Pipelinetopologie entspricht:
 
    `"topologyName" : "MotionDetection"`
 
-1. Starten Sie eine Debugsitzung, indem Sie F5 drücken. Im **Terminalfenster** werden einige Meldungen angezeigt.
+1. * Navigieren Sie zu dem Fenster `TERMINAL` in VS Code
+   * Verwenden Sie den Befehl „cd“ um zu dem Verzeichnis /video-analyzer-iot-edge-python-main/src/cloud-to-device-console-app zu navigieren
+   * Rufen Sie „python main.py“ auf, dann werden Ihnen die Meldungen im Fenster `TERMINAL` angezeigt
 1. Von der Datei _operations.json_ werden zuerst `pipelineTopologyList` und `livePipelineList` aufgerufen. Wenn Sie nach dem Durcharbeiten vorheriger Schnellstartanleitungen eine Ressourcenbereinigung durchgeführt haben, werden bei diesem Prozess leere Listen zurückgegeben.
 
    ```
@@ -86,7 +88,7 @@ Führen Sie diese Schritte aus, um den Beispielcode auszuführen:
    ```
 
    - Ein Aufruf von `livePipelineActivate`, mit dem die Livepipeline und der Videodatenfluss gestartet werden
-   - Ein zweiter Aufruf von `livePipelineList`, um anzuzeigen, dass sich die Livepipeline im ausgeführten Zustand befindet
+   - Ein zweiter Aufruf von `livePipelineList` mit der Anzeige, dass sich die Livepipeline im ausgeführten Zustand befindet
 
 1. Die Ausgabe im **Terminalfenster** wird mit der folgenden Meldung angehalten: `Press Enter to continue`. Warten Sie noch mit dem Drücken der EINGABETASTE. Scrollen Sie nach oben, um die JSON-Antwortnutzlasten für die aufgerufenen direkten Methoden anzuzeigen.
 1. Wechseln Sie in Visual Studio Code zum **Ausgabefenster**. Es werden Nachrichten angezeigt, die vom Azure Video Analyzer-Modul an den IoT-Hub gesendet werden. Im folgenden Abschnitt dieser Schnellstartanmeldung sind diese Meldungen beschrieben.

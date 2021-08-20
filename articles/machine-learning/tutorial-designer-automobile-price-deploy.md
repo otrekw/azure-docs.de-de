@@ -1,26 +1,28 @@
 ---
-title: 'Tutorial: Bereitstellen von ML-Modellen mit dem Designer'
+title: Tutorial – Bereitstellen von Modellen ohne Code mit dem Designer
 titleSuffix: Azure Machine Learning
-description: Erstellen einer Predictive Analytics-Lösung im Azure Machine Learning-Designer Sie erhalten Informationen zum Trainieren, Bewerten und Bereitstellen eines Machine Learning-Modells mithilfe von Drag & Drop-Modulen.
+description: Stellen Sie ein Machine Learning-Modell bereit, um Autopreise mit dem Azure Machine Learning Designer vorherzusagen.
 author: likebupt
 ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 05/25/2021
-ms.custom: designer
-ms.openlocfilehash: 73cc893815cf591812c95c8d8b092a4b58697917
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/11/2021
+ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: a9fe604673ee53aa6772e6f382a4a3e3a53fb903
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457646"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115015"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer
+# <a name="tutorial-designer---deploy-a-machine-learning-model"></a>Tutorial – Bereitstellen eines Machine Learning-Modells mit dem Designer
+
+Verwenden Sie den Designer, für die Bereitstellung eines Machine Learning-Modells, um den Preis von Autos vorherzusagen. Dieses Tutorial ist der zweite Teil einer zweiteiligen Reihe.
 
 
-Sie können das im [ersten Teil des Tutorials](tutorial-designer-automobile-price-train-score.md) entwickelte Vorhersagemodell bereitstellen, damit es auch von anderen verwendet werden kann. Im ersten Teil haben Sie Ihr Modell trainiert. Jetzt ist es an der Zeit, Vorhersagen basierend auf Benutzereingaben zu generieren. In diesem Teil des Tutorials führen Sie die folgenden Schritte aus:
+Im [Teil des Tutorials](tutorial-designer-automobile-price-train-score.md) haben Sie Training für ein lineares Regressionsmodell für Autopreise erhalten. In Teil 2 stellen Sie das Modell bereit, um anderen die Möglichkeit zu geben, es zu verwenden. In diesem Tutorial:
 
 > [!div class="checklist"]
 > * Erstellen einer Echtzeit-Rückschlusspipeline

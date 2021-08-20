@@ -1,25 +1,28 @@
 ---
 title: Erstellen eines Chatraums mit Azure Functions und SignalR Service mithilfe von JavaScript
-description: Eine Schnellstartanleitung für die Verwendung des Azure SignalR-Diensts und von Azure Functions zum Erstellen eines Chatraums mithilfe von JavaScript.
+description: Eine Schnellstartanleitung für die Verwendung von Azure Functions und dem SignalR-Service mithilfe von JavaScript zum Erstellen einer App, die die Anzahl der GitHub-Sterne anzeigt.
 author: sffamily
 ms.author: zhshang
-ms.date: 12/14/2019
+ms.date: 06/09/2021
 ms.topic: quickstart
 ms.service: signalr
 ms.devlang: javascript
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: 5e2c9dcd1efc85e1ea3fe6381cbfbff0c5e62fc5
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 9e8bb3d49ef236521f7d4a48060b2405dbbbc104
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533212"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112462017"
 ---
-# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Schnellstart: Erstellen eines Chatraums mit Azure Functions und SignalR Service mithilfe von JavaScript
+# <a name="quickstart-use-javascript-to-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service"></a>Schnellstart: Erstellen Sie eine App, die die Anzahl der GitHub-Sterne mit Azure Functions und dem SignalR-Service mithilfe von JavaScript anzeigt
 
-Mit Azure SignalR Service können Sie Ihrer Anwendung ganz einfach Echtzeitfunktionen hinzufügen. Azure Functions ist eine serverlose Plattform, mit der Sie Ihren Code ohne Verwaltung von Infrastruktur ausführen können. In dieser Schnellstartanleitung verwenden Sie JavaScript, um eine serverlose Echtzeit-Chatanwendung mithilfe von SignalR Service und Functions zu erstellen.
+Mit Azure SignalR Service können Sie Ihrer Anwendung ganz einfach Echtzeitfunktionen hinzufügen. Azure Functions ist eine serverlose Plattform, mit der Sie Ihren Code ohne Verwaltung von Infrastruktur ausführen können. In dieser Schnellstartanleitung erfahren Sie, wie Sie mit SignalR Service und Azure Functions eine serverlose Anwendung mit JavaScript erstellen, um Nachrichten an Clients zu übertragen.
+
+> [!NOTE]
+> Sie können alle im Artikel erwähnten Codes von [GitHub](https://github.com/aspnet/AzureSignalR-samples/tree/main/samples/QuickStartServerless/javascript) abrufen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,46 +49,205 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
 
 Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr-howto-troubleshoot-guide.md), oder [informieren Sie uns](https://aka.ms/asrs/qsjs).
 
-[!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr-howto-troubleshoot-guide.md), oder [informieren Sie uns](https://aka.ms/asrs/qsjs).
+## <a name="setup-and-run-the-azure-function-locally"></a>Einrichten und Ausführen von Azure-Function auf einer lokalen Ebene
 
-## <a name="configure-and-run-the-azure-function-app"></a>Konfigurieren und Ausführen der Azure Functions-App
+1. Stellen Sie sicher, dass die Azure Function Core Tools installiert sind. Erstellen Sie ein leeres Verzeichnis und navigieren Sie über die Befehlszeile zum Verzeichnis.
 
-1. Bestätigen Sie im Browser, in dem das Azure-Portal geöffnet ist, dass die von Ihnen zuvor bereitgestellte SignalR-Dienstinstanz erfolgreich erstellt wurde, indem Sie nach ihrem Namen im Suchfeld oben im Portal suchen. Wählen Sie die Instanz aus, um sie zu öffnen.
+    ```bash
+    # Initialize a function project
+    func init --worker-runtime javascript
+    ```
 
-    ![Suchen nach der SignalR-Dienstinstanz](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
+2. Nachdem Sie ein Projekt initialisiert haben, müssen Sie die Funktionen erstellen. In diesem Beispiel müssen wir drei Funktionen erstellen.
 
-1. Wählen Sie **Schlüssel** aus, um die Verbindungszeichenfolgen für die SignalR-Dienstinstanz anzuzeigen.
+    1. Führen Sie den folgenden Befehl aus, um eine Funktion `index` zu erstellen, die eine Webseite für den Client hosten wird.
 
-1. Wählen Sie die primäre Verbindungszeichenfolge aus, und kopieren Sie diese.
+        ```bash
+        func new -n index -t HttpTrigger
+        ```
+        
+        Öffnen sie `index/index.js` und Kopieren Sie die folgenden Codes.
 
-    ![Screenshot: Hervorgehobene primäre Verbindungszeichenfolge](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+        ```javascript
+        var fs = require('fs').promises
+    
+        module.exports = async function (context, req) {
+            const path = context.executionContext.functionDirectory + '/../content/index.html'
+            try {
+                var data = await fs.readFile(path);
+                context.res = {
+                    headers: {
+                        'Content-Type': 'text/html'
+                    },
+                    body: data
+                }
+                context.done()
+            } catch (error) {
+                context.log.error(err);
+                context.done(err);
+            }
+        }
+        ```
+    
+    2. Erstellen Sie eine Funktion `negotiate` für Clients, um Zugriffstoken abzurufen.
+    
+        ```bash
+        func new -n negotiate -t SignalRNegotiateHTTPTrigger
+        ```
+        
+        Öffnen sie `negotiate/function.json` und Kopieren Sie die folgenden JSON Codes:
+    
+        ```json
+        {
+          "disabled": false,
+          "bindings": [
+            {
+              "authLevel": "anonymous",
+              "type": "httpTrigger",
+              "direction": "in",
+              "methods": [
+                "post"
+              ],
+              "name": "req",
+              "route": "negotiate"
+            },
+            {
+              "type": "http",
+              "direction": "out",
+              "name": "res"
+            },
+            {
+              "type": "signalRConnectionInfo",
+              "name": "connectionInfo",
+              "hubName": "serverless",
+              "connectionStringSetting": "AzureSignalRConnectionString",
+              "direction": "in"
+            }
+          ]
+        }
+        ```
+    
+    3. Erstellen Sie eine Funktion `broadcast` zum Übertragen von Nachrichten an alle Clients. Im Beispiel verwenden wir den Zeitauslöser, um Nachrichten in regelmäßigen Abständen zu übertragen.
+    
+        ```bash
+        func new -n broadcast -t TimerTrigger
+        ```
+    
+        Öffnen Sie `broadcast/function.json` und Kopieren Sie die folgenden Codes.
+    
+        ```json
+        {
+          "bindings": [
+            {
+              "name": "myTimer",
+              "type": "timerTrigger",
+              "direction": "in",
+              "schedule": "*/5 * * * * *"
+            },
+            {
+              "type": "signalR",
+              "name": "signalRMessages",
+              "hubName": "serverless",
+              "connectionStringSetting": "AzureSignalRConnectionString",
+              "direction": "out"
+            }
+          ]
+        }
+        ```
+    
+        Öffnen Sie `broadcast/index.js` und Kopieren Sie die folgenden Codes.
+    
+        ```javascript
+        var https = require('https');
+        
+        module.exports = function (context) {
+            var req = https.request("https://api.github.com/repos/azure/azure-signalr", {
+                method: 'GET',
+                headers: {'User-Agent': 'serverless'}
+            }, res => {
+                var body = "";
+        
+                res.on('data', data => {
+                    body += data;
+                });
+                res.on("end", () => {
+                    var jbody = JSON.parse(body);
+                    context.bindings.signalRMessages = [{
+                        "target": "newMessage",
+                        "arguments": [ `Current star count of https://github.com/Azure/azure-signalr is: ${jbody['stargazers_count']}` ]
+                    }]
+                    context.done();
+                });
+            }).on("error", (error) => {
+                context.log(error);
+                context.res = {
+                  status: 500,
+                  body: error
+                };
+                context.done();
+            });
+            req.end();
+        }    
+        ```
 
-1. Öffnen Sie in Ihrem Code-Editor den Ordner *src/chat/javascript* im geklonten Repository.
+3. Die Clientschnittstelle dieses Beispiels ist eine Webseite. Wir lesen den HTML-Inhalt aus der `content/index.html` in der Funktion `index` und erstellen eine neue Datei `index.html` im Verzeichnis `content`. Dann kopieren wir den folgendem Inhalt.
 
-1. Benennen Sie *local.settings.sample.json* in *local.settings.json* um.
+    ```html
+    <html>
+    
+    <body>
+      <h1>Azure SignalR Serverless Sample</h1>
+      <div id="messages"></div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.7/signalr.min.js"></script>
+      <script>
+        let messages = document.querySelector('#messages');
+        const apiBaseUrl = window.location.origin;
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl(apiBaseUrl + '/api')
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+          connection.on('newMessage', (message) => {
+            document.getElementById("messages").innerHTML = message;
+          });
+    
+          connection.start()
+            .catch(console.error);
+      </script>
+    </body>
+    
+    </html>
+    ```
 
-1. Fügen Sie in **local.settings.json** die Verbindungszeichenfolge in den Wert der **AzureSignalRConnectionString**-Einstellung ein. Speichern Sie die Datei .
+4. Der Vorgang ist jetzt fast abgeschlossen. Der letzte Schritt besteht darin, eine Verbindungszeichenfolge des SignalR Service auf die Azure-Function Einstellungen festzulegen.
 
-1. JavaScript-Funktionen werden in Ordnern organisiert. In jedem Ordner befinden sich zwei Dateien: *function.json* definiert die Bindungen, die in der Funktion verwendet werden, und *index.js* ist der Textkörper der Funktion. Es gibt zwei durch HTTP ausgelöste Funktionen in dieser Funktions-App:
+    1. Bestätigen Sie im Browser, in dem das Azure-Portal geöffnet ist, dass die von Ihnen zuvor bereitgestellte SignalR-Dienstinstanz erfolgreich erstellt wurde, indem Sie nach ihrem Namen im Suchfeld oben im Portal suchen. Wählen Sie die Instanz aus, um sie zu öffnen.
 
-    - **negotiate**: Verwendet die *SignalRConnectionInfo*-Eingabebindung, um gültige Verbindungsinformationen zu generieren und zurückzugeben.
-    - **messages**: Empfängt eine Chatnachricht im Anforderungstext und verwendet die *SignalR*-Ausgabebindung, um die Nachricht an alle verbundenen Clientanwendungen zu senden.
+        ![Suchen nach der SignalR-Dienstinstanz](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-1. Stellen Sie im Terminal sicher, dass Sie sich im Ordner *src/chat/javascript* befinden. Führen Sie die Funktions-App aus.
+    1. Wählen Sie **Schlüssel** aus, um die Verbindungszeichenfolgen für die SignalR-Dienstinstanz anzuzeigen.
+    
+        ![Screenshot: Hervorgehobene primäre Verbindungszeichenfolge](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+
+    1. Kopieren Sie die primäre Verbindungszeichenfolge. Führen Sie den folgenden Befehl aus.
+    
+        ```bash
+        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        ```
+    
+5. Führen Sie Azure-Function auf einer lokalen Ebene aus:
 
     ```bash
     func start
     ```
 
-    ![Erstellen des SignalR-Diensts](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
-    
-Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr-howto-troubleshoot-guide.md), oder [informieren Sie uns](https://aka.ms/asrs/qsjs).
+    Nachdem Azure-Function lokal ausgeführt wurde. Verwenden Sie Ihren Browser, um `http://localhost:7071/api/index` besuchen, und Sie können die aktuelle Startanzahl anzeigen. Und wenn Sie im GitHub einen Stern setzen oder entfernen, wird alle paar Sekunden eine Startanzahl aktualisiert.
 
-[!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
+    > [!NOTE]
+    > Die SignalR-Bindung benötigt Azure Storage, Sie können jedoch den lokalen Speicheremulator verwenden, wenn die Funktion lokal ausgeführt wird.
+    > Wenn Sie eine Fehlermeldung wie z. B. `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` erhalten haben, müssen Sie den [Speicheremulator](../storage/common/storage-use-emulator.md) herunterladen und aktivieren
 
-Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr-howto-troubleshoot-guide.md), oder [informieren Sie uns](https://aka.ms/asrs/qsjs).
+Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr-howto-troubleshoot-guide.md), oder [informieren Sie uns](https://aka.ms/asrs/qscsharp).
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
@@ -93,7 +255,14 @@ Treten Probleme auf? Verwenden Sie den [Leitfaden zur Problembehandlung](signalr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie eine serverlose Echtzeitanwendung in VS Code erstellt und ausgeführt. Im nächsten Schritt erfahren Sie mehr darüber, wie Sie Azure Functions aus VS Code bereitstellen.
+In diesem Schnellstart haben Sie eine lokale serverlose Echtzeitanwendung erstellt und ausgeführt. Erfahren Sie mehr darüber, wie Bindungen des SignalR-Service in Azure Functions verwendet werden.
+Als Nächstes erfahren Sie mehr über die bidirektionale Kommunikation zwischen den Clients und Azure Function mit dem SignalR Service.
+
+> [!div class="nextstepaction"]
+> [Bindungen des SignalR-Diensts für Azure Functions](../azure-functions/functions-bindings-signalr-service.md)
+
+> [!div class="nextstepaction"]
+> [Bidirektionale Kommunikation in Serverlos](https://github.com/aspnet/AzureSignalR-samples/tree/main/samples/BidirectionChat)
 
 > [!div class="nextstepaction"]
 > [Bereitstellen von Azure Functions mit VS Code](/azure/developer/javascript/tutorial-vscode-serverless-node-01)

@@ -1,17 +1,17 @@
 ---
 title: 'Schnellstart: Ihre erste Python-Abfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren der Resource Graph-Bibliothek für Python und zum Ausführen Ihrer ersten Abfrage aus.
-ms.date: 05/01/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: ffb58b301e850c3887b0a554788b243f2cf262f6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: aa64fb646e45c950dcade38ee7cec189b3501f9e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751659"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457408"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe von Python
 
@@ -67,7 +67,7 @@ Damit Python Azure Resource Graph abfragen kann, muss die Bibliothek hinzugefüg
 
 ## <a name="run-your-first-resource-graph-query"></a>Ausführen Ihrer ersten Resource Graph-Abfrage
 
-Nachdem die Python-Bibliotheken der Umgebung Ihrer Wahl hinzugefügt wurden, können Sie jetzt eine einfache Resource Graph-Abfrage ausprobieren. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit dem **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück.
+Nachdem die Python-Bibliotheken einer Umgebung Ihrer Wahl hinzugefügt wurden, können Sie jetzt eine einfache, abonnementbasierte Resource Graph-Abfrage testen. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit dem **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück. Verwenden Sie den Parameter `management_groups` mit `QueryRequest`, um nach [Verwaltungsgruppe](../management-groups/overview.md) abzufragen.
 
 1. Führen Sie Ihre erste Azure Resource Graph-Abfrage mit den installierten Bibliotheken und der `resources`-Methode aus:
 

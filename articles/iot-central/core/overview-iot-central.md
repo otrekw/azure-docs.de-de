@@ -7,13 +7,13 @@ ms.date: 04/19/2021
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: ed15d75836f3642622f963ac8c0185c1520bce2b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.custom: mvc, contperf-fy21q2, contperf-fy22q1
+ms.openlocfilehash: eb61a41cb7c7425c336145130cc61c76173f4ceb
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112281303"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652371"
 ---
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
 
@@ -25,17 +25,17 @@ In diesem Artikel werden folgende Punkte für IoT Central behandelt:
 
 - Typische Benutzerrollen in Verbindung mit einem Projekt.
 - Erstellung einer Anwendung
-- Herstellung einer Verbindung zwischen Ihren Geräten und Ihrer Anwendung
-- Verwaltung Ihrer Anwendung
-- Azure IoT Edge-Funktionen in IoT Central
-- Vorgehensweise zum Verbinden Ihrer auf der Azure IoT Edge-Runtime basierenden Geräte mit Ihrer Anwendung
+- Die Vorgehensweise zur Herstellung einer Verbindung zwischen Ihren Geräten und Ihrer Anwendung.
+- Die Vorgehensweise zur Integration Ihrer Anwendung in andere Dienste.
+- Die Vorgehensweise zur Verwaltung Ihrer Anwendung.
+- Preisoptionen.
 
 ## <a name="user-roles"></a>Benutzerrollen
 
 In der Dokumentation von IoT Central werden vier Benutzerrollen verwendet, die mit einer IoT Central-Anwendung interagieren:
 
 - Ein _Lösungsentwickler_ ist zuständig für das [Erstellen einer Anwendung](quick-deploy-iot-central.md), das [Konfigurieren von Regeln und Aktionen](quick-configure-rules.md) und das [Definieren von Integrationen mit anderen Diensten](quick-export-data.md) sowie für die weitere Anpassung der Anwendung für Operatoren und Geräteentwickler.
-- Ein _Operator_ [verwaltet die Geräte](howto-manage-devices.md), die mit der Anwendung verbunden sind.
+- Ein _Operator_ [verwaltet die Geräte](howto-manage-devices-individually.md), die mit der Anwendung verbunden sind.
 - Ein _Administrator_ kümmert sich um administrative Aufgaben – etwa um die [Verwaltung von Benutzern und Rollen](howto-administer.md) innerhalb der Anwendung.
 - Ein _Geräteentwickler_ [erstellt den Code, der auf einem mit der Anwendung verbundenen Gerät](concepts-telemetry-properties-commands.md) oder [IoT Edge-Modul ausgeführt wird](concepts-iot-edge.md).
 
@@ -70,13 +70,13 @@ Jede [Gerätevorlage](howto-set-up-template.md) enthält Folgendes:
   - Die Befehle, die aus IoT Central aufgerufen werden.
 
 - Cloudeigenschaften, die nicht auf dem Gerät gespeichert werden
-- Anpassungen, Dashboards und Formulare, die Teil der IoT Central-Anwendung sind
+- Die Anpassungen, Formulare und Geräteansichten, die Bestandteil der IoT Central-Anwendung sind.
 
 Sie haben mehrere Möglichkeiten zum Erstellen von Gerätevorlagen:
 
 - Entwerfen Sie die Gerätevorlage in IoT Central, und implementieren Sie dann das entsprechende Gerätemodell in Ihrem Gerätecode.
 - Erstellen Sie ein Gerätemodell mit Visual Studio-Code, und veröffentlichen Sie es in einem Repository. Implementieren Sie den Gerätecode aus dem Modell, und verbinden Sie Ihr Gerät mit Ihrer IoT Central-Anwendung. IoT Central verwendet das Gerätemodell aus dem Repository und erstellt eine einfache Gerätevorlage für Sie.
-- Erstellen Sie ein Gerätemodell mit Visual Studio-Code. Implementieren Sie Ihren Gerätecode aus dem Modell. Importieren Sie das Gerätemodell manuell in Ihre IoT Central-Anwendung, und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die Ihre IoT Central-Anwendung benötigt.
+- Erstellen Sie ein Gerätemodell mit Visual Studio-Code. Implementieren Sie Ihren Gerätecode aus dem Modell. Importieren Sie das Gerätemodell manuell in Ihre IoT Central-Anwendung, und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Ansichten hinzu, die Ihre IoT Central-Anwendung benötigt.
 
 ### <a name="customize-the-ui"></a>Anpassen der Benutzeroberfläche
 
@@ -88,7 +88,7 @@ Sie können auch die Benutzeroberfläche der IoT Central-Anwendung für die Ope
 
 ## <a name="manage-your-devices"></a>Verwalten von Geräten
 
-Als Operator verwenden Sie die IoT Central-Anwendung zur [Verwaltung der Geräte](howto-manage-devices.md) in Ihrer IoT Central-Lösung. Bediener führen Aufgaben wie die folgenden aus:
+Als Operator verwenden Sie die IoT Central-Anwendung zur [Verwaltung der Geräte](howto-manage-devices-individually.md) in Ihrer IoT Central-Lösung. Bediener führen Aufgaben wie die folgenden aus:
 
 - Überwachen der mit der Anwendung verbundenen Geräte
 - Behandeln und Beheben von Problemen mit Geräten
@@ -100,7 +100,7 @@ Wie bei jeder skalierbaren IoT-Lösung ist eine strukturierte Geräteverwaltung 
 
 ### <a name="dashboards"></a>Dashboards
 
-Integrierte [Dashboards](./howto-set-up-template.md#generate-default-views) bieten eine anpassbare Benutzeroberfläche für die Überwachung von Geräteintegrität und -telemetrie. Beginnen Sie mit einem vorgefertigten Dashboard aus einer [Anwendungsvorlage](howto-use-app-templates.md), oder erstellen Sie eigene Dashboards, die auf die Anforderungen Ihrer Operatoren zugeschnitten sind. Dashboards können für alle Benutzer in Ihrer Anwendung freigegeben oder als privat konfiguriert werden.
+Beginnen Sie mit einem vorgefertigten Dashboard aus einer Anwendungsvorlage, oder erstellen Sie eigene Dashboards, die auf die Anforderungen Ihrer Operatoren zugeschnitten sind. Dashboards können für alle Benutzer in Ihrer Anwendung freigegeben oder als privat konfiguriert werden.
 
 ### <a name="rules-and-actions"></a>Regeln und Aktionen
 
@@ -108,7 +108,7 @@ Erstellen Sie [benutzerdefinierte Regeln](tutorial-create-telemetry-rules.md) au
 
 ### <a name="jobs"></a>Aufträge
 
-[Aufträge](howto-run-a-job.md) ermöglichen die Anwendung von Einzel- oder Massenupdates auf Geräte durch Festlegen von Eigenschaften oder Aufrufen von Befehlen.
+[Aufträge](howto-manage-devices-in-bulk.md) ermöglichen die Anwendung von Einzel- oder Massenupdates auf Geräte durch Festlegen von Eigenschaften oder Aufrufen von Befehlen.
 
 ## <a name="integrate-with-other-services"></a>Integration in andere Dienste
 
@@ -136,19 +136,6 @@ Sie können eine IoT Central-Anwendung mit einer kostenlosen siebentägigen Tes
 
 - Im Tarif *Free* erstellte Anwendungen sind sieben Tage lang kostenlos und unterstützen bis zu fünf Geräte. Sie können bis zum Ablauftermin jederzeit in Anwendungen mit Standard-Tarif konvertiert werden.
 - Mit dem Tarif *Standard* erstellte Anwendungen werden pro Gerät abgerechnet. Sie können zwischen **Standard 0**, **Standard 1** und **Standard 2** wählen. Die ersten beiden Geräte sind kostenlos. Weitere Informationen finden Sie unter [IoT Central – Preise](https://aka.ms/iotcentral-pricing).
-
-## <a name="quotas"></a>Kontingente
-
-Für jedes Azure-Abonnement gelten Standardkontingente, die den Umfang Ihrer IoT-Lösung beeinträchtigen könnten. Derzeit ist die Anzahl der Anwendungen, die Sie in einem Abonnement bereitstellen können, in IoT Central auf 10 begrenzt. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/).
-
-## <a name="known-issues"></a>Bekannte Probleme
-
-- Der fortlaufende Datenexport unterstützt das Avro-Format nicht (Inkompatibilität).
-- GeoJSON wird derzeit nicht unterstützt.
-- Kartenkachel wird derzeit nicht unterstützt.
-- Array-Schematypen werden nicht unterstützt.
-- Nur das C-Geräte-SDK und die Node.js-Geräte-SDKs und -Dienst-SDKs werden unterstützt.
-- IoT Central ist derzeit in den Regionen USA, Europa, Asien-Pazifik, Australien, Vereinigtes Königreich und Japan verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

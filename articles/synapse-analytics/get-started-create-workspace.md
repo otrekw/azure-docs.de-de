@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 4b7251be220c012ca51970863ac2eed55d46d711
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: cb00337446df3062fe640127a37adfb522e45345
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751146"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113300986"
 ---
 # <a name="creating-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
@@ -65,8 +65,14 @@ Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Arbeitsbereich ste
 
 Nachdem Ihr Azure Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglichkeiten zum Öffnen von Synapse Studio:
 
-* Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://portal.azure.com), und wählen Sie im Abschnitt **Übersicht** des Synapse-Arbeitsbereichs im Feld „Synapse Studio öffnen“ den Eintrag **Öffnen** aus.
-* Navigieren Sie zu `https://web.azuresynapse.net`, und melden Sie sich bei Ihrem Arbeitsbereich an.
+1. Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://portal.azure.com), und wählen Sie im Abschnitt **Übersicht** des Synapse-Arbeitsbereichs im Feld „Synapse Studio öffnen“ den Eintrag **Öffnen** aus.
+1. Navigieren Sie zu `https://web.azuresynapse.net`, und melden Sie sich bei Ihrem Arbeitsbereich an.
+
+    ![Anmelden beim Arbeitsbereich](./security/media/common/login-workspace.png)
+
+> [!NOTE]
+> Um sich bei Ihrem Arbeitsbereich anzumelden, gibt es zwei **Kontoauswahlmethoden**. Eine stammt aus dem **Azure-Abonnement** und die andere ist die **manuelle Eingabe**. Wenn Sie über die Synapse Azure-Rolle oder Azure-Rollen auf höherer Ebene verfügen, können Sie beide Methoden verwenden, um sich beim Arbeitsbereich anzumelden. Wenn Sie nicht über eine der zugehörigen Azure-Rollen verfügen und Ihnen eine RBAC-Rolle von Synapse gewährt wurde, können Sie sich nur mit der **manuellen Eingabe** beim Arbeitsbereich anmelden. Weitere Informationen zur rollenbasierten Zugriffssteuerung für Synapse finden Sie unter [Informationen zu der rollenbasierte Zugriffssteuerung von Synapse (RBAC)](./security/synapse-workspace-synapse-rbac.md).
+
 
 ## <a name="place-sample-data-into-the-primary-storage-account"></a>Platzieren von Beispieldaten im primären Speicherkonto
 In diesem Leitfaden zu den ersten Schritten verwenden Sie für viele Beispiele ein kleines Beispieldataset mit 100.000 Zeilen mit NYX Taxi-Daten. Sie beginnen damit, das Dataset im primären Speicherkonto zu platzieren, das Sie für den Arbeitsbereich erstellt haben.

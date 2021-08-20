@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 06/14/2021
 ms.author: jeedes
-ms.openlocfilehash: f1e6cd222c9ee8f40f81d4db3750956e8e698e3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81d38170c621ee949d7089ffb1149a4a47aa2e67
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97607668"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200453"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit TextMagic
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie TextMagic in Azure Active Directory (Az
 * Steuern Sie in Azure AD, wer Zugriff auf TextMagic hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei TextMagic anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,18 +44,18 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
-## <a name="adding-textmagic-from-the-gallery"></a>Hinzufügen von TextMagic aus dem Katalog
+## <a name="add-textmagic-from-the-gallery"></a>Hinzufügen von TextMagic aus dem Katalog
 
 Zum Konfigurieren der Integration von TextMagic in Azure AD müssen Sie TextMagic aus dem Katalog zu der Liste der verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **TextMagic** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **TextMagic** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-textmagic"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für TextMagic
+## <a name="configure-and-test-azure-ad-sso-for-textmagic"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für TextMagic
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit TextMagic mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in TextMagic eingerichtet werden.
 
@@ -74,15 +72,15 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **TextMagic** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **TextMagic** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** den folgenden Schritt aus:
 
-    Geben Sie im Textfeld **Bezeichner** eine URL ein: `https://my.textmagic.com/saml/metadata`.
+    Geben Sie im Textfeld **Bezeichner** die URL `https://my.textmagic.com/saml/metadata` ein.
 
 5. Die TextMagic-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. **nameidentifier** ist hier **user.userprincipalname** zugeordnet. Die TextMagic-Anwendung erwartet, dass **nameidentifier** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher entsprechend ändern, indem Sie auf das Symbol **Bearbeiten** klicken.
 
@@ -124,18 +122,12 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste den Eintrag **TextMagic** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="configure-textmagic-sso"></a>Konfigurieren des einmaligen Anmeldens für TextMagic
+## <a name="configure-textmagic-sso"></a>Konfigurieren des einmaligen Anmeldens für TextMagic
 
 1. Wenn Sie die Konfiguration in TextMagic automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
@@ -149,11 +141,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 4. Wählen Sie unter dem Benutzernamen **Kontoeinstellungen** aus.
 
-    ![Screenshot der ausgewählten Option „Kontoeinstellungen“ für den Benutzer](./media/textmagic-tutorial/config1.png)
+    ![Screenshot der ausgewählten Option „Kontoeinstellungen“ für den Benutzer](./media/textmagic-tutorial/account.png)
 
 5. Klicken Sie auf die Registerkarte **Single Sign-On (SSO)** (Einmaliges Anmelden (SSO)), und füllen Sie folgende Felder aus:  
 
-    ![Screenshot der Registerkarte „Einmaliges Anmelden“ zum Eingeben der beschriebenen Werte](./media/textmagic-tutorial/config2.png)
+    ![Screenshot der Registerkarte „Einmaliges Anmelden“ zum Eingeben der beschriebenen Werte](./media/textmagic-tutorial/settings.png)
 
     a. Fügen Sie in das Textfeld **Identity Provider Entity ID** (Entitäts-ID des Identitätsanbieters) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -167,21 +159,16 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="create-textmagic-test-user"></a>Erstellen eines TextMagic-Testbenutzers
 
-Die Anwendung unterstützt die **Just-in-Time-Benutzerbereitstellung**. Nach der Authentifizierung werden in der Anwendung automatisch Benutzer erstellt. Sie müssen die Informationen nur einmal beim ersten Anmelden eingeben, um ein Unterkonto in Ihrem System zu aktivieren.
-Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung.
+In diesem Abschnitt wird in TextMagic ein Benutzer namens B. Simon erstellt. TextMagic unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in TextMagic vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-Wenn Sie im Zugriffsbereich auf die Kachel „TextMagic“ klicken, sollten Sie automatisch bei der TextMagic-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der TextMagic-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „TextMagic“ klicken, sollten Sie automatisch bei der TextMagic-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [TextMagic mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+Nach dem Konfigurieren von TextMagic können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

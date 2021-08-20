@@ -1,21 +1,21 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: azure-communication-services
 author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a015ba06be6a10985a4771e842a6d910dd4cd9ab
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a6fc7a8419c3c4b6173771c898a1a4331d3c5874
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108157537"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201067"
 ---
 Das **Hero-Beispiel für Gruppenanrufe** von Azure Communication Services veranschaulicht, wie das Communication Services Calling Web-SDK für Anrufe verwendet werden kann, um eine Benutzeroberfläche für Gruppenanrufe zu erstellen.
 
@@ -23,7 +23,7 @@ In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie das Beispiel funk
 
 ## <a name="download-code"></a>Code herunterladen
 
-Suchen Sie das Projekt für dieses Beispiel auf [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero). Eine Version des Beispiels mit [Teams-Interoperabilität](../../concepts/teams-interop.md) kann in einer separaten [Verzweigung](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/teams-interop) gefunden werden.
+Suchen Sie das Projekt für dieses Beispiel auf [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero). Eine Version des Beispiels, die Funktionen enthält und sich derzeit in der öffentlichen Vorschauversion, wie z. B. [Teams Interop](../../concepts/teams-interop.md) und [Anrufaufzeichnung](../../concepts/voice-video-calling/call-recording.md) befindet, finden Sie in einer separaten [Verzweigung](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/public-preview).
 
 ## <a name="overview"></a>Übersicht
 
@@ -58,7 +58,7 @@ Unten sind weitere Informationen zu den Voraussetzungen und Schritten zum Einric
 - [Node.js (12.18.4 und höher)](https://nodejs.org/en/download/)
 - [Visual Studio (2019 und höher)](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (Stellen Sie sicher, dass Sie die Version installieren, die Ihrer Visual Studio-Instanz entspricht (32 oder 64 Bit).)
-- Eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure Communication Services-Ressource](../../quickstarts/create-communication-resource.md). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für diese Schnellstartanleitung aufzeichnen.
+- Eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](../../quickstarts/create-communication-resource.md). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für diese Schnellstartanleitung aufzeichnen.
 
 ## <a name="locally-deploy-the-service--client-applications"></a>Lokales Bereitstellen der Dienst- und der Clientanwendung
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: effab14316c4a959f22467b9cc50984b6571da55
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: f01b75cac9fba9e0975882560920f6c6ceee7dc7
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107872153"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136641"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>Schnellstart: Verwenden von Azure Cache for Redis mit .NET Framework
 
@@ -53,7 +53,7 @@ Ersetzen Sie `<access-key>` durch den Primärschlüssel für Ihren Cache.
 
 Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**.
 
-Wählen Sie **Konsolen-App (.NET Framework)** und **Weiter** aus, um Ihre App zu konfigurieren. Geben Sie einen **Projektnamen** ein, vergewissern Sie sich, dass **.NET Framework 4.6.1** oder höher ausgewählt ist, und klicken Sie dann auf **Erstellen**, um eine neue Konsolenanwendung zu erstellen.
+Wählen Sie **Konsolen-App (.NET Framework)** und **Weiter** aus, um Ihre App zu konfigurieren. Geben Sie einen **Projektnamen** ein, vergewissern Sie sich, dass das **.NET Framework 4.6.1** oder höher ausgewählt ist, und klicken Sie dann auf **Erstellen**, um eine neue Konsolenanwendung zu erstellen.
 
 <a name="configure-the-cache-clients"></a>
 
@@ -61,7 +61,7 @@ Wählen Sie **Konsolen-App (.NET Framework)** und **Weiter** aus, um Ihre App zu
 
 In diesem Abschnitt konfigurieren Sie die Konsolenanwendung zur Verwendung des [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)-Clients für .NET.
 
-Klicken Sie in Visual Studio auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**, und führen Sie im Fenster der Paket-Manager-Konsole den folgenden Befehl aus.
+Wählen Sie in Visual Studio das **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole** und führen Sie im Fenster der Paket-Manager-Konsole den folgenden Befehl aus.
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -85,7 +85,7 @@ Nach Abschluss der Installation kann der *StackExchange.Redis*-Cacheclient für 
 </configuration>
 ```
 
-Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und klicken Sie anschließend auf **Verweis hinzufügen**. Fügen Sie einen Verweis auf die Assembly **System.Configuration** hinzu.
+Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise** und wählen Sie anschließend **Einen Verweis hinzufügen** aus. Fügen Sie einen Verweis auf die Assembly **System.Configuration** hinzu.
 
 Fügen Sie der Datei *Program.cs* die folgenden `using`-Anweisungen hinzu:
 
@@ -325,7 +325,7 @@ static void Main(string[] args)
 }
 ```
 
-Für Azure Cache for Redis kann eine konfigurierbare Anzahl von Datenbanken (standardmäßig 16) konfiguriert werden, mit denen die Daten innerhalb einer Azure Cache for Redis-Instanz logisch getrennt werden können. Der Code stellt eine Verbindung mit der Standarddatenbank (DB 0) her. Weitere Informationen finden Sie unter [Was sind Redis-Datenbanken?](cache-development-faq.md#what-are-redis-databases) und [Standardmäßige Redis-Serverkonfiguration](cache-configure.md#default-redis-server-configuration).
+Für Azure Cache for Redis kann eine konfigurierbare Anzahl von Datenbanken (standardmäßig 16) konfiguriert werden, mit denen die Daten innerhalb einer Azure Cache for Redis-Instanz logisch getrennt werden können. Der Code stellt eine Verbindung mit der Standarddatenbank (DB 0) her. Weitere Informationen finden Sie unter [Was sind Redis-Datenbanken?](cache-development-faq.yml#what-are-redis-databases-) und [Standardmäßige Redis-Serverkonfiguration](cache-configure.md#default-redis-server-configuration).
 
 Cacheelemente können mit den Methoden `StringSet` und `StringGet` gespeichert und abgerufen werden.
 
@@ -344,7 +344,7 @@ Azure Cache for Redis kann sowohl .NET-Objekte als auch primitive Datentypen zwi
 
 Eine einfache Möglichkeit zum Serialisieren von Objekten stellt die Verwendung der `JsonConvert`-Serialisierungsmethoden in [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) und die Serialisierung in und aus JSON dar. In diesem Abschnitt fügen Sie dem Cache ein .NET-Objekt hinzu.
 
-Klicken Sie in Visual Studio auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**, und führen Sie im Fenster der Paket-Manager-Konsole den folgenden Befehl aus.
+Wählen Sie in Visual Studio das **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole** und führen Sie im Fenster der Paket-Manager-Konsole den folgenden Befehl aus.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -402,16 +402,16 @@ Falls Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die in die
 Wenn Sie die Schnellstart-Beispielanwendung nicht mehr benötigen, können Sie die in dieser Schnellstartanleitung erstellten Azure-Ressourcen löschen, um das Anfallen von Kosten zu vermeiden. 
 
 > [!IMPORTANT]
-> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen, statt die Ressourcengruppe zu löschen.
+> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln auf der linken Seite löschen, statt die Ressourcengruppe zu löschen.
 >
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 
-Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *TestResources* verwendet. Klicken Sie in Ihrer Ressourcengruppe in der Ergebnisliste auf **...** und dann auf **Ressourcengruppe löschen**.
+Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *TestResources* verwendet. Klicken Sie in der Ergebnisliste in Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
 
 ![Löschen](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
-Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie den Namen der entsprechenden Ressourcengruppe ein, und klicken Sie auf **Löschen**.
+Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung den Namen Ihrer Ressourcengruppe ein, und klicken Sie auf **Löschen**.
 
 Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 

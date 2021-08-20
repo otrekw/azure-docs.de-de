@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/15/2020
+ms.date: 06/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4f8b23d8f717e430e865e391a40692773f0beace
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell, subject-rbac-steps
+ms.openlocfilehash: 7f5ae30f7bb476b5bc3c76c2a22d4dda2fc402d8
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776391"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966318"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Tutorial: Verwenden einer vom Windows-VM-System zugewiesenen verwalteten Identität für den Zugriff auf Azure Storage über SAS-Anmeldeinformationen
 
@@ -75,14 +75,18 @@ Später werden wir eine Datei in das neue Speicherkonto hoch- und daraus herunte
 Azure Storage unterstützt die Azure AD-Authentifizierung nicht nativ.  Sie können mit einer verwalteten Identität jedoch eine Speicher-SAS von Resource Manager abrufen und mit dieser SAS auf den Speicher zugreifen.  In diesem Schritt gewähren Sie der systemseitig zugewiesenen verwalteten Identität Ihres virtuellen Computers Zugriff auf die SAS des Speicherkontos.   
 
 1. Navigieren Sie zurück zum neu erstellten Speicherkonto.   
-2. Klicken Sie im linken Bereich auf den Link **Zugriffssteuerung (IAM)** .  
-3. Klicken Sie oben auf der Seite auf **+ Rollenzuweisung hinzufügen**, um dem virtuellen Computer eine neue Rollenzuweisung hinzuzufügen.
-4. Legen Sie **Rolle** rechts auf der Seite auf „Speicherkontomitwirkender“ fest.  
-5. Legen Sie in der nächsten Dropdownliste **Zugriff zuweisen zu** auf die Ressource „Virtueller Computer“ fest.  
-6. Stellen Sie im nächsten Schritt sicher, dass das richtige Abonnement in der Dropdownliste **Abonnement** aufgeführt wird, und legen Sie dann **Ressourcengruppe** auf „Alle Ressourcengruppen“ fest.  
-7. Wählen Sie schließlich unter **Auswählen** in der Dropdownliste Ihren virtuellen Windows-Computer aus, und klicken Sie dann auf **Speichern**. 
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um die Seite „Rollenzuweisung hinzufügen“ zu öffnen.
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | Mitwirkender von Speicherkonto |
+    | Zugriff zuweisen zu | Verwaltete Identität |
+    | Systemseitig zugewiesen | Virtual Machine |
+    | Select | &lt;Ihr virtueller Windows-Computer&gt; |
 
-    ![Alternativer Bildtext](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens zum Aufrufen von Azure Resource Manager 
 

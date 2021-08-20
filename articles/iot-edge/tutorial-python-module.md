@@ -10,12 +10,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d6a95dae91ef3e6aa7d39cf8af51c355a87ea73a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4f1b9c225d0f28e7e7c6c222fcca475c05dd26fd
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462727"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438070"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-using-linux-containers"></a>Tutorial: Entwickeln und Bereitstellen eines Python-IoT Edge-Moduls mit Linux-Containern
 
@@ -99,6 +99,9 @@ Die IoT Edge-Erweiterung versucht, Ihre Anmeldeinformationen für die Containerr
 1. Öffnen Sie im VS Code-Explorer die Datei vom Typ **.env**.
 2. Aktualisieren Sie die Felder mit den Werten für **Benutzername** und **Kennwort**, die Sie aus der Azure-Containerregistrierung kopiert haben.
 3. Speichern Sie die ENV-Datei.
+
+>[!NOTE]
+>In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen eine Authentifizierungsoption mit den geringsten Rechten wie Dienstprinzipale auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Azure Container Registry](production-checklist.md#manage-access-to-your-container-registry).
 
 ### <a name="select-your-target-architecture"></a>Auswählen Ihrer Zielarchitektur
 

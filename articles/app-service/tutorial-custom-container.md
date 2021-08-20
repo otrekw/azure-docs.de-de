@@ -2,17 +2,17 @@
 title: 'Tutorial: Erstellen und Ausführen eines benutzerdefinierten Images in Azure App Service'
 description: In dieser Schritt-für-Schritt-Anleitung wird erläutert, wie Sie ein benutzerdefiniertes Linux- oder Windows-Image erstellen, das Image in Azure Container Registry pushen und es dann in Azure App Service bereitstellen. Erfahren Sie, wie Sie benutzerdefinierte Software in einem benutzerdefinierten Container zu App Service migrieren.
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 07/16/2021
 ms.author: msangapu
 keywords: Azure App Service, Web-App, Linux, Windows, Docker, Container
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 0770b46a60f497d3a3da772e7be13ece0526eca0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 97246083b783fe98b4021a6f9bb882d40e79d449
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765699"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114386988"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Migrieren benutzerdefinierter Software zu Azure App Service mithilfe eines benutzerdefinierten Containers
 
@@ -143,7 +143,7 @@ Konfigurieren Sie auf der Registerkarte **Grundlagen** die Einstellungen entspre
 | ----------------- | ------------ | ----|
 |**Abonnement**| Vergewissern Sie sich, dass das richtige Abonnement ausgewählt ist. |  |
 |**Ressourcengruppe**| Wählen Sie **Neu erstellen** aus, geben Sie **myResourceGroup** ein, und klicken Sie auf **OK**. |  |
-|**Name**| Geben Sie einen eindeutigen Namen ein. | Die URL der Web-App lautet `http://<app-name>.azurewebsites.net`, wobei `<app-name>` der Name Ihrer App ist. |
+|**Name**| Geben Sie einen eindeutigen Namen ein. | Die URL der Web-App lautet `https://<app-name>.azurewebsites.net`, wobei `<app-name>` der Name Ihrer App ist. |
 |**Veröffentlichen**| Docker-Container | |
 |**Betriebssystem**| Windows | |
 |**Region**| Europa, Westen | |
@@ -216,12 +216,12 @@ Für Azure App Service wird die Containertechnologie von Docker genutzt, um sowo
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines benutzerdefinierten Images, wenn kein integriertes Image Ihre Anforderungen erfüllt
-> * Pushen des benutzerdefinierten Images in eine private Containerregistrierung in Azure
-> * Ausführen des benutzerdefinierten Images in App Service
+> * Das Übertragen eines Docker-Images an Azure Container Registry mithilfe eines Push-Vorgangs
+> * Das Ausführen des benutzerdefinierten Images in App Service
 > * Konfigurieren von Umgebungsvariablen
-> * Aktualisieren und erneutes Bereitstellen des Images
+> * Abrufen eines Images in App Service mithilfe einer verwalteten Identität
 > * Zugreifen auf Diagnoseprotokolle
+> * Das Aktivieren von CI/CD für App Service aus der Azure Container Registry
 > * Herstellen einer Verbindung mit dem Container per SSH
 
 Bei diesem Tutorial fällt in Ihrem Azure-Konto eine geringfügige Gebühr für die Containerregistrierung an. Wird der Container länger als einen Monat gehostet, können weitere Kosten anfallen.
@@ -317,10 +317,10 @@ ENTRYPOINT ["init.sh"]
 1. Testen Sie, ob der Build funktioniert, indem Sie den Docker-Container lokal ausführen:
 
     ```bash
-    docker run -p 8000:8000 appsvc-tutorial-custom-image
+    docker run -it -p 8000:8000 appsvc-tutorial-custom-image
     ```
     
-    Mit diesem [`docker run`](https://docs.docker.com/engine/reference/commandline/run/)-Befehl wird mit dem Argument `-p` der Port gefolgt vom Namen des Images angegeben. 
+    Mit diesem [`docker run`](https://docs.docker.com/engine/reference/commandline/run/)-Befehl wird mit dem Argument `-p` der Port gefolgt vom Namen des Images angegeben. Sie können`Ctrl+C` mit `-it` beenden.
     
     > [!TIP]
     > Wenn Sie Windows verwenden und der Fehler „*standard_init_linux.go:211: exec user process caused "Datei oder Verzeichnis nicht vorhanden"* “ angezeigt wird, enthält die Datei *init.sh* CRLF-Zeilenenden anstelle der erwarteten LF-Zeilenenden. Dieser Fehler tritt auf, wenn Sie Git zum Klonen des Beispielrepositorys verwendet, aber den Parameter `--config core.autocrlf=input` ausgelassen haben. In diesem Fall klonen Sie das Repository erneut mit dem Argument „--config“. Der Fehler wird möglicherweise auch angezeigt, wenn Sie *init.sh* bearbeitet und mit CRLF-Zeilenenden gespeichert haben. Speichern Sie in diesem Fall die Datei nur mit LF-Zeilenenden erneut.
@@ -336,7 +336,7 @@ In diesem Abschnitt und den nachfolgenden Abschnitten stellen Sie Ressourcen in 
 Führen Sie den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen:
 
 ```azurecli-interactive
-az group create --name AppSvc-DockerTutorial-rg --location westus2
+az group create --name myResourceGroup --location westeurope
 ```
 
 Sie können den Wert `--location` ändern, um eine Region in Ihrer Nähe anzugeben.
@@ -348,7 +348,7 @@ In diesem Abschnitt pushen Sie das Image in Azure Container Registry. Von dort k
 1. Führen Sie den Befehl [`az acr create`](/cli/azure/acr#az_acr_create) aus, um eine Azure Container Registry-Instanz zu erstellen:
 
     ```azurecli-interactive
-    az acr create --name <registry-name> --resource-group AppSvc-DockerTutorial-rg --sku Basic --admin-enabled true
+    az acr create --name <registry-name> --resource-group myResourceGroup --sku Basic --admin-enabled true
     ```
     
     Ersetzen Sie `<registry-name>` durch einen geeigneten Namen für die Registrierung. Der Name darf nur Buchstaben und Ziffern enthalten und muss in Azure eindeutig sein.
@@ -356,7 +356,7 @@ In diesem Abschnitt pushen Sie das Image in Azure Container Registry. Von dort k
 1. Führen Sie den Befehl [`az acr show`](/cli/azure/acr#az_acr_show) aus, um Anmeldeinformationen für die Registrierung abzurufen:
 
     ```azurecli-interactive
-    az acr credential show --resource-group AppSvc-DockerTutorial-rg --name <registry-name>
+    az acr credential show --resource-group myResourceGroup --name <registry-name>
     ```
     
     Die JSON-Ausgabe dieses Befehls enthält zwei Kennwörter sowie den Benutzernamen der Registrierung.
@@ -403,7 +403,7 @@ Zum Bereitstellen eines Containers in Azure App Service erstellen Sie zunächst 
 1. Erstellen Sie mithilfe des Befehls [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) einen App Service-Plan:
 
     ```azurecli-interactive
-    az appservice plan create --name AppSvc-DockerTutorial-plan --resource-group AppSvc-DockerTutorial-rg --is-linux
+    az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
     ```
 
     Ein App Service-Plan entspricht dem virtuellen Computer, der die Web-App hostet. Standardmäßig verwendet der vorherige Befehl den preisgünstigen [B1-Tarif](https://azure.microsoft.com/pricing/details/app-service/linux/), bei dem der erste Monat kostenlos ist. Sie können den Tarif mit dem Parameter `--sku` steuern.
@@ -411,7 +411,7 @@ Zum Bereitstellen eines Containers in Azure App Service erstellen Sie zunächst 
 1. Erstellen Sie die Web-App mithilfe des Befehls [`az webpp create`](/cli/azure/webapp#az_webapp_create):
 
     ```azurecli-interactive
-    az webapp create --resource-group AppSvc-DockerTutorial-rg --plan AppSvc-DockerTutorial-plan --name <app-name> --deployment-container-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
+    az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```
     
     Ersetzen Sie `<app-name>` durch einen Namen für die Web-App, der innerhalb von Azure eindeutig sein muss. Ersetzen Sie außerdem `<registry-name>` durch den Namen Ihrer Registrierung aus dem vorherigen Abschnitt.
@@ -419,17 +419,17 @@ Zum Bereitstellen eines Containers in Azure App Service erstellen Sie zunächst 
 1. Verwenden Sie [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set), um die Umgebungsvariable `WEBSITES_PORT` wie vom App-Code erwartet festzulegen: 
 
     ```azurecli-interactive
-    az webapp config appsettings set --resource-group AppSvc-DockerTutorial-rg --name <app-name> --settings WEBSITES_PORT=8000
+    az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_PORT=8000
     ```
 
     Ersetzen Sie `<app-name>` durch den Namen, den Sie im vorherigen Schritt verwendet haben.
     
     Weitere Informationen zu dieser Umgebungsvariablen finden Sie in der [Infodatei im GitHub-Repository des Beispiels](https://github.com/Azure-Samples/docker-django-webapp-linux).
 
-1. Aktivieren Sie mithilfe des Befehls [`az webapp identity assign`](/cli/azure/webapp/identity#az_webapp_identity-assign) eine [verwaltete Identität](./overview-managed-identity.md) für die Web-App:
+1. Aktivieren Sie mithilfe des Befehls [`az webapp identity assign`](/cli/azure/webapp/identity#az_webapp_identity-assign) eine [ dem System zugewiesene verwaltete Identität](./overview-managed-identity.md) für die Web-App:
 
     ```azurecli-interactive
-    az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
+    az webapp identity assign --resource-group myResourceGroup --name <app-name> --query principalId --output tsv
     ```
 
     Ersetzen Sie `<app-name>` durch den Namen, den Sie im vorherigen Schritt verwendet haben. Die Ausgabe des Befehls (gefiltert nach den Argumenten `--query` und `--output`) ist der Dienstprinzipal der zugewiesenen Identität, den Sie in Kürze verwenden.
@@ -442,10 +442,10 @@ Zum Bereitstellen eines Containers in Azure App Service erstellen Sie zunächst 
     az account show --query id --output tsv
     ``` 
 
-1. Erteilen Sie der Web-App die Berechtigung für den Zugriff auf die Containerregistrierung:
+1. Erteilen Sie der verwalteten Identität die Berechtigung für den Zugriff auf die Containerregistrierung:
 
     ```azurecli-interactive
-    az role assignment create --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourceGroups/AppSvc-DockerTutorial-rg/providers/Microsoft.ContainerRegistry/registries/<registry-name> --role "AcrPull"
+    az role assignment create --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/<registry-name> --role "AcrPull"
     ```
 
     Ersetzen Sie die folgenden Werte:
@@ -453,7 +453,25 @@ Zum Bereitstellen eines Containers in Azure App Service erstellen Sie zunächst 
     - `<registry-name>` durch den Namen Ihrer Containerregistrierung
     - `<subscription-id>` durch die vom Befehl `az account show` abgerufenen Abonnement-ID
 
-Weitere Informationen zu diesen Berechtigungen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure?](../role-based-access-control/overview.md). 
+    Weitere Informationen zu diesen Berechtigungen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung von Azure?](../role-based-access-control/overview.md).
+
+1. Konfigurieren Sie Ihre App so, dass sie die verwaltete Identität zum Abrufen aus der Azure Container Registry verwendet.
+
+    ```azurecli-interactive
+    az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<registry-name>/config/web --set properties.acrUseManagedIdentityCreds=True
+    ```
+    
+    Ersetzen Sie die folgenden Werte:
+    - `<subscription-id>` durch die vom Befehl `az account show` abgerufenen Abonnement-ID.
+    - `<registry-name>` durch den Namen Ihrer Containerregistrierung.
+
+    > [!TIP]
+    > Wenn Ihre App eine vom [Benutzer zugewiesene verwaltete Identität](overview-managed-identity.md#add-a-user-assigned-identity) verwendet, müssen Sie eine zusätzliche `AcrUserManagedIdentityID` Eigenschaft festlegen, um ihre Client-ID anzugeben:
+    >
+    > ```azurecli-interactive
+    > clientId=$(az identity show --resource-group <group-name> --name <identity-name> --query clientId --output tsv)
+    > az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<registry-name>/config/web --set properties.AcrUserManagedIdentityID=$clientId
+    > ```
 
 ## <a name="deploy-the-image-and-test-the-app"></a>Bereitstellen des Images und Testen der App
 
@@ -462,27 +480,79 @@ Sie können diese Schritte ausführen, sobald das Image in die Containerregistri
 1. Verwenden Sie den Befehl [`az webapp config container set`](/cli/azure/webapp/config/container#az_webapp_config_container_set), um die für die Web-App bereitzustellende Containerregistrierung und das dazugehörige Image anzugeben:
 
     ```azurecli-interactive
-    az webapp config container set --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-custom-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest --docker-registry-server-url https://<registry-name>.azurecr.io
+    az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest --docker-registry-server-url https://<registry-name>.azurecr.io
     ```
     
-    Ersetzen Sie `<app_name>` durch den Namen Ihrer Web-App und `<registry-name>` an zwei Stellen durch den Namen Ihrer Registrierung. 
+    Ersetzen Sie `<app-name>` durch den Namen Ihrer Web-App und `<registry-name>` an zwei Stellen durch den Namen Ihrer Registrierung. 
 
     - Bei Verwendung einer anderen Registrierung als Docker Hub (wie in diesem Beispiel gezeigt) muss `--docker-registry-server-url` das Format `https://` haben, gefolgt vom vollqualifizierten Domänennamen der Registrierung.
     - Eine Meldung mit dem Hinweis, dass für den Zugriff auf Azure Container Registry keine Anmeldeinformationen angegeben wurden und dass versucht wird, diese nachzuschlagen, bedeutet, dass Azure die verwaltete Identität der App für die Authentifizierung bei der Containerregistrierung verwendet, anstelle nach Benutzername und Kennwort zu fragen.
     - Wird der Fehler „AttributeError: 'NoneType' object has no attribute 'reserved'“ (AttributeError: Das NoneType-Objekt hat kein Attribut 'reserved'.) angezeigt, vergewissern Sie sich, ob `<app-name>` korrekt ist.
 
     > [!TIP]
-    > Sie können die Containereinstellungen der Web-App jederzeit mit dem Befehl `az webapp config container show --name <app-name> --resource-group AppSvc-DockerTutorial-rg`abrufen. Das Image wird in der Eigenschaft `DOCKER_CUSTOM_IMAGE_NAME` angegeben. Wenn die Web-App über Azure DevOps oder Azure Resource Manager-Vorlagen bereitgestellt wird, kann das Image auch in einer Eigenschaft mit dem Namen `LinuxFxVersion` angezeigt werden. Beide Eigenschaften dienen demselben Zweck. Sind beide in der Web-App-Konfiguration vorhanden, hat `LinuxFxVersion` Vorrang.
+    > Sie können die Containereinstellungen der Web-App jederzeit mit dem Befehl `az webapp config container show --name <app-name> --resource-group myResourceGroup`abrufen. Das Image wird in der Eigenschaft `DOCKER_CUSTOM_IMAGE_NAME` angegeben. Wenn die Web-App über Azure DevOps oder Azure Resource Manager-Vorlagen bereitgestellt wird, kann das Image auch in einer Eigenschaft mit dem Namen `LinuxFxVersion` angezeigt werden. Beide Eigenschaften dienen demselben Zweck. Sind beide in der Web-App-Konfiguration vorhanden, hat `LinuxFxVersion` Vorrang.
 
 1. Nach Abschluss des Befehls `az webapp config container set` sollte die Web-App im Container in App Service ausgeführt werden.
 
-    Navigieren Sie zum Testen der App zu `http://<app-name>.azurewebsites.net`, und ersetzen Sie `<app-name>` durch den Namen Ihrer Web-App. Beim ersten Zugriff kann es einige Zeit dauern, bis die App antwortet, da App Service das gesamte Image aus der Registrierung abrufen muss. Aktualisieren Sie einfach die Seite, wenn für den Browser eine Zeitüberschreitung eintritt. Nach dem Pullen des anfänglichen Images werden nachfolgende Tests wesentlich schneller ausgeführt.
+    Navigieren Sie zum Testen der App zu `https://<app-name>.azurewebsites.net`, und ersetzen Sie `<app-name>` durch den Namen Ihrer Web-App. Beim ersten Zugriff kann es einige Zeit dauern, bis die App antwortet, da App Service das gesamte Image aus der Registrierung abrufen muss. Aktualisieren Sie einfach die Seite, wenn für den Browser eine Zeitüberschreitung eintritt. Nach dem Pullen des anfänglichen Images werden nachfolgende Tests wesentlich schneller ausgeführt.
 
     ![Erfolgreicher Test der Web-App in Azure](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
+## <a name="access-diagnostic-logs"></a>Zugreifen auf Diagnoseprotokolle
+
+Während Sie darauf warten, dass der App Service das Image abruft, ist es hilfreich, genau zu sehen, was der App Service durchführt, indem Sie die Containerprotokolle an Ihr Terminal streamen.
+
+1. Aktivieren Sie die Containerprotokollierung:
+
+    ```azurecli-interactive
+    az webapp log config --name <app-name> --resource-group myResourceGroup --docker-container-logging filesystem
+    ```
+    
+1. Aktivieren Sie den Protokolldatenstrom:
+
+    ```azurecli-interactive
+    az webapp log tail --name <app-name> --resource-group myResourceGroup
+    ```
+    
+    Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
+
+    Sie können die Protokolldateien auch im Browser unter `https://<app-name>.scm.azurewebsites.net/api/logs/docker` untersuchen.
+
+1. Um das Protokollstreaming jederzeit zu beenden, geben Sie `Ctrl+C` ein.
+
+## <a name="configure-continuous-deployment"></a>Konfigurieren von Continuous Deployment
+
+Ihre App Service-Anwendung kann das Containerimage jetzt sicher aus Ihrer privaten Containerregistrierung abrufen. Es ist jedoch nicht bekannt, wann dieses Image in Ihrer Registrierung aktualisiert wird. Jedes Mal, wenn Sie das aktualisierte Image per Push in die Registrierung bewegen, müssen Sie manuell einen Image-Abruf auslösen, indem Sie die App Service-Anwendung neu starten. In diesem Schritt aktivieren Sie CI/CD, sodass der App Service über ein neues Image benachrichtigt wird und automatisch einen Abruf auslöst.
+
+1. Aktivieren Sie CI/CD in dem App Service.
+
+    ```azurecli-interactive
+    az webapp deployment container config --enable-cd true --name <app-name> --resource-group myResourceGroup --query CI_CD_URL --output tsv
+    ```
+
+    `CI_CD_URL` ist eine URL, die den App Service für Sie generiert. Ihre Registrierung sollte diese URL verwenden, um den App Service darüber zu informieren, dass ein Image gepusht wurde. Der Webhook wird nicht tatsächlich für Sie erstellt.
+
+1. Erstellen Sie einen Webhook in Ihrer Containerregistrierung unter der Verwendung der CI_CD_URL, die Sie im letzten Schritt erhalten haben.
+
+    ```azurecli-interactive
+    az acr webhook create --name appserviceCD --registry <registry-name> --uri '<ci-cd-url>' --actions push --scope appsvc-tutorial-custom-image:latest
+    ```
+
+1. Um zu testen, ob Ihr Webhook ordnungsgemäß konfiguriert ist, pingen Sie den Webhook an, und überprüfen Sie, ob Sie die Antwort 200 OK erhalten.
+
+    ```azurecli-interactive
+    eventId=$(az acr webhook ping --name appserviceCD --registry <registry-name> --query id --output tsv)
+    az acr webhook list-events --name appserviceCD --registry <registry-name> --query "[?id=='$eventId'].eventResponseMessage"
+    ```
+
+    > [!TIP]
+    > Entfernen Sie den `--query` Parameter, um alle Informationen zu allen Webhook-Ereignissen anzuzeigen.
+    >
+    > Wenn Sie das Containerprotokoll streamen, sollte diese Meldung nach dem Webhook-Ping angezeigt werden: `Starting container for site`, da der Webhook den Neustart der App auslöst. Da Sie keine Aktualisierungen am Image vorgenommen haben, gibt es nichts Neues für den App Service abzurufen.
+
 ## <a name="modify-the-app-code-and-redeploy"></a>Ändern des App-Codes und erneutes Bereitstellen
 
-In diesem Abschnitt ändern Sie den Web-App-Code, erstellen den Container neu und pushen den Container anschließend in die Registrierung. App Service pullt das aktualisierte Image dann automatisch aus der Registrierung, um die ausgeführte Web-App zu aktualisieren.
+In diesem Abschnitt ändern Sie den Web-App-Code, erstellen das Image neu und pushen es anschließend in Ihre Containerregistrierung. App Service pullt das aktualisierte Image dann automatisch aus der Registrierung, um die ausgeführte Web-App zu aktualisieren.
 
 1. Öffnen Sie im lokalen Ordner *docker-django-webapp-linux* die Datei *app/templates/app/index.html*.
 
@@ -520,35 +590,7 @@ In diesem Abschnitt ändern Sie den Web-App-Code, erstellen den Container neu un
     docker push <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```
 
-1. Starten Sie die Web-App neu:
-
-    ```azurecli-interactive
-    az webapp restart --name <app_name> --resource-group AppSvc-DockerTutorial-rg
-    ```
-
-    Ersetzen Sie `<app_name>` durch den Namen Ihrer Web-App. Beim Neustart ruft App Service das aktualisierte Image aus der Containerregistrierung ab.
-
-1. Überprüfen Sie, ob das Update bereitgestellt wurde, indem Sie zu `http://<app-name>.azurewebsites.net` navigieren.
-
-## <a name="access-diagnostic-logs"></a>Zugreifen auf Diagnoseprotokolle
-
-1. Aktivieren Sie die Containerprotokollierung:
-
-    ```azurecli-interactive
-    az webapp log config --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-container-logging filesystem
-    ```
-    
-1. Aktivieren Sie den Protokolldatenstrom:
-
-    ```azurecli-interactive
-    az webapp log tail --name <app-name> --resource-group AppSvc-DockerTutorial-rg
-    ```
-    
-    Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
-
-    Sie können die Protokolldateien auch im Browser unter `https://<app-name>.scm.azurewebsites.net/api/logs/docker` untersuchen.
-
-1. Zum Beenden des Protokollstreamings können Sie jederzeit **STRG**+**C** drücken.
+1. Sobald der Image-Push abgeschlossen ist, benachrichtigt der Webhook den App Service über den Push, und App Service versucht, das aktualisierte Image per Pull zu abzurufen. Warten Sie einige Minuten, und überprüfen Sie dann, ob die Aktualisierung bereitgestellt wurde, indem Sie zu `https://<app-name>.azurewebsites.net` navigieren.
 
 ## <a name="connect-to-the-container-using-ssh"></a>Herstellen einer Verbindung mit dem Container per SSH
 
@@ -602,7 +644,7 @@ service ssh start
 In diesem Artikel erstellte Ressourcen können laufende Kosten verursachen. Zum Bereinigen der Ressourcen müssen Sie nur die Ressourcengruppe löschen, in der die Ressourcen enthalten sind:
 
 ```azurecli
-az group delete --name AppSvc-DockerTutorial-rg
+az group delete --name myResourceGroup
 ```
 
 ::: zone-end
@@ -611,16 +653,30 @@ az group delete --name AppSvc-DockerTutorial-rg
 
 Sie haben Folgendes gelernt:
 
+::: zone pivot="container-windows"
+
 > [!div class="checklist"]
 > * Bereitstellen eines benutzerdefinierten Images in einer privaten Containerregistrierung
 > * Bereitstellen des benutzerdefinierten Images in App Service
-::: zone pivot="container-linux"
 > * Aktualisieren und erneutes Bereitstellen des Images
-::: zone-end
 > * Zugreifen auf Diagnoseprotokolle
-::: zone pivot="container-linux"
 > * Herstellen einer Verbindung mit dem Container per SSH
+
 ::: zone-end
+
+::: zone pivot="container-linux"
+
+> [!div class="checklist"]
+> * Das Übertragen eines Docker-Images an Azure Container Registry mithilfe eines Push-Vorgangs
+> * Das Ausführen des benutzerdefinierten Images in App Service
+> * Konfigurieren von Umgebungsvariablen
+> * Abrufen eines Images in App Service mithilfe einer verwalteten Identität
+> * Zugreifen auf Diagnoseprotokolle
+> * Das Aktivieren von CI/CD für App Service aus der Azure Container Registry
+> * Herstellen einer Verbindung mit dem Container per SSH
+
+::: zone-end
+
 
 Im nächsten Tutorial erfahren Sie, wie Sie Ihrer App einen benutzerdefinierten DNS-Namen zuordnen:
 

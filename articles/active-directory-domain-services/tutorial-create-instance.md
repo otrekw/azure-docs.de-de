@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/01/2021
 ms.author: justinha
-ms.openlocfilehash: d0386368b0e6e65f35ad408efc2c420aaf8f1986
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 3ff8ffe39a84f9a1eeddd7de01ad8db44f73d52c
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438484"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112199176"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -94,7 +94,7 @@ Füllen Sie im Azure-Portal die Felder im Fenster *Grundlagen* aus, um eine verw
     >
     > Für die Verteilung auf Zonen für Azure AD DS fällt für Sie kein Konfigurationsaufwand an. Die Verteilung der Ressourcen auf Zonen wird von der Azure-Plattform automatisch durchgeführt. Weitere Informationen, z. B. zur regionalen Verfügbarkeit, finden Sie unter [Was sind Verfügbarkeitszonen in Azure?][availability-zones].
 
-1. Die **SKU** bestimmt Leistung und Sicherungshäufigkeit. Sie können die SKU nach der Erstellung der verwalteten Domäne ändern, wenn es Ihr Unternehmen erfordert oder sich die Anforderungen ändern. Weitere Informationen finden Sie unter [Verwaltungskonzepte für Benutzerkonten, Kennwörter und die Verwaltung in Azure Active Directory Domain Services][concepts-sku].
+1. Die **SKU** bestimmt die Leistung und Sicherungshäufigkeit. Sie können die SKU nach der Erstellung der verwalteten Domäne ändern, wenn es Ihr Unternehmen erfordert oder sich die Anforderungen ändern. Weitere Informationen finden Sie unter [Verwaltungskonzepte für Benutzerkonten, Kennwörter und die Verwaltung in Azure Active Directory Domain Services][concepts-sku].
 
     Wählen Sie für dieses Tutorial die SKU *Standard* aus.
 1. Eine *Gesamtstruktur* ist ein logisches Konstrukt, das von Active Directory Domain Services zum Gruppieren von Domänen verwendet wird. Eine verwaltete Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten.
@@ -158,7 +158,7 @@ Um Benutzer in der verwalteten Domäne authentifizieren zu können, benötigt Az
 >
 > Synchronisierte Anmeldeinformationen in Azure AD können nicht wiederverwendet werden, wenn Sie später eine verwaltete Domäne erstellen. Sie müssen die Kennworthashsynchronisierung erneut konfigurieren, um die Kennworthashes wieder zu speichern. VMs oder Benutzer, die zuvor in eine Domäne eingebunden wurden, können sich nicht sofort authentifizieren, weil Azure AD die Kennworthashes in der neuen verwalteten Domäne generieren und speichern muss.
 >
-> Weitere Informationen finden Sie unter [Prozess der Kennworthashsynchronisierung für Azure AD DS und Azure AD Connect][password-hash-sync-process].
+> [Die Azure AD Connect-Cloudsynchronisierung wird in Azure AD DS nicht unterstützt.][/azure/active-directory/cloud-sync/what-is-cloud-sync#comparison-between-azure-ad-connect-and-cloud-sync]. Lokale Benutzer müssen mithilfe von Azure AD Connect synchronisiert werden, damit der Zugriff auf in Domänen eingebundene VMs möglich ist. Weitere Informationen finden Sie unter [Prozess der Kennworthashsynchronisierung für Azure AD DS und Azure AD Connect][password-hash-sync-process].
 
 Zum Generieren und Speichern dieser Kennworthashes müssen für in Azure AD erstellte reine Cloudbenutzerkonten andere Schritte ausgeführt werden als für Benutzerkonten, die mit Azure AD Connect aus Ihrem lokalen Verzeichnis synchronisiert werden.
 

@@ -7,13 +7,13 @@ ms.reviewer: douglasl, jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
-ms.date: 02/18/2021
-ms.openlocfilehash: 182d9d08041b2d32253b935a5171be6d399c80a6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 07/05/2021
+ms.openlocfilehash: ae7f83e397822eb52a9fdfca7011d4228cb3b625
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679062"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436337"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Inkrementelles Laden von Daten aus mehreren Tabellen in SQL Server in Azure SQL-Datenbank mithilfe von PowerShell
 
@@ -815,10 +815,11 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die **ForE
 
 3. Suchen Sie in der Liste mit den Data Factorys nach Ihrer Data Factory, und wählen Sie sie aus, um die Seite **Data Factory** zu öffnen. 
 
-4. Wählen Sie auf der Seite **Data Factory** die Option **Erstellen und überwachen** aus, um Azure Data Factory auf einer separaten Registerkarte zu starten.
+4. Klicken Sie auf der Seite **Data Factory** auf der Kachel **Open Azure Data Factory Studio** (Azure Data Factory Studio öffnen) auf **Öffnen**, um Azure Data Factory in einer separaten Registerkarte zu starten.
 
-5. Wählen Sie auf der Seite **Erste Schritte** links die Option **Überwachen** aus. 
-![Screenshot: Seite „Erste Schritte“ für Azure Data Factory](media/doc-common-process/get-started-page-monitor-button.png)    
+5. Wählen Sie auf der Startseite von Azure Data Factory links **Überwachung** aus. 
+
+    ![Screenshot der Azure Data Factory-Homepage](media/doc-common-process/get-started-page-monitor-button.png)    
 
 6. Alle Pipelineausführungen mit dem dazugehörigen Status werden angezeigt. Beachten Sie, dass der Status der Pipelineausführung im folgenden Beispiel **Erfolgreich** lautet. Überprüfen Sie die an die Pipeline übergebenen Parameter, indem Sie in der Spalte **Parameter** auf den Link klicken. Wenn ein Fehler auftritt, wird in der Spalte **Fehler** ein Link angezeigt.
 

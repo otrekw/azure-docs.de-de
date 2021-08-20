@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/07/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29fc4028308d2d1fd9a23aa37d635f6b9fb0e68c
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 7fb3dcb07b8b868dda7bfef587b930765c4f661e
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570649"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112199236"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technische und Funktionsübersicht für Azure Active Directory B2C
 
@@ -28,14 +28,14 @@ Ein *Mandant* in Azure Active Directory B2C (Azure AD B2C) stellt Ihre Organisat
 Die wichtigsten Ressourcen, mit denen Sie in einem Azure AD B2C Mandanten arbeiten, sind die folgenden:
 
 * **Verzeichnis**: Im *Verzeichnis* werden die Anmeldeinformationen und Profildaten Ihrer Benutzer sowie die Anwendungsregistrierungen von Azure AD B2C gespeichert.
-* **Anwendungsregistrierungen**: Sie registrieren Ihre Web-, Mobil- und nativen Anwendungen bei Azure AD B2C, um die Identitätsverwaltung zu ermöglichen. Außerdem registrieren Sie alle APIs, die Sie mit Azure AD B2C schützen möchten.
-* **Benutzerflows** und **benutzerdefinierte Richtlinien**: Die integrierten (Benutzerflows) und vollständig anpassbaren (benutzerdefinierte Richtlinien) Identitätsfunktionen für Ihre Anwendungen.
-  * Mit *Benutzerflows* konfigurieren und aktivieren Sie schnell häufige Identitätsaufgaben wie Registrierung, Anmeldung und Bearbeitung des Profils.
-  * Verwenden Sie *benutzerdefinierte Richtlinien* für komplexe Identitätsworkflows, die individuell auf Ihre Organisation, Kunden, Mitarbeiter, Partner und Bürger zugeschnitten sind.
-* **Identitätsanbieter**: Verbundeinstellungen für:
-  * Identitätsanbieter für *soziale Netzwerke* wie Facebook, LinkedIn oder Twitter, die in Ihren Anwendungen unterstützt werden sollen.
-  * *Externe* Identitätsanbieter, die Standardidentitätsprotokolle wie OAuth 2.0, OpenID Connect und viele mehr unterstützen.
-  * *Lokale* Konten, die es Benutzern ermöglichen, sich mit einem Benutzernamen (oder einer E-Mail-Adresse oder sonstigen ID) und einem Kennwort zu registrieren und anzumelden.
+* **Anwendungsregistrierungen:** Sie registrieren Ihre Web-, Mobil- und nativen Anwendungen bei Azure AD B2C, um die Identitätsverwaltung zu ermöglichen. Sie können auch beliebige APIs registrieren, die mit Azure Active Directory B2C geschützt werden sollen.
+* **Benutzerflows** und **benutzerdefinierte Richtlinien**: Erstellen Sie Identitätsfunktionen für Ihre Anwendungen mit integrierten Benutzerflows und vollständig anpassbaren benutzerdefinierten Richtlinien.
+  * **Benutzerflows** unterstützen Sie dabei, häufige identitätsbezogene Aufgaben wie Anmeldungen, Registrierungen und Profilbearbeitungen schnell zu erledigen.
+  * Verwenden Sie **benutzerdefinierte Richtlinien** für komplexe Identitätsworkflows, die individuell auf Ihre Organisation, Kunden, Mitarbeiter, Partner und Bürger zugeschnitten sind.
+* **Anmeldeoptionen:** Azure AD B2C bietet verschiedene [Registrierungs- und Anmeldeoptionen](sign-in-options.md) für Benutzer Ihrer Anwendungen:
+  * **Anmeldung per Benutzername, E-Mail-Adresse und Telefon:** Konfigurieren Sie Ihre lokalen Azure AD B2C-Konten, um die Anmeldung und Registrierung mit einem Benutzernamen, einer E-Mail-Adresse und einer Telefonnummer oder einer Kombination dieser Methoden zu ermöglichen.
+  * **Soziales Netzwerk als Identitätsanbieter:** Arbeiten Sie mit sozialen Netzwerken wie Facebook, LinkedIn oder Twitter als Identitätsanbieter zusammen.
+  * **Externe Identitätsanbieter**, die Standardidentitätsprotokolle wie OAuth 2.0 oder OpenID Connect unterstützen
 * **Schlüssel**: Hinzufügen und Verwalten von Verschlüsselungsschlüsseln zum Signieren und Überprüfen von Token, geheimen Clientschlüsseln, Zertifikaten und Kennwörtern.
 
 Ein Azure AD B2C-Mandant ist die erste Ressource, die Sie erstellen müssen, um Azure AD B2C zu verwenden. In diesem Artikel werden folgende Themen erläutert:
@@ -72,7 +72,7 @@ Weitere Informationen finden Sie unter [Übersicht über Benutzerkonten in Azure
 
 Azure AD B2C bietet verschiedene Möglichkeiten, wie Benutzer einen Benutzer authentifizieren können. Benutzer können sich bei einem lokalen Konto anmelden, indem sie den Benutzernamen und das Kennwort oder die Telefonüberprüfung (auch als kennwortlose Authentifizierung bezeichnet) verwenden. In den Einstellungen des Identitätsanbieters „Lokales Konto“ ist standardmäßig die Registrierung mit E-Mail-Adresse aktiviert.
 
-Weitere Informationen finden Sie unter [Einrichten des Identitätsanbieters „Lokales Konto“](identity-provider-local.md).
+Mehr Informationen erhalten Sie in den Artikeln [Anmeldeoptionen in Azure AD B2C](sign-in-options.md) und [Einrichten des Identitätsanbieters „Lokales Konto“](identity-provider-local.md).
 
 ## <a name="user-profile-attributes"></a>Benutzerprofilattribute
 

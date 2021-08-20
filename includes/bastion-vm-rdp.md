@@ -1,21 +1,21 @@
 ---
-title: include file
-description: Includedatei
+title: Datei einfügen
+description: Datei einfügen
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/21/2020
+ms.date: 06/21/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 083ab61d5a20bfb8e38747ae0694b1176c0a0fd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 026e505e1ce5fe4d561289b2a98c8c0324136cbc
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92521531"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108259"
 ---
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Navigieren Sie zur VM, mit der Sie eine Verbindung herstellen möchten, und klicken Sie dann auf **Verbinden**. Wählen Sie in der Dropdownliste die Option **Bastion** aus.
+1. Navigieren Sie im [Microsoft Azure-Portal](https://portal.azure.com) zu dem virtuellen Computer, mit der Sie eine Verbindung herstellen möchten. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann von dem Dropdownmenü **Bastion** aus.
 
    :::image type="content" source="./media/bastion-vm-rdp/connect-vm.png" alt-text="Auswählen von „Bastion“":::
 
@@ -27,6 +27,9 @@ ms.locfileid: "92521531"
 
    :::image type="content" source="./media/bastion-vm-rdp/connect-vm-host.png" alt-text="Herstellen einer Verbindung":::
 
-1. Die RDP-Verbindung zu diesem virtuellen Computer über Bastion wird direkt im Azure-Portal (über HTML5) über Port 443 und den Bastion-Dienst geöffnet.
+1. Die RDP-Verbindung zu diesem virtuellen Computer über Bastion wird direkt im Azure-Portal (über HTML5) über Port 443 und den Bastion-Dienst geöffnet. 
+
+   * Wenn Sie eine Verbindung herstellen, sieht der Desktop der VM möglicherweise anders aus als im Beispielscreenshot. 
+   * Tastenkombinationen während der Verbindung mit einer VM weisen möglicherweise ein anderes Verhalten als Tastenkombinationen auf einem lokalen Computer auf. Wenn Sie beispielsweise über einen Windows-Client eine Verbindung mit einer Windows-VM hergestellt haben, ist STRG+ALT+ENDE die Tastenkombination für STRG+ALT+ENTF auf einem lokalen Computer. Wenn Sie dieselbe Aktion bei einer Verbindung von einem Mac aus mit einer Windows-VM ausführen möchten, lautet die Tastenkombination Fn+STRG+ALT+RÜCKTASTE.
 
    :::image type="content" source="./media/bastion-vm-rdp/connection.png" alt-text="Verbinden mithilfe von Port 443":::

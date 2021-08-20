@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Regi
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: b4806ed30319ff058df6dfae0340a73ad4cb6132
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8f05b982294c82323daf141793a04d6f6266e26f
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780765"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983678"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages in der Cloud beim Committen von Quellcode
 
@@ -45,7 +45,9 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Führen Sie als Nächstes den folgenden Befehl vom Typ [az acr task create][az-acr-task-create] aus, um die Aufgabe zu erstellen:
+Führen Sie als Nächstes den folgenden Befehl vom Typ [az acr task create][az-acr-task-create] aus, um die Aufgabe zu erstellen.
+
+[!INCLUDE [pull-image-dockerfile-include](../../includes/pull-image-dockerfile-include.md)]
 
 ```azurecli
 az acr task create \

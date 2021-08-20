@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/21/2021
+ms.date: 07/26/2021
 ms.author: justinha
-ms.openlocfilehash: e381c80dddc4484d541f5f81de6b5df712cff69b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 027217ab5963f084fca7678c9e51f7188d39a191
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673467"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707887"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services
 
@@ -51,7 +51,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-In diesem Tutorial erstellen und konfigurieren Sie die ausgehende Gesamtstruktur-Vertrauensstellung von Azure AD DS im Azure-Portal. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an.
+In diesem Tutorial erstellen und konfigurieren Sie die ausgehende Gesamtstruktur-Vertrauensstellung von Azure AD DS im Azure-Portal. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an. Um eine Azure AD DS Instanz zu ändern, sind die Berechtigungen für den globaler Administrator erforderlich. 
 
 ## <a name="networking-considerations"></a>Überlegungen zum Netzwerkbetrieb
 

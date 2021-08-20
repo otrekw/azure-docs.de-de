@@ -1,19 +1,20 @@
 ---
-title: Tutorial zum Vorbereiten der Bereitstellung von Azure Stack Edge Pro FPGA über das Azure-Portal in Ihrem Rechenzentrum
+title: 'Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro FPGA über das Azure-Portal in Ihrem Rechenzentrum'
 description: Im ersten Tutorial zum Bereitstellen von Azure Stack Edge Pro FPGA geht es um die Vorbereitung des Azure-Portals.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/16/2021
+ms.date: 07/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 1cab6f6f9db0650cee51b3863d521089b500bee9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: eecdead171e68915430aefe9aebeb24833485789
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461307"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688979"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-fpga"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro FPGA  
 
@@ -54,16 +55,32 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 * Ihr Microsoft Azure-Abonnement ist für eine Azure Stack Edge-Ressource aktiviert. Stellen Sie sicher, dass Sie ein unterstütztes Abonnement verwendet haben, z. B. [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp) oder [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Abonnements mit nutzungsbasierter Bezahlung werden nicht unterstützt.
 
-* Sie verfügen für die Azure Stack Edge-/Data Box Gateway-, IoT Hub- und Azure Storage-Ressourcen über Zugriff als Besitzer oder Mitwirkender auf der Ressourcengruppenebene.
+* RBAC-Rollen: Sie verfügen über die folgenden Rollenzuweisungen in der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure:
 
-  * Sie müssen ein **Besitzer** auf der Abonnementebene sein, um Zugriff vom Typ „Mitwirkender“ gewähren zu können. Gehen Sie wie folgt vor, um einer anderen Person den Zugriff vom Typ „Mitwirkender“ zu gewähren: Navigieren Sie im Azure-Portal zu **Alle Dienste** > **Abonnements** > **Zugriffssteuerung (IAM)**  >  **+ Hinzufügen** > **Rollenzuweisung hinzufügen**. Weitere Informationen finden Sie im [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer über das Azure-Portal](../role-based-access-control/quickstart-assign-role-user-portal.md).
+  * Um Azure Stack Edge-, IoT Hub- und Azure Storage-Ressourcen zu erstellen, muss ein Benutzer im Gültigkeitsbereich der Ressourcengruppe über die Rolle „Mitwirkender“ oder „Besitzer“ verfügen.
 
-  * Für die Erstellung von Azure Stack Edge-/Data Box Gateway-Ressourcen müssen Sie mindestens über Berechtigungen als Mitwirkender auf der Ressourcengruppenebene verfügen. Vergewissern Sie sich außerdem, dass der Ressourcenanbieter `Microsoft.DataBoxEdge` registriert ist. Informationen zum Registrieren eines Ressourcenanbieters finden Sie unter [Registrieren des Ressourcenanbieters](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-  * Für die Erstellung von IoT Hub-Ressourcen muss der Anbieter „Microsoft.Devices“ registriert sein. Eine Registrierungsanleitung finden Sie unter [Register resource provider](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers) (Registrieren des Ressourcenanbieters).
-  * Für die Erstellung von Speicherkontoressourcen sind ebenfalls mindestens Berechtigungen als Mitwirkender auf der Ressourcengruppenebene erforderlich. Azure Storage ist standardmäßig als Ressourcenanbieter registriert.
+  * Um einem Benutzer im Bereich der Ressourcengruppe die Rolle „Mitwirkender“ zuweisen zu können, müssen Sie im Abonnementbereich über die Rolle „Besitzer“ verfügen.
+
+  Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+
+* Ressourcenanbieter: Die folgenden Ressourcenanbieter sind registriert: 
+
+  * Um eine Azure Stack Edge-/Data Box Gateway-Ressource zu erstellen, müssen Sie sicherstellen, dass der Anbieter `Microsoft.DataBoxEdge` registriert ist.
+
+  * Um eine IoT Hub-Ressource zu erstellen, müssen Sie sicherstellen, dass der Anbieter `Microsoft.Devices` registriert ist.
+
+  * Um eine Azure Storage-Ressource zu erstellen, stellen Sie sicher, dass Azure Storage registriert ist. Der Azure Storage-Ressourcenanbieter (Storage Resource Provider, SRP) ist normalerweise standardmäßig registriert, in einigen Fällen ist jedoch eventuell eine Registrierung erforderlich.
+
+  **Um einen Ressourcenanbieter zu registrieren, muss Ihnen die zugehörige RBAC-Rolle zugewiesen sein.**
+
+  Informationen zur Registrierung finden Sie unter [Registrieren des Ressourcenanbieters](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+
 * Sie haben als Administrator oder Benutzer Zugriff auf die Azure Active Directory Graph-API. Weitere Informationen finden Sie unter [Azure Active Directory Graph-API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+
 * Sie besitzen ein Microsoft Azure-Speicherkonto mit Anmeldeinformationen für den Zugriff.
+
 * Sie werden durch Azure-Richtlinien, die von Ihrem Systemadministrator eingerichtet werden, nicht blockiert. Weitere Informationen zu Richtlinien finden Sie unter [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen](../governance/policy/assign-policy-portal.md).
+
 
 ### <a name="for-the-azure-stack-edge-pro-fpga-device"></a>Für das Azure Stack Edge Pro FPGA-Gerät
 

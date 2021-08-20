@@ -7,14 +7,19 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6fff19498e9ca70991d3190165df70a48136f502
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 990d1ca07d4cf9e66c50a22f213817dda3ae029c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92631137"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432912"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
+> [!NOTE]
+> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird
+> 
+
+
 ## <a name="overview"></a>Übersicht ##
 
 Die Azure App Service-Umgebung ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps mit umfangreicher Skalierung bereitstellt. Über diese Funktion können folgende Elemente gehostet werden:
@@ -76,7 +81,7 @@ Weitere Informationen zur Funktionsweise von ASEs mit virtuellen Netzwerken und 
 
 Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. Die oben aufgeführten Informationen basieren auf ASEv2. In diesem Abschnitt werden die Unterschiede zwischen ASEv1 und ASEv2 aufgezeigt. 
 
-In ASEv1 müssen Sie alle Ressourcen manuell verwalten. Dies schließt Front-Ends, Worker und IP-Adressen ein, die für IP-basiertes SSL verwendet werden. Bevor Sie Ihren App Service-Plan aufskalieren können, müssen Sie zunächst den Workerpool aufskalieren, den Sie zum Hosten verwenden möchten.
+In ASEv1 müssen Sie alle Ressourcen manuell verwalten. Dies schließt Front-Ends, Worker und IP-Adressen ein, die für IP-basierte TLS/SSL-Bindungen verwendet werden. Bevor Sie Ihren App Service-Plan aufskalieren können, müssen Sie zunächst den Workerpool aufskalieren, den Sie zum Hosten verwenden möchten.
 
 ASEv1 verwendet ein anderes Preismodell als ASEv2. In ASEv1 bezahlen Sie jede zugewiesene vCPU. Dazu gehören vCPUs für Front-Ends oder Worker, die keine Workloads hosten. In ASEv1 beträgt die maximale Standardskalierungsgröße einer ASE insgesamt 55 Hosts. Dazu gehören Worker und Front-Ends. ASEv1 hat den Vorteil, dass die Bereitstellung in einem klassischen virtuellen Netzwerk sowie in einem virtuellen Resource Manager-Netzwerk möglich ist. Weitere Informationen zu ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro].
 

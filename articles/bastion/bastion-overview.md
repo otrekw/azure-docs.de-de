@@ -5,14 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 10/13/2020
+ms.date: 07/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: ae0d4c0fc3ee3f621cc7d90238d9a8ac7b3f773c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: contperf-fy2q1-portal
+ms.openlocfilehash: f23a21bdba5602dad2e38ee931a5e754f0607cde
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142230"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730591"
 ---
 # <a name="what-is-azure-bastion"></a>Was ist Azure Bastion?
 
@@ -20,13 +21,32 @@ Azure Bastion ist ein von Ihnen bereitgestellter Dienst, mit dem Sie eine Verbin
 
 Bastion bietet sichere RDP- und SSH-Verbindungen mit allen virtuellen Computern in dem virtuellen Netzwerk, in dem der Dienst bereitgestellt wird. Durch die Verwendung von Azure Bastion wird verhindert, dass Ihre virtuellen Computer RDP- und SSH-Ports öffentlich verfügbar machen. Gleichzeitig wir weiterhin der sichere Zugriff per RDP/SSH ermöglicht.
 
-## <a name="architecture"></a>Aufbau
+:::image type="content" source="./media/bastion-overview/architecture.png" alt-text="Diagramm der Azure Bastion-Architektur":::
 
-Die Bereitstellung von Azure Bastion erfolgt pro virtuellem Netzwerk und nicht pro Abonnement/Konto oder virtuellem Computer. Nachdem Sie Azure Bastion in Ihrem virtuellen Netzwerk bereitgestellt haben, sind die RDP- und SSH-Funktionen für alle virtuellen Computer im virtuellen Netzwerk verfügbar.
+## <a name="key-benefits"></a><a name="key"></a>Hauptvorteile
+
+* **RDP und SSH direkt im Azure-Portal:** Sie können RDP- und SSH-Sitzungen nahtlos mit nur einem Klick direkt über das Azure-Portal aufrufen.
+* **Remotesitzung über TLS und Firewalldurchlauf für RDP/SSH:** Azure Bastion verwendet einen HTML5-basierten Webclient, der automatisch an Ihr lokales Gerät gestreamt wird. Sie können die RDP- oder SSH-Sitzung über TLS an Port 443 aufrufen und so Firewalls des Unternehmens sicher durchlaufen.
+* **Keine öffentliche IP-Adresse erforderlich für den virtuellen Azure-Computer:** Azure Bastion öffnet die RDP- oder SSH-Verbindung mit Ihrem virtuellen Azure-Computer über eine private IP-Adresse für den virtuellen Computer. Sie benötigen keine öffentliche IP-Adresse für den virtuellen Computer.
+* **Kein Aufwand beim Verwalten von Netzwerksicherheitsgruppen:** Azure Bastion ist ein vollständig verwalteter PaaS-Dienst von Azure, der intern gehärtet ist, um sichere RDP- und SSH-Verbindungen zu bieten. Sie müssen im Azure Bastion-Subnetz keine NSGs anwenden. Da mit Azure Bastion Verbindungen mit Ihren virtuellen Computern über private IP-Adressen hergestellt werden, können Sie die Netzwerksicherheitsgruppen so konfigurieren, dass RDP/SSH nur über Azure Bastion zulässig ist. Dadurch entfällt der Aufwand für die Verwaltung von Netzwerksicherheitsgruppen, wenn Sie eine sichere Verbindung mit den virtuellen Computern herstellen.
+* **Schutz vor Portscans:** Da Ihre VMs nicht im öffentlichen Internet verfügbar gemacht werden müssen, sind sie vor Portscans durch nicht autorisierte und böswillige Benutzer außerhalb Ihres virtuellen Netzwerks geschützt.
+* **Schutz vor Zero-Day-Exploits. Härtung an nur einem Ort:** Azure Bastion ist ein vollständig verwalteter PaaS-Dienst. Da er sich im Umkreis Ihres virtuellen Netzwerks befindet, ist eine Härtung der einzelnen virtuellen Computer im virtuellen Netzwerk nicht erforderlich. Dank konsequenter Härtung und Aktualisierung von Azure Bastion bietet die Azure-Plattform Schutz vor Zero-Day-Exploits.
+
+## <a name="skus"></a><a name="sku"></a>SKUs
+
+Für Azure Bastion sind zwei SKUs verfügbar: Basic und Standard. Die Standard-SKU ist zurzeit als Vorschauversion verfügbar. Weitere Informationen, auch zum Upgraden einer SKU, finden Sie im Artikel [Konfigurationseinstellungen](configuration-settings.md#skus). 
+
+Die folgende Tabelle enthält die Features der entsprechenden SKUs.
+
+[!INCLUDE [Azure Bastion SKUs](../../includes/bastion-sku.md)]
+
+## <a name="architecture"></a><a name="architecture"></a>Architektur
+
+Azure Bastion wird in einem virtuellen Netzwerk bereitgestellt und unterstützt das Peering virtueller Netzwerke. Insbesondere verwaltet Azure Bastion RDP-/SSH-Verbindungen mit VMs, die in den lokalen oder mit Peering verbundenen virtuellen Netzwerken erstellt wurden.
 
 RDP und SSH sind grundlegende Protokolle, über die Sie eine Verbindung mit Ihren in Azure ausgeführten Workloads herstellen können. Das Verfügbarmachen von RDP- oder SSH-Ports über das Internet ist nicht erwünscht und wird als erhebliche Angriffsfläche angesehen. Dies ist häufig auf Protokollschwachstellen zurückzuführen. Um diese Angriffsfläche einzudämmen, können Sie Bastion-Hosts (auch Jumpserver genannt) auf der öffentlichen Seite Ihres Umkreisnetzwerks bereitstellen. Bastion-Hostserver sind so konzipiert und konfiguriert, dass sie Angriffen standhalten. Bastion-Server bieten außerdem RDP- und SSH-Verbindungen mit den Workloads, die sich hinter dem Bastion-Server und weiter innen im Netzwerk befinden.
 
-![Azure Bastion-Architektur](./media/bastion-overview/architecture.png)
+:::image type="content" source="./media/bastion-overview/architecture.png" alt-text="Diagramm der Azure Bastion-Architektur":::
 
 In dieser Abbildung ist die Architektur einer Azure Bastion-Bereitstellung wie folgt In diesem Diagramm:
 
@@ -36,26 +56,26 @@ In dieser Abbildung ist die Architektur einer Azure Bastion-Bereitstellung wie f
 * Mit nur einem Klick wird die RDP- oder SSH-Sitzung im Browser geöffnet.
 * Für den virtuellen Azure-Computer ist keine öffentliche IP-Adresse erforderlich.
 
-## <a name="key-features"></a>Wichtige Features
+## <a name="host-scaling"></a><a name="host-scaling"></a>Hostskalierung
 
-Folgende Funktionen stehen zur Verfügung:
+Azure Bastion unterstützt die manuelle Hostskalierung. Sie können die Anzahl der Hostinstanzen (Skalierungseinheiten) konfigurieren, um zu verwalten, wie viele gleichzeitige RDP-/SSH-Verbindungen Azure Bastion unterstützen kann. Wenn Sie die Anzahl der Hostinstanzen erhöhen, kann Azure Bastion mehr gleichzeitige Sitzungen verwalten. Bei einer Verringerung der Anzahl von Instanzen wird die Anzahl unterstützter gleichzeitiger Sitzungen reduziert. Azure Bastion unterstützt bis zu 50 Hostinstanzen. Dieses Feature ist nur für die Standard-SKU von Azure Bastion verfügbar.
 
-* **RDP und SSH direkt im Azure-Portal:** Sie können RDP- und SSH-Sitzungen nahtlos mit nur einem Klick direkt über das Azure-Portal aufrufen.
-* **Remotesitzung über TLS und Firewalldurchlauf für RDP/SSH:** Azure Bastion verwendet einen HTML5-basierten Webclient, der automatisch an Ihr lokales Gerät gestreamt wird, sodass Sie die RDP- oder SSH-Sitzung über TLS an Port 443 aufrufen und so Firewalls des Unternehmens sicher durchlaufen können.
-* **Keine öffentliche IP-Adresse erforderlich für den virtuellen Azure-Computer:** Azure Bastion öffnet die RDP- oder SSH-Verbindung mit Ihrem virtuellen Azure-Computer über eine private IP-Adresse für den virtuellen Computer. Sie benötigen keine öffentliche IP-Adresse für den virtuellen Computer.
-* **Kein Aufwand beim Verwalten von Netzwerksicherheitsgruppen:** Azure Bastion ist ein vollständig verwalteter PaaS-Dienst von Azure, der intern gehärtet ist, um sichere RDP- und SSH-Verbindungen zu bieten. Sie müssen keine Netzwerksicherheitsgruppen im Azure Bastion-Subnetz anwenden. Da mit Azure Bastion Verbindungen mit Ihren virtuellen Computern über private IP-Adressen hergestellt werden, können Sie die Netzwerksicherheitsgruppen so konfigurieren, dass RDP/SSH nur über Azure Bastion zulässig ist. Dadurch entfällt der Aufwand für die Verwaltung von Netzwerksicherheitsgruppen, wenn Sie eine sichere Verbindung mit den virtuellen Computern herstellen.
-* **Schutz vor Portscans:** Da Ihre virtuellen Computer nicht im öffentlichen Internet verfügbar gemacht werden müssen, sind sie vor Portscans durch nicht autorisierte und böswillige Benutzer außerhalb Ihres virtuellen Netzwerks geschützt.
-* **Schutz vor Zero-Day-Exploits. Härtung an nur einem Ort:** Azure Bastion ist ein vollständig verwalteter PaaS-Dienst. Da er sich im Umkreis Ihres virtuellen Netzwerks befindet, ist eine Härtung der einzelnen virtuellen Computer im virtuellen Netzwerk nicht erforderlich. Dank konsequenter Härtung und Aktualisierung von Azure Bastion bietet die Azure-Plattform Schutz vor Zero-Day-Exploits.
+Weitere Informationen finden Sie im Artikel zu den [Konfigurationseinstellungen](configuration-settings.md#instance).
+
+## <a name="pricing"></a><a name="pricing"></a>Preise
+
+Die Preise für Azure Bastion setzen sich aus einer Kombination der Stundenpreise basierend auf der SKU, den Skalierungseinheiten und den Datenübertragungsraten zusammen. Informationen zu den Preisen finden Sie auf der Seite [Preise](https://azure.microsoft.com/pricing/details/azure-bastion) .
 
 ## <a name="whats-new"></a><a name="new"></a>Neuerungen
 
 Abonnieren Sie den RSS-Feed, und zeigen Sie die neuesten Azure Bastion-Featureupdates auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Bastion) an.
 
-## <a name="faq"></a>Häufig gestellte Fragen
+## <a name="bastion-faq"></a>Häufig gestellte Fragen zu Bastion
 
-[!INCLUDE [Bastion FAQ](../../includes/bastion-faq-include.md)]
+Häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen zu Azure Bastion](bastion-faq.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Tutorial: Erstellen eines Azure Bastion-Hosts und Herstellen einer Verbindung mit einem virtuellen Windows-Computer](tutorial-create-host-portal.md).
+* [Learn-Modul: Einführung in Azure Bastion](/learn/modules/intro-to-azure-bastion/)
 * Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/fundamentals/networking-overview.md) von Azure.

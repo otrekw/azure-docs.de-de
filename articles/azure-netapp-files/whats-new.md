@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/14/2021
+ms.date: 07/12/2021
 ms.author: b-juche
-ms.openlocfilehash: 768b2f4a9b993e4824fbcebe7a96d7f62a90c934
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: a50b8eee5a45fdd496aa0e063272c1c32cf0e5a7
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078310"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113664447"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Neues in Azure NetApp Files
 
@@ -29,15 +29,13 @@ Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Ü
 
 * [Azure NetApp Files-Speicherdienst-Add-Ons](storage-service-add-ons.md)
 
-    Die neue Menüoption **Speicherdienst-Add-Ons** von Azure NetApp Files stellt eine „Startplattform“ im Azure-Portal für unterstützte Ökosystem-Add-Ons von Drittanbietern für den Azure NetApp Files-Speicherdienst bereit. Mit dieser neuen Menüoption im Portal können Sie eine Landing Page eingeben, indem Sie für den schnellen Zugriff auf ein Add-On auf die entsprechende Add-On-Kachel klicken.  
+    Die neue Menüoption **Speicherdienst-Add-Ons** von Azure NetApp Files stellt eine „Startplattform“ im Azure-Portal für verfügbare Ökosystem-Add-Ons von Drittanbietern für den Azure NetApp Files-Speicherdienst bereit. Mit dieser neuen Menüoption im Portal können Sie eine Landing Page eingeben, indem Sie für den schnellen Zugriff auf ein Add-On auf die entsprechende Add-On-Kachel klicken.  
 
     **NetApp-Add-Ons** ist die erste Kategorie von Add-Ons, die unter **Speicherdienst-Add-Ons** angezeigt wird. Sie bietet Zugriff auf **NetApp Cloud Compliance**. Wenn Sie auf die Kachel **NetApp Cloud Compliance** klicken, wird ein neuer Browser geöffnet, und Sie werden zur Add-On-Installationsseite weitergeleitet. 
 
-* Ab sofort allgemein verfügbare Features   
+* Der [Manuelle QoS-Kapazitätspool](manual-qos-capacity-pool-introduction.md) ist jetzt allgemein verfügbar (GA)   
 
-    Die folgenden Azure NetApp Files-Features sind ab sofort allgemein verfügbar. Sie müssen die Features nicht mehr registrieren, bevor Sie sie verwenden:
-    * [Momentaufnahmerichtlinie](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
-    * [Manueller QoS-Kapazitätspool](manual-qos-capacity-pool-introduction.md)
+    Die Funktion „Manueller QoS-Kapazitätspool“ ist jetzt allgemein verfügbar. Sie müssen die Funktionen nicht mehr registrieren, bevor Sie sie verwenden. 
 
 * [Unterstützung von „Freigegebenes AD“ für mehrere Konten in einem Active Directory pro Region und Abonnement](create-active-directory-connections.md#shared_ad) (Vorschau)   
 

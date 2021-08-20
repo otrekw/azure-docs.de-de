@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 57abbeefe8e3f2abe527f2b282d643db766b9dc9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e02ac9d6abd3358218f268fb3da1e99b90fac7c5
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775743"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113568080"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Tutorial: Verwenden von Key Vault-Verweisen in einer ASP.NET Core-App
 
@@ -51,20 +51,20 @@ Installieren Sie das [.NET Core SDK](https://dotnet.microsoft.com/download), bev
 1. Wählen Sie oben links im Azure-Portal die Option **Ressource erstellen** aus:
 
     ![Screenshot: Option „Ressource erstellen“ im Azure-Portal](./media/quickstarts/search-services.png)
-1. Geben Sie **Key Vault** in das Suchfeld ein.
+1. Geben Sie im Suchfeld **Key Vault** ein, und wählen Sie in der Dropdown-Option **Key Vault** aus.
 1. Wählen Sie in der Ergebnisliste links **Key Vault** aus.
 1. Wählen Sie unter **Schlüsseltresore** die Option **Hinzufügen** aus.
 1. Geben Sie auf der rechten Seite unter **Schlüsseltresor erstellen** die folgenden Informationen ein:
     - Wählen Sie die Option **Abonnement** aus, um ein Abonnement auszuwählen.
-    - Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein.
-    - Unter **Schlüsseltresorname** müssen Sie einen eindeutigen Namen eingeben. Geben Sie für dieses Tutorial **Contoso-vault2** ein.
+    - Geben Sie unter **Ressourcengruppe** eine bereits vorhandene Ressourcengruppe ein, oder wählen Sie die Option **Neu erstellen** aus, und geben Sie einen Ressourcengruppennamen ein.
+    - Unter **Schlüsseltresorname** müssen Sie einen eindeutigen Namen eingeben.
     - Wählen Sie in der Dropdownliste **Region** einen Ort aus.
 1. Übernehmen Sie für die anderen Optionen unter **Schlüsseltresor erstellen** die Standardwerte.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Überprüfen + erstellen**.
+1. Das System überprüft die von Ihnen eingegebenen Daten und zeigt sie an. Klicken Sie auf **Erstellen**.
 
 An diesem Punkt ist nur Ihr Azure-Konto für den Zugriff auf diesen neuen Tresor autorisiert.
 
-![Screenshot: Schlüsseltresor](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Hinzufügen eines Geheimnisses zu Key Vault
 
@@ -91,68 +91,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
     - **Abonnement**, **Ressourcengruppe** und **Schlüsseltresor**: Geben Sie die Werte ein, die den Werten des im vorherigen Abschnitt erstellten Schlüsseltresors entsprechen.
     - **Geheimnis**: Wählen Sie das Geheimnis mit dem Namen **Nachricht** aus, das Sie im vorherigen Abschnitt erstellt haben.
 
-## <a name="connect-to-key-vault"></a>Verbindung mit Key Vault herstellen
-
-1. In diesem Tutorial verwenden Sie einen Dienstprinzipal für die Authentifizierung bei Key Vault. Verwenden Sie zum Erstellen dieses Dienstprinzipals den Azure CLI-Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac):
-
-    ```azurecli
-    az ad sp create-for-rbac -n "http://mySP" --sdk-auth
-    ```
-
-    Daraufhin wird eine Reihe von Schlüssel-Wert-Paaren zurückgegeben:
-
-    ```console
-    {
-    "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
-    "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
-    "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
-    "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
-    "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-    "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-    "galleryEndpointUrl": "https://gallery.azure.com/",
-    "managementEndpointUrl": "https://management.core.windows.net/"
-    }
-    ```
-
-1. Führen Sie den folgenden Befehl aus, um dem Dienstprinzipal den Zugriff auf Ihren Schlüsseltresor zu erlauben:
-
-    ```cmd
-    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
-    ```
-
-1. Fügen Sie Umgebungsvariablen zum Speichern der Werte *clientId*, *clientSecret* und *tenantId* hinzu.
-
-    #### <a name="windows-command-prompt"></a>[Windows-Eingabeaufforderung](#tab/cmd)
-
-    ```cmd
-    setx AZURE_CLIENT_ID <clientId-of-your-service-principal>
-    setx AZURE_CLIENT_SECRET <clientSecret-of-your-service-principal>
-    setx AZURE_TENANT_ID <tenantId-of-your-service-principal>
-    ```
-
-    #### <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-    ```PowerShell
-    $Env:AZURE_CLIENT_ID = <clientId-of-your-service-principal>
-    $Env:AZURE_CLIENT_SECRET = <clientSecret-of-your-service-principal>
-    $Env:AZURE_TENANT_ID = <tenantId-of-your-service-principal>
-    ```
-
-    #### <a name="bash"></a>[Bash](#tab/bash)
-
-    ```bash
-    export AZURE_CLIENT_ID = <clientId-of-your-service-principal>
-    export AZURE_CLIENT_SECRET = <clientSecret-of-your-service-principal>
-    export AZURE_TENANT_ID = <tenantId-of-your-service-principal>
-    ```
-
-    ---
-
-    > [!NOTE]
-    > Diese Key Vault-Anmeldeinformationen werden nur innerhalb der Anwendung verwendet. Ihre Anwendung authentifiziert sich mit diesen Anmeldeinformationen direkt bei Key Vault. Sie werden nie an den App Configuration-Dienst übermittelt.
-
-1. Starten Sie das Terminal neu, um diese neuen Umgebungsvariablen zu laden.
+![Ein Screenshot zum Erstellen eines neuen Key Vault-Referenzformulars](./media/create-key-vault-reference.png)
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Aktualisieren des Codes für die Verwendung eines Key Vault-Verweises
 
@@ -170,12 +109,13 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 
 1. Aktualisieren Sie die `CreateWebHostBuilder`-Methode für die Verwendung von App Configuration, indem Sie die Methode `config.AddAzureAppConfiguration` aufrufen. Fügen Sie die Option `ConfigureKeyVault` ein, und übergeben Sie die richtigen Anmeldeinformationen an Key Vault.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+     #### <a name="net-core-5x"></a>[.NET Core 5.x](#tab/core5x)
 
     ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
 
@@ -188,7 +128,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
                             });
                 });
             })
-            .UseStartup<Startup>();
+            .UseStartup<Startup>());
     ```
 
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
@@ -211,6 +151,27 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
                 });
             })
             .UseStartup<Startup>());
+    ```
+    
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+
+                config.AddAzureAppConfiguration(options =>
+                {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(new DefaultAzureCredential());
+                            });
+                });
+            })
+            .UseStartup<Startup>();
     ```
 
 1. Wenn Sie die Verbindung mit App Configuration initialisiert haben, richten Sie die Verbindung mit Key Vault ein, indem Sie die Methode `ConfigureKeyVault` aufrufen. Nach der Initialisierung können Sie auf die Werte der Key Vault-Verweise genauso zugreifen, wie Sie bei den Werten regulärer App Configuration-Schlüssel vorgehen.
@@ -237,6 +198,15 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 
     Sie greifen auf den Wert des Key Vault-Verweises **TestApp:Settings:KeyVaultMessage** genauso wie auf den Konfigurationswert von **TestApp:Settings:Message** zu.
 
+
+## <a name="grant-your-app-access-to-key-vault"></a>Gewähren des Zugriffs auf Key Vault für Ihre App
+
+Die Azure App Configuration greift nicht auf Ihren Schlüsseltresor zu. Ihre App liest direkt aus dem Key Vault, sodass Sie Ihrer App Lesezugriff auf die Geheimnisse in Ihrem Schlüsseltresor gewähren müssen. Auf diese Weise bleibt das Geheimnis immer in Ihrer App. Der Zugriff kann entweder mithilfe einer [Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md) oder der [rollenbasierten Zugriffssteuerung](../key-vault/general/rbac-guide.md)von Azure gewährt werden.
+
+Sie verwenden `DefaultAzureCredential` in Ihrem obigen Code. Es handelt sich um eine aggregierte Tokenanmeldeinformation, die automatisch eine Reihe von Anmeldeinformationstypen wie`EnvironmentCredential`, `ManagedIdentityCredential`, `SharedTokenCacheCredential`, and `VisualStudioCredential` ausprobiert. Weitere Informationen hierzu finden Sie in der Dokumentation unter [DefaultAzureCredential-Klasse.](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) Sie können `DefaultAzureCredential` explizit durch einen beliebigen Anmeldeinformationstyp ersetzen. Mit `DefaultAzureCredential` können Sie jedoch den gleichen Code verwenden, der sowohl in lokalen als auch in Azure-Umgebungen ausgeführt wird. Beispielsweise gewähren Sie Ihren eigenen Anmeldeinformationen Zugriff auf Ihren Schlüsseltresor. `DefaultAzureCredential` greift automatisch auf `SharedTokenCacheCredential` oder `VisualStudioCredential` zurück, wenn Sie Visual Studio für die lokale Entwicklung verwenden.
+
+Alternativ können Sie die Umgebungsvariablen AZURE_TENANT_ID, AZURE_CLIENT_ID und AZURE_CLIENT_SECRET festlegen und `DefaultAzureCredential` wird den geheimen Clientschlüssel verwenden, den Sie über `EnvironmentCredential` verwenden, um sich bei Ihrem Schlüsseltresor zu authentifizieren. Nachdem Ihre App für einen Azure-Dienst mit aktivierter verwalteter Identität bereitgestellt wurde, wie z. B. dem Azure App Service, Azure Kubernetes Service oder der Azure Containerinstanz, gewähren Sie der verwalteten Identität des Azure-Diensts die Berechtigung für den Zugriff auf Ihren Schlüsseltresor. `DefaultAzureCredential` verwendet wird automatisch `ManagedIdentityCredential`, wenn Ihre App in Azure ausgeführt wird. Sie können dieselbe verwaltete Identität verwenden, um sich sowohl mit App Configuration als auch mit dem Key Vault authentifizieren. Weitere Informationen finden Sie unter [ das Verwenden verwalteter Identitäten für den Zugriff auf App Configuration](howto-integrate-azure-managed-service-identity.md).
+
 ## <a name="build-and-run-the-app-locally"></a>Lokales Erstellen und Ausführen der App
 
 1. Führen Sie den folgenden Befehl in der Befehlsshell aus, um die App mithilfe der .NET Core-CLI zu erstellen:
@@ -255,13 +225,21 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 
     ![Schnellstart: Starten der lokalen App](./media/key-vault-reference-launch-local.png)
 
+
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen App Configuration-Schlüssel erstellt, mit dem auf einen in Key Vault gespeicherten Wert verwiesen wird. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie eine von Azure verwaltete Dienstidentität hinzufügen, mit der der Zugriff auf App Configuration und Key Vault optimiert wird.
+In diesem Tutorial haben Sie einen Schlüssel in der App Configuration erstellt, mit dem auf einen im Key Vault gespeichertes Geheimnis verwiesen wird.
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Geheimnisse und Zertifikate automatisch aus Key Vault erneut laden:
+
+> [!div class="nextstepaction"]
+> [Geheimnisse und Zertifikate automatisch aus Key Vault erneut laden](./reload-key-vault-secrets-dotnet.md)
+
+Informationen zur Verwendung der verwalteten Identität zum Optimieren des Zugriffs auf App Configuration und Key Vault finden Sie im folgenden Tutorial:
 
 > [!div class="nextstepaction"]
 > [Integration der verwalteten Identität](./howto-integrate-azure-managed-service-identity.md)

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/17/2020
+ms.date: 06/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 5fe539521213a6c25804c5c0db1e6b18646cceea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fe77b2e667ba5bfe5ab40a44efe177648a184f51
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563836"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112456194"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Clever
 
@@ -37,12 +37,12 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Clever unterstützt das **SP-initiierte** einmalige Anmelden.
+* Clever unterstützt das **SP-initiiertes** einmalige Anmelden.
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
-## <a name="adding-clever-from-the-gallery"></a>Hinzufügen von Clever aus dem Katalog
+## <a name="add-clever-from-the-gallery"></a>Hinzufügen von Clever aus dem Katalog
 
 Zum Konfigurieren der Integration von Clever in Azure AD müssen Sie Clever aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -53,12 +53,11 @@ Zum Konfigurieren der Integration von Clever in Azure AD müssen Sie Clever aus 
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Clever** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Clever** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-clever"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Clever
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Clever mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Clever eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Clever die folgenden Schritte aus:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Clever die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
@@ -73,26 +72,26 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Clever** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://clever.com/in/<companyname>`.
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die folgende URL ein: `https://clever.com/oauth/saml/metadata.xml`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die folgende URL ein: `https://clever.com/oauth/saml/metadata.xml`.
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://clever.com/<COMPANY_NAME>`
 
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://clever.com/<companyname>`
-    
+    c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://clever.com/in/<COMPANY_NAME>`.
+
     > [!NOTE]
-    >  Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und Antwort-URL. Wenden Sie sich an das [Supportteam für den Clever-Client](https://clever.com/about/contact/), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    >  Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Antwort-URL und Anmelde-URL. Wenden Sie sich an das [Supportteam für den Clever-Client](https://clever.com/about/contact/), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user&quot;></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
@@ -104,7 +103,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Clever gewähren.
 
@@ -116,9 +115,25 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-clever-sso"></a>Konfigurieren des einmaligen Anmeldens für Clever
+## <a name=&quot;configure-clever-sso&quot;></a>Konfigurieren des einmaligen Anmeldens für Clever
 
-Befolgen Sie die Anweisungen unter [diesem Link](https://support.clever.com/hc/s/articles/205889768), um einmaliges Anmelden aufseiten von Clever zu konfigurieren.
+1. Melden Sie sich in einem anderen Webbrowserfenster beim Clever-Dashboard als Administrator an.
+
+2. Klicken Sie im linken Navigationsbereich auf **Menü** > **Portal** > **Einstellungen für einmaliges Anmelden**.
+
+3. Führen Sie auf der Seite **Einstellungen für einmaliges Anmelden** die folgenden Schritte aus:
+    
+    a. Klicken Sie auf **Anmeldemethode hinzufügen**.
+
+    b. Wählen Sie **Active Directory-Authentifizierung** aus. 
+
+    ![Einstellungen](./media/clever-tutorial/account.png &quot;Einstellungen") 
+    
+    c. Öffnen Sie die heruntergeladene **XML-Datei mit Verbundmetadaten der App** im Azure-Portal im Editor, kopieren Sie ihren Inhalt, und fügen Sie ihn in das Textfeld **Metadaten-URL** ein.
+
+    ![Hochladen des Zertifikats](./media/clever-tutorial/metadata.png "Hochladen des Zertifikats") 
+
+    d. Klicken Sie auf **Speichern**.
 
 ### <a name="create-clever-test-user"></a>Erstellen eines Clever-Testbenutzers
 

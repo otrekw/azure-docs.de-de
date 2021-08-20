@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 9dc3c9154eeacb452d3df72e43d8fa773f282c65
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fb054bf82e6f4e55dfcd6f23575fa35e40400845
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110486836"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400146"
 ---
 In diesem Tutorial erfahren Sie, wie Sie eine exemplarische IoT Plug & Play-Geräteanwendung mit Komponenten erstellen, mit Ihrem IoT-Hub verbinden und die an den Hub gesendeten Informationen mithilfe des Tools Azure IoT-Explorer anzeigen. Die Beispielanwendung ist in C geschrieben und im Azure IoT-Geräte-SDK für C enthalten. Ein Lösungsentwickler kann das Tool Azure IoT-Explorer verwenden, um mehr über die Funktionen eines IoT Plug & Play-Geräts zu erfahren, ohne Gerätecode anzeigen zu müssen.
 
@@ -61,7 +61,7 @@ Installieren Sie die folgende Software in Ihrer lokalen Windows-Umgebung, um die
 
 ## <a name="download-the-code"></a>Laden Sie den Code herunter.
 
-Wenn Sie den [Schnellstart: Verbinden einer unter Linux oder Windows ausgeführten IoT Plug & Play-Beispielgeräteanwendung mit IoT Hub (C)](../articles/iot-pnp/quickstart-connect-device.md) abgeschlossen haben, wurde der Code bereits heruntergeladen.
+Wenn Sie das [Tutorial: Verbinden einer unter Linux oder Windows ausgeführten IoT Plug & Play-Beispielgeräteanwendung mit IoT Hub (C)](../articles/iot-develop/tutorial-connect-device.md) abgeschlossen haben, wurde der Code bereits heruntergeladen.
 
 In diesem Tutorial wird eine Entwicklungsumgebung vorbereitet, die Sie zum Klonen und Erstellen des Azure IoT Hub-Geräte-SDK für C verwenden können.
 
@@ -84,7 +84,7 @@ Sie können den Code erstellen und ausführen, indem Sie Visual Studio oder `cma
 1. Öffnen Sie den Stammordner des geklonten Repositorys. Nach einigen Sekunden werden über die **CMake**-Unterstützung in Visual Studio alle Komponenten erstellt, die Sie zum Ausführen und Debuggen des Projekts benötigen.
 1. Navigieren Sie im **Projektmappen-Explorer** zum Beispiel *iothub_client/samples/pnp/pnp_temperature_controller/* , wenn der Vorgang in Visual Studio abgeschlossen ist.
 1. Klicken Sie mit der rechten Maustaste auf die Datei *pnp_temperature_controller.c*, und wählen Sie die Option **Debugkonfiguration hinzufügen** aus. Wählen Sie **Default** (Standard) aus.
-1. In Visual Studio wird die Datei *launch.vs.json* geöffnet. Bearbeiten Sie diese Datei wie im folgenden Codeausschnitt gezeigt, um die erforderlichen Umgebungsvariablen festzulegen. Sie haben sich nach Abschluss des Vorgangs [Einrichten Ihrer Umgebung für die IoT Plug & Play-Schnellstarts und -Tutorials](../articles/iot-pnp/set-up-environment.md) die Bereichs-ID und den Primärschlüssel für die Registrierung notiert:
+1. In Visual Studio wird die Datei *launch.vs.json* geöffnet. Bearbeiten Sie diese Datei wie im folgenden Codeausschnitt gezeigt, um die erforderlichen Umgebungsvariablen festzulegen. Sie haben sich nach Abschluss des Vorgangs [Einrichten Ihrer Umgebung für die IoT Plug & Play-Schnellstarts und -Tutorials](../articles/iot-develop/set-up-environment.md) die Bereichs-ID und den Primärschlüssel für die Registrierung notiert:
 
     ```json
     {
@@ -162,7 +162,7 @@ Das Gerät ist jetzt zum Empfangen von Befehlen und Eigenschaftsaktualisierungen
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
-In diesem Beispiel wird ein IoT Plug & Play-Temperaturregler implementiert. Bei diesem Beispiel wird ein Modell mit [mehreren Komponenten](../articles/iot-pnp/concepts-modeling-guide.md) implementiert. In der [DTDL-Modelldatei (Digital Twins Definition Language) für das Temperaturgerät](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) werden die vom Gerät implementierten Telemetriedaten, Eigenschaften und Befehle definiert.
+In diesem Beispiel wird ein IoT Plug & Play-Temperaturregler implementiert. Bei diesem Beispiel wird ein Modell mit [mehreren Komponenten](../articles/iot-develop/concepts-modeling-guide.md) implementiert. In der [DTDL-Modelldatei (Digital Twins Definition Language) für das Temperaturgerät](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) werden die vom Gerät implementierten Telemetriedaten, Eigenschaften und Befehle definiert.
 
 ### <a name="iot-plug-and-play-helper-functions"></a>Hilfsfunktionen für IoT Plug & Play
 

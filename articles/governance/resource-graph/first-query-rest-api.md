@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Ihre erste REST-API-Abfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aufrufen des Resource Graph-Endpunkts für die REST-API und zum Ausführen Ihrer ersten Abfrage aus.
-ms.date: 05/01/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
-ms.openlocfilehash: ef157eebbdd562262bb33f32e726d0d567c421d5
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 258bda8df671dac3440edef37d8ea5a1c7f362b5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324939"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460058"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage per REST-API
 
@@ -54,7 +54,7 @@ Die Variable `$response` enthält das Ergebnis des Cmdlets `Invoke-RestMethod`, 
 
 ## <a name="run-your-first-resource-graph-query"></a>Ausführen Ihrer ersten Resource Graph-Abfrage
 
-Nachdem die REST-API-Tools der Umgebung Ihrer Wahl hinzugefügt wurden, können Sie jetzt eine einfache Resource Graph-Abfrage ausprobieren. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit dem **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück.
+Nachdem die REST-API-Tools Ihrer gewünschten Umgebung hinzugefügt wurden, können Sie jetzt eine einfache, abonnementbasierte Resource Graph-Abfrage ausprobieren. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit dem **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück. Für eine Abfrage nach [Verwaltungsgruppe](../management-groups/overview.md) verwenden Sie `managementgroups` anstelle von `subscriptions`. Wenn Sie den gesamten Mandanten abfragen möchten, lassen Sie die beiden Eigenschaften `managementgroups` und `subscriptions` im Anforderungstext weg.
 
 Im Anforderungstext jedes REST-API-Aufrufs ist eine Variable enthalten, die Sie durch Ihren eigenen Wert ersetzen müssen:
 
@@ -65,7 +65,7 @@ Im Anforderungstext jedes REST-API-Aufrufs ist eine Variable enthalten, die Sie 
    - REST-API-URI
 
      ```http
-     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2019-04-01
+     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01
      ```
 
    - Anforderungstext
@@ -87,7 +87,7 @@ Im Anforderungstext jedes REST-API-Aufrufs ist eine Variable enthalten, die Sie 
    - REST-API-URI
 
      ```http
-     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2019-04-01
+     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01
      ```
 
    - Anforderungstext
@@ -109,7 +109,7 @@ Im Anforderungstext jedes REST-API-Aufrufs ist eine Variable enthalten, die Sie 
    - REST-API-URI
 
      ```http
-     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2019-04-01
+     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01
      ```
 
    - Anforderungstext
@@ -125,7 +125,7 @@ Im Anforderungstext jedes REST-API-Aufrufs ist eine Variable enthalten, die Sie 
 
 Wenn die letzte Abfrage mehrmals ausgeführt wird und in Ihrer Umgebung keine Änderungen vorgenommenen werden, sind die zurückgegebenen Ergebnisse konsistent und nach der Eigenschaft **Name** sortiert, aber immer noch auf die ersten fünf Ergebnisse begrenzt.
 
-Weitere Beispiele für REST-API-Aufrufe für Azure Resource Graph finden Sie in den [REST-Beispielen für Azure Resource Graph](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#examples).
+Weitere Beispiele für REST-API-Aufrufe für Azure Resource Graph finden Sie in den [REST-Beispielen für Azure Resource Graph](/rest/api/azureresourcegraph/resourcegraph(2021-03-01)/resources/resources#examples).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

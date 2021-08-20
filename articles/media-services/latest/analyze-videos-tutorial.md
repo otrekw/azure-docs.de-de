@@ -6,14 +6,14 @@ author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 05/25/2021
+ms.date: 07/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: b6e1deb15f5efe8441624a3c00f72efc1ba38138
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 38586e2cc60186c929b5ca43990019e768a1ed13
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955427"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720477"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Tutorial: Analysieren von Videos mit Media Services v3
 
@@ -34,13 +34,14 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, Datenschutz und Sicherheit
  
-Wichtig: Ihre Nutzung von Video Indexer darf nicht gegen geltende Gesetze verstoßen. Sie dürfen weder Video Indexer noch einen anderen Azure-Dienst auf eine Weise verwenden, die die Rechte Dritter verletzt. Bevor Sie ein Video mit biometrischen Daten zur Verarbeitung und Speicherung in den Video Indexer-Dienst hochladen, müssen Sie über sämtliche erforderlichen Rechte verfügen (einschließlich entsprechender Einwilligungen von den Personen im Video). Informationen zu Compliance, Datenschutz und Sicherheit in Video Indexer finden Sie in den [Azure Cognitive Services-Bestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Bestimmungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Bestimmungen für Onlinedienste und [hier](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md). Durch die Nutzung von Video Indexer akzeptieren Sie die Cognitive Services-Bedingungen, die OST, den DPA und die Datenschutzbestimmungen.
+Wichtiger Hinweis: Wir möchten Sie daran erinnern, dass Sie bei der Verwendung des Azure Video Analyzer for Media (früher Video Indexer) alle geltenden Gesetze einhalten müssen. Sie dürfen weder den Azure Video Analyzer for Media noch einen anderen Azure-Dienst auf eine Weise verwenden, die die Rechte Dritter verletzt. Bevor Sie Videos, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in den Azure Video Analyzer for Media-Dienst hochladen, müssen Sie über alle erforderlichen Rechte, einschließlich aller entsprechenden Zustimmungen der Personen im Video, verfügen. Weitere Informationen zu Compliance, Datenschutz und Sicherheit in Zusammenhang mit dem Azure Video Analyzer for Media finden Sie in den [Azure Cognitive Services-Bestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Bestimmungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Bestimmungen für Onlinedienste und [hier](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md). Wenn Sie den Azure Video Analyzer for Media verwenden, akzeptieren Sie die Cognitive Services-Bedingungen, die OST, die DPA und die Datenschutzbestimmungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie Visual Studio noch nicht installiert haben, laden Sie [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) herunter.
-- [Erstellen Sie ein Media Services-Konto.](./account-create-how-to.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
-- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
+- Installieren Sie [Visual Studio Code für Windows/macOS/Linux](https://code.visualstudio.com/) oder [Visual Studio 2019 für Windows oder Mac](https://visualstudio.microsoft.com/).
+- Installieren Sie das [.NET 5.0 SDK](https://dotnet.microsoft.com/download).
+- [Erstellen Sie ein Media Services-Konto.](./account-create-how-to.md) Wichtig: Kopieren Sie die Details für den **API-Zugriff** im JSON-Format, oder speichern Sie die Werte, die zum Herstellen einer Verbindung mit dem Media Services-Konto benötigt werden, im *ENV*-Dateiformat (wie in diesem Beispiel).
+- Führen Sie die Schritte unter [Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie müssen die Anmeldeinformationen für den Zugriff auf die API in diesem Beispiel verwenden oder im *ENV*-Dateiformat eingeben.
 
 ## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
@@ -52,7 +53,7 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Beispiel enth�
 
 Das Beispiel befindet sich im Ordner [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/main/AMSV3Tutorials/AnalyzeVideos).
 
-Öffnen Sie in Ihrem heruntergeladenen Projekt die Datei [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/AnalyzeVideos/appsettings.json). Ersetzen Sie die Werte durch die Anmeldeinformationen, die Sie per [API-Zugriff](./access-api-howto.md) abgerufen haben.
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>Untersuchen des Codes für die Analyse des angegebenen Videos
 

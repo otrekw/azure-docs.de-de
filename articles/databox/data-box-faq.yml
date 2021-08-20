@@ -7,15 +7,15 @@ metadata:
   ms.service: databox
   ms.subservice: pod
   ms.topic: article
-  ms.date: 05/11/2021
+  ms.date: 07/21/2021
   ms.author: alkohli
   ms.custom: references_regions
-  ms.openlocfilehash: 85b2abd58f55e75a4b560b4cdbcc792693d1a2a3
-  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.openlocfilehash: 47d941b1c6e6ce7b0f383e977f227db65fa86871
+  ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113094841"
+  ms.lasthandoff: 07/23/2021
+  ms.locfileid: "114653425"
 title: 'Azure Data Box: Häufig gestellte Fragen'
 summary: >
   Mit der Hybridlösung Microsoft Azure Data Box und einem Versandgerät können Sie Daten in Terabyte-Größe schnell, kostengünstig und zuverlässig in Azure übertragen. In diesem Artikel finden Sie Antworten auf Fragen, die bei Verwenden von Data Box im Azure-Portal ggf. aufkommen.
@@ -234,6 +234,10 @@ sections:
       Ich habe eine Data Box in der Region „USA, Osten“ bestellt, habe aber ein Gerät erhalten, das von einem Standort in der Region „USA, Westen“ versandt wurde. Wohin soll ich das Gerät zurücksenden?
     answer: >
       Wir versuchen, Ihnen ein Data Box-Gerät schnellstmöglich zuzusenden. Wir priorisieren den Versand von einem Datencenter, das dem Standort Ihres Speicherkontos am nächsten liegt, senden jedoch ggf. ein Gerät von einem beliebigen Azure-Datencenter mit verfügbarem Bestand. Ihre Data Box muss an denselben Standort zurückgesendet werden, von dem sie ausgeliefert wurde (siehe Adressetikett).
+  - question: >
+      Ich muss ein Data Box nach Puerto Rico verschicken. Sind dafür besondere Anforderungen zu beachten?
+    answer: >
+      Wenn Sie ein Gerät nach Puerto Rico verschicken müssen, senden Sie eine E-Mail an [adbops@microsoft.com](mailto:adbops@microsoft.com), um entsprechende Anweisungen dafür zu erhalten. Sie werden dazu aufgefordert, eine Bestellung mithilfe einer Adresse in den USA zu erstellen aber dem Betriebsteam eine Adresse in Puerto Rico per E-Mai mitzuteilen. Für den Versand eines Geräts nach Puerto Rico werden keine zusätzlichen Versandkosten von UPS hinzugefügt.
   - question: >
       In der E-Ink-Anzeige wird das Rücksendeetikett nicht angezeigt. Wie sollte ich vorgehen?
     answer: "Wenn das Rücksendeetikett in der E-Ink-Anzeige nicht angezeigt wird, führen Sie die folgenden Schritte aus:\n- Entfernen Sie das alte Adressetikett und alle zur vorherigen Lieferung gehörigen Etiketten.\n- Wechseln Sie im Azure-Portal zu Ihrem Auftrag. Navigieren Sie zu **Übersicht** und **Versandetikett herunterladen**. Weitere Informationen finden Sie unter [Herunterladen von Adressetiketten](data-box-portal-admin.md#download-shipping-label).\n- Drucken Sie das Adressetikett, und stecken Sie es in die am Gerät angebrachte Klarsichthülle aus Kunststoff. \n- Stellen Sie sicher, dass das Adressetikett gut sichtbar ist. \n"

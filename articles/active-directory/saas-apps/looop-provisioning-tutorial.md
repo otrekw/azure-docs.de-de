@@ -2,21 +2,21 @@
 title: 'Tutorial: Konfigurieren von Looop für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Looop konfigurieren.
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
-ms.author: Zhchia
-ms.openlocfilehash: 528003ac482da6f254bf437321c70c389d23844b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: c17c56651dda65d5bd151f0f274af6ed377fb7df
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94835015"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114229775"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Looop für die automatische Benutzerbereitstellung
 
@@ -55,11 +55,11 @@ Bevor Sie Looop für die automatische Benutzerbereitstellung mit Azure AD konfig
 
 1. Melden Sie sich bei der [Looop-Verwaltungskonsole](https://app.looop.co/#/login) an, und wählen Sie **Konto** aus. Wählen Sie unter **Kontoeinstellungen** die Option **Authentifizierung** aus.
 
-    :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Screenshot der Looop-Verwaltungskonsole. Die Registerkarte „Konto“ ist hervorgehoben und geöffnet. Unter „Kontoeinstellungen“ ist „Authentifizierung“ hervorgehoben." border="false":::
+    ![Looop-Administrator](media/looop-provisioning-tutorial/admin.png)
 
 2. Generieren Sie ein neues Token, indem Sie unter **SCIM-Integration** auf **Token zurücksetzen** klicken.
 
-    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Screenshot des Abschnitts „SCIM-Integration“ einer Seite in der Looop-Verwaltungskonsole. Die Schaltfläche „Token zurücksetzen“ ist hervorgehoben." border="false":::
+    ![Looop-Token](media/looop-provisioning-tutorial/resettoken.png)
 
 3. Kopieren Sie die Werte für **SCIM Endpoint** (SCIM-Endpunkt) und **Access Token** (Zugriffstoken). Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Looop-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token** eingegeben. 
 
@@ -135,7 +135,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Looop synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Looop für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|Unterstützung für das Filtern|
+   |Attribut|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |aktiv|Boolean|
@@ -143,12 +143,13 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
    |name.givenName|String|
    |name.familyName|String|
    |externalId|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:area|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_1|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_2|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_3|String|
-   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:department|String|
-   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:employee_id|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:location|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:position|String|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:startAt|String|
@@ -159,7 +160,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Meta Networks Connector synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Meta Networks Connector für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    |Attribut|type|Unterstützung für das Filtern|
+    |Attribut|Typ|Unterstützung für das Filtern|
     |---|---|---|
     |displayName|String|&check;|
     |members|Verweis|
@@ -184,7 +185,12 @@ Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet,
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="change-log"></a>Änderungsprotokoll
+
+* Am 15.07.2021 wurden die Benutzerattribute für die Enterprise-Erweiterung **urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department**, **urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber** und die Attribute **urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager** hinzugefügt.
+* Am 15.07.2021 wurden die Benutzerdefinierte Attribute für die Erweiterung **urn:ietf:params:scim:schemas:extension:Looop:2.0:User:department** und die Attribute **urn:ietf:params:scim:schemas:extension:Looop:2.0:User:employee_id** entfernt.
+
+## <a name="more-resources"></a>Weitere Ressourcen
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

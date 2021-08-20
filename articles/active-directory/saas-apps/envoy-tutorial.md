@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/01/2021
+ms.date: 06/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 643ab787e07cdb1f3a61d1028838a2fc68a169f2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3342198600c3549a7ce5e1e52111233d4fa920d8
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147988"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110179"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Envoy
 
@@ -78,7 +78,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** den folgenden Schritt aus:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://app.envoy.com/a/saml/auth/<company-ID-from-Envoy>`
 
@@ -127,27 +127,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
 
-2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Envoy einrichten**, um zur Anwendung Envoy weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Envoy anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 7.
+2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Envoy einrichten**, um zur Anwendung Envoy weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Envoy anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 5.
 
     ![Einrichtungskonfiguration](common/setup-sso.png)
 
-3. Wenn Sie Envoy manuell einrichten möchten, melden Sie sich in einem neuen Webbrowserfenster bei der Envoy-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
+3. Wenn Sie Envoy manuell einrichten möchten, melden Sie sich in einem neuen Webbrowserfenster bei der Envoy-Unternehmenswebsite als Administrator an und führen Sie die nachfolgenden Schritte aus.
 
-4. Klicken Sie oben auf der Symbolleiste auf **Einstellungen**.
+4. Wechseln Sie zu  **Integrationen** > **Alle Integrationen** und klicken Sie unter **Einmaliges Anmelden** auf SAML **installieren**.
 
-    ![Envoy](./media/envoy-tutorial/envoy-1.png "Envoy")
+    ![SAML Authentication (SAML-Authentifizierung)](./media/envoy-tutorial/integrations.png "SAML-Authentifizierung")
 
-5. Klicken Sie auf **Unternehmen**.
+5. Navigieren Sie zum Abschnitt **Integrationen aktivieren** und führen Sie die folgenden Schritte aus:
 
-    ![Company](./media/envoy-tutorial/envoy-2.png "Company")
-
-6. Klicken Sie auf **SAML**.
-
-    ![SAML](./media/envoy-tutorial/envoy-3.png "SAML")
-
-7. Führen Sie im Konfigurationsabschitt **SAML-Authentifizierung** die folgenden Schritte aus:
-
-    ![SAML-Authentifizierung](./media/envoy-tutorial/envoy-4.png "SAML-Authentifizierung")
+    ![Einmaliges Anmelden](./media/envoy-tutorial/configuration.png "Einmaliges Anmelden")
     
     >[!NOTE]
     >Der Wert für die HQ-Speicherort-ID wird automatisch von der Anwendung generiert.
@@ -156,7 +148,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     
     b. Fügen Sie den Wert der **Anmelde-URL**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **IDENTITY PROVIDER HTTP SAML URL** (HTTP-SAML-URL DES IDENTITÄTSANBIETERS) ein.
     
-    c. Klicken Sie auf **Änderungen speichern**.
+    c. Klicken Sie auf **Speichern**.
 
 ### <a name="create-envoy-test-user"></a>Erstellen eines Envoy-Testbenutzers
 

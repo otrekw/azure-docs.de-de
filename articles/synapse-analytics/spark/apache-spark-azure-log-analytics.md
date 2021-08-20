@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: e9c1299c0847aa30e1e3e198d2165e2674164458
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3ed74340c4e234ae1ea4781d8b91451be6e366c4
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960838"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113515616"
 ---
 # <a name="tutorial-use-azure-log-analytics-to-collect-and-visualize-metrics-and-logs-preview"></a>Tutorial: Erfassen und Visualisieren von Metriken und Protokollen mithilfe von Azure Log Analytics (Vorschau)
 
@@ -117,11 +117,11 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 | spark.synapse.logAnalytics.keyVault.name            | -                            | Der Name der Azure Key Vault-Instanz für die ID und den Schlüssel von Azure Log Analytics.                                                                                                                                                |
 | spark.synapse.logAnalytics.keyVault.key.workspaceId | SparkLogAnalyticsWorkspaceId | Der Name des Azure Key Vault-Geheimnisses für die ID des Azure Log Analytics-Arbeitsbereichs.                                                                                                                                       |
 | spark.synapse.logAnalytics.keyVault.key.secret      | SparkLogAnalyticsSecret      | Der Name des Azure Key Vault-Geheimnisses für den Schlüssel des Azure Log Analytics-Arbeitsbereichs.                                                                                                                                      |
-| spark.synapse.logAnalytics.keyVault.uriSuffix       | ods.opinsights.azure.com     | Das [URI-Suffix][uri_suffix] des Azure Log Analytics-Zielarbeitsbereichs. Befindet sich Ihr Azure Log Analytics-Arbeitsbereich nicht in der globalen Azure-Region, muss das URI-Suffix an die entsprechende Cloud angepasst werden. |
+| spark.synapse.logAnalytics.uriSuffix       | ods.opinsights.azure.com     | Das [URI-Suffix][uri_suffix] des Azure Log Analytics-Zielarbeitsbereichs. Befindet sich Ihr Azure Log Analytics-Arbeitsbereich nicht in der globalen Azure-Region, muss das URI-Suffix an die entsprechende Cloud angepasst werden. |
 
 > [!NOTE]  
-> - Für Azure China-Clouds muss der Parameter „spark.synapse.logAnalytics.keyVault.uriSuffix“ auf „ods.opinsights.azure.cn“ festgelegt werden. 
-> - Für Azure Government-Clouds muss der Parameter „spark.synapse.logAnalytics.keyVault.uriSuffix“ auf „ods.opinsights.azure.us“ festgelegt werden. 
+> - Für Azure China-Clouds muss der Parameter „spark.synapse.logAnalytics.uriSuffix“ auf „ods.opinsights.azure.cn“ festgelegt werden. 
+> - Für Azure Government-Clouds muss der Parameter „spark.synapse.logAnalytics.uriSuffix“ auf „ods.opinsights.azure.us“ festgelegt werden. 
 
 [uri_suffix]: ../../azure-monitor/logs/data-collector-api.md#request-uri
 
@@ -205,6 +205,30 @@ Außerdem können Sie die Arbeitsmappe per Kusto-Abfrage anpassen und Warnungen 
    | summarize max(value_d) by bin(TimeGenerated, 30s), executorId_s
    | order by TimeGenerated asc
    ```
+
+## <a name="write-custom-application-logs"></a>Schreiben von benutzerdefinierten Anwendungsprotokollen
+
+Sie können die Apache Log4j-Bibliothek verwenden, um benutzerdefinierte Protokolle zu schreiben.
+
+Ein Beispiel für Scala:
+
+```scala
+%%spark
+val logger = org.apache.log4j.LogManager.getLogger("com.contoso.LoggerExample")
+logger.info("info message")
+logger.warn("warn message")
+logger.error("error message")
+```
+
+Ein Beispiel für PySpark:
+
+```python
+%%pyspark
+logger = sc._jvm.org.apache.log4j.LogManager.getLogger("com.contoso.PythonLoggerExample")
+logger.info("info message")
+logger.warn("warn message")
+logger.error("error message")
+```
 
 ## <a name="create-and-manage-alerts-using-azure-log-analytics"></a>Erstellen und Verwalten von Warnungen mithilfe von Azure Log Analytics
 
