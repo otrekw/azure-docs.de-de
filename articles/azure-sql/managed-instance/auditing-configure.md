@@ -12,13 +12,13 @@ f1_keywords:
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 05/26/2020
-ms.openlocfilehash: be5face0a93dc360493e22fd3d2c6d9743c4f5ff
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 06/21/2021
+ms.openlocfilehash: 9501c49bec8d2a632387ecb9b620dcbdc5a0ac1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072444"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356014"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Erste Schritte bei der Azure SQL Managed Instance-Überwachung
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,6 +27,9 @@ Bei der [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md)-Übe
 
 - Sie kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können.
 - Sie ermöglicht und unterstützt die Einhaltung von Standards, garantiert diese aber nicht. Weitere Informationen zu Azure-Programmen zur Unterstützung der Einhaltung von Standards finden Sie im [Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942). Dort ist die aktuelle Liste mit Compliancezertifizierungen enthalten.
+
+> [!IMPORTANT]
+> Die Überwachung für Azure SQL-Datenbank, Azure Synapse und Azure SQL Managed Instance ist für Verfügbarkeit und Leistung optimiert. Bei sehr hoher Aktivität oder hoher Netzwerkauslastung erlauben Azure SQL-Datenbank, Azure Synapse und Azure SQL Managed Instance das Fortsetzen von Vorgängen, sodass einige überwachte Ereignisse möglicherweise nicht aufgezeichnet werden.
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Einrichten der Überwachung für Ihren Server in Azure Storage
 
@@ -55,7 +58,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung für Ihre v
       ![Symbol zum Erstellen einer Blobcontainerkonfiguration](./media/auditing-configure/3_create_container_config.png)
 
     > [!IMPORTANT]
-    > Kunden, die eine unveränderliche Protokollspeicherung für Überwachungsereignisse auf Server- oder Datenbankebene konfigurieren möchten, sollten den [Anweisungen in Azure Storage](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes) folgen. (Stellen Sie sicher, dass Sie beim Konfigurieren des unveränderlichen Blobspeichers **Weitere Anfügungen zulassen** ausgewählt haben.)
+    > Kunden, die eine unveränderliche Protokollspeicherung für Überwachungsereignisse auf Server- oder Datenbankebene konfigurieren möchten, sollten den [Anweisungen in Azure Storage](../../storage/blobs/immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes) folgen. (Stellen Sie sicher, dass Sie beim Konfigurieren des unveränderlichen Blobspeichers **Weitere Anfügungen zulassen** ausgewählt haben.)
   
 3. Nach dem Erstellen des Containers für die Überwachungsprotokolle gibt es zwei Möglichkeiten, ihn als Ziel für die Überwachungsprotokolle zu konfigurieren: [mit T-SQL](#blobtsql) oder [mithilfe der Benutzeroberfläche von SQL Server Management Studio (SSMS)](#blobssms):
 

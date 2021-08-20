@@ -6,20 +6,15 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 08629ed8ce361f5d7ac4bb4d2e148ae5b20fff02
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 08/03/2021
+ms.openlocfilehash: 150d6b02ff2c11d2489c46b4dc2dd44fd2276b75
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315559"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355356"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---hyperscale-citus"></a>Lesereplikate in Azure Database for PostgreSQL – Hyperscale (Citus)
-
-> [!IMPORTANT]
-> Lesereplikate in Hyperscale (Citus) sind zurzeit als Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
->
-> Eine vollständige Liste der anderen neuen Features finden Sie unter [Vorschaufeatures für Hyperscale (Citus)](hyperscale-preview-features.md).
 
 Das Feature „Lesereplikat“ ermöglicht es Ihnen, Daten aus einer Hyperscale (Citus)-Servergruppe in eine schreibgeschützte Servergruppe zu replizieren. Replikate werden mithilfe der physischen Replikationstechnologie von PostgreSQL **asynchron** aktualisiert. Sie können vom primären Server in eine unbegrenzte Anzahl von Replikaten replizieren.
 

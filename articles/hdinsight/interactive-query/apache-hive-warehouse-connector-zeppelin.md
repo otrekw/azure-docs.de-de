@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 8c266861f10b32c63c48680ed548928613dc6b0d
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 6a7d58a1646e77e99ad7282af5be0dc1f8d2976d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064555"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340246"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrieren von Apache Zeppelin mit Hive Warehouse Connector in Azure HDInsight
 
@@ -93,24 +93,17 @@ Die folgenden Konfigurationen sind für den Zugriff auf Hive-Tabellen über Zepp
 
     | Konfiguration| Wert|
     |---|---|
-    | livy.spark.sql.hive.hiveserver2.jdbc.url.principal | `hive/<llap-headnode>@<AAD-Domain>` |
-
-    * Navigieren Sie in einem Webbrowser zu `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`. Hierbei ist „CLUSTERNAME“ der Name Ihres Interactive Query-Clusters. Klicken Sie auf **HiveServer2 Interactive**. Sie sehen den vollqualifizierten Domänennamen (FQDN) des Hauptknotens, auf dem LLAP ausgeführt wird, wie im Screenshot gezeigt. Ersetzen Sie `<llap-headnode>` durch diesen Wert.
-
-        :::image type="content" source="./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png" alt-text="Hauptknoten des Hive Warehouse Connectors" border="true":::
+    | livy.spark.sql.hive.hiveserver2.jdbc.url.principal | `hive/_HOST@<AAD-Domain>` |
 
     * Verwenden Sie den [Befehl „ssh“](../hdinsight-hadoop-linux-use-ssh-unix.md), um eine Verbindung mit Ihrem Interactive Query-Cluster herzustellen. Suchen Sie in der Datei `/etc/krb5.conf` nach dem Parameter `default_realm`. Ersetzen Sie `<AAD-DOMAIN>` durch diesen Wert als Zeichenfolge in Großbuchstaben, da die Anmeldeinformationen andernfalls nicht gefunden werden.
 
         :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Hive Warehouse Connector Azure AD-Domäne" border="true":::
 
-    * Beispielsweise `hive/hn*.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET`.
-
 1. Speichern Sie die Änderungen, und starten Sie den Livy-Interpreter neu.
 
 Wenn der Livy-Interpreter nicht verfügbar ist, passen Sie die `shiro.ini`-Datei an, die in der Zeppelin-Komponente in Ambari vorhanden ist. Weitere Informationen finden Sie unter [Konfigurieren der Apache Zeppelin-Sicherheit](https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.0.1/configuring-zeppelin-security/content/enabling_access_control_for_interpreter__configuration__and_credential_settings.html).  
 
-
-## <a name="running-queries-in-zeppelin"></a>Ausführen von Abfragen in Zeppelin 
+## <a name="running-queries-in-zeppelin"></a>Ausführen von Abfragen in Zeppelin
 
 Starten Sie ein Zeppelin-Notebook mithilfe des Livy-Interpreters, und führen Sie Folgendes aus:
 

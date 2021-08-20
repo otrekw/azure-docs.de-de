@@ -2,19 +2,18 @@
 title: Indizieren von Daten mit Power Query-Connectors (Vorschau)
 titleSuffix: Azure Cognitive Search
 description: Importieren Sie Daten aus verschiedenen Datenquellen mithilfe der Power Query-Connectors.
-manager: luisca
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: 0b886d195942f5f6334c983e464e812129466640
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e943452a285f943c05982a558c92315428e9829c
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949255"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729531"
 ---
 # <a name="index-data-using-power-query-connectors-preview"></a>Indizieren von Daten mit Power Query-Connectors (Vorschau)
 

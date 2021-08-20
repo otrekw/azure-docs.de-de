@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 12/9/2020
-ms.openlocfilehash: 3ce4f673657561e196520466b569d0cf83d75a8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b2de0d25c8bdba99e6559bdec1902e9cda7b35c
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019345"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583093"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Ausgaben von Azure Stream Analytics
 
@@ -25,10 +25,10 @@ Für einige Ausgabetypen wird die [Partitionierung](#partitioning) unterstützt,
 | Ausgabetyp | Partitionierung | Sicherheit | 
 |-------------|--------------|----------|
 |[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ja|Azure Active Directory-Benutzer </br> , verwaltete Identität|
-|[Azure SQL-Datenbank](sql-database-output.md)|Ja, optional|SQL-Benutzerauthentifizierung, </br> Verwaltete Identität (Vorschau)|
+|[Azure SQL-Datenbank](sql-database-output.md)|Ja, optional|SQL-Benutzerauthentifizierung, </br> Verwaltete Identität|
 |[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Ja|SQL-Benutzerauthentifizierung, </br> Verwaltete Identität (Vorschau)|
-|[Blob Storage und Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ja|Zugriffsschlüssel, </br> Verwaltete Identität (Vorschau)|
-|[Azure Event Hubs](event-hubs-output.md)|Ja, Sie müssen die Partitionsschlüsselspalte in der Ausgabekonfiguration festlegen.|Zugriffsschlüssel, </br> Verwaltete Identität (Vorschau)|
+|[Blob Storage und Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ja|Zugriffsschlüssel, </br> Verwaltete Identität|
+|[Azure Event Hubs](event-hubs-output.md)|Ja, Sie müssen die Partitionsschlüsselspalte in der Ausgabekonfiguration festlegen.|Zugriffsschlüssel, </br> Verwaltete Identität|
 |[Power BI](power-bi-output.md)|Nein|Azure Active Directory-Benutzer, </br> Verwaltete Identität|
 |[Azure Table Storage](table-storage-output.md)|Ja|Kontoschlüssel|
 |[Azure Service Bus-Warteschlangen](service-bus-queues-output.md)|Ja|Zugriffsschüssel|

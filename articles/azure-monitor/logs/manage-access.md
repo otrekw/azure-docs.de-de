@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 82e34bff573b746f7d9c4185fe6c24fa92de0394
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 38d0b9db730d82642fafda4a42751c35d6cac0f8
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321049"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356247"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
@@ -285,7 +285,7 @@ In den Beispielen oben wird eine Liste mit Tabellen definiert, die zulässig sin
 
 ### <a name="custom-logs"></a>Benutzerdefinierte Protokolle
 
- Benutzerdefinierte Protokolle werden aus Datenquellen wie etwa benutzerdefinierten Protokollen und der HTTP-Datensammler-API erstellt. Die einfachste Möglichkeit, den Typ des Protokolls zu identifizieren, besteht darin, die unter [Benutzerdefinierte Protokolle im Protokollschema](./log-analytics-tutorial.md#table-schema) aufgeführten Tabellen zu überprüfen.
+ Benutzerdefinierte Protokolle werden aus Datenquellen wie etwa benutzerdefinierten Protokollen und der HTTP-Datensammler-API erstellt. Die einfachste Möglichkeit, den Typ des Protokolls zu identifizieren, besteht darin, die unter [Benutzerdefinierte Protokolle im Protokollschema](./log-analytics-tutorial.md#view-table-information) aufgeführten Tabellen zu überprüfen.
 
  Sie können keinen Zugriff auf einzelne benutzerdefinierte Protokolle gewähren, aber Sie können Zugriff auf alle benutzerdefinierten Protokolle gewähren. Um eine Rolle mit Zugriff auf alle benutzerdefinierten Protokolle zu erstellen, erstellen Sie eine benutzerdefinierte Rolle mit den folgenden Aktionen:
 
@@ -312,4 +312,4 @@ Manchmal stammen benutzerdefinierte Protokolle aus Quellen, die nicht direkt ein
 
 * Informationen zum Erfassen der Daten von Computern in Ihrem Datencenter oder einer anderen Cloudumgebung finden Sie unter [Collect log data with the Azure Log Analytics agent](../agents/log-analytics-agent.md) (Sammeln von Protokolldaten mit dem Azure Log Analytics-Agent).
 
-* Informationen zum Konfigurieren der Datensammlung von virtuellen Azure-Computern finden Sie unter [Sammeln von Daten über virtuelle Azure-Computer](../vm/quick-collect-azurevm.md).
+* Informationen zum Konfigurieren der Datensammlung von virtuellen Azure-Computern finden Sie unter [Sammeln von Daten über virtuelle Azure-Computer](../vm/monitor-virtual-machine.md).

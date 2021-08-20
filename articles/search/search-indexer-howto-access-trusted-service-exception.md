@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2021
-ms.openlocfilehash: db614d99a3c25e6f782c0be6bea95ec82124b8e5
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 73512b0c1729fbdbbc62e0063670de8405ddbcb5
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111554838"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113000282"
 ---
 # <a name="indexer-access-to-azure-storage-using-the-trusted-service-exception-azure-cognitive-search"></a>Indexer-Zugriff auf Azure Storage mithilfe der Ausnahme für vertrauenswürdige Dienste (Azure Cognitive Search)
 
@@ -27,7 +27,7 @@ Indexer in einem Azure Cognitive Search-Dienst, die auf Daten in Azure Storage-
 Befolgen Sie die Anweisungen unter [Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität](search-howto-managed-identities-storage.md). Wenn Sie fertig sind, haben Sie Ihren Suchdienst bei Azure Active Directory als vertrauenswürdigen Dienst registriert und Berechtigungen in Azure Storage erteilt, die der Suchidentität bestimmte Rechte für den Zugriff auf Daten oder Informationen bietet.
 
 > [!NOTE]
-> Die Anweisungen führen Sie durch einen Portalansatz zum Konfigurieren von Cognitive Search als vertrauenswürdiger Dienst. Um dies im Code zu erreichen, können Sie die [REST-API](/rest/api/searchmanagement/services/createorupdate), [Azure PowerShell](search-manage-powershell.md#create-a-service-with-a-system-assigned-managed-identity)oder [Azure CLI](search-manage-azure-cli.md#create-a-service-with-a-system-assigned-managed-identity) verwenden.
+> Die Anweisungen führen Sie durch einen Portalansatz zum Konfigurieren von Cognitive Search als vertrauenswürdiger Dienst. Um dies im Code zu erreichen, können Sie die [REST-API](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update), [Azure PowerShell](search-manage-powershell.md#create-a-service-with-a-system-assigned-managed-identity)oder [Azure CLI](search-manage-azure-cli.md#create-a-service-with-a-system-assigned-managed-identity) verwenden.
 
 ## <a name="step-2-allow-trusted-microsoft-services-to-access-the-storage-account"></a>Schritt 2: Gewähren des Zugriffs vertrauenswürdiger Microsoft-Dienste auf das Speicherkonto
 

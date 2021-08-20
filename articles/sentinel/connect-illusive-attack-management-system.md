@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: ea7953be25473357f7ed572fa8b76076edc6f75a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2c4f48f77442d888be006c878a7e55d9a2b4fd2
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87038116"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343423"
 ---
 # <a name="connect-your-illusive-attack-management-system-to-azure-sentinel"></a>Verknüpfen Ihrer Illusive Attack Management System-Daten mit Azure Sentinel
 
 > [!IMPORTANT]
 > Der Illusive Attack Management System-Datenconnector in Azure Sentinel befindet sich derzeit in der öffentlichen Vorschau.
 > Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 In diesem Artikel erfahren Sie, wie Sie [Illusive Attack Management System](https://www.illusivenetworks.com/technology/platform/attack-detection-system) mit Azure Sentinel verknüpfen. Mit dem Connector für Illusive Attack Management System-Daten können Sie Analysedaten zur Angriffsfläche und Incidentprotokolle von Illusive für Azure Sentinel freigeben und diese Informationen in speziellen Dashboards anzeigen. So erhalten Sie Einblick in potenzielle Angriffsflächen für Ihre Organisation (ASM-Dashboard) und können Lateral Movement-Ereignisse im Netzwerk Ihrer Organisation nachverfolgen (ADS-Dashboard).
 
@@ -54,6 +56,6 @@ Konfigurieren Sie Attack Management System so, dass Syslog-Nachrichten im CEF-Fo
 
 In diesem Dokument haben Sie gelernt, wie Sie Illusive Attack Management System mit Azure Sentinel verknüpfen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](monitor-your-data.md), um Ihre Daten zu überwachen.

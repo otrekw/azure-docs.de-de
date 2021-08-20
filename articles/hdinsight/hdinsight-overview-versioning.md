@@ -3,15 +3,13 @@ title: 'Einführung in die Versionsverwaltung: Azure HDInsight'
 description: Erfahren Sie, wie die Versionsverwaltung in Azure HDInsight funktioniert.
 ms.service: hdinsight
 ms.topic: conceptual
-author: deshriva
-ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: 6db4c7856ebdf75d5bf94de1e3110bb25bc93e69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7b23a1d7e549d5e1e5b712d2290722158d49f38
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493865"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345786"
 ---
 # <a name="how-versioning-works-in-hdinsight"></a>Funktionsweise der Versionsverwaltung in HDInsight
 

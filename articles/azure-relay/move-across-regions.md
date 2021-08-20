@@ -2,14 +2,14 @@
 title: Verschieben eines Azure Relay-Namespace in eine andere Region
 description: In diesem Artikel erfahren Sie, wie Sie einen Azure Relay-Namespace aus der aktuellen Region in eine andere Region verschieben.
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 06/03/2021
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 60a182764639341fcda159356dd9fe6c65cfabd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f612dc5318044fd539724c66b4aa37df6d3dafa
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89463321"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667772"
 ---
 # <a name="move-an-azure-relay-namespace-to-another-region"></a>Verschieben eines Azure Relay-Namespace in eine andere Region
 In diesem Artikel erfahren Sie, wie Sie einen Azure Relay-Namespace aus der aktuellen Region in eine andere Region verschieben. Die allgemeinen Schritte sind folgende:

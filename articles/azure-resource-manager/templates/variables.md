@@ -2,13 +2,13 @@
 title: Variablen in Vorlagen
 description: Beschreibt, wie Variablen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert werden.
 ms.topic: conceptual
-ms.date: 05/14/2021
-ms.openlocfilehash: 02b80e4ee9cc6392353d6229d6437feb5a1a41ec
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 06/24/2021
+ms.openlocfilehash: 0a9b49c36f25295ab06e724773e1494c10eb1f08
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959310"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893112"
 ---
 # <a name="variables-in-arm-templates"></a>Variablen in ARM-Vorlagen
 

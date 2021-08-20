@@ -7,12 +7,12 @@ ms.date: 07/09/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 39e4b23b4f007c790dcfe495661628a53a9293d8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e53bcbca2e40ef9a9587e0b571f2798132c2a829
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111743889"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033585"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurieren des Zuweisungstyps für den Hostpool mit persönlichen Desktops
 
@@ -87,8 +87,8 @@ So weisen Sie im Azure-Portal einen Benutzer einem Sitzungshost direkt zu
 
 Nachdem Sie den persönlichen Desktopzuweisungstyp konfiguriert haben, können Sie sich an einem Azure Virtual Desktop-Client anmelden, um ihn als Teil einer Benutzersitzung zu testen. In den nächsten zwei Vorgehensweisen erfahren Sie, wie Sie mit dem ausgewählten Client eine Verbindung zu einer Sitzung herstellen:
 
-- [Herstellen einer Verbindung mit dem Windows-Desktopclient](connect-windows-7-10.md)
-- [Herstellen einer Verbindung mit dem Webclient](connect-web.md)
-- [Herstellen einer Verbindung mit dem Android-Client](connect-android.md)
-- [Herstellen einer Verbindung mit dem iOS-Client](connect-ios.md)
-- [Herstellen einer Verbindung mit dem macOS-Client](connect-macos.md)
+- [Herstellen einer Verbindung mit dem Windows-Desktopclient](./user-documentation/connect-windows-7-10.md)
+- [Herstellen einer Verbindung mit dem Webclient](./user-documentation/connect-web.md)
+- [Herstellen einer Verbindung mit dem Android-Client](./user-documentation/connect-android.md)
+- [Herstellen einer Verbindung mit dem iOS-Client](./user-documentation/connect-ios.md)
+- [Herstellen einer Verbindung mit dem macOS-Client](./user-documentation/connect-macos.md)

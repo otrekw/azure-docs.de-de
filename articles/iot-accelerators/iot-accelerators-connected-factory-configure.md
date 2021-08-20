@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 863734596861f3116418cb322a1e4a8ae9c8ea40
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645609"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347143"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurieren des Solution Accelerators für Connected Factory
 
@@ -32,7 +32,7 @@ Jede der Fabrikanlagen von Contoso verfügt über Produktionslinien mit jeweils 
 * Teststation
 * Verpackungsstation
 
-Diese OPC UA-Server umfassen OPC UA-Knoten, und der [OPC-Herausgeber](overview-opc-publisher.md) sendet die Werte dieser Knoten an die Connected Factory-Lösung. Dies umfasst Folgendes:
+Diese OPC UA-Server umfassen OPC UA-Knoten, und der [OPC-Herausgeber](/previous-versions/azure/iot-accelerators/overview-opc-publisher) sendet die Werte dieser Knoten an die Connected Factory-Lösung. Dies umfasst Folgendes:
 
 * Aktueller Betriebsstatus, beispielsweise der aktuelle Energieverbrauch.
 * Produktionsinformationen wie z.B. die Anzahl der produzierten Produkte.
@@ -310,7 +310,7 @@ Für bestimmte Vorgänge, z.B. zur Visualisierung des letzten Werts oder zum Ers
 
   Identifiziert den Knotenwert im OPC UA-Server. Das Format der Eigenschaft muss der OPC UA-Spezifikation entsprechen. In den erfassten Nachrichten wird diese Eigenschaft als **NodeId** gesendet.
 
-Unter [What is OPC Publisher?](overview-opc-publisher.md) (Was ist der OPC-Herausgeber?) erhalten Sie weitere Informationen dazu, wie die Telemetriedaten in der Lösung „Connected Factory“ (Vernetzte Fabrik) erfasst werden.
+Unter [What is OPC Publisher?](/previous-versions/azure/iot-accelerators/overview-opc-publisher) (Was ist der OPC-Herausgeber?) erhalten Sie weitere Informationen dazu, wie die Telemetriedaten in der Lösung „Connected Factory“ (Vernetzte Fabrik) erfasst werden.
 
 ## <a name="example-how-kpi1-is-calculated"></a>Beispiel: KPI1-Berechnung
 
