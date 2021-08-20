@@ -2,13 +2,13 @@
 title: Erkennen der Überquerung einer virtuellen Linie durch Objekte in einem Livevideo mithilfe von Azure Video Analyzer
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Video Analyzer verwenden, um die Überquerung einer Linie durch Objekte in einem Livevideofeed einer (simulierten) IP-Kamera zu erkennen.
 ms.topic: tutorial
-ms.date: 05/18/2021
-ms.openlocfilehash: 8cca0aca44f2cb2ebdbee7869d189b0cd2b2451f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/01/2021
+ms.openlocfilehash: 0b87d80c5dcc7a72bf940cac3573ee5e68964022
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465658"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604655"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>Tutorial: Erkennen der Überquerung einer virtuellen Linie durch Objekte in einem Livevideo
 
@@ -98,11 +98,11 @@ Navigieren Sie in Visual Studio Code zum Ordner „src/cloud-to-device-console-a
 1. Bearbeiten Sie die Datei operations.json:
     
     * Ändern Sie den Link zur Pipelinetopologie:
-    * "pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/line-crossing/topology.json"
-    * Bearbeiten Sie unter „livePipelineSet“ den Namen der Topologie, sodass er mit dem Wert im vorherigen Link übereinstimmt:
-    * "topologyName" : "LineCrossingWithHttpExtension"
+    * `"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/line-crossing/topology.json"`
+    * Bearbeiten Sie unter `livePipelineSet` den Namen der Topologie, damit er mit dem Wert im vorherigen Link übereinstimmt:
+    * `"topologyName" : "LineCrossingWithHttpExtension"`
     * Ändern Sie unter `pipelineTopologyDelete` den Namen:
-    * "name" : "LineCrossingWithHttpExtension"
+    * `"name" : "LineCrossingWithHttpExtension"`
     
 Öffnen Sie die URL für die Pipelinetopologie in einem Browser, und überprüfen Sie die Einstellungen für den HTTP-Erweiterungsknoten.
 
@@ -113,7 +113,7 @@ Navigieren Sie in Visual Studio Code zum Ordner „src/cloud-to-device-console-a
    }
 ```
 
-Hier wird `skipSamplesWithoutAnnotation` auf `false` festgelegt, da der Erweiterungsknoten alle Frames an den Downstream-Objektnachverfolgungsknoten übergeben muss – unabhängig davon, ob sie über Rückschlussergebnisse verfügen. Mit der Objektnachverfolgung können Objekte über ca. 15 Frames hinweg verfolgt werden. Wenn das Livevideo eine Bildfrequenz von 30 Frames/Sek. hat, sollten mindestens zwei Frames pro Sekunde zum Rückschluss an den HTTP-Server gesendet werden. Daher wird `maximumSamplesPerSecond` auf „2“ festgelegt. Dadurch ergeben sich effektiv 15 Frames/Sek.
+Hier wird `skipSamplesWithoutAnnotation` auf `false` festgelegt, da der Erweiterungsknoten alle Frames an den Downstream-Objektnachverfolgungsknoten übergeben muss – unabhängig davon, ob sie über Rückschlussergebnisse verfügen. Mit der Objektnachverfolgung können Objekte über ca. 15 Frames hinweg verfolgt werden. Wenn das Livevideo eine Bildfrequenz von 30 Frames pro Sekunde hat, sollten mindestens zwei Frames pro Sekunde zur Rückschlussermittlung an den HTTP-Server gesendet werden. Ihr KI-Modell verfügt über einen maximalen FPS-Wert für die Verarbeitung. Dies ist der höchste Wert, auf den `maximumSamplesPerSecond` festgelegt werden sollte.
 
 Sehen Sie sich auch die Parameterplatzhalter `linecrossingName` und `lineCoordinates` für den Linienüberquerungsknoten an. Wir haben zwar Standardwerte für diese Parameter angegeben, Sie überschreiben diese aber mithilfe der Datei „operations.json“. Sehen Sie sich an, wie andere Parameter aus der Datei „operations.json“ an eine Topologie (RTSP-URL) übergeben werden.  
 

@@ -2,20 +2,19 @@
 title: Info zur Architektur einer Lösung ohne Agent
 description: Erfahren Sie etwas über die Architektur ohne Agents und den Informationsfluss von Azure Defender für IoT.
 ms.topic: overview
-ms.date: 1/25/2021
-ms.author: shhazam
-ms.openlocfilehash: bd639ca2656b901bd87fccf36fb4a5d90d3bf918
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 07/19/2021
+ms.openlocfilehash: cec373f3848e264b7c9f4b9753315189da77bc0b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011209"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455226"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Architektur von Azure Defender für IoT
 
 In diesem Artikel wird die funktionale Systemarchitektur der Defender für IoT-Lösung ohne Agents beschrieben. Azure Defender für IoT stellt für die Anforderungen in Ihrer Umgebung zwei Gruppen von Funktionen bereit: Unternehmenslösung ohne Agent und Agent-basierte Lösung für Gerätehersteller.
 
-## <a name="agentless-solution-for-organizations"></a>Unternehmenslösung ohne Agent
+## <a name="agentless-solution-architecture-for-organizations"></a>Architektur der Lösung ohne Agent für Organisationen
 ### <a name="defender-for-iot-components"></a>Defender für IoT-Komponenten
 
 Defender für IoT stellt sowohl mit der Azure-Cloud als auch mit lokalen Komponenten Verbindungen her. Die Lösung ist für Skalierbarkeit in großen und geografisch verteilten Umgebungen mit mehreren Remotestandorten konzipiert. Diese Lösung ermöglicht eine verteilte Architektur mit mehreren Ebenen nach Land, Region, Geschäftseinheit oder Zone. 

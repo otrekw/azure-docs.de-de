@@ -12,12 +12,12 @@ metadata:
   ms.author: dfurman
   ms.reviewer: mathoma
   ms.date: 03/31/2021
-  ms.openlocfilehash: 993254f838af70c62292844991ba72c6977dfd99
-  ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+  ms.openlocfilehash: b173b2ce8de29a4a605e7223bc46130155b81b3d
+  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/24/2021
-  ms.locfileid: "112574789"
+  ms.lasthandoff: 07/24/2021
+  ms.locfileid: "114668762"
 title: Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 summary: >
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -126,7 +126,7 @@ sections:
   - question: >
       Für welche Art von Workloads ist Hyperscale konzipiert?
     answer: >
-      Hyperscale unterstützt alle SQL Server-Workloads, wurde aber in erster Linie für OLTP optimiert. Zudem können Sie Hybrid- (HTAP-) und Analyseworkloads (Data Mart) migrieren.
+      Hyperscale unterstützt alle Workloadtypen, z. B. OLTP, Hybrid (HTAP) und Analyse (Data Mart).
   - question: >
       Wie kann ich zwischen Azure Synapse Analytics und Azure SQL-Datenbank Hyperscale wählen?
     answer: "Wenn Sie zurzeit interaktive Analyseabfragen mit SQL Server als Data Warehouse ausführen, stellt Hyperscale eine hervorragende Option dar, weil Sie kleine und mittelgroße Data Warehouses (z.B. von wenigen TB bis hin zu 100 TB) zu geringeren Kosten hosten und Ihre SQL Server Data Warehouse-Workloads mit nur minimalen Änderungen am T-SQL-Code zu Hyperscale migrieren können.\n\nWenn Sie Datenanalysen im großen Umfang mit komplexen Abfragen und nachhaltigen Erfassungsraten von mehr als 100 MB/Sek. oder aber mithilfe von Parallel Data Warehouse (PDW), Teradata oder anderen Data Warehouses mit MPP-Design (Massively Parallel Processing) durchführen, ist Azure Synapse Analytics möglicherweise die beste Wahl.\n  \n"
@@ -143,11 +143,11 @@ sections:
   - question: >
       Kann ich mehrere Computereplikate unterschiedlicher Größe bereitstellen?
     answer: >
-      Nein.
+      Ja. Hierfür können Sie [benannte Replikate](service-tier-hyperscale-replicas.md#named-replica-in-preview) verwenden.
   - question: >
       Wie viele Replikate mit horizontaler Leseskalierung werden unterstützt?
     answer: >
-      Die Hyperscale-Datenbanken werden standardmäßig mit einem Replikat mit horizontaler Leseskalierung (zwei Replikate, einschließlich des primären Replikats) erstellt. Sie können die Anzahl der schreibgeschützten Replikate zwischen 0 und 4 über das [Azure Portal](https://portal.azure.com) oder die [REST-API](/rest/api/sql/databases/createorupdate) skalieren.
+      Die Hyperscale-Datenbanken werden standardmäßig mit einem Replikat mit horizontaler Leseskalierung (zwei Replikate, einschließlich des primären Replikats) erstellt. Sie können die Anzahl der schreibgeschützten Replikate zwischen 0 und 4 über das [Azure Portal](https://portal.azure.com) oder die [REST-API](/rest/api/sql/databases/createorupdate) skalieren. Darüber hinaus können auch viele Leseskalierungsszenarien mit [benannten Replikaten](service-tier-hyperscale-replicas.md#named-replica-in-preview) ermöglicht werden.
   - question: >
       Muss ich zur Erzielung von Hochverfügbarkeit zusätzliche Computereplikate bereitstellen?
     answer: >
@@ -170,7 +170,7 @@ sections:
   - question: >
       Kann `tempdb` mit zunehmendem Wachstum skaliert werden?
     answer: >
-      Ihre `tempdb`-Datenbank befindet sich im lokalen SSD-Speicher. Ihre Größe ist proportional zu der Computegröße, die Sie bereitstellen. Ihre `tempdb` ist für die Bereitstellung von maximaler Leistung optimiert. Die Größe von `tempdb` kann nicht konfiguriert werden und wird für Sie verwaltet.
+      Ihre `tempdb`-Datenbank befindet sich im lokalen SSD-Speicher. Ihre Größe ist proportional zu der Computegröße, die Sie bereitstellen. Ihre `tempdb` ist für die Bereitstellung von maximaler Leistung optimiert. Die Größe von `tempdb` kann nicht konfiguriert werden und wird für Sie verwaltet. Informationen zur Ermittlung der maximalen `tempdb`-Größe für Ihre Datenbank finden Sie im Artikel zum [Hyperscale-Speicher und den Computegrößen](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5).
   - question: >
       Wird die Datenbankgröße automatisch skaliert, oder muss ich die Größe von Datendateien verwalten?
     answer: >
@@ -222,7 +222,7 @@ sections:
   - question: >
       Müssen bei der Migration zur Dienstebene „Hyperscale“ Einbußen hinsichtlich des Funktionsumfangs in Kauf genommen werden?
     answer: >
-      Ja. Einige Features von Azure SQL-Datenbank werden in Hyperscale noch nicht unterstützt, wie u. a. die langfristige Sicherungsaufbewahrung. Nach der Migration Ihrer Datenbanken zu Hyperscale funktionieren diese Features nicht mehr.  Wir gehen davon aus, dass diese Einschränkungen nur temporär bestehen.
+      Ja. Einige Features von Azure SQL-Datenbank werden in Hyperscale noch nicht unterstützt, wie u. a. die langfristige Sicherungsaufbewahrung. Nach der Migration Ihrer Datenbanken zu Hyperscale funktionieren diese Features nicht mehr.  Wir gehen davon aus, dass diese Einschränkungen nur temporär bestehen. Ausführlichere Informationen finden Sie unter [Bekannte Einschränkungen](service-tier-hyperscale.md#known-limitations).
   - question: >
       Kann ich meine lokale SQL Server-Datenbank oder meine SQL Server-Datenbank auf einem virtuellen Cloudcomputer zu Hyperscale migrieren?
     answer: >
@@ -272,7 +272,7 @@ sections:
   - question: >
       Wie oft werden Datenbanksicherungen durchgeführt?
     answer: >
-      Bei Hyperscale gibt es keine konventionellen vollständigen differenziellen Sicherungen oder Protokollsicherungen. Stattdessen gibt es reguläre Speichermomentaufnahmen von Datendateien. Das generierte Protokoll wird während des konfigurierten Aufbewahrungszeitraums einfach unverändert aufbewahrt, sodass die Wiederherstellung bis zu jedem beliebigen Zeitpunkt innerhalb dieses Zeitraums möglich ist.
+      Bei Hyperscale gibt es keine konventionellen vollständigen differenziellen Sicherungen oder Protokollsicherungen. Stattdessen gibt es reguläre Speichermomentaufnahmen von Datendateien. Das generierte Protokoll wird während des konfigurierten Aufbewahrungszeitraums unverändert aufbewahrt, sodass die Wiederherstellung bis zu jedem beliebigen Zeitpunkt innerhalb dieses Zeitraums möglich ist.
   - question: >
       Unterstützt Hyperscale Zeitpunktwiederherstellungen?
     answer: >
@@ -280,7 +280,7 @@ sections:
   - question: >
       Wie lange dauert die Recovery Point Objective (RPO)/Recovery Time Objective (RTO) bei einer Datenbankwiederherstellung in Hyperscale?
     answer: >
-      Der RPO-Wert beträgt 0 Minuten. Die meisten Wiederherstellungsvorgänge werden unabhängig von der Datenbankgröße innerhalb von 60 Minuten abgeschlossen. Die Wiederherstellungszeit kann für größere Datenbanken und dann länger sein, wenn für die Datenbank vor und bis zum Wiederherstellungszeitpunkt beträchtliche Schreibaktivitäten aufgetreten sind.
+      Der RPO-Wert für die Zeitpunktwiederherstellung beträgt 0 Minuten. Die meisten Vorgänge zur Zeitpunktwiederherstellung können unabhängig von der Datenbankgröße innerhalb von 60 Minuten abgeschlossen werden. Die Wiederherstellungszeit kann für größere Datenbanken und dann länger sein, wenn für die Datenbank vor und bis zum Wiederherstellungszeitpunkt beträchtliche Schreibaktivitäten aufgetreten sind.
   - question: >
       Wirkt sich die Datenbanksicherung auf die Computeleistung auf primären oder sekundären Replikaten aus?
     answer: >
@@ -292,7 +292,7 @@ sections:
   - question: >
       Kann ich mit einer Hyperscale-Datenbank Georeplikation einrichten?
     answer: >
-      Die [Georeplikation](active-geo-replication-overview.md) für Hyperscale-Datenbanken befindet sich in der öffentlichen Vorschau.
+      Ja. Die [Georeplikation](active-geo-replication-overview.md) für Hyperscale-Datenbanken befindet sich in der öffentlichen Vorschau.
   - question: >
       Kann ich eine Hyperscale-Datenbanksicherung auf meinem lokalen Server oder unter SQL Server auf einem virtuellen Computer wiederherstellen?
     answer: >
@@ -302,7 +302,7 @@ sections:
   - question: >
       Müssen bei der Migration zur Dienstebene „Hyperscale“ Einbußen hinsichtlich des Funktionsumfangs in Kauf genommen werden?
     answer: >
-      Ja. Einige Features von Azure SQL-Datenbank werden in Hyperscale nicht unterstützt, wie u. a. die langfristige Sicherungsaufbewahrung. Nach der Migration Ihrer Datenbanken zu Hyperscale funktionieren diese Features nicht mehr.
+      Ja. Einige Features von Azure SQL-Datenbank werden in Hyperscale nicht unterstützt, wie u. a. die langfristige Sicherungsaufbewahrung. Nach der Migration Ihrer Datenbanken zu Hyperscale funktionieren diese Features nicht mehr. Ausführlichere Informationen finden Sie unter [Bekannte Einschränkungen](service-tier-hyperscale.md#known-limitations).
   - question: >
       Funktioniert PolyBase bei Hyperscale?
     answer: >
@@ -324,7 +324,7 @@ sections:
   - question: >
       Wie viele IOPS erhalte ich im größten Computevorgang?
     answer: >
-      Die IOPS- bzw. IO-Wartezeit variiert abhängig von den Workloadmustern. Wenn die Daten, auf die zugegriffen wird, im Computereplikat zwischengespeichert werden, ist die E/A-Leistung ähnlich wie mit lokalem SSD.
+      Die IOPS- bzw. IO-Wartezeit variiert abhängig von den Workloadmustern. Wenn die Daten, auf die zugegriffen wird, unter RBPEX auf dem Computereplikat zwischengespeichert werden, erzielen Sie eine ähnliche E/A-Leistung wie bei den Dienstebenen „Unternehmenskritisch“ oder „Premium“.
   - question: >
       Beeinträchtigen Sicherungen meinen Durchsatz?
     answer: >
@@ -350,14 +350,14 @@ sections:
   - question: >
       Wird die Verbindung bei Skalierungsvorgängen getrennt?
     answer: >
-      Zentrales Hoch- oder Herunterskalieren führt dazu, dass bestehende Verbindungen getrennt werden, wenn am Ende des Skalierungsvorgangs ein Failover auftritt. Das Hinzufügen von sekundären Replikaten führt nicht zu Verbindungsausfällen.
+      Zentrales Hoch- oder Herunterskalieren führt dazu, dass bestehende Verbindungen getrennt werden, wenn am Ende des Skalierungsvorgangs ein Failover auftritt. Das Hinzufügen oder Entfernen von sekundären Replikaten führt nicht zu Verbindungstrennungen auf dem primären Replikat.
   - question: >
       Erfolgt das zentrale Hoch- und Herunterskalieren der Computereplikate automatisch, oder wird dieser Vorgang durch den Endbenutzer ausgelöst?
     answer: "Durch den Endbenutzer. Dies ist kein automatischer Vorgang.  \n"
   - question: >
       Werden beim Hochskalieren des Computevorgangs auch meine `tempdb`-Datenbank und mein RBPEX-Cache vergrößert?
     answer: >
-      Ja. Die Größe der `tempdb`-Datenbank und die Größe des [RBPEX-Cache](service-tier-hyperscale.md#distributed-functions-architecture) auf Computeknoten werden automatisch hochskaliert, wenn die Anzahl der Kerne erhöht wird.
+      Ja. Die Größe der `tempdb`-Datenbank und die Größe des [RBPEX-Cache](service-tier-hyperscale.md#distributed-functions-architecture) auf Computeknoten werden automatisch hochskaliert, wenn die Anzahl der Kerne erhöht wird. Ausführlichere Informationen finden Sie im Artikel zum [Hyperscale-Speicher und den Computegrößen](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5).
   - question: >
       Kann ich mehrere primäre Computereplikate, z. B. ein Multimastersystem, bereitstellen, bei dem mehrere primäre Computeheads zu einem höheren Maß an Parallelität führen können?
     answer: >

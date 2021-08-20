@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Migrieren von Webdiensten aus Bing Karten | Microsoft Azure Maps'
+title: 'Tutorial: Migrieren von Webdiensten aus Bing Karten zu Microsoft Azure Maps'
 description: Tutorial zum Migrieren von Webdiensten aus Bing Karten zu Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 07fbe0cff104c25eca6db2750c2db692429ada65
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 605d30a6e209b8da9e772a95f6318a4aa679c704
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786512"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112578935"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>Tutorial: Migrieren von Webdiensten aus Bing Karten
 
@@ -199,7 +199,6 @@ Der Routenplanungsdienst von Azure Maps stellt die folgenden APIs zum Berechnen 
 
 -   [Berechnen der Route:](/rest/api/maps/route/getroutedirections)  Berechnen Sie die Route, und lassen Sie die Anforderung sofort verarbeiten. Diese API unterstützt sowohl GET- als auch POST-Anforderungen. POST-Anforderungen werden empfohlen, wenn eine große Anzahl von Wegpunkten angegeben wird oder wenn viele der Routenoptionen verwendet werden, um sicherzustellen, dass die URL-Anforderung nicht zu lang wird und Probleme verursacht.
 -   [Batchroute:](/rest/api/maps/route/postroutedirectionsbatchpreview)  Erstellen Sie eine Anforderung mit bis zu 1.000 Routenanforderungen, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Daten werden auf dem Server parallel verarbeitet. Nach Abschluss des Vorgangs kann das vollständige Resultset heruntergeladen werden.
--   [Mobilitätsdienste (Vorschauversion)](/rest/api/maps/mobility): Berechnen Sie Routen und Wegbeschreibungen mit dem öffentlichen Nahverkehr.
 
 In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichbaren API-Parametern in Azure Maps gegenübergestellt.
 
@@ -281,8 +280,8 @@ In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichb
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints`: Übergibt diese Punkte an den Text der Post-Anforderung.  |
 | `interpolate`              | –                                                                 |
-| `includeSpeedLimit`        | Nicht zutreffend                                                                 |
-| `includeTruckSpeedLimit`   | Nicht zutreffend                                                                 |
+| `includeSpeedLimit`        | –                                                                 |
+| `includeTruckSpeedLimit`   | –                                                                 |
 | `speedUnit`                | –                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key`: Weitere Informationen finden Sie auch in der Dokumentation zur [Authentifizierung mit Azure Maps](./azure-maps-authentication.md). |
@@ -343,7 +342,7 @@ In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichb
 | `mapLayer` (`ml`)        | –                                            |
 | `mapSize` (`ms`)         | `width` und `height`: Es sind Größen bis 8.192 × 8.192 möglich. |
 | `declutterPins` (`dcl`)  | –                                            |
-| `dpi`                    | Nicht zutreffend                                            |
+| `dpi`                    | –                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | –                                            |
 | `pitch`                  | N/V: Straßenansicht wird nicht unterstützt.                |
@@ -451,7 +450,7 @@ In Azure Maps können Linien und Polygone einem statischen Kartenbild ebenfalls 
 
 > `&path=pathStyles||pathLocation1|pathLocation2|...`
 
-Hinsichtlich der Pfadpositionen müssen bei Azure Maps die Koordinaten im Format `longitude latitude` angegeben werden, während Bing Karten `latitude,longitude` verwendet. Beachten Sie auch, dass in Azure Maps **ein Leerzeichen anstelle eines Kommas als Trennzeichen** zwischen Längen- und Breitengrad verwendet wird. Azure Maps unterstützt aktuell keine codierten Pfade. Größere Datasets können als GeoJSON-Dateien in die Azure Maps-Datenspeicher-API hochgeladen werden, wie [hier](./how-to-render-custom-data.md#get-data-from-azure-maps-data-storage) beschrieben wird.
+Hinsichtlich der Pfadpositionen müssen bei Azure Maps die Koordinaten im Format `longitude latitude` angegeben werden, während Bing Karten `latitude,longitude` verwendet. Beachten Sie auch, dass in Azure Maps **ein Leerzeichen anstelle eines Kommas als Trennzeichen** zwischen Längen- und Breitengrad verwendet wird. Azure Maps unterstützt aktuell keine codierten Pfade. Größere Datasets können als GeoJSON-Dateien in die Azure Maps-Datenspeicher-API hochgeladen werden, wie [hier](./how-to-render-custom-data.md#upload-pins-and-path-data) beschrieben wird.
 
 In Azure Maps werden Pfadstile im Format `optionNameValue` hinzugefügt, wobei mehrere Stile durch einen senkrechten Strich (`|`) voneinander getrennt werden, z. B. `optionName1Value1|optionName2Value2`. Beachten Sie, dass die Optionsnamen und -werte nicht voneinander getrennt werden. Die folgenden Stiloptionsnamen können für den Stil von Pfaden in Azure Maps verwendet werden:
 

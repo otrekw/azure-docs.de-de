@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c8513faa74959b679eedcf95710c7915364504ca
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b3e9332706c3bcc9d4f4cabd20d10fa099271d69
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962705"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285329"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken
 
@@ -28,7 +28,7 @@ In diesem Abschnitt werden die verschiedenen Konfigurationsmöglichkeiten der Az
 
 ### <a name="key-vault-firewall-disabled-default"></a>Key Vault-Firewall deaktiviert (Standardeinstellung)
 
-Wenn Sie einen neuen Schlüsseltresor erstellen, ist die Azure Key Vault-Firewall standardmäßig deaktiviert. Alle Anwendungen und Azure-Dienste können auf den Schlüsseltresor zugreifen und Anforderungen an den Schlüsseltresor senden. Diese Konfiguration bedeutet allerdings nicht, dass jeder beliebige Benutzer Vorgänge für Ihren Schlüsseltresor ausführen kann. Für den Zugriff auf im Schlüsseltresor gespeicherte Geheimnisse, Schlüssel und Zertifikate sind trotzdem eine Azure Active Directory-Authentifizierung und Zugriffsrichtlinienberechtigungen erforderlich. Ausführlichere Informationen zur Schlüsseltresorauthentifizierung finden Sie unter [Grundlagen der Key Vault-Authentifizierung](/azure/key-vault/general/authentication.md). Weitere Informationen finden Sie unter [Zugreifen auf Azure Key Vault hinter einer Firewall](./access-behind-firewall.md).
+Wenn Sie einen neuen Schlüsseltresor erstellen, ist die Azure Key Vault-Firewall standardmäßig deaktiviert. Alle Anwendungen und Azure-Dienste können auf den Schlüsseltresor zugreifen und Anforderungen an den Schlüsseltresor senden. Diese Konfiguration bedeutet allerdings nicht, dass jeder beliebige Benutzer Vorgänge für Ihren Schlüsseltresor ausführen kann. Für den Zugriff auf im Schlüsseltresor gespeicherte Geheimnisse, Schlüssel und Zertifikate sind trotzdem eine Azure Active Directory-Authentifizierung und Zugriffsrichtlinienberechtigungen erforderlich. Ausführlichere Informationen zur Schlüsseltresorauthentifizierung finden Sie unter [Grundlagen der Key Vault-Authentifizierung](./authentication.md). Weitere Informationen finden Sie unter [Zugreifen auf Azure Key Vault hinter einer Firewall](./access-behind-firewall.md).
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault-Firewall aktiviert (nur vertrauenswürdige Dienste)
 
@@ -72,7 +72,7 @@ Informationen zum Konfigurieren einer Private Link-Verbindung für Ihren Schlü
 
 > [!NOTE]
 > Bedenken Sie dabei folgende Konfigurationseinschränkungen:
-> * Maximal 127 VNET-Regeln und 127 IPv4-Regeln sind zulässig. 
+> * Maximal 200 VNET-Regeln und 1.000 IPv4-Regeln sind zulässig. 
 > * IP-Netzwerkregeln sind nur für öffentliche IP-Adressen zulässig. Für private Netzwerke reservierte IP-Adressbereiche (gemäß RFC 1918) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit **10.** , **172.16-31** und **192.168.** beginnen. 
 > * Derzeit werden nur IPv4-Adressen unterstützt.
 

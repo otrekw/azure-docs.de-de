@@ -1,18 +1,18 @@
 ---
 title: Ermitteln physischer Server mit der Ermittlung und Bewertung von Azure Migrate
 description: Hier erfahren Sie, wie Sie lokale physische Server mit der Ermittlung und Bewertung von Azure Migrate ermitteln.
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 7ff8a7739c0018d415ad503e888d63d04e641153
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 0878911bdd3caa2202ef993142aa89e4eabfe33c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751201"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464840"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln physischer Server mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -79,11 +79,42 @@ Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Be
 
 Richten Sie ein Konto ein, das von der Appliance für den Zugriff auf die physischen Server verwendet werden kann.
 
-- Verwenden Sie für **Windows-Server** ein Domänenkonto für in die Domäne eingebundene Server und ein lokales Konto für nicht in die Domäne eingebundene Server. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer.
-    > [!Note]
-    > Stellen Sie bei Windows Server 2008 und 2008 R2 sicher, dass WMF 3.0 auf den Servern installiert ist und dass das Domänenkonto/das lokale Konto, das für den Serverzugriff verwendet wird, den folgenden Gruppen hinzugefügt wird: „Systemmonitorbenutzer“, „Leistungsprotokollbenutzer“ und „WinRMRemoteWMIUsers“.
+**Windows-Server**
 
-- Für **Linux-Server** benötigen Sie ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. Alternativ dazu können Sie auch mithilfe der folgenden Befehle ein Konto mit den erforderlichen Funktionen festlegen, bei dem es sich nicht um das root-Konto handelt:
+- Verwenden Sie für Windows-Server ein Domänenkonto für in die Domäne eingebundene Server und ein lokales Konto für nicht in die Domäne eingebundene Server. 
+- Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer. 
+- Wenn die Gruppe „Remoteverwaltungsbenutzer“ nicht vorhanden ist, fügen Sie der Gruppe ein Benutzerkonto hinzu: **WinRMRemoteWMIUsers_** .
+- Das Konto benötigt diese Berechtigungen, damit die Appliance eine CIM-Verbindung mit dem Server herstellen und die erforderlichen Konfigurations- und Leistungsmetadaten aus den hier aufgeführten WMI-Klassen pullen kann.
+- In einigen Fällen werden durch das Hinzufügen des Kontos zu diesen Gruppen unter Umständen nicht die erforderlichen Daten aus WMI-Klassen zurückgegeben, da das Konto möglicherweise nach [UAC](/windows/win32/wmisdk/user-account-control-and-wmi) gefiltert ist. Um die UAC-Filterung außer Kraft zu setzen, muss das Benutzerkonto über die erforderlichen Berechtigungen für den CIMV2-Namespace und die untergeordneten Namespaces auf dem Zielserver verfügen. Sie können die [hier](troubleshoot-appliance.md) beschriebenen Schritte ausführen, um die erforderlichen Berechtigungen zu aktivieren.
+
+    > [!Note]
+    > Stellen Sie unter Windows Server 2008 und 2008 R2 sicher, dass WMF 3.0 auf den Servern installiert ist.
+
+**Linux-Server**
+
+- Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. Alternativ können Sie ein Benutzerkonto mit sudo-Berechtigungen bereitstellen.
+- Die Unterstützung zum Hinzufügen eines Benutzerkontos mit sudo-Zugriff wird standardmäßig mit dem neuen Installationsskript für die Appliance bereitgestellt, das seit dem 20. Juli 2021 aus dem Portal heruntergeladen werden kann.
+- Für ältere Appliances können Sie die Funktion anhand der folgenden Schritte aktivieren:
+    1. Öffnen Sie auf dem Server, auf dem die Appliance ausgeführt wird, den Registrierungs-Editor.
+    1. Navigieren Sie zu HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance.
+    1. Erstellen Sie den Registrierungsschlüssel „isSudo“ mit dem DWORD-Wert 1.
+
+    :::image type="content" source="./media/tutorial-discover-physical/issudo-reg-key.png" alt-text="Screenshot: Aktivieren der sudo-Unterstützung":::
+
+- Wenn Sie die Konfigurations- und Leistungsmetadaten vom Zielserver ermitteln möchten, müssen Sie sudo-Zugriff für die [hier](migrate-appliance.md#linux-server-metadata) aufgeführten Befehle aktivieren. Stellen Sie sicher, dass Sie „NOPASSWD“ für das Konto aktiviert haben, um die erforderlichen Befehle auszuführen, ohne bei jedem Aufruf des sudo-Befehls ein Kennwort eingeben zu müssen.
+- Die folgenden Linux-Betriebssystemverteilungen werden für die Ermittlung durch Azure Migrate mit einem Konto mit sudo-Zugriff unterstützt:
+
+    Betriebssystem | Versionen 
+    --- | ---
+    Red Hat Enterprise Linux | 6, 7, 8
+    Cent OS | 6.6, 8.2
+    Ubuntu | 14.04, 16.04, 18.04
+    SUSE Linux | 11.4, 12.4
+    Debian | 7, 10
+    Amazon Linux | 2.0.2021
+    CoreOS-Container | 2345.3.0
+
+- Wenn Sie kein root-Konto oder Benutzerkonto mit sudo-Zugriff bereitstellen können, können Sie den Registrierungsschlüssel „isSudo“ in der Registrierung „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance“ auf den Wert „0“ festlegen und mithilfe der folgenden Befehle ein Konto mit den erforderlichen Funktionen angeben, bei dem es sich nicht um das root-Konto handelt:
 
 **Befehl** | **Zweck**
 --- | --- |
@@ -91,7 +122,6 @@ setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br></br> setcap CAP_DAC_READ_SEA
 setcap "cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_setuid,<br>cap_setpcap,cap_net_bind_service,cap_net_admin,cap_sys_chroot,cap_sys_admin,<br>cap_sys_resource,cap_audit_control,cap_setfcap=+eip" /sbin/lvm | Erfassen der Daten zur Datenträgerleistung
 setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode | Erfassen der BIOS-Seriennummer
 chmod a+r /sys/class/dmi/id/product_uuid | Erfassen der BIOS-GUID
-
 
 ## <a name="set-up-a-project"></a>Einrichten eines Projekts
 
@@ -122,7 +152,7 @@ Die Einrichtung der Appliance umfasst Folgendes:
 1. Geben Sie einen Appliancenamen ein, und generieren Sie einen Projektschlüssel im Portal.
 2. Herunterladen einer gezippten Datei mit dem Azure Migrate-Installationsskript aus dem Azure-Portal.
 3. Extrahieren der Inhalte aus der gezippten Datei. Starten der PowerShell-Konsole mit Administratorrechten.
-4. Ausführen des PowerShell-Skripts zum Starten der Appliancewebanwendung.
+4. Führen Sie das PowerShell-Skript zum Starten des Appliance-Konfigurations-Manager aus.
 5. Führen Sie die Erstkonfiguration der Appliance aus, und registrieren Sie sie unter Verwendung des Projektschlüssels im Projekt.
 
 ### <a name="1-generate-the-project-key"></a>1. Generieren des Projektschlüssels
@@ -133,6 +163,8 @@ Die Einrichtung der Appliance umfasst Folgendes:
 1. Klicken Sie auf **Schlüssel generieren**, um mit der Erstellung der erforderlichen Azure-Ressourcen zu beginnen. Schließen Sie die Seite „Discover servers“ (Server ermitteln) nicht, während die Ressourcen erstellt werden.
 1. Nach der erfolgreichen Erstellung der Azure-Ressourcen wird ein **Projektschlüssel** generiert.
 1. Kopieren Sie den Schlüssel, da Sie ihn benötigen, um die Registrierung der Appliance während der Konfiguration abzuschließen.
+
+  [ ![Auswahloptionen für „Schlüssel generieren“](./media/tutorial-assess-physical/generate-key-physical-inline-1.png)](./media/tutorial-assess-physical/generate-key-physical-expanded-1.png#lightbox)
 
 ### <a name="2-download-the-installer-script"></a>2. Herunterladen des Installationsskripts
 
@@ -145,50 +177,45 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 1. Öffnen Sie auf dem Server, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispielverwendung für die öffentliche Cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
-    - Beispielverwendung für die Government-Cloud: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
-3.  Überprüfen Sie die aktuellen Applianceversionen und Hashwerte:
-    - Öffentliche Cloud:
+    - Beispielverwendung: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+3.  Überprüfen Sie die aktuelle Applianceversion und die Hashwerte:
 
-        **Szenario** | **Herunterladen** _ | _ *Hashwert**
-        --- | --- | ---
-        Physisch (85,8 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140334) | ce5e6f0507936def8020eb7b3109173dad60fc51dd39c3bd23099bc9baaabe29
+    **Download** | **Hashwert**
+    --- | ---
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140334) | 15a94b637a39c53ac91a2d8b21cc3cca8905187e4d9fb4d895f4fa6fd2f30b9f
 
-    - Azure Government:
+> [!NOTE]
+> Das gleiche Skript kann verwendet werden, um eine physische Appliance für die öffentliche Azure-Cloud oder die Azure Government-Cloud mit Konnektivität für öffentliche oder private Endpunkte einzurichten.
 
-        **Szenario** | **Herunterladen** _ | _ *Hashwert**
-        --- | --- | ---
-        Physisch (85,8 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
- 
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Ausführen des Azure Migrate-Installationsskripts
-Das Installationsskript führt folgende Schritte aus:
-
-- Installation der Agents und einer Webanwendung für die Ermittlung und Bewertung physischer Server.
-- Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
-- Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
-- Erstellung der folgenden Dateien in diesem Pfad:
-    - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
-    - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
-
-Führen Sie das Skript wie folgt aus:
 
 1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Server mit einer vorhandenen Azure Migrate-Appliance aus.
 2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
 3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
 4. Führen Sie das Skript mit dem Namen **AzureMigrateInstaller.ps1** aus, indem Sie den folgenden Befehl ausführen:
 
-    - Öffentliche Cloud: 
     
-        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
-    - Azure Government: 
-    
-        ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-    Das Skript startet die Appliancewebanwendung, nachdem es erfolgreich ausgeführt wurde.
+5. Treffen Sie eine Auswahl aus den Szenario-, Cloud- und Konnektivitätsoptionen, um eine Appliance mit der gewünschten Konfiguration bereitzustellen. Mit der nachfolgend gezeigten Auswahl richten Sie beispielsweise eine Appliance zum Ermitteln und Bewerten **physischer Server** _(oder in anderen Clouds wie AWS, GCP, Xen, usw. ausgeführter Server)_ für ein Azure Migrate-Projekt mit **Standardkonnektivität** _(öffentlicher Endpunkt)_ in einer **öffentlichen Azure-Cloud** ein.
 
-Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log“ auf die Skriptprotokolle zugreifen.
+    :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-inline.png" alt-text="Screenshot: Einrichten einer Appliance mit der gewünschten Konfiguration" lightbox="./media/tutorial-discover-physical/script-physical-default-expanded.png":::
+
+6. Das Installationsskript führt folgende Schritte aus:
+
+ - Installation von Agents und einer Webanwendung.
+ - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
+ - Download und Installation eines wiederbeschreibbaren IIS-Moduls.
+ - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
+ - Erstellung der folgenden Dateien in diesem Pfad:
+    - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
+    - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
+
+Nach der erfolgreichen Ausführung des Skripts wird der Appliance-Konfigurations-Manager automatisch gestartet.
+
+> [!NOTE]
+> Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log“ auf die Skriptprotokolle zugreifen.
 
 ### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 

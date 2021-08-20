@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 2695b34745ff02d55f18cebbe87a468f807ca77a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d94b3e56b3b8f70a03b6a3872b085e450043ab70
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831687"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585949"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Tutorial: Exportieren von Daten aus Azure IoT Central und Visualisieren von Erkenntnissen in Power BI
 
@@ -33,7 +33,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Durchgearbeitete Tutorials [Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central](./tutorial-in-store-analytics-create-app.md) und [Anpassen des Dashboards für Bediener und Verwalten von Geräten in Azure IoT Central](./tutorial-in-store-analytics-customize-dashboard.md).
+* Durchgearbeitete Tutorials [Tutorial: Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central](./tutorial-in-store-analytics-create-app.md) und [Tutorial: Anpassen des Dashboards für Bediener und Verwalten von Geräten in Azure IoT Central](./tutorial-in-store-analytics-customize-dashboard.md).
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 * Ein Power BI-Konto. Führen Sie zunächst die Registrierung für ein [kostenloses Power BI Pro-Testkonto](https://app.powerbi.com/signupredirect?pbi_source=web) durch, falls Sie kein Power BI-Konto besitzen.
 

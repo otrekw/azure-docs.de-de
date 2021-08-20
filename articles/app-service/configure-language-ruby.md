@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 038d62573b491325adc60647debf17fa87e06cfe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b71b6867221a2cae6bf5b8751a848413b6f8d20a
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92743678"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963778"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurieren einer Linux-Ruby-App für Azure App Service
 
@@ -63,7 +63,7 @@ ENV['WEBSITE_SITE_NAME']
 
 ## <a name="customize-deployment"></a>Anpassen der Bereitstellung
 
-Beim Bereitstellen eines [Git-Repositorys](deploy-local-git.md) oder [ZIP-Pakets](deploy-zip.md) mit aktivierten Buildprozessen führt die Bereitstellungs-Engine (Kudu) nach der Bereitstellung standardmäßig automatisch die folgenden Schritte aus:
+Beim Bereitstellen eines [Git-Repositorys](deploy-local-git.md) oder [ZIP-Pakets](deploy-zip.md) [mit aktivierten Buildautomatisierung](deploy-zip.md#enable-build-automation) führt die Bereitstellungs-Engine (Kudu) nach der Bereitstellung standardmäßig automatisch die folgenden Schritte aus:
 
 1. Überprüfen, ob eine *Gemfile* vorhanden ist
 1. Führen Sie `bundle clean` aus. 
@@ -155,4 +155,4 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 > [Tutorial: Rails-App mit PostgreSQL](tutorial-ruby-postgres-app.md)
 
 > [!div class="nextstepaction"]
-> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.md)
+> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.yml)

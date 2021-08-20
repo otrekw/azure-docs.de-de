@@ -7,12 +7,12 @@ ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 563d8f3035eb889a2b9d25d563ef57373e4e3aff
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 6450907ca888a01acaed90abeb6c3cdd02e32834
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537172"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486929"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Herstellen einer Verbindung zwischen Ihren AWS-Konten und Azure Security Center
 
@@ -42,7 +42,7 @@ Im folgenden Screenshot sehen Sie AWS-Konten, die auf dem Übersichtsdashboard v
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
 |Erforderliche Rollen und Berechtigungen:|**Besitzer** des relevanten Azure-Abonnements<br>**Mitwirkender**: Kann auch eine Verbindung mit einem AWS-Konto herstellen, wenn er von einem Besitzer die Dienstprinzipaldetails erhält|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (US Gov, Azure China)|
 |||
 
 
@@ -73,7 +73,7 @@ Es gibt zwei Möglichkeiten, um Security Center die Authentifizierung bei AWS zu
 
 #### <a name="create-an-iam-role-for-security-center"></a>Erstellen einer IAM-Rolle für Security Center
 1. Wählen Sie in Ihrer Amazon Web Services-Konsole unter **Security, Identity & Compliance** (Sicherheit, Identität und Compliance) die Option **IAM** aus.
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS-Services":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS-Dienste":::
 
 1. Klicken Sie auf **Roles** (Rollen) und anschließend auf **Create role** (Rolle erstellen).
 1. Wählen Sie **Another AWS account** (Ein anderes AWS-Konto) aus.

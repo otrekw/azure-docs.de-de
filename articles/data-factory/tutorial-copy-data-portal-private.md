@@ -5,14 +5,14 @@ author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 555316ddf722e857914d5e99d7fadcd6539e1b8b
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 0159226abb904d73262011e16fbc52fe760be123
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482577"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436818"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Sicheres Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von privaten Endpunkten
 
@@ -94,7 +94,7 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-B
 
 1. Nach Abschluss der Erstellung wird der Hinweis im Benachrichtigungscenter angezeigt. Wählen Sie **Zu Ressource wechseln** aus, um zur Seite **Data Factory** zu navigieren.
 
-1. Klicken Sie auf **Erstellen und überwachen**, um die Data Factory-Benutzeroberfläche auf einer separaten Registerkarte zu starten.
+1. Klicken Sie auf der Kachel **Open Azure Data Factory Studio** auf **Öffnen**, um die Data Factory-Benutzeroberfläche in einer separaten Registerkarte zu starten.
 
 ## <a name="create-an-azure-integration-runtime-in-data-factory-managed-virtual-network"></a>Erstellen einer Azure Integration Runtime-Instanz in einem verwalteten virtuellen Data Factory-Netzwerk
 In diesem Schritt erstellen Sie eine Azure Integration Runtime-Instanz und aktivieren ein verwaltetes virtuelles Data Factory-Netzwerk.
@@ -120,9 +120,9 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Copy-Aktivität in der D
 
 In diesem Tutorial beginnen Sie mit dem Erstellen einer Pipeline. Verknüpfte Dienste und Datasets erstellen Sie, wenn Sie sie zum Konfigurieren der Pipeline benötigen.
 
-1. Wählen Sie auf der Seite **Erste Schritte** die Option **Pipeline erstellen** aus.
+1. Wählen Sie auf der Homepage die Option **Orchestrate** (Orchestrieren) aus.
 
-   ![Screenshot, der das Erstellen einer Pipeline zeigt.](./media/doc-common-process/get-started-page.png)
+   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
 1. Geben Sie im Eigenschaftenbereich der Pipeline als Name der Pipeline **CopyPipeline** ein.
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Kategorie **Verschieben und transformieren**, und ziehen Sie die Aktivität **Daten kopieren** aus der Toolbox auf die Oberfläche des Pipeline-Designers. Geben Sie als Namen **CopyFromBlobToSql** ein.

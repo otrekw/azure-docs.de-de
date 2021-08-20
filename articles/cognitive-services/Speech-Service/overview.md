@@ -3,19 +3,19 @@ title: Worum handelt es sich beim Speech-Dienst?
 titleSuffix: Azure Cognitive Services
 description: Der Speech-Dienst dient zur Vereinheitlichung von Spracherkennung, Sprachsynthese und Sprachübersetzung in einem einzelnen Azure-Abonnement. Über das Speech SDK, das Speech Devices SDK oder REST-APIs können Sie Ihren Anwendungen, Tools und Geräten Sprachfunktionen hinzufügen.
 services: cognitive-services
-author: trevorbye
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
-ms.author: trbye
-ms.openlocfilehash: af76ba2a4ee8610a0f64265889c009416f477543
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.author: nitinme
+ms.openlocfilehash: 8e173f8f11f45fc61ee412c7241a5f9297c807bb
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109665066"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708234"
 ---
 # <a name="what-is-the-speech-service"></a>Worum handelt es sich beim Speech-Dienst?
 
@@ -33,6 +33,7 @@ Die folgenden Features sind Teil des Speech-Diensts. Verwenden Sie die Links in 
 | | [Konversation mit mehreren Geräten](multi-device-conversation.md) | Verbinden Sie mehrere Geräte oder Clients in einer Konversation, um sprach- oder textbasierte Nachrichten mit einfacher Unterstützung von Transkription und Übersetzung zu senden.| Ja | Nein |
 | | [Unterhaltungstranskription](./conversation-transcription.md) | Dieser Dienst ermöglicht Spracherkennung, Sprecheridentifikation und Diarisierung in Echtzeit. Er eignet sich optimal für das Transkribieren persönlicher Besprechungen, wobei zwischen Sprechern unterschieden werden kann. | Ja | Nein |
 | | [Erstellen von benutzerdefinierten Sprachmodellen](#customize-your-speech-experience) | Wenn Sie die Spracherkennung für die Erkennung und Transkription in einer individuellen Umgebung verwenden, können Sie benutzerdefinierte Akustik-, Sprach- und Aussprachemodelle erstellen, um Umgebungsgeräusche zu kompensieren oder branchenspezifisches Vokabular zu berücksichtigen. | Nein | [Ja](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
+| | [Aussprachebewertung](./how-to-pronunciation-assessment.md) | Die Aussprachebewertung bewertet die Aussprache und gibt den Rednern Feedback zur Genauigkeit und zum Redefluss der gesprochenen Audioinformationen. Mit dieser Aussprachebewertung erhalten Menschen, die Fremdsprachen lernen, direktes Feedback und können ihre Aussprache verbessern, sodass sie selbstbewusst sprechen und sich präsentieren können. | [Ja](./how-to-pronunciation-assessment.md) | [Ja](./rest-speech-to-text.md#pronunciation-assessment-parameters) |
 | [Text-zu-Sprache](text-to-speech.md) | Text-zu-Sprache | Die Sprachsynthese konvertiert Eingabetext mithilfe von [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) in menschenähnliche synthetische Sprache. Verwenden Sie neuronale Stimmen. Dabei handelt es sich um menschenähnliche Stimmen, die von Deep Neural Network-Instanzen unterstützt werden. Informationen hierzu finden Sie unter [Sprach- und Stimmunterstützung für den Speech-Dienst](language-support.md). | [Ja](./speech-sdk.md) | [Ja](#reference-docs) |
 | | [Erstellen benutzerdefinierter Stimmen](#customize-your-speech-experience) | Erstellen Sie spezielle benutzerdefinierte Voicefonts für Ihre Marke oder Ihr Produkt. | Nein | [Ja](#reference-docs) |
 | [Sprachübersetzung](speech-translation.md) | Sprachübersetzung | Die Sprachübersetzung ermöglicht Echtzeitübersetzungen in mehreren Sprachen für Ihre Anwendungen, Tools und Geräte. Verwenden Sie diesen Dienst für die Übersetzung von Sprache in Sprache und Sprache in Text. | [Ja](./speech-sdk.md) | Nein |
@@ -81,9 +82,9 @@ Gehen Sie wie folgt vor, um Ihrem Azure-Konto eine Ressource des Sprachdiensts (
 -->
 Es dauert einen Moment, bis die neue Speech-Ressource bereitgestellt wird. 
 
-### <a name="find-keys-and-region"></a>Ermitteln von Schlüsseln und Region
+### <a name="find-keys-and-locationregion"></a>Ermitteln von Schlüsseln und Standort/Region
 
-Führen Sie die folgenden Schritte aus, um die Schlüssel und die Region einer abgeschlossenen Bereitstellung zu ermitteln:
+Führen Sie die folgenden Schritte aus, um die Schlüssel und den Standort bzw. die Region einer abgeschlossenen Bereitstellung zu ermitteln:
 
 1. Melden Sie sich mit Ihrem Microsoft-Konto am [Azure-Portal](https://portal.azure.com/) an.
 
@@ -131,7 +132,7 @@ Andere Produkte bieten Sprachmodelle, die für bestimmte Zwecke wie Gesundheits-
 
 | Spracherkennungsdienst | Plattform | BESCHREIBUNG |
 | -------------- | -------- | ----------- |
-| Spracherkennung | [Custom Speech Service](https://aka.ms/customspeech) | Passen Sie Spracherkennungsmodelle an Ihre Anforderungen und verfügbaren Daten an. Überwinden Sie Grenzen der Spracherkennung wie z. B. Sprachstil, Vokabular und Hintergrundgeräusche. |
+| Spracherkennung | [Custom Speech Service](./custom-speech-overview.md) | Passen Sie Spracherkennungsmodelle an Ihre Anforderungen und verfügbaren Daten an. Überwinden Sie Grenzen der Spracherkennung wie z. B. Sprachstil, Vokabular und Hintergrundgeräusche. |
 | Sprachsynthese | [Custom Voice](https://aka.ms/customvoice) | Erstellen Sie mit Ihren verfügbaren Sprachdaten eine erkennbare, einzigartige Stimme für Ihre Sprachsynthese-Apps. Sie können die Sprachausgaben weiter optimieren, indem Sie eine Reihe von Sprachparametern anpassen. |
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern

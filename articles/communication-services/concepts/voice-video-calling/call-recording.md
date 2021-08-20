@@ -10,20 +10,16 @@ ms.date: 06/30/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 292210c12589bed6075378ba4fd38153c4fe10f1
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 898346d69b656656c93889002109bae0f15b2dbc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105343"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464335"
 ---
 # <a name="calling-recording-overview"></a>Übersicht über die Anrufaufzeichnung
 
-> [!NOTE]
-> In vielen Ländern und Staaten gibt es Gesetze und Vorschriften im Zusammenhang der Aufzeichnung von Telefon-, Sprach- und Videoanrufen. Diese schreiben häufig die Einwilligung des Benutzers in die Aufzeichnung seiner Kommunikation vor. Es liegt in Ihrer Verantwortung, die Anrufaufzeichnungsfunktionen im Einklang mit dem Gesetz zu verwenden. Die Einwilligung der an aufgezeichneter Kommunikation beteiligten Parteien muss auf eine Weise eingeholt werden, die den für den jeweiligen Teilnehmer geltenden Gesetzen entspricht.
-
-> [!NOTE]
-> Bestimmungen im Zusammenhang mit der Pflege personenbezogener Daten erfordern die Möglichkeit zum Exportieren von Benutzerdaten. Zur Erfüllung dieser Anforderungen enthalten Aufzeichnungsmetadatendateien die Teilnehmer-ID für jeden Aufrufteilnehmer im Array `participants`. Sie können die MRIs im Array `participants` mit Ihren internen Benutzeridentitäten abgleichen, um Aufrufteilnehmer zu identifizieren. Weiter unten finden Sie ein Beispiel für eine Aufzeichnungsmetadatendatei als Referenz.
+[!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
 
 > [!NOTE]
 > Die Anrufaufzeichnung ist derzeit nur für Communication Services-Ressourcen verfügbar, die in einer Region in den USA erstellt wurden.
@@ -86,6 +82,11 @@ Eine Event Grid-Benachrichtigung (`Microsoft.Communication.RecordingFileStatusUp
     "eventTime": string // ISO 8601 date time for when the event was created
 }
 ```
+## <a name="regulatory-and-privacy-concerns"></a>Bedenken hinsichtlich Datenschutz und gesetzlichen Bestimmungen
+
+In vielen Ländern und Staaten gibt es Gesetze und Vorschriften im Zusammenhang der Aufzeichnung von Telefon-, Sprach- und Videoanrufen. Diese schreiben häufig die Einwilligung des Benutzers in die Aufzeichnung seiner Kommunikation vor. Es liegt in Ihrer Verantwortung, die Anrufaufzeichnungsfunktionen im Einklang mit dem Gesetz zu verwenden. Die Einwilligung der an aufgezeichneter Kommunikation beteiligten Parteien muss auf eine Weise eingeholt werden, die den für den jeweiligen Teilnehmer geltenden Gesetzen entspricht.
+
+Bestimmungen im Zusammenhang mit der Pflege personenbezogener Daten erfordern die Möglichkeit zum Exportieren von Benutzerdaten. Zur Erfüllung dieser Anforderungen enthalten Aufzeichnungsmetadatendateien die Teilnehmer-ID für jeden Aufrufteilnehmer im Array `participants`. Sie können die MRIs im Array `participants` mit Ihren internen Benutzeridentitäten abgleichen, um Aufrufteilnehmer zu identifizieren. Weiter unten finden Sie ein Beispiel für eine Aufzeichnungsmetadatendatei als Referenz.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie im [Schnellstartbeispiel zur Anrufaufzeichnung](../../quickstarts/voice-video-calling/call-recording-sample.md).

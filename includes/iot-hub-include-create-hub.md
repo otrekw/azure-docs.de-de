@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 author: robinsh
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: cf651a1a09662e3084a8a9bdb6365b69b6ea52b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bfa5149cb9aea3ae8deea572abd86f5fb776e252
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99579785"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114671200"
 ---
 In diesem Abschnitt wird beschrieben, wie Sie über das [Azure-Portal](https://portal.azure.com) einen IoT-Hub erstellen:
 
@@ -31,7 +31,7 @@ In diesem Abschnitt wird beschrieben, wie Sie über das [Azure-Portal](https://p
 
    - **Region**: Wählen Sie die Region aus, in der sich Ihr Hub befinden soll. Wählen Sie den Standort aus, der Ihnen am nächsten ist. Einige Features, etwa [IoT Hub-Gerätestreams](../articles/iot-hub/iot-hub-device-streams-overview.md), sind nur in bestimmten Regionen verfügbar. Für diese eingeschränkten Features müssen Sie eine der unterstützten Regionen auswählen.
 
-   - **IoT Hub-Name**: Geben Sie einen Namen für den Hub ein. Dieser Name muss global eindeutig sein.
+   - **IoT Hub-Name**: Geben Sie einen Namen für den Hub ein. Dieser Name muss global eindeutig sein und eine Länge zwischen 3 und 50 alphanumerischen Zeichen aufweisen. Der Name kann auch den Bindestrich (`'-'`) enthalten.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
@@ -39,7 +39,7 @@ In diesem Abschnitt wird beschrieben, wie Sie über das [Azure-Portal](https://p
 
 1. Klicken Sie auf **Weiter: Netzwerk**, um die Erstellung Ihres Hubs fortzusetzen.
 
-   Wählen Sie die Endpunkte aus, die eine Verbindung mit IoT Hub herstellen können. Sie können die Standardeinstellung **Öffentlicher Endpunkt (alle Netzwerke)** auswählen oder die Option **Öffentlicher Endpunkt (ausgewählte IP-Adressbereiche)** oder **Privater Endpunkt** festlegen. Übernehmen Sie für dieses Beispiel die Standardeinstellung.
+   Wählen Sie die Endpunkte aus, die Geräte verwenden können, um eine Verbindung mit Ihrer IoT Hub-Instanz herzustellen. Sie können die Standardeinstellung **Öffentlicher Endpunkt (alle Netzwerke)** auswählen oder die Option **Öffentlicher Endpunkt (ausgewählte IP-Adressbereiche)** oder **Privater Endpunkt** festlegen. Übernehmen Sie für dieses Beispiel die Standardeinstellung.
 
    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png" alt-text="Auswählen der Endpunkte, die eine Verbindung herstellen können":::
 
@@ -56,13 +56,13 @@ In diesem Abschnitt wird beschrieben, wie Sie über das [Azure-Portal](https://p
     - **IoT Hub-Einheiten**: Die Anzahl der pro Einheit und Tag zulässigen Nachrichten hängt von Ihrem Hubtarif ab. Beispiel: Wenn der Hub 700.000 eingehende Nachrichten unterstützen soll, wählen Sie zwei Einheiten des Tarifs S1.
     Einzelheiten zu den anderen Tarifoptionen finden Sie unter [Skalieren einer IoT Hub-Lösung](../articles/iot-hub/iot-hub-scaling.md).
 
-    - **Defender für IoT:** Aktivieren Sie diese Option, um IoT und Ihren Geräten eine zusätzliche Ebene für den Bedrohungsschutz hinzuzufügen. Diese Option steht nicht für Hubs im Free-Tarif zur Verfügung. Weitere Informationen zu diesem Feature finden Sie in der [Dokumentation zu Azure Security Center für IoT](/azure/asc-for-iot/).
+    - **Defender für IoT:** Aktivieren Sie diese Option, um IoT und Ihren Geräten eine zusätzliche Ebene für den Bedrohungsschutz hinzuzufügen. Diese Option steht nicht für Hubs im Free-Tarif zur Verfügung. Weitere Informationen zu diesem Feature finden Sie in der [Dokumentation zu Azure Defender für IoT](/azure/asc-for-iot/).
 
     - **Erweiterte Einstellungen** > **Gerät-zu-Cloud-Partitionen**: Diese Eigenschaft setzt die Gerät-zu-Cloud-Nachrichten in Relation zur Anzahl von gleichzeitigen Lesern der Nachrichten. Die meisten Hubs benötigen nur vier Partitionen.
 
 1. Klicken Sie auf **Weiter: Tags**, um mit dem nächsten Bildschirm fortzufahren.
 
-    Tags sind Name-Wert-Paare. Sie können das gleiche Tag mehreren Ressourcen und Ressourcengruppen zuweisen, um Ressourcen zu kategorisieren und die Abrechnung zu konsolidieren. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../articles/azure-resource-manager/management/tag-resources.md).
+    Tags sind Name-Wert-Paare. Sie können das gleiche Tag mehreren Ressourcen und Ressourcengruppen zuweisen, um Ressourcen zu kategorisieren und die Abrechnung zu konsolidieren. In diesem Dokument fügen Sie keine Tags hinzu. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../articles/azure-resource-manager/management/tag-resources.md).
 
     :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-tags.png" alt-text="Zuweisen von Tags für den Hub über das Azure-Portal":::
 
@@ -70,4 +70,4 @@ In diesem Abschnitt wird beschrieben, wie Sie über das [Azure-Portal](https://p
 
     :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-review-and-create.png" alt-text="Überprüfen von Informationen bei der Erstellung des neuen Hubs":::
 
-1. Wählen Sie **Erstellen** aus, um Ihren neuen Hub zu erstellen. Das Erstellen des Hubs dauert einige Minuten.
+1. Wählen Sie die Option **Erstellen** aus, um die Bereitstellung Ihres neuen Hubs zu starten. Ihr Bereitstellungsvorgang dauert einige Minuten, während der Hub erstellt wird. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**, um den neuen Hub zu öffnen.

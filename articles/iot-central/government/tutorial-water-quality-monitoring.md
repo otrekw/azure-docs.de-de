@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: bdebe0d29f6ef781cc4b4747ff80010eeac9ff7e
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: fdab861cc122fe738cce4da049154ecb4039ca65
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684251"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588973"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung zur Überwachung der Wasserqualität in Azure IoT Central
 
@@ -23,7 +23,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Verwenden der Vorlage **Überwachung der Wasserqualität** für die Erstellung einer entsprechenden Anwendung
-> * Erkunden und Anpassen eines Bedienerdashboards
+> * Erkunden und Anpassen eines Dashboards
 > * Erkunden einer Gerätevorlage für die Überwachung der Wasserqualität
 > * Erkunden von simulierten Geräten
 > * Erkunden und Konfigurieren von Regeln
@@ -48,7 +48,7 @@ In diesem Abschnitt verwenden Sie die Azure IoT Central-Vorlage **Überwachung d
 
     ![Anwendungsvorlagen für den Behördenbereich](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
-1. Wählen Sie die Anwendungsvorlage **Überwachung der Wasserqualität** aus. Diese Anwendungsvorlage enthält eine Gerätevorlage für die Wasserqualität, simulierte Geräte, ein Bedienerdashboard und vorkonfigurierte Überwachungsregeln.
+1. Wählen Sie die Anwendungsvorlage **Überwachung der Wasserqualität** aus. Diese Anwendungsvorlage enthält eine Gerätevorlage für die Wasserqualität, simulierte Geräte, ein Dashboard und vorkonfigurierte Überwachungsregeln.
 
 1. Wählen Sie **App erstellen** aus. Der Bereich **Neue Anwendung** mit den folgenden Elementen wird geöffnet:
 
@@ -66,7 +66,7 @@ Sie haben nun eine Anwendung zur Überwachung der Wasserqualität erstellt, inde
 
 Ihre neue Anwendung verfügt über die folgenden vorkonfigurierten Komponenten:
 
-* Bedienerdashboards
+* Dashboards
 * Gerätevorlagen für die Überwachung der Wasserqualität
 * Simulierte Geräte zur Überwachung der Wasserqualität
 * Regeln und Aufträge
@@ -76,7 +76,7 @@ Sie können Ihre Anwendung jederzeit ändern.
 
 Erkunden Sie als Nächstes die Anwendung, und nehmen Sie einige Anpassungen vor.
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>Erkunden und Anpassen des Bedienerdashboards
+## <a name="explore-and-customize-the-dashboard"></a>Erkunden und Anpassen des Dashboards
 
 Nachdem Sie die Anwendung erstellt haben, wird der Bereich mit dem **Wide World Water-Dashboard zur Wasserqualität** geöffnet.
 
@@ -92,7 +92,7 @@ Das Dashboard enthält die folgenden Arten von Kacheln:
 
 * **KPI-Kachel für pH-Mittelwert**: KPI-Kacheln, z. B. **Average pH in the last 30 minutes** (pH-Mittelwert in den letzten 30 Minuten) sind oben im Dashboardbereich angeordnet. Sie können KPI-Kacheln anpassen und dafür jeweils einen anderen Typ und Zeitbereich festlegen.
 
-* **Karte mit Bereich der Wasserüberwachung**: Für Azure IoT Central wird Azure Maps verwendet. Sie können dieses Feature direkt in Ihrer Anwendung festlegen, um den Gerätestandort anzuzeigen. Sie können Ihrem Gerät auch die Standortinformationen Ihrer Anwendung zuordnen und dann Azure Maps verwenden, um die Informationen auf einer Karte anzuzeigen. Bewegen Sie den Mauszeiger auf die Karte, und probieren Sie die Steuerelemente aus.
+* **Karte mit Bereich der Wasserüberwachung**: Für Azure IoT Central wird Azure Maps verwendet. Sie können dieses Feature direkt in Ihrer Anwendung festlegen, um den [Gerätestandort](../core/howto-use-location-data.md) anzuzeigen. Sie können Ihrem Gerät auch die Standortinformationen Ihrer Anwendung zuordnen und dann Azure Maps verwenden, um die Informationen auf einer Karte anzuzeigen. Bewegen Sie den Mauszeiger auf die Karte, und probieren Sie die Steuerelemente aus.
 
 * **Wärmebild zur Verteilung des pH-Mittelwerts**: Sie können verschiedene Visualisierungsdiagramme auswählen, um die Gerätetelemetriedaten so anzuzeigen, wie dies für Ihre Anwendung am besten geeignet ist.
 

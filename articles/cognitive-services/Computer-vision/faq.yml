@@ -1,0 +1,40 @@
+### YamlMime:FAQ
+metadata:
+  title: 'Häufig gestellte Fragen: maschinelles Sehen'
+  titleSuffix: Azure Cognitive Services
+  description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Maschinelles Sehen-API in Azure Cognitive Services.
+  services: cognitive-services
+  author: KellyDF
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.subservice: computer-vision
+  ms.topic: conceptual
+  ms.date: 04/17/2019
+  ms.author: kefre
+  ms.custom: seodec18
+  ms.openlocfilehash: f03dd44b1ea37f5103ca9aa4eff26b3b7b080312
+  ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 07/06/2021
+  ms.locfileid: "113311623"
+title: Häufig gestellte Fragen zur Maschinelles Sehen-API
+summary: >
+  > [!TIP]
+
+  > Wenn Sie in diesen FAQs keine Antwort auf Ihre Frage finden, können Sie die Fragen unter [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) und an die Community für die Maschinelles Sehen-API stellen oder wenden Sie sich an die Hilfe und den Support bei [UserVoice](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743).
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Kann ich die Maschinelles Sehen-API für die Verwendung benutzerdefinierter Tags trainieren?  Zum Beispiel möchte ich Bilder von Katzenrassen einfügen, um die KI zu „trainieren“ und dann auf eine KI-Anforderung hin den Zuchtwert zu erhalten.
+    answer: >
+      Diese Funktion ist derzeit nicht verfügbar. Unsere Techniker arbeiten jedoch daran, diese Funktionalität bald für maschinelles Sehen zu ermöglichen.
+  - question: >
+      Kann ich die Funktion „OCR (Lesen)“ lokal bereitstellen?
+    answer: >
+      Ja. Die Cloud-API „OCR (Lesen)“ ist auch als Docker-Container für die lokale Bereitstellung verfügbar. Informationen zum Bereitstellen der OCR-Container finden Sie [hier](./computer-vision-how-to-install-containers.md).
+  - question: >
+      Kann maschinelles Sehen zum Lesen von Kfz-Kennzeichen verwendet werden?
+    answer: >
+      Die Maschinelles Sehen-API enthält die Deep Learning-gestützten OCR-Funktionen mit dem neuesten Lesefeature. Wir arbeiten kontinuierlich daran, unsere Dienste zu verbessern, damit sie in allen Szenarien verwendet werden können.

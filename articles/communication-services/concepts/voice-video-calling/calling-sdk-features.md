@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7173c625ef56ea9e4d4d43d90adc18ba4fe167ab
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 320ef1b523615894910d277fcc155104b4b297bc
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109285"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766548"
 ---
 # <a name="calling-sdk-overview"></a>Übersicht über das Calling SDK
 
@@ -111,7 +111,7 @@ Die folgende Tabelle enthält die unterstützten Browser, die derzeit verfügbar
 | Plattform     | Chrome | Safari | Edge (Chromium) | Notizen                                                                                                                                                                                                       |
 | ------------ | ------ | ------ | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Android      | ✔️      | ❌      | ❌               | Die ausgehende Bildschirmfreigabe wird nicht unterstützt.                                                                                                                                                                   |
-| iOS          | ❌      | ✔️      | ❌               | Mit einer iOS-App in Safari können keine Mikrofon- und Lautsprechergeräte (z. B. Bluetooth) aufgelistet bzw. ausgewählt werden. Dies ist eine Einschränkung des Betriebssystems, und es ist immer nur ein Gerät vorhanden. Die ausgehende Bildschirmfreigabe wird nicht unterstützt. |
+| iOS          | ❌      | ✔️      | ❌               | [Mit einer iOS-App in Safari können keine Mikrofon- und Lautsprechergeräte (z. B. Bluetooth) aufgelistet bzw. ausgewählt werden.](https://docs.microsoft.com/azure/communication-services/concepts/known-issues#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados) Dies ist eine Einschränkung des Betriebssystems, und es ist immer nur ein Gerät vorhanden. Die Standardgeräteauswahl wird vom Betriebssystem gesteuert. Die ausgehende Bildschirmfreigabe wird nicht unterstützt. |
 | macOS        | ✔️      | ✔️      | ❌               | Safari 14+/macOS 11+ erforderlich für die Unterstützung von ausgehenden Videos                                                                                                                                                     |
 | Windows      | ✔️      | ❌      | ✔️               |                                                                                                                                                                                                             |
 | Ubuntu/Linux | ✔️      | ❌      | ❌               |                                                                                                                                                                                                             |

@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Erstellen und Bereitstellen von Apps in Azure Spring Cloud'
 description: Hier wird die App-Bereitstellung in Azure Spring Cloud beschrieben.
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: fc005e8d94a0c6ddb7f21de05872f12bdb7f2177
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b82e36b798611aad20044592cd3bec60cdf2e871
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965132"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469255"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Schnellstart: Erstellen und Bereitstellen von Apps in Azure Spring Cloud
 
@@ -213,7 +213,6 @@ Die Kompilierung des Projekts dauert fünf bis zehn Minuten. Nach Abschluss des
 
     ```azurecli
     az configure --defaults group=<resource group name> spring-cloud=<service name>  
-    az spring-cloud config-server git set -n <service instance name> --uri https://github.com/azure-samples/spring-petclinic-microservices-config
     ```
 
 1. Erstellen Sie die zwei zentralen Microservices für PetClinic: API-Gateway und customers-service.
@@ -245,7 +244,7 @@ Die Kompilierung des Projekts dauert fünf bis zehn Minuten. Nach Abschluss des
 
 ## <a name="verify-the-services"></a>Überprüfen der Dienste
 
-Greifen Sie über den Browser mit der oben gezeigten **öffentlichen URL** im Format „https://<service name>-api-gateway.azuremicroservices.io“ auf das App-Gateway und customers-service zu.
+Greifen Sie über den Browser mit der oben gezeigten **öffentlichen URL** im Format `https://<service name>-api-gateway.azuremicroservices.io` auf das App-Gateway und „customers-service“ zu.
 
 ![Zugreifen auf customers-service „PetClinic“](media/build-and-deploy/access-customers-service.png)
 
@@ -282,7 +281,7 @@ Die Kompilierung des Projekts dauert fünf bis zehn Minuten. Nach Abschluss des
 1. Generieren Sie Konfigurationen, indem Sie den folgenden Befehl im Stammverzeichnis von PetClinic mit dem übergeordneten POM ausführen. Wenn Sie sich bereits bei der Azure CLI angemeldet haben, werden die Anmeldeinformationen automatisch vom Befehl abgerufen. Andernfalls werden Sie mit Anweisungen zur Eingabeaufforderung angemeldet. Weitere Informationen finden Sie auf unserer [Wiki-Seite](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
     ```azurecli
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.5.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.6.0:config
     ```
     
     Sie werden zur Auswahl der folgenden Angaben aufgefordert:
@@ -298,7 +297,7 @@ Die Kompilierung des Projekts dauert fünf bis zehn Minuten. Nach Abschluss des
             <plugin>
                 <groupId>com.microsoft.azure</groupId>
                 <artifactId>azure-spring-cloud-maven-plugin</artifactId>
-                <version>1.5.0</version>
+                <version>1.6.0</version>
                 <configuration>
                     <subscriptionId>xxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx</subscriptionId>
                     <clusterName>v-spr-cld</clusterName>
@@ -317,7 +316,7 @@ Die Kompilierung des Projekts dauert fünf bis zehn Minuten. Nach Abschluss des
     
 ## <a name="verify-the-services"></a>Überprüfen der Dienste
 
-Ein erfolgreicher Bereitstellungsbefehl gibt eine URL im folgenden Format zurück: https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io. Navigieren Sie damit zum ausgeführten Dienst.
+Von einem erfolgreichen Bereitstellungsbefehl wird eine URL im folgenden Format zurückgegeben: `https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io`. Navigieren Sie damit zum ausgeführten Dienst.
 
 ![Zugreifen auf PetClinic](media/build-and-deploy/access-customers-service.png)
 

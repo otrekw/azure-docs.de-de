@@ -1,17 +1,17 @@
 ---
-ms.openlocfilehash: 340635f273c20c9d8b42fde0c07a7aa97d9f348a
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a04d7dde8b6f2a492538d2012de5222686fd7fcf
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293235"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762373"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/dotnet/).
 - Installieren des [ Azure Az PowerShell-Moduls](/powershell/azure/)
 
-## <a name="create-azure-communication-resource"></a>Erstellen von Azure Communication-Ressourcen
+## <a name="create-azure-communication-services-resource"></a>Erstellen einer Azure Communication Services-Ressource
 
 Melden Sie sich zunächst bei der [Azure-Befehlszeilenschnittstelle](/cli/azure/authenticate-azure-cli) an, um eine Azure Communication Services-Ressource zu erstellen. Verwenden Sie hierzu am Terminal den ```Connect-AzAccount```-Befehl, und geben Sie Ihre Anmeldeinformationen ein. Führen Sie den folgenden Befehl aus, um die Ressource zu erstellen:
 

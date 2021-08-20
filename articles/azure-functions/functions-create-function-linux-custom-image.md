@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: 3eb0c54fda14711e45af3974638d53807994df91
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f3f4af97309326fe761ea58a7927df19522e4f60
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459599"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486749"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
@@ -407,6 +407,9 @@ Mit einer Funktions-App in Azure wird die Ausführung der Funktionen Ihres Hosti
     ::: zone-end
     
     Mit dem Parameter *deployment-container-image-name* wird das Image angegeben, das für die Funktions-App verwendet wird. Sie können den Befehl [az functionapp config container show](/cli/azure/functionapp/config/container#az_functionapp_config_container_show) verwenden, um Informationen zum für die Bereitstellung verwendeten Image anzuzeigen. Darüber hinaus können Sie den Befehl [az functionapp config container set](/cli/azure/functionapp/config/container#az_functionapp_config_container_set) nutzen, um ein anderes Image für die Bereitstellung zu verwenden.
+    
+    > [!TIP]  
+    > Sie können die [`DisableColor`-Einstellung](functions-host-json.md#console) in der host.json-Datei verwenden, um zu verhindern, dass ANSI-Steuerzeichen in die Containerprotokolle geschrieben werden. 
 
 1. Verwenden Sie den Befehl [az storage account show-connection-string](/cli/azure/storage/account), um die Verbindungszeichenfolge für das von Ihnen erstellte Speicherkonto anzuzeigen. Ersetzen Sie `<storage-name>` durch den Namen des weiter oben erstellten Speicherkontos:
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 61648bc0eab3aba4806cf4594e6fe222ac77f93f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d07614d79410c388c5b93d635564e2720de7e11e
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111993502"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659494"
 ---
 > [!NOTE]
 > Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/phone-numbers-quickstart).
@@ -57,7 +57,7 @@ pip install azure-identity
 
 Zum Erstellen eines `DefaultAzureCredential`-Objekts müssen Sie `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET` und `AZURE_TENANT_ID` bereits als Umgebungsvariablen mit den entsprechenden Werten aus der registrierten Azure AD-Anwendung festlegen.
 
-Eine kurze Übersicht zum Abrufen dieser Umgebungsvariablen finden Sie im Schnellstart [Einrichten verwalteter Identitäten über die CLI](../../managed-identity-from-cli.md).
+Eine kurze Übersicht zum Abrufen dieser Umgebungsvariablen finden Sie im Schnellstart [Einrichten von Dienstprinzipalen über die CLI](../../identity/service-principal-from-cli.md).
 
 Nachdem Sie die `azure-identity`-Bibliothek installiert haben, können Sie die Authentifizierung des Clients fortsetzen.
 

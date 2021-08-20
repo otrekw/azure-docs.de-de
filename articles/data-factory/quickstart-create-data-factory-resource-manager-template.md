@@ -8,13 +8,13 @@ ms.author: susabat
 ms.reviewer: jburchel, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.date: 05/10/2021
-ms.openlocfilehash: 1fa01b628bb8c630716d2051a644d1e2225530f9
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 07/05/2021
+ms.openlocfilehash: 1979e5c832225483aa5309c84d3c2ce491e77f3c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371962"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436914"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Schnellstart: Erstellen einer Azure Data Factory-Instanz mithilfe einer ARM-Vorlage
 
@@ -132,9 +132,9 @@ Lassen Sie die Seite „Container“ geöffnet, da Sie dort am Ende dieses Schne
 
 1. Navigieren Sie zur Seite **Data Factorys**, und wählen Sie die von Ihnen erstellte Data Factory aus.
 
-2. Wählen Sie die Kachel **Erstellen und überwachen** aus.
+2. Wählen Sie auf der Kachel **Open Azure Data Factory Studio** (Öffnen von Azure Data Factory Studio) **Open** (Öffnen) aus.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="Erstellen und überwachen":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-open-tile.png" alt-text="Erstellen und überwachen":::
 
 2. Wählen Sie die Registerkarte **Ersteller** :::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false"::: aus.
 

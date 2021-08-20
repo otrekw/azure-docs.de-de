@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 31b46475af345ec4eed3a8d5787bf859918048ef
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: cb64f2be26abc1d3ccaf80b90a85f279c7930c94
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985848"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710716"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>Häufig gestellte Fragen zu Azure Object Anchors
 
@@ -99,7 +99,7 @@ Die Einheit stellt die Maßeinheit des Modells dar. Die unterstützten Einheiten
 
 **F: Kann Object Anchors sich bewegende Objekte verarbeiten?**
 
-**A:** Das Verarbeiten von **sich ständig bewegenden** oder **dynamischen** Objekten wird nicht unterstützt.
+**A:** Das Verarbeiten von **sich ständig bewegenden** oder **dynamischen** Objekten wird nicht unterstützt. Wir unterstützen Objekte an einer völlig neuen Position im Raum, nachdem sie physisch bewegt wurden, können sie jedoch während der Bewegung nicht nachverfolgen.
 
 **F: Kann Object Anchors Verformungen oder Artikulationen verarbeiten?**
 

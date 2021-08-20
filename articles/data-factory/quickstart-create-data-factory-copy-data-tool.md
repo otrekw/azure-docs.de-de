@@ -5,13 +5,13 @@ author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
 ms.topic: quickstart
-ms.date: 06/04/2021
-ms.openlocfilehash: d78b915fc9efffd52f31b75edcb35d91fb529e4a
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.date: 07/05/2021
+ms.openlocfilehash: 75b33003a62bd9a686ab8e0f2a8934333a4430ff
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113219787"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436980"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Schnellstart: Kopieren von Daten mithilfe des Tools zum Kopieren von Daten
 
@@ -55,9 +55,9 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 
 1. Klicken Sie auf **Erstellen**.
 
-1. Nach Abschluss der Erstellung wird die Seite **Data Factory** angezeigt. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Anwendung für die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
+1. Nach Abschluss der Erstellung wird die Seite **Data Factory** angezeigt. Wählen Sie auf der Kachel **Open Azure Data Factory Studio** die Option **Öffnen** um die Anwendung des Data Factory Benutzerinterface (UI) in einer separaten Registerkarte zu starten.
    
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite für Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“":::
     
 ## <a name="start-the-copy-data-tool"></a>Starten des Tools zum Kopieren von Daten
 

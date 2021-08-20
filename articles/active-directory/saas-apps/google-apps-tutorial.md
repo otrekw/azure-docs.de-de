@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/11/2021
+ms.date: 06/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 04d93913711dc8f03e35ac811b46158dfd038c61
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: cc996384570b20d536f06bae2101987d40b1f3fc
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750691"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114363192"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Google Cloud (G Suite) Connector
 
@@ -30,17 +30,17 @@ In diesem Tutorial erfahren Sie, wie Sie Google Cloud (G Suite) Connector in Az
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein Google Cloud (G Suite) Connector-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
-- Eine Google Apps-Abonnement oder ein Google Cloud Platform-Abonnement.
+* Ein Azure AD-Abonnement
+* Ein Google Cloud (G Suite) Connector-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Eine Google Apps-Abonnement oder ein Google Cloud Platform-Abonnement.
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. Dieses Dokument wurde unter Verwendung der neuen Benutzeroberfläche für das einmalige Anmelden (Single-Sign-On, SSO) erstellt. Wenn Sie noch die alte Benutzeroberfläche verwenden, sieht das Setup anders aus. Sie können die neue Benutzeroberfläche in den SSO-Einstellungen der G Suite-Anwendung aktivieren. Wechseln Sie zu **Azure AD, Unternehmensanwendungen**, wählen Sie **Google Cloud (G Suite) Connector** und dann **Einmaliges Anmelden** aus, und klicken Sie auf **Neue Benutzeroberfläche ausprobieren**.
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+* Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -118,51 +118,53 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Konfiguration für **Gmail** vornehmen möchten:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`.
+    a. Geben Sie im Textfeld **Bezeichner** eine URL in einem der folgenden Formate ein:
 
-    b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
+    | **Identifier** |
+    |----|
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `https://google.com` | 
+    | `https://google.com/a/<yourdomain.com>` |
 
-    ```http
-    google.com/a/<yourdomain.com>
-    google.com
-    https://google.com
-    https://google.com/a/<yourdomain.com>
-    ```
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein: 
 
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: 
-
-    ```http
-    https://www.google.com/acs
-    https://www.google.com/a/<yourdomain.com>/acs
-    ```
+    | **Antwort-URL** |
+    |-----|
+    | `https://www.google.com/acs` |
+    | `https://www.google.com/a/<yourdomain.com>/acs` |
+    
+    c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Konfiguration für **Google Cloud Platform** vornehmen möchten:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`.
-
-    b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
+    a. Geben Sie im Textfeld **Bezeichner** eine URL in einem der folgenden Formate ein:
     
-    ```http
-    google.com/a/<yourdomain.com>
-    google.com
-    https://google.com
-    https://google.com/a/<yourdomain.com>
-    ```
+    | **Identifier** |
+    |-----|
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
     
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein:  
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein: 
     
-    ```http
-    https://www.google.com/acs
-    https://www.google.com/a/<yourdomain.com>/acs
-    ```
+    | **Antwort-URL** |
+    |-----|
+    | `https://www.google.com/acs` |
+    | `https://www.google.com/a/<yourdomain.com>/acs` |
+    
+    c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Google Cloud (G Suite) Connector stellt bei der SSO-Konfiguration keinen Wert für die Entitäts-ID bzw. den Entitätsbezeichner bereit. Wenn Sie die Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) deaktivieren, lautet der Wert des Bezeichners daher `google.com`. Wenn Sie die Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) aktivieren, lautet er `google.com/a/<yourdomainname.com>`. Das Aktivieren/Deaktivieren der Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) wird im Abschnitt **Konfigurieren des einmaligen Anmeldens für Google Cloud (G Suite) Connector** weiter unten in diesem Tutorial beschrieben. Weitere Informationen erhalten Sie vom [Supportteam für den Google Cloud (G Suite) Connector-Client](https://www.google.com/contact/).
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und Anmelde-URL aktualisieren. Google Cloud (G Suite) Connector stellt bei der SSO-Konfiguration keinen Wert für die Entitäts-ID bzw. den Entitätsbezeichner bereit. Wenn Sie die Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) deaktivieren, lautet der Wert des Bezeichners daher `google.com`. Wenn Sie die Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) aktivieren, lautet er `google.com/a/<yourdomainname.com>`. Das Aktivieren/Deaktivieren der Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) wird im Abschnitt **Konfigurieren des einmaligen Anmeldens für Google Cloud (G Suite) Connector** weiter unten in diesem Tutorial beschrieben. Weitere Informationen erhalten Sie vom [Supportteam für den Google Cloud (G Suite) Connector-Client](https://www.google.com/contact/).
 
 1. Die Google Cloud (G Suite) Connector-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Der Standardwert von **Eindeutige Benutzer-ID** lautet **user.userprincipalname**, Google Cloud (G Suite) Connector erwartet jedoch, dass dieser Wert der E-Mail-Adresse des Benutzers zugeordnet ist. Hierfür können Sie das **user.mail**-Attribut aus der Liste verwenden oder den entsprechenden Attributwert gemäß der Konfiguration in Ihrer Organisation angeben.
 
     ![image](common/default-attributes.png)
 
+    > [!NOTE]
+    > Stellen Sie sicher, dass die SAML-Antwort keine nicht standardmäßigen ASCII-Zeichen in den Attributen DisplayName und Surname enthält.    
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -206,30 +208,27 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 2. Klicken Sie auf **Sicherheit**. Wenn der Link nicht angezeigt wird, kann er unter dem Menü **Weitere Steuerelemente** im unteren Bereich des Bildschirms versteckt sein.
 
-    ![Klicken Sie auf "Sicherheit".][10]
+    ![Klicken Sie auf "Sicherheit".](./media/google-apps-tutorial/gapps-security.png)
 
 3. Klicken Sie auf der Seite **Sicherheit** auf **Einmaliges Anmelden (SSO) einrichten**.
 
-    ![Klicken Sie auf "SSO".][11]
+    ![Klicken Sie auf "SSO".](./media/google-apps-tutorial/security-gapps.png)
 
 4. Führen Sie die folgenden Konfigurationsänderungen durch:
 
-    ![Konfigurieren von SSO][12]
+    ![Konfigurieren von SSO](./media/google-apps-tutorial/configuration.png)
 
     a. Wählen Sie **Einmaliges Anmelden mit externem Identitätsanbieter einrichten**.
 
     b. Fügen Sie in Google Cloud (G Suite) Connector im Feld **URL der Anmeldeseite** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Fügen Sie in Google Cloud (G Suite) Connector im Feld **URL der Abmeldeseite** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    > [!NOTE]
-    > Google Cloud (G Suite) basiert auf dem SAML Logout-Protokoll. Daher müssen Sie im Feld **URL der Abmeldeseite** die SAML Logout-URL verwenden, d. h. den Wert der Anmelde-URL.
+    c. Fügen Sie in Google Cloud (G Suite) Connector im Feld **URL der Abmeldeseite** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     d. Laden Sie in Google Cloud (G Suite) Connector als **Verifizierungszertifikat** das Zertifikat hoch, das Sie aus dem Azure-Portal heruntergeladen haben.   
 
     e. Aktivieren/Deaktivieren Sie die Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) gemäß dem Hinweis im obigen Abschnitt **Grundlegende SAML-Konfiguration** in Azure AD.
 
-    f. Fügen Sie in Google Cloud (G Suite) Connector im Feld **Kennwort-URL ändern** den Wert der **URL für Kennwortänderung** ein, den Sie aus dem Azure-Portal kopiert haben.
+    f. Geben Sie im Feld **Kennwort URL ändern** im Google Cloud (G Suite)-Connector den Wert als `https://account.activedirectory.windowsazure.com/changepassword.aspx` ein.
 
     g. Klicken Sie auf **Speichern**.
 
@@ -255,13 +254,6 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Google Cloud (G Suite) Connector“ klicken, werden Sie zur Anmelde-URL für Google Cloud (G Suite) Connector weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie Google Cloud (G Suite) Connector konfiguriert haben, können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
-
-<!--Image references-->
-
-[10]: ./media/google-apps-tutorial/gapps-security.png
-[11]: ./media/google-apps-tutorial/security-gapps.png
-[12]: ./media/google-apps-tutorial/gapps-sso-config.png

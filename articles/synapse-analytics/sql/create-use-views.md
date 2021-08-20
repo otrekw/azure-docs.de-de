@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: da026012c4084783d30f548cbdffc8951d74bcd6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d1b7f941fbd7d9c6a6b654992e86ab0379e11e28
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751215"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303812"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Erstellen und Verwenden von Ansichten mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -81,6 +81,8 @@ from openrowset(
            ) as rows
 ```
 
+Delta Lake befindet sich in der öffentlichen Vorschau. Es sind einige Probleme und Einschränkungen bekannt. Überprüfen Sie die bekannten Probleme auf der [Selbsthilfeseite bei Problemen mit serverlosen Synapse-SQL-Pools](resources-self-help-sql-on-demand.md#delta-lake)
+
 ## <a name="partitioned-views"></a>Partitionierte Sichten
 
 Wenn Sie über Dateien verfügen, die in der hierarchischen Ordnerstruktur partitioniert sind, können Sie das Partitionsmuster mithilfe der Platzhalter im Dateipfad beschreiben. Verwenden Sie die Funktion `FILEPATH`, um Teile des Ordnerpfads als Partitionierungsspalten verfügbar zu machen.
@@ -120,7 +122,9 @@ Der Ordnername in der `OPENROWSET`-Funktion (`yellow` in diesem Beispiel), der m
 > [!div class="mx-imgBorder"]
 >![Delta Lake-Ordner „Yellow Taxi“](./media/shared/yellow-taxi-delta-lake.png)
 
-Verwenden Sie die `WITH`-Klausel nicht in der Funktion `OPENROWSET`, wenn Sie partitionierte Delta Lake-Daten abfragen. Aufgrund eines bekannten Problems in der Vorschauversion werden von der `WITH`-Klausel die Werte aus den zugrunde liegenden Partitionierungsspalten nicht richtig zurückgegeben. Die Partitionsentfernung funktioniert problemlos, wenn Sie die Funktion `OPENROWSET` direkt mit der `WITH`-Klausel (ohne Sichten) verwenden.  
+Verwenden Sie die `WITH`-Klausel nicht in der Funktion `OPENROWSET`, wenn Sie partitionierte Delta Lake-Daten abfragen. Aufgrund eines bekannten Problems in der Vorschauversion werden von der `WITH`-Klausel [die Werte aus den zugrunde liegenden Partitionierungsspalten nicht richtig zurückgegeben](resources-self-help-sql-on-demand.md#partitioning-column-returns-null-values). Die Partitionsentfernung funktioniert problemlos, wenn Sie die Funktion `OPENROWSET` direkt mit der `WITH`-Klausel (ohne Sichten) verwenden.  
+
+Delta Lake befindet sich in der öffentlichen Vorschau. Es sind einige Probleme und Einschränkungen bekannt. Überprüfen Sie die bekannten Probleme auf der [Selbsthilfeseite bei Problemen mit serverlosen Synapse-SQL-Pools](resources-self-help-sql-on-demand.md#delta-lake)
 
 ## <a name="use-a-view"></a>Verwenden einer Ansicht
 

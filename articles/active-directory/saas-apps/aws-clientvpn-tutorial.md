@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/29/2020
+ms.date: 06/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 794934e9c3e45f2aeed9310636a0f3ec30daf7de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ecd18c6ce50308eba3767e880972e35d142e62be
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735336"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112467471"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AWS ClientVPN
 
@@ -37,11 +37,14 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* AWS ClientVPN unterstützt **SP-initiiertes** einmaliges Anmelden.
+* AWS ClientVPN unterstützt **SP**-initiiertes einmaliges Anmelden.
 
 * AWS ClientVPN unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-## <a name="adding-aws-clientvpn-from-the-gallery"></a>Hinzufügen von AWS ClientVPN aus dem Katalog
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+
+## <a name="add-aws-clientvpn-from-the-gallery"></a>Hinzufügen von AWS ClientVPN aus dem Katalog
 
 Um die Integration von AWS ClientVPN in Azure AD zu konfigurieren, müssen Sie AWS ClientVPN aus dem Katalog zu Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -51,7 +54,6 @@ Um die Integration von AWS ClientVPN in Azure AD zu konfigurieren, müssen Sie 
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **AWS ClientVPN** im Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **AWS ClientVPN** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-aws-clientvpn"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für AWS ClientVPN
 
@@ -72,11 +74,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **AWS ClientVPN** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<LOCALHOST>`.
 
@@ -116,6 +118,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Kopieren Sie im Abschnitt **AWS ClientVPN einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
@@ -142,7 +145,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-aws-clientvpn-sso"></a>Konfigurieren des einmaligen Anmeldens für AWS ClientVPN
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **AWS ClientVPN** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die entsprechenden kopierten URLs aus dem Azure-Portal an das [Supportteam von AWS ClientVPN](https://aws.amazon.com/contact-us/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Befolgen Sie die Anweisungen unter [diesem Link](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/client-authentication.html#federated-authentication), um einmaliges Anmelden aufseiten von AWS ClientVPN zu konfigurieren.
 
 ### <a name="create-aws-clientvpn-test-user"></a>Erstellen eines AWS ClientVPN-Testbenutzers
 

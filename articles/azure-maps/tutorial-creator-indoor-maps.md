@@ -1,27 +1,23 @@
 ---
-title: 'Tutorial: Erstellen von Gebäudeplänen mithilfe von Microsoft Azure Maps Creator (Vorschauversion)'
-description: In diesem Tutorial erfahren Sie, wie Sie Gebäudepläne mithilfe von Microsoft Azure Maps Creator (Vorschauversion) erstellen.
+title: 'Tutorial: Erstellen von Gebäudeplänen mithilfe von Microsoft Azure Maps Creator'
+description: Tutorial zum Erstellen von Gebäudeplänen mithilfe von Microsoft Azure Maps Creator.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 5/19/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ac53dab29feddd36a95b8b2b041caaf5c3598d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73e7073b67916983ea7bd37cd6adad4ced5633c2
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720136"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730626"
 ---
-# <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>Tutorial: Erstellen von Gebäudeplänen mithilfe von Creator (Vorschau)
+# <a name="tutorial-use-creator-to-create-indoor-maps"></a>Tutorial: Verwenden von Creator zum Erstellen von Gebäudeplänen
 
-> [!IMPORTANT]
-> Azure Maps Creator-Dienste befinden sich derzeit in der Public Preview-Phase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-In diesem Tutorial wird die Erstellung von Gebäudeplänen gezeigt. Sie erfahren in diesem Tutorial, wie Sie mithilfe der API folgende Aktionen ausführen:
+Dieses Tutorial enthält eine Anleitung zum Erstellen von Gebäudeplänen. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Hochladen des Zeichnungspakets für Ihren Gebäudeplan
@@ -34,133 +30,202 @@ In diesem Tutorial wird die Erstellung von Gebäudeplänen gezeigt. Sie erfahren
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Erstellen von Gebäudeplänen ist Folgendes erforderlich:
-
-1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
+1. [Erstellen Sie ein Azure Maps-Konto.](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
-3. [Erstellen einer Creator-Ressource (Vorschau)](how-to-manage-creator.md)
+3. [Erstellen Sie eine Creator-Ressource.](how-to-manage-creator.md)
 4. Herunterladen des [Beispielzeichenpakets](https://github.com/Azure-Samples/am-creator-indoor-data-examples/blob/master/Sample%20-%20Contoso%20Drawing%20Package.zip)
 
-In diesem Tutorial wird die Anwendung [Postman](https://www.postman.com/) verwendet. Sie können aber auch eine andere API-Entwicklungsumgebung verwenden.
+In diesem Tutorial wird die Anwendung [Postman](https://www.postman.com/) verwendet. Sie können jedoch auch eine andere API-Entwicklungsumgebung verwenden.
 
 >[!IMPORTANT]
-> Die API-URLs in diesem Dokument müssen möglicherweise entsprechend dem Speicherort der Creator-Ressource angepasst werden. Weitere Details finden Sie unter [Zugreifen auf Creator-Dienste](how-to-manage-creator.md#access-to-creator-services).
+> In diesem Tutorial wird die geografische URL `us.atlas.microsoft.com` verwendet. Wenn Ihr Creator-Dienst nicht in den USA erstellt wurde, müssen Sie eine andere geografische URL verwenden.  Weitere Informationen finden Sie unter [Zugreifen auf Creator-Dienste](how-to-manage-creator.md#access-to-creator-services). Informationen zum Anzeigen von Zuordnungen der Region zum geografischen Standort finden Sie unter [Geografischer Bereich des Creator-Diensts](creator-geographic-scope.md).
 
 ## <a name="upload-a-drawing-package"></a>Hochladen eines Zeichnungspakets
 
-Verwenden Sie die [Datenupload-API](/rest/api/maps/data/uploadpreview), um das Zeichnungspaket in Azure Maps-Ressourcen hochzuladen.
+Verwenden Sie die [Datenupload-API](/rest/api/maps/data-v2/upload-preview), um das Zeichnungspaket in Azure Maps-Ressourcen hochzuladen.
 
-Bei der Datenupload-API handelt es sich um eine zeitintensive Transaktion, durch die das hier definierte Muster implementiert wird. Nach Abschluss des Vorgangs wird die eindeutige Daten-ID (`udid`) verwendet, um auf das hochgeladene Paket zuzugreifen und es zu konvertieren. Führen Sie die folgenden Schritte aus, um die eindeutige Daten-ID (`udid`) zu erhalten:
+Bei der Datenupload-API handelt es sich um eine zeitintensive Transaktion, durch die das unter [Creator-API V2 für zeitintensive Vorgänge](creator-long-running-operation-v2.md) definierte Muster implementiert wird.
 
-1. Öffnen Sie die Postman-App. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus.  Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen).
+So laden Sie das Zeichnungspaket hoch:
 
-2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung und anschließend **Save** (Speichern) aus.
+1. Klicken Sie in der Postman-App auf **New** (Neu).
 
-3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein, um das Zeichnungspaket in den Azure Maps-Dienst hochzuladen. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
 
-    ```http
-    https://atlas.microsoft.com/mapData/upload?api-version=1.0&dataFormat=zip&subscription-key={Azure-Maps-Primary-Subscription-key}
-    ```
+3. Geben Sie einen **Request name** (Anforderungsnamen) für die Anforderung ein, z. B. *POST Data Upload*.
 
-4. Geben Sie auf der Registerkarte **Headers** (Header) einen Wert für den Schlüssel `Content-Type` an. Da es sich bei dem Zeichnungspaket um einen gezippten Ordner handelt, verwenden Sie den Wert `application/octet-stream`. Wählen Sie auf der Registerkarte **Body** (Textkörper) die Option **binary** (Binär) aus. Klicken Sie auf **Select File** (Datei auswählen), und wählen Sie ein Zeichnungspaket aus.
+4. Wählen Sie die HTTP-Methode **POST** aus.
 
-     ![data-management](./media/tutorial-creator-indoor-maps/enter-content-type-dialog.png)
-
-5. Klicken Sie auf die blaue Schaltfläche **Send** (Senden), und warten Sie, bis die Anforderung verarbeitet wurde. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort. Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`).
-
-6. Erstellen Sie zum Überprüfen des Status des API-Aufrufs eine **GET**-HTTP-Anforderung für `status URL`. An die URL muss zur Authentifizierung der primäre Abonnementschlüssel angefügt werden. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
+5. Geben Sie die folgende URL für die [Datenupload-API](/rest/api/maps/data-v2/upload-preview) ein. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData?api-version=2.0&dataFormat=dwgzippackage&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-7. Wenn die **GET**-HTTP-Anforderung erfolgreich abgeschlossen wurde, wird ein `resourceLocation` zurückgegeben. Der `resourceLocation` enthält die eindeutige `udid` für den hochgeladenen Inhalt. Optional können Sie im nächsten Schritt mithilfe der `resourceLocation`-URL Metadaten aus dieser Ressource abzurufen.
+6. Wählen Sie die Registerkarte **Headers** (Header) aus.
 
-    ```json
-    {
-        "status": "Succeeded",
-        "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
-    }
-    ```
+7. Wählen Sie im Feld **KEY** (SCHLÜSSEL) die Option `Content-Type` aus. 
 
-8. Erstellen Sie zum Abrufen von Inhaltsmetadaten eine **GET**-HTTP-Anforderung für die `resourceLocation`-URL, die Sie in Schritt 7 kopiert haben. Stellen Sie sicher, dass Sie für die Authentifizierung den primären Abonnementschlüssel an die URL anfügen. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
+8. Wählen Sie im Feld **VALUE** (WERT) die Option `application/octet-stream` aus.
+
+     :::image type="content" source="./media/tutorial-creator-indoor-maps/data-upload-header.png"alt-text="Informationen auf der Registerkarte „Headers“ für den Datenupload":::
+
+9. Wählen Sie die Registerkarte **Body** (Text) aus.
+
+10. Wählen Sie in der Dropdownliste die Option **binary** (Binär) aus.
+
+11. Wählen Sie **Select File** (Datei auswählen) und anschließend ein Zeichnungspaket aus.
+
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/data-upload-body.png" alt-text="Auswählen eines Zeichnungspakets":::
+
+12. Wählen Sie **Send** (Senden) aus.
+
+13. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus.
+
+14. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Die Status-URL (`status URL`) wird verwendet, um den Status des Zeichnungspaketuploads zu überprüfen.
+
+     :::image type="content" source="./media/tutorial-creator-indoor-maps/data-upload-response-header.png" alt-text="Kopieren der Status-URL in den Speicherortschlüssel":::
+
+### <a name="check-the-drawing-package-upload-status"></a>Überprüfen des Uploadstatus des Zeichnungspakets
+
+So überprüfen Sie den Status des Zeichnungspakets und rufen die eindeutige ID (`udid`) ab:
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *GET Data Upload Status*.
+
+4. Wählen Sie die HTTP-Methode **GET** aus.
+
+5. Geben Sie die Status-URL (`status URL`) ein, die Sie im Schritt [Hochladen eines Zeichnungspakets](#upload-a-drawing-package) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
 
     ```http
-   https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-9. Wenn die **GET**-HTTP-Anforderung erfolgreich ausgeführt wird, enthält der Antworttext die in Schritt 7 im `resourceLocation` angegebene `udid`, den Speicherort für den Zugriff bzw. das Herunterladen des Inhalts sowie einige weitere Metadaten zum Inhalt wie beispielsweise das Erstellungs- und Aktualisierungsdatum, die Größe und Ähnliches. Im Anschluss sehen Sie ein Beispiel für eine vollständige Antwort:
+6. Wählen Sie **Send** (Senden) aus.
+
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus.
+
+8. Kopieren Sie den Wert des Schlüssels **Resource Location** (Ressourcenspeicherort). Hierbei handelt es sich um die URL des Ressourcenspeicherorts (`resource location URL`). Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`udid`) der Zeichnungspaketressource.
+
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/resource-location-url.png" alt-text="Kopieren Sie die URL des Ressourcenspeicherorts.":::
+
+### <a name="optional-retrieve-drawing-package-metadata"></a>(Optional) Abrufen von Metadaten des Zeichnungspakets
+
+Sie können Metadaten aus der Zeichnungspaketressource abrufen. Die Metadaten enthalten Informationen wie die URL des Ressourcenspeicherorts, das Erstellungsdatum, das Aktualisierungsdatum sowie die Größe und den Uploadstatus.
+
+So rufen Sie Inhaltsmetadaten ab:
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *GET Data Upload Metadata*.
+
+4. . Wählen Sie die HTTP-Methode **GET** aus.
+
+5. Geben Sie die URL des Ressourcenspeicherorts (`resource Location URL`) ein, die Sie im Schritt [Überprüfen des Uploadstatus des Zeichnungspakets](#check-the-drawing-package-upload-status) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
+
+    ```http
+   https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    ```
+
+6. Wählen Sie **Send** (Senden) aus.
+
+7. Wählen Sie im Antwortfenster die Registerkarte **Body** (Text) aus. Die Metadaten sollten wie das folgende JSON-Fragment aussehen:
 
     ```json
     {
         "udid": "{udid}",
-        "location": "https://atlas.microsoft.com/mapData/{udid}?api-version=1.0",
-        "created": "2020-02-03T02:32:25.0509366+00:00",
-        "updated": "2020-02-11T06:12:13.0309351+00:00",
-        "sizeInBytes": 766,
+        "location": "https://us.atlas.microsoft.com/mapData/6ebf1ae1-2a66-760b-e28c-b9381fcff335?api-version=2.0",
+        "created": "5/18/2021 8:10:32 PM +00:00",
+        "updated": "5/18/2021 8:10:37 PM +00:00",
+        "sizeInBytes": 946901,
         "uploadStatus": "Completed"
     }
     ```
 
 ## <a name="convert-a-drawing-package"></a>Konvertieren eines Zeichnungspakets
 
- Nach dem Hochladen des Zeichnungspakets wird die eindeutige Daten-ID (`udid`) für das hochgeladene Paket verwendet, um das Paket in Kartendaten zu konvertieren. Von der Konvertierungs-API wird eine zeitintensive Transaktion verwendet, durch die das [hier](creator-long-running-operation.md) definierte Muster implementiert wird. Nach Abschluss des Vorgangs wird die Konvertierungs-ID (`conversionId`) verwendet, um auf die konvertierten Daten zuzugreifen. Führen Sie die folgenden Schritte aus, um die Konvertierungs-ID (`conversionId`) zu erhalten:
+Nach dem Hochladen des Zeichnungspakets wird die eindeutige Daten-ID (`udid`) für das hochgeladene Paket verwendet, um das Paket in Kartendaten zu konvertieren. Von der Konvertierungs-API wird eine zeitintensive Transaktion verwendet, durch die das [hier](creator-long-running-operation-v2.md) definierte Muster implementiert wird.
 
-1. Wählen Sie **Neu** aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Anforderungsnamen** ein, und wählen Sie eine Sammlung aus. Klicken Sie auf **Speichern**.
+So konvertieren Sie ein Zeichnungspaket:
 
-2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein, um Ihr hochgeladenes Zeichnungspaket in Kartendaten zu konvertieren. Verwenden Sie die eindeutige Daten-ID (`udid`) für das hochgeladene Paket.
+1. Klicken Sie in der Postman-App auf **New** (Neu).
 
-    ```http
-    https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
-    ```
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
 
-    >[!IMPORTANT]
-    > Die API-URLs in diesem Dokument müssen möglicherweise entsprechend dem Speicherort der Creator-Ressource angepasst werden. Ausführlichere Informationen finden Sie unter [Zugreifen auf Creator-Dienste](how-to-manage-creator.md#access-to-creator-services).
-    > Wenn Sie den Code `"RequiresCreatorResource"` als Fehlermeldung erhalten, stellen Sie sicher, dass Sie in Ihrem Azure Maps-Konto eine [Azure Maps-Erstellerressource bereitgestellt](how-to-manage-creator.md) haben.
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *POST Convert Drawing Package*.
 
-3. Klicken Sie auf die Schaltfläche **Send** (Senden), und warten Sie, bis die Anforderung verarbeitet wurde. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort, und suchen Sie nach dem Schlüssel **Location** (Speicherort). Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`) für die Konvertierungsanforderung. Diesen verwenden Sie im nächsten Schritt.
+4. Wählen Sie die HTTP-Methode **POST** aus.
 
-    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Kopieren Sie den Wert des Location-Schlüssels":::.
-
-4. Starten Sie auf der Registerkarte „Builder“ (Generator) eine neue HTTP-Methode vom Typ **GET**. Fügen Sie Ihren primären Abonnementschlüssel für Azure Maps an die Status-URL (`status URL`) an. Erstellen Sie eine **GET**-Anforderung an die `status URL`, die Sie in Schritt 3 kopiert haben. Die `status URL` sieht wie die folgende URL aus:
+5. Geben Sie die folgende URL für den [Konvertierungsdienst](/rest/api/maps/v2/conversion/convert) ein. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `udid` durch den `udid`-Wert des hochgeladenen Pakets:
 
     ```http
-    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/conversions?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0&udid={udid}&inputType=DWG&outputOntology=facility-2.0
     ```
 
-    Sollte der Konvertierungsprozess noch nicht abgeschlossen sein, wird möglicherweise eine JSON-Antwort wie die folgende angezeigt:
+6. Wählen Sie **Send** (Senden) aus.
 
-    ```json
-    {
-        "operationId": "<operationId>",
-        "created": "2020-04-22T19:39:54.9518496+00:00",
-        "status": "Running"
-    }
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. 
+
+8. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Die Status-URL (`status URL`) wird verwendet, um den Status der Konvertierung zu überprüfen.
+
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/data-convert-location-url.png" border="true" alt-text="Kopieren des Werts des Speicherortschlüssels für das Zeichnungspaket":::
+
+### <a name="check-the-drawing-package-conversion-status"></a>Überprüfen des Konvertierungsstatus des Zeichnungspakets
+
+Nach Abschluss des Konvertierungsvorgangs wird eine Konvertierungs-ID (`conversionId`) zurückgegeben. Sie können auf die Konvertierungs-ID (`conversionId`) zugreifen, indem Sie den Status des Konvertierungsprozesses für das Zeichnungspaket überprüfen. Die Konvertierungs-ID (`conversionId`) kann dann für den Zugriff auf die konvertierten Daten verwendet werden.
+
+So können Sie den Status des Konvertierungsprozesses überprüfen und die Konvertierungs-ID (`conversionId`) abrufen:
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *GET Conversion Status*.
+
+4. Wählen Sie die HTTP-Methode **GET** aus:
+
+5. Geben Sie die Status-URL (`status URL`) ein, die Sie im Schritt [Konvertieren eines Zeichnungspakets](#convert-a-drawing-package) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
+
+    ```http
+    https://us.atlas.microsoft.com/conversions/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-5. Nach erfolgreichem Abschluss der Anforderung enthält der Antworttext eine Erfolgsmeldung.  Kopieren Sie die Konvertierungs-ID (`conversionId`) aus der URL vom Typ `resourceLocation` für das konvertierte Paket. Die Konvertierungs-ID (`conversionId`) wird von einer anderen API verwendet, um auf die konvertierten Kartendaten zuzugreifen.
+6. Wählen Sie **Send** (Senden) aus.
 
-    ```json
-   {
-        "operationId": "<operationId>",
-        "created": "2020-04-22T19:39:54.9518496+00:00",
-        "status": "Succeeded",
-        "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
-        "properties": {}
-    }
-    ```
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. 
 
->[!NOTE]
->Zeitintensive HTTP-Anforderungen werden von der Postman-Anwendung nicht nativ unterstützt. Dies führt bei Anforderungen vom Typ **GET** für die Status-URL unter Umständen zu einer langen Verzögerung.  Warten Sie etwa 30 Sekunden, und klicken Sie erneut auf die Schaltfläche **Send** (Senden), bis die Antwort eine Erfolgs- oder Fehlermeldung enthält.
+8. Kopieren Sie den Wert des Schlüssels **Resource Location** (Ressourcenspeicherort). Hierbei handelt es sich um die URL des Ressourcenspeicherorts (`resource location URL`). Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`conversionId`), der von anderen APIs für den Zugriff auf die konvertierten Kartendaten verwendet werden kann.
 
-Das Beispielzeichnungspaket sollte sich ohne Fehler oder Warnungen konvertieren lassen. Falls bei Ihrem eigenen Zeichnungspaket Fehler oder Warnungen zurückgegeben werden, erhalten Sie in der JSON-Antwort einen Link zur [Schnellansicht für Zeichnungsfehler](drawing-error-visualizer.md). Mithilfe der Schnellansicht für Zeichnungsfehler können Sie Details von Fehlern und Warnungen untersuchen. Empfehlungen zur Behebung von Konvertierungsfehlern und -warnungen finden Sie unter [Fehler und Warnungen bei der Zeichnungskonvertierung](drawing-conversion-error-codes.md).
+      :::image type="content" source="./media/tutorial-creator-indoor-maps/data-conversion-id.png" alt-text="Kopieren der Konvertierungs-ID":::
+
+Das Beispielzeichnungspaket sollte sich ohne Fehler oder Warnungen konvertieren lassen. Falls bei Ihrem eigenen Zeichnungspaket Fehler oder Warnungen zurückgegeben werden, enthält die JSON-Antwort einen Link zur [Schnellansicht für Zeichnungsfehler](drawing-error-visualizer.md). Mithilfe der Schnellansicht für Zeichnungsfehler können Sie Details von Fehlern und Warnungen untersuchen. Empfehlungen zur Behebung von Konvertierungsfehlern und -warnungen finden Sie unter [Fehler und Warnungen bei der Zeichnungskonvertierung](drawing-conversion-error-codes.md).
+
+Das folgende JSON-Fragment zeigt ein Beispiel für eine Konvertierungswarnung:
 
 ```json
 {
     "operationId": "<operationId>",
-    "created": "2020-04-22T19:39:54.9518496+00:00",
-    "status": "Failed",
-    "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
+    "created": "2021-05-19T18:24:28.7922905+00:00",
+    "status": "Succeeded",
+     "warning": {
+        "code": "dwgConversionProblem",
+        "details": [
+            {
+                "code": "warning",
+                "details": [
+                    {
+                        "code": "manifestWarning",
+                        "message": "Ignoring unexpected JSON property: unitProperties[0].nonWheelchairAccessible with value False"
+                    }
+                ]
+            }
+        ]
+    },
     "properties": {
         "diagnosticPackageLocation": "https://atlas.microsoft.com/mapData/ce61c3c1-faa8-75b7-349f-d863f6523748?api-version=1.0"
     }
@@ -169,77 +234,135 @@ Das Beispielzeichnungspaket sollte sich ohne Fehler oder Warnungen konvertieren 
 
 ## <a name="create-a-dataset"></a>Erstellen eines Datasets
 
-Das Dataset ist eine Sammlung von Kartenfeatures wie Gebäuden, Ebenen und Räumen. Verwenden Sie zum Erstellen eines Datasets die [Dataseterstellungs-API](/rest/api/maps/dataset/createpreview). Die Dataseterstellungs-API akzeptiert die Konvertierungs-ID (`conversionId`) für das konvertierte Zeichnungspaket und gibt eine Dataset-ID (`datasetId`) des erstellten Datasets zurück. Die folgenden Schritte veranschaulichen das Erstellen eines Datasets.
+Ein Dataset ist eine Sammlung von Kartenfeatures wie Gebäuden, Ebenen und Räumen. Verwenden Sie zum Erstellen eines Datasets die [Dataseterstellungs-API](/rest/api/maps/v2/dataset/create). Die Dataseterstellungs-API akzeptiert die Konvertierungs-ID (`conversionId`) für das konvertierte Zeichnungspaket und gibt eine Dataset-ID (`datasetId`) des erstellten Datasets zurück.
 
-1. Wählen Sie in der Postman-Anwendung **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Anforderungsnamen** ein, und wählen Sie eine Sammlung aus. Klicken Sie unten auf der Seite auf **Speichern**.
+So erstellen Sie ein Dataset:
 
-2. Senden Sie eine Anforderung vom Typ **POST** an die [Dataseterstellungs-API](/rest/api/maps/dataset/createpreview), um ein neues Dataset zu erstellen. Fügen Sie vor dem Übermitteln der Anforderung sowohl Ihren Abonnementschlüssel als auch die Konvertierungs-ID (`conversionId`) an, und verwenden Sie dabei die Konvertierungs-ID (`conversionId`), den Sie im Rahmen des Konvertierungsprozesses in Schritt 5 erhalten haben.  Die Anforderung sollte wie die folgende URL aussehen:
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *POST Dataset Create*.
+
+4. Wählen Sie die HTTP-Methode **POST** aus.
+
+5. Geben Sie die folgende URL für die [Dataset-API](/rest/api/maps/v2/dataset) ein. Die Anforderung sollte in etwa wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{conversionId` durch die Konvertierungs-ID (`conversionId`), die Sie im Schritt [Überprüfen des Konvertierungsstatus des Zeichnungspakets](#check-the-drawing-package-conversion-status) erhalten haben:
 
     ```http
-    https://atlas.microsoft.com/dataset/create?api-version=1.0&conversionID={conversionId}&type=facility&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/datasets?api-version=2.0&conversionId={conversionId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. Entnehmen Sie dem Schlüssel **Location** (Speicherort) in den **Antwortheadern** die Status-URL (`statusURL`).
+6. Wählen Sie **Send** (Senden) aus.
 
-4. Erstellen Sie eine Anforderung vom Typ **GET** für die Status-URL (`statusURL`), um die Dataset-ID (`datasetId`) zu erhalten. Fügen Sie zur Authentifizierung Ihren primären Abonnementschlüssel für Azure Maps an. Die Anforderung sollte wie die folgende URL aussehen:
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. 
+
+8. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Die Status-URL (`status URL`) wird verwendet, um den Status des Datasets zu überprüfen.
+
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/data-dataset-location-url.png" border="true" alt-text="Kopieren des Werts des Speicherortschlüssels für das Dataset":::
+
+### <a name="check-the-dataset-creation-status"></a>Überprüfen des Status der Dataseterstellung
+
+So können Sie den Status der Dataseterstellung überprüfen und die Dataset-ID (`datasetId`) abrufen:
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *GET Dataset Status*.
+
+4. Wählen Sie die HTTP-Methode **GET** aus.
+
+5. Geben Sie die Status-URL (`status URL`) ein, die Sie im Schritt [Erstellen eines Datasets](#create-a-dataset) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
 
     ```http
-    https://atlas.microsoft.com/dataset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/datasets/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-5. Nach erfolgreichem Abschluss der HTTP-Anforderung vom Typ **GET** enthält der Antwortheader die Dataset-ID (`datasetId`) für das erstellte Dataset. Kopieren Sie die Dataset-ID (`datasetId`). Die Dataset-ID (`datasetId`) wird zum Erstellen eines Kachelsets benötigt.
+6. Wählen Sie **Send** (Senden) aus.
 
-    ```json
-    {
-        "operationId": "<operationId>",
-        "created": "2020-04-22T19:52:38.9352189+00:00",
-        "status": "Succeeded",
-        "resourceLocation": "https://azure.microsoft.com/dataset/{datasetiId}?api-version=1.0"
-     }
-    ```
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. Der Wert des Schlüssels **Resource-Location** (Ressourcenspeicherort) ist die URL des Ressourcenspeicherorts (`resource location URL`). Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`datasetId`) des Datasets. 
+
+8. Kopieren Sie die Dataset-ID (`datasetId`). Sie wird in den nächsten Abschnitten dieses Tutorials benötigt.
+
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/dataset-id.png" alt-text="Kopieren der Dataset-ID":::
 
 ## <a name="create-a-tileset"></a>Erstellen eines Kachelsets
 
-Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf der Karte gerendert werden. Kachelsets werden auf der Grundlage vorhandener Datasets erstellt. Ein Kachelset ist jedoch von dem zugrunde liegenden Dataset unabhängig. Wenn das Dataset gelöscht wird, ist das Kachelset weiterhin vorhanden. Gehen Sie zum Erstellen eines Kachelsets wie folgt vor:
+Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf der Karte gerendert werden. Kachelsets werden auf der Grundlage vorhandener Datasets erstellt. Ein Kachelset ist jedoch von dem zugrunde liegenden Dataset unabhängig. Wenn das Dataset gelöscht wird, ist das Kachelset weiterhin vorhanden.
 
-1. Wählen Sie in der Postman-Anwendung **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Anforderungsnamen** ein, und wählen Sie eine Sammlung aus. Klicken Sie unten auf der Seite auf **Speichern**.
+So erstellen Sie ein Kachelset:
 
-2. Erstellen Sie auf der Registerkarte „Builder“ (Generator) eine Anforderung vom Typ **POST**. Die Anforderungs-URL sollte wie die folgende URL aussehen:
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *POST Tileset Create*.
+
+4. Wählen Sie die HTTP-Methode **POST** aus.
+
+5. Geben Sie die folgende URL für die [Kachelset-API](/rest/api/maps/v2/tileset) ein. Die Anforderung sollte in etwa wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{datasetId` durch die Dataset-ID (`datasetId`), die Sie im Schritt [Überprüfen des Status der Dataseterstellung](#check-the-dataset-creation-status) erhalten haben:
 
     ```http
-    https://atlas.microsoft.com/tileset/create/vector?api-version=1.0&datasetID={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/tilesets?api-version=2.0&datasetID={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. Erstellen Sie eine Anforderung vom Typ **GET** für die Status-URL (`statusURL`) für das Kachelset. Fügen Sie zur Authentifizierung Ihren primären Abonnementschlüssel für Azure Maps an. Die Anforderung sollte wie die folgende URL aussehen:
+6. Wählen Sie **Send** (Senden) aus.
 
-   ```http
-    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. 
+
+8. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Die Status-URL (`status URL`) wird verwendet, um den Status des Kachelsets zu überprüfen.
+
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/data-tileset-location-url.png" border="true" alt-text="Kopieren des Werts der Status-URL des Kachelsets":::
+
+### <a name="check-the-tileset-creation-status"></a>Überprüfen des Status der Kachelseterstellung
+
+So können Sie den Status der Dataseterstellung überprüfen und die Kachelset-ID (`tilesetId`) abrufen:
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *GET Tileset Status*.
+
+4. Wählen Sie die HTTP-Methode **GET** aus.
+
+5. Geben Sie die Status-URL (`status URL`) ein, die Sie im Schritt [Erstellen eines Kachelsets](#create-a-tileset) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
+
+    ```http
+    https://us.atlas.microsoft.com/tilesets/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-4. Nach erfolgreichem Abschluss der HTTP-Anforderung vom Typ **GET** enthält der Antwortheader die Dataset-ID (`tilesetId`) für das erstellte Kachelset. Kopieren Sie die Kachelset-ID (`tilesetId`).
+6. Wählen Sie **Send** (Senden) aus.
 
-    ```json
-    {
-        "operationId": "<operationId>",
-        "createdDateTime": "3/11/2020 8:45:13 PM +00:00",
-        "status": "Succeeded",
-        "resourceLocation": "https://atlas.microsoft.com/tileset/{tilesetId}?api-version=1.0"
-    }
-    ```
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. Der Wert des Schlüssels **Resource-Location** (Ressourcenspeicherort) ist die URL des Ressourcenspeicherorts (`resource location URL`).  Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`tilesetId`) des Datasets.
+
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/tileset-id.png" alt-text="Kopieren der Kachelset-ID":::
 
 ## <a name="query-datasets-with-wfs-api"></a>Abfragen von Datasets mit der WFS-API
 
- Datasets können mithilfe der [WFS-API](/rest/api/maps/wfs) abgefragt werden. Mit der WFS-API können Sie Featuresammlungen, eine bestimmte Sammlung oder ein bestimmtes Feature mit einer **Feature-ID** abfragen. Durch die **Feature-ID** wird das Feature innerhalb des Datasets eindeutig identifiziert. Sie wird beispielsweise verwendet, um anzugeben, welcher Featurezustand in einem bestimmten Zustandsset aktualisiert werden soll.
+Datasets können mithilfe der [WFS-API](/rest/api/maps/v2/wfs) abgefragt werden. Mit der WFS-API können Sie alle Featuresammlungen oder eine bestimmte Sammlung abfragen. In diesem Abschnitt des Tutorials werden beide Möglichkeiten verwendet. Zuerst werden alle Sammlungen abgefragt. Danach wird eine Abfrage für die Sammlung `unit` durchgeführt.
 
-1. Wählen Sie in der Postman-Anwendung **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Anforderungsnamen** ein, und wählen Sie eine Sammlung aus. Klicken Sie unten auf der Seite auf **Speichern**.
+### <a name="query-for-feature-collections"></a>Abfragen von Featuresammlungen
 
-2. Erstellen Sie eine Anforderung vom Typ **GET**, um eine Liste mit den Sammlungen in Ihrem Dataset anzuzeigen. Ersetzen Sie `<dataset-id>` durch Ihre Dataset-ID (`datasetId`). Verwenden Sie anstelle des Platzhalters Ihren Primärschlüssel für Azure Maps. Die Anforderung sollte wie die folgende URL aussehen:
+So fragen Sie alle Sammlungen in Ihrem Dataset ab:
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *GET Dataset Collections*.
+
+4. Wählen Sie die HTTP-Methode **GET** aus.
+
+5. Geben Sie die folgende URL für die [WFS-API](/rest/api/maps/v2/wfs) ein. Die Anforderung sollte in etwa wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{datasetId` durch die Dataset-ID (`datasetId`), die Sie im Schritt [Überprüfen des Status der Dataseterstellung](#check-the-dataset-creation-status) erhalten haben:
 
     ```http
-    https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
+    https://us.atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0
     ```
 
-3. Der Antworttext wird im GeoJSON-Format zurückgegeben und enthält alle Sammlungen im Dataset. Der Einfachheit halber enthält das hier gezeigte Beispiel nur die Sammlung `unit`. Ein Beispiel mit allen Sammlungen finden Sie unter [WFS-API für Sammlungsbeschreibungen](/rest/api/maps/wfs/collectiondescriptionpreview). Wenn Sie weitere Informationen zu einer Sammlung benötigen, können Sie auf eine der URLs im Element `link` klicken.
+6. Wählen Sie **Send** (Senden) aus.
+
+7. Der Antworttext wird im GeoJSON-Format zurückgegeben und enthält alle Sammlungen im Dataset. Der Einfachheit halber enthält das hier gezeigte Beispiel nur die Sammlung `unit`. Ein Beispiel mit allen Sammlungen finden Sie unter [WFS-API für Sammlungsbeschreibungen](/rest/api/maps/v2/wfs/collection-description). Wenn Sie weitere Informationen zu einer Sammlung benötigen, können Sie eine der URLs im Element `link` auswählen.
 
     ```json
     {
@@ -267,13 +390,29 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
         },
     ```
 
-4. Erstellen Sie eine Anforderung vom Typ **GET** für die Featuresammlungen vom Typ `unit`.  Ersetzen Sie `{datasetId}` durch Ihre Dataset-ID (`datasetId`). Verwenden Sie anstelle des Platzhalters Ihren Primärschlüssel für Azure Maps. Der Antworttext enthält alle Features der Sammlung `unit`. Die Anforderung sollte wie die folgende URL aussehen:
+### <a name="query-for-unit-feature-collection"></a>Abfragen der Featuresammlung „unit“ (Einheit)
+
+In diesem Abschnitt wird die [WFS-API](/rest/api/maps/v2/wfs) zum Abfragen der Featuresammlung `unit` verwendet.
+
+So fragen Sie die Einheitensammlung in Ihrem Dataset ab:
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *GET Unit Collection*.
+
+4. Wählen Sie die HTTP-Methode **GET** aus.
+
+5. Geben Sie die folgende URL ein. Ersetzen Sie dabei `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{datasetId` durch die Dataset-ID (`datasetId`), die Sie im Schritt [Überprüfen des Status der Dataseterstellung](#check-the-dataset-creation-status) erhalten haben:
 
     ```http
-    https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections/unit/items?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
+    https://us.atlas.microsoft.com/wfs/datasets/{datasetId}/collections/unit/items?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0
     ```
 
-5. Kopieren Sie das Feature `id` für ein Einheitenfeature mit dynamisch änderbaren Stileigenschaften.  Da der Belegungsstatus und die Temperatur der Einheit dynamisch aktualisiert werden können, wird im nächsten Abschnitt die ID (`id`) dieses Features verwendet. Im folgenden Beispiel lautet die ID (`id`) des Features „UNIT26“. Die Stileigenschaften dieses Features werden als Zustände bezeichnet, und das Feature wird zum Erstellen eines Zustandssets verwendet.
+6. Wählen Sie **Send** (Senden) aus.
+
+7. Nachdem die Antwort zurückgegeben wurde, kopieren Sie das Feature `id` für eines der Features vom Typ `unit`. Im folgenden Beispiel lautet die ID (`id`) des Features „UNIT26“. Im nächsten Abschnitt dieses Tutorials wird „UNIT26“ als Feature `id` verwendet.
 
      ```json
     {
@@ -307,15 +446,37 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
 
 ## <a name="create-a-feature-stateset"></a>Erstellen eines Featurezustandssets
 
-1. Wählen Sie in der Postman-Anwendung **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Anforderungsnamen** ein, und wählen Sie eine Sammlung aus. Klicken Sie unten auf der Seite auf **Speichern**.
+Featurezustandssets dienen zum Definieren dynamischer Eigenschaften und Werte für bestimmte Features, die dies unterstützen. In diesem Abschnitt wird ein Zustandsset verwendet, das boolesche Werte und entsprechende Stile für die Eigenschaft **occupancy** (Auslastung) definiert.
 
-2. Senden Sie eine Anforderung vom Typ **POST** an die [API zum Erstellen von Zustandssets](/rest/api/maps/featurestate/createstatesetpreview). Verwenden Sie die Dataset-ID (`datasetId`) des Datasets mit dem Zustand, den Sie ändern möchten. Die Anforderung sollte wie die folgende URL aussehen:
+So erstellen Sie ein Zustandsset:
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *POST Create Stateset*.
+
+4. Wählen Sie die HTTP-Methode **POST** aus.
+
+5. Geben Sie die folgende URL für die [Zustandsset-API](/rest/api/maps/v2/feature-state/create-stateset) ein. Die Anforderung sollte in etwa wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{datasetId` durch die Dataset-ID (`datasetId`), die Sie im Schritt [Überprüfen des Status der Dataseterstellung](#check-the-dataset-creation-status) erhalten haben:
 
     ```http
-    https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/featurestatesets?api-version=2.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. Legen Sie in den **Headern** der Anforderung vom Typ **POST** die Option `Content-Type` auf `application/json` fest. Geben Sie im **Text** die unten angegebenen Raw JSON-Stile an, um Änderungen an den *Zuständen* `occupied` und `temperature` widerzuspiegeln. Klicken Sie abschließend auf **Send** (Senden).
+6. Wählen Sie die Registerkarte **Headers** (Header) aus.
+
+7. Wählen Sie im Feld **KEY** (SCHLÜSSEL) die Option `Content-Type` aus. 
+
+8. Wählen Sie im Feld **VALUE** (WERT) die Option `application/json` aus.
+
+     :::image type="content" source="./media/tutorial-creator-indoor-maps/stateset-header.png"alt-text="Informationen zur Header-Registerkarte für die Erstellung von Zustandssets.":::
+
+9. Wählen Sie die Registerkarte **Body** (Text) aus.
+
+10. Wählen Sie in den Dropdownlisten **raw** und **JSON** aus.
+
+11. Kopieren Sie die folgenden JSON-Stile, und fügen Sie sie in das Fenster **Body** (Text) ein:
 
     ```json
     {
@@ -329,66 +490,48 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
                    "false":"#00FF00"
                 }
              ]
-          },
-          {
-             "keyname":"temperature",
-             "type":"number",
-             "rules":[
-                {
-                   "range":{
-                      "exclusiveMaximum":66
-                   },
-                   "color":"#00204e"
-                },
-                {
-                   "range":{
-                      "minimum":66,
-                      "exclusiveMaximum":70
-                   },
-                   "color":"#0278da"
-                },
-                {
-                   "range":{
-                      "minimum":70,
-                      "exclusiveMaximum":74
-                   },
-                   "color":"#187d1d"
-                },
-                {
-                   "range":{
-                      "minimum":74,
-                      "exclusiveMaximum":78
-                   },
-                   "color":"#fef200"
-                },
-                {
-                   "range":{
-                      "minimum":78,
-                      "exclusiveMaximum":82
-                   },
-                   "color":"#fe8c01"
-                },
-                {
-                   "range":{
-                      "minimum":82
-                   },
-                   "color":"#e71123"
-                }
-             ]
           }
        ]
     }
     ```
 
-4. Kopieren Sie die Zustandsset-ID (`statesetId`) aus dem Antworttext.
+12. Wählen Sie **Send** (Senden) aus.
 
-5. Erstellen Sie eine Anforderung vom Typ **POST**, um den Zustand zu aktualisieren: Übergeben Sie die Zustandsset-ID und die Feature-ID (`ID`) zusammen mit Ihrem Abonnementschlüssel für Azure Maps. Die Anforderung sollte wie die folgende URL aussehen:
+13. Kopieren Sie nach erfolgreicher Antwortrückgabe die Zustandsset-ID (`statesetId`) aus dem Antworttext. Die Zustandsset-ID (`statesetId`) wird im nächsten Abschnitt verwendet, um den Zustand der Eigenschaft `occupancy` (Auslastung) der Einheit mit der Feature-ID (`id`) „UNIT26“ zu ändern.
+
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/response-stateset-id.png"alt-text="Antwort mit Zustandsset-ID":::
+
+### <a name="update-a-feature-state"></a>Aktualisieren eines Featurezustands
+
+So aktualisieren Sie den Zustand `occupied` (Belegt) der Einheit mit der Feature-ID (`id`) „UNIT26“:
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *PUT Set Stateset*.
+
+4. Wählen Sie die HTTP-Methode **PUT** aus.
+
+5. Geben Sie die folgende URL für die [API für Featurezustandssets](/rest/api/maps/v2/feature-state/create-stateset) ein. Die Anforderung sollte in etwa wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{statesetId` durch die Zustandsset-ID (`statesetId`), die Sie im Schritt [Erstellen eines Featurezustandssets](#create-a-feature-stateset) erhalten haben:
 
     ```http
-    https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID={featureId}&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-6. Legen Sie in den **Headern** der Anforderung vom Typ **POST** die Option `Content-Type` auf `application/json` fest. Kopieren Sie den JSON-Code aus dem folgenden Beispiel, und fügen Sie ihn in den **TEXT** der Anforderung vom Typ **POST** ein.
+6. Wählen Sie die Registerkarte **Headers** (Header) aus.
+
+7. Wählen Sie im Feld **KEY** (SCHLÜSSEL) die Option `Content-Type` aus. 
+
+8. Wählen Sie im Feld **VALUE** (WERT) die Option `application/json` aus.
+
+     :::image type="content" source="./media/tutorial-creator-indoor-maps/stateset-header.png"alt-text="Informationen zur Header-Registerkarte für die Erstellung von Zustandssets.":::
+
+9. Wählen Sie die Registerkarte **Body** (Text) aus.
+
+10. Wählen Sie in den Dropdownlisten **raw** und **JSON** aus.
+
+11. Kopieren Sie den folgenden JSON-Stil, und fügen Sie ihn in das **Body**-Fenster (Text) ein.
 
     ```json
     {
@@ -396,28 +539,30 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
             {
                 "keyName": "occupied",
                 "value": true,
-                "eventTimestamp": "2019-11-14T17:10:20"
+                "eventTimestamp": "2020-11-14T17:10:20"
             }
         ]
     }
     ```
 
     >[!NOTE]
-    > Die Aktualisierung wird nur gespeichert, wenn der Zeitstempel der Bereitstellung nach dem Zeitstempel der vorherigen Anforderung liegt. Sie können einen beliebigen Schlüsselnamen übergeben, der zuvor im Rahmen der Erstellung konfiguriert wurde.
+    > Die Aktualisierung wird nur gespeichert, wenn der Zeitstempel der Bereitstellung nach dem Zeitstempel der vorherigen Anforderung liegt.
 
-7. Nach erfolgreicher Aktualisierung erhalten Sie den HTTP-Statuscode `200 OK`. Falls Sie [dynamische Stile](indoor-map-dynamic-styling.md) für einen Gebäudeplan implementiert haben, wird die Aktualisierung zum angegebenen Zeitstempel auf Ihrer Karte gerendert.
+12. Wählen Sie **Send** (Senden) aus.
 
-Mit der [API zum Abrufen von Featurezuständen](/rest/api/maps/featurestate/getstatespreview) können Sie den Zustand eines Features unter Verwendung der zugehörigen Feature-ID (`ID`) abrufen. Mit der [API zum Löschen von Featurezuständen](/rest/api/maps/featurestate/deletestatesetpreview) können Sie das Zustandsset und die zugehörigen Ressourcen löschen.
+13. Nach erfolgreicher Aktualisierung erhalten Sie den HTTP-Statuscode `200 OK`. Falls Sie [dynamische Stile](indoor-map-dynamic-styling.md) für einen Gebäudeplan implementiert haben, wird die Aktualisierung zum angegebenen Zeitstempel auf Ihrer Karte gerendert.
 
-Weitere Informationen zu den verschiedenen Azure Maps Creator-Diensten (Vorschau) aus diesem Artikel finden Sie unter [Creator (Vorschau) für Gebäudepläne](creator-indoor-maps.md).
+Mit der [API zum Abrufen von Featurezuständen](/rest/api/maps/v2/feature-state/get-states) können Sie den Zustand eines Features unter Verwendung der zugehörigen Feature-ID (`id`) abrufen. Sie können auch die [API zum Löschen von Featurezuständen](/rest/api/maps/v2/feature-state/delete-stateset) verwenden, um das Zustandsset und die zugehörigen Ressourcen zu löschen.
+
+Weitere Informationen zu den verschiedenen Azure Maps Creator-Diensten aus diesem Artikel finden Sie unter [Creator für Gebäudepläne](creator-indoor-maps.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Es sind keine zu bereinigenden Ressourcen vorhanden.
+Es müssen keine Ressourcen bereinigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Verwendung des Moduls „Gebäudepläne“ finden Sie in folgendem Artikel:
+Informationen zur Verwendung des Moduls „Gebäudepläne“ finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
 > [Verwenden des Moduls „Gebäudepläne“ von Azure Maps](how-to-use-indoor-module.md)

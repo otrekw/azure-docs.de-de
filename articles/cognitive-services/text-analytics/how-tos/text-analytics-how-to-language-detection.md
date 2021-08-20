@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 06/10/2021
+ms.date: 07/02/2021
 ms.author: aahi
-ms.openlocfilehash: c9ff3bdc7e7076846ffb44239bf5654512f88eea
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 33dbcfb3faa046eeeec2dc19a45ece9bcf270b76
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967957"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113549776"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Beispiel: Sprachenerkennung mithilfe der Textanalyse
 
-Das Feature für die [Sprachenerkennung](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) der Azure-Textanalyse-REST-API wertet Texteingaben für jedes Dokument aus und gibt Sprachen-IDs mit einer Punktzahl zurück, die die Stärke der Analyse angibt.
+Das Feature für die [Sprachenerkennung](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages) der Azure-Textanalyse-REST-API wertet Texteingaben für jedes Dokument aus und gibt Sprachen-IDs mit einer Punktzahl zurück, die die Stärke der Analyse angibt.
 
 Diese Funktion ist hilfreich für Inhaltsspeicher, die willkürliche Texte mit unbekannter Sprache sammeln. Sie können die Analyseergebnisse analysieren, um die Sprache des Eingabedokuments zu bestimmen. Die Antwort gibt außerdem eine Punktzahl zurück, die die Zuverlässigkeit des Modells widerspiegelt. Der Wert liegt zwischen 0 und 1.
 
@@ -67,16 +67,16 @@ Ein Dokument darf maximal 5.119 Zeichen enthalten. Pro Sammlung können bis zu 
 
 Weitere Informationen zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-REST-API](text-analytics-how-to-call-api.md). Der Einfachheit halber sind hier noch einmal einige Punkte aufgeführt:
 
-+ Erstellen Sie eine POST-Anforderung. Die API-Dokumentation für diese Anforderung finden Sie [hier](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages).
++ Erstellen Sie eine POST-Anforderung. Die API-Dokumentation für diese Anforderung finden Sie [hier](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages).
 
-+ Legen Sie den HTTP-Endpunkt für die Sprachenerkennung fest. Verwenden Sie entweder eine Textanalyseressource in Azure oder einen instanziierten [Textanalysecontainer](text-analytics-how-to-install-containers.md). Sie müssen `/text/analytics/v3.0/languages` in die URL einschließen. Beispiel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`.
++ Legen Sie den HTTP-Endpunkt für die Sprachenerkennung fest. Verwenden Sie entweder eine Textanalyseressource in Azure oder einen instanziierten [Textanalysecontainer](text-analytics-how-to-install-containers.md). Sie müssen `/text/analytics/v3.1/languages` in die URL einschließen. Beispiel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/languages`.
 
 + Legen Sie einen Anforderungsheader fest, der den [Zugriffsschlüssel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) für Textanalysevorgänge enthält.
 
 + Geben Sie im Anforderungstext die JSON-Dokumentsammlung an, die Sie für diese Analyse vorbereitet haben.
 
 > [!Tip]
-> Verwenden Sie [Postman](text-analytics-how-to-call-api.md), oder öffnen Sie die **API-Testkonsole** in der [Dokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages), um eine Anforderung zu strukturieren und mittels POST an den Dienst zu übermitteln.
+> Verwenden Sie [Postman](text-analytics-how-to-call-api.md), oder öffnen Sie die **API-Testkonsole** in der [Dokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages), um eine Anforderung zu strukturieren und mittels POST an den Dienst zu übermitteln.
 
 ## <a name="step-2-post-the-request"></a>Schritt 2: Senden der Anforderung per POST
 
@@ -97,67 +97,55 @@ Die Spracherkennung gibt eine vorherrschende Sprache für ein Dokument sowie den
 
 ```json
 {
-    "documents":[
+    "documents": [
         {
-            "detectedLanguage":{
-                "confidenceScore":0.99,
-                "iso6391Name":"en",
-                "name":"English"
+            "id": "1",
+            "detectedLanguage": {
+                "name": "English",
+                "iso6391Name": "en",
+                "confidenceScore": 0.99
             },
-            "id":"1",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"es",
-                "name":"Spanish"
+            "id": "2",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 0.91
             },
-            "id":"2",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"fr",
-                "name":"French"
+            "id": "3",
+            "detectedLanguage": {
+                "name": "French",
+                "iso6391Name": "fr",
+                "confidenceScore": 0.78
             },
-            "id":"3",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"zh_chs",
-                "name":"Chinese_Simplified"
+            "id": "4",
+            "detectedLanguage": {
+                "name": "Chinese_Simplified",
+                "iso6391Name": "zh_chs",
+                "confidenceScore": 1.0
             },
-            "id":"4",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"ru",
-                "name":"Russian"
+            "id": "5",
+            "detectedLanguage": {
+                "name": "Russian",
+                "iso6391Name": "ru",
+                "confidenceScore": 1.0
             },
-            "id":"5",
-            "warnings":[
-                
-            ]
+            "warnings": []
         }
     ],
-    "errors":[
-        
-    ],
-    "modelVersion":"2020-09-01"
+    "errors": [],
+    "modelVersion": "2021-01-05"
 }
 ```
 
@@ -226,23 +214,19 @@ Wenn das Analysetool die Eingabe nicht analysieren kann, wird `(Unknown)` zurüc
 
 ```json
 {
-    "documents":[
+    "documents": [
         {
-            "detectedLanguage":{
-                "confidenceScore":0.0,
-                "iso6391Name":"(Unknown)",
-                "name":"(Unknown)"
+            "id": "1",
+            "detectedLanguage": {
+                "name": "(Unknown)",
+                "iso6391Name": "(Unknown)",
+                "confidenceScore": 0.0
             },
-            "id":"1",
-            "warnings":[
-                
-            ]
+            "warnings": []
         }
     ],
-    "errors":[
-        
-    ],
-    "modelVersion":"2020-09-01"
+    "errors": [],
+    "modelVersion": "2021-01-05"
 }
 ```
 
@@ -269,23 +253,19 @@ Die resultierende Ausgabe enthält die vorherrschende Sprache mit einer Punktzah
 
 ```json
 {
-    "documents":[
+    "documents": [
         {
-            "detectedLanguage":{
-                "confidenceScore":0.94,
-                "iso6391Name":"es",
-                "name":"Spanish"
+            "id": "1",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 0.88
             },
-            "id":"1",
-            "warnings":[
-                
-            ]
+            "warnings": []
         }
     ],
-    "errors":[
-        
-    ],
-    "modelVersion":"2020-09-01"
+    "errors": [],
+    "modelVersion": "2021-01-05"
 }
 ```
 
@@ -293,7 +273,7 @@ Die resultierende Ausgabe enthält die vorherrschende Sprache mit einer Punktzah
 
 In diesem Artikel haben Sie sich mit Konzepten und mit dem Workflow für die Sprachenerkennung unter Verwendung der Textanalyse in Azure Cognitive Services vertraut gemacht. Die folgenden Punkte wurden erläutert und veranschaulicht:
 
-+ Die [Sprachenerkennung](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) ist für eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen verfügbar.
++ Die [Sprachenerkennung](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages) ist für eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen verfügbar.
 + JSON-Dokumente im Anforderungstext umfassen eine ID und Text.
 + Die POST-Anforderung wird an einen Endpunkt vom Typ `/languages` gesendet. Dabei werden ein personalisierter [Zugriffsschlüssel und ein Endpunkt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) verwendet, der für Ihr Abonnement gültig ist.
 + Die Antwortausgabe besteht aus Sprachen-IDs für die jeweilige Dokument-ID. Die Ausgabe kann an eine beliebige JSON-fähige App gestreamt werden. Zu den Beispiel-Apps zählen Excel und Power BI, um nur einige zu nennen.

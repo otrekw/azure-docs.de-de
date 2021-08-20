@@ -3,20 +3,20 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 06/11/2021
+ms.date: 07/15/2021
 ms.author: aahi
-ms.openlocfilehash: b94aaff50547830c796e3461a55126b3d54d905a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c66a17c1591f9a0070af1f6fc6b0ec6127292f6b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112083669"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593160"
 ---
 <a name="HOLTop"></a>
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
-[v3.1-Referenzdokumentation](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview) | [v3.1-Bibliotheksquellcode](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [v3.1-Paket (PiPy)](https://pypi.org/project/azure-ai-textanalytics/5.1.0b7/) | [v3.1-Beispiele](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3.1-Referenzdokumentation](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview) | [v3.1-Bibliotheksquellcode](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/textanalytics/azure-ai-textanalytics) | [v3.1-Paket (PiPy)](https://pypi.org/project/azure-ai-textanalytics/5.1.0/) | [v3.1-Beispiele](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
@@ -39,10 +39,10 @@ ms.locfileid: "112083669"
 
 Nach der Installation von Python, können Sie die Clientbibliothek mit Folgendem installieren:
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 ```console
-pip install azure-ai-textanalytics==5.1.0b7
+pip install azure-ai-textanalytics==5.1.0
 ```
 
 > [!TIP]
@@ -74,7 +74,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 ## <a name="object-model"></a>Objektmodell
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Der Textanalyseclient ist ein Objekt vom Typ `TextAnalyticsClient`, das sich bei Azure authentifiziert. Der Client bietet verschiedene Methoden, um Text zu analysieren. 
 
@@ -96,14 +96,14 @@ Das Antwortobjekt ist eine Liste mit den analysierten Informationen für jedes D
 
 Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Textanalyse-Clientbibliothek für Python durchgeführt werden:
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Standpunktanalyse](#sentiment-analysis)
 * [Opinion Mining](#opinion-mining)
 * [Sprachenerkennung](#language-detection)
 * [Erkennung benannter Entitäten](#named-entity-recognition-ner) 
-* [Erkennung von personenbezogenen Informationen](#personally-identifiable-information-recognition) 
+* [Erkennung von personenbezogenen Informationen](#personally-identifiable-information-pii-recognition) 
 * [Entitätsverknüpfung](#entity-linking)
 * [Schlüsselbegriffserkennung](#key-phrase-extraction)
 
@@ -121,7 +121,7 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Texta
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Erstellen Sie eine Funktion, um das Objekt `TextAnalyticsClient` mit dem oben erstellten Schlüssel (`key`) und Endpunkt (`endpoint`) zu instanziieren. Erstellen Sie anschließend einen neuen Client. 
 
@@ -180,7 +180,7 @@ client = authenticate_client()
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Erstellen Sie eine neue Funktion namens `sentiment_analysis_example()`, die den Client als Argument akzeptiert und anschließend die Funktion `analyze_sentiment()` aufruft. Das zurückgegebene Antwortobjekt enthält die Stimmungsbezeichnung und den Stimmungswert des gesamten Eingabedokuments sowie eine Standpunktanalyse für jeden Satz.
 
@@ -283,7 +283,7 @@ Negative=0.02
 
 ## <a name="opinion-mining"></a>Opinion Mining
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 
 Zum Durchführen von Stimmungsanalyse mit Opinion Mining erstellen Sie eine neue Funktion mit dem Namen `sentiment_analysis_with_opinion_mining_example()`, die den Client als Argument annimmt und dann die Funktion `analyze_sentiment()` mit dem Optionsflag `show_opinion_mining=True` aufruft. Das zurückgegebene Antwortobjekt enthält nicht nur die Stimmungsbezeichnung und den Stimmungswert des gesamten Eingabedokuments mit einer Stimmungsanalyse für jeden Satz, sondern außerdem die Standpunktanalyse auf Ansichts- und Meinungsebene.
@@ -391,7 +391,7 @@ Press any key to continue . . .
 
 ```
 
-# <a name="version-30-preview"></a>[Version 3.0 (Vorschau)](#tab/version-3)
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 Dieses Feature ist in Version 3.0 nicht verfügbar.
 
@@ -399,7 +399,7 @@ Dieses Feature ist in Version 3.0 nicht verfügbar.
 
 ## <a name="language-detection"></a>Spracherkennung
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Erstellen Sie eine neue Funktion namens `language_detection_example()`, die den Client als Argument akzeptiert und anschließend die Funktion `detect_language()` aufruft. Das zurückgegebene Antwortobjekt enthält die erkannte Sprache in `primary_language` (sofern erfolgreich). Andernfalls enthält es eine Fehlermeldung (`error`).
 
@@ -456,7 +456,7 @@ Language:  French
 
 ## <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (NER)
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 > [!NOTE]
 > In Version `3.1`: 
@@ -496,7 +496,7 @@ Named Entities:
         Confidence Score:        0.8    Length:          9      Offset:          34
 ```
 
-### <a name="personally-identifiable-information-recognition"></a>Erkennung von personenbezogenen Informationen
+## <a name="personally-identifiable-information-pii-recognition"></a>Erkennung von personenbezogenen Informationen (PII)
 
 Erstellen Sie eine neue Funktion namens `pii_recognition_example`, die den Client als Argument akzeptiert und anschließend die Funktion `recognize_pii_entities()` aufruft und die Ergebnisse durchläuft. Das zurückgegebene Antwortobjekt enthält die Liste erkannter Entitäten in `entity` (sofern erfolgreich). Andernfalls enthält es eine Fehlermeldung (`error`). Geben Sie für die erkannten Entitäten jeweils die Kategorie und Unterkategorie aus (sofern vorhanden).
 
@@ -577,7 +577,7 @@ Named Entities:
 
 ## <a name="entity-linking"></a>Entitätsverknüpfung
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Erstellen Sie eine neue Funktion namens `entity_linking_example()`, die den Client als Argument akzeptiert und anschließend die Funktion `recognize_linked_entities()` aufruft und die Ergebnisse durchläuft. Das zurückgegebene Antwortobjekt enthält die Liste erkannter Entitäten in `entities` (sofern erfolgreich). Andernfalls enthält es eine Fehlermeldung (`error`). Da verknüpfte Entitäten eindeutig identifiziert werden, werden Vorkommen der gleichen Entität unter einem Objekt vom Typ `entity` als Liste von Objekten des Typs `match` gruppiert.
 
@@ -739,7 +739,7 @@ Linked Entities:
 
 ## <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Erstellen Sie eine neue Funktion namens `key_phrase_extraction_example()`, die den Client als Argument akzeptiert und anschließend die Funktion `extract_key_phrases()` aufruft. Das Ergebnis enthält bei erfolgreicher Ausführung die Liste der erkannten Schlüsselbegriffe in `key_phrases` und andernfalls `error`. Geben Sie alle erkannten Schlüsselbegriffe aus.
 
@@ -810,9 +810,73 @@ key_phrase_extraction_example(client)
 
 ---
 
+## <a name="extract-health-entities"></a>Extrahieren von Integritätsentitäten
+
+Sie können Textanalyse verwenden, um eine asynchrone Anforderung zum Extrahieren von Integritätsentitäten aus Text durchzuführen. Nachfolgend sehen Sie ein einfaches Beispiel für diesen Vorgang. Ein komplexeres Beispiel können Sie auf [GitHub](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_healthcare_entities.py) finden.
+
+[!INCLUDE [health operation pricing](../health-operation-pricing-caution.md)]
+
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
+
+``` python
+def health_example(client):
+    documents = [
+        """
+        Patient needs to take 50 mg of ibuprofen.
+        """
+    ]
+
+    poller = client.begin_analyze_healthcare_entities(documents)
+    result = poller.result()
+
+    docs = [doc for doc in result if not doc.is_error]
+
+    for idx, doc in enumerate(docs):
+        for entity in doc.entities:
+            print("Entity: {}".format(entity.text))
+            print("...Normalized Text: {}".format(entity.normalized_text))
+            print("...Category: {}".format(entity.category))
+            print("...Subcategory: {}".format(entity.subcategory))
+            print("...Offset: {}".format(entity.offset))
+            print("...Confidence score: {}".format(entity.confidence_score))
+        for relation in doc.entity_relations:
+            print("Relation of type: {} has the following roles".format(relation.relation_type))
+            for role in relation.roles:
+                print("...Role '{}' with entity '{}'".format(role.name, role.entity.text))
+        print("------------------------------------------")
+health_example(client)
+```
+
+### <a name="output"></a>Ausgabe
+
+```console
+Entity: 50 mg
+...Normalized Text: None
+...Category: Dosage
+...Subcategory: None
+...Offset: 31
+...Confidence score: 1.0
+Entity: ibuprofen
+...Normalized Text: ibuprofen
+...Category: MedicationName
+...Subcategory: None
+...Offset: 40
+...Confidence score: 1.0
+Relation of type: DosageOfMedication has the following roles
+...Role 'Dosage' with entity '50 mg'
+...Role 'Medication' with entity 'ibuprofen'
+```
+
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+Dieses Feature ist in Version 3.0 nicht verfügbar.
+
+---
+
+
 ## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Asynchrones Verwenden der API mit dem Analyze-Vorgang
 
-# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 Mithilfe des Analysevorgangs können Sie asynchrone Batchanforderungen für Folgendes ausführen: NER, Schlüsselbegriffserkennung, Stimmungsanalyse und Erkennung personenbezogener Informationen. Nachfolgend sehen Sie ein einfaches Beispiel für einen Vorgang. Ein komplexeres Beispiel können Sie auf [GitHub](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_actions.py) finden.
 
@@ -822,7 +886,8 @@ Erstellen Sie eine neue Funktion namens `analyze_batch_example()`, die den Clien
 
 ```python
 from azure.ai.textanalytics import (
-    RecognizeEntitiesAction
+    RecognizeEntitiesAction,
+    ExtractKeyPhrasesAction
 )
 
 def analyze_batch_example(client):
@@ -833,24 +898,28 @@ def analyze_batch_example(client):
         poller = client.begin_analyze_actions(
             documents,
             display_name="Sample Text Analysis",
-            actions=[RecognizeEntitiesAction()]
+            actions=[RecognizeEntitiesAction(), ExtractKeyPhrasesAction()]
         )
 
         result = poller.result()
-        action_results = [action_result for action_result in list(result) if not action_result.is_error]
-
-        entities_recognition_task_result = action_results[0]
+        action_results = [action_result for action_result in list(result)]
+        first_action_result = action_results[0][0]
         print("Results of Entities Recognition action:")
-        docs = [doc for doc in entities_recognition_task_result.document_results if not doc.is_error]
 
-        for idx, doc in enumerate(docs):
-            print("\nDocument text: {}".format(documents[idx]))
-            for entity in doc.entities:
-                print("Entity: {}".format(entity.text))
-                print("...Category: {}".format(entity.category))
-                print("...Confidence Score: {}".format(entity.confidence_score))
-                print("...Offset: {}".format(entity.offset))
-            print("------------------------------------------")
+        for entity in first_action_result.entities:
+            print("Entity: {}".format(entity.text))
+            print("...Category: {}".format(entity.category))
+            print("...Confidence Score: {}".format(entity.confidence_score))
+            print("...Offset: {}".format(entity.offset))
+            print("...Length: {}".format(entity.length))
+        print("------------------------------------------")
+
+        second_action_result = action_results[0][1]
+        print("Results of Key Phrase Extraction action:")
+        
+        for key_phrase in second_action_result.key_phrases:
+            print("Key Phrase: {}\n".format(key_phrase))
+        print("------------------------------------------")
 
 analyze_batch_example(client)
 ```
@@ -858,20 +927,30 @@ analyze_batch_example(client)
 ### <a name="output"></a>Ausgabe
 
 ```console
-Results of Entities Recognition task:
-Document text: Microsoft was founded by Bill Gates and Paul Allen.
+Results of Entities Recognition action:
 Entity: Microsoft
 ...Category: Organization
-...Confidence Score: 0.83
+...Confidence Score: 1.0
 ...Offset: 0
+...Length: 9
 Entity: Bill Gates
 ...Category: Person
-...Confidence Score: 0.85
+...Confidence Score: 1.0
 ...Offset: 25
+...Length: 10
 Entity: Paul Allen
 ...Category: Person
-...Confidence Score: 0.9
+...Confidence Score: 1.0
 ...Offset: 40
+...Length: 10
+------------------------------------------
+Results of Key Phrase Extraction action:
+Key Phrase: Bill Gates
+
+Key Phrase: Paul Allen
+
+Key Phrase: Microsoft
+
 ------------------------------------------
 ```
 

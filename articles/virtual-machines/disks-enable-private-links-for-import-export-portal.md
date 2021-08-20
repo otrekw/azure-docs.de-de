@@ -2,18 +2,18 @@
 title: 'Azure-Portal: Einschränken des Import-/Exportzugriffs auf verwaltete Datenträger mit privaten Links'
 description: Aktivieren Sie über das Azure-Portal private Links für Ihre verwalteten Datenträger. Dadurch können Sie Datenträger innerhalb Ihres virtuellen Netzwerks sicher exportieren und importieren.
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: overview
-ms.date: 08/24/2020
+ms.date: 07/15/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: b686eac137a0531befea6fe42c31112c46b18cc9
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: af8b44cbd229fc2bdf28d2885356e219b3a8198a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028647"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114288314"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Verwenden Sie das Azure-Portal zum Einschränken des Import-/Exportzugriffs für verwaltete Datenträger mit privaten Links.
 
@@ -60,13 +60,13 @@ Nachdem Sie nun über eine Datenträgerzugriffsressource verfügen, können Sie 
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Screenshot: Workflow zum Erstellen des privaten Endpunkts (erstes Blatt) Wenn Sie nicht die entsprechende Region auswählen, treten später möglicherweise Probleme auf.":::
 
-1. Wählen Sie auf dem Blatt **Ressource** die Option **Mit einer Azure-Ressource in meinem Verzeichnis verbinden** aus.
+1. Wählen Sie im Bereich **Ressource** die Option **Mit einer Azure-Ressource in meinem Verzeichnis verbinden** aus.
 1. Wählen Sie für **Ressourcentyp** den Wert **Microsoft.Compute/diskAccesses** aus.
 1. Wählen Sie für **Ressource** die zuvor erstellte Datenträgerzugriffsressource aus.
 1. Übernehmen Sie unter **Untergeordnete Zielressource** den Wert **Datenträger**.
 1. Wählen Sie **Weiter: Konfiguration >** .
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Screenshot: Workflow zum Erstellen des privaten Endpunkts (zweites Blatt) mit hervorgehobenen Werten (Ressourcentyp, Ressource, Untergeordnete Zielressource)":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Screenshot: Workflow zum Erstellen des privaten Endpunkts (zweiter Bereich) mit hervorgehobenen Werten (Ressourcentyp, Ressource, Untergeordnete Zielressource)":::
 
 1. Wählen Sie das virtuelle Netzwerk aus, auf das Sie den Datenträgerexport beschränken möchten. Andere virtuelle Netzwerke können den Datenträger nicht exportieren.
 
@@ -76,7 +76,7 @@ Nachdem Sie nun über eine Datenträgerzugriffsressource verfügen, können Sie 
 1. Auswählen des geeigneten Subnetzes
 1. Klicken Sie auf **Überprüfen + erstellen**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Screenshot: Workflow zum Erstellen des privaten Endpunkts (drittes Blatt) mit hervorgehobenem virtuellem Netzwerk und Subnetz":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Screenshot: Workflow zum Erstellen des privaten Endpunkts (dritter Bereich) mit hervorgehobenem virtuellem Netzwerk und Subnetz":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>Aktivieren des privaten Endpunkts auf Ihrem Datenträger
 
@@ -85,11 +85,13 @@ Nachdem Sie nun über eine Datenträgerzugriffsressource verfügen, können Sie 
 1. Wählen Sie **Private endpoint (through disk access)** (Privater Endpunkt (über Datenträgerzugriff)) und dann den zuvor erstellten Datenträgerzugriff aus.
 1. Wählen Sie **Speichern** aus.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Screenshot: Blatt „Netzwerk“ für verwaltete Datenträger. Privater Endpunkt und ausgewählter Datenträgerzugriff hervorgehoben. Durch das Speichern wird der Datenträger für diesen Zugriff konfiguriert.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Screenshot: Bereich „Netzwerk“ für verwaltete Datenträger. Privater Endpunkt und ausgewählter Datenträgerzugriff hervorgehoben. Durch das Speichern wird der Datenträger für diesen Zugriff konfiguriert.":::
 
 Die Konfiguration privater Links ist nun abgeschlossen, und Sie können sie beim Importieren und Exportieren Ihrer verwalteten Datenträger verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region: [Azure CLI](linux/disks-upload-vhd-to-managed-disk-cli.md) oder [Azure PowerShell-Modul](windows/disks-upload-vhd-to-managed-disk-powershell.md)
+- Herunterladen einer VHD: [Windows](windows/download-vhd.md) oder [Linux](linux/download-vhd.md)
 - [Häufig gestellte Fragen zu privaten Links](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
 - [Exportieren/Kopieren verwalteter Momentaufnahmen als VHD in ein Speicherkonto in einer anderen Region mit PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account)

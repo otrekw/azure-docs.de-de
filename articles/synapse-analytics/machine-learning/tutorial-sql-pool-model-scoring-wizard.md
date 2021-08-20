@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: d8db9257ad6eed98b39cd2c9a52351f013453365
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f21fb2d35dc7cb7383d756b4177924420961945f
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98935227"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113506371"
 ---
 # <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>Tutorial: Assistent für die Bewertung von Machine Learning-Modellen (Vorschauversion) für dedizierte SQL-Pools
 
@@ -119,7 +119,7 @@ Vergewissern Sie sich zunächst, dass Ihre Version von sklearn 0.20.3 ist.
 
    ![Laden von Daten in einen dedizierten SQL-Pool](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00b.png)
 
-1. Wechseln Sie zu **Daten** > **Arbeitsbereich**. Öffnen Sie den Assistenten für die SQL-Bewertung, indem Sie mit der rechten Maustaste auf die Tabelle der dedizierten SQL-Pools klicken. Wählen Sie **Machine Learning** > **Enrich with existing model** (Mit vorhandenem Modell anreichern) aus.
+1. Wechseln Sie zu **Daten** > **Arbeitsbereich**. Öffnen Sie den Assistenten für die SQL-Bewertung, indem Sie mit der rechten Maustaste auf die Tabelle der dedizierten SQL-Pools klicken. Wählen Sie **Machine Learning** > **Mit Modell vorhersagen** aus.
 
    > [!NOTE]
    > Die Machine Learning-Option wird nur angezeigt, wenn Sie einen verknüpften Dienst für Azure Machine Learning erstellt haben. (Informationen hierzu finden Sie am Anfang dieses Tutorials unter [Voraussetzungen](#prerequisites).)

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d1310e3c4b4a56a27219cce613e8f6109d32c8c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6130b49244a0fe7f8cbe377706f45634efce3639
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729390"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220274"
 ---
 # <a name="quickstart-set-up-azure-attestation-by-using-the-azure-portal"></a>Schnellstart: Einrichten von Azure Attestation über das Azure-Portal
 
@@ -90,7 +90,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um Richtlinien-Signaturgeberze
 1. Navigieren Sie zum Menü im Azure-Portal oder auf die Startseite, und wählen Sie die Option **Alle Ressourcen** aus.
 1. Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
 1. Wählen Sie den Nachweisanbieter aus, und navigieren Sie zur Übersichtsseite.
-1. Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinien-Signaturgeberzertifikate** aus. Es wird eine Aufforderung angezeigt, das Zertifikat für die Authentifizierung auszuwählen. Wählen Sie die richtige Option aus, um fortzufahren.
+1. Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinien-Signaturgeberzertifikate** aus. Klicken Sie bei Anzeige einer Aufforderung zum Auswählen eines Zertifikats für die Authentifizierung auf „Abbrechen“, bzw. wählen Sie ein gültiges Zertifikat aus, um fortzufahren.
 1. Wählen Sie **Download policy signer certificates** (Richtlinien-Signaturgeberzertifikate herunterladen) aus. Diese Schaltfläche ist für Nachweisanbieter deaktiviert, die ohne obligatorische Richtliniensignatur erstellt wurden.
 1. Die heruntergeladene Textdatei enthält alle Zertifikate in einem JWS-Format.
 1. Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zertifikate.
@@ -100,7 +100,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um Richtlinien-Signaturgeberze
 1.  Navigieren Sie zum Menü im Azure-Portal oder auf die Startseite, und wählen Sie die Option **Alle Ressourcen** aus.
 1.  Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
 1.  Wählen Sie den Nachweisanbieter aus, und navigieren Sie zur Übersichtsseite.
-1.  Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinien-Signaturgeberzertifikate** aus.
+1.  Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinien-Signaturgeberzertifikate** aus. Klicken Sie bei Anzeige einer Aufforderung zum Auswählen eines Zertifikats für die Authentifizierung auf „Abbrechen“, bzw. wählen Sie ein gültiges Zertifikat aus, um fortzufahren.
 1.  Wählen Sie im oberen Menü die Option **Hinzufügen** aus. Diese Schaltfläche ist für Nachweisanbieter deaktiviert, die ohne obligatorische Richtliniensignatur erstellt wurden.
 1.  Laden Sie die Datei mit dem Richtlinien-Signaturgeberzertifikat hoch, und wählen Sie **Hinzufügen** aus. [Sehen Sie sich die Beispiele für Richtliniensignaturgeber-Zertifikate an](./policy-signer-examples.md).
 
@@ -109,7 +109,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um Richtlinien-Signaturgeberze
 1.  Navigieren Sie zum Menü im Azure-Portal oder auf die Startseite, und wählen Sie die Option **Alle Ressourcen** aus.
 1.  Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
 1.  Wählen Sie den Nachweisanbieter aus, und navigieren Sie zur Übersichtsseite.
-1.  Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinien-Signaturgeberzertifikate** aus.
+1.  Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinien-Signaturgeberzertifikate** aus. Klicken Sie bei Anzeige einer Aufforderung zum Auswählen eines Zertifikats für die Authentifizierung auf „Abbrechen“, bzw. wählen Sie ein gültiges Zertifikat aus, um fortzufahren.
 1.  Wählen Sie im oberen Menü die Option **Löschen** aus. Diese Schaltfläche ist für Nachweisanbieter deaktiviert, die ohne obligatorische Richtliniensignatur erstellt wurden.
 1.  Laden Sie die Datei mit dem Richtlinien-Signaturgeberzertifikat hoch, und wählen Sie **Löschen** aus. [Sehen Sie sich die Beispiele für Richtliniensignaturgeber-Zertifikate an](./policy-signer-examples.md). 
 
@@ -122,7 +122,7 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Nachweisrichtlinie anzeigen u
 1.  Navigieren Sie zum Menü im Azure-Portal oder auf die Startseite, und wählen Sie die Option **Alle Ressourcen** aus.
 1.  Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
 1.  Wählen Sie den Nachweisanbieter aus, und navigieren Sie zur Übersichtsseite.
-1.  Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinie** aus. Es wird eine Aufforderung angezeigt, das Zertifikat für die Authentifizierung auszuwählen. Wählen Sie die richtige Option aus, um fortzufahren.
+1.  Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinie** aus. Klicken Sie bei Anzeige einer Aufforderung zum Auswählen eines Zertifikats für die Authentifizierung auf „Abbrechen“, bzw. wählen Sie ein gültiges Zertifikat aus, um fortzufahren.
 1.  Wählen Sie den gewünschten **Nachweistyp** aus, und zeigen Sie die **Aktuelle Richtlinie** an.
 
 ### <a name="configure-an-attestation-policy"></a>Konfigurieren einer Nachweisrichtlinie
@@ -132,7 +132,7 @@ Führen Sie diese Schritte aus, um eine Richtlinie im JWT- oder Textformat hochz
 1. Navigieren Sie zum Menü im Azure-Portal oder auf die Startseite, und wählen Sie die Option **Alle Ressourcen** aus.
 1. Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
 1. Wählen Sie den Nachweisanbieter aus, und navigieren Sie zur Übersichtsseite.
-1. Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinie** aus.
+1. Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinie** aus. Klicken Sie bei Anzeige einer Aufforderung zum Auswählen eines Zertifikats für die Authentifizierung auf „Abbrechen“, bzw. wählen Sie ein gültiges Zertifikat aus, um fortzufahren.
 1. Wählen Sie im oberen Menü die Option **Konfigurieren** aus.
 1. Wählen Sie für **Richtlinienformat** die Option **JWT** oder **Text** aus.
 

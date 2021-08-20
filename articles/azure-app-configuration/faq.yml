@@ -9,12 +9,12 @@ metadata:
   ms.date: 02/19/2020
   ms.author: alkemper
   ms.custom: references_regions
-  ms.openlocfilehash: c5871704dd2b999bbb9033abc20f41099b53d000
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 2c7df8ee7ea6947165157e43f79ecca7afd8a118
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "111907275"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114447537"
 title: Häufig gestellte Fragen zu Azure App Configuration
 summary: In diesem Artikel werden häufig gestellte Fragen zu Azure App Configuration beantwortet.
 sections:
@@ -142,6 +142,12 @@ sections:
 
 
       Überprüfen Sie den Text der 429-Antwort, um den genauen Grund zu ermitteln, warum die Anforderung fehlgeschlagen ist.
+  - question: Warum kann ich keinen App Configuration-Speicher erstellen, der den gleichen Namen wie der gerade gelöschte Speicher hat?
+    answer: >
+      Wenn ein App Configuration-Speicher im Standard-Tarif gelöscht wird, ist der Name nach dem Löschen noch drei Tage reserviert. Es ist möglich, einen Speicher mit dem gleichen Namen zu erstellen, bevor der Reservierungszeitraum abgelaufen ist. Dies gilt aber nur für den Fall, dass er sich unter demselben Abonnement und in derselben Ressourcengruppe und Region wie der ursprüngliche Speicher befindet. Falls die Ressourcengruppe, die den Speicher enthalten hat, gelöscht wurde, muss sie zunächst unter demselben Abonnement neu erstellt werden, bevor darin der Speicher neu erstellt werden kann.
+  - question: Wie kann ich einen App Configuration-Speicher wiederherstellen, den ich fälschlicherweise gelöscht habe?
+    answer: >
+      App Configuration-Speicher im Standard-Tarif können innerhalb von drei Tagen nach dem Löschen wiederhergestellt werden. Wenden Sie sich an den Microsoft-Support, um einen fälschlicherweise gelöschten App Configuration-Speicher wiederherstellen zu lassen.
   - question: Wie kann ich Ankündigungen zu neuen Releases und andere Informationen im Zusammenhang mit App Configuration erhalten?
     answer: >
       Abonnieren Sie das [GitHub-Ankündigungsrepository](https://github.com/Azure/AppConfiguration-Announcements).

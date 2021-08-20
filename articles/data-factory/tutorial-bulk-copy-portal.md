@@ -7,13 +7,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 73162ebdb28f8b8fa743ea4bb310b92b64f27557
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/06/2021
+ms.openlocfilehash: 4d3e767b14ad60f703cde59ab69cfea3f60b3759
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076748"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436890"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Massenkopieren mehrerer Tabellen mithilfe von Azure Data Factory im Azure-Portal
 
@@ -83,7 +83,7 @@ Wenn Sie diese Einstellung überprüfen und aktivieren möchten, navigieren Sie 
 1. Klicken Sie auf **Erstellen**.
 1. Wählen Sie nach der Erstellung **Zu Ressource wechseln** aus, um zur Seite **Data Factory** zu navigieren. 
    
-1. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Anwendung für die Data Factory-Benutzeroberfläche auf einer separaten Registerkarte zu starten.
+1. Klicken Sie auf der Kachel **Open Azure Data Factory Studio** auf **Öffnen**, um die Data Factory-UI-Anwendung in einer separaten Registerkarte zu starten.
 
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
@@ -254,7 +254,7 @@ Die Pipeline **IterateAndCopySQLTables** akzeptiert eine Liste von Tabellen als 
     1. Klicken Sie auf das Eingabefeld **Pre-copy Script** (Skript für Vorabkopieren), wählen Sie unten die Option **Dynamischen Inhalt hinzufügen**, geben Sie den folgenden Ausdruck als Skript ein, und wählen Sie **Fertig stellen**. 
 
         ```sql
-        IF EXISTS (SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}) TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
+        IF EXISTS (SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]) TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ```
 
         ![Einstellungen für die Kopiersenke](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)

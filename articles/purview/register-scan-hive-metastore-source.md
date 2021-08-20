@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 5/17/2021
-ms.openlocfilehash: b259ef022d2fca8f6531a35eca619ef890019ff3
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: c289ab60973c0e907deb97c0e8520f8b608099eb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072779"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467079"
 ---
 # <a name="register-and-scan-hive-metastore-database"></a>Registrieren und Überprüfen einer Hive-Metastore-Datenbank
 
@@ -85,79 +85,81 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
 5.  Geben Sie folgende Details an:
 
-    a.  **Name**: Der Name der Überprüfung.
+    1. **Name**: Der Name der Überprüfung.
 
-    b.  **Verbindung über Integration Runtime herstellen**: Wählen Sie die konfigurierte selbstgehostete Integration Runtime aus.
+    1. **Verbindung über Integration Runtime herstellen**: Wählen Sie die konfigurierte selbstgehostete Integration Runtime aus.
 
-    c.  **Anmeldeinformationen**: Wählen Sie die Anmeldeinformationen zur Herstellung der Verbindung mit Ihrer Datenquelle aus. Stellen Sie sicher, dass Sie:
+    1. **Anmeldeinformationen**: Wählen Sie die Anmeldeinformationen zur Herstellung der Verbindung mit Ihrer Datenquelle aus. Stellen Sie sicher, dass Sie:
 
-    -   beim Erstellen von Anmeldeinformationen die Standardauthentifizierung auswählen.
-    -   Angeben des Metastore-Benutzernamens im entsprechenden Eingabefeld
-    -   Speichern des Metastore-Kennworts im geheimen Schlüssel
+       - beim Erstellen von Anmeldeinformationen die Standardauthentifizierung auswählen.
+       - Angeben des Metastore-Benutzernamens im entsprechenden Eingabefeld
+       - Speichern des Metastore-Kennworts im geheimen Schlüssel
 
-    Weitere Informationen zu Anmeldeinformationen finden Sie [hier](manage-credentials.md). 
+       Weitere Informationen zu Anmeldeinformationen finden Sie [hier](manage-credentials.md). 
 
-    **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
+       **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
 
-    Sie können über die beiden hier angegebenen Eigenschaften auf den Benutzernamen und das Kennwort zugreifen:
+       Sie können über die beiden hier angegebenen Eigenschaften auf den Benutzernamen und das Kennwort zugreifen:
 
-    :::image type="content" source="media/register-scan-hive-metastore-source/databricks-credentials.png" alt-text="databricks-username-password-details" border="true":::
+       :::image type="content" source="media/register-scan-hive-metastore-source/databricks-credentials.png" alt-text="databricks-username-password-details" border="true":::
 
-    d. **Speicherort des Metastore-JDBC-Treibers**: Geben Sie den Pfad zum Speicherort des JDBC-Treibers auf dem virtuellen Computer an, auf dem die selbstgehostete Integration Runtime ausgeführt wird. Hierbei sollte es sich um den Pfad zu einem gültigen Speicherort eines JARs-Ordners handeln.
+    1. **Speicherort des Metastore-JDBC-Treibers**: Geben Sie den Pfad zum Speicherort des JDBC-Treibers auf dem virtuellen Computer an, auf dem die selbstgehostete Integration Runtime ausgeführt wird. Hierbei sollte es sich um den Pfad zu einem gültigen Speicherort eines JARs-Ordners handeln.
 
-    Wenn Sie eine Überprüfung von Databricks durchführen, helfen Ihnen die entsprechenden Informationen im Abschnitt unten weiter.
+       Wenn Sie eine Überprüfung von Databricks durchführen, helfen Ihnen die entsprechenden Informationen im Abschnitt unten weiter.
 
-    > [!Note]
-    > Der Treiber muss für alle Konten des virtuellen Computers zugänglich sein. Installieren Sie ihn nicht in einem Benutzerkonto.
+       > [!Note]
+       > Der Treiber muss für alle Konten des virtuellen Computers zugänglich sein. Installieren Sie ihn nicht in einem Benutzerkonto.
 
-    e.  **Metastore-JDBC-Treiberklasse**: Geben Sie den Namen der Verbindungstreiberklasse an. Beispiel: example,\com.microsoft.sqlserver.jdbc.SQLServerDriver.
+    1. **Metastore-JDBC-Treiberklasse**: Geben Sie den Namen der Verbindungstreiberklasse an. Beispiel: example,\com.microsoft.sqlserver.jdbc.SQLServerDriver.
     
-    **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
+       **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
     
-    Auf die Treiberklasse kann wie unten dargestellt über die entsprechende Eigenschaft zugegriffen werden.
+       Auf die Treiberklasse kann wie unten dargestellt über die entsprechende Eigenschaft zugegriffen werden.
     :::image type="content" source="media/register-scan-hive-metastore-source/databricks-driver-class-name.png" alt-text="databricks-driver-class-details" border="true":::
 
-    f.  **Metastore-JDBC-URL**: Geben Sie den Wert der Verbindungs-URL an, und definieren Sie die Verbindung mit der URL des Metastore-Datenbankservers. Beispiel: jdbc:sqlserver://hive.database.windows.net;database=hive;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300.
+    1. **Metastore-JDBC-URL**: Geben Sie den Wert der Verbindungs-URL an, und definieren Sie die Verbindung mit der URL des Metastore-Datenbankservers. Beispiel: `jdbc:sqlserver://hive.database.windows.net;database=hive;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300`.
 
-    **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
+       **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
     
-    Auf die JDBC-URL kann wie unten gezeigt über die Verbindungs-URL-Eigenschaft zugegriffen werden.
-    :::image type="content" source="media/register-scan-hive-metastore-source/databricks-jdbc-connection.png" alt-text="databricks-jdbc-url-details" border="true":::
-
-    Fügen Sie an diese URL den Pfad zu dem Speicherort an, an dem sich das SSL-Zertifikat auf Ihrer VM befindet. Sie können das SSL-Zertifikat [hier](../mysql/howto-configure-ssl.md) herunterladen.
-
-    Die Metastore-JDBC-URL lautet also wie folgt:
+       Auf die JDBC-URL kann wie unten gezeigt über die Verbindungs-URL-Eigenschaft zugegriffen werden.
+       
+       :::image type="content" source="media/register-scan-hive-metastore-source/databricks-jdbc-connection.png" alt-text="databricks-jdbc-url-details" border="true":::
     
-    jdbc:mariadb://consolidated-westus2-prod-metastore-addl-1.mysql.database.azure.com:3306/organization1829255636414785?trustServerCertificate=true&amp;useSSL=true&sslCA=D:\Drivers\SSLCert\BaltimoreCyberTrustRoot.crt.pem
+       > [!NOTE]
+       > Wenn Sie die URL aus *hive-site.xml* kopieren, sollten Sie `amp;` aus der Zeichenfolge entfernen, da bei der Überprüfung sonst ein Fehler angezeigt wird.
 
-    g.  **Name der Metastore-Datenbank**: Geben Sie den Namen der Hive-Metastore-Datenbank an.
+       Fügen Sie an diese URL den Pfad zu dem Speicherort an, an dem sich das SSL-Zertifikat auf Ihrer VM befindet. Sie können das SSL-Zertifikat [hier](../mysql/howto-configure-ssl.md) herunterladen.
+
+       Die Metastore-JDBC-URL lautet wie folgt:
     
-    Wenn Sie eine Überprüfung von Databricks durchführen, helfen Ihnen die entsprechenden Informationen im Abschnitt unten weiter.
+       `jdbc:mariadb://consolidated-westus2-prod-metastore-addl-1.mysql.database.azure.com:3306/organization1829255636414785?trustServerCertificate=true&amp;useSSL=true&sslCA=D:\Drivers\SSLCert\BaltimoreCyberTrustRoot.crt.pem`
 
-    **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
-
-    Auf den Datenbanknamen kann wie unten gezeigt über die JDBC-URL-Eigenschaft zugegriffen werden. Beispiel: organization1829255636414785 :::image type="content" source="media/register-scan-hive-metastore-source/databricks-data-base-name.png" alt-text="databricks-database-name-details" border="true":::
-
-    h.  **Schema**: Geben Sie eine Liste mit den zu importierenden Hive-Schemas an. Beispiel: Schema1; Schema2. 
+    1. **Name der Metastore-Datenbank**: Geben Sie den Namen der Hive-Metastore-Datenbank an.
     
-    Ist diese Liste leer, werden alle Benutzerschemas importiert. Alle Systemschemas (beispielsweise „SysAdmin“) und Objekte werden standardmäßig ignoriert. 
+       Wenn Sie eine Überprüfung von Databricks durchführen, helfen Ihnen die entsprechenden Informationen im Abschnitt unten weiter.
 
-    Wenn die Liste leer ist, werden alle verfügbaren Schemas importiert.
-    Zu den zulässigen Schemanamensmustern mit SQL-LIKE-Ausdruckssyntax zählt auch die Verwendung von „%“ wie im folgenden Beispiel: A%; %B; %C%; D
+       **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
 
-    -   beginnt mit „A“ oder    
-    -   endet mit „B“ oder    
-    -   enthält „C“ oder    
-    -   gleich „D“
+       Auf den Datenbanknamen kann wie unten gezeigt über die JDBC-URL-Eigenschaft zugegriffen werden. Beispiel: organization1829255636414785
+       
+       :::image type="content" source="media/register-scan-hive-metastore-source/databricks-data-base-name.png" alt-text="databricks-database-name-details" border="true":::
 
-    Die Verwendung von „NOT“ oder Sonderzeichen ist nicht zulässig.
+    1. **Schema**: Geben Sie eine Liste mit den zu importierenden Hive-Schemas an. Beispiel: Schema1; Schema2. 
+    
+        Ist diese Liste leer, werden alle Benutzerschemas importiert. Alle Systemschemas (beispielsweise „SysAdmin“) und Objekte werden standardmäßig ignoriert. 
 
-    i.  **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Dies hängt von der Größe der Hive-Metastore-Datenbank ab, die überprüft werden soll.
-    > [!Note]
-    > **Überprüfen eines Databricks-Metastores**
-    >
+        Wenn die Liste leer ist, werden alle verfügbaren Schemas importiert. Zu den zulässigen Schemanamensmustern mit SQL-LIKE-Ausdruckssyntax zählt auch die Verwendung von „%“ wie im folgenden Beispiel: A%; %B; %C%; D
 
-    :::image type="content" source="media/register-scan-hive-metastore-source/scan.png" alt-text="Überprüfen einer Hive-Quelle" border="true":::
+        - beginnt mit „A“ oder    
+        - endet mit „B“ oder    
+        - enthält „C“ oder    
+        - gleich „D“
+
+        Die Verwendung von „NOT“ oder Sonderzeichen ist nicht zulässig.
+
+     1. **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Dies hängt von der Größe der Hive-Metastore-Datenbank ab, die überprüft werden soll.
+
+        :::image type="content" source="media/register-scan-hive-metastore-source/scan.png" alt-text="Überprüfen einer Hive-Quelle" border="true":::
 
 6.  Klicken Sie auf **Continue** (Weiter).
 

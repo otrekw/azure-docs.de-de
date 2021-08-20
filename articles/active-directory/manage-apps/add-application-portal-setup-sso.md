@@ -1,23 +1,25 @@
 ---
-title: 'Schnellstart: Einrichten des SAML-basierten einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)'
+title: 'Schnellstart: Einrichten des SAML-basierten einmaligen Anmeldens für eine Anwendung'
+titleSuffix: Azure AD
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie SAML-basiertes einmaliges Anmelden (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) einrichten.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/01/2020
-ms.author: mtillman
-ms.openlocfilehash: 81a1d2eeeb1b82c488598bc081453193e360d6d5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2020
+ms.author: davidmu
+ms.reviewer: ergleenl
+ms.openlocfilehash: cded1a874c48cab43e24a19acc6707aa8de7d1e7
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077517"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669401"
 ---
-# <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Einrichten des SAML-basierten einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)
+# <a name="quickstart-set-up-saml-based-single-sign-on-for-an-application"></a>Schnellstart: Einrichten des SAML-basierten einmaligen Anmeldens für eine Anwendung
 
 Beginnen Sie mit vereinfachten Benutzeranmeldungen, indem Sie einmaliges Anmelden (Single Sign-On, SSO) für eine Anwendung einrichten, die Sie Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) hinzugefügt haben. Nachdem Sie SSO eingerichtet haben, können sich Ihre Benutzer mit ihren Azure AD-Anmeldeinformationen bei einer Anwendung anmelden. SSO ist in der kostenlosen Edition von Azure AD enthalten.
 
@@ -32,7 +34,6 @@ Sie benötigen Folgendes, um SSO für eine Anwendung einzurichten, die Sie Ihrem
 - Optional: Gehen Sie den Schnellstart [Hinzufügen einer App](add-application-portal.md) durch.
 - Optional: Gehen Sie den Schnellstart [Konfigurieren einer App](add-application-portal-configure.md) durch.
 - Optional: Arbeiten Sie den Artikel [Zuweisen von Benutzern zu einer App](add-application-portal-assign-users.md) durch.
-
 
 >[!IMPORTANT]
 >Verwenden Sie zum Testen der in dieser Schnellstartanleitung aufgeführten Schritte keine Produktionsumgebung.
@@ -49,8 +50,6 @@ Richten Sie einmaliges Anmelden wie folgt für eine Anwendung ein:
     > [!IMPORTANT]
     > Wenn die App den OIDC-Standard (OpenID Connect) für einmaliges Anmelden nutzt, wird in der Navigation keine Option für einmaliges Anmelden angezeigt. Weitere Informationen zum Einrichten dieser Option finden Sie in der Schnellstartanleitung für OIDC-basiertes einmaliges Anmelden.
 
-    :::image type="content" source="media/add-application-portal-setup-sso/configure-sso.png" alt-text="Screenshot der Seite zum Konfigurieren des einmaligen Anmeldens im Azure AD-Portal":::
-
 1. Wählen Sie **SAML** aus, um die Seite für die SSO-Konfiguration zu öffnen. In diesem Beispiel ist GitHub die Anwendung, für die wir SSO konfigurieren. Nachdem Sie GitHub eingerichtet haben, können sich Ihre Benutzer mit ihren Anmeldeinformationen von Ihrem Azure AD-Mandanten bei GitHub anmelden.
 
     :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Screenshot der Seite zum Konfigurieren des einmaligen Anmeldens für GitHub":::
@@ -60,11 +59,8 @@ Richten Sie einmaliges Anmelden wie folgt für eine Anwendung ein:
     > [!TIP]
     > Weitere Informationen zu den SAML-Konfigurationsoptionen finden Sie unter [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-saml-single-sign-on.md).
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Screenshot der GitHub-Preisseite mit der Option für einmaliges Anmelden im Enterprise-Abonnement":::
-
 > [!TIP]
 > Sie können die App-Verwaltung mithilfe der Graph-API automatisieren. Informationen hierzu finden Sie unter [Automatisieren einer SAML-basierten SSO-App-Konfiguration mit Microsoft Graph-API](/graph/application-saml-sso-configure-api).
-
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

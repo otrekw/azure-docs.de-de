@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/26/2021
+ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: a70f88857bdbff825271793b58b442e6ea78c8ee
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8dc52348967963cbe5fd23b2ce01224c99e913e7
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145941"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603026"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Tutorial: Azure Active Directory-Integration mit Greenhouse
 
@@ -79,22 +79,16 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<COMPANYNAME>.greenhouse.io`
+    a. Geben Sie im Textfeld **Bezeichner** den folgenden Wert ein: `greenhouse.io`.
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein:
-    
-    | Antwort-URL|
-    | -------------- |
-    | `https://<COMPANYNAME>.greenhouse.io/users/saml/consume` |
-    | `https://app.greenhouse.io/<ENTITY ID>/users/saml/consume` |
-    |
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<COMPANYNAME>.greenhouse.io/<ENTITY ID>/users/saml/consume`
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<COMPANYNAME>.greenhouse.io`
+    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://app.greenhouse.io`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Wenden Sie sich an das [Supportteam für den Greenhouse-Client](https://www.greenhouse.io/contact), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Den Wert erhalten Sie vom [Supportteam für den Greenhouse-Client](https://www.greenhouse.io/contact). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 

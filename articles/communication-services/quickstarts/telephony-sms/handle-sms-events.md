@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 04b0ee4feb74553fc3b24910da338ba02864ec28
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 3d40705b5dc2b1fb3649c9acea33fc500add1c91
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109160"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768814"
 ---
 # <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>Schnellstart: Verarbeiten von SMS-Ereignissen für Zustellberichte und eingehende Nachrichten
 

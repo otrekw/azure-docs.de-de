@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 183693963d66a5df13cbb4dd1e561b26f5495f08
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 224e48bad96340554fa3667d990c29d681963109
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685691"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585977"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central
 
@@ -64,7 +64,7 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung:
 
 Erstellen Sie wie folgt eine neue Anwendung vom Typ „In-Store-Analyse – Auschecken“:  
 
-1. Wählen Sie die Anwendungsvorlage **In-store analytics - checkout** aus. Diese Vorlage enthält Gerätevorlagen für alle im Tutorial verwendeten Geräte mit Ausnahme der RuuviTag-Sensoren. Die Vorlage bietet auch ein Dashboard für Bediener zur Überwachung von Kassen- und Umgebungsbedingungen sowie des Gerätestatus. 
+1. Wählen Sie die Anwendungsvorlage **In-store analytics - checkout** aus. Diese Vorlage enthält Gerätevorlagen für alle im Tutorial verwendeten Geräte mit Ausnahme der RuuviTag-Sensoren. Die Vorlage bietet auch ein Dashboard zur Überwachung von Kassen- und Umgebungsbedingungen sowie des Gerätestatus. 
 
 1. Wählen Sie optional einen benutzerfreundlichen **Anzeigenamen** aus. Diese Anwendung basiert auf einem fiktiven Einzelhandelsgeschäft mit dem Namen „Contoso“. In diesem Tutorial wird als **Anwendungsname** *Contoso checkout* (Contoso-Kasse) verwendet. Die Anwendungsvorlage basiert auf dem fiktiven Unternehmen Northwind. In diesem Tutorial lernen Sie anhand von Contoso, wie Sie die Anwendung anpassen.
 
@@ -155,11 +155,11 @@ So fügen Sie eine RuuviTag-Gerätevorlage zu Ihrer Anwendung hinzu:
 ## <a name="customize-device-templates"></a>Anpassen von Gerätevorlagen
 Es gibt drei Möglichkeiten, um Gerätevorlagen in Ihrer Anwendung anzupassen. Die erste Möglichkeit besteht darin, die nativen integrierten Schnittstellen in Ihren Geräten anzupassen, indem Sie die Gerätefunktionen ändern. So können Sie beispielsweise bei einem Temperatursensor Details wie den Anzeigenamen der Temperaturschnittstelle, den Datentyp, die Maßeinheiten sowie den minimalen und maximalen Betriebsbereich ändern. 
 
-Eine zweite Möglichkeit ist die Anpassung Ihrer Gerätevorlagen durch Hinzufügen von Cloudeigenschaften. Cloudeigenschaften sind kein Teil der integrierten Gerätefunktionen. Cloudeigenschaften sind benutzerdefinierte Daten, die Ihre Azure IoT Central-Anwendung erstellt, speichert und mit Ihren Geräten verknüpft. Ein Beispiel für eine Cloudeigenschaft sind etwa berechnete Werte oder auch Metadaten wie ein Standort, den Sie mit einer Reihe von Geräten verknüpfen möchten. 
+Eine zweite Möglichkeit ist die Anpassung Ihrer Gerätevorlagen durch Hinzufügen von Cloudeigenschaften. Cloudeigenschaften sind kein Teil der integrierten Gerätefunktionen. Cloudeigenschaften sind benutzerdefinierte Daten, die Ihre Azure IoT Central-Anwendung erstellt, speichert und mit Ihren Geräten verknüpft. Ein Beispiel für eine Cloudeigenschaft sind etwa berechnete Werte oder auch Metadaten wie ein Standort, den Sie mit einer Reihe von Geräten verknüpfen möchten.
 
 Die dritte Möglichkeit für das Anpassen von Gerätevorlagen ist das Erstellen benutzerdefinierter Ansichten. Mit Ansichten können Bediener Telemetrie- und Metadaten für Ihre Geräte visualisieren, wie z. B. die Gerätemetriken und die -integrität.
 
-Hier verwenden Sie die ersten beiden Methoden, um die Gerätevorlage für Ihre RuuviTag-Sensoren anzupassen. Weitere Informationen zum Erstellen von Ansichten für Ihre Sensoren finden Sie im Schnellstart [Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung](../core/quick-create-simulated-device.md).
+Hier verwenden Sie die ersten beiden Methoden, um die Gerätevorlage für Ihre RuuviTag-Sensoren anzupassen.
 
 So passen Sie die integrierten Schnittstellen der RuuviTag-Gerätevorlage an:
 
@@ -289,4 +289,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Nachdem Sie nun eine Azure IoT Central-Anwendung zur Überwachung von Umgebungsbedingungen erstellt haben, wird als Nächstes dieser Schritt empfohlen:
 
 > [!div class="nextstepaction"]
-> [Anpassen des Dashboards für Bediener](./tutorial-in-store-analytics-customize-dashboard.md)
+> [Anpassen des Dashboards](./tutorial-in-store-analytics-customize-dashboard.md)

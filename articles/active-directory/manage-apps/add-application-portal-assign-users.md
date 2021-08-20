@@ -1,23 +1,25 @@
 ---
-title: 'Schnellstart: Zuweisen von Benutzern zu einer App, die Azure Active Directory als Identitätsanbieter nutzt'
+title: 'Schnellstart: Zuweisen von Benutzern zu einer Anwendung'
+titleSuffix: Azure AD
 description: In dieser Schnellstartanleitung wird erläutert, wie Sie Benutzern die Verwendung einer App ermöglichen, für die Sie Azure AD als Identitätsanbieter eingerichtet haben.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 09/01/2020
-ms.author: mtillman
-ms.openlocfilehash: a6f320c83d2baf179f4aaf4358f13ad4af2f4953
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2021
+ms.author: davidmu
+ms.reviewer: alamaral
+ms.openlocfilehash: 5c8b4ec030f60b940d8d6c36bd31e10932151dd5
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081819"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667167"
 ---
-# <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Schnellstart: Zuweisen von Benutzern zu einer App, die Azure AD als Identitätsanbieter nutzt
+# <a name="quickstart-assign-users-to-an-application"></a>Schnellstart: Zuweisen von Benutzern zu einer Anwendung
 
 In der vorherigen Schnellstartanleitung haben Sie die Eigenschaften für eine App konfiguriert. Beim Festlegen der Eigenschaften haben Sie die Umgebung für zugewiesene und nicht zugewiesene Benutzer konfiguriert. In dieser Schnellstartanleitung wird das Zuweisen von Benutzern zur App erläutert.
 
@@ -35,27 +37,28 @@ Sie benötigen Folgendes, um Benutzer einer App zuzuweisen, die Sie Ihrem Azure�
 >Verwenden Sie zum Testen der in dieser Schnellstartanleitung aufgeführten Schritte keine Produktionsumgebung.
 
 ## <a name="assign-users-to-an-app"></a>Zuweisen von Benutzern zu einer App
+
 1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der zu konfigurierenden Anwendung, und wählen Sie diese aus.
 2. Wählen Sie im Navigationsmenü auf der linken Seite **Benutzer und Gruppen** aus.
    > [!NOTE]
-   > Für einige der Microsoft 365-Apps muss PowerShell verwendet werden. 
-3. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**.
+   > Für einige der Microsoft 365-Apps muss PowerShell verwendet werden.
+3. Wählen Sie die Schaltfläche **Benutzer/Gruppen hinzufügen**.
 4. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 5. Wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie der Anwendung zuweisen möchten. Sie können auch mit der Eingabe des Benutzer- oder des Gruppennamens im Suchfeld beginnen. Sie können mehrere Benutzer und Gruppen auswählen. Ihre Auswahl wird unter **Ausgewählte Elemente** angezeigt.
     > [!IMPORTANT]
     > Wenn Sie einer Anwendung eine Gruppe zuweisen, haben nur die Benutzer in der Gruppe Zugriff. Die Zuweisung wird nicht an geschachtelte Gruppen weitergegeben.
 
     > [!NOTE]
-    > Für die gruppenbasierte Zuweisung ist die Azure Active Directory Premium P1- oder P2-Edition erforderlich. Die gruppenbasierte Zuweisung wird nur für Sicherheitsgruppen unterstützt. Geschachtelte Gruppenmitgliedschaften und Microsoft 365-Gruppen werden aktuell nicht unterstützt. Weitere Informationen zu Lizenzierungsanforderungen für die in diesem Artikel erläuterten Features finden Sie in der [Preisübersicht für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 
+    > Für die gruppenbasierte Zuweisung ist die Azure Active Directory Premium P1- oder P2-Edition erforderlich. Die gruppenbasierte Zuweisung wird nur für Sicherheitsgruppen unterstützt. Geschachtelte Gruppenmitgliedschaften und Microsoft 365-Gruppen werden aktuell nicht unterstützt. Weitere Informationen zu Lizenzierungsanforderungen für die in diesem Artikel erläuterten Features finden Sie in der [Preisübersicht für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory).
 6. Wählen Sie abschließend **Auswählen** aus.
-   ![Zuweisen eines Benutzers oder einer Gruppe zur App](./media/assign-user-or-group-access-portal/assign-users.png)
+   :::image type="content" source="./media/assign-user-or-group-access-portal/assign-users.png" alt-text="Zuweisen eines Benutzers oder einer Gruppe zur App":::
 7. Wählen Sie im Bereich **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe aus der Liste aus, und wählen Sie dann am unteren Rand des Bereichs die Schaltfläche **Auswählen** aus.
-8. Falls von der Anwendung unterstützt, können Sie dem Benutzer oder der Gruppe eine Rolle zuweisen. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Rolle auswählen** aus. Wählen Sie dann im Bereich **Rolle auswählen** eine Rolle aus, die den ausgewählten Benutzern oder Gruppen zugeordnet werden soll. Wählen Sie anschließend unten im Bereich **OK** aus. 
+8. Falls von der Anwendung unterstützt, können Sie dem Benutzer oder der Gruppe eine Rolle zuweisen. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Rolle auswählen** aus. Wählen Sie dann im Bereich **Rolle auswählen** eine Rolle aus, die den ausgewählten Benutzern oder Gruppen zugeordnet werden soll. Wählen Sie anschließend unten im Bereich **OK** aus.
     > [!NOTE]
     > Wenn die Anwendung die Rollenauswahl nicht unterstützt, wird die Standardzugriffsrolle zugewiesen. In diesem Fall verwaltet die Anwendung die Zugriffsebene von Benutzern.
 9. Wählen Sie im Bereich **Zuweisung hinzufügen** unten die Schaltfläche **Zuweisen** aus.
 
-Sie können die Zuweisung von Benutzern oder Gruppen mit demselben Verfahren aufheben. Wählen Sie den gewünschten Benutzer oder die gewünschte Gruppe und dann die Schaltfläche **Entfernen** aus. Für einige der Microsoft 365- und Office 365-Apps muss PowerShell verwendet werden. 
+Sie können die Zuweisung von Benutzern oder Gruppen mit demselben Verfahren aufheben. Wählen Sie den gewünschten Benutzer oder die gewünschte Gruppe und dann die Schaltfläche **Entfernen** aus. Für einige der Microsoft 365- und Office 365-Apps muss PowerShell verwendet werden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

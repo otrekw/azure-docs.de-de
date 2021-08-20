@@ -1,6 +1,5 @@
 ---
-title: Zugreifen auf Azure-Ressourcen mit einem verwalteten Onlineendpunkt
-titleSuffix: Azure Machine Learning
+title: 'Tutorial: Verwaltete Onlineendpunkte für den Zugriff auf Ressourcen'
 description: Hier finden Sie Informationen zum sicheren Zugreifen auf Azure-Ressourcen für Ihre Machine Learning-Modellimplementierung mit einem verwalteten Onlineendpunkt und einer systemseitig zugewiesenen verwalteten Identität.
 services: machine-learning
 ms.service: machine-learning
@@ -10,15 +9,15 @@ ms.reviewer: laobri
 author: rsethur
 ms.date: 05/25/2021
 ms.topic: tutorial
-ms.custom: tutorial
-ms.openlocfilehash: 731d9a64c9ef144e8e51e9bce319a031056958ae
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.custom: tutorial, devplatv2
+ms.openlocfilehash: 78cbec0c8f4805794062b6fd525567f8aebcb2b6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071549"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448834"
 ---
-# <a name="tutorial-access-azure-resources-with-a-managed-online-endpoint-and-system-managed-identity-preview"></a>Tutorial: Zugreifen auf Azure-Ressourcen mit einem verwalteten Onlineendpunkt und einer systemseitig verwalteten Identität (Vorschau)
+# <a name="tutorial-access-resources-with-managed-online-endpoints-and-identity-preview"></a>Tutorial: Zugreifen auf Ressourcen mit verwalteten Onlineendpunkten und Identität (Vorschau)
 
 In diesem Tutorial erfahren Sie, wie Sie über Ihr Bewertungsskript mit einem verwalteten Onlineendpunkt und einer systemseitig zugewiesenen verwalteten Identität sicher auf Azure-Ressourcen zugreifen.
 
@@ -36,7 +35,7 @@ Es wird gezeigt, wie Sie die folgenden Aktionen mit der Azure CLI und der zugeh
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Für die Verwendung von Azure Machine Learning ist ein Azure-Abonnement erforderlich. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Für die Verwendung von Azure Machine Learning ist ein Azure-Abonnement erforderlich. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 
 * Sie müssen die Azure CLI und die ML-Erweiterung installieren und konfigurieren. Weitere Informationen finden Sie unter [Installieren, Einrichten und Verwenden der 2.0 CLI (Vorschau)](how-to-configure-cli.md). 
 
@@ -73,6 +72,7 @@ Im folgenden Codebeispiel wird ein verwalteter Endpunkt mit folgenden Eigenschaf
 
 :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
 
+Informationen zu YAML finden Sie in der [YAML-Referenz zu verwalteten Onlineendpunkten (Vorschauversion)](reference-online-endpoint-yaml.md).
 
 ## <a name="configure-variables-for-your-deployment"></a>Konfigurieren von Variablen für Ihre Bereitstellung
 
@@ -120,6 +120,7 @@ Wenn Sie einen verwalteten Endpunkt erstellen, wird standardmäßig eine systems
 
 ::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
 
+Falls Probleme auftreten, helfen Ihnen die Informationen unter [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](how-to-troubleshoot-managed-online-endpoints.md) weiter.
 
 ## <a name="give-storage-permission-to-system-assigned-managed-identity"></a>Erteilen von Speicherberechtigungen für die systemseitig zugewiesene verwaltete Identität
 
@@ -193,3 +194,8 @@ In diesem Azure Machine Learning-Tutorial haben Sie die Machine Learning-CLI fü
 * Weitere Informationen zum Verwenden der Befehlszeilenschnittstelle (CLI) finden Sie unter [Verwenden der CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Informationen zum Einschränken von JSON-Abfragen, sodass nur bestimmte Daten zurückgegeben werden, finden Sie unter [Abfragen der Azure CLI-Befehlsausgabe](/cli/azure/query-azure-cli).
 * Weitere Informationen zum YAML-Schema finden Sie im Dokument [YAML-Referenz für verwalteten Onlineendpunkt](reference-online-endpoint-yaml.md).
+* Informationen dazu, welche Computeressourcen Sie verwenden können, finden Sie unter [SKU-Liste für verwaltete Onlineendpunkte (Vorschau)](reference-managed-online-endpoints-vm-sku-list.md).
+* Weitere Informationen zu Kosten finden Sie unter [Anzeigen der Kosten für einen verwalteten Azure Machine Learning-Onlineendpunkt (Vorschau)](how-to-view-online-endpoints-costs.md).
+* Weitere Informationen zur Bereitstellung finden Sie unter [Sicherer Rollout für Onlineendpunkte (Vorschau)](how-to-safely-rollout-managed-endpoints.md).
+* Informationen zur Überwachung von Endpunkten finden Sie unter [Überwachen verwalteter Onlineendpunkte (Vorschau)](how-to-monitor-online-endpoints.md).
+* Informationen zu Einschränkungen für verwaltete Endpunkte finden Sie unter [Verwalten und Erhöhen von Kontingenten für Ressourcen mit Azure Machine Learning](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview).

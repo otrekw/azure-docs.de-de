@@ -2,18 +2,18 @@
 title: 'Azure CLI: Einschränken des Import-/Exportzugriffs auf verwaltete Datenträger mit privaten Links'
 description: Aktivieren Sie mit der Azure CLI private Links für Ihre verwalteten Datenträger. Dadurch können Sie Datenträger nur innerhalb Ihres virtuellen Netzwerks sicher exportieren und importieren.
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: overview
-ms.date: 08/11/2020
+ms.date: 07/15/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: e1b1852521164b264376f10ce8ade85f415a0a91
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 05cff1385ee4e606a3d5ecae3f04139a67be699a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026595"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289252"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI: Einschränken des Import-/Exportzugriffs auf verwaltete Datenträger mit privaten Links
 
@@ -154,5 +154,7 @@ az snapshot create -n $snapshotNameSecuredWithPL \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Häufig gestellte Fragen zu privaten Links](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
+- Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region: [Azure CLI](disks-upload-vhd-to-managed-disk-cli.md) oder [Azure PowerShell-Modul](../windows/disks-upload-vhd-to-managed-disk-powershell.md)
+- Herunterladen einer VHD: [Windows](../windows/download-vhd.md) oder [Linux](download-vhd.md)
+- [Häufig gestellte Fragen zu privaten Links](/azure/virtual-machines//faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
 - [Exportieren/Kopieren verwalteter Momentaufnahmen als VHD in ein Speicherkonto in einer anderen Region mit der Befehlszeilenschnittstelle](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd)
