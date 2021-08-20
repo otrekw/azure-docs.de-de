@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 25cfca98857d33a90b2c1f11692d83ae30911bb7
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4278a3b0e022015a1e12542cac7699590150b5e4
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480869"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602576"
 ---
 # <a name="plan-a-virtual-machine-offer"></a>Planen eines VM-Angebots
 
@@ -23,7 +23,7 @@ Erstellen Sie, bevor Sie beginnen, [ein Konto für den kommerziellen Marketplace
 
 ### <a name="technical-fundamentals"></a>Technische Grundlagen
 
-Das Entwerfen, Erstellen und Testen von Angeboten nimmt einiges an Zeit in Anspruch und erfordert Erfahrung im Umgang mit der Azure-Plattform und den Technologien, die zum Erstellen des Angebots verwendet werden. Ihr Entwicklungsteam sollte über Grundkenntnisse im Umgang mit [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage) und [Azure-Netzwerk](https://azure.microsoft.com/services/?filter=networking#networking) sowie über fundierte Kenntnisse in Bezug auf das [Entwerfen und die Architektur von Azure-Anwendungen](https://azure.microsoft.com/solutions/architecture/) verfügen. Weitere Informationen finden Sie in den folgenden technischen Ressourcen: 
+Das Entwerfen, Erstellen und Testen von Angeboten nimmt einiges an Zeit in Anspruch und erfordert Erfahrung im Umgang mit der Azure-Plattform und den Technologien, die zum Erstellen des Angebots verwendet werden. Ihr Entwicklungsteam sollte über Grundkenntnisse im Umgang mit [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage) und [Azure-Netzwerk](https://azure.microsoft.com/services/?filter=networking#networking) sowie über fundierte Kenntnisse in Bezug auf das [Entwerfen und die Architektur von Azure-Anwendungen](https://azure.microsoft.com/solutions/architecture/) verfügen. Weitere Informationen finden Sie in den folgenden technischen Ressourcen:
 
 - Tutorials
   - [Virtuelle Linux-Computer](../virtual-machines/linux/tutorial-manage-vm.md)

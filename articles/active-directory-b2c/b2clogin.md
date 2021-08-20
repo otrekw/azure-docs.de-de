@@ -11,24 +11,16 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 20df5fc3a4d7c392be62df2b7778854d1e2e1cba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95fe619ecb33e3b7e79c37b4cddb5950836b4cd5
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97109061"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113223714"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C
 
 Wenn Sie einen Identitätsanbieter für die Registrierung und Anmeldung in Ihrer Azure Active Directory B2C-Anwendung (Azure AD B2C) einrichten, müssen Sie eine Umleitungs-URL angeben. Für die Authentifizierung von Benutzern in Azure AD B2C sollte in Ihren Anwendungen und APIs nicht mehr auf *login.microsoftonline.com* verwiesen werden. Verwenden Sie stattdessen für alle neuen Anwendungen *b2clogin.com*, und migrieren Sie vorhandene Anwendungen von *login.microsoftonline.com* nach *b2clogin.com*.
-
-## <a name="deprecation-of-loginmicrosoftonlinecom"></a>Einstellung von login.microsoftonline.com
-
-**Update vom Oktober 2020:** Für Mandanten, die das ursprünglich angekündigte Veraltungsdatum am 4. Dezember 2020 nicht einhalten können, wird die Toleranzperiode verlängert. Die Außerbetriebnahme von login.microsoftonline.com findet nun erst am **14. Januar 2021**.
-
-**Begründung:** Am 4. Dezember 2019 wurde ursprünglich [bekannt gegeben](https://azure.microsoft.com/updates/b2c-deprecate-msol/), dass login.microsoftonline.com in Azure AD B2C ab dem 4. Dezember 2020 nicht mehr unterstützt wird. Somit verfügten vorhandene Mandanten über genau ein Jahr Zeit, um zu b2clogin.com zu migrieren. Neue Mandanten, die nach dem 4. Dezember 2019 erstellt werden, akzeptieren keine Anforderungen von login.microsoftonline.com. Alle Funktionen stehen auf dem Endpunkt b2clogin.com weiterhin unverändert zur Verfügung.
-
-Die Einstellung von login.microsoftonline.com wirkt sich nicht auf Azure Active Directory-Mandanten aus. Von dieser Änderung sind ausschließlich Azure Active Directory B2C-Mandanten betroffen.
 
 ## <a name="what-endpoints-does-this-apply-to"></a>Betroffene Endpunkte
 Der Übergang zu „b2clogin.com“ gilt nur für Authentifizierungsendpunkte, die Azure AD B2C-Richtlinien (Benutzerflows oder benutzerdefinierte Richtlinien) verwenden, um Benutzer zu authentifizieren. Diese Endpunkte verfügen über einen `<policy-name>`-Parameter, der die von Azure AD B2C zu verwendende Richtlinie angibt. [Erfahren Sie mehr über Azure AD B2C-Richtlinien](technical-overview.md#identity-experiences-user-flows-or-custom-policies). 

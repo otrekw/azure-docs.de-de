@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2021
 ms.author: yelevin
-ms.openlocfilehash: 3d478a9ac3cf91f3f6815859b8534efff88f07b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f43607e47e059e6bba9a3ae02c07262ec7309a2
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743292"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356479"
 ---
 # <a name="connect-your-vmware-esxi-to-azure-sentinel"></a>Verbinden von VMware ESXi mit Azure Sentinel
 
 > [!IMPORTANT]
 > Der VMware ESXi-Connector befindet sich derzeit in der **VORSCHAUVERSION**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 In diesem Artikel wird erläutert, wie Sie Ihre VMware ESXi-Appliance mit Azure Sentinel verbinden. Mit dem VMware ESXi-Datenconnector können Sie Ihre VMware ESXi-Protokolle problemlos in Azure Sentinel erfassen, um Ihnen einen besseren Einblick in die ESXi-Aktivitäten Ihres Unternehmens zu geben und die Sicherheitsfunktionen zu verbessern. Bei der Integration von VMware ESXi und Azure Sentinel wird ein Syslog-Server verwendet, auf dem der Log Analytics-Agent installiert ist. Außerdem wird ein benutzerdefinierter Protokollparser verwendet, der auf einer Kusto-Funktion basiert.
 
@@ -79,6 +81,6 @@ Einige hilfreiche Beispielabfragen finden Sie auf der Registerkarte **Nächste S
 
 In diesem Dokument wurde beschrieben, wie Sie die VMware ESXi mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](monitor-your-data.md), um Ihre Daten zu überwachen.

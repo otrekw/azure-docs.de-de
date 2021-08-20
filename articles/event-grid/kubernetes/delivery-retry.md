@@ -6,22 +6,22 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c62ffc4374a461036d2e766fd57d96ec1906face
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6a37945461a61167e2fee7d7d3ef6a8fbccf3372
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385654"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340487"
 ---
 # <a name="event-grid-on-kubernetes---event-delivery-and-retry"></a>Event Grid in Kubernetes: Ereignisübermittlung und Neuversuch
 Event Grid in Kubernetes mit Azure Arc versucht, für jedes übereinstimmende Abonnement jede Nachricht mindestens einmal sofort zu übermitteln. Wenn keine erfolgreiche HTTP 200-Antwort vom Abonnenten eingeht oder ein Fehler auftritt, wiederholt Event Grid in Kubernetes die Übermittlung auf Basis eines festgelegten Wiederholungszeitplans und einer Wiederholungsrichtlinie. 
 
 Standardmäßig übermittelt Event Grid in Kubernetes immer nur jeweils ein Ereignis an den Abonnenten. Die Nutzlast der Übermittlungsanforderung ist jedoch ohnehin ein Array mit einem einzelnen Ereignis. Es können jeweils mehrere Ereignisse übermittelt werden, wenn Sie die Ausgabebatchverarbeitungs-Funktion aktivieren. Ausführlichere Informationen zu dieser Funktion finden Sie unter [Batchereignisübermittlung](batch-event-delivery.md).
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 > [!NOTE]
-> Während der Vorschau werden die Funktionen von Event Grid in Kubernetes durch die API-Version [2020-10-15-Preview](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate) unterstützt. 
+> Während der Vorschau werden die Funktionen von Event Grid in Kubernetes durch die API-Version [2020-10-15-Preview](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update) unterstützt. 
 
 
 ## <a name="retry-schedule"></a>Wiederholungszeitplan
@@ -41,7 +41,7 @@ Es gibt zwei Konfigurationen, die die Wiederholungsrichtlinien regeln. Sie laute
 Ein Ereignis wird gelöscht, wenn eines dieser Limits der Wiederholungsrichtlinie erreicht wird. Die Konfiguration dieser Limits erfolgt auf Abonnementbasis. Im folgenden Abschnitt werden beide Möglichkeiten detaillierter beschrieben.
 
 ### <a name="configuring-defaults-per-subscriber"></a>Konfigurieren von Standardwerten pro Abonnent
-Sie können auch Limits für Wiederholungsrichtlinien pro Abonnement angeben. Informationen zum Konfigurieren von Standardeinstellungen pro Abonnent finden Sie in unserer [API-Dokumentation](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate). Standardeinstellungen auf Abonnementebene setzen die Konfigurationen auf Ebene des Event Grid-Moduls in Kubernetes außer Kraft.
+Sie können auch Limits für Wiederholungsrichtlinien pro Abonnement angeben. Informationen zum Konfigurieren von Standardeinstellungen pro Abonnent finden Sie in unserer [API-Dokumentation](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update). Standardeinstellungen auf Abonnementebene setzen die Konfigurationen auf Ebene des Event Grid-Moduls in Kubernetes außer Kraft.
 
 Im folgenden Beispiel wird für ein Webhookabonnement `maxNumberOfAttempts` auf 3 und `eventTimeToLiveInMinutes` auf 30 Minuten festgelegt.
 

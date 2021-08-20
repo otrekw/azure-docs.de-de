@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28f4c314b65a27c71c7620ff5941463b1ea68b55
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 547889b63bcaa7e8a43d62c639ac40715949e89d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831454"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339249"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Automation
 
@@ -64,7 +64,7 @@ Sie können Runbooks starten, indem Sie einen POST in der Webhook-URL ausführen
 
 Sie können die Benutzerfunktion Hybrid Runbook Worker von Azure Automation verwenden, um Runbooks direkt auf dem Azure- oder Nicht-Azure-Computer auszuführen, einschließlich der Server, die bei Azure Arc-fähigen Servern registriert sind. Von dem Computer oder Server aus, der die Rolle hostet, können Sie Runbooks direkt auf dem Computer und mit Ressourcen in der Umgebung ausführen, um diese lokalen Ressourcen zu verwalten.
 
-Der Hybrid Worker nutzt einen JRDS-Endpunkt zum Starten/Beenden von Runbooks, zum Herunterladen der Runbooks auf den Worker und zum Zurücksenden des Auftragsprotokollstreams an den Automation-Dienst. Nach dem Aktivieren des JRDS-Endpunkts sieht die URL wie folgt aus: `https://<automationaccountID>.jobruntimedata.<region>.azure-automation.net`. Dadurch wird die Runbookausführung auf dem Hybrid Worker sichergestellt, der mit Azure Virtual Network verbunden ist, sodass Aufträge ausgeführt werden können, ohne dass eine ausgehende Verbindung mit dem Internet hergestellt werden muss.  
+Der Hybrid Worker nutzt einen JRDS-Endpunkt zum Starten/Beenden von Runbooks, zum Herunterladen der Runbooks auf den Worker und zum Zurücksenden des Auftragsprotokollstreams an den Automation-Dienst. Nach dem Aktivieren des JRDS-Endpunkts sieht die URL wie folgt aus: `https://<automationaccountID>.jrds.<region>.privatelink.azure-automation.net`. Dadurch wird die Runbookausführung auf dem Hybrid Worker sichergestellt, der mit Azure Virtual Network verbunden ist, sodass Aufträge ausgeführt werden können, ohne dass eine ausgehende Verbindung mit dem Internet hergestellt werden muss.  
 
 > [!NOTE]
 >Mit der aktuellen Implementierung von Private Link für Azure Automation wird nur das Ausführen von Aufträgen auf dem Hybrid Runbook Worker unterstützt, der mit einem virtuellen Azure-Netzwerk verbunden ist, aber nicht das Ausführen von Cloudaufträgen.
@@ -77,7 +77,7 @@ Weitere Informationen zum Verstehen und Konfigurieren der Updateverwaltung finde
 
 Wenn Sie Ihre für die Updateverwaltung konfigurierten Computer auf sichere Weise über den Private Link-Kanal mit Automation und einem Log Analytics-Arbeitsbereich verbinden möchten, müssen Sie Private Link für den Log Analytics-Arbeitsbereich aktivieren, der mit dem Automation-Konto verknüpft ist, das mit Private Link konfiguriert wurde.
 
-Mithilfe der Schritte in [Konfigurieren von Log Analytics](../../azure-monitor/logs/private-link-security.md#configure-log-analytics) können Sie steuern, wie ein Log Analytics-Arbeitsbereich von außerhalb des Private Link-Bereichs erreicht werden kann. Wenn Sie **Zugriff auf öffentliche Netzwerke für Erfassung zulassen** auf **Nein** festlegen, können Computer außerhalb der verbundenen Bereiche keine Daten in diesen Arbeitsbereich hochladen. Wenn Sie **Zugriff aus öffentlichen Netzwerken für Abfragen zulassen** auf **Nein** festlegen, können Computer außerhalb der Bereiche nicht auf Daten in diesem Arbeitsbereich zugreifen.
+Mithilfe der Schritte in [Konfigurieren von Log Analytics](../../azure-monitor/logs/private-link-configure.md#configure-access-to-your-resources) können Sie steuern, wie ein Log Analytics-Arbeitsbereich von außerhalb des Private Link-Bereichs erreicht werden kann. Wenn Sie **Zugriff auf öffentliche Netzwerke für Erfassung zulassen** auf **Nein** festlegen, können Computer außerhalb der verbundenen Bereiche keine Daten in diesen Arbeitsbereich hochladen. Wenn Sie **Zugriff aus öffentlichen Netzwerken für Abfragen zulassen** auf **Nein** festlegen, können Computer außerhalb der Bereiche nicht auf Daten in diesem Arbeitsbereich zugreifen.
 
 Verwenden Sie **DSCAndHybridWorker** als Zielunterressource, um Private Link für Hybrid Worker von Benutzern und vom System zu aktivieren.
 

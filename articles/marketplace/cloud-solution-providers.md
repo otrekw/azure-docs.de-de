@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 64ad2c4311ade34314edde6e841e747745378e8c
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 754504374fc9955a0327d2fb2aa19c6cf1f2d4d3
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716256"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295757"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider-Programm
 
@@ -99,7 +99,7 @@ Wenn Sie einen Partner im CSP-Programm autorisiert haben und dieser Partner das 
 
 Wenn ein Partner im CSP-Programm Ihr Produkt noch nicht an seine Kunden verkauft hat und Sie den CSP entfernen möchten, nachdem das Angebot veröffentlicht wurde, gehen Sie folgendermaßen vor:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2165533). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
@@ -118,7 +118,7 @@ Verwenden Sie diesen Abschnitt, um zwischen den drei Optionen für CSP-Handelspa
 
 Wenn für Ihr Angebot derzeit **Option 1: Alle Partner im CSP-Programm** ausgewählt ist und Sie zu einer der beiden anderen Optionen wechseln möchten, gehen Sie folgendermaßen vor, um eine Anforderung zu erstellen:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2165533). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
@@ -136,7 +136,7 @@ Wenn für Ihr Angebot derzeit **Option 1: Alle Partner im CSP-Programm** ausgew�
 
 Wenn für Ihr Angebot derzeit **Option 2: Bestimmte, von mir ausgewählte Partner im CSP-Programm** ausgewählt ist und Sie zu **Option 1: Alle Partner im CSP-Programm** wechseln möchten, gehen Sie folgendermaßen vor, um eine Anforderung zu erstellen:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2165533). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
@@ -149,7 +149,7 @@ Wenn für Ihr Angebot derzeit **Option 2: Bestimmte, von mir ausgewählte Partne
 
  Wenn für Ihr Angebot derzeit **Option 2: Bestimmte, von mir ausgewählte Partner im CSP-Programm** ausgewählt ist und Sie zu **Option 3: Keine Partner im CSP-Programm** wechseln möchten, können Sie nur dann zu dieser Option wechseln, wenn die zuvor autorisierten Partner im CSP-Programm Ihr Angebot noch nicht an Endkunden verkauft haben. Gehen Sie folgendermaßen vor, um eine Anforderung zu erstellen:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2165533). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.

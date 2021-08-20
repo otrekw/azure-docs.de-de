@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: a925c3a17988ef6f4b95a1e3cf4dd5fb8baa4829
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: faf4bd0bd87f71af8f62064297f8288b3977ec8d
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102511048"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114405036"
 ---
 Die folgende Ressourcen stehen ebenfalls zur Verfügung:
 
@@ -19,7 +19,7 @@ Die folgende Ressourcen stehen ebenfalls zur Verfügung:
 
 ## <a name="iot-hub-service-client-examples"></a>Beispiele für den IoT Hub-Dienstclient
 
-In diesem Abschnitt werden Python-Beispiele gezeigt, die den IoT Hub-Dienstclient und die Klassen **IoTHubRegistryManager** und **CloudToDeviceMethod** verwenden. Die Klasse **IoTHubRegistryManager** dient dazu, mithilfe von Gerätezwillingen mit dem Gerätestatus zu interagieren. Sie können die **IoTHubRegistryManager**-Klasse außerdem verwenden, um in Ihrem IoT-Hub [Geräteregistrierungen abzufragen](../articles/iot-hub/iot-hub-devguide-query-language.md). Mit der **CloudToDeviceMethod**-Klasse rufen Sie Befehle auf dem Gerät auf. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden. In den Codeausschnitten enthält die `device_id`-Variable die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
+In diesem Abschnitt werden Python-Beispiele gezeigt, die den IoT Hub-Dienstclient und die Klassen **IoTHubRegistryManager** und **CloudToDeviceMethod** verwenden. Die Klasse **IoTHubRegistryManager** dient dazu, mithilfe von Gerätezwillingen mit dem Gerätestatus zu interagieren. Sie können die **IoTHubRegistryManager**-Klasse außerdem verwenden, um in Ihrem IoT-Hub [Geräteregistrierungen abzufragen](../articles/iot-hub/iot-hub-devguide-query-language.md). Mit der **CloudToDeviceMethod**-Klasse rufen Sie Befehle auf dem Gerät auf. Das [DTDL](../articles/iot-develop/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden. In den Codeausschnitten enthält die `device_id`-Variable die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
 
 ### <a name="get-the-device-twin-and-model-id"></a>Abrufen von Gerätezwilling und Modell-ID
 
@@ -129,7 +129,7 @@ print(result.payload)
 
 ## <a name="iot-hub-digital-twin-examples"></a>Beispiele für digitale IoT Hub-Zwillinge
 
-Sie können die **DigitalTwinClient**-Klasse verwenden, um mithilfe digitaler Zwillinge mit dem Gerätestatus zu interagieren. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden.
+Sie können die **DigitalTwinClient**-Klasse verwenden, um mithilfe digitaler Zwillinge mit dem Gerätestatus zu interagieren. Das [DTDL](../articles/iot-develop/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden.
 
 Die `device_id`-Variable enthält die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
 
@@ -224,7 +224,7 @@ else:
 
 IoT Plug & Play-Geräte senden die im DTDL-Modell definierten Telemetriedaten an IoT Hub. Standardmäßig leitet der IoT Hub die Telemetriedaten an einen Event Hubs-Endpunkt weiter, wo Sie sie nutzen können. Weitere Informationen finden Sie unter [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte](../articles/iot-hub/iot-hub-devguide-messages-d2c.md).
 
-Im folgenden Codeausschnitt können Sie sehen, wie die Telemetriedaten vom Event Hubs-Standardendpunkt gelesen werden. Der Code in diesem Codeausschnitt stammt aus dem IoT Hub-Schnellstart [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten mit einer Back-End-Anwendung](../articles/iot-hub/quickstart-send-telemetry-python.md):
+Im folgenden Codeausschnitt können Sie sehen, wie die Telemetriedaten vom Event Hubs-Standardendpunkt gelesen werden. Der Code in diesem Codeausschnitt stammt aus dem IoT Hub-Schnellstart [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten mit einer Back-End-Anwendung](../articles/iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-python):
 
 ```python
 import asyncio

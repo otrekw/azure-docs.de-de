@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 73caf848ab5c6f8e973469066ce4612a075a52f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f059e39c97f66d07caa529ec4f6592fd8efe689e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94489317"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284921"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurieren der Leadverwaltung in Salesforce
 
@@ -66,7 +66,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihr Salesforce-System einrichten, um
 
 Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für Ihr Angebot im Veröffentlichungsportal zu konfigurieren.
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) an.
 
 1. Wählen Sie Ihr Angebot aus, und wechseln Sie zur Registerkarte **Angebotseinrichtung**.
 

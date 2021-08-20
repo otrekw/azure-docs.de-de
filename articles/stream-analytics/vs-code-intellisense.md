@@ -6,16 +6,16 @@ author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 988b9d364f09a4c88bcaab1fe81ae80c8de5d4d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e022023ba9ceefd8426280b07d62b78a79d83e5
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96491569"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913673"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense in Azure Stream Analytics-Tools für Visual Studio Code
 
-IntelliSense ist für die [Stream Analytics-Abfragesprache](/stream-analytics-query/stream-analytics-query-language-reference?bc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fbread%2ftoc.json&toc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fstream-analytics%2ftoc.json) unter [Azure Stream Analytics-Tools für VS Code](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview) verfügbar. IntelliSense ist eine hilfreiche Anwendung zur Codevervollständigung mit Funktionen wie: Auflisten von Elementen, Parameterinformationen, QuickInfo und Wort vervollständigen. IntelliSense-Funktionen werden manchmal auch anders bezeichnet, z. B. als „Codevervollständigung“, „Inhaltshilfe“ und „Codehinweis“.
+IntelliSense ist für die [Stream Analytics-Abfragesprache](/stream-analytics-query/stream-analytics-query-language-reference?toc=/azure/stream-analytics/toc.json) unter [Azure Stream Analytics-Tools für VS Code](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview) verfügbar. IntelliSense ist eine hilfreiche Anwendung zur Codevervollständigung mit Funktionen wie: Auflisten von Elementen, Parameterinformationen, QuickInfo und Wort vervollständigen. IntelliSense-Funktionen werden manchmal auch anders bezeichnet, z. B. als „Codevervollständigung“, „Inhaltshilfe“ und „Codehinweis“.
 
 ![IntelliSense-Demo](./media/vs-code-intellisense/intellisense.gif)
 

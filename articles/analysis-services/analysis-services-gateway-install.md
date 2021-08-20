@@ -8,12 +8,12 @@ ms.date: 04/27/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3128b9f7ae628a0a1974bb30cf87014e269ea466
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7cf788c4b11591121254e1712253827462deac35
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130329"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113009540"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
 
@@ -159,4 +159,4 @@ Das ist alles. Wenn Sie Ports öffnen oder eine Problembehandlung durchführen m
 * [Herstellen der Verbindung mit lokalen Datenquellen](analysis-services-gateway.md)   
 * [In Azure Analysis Services unterstützte Datenquellen](analysis-services-datasource.md)   
 * [Verwenden eines Gateways für Datenquellen in einer Azure Virtual Network-Instanz](analysis-services-vnet-gateway.md)   
-* [Häufig gestellte Fragen zur Netzwerkkonnektivität von Analysis Services](analysis-services-network-faq.md) 
+* [Häufig gestellte Fragen zur Netzwerkkonnektivität von Analysis Services](analysis-services-network-faq.yml) 

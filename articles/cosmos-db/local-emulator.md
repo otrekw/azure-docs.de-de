@@ -7,12 +7,12 @@ author: StefArroyo
 ms.author: esarroyo
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperf-fy21q1
-ms.openlocfilehash: 777eeb615596d353770b7abcbe10191707e6fbfe
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: b2c6c4dd8d0f7c5b30401f7ef586b7d1be8267ce
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072737"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349531"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Installieren und Verwenden des Azure Cosmos DB-Emulators für lokale Entwicklung und Tests
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -232,7 +232,7 @@ CosmosClient client = new CosmosClient(
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB-API für MongoDB
 
-Sobald der Azure Cosmos DB-Emulator auf Ihrem Desktop ausgeführt wird, können Sie die [Azure Cosmos DB-API für MongoDB](mongodb-introduction.md) für die Interaktion mit dem Emulator verwenden. Starten Sie den Emulator über die [Eingabeaufforderung](emulator-command-line-parameters.md) als Administrator mit „/EnableMongoDbEndpoint“. Verwenden Sie dann die folgende Verbindungszeichenfolge zum Herstellen einer Verbindung mit dem MongoDB-API-Konto:
+Sobald der Azure Cosmos DB-Emulator auf Ihrem Desktop ausgeführt wird, können Sie die [Azure Cosmos DB-API für MongoDB](mongodb/mongodb-introduction.md) für die Interaktion mit dem Emulator verwenden. Starten Sie den Emulator über die [Eingabeaufforderung](emulator-command-line-parameters.md) als Administrator mit „/EnableMongoDbEndpoint“. Verwenden Sie dann die folgende Verbindungszeichenfolge zum Herstellen einer Verbindung mit dem MongoDB-API-Konto:
 
 ```bash
 mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
@@ -240,7 +240,7 @@ mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mG
 
 ### <a name="table-api"></a>Tabelle-API
 
-Sobald der Azure Cosmos DB-Emulator auf Ihrem Desktop ausgeführt wird, können Sie das [SDK für die Tabellen-API von Azure Cosmos DB](./tutorial-develop-table-dotnet.md) für die Interaktion mit dem Emulator verwenden. Starten Sie den Emulator über die [Eingabeaufforderung](emulator-command-line-parameters.md) als Administrator mit „/EnableTableEndpoint“. Führen Sie anschließend den folgenden Code aus, um eine Verbindung mit dem Tabellen-API-Konto herzustellen:
+Sobald der Azure Cosmos DB-Emulator auf Ihrem Desktop ausgeführt wird, können Sie das [SDK für die Tabellen-API von Azure Cosmos DB](./table/tutorial-develop-table-dotnet.md) für die Interaktion mit dem Emulator verwenden. Starten Sie den Emulator über die [Eingabeaufforderung](emulator-command-line-parameters.md) als Administrator mit „/EnableTableEndpoint“. Führen Sie anschließend den folgenden Code aus, um eine Verbindung mit dem Tabellen-API-Konto herzustellen:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;

@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 215b9486af06c58cd1e7a6990bfc10ad43d4407f
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594783"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356097"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistiken in Synapse SQL
 
@@ -205,7 +205,7 @@ Eine weitere Option besteht darin, die Stichprobengröße als Prozentsatz anzuge
 ```sql
 CREATE STATISTICS col1_stats
     ON dbo.table1 (col1)
-    WITH SAMPLE = 50 PERCENT;
+    WITH SAMPLE 50 PERCENT;
 ```
 
 #### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>Erstellen von Einspaltenstatistiken für einen Teil der Zeilen
@@ -233,7 +233,7 @@ Sie können die Optionen auch kombinieren. Im folgenden Beispiel wird ein Objekt
 CREATE STATISTICS stats_col1
     ON table1 (col1)
     WHERE col1 > '2000101' AND col1 < '20001231'
-    WITH SAMPLE = 50 PERCENT;
+    WITH SAMPLE 50 PERCENT;
 ```
 
 Die gesamte Referenz finden Sie unter [CREATE STATISTICS (Transact-SQL)](/sql/t-sql/statements/create-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true).
@@ -251,7 +251,7 @@ In diesem Beispiel basiert das Histogramm auf *product\_category*. Spaltenüberg
 CREATE STATISTICS stats_2cols
     ON table1 (product_category, product_sub_category)
     WHERE product_category > '2000101' AND product_category < '20001231'
-    WITH SAMPLE = 50 PERCENT;
+    WITH SAMPLE 50 PERCENT;
 ```
 
 Da zwischen *product\_category* und *product\_sub\_category* eine Korrelation besteht, kann ein Mehrspaltenstatistik-Objekt nützlich sein, wenn gleichzeitig auf diese Spalten zugegriffen wird.
@@ -884,6 +884,6 @@ WHERE   st.[user_created] = 1
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur weiteren Verbesserung der Abfrageleistung bei einem dedizierten SQL-Pool finden Sie unter [Überwachen Ihrer Workload](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) und [Bewährte Methoden für den dedizierten SQL-Pool](best-practices-dedicated-sql-pool.md#maintain-statistics).
+Informationen zur weiteren Verbesserung der Abfrageleistung bei einem dedizierten SQL-Pool finden Sie unter [Überwachen Ihrer Workload](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context) und [Bewährte Methoden für den dedizierten SQL-Pool](best-practices-dedicated-sql-pool.md#maintain-statistics).
 
 Informationen zur weiteren Verbesserung der Abfrageleistung bei einem serverlosen SQL-Pool finden Sie unter [Bewährte Methoden für den serverlosen SQL-Pool](best-practices-serverless-sql-pool.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: f42cb2f3f00c75dea262b7151bef5efad4e9aa92
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: a5fe3157d419b199f1e83f44485e507812c0b80c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569591"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434817"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Geschäftskontinuität und HADR für SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -100,7 +100,7 @@ Alternativ können Sie eine Hybridfailoverumgebung mit einem lizenzierten primä
 
 Weitere Informationen finden Sie in den [Produktlizenzierungsbedingungen](https://www.microsoft.com/licensing/product-licensing/products). 
 
-Navigieren Sie zu Ihrer [SQL Server-VM-Ressource](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource), um diesen Vorteil zu aktivieren. Wählen Sie **Konfigurieren** unter **Einstellungen** aus, und wählen Sie dann die Option **Notfallwiederherstellung** unter **SQL Server-Lizenz** aus. Aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass diese SQL Server-VM als passives Replikat verwendet wird, und wählen Sie dann **Anwenden** aus, um die Einstellungen zu speichern. 
+Navigieren Sie zu Ihrer [SQL Server-VM-Ressource](manage-sql-vm-portal.md#access-the-resource), um diesen Vorteil zu aktivieren. Wählen Sie **Konfigurieren** unter **Einstellungen** aus, und wählen Sie dann die Option **Notfallwiederherstellung** unter **SQL Server-Lizenz** aus. Aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass diese SQL Server-VM als passives Replikat verwendet wird, und wählen Sie dann **Anwenden** aus, um die Einstellungen zu speichern. 
 
 ![Konfigurieren eines Notfallwiederherstellungsreplikats in Azure](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/dr-replica-in-portal.png)
 

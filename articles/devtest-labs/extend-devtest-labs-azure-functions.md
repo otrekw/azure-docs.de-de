@@ -3,12 +3,12 @@ title: Erweitern von Azure DevTest Labs mit Azure Functions | Microsoft-Dokume
 description: Hier erfahren Sie, wie Sie Azure DevTest Labs mit Azure Functions erweitern.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 620cda83094ee65f421a5529a9d5b51e505ec48e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8593453457bf7a077cf555e8d4f35b0c4b8f599
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501157"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300541"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Erweitern von DevTest Labs mithilfe von Azure Functions
 Mithilfe von Azure Functions können Sie zusätzliche Szenarien unterstützen, die über die bereits bestehenden Möglichkeiten von DevTest Labs hinausgehen. Azure Functions kann verwendet werden, um die integrierten Funktionen des Diensts entsprechend Ihren unternehmensspezifischen Anforderungen zu erweitern. Die folgende Liste enthält einige der möglichen Szenarien. In diesem Artikel wird gezeigt, wie Sie eines dieser Beispielszenarien implementieren.
@@ -105,7 +105,7 @@ Der letzte Schritt in dieser exemplarischen Vorgehensweise ist das Testen der Az
 Mit Azure Functions können Sie die integrierten Funktionen von DevTest Labs erweitern und Kunden helfen, die individuellen Anforderungen ihrer Teams zu erfüllen. Dieses Muster kann beliebig erweitert werden, um noch mehr Szenarien zu unterstützen.  Weitere Informationen zu DevTest Labs finden Sie in den folgenden Artikeln: 
 
 - [Azure DevTest Labs: Referenzarchitektur für Unternehmen](devtest-lab-reference-architecture.md)
-- [Häufig gestellte Fragen](devtest-lab-faq.md)
+- [Häufig gestellte Fragen](devtest-lab-faq.yml)
 - [Zentrales Hochskalieren von DevTest Labs](devtest-lab-guidance-scale.md)
 - [Automating DevTest Labs with PowerShell](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library/Tests) (Automatisieren von DevTest Labs mit PowerShell)
 

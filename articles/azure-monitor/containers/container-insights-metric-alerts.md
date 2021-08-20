@@ -3,12 +3,12 @@ title: Metrikwarnungen von Container Insights
 description: In diesem Artikel werden die empfohlenen Metrikwarnungen vorgestellt, die in der öffentlichen Vorschau von Container Insights verfügbar sind.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8280b567adb36511c4eb58d7ec72b775d36feb6a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728891"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346416"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>Empfohlene Metrikwarnungen von Container Insights (Vorschau)
 
@@ -248,6 +248,6 @@ Es kann einige Minuten dauern, bis die Konfigurationsänderungen übernommen wer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-search.md#search-logs-to-analyze-data) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen von bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.
+- Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-query.md) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen von bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.
 
 - Weitere Informationen zu Azure Monitor und darüber, wie Sie andere Aspekte Ihres Kubernetes-Clusters überwachen können, finden Sie unter [Anzeigen der Leistung von Kubernetes-Clustern](container-insights-analyze.md).

@@ -4,12 +4,12 @@ description: 'BindException: Adresse wird in Azure HDInsight bereits verwendet.'
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/16/2019
-ms.openlocfilehash: c0a7bc7629b5c2a2e458ba94d62e341f578fdd25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 720cdf4ddcb14351076d209011a087c3b30123e6
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946391"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369463"
 ---
 # <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Szenario: BindException: Adresse wird in Azure HDInsight bereits verwendet
 
@@ -43,7 +43,7 @@ Neustarten von Apache HBase-Regionsservern bei hoher Workloadaktivität. Nachste
 
 ## <a name="resolution"></a>Lösung
 
-Reduzieren Sie die Last auf den HBase-Regionsservern, bevor Sie einen Neustart einleiten. Zudem empfiehlt es sich, zuvor alle Tabellen zu leeren. Eine Anleitung zum Leeren von Tabellen finden Sie unter [HDInsight HBase: How to Improve HBase cluster restart time by Flushing tables?](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/) (HDInsight HBase: Verbessern der Neustartdauer von HBase-Clustern durch Leeren von Tabellen).
+Reduzieren Sie die Last auf den HBase-Regionsservern, bevor Sie einen Neustart einleiten. Zudem empfiehlt es sich, zuvor alle Tabellen zu leeren. Eine Anleitung zum Leeren von Tabellen finden Sie unter [HDInsight HBase: How to Improve HBase cluster restart time by Flushing tables?](/archive/blogs/azuredatalake/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables) (HDInsight HBase: Verbessern der Neustartdauer von HBase-Clustern durch Leeren von Tabellen).
 
 Alternativ können Sie versuchen, Regionsserver auf den Workerknoten mithilfe folgender Befehle manuell neu zu starten:
 

@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
-ms.openlocfilehash: bdbbc4c421b83fd041c7d900fb0edd01c4d636e0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ba1f3e9ca68f44927c1d163a8d02c63c7b2f3b0c
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785089"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113598475"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -27,7 +27,7 @@ Es sind verschiedene Azure VM-Erweiterungen für jeweils spezifische Anwendungsf
 
 - Anwenden von gewünschten Statuskonfigurationen mit PowerShell auf eine VM mithilfe der DSC-Erweiterung für Linux. Weitere Informationen finden Sie unter [Azure Desired State configuration extension](https://github.com/Azure/azure-linux-extensions/tree/master/DSC) (Azure-Erweiterung für die gewünschte Statuskonfiguration).
 - Konfigurieren der Überwachung einer VM mit der VM-Erweiterung „Microsoft Monitoring Agent“. Weitere Informationen finden Sie unter [Überwachen einer Linux-VM](/previous-versions/azure/virtual-machines/linux/tutorial-monitor).
-- Konfigurieren der Überwachung Ihrer Azure-Infrastruktur mit der Chef- oder Datadog-Erweiterung. Weitere Informationen finden Sie in der [Chef-Dokumentation](https://docs.chef.io/azure_portal.html) oder im [Datadog-Blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
+- Konfigurieren der Überwachung Ihrer Azure-Infrastruktur mit der Chef- oder Datadog-Erweiterung. Weitere Informationen finden Sie in der [Chef-Dokumentation](https://docs.chef.io/) oder im [Datadog-Blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 Über prozessspezifische Erweiterungen hinaus ist sowohl für virtuelle Windows- als auch für virtuelle Linux-Computer eine benutzerdefinierte Skripterweiterung verfügbar. Die benutzerdefinierte Skripterweiterung für Linux ermöglicht die Ausführung beliebiger Bash-Skripts auf virtuellen Computern. Benutzerdefinierte Skripts sind beim Entwerfen von Azure-Bereitstellungen nützlich, die Konfiguration über das Maß hinaus erfordern, das mithilfe von Azure-Tools erreicht werden kann. Weitere Informationen finden Sie unter [Benutzerdefinierte Skripterweiterung für Linux-VMs](custom-script-linux.md).
 

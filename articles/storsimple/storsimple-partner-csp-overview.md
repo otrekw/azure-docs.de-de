@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: c96dcc2bae03b1bd05fb3d1512dba757f180eed8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa712d3d93c715f37972ac20174f92ffab530e01
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94964914"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085144"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Was ist das StorSimple für Cloudlösungsanbieter-Programm?
 
@@ -32,7 +32,7 @@ StorSimple Virtual Array für Cloudlösungsanbieter (Cloud Solutions Provider, C
 
 Weitere Informationen zu StorSimple für CSP finden Sie auf der Seite [Übersicht über Azure CSP](/azure/cloud-solution-provider/overview/azure-csp-overview).
 
-Weitere Informationen zu Abrechnung, Preisen, Anreizen und Unterstützung im CSP-Programm finden Sie [StorSimple im CSP-Programm: Häufig gestellte Fragen](storsimple-partner-csp-faq.md). 
+Weitere Informationen zu Abrechnung, Preisen, Anreizen und Unterstützung im CSP-Programm finden Sie [StorSimple im CSP-Programm: Häufig gestellte Fragen](storsimple-partner-csp-faq.yml). 
 
 ## <a name="deploy-and-manage-storsimple-for-csp"></a>Bereitstellen und Verwalten von StorSimple für CSP
 
@@ -42,5 +42,5 @@ Weitere Informationen finden Sie unter [Deaktivieren und Verwalten Ihres StorSim
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie weitere Fragen zu StorSimple im CSP-Programm haben, fahren Sie mit [StorSimple im CSP-Programm: Häufig gestellte Fragen](storsimple-partner-csp-faq.md) fort.
+- Wenn Sie weitere Fragen zu StorSimple im CSP-Programm haben, fahren Sie mit [StorSimple im CSP-Programm: Häufig gestellte Fragen](storsimple-partner-csp-faq.yml) fort.
 - Wenn Sie bereit sind, Ihre StorSimple-Lösung bereitzustellen, wechseln Sie zu [Bereitstellen Ihrer StorSimple-Lösung im CSP-Programm](storsimple-partner-csp-deploy.md).

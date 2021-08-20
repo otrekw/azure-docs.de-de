@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 03/19/2021
-ms.openlocfilehash: 437b7bd6e919cd6b462cb8653354631fbeb438ed
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8e044cee9e91c0de16105bc4c954af9e61acea5a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110785552"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339895"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>Migrationsleitfaden: SQL Server zu Azure SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Weitere Informationen zur Migration finden Sie in [dieser Übersicht](sql-server
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-Für die [Migration Ihrer SQL Server-Instanz](https://azure.microsoft.com/en-us/migration/sql-server/) zu Azure SQL-Datenbank müssen die folgenden Voraussetzungen erfüllt sein: 
+Für die [Migration Ihrer SQL Server-Instanz](https://azure.microsoft.com/migration/sql-server/) zu Azure SQL-Datenbank müssen die folgenden Voraussetzungen erfüllt sein: 
 
 - Sie haben eine [Migrationsmethode](sql-server-to-sql-database-overview.md#compare-migration-options) ausgewählt und verfügen über entsprechende Tools.
 - Sie haben den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) auf einem Computer installiert, der eine Verbindung mit Ihrer SQL Server-Quelldatenbank herstellen kann.

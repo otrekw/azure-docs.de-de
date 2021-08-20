@@ -7,12 +7,12 @@ ms.date: 09/14/2019
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 24174d7ac9fa33cb1fb3ca6e325537dde346b3c3
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d2a1e8df23bca2e57f2d26bd83fc06ad93847903
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752007"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032937"
 ---
 # <a name="customize-the-feed-for-azure-virtual-desktop-users"></a>Anpassen des Feeds für Azure Virtual Desktop-Benutzer
 
@@ -120,8 +120,8 @@ Sie können den Anzeigenamen für einen veröffentlichten Remotedesktop ändern,
 
 Nachdem Sie den Feed für Benutzer angepasst haben, können Sie sich bei einem Azure Virtual Desktop-Client anmelden, um ihn zu testen. Wechseln Sie dafür zu den Vorgehensweisen für das Herstellen einer Verbindung mit Azure Virtual Desktop:
 
- * [Herstellen einer Verbindung mit Windows 10 oder Windows 7](connect-windows-7-10.md)
- * [Herstellen einer Verbindung mit dem Webclient](connect-web.md)
- * [Herstellen einer Verbindung mit dem Android-Client](connect-android.md)
- * [Herstellen einer Verbindung mit dem iOS-Client](connect-ios.md)
- * [Herstellen einer Verbindung mit dem macOS-Client](connect-macos.md)
+ * [Herstellen einer Verbindung mit Windows 10 oder Windows 7](./user-documentation/connect-windows-7-10.md)
+ * [Herstellen einer Verbindung mit dem Webclient](./user-documentation/connect-web.md)
+ * [Herstellen einer Verbindung mit dem Android-Client](./user-documentation/connect-android.md)
+ * [Herstellen einer Verbindung mit dem iOS-Client](./user-documentation/connect-ios.md)
+ * [Herstellen einer Verbindung mit dem macOS-Client](./user-documentation/connect-macos.md)

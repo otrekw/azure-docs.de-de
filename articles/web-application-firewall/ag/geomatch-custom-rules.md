@@ -5,23 +5,20 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 01/31/2020
+ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: b92b7ff4839bf2bf51c281942ed6d15d2dc1f86c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 42fcc0daf7fd494918d04dacf4fb65661c837acf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455504"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355026"
 ---
-# <a name="geomatch-custom-rules-preview"></a>Benutzerdefinierte Geomatch-Regeln (Vorschau)
+# <a name="geomatch-custom-rules"></a>Benutzerdefinierte Geomatch-Regeln
 
 Benutzerdefinierte Regeln ermöglichen Ihnen, maßgeschneiderte Regeln zu erstellen, die genau die Anforderungen Ihrer Anwendungen und Sicherheitsrichtlinien erfüllen. Manchmal ist eine länder-/regionsbasierte Einschränkung des Zugriffs auf Ihre Webanwendungen wünschenswert. Wie bei allen benutzerdefinierten Regeln kann diese Logik auch mit anderen Regeln kombiniert werden, um den Anforderungen Ihrer Anwendung zu entsprechen.
 
 Wählen Sie zum Erstellen einer benutzerdefinierten Regel für die Geofilterung im Azure-Portal einfach *Geografischer Standort* als Übereinstimmungstyp und dann die Länder bzw. Regionen aus, die Sie in Ihrer Anwendung zulassen bzw. blockieren möchten. Verwenden Sie beim Erstellen von Regeln für den geografischen Abgleich mit Azure PowerShell oder dem Azure Resource Manager die Übereinstimmungsvariable `RemoteAddr` und den Operator `Geomatch`. Weitere Informationen finden Sie unter [Konfigurieren von Web Application Firewall v2 für Application Gateway mit einer benutzerdefinierten Regel mithilfe von Azure PowerShell](configure-waf-custom-rules.md) und [Erstellen und Verwenden von benutzerdefinierten Regeln für Web Application Firewall v2 auf Application Gateway](create-custom-waf-rules.md).
-
-> [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="countryregion-codes"></a>Länder-/Regionscodes
 

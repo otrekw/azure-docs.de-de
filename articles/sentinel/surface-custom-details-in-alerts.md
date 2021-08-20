@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 97cd4d51da70b9b1cca501c7f04a3b0ccfc51305
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 18e176f11da9c8dca86c5f3477cb282c478664cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059674"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349304"
 ---
 # <a name="surface-custom-event-details-in-alerts-in-azure-sentinel"></a>Anzeigen benutzerdefinierter Ereignisdetails in Azure Sentinel-Warnungen 
 
@@ -29,7 +29,7 @@ ms.locfileid: "112059674"
 
 ## <a name="introduction"></a>Einführung
 
-[Analyseregeln für geplante Abfragen](tutorial-detect-threats-custom.md) analysieren **Ereignisse** aus mit Azure Sentinel verbundenen Datenquellen und erzeugen **Warnungen**, wenn die Inhalte dieser Ereignisse aus Sicherheitssicht bedeutsam sind. Diese Warnungen werden weiter analysiert, gruppiert, nach den verschiedenen Azure Sentinel-Engines gefiltert und in **Incidents** zusammengefasst, die die Aufmerksamkeit eines SOC-Analysten garantieren. Wenn dem Analyst der Incident anzeigt wird, sind jedoch nur die Eigenschaften der Komponentenwarnungen sofort erkennbar. Den eigentlichen Inhalt (die in den Ereignissen enthaltenen Informationen) anzuzeigen, ist ein bisschen komplizierter.
+[Analyseregeln für geplante Abfragen](detect-threats-custom.md) analysieren **Ereignisse** aus mit Azure Sentinel verbundenen Datenquellen und erzeugen **Warnungen**, wenn die Inhalte dieser Ereignisse aus Sicherheitssicht bedeutsam sind. Diese Warnungen werden weiter analysiert, gruppiert, nach den verschiedenen Azure Sentinel-Engines gefiltert und in **Incidents** zusammengefasst, die die Aufmerksamkeit eines SOC-Analysten garantieren. Wenn dem Analyst der Incident anzeigt wird, sind jedoch nur die Eigenschaften der Komponentenwarnungen sofort erkennbar. Den eigentlichen Inhalt (die in den Ereignissen enthaltenen Informationen) anzuzeigen, ist ein bisschen komplizierter.
 
 Mit dem Feature zu **benutzerdefinierten Details** im **Analyseregel-Assistenten** können Sie Ereignisdaten in den Warnungen anzeigen, die aus diesen Ereignissen erstellt wurden, indem die Ereignisdaten Teil der Warnungseigenschaften werden. Dadurch wird der Ereignisinhalt in Ihren Incidents sofort sichtbar, sodass Sie deutlich schneller und effizienter selektieren, untersuchen, schlussfolgern und antworten können.
 
@@ -70,5 +70,5 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie mithilfe von Azure Sentinel-Analyseregeln benutzerdefinierte Details in Warnungen anzeigen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md) können Sie sich ein Gesamtbild machen.
+- Unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md) können Sie sich ein Gesamtbild machen.
 - Erfahren Sie mehr über [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md).

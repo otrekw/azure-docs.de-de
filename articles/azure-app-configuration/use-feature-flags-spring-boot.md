@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 09/26/2019
+ms.date: 06/25/2021
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc101eac5d3829d8f4bcb84c79481b2053f82965
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92077829"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037650"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Tutorial: Verwenden von Featureflags in einer Spring Boot-App
 
@@ -51,25 +51,16 @@ Featureflags sollten sich außerhalb der Anwendung befinden und separat verwalte
 
 Die Verbindung zwischen Ihrer Spring Boot-Anwendung und App Configuration lässt sich am einfachsten über den Konfigurationsanbieter herstellen:
 
-### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
-
 ```xml
 <dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-    <version>1.1.2</version>
+    <groupId>com.azure.spring</groupId>
+    <artifactId>azure-spring-cloud-feature-management-web</artifactId>
+    <version>2.0.0</version>
 </dependency>
 ```
 
-### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
-
-```xml
-<dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-    <version>1.2.2</version>
-</dependency>
-```
+> [!NOTE]
+> Wenn Sie Unterstützung für eine ältere Version von Spring Boot benötigen, sehen Sie sich unsere [alte Bibliothek](https://github.com/Azure/azure-sdk-for-java/blob/spring-cloud-starter-azure-appconfiguration-config_1.2.9/sdk/appconfiguration/spring-cloud-azure-feature-management/README.md) an.
 
 ## <a name="feature-flag-declaration"></a>Featureflagdeklaration
 
@@ -183,7 +174,7 @@ public String getOldFeature() {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie Featureflags in Ihrer Spring Boot-Anwendung unter Verwendung der Bibliotheken vom Typ `spring-cloud-azure-feature-management-web` implementieren. Die folgenden Ressourcen enthalten weitere Informationen zur Unterstützung der Featureverwaltung in Spring Boot und App Configuration:
+In diesem Tutorial haben Sie gelernt, wie Sie Featureflags in Ihrer Spring Boot-Anwendung unter Verwendung der Bibliotheken vom Typ `azure-spring-cloud-feature-management-web` implementieren. Die folgenden Ressourcen enthalten weitere Informationen zur Unterstützung der Featureverwaltung in Spring Boot und App Configuration:
 
 * [Schnellstart: Hinzufügen von Featureflags zu einer Spring Boot-App](./quickstart-feature-flag-spring-boot.md)
 * [Verwalten von Featureflags](./manage-feature-flags.md)

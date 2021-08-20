@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Zugriff auf Ressourcen entfernen können, die
 ms.date: 05/11/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e9456d7b910c71305f321d0a4874aab0f4f368cd
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: bae8407e09ab07a13c12abe3ee6371c04155cced
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110700131"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389840"
 ---
 # <a name="remove-access-to-a-delegation"></a>Entfernen des Zugriffs auf eine Delegierung
 
@@ -22,7 +22,7 @@ Das Entfernen einer Delegierung kann durch einem Benutzer entweder im Kundenmand
 
 ## <a name="customers"></a>Kunden
 
-Benutzer im Mandanten des Kunden, denen eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write` (z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner)) zugewiesen ist, können den Dienstanbieterzugriff auf das Abonnement (oder auf Ressourcengruppen in diesem Abonnement) entfernen. Zu diesem Zweck kann ein Benutzer zur Seite [Dienstanbieter](view-manage-service-providers.md#add-or-remove-service-provider-offers) des Azure-Portals navigieren, auf dem Bildschirm **Dienstanbieterangebote** nach dem Angebot suchen und das Papierkorbsymbol in der Zeile für das Angebot auswählen.
+Benutzer im Mandanten des Kunden, denen eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write` (z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner)) zugewiesen ist, können den Dienstanbieterzugriff auf das Abonnement (oder auf Ressourcengruppen in diesem Abonnement) entfernen. Zu diesem Zweck kann ein Benutzer zur Seite [Dienstanbieter](view-manage-service-providers.md#remove-service-provider-offers) des Azure-Portals navigieren, auf dem Bildschirm **Dienstanbieterangebote** nach dem Angebot suchen und das Papierkorbsymbol in der Zeile für das Angebot auswählen.
 
 Nach dem Bestätigten des Löschvorgangs können keine Benutzer im Mandanten des Dienstanbieters auf die zuvor delegierten Ressourcen zugreifen.
 

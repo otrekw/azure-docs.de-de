@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 0220c16d7ea3673f55d57ec4c4e0d29b30672683
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: f97f12f25a6ac9a42e597bcb59496511372d92aa
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017659"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112296279"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Öffnen einer SSH-Sitzung mit einem Linux-Container in Azure App Service
 
@@ -127,4 +127,4 @@ Weitere Informationen zu Web-App für Container finden Sie in den folgenden Arti
 * [Introducing remote debugging of Node.js apps on Azure App Service from VS Code](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0) (Einführung in das Remotedebuggen von Node.js-Apps unter Azure App Service über VS Code)
 * [Schnellstart: Ausführen eines benutzerdefinierten Containers in App Service](quickstart-custom-container.md?pivots=container-linux)
 * [Verwenden von Ruby in Azure App Service unter Linux](quickstart-ruby.md)
-* [Azure App Service-Web-App für Container – FAQs](faq-app-service-linux.md)
+* [Azure App Service-Web-App für Container – FAQs](faq-app-service-linux.yml)

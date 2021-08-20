@@ -2,8 +2,8 @@
 title: Migrieren Ihres dedizierten SQL-Pools (früher SQL DW) zu Gen2
 description: Anweisungen zum Migrieren eines dedizierten SQL-Pools (früher SQL DW) zu Gen2 und der Migrationsplan nach Region
 services: synapse-analytics
-author: mlee3gsd
-ms.author: anjangsh
+author: rothja
+ms.author: jroth
 ms.reviewer: jrasnick
 manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
@@ -12,12 +12,12 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0ce07ff3ca5fbcc9776792129d3bfb4ef54efe7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59ebd89701f23979a8a359fecfd68a4796bf6d9c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98120120"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472109"
 ---
 # <a name="upgrade-your-dedicated-sql-pool-formerly-sql-dw-to-gen2"></a>Durchführen eines Upgrades für Ihren dedizierten SQL-Pool (früher SQL DW) auf Gen2
 
@@ -34,12 +34,8 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 
 | **Region** | **Niedrigerer Gen2-Computetarif verfügbar** | **Beginn automatischer Upgrades** |
 |:--- |:--- |:--- |
-| Kanada, Osten |1\. Juni 2020 |1\. Juli 2020 |
 | China, Osten |\* |\* |
 | China, Norden |\* |\* |
-| Deutschland, Mitte |\* |\* |
-| Deutschland, Westen-Mitte |Verfügbar |1\. Mai 2020 |
-| Indien, Westen |Verfügbar |1\. Mai 2020  |
 
 ## <a name="automatic-upgrade-process"></a>Automatischer Upgradevorgang
 

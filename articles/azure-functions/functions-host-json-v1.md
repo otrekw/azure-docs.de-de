@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 1.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v1 Runtime.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 48dba50b384731befdc7fba7c418e542994cedd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8466827402a5a5f785b65ea70887cc868f8667af
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102608953"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339854"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.json-Referenz für Azure Functions 1.x
 
@@ -23,7 +23,7 @@ Die Metadatendatei *host.json* enthält globale Konfigurationsoptionen, die sich
 
 Weitere Konfigurationsoptionen Ihrer Funktions-App werden in den [Anwendungseinstellungen](functions-app-settings.md) verwaltet.
 
-Einige Einstellungen in host.json werden nur bei lokaler Ausführung in der [local.settings.json](functions-run-local.md#local-settings-file)-Datei verwendet.
+Einige Einstellungen in host.json werden nur bei lokaler Ausführung in der [local.settings.json](functions-develop-local.md#local-settings-file)-Datei verwendet.
 
 ## <a name="sample-hostjson-file"></a>host.json-Beispieldatei
 

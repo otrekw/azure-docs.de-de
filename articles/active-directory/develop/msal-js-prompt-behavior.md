@@ -3,22 +3,22 @@ title: Eingabeaufforderungsverhalten bei interaktiven Anforderungen (MSAL.js) | 
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie das Eingabeaufforderungsverhalten in interaktiven Aufrufen mithilfe der Microsoft Authentication Library für JavaScript (MSAL.js) anpassen.
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: mtillman
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3cd1b6a0015f51902dd3228648f16fb79ab6957d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: f9f81bab52d60e38f07eae8ad8be217fd54082b4
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077174"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356561"
 ---
 # <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Eingabeaufforderungsverhalten in interaktiven MSAL.js-Anforderungen
 

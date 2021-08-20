@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: caya
-ms.openlocfilehash: 2329dc7426b223ef2c81dd0e2e607bccf73192e6
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 15655ba313a3a3cba23289c6d829523db6735129
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106230883"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346735"
 ---
 # <a name="export-a-trusted-client-ca-certificate-chain-to-use-with-client-authentication"></a>Exportieren einer vertrauenswürdigen ZS-Clientzertifikatkette für die Clientauthentifizierung
 Zum Konfigurieren der gegenseitigen Authentifizierung für den Client oder der Clientauthentifizierung muss für Application Gateway eine vertrauenswürdige ZS-Clientzertifikatkette auf das Gateway hochgeladen werden. Falls Sie über mehrere Zertifikatketten verfügen, müssen Sie die Ketten separat erstellen und als einzelne Dateien auf die Application Gateway-Instanz hochladen. In diesem Artikel wird beschrieben, wie Sie eine vertrauenswürdige ZS-Clientzertifikatkette exportieren, die Sie für die Konfiguration der Clientauthentifizierung auf Ihrem Gateway verwenden können.  
@@ -55,7 +55,7 @@ Mit den folgenden Schritten können Sie die PEM- oder CER-Datei für Ihr Zertifi
 6. Klicken Sie auf **Fertig stellen** , um das Zertifikat zu exportieren.
 
     > [!div class="mx-imgBorder"]
-    > ![Screenshot des Zertifikatexport-Assistenten, nachdem Sie den Dateiexport abgeschlossen haben](./media/certificates-for-backend-authentication/finish.png)
+    > ![Screenshot des Zertifikatexport-Assistenten, nachdem Sie den Dateiexport abgeschlossen haben](./media/certificates-for-backend-authentication/finish-screen.png)
 
 7. Das Zertifikat wurde erfolgreich exportiert.
 

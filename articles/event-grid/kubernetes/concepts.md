@@ -6,17 +6,17 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: e9d7fff98a6d6c062f529528f9f1d3071a038049
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 911a67644ac50906ee7e4b3009658043cfa022d6
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385777"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414573"
 ---
 # <a name="event-grid-on-kubernetes---concepts"></a>Azure Event Grid on Kubernetes – Konzepte
 Dieser Artikel beschreibt die wichtigsten Konzepte in Event Grid auf Kubernetes mit Azure Arc (Vorschau).
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="events"></a>Ereignisse
 Bei einem Ereignis handelt es sich um einen Datensatz, der eine Tatsache bezüglich des Betriebs eines Softwaresystems ankündigt. In der Regel kündigt ein Ereignis eine Zustandsänderung aufgrund eines vom System ausgelösten Signals oder eines vom System beobachteten Signals an. Ereignisse enthalten zwei Arten von Informationen: 

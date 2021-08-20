@@ -11,12 +11,12 @@ author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 02/13/2019
-ms.openlocfilehash: 30b5d1f7e5fd3a052ecce3c28b75fe020b2257c9
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: dd71998eaa3254e31d123a9ca011339d1aaeee10
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694261"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339684"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -106,16 +106,16 @@ Wenn die Vorbereitungsschritte abgeschlossen sind, ist die Stagingumgebung berei
 
 ```sql
 -- Set the production database to read-only mode
-ALTER DATABASE <Prod_DB>
-SET (ALLOW_CONNECTIONS = NO)
+ALTER DATABASE [<Prod_DB>]
+SET READ_ONLY
 ```
 
 2. Trennen die sekundäre Datenbank (11), um die Georeplikation zu beenden. Diese Aktion erstellt eine unabhängige, aber vollständig synchronisierte Kopie der Produktionsdatenbank. Diese Datenbank wird upgegradet. Im folgenden Beispiel wird Transact-SQL verwendet, [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary) ist jedoch auch verfügbar. 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
-ALTER DATABASE <Prod_DB>
-REMOVE SECONDARY ON SERVER <Partner-Server>
+ALTER DATABASE [<Prod_DB>]
+REMOVE SECONDARY ON SERVER [<Partner-Server>]
 ```
 
 3. Führen Sie das Upgradeskript für `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net` und die primäre Stagingdatenbank aus (12). Die Änderungen in der Datenbank werden automatisch in die sekundäre Stagingdatenbank repliziert.

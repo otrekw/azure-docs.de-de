@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 3a8fe3ded6608059cc6ad50901ffe6df5dcf1b08
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 969e2d2424b9f9af1dcd921a1cebfa9407e313eb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102441574"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438380"
 ---
 # <a name="get-started-with-storage-explorer"></a>Erste Schritte mit dem Storage-Explorer
 
@@ -23,7 +23,7 @@ Microsoft Azure Storage-Explorer ist eine eigenständige App, mit der Sie unter 
 
 In diesem Artikel werden mehrere Möglichkeiten zum Herstellen einer Verbindung mit und zum Verwalten Ihrer Azure-Speicherkonten beschrieben.
 
-:::image type="content" alt-text="Microsoft Azure Storage-Explorer" source="./vs-storage-explorer-overview.png":::
+:::image type="content" alt-text="Microsoft Azure Storage-Explorer" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-overview.png":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -86,17 +86,17 @@ Es gibt verschiedene Möglichkeiten, wie Sie den Storage-Explorer mit Azure-Ress
 
 1. Wählen Sie in Storage-Explorer **Anzeigen** > **Kontoverwaltung** aus, oder klicken Sie auf die Schaltfläche **Konten verwalten**.
 
-    :::image type="content" alt-text="Konten verwalten" source ="./vs-storage-explorer-manage-accounts.png":::
+    :::image type="content" alt-text="Konten verwalten" source ="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-manage-accounts.png":::
 
 1. Unter **KONTOVERWALTUNG** werden jetzt alle Azure-Konten angezeigt, bei denen Sie angemeldet sind. Wählen Sie zum Herstellen einer Verbindung mit einem anderen Konto **Konto hinzufügen** aus.
 
 1. Das Dialogfeld **Verbindung mit Azure Storage herstellen** wird geöffnet. Wählen Sie im Panel **Ressource auswählen** die Option **Abonnement** aus.
 
-    :::image type="content" alt-text="Dialogfeld zum Herstellen der Verbindung" source="./vs-storage-explorer-connect-dialog.png":::
+    :::image type="content" alt-text="Dialogfeld zum Herstellen der Verbindung" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-connect-dialog.png":::
 
 1. Wählen Sie im Panel **Azure-Umgebung auswählen** eine Azure-Umgebung aus, bei der Sie sich anmelden möchten. Sie können sich bei Azure weltweit, bei einer nationalen Cloud oder einer Azure Stack-Instanz anmelden. Wählen Sie **Weiter** aus.
 
-    :::image type="content" alt-text="Anmeldeoption" source="./vs-storage-explorer-connect-environment.png":::
+    :::image type="content" alt-text="Anmeldeoption" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-connect-environment.png":::
 
     > [!TIP]
     > Weitere Informationen zu Azure Stack finden Sie unter [Herstellen einer Verbindung von Storage-Explorer mit einem Azure Stack-Abonnement oder einem Speicherkonto](/azure-stack/user/azure-stack-storage-connect-se).
@@ -105,11 +105,11 @@ Es gibt verschiedene Möglichkeiten, wie Sie den Storage-Explorer mit Azure-Ress
 
 1. Nach erfolgreicher Anmeldung bei einem Azure-Konto werden unter **KONTOVERWALTUNG** das Konto und die mit diesem Konto verknüpften Azure Stack-Abonnements angezeigt. Wählen Sie die Azure-Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **Übernehmen**.
 
-    :::image type="content" alt-text="Azure-Abonnements auswählen" source="./vs-storage-explorer-account-panel.png":::
+    :::image type="content" alt-text="Azure-Abonnements auswählen" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-account-panel.png":::
 
 1. Im **EXPLORER** werden die Speicherkonten angezeigt, die mit den ausgewählten Azure-Abonnements verknüpft sind.
 
-    :::image type="content" alt-text="Ausgewählte Azure-Abonnements" source="./vs-storage-explorer-subscription-node.png":::
+    :::image type="content" alt-text="Ausgewählte Azure-Abonnements" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-subscription-node.png":::
 
 ### <a name="attach-to-an-individual-resource"></a>Anfügen an eine einzelne Ressource
 
@@ -129,7 +129,7 @@ Storage Explorer kann auch eine Verbindung mit einem [lokalen Speicheremulator](
 
 Um eine Verbindung mit einer einzelnen Ressource herzustellen, wählen Sie die Schaltfläche **Verbinden** auf der linken Symbolleiste auf. Befolgen Sie dann die Anweisungen für den Ressourcentyp, mit dem Sie eine Verbindung herstellen möchten.
 
-:::image type="content" alt-text="Option „Mit Azure Storage verbinden“" source="./vs-storage-explorer-connect-button.png":::
+:::image type="content" alt-text="Option „Mit Azure Storage verbinden“" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-connect-button.png":::
 
 Wenn eine Verbindung mit einem Speicherkonto erfolgreich hinzugefügt wurde, wird ein neuer Strukturknoten unter **Lokal & angefügt** > **Speicherkonten** angezeigt.
 

@@ -5,13 +5,13 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/03/2020
-ms.openlocfilehash: 102b03ad4fe247ae0abc4e2312d7027c6170333f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/07/2021
+ms.openlocfilehash: b236c433e55bb2b702497b42a1b4fc73ce520f00
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019464"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113491135"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Schutz von Daten in Azure Stream Analytics 
 
@@ -94,9 +94,6 @@ Sie können sich weiter über die [Complianceangebote von Microsoft](https://gal
 
 ## <a name="enables-data-residency"></a>Ermöglicht Data Residency 
 Sie können dieses Feature verwenden, um Ihre Data Residency-Anforderungen durchzusetzen, indem Sie ein entsprechendes Speicherkonto bereitstellen.
-
-## <a name="known-issues"></a>Bekannte Probleme
-Es gibt ein bekanntes Problem, bei dem ein Auftrag, bei dem ein vom Kunden verwalteter Schlüssel verwendet wird, zu Fehlern führt, wenn die verwaltete Identität zur Authentifizierung bei Ein- oder Ausgaben verwendet wird. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

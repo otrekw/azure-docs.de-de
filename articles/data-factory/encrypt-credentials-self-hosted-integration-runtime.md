@@ -3,16 +3,17 @@ title: Verschlüsseln von Anmeldeinformationen in Azure Data Factory
 description: Erhalten Sie Informationen zum Verschlüsseln und Speichern von Anmeldeinformationen für Ihre lokalen Datenspeicher auf einem Computer mit selbstgehosteter Integrationslaufzeit.
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lle
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 64d7133432eacbdf9077a6089e927caa679d1c7f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f0cd1fed706ae22c02c6a96e9588d6cd65177e36
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670355"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355567"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Verschlüsseln von Anmeldeinformationen für lokale Datenspeicher in Azure Data Factory
 

@@ -7,13 +7,12 @@ ms.date: 05/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: c3e6632f607ca9168f63538e4c2a6d96d6197d8a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 646045df9a6586d80969ec3e80081d45d4dcd249
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032139"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345936"
 ---
 # <a name="creator-for-indoor-maps"></a>Creator für Gebäudepläne
 
@@ -117,7 +116,7 @@ Eine Anwendung kann ein Featurezustandsset verwenden, um Features in einer Einri
 
 ### <a name="render-v2-get-map-tile-api"></a>Render V2-API zum Abrufen von Kartenkacheln
 
-Die [Render V2-API zum Abrufen von Kartenkacheln](/rest/api/maps/renderv2/getmaptilepreview) von Azure Maps wurde erweitert und unterstützt jetzt Creator-Kartenkacheln.
+Die [Render V2-API zum Abrufen von Kartenkacheln](/rest/api/maps/render-v2/get-map-tile) von Azure Maps wurde erweitert und unterstützt jetzt Creator-Kartenkacheln.
 
 Anwendungen können die Render V2-API zum Abrufen von Kartenkacheln verwenden, um Kachelsets abzurufen. Die Kachelsets können anschließend in ein Kartensteuerelement oder SDK integriert werden. Ein Beispiel für ein Kartensteuerelement, das den Render V2-Dienst verwendet, finden Sie unter [Modul für Gebäudepläne](#indoor-maps-module).
 
@@ -146,7 +145,7 @@ Wenn Sie mit der Entwicklung von Lösungen für Gebäudepläne beginnen, haben S
  Mit der Azure Maps Creator-API zum Auflisten, Aktualisieren und Löschen können Sie Ihre Datasets, Kachelsets und Featurezustandssets auflisten, aktualisieren und löschen.
 
 >[!NOTE]
->Wenn Sie eine Liste von Elementen überprüfen, um zu entscheiden, ob sie gelöscht werden sollen, müssen die Auswirkungen dieses Löschvorgangs auf alle abhängigen APIs oder Anwendungen berücksichtigt werden. Wenn Sie beispielsweise ein Kachelset löschen, das von einer Anwendung über die [Render V2-API zum Abrufen von Kartenkacheln](/rest/api/maps/renderv2/getmaptilepreview) verwendet wird, kann dieses Kachelset von der Anwendung nicht mehr gerendert werden.
+>Wenn Sie eine Liste von Elementen überprüfen, um zu entscheiden, ob sie gelöscht werden sollen, müssen die Auswirkungen dieses Löschvorgangs auf alle abhängigen APIs oder Anwendungen berücksichtigt werden. Wenn Sie beispielsweise ein Kachelset löschen, das von einer Anwendung über die [Render V2-API zum Abrufen von Kartenkacheln](/rest/api/maps/render-v2/get-map-tile) verwendet wird, kann dieses Kachelset von der Anwendung nicht mehr gerendert werden.
 
 ### <a name="example-updating-a-dataset"></a>Beispiel: Aktualisieren eines Datasets
 

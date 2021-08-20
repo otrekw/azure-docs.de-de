@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c7901dd4a238b27a31f95f1e22ddf9dc1ae5327a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 8148cbd1fa4e34610c4b27609910821323a2acea
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813062"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339309"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -135,7 +135,7 @@ Ersetzen Sie `{tenant id}`, `{application id}` und `{redirect uri}` entsprechend
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Aufrufen der Sicherungs- und Wiederherstellungsvorgänge
 
-Die REST-APIs sind [API Management-Dienst – Backup](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup) und [API Management-Dienst – Restore](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore).
+Die REST-APIs sind [API Management-Dienst – Backup](/rest/api/apimanagement/2020-12-01/api-management-service/backup) und [API Management-Dienst – Restore](/rest/api/apimanagement/2020-12-01/api-management-service/restore).
 
 Legen Sie vor dem Aufrufen der in den folgenden Abschnitten beschriebenen Vorgänge zur Sicherung und Wiederherstellung den Autorisierungsanforderungsheader für den REST-Aufruf fest.
 
@@ -156,7 +156,7 @@ Dabei gilt:
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, den Sie sichern möchten
 -   `resourceGroupName` – der Name der Ressourcengruppe Ihres Azure API Management-Diensts
 -   `serviceName` – der Name des zu sichernden API Management-Diensts zum Zeitpunkt seiner Erstellung
--   `api-version` – durch `2019-12-01` ersetzen
+-   `api-version` – durch `2020-12-01` ersetzen
 
 Geben Sie im Hauptteil der Anforderung das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
 
@@ -186,7 +186,7 @@ Dabei gilt:
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, in den Sie eine Sicherung erstellen
 -   `resourceGroupName` – Name der Ressourcengruppe mit dem Azure-API Management-Dienst, in dem Sie eine Sicherung wiederherstellen
 -   `serviceName` – der Name des wiederherzustellenden API Management-Diensts zum Zeitpunkt seiner Erstellung
--   `api-version` – durch `api-version=2019-12-01` ersetzen
+-   `api-version` – durch `api-version=2020-12-01` ersetzen
 
 Geben Sie im Anforderungstext den Speicherort der Sicherungsdatei an. Fügen Sie das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
 

@@ -2,7 +2,6 @@
 title: Beginnen mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (Node.js)
 description: Erfahren Sie, wie Sie mit IoT SDKs für Node.js eine Modulidentität erstellen und den Modulzwilling aktualisieren.
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -10,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.custom: amqp, devx-track-js
-ms.openlocfilehash: 9de3f45a9d62a9d131583c133440ac8a311a468d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8cf2faac9914b7b9fafd8355c2070c5d3a6f0e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95993291"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340319"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (Node.js)
 

@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 76a154d3a137017f374247308a3980d598698246
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb4f39f14dad9426f48cc86597f74333c830bba5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678658"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339514"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analysieren von Daten mit Azure Machine Learning
 
@@ -159,6 +159,6 @@ Durch einen Vergleich der Spalte „BikeBuyer“ (tatsächliche Werte) mit „Be
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Machine Learning finden Sie unter [Einführung in Machine Learning in Azure](../../machine-learning/overview-what-is-azure-ml.md).
+Weitere Informationen zu Azure Machine Learning finden Sie unter [Einführung in Machine Learning in Azure](../../machine-learning/overview-what-is-azure-machine-learning.md).
 
 [Hier](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true) erfahren Sie mehr über die integrierte Bewertung im Data Warehouse.

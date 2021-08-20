@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 06/29/2021
 ms.author: jeedes
-ms.openlocfilehash: b503697972bfe7fbd8fc18b77d6e0206dc055b67
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ae73974a65ca13c76fc374bf0544d67fa2a524c3
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206131"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107275"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SolarWinds Orion
 
@@ -98,6 +98,17 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | FirstName | user.givenname |
     | LastName | user.surname |
     | Email |user.mail |
+
+1. Klicken Sie im Abschnitt **Benutzerattribute und Ansprüche** auf das Stiftsymbol, um die Einstellung zu bearbeiten, und klicken Sie dann auf **Gruppenanspruch hinzufügen**.
+
+    ![Screenshot: „Benutzerattribute und Ansprüche“](./media/solarwinds-orion-tutorial/group-claim.png)
+
+1. Wählen Sie **Sicherheitsgruppen**.
+1. Wenn Azure AD mit Ihrem lokalen Active Directory synchronisiert ist, ändern Sie das **Quellattribut** in **sAMAccountName**. Belassen Sie es andernfalls als Gruppen-ID.
+
+1. Setzen Sie in den **erweiterten Optionen** ein Häkchen bei **Customize the name of the group claim** (Namen des Gruppenanspruchs anpassen) und geben Sie OrionGroups als Namen ein.
+
+1. Klicken Sie auf **Speichern**.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 

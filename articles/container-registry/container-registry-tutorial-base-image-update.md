@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie eine Azure Container Reg
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 6d83fb7796cecab686d52d561266bd41daef9e01
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 18716171b72fd266fda1aff06b67850159627b34
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780801"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983660"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages nach der Aktualisierung eines Basisimages in einer Azure-Containerregistrierung 
 
@@ -222,7 +222,11 @@ docker stop updatedapp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie mithilfe einer Aufgabe automatisch Buildvorgänge für Containerimages auslösen, wenn das Basisimage des Images aktualisiert wurde. Im nächsten Tutorial erfahren Sie, wie Sie Aufgaben nach einem definierten Zeitplan ausführen.
+In diesem Tutorial haben Sie erfahren, wie Sie mithilfe einer Aufgabe automatisch Buildvorgänge für Containerimages auslösen, wenn das Basisimage des Images aktualisiert wurde.
+
+Einen vollständigen Workflow für das Verwalten von Basisimages, die aus einer öffentlichen Quelle stammen, finden Sie unter [Nutzen und Verwalten öffentlicher Inhalte mit Azure Container Registry Tasks](tasks-consume-public-content.md). 
+
+Im nächsten Tutorial erfahren Sie, wie Sie Aufgaben nach einem definierten Zeitplan ausführen.
 
 > [!div class="nextstepaction"]
 > [Ausführen eines ACR Tasks nach einem definierten Zeitplan](container-registry-tasks-scheduled.md)

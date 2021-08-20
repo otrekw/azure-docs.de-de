@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 06/29/2021
 ms.author: jlian
-ms.openlocfilehash: 834ccc850a3099857dc1b88e45b0c0c3ee3a186c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 0a9a3bc11bac0dd389c346ccecab7f95d5ffd5d2
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486447"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113128028"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Transport Layer Security (TLS)-Unterstützung in IoT Hub
 
@@ -23,10 +23,6 @@ TLS 1.0 und 1.1 werden als Legacy betrachtet und in Kürze eingestellt. Weitere
 ## <a name="iot-hubs-server-tls-certificate"></a>TLS-Zertifikat des IoT Hub-Servers
 
 Während eines TLS-Handshakes präsentiert IoT Hub RSA-schlüsselgebundene Serverzertifikate zum Verbinden von Clients. Sein Stamm ist die Baltimore Cybertrust-Stammzertifizierungsstelle (Stamm-ZS). Vor kurzem haben wir eine Änderung am TLS-Serverzertifikat eingeführt, sodass es jetzt von neuen Zwischenzertifizierungsstellen (Intermediate Certificate Authorities, ICA) ausgestellt wird. Weitere Informationen finden Sie unter [IoT Hub TLS certificate update](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/) (Aktualisierung des TLS-Zertifikats für IoT Hub).
-
-### <a name="4kb-size-limit-on-renewal"></a>Größenbeschränkung von 4 KB bei Verlängerung
-
-Während der Verlängerung der serverseitigen IoT Hub-Zertifikate wird beim IoT Hub-Service eine Überprüfung durchgeführt, um zu verhindern, dass die `Server Hello`-Größe von 4 KB überschritten wird. Ein Client muss über mindestens 4 KB RAM verfügen, um einen eingehenden TLS-maximalen Inhalts Längenpuffer festzulegen, damit vorhandene Geräte, die für das Limit von 4 KB festgelegt sind, nach der Zertifikatverlängerung weiterhin wie zuvor funktionieren. Bei eingeschränkten Geräten unterstützt der IoT-Hub die [maximal zulässige TLS-Fragmentlänge in der Vorschau](#tls-maximum-fragment-length-negotiation-preview). 
 
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>TLS-Zertifikat von ECC-Server (Elliptic Curve Cryptography) (Vorschau)
 

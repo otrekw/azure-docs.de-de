@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 08f4c00d5d0d1d0d6d060d2170024ac166c308b8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735504"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458553"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Einrichten der Notfallwiederherstellung für eine IIS-basierte Webanwendung mit mehreren Ebenen
 
@@ -95,7 +95,7 @@ Weitere Informationen finden Sie unter [Anpassen des Wiederherstellungsplans](si
 Für die korrekte Funktionsweise der IIS-Webfarm kann es erforderlich sein, nach dem Failover bzw. während eines Testfailovers einige Vorgänge auf den virtuellen Azure-Computern durchzuführen. Sie können einige Vorgänge nach einem Failover automatisieren. Durch Hinzufügen entsprechender Skripts zum Wiederherstellungsplan können Sie beispielsweise den DNS-Eintrag aktualisieren sowie Bindungen und Verbindungszeichenfolgen ändern. Unter [Hinzufügen eines VMM-Skripts zu einem Wiederherstellungsplan](./hyper-v-vmm-recovery-script.md) wird beschrieben, wie Sie automatisierte Aufgaben mithilfe eines Skripts einrichten.
 
 #### <a name="dns-update"></a>DNS-Update
-Wenn das DNS für das dynamische DNS-Update konfiguriert ist, führen virtuelle Computer nach dem Starten normalerweise ein Update des DNS mit der neuen IP-Adresse durch. Falls Sie einen expliziten Schritt für das Update des DNS mit den neuen IP-Adressen der virtuellen Computer hinzufügen möchten, fügen Sie ein [Skript zum Aktualisieren der IP-Adresse im DNS](https://aka.ms/asr-dns-update) als Aktion nach dem Failover den Wiederherstellungsplangruppen hinzu.  
+Wenn das DNS für das dynamische DNS-Update konfiguriert ist, führen virtuelle Computer nach dem Starten normalerweise ein Update des DNS mit der neuen IP-Adresse durch. Falls Sie einen expliziten Schritt für das Update des DNS mit den neuen IP-Adressen der virtuellen Computer hinzufügen möchten, fügen Sie ein [Skript zum Aktualisieren der IP-Adresse im DNS](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/asr-automation-recovery/scripts/ASR-DNS-UpdateIP.ps1) als Aktion nach dem Failover den Wiederherstellungsplangruppen hinzu.  
 
 #### <a name="connection-string-in-an-applications-webconfig"></a>Verbindungszeichenfolge in der „web.config“ einer Anwendung
 Die Verbindungszeichenfolge gibt die Datenbank an, mit der die Website kommuniziert. Wenn die Verbindungszeichenfolge den Namen des virtuellen Datenbankcomputers hat, sind nach dem Failover keine weiteren Schritte erforderlich. Die Anwendung kann automatisch mit der Datenbank kommunizieren. Wenn die IP-Adresse für den virtuellen Datenbankcomputer beibehalten wird, wird sie für die Aktualisierung der Verbindungszeichenfolge nicht benötigt. 

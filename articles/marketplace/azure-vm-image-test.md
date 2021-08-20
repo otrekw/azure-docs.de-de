@@ -7,12 +7,12 @@ ms.topic: how-to
 author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: c885f7e953849825c9a0ef87f68df6e9e2d3360a
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: e44fcd6261a4d9b866896dc91e7f1edb1fd8b30a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528574"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285128"
 ---
 # <a name="test-a-virtual-machine-image"></a>Testen eines VM-Images
 
@@ -280,4 +280,4 @@ In diesem Beispiel wird CURL verwendet, um einen POST-API-Aufruf an Azure Active
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Melden Sie sich bei [Partner Center](https://partner.microsoft.com/) an.
+- Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2166002) an.

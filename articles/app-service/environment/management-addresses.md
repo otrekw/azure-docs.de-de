@@ -7,14 +7,17 @@ ms.topic: article
 ms.date: 03/22/2021
 ms.author: ccompy
 ms.custom: seodec18, references_regions, devx-track-azurecli
-ms.openlocfilehash: 796ee38140e72a56f1f22b0594dd904a43ac53c0
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 1480b23f4c213d1c251e47678b235c9f8c8d45df
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865223"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432894"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service-Umgebung Management-Adressen
+> [!NOTE]
+> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird
+> 
 
 Die App Service-Umgebung (ASE) ist eine Bereitstellung von Azure App Service für einen Mandanten, die in Ihrer Azure Virtual Network-Instanz (VNET) ausgeführt wird.  Die ASE wird zwar in Ihrem VNET ausgeführt, muss aber von mehreren dedizierten IP-Adressen aus zugänglich sein, über die Azure App Service den Dienst verwaltet.  Bei einer ASE durchläuft der Verwaltungsdatenverkehr das benutzergesteuerte Netzwerk. Wenn dieser Datenverkehr blockiert oder falsch weitergeleitet wird, wird die ASE angehalten. Weitere Informationen zu den Netzwerkabhängigkeiten der App Service-Umgebung finden Sie unter [Überlegungen zum Netzwerkbetrieb in der App Service-Umgebung][networking]. Allgemeine Informationen zur ASE finden Sie unter [Einführung in die App Service-Umgebung][intro].
 

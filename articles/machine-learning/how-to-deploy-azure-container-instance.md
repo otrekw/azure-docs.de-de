@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/20/2021
-ms.openlocfilehash: 60978d2be1fdad5acf8ec00535ab844e6afd52b0
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 433e202aceb7ba4cd08268575fba5a64f8bbaadb
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557160"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287141"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Bereitstellen eines Modells in Azure Container Instances
 
@@ -108,7 +108,7 @@ Informationen finden Sie im Artikel zum [Verwalten von Ressourcen in VS Code](ho
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md)
+* [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](./how-to-deploy-custom-container.md)
 * [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)
 * [Aktualisieren des Webdiensts](how-to-deploy-update-web-service.md)
 * [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](how-to-secure-web-service.md)

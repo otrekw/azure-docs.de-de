@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec58e921940be71b0189bcba96596c18b1b8786b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92342245"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349711"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Anleitung zur Notfallwiederherstellung für Avere vFXT for Azure
 
@@ -117,7 +117,7 @@ Gehen Sie wie folgt vor, um über einen Avere vFXT for Azure-Cluster auf den Sic
 * Weitere Informationen zum Anpassen der Einstellungen für Avere vFXT for Azure finden Sie unter [Clusteroptimierung](avere-vfxt-tuning.md).
 * Erfahren Sie mehr zur Notfallwiederherstellung und zur Erstellung resilienter Anwendungen in Azure:
 
-  * [Technischer Leitfaden zur Resilienz in Azure](/azure/architecture/framework/resiliency/overview)
+  * [Technischer Leitfaden zur Resilienz in Azure](/azure/architecture/reliability/architect)
   * [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](/azure/architecture/resiliency/recovery-loss-azure-region)
   * [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](/azure/architecture/framework/resiliency/backup-and-recovery)
   <!-- can't find these in the source tree to use relative links -->

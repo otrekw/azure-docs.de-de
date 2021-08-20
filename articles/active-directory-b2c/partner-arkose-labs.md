@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/22/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5abe1755e22ac20e210aece956056ea647393dc1
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: d3fa9b89cb1fa7b0f7fa33025f908ae8ba5af7a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896241"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346430"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Arkose Labs mit Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Im folgenden Diagramm ist beschrieben, wie Arkose Labs mit Azure AD B2C integrie
 
 ![Abbildung des Arkose Labs-Architekturdiagramms](media/partner-arkose-labs/arkose-labs-architecture-diagram.png)
 
-| Schritt  | Beschreibung |
+| Schritt  | BESCHREIBUNG |
 |---|---|
 |1     | Ein Benutzer registriert sich und erstellt ein Konto. Wenn der Benutzer die Option „Senden“ auswählt, wird eine Arkose Labs-Abfrage angezeigt.         |
 |2     |  Nachdem der Benutzer die Abfrage abgeschlossen hat, sendet Azure AD B2C den Status zwecks Generierung eines Tokens an Arkose Labs. |
@@ -157,7 +157,7 @@ Wenn Sie die lokale Instanz während des Testens erneut bereitstellen möchten, 
 
 In diesem Beispiel wird der Web-API-Endpunkt mithilfe der [HTTP-Standardauthentifizierung](https://tools.ietf.org/html/rfc7617) geschützt.
 
-Benutzername und Kennwort werden als Umgebungsvariablen und nicht als Teil des Repositorys gespeichert. Weitere Informationen finden Sie im Abschnitt [Datei für lokale Einstellungen: „local.settings.json“](../azure-functions/functions-run-local.md?tabs=macos%2ccsharp%2cbash#local-settings-file).
+Benutzername und Kennwort werden als Umgebungsvariablen und nicht als Teil des Repositorys gespeichert. Weitere Informationen finden Sie im Abschnitt [Datei für lokale Einstellungen: „local.settings.json“](../azure-functions/functions-develop-local.md#local-settings-file).
 
 1. Erstellen Sie die Datei „local.settings.json“ in Ihrem Stammverzeichnis.
 

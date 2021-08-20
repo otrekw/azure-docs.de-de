@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 77159a099dcc28739457a10afef374502d117b5a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8c0cba39c2fe299a2cc822309b0063d2d4fe2f71
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971145"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431517"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Anomalieerkennungsdienst für getaktete Abrechnung
 
-Mit dem [Messdienst in Marketplace](../marketplace-metering-service-apis-faq.md) können Sie Angebote im Rahmen des kommerziellen Marketplace-Programms erstellen, die nicht gemäß Standardeinheiten abgerechnet werden. Bei der getakteten Abrechnung werden Nutzungsereignisse Ihrer Kunden an Microsoft gesendet, woraufhin wir die Abrechnung auf Grundlage dieser Nutzung vornehmen.
+Mit dem [Messdienst in Marketplace](../marketplace-metering-service-apis-faq.yml) können Sie Angebote im Rahmen des kommerziellen Marketplace-Programms erstellen, die nicht gemäß Standardeinheiten abgerechnet werden. Bei der getakteten Abrechnung werden Nutzungsereignisse Ihrer Kunden an Microsoft gesendet, woraufhin wir die Abrechnung auf Grundlage dieser Nutzung vornehmen.
 
 Falsch gemeldete Nutzungsdaten können verschiedene Ursachen haben, wie z. B. Programmfehler, falsche Konfigurationen in Ihrer Nutzungserfassung oder Betrug. Falsch gemeldete Nutzungsdaten können zu falschen Kundenabrechnungen und Abrechnungsstreitigkeiten führen.
 
@@ -67,7 +67,7 @@ Wenn einer der folgenden Fälle zutrifft, können Sie den Nutzungsbetrag in Part
 
 So übermitteln Sie ein Supportticket bezüglich Anomalien bei der getakteten Abrechnung:
 
-1. Melden Sie sich mit Ihrem Geschäftskonto bei [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) an.
+1. Melden Sie sich mit Ihrem Geschäftskonto bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) an.
 1. Wählen Sie im Menü oben rechts auf der Seite das Symbol **Support** aus. Der Bereich **Hilfe und Support** wird rechts auf der Seite angezeigt.
 1. Wenn Sie Hilfe zum kommerziellen Marketplace benötigen, wählen Sie **Kommerzieller Marketplace** aus.
    ![Veranschaulicht den Supportbereich](../media/support/commercial-marketplace-support-pane.png)

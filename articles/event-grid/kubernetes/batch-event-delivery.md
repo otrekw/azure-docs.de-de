@@ -6,17 +6,17 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: a246ee493b89051ad35436cd9213462a09a5d1b0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 46ae19af49b827af857f5f224ee5f0013d620a43
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385665"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414591"
 ---
 # <a name="event-grid-on-kubernetes---batch-event-delivery"></a>Event Grid auf Kubernetes – Batch-Ereignslieferung 
 Event Grid auf Kubernetes mit Azure Arc unterstützt die Bereitstellung von mehr als einem Ereignis in einer einzigen Bereitstellungsanforderung. Diese Funktion ermöglicht es, den gesamten Lieferdurchsatz zu erhöhen, ohne die HTTP-per-Anforderung-Betriebskosten. Die Batch-Ereignislieferung ist standardmäßig deaktiviert und kann über die Ereignisabonnement-Konfiguration aktiviert werden. 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 > [!WARNING]
 > Die maximal zulässige Dauer für die Verarbeitung jeder Lieferanforderung ändert sich nicht, auch wenn der Ereignishandler-Code potenziell mehr Arbeit pro Batch-Anforderung leisten muss. Das Zeitlimit für Übermittlungen beträgt standardmäßig 60 Sekunden.

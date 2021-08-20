@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: 618074d696804171ee5e05655c1e15557789fac9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3c624a9dcdf61796dc4ce4396a0b309f84ceddaf
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110164829"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280051"
 ---
 Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
 
@@ -27,7 +27,7 @@ Zuallererst muss das [Speech SDK für Go](../../../quickstarts/setup-platform.m
 
 ## <a name="speech-to-text-from-microphone"></a>Spracherkennung über ein Mikrofon
 
-Verwenden Sie das folgende Codebeispiel, um die Spracherkennung über Ihr standardmäßiges Gerätemikrofon durchzuführen. Ersetzen Sie die Variablen `subscription` und `region` durch Ihr Abonnement und Ihren Regionsschlüssel. Wenn Sie das Skript ausführen, wird eine Erkennungssitzung mit Ihrem Standardmikrofon gestartet und Text ausgegeben.
+Verwenden Sie das folgende Codebeispiel, um die Spracherkennung über Ihr standardmäßiges Gerätemikrofon durchzuführen. Ersetzen Sie die Variablen `subscription` und `region` durch Ihren Schlüssel für die Spracheingabe und durch Ihren Standort/Ihre Region. Ihr Schlüssel-Region/Standort-Paar finden Sie auf der Seite [Ermitteln von Schlüsseln und Region/Standort](../../../overview.md#find-keys-and-locationregion). Wenn Sie das Skript ausführen, wird eine Erkennungssitzung mit Ihrem Standardmikrofon gestartet und Text ausgegeben.
 
 ```go
 package main
@@ -67,8 +67,8 @@ func cancelledHandler(event speech.SpeechRecognitionCanceledEventArgs) {
 }
 
 func main() {
-    subscription :=  "YOUR_SUBSCRIPTION_KEY"
-    region := "YOUR_SUBSCRIPTIONKEY_REGION"
+    subscription :=  "<paste-your-speech-key-here>"
+    region := "<paste-your-speech-location/region-here>"
 
     audioConfig, err := audio.NewAudioConfigFromDefaultMicrophoneInput()
     if err != nil {
@@ -117,7 +117,7 @@ Ausführliche Informationen zu den Klassen [`SpeechConfig`](https://pkg.go.dev/g
 
 ## <a name="speech-to-text-from-audio-file"></a>Spracherkennung über eine Audiodatei
 
-Verwenden Sie das folgende Beispiel, um die Spracherkennung mit einer Audiodatei durchzuführen. Ersetzen Sie die Variablen `subscription` und `region` durch Ihr Abonnement und Ihren Regionsschlüssel. Ersetzen Sie außerdem die Variable `file` durch einen Pfad zu einer WAV-Datei. Wenn Sie das Skript ausführen, wird Sprache aus der Datei erkannt und das Textergebnis ausgegeben.
+Verwenden Sie das folgende Beispiel, um die Spracherkennung mit einer Audiodatei durchzuführen. Ersetzen Sie die Variablen `subscription` und `region` durch Ihren Schlüssel für die Spracheingabe und durch Ihren Standort/Ihre Region. Ihr Schlüssel-Region/Standort-Paar finden Sie auf der Seite [Ermitteln von Schlüsseln und Region/Standort](../../../overview.md#find-keys-and-locationregion). Ersetzen Sie außerdem die Variable `file` durch einen Pfad zu einer WAV-Datei. Wenn Sie das Skript ausführen, wird Sprache aus der Datei erkannt und das Textergebnis ausgegeben.
 
 ```go
 package main
@@ -131,8 +131,8 @@ import (
 )
 
 func main() {
-    subscription :=  "YOUR_SUBSCRIPTION_KEY"
-    region := "YOUR_SUBSCRIPTIONKEY_REGION"
+    subscription :=  "<paste-your-speech-key-here>"
+    region := "<paste-your-speech-location/region-here>"
     file := "path/to/file.wav"
 
     audioConfig, err := audio.NewAudioConfigFromWavFileInput(file)

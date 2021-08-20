@@ -2,19 +2,18 @@
 title: Beispiel einer benutzerdefinierten Qualifikation (Python)
 titleSuffix: Azure Cognitive Search
 description: 'Für Python-Entwickler: Erlernen Sie die Tools und Techniken für die Erstellung einer benutzerdefinierten Qualifikation mit Azure Functions und Visual Studio. Benutzerdefinierte Qualifikationen enthalten benutzerdefinierte Modelle oder Logik, die Sie einer mit KI angereicherten Indizierungspipeline in Azure Cognitive Search hinzufügen können.'
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: effa3aede0c0020a32935ae58b702d234488411e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88936128"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339583"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit Python
 
@@ -34,7 +33,7 @@ Die benutzerdefinierte Qualifikation ist vom Design her einfach (sie verknüpft 
   + [Azure Functions Core Tools](../azure-functions/functions-run-local.md#v2)
   + [Azure Functions-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
-## <a name="create-an-azure-function"></a>Erstellen einer Azure Function
+## <a name="create-an-azure-function"></a>Erstellen einer Azure-Funktion
 
 In diesem Beispiel wird eine Azure Function verwendet, um das Konzept des Hostings einer Web-API zu demonstrieren, aber es sind auch andere Ansätze möglich. Solange Sie die [Schnittstellenanforderungen für einen kognitiven Skill](cognitive-search-custom-skill-interface.md) erfüllen, ist der gewählte Ansatz unerheblich. Mit Azure Functions ist das Erstellen eines benutzerdefinierten Skills jedoch einfacher.
 
@@ -56,7 +55,7 @@ Mit der Azure Functions-Projektvorlage in Visual Studio Code wird ein Projekt er
 1. Wählen Sie **Funktion** als Autorisierungsstufe aus. Das bedeutet, dass wir einen [Funktionsschlüssel](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) bereitstellen, um den HTTP-Endpunkt der Funktion aufzurufen. 
 1. Auswählen, wie Sie Ihr Projekt öffnen möchten. Wählen Sie für diesen Schritt **Zu Arbeitsbereich hinzufügen** aus, um die Funktions-App im aktuellen Arbeitsbereich zu erstellen.
 
-Visual Studio Code erstellt das Funktions-App-Projekt in einem neuen Arbeitsbereich. Dieses Projekt enthält die Konfigurationsdateien [host.json](../azure-functions/functions-host-json.md) und [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) sowie sprachspezifische Projektdateien. 
+Visual Studio Code erstellt das Funktions-App-Projekt in einem neuen Arbeitsbereich. Dieses Projekt enthält die Konfigurationsdateien [host.json](../azure-functions/functions-host-json.md) und [local.settings.json](../azure-functions/functions-develop-local.md#local-settings-file) sowie sprachspezifische Projektdateien. 
 
 Eine neue HTTP-gesteuerte Funktion wird ebenfalls im **Concatenator**-Ordner des Funktions-App-Projekts erstellt. Darin ist eine Datei namens „\_\_init__.py“ mit diesem Inhalt enthalten:
 

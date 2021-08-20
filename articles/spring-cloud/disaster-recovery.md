@@ -1,18 +1,18 @@
 ---
 title: Georedundante Notfallwiederherstellung in Azure Spring Cloud | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Ihre Spring Cloud-Anwendung vor regionalen Ausfällen schützen.
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 8e3471d778e0589083caaf2dfedbccc4568de471
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 69dbe496745ebbe3fbc9547a1ffc381ec0cae905
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144653"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340374"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Notfallwiederherstellung in Azure Spring Cloud
 
@@ -26,9 +26,9 @@ Azure Spring Cloud-Anwendungen werden in einer spezifischen Region ausgeführt. 
 
 Zur Sicherstellung von Hochverfügbarkeit und Schutz vor Ausfällen müssen Sie Ihre Spring Cloud-Anwendungen in mehreren Regionen bereitstellen.  Azure umfasst eine Liste mit [Regionspaaren](../best-practices-availability-paired-regions.md), sodass Sie Spring Cloud-Bereitstellungen mit Regionspaaren planen können.  Es empfiehlt sich, beim Entwurf Ihrer Microservicearchitektur drei wichtige Faktoren zu berücksichtigen: regionale Verfügbarkeit, Azure-Regionspaare und Dienstverfügbarkeit.
 
-*  Regionale Verfügbarkeit:  Wählen Sie einen geografischen Bereich in der Nähe Ihrer Benutzer aus, um die Netzwerkverzögerung und Übertragungszeit zu minimieren.
-*  Azure-Regionspaare:  Wählen Sie Regionspaare im ausgewählten geografischen Bereich aus, sodass koordinierte Plattformupdates und priorisierte Wiederherstellungsvorgänge bei Bedarf sichergestellt sind.
-*  Dienstverfügbarkeit:   Legen Sie fest, ob die Regionspaare heiß/heiß, heiß/warm oder heiß/kalt sein sollen.
+* Regionale Verfügbarkeit:  Wählen Sie einen geografischen Bereich in der Nähe Ihrer Benutzer aus, um die Netzwerkverzögerung und Übertragungszeit zu minimieren.
+* Azure-Regionspaare:  Wählen Sie Regionspaare im ausgewählten geografischen Bereich aus, sodass koordinierte Plattformupdates und priorisierte Wiederherstellungsvorgänge bei Bedarf sichergestellt sind.
+* Dienstverfügbarkeit:   Legen Sie fest, ob die Regionspaare heiß/heiß, heiß/warm oder heiß/kalt sein sollen.
 
 ## <a name="use-azure-traffic-manager-to-route-traffic"></a>Weiterleiten von Datenverkehr mit Azure Traffic Manager
 
@@ -39,7 +39,7 @@ Wenn Sie über Azure Spring Cloud-Anwendungen in mehreren Regionen verfügen, k�
 ## <a name="create-azure-traffic-manager-for-azure-spring-cloud"></a>Erstellen von Azure Traffic Manager für Azure Spring Cloud
 
 1. Erstellen Sie Azure Spring Cloud in zwei unterschiedlichen Regionen.
-Sie benötigen zwei Dienstinstanzen von Azure Spring Cloud, die in zwei verschiedenen Regionen bereitgestellt werden („USA, Osten“ und „Europa, Westen“). Starten Sie eine vorhandene Azure Spring Cloud-Anwendung über das Azure-Portal, um zwei Dienstinstanzen zu erstellen. Jede dient jeweils als primärer bzw. Failoverendpunkt für den Datenverkehr. 
+Sie benötigen zwei Dienstinstanzen von Azure Spring Cloud, die in zwei verschiedenen Regionen bereitgestellt werden („USA, Osten“ und „Europa, Westen“). Starten Sie eine vorhandene Azure Spring Cloud-Anwendung über das Azure-Portal, um zwei Dienstinstanzen zu erstellen. Jede dient jeweils als primärer bzw. Failoverendpunkt für den Datenverkehr.
 
 **Info zu den beiden Dienstinstanzen**:
 
@@ -54,14 +54,14 @@ Sie benötigen zwei Dienstinstanzen von Azure Spring Cloud, die in zwei verschie
 
 Im Folgenden das Traffic Manager-Profil:
 * Traffic Manager-DNS-Name: `http://asc-bcdr.trafficmanager.net`
-* Endpunktprofile: 
+* Endpunktprofile:
 
 | Profil | type | Ziel | Priority | Benutzerdefinierte Headereinstellungen |
 |--|--|--|--|--|
 | Endpunkt für das Profil A | Externer Endpunkt | service-sample-a.asc-test.net | 1 | host: bcdr-test.contoso.com |
 | Endpunkt für das Profil B | Externer Endpunkt | service-sample-b.asc-test.net | 2 | host: bcdr-test.contoso.com |
 
-4. Erstellen Sie einen CNAME-Eintrag in der DNS-Zone: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net. 
+4. Erstellen Sie einen CNAME-Eintrag in der DNS-Zone: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net.
 
 5. Nun ist die Umgebung vollständig eingerichtet. Kunden sollten in der Lage sein, über „bcdr-test.contoso.com“ auf die App zuzugreifen.
 

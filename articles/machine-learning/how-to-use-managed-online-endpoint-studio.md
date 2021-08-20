@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: how-to, managed online endpoints
+ms.custom: how-to, managed online endpoints, devplatv2
 ms.author: ssambare
 author: shivanissambare
 ms.reviewer: peterlu
 ms.date: 05/25/2021
-ms.openlocfilehash: 96ec383d5110b3acf4ca3b83bd40526443df887a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4f2b69a4a4009784e7943d57b0ec5653528a418e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382813"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448172"
 ---
 # <a name="create-and-use-managed-online-endpoints-preview-in-the-studio"></a>Erstellen und Verwenden von verwalteten Onlineendpunkten (Vorschau) in Studio
 
@@ -56,9 +56,9 @@ Sie können einen verwalteten Onlineendpunkt in Studio auch über die Seite **Mo
 1. Wählen Sie ein Modell aus, indem Sie im Kreis neben dem Modellnamen ein Häkchen einfügen.
 1. Wählen Sie **Deploy** > **Deploy to endpoint (preview)** (Bereitstellen > Auf Endpunkt bereitstellen (Vorschau)) aus.
 
-:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/models-create-managed-online-endpoint.png" alt-text="Erstellen eines verwalteten Onlineendpunkts über die Registerkarte „Modelle“":::
-
 Befolgen Sie die Anweisungen des Setup-Assistenten, um Ihren verwalteten Onlineendpunkt zu konfigurieren.
+
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/models-page-deployment-latest.png" alt-text="Erstellen eines verwalteten Onlineendpunkts über die Registerkarte „Modelle“":::
 
 ## <a name="view-managed-online-endpoints-preview"></a>Anzeigen von verwalteten Onlineendpunkten (Vorschau)
 
@@ -167,4 +167,8 @@ In diesem Artikel wurde beschrieben, wie Sie verwaltete Azure Machine Learning-O
 
 - [Was sind Endpunkte?](concept-endpoints.md)
 - [Bereitstellen verwalteter Onlineendpunkte mit der Azure CLI](how-to-deploy-managed-online-endpoints.md)
+- [Bereitstellen von Modellen per REST (Vorschau)](how-to-deploy-with-rest.md)
 - [Überwachen verwalteter Onlineendpunkte](how-to-monitor-online-endpoints.md)
+- [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](how-to-troubleshoot-managed-online-endpoints.md)
+- [Anzeigen der Kosten für einen verwalteten Azure Machine Learning-Onlineendpunkt (Vorschau)](how-to-view-online-endpoints-costs.md)
+- [Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)

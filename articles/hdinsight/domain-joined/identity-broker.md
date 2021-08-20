@@ -4,12 +4,12 @@ description: Erfahren Sie etwas über den Azure HDInsight-Identitätsbroker zur 
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: c5bc5bc702dbd54bbad43aa4e1c6c8650c18e088
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8201935f9aff99c9fa2709fe0b1418b0dab56e87
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863189"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339590"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight-Identitätsbroker (HIB)
 
@@ -126,7 +126,7 @@ Im HDInsight-Identitätsbrokersetup können benutzerdefinierte Apps und Clients 
 *   AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
 *    Berechtigung: (Name: Cluster.ReadWrite, id: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 
-Nachdem Sie das OAuth-Token abgerufen haben, verwenden Sie es im Autorisierungsheader der HTTP-Anforderung für das Clustergateway (z. B. https://<clustername>-int.azurehdinsight.net). Ein Beispiel für einen curl-Befehl für die Apache Livy-API könnte wie dieses Beispiel aussehen:
+Nachdem Sie das OAuth-Token abgerufen haben, verwenden Sie es im Autorisierungsheader der HTTP-Anforderung für das Clustergateway (z. B. https://\<clustername\>-int.azurehdinsight.net). Ein Beispiel für einen curl-Befehl für die Apache Livy-API könnte wie dieses Beispiel aussehen:
     
 ```bash
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"

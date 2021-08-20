@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: fa434d28b064d69f9c1f81759f6289eae0291f01
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 6a6f97f56e396cb36d6468a6fe04a300273b69d4
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814872"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455894"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps"></a>Zugreifen auf Benutzerinformationen in Azure Static Web Apps
 
@@ -104,43 +104,51 @@ console.log(await getUser());
 In einer C#-Funktion sind die Benutzerinformationen aus dem `x-ms-client-principal`-Header verfügbar, der in ein `ClaimsPrincipal`-Objekt oder Ihren eigenen benutzerdefinierten Typ deserialisiert werden kann. Der folgende Code zeigt, wie der Header in einen Zwischentyp, `ClientPrincipal`, entpackt wird, der dann in eine `ClaimsPrincipal`-Instanz umgewandelt wird.
 
 ```csharp
-  public static class StaticWebAppsAuth
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
+using Microsoft.AspNetCore.Http;
+
+public static class StaticWebAppsAuth
+{
+  private class ClientPrincipal
   {
-    private class ClientPrincipal
-    {
-        public string IdentityProvider { get; set; }
-        public string UserId { get; set; }
-        public string UserDetails { get; set; }
-        public IEnumerable<string> UserRoles { get; set; }
-    }
-
-    public static ClaimsPrincipal Parse(HttpRequest req)
-    {
-        var principal = new ClientPrincipal();
-
-        if (req.Headers.TryGetValue("x-ms-client-principal", out var header))
-        {
-            var data = header[0];
-            var decoded = Convert.FromBase64String(data);
-            var json = Encoding.ASCII.GetString(decoded);
-            principal = JsonSerializer.Deserialize<ClientPrincipal>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        }
-
-        principal.UserRoles = principal.UserRoles?.Except(new string[] { "anonymous" }, StringComparer.CurrentCultureIgnoreCase);
-
-        if (!principal.UserRoles?.Any() ?? true)
-        {
-            return new ClaimsPrincipal();
-        }
-
-        var identity = new ClaimsIdentity(principal.IdentityProvider);
-        identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, principal.UserId));
-        identity.AddClaim(new Claim(ClaimTypes.Name, principal.UserDetails));
-        identity.AddClaims(principal.UserRoles.Select(r => new Claim(ClaimTypes.Role, r)));
-
-        return new ClaimsPrincipal(identity);
-    }
+      public string IdentityProvider { get; set; }
+      public string UserId { get; set; }
+      public string UserDetails { get; set; }
+      public IEnumerable<string> UserRoles { get; set; }
   }
+
+  public static ClaimsPrincipal Parse(HttpRequest req)
+  {
+      var principal = new ClientPrincipal();
+
+      if (req.Headers.TryGetValue("x-ms-client-principal", out var header))
+      {
+          var data = header[0];
+          var decoded = Convert.FromBase64String(data);
+          var json = Encoding.ASCII.GetString(decoded);
+          principal = JsonSerializer.Deserialize<ClientPrincipal>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+      }
+
+      principal.UserRoles = principal.UserRoles?.Except(new string[] { "anonymous" }, StringComparer.CurrentCultureIgnoreCase);
+
+      if (!principal.UserRoles?.Any() ?? true)
+      {
+          return new ClaimsPrincipal();
+      }
+
+      var identity = new ClaimsIdentity(principal.IdentityProvider);
+      identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, principal.UserId));
+      identity.AddClaim(new Claim(ClaimTypes.Name, principal.UserDetails));
+      identity.AddClaims(principal.UserRoles.Select(r => new Claim(ClaimTypes.Role, r)));
+
+      return new ClaimsPrincipal(identity);
+  }
+}
 ```
 
 ---

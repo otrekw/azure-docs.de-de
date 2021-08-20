@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: eb6ae05b0e3c296a1ca56d3ea6085b8cd4586c23
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 08e20a497c7fddfe00e70fcf1d9d4c6e5f76054f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165693"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356571"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>SD-WAN-Konnektivitätsarchitektur mit Azure Virtual WAN
 
@@ -42,7 +42,7 @@ In diesem Modell werden einige proprietäre Datenverkehrsoptimierungen, die auf 
 
 Mit Virtual WAN können Benutzer Azure-Pfadauswahl erhalten, eine richtlinienbasierte Pfadauswahl über mehrere ISP-Links aus der Zweigniederlassungs-CPE zu Virtual WAN-VPN-Gateways. Virtual WAN ermöglicht das Einrichten mehrerer Links (Pfade) aus derselben Zweigniederlassungs-CPE des SD-WAN. Jeder Link stellt eine Doppeltunnelverbindung von einer eindeutigen öffentlichen IP-Adresse der SD-WAN-CPE mit zwei verschiedenen Instanzen des Azure Virtual WAN-VPN-Gateways dar. SD-WAN-Anbieter können den optimalen Pfad zu Azure implementieren, basierend auf Datenverkehrsrichtlinien, die von Ihrer Richtlinien-Engine für die CPE-Links festgelegt werden. Auf Azure-Seite werden alle eingehenden Verbindungen gleich behandelt.
 
-## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>Direktes Interconnectmodell mit NVA-in-VWAN-Hub
+## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct-nva"></a>Direktes Interconnectmodell mit NVA-in-VWAN-Hub
 
 :::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="Direktes Interconnectmodell mit NVA-in-VWAN-Hub":::
 

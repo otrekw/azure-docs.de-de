@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über die Verwendung von Apache Kafka für Conflu
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 01/15/2021
+ms.date: 06/07/2021
 ms.author: tomfitz
-ms.openlocfilehash: 6fbd6b72c17b8483f9fdb5bc227625fd92009594
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 07164ece2897ab364d568d247e3d2ee8d2566291
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952619"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112523040"
 ---
 # <a name="what-is-apache-kafka-for-confluent-cloud"></a>Was ist Apache Kafka für Confluent Cloud?
 
@@ -21,7 +21,7 @@ Um die Last der plattformübergreifenden Verwaltung zu verringern, hat Microsoft
 
 Zuvor mussten Sie das Confluent Cloud-Angebot im Marketplace erwerben und das Konto separat in Confluent Cloud einrichten. Zur Verwaltung von Konfigurationen und Ressourcen mussten Sie zwischen den Portalen für Azure und Confluent Cloud navigieren.
 
-Jetzt stellen Sie die Confluent Cloud-Ressourcen über einen Ressourcenanbieter namens **Microsoft.Confluent** bereit. Confluent Cloud-Organisationsressourcen werden über das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/) oder [Azure SDKs](/azure/index.yml#languages-and-tools) erstellt und verwaltet. Confluent Cloud besitzt die SaaS-Anwendung (Software-as-a-Service) und führt sie aus, einschließlich der Umgebungen, Cluster, Themen, API-Schlüssel und verwalteten Connectors.
+Jetzt stellen Sie die Confluent Cloud-Ressourcen über einen Ressourcenanbieter namens **Microsoft.Confluent** bereit. Confluent Cloud-Organisationsressourcen werden über das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/) oder [Azure SDKs](/azure#languages-and-tools) erstellt und verwaltet. Confluent Cloud besitzt die SaaS-Anwendung (Software-as-a-Service) und führt sie aus, einschließlich der Umgebungen, Cluster, Themen, API-Schlüssel und verwalteten Connectors.
 
 ## <a name="capabilities"></a>Funktionen
 
@@ -56,12 +56,6 @@ Es stehen zwei Abrechnungsoptionen zur Verfügung: ein Plan mit monatlicher nutz
 - Bei einem **Plan mit Mindestabnahme** registrieren Sie sich für einen Mindestbetrag und erhalten einen Rabatt auf Ihre zugesicherte Nutzung von Confluent Cloud.
 
 Sie entscheiden beim Erstellen des Diensts, welche Abrechnungsoption verwendet werden soll.
-
-## <a name="connector-to-azure-cosmos-db"></a>Connector für Azure Cosmos DB
-
-Installieren Sie den Cosmos DB-Connector vom Confluent Hub-Client aus, wie es in der [Confluent Hub-Auflistung](https://www.confluent.io/hub/microsoftcorporation/kafka-connect-cosmos) empfohlen wird. 
-
-Um den Connector manuell zu installieren, laden Sie zuerst eine Uber-JAR-Datei von der [Seite mit Cosmos DB Releases](https://github.com/microsoft/kafka-connect-cosmosdb/releases) herunter. Alternativ können Sie [eine eigene Uber-JAR-Datei direkt aus dem Quellcode erstellen](https://github.com/microsoft/kafka-connect-cosmosdb/blob/dev/doc/README_Sink.md#install-sink-connector). Schließen Sie die Installation ab, indem Sie die Anweisungen befolgen, die in der Confluent-Dokumentation zum [manuellen Installieren von Connectors](https://docs.confluent.io/home/connect/install.html#install-connector-manually) beschrieben sind.  
 
 ## <a name="confluent-links"></a>Confluent-Links
 

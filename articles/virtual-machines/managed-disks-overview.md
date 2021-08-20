@@ -2,18 +2,18 @@
 title: Übersicht über Azure Disk Storage
 description: Hier finden Sie eine Übersicht über verwaltete Azure-Datenträger. Damit werden bei Verwendung von virtuellen Computern die Speicherkonten für Sie verwaltet.
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: eea5c800d7aa9c8d1e6c0c507136b86ab8bf21f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 924f7a0d678937e1d50a4ff29fb01b8b0b0580d4
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604031"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358244"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Einführung in verwaltete Azure-Datenträger
 
@@ -100,7 +100,7 @@ Dieser Datenträger weist eine maximale Kapazität von 4.095 GiB auf.
 
 ### <a name="temporary-disk"></a>Temporärer Datenträger
 
-Die meisten VMs enthalten einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten- oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](./understand-vm-reboots.md) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten. Weitere Informationen zu VMs ohne temporäre Datenträger finden Sie unter [Azure-VM-Größen ohne lokalen temporären Datenträger](azure-vms-no-temp-disk.md).
+Die meisten VMs enthalten einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten- oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](./understand-vm-reboots.md) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten. Weitere Informationen zu VMs ohne temporäre Datenträger finden Sie unter [Azure-VM-Größen ohne lokalen temporären Datenträger](azure-vms-no-temp-disk.yml).
 
 Bei Azure Linux-VMs ist der temporäre Datenträger standardmäßig „/dev/sdb“, und bei Windows-VMs wird standardmäßig „D:“ verwendet. Der temporäre Datenträger wird nicht durch serverseitige Verschlüsselung verschlüsselt, es sei denn, Sie aktivieren die Verschlüsselung auf dem Host.
 

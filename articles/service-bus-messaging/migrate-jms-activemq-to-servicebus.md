@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: spelluru
 ms.custom: devx-track-java
-ms.openlocfilehash: e00043f1d8dd874e67ed25bd424e869fb7ec8787
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 5fcc69a765d0e3690e8b9ff9ee80b2e021810100
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539307"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355345"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Migrieren vorhandener JMS 2.0-Anwendungen (Java Message Service) von Apache ActiveMQ zu Azure Service Bus
 
@@ -46,7 +46,7 @@ Dennoch gibt es einige Unterschiede zwischen den beiden Nachrichtenbrokern, wie 
 
 ### <a name="current-supported-and-unsupported-features"></a>Zurzeit unterstützte und nicht unterstützte Funktionen
 
-[!INCLUDE [service-bus-jms-features-list](../../includes/service-bus-jms-feature-list.md)]
+[!INCLUDE [service-bus-jms-features-list](./includes/service-bus-jms-feature-list.md)]
 
 ### <a name="considerations"></a>Überlegungen
 
@@ -96,7 +96,7 @@ Service Bus bietet verschiedene Features für Unternehmenssicherheit und Hochver
 
 Für jeden Service Bus-Namespace veröffentlichen Sie Metriken in Azure Monitor. Sie können diese Metriken für Warnungen und die dynamische Skalierung von Ressourcen verwenden, die dem Namespace zugeordnet sind.
 
-Weitere Informationen zu den verschiedenen Metriken und zum Einrichten von Warnungen für diese finden Sie unter [Service Bus-Metriken in Azure Monitor](monitor-service-bus-reference.md). Sie finden auch zu [clientseitiger Ablaufverfolgung für Datenvorgänge](service-bus-end-to-end-tracing.md) und [Betriebs-/Diagnoseprotokollierung für Verwaltungsvorgänge](service-bus-diagnostic-logs.md) weitere Informationen.
+Weitere Informationen zu den verschiedenen Metriken und zum Einrichten von Warnungen für diese finden Sie unter [Service Bus-Metriken in Azure Monitor](monitor-service-bus-reference.md). Sie finden auch zu [clientseitiger Ablaufverfolgung für Datenvorgänge](service-bus-end-to-end-tracing.md) und [Betriebs-/Diagnoseprotokollierung für Verwaltungsvorgänge](monitor-service-bus-reference.md#resource-logs) weitere Informationen.
 
 ### <a name="metrics---new-relic"></a>Metriken – New Relic
 

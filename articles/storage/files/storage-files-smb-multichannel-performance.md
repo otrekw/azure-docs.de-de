@@ -7,16 +7,23 @@ ms.topic: conceptual
 ms.date: 05/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e8b2f64b0249cfe3b8a0a2e1bebcf7daabfe94dc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 995ece7fb5d199a4c403d4512c29eae46fe9fdcb
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094616"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116649"
 ---
 # <a name="smb-multichannel-performance"></a>SMB Multichannel-Leistung
 
 Azure Files SMB Multichannel (Vorschau) ermöglicht einem SMB 3.x-Client das Einrichten mehrerer Netzwerkverbindungen mit den Premium-Dateifreigaben in einem FileStorage-Konto. Das SMB 3x-Protokoll hat das SMB Multichannel-Feature in Windows Server 2012- und Windows 8-Clients eingeführt. Aus diesem Grund können alle Azure Files SMB 3.x-Clients, die SMB Multichannel unterstützen, das Feature für Ihre Azure Premium-Dateifreigaben nutzen. Es fallen keine zusätzlichen Kosten für die Aktivierung von SMB Multichannel für ein Speicherkonto an.
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="benefits"></a>Vorteile
 

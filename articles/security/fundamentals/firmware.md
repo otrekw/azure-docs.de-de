@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: 8233cc714d977083f4d55716d35c0b7094a069ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: 64c1a42147a55423336c9994246f08046f44adf5
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94557446"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895650"
 ---
 # <a name="firmware-security"></a>Firmwaresicherheit
 In diesem Artikel wird beschrieben, wie Microsoft das Cloudhardware-Ökosystem und Lieferketten schützt.
@@ -48,8 +48,9 @@ Cloudhardwarelieferanten und -anbieter für Azure müssen außerdem die von Micr
 - Verwaltung von Sicherheitsrisiken und Reaktion auf Vorfälle
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen darüber, was wir tun, um die Integrität und Sicherheit von Plattformen voranzutreiben, finden Sie unter:
+Weitere Informationen zu unseren Anstrengungen, die Integrität und Sicherheit von Plattformen zu erhöhen, finden Sie unter:
 
+- [Codeintegrität auf der Azure-Plattform](code-integrity.md)
 - [Sicherer Start](secure-boot.md)
 - [Gemessener Start- und Hostnachweis](measured-boot-host-attestation.md)
 - [Project Cerberus](project-cerberus.md)

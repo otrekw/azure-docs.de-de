@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 633f01d813fe4e6c56d88052cbc7440c43f350dc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7327af790eb8a3ddda646f0da208083d4431934a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870499"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112280223"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight
 
@@ -296,7 +296,7 @@ Konfigurieren Sie die Ankündigung der IP-Adresse, um einem Client das Herstelle
 
 ## <a name="delete-the-cluster"></a>Löschen des Clusters
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
+[!INCLUDE [delete-cluster-warning](../includes/hdinsight-delete-cluster-warning.md)]
 
 Mit den Schritten in diesem Dokument wurden Cluster in verschiedenen Azure-Ressourcengruppen erstellt. Um alle erstellten Ressourcen zu löschen, können Sie einfach die Ressourcengruppen löschen: **kafka-primary-rg** und **kafka-secondary_rg**. Durch Löschen der Ressourcengruppen werden alle beim Durcharbeiten dieses Dokuments erstellten Ressourcen gelöscht: Cluster, virtuelle Netzwerke und Speicherkonten.
 

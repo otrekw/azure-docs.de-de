@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
-ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fecd1fca22b003892817f8fd33db88b1eea6127
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94651311"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346158"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Behalten des Überblicks über Daten beim Hunting mit Azure Sentinel
 
@@ -30,7 +30,7 @@ Sie können Ihre mit Lesezeichen markierten Daten jederzeit im Bereich **Hunting
 
 Durch Anzeigen von Lesezeichen aus der Tabelle können Sie mit Lesezeichen markierte Daten filtern, zusammenfassen und mit anderen Datenquellen verknüpfen, wodurch die Suche nach fundierten Beweisen vereinfacht wird.
 
-Wenn Sie derzeit in der Vorschauversion etwas finden, das beim Hunting in Ihren Protokollen dringend behandelt werden muss, können Sie mit ein paar Klicks ein Lesezeichen erstellen und es zu einem Incident höher stufen oder das Lesezeichen zu einem bestehenden Incident hinzufügen. Weitere Informationen zu Incidents finden Sie unter [Tutorial: Untersuchen von Incidents mit Azure Sentinel](tutorial-investigate-cases.md). 
+Wenn Sie derzeit in der Vorschauversion etwas finden, das beim Hunting in Ihren Protokollen dringend behandelt werden muss, können Sie mit ein paar Klicks ein Lesezeichen erstellen und es zu einem Incident höher stufen oder das Lesezeichen zu einem bestehenden Incident hinzufügen. Weitere Informationen zu Incidents finden Sie unter [Tutorial: Untersuchen von Incidents mit Azure Sentinel](investigate-cases.md). 
 
 In der Vorschauversion können Sie auch Ihre mit Lesezeichen versehenen Daten darstellen, indem Sie in den Lesezeichendetails auf **Untersuchen** klicken. Dadurch wird der Untersuchungsvorgang gestartet, in dem Sie Ihre Ergebnisse mithilfe eines interaktiven Entität-Grafikdiagramms und einer Zeitachse anzeigen, untersuchen und visuell kommunizieren können.
 
@@ -94,7 +94,7 @@ In der Vorschauversion können Sie auch Ihre mit Lesezeichen versehenen Daten da
 
 3. Klicken Sie auf **Untersuchen**, um das Lesezeichen im Untersuchungsdiagramm anzuzeigen.
 
-Anweisungen zur Verwendung des Untersuchungsdiagramms finden Sie unter [Ausführliche Untersuchung mit dem Untersuchungsdiagramm](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive).
+Anweisungen zur Verwendung des Untersuchungsdiagramms finden Sie unter [Ausführliche Untersuchung mit dem Untersuchungsdiagramm](investigate-cases.md#use-the-investigation-graph-to-deep-dive).
 
 ## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>Hinzufügen von Lesezeichen zu einem neuen oder bestehenden Incident
 

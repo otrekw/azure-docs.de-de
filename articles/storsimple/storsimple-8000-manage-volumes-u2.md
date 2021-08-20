@@ -4,14 +4,14 @@ description: Erläutert, wie Sie StorSimple-Volumes hinzufügen, ändern, überw
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
-ms.date: 12/09/2017
+ms.date: 08/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 3d649b54b544c120198963f8094764e9590e20b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5653fdcaa37b1adb728a23454317c6088b9efbc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100547543"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340233"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Verwalten von Volumes mithilfe des StorSimple-Geräte-Manager-Diensts (Update 3 und höher)
 
@@ -38,7 +38,7 @@ Lokale Volumes werden vollständig bereitgestellt und lagern keine Daten in die 
 
 Lokale Volumes werden vollständig bereitgestellt. Aus diesem Grund müssen Sie bei deren Erstellung über genügend Speicherplatz auf dem Gerät verfügen. Sie können lokale Volumes mit einer Größe von maximal 8 TB auf dem StorSimple 8100-Gerät und 20 TB auf dem 8600-Gerät bereitstellen. StorSimple reserviert den verbleibenden lokalen Speicherplatz auf dem Gerät für Momentaufnahmen, Metadaten und die Datenverarbeitung. Sie können die Größe eines lokalen Volumes auf den maximal verfügbaren Speicherplatz erhöhen, jedoch können Sie die Größe eines Volumes nach der Erstellung nicht mehr verringern.
 
-Wenn Sie ein lokales Volume erstellen, verringert sich dadurch der verfügbare Speicherplatz für die Erstellung mehrstufiger Volumes. Das Gegenteil trifft ebenfalls zu: Wenn Sie mehrstufige Volumes verwenden, ist der Speicherplatz für die Erstellung lokaler Volumes geringer als die oben genannten Obergrenzen. Weitere Informationen zu lokalen Volumes finden Sie in den [häufig gestellten Fragen zu lokalen Volumes](storsimple-8000-local-volume-faq.md).
+Wenn Sie ein lokales Volume erstellen, verringert sich dadurch der verfügbare Speicherplatz für die Erstellung mehrstufiger Volumes. Das Gegenteil trifft ebenfalls zu: Wenn Sie mehrstufige Volumes verwenden, ist der Speicherplatz für die Erstellung lokaler Volumes geringer als die oben genannten Obergrenzen. Weitere Informationen zu lokalen Volumes finden Sie in den [häufig gestellten Fragen zu lokalen Volumes](storsimple-8000-local-volume-faq.yml).
 
 ### <a name="tiered-volumes"></a>Mehrstufige Volumes
 
@@ -315,7 +315,7 @@ Führen Sie die folgenden Schritte durch, um die Überwachung eines Volumes zu a
 2. Wählen Sie in der Tabelle mit den Volumes das Volume aus, und klicken Sie mit der rechten Maustaste, um das Kontextmenü aufzurufen. Wählen Sie **Ändern** aus.
 3. Wählen Sie auf dem Blatt **Volume ändern** für **Überwachung** entweder **Aktivieren** oder **Deaktivieren** aus, um die Überwachung zu aktivieren oder zu deaktivieren.
 
-    ![Disable monitoring](./media/storsimple-8000-manage-volumes-u2/monitor-volume-0 1.png) 
+    ![Deaktivieren der Überwachung](./media/storsimple-8000-manage-volumes-u2/monitor-volume-01.png) 
 
 4. Klicken Sie auf **Speichern**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**. Das Azure-Portal zeigt eine Benachrichtigung zur Aktualisierung des Volumes und dann eine Erfolgsmeldung, nachdem das Volume erfolgreich aktualisiert wurde.
 

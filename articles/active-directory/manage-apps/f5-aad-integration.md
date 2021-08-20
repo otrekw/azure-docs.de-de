@@ -2,21 +2,22 @@
 title: Sicherer Hybridzugriff mit F5 und Azure AD | Microsoft-Dokumentation
 description: Sicherer Hybridzugriff mit dem F5 BIG-IP Access Policy Manager und der Integration in Azure Active Directory
 services: active-directory
-author: gargi-sinha
+author: davidmu1
 manager: martinco
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 11/12/2020
-ms.author: gasinh
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38b484bd67f3354132675f343dcc06bd7f9d48a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: miccohen
+ms.openlocfilehash: cc55eff7c5ed3a4773a016bcd73bbd33708d9595
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499809"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355472"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>Sicherer Hybridzugriff mit dem F5 BIG-IP Access Policy Manager und dessen Integration in Azure Active Directory
 
@@ -34,7 +35,6 @@ Die Vorabauthentifizierung des Zugriffs auf veröffentlichte BIG-IP-Dienste durc
 - [Bedingter Zugriff](../conditional-access/overview.md) und [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) als Maßnahmen im Vorfeld
 
 - [Identitätsschutz](../identity-protection/overview-identity-protection.md) als adaptive Steuerung durch Risikoprofilerstellung für Benutzer und Sitzung
-
 
 - [Erkennung von kompromittierten Anmeldeinformationen](../identity-protection/concept-identity-protection-risks.md)
 
@@ -117,19 +117,19 @@ Für die Integration von F5 BIG-IP mit Azure AD für den sicheren Hybridzugrif
 
 - Eine aktive F5 BIG-IP APM-Lizenz über eine der folgenden Optionen:
 
-   - F5 BIG-IP®-Paket „Best“ (oder)
+  - F5 BIG-IP®-Paket „Best“ (oder)
 
-   - Eigenständige Lizenz für F5 BIG-IP Access Policy Manager™
+    - Eigenständige Lizenz für F5 BIG-IP Access Policy Manager™
 
-   - Add-On-Lizenz für F5 BIG-IP Access Policy Manager™ (APM) für eine bereits vorhandene Instanz von F5 BIG-IP® Local Traffic Manager™ (LTM)
+    - Add-On-Lizenz für F5 BIG-IP Access Policy Manager™ (APM) für eine bereits vorhandene Instanz von F5 BIG-IP® Local Traffic Manager™ (LTM)
 
-   - Lizenz für [90-Tage-Testversion](https://www.f5.com/trial/big-ip-trial.php) von F5 BIG-IP Access Policy Manager™ (APM)
+    - Lizenz für [90-Tage-Testversion](https://www.f5.com/trial/big-ip-trial.php) von F5 BIG-IP Access Policy Manager™ (APM)
 
 - Azure AD-Lizenzierung über eine der folgenden Optionen:
 
-   - Ein [kostenloses Azure AD-Abonnement](/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20) stellt die Mindestanforderungen für die Implementierung des sicheren Hybridzugriffs (SHA) mit der kennwortlosen Authentifizierung bereit
+  - Ein [kostenloses Azure AD-Abonnement](/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20) stellt die Mindestanforderungen für die Implementierung des sicheren Hybridzugriffs (SHA) mit der kennwortlosen Authentifizierung bereit
 
-   - Ein [Premium-Abonnement](https://azure.microsoft.com/pricing/details/active-directory/) bietet alle zusätzlichen wertsteigernden Anwendungen, die oben erläutert wurden, einschließlich [Bedingter Zugriff](../conditional-access/overview.md), [MFA](../authentication/concept-mfa-howitworks.md) und [Identity Protection](../identity-protection/overview-identity-protection.md)
+  - Ein [Premium-Abonnement](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) bietet alle zusätzlichen wertsteigernden Anwendungen, die oben erläutert wurden, einschließlich [Bedingter Zugriff](../conditional-access/overview.md), [MFA](../authentication/concept-mfa-howitworks.md) und [Identity Protection](../identity-protection/overview-identity-protection.md)
 
 Zum Implementieren des sicheren Hybridzugriffs (SHA) sind keine besonderen Kenntnisse oder Erfahrung mit F5 BIG-IP erforderlich. Es wird jedoch empfohlen, sich mit der F5 BIG-IP-Terminologie vertraut zu machen. Die umfangreiche [Knowledge Base](https://www.f5.com/services/resources/glossary) von F5 ist ebenfalls ein guter Ausgangspunkt, um sich BIG-IP-Kenntnisse anzueignen.
 

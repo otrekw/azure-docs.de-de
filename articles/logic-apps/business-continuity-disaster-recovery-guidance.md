@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: f974a99c59b19b5df7bf6ffcc66c2dc133743f0a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3f486e1f46cc4ed21dc3da89d242d50010178e7d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790537"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346677"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Business Continuity & Disaster Recovery für Azure Logic Apps
 
@@ -348,7 +348,7 @@ Sie können Protokollierung für Ihre Logik-App-Ausführungen einrichten und die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Resilienz für Azure (Übersicht)](/azure/architecture/framework/resiliency/overview)
+* [Entwerfen zuverlässiger Azure-Anwendungen](/azure/architecture/framework/resiliency/app-design)
 * [Checkliste für Resilienz für bestimmte Azure-Dienste](/azure/architecture/checklist/resiliency-per-service)
 * [Datenverwaltung für Resilienz in Azure](/azure/architecture/framework/resiliency/data-management)
 * [Sicherung und Notfallwiederherstellung von Azure-Anwendungen](/azure/architecture/framework/resiliency/backup-and-recovery)

@@ -3,12 +3,12 @@ title: Aktualisieren einer Delegierung
 description: Hier erfahren Sie, wie Sie eine Delegierung für einen Kunden aktualisieren, für den zuvor ein Onboarding in Azure Lighthouse durchgeführt wurde.
 ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: bc52790c5652f9571e3a63023314ff8e97fb7e99
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e8044732cd1cb544515bcfe5b2c0ac3b40bf0cfe
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965061"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389253"
 ---
 # <a name="update-a-delegation"></a>Aktualisieren einer Delegierung
 
@@ -45,14 +45,14 @@ Wenn Sie nur Autorisierungen im Angebot anpassen und denselben **mspOfferName** 
 
 :::image type="content" source="../media/update-delegation.jpg" alt-text="Diagramm, das zeigt, wann Sie mspOfferName ändern und eine vorherige Delegierung entfernen müssen":::
 
-Jeder Benutzer im Verwaltungsmandanten, dem in der ursprünglichen Delegierung die [Rolle „Registrierungszuweisung für verwaltete Dienste löschen“](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) zugewiesen wurde, kann den Zugriff auf die Delegierung entfernen. Wenn kein Benutzer im Verwaltungsmandanten über diese Rolle verfügt, können Sie den Kunden bitten, [den Zugriff auf das Angebot im Azure-Portal zu entfernen](view-manage-service-providers.md#add-or-remove-service-provider-offers).
+Jeder Benutzer im Verwaltungsmandanten, dem in der ursprünglichen Delegierung die [Rolle „Registrierungszuweisung für verwaltete Dienste löschen“](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) zugewiesen wurde, kann den Zugriff auf die Delegierung entfernen. Wenn kein Benutzer im Verwaltungsmandanten über diese Rolle verfügt, können Sie den Kunden bitten, [den Zugriff auf das Angebot im Azure-Portal zu entfernen](view-manage-service-providers.md#remove-service-provider-offers).
 
 > [!TIP]
 > Wenn Sie die vorherige Delegierung anhand der oben beschriebenen Schritte entfernt haben und die neue ARM-Vorlage dennoch nicht bereitstellen können, müssen Sie möglicherweise [die Registrierungsdefinition vollständig entfernen](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition). Dieser Vorgang kann von jedem Benutzer mit einer Rolle im Kundenmandanten durchgeführt werden, die die Berechtigung `Microsoft.Authorization/roleAssignments/write` beinhaltet, z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner).  
 
 ## <a name="deploy-the-arm-template"></a>Bereitstellen der ARM-Vorlage
 
-Zum [Bereitstellen der aktualisierten Vorlage](onboard-customer.md#deploy-the-azure-resource-manager-templates) kann Ihr Kunde dieselben Methoden verwenden wie bei der ursprünglichen Vorlage: Azure-Portal, PowerShell oder Azure CLI.
+Zum [Bereitstellen der aktualisierten Vorlage](onboard-customer.md#deploy-the-azure-resource-manager-template) kann Ihr Kunde dieselben Methoden verwenden wie bei der ursprünglichen Vorlage: Azure-Portal, PowerShell oder Azure CLI.
 
 Nach Abschluss der Bereitstellung [vergewissern Sie sich, dass sie erfolgreich war](onboard-customer.md#confirm-successful-onboarding). Die aktualisierten Autorisierungen treten dann für das Abonnement oder die Ressourcengruppe in Kraft, das bzw. die der Kunde delegiert hat.
 

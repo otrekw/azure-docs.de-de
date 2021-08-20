@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: eb6369e89066451779d05a97057acbdd451de192
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 240ed5ed7aefb31503047f124d34e99d738da687
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146669"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236857"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>Was sind Sicherheitsrichtlinien, Initiativen und Empfehlungen?
 

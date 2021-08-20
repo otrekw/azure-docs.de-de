@@ -3,19 +3,19 @@ title: Informationen zum Speech SDK – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Das Speech SDK (Software Development Kit) macht viele der Funktionen des Spracherkennungsdienstes verfügbar und erleichtert Ihnen das Entwickeln sprachaktivierter Anwendungen.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.author: trbye
-ms.openlocfilehash: cc5ed68fa7a26a347f0cb85c94bb0b7b79ccb055
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.openlocfilehash: 3f97558a9efbc9a1cff11baaae6d4d8869e02915
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059170"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340507"
 ---
 # <a name="about-the-speech-sdk"></a>Informationen zum Speech SDK
 
@@ -48,12 +48,14 @@ Die [Spracherkennung](speech-to-text.md) (auch als *Speech-to-Text* bezeichnet) 
 
 **Text-zu-Sprache** ist auf den folgenden Plattformen verfügbar:
 
-  - C++/Windows und Linux
-  - C#/Windows, UWP und Unity
+  - C++/Windows und Linux und macOS
+  - C# (Framework und .NET Core)/Windows, UWP, Unity, Xamarin, Linux und macOS
   - Java (JRE und Android)
+  - JavaScript (Browser und NodeJS)
   - Python
   - Swift
   - Objective-C
+  - Go
   - Die TTS-REST-API kann in allen anderen Situationen verwendet werden.
 
 ### <a name="voice-assistants"></a>Sprachassistenten
@@ -135,7 +137,7 @@ Der Spracherkennungsdienst bietet über seine Standardmodelle hervorragende Funk
 
 ### <a name="custom-speech-to-text"></a>Benutzerdefinierte Spracherkennung
 
-Wenn Sie die Spracherkennung für die Erkennung und Transkription in einer individuellen Umgebung verwenden, können Sie benutzerdefinierte Akustik-, Sprach- und Aussprachemodelle erstellen, um Umgebungsgeräusche zu kompensieren oder branchenspezifisches Vokabular zu berücksichtigen. Die Erstellung und Verwaltung von Custom Speech-Modellen ohne Code ist über das [Custom Speech-Portal](https://aka.ms/customspeech) möglich. Nach seiner Veröffentlichung kann das Custom Speech-Modell vom Speech SDK genutzt werden.
+Wenn Sie die Spracherkennung für die Erkennung und Transkription in einer individuellen Umgebung verwenden, können Sie benutzerdefinierte Akustik-, Sprach- und Aussprachemodelle erstellen, um Umgebungsgeräusche zu kompensieren oder branchenspezifisches Vokabular zu berücksichtigen. Die Erstellung und Verwaltung von Custom Speech-Modellen ohne Code ist über das [Custom Speech-Portal](./custom-speech-overview.md) möglich. Nach seiner Veröffentlichung kann das Custom Speech-Modell vom Speech SDK genutzt werden.
 
 ### <a name="custom-text-to-speech"></a>Benutzerdefinierte Sprachsynthese
 

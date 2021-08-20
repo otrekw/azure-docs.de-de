@@ -1,0 +1,95 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zur Bereitstellung - Azure App Service | Microsoft-Dokumentation
+  description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Bereitstellung für das Web-Apps-Feature von Azure App Service.
+  author: genlin
+  manager: dcscontentpm
+  tags: top-support-issue
+  ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
+  ms.topic: article
+  ms.service: app-service
+  ms.date: 11/01/2018
+  ms.author: genli
+  ms.custom: seodec18
+  ms.openlocfilehash: 58b42f672389a13342d09cf796204906987e48b8
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122351071"
+title: Häufig gestellte Fragen zur Bereitstellung von Web-Apps in Azure
+summary: >
+  In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Problemen bei der Bereitstellung für das bei [Web-Apps-Feature von Azure App Service](https://azure.microsoft.com/services/app-service/web/).
+
+
+  [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Ich mache gerade die ersten Schritte mit den App Service-Web-Apps. Wie veröffentliche ich meinen Code?
+    answer: >
+      Hier finden Sie einige Möglichkeiten für die Veröffentlichung Ihres Web-App-Codes:
+
+
+      *   Bereitstellen über Visual Studio. Wenn Sie über die Visual Studio-Lösung verfügen, klicken Sie mit der rechten Maustaste auf das Webanwendungsprojekt, und wählen Sie dann **Veröffentlichen** aus.
+
+      *   Bereitstellen über einen FTP-Client. Laden Sie im Azure-Portal das Veröffentlichungsprofil für die Web-App herunter, für die Sie Code bereitstellen möchten. Laden Sie die Dateien anschließend in das Verzeichnis „\site\wwwroot“ hoch. Verwenden Sie dabei die FTP-Anmeldeinformationen desselben Veröffentlichungsprofils.
+
+
+      Weitere Informationen finden Sie unter [Bereitstellen der App in App Service](deploy-local-git.md).
+  - question: >
+      Wenn ich die Bereitstellung über Visual Studio versuche, wird eine Fehlermeldung angezeigt. Wie kann ich diesen Fehler beheben?
+    answer: "Wenn die folgende Meldung angezeigt wird, verwenden Sie möglicherweise eine ältere Version des SDK: „Fehler bei der Bereitstellung für die Ressource ‚IhrRessourcenname‘ in der Ressourcengruppe ‚IhreRessourcengruppe‘: MissingRegistrationForLocation: Das Abonnement ist nicht für den Ressourcentyp ‚components‘ am Ort ‚USA, Mitte‘ registriert. Registrieren Sie sich erneut für diesen Anbieter, um Zugang zu diesem Ort zu erhalten.“ \n\nUm diesen Fehler zu beheben, führen Sie eine Aktualisierung auf das [neueste SDK](https://azure.microsoft.com/downloads/) aus. Wenn diese Meldung angezeigt wird und Sie über das neueste SDK verfügen, senden Sie eine Supportanfrage.\n"
+  - question: >
+      Wie stelle ich eine ASP.NET-Anwendung über Visual Studio in App Service bereit?
+    answer: >
+      <a id="deployasp"></a>
+
+
+      Im Tutorial [Erstellen Ihrer ersten ASP.NET-Web-App in Azure in fünf Minuten](quickstart-dotnetcore.md) erfahren Sie, wie Sie eine ASP.NET-Webanwendung mithilfe von Visual Studio in einer Web-App in App Service bereitstellen.
+  - question: >
+      Welche verschiedenen Typen von Anmeldeinformationen für die Bereitstellung gibt es?
+    answer: >
+      App Service unterstützt zwei Arten von Anmeldeinformationen für lokale Git-Bereitstellungen und FTP/S-Bereitstellungen. Weitere Informationen zum Konfigurieren der Anmeldeinformationen für die Bereitstellung finden Sie unter [Konfigurieren der Anmeldeinformationen für die Bereitstellung für App Service](deploy-configure-credentials.md).
+  - question: >
+      Wie lautet die Datei- oder Verzeichnisstruktur meiner App Service-Web-App?
+    answer: >
+      Informationen zur Dateistruktur Ihrer App Service-App finden Sie unter [File Structure in Azure](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) (Dateistruktur in Azure).
+  - question: >
+      Wie behebe ich den Fehler „FTP-Fehler 550 - Es steht nicht genug Speicherplatz auf dem Datenträger zur Verfügung“, wenn ich FTP für meine Dateien verwenden möchte?
+    answer: >
+      Wenn diese Meldung angezeigt wird, ist es wahrscheinlich, dass Sie auf ein Datenträgerkontingent im Serviceplan Ihrer Web-App gestoßen sind. Möglicherweise müssen Sie je nach Speicherbedarf auf eine höhere Dienstebene zentral hochskalieren. Weitere Informationen zu den Tarifen und Ressourcenlimits finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
+  - question: >
+      Wie richte ich für meine App Service-Web-App die kontinuierliche Bereitstellung ein?
+    answer: >
+      Sie können Continuous Deployment über mehrere Ressourcen einrichten, z.B. Azure DevOps, OneDrive, GitHub, Bitbucket, Dropbox und andere Git-Repositorys. Diese Optionen sind im Portal verfügbar. [Kontinuierliche Bereitstellung in App Service](deploy-continuous-deployment.md) ist ein nützliches Tutorial, das erläutert, wie Sie die kontinuierliche Bereitstellung einrichten.
+  - question: >
+      Wie behebe ich Probleme mit der kontinuierlichen Bereitstellung über GitHub und Bitbucket?
+    answer: >
+      Informationen zum Untersuchen von Problemen mit der kontinuierlichen Bereitstellung über GitHub oder Bitbucket finden Sie unter [Investigating continuous Deployment](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment) (Untersuchen der kontinuierlichen Bereitstellung).
+  - question: >
+      Ich kann FTP nicht für meine Website verwenden und meinen Code veröffentlichen. Wie kann ich dieses Problem lösen?
+    answer: >
+      So beheben Sie FTP-Probleme:
+
+
+      1. Überprüfen Sie, ob Sie den richtigen Hostnamen und die richtigen Anmeldeinformationen eingegeben haben. Ausführliche Informationen zu den verschiedenen Typen von Anmeldeinformationen und deren Verwendung finden Sie unter [Deployment Credentials](https://github.com/projectkudu/kudu/wiki/Deployment-credentials) (Anmeldeinformationen für die Bereitstellung).
+
+      2. Vergewissern Sie sich, dass die FTP-Ports nicht durch eine Firewall blockiert werden. Die Ports sollten diese Einstellungen haben:
+          * Port für FTP-Kontrollverbindung: 21
+          * Port für FTP-Datenverbindung: 989, 10001–10300
+  - question: >
+      Wie veröffentliche ich meinen Code in App Service?
+    answer: >
+      Der Azure-Schnellstart hilft Ihnen bei der Bereitstellung Ihrer App, indem Sie den Bereitstellungsstapel und die Methode Ihrer Wahl verwenden. Um den Schnellstart zu verwenden, navigieren Sie im Azure-Portal zu Ihrem App-Dienst, und wählen Sie unter **Bereitstellung** die Option **Schnellstart** aus.
+  - question: >
+      Warum wird meine App nach der Bereitstellung in App Service manchmal neu gestartet?
+    answer: >
+      Informationen zu den Umständen, unter denen eine Anwendungsbereitstellung zu einem Neustart führen kann, finden Sie unter [Deployment vs. runtime issues](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts") (Probleme mit Bereitstellung oder Laufzeit). Wie im Artikel beschrieben, stellt App Service Dateien im Ordner „wwwroot“ bereit. Ihre App wird nie direkt neu gestartet.
+  - question: >
+      Wie integriere ich Azure DevOps-Code in App Service?
+    answer: "Sie haben zwei Möglichkeiten für Continuous Deployment mit Azure DevOps:\n\n*   Verwenden Sie ein Git-Projekt. Stellen Sie eine Verbindung über App Service mithilfe des Bereitstellungscenters her.\n*   Verwenden Sie ein TFVC-Projekt (Team Foundation Version Control). Führen Sie die Bereitstellung mithilfe des Build-Agents für App Service durch.\n\nDie kontinuierliche Codebereitstellung für beide Optionen hängt von vorhandenen Entwicklerworkflows und Eincheckverfahren ab. Weitere Informationen und Beispiele finden Sie in diesen Artikeln: \n\n*   [Implement continuous deployment of your app to an Azure website](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs) (Implementieren der kontinuierlichen Bereitstellung Ihrer App in einer Azure-Website)\n*   [Einrichten einer Azure DevOps-Organisation für die Bereitstellung in einer Web-App](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)\n"
+  - question: >
+      Wie verwende ich FTP oder FTPS zur Bereitstellung meiner App in App Service?
+    answer: Informationen zur Verwendung von FTP oder FTPS zur Bereitstellung Ihrer Web-App in App Service finden Sie unter [Deploy your app to App Service by using FTP/S](deploy-ftp.md) (Bereitstellen Ihrer App in App Service über FTP/S).
